@@ -743,7 +743,7 @@ says, '10 PRINT "I AM THE MASTER OF THE UNIVERSE!"'
 says, '20 GOTO 10'
 takes another swig of Jolt cola.
 opens another bag of Doritos.
-takes out his 5d5 longsword and says, 'No more Mr. Nice Guy!'
+takes out his 5d6 longsword and says, 'No more Mr. Nice Guy!'
 says, 'I'll teach you not to play!'
 says, 'Wait until you see the changes I made for this version!'
 says, 'If you're going to cry, just go play Vanilla!'
@@ -753,7 +753,7 @@ says, 'If you think I'm tough, you ain't seen nothin' yet!'
 ponders reading a scroll of *destruction* just to save himself the bother.
 asks, 'How do you like 'No Spells'? There's plenty more where that came from!'
 is ticked off!
-says, 'Have you heard about the new version of Hengband?'
+says, 'Have you heard about the new version of ComPosband?'
 says, 'Not until the restructure is done!'
 says, 'Modifying this line shouldn't crash anything.'
 says, 'I'm still not adding it as an option!'
@@ -763,6 +763,41 @@ says, "Monkey see, monkey do!"
 says, "Don't you monkey with the monkey!"
 munches on a banana.
 says, "Hear no evil, see no evil, speak no evil."
+
+N:1225:Justshorn, Sorcerer-King of the Sheeple
+yells, 'THE TIME HAS COME FOR THE MEEK TO INHERIT!'
+claims the Amulet of Oretna is his by right.
+recounts how he defeated the seven guardians of the Emerald Dagger.
+promises to teleport you up a flagpole.
+swears he will kill you and process your dead body into sheep feed.
+tells you an awesome story about a dragon and a man named Justin.
+says you're a killer and a looter and not a hero.
+says, 'Only one can match my power: the man called Sjijn."
+
+N:1231:Implorington III
+cackles evilly.
+casts an impressive death spell.
+hums to his favorite tune.
+says, 'Why fight me? I'm not carrying anything good.'
+says, 'We could be friends and rule the world together!'
+says, 'Do you know what happens if you try to ride a sheep? ...not that I've ever tried it.'
+says, 'Just between you and me, there's really good loot on the next level.'
+challenges you not to think of many-headed warthogs.
+tries not to stare behind you.
+invokes the Foot of Doom!
+ponders reading a Scroll of Destruction just to save himself the bother.
+says, 'Have you seen lycra leggings anywhere in this game? ...I'm asking for a friend.'
+says, 'There's a hidden shop in Thalos where they sell orc porn. Don't try to find it.'
+asks, 'Just between you and me, are you carrying anything good?'
+
+N:1236:Moe, the Cyclops
+says, 'Do you know who slaughtered my daughter?'
+asks, 'Did you kill my daughter?'
+says, 'There's so much senseless violence in this world...'
+says, 'When I find out who killed my baby girl, I'll tie them up and drop them in a big box full of tiny baby rats and sing As Time Goes By as I watch the rats slowly eat them from the toes up!'
+yells, 'Listen, mink-face, I have a spare wand of fire bolts and if you bother me you'll get to meet it up close and personal."
+shakes his head.
+sighs wistfully.
 
 N:*:Default lines
 cackles evilly.

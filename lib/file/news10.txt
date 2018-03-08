@@ -1,4 +1,4 @@
-<color:y>ComPosband <$:version></color>
+<color:y>FrogComposband <$:version></color>
 <style:screenshot>
 The Bolt of Wilhelm Tell (6d5) (+20,+16) hits Eric the Usurper. <color:v>Eric </color>             
 <color:v>the Usurper puts a terrible blood curse on you!</color> There is a malignant  LEVEL <color:G>    50</color>

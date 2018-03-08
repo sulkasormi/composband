@@ -25,6 +25,7 @@ N: 3:BIAS_FIRE
 'Lion in Flame'
 'Salamander'
 'Flamecoat'
+'Heatshield'
 of Libyan Desert
 of Tropics
 of Desert
@@ -38,12 +39,15 @@ of Siberia
 of White Ice
 of Arctic Ocean
 of Antarctic Land
+of Santa Claus
+of the Yeti
 
 N: 5:BIAS_ACID
 'Gelatinous Cube'
 'Skin of Dhole'
 'Shield of Water'
 'Oozearmor'
+'Phlogiston'
 of Aqua Regia
 of the Devine Jewel
 of Diamond
@@ -68,7 +72,9 @@ N:14:BIAS_NECROMANTIC
 'Total Solar Eclipse'
 'Undertaker'
 of Rituals
+of Mephistopheles
 of the Ruler of Wallachia
+of the Netherlands
 
 N:15:BIAS_LAW
 N:13:BIAS_PRIESTLY
@@ -103,11 +109,13 @@ N: 9:BIAS_DEX
 'Keeper of Darkness'
 'Crypt Creep'
 'Smoke Ball'
+'Maple Leaf'
 of Nevrast
 of Quietness
 of the Ninja
 of Phasing
 of the Fairy
+of Fnordja
 
 N:17:BIAS_MAGE
 N: 7:BIAS_INT
@@ -120,6 +128,9 @@ of Knowledge
 of the Spellcaster
 of Arcane
 of Martin
+of the Sorcerer-King
+of Simon Magus
+of Zul
 
 N:18:BIAS_WARRIOR
 N: 6:BIAS_STR
@@ -143,18 +154,25 @@ N:10:BIAS_CON
 'Bear's Hand'
 'Springsleeper'
 'Life of Leaf'
+'Wargskin'
 of Hyper Nature
 of the Hunter
 of Marinera
+of Numenor
 
 N:11:BIAS_CHR
 'Snow White'
 'Maiden's Hope'
 'Undiscoverd Paradise'
 'Kiss of Succubus'
+of Dysnomia
 of Cinderella
+of Tupuna
 of Benten
 of Nimue
+of Titania
+of the Entwives
+of the Cephalopods
 
 N:*:Default
 'Dal-i-Thalion'
@@ -162,10 +180,13 @@ N:*:Default
 'Defender'
 'Steelskin'
 'Camelot'
+'Legacy Typo'
+'Placeholder Name'
 of Champion
 of Crystal
 of Icarus
 of the Dark Tiger
+of the Fretful Porpentine
 of Kevlar
 of the Borg
 of Gondor

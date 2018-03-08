@@ -10,16 +10,35 @@ Ultimate Unspeakable Lovecraftian Nightmare
 Space Invader
 Transformer
 Master of the Universe
+Plasma hound
+Honest politician
+Moose of Hiisi
+Missing link
+Great Cthulhu
 He-Man
 Pizza Worm
 Bogeyman
 Care Bear
+Railroad tycoon
+Resurrection Machine
+Scantily-clad woman
+Absolutely real thing
+Gold digger
+Six-fingered man
+Green-coated grandma from Erie
+Black-coated grandma from Erie
+White-coated grandma from Erie
+Brown-coated grandma from Erie
+Blue-coated grandma from Erie
+Red-coated grandma from Erie
+Pink-coated grandma from Erie
 My Little Pony
 IRA Terrorist
 Nazi
 Klingon
 Cardassian
 Snark
+Boojum
 Luggage
 Killer penguin
 Were-penguin
@@ -33,17 +52,17 @@ Teenage Mutant Ninja Turtle
 Stork
 Hippo
 Roadrunner
-Fooglebird
+Foogle Bird
 Ghoti
 Whale
 Apocalyptic Beast
 Anti-Christ
 Dark Avenger
-Evil Computer
+Very Nice Computer
 Finnish Sprayer
 Natas
 Poodle
-Fire Hydrant
+Fire hydrant
 Multi-hued elephant
 Martian
 Purple alligator
@@ -53,11 +72,16 @@ Miniature space fleet
 Insurance salesman
 Benji
 Magnet
+Anti-magnet
 Squid
 Typewriter
+Cup of Resurrection
 Manitou
 Miniature Shetland pony
 Munchkin
+Mythbuster
+Machine elf
+Mairzy doat
 Mad Scientist
 Keystone Kop
 Magnificent big-game hunter
@@ -66,20 +90,25 @@ B-1 Bomber
 Superman
 Batman
 Boy Wonder
+Variant Maintainer
 Incredible Hulk
 Amazing Spider-Man
+Mammogram Man
 Orphan
+Dog catcher
 Fifth columnist
 Secret agent
 Spy
-Dog catcher
 Vacuum cleaner
 Lawnmower Man
+Lawnmower panda
+Adverb
 Buzzard
 Oyster
 Wombat
 Midget elephant
 Chameleon
+Rightful Lord of Arda
 Dungeon Master
 Dungeon Keeper
 Beyonder
@@ -88,9 +117,12 @@ Robocod
 Paradroid
 Dominatrix
 Paranoid
+Terminal velocity duck
 Wagtail
 Great tit
 Pope
+Significant Other of Hunnybunz
+Egghead
 Tribble
 Jedi knight
 Dark Jedi
@@ -110,6 +142,9 @@ President
 King
 Lobo
 Trashman
+Benjamin
+Rhyming scheme
+Girl with kaleidoscope eyes
 Teacher
 Cheshire Cat
 Mad Hatter
@@ -117,19 +152,22 @@ March Hare
 Voodoo doll
 Rag doll
 Scarecrow
-Porcupine
+Fretful porpentine
 Stone idol
 Hacker
 Samurai
 Samurai Cat
+Popobawa
 Phantom of the Opera
 X-man
 Wumpus
 Walrus
+Were-hydra from 40 fathoms
 Silver Surfer
 Chimpanzee
 Omnipotent being
 Reaperbot
+Grateful reaper
 G. I. Joe
 Cobra Commander
 Dreadnok
@@ -139,48 +177,63 @@ Saboteur
 Master of Sinanju
 Cyborg
 Lemming
+Savior
+Mullah
+Ragtime gal
+Nun in pink
 Green Goblin
 Galactus
 Gooey Kablooie
-Prowler
+Burning bush
+Eliminator
+Prowler in the night
 Iron Fist
 Stuka
+Cheap plastic copy of the Amulet of Oretna
 Mahdi
 Xeroc
+Son of Man
 Catwoman
 Stupendous Man
 Lost boy
 Hunter-killer
 Mad butcher
+Androgyne
 Vore
 Rotfish
 Heresiarch
 False prophet
 Emperor
 Tumtum
-Androgyne
 Thieving magpie
 Boast of England
 Red Rose Knight
 Unholy cow
+Turtle
 Q
 Red Baron
 Giddy goon
 Vogon
 Hutt
 Puppet master
-Wookie
+Wookiee
+Mog
+Purple tentacle
 Giant sandworm
 Muad' Dib
 Werepotato
 Mindless one
+Dotard
+Kitchen sink
 Alien queen
 Alligator man
 Ancient ape
 Ancient astronaut
 Astro-zombie
+Astro-chicken
 Beast from 20000 fathoms
-Beast with a million eyes
+Beast with a hundred eyes
+One-eyed monster
 Black goat of the woods with a thousand young
 Behemoth
 Leviathan
@@ -195,10 +248,15 @@ Brain that would not die
 Breath blaster
 Chickenstein's monster
 Creature from the Black Lagoon
+Blue-haired goon
 Loch Ness monster
+Plesiosaur
 Creeping death
 Creeping unknown
 Fifty-foot woman
+Reluctant bride
+Reluctant groom
+Thing from Saskatchewan
 Flumsh
 4D-man
 Bride of Frankenstein
@@ -207,8 +265,10 @@ Giant baby
 Giant chicken
 Krazy Kat
 Giant celery stalk
+Karamazov brother
 Gorilla witch
 Great god Porno
+Nudeity
 H-dial monster
 Heap
 Love lotus
@@ -217,9 +277,12 @@ Highest intelligence
 H-man
 Hound of the Baskervilles
 Wizball
+Epic jackrabbit
 ID monster
 Mancubus
 Pain elemental
+Spider mastermind
+Big Friendly Giant
 I-ball
 Killdozer
 Killer tomato
@@ -228,14 +291,17 @@ Madball
 M.U.L.E.
 Magnetic monster
 Mixed-up zombie
+Mixed-up goose
+Sleepy eye
 Hunchback of Notre Dame
 Monster that challenged the World
 Monster from green hell
 Morlock
 Queen Kong
 Robot Kong
+Monkey Kong
 Mecha-Godzilla
-Ghidhrah
+Delta wave
 Saucerman
 Ethereal
 Space Brain
@@ -246,40 +312,44 @@ Swamp Thing
 Thing
 Teenage Frankenstein
 Teenage Werewolf
-Terror from the year 5000
+Terror from the year 2016
 Triffid
 Tripod
 Xenophobic man
+Nibblonian
 Undying monster
 Unknown terror
 Unnamable
+Unmentionable
 Womaneater
 E.T.
 Toxic Avenger
 Onslaught
 Pacman
-Paradroid
+Ms. Pacman
 Bantha
 Ass-headed fish
 Wizard of Oz
 Juggernaut
-Cheshire Cat
 Tauntaun
 Heretic
 Other
 Uncanny
+Infidel
 Libido
-Super-ego
-Ego
-Id
-Boy Blunder
+Super-egomaniac
 Big nothing
+Ghostbuster
+Naked mohawk-baby carrot jockey
+Boy Blunder
 Parademon
 Zelda
 Super Mario
 Great Giana Sister
 Magnetic man
 Pink elephant
+Pink mumak
+Pink slip
 Elephant man
 Great Unknown
 Lurking unknown
@@ -287,14 +357,17 @@ Cenobite
 Cheerleader
 Model T-1000 Terminator
 Whippoorwill
+High King of Bromeliand
 Moon Maniac
 Killer Clown
 Stocking Strangler
+Sox fan
 Torture Doctor
 Beast of the Black Forest
 Demon of the Belfry
 Sex Beast
 Sunday Morning Slasher
+Very Hungry Caterpillar
 Computer god
 Evil woman
 Lord of this world
@@ -309,6 +382,7 @@ Jugulator
 Exciter
 Painkiller
 angry mob
+man called Sjijn
 Who
 Y2K bug
 RNG
@@ -316,6 +390,9 @@ Greater hell magic mushroom cyber-unmaker leprechaun of the Dawn
 Devastator, the Destroyer's Big Brother
 Celestial
 Valkyrie
+Muslim valkyrie
+Horror-movie thing
+Fretful pineapple
 Diablo
 Eidolon
 Medic
@@ -325,4 +402,17 @@ Man-in-Black
 Spawn
 Neon knight
 Defender of the Faith
+Manchild
+Moomintroll
+Decembrist
 Eternal idol
+Shining One
+Unholy spawn of Florence Nightingale
+Oracle of Delphi
+Oracle of Omaha
+Robber baron
+Disturbing sight
+Elevator from outer space
+Silence-breaker
+Mutant smiley
+Legacy typo
