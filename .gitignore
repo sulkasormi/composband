@@ -15,10 +15,10 @@ lib/apex/*
 #################
 ## QtCreator
 #################
-src/poschengband.config
-src/poschengband.creator
-src/poschengband.files
-src/poschengband.includes
+src/frogcomposband.config
+src/frogcomposband.creator
+src/frogcomposband.files
+src/frogcomposband.includes
 
 #################
 ## Eclipse
@@ -240,8 +240,8 @@ pip-log.txt
 
 # Build output
 *.o
-/src/poschengband
-/poschengband
+/src/frogcomposband
+/frogcomposband
 /src/tags
 
 # Temporary (cache) files built during run-time
