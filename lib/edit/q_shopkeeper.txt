@@ -1,11 +1,11 @@
 ?:[EQU $QUEST53 Taken InProgress]
-D:While you were gone, I had a visit from
-D:an old friend and we were reminiscing about the infamous store
-D:keeper from the ancient city. My Dwarven friend always got the better
-D:end of the bargan when it came to haggling, but he met his match
-D:whenever he encountered this storekeeper. My advisor believes that
-D:the storekeeper used magic to charm his clients. Why don't you search
-D:the ruins and see if you can shed some light on the matter.
+D:While you were gone, I had a visit from an old friend and we were 
+D:reminiscing about the infamous storekeeper from the ancient city. 
+D:My Dwarven friend always got the better end of the bargain when it 
+D:came to haggling, but he met his match whenever he encountered this 
+D:storekeeper. My advisor believes that the storekeeper used magic
+D:to charm his clients. Why don't you search the ruins and see if 
+D:you can shed some light on the matter.
 ?:1
 
 ?:[EQU $QUEST53 Completed]
@@ -22,18 +22,18 @@ L:+:CLOSED_DOOR
 L:.:FLOOR
 L:<:UP_STAIR
 L:^:TRAP(*, 25%)
-L:a:OBJ(SCROLL, DEPTH+10):MON(mithril golem)
-L:b:OBJ(POTION, DEPTH+10):MON(mithril golem)
-L:c:OBJ(BOOK, DEPTH+10):MON(mithril golem)
-L:d:OBJ(FIGURINE, DEPTH+10):MON(mithril golem)
-L:e:OBJ(*, DEPTH+10):MON(mithril golem)
+L:a:MON(mithril golem):OBJ(mithril shod boots)
+L:b:MON(mithril golem):OBJ(mithril shield)
+L:c:MON(mithril golem):OBJ(mithril plate)
+L:d:MON(mithril golem):OBJ(mithril helm)
+L:e:MON(mithril golem):OBJ(mithril gauntlets)
 L:f:MON(colossus)
-L:g:OBJ(*, DEPTH+12):MON(silent watcher)
+L:g:OBJ(*, DEPTH+7):MON(silent watcher)
 L:h:MON(eog golem)
-L:i:OBJ(CROWN, DEPTH+25):MON(drolem)
+L:i:OBJ(*, DEPTH+20):MON(drolem)
 L:k:OBJ(potion of charisma)
-L:l:OBJ(mithril helm):EGO(118)
-L:m:OBJ(SCROLL, DEPTH+20)
+L:l:OBJ(WAND_CHARM_MONSTER)
+L:m:OBJ(SCROLL, DEPTH+10)
 L:n:OBJ(small iron chest)
 
 M:######################################################################

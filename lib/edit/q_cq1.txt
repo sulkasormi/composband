@@ -1,0 +1,77 @@
+# Adapted from Frogspawn
+
+?:[EQU $QUEST74 Taken InProgress]
+D:Unfortunately, rates of violent crime in our city have soared in recent
+D:months. For some reason, we've started attracting all sorts of crazy
+D:outsiders who fancy themselves "adventurers"; and the Mayor was happy
+D:with them at first because they brought in money, and the shopkeepers were
+D:happy too as you can probably guess. But now they're braining innocent
+D:townsfolk for the sake of a few dollars, or using them as targets for
+D:test zaps on their new wands, or just slicing them in half because they
+D:happen to be in the way. A whole bunch of those carrot-suckers are based
+D:in a small secluded house southeast of here, near the south wall.
+D:Regrettably, we can't massacre them because we're cops and need to obey
+D:the law; I would be most grateful for any help you can offer.
+
+?:[EQU $QUEST74 Completed]
+D:Those "adventurers" are gone now? That's wonderful! No, don't tell me
+D:exactly what happened, I don't need to know... Since their house is now
+D:unoccupied, maybe you could move in.
+?:1
+
+?:[EQU $QUEST74 Failed]
+D:Too bad. I just hope you're not contemplating suicide after this abject
+D:failure.
+?:1
+
+T:QUEST:NORMAL
+L:#:PERMANENT
+L:<:UP_STAIR
+L:.:FLOOR
+L:,:FLOOR(ICKY)
+L:+:CLOSED_DOOR
+L:-:LOCKED_DOOR_7
+L:c:MON(novice mindcrafter, NO_GROUP)
+L:p:MON(novice priest, NO_GROUP)
+L:o:MON(^priest$)
+L:w:MON(novice warrior, NO_GROUP)
+L:a:MON(novice archaeologist)
+L:m:MON(novice mage, NO_GROUP)
+L:i:MON(illusionist)
+L:':OBJ(ration of food)
+L:::GRASS
+L:P:GRASS:MON(novice paladin, NO_GROUP)
+L:A:GRASS:MON(novice archer, NO_GROUP)
+L:B:GRASS:MON(raven)
+L:C:GRASS:MON(knight archer)
+L:r:MON(novice ranger)
+L:W:MON(swordsman)
+L:!:TREE
+L:?:FLOWER
+L:;:BRAKE
+L:(:FLOOR(ICKY):OBJ(small leather shield, DEPTH+10)
+M:#########################
+M:#.......#<###############
+M:#.......#..##.........p.#
+M:#..cc...#+###...........#
+M:#..c....'......,,,,.....#
+M:#..c....#....ww#,,,.....#
+M:#.......#....ww#-#,..####
+M:#########.....W#(#,.....#
+M:#..............###,.....#
+M:##+###+##...............#
+M:#.pp#op.#...............#
+M:############...##########
+M:#.....immm.#............#
+M:#......m#m.#......rr....#
+M:##+##......#......''....#
+M:#...#.............''....#
+M:#.a.#.............rr....#
+M:#...#...................#
+M:###########+#############
+M:#####!??:::::::??!#######
+M:#####!:P:::::::P:!#######
+M:#####!AA::!!!B:CA!#######
+M:#####!!!!!!!!!!!!!#######
+M:#########################
+

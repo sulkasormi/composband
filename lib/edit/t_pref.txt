@@ -2,6 +2,8 @@
 # File: t_pref.txt
 
 # Defines the preferences for the town features
+L:>:ENTRANCE(GLOW | MARK, 30)
+L:<:ENTRANCE(GLOW | MARK, 1)
 L:^:MOUNTAIN
 L:.:FLOOR
 L:T:TREE
@@ -13,6 +15,8 @@ L:C:DARK_PIT
 L:,:DIRT
 L:;:RUBBLE
 L:-:GRASS
+L:::BRAKE
+L:?:FLOWER
 L:#:PERMANENT
 L:1:GENERAL_STORE
 L:2:ARMOURY

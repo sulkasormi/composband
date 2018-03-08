@@ -113,7 +113,7 @@ B:5:A:0:Research monster:1500:1500:r:20:0
 B:6:N:Weaponmaster:Rodonwin:Human
 B:6:A:0:Evaluate AC:400:400:a:46:0
 
-B:7:N:Fighters Hall:Gharz:Golem
+B:7:N:Fighters' Hall:Gharz:Golem
 B:7:A:0:Enchant weapon:0:0:w:23:0
 B:7:A:1:Enchant armor:0:0:a:24:0
 B:7:A:2:Request quest:0:0:q:6:0
@@ -125,8 +125,8 @@ B:7:C:Berserker:Owner
 B:7:C:Blood-Knight:Owner
 B:7:C:Mauler:Owner
 
-B:8:N:Wizards Tower:Valceronwe:Sprite
-B:8:A:0:Identify posessions:200:1000:i:26:0
+B:8:N:Wizard's Tower:Valceronwe:Sprite
+B:8:A:0:Identify possessions:200:1000:i:26:0
 B:8:C:*:None
 B:8:C:Mage:Owner
 B:8:C:High-Mage:Owner
@@ -138,19 +138,19 @@ B:8:C:Ranger:Member
 B:8:C:Warrior-Mage:Member
 
 B:9:N:Inner Temple:Kabir:Dwarf
-B:9:A:0:Healing prayer:0:100:h:28:0
+B:9:A:0:Healing prayer:0:150:h:28:0
 B:9:A:1:Restoration:300:1000:r:29:0
 B:9:C:*:None
 B:9:C:Priest:Owner
 B:9:C:Paladin:Member
 
-B:10:N:Thieves Den:Molvrae:Dark Elf
+B:10:N:Thieves' Den:Molvrae:Dark Elf
 B:10:A:1:Rest for the night:0:50:r:17:0
 B:10:A:2:Identify possessions:175:800:i:26:0
 B:10:C:*:None
 B:10:C:Rogue:Owner
 
-B:11:N:Archers Tavern:Celegail:Elf
+B:11:N:Archers' Tavern:Celegail:Elf
 B:11:A:0:Enchant missiles:22:44:a:30:0
 B:11:A:1:Enchant bow:0:0:b:31:0
 B:11:C:*:None
@@ -158,7 +158,7 @@ B:11:C:Ranger:Owner
 B:11:C:Archer:Owner
 B:11:C:Sniper:Owner
 
-B:12:N:Paladins Sanctum:Calpirosse:Half-Elf
+B:12:N:Paladins' Sanctum:Calpirosse:Half-Elf
 B:12:A:0:Enchant armor:240:440:a:24:0
 B:12:A:1:See Healers:0:100:h:28:0
 B:12:C:*:None

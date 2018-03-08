@@ -22,8 +22,8 @@ L:a:MON(^crow$)
 L:b:MON(^carrion$)
 L:c:MON(durthang)
 L:k:OBJ(human skeleton)
-L:*:OBJ(*, DEPTH+5)
-!SCRAMBLE(k,*)
+L:*:OBJ(*, DEPTH+1)
+!:SCRAMBLE(k,*)
 L:<:UP_STAIR
 M:XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX
 M:XXXXX,,,,,,*..c...........XXXXXXXXXXXX

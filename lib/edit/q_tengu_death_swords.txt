@@ -48,6 +48,12 @@ M:#..%%%%%%CCC%%%%%%..#
 M:#.j...............j.#
 M:#.........<.........#
 M:#####################
-R:OBJ(ROD_ESCAPE)
+R:OBJ(^ring$):EGO(protection)
+
+?:[EQU $RACE Death-Sword]
+R:OBJ(^dagger$):EGO(westernesse)
+
+?:[EQU $RACE Hydra]
+R:OBJ(^amulet$):EGO(elemental)
 
 # vim: filetype=q :

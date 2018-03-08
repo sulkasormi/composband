@@ -43,6 +43,6 @@ M:X;;#;;;;;;;;;;;;;...;#;;;..C;;;;;;X
 M:X;;;;;;;;;;#;;;#;;;;;;;;;#;;;;#;;;X
 M:X;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;X
 M:XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX
-R:OBJ(blade of chaos)
+R:OBJ(blade of chaos, DEPTH+12)
 
 # vim: filetype=q :

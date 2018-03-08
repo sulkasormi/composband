@@ -1,19 +1,20 @@
-?:[EQU $QUEST36 Taken InProgress]
-D:A sorcerer has betrayed the order of wizards and gone over
-D:to serve the forces of darkness. This fell servant has built
-D:a tower nearby and we are growing concerned. Please investigate
-D:the sorcerer's tower and, if possible, remove the threat. But
-D:beware, he is rumored to be powerful in the ways of magic!
+# This is an old quest that was slightly modified for FrogComposband
+# 7.0.strawberry. The descriptions are partly old, partly new and
+# partly based on Gwarl's quest descriptions from ComPosband
+
+?:[EQU $QUEST64 Taken InProgress]
+D:An old sorcerer has betrayed the order of wizards and gone over
+D:to serve the forces of darkness. He has built a tower nearby and 
+D:the Sultan is growing concerned. Go kill him, I'll give you credit.
 ?:1
 
-?:[EQU $QUEST36 Completed]
-D:Please, accept this modest gift as a token of our appreciation.
+?:[EQU $QUEST64 Completed]
+D:Well done on the special examination. Here is your Magister's crown.
 ?:1
 
-?:[EQU $QUEST36 Failed]
-D:Well, you did your best, I am sure. Perhaps it would have been better
-D:if you had tried a bit harder and died in the attempt? No matter.
-D:We'll wait for the order of wizards to take care of their own problem.
+?:[EQU $QUEST64 Failed]
+D:Back already? So you couldn't do it. No matter.
+D:The order of wizards will have to take care of its own problem.
 ?:1
 
 T:QUEST:NORMAL
@@ -27,7 +28,9 @@ L:a:PATTERN_1
 L:b:PATTERN_2
 L:c:PATTERN_3
 L:d:PATTERN_4
-L:p:FLOOR(ICKY):MON(^sorcerer$)
+L:A:PATTERN_START
+L:L:PATTERN_EXIT
+L:p:FLOOR(ICKY):MON(old sorcerer)
 L:$:OBJ(DEVICE)
 L:?:OBJ(HI_BOOK)
 M:#########################
@@ -39,13 +42,13 @@ M:#...b,,,,,,,,,,,,,,,b...#
 M:#...c,,,,,,,,,,,,,,,a...#
 M:#...d,,,,,,,p,,,,,,,d...#
 M:#...a,,,,,,,,,,,,,,,c...#
-M:#..^bbcdab,,,,,,,,,,b...#
+M:#..^bbcdaL,,,,,,,,,,b...#
 M:#..^^^^,,,,,,,,,,,,,a...#
-M:#..^abc,,,,,,,,,,,cda...#
+M:#..^Abc,,,,,,,,,,,cda...#
 M:#.....cdabcdabcdabc.....#
 M:####.................####
 M:#<...................+$$#
 M:#########################
-R:OBJ(RING):EGO(speed)
+R:OBJ(jewel encrusted crown, DEPTH+25):EGO(magi)
 
 # vim: filetype=q :
