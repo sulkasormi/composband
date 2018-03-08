@@ -34,6 +34,9 @@ shouts, 'This CAN'T be happening! I am Dying....!!!!!'
 N:880:Wong, Master of Time
 shouts, 'This CAN'T be happening!'
 
+N:883:Zombified Serpent of Chaos
+says, 'Is this the end of zombie Serpent?'
+
 N:921:Internet Exploder
 was deprecated.
 
@@ -50,13 +53,19 @@ N:1018:Raou
 points at himself and shouts, 'I finished my life with no regrets!'
 
 N:1063:lousy, the King of louses
-says, 'Ah, PosChengband is too difficult!  I'm going back to Chengband!!'
+says, 'Ah, FrogComposband is too difficult!  I'm going back to ComPosband!!'
 
 N:1094:The Variant Maintainer
-says, 'I guess PosChengband is too easy!'
+says, 'I guess FrogComposband is too easy!'
 says, 'Wait until you see me next release!'
-says, 'I guess this is the last version of PosChengband!'
-says, 'Well, Hengband was much more fun than this!'
+says, 'I guess this is the last version of ComPosband!'
+says, 'Well, ComPosband was much more fun than this!'
+
+N:1231:Implorington III
+says, 'I will be resurrected!'
+
+N:1236:Moe, the Cyclops
+shouts, 'I don't deserve this kind of shabby treatment!'
 
 N:*:Default
 shouts, 'AAAARRRGGGHHH!!!'

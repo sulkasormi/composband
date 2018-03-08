@@ -1,4 +1,4 @@
-<color:y>ComPosband <$:version></color>
+<color:y>FrogComposband <$:version></color>
 <style:screenshot>
 You sense the presence of traps! You sense the presence of doors!               
 You sense the presence of stairs! You sense the presence of         LEVEL <color:G>    50</color>

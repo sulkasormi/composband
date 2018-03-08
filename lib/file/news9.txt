@@ -1,4 +1,4 @@
-<color:y>ComPosband <$:version></color>
+<color:y>FrogComposband <$:version></color>
 <style:screenshot>
                                                                                 
 You are aware of 40 monsters, 40 are awake:                         LEVEL <color:G>    50</color>

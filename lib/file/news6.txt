@@ -1,4 +1,4 @@
-<color:y>ComPosband <$:version></color>
+<color:y>FrogComposband <$:version></color>
 <style:screenshot>
 <color:s>The Sexy Swimsuit of the Valkyrie [0,+13]</color>                                       
   <color:G>+3</color> to STR, DEX, CON                                               LEVEL <color:G>    50</color>

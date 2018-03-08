@@ -1,4 +1,4 @@
-<color:y>ComPosband <$:version></color>
+<color:y>FrogComposband <$:version></color>
 <style:screenshot>
 <color:s>%</color>#<color:s>%</color>##<color:s>%</color>#<color:s>%</color><color:u>..</color>#<color:s>%%</color>####<color:u>....</color><color:s>%%%%</color>#<color:u>.</color><color:s>%</color>     <color:s>%</color><color:D>#</color><color:s>%</color>  <color:s>%</color><color:u>.</color>#<color:u>.......</color>##<color:D>##</color>#<color:D>##</color><color:u>...</color>## ###### LEVEL <color:G>    48</color>
 <color:u>..</color><color:s>%</color>##<color:u>....</color><color:s>%%</color><color:D>#</color>#<color:D>xxx</color>#<color:s>%%</color>#:<color:u>.</color><color:s>%</color>  <color:s>%</color><color:g>^</color># ##<color:s>%</color>#<color:s>%%</color>#<color:s>%</color>#<color:s>%</color><color:u>.</color>#<color:s>%%</color><color:u>.</color><color:s>%</color><color:U>+</color>#<color:U>'</color>#######<color:s>^</color>##### #<color:u>....</color> EXP <color:G>    204k</color>

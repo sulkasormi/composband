@@ -1,4 +1,4 @@
-<color:y>ComPosband <$:version></color>
+<color:y>FrogComposband <$:version></color>
 <style:screenshot>
 <color:U>You attack the Demonite:</color> You hit. You hit. It was a <color:R>great</color> hit! The                
 Demonite shouts, 'AAAARRRGGGHHH!!!' <color:R>You have destroyed the Demonite.</color>  LEVEL <color:G>    37</color>

@@ -1,4 +1,4 @@
-<color:y>ComPosband <$:version></color>
+<color:y>FrogComposband <$:version></color>
 <style:screenshot>
 Feature: a Metal Babble (Rng 10) [r,q,p,o,+,-,?,<dir>]                          
  # ## ############# ### ##### ##<color:s>%</color> <color:s>%</color>           <color:U>+</color> <color:u>'</color> <color:u>'</color> <color:U>+</color>     <color:r>^</color>         LEVEL <color:G>    39</color>

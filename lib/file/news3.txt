@@ -1,4 +1,4 @@
-<color:y>ComPosband <$:version></color>
+<color:y>FrogComposband <$:version></color>
 <style:screenshot>
 The Steel Bolt (Elemental) (4d5) (+12,+12) misses Hastur the                      
 Unspeakable.                                                          LEVEL <color:G>    50</color>

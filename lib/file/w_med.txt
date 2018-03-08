@@ -56,9 +56,11 @@ N: 4:BIAS_COLD
 'Frost Brand'
 'General of Winter'
 'Ice Climber'
+'White Death'
 of Aurora
 of Alaska
 of Ezo
+of the Winter Wonderland
 
 N: 5:BIAS_ACID
 'Rust Monster'
@@ -69,6 +71,7 @@ N: 5:BIAS_ACID
 'Acid Drop'
 'Nitrate'
 'Preoxy'
+of the Cube Prince
 
 N:12:BIAS_CHAOS
 'Cyclcraze'
@@ -81,9 +84,11 @@ N:12:BIAS_CHAOS
 'Banquet of Azathoth'
 'Cosmic Horror'
 'Amanitaceae Aroma'
+of Ron the Deathwreaker
 of Changes
 of Dara
 of Hionhurn
+of Nothingness
 
 N:14:BIAS_NECROMANTIC
 'Reaper'
@@ -138,6 +143,7 @@ N:16:BIAS_ROGUE
 of the Night
 of Jack of Shadows
 of Koga
+of the Superlemming
 
 N:17:BIAS_MAGE
 N: 7:BIAS_INT
@@ -168,6 +174,7 @@ N:10:BIAS_CON
 of Rage
 of Crushing
 of Tomoe
+of Halbarad
 of Erkenbrando
 
 N: 9:BIAS_DEX
@@ -178,6 +185,7 @@ N: 9:BIAS_DEX
 'Buttle Mastery'
 'Limbslicer'
 'Bryionak'
+'Mutant Smiley'
 of the Master
 of Charismatic Cook
 
@@ -190,6 +198,7 @@ N:19:BIAS_RANGER
 'Sunstrike'
 'Hellwind'
 'Shooting Star'
+'Invisible Death'
 of the Eagle Lord
 of Entanglement
 of the Druid
@@ -200,6 +209,7 @@ of Marksmanship
 N:*:Default
 'Weapon Alpha'
 'Werebane'
+'Kitchen Sink'
 'Dragon Claw'
 'Kraken'
 'Blue Steele'
@@ -207,12 +217,15 @@ N:*:Default
 'Howler'
 'Roarer'
 'Red October'
+'Weapon of Choice'
 'Witchfire'
 'Lord of Flies'
 'Pandemonium'
 'Bloodrain'
 'Delta'
 'Cubragol'
+'Cutting Edge'
+'Perfectly Normal Weapon'
 of Joshua
 of Slay Mold
 of Damocles

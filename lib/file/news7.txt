@@ -1,4 +1,4 @@
-<color:y>ComPosband <$:version></color>
+<color:y>FrogComposband <$:version></color>
 <style:screenshot>
 The Bolt of Wilhelm Tell (6d5) (+20,+16) hits the Grand master                    
 thief. It was a <color:y>decent</color> shot! <color:R>You have slain the Grand master thief.</color>   LEVEL <color:G>    50</color>

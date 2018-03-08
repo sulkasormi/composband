@@ -44,8 +44,8 @@ You don't always have to kill everything you meet!
 If you can't beat it, leave it alone!
 An umber hulk can be a confusing sight.
 There *is* a good use for Potions of Detonations, Ruination and Death...
-It's a bad idea to throw away a Longsword (4d5).
-It's a bad idea to wield a Longsword (4d5).
+It's a bad idea to throw away a Longsword (5d6).
+It's a bad idea to wield a Longsword (5d6).
 It's useless to bash monsters with bows - but there's one notable exception...
 Actually, Slime Mold Juice is not completely useless.
 Help me! I'm being held captive in a Vault at 2850'!
@@ -132,7 +132,7 @@ Having troubles with summoners? Door Creation is your friend!
 Stairway Creation may be slower than Teleport Level, but safer...
 I hid the Jewel in a vault at 4700'. To find it, you need to:
 Wands of Heal Monster are useful! Hint: ball spell, @....moo(o)ooo
-Guaranteed heal self - scenario: o'@, type c4c4c4c4
+Hyneman's guaranteed healing method: o'@', type c4c4c4c4
 If it can't see you, it can't hurt you!
 If it can't see you, you might still be able to hurt it...
 The Jedi Holocron is the best artifact light source there is.
@@ -246,9 +246,9 @@ A staff is just like a colleague. But a reliable one!
 You are prepared to thrill us with a traditional heroic display?
 Some underworld lads would *LOVE* to blacken your name!
 Beware! The Castle now and then provides regrettable accidents.
-Never use a Staff of Insanity.
-Staffs of Insanity will confuse all monsters you can see.
-Staffs of Insanity can be used to turn the enemy against itself...
+Never use a Scroll of Madness.
+Scrolls of Madness will confuse all monsters you can see.
+Scrolls of Madness can be used to turn the enemy against itself...
 Let the sun of wilderness melt the chill from your life!
 By combining our minds with motion we can tune for the shadow we desire.
 I can show ya the wayy back to chaos, if ya'r gettin homesick.
@@ -289,7 +289,7 @@ Are you really suffering withdrawal symptoms and want something crushable?
 Smaug and alcohol may disturb your .. was it sanity, courage or boredom?
 Ha, treasures! Like all vaults it was full of depths and dangers.
 The benefits of alchemy are my marriage, danger is my passion.
-Any dungeons offer mazes. But don't they lack the PosChengband sense of humor?
+Any dungeons offer mazes. But don't they lack the FrogComposband sense of humor?
 Bodychecks, bodycounts itching all my ways but the awful software bugs...
 Be constantly on guard, joker, don't take anything at face value.
 Which is better: mind blast or mind wash? Will lost memories return gradually?
@@ -382,7 +382,7 @@ Strength is crucial. Isn't witchcraft just an embroidery in a bard's tale?
 Whenever doubled over force yourself upright. Who wants a bad loser?
 Give heartened chase when your enemies turned tail. Last bit by missile!
 Vlad Dracula? Die and forget, since death is forbidden - to him, not you!
-Vlad Dracula? He hungers after you and thirstes for you!
+Vlad Dracula? He hungers after you and thirsts for you!
 Luck and twice luck to meet a hydra if fearless and breath-shielded you are.
 All your misdeeds are engraved into the very flesh-score of time itself.
 Such a chaos spawn will disenchant your best gear in no time at all.
@@ -512,12 +512,12 @@ Selling blessed weapons to a sympathizing temple is not too bad an idea.
 I'd prefer ball sorcery or breath ability to mass genocide for good reason.
 Scrolls of genocide will extinct annoying monster races from your level area.
 *Destruction* will cause a 15x15 area to change completely, but you undamaged.
-There are mostly only rumors about the effects of rarer PosChengband items.
+There are mostly only rumors about the effects of rarer FrogComposband items.
 What does NETHER mean? The (arch.) N. regions are the world of the dead/hell.
 What does NEXUS mean? It refers to connexion/bond. Location/stats get unstable.
 Such a Blade of Chaos (chaotic) is quite a rare and precious finding.
 Isn't it a scandal that chaos patrons mostly grant inferior weapon gifts?
-Precious Blades of Chaos (6d5) are won by defeating a Bloodletter's platoon.
+Precious Blades of Chaos (6d6) are won by defeating a Bloodletter's platoon.
 Nether and Life draining are not just the same, as by breath or by touching?
 Examination of rings of nether resistance reveals two granted intrinsics.
 To stand your ground against adversaries who heal-self you'll need...
@@ -548,7 +548,7 @@ It's deciding which things are crucial that separates the wise from others.
 Invulnerability is impenetrable.
 Invulnerability may be penetrated by evil creatures.
 Resistance to nether will guard against invulnerability-penetration.
-Creatures of good alignment are not deterred by invlnerability.
+Creatures of good alignment are not deterred by invulnerability.
 Being clocked backwards is just a terrible irony of fate.
 Time is a weird attack - not even sustained stats will save you.
 Stumble on a death mold: another unsettling occurrence in an unsettling world.
@@ -600,7 +600,7 @@ Survival challenges use up superabundant energies, burn off the gland-juices.
 Kittens. Always going for the dramatic. Watching too many adventure holos.
 Young Heroes-to-be are always kept on diet, to increase their aggressiveness.
 Free at last from the blood curse: mirth welled up, boiled over as pure laughter.
-If you encounter groups of usual solitary cats look out for Bast, Cat's godess!
+If you encounter groups of usual solitary cats look out for Bast, Cat goddess!
 Even protected Books are destroyed by breathers of chaos balls.
 It is more secure to carry precious books yourself, IF you provide resistances.
 Do not cast stone-to-mud while your skin is made of stone.
@@ -620,9 +620,9 @@ Information age has not just begun today! Hermes, Loki, Prometheus are tradition
 Dispel scrolls will destroy any affected monster.
 Dispel scrolls are unreliable.
 Scrolls of Dispel Evil will remove or reverse bad enchantments.
-Scrolls of Fire, Ice, and Chaos are good in emergencies.
-You will not want to read scrolls of Fire, Ice, or Chaos.
-Scrolls of Ice deal twice the damage of Fire, but less than Chaos.
+Scrolls of Fire, Ice, and Logrus are good in emergencies.
+You will not want to read scrolls of Fire, Ice, or Logrus.
+Scrolls of Ice deal twice the damage of Fire, but less than Logrus.
 To find a Rod of Havoc means nothing else than: chaos at your fingertips.
 If the sages speak of Curing this comprehends the recovery of 6! traumata.
 The traumata to suffer: Cut, Stun, Blind, Confused, Terrified, Hallucination.
@@ -645,4 +645,74 @@ Some say the RNG itself lurks deep in the caverns.
 They say some space monsters are not what they appear to be.
 Never read a scroll that asks you to use an item.
 There is a powerful spell which can remove even the strongest curses...
-You feel the Windows 8 on your hard disk is broken...
+You feel the Windows (8) on your hard disk is broken...
+STUDY LINKS ICKY GREEN POTIONS TO ACNE.
+AMAZING PHOTOGRAPH MAY CONFIRM EXISTENCE OF BIGFOOT.
+Beware of the man called Sjijn! None can match his power.
+They say there's a variant where enchantresses are suitable for riding.
+Did you know ... that dinosaurs can melee you from half a dungeon away?
+I, for one, welcome our new robot overlords.
+Want to meet the coolest frood in town? Go to 4250' and ask for Ymir!
+The password is 'Andy sent me.'
+You feel the Rod (d) in your pack is inadequate.
+Want to get your pits and vaults cheap? Call Aaron Gilespy's Discount Dungeons!
+STOLEN: One amulet, purple, about yea big, may have awesome powers.
+PLEIMUTH FOR PRESIDENT!
+Beware, this level is protected by Oremorj's head!
+Roguelikes are a combination of science, sport and art.
+They say that riding a sheep will make you feel in touch with nature.
+The man called Sjijn is the master of 119 elements, and you can only resist 15.
+The Serpent of Chaos is just a front for the dark rulers of Hell.
+The Serpent of Chaos is just a front for the Milk Marketing Board.
+Foolish adventurer, you cannot auto-destroy a Twinkie!
+Don't drink and dive.
+Killing Santa Claus will trigger the Ultimate Death Bomb of Megadoom.
+All dragons are really drolems, they were created by a man called Sjijn.
+The Chainsword will sputter to a halt if it runs out of fuel.
+The Chainsword will never run, the only fuel for it is in a different game.
+The Chainsword will cut through ents easily.
+You will always get exactly three blows with the Chainsword.
+I found the sword of my dreams, only to have it destroyed by my chaos patron.
+They say the man called Sjijn is immortal and comes from outer space.
+Possessing the man called Sjijn will make you invulnerable.
+Wearing the cloak of the man called Sjijn will make you invulnerable.
+Every time you talk about your favourite rock band, a metal babble is born.
+Wdat did you expect, a witty joke?
+What did you expect, useful advice?
+Welcome to the most ancient and noble society of gossip readers!
+They say there's a monster who only eats purple people.
+Gorbag, the Orc Captain misses you.
+Killer bees are strength drainers, but they can't use magic like spelling bees.
+Did you know ... that Santa Claus is really your father?
+I have come here to drink potions and kick ass, and I'm all out of potions.
+Does the waybread lose its flavor on the pit floor overnight?
+It was an itsy bitsy teenie weenie yellow artifact entkini...
+An adventurer's life, full of sorrows, cares, only lasts for a fleeting while...
+They say that Sjijn is just a nickname, and his real name is Bob.
+You behold the abominable visage of the virtue system! You are confused!
+Help, I'm trapped in a rumour factory!
+They say that clubber demons can discochant.
+It is better to face the fury of a thousand raging lions than the Norsa!
+If you see a 5d5 longsword, there's something wrong.
+You can make poison-breathers friendly by offering them a smoke.
+If you think the Basement Cat is bad, wait until you meet the Ceiling Cat.
+They say there's more than one use for a potion of Slipperiness.
+You can't find ego items on April 1 if your name contains the string 'Gwarl'.
+You start fighting Hermes, you'll soon be fighting the whole Greek pantheon.
+Shadowers are never uniques.
+It lurks deep in the dungeon, waiting for you: the Summoning Dark.
+Death cannot stop the man called Sjijn. All it can do is delay him for a while.
+An arrow fired at a Great Wyrm of Space-Time will land in the bowman's own head.
+Gentlemen, you can't fight in here, this is the anti-melee cave!
+I come not to praise the gods, but to bury them.
+The Amulet of Oretna is imaginary and only exists in your mind.
+No such thing as many-colored grandmas from Erie, you're hallucinating them.
+Politicians sometimes suffer amnesia for no apparent reason.
+You can make monsters suicidal by playing songs they don't like.
+Watch out for Nodens! No one is more dangerous, apart from the man called Sjijn.
+You cannot destruct a Keeper of Secrets.
+You cannot annihilate a Keeper of Secrets.
+Good things will happen to skillmasters who invest points in marital arts.
+The longer you wait, the more powerful the Evil Emperor grows.
+If you see a dog with orange eyebrows, get out of the area as fast as possible.
+Good luck, have fun, don't die!
