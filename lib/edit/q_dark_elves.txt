@@ -50,6 +50,6 @@ M:#.......#
 M:#..%%%..#
 M:#...<...#
 M:#########
-R:OBJ(feanorian lamp):ART(*)
+R:OBJ(^amulet$):EGO(trickery)
 
 # vim: filetype=q :

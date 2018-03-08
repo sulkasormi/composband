@@ -1,0 +1,48 @@
+# New quest for FrogComposband 7.0.strawberry
+
+?:[EQU $QUEST70 Taken InProgress]
+D:We've had a few problems lately with the rogue djinni who lives in a
+D:cavern to the northeast of the city. It was previously quite tame and
+D:did the bidding of a local sorcerer, but the man vanished some time ago
+D:and the djinni has been out of control since then. Please visit its cave
+D:and eliminate it and any lesser spirits that may attend to it. (I've
+D:heard rumours that the djinni might become friendly again if offered
+D:peppermint leaves; so if you have any, that could be an alternative way
+D:to deal with it.)
+
+?:[EQU $QUEST70 Completed]
+D:My men found this valuable lamp in the djinni's secret treasure trove,
+D:I hope you find it an acceptable token of our gratitude.
+?:1
+
+?:[EQU $QUEST70 Failed]
+D:You have failed me, beware you do not do so again!
+?:1
+
+T:QUEST:NORMAL:NO_ROTATE
+L:#:MOUNTAIN_WALL
+L:%:PERMANENT
+L:<:UP_STAIR
+L:.:DIRT
+L:P:MON(djinni)
+L:A:MON(air spirit)
+L:E:MON(air elemental)
+L:F:MON(earth elemental)
+L:$:OBJ(GOLD)
+L:v:OBJ(GOLD):MON(energy vortex)
+L:g:OBJ(robe, DEPTH+15)
+L:h:OBJ(AMULET)
+L:-:OBJ(WAND_BALL_FIRE)
+
+M:%%%%%%%%%%%%%%%
+M:%#############%
+M:%####hE....###%
+M:%##g.....A..##%
+M:%#$........A##%
+M:%#$.P........#%
+M:%#$.......A.<#%
+M:%#v...F....###%
+M:%##-.....#####%
+M:%#############%
+M:%%%%%%%%%%%%%%%
+R:OBJ(feanorian lamp, DEPTH+2):ART(*)

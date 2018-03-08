@@ -1,0 +1,82 @@
+# New quest for FrogComposband 7.0.strawberry
+
+?:[EQU $QUEST76 Taken InProgress]
+D:Back again? All right, another student of mine tried to
+D:play with the undead some time ago and came up second-best.
+D:See if you can bring back any of the valuables he had,
+D:or at least recover his wizard's staff.
+?:1
+
+?:[EQU $QUEST76 Completed]
+D:Hey, you made it! Tell you what, I'll let you keep that
+D:staff, you may not be a full wizard yet but at least you're
+D:doing better than him.
+?:1
+
+?:[EQU $QUEST76 Failed]
+D:Let's see... you failed, no credit.
+?:1
+
+T:QUEST:NORMAL
+L:#:PERMANENT
+L:<:UP_STAIR
+L:.:FLOOR
+L:,:FLOOR(ICKY)
+L:a:FLOOR
+L:b:FLOOR
+L:c:FLOOR(ICKY)
+L:d:FLOOR(ICKY)
+L:+:CLOSED_DOOR
+L:A:FLOOR(ICKY):MON(master lich)
+L:B:FLOOR(ICKY):MON(crypt thing)
+L:C:FLOOR(ICKY):MON(winged horror)
+L:D:FLOOR(ICKY):MON(UNDEAD)
+L:E:FLOOR(ICKY):MON(zephyr lord)
+L:F:FLOOR(ICKY):MON(legate of the damned)
+L:G:MON(night mare)
+L:H:MON(black wraith)
+L:^:TRAP(*, 25%)
+L:!:OBJ(pint of fine wine)
+L:':OBJ(piece of elvish waybread)
+L:0:FLOOR(ICKY):ART(mokomagi)
+L:1:FLOOR(ICKY):OBJ(RING, DEPTH+10)
+L:2:FLOOR(ICKY):OBJ(AMULET, DEPTH+10)
+L:3:FLOOR(ICKY):OBJ(potion of healing)
+L:4:FLOOR(ICKY):OBJ(WAND_TELEPORT_AWAY)
+L:5:FLOOR(ICKY):OBJ(*, DEPTH+7)
+L:6:FLOOR(ICKY):OBJ(*)
+L:7:FLOOR(ICKY):OBJ(*)
+L:8:FLOOR(ICKY):OBJ(*)
+L:9:OBJ(*)
+
+!:SCRAMBLE(0,1,2,3,4,5,6,7)
+!:SCRAMBLE(A,B,C,D,E,F)
+!:SCRAMBLE(G,H)
+!:SCRAMBLE(a,b,c,d)
+
+M:#################################
+M:#8,,,,,,,,0#!#.......#3,,,,,,,,8#
+M:#a,,,,,,,A1#'#.......#2B,,,,,,,b#
+M:#aa,,,,,,,,#+#..H....#,,,,,,,,bb#
+M:#aaa,,,,,,,#.........#,,,,,,,bbb#
+M:#aaaa,,,,,,#.........#,,,,,,bbbb#
+M:#aaaaa,,,,,#.........#,,,,,bbbbb#
+M:###+############+############+###
+M:#..........#.........#..........#
+M:#..........#.........#..........#
+M:#..........#.........#..........#
+M:#9F........+....G....+........E9#
+M:#..........#.........#..........#
+M:#..........#.........#..........#
+M:#..........#.........#..........#
+M:###+############+############+###
+M:#ccccc,,,,,,,,6#^#4,,,,,,,,ddddd#
+M:#cccc,,,,,,,,D7#^#5C,,,,,,,,dddd#
+M:#ccc,,,,,,,,,,,#^#,,,,,,,,,,,ddd#
+M:#cc,,,,,,,,,,,,#^#,,,,,,,,,,,,dd#
+M:#c,,,,,,,,,,,,,#^#,,,,,,,,,,,,,d#
+M:#,,,,,,,,,,,,,,#^#,,,,,,,,,,,,,,#
+M:#8,,,,,,,,,,,,8#<#8,,,,,,,,,,,,8#
+M:#################################
+
+# vim: filetype=q :

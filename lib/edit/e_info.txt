@@ -1,6 +1,6 @@
 # File: e_info.txt
 
-# Redone for ComPosband 3.0.0 with ideas liberally borrowed from
+# Redone for PosChengband 3.0.0 with ideas liberally borrowed from
 # great variants everywhere! Many thanks!!
 
 # This file is used to initialize the "lib/raw/e_info.raw" file, which is
@@ -890,12 +890,12 @@ F:HIDE_TYPE
 
 N:207:of Archery
 T:RING
-W:10:*:2
+W:10:*:3
 F:HIDE_TYPE
 
 N:208:of Wizardry
 T:RING
-W:20:*:2
+W:25:*:3
 
 N:209:of Speed
 T:RING

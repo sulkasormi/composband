@@ -13,7 +13,7 @@ L:<:ENTRANCE(GLOW | MARK, 31)
 # Default for Quest 1 = entrance is stone
 L:z:PERMANENT
 
-# Default for Quest 33 = entrance is floor
+# Default for Quest 2 = entrance is floor
 L:r:FLOOR
 
 # Default for Quest 50 = entrance is stone
@@ -31,10 +31,7 @@ L:v:GRASS
 # Default for Quest 31 = entrance is grass
 L:s:GRASS
 
-# Default for Quest 33 = entrance is stone
-L:q:PERMANENT
-
-# Default for Quest 33 = entrance is stone
+# Default for Quest 20 = entrance is stone
 L:o:PERMANENT
 
 # Default for Quest 62 = entrance is grass
@@ -113,14 +110,6 @@ L:o:QUEST_ENTER(20)
 ?:[EQU $QUEST20 Taken Completed Failed]
 L:a:BUILDING_0(20)
 ?:[EQU $QUEST20 Finished FailedDone]
-L:a:BUILDING_0(33)
-?:1
-############### Quest 33 - The Cloning Pits ###############
-?:[EQU $QUEST33 Taken]
-L:q:QUEST_ENTER(33)
-?:[EQU $QUEST33 Taken Completed Failed]
-L:a:BUILDING_0(33)
-?:[EQU $QUEST33 Finished FailedDone]
 L:a:BUILDING_0(27)
 ?:1
 ############### Quest 27 - The Old Castle ###############
@@ -200,7 +189,7 @@ M:                                  WWW                    ---.,WW##.####.......
 M:                               WWWV                       --.,WW##.####...........................................#####...#####o#..##WW,.--                                                           
 M:                              W                         ----.,WW##................................................,####..,.,..,..,.##WW,.--                                                           
 M:                             VW                          ---.,WW##.####.##5###.#####6#####......................,..7###...##xT##T..##WW,.---                                                          
-M:                           VWW                           ---.,WW##.###q.######.##########9.....-----......####8...,####.,.#######,.##WW,.----                  ..................                     
+M:                           VWW                           ---.,WW##.####.######.##########9.....-----......####8...,####.,.#######,.##WW,.----                  ..................                     
 M:                          WW                             ---.,WW##.####.######.###########.....-T-T-......#####...#####..,#######..##WW,.----     .............                  .                    
 M:                        WWV                              ---.,W###.............................##M##...........,..,..,,..,......,.,##WW,..........                                .                   
 M:                    WWWWV                                ---.,W#######################################################################W,.----                                      .                  

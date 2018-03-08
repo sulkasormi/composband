@@ -1,7 +1,7 @@
 # By Shayne Steele (steele@cs.fsu.edu)
 
 ?:[EQU $QUEST30 Taken InProgress]
-D:The Black Market's owner is thinking of opening another Thieves Guild. 
+D:The Black Market's owner is thinking of opening another Thieves' Guild. 
 D:I do not need the competition, here is the key to the Black Market's
 D:treasure room. Destroy everything you find there and you will
 D:be rewarded. The quest is located behind the Magic Shop.
@@ -44,6 +44,9 @@ M:#++%%%%%%%%%%%++#
 M:#...............#
 M:#.......<.......#
 M:#################
+R:OBJ(^ring$):EGO(protection)
+
+?:[EQU $RACE Hydra]
 R:OBJ(^amulet$):EGO(trickery)
 
 # vim: filetype=q :

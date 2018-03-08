@@ -2,7 +2,7 @@
 
 ?:[EQU $QUEST22 Taken InProgress]
 D:The marauding orcs approach ever closer to our quiet town, as
-D:is happening all over in these troubled times. To the northeast
+D:is happening all over in these troubled times. To the southeast
 D:lies a valley where our scouts have found an orc raiding party
 D:preparing to overrun us once and for all. Our forces are
 D:committed elsewhere; please repel this threat before they reach
@@ -57,9 +57,11 @@ R:OBJ(HAFTED):EGO(slaying)
 R:OBJ(HAFTED):EGO(slaying)
 ?:[AND [EQU $CLASS Weaponmaster] [EQU $SPECIALITY Clubs Staves] ]
 R:OBJ(HAFTED):EGO(slaying)
-?:[AND [EQU $CLASS Weaponmaster] [EQU $SPECIALITY Diggers] ]
-R:OBJ(DIGGING):EGO(slaying)
 ?:[EQU $CLASS Monk Force-Trainer Mystic]
 R:OBJ(GLOVES):EGO(slaying)
+?:[EQU $CLASS Ninja Ninja-Lawyer]
+R:OBJ(tanto):EGO(slaying)
+?:[EQU $RACE Beholder]
+R:OBJ(^ring$):EGO(protection)
 
 # vim: filetype=q :

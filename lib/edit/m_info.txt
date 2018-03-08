@@ -1352,7 +1352,7 @@ T:19:19:30:4
 T:23:23:50:10
 T:35:35:60:30
 T:38:75:90:16
-T:40:40:80:70
+T:46:40:80:70
 T:45:38:70:50
 T:47:35:95:100
 T:15:20:80:180  #2
@@ -6466,6 +6466,84 @@ T:42:30:70:150
 T:43:50:80:200
 T:45:50:85:200
 T:47:55:85:250
+
+### Lawyer ###
+N:48
+I:LAW:WIS:0x00:0:1:430
+# Life
+R:0:0
+
+# Sorcery
+R:1:0
+
+# Nature
+R:2:0
+
+# Chaos
+R:3:0
+
+# Death
+R:4:0
+
+# Trump
+R:5:0
+
+# Arcane
+R:6:0
+
+# Craft
+R:7:0
+
+# Deamon
+R:8:0
+
+# Crusade
+R:9:0
+
+# Necromancy
+R:10:0
+
+# Armageddon
+R:11:0
+
+### Ninja-Lawyer ###
+N:49
+I:LAW:WIS:0x00:0:1:300
+# Life
+R:0:0
+
+# Sorcery
+R:1:0
+
+# Nature
+R:2:0
+
+# Chaos
+R:3:0
+
+# Death
+R:4:0
+
+# Trump
+R:5:0
+
+# Arcane
+R:6:0
+
+# Craft
+R:7:0
+
+# Deamon
+R:8:0
+
+# Crusade
+R:9:0
+
+# Necromancy
+R:10:0
+
+# Armageddon
+R:11:0
 
 # I:book:stat:xtra:type:first:weight
 # R:realm:readable

@@ -1,6 +1,6 @@
 ?:[EQU $QUEST66 Taken InProgress]
 D:Hey you came back. Okay, next thing you should study
-D:is that cave up there to the north. It's full of basiliks.
+D:is that cave up there to the north. It's full of basilisks.
 D:I want drawings of their gizzards. I warn you this is a
 D:graded examination and the pass rate is low. Don't let 
 D:that put you off I'm sure you've been hard at work reading.
@@ -8,7 +8,7 @@ D:that put you off I'm sure you've been hard at work reading.
 
 ?:[EQU $QUEST66 Completed]
 D:Fancy seeing you again! Top marks, here's your badge of
-D:merit
+D:merit.
 ?:1
 
 ?:[EQU $QUEST66 Failed]

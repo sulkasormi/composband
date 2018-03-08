@@ -1,0 +1,257 @@
+# Town: Anambar
+# (adapted from Frogspawn)
+# (yes, that area just west and southwest of the big open square
+# is a tribute to a different game)
+
+T:TOWN:NORMAL:NO_ROTATE
+%:t_pref.txt
+
+L:+:CLOSED_DOOR
+
+# Default for Quest 22 = entrance is dirt
+L:v:DIRT
+
+# Default for Quest 60 = entrance is mountain
+L:u:MOUNTAIN
+
+# Default for Quest 75 = entrance is shallow water
+L:w:SHALLOW_WATER
+
+# Default for Quest 72 = entrance is permanent
+L:x:PERMANENT
+
+# Default for Quest 73 = entrance is permanent
+L:y:PERMANENT
+
+# Default for Quest 68 = entrance is tree
+L:z:TREE
+
+# Default for the triceratops tile
+L:t:GRASS
+
+################## Cop Quests ##################
+
+############### Quest 74 - Cop Quest 1
+?:[EQU $QUEST74 Taken]
+L:8:QUEST_ENTER(74)
+L:n:BUILDING_13(74)
+?:[EQU $QUEST74 Untaken Completed Failed]
+L:8:PERMANENT
+L:n:BUILDING_13(74)
+?:[EQU $QUEST74 FailedDone]
+L:8:PERMANENT
+L:n:BUILDING_13(73)
+?:[EQU $QUEST74 Finished]
+L:n:BUILDING_13(73)
+?:1
+############### Quest 73 - Smugglers' Den
+?:[EQU $QUEST73 Taken]
+L:y:QUEST_ENTER(73)
+?:[EQU $QUEST73 Taken Completed Failed]
+L:n:BUILDING_13(73)
+?:[EQU $QUEST73 Finished FailedDone]
+L:n:BUILDING_13(72)
+?:1
+############### Quest 72 - The Killer in the Cellar
+?:[EQU $QUEST72 Taken]
+L:x:QUEST_ENTER(72)
+?:[EQU $QUEST72 Taken Completed Failed]
+L:n:BUILDING_13(72)
+?:[EQU $QUEST72 Finished FailedDone]
+L:n:BUILDING_13(0)
+?:1
+
+################## Mayor's Quests ##############
+
+############### Quest 22 - Orc Camp
+?:[EQU $QUEST22 Taken]
+L:v:QUEST_ENTER(22)
+?:[EQU $QUEST22 Untaken Taken Completed Failed]
+L:b:BUILDING_1(22)
+?:[EQU $QUEST22 Finished FailedDone]
+L:b:BUILDING_1(60)
+?:1
+############### Quest 60 - Tunnels
+?:[EQU $QUEST60 Taken]
+L:u:QUEST_ENTER(60)
+?:[EQU $QUEST60 Taken Completed Failed]
+L:b:BUILDING_1(60)
+?:[EQU $QUEST60 Finished FailedDone]
+L:b:BUILDING_1(68)
+?:1
+############### Quest 68 - Dinosaur Quest
+?:[EQU $QUEST68 Taken]
+L:z:QUEST_ENTER(68)
+?:[EQU $QUEST68 Taken Completed Failed]
+L:b:BUILDING_1(68)
+?:[EQU $QUEST68 Finished]
+L:b:BUILDING_1(67)
+?:[EQU $QUEST68 FailedDone]
+L:b:BUILDING_1(67)
+L:t:GRASS:MON(triceratops, 33%)
+?:1
+############### Quest 67 - Crystal Quest
+?:[EQU $QUEST67 Taken Completed Failed]
+L:b:BUILDING_1(67)
+?:[EQU $QUEST67 Finished FailedDone]
+L:b:BUILDING_1(75)
+?:1
+############### Quest 75 - The Mystery of Apina Island(TM)
+?:[EQU $QUEST75 Taken]
+L:w:QUEST_ENTER(75)
+?:[EQU $QUEST75 Taken Completed Failed]
+L:b:BUILDING_1(75)
+?:[EQU $QUEST75 Finished FailedDone]
+L:b:BUILDING_1(0)
+?:1
+
+############### Buildings ###############
+
+B:0:N:Library:Toniqua:Human
+B:0:A:0:Research item:1400:1400:a:1:0
+B:0:A:1:Town overview:0:0:h:2:0
+B:0:A:2:Identify item:50:50:i:44:0
+B:0:A:3:Identify possessions:350:350:p:26:0
+
+B:1:N:Mayor's Office:Zircon Jim:Human
+B:1:A:0:Request quest:0:0:q:6:0
+
+B:3:N:Casino:Lukie:Demigod
+B:3:A:0:In-Between:0:0:b:12:0
+B:3:A:1:Play craps:0:0:c:14:0
+B:3:A:2:Spin the wheel:0:0:s:15:0
+B:3:A:3:Play dice slots:0:0:d:16:0
+B:3:A:4:Monster arena:0:0:m:36:0
+B:3:A:5:Poker:0:0:p:43:0
+B:3:A:6:Game rules:0:0:r:13:0
+
+B:4:N:Inn:Otto:Golem
+B:4:A:0:Rest for the night:25:25:r:17:0
+B:4:A:1:Buy food and drink:3:3:f:18:1
+B:4:A:2:Listen for rumors:10:10:u:19:0
+B:4:A:3:Teleport to other town:500:500:m:42:0
+B:4:A:4:Ask about your reputation:1:1:a:55:0
+B:4:R:*:Member
+
+B:5:N:Beastmaster:Gil the Freak:Human
+B:5:A:0:Research monster:1500:1500:r:20:0
+
+B:6:N:Weaponmaster:Tomtek Hammer-Toe:Elf
+B:6:A:0:Evaluate AC:400:400:a:46:0
+
+B:7:N:Fighters' Hall:Roberta Dragon-Smotherer:Android
+B:7:A:0:Enchant weapon:0:0:w:23:0
+B:7:A:1:Enchant armor:0:0:a:24:0
+B:7:C:*:None
+B:7:C:Warrior:Owner
+B:7:C:Samurai:Owner
+B:7:C:Cavalry:Owner
+B:7:C:Berserker:Owner
+B:7:C:Blood-Knight:Owner
+B:7:C:Mauler:Owner
+
+B:8:N:Journalists' Guild:Garamund:Dwarf
+B:8:A:0:Listen for rumors:2:2:u:19:0
+
+B:9:N:Temple of Mammon:Tolya the Gray:Android
+B:9:A:0:Pay for healing:0:500:h:28:0
+B:9:A:1:Restoration:500:2500:r:29:0
+B:9:A:2:Cure mutation:10000:100000:m:35:0
+B:9:C:*:None
+B:9:C:Priest:Owner
+B:9:C:Paladin:Member
+
+B:10:N:Thieves' Den:Greenback:Ent
+B:10:A:1:Rest for the night:0:50:r:17:0
+B:10:A:2:Identify possessions:175:800:i:26:0
+B:10:C:*:None
+B:10:C:Rogue:Owner
+
+B:11:N:Archers' Guild:Neldorien:High-Elf
+B:11:A:0:Enchant missiles:22:44:a:30:0
+B:11:A:1:Enchant bow:0:0:b:31:0
+B:11:C:*:None
+B:11:C:Ranger:Owner
+B:11:C:Archer:Owner
+B:11:C:Sniper:Owner
+
+B:13:N:Police Station:Watts:Gremlin
+B:13:A:0:Today's wanted:0:0:a:38:0
+B:13:A:1:Wanted unique list:0:0:b:39:0
+B:13:A:2:Special target:0:0:s:37:0
+B:13:A:3:Receive prize:0:0:c:40:0
+B:13:A:4:Request quest:0:0:q:6:0
+
+B:14:N:Trump Tower:Ivan Ekhtniyaz:Human
+B:14:A:0:Recall to dungeon:0:150:r:33:0
+B:14:R:*:None
+B:14:R:Amberite:Member
+B:14:M:*:None
+B:14:M:Trump:Owner
+
+M:VVVVVVVVVVVVVVVVVVVVVVVVVVVV..VVVVVVVVVVVVVVVVVVVVVVVVVVVVV...VVVVVVVVVVVVVVVVVVVVVVVVVVVV..VVVVVVVVVVV..VVVVVVV..VVVVVVVVVVVVVVVVVV..VVVVVVVVVVVVV        VVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVV -
+M:       VVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVV---::-VVVVVVVVVVVVVVVVVVV..-V..VVVVVVVVVVVVVVVVVVVV.VVVVV...VVVVVVVVVVVVV.VVVVVVVVVVVVVVVVVVVVVVVVVVVVVV                   VVVVVVVVVVVVVVVVVVVVVVVVVVVVVV    ?
+M:                VVVVVVVVVVVVVVVVVVVVVVV--::T:T::VVVVVVVVVVVVVV.VVV..-.VVVVVVVVVVVVVVVVVVVVVVVVVVV.-.VVVVVVVVV.VVVVVVVVVVVVVVVVVVVVVVVVVVVVVVV                          VVVVVVVVVVVVVVVVVVVVVVVV      ?
+M:                        VVVVVVVVVVVVVVVwV-:-TT-T-VVVVVVVVVVVV..VVVV.V.VVVVVVVVVVVVVVVVVVVV.VVVVV--..VVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVV                                 VVVVVVVVVVVVVVVVV        -
+M:                           VVVVVVV..VVVVVVV---??VVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVV...VVVVVVVVVVVVVVVVVVVV        VVVVVVVVVVV                   ^^                   VVVVVVVVV           -
+M:                             VVVVVV.VVVVVVVVVVVVVVVVVVVVV.VVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVV.VVVVVVVV                                          ^^^                                      -
+M:                              VVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVV                                            ^^^^^                                     -
+M:                               VVVVVVVV.VVVVVVVVVVVVVVVVVVVVVVVVVVV-.VVVVVVVVVVVVVVVVVVVVVV.VVVVVVVVVVVVVVVVV                                              ^^^^^                                     -
+M:                                VVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVV..VVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVV                                               ^^^^                                      :
+M:                                  VVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVV.VVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVV                                                  ^^                                       :
+M:                                     VVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVV                                                                                                    -
+M:                                        VVVVVVVVVVVVVVVVVVVVVVVVV          VVVVVVVVVVVVV                                                                                                             -
+M:                                             VVVVVVVVVVVVVVV                     --..--                                                                                                              ?
+M:                                                  --..--                         --..--                                                                                                              :
+M:                                                  -.................................................................................                                                                 -
+M:                                                  #....#                         #....#                                            .                                                                 ?
+M:                                                  #....#                         #....#                                            .                                                                 -
+M:                                                  #....#                         #....#                                            .                                                                 ?
+M:   ################                               #....#                         #....#                                          # .                                                                 ?
+M:   ################################################....###########################....############################################...                                                                :
+M:   ##------------##..........................................................................................................................                                                        :
+M:   ##------------##..................................................................................................................       ..                                                       ?
+M:   ##------------##......TTTTTTTTTTTTTTTTTTTTTTTTT......######....-....###T#####??.....TTTTTTTTTTT.....############......T-T-T-T....##       ..                                                      :
+M:   ################......#########################......######....-....###T#####??.....T----T----T.....############......###T###....#         ..                                                     :
+M:   ################......#########################......######....-....#y#T#####??.....T------T--T.....############......###Tx##....#          ..                                                    :
+M:   ################......#########################......##########-....TTTTTTTzT?-.....TT---TT---T.....############......TTTTTTT....#           ..                                                   T
+M:   ################......#########################......##########-....###T#####??.....T---TTt--TT.....############......###........#            ..                                                 TT
+M:   ################......#############j###########......##########-....###T#####??.....T--T------T.....############......###.??.....#             ..                                                 T
+M:    #........................j##-----T.-----######......-T-T-T-T-T-....###T#####??.....T----T----T.....####bbbb####......:??........#              ..                                                :
+M:    #........................###-...........j#####......-----------....???????????.....TTTTTTTTTTT.....####....####......:::::??....#               ....................                             :
+M:    #........................###T...........######..................................................................................#                                  ..............                :
+M:    #.......................................######..................................................................................#                                              T..............   :
+M:    #......TTTTTTTTT........................######......########.......#########T-.....#########.........................#####......#                                                            ... :
+M:    #......#########........................######......########..........n#####T-.....#########........................#######.....#                                                             T...
+M:    #......########f...................-###j######......########..........######T-.....#########.......................#########....#                                                         ...... ?
+M:    #......#########...................-##########......###11###.......#########--.....######k.........................#########....#                                                   .......      :
+M:    #......#########......###4.........-##########......###..###.......#########T-.....########........................#########....#                                            ........            :
+M:    #......T.T.T.T.T......####.........-##########......-......-.......#########T-.....######k.........................#########....#                                     ........                   :
+M:    #.....................####.........-##########......-......-.......-T-T-T-T-T-.....#########........................#######.....##                               ......                          T
+M:   ##..................................T----------......--....--.......-----------.....#########.........................#####.......##                         ......                               :
+M:   ..................................................................................................................................                       .....                                    :
+M:   ..........................................................................................................................................................                                        :
+M:   ..................................................................................................................................                                                                :
+M:   ##...................................................####M####......-###ii###-......#########.......##..###..##......######.......##                                                              -
+M:    #......T######T......###9###........--#######.......#########......T########-......#########.......##22###33##......######......##                                                               :
+M:    #......T######T......#######..........#######.......#########......T########T......#########.......###########......######......#                                                                T
+M:    #.......######.......###9###..........#..o###.......#########......T########T......#########.......##gg###hh##......######......#                                                                ?
+M:    #......T####a#T..........................o###.......#########......T########-......#########.......##..###..##......######......#                                                                :
+M:    #......TTTTT.TT.......................#######.......#########......-########-......#########........................######......#                                                                T
+M:    #...................................--#######.......####M####...................................................................#                                                                :
+M:    #...............................................................................................................................#                                                                :
+M:    #...................................................................????????.......##########.....T###5###......------------....#                                                                T
+M:    #...................................................###...###.......?T####??.......#####d####.....T#######......############....#                                                                :
+M:    #......########T........####.......--T-T-T--T--.....###...###.......??####??.......#####----#.....T###5###......############....#                                                                :
+M:    #......######0#T........####.......-T#####T----.....####e####.......?T#####........#####----#...................####....####....#                                                                ?
+M:    #......######........##6####.......T-#####-----.....#########.......??#####........###d#----#.....TTTTT-TT......................#                                                                -
+M:    #......######.#T.....#######.......TT#####T---T.....#########.......?T#####............#----#.....T###T-TT......................#                                                      ^         -
+M:    #......######7#T.....#######.......T-##l##-----.....#########.......??####??...........#----#.....T##8--TT......####....####....#                                                 T    ^^        -
+M:    #......########T.....#######.......-T-T.-------.....#########.......?T####??.......#####----#.....T###T-TT......############....#                                                     ^^^^       -
+M:    #......TTTTTTTTT.....-------........................---------.......????????.......##########.....TTTTT-TT......############....#                                               TT    ^^^^^      -
+M:    .................................................................................................................................                                               T      ^^^^^     -
+M:    #...............................................................................................................................#                                                 ,T TT^^^^^^    -
+M:   ###.###########################...##############################...############################...#############################.###                                              T::v,,T:^u^^^    -
+M:    #                              .                                .                              .                              . #                                                 ,,,,:T;^^^     :
+M:                                   ................................................................................................                                                       -:::^^     :
+M:                                                                                                   .                                                                                      ----^      -

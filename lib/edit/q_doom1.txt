@@ -1,4 +1,6 @@
-# remade to be more like doom
+# original by Jeff Coleburn <vsp@netaxs.com>
+# remade by Gwarl for ComPosband 7.0.4 in pursuit of doominess
+# slightly edited for FrogComposband
 
 ?:[EQU $QUEST19 Taken InProgress]
 D:We need your help, adventurer. A hole has opened up to the
@@ -22,7 +24,7 @@ L:#:PERMANENT
 L:.:FLOOR
 L:+:CLOSED_DOOR
 L:W:PERMANENT_GLASS_WALL
-L:~:DEEP_ACID
+L:~:DEEP_WASTE
 L:<:UP_STAIR
 L:a:MON(zombified human)
 L:b:MON(^imp$)
@@ -35,17 +37,21 @@ L:h:OBJ(BOLT, DEPTH+15)
 L:i:OBJ(light crossbow, DEPTH+10)
 L:j:OBJ(potion of cure serious wounds)
 L:k:MON(landmine)
+L:l:OBJ(scroll of enchant armor)
 M:###############################################
 M:####.c.##########.c........#######.....~~~~~~~#
-M:####...#j.....j.+....##.......a........a~~~~~~#
+M:####...#l.....l.+....##.......a........a~~~~~~#
 M:#....#..........+....a#.........a..~...~~~~~~~#
 M:#.e.............#....##..c.#######~~~..a~~.b..#
 M:#....#..........#c.........#...#.%~~c..~~~..d.#
 M:####...#.......######WWWW###...#.####++#####%##
 M:####.c.#.......W....~~~........#.#.aW..Wa.#h..#
-M:########j.....jW....~f~....#####c#..#..#..#h..#
+M:########j.....jW....~f~....#####.#..#..#..#h..#
 M:##########.<.###....~~~....%....g#.k.b..k.#i..#
 M:###############################################
+R:OBJ(STAFF_TELEPORT)
+
+?:[EQU $CLASS Berserker]
 R:OBJ(^ring$):EGO(elemental)
 
 # vim: filetype=q :

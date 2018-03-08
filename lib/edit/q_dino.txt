@@ -1,0 +1,95 @@
+# Adapted from Frogspawn
+
+?:[EQU $QUEST68 Taken InProgress]
+D:This is strictly confidential, but I've heard reports that a local
+D:wizard is running a dinosaur reintroduction program! The nutjob's using
+D:magic to resurrect dinosaurs and dimetrodons; so far he's kept them under
+D:wraps at his own place, but it's only a matter of time before he lets
+D:them loose. The last thing our city needs is a population of urban
+D:dinosaurs; I would be blamed and ousted in no time, no matter how hard I
+D:argued it was good for tourism. I hope you can unresurrect them before
+D:that happens. The wizard's house is to the west of here, north of the 
+D:police station; I won't be too sorry if it turns out you need to off him 
+D:as well.
+
+?:[EQU $QUEST68 Completed]
+D:Thank you for solving my prehistoric problem. Here's your reward,
+D:I hope you find it satisfactory.
+?:1
+
+?:[EQU $QUEST68 Failed]
+D:Sweet zombie Serpent, no. I just hope it's not true that urban dinosaurs
+D:evolve into dragons over time.
+?:1
+
+T:QUEST:NORMAL
+L:#:PERMANENT
+L:%:GRANITE
+L:~:SHALLOW_WATER:MON(^duck$)
+L:::FLOWER
+L:=:GRASS
+L:<:UP_STAIR
+L:B:TRAP(TRAP_ALARM):MON(raven)
+L:+:LOCKED_DOOR_2
+L:-:CLOSED_DOOR
+L:i:GRANITE
+L:j:SECRET_DOOR
+L:':OPEN_DOOR
+L:7:TREE
+L:A:MON(ankylosaur, NO_GROUP)
+L:R:MON(velociraptor, NO_GROUP)
+L:S:MON(sparrow)
+L:T:MON(tyrannosaurus)
+L:3:MON(triceratops, NO_GROUP)
+L:d:MON(crow of durthang, NO_GROUP)
+L:U:MON(dimetrodon, NO_GROUP)
+L:H:MON(carrion)
+L:C:MON(shantak)
+L:c:TREE:MON(crow)
+L:P:TREE:MON(pteranodon)
+L:p:FLOOR(ICKY):MON(^mage$)
+L:D:GRASS:MON(diplodocus)
+L:,:FLOOR(ICKY)
+L:;:BRAKE
+L:!:FLOOR(ICKY):OBJ(STAFF_ANIMATE_DEAD)
+L:_:FLOOR(ICKY):OBJ(scroll of spell)
+L:x:FLOOR(ICKY):OBJ(filthy rag, DEPTH+24)
+L:s:FLOOR(ICKY):OBJ(SCROLL, DEPTH+10)
+L:t:FLOOR(ICKY):OBJ(nature's gifts)
+L:?:OBJ(scroll of rumour)
+L:5:OBJ(*)
+L:6:OBJ(*, DEPTH+6)
+L:":FLOOR(ICKY):OBJ(AMULET, DEPTH+2)
+L:(:OBJ(robe)
+L:2:OBJ(pint of fine wine)
+L:4:OBJ(hard biscuit)
+L:9:OBJ(strip of venison)
+L:z:OBJ(ration of food)
+L:8:GRASS:OBJ(brass lantern):EGO(immolation)
+!:SCRAMBLE(i,j)
+
+M:##################################
+M:###########777777#:::::::<S::::::#
+M:#########?#777777;::~~:::.:::~~::#
+M:#########,-c7P777;:~~~~::.::~~~~:#
+M:#########?#777777;::~~:::.:::~~::#
+M:###########777777#:::::::B:::::::#
+M:#########################+########
+M:#####::...::%::.....::%R........R#
+M:#6(5#:.....:%:.......:%.R......R.#
+M:#ddd+...3...-....~.T..-..........#
+M:#ddd+...3...-.........-..........#
+M:#6(5#:.3...:%:.......:%..........#
+M:#%%%#::...::%::.....::%.R......R.#
+M:#-.5%%%%j%%%%%%%%%%%%%%R.........#
+M:#%+%%%",,,"%%%%%%%%%%%%%%%%--%%%%#
+M:#7:.z%,,,,,%%242%..A...........UU#
+M:#:...ix,p,x%%-.-%.A.............U#
+M:#.CC.%_s,t!%%-.-%..A.............#
+M:#9..9%%%%%%%%-.-%%...%%:UU%%%%...#
+M:#%--%%%%%%%%%%'%%%...%%:UU%%%%...#
+M:#===============%................#
+M:#8=====D========'........H......:#
+M:#7==============%::............::#
+M:##################################
+R:OBJ(potion of healing)

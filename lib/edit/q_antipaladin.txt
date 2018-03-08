@@ -34,7 +34,7 @@ M:#.............#
 M:#.............#
 M:#<............#
 M:###############
-R:OBJ(STAFF_SLEEP_MONSTERS)
+R:OBJ(long bow):EGO(accuracy)
 
 
 # vim: filetype=q :

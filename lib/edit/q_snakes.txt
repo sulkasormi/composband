@@ -9,7 +9,7 @@ D:cleaning in the ruins.
 
 ?:[EQU $QUEST51 Completed]
 D:I will sleep easier now I do not have to think about those
-D:snakes. If you found my whip you can keep it as a reward.
+D:snakes. If you found the whip you can keep it as a reward.
 ?:1
 
 ?:[EQU $QUEST51 Failed]
@@ -27,7 +27,7 @@ L:a:MON(copperhead snake)
 L:b:MON(rattlesnake)
 L:c:MON(king cobra)
 L:d:MON(black mamba)
-L:k:OBJ(whip):ART(jones)
+L:k:ART(jones)
 
 # Dungeon layout
 M:################################

@@ -2055,8 +2055,8 @@ D:in Middle Earth gives as much protection.
 N:292:Black Dragon Scale Mail~
 G:[:s
 I:38:1:0
-W:30:0:0:200:30000
-A:30/6
+W:40:0:0:200:30000
+A:40/5
 P:40:2d4:-2:0:10
 F:RES_ACID |
 F:IGNORE_ACID | IGNORE_ELEC | IGNORE_FIRE | IGNORE_COLD
@@ -2067,8 +2067,8 @@ D:A suit of utterly black scales, against which no metal or wood can rest.
 N:*:Blue Dragon Scale Mail~
 G:[:b
 I:38:2:0
-W:30:0:0:200:35000
-A:30/6
+W:40:0:0:200:35000
+A:40/5
 P:40:2d4:-2:0:10
 F:RES_ELEC |
 F:IGNORE_ACID | IGNORE_ELEC | IGNORE_FIRE | IGNORE_COLD
@@ -2080,8 +2080,8 @@ D:you move about in it.
 N:*:White Dragon Scale Mail~
 G:[:w
 I:38:3:0
-W:30:0:0:200:40000
-A:30/6
+W:40:0:0:200:40000
+A:40/5
 P:40:2d4:-2:0:10
 F:RES_COLD |
 F:IGNORE_ACID | IGNORE_ELEC | IGNORE_FIRE | IGNORE_COLD
@@ -2093,12 +2093,12 @@ D:through your spine even as you look at it.
 N:*:Red Dragon Scale Mail~
 G:[:r
 I:38:4:0
-W:30:0:0:200:100000
-A:30/6
+W:40:0:0:200:100000
+A:40/5
 P:40:2d4:-2:0:10
 F:RES_FIRE |
 F:IGNORE_ACID | IGNORE_ELEC | IGNORE_FIRE | IGNORE_COLD
-E:BREATHE_FIRE:30:30:150
+E:BREATHE_FIRE:30:50:150
 E:You breathe fire.
 D:A suit of scales, with all the reds of every fire ever lit. The scar
 D:tissue from an old burn aches as you put this armour on.
@@ -2106,20 +2106,20 @@ D:tissue from an old burn aches as you put this armour on.
 N:*:Green Dragon Scale Mail~
 G:[:g
 I:38:5:0
-W:40:0:0:200:80000
-A:35/6
+W:45:0:0:200:80000
+A:45/5
 P:40:2d4:-2:0:10
 F:RES_POIS |
 F:IGNORE_ACID | IGNORE_ELEC | IGNORE_FIRE | IGNORE_COLD
-E:BREATHE_POIS:30:30:150
+E:BREATHE_POIS:30:40:150
 E:You breathe poison gas.
 D:A suit of scales, glistening in sickly green.
 
 N:*:Multi-Hued Dragon Scale Mail~
 G:[:v
 I:38:6:0
-W:50:0:0:200:150000
-A:50/8
+W:75:0:0:200:150000
+A:75/8
 P:40:2d4:-2:0:10
 F:RES_ACID | RES_ELEC | RES_FIRE | RES_COLD | RES_POIS
 F:IGNORE_ACID | IGNORE_ELEC | IGNORE_FIRE | IGNORE_COLD
@@ -2130,8 +2130,8 @@ D:to master the Elements fighting an endless war trapped inside.
 N:*:Pseudo Dragon Scale Mail~
 G:[:v
 I:38:10:0
-W:40:0:0:200:60000
-A:40/6
+W:50:0:0:200:60000
+A:50/8
 P:40:2d4:-2:0:10
 F:RES_LITE | RES_DARK |
 F:IGNORE_ACID | IGNORE_ELEC | IGNORE_FIRE | IGNORE_COLD
@@ -2140,8 +2140,8 @@ E:BREATHE_ONE_SHINING:40:50:200
 N:*:Law Dragon Scale Mail~
 G:[:B
 I:38:12:0
-W:55:0:0:200:80000
-A:55/6
+W:60:0:0:200:80000
+A:60/8
 P:40:2d4:-2:0:10
 F:RES_SOUND | RES_SHARDS |
 F:IGNORE_ACID | IGNORE_ELEC | IGNORE_FIRE | IGNORE_COLD
@@ -2152,8 +2152,8 @@ D:as you touch it, like massed trumpets heard and cyclones felt from afar.
 N:*:Bronze Dragon Scale Mail~
 G:[:U
 I:38:14:0
-W:40:0:0:200:30000
-A:40/4
+W:50:0:0:200:30000
+A:50/5
 P:40:2d4:-2:0:10
 F:RES_CONF |
 F:IGNORE_ACID | IGNORE_ELEC | IGNORE_FIRE | IGNORE_COLD
@@ -2164,10 +2164,10 @@ D:the the maze of whorls and lines that close inspection reveal on its
 D:surface, the less sense you are able to make of them.
 
 N:*:Silver Dragon Scale Mail~
-G:[:y
+G:[:W
 I:38:15:0
-W:45:0:0:200:40000
-A:45/4
+W:50:0:0:200:40000
+A:50/5
 P:40:2d4:-2:0:10
 F:FREE_ACT |
 F:IGNORE_ACID | IGNORE_ELEC | IGNORE_FIRE | IGNORE_COLD
@@ -2179,8 +2179,8 @@ D:come over you as you regard the quality of the object.
 N:*:Gold Dragon Scale Mail~
 G:[:y
 I:38:16:0
-W:45:0:0:200:40000
-A:45/4
+W:50:0:0:200:40000
+A:50/5
 P:40:2d4:-2:0:10
 F:RES_SOUND |
 F:IGNORE_ACID | IGNORE_ELEC | IGNORE_FIRE | IGNORE_COLD
@@ -2193,8 +2193,8 @@ D:cacophony.
 N:*:Chaos Dragon Scale Mail~
 G:[:v
 I:38:18:0
-W:60:0:0:200:70000
-A:60/6
+W:65:0:0:200:70000
+A:65/10
 P:40:2d4:-2:0:10
 F:RES_CHAOS | RES_DISEN |
 F:IGNORE_ACID | IGNORE_ELEC | IGNORE_FIRE | IGNORE_COLD
@@ -2205,10 +2205,10 @@ D:contend upon its surface as you stare in fascination.
 N:*:Balance Dragon Scale Mail~
 G:[:v
 I:38:20:0
-W:65:0:0:200:100000
-A:65/8
+W:80:0:0:200:100000
+A:80/12
 P:40:2d4:-2:0:10
-F:RES_CHAOS | RES_DISEN | RES_SOUND | RES_SHARDS |
+F:RES_CHAOS | RES_DISEN | RES_SOUND | RES_SHARDS | NO_SHUFFLE
 F:IGNORE_ACID | IGNORE_ELEC | IGNORE_FIRE | IGNORE_COLD
 E:BREATHE_ONE_BALANCE:50:100:250
 D:A suit of scales. Featureless grey to casual inspection, yet a closer
@@ -2221,7 +2221,7 @@ I:38:30:0
 W:110:0:0:200:350000
 A:110/64
 P:40:2d4:-3:0:15
-F:RES_ACID | RES_FIRE | RES_COLD | RES_ELEC | RES_POIS |
+F:RES_ACID | RES_FIRE | RES_COLD | RES_ELEC | RES_POIS | NO_SHUFFLE
 F:RES_NETHER | RES_NEXUS | RES_CHAOS | RES_LITE | RES_DARK |
 F:RES_SHARDS | RES_SOUND | RES_DISEN | RES_CONF |
 F:IGNORE_ACID | IGNORE_ELEC | IGNORE_FIRE | IGNORE_COLD
@@ -2396,35 +2396,35 @@ N:*:Enchant Armor:rolsan triple
 G:?:w
 I:70:16:0
 W:15:0:0:5:250
-A:5/1
+A:15/1
 M:50:1d6
 
 N:*:Enchant Weapon To-Hit:mipay sun
 G:?:w
 I:70:17:0
 W:15:0:0:5:250
-A:5/1
+A:15/1
 M:50:1d6
 
 N:*:Enchant Weapon To-Dam:batuni blaame
 G:?:w
 I:70:18:0
 W:15:0:0:5:250
-A:5/1
+A:15/1
 M:50:1d6
 
 N:*:*Enchant Armor*:klimon bieder
 G:?:w
 I:70:20:0
 W:50:0:0:5:1000
-A:20/1
+A:40/1
 M:50:1d6
 
 N:*:*Enchant Weapon*:vlytox
 G:?:w
 I:70:21:0
 W:50:0:0:5:1000
-A:20/1
+A:40/1
 M:50:1d6
 
 N:*:Recharging:klis glenash
@@ -2439,7 +2439,7 @@ N:*:Mundanity:danseh nejood
 G:?:w
 I:70:23:0
 W:13:0:0:5:3000
-A:13/3
+A:13/10
 M:100:1d5
 
 N:*:Light:misat dernin
@@ -2561,7 +2561,7 @@ G:?:w
 I:70:41:0
 W:40:0:0:5:250
 A:40/2
-F:IGNORE_FIRE
+F:IGNORE_FIRE | NO_SHUFFLE
 
 N:*:Dispel Undead:wah snofoo
 G:?:w
@@ -2581,12 +2581,14 @@ G:?:w
 I:70:44:0
 W:40:0:0:5:750
 A:40/4:80/4
+F:NO_SHUFFLE
 
 N:*:Mass Genocide:trolsee mex
 G:?:w
 I:70:45:0
 W:50:0:0:5:1000
 A:50/4:100/4
+F:NO_SHUFFLE
 
 N:*:Acquirement:klinej ere
 G:?:w
@@ -2653,7 +2655,7 @@ N:*:Crafting:enchantus maximus
 G:?:w
 I:70:55:0
 W:70:0:0:5:100000
-A:50/3
+A:60/3
 F:FIXED_FLAVOR
 
 N:*:Madness:mumblus incognitus
@@ -2973,9 +2975,10 @@ M:100:2d4
 N:*:Healing:Gray Speckled
 G:!:s
 I:75:37:200
-W:31:0:0:4:300
+W:31:0:0:4:500
 A:31/1:60/1:80/1
 P:0:1d1:0:0:0
+F:NO_SHUFFLE
 M:70:1d5
 
 N:*:*Healing*:Oily Yellow
@@ -2983,6 +2986,7 @@ G:!:y
 I:75:38:0
 W:80:0:0:4:1500
 A:40/8:60/4:80/2
+F:NO_SHUFFLE
 P:0:1d1:0:0:0
 
 N:*:Life:Gloopy Green
@@ -2990,6 +2994,7 @@ G:!:g
 I:75:39:0
 W:100:0:0:4:5000
 A:60/8:100/4
+F:NO_SHUFFLE
 P:0:1d1:0:0:0
 
 N:*:Restore Mana:Vermilion
@@ -2998,6 +3003,7 @@ I:75:40:0
 W:25:0:0:4:1000
 A:25/5:90/2
 P:0:1d1:0:0:0
+F:NO_SHUFFLE
 M:20:1d4
 
 N:*:Restore Life Levels:Red
@@ -3012,8 +3018,8 @@ M:100:2d4
 N:*:Restore Strength:Blue Speckled
 G:!:b
 I:75:42:0
-W:20:0:60:4:220
-A:20/1
+W:25:0:60:4:220
+A:25/1
 P:0:1d1:0:0:0
 F:TOWN
 M:100:1d5
@@ -3021,8 +3027,8 @@ M:100:1d5
 N:*:Restore Intelligence:Brown Speckled
 G:!:u
 I:75:43:0
-W:20:0:60:4:220
-A:20/1
+W:25:0:60:4:220
+A:25/1
 P:0:1d1:0:0:0
 F:TOWN
 M:100:1d5
@@ -3030,8 +3036,8 @@ M:100:1d5
 N:*:Restore Wisdom:Cloudy
 G:!:w
 I:75:44:0
-W:20:0:60:4:220
-A:20/1
+W:25:0:60:4:220
+A:25/1
 P:0:1d1:0:0:0
 F:TOWN
 M:100:1d5
@@ -3039,8 +3045,8 @@ M:100:1d5
 N:*:Restore Dexterity:Metallic Green
 G:!:g
 I:75:45:0
-W:20:0:60:4:220
-A:20/1
+W:25:0:60:4:220
+A:25/1
 P:0:1d1:0:0:0
 F:TOWN
 M:100:1d5
@@ -3048,8 +3054,8 @@ M:100:1d5
 N:*:Restore Constitution:Metallic Purple
 G:!:v
 I:75:46:0
-W:20:0:60:4:220
-A:20/1
+W:25:0:60:4:220
+A:25/1
 P:0:1d1:0:0:0
 F:TOWN
 M:100:1d5
@@ -3069,6 +3075,7 @@ I:75:48:0
 W:30:0:0:4:25000
 A:20/6:30/3
 P:0:1d1:0:0:0
+F:NO_SHUFFLE
 M:25:1d2
 
 N:*:Intelligence:Black
@@ -3077,6 +3084,7 @@ I:75:49:0
 W:30:0:0:4:25000
 A:20/6:30/3
 P:0:1d1:0:0:0
+F:NO_SHUFFLE
 M:25:1d2
 
 N:*:Wisdom:Bubbling
@@ -3085,6 +3093,7 @@ I:75:50:0
 W:30:0:0:4:25000
 A:20/6:30/3
 P:0:1d1:0:0:0
+F:NO_SHUFFLE
 M:25:1d2
 
 N:*:Dexterity:Metallic Red
@@ -3093,6 +3102,7 @@ I:75:51:0
 W:30:0:0:4:25000
 A:20/6:30/3
 P:0:1d1:0:0:0
+F:NO_SHUFFLE
 M:25:1d2
 
 N:*:Constitution:Green
@@ -3101,6 +3111,7 @@ I:75:52:0
 W:30:0:0:4:25000
 A:20/6:30/3
 P:0:1d1:0:0:0
+F:NO_SHUFFLE
 M:25:1d2
 
 N:*:Charisma:Copper Speckled
@@ -3109,6 +3120,7 @@ I:75:53:0
 W:30:0:0:4:25000
 A:20/6:30/3
 P:0:1d1:0:0:0
+F:NO_SHUFFLE
 M:25:1d2
 
 N:*:Restoring:Cyan
@@ -3123,7 +3135,8 @@ N:*:Augmentation:Viscous Pink
 G:!:R
 I:75:55:0
 W:60:0:0:4:150000
-A:40/6
+A:40/12
+F:NO_SHUFFLE
 P:0:1d1:0:0:0
 
 N:*:Enlightenment:Pink
@@ -3139,6 +3152,7 @@ G:!:y
 I:75:57:0
 W:70:0:0:4:120000
 A:70/4
+F:NO_SHUFFLE
 P:0:1d1:0:0:0
 
 N:*:Self Knowledge:Shimmering
@@ -3179,6 +3193,7 @@ G:!:g
 I:75:62:-2500
 W:110:0:0:4:100000
 A:90/9
+F:NO_SHUFFLE
 P:0:1d1:0:0:0
 
 N:*:New Life:Dark Red
@@ -3186,6 +3201,7 @@ G:!:r
 I:75:63:100
 W:30:0:0:4:25000
 A:30/4
+F:NO_SHUFFLE
 P:0:1d1:0:0:0
 M:5:1d3
 
@@ -3661,6 +3677,40 @@ G:?:r
 I:101:3:0
 W:85:0:0:30:100000
 A:85/3
+P:0:1d1:0:0:0
+F:IGNORE_ACID | IGNORE_ELEC | IGNORE_FIRE | IGNORE_COLD
+
+N:*:[Attractions of Law]
+G:?:g
+I:104:0:0
+W:10:0:30:30:100
+A:10/1
+P:0:1d1:0:0:0
+F:TOWN
+M:100:1d3
+
+N:*:[Obstacle Coursebook]
+G:?:g
+I:104:1:0
+W:20:0:50:30:1000
+A:20/1
+P:0:1d1:0:0:0
+F:TOWN
+M:50:1d2
+
+N:*:[Building Alternative Realities]
+G:?:b
+I:104:2:0
+W:45:0:90:30:15000
+A:50/1
+P:0:1d1:0:0:0
+F:IGNORE_ACID | IGNORE_ELEC | IGNORE_FIRE | IGNORE_COLD
+
+N:*:[Acquiris Quodcumque Rapis]
+G:?:b
+I:104:3:0
+W:80:0:0:30:100000
+A:75/3
 P:0:1d1:0:0:0
 F:IGNORE_ACID | IGNORE_ELEC | IGNORE_FIRE | IGNORE_COLD
 
