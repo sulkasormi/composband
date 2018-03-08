@@ -1,27 +1,27 @@
 <!DOCTYPE html>
 <html>
 <body text="#ffffff" bgcolor="#000000"><pre>
-<font color="#00c8ff">Command Descriptions
+<font color="#00ffff">Command Descriptions
 
 </font><font color="#ffffff">The following command descriptions are listed as the command name plus 
-the </font><font color="#ff4040">underlying command </font><font color="#ffffff">key. This is followed by the command name and 
-</font><font color="#ff4040">roguelike keyset </font><font color="#ffffff">key, if different from the underlying command key. 
+the </font><font color="#ff0000">underlying command </font><font color="#ffffff">key. This is followed by the command name and 
+</font><font color="#ff0000">roguelike keyset </font><font color="#ffffff">key, if different from the underlying command key. 
 Then comes a brief description of the command, including information 
 about alternative methods of specifying the command in each keyset, 
 when needed.
 
 Several commands (tunnel, disarm, bash, open) are repeated 99 times if 
-the </font><font color="#ff4040">always_repeat </font><font color="#ffffff">option is set and no repeat count is given. Some 
-commands use the </font><font color="#ff4040">repeat count </font><font color="#ffffff">to automatically repeat the command 
+the </font><font color="#ff0000">always_repeat </font><font color="#ffffff">option is set and no repeat count is given. Some 
+commands use the </font><font color="#ff0000">repeat count </font><font color="#ffffff">to automatically repeat the command 
 several times, while others use the repeat count as an argument. For 
 example, commands which need a quantity will use the repeat count 
-instead of asking for a quantity, allowing the use of </font><font color="#ff9200">0d </font><font color="#ffffff">to drop all. 
+instead of asking for a quantity, allowing the use of </font><font color="#ff8000">0d </font><font color="#ffffff">to drop all. 
 Commands which ask for a quantity will convert any letters into the 
 maximal legal value.
 
 <a name="Inventory"></a></font><font color="#c00000">Inventory Commands
 
-  </font><font color="#ffcc80">Inventory List (</font><font color="#ff9200">i</font><font color="#ffcc80">)
+  </font><font color="#c08040">Inventory List (</font><font color="#ff8000">i</font><font color="#c08040">)
   </font><font color="#ffffff">Displays a list of objects being carried but not equipped. You can 
   carry up to 26 different items, not counting those in your equipment. 
   Often, many identical objects can be "stacked" into a "pile" which 
@@ -33,15 +33,15 @@ maximal legal value.
   is a sample:
   
     Inventory: carrying 43.2 pounds (36% of capacity):
-      a) </font><font color="#ffcc80">, 5 Rations of Food                    </font><font color="#ffffff">5.0 lb
-      b) </font><font color="#fffd00">! 5 Flasks of oil                      </font><font color="#ffffff">5.0 lb
-      c) </font><font color="#ffcc80">~ </font><font color="#fffd00">3 Brass Lanterns {unidentified}     </font><font color="#ffffff">15.0 lb
-      d) </font><font color="#ffcc80">( </font><font color="#8c8c8c">Hard Leather Armour [6]             </font><font color="#ffffff">10.0 lb
-      e) </font><font color="#00c000">( </font><font color="#ffcc80">a Cloak [1]                          </font><font color="#ffffff">1.0 lb
-      f) </font><font color="#ffcc80">] a Pair of Soft Leather Boots [2]     </font><font color="#ffffff">2.0 lb
+      a) </font><font color="#c08040">, 5 Rations of Food                    </font><font color="#ffffff">5.0 lb
+      b) </font><font color="#ffff00">! 5 Flasks of oil                      </font><font color="#ffffff">5.0 lb
+      c) </font><font color="#c08040">~ </font><font color="#ffff00">3 Brass Lanterns {unidentified}     </font><font color="#ffffff">15.0 lb
+      d) </font><font color="#c08040">( </font><font color="#909090">Hard Leather Armour [6]             </font><font color="#ffffff">10.0 lb
+      e) </font><font color="#008040">( </font><font color="#c08040">a Cloak [1]                          </font><font color="#ffffff">1.0 lb
+      f) </font><font color="#c08040">] a Pair of Soft Leather Boots [2]     </font><font color="#ffffff">2.0 lb
   
  
-  </font><font color="#ffcc80">Equipment List (</font><font color="#ff9200">e</font><font color="#ffcc80">)
+  </font><font color="#c08040">Equipment List (</font><font color="#ff8000">e</font><font color="#c08040">)
   </font><font color="#ffffff">Use this command to display a list of the objects currently being 
   used by your character. Your character typically has 12 slots for 
   equipment each corresponding to a different location on the body, and 
@@ -53,13 +53,13 @@ maximal legal value.
   following sample (Taken from a starting Warrior):
   
     a) | Right Hand: a Broad Sword (2d5) (+0,+0)      15.0 lb
-    b) </font><font color="#ffcc80">) </font><font color="#ffffff">Left Hand : </font><font color="#ffcc80">a Small Leather Shield [3,+0]     </font><font color="#ffffff">5.0 lb
-    c) </font><font color="#8c8c8c">} </font><font color="#ffffff">Shooting  : </font><font color="#ffcc80">a Light Crossbow (x4) (+0,+0)    </font><font color="#ffffff">11.0 lb
+    b) </font><font color="#c08040">) </font><font color="#ffffff">Left Hand : </font><font color="#c08040">a Small Leather Shield [3,+0]     </font><font color="#ffffff">5.0 lb
+    c) </font><font color="#909090">} </font><font color="#ffffff">Shooting  : </font><font color="#c08040">a Light Crossbow (x4) (+0,+0)    </font><font color="#ffffff">11.0 lb
     d)   Right Ring:
     e)   Left Ring :
     f)   Neck      :
     g)   Light     :
-    h) </font><font color="#8c8c8c">[ </font><font color="#ffffff">Body      : </font><font color="#8c8c8c">Chain Mail (-2) [14,+0]          </font><font color="#ffffff">22.0 lb
+    h) </font><font color="#909090">[ </font><font color="#ffffff">Body      : </font><font color="#909090">Chain Mail (-2) [14,+0]          </font><font color="#ffffff">22.0 lb
     i)   Cloak     :
     j)   Head      :
     k)   Hands     :
@@ -68,25 +68,25 @@ maximal legal value.
   Each slot has a descriptive label, like "Right Hand" that determines 
   what type of object it may receive, like a weapon or shield. And yes, 
   you can wield a weapon in either hand, or even in both (Using the 
-  skill of </font><font color="#00c8ff">Dual Wielding</font><font color="#ffffff">). You can even wear two shields if you aren't 
+  skill of </font><font color="#00ffff">Dual Wielding</font><font color="#ffffff">). You can even wear two shields if you aren't 
   using melee fighting at all. The choice is yours! The types for each 
   slot should be easy to figure out: Helmets go on your "Head" slot and 
   Gloves go on your "Hands", etc.
 
-  </font><font color="#ffcc80">Get Objects (</font><font color="#ff9200">g</font><font color="#ffcc80">)
+  </font><font color="#c08040">Get Objects (</font><font color="#ff8000">g</font><font color="#c08040">)
   </font><font color="#ffffff">This command will get any objects located on the same tile as the 
   player (autodestroyer applies). If there are no objects under the 
   player, then this command does not cause the player to lose a turn.
 
-  </font><font color="#ffcc80">Auto-Get Objects (</font><font color="#ff9200">^G</font><font color="#ffcc80">)
+  </font><font color="#c08040">Auto-Get Objects (</font><font color="#ff8000">^G</font><font color="#c08040">)
   </font><font color="#ffffff">This command will get any objects located on the same tile as the 
   player (autodestroyer applies). In addition, this command will 
   automatically get nearby objects by travelling to them (similar to 
-  running). With </font><font color="#ff4040">auto_get_objects </font><font color="#ffffff">enabled, any object registered for 
+  running). With </font><font color="#ff0000">auto_get_objects </font><font color="#ffffff">enabled, any object registered for 
   either auto-pickup or auto-destroy will qualify for automatic get. If 
   that is too much for you (perhaps you enjoy cleaning up after 
-  battles?) then the </font><font color="#ff4040">auto_get_ammo </font><font color="#ffffff">option only applies to objects 
-  inscribed with </font><font color="#ff9200">=g </font><font color="#ffffff">(which is typically your ammo, or perhaps spikes if 
+  battles?) then the </font><font color="#ff0000">auto_get_ammo </font><font color="#ffffff">option only applies to objects 
+  inscribed with </font><font color="#ff8000">=g </font><font color="#ffffff">(which is typically your ammo, or perhaps spikes if 
   you are a ninja).
   
   Automatic travelling is very useful, and you won't travel too far 
@@ -98,7 +98,7 @@ maximal legal value.
   disturbed for any reason, such as a nasty dragon waking up and 
   deciding to breathe on you.
 
-  </font><font color="#ffcc80">Drop Item (</font><font color="#ff9200">d</font><font color="#ffcc80">)
+  </font><font color="#c08040">Drop Item (</font><font color="#ff8000">d</font><font color="#c08040">)
   </font><font color="#ffffff">This drops an item from your inventory or equipment onto the dungeon 
   floor. If the floor spot you are standing on already has an object in 
   it, the game will attempt to drop the item onto an adjacent space. Be 
@@ -108,19 +108,19 @@ maximal legal value.
   the selected pile contains multiple items, you may specify a 
   quantity.
 
-  </font><font color="#ffcc80">Destroy Item (</font><font color="#ff9200">k</font><font color="#ffcc80">) or (</font><font color="#ff9200">^D</font><font color="#ffcc80">)
+  </font><font color="#c08040">Destroy Item (</font><font color="#ff8000">k</font><font color="#c08040">) or (</font><font color="#ff8000">^D</font><font color="#c08040">)
   </font><font color="#ffffff">This destroys an item in your inventory or on the dungeon floor. If 
   the selected pile contains multiple objects, you may specify a 
   quantity. You must always (currently) verify this command.
 
-  </font><font color="#ffcc80">Wear/Wield Equipment (</font><font color="#ff9200">w</font><font color="#ffcc80">)
+  </font><font color="#c08040">Wear/Wield Equipment (</font><font color="#ff8000">w</font><font color="#c08040">)
   </font><font color="#ffffff">To wear or wield an object in your inventory, use this command. Since 
   only one object can be in each slot at a time, if you wear or wield 
   an item into a slot which is already occupied, the old item will be 
   first be taken off, and may in fact be dropped if there is no room 
   for it in your inventory.
 
-  </font><font color="#ffcc80">Take Off Equipment (</font><font color="#ff9200">t</font><font color="#ffcc80">) or (</font><font color="#ff9200">T</font><font color="#ffcc80">)
+  </font><font color="#c08040">Take Off Equipment (</font><font color="#ff8000">t</font><font color="#c08040">) or (</font><font color="#ff8000">T</font><font color="#c08040">)
   </font><font color="#ffffff">Use this command to take off a piece of equipment and return it to 
   your inventory. Occasionally, you will run into a cursed item which 
   cannot be removed. These items normally penalize you in some way and 
@@ -130,7 +130,7 @@ maximal legal value.
 
 <a name="Movement"></a></font><font color="#c00000">Movement Commands
 
-  </font><font color="#ffcc80">Walk (with pickup) (</font><font color="#ff9200">;</font><font color="#ffcc80">)
+  </font><font color="#c08040">Walk (with pickup) (</font><font color="#ff8000">;</font><font color="#c08040">)
   </font><font color="#ffffff">Moves one step in the given direction. The square you are moving into 
   must not be blocked by walls or doors. You will pick up any items in 
   the destination grid if the "always_pickup" option is set, or if the 
@@ -141,7 +141,7 @@ maximal legal value.
   auto-picker/destroyer is set up, specified objects will be picked up 
   or destroyed.
 
-  </font><font color="#ffcc80">Walk (flip pickup) (</font><font color="#ff9200">-</font><font color="#ffcc80">)
+  </font><font color="#c08040">Walk (flip pickup) (</font><font color="#ff8000">-</font><font color="#c08040">)
   </font><font color="#ffffff">This is just like normal move, except that the "Pick things up" 
   option is inverted. In other words, if you normally pick up anything 
   you encounter (the default), you will not pick things up when using 
@@ -150,7 +150,7 @@ maximal legal value.
   direction.  If object auto-picker/destroyer is set up, specified 
   objects will be picked up or destroyed.
 
-  </font><font color="#ffcc80">Run (</font><font color="#ff9200">.</font><font color="#ffcc80">) or (</font><font color="#ff9200">,</font><font color="#ffcc80">)
+  </font><font color="#c08040">Run (</font><font color="#ff8000">.</font><font color="#c08040">) or (</font><font color="#ff8000">,</font><font color="#c08040">)
   </font><font color="#ffffff">This command will move in the given direction, following any bends in 
   the corridor, until you either have to make a "choice" between two 
   directions or you are disturbed. You can configure what will disturb 
@@ -161,7 +161,7 @@ maximal legal value.
   auto-picker/destroyer is set up, specified objects will be picked up 
   or destroyed.
 
-  </font><font color="#ffcc80">Go Up Staircase (</font><font color="#ff9200">&lt;</font><font color="#ffcc80">)
+  </font><font color="#c08040">Go Up Staircase (</font><font color="#ff8000">&lt;</font><font color="#c08040">)
   </font><font color="#ffffff">Climbs up when you are standing on an up staircase. In the 
   wilderness, enter global map mode which grants you a view of all the 
   world unless there are some monsters in the nearby area.
@@ -176,7 +176,7 @@ maximal legal value.
   previously visited floors are forgotten, and you will need to explore 
   anew.
 
-  </font><font color="#ffcc80">Go Down Staircase (</font><font color="#ff9200">&gt;</font><font color="#ffcc80">)
+  </font><font color="#c08040">Go Down Staircase (</font><font color="#ff8000">&gt;</font><font color="#c08040">)
   </font><font color="#ffffff">Descends when you are standing on a down staircase. In the 
   wilderness, return from global map mode to normal mode.
   
@@ -188,14 +188,14 @@ maximal legal value.
 
 <a name="Resting"></a></font><font color="#c00000">Resting Commands
 
-  </font><font color="#ffcc80">Stay Still (with pickup) (</font><font color="#ff9200">,</font><font color="#ffcc80">) or (</font><font color="#ff9200">.</font><font color="#ffcc80">)
+  </font><font color="#c08040">Stay Still (with pickup) (</font><font color="#ff8000">,</font><font color="#c08040">) or (</font><font color="#ff8000">.</font><font color="#c08040">)
   </font><font color="#ffffff">Stays in the same square for one move. If you normally pick up 
   objects you encounter, you will pick up whatever you are standing on. 
   This command can take a count. You may also use the "5" key (both 
   keysets).  If object auto-picker/destroyer is set up, specified 
   objects will be picked up or destroyed.
 
-  </font><font color="#ffcc80">Rest (</font><font color="#ff9200">R</font><font color="#ffcc80">)
+  </font><font color="#c08040">Rest (</font><font color="#ff8000">R</font><font color="#c08040">)
   </font><font color="#ffffff">Resting is better for you than repeatedly staying still, and can be 
   told to automatically stop after a certain amount of time, or when 
   various conditions are met. In any case, you always wake up when 
@@ -207,7 +207,7 @@ maximal legal value.
 
 <a name="Searching"></a></font><font color="#c00000">Searching Commands
 
-  </font><font color="#ffcc80">Search (</font><font color="#ff9200">s</font><font color="#ffcc80">)
+  </font><font color="#c08040">Search (</font><font color="#ff8000">s</font><font color="#c08040">)
   </font><font color="#ffffff">This command can be used to locate hidden traps and secret doors in 
   the spaces adjacent to the player. More than a single turn of 
   searching will be required in most cases. You should always search a 
@@ -216,7 +216,7 @@ maximal legal value.
   of finding something eventually, since the command stops as soon as 
   anything is found. This command can take a count.
 
-  </font><font color="#ffcc80">Toggle Search Mode (</font><font color="#ff9200">S</font><font color="#ffcc80">) or (</font><font color="#ff9200">#</font><font color="#ffcc80">)
+  </font><font color="#c08040">Toggle Search Mode (</font><font color="#ff8000">S</font><font color="#c08040">) or (</font><font color="#ff8000">#</font><font color="#c08040">)
   </font><font color="#ffffff">This command will take you into and out of search mode. When first 
   pressed, the message "Searching" will appear at the bottom of the 
   screen. You are now taking two turns for each command, one for the 
@@ -227,24 +227,24 @@ maximal legal value.
 
 <a name="Alter"></a></font><font color="#c00000">Alter Commands
 
-  </font><font color="#ffcc80">Tunnel (</font><font color="#ff9200">T</font><font color="#ffcc80">) or (</font><font color="#ff9200">^T</font><font color="#ffcc80">)
+  </font><font color="#c08040">Tunnel (</font><font color="#ff8000">T</font><font color="#c08040">) or (</font><font color="#ff8000">^T</font><font color="#c08040">)
   </font><font color="#ffffff">Tunneling or mining is a very useful art. There are many kinds of 
   rock, with varying hardness, including:
   
-    </font><font color="#ffcc80"># </font><font color="#ffffff">Permanent Rock   Permanent
+    </font><font color="#c08040"># </font><font color="#ffffff">Permanent Rock   Permanent
     # Granite          Very Hard
     % Quartz Veins     Hard
-    </font><font color="#8c8c8c">% </font><font color="#ffffff">Magma veins      Soft
+    </font><font color="#909090">% </font><font color="#ffffff">Magma veins      Soft
     : Rubble           Very Soft
   
   Quartz and Magma veins may sometimes contain treasure, in which case 
-  they will be displayed as </font><font color="#ff9200">*</font><font color="#ffffff">. Rubble sometimes covers an object. It is 
+  they will be displayed as </font><font color="#ff8000">*</font><font color="#ffffff">. Rubble sometimes covers an object. It is 
   hard to tunnel unless you are wielding a heavy weapon or a shovel or 
   a pick. Tunneling ability increases with strength and weapon weight. 
   This command can take a count, requires a direction, and is affected 
   by the "always_repeat" option.
 
-  </font><font color="#ffcc80">Open a Door or Chest (</font><font color="#ff9200">o</font><font color="#ffcc80">)
+  </font><font color="#c08040">Open a Door or Chest (</font><font color="#ff8000">o</font><font color="#c08040">)
   </font><font color="#ffffff">To open an object such as a door or chest, you must use this command. 
   If the object is locked, you will attempt to pick the lock based on 
   your disarming ability. If you open a trapped chest without disarming 
@@ -253,13 +253,13 @@ maximal legal value.
   open a door or chest. Open can take a count, requires a direction, 
   and is affected by the "always_repeat" option.
 
-  </font><font color="#ffcc80">Close a Door (</font><font color="#ff9200">c</font><font color="#ffcc80">)
+  </font><font color="#c08040">Close a Door (</font><font color="#ff8000">c</font><font color="#c08040">)
   </font><font color="#ffffff">Non-intelligent and some other creatures cannot open doors, so 
   shutting doors can be quite valuable. Broken doors cannot be closed. 
   Bashing a door open may break it. Close can take a count, requires a 
   direction, and is affected by the "always_repeat" option.
 
-  </font><font color="#ffcc80">Jam a Door (</font><font color="#ff9200">j</font><font color="#ffcc80">) or Spike a Door (</font><font color="#ff9200">S</font><font color="#ffcc80">)
+  </font><font color="#c08040">Jam a Door (</font><font color="#ff8000">j</font><font color="#c08040">) or Spike a Door (</font><font color="#ff8000">S</font><font color="#c08040">)
   </font><font color="#ffffff">Many monsters can simply open closed doors, and can eventually get 
   through a locked door. You may therefore occasionally want to jam a 
   door shut with iron spikes. Each spike used on the door will make it 
@@ -267,7 +267,7 @@ maximal legal value.
   are less able to bash down doors. In order to use this command, you 
   must be carrying iron spikes. Jam or Spike requires a direction.
 
-  </font><font color="#ffcc80">Bash a Door (</font><font color="#ff9200">B</font><font color="#ffcc80">) or Force a Door (</font><font color="#ff9200">f</font><font color="#ffcc80">)
+  </font><font color="#c08040">Bash a Door (</font><font color="#ff8000">B</font><font color="#c08040">) or Force a Door (</font><font color="#ff8000">f</font><font color="#c08040">)
   </font><font color="#ffffff">This command allows you to bash down jammed doors. Your bashing 
   ability increases with strength. Bashing open a door can (briefly) 
   throw you off balance. Doors that are stuck, or which have been 
@@ -277,14 +277,14 @@ maximal legal value.
   can take a count, requires a direction, and is affected by the 
   "always_repeat" option.
 
-  </font><font color="#ffcc80">Disarm a Trap or Chest (</font><font color="#ff9200">D</font><font color="#ffcc80">)
+  </font><font color="#c08040">Disarm a Trap or Chest (</font><font color="#ff8000">D</font><font color="#c08040">)
   </font><font color="#ffffff">You can attempt to disarm traps on the floor or on chests. If you 
   fail, there is a chance that you will blunder and set it off. You can 
   only disarm a trap after you have found it (usually with the Search 
   command). Disarm can take a count, requires a direction, and is 
   affected by the "always_repeat" option.
 
-  </font><font color="#ffcc80">Alter (</font><font color="#ff9200">+</font><font color="#ffcc80">)
+  </font><font color="#c08040">Alter (</font><font color="#ff8000">+</font><font color="#c08040">)
   </font><font color="#ffffff">This special command allows the use of a single keypress to select 
   any of the "obvious" commands above (attack, tunnel, bash, open, 
   disarm, close), and, by using macros or keymaps, to combine this 
@@ -297,7 +297,7 @@ maximal legal value.
 
 <a name="SpellPrayer"></a></font><font color="#c00000">Spell and Prayer Commands
 
-  </font><font color="#ffcc80">Browse Magic List (</font><font color="#ff9200">b</font><font color="#ffcc80">) or Peruse Magic List (</font><font color="#ff9200">P</font><font color="#ffcc80">)
+  </font><font color="#c08040">Browse Magic List (</font><font color="#ff8000">b</font><font color="#c08040">) or Peruse Magic List (</font><font color="#ff8000">P</font><font color="#c08040">)
   </font><font color="#ffffff">All characters which can cast spells can use this command. When this 
   command is used, all of the spells contained in the selected magic 
   are displayed, along with such information as their level, the amount 
@@ -305,7 +305,7 @@ maximal legal value.
   And when you select a spell from the list, description text of 
   selected spell will be displayed.
 
-  </font><font color="#ffcc80">Gain New Spells or Prayers (</font><font color="#ff9200">G</font><font color="#ffcc80">)
+  </font><font color="#c08040">Gain New Spells or Prayers (</font><font color="#ff8000">G</font><font color="#c08040">)
   </font><font color="#ffffff">Use this command to actually learn new spells or prayers. When you 
   are able to learn new spells or prayers, the word "Study" will appear 
   in the status area of the screen. If you have a book in your 
@@ -315,7 +315,7 @@ maximal legal value.
   priest or paladin, your gods will choose a prayer for you. There are 
   nine books of each type, some normally found only in the dungeon.
 
-  </font><font color="#ffcc80">Cast a Spell (</font><font color="#ff9200">m</font><font color="#ffcc80">)
+  </font><font color="#c08040">Cast a Spell (</font><font color="#ff8000">m</font><font color="#c08040">)
   </font><font color="#ffffff">To cast a spell, you must have previously learned the spell and must 
   have in your inventory a book from which the spell can be read. Each 
   spell has a chance of failure which starts out fairly large but 
@@ -336,39 +336,39 @@ maximal legal value.
   book, you cannot be blind or confused while praying, and there must 
   be some light present.
 
-  </font><font color="#ffcc80">Use Bonus Power (</font><font color="#ff9200">U</font><font color="#ffcc80">) or (</font><font color="#ff9200">O</font><font color="#ffcc80">)
+  </font><font color="#c08040">Use Bonus Power (</font><font color="#ff8000">U</font><font color="#c08040">) or (</font><font color="#ff8000">O</font><font color="#c08040">)
   </font><font color="#ffffff">Some races and classes have special natural abilities. For example, a 
-  Cyclops may </font><font color="#ff4040">Throw Boulders </font><font color="#ffffff">and a Gnome may </font><font color="#ff4040">Blink </font><font color="#ffffff">away from danger. A 
-  Warrior can learn the power of </font><font color="#ff4040">Sword Dancing</font><font color="#ffffff">. Also, it is possible to 
-  become mutated and gain a power, such as the ability to shoot </font><font color="#ff4040">Laser 
+  Cyclops may </font><font color="#ff0000">Throw Boulders </font><font color="#ffffff">and a Gnome may </font><font color="#ff0000">Blink </font><font color="#ffffff">away from danger. A 
+  Warrior can learn the power of </font><font color="#ff0000">Sword Dancing</font><font color="#ffffff">. Also, it is possible to 
+  become mutated and gain a power, such as the ability to shoot </font><font color="#ff0000">Laser 
   Beams </font><font color="#ffffff">from your eyes! (I know, I know ... silliness!). If you have no 
   special powers, then this command will not do anything.
 
 
 <a name="ObjectManip"></a></font><font color="#c00000">Object Manipulation Commands
 
-  </font><font color="#ffcc80">Eat Food (</font><font color="#ff9200">E</font><font color="#ffcc80">)
+  </font><font color="#c08040">Eat Food (</font><font color="#ff8000">E</font><font color="#c08040">)
   </font><font color="#ffffff">You must eat regularly to prevent starvation. As you grow hungry, a 
   message will appear in the status portion of the screen saying 
-  </font><font color="#fffd00">Hungry</font><font color="#ffffff">. If you go hungry long enough, you will become </font><font color="#ff9200">Weak</font><font color="#ffffff">, then 
+  </font><font color="#ffff00">Hungry</font><font color="#ffffff">. If you go hungry long enough, you will become </font><font color="#ff8000">Weak</font><font color="#ffffff">, then 
   start </font><font color="#c00000">Fainting</font><font color="#ffffff">, and eventually, you will die of starvation. You may 
   use this command to eat food in your inventory. Note that you can 
   sometimes find food in the dungeon, but it is not always wise to eat 
   strange food.
 
-  </font><font color="#ffcc80">Fuel Lantern/Torch (</font><font color="#ff9200">F</font><font color="#ffcc80">)
+  </font><font color="#c08040">Fuel Lantern/Torch (</font><font color="#ff8000">F</font><font color="#c08040">)
   </font><font color="#ffffff">If you are using a torch and have more torches in your pack, or you 
   are using a lantern and have flasks of oil in your pack, then your 
   can refuel them with this command. Torches and Lanterns are limited 
   in their maximal fuel. In general, two flasks will fully fuel a 
   lantern and two torches will fully fuel a torch.
 
-  </font><font color="#ffcc80">Quaff Potion (</font><font color="#ff9200">q</font><font color="#ffcc80">)
+  </font><font color="#c08040">Quaff Potion (</font><font color="#ff8000">q</font><font color="#c08040">)
   </font><font color="#ffffff">Use this command to drink a potion. Potions affect the player in 
   various ways, but the effects are not always immediately obvious and 
   are sometimes detrimental.
 
-  </font><font color="#ffcc80">Read a scroll (</font><font color="#ff9200">r</font><font color="#ffcc80">)
+  </font><font color="#c08040">Read a scroll (</font><font color="#ff8000">r</font><font color="#c08040">)
   </font><font color="#ffffff">Use this command to read a scroll. Scroll spells usually have an area 
   effect, except for a few cases where they act on other objects. 
   Reading a scroll causes the parchment to disintegrate as the scroll 
@@ -380,18 +380,18 @@ maximal legal value.
   to learn to read well), then reading a scroll might fail, usually 
   just when you need it most!
  
-  </font><font color="#ffcc80">Inscribe an object (</font><font color="#ff9200">{</font><font color="#ffcc80">)
+  </font><font color="#c08040">Inscribe an object (</font><font color="#ff8000">{</font><font color="#c08040">)
   </font><font color="#ffffff">This command inscribes a string on an object. The inscription is 
   displayed inside curly braces after the object description. The 
   inscription is limited to the particular object (or pile) and is not 
   automatically transferred to all similar objects. Under certain 
-  circumstances, the game will display </font><font color="#ff4040">fake </font><font color="#ffffff">inscriptions on certain 
+  circumstances, the game will display </font><font color="#ff0000">fake </font><font color="#ffffff">inscriptions on certain 
   objects (e.g., {cursed}, {broken}, {tried}, {empty}, {90% off}) when 
-  appropriate. These fake inscriptions are masked by </font><font color="#ff4040">real </font><font color="#ffffff">inscriptions 
+  appropriate. These fake inscriptions are masked by </font><font color="#ff0000">real </font><font color="#ffffff">inscriptions 
   (i.e., those added with this command), but will re-appear if the real 
   inscription is removed. In addition, the game will occasionally place 
   a real inscription on an object for you, normally as the result of 
-  your character getting a </font><font color="#ff4040">feeling </font><font color="#ffffff">about the item. All characters will 
+  your character getting a </font><font color="#ff0000">feeling </font><font color="#ffffff">about the item. All characters will 
   get feelings about weapons and armor after carrying them for a while. 
   Warriors get the most detailed feelings, and get them quicker than 
   any other class. An item labeled as {empty} was found to be out of 
@@ -400,21 +400,21 @@ maximal legal value.
   inscriptions have a meaning to the game, see "@#", "@x#", "!*", and 
   "!x", in the section on inventory object selection.
 
-  </font><font color="#ffcc80">Uninscribe an object (</font><font color="#ff9200">}</font><font color="#ffcc80">)
+  </font><font color="#c08040">Uninscribe an object (</font><font color="#ff8000">}</font><font color="#c08040">)
   </font><font color="#ffffff">This command removes the inscription on an object. This command will 
   have no effect on "fake" inscriptions added by the game itself.
 
 <a name="MagicalObject"></a></font><font color="#c00000">Magical Object Commands
 
-  </font><font color="#ffcc80">Activate Artifact (</font><font color="#ff9200">A</font><font color="#ffcc80">)
+  </font><font color="#c08040">Activate Artifact (</font><font color="#ff8000">A</font><font color="#c08040">)
   </font><font color="#ffffff">You have heard rumors of special weapons and armor deep in the 
   dungeon, items that can let you breath fire like a dragon or light 
   rooms with just a thought. Should you ever be lucky enough to find 
   such an item, this command will let you activate its special ability. 
   Special abilities can only be used if you are wearing or wielding the 
-  item and they usually take a certain amount of time to </font><font color="#ff4040">recharge</font><font color="#ffffff">.
+  item and they usually take a certain amount of time to </font><font color="#ff0000">recharge</font><font color="#ffffff">.
 
-  </font><font color="#ffcc80">Aim Wand (</font><font color="#ff9200">a</font><font color="#ffcc80">) or Zap Wand (</font><font color="#ff9200">z</font><font color="#ffcc80">)
+  </font><font color="#c08040">Aim Wand (</font><font color="#ff8000">a</font><font color="#c08040">) or Zap Wand (</font><font color="#ff8000">z</font><font color="#c08040">)
   </font><font color="#ffffff">Wands must be aimed in a direction to be used. Wands are magical 
   devices, and therefore there is a chance you will not be able to 
   figure out how to use them if you aren't good with magical devices. 
@@ -424,13 +424,13 @@ maximal legal value.
   wall will generally stop the effects from traveling any farther. This 
   command requires a direction and can use a target.
 
-  </font><font color="#ffcc80">Use Staff (</font><font color="#ff9200">u</font><font color="#ffcc80">) or Zap Staff (</font><font color="#ff9200">Z</font><font color="#ffcc80">)
+  </font><font color="#c08040">Use Staff (</font><font color="#ff8000">u</font><font color="#c08040">) or Zap Staff (</font><font color="#ff8000">Z</font><font color="#c08040">)
   </font><font color="#ffffff">This command will use a staff. A staff is normally very similar to a 
   scroll, in that they normally either have an area effect or affect a 
   specific object. Staves are magical devices, and there is a chance 
   you will not be able to figure out how to use them.
  
-  </font><font color="#ffcc80">Zap Rod (</font><font color="#ff9200">z</font><font color="#ffcc80">) or Activate Rod (</font><font color="#ff9200">a</font><font color="#ffcc80">)
+  </font><font color="#c08040">Zap Rod (</font><font color="#ff8000">z</font><font color="#c08040">) or Activate Rod (</font><font color="#ff8000">a</font><font color="#c08040">)
   </font><font color="#ffffff">Rods are extremely powerful magical items, which cannot be burnt or 
   shattered, and which can have either staff-like or wand-like effects, 
   but unlike staves and wands, they don't have charges. Instead, they 
@@ -442,7 +442,7 @@ maximal legal value.
 
 <a name="ThrowFire"></a></font><font color="#c00000">Throwing and Missile Weapons
 
-  </font><font color="#ffcc80">Fire Item (</font><font color="#ff9200">f</font><font color="#ffcc80">) or (</font><font color="#ff9200">t</font><font color="#ffcc80">)
+  </font><font color="#c08040">Fire Item (</font><font color="#ff8000">f</font><font color="#c08040">) or (</font><font color="#ff8000">t</font><font color="#c08040">)
   </font><font color="#ffffff">You may throw any object carried by your character. Depending on the 
   weight, it may travel across the room or drop down beside you. Only 
   one object from a pile will be thrown at a time. Note that throwing 
@@ -462,7 +462,7 @@ maximal legal value.
   Targeting mode (see the next command) can be invoked with "*" at the 
   "Direction?" prompt.
 
-  </font><font color="#ffcc80">Throw Item (</font><font color="#ff9200">v</font><font color="#ffcc80">)
+  </font><font color="#c08040">Throw Item (</font><font color="#ff8000">v</font><font color="#c08040">)
   </font><font color="#ffffff">You may throw any object carried by your character. The lighter the 
   object, the farther you can throw it. Only one object from a stack 
   may be thrown at a time. Throwing an object may break it. If you 
@@ -473,7 +473,7 @@ maximal legal value.
   do a substantial amount of damage. This command requires a direction, 
   and can take a target.
 
-  </font><font color="#ffcc80">Set Target (</font><font color="#ff9200">*</font><font color="#ffcc80">)
+  </font><font color="#c08040">Set Target (</font><font color="#ff8000">*</font><font color="#c08040">)
   </font><font color="#ffffff">This will allow you to aim your spells and such at a specific monster 
   or grid, so that you can point directly towards that monster or grid 
   (even if this is not a "compass" direction) when you are asked for a 
@@ -483,20 +483,20 @@ maximal legal value.
   At the targeting prompt, you have many options. First of all, 
   targeting mode starts targeting nearby monsters which can be reached 
   by projectable spells and thrown objects. In this mode, you can press 
-  </font><font color="#ff9200">t </font><font color="#ffffff">(or </font><font color="#ff9200">5 </font><font color="#ffffff">or </font><font color="#ff9200">.</font><font color="#ffffff">) to select the current monster, </font><font color="#ff9200">SPACE </font><font color="#ffffff">to advance to the 
-  next monster, </font><font color="#ff9200">- </font><font color="#ffffff">to back up to the previous monster, direction keys to 
-  advance to a monster more or less in that direction, </font><font color="#ff9200">r </font><font color="#ffffff">to recall the 
-  current monster, </font><font color="#ff9200">q </font><font color="#ffffff">to exit targeting mode, and </font><font color="#ff9200">p </font><font color="#ffffff">(or </font><font color="#ff9200">o</font><font color="#ffffff">) to stop 
+  </font><font color="#ff8000">t </font><font color="#ffffff">(or </font><font color="#ff8000">5 </font><font color="#ffffff">or </font><font color="#ff8000">.</font><font color="#ffffff">) to select the current monster, </font><font color="#ff8000">SPACE </font><font color="#ffffff">to advance to the 
+  next monster, </font><font color="#ff8000">- </font><font color="#ffffff">to back up to the previous monster, direction keys to 
+  advance to a monster more or less in that direction, </font><font color="#ff8000">r </font><font color="#ffffff">to recall the 
+  current monster, </font><font color="#ff8000">q </font><font color="#ffffff">to exit targeting mode, and </font><font color="#ff8000">p </font><font color="#ffffff">(or </font><font color="#ff8000">o</font><font color="#ffffff">) to stop 
   targeting monsters and enter the mode for targeting a location on the 
   floor or in a wall. Note that if there are no nearby monsters, you 
-  will automatically enter this mode. Note that hitting </font><font color="#ff9200">o </font><font color="#ffffff">is just like 
-  </font><font color="#ff9200">p</font><font color="#ffffff">, except that the location cursor starts on the last examined 
+  will automatically enter this mode. Note that hitting </font><font color="#ff8000">o </font><font color="#ffffff">is just like 
+  </font><font color="#ff8000">p</font><font color="#ffffff">, except that the location cursor starts on the last examined 
   monster instead of on the player. In this mode, you use the 
-  "direction" keys to move around, and the </font><font color="#ff9200">q </font><font color="#ffffff">key to quit, and the </font><font color="#ff9200">t </font><font color="#ffffff">(or 
-  </font><font color="#ff9200">5 </font><font color="#ffffff">or </font><font color="#ff9200">.</font><font color="#ffffff">) key to target the cursor location. Note that targeting a 
+  "direction" keys to move around, and the </font><font color="#ff8000">q </font><font color="#ffffff">key to quit, and the </font><font color="#ff8000">t </font><font color="#ffffff">(or 
+  </font><font color="#ff8000">5 </font><font color="#ffffff">or </font><font color="#ff8000">.</font><font color="#ffffff">) key to target the cursor location. Note that targeting a 
   location is slightly "dangerous", as the target is maintained even if 
-  you are far away. To cancel an old target, simply hit </font><font color="#ff9200">* </font><font color="#ffffff">and then 
-  </font><font color="#ff9200">ESCAPE </font><font color="#ffffff">(or </font><font color="#ff9200">q</font><font color="#ffffff">).
+  you are far away. To cancel an old target, simply hit </font><font color="#ff8000">* </font><font color="#ffffff">and then 
+  </font><font color="#ff8000">ESCAPE </font><font color="#ffffff">(or </font><font color="#ff8000">q</font><font color="#ffffff">).
   
   Note that when you cast a spell or throw an object at the target 
   location, the path chosen is the "optimal" path towards that 
@@ -506,7 +506,7 @@ maximal legal value.
   hole or corridor that is blocking direct access to a different grid.
   
     Position: open floor [q,t,p,m,+,-,?,&lt;dir&gt;]
-    </font><font color="#ffcc80">###########
+    </font><font color="#c08040">###########
     </font><font color="#ffffff">#.........#############
     #.........#...........#
     #.........#...........#
@@ -514,13 +514,13 @@ maximal legal value.
     #.........#...........#
     #.....................#
     #.........#...........#
-    #.........#...........</font><font color="#8c8c8c">%
-    </font><font color="#ffffff">#.........####.#</font><font color="#8c8c8c">%</font><font color="#ffffff">###</font><font color="#8c8c8c">%</font><font color="#ffffff">##.
-    #..........</font><font color="#8c8c8c">******</font><font color="#fffd00">d</font><font color="#ffffff">......
-    </font><font color="#8a8a8a">*****</font><font color="#8c8c8c">******</font><font color="#ffffff">###.#</font><font color="#8c8c8c">%%%</font><font color="#ffffff">#</font><font color="#8c8c8c">%</font><font color="#ffffff">###</font><font color="#ffcc80">+ </font><font color="#8c8c8c">% %
-    </font><font color="#ffffff">###</font><font color="#8c8c8c">%</font><font color="#ffffff">#######</font><font color="#8c8c8c">%</font><font color="#ffffff">#.</font><font color="#8c8c8c">%</font><font color="#ffffff">.#.#.#.</font><font color="#ff9200">*</font><font color="#ffffff">.</font><font color="#8c8c8c">%</font><font color="#ffffff">.</font><font color="#8c8c8c">%</font><font color="#ffffff">.</font><font color="#8c8c8c">%
-               %</font><font color="#ffffff">................</font><font color="#8c8c8c">%
-               </font><font color="#ffffff">#</font><font color="#8c8c8c">%</font><font color="#ffffff">.#.#.#.</font><font color="#8c8c8c">%</font><font color="#ffffff">.</font><font color="#8c8c8c">%</font><font color="#ffffff">.%.</font><font color="#8c8c8c">%</font><font color="#ffffff">.</font><font color="#8c8c8c">%
+    #.........#...........</font><font color="#909090">%
+    </font><font color="#ffffff">#.........####.#</font><font color="#909090">%</font><font color="#ffffff">###</font><font color="#909090">%</font><font color="#ffffff">##.
+    #..........</font><font color="#909090">******</font><font color="#ffff00">d</font><font color="#ffffff">......
+    </font><font color="#707070">*****</font><font color="#909090">******</font><font color="#ffffff">###.#</font><font color="#909090">%%%</font><font color="#ffffff">#</font><font color="#909090">%</font><font color="#ffffff">###</font><font color="#c08040">+ </font><font color="#909090">% %
+    </font><font color="#ffffff">###</font><font color="#909090">%</font><font color="#ffffff">#######</font><font color="#909090">%</font><font color="#ffffff">#.</font><font color="#909090">%</font><font color="#ffffff">.#.#.#.</font><font color="#ff8000">*</font><font color="#ffffff">.</font><font color="#909090">%</font><font color="#ffffff">.</font><font color="#909090">%</font><font color="#ffffff">.</font><font color="#909090">%
+               %</font><font color="#ffffff">................</font><font color="#909090">%
+               </font><font color="#ffffff">#</font><font color="#909090">%</font><font color="#ffffff">.#.#.#.</font><font color="#909090">%</font><font color="#ffffff">.</font><font color="#909090">%</font><font color="#ffffff">.%.</font><font color="#909090">%</font><font color="#ffffff">.</font><font color="#909090">%
   
   </font><font color="#ffffff">Launching a ball spell or breath weapon at a location in the middle 
   of a group of monsters can often improve the effects of that attack, 
@@ -529,7 +529,7 @@ maximal legal value.
 
 <a name="Looking"></a></font><font color="#c00000">Looking Commands
 
-  </font><font color="#ffcc80">Full screen map (</font><font color="#ff9200">M</font><font color="#ffcc80">)
+  </font><font color="#c08040">Full screen map (</font><font color="#ff8000">M</font><font color="#c08040">)
   </font><font color="#ffffff">This command will show a map of the entire dungeon, reduced by a 
   factor of nine, on the screen. Only the major dungeon features will 
   be visible because of the scale, so even some important objects may 
@@ -538,24 +538,24 @@ maximal legal value.
   unexplored areas of the dungeon. This command takes no time.
   
     +------------------------------------------------------------------+
-    |                          </font><font color="#ffcc80">######  #########                       </font><font color="#ffffff">|
-    |                   ########....####.......</font><font color="#8c8c8c">%                       </font><font color="#ffffff">|
+    |                          </font><font color="#c08040">######  #########                       </font><font color="#ffffff">|
+    |                   ########....####.......</font><font color="#909090">%                       </font><font color="#ffffff">|
     |             ######......#####.####.......#                       |
-    |             </font><font color="#fffd00">d</font><font color="#ffffff">......##            ######</font><font color="#8c8c8c">%%</font><font color="#ffffff">#                       |
+    |             </font><font color="#ffff00">d</font><font color="#ffffff">......##            ######</font><font color="#909090">%%</font><font color="#ffffff">#                       |
     |            &lt;###.....#                                            |
-    |             ##</font><font color="#ffcc80">'</font><font color="#ffffff">.....#                                            |
-    |             ##</font><font color="#ffcc80">'</font><font color="#ffffff">.....#                                            |
-    |              ##</font><font color="#ffcc80">+</font><font color="#ffffff">#####                                            |
+    |             ##</font><font color="#c08040">'</font><font color="#ffffff">.....#                                            |
+    |             ##</font><font color="#c08040">'</font><font color="#ffffff">.....#                                            |
+    |              ##</font><font color="#c08040">+</font><font color="#ffffff">#####                                            |
     |     #####    ..                                                  |
     |     #...#    ##                                                  |
-    |     ###%</font><font color="#ffcc80">'</font><font color="#ffffff">##%#%#                                                  |
+    |     ###%</font><font color="#c08040">'</font><font color="#ffffff">##%#%#                                                  |
     |        %###%%&lt;#                                                  |
     |              .#                                                  |
-    |              </font><font color="#8c8c8c">%</font><font color="#ffffff">#                                                  |
-    |              </font><font color="#8c8c8c">%%                                                  </font><font color="#ffffff">|
-    |            #</font><font color="#8c8c8c">%</font><font color="#ffffff">#</font><font color="#8c8c8c">%%                                                 </font><font color="#ffffff">|
+    |              </font><font color="#909090">%</font><font color="#ffffff">#                                                  |
+    |              </font><font color="#909090">%%                                                  </font><font color="#ffffff">|
+    |            #</font><font color="#909090">%</font><font color="#ffffff">#</font><font color="#909090">%%                                                 </font><font color="#ffffff">|
     |            #...#                                                 |
-    |            ###</font><font color="#8c8c8c">%</font><font color="#ffffff">#                                                 |
+    |            ###</font><font color="#909090">%</font><font color="#ffffff">#                                                 |
   
   If object auto-picker/destroyer is set up, specified objects can be 
   displayed in this command, when you press the M, N, K or D. The M 
@@ -563,7 +563,7 @@ maximal legal value.
   displays 'auto-destroy'. And the D is same as the M plus the N. You 
   can press any other key to quit this map command.
 
-  </font><font color="#ffcc80">Locate Player on Map (</font><font color="#ff9200">L</font><font color="#ffcc80">) or Where is the Player? (</font><font color="#ff9200">W</font><font color="#ffcc80">)
+  </font><font color="#c08040">Locate Player on Map (</font><font color="#ff8000">L</font><font color="#c08040">) or Where is the Player? (</font><font color="#ff8000">W</font><font color="#c08040">)
   </font><font color="#ffffff">This command lets you scroll your map around, looking at all sectors 
   of the current dungeon level, until you press escape, at which point 
   the map will be re-centered on the player if necessary. To scroll the 
@@ -571,15 +571,15 @@ maximal legal value.
   will display the sector location, and the offset from your current 
   sector. This command takes no time.
 
-  </font><font color="#ffcc80">Recenter Viewport (</font><font color="#ff9200">^V</font><font color="#ffcc80">)
+  </font><font color="#c08040">Recenter Viewport (</font><font color="#ff8000">^V</font><font color="#c08040">)
   </font><font color="#ffffff">This command re-centers the viewport on the player, and is very 
   useful when you approach the edge of the screen. The game will adjust 
   the viewport automatically as you move, but it currently only does so 
   when you approach within 2 squares of the top or bottom, or within 4 
   squares of the left or right. This command is a quicker alternative 
-  to the </font><font color="#ffcc80">Locate Player on Map </font><font color="#ffffff">command just discussed.
+  to the </font><font color="#c08040">Locate Player on Map </font><font color="#ffffff">command just discussed.
 
-  </font><font color="#ffcc80">Look Around (</font><font color="#ff9200">l</font><font color="#ffcc80">) or Examine Things (</font><font color="#ff9200">x</font><font color="#ffcc80">)
+  </font><font color="#c08040">Look Around (</font><font color="#ff8000">l</font><font color="#c08040">) or Examine Things (</font><font color="#ff8000">x</font><font color="#c08040">)
   </font><font color="#ffffff">This command is used to look around at nearby monsters (to determine 
   their type and health) and objects (to determine their type). It is 
   also used to find out what objects (if any) are under monsters, and 
@@ -594,44 +594,44 @@ maximal legal value.
   around. You always start out looking at the "nearest" interesting 
   monster or object.
 
-  </font><font color="#ffcc80">Inspect Item (</font><font color="#ff9200">I</font><font color="#ffcc80">)
+  </font><font color="#c08040">Inspect Item (</font><font color="#ff8000">I</font><font color="#c08040">)
   </font><font color="#ffffff">This command lets you observe a previously *identified* item. This 
   will tell you things about the special powers of the object. 
   Currently, it only makes sense for artifacts and ego-items.
 
 <a name="Message"></a></font><font color="#c00000">Message Commands
 
-  </font><font color="#ffcc80">Repeat Level Feeling (</font><font color="#ff9200">^F</font><font color="#ffcc80">)
+  </font><font color="#c08040">Repeat Level Feeling (</font><font color="#ff8000">^F</font><font color="#c08040">)
   </font><font color="#ffffff">Repeats the current feeling about the dungeon level.
 
-  </font><font color="#ffcc80">View Previous Messages (</font><font color="#ff9200">^P</font><font color="#ffcc80">)
+  </font><font color="#c08040">View Previous Messages (</font><font color="#ff8000">^P</font><font color="#c08040">)
   </font><font color="#ffffff">This command shows you all the recent messages. You can scroll 
   through them, or exit with ESCAPE. This command takes no time.
 
-  </font><font color="#ffcc80">Take notes (</font><font color="#ff9200">:</font><font color="#ffcc80">)
+  </font><font color="#c08040">Take notes (</font><font color="#ff8000">:</font><font color="#c08040">)
   </font><font color="#ffffff">This command allows you to take notes, which will then appear in your 
   message list (prefixed with "Note:"). This command takes no time. It 
   also adds a tiny screenshot to your message log. For example:
   
-    </font><font color="#fffd00">Note: </font><font color="#ffffff">These bats are </font><font color="#a500ff">so </font><font color="#ffffff">dead!!
+    </font><font color="#ffff00">Note: </font><font color="#ffffff">These bats are </font><font color="#ff00ff">so </font><font color="#ffffff">dead!!
                   #.################.#
                   #..........&lt;.......#
-                  #.##############</font><font color="#ffcc80">&gt;</font><font color="#ffffff">#.#
+                  #.##############</font><font color="#c08040">&gt;</font><font color="#ffffff">#.#
               #####.#              #.######
               #.....#              #.......
               #.#####              ########
               #.#                         #
-      #########</font><font color="#ffcc80">'</font><font color="#ffffff">########
+      #########</font><font color="#c08040">'</font><font color="#ffffff">########
       #................#
       #...........@....#
-      #.......</font><font color="#a500ff">b</font><font color="#ffffff">........#
+      #.......</font><font color="#ff00ff">b</font><font color="#ffffff">........#
       #................#
-      #.........</font><font color="#a500ff">b</font><font color="#ffffff">......</font><font color="#c86400">'
+      #.........</font><font color="#ff00ff">b</font><font color="#ffffff">......</font><font color="#a05010">'
       </font><font color="#ffffff">#................#
       #................#
       #................#
       #................#
-      </font><font color="#ffcc80">##################
+      </font><font color="#c08040">##################
     
     </font><font color="#ffffff">Targetting a Fruit bat.
     The Fruit bat dies.
@@ -641,7 +641,7 @@ maximal legal value.
     
 <a name="GameStatus"></a>  </font><font color="#c00000">Game Status Commands
   
-    </font><font color="#ffcc80">Character Description (</font><font color="#ff9200">C</font><font color="#ffcc80">)
+    </font><font color="#c08040">Character Description (</font><font color="#ff8000">C</font><font color="#c08040">)
     </font><font color="#ffffff">Brings up a full description of your character, including your 
     skill levels, your current and potential stats, and various other 
     information. From this screen, you can change your name or use the 
@@ -649,7 +649,7 @@ maximal legal value.
     a file. That command saves additional information, including your 
     background, your inventory, and the contents of your house.
   
-    </font><font color="#ffcc80">Knowledge Menu (</font><font color="#ff9200">~</font><font color="#ffcc80">)
+    </font><font color="#c08040">Knowledge Menu (</font><font color="#ff8000">~</font><font color="#c08040">)
     </font><font color="#ffffff">The command opens a menu from which you can select information 
     about seen Artifacts, Unique monsters, identified objects, etc:
     
@@ -678,23 +678,23 @@ maximal legal value.
     document right now. Poke around and you'll see what sorts of 
     information is available.
   
-    </font><font color="#ffcc80">Display game time (</font><font color="#ff9200">^T</font><font color="#ffcc80">) or (</font><font color="#ff9200">'</font><font color="#ffcc80">)
+    </font><font color="#c08040">Display game time (</font><font color="#ff8000">^T</font><font color="#c08040">) or (</font><font color="#ff8000">'</font><font color="#c08040">)
     </font><font color="#ffffff">This command shows you current date and time in the game.
   
 <a name="SaveExit"></a>  </font><font color="#c00000">Saving and Exiting Commands
   
-    </font><font color="#ffcc80">Save and Quit (</font><font color="#ff9200">^X</font><font color="#ffcc80">)
+    </font><font color="#c08040">Save and Quit (</font><font color="#ff8000">^X</font><font color="#c08040">)
     </font><font color="#ffffff">To save your game so that you can return to it later, use this 
     command. Save files will also be generated (hopefully) if the game 
     crashes due to a system error. After you die, you can use your 
     savefile to play again with the same options and such.
   
-    </font><font color="#ffcc80">Save (</font><font color="#ff9200">^S</font><font color="#ffcc80">)
+    </font><font color="#c08040">Save (</font><font color="#ff8000">^S</font><font color="#c08040">)
     </font><font color="#ffffff">This command saves the game but doesn't exit. Use this frequently 
     if you are paranoid about having the computer crash while you are 
     playing.
   
-    </font><font color="#ffcc80">Quit (commit suicide) (</font><font color="#ff9200">Q</font><font color="#ffcc80">)
+    </font><font color="#c08040">Quit (commit suicide) (</font><font color="#ff8000">Q</font><font color="#c08040">)
     </font><font color="#ffffff">Kills your character and exits the game. You will be prompted to 
     make sure you really want to do this, and then asked to verify that 
     choice. Note that dead characters are dead forever.
@@ -704,48 +704,48 @@ maximal legal value.
   </font><font color="#ffffff">See <a href="pref_contents.html"></font><font color="#00ff00">[a]</a> </font><font color="#ffffff">for a description of the user preference commands together 
   with a detailed description of this function.
   
-    </font><font color="#ffcc80">Interact with Options (</font><font color="#ff9200">=</font><font color="#ffcc80">)
+    </font><font color="#c08040">Interact with Options (</font><font color="#ff8000">=</font><font color="#c08040">)
     </font><font color="#ffffff">Allow you to interact with options. Note that using the cheat 
     options may mark your savefile as unsuitable for the high score 
-    list. You may change normal options using the </font><font color="#ff9200">X </font><font color="#ffffff">and </font><font color="#ff9200">Y </font><font color="#ffffff">user pref 
-    commands. You must use the redraw command (</font><font color="#ff9200">^R</font><font color="#ffffff">) after changing 
+    list. You may change normal options using the </font><font color="#ff8000">X </font><font color="#ffffff">and </font><font color="#ff8000">Y </font><font color="#ffffff">user pref 
+    commands. You must use the redraw command (</font><font color="#ff8000">^R</font><font color="#ffffff">) after changing 
     certain options.
   
-    </font><font color="#ffcc80">Interact with Macros (</font><font color="#ff9200">@</font><font color="#ffcc80">)
+    </font><font color="#c08040">Interact with Macros (</font><font color="#ff8000">@</font><font color="#c08040">)
     </font><font color="#ffffff">Allow you to interact with macros. You may load or save macros from 
     user pref files, create macros of various types, or define keymaps.
   
-    </font><font color="#ffcc80">Interact with Visuals (</font><font color="#ff9200">%</font><font color="#ffcc80">)
+    </font><font color="#c08040">Interact with Visuals (</font><font color="#ff8000">%</font><font color="#c08040">)
     </font><font color="#ffffff">Allow you to interact with visuals. You may load or save visuals 
     from user pref files, or modify the attr/char mappings for the 
     monsters, objects, and terrain features.
   
-    </font><font color="#ffcc80">Interact with Colors (</font><font color="#ff9200">&amp;</font><font color="#ffcc80">)
+    </font><font color="#c08040">Interact with Colors (</font><font color="#ff8000">&amp;</font><font color="#c08040">)
     </font><font color="#ffffff">Allow the user to interact with colors. This command only works on 
     some systems.
    
-    </font><font color="#ffcc80">Reload Auto-picker/destroyer Preferences (</font><font color="#ff9200">$</font><font color="#ffcc80">)
+    </font><font color="#c08040">Reload Auto-picker/destroyer Preferences (</font><font color="#ff8000">$</font><font color="#c08040">)
     </font><font color="#ffffff">This command will reload "pickpref.prf" and 
     "pickpref-&lt;&lt;playername&gt;&gt;.prf" for object auto-picker/destroyer 
     after you edit these files with your text editor.
   
-    </font><font color="#ffcc80">Edit Auto-picker/destroyer Preferences (</font><font color="#ff9200">_</font><font color="#ffcc80">)
+    </font><font color="#c08040">Edit Auto-picker/destroyer Preferences (</font><font color="#ff8000">_</font><font color="#c08040">)
     </font><font color="#ffffff">Allow the user to edit the pickpref.prf in the user directory. The 
-    </font><font color="#ff9200">ESC </font><font color="#ffffff">key will open the menu in this editor.  You can see and use all 
-    edit commands from the command menu.  Press </font><font color="#ff9200">^Q </font><font color="#ffffff">or </font><font color="#ff9200">^W </font><font color="#ffffff">to quit the 
+    </font><font color="#ff8000">ESC </font><font color="#ffffff">key will open the menu in this editor.  You can see and use all 
+    edit commands from the command menu.  Press </font><font color="#ff8000">^Q </font><font color="#ffffff">or </font><font color="#ff8000">^W </font><font color="#ffffff">to quit the 
     editor.
   
 <a name="Help"></a>  </font><font color="#c00000">Help
   
-    </font><font color="#ffcc80">Help (</font><font color="#ff9200">?</font><font color="#ffcc80">)
+    </font><font color="#c08040">Help (</font><font color="#ff8000">?</font><font color="#c08040">)
     </font><font color="#ffffff">Brings up the on-line help system. Note that the help files are 
     just text files in a particular format, and that other help files 
     may be available on the Net. In particular, there are a variety of 
     spoiler files which do not come with the standard distribution. 
-    Check the place you got PosChengband from or ask on the newsgroup 
+    Check the place you got FrogComposband from or ask on the newsgroup 
     rec.games.roguelike.angband about them.
   
-    </font><font color="#ffcc80">Identify Symbol (</font><font color="#ff9200">/</font><font color="#ffcc80">)
+    </font><font color="#c08040">Identify Symbol (</font><font color="#ff8000">/</font><font color="#c08040">)
     </font><font color="#ffffff">Use this command to find out what a character stands for. For 
     instance, by pressing "/.", you can find out that the "." symbol 
     stands for a floor spot. When used with a symbol that represents 
@@ -770,64 +770,64 @@ maximal legal value.
     the list sorted by dungeon level the monster is normally found on. 
     Pressing ESCAPE at any point will exit this command.
    
-    </font><font color="#ffcc80">Game Version (</font><font color="#ff9200">V</font><font color="#ffcc80">)
+    </font><font color="#c08040">Game Version (</font><font color="#ff8000">V</font><font color="#c08040">)
     </font><font color="#ffffff">This command will tell you what version of the game you are using. 
     For more information, see <a href="version.html"></font><font color="#00ff00">[b]</a></font><font color="#ffffff">.
   
 <a name="Extra"></a>  </font><font color="#c00000">Extra Commands
   
-    </font><font color="#ffcc80">Repeat Last Command (</font><font color="#ff9200">n</font><font color="#ffcc80">) or (</font><font color="#ff9200">X</font><font color="#ffcc80">)
+    </font><font color="#c08040">Repeat Last Command (</font><font color="#ff8000">n</font><font color="#c08040">) or (</font><font color="#ff8000">X</font><font color="#c08040">)
     </font><font color="#ffffff">This command repeats the previously executed command with all its 
     arguments. Very useful to repeat casting, for example, magic 
     missile to same opponent.
   
-    </font><font color="#ffcc80">Record Command (</font><font color="#ff9200">"</font><font color="#ffcc80">)
+    </font><font color="#c08040">Record Command (</font><font color="#ff8000">"</font><font color="#c08040">)
     </font><font color="#ffffff">Commands that you enter may be recorded to any normal ascii 
     character register. In fact, every command that you manually enter 
-    is automatically recorded to the </font><font color="#ff9200">. </font><font color="#ffffff">register. When you repeat the 
+    is automatically recorded to the </font><font color="#ff8000">. </font><font color="#ffffff">register. When you repeat the 
     last command, you are really playing back the contents of this 
-    special </font><font color="#ff9200">. </font><font color="#ffffff">register. But you can also record the next command to a 
+    special </font><font color="#ff8000">. </font><font color="#ffffff">register. But you can also record the next command to a 
     register of your choosing and then play it back manually later. For 
-    example, the command sequence </font><font color="#ff9200">"Fmae*t </font><font color="#ffffff">records the command </font><font color="#ff9200">mae*t </font><font color="#ffffff">to 
-    the </font><font color="#ff9200">F </font><font color="#ffffff">register in addition to the </font><font color="#ff9200">. </font><font color="#ffffff">register. You can later play 
-    back this command with </font><font color="#ff9200">'F </font><font color="#ffffff">whereas playing back with </font><font color="#ff9200">'. </font><font color="#ffffff">or </font><font color="#ff9200">n </font><font color="#ffffff">is only 
+    example, the command sequence </font><font color="#ff8000">"Fmae*t </font><font color="#ffffff">records the command </font><font color="#ff8000">mae*t </font><font color="#ffffff">to 
+    the </font><font color="#ff8000">F </font><font color="#ffffff">register in addition to the </font><font color="#ff8000">. </font><font color="#ffffff">register. You can later play 
+    back this command with </font><font color="#ff8000">'F </font><font color="#ffffff">whereas playing back with </font><font color="#ff8000">'. </font><font color="#ffffff">or </font><font color="#ff8000">n </font><font color="#ffffff">is only 
     valid on the very next turn.
   
-    </font><font color="#ffcc80">Playback Command (</font><font color="#ff9200">'</font><font color="#ffcc80">)
-    </font><font color="#ffffff">As mentioned above, you may record commands with the </font><font color="#ff9200">" </font><font color="#ffffff">command and 
-    play them back later with the </font><font color="#ff9200">' </font><font color="#ffffff">command. Commands are stored in 
+    </font><font color="#c08040">Playback Command (</font><font color="#ff8000">'</font><font color="#c08040">)
+    </font><font color="#ffffff">As mentioned above, you may record commands with the </font><font color="#ff8000">" </font><font color="#ffffff">command and 
+    play them back later with the </font><font color="#ff8000">' </font><font color="#ffffff">command. Commands are stored in 
     registers, each of which is addressed with a single ASCII 
-    character. For example, if you record a command with </font><font color="#ff9200">"t&lt;cmd&gt;</font><font color="#ffffff">, then 
-    you may later play it back by pressing </font><font color="#ff9200">'t</font><font color="#ffffff">. These command registers 
+    character. For example, if you record a command with </font><font color="#ff8000">"t&lt;cmd&gt;</font><font color="#ffffff">, then 
+    you may later play it back by pressing </font><font color="#ff8000">'t</font><font color="#ffffff">. These command registers 
     are temporary and will be erased every time you restart the game. 
-    To view your recorded commands, choose the </font><font color="#ff9200">' </font><font color="#ffffff">register (i.e., press 
-    </font><font color="#ff9200">'' </font><font color="#ffffff">from the top level). You can then enter the register you wish to 
-    use (e.g. </font><font color="#ff9200">''t </font><font color="#ffffff">works the same as </font><font color="#ff9200">'t </font><font color="#ffffff">except that the register 
+    To view your recorded commands, choose the </font><font color="#ff8000">' </font><font color="#ffffff">register (i.e., press 
+    </font><font color="#ff8000">'' </font><font color="#ffffff">from the top level). You can then enter the register you wish to 
+    use (e.g. </font><font color="#ff8000">''t </font><font color="#ffffff">works the same as </font><font color="#ff8000">'t </font><font color="#ffffff">except that the register 
     contents of all recorded commands are displayed to you after you 
-    press the second </font><font color="#ff9200">'</font><font color="#ffffff">).
+    press the second </font><font color="#ff8000">'</font><font color="#ffffff">).
   
-    </font><font color="#ffcc80">Toggle Choice Window (</font><font color="#ff9200">^I</font><font color="#ffcc80">)
+    </font><font color="#c08040">Toggle Choice Window (</font><font color="#ff8000">^I</font><font color="#c08040">)
     </font><font color="#ffffff">Toggles the display in the choice window (if available) between 
     your inventory and your equipment. This command only applies if you 
-    are running PosChengband under a windowing environment and the 
+    are running FrogComposband under a windowing environment and the 
     choice window is available. This also redraws the choice window.
   
-    </font><font color="#ffcc80">Redraw Screen (</font><font color="#ff9200">^R</font><font color="#ffcc80">)
+    </font><font color="#c08040">Redraw Screen (</font><font color="#ff8000">^R</font><font color="#c08040">)
     </font><font color="#ffffff">This command adapts to various changes in global options, and 
     redraws all of the windows. This command should be used after 
     changing various global properties (options, attr/char mappings, 
     color definitions, etc). When in doubt, use it.
           
-    </font><font color="#ffcc80">Create screen dump (</font><font color="#ff9200">)</font><font color="#ffcc80">)
+    </font><font color="#c08040">Create screen dump (</font><font color="#ff8000">)</font><font color="#c08040">)
     </font><font color="#ffffff">This command creates a document of the current screen and then 
     displays that document to you in the game's internal file viewer. 
     You may then save the document as either plaintext or as html, 
-    using the </font><font color="#ff9200">| </font><font color="#ffffff">command. To create an html file, simply give the file 
+    using the </font><font color="#ff8000">| </font><font color="#ffffff">command. To create an html file, simply give the file 
     an html extension. Note that if you are playing with graphics 
     enabled, then this command will attempt to convert to normal 
     textual display before creating the screen dump.
   
-    </font><font color="#ffcc80">Command your pets (</font><font color="#ff9200">p</font><font color="#ffcc80">)
+    </font><font color="#c08040">Command your pets (</font><font color="#ff8000">p</font><font color="#c08040">)
     </font><font color="#ffffff">If you have pets then this command allows you to give orders to 
     your pets. You can call them to you, send them out to kill other 
     monsters, dismiss them, and allow/disallow opening of door and 
@@ -836,113 +836,113 @@ maximal legal value.
   
 <a name="Summary"></a>  </font><font color="#c00000">Summary
   
-  </font><font color="#ffcc80">Inventory Commands         Original        Roguelike
-    </font><font color="#ffffff">Inventory List              </font><font color="#ff9200">i                 
-    </font><font color="#ffffff">Equipment List              </font><font color="#ff9200">e                 
-    </font><font color="#ffffff">Get Objects                 </font><font color="#ff9200">g                 
-    </font><font color="#ffffff">Drop Item                   </font><font color="#ff9200">d                 
-    </font><font color="#ffffff">Destroy Item                </font><font color="#ff9200">k               ^D
-    </font><font color="#ffffff">Wear/Wield Equipment        </font><font color="#ff9200">w                 
-    </font><font color="#ffffff">Take Off Equipment          </font><font color="#ff9200">t                T
+  </font><font color="#c08040">Inventory Commands         Original        Roguelike
+    </font><font color="#ffffff">Inventory List              </font><font color="#ff8000">i                 
+    </font><font color="#ffffff">Equipment List              </font><font color="#ff8000">e                 
+    </font><font color="#ffffff">Get Objects                 </font><font color="#ff8000">g                 
+    </font><font color="#ffffff">Drop Item                   </font><font color="#ff8000">d                 
+    </font><font color="#ffffff">Destroy Item                </font><font color="#ff8000">k               ^D
+    </font><font color="#ffffff">Wear/Wield Equipment        </font><font color="#ff8000">w                 
+    </font><font color="#ffffff">Take Off Equipment          </font><font color="#ff8000">t                T
   
-  </font><font color="#ffcc80">Movement Commands          Original        Roguelike
-    </font><font color="#ffffff">Walk (with pickup)          </font><font color="#ff9200">;                 
-    </font><font color="#ffffff">Walk (flip pickup)          </font><font color="#ff9200">-                 
-    </font><font color="#ffffff">Run                         </font><font color="#ff9200">.                ,
-    </font><font color="#ffffff">Go Up Staircase             </font><font color="#ff9200">&lt;                 
-    </font><font color="#ffffff">Go Down Staircase           </font><font color="#ff9200">&gt;                 
-    </font><font color="#ffffff">Direction Keys (DIR)     </font><font color="#ff9200">7  8  9          y  k  u
+  </font><font color="#c08040">Movement Commands          Original        Roguelike
+    </font><font color="#ffffff">Walk (with pickup)          </font><font color="#ff8000">;                 
+    </font><font color="#ffffff">Walk (flip pickup)          </font><font color="#ff8000">-                 
+    </font><font color="#ffffff">Run                         </font><font color="#ff8000">.                ,
+    </font><font color="#ffffff">Go Up Staircase             </font><font color="#ff8000">&lt;                 
+    </font><font color="#ffffff">Go Down Staircase           </font><font color="#ff8000">&gt;                 
+    </font><font color="#ffffff">Direction Keys (DIR)     </font><font color="#ff8000">7  8  9          y  k  u
                              4     6          h     l
                              1  2  3          b  j  n
-    </font><font color="#ffffff">Run                     </font><font color="#ff9200">SHIFT+DIR             
+    </font><font color="#ffffff">Run                     </font><font color="#ff8000">SHIFT+DIR             
   
-  </font><font color="#ffcc80">Resting Commands           Original        Roguelike
-    </font><font color="#ffffff">Stay (pickup)               </font><font color="#ff9200">,                .
-    </font><font color="#ffffff">Rest                        </font><font color="#ff9200">R                 
+  </font><font color="#c08040">Resting Commands           Original        Roguelike
+    </font><font color="#ffffff">Stay (pickup)               </font><font color="#ff8000">,                .
+    </font><font color="#ffffff">Rest                        </font><font color="#ff8000">R                 
   
-  </font><font color="#ffcc80">Searching Commands         Original        Roguelike
-    </font><font color="#ffffff">Search                      </font><font color="#ff9200">s                 
-    </font><font color="#ffffff">Toggle Search Mode          </font><font color="#ff9200">S                #
+  </font><font color="#c08040">Searching Commands         Original        Roguelike
+    </font><font color="#ffffff">Search                      </font><font color="#ff8000">s                 
+    </font><font color="#ffffff">Toggle Search Mode          </font><font color="#ff8000">S                #
   
-  </font><font color="#ffcc80">Alter Commands             Original        Roguelike
-    </font><font color="#ffffff">Tunnel                      </font><font color="#ff9200">T               ^T
-    </font><font color="#ffffff">Open a Door/Chest           </font><font color="#ff9200">o                 
-    </font><font color="#ffffff">Close a Door                </font><font color="#ff9200">c                 
-    </font><font color="#ffffff">Jam/Spike a Door            </font><font color="#ff9200">j                S
-    </font><font color="#ffffff">Bash/Force a Door           </font><font color="#ff9200">B                f
-    </font><font color="#ffffff">Disarm a Trap/Chest         </font><font color="#ff9200">D                 
-    </font><font color="#ffffff">Alter                       </font><font color="#ff9200">+                 
-    </font><font color="#ffffff">Alter                   </font><font color="#ff9200">CTRL+DIR              
+  </font><font color="#c08040">Alter Commands             Original        Roguelike
+    </font><font color="#ffffff">Tunnel                      </font><font color="#ff8000">T               ^T
+    </font><font color="#ffffff">Open a Door/Chest           </font><font color="#ff8000">o                 
+    </font><font color="#ffffff">Close a Door                </font><font color="#ff8000">c                 
+    </font><font color="#ffffff">Jam/Spike a Door            </font><font color="#ff8000">j                S
+    </font><font color="#ffffff">Bash/Force a Door           </font><font color="#ff8000">B                f
+    </font><font color="#ffffff">Disarm a Trap/Chest         </font><font color="#ff8000">D                 
+    </font><font color="#ffffff">Alter                       </font><font color="#ff8000">+                 
+    </font><font color="#ffffff">Alter                   </font><font color="#ff8000">CTRL+DIR              
   
-  </font><font color="#ffcc80">Spell Commands             Original        Roguelike
-    </font><font color="#ffffff">Browse/Peruse Spells        </font><font color="#ff9200">b                P
-    </font><font color="#ffffff">Gain Spell                  </font><font color="#ff9200">G                 
-    </font><font color="#ffffff">Cast Spell                  </font><font color="#ff9200">m                 
-    </font><font color="#ffffff">Use Power                   </font><font color="#ff9200">U                O
+  </font><font color="#c08040">Spell Commands             Original        Roguelike
+    </font><font color="#ffffff">Browse/Peruse Spells        </font><font color="#ff8000">b                P
+    </font><font color="#ffffff">Gain Spell                  </font><font color="#ff8000">G                 
+    </font><font color="#ffffff">Cast Spell                  </font><font color="#ff8000">m                 
+    </font><font color="#ffffff">Use Power                   </font><font color="#ff8000">U                O
   
-  </font><font color="#ffcc80">Object Commands            Original        Roguelike
-    </font><font color="#ffffff">Eat Food                    </font><font color="#ff9200">E                 
-    </font><font color="#ffffff">Fuel Lantern/Torch          </font><font color="#ff9200">F                 
-    </font><font color="#ffffff">Quaff Potion                </font><font color="#ff9200">q                 
-    </font><font color="#ffffff">Read Scroll                 </font><font color="#ff9200">r                 
-    </font><font color="#ffffff">Inscribe Object             </font><font color="#ff9200">{                 
-    </font><font color="#ffffff">Un-inscribe Object          </font><font color="#ff9200">}                 
+  </font><font color="#c08040">Object Commands            Original        Roguelike
+    </font><font color="#ffffff">Eat Food                    </font><font color="#ff8000">E                 
+    </font><font color="#ffffff">Fuel Lantern/Torch          </font><font color="#ff8000">F                 
+    </font><font color="#ffffff">Quaff Potion                </font><font color="#ff8000">q                 
+    </font><font color="#ffffff">Read Scroll                 </font><font color="#ff8000">r                 
+    </font><font color="#ffffff">Inscribe Object             </font><font color="#ff8000">{                 
+    </font><font color="#ffffff">Un-inscribe Object          </font><font color="#ff8000">}                 
   
-  </font><font color="#ffcc80">Magic Device Commands      Original        Roguelike
-    </font><font color="#ffffff">Activate Object             </font><font color="#ff9200">A                 
-    </font><font color="#ffffff">Aim/Zap Wand                </font><font color="#ff9200">a                z
-    </font><font color="#ffffff">Use/Zap Staff               </font><font color="#ff9200">u                Z
-    </font><font color="#ffffff">Zap/Activate Rod            </font><font color="#ff9200">z                a
+  </font><font color="#c08040">Magic Device Commands      Original        Roguelike
+    </font><font color="#ffffff">Activate Object             </font><font color="#ff8000">A                 
+    </font><font color="#ffffff">Aim/Zap Wand                </font><font color="#ff8000">a                z
+    </font><font color="#ffffff">Use/Zap Staff               </font><font color="#ff8000">u                Z
+    </font><font color="#ffffff">Zap/Activate Rod            </font><font color="#ff8000">z                a
   
-  </font><font color="#ffcc80">Missile Commands           Original        Roguelike
-    </font><font color="#ffffff">Fire Item                   </font><font color="#ff9200">f                t
-    </font><font color="#ffffff">Throw Item                  </font><font color="#ff9200">v                 
-    </font><font color="#ffffff">Set Target                  </font><font color="#ff9200">*                 
+  </font><font color="#c08040">Missile Commands           Original        Roguelike
+    </font><font color="#ffffff">Fire Item                   </font><font color="#ff8000">f                t
+    </font><font color="#ffffff">Throw Item                  </font><font color="#ff8000">v                 
+    </font><font color="#ffffff">Set Target                  </font><font color="#ff8000">*                 
   
-  </font><font color="#ffcc80">Looking Commands           Original        Roguelike
-    </font><font color="#ffffff">Full Screen Map             </font><font color="#ff9200">M                 
-    </font><font color="#ffffff">Locate Player on Map        </font><font color="#ff9200">L                W
-    </font><font color="#ffffff">Look Around                 </font><font color="#ff9200">l                x
-    </font><font color="#ffffff">Recenter Viewport          </font><font color="#ff9200">^V                 
-    </font><font color="#ffffff">Inspect Item                </font><font color="#ff9200">I                 
+  </font><font color="#c08040">Looking Commands           Original        Roguelike
+    </font><font color="#ffffff">Full Screen Map             </font><font color="#ff8000">M                 
+    </font><font color="#ffffff">Locate Player on Map        </font><font color="#ff8000">L                W
+    </font><font color="#ffffff">Look Around                 </font><font color="#ff8000">l                x
+    </font><font color="#ffffff">Recenter Viewport          </font><font color="#ff8000">^V                 
+    </font><font color="#ffffff">Inspect Item                </font><font color="#ff8000">I                 
   
-  </font><font color="#ffcc80">Message Commands           Original        Roguelike
-    </font><font color="#ffffff">Repeat Level Feeling       </font><font color="#ff9200">^F                 
-    </font><font color="#ffffff">Previous Messages          </font><font color="#ff9200">^P                 
-    </font><font color="#ffffff">Take Notes                  </font><font color="#ff9200">:                 
+  </font><font color="#c08040">Message Commands           Original        Roguelike
+    </font><font color="#ffffff">Repeat Level Feeling       </font><font color="#ff8000">^F                 
+    </font><font color="#ffffff">Previous Messages          </font><font color="#ff8000">^P                 
+    </font><font color="#ffffff">Take Notes                  </font><font color="#ff8000">:                 
   
-  </font><font color="#ffcc80">Game Status Commands       Original        Roguelike
-    </font><font color="#ffffff">Character Description       </font><font color="#ff9200">C                 
-    </font><font color="#ffffff">Knowledge Menu              </font><font color="#ff9200">~                 
-    </font><font color="#ffffff">Display Game Time          </font><font color="#ff9200">^T                '
+  </font><font color="#c08040">Game Status Commands       Original        Roguelike
+    </font><font color="#ffffff">Character Description       </font><font color="#ff8000">C                 
+    </font><font color="#ffffff">Knowledge Menu              </font><font color="#ff8000">~                 
+    </font><font color="#ffffff">Display Game Time          </font><font color="#ff8000">^T                '
   
-  </font><font color="#ffcc80">Save/Quit Commands         Original        Roguelike
-    </font><font color="#ffffff">Save and Quit              </font><font color="#ff9200">^X
-    </font><font color="#ffffff">Save                       </font><font color="#ff9200">^S
-    </font><font color="#ffffff">Quit/Commit Suicide         </font><font color="#ff9200">Q
+  </font><font color="#c08040">Save/Quit Commands         Original        Roguelike
+    </font><font color="#ffffff">Save and Quit              </font><font color="#ff8000">^X
+    </font><font color="#ffffff">Save                       </font><font color="#ff8000">^S
+    </font><font color="#ffffff">Quit/Commit Suicide         </font><font color="#ff8000">Q
   
-  </font><font color="#ffcc80">User Preference Commands   Original        Roguelike
-    </font><font color="#ffffff">Interact with Options       </font><font color="#ff9200">=
-    </font><font color="#ffffff">Interact with Macros        </font><font color="#ff9200">@
-    </font><font color="#ffffff">Interact with Visuals       </font><font color="#ff9200">%
-    </font><font color="#ffffff">Interact with Colors        </font><font color="#ff9200">&amp;
-    </font><font color="#ffffff">Reload Auto-Picker Prefs    </font><font color="#ff9200">$
-    </font><font color="#ffffff">Edit Auto-Picker Prefs      </font><font color="#ff9200">_
+  </font><font color="#c08040">User Preference Commands   Original        Roguelike
+    </font><font color="#ffffff">Interact with Options       </font><font color="#ff8000">=
+    </font><font color="#ffffff">Interact with Macros        </font><font color="#ff8000">@
+    </font><font color="#ffffff">Interact with Visuals       </font><font color="#ff8000">%
+    </font><font color="#ffffff">Interact with Colors        </font><font color="#ff8000">&amp;
+    </font><font color="#ffffff">Reload Auto-Picker Prefs    </font><font color="#ff8000">$
+    </font><font color="#ffffff">Edit Auto-Picker Prefs      </font><font color="#ff8000">_
   
-  </font><font color="#ffcc80">Help Commands              Original        Roguelike
-    </font><font color="#ffffff">Help                        </font><font color="#ff9200">?
-    </font><font color="#ffffff">Identify Symbol             </font><font color="#ff9200">/
-    </font><font color="#ffffff">Game Version                </font><font color="#ff9200">V
+  </font><font color="#c08040">Help Commands              Original        Roguelike
+    </font><font color="#ffffff">Help                        </font><font color="#ff8000">?
+    </font><font color="#ffffff">Identify Symbol             </font><font color="#ff8000">/
+    </font><font color="#ffffff">Game Version                </font><font color="#ff8000">V
   
-  </font><font color="#ffcc80">Extra Commands             Original        Roguelike
-    </font><font color="#ffffff">Repeat Last Command         </font><font color="#ff9200">n                X
-    </font><font color="#ffffff">Toggle Choice Window       </font><font color="#ff9200">^I                 
-    </font><font color="#ffffff">Redraw Screen              </font><font color="#ff9200">^R                 
-    </font><font color="#ffffff">Create Screen Dump          </font><font color="#ff9200">)                 
-    </font><font color="#ffffff">Command Pets                </font><font color="#ff9200">p                 
+  </font><font color="#c08040">Extra Commands             Original        Roguelike
+    </font><font color="#ffffff">Repeat Last Command         </font><font color="#ff8000">n                X
+    </font><font color="#ffffff">Toggle Choice Window       </font><font color="#ff8000">^I                 
+    </font><font color="#ffffff">Redraw Screen              </font><font color="#ff8000">^R                 
+    </font><font color="#ffffff">Create Screen Dump          </font><font color="#ff8000">)                 
+    </font><font color="#ffffff">Command Pets                </font><font color="#ff8000">p                 
   
   
-  </font><font color="#8a8a8a">Original   : Alexander Cutler and Andy Astrand
+  </font><font color="#707070">Original   : Alexander Cutler and Andy Astrand
   Updated    : (2.7.6) by Russ Allbery (rra@cs.stanford.edu)
   Updated    : (2.7.9) by Ben Harrison (benh@phial.com)
   Updated    : Zangband 2.2.0 through 2.2.6c by Robert Ruehlmann
