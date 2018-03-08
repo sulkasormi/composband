@@ -1,2 +1,2 @@
 #!/bin/sh
-less ~/.angband/PosChengband/$1.txt
+less ~/.angband/FrogComposband/$1.txt
