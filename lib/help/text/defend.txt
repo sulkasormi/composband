@@ -58,7 +58,7 @@ no damage is the same as a miss. Two, good armor will absorb some of
 the damage that your character would have taken from normal attacks. 
 Three, acid damage is reduced by wearing body armor (but the armor will 
 be damaged instead). It is obvious that a high armor class is a must 
-for surviving the deeper levels of PosChengband. Note, however, that 
+for surviving the deeper levels of FrogComposband. Note, however, that 
 armor class by itself will not protect you from the side effects of 
 monster melee attacks mentioned above.
 

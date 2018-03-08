@@ -2,7 +2,7 @@ Monsters
 
 Please choose one of the following online help files:
 
-    [a] PosChengband Monsters
+    [a] FrogComposband Monsters
     [b] Monster Symbols
     [c] Monster Color
     [d] Monster Memory

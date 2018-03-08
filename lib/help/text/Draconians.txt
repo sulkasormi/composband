@@ -88,7 +88,7 @@ their enemies.
 
   Stats                   Skills
   Strength      +1        Disarming   Bad          
-  Intelligence  +1        Device      Good         
+  Intelligence  +1        Device      Fair         
   Wisdom        +1        Save        Fair         
   Dexterity     +1        Stealth     Fair         
   Constitution  +2        Searching   Bad          
@@ -105,7 +105,7 @@ melee attacks of the Bronze Draconian will baffle their enemies.
 
   Stats                   Skills
   Strength      +1        Disarming   Bad          
-  Intelligence  +2        Device      Excellent    
+  Intelligence  +2        Device      Very Good    
   Wisdom        +1        Save        Fair         
   Dexterity     +1        Stealth     Fair         
   Constitution  +2        Searching   Bad          
@@ -141,7 +141,7 @@ Strike, even their melee attacks will stun their enemies.
 
   Stats                   Skills
   Strength      +1        Disarming   Bad          
-  Intelligence  +1        Device      Excellent    
+  Intelligence  +1        Device      Good         
   Wisdom        +2        Save        Good         
   Dexterity     +1        Stealth     Fair         
   Constitution  +2        Searching   Bad          
@@ -159,7 +159,7 @@ Dragon Strike, they may steal life from their enemies in melee.
 
   Stats                   Skills
   Strength      +0        Disarming   Bad          
-  Intelligence  +1        Device      Very Good    
+  Intelligence  +1        Device      Good         
   Wisdom        +1        Save        Fair         
   Dexterity     +3        Stealth     Very Good    
   Constitution  +2        Searching   Bad          
@@ -189,11 +189,11 @@ Red          Bad           Poor          Fair          Bad
 White        Bad           Poor          Fair          Bad          
 Blue         Bad           Fair          Fair          Poor         
 Black        Bad           Fair          Fair          Poor         
-Green        Bad           Good          Fair          Fair         
-Bronze       Bad           Excellent     Fair          Fair         
+Green        Bad           Fair          Fair          Fair         
+Bronze       Bad           Very Good     Fair          Fair         
 Crystal      Bad           Poor          Fair          Poor         
-Gold         Bad           Excellent     Good          Fair         
-Shadow       Bad           Very Good     Fair          Very Good    
+Gold         Bad           Good          Good          Fair         
+Shadow       Bad           Good          Fair          Very Good    
 
 
 Table 3 - Draconian Skill Bonus Table II
@@ -251,5 +251,5 @@ to decide which power you will choose for your character.
 
 
 
-Automatically generated for PosChengband 7.0.1.
+Automatically generated for FrogComposband 7.0.strawberry.
 

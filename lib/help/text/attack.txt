@@ -68,15 +68,16 @@ when needed.
 
 Weapons have two main magical characteristics, their enchanted ability 
 to hit and their enchanted ability to do damage, expressed as, say, 
-(+3,+4). A normal weapon would be (+0,+0). Many weapons in PosChengband 
-have bonuses to hit and/or to damage. Some weapons are cursed, and have 
-penalties that hurt the player. Cursed weapons cannot be unwielded 
-until the curse is lifted. Identifying a weapon will inform you of the 
-magical bonuses and penalties and whether or not it is cursed.
+(+3,+4). A normal weapon would be (+0,+0). Many weapons in 
+FrogComposband have bonuses to hit and/or to damage. Some weapons are 
+cursed, and have penalties that hurt the player. Cursed weapons cannot 
+be unwielded until the curse is lifted. Identifying a weapon will 
+inform you of the magical bonuses and penalties and whether or not it 
+is cursed.
 
-PosChengband assumes that your youth in the rough environment near the 
-dungeons has taught you the relative merits of different weapons, and 
-displays as part of their description the damage dice which define 
+FrogComposband assumes that your youth in the rough environment near 
+the dungeons has taught you the relative merits of different weapons, 
+and displays as part of their description the damage dice which define 
 their capabilities. Any damage enchantment is added to the dice roll 
 for that weapon. The dice used for a given weapon is displayed as XdY. 
 The first number, X, indicates how many dice to roll, and the second, 

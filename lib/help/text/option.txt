@@ -24,34 +24,24 @@ The birth options can only be accessed while creating a new character
 off after the creation is finished!
   
   Easy Identify (easy_id)
-  This option simplifies the identification of objects, making Identify 
-  work just like *Identify*. However, this renders many spells (such as 
-  Stone Tell in Nature and Identify True in Sorcery) and objects (such 
-  as Staves of *Identify*) redundant or pointless. Also, some classes 
-  (such as the Archaeologist) are designed with early access to 
-  *Identify* as a principle bonus. Enabling this option removes the 
-  advantages of these classes, making them less worthy of playing.
-  
-  In addition, this birth option will also affect the early game 
-  pseudo-identification of objects. Normally, objects must be carried 
-  in your pack for some time before you become aware of their quality. 
-  The length of time is class dependent, as is the amount of 
-  information revealed through pseudo-identification (see [b]). With 
-  Easy Identify enabled, all players will get instantaneous and full 
-  pseudo-identification of objects, making this aspect of gameplay much 
-  easier as well.
+  This option will affect the early game pseudo-identification of 
+  objects. Normally, objects must be carried in your pack for some time 
+  before you become aware of their quality. The length of time is class 
+  dependent, as is the amount of information revealed through 
+  pseudo-identification (see [b]). With Easy Identify enabled, all 
+  players will get instantaneous and full pseudo-identification of 
+  objects, making this aspect of gameplay redundant.
   
   Easy Lore (easy_lore)
   With this option enabled, the player will be born with complete 
   knowledge of monster lore, including the various attacks and nasty 
   surprises that many monsters usually offer to the uninitiated. This 
   is a bit of a spoiler option, but is available for those who don't 
-  enjoy learning each of the many monsters present in the game. Like 
-  the Easy Identify option, Easy Lore also renders a few aspects of the 
-  game non-functional or pointless, including the ability to Probe 
-  monsters to learn about them as you encounter them, and the town 
-  Beastmaster Lore service to learn about monsters before you see them 
-  (for a price, of course).
+  enjoy learning each of the many monsters present in the game. Easy 
+  Lore also renders a few aspects of the game non-functional or 
+  pointless, including the ability to Probe monsters to learn about 
+  them as you encounter them, and the town Beastmaster Lore service to 
+  learn about monsters before you see them (for a price, of course).
   
   Monsters learn from their mistakes (smart_learn)
   Allow monsters to learn what spell attacks you are resistant to, and 
@@ -59,7 +49,8 @@ off after the creation is finished!
   
   Monsters exploit players weaknesses (smart_cheat)
   Allow monsters to know what spell attacks you are resistant to, and 
-  to use this information to choose the best attacks.
+  to use this information to choose the best attacks. Combine this with 
+  Easy Lore to regain lost honour.
   
   Play without a wilderness (no_wilderness)
   This option disables the wilderness, forcing you to play with a 
@@ -73,10 +64,6 @@ off after the creation is finished!
   dungeon without supplies from town. Your Home still functions 
   normally, and various town services are still available.
   
-  Always create unusually small dungeon levels (ironman_small_levels)
-  If this option is enabled, then every level will be smaller than 
-  usual. See the 'Allow unusually small dungeon levels' option below.
-  
   Disable recall and use of up stairs (ironman_downward)
   You are not allowed to climb upwards, or recall to town. All stairs 
   are downstairs and every time you teleport level, you'll teleport to 
@@ -85,10 +72,6 @@ off after the creation is finished!
   Always create empty 'arena' levels (ironman_empty_levels)
   If this option is enabled, then every level will be empty 'arena' 
   level. See the "Allow empty 'arena' levels" option below.
-  
-  Always generate very unusual rooms (ironman_rooms)
-  If this option is enabled, every room becomes a vault. It is unclear 
-  whether this makes the game harder or easier.
   
   Nightmare mode(it isn't even remotely fair!) (ironman_nightmare)
   If this option is enabled, all monsters become unusually powerful, 
@@ -176,13 +159,6 @@ Input Options
   is set, you should be safe from such typing mistakes: you will be 
   prompted if you attempt to wear or wield an item if your character 
   knows it is cursed.
-  
-  Prompt before exiting a quest level (confirm_quest)
-  In the dungeon, you can freely climb up/down stairs and can return to 
-  former floors normally. But in some quest level, including the random 
-  quest, you can not return once you escaped from the level. If this 
-  option is set, the program asks for confirmation before you go up the 
-  stairs from such quest levels.
   
   Allow targetting pets (target_pet)
   Normally, the program doesn't automatically choose pets as target in 
@@ -492,17 +468,6 @@ Game Play Options
   the appropriate list. This allows the "look" and "target" commands to 
   "cycle" through all appropriate grids forever, and the "identify 
   symbol" to browse through all of the monsters of a given type.
-  
-  Allow unusually small dungeon levels (small_levels)
-  This option enables the creation of levels of varying sizes. Levels 
-  that are as small as the town level (i.e. 1 'screen') are possible, 
-  yet they can be dangerous, especially for a low level character. Note 
-  that this option has the side effect of enabling / disabling 
-  'destroyed' levels (they are enabled if small levels are).
-  
-  Always create unusually small dungeon levels (always_small_levels)
-  If this option is enabled, then every level will be smaller than 
-  usual. See the 'Allow unusually small dungeon levels' option above.
   
   Allow empty 'arena' levels (empty_levels)
   Normal dungeon levels consist mostly of rock. If this option is in 

@@ -739,7 +739,7 @@ Message Commands
     just text files in a particular format, and that other help files 
     may be available on the Net. In particular, there are a variety of 
     spoiler files which do not come with the standard distribution. 
-    Check the place you got PosChengband from or ask on the newsgroup 
+    Check the place you got FrogComposband from or ask on the newsgroup 
     rec.games.roguelike.angband about them.
   
     Identify Symbol (/)
@@ -806,7 +806,7 @@ Message Commands
     Toggle Choice Window (^I)
     Toggles the display in the choice window (if available) between 
     your inventory and your equipment. This command only applies if you 
-    are running PosChengband under a windowing environment and the 
+    are running FrogComposband under a windowing environment and the 
     choice window is available. This also redraws the choice window.
   
     Redraw Screen (^R)

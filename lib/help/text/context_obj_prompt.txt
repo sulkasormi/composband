@@ -1,9 +1,9 @@
 Selecting Objects
 
-Objects are a big part of playing PosChengband. Many commands (such as 
-quaffing potions or reading scrolls) require you to select an object to 
-use. Other commands allow you to view and inspect the objects you are 
-carrying or using. This helpfile explains the user interface for 
+Objects are a big part of playing FrogComposband. Many commands (such 
+as quaffing potions or reading scrolls) require you to select an object 
+to use. Other commands allow you to view and inspect the objects you 
+are carrying or using. This helpfile explains the user interface for 
 viewing and selecting objects.
 
 An Example

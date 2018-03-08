@@ -42,7 +42,7 @@ on your map.
   ~   Deep Lava                   7   Black Market
   #   Dark pit                    8   Home
   '   An open door                9   Bookstore
-  '   A broken door               0   Museum
+  '   A broken door               M   Museum
   <   A staircase up              +   Other building
   >   A staircase down            +   Other building
   <   A shaft up

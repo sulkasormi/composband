@@ -1,13 +1,13 @@
 Creating a Character
 
-PosChengband is a role playing game, in which you, the player, control 
-a character in a dangerous world of myth and magic. The most important 
-decision you make on your quest to the kill the Serpent of Chaos is 
-what kind of character to play: Spell-wielding magician or sword-waving 
-warrior? Stealthy rogue or musical bard? Holy priest or evil spawn of 
-chaos? The choices are myriad and the process of generating a new 
-character is described in this help file, which will also serve to 
-introduce you to many of the core concepts of the game.
+FrogComposband is a role playing game, in which you, the player, 
+control a character in a dangerous world of myth and magic. The most 
+important decision you make on your quest to the kill the Serpent of 
+Chaos is what kind of character to play: Spell-wielding magician or 
+sword-waving warrior? Stealthy rogue or musical bard? Holy priest or 
+evil spawn of chaos? The choices are myriad and the process of 
+generating a new character is described in this help file, which will 
+also serve to introduce you to many of the core concepts of the game.
 
 Character creation, or birth, is controlled through a variety of 
 choices. You must choose your character's race (Human, Elf, Hobbit, 
@@ -28,7 +28,7 @@ The first screen is the Welcome Screen. It simply introduces you to the
 game and allows you to choose one of several options that will control 
 the birth process. It looks someting like this:
   
-  Welcome to Poschengband, a dungeon exploration role playing game. Your        
+  Welcome to FrogComposband, a dungeon exploration role playing game. Your      
   goal is to defeat the dreaded Serpent of Chaos, but before you can face       
   it, you must battle many foes. Your first step is to create a character       
   for this quest. The following screens will guide you through this             
@@ -514,7 +514,7 @@ with the level of the character.
   enhanced.
 
 Proficiency Levels
-In PosChengband, characters possess different proficiency levels or 
+In FrogComposband, characters possess different proficiency levels or 
 experiences for each weapon type, spells, and a few other skills. The 
 starting proficiency levels and the maximum proficiency levels of a 
 character are based upon class. Each proficiency level may increase 
