@@ -1176,6 +1176,7 @@ static int _draconian_attack_level(void)
     case CLASS_MINDCRAFTER:
     case CLASS_MAGIC_EATER:
     case CLASS_ARCHAEOLOGIST:
+    case CLASS_LAWYER:
     case CLASS_WILD_TALENT:
     case CLASS_PSION:
     case CLASS_SCOUT:
@@ -1191,6 +1192,7 @@ static int _draconian_attack_level(void)
         l = MAX(1, l * 90 / 100);
         break;
     case CLASS_NINJA:
+    case CLASS_NINJA_LAWYER:
     case CLASS_MAGE:
     case CLASS_HIGH_MAGE:
     case CLASS_TOURIST:

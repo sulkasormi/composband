@@ -1,7 +1,7 @@
 #include "angband.h"
 #include "equip.h"
 
-static void _absconding_spell(int cmd, variant *res)
+void absconding_spell(int cmd, variant *res)
 {
     switch (cmd)
     {
@@ -52,7 +52,7 @@ static void _bind_monster_spell(int cmd, variant *res)
     }
 }
 
-static void _bunshin_spell(int cmd, variant *res)
+void bunshin_spell(int cmd, variant *res)
 {
     switch (cmd)
     {
@@ -60,7 +60,7 @@ static void _bunshin_spell(int cmd, variant *res)
         var_set_string(res, "Bunshin");
         break;
     case SPELL_DESC:
-        var_set_string(res, "Creates shadows of yourself which gives you ability to completely evade any attacks at one in two chance for a while.");
+        var_set_string(res, "Creates shadows of yourself, giving you a 1 in 3 chance to completely evade any attacks.");
         break;
     case SPELL_CAST:
         set_multishadow(6+randint1(6), FALSE);
@@ -187,7 +187,7 @@ static void _detect_near_spell(int cmd, variant *res)
     }
 }
 
-static void _floating_spell(int cmd, variant *res)
+void floating_spell(int cmd, variant *res)
 {
     switch (cmd)
     {
@@ -247,7 +247,7 @@ void hide_in_flame_spell(int cmd, variant *res)
     }
 }
 
-static void _hide_in_leaves_spell(int cmd, variant *res)
+void hide_in_leaves_spell(int cmd, variant *res)
 {
     switch (cmd)
     {
@@ -268,7 +268,7 @@ void hide_in_mist_spell(int cmd, variant *res)
         var_set_string(res, "Hide in Mist");
         break;
     case SPELL_DESC:
-        var_set_string(res, "Generates huge balls of poison, drain life and confusion, then teleport in a time.");
+        var_set_string(res, "Generates huge balls of poison, drain life and confusion, then teleports 30 squares.");
         break;
     case SPELL_CAST:
         fire_ball(GF_POIS, 0, 75+p_ptr->lev*2/3, p_ptr->lev/5+2);
@@ -283,7 +283,7 @@ void hide_in_mist_spell(int cmd, variant *res)
     }
 }
 
-static void _hit_and_away_spell(int cmd, variant *res)
+void hit_and_away_spell(int cmd, variant *res)
 {
     switch (cmd)
     {
@@ -296,7 +296,7 @@ static void _hit_and_away_spell(int cmd, variant *res)
     }
 }
 
-static void _kawarimi_spell(int cmd, variant *res)
+void kawarimi_spell(int cmd, variant *res)
 {
     switch (cmd)
     {
@@ -309,7 +309,7 @@ static void _kawarimi_spell(int cmd, variant *res)
     case SPELL_CAST:
         if (!(p_ptr->special_defense & NINJA_KAWARIMI))
         {
-            msg_print("You are now prepare to evade any attacks.");
+            msg_print("You are now prepared to evade any attacks.");
             p_ptr->special_defense |= NINJA_KAWARIMI;
             p_ptr->redraw |= PR_STATUS;
         }
@@ -321,7 +321,7 @@ static void _kawarimi_spell(int cmd, variant *res)
     }
 }
 
-static void _nyusin_spell(int cmd, variant *res)
+void nyusin_spell(int cmd, variant *res)
 {
     switch (cmd)
     {
@@ -430,7 +430,7 @@ static void _smoke_ball_spell(int cmd, variant *res)
 
 static bool _obj_is_shuriken(obj_ptr obj) { return obj->tval == TV_SPIKE; }
 
-static void _syuriken_spreading_spell(int cmd, variant *res)
+void syuriken_spreading_spell(int cmd, variant *res)
 {
     switch (cmd)
     {
@@ -474,16 +474,16 @@ static spell_info _spells[] =
     /*lvl cst fail spell */
     { 1,   1,  20, create_darkness_spell},
     { 2,   2,  25, _detect_near_spell},
-    { 3,   3,  25, _hide_in_leaves_spell},
-    { 5,   3,  30, _kawarimi_spell},
-    { 7,   8,  35, _absconding_spell},
-    { 8,  10,  35, _hit_and_away_spell},
+    { 3,   3,  25, hide_in_leaves_spell},
+    { 5,   3,  30, kawarimi_spell},
+    { 7,   8,  35, absconding_spell},
+    { 8,  10,  35, hit_and_away_spell},
     {10,  10,  40, _bind_monster_spell},
     {12,  12,  70, _ancient_knowledge_spell},
-    {15,  10,  50, _floating_spell},
+    {15,  10,  50, floating_spell},
     {17,  12,  45, hide_in_flame_spell},
-    {18,  20,  40, _nyusin_spell},
-    {20,   5,  50, _syuriken_spreading_spell},
+    {18,  20,  40, nyusin_spell},
+    {20,   5,  50, syuriken_spreading_spell},
     {22,   5,  55, _chain_hook_spell},
     {25,  32,  60, _smoke_ball_spell},
     {28,  32,  60, swap_pos_spell},
@@ -491,7 +491,7 @@ static spell_info _spells[] =
     {32,  40,  40, hide_in_mud_spell},
     {34,  35,  50, hide_in_mist_spell},
     {38,  40,  60, _rengoku_kaen_spell},
-    {41,  50,  55, _bunshin_spell},
+    {41,  50,  55, bunshin_spell},
     { -1, -1,  -1, NULL}
 };
 

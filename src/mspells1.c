@@ -140,6 +140,45 @@ bool clean_shot(int y1, int x1, int y2, int x2, bool friend)
     return (TRUE);
 }
 
+/*
+ * This is like clean_shot, but returns FALSE if any monster is in the way
+ */
+bool very_clean_shot(int y1, int x1, int y2, int x2)
+{
+    /* Must be the same as projectable() */
+
+    int i, y, x;
+
+    int grid_n = 0;
+    u16b grid_g[512];
+
+    /* Check the projection path */
+    grid_n = project_path(grid_g, MAX_RANGE, y1, x1, y2, x2, 0);
+
+    /* No grid is ever projectable from itself */
+    if (!grid_n) return (FALSE);
+
+    /* Final grid */
+    y = GRID_Y(grid_g[grid_n-1]);
+    x = GRID_X(grid_g[grid_n-1]);
+
+    /* May not end in an unrequested grid */
+    if ((y != y2) || (x != x2)) return (FALSE);
+
+    for (i = 0; i < grid_n; i++)
+    {
+        y = GRID_Y(grid_g[i]);
+        x = GRID_X(grid_g[i]);
+
+        if ((cave[y][x].m_idx > 0) && !((y == y2) && (x == x2)) && !(player_bold(y, x))) return (FALSE);
+
+        /* The player is in the way, the monster is targeting a non-player square */
+        if ((player_bold(y, x)) && ((y != y2) || (x != x2))) return (FALSE);
+    }
+
+    return (TRUE);
+}
+
 u32b get_curse(int power, object_type *o_ptr)
 {
     u32b new_curse;

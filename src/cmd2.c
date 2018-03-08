@@ -2220,7 +2220,8 @@ static void do_cmd_walk_aux(int dir, bool pickup)
     /* Hack -- In small scale wilderness it takes MUCH more time to move */
     if (p_ptr->wild_mode) energy_use *= ((MAX_HGT + MAX_WID) / 2);
 
-    if (p_ptr->action == ACTION_QUICK_WALK) energy_use = energy_use * (45-(p_ptr->lev/2)) / 100;
+    if (p_ptr->action == ACTION_QUICK_WALK) energy_use = (p_ptr->pclass == CLASS_NINJA_LAWYER) ? 
+         energy_use * (60-(p_ptr->lev/2)) / 100 : energy_use * (45-(p_ptr->lev/2)) / 100;
     if (p_ptr->action == ACTION_STALK) energy_use = energy_use * (150 - p_ptr->lev) / 100;
     if (weaponmaster_get_toggle() == TOGGLE_SHADOW_STANCE)
         energy_use = energy_use * (45-(p_ptr->lev/2)) / 100;
@@ -3653,7 +3654,7 @@ void do_cmd_fire_aux2(obj_ptr bow, obj_ptr arrows, int sx, int sy, int tx, int t
                             }
 
                             if (stick_to)
-                                msg_format("%^s have stuck into %s!",o_name, m_name);
+                                msg_format("%^s sticks to %s!",o_name, m_name);
                         }
 
                         if (fear && m_ptr->ml)

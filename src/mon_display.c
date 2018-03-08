@@ -738,6 +738,9 @@ static void _display_other(monster_race *r_ptr, doc_ptr doc)
     if (r_ptr->flags2 & RF2_REGENERATE)
         vec_add(v, string_copy_s("<color:r>Regeneration</color>"));
 
+    if (r_ptr->flags7 & RF7_RANGED_MELEE)
+        vec_add(v, string_copy_s("<color:o>Long Reach</color>"));
+
     if (r_ptr->flags7 & RF7_RIDING)
         vec_add(v, string_copy_s("<color:s>Suitable for Riding</color>"));
 

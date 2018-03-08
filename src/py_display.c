@@ -76,7 +76,7 @@ static void _build_general1(doc_ptr doc)
         dragon_realm_ptr realm = dragon_get_realm(p_ptr->dragon_realm);
         doc_printf(doc, " Realm      : <color:B>%-26.26s</color>\n", realm->name);
     }
-    else if (p_ptr->realm1)
+    else if ((p_ptr->realm1) && (p_ptr->pclass != CLASS_LAWYER) && (p_ptr->pclass != CLASS_NINJA_LAWYER))
     {
         if (p_ptr->realm2)
             doc_printf(doc, " Realm      : <color:B>%s, %s</color>\n", realm_names[p_ptr->realm1], realm_names[p_ptr->realm2]);
@@ -1261,9 +1261,12 @@ static void _build_uniques(doc_ptr doc)
 
 static void _build_virtues(doc_ptr doc)
 {
-    doc_printf(doc, "<topic:Virtues>=================================== <color:keypress>V</color>irtues ===================================\n\n");
-    virtue_display(doc);
-    doc_newline(doc);
+    if (enable_virtues)
+    {	
+        doc_printf(doc, "<topic:Virtues>=================================== <color:keypress>V</color>irtues ===================================\n\n");
+        virtue_display(doc);
+        doc_newline(doc);
+    }	
 }
 
 static void _build_mutations(doc_ptr doc)
@@ -1430,8 +1433,8 @@ static void _device_counts_imp(doc_ptr doc, int tval, int effect)
 typedef bool (*_kind_p)(int k_idx);
 bool _kind_is_third_book(int k_idx) {
     if (k_info[k_idx].tval == TV_ARCANE_BOOK) return FALSE;
-    if ( TV_LIFE_BOOK <= k_info[k_idx].tval
-      && k_info[k_idx].tval <= TV_BURGLARY_BOOK
+    if ( TV_BOOK_BEGIN <= k_info[k_idx].tval
+      && k_info[k_idx].tval <= TV_BOOK_END
       && k_info[k_idx].sval == 2 )
     {
         return TRUE;
@@ -1440,8 +1443,8 @@ bool _kind_is_third_book(int k_idx) {
 }
 bool _kind_is_fourth_book(int k_idx) {
     if (k_info[k_idx].tval == TV_ARCANE_BOOK) return FALSE;
-    if ( TV_LIFE_BOOK <= k_info[k_idx].tval
-      && k_info[k_idx].tval <= TV_BURGLARY_BOOK
+    if ( TV_BOOK_BEGIN <= k_info[k_idx].tval
+      && k_info[k_idx].tval <= TV_BOOK_END
       && k_info[k_idx].sval == 3 )
     {
         return TRUE;
@@ -1492,8 +1495,8 @@ static bool _kind_is_skeleton(int k_idx) {
     return FALSE;
 }
 static bool _kind_is_spellbook(int k_idx) {
-    if ( TV_LIFE_BOOK <= k_info[k_idx].tval
-      && k_info[k_idx].tval <= TV_BURGLARY_BOOK )
+    if ( TV_BOOK_BEGIN <= k_info[k_idx].tval
+      && k_info[k_idx].tval <= TV_BOOK_END )
     {
         return TRUE;
     }
@@ -1928,7 +1931,7 @@ static void _build_statistics(doc_ptr doc)
     _group_counts_tval_imp(doc, TV_SHOT, "Shots");
     _group_counts_tval_imp(doc, TV_ARROW, "Arrows");
     _group_counts_tval_imp(doc, TV_BOLT, "Bolts");
-    if (p_ptr->pclass == CLASS_NINJA)
+    if (player_is_ninja)
         _group_counts_tval_imp(doc, TV_SPIKE, "Syuriken");
     _group_counts_imp(doc, _kind_is_spellbook, "Spellbooks");
     _group_counts_tval_imp(doc, TV_FOOD, "Food");
@@ -2350,7 +2353,7 @@ static void _add_html_header(doc_ptr doc)
     string_append_s(header, "<head>\n");
     string_append_s(header, " <meta name='filetype' value='character dump'>\n");
     string_printf(header,  " <meta name='variant' value='%s'>\n", VERSION_NAME);
-    string_printf(header,  " <meta name='variant_version' value='%d.%d.%d'>\n", VER_MAJOR, VER_MINOR, VER_PATCH);
+    string_printf(header,  " <meta name='variant_version' value='%d.%d.%s'>\n", VER_MAJOR, VER_MINOR, VER_PATCH);
     string_printf(header,  " <meta name='character_name' value='%s'>\n", player_name);
     string_printf(header,  " <meta name='race' value='%s'>\n", get_race()->name);
     string_printf(header,  " <meta name='class' value='%s'>\n", get_class()->name);
@@ -2385,7 +2388,7 @@ void py_display_character_sheet(doc_ptr doc)
 {
     _add_html_header(doc);
 
-    doc_insert(doc, "<style:wide>  [ComPosband <$:version> Character Dump]\n");
+    doc_insert(doc, "<style:wide>  [FrogComposband <$:version> Character Dump]\n");
     if (p_ptr->total_winner)
         doc_insert(doc, "              <color:B>***WINNER***</color>\n");
     else if (p_ptr->is_dead)

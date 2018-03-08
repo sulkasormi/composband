@@ -1257,6 +1257,7 @@ void ring_cast(void)
     {
         if (flush_failure) flush();
         msg_format("You failed to get the spell off!");
+        if (prompt_on_failure) msg_print(NULL);
         sound(SOUND_FAIL);
     }
     else

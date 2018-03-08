@@ -1883,7 +1883,7 @@ void glyph_of_warding_spell(int cmd, variant *res)
         var_set_string(res, "Glyph of Warding");
         break;
     case SPELL_DESC:
-        var_set_string(res, "Sets a glyph on the floor beneath you. Monsters cannot attack you if you are on a glyph, but can try to break glyph.");
+        var_set_string(res, "Sets a glyph on the floor beneath you. Monsters cannot attack you if you are on a glyph, but can try to break the glyph.");
         break;
     case SPELL_CAST:
         warding_glyph();

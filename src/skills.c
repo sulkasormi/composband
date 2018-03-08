@@ -435,6 +435,7 @@ bool skills_weapon_is_icky(int tval, int sval)
         break;
 
     case CLASS_NINJA:
+    case CLASS_NINJA_LAWYER:
     case CLASS_DUELIST:
         if (s_info[p_ptr->pclass].w_max[tval-TV_WEAPON_BEGIN][sval] <= WEAPON_EXP_BEGINNER)
             result = TRUE;

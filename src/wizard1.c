@@ -250,7 +250,7 @@ static void spoil_obj_desc(cptr fname)
 
 
     /* Header */
-    fprintf(fff, "Spoiler File -- Basic Items (ComPosband %d.%d.%d)\n\n\n",
+    fprintf(fff, "Spoiler File -- Basic Items (FrogComposband %d.%d.%s)\n\n\n",
         VER_MAJOR, VER_MINOR, VER_PATCH);
 
     /* More Header */
@@ -833,7 +833,7 @@ static void spoil_mon_desc(void)
     doc_ptr doc = doc_alloc(80);
 
     doc_change_name(doc, "mon-desc.html");
-    doc_printf(doc, "<color:heading>Monster Tables for ComPosband Version %d.%d.%d</color>\n\n",
+    doc_printf(doc, "<color:heading>Monster Tables for FrogComposband Version %d.%d.%s</color>\n\n",
                      VER_MAJOR, VER_MINOR, VER_PATCH);
     doc_insert(doc, "<style:table>");
 
@@ -1523,7 +1523,7 @@ static void spoil_mon_spell_dam(void)
     _spoil_mon_spell_dam_aux(doc, v);
 
     doc_insert(doc, "</style>");
-    doc_printf(doc, "\n<color:D>Generated for ComPosband Version %d.%d.%d</color>\n\n",
+    doc_printf(doc, "\n<color:D>Generated for FrogComposband Version %d.%d.%s</color>\n\n",
                      VER_MAJOR, VER_MINOR, VER_PATCH);
     doc_display(doc, "Monster Tables", 0);
     doc_free(doc);
@@ -1541,7 +1541,7 @@ static void spoil_mon_melee_dam(void)
     _spoil_mon_melee_dam_aux(doc, v);
 
     doc_insert(doc, "</style>");
-    doc_printf(doc, "\n<color:D>Generated for ComPosband Version %d.%d.%d</color>\n\n",
+    doc_printf(doc, "\n<color:D>Generated for FrogComposband Version %d.%d.%s</color>\n\n",
                      VER_MAJOR, VER_MINOR, VER_PATCH);
     doc_display(doc, "Monster Tables", 0);
     doc_free(doc);
@@ -1620,7 +1620,7 @@ static void spoil_mon_resist(void)
     _spoil_mon_resist_aux(doc, v);
 
     doc_insert(doc, "</style>");
-    doc_printf(doc, "\n<color:D>Generated for ComPosband Version %d.%d.%d</color>\n\n",
+    doc_printf(doc, "\n<color:D>Generated for FrogComposband Version %d.%d.%s</color>\n\n",
                      VER_MAJOR, VER_MINOR, VER_PATCH);
     doc_display(doc, "Monster Tables", 0);
     doc_free(doc);
@@ -1811,7 +1811,7 @@ static void spoil_device_fail()
         doc_newline(doc);
     }
     doc_insert(doc, "</style>");
-    doc_printf(doc, "\n<color:D>Generated for ComPosband %d.%d.%d</color>\n",
+    doc_printf(doc, "\n<color:D>Generated for FrogComposband %d.%d.%s</color>\n",
                      VER_MAJOR, VER_MINOR, VER_PATCH);
     doc_display(doc, "Device Faile Rates", 0);
     doc_free(doc);
@@ -1893,7 +1893,7 @@ static void spoil_device_tables()
     _spoil_device_table_aux(doc, rod_effect_table, "Rods");
 
     doc_insert(doc, "</style>");
-    doc_printf(doc, "\n<color:D>Generated for ComPosband %d.%d.%d</color>\n",
+    doc_printf(doc, "\n<color:D>Generated for FrogComposband %d.%d.%s</color>\n",
                      VER_MAJOR, VER_MINOR, VER_PATCH);
     doc_display(doc, "Device Faile Rates", 0);
     doc_free(doc);
@@ -1986,7 +1986,7 @@ static void spoil_mon_evol(void)
     doc_ptr doc = doc_alloc(80);
 
     doc_change_name(doc, "mon-evol.html");
-    doc_printf(doc, "<color:heading>Monster Evolution for ComPosband Version %d.%d.%d</color>\n",
+    doc_printf(doc, "<color:heading>Monster Evolution for FrogComposband Version %d.%d.%s</color>\n",
                      VER_MAJOR, VER_MINOR, VER_PATCH);
     doc_insert(doc, "<style:table>");
 
@@ -2122,7 +2122,7 @@ static void spoil_skills()
     vec_free(v);
 
     doc_insert(doc, "</style>");
-    doc_printf(doc, "\n<color:D>Generated for ComPosband %d.%d.%d</color>\n",
+    doc_printf(doc, "\n<color:D>Generated for FrogComposband %d.%d.%s</color>\n",
                      VER_MAJOR, VER_MINOR, VER_PATCH);
     doc_display(doc, "Skills", 0);
     doc_free(doc);

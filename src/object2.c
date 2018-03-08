@@ -1062,7 +1062,7 @@ void stats_on_identify(object_type *o_ptr)
 
     if (o_ptr->name1)
     {
-        assert(a_info[o_ptr->name1].generated);
+        if (!p_ptr->noscore) assert(a_info[o_ptr->name1].generated);
         a_info[o_ptr->name1].found = TRUE;
     }
 
@@ -2423,6 +2423,7 @@ static bool kind_is_tailored(int k_idx)
     case TV_SHIELD:
         return equip_can_wield_kind(k_ptr->tval, k_ptr->sval)
             && p_ptr->pclass != CLASS_NINJA
+            && p_ptr->pclass != CLASS_NINJA_LAWYER
             && p_ptr->pclass != CLASS_MAULER
             && p_ptr->pclass != CLASS_DUELIST;
 
@@ -2434,9 +2435,10 @@ static bool kind_is_tailored(int k_idx)
           || p_ptr->pclass == CLASS_MYSTIC
           || p_ptr->pclass == CLASS_DUELIST
           || p_ptr->pclass == CLASS_SCOUT
+          || p_ptr->pclass == CLASS_NINJA_LAWYER
           || p_ptr->pclass == CLASS_NINJA )
         {
-            return k_ptr->weight <= 200 && equip_can_wield_kind(k_ptr->tval, k_ptr->sval);
+            return ((k_ptr->weight <= (player_is_ninja ? 150 : 200)) && (equip_can_wield_kind(k_ptr->tval, k_ptr->sval)));
         }
         return equip_can_wield_kind(k_ptr->tval, k_ptr->sval);
 
@@ -2486,6 +2488,7 @@ static bool kind_is_tailored(int k_idx)
     case TV_MUSIC_BOOK:
     case TV_HISSATSU_BOOK:
     case TV_HEX_BOOK:
+    case TV_LAW_BOOK:
     case TV_BURGLARY_BOOK:
         return check_book_realm(k_ptr->tval, k_ptr->sval)
             && k_ptr->sval >= SV_BOOK_MIN_GOOD
@@ -2578,6 +2581,7 @@ bool kind_is_great(int k_idx)
         case TV_MUSIC_BOOK:
         case TV_HISSATSU_BOOK:
         case TV_HEX_BOOK:
+        case TV_LAW_BOOK:
         case TV_BURGLARY_BOOK:
         {
             if (k_ptr->sval == SV_BOOK_MIN_GOOD) return k_ptr->counts.found < 2; /* Third Spellbooks: I want ?Acquirement to grant these! */
@@ -2680,6 +2684,7 @@ bool kind_is_good(int k_idx)
         case TV_CRUSADE_BOOK:
         case TV_NECROMANCY_BOOK:
         case TV_ARMAGEDDON_BOOK:
+        case TV_LAW_BOOK:
         case TV_MUSIC_BOOK:
         case TV_HISSATSU_BOOK:
         case TV_HEX_BOOK:
@@ -2847,7 +2852,7 @@ static bool _kind_is_amulet(int k_idx) {
     return FALSE;
 }
 bool kind_is_book(int k_idx) {
-    if (TV_LIFE_BOOK <= k_info[k_idx].tval && k_info[k_idx].tval <= TV_BURGLARY_BOOK)
+    if (TV_BOOK_BEGIN <= k_info[k_idx].tval && k_info[k_idx].tval <= TV_BOOK_END)
         return TRUE;
     return FALSE;
 }

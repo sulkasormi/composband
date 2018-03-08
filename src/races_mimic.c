@@ -542,7 +542,7 @@ static void _vampire_lord_calc_bonuses(void)
     res_add(RES_COLD);
     res_add(RES_POIS);
     res_add_vuln(RES_LITE);
-    if (p_ptr->pclass != CLASS_NINJA) p_ptr->lite = TRUE;
+    if (!player_is_ninja) p_ptr->lite = TRUE;
 
     p_ptr->see_inv++;
     p_ptr->pspeed += 3;
@@ -557,7 +557,7 @@ static void _vampire_lord_get_flags(u32b flgs[OF_ARRAY_SIZE])
     add_flag(flgs, OF_HOLD_LIFE);
     add_flag(flgs, OF_RES_DARK);
     add_flag(flgs, OF_RES_NETHER);
-    if (p_ptr->pclass != CLASS_NINJA) add_flag(flgs, OF_LITE);
+    if (!player_is_ninja) add_flag(flgs, OF_LITE);
     add_flag(flgs, OF_RES_POIS);
     add_flag(flgs, OF_RES_COLD);
     add_flag(flgs, OF_SEE_INVIS);

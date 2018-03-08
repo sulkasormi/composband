@@ -1808,9 +1808,9 @@ static void _annoy_p(void)
         if (p_ptr->blind)
             msg_format("%s mumbles.", _current.name);
 
-        if ( p_ptr->pclass == CLASS_NINJA
-          && !(_current.race->flags3 & (RF3_UNDEAD | RF3_HURT_LITE))
-          && !(_current.race->flags7 & RF7_DARK_MASK) )
+        if ( (player_is_ninja)
+          && (!(_current.race->flags3 & (RF3_UNDEAD | RF3_HURT_LITE)))
+          && (!(_current.race->flags7 & RF7_DARK_MASK)) )
         {
             if (!p_ptr->blind)
                 msg_format("%s cast a spell to light up.", _current.name);
@@ -2132,10 +2132,10 @@ static void hp_mon(mon_ptr mon, int amt) /* this should be public */
         if (!p_ptr->blind)
         {
             if (mon_show_msg(mon))
-                msg_format("%s looks healther.", _current.name); /* XXX */
+                msg_format("%s looks healthier.", _current.name); /* XXX */
         }
         else if (mon_show_msg(mon))
-            msg_format("%s looks sounds healthier.", _current.name); /* XXX */
+            msg_format("%s sounds healthier.", _current.name); /* XXX */
     }
     check_mon_health_redraw(mon->id);
     if (MON_MONFEAR(mon))
@@ -2208,6 +2208,21 @@ static void _summon_special(void)
         else
             msg_format("%s says 'Now Dasher! Now Dancer! Now, Prancer and Vixen! On, Comet! On, Cupid! On, Donner and Blitzen!'", _current.name);
         r_idx = MON_REINDEER;
+        break;
+    case MON_JUSTSHORN:
+        if (_current.flags & MSC_SRC_PLAYER)
+            msg_print("You summon sheep!'");
+        else
+            msg_format("%s summons sheep!", _current.name);
+        r_idx = MON_SHEEP;
+        break;
+    case MON_ZOOPI:
+        if (_current.flags & MSC_SRC_PLAYER)
+            msg_print("You summon your minions!'");
+        else
+            msg_format("%s summons his minions!", _current.name);
+        r_idx = MON_GELATINOUS_CUBE;
+        if (num == 4) num--;
         break;
      case MON_ZEUS:
         if (_current.flags & MSC_SRC_PLAYER)
@@ -2674,6 +2689,16 @@ static _custom_msg_t _mon_msg_tbl[] = {
         "$CASTER throws a hand grenade.", 
         "$CASTER throws a hand grenade at $TARGET.",
         "You throw a hand grenade." },
+   { MON_FESTIVUS, {MST_BOLT, GF_ARROW},
+        "$CASTER throws a syuriken.",
+        "",
+        "$CASTER throws a syuriken at $TARGET.",
+        "You throw a syuriken." }, 
+   { MON_DUCK, {MST_ANNOY, ANNOY_SHRIEK},
+        "$CASTER quacks.",
+        "$CASTER quacks.",
+        "$CASTER quacks.",
+        "You quack." }, 
     {0}
 };
 static cptr _custom_msg(void)

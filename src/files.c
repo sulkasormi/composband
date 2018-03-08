@@ -1546,7 +1546,7 @@ void tim_player_flags(u32b flgs[OF_ARRAY_SIZE])
         add_flag(flgs, OF_FREE_ACT);
         add_flag(flgs, OF_LEVITATION);
     }
-    if (p_ptr->tim_res_nether)
+    if ((p_ptr->tim_res_nether) || (IS_SPINNING()))
     {
         add_flag(flgs, OF_RES_NETHER);
     }
@@ -2268,7 +2268,7 @@ bool show_file(bool show_version, cptr name, cptr what, int line, int mode)
         if (show_version)
         {
             prt(format(
-                "[Composband %d.%d.%d, %s, Line %d/%d]",
+                "[FrogComposband %d.%d.%s, %s, Line %d/%d]",
                VER_MAJOR, VER_MINOR, VER_PATCH,
                caption, line, size), 0, 0);
         }
@@ -2741,12 +2741,12 @@ void do_cmd_suicide(void)
     if (!p_ptr->noscore)
     {
         /* Special Verification for suicide */
-        prt("Please verify SUICIDE by typing the '@' sign: ", 0, 0);
+        prt("Please verify SUICIDE by typing the '@' sign (or pressing Ctrl-E): ", 0, 0);
 
         flush();
         i = inkey();
         prt("", 0, 0);
-        if (i != '@') return;
+        if ((i != '@') && (i != KTRL('E'))) return;
     }
 
     /* Initialize "last message" buffer */

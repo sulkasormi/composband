@@ -35,6 +35,7 @@ static bool object_easy_know(int i)
         case TV_CRUSADE_BOOK:
         case TV_NECROMANCY_BOOK:
         case TV_ARMAGEDDON_BOOK:
+        case TV_LAW_BOOK:
         case TV_MUSIC_BOOK:
         case TV_HISSATSU_BOOK:
         case TV_HEX_BOOK:
@@ -1332,6 +1333,15 @@ void object_desc(char *buf, object_type *o_ptr, u32b mode)
             break;
         }
 
+        case TV_LAW_BOOK:
+        {
+            if (mp_ptr->spell_book == TV_LIFE_BOOK)
+                basenm = "& Book~ of Legal Tricks %";
+            else
+                basenm = "& Law Book~ %";
+            break;
+        }
+
         case TV_NECROMANCY_BOOK:
         {
             basenm = "& Necromancy Spellbook~ %";
@@ -1856,7 +1866,7 @@ void object_desc(char *buf, object_type *o_ptr, u32b mode)
         }
     }
 
-    if ((p_ptr->pclass == CLASS_NINJA) && (o_ptr->tval == TV_SPIKE))
+    if ((player_is_ninja) && (o_ptr->tval == TV_SPIKE))
     {
         int avgdam = 1;
         s16b energy_fire = 100 - p_ptr->lev;

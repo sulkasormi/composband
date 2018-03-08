@@ -570,6 +570,7 @@ static void wr_extra(savefile_ptr file)
     savefile_write_s16b(file, p_ptr->oppose_acid);
     savefile_write_s16b(file, p_ptr->oppose_elec);
     savefile_write_s16b(file, p_ptr->oppose_pois);
+    savefile_write_s16b(file, p_ptr->spin);
     savefile_write_s16b(file, p_ptr->tsuyoshi);
     savefile_write_s16b(file, p_ptr->tim_esp);
     savefile_write_s16b(file, p_ptr->tim_esp_magical);
@@ -726,6 +727,8 @@ static void wr_extra(savefile_ptr file)
     savefile_write_s16b(file, p_ptr->floor_id);
     savefile_write_u32b(file, playtime);
     savefile_write_u32b(file, p_ptr->count);
+    for (i = 0; i < 16; i++)
+        savefile_write_s32b(file, 0); /* Future use */
 
     {
     race_t  *race_ptr = get_true_race();
@@ -1358,7 +1361,32 @@ bool save_player(void)
     return (result);
 }
 
+static char *versio_nimi(int tavu)
+{
+	switch (tavu)
+	{
+		case 0: return "toffee";
+		case 1: return "chocolate";
+		case 2: return "liquorice";
+		case 3: return "salmiak";
+		case 4: return "strawberry";
+		case 5: return "peppermint";
+		case 6: return "mango";
+		case 7: return "nougat";
+		case 8: return "raspberry";
+		default: return "cloudberry";
+	}
+}
 
+extern byte versio_sovitus(void)
+{
+	int i;
+	for (i = 0; i < 9; i++)
+	{
+		if (streq(VER_PATCH, versio_nimi(i))) return i;
+	}
+	return 4;
+}
 
 /*
  * Attempt to Load a "savefile"
@@ -1514,7 +1542,7 @@ bool load_player(void)
         /* Extract version */
         z_major = vvv[0];
         z_minor = vvv[1];
-        z_patch = vvv[2];
+        strcpy(z_patch, versio_nimi(vvv[2]));
         sf_extra = vvv[3];
 
 
@@ -1565,9 +1593,9 @@ bool load_player(void)
         /* Give a conversion warning */
         if ((VER_MAJOR != z_major) ||
             (VER_MINOR != z_minor) ||
-            (VER_PATCH != z_patch))
+            (!streq(VER_PATCH, z_patch)))
         {
-            msg_format("Converted a %d.%d.%d savefile.",
+            msg_format("Converted a %d.%d.%s savefile.",
                 (z_major > 9) ? z_major-10 : z_major , z_minor, z_patch);
             msg_print(NULL);
         }
@@ -1631,7 +1659,7 @@ bool load_player(void)
 
 
     /* Message */
-    msg_format("Error (%s) reading %d.%d.%d savefile.",
+    msg_format("Error (%s) reading %d.%d.%s savefile.",
            what, (z_major>9) ? z_major - 10 : z_major, z_minor, z_patch);
     msg_print(NULL);
 

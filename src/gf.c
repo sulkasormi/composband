@@ -2733,11 +2733,12 @@ bool gf_affect_m(int who, mon_ptr mon, int type, int dam, int flags)
             dam += (adj_con_fix[p_ptr->stat_ind[A_CHR]] - 1);
             dam += virtue_current(VIRTUE_HARMONY)/10;
             dam -= virtue_current(VIRTUE_INDIVIDUALISM)/20;
+            if (p_ptr->spin > 0) dam += MAX(25, dam * 2 / 5);
             if ((race->flags1 & RF1_UNIQUE) || (race->flags7 & RF7_NAZGUL))
                 dam = dam * 2 / 3;
         }
 
-        if ((race->flagsr & RFR_RES_ALL) || p_ptr->inside_arena)
+        if ((race->flagsr & RFR_RES_ALL) || (mon->mflag2 & MFLAG2_NOPET) || p_ptr->inside_arena)
         {
             note = " is immune.";
             dam = 0;
@@ -2749,16 +2750,16 @@ bool gf_affect_m(int who, mon_ptr mon, int type, int dam, int flags)
             note = " is unaffected!";
             obvious = FALSE;
         }
-        else if ((mon->mflag2 & MFLAG2_NOPET) || race->level > randint1(dam))
+        else if (race->level > randint1(dam))
         {
             note = " resists!";
             obvious = FALSE;
-            if (one_in_(4)) mon->mflag2 |= MFLAG2_NOPET;
+            if (one_in_((p_ptr->spin > 0) ? 10 : 5)) mon->mflag2 |= MFLAG2_NOPET;
         }
         else if (p_ptr->cursed & OFC_AGGRAVATE)
         {
             note = " hates you too much!";
-            if (one_in_(4)) mon->mflag2 |= MFLAG2_NOPET;
+            if (one_in_((p_ptr->spin > 0) ? 10 : 5)) mon->mflag2 |= MFLAG2_NOPET;
         }
         else
         {

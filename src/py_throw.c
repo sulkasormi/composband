@@ -125,12 +125,12 @@ bool _init_context(py_throw_ptr context)
         }
     }
     obj_flags(context->obj, context->flags);
-    object_desc(context->obj_name, context->obj, OD_NAME_ONLY | OD_OMIT_PREFIX | OD_OMIT_INSCRIPTION);
+    object_desc(context->obj_name, context->obj, OD_NAME_ONLY | OD_OMIT_PREFIX | OD_NO_PLURAL | OD_OMIT_INSCRIPTION);
 
     /* checks before taking a turn */
     if (p_ptr->inside_arena && !(context->type & THROW_BOOMERANG))
     {
-        if (context->obj->tval != TV_SPIKE || p_ptr->pclass != CLASS_NINJA)
+        if ((context->obj->tval != TV_SPIKE) || (!player_is_ninja))
         {
             msg_print("You're in the arena now. This is hand-to-hand!");
             return FALSE;
@@ -145,6 +145,8 @@ bool _init_context(py_throw_ptr context)
             context->energy = 100;
             if (p_ptr->pclass == CLASS_ROGUE || p_ptr->pclass == CLASS_NINJA)
                 context->energy -= p_ptr->lev;
+            if (p_ptr->pclass == CLASS_NINJA_LAWYER)
+                context->energy -= (p_ptr->lev * 2 / 3);
         }
         energy_use = context->energy;
         if (!fear_allow_shoot())
@@ -223,7 +225,7 @@ bool _init_context(py_throw_ptr context)
 
     /* skill and some ninja hacks (hengband) */
     context->skill += p_ptr->skill_tht + (p_ptr->shooter_info.to_h + context->obj->to_h) * BTH_PLUS_ADJ;
-    if (p_ptr->pclass == CLASS_NINJA)
+    if (player_is_ninja)
     {
         if ( context->obj->tval == TV_SPIKE
           || (context->obj->tval == TV_SWORD && have_flag(context->flags, OF_THROWING)) )
@@ -395,7 +397,7 @@ void _throw(py_throw_ptr context)
          * so we can drop the object if needed */
         if (context->path_pos == context->path_ct - 1) break;
     }
-    if (p_ptr->pclass == CLASS_NINJA && context->obj->tval == TV_SPIKE)
+    if ((player_is_ninja) && (context->obj->tval == TV_SPIKE))
         stats_on_use(context->obj, 1);
 }
 

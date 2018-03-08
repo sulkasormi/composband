@@ -232,6 +232,9 @@ void init_blows_calc(object_type *o_ptr, weapon_info_t *info_ptr)
     case CLASS_WILD_TALENT:
         info_ptr->blows_calc.max = 450; info_ptr->blows_calc.wgt = 70; info_ptr->blows_calc.mult = 40; break;
 
+    case CLASS_LAWYER:
+        info_ptr->blows_calc.max = 450; info_ptr->blows_calc.wgt = 70; info_ptr->blows_calc.mult = 30; break;
+
     case CLASS_BEASTMASTER:
         info_ptr->blows_calc.max = 500; info_ptr->blows_calc.wgt = 70; info_ptr->blows_calc.mult = 35; break;
 
@@ -258,6 +261,7 @@ void init_blows_calc(object_type *o_ptr, weapon_info_t *info_ptr)
         info_ptr->blows_calc.max = 400; info_ptr->blows_calc.wgt = 100; info_ptr->blows_calc.mult = 30; break;
 
     case CLASS_NINJA:
+    case CLASS_NINJA_LAWYER:
         info_ptr->blows_calc.max = 425; info_ptr->blows_calc.wgt = 20; info_ptr->blows_calc.mult = 10; break;
 
     case CLASS_MONSTER:
@@ -395,7 +399,7 @@ int calculate_base_blows(int hand, int str_idx, int dex_idx)
         if (prace_is_(RACE_MON_GIANT) && giant_is_favorite(o_ptr))
             blow_str_idx += 10;
     }
-    if (p_ptr->pclass == CLASS_NINJA) blow_str_idx = MAX(0, blow_str_idx-10);
+    if (player_is_ninja) blow_str_idx = MAX(0, blow_str_idx-10);
     if (blow_str_idx > 110) blow_str_idx = 110;
 
     result = rng.min + (rng.max - rng.min) * blow_str_idx / 110;
@@ -552,7 +556,7 @@ void display_weapon_info(doc_ptr doc, int hand)
         }
     }
 
-    mult = 100;
+    mult = (p_ptr->pclass == CLASS_NINJA_LAWYER) ? NINJA_LAWYER_MULT : 100;
     if (have_flag(flgs, OF_VORPAL2))
         mult = mult * 5 / 3;  /* 1 + 1/3(1 + 1/2 + ...) = 1.667x */
     else if (have_flag(flgs, OF_VORPAL) && p_ptr->vorpal)
@@ -677,7 +681,7 @@ void display_weapon_info(doc_ptr doc, int hand)
 	else if (have_flag(flgs, OF_SLAY_LIVING))
         _display_weapon_slay(mult, 200, force, num_blow, dd, ds, to_d, "Living", TERM_YELLOW, cols[0]);
 
-    if (have_flag(flgs, OF_KILL_LIVING))
+    if (have_flag(flgs, OF_KILL_HUMAN))
         _display_weapon_slay(mult, 400, force, num_blow, dd, ds, to_d, "Human", TERM_YELLOW, cols[0]);
     else if (have_flag(flgs, OF_SLAY_HUMAN))
         _display_weapon_slay(mult, 250, force, num_blow, dd, ds, to_d, "Human", TERM_YELLOW, cols[0]);
@@ -1183,7 +1187,7 @@ static void _shooter_info_aux(doc_ptr doc, object_type *bow, object_type *arrow,
         _display_missile_slay(mult, 143, crit.mul, force, num_fire, dd, ds, to_d, to_d_xtra, "Good", TERM_YELLOW, cols[0]);
 
     if (have_flag(flgs, OF_KILL_HUMAN))
-        _display_missile_slay(mult, 224, crit.mul, force, num_fire, dd, ds, to_d, to_d_xtra, "Human", TERM_YELLOW, cols[0]);
+        _display_missile_slay(mult, 234, crit.mul, force, num_fire, dd, ds, to_d, to_d_xtra, "Human", TERM_YELLOW, cols[0]);
     else if (have_flag(flgs, OF_SLAY_HUMAN))
         _display_missile_slay(mult, 162, crit.mul, force, num_fire, dd, ds, to_d, to_d_xtra, "Human", TERM_YELLOW, cols[0]);
 

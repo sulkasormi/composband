@@ -1093,6 +1093,7 @@ static void _cast_spell(_spell_info_ptr spell)
         if (flush_failure) flush();
 
         cmsg_format(TERM_VIOLET, "You failed to cast <color:B>%s</color>!", do_spell(spell->realm, spell->idx, SPELL_NAME));
+        if (prompt_on_failure) msg_print(NULL);
         if (demigod_is_(DEMIGOD_ATHENA))
             p_ptr->csp += spell->cost/2;
         spell_stats_on_fail_old(spell->realm, spell->idx);

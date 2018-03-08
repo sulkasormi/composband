@@ -851,7 +851,7 @@ static void _vampire_calc_bonuses(void)
     res_add(RES_POIS);
     res_add_vuln(RES_LITE);
     p_ptr->hold_life++;
-    if (p_ptr->pclass != CLASS_NINJA) p_ptr->lite = TRUE;
+    if (!player_is_ninja) p_ptr->lite = TRUE;
 }
 static void _vampire_get_flags(u32b flgs[OF_ARRAY_SIZE])
 {
@@ -860,7 +860,7 @@ static void _vampire_get_flags(u32b flgs[OF_ARRAY_SIZE])
     add_flag(flgs, OF_HOLD_LIFE);
     add_flag(flgs, OF_RES_DARK);
     add_flag(flgs, OF_RES_NETHER);
-    if (p_ptr->pclass != CLASS_NINJA) add_flag(flgs, OF_LITE);
+    if (!player_is_ninja) add_flag(flgs, OF_LITE);
     add_flag(flgs, OF_RES_POIS);
     add_flag(flgs, OF_RES_COLD);
 }

@@ -116,7 +116,6 @@ extern struct passwd *getpwuid(uid_t uid);
 extern struct passwd *getpwnam(const char *name);
 #endif
 
-
 /*
  * Find a default user name from the system.
  */
@@ -281,8 +280,7 @@ errr path_parse(char *buf, int max, cptr file)
 
 #endif /* SET_UID */
 
-
-#ifndef HAVE_MKSTEMP
+#if !defined(HAVE_MKSTEMP) || defined(WINDOWS) || defined(WIN32)
 
 /*
  * Hack -- acquire a "temporary" file name if possible
@@ -523,7 +521,7 @@ errr my_fclose(FILE *fff)
 #endif /* ACORN */
 
 
-#ifdef HAVE_MKSTEMP
+#if defined(HAVE_MKSTEMP) && !defined(WINDOWS) && !defined(WIN32)
 
 FILE *my_fopen_temp(char *buf, int max)
 {
@@ -3376,6 +3374,7 @@ special_menu_naiyou special_menu_info[] =
     {"BrutalPower/Special", 0, 0, MENU_CLASS, CLASS_BERSERKER},
     {"MirrorMagic/Special", 0, 0, MENU_CLASS, CLASS_MIRROR_MASTER},
     {"Ninjutsu/Special", 0, 0, MENU_CLASS, CLASS_NINJA},
+    {"Ninjutsu/Special", 0, 0, MENU_CLASS, CLASS_NINJA_LAWYER},
     {"Enter global map(<)", 2, 6, MENU_WILD, FALSE},
     {"Enter local map(>)", 2, 7, MENU_WILD, TRUE},
     {"", 0, 0, 0, 0},

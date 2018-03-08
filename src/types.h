@@ -831,6 +831,7 @@ typedef struct magic_type magic_type;
 
 struct magic_type
 {
+    byte realm;         /* Which realm the spell is in */
     byte slevel;        /* Required level (to learn) */
     byte smana;            /* Required mana (to cast) */
     byte sfail;            /* Minimum chance of failure */
@@ -1078,7 +1079,7 @@ struct player_type
     s16b oppose_fire;    /* Timed -- oppose heat */
     s16b oppose_cold;    /* Timed -- oppose cold */
     s16b oppose_pois;    /* Timed -- oppose poison */
-
+    s16b spin;           /* Timed -- spinning */
 
     s16b tim_esp;       /* Timed ESP */
     s16b tim_esp_magical;
@@ -1570,8 +1571,8 @@ typedef struct building_type building_type;
 
 struct building_type
 {
-    char name[20];                  /* proprietor name */
-    char owner_name[20];            /* proprietor name */
+    char name[20];                  /* building name */
+    char owner_name[25];            /* proprietor name */
     char owner_race[20];            /* proprietor race */
 
     char act_names[8][30];          /* action names */

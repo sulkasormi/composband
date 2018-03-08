@@ -512,7 +512,8 @@ static void do_cmd_quaff_potion_aux(obj_ptr obj)
     if (world_player)
     {
         if (flush_failure) flush();
-        msg_print("The potion doesn't flow out from a bottle.");
+        msg_print("The potion doesn't flow out from the bottle.");
+        if (prompt_on_failure) msg_print(NULL);
         sound(SOUND_FAIL);
         return;
     }
@@ -735,6 +736,7 @@ static void do_cmd_read_scroll_aux(obj_ptr o_ptr)
     {
         if (flush_failure) flush();
         msg_print("Nothing happens.");
+        if (prompt_on_failure) msg_print(NULL);
         sound(SOUND_FAIL);
         return;
     }
@@ -764,6 +766,7 @@ static void do_cmd_read_scroll_aux(obj_ptr o_ptr)
         {
             if (flush_failure) flush();
             msg_print("You failed to pronounce the incantation properly.");
+            if (prompt_on_failure) msg_print(NULL);
             sound(SOUND_FAIL);
             return;
         }
@@ -935,6 +938,7 @@ static void do_cmd_device_aux(obj_ptr obj)
     {
         if (flush_failure) flush();
         msg_print("Nothing happens. Maybe this device is freezing too.");
+        if (prompt_on_failure) msg_print(NULL);
         sound(SOUND_FAIL);
         return;
     }
@@ -943,6 +947,7 @@ static void do_cmd_device_aux(obj_ptr obj)
     {
         if (flush_failure) flush();
         msg_print("You failed to use the device properly.");
+        if (prompt_on_failure) msg_print(NULL);
         sound(SOUND_FAIL);
         if ( obj_is_identified(obj)
           && one_in_(10)
@@ -975,6 +980,7 @@ static void do_cmd_device_aux(obj_ptr obj)
     {
         if (flush_failure) flush();
         msg_print("The device has no charges left.");
+        if (prompt_on_failure) msg_print(NULL);
         energy_use = 0;
         return;
     }
@@ -1350,6 +1356,7 @@ static void do_cmd_activate_aux(obj_ptr obj)
     {
         if (flush_failure) flush();
         msg_print("You failed to activate it properly.");
+        if (prompt_on_failure) msg_print(NULL);
         sound(SOUND_FAIL);
         return;
     }

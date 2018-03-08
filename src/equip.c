@@ -1625,7 +1625,7 @@ void equip_calc_bonuses(void)
         bonus_to_h = obj->to_h;
         bonus_to_d = obj->to_d;
 
-        if (p_ptr->pclass == CLASS_NINJA)
+        if (player_is_ninja)
         {
             if (obj->to_h > 0) bonus_to_h = (obj->to_h+1)/2;
             if (obj->to_d > 0) bonus_to_d = (obj->to_d+1)/2;

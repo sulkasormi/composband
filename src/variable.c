@@ -57,7 +57,7 @@ byte sf_extra;        /* Savefile's encoding key */
 
 byte z_major;           /* Savefile version for Hengband */
 byte z_minor;
-byte z_patch;
+char z_patch[16];
 
 /*
  * Savefile information
@@ -188,6 +188,7 @@ bool auto_target;    /* Automatically target nearest monster */
 bool always_repeat;    /* Repeat obvious commands */
 bool confirm_destroy;    /* Prompt for destruction of known worthless items */
 bool confirm_wear;    /* Confirm to wear/wield known cursed items */
+bool prompt_on_failure; /* Display prompt on device/spell fail */
 bool target_pet;    /* Allow targetting pets */
 
 #ifdef ALLOW_EASY_OPEN
@@ -290,6 +291,7 @@ bool alert_trap_detect;    /* Alert when leaving trap detected area */
 bool easy_id;        /* Easy Identify */
 bool easy_lore;      /* Easy Monster Lore */
 bool allow_spoilers;
+bool power_tele;     /* Use old-style, non-fuzzy telepathy */
 bool smart_learn;    /* Monsters learn from their mistakes (*) */
 bool smart_cheat;    /* Monsters exploit players weaknesses (*) */
 bool no_wilderness;
@@ -306,6 +308,8 @@ bool random_artifacts;
 byte random_artifact_pct = 100;
 bool no_artifacts;
 bool no_egos;
+bool enable_virtues;
+bool easy_thalos;
 bool reduce_uniques;
 byte reduce_uniques_pct = 100; /* This is the pct of uniques to face */
 
@@ -1059,6 +1063,7 @@ s16b feat_explosive_rune;
 s16b feat_rogue_trap1;
 s16b feat_rogue_trap2;
 s16b feat_rogue_trap3;
+s16b feat_semicolon;
 s16b feat_mirror;
 
 /* Doors */

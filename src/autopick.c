@@ -1417,7 +1417,7 @@ static bool is_autopick_aux(object_type *o_ptr, autopick_type *entry, cptr o_nam
                 is_special = TRUE;
             }
         }
-        else if (p_ptr->pclass == CLASS_NINJA)
+        else if (player_is_ninja)
         {
             if ( o_ptr->tval == TV_LITE
               && (o_ptr->name2 == EGO_LITE_DARKNESS || have_flag(o_ptr->flags, OF_DARKNESS))
@@ -1947,7 +1947,7 @@ static bool is_opt_confirm_destroy(object_type *o_ptr)
                 (o_ptr->tval == TV_CORPSE && o_ptr->sval == SV_SKELETON))
                 return FALSE;
         }
-        else if (p_ptr->pclass == CLASS_NINJA)
+        else if (player_is_ninja)
         {
             if ( o_ptr->tval == TV_LITE
               && (o_ptr->name2 == EGO_LITE_DARKNESS || have_flag(o_ptr->flags, OF_DARKNESS))

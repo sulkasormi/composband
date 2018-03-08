@@ -435,11 +435,12 @@ static tval_desc tvals[] =
     { TV_CRUSADE_BOOK,      "Crusade Spellbook"},
     { TV_NECROMANCY_BOOK,   "Necromancy Spellbook"},
     { TV_ARMAGEDDON_BOOK,   "Armageddon Spellbook"},
+    { TV_LAW_BOOK,          "Law Spellbook"        },
     { TV_MUSIC_BOOK,        "Music Spellbook"      },
     { TV_HISSATSU_BOOK,     "Book of Kendo"        },
     { TV_HEX_BOOK,          "Hex Spellbook"        },
     { TV_RAGE_BOOK,         "Rage Spellbook"       },
-    { TV_BURGLARY_BOOK,     "Thieve's Guide"       },
+    { TV_BURGLARY_BOOK,     "Thieves' Guide"       },
     { TV_PARCHMENT,         "Parchment" },
     { TV_WHISTLE,           "Whistle"    },
     { TV_SPIKE,             "Spikes"               },
@@ -1788,7 +1789,7 @@ void do_cmd_debug(void)
 
     /* Wizard Light the Level */
     case 'w':
-        wiz_lite(p_ptr->pclass == CLASS_NINJA);
+        wiz_lite(player_is_ninja);
         break;
 
     /* Increase Experience */

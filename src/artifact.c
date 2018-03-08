@@ -1275,6 +1275,8 @@ static void random_misc(object_type * o_ptr)
             add_flag(o_ptr->flags, OF_NO_MAGIC);
             break;
         case 31:
+            add_flag(o_ptr->flags, OF_NO_TELE);
+            break;
         case 32:
             add_flag(o_ptr->flags, OF_WARNING);
             break;
@@ -1876,19 +1878,19 @@ typedef struct {
 } _slot_weight_t, *_slot_weight_ptr;
 static _slot_weight_t _slot_weight_tbl[] = {
     {"Weapons", object_is_melee_weapon, 80},
-    {"Shields", object_is_shield, 60},
-    {"Bows", object_is_bow, 70},
-    {"Rings", object_is_ring, 60},
-    {"Amulets", object_is_amulet, 60},
-    {"Lights", object_is_lite, 45},
+    {"Shields", object_is_shield, 55},
+    {"Bows", object_is_bow, 60},
+    {"Rings", object_is_ring, 55},
+    {"Amulets", object_is_amulet, 40},
+    {"Lights", object_is_lite, 36},
     {"Body Armor", object_is_body_armour, 80},
-    {"Cloaks", object_is_cloak, 55},
-    {"Helmets", object_is_helmet, 60},
-    {"Gloves", object_is_gloves, 55},
-    {"Boots", object_is_boots, 60},
+    {"Cloaks", object_is_cloak, 45},
+    {"Helmets", object_is_helmet, 50},
+    {"Gloves", object_is_gloves, 45},
+    {"Boots", object_is_boots, 50},
     {NULL}
 };
-static int _get_slot_weight(obj_ptr obj)
+int get_slot_weight(obj_ptr obj)
 {
     int i;
     for (i = 0; ; i++)
@@ -1902,7 +1904,7 @@ static int _get_slot_weight(obj_ptr obj)
 /* This might also benefit the rand-art power channels in ego.c */
 int get_slot_power(obj_ptr obj)
 {
-    int w = _get_slot_weight(obj);
+    int w = get_slot_weight(obj);
     if (object_is_melee_weapon(obj))
     {
         int d = k_info[obj->k_idx].dd * k_info[obj->k_idx].ds;
@@ -1929,7 +1931,7 @@ static int _slot_normalize(int amt, int pct)
 static int _roll_powers(obj_ptr obj, int lev)
 {
     int powers;
-    int pct = _get_slot_weight(obj) * 100 / 80;
+    int pct = get_slot_weight(obj) * 100 / 80;
     int spread = _slot_normalize(6, pct);
     int max_powers = _slot_normalize(12, pct);
 
@@ -2075,6 +2077,7 @@ s32b create_artifact(object_type *o_ptr, u32b mode)
             case CLASS_ROGUE:
             case CLASS_NINJA:
             case CLASS_SCOUT:
+            case CLASS_NINJA_LAWYER:
                 artifact_bias = BIAS_ROGUE;
                 warrior_artifact_bias = 30;
                 break;
@@ -2097,6 +2100,7 @@ s32b create_artifact(object_type *o_ptr, u32b mode)
                 artifact_bias = BIAS_CHAOS;
                 warrior_artifact_bias = 60;
                 break;
+            case CLASS_LAWYER:
             case CLASS_MONK:
             case CLASS_FORCETRAINER:
                 artifact_bias = BIAS_PRIESTLY;
@@ -3203,25 +3207,34 @@ bool reforge_artifact(object_type *src, object_type *dest, int fame)
     int         base_power, best_power = -10000000, power = 0, worst_power = 10000000;
     int         min_power, max_power;
     int         old_level, i;
-    int         src_weight = _get_slot_weight(src);
-    int         dest_weight = _get_slot_weight(dest);
+    int         src_weight = get_slot_weight(src);
+    int         dest_weight = get_slot_weight(dest);
 
     /* Score the Original */
     base_power = obj_value_real(src);
 
     /* Penalize reforging a powerful slot into a weak slot (e.g. weapons into lites)
-     * Also consider moving power from something strong into a weak weapon, such as
-     * a falcon sword or a dagger (e.g. ninja's do this) */
+     * Also penalize moving power into ninja weapons */
     if (object_is_melee_weapon(dest))
     {
         int dice = k_info[dest->k_idx].dd * k_info[dest->k_idx].ds;
-        if (dice < 12 && k_info[dest->k_idx].ds > 2)
+        if (dice == 2) /* hack for wizardstaves */
+        {
+            dest_weight = 55;
+        }
+        else if (dice < 12)
             dest_weight = dest_weight * dice / 12;
     }
     if (src_weight > dest_weight)
         base_power = base_power * dest_weight / src_weight;
 
-    /* Setup thresholds. For weak objects, its better to use a generous range ... */
+    /* Power sanity check */
+    base_power = MIN(base_power, 1125L * src_weight);
+
+    /* Pay a Power Tax! */
+    base_power = base_power*3/4 + randint1(base_power*MIN(255, fame)/1500);
+
+    /* Setup thresholds. For weak objects, it's better to use a generous range ... */
     if (base_power < 1000)
     {
         min_power = 0;
@@ -3229,8 +3242,8 @@ bool reforge_artifact(object_type *src, object_type *dest, int fame)
     }
     else
     {
-        min_power = 7 * base_power / 10;
-        max_power = 3 * base_power / 2;
+        min_power = 3 * base_power / 4;
+        max_power = MAX(6000, 5 * base_power / 4);
     }
 
     /* Better Fame means better results! */

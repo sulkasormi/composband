@@ -1594,9 +1594,20 @@ void monster_death(int m_idx, bool drop_item)
             chance = 50;
             break;
 
+        case MON_GHB:
+             a_idx = ART_LEGENDARY_LOST_TREASURE;
+             chance = 100;
+             break;
+
         case MON_BULLGATES:
-            a_idx = ART_WINBLOWS;
-            chance = 66;
+            if (one_in_(3)) {
+             a_idx = ART_MICRODOLLAR;
+             chance = 100;
+            }
+            else {
+             a_idx = ART_WINBLOWS;
+             chance = 100;
+            }
             break;
 
         case MON_LUNGORTHIN:

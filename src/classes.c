@@ -100,6 +100,9 @@ class_t *result = NULL;
     case CLASS_HIGH_MAGE:
         result = high_mage_get_class();
         break;
+    case CLASS_LAWYER:
+        result = lawyer_get_class();
+        break;
     case CLASS_MAGE:
         result = mage_get_class();
         break;
@@ -129,6 +132,9 @@ class_t *result = NULL;
         break;
     case CLASS_NINJA:
         result = ninja_get_class();
+        break;
+    case CLASS_NINJA_LAWYER:
+        result = ninja_lawyer_get_class();
         break;
     case CLASS_PALADIN:
         result = paladin_get_class();

@@ -257,6 +257,7 @@ static cptr f_info_flags[] =
     "ROGUE_TRAP_2",
     "ROGUE_TRAP_3",
     "WEB",
+    "SEMI_PUN",
 };
 
 
@@ -403,7 +404,7 @@ static cptr r_info_flags7[] =
     "HAS_DARK_2",
     "SELF_DARK_2",
     "CAN_CLIMB",
-    "XXX7X21",
+    "RANGED_MELEE",
     "XXX7X22",
     "XXX7X23",
     "XXX7X24",
@@ -789,7 +790,7 @@ static cptr k_info_gen_flags[] =
     "TOWN",
     "FIXED_ART",
     "FIXED_ACT",
-    "XXX",
+    "NO_SHUFFLE",
     "XXX",
     "XXX",
     "XXX",
@@ -1450,6 +1451,7 @@ static _object_type_t _object_types[] =
     { "CRUSADE_BOOK",       TV_CRUSADE_BOOK },
     { "NECROMANCY_BOOK",    TV_NECROMANCY_BOOK },
     { "ARMAGEDDON_BOOK",    TV_ARMAGEDDON_BOOK },
+    { "LAW_BOOK",           TV_LAW_BOOK },
     { "MUSIC_BOOK",         TV_MUSIC_BOOK },
     { "HISSATSU_BOOK",      TV_HISSATSU_BOOK },
     { "HEX_BOOK",           TV_HEX_BOOK },
@@ -2247,6 +2249,7 @@ errr parse_m_info(char *buf, header *head)
         else if (streq(book, "MUSIC")) m_ptr->spell_book = TV_MUSIC_BOOK;
         else if (streq(book, "HISSATSU")) m_ptr->spell_book = TV_HISSATSU_BOOK;
         else if (streq(book, "RAGE")) m_ptr->spell_book = TV_RAGE_BOOK;
+        else if (streq(book, "LAW")) m_ptr->spell_book = TV_LAW_BOOK;
         else if (streq(book, "NONE")) m_ptr->spell_book = 0;
         else return (5);
 
@@ -2300,6 +2303,7 @@ errr parse_m_info(char *buf, header *head)
         if (4 != sscanf(buf+2, "%d:%d:%d:%d",
                 &level, &mana, &fail, &exp)) return (1);
 
+        m_ptr->info[realm][magic_idx].realm = realm;
         m_ptr->info[realm][magic_idx].slevel = level;
         m_ptr->info[realm][magic_idx].smana = mana;
         m_ptr->info[realm][magic_idx].sfail = fail;
@@ -4746,7 +4750,7 @@ static errr process_dungeon_file_aux(char *buf, int options)
 
 
 static char tmp[255];
-static cptr variant_name = "COMPOSBAND";
+static cptr variant_name = "FROGCOMPOSBAND";
 
 /*
  * Helper function for "process_dungeon_file()"

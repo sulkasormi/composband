@@ -1493,6 +1493,7 @@ static cptr _do_scroll(int sval, int mode)
                 p_ptr->pclass == CLASS_RUNE_KNIGHT ||
                 p_ptr->pclass == CLASS_WILD_TALENT ||
                 p_ptr->pclass == CLASS_NINJA ||
+                p_ptr->pclass == CLASS_NINJA_LAWYER ||
                 p_ptr->pclass == CLASS_SCOUT ||
                 p_ptr->pclass == CLASS_MYSTIC ||
                 p_ptr->pclass == CLASS_MAULER ||
@@ -2077,7 +2078,7 @@ static _effect_info_t _effect_info[] =
     {"BREATHE_CHAOS",   EFFECT_BREATHE_CHAOS,       75, 250,  4, BIAS_CHAOS},
     {"BREATHE_DISEN",   EFFECT_BREATHE_DISEN,       60, 150,  8, 0},
 	{"BREATHE_INERTIA", EFFECT_BREATHE_INERTIA,     60, 200,  8, 0},
-	{"BREATHE_WATER",   EFFECT_BREATHE_WATER,       65, 100,  8, BIAS_MAGE },
+	{"BREATHE_WATER",   EFFECT_BREATHE_WATER,       65, 150,  8, BIAS_MAGE },
     {"BREATHE_TIME",    EFFECT_BREATHE_TIME,        90, 500, 32, 0},
     {"BREATHE_ELEMENTS", EFFECT_BREATHE_ELEMENTS,   60, 100, 64, 0},
 

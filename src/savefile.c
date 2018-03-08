@@ -95,7 +95,7 @@ savefile_ptr savefile_open_write(const char *name)
     /* Dump the file header */
     putc(VER_MAJOR, result->file);
     putc(VER_MINOR, result->file);
-    putc(VER_PATCH, result->file);
+    putc(versio_sovitus(), result->file);
     putc(VER_EXTRA, result->file);
 
     result->xor_byte = 0;

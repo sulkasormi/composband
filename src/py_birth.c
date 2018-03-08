@@ -169,7 +169,7 @@ void py_birth_food(void)
 
 void py_birth_light(void)
 {
-    if (p_ptr->pclass != CLASS_NINJA)
+    if (!player_is_ninja)
     {
         object_type forge = {0};
         object_prep(&forge, lookup_kind(TV_LITE, SV_LITE_TORCH));
@@ -188,7 +188,7 @@ void py_birth_spellbooks(void)
 }
 
 /************************************************************************
- * Welcome to Composband!
+ * Welcome to FrogComposband!
  ***********************************************************************/ 
 static void _set_mode(int mode);
 static bool _stats_changed = FALSE;
@@ -202,7 +202,7 @@ static int _welcome_ui(void)
         doc_clear(_doc);
 
         doc_insert(_doc,
-            "Welcome to <color:keyword>Composband</color>, a dungeon exploration "
+            "Welcome to <color:keyword>FrogComposband</color>, a dungeon exploration "
             "role playing game. Your goal is to defeat the dreaded <color:keyword>"
             "Serpent of Chaos</color>, but before you can face it, you must battle "
             "many foes. Your first step is to create a character for this quest. "
@@ -967,12 +967,12 @@ static _class_group_t _class_groups[_MAX_CLASS_GROUPS] = {
     { "Devices", {CLASS_DEVICEMASTER, CLASS_MAGIC_EATER, -1} },
     { "Prayer", {CLASS_PRIEST, -1} },
     { "Stealth", {CLASS_NINJA, CLASS_ROGUE, CLASS_SCOUT, -1} },
-    { "Hybrid", {CLASS_CHAOS_WARRIOR, CLASS_PALADIN, CLASS_RANGER, CLASS_RED_MAGE,
-                    CLASS_WARRIOR_MAGE, -1} },
+    { "Hybrid", {CLASS_CHAOS_WARRIOR, CLASS_NINJA_LAWYER, CLASS_PALADIN, CLASS_RANGER,
+                    CLASS_RED_MAGE, CLASS_WARRIOR_MAGE, -1} },
     { "Riding", {CLASS_BEASTMASTER, CLASS_CAVALRY, -1} },
     { "Mind", {CLASS_MINDCRAFTER, CLASS_MIRROR_MASTER, CLASS_PSION,
                     CLASS_TIME_LORD, CLASS_WARLOCK, -1} },
-    { "Other", {CLASS_ARCHAEOLOGIST, CLASS_BARD, CLASS_RAGE_MAGE,
+    { "Other", {CLASS_ARCHAEOLOGIST, CLASS_BARD, CLASS_LAWYER, CLASS_RAGE_MAGE,
                     CLASS_SKILLMASTER, CLASS_TOURIST, CLASS_WILD_TALENT, -1} },
 };
 
@@ -2108,6 +2108,13 @@ static void _stats_init(void)
             _stats_init_aux(stats);
             break;
         }
+        case CLASS_LAWYER:
+        case CLASS_NINJA_LAWYER:
+        {
+            int stats[6] = { 16, 8, 14, 16, 16, 11 };
+            _stats_init_aux(stats);
+            break;
+        }
         case CLASS_BLOOD_KNIGHT:
         {
             int stats[6] = { 17, 8, 8, 15, 17, 9 };
@@ -2808,6 +2815,7 @@ static void _birth_finalize(void)
     /* Rest Up to Max HP and SP */
     p_ptr->update |= PU_BONUS | PU_HP | PU_MANA;
     update_stuff();
+
     p_ptr->chp = p_ptr->mhp;
     p_ptr->csp = p_ptr->msp;
     process_player_name(FALSE);

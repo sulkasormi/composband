@@ -120,6 +120,13 @@ static bool get_enemy_dir(int m_idx, int *mm)
     x -= m_ptr->fx;
     y -= m_ptr->fy;
 
+    /* Check for long melee */
+    if ((r_ptr->flags7 & RF7_RANGED_MELEE) && (MAX(ABS(x), ABS(y)) == 2) && (MIN(ABS(x), ABS(y)) < 2) && (very_clean_shot(m_ptr->fy, m_ptr->fx, m_ptr->fy + y, m_ptr->fx + x)))
+    {
+        mm[0] = mm[1] = mm[2] = (30 - (5 * x) - y);
+        return (TRUE);
+    }
+
     /* North */
     if ((y < 0) && (x == 0))
     {
@@ -364,7 +371,7 @@ void mon_take_hit_mon(int m_idx, int dam, bool *fear, cptr note, int who)
         if (m_ptr->hp > m_ptr->maxhp/3) dam = (dam + 1) / 2;
         if (rakuba((dam > 200) ? 200 : dam, FALSE))
         {
-            msg_format("You have thrown off from %s!", m_name);
+            msg_format("You are thrown off from %s!", m_name);
         }
     }
 
@@ -1078,6 +1085,9 @@ static bool get_moves(int m_idx, int *mm)
     cave_type    *c_ptr;
     bool         no_flow = ((m_ptr->mflag2 & MFLAG2_NOFLOW) && (cave[m_ptr->fy][m_ptr->fx].cost > 2));
     bool         can_pass_wall = ((r_ptr->flags2 & RF2_PASS_WALL) && ((m_idx != p_ptr->riding) || p_ptr->pass_wall));
+    bool         allow_long_melee = ((r_ptr->flags7 & RF7_RANGED_MELEE) && (!MON_CONFUSED(m_ptr)) && (!will_run));
+    bool         use_long_melee = FALSE;
+    bool         is_clean_shot = ((allow_long_melee) && (m_ptr->cdis == 2) && (is_hostile(m_ptr)) && (very_clean_shot(m_ptr->fy, m_ptr->fx, py, px)));
 
     if (pack_ptr)
     {
@@ -1127,6 +1137,7 @@ static bool get_moves(int m_idx, int *mm)
             /* Extract the "pseudo-direction" */
             y = m_ptr->fy - m_ptr->target_y;
             x = m_ptr->fx - m_ptr->target_x;
+            if ((allow_long_melee) && (ABS(y) < 3) && (ABS(x) < 3) && ((ABS(y) == 2) || (ABS(x) == 2)) && (very_clean_shot(m_ptr->fy, m_ptr->fx, m_ptr->target_y, m_ptr->target_x))) use_long_melee = TRUE;
             done = TRUE;
         }
     }
@@ -1134,7 +1145,16 @@ static bool get_moves(int m_idx, int *mm)
     /* Handle Packs ... */
     if (!done && !will_run && is_hostile(m_ptr) && pack_ptr)
     {
-        if (pack_ptr->ai == AI_LURE &&  !can_pass_wall && !(r_ptr->flags2 & RF2_KILL_WALL))
+        /* Check for ranged melee */
+        if (is_clean_shot)
+        {
+            y = m_ptr->fy - py;
+            x = m_ptr->fx - px;
+            use_long_melee = TRUE;
+            done = TRUE;
+        }
+
+        if (!done && pack_ptr->ai == AI_LURE &&  !can_pass_wall && !(r_ptr->flags2 & RF2_KILL_WALL))
         {
             int i, room = 0;
 
@@ -1167,13 +1187,13 @@ static bool get_moves(int m_idx, int *mm)
             }
         }
 
-        if (pack_ptr->ai == AI_SHOOT && m_ptr->cdis > 1)
+        if (!done && pack_ptr->ai == AI_SHOOT && m_ptr->cdis > 1)
         {
             x = 0;
             y = 0;
             done = TRUE;
         }
-        if ( pack_ptr->ai == AI_GUARD_POS
+        if (!done && pack_ptr->ai == AI_GUARD_POS
           && m_ptr->cdis > 3    /* abandon guarding if the player gets close ... */
           && m_ptr->anger < 10 ) /* ... or if we get ticked off. */
         {
@@ -1182,7 +1202,7 @@ static bool get_moves(int m_idx, int *mm)
             done = TRUE;
         }
 
-        if (pack_ptr->ai == AI_GUARD_MON)
+        if (!done && pack_ptr->ai == AI_GUARD_MON)
         {
             monster_type *m_ptr2 = &m_list[pack_ptr->guard_idx];
             if (!m_ptr2->r_idx)
@@ -1241,6 +1261,13 @@ static bool get_moves(int m_idx, int *mm)
             }
         }
     }
+    if ((!done) && (is_clean_shot))
+    {
+        y = m_ptr->fy - py;
+        x = m_ptr->fx - px;
+        use_long_melee = TRUE;
+        done = TRUE;
+    }
 
     if (!done)
     {
@@ -1293,6 +1320,12 @@ static bool get_moves(int m_idx, int *mm)
     /* Check for no move */
     if (!x && !y) return (FALSE);
 
+    /* Check for long melee */
+    if ((use_long_melee) && (ABS(x) < 3) && (ABS(y) < 3))
+    {
+        mm[0] = mm[1] = mm[2] = mm[3] = mm[4] = (30 + (5 * x) + y);
+        return (TRUE);
+    }
 
     /* Extract the "absolute distances" */
     ax = ABS(x);
@@ -2757,12 +2790,23 @@ static void process_monster(int m_idx)
         /* Get the direction */
         d = mm[i];
 
-        /* Hack -- allow "randomized" motion */
-        if (d == 5) d = ddd[randint0(8)];
+        if (d > 15) /* Long melee */
+        {
+             int ldx = ((d + 2) / 5) - 6;
+             int ldy = (d - (5 * ldx)) - 30;
+             ny = oy - ldy;
+             nx = ox - ldx;
+        }
 
-        /* Get the destination */
-        ny = oy + ddy[d];
-        nx = ox + ddx[d];
+        else /* Short melee */
+        {
+            /* Hack -- allow "randomized" motion */
+            if (d == 5) d = ddd[randint0(8)];
+
+            /* Get the destination */
+            ny = oy + ddy[d];
+            nx = ox + ddx[d];
+        }
 
         /* Ignore locations off of edge */
         if (!in_bounds2(ny, nx)) continue;
@@ -3244,7 +3288,7 @@ static void process_monster(int m_idx)
             {
                 m_ptr->energy_need += ENERGY_NEED();
                 /* Monster hacks web to bits? We assume at the moment that only
-                 * the player (in particual, a Spider player monster race) can
+                 * the player (in particular, a Spider player monster race) can
                  * produce webs. */
                 if (!(r_ptr->flags2 & RF2_PASS_WALL) && mon_save_p(m_ptr->r_idx, A_NONE))
                 {

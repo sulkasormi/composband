@@ -22,8 +22,26 @@ cptr spell_category_name(int tval)
         return "prayer";
     case TV_MUSIC_BOOK:
         return "song";
+    case TV_LAW_BOOK:
+        return "legal trick";
     default:
         return "spell";
+    }
+}
+
+cptr spell_category_verb(int tval)
+{
+    switch (tval)
+    {
+    case TV_LIFE_BOOK:
+        return "recite";
+    case TV_MUSIC_BOOK:
+        return "sing";
+    case TV_HISSATSU_BOOK:
+    case TV_LAW_BOOK:
+        return "use";
+    default:
+        return "cast";
     }
 }
 
@@ -256,7 +274,7 @@ static int get_spell(int *sn, cptr prompt, int sval, bool learned, int use_realm
             }
             else
             {
-                need_mana = mod_need_mana(s_ptr->smana, spell, use_realm);
+                need_mana = mod_need_mana(lawyer_hack(s_ptr, LAWYER_HACK_MANA), spell, use_realm);
             }
 
             /* Prompt */
@@ -321,8 +339,8 @@ static bool item_tester_learn_spell(object_type *o_ptr)
     if (o_ptr->tval == TV_MUSIC_BOOK && p_ptr->pclass == CLASS_BARD) return TRUE;
     if (o_ptr->tval == TV_BURGLARY_BOOK && p_ptr->pclass == CLASS_ROGUE) return TRUE;
     else if (o_ptr->tval == TV_HEX_BOOK && p_ptr->pclass == CLASS_HIGH_MAGE && REALM1_BOOK == o_ptr->tval) return TRUE;
+    else if (REALM1_BOOK == o_ptr->tval || REALM2_BOOK == o_ptr->tval) return TRUE;
     else if (!is_magic(tval2realm(o_ptr->tval))) return FALSE;
-    if (REALM1_BOOK == o_ptr->tval || REALM2_BOOK == o_ptr->tval) return TRUE;
     if (choices & (0x0001 << (tval2realm(o_ptr->tval) - 1))) return TRUE;
     return FALSE;
 }
@@ -684,6 +702,13 @@ static int _force_handler(obj_prompt_context_ptr context, int cmd)
     return OP_CMD_SKIPPED;
 }
 
+static int _ninjutsu_handler(obj_prompt_context_ptr context, int cmd)
+{
+    if ((cmd == 'N') || (cmd == 'n'))
+        return OP_CMD_DISMISS;
+    return OP_CMD_SKIPPED;
+}
+
 #define _CAST 1
 #define _BROWSE 2
 static obj_ptr _get_spellbook(int mode)
@@ -694,7 +719,8 @@ static obj_ptr _get_spellbook(int mode)
     sprintf(msg, "%s which book%s?",
         mode == _CAST ? "Use" : "Browse",
         p_ptr->pclass == CLASS_FORCETRAINER ?
-            "(<color:keypress>F</color> for the Force)" : "");
+            " (<color:keypress>F</color> for the Force)" : p_ptr->pclass == CLASS_NINJA_LAWYER ?
+            " (<color:keypress>N</color> for Ninjutsu)" : "");
 
     prompt.prompt = msg;
     prompt.error = "You have no books that you can read.";
@@ -706,6 +732,23 @@ static obj_ptr _get_spellbook(int mode)
     {
         prompt.error = NULL;
         prompt.cmd_handler = _force_handler;
+        switch (obj_prompt(&prompt))
+        {
+        case OP_CUSTOM:
+        case OP_NO_OBJECTS:
+            if (mode == _CAST)
+                do_cmd_spell();
+            else
+                do_cmd_spell_browse();
+            return NULL;
+        }
+        return prompt.obj;
+    }
+
+    if (p_ptr->pclass == CLASS_NINJA_LAWYER)
+    {
+        prompt.error = NULL;
+        prompt.cmd_handler = _ninjutsu_handler;
         switch (obj_prompt(&prompt))
         {
         case OP_CUSTOM:
@@ -732,7 +775,10 @@ void do_cmd_cast(void)
     int          use_realm;
     int          need_mana;
     int          take_mana;
+    int          vaikeustaso;
+    bool	      hp_caster;
     cptr         prayer;
+    cptr         spl_verb;
     magic_type  *s_ptr;
     caster_info *caster_ptr = get_caster_info();
 
@@ -777,6 +823,7 @@ void do_cmd_cast(void)
     }
 
     prayer = spell_category_name(mp_ptr->spell_book);
+    spl_verb = spell_category_verb(mp_ptr->spell_book);
 
     book = _get_spellbook(_CAST);
     if (!book) return;
@@ -790,8 +837,7 @@ void do_cmd_cast(void)
     use_realm = tval2realm(book->tval);
 
     /* Ask for a spell */
-    if (!get_spell(&spell, (mp_ptr->spell_book == TV_LIFE_BOOK) ? "recite" : "cast",
-        book->sval, TRUE, use_realm, FALSE))
+    if (!get_spell(&spell, spl_verb, book->sval, TRUE, use_realm, FALSE))
     {
         if (spell == -2)
             msg_format("You don't know any %ss in that book.", prayer);
@@ -817,15 +863,22 @@ void do_cmd_cast(void)
         s_ptr = &mp_ptr->info[use_realm - 1][spell];
     }
 
+    /* Extract spell difficulty */
+    vaikeustaso = lawyer_hack(s_ptr, LAWYER_HACK_LEVEL);
+
     /* Extract mana consumption rate */
-    need_mana = mod_need_mana(s_ptr->smana, spell, use_realm);
+    need_mana = mod_need_mana(lawyer_hack(s_ptr, LAWYER_HACK_MANA), spell, use_realm);
+
+    /* Check for HP casting */
+    hp_caster = ((caster_ptr) && ((caster_ptr->options & CASTER_USE_HP) || 
+                ((p_ptr->pclass == CLASS_NINJA_LAWYER) && (use_realm != REALM_LAW))));
 
     /* Verify "dangerous" spells */
-    if (caster_ptr && (caster_ptr->options & CASTER_USE_HP))
-    {
+    if (hp_caster)
+    {	
         if (need_mana > p_ptr->chp)
         {
-            msg_print("You do not have enough hp to use this spell.");
+            msg_print("You do not have enough hit points to use this spell.");
             if (flush_failure) flush();
             return;
         }
@@ -836,8 +889,7 @@ void do_cmd_cast(void)
 
         /* Warning */
         msg_format("You do not have enough mana to %s this %s.",
-            ((mp_ptr->spell_book == TV_LIFE_BOOK) ? "recite" : "cast"),
-            prayer);
+            spl_verb, prayer);
 
         return;
     }
@@ -849,7 +901,7 @@ void do_cmd_cast(void)
        This is to prevent death from using a force weapon with a spell
        that also attacks, like Cyclone.
     */
-    if (caster_ptr && (caster_ptr->options & CASTER_USE_HP))
+    if (hp_caster)
     {
         take_mana = 0;
     }
@@ -870,7 +922,7 @@ void do_cmd_cast(void)
     energy_use = 100;
     if (p_ptr->pclass == CLASS_YELLOW_MAGE)
     {
-        int delta = p_ptr->lev - s_ptr->slevel;
+        int delta = p_ptr->lev - vaikeustaso;
         if (delta > 0) /* paranoia */
             energy_use -= delta;
     }
@@ -882,6 +934,7 @@ void do_cmd_cast(void)
         if (flush_failure) flush();
 
         msg_format("You failed to cast %s!", do_spell(use_realm, spell % 32, SPELL_NAME));
+        if (prompt_on_failure) msg_print(NULL);
 
         if (take_mana && prace_is_(RACE_DEMIGOD) && p_ptr->psubrace == DEMIGOD_ATHENA)
             p_ptr->csp += take_mana/2;
@@ -892,12 +945,12 @@ void do_cmd_cast(void)
         if (caster_ptr && caster_ptr->on_fail != NULL)
         {
             spell_info hack = {0};
-            hack.level = s_ptr->slevel;
+            hack.level = vaikeustaso;
             hack.cost = need_mana;
             hack.fail = chance;
             (caster_ptr->on_fail)(&hack);
         }
-        if (caster_ptr && (caster_ptr->options & CASTER_USE_HP))
+        if (hp_caster)
             take_hit(DAMAGE_USELIFE, need_mana, "concentrating too hard");
 
         virtue_on_fail_spell(use_realm, chance);
@@ -948,13 +1001,13 @@ void do_cmd_cast(void)
 
         spell_stats_on_cast_old(use_realm, spell);
 
-        if (caster_ptr && (caster_ptr->options & CASTER_USE_HP))
+        if (hp_caster)
             take_hit(DAMAGE_USELIFE, need_mana, "concentrating too hard");
 
         if (caster_ptr && caster_ptr->on_cast != NULL)
         {
             spell_info hack = {0};
-            hack.level = s_ptr->slevel;
+            hack.level = vaikeustaso;
             hack.cost = need_mana;
             hack.fail = chance;
             (caster_ptr->on_cast)(&hack);
@@ -980,7 +1033,7 @@ void do_cmd_cast(void)
             }
 
             /* Gain experience */
-            gain_exp(e * s_ptr->slevel);
+            gain_exp(e * vaikeustaso);
 
             /* Redraw object recall */
             p_ptr->window |= (PW_OBJECT);
@@ -1051,7 +1104,7 @@ void do_cmd_cast(void)
                 *   10   4  17  24  35
                 *    5   1  12  18  27
                 *    1   1   8  13  20 */
-                int ratio = (17 + s_ptr->slevel) * 100 / (10 + dlvl);
+                int ratio = (17 + vaikeustaso) * 100 / (10 + dlvl);
                 point_t max_tbl[4] = { {60, 1600}, {100, 1200}, {200, 900}, {300, 0} };
                 int max_exp = interpolate(ratio, max_tbl, 4);
 
@@ -1067,7 +1120,7 @@ void do_cmd_cast(void)
                     msg_format("<color:B>When casting an <color:R>L%d</color> spell on "
                         "<color:R>DL%d</color> your max proficiency is <color:R>%d</color> "
                         "(Current: <color:R>%d</color>).</color> <color:D>%d</color>",
-                        s_ptr->slevel, dlvl, max_exp, cur_exp, ratio);
+                        vaikeustaso, dlvl, max_exp, cur_exp, ratio);
                 }
             }
 
@@ -1113,7 +1166,7 @@ void do_cmd_cast(void)
            spell that might do just that, but I don't think that spell comes thru this fn.
            So it is prudent to double check for overexertion ...
         */
-        if (caster_ptr && (caster_ptr->options & CASTER_USE_HP))
+        if (hp_caster)
         {
         }
         else if (need_mana <= p_ptr->csp)
@@ -1589,7 +1642,7 @@ bool rakuba(int dam, bool force)
         if (!sn)
         {
             monster_desc(m_name, m_ptr, 0);
-            msg_format("You have nearly fallen from %s, but bumped into wall.",m_name);
+            msg_format("You nearly fall from %s, but bump into a wall.",m_name);
             take_hit(DAMAGE_NOESCAPE, r_ptr->level+3, "bumping into wall");
             return FALSE;
         }
@@ -1707,6 +1760,18 @@ bool do_riding(bool force)
         {
             msg_print("That monster is not a pet.");
 
+            return FALSE;
+        }
+
+        if (m_ptr->r_idx == MON_SHEEP)
+        {
+            int noppa = randint0(3);
+            switch (noppa)
+            {
+             case 0: { msg_print("Aivan sairas kaveri kun tuollaista aikoo puuhata!"); break; }
+             case 1: { msg_print("I'm not going to judge you, but... what the hell, I'm going to judge you. WHAT THE HELL?"); break; }
+             default: { msg_print("Holy bleating bleatity bleat!"); break; }
+            }
             return FALSE;
         }
         if (p_ptr->prace == RACE_MON_RING)

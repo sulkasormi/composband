@@ -520,7 +520,7 @@ critical_t critical_norm(int weight, int plus, s16b meichuu, int mode, int hand)
 {
     critical_t result = {0};
     int i;
-    int roll = (p_ptr->pclass == CLASS_NINJA) ? 4444 : 5000;
+    int roll = (player_is_ninja) ? 4444 : 5000;
     int quality = 650;
 
     if (p_ptr->enhanced_crit)
@@ -898,7 +898,7 @@ s16b tot_dam_aux(object_type *o_ptr, int tdam, monster_type *m_ptr, s16b hand, i
                     msg_format("Your %s slays good.", o_name);
                     obj_learn_slay(o_ptr, OF_BRAND_CHAOS, "has the <color:v>Mark of Chaos</color>");
                     mon_lore_3(m_ptr, RF3_GOOD);
-					if (have_flag(flgs, OF_KILL_EVIL))
+					if (have_flag(flgs, OF_KILL_GOOD))
 					{
 						if (mult < 45) mult = 45;
 						obj_learn_slay(o_ptr, OF_KILL_GOOD, "slays <color:W>*Good*</color>");
@@ -2217,6 +2217,7 @@ static void innate_attacks(s16b m_idx, bool *fear, bool *mdeath, int mode)
         switch (p_ptr->pclass)
         {
         case CLASS_ROGUE: /* <=== Burglary Book of Shadows currently has NINJA_S_STEALTH */
+        case CLASS_NINJA_LAWYER: 
         case CLASS_NINJA:
             if (m_ptr->ml)
             {
@@ -2339,9 +2340,10 @@ static void innate_attacks(s16b m_idx, bool *fear, bool *mdeath, int mode)
                     dam -= dam * MIN(100, p_ptr->stun) / 150;
                     base_dam -= base_dam * MIN(100, p_ptr->stun) / 150;
                 }
+                if (p_ptr->pclass == CLASS_NINJA_LAWYER) dam -= ((dam * (100 - NINJA_LAWYER_MULT)) / 100);
 
                 /* More slop for Draconian Metamorphosis ... */
-                if ( p_ptr->pclass == CLASS_NINJA
+                if ( (player_is_ninja)
                   && (p_ptr->cur_lite <= 0 || one_in_(7)) )
                 {
                     int maxhp = maxroll(r_ptr->hdice, r_ptr->hside);
@@ -2351,7 +2353,7 @@ static void innate_attacks(s16b m_idx, bool *fear, bool *mdeath, int mode)
                         msg_format("You critically injured %s!", m_name_object);
                     }
                     else if ( (m_ptr->hp < maxhp/2 && one_in_(50))
-                           || ( (one_in_(666) || ((backstab || fuiuchi) && one_in_(11)))
+                           || ( (one_in_(666) || ((backstab || fuiuchi) && one_in_(p_ptr->pclass == CLASS_NINJA ? 11 : 20)))
                              && !(r_ptr->flags1 & RF1_UNIQUE)
                              && !(r_ptr->flags7 & RF7_UNIQUE2)) )
                     {
@@ -2864,6 +2866,7 @@ static bool py_attack_aux(int y, int x, bool *fear, bool *mdeath, s16b hand, int
             break;
         /* vvvvv FALL THRU vvvvvv */
     case CLASS_ROGUE:
+    case CLASS_NINJA_LAWYER:
     case CLASS_NINJA:
         if (o_ptr && !p_ptr->weapon_info[hand].icky_wield)
         {
@@ -3034,7 +3037,7 @@ static bool py_attack_aux(int y, int x, bool *fear, bool *mdeath, s16b hand, int
             success_hit = one_in_(n);
         }
         else if (fuiuchi && !(r_ptr->flagsr & RFR_RES_ALL)) success_hit = TRUE;
-        else if ((p_ptr->pclass == CLASS_NINJA) && ((backstab || fuiuchi) && !(r_ptr->flagsr & RFR_RES_ALL))) success_hit = TRUE;
+        else if ((player_is_ninja) && ((backstab || fuiuchi) && !(r_ptr->flagsr & RFR_RES_ALL))) success_hit = TRUE;
         else if (duelist_attack && one_in_(2))
         {
             perfect_strike = TRUE;
@@ -3481,12 +3484,14 @@ static bool py_attack_aux(int y, int x, bool *fear, bool *mdeath, s16b hand, int
                 }
                 else k = 1;
             }
-            else if ( p_ptr->pclass == CLASS_NINJA
-                   && o_ptr
-                   && !p_ptr->weapon_info[hand].icky_wield
-                   && (p_ptr->cur_lite <= 0 || one_in_(7)) )
+            else if ( (player_is_ninja)
+                   && (o_ptr)
+                   && (!p_ptr->weapon_info[hand].icky_wield)
+                   && ((p_ptr->cur_lite <= 0 || one_in_(7))) )
             {
                 int maxhp = maxroll(r_ptr->hdice, r_ptr->hside);
+                if (p_ptr->pclass == CLASS_NINJA_LAWYER) k -= ((k * (100 - NINJA_LAWYER_MULT)) / 100);
+
                 if (one_in_(backstab ? 13 : (stab_fleeing || fuiuchi) ? 15 : 27))
                 {
                     k *= 5;
@@ -3494,13 +3499,14 @@ static bool py_attack_aux(int y, int x, bool *fear, bool *mdeath, s16b hand, int
                     msg_format("You critically injured %s!", m_name_object);
                 }
                 else if ( (m_ptr->hp < maxhp/2 && one_in_(num_blow*10))
-                       || ( (one_in_(666) || ((backstab || fuiuchi) && one_in_(11)))
+                       || ( (one_in_(666) || ((backstab || fuiuchi) && one_in_(p_ptr->pclass == CLASS_NINJA ? 11 : 20)))
                          && !(r_ptr->flags1 & RF1_UNIQUE)
                          && !(r_ptr->flags7 & RF7_UNIQUE2)) )
                 {
                     if ((r_ptr->flags1 & RF1_UNIQUE) || (r_ptr->flags7 & RF7_UNIQUE2) || (m_ptr->hp >= maxhp/2))
                     {
-                        k = MAX(k*5, m_ptr->hp/2);
+                        k *= 5; 
+                        if (p_ptr->pclass == CLASS_NINJA) k = MAX(k, m_ptr->hp/2);
                         drain_result *= 2;
                         msg_format("You fatally injured %s!", m_name_object);
                     }
@@ -5175,7 +5181,7 @@ bool move_player_effect(int ny, int nx, u32b mpe_mode)
         /* Handle stuff */
         if (mpe_mode & MPE_HANDLE_STUFF) handle_stuff();
 
-        if (p_ptr->pclass == CLASS_NINJA || p_ptr->tim_superstealth)
+        if ((player_is_ninja) || (p_ptr->tim_superstealth))
         {
             if (c_ptr->info & (CAVE_GLOW)) set_superstealth(FALSE);
             else if (p_ptr->cur_lite <= 0) set_superstealth(TRUE);

@@ -292,6 +292,7 @@ static void _use_object(object_type *o_ptr)
     {
         if (flush_failure) flush();
         msg_print("You failed to use the device properly.");
+        if (prompt_on_failure) msg_print(NULL);
         sound(SOUND_FAIL);
         return;
     }
@@ -300,6 +301,7 @@ static void _use_object(object_type *o_ptr)
     {
         if (flush_failure) flush();
         msg_print("The device has no charges left.");
+        if (prompt_on_failure) msg_print(NULL);
         energy_use = 0;
         return;
     }

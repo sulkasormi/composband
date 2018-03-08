@@ -250,7 +250,7 @@ static void _scroll_cave(int dx, int dy)
 #if 1
     if (p_ptr->wizard)
     {
-        cmsg_format(TERM_VIOLET, "Scoll Cave (%d,%d)", dx, dy);
+        cmsg_format(TERM_VIOLET, "Scroll Cave (%d,%d)", dx, dy);
         msg_boundary();
     }
 #endif
@@ -1178,7 +1178,7 @@ void wilderness_gen(void)
                 f_ptr = &f_info[c_ptr->feat];
                 if (have_flag(f_ptr->flags, FF_BLDG))
                 {
-                    if ((f_ptr->subtype == 4) || ((p_ptr->town_num == 1) && (f_ptr->subtype == 0)))
+                    if ((f_ptr->subtype == 4) || ((p_ptr->town_num == TOWN_OUTPOST) && (f_ptr->subtype == 0)))
                     {
                         if (c_ptr->m_idx) delete_monster_idx(c_ptr->m_idx);
                         p_ptr->oldpy = y;
@@ -1192,18 +1192,22 @@ void wilderness_gen(void)
     /* When leaving the dungeon, look for the wilderness stairs to place the player */
     else if (p_ptr->leaving_dungeon && !(d_info[p_ptr->leaving_dungeon].flags1 & DF1_RANDOM))
     {
-        for (y = 0; y < cur_hgt; y++)
+        bool loytyi = FALSE;
+        for (y = 0; ((!loytyi) && (y < cur_hgt)); y++)
         {
-            for (x = 0; x < cur_wid; x++)
+            for (x = 0; ((!loytyi) && (x < cur_wid)); x++)
             {
                 /* Get the cave grid */
                 c_ptr = &cave[y][x];
 
                 if (cave_have_flag_grid(c_ptr, FF_ENTRANCE))
                 {
-                    if (c_ptr->m_idx) delete_monster_idx(c_ptr->m_idx);
-                    p_ptr->oldpy = y;
-                    p_ptr->oldpx = x;
+                    {
+                        if (c_ptr->m_idx) delete_monster_idx(c_ptr->m_idx);
+                        p_ptr->oldpy = y;
+                        p_ptr->oldpx = x;
+                        loytyi = (c_ptr->special == p_ptr->leaving_dungeon);
+                    }
                 }
             }
         }

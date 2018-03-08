@@ -645,12 +645,14 @@ bool monster_can_cross_terrain(s16b feat, monster_race *r_ptr, u16b mode)
         if (!(r_ptr->flagsr & RFR_EFF_IM_FIRE_MASK)) return FALSE;
     }
 
-	/* Acid */
-	if (have_flag(f_ptr->flags, FF_ACID))
-	{
-		/* Deep acid */
-		if (have_flag(f_ptr->flags, FF_DEEP)) return FALSE;
-	}
+    /* Toxic waste/acid */
+    if (have_flag(f_ptr->flags, FF_ACID))
+    {
+        /* Deep nukage */
+        if (have_flag(f_ptr->flags, FF_DEEP)) return FALSE;
+	
+	   if ((!(r_ptr->flagsr & RFR_EFF_IM_ACID_MASK)) || (!(r_ptr->flagsr & RFR_EFF_IM_POIS_MASK))) return FALSE;
+    }
 
     return TRUE;
 }
@@ -713,6 +715,8 @@ bool are_enemies(monster_type *m_ptr, monster_type *n_ptr)
     {
         /* No monster fighting (option) except involving pets */
         if (!allow_hostile_monster && !is_pet(m_ptr) && !is_pet(n_ptr)) return FALSE;
+
+        if (((m_ptr->r_idx == MON_DJINNI) || (n_ptr->r_idx == MON_DJINNI)) && (is_hostile(m_ptr) == is_hostile(n_ptr))) return FALSE;
 
         if (!(m_ptr->mflag2 & MFLAG2_CHAMELEON) || !(n_ptr->mflag2 & MFLAG2_CHAMELEON)) return TRUE;
     }

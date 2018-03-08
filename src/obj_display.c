@@ -1092,7 +1092,7 @@ void obj_display_doc(object_type *o_ptr, doc_ptr doc)
         }
         else
         {
-            doc_printf(doc, "This object is unkown. You should either identify it, or, if you are truly bold (foolish?), then you might learn more by equipping it!\n");
+            doc_printf(doc, "This object is unknown. You should either identify it, or, if you are truly bold (foolish?), then you might learn more by equipping it!\n");
         }
     }
     _display_autopick(o_ptr, doc);

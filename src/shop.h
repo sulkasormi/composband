@@ -47,12 +47,15 @@ extern void     shop_save(shop_ptr shop, savefile_ptr file);
 struct town_s;
 typedef struct town_s town_t, *town_ptr;
 
+
+/* Note: If you add towns, also update NO_TOWN and SECRET_TOWN in defines.h */
 enum
 {
     TOWN_OUTPOST = 1,
     TOWN_TELMORA,
     TOWN_MORIVANT,
     TOWN_ANGWIL,
+	TOWN_ANAMBAR,
 	TOWN_THALOS,
     TOWN_ZUL,
     TOWN_RANDOM,

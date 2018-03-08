@@ -90,50 +90,53 @@ void self_knowledge(void)
     }
     info[i++] = "";
 
-    sprintf(Dummy, "Your alignment : %s (%d)", your_alignment(), p_ptr->align);
-    strcpy(buf[1], Dummy);
-    info[i++] = buf[1];
-    for (v_nr = 0; v_nr < 8; v_nr++)
+    if (enable_virtues)
     {
-        char v_name [20];
-        char vir_desc[80];
-        int tester = p_ptr->virtues[v_nr];
+        sprintf(Dummy, "Your alignment : %s (%d)", your_alignment(), p_ptr->align);
+        strcpy(buf[1], Dummy);
+        info[i++] = buf[1];
+        for (v_nr = 0; v_nr < 8; v_nr++)
+        {
+            char v_name [20];
+            char vir_desc[80];
+            int tester = p_ptr->virtues[v_nr];
 
-        strcpy(v_name, virtue_name(p_ptr->vir_types[v_nr]));
+            strcpy(v_name, virtue_name(p_ptr->vir_types[v_nr]));
 
-        sprintf(vir_desc, "Oops. No info about %s.", v_name);
-        if (tester < -100)
-            sprintf(vir_desc, "You are the polar opposite of %s (%d).", v_name, tester);
-        else if (tester < -80)
-            sprintf(vir_desc, "You are an arch-enemy of %s (%d).", v_name, tester);
-        else if (tester < -60)
-            sprintf(vir_desc, "You are a bitter enemy of %s (%d).", v_name, tester);
-        else if (tester < -40)
-            sprintf(vir_desc, "You are an enemy of %s (%d).", v_name, tester);
-        else if (tester < -20)
-            sprintf(vir_desc, "You have sinned against %s (%d).", v_name, tester);
-        else if (tester < 0)
-            sprintf(vir_desc, "You have strayed from the path of %s (%d).", v_name, tester);
-        else if (tester == 0)
-            sprintf(vir_desc,"You are neutral to %s (%d).", v_name, tester);
-        else if (tester < 20)
-            sprintf(vir_desc,"You are somewhat virtuous in %s (%d).", v_name, tester);
-        else if (tester < 40)
-            sprintf(vir_desc,"You are virtuous in %s (%d).", v_name, tester);
-        else if (tester < 60)
-            sprintf(vir_desc,"You are very virtuous in %s (%d).", v_name, tester);
-        else if (tester < 80)
-            sprintf(vir_desc,"You are a champion of %s (%d).",  v_name, tester);
-        else if (tester < 100)
-            sprintf(vir_desc,"You are a great champion of %s (%d).", v_name, tester);
-        else
-            sprintf(vir_desc,"You are the living embodiment of %s (%d).", v_name, tester);
+            sprintf(vir_desc, "Oops. No info about %s.", v_name);
+            if (tester < -100)
+                sprintf(vir_desc, "You are the polar opposite of %s (%d).", v_name, tester);
+            else if (tester < -80)
+                sprintf(vir_desc, "You are an arch-enemy of %s (%d).", v_name, tester);
+            else if (tester < -60)
+                sprintf(vir_desc, "You are a bitter enemy of %s (%d).", v_name, tester);
+            else if (tester < -40)
+                sprintf(vir_desc, "You are an enemy of %s (%d).", v_name, tester);
+            else if (tester < -20)
+                sprintf(vir_desc, "You have sinned against %s (%d).", v_name, tester);
+            else if (tester < 0)
+                sprintf(vir_desc, "You have strayed from the path of %s (%d).", v_name, tester);
+            else if (tester == 0)
+                sprintf(vir_desc,"You are neutral to %s (%d).", v_name, tester);
+            else if (tester < 20)
+                sprintf(vir_desc,"You are somewhat virtuous in %s (%d).", v_name, tester);
+            else if (tester < 40)
+                sprintf(vir_desc,"You are virtuous in %s (%d).", v_name, tester);
+            else if (tester < 60)
+                sprintf(vir_desc,"You are very virtuous in %s (%d).", v_name, tester);
+            else if (tester < 80)
+                sprintf(vir_desc,"You are a champion of %s (%d).",  v_name, tester);
+            else if (tester < 100)
+                sprintf(vir_desc,"You are a great champion of %s (%d).", v_name, tester);
+            else
+                sprintf(vir_desc,"You are the living embodiment of %s (%d).", v_name, tester);
 
-        strcpy(v_string[v_nr], vir_desc);
+            strcpy(v_string[v_nr], vir_desc);
 
-        info[i++] = v_string[v_nr];
+            info[i++] = v_string[v_nr];
+        }
+        info[i++] = "";
     }
-    info[i++] = "";
 
     if (p_ptr->blind)
     {
@@ -3766,6 +3769,13 @@ bool teleport_swap(int dir)
     {
         msg_print("A mysterious force prevents you from teleporting!");
         equip_learn_flag(OF_NO_TELE);
+        return FALSE;
+    }
+
+    /* Require clean line of sight */
+    if (!very_clean_shot(py, px, ty, tx))
+    {
+        msg_print("You cannot see your target well enough.");
         return FALSE;
     }
 

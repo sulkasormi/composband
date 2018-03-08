@@ -385,7 +385,7 @@ static void init_header(header *head, int num, int len)
     /* Save the "version" */
     head->v_major = VER_MAJOR;
     head->v_minor = VER_MINOR;
-    head->v_patch = VER_PATCH;
+    head->v_patch = 4;
     head->v_extra = 0;
 
     /* Save the "record" information */
@@ -797,6 +797,7 @@ static errr init_feat_variables(void)
     feat_rogue_trap1 = f_tag_to_index_in_init("ROGUE_TRAP_1");
     feat_rogue_trap2 = f_tag_to_index_in_init("ROGUE_TRAP_2");
     feat_rogue_trap3 = f_tag_to_index_in_init("ROGUE_TRAP_3");
+    feat_semicolon = f_tag_to_index_in_init("SEMI_PUN");
     feat_mirror = f_tag_to_index_in_init("MIRROR");
 
     /* Doors */
@@ -1022,7 +1023,7 @@ static errr init_other(void)
     /*** Pre-allocate space for the "format()" buffer ***/
 
     /* Hack -- Just call the "format()" function */
-    (void)format("%s (%s).", "ComPosband", "Hack Whack");
+    (void)format("%s (%s).", "FrogComposband", "Hack Whack");
 
 
     /* Success */

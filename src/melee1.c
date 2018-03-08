@@ -138,6 +138,8 @@ bool make_attack_normal(int m_idx)
     bool explode = FALSE;
     bool do_silly_attack = (one_in_(2) && p_ptr->image);
     int total_dam = 0;
+    int opy = py;
+    int opx = px;
 
     /* Not allowed to attack */
     if (r_ptr->flags1 & (RF1_NEVER_BLOW)) return (FALSE);
@@ -213,7 +215,7 @@ bool make_attack_normal(int m_idx)
 
         /* Stop if player is dead or gone (e.g. SHATTER knocks player back) */
         if (!p_ptr->playing || p_ptr->is_dead) break;
-        if (!mon_spell_current() && distance(py, px, m_ptr->fy, m_ptr->fx) > 1) break;
+        if ((!mon_spell_current()) && ((py != opy) || (px != opx)) && (distance(py, px, m_ptr->fy, m_ptr->fx) > 1)) break;
         /*   ^--- Assume it is GAZE = {MST_BOLT, GF_ATTACK} from a beholder */
 
         /* Handle "leaving" */
@@ -522,6 +524,12 @@ bool make_attack_normal(int m_idx)
 
                     if (p_ptr->is_dead || CHECK_MULTISHADOW()) break;
 
+                    /* No stealing from lawyers - we still blink because 1) that's a signature
+                     * move for thieves and 2) otherwise cockatrices become unexpectedly deadly
+                     * to lawyers and ninja lawyers with no free action */
+                    if ((p_ptr->pclass == CLASS_LAWYER) || (p_ptr->pclass == CLASS_NINJA_LAWYER))
+                    { blinked = TRUE; obvious = TRUE; break; }
+
                     obvious = TRUE;
 
                     if (r_ptr->flags2 & RF2_THIEF)
@@ -576,6 +584,10 @@ bool make_attack_normal(int m_idx)
                     if (MON_CONFUSED(m_ptr)) break;
 
                     if (p_ptr->is_dead || CHECK_MULTISHADOW()) break;
+
+                    /* No stealing from lawyers */
+                    if ((p_ptr->pclass == CLASS_LAWYER) || (p_ptr->pclass == CLASS_NINJA_LAWYER)) 
+                    { blinked = TRUE; obvious = TRUE; break; }
 
                     if (r_ptr->flags2 & RF2_THIEF)
                         mon_lore_2(m_ptr, RF2_THIEF);

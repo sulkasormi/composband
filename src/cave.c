@@ -4768,7 +4768,7 @@ void hit_mon_trap(int y, int x, int m_idx)
                 {
                 case 1: /* Sleep */
                     if (m_ptr->ml)
-                        msg_format("%s is hit by a small dart.", m_name);
+                        msg_format("%^s is hit by a small dart.", m_name);
                     project(PROJECT_WHO_TRAP, 1, m_ptr->fy, m_ptr->fx, p_ptr->lev, GF_OLD_SLEEP, (PROJECT_GRID | PROJECT_ITEM | PROJECT_KILL | PROJECT_JUMP));
                     break;
                 case 2: /* Confuse */
@@ -4778,7 +4778,7 @@ void hit_mon_trap(int y, int x, int m_idx)
                     break;
                 case 3: /* Slow */
                     if (m_ptr->ml)
-                        msg_format("%s is hit by a small dart.", m_name);
+                        msg_format("%^s is hit by a small dart.", m_name);
                     project(PROJECT_WHO_TRAP, 1, m_ptr->fy, m_ptr->fx, p_ptr->lev, GF_OLD_SLOW, (PROJECT_GRID | PROJECT_ITEM | PROJECT_KILL | PROJECT_JUMP));
                     break;
                 case 4: /* Teleport */
@@ -4786,12 +4786,12 @@ void hit_mon_trap(int y, int x, int m_idx)
                     {
                         mon_lore_r(m_ptr, RFR_RES_TELE);
                         if (m_ptr->ml)
-                            msg_format("%s resists teleportation.", m_name);
+                            msg_format("%^s resists teleportation.", m_name);
                     }
                     else
                     {
                         if (m_ptr->ml)
-                            msg_format("%s disappears.", m_name);
+                            msg_format("%^s disappears.", m_name);
                         teleport_away(m_idx, 100, TELEPORT_PASSIVE);
                     }
                     break;
@@ -4801,12 +4801,12 @@ void hit_mon_trap(int y, int x, int m_idx)
                         if (r_ptr->flags7 & RF7_CAN_FLY)
                         {
                             if (m_ptr->ml)
-                                msg_format("%s flies over the trap door.", m_name);
+                                msg_format("%^s flies over the trap door.", m_name);
                         }
                         else
                         {
                             if (m_ptr->ml)
-                                msg_format("%s falls through the trap door.", m_name);
+                                msg_format("%^s falls through the trap door.", m_name);
                             delete_monster_idx(m_idx);
                         }
                         break;
@@ -4814,7 +4814,7 @@ void hit_mon_trap(int y, int x, int m_idx)
                     /* vvv=== Fall Thru: No Trapdoors in the Arena or Fixed Town Quests */
                 case 6: case 7: case 8: case 9: /* Arrow Trap */
                     if (m_ptr->ml)
-                        msg_format("%s is hit by an arrow.", m_name);
+                        msg_format("%^s is hit by an arrow.", m_name);
                     project(PROJECT_WHO_TRAP, 1, m_ptr->fy, m_ptr->fx, p_ptr->lev/2 + damroll(5, 5), GF_MISSILE, (PROJECT_GRID | PROJECT_ITEM | PROJECT_KILL | PROJECT_JUMP));
                     break;
                 }
@@ -4825,22 +4825,22 @@ void hit_mon_trap(int y, int x, int m_idx)
                 {
                 case 1: /* Seeker Bolt */
                     if (m_ptr->ml)
-                        msg_format("%s is hit by a seeker bolt.", m_name);
+                        msg_format("%^s is hit by a seeker bolt.", m_name);
                     project(PROJECT_WHO_TRAP, 1, m_ptr->fy, m_ptr->fx, 4*(damroll(6, 5) + p_ptr->lev/2), GF_MISSILE, (PROJECT_GRID | PROJECT_ITEM | PROJECT_KILL | PROJECT_JUMP ));
                     break;
                 case 2: /* Sound Ball */
                     if (m_ptr->ml)
-                        msg_format("%s is hit by a ball of sound.", m_name);
+                        msg_format("%^s is hit by a ball of sound.", m_name);
                     project(PROJECT_WHO_TRAP, 2, y, x, 2*(damroll(10, 10) + p_ptr->lev), GF_SOUND, (PROJECT_GRID | PROJECT_ITEM | PROJECT_KILL | PROJECT_JUMP ));
                     break;
                 case 3: /* Shard Ball */
                     if (m_ptr->ml)
-                        msg_format("%s is hit by a large rock.", m_name);
+                        msg_format("%^s is hit by a large rock.", m_name);
                     project(PROJECT_WHO_TRAP, 2, y, x, damroll(10, 10) + 3*p_ptr->lev, GF_SHARDS, (PROJECT_GRID | PROJECT_ITEM | PROJECT_KILL | PROJECT_JUMP ));
                     break;
                 case 4: /* Elemental Balls */
                     if (m_ptr->ml)
-                        msg_format("%s is hit by a shower of elements.", m_name);
+                        msg_format("%^s is hit by a shower of elements.", m_name);
                     project(PROJECT_WHO_TRAP, 2, y, x, 2*(damroll(7, 7) + p_ptr->lev/2), GF_FIRE, (PROJECT_GRID | PROJECT_ITEM | PROJECT_KILL | PROJECT_JUMP ));
                     project(PROJECT_WHO_TRAP, 2, y, x, 2*(damroll(7, 7) + p_ptr->lev/2), GF_COLD, (PROJECT_GRID | PROJECT_ITEM | PROJECT_KILL | PROJECT_JUMP ));
                     project(PROJECT_WHO_TRAP, 2, y, x, 2*(damroll(7, 7) + p_ptr->lev/2), GF_ELEC, (PROJECT_GRID | PROJECT_ITEM | PROJECT_KILL | PROJECT_JUMP ));
@@ -4849,7 +4849,7 @@ void hit_mon_trap(int y, int x, int m_idx)
                     break;
                 case 5: /* Disintegration Ball */
                     if (m_ptr->ml)
-                        msg_format("%s is hit by a disintegration ball.", m_name);
+                        msg_format("%^s is hit by a disintegration ball.", m_name);
                     project(PROJECT_WHO_TRAP, 5, y, x, 2*(damroll(10, 10) + 3*p_ptr->lev), GF_DISINTEGRATE, (PROJECT_GRID | PROJECT_ITEM | PROJECT_KILL | PROJECT_JUMP ));
                     break;
                 case 6: /* Stasis */
@@ -4917,12 +4917,12 @@ void hit_mon_trap(int y, int x, int m_idx)
                 }
                 case 4: /* Mana Storm */
                     if (m_ptr->ml)
-                        msg_format("%s is hit by a mana storm.", m_name);
+                        msg_format("%^s is hit by a mana storm.", m_name);
                     project(PROJECT_WHO_TRAP, 5, y, x, 2*400, GF_DISINTEGRATE, (PROJECT_GRID | PROJECT_ITEM | PROJECT_KILL | PROJECT_JUMP ));
                     break;
                 case 5: /* Rocket */
                     if (m_ptr->ml)
-                        msg_format("%s is hit by a Rocket.", m_name);
+                        msg_format("%^s is hit by a Rocket.", m_name);
                     project(PROJECT_WHO_TRAP, 5, y, x, 2*400, GF_SHARDS, (PROJECT_GRID | PROJECT_ITEM | PROJECT_KILL | PROJECT_JUMP ));
                     break;
                 case 6: /* Dragon Trap */
@@ -4939,6 +4939,11 @@ void hit_mon_trap(int y, int x, int m_idx)
                     break;
                 }
                 }
+            }
+            else if (have_flag(f_info[c_ptr->mimic].flags, FF_SEMI_PUN))
+            {
+                msg_format("An invisible hand slaps %s with a large trout!", m_name);
+                project(PROJECT_WHO_TRAP, 0, m_ptr->fy, m_ptr->fx, p_ptr->lev + 32, GF_FORCE, (PROJECT_GRID | PROJECT_ITEM | PROJECT_KILL | PROJECT_JUMP ));
             }
             else
             {

@@ -806,7 +806,7 @@ class_t *rogue_get_class(void)
                     "fight, or to get in a telling first blow. A rogue may also "
                     "backstab a fleeing monster. Rogues also gain shooting bonuses "
                     "when using a sling.\n \n"
-                    "Rogues can select one realm from Sorcery, Death, Trump, Arcane, Craft, "
+                    "Rogues can select one realm - Sorcery, Death, Trump, Arcane, Craft, Law,"
                     "or Burglary. Except for this last realm, rogues have certain limitations " 
                     "on which spells they can learn, and they do not learn new spells "
                     "very quickly. The Burglary Realm however is unique to the rogue and "

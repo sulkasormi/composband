@@ -187,9 +187,12 @@ bool virtue_present(int which)
 
 int virtue_current(int which)
 {
-    int idx = virtue_find(which);
-    if (_is_valid_index(idx))
-        return p_ptr->virtues[idx];
+    if (enable_virtues)
+    {
+        int idx = virtue_find(which);
+        if (_is_valid_index(idx))
+            return p_ptr->virtues[idx];
+    }
     return 0;
 }
 
@@ -311,10 +314,15 @@ void virtue_init(void)
         p_ptr->vir_types[i++] = VIRTUE_KNOWLEDGE;
         break;
     case CLASS_NINJA:
+    case CLASS_NINJA_LAWYER:
         p_ptr->vir_types[i++] = VIRTUE_PATIENCE;
         p_ptr->vir_types[i++] = VIRTUE_KNOWLEDGE;
         p_ptr->vir_types[i++] = VIRTUE_FAITH;
         p_ptr->vir_types[i++] = VIRTUE_UNLIFE;
+        break;
+    case CLASS_LAWYER:
+        p_ptr->vir_types[i++] = VIRTUE_PATIENCE;
+        p_ptr->vir_types[i++] = VIRTUE_KNOWLEDGE;
         break;
     };
 
@@ -460,6 +468,8 @@ void virtue_init(void)
 void virtue_add(int which, int amount)
 {
     int idx;
+
+    if (!enable_virtues) return;
 
     idx = virtue_find(which);
     if (!_is_valid_index(idx))
@@ -669,6 +679,8 @@ int virtue_mod_spell_fail(int realm, int fail)
 {
     caster_info *caster_ptr = get_caster_info();
     int          max = 5;
+
+    if (!enable_virtues) return fail;
 
     if (caster_ptr && caster_ptr->which_stat == A_WIS)
         max = 10;

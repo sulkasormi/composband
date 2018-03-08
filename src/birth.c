@@ -28,7 +28,8 @@ cptr realm_jouhou[VALID_REALM] =
 "Armageddon is the most deadly offensive realm. You won't be lacking for firepower here. "
     "However, every spell is an offensive spell, so this realm suffers from a lack of any "
     "utility spells.",
-"Music magic shows various effects as sing song. There is two type of song; the one which shows effects instantly and the other one shows effect continuously until SP runs out. But the latter type has a limit; only one song can be sing at the same time.",
+"Experts in Law know many ways to confuse and hinder their enemies, to set and detect traps, to escape difficult situations and to win others to their side. However, they are somewhat lacking in direct offensive power.",
+"Music adepts affect the world around them by singing songs. There are two types of song; some have instant effects, while others have a continuous effect until SP runs out. But the latter type has a limit: only one song can be sung at a time.",
 "The books of Kendo describe about various combat techniques. When learning new techniques, you are required to carry the books, but once you memorizes them, you don't have to carry them. When using a technique, wielding a weapon is required.",
 "Hex is a very terrible realm. Spells gives continual effects when they are spelled continually like songs. Spells may obstract monsters' actions, may deal damages in sight, may revenge against enemies.",
 "The books of Rage describe various techniques. To learn a new technique, you must perform a ritual of rage, destroying the book in the process."

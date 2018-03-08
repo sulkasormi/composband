@@ -1340,7 +1340,7 @@ arena_type arena_info[MAX_ARENA_MONS + 2] =
     { MON_BICLOPS,       TV_POTION, SV_POTION_SELF_KNOWLEDGE      },
     { MON_ETHER_DRAKE,   TV_SCROLL, SV_SCROLL_RUNE_OF_PROTECTION  },
     { MON_HALFLING_S,    0,         0                             },
-    { MON_ELDER_THING,   TV_WAND,   EFFECT_DRAIN_LIFE             },
+    { MON_ELDER_THING,   TV_STAFF,  EFFECT_HEAL                   },
     { MON_M_MH_DRAGON,   0,         0                             },
     { MON_ETTIN,         TV_SCROLL, SV_SCROLL_STAR_ENCHANT_WEAPON },
     { MON_VAMPIRE_LORD,  TV_ROD,    EFFECT_DETECT_ALL             },
@@ -1377,7 +1377,7 @@ arena_type arena_info[MAX_ARENA_MONS + 2] =
  *                                             v---- Liar!! There are +80 speed monsters! :D
  * Note that currently the fastest monster is "Fast (+30)".
  *
- * It should be possible to lower the energy threshhold from
+ * It should be possible to lower the energy threshold from
  * 100 units to 50 units, though this may interact badly with
  * the (compiled out) small random energy boost code. It may
  * also tend to cause more "clumping" at high speeds.
@@ -1455,198 +1455,237 @@ player_pact pact_info[WARLOCK_MAX] =
 magic_type technic_info[NUM_TECHNIC][32] =
 {
     {
+        /* Law */
+        { REALM_LAW, 1,  1,  10,   2}, /* Detect Money */
+        { REALM_LAW, 2,  1,  10,   2}, /* Detect Traps */
+        { REALM_LAW, 3,  2,  10,   4}, /* Satisfy Hunger */
+        { REALM_LAW, 4,  2,  20,   4}, /* Detect Objects */
+        { REALM_LAW, 6,  3,  20,   8}, /* Basic Trap */
+        { REALM_LAW, 8,  4,  20,   8}, /* Disarm Traps */
+        { REALM_LAW, 10, 5,  30,   12}, /* Identify */
+        { REALM_LAW, 12, 5,  30,   12}, /* Dig */
+
+        { REALM_LAW, 10,  5,  25,   20}, /* Detect Monsters */
+        { REALM_LAW, 12,  6,  30,   35}, /* Slow Monster */
+        { REALM_LAW, 14,  6,  30,   25}, /* Confuse Monster */
+        { REALM_LAW, 15,  7,  30,   30}, /* Scare Monster */
+        { REALM_LAW, 25, 25,  50,   50}, /* Semicolon of Punishment */
+        { REALM_LAW, 27, 15,  50,   50}, /* Confuse Everybody */
+        { REALM_LAW, 35, 30,  60,   70}, /* Create Doors */
+        { REALM_LAW, 42, 50,  70,   80}, /* Semicolon of Warding */
+
+        { REALM_LAW, 12,  8,  25,   13}, /* Charm Monster */
+        { REALM_LAW, 18, 16,  30,   25}, /* Expert Trap */
+        { REALM_LAW, 20, 10,  35,   30}, /* Getaway */
+        { REALM_LAW, 30, 20,  40,   35}, /* Blame Undead */
+        { REALM_LAW, 32, 20,  50,   45}, /* Probe */
+        { REALM_LAW, 35, 25,  50,   60}, /* Spin */
+        { REALM_LAW, 40, 40,  60,   70}, /* Advanced Bloodsucking - values must match lawyer.c */
+        { REALM_LAW, 50, 150, 75,  200}, /* Alter Reality */
+
+        { REALM_LAW, 10,  10,  25,   15}, /* Blink */
+        { REALM_LAW, 15,  12,  30,   25}, /* Tread Softly */
+        { REALM_LAW, 20,  18,  35,   35}, /* Map Surroundings */
+        { REALM_LAW, 25,  25,  45,   45}, /* Dig Deep */
+        { REALM_LAW, 30,  30,  45,   55}, /* Unholy Rage */
+        { REALM_LAW, 35,  32,  55,   65}, /* Subpoena */
+        { REALM_LAW, 40,  35,  55,   75}, /* Teleport */
+        { REALM_LAW, 45,  60,  70,   85}  /* Dazzle */
+    },
+
+    {
         /* Music */
-        { 1,  1,  10,   2},
-        { 2,  1,  10,   2},
-        { 3,  2,  20,   3},
-        { 4,  2,  20,   4},
-        { 5,  2,  20,   6},
-        { 7,  4,  30,   8},
-        { 9,  3,  30,   10},
-        { 10, 2,  30,   12},
+        { REALM_MUSIC, 1,  1,  10,   2},
+        { REALM_MUSIC, 2,  1,  10,   2},
+        { REALM_MUSIC, 3,  2,  20,   3},
+        { REALM_MUSIC, 4,  2,  20,   4},
+        { REALM_MUSIC, 5,  2,  20,   6},
+        { REALM_MUSIC, 7,  4,  30,   8},
+        { REALM_MUSIC, 9,  3,  30,   10},
+        { REALM_MUSIC, 10, 2,  30,   12},
 
-        { 12,  3,   40,   20},
-        { 15, 16,  42,   35},
-        { 17, 18,  40,   25},
-        { 18,  2,  45,   30},
-        { 23,  8,  50,   38},
-        { 28, 30,  50,   41},
-        { 33, 35,  60,   42},
-        { 38, 35,  70,   46},
+        { REALM_MUSIC, 12,  3,   40,   20},
+        { REALM_MUSIC, 15, 16,  42,   35},
+        { REALM_MUSIC, 17, 18,  40,   25},
+        { REALM_MUSIC, 18,  2,  45,   30},
+        { REALM_MUSIC, 23,  8,  50,   38},
+        { REALM_MUSIC, 28, 30,  50,   41},
+        { REALM_MUSIC, 33, 35,  60,   42},
+        { REALM_MUSIC, 38, 35,  70,   46},
 
-        { 10,  4,  20,   13},
-        { 22,  5,  30,   26},
-        { 23,  3,  35,   27},
-        { 26,  28,  37,   29},
-        { 32,  37,  41,   36},
-        { 33,  22,  43,   40},
-        { 37,  35,  46,   42},
-        { 45,  60,  50,   56},
+        { REALM_MUSIC, 10,  4,  20,   13},
+        { REALM_MUSIC, 22,  5,  30,   26},
+        { REALM_MUSIC, 23,  3,  35,   27},
+        { REALM_MUSIC, 26,  28,  37,   29},
+        { REALM_MUSIC, 32,  37,  41,   36},
+        { REALM_MUSIC, 33,  22,  43,   40},
+        { REALM_MUSIC, 37,  35,  46,   42},
+        { REALM_MUSIC, 45,  60,  50,   56},
 
-        { 23,  18,  20,   23},
-        { 30,  30,  30,   26},
-        { 33,  65,  41,   30},
-        { 37,  35,  43,   35},
-        { 40,  30,  46,   50},
-        { 42,  75,  50,   68},
-        { 45,  58,  62,   73},
-        { 49,  48,  70,  200}
+        { REALM_MUSIC, 23,  18,  20,   23},
+        { REALM_MUSIC, 30,  30,  30,   26},
+        { REALM_MUSIC, 33,  65,  41,   30},
+        { REALM_MUSIC, 37,  35,  43,   35},
+        { REALM_MUSIC, 40,  30,  46,   50},
+        { REALM_MUSIC, 42,  75,  50,   68},
+        { REALM_MUSIC, 45,  58,  62,   73},
+        { REALM_MUSIC, 49,  48,  70,  200}
     },
 
     {
         /* Hissatsu */
-        { 1,   15,   0,   0},
-        { 3,   10,   0,   0},
-        { 6,   15,   0,   0},
-        { 9,    8,   0,   0},
-        { 10,  12,   0,   0},
-        { 12,  25,   0,   0},
-        { 14,   7,   0,   0},
-        { 17,  20,   0,   0},
+        { REALM_HISSATSU, 1,   15,   0,   0},
+        { REALM_HISSATSU, 3,   10,   0,   0},
+        { REALM_HISSATSU, 6,   15,   0,   0},
+        { REALM_HISSATSU, 9,    8,   0,   0},
+        { REALM_HISSATSU, 10,  12,   0,   0},
+        { REALM_HISSATSU, 12,  25,   0,   0},
+        { REALM_HISSATSU, 14,   7,   0,   0},
+        { REALM_HISSATSU, 17,  20,   0,   0},
 
-        { 19,  10,   0,   0},
-        { 22,  20,   0,   0},
-        { 24,  30,   0,   0},
-        { 25,  10,   0,   0},
-        { 27,  15,   0,   0},
-        { 29,  45,   0,   0},
-        { 32,  70,   0,   0},
-        { 35,  50,   0,   0},
+        { REALM_HISSATSU, 19,  10,   0,   0},
+        { REALM_HISSATSU, 22,  20,   0,   0},
+        { REALM_HISSATSU, 24,  30,   0,   0},
+        { REALM_HISSATSU, 25,  10,   0,   0},
+        { REALM_HISSATSU, 27,  15,   0,   0},
+        { REALM_HISSATSU, 29,  45,   0,   0},
+        { REALM_HISSATSU, 32,  70,   0,   0},
+        { REALM_HISSATSU, 35,  50,   0,   0},
 
-        { 18,  40,   0,   0},
-        { 22,  22,   0,   0},
-        { 24,  30,   0,   0},
-        { 26,  35,   0,   0},
-        { 30,  30,   0,   0},
-        { 32,  60,   0,   0},
-        { 36,  40,   0,   0},
-        { 39,  80,   0,   0},
+        { REALM_HISSATSU, 18,  40,   0,   0},
+        { REALM_HISSATSU, 22,  22,   0,   0},
+        { REALM_HISSATSU, 24,  30,   0,   0},
+        { REALM_HISSATSU, 26,  35,   0,   0},
+        { REALM_HISSATSU, 30,  30,   0,   0},
+        { REALM_HISSATSU, 32,  60,   0,   0},
+        { REALM_HISSATSU, 36,  40,   0,   0},
+        { REALM_HISSATSU, 39,  80,   0,   0},
 
-        { 26,  20,   0,   0},
-        { 29,  40,   0,   0},
-        { 31,  35,   0,   0},
-        { 36,  80,   0,   0},
-        { 39, 100,   0,   0},
-        { 42, 110,   0,   0},
-        { 45, 130,   0,   0},
-        { 50, 255,   0,   0}
+        { REALM_HISSATSU, 26,  20,   0,   0},
+        { REALM_HISSATSU, 29,  40,   0,   0},
+        { REALM_HISSATSU, 31,  35,   0,   0},
+        { REALM_HISSATSU, 36,  80,   0,   0},
+        { REALM_HISSATSU, 39, 100,   0,   0},
+        { REALM_HISSATSU, 42, 110,   0,   0},
+        { REALM_HISSATSU, 45, 130,   0,   0},
+        { REALM_HISSATSU, 50, 255,   0,   0}
     },
 
     {
         /* Hex */
-        {  1,  2, 20,   2},
-        {  1,  2, 20,   2},
-        {  3,  2, 30,   3},
-        {  5,  3, 30,   4},
-        {  7,  3, 40,   6},
-        {  8, 10, 60,   8},
-        {  9,  3, 30,  10},
-        { 10,  5, 40,  12},
+        { REALM_HEX,  1,  2, 20,   2},
+        { REALM_HEX,  1,  2, 20,   2},
+        { REALM_HEX,  3,  2, 30,   3},
+        { REALM_HEX,  5,  3, 30,   4},
+        { REALM_HEX,  7,  3, 40,   6},
+        { REALM_HEX,  8, 10, 60,   8},
+        { REALM_HEX,  9,  3, 30,  10},
+        { REALM_HEX, 10,  5, 40,  12},
 
-        { 12,  8, 40,  15},
-        { 12,  9, 35,  15},
-        { 15, 10, 50,  20},
-        { 20, 12, 45,  35},
-        { 25, 15, 50,  50},
-        { 30, 12, 60,  70},
-        { 35, 10, 60,  80},
-        { 40, 16, 70, 100},
+        { REALM_HEX, 12,  8, 40,  15},
+        { REALM_HEX, 12,  9, 35,  15},
+        { REALM_HEX, 15, 10, 50,  20},
+        { REALM_HEX, 20, 12, 45,  35},
+        { REALM_HEX, 25, 15, 50,  50},
+        { REALM_HEX, 30, 12, 60,  70},
+        { REALM_HEX, 35, 10, 60,  80},
+        { REALM_HEX, 40, 16, 70, 100},
 
-        { 15,  8, 20,  20},
-        { 18, 15, 50,  20},
-        { 22, 10, 65,  35},
-        { 25, 28, 70,  50},
-        { 28, 10, 70,  60},
-        { 30, 20, 60,  60},
-        { 36, 22, 70,  80},
-        { 40, 28, 70, 100},
+        { REALM_HEX, 15,  8, 20,  20},
+        { REALM_HEX, 18, 15, 50,  20},
+        { REALM_HEX, 22, 10, 65,  35},
+        { REALM_HEX, 25, 28, 70,  50},
+        { REALM_HEX, 28, 10, 70,  60},
+        { REALM_HEX, 30, 20, 60,  60},
+        { REALM_HEX, 36, 22, 70,  80},
+        { REALM_HEX, 40, 28, 70, 100},
 
-        {  5,  6, 35,   5},
-        { 22, 24, 70,  40},
-        { 25,  2, 65,  50},
-        { 32, 20, 50,  70},
-        { 35, 35, 70,  80},
-        { 38, 32, 70,  90},
-        { 42, 24, 70, 120},
-        { 46, 45, 80, 200}
+        { REALM_HEX,  5,  6, 35,   5},
+        { REALM_HEX, 22, 24, 70,  40},
+        { REALM_HEX, 25,  2, 65,  50},
+        { REALM_HEX, 32, 20, 50,  70},
+        { REALM_HEX, 35, 35, 70,  80},
+        { REALM_HEX, 38, 32, 70,  90},
+        { REALM_HEX, 42, 24, 70, 120},
+        { REALM_HEX, 46, 45, 80, 200}
     },
 
     {
         /* Unused */
-        { 0,   0,   0,   0},
-        { 0,   0,   0,   0},
-        { 0,   0,   0,   0},
-        { 0,   0,   0,   0},
-        { 0,   0,   0,   0},
-        { 0,   0,   0,   0},
-        { 0,   0,   0,   0},
-        { 0,   0,   0,   0},
+        { REALM_RAGE, 0,   0,   0,   0},
+        { REALM_RAGE, 0,   0,   0,   0},
+        { REALM_RAGE, 0,   0,   0,   0},
+        { REALM_RAGE, 0,   0,   0,   0},
+        { REALM_RAGE, 0,   0,   0,   0},
+        { REALM_RAGE, 0,   0,   0,   0},
+        { REALM_RAGE, 0,   0,   0,   0},
+        { REALM_RAGE, 0,   0,   0,   0},
 
-        { 0,   0,   0,   0},
-        { 0,   0,   0,   0},
-        { 0,   0,   0,   0},
-        { 0,   0,   0,   0},
-        { 0,   0,   0,   0},
-        { 0,   0,   0,   0},
-        { 0,   0,   0,   0},
-        { 0,   0,   0,   0},
+        { REALM_RAGE, 0,   0,   0,   0},
+        { REALM_RAGE, 0,   0,   0,   0},
+        { REALM_RAGE, 0,   0,   0,   0},
+        { REALM_RAGE, 0,   0,   0,   0},
+        { REALM_RAGE, 0,   0,   0,   0},
+        { REALM_RAGE, 0,   0,   0,   0},
+        { REALM_RAGE, 0,   0,   0,   0},
+        { REALM_RAGE, 0,   0,   0,   0},
 
-        { 0,   0,   0,   0},
-        { 0,   0,   0,   0},
-        { 0,   0,   0,   0},
-        { 0,   0,   0,   0},
-        { 0,   0,   0,   0},
-        { 0,   0,   0,   0},
-        { 0,   0,   0,   0},
-        { 0,   0,   0,   0},
+        { REALM_RAGE, 0,   0,   0,   0},
+        { REALM_RAGE, 0,   0,   0,   0},
+        { REALM_RAGE, 0,   0,   0,   0},
+        { REALM_RAGE, 0,   0,   0,   0},
+        { REALM_RAGE, 0,   0,   0,   0},
+        { REALM_RAGE, 0,   0,   0,   0},
+        { REALM_RAGE, 0,   0,   0,   0},
+        { REALM_RAGE, 0,   0,   0,   0},
 
-        { 0,   0,   0,   0},
-        { 0,   0,   0,   0},
-        { 0,   0,   0,   0},
-        { 0,   0,   0,   0},
-        { 0,   0,   0,   0},
-        { 0,   0,   0,   0},
-        { 0,   0,   0,   0},
-        { 0,   0,   0,   0}
+        { REALM_RAGE, 0,   0,   0,   0},
+        { REALM_RAGE, 0,   0,   0,   0},
+        { REALM_RAGE, 0,   0,   0,   0},
+        { REALM_RAGE, 0,   0,   0,   0},
+        { REALM_RAGE, 0,   0,   0,   0},
+        { REALM_RAGE, 0,   0,   0,   0},
+        { REALM_RAGE, 0,   0,   0,   0},
+        { REALM_RAGE, 0,   0,   0,   0}
     },
 
     {
         /* Burglary */
-        {  1,  1, 30,   2},
-        {  3,  2, 30,   2},
-        {  5,  3, 40,   3},
-        {  7,  3, 40,   4},
-        {  9,  3, 40,   6},
-        { 11, 10, 45,   8},
-        { 13, 10, 45,  10},
-        { 15, 15, 50,  12},
+        { REALM_BURGLARY,   1,  1, 30,   2},
+        { REALM_BURGLARY,   3,  2, 30,   2},
+        { REALM_BURGLARY,   5,  3, 40,   3},
+        { REALM_BURGLARY,   7,  3, 40,   4},
+        { REALM_BURGLARY,   9,  3, 40,   6},
+        { REALM_BURGLARY,  11, 10, 45,   8},
+        { REALM_BURGLARY,  13, 10, 45,  10},
+        { REALM_BURGLARY,  15, 15, 50,  12},
 
-        { 17, 15, 50,  15},
-        { 20, 20, 60,  15},
-        { 22, 20, 60,  20},
-        { 23, 25, 60,  35},
-        { 25, 25, 40,  50},
-        { 30, 15, 40,  70},
-        { 32, 30, 60,  80},
-        { 33, 25, 50, 100},
+        { REALM_BURGLARY,  17, 15, 50,  15},
+        { REALM_BURGLARY,  20, 20, 60,  15},
+        { REALM_BURGLARY,  22, 20, 60,  20},
+        { REALM_BURGLARY,  23, 25, 60,  35},
+        { REALM_BURGLARY,  25, 25, 40,  50},
+        { REALM_BURGLARY,  30, 15, 40,  70},
+        { REALM_BURGLARY,  32, 30, 60,  80},
+        { REALM_BURGLARY,  33, 25, 50, 100},
 
-        { 10, 20, 60,  20},
-        { 15, 10, 60,  20},
-        { 17, 10, 60,  35},
-        { 25, 20, 60,  40},
-        { 27, 30, 70,  50},
-        { 30, 30, 70,  60},
-        { 32, 35, 70,  60},
-        { 40, 40, 70,  80},
+        { REALM_BURGLARY,  10, 20, 60,  20},
+        { REALM_BURGLARY,  15, 10, 60,  20},
+        { REALM_BURGLARY,  17, 10, 60,  35},
+        { REALM_BURGLARY,  25, 20, 60,  40},
+        { REALM_BURGLARY,  27, 30, 70,  50},
+        { REALM_BURGLARY,  30, 30, 70,  60},
+        { REALM_BURGLARY,  32, 35, 70,  60},
+        { REALM_BURGLARY,  40, 40, 70,  80},
 
-        {  5,  7, 50,   5},
-        { 12,  9, 60,  40},
-        { 35, 20, 70,  50},
-        { 39, 30, 70,  70},
-        { 42, 30, 70,  80},
-        { 45, 50, 85,  90},
-        { 47,100, 90, 120},
-        { 50,100, 95, 200}
+        { REALM_BURGLARY,   5,  7, 50,   5},
+        { REALM_BURGLARY,  12,  9, 60,  40},
+        { REALM_BURGLARY,  35, 20, 70,  50},
+        { REALM_BURGLARY,  39, 30, 70,  70},
+        { REALM_BURGLARY,  42, 30, 70,  80},
+        { REALM_BURGLARY,  45, 50, 85,  90},
+        { REALM_BURGLARY,  47,100, 90, 120},
+        { REALM_BURGLARY,  50,100, 95, 200}
     },
 
 };
@@ -1671,13 +1710,13 @@ s32b realm_choices1[MAX_CLASS] =
     (CH_LIFE | CH_SORCERY | CH_NATURE |
      CH_CHAOS | CH_DEATH | CH_TRUMP |
      CH_ARCANE | CH_ENCHANT | CH_DAEMON |
-     CH_CRUSADE | CH_ARMAGEDDON),  /* Mage */
+     CH_CRUSADE | CH_ARMAGEDDON | CH_LAW),  /* Mage */
     (CH_LIFE | CH_DEATH | CH_DAEMON |
      CH_CRUSADE),                           /* Priest */
     (CH_SORCERY | CH_DEATH | CH_TRUMP |
-     CH_ARCANE | CH_ENCHANT | CH_BURGLARY),               /* Rogue */
+     CH_ARCANE | CH_ENCHANT | CH_LAW | CH_BURGLARY), /* Rogue */
     (CH_NATURE),                            /* Ranger */
-    (CH_CRUSADE | CH_DEATH | CH_LIFE | CH_DAEMON),/* Paladin */
+    (CH_CRUSADE | CH_DEATH | CH_LIFE | CH_DAEMON | CH_LAW),/* Paladin */
     (CH_ARCANE),                            /* Warrior-Mage */
     (CH_CHAOS | CH_DAEMON),                 /* Chaos-Warrior */
     (CH_LIFE | CH_NATURE | CH_DEATH |
@@ -1686,7 +1725,7 @@ s32b realm_choices1[MAX_CLASS] =
     (CH_LIFE | CH_SORCERY | CH_NATURE |
      CH_CHAOS | CH_DEATH | CH_TRUMP |
      CH_ARCANE | CH_ENCHANT | CH_DAEMON |
-     CH_CRUSADE | CH_HEX | CH_ARMAGEDDON),  /* High-Mage */
+     CH_CRUSADE | CH_HEX | CH_ARMAGEDDON | CH_LAW),  /* High-Mage */
     (CH_ARCANE),                            /* Tourist */
     (CH_NONE),                              /* Imitator */
     (CH_TRUMP),                             /* Beastmaster */
@@ -1716,7 +1755,7 @@ s32b realm_choices1[MAX_CLASS] =
     (CH_SORCERY | CH_NATURE |
      CH_CHAOS | CH_DEATH | CH_TRUMP |
      CH_ARCANE | CH_ENCHANT | CH_DAEMON |
-     CH_CRUSADE | CH_ARMAGEDDON), /* Blood-Mage */
+     CH_CRUSADE | CH_ARMAGEDDON | CH_LAW), /* Blood-Mage */
     CH_NECROMANCY,            /* Necromancer */
     CH_NONE,                /* Psion */
     CH_RAGE,                /* Rage-Mage */
@@ -1728,8 +1767,11 @@ s32b realm_choices1[MAX_CLASS] =
     (CH_LIFE | CH_SORCERY | CH_NATURE |
      CH_CHAOS | CH_DEATH | CH_TRUMP |
      CH_ARCANE | CH_ENCHANT | CH_DAEMON |
-     CH_CRUSADE | CH_ARMAGEDDON),  /* Yellow-Mage */
+     CH_CRUSADE | CH_ARMAGEDDON | CH_LAW),  /* Yellow-Mage */
     CH_NONE,                /* Gray-Mage */
+    CH_NONE,                /* Skillmaster */
+    CH_LAW,                 /* Lawyer */
+    CH_LAW,                 /* Ninja-Lawyer */
 };
 
 
@@ -1739,11 +1781,11 @@ s32b realm_choices2[MAX_CLASS] =
     (CH_LIFE | CH_SORCERY | CH_NATURE |
      CH_CHAOS | CH_DEATH | CH_TRUMP |
      CH_ARCANE | CH_ENCHANT | CH_DAEMON |
-     CH_CRUSADE | CH_ARMAGEDDON),           /* Mage */
+     CH_CRUSADE | CH_ARMAGEDDON | CH_LAW),  /* Mage */
     (CH_LIFE | CH_SORCERY | CH_NATURE |
      CH_CHAOS | CH_DEATH | CH_TRUMP |
      CH_ARCANE | CH_ENCHANT | CH_DAEMON |
-     CH_CRUSADE | CH_ARMAGEDDON),           /* Priest */
+     CH_CRUSADE | CH_ARMAGEDDON | CH_LAW),  /* Priest */
     (CH_NONE),                              /* Rogue */
     (CH_SORCERY | CH_CHAOS | CH_DEATH |
      CH_TRUMP | CH_ARCANE | CH_DAEMON),     /* Ranger */
@@ -1751,7 +1793,7 @@ s32b realm_choices2[MAX_CLASS] =
     (CH_LIFE | CH_NATURE | CH_CHAOS |
      CH_DEATH | CH_TRUMP | CH_ARCANE |
      CH_SORCERY | CH_ENCHANT | CH_DAEMON |
-     CH_CRUSADE | CH_ARMAGEDDON),           /* Warrior-Mage */
+     CH_CRUSADE | CH_ARMAGEDDON | CH_LAW),  /* Warrior-Mage */
     (CH_NONE),                              /* Chaos-Warrior */
     (CH_NONE),                              /* Monk */
     (CH_NONE),                              /* Mindcrafter */
@@ -1784,7 +1826,7 @@ s32b realm_choices2[MAX_CLASS] =
     (CH_SORCERY | CH_NATURE |
      CH_CHAOS | CH_DEATH | CH_TRUMP |
      CH_ARCANE | CH_ENCHANT | CH_DAEMON |
-     CH_CRUSADE | CH_ARMAGEDDON), /* Blood-Mage */
+     CH_CRUSADE | CH_ARMAGEDDON | CH_LAW), /* Blood-Mage */
     CH_NONE,                /* Necromancer */
     CH_NONE,                /* Psion */
     CH_NONE,                /* Rage-Mage */
@@ -1796,8 +1838,11 @@ s32b realm_choices2[MAX_CLASS] =
     (CH_LIFE | CH_SORCERY | CH_NATURE |
      CH_CHAOS | CH_DEATH | CH_TRUMP |
      CH_ARCANE | CH_ENCHANT | CH_DAEMON |
-     CH_CRUSADE | CH_ARMAGEDDON),  /* Yellow-Mage */
+     CH_CRUSADE | CH_ARMAGEDDON | CH_LAW),  /* Yellow-Mage */
     CH_NONE,                /* Gray-Mage */
+    CH_NONE,                /* Skillmaster */
+    CH_NONE,                /* Lawyer */
+    CH_NONE,                /* Ninja-Lawyer */
 };
 
 
@@ -1819,7 +1864,7 @@ cptr realm_names[]
     "Armageddon",
     "unknown",
     "unknown",
-    "unknown",
+    "Law",
     "Music",
     "Kendo",
     "Hex",
@@ -2234,6 +2279,9 @@ option_type option_info[] =
     { &flush_failure,               TRUE,  OPT_PAGE_DISTURBANCE, 1, 20,
     "flush_failure",                "Flush input on various failures" },
 
+    { &prompt_on_failure,           FALSE, OPT_PAGE_DISTURBANCE, 0, 26,
+    "prompt_on_failure",            "Give -more- prompts on device/spell failures" },
+
     { &flush_disturb,               FALSE, OPT_PAGE_DISTURBANCE, 1, 21,
     "flush_disturb",                "Flush input whenever disturbed" },
 
@@ -2277,15 +2325,21 @@ option_type option_info[] =
 	
 	{ &easy_lore,					FALSE, OPT_PAGE_BIRTH, 6, 30,
 	"easy_lore",					"Easy Lore" },
-	
+
 	{ &allow_spoilers,				FALSE, OPT_PAGE_BIRTH, 6, 29,
-	"allow_spoilers",				"Allow Spoilers" },
+	"allow_spoilers",				"Allow spoilers" },
 	
+	{ &power_tele,					FALSE, OPT_PAGE_BIRTH, 6, 6,
+	"power_tele",					"Use enhanced telepathy" },
+
+	{ &easy_thalos,					TRUE, OPT_PAGE_BIRTH, 6, 28,
+	"easy_thalos",					"Allow easy teleportation to Thalos" },
+
     { &smart_learn,                 TRUE,  OPT_PAGE_BIRTH, 1, 14,
     "smart_learn",                  "Monsters learn from their mistakes (*)" },
 
     { &smart_cheat,                 FALSE, OPT_PAGE_BIRTH, 1, 15,
-    "smart_cheat",                  "Monsters exploit players weaknesses (*)" },
+    "smart_cheat",                  "Monsters exploit player's weaknesses (*)" },
 
     { &no_wilderness,               FALSE, OPT_PAGE_BIRTH, 6, 1,
     "no_wilderness",                "Play without a wilderness" },
@@ -2301,6 +2355,9 @@ option_type option_info[] =
 
     { &ironman_nightmare,           FALSE, OPT_PAGE_BIRTH, 6, 18,
     "ironman_nightmare",            "Nightmare mode(it isn't even remotely fair!)(*)" },
+
+    { &enable_virtues,              FALSE, OPT_PAGE_BIRTH, 6, 13,
+    "enable_virtues",               "Enable the virtue system" },
 
     { &preserve_mode,               TRUE,  OPT_PAGE_BIRTH, 6, 14,
     "preserve_mode",                "Preserve artifacts (*)" },
@@ -2718,4 +2775,9 @@ byte feature_action_flags[FF_FLAG_MAX] =
     0, /* TELEPORTABLE */
     0, /* CONVERT */
     0, /* GLASS */
+    0, /* ROGUE_TRAP_1 */
+    0, /* ROGUE_TRAP_2 */
+    0, /* ROGUE_TRAP_3 */
+    0, /* WEB */
+    0, /* SEMI_PUN */
 };

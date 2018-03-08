@@ -11,7 +11,7 @@ LD = ld
 OPT ?= -O2
 
 # the CFBundleExecutable plist value is used within the app, so we want it to match the bundle name to make everything look right
-NAME = PosChengband
+NAME = FrogComposband
 APPNAME = $(NAME).app
 EXE = $(NAME)
 
@@ -66,7 +66,7 @@ $(EXE).o: $(OBJS)
 	@$(LD) -r -arch x86_64 -o $@.x86_64 $(OBJS)
 	@printf "%10s %-20s\n" LD $@.i386
 	@$(LD) -r -arch i386 -o $@.i386 $(OBJS)
-	lipo -arch x86_64 $@.x86_64 -arch i386 $@.i386 -create -output poschengband.o
+	lipo -arch x86_64 $@.x86_64 -arch i386 $@.i386 -create -output frogcomposband.o
 
 $(EXE): $(EXE).o $(OSX_OBJS)
 	$(DEPLOYMENT_TARGET) $(CC) $(CFLAGS) $(LDFLAGS) -o $(EXE) $(EXE).o $(OSX_OBJS) $(LIBS) 

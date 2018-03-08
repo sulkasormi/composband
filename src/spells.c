@@ -685,6 +685,7 @@ void do_cmd_spell(void)
 {
     spell_info spells[MAX_SPELLS];
     caster_info *caster = get_caster_info();
+    bool hp_caster;
     int ct = 0;
     int choice = 0;
     int max_cost = 0;
@@ -694,6 +695,8 @@ void do_cmd_spell(void)
         msg_print("You cannot cast spells.");
         return;
     }
+
+    hp_caster = ((caster->options & CASTER_USE_HP) || (p_ptr->pclass == CLASS_NINJA_LAWYER));
 
     if (p_ptr->confused)
     {
@@ -715,7 +718,7 @@ void do_cmd_spell(void)
 
     if (caster->options & CASTER_USE_CONCENTRATION)
         max_cost = p_ptr->concent;
-    else if (caster->options & CASTER_USE_HP)
+    else if (hp_caster)
         max_cost = p_ptr->chp;
     else if (caster->options & CASTER_USE_AU)
         max_cost = p_ptr->au;
@@ -745,7 +748,7 @@ void do_cmd_spell(void)
                 return;
             }
         }
-        else if (caster->options & CASTER_USE_HP)
+        else if (hp_caster)
         {
             if (spell->cost > p_ptr->chp)
             {
@@ -779,7 +782,8 @@ void do_cmd_spell(void)
             fail_spell(spell->fn);
             if (flush_failure) flush();
             msg_print("You failed to concentrate hard enough!");
-            if (!(caster->options & (CASTER_USE_HP | CASTER_USE_AU)) && demigod_is_(DEMIGOD_ATHENA) )
+            if (prompt_on_failure) msg_print(NULL);
+            if (!(caster->options & CASTER_USE_AU) && !hp_caster && demigod_is_(DEMIGOD_ATHENA) )
                 p_ptr->csp += spell->cost/2;
             if (caster->on_fail != NULL)
                 (caster->on_fail)(spell);
@@ -790,7 +794,7 @@ void do_cmd_spell(void)
             {
                 /* Give back the spell cost, since the user canceled the spell
                  * There is no CASTER_USE_SP flag so we need to check all the alternatives */
-                if (!(caster->options & (CASTER_USE_HP | CASTER_USE_AU | CASTER_USE_CONCENTRATION))) p_ptr->csp += spell->cost;
+                if ((!hp_caster) && (!(caster->options & (CASTER_USE_AU | CASTER_USE_CONCENTRATION)))) p_ptr->csp += spell->cost;
                 return;
             }
             spell_stats_on_cast(spell);
@@ -799,7 +803,7 @@ void do_cmd_spell(void)
 
         energy_use = get_spell_energy(spell->fn);
 
-        if ((caster->options & CASTER_USE_HP) && spell->cost > 0)
+        if ((hp_caster) && spell->cost > 0)
             take_hit(DAMAGE_USELIFE, spell->cost, "concentrating too hard");
         if ((caster->options & CASTER_USE_AU) && spell->cost > 0)
         {
@@ -892,6 +896,7 @@ void do_cmd_power(void)
             fail_spell(spell->fn);
             if (flush_failure) flush();
             msg_print("You failed to concentrate hard enough!");
+            if (prompt_on_failure) msg_print(NULL);
         }
         else
         {
@@ -1065,6 +1070,7 @@ static void _dump_book(doc_ptr doc, int realm, int book)
     {
         int         s_idx = book * 8 + i;
         magic_type *s_ptr;
+        int	    vaikeustaso;
         int         cost;
         bool        max = FALSE;
         char        proficiency[10];
@@ -1078,7 +1084,8 @@ static void _dump_book(doc_ptr doc, int realm, int book)
         else
             s_ptr = &technic_info[realm - MIN_TECHNIC][s_idx];
 
-        if (s_ptr->slevel >= 99) continue;
+        vaikeustaso = lawyer_hack(s_ptr, LAWYER_HACK_LEVEL);
+        if (vaikeustaso >= 99) continue;
 
         if (realm == REALM_HISSATSU)
             cost = s_ptr->smana;
@@ -1087,7 +1094,7 @@ static void _dump_book(doc_ptr doc, int realm, int book)
             s16b exp = experience_of_spell(s_idx, realm);
             int  exp_level = spell_exp_level(exp);
 
-            cost = mod_need_mana(s_ptr->smana, s_idx, realm);
+            cost = mod_need_mana(lawyer_hack(s_ptr, LAWYER_HACK_MANA), s_idx, realm);
 
             max = FALSE;
             if (!increment && (exp_level == EXP_LEVEL_MASTER)) max = TRUE;
@@ -1104,12 +1111,12 @@ static void _dump_book(doc_ptr doc, int realm, int book)
 
         if (p_ptr->pclass == CLASS_SORCERER || p_ptr->pclass == CLASS_RED_MAGE)
         {
-            if (s_ptr->slevel > p_ptr->max_plv)
+            if (vaikeustaso > p_ptr->max_plv)
             {
                 comment = "unknown";
                 color = 'D';
             }
-            else if (s_ptr->slevel > p_ptr->lev)
+            else if (vaikeustaso > p_ptr->lev)
             {
                 comment = "forgotten";
                 color = 'y';
@@ -1127,7 +1134,7 @@ static void _dump_book(doc_ptr doc, int realm, int book)
             (p_ptr->spell_learned2 & (1L << s_idx))))
         {
             comment = "unknown";
-            if (s_ptr->slevel > p_ptr->lev)
+            if (vaikeustaso > p_ptr->lev)
                 color = 'D';
             else
                 color = 'B';
@@ -1149,7 +1156,7 @@ static void _dump_book(doc_ptr doc, int realm, int book)
                     "<color:%c>%-25s %3d %3d %-15.15s %5d</color>",
                     color,
                     do_spell(realm, s_idx, SPELL_NAME),
-                    s_ptr->slevel,
+                    vaikeustaso,
                     cost,
                     comment,
                     stats->ct_cast
@@ -1167,7 +1174,7 @@ static void _dump_book(doc_ptr doc, int realm, int book)
                     do_spell(realm, s_idx, SPELL_NAME),
                     (max ? '!' : ' '),
                     proficiency,
-                    s_ptr->slevel,
+                    vaikeustaso,
                     cost,
                     spell_chance(s_idx, realm),
                     comment,
@@ -1190,18 +1197,20 @@ static bool _has_spells(int realm, int book)
     {
         int            s_idx = book * 8 + i;
         magic_type *s_ptr;
+        int vaikeustaso;
 
         if (is_magic(realm))
             s_ptr = &mp_ptr->info[realm - 1][s_idx];
         else
             s_ptr = &technic_info[realm - MIN_TECHNIC][s_idx];
 
-        if (s_ptr->slevel >= 99) continue;
+        vaikeustaso = lawyer_hack(s_ptr, LAWYER_HACK_LEVEL);
+        if (vaikeustaso >= 99) continue;
 
         if (p_ptr->pclass == CLASS_SORCERER || p_ptr->pclass == CLASS_RED_MAGE)
         {
-            if (s_ptr->slevel > p_ptr->max_plv) continue;
-            else if (s_ptr->slevel > p_ptr->lev) return TRUE;
+            if (vaikeustaso > p_ptr->max_plv) continue;
+            else if (vaikeustaso > p_ptr->lev) return TRUE;
         }
         else if ((realm == p_ptr->realm1) ?
             ((p_ptr->spell_forgotten1 & (1L << s_idx))) :

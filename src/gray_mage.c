@@ -383,7 +383,7 @@ static bool _is_allowed_realm(int realm)
 
 static bool _is_spellbook(int tval)
 {
-    if (tval < TV_LIFE_BOOK || tval > TV_BURGLARY_BOOK) return FALSE;
+    if (tval < TV_BOOK_BEGIN || tval > TV_BOOK_END) return FALSE;
     return TRUE;
 }
 
@@ -515,6 +515,7 @@ void gray_mage_cast_spell(void)
             if (flush_failure) flush();
 
             cmsg_format(TERM_VIOLET, "You failed to cast %s!", do_spell(slot_ptr->realm, slot_ptr->spell, SPELL_NAME));
+            if (prompt_on_failure) msg_print(NULL);
             if (demigod_is_(DEMIGOD_ATHENA))
                 p_ptr->csp += cost/2;
             spell_stats_on_fail_old(slot_ptr->realm, slot_ptr->spell);

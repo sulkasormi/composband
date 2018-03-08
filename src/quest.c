@@ -743,9 +743,9 @@ void quests_on_generate(int dungeon, int level)
 {
 	quest_ptr q = _find_quest(dungeon, level);
 
-	//rescuing an indvidual savefile, don't ask. delete away
-	if ((_current == 54) && (!q || !q->id)) {
-		_current = 0; q = quests_get(54); q->status = QS_TAKEN;
+	/* attempt to handle a quest crash */
+	if ((_current > 0) && (!q || !q->id)) { int ongelma = _current;
+		_current = 0; q = quests_get(ongelma); q->status = QS_TAKEN;
 	}
 
     /* N.B. level_gen() might fail for some reason, resulting in multiple
@@ -1143,12 +1143,12 @@ void quests_load(savefile_ptr file)
         q->status = savefile_read_byte(file);
         q->completed_lev = savefile_read_byte(file);
         q->goal_current = savefile_read_s16b(file);
+        q->seed  = savefile_read_u32b(file);
         if (q->flags & QF_RANDOM)
         {
             q->level = savefile_read_s16b(file);
             q->goal_idx  = savefile_read_s32b(file);
             q->goal_count = savefile_read_s16b(file);
-            q->seed  = savefile_read_u32b(file);
         }
 
         if (q->goal == QG_FIND_ART)
@@ -1169,12 +1169,12 @@ void quests_save(savefile_ptr file)
         savefile_write_byte(file, q->status);
         savefile_write_byte(file, q->completed_lev);
         savefile_write_s16b(file, q->goal_current);
+        savefile_write_u32b(file, q->seed);
         if (q->flags & QF_RANDOM)
         {
             savefile_write_s16b(file, q->level); /* in case I randomize later ... */
             savefile_write_s32b(file, q->goal_idx);
             savefile_write_s16b(file, q->goal_count);
-            savefile_write_u32b(file, q->seed);
         }
     }
     savefile_write_s16b(file, _current);

@@ -1,0 +1,185 @@
+Changes in FrogComposband 7.0.strawberry (compared to ComPosband 7.0.3):
+
+* Rebalanced artifact reforging. The goal was to prevent silly-powerful items
+while still allowing very strong items (so a character can reasonably expect
+to use reforged items in the endgame and final fights). The importance of
+fame in reforging was reduced slightly to make early/mid-game reforging more
+appealing, though realistically reforging will likely remain mostly a
+late-game thing. Slot weights were also adjusted slightly, with effects on
+both reforging and randart creation. The hard cap of 90000 on the source
+artifact's power was removed, although stronger artifacts will still be
+treated as if they had a power of 90000, or even less for less weighty slots.
+This prevents situations in which a very strong item is effectively worse
+than a weaker item because it doesn't fit the player's needs directly and
+cannot ever be reforged. Reforging is now also slightly cheaper
+
+* Rebalanced shop shuffling. The cheap shuffling introduced in ComPosband
+allowed characters to acquire silly piles of extremely powerful consumables
+very easily, as long as they found a dungeon shop and had enough money. The
+cheap shuffling has been retained, but many of the most powerful items
+(like !Healing, !*Healing*, !Life, stat potions, ?Genocide, ?MassGenocide and
+!NewLife) can no longer be generated on a shuffle
+
+* Moved Thalos, and added a new town (Anambar) where Thalos used to be.
+Prettied up the Thalos map (and edited t_pref to include additional
+terrain types). Mt. Olympus is now slightly more accessible since Thalos
+is closer to it than any town was before (originally, I moved Thalos even
+closer to Mt. Olympus, but then I decided I didn't hate you players enough).
+There's an option to allow teleporting to Thalos as soon as any two other
+towns (including Outpost) have been visited (because I decided I didn't want
+you players to hate me either...!)
+
+* Fixed an old PosChengband bug where quest seeds were lost on save/load,
+meaning players who exited the game after requesting a quest would receive
+a seed of 0 for that quest and consequently always get the first item from
+a list of supposedly random rewards
+
+* Fixed another old PosChengband bug whereby uniques seen through fuzzy
+telepathy would sometimes acquire a stray "the" in front of their name
+(e.g. "The Gertrude dies.")
+
+* Fixed an old bug with file handling on Windows
+
+* Fixed several minor old bugs related to weapon slays (chaos weapons were
+getting massive extra damage against good monsters from the KILL_EVIL flag
+instead of the KILL_GOOD flag; the displayed damage for a KILL_HUMAN
+missile didn't match the actual damage; in the character sheet, the *Human*
+slay's statistics were displayed for weapons with KILL_LIVING rather than
+weapons with KILL_HUMAN)
+
+* Updated the rumor list and silly name list
+
+* Added a new realm (Law) and two new classes (Lawyer and Ninja-Lawyer)
+
+* Added new monsters (and restored the deleted Egyptian gods)
+
+* Added a few artifacts (and brought back the GHB's T-shirt)
+
+* Added new random artifact names
+
+* Added new quests (I actually feel like there may be too many early-game
+quests now; feedback on the number of quests, and quests [whether new or old]
+that players like or don't like, would be particularly welcome; of course,
+there is no need to attempt to do every quest in the game at depth)
+
+* In ComPosband, if a quest level was buggy and didn't generate properly, the
+game would crash and the player would be forced to fail it on resuming play.
+In FrogComposband, while the game will still crash, the player can continue
+normally on resumption and can retake the quest after it has been fixed.
+This should make life easier for both developers and test-players
+
+* Gave eldraks a significant buff, they are now stronger than ettins
+(consequently, swapped ettin and eldrak in the troll evolution sequence;
+however, player trolls still evolve into ettins rather than eldraks)
+
+* A small number of monsters can now initiate melee attacks from 2 squares
+away. (Fair's fair - player samurai, dragons and archaeologists with whips
+can do this!) Currently the only monsters with this ability are large
+dinosaurs, novice archaeologists, balrogs, samurai, Godzilla and Jormungand.
+(Jormungand, who was a soft guardian for its depth, also received a number
+of other buffs; most notably, it now has the CAN_SWIM flag instead of the
+AQUATIC flag.)
+
+* Made ninjas slightly less outrageous by nerfing Bunshin (which now gives
+a 1-in-3 chance of evading attacks, not 1-in-2) and Swap Position (which
+now requires perfectly clear line of sight) and changing their weight limit
+equation. The Swap Position nerf also affects the relevant mutation and
+wild talent (the weight limit change does not affect other classes with a
+weight limit, apart from ninja-lawyers)
+
+* Restored the option of playing without virtues
+
+* Fixed some typos here and there. (I know this will offend some people! But
+they can take solace in that there are still plenty left.)
+
+* Buffed Lucifer and made him dungeon boss of Hell
+
+* The name of Sultan the Midget was reverted back to Snafu the Midget
+(because of the one-Sultan rule - there's a sultan in Thalos)
+
+* Players are now less likely to be ambushed by dangerous high-level sea
+monsters in coastal towns
+
+* Added some alternatives for non-English keyboards to support play on
+angband.live: Y and Z for [ and {, Ctrl+Y for Ctrl+W, Ctrl+E for @ and
+Ctrl+O for ]
+
+* Made free action stronger because Chris's system was somewhat confusing
+and unpopular, though the change here is not as big as what Gwarl did in
+ComPosband 7.0.4. 1 source of free action works the same in FrogComposband
+as in ComPosband 7.0.3 (and the last versions of PosChengband). 2 sources
+are slightly stronger in FrogComposband (and give total paralysis immunity
+against low-level monsters), and 3 sources give total immunity against all
+monsters, except in special cases like ty_curse
+
+* Changed how cur SP is calculated after a change to max SP
+
+* Restored the old non-fuzzy telepathy as an option. Chris's fuzzy telepathy
+is still the default
+
+* Added an option (off by default) to force a -more- prompt on device/spell
+fails
+
+* Attempts to charm a monster with the hidden NOPET flag now give the message
+"X is immune", rather than "X resists"; the NOPET flag is unpopular enough
+without it making players guess whether the monster has it or not. (It's
+also now slightly harder for monsters to acquire the NOPET flag.)
+
+* Commented out the Windows pref file (font-win.prf). Windows users will
+notice this as a change to the default appearance of walls and mountains
+
+* Various minor tweaks and code improvements
+
+Changes copied or adapted from ComPosband 7.0.4:
+
+* Added Gwarl's new quests and adopted some of his changes to existing
+quests
+
+* The entrance to Hideout is now in Outpost, and the entrance to Icky Cave
+is now in Thalos
+
+* Adapted the new acid floor
+
+* Magic shop now sells offensive wands
+
+* Moved Tidal Cave
+
+* Battlefield's entrance guardian is now a black wraith instead of a grave
+wight
+
+* Visual change to the appearance of Crystal Castle's glass floor
+
+* Tweaked the depth and rarity of a number of items, especially dragon
+scale mails (but not quite to the same extent as in ComPosband 7.0.4)
+
+* Tweaked a number of monsters
+
+-------------------------------------------------------
+
+To do:
+
+* Add a new high-level quest in Zul that, upon completion, enables
+teleporting between Zul and other towns
+
+* Bring back the Lazy personality
+
+* Look into adding new classes
+
+* Look into making easy ID more powerful
+
+* Look into adapting the bank from Frogspawn
+
+* Look into updating the no_wilderness town
+
+* Make it possible to select Floor with the '-' key in the inscription menu
+
+* Review the effect that Chris's changes to FA/SI/fear have on unusual
+races like rings and death-swords, and fix the problems
+
+* Check for bugs on a riding ninja lawyer (since regular ninjas never
+ride)
+
+* Fix the bug that causes fear messages to take the form "Him flees in
+terror!" instead of "He flees in terror!"
+
+* Check that player trolls still work

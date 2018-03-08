@@ -485,6 +485,7 @@ static void rd_extra(savefile_ptr file)
     p_ptr->oppose_acid = savefile_read_s16b(file);
     p_ptr->oppose_elec = savefile_read_s16b(file);
     p_ptr->oppose_pois = savefile_read_s16b(file);
+    p_ptr->spin = savefile_read_s16b(file);
     p_ptr->tsuyoshi = savefile_read_s16b(file);
     p_ptr->tim_esp = savefile_read_s16b(file);
     p_ptr->tim_esp_magical = savefile_read_s16b(file);
@@ -664,6 +665,7 @@ static void rd_extra(savefile_ptr file)
 
     playtime = savefile_read_u32b(file);
     p_ptr->count = savefile_read_u32b(file);
+    for (i = 0; i < 16; i++) (void)savefile_read_s32b(file);
 
     {
     race_t  *race_ptr = get_true_race();
@@ -1019,7 +1021,7 @@ static errr rd_savefile_new_aux(savefile_ptr file)
 
     /* Mention the savefile version */
     note(format(
-             "Loading a %d.%d.%d savefile...",
+             "Loading a %d.%d.%s savefile...",
              (z_major > 9) ? z_major - 10 : z_major, z_minor, z_patch));
 
     /* Savefiles break iff VER_MAJOR bumps */

@@ -2609,8 +2609,8 @@ static bool _reforge_artifact(void)
     int  cost;
     char o_name[MAX_NLEN];
     object_type *src, *dest;
-    int f = MIN(200, p_ptr->fame);
-    int src_max_power = f*150 + f*f*3/2; /* 90k max */
+    int f = p_ptr->fame; /* 90K max kind of removed - stronger objects are allowed but get scaled down */
+    int src_max_power = f*150 + f*f*3/2;
     int dest_max_power = 0;
 
     if (p_ptr->prace == RACE_MON_SWORD || p_ptr->prace == RACE_MON_RING)
@@ -2635,17 +2635,17 @@ static bool _reforge_artifact(void)
 
     cost = obj_value_real(src);
     
-    dest_max_power = cost / 2;
+    dest_max_power = MIN(1125L * get_slot_weight(src) / 2, cost / 2);
     if (dest_max_power < 1000) /* Reforging won't try to power match weak stuff ... */
         dest_max_power = 1000;
     
-    cost *= 10;
+    cost *= 8;
     cost -= cost % 1000;
 
-    if (cost < 100000)
-        cost = 100000;
-    if (cost > 25000000)
-        cost = 25000000;
+    if (cost < 80000)
+        cost = 80000;
+    if (cost > 9000L * get_slot_weight(src))
+        cost = 9000L * get_slot_weight(src);
 
     msg_format("Reforging will cost you %d gold.", cost);
     if (p_ptr->au < cost)
@@ -3002,6 +3002,7 @@ bool tele_town(void)
         char buf[80];
 
         if (i == p_ptr->town_num) continue;
+        if ((num) && (easy_thalos) && (i == TOWN_THALOS)) town_on_visit(i); /* Make people not hate me */
         if (!town_visited(i) && !p_ptr->wizard) continue;
 
         sprintf(buf,"%c) %-20s", I2A(i-1), town_name(i));
@@ -3414,7 +3415,7 @@ static void bldg_process_command(building_type *bldg, int i)
         msg_print("My apologies, but that service is no longer available!");
         break;
     case BACT_IDENTS: /* needs work */
-        if (!get_check("Do you pay for identify all your possession? ")) break;
+        if (!get_check("Pay to have all your possessions identified? ")) break;
         identify_pack();
         msg_print("Your possessions have been identified.");
 

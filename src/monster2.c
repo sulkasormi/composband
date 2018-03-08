@@ -1104,7 +1104,7 @@ bool mon_is_type(int r_idx, int type)
         if (r_idx == MON_SOFTWARE_BUG) return TRUE;
         break;
     case SUMMON_GUARDIAN:
-        if (r_ptr->flags7 & RF7_GUARDIAN) return TRUE;
+        if ((r_ptr->flags7 & RF7_GUARDIAN) && (r_ptr->level < 100)) return TRUE;
         break;
     case SUMMON_KNIGHT:
         if ( r_idx == MON_NOV_PALADIN || r_idx == MON_NOV_PALADIN_G || r_idx == MON_PALADIN
@@ -1871,7 +1871,7 @@ void monster_desc(char *desc, monster_type *m_ptr, int mode)
         /* It could be a Unique */
         if ( (r_ptr->flags1 & RF1_UNIQUE)
           && !(p_ptr->image && !(mode & MD_IGNORE_HALLU))
-          && !(m_ptr->mflag2 & MFLAG2_FUZZY) )
+          && (!(m_ptr->mflag2 & MFLAG2_FUZZY) || (mode & MD_TRUE_NAME)) )
         {
             /* Start with the name (thus nominative and objective) */
             if ((m_ptr->mflag2 & MFLAG2_CHAMELEON) && !(mode & MD_TRUE_NAME))
@@ -2754,7 +2754,7 @@ void update_mon(int m_idx, bool full)
     /* The monster is now visible */
     if (flag)
     {
-        if (!easy && !(m_ptr->mflag2 & MFLAG2_MARK) && !is_pet(m_ptr))
+        if (!easy && !(m_ptr->mflag2 & MFLAG2_MARK) && !is_pet(m_ptr) && !power_tele)
         {
             fuzzy = TRUE;
             m_ptr->mflag2 |= MFLAG2_FUZZY;
@@ -4847,10 +4847,11 @@ void update_smart_learn(int m_idx, int what)
 bool player_place(int y, int x)
 {
     /* Paranoia XXX XXX */
-    if (cave[y][x].m_idx != 0) return FALSE;
+    //if (cave[y][x].m_idx != 0) return FALSE;
+    if (cave[y][x].m_idx < 0) return FALSE;
 
     /* returning from a quest (QUEST_ENTER -> PERMANENT) */
-    if (!player_can_enter(cave[y][x].feat, 0))
+    if ((!player_can_enter(cave[y][x].feat, 0)) || (cave[y][x].m_idx != 0))
     {
         int dir, nx, ny;
         for (dir = 1; dir < 9; dir++)
@@ -4859,15 +4860,50 @@ bool player_place(int y, int x)
             ny = y + ddy[dir];
             if (!in_bounds2(ny, nx)) continue;
             if (!player_can_enter(cave[ny][nx].feat, 0)) continue;
+            if (cave[ny][nx].m_idx != 0) continue;
             x = nx;
             y = ny;
             break;
         }
     }
 
+    /* For some reason, we still don't have a safe square. (Using Alter Reality can cause this, as it resets oldpx and oldpy) */
+    if ((!player_can_enter(cave[y][x].feat, 0)) || (cave[y][x].m_idx != 0))
+    {
+        int yritys, etaisyys = 2, nx, ny, dx, dy, kokeilu = 1;
+        for (yritys = 1; yritys < 10000; yritys++)
+        {
+            dx = ((yritys % 8) < 4) ? randint0(etaisyys + 1) : etaisyys;
+            dy = ((yritys % 8) < 4) ? etaisyys : randint0(etaisyys + 1);
+            nx = (yritys % 2) ? x + dx : x - dx;
+            ny = ((yritys % 4) < 2) ? y + dy : y - dy;
+            kokeilu++;
+            if (kokeilu >= etaisyys * etaisyys)
+            {
+                etaisyys++;
+                kokeilu = 0;
+            }
+            if (!in_bounds2(ny, nx)) continue;
+            if (!player_can_enter(cave[ny][nx].feat, 0)) continue;
+            if (cave[ny][nx].m_idx != 0) continue;
+            x = nx;
+            y = ny;
+            break;
+        }
+    }   
+
     /* Save player location */
     py = y;
     px = x;
+
+    /* Now we're really getting desperate */
+    if ((!player_can_enter(cave[y][x].feat, 0)) || (cave[y][x].m_idx != 0)) 
+    {
+        msg_print("Failed to place player - attempting desperation teleport...");
+        teleport_player(200, 0L);
+    }
+    if ((!player_can_enter(cave[py][px].feat, 0)) || (cave[py][px].m_idx != 0)) { msg_print("Failed."); return FALSE; }
+
 
     /* Success */
     return TRUE;

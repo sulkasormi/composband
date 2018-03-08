@@ -80,7 +80,7 @@ static _type_t _types[] =
     { SHOP_GENERAL, "General Store", _general_will_buy, _general_create,
         {{  1, "Bilbo the Friendly",         200, 108, RACE_HOBBIT },
          {  2, "Rincewind the Chicken",      200, 108, RACE_HUMAN },
-         {  3, "Sultan the Midget",          300, 107, RACE_GNOME },
+         {  3, "Snafu the Midget",           300, 107, RACE_GNOME },
          {  4, "Lyar-el the Comely",         300, 107, RACE_DEMIGOD },
          {  5, "Falilmawen the Friendly",    250, 108, RACE_HOBBIT },
          {  6, "Voirin the Cowardly",        500, 108, RACE_HUMAN },
@@ -340,7 +340,7 @@ static _type_t _types[] =
 	{ SHOP_DRAGON, "Dragonskin Emporium", _dragon_will_buy, _dragon_create,
 		 { { 1, "Beowulf",              50000, 110, RACE_HUMAN },
 		 { 2, "George",                10000, 108, RACE_HUMAN },
-		 { 3, "Sigmund",                     10000, 110, RACE_HUMAN },
+		 { 3, "Sigurd",                     10000, 110, RACE_HUMAN },
 		 { 4, "Conan",				25000, 105, RACE_BARBARIAN },
 		 { 0 } } },
 
@@ -457,6 +457,10 @@ static void _discount(obj_ptr obj)
 static bool _create(obj_ptr obj, int k_idx, int lvl, u32b mode)
 {
     if (!k_idx) return FALSE;
+    if (mode & AM_SHUFFLING)
+    {
+     if (k_info[k_idx].gen_flags & OFG_NO_SHUFFLE) return FALSE;
+    }
 
     object_prep(obj, k_idx);
     apply_magic(obj, lvl, mode);
@@ -566,7 +570,7 @@ static bool _general_create(obj_ptr obj, u32b mode)
     else if (one_in_(5))
         k_idx = lookup_kind(TV_DIGGING, SV_PICK);
     else
-        k_idx = _get_k_idx(_general_stock_p, _mod_lvl(25));
+        k_idx = _get_k_idx(_general_stock_p, _mod_lvl(20));
     return _create(obj, k_idx, _mod_lvl(rand_range(1, 15)), mode);
 }
 
@@ -599,7 +603,7 @@ static bool _armory_stock_p(int k_idx)
 
 static bool _armory_create(obj_ptr obj, u32b mode)
 {
-    int k_idx = _get_k_idx(_armory_stock_p, _mod_lvl(25));
+    int k_idx = _get_k_idx(_armory_stock_p, _mod_lvl(20));
     return _create(obj, k_idx, _mod_lvl(rand_range(1, 15)), mode);
 }
 
@@ -670,7 +674,7 @@ static bool _weapon_stock_shooter_p(int k_idx)
 static bool _weapon_create(obj_ptr obj, u32b mode)
 {
     int k_idx;
-    int l1 = _mod_lvl(25);
+    int l1 = _mod_lvl(20);
     int l2 = _mod_lvl(rand_range(1, 15));
     if (one_in_(3))
         k_idx = _get_k_idx(_weapon_book_p, l1);
@@ -782,7 +786,7 @@ static bool _temple_create(obj_ptr obj, u32b mode)
     else if (one_in_(20))
         k_idx = lookup_kind(TV_SCROLL, SV_SCROLL_STAR_REMOVE_CURSE);
     else
-        k_idx = _get_k_idx(_temple_stock_p, _mod_lvl(25));
+        k_idx = _get_k_idx(_temple_stock_p, _mod_lvl(20));
     return _create(obj, k_idx, _mod_lvl(rand_range(1, 15)), mode);
 }
 
@@ -821,11 +825,11 @@ static bool _alchemist_stock_p(int k_idx)
 
 static bool _alchemist_create(obj_ptr obj, u32b mode)
 {
-	int k_idx;
-	if (one_in_(3))
-		k_idx = lookup_kind(TV_SCROLL, SV_SCROLL_WORD_OF_RECALL);
-	else
-		k_idx = _get_k_idx(_alchemist_stock_p, _mod_lvl(25));
+    int k_idx;
+    if (one_in_(3))
+        k_idx = lookup_kind(TV_SCROLL, SV_SCROLL_WORD_OF_RECALL);
+    else
+        k_idx = _get_k_idx(_alchemist_stock_p, _mod_lvl(20));
     return _create(obj, k_idx, _mod_lvl(rand_range(1, 15)), mode);
 }
 
@@ -922,7 +926,7 @@ static bool _magic_create(obj_ptr obj, u32b mode)
         return TRUE;
     }
     else
-        k_idx = _get_k_idx(_magic_stock_p, _mod_lvl(25));
+        k_idx = _get_k_idx(_magic_stock_p, _mod_lvl(20));
     return _create(obj, k_idx, _mod_lvl(15), mode);
 }
 
@@ -1000,6 +1004,7 @@ static bool _book_will_buy(obj_ptr obj)
     case TV_CRUSADE_BOOK:
     case TV_NECROMANCY_BOOK:
     case TV_ARMAGEDDON_BOOK:
+    case TV_LAW_BOOK:
     case TV_MUSIC_BOOK:
     case TV_HEX_BOOK:
         break;
@@ -1023,6 +1028,7 @@ static bool _book_stock_p(int k_idx)
     case TV_TRUMP_BOOK:
     case TV_CRAFT_BOOK:
     case TV_DAEMON_BOOK:
+    case TV_LAW_BOOK:
     case TV_MUSIC_BOOK:
     case TV_HEX_BOOK:
     case TV_NECROMANCY_BOOK:
@@ -1034,7 +1040,7 @@ static bool _book_stock_p(int k_idx)
 
 static bool _book_create(obj_ptr obj, u32b mode)
 {
-    int k_idx = _get_k_idx(_book_stock_p, _mod_lvl(25));
+    int k_idx = _get_k_idx(_book_stock_p, _mod_lvl(20));
     return _create(obj, k_idx, _mod_lvl(rand_range(1, 15)), mode);
 }
 
@@ -1094,7 +1100,7 @@ static bool _shroomery_stock_p(int k_idx)
 
 static bool _shroomery_create(obj_ptr obj, u32b mode)
 {
-	int k_idx = _get_k_idx(_shroomery_stock_p, _mod_lvl(25));
+	int k_idx = _get_k_idx(_shroomery_stock_p, _mod_lvl(20));
 	return _create(obj, k_idx, _mod_lvl(rand_range(1, 15)), mode);
 }
 
@@ -1376,7 +1382,7 @@ static void _loop(_ui_context_ptr context);
 
 static void _maintain(shop_ptr shop);
 static int  _cull(shop_ptr shop, int target);
-static int  _restock(shop_ptr shop, int target);
+static int  _restock(shop_ptr shop, int target, bool is_shuffle);
 static void _wizard_stock(shop_ptr shop);
 static void _shuffle_stock(shop_ptr shop);
 static int  _stock_base(shop_ptr shop);
@@ -1468,7 +1474,7 @@ static void _loop(_ui_context_ptr context)
             ct = inv_count_slots(context->shop->inv, obj_exists);
             if (!ct)
             {
-                _restock(context->shop, _stock_base(context->shop));
+                _restock(context->shop, _stock_base(context->shop), TRUE);
                 context->top = 1;
                 if (one_in_(20)) _change_owner(context->shop);
                 msg_format("<color:U>%s</color> brings out some new stock.", context->shop->owner->name);
@@ -1939,7 +1945,7 @@ static void _maintain(shop_ptr shop)
     /* Always initialize an empty shop */
     if (!inv_count_slots(shop->inv, obj_exists))
     {
-        _restock(shop, _stock_base(shop));
+        _restock(shop, _stock_base(shop), FALSE);
         return;
     }
 
@@ -1968,13 +1974,13 @@ static void _maintain(shop_ptr shop)
     for (i = 0; i < num; i++)
     {
         int ct = inv_count_slots(shop->inv, obj_exists);
-        if (ct < _STOCK_LO) _restock(shop, _stock_base(shop));
+        if (ct < _STOCK_LO) _restock(shop, _stock_base(shop), FALSE);
         else if (ct > _STOCK_HI) _cull(shop, _stock_base(shop));
         else
         {
             ct = _cull(shop, MAX(_STOCK_LO, ct - randint1(9)));
             if (allow_restock)
-                ct = _restock(shop, MIN(_STOCK_HI, ct + randint1(9)));
+                ct = _restock(shop, MIN(_STOCK_HI, ct + randint1(9)), FALSE);
         }
     }
 }
@@ -2051,7 +2057,7 @@ static void _wizard_stock(shop_ptr shop)
     Term_clear_rect(ui_shop_msg_rect());
 }
 
-static int _restock(shop_ptr shop, int target)
+static int _restock(shop_ptr shop, int target, bool is_shuffle)
 {
     int ct = inv_count_slots(shop->inv, obj_exists);
     int attempt = 0;
@@ -2062,6 +2068,8 @@ static int _restock(shop_ptr shop, int target)
 
     if (shop->type->id == SHOP_BLACK_MARKET)
         mode |= AM_STOCK_BM;
+
+    if (is_shuffle) mode |= AM_SHUFFLING;
 
     assert(ct <= target);
     for (attempt = 1; ct < target && attempt < 100; attempt++)
@@ -2105,7 +2113,7 @@ static void _shuffle_stock(shop_ptr shop)
             p_ptr->update |= (PU_BONUS | PU_HP | PU_MANA);
     }
     _cull(shop, 0);
-    _restock(shop, _stock_base(shop));
+    _restock(shop, _stock_base(shop), TRUE);
 }
 
 /************************************************************************
@@ -2251,7 +2259,7 @@ void shop_display_inv(doc_ptr doc, inv_ptr inv, slot_t top, int page_size)
 /************************************************************************
  * Town
  ***********************************************************************/
-static cptr _names[] = { "Wilderness", "Outpost", "Telmora", "Morivant", "Angwil", "Thalos", "Zul", "Dungeon" };
+static cptr _names[] = { "Wilderness", "Outpost", "Telmora", "Morivant", "Angwil", "Anambar", "Thalos", "Zul", "Dungeon" };
 
 struct town_s
 {
