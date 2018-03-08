@@ -2120,6 +2120,17 @@ K:39:23:0x0E/0x2A
 # a Scroll titled "wonto maroki"
 K:70:62:0x01/0x3F
 
+# Attractions of Law
+K:104:0:0x01/0x3F
+
+# Obstacle Coursebook
+K:104:1:0x01/0x3F
+
+# Building Alternative Realities
+K:104:2:0x8C/0x9E
+
+# Acquiris Quodcumque Rapis
+K:104:3:0x8C/0x9F
 
 ##### Monster attr/char definitions #####
 

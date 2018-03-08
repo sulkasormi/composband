@@ -5014,6 +5014,18 @@ K:101:2:0x04/0x3F
 # Day of Ragnarok
 K:101:3:0x04/0x3F
 
+# Attractions of Law
+K:104:0:0x8A/0x90
+
+# Obstacle Coursebook
+K:104:1:0x8A/0x90
+
+# Building Alternative Realities
+K:104:2:0xA3/0x8D
+
+# Acquiris Quodcumque Rapis
+K:104:3:0xA3/0x8D
+
 # Apprentice Handbook
 K:105:0:0xA3/0x81
 
