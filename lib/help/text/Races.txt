@@ -24,7 +24,7 @@ Humans
   
     Stats                   Skills
     Strength      +1        Disarming   Fair         
-    Intelligence  +2        Device      Good         
+    Intelligence  +2        Device      Fair         
     Wisdom        +2        Save        Fair         
     Dexterity     +2        Stealth     Fair         
     Constitution  +3        Searching   Fair         
@@ -79,7 +79,7 @@ Humans
   
     Stats                   Skills
     Strength      +1        Disarming   Fair         
-    Intelligence  +2        Device      Good         
+    Intelligence  +2        Device      Fair         
     Wisdom        +2        Save        Fair         
     Dexterity     +2        Stealth     Fair         
     Constitution  +3        Searching   Fair         
@@ -93,8 +93,8 @@ Humans
   them. Humans are average at everything and also tend to go up levels 
   faster than most other races because of their shorter life spans. No 
   racial adjustments or intrinsics occur to characters choosing human. 
-  However, humans may choose a special talent at L30 that more than 
-  makes up for their overall mediocrity.
+  However, humans may choose special talents at L20 & 40 that more than 
+  make up for their overall mediocrity.
   
     Stats                   Skills
     Strength      +0        Disarming   Poor         
@@ -118,7 +118,7 @@ Elves
   
     Stats                   Skills
     Strength      -1        Disarming   Good         
-    Intelligence  +3        Device      Excellent    
+    Intelligence  +3        Device      Very Good    
     Wisdom        +2        Save        Excellent    
     Dexterity     +2        Stealth     Good         
     Constitution  -2        Searching   Excellent    
@@ -137,7 +137,7 @@ Elves
   
     Stats                   Skills
     Strength      +1        Disarming   Fair         
-    Intelligence  +3        Device      Superb       
+    Intelligence  +3        Device      Excellent    
     Wisdom        -1        Save        Excellent    
     Dexterity     +3        Stealth     Very Good    
     Constitution  +1        Searching   Fair         
@@ -154,7 +154,7 @@ Elves
   
     Stats                   Skills
     Strength      -1        Disarming   Good         
-    Intelligence  +1        Device      Good         
+    Intelligence  +1        Device      Fair         
     Wisdom        +2        Save        Fair         
     Dexterity     +1        Stealth     Good         
     Constitution  -1        Searching   Excellent    
@@ -175,7 +175,7 @@ Hobbits/Dwarves
   
     Stats                   Skills
     Strength      +2        Disarming   Fair         
-    Intelligence  -2        Device      Very Good    
+    Intelligence  -2        Device      Good         
     Wisdom        +2        Save        Good         
     Dexterity     -2        Stealth     Bad          
     Constitution  +2        Searching   Excellent    
@@ -196,7 +196,7 @@ Hobbits/Dwarves
   
     Stats                   Skills
     Strength      -1        Disarming   Excellent    
-    Intelligence  +2        Device      Very Good    
+    Intelligence  +2        Device      Good         
     Wisdom        -1        Save        Very Good    
     Dexterity     +2        Stealth     Good         
     Constitution  +1        Searching   Very Good    
@@ -215,7 +215,7 @@ Hobbits/Dwarves
   
     Stats                   Skills
     Strength      -2        Disarming   Superb       
-    Intelligence  +1        Device      Excellent    
+    Intelligence  +1        Device      Very Good    
     Wisdom        +1        Save        Excellent    
     Dexterity     +3        Stealth     Excellent    
     Constitution  +2        Searching   Superb       
@@ -232,7 +232,7 @@ Hobbits/Dwarves
   
     Stats                   Skills
     Strength      +1        Disarming   Fair         
-    Intelligence  -1        Device      Good         
+    Intelligence  -1        Device      Fair         
     Wisdom        +2        Save        Good         
     Dexterity     +0        Stealth     Fair         
     Constitution  +2        Searching   Good         
@@ -255,7 +255,7 @@ Fairies
   
     Stats                   Skills
     Strength      -2        Disarming   Very Good    
-    Intelligence  +2        Device      Very Good    
+    Intelligence  +2        Device      Good         
     Wisdom        +2        Save        Poor         
     Dexterity     +1        Stealth     Excellent    
     Constitution  -1        Searching   Superb       
@@ -275,7 +275,7 @@ Fairies
   
     Stats                   Skills
     Strength      -4        Disarming   Excellent    
-    Intelligence  +3        Device      Very Good    
+    Intelligence  +3        Device      Good         
     Wisdom        +3        Save        Good         
     Dexterity     +3        Stealth     Very Good    
     Constitution  -2        Searching   Superb       
@@ -296,7 +296,7 @@ Angels/Demons
   
     Stats                   Skills
     Strength      +2        Disarming   Poor         
-    Intelligence  +0        Device      Excellent    
+    Intelligence  +0        Device      Very Good    
     Wisdom        +4        Save        Very Good    
     Dexterity     +1        Stealth     Fair         
     Constitution  +2        Searching   Poor         
@@ -316,7 +316,7 @@ Angels/Demons
   
     Stats                   Skills
     Strength      +4        Disarming   Bad          
-    Intelligence  +2        Device      Excellent    
+    Intelligence  +2        Device      Very Good    
     Wisdom       -10        Save        Superb       
     Dexterity     +2        Stealth     Bad          
     Constitution  +3        Searching   Bad          
@@ -367,35 +367,57 @@ Orcs/Trolls/Giants
   Half-Giants limited intelligence makes it difficult for them to 
   become full spellcasters, but with their huge strength they make 
   excellent warriors. Their thick skin makes them resistant to shards, 
-  and like Half-Ogres and Half-Trolls, they have their strength 
-  sustained.
+  and like Half-Trolls, they have their strength sustained.
   
     Stats                   Skills
     Strength      +4        Disarming   Very Bad     
-    Intelligence  -2        Device      Very Bad     
+    Intelligence  -2        Device      Bad          
     Wisdom        -2        Save        Bad          
     Dexterity     -2        Stealth     Bad          
     Constitution  +3        Searching   Very Bad     
     Charisma      +0        Perception  Good         
     Life Rating  108%       Melee       Heroic       
-    Base HP       26        Bows        Very Good    
+    Base HP       26        Bows        Fair         
     Experience   150%       Infravision 30'
-	
-  Half-Orc
-  Half-Orcs make excellent warriors, but are terrible at magic.
-  They are as bad as dwarves at stealth, and horrible at searching,
-  disarming, and perception. Half - orcs are quite ugly, and tend to
-  pay more for goods in town. Because of their preference to living
-  underground to on the surface, half - orcs resist darkness attacks.
-  The human part of their heritage allows them to select a talent at
-  Level 30.
     
   Ogre
-  Ogres are big and ugly but possessed of a low cunning and great strength.
-  For warriors, they have all the necessary attributes, and they can even
-  become wizards: after all, they are related to Ogre Magi, from whom they
-  have learned the skill of setting trapped runes once their level is high
-  enough. Being simple minded they have their intelligence sustained.
+  Ogres are big and ugly but possessed of a low cunning and great 
+  strength. For warriors, they have all the necessary attributes, and 
+  they can even become wizards: after all, they are related to Ogre 
+  Magi, from whom they have learned the skill of setting trapped runes 
+  once their level is high enough. Being simple minded they have their 
+  intelligence sustained
+  
+    Stats                   Skills
+    Strength      +3        Disarming   Bad          
+    Intelligence  +0        Device      Bad          
+    Wisdom        -1        Save        Bad          
+    Dexterity     -1        Stealth     Bad          
+    Constitution  +3        Searching   Very Bad     
+    Charisma      +0        Perception  Good         
+    Life Rating  106%       Melee       Superb       
+    Base HP       23        Bows        Poor         
+    Experience   140%       Infravision 0'
+    
+  Half-Orc
+  Half - orcs make excellent warriors, but are terrible at magic. They 
+  are as bad as dwarves at stealth, and horrible at searching, 
+  disarming, and perception. Half - orcs are quite ugly, and tend to 
+  pay more for goods in town. Because of their preference to living 
+  underground to on the surface, half - orcs resist darkness attacks. 
+  The human part of their heritage allows them to select a talent at 
+  Level 30.
+  
+    Stats                   Skills
+    Strength      +2        Disarming   Bad          
+    Intelligence  -1        Device      Bad          
+    Wisdom        +0        Save        Poor         
+    Dexterity     +0        Stealth     Bad          
+    Constitution  +1        Searching   Very Bad     
+    Charisma      -1        Perception  Good         
+    Life Rating  103%       Melee       Superb       
+    Base HP       20        Bows        Poor         
+    Experience   110%       Infravision 30'
     
   Half-Titan
   Half-mortal descendants of the mighty titans, these immensely 
@@ -407,7 +429,7 @@ Orcs/Trolls/Giants
   
     Stats                   Skills
     Strength      +5        Disarming   Bad          
-    Intelligence  +1        Device      Good         
+    Intelligence  +1        Device      Fair         
     Wisdom        +2        Save        Fair         
     Dexterity     -2        Stealth     Bad          
     Constitution  +3        Searching   Bad          
@@ -421,8 +443,8 @@ Orcs/Trolls/Giants
   other races. They are also very stupid and slow. They are bad at 
   searching, disarming, perception, and stealth. They are so ugly that 
   a Half-Orc grimaces in their presence. They also happen to be fun to 
-  run... Half-trolls always have their strength sustained. At higher 
-  levels, Half-Trolls regenerate wounds automatically.
+  run... Half-trolls always have their strength sustained. Half-Trolls 
+  regenerate wounds automatically.
   
     Stats                   Skills
     Strength      +4        Disarming   Bad          
@@ -509,7 +531,7 @@ The Undead
   
     Stats                   Skills
     Strength      -5        Disarming   Excellent    
-    Intelligence  +4        Device      Superb       
+    Intelligence  +4        Device      Excellent    
     Wisdom        +2        Save        Excellent    
     Dexterity     +2        Stealth     Excellent    
     Constitution  -2        Searching   Good         
@@ -531,7 +553,7 @@ The Undead
   
     Stats                   Skills
     Strength      +3        Disarming   Fair         
-    Intelligence  +3        Device      Very Good    
+    Intelligence  +3        Device      Good         
     Wisdom        -1        Save        Good         
     Dexterity     -1        Stealth     Very Good    
     Constitution  +1        Searching   Bad          
@@ -600,7 +622,7 @@ Other Races
   
     Stats                   Skills
     Strength      +2        Disarming   Bad          
-    Intelligence  -2        Device      Bad          
+    Intelligence  -2        Device      Poor         
     Wisdom        -1        Save        Poor         
     Dexterity     -1        Stealth     Bad          
     Constitution  +2        Searching   Very Bad     
@@ -743,7 +765,7 @@ Other Races
   
     Stats                   Skills
     Strength      +0        Disarming   Bad          
-    Intelligence  -1        Device      Good         
+    Intelligence  -1        Device      Fair         
     Wisdom        -1        Save        Good         
     Dexterity     +1        Stealth     Excellent    
     Constitution  +2        Searching   Very Bad     
@@ -763,7 +785,7 @@ Other Races
   
     Stats                   Skills
     Strength      -3        Disarming   Excellent    
-    Intelligence  +4        Device      Superb       
+    Intelligence  +4        Device      Excellent    
     Wisdom        +4        Save        Excellent    
     Dexterity     +0        Stealth     Fair         
     Constitution  -2        Searching   Good         
@@ -834,7 +856,8 @@ Balrog        +4   +2  -10   +2   +3   +2  106%  +24  180%  140%
 Imp           +0   -1   -1   +1   +2   -1   99%  +19   90%  120%
 Cyclops       +4   -3   -2   -3   +4   -1  108%  +24  155%  135%
 Half-Giant    +4   -2   -2   -2   +3   +0  108%  +26  150%  125%
-Half-Ogre     +3   -2   +0   -1   +3   +1  106%  +23  140%  125%
+Ogre          +3   +0   -1   -1   +3   +0  106%  +23  140%  125%
+Half-Orc      +2   -1   +0   +0   +1   -1  103%  +20  110%  120%
 Half-Titan    +5   +1   +2   -2   +3   +3  110%  +28  200%   90%
 Half-Troll    +4   -4   -1   -3   +3   -2  107%  +25  150%  135%
 Kobold        +1   -1   +0   +1   +0   -2   98%  +19   90%  120%
@@ -860,44 +883,45 @@ Yeek          -2   +1   -2   +1   -2   -4   92%  +14   70%  105%
 Table 2 - Race Skill Bonus Table I
 
              Disarming     Device        Save          Stealth      
-Amberite     Fair          Good          Fair          Fair         
+Amberite     Fair          Fair          Fair          Fair         
 Barbarian    Bad           Very Bad      Fair          Bad          
 Demigod      Fair          Fair          Fair          Bad          
-Dunadan      Fair          Good          Fair          Fair         
+Dunadan      Fair          Fair          Fair          Fair         
 Human        Poor          Poor          Poor          Poor         
-Dark-Elf     Good          Excellent     Excellent     Good         
-High-Elf     Fair          Superb        Excellent     Very Good    
-Wood-Elf     Good          Good          Fair          Good         
-Dwarf        Fair          Very Good     Good          Bad          
-Gnome        Excellent     Very Good     Very Good     Good         
-Hobbit       Superb        Excellent     Excellent     Excellent    
-Nibelung     Fair          Good          Good          Fair         
-Shadow-Fairy Very Good     Very Good     Poor          Excellent    
-Sprite       Excellent     Very Good     Good          Very Good    
-Archon       Poor          Excellent     Very Good     Fair         
-Balrog       Bad           Excellent     Superb        Bad          
+Dark-Elf     Good          Very Good     Excellent     Good         
+High-Elf     Fair          Excellent     Excellent     Very Good    
+Wood-Elf     Good          Fair          Fair          Good         
+Dwarf        Fair          Good          Good          Bad          
+Gnome        Excellent     Good          Very Good     Good         
+Hobbit       Superb        Very Good     Excellent     Excellent    
+Nibelung     Fair          Fair          Good          Fair         
+Shadow-Fairy Very Good     Good          Poor          Excellent    
+Sprite       Excellent     Good          Good          Very Good    
+Archon       Poor          Very Good     Very Good     Fair         
+Balrog       Bad           Very Good     Superb        Bad          
 Imp          Bad           Fair          Poor          Fair         
 Cyclops      Bad           Bad           Bad           Bad          
-Half-Giant   Very Bad      Very Bad      Bad           Bad          
-Half-Ogre    Bad           Bad           Bad           Bad          
-Half-Titan   Bad           Good          Fair          Bad          
+Half-Giant   Very Bad      Bad           Bad           Bad          
+Ogre         Bad           Bad           Bad           Bad          
+Half-Orc     Bad           Bad           Poor          Bad          
+Half-Titan   Bad           Fair          Fair          Bad          
 Half-Troll   Bad           Very Bad      Bad           Bad          
 Kobold       Bad           Bad           Poor          Bad          
 Snotling     Bad           Bad           Bad           Fair         
 Skeleton     Bad           Poor          Fair          Bad          
-Spectre      Excellent     Superb        Excellent     Excellent    
-Vampire      Fair          Very Good     Good          Very Good    
+Spectre      Excellent     Excellent     Excellent     Excellent    
+Vampire      Fair          Good          Good          Very Good    
 Zombie       Bad           Bad           Good          Bad          
 Android      Poor          Bad           Poor          Bad          
-Beastman     Bad           Bad           Poor          Bad          
+Beastman     Bad           Poor          Poor          Bad          
 Centaur      Poor          Bad           Fair          Fair         
 Draconian    Bad           Poor          Fair          Bad          
 Doppelganger Very Bad      Very Bad      Very Bad      Excellent    
 Ent          Bad           Fair          Good          Bad          
 Golem        Bad           Bad           Good          Bad          
 Klackon      Excellent     Bad           Fair          Poor         
-Kutar        Bad           Good          Good          Excellent    
-Mindflayer   Excellent     Superb        Excellent     Fair         
+Kutar        Bad           Fair          Good          Excellent    
+Mindflayer   Excellent     Excellent     Excellent     Fair         
 Tonberry     Bad           Bad           Fair          Fair         
 Yeek         Fair          Fair          Good          Good         
 
@@ -923,8 +947,9 @@ Archon       Poor          Superb        Excellent     Excellent       30'
 Balrog       Bad           Excellent     Superb        Fair            50'
 Imp          Very Bad      Superb        Good          Fair            30'
 Cyclops      Very Bad      Good          Superb        Superb          10'
-Half-Giant   Very Bad      Good          Heroic        Very Good       30'
-Half-Ogre    Very Bad      Good          Superb        Fair            30'
+Half-Giant   Very Bad      Good          Heroic        Fair            30'
+Ogre         Very Bad      Good          Superb        Poor             0'
+Half-Orc     Very Bad      Good          Superb        Poor            30'
 Half-Titan   Bad           Excellent     Heroic        Fair             0'
 Half-Troll   Very Bad      Good          Superb        Bad             30'
 Kobold       Bad           Excellent     Excellent     Very Good       30'
@@ -949,5 +974,5 @@ Yeek         Good          Heroic        Bad           Fair            20'
 
 
 
-Automatically generated for PosChengband 7.0.1.
+Automatically generated for FrogComposband 7.0.strawberry.
 

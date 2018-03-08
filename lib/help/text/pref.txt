@@ -1,6 +1,6 @@
 User Preferences
 
-PosChengband allows you to change various aspects of the game to suit 
+FrogComposband allows you to change various aspects of the game to suit 
 your tastes. You may define keymaps (changing the way your keypresses 
 are mapped to underlying commands), create macros (allowing you to map 
 a single keypress to a series of keypresses), modify the visuals 
@@ -16,13 +16,14 @@ preferences. The former represent the default display and input options
 while the latter are optional customizations that you may add to 
 override the default settings. System preference files, such as 
 pref.prf, are usually stored in /lib/pref relative to the installation 
-(e.g., on Windows, if you installed in C:\games\PosChengband then the 
-system pref files may be found in C:\games\PosChengband\lib\pref). User 
-preference files, on the other hand, are stored in the user directory, 
-which is /lib/user on Windows, relative to the install location, and 
-perhaps (though this is customizable), ~/.angband/PosChengband on 
-Linux. In general, the location of user files is platform dependent, 
-and can vary depending on how you configure and install the game.
+(e.g., on Windows, if you installed in C:\games\FrogComposband then the 
+system pref files may be found in C:\games\FrogComposband\lib\pref). 
+User preference files, on the other hand, are stored in the user 
+directory, which is /lib/user on Windows, relative to the install 
+location, and perhaps (though this is customizable), 
+~/.angband/FrogComposband on Linux. In general, the location of user 
+files is platform dependent, and can vary depending on how you 
+configure and install the game.
 
 During initialization, the system preference file pref.prf is loaded, 
 and this file directs the loading of other preference files, such as 
@@ -287,11 +288,11 @@ of encoding, including "\xHH" for character number HH in hexadecimal,
 "return" code, "\s" for the "space" code, "\\" for backslash, "\^" for 
 caret, and "^X" for the code for any "control" key "ctrl-X".
 
-In PosChengband, name of special keys as macro-trigger is displayed 
-using its real name, for example the Control-key plus the F1-key is 
-displayed as "\[control-F2]", and the Alt-key plus the G is displayed 
-as "\[Alt-G]". In other variant these special keys will be, currently, 
-displayed using its key-code.
+In FrogComposband, a special key used as a macro-trigger will be 
+displayed using its real name, for example the Control-key plus the 
+F1-key is displayed as "\[control-F1]", and the Alt-key plus the G is 
+displayed as "\[Alt-G]". In some other variants these special keys are 
+displayed using key-codes.
 
 Note that the "action" of a macro will not be checked against other 
 macro triggers, so you cannot make infinite loops. You may specify 
@@ -302,8 +303,8 @@ triggers and actions.
 The special "\" command (which must be encoded in macros as "\\") is 
 very useful in macros, since it bypasses all keymaps and allows the 
 next keystroke to be considered a command in the underlying 
-PosChengband command set. For a list of the PosChengband command set, 
-see the "command.txt" help file. For example, a macro which maps 
+FrogComposband command set. For a list of the FrogComposband command 
+set, see the "command.txt" help file. For example, a macro which maps 
 Shift-KP6 to "\" + "." + "6" will induce the "run east" behavior, 
 regardless of what keyset the user has chosen, and regardless of what 
 keymaps have been defined.
@@ -315,11 +316,11 @@ the form "P:<str>", which defines the encoded macro trigger.
 The "Interact with macros" command also allows you to define "keymaps", 
 which are vaguely related to macros. A keymap maps a single keypress to 
 a series of keypresses, which bypass both other keymaps and any macros. 
-PosChengband uses keymaps to map the original and the roguelike keysets 
-to the underlying command set, and allows the user to modify or add 
-keymaps of their own. Note that all keymap actions must be specified 
-using underlying commands, not keypresses from the original or 
-roguelike keysets. The original keyset is almost identical to the 
+FrogComposband uses keymaps to map the original and the roguelike 
+keysets to the underlying command set, and allows the user to modify or 
+add keymaps of their own. Note that all keymap actions must be 
+specified using underlying commands, not keypresses from the original 
+or roguelike keysets. The original keyset is almost identical to the 
 underlying keyset, except that "numbers" are mapped to ";" plus a 
 direction, "5" is mapped to ",", and a few control-keys are mapped to 
 various things. See "command.txt" for the full set of underlying 
@@ -363,7 +364,7 @@ stone to mud. You will be prompted for the desired direction.
 Example #4: Mass Identify
 Inscribe @ui on your staff of identify (The one with 50+ charges) and 
 then bind ui* to your favorite knowledge key. Use this macro once your 
-pack has filled up with unkown, but pseudo-identified objects.
+pack has filled up with unknown, but pseudo-identified objects.
 
 
 Original   : Alexander Cutler and Andy Astrand

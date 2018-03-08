@@ -1,9 +1,9 @@
 <!DOCTYPE html>
 <html>
 <body text="#ffffff" bgcolor="#000000"><pre>
-<font color="#00c8ff">The Mogaminator
+<font color="#00ffff">The Mogaminator
 
-</font><font color="#ff4040">The Mogaminator </font><font color="#ffffff">is a rule based system for managing objects 
+</font><font color="#ff0000">The Mogaminator </font><font color="#ffffff">is a rule based system for managing objects 
 automatically. With this system, you can decide which objects to 
 pickup, which to destroy, which to automatically identify, and which to 
 display in the special full screen map. You can automatically inscribe 
@@ -16,10 +16,10 @@ know nothing about it. Detailed reference material will appear towards
 the bottom of this document (see <a href="editor.html#Reference"></font><font color="#00ff00">[a]</a> </font><font color="#ffffff">if you really cannot wait!).
 
     </font><font color="#00ff00">This system is named after its original author. I got 
-    rather tired of calling it the </font><font color="#ff4040">Automatic Pickup and 
+    rather tired of calling it the </font><font color="#ff0000">Automatic Pickup and 
     Destruction Preferences</font><font color="#00ff00">, which is not only a lot to 
     type, but sounds rather stuffy and boring as well. 
-    Also, it was sometimes called </font><font color="#ff4040">The Auto-Destroyer</font><font color="#00ff00">, but, 
+    Also, it was sometimes called </font><font color="#ff0000">The Auto-Destroyer</font><font color="#00ff00">, but, 
     as you are about to learn, automatic destruction is 
     only part of the story.
 
@@ -38,14 +38,14 @@ its base AC (if it is armor), but not much else. Carry the object
 around a bit in your pack, and you might eventually get a sense of the 
 quality of the object: whether it is good, or excellent or even 
 special, or just average or perhaps even terrible. Details depend on 
-your class and this is called </font><font color="#ff4040">pseudo-id</font><font color="#ffffff">. See <a href="objects.html#PseudoID"></font><font color="#00ff00">[b]</a> </font><font color="#ffffff">for more information. 
-If you are impatient, you can </font><font color="#ff4040">identify </font><font color="#ffffff">the object right away, provided 
+your class and this is called </font><font color="#ff0000">pseudo-id</font><font color="#ffffff">. See <a href="objects.html#PseudoID"></font><font color="#00ff00">[b]</a> </font><font color="#ffffff">for more information. 
+If you are impatient, you can </font><font color="#ff0000">identify </font><font color="#ffffff">the object right away, provided 
 you have a means to do so (spell, scroll or magical device). 
 Identification tells you a little more about the object, including its 
 obvious magical bonuses and its ego type or artifact name, should you 
 be so lucky to find an excellent or special item. But Identify 
 generally won't tell you everything about the object. You might need to 
-</font><font color="#ff4040">*Identify* </font><font color="#ffffff">it as well to learn about all its attributes.
+</font><font color="#ff0000">*Identify* </font><font color="#ffffff">it as well to learn about all its attributes.
 
 To recap: your knowledge of an object is in one of the following 
 states:
@@ -60,7 +60,7 @@ common and it is only *Identify* you really need to worry about, at
 least once you reach the middle part of the game.
 
 For mushrooms, potions and scrolls, things are a little different. 
-These objects come in </font><font color="#ff4040">flavors</font><font color="#ffffff">, and once you have learned the flavor, 
+These objects come in </font><font color="#ff0000">flavors</font><font color="#ffffff">, and once you have learned the flavor, 
 you will immediately recognize all future instances of that object. 
 Indeed, all instances of the object are exactly alike, so the 
 identification game is simply to discover and know the first instance 
@@ -82,11 +82,11 @@ attributes that you become aware of.
 
 </font><font color="#ffffff">So, how do you manage this? Well, you can certainly manage things 
 manually, dealing with each object in isolation as you encounter it. 
-For the early game, this is doable. But the first time you </font><font color="#ff9200">Ctrl+Arrow 
+For the early game, this is doable. But the first time you </font><font color="#ff8000">Ctrl+Arrow 
 </font><font color="#ffffff">through a horde orcs or trolls, you will find this approach tedious. At 
-this point, I recommend you bite the bullet and enable </font><font color="#ff4040">The Mogaminator</font><font color="#ffffff">. 
+this point, I recommend you bite the bullet and enable </font><font color="#ff0000">The Mogaminator</font><font color="#ffffff">. 
 It is worth learning about if you plan on playing this variant for any 
-length of time. There is also an </font><font color="#ff4040">Easy Destroyer </font><font color="#ffffff">approach to managing 
+length of time. There is also an </font><font color="#ff0000">Easy Destroyer </font><font color="#ffffff">approach to managing 
 objects, but I'd prefer you not use it. The choice is yours, though, 
 but one caution: Decide which system you are going to use and only use 
 that system. In other words, if you turn The Mogaminator on, then turn 
@@ -95,24 +95,24 @@ then there are precedence issues (one system might destroy what is
 marked as desirable via the other system) and it can be hard to track 
 down why some undesirable event is happening.
 
-What is </font><font color="#ff4040">The Mogaminator</font><font color="#ffffff">? Basically, it is a rule based system for 
+What is </font><font color="#ff0000">The Mogaminator</font><font color="#ffffff">? Basically, it is a rule based system for 
 taking a given action each time you encounter a certain type of object. 
 The default action is pickup, and this action is used whenever you fail 
 to specify an alternative action. But you will also want to learn about 
-destroying objects too, since much of what you find will be </font><font color="#ff4040">junk</font><font color="#ffffff">. Let's 
+destroying objects too, since much of what you find will be </font><font color="#ff0000">junk</font><font color="#ffffff">. Let's 
 discuss the basics.
 
 <a name="BasicUsage"></a></font><font color="#c00000">Basic Usage
 
-</font><font color="#ffffff">In this section, I'll describe using </font><font color="#ff4040">The Mogaminator </font><font color="#ffffff">without knowing 
+</font><font color="#ffffff">In this section, I'll describe using </font><font color="#ff0000">The Mogaminator </font><font color="#ffffff">without knowing 
 anything at all about it. So, I am assuming you are a new player. 
 Please don't take offense :)
 
-You turn on this system by pressing </font><font color="#ff9200">_</font><font color="#ffffff">, which also brings up an in-game 
+You turn on this system by pressing </font><font color="#ff8000">_</font><font color="#ffffff">, which also brings up an in-game 
 editor where you can manage your preferences. It might look something 
 like:
 
-</font><font color="#00c8ff">(^Q:Quit, ^W:Save&amp;Quit, ESC:Menu, Other:Input text)         </font><font color="#ffffff">(0,10)
+</font><font color="#00ffff">(^Q:Quit, ^W:Save&amp;Quit, ESC:Menu, Other:Input text)         </font><font color="#ffffff">(0,10)
 </font><font color="#00ff00">#***
 #***  You have activated the Auto-Picker Editor for the first time.
 #***  Since user pref file for autopick is not yet created,
@@ -123,28 +123,28 @@ like:
 #########################################
 # Consumables
 #########################################
-</font><font color="#ffffff">mushroom of restoring</font><font color="#ffcc80">#!E
+</font><font color="#ffffff">mushroom of restoring</font><font color="#c08040">#!E
 
-</font><font color="#ff4040">potions</font><font color="#ffffff">:resist</font><font color="#ffcc80">#!k!q
-</font><font color="#ff4040">potions</font><font color="#ffffff">:resistance</font><font color="#ffcc80">#!k!q
-</font><font color="#ff4040">potions</font><font color="#ffffff">:stone skin</font><font color="#ffcc80">#!k
-</font><font color="#ff4040">potions</font><font color="#ffffff">:heroism
-</font><font color="#ff4040">potions</font><font color="#ffffff">:speed</font><font color="#ffcc80">#!k!q
-</font><font color="#ff4040">potions</font><font color="#ffffff">:giant strength</font><font color="#ffcc80">#!k
+</font><font color="#ff0000">potions</font><font color="#ffffff">:resist</font><font color="#c08040">#!k!q
+</font><font color="#ff0000">potions</font><font color="#ffffff">:resistance</font><font color="#c08040">#!k!q
+</font><font color="#ff0000">potions</font><font color="#ffffff">:stone skin</font><font color="#c08040">#!k
+</font><font color="#ff0000">potions</font><font color="#ffffff">:heroism
+</font><font color="#ff0000">potions</font><font color="#ffffff">:speed</font><font color="#c08040">#!k!q
+</font><font color="#ff0000">potions</font><font color="#ffffff">:giant strength</font><font color="#c08040">#!k
 
-</font><font color="#ff4040">potions</font><font color="#ffffff">:enlightenment
+</font><font color="#ff0000">potions</font><font color="#ffffff">:enlightenment
 
-</font><font color="#ff4040">potions</font><font color="#ffffff">:of strength</font><font color="#ffcc80">#!k
-</font><font color="#00c8ff">--------------------------------------------------------------------------------
+</font><font color="#ff0000">potions</font><font color="#ffffff">:of strength</font><font color="#c08040">#!k
+</font><font color="#00ffff">--------------------------------------------------------------------------------
 </font><font color="#ffffff">Pickup and inscribe "!E" on all items which have "mushroom of restoring" as part
 of its name.  Display these items when you press the M key in the full 'M'ap.
 
 
 Since you are new, you probably want to run from this complexity as 
 fast as you can. Notice the top line of the screen where it tells you 
-how to get out: </font><font color="#ff9200">^Q</font><font color="#ffffff">. That's fine and we'll discuss this file in detail, 
+how to get out: </font><font color="#ff8000">^Q</font><font color="#ffffff">. That's fine and we'll discuss this file in detail, 
 including its format and what each line means later on below. The 
-important thing is that the first time you press </font><font color="#ff9200">_ </font><font color="#ffffff">turns this system 
+important thing is that the first time you press </font><font color="#ff8000">_ </font><font color="#ffffff">turns this system 
 on, and initializes it with some pretty nice default preferences.
 
 Now, you will find much of the junk you encounter being destroyed. For 
@@ -153,11 +153,11 @@ you hack and slash your way through the dungeon. That in itself is
 rather nice. But, you will still run into objects you consider useless. 
 For example, suppose you took that all important first step on the road 
 to slaying Morgoth, and bought a lantern at the General Store. Now, you 
-don't really care about torches anymore. Use the </font><font color="#ff9200">k </font><font color="#ffffff">command (or </font><font color="#ff9200">^D </font><font color="#ffffff">for 
+don't really care about torches anymore. Use the </font><font color="#ff8000">k </font><font color="#ffffff">command (or </font><font color="#ff8000">^D </font><font color="#ffffff">for 
 the Roguelike keyset) and you get a prompt like:
-  Really destroy </font><font color="#fffd00">Wooden Torches {unidentified}</font><font color="#ffffff">? </font><font color="#fffd00">[y/n/Auto]
+  Really destroy </font><font color="#ffff00">Wooden Torches {unidentified}</font><font color="#ffffff">? </font><font color="#ffff00">[y/n/Auto]
 
-</font><font color="#ffffff">Notice the </font><font color="#ff9200">A</font><font color="#ffffff">uto option. Choose that and you get a message that the 
+</font><font color="#ffffff">Notice the </font><font color="#ff8000">A</font><font color="#ffffff">uto option. Choose that and you get a message that the 
 object is destroyed, but the fact that you don't like torches is 
 remembered by the system. The next time your character moves on top of 
 one, it will automatically be destroyed.
@@ -170,38 +170,38 @@ easier to manage.
 
 </font><font color="#ffffff">"Awesome! But what if I make a mistake and auto-register rings of 
 speed?" Well, don't panic. You can easily fix things up, but doing so 
-will require you to go back to the preference file editor. Press </font><font color="#ff9200">_ </font><font color="#ffffff">and 
-then press </font><font color="#ff9200">END </font><font color="#ffffff">to move to the end of the document. This is where the 
+will require you to go back to the preference file editor. Press </font><font color="#ff8000">_ </font><font color="#ffffff">and 
+then press </font><font color="#ff8000">END </font><font color="#ffffff">to move to the end of the document. This is where the 
 game keeps track of any objects that you automatically register for 
 destruction during the Destroy Object command. Your screen might look 
 something like:
 
-</font><font color="#00c8ff">(^Q:Quit, ^W:Save&amp;Quit, ESC:Menu, Other:Input text)         </font><font color="#ffffff">(0,199)
-</font><font color="#a500ff">?:[GEQ $LEVEL 35]
-</font><font color="#8a8a8a">!nameless common armors
+</font><font color="#00ffff">(^Q:Quit, ^W:Save&amp;Quit, ESC:Menu, Other:Input text)         </font><font color="#ffffff">(0,199)
+</font><font color="#ff00ff">?:[GEQ $LEVEL 35]
+</font><font color="#707070">!nameless common armors
 
-</font><font color="#a500ff">?:[GEQ $LEVEL 30]
-</font><font color="#8a8a8a">!nameless common weapons
+</font><font color="#ff00ff">?:[GEQ $LEVEL 30]
+</font><font color="#707070">!nameless common weapons
 
-</font><font color="#a500ff">?:[GEQ $LEVEL 20]
-</font><font color="#8a8a8a">!average common weapons
+</font><font color="#ff00ff">?:[GEQ $LEVEL 20]
+</font><font color="#707070">!average common weapons
 !average common armors
-</font><font color="#a500ff">?:1
+</font><font color="#ff00ff">?:1
 
 ?:[LEQ $LEVEL 34]
 </font><font color="#00ff00">#(unidentified armors
 #(unidentified weapons
-</font><font color="#a500ff">?:1
+</font><font color="#ff00ff">?:1
 
-</font><font color="#ffffff">~</font><font color="#00ff00">special </font><font color="#ff4040">items
-</font><font color="#ffffff">!</font><font color="#00ff00">worthless </font><font color="#ff4040">items
+</font><font color="#ffffff">~</font><font color="#00ff00">special </font><font color="#ff0000">items
+</font><font color="#ffffff">!</font><font color="#00ff00">worthless </font><font color="#ff0000">items
 </font><font color="#00ff00">#!unusable items
-</font><font color="#ff4040">?:$AUTOREGISTER
+</font><font color="#ff0000">?:$AUTOREGISTER
 # *Waring!* The lines below will be deleated later.
 # Keep it by cut &amp; paste if you need these lines for future characters.
 (!unidentified lights:^wooden torch$
 
-</font><font color="#00c8ff">--------------------------------------------------------------------------------
+</font><font color="#00ffff">--------------------------------------------------------------------------------
 </font><font color="#ffffff">Destroy unidentified light sources whose name is beginning with "wooden torch$".
 Not displayed in the full map.  This line will be delete later.
 
@@ -214,7 +214,7 @@ what will happen for the given rule. If you are curious, you can move
 the cursor around the default preference file and actually learn quite 
 a bit about how the system works. For now, though, if you wish to undo 
 any rules that you automatically added, simply delete the corresponding 
-line from this file and then exit with the </font><font color="#ff9200">^W </font><font color="#ffffff">option to save and apply 
+line from this file and then exit with the </font><font color="#ff8000">^W </font><font color="#ffffff">option to save and apply 
 your changes.
 
 <a name="WantedObjects"></a></font><font color="#c00000">What About Stuff I Want?
@@ -247,30 +247,30 @@ the game, and you find yourself getting hurt quite often. Wouldn't it
 be nice to be able to automatically display these potions? Well, you 
 can easily do so by adding the following line to the top of the file:
 
-</font><font color="#00c8ff">(^Q:Quit, ^W:Save&amp;Quit, ESC:Menu, Other:Input text)       </font><font color="#fffd00">* </font><font color="#ffffff">(0,5)-(20,5)
+</font><font color="#00ffff">(^Q:Quit, ^W:Save&amp;Quit, ESC:Menu, Other:Input text)       </font><font color="#ffff00">* </font><font color="#ffffff">(0,5)-(20,5)
 </font><font color="#00ff00">#***
 #***  You have activated the Auto-Picker Editor for the first time.
 #***  Since user pref file for autopick is not yet created,
 #***  the default setting is loaded from lib/pref/pickpref.prf .
 #***
-</font><font color="#fffd00">Cure Critical Wounds
+</font><font color="#ffff00">Cure Critical Wounds
 
 </font><font color="#00ff00">#########################################
 # Consumables
 #########################################
-</font><font color="#ffffff">mushroom of restoring</font><font color="#ffcc80">#!E
+</font><font color="#ffffff">mushroom of restoring</font><font color="#c08040">#!E
 
-</font><font color="#ff4040">potions</font><font color="#ffffff">:resist</font><font color="#ffcc80">#!k!q
-</font><font color="#ff4040">potions</font><font color="#ffffff">:resistance</font><font color="#ffcc80">#!k!q
-</font><font color="#ff4040">potions</font><font color="#ffffff">:stone skin</font><font color="#ffcc80">#!k
-</font><font color="#ff4040">potions</font><font color="#ffffff">:heroism
-</font><font color="#ff4040">potions</font><font color="#ffffff">:speed</font><font color="#ffcc80">#!k!q
-</font><font color="#ff4040">potions</font><font color="#ffffff">:giant strength</font><font color="#ffcc80">#!k
+</font><font color="#ff0000">potions</font><font color="#ffffff">:resist</font><font color="#c08040">#!k!q
+</font><font color="#ff0000">potions</font><font color="#ffffff">:resistance</font><font color="#c08040">#!k!q
+</font><font color="#ff0000">potions</font><font color="#ffffff">:stone skin</font><font color="#c08040">#!k
+</font><font color="#ff0000">potions</font><font color="#ffffff">:heroism
+</font><font color="#ff0000">potions</font><font color="#ffffff">:speed</font><font color="#c08040">#!k!q
+</font><font color="#ff0000">potions</font><font color="#ffffff">:giant strength</font><font color="#c08040">#!k
 
-</font><font color="#ff4040">potions</font><font color="#ffffff">:enlightenment
+</font><font color="#ff0000">potions</font><font color="#ffffff">:enlightenment
 
-</font><font color="#ff4040">potions</font><font color="#ffffff">:of strength</font><font color="#ffcc80">#!k
-</font><font color="#00c8ff">--------------------------------------------------------------------------------
+</font><font color="#ff0000">potions</font><font color="#ffffff">:of strength</font><font color="#c08040">#!k
+</font><font color="#00ffff">--------------------------------------------------------------------------------
 </font><font color="#ffffff">Pickup all items which have "cure critical wounds" as part of its name.  Display
 these items when you press the M key in the full 'M'ap.
 
@@ -278,56 +278,56 @@ I colored the new line in yellow so you could see what I changed. Pay
 attention to the bottom of the screen: Does it sound like it will work?
 
             +------------------------------------------------------------------+
-            |</font><font color="#ffcc80">##################################################################</font><font color="#ffffff">|
-            |</font><font color="#ffcc80">#</font><font color="#00ff00">################################################################</font><font color="#ffcc80">#</font><font color="#ffffff">|
-            |</font><font color="#ffcc80">#</font><font color="#00ff00">################################################################</font><font color="#ffcc80">#</font><font color="#ffffff">|
-            |</font><font color="#ffcc80">#</font><font color="#00ff00">################################################################</font><font color="#ffcc80">#</font><font color="#ffffff">|
-            |</font><font color="#ffcc80">#</font><font color="#00ff00">################################################################</font><font color="#ffcc80">#</font><font color="#ffffff">|
-            |</font><font color="#ffcc80">#</font><font color="#00ff00">################################################################</font><font color="#ffcc80">#</font><font color="#ffffff">|
-            |</font><font color="#ffcc80">#</font><font color="#00ff00">########################################</font><font color="#ffcc80">##</font><font color="#00ff00">######################</font><font color="#ffcc80">#</font><font color="#ffffff">|
-            |</font><font color="#ffcc80">#</font><font color="#00ff00">####################</font><font color="#ffcc80">##</font><font color="#00ff00">####</font><font color="#ffffff">.</font><font color="#00ff00">###</font><font color="#ffffff">.</font><font color="#00ff00">##</font><font color="#ffffff">.</font><font color="#00ff00">#####</font><font color="#ffffff">.</font><font color="#ffcc80">##</font><font color="#00ff00">######################</font><font color="#ffcc80">#</font><font color="#ffffff">|
-            |</font><font color="#ffcc80">#</font><font color="#00ff00">####################</font><font color="#ffcc80">##</font><font color="#ffffff">..</font><font color="#00ff00">#</font><font color="#ffffff">...</font><font color="#00ff00">#</font><font color="#ffffff">.........</font><font color="#00ff00">#</font><font color="#ffffff">.</font><font color="#00ff00">#</font><font color="#ffffff">..</font><font color="#00ff00">#####################</font><font color="#ffcc80">#</font><font color="#ffffff">|
-            |</font><font color="#ffcc80">#</font><font color="#00ff00">####################</font><font color="#ffffff">........................</font><font color="#00ff00">####################</font><font color="#ffcc80">#</font><font color="#ffffff">|
-            |</font><font color="#ffcc80">#</font><font color="#00ff00">##################</font><font color="#ffffff">..</font><font color="#ffcc80">#######################</font><font color="#ffffff">.</font><font color="#00ff00">####################</font><font color="#ffcc80">#</font><font color="#ffffff">|
-            |</font><font color="#ffcc80">#</font><font color="#00ff00">############</font><font color="#00c000">.</font><font color="#ffffff">:</font><font color="#00c000">.</font><font color="#00ff00">##</font><font color="#ffffff">.</font><font color="#00ff00">#</font><font color="#ffffff">.</font><font color="#ffcc80">##</font><font color="#c86400">+</font><font color="#ffffff">..................</font><font color="#00c8ff">+</font><font color="#ffcc80">##</font><font color="#ffffff">..</font><font color="#00ff00">##################</font><font color="#ffcc80">#</font><font color="#ffffff">|
-            |</font><font color="#ffcc80">#</font><font color="#00ff00">############</font><font color="#ffffff">:::</font><font color="#00ff00">#</font><font color="#ffffff">.</font><font color="#00ff00">#</font><font color="#ffffff">..</font><font color="#ffcc80">###</font><font color="#ffffff">..</font><font color="#ffcc80">#</font><font color="#a500ff">0</font><font color="#ffcc80">##</font><font color="#ff9200">+</font><font color="#ffcc80">###+###</font><font color="#00ff00">+</font><font color="#ffcc80">#</font><font color="#ffffff">..</font><font color="#ffcc80">###</font><font color="#ffffff">...</font><font color="#00ff00">#################</font><font color="#ffcc80">#</font><font color="#ffffff">|
-            |</font><font color="#ffcc80">#</font><font color="#00ff00">#############</font><font color="#00c000">.</font><font color="#00ff00">##</font><font color="#ffffff">....</font><font color="#ffcc80">#+</font><font color="#ffffff">.</font><font color="#ffcc80">###################</font><font color="#00c8ff">+</font><font color="#ffcc80">#</font><font color="#ffffff">..</font><font color="#ffcc80">##</font><font color="#00ff00">################</font><font color="#ffcc80">#</font><font color="#ffffff">|
-            |</font><font color="#ffcc80">#</font><font color="#00ff00">##################</font><font color="#ffffff">..</font><font color="#ffcc80">#</font><font color="#ffffff">..</font><font color="#ffcc80">+##</font><font color="#ff9200">9</font><font color="#ffcc80">##</font><font color="#ffffff">3</font><font color="#ffcc80">###</font><font color="#c00000">6</font><font color="#ffcc80">###</font><font color="#00c000">4</font><font color="#ffcc80">#+#</font><font color="#ffffff">.</font><font color="#ffcc80">##</font><font color="#ffffff">..</font><font color="#ffcc80">##</font><font color="#00ff00">################</font><font color="#ffcc80">#</font><font color="#ffffff">|
-            |</font><font color="#ffcc80">#</font><font color="#00ff00">################</font><font color="#ffffff">.</font><font color="#00ff00">#</font><font color="#ffffff">..</font><font color="#ffcc80">#</font><font color="#ffffff">.....................</font><font color="#ffcc80">##</font><font color="#ffffff">..</font><font color="#00ff00">##################</font><font color="#ffcc80">#</font><font color="#ffffff">|
-</font><font color="#00c8ff">Potions of C</font><font color="#ffffff">|</font><font color="#ffcc80">#</font><font color="#00ff00">###############</font><font color="#ffcc80">##</font><font color="#00ff00">#</font><font color="#ffffff">..</font><font color="#ffcc80">#</font><font color="#ffffff">..</font><font color="#a500ff">!</font><font color="#ffffff">.......</font><font color="#a500ff">&gt;</font><font color="#ffffff">..........</font><font color="#ffcc80">##</font><font color="#ffffff">..</font><font color="#00ff00">##################</font><font color="#ffcc80">#</font><font color="#ffffff">|
-            |</font><font color="#ffcc80">#</font><font color="#00ff00">###############</font><font color="#ffcc80">##</font><font color="#ffffff">...</font><font color="#ffcc80">#</font><font color="#ffffff">.....................</font><font color="#ffcc80">##</font><font color="#ffffff">...</font><font color="#00ff00">#################</font><font color="#ffcc80">#</font><font color="#ffffff">|
-            |</font><font color="#ffcc80">#</font><font color="#00ff00">###############</font><font color="#ffcc80">##</font><font color="#ffffff">...</font><font color="#ffcc80">#</font><font color="#ffffff">..</font><font color="#ffcc80">1##</font><font color="#8a8a8a">7</font><font color="#ffcc80">##</font><font color="#8c8c8c">2</font><font color="#ffcc80">###</font><font color="#0000fe">5</font><font color="#ffcc80">###</font><font color="#fffd00">8</font><font color="#ffcc80">#+#</font><font color="#ffffff">.</font><font color="#ffcc80">##</font><font color="#ffffff">...</font><font color="#00ff00">#################</font><font color="#ffcc80">#</font><font color="#ffffff">|
-            |</font><font color="#ffcc80">#</font><font color="#00ff00">################</font><font color="#ffffff">.</font><font color="#00ff00">#</font><font color="#ffffff">..</font><font color="#ffcc80">#+####</font><font color="#a500ff">+</font><font color="#ffcc80">##</font><font color="#ffffff">+</font><font color="#ffcc80">###</font><font color="#00c8ff">+</font><font color="#ffcc80">########</font><font color="#ff4040">+</font><font color="#ffcc80">#</font><font color="#ffffff">..</font><font color="#ffcc80">##</font><font color="#00ff00">################</font><font color="#ffcc80">#</font><font color="#ffffff">|
-            |</font><font color="#ffcc80">#</font><font color="#00ff00">################</font><font color="#ffffff">.</font><font color="#00ff00">#</font><font color="#ffffff">..</font><font color="#ffcc80">###</font><font color="#ffffff">..................</font><font color="#a500ff">+</font><font color="#ffcc80">##</font><font color="#ffffff">.</font><font color="#00ff00">#</font><font color="#ffcc80">##</font><font color="#00ff00">################</font><font color="#ffcc80">#</font><font color="#ffffff">|
-            |</font><font color="#ffcc80">#</font><font color="#00ff00">#################</font><font color="#ffffff">...</font><font color="#ffcc80">########################</font><font color="#ffffff">..</font><font color="#00ff00">##################</font><font color="#ffcc80">#</font><font color="#ffffff">|
-            |</font><font color="#ffcc80">#</font><font color="#00ff00">#################</font><font color="#ffffff">....</font><font color="#ffcc80">######################</font><font color="#ffffff">.</font><font color="#00ff00">####################</font><font color="#ffcc80">#</font><font color="#ffffff">|
-            |</font><font color="#ffcc80">#</font><font color="#00ff00">#####################</font><font color="#ffffff">..</font><font color="#00ff00">#</font><font color="#ffffff">.................</font><font color="#00ff00">#</font><font color="#ffffff">..</font><font color="#00ff00">####################</font><font color="#ffcc80">#</font><font color="#ffffff">|
-            |</font><font color="#ffcc80">#</font><font color="#00ff00">######################</font><font color="#ffffff">...</font><font color="#ffcc80">##</font><font color="#00ff00">###</font><font color="#ffffff">.</font><font color="#00ff00">##</font><font color="#ffffff">.</font><font color="#00ff00">#</font><font color="#ffffff">..</font><font color="#00ff00">#</font><font color="#ffcc80">##</font><font color="#ffffff">..</font><font color="#00ff00">######################</font><font color="#ffcc80">#</font><font color="#ffffff">|
-            |</font><font color="#ffcc80">#</font><font color="#00ff00">#########################</font><font color="#ffcc80">##</font><font color="#00ff00">###########</font><font color="#ffcc80">##</font><font color="#00ff00">########################</font><font color="#ffcc80">#</font><font color="#ffffff">|
-            |</font><font color="#ffcc80">#</font><font color="#00ff00">################################################################</font><font color="#ffcc80">#</font><font color="#ffffff">|
-            |</font><font color="#ffcc80">#</font><font color="#00ff00">################################################################</font><font color="#ffcc80">#</font><font color="#ffffff">|
-            |</font><font color="#ffcc80">#</font><font color="#00ff00">################################################################</font><font color="#ffcc80">#</font><font color="#ffffff">|
-            |</font><font color="#ffcc80">#</font><font color="#00ff00">################################################################</font><font color="#ffcc80">#</font><font color="#ffffff">|
-            |</font><font color="#ffcc80">#</font><font color="#00ff00">################################################################</font><font color="#ffcc80">#</font><font color="#ffffff">|
-            |</font><font color="#ffcc80">#</font><font color="#00ff00">################################################################</font><font color="#ffcc80">#</font><font color="#ffffff">|
-            |</font><font color="#ffcc80">##################################################################</font><font color="#ffffff">|
+            |</font><font color="#c08040">##################################################################</font><font color="#ffffff">|
+            |</font><font color="#c08040">#</font><font color="#00ff00">################################################################</font><font color="#c08040">#</font><font color="#ffffff">|
+            |</font><font color="#c08040">#</font><font color="#00ff00">################################################################</font><font color="#c08040">#</font><font color="#ffffff">|
+            |</font><font color="#c08040">#</font><font color="#00ff00">################################################################</font><font color="#c08040">#</font><font color="#ffffff">|
+            |</font><font color="#c08040">#</font><font color="#00ff00">################################################################</font><font color="#c08040">#</font><font color="#ffffff">|
+            |</font><font color="#c08040">#</font><font color="#00ff00">################################################################</font><font color="#c08040">#</font><font color="#ffffff">|
+            |</font><font color="#c08040">#</font><font color="#00ff00">########################################</font><font color="#c08040">##</font><font color="#00ff00">######################</font><font color="#c08040">#</font><font color="#ffffff">|
+            |</font><font color="#c08040">#</font><font color="#00ff00">####################</font><font color="#c08040">##</font><font color="#00ff00">####</font><font color="#ffffff">.</font><font color="#00ff00">###</font><font color="#ffffff">.</font><font color="#00ff00">##</font><font color="#ffffff">.</font><font color="#00ff00">#####</font><font color="#ffffff">.</font><font color="#c08040">##</font><font color="#00ff00">######################</font><font color="#c08040">#</font><font color="#ffffff">|
+            |</font><font color="#c08040">#</font><font color="#00ff00">####################</font><font color="#c08040">##</font><font color="#ffffff">..</font><font color="#00ff00">#</font><font color="#ffffff">...</font><font color="#00ff00">#</font><font color="#ffffff">.........</font><font color="#00ff00">#</font><font color="#ffffff">.</font><font color="#00ff00">#</font><font color="#ffffff">..</font><font color="#00ff00">#####################</font><font color="#c08040">#</font><font color="#ffffff">|
+            |</font><font color="#c08040">#</font><font color="#00ff00">####################</font><font color="#ffffff">........................</font><font color="#00ff00">####################</font><font color="#c08040">#</font><font color="#ffffff">|
+            |</font><font color="#c08040">#</font><font color="#00ff00">##################</font><font color="#ffffff">..</font><font color="#c08040">#######################</font><font color="#ffffff">.</font><font color="#00ff00">####################</font><font color="#c08040">#</font><font color="#ffffff">|
+            |</font><font color="#c08040">#</font><font color="#00ff00">############</font><font color="#008040">.</font><font color="#ffffff">:</font><font color="#008040">.</font><font color="#00ff00">##</font><font color="#ffffff">.</font><font color="#00ff00">#</font><font color="#ffffff">.</font><font color="#c08040">##</font><font color="#a05010">+</font><font color="#ffffff">..................</font><font color="#00ffff">+</font><font color="#c08040">##</font><font color="#ffffff">..</font><font color="#00ff00">##################</font><font color="#c08040">#</font><font color="#ffffff">|
+            |</font><font color="#c08040">#</font><font color="#00ff00">############</font><font color="#ffffff">:::</font><font color="#00ff00">#</font><font color="#ffffff">.</font><font color="#00ff00">#</font><font color="#ffffff">..</font><font color="#c08040">###</font><font color="#ffffff">..</font><font color="#c08040">#</font><font color="#ff00ff">0</font><font color="#c08040">##</font><font color="#ff8000">+</font><font color="#c08040">###+###</font><font color="#00ff00">+</font><font color="#c08040">#</font><font color="#ffffff">..</font><font color="#c08040">###</font><font color="#ffffff">...</font><font color="#00ff00">#################</font><font color="#c08040">#</font><font color="#ffffff">|
+            |</font><font color="#c08040">#</font><font color="#00ff00">#############</font><font color="#008040">.</font><font color="#00ff00">##</font><font color="#ffffff">....</font><font color="#c08040">#+</font><font color="#ffffff">.</font><font color="#c08040">###################</font><font color="#00ffff">+</font><font color="#c08040">#</font><font color="#ffffff">..</font><font color="#c08040">##</font><font color="#00ff00">################</font><font color="#c08040">#</font><font color="#ffffff">|
+            |</font><font color="#c08040">#</font><font color="#00ff00">##################</font><font color="#ffffff">..</font><font color="#c08040">#</font><font color="#ffffff">..</font><font color="#c08040">+##</font><font color="#ff8000">9</font><font color="#c08040">##</font><font color="#ffffff">3</font><font color="#c08040">###</font><font color="#c00000">6</font><font color="#c08040">###</font><font color="#008040">4</font><font color="#c08040">#+#</font><font color="#ffffff">.</font><font color="#c08040">##</font><font color="#ffffff">..</font><font color="#c08040">##</font><font color="#00ff00">################</font><font color="#c08040">#</font><font color="#ffffff">|
+            |</font><font color="#c08040">#</font><font color="#00ff00">################</font><font color="#ffffff">.</font><font color="#00ff00">#</font><font color="#ffffff">..</font><font color="#c08040">#</font><font color="#ffffff">.....................</font><font color="#c08040">##</font><font color="#ffffff">..</font><font color="#00ff00">##################</font><font color="#c08040">#</font><font color="#ffffff">|
+</font><font color="#00ffff">Potions of C</font><font color="#ffffff">|</font><font color="#c08040">#</font><font color="#00ff00">###############</font><font color="#c08040">##</font><font color="#00ff00">#</font><font color="#ffffff">..</font><font color="#c08040">#</font><font color="#ffffff">..</font><font color="#ff00ff">!</font><font color="#ffffff">.......</font><font color="#ff00ff">&gt;</font><font color="#ffffff">..........</font><font color="#c08040">##</font><font color="#ffffff">..</font><font color="#00ff00">##################</font><font color="#c08040">#</font><font color="#ffffff">|
+            |</font><font color="#c08040">#</font><font color="#00ff00">###############</font><font color="#c08040">##</font><font color="#ffffff">...</font><font color="#c08040">#</font><font color="#ffffff">.....................</font><font color="#c08040">##</font><font color="#ffffff">...</font><font color="#00ff00">#################</font><font color="#c08040">#</font><font color="#ffffff">|
+            |</font><font color="#c08040">#</font><font color="#00ff00">###############</font><font color="#c08040">##</font><font color="#ffffff">...</font><font color="#c08040">#</font><font color="#ffffff">..</font><font color="#c08040">1##</font><font color="#707070">7</font><font color="#c08040">##</font><font color="#909090">2</font><font color="#c08040">###</font><font color="#0000ff">5</font><font color="#c08040">###</font><font color="#ffff00">8</font><font color="#c08040">#+#</font><font color="#ffffff">.</font><font color="#c08040">##</font><font color="#ffffff">...</font><font color="#00ff00">#################</font><font color="#c08040">#</font><font color="#ffffff">|
+            |</font><font color="#c08040">#</font><font color="#00ff00">################</font><font color="#ffffff">.</font><font color="#00ff00">#</font><font color="#ffffff">..</font><font color="#c08040">#+####</font><font color="#ff00ff">+</font><font color="#c08040">##</font><font color="#ffffff">+</font><font color="#c08040">###</font><font color="#00ffff">+</font><font color="#c08040">########</font><font color="#ff0000">+</font><font color="#c08040">#</font><font color="#ffffff">..</font><font color="#c08040">##</font><font color="#00ff00">################</font><font color="#c08040">#</font><font color="#ffffff">|
+            |</font><font color="#c08040">#</font><font color="#00ff00">################</font><font color="#ffffff">.</font><font color="#00ff00">#</font><font color="#ffffff">..</font><font color="#c08040">###</font><font color="#ffffff">..................</font><font color="#ff00ff">+</font><font color="#c08040">##</font><font color="#ffffff">.</font><font color="#00ff00">#</font><font color="#c08040">##</font><font color="#00ff00">################</font><font color="#c08040">#</font><font color="#ffffff">|
+            |</font><font color="#c08040">#</font><font color="#00ff00">#################</font><font color="#ffffff">...</font><font color="#c08040">########################</font><font color="#ffffff">..</font><font color="#00ff00">##################</font><font color="#c08040">#</font><font color="#ffffff">|
+            |</font><font color="#c08040">#</font><font color="#00ff00">#################</font><font color="#ffffff">....</font><font color="#c08040">######################</font><font color="#ffffff">.</font><font color="#00ff00">####################</font><font color="#c08040">#</font><font color="#ffffff">|
+            |</font><font color="#c08040">#</font><font color="#00ff00">#####################</font><font color="#ffffff">..</font><font color="#00ff00">#</font><font color="#ffffff">.................</font><font color="#00ff00">#</font><font color="#ffffff">..</font><font color="#00ff00">####################</font><font color="#c08040">#</font><font color="#ffffff">|
+            |</font><font color="#c08040">#</font><font color="#00ff00">######################</font><font color="#ffffff">...</font><font color="#c08040">##</font><font color="#00ff00">###</font><font color="#ffffff">.</font><font color="#00ff00">##</font><font color="#ffffff">.</font><font color="#00ff00">#</font><font color="#ffffff">..</font><font color="#00ff00">#</font><font color="#c08040">##</font><font color="#ffffff">..</font><font color="#00ff00">######################</font><font color="#c08040">#</font><font color="#ffffff">|
+            |</font><font color="#c08040">#</font><font color="#00ff00">#########################</font><font color="#c08040">##</font><font color="#00ff00">###########</font><font color="#c08040">##</font><font color="#00ff00">########################</font><font color="#c08040">#</font><font color="#ffffff">|
+            |</font><font color="#c08040">#</font><font color="#00ff00">################################################################</font><font color="#c08040">#</font><font color="#ffffff">|
+            |</font><font color="#c08040">#</font><font color="#00ff00">################################################################</font><font color="#c08040">#</font><font color="#ffffff">|
+            |</font><font color="#c08040">#</font><font color="#00ff00">################################################################</font><font color="#c08040">#</font><font color="#ffffff">|
+            |</font><font color="#c08040">#</font><font color="#00ff00">################################################################</font><font color="#c08040">#</font><font color="#ffffff">|
+            |</font><font color="#c08040">#</font><font color="#00ff00">################################################################</font><font color="#c08040">#</font><font color="#ffffff">|
+            |</font><font color="#c08040">#</font><font color="#00ff00">################################################################</font><font color="#c08040">#</font><font color="#ffffff">|
+            |</font><font color="#c08040">##################################################################</font><font color="#ffffff">|
             |                                                                  |
             |                                                                  |
             |                                                                  |
   Hit M, N(for ~), K(for !), or D(same as M+N) to display auto-picker items.---+
 
 Here, you can see there is some sort of wanted potion in the Full 
-Screen Map (</font><font color="#ff9200">M</font><font color="#ffffff">), though, unfortunately, you can tell what. Let's try the 
-Object List (</font><font color="#ff9200">]</font><font color="#ffffff">) instead:
+Screen Map (</font><font color="#ff8000">M</font><font color="#ffffff">), though, unfortunately, you can tell what. Let's try the 
+Object List (</font><font color="#ff8000">]</font><font color="#ffffff">) instead:
 
 There are 7 wanted objects:                       </font><font color="#00ff00">################# </font><font color="#ffffff">LEVEL      </font><font color="#00ff00">1
- </font><font color="#a500ff">! </font><font color="#00c8ff">7 Potions of Cure Critical Wounds    </font><font color="#ffffff">S  1 E  1 </font><font color="#00ff00">##</font><font color="#ffffff">..</font><font color="#00ff00">########</font><font color="#ffffff">.</font><font color="#00ff00">#### </font><font color="#ffffff">EXP       </font><font color="#00ff00">10
+ </font><font color="#ff00ff">! </font><font color="#00ffff">7 Potions of Cure Critical Wounds    </font><font color="#ffffff">S  1 E  1 </font><font color="#00ff00">##</font><font color="#ffffff">..</font><font color="#00ff00">########</font><font color="#ffffff">.</font><font color="#00ff00">#### </font><font color="#ffffff">EXP       </font><font color="#00ff00">10
                                                   </font><font color="#ffffff">.........</font><font color="#00ff00">#</font><font color="#ffffff">.....</font><font color="#00ff00">#</font><font color="#ffffff">. AU       </font><font color="#00ff00">462
-   </font><font color="#00c8ff">[Press ESC to exit. Press ? for help]          </font><font color="#ffffff">................. </font><font color="#e0e0e0">| </font><font color="#8c8c8c">}    [    
+   </font><font color="#00ffff">[Press ESC to exit. Press ? for help]          </font><font color="#ffffff">................. </font><font color="#d0d0d0">| </font><font color="#909090">}    [    
 
 </font><font color="#ffffff">Bingo! You can even automatically travel to those delicious potions by 
-pressing </font><font color="#ff9200">` </font><font color="#ffffff">inside the Object List. What could be easier? With features 
-like these, why isn't </font><font color="#ff4040">The Serpent of Chaos </font><font color="#ffffff">dead already?
+pressing </font><font color="#ff8000">` </font><font color="#ffffff">inside the Object List. What could be easier? With features 
+like these, why isn't </font><font color="#ff0000">The Serpent of Chaos </font><font color="#ffffff">dead already?
 
 To recap, adding the line "Cure Critical Wounds" means to automatically 
 pick up any object having "Cure Critical Wounds" as part of its name. 
@@ -349,7 +349,7 @@ associate with it that determines what to do whenever this rule
 matches.
 
 It is very important to keep in mind that order matters, and that it is 
-the </font><font color="#a500ff">first </font><font color="#ffffff">matching rule that gets used. Often times, you might add a 
+the </font><font color="#ff00ff">first </font><font color="#ffffff">matching rule that gets used. Often times, you might add a 
 line to do something really important, but place it too low in the file 
 so that it never gets used in practice. The default preference file is 
 very careful about the ordering of the rules it adds. With time and 
@@ -362,7 +362,7 @@ The second point was that each rule is a single line in the file. You
 probably noticed that not every line in the file corresponds to a rule, 
 though. There are comments and blank lines, for example. There are also 
 conditional tests, but we won't discuss those just now. Comments begin 
-with a </font><font color="#ff9200"># </font><font color="#ffffff">key and are ignored by the system. They are displayed in 
+with a </font><font color="#ff8000"># </font><font color="#ffffff">key and are ignored by the system. They are displayed in 
 </font><font color="#00ff00">green</font><font color="#ffffff">. The syntax of a rule is discussed in the next section.
 
 The final point was the notion of an event, or a point in time when the 
@@ -376,24 +376,24 @@ object (see <a href="option.html#destroy_feeling"></font><font color="#00ff00">[
 predicate to test matches, and an optional inscription to add. Let's 
 discuss each of these in turn.
 
-  </font><font color="#ff9200">Actions
+  </font><font color="#ff8000">Actions
   
   </font><font color="#ffffff">First of all, picking something up is the default action and is 
   inferred whenever you fail to specify an alternative. What are the 
   alternatives?
   
-  </font><font color="#ff9200">!  </font><font color="#ffffff">Destroy
-  </font><font color="#ff9200">;  </font><font color="#ffffff">Prompt to Pickup
-  </font><font color="#ff9200">~  </font><font color="#ffffff">Leave on the Floor
+  </font><font color="#ff8000">!  </font><font color="#ffffff">Destroy
+  </font><font color="#ff8000">;  </font><font color="#ffffff">Prompt to Pickup
+  </font><font color="#ff8000">~  </font><font color="#ffffff">Leave on the Floor
   
   These are the primary actions. Pickup is assumed if you fail to type 
-  </font><font color="#ff9200">!</font><font color="#ffffff">,</font><font color="#ff9200">; </font><font color="#ffffff">or </font><font color="#ff9200">~</font><font color="#ffffff">.
+  </font><font color="#ff8000">!</font><font color="#ffffff">,</font><font color="#ff8000">; </font><font color="#ffffff">or </font><font color="#ff8000">~</font><font color="#ffffff">.
   
   In addition there are the following command letters that augment the 
   primary action.
   
-  </font><font color="#ff9200">(  </font><font color="#ffffff">Don't display this item in the Full Map
-  </font><font color="#ff9200">?  </font><font color="#ffffff">Automatically Identify this item
+  </font><font color="#ff8000">(  </font><font color="#ffffff">Don't display this item in the Full Map
+  </font><font color="#ff8000">?  </font><font color="#ffffff">Automatically Identify this item
   
   The first one is not commonly used. Later in the game, your character 
   might have the power to map the entire level at once. If there is a 
@@ -401,28 +401,28 @@ discuss each of these in turn.
   rules. Were they all to be displayed in the Full Map view, there 
   would not be room to see them all, which can be annoying when that 
   5d5 long sword is not displayed but the potion of curing is. You'd 
-  really, really prefer to hear about that sword! With the </font><font color="#ff9200">( </font><font color="#ffffff">option, 
+  really, really prefer to hear about that sword! With the </font><font color="#ff8000">( </font><font color="#ffffff">option, 
   you will still automatically pickup the matching object, it's just 
   that you won't get a text indicator in the Full Map screen. (But you 
   should probably use the Object List command too, since it shows all 
   matching objects in a scrollable list, sorted by object value).
   
-  The second additional option (viz., </font><font color="#ff9200">?</font><font color="#ffffff">) is very useful, since it 
-  automatically identifies the matching object. This is a </font><font color="#a500ff">*HUGE* 
+  The second additional option (viz., </font><font color="#ff8000">?</font><font color="#ffffff">) is very useful, since it 
+  automatically identifies the matching object. This is a </font><font color="#ff00ff">*HUGE* 
   </font><font color="#ffffff">timesaver ... when it works! But to work, you need to have either 
   scrolls or a device with the identify power. Spell casters are 
   currently out of luck :(
   
   All of the action command letters must be specified first in the line 
-  for the rule, with one exception. The </font><font color="#ff9200"># </font><font color="#ffffff">letter indicates that you 
+  for the rule, with one exception. The </font><font color="#ff8000"># </font><font color="#ffffff">letter indicates that you 
   wish to automatically inscribe matching objects, and it must occur at 
   the end of the rule, followed by the text to use for the actual 
-  inscription. For example, </font><font color="#ffcc80">#@ad!s!d!k </font><font color="#ffffff">at the end of a rule will 
-  automatically inscribe </font><font color="#ff4040">@ad!s!d!k </font><font color="#ffffff">to any object matching the rule. If 
+  inscription. For example, </font><font color="#c08040">#@ad!s!d!k </font><font color="#ffffff">at the end of a rule will 
+  automatically inscribe </font><font color="#ff0000">@ad!s!d!k </font><font color="#ffffff">to any object matching the rule. If 
   you don't know what this inscription means, it is not really 
   important. You can see <a href="objects.html#Inscriptions"></font><font color="#00ff00">[e]</a> </font><font color="#ffffff">for information about inscriptions.
   
-  </font><font color="#ff9200">Matching
+  </font><font color="#ff8000">Matching
   </font><font color="#ffffff">Matching is the most important part of a rule. We saw above that 
   matching is by string comparison with the object name, but you can be 
   more specific than that if you want. To do so, use the following 
@@ -430,26 +430,26 @@ discuss each of these in turn.
   portion of the match consists of zero or more adjectives modifying a 
   noun that indicates the broad class of objects which should be 
   considered. In addition, you can specify a free form text comparison 
-  string by adjoining </font><font color="#ff9200">: </font><font color="#ffffff">followed by text to search for. We'll put all 
+  string by adjoining </font><font color="#ff8000">: </font><font color="#ffffff">followed by text to search for. We'll put all 
   of this together in the examples section below.
   
   Let's do nouns first. A complete list is presented at the end of this 
   document, but some common nouns to get us started include:
   
-  </font><font color="#ff4040">Items     </font><font color="#ffffff">Applies to everything. This is useful for very general 
-            rules, such as ~?</font><font color="#00ff00">Unidentified </font><font color="#ff4040">Items </font><font color="#ffffff">to automatically 
+  </font><font color="#ff0000">Items     </font><font color="#ffffff">Applies to everything. This is useful for very general 
+            rules, such as ~?</font><font color="#00ff00">Unidentified </font><font color="#ff0000">Items </font><font color="#ffffff">to automatically 
             identify, but leave on the ground, everything not yet 
             identified.
-  </font><font color="#ff4040">Weapons   </font><font color="#ffffff">Applies to all melees weapons, but not to missile weapons.
-  </font><font color="#ff4040">Shooters  </font><font color="#ffffff">Applies to all missile weapons, including bows, slings and 
+  </font><font color="#ff0000">Weapons   </font><font color="#ffffff">Applies to all melees weapons, but not to missile weapons.
+  </font><font color="#ff0000">Shooters  </font><font color="#ffffff">Applies to all missile weapons, including bows, slings and 
             crossbows.
-  </font><font color="#ff4040">Armors    </font><font color="#ffffff">Applies to all forms of armor, including shields, helms, 
+  </font><font color="#ff0000">Armors    </font><font color="#ffffff">Applies to all forms of armor, including shields, helms, 
             cloaks as well as body armor.
-  </font><font color="#ff4040">Wands     </font><font color="#ffffff">Applies to magical devices that are wands
-  </font><font color="#ff4040">Staves    </font><font color="#ffffff">Applies to magical devices that are staves
-  </font><font color="#ff4040">Rods      </font><font color="#ffffff">Applies to magical devices that are rods
-  </font><font color="#ff4040">Potions   </font><font color="#ffffff">Applies to potions
-  </font><font color="#ff4040">Scrolls   </font><font color="#ffffff">Applies to scrolls
+  </font><font color="#ff0000">Wands     </font><font color="#ffffff">Applies to magical devices that are wands
+  </font><font color="#ff0000">Staves    </font><font color="#ffffff">Applies to magical devices that are staves
+  </font><font color="#ff0000">Rods      </font><font color="#ffffff">Applies to magical devices that are rods
+  </font><font color="#ff0000">Potions   </font><font color="#ffffff">Applies to potions
+  </font><font color="#ff0000">Scrolls   </font><font color="#ffffff">Applies to scrolls
   
   If you are using keywords to build a match predicate, then you must 
   specify exactly one noun. But you may use as many adjectives as you 
@@ -462,62 +462,62 @@ discuss each of these in turn.
                encountered.
   </font><font color="#00ff00">Unidentified </font><font color="#ffffff">Applies to objects that have not yet been identified.
   </font><font color="#00ff00">Ego          </font><font color="#ffffff">Applies to all excellent objects.
-  </font><font color="#00ff00">Dice Boosted </font><font color="#ffffff">When used with </font><font color="#ff4040">Weapons </font><font color="#ffffff">or </font><font color="#ff4040">Shooters</font><font color="#ffffff">, this adjective 
+  </font><font color="#00ff00">Dice Boosted </font><font color="#ffffff">When used with </font><font color="#ff0000">Weapons </font><font color="#ffffff">or </font><font color="#ff0000">Shooters</font><font color="#ffffff">, this adjective 
                indicates that the object has higher damage dice than 
                usual. Archers in particular should be on the lookout 
-               for </font><font color="#00ff00">Dice Boosted </font><font color="#ff4040">Shooters</font><font color="#ffffff">!
-  </font><font color="#00ff00">Wanted       </font><font color="#ffffff">Combine with </font><font color="#ff4040">Corpses </font><font color="#ffffff">or </font><font color="#ff4040">Skeletons </font><font color="#ffffff">to indicated that the 
+               for </font><font color="#00ff00">Dice Boosted </font><font color="#ff0000">Shooters</font><font color="#ffffff">!
+  </font><font color="#00ff00">Wanted       </font><font color="#ffffff">Combine with </font><font color="#ff0000">Corpses </font><font color="#ffffff">or </font><font color="#ff0000">Skeletons </font><font color="#ffffff">to indicated that the 
                corpse or skeleton belongs to a wanted monster. These 
                may be turned in at the Hunter's Office for a prize.
   
   As an example of using multiple adjectives, the phrase </font><font color="#00ff00">unidentified 
-  ego </font><font color="#ff4040">weapons </font><font color="#ffffff">applies to, well, all melee weapons that are both 
+  ego </font><font color="#ff0000">weapons </font><font color="#ffffff">applies to, well, all melee weapons that are both 
   excellent and not yet identified. Of course this means that you must 
   have gotten a psuedo-id on the object in order to be aware that the 
   object is excellent, since it is not yet identified. Still, this is a 
-  very useful phrase when combined with the </font><font color="#ff9200">? </font><font color="#ffffff">command letter!
+  very useful phrase when combined with the </font><font color="#ff8000">? </font><font color="#ffffff">command letter!
   
   Finally, use a search string to further refine the match. If you 
   don't use any adjective or noun keywords, then the entire text of 
   your rule (starting after any command letters, and including all text 
-  up to the </font><font color="#ff9200"># </font><font color="#ffffff">inscription character) is used as the search string. If 
+  up to the </font><font color="#ff8000"># </font><font color="#ffffff">inscription character) is used as the search string. If 
   you are using keywords, then you will need to mark the end of the 
-  keyword section with the </font><font color="#ff9200">: </font><font color="#ffffff">separator letter. Examples are discussed 
+  keyword section with the </font><font color="#ff8000">: </font><font color="#ffffff">separator letter. Examples are discussed 
   below.
   
-  </font><font color="#ff9200">Examples
+  </font><font color="#ff8000">Examples
   
   </font><font color="#ffffff">There will be a quiz on this later, so make sure you understand the 
   following examples!
   
-  !</font><font color="#ff4040">potions</font><font color="#ffffff">:apple juice
+  !</font><font color="#ff0000">potions</font><font color="#ffffff">:apple juice
     Destroy potions of apple juice (Who would want those?). It uses the 
-    </font><font color="#ff9200">! </font><font color="#ffffff">command letter for destruction, the </font><font color="#ff4040">potions </font><font color="#ffffff">keyword to apply to 
-    an entire class of objects, the </font><font color="#ff9200">: </font><font color="#ffffff">separator key, and an arbitrary 
+    </font><font color="#ff8000">! </font><font color="#ffffff">command letter for destruction, the </font><font color="#ff0000">potions </font><font color="#ffffff">keyword to apply to 
+    an entire class of objects, the </font><font color="#ff8000">: </font><font color="#ffffff">separator key, and an arbitrary 
     text field to use for a string match against the object name.
   
-  ?</font><font color="#00ff00">unaware </font><font color="#ff4040">items
+  ?</font><font color="#00ff00">unaware </font><font color="#ff0000">items
     </font><font color="#ffffff">Pickup and automatically identify unaware items (e.g. a potion 
     you've never seen before). Note that the pickup action is implied 
     since none of the other primary actions are indicated, and even 
     though there is a secondary action (to auto-id). This command uses 
-    the adjective </font><font color="#00ff00">unaware </font><font color="#ffffff">to modify the noun </font><font color="#ff4040">items</font><font color="#ffffff">. You could narrow 
+    the adjective </font><font color="#00ff00">unaware </font><font color="#ffffff">to modify the noun </font><font color="#ff0000">items</font><font color="#ffffff">. You could narrow 
     down the applicability of this rule by using a more specific noun, 
-    such as </font><font color="#ff4040">rings </font><font color="#ffffff">or </font><font color="#ff4040">potions</font><font color="#ffffff">.
+    such as </font><font color="#ff0000">rings </font><font color="#ffffff">or </font><font color="#ff0000">potions</font><font color="#ffffff">.
   
-  </font><font color="#00ff00">wanted </font><font color="#ff4040">corpses</font><font color="#ffcc80">#Wanted!k!k!k
+  </font><font color="#00ff00">wanted </font><font color="#ff0000">corpses</font><font color="#c08040">#Wanted!k!k!k
     </font><font color="#ffffff">Pickup wanted corpses. These are corpses that you may turn in at 
     the Hunter's Office for a prize. Automatically inscribe these 
-    objects with </font><font color="#ffcc80">Wanted!k!k!k</font><font color="#ffffff">. If you don't know what !k means, see <a href="objects.html#Inscriptions"></font><font color="#00ff00">[f]</a> 
-    </font><font color="#ffffff">(OK, it means to prompt the user when using the </font><font color="#ff9200">k </font><font color="#ffffff">command to 
+    objects with </font><font color="#c08040">Wanted!k!k!k</font><font color="#ffffff">. If you don't know what !k means, see <a href="objects.html#Inscriptions"></font><font color="#00ff00">[f]</a> 
+    </font><font color="#ffffff">(OK, it means to prompt the user when using the </font><font color="#ff8000">k </font><font color="#ffffff">command to 
     destroy objects. So, if you are paranoid and don't want to destroy 
     something by mistake, you inscribe !k on it. In this case, whoever 
-    wrote this rule was </font><font color="#a500ff">really </font><font color="#ffffff">paranoid, since you will be prompted 
+    wrote this rule was </font><font color="#ff00ff">really </font><font color="#ffffff">paranoid, since you will be prompted 
     three times to confirm destruction!).
   
-  </font><font color="#ff4040">potions</font><font color="#ffffff">:resistance</font><font color="#ffcc80">#!k!q
+  </font><font color="#ff0000">potions</font><font color="#ffffff">:resistance</font><font color="#c08040">#!k!q
     </font><font color="#ffffff">Pickup all potions whose name contains the word "resistance". 
-    Automatically inscribe </font><font color="#ff4040">!k!q </font><font color="#ffffff">on these objects. In effect, this rule 
+    Automatically inscribe </font><font color="#ff0000">!k!q </font><font color="#ffffff">on these objects. In effect, this rule 
     matches potions of resistance, but rather than using a string match 
     of "potion of resistance" on all items, it uses a string match of 
     "resistance" only on potions. Either approach would work equally 
@@ -528,10 +528,10 @@ discuss each of these in turn.
     by mistake, your rule will not work. Why it fails is left as an 
     exercise for the reader!
   
-  ?</font><font color="#ff4040">staves</font><font color="#ffffff">:destruction</font><font color="#ffcc80">#@ud!s!d!k
+  ?</font><font color="#ff0000">staves</font><font color="#ffffff">:destruction</font><font color="#c08040">#@ud!s!d!k
     </font><font color="#ffffff">Pickup and automatically identify all staves whose name contains 
-    the word "destruction". Inscribe these objects with </font><font color="#ffcc80">@ud!s!d!k </font><font color="#ffffff">as 
-    well. Note that using the noun </font><font color="#ff4040">staves </font><font color="#ffffff">with a string match on 
+    the word "destruction". Inscribe these objects with </font><font color="#c08040">@ud!s!d!k </font><font color="#ffffff">as 
+    well. Note that using the noun </font><font color="#ff0000">staves </font><font color="#ffffff">with a string match on 
     "destruction" works more reliably then a string match on "staff: 
     destruction". Why this is the case will become apparent the first 
     time you find a "staff of power: destruction".
@@ -543,31 +543,31 @@ discuss each of these in turn.
 individual rules. Now, it is time to step up one level and apply 
 multiple rules to accomplish common tasks. Ready?
 
-  </font><font color="#00c8ff">Scenario #1</font><font color="#ffffff">: Handling Objects
+  </font><font color="#00ffff">Scenario #1</font><font color="#ffffff">: Handling Objects
   
   In this scenario, you would like to handle the stream of objects in 
   the most efficient way possible. Let's begin with the following 
   rules:
-    (</font><font color="#00ff00">unidentified </font><font color="#ff4040">armors
-    </font><font color="#ffffff">(</font><font color="#00ff00">unidentified </font><font color="#ff4040">weapons
+    (</font><font color="#00ff00">unidentified </font><font color="#ff0000">armors
+    </font><font color="#ffffff">(</font><font color="#00ff00">unidentified </font><font color="#ff0000">weapons
   
   </font><font color="#ffffff">These rules say to pickup all armor and weapons not yet identified. 
   That leaves out many types of objects, like potions and scrolls, but 
   this scenario is just focusing on objects for which you might receive 
-  a pseudo-id. We use the </font><font color="#ff9200">( </font><font color="#ffffff">command letter to prevent the Full Map 
+  a pseudo-id. We use the </font><font color="#ff8000">( </font><font color="#ffffff">command letter to prevent the Full Map 
   Screen from filling up with stuff not yet known to be desirable. But 
   the auto-pickup is very nice, since items need to be in your pack for 
   pseudo-id to kick in (until CL35, at least).
   
   Now, lets add the following rules:
-    !</font><font color="#00ff00">average common </font><font color="#ff4040">weapons
-    </font><font color="#ffffff">!</font><font color="#00ff00">average common </font><font color="#ff4040">armors
+    !</font><font color="#00ff00">average common </font><font color="#ff0000">weapons
+    </font><font color="#ffffff">!</font><font color="#00ff00">average common </font><font color="#ff0000">armors
   
   </font><font color="#ffffff">In practice, we wouldn't want these right away since they say to 
   destroy common stuff. You can handle that with conditionals, which I 
   haven't discussed yet. For the moment, assume your character is 
   advanced enough to not want to keep average equipment. These rules 
-  will fire once pseudo-id kicks in, destroying </font><font color="#ff4040">junk</font><font color="#ffffff">. (Of course, junk 
+  will fire once pseudo-id kicks in, destroying </font><font color="#ff0000">junk</font><font color="#ffffff">. (Of course, junk 
   is relative, and you may want to keep some stuff). The </font><font color="#00ff00">common 
   </font><font color="#ffffff">adjective prevents these rules from applying to rare average items, 
   like dragon scale mail, or blades of chaos.
@@ -575,38 +575,38 @@ multiple rules to accomplish common tasks. Ready?
   So, now our character is merrily picking up all equipment and then 
   auto-destroying the average stuff once pseudo-id kicks in. Can we do 
   more? Well, try adding:
-    ?</font><font color="#00ff00">unidentified ego </font><font color="#ff4040">items
+    ?</font><font color="#00ff00">unidentified ego </font><font color="#ff0000">items
   
   </font><font color="#ffffff">Now, the egos are automatically being identified on psuedo-id as 
   well. Pretty sweet! Finally, eventually you will learn that some ego 
   types are junk, and perhaps would have auto registered some lines 
   like:
   
-    (!</font><font color="#00ff00">common ego </font><font color="#ff4040">cloaks</font><font color="#ffffff">:of protection
-    (!</font><font color="#00ff00">common ego </font><font color="#ff4040">weapons</font><font color="#ffffff">:of *slay* orc
+    (!</font><font color="#00ff00">common ego </font><font color="#ff0000">cloaks</font><font color="#ffffff">:of protection
+    (!</font><font color="#00ff00">common ego </font><font color="#ff0000">weapons</font><font color="#ffffff">:of *slay* orc
     etc.
   
   So that even the junk excellent items are being toasted for you, 
   automatically, with nary a keystroke on your part. But, sometimes 
   egos become dice boosted, and the *slay* orc weapon might mean 
   something to you if it is really powerful. You can protect it with
-    </font><font color="#00ff00">dice boosted </font><font color="#ff4040">weapons
+    </font><font color="#00ff00">dice boosted </font><font color="#ff0000">weapons
   </font><font color="#ffffff">or perhaps even
-    </font><font color="#ff4040">weapons </font><font color="#ff9200">more dice than 30
+    </font><font color="#ff0000">weapons </font><font color="#ff8000">more dice than 30
   </font><font color="#ffffff">but that last one is an advanced maneuver.
   
   In summary, the complete order of your rules might be:
-    </font><font color="#ff4040">weapons </font><font color="#ff9200">more dice than 30
-    </font><font color="#ffffff">?</font><font color="#00ff00">unidentified ego </font><font color="#ff4040">items
+    </font><font color="#ff0000">weapons </font><font color="#ff8000">more dice than 30
+    </font><font color="#ffffff">?</font><font color="#00ff00">unidentified ego </font><font color="#ff0000">items
   
-    </font><font color="#ffffff">!</font><font color="#00ff00">average common </font><font color="#ff4040">weapons
-    </font><font color="#ffffff">!</font><font color="#00ff00">average common </font><font color="#ff4040">armors
+    </font><font color="#ffffff">!</font><font color="#00ff00">average common </font><font color="#ff0000">weapons
+    </font><font color="#ffffff">!</font><font color="#00ff00">average common </font><font color="#ff0000">armors
   
-    </font><font color="#ffffff">(</font><font color="#00ff00">unidentified </font><font color="#ff4040">armors
-    </font><font color="#ffffff">(</font><font color="#00ff00">unidentified </font><font color="#ff4040">weapons
+    </font><font color="#ffffff">(</font><font color="#00ff00">unidentified </font><font color="#ff0000">armors
+    </font><font color="#ffffff">(</font><font color="#00ff00">unidentified </font><font color="#ff0000">weapons
   
-    </font><font color="#ffffff">(!</font><font color="#00ff00">common ego </font><font color="#ff4040">cloaks</font><font color="#ffffff">:of protection
-    (!</font><font color="#00ff00">common ego </font><font color="#ff4040">weapons</font><font color="#ffffff">:of *slay* orc
+    </font><font color="#ffffff">(!</font><font color="#00ff00">common ego </font><font color="#ff0000">cloaks</font><font color="#ffffff">:of protection
+    (!</font><font color="#00ff00">common ego </font><font color="#ff0000">weapons</font><font color="#ffffff">:of *slay* orc
   
   New armors and weapons come down and hit rule 5 or 6 when your 
   character steps on them, so they get placed into your pack 
@@ -624,34 +624,34 @@ multiple rules to accomplish common tasks. Ready?
   in order). Easy, right? What happens to weapons/armors that psuedo-id 
   as {Good}? Or {Special}?
   
-  </font><font color="#00c8ff">Scenario #2</font><font color="#ffffff">: Flavored Objects
+  </font><font color="#00ffff">Scenario #2</font><font color="#ffffff">: Flavored Objects
   This one is easier, and I'll give the full set of rules first:
-    </font><font color="#ff4040">potions</font><font color="#ffffff">:healing</font><font color="#ffcc80">#!k!q
-    </font><font color="#ff4040">potions</font><font color="#ffffff">:of strength</font><font color="#ffcc80">#!k
-    </font><font color="#ff4040">potions</font><font color="#ffffff">:of intelligence</font><font color="#ffcc80">#!k
-    </font><font color="#ff4040">potions</font><font color="#ffffff">:of wisdom</font><font color="#ffcc80">#!k
-    </font><font color="#ff4040">potions</font><font color="#ffffff">:of dexterity</font><font color="#ffcc80">#!k
-    </font><font color="#ff4040">potions</font><font color="#ffffff">:of constitution</font><font color="#ffcc80">#!k
-    </font><font color="#ff4040">potions</font><font color="#ffffff">:of charisma</font><font color="#ffcc80">#!k
-    </font><font color="#ff4040">potions</font><font color="#ffffff">:augmentation</font><font color="#ffcc80">#!k
+    </font><font color="#ff0000">potions</font><font color="#ffffff">:healing</font><font color="#c08040">#!k!q
+    </font><font color="#ff0000">potions</font><font color="#ffffff">:of strength</font><font color="#c08040">#!k
+    </font><font color="#ff0000">potions</font><font color="#ffffff">:of intelligence</font><font color="#c08040">#!k
+    </font><font color="#ff0000">potions</font><font color="#ffffff">:of wisdom</font><font color="#c08040">#!k
+    </font><font color="#ff0000">potions</font><font color="#ffffff">:of dexterity</font><font color="#c08040">#!k
+    </font><font color="#ff0000">potions</font><font color="#ffffff">:of constitution</font><font color="#c08040">#!k
+    </font><font color="#ff0000">potions</font><font color="#ffffff">:of charisma</font><font color="#c08040">#!k
+    </font><font color="#ff0000">potions</font><font color="#ffffff">:augmentation</font><font color="#c08040">#!k
   
-    </font><font color="#ff4040">scrolls</font><font color="#ffffff">:artifact creation</font><font color="#ffcc80">#!*
+    </font><font color="#ff0000">scrolls</font><font color="#ffffff">:artifact creation</font><font color="#c08040">#!*
     </font><font color="#ffffff">...
   
-    ?</font><font color="#00ff00">unaware </font><font color="#ff4040">items
+    ?</font><font color="#00ff00">unaware </font><font color="#ff0000">items
   
-    </font><font color="#00ff00">collecting </font><font color="#ff4040">potions
-    </font><font color="#00ff00">collecting </font><font color="#ff4040">scrolls
+    </font><font color="#00ff00">collecting </font><font color="#ff0000">potions
+    </font><font color="#00ff00">collecting </font><font color="#ff0000">scrolls
   
     ?:$AUTOREGISTER
     </font><font color="#ffffff">...
-    (!</font><font color="#ff4040">potions</font><font color="#ffffff">:^potion of restore charisma$
-    (!</font><font color="#ff4040">scrolls</font><font color="#ffffff">:^scroll of treasure detection$
+    (!</font><font color="#ff0000">potions</font><font color="#ffffff">:^potion of restore charisma$
+    (!</font><font color="#ff0000">scrolls</font><font color="#ffffff">:^scroll of treasure detection$
     ... &lt;many more junk flavors auto-registered for destruction&gt; ...
   
   Now, the pattern is wanted flavors on top for autopickup (and 
   inscription), unwanted flavors on bottom for autodestruction (these 
-  are placed in your file automatically each time you press </font><font color="#ff9200">A </font><font color="#ffffff">while 
+  are placed in your file automatically each time you press </font><font color="#ff8000">A </font><font color="#ffffff">while 
   destroying an object) and rules for collecting and unaware items in 
   the middle. Unaware items get automatically identified, at which 
   point one of the pickup or destroy rules might get a chance to act. 
@@ -662,22 +662,22 @@ multiple rules to accomplish common tasks. Ready?
   critical wounds but don't have a rule specifically for this flavor. 
   In this case, the collecting rule will pickup these objects for you.
   
-  </font><font color="#00c8ff">Scenario #3</font><font color="#ffffff">: Spellbooks
+  </font><font color="#00ffff">Scenario #3</font><font color="#ffffff">: Spellbooks
   OK, this is the last one. See if you can figure this one out first:
-    </font><font color="#00ff00">first realm's fourth </font><font color="#ff4040">spellbooks</font><font color="#ffcc80">#@md!s!d!k
-    </font><font color="#00ff00">first realm's third </font><font color="#ff4040">spellbooks</font><font color="#ffcc80">#@mc!k
-    </font><font color="#ffffff">~</font><font color="#00ff00">first realm's second </font><font color="#ff4040">spellbooks</font><font color="#ffcc80">#@mb!k
-    </font><font color="#ffffff">~</font><font color="#00ff00">first realm's first </font><font color="#ff4040">spellbooks</font><font color="#ffcc80">#@ma!k
-    </font><font color="#00ff00">second realm's fourth </font><font color="#ff4040">spellbooks</font><font color="#ffcc80">#@mh!s!d!k
-    </font><font color="#00ff00">second realm's third </font><font color="#ff4040">spellbooks</font><font color="#ffcc80">#@mg!k
-    </font><font color="#ffffff">~</font><font color="#00ff00">second realm's second </font><font color="#ff4040">spellbooks</font><font color="#ffcc80">#@mf!k
-    </font><font color="#ffffff">~</font><font color="#00ff00">second realm's first </font><font color="#ff4040">spellbooks</font><font color="#ffcc80">#@me!k
-    </font><font color="#ffffff">!</font><font color="#00ff00">first </font><font color="#ff4040">spellbooks
-    </font><font color="#ffffff">!</font><font color="#00ff00">second </font><font color="#ff4040">spellbooks
-    </font><font color="#ffffff">!</font><font color="#00ff00">third </font><font color="#ff4040">spellbooks</font><font color="#ffffff">:major arcana
-    !</font><font color="#00ff00">fourth </font><font color="#ff4040">spellbooks</font><font color="#ffffff">:manual of mastery
-    </font><font color="#00ff00">third </font><font color="#ff4040">spellbooks
-    </font><font color="#00ff00">fourth </font><font color="#ff4040">spellbooks
+    </font><font color="#00ff00">first realm's fourth </font><font color="#ff0000">spellbooks</font><font color="#c08040">#@md!s!d!k
+    </font><font color="#00ff00">first realm's third </font><font color="#ff0000">spellbooks</font><font color="#c08040">#@mc!k
+    </font><font color="#ffffff">~</font><font color="#00ff00">first realm's second </font><font color="#ff0000">spellbooks</font><font color="#c08040">#@mb!k
+    </font><font color="#ffffff">~</font><font color="#00ff00">first realm's first </font><font color="#ff0000">spellbooks</font><font color="#c08040">#@ma!k
+    </font><font color="#00ff00">second realm's fourth </font><font color="#ff0000">spellbooks</font><font color="#c08040">#@mh!s!d!k
+    </font><font color="#00ff00">second realm's third </font><font color="#ff0000">spellbooks</font><font color="#c08040">#@mg!k
+    </font><font color="#ffffff">~</font><font color="#00ff00">second realm's second </font><font color="#ff0000">spellbooks</font><font color="#c08040">#@mf!k
+    </font><font color="#ffffff">~</font><font color="#00ff00">second realm's first </font><font color="#ff0000">spellbooks</font><font color="#c08040">#@me!k
+    </font><font color="#ffffff">!</font><font color="#00ff00">first </font><font color="#ff0000">spellbooks
+    </font><font color="#ffffff">!</font><font color="#00ff00">second </font><font color="#ff0000">spellbooks
+    </font><font color="#ffffff">!</font><font color="#00ff00">third </font><font color="#ff0000">spellbooks</font><font color="#ffffff">:major arcana
+    !</font><font color="#00ff00">fourth </font><font color="#ff0000">spellbooks</font><font color="#ffffff">:manual of mastery
+    </font><font color="#00ff00">third </font><font color="#ff0000">spellbooks
+    </font><font color="#00ff00">fourth </font><font color="#ff0000">spellbooks
   </font><font color="#ffffff">Did you figure it out? This scenario picks up high level spellbooks 
   from your player's realms of magics, leaves low level spellbooks from 
   your player's realms of magics, destroys all other low level 
@@ -695,20 +695,20 @@ multiple rules to accomplish common tasks. Ready?
 
 </font><font color="#ffffff">If you are ever unsure about which rule is being applied in a given 
 situation, turn on the destroy_debug option (see <a href="option.html#destroy_debug"></font><font color="#00ff00">[g]</a></font><font color="#ffffff">). With this option 
-you can use the </font><font color="#ff9200">I</font><font color="#ffffff">nspect command for more information. For example:
+you can use the </font><font color="#ff8000">I</font><font color="#ffffff">nspect command for more information. For example:
 
-  </font><font color="#c86400">a Thieves' Guide [Burglar's Handbook]
+  </font><font color="#a05010">a Thieves' Guide [Burglar's Handbook]
 
-    </font><font color="#c00000">Autopick: </font><font color="#ffffff">(!</font><font color="#00ff00">unreadable first </font><font color="#ff4040">spellbooks
+    </font><font color="#c00000">Autopick: </font><font color="#ffffff">(!</font><font color="#00ff00">unreadable first </font><font color="#ff0000">spellbooks
 
-  </font><font color="#00c8ff">6 Potions of Resist Cold
+  </font><font color="#00ffff">6 Potions of Resist Cold
     </font><font color="#ffffff">You get temporary resistance to cold when you quaff it. This
     resistance is cumulative with equipment.
 
-    </font><font color="#c00000">Autopick: </font><font color="#ff4040">potions</font><font color="#ffffff">:resist</font><font color="#ffcc80">#!k!q
+    </font><font color="#c00000">Autopick: </font><font color="#ff0000">potions</font><font color="#ffffff">:resist</font><font color="#c08040">#!k!q
 
 </font><font color="#ffffff">In the first case, this is a line automatically added when I destroyed 
-an unreadable spellbook using the </font><font color="#ff9200">k </font><font color="#ffffff">command. In the second case, this 
+an unreadable spellbook using the </font><font color="#ff8000">k </font><font color="#ffffff">command. In the second case, this 
 is a line that comes as a default setting. I may or may not like this 
 behavior, and if I don't, now I know which line to change!
 
@@ -718,11 +718,11 @@ objects are being destroyed, picked up, left on the ground or
 auto-identified. For example:
 
 
-  You have 26 charges remaining. </font><font color="#00c8ff">(AutoID:</font><font color="#ffffff">~?</font><font color="#00ff00">unidentified </font><font color="#ff4040">rods</font><font color="#00c8ff">) </font><font color="#ffffff">You see </font><font color="#a500ff">a 
-  Rod: </font><font color="#e0e0e0">Frost Ball </font><font color="#a500ff">(</font><font color="#fffd00">1/3 charges</font><font color="#a500ff">)</font><font color="#ffffff">. </font><font color="#00c8ff">(Destroy:</font><font color="#ffffff">(!</font><font color="#ff4040">rods</font><font color="#ffffff">:frost ball$</font><font color="#00c8ff">)
+  You have 26 charges remaining. </font><font color="#00ffff">(AutoID:</font><font color="#ffffff">~?</font><font color="#00ff00">unidentified </font><font color="#ff0000">rods</font><font color="#00ffff">) </font><font color="#ffffff">You see </font><font color="#ff00ff">a 
+  Rod: </font><font color="#d0d0d0">Frost Ball </font><font color="#ff00ff">(</font><font color="#ffff00">1/3 charges</font><font color="#ff00ff">)</font><font color="#ffffff">. </font><font color="#00ffff">(Destroy:</font><font color="#ffffff">(!</font><font color="#ff0000">rods</font><font color="#ffffff">:frost ball$</font><font color="#00ffff">)
   </font><font color="#ffffff">Auto-destroying.
 
-Also, you might want to check out the </font><font color="#ff9200">~_ </font><font color="#ffffff">Knowledge Option. Like the 
+Also, you might want to check out the </font><font color="#ff8000">~_ </font><font color="#ffffff">Knowledge Option. Like the 
 editor, it displays the rules for you in the order they are processed. 
 But it only displays the rules that are currently active, which can be 
 a useful thing to see if you add a lot of conditional rules.
@@ -754,22 +754,22 @@ conditional rules work.
 
 The rule lines have already been discussed, and you are surely a master 
 of them by now. So we really only need to consider those lines that can 
-flip our global switch. These are called </font><font color="#ff4040">Conditional Lines </font><font color="#ffffff">and they 
-always begin with the characters </font><font color="#ff4040">?: </font><font color="#ffffff">followed by a (rather cryptic 
+flip our global switch. These are called </font><font color="#ff0000">Conditional Lines </font><font color="#ffffff">and they 
+always begin with the characters </font><font color="#ff0000">?: </font><font color="#ffffff">followed by a (rather cryptic 
 looking) expression.
 
-Let's look at an example. Remember </font><font color="#00c8ff">Scenario #1 </font><font color="#ffffff">above when we added 
+Let's look at an example. Remember </font><font color="#00ffff">Scenario #1 </font><font color="#ffffff">above when we added 
 lines to destroy average equipment? Well, in practice, you would 
 probably want those rules to not be used in the early game. Perhaps 
 once your character reaches a certain level, you would want to add 
 them. Well, try the following instead:
 
-  </font><font color="#a500ff">?:[GEQ $LEVEL 20]
-  </font><font color="#ffffff">!</font><font color="#00ff00">average common </font><font color="#ff4040">weapons
-  </font><font color="#ffffff">!</font><font color="#00ff00">average common </font><font color="#ff4040">armors
-  </font><font color="#a500ff">?:1
+  </font><font color="#ff00ff">?:[GEQ $LEVEL 20]
+  </font><font color="#ffffff">!</font><font color="#00ff00">average common </font><font color="#ff0000">weapons
+  </font><font color="#ffffff">!</font><font color="#00ff00">average common </font><font color="#ff0000">armors
+  </font><font color="#ff00ff">?:1
 
-</font><font color="#ffffff">Notice there are two lines colored in </font><font color="#a500ff">violet</font><font color="#ffffff">, each beginning with </font><font color="#ff4040">?:</font><font color="#ffffff">. 
+</font><font color="#ffffff">Notice there are two lines colored in </font><font color="#ff00ff">violet</font><font color="#ffffff">, each beginning with </font><font color="#ff0000">?:</font><font color="#ffffff">. 
 These are the Conditional Lines. The first one executes a funny looking 
 expression while the second one is much simpler, albeit just as hard to 
 fathom. In programming, one typically uses numbers to represent 
@@ -795,22 +795,22 @@ with a leading $ so our parser can figure things out, rename operators
 with three letter abbreviations, "turn up the volume" making everything 
 uppercase, and you will finally understand [GEQ $LEVEL 20].
 
-In contrast, </font><font color="#a500ff">?:1 </font><font color="#ffffff">is easy. Like any good Scheme wannabe, literal values 
+In contrast, </font><font color="#ff00ff">?:1 </font><font color="#ffffff">is easy. Like any good Scheme wannabe, literal values 
 are self evaluating. Which is just a fancy way of saying that the value 
 of 1 is itself, viz. 1. No confusion. And 1 means true, which means 
 turn the switch back on in case the first Conditional Line turned it 
 off. And in case it isn't obvious, the switch is always turned on 
-before starting the scan, so you don't need a </font><font color="#a500ff">?:1 </font><font color="#ffffff">at the top of the 
+before starting the scan, so you don't need a </font><font color="#ff00ff">?:1 </font><font color="#ffffff">at the top of the 
 file.
 
 Here's another, more complicated example:
-  </font><font color="#a500ff">?:[OR [EQU $CLASS Mage High-Mage Sorcerer] [EQU $RACE Beholder Lich] ]
+  </font><font color="#ff00ff">?:[OR [EQU $CLASS Mage High-Mage Sorcerer] [EQU $RACE Beholder Lich] ]
   </font><font color="#ffffff">wizardstaff
-  </font><font color="#a500ff">?:1
+  </font><font color="#ff00ff">?:1
 </font><font color="#ffffff">That's a complicated expression to determine who wants to gather a 
 wizardstaff, but I'm willing to bet you can figure it out without 
 waiting for my explanation. In words, if the player's class is either a 
-Mage, High-Mage or a Sorcerer; </font><font color="#a500ff">or </font><font color="#ffffff">if the player's race is either a 
+Mage, High-Mage or a Sorcerer; </font><font color="#ff00ff">or </font><font color="#ffffff">if the player's race is either a 
 Beholder or a Lich, then the player wants a wizardstaff (rather badly, 
 actually). So we really have the expression (or a b) where a and b are 
 computed values using subexpressions to test the player's class or race 
@@ -820,58 +820,58 @@ So, we have expressions composed of functions, variables, literals and
 parentheses. What are the functions and variables we can use?
 
 </font><font color="#00ff00">Function  Explanation
-  </font><font color="#ff4040">IOR     </font><font color="#ffffff">Inclusive Or: [IOR a b c ...] is TRUE if the value of </font><font color="#ff9200">any 
+  </font><font color="#ff0000">IOR     </font><font color="#ffffff">Inclusive Or: [IOR a b c ...] is TRUE if the value of </font><font color="#ff8000">any 
           </font><font color="#ffffff">subexpression a, b, c, ... is TRUE.
-  </font><font color="#ff4040">OR      </font><font color="#ffffff">Same as IOR. One day I was puzzled why my [OR ...] expression 
+  </font><font color="#ff0000">OR      </font><font color="#ffffff">Same as IOR. One day I was puzzled why my [OR ...] expression 
           wasn't working. Also, if you are going to have IOR, it 
           suggests you will have XOR (Exclusive Or) as well, and we 
           don't!
-  </font><font color="#ff4040">AND     </font><font color="#ffffff">Logical And: [AND a b c ...] is TRUE if the value of </font><font color="#ff9200">all 
+  </font><font color="#ff0000">AND     </font><font color="#ffffff">Logical And: [AND a b c ...] is TRUE if the value of </font><font color="#ff8000">all 
           </font><font color="#ffffff">subexpressions a, b, c, ... are TRUE.
-  </font><font color="#ff4040">NOT     </font><font color="#ffffff">[NOT a] is TRUE if a is FALSE, and vice versa. Use this when 
-          you want to take an action when something is </font><font color="#ff9200">not </font><font color="#ffffff">true.
-  </font><font color="#ff4040">EQU     </font><font color="#ffffff">[EQU v a b c ...] is TRUE when the value of v is </font><font color="#ff9200">one </font><font color="#ffffff">of the 
+  </font><font color="#ff0000">NOT     </font><font color="#ffffff">[NOT a] is TRUE if a is FALSE, and vice versa. Use this when 
+          you want to take an action when something is </font><font color="#ff8000">not </font><font color="#ffffff">true.
+  </font><font color="#ff0000">EQU     </font><font color="#ffffff">[EQU v a b c ...] is TRUE when the value of v is </font><font color="#ff8000">one </font><font color="#ffffff">of the 
           values a, b, c, ... Comparison is by string. Typically, you 
           use this with v being a built-in variable expression, like 
-          </font><font color="#ff4040">$CLASS </font><font color="#ffffff">(see below) and the remaining arguments to EQU being 
-          strings to test, like </font><font color="#ff4040">Warrior </font><font color="#ffffff">or </font><font color="#ff4040">Rogue</font><font color="#ffffff">. Note that string 
+          </font><font color="#ff0000">$CLASS </font><font color="#ffffff">(see below) and the remaining arguments to EQU being 
+          strings to test, like </font><font color="#ff0000">Warrior </font><font color="#ffffff">or </font><font color="#ff0000">Rogue</font><font color="#ffffff">. Note that string 
           literals are not quoted and therefore may not contain spaces.
-  </font><font color="#ff4040">LEQ     </font><font color="#ffffff">[LEQ v a] is TRUE when the integer value of v is </font><font color="#ff9200">less than or 
+  </font><font color="#ff0000">LEQ     </font><font color="#ffffff">[LEQ v a] is TRUE when the integer value of v is </font><font color="#ff8000">less than or 
           equal to </font><font color="#ffffff">the integer value of a. Note that while EQU treats 
           its arguments as strings, LEQ treats them as numbers.
-  </font><font color="#ff4040">GEQ     </font><font color="#ffffff">[GEQ v a] is TRUE when the integer value of v is </font><font color="#ff9200">greater than 
+  </font><font color="#ff0000">GEQ     </font><font color="#ffffff">[GEQ v a] is TRUE when the integer value of v is </font><font color="#ff8000">greater than 
           or equal to </font><font color="#ffffff">the integer value of a. Note that while EQU 
           treats its arguments as strings, GEQ treats them as numbers. 
-          For example, use </font><font color="#a500ff">[GEQ $LEVEL 20] </font><font color="#ffffff">to test if the player's 
+          For example, use </font><font color="#ff00ff">[GEQ $LEVEL 20] </font><font color="#ffffff">to test if the player's 
           current level is greater than, or equal to 20.
 
 </font><font color="#00ff00">Variable  Explanation
-</font><font color="#ff4040">$RACE     </font><font color="#ffffff">Returns the name of the player's race. For example, </font><font color="#ff4040">Snotling 
-          </font><font color="#ffffff">or </font><font color="#ff4040">High-Elf</font><font color="#ffffff">.
-</font><font color="#ff4040">$CLASS    </font><font color="#ffffff">Returns the name of the player's class. For example, 
-          </font><font color="#ff4040">Warrior-Mage </font><font color="#ffffff">or </font><font color="#ff4040">Mindcrafter</font><font color="#ffffff">. Note, if you are playing in 
-          </font><font color="#c00000">Monster </font><font color="#ffffff">mode, then this variable always returns </font><font color="#ff4040">Monster</font><font color="#ffffff">, 
+</font><font color="#ff0000">$RACE     </font><font color="#ffffff">Returns the name of the player's race. For example, </font><font color="#ff0000">Snotling 
+          </font><font color="#ffffff">or </font><font color="#ff0000">High-Elf</font><font color="#ffffff">.
+</font><font color="#ff0000">$CLASS    </font><font color="#ffffff">Returns the name of the player's class. For example, 
+          </font><font color="#ff0000">Warrior-Mage </font><font color="#ffffff">or </font><font color="#ff0000">Mindcrafter</font><font color="#ffffff">. Note, if you are playing in 
+          </font><font color="#c00000">Monster </font><font color="#ffffff">mode, then this variable always returns </font><font color="#ff0000">Monster</font><font color="#ffffff">, 
           while $RACE returns the actual monster race you are playing, 
-          such as </font><font color="#ff4040">Lich </font><font color="#ffffff">or </font><font color="#ff4040">Dragon</font><font color="#ffffff">.
-</font><font color="#ff4040">$REALM1   </font><font color="#ffffff">Returns the name of the player's first realm, if any. For 
-          example, </font><font color="#ff4040">Chaos </font><font color="#ffffff">or </font><font color="#ff4040">Sorcery</font><font color="#ffffff">. If the player does not have a 
-          first realm, then this variable returns </font><font color="#ff4040">none</font><font color="#ffffff">.
-</font><font color="#ff4040">$REALM2   </font><font color="#ffffff">Returns the name of the player's second realm, if any. For 
-          example, </font><font color="#ff4040">Life </font><font color="#ffffff">or </font><font color="#ff4040">Death</font><font color="#ffffff">. If the player does not have a second 
-          realm, then this variable returns </font><font color="#ff4040">none</font><font color="#ffffff">.
-</font><font color="#ff4040">$LEVEL    </font><font color="#ffffff">Returns the player's current level. Typically, you combine 
+          such as </font><font color="#ff0000">Lich </font><font color="#ffffff">or </font><font color="#ff0000">Dragon</font><font color="#ffffff">.
+</font><font color="#ff0000">$REALM1   </font><font color="#ffffff">Returns the name of the player's first realm, if any. For 
+          example, </font><font color="#ff0000">Chaos </font><font color="#ffffff">or </font><font color="#ff0000">Sorcery</font><font color="#ffffff">. If the player does not have a 
+          first realm, then this variable returns </font><font color="#ff0000">none</font><font color="#ffffff">.
+</font><font color="#ff0000">$REALM2   </font><font color="#ffffff">Returns the name of the player's second realm, if any. For 
+          example, </font><font color="#ff0000">Life </font><font color="#ffffff">or </font><font color="#ff0000">Death</font><font color="#ffffff">. If the player does not have a second 
+          realm, then this variable returns </font><font color="#ff0000">none</font><font color="#ffffff">.
+</font><font color="#ff0000">$LEVEL    </font><font color="#ffffff">Returns the player's current level. Typically, you combine 
           this with GEQ or LEQ to test the level against a threshold, 
-          such as </font><font color="#a500ff">[LEQ $LEVEL 34]</font><font color="#ffffff">.
-</font><font color="#ff4040">$MONEY    </font><font color="#ffffff">Returns the amount of gold the player has. Like $LEVEL, use 
+          such as </font><font color="#ff00ff">[LEQ $LEVEL 34]</font><font color="#ffffff">.
+</font><font color="#ff0000">$MONEY    </font><font color="#ffffff">Returns the amount of gold the player has. Like $LEVEL, use 
           this with GEQ or LEQ to test whether your player is rich or 
           poor.
 
-As mentioned before, all variables begin with a </font><font color="#ff9200">$ </font><font color="#ffffff">character to 
+As mentioned before, all variables begin with a </font><font color="#ff8000">$ </font><font color="#ffffff">character to 
 distinguish them from string literals.
 
 </font><font color="#00ff00">Literal   Explanation
-</font><font color="#ff4040">Number    </font><font color="#ffffff">Numbers are written like </font><font color="#ff4040">105 </font><font color="#ffffff">or </font><font color="#ff4040">32</font><font color="#ffffff">.
-</font><font color="#ff4040">String    </font><font color="#ffffff">Strings are written like </font><font color="#ff4040">High-Mage </font><font color="#ffffff">or </font><font color="#ff4040">Beholder</font><font color="#ffffff">. Note that 
+</font><font color="#ff0000">Number    </font><font color="#ffffff">Numbers are written like </font><font color="#ff0000">105 </font><font color="#ffffff">or </font><font color="#ff0000">32</font><font color="#ffffff">.
+</font><font color="#ff0000">String    </font><font color="#ffffff">Strings are written like </font><font color="#ff0000">High-Mage </font><font color="#ffffff">or </font><font color="#ff0000">Beholder</font><font color="#ffffff">. Note that 
           string literals are not quoted and therefore may not contain 
           spaces.
 
@@ -881,44 +881,44 @@ distinguish them from string literals.
 preference editor just fine. It is pretty easy to use, and you can 
 probably figure it out on your own. Like any text editor you have used, 
 you move the cursor about with the arrow keys and then type when you 
-have located the correct position. Navigation keys like </font><font color="#ff9200">HOME </font><font color="#ffffff">and </font><font color="#ff9200">END 
+have located the correct position. Navigation keys like </font><font color="#ff8000">HOME </font><font color="#ffffff">and </font><font color="#ff8000">END 
 </font><font color="#ffffff">might not be standard, since they take you to the top or bottom of the 
 document, rather than the beginning or end of the current line, but 
 you'll get used to the various quirks.
 
 I really don't feel a need to document the editor at all, since it has 
 a complete menu structure which you can browse and learn all the 
-commands. Simply press </font><font color="#ff9200">ESC </font><font color="#ffffff">to get started and then follow the various 
+commands. Simply press </font><font color="#ff8000">ESC </font><font color="#ffffff">to get started and then follow the various 
 options. For example:
 
-</font><font color="#00c8ff">(a-j) Command:
-</font><font color="#00ff00">#*** </font><font color="#0000fe">+---------------------------+
-</font><font color="#00ff00">#*** </font><font color="#0000fe">| </font><font color="#00c8ff">a) Help                   </font><font color="#0000fe">|</font><font color="#00ff00">Picker Editor for the first time.
-#*** </font><font color="#0000fe">| </font><font color="#00c8ff">b) Quit without save   ^Q </font><font color="#0000fe">|</font><font color="#00ff00">opick is not yet created,
-#*** </font><font color="#0000fe">| </font><font color="#00c8ff">c) Sa</font><font color="#0000fe">+----------------------------------+</font><font color="#00ff00">f/pickpref.prf .
-#*** </font><font color="#0000fe">| </font><font color="#00c8ff">d) Re</font><font color="#0000fe">| </font><font color="#00c8ff">a) Left     (Left Arrow key)  ^B </font><font color="#0000fe">|
-     | </font><font color="#00c8ff">e) Ed</font><font color="#0000fe">| </font><font color="#00c8ff">b) Down     (Down Arrow key)  ^N </font><font color="#0000fe">|
-</font><font color="#00ff00">#####</font><font color="#0000fe">| </font><font color="#00c8ff">f) Se</font><font color="#0000fe">| </font><font color="#00c8ff">c) Up       (Up Arrow key)    ^P </font><font color="#0000fe">|
-</font><font color="#00ff00"># Con</font><font color="#0000fe">| </font><font color="#00c8ff">g) Mo</font><font color="#0000fe">| </font><font color="#00c8ff">d) Right    (Right Arrow key) ^F </font><font color="#0000fe">|
-</font><font color="#00ff00">#####</font><font color="#0000fe">| </font><font color="#00c8ff">h) In</font><font color="#0000fe">| </font><font color="#00c8ff">e) Beggining of line          ^A </font><font color="#0000fe">|
-</font><font color="#ffffff">mushr</font><font color="#0000fe">| </font><font color="#00c8ff">i) Ad</font><font color="#0000fe">| </font><font color="#00c8ff">f) End of line                ^E </font><font color="#0000fe">|
-     | </font><font color="#00c8ff">j) Ad</font><font color="#0000fe">| </font><font color="#00c8ff">g) Page up  (PageUp key)      ^O </font><font color="#0000fe">|
-</font><font color="#ff4040">potio</font><font color="#0000fe">| </font><font color="#00c8ff">k) Ke</font><font color="#0000fe">| </font><font color="#00c8ff">h) Page down(PageDown key)    ^L </font><font color="#0000fe">|
-</font><font color="#ff4040">potio</font><font color="#0000fe">| </font><font color="#00c8ff">l) Co</font><font color="#0000fe">| </font><font color="#00c8ff">i) Top      (Home key)        ^T </font><font color="#0000fe">|
-</font><font color="#ff4040">potio</font><font color="#0000fe">+------| </font><font color="#00c8ff">j) Bottom   (End key)         ^U </font><font color="#0000fe">|
-</font><font color="#ff4040">potions</font><font color="#ffffff">:hero</font><font color="#0000fe">+----------------------------------+
-</font><font color="#ff4040">potions</font><font color="#ffffff">:speed</font><font color="#ffcc80">#!k!q
-</font><font color="#ff4040">potions</font><font color="#ffffff">:giant strength</font><font color="#ffcc80">#!k
+</font><font color="#00ffff">(a-j) Command:
+</font><font color="#00ff00">#*** </font><font color="#0000ff">+---------------------------+
+</font><font color="#00ff00">#*** </font><font color="#0000ff">| </font><font color="#00ffff">a) Help                   </font><font color="#0000ff">|</font><font color="#00ff00">Picker Editor for the first time.
+#*** </font><font color="#0000ff">| </font><font color="#00ffff">b) Quit without save   ^Q </font><font color="#0000ff">|</font><font color="#00ff00">opick is not yet created,
+#*** </font><font color="#0000ff">| </font><font color="#00ffff">c) Sa</font><font color="#0000ff">+----------------------------------+</font><font color="#00ff00">f/pickpref.prf .
+#*** </font><font color="#0000ff">| </font><font color="#00ffff">d) Re</font><font color="#0000ff">| </font><font color="#00ffff">a) Left     (Left Arrow key)  ^B </font><font color="#0000ff">|
+     | </font><font color="#00ffff">e) Ed</font><font color="#0000ff">| </font><font color="#00ffff">b) Down     (Down Arrow key)  ^N </font><font color="#0000ff">|
+</font><font color="#00ff00">#####</font><font color="#0000ff">| </font><font color="#00ffff">f) Se</font><font color="#0000ff">| </font><font color="#00ffff">c) Up       (Up Arrow key)    ^P </font><font color="#0000ff">|
+</font><font color="#00ff00"># Con</font><font color="#0000ff">| </font><font color="#00ffff">g) Mo</font><font color="#0000ff">| </font><font color="#00ffff">d) Right    (Right Arrow key) ^F </font><font color="#0000ff">|
+</font><font color="#00ff00">#####</font><font color="#0000ff">| </font><font color="#00ffff">h) In</font><font color="#0000ff">| </font><font color="#00ffff">e) Beggining of line          ^A </font><font color="#0000ff">|
+</font><font color="#ffffff">mushr</font><font color="#0000ff">| </font><font color="#00ffff">i) Ad</font><font color="#0000ff">| </font><font color="#00ffff">f) End of line                ^E </font><font color="#0000ff">|
+     | </font><font color="#00ffff">j) Ad</font><font color="#0000ff">| </font><font color="#00ffff">g) Page up  (PageUp key)      ^O </font><font color="#0000ff">|
+</font><font color="#ff0000">potio</font><font color="#0000ff">| </font><font color="#00ffff">k) Ke</font><font color="#0000ff">| </font><font color="#00ffff">h) Page down(PageDown key)    ^L </font><font color="#0000ff">|
+</font><font color="#ff0000">potio</font><font color="#0000ff">| </font><font color="#00ffff">l) Co</font><font color="#0000ff">| </font><font color="#00ffff">i) Top      (Home key)        ^T </font><font color="#0000ff">|
+</font><font color="#ff0000">potio</font><font color="#0000ff">+------| </font><font color="#00ffff">j) Bottom   (End key)         ^U </font><font color="#0000ff">|
+</font><font color="#ff0000">potions</font><font color="#ffffff">:hero</font><font color="#0000ff">+----------------------------------+
+</font><font color="#ff0000">potions</font><font color="#ffffff">:speed</font><font color="#c08040">#!k!q
+</font><font color="#ff0000">potions</font><font color="#ffffff">:giant strength</font><font color="#c08040">#!k
 
-</font><font color="#ff4040">potions</font><font color="#ffffff">:enlightenment
+</font><font color="#ff0000">potions</font><font color="#ffffff">:enlightenment
 
-</font><font color="#ff4040">potions</font><font color="#ffffff">:of strength</font><font color="#ffcc80">#!k
-</font><font color="#ff4040">potions</font><font color="#ffffff">:of intelligence</font><font color="#ffcc80">#!k
-</font><font color="#00c8ff">--------------------------------------------------------------------------------
+</font><font color="#ff0000">potions</font><font color="#ffffff">:of strength</font><font color="#c08040">#!k
+</font><font color="#ff0000">potions</font><font color="#ffffff">:of intelligence</font><font color="#c08040">#!k
+</font><font color="#00ffff">--------------------------------------------------------------------------------
 </font><font color="#ffffff">This line is a comment.
 
 Here, you can clearly see what commands to use to move the cursor about 
-(And if you are running on the </font><font color="#ff4040">Curses </font><font color="#ffffff">platform, you'll notice that 
+(And if you are running on the </font><font color="#ff0000">Curses </font><font color="#ffffff">platform, you'll notice that 
 arrow keys don't work so you'll need to learn the control key 
 alternatives).
 
@@ -933,7 +933,7 @@ syntax colored and always displays exactly what you typed.
 
 <a name="Reference"></a></font><font color="#c00000">Reference Tables
 
-</font><font color="#ffffff">This section will give all the nitty gritty syntax details for </font><font color="#ff4040">The 
+</font><font color="#ffffff">This section will give all the nitty gritty syntax details for </font><font color="#ff0000">The 
 Mogaminator</font><font color="#ffffff">. But first, where are those preference files located 
 anyway? The default preferences are initialized from 
 lib/pref/pickpref.prf which is located in your game's directory 
@@ -941,28 +941,28 @@ structure. If you don't like the defaults that I have provided and
 would like to use your own, then this is the file to edit. Once you 
 enable the system, your preferences are stored in a separate file in a 
 system dependant location. On Windows, they will be stored in 
-lib/user/pickpref-</font><font color="#ff9200">NAME</font><font color="#ffffff">.prf inside the game's directory structure, while 
+lib/user/pickpref-</font><font color="#ff8000">NAME</font><font color="#ffffff">.prf inside the game's directory structure, while 
 on Linux, they can be found in 
-~/.angband/PosChengband/pickpref-</font><font color="#ff9200">NAME</font><font color="#ffffff">.prf (outside the game's directory 
-structure). Here, </font><font color="#ff9200">NAME </font><font color="#ffffff">is replaced with your player's current name. So 
-if you want to edit your preferences using some other text editor, this 
-is the file you need to change. If you do edit preferences outside of 
-the game while you are playing, then be sure to use the </font><font color="#ff9200">$ </font><font color="#ffffff">command to 
-force the game to reload the preference file.
+~/.angband/FrogComposband/pickpref-</font><font color="#ff8000">NAME</font><font color="#ffffff">.prf (outside the game's 
+directory structure). Here, </font><font color="#ff8000">NAME </font><font color="#ffffff">is replaced with your player's current 
+name. So if you want to edit your preferences using some other text 
+editor, this is the file you need to change. If you do edit preferences 
+outside of the game while you are playing, then be sure to use the </font><font color="#ff8000">$ 
+</font><font color="#ffffff">command to force the game to reload the preference file.
 
 OK, so I promised you reference tables. I'm a man of my word, so here 
 they are. Enjoy!
 
-</font><font color="#00c8ff">Table I: Line Types in the Editor
+</font><font color="#00ffff">Table I: Line Types in the Editor
   </font><font color="#00ff00">Type        Explanation
-  </font><font color="#ff4040">Comment     </font><font color="#ffffff">These lines begin with a </font><font color="#ff9200"># </font><font color="#ffffff">and are ignored by the system. 
+  </font><font color="#ff0000">Comment     </font><font color="#ffffff">These lines begin with a </font><font color="#ff8000"># </font><font color="#ffffff">and are ignored by the system. 
               Feel free to add them whenever you want to document what 
               you are trying to do so that you can better understand 
               the file in the future. I like to add comments to 
               visually break the file up into different sections, such 
               as Consumables, Weapons, Armor and Devices.
   
-  </font><font color="#ff4040">Conditional </font><font color="#ffffff">These lines flip the global processing switch ON and OFF. 
+  </font><font color="#ff0000">Conditional </font><font color="#ffffff">These lines flip the global processing switch ON and OFF. 
               If the expression evaluates to TRUE, then the switch is 
               turned ON and any subsequent rules will be included. If 
               the expression evaluates to FALSE, the switch is turned 
@@ -972,15 +972,15 @@ they are. Enjoy!
               this is gibberish to you, then you probably skipped the 
               section <a href="editor.html#Conditionals"></font><font color="#00ff00">[h]</a> </font><font color="#ffffff">above!
   
-  </font><font color="#ff4040">Rule        </font><font color="#ffffff">Every other line, unless it is blank, is a rule. The 
+  </font><font color="#ff0000">Rule        </font><font color="#ffffff">Every other line, unless it is blank, is a rule. The 
               syntax of a rule is described in the following 5 tables.
   
-</font><font color="#00c8ff">Table II: Rules: Syntax
+</font><font color="#00ffff">Table II: Rules: Syntax
   </font><font color="#ffffff">Rules have one of the following two syntactic forms:
-  </font><font color="#fffd00">[</font><font color="#ffffff">Commands</font><font color="#fffd00">] </font><font color="#00ff00">Adjective</font><font color="#fffd00">* </font><font color="#ff4040">Noun </font><font color="#ff9200">Special-Clause</font><font color="#fffd00">* [</font><font color="#ff9200">:</font><font color="#ffffff">Search-String</font><font color="#fffd00">] 
-    [</font><font color="#ffcc80">#Inscription-String</font><font color="#fffd00">]
+  </font><font color="#ffff00">[</font><font color="#ffffff">Commands</font><font color="#ffff00">] </font><font color="#00ff00">Adjective</font><font color="#ffff00">* </font><font color="#ff0000">Noun </font><font color="#ff8000">Special-Clause</font><font color="#ffff00">* [</font><font color="#ff8000">:</font><font color="#ffffff">Search-String</font><font color="#ffff00">] 
+    [</font><font color="#c08040">#Inscription-String</font><font color="#ffff00">]
   
-  [</font><font color="#ffffff">Commands</font><font color="#fffd00">] </font><font color="#ffffff">Search-String </font><font color="#fffd00">[</font><font color="#ffcc80">#Inscription-String</font><font color="#fffd00">]
+  [</font><font color="#ffffff">Commands</font><font color="#ffff00">] </font><font color="#ffffff">Search-String </font><font color="#ffff00">[</font><font color="#c08040">#Inscription-String</font><font color="#ffff00">]
   
   </font><font color="#ffffff">Square brackets denote optional syntactic elements. * is the 
   Kleene-Star and indicates that 0 or more of the preceding syntactic 
@@ -997,11 +997,11 @@ they are. Enjoy!
   </font><font color="#00ff00">Adjective          </font><font color="#ffffff">These modify Nouns, further narrowing down the set 
                      of objects that will match this rule.
   
-  </font><font color="#ff4040">Noun               </font><font color="#ffffff">A single noun is always specified for the first 
+  </font><font color="#ff0000">Noun               </font><font color="#ffffff">A single noun is always specified for the first 
                      syntactic form and indicates the broad class of 
                      objects to which this rule shall apply.
   
-  </font><font color="#ff9200">Special-Clause     </font><font color="#ffffff">These consist of further rule match refinements 
+  </font><font color="#ff8000">Special-Clause     </font><font color="#ffffff">These consist of further rule match refinements 
                      and are discussed below. They are like adjectives 
                      in that they modify nouns, but they also involve 
                      some sort of numerical comparison of an object 
@@ -1011,23 +1011,23 @@ they are. Enjoy!
   
   Search-String      This is a free form text value to compare against 
                      the object's name. Comparison is by string and is 
-                     case-insensitive. In addition, you may use the </font><font color="#ff9200">^ 
+                     case-insensitive. In addition, you may use the </font><font color="#ff8000">^ 
                      </font><font color="#ffffff">special character at the beginning of a 
                      Search-String to force your match to the beginning 
-                     of an object name, and the </font><font color="#ff9200">$ </font><font color="#ffffff">special character at 
+                     of an object name, and the </font><font color="#ff8000">$ </font><font color="#ffffff">special character at 
                      the end of a Search-String to force your match to 
-                     the end of the object name. For example, </font><font color="#ff4040">^Foo </font><font color="#ffffff">will 
-                     only match objects whose names begin with </font><font color="#ff4040">Foo</font><font color="#ffffff">, and 
-                     will skip other objects that might have </font><font color="#ff4040">Foo 
+                     the end of the object name. For example, </font><font color="#ff0000">^Foo </font><font color="#ffffff">will 
+                     only match objects whose names begin with </font><font color="#ff0000">Foo</font><font color="#ffffff">, and 
+                     will skip other objects that might have </font><font color="#ff0000">Foo 
                      </font><font color="#ffffff">somewhere in the name, but not at the beginning. 
-                     Similarly, </font><font color="#ff4040">Bar$ </font><font color="#ffffff">only matches objects whose name 
-                     ends with </font><font color="#ff4040">Bar </font><font color="#ffffff">and skips any that might have </font><font color="#ff4040">Bar 
+                     Similarly, </font><font color="#ff0000">Bar$ </font><font color="#ffffff">only matches objects whose name 
+                     ends with </font><font color="#ff0000">Bar </font><font color="#ffffff">and skips any that might have </font><font color="#ff0000">Bar 
                      </font><font color="#ffffff">someplace in the middle of its name. Finally note 
                      that an object's name is always in the singular. 
-                     So, for example, </font><font color="#ff4040">Seeker Bolt </font><font color="#ffffff">would work for a 
-                     string match, but </font><font color="#ff4040">Seeker Bolts </font><font color="#ffffff">would always fail.
+                     So, for example, </font><font color="#ff0000">Seeker Bolt </font><font color="#ffffff">would work for a 
+                     string match, but </font><font color="#ff0000">Seeker Bolts </font><font color="#ffffff">would always fail.
   
-  </font><font color="#ffcc80">Inscription-String </font><font color="#ffffff">This is a free form text value that will be 
+  </font><font color="#c08040">Inscription-String </font><font color="#ffffff">This is a free form text value that will be 
                      automatically inscribed on any object matching 
                      this rule.
   
@@ -1036,21 +1036,21 @@ they are. Enjoy!
   above, in particular, is probably the best way to learn what is going 
   on.
   
-</font><font color="#00c8ff">Table III: Rules: Command Letters
+</font><font color="#00ffff">Table III: Rules: Command Letters
   </font><font color="#00ff00">Letter  Type       Explanation
-    </font><font color="#ff9200">!     </font><font color="#ffffff">Primary    Destroy
-    </font><font color="#ff9200">;     </font><font color="#ffffff">Primary    Prompt to Pickup
-    </font><font color="#ff9200">~     </font><font color="#ffffff">Primary    Leave on the Floor
+    </font><font color="#ff8000">!     </font><font color="#ffffff">Primary    Destroy
+    </font><font color="#ff8000">;     </font><font color="#ffffff">Primary    Prompt to Pickup
+    </font><font color="#ff8000">~     </font><font color="#ffffff">Primary    Leave on the Floor
           Primary    Pickup is assumed if you fail to provide an 
                      alternative primary command letter. There is no 
                      command letter for this action, it is simply the 
                      default action to take unless overridden.
-    </font><font color="#ff9200">(     </font><font color="#ffffff">Secondary  Don't display this item in the Full Map Screen.
-    </font><font color="#ff9200">?     </font><font color="#ffffff">Secondary  Automatically Identify this item. This requires 
+    </font><font color="#ff8000">(     </font><font color="#ffffff">Secondary  Don't display this item in the Full Map Screen.
+    </font><font color="#ff8000">?     </font><font color="#ffffff">Secondary  Automatically Identify this item. This requires 
                      you to carry scrolls or magical devices with the 
                      Identify power. It does not currently work for 
                      spellcasters.
-    </font><font color="#ff9200">#     </font><font color="#ffffff">Terminal   Auto-inscribe matching objects with whatever text 
+    </font><font color="#ff8000">#     </font><font color="#ffffff">Terminal   Auto-inscribe matching objects with whatever text 
                      follows this key. Note that Primary and Secondary 
                      command letters must be placed at the beginning of 
                      a rule line, while Terminal command letters must 
@@ -1059,125 +1059,125 @@ they are. Enjoy!
   Every rule must have one Primary action. It can have 0 or more 
   secondary actions, and the sole Terminal action is also optional.
   
-</font><font color="#00c8ff">Table IV: Rules: Nouns
+</font><font color="#00ffff">Table IV: Rules: Nouns
   </font><font color="#00ff00">Noun       Explanation
-  </font><font color="#ff4040">Items      </font><font color="#ffffff">Applies to everything. This is useful for very general 
-             rules, such as ~?</font><font color="#00ff00">Unidentified </font><font color="#ff4040">Items </font><font color="#ffffff">to automatically 
+  </font><font color="#ff0000">Items      </font><font color="#ffffff">Applies to everything. This is useful for very general 
+             rules, such as ~?</font><font color="#00ff00">Unidentified </font><font color="#ff0000">Items </font><font color="#ffffff">to automatically 
              identify, but leave on the ground, everything not yet 
              identified.
   
-  </font><font color="#ff4040">Weapons    </font><font color="#ffffff">Applies to all melees weapons, but not to missile weapons. 
+  </font><font color="#ff0000">Weapons    </font><font color="#ffffff">Applies to all melees weapons, but not to missile weapons. 
              If you are a veteran player, then read that description 
              again. This noun used to include shooters, but I just 
              recently changed the semantics to accomodate archers who 
-             are very interested in </font><font color="#00ff00">Dice Boosted </font><font color="#ff4040">Shooters </font><font color="#ffffff">but could 
-             usually care less about </font><font color="#00ff00">Dice Boosted </font><font color="#ff4040">Weapons</font><font color="#ffffff">. Also, monks 
-             may want to !</font><font color="#ff4040">Weapons </font><font color="#ffffff">since they usually fight bare-handed, 
+             are very interested in </font><font color="#00ff00">Dice Boosted </font><font color="#ff0000">Shooters </font><font color="#ffffff">but could 
+             usually care less about </font><font color="#00ff00">Dice Boosted </font><font color="#ff0000">Weapons</font><font color="#ffffff">. Also, monks 
+             may want to !</font><font color="#ff0000">Weapons </font><font color="#ffffff">since they usually fight bare-handed, 
              and having this rule also destroy shooters is quite 
              annoying.
   
-  </font><font color="#ff4040">Favorite Weapons
+  </font><font color="#ff0000">Favorite Weapons
              </font><font color="#ffffff">Applies to all weapons, including shooters, that are 
              desired by your class. For example, Weaponmasters 
              specialize in a given class of weapons, such as Axes or 
              Crossbows. Whatever their speciality, this "noun" will 
              apply to these preferred items. Calling this "keyword" a 
              noun is a bit of a misnomer, but it will help you to think 
-             of </font><font color="#ff4040">Favorite Weapons </font><font color="#ffffff">as a single word that is a </font><font color="#ff4040">Noun</font><font color="#ffffff">, since 
+             of </font><font color="#ff0000">Favorite Weapons </font><font color="#ffffff">as a single word that is a </font><font color="#ff0000">Noun</font><font color="#ffffff">, since 
              the code treats it that way! For example, saying </font><font color="#00ff00">Ego 
-             </font><font color="#ff4040">Favorite Weapons </font><font color="#ffffff">is syntactically correct, while </font><font color="#00ff00">Favorite 
-             Ego </font><font color="#ff4040">Weapons </font><font color="#ffffff">is not. (There is no adjective called 
+             </font><font color="#ff0000">Favorite Weapons </font><font color="#ffffff">is syntactically correct, while </font><font color="#00ff00">Favorite 
+             Ego </font><font color="#ff0000">Weapons </font><font color="#ffffff">is not. (There is no adjective called 
              </font><font color="#00ff00">Favorite</font><font color="#ffffff">).
   
-  </font><font color="#ff4040">Hafted Weapons
+  </font><font color="#ff0000">Hafted Weapons
              </font><font color="#ffffff">Applies to all hafted weapons like Maces, Flails and War 
              Hammers. These weapons are preferred by Priests who 
              disdain other kinds of weapons, such as Swords or 
-             Polearms. Like the </font><font color="#ff4040">Favorite Weapons </font><font color="#ffffff">"noun" above, it helps 
-             to think of </font><font color="#ff4040">Hafted Weapons </font><font color="#ffffff">as a single word that is a 
-             </font><font color="#ff4040">Noun</font><font color="#ffffff">, since the code treats it that way (There is no 
+             Polearms. Like the </font><font color="#ff0000">Favorite Weapons </font><font color="#ffffff">"noun" above, it helps 
+             to think of </font><font color="#ff0000">Hafted Weapons </font><font color="#ffffff">as a single word that is a 
+             </font><font color="#ff0000">Noun</font><font color="#ffffff">, since the code treats it that way (There is no 
              adjective </font><font color="#00ff00">Hafted</font><font color="#ffffff">). If you are a priest interested in 
              excellent and artifact hafted weapons, you need to say </font><font color="#00ff00">Ego 
-             </font><font color="#ff4040">Hafted Weapons </font><font color="#ffffff">or </font><font color="#00ff00">Artifact </font><font color="#ff4040">Hafted Weapons </font><font color="#ffffff">to get the job 
+             </font><font color="#ff0000">Hafted Weapons </font><font color="#ffffff">or </font><font color="#00ff00">Artifact </font><font color="#ff0000">Hafted Weapons </font><font color="#ffffff">to get the job 
              done.
   
-  </font><font color="#ff4040">Diggers    </font><font color="#ffffff">Applies to all digging implements, such as shovels and 
+  </font><font color="#ff0000">Diggers    </font><font color="#ffffff">Applies to all digging implements, such as shovels and 
              picks. Digging is fun, but eventually you will probably 
              want to destroy these objects. Perhaps, you would like the 
-             rule ~</font><font color="#00ff00">Dice Boosted </font><font color="#ff4040">Diggers</font><font color="#ffffff">:Mattock followed by the rule 
-             !</font><font color="#ff4040">Diggers</font><font color="#ffffff">?
+             rule ~</font><font color="#00ff00">Dice Boosted </font><font color="#ff0000">Diggers</font><font color="#ffffff">:Mattock followed by the rule 
+             !</font><font color="#ff0000">Diggers</font><font color="#ffffff">?
   
-  </font><font color="#ff4040">Shooters   </font><font color="#ffffff">Applies to all missile weapons, including bows, slings and 
+  </font><font color="#ff0000">Shooters   </font><font color="#ffffff">Applies to all missile weapons, including bows, slings and 
              crossbows. It also includes harps and guns. If you are a 
-             Bard, then you might consider </font><font color="#ff4040">Shooters</font><font color="#ffffff">:Harp as a pickup 
+             Bard, then you might consider </font><font color="#ff0000">Shooters</font><font color="#ffffff">:Harp as a pickup 
              preference, while if you are ignoring archery altogether, 
-             try </font><font color="#ff4040">Shooters</font><font color="#ffffff">:Gun instead since the guns are quite useful 
+             try </font><font color="#ff0000">Shooters</font><font color="#ffffff">:Gun instead since the guns are quite useful 
              for resistances and boosting stats.
   
-  </font><font color="#ff4040">Ammo       </font><font color="#ffffff">Applies to all ammunition for missile weapons: arrows, 
-             shots and bolts. Consider using </font><font color="#ff4040">Ammo</font><font color="#ffffff">:Seeker or 
-             </font><font color="#ff4040">Ammo</font><font color="#ffffff">:Mithril or </font><font color="#ff4040">Ammo</font><font color="#ffffff">:Steel to pick out desirable ammo.
+  </font><font color="#ff0000">Ammo       </font><font color="#ffffff">Applies to all ammunition for missile weapons: arrows, 
+             shots and bolts. Consider using </font><font color="#ff0000">Ammo</font><font color="#ffffff">:Seeker or 
+             </font><font color="#ff0000">Ammo</font><font color="#ffffff">:Mithril or </font><font color="#ff0000">Ammo</font><font color="#ffffff">:Steel to pick out desirable ammo.
   
-  </font><font color="#ff4040">Armors     </font><font color="#ffffff">Applies to all forms of armor, including shields, helms, 
+  </font><font color="#ff0000">Armors     </font><font color="#ffffff">Applies to all forms of armor, including shields, helms, 
              cloaks as well as body armor. You can narrow down the 
              range of armor objects by using a more specific noun from 
              the following list:
-             </font><font color="#ff4040">Suits   </font><font color="#ffffff">Applies to body armor
-             </font><font color="#ff4040">Shields </font><font color="#ffffff">Applies to shields
-             </font><font color="#ff4040">Cloaks  </font><font color="#ffffff">Applies to cloaks
-             </font><font color="#ff4040">Helms   </font><font color="#ffffff">Applies to helmets and crowns
-             </font><font color="#ff4040">Gloves  </font><font color="#ffffff">Applies to gloves
-             </font><font color="#ff4040">Boots   </font><font color="#ffffff">Applies to boots
-             Consider using </font><font color="#ff4040">Armors</font><font color="#ffffff">:Dragon to pickup all the various 
+             </font><font color="#ff0000">Suits   </font><font color="#ffffff">Applies to body armor
+             </font><font color="#ff0000">Shields </font><font color="#ffffff">Applies to shields
+             </font><font color="#ff0000">Cloaks  </font><font color="#ffffff">Applies to cloaks
+             </font><font color="#ff0000">Helms   </font><font color="#ffffff">Applies to helmets and crowns
+             </font><font color="#ff0000">Gloves  </font><font color="#ffffff">Applies to gloves
+             </font><font color="#ff0000">Boots   </font><font color="#ffffff">Applies to boots
+             Consider using </font><font color="#ff0000">Armors</font><font color="#ffffff">:Dragon to pickup all the various 
              forms of dragon armor, including dragon boots, gloves, 
              helmets and wings. If you are playing a class with armor 
-             weight restrictions, check out the </font><font color="#ff9200">More Weight Than NN 
+             weight restrictions, check out the </font><font color="#ff8000">More Weight Than NN 
              </font><font color="#ffffff">special clause below.
   
-  </font><font color="#ff4040">Wands      </font><font color="#ffffff">Applies to magical devices that are wands. Use 
-             </font><font color="#ff4040">Wands</font><font color="#ffffff">:Rockets to get all wands, including ego and artifact 
+  </font><font color="#ff0000">Wands      </font><font color="#ffffff">Applies to magical devices that are wands. Use 
+             </font><font color="#ff0000">Wands</font><font color="#ffffff">:Rockets to get all wands, including ego and artifact 
              wands, that can fire rockets (Trust me: You want them!). 
-             Note: We no longer have a noun </font><font color="#ff4040">Magical Devices</font><font color="#ffffff">.
+             Note: We no longer have a noun </font><font color="#ff0000">Magical Devices</font><font color="#ffffff">.
   
-  </font><font color="#ff4040">Staves     </font><font color="#ffffff">Applies to magical devices that are staves. For example, 
-             try </font><font color="#ff4040">Staves</font><font color="#ffffff">:Healing or </font><font color="#ff4040">Staves</font><font color="#ffffff">:Speed.
+  </font><font color="#ff0000">Staves     </font><font color="#ffffff">Applies to magical devices that are staves. For example, 
+             try </font><font color="#ff0000">Staves</font><font color="#ffffff">:Healing or </font><font color="#ff0000">Staves</font><font color="#ffffff">:Speed.
   
-  </font><font color="#ff4040">Rods       </font><font color="#ffffff">Applies to magical devices that are rods.
+  </font><font color="#ff0000">Rods       </font><font color="#ffffff">Applies to magical devices that are rods.
   
-  </font><font color="#ff4040">Potions    </font><font color="#ffffff">Applies to potions. There are many useful potions. If you 
+  </font><font color="#ff0000">Potions    </font><font color="#ffffff">Applies to potions. There are many useful potions. If you 
              are trying to get stat potions, you might consider 
-             </font><font color="#ff4040">Potions</font><font color="#ffffff">:of Strength rather than just </font><font color="#ff4040">Potions</font><font color="#ffffff">:Strength, 
+             </font><font color="#ff0000">Potions</font><font color="#ffffff">:of Strength rather than just </font><font color="#ff0000">Potions</font><font color="#ffffff">:Strength, 
              since the latter will also match potions of restore 
              strength.
   
-  </font><font color="#ff4040">Scrolls    </font><font color="#ffffff">Applies to scrolls
+  </font><font color="#ff0000">Scrolls    </font><font color="#ffffff">Applies to scrolls
   
-  </font><font color="#ff4040">Rings      </font><font color="#ffffff">Applies to jewelry that are rings. Since rings are so 
-             useful, I like the rule ?</font><font color="#00ff00">Unidentified </font><font color="#ff4040">Rings </font><font color="#ffffff">for all of my 
+  </font><font color="#ff0000">Rings      </font><font color="#ffffff">Applies to jewelry that are rings. Since rings are so 
+             useful, I like the rule ?</font><font color="#00ff00">Unidentified </font><font color="#ff0000">Rings </font><font color="#ffffff">for all of my 
              characters.
   
-  </font><font color="#ff4040">Amulets    </font><font color="#ffffff">Applies to jewelry that are amulets. Like rings, I prefer 
-             to keep the rule ?</font><font color="#00ff00">Unidentified </font><font color="#ff4040">Amulets </font><font color="#ffffff">for all of my 
+  </font><font color="#ff0000">Amulets    </font><font color="#ffffff">Applies to jewelry that are amulets. Like rings, I prefer 
+             to keep the rule ?</font><font color="#00ff00">Unidentified </font><font color="#ff0000">Amulets </font><font color="#ffffff">for all of my 
              characters.
   
-  </font><font color="#ff4040">Lights     </font><font color="#ffffff">These are torches, lanterns and feanorian lamps, as well 
+  </font><font color="#ff0000">Lights     </font><font color="#ffffff">These are torches, lanterns and feanorian lamps, as well 
              as the various artifact light sources. If you are looking 
-             for the Jewel of Judgment, try using </font><font color="#ff4040">Lights</font><font color="#ffffff">:Jewel.
+             for the Jewel of Judgment, try using </font><font color="#ff0000">Lights</font><font color="#ffffff">:Jewel.
   
-  </font><font color="#ff4040">Spellbooks </font><font color="#ffffff">These are all the spellbooks, for all of the various 
+  </font><font color="#ff0000">Spellbooks </font><font color="#ffffff">These are all the spellbooks, for all of the various 
              magical realms. If you are a spellcaster, you will 
              invariably want to make use of the numerous spellbook 
              specific adjectives described in the next table.
   
-  </font><font color="#ff4040">Junk       </font><font color="#ffffff">Need I say more? You probably just need !</font><font color="#ff4040">Junk </font><font color="#ffffff">in your pref 
+  </font><font color="#ff0000">Junk       </font><font color="#ffffff">Need I say more? You probably just need !</font><font color="#ff0000">Junk </font><font color="#ffffff">in your pref 
              file, though some junk might be useful for some players.
   
-  </font><font color="#ff4040">Corpses    </font><font color="#ffffff">Corpses actually can be useful. For one thing, every 
-             player can turn in </font><font color="#00ff00">Wanted </font><font color="#ff4040">Corpses </font><font color="#ffffff">at the Hunter's Office 
+  </font><font color="#ff0000">Corpses    </font><font color="#ffffff">Corpses actually can be useful. For one thing, every 
+             player can turn in </font><font color="#00ff00">Wanted </font><font color="#ff0000">Corpses </font><font color="#ffffff">at the Hunter's Office 
              for prizes. And then there are possessors, a monster race 
              that can actually possess the corpse of a slain foe and 
              gain the powers of that monster type. They will want to 
-             make use of rules like ~</font><font color="#ff4040">Corpses </font><font color="#ff9200">More Level Than 20 </font><font color="#ffffff">which 
+             make use of rules like ~</font><font color="#ff0000">Corpses </font><font color="#ff8000">More Level Than 20 </font><font color="#ffffff">which 
              uses a special form described below. Of course, they will 
              tweak the level threshold of corpses they wish to keep as 
              the game progresses, and they also need to be careful to 
@@ -1185,9 +1185,9 @@ they are. Enjoy!
              can be very heavy! Note that Skeletons no longer count as 
              corpses, mainly because Possessors cannot possess 
              skeletons so they require a more specific keyword. If you 
-             are a hungry demon, you might consider </font><font color="#00ff00">Human </font><font color="#ff4040">Corpses</font><font color="#ffffff">.
+             are a hungry demon, you might consider </font><font color="#00ff00">Human </font><font color="#ff0000">Corpses</font><font color="#ffffff">.
   
-  </font><font color="#ff4040">Skeletons  </font><font color="#ffffff">Like corpses, you may turn in </font><font color="#00ff00">Wanted </font><font color="#ff4040">Skeletons </font><font color="#ffffff">at the 
+  </font><font color="#ff0000">Skeletons  </font><font color="#ffffff">Like corpses, you may turn in </font><font color="#00ff00">Wanted </font><font color="#ff0000">Skeletons </font><font color="#ffffff">at the 
              Hunter's Office. Archers may also use skeletons to make 
              arrows and bolts, so this class of objects is not as 
              useless as you might have thought.
@@ -1196,49 +1196,49 @@ they are. Enjoy!
   specify exactly one noun. But you may use as many adjectives as you 
   like.
   
-</font><font color="#00c8ff">Table V: Rules: Adjectives
+</font><font color="#00ffff">Table V: Rules: Adjectives
   </font><font color="#ffffff">There are many adjectives, and perhaps it might be useful to group 
   them by kind?
   
-  </font><font color="#ff9200">Object Knowledge
+  </font><font color="#ff8000">Object Knowledge
   </font><font color="#00ff00">Unsensed     </font><font color="#ffffff">Applies to objects that have not yet been identified nor 
                even pseudo-identified. In this sense, it is more 
                inclusive then the </font><font color="#00ff00">Unidentified </font><font color="#ffffff">adjective. Use a rule 
-               like (</font><font color="#00ff00">Unsensed </font><font color="#ff4040">Weapons </font><font color="#ffffff">to (i) automatically pickup newly 
+               like (</font><font color="#00ff00">Unsensed </font><font color="#ff0000">Weapons </font><font color="#ffffff">to (i) automatically pickup newly 
                dropped weapons so that you can pseudo-id them in your 
                pack in the early to mid game; and (ii) automatically 
                travel to newly dropped weapons in the remainder of the 
-               game using the newly enhanced </font><font color="#ff9200">g</font><font color="#ffffff">et objects command (Turn 
-               on </font><font color="#ff4040">auto_get_objects</font><font color="#ffffff">).  If </font><font color="#ff4040">destroy_feeling </font><font color="#ffffff">is turned on, 
+               game using the newly enhanced </font><font color="#ff8000">g</font><font color="#ffffff">et objects command (Turn 
+               on </font><font color="#ff0000">auto_get_objects</font><font color="#ffffff">).  If </font><font color="#ff0000">destroy_feeling </font><font color="#ffffff">is turned on, 
                the set of rules will be rescanned once the given item 
                is sensed, either in your pack at some future time 
                (prior to CL35) or by stepping on the same square as the 
-               object (once you reach CL35).  If </font><font color="#ff4040">destroy_identify </font><font color="#ffffff">is 
+               object (once you reach CL35).  If </font><font color="#ff0000">destroy_identify </font><font color="#ffffff">is 
                turned on, the set of rules will be rescanned once you 
                identify the object.
   
   </font><font color="#00ff00">Unidentified </font><font color="#ffffff">Applies to objects that have not yet been identified and 
                is a very useful adjective. For example, ?</font><font color="#00ff00">Unidentified 
-               </font><font color="#ff4040">Items </font><font color="#ffffff">has to be my favorite rule of all time!
+               </font><font color="#ff0000">Items </font><font color="#ffffff">has to be my favorite rule of all time!
   
   </font><font color="#00ff00">Identified   </font><font color="#ffffff">Applies all objects that have been identified. You might 
-               use this with a rule like !</font><font color="#00ff00">Identified </font><font color="#ff4040">Weapons</font><font color="#ffffff">, preceded 
+               use this with a rule like !</font><font color="#00ff00">Identified </font><font color="#ff0000">Weapons</font><font color="#ffffff">, preceded 
                by rules to protect weapons you actually care about, 
                like dice boosted ego items, for example. But I think it 
                is almost always preferable to use a !</font><font color="#00ff00">Nameless Common 
-               </font><font color="#ff4040">Weapons </font><font color="#ffffff">rule instead, since it is much safer (e.g. It 
+               </font><font color="#ff0000">Weapons </font><font color="#ffffff">rule instead, since it is much safer (e.g. It 
                won't destroy rare objects like Blades of Chaos and 
                won't destroy egos either).
   
   </font><font color="#00ff00">*Identified* </font><font color="#ffffff">Applies to fully identified objects, and is rarely 
                needed. Perhaps you might consider a block of rules 
                like:
-               ~</font><font color="#00ff00">*identified* </font><font color="#ff4040">rings </font><font color="#ff9200">more value than 5000
-               </font><font color="#ffffff">~</font><font color="#00ff00">*identified* </font><font color="#ff4040">amulets </font><font color="#ff9200">more value than 5000
-               </font><font color="#ffffff">~?</font><font color="#00ff00">unidentified </font><font color="#ff4040">rings
-               </font><font color="#ffffff">~?</font><font color="#00ff00">unidentified </font><font color="#ff4040">amulets
-               </font><font color="#ffffff">!</font><font color="#00ff00">identified </font><font color="#ff4040">rings
-               </font><font color="#ffffff">!</font><font color="#00ff00">identified </font><font color="#ff4040">amulets
+               ~</font><font color="#00ff00">*identified* </font><font color="#ff0000">rings </font><font color="#ff8000">more value than 5000
+               </font><font color="#ffffff">~</font><font color="#00ff00">*identified* </font><font color="#ff0000">amulets </font><font color="#ff8000">more value than 5000
+               </font><font color="#ffffff">~?</font><font color="#00ff00">unidentified </font><font color="#ff0000">rings
+               </font><font color="#ffffff">~?</font><font color="#00ff00">unidentified </font><font color="#ff0000">amulets
+               </font><font color="#ffffff">!</font><font color="#00ff00">identified </font><font color="#ff0000">rings
+               </font><font color="#ffffff">!</font><font color="#00ff00">identified </font><font color="#ff0000">amulets
                </font><font color="#ffffff">But this requires you to have a good sense of the value 
                threshold for jewelry you might want. Also note that 
                this rule set is safe because, in the current version, 
@@ -1248,10 +1248,10 @@ they are. Enjoy!
   </font><font color="#00ff00">Unaware      </font><font color="#ffffff">Applies to objects that the player is unaware of. In 
                practice, this currently only includes mushrooms, 
                potions and scrolls that the player has not yet 
-               encountered. A rule like ?</font><font color="#00ff00">Unaware </font><font color="#ff4040">Items </font><font color="#ffffff">will help you 
+               encountered. A rule like ?</font><font color="#00ff00">Unaware </font><font color="#ff0000">Items </font><font color="#ffffff">will help you 
                learn all those flavors in the early game.
   
-  </font><font color="#ff9200">Object Quality
+  </font><font color="#ff8000">Object Quality
   </font><font color="#00ff00">Average      </font><font color="#ffffff">Just like the name says, this adjective matches average 
                items. These are items that lack any form of magical 
                bonus or enhancment. This adjective is best combined 
@@ -1259,12 +1259,12 @@ they are. Enjoy!
                game :)
   
   </font><font color="#00ff00">Good         </font><font color="#ffffff">Good items have a magical bonus of some kind, either a 
-               combat bonus to hit or damage for </font><font color="#ff4040">weapons </font><font color="#ffffff">and </font><font color="#ff4040">shooters</font><font color="#ffffff">, 
-               or an armor class bonus for </font><font color="#ff4040">armors</font><font color="#ffffff">. You might want to 
+               combat bonus to hit or damage for </font><font color="#ff0000">weapons </font><font color="#ffffff">and </font><font color="#ff0000">shooters</font><font color="#ffffff">, 
+               or an armor class bonus for </font><font color="#ff0000">armors</font><font color="#ffffff">. You might want to 
                hang on to these objects a bit longer since they can be 
                sold for gold in the town, but even here, you will want 
                to destroy them eventually. I usually use the rule 
-               !</font><font color="#00ff00">Nameless Common </font><font color="#ff4040">Weapons </font><font color="#ffffff">rather than the </font><font color="#00ff00">Good </font><font color="#ffffff">adjective, 
+               !</font><font color="#00ff00">Nameless Common </font><font color="#ff0000">Weapons </font><font color="#ffffff">rather than the </font><font color="#00ff00">Good </font><font color="#ffffff">adjective, 
                since </font><font color="#00ff00">Nameless </font><font color="#ffffff">will include average items as well, while 
                the </font><font color="#00ff00">Common </font><font color="#ffffff">adjective protects objects that are rare and 
                might still be useful, even if they are only Average or 
@@ -1278,21 +1278,21 @@ they are. Enjoy!
                in each game you play. I almost never use this 
                adjective, though, since you cannot destroy artifacts 
                anyway. Perhaps you might like to auto-identify them, 
-               though, and a rule like ?</font><font color="#00ff00">Artifact </font><font color="#ff4040">Items </font><font color="#ffffff">would accomplish 
+               though, and a rule like ?</font><font color="#00ff00">Artifact </font><font color="#ff0000">Items </font><font color="#ffffff">would accomplish 
                this.
   
   </font><font color="#00ff00">Cursed       </font><font color="#ffffff">Cursed items aren't necessarily all bad. Still, you 
                might want rules to handle these objects, for example, 
                to destroy them. Also note that objects can be </font><font color="#00ff00">Cursed 
-               Ego </font><font color="#ff4040">Items </font><font color="#ffffff">or even </font><font color="#00ff00">Cursed Artifact </font><font color="#ff4040">Items</font><font color="#ffffff">, so perhaps the 
+               Ego </font><font color="#ff0000">Items </font><font color="#ffffff">or even </font><font color="#00ff00">Cursed Artifact </font><font color="#ff0000">Items</font><font color="#ffffff">, so perhaps the 
                rule you are looking for is !</font><font color="#00ff00">Cursed Nameless Common 
-               </font><font color="#ff4040">Items</font><font color="#ffffff">.
+               </font><font color="#ff0000">Items</font><font color="#ffffff">.
   
   </font><font color="#00ff00">Nameless     </font><font color="#ffffff">Nameless applies to any object that is neither an 
                artifact nor an ego item. This adjective is commonly 
                used to destroy stuff that you know won't be 
                particularly good, usually as a rule of the form 
-               !</font><font color="#00ff00">Nameless Common </font><font color="#ff4040">Items</font><font color="#ffffff">.
+               !</font><font color="#00ff00">Nameless Common </font><font color="#ff0000">Items</font><font color="#ffffff">.
   
   </font><font color="#00ff00">Rare         </font><font color="#ffffff">Rare items are special objects that don't show up often, 
                and might still be desirable even if they are </font><font color="#00ff00">Nameless</font><font color="#ffffff">. 
@@ -1300,7 +1300,7 @@ they are. Enjoy!
                weapons like Blades of Chaos and armors like Dragon 
                Scale Mail are considered </font><font color="#00ff00">Rare</font><font color="#ffffff">.
   
-  </font><font color="#00ff00">Common       </font><font color="#ffffff">Common includes any object that is </font><font color="#a500ff">not </font><font color="#00ff00">Rare</font><font color="#ffffff">. So, a Long 
+  </font><font color="#00ff00">Common       </font><font color="#ffffff">Common includes any object that is </font><font color="#ff00ff">not </font><font color="#00ff00">Rare</font><font color="#ffffff">. So, a Long 
                Sword is common, but a Blade of Chaos is not. Metal 
                Scale Mail is common, but White Dragon Scale Mail is 
                not.
@@ -1311,24 +1311,24 @@ they are. Enjoy!
                still want some of them. In general, you will want rules 
                to protect the worthless items you might want, and then, 
                at the very bottom of your preference file, you add a 
-               rule !</font><font color="#00ff00">Worthless </font><font color="#ff4040">Items</font><font color="#ffffff">.
+               rule !</font><font color="#00ff00">Worthless </font><font color="#ff0000">Items</font><font color="#ffffff">.
   
-  </font><font color="#ff9200">Object Attributes
-  </font><font color="#00ff00">Dice Boosted </font><font color="#ffffff">When used with </font><font color="#ff4040">Weapons </font><font color="#ffffff">or </font><font color="#ff4040">Shooters</font><font color="#ffffff">, this adjective 
+  </font><font color="#ff8000">Object Attributes
+  </font><font color="#00ff00">Dice Boosted </font><font color="#ffffff">When used with </font><font color="#ff0000">Weapons </font><font color="#ffffff">or </font><font color="#ff0000">Shooters</font><font color="#ffffff">, this adjective 
                indicates that the object has higher damage dice than 
                usual. Archers in particular should be on the lookout 
-               for </font><font color="#00ff00">Dice Boosted </font><font color="#ff4040">Shooters</font><font color="#ffffff">!
+               for </font><font color="#00ff00">Dice Boosted </font><font color="#ff0000">Shooters</font><font color="#ffffff">!
   
-  See the </font><font color="#ff9200">Special Clauses </font><font color="#ffffff">below for more information about matching on 
+  See the </font><font color="#ff8000">Special Clauses </font><font color="#ffffff">below for more information about matching on 
   an object's attributes.
   
-  </font><font color="#ff9200">Spellbook Adjectives
+  </font><font color="#ff8000">Spellbook Adjectives
   </font><font color="#00ff00">Unreadable     </font><font color="#ffffff">This will match spellbooks that you cannot use, either 
                  because you are playing a non-magical class, or 
                  because you did not choose to learn that particular 
                  magical realm at birth. The most common use for this 
                  adjective is for destruction purposes, as in 
-                 !</font><font color="#00ff00">Unreadable </font><font color="#ff4040">Spellbooks</font><font color="#ffffff">.
+                 !</font><font color="#00ff00">Unreadable </font><font color="#ff0000">Spellbooks</font><font color="#ffffff">.
   
   </font><font color="#00ff00">First Realm's  </font><font color="#ffffff">This refers to your primary magical realm. For many 
                  players, this is their only magic realm. For example, 
@@ -1341,10 +1341,10 @@ they are. Enjoy!
                  pick two realms of magic at birth. The most common 
                  reason to distinguish between your first and second 
                  realms of magic has to do with inscriptions. 
-                 Typically, players inscribe </font><font color="#ffcc80">@ma </font><font color="#ffffff">through </font><font color="#ffcc80">@md</font><font color="#ffffff">, in order, 
-                 on their first realm's spellbooks, and use </font><font color="#ffcc80">@me </font><font color="#ffffff">through 
-                 </font><font color="#ffcc80">@mh</font><font color="#ffffff">, in order, on their second realm's spellbooks. Or 
-                 you might use </font><font color="#ffcc80">@m1 </font><font color="#ffffff">through </font><font color="#ffcc80">@m8 </font><font color="#ffffff">if you prefer.
+                 Typically, players inscribe </font><font color="#c08040">@ma </font><font color="#ffffff">through </font><font color="#c08040">@md</font><font color="#ffffff">, in order, 
+                 on their first realm's spellbooks, and use </font><font color="#c08040">@me </font><font color="#ffffff">through 
+                 </font><font color="#c08040">@mh</font><font color="#ffffff">, in order, on their second realm's spellbooks. Or 
+                 you might use </font><font color="#c08040">@m1 </font><font color="#ffffff">through </font><font color="#c08040">@m8 </font><font color="#ffffff">if you prefer.
   
   </font><font color="#00ff00">First
   Second
@@ -1360,32 +1360,32 @@ they are. Enjoy!
                  and fourth on the other. Also, combine these 
                  adjectives with the </font><font color="#00ff00">First Realm's </font><font color="#ffffff">and </font><font color="#00ff00">Second Realm's 
                  </font><font color="#ffffff">adjectives discussed above in order to get your 
-                 inscriptions setup properly (see </font><font color="#00c8ff">Scenario #3 </font><font color="#ffffff">above).
+                 inscriptions setup properly (see </font><font color="#00ffff">Scenario #3 </font><font color="#ffffff">above).
   
-  </font><font color="#ff9200">Corpse Adjectives
-  </font><font color="#00ff00">Wanted       </font><font color="#ffffff">Combine with </font><font color="#ff4040">Corpses </font><font color="#ffffff">or </font><font color="#ff4040">Skeletons </font><font color="#ffffff">to indicate that the 
+  </font><font color="#ff8000">Corpse Adjectives
+  </font><font color="#00ff00">Wanted       </font><font color="#ffffff">Combine with </font><font color="#ff0000">Corpses </font><font color="#ffffff">or </font><font color="#ff0000">Skeletons </font><font color="#ffffff">to indicate that the 
                corpse or skeleton belongs to a wanted monster. These 
                may be turned in at the Hunter's Office for a prize.
   
-  </font><font color="#00ff00">Unique       </font><font color="#ffffff">Combine with </font><font color="#ff4040">Corpses </font><font color="#ffffff">or </font><font color="#ff4040">Skeletons </font><font color="#ffffff">to indicate that the 
+  </font><font color="#00ff00">Unique       </font><font color="#ffffff">Combine with </font><font color="#ff0000">Corpses </font><font color="#ffffff">or </font><font color="#ff0000">Skeletons </font><font color="#ffffff">to indicate that the 
                corpse or skeleton belongs to a unique monster. Not all 
                unique monsters are </font><font color="#00ff00">Wanted</font><font color="#ffffff">, so many players would 
                consider them to be junk (They are destroyed by the 
-               default rule !</font><font color="#00ff00">Worthless </font><font color="#ff4040">Items</font><font color="#ffffff">). However, other players 
+               default rule !</font><font color="#00ff00">Worthless </font><font color="#ff0000">Items</font><font color="#ffffff">). However, other players 
                enjoy collecting the corpses of unique monsters, and 
                placing them on display at the museum. For these 
-               (strange?) folks, adding a rule like ~</font><font color="#00ff00">Unique </font><font color="#ff4040">Corpses 
-               </font><font color="#ffffff">before the !</font><font color="#00ff00">Worthless </font><font color="#ff4040">Items </font><font color="#ffffff">will protect them from 
+               (strange?) folks, adding a rule like ~</font><font color="#00ff00">Unique </font><font color="#ff0000">Corpses 
+               </font><font color="#ffffff">before the !</font><font color="#00ff00">Worthless </font><font color="#ff0000">Items </font><font color="#ffffff">will protect them from 
                default destruction.
   
   </font><font color="#00ff00">Human        </font><font color="#ffffff">And then there are those character's that require the 
                corpses of humans for either food, or as part of a 
                ritual to summon a powerful demonic ally. For these 
-               situations, add a rule like ~</font><font color="#00ff00">Human </font><font color="#ff4040">Corpses </font><font color="#ffffff">to your 
-               preferences, though ~</font><font color="#00ff00">Special </font><font color="#ff4040">Items </font><font color="#ffffff">also works.
+               situations, add a rule like ~</font><font color="#00ff00">Human </font><font color="#ff0000">Corpses </font><font color="#ffffff">to your 
+               preferences, though ~</font><font color="#00ff00">Special </font><font color="#ff0000">Items </font><font color="#ffffff">also works.
   
-  </font><font color="#ff9200">Miscellaneous
-  </font><font color="#00ff00">Collecting   Collecting </font><font color="#ff4040">Items </font><font color="#ffffff">are stackable objects that you happen 
+  </font><font color="#ff8000">Miscellaneous
+  </font><font color="#00ff00">Collecting   Collecting </font><font color="#ff0000">Items </font><font color="#ffffff">are stackable objects that you happen 
                to currently be carrying in your pack. Use this broad 
                adjective when you don't feel like adding a more 
                specific rule. For example, you might currently be 
@@ -1395,7 +1395,7 @@ they are. Enjoy!
                of the game, you don't want to use a conditional rule to 
                handle this.
   
-  </font><font color="#00ff00">Special      Special </font><font color="#ff4040">Items </font><font color="#ffffff">are objects your race or class needs; 
+  </font><font color="#00ff00">Special      Special </font><font color="#ff0000">Items </font><font color="#ffffff">are objects your race or class needs; 
                objects that are usually considered junk by default. For 
                example, some players cannot eat normal food, but must 
                consume the corpses of humans (Yuk!). Other players use 
@@ -1413,13 +1413,13 @@ they are. Enjoy!
                rings, amulets, lights, cloaks and helmets, but nothing 
                else. So weapons, shooters, body armor, shields, gloves, 
                and boots are all considered </font><font color="#00ff00">Unusable</font><font color="#ffffff">. Adding a rule 
-               like !</font><font color="#00ff00">Unusable </font><font color="#ff4040">Items </font><font color="#ffffff">makes the game much more pleasant, 
+               like !</font><font color="#00ff00">Unusable </font><font color="#ff0000">Items </font><font color="#ffffff">makes the game much more pleasant, 
                at least once the player is past the point of worrying 
                too much about gold. (They could also use a rule like 
-               !</font><font color="#00ff00">Unusable Nameless </font><font color="#ff4040">Items </font><font color="#ffffff">if they wanted to keep egos for 
+               !</font><font color="#00ff00">Unusable Nameless </font><font color="#ff0000">Items </font><font color="#ffffff">if they wanted to keep egos for 
                resale purposes).
   
-</font><font color="#00c8ff">Table VI: Rules: Special Clauses
+</font><font color="#00ffff">Table VI: Rules: Special Clauses
   </font><font color="#ffffff">In the following clauses, N refers to a numerical digit, 0 through 9. 
   The sequence NN means you may type one or two digits, and can 
   therefore enter any number between 0 and 99.  The sequence NNNNNN 
@@ -1429,24 +1429,24 @@ they are. Enjoy!
   unsatisfactory results from your rule.
   
   </font><font color="#00ff00">Special Clause          Explanation
-  </font><font color="#ff9200">More Dice Than NN       </font><font color="#ffffff">This clause applies to </font><font color="#ff4040">Weapons </font><font color="#ffffff">only, and is 
+  </font><font color="#ff8000">More Dice Than NN       </font><font color="#ffffff">This clause applies to </font><font color="#ff0000">Weapons </font><font color="#ffffff">only, and is 
                           true whenever the maximum possible damage 
                           exceeds the number you enter. For example a 
-                          (2d5) weapon will match </font><font color="#ff9200">More Dice Than 9 </font><font color="#ffffff">but 
-                          will fail to match </font><font color="#ff9200">More Dice Than 10</font><font color="#ffffff">.
+                          (2d5) weapon will match </font><font color="#ff8000">More Dice Than 9 </font><font color="#ffffff">but 
+                          will fail to match </font><font color="#ff8000">More Dice Than 10</font><font color="#ffffff">.
   
-  </font><font color="#ff9200">More Bonus Than NN      </font><font color="#ffffff">An object's bonus is the largest of its </font><font color="#ff4040">pval</font><font color="#ffffff">, 
+  </font><font color="#ff8000">More Bonus Than NN      </font><font color="#ffffff">An object's bonus is the largest of its </font><font color="#ff0000">pval</font><font color="#ffffff">, 
                           its bonus to hit, to damage and to armor 
-                          class. Confused? Well, the rule </font><font color="#ff4040">Rings </font><font color="#ff9200">More 
+                          class. Confused? Well, the rule </font><font color="#ff0000">Rings </font><font color="#ff8000">More 
                           Bonus Than 9</font><font color="#ffffff">:Speed will pickup rings of speed 
                           (+10) or better, but will not match other 
                           rings of speed. Another (sarcastic) example: 
-                          </font><font color="#ff4040">Suits </font><font color="#ff9200">More Bonus Than 19</font><font color="#ffffff">:Power Dragon says 
+                          </font><font color="#ff0000">Suits </font><font color="#ff8000">More Bonus Than 19</font><font color="#ffffff">:Power Dragon says 
                           that you would like Power Dragon Scale Mail, 
                           but only if its bonus to armor class is +20 
                           or better!
   
-  </font><font color="#ff9200">More Level Than NN      </font><font color="#ffffff">This clause is intended to be used on </font><font color="#ff4040">Corpses 
+  </font><font color="#ff8000">More Level Than NN      </font><font color="#ffffff">This clause is intended to be used on </font><font color="#ff0000">Corpses 
                           </font><font color="#ffffff">so that Possessors can manage the mountains 
                           of dead bodies they create. You can also use 
                           it with other objects, in which case it 
@@ -1454,35 +1454,35 @@ they are. Enjoy!
                           its ego type. For devices, it matches against 
                           the power level of the device.
   
-  </font><font color="#ff9200">More Weight Than NN     </font><font color="#ffffff">Some classes have weight restrictions on 
+  </font><font color="#ff8000">More Weight Than NN     </font><font color="#ffffff">Some classes have weight restrictions on 
                           armor, like Monks, Scouts and Ninjas. Other 
                           classes, like Maulers, prefer very heavy 
                           weapons. This clause matches against the 
-                          weight of the object, in pounds. So </font><font color="#ff4040">Weapons 
-                          </font><font color="#ff9200">More Weight Than 39 </font><font color="#ffffff">will match weapons at 
+                          weight of the object, in pounds. So </font><font color="#ff0000">Weapons 
+                          </font><font color="#ff8000">More Weight Than 39 </font><font color="#ffffff">will match weapons at 
                           least 39.1 lbs in weight (In practice, this 
                           means at least 40.0 lbs in weight).
   
-  </font><font color="#ff9200">More Value Than NNNNNN </font><font color="#ffffff">This clause matches against the known value of 
+  </font><font color="#ff8000">More Value Than NNNNNN </font><font color="#ffffff">This clause matches against the known value of 
                          the object. Use it with care, since unknown, 
                          or even un-*identified* objects may have 
                          disturbingly low known values.
   
-</font><font color="#00c8ff">Table VII: Conditional Lines: Syntax
+</font><font color="#00ffff">Table VII: Conditional Lines: Syntax
   </font><font color="#ffffff">Conditional Lines have the following syntactic form:
   
-  ?:</font><font color="#00c8ff">Expression
+  ?:</font><font color="#00ffff">Expression
   
   </font><font color="#ffffff">Conditional Expressions use the following (partial) grammar:
   
-  </font><font color="#00c8ff">Expression </font><font color="#fffd00">:= </font><font color="#c00000">Literal </font><font color="#fffd00">| </font><font color="#a500ff">Variable </font><font color="#fffd00">| </font><font color="#ffffff">[</font><font color="#ff4040">Function </font><font color="#00c8ff">Expression</font><font color="#fffd00">*</font><font color="#ffffff">]
-  </font><font color="#ff4040">Function   </font><font color="#fffd00">:= </font><font color="#ffffff">IOR </font><font color="#fffd00">| </font><font color="#ffffff">OR </font><font color="#fffd00">| </font><font color="#ffffff">AND </font><font color="#fffd00">| </font><font color="#ffffff">NOT </font><font color="#fffd00">| </font><font color="#ffffff">EQU </font><font color="#fffd00">| </font><font color="#ffffff">LEQ </font><font color="#fffd00">| </font><font color="#ffffff">GEQ
-  </font><font color="#a500ff">Variable   </font><font color="#fffd00">:= </font><font color="#ffffff">$RACE </font><font color="#fffd00">| </font><font color="#ffffff">$CLASS </font><font color="#fffd00">| </font><font color="#ffffff">$REALM1 </font><font color="#fffd00">| </font><font color="#ffffff">$REALM2 </font><font color="#fffd00">| </font><font color="#ffffff">$LEVEL </font><font color="#fffd00">| </font><font color="#ffffff">$MONEY </font><font color="#fffd00">| 
+  </font><font color="#00ffff">Expression </font><font color="#ffff00">:= </font><font color="#c00000">Literal </font><font color="#ffff00">| </font><font color="#ff00ff">Variable </font><font color="#ffff00">| </font><font color="#ffffff">[</font><font color="#ff0000">Function </font><font color="#00ffff">Expression</font><font color="#ffff00">*</font><font color="#ffffff">]
+  </font><font color="#ff0000">Function   </font><font color="#ffff00">:= </font><font color="#ffffff">IOR </font><font color="#ffff00">| </font><font color="#ffffff">OR </font><font color="#ffff00">| </font><font color="#ffffff">AND </font><font color="#ffff00">| </font><font color="#ffffff">NOT </font><font color="#ffff00">| </font><font color="#ffffff">EQU </font><font color="#ffff00">| </font><font color="#ffffff">LEQ </font><font color="#ffff00">| </font><font color="#ffffff">GEQ
+  </font><font color="#ff00ff">Variable   </font><font color="#ffff00">:= </font><font color="#ffffff">$RACE </font><font color="#ffff00">| </font><font color="#ffffff">$CLASS </font><font color="#ffff00">| </font><font color="#ffffff">$REALM1 </font><font color="#ffff00">| </font><font color="#ffffff">$REALM2 </font><font color="#ffff00">| </font><font color="#ffffff">$LEVEL </font><font color="#ffff00">| </font><font color="#ffffff">$MONEY </font><font color="#ffff00">| 
                   </font><font color="#ffffff">...
-  </font><font color="#c00000">Literal    </font><font color="#fffd00">:= </font><font color="#ffffff">23 </font><font color="#fffd00">| </font><font color="#ffffff">52 </font><font color="#fffd00">| </font><font color="#ffffff">Rage-Mage </font><font color="#fffd00">| </font><font color="#ffffff">High-Elf </font><font color="#fffd00">| </font><font color="#ffffff">... 
+  </font><font color="#c00000">Literal    </font><font color="#ffff00">:= </font><font color="#ffffff">23 </font><font color="#ffff00">| </font><font color="#ffffff">52 </font><font color="#ffff00">| </font><font color="#ffffff">Rage-Mage </font><font color="#ffff00">| </font><font color="#ffffff">High-Elf </font><font color="#ffff00">| </font><font color="#ffffff">... 
   
   Note that unlike above, square brackets are part of the syntax of 
-  expressions and do </font><font color="#a500ff">not </font><font color="#ffffff">indicate optional elements in the grammar. 
+  expressions and do </font><font color="#ff00ff">not </font><font color="#ffffff">indicate optional elements in the grammar. 
   Rather, function application expressions are always surrounded with 
   square brackets.
   
@@ -1493,65 +1493,65 @@ they are. Enjoy!
   
   If none of this makes sense, see <a href="editor.html#Conditionals"></font><font color="#00ff00">[k]</a> </font><font color="#ffffff">above.
   
-</font><font color="#00c8ff">Table VIII: Conditional Lines: Functions
+</font><font color="#00ffff">Table VIII: Conditional Lines: Functions
   </font><font color="#00ff00">Function  Explanation
-    </font><font color="#ff4040">IOR     </font><font color="#ffffff">Inclusive Or: [IOR a b c ...] is TRUE if the value of </font><font color="#ff9200">any 
+    </font><font color="#ff0000">IOR     </font><font color="#ffffff">Inclusive Or: [IOR a b c ...] is TRUE if the value of </font><font color="#ff8000">any 
             </font><font color="#ffffff">subexpression a, b, c, ... is TRUE.
-    </font><font color="#ff4040">OR      </font><font color="#ffffff">Same as IOR. One day I was puzzled why my [OR ...] 
+    </font><font color="#ff0000">OR      </font><font color="#ffffff">Same as IOR. One day I was puzzled why my [OR ...] 
             expression wasn't working. Also, if you are going to have 
             IOR, it suggests you will have XOR (Exclusive Or) as well, 
             and we don't!
-    </font><font color="#ff4040">AND     </font><font color="#ffffff">Logical And: [AND a b c ...] is TRUE if the value of </font><font color="#ff9200">all 
+    </font><font color="#ff0000">AND     </font><font color="#ffffff">Logical And: [AND a b c ...] is TRUE if the value of </font><font color="#ff8000">all 
             </font><font color="#ffffff">subexpressions a, b, c, ... are TRUE.
-    </font><font color="#ff4040">NOT     </font><font color="#ffffff">[NOT a] is TRUE if a is FALSE, and vice versa. Use this 
-            when you want to take an action when something is </font><font color="#ff9200">not </font><font color="#ffffff">true.
-    </font><font color="#ff4040">EQU     </font><font color="#ffffff">[EQU v a b c ...] is TRUE when the value of v is </font><font color="#ff9200">one </font><font color="#ffffff">of the 
+    </font><font color="#ff0000">NOT     </font><font color="#ffffff">[NOT a] is TRUE if a is FALSE, and vice versa. Use this 
+            when you want to take an action when something is </font><font color="#ff8000">not </font><font color="#ffffff">true.
+    </font><font color="#ff0000">EQU     </font><font color="#ffffff">[EQU v a b c ...] is TRUE when the value of v is </font><font color="#ff8000">one </font><font color="#ffffff">of the 
             values a, b, c, ... Comparison is by string. Typically, you 
             use this with v being a built-in variable expression, like 
-            </font><font color="#ff4040">$CLASS </font><font color="#ffffff">(see below) and the remaining arguments to EQU being 
-            strings to test, like </font><font color="#ff4040">Warrior </font><font color="#ffffff">or </font><font color="#ff4040">Rogue</font><font color="#ffffff">. Note that string 
+            </font><font color="#ff0000">$CLASS </font><font color="#ffffff">(see below) and the remaining arguments to EQU being 
+            strings to test, like </font><font color="#ff0000">Warrior </font><font color="#ffffff">or </font><font color="#ff0000">Rogue</font><font color="#ffffff">. Note that string 
             literals are not quoted and therefore may not contain 
             spaces.
-    </font><font color="#ff4040">LEQ     </font><font color="#ffffff">[LEQ v a] is TRUE when the integer value of v is </font><font color="#ff9200">less than 
+    </font><font color="#ff0000">LEQ     </font><font color="#ffffff">[LEQ v a] is TRUE when the integer value of v is </font><font color="#ff8000">less than 
             or equal to </font><font color="#ffffff">the integer value of a. Note that while EQU 
             treats its arguments as strings, LEQ treats them as 
             numbers.
-    </font><font color="#ff4040">GEQ     </font><font color="#ffffff">[GEQ v a] is TRUE when the integer value of v is </font><font color="#ff9200">greater 
+    </font><font color="#ff0000">GEQ     </font><font color="#ffffff">[GEQ v a] is TRUE when the integer value of v is </font><font color="#ff8000">greater 
             than or equal to </font><font color="#ffffff">the integer value of a. Note that while 
             EQU treats its arguments as strings, GEQ treats them as 
-            numbers. For example, use </font><font color="#a500ff">[GEQ $LEVEL 20] </font><font color="#ffffff">to test if the 
+            numbers. For example, use </font><font color="#ff00ff">[GEQ $LEVEL 20] </font><font color="#ffffff">to test if the 
             player's current level is greater than, or equal to 20.
   
-</font><font color="#00c8ff">Table IX: Conditional Lines: Variables
+</font><font color="#00ffff">Table IX: Conditional Lines: Variables
   </font><font color="#00ff00">Variable  Explanation
-  </font><font color="#ff4040">$RACE     </font><font color="#ffffff">Returns the name of the player's race. For example, 
-            </font><font color="#ff4040">Snotling </font><font color="#ffffff">or </font><font color="#ff4040">High-Elf</font><font color="#ffffff">.
-  </font><font color="#ff4040">$CLASS    </font><font color="#ffffff">Returns the name of the player's class. For example, 
-            </font><font color="#ff4040">Warrior-Mage </font><font color="#ffffff">or </font><font color="#ff4040">Mindcrafter</font><font color="#ffffff">. Note, if you are playing in 
-            </font><font color="#c00000">Monster </font><font color="#ffffff">mode, then this variable always returns </font><font color="#ff4040">Monster</font><font color="#ffffff">, 
+  </font><font color="#ff0000">$RACE     </font><font color="#ffffff">Returns the name of the player's race. For example, 
+            </font><font color="#ff0000">Snotling </font><font color="#ffffff">or </font><font color="#ff0000">High-Elf</font><font color="#ffffff">.
+  </font><font color="#ff0000">$CLASS    </font><font color="#ffffff">Returns the name of the player's class. For example, 
+            </font><font color="#ff0000">Warrior-Mage </font><font color="#ffffff">or </font><font color="#ff0000">Mindcrafter</font><font color="#ffffff">. Note, if you are playing in 
+            </font><font color="#c00000">Monster </font><font color="#ffffff">mode, then this variable always returns </font><font color="#ff0000">Monster</font><font color="#ffffff">, 
             while $RACE returns the actual monster race you are 
-            playing, such as </font><font color="#ff4040">Lich </font><font color="#ffffff">or </font><font color="#ff4040">Dragon</font><font color="#ffffff">.
-  </font><font color="#ff4040">$REALM1   </font><font color="#ffffff">Returns the name of the player's first realm, if any. For 
-            example, </font><font color="#ff4040">Chaos </font><font color="#ffffff">or </font><font color="#ff4040">Sorcery</font><font color="#ffffff">. If the player does not have a 
-            first realm, then this variable returns </font><font color="#ff4040">none</font><font color="#ffffff">.
-  </font><font color="#ff4040">$REALM2   </font><font color="#ffffff">Returns the name of the player's second realm, if any. For 
-            example, </font><font color="#ff4040">Life </font><font color="#ffffff">or </font><font color="#ff4040">Death</font><font color="#ffffff">. If the player does not have a 
-            second realm, then this variable returns </font><font color="#ff4040">none</font><font color="#ffffff">.
-  </font><font color="#ff4040">$LEVEL    </font><font color="#ffffff">Returns the player's current level. Typically, you combine 
+            playing, such as </font><font color="#ff0000">Lich </font><font color="#ffffff">or </font><font color="#ff0000">Dragon</font><font color="#ffffff">.
+  </font><font color="#ff0000">$REALM1   </font><font color="#ffffff">Returns the name of the player's first realm, if any. For 
+            example, </font><font color="#ff0000">Chaos </font><font color="#ffffff">or </font><font color="#ff0000">Sorcery</font><font color="#ffffff">. If the player does not have a 
+            first realm, then this variable returns </font><font color="#ff0000">none</font><font color="#ffffff">.
+  </font><font color="#ff0000">$REALM2   </font><font color="#ffffff">Returns the name of the player's second realm, if any. For 
+            example, </font><font color="#ff0000">Life </font><font color="#ffffff">or </font><font color="#ff0000">Death</font><font color="#ffffff">. If the player does not have a 
+            second realm, then this variable returns </font><font color="#ff0000">none</font><font color="#ffffff">.
+  </font><font color="#ff0000">$LEVEL    </font><font color="#ffffff">Returns the player's current level. Typically, you combine 
             this with GEQ or LEQ to test the level against a threshold, 
-            such as </font><font color="#a500ff">[LEQ $LEVEL 34]</font><font color="#ffffff">.
-  </font><font color="#ff4040">$MONEY    </font><font color="#ffffff">Returns the amount of gold the player has. Like $LEVEL, use 
+            such as </font><font color="#ff00ff">[LEQ $LEVEL 34]</font><font color="#ffffff">.
+  </font><font color="#ff0000">$MONEY    </font><font color="#ffffff">Returns the amount of gold the player has. Like $LEVEL, use 
             this with GEQ or LEQ to test whether your player is rich or 
             poor.
   
-  As mentioned before, all variables begin with a </font><font color="#ff9200">$ </font><font color="#ffffff">character to 
+  As mentioned before, all variables begin with a </font><font color="#ff8000">$ </font><font color="#ffffff">character to 
   distinguish them from string literals. Also, note there are other 
   variables like $SYS and $KEYBOARD which I haven't documented.
   
-</font><font color="#00c8ff">Table X: Conditional Lines: Literals
+</font><font color="#00ffff">Table X: Conditional Lines: Literals
   </font><font color="#00ff00">Literal   Explanation
-  </font><font color="#ff4040">Number    </font><font color="#ffffff">Numbers are written like </font><font color="#ff4040">105 </font><font color="#ffffff">or </font><font color="#ff4040">32</font><font color="#ffffff">.
-  </font><font color="#ff4040">String    </font><font color="#ffffff">Strings are written like </font><font color="#ff4040">High-Mage </font><font color="#ffffff">or </font><font color="#ff4040">Beholder</font><font color="#ffffff">. Note that 
+  </font><font color="#ff0000">Number    </font><font color="#ffffff">Numbers are written like </font><font color="#ff0000">105 </font><font color="#ffffff">or </font><font color="#ff0000">32</font><font color="#ffffff">.
+  </font><font color="#ff0000">String    </font><font color="#ffffff">Strings are written like </font><font color="#ff0000">High-Mage </font><font color="#ffffff">or </font><font color="#ff0000">Beholder</font><font color="#ffffff">. Note that 
             string literals are not quoted and therefore may not 
             contain spaces.
   
@@ -1565,11 +1565,11 @@ choice is yours. This system is configured via options (see <a href="option.html
 option destroy_items turns The Easy Destroyer on and off. If you are 
 using The Mogaminator, be sure to turn off The Easy Destroyer, and vice 
 versa. (BTW, you "turn off" The Mogaminator but closing the game and 
-deleting the pickpref-</font><font color="#ff9200">NAME</font><font color="#ffffff">.prf file whose location was indicated in the 
+deleting the pickpref-</font><font color="#ff8000">NAME</font><font color="#ffffff">.prf file whose location was indicated in the 
 reference section).
 
 
-</font><font color="#8a8a8a">Original   : PosChengband 4.0.0
+</font><font color="#707070">Original   : PosChengband 4.0.0
 
 
 </font></pre></body></html>

@@ -36,13 +36,13 @@ Marilith, a female demon with three sets of arms and a serpent body
 capable of attacking with six melee weapons!
 
   Stats                   Skills
-  Strength      +0        Disarming   Good         
-  Intelligence  +0        Device      Very Good    
+  Strength      +3        Disarming   Good         
+  Intelligence  +1        Device      Very Good    
   Wisdom        -5        Save        Fair         
-  Dexterity     +0        Stealth     Good         
-  Constitution  +0        Searching   Poor         
-  Charisma      +0        Perception  Bad          
-  Life Rating   95%       Melee       Excellent    
+  Dexterity     +3        Stealth     Good         
+  Constitution  +3        Searching   Poor         
+  Charisma      +1        Perception  Bad          
+  Life Rating  101%       Melee       Excellent    
   Base HP       30        Bows        Poor         
   Experience   250%       Infravision 50'
   
@@ -53,13 +53,13 @@ will of their master. As they gain experience, Khorne rewards his
 servants with new and more powerful forms.
 
   Stats                   Skills
-  Strength      +3        Disarming   Good         
+  Strength      +5        Disarming   Good         
   Intelligence  -5        Device      Bad          
   Wisdom        -5        Save        Good         
   Dexterity     +0        Stealth     Bad          
-  Constitution  +2        Searching   Poor         
+  Constitution  +4        Searching   Poor         
   Charisma      +0        Perception  Bad          
-  Life Rating  100%       Melee       Superb       
+  Life Rating  110%       Melee       Superb       
   Base HP       42        Bows        Bad          
   Experience   250%       Infravision 50'
   
@@ -70,11 +70,11 @@ unsurpassable firepower more than make up for this. The walls of the
 dungeon reverberate with their heavy steps!
 
   Stats                   Skills
-  Strength      +5        Disarming   Good         
+  Strength      +8        Disarming   Good         
   Intelligence -10        Device      Very Bad     
   Wisdom       -10        Save        Poor         
   Dexterity     -3        Stealth     Bad          
-  Constitution  +5        Searching   Poor         
+  Constitution  +8        Searching   Poor         
   Charisma      +0        Perception  Bad          
   Life Rating  120%       Melee       Heroic       
   Base HP       50        Bows        Bad          
@@ -84,9 +84,9 @@ Table 1 - Demon Statistic Bonus Table
 
                   STR  INT  WIS  DEX  CON  CHR  Life  BHP  Exp  Shop
 Balrog             +4   +1  -10   +1   +4   +2  105%  +45  300%  140%
-Tanar'ri           +0   +0   -5   +0   +0   +0   95%  +30  250%  140%
-Servant of Khorne  +3   -5   -5   +0   +2   +0  100%  +42  250%  140%
-Cyberdemon         +5  -10  -10   -3   +5   +0  120%  +50  275%  140%
+Tanar'ri           +3   +1   -5   +3   +3   +1  101%  +30  250%  140%
+Servant of Khorne  +5   -5   -5   +0   +4   +0  110%  +42  250%  140%
+Cyberdemon         +8  -10  -10   -3   +8   +0  120%  +50  275%  140%
 
 
 Table 2 - Demon Skill Bonus Table I
@@ -109,5 +109,5 @@ Cyberdemon        Poor          Bad           Heroic        Bad             50'
 
 
 
-Automatically generated for PosChengband 7.0.1.
+Automatically generated for FrogComposband 7.0.strawberry.
 

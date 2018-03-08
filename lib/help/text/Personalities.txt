@@ -80,7 +80,7 @@ physical ability.
 
   Stats                   Skills
   Strength      -1        Disarming   Superb       
-  Intelligence  +1        Device      Good         
+  Intelligence  +1        Device      Fair         
   Wisdom        -1        Save        Bad          
   Dexterity     +2        Stealth     Fair         
   Constitution  -1        Searching   Excellent    
@@ -113,7 +113,7 @@ Echizen".
 
   Stats                   Skills
   Strength      +1        Disarming   Bad          
-  Intelligence  -1        Device      Very Bad     
+  Intelligence  -1        Device      Bad          
   Wisdom        -1        Save        Very Bad     
   Dexterity     +1        Stealth     Poor         
   Constitution  +0        Searching   Poor         
@@ -142,7 +142,7 @@ players.
 
   Stats                   Skills
   Strength      -2        Disarming   Superb       
-  Intelligence  -2        Device      Superb       
+  Intelligence  -2        Device      Excellent    
   Wisdom        -2        Save        Good         
   Dexterity     -2        Stealth     Fair         
   Constitution  -2        Searching   Superb       
@@ -157,7 +157,7 @@ skills. Also it directly influences your life rating.
 
   Stats                   Skills
   Strength      -1        Disarming   Very Bad     
-  Intelligence  -1        Device      Very Bad     
+  Intelligence  -1        Device      Bad          
   Wisdom        +1        Save        Good         
   Dexterity     -2        Stealth     Fair         
   Constitution  +2        Searching   Fair         
@@ -176,7 +176,7 @@ impressive. But their stats and other skills are somewhat wanting.
   Wisdom        +1        Save        Bad          
   Dexterity     -1        Stealth     Good         
   Constitution  -1        Searching   Fair         
-  Charisma      -3        Perception  Fair         
+  Charisma      -2        Perception  Fair         
   Life Rating   99%       Melee       Very Bad     
   Experience   100%       Bows        Superb       
   
@@ -208,7 +208,7 @@ Combat          +1   -1   -1   +1   +0   +0  100%  100%
 Sexy            +1   +1   +1   +1   +1   +1  100%  100%
 Lucky           -2   -2   -2   -2   -2   -2   98%  100%
 Patient         -1   -1   +1   -2   +2   +0  102%  100%
-Craven          -1   +1   +1   -1   -1   -3   99%  100%
+Craven          -1   +1   +1   -1   -1   -2   99%  100%
 Hasty           +0   -1   -2   +2   -1   +0  100%  100%
 
 
@@ -219,12 +219,12 @@ Ordinary     Poor          Poor          Poor          Poor
 Mighty       Very Bad      Very Bad      Very Bad      Bad          
 Shrewd       Good          Superb        Fair          Poor         
 Pious        Very Bad      Fair          Very Good     Bad          
-Nimble       Superb        Good          Bad           Fair         
+Nimble       Superb        Fair          Bad           Fair         
 Fearless     Very Bad      Fair          Bad           Poor         
-Combat       Bad           Very Bad      Very Bad      Poor         
+Combat       Bad           Bad           Very Bad      Poor         
 Sexy         Superb        Excellent     Good          Poor         
-Lucky        Superb        Superb        Good          Fair         
-Patient      Very Bad      Very Bad      Good          Fair         
+Lucky        Superb        Excellent     Good          Fair         
+Patient      Very Bad      Bad           Good          Fair         
 Craven       Excellent     Excellent     Bad           Good         
 Hasty        Very Bad      Very Bad      Very Bad      Bad          
 
@@ -248,5 +248,5 @@ Hasty        Very Bad      Bad           Very Bad      Bad
 
 
 
-Automatically generated for PosChengband 7.0.1.
+Automatically generated for FrogComposband 7.0.strawberry.
 

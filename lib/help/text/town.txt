@@ -45,7 +45,7 @@ be found in the dungeon section (see [b]).
   .   Floor / Road              7   Entrance to the Black Market
   .   Dirt                      8   Entrance to your Home
   .   Grass                     9   Entrance to Bookstore
-  >   Dungeon Entrance          0   Entrance to the Museum
+  >   Dungeon Entrance          M   Entrance to the Museum
   >   Quest Entrance
      Quest Exit
 
@@ -324,7 +324,7 @@ List of Shops
   The Bookstore deals in all sorts of magical books. You can purchase 
   and sell spellbooks for the spellcasters here.
 
-  The Museum (0)
+  The Museum (M)
   This is a place where you can donate any item to display. Use it when 
   you find interesting but needless items and you want to leave it in 
   memory. See [g] for more information.

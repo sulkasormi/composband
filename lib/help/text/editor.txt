@@ -940,12 +940,12 @@ enable the system, your preferences are stored in a separate file in a
 system dependant location. On Windows, they will be stored in 
 lib/user/pickpref-NAME.prf inside the game's directory structure, while 
 on Linux, they can be found in 
-~/.angband/PosChengband/pickpref-NAME.prf (outside the game's directory 
-structure). Here, NAME is replaced with your player's current name. So 
-if you want to edit your preferences using some other text editor, this 
-is the file you need to change. If you do edit preferences outside of 
-the game while you are playing, then be sure to use the $ command to 
-force the game to reload the preference file.
+~/.angband/FrogComposband/pickpref-NAME.prf (outside the game's 
+directory structure). Here, NAME is replaced with your player's current 
+name. So if you want to edit your preferences using some other text 
+editor, this is the file you need to change. If you do edit preferences 
+outside of the game while you are playing, then be sure to use the $ 
+command to force the game to reload the preference file.
 
 OK, so I promised you reference tables. I'm a man of my word, so here 
 they are. Enjoy!

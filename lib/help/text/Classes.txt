@@ -716,8 +716,8 @@ Stealth
   first blow. A rogue may also backstab a fleeing monster. Rogues also 
   gain shooting bonuses when using a sling.
    
-  Rogues can select one realm from Sorcery, Death, Trump, Arcane, 
-  Craft, or Burglary. Except for this last realm, rogues have certain 
+  Rogues can select one realm - Sorcery, Death, Trump, Arcane, Craft, 
+  Law,or Burglary. Except for this last realm, rogues have certain 
   limitations on which spells they can learn, and they do not learn new 
   spells very quickly. The Burglary Realm however is unique to the 
   rogue and offers spells for setting traps, picking pockets, 
@@ -787,6 +787,26 @@ Hybrid
     Life Rating  111%       Melee       Excellent    
     Base HP       12        Bows        Good         
     Experience   125%
+    
+  Ninja-Lawyer
+  The Ninja-Lawyer moves silently in the night, combining the stealth, 
+  agility and offensive power of the ninja with the subtle practical 
+  tools of the lawyer. Ninja-Lawyers, like specialist ninjas, prefer 
+  light armour and stabbing weapons and acquire the powerful 'Quick 
+  Walk' class power. A ninja-lawyer relies on both wisdom and 
+  dexterity, requiring the former for legal tricks and the latter for 
+  ninjutsu.
+  
+    Stats                   Skills
+    Strength      -1        Disarming   Superb       
+    Intelligence  +0        Device      Good         
+    Wisdom        +0        Save        Fair         
+    Dexterity     +2        Stealth     Superb       
+    Constitution  +0        Searching   Excellent    
+    Charisma      +2        Perception  Fair         
+    Life Rating   99%       Melee       Excellent    
+    Base HP        8        Bows        Poor         
+    Experience   115%
     
   Paladin
   A Paladin is a combination of a warrior and a priest. Paladins are 
@@ -890,12 +910,12 @@ Hybrid
   
     Stats                   Skills
     Strength      +2        Disarming   Fair         
-    Intelligence  +2        Device      Good         
+    Intelligence  +2        Device      Excellent    
     Wisdom        +0        Save        Fair         
     Dexterity     +1        Stealth     Fair         
     Constitution  +0        Searching   Fair         
     Charisma      +1        Perception  Poor         
-    Life Rating  106%       Melee       Fair         
+    Life Rating  106%       Melee       Very Good    
     Base HP        8        Bows        Good         
     Experience   140%
     
@@ -1141,6 +1161,26 @@ Other
     Base HP        4        Bows        Bad          
     Experience   140%
     
+  Lawyer
+  Known for his unsurpassed expertise in the mysterious realm of Law, 
+  the Lawyer has a comprehensive skillset that allows him to set and 
+  detect traps, to slow or mystify his enemies, to quietly escape or 
+  avoid dangerous fights, to acquire knowledge about the world around 
+  him, and to make friends and influence people. As he relies on his 
+  familiarity with Law and with tricks and approaches that have worked 
+  in the past, the lawyer uses WIS as his spellcasting stat.
+  
+    Stats                   Skills
+    Strength      -3        Disarming   Superb       
+    Intelligence  +2        Device      Very Good    
+    Wisdom        +0        Save        Good         
+    Dexterity     +0        Stealth     Good         
+    Constitution  -1        Searching   Excellent    
+    Charisma      +1        Perception  Good         
+    Life Rating  102%       Melee       Good         
+    Base HP       12        Bows        Fair         
+    Experience   115%
+    
   Rage-Mage
   The Rage Mage is part of a secret sect descending from the Barbarians 
   in response to their natural foes, the mages. As time passed, other 
@@ -1283,6 +1323,7 @@ Ninja          +0   -1   -1   +3   +2   +2  100%   +4  120%
 Rogue          +2   +1   -1   +3   +1   +1  110%  +12  125%
 Scout          +1   -1   +2   +3   +0   +0  104%   +8  130%
 Chaos-Warrior  +2   +1   -1   +0   +2   +1  111%  +12  125%
+Ninja-Lawyer   -1   +0   +0   +2   +0   +2   99%   +8  115%
 Paladin        +3   -3   +1   +0   +2   +2  111%  +12  135%
 Ranger         +2   +0   +2   +1   +1   +0  106%   +8  140%
 Red-Mage       +2   +2   -1   +1   +0   -1  106%   +8  140%
@@ -1296,6 +1337,7 @@ Time-Lord      -1   +0   +3   -1   -1   +0   96%   +0  125%
 Warlock        -1   +2   -3   +0   +2   +4  107%  +15  135%
 Archaeologist  -1   +1   +2   +1   -1   +0  106%   +8  120%
 Bard           -2   +1   +2   -1   -2   +4  100%   +4  140%
+Lawyer         -3   +2   +0   +0   -1   +1  102%  +12  115%
 Rage-Mage      +3   -2   -2   -2   +2   +1  106%   +6  150%
 Skillmaster    +0   +0   +0   +0   +0   +0  100%  +10  130%
 Tourist        -1   -1   -1   -1   -1   -3   95%   +0   70%
@@ -1333,10 +1375,11 @@ Ninja         Superb        Fair          Fair          Superb
 Rogue         Superb        Excellent     Fair          Excellent    
 Scout         Excellent     Very Good     Fair          Excellent    
 Chaos-Warrior Bad           Good          Fair          Fair         
+Ninja-Lawyer  Superb        Good          Fair          Superb       
 Paladin       Bad           Fair          Fair          Fair         
 Ranger        Fair          Excellent     Fair          Good         
 Red-Mage      Bad           Very Good     Fair          Fair         
-Warrior-Mage  Fair          Good          Fair          Fair         
+Warrior-Mage  Fair          Excellent     Fair          Fair         
 Beastmaster   Bad           Fair          Fair          Fair         
 Cavalry       Fair          Bad           Fair          Fair         
 Mindcrafter   Good          Very Good     Fair          Good         
@@ -1346,6 +1389,7 @@ Time-Lord     Poor          Very Good     Fair          Fair
 Warlock       Poor          Superb        Excellent     Very Good    
 Archaeologist Superb        Excellent     Fair          Very Good    
 Bard          Poor          Excellent     Fair          Very Bad     
+Lawyer        Superb        Very Good     Good          Good         
 Rage-Mage     Bad           Bad           Superb        Bad          
 Skillmaster   Very Bad      Very Bad      Very Bad      Poor         
 Tourist       Bad           Bad           Bad           Fair         
@@ -1383,10 +1427,11 @@ Ninja         Excellent     Good          Superb        Poor
 Rogue         Good          Fair          Excellent     Good         
 Scout         Excellent     Fair          Very Good     Superb       
 Chaos-Warrior Poor          Poor          Excellent     Good         
+Ninja-Lawyer  Excellent     Fair          Excellent     Poor         
 Paladin       Poor          Bad           Excellent     Good         
 Ranger        Fair          Poor          Very Good     Good         
 Red-Mage      Poor          Bad           Very Good     Bad          
-Warrior-Mage  Fair          Poor          Fair          Good         
+Warrior-Mage  Fair          Poor          Very Good     Good         
 Beastmaster   Fair          Poor          Fair          Superb       
 Cavalry       Poor          Bad           Excellent     Superb       
 Mindcrafter   Fair          Poor          Fair          Good         
@@ -1396,6 +1441,7 @@ Time-Lord     Poor          Bad           Fair          Poor
 Warlock       Poor          Fair          Fair          Poor         
 Archaeologist Excellent     Good          Very Good     Poor         
 Bard          Poor          Fair          Bad           Bad          
+Lawyer        Excellent     Good          Good          Fair         
 Rage-Mage     Poor          Bad           Fair          Fair         
 Skillmaster   Bad           Bad           Very Bad      Very Bad     
 Tourist       Poor          Bad           Fair          Bad          
@@ -1404,5 +1450,5 @@ Wild-Talent   Fair          Poor          Very Good     Very Good
 
 
 
-Automatically generated for PosChengband 7.0.1.
+Automatically generated for FrogComposband 7.0.strawberry.
 

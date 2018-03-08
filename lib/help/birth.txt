@@ -1,6 +1,6 @@
 <style:title>Creating a Character</style>
 
-PosChengband is a role playing game, in which you, the player, control a character in a dangerous world of myth and magic. The most important decision you make on your quest to the kill the <color:keyword>Serpent of Chaos</color> is what kind of character to play: Spell-wielding magician or sword-waving warrior? Stealthy rogue or musical bard? Holy priest or evil spawn of chaos? The choices are myriad and the process of generating a new character is described in this help file, which will also serve to introduce you to many of the core concepts of the game.
+FrogComposband is a role playing game, in which you, the player, control a character in a dangerous world of myth and magic. The most important decision you make on your quest to the kill the <color:keyword>Serpent of Chaos</color> is what kind of character to play: Spell-wielding magician or sword-waving warrior? Stealthy rogue or musical bard? Holy priest or evil spawn of chaos? The choices are myriad and the process of generating a new character is described in this help file, which will also serve to introduce you to many of the core concepts of the game.
 
 Character creation, or birth, is controlled through a variety of choices. You must choose your character's race (<color:keyword>Human</color>, <color:keyword>Elf</color>, <color:keyword>Hobbit</color>, <color:keyword>Orc</color>, <color:keyword>Undead</color>, <color:keyword>Demon</color>, etc), your character's class (<color:keyword>Warrior</color>, <color:keyword>Mage</color>, <color:keyword>Priest</color>, <color:keyword>Rogue</color>, etc) and you character's personality (<color:keyword>Mighty</color>, <color:keyword>Shrewd</color>, <color:keyword>Patient</color>, etc). Each of these choices are described in the help files (see <link:raceclass_contents.txt>).
 
@@ -9,7 +9,7 @@ There are three main screens for the birth process. The first is a brief welcome
 <topic:Welcome><style:heading>The Welcome Screen</style>
 The first screen is the Welcome Screen. It simply introduces you to the game and allows you to choose one of several options that will control the birth process. It looks someting like this:
 <style:screenshot>  <indent>
-Welcome to <color:R>Poschengband</color>, a dungeon exploration role playing game. Your          
+Welcome to <color:R>FrogComposband</color>, a dungeon exploration role playing game. Your          
 goal is to defeat the dreaded <color:R>Serpent of Chaos</color>, but before you can face         
 it, you must battle many foes. Your first step is to create a character         
 for this quest. The following screens will guide you through this               
@@ -252,7 +252,7 @@ To search is to actively look for secret doors, floor traps, and traps on chests
 Infra-vision is the ability to see heat sources. Since most of the dungeon is cool or cold, infra-vision will not allow the player to see walls and objects. Infra-vision will allow a character to see any warm-blooded creatures up to a certain distance. This ability works equally well with or with out a light source. The majority of monsters are cold-blooded, and will not be detected unless lit up by a light source. Most non-human races have innate infra-vision ability. Humans can gain infra-vision only if it is magically enhanced.</indent>
 
 <topic:Proficiency><style:heading>Proficiency Levels</style>
-In PosChengband, characters possess different proficiency levels or experiences for each weapon type, spells, and a few other skills. The starting proficiency levels and the maximum proficiency levels of a character are based upon class. Each proficiency level may increase when you practice with it, and can be checked by the 'Check various information' command (~).
+In FrogComposband, characters possess different proficiency levels or experiences for each weapon type, spells, and a few other skills. The starting proficiency levels and the maximum proficiency levels of a character are based upon class. Each proficiency level may increase when you practice with it, and can be checked by the 'Check various information' command (~).
 
 For weapon proficiency, you need to hit monsters many times with a weapon of that type to practice. And your to-hit bonus of the weapon will increases with the proficiency level of it. The rate of increase is dependent upon the level of the character and the level of the opponents.
 

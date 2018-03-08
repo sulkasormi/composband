@@ -1,0 +1,292 @@
+FrogComposband FAQ
+
+Q: I'd like to move one square at a time, but every time I press a key 
+my character moves halfway across the screen. Help!
+
+A: You are somehow triggering the Run command instead of the Walk 
+command. In addition to normal running (with the '.' command), 
+FrogComposband uses preference files to support shiftrunning (running 
+by using the Shift key), which is preferred by some players. This 
+mechanic sometimes leads to unwanted running, especially on the 
+angband.live online server which has some very odd default settings. If 
+you are playing there, see if toggling Num Lock helps you stop running, 
+or else request help in the server chat.
+
+
+Q: All right, I have a character up and walking. What should I do?
+
+A: First of all, you will want things that help your character survive 
+difficult situations - either cheap healing potions (cure light/cure 
+serious wounds), or escape scrolls (phase door/teleportation), or 
+ideally both. These are sold at the Temple (shop 4) and the Alchemy 
+Shop (shop 5). After that, you'll probably want to either explore a 
+dungeon (Warrens, in Outpost, is the easiest and the usual starter 
+dungeon) or request and complete one of the early quests. While the 
+Thieves' Hideout quest is marked as level 5, for all but the weakest 
+characters it is doable at the very beginning of the game, at least 
+with a bit of luck and a cure wounds potion or two.
+
+
+Q: How do I access the Thieves' Hideout quest?
+
+A: In Outpost, walk to the large building just outside the city walls 
+and press 'q' to request a quest from the Count. Then walk to the 
+building in the northeast of the city and press '>' at the quest 
+entrance.
+
+
+Q: I keep dying! What am I doing wrong?
+
+A: Don't worry - this is an expected part of the development curve for 
+new players, and even experienced roguelike veterans die a lot (with 
+the possible exception of the player nicknamed "clouded"!) Learn from 
+your mistakes - if a situation got you killed, avoid getting in that 
+situation again, or make sure you have the supplies to keep you alive 
+if something similar does happen again. Do not rely too much on items 
+with a fail rate - the game is long, and if you take too many chances 
+you will fail at the wrong time eventually. Try to avoid situations 
+where you are one fail away from death.
+   
+At the same time, it is much better to have an item that saves you 97% 
+of the time than to not have that item! In particular, Staffs of 
+Teleport are a key helper that will often get you out of a tough spot; 
+unlike scrolls of teleportation, staffs can be used while confused, 
+which is often critical in the early midgame before the player acquires 
+resistance to confusion.
+
+Learn to know the monsters, develop strategies appropriate to their 
+strengths and weaknesses, and avoid fights with enemies too strong for 
+you.
+
+
+Q: I want to play with the strongest possible race/class combination. 
+Which one is that?
+
+A: It's hard to say what the strongest class is, both because there are 
+so many (with different strengths and approaches) and because some 
+classes (like berserkers) are strong in the early game and not so 
+strong later, while others (like psions, an extremely powerful endgame 
+class) have the opposite curve. Ninjas are often used as an example of 
+a strong class, and while it's very debatable whether they are the 
+strongest, they do have the advantage of steady development that keeps 
+them powerful through all phases of the game.
+
+Demigods and Amberites are two of the most powerful races, but they 
+also have a very steep leveling-up penalty, which can be a significant 
+drawback if you want to go places fast. The "plain" human is actually a 
+surprisingly powerful pick, since humans level up very fast but still 
+get two demigod powers at levels 20 and 40.
+
+At the opposite end, yeek tourists and snotling tourists are extremely 
+weak combinations, used by players looking for the ultimate challenge.
+
+
+Q: The game is offering me a stat-up. What should I invest in?
+
+A: Choose a statistic your character needs; for example, on a melee 
+character you'll want to improve either your strength or dexterity 
+first, and constitution will also help you. If the base for one of your 
+key stats is exactly 18, you'll probably want to improve that stat, 
+because improvements get larger and more significant above 18. Do not 
+invest too much in any one stat, though; the improvements become much 
+smaller again as a statistic approaches its cap level.
+
+
+Q: The game is offering me a demigod power. Which one should I pick?
+
+A: It depends on what your character needs; take your time to read the 
+descriptions of all the powers to see which one suits you best. 
+Generally, though, Unyielding and Fleet of Foot are both very strong 
+options and are good "default" picks if you don't feel comfortable 
+selecting something more exotic.
+
+
+Q: I have found lots of cool items, but the monsters I meet keep 
+destroying them! Am I doing something wrong?
+
+A: Elemental resists help protect your inventory. With one level of 
+resistance, the chances of an item being destroyed by that element are 
+significantly reduced; with two levels of resistance, the item will 
+only be destroyed if you're really unlucky; with three levels of 
+resistance the item will be safe. Watch out for fire, acid, cold and 
+electricity in the early game, and also chaos in the late game.
+
+If you don't have the appropriate resist and don't want to risk losing 
+the item, avoid monsters that might destroy it; or, if they only 
+destroy items in melee, avoid melee and kill them with ranged attacks.
+
+Note that the armor you wear will always be susceptible to damage from 
+acid attacks - regardless of your acid resistance level - unless you 
+have immunity to acid. This can be really annoying in the early game; 
+by the late game you'll mostly wear artifacts or excellent items that 
+cannot be harmed by acid.
+
+
+Q: I got bored in Outpost so I headed into the wilderness... and I'm 
+still there searching endlessly down one road after another looking for 
+a town.  Where are other towns and dungeons?
+
+A: You need to use the global wilderness map (press the < key on the 
+ground level).  This gives you a scaled map of the world (often called 
+the "overworld map"), where you can travel to other towns and dungeons 
+more easily.  It is possible to reach any location in the game without 
+using the overworld map (most roads do lead somewhere); but such an 
+approach will take you much longer and also entail more risk, since 
+monsters won't attack you as often if you travel through the overworld 
+map.
+
+
+Q: I cannot access the overworld map. What's wrong?
+
+A: You are either playing in no-wilderness mode, which has no overworld 
+map, or there is a monster nearby and the game won't let you escape too 
+easily by entering the overworld. Selecting 'Beginner' (instead of 
+'Normal') at character creation forces no-wilderness mode, which 
+sometimes confuses players who've seen or heard about the game and 
+expect a wilderness.
+
+
+Q: I want to play as an Android, Balrog, Golem, Skeleton, Zombie, 
+Spectre, or Ent.  But I can't find any scrolls of satisfy hunger. And 
+Berserkers no longer have racial ability of satisfy hunger. How do I 
+avoid starvation?
+
+A: Scrolls of Satisfy Hunger and the Berserker ability of Satisfy 
+Hunger are obsoleted, and races which previously relied on Satisfy 
+Hunger have new sources of nutrition now. Androids can quaff oil.  
+Balrogs can sacrifice human corpses using the 'E'at command.  Golems, 
+Skeletons, Zombies, and Spectres can absorb mana from staves and wands 
+using the 'E'at command.  Ents can gain enough nutrition from potions.
+
+
+Q: I'm playing as a berserker, and cannot read scrolls.  How do I 
+remove a curse?
+
+A: You can simply 't'ake off the cursed equipment.  Since cursed items 
+will attempt to stick, you may need to try the 't'ake off command more 
+than once.
+
+
+Q: I know Berserkers cannot use scrolls, and rods.  How do I recall 
+from dungeon?  Maybe I need to travel completely on foot!?
+
+A: Berserkers gain the class power 'Recall' at level 10.  Press 'U' 
+(original keyset) or 'O' (Roguelike keyset) to use class powers.
+
+
+Q: Why do Ninjas start the game with Iron Spikes?
+
+A: Ninjas can use Iron Spikes as shuriken; use the 'v' command to throw 
+a spike. (Other classes can also use spikes as throwing weapons, but 
+will only do marginal damage; they are much more useful for a ninja.)
+
+
+Q: I'm at normal speed (+0). But normal speed monsters sometimes 
+double-move me!
+
+A: In FrogComposband, the amount of energy needed for a move is 
+somewhat randomized (though less so than in its predecessor 
+PosChengband). This method of speed system is an important feature of 
+FrogComposband and simulates real fighting. Usually a monster with the 
+same speed as you will only get one move in, but always prepare for the 
+possibility that they might get two moves! Don't fight when your HP is 
+low unless you have a death wish.
+
+Also, monsters don't always move at their listed speed; watch out for 
+hasted monsters.
+
+
+Q: I tried to dual wield two weapons.  But I couldn't hit anything!
+
+A: You need to practice your dual wielding skill (proficiency level) 
+and your weapon skills.  Hitting high level monsters many times will 
+improve your skills.  Note that the information command '~' reveals 
+your proficiency levels.
+
+
+Q: How do skills (proficiency levels) work?
+
+A: Weapon proficiency levels and dual wielding proficiency levels 
+increase your to-hit bonus.  Spell proficiency levels decrease fail 
+rate and mana consumption rate of spells.  Riding proficiency level 
+gives you more speed when you are riding on a high speed monster, and 
+decreases risk of falling from your mount.
+
+
+Q: How do I increase my proficiency level?
+
+A: Proficiency level of a weapon will increase when you hit a monster 
+whose level is high enough compared with your character level. 
+Proficiency level of a spell will increase when you cast the spell at a 
+dungeon level deep enough compared with the spell level. The needed 
+conditions to increase riding proficiency are rather complex; 
+generally, you need to hit a monster whose level is high enough 
+compared with current riding proficiency level or to shoot a monster 
+while riding on a high level mount.
+
+
+Q: How do I ride on a monster?
+
+A: At first, summon, charm or capture some suitable monster. Then use 
+the pet menu command 'p'.
+
+
+Q: How do I use a Capture Ball?
+
+A: Just equip it and activate 'A' to a dying monster.
+
+
+Q: I cannot hold a weapon and a shield without losing control of my 
+horse.  My horse runs aimlessly!
+
+A: You cannot directly control your mount unless you use one hand to 
+control your mount.  But you can command your mount.  Just use 'p' 
+command, and give your mount a target.  The horse which was given a 
+target will no longer run around aimlessly.
+
+
+Q: What is the genesis of FrogComposband?
+
+A: FrogComposband is a fork of ComPosband, a fork of PosChengband, 
+which was based on Chengband, which was based on Hengband, which was 
+based on Japanese ZAngband, which was based on regular ZAngband, a fork 
+of Angband, which was based on Moria and Umoria. (Whew!) In addition to 
+these direct ancestors, FrogComposband and its "family" have been 
+strongly influenced by a number of other Angband variants, like 
+KAngband, Posband, ToME and OAngband.
+   
+
+Q: Who wrote Hengband?
+
+A: Hengband is mainly based on ZAngband 2.2.8 Japanese version. 
+ZAngband 2.2.8 Japanese version was developed by Mitsuhiro Itakura, 
+based on both ZAngband 2.2.8 and Angband 2.8.3 Japanese version, and 
+has some original features, for example, Auto-picker, in addition to 
+simple translation.
+
+Hengband also includes codes from many other variants including ToME, 
+OAngband, etc.  Mr.Hoge wrote the first original part of Hengband.  And 
+currently, it is maintained by Hengband Development Team including 
+Mr.Hoge, Habu, Henkma, iks, Kuwa, Mogami and nsk.
+
+
+Q: So is that why there is so much Japanese content in this game?
+
+A: Yes, though it doesn't hurt that Japanese popular culture has many 
+followers worldwide.
+
+
+Q: Is there a more detailed help file?
+
+A: Press '?' in-game to access the online help. If you are already 
+using the online help to read this file, look at the other sections, 
+which offer more detailed advice.
+
+
+--
+Original   : Hengband FAQ written by Mogami
+Updated    : Hengband 1.5.4
+Updated    : PosChengband 1.0.0
+Updated    : FrogComposband 7.0.strawberry
+
+

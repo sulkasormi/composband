@@ -1,10 +1,10 @@
 <style:title>The Newbie Guide</style>
 
-Welcome to <color:keyword>PosChengband</color>! This guide will attempt to give you a quick overview of the game and get you started on your path to slay the dreaded Serpent of Chaos.
+Welcome to <color:keyword>FrogComposband</color>! This guide will attempt to give you a quick overview of the game and get you started on your path to slay the dreaded Serpent of Chaos.
 
 <topic:Overview><style:heading>Overview</style>
 
-PosChengband is a single player role playing game where you, the brave adventurer, attempt to save the world by defeating evil monsters including, eventually, the <color:keyword>Serpent of Chaos</color>. The road is long, and the path is treacherous. Many have tried and failed, and the dungeons are littered with the bones of would be heroes. Do you have what it takes to succeed where so many others have failed? If so, read on.
+FrogComposband is a single player role playing game where you, the brave adventurer, attempt to save the world by defeating evil monsters including, eventually, the <color:keyword>Serpent of Chaos</color>. The road is long, and the path is treacherous. Many have tried and failed, and the dungeons are littered with the bones of would be heroes. Do you have what it takes to succeed where so many others have failed? If so, read on.
 
 <topic:CreatingACharacter><style:heading>Creating a Character</style>
 
@@ -641,9 +641,9 @@ What do all these numbers mean?
 
 <color:B>(+c)</color>    <indent>This is the item's magical bonus to other statistics (and is sometimes referred to as its <color:keyword>pval</color>). Possibilities include one or more of your stats (Strength, Intelligence, Wisdom, Dexterity, Constitution, Charisma), your speed or your stealth. Your searching or infravision might also be improved. There are other possibilities and learning the effects of this bonus often requires you to *Identify* the object.</indent>
 
-<color:B>(XdY)</color>   <indent>This is the damage dice of a melee weapon. When you hit an opponent, the game rolls a Y sided die X times to figure out a base damage. This base damage can be multiplied by any slays on the weapon, and also by critical hits (lucky blows on your part). Then, the game adds all the plusses to damage to the total, including the +y from the (+x,+y) discussed above. So a melee weapon can be good because it has good damage dice (e.g. (6d5) (+0,+0)) or because it has a high damage bonus (e.g. (1d4) (+5,+30)). Ideally, it would have both: (6d5) (+5,+30)!</indent>
+<color:B>(XdY)</color>   <indent>This is the damage dice of a melee weapon. When you hit an opponent, the game rolls a Y sided die X times to figure out a base damage. This base damage can be multiplied by any slays on the weapon, and also by critical hits (lucky blows on your part). Then, the game adds all the plusses to damage to the total, including the +y from the (+x,+y) discussed above. So a melee weapon can be good because it has good damage dice (e.g. (5d6) (+0,+0)) or because it has a high damage bonus (e.g. (1d5) (+5,+30)). Ideally, it would have both: (5d6) (+5,+30)!</indent>
 
-In addition to these attributes, all of which are revealed by Identify, weapons and armors may have additional bonuses. Both may grant a particular resistance that we discussed earlier. In additions, weapons often have slays that target a specific class of monster. Slays work by multiplying the base damage roll (The (XdY) just discussed), and the multiplier varies with the type of slay. For example, a weapon of Slay Orc multiplies the damage dice by a factor of 3, while a *Slay Orc* weapon might (I say, might!) multiply by as high a factor as 5. Obviously, this means more on a (6d5) weapon than on a (1d4) weapon, so the quality of a magical weapon depends heavily on the base type of the object (Daggers do 1d4 while Blades of Chaos do 6d5). You sometimes need to *Identify* a weapon to learn its slays. But sometimes it is obvious from the name of the object (Slay Orc) and you only need to Identify the weapon. Artifacts always required *Identify* to learn their attributes.
+In addition to these attributes, all of which are revealed by Identify, weapons and armors may have additional bonuses. Both may grant a particular resistance that we discussed earlier. In additions, weapons often have slays that target a specific class of monster. Slays work by multiplying the base damage roll (The (XdY) just discussed), and the multiplier varies with the type of slay. For example, a weapon of Slay Orc multiplies the damage dice by a factor of 3, while a *Slay Orc* weapon might (I say, might!) multiply by as high a factor as 5. Obviously, this means more on a (5d6) weapon than on a (1d5) weapon, so the quality of a magical weapon depends heavily on the base type of the object (Daggers do 1d5 while Blades of Chaos do 5d6). You sometimes need to *Identify* a weapon to learn its slays. But sometimes it is obvious from the name of the object (Slay Orc) and you only need to Identify the weapon. Artifacts always required *Identify* to learn their attributes.
 
 <topic:OnExploration><style:heading>On Dungeon Exploration</style>
 
@@ -673,7 +673,7 @@ In the unpleasant event of your character's death, you can create a new characte
 </indent>
   <indent><color:B>On Death</color>
 
-Death in PosChengband is permanent. Saving is meant only to let you pick up where you left off; if you die, your savefile is marked. The next time you try to use the savefile, you will get the new character dialogue. Ancestors of dead characters will retain their monster memory and preferences. Many people here have characters like "Yuppy XIV"; people die very often and death is common, so don't get discouraged. In general, you will kill monsters more often than they kill you!
+Death in FrogComposband is permanent. Saving is meant only to let you pick up where you left off; if you die, your savefile is marked. The next time you try to use the savefile, you will get the new character dialogue. Ancestors of dead characters will retain their monster memory and preferences. Many people here have characters like "Yuppy XIV"; people die very often and death is common, so don't get discouraged. In general, you will kill monsters more often than they kill you!
 </indent>
 <topic:OnBigBoyPants><style:heading>On Big Boy Pants</style>
 
@@ -687,4 +687,5 @@ Updated    : Zangband DevTeam
 Updated    : Hengband 1.0.11
 Updated    : PosChengband 1.0.0
 Updated    : PosChengband 4.0.0
+Updated    : FrogComposband 7.0.strawberry
 </color>

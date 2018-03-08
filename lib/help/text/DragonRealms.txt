@@ -225,5 +225,5 @@ Death          Very Bad      Very Bad      Excellent     Good
 
 
 
-Automatically generated for PosChengband 7.0.1.
+Automatically generated for FrogComposband 7.0.strawberry.
 

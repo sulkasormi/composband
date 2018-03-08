@@ -190,7 +190,7 @@ Pets and Riding
 In this game, pets are very useful. In other variants (such as 
 Zangband), your pets are often so eager to destroy your opponents that 
 they may forget all about you, and you get trampled under their feet as 
-they charge at your foe. In PosChengband, however, pets will never 
+they charge at your foe. In FrogComposband, however, pets will never 
 attack you by mistake; you can walk around in safety even as your pet 
 Great Hell Wyrm breaths. Pets will also never be irritated with you; 
 their will is perfectly dominated by you, and all pets are permanently 
@@ -242,7 +242,7 @@ can summon or otherwise produce more pets...
   
   Dismiss Pets
     Dismiss specified pets. Dismissed pets will immediately disappear 
-    from the current level. PosChengband asks you whether you want to 
+    from the current level. FrogComposband asks you whether you want to 
     dismiss each pet in order from high level named pets to low level 
     unnamed pets. You can press 'U' to dismiss all unnamed pets.
   
@@ -303,7 +303,7 @@ can summon or otherwise produce more pets...
   
   Riding
   
-  In PosChengband, the player can ride on pet horses or dragons, etc. 
+  In FrogComposband, the player can ride on pet horses or dragons, etc. 
   To control your mount, you must keep one hand free for holding the 
   reins. But your pet will attack your target together with you, and 
   enemy's attack will be dispersed. As a result of these, player's 

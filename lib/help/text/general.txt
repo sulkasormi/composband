@@ -4,7 +4,7 @@ This document gives a brief introduction to the game. You will probably
 want to browse through all the help files, especially the sections on 
 available commands (see [a] and [b]), before beginning any serious 
 adventuring. There is also a Newbie guide (see [c]) and I'll leave it 
-you to decide if that is the best place to start reading. (Aside: 
+to you to decide if that is the best place to start reading. (Aside: 
 Whenever you see a letter in square brackets, that is a link to another 
 place in the documentation. Press that letter to follow the link, and 
 escape to return back to where you were in this document. Go ahead and 

@@ -213,5 +213,5 @@ Giants            Poor          Bad           Superb        Fair
 
 
 
-Automatically generated for PosChengband 7.0.1.
+Automatically generated for FrogComposband 7.0.strawberry.
 
