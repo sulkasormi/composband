@@ -417,7 +417,7 @@ magically summons special opponents!
 invokes a mana storm.
 invokes a darkness storm.
 invokes a starburst.
-throw a Psyco-Spear.
+throw a Psycho-Spear.
 invokes the Hand of Doom!
 casts a Globe of Invulnerability.
 #が自分の傷に集中した。
@@ -433,9 +433,16 @@ pleads, 'Wait! I can tell the RNG to play fair!'
 cries, 'Where's a scroll of teleport level when you need one?'
 cries, 'No fair, players get 26 inventory slots and I get none!'
 whimpers, 'Don't you like this game?'
-whimpers, 'If I die, who will take over Poschengband?'
+whimpers, 'If I die, who will take over ComPosband?'
 whimpers, 'But I had this really good idea for a new monster race!'
 whimpers, 'Shit, why did I add fail rates to scrolls of teleportation?'
+
+N:1231:Implorington III
+attempts to reads a Scroll of Teleportation and fails.
+shouts, 'Look, behind you! An obvious diversion!'
+pleads you to think of his crippled parents.
+says, 'If it's loot you're after, I have none, try Jack of Shadows.'
+says, 'Three kobolds walk into a bar. Kill me and you'll never hear the punchline.'
 
 N:*:Default lines
 says, 'I am too young to die.'
@@ -470,6 +477,7 @@ screams for help!
 begs for mercy.
 sobs.
 screams, 'Help! The maniac's murdering me!'
+screams, 'You can't do this to me! I'm friends with the man called Sjijn!'
 says, 'Just what is it you want? Money? Babes? I can arrange it...'
 says, 'Wait! Let's make a deal!'
 says, 'Just can't stop this surmounting terror!'

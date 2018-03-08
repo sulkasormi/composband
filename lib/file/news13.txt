@@ -1,4 +1,4 @@
-<color:y>ComPosband <$:version></color>
+<color:y>FrogComposband <$:version></color>
 <style:screenshot>
 The Mithril Bolt (Elemental) (5d5) (+14,+15) hits Sekhmet the                   
 Mistress of Fury. It was a <color:v>*GREAT*</color> shot! Sekhmet the Mistress of    LEVEL <color:G>    50</color>

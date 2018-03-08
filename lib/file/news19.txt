@@ -1,4 +1,4 @@
-<color:y>ComPosband <$:version></color>
+<color:y>FrogComposband <$:version></color>
 <style:screenshot>
 The Mithril Shot (Elemental) (6d3) (+15,+15) hits Tsukuyomi, Spirit               
 of Moon. It was a <color:v>*GREAT*</color> shot! Tsukuyomi, Spirit of Moon shouts,     LEVEL <color:G>    48</color>

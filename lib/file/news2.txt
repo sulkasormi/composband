@@ -1,4 +1,4 @@
-<color:y>ComPosband <$:version></color>
+<color:y>FrogComposband <$:version></color>
 <style:screenshot>
 <color:g>Azog, King of the Uruk-Hai attacks you: </color>He misses.<color:g> </color>He hits.<color:g> </color>He hits.<color:g> </color>             
 <color:B>You feel that your </color>Guisarme (Pattern)<color:B> is protecting you.</color><color:g> </color>You stand your           

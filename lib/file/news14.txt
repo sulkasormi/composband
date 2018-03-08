@@ -1,4 +1,4 @@
-<color:y>ComPosband <$:version></color>
+<color:y>FrogComposband <$:version></color>
 <style:screenshot>
 <color:U>You attack Abhoth, Source of Uncleanness:</color> You hit. You are <color:G>poisoned</color>!              
 You hit. It was a <color:R>great</color> hit! You are <color:G>poisoned</color>! You hit. You are       LEVEL <color:G>    50</color>

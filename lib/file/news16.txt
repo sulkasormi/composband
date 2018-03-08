@@ -1,4 +1,4 @@
-<color:y>ComPosband <$:version></color>
+<color:y>FrogComposband <$:version></color>
 <style:screenshot>
 <color:D>xxxxxxxxxxxx</color>                               ###  ##     %              LEVEL <color:G>    39</color>
 <color:D>xxxxxxxxxxx</color>                                  ## ###    #              EXP <color:G>    269k</color>

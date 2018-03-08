@@ -1,4 +1,4 @@
-<color:y>ComPosband <$:version></color>
+<color:y>FrogComposband <$:version></color>
 <style:screenshot>
 The Mithril Shot of Endurance (5d3) (+15,+15) hits Dworkin Barimen.               
 <color:v>Dworkin Barimen puts a terrible blood curse on you!</color> There is a        Level <color:y>    44</color>
