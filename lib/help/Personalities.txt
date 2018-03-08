@@ -61,7 +61,7 @@ Nimble renders you highly skilled comparatively well, but reduces your physical 
 
   <indent><style:table><color:G>Stats                   Skills</color>
 Strength      -1        Disarming   <color:g>Superb       </color>
-Intelligence  +1        Device      <color:y>Good         </color>
+Intelligence  +1        Device      <color:o>Fair         </color>
 Wisdom        -1        Save        <color:r>Bad          </color>
 Dexterity     +2        Stealth     <color:o>Fair         </color>
 Constitution  -1        Searching   <color:G>Excellent    </color>
@@ -88,7 +88,7 @@ The Combat personality favors melee and shooting at the expense of other skills 
 
   <indent><style:table><color:G>Stats                   Skills</color>
 Strength      +1        Disarming   <color:r>Bad          </color>
-Intelligence  -1        Device      <color:D>Very Bad     </color>
+Intelligence  -1        Device      <color:r>Bad          </color>
 Wisdom        -1        Save        <color:D>Very Bad     </color>
 Dexterity     +1        Stealth     <color:R>Poor         </color>
 Constitution  +0        Searching   <color:R>Poor         </color>
@@ -114,7 +114,7 @@ A Lucky person has poor stats but, surprisingly, can do all things well. For som
 
   <indent><style:table><color:G>Stats                   Skills</color>
 Strength      -2        Disarming   <color:g>Superb       </color>
-Intelligence  -2        Device      <color:g>Superb       </color>
+Intelligence  -2        Device      <color:G>Excellent    </color>
 Wisdom        -2        Save        <color:y>Good         </color>
 Dexterity     -2        Stealth     <color:o>Fair         </color>
 Constitution  -2        Searching   <color:g>Superb       </color>
@@ -127,7 +127,7 @@ A Patient person does things carefully. Patient people have high constitution, a
 
   <indent><style:table><color:G>Stats                   Skills</color>
 Strength      -1        Disarming   <color:D>Very Bad     </color>
-Intelligence  -1        Device      <color:D>Very Bad     </color>
+Intelligence  -1        Device      <color:r>Bad          </color>
 Wisdom        +1        Save        <color:y>Good         </color>
 Dexterity     -2        Stealth     <color:o>Fair         </color>
 Constitution  +2        Searching   <color:o>Fair         </color>
@@ -144,7 +144,7 @@ Intelligence  +1        Device      <color:G>Excellent    </color>
 Wisdom        +1        Save        <color:r>Bad          </color>
 Dexterity     -1        Stealth     <color:y>Good         </color>
 Constitution  -1        Searching   <color:o>Fair         </color>
-Charisma      -3        Perception  <color:o>Fair         </color>
+Charisma      -2        Perception  <color:o>Fair         </color>
 Life Rating   99%       Melee       <color:D>Very Bad     </color>
 Experience   100%       Bows        <color:g>Superb       </color>
 </style></indent>
@@ -174,7 +174,7 @@ Combat          +1   -1   -1   +1   +0   +0  100%  100%
 Sexy            +1   +1   +1   +1   +1   +1  100%  100%
 Lucky           -2   -2   -2   -2   -2   -2   98%  100%
 Patient         -1   -1   +1   -2   +2   +0  102%  100%
-Craven          -1   +1   +1   -1   -1   -3   99%  100%
+Craven          -1   +1   +1   -1   -1   -2   99%  100%
 Hasty           +0   -1   -2   +2   -1   +0  100%  100%
 
 </style>
@@ -185,12 +185,12 @@ Ordinary     <color:R>Poor         </color> <color:R>Poor         </color> <colo
 Mighty       <color:D>Very Bad     </color> <color:D>Very Bad     </color> <color:D>Very Bad     </color> <color:r>Bad          </color>
 Shrewd       <color:y>Good         </color> <color:g>Superb       </color> <color:o>Fair         </color> <color:R>Poor         </color>
 Pious        <color:D>Very Bad     </color> <color:o>Fair         </color> <color:y>Very Good    </color> <color:r>Bad          </color>
-Nimble       <color:g>Superb       </color> <color:y>Good         </color> <color:r>Bad          </color> <color:o>Fair         </color>
+Nimble       <color:g>Superb       </color> <color:o>Fair         </color> <color:r>Bad          </color> <color:o>Fair         </color>
 Fearless     <color:D>Very Bad     </color> <color:o>Fair         </color> <color:r>Bad          </color> <color:R>Poor         </color>
-Combat       <color:r>Bad          </color> <color:D>Very Bad     </color> <color:D>Very Bad     </color> <color:R>Poor         </color>
+Combat       <color:r>Bad          </color> <color:r>Bad          </color> <color:D>Very Bad     </color> <color:R>Poor         </color>
 Sexy         <color:g>Superb       </color> <color:G>Excellent    </color> <color:y>Good         </color> <color:R>Poor         </color>
-Lucky        <color:g>Superb       </color> <color:g>Superb       </color> <color:y>Good         </color> <color:o>Fair         </color>
-Patient      <color:D>Very Bad     </color> <color:D>Very Bad     </color> <color:y>Good         </color> <color:o>Fair         </color>
+Lucky        <color:g>Superb       </color> <color:G>Excellent    </color> <color:y>Good         </color> <color:o>Fair         </color>
+Patient      <color:D>Very Bad     </color> <color:r>Bad          </color> <color:y>Good         </color> <color:o>Fair         </color>
 Craven       <color:G>Excellent    </color> <color:G>Excellent    </color> <color:r>Bad          </color> <color:y>Good         </color>
 Hasty        <color:D>Very Bad     </color> <color:D>Very Bad     </color> <color:D>Very Bad     </color> <color:r>Bad          </color>
 
@@ -214,4 +214,4 @@ Hasty        <color:D>Very Bad     </color> <color:r>Bad          </color> <colo
 </style>
 
 
-<color:s>Automatically generated for PosChengband 7.0.1.</color>
+<color:s>Automatically generated for FrogComposband 7.0.strawberry.</color>

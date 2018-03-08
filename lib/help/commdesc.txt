@@ -357,7 +357,7 @@ Allow the user to edit the pickpref.prf in the user directory. The <color:keypre
 <topic:Help><style:heading>Help</style>
 
   <indent><color:U>Help (<color:keypress>?</color>)</color>
-Brings up the on-line help system. Note that the help files are just text files in a particular format, and that other help files may be available on the Net. In particular, there are a variety of spoiler files which do not come with the standard distribution. Check the place you got PosChengband from or ask on the newsgroup rec.games.roguelike.angband about them.</indent>
+Brings up the on-line help system. Note that the help files are just text files in a particular format, and that other help files may be available on the Net. In particular, there are a variety of spoiler files which do not come with the standard distribution. Check the place you got FrogComposband from or ask on the newsgroup rec.games.roguelike.angband about them.</indent>
 
   <indent><color:U>Identify Symbol (<color:keypress>/</color>)</color>
 Use this command to find out what a character stands for. For instance, by pressing "/.", you can find out that the "." symbol stands for a floor spot. When used with a symbol that represents creatures, the this command will tell you only what class of creature the symbol stands for, not give you specific information about a creature you can see. To get that, use the Look command.
@@ -381,7 +381,7 @@ Commands that you enter may be recorded to any normal ascii character register. 
 As mentioned above, you may record commands with the <color:keypress>"</color> command and play them back later with the <color:keypress>'</color> command. Commands are stored in registers, each of which is addressed with a single ASCII character. For example, if you record a command with <color:keypress>"t<cmd></color>, then you may later play it back by pressing <color:keypress>'t</color>. These command registers are temporary and will be erased every time you restart the game. To view your recorded commands, choose the <color:keypress>'</color> register (i.e., press <color:keypress>''</color> from the top level). You can then enter the register you wish to use (e.g. <color:keypress>''t</color> works the same as <color:keypress>'t</color> except that the register contents of all recorded commands are displayed to you after you press the second <color:keypress>'</color>).</indent>
 
   <indent><color:U>Toggle Choice Window (<color:keypress>^I</color>)</color>
-Toggles the display in the choice window (if available) between your inventory and your equipment. This command only applies if you are running PosChengband under a windowing environment and the choice window is available. This also redraws the choice window.</indent>
+Toggles the display in the choice window (if available) between your inventory and your equipment. This command only applies if you are running FrogComposband under a windowing environment and the choice window is available. This also redraws the choice window.</indent>
 
   <indent><color:U>Redraw Screen (<color:keypress>^R</color>)</color>
 This command adapts to various changes in global options, and redraws all of the windows. This command should be used after changing various global properties (options, attr/char mappings, color definitions, etc). When in doubt, use it.</indent>

@@ -115,7 +115,7 @@ Some of the monsters in the dungeons are so fearsome to look upon that doing so 
 
 <topic:Pets><style:heading>Pets and Riding</style>
 
-In this game, pets are very useful. In other variants (such as Zangband), your pets are often so eager to destroy your opponents that they may forget all about you, and you get trampled under their feet as they charge at your foe. In PosChengband, however, pets will never attack you by mistake; you can walk around in safety even as your pet Great Hell Wyrm breaths. Pets will also never be irritated with you; their will is perfectly dominated by you, and all pets are permanently your pets.
+In this game, pets are very useful. In other variants (such as Zangband), your pets are often so eager to destroy your opponents that they may forget all about you, and you get trampled under their feet as they charge at your foe. In FrogComposband, however, pets will never attack you by mistake; you can walk around in safety even as your pet Great Hell Wyrm breaths. Pets will also never be irritated with you; their will is perfectly dominated by you, and all pets are permanently your pets.
 
 One might think that they can make the game much easier. It is of course highly satisfying to send your pet Great Hell Wyrm into a Troll pit and wait outside listening for the howls of agony and terror, the sounds of guts splattering, bones crunching and so on. But one should not expect to gain much experience and item drops for such a combat: you will only gain full experience and items for creatures to whom you deliver the death blow yourself.
 
@@ -136,7 +136,7 @@ Your pets are fairly well trained and will respond to a variety of commands such
 Here is a list of available pet commands:
 
 <style:keyword>Dismiss Pets</style>
-  <indent>Dismiss specified pets. Dismissed pets will immediately disappear from the current level. PosChengband asks you whether you want to dismiss each pet in order from high level named pets to low level unnamed pets. You can press 'U' to dismiss all unnamed pets.</indent>
+  <indent>Dismiss specified pets. Dismissed pets will immediately disappear from the current level. FrogComposband asks you whether you want to dismiss each pet in order from high level named pets to low level unnamed pets. You can press 'U' to dismiss all unnamed pets.</indent>
 
 <style:keyword>Specify Target of Pet</style>
   <indent>Choose a target monster, then all your pets will begin to chase the target.</indent>
@@ -189,7 +189,7 @@ Here is a list of available pet commands:
 </indent>
   <indent><color:U>Riding</color>
 
-In PosChengband, the player can ride on pet horses or dragons, etc. To control your mount, you must keep one hand free for holding the reins. But your pet will attack your target together with you, and enemy's attack will be dispersed. As a result of these, player's damage in combat will get reduced in total.
+In FrogComposband, the player can ride on pet horses or dragons, etc. To control your mount, you must keep one hand free for holding the reins. But your pet will attack your target together with you, and enemy's attack will be dispersed. As a result of these, player's damage in combat will get reduced in total.
 
 The most important feature of riding is speed. When you are riding on a pet, your speed doesn't depend on your original speed but depends only on the speed of your mount and your skill at riding. Quaffing a potion of speed has no effect on your mount's speed, but throwing it at a wall will hasten your pet if it is nearby. You can use a wand or a spell of haste monster too.
 

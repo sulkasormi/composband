@@ -1,0 +1,324 @@
+<style:title>Demigod Parentage</style>
+
+The term demigod is commonly used to describe mythological figures whose one parent was a god and whose other parent was human; as such, demigods are human-god hybrids and are quite powerful. Demigods receive special abilities depending on their parentage.
+
+<topic:Minor-God><color:o>Minor-God</color>
+Fathered by a minor god, you gain no starting powers.
+
+  <indent><style:table><color:G>Stats                   Skills</color>
+Strength      +1        Disarming   <color:o>Fair         </color>
+Intelligence  +1        Device      <color:o>Fair         </color>
+Wisdom        +1        Save        <color:o>Fair         </color>
+Dexterity     +1        Stealth     <color:r>Bad          </color>
+Constitution  +1        Searching   <color:r>Bad          </color>
+Charisma      +1        Perception  <color:G>Excellent    </color>
+Life Rating  100%       Melee       <color:G>Excellent    </color>
+Base HP       20        Bows        <color:y>Very Good    </color>
+Experience   180%       Infravision 0'
+</style></indent>
+<topic:Zeus><color:o>Zeus</color>
+Zeus, King of the gods and ruler of Mount Olympus, is god of the Sky and Thunder, and nominal husband of Hera. You inherit increased stature and your divine birth will be marked by your aura of electricity. You also resist lightning.
+
+  <indent><style:table><color:G>Stats                   Skills</color>
+Strength      +2        Disarming   <color:o>Fair         </color>
+Intelligence  +2        Device      <color:y>Good         </color>
+Wisdom        +2        Save        <color:y>Good         </color>
+Dexterity     +2        Stealth     <color:r>Bad          </color>
+Constitution  +2        Searching   <color:r>Bad          </color>
+Charisma      +2        Perception  <color:G>Excellent    </color>
+Life Rating  100%       Melee       <color:g>Superb       </color>
+Base HP       20        Bows        <color:G>Excellent    </color>
+Experience   250%       Infravision 0'
+</style></indent>
+<topic:Poseidon><color:o>Poseidon</color>
+Poseidon, Brother of Zeus, is Lord of the Seas and Storm. You inherit elemental protection and corrosive attacks that melt the armor of your foes.
+
+  <indent><style:table><color:G>Stats                   Skills</color>
+Strength      +2        Disarming   <color:o>Fair         </color>
+Intelligence  +1        Device      <color:o>Fair         </color>
+Wisdom        +1        Save        <color:o>Fair         </color>
+Dexterity     +2        Stealth     <color:r>Bad          </color>
+Constitution  +1        Searching   <color:r>Bad          </color>
+Charisma      +1        Perception  <color:G>Excellent    </color>
+Life Rating  100%       Melee       <color:g>Superb       </color>
+Base HP       20        Bows        <color:y>Very Good    </color>
+Experience   240%       Infravision 0'
+</style></indent>
+<topic:Hades><color:o>Hades</color>
+Hades is Ruler of the Underworld. You gain resistance to nether forces, increased fortitude and have a firm grasp on your life and health.
+
+  <indent><style:table><color:G>Stats                   Skills</color>
+Strength      +1        Disarming   <color:o>Fair         </color>
+Intelligence  +1        Device      <color:o>Fair         </color>
+Wisdom        +1        Save        <color:G>Excellent    </color>
+Dexterity     +1        Stealth     <color:R>Poor         </color>
+Constitution  +3        Searching   <color:r>Bad          </color>
+Charisma      +1        Perception  <color:G>Excellent    </color>
+Life Rating  107%       Melee       <color:g>Superb       </color>
+Base HP       20        Bows        <color:y>Very Good    </color>
+Experience   240%       Infravision 0'
+</style></indent>
+<topic:Athena><color:o>Athena</color>
+Athena is the great goddess of wisdom and the protector of Athens. She was born of Zeus and the Titan Metis, and her cunning far surpasses that of the other deities. You inherit great clarity of thought and magic and will be able to cast spells more reliably than other mortals. And should you fail to cast a spell, you will pay a reduced casting cost rather than the full amount. You also have a firm grip on your mental prowess.
+
+  <indent><style:table><color:G>Stats                   Skills</color>
+Strength      +1        Disarming   <color:o>Fair         </color>
+Intelligence  +3        Device      <color:G>Excellent    </color>
+Wisdom        +1        Save        <color:o>Fair         </color>
+Dexterity     +1        Stealth     <color:r>Bad          </color>
+Constitution  +1        Searching   <color:r>Bad          </color>
+Charisma      +1        Perception  <color:G>Excellent    </color>
+Life Rating  100%       Melee       <color:G>Excellent    </color>
+Base HP       20        Bows        <color:y>Very Good    </color>
+Experience   240%       Infravision 0'
+</style></indent>
+<topic:Ares><color:o>Ares</color>
+Ares is the bold son of Zeus and Hera, whose very name is feared and respected by warriors and citizens alike. His legendary combat prowess exceeds that of Zeus and Poseidon, but he is less skilled in wiles than the other Olympians. You inherit exceptional bonuses to combat and have a firm grip on your strength. Later in life, you will be able to fly into a berserk rage on command. However, your lust for combat decreases your stealth as you call out challenges to all that you meet. And your resistance to magic is suspect as well.
+
+  <indent><style:table><color:G>Stats                   Skills</color>
+Strength      +3        Disarming   <color:o>Fair         </color>
+Intelligence  +1        Device      <color:R>Poor         </color>
+Wisdom        +1        Save        <color:r>Bad          </color>
+Dexterity     +1        Stealth     <color:r>Bad          </color>
+Constitution  +1        Searching   <color:r>Bad          </color>
+Charisma      +1        Perception  <color:G>Excellent    </color>
+Life Rating  100%       Melee       <color:b>Heroic       </color>
+Base HP       20        Bows        <color:y>Very Good    </color>
+Experience   240%       Infravision 0'
+</style></indent>
+<topic:Hermes><color:o>Hermes</color>
+Hermes, the Messenger, is the extremely cunning diplomat used by the Olympians to negotiate truces. With his Winged Sandals and his powerful magic, there is no place barred from him, and there is no way to detain him. You inherit great powers of motion and will never become slowed. Your stealth is better than your brethren and your speed will increase with experience.
+
+  <indent><style:table><color:G>Stats                   Skills</color>
+Strength      +1        Disarming   <color:G>Excellent    </color>
+Intelligence  +1        Device      <color:o>Fair         </color>
+Wisdom        +1        Save        <color:o>Fair         </color>
+Dexterity     +1        Stealth     <color:o>Fair         </color>
+Constitution  +1        Searching   <color:y>Good         </color>
+Charisma      +1        Perception  <color:g>Superb       </color>
+Life Rating  100%       Melee       <color:G>Excellent    </color>
+Base HP       20        Bows        <color:y>Very Good    </color>
+Experience   240%       Infravision 0'
+</style></indent>
+<topic:Apollo><color:o>Apollo</color>
+Apollo has been variously recognized as a god of light and the sun, truth and prophecy, medicine, healing, plague, music, poetry, arts, archery, and more. You inherit powers of illumination and are completely immune to light based attacks. You are seldom blinded.
+
+  <indent><style:table><color:G>Stats                   Skills</color>
+Strength      +1        Disarming   <color:o>Fair         </color>
+Intelligence  +1        Device      <color:o>Fair         </color>
+Wisdom        +1        Save        <color:o>Fair         </color>
+Dexterity     +1        Stealth     <color:r>Bad          </color>
+Constitution  +1        Searching   <color:r>Bad          </color>
+Charisma      +1        Perception  <color:G>Excellent    </color>
+Life Rating  100%       Melee       <color:G>Excellent    </color>
+Base HP       20        Bows        <color:y>Very Good    </color>
+Experience   230%       Infravision 0'
+</style></indent>
+<topic:Artemis><color:o>Artemis</color>
+Artemis was often described as the daughter of Zeus and Leto, and the twin sister of Apollo. She was the Hellenic goddess of the hunt, wild animals, wilderness, childbirth, virginity and young girls, bringing and relieving disease in women; she often was depicted as a huntress carrying a bow and arrows. You inherit powers of archery and are very nimble. Your skills with the bow are unmatched and you shoot arrows with increased range and deadliness.
+
+  <indent><style:table><color:G>Stats                   Skills</color>
+Strength      +1        Disarming   <color:o>Fair         </color>
+Intelligence  +1        Device      <color:o>Fair         </color>
+Wisdom        +1        Save        <color:o>Fair         </color>
+Dexterity     +3        Stealth     <color:r>Bad          </color>
+Constitution  +1        Searching   <color:r>Bad          </color>
+Charisma      +1        Perception  <color:G>Excellent    </color>
+Life Rating  100%       Melee       <color:G>Excellent    </color>
+Base HP       20        Bows        <color:g>Superb       </color>
+Experience   230%       Infravision 0'
+</style></indent>
+<topic:Hephaestus><color:o>Hephaestus</color>
+Hephaestus was the god of technology, blacksmiths, craftsmen, artisans, sculptors, metals, metallurgy, fire and volcanoes. Like other mythic smiths but unlike most other gods, Hephaestus was lame, which gave him a grotesque appearance in Greek eyes. He served as the blacksmith of the gods. You inherit powers of enchantment and protection. Your equipment will not suffer diminution by corrosion or magical attack.
+
+  <indent><style:table><color:G>Stats                   Skills</color>
+Strength      +1        Disarming   <color:o>Fair         </color>
+Intelligence  +1        Device      <color:o>Fair         </color>
+Wisdom        +1        Save        <color:o>Fair         </color>
+Dexterity     +1        Stealth     <color:r>Bad          </color>
+Constitution  +1        Searching   <color:r>Bad          </color>
+Charisma      +1        Perception  <color:G>Excellent    </color>
+Life Rating  100%       Melee       <color:g>Superb       </color>
+Base HP       20        Bows        <color:y>Very Good    </color>
+Experience   230%       Infravision 0'
+</style></indent>
+<topic:Hera><color:o>Hera</color>
+Hera was the wife and one of three sisters of Zeus. Her chief function was as the goddess of women and marriage. You inherit great clarity of mind and capacity for magic. You are very wise and have a firm grasp on your magical energy, which is even augmented.
+
+  <indent><style:table><color:G>Stats                   Skills</color>
+Strength      +1        Disarming   <color:o>Fair         </color>
+Intelligence  +1        Device      <color:y>Good         </color>
+Wisdom        +3        Save        <color:y>Good         </color>
+Dexterity     +1        Stealth     <color:r>Bad          </color>
+Constitution  +1        Searching   <color:r>Bad          </color>
+Charisma      +1        Perception  <color:G>Excellent    </color>
+Life Rating  100%       Melee       <color:G>Excellent    </color>
+Base HP       20        Bows        <color:y>Very Good    </color>
+Experience   220%       Infravision 0'
+</style></indent>
+<topic:Demeter><color:o>Demeter</color>
+Demeter is the goddess of the harvest, who presided over grains, the fertility of the earth, and the seasons. You gain powers of regeneration, healing, and temperance. Eventually, you will become resistant to the ravages of time.
+
+  <indent><style:table><color:G>Stats                   Skills</color>
+Strength      +1        Disarming   <color:o>Fair         </color>
+Intelligence  +1        Device      <color:o>Fair         </color>
+Wisdom        +1        Save        <color:y>Good         </color>
+Dexterity     +1        Stealth     <color:r>Bad          </color>
+Constitution  +1        Searching   <color:r>Bad          </color>
+Charisma      +1        Perception  <color:G>Excellent    </color>
+Life Rating  100%       Melee       <color:G>Excellent    </color>
+Base HP       20        Bows        <color:y>Very Good    </color>
+Experience   220%       Infravision 0'
+</style></indent>
+<topic:Aphrodite><color:o>Aphrodite</color>
+Aphrodite is the Greek goddess of love, beauty, pleasure, and procreation. You inherit her sex appeal. As such, your pets are more obedient and shopkeepers fawn over you in their efforts to please you. You may kiss monsters and they might even decide to follow you with slavish devotion, though sometimes this just angers them.
+
+  <indent><style:table><color:G>Stats                   Skills</color>
+Strength      +1        Disarming   <color:o>Fair         </color>
+Intelligence  +1        Device      <color:o>Fair         </color>
+Wisdom        +1        Save        <color:o>Fair         </color>
+Dexterity     +1        Stealth     <color:r>Bad          </color>
+Constitution  +1        Searching   <color:r>Bad          </color>
+Charisma      +3        Perception  <color:G>Excellent    </color>
+Life Rating  100%       Melee       <color:G>Excellent    </color>
+Base HP       20        Bows        <color:y>Very Good    </color>
+Experience   220%       Infravision 0'
+</style></indent>
+<topic:Tables><style:heading>Table 1 - Demigod Statistic Bonus Table</style>
+
+<style:table><color:G>               STR  INT  WIS  DEX  CON  CHR  Life  Exp  Shop</color>
+Minor-God       +1   +1   +1   +1   +1   +1  100%  180%  100%
+Zeus            +2   +2   +2   +2   +2   +2  100%  250%   90%
+Poseidon        +2   +1   +1   +2   +1   +1  100%  240%  100%
+Hades           +1   +1   +1   +1   +3   +1  107%  240%  100%
+Athena          +1   +3   +1   +1   +1   +1  100%  240%  100%
+Ares            +3   +1   +1   +1   +1   +1  100%  240%  100%
+Hermes          +1   +1   +1   +1   +1   +1  100%  240%  100%
+Apollo          +1   +1   +1   +1   +1   +1  100%  230%  100%
+Artemis         +1   +1   +1   +3   +1   +1  100%  230%  100%
+Hephaestus      +1   +1   +1   +1   +1   +1  100%  230%  100%
+Hera            +1   +1   +3   +1   +1   +1  100%  220%  100%
+Demeter         +1   +1   +1   +1   +1   +1  100%  220%  100%
+Aphrodite       +1   +1   +1   +1   +1   +3  100%  220%   70%
+
+</style>
+<topic:Skills1><style:heading>Table 2 - Demigod Skill Bonus Table I</style>
+<style:table>
+             <color:w>Disarming     Device        Save          Stealth      </color>
+Minor-God    <color:o>Fair         </color> <color:o>Fair         </color> <color:o>Fair         </color> <color:r>Bad          </color>
+Zeus         <color:o>Fair         </color> <color:y>Good         </color> <color:y>Good         </color> <color:r>Bad          </color>
+Poseidon     <color:o>Fair         </color> <color:o>Fair         </color> <color:o>Fair         </color> <color:r>Bad          </color>
+Hades        <color:o>Fair         </color> <color:o>Fair         </color> <color:G>Excellent    </color> <color:R>Poor         </color>
+Athena       <color:o>Fair         </color> <color:G>Excellent    </color> <color:o>Fair         </color> <color:r>Bad          </color>
+Ares         <color:o>Fair         </color> <color:R>Poor         </color> <color:r>Bad          </color> <color:r>Bad          </color>
+Hermes       <color:G>Excellent    </color> <color:o>Fair         </color> <color:o>Fair         </color> <color:o>Fair         </color>
+Apollo       <color:o>Fair         </color> <color:o>Fair         </color> <color:o>Fair         </color> <color:r>Bad          </color>
+Artemis      <color:o>Fair         </color> <color:o>Fair         </color> <color:o>Fair         </color> <color:r>Bad          </color>
+Hephaestus   <color:o>Fair         </color> <color:o>Fair         </color> <color:o>Fair         </color> <color:r>Bad          </color>
+Hera         <color:o>Fair         </color> <color:y>Good         </color> <color:y>Good         </color> <color:r>Bad          </color>
+Demeter      <color:o>Fair         </color> <color:o>Fair         </color> <color:y>Good         </color> <color:r>Bad          </color>
+Aphrodite    <color:o>Fair         </color> <color:o>Fair         </color> <color:o>Fair         </color> <color:r>Bad          </color>
+
+</style>
+<topic:Skills2><style:heading>Table 3 - Demigod Skill Bonus Table II</style>
+<style:table>
+             <color:w>Searching     Perception    Melee         Bows          Infra</color>
+Minor-God    <color:r>Bad          </color> <color:G>Excellent    </color> <color:G>Excellent    </color> <color:y>Very Good    </color>    0'
+Zeus         <color:r>Bad          </color> <color:G>Excellent    </color> <color:g>Superb       </color> <color:G>Excellent    </color>    0'
+Poseidon     <color:r>Bad          </color> <color:G>Excellent    </color> <color:g>Superb       </color> <color:y>Very Good    </color>    0'
+Hades        <color:r>Bad          </color> <color:G>Excellent    </color> <color:g>Superb       </color> <color:y>Very Good    </color>    0'
+Athena       <color:r>Bad          </color> <color:G>Excellent    </color> <color:G>Excellent    </color> <color:y>Very Good    </color>    0'
+Ares         <color:r>Bad          </color> <color:G>Excellent    </color> <color:b>Heroic       </color> <color:y>Very Good    </color>    0'
+Hermes       <color:y>Good         </color> <color:g>Superb       </color> <color:G>Excellent    </color> <color:y>Very Good    </color>    0'
+Apollo       <color:r>Bad          </color> <color:G>Excellent    </color> <color:G>Excellent    </color> <color:y>Very Good    </color>    0'
+Artemis      <color:r>Bad          </color> <color:G>Excellent    </color> <color:G>Excellent    </color> <color:g>Superb       </color>    0'
+Hephaestus   <color:r>Bad          </color> <color:G>Excellent    </color> <color:g>Superb       </color> <color:y>Very Good    </color>    0'
+Hera         <color:r>Bad          </color> <color:G>Excellent    </color> <color:G>Excellent    </color> <color:y>Very Good    </color>    0'
+Demeter      <color:r>Bad          </color> <color:G>Excellent    </color> <color:G>Excellent    </color> <color:y>Very Good    </color>    0'
+Aphrodite    <color:r>Bad          </color> <color:G>Excellent    </color> <color:G>Excellent    </color> <color:y>Very Good    </color>    0'
+
+</style>
+<topic:Powers><style:heading>Table 4 - Demigod Special Powers</style>
+
+All demigods have access to special powers. When they reach level 20, they may choose a single power from the following list. When they reach level, 40, they may choose another. These powers can never be removed or changed, so you might want to study this list to decide which powers you will choose for your character.
+
+  <indent><color:G>Ambidexterity</color>
+You will be able to dual wield more effectively.</indent>
+
+  <indent><color:G>Arcane Mastery</color>
+Your spells will fail less often.</indent>
+
+  <indent><color:G>Astral Guide</color>
+Teleportation costs less energy.</indent>
+
+  <indent><color:G>Black Marketeer</color>
+You will gain favorable pricing in the black market.</indent>
+
+  <indent><color:G>Cult of Personality</color>
+Summoned monsters may sometimes switch alliances.</indent>
+
+  <indent><color:G>Demonic Grasp</color>
+You resist charge draining.</indent>
+
+  <indent><color:G>Evasion</color>
+You will dodge enemy breath attacks and have better odds for avoiding earthquakes.</indent>
+
+  <indent><color:G>Fantastic Frenzy</color>
+You kill weak monsters more efficiently.</indent>
+
+  <indent><color:G>Fast Learner</color>
+You will gain a bonus to experience for each monster slain.</indent>
+
+  <indent><color:G>Fell Sorcery</color>
+Your spells will grow more powerful.</indent>
+
+  <indent><color:G>Fleet of Foot</color>
+Movement costs less energy.</indent>
+
+  <indent><color:G>Infernal Deal</color>
+You will regain hp and sp whenever a nearby enemy monster is slain.</indent>
+
+  <indent><color:G>Loremaster</color>
+Items will automatically identify as you pick them up.</indent>
+
+  <indent><color:G>One with Magic</color>
+You will have a chance of resisting Dispel Magic.</indent>
+
+  <indent><color:G>Peerless Sniper</color>
+Damaging a monster with a missile weapon no longer provokes a retaliation.</indent>
+
+  <indent><color:G>Peerless Tracker</color>
+You will gain the ability to map your surroundings.</indent>
+
+  <indent><color:G>Potion Chugger</color>
+You will be able to chug potions much faster than normal.</indent>
+
+  <indent><color:G>Sacred Vitality</color>
+You will gain a bonus to all healing effects.</indent>
+
+  <indent><color:G>Speed Reader</color>
+You will be able to read scrolls much faster than normal.</indent>
+
+  <indent><color:G>Subtle Casting</color>
+Damaging a monster with distance magic no longer provokes a retaliation.</indent>
+
+  <indent><color:G>Tread Softly</color>
+Your stealth will increase.</indent>
+
+  <indent><color:G>Untouchable</color>
+You will gain a bonus to armor class.</indent>
+
+  <indent><color:G>Unyielding</color>
+You will gain a bonus to hitpoints.</indent>
+
+  <indent><color:G>Weapon Versatility</color>
+You will be able to master any weapon.</indent>
+
+  <indent><color:G>Weird Mind</color>
+You resist the Eldritch Horror.</indent>
+
+
+
+
+
+<color:s>Automatically generated for FrogComposband 7.0.strawberry.</color>

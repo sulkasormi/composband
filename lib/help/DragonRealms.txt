@@ -163,4 +163,4 @@ Death          <color:D>Very Bad     </color> <color:D>Very Bad     </color> <co
 </style>
 
 
-<color:s>Automatically generated for PosChengband 7.0.1.</color>
+<color:s>Automatically generated for FrogComposband 7.0.strawberry.</color>

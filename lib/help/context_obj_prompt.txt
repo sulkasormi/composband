@@ -1,6 +1,6 @@
 <style:title>Selecting Objects</style>
 
-Objects are a big part of playing <color:keyword>PosChengband</color>. Many commands (such as quaffing potions or reading scrolls) require you to select an object to use. Other commands allow you to view and inspect the objects you are carrying or using. This helpfile explains the user interface for viewing and selecting objects.
+Objects are a big part of playing <color:keyword>FrogComposband</color>. Many commands (such as quaffing potions or reading scrolls) require you to select an object to use. Other commands allow you to view and inspect the objects you are carrying or using. This helpfile explains the user interface for viewing and selecting objects.
 
 <topic:Sample><style:heading>An Example</style>
 
