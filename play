@@ -2,7 +2,7 @@
 
 if [ "$1" == "" ]; then
     echo 'Play which character?'
-    ls ~/.angband/PosChengband/save | grep 1000.* | sed 's/1000.//'
+    ls ~/.angband/FrogComposband/save | grep 1000.* | sed 's/1000.//'
 else
     # Why do these reset every time I reboot?
     xset +fp /usr/share/fonts/truetype/dejavu
@@ -38,6 +38,6 @@ else
 
     #export ANGBAND_X11_GAMMA=185
 
-    ./poschengband -g -mx11 -u$1 -- -n3
-    #./poschengband -g -mx11 -u$1 -- -n1
+    ./frogcomposband -g -mx11 -u$1 -- -n3
+    #./frogcomposband -g -mx11 -u$1 -- -n1
 fi
