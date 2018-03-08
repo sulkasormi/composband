@@ -27,6 +27,7 @@ L:b:MON(singing)
 L:k:OBJ(elvish waybread)
 L:m:OBJ(potion of boldness)
 L:n:OBJ(potion of booze)
+!:SCRAMBLE(m,n)
 M:######################################
 M:#$...........#....#....kkm#.........$#
 M:#..b.........+....+....kkn#..........#

@@ -91,7 +91,7 @@ R:OBJ(broad axe)
 ?:[AND [EQU $CLASS Weaponmaster] [EQU $SPECIALITY Clubs] ]
 R:OBJ(war hammer)
 
-?:[EQU $CLASS Ninja]
+?:[EQU $CLASS Ninja Ninja-Lawyer]
 R:OBJ(^dagger$)
 
 ?:[AND [EQU $CLASS Weaponmaster] [EQU $SPECIALITY Daggers] ]

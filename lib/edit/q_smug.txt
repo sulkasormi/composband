@@ -1,0 +1,81 @@
+# Adapted from Frogspawn
+
+?:[EQU $QUEST73 Taken InProgress]
+D:Illegal mushrooms are showing up on the streets and even in the school,
+D:and more and more people are getting addicted. At first we thought the
+D:new shroomery was to blame, but we raided the place and couldn't find
+D:anything illegal. It appears the actual culprits are smugglers who get
+D:the shrooms cheap from some old hobbit, sneak them into our town and sell
+D:them here at a tidy profit. We know who they are and where they're
+D:operating from, unfortunately a certain corn-loving hag won't give us a
+D:search warrant, so legally there's absolutely nothing we can do.
+D:We'd appreciate it if a private detective paid those sons of vampire bats
+D:a quick visit and maybe killed them in self-defence. Their base is a small
+D:house just north of here.
+
+?:[EQU $QUEST73 Completed]
+D:Thank you for your discreet help. You may keep any interesting mushrooms
+D:you found; here's a legal extra one we booked as evidence earlier,
+D:hopefully it will be of use to you. Er... you did kill the smugglers in
+D:self-defence, right?
+?:1
+
+?:[EQU $QUEST73 Failed]
+D:Well, that's just fantabulous. Let's say you blundered in by accident and
+D:happened to see a humongous pile of illegal mushrooms? Maybe we can use
+D:that as evidence.
+?:1
+
+T:QUEST:NORMAL
+L:#:PERMANENT
+L:%:GRANITE
+L:<:UP_STAIR
+L:.:FLOOR
+L:,:FLOOR(ICKY)
+L:f:MON(basement cat)
+L:&:LOCKED_DOOR_7
+L:+:CLOSED_DOOR
+L:A:FLOOR(ICKY):MON(archangel)
+L:C:MON(clairvoyant)
+L:n:MON(black knight)
+L:t:MON(master thief)
+L:p:MON(death knight)
+L:r:MON(master rogue)
+L:o:OBJ(*)
+L:!:OBJ(pint of fine ale)
+L:7:FLOOR(ICKY):OBJ(mushroom of fast recovery)
+L:P:FLOOR(ICKY):OBJ(mushroom of confusion)
+L:8:FLOOR(ICKY):OBJ(mushroom of hallucination)
+L:2:FLOOR(ICKY):OBJ(mushroom of weakness)
+L:3:FLOOR(ICKY):OBJ(mushroom of naivety)
+L:5:FLOOR(ICKY):OBJ(mushroom of poison)
+L:9:FLOOR(ICKY):OBJ(mushroom of stupidity)
+L:6:OBJ(*, DEPTH+5)
+L:0:OBJ(cloak)
+L:4:OBJ(leather gloves, DEPTH+3):EGO(thief)
+L:x:OBJ(scroll of rumour)
+L:1:OBJ(piece of elvish waybread)
+L:$:OBJ(GOLD)
+L:E:FLOOR(ICKY):OBJ(GOLD)
+L:-:OBJ(WAND_STONE_TO_MUD)
+!:SCRAMBLE(2,3,5,9)
+!:SCRAMBLE(7,P)
+M:####################
+M:#EEE,,,,,9523P78888#
+M:#EEE,A,,,32957P8888#
+M:#####%##############
+M:#####..#.........r6#
+M:#4..#..+.....xp.r-6#
+M:#.t.#..#.........r6#
+M:#...#..#############
+M:##+##..#..........$#
+M:#.r.r..+.....nt...$#
+M:#.r.r..#..........$#
+M:###+################
+M:#0.........#......6#
+M:#......!#r.#.......#
+M:#......rr1.&....C..#
+M:#..........#.......#
+M:#4..<......#$.....6#
+M:####################
+R:OBJ(mushroom of restoring)

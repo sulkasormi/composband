@@ -1,19 +1,21 @@
 ?:[EQU $QUEST67 Taken InProgress]
-D:Hah! Can't get rid of you that easily. For your next
-D:assessment I would like the hearts of five great crystal drakes.
-D:You can find them nesting in the crystal castle away to
-D:the east. 
+D:I always... uh, our city always needs more money, and I know a
+D:mage in Thalos who would pay handsomely for a shipment of dragons'
+D:hearts. What'd you say you open five great crystal drakes for him
+D:and we split the reward? You should find the drakes nesting in the
+D:crystal castle away to the east.
 ?:1
 
 ?:[EQU $QUEST67 Completed]
-D:Well done on the advanced examinations. Here is your
-D:Magister's crown.
+D:Thank you very much, here's your share of the reward. I look forward
+D:to working together with you again.
 ?:1
 
 ?:[EQU $QUEST67 Failed]
-D:Back already? Hmm let's see. Didn't make the grade.
+D:That's a pity, I guess I should have contracted someone more
+D:experienced. 
 ?:1
 
-R:OBJ(jewel encrusted crown):EGO(magi)
+R:OBJ(AMULET):ART(*)
 
 # vim: filetype=q :

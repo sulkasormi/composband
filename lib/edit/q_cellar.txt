@@ -1,0 +1,44 @@
+# Adapted from Frogspawn with new map
+
+?:[EQU $QUEST72 Taken InProgress]
+D:Some nights ago, a local woman heard a dreadful scream from the cellar
+D:next door and ran down to investigate. She found her neighbor's mutilated
+D:body lying in a pool of blood on the cellar floor, with terrible scratch
+D:marks on his face and firewood still in his arms; there was no sign of the
+D:assailant or assailants. Spooked, she ran for her life and reported the
+D:incident to us immediately. We sent an officer in to investigate, he was
+D:thrown back out by an invisible force as easily as if he had been a cheap
+D:rag doll. I know not what horrors you will face, I only know that this may
+D:well be your most dangerous mission yet, and hope I am not sending you to
+D:your death. Good luck, and may the gods protect you.
+
+?:[EQU $QUEST72 Completed]
+D:You came through when no one else could have done. Please accept this gift.
+?:1
+
+?:[EQU $QUEST72 Failed]
+D:[CENSORED]
+?:1
+
+T:QUEST:NORMAL
+L:#:PERMANENT
+L:<:UP_STAIR
+L:.:FLOOR
+L:f:MON(basement cat)
+L:o:OBJ(*)
+L:!:OBJ(pint of fine wine)
+L:k:OBJ(rodent skeleton)
+L:s:OBJ(human skeleton)
+L:c:OBJ(large steel chest)
+
+M:###########
+M:#!!....ooc#
+M:#####.#####
+M:#k.......k#
+M:#....s....#
+M:#.........#
+M:#........f#
+M:#........##
+M:#........<#
+M:###########
+R:OBJ(STAFF_DESTRUCTION)

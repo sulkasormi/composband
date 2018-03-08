@@ -1,0 +1,42 @@
+# New quest for FrogComposband 7.0.strawberry
+
+?:[EQU $QUEST71 Taken InProgress]
+D:The forests near our city have become increasingly dangerous as large
+D:numbers of bears have settled in the area. Before we'd only see the
+D:occasionally solitary bear, but now they're forming groups and even
+D:use our roads. My scouts have located their den; it's to the east of the
+D:city, at the base of a hill near the shore. I would be most thankful
+D:should you go there and eliminate this threat to our safety.
+
+?:[EQU $QUEST71 Completed]
+D:Thank you, truly you are stronger than any bear.
+?:1
+
+?:[EQU $QUEST71 Failed]
+D:I hope I can find someone more capable than you.
+?:1
+
+T:QUEST:NORMAL
+L:#:MOUNTAIN_WALL
+L:%:PERMANENT
+L:<:UP_STAIR
+L:i:DIRT
+L:.:DIRT
+L:m:MON(mad bear)
+L:(:OBJ(filthy rag, DEPTH+18)
+L:o:OBJ(*)
+L:h:OBJ(skeleton)
+!:SCRAMBLE(h,i)
+
+M:%%%%%%%%%%%%%%%
+M:%#############%
+M:%####..#######%
+M:%##(.....#####%
+M:%#.ih.....####%
+M:%#h.mi..m...<#%
+M:%#i..h......##%
+M:%#.hi....#####%
+M:%####..o######%
+M:%#############%
+M:%%%%%%%%%%%%%%%
+R:OBJ(potion of berserk strength)

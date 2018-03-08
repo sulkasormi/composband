@@ -15,7 +15,7 @@ D:in the dungeon, we can only give you a small reward.
 D:Bah! I'll have to find another for this simple task.
 ?:1
 
-R:OBJ(short bow)
+R:OBJ(fur cloak)
 
 ?:[EQU $CLASS Magic-Eater]
 R:OBJ(WAND_BOLT_COLD)
@@ -23,17 +23,11 @@ R:OBJ(WAND_BOLT_COLD)
 ?:[EQU $RACE Death-Sword]
 R:OBJ(long sword)
 
-?:[AND [EQU $CLASS Weaponmaster] [EQU $SPECIALITY Swords] ]
-R:OBJ(long sword)
-
 ?:[EQU $CLASS Scout]
 R:OBJ(light crossbow)
 
-?:[AND [EQU $CLASS Weaponmaster] [EQU $SPECIALITY Crossbows] ]
-R:OBJ(light crossbow)
-
-?:[EQU $CLASS Sniper]
-R:OBJ(light crossbow)
+?:[EQU $CLASS Mage High-Mage Blue-Mage Sorcerer Mirror-Master Blood-Mage Yellow-Mage Gray-Mage]
+R:OBJ(^ring$):EGO(wizardry)
 
 ?:[EQU $RACE Dragon Hound Spider]
 R:OBJ(^ring$):EGO(combat)
@@ -47,17 +41,38 @@ R:OBJ(^ring$):EGO(elemental)
 ?:[EQU $RACE Hydra Quylthulg]
 R:OBJ(^cloak$)
 
+?:[AND [EQU $CLASS Weaponmaster] [EQU $SPECIALITY Axes] ]
+R:OBJ(broad axe)
+
+?:[AND [EQU $CLASS Weaponmaster] [EQU $SPECIALITY Bows] ]
+R:OBJ(short bow)
+
+?:[AND [EQU $CLASS Weaponmaster] [EQU $SPECIALITY Clubs] ]
+R:OBJ(war hammer)
+
+?:[AND [EQU $CLASS Weaponmaster] [EQU $SPECIALITY Crossbows] ]
+R:OBJ(light crossbow)
+
+?:[AND [EQU $CLASS Weaponmaster] [EQU $SPECIALITY Daggers] ]
+R:OBJ(^dagger$)
+
+?:[AND [EQU $CLASS Weaponmaster] [EQU $SPECIALITY Diggers] ]
+R:OBJ(^pick$)
+
+?:[AND [EQU $CLASS Weaponmaster] [EQU $SPECIALITY Polearms] ]
+R:OBJ(^pike$)
+
 ?:[AND [EQU $CLASS Weaponmaster] [EQU $SPECIALITY Shields] ]
-R:OBJ(small metal shield)
+R:OBJ(small leather shield)
 
 ?:[AND [EQU $CLASS Weaponmaster] [EQU $SPECIALITY Slings] ]
 R:OBJ(^sling$)
 
-?:[EQU $CLASS Rogue]
-R:OBJ(^sling$)
+?:[AND [EQU $CLASS Weaponmaster] [EQU $SPECIALITY Staves] ]
+R:OBJ(quarterstaff)
 
-?:[EQU $CLASS Samurai]
-R:OBJ(wakizashi)
+?:[AND [EQU $CLASS Weaponmaster] [EQU $SPECIALITY Swords] ]
+R:OBJ(long sword)
 
 ?:[EQU $CLASS Beastmaster Cavalry Ninja]
 R:OBJ(gauntlets)

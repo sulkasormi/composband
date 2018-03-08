@@ -15,7 +15,10 @@
 %:t_angwil.txt
 
 ?:[EQU $TOWN 5]
-%:t_thalos.txt
+%:t_anambar.txt
 
 ?:[EQU $TOWN 6]
+%:t_thalos.txt
+
+?:[EQU $TOWN 7]
 %:t_zul.txt

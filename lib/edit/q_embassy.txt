@@ -1,3 +1,5 @@
+# created by Gwarl for ComPosband 7.0.2 and modified for 7.0.3 and 7.0.4
+
 ?:[EQU $QUEST54 Taken InProgress]
 D:You might be interested in exploring the old Elven Embassy
 D:among the ruins. The Elves are known to have stored many

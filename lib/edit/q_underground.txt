@@ -31,8 +31,8 @@ L:*:OBJ(*, DEPTH+20)
 L:k:OBJ(CROWN, DEPTH+25):EGO(lordliness)
 L:l:OBJ(RING, DEPTH+20):EGO(speed)
 L:m:OBJ(mithril chain, DEPTH+30):EGO(70)
-!SCRAMBLE(k,l,m)
-!SCRAMBLE(b,c,d,e)
+!:SCRAMBLE(k,l,m)
+!:SCRAMBLE(b,c,d,e)
 
 # Dungeon layout
 M:#####################################################################

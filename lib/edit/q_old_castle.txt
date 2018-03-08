@@ -36,7 +36,7 @@ L:L:MON(vampire lord)
 L:m:MON(raal's tome):OBJ(HI_BOOK)
 L:M:MON(greater mummy)
 L:N:MON(ancient red dragon)
-L:o:MON(olog)
+L:o:MON(^olog$)
 L:O:MON(mummified troll)
 L:P:MON(master vampire)
 L:r:MON(roper)
@@ -313,9 +313,9 @@ R:ART(eternity)
 R:ART(palantir of westernesse)
 ##########################################################################
 # Ninja
-?:[AND [EQU $CLASS Ninja] [EQU [MOD $RANDOM27 5] 0] ]
+?:[AND [EQU $CLASS Ninja Ninja-Lawyer] [EQU [MOD $RANDOM27 5] 0] ]
 R:ART(silver chariot)
-?:[AND [EQU $CLASS Ninja] [GEQ [MOD $RANDOM27 5] 1] ]
+?:[AND [EQU $CLASS Ninja Ninja-Lawyer] [GEQ [MOD $RANDOM27 5] 1] ]
 R:ART(pitch dark night)
 ##########################################################################
 # Mage, High-Mage, Sorcerer, Blue-Mage, Blood-Mage

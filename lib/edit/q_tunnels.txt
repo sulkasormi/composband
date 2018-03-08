@@ -1,14 +1,14 @@
-N:Clear the tunnels
+# N:Clear the tunnels
+# Created by Gwarl for ComPosband
 
 ?:[EQU $QUEST60 Taken InProgress]
-D:Thank you for taking care of the orcs in the cave. I had my men
-D:search the area after you were finished and they discovered a
-D:secret trapdoor. We suspect this is where the orcs are coming
-D:from. Secure the tunnels leading to the cave and you will be
-D:rewarded.
+D:Thank you for taking care of the orcs. I had my men search the
+D:area after you were finished and they discovered a secret tunnel
+D:in a nearby hill. We suspect this is where the orcs are coming
+D:from. Secure the tunnels and you will be rewarded.
 ?:1
 
-?:[EQU $QUEST60 Completed}
+?:[EQU $QUEST60 Completed]
 D:You helped make the city safer from orcs.
 ?:1
 

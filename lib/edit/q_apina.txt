@@ -1,0 +1,71 @@
+# The Mystery of Apina Island(TM)
+# New quest for FrogComposband 7.0.strawberry
+
+?:[EQU $QUEST75 Taken InProgress]
+D:Sailors have become afraid of passing anywhere near Apina Island.
+D:They claim it's haunted by the crew of the dread pirate Roope, and
+D:fear attacks from his ghost ship. I'd dismiss it as just another
+D:silly maritime myth, but it's starting to disturb trade; please
+D:investigate the island and make sure there's no one there.
+?:1
+
+?:[EQU $QUEST75 Completed]
+D:Thank you! You never know when a silly-sounding myth might be confirmed.
+?:1
+
+?:[EQU $QUEST75 Failed]
+D:That's horrible! Hopefully some day I can find a genuine hero
+D:to cleanse the place.
+?:1
+
+T:QUEST:NORMAL:NO_ROTATE
+# Terrain
+L:#:PERMANENT
+L:~:SHALLOW_WATER
+L:<:UP_STAIR
+L:G:FLOWER:MON(shadowlord)
+L:d:GRASS:MON(^dread$, NO_GROUP)
+L:D:GRASS:MON(dreadmaster)
+L:p:GRASS:OBJ(large steel chest, DEPTH+25):MON(enchantress)
+L:g:GRASS:MON(phantom warrior)
+L:::FLOWER
+L:;:BRAKE
+L:.:GRASS
+L:,:DIRT
+L:?:RUBBLE
+L:T:TREE
+
+# Dungeon layout
+M:######################################################
+M:#~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~#
+M:#~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~#
+M:#~~~~~~~~~~~~~~~..;;~~~?~~~~~~~~~~~~~~~~~~~~~~~~~~~~~#
+M:#~~~~~~~~~~~.;.;...T.;;??;~~~~~~~~~~~~~~~~~~~~~~~~~~~#
+M:#~~~~~~~~~...T:.gT..T;T.;T;;;.~~~~~~~~~~~~~~~~~~~~~~~#
+M:#~~~~~~~;;.T;..TT.;:;;;Td;.T;:?.?~~~~~~~~~~~~~~~~~~~~#
+M:#~~~~~~;.T;..;.;;..;;;Td.TT;;.:d??;~~~~~~~~~~~~~~~~~~#
+M:#~~~~;;T.::.T;;T;;;?T;;;TT;T..T;T;..??~~~~~~~~~~~~~~~#
+M:#~~~......g;;.;:,;:T;TTT;T;DTT;;TTT..??.~~~~~~~~~~~~~#
+M:#~~.;...::.;?;:;;.;;T;T;TTT;;?T,T;TTd..T..~~~~~~~~~~~#
+M:#~;;.;....:.;;.;.;T;;TTTT;:T??:TdT;TT~T;d...?~~~~~~~~#
+M:#<.;..;;...:..;.;;.Td.TdTTT;?p?GTTTT:T::T..T..?~~~~~~#
+M:#~~.;~~~;;;;..:..;;.T;;TTdT;???,DTT.::T~T.T.:.?.~~~~~#
+M:#~~~~~~~~~;;;.;.T..;.;;d;TTTTT,T.T.TTTd..TT:T.:..~~~~#
+M:#~~~~~~~~~~~~..T:.;::;;.d;;TTTTD.TTT..d::.TT;T;???~~~#
+M:#~~~~~~~~~~~~~::.;;:;...T.TDT??TTTd.T.:.:T;;TTT;?..~~#
+M:#~~~~~~~~~~~~~~~.;;;.;..:.dT;TT;TTTTTT.T.;TT;T;;..??~#
+M:#~~~~~~~~~~~~~~~~~;T..Td.T..TT;TT.T;T.::.::TT;T?..;.~#
+M:#~~~~~~~~~~~~~~~~~~.T..::T.TTTT.TT.TT.T..T:T:...?.?~~#
+M:#~~~~~~~~~~~~~~~~~~~..T:..T..TTT.dT;.T.;:.T..::;.:~~~#
+M:#~~~~~~~~~~~~~~~~~~~~~...;:.T.;;.T...;.T....:.::~~~~~#
+M:#~~~~~~~~~~~~~~~~~~~~~~~;:..;.....T;.:.::.::;~~~~~~~~#
+M:#~~~~~~~~~~~~~~~~~~~~~~~~~.;..;T.;;.;;..:~~~~~~~~~~~~#
+M:#~~~~~~~~~~~~~~~~~~~~~~~~~~~~;;...~~~~~~~~~~~~~~~~~~~#
+M:#~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~#
+M:######################################################
+R:OBJ(STAFF_CONFUSING_LITE)
+
+?:[EQU $CLASS Berserker]
+R:OBJ(potion of life)
+
+# vim: filetype=q :

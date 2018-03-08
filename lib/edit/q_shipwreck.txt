@@ -1,3 +1,5 @@
+# Original quest for ComPosband by Gwarl
+
 ?:[EQU $QUEST61 Taken InProgress]
 D:A ship carrying important documents has been wrecked near
 D:the shore. I need you to investigate the wreckage and
@@ -31,7 +33,7 @@ L:i:DEEP_WATER:MON(ixitxachitl priest)
 L:j:DEEP_WATER:MON(globefish)
 L:k:OBJ(large steel chest)
 L:l:OBJ(skeleton)
-L:m:OBJ(ring, DEPTH+10):ART(*)
+L:m:OBJ(RING):ART(*)
 L:n:OBJ(cutlass, DEPTH+10):ART(*)
 
 # Dungeon layout

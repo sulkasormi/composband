@@ -139,7 +139,7 @@ B:6:A:0:Evaluate AC:1000:1000:a:46:0
 B:6:A:0:Evaluate AC:150:150:a:46:0
 ?:1
 
-B:7:N:Fighters Hall:Barak the Brave:Human
+B:7:N:Fighters' Hall:Barak the Brave:Human
 B:7:A:0:Enchant weapon:0:0:w:23:0
 B:7:A:1:Enchant armor:0:0:a:24:0
 B:7:C:*:None
@@ -156,13 +156,13 @@ B:9:A:1:Restoration:400:1500:r:29:0
 B:9:M:*:None
 B:9:M:Life:Owner
 
-B:10:N:Thieves Guild:Lardbottom the Vain:Hobbit
+B:10:N:Thieves' Guild:Lardbottom the Vain:Hobbit
 B:10:A:1:Rest for the night:0:100:r:17:0
 B:10:A:2:Identify possessions:100:2000:i:26:0
 B:10:C:*:None
 B:10:C:Rogue:Owner
 
-B:11:N:Archers Guild:Trallin Fleetfoot:Half-elf
+B:11:N:Archers' Guild:Trallin Fleetfoot:Half-elf
 B:11:A:0:Enchant missiles:20:40:a:30:0
 B:11:A:1:Enchant bow:0:0:b:31:0
 B:11:C:*:None
@@ -170,7 +170,7 @@ B:11:C:Ranger:Owner
 B:11:C:Archer:Owner
 B:11:C:Sniper:Owner
 
-B:12:N:Paladins Guild:Sir Langordathur:Human
+B:12:N:Paladins' Guild:Sir Langordathur:Human
 B:12:A:0:Enchant armor:300:600:a:24:0
 B:12:A:1:See Healers:0:150:h:28:0
 B:12:C:*:None

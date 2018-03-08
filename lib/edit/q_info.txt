@@ -5,7 +5,7 @@
 #
 
 ########################################################################
-# ComPosband Quests (cf quest.h and quest.c)
+# FrogComposband Quests (cf quest.h and quest.c)
 #
 # N:id:lvl:name
 # T:type flags
@@ -81,7 +81,7 @@ N:16:40:Assault on Montsalvat (Telmora)
 T:TOWN | GENERATE
 F:q_montsalvat.txt
 
-N:19:25:Doom Quest I (Angwil)
+N:19:24:Doom Quest I (Angwil)
 T:TOWN | GENERATE
 F:q_doom1.txt
 
@@ -94,7 +94,7 @@ N:21:55:Doom Quest II (Angwil)
 T:TOWN | GENERATE
 F:q_doom2.txt
 
-N:22:15:The Orc Camp (Thalos)
+N:22:15:The Orc Camp (Anambar)
 T:TOWN | GENERATE
 F:q_orcs.txt
 
@@ -141,11 +141,11 @@ N:32:25:The Dark Elven Lords (Morivant)
 T:TOWN | GENERATE
 F:q_dark_elves.txt
 
-N:33:45:The Cloning Pits (Outpost)
+N:33:45:The Cloning Pits (Thalos)
 T:TOWN | GENERATE
 F:q_cloning_pits.txt
 
-N:34:50:The Mountain Shrine (Morivant)
+N:34:50:The Mountain Shrine (Telmora)
 T:TOWN | GENERATE
 F:q_shrine.txt
 
@@ -221,8 +221,8 @@ G:KILL(mean looking mercenary, 5)
 
 N:51:15:I Hate Snakes! (Morivant)
 T:TOWN | GENERATE
-G:FIND(jones)
 F:q_snakes.txt
+G:FIND(jones)
 
 N:52:25:The Old Barracks (Morivant)
 T:TOWN | GENERATE
@@ -240,17 +240,79 @@ N:55:50:The Underground City (Morivant)
 T:TOWN | GENERATE
 F:q_underground.txt
 
-N:60:25:Clear the tunnels (Thalos)
+N:60:25:Clear the Tunnels (Anambar)
 T:TOWN | GENERATE
 F:q_tunnels.txt
 
-N:61:50:Clear the wreckage (Thalos)
+N:61:50:Clear the Wreckage (Thalos)
 T:TOWN | GENERATE
 F:q_shipwreck.txt
 
 N:62:15:Crow's Nest (Outpost)
 T:TOWN | GENERATE
 F:q_birds.txt
+
+N:63:10:Mushrooms (Thalos)
+T:TOWN
+W:icky
+G:KILL(magic mushroom, 5)
+F:q_mushrooms.txt
+
+N:64:50:The Renegade Sorcerer (Thalos)
+T:TOWN | GENERATE
+G:KILL(old sorcerer)
+F:q_sorcerer.txt
+
+N:65:20:Tidy the Laboratory (Thalos)
+T:TOWN | GENERATE
+F:q_laboratory.txt
+
+N:66:37:Basilisk Cave (Thalos)
+T:TOWN | GENERATE
+F:q_basilisk.txt
+
+N:67:40:Crystal Quest (Anambar)
+T:TOWN
+W:crystal
+G:KILL(great crystal drake, 5)
+F:q_crystal.txt
+
+N:68:33:Dinosaur Quest (Anambar)
+T:TOWN | GENERATE
+F:q_dino.txt
+
+N:69:32:The Old Watchtower (Thalos)
+T:TOWN | GENERATE
+F:q_wtower.txt
+
+N:70:27:Djinni's Cavern (Thalos)
+T:TOWN | GENERATE
+F:q_djinni.txt
+
+N:71:20:Shadow Fairies (Thalos)
+T:TOWN | GENERATE
+F:q_fairy.txt
+
+N:72:70:The Killer in the Cellar (Anambar)
+T:TOWN | GENERATE
+F:q_cellar.txt
+
+N:73:30:Smugglers' Den (Anambar)
+T:TOWN | GENERATE
+F:q_smug.txt
+
+N:74:12:Cop Quest (Anambar)
+T:TOWN | GENERATE
+F:q_cq1.txt
+
+N:75:55:The Mystery of Apina Island (Anambar)
+T:TOWN | GENERATE
+F:q_apina.txt
+
+N:76:40:Staff Recovery (Thalos)
+T:TOWN | GENERATE
+G:FIND(mokomagi)
+F:q_staff.txt
 
 #####################################################################
 # Fighters guild quests
@@ -259,7 +321,7 @@ F:q_birds.txt
 N:56:30:Troll Slayer (Morivant)
 T:TOWN
 W:orc
-G:KILL(olog, 10)
+G:KILL(^olog$, 10)
 F:q_trollslayer.txt
 
 N:57:35:Giant Slayer (Morivant)
@@ -271,48 +333,13 @@ F:q_giantslayer.txt
 N:58:38:Dragon Slayer (Morivant)
 T:TOWN
 W:lonely
-G:KILL(ancient gold, 10)
+G:KILL(ancient gold dragon, 10)
 F:q_dragonslayer.txt
 
-N:59:44:Demon Slayer (Morivant)
+N:59:45:Demon Slayer (Morivant)
 T:TOWN
 W:angband
 G:KILL(lesser balrog, 10)
 F:q_demonslayer.txt
-
-#####################################################################
-# Mages guild quests
-#####################################################################
-
-N:63:10:Mushrooms (Thalos)
-T:TOWN
-W:icky
-G:KILL(magic mushroom, 5)
-F:q_mushrooms.txt
-
-N:64:15:Pumpkins (Thalos)
-T:TOWN
-W:icky
-G:KILL(pumpkin man, 8)
-F:q_pumpkins.txt
-
-N:65:20:Tidy the Laboratory (Thalos)
-T:TOWN | GENERATE
-F:q_laboratory.txt
-
-N:66:35:Basilisk Den (Thalos)
-T:TOWN | GENERATE
-F:q_basilisk.txt
-
-N:67:40:Crystal Quest (Thalos)
-T:TOWN
-W:crystal
-G:KILL(great crystal drake, 5)
-F:q_crystal.txt
-
-#N:66:65:Renegade Master (Thalos)
-#T:TOWN | GENERATE
-#F:q_renegade.txt
-#R:OBJ(robe):EGO(sorcerer)
 
 # vim: filetype=qi :

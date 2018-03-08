@@ -1,0 +1,49 @@
+# New quest for FrogComposband 7.0.strawberry
+
+?:[EQU $QUEST71 Taken InProgress]
+D:The forests near our city, once a safe and pleasant place for a relaxing
+D:evening walk, have become increasingly dangerous as shadow fairies have
+D:settled there. My scouts report they usually lurk in a deep thicket
+D:northeast of the main gate. I would be most thankful should you go there
+D:and eliminate this threat to our safety.
+
+?:[EQU $QUEST71 Completed]
+D:Thank you for making our forests safer.
+?:1
+
+?:[EQU $QUEST71 Failed]
+D:I hope I can find someone more capable than you.
+?:1
+
+T:QUEST:NORMAL
+L:%:PERMANENT
+L:7:TREE
+L:<:UP_STAIR
+L:.:DIRT
+L:::BRAKE
+L:h:BRAKE:MON(shadow fairy, NO_GROUP)
+L:i:BRAKE:MON(shadow fairy, NO_GROUP)
+L:j:BRAKE:MON(shadow fairy, NO_GROUP)
+L:k:BRAKE:OBJ(filthy rag, DEPTH+16)
+!:SCRAMBLE(h,i,j,k)
+
+M:%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+M:%7777777777777777777777777777777%
+M:%777777777777777777:777777777777%
+M:%777777::777777777:::777777:7777%
+M:%77777:k::77777777:i:77777:h:777%
+M:%77777:::7777777777::77777:::777%
+M:%777777:777777777777:777777:7777%
+M:%7777777:777777777777::777:77777%
+M:%77777777:7777777777777:7:777777%
+M:%777777777::777777777777:7777777%
+M:%77777777777::7:77777777:7777777%
+M:%7777777777:77777:::7777:7777777%
+M:%777777777:77777777::....7777777%
+M:%777777777:77777777777777.777777%
+M:%77777777:::77777777777777..7777%
+M:%77777777::j:777777777777777..77%
+M:%777777777::777777777777777777.7%
+M:%777777777777777777777777777777<%
+M:%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+R:OBJ(hard leather cap):EGO(seeing)
