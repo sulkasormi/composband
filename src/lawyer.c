@@ -388,7 +388,7 @@ cptr do_law_spell(int spell, int mode)
 
         {
             int dam = spell_power(50 + (plev * 2 / 3) + p_ptr->to_d_spell/3);
-            if (prace_is_(RACE_VAMPIRE)) { dam *= ((p_ptr->pclass == CLASS_LAWYER) ? 5 : 4); dam /= 2; }
+            if (prace_is_(RACE_VAMPIRE)) { dam *= ((p_ptr->pclass == CLASS_LAWYER) ? 4 : 3); dam /= 2; }
 
             if (info) return info_damage(0, 0, dam);
 
