@@ -267,7 +267,7 @@ N:65:20:Tidy the Laboratory (Thalos)
 T:TOWN | GENERATE
 F:q_laboratory.txt
 
-N:66:37:Basilisk Cave (Thalos)
+N:66:40:Basilisk Cave (Thalos)
 T:TOWN | GENERATE
 F:q_basilisk.txt
 
