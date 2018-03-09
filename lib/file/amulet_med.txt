@@ -9,7 +9,7 @@ of Protection
 'Talisman'
 of Lore
 of Nobility
-of The Fair Maiden
+of the Fair Maiden
 of Fortitude
 of Seeking
 of Questing
@@ -18,3 +18,4 @@ of Questing
 'Starburst'
 of Fantastic Wealth
 'Priceless Heirloom'
+of Oppiness
