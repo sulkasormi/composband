@@ -2096,6 +2096,7 @@ static void _shuffle_stock(shop_ptr shop)
         int        cost = _sell_price(shop, 5000);
         string_ptr s;
         char       c;
+        if (shop->type->id == SHOP_BLACK_MARKET) cost *= 2;
         s = string_alloc_format("Shuffle stock for <color:R>%d</color> gp? <color:y>[y/n]</color>", cost);
         c = msg_prompt(string_buffer(s), "ny", PROMPT_YES_NO);
         string_free(s);
