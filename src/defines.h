@@ -3972,9 +3972,9 @@ extern int PlayerUID;
 
 /* Proficiency of riding */
 #define RIDING_EXP_UNSKILLED     0
-#define RIDING_EXP_BEGINNER    500
-#define RIDING_EXP_SKILLED    2000
-#define RIDING_EXP_EXPERT     5000
+#define RIDING_EXP_BEGINNER   2000
+#define RIDING_EXP_SKILLED    4000
+#define RIDING_EXP_EXPERT     6000
 #define RIDING_EXP_MASTER     8000
 
 /* Proficiency of spells */
