@@ -18,7 +18,8 @@ allowed characters to acquire silly piles of extremely powerful consumables
 very easily, as long as they found a dungeon shop and had enough money. The
 cheap shuffling has been retained, but many of the most powerful items
 (like !Healing, !*Healing*, !Life, stat potions, ?Genocide, ?MassGenocide and
-!NewLife) can no longer be generated on a shuffle
+!NewLife) can no longer be generated on a shuffle. Also, Black Market
+shuffling is more expensive now
 
 * Moved Thalos, and added a new town (Anambar) where Thalos used to be.
 Prettied up the Thalos map (and edited t_pref to include additional
