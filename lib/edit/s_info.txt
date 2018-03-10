@@ -334,7 +334,7 @@ W:4:63:1:4  #
 # Skill
 S:0:0:8000  # Martial Arts
 S:1:0:8000  # Dual Wielding
-S:2:0:5000  # Riding
+S:2:0:6000  # Riding
 
 ### MAGE ###
 N:1
@@ -998,7 +998,7 @@ W:4:63:0:1  #
 # Skill
 S:0:0:4000  # Martial Arts
 S:1:0:4000  # Dual Wielding
-S:2:0:500  # Riding
+S:2:0:2000  # Riding
 
 ### ROGUE ###
 N:3
@@ -1330,7 +1330,7 @@ W:4:63:0:2  #
 # Skill
 S:0:0:8000  # Martial Arts
 S:1:0:8000  # Dual Wielding
-S:2:0:2000  # Riding
+S:2:0:4000  # Riding
 
 ### RANGER ###
 N:4
@@ -1662,7 +1662,7 @@ W:4:63:0:2  #
 # Skill
 S:0:0:6000  # Martial Arts
 S:1:0:6000  # Dual Wielding
-S:2:0:5000  # Riding
+S:2:0:6000  # Riding
 
 ### PALADIN ###
 N:5
@@ -1994,7 +1994,7 @@ W:4:63:1:4  #
 # Skill
 S:0:0:4000  # Martial Arts
 S:1:0:7000  # Dual Wielding
-S:2:0:5000  # Riding
+S:2:0:6000  # Riding
 
 ### Warrior-Mage ###
 N:6
@@ -2326,7 +2326,7 @@ W:4:63:0:2  #
 # Skill
 S:0:0:4000  # Martial Arts
 S:1:0:6000  # Dual Wielding
-S:2:0:2000  # Riding
+S:2:0:4000  # Riding
 
 ### CHAOS_WARRIOR ###
 N:7
@@ -2658,7 +2658,7 @@ W:4:63:0:3  #
 # Skill
 S:0:0:7000  # Martial Arts
 S:1:0:7000  # Dual Wielding
-S:2:0:2000  # Riding
+S:2:0:4000  # Riding
 
 ### MONK ###
 N:8
@@ -3322,7 +3322,7 @@ W:4:63:0:2  #
 # Skill
 S:0:0:4000  # Martial Arts
 S:1:0:4000  # Dual Wielding
-S:2:0:500  # Riding
+S:2:0:2000  # Riding
 
 ### HIGH_MAGE ###
 N:10
@@ -3986,7 +3986,7 @@ W:4:63:0:4  #
 # Skill
 S:0:0:8000  # Martial Arts
 S:1:0:8000  # Dual Wielding
-S:2:0:5000  # Riding
+S:2:0:6000  # Riding
 
 ### IMITATOR ###
 N:12
@@ -4318,7 +4318,7 @@ W:4:63:0:3  #
 # Skill
 S:0:0:7000  # Martial Arts
 S:1:0:7000  # Dual Wielding
-S:2:0:2000  # Riding
+S:2:0:4000  # Riding
 
 ### BEASTMASTER ###
 N:13
@@ -4650,7 +4650,7 @@ W:4:63:0:4  #
 # Skill
 S:0:0:6000  # Martial Arts
 S:1:0:6000  # Dual Wielding
-S:2:500:8000  # Riding
+S:2:2000:8000  # Riding
 
 ### SORCERER ###
 N:14
@@ -5314,7 +5314,7 @@ W:4:63:0:2  #
 # Skill
 S:0:0:4000  # Martial Arts
 S:1:0:4000  # Dual Wielding
-S:2:0:2000  # Riding
+S:2:0:4000  # Riding
 
 ### MAGIC_EATER ###
 N:16
@@ -5978,7 +5978,7 @@ W:4:63:0:2  #
 # Skill
 S:0:0:4000  # Martial Arts
 S:1:0:4000  # Dual Wielding
-S:2:0:500  # Riding
+S:2:0:2000  # Riding
 
 ### RED_MAGE ###
 N:18
@@ -6310,7 +6310,7 @@ W:4:63:0:2  #
 # Skill
 S:0:0:4000  # Martial Arts
 S:1:0:4000  # Dual Wielding
-S:2:0:2000  # Riding
+S:2:0:4000  # Riding
 
 ### SAMURAI ###
 N:19
@@ -6642,7 +6642,7 @@ W:4:63:1:4  #
 # Skill
 S:0:0:4000  # Martial Arts
 S:1:0:8000  # Dual Wielding
-S:2:0:2000  # Riding
+S:2:0:4000  # Riding
 
 ### ForceTrainer ###
 N:20
@@ -7638,7 +7638,7 @@ W:4:63:0:4  #
 # Skill
 S:0:0:4000  # Martial Arts
 S:1:0:4000  # Dual Wielding
-S:2:500:8000  # Riding
+S:2:2000:8000  # Riding
 
 ### BERSERKER ###
 N:23
@@ -8302,7 +8302,7 @@ W:4:63:1:4  #
 # Skill
 S:0:0:4000  # Martial Arts
 S:1:0:7000  # Dual Wielding
-S:2:0:2000  # Riding
+S:2:0:4000  # Riding
 
 ### MIRROR MASTER ###
 N:25
@@ -9630,7 +9630,7 @@ W:4:63:0:2  #
 # Skill
 S:0:0:4000  # Martial Arts
 S:1:0:6000  # Dual Wielding
-S:2:0:2000  # Riding
+S:2:0:4000  # Riding
 
 ### Blood-Knight ###
 N:29
@@ -9962,7 +9962,7 @@ W:4:63:1:4  #
 # Skill
 S:0:0:4000  # Martial Arts
 S:1:0:8000  # Dual Wielding
-S:2:0:2000  # Riding
+S:2:0:4000  # Riding
 
 ### WARLOCK ###
 N:30
@@ -10294,7 +10294,7 @@ W:4:63:0:2  #
 # Skill
 S:0:0:4000  # Martial Arts
 S:1:0:4000  # Dual Wielding
-S:2:0:500  # Riding
+S:2:0:2000  # Riding
 
 ### ARCHAEOLOGIST ###
 N:31
@@ -10626,7 +10626,7 @@ W:4:63:0:2  #
 # Skill
 S:0:0:4000  # Martial Arts
 S:1:0:4000  # Dual Wielding
-S:2:0:500  # Riding
+S:2:0:2000  # Riding
 
 ### DUELIST ###
 N:32
@@ -11290,7 +11290,7 @@ W:4:63:0:2  #
 # Skill
 S:0:0:4000  # Martial Arts
 S:1:0:6000  # Dual Wielding
-S:2:0:2000  # Riding
+S:2:0:4000  # Riding
 
 ### Rune Knight ###
 N:34
@@ -11622,7 +11622,7 @@ W:4:63:0:2  #
 # Skill
 S:0:0:4000  # Martial Arts
 S:1:0:7000  # Dual Wielding
-S:2:0:2000  # Riding
+S:2:0:4000  # Riding
 
 ### WEAPONMASTER ###
 N:35
@@ -11954,7 +11954,7 @@ W:4:63:0:1  #
 # Skill
 S:0:0:4000  # Martial Arts
 S:1:0:7000  # Dual Wielding
-S:2:0:2000  # Riding
+S:2:0:4000  # Riding
 
 ### BLOOD MAGE ###
 N:36
@@ -12950,7 +12950,7 @@ W:4:63:0:2  #
 # Skill
 S:0:0:4000  # Martial Arts
 S:1:0:4000  # Dual Wielding
-S:2:0:500  # Riding
+S:2:0:2000  # Riding
 
 ### Rage-Mage ###
 N:39
@@ -13282,7 +13282,7 @@ W:4:63:0:2  #
 # Skill
 S:0:0:4000  # Martial Arts
 S:1:0:6000  # Dual Wielding
-S:2:0:2000  # Riding
+S:2:0:4000  # Riding
 
 ### SCOUT ###
 N:40
