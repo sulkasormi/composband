@@ -61,6 +61,10 @@ rods:heroic speed#@zs!sdk
 ?wands:rocket#@ar!sdk
 ?wands:disintegrate#@ad!sdk
 
+?:[LEQ $LEVEL 45]
+?staves:cure wounds#@uu!sdk
+?:1
+
 ?:[OR [EQU $CLASS Mage High-Mage Sorcerer] [EQU $RACE Beholder Lich] ]
 wizardstaff
 ?:1
