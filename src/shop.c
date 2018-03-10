@@ -475,7 +475,9 @@ static bool _create(obj_ptr obj, int k_idx, int lvl, u32b mode)
     obj->ident |= IDENT_STORE;
     if (obj_value(obj) <= 0) return FALSE; /* Note: requires IDENT_STORE to work!!! */
 
-    _discount(obj);
+    /* discounts could screw up the special pricing in dragonskin emporium */
+    if (k_info[k_idx].tval != TV_DRAG_ARMOR) _discount(obj);
+
     obj_make_pile(obj);
     return TRUE;
 }
@@ -1144,7 +1146,7 @@ static bool _dragon_stock_aux_p(int k_idx)
 static bool _dragon_create(obj_ptr obj, u32b mode)
 {
 	int k_idx;
-	if (!one_in_(5))
+	if (!one_in_(4))
 	{
 		k_idx = _get_k_idx(_dragon_stock_p, _mod_lvl(50));
 	}
@@ -1302,6 +1304,12 @@ static int _sell_price_aux(int price, int factor)
 static int _sell_price(shop_ptr shop, int price)
 {
     int factor = _price_factor(shop);
+
+    if ((shop->type->id == SHOP_DRAGON) && (price > 31000))
+    {
+        int ylihinta = (price - 30000);
+        price += ((ylihinta / 200) * ylihinta) / 15;
+    }
 
     price = _sell_price_aux(price, factor);
     if (shop->type->id == SHOP_BLACK_MARKET)
