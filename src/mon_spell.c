@@ -1813,7 +1813,7 @@ static void _annoy_p(void)
           && (!(_current.race->flags7 & RF7_DARK_MASK)) )
         {
             if (!p_ptr->blind)
-                msg_format("%s cast a spell to light up.", _current.name);
+                msg_format("%s casts a spell to light up.", _current.name);
             lite_area(0, 3);
         }
         else
@@ -2649,7 +2649,7 @@ static void _spell_cast_aux(void)
 static char _msg[255];
 static cptr _a_an(cptr noun)
 {
-    if (strchr("aeiou", noun[0])) return "an";
+    if (strchr("aeiouAEIOU", noun[0])) return "an";
     return "a";
 }
 static cptr _possessive(mon_race_ptr race)
