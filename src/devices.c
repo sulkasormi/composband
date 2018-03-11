@@ -653,7 +653,7 @@ static cptr _do_potion(int sval, int mode)
         }
         break;
     case SV_POTION_CURE_CRITICAL:
-        if (desc) return "It heals you and cures stunned, cuts and berserk when you quaff it.";
+        if (desc) return "It heals you, reduces poisoning and cures stunning, cuts and berserk when you quaff it.";
         if (info) return info_heal(12, _potion_power(8), 0);
         if (cast)
         {
