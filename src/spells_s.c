@@ -1602,6 +1602,7 @@ void teleport_to_spell(int cmd, variant *res)
         if (!cave[target_row][target_col].m_idx) break;
         if (!player_has_los_bold(target_row, target_col)) break;
         if (!projectable(py, px, target_row, target_col)) break;
+        if (cave[target_row][target_col].m_idx == p_ptr->riding) break;
 
         var_set_bool(res, TRUE);
 
