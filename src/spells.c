@@ -704,6 +704,12 @@ void do_cmd_spell(void)
         return;
     }
 
+    if ((p_ptr->riding) && (player_is_ninja))
+    {
+        msg_print("You cannot use ninjutsu while riding!");
+        return;
+    }
+
     if (p_ptr->special_defense & KATA_MASK)
     {
         set_action(ACTION_NONE);
