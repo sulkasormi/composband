@@ -179,10 +179,7 @@ teleporting between Zul and other towns
 * Review the effect that Chris's changes to FA/SI/fear have on unusual
 races like rings and death-swords, and fix the problems
 
-* Check for bugs on a riding ninja lawyer (since regular ninjas never
-ride)
-
 * Fix the bug that causes fear messages to take the form "Him flees in
 terror!" instead of "He flees in terror!"
 
-* Check that player trolls still work
+* Examine MITZE's bug with quest_unique turned off, and fix if needed
