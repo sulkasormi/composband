@@ -828,8 +828,12 @@ static bool _alchemist_stock_p(int k_idx)
 static bool _alchemist_create(obj_ptr obj, u32b mode)
 {
     int k_idx;
-    if (one_in_(3))
+    if (one_in_(4))
         k_idx = lookup_kind(TV_SCROLL, SV_SCROLL_WORD_OF_RECALL);
+    else if (one_in_(22))
+        k_idx = lookup_kind(TV_SCROLL, SV_SCROLL_TELEPORT);
+    else if (one_in_(22))
+        k_idx = lookup_kind(TV_SCROLL, SV_SCROLL_PHASE_DOOR);
     else
         k_idx = _get_k_idx(_alchemist_stock_p, _mod_lvl(20));
     return _create(obj, k_idx, _mod_lvl(rand_range(1, 15)), mode);
