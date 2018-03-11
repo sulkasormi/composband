@@ -11,7 +11,7 @@
       Ideas from Posband:   Alexander Ulyanov, Graham Philips
 
             PosChengband:   Chris Kousky
-              ComPosband:   Gwarl
+              ComPosband:   Gwilim Owen
           FrogComposband:   Antero Sulka
 
     Special thanks to all the players who have encouraged me (and
