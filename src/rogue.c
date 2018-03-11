@@ -597,6 +597,9 @@ cptr do_burglary_spell(int spell, int mode)
             if (!player_has_los_bold(target_row, target_col)) return NULL;
             if (!projectable(py, px, target_row, target_col)) return NULL;
 
+            /* This would cause bizarre behavior */
+            if (cave[target_row][target_col].m_idx == p_ptr->riding) return NULL;
+
             m_ptr = &m_list[cave[target_row][target_col].m_idx];
             r_ptr = &r_info[m_ptr->r_idx];
             monster_desc(m_name, m_ptr, 0);
