@@ -1064,7 +1064,7 @@ static int _draw_monster_list(_mon_list_ptr list, int top, rect_t rect, int mode
                 }
                 else
                 {
-                    sprintf(loc, "%c %2d %c %2d",
+                    sprintf(loc, "%c %2d %c%3d",
                             (info_ptr->dy > 0) ? 'S' : 'N', abs(info_ptr->dy),
                             (info_ptr->dx > 0) ? 'E' : 'W', abs(info_ptr->dx));
                 }
