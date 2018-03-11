@@ -924,9 +924,13 @@ void do_alter_reality(void)
     /* Disturbing! */
     disturb(0, 0);
 
+
     /* Determine the level */
-    if (quests_get_current())
+    if ((!dungeon_type) && (quests_get_current()))
+    {
         msg_print("The world seems to change for a moment!");
+        p_ptr->alter_reality = 0;
+    }
     else
     {
         if (p_ptr->alter_reality) /* Mega-hack - law */
@@ -948,6 +952,7 @@ void do_alter_reality(void)
 
         /* Leaving */
         p_ptr->leaving = TRUE;
+        if (quests_get_current()) quests_on_leave();
     }
 
     /* Sound */
