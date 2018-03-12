@@ -35,6 +35,22 @@ building in the northeast of the city and press '>' at the quest
 entrance.
 
 
+Q: Where do I find the other quests in the game?
+
+A: All quests are offered by some building in some town, apart from the 
+two (Oberon and Serpent) that you start with, and the ten random 
+level-guardian quests in the Angband dungeon. Most quests have special 
+entrances, which can be found in towns or their immediate vicinity. (If 
+you can't spot the entrance visually, press the ']' key (or Ctrl-O) to 
+display the object list; it also displays nearby entrances.) The 
+entrances only appear after you request the quest.
+
+A small number of quests are offered by towns but appear in dungeons. 
+The first of these is Pest Control (offered by the Count after you've 
+completed Thieves' Hideout), which is located on level 5 of the Warrens 
+dungeon, or level 5 of Angband if you play in no-wilderness mode.
+
+
 Q: I keep dying! What am I doing wrong?
 
 A: Don't worry - this is an expected part of the development curve for 
@@ -176,9 +192,10 @@ A: Berserkers gain the class power 'Recall' at level 10.  Press 'U'
 
 Q: Why do Ninjas start the game with Iron Spikes?
 
-A: Ninjas can use Iron Spikes as shuriken; use the 'v' command to throw 
-a spike. (Other classes can also use spikes as throwing weapons, but 
-will only do marginal damage; they are much more useful for a ninja.)
+A: Ninjas (and Ninja-Lawyers) can use Iron Spikes as shuriken; use the 
+'v' command to throw a spike. (Other classes can also use spikes as 
+throwing weapons, but will only do marginal damage; they are much more 
+useful for a ninja.)
 
 
 Q: I'm at normal speed (+0). But normal speed monsters sometimes 
@@ -196,12 +213,27 @@ Also, monsters don't always move at their listed speed; watch out for
 hasted monsters.
 
 
+Q: How important is my speed, anyway?
+
+A: Speed is incredibly important, especially in the early game when you 
+don't have much of it and it's hard to come by. A character with +10 
+speed does everything twice as fast as a character with +0 speed. If 
+you survive to the late game, however, you may eventually start hitting 
+diminishing returns for speed; the difference between +30 speed and +40 
+speed is only ten percent. Potions of Speed, and in the late game 
+Staves of Speed, are extremely useful items you should ideally always 
+have.
+
+
 Q: I tried to dual wield two weapons.  But I couldn't hit anything!
 
 A: You need to practice your dual wielding skill (proficiency level) 
 and your weapon skills.  Hitting high level monsters many times will 
 improve your skills.  Note that the information command '~' reveals 
-your proficiency levels.
+your proficiency levels.  Some classes are very bad at dual-wielding, 
+while others are much more adept at it or can become so with enough 
+training. If you try to dual-wield on a sniper and it doesn't work out, 
+don't let that discourage you from dual-wielding on a ninja.
 
 
 Q: How do skills (proficiency levels) work?
@@ -223,6 +255,36 @@ conditions to increase riding proficiency are rather complex;
 generally, you need to hit a monster whose level is high enough 
 compared with current riding proficiency level or to shoot a monster 
 while riding on a high level mount.
+
+
+Q: I'm a fighter type and rely largely on melee. Which weapon should I 
+use?
+
+A: In the very early game, you should usually use the weapon that does 
+the most damage. Press Shift+C to see the character sheet, which 
+displays your melee damage and melee to-hit. You should look at both to 
+determine how good a weapon is - it's no use having a weapon that 
+technically does lots of damage if you can't hit anything with it! Also 
+remember, though, that your to-hit percentages will improve rapidly as 
+your proficiency with a weapon increases. Don't worry too much about 
+starting with a -20 proficiency - unless that's your proficiency cap 
+for the weapon, or if the weapon is an icky wield.
+
+As you start finding {excellent} weapons and artifacts, you may well 
+want to wield a particular weapon for the resists, bonuses or abilities 
+it provides, even if you have another weapon that would do more damage. 
+A dead character has no use for a high damage output.
+
+
+Q: What is an "Icky Wield"?
+
+A: Some classes have a very strong preference for a certain weapon or 
+type of weapon, to the extent that other weapons are marked as icky. 
+The exact effects of wielding an icky weapon depend on class, but as a 
+general rule you should always assume that an icky weapon will be worse 
+than a non-icky one, at least from a melee perspective. In the specific 
+case of Priests, however, the melee penalty is relatively small and the 
+main drawback of an icky weapon is its effect on prayer fail rates.
 
 
 Q: How do I ride on a monster?
