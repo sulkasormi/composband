@@ -4587,6 +4587,17 @@ void str_tolower(char *str)
     }
 }
 
+/**
+ * Screw this, I need my Pascal tools...
+ * Returns the position of mika in missa, plus 1, so that 0 can mean
+ * a negative result.
+ */
+unsigned int strpos(const char *mika, const char *missa)
+{
+	char *loppu = strstr(missa, mika);
+	if (loppu) return ((loppu - missa) + 1); else return 0;
+}
+
 /*
  * Get a keypress from the user.
  * And interpret special keys as internal code.
