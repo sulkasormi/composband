@@ -15,6 +15,13 @@
 <color:R>A:</color> In Outpost, walk to the large building just outside the city walls and press 'q' to request a quest from the Count. Then walk to the building in the northeast of the city and press '>' at the quest entrance.
 
 
+<color:G>Q:</color> Where do I find the other quests in the game?
+
+<color:R>A:</color> All quests are offered by some building in some town, apart from the two (Oberon and Serpent) that you start with, and the ten random level-guardian quests in the Angband dungeon. Most quests have special entrances, which can be found in towns or their immediate vicinity. (If you can't spot the entrance visually, press the ']' key (or Ctrl-O) to display the object list; it also displays nearby entrances.) The entrances only appear after you request the quest.
+
+A small number of quests are offered by towns but appear in dungeons. The first of these is Pest Control (offered by the Count after you've completed Thieves' Hideout), which is located on level 5 of the Warrens dungeon, or level 5 of Angband if you play in no-wilderness mode.
+
+
 <color:G>Q:</color> I keep dying! What am I doing wrong?
 
 <color:R>A:</color> Don't worry - this is an expected part of the development curve for new players, and even experienced roguelike veterans die a lot (with the possible exception of the player nicknamed "clouded"!) Learn from your mistakes - if a situation got you killed, avoid getting in that situation again, or make sure you have the supplies to keep you alive if something similar does happen again. Do not rely too much on items with a fail rate - the game is long, and if you take too many chances you will fail at the wrong time eventually. Try to avoid situations where you are one fail away from death.
@@ -89,9 +96,14 @@ Note that the armor you wear will always be susceptible to damage from acid atta
 Also, monsters don't always move at their listed speed; watch out for hasted monsters.
 
 
+<color:G>Q:</color> How important is my speed, anyway?
+
+<color:R>A:</color> Speed is incredibly important, especially in the early game when you don't have much of it and it's hard to come by. A character with +10 speed does everything twice as fast as a character with +0 speed. If you survive to the late game, however, you may eventually start hitting diminishing returns for speed; the difference between +30 speed and +40 speed is only ten percent. Potions of Speed, and in the late game Staves of Speed, are extremely useful items you should ideally always have.
+
+
 <color:G>Q:</color> I tried to dual wield two weapons.  But I couldn't hit anything!
 
-<color:R>A:</color> You need to practice your dual wielding skill (proficiency level) and your weapon skills.  Hitting high level monsters many times will improve your skills.  Note that the information command '~' reveals your proficiency levels.
+<color:R>A:</color> You need to practice your dual wielding skill (proficiency level) and your weapon skills.  Hitting high level monsters many times will improve your skills.  Note that the information command '~' reveals your proficiency levels.  Some classes are very bad at dual-wielding, while others are much more adept at it or can become so with enough training. If you try to dual-wield on a sniper and it doesn't work out, don't let that discourage you from dual-wielding on a ninja.
 
 
 <color:G>Q:</color> How do skills (proficiency levels) work?
@@ -102,6 +114,18 @@ Also, monsters don't always move at their listed speed; watch out for hasted mon
 <color:G>Q:</color> How do I increase my proficiency level?
 
 <color:R>A:</color> Proficiency level of a weapon will increase when you hit a monster whose level is high enough compared with your character level. Proficiency level of a spell will increase when you cast the spell at a dungeon level deep enough compared with the spell level. The needed conditions to increase riding proficiency are rather complex; generally, you need to hit a monster whose level is high enough compared with current riding proficiency level or to shoot a monster while riding on a high level mount.
+
+
+<color:G>Q:</color> I'm a fighter type and rely largely on melee. Which weapon should I use?
+
+<color:R>A:</color> In the very early game, you should usually use the weapon that does the most damage. Press Shift+C to see the character sheet, which displays your melee damage and melee to-hit. You should look at both to determine how good a weapon is - it's no use having a weapon that technically does lots of damage if you can't hit anything with it! Also remember, though, that your to-hit percentages will improve rapidly as your proficiency with a weapon increases. Don't worry too much about starting with a -20 proficiency - unless that's your proficiency cap for the weapon, or if the weapon is an icky wield.
+
+As you start finding {excellent} weapons and artifacts, you may well want to wield a particular weapon for the resists, bonuses or abilities it provides, even if you have another weapon that would do more damage. A dead character has no use for a high damage output.
+
+
+<color:G>Q:</color> What is an "Icky Wield"?
+
+<color:R>A:</color> Some classes have a very strong preference for a certain weapon or type of weapon, to the extent that other weapons are marked as icky. The exact effects of wielding an icky weapon depend on class, but as a general rule you should always assume that an icky weapon will be worse than a non-icky one, at least from a melee perspective. In the specific case of Priests, however, the melee penalty is relatively small and the main drawback of an icky weapon is its effect on prayer fail rates.
 
 
 <color:G>Q:</color> How do I ride on a monster?
