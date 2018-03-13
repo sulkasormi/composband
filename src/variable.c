@@ -247,6 +247,7 @@ bool exp_need;    /* Show the experience needed for next level */
 bool ignore_unview;    /* Ignore whenever any monster does */
 bool display_distance;
 bool display_race; /* Display monster races with their racial char */
+bool easy_mimics;  /* Use the 'x' glyph for monsters that look like things *7
 
 
 /*** Game-Play Options ***/
