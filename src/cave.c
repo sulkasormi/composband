@@ -1242,7 +1242,7 @@ void map_info(int y, int x, byte *ap, char *cp, byte *tap, char *tcp)
                  * Monsters with both CHAR_CLEAR and ATTR_CLEAR
                  * flags are always unseen.
                  */
-                if ((r_ptr->flags1 & (RF1_CHAR_CLEAR | RF1_ATTR_CLEAR)) == (RF1_CHAR_CLEAR | RF1_ATTR_CLEAR))
+                if (((r_ptr->flags1 & (RF1_CHAR_CLEAR | RF1_ATTR_CLEAR)) == (RF1_CHAR_CLEAR | RF1_ATTR_CLEAR)) && (!easy_mimics))
                 {
                     /* Do nothing */
                 }
@@ -1284,7 +1284,7 @@ void map_info(int y, int x, byte *ap, char *cp, byte *tap, char *tcp)
                  * Monsters with both CHAR_CLEAR and ATTR_CLEAR
                  * flags are always unseen.
                  */
-                else if ((r_ptr->flags1 & (RF1_CHAR_CLEAR | RF1_ATTR_CLEAR)) == (RF1_CHAR_CLEAR | RF1_ATTR_CLEAR))
+                else if (((r_ptr->flags1 & (RF1_CHAR_CLEAR | RF1_ATTR_CLEAR)) == (RF1_CHAR_CLEAR | RF1_ATTR_CLEAR)) && (!easy_mimics))
                 {
                     /* Do nothing */
                 }
@@ -1324,7 +1324,7 @@ void map_info(int y, int x, byte *ap, char *cp, byte *tap, char *tcp)
                     }
 
                     /***  Monster's char  ***/
-                    if ((r_ptr->flags1 & RF1_CHAR_CLEAR) && (*cp != ' ') && !use_graphics)
+                    if ((r_ptr->flags1 & RF1_CHAR_CLEAR) && (*cp != ' ') && !use_graphics && !easy_mimics)
                     {
                         /* Clear-char */
                         /* Do nothing */
