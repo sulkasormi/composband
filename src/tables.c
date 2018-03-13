@@ -2235,7 +2235,10 @@ option_type option_info[] =
     "display_distance",             "Display distance in monster list" },
 
     { &display_race,		        TRUE, OPT_PAGE_TEXT, 2, 29,
-    "display_race",                  "Player character depends on race" },
+    "display_race",                 "Player character depends on race" },
+
+    { &easy_mimics,		        FALSE, OPT_PAGE_TEXT, 2, 27,
+    "easy_mimics",                  "Use 'x' for monsters that look like things" },
 
     /*** Game-Play ***/
 
