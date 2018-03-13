@@ -5320,6 +5320,9 @@ void play_game(bool new_game)
     /* Load the "pref" files */
     load_all_pref_files();
 
+    /* Turn on easy mimics */
+    if (easy_mimics) toggle_easy_mimics(TRUE);
+
     Term_xtra(TERM_XTRA_REACT, 0);
     p_ptr->window |= (PW_INVEN | PW_EQUIP | PW_SPELL);
     p_ptr->window |= (PW_MESSAGE | PW_OVERHEAD | PW_DUNGEON | PW_MONSTER_LIST | PW_OBJECT_LIST | PW_MONSTER | PW_OBJECT);
