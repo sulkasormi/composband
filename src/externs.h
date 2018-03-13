@@ -262,7 +262,7 @@ extern bool exp_need;    /* Show the experience needed for next level */
 extern bool ignore_unview;    /* Ignore whenever any monster does */
 extern bool display_distance;    /* Display distance of LoS monsters in monster list */
 extern bool display_race; /* Display monster races with their racial char */
-
+extern bool easy_mimics;  /* Use the 'x' glyph for monsters that look like things */
 
 /*** Game-Play Options ***/
 
@@ -748,6 +748,7 @@ extern void fix_object_list(void);
 
 /* cmd4.c */
 extern cptr get_ordinal_number_suffix(int num);
+extern void toggle_easy_mimics(bool kayta);
 extern bool redraw_hack;
 extern void do_cmd_redraw(void);
 extern void do_cmd_knowledge_shooter(void);
