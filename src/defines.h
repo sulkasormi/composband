@@ -3174,6 +3174,7 @@ enum {
 #define RF7_SELF_DARK_2         0x00080000  /* Monster darkens itself */
 #define RF7_CAN_CLIMB           0x00100000
 #define RF7_RANGED_MELEE        0x00200000  /* Monster has ranged melee */
+#define RF7_NASTY_GLYPH         0x00400000  /* Monster has nasty glyph */
 
 /*
  * Monster race flags
