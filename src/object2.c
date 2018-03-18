@@ -1587,10 +1587,11 @@ static bool make_artifact_special(object_type *o_ptr)
 {
     int i;
     int k_idx = 0;
-
+    int ref_level = dun_level;
+    if (mut_present(MUT_BAD_LUCK)) ref_level -= (ref_level / (4 * randint1(4)));
 
     /* No artifacts in the town */
-    if (!dun_level) return (FALSE);
+    if (!ref_level) return (FALSE);
     if (no_artifacts) return FALSE;
 
     /* Themed object */
@@ -1607,10 +1608,10 @@ static bool make_artifact_special(object_type *o_ptr)
         if (!(a_ptr->gen_flags & OFG_INSTA_ART)) continue;
 
         /* XXX XXX Enforce minimum "depth" (loosely) */
-        if (a_ptr->level > dun_level)
+        if (a_ptr->level > ref_level)
         {
             /* Acquire the "out-of-depth factor" */
-            int d = (a_ptr->level - dun_level) * 2;
+            int d = (a_ptr->level - ref_level) * 2;
 
             /* Roll for out-of-depth creation */
             if (!one_in_(d)) continue;
@@ -1660,10 +1661,12 @@ static bool make_artifact_special(object_type *o_ptr)
 static bool make_artifact(object_type *o_ptr)
 {
     int i;
+    int ref_level = dun_level;
+    if (mut_present(MUT_BAD_LUCK)) ref_level -= (ref_level / (4 * randint1(4)));
 
 
     /* No artifacts in the town */
-    if (!dun_level) return FALSE;
+    if (!ref_level) return FALSE;
     if (no_artifacts) return FALSE;
 
     /* Paranoia -- no "plural" artifacts */
@@ -1682,10 +1685,10 @@ static bool make_artifact(object_type *o_ptr)
         if (a_ptr->sval != o_ptr->sval) continue;
 
         /* XXX XXX Enforce minimum "depth" (loosely) */
-        if (a_ptr->level > dun_level)
+        if (a_ptr->level > ref_level)
         {
             /* Acquire the "out-of-depth factor" */
-            int d = (a_ptr->level - dun_level) * (a_ptr->level - dun_level);
+            int d = (a_ptr->level - ref_level) * (a_ptr->level - ref_level);
 
             /* Roll for out-of-depth creation */
             if (!one_in_(d)) continue;
@@ -2028,6 +2031,15 @@ bool apply_magic(object_type *o_ptr, int lev, u32b mode)
     /* Maximum "level" for various things */
     if (lev > MAX_DEPTH - 1) lev = MAX_DEPTH - 1;
 
+    if (mut_present(MUT_BAD_LUCK))
+    {
+        maxf1 -= 5;
+        maxf2 -= (maxf2 / 4);
+        if (one_in_(20)) lev -= (lev / 20);
+        else lev -= (lev / 6);
+        if (o_ptr->tval == TV_STAFF) lev -= (lev / 15);
+    }
+
     if (!o_ptr->level)
         o_ptr->level = lev; /* Wizard statistics ... */
 
@@ -2056,11 +2068,6 @@ bool apply_magic(object_type *o_ptr, int lev, u32b mode)
     {
         f1 += 5;
         f2 += 2;
-    }
-    else if(mut_present(MUT_BAD_LUCK))
-    {
-        f1 -= 5;
-        f2 -= 2;
     }
 
     f1 += virtue_current(VIRTUE_CHANCE) / 50;
