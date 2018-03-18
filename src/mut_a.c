@@ -385,7 +385,7 @@ void bad_luck_mut(int cmd, variant *res)
         var_set_string(res, "Black Aura");
         break;
     case SPELL_GAIN_MUT:
-        msg_print("There is a malignant black aura surrounding you...");
+        msg_print("You feel a strange kinship with Dennis the rodmaster!");
         mut_lose(MUT_GOOD_LUCK);
         break;
     case SPELL_LOSE_MUT:
