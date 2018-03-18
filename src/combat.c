@@ -68,6 +68,17 @@ int bow_hit_chance(int to_h, int ac)
     return (odds+5)/10;
 }
 
+/* Class-dependent melee multiplier */
+int class_melee_mult(void)
+{
+    switch (p_ptr->pclass)
+    {
+        case CLASS_NINJA_LAWYER: return 80;
+        case CLASS_LAWYER: return 95;
+        default: return 100;
+    }
+}
+
 /**********************************************************************
  * Number of Blows
  **********************************************************************/
@@ -462,6 +473,10 @@ static void _display_weapon_slay(int base_mult, int slay_mult, bool force, int b
 
     min = blows * (mult*dd/100 + to_d) / 100;
     max = blows * (mult*dd*ds/100 + to_d) / 100;
+
+    min = ((min * class_melee_mult()) + 50) / 100;
+    max = ((max * class_melee_mult()) + 50) / 100;
+
     if (p_ptr->stun)
     {
         min -= min * MIN(100, p_ptr->stun) / 150;
@@ -556,7 +571,7 @@ void display_weapon_info(doc_ptr doc, int hand)
         }
     }
 
-    mult = (p_ptr->pclass == CLASS_NINJA_LAWYER) ? NINJA_LAWYER_MULT : 100;
+    mult = 100;
     if (have_flag(flgs, OF_VORPAL2))
         mult = mult * 5 / 3;  /* 1 + 1/3(1 + 1/2 + ...) = 1.667x */
     else if (have_flag(flgs, OF_VORPAL) && p_ptr->vorpal)
