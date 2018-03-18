@@ -4,9 +4,11 @@ N: 1:BIAS_ELEC
 'One Million Volt'
 'Electron'
 'Call of Thundercloud'
+of the Tempest
 of R'lyeh
 of Thunder
 of Helldiver
+of the Firmament
 
 N: 2:BIAS_POIS
 'Poison Barrier'
@@ -26,6 +28,7 @@ N: 3:BIAS_FIRE
 'Salamander'
 'Flamecoat'
 'Heatshield'
+'Fires of Adversity'
 of Libyan Desert
 of Tropics
 of Desert
@@ -41,6 +44,8 @@ of Arctic Ocean
 of Antarctic Land
 of Santa Claus
 of the Yeti
+of Midwinter
+of the Seven Peaks
 
 N: 5:BIAS_ACID
 'Gelatinous Cube'
@@ -63,6 +68,7 @@ of Harmony
 of Reason
 of Seldon
 of the Chaos Lord
+of the Twelve Fiends
 
 N:14:BIAS_NECROMANTIC
 'Total Eclipse'
@@ -71,10 +77,12 @@ N:14:BIAS_NECROMANTIC
 'Necrologia'
 'Total Solar Eclipse'
 'Undertaker'
+'Black Wind'
 of Rituals
 of Mephistopheles
 of the Ruler of Wallachia
 of the Netherlands
+of Blackest Pitch
 
 N:15:BIAS_LAW
 N:13:BIAS_PRIESTLY
@@ -98,6 +106,14 @@ of the Pious Believer
 of Ceremony
 of Revelation
 of Rite
+of Midsummer
+of Grace
+of Observance
+of Purity
+of Charity
+of Benediction
+of Splendour
+of Dawn's Hope
 
 N:16:BIAS_ROGUE
 N: 9:BIAS_DEX
@@ -116,6 +132,9 @@ of the Ninja
 of Phasing
 of the Fairy
 of Fnordja
+of the Hidden Chamber
+of Forgotten Pathways
+of the Shadow's Footfall
 
 N:17:BIAS_MAGE
 N: 7:BIAS_INT
@@ -155,10 +174,16 @@ N:10:BIAS_CON
 'Springsleeper'
 'Life of Leaf'
 'Wargskin'
+'Silverback'
 of Hyper Nature
 of the Hunter
 of Marinera
 of Numenor
+of the Waning Moon
+of the Waxing Moon
+of the Full Moon
+of the New Moon
+of the Falling Leaves
 
 N:11:BIAS_CHR
 'Snow White'
@@ -191,3 +216,4 @@ of Kevlar
 of the Borg
 of Gondor
 of Belegennon
+of Magnitude
