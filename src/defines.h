@@ -5749,9 +5749,6 @@ enum effect_e
 #define BIAS_PROTECTION      0x00100000
 #define BIAS_ARCHER          0x00200000
 
-/* Special multiplier to nerf ninja lawyer melee */
-#define NINJA_LAWYER_MULT 80
-
 /* Lawyer hacks */
 #define LAWYER_HACK_LEVEL 1
 #define LAWYER_HACK_MANA 2
