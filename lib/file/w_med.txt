@@ -44,6 +44,7 @@ N: 3:BIAS_FIRE
 'Burning Hammer'
 'Roaring Flames'
 'Heliotropic Wind'
+'Desert Sun'
 of Solar Wind
 of Flame
 of Zhuque
@@ -57,10 +58,13 @@ N: 4:BIAS_COLD
 'General of Winter'
 'Ice Climber'
 'White Death'
+'Crescent Moon'
+'Arctic Moon'
 of Aurora
 of Alaska
 of Ezo
 of the Winter Wonderland
+of Cold Fury
 
 N: 5:BIAS_ACID
 'Rust Monster'
@@ -102,10 +106,14 @@ N:14:BIAS_NECROMANTIC
 'Night Blade'
 'Dark Banisher'
 'Bloody Mary'
+'Scream of the Damned'
+'Scarlet Silk'
+'Manhunter'
 of Helthing
 of Darkness Storm
 of Genocide
 of Thuringwethil
+of Dusk's Lament
 
 N:15:BIAS_LAW
 N:13:BIAS_PRIESTLY
@@ -130,6 +138,7 @@ of the Priests
 of Awe
 of Mind
 of Soul
+of the Dawn
 
 
 N:16:BIAS_ROGUE
@@ -140,6 +149,7 @@ N:16:BIAS_ROGUE
 'Speed King'
 'Quicker'
 'Spriggan'
+'Crimson Kiss'
 of the Night
 of Jack of Shadows
 of Koga
@@ -199,6 +209,7 @@ N:19:BIAS_RANGER
 'Hellwind'
 'Shooting Star'
 'Invisible Death'
+'Autumn Harvest'
 of the Eagle Lord
 of Entanglement
 of the Druid
@@ -215,6 +226,7 @@ N:*:Default
 'Blue Steele'
 'Fury'
 'Howler'
+'Hour Past Midnight'
 'Roarer'
 'Red October'
 'Weapon of Choice'
