@@ -195,6 +195,12 @@ N:330:Bolg, Son of Azog
 N:350:Ugluk, the Uruk
 N:356:Lugdush, the Uruk
 N:373:Azog, King of the Uruk-Hai
+N:1182:Balcmeg, the Relentless
+N:1183:Lug, the Grotesque
+N:1184:Boldog, the Merciless
+N:1185:Othrod, Lord of the Orcs
+N:1186:Orcogar, Son of Orcobal
+N:1187:Orcobal the Mighty
 fingers his blade and grins evilly.
 snickers, 'Now, I strike a blow for *our* side!'
 says, 'Orcs don't get no respect... I'm gonna change that!'
@@ -269,7 +275,7 @@ summons special opponents!
 concentrates on its wounds.
 concentrates on its body. It starts moving faster.
 teleports away.
-dies.  You see a longsword (5d5).
+dies.  You see a longsword (5d6).
 dies. You see a Stick (1d77).
 
 N:409:Kharis the Powerslave
@@ -494,13 +500,13 @@ dances apocalyptic.
 N:794:Julian, Master of Forest Amber
 belows a horn in a loud voice.
 says, 'This Haul offers resistance!'
-says, 'You'll become a good mounting'
+says, 'You'll become a good mounting.'
 
 #N:796:The Norsa
 #N:805:Omarax the Eye Tyrant
 
 N:807:Gerard, Strongman of Amber
-rush toward you wordlessly.
+rushes toward you wordlessly.
 
 #N:809:Atlach-Nacha, the Spider God
 
@@ -718,7 +724,7 @@ magically summons special opponents!
 invokes a mana storm.
 invokes a darkness storm.
 invokes a starburst.
-throws a Psyco-Spear.
+throws a Psycho-Spear.
 invokes the Hand of Doom!
 casts a Globe of Invulnerability.
 magically summons Lords of Amber!
@@ -798,6 +804,29 @@ says, 'When I find out who killed my baby girl, I'll tie them up and drop them i
 yells, 'Listen, mink-face, I have a spare wand of fire bolts and if you bother me you'll get to meet it up close and personal."
 shakes his head.
 sighs wistfully.
+
+N:1148:Aude
+says, 'I'll set you on fire!'
+says, 'Have you lost your way? Come hither..'
+says, 'You'll die having seen the pretty one!'
+says, 'Come join me in a dance... of destruction!'
+says, 'Dally with me darling - before you fall!'
+says, 'I hope you've enjoyed it here... but you won't be here long.'
+says, 'The only death worthy of a warrior's heart is fire!'
+
+N:1149:Helga
+says, 'Your time for death has come.'
+says, 'You shall wither on the vine!'
+says, 'You value your petty life far too much!'
+
+N:1150:Gertrude
+says, 'I am the fairest of them all!'
+says, 'Who dares approach me?'
+says, 'Where's my eye of newt?'
+says, 'Hubble dubble toil and trouble.'
+says, 'Fire burn and cauldron bubble.'
+says, 'Whether ye be soldier or wanderer or sailor lost, into my stew you must be tossed.'
+says, 'Please don't make yourself at home.'
 
 N:*:Default lines
 cackles evilly.
@@ -903,3 +932,9 @@ says, 'I love all that blood.'
 says, 'I don't want to hurt you, I only want to kill you.'
 says, 'I like killing people, because it's so much fun.'
 screams, 'I'm out to destroy and I will cut you down!'
+shouts, 'Have at thee knave!'
+screams, 'I'll have your guts for garters!'
+says, 'Your time has come.'
+says, 'Say your prayers.'
+says, 'Cower before me.'
+says, 'Your deeds have lead you to this.'
