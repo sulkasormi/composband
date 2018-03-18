@@ -2340,7 +2340,7 @@ static void innate_attacks(s16b m_idx, bool *fear, bool *mdeath, int mode)
                     dam -= dam * MIN(100, p_ptr->stun) / 150;
                     base_dam -= base_dam * MIN(100, p_ptr->stun) / 150;
                 }
-                if (p_ptr->pclass == CLASS_NINJA_LAWYER) dam -= ((dam * (100 - NINJA_LAWYER_MULT)) / 100);
+                dam = ((dam * class_melee_mult()) + 50) / 100;
 
                 /* More slop for Draconian Metamorphosis ... */
                 if ( (player_is_ninja)
@@ -3473,6 +3473,9 @@ static bool py_attack_aux(int y, int x, bool *fear, bool *mdeath, s16b hand, int
                 }
             }
 
+            /* Adjust for class penalties */
+            k = ((k * class_melee_mult()) + 50) / 100;
+
             if (poison_needle || mode == HISSATSU_KYUSHO || mode == MYSTIC_KILL)
             {
                 if ( randint1(randint1(r_ptr->level/7)+5) == 1
@@ -3490,7 +3493,6 @@ static bool py_attack_aux(int y, int x, bool *fear, bool *mdeath, s16b hand, int
                    && ((p_ptr->cur_lite <= 0 || one_in_(7))) )
             {
                 int maxhp = maxroll(r_ptr->hdice, r_ptr->hside);
-                if (p_ptr->pclass == CLASS_NINJA_LAWYER) k -= ((k * (100 - NINJA_LAWYER_MULT)) / 100);
 
                 if (one_in_(backstab ? 13 : (stab_fleeing || fuiuchi) ? 15 : 27))
                 {
