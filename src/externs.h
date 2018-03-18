@@ -1534,6 +1534,7 @@ extern bool tele_town(void);
 extern int bow_energy(int sval);
 extern int bow_range(object_type *o_ptr);
 extern int bow_mult(object_type *o_ptr);
+extern int class_melee_mult(void);
 extern void display_weapon_info(doc_ptr doc, int hand);
 extern int display_weapon_mode;
 extern int display_shooter_mode;
