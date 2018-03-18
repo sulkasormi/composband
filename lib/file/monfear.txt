@@ -48,7 +48,7 @@ limps away, howling.
 howls.
 looks at you sadly.
 
-#¥¹¥á¥¢¥´¥ë¸ì¤Ï ÆüËÜ¤ÎÂè°ì¿Í¼Ô Tessi ¤µ¤ó¤Ë´Æ½¤¤·¤Æ¤¤¤¿¤À¤­¤Ş¤·¤¿¡£
+#ã‚¹ãƒ¡ã‚¢ã‚´ãƒ«èªã¯ æ—¥æœ¬ã®ç¬¬ä¸€äººè€… Tessi ã•ã‚“ã«ç›£ä¿®ã—ã¦ã„ãŸã ãã¾ã—ãŸã€‚
 N:63:Smeagol
 says, 'Don't hurt us, mastersisis.'
 says, 'Poor Smeagol, poor Smeagol.'
@@ -89,6 +89,12 @@ N:330:Bolg, Son of Azog
 N:350:Ugluk, the Uruk
 N:356:Lugdush, the Uruk
 N:373:Azog, King of the Uruk-Hai
+N:1182:Balcmeg, the Relentless
+N:1183:Lug, the Grotesque
+N:1184:Boldog, the Merciless
+N:1185:Othrod, Lord of the Orcs
+N:1186:Orcogar, Son of Orcobal
+N:1187:Orcobal the Mighty
 screams, 'Hey, orcs have rights too!'
 says, 'You're just prejudiced against orc-kind, aren't you?'
 begs, 'Spare me and I'll get you Ringil! Really!'
@@ -420,8 +426,8 @@ invokes a starburst.
 throw a Psycho-Spear.
 invokes the Hand of Doom!
 casts a Globe of Invulnerability.
-#¤¬¼«Ê¬¤Î½ı¤Ë½¸Ãæ¤·¤¿¡£
-#¢¬¤³¤ì¤Ï±ÑÊ¸¤Î¹½Â¤¾å¤Á¤ç¤Ã¤ÈÌµÍı¤Ã¤İ¤¤
+#ãŒè‡ªåˆ†ã®å‚·ã«é›†ä¸­ã—ãŸã€‚
+#â†‘ã“ã‚Œã¯è‹±æ–‡ã®æ§‹é€ ä¸Šã¡ã‚‡ã£ã¨ç„¡ç†ã£ã½ã„
 magically summons Lords of Amber!
 yells 'The World! Time has stopped!'
 
