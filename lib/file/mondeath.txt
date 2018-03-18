@@ -60,6 +60,7 @@ says, 'I guess FrogComposband is too easy!'
 says, 'Wait until you see me next release!'
 says, 'I guess this is the last version of ComPosband!'
 says, 'Well, ComPosband was much more fun than this!'
+says, 'Now what's going to happen to my No Teleporting code?'
 
 N:1231:Implorington III
 says, 'I will be resurrected!'
