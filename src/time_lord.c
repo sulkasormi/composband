@@ -51,6 +51,7 @@ void mon_change_race(mon_ptr mon, int new_r_idx, cptr verb)
 
     assert(mon);
     if (new_r_idx <= 0) return;
+    if (!quest_allow_poly(mon)) return;
 
     old_hp = mon->hp;
     old_maxhp = mon->max_maxhp;
@@ -105,20 +106,25 @@ void mon_change_race(mon_ptr mon, int new_r_idx, cptr verb)
             if (p_ptr->image)
             {
                 monster_race *hallu_race;
+                cptr hallu_name;
                 do
                 {
                     hallu_race = &r_info[randint1(max_r_idx - 1)];
                 }
                 while (!hallu_race->name || (hallu_race->flags1 & RF1_UNIQUE));
-                msg_format("%^s changed into %s.", m_name, r_name + hallu_race->name);
+                hallu_name = r_name + hallu_race->name;
+                cmsg_format(TERM_L_BLUE, "%^s %s into %s %s.", m_name, verb, is_a_vowel(hallu_name[0]) ? "an" : "a", r_name + hallu_race->name);
             }
             else
             {
-                monster_desc(new_name, mon, 0);
+                monster_desc(new_name, mon, MD_INDEF_VISIBLE);
                 cmsg_format(TERM_L_BLUE, "%^s %s into %s.", m_name, verb, new_name);
+                if (race->r_sights < MAX_SHORT) race->r_sights++;
             }
         }
         if (!p_ptr->image) r_info[old_r_idx].r_xtra1 |= MR1_SINKA;
+
+        /* Now you feel very close to this pet. */
         mon_set_parent(mon, 0);
     }
 
