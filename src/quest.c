@@ -826,6 +826,20 @@ void quests_on_kill_mon(mon_ptr mon)
     }
 }
 
+/* Check whether we need to prevent a quest monster from polymorphing or evolving */
+bool quest_allow_poly(mon_ptr mon)
+{
+    quest_ptr q;
+    if (!_current) return TRUE;
+    q = quests_get(_current);
+    assert(q);
+    assert(mon);
+    if (q->status == QS_COMPLETED) return TRUE;
+    if (q->goal != QG_KILL_MON) return TRUE;
+    if (mon->r_idx == q->goal_idx) return FALSE;
+    return TRUE;
+}
+
 void quests_on_get_obj(obj_ptr obj)
 {
     quest_ptr q;
