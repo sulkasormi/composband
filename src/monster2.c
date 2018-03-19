@@ -3189,6 +3189,9 @@ int place_monster_one(int who, int y, int x, int r_idx, int pack_idx, u32b mode)
 
     if (!p_ptr->inside_battle)
     {
+        /* Mega-hack - improve savefile compatibility */
+        if ((r_ptr->flags1 & (RF1_UNIQUE)) && (r_ptr->max_num > 1)) r_ptr->max_num = 1;
+
         /* Hack -- "unique" monsters must be "unique" */
         if (((r_ptr->flags1 & (RF1_UNIQUE)) ||
              (r_ptr->flags7 & (RF7_NAZGUL))) &&
