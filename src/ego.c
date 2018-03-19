@@ -2986,6 +2986,23 @@ static void _ego_create_cloak(object_type *o_ptr, int level)
         if (one_in_(ACTIVATION_CHANCE))
             effect_add_random(o_ptr, BIAS_NECROMANTIC);
         break;
+    case EGO_CLOAK_HERO:
+        o_ptr->to_d += 3;
+        o_ptr->to_h += 3;
+        if (one_in_(2)) add_flag(o_ptr->flags, OF_SUST_DEX);
+        if (one_in_(3)) add_flag(o_ptr->flags, OF_REGEN);
+        if (one_in_(5)) add_flag(o_ptr->flags, OF_SEE_INVIS);
+        if (one_in_(5)) add_flag(o_ptr->flags, OF_DEX);
+        if (one_in_(5)) add_flag(o_ptr->flags, OF_CON);
+        if (one_in_(10)) add_flag(o_ptr->flags, OF_LIFE);
+        if (one_in_(10)) add_flag(o_ptr->flags, OF_SPEED);
+        if (one_in_(10)) add_flag(o_ptr->flags, OF_LEVITATION);
+        if (one_in_(20)) add_flag(o_ptr->flags, OF_CHR);
+        else if (one_in_(5)) add_flag(o_ptr->flags, OF_DEC_STEALTH);
+        if (one_in_(12)) one_high_resistance(o_ptr);
+        if ((one_in_(3)) && (one_in_(ACTIVATION_CHANCE)))
+            effect_add_random(o_ptr, BIAS_WARRIOR);
+        break;
     case EGO_CLOAK_RETRIBUTION:
         if (one_in_(2))
             add_flag(o_ptr->flags, OF_AURA_FIRE);
