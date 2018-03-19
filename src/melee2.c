@@ -2271,7 +2271,7 @@ static void process_monster(int m_idx)
                     {
                         msg_format("%^s says 'It is the pinch! I will retreat'.", m_name);
                     }
-                    msg_format("%^s read a scroll of teleport level.", m_name);
+                    msg_format("%^s reads a scroll of Teleport Level.", m_name);
                     msg_format("%^s disappears.", m_name);
                 }
 
@@ -4327,86 +4327,7 @@ void mon_gain_exp(mon_ptr mon, int amt)
 
     if (mon->exp >= race->next_exp)
     {
-        char m_name[80];
-        int old_hp = mon->hp;
-        int old_maxhp = mon->max_maxhp;
-        int old_r_idx = mon->r_idx;
-        byte old_sub_align = mon->sub_align;
-
-        /* Hack -- Reduce the racial counter of previous monster */
-        real_r_ptr(mon)->cur_num--;
-
-        monster_desc(m_name, mon, 0);
-        mon->r_idx = race->next_r_idx;
-
-        /* Count the monsters on the level */
-        real_r_ptr(mon)->cur_num++;
-
-        mon->ap_r_idx = mon->r_idx;
-        race = &r_info[mon->r_idx];
-
-        if (race->flags1 & RF1_FORCE_MAXHP)
-        {
-            mon->max_maxhp = maxroll(race->hdice, race->hside);
-        }
-        else
-        {
-            mon->max_maxhp = damroll(race->hdice, race->hside);
-        }
-        if (ironman_nightmare)
-        {
-            u32b hp = mon->max_maxhp * 2L;
-
-            mon->max_maxhp = (s16b)MIN(30000, hp);
-        }
-        mon->maxhp = mon->max_maxhp;
-        mon->hp = old_hp * mon->maxhp / old_maxhp;
-
-        /* Extract the monster base speed */
-        mon->mspeed = get_mspeed(race);
-
-        /* Sub-alignment of a monster */
-        if (!is_pet(mon) && !(race->flags3 & (RF3_EVIL | RF3_GOOD)))
-            mon->sub_align = old_sub_align;
-        else
-        {
-            mon->sub_align = SUB_ALIGN_NEUTRAL;
-            if (race->flags3 & RF3_EVIL) mon->sub_align |= SUB_ALIGN_EVIL;
-            if (race->flags3 & RF3_GOOD) mon->sub_align |= SUB_ALIGN_GOOD;
-        }
-
-        mon->exp = 0;
-
-        if (is_pet(mon) || mon->ml)
-        {
-            if (!ignore_unview || player_can_see_bold(mon->fy, mon->fx))
-            {
-                if (p_ptr->image)
-                {
-                    monster_race *hallu_race;
-
-                    do
-                    {
-                        hallu_race = &r_info[randint1(max_r_idx - 1)];
-                    }
-                    while (!hallu_race->name || (hallu_race->flags1 & RF1_UNIQUE));
-
-                    msg_format("%^s evolved into %s.", m_name, r_name + hallu_race->name);
-                }
-                else
-                {
-                    msg_format("%^s evolved into %s.", m_name, r_name + race->name);
-                    if (race->r_sights < MAX_SHORT) race->r_sights++;
-                }
-            }
-
-            if (!p_ptr->image) r_info[old_r_idx].r_xtra1 |= MR1_SINKA;
-
-            /* Now you feel very close to this pet. */
-            mon_set_parent(mon, 0);
-        }
-        update_mon(mon->id, FALSE);
-        lite_spot(mon->fy, mon->fx);
+        mon_change_race(mon, race->next_r_idx, "evolved");
     }
     if (mon->id == p_ptr->riding) p_ptr->update |= PU_BONUS;
 }
