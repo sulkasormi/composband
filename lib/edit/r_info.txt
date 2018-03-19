@@ -22590,6 +22590,27 @@ F:POS_GAIN_AC | POS_HOLD_LIFE
 P:Copy:Human:Rage-Mage
 D:An icy whirlwind of cold air.
 
+N:1250:Polyphemus, the Blind Cyclops
+G:P:g
+I:134:42d242:40:200:20:1000
+W:80:3:999:58080:0:0
+B:HIT:HURT(18d12):STUN(6d6, 66%)
+B:HIT:SHATTER(18d16)
+B:HIT:SHATTER(18d16)
+F:UNIQUE | MALE | DROP_4D2 | DROP_GOOD | DROP_GREAT | ONLY_ITEM |
+F:FORCE_SLEEP | FORCE_MAXHP | SMART | MOVE_BODY | TAKE_ITEM
+F:OPEN_DOOR | BASH_DOOR | EVIL | GIANT | IM_ACID | RES_COLD | RES_FIRE
+F:RES_DARK | RES_WATE | RES_TELE | RAND_25 | CAN_SWIM | NO_STUN
+F:DROP_CORPSE | POS_SUST_STR
+P:Copy:Half-Titan:Mauler
+S:FREQ_40
+S:S_KIN | BA_ACID(1d484+86) | BA_WATER(1d192+50) | BO_WATER(10d10+156) |
+S:BO_ICE(6d8+200) | THROW
+D:No ordinary cyclops, but the son of a sea-god: he wields the powers of
+D:elemental water as well as the considerable strength of a cyclops.  His one
+D:eye was blinded long ago by the warrior Odysseus, but he has trained himself
+D:to hear so well that it nearly makes up for his disability.
+
 # N: serial number : monster name
 # G: symbol : color
 # I: speed : hit points : vision : armor class : alertness : weight (lbs)
