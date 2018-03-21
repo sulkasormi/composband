@@ -3412,7 +3412,7 @@ F:VULN_LITE | DEC_INT | DEC_WIS | AGGRAVATE | SPEED
 D:As you lift this great hammer, all your doubts are dispelled: it's time to
 D: get going and crush your enemies into a pulp.
 
-N:339:of Curiosity
+N:339:'Curiosity'
 I:23:10:3
 W:20:20:80:40000
 P:0:2d8:16:5:0
@@ -3429,6 +3429,53 @@ F:RES_CONF | RES_BLIND | SUST_INT | QUESTITEM
 D:It previously belonged to Katoshiko Mokomagi, a young wizard who started
 D: playing with forces beyond his control. (Not a mistake you would ever
 D: make.)
+
+N:341:'Skynail'
+I:23:16:3
+W:60:60:150:150000
+P:0:4d6:19:12:0
+F:SLAY_EVIL | BRAND_FIRE | RES_COLD | RES_DARK | LITE | SHOW_MODS | RIDING |
+F:XTRA_RES_OR_POWER | SPEED | STR | DEX | RES_CHAOS | VORPAL
+D:A shining blade so sturdy it could even hold the stars in place.
+
+N:342:Lava Lamp of Telmora
+I:39:25:1
+W:50:1:5:70000
+P:0:1d1:0:0:0
+F:QUESTITEM | INSTA_ART
+F:RES_FIRE | RES_SOUND | BRAND_FIRE | AURA_FIRE | CHR | FULL_NAME
+E:CONFUSING_LITE:64:50
+#E:The Lamp shines with a dazzling white light!
+
+N:343:of Sotkamo
+I:21:51:4
+W:60:1:15:50000
+P:0:2d4:21:7:0
+E:RESTORING:40:75
+F:SPEED | DEX | REFLECT | FREE_ACT | SUST_DEX | RES_NEXUS
+F:RES_TIME | HOLD_LIFE | REGEN | INSTA_ART | QUESTITEM
+D:You feel agile and impervious to the passage of time as you hold this
+D:old club and swing it. Now, if only it had been designed for bashing
+D:your enemies' heads in...
+
+N:344:of the Visiting Team
+I:21:51:2
+W:60:1:20:50000
+P:0:2d4:8:24:0
+F:SPEED | DEX | REFLECT | RES_SOUND | SUST_DEX | INSTA_ART | QUESTITEM
+F:DEC_CHR | RES_NEXUS | MAGIC_MASTERY | STUN
+D:A memento of your adventures in Zul, you presume it must have either
+D:belonged to one of the strange mages or fallen out of a hole in space-time.
+
+N:345:'Superbat'
+I:21:51:3
+W:60:1:20:40000
+P:0:2d4:14:16:0
+F:STR | DEX | CHR | REFLECT | RES_FEAR | FREE_ACT | RES_NEXUS | REGEN |
+F:DEC_INT | LIFE | TELEPATHY
+D:It was carved out of a tree branch knocked down by a falling meteor.
+D:(You're not sure if that gives it any mystic superpowers, but you sure
+D:hope so.)
 
 # N: serial number : item name
 # I: tval : sval : pval
