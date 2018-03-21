@@ -2512,6 +2512,20 @@ static void process_monster(int m_idx)
         }
     } */
 
+    /* Clear head occasionally */
+    if ((MON_CONFUSED(m_ptr)) && (r_ptr->flags3 & RF3_CLEAR_HEAD) && (one_in_(4)))
+    {
+        if (set_monster_confused(m_ptr->id, 0))
+        {
+            if (mon_show_msg(m_ptr))
+            {
+                char m_name[80];
+                monster_desc(m_name, m_ptr, 0);
+                msg_format("%^s is no longer confused.", m_name);
+            }
+        }
+    }
+
     /* Try to cast spell occasionally */
     if (r_ptr->spells)
     {
