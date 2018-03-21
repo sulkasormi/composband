@@ -2320,7 +2320,7 @@ bool apply_magic(object_type *o_ptr, int lev, u32b mode)
             {
                 if (cheat_peek) object_mention(o_ptr);
                 dragon_resist(o_ptr);
-                if (!one_in_(3)) power = 0;
+                if ((!((mode & AM_SPECIAL) && (mode & AM_NO_FIXED_ART))) && (!one_in_(3))) power = 0;
             }
             if (power) obj_create_armor(o_ptr, lev, power, mode);
             break;
