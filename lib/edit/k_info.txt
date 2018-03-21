@@ -1038,6 +1038,13 @@ W:15:0:0:200:1000
 P:0:3d9:0:0:0
 F:SHOW_MODS | INSTA_ART | RIDING
 
+N:*:& Baseball Bat~
+G:\:w
+I:21:51:0
+W:15:0:0:15:1000
+P:0:1d4:0:0:0
+F:SHOW_MODS | INSTA_ART
+
 N:*:& Stick~
 G:\:y
 I:21:63:0
@@ -4071,6 +4078,13 @@ N:*:& Arkenstone
 G:*:B
 I:39:24:0
 W:50:0:0:5:25000
+P:0:1d1:0:0:0
+F:INSTA_ART
+
+N:*:& Phial
+G:*:y
+I:39:25:0
+W:50:0:0:5:10000
 P:0:1d1:0:0:0
 F:INSTA_ART
 
