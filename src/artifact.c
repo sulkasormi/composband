@@ -1275,8 +1275,12 @@ static void random_misc(object_type * o_ptr)
             add_flag(o_ptr->flags, OF_NO_MAGIC);
             break;
         case 31:
-            add_flag(o_ptr->flags, OF_NO_TELE);
+        {
+            bool tele_proof = ((p_ptr->pclass == CLASS_BERSERKER) ? magik(10) : magik(90));
+            if (tele_proof) add_flag(o_ptr->flags, OF_WARNING);
+            else add_flag(o_ptr->flags, OF_NO_TELE);
             break;
+        }
         case 32:
             add_flag(o_ptr->flags, OF_WARNING);
             break;
@@ -1878,7 +1882,7 @@ typedef struct {
 } _slot_weight_t, *_slot_weight_ptr;
 static _slot_weight_t _slot_weight_tbl[] = {
     {"Weapons", object_is_melee_weapon, 80},
-    {"Shields", object_is_shield, 55},
+    {"Shields", object_is_shield, 52},
     {"Bows", object_is_bow, 60},
     {"Rings", object_is_ring, 55},
     {"Amulets", object_is_amulet, 40},
