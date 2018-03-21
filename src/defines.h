@@ -1338,12 +1338,13 @@ enum {
 #define ART_EOWYN               216
 #define ART_SPECTRAL_DSM        226
 #define ART_BLOODRIP            243
-#define ART_MAGLOR                245
-#define ART_DAERON                246
-#define ART_MASTER_TONBERRY        247
-#define ART_DUELIST                248
+#define ART_MAGLOR              245
+#define ART_DAERON              246
+#define ART_MASTER_TONBERRY     247
+#define ART_DUELIST             248
 #define ART_ETERNAL_BLADE       294
 #define ART_MICRODOLLAR         334
+#define ART_SKYNAIL             341
 
 /* Polearms */
 #define ART_THEODEN             93
@@ -1665,6 +1666,7 @@ enum {
 #define SV_MACE_OF_DISRUPTION           20    /* 5d8  */
 #define SV_WIZSTAFF                     21    /* 1d2  */
 #define SV_GROND                        50    /* 3d9  */
+#define SV_BASEBALL_BAT                 51    /* 1d4  */
 #define SV_NAMAKE_HAMMER                63    /* 1d77 */
 
 /* The "sval" values for TV_POLEARM */
@@ -3143,7 +3145,7 @@ enum {
 #define RF3_XXX24           0x01000000
 #define RF3_XXX25           0x02000000
 #define RF3_XXX26           0x04000000
-#define RF3_XXX27           0x08000000
+#define RF3_CLEAR_HEAD      0x08000000  /* Can recover from confusion suddenly */
 #define RF3_NO_FEAR         0x10000000  /* Cannot be scared */
 #define RF3_NO_STUN         0x20000000  /* Cannot be stunned */
 #define RF3_NO_CONF         0x40000000  /* Cannot be confused and resist confusion */
