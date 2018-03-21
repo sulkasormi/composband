@@ -371,7 +371,7 @@ static cptr r_info_flags3[] =
     "XXX",
     "XXX",
     "XXX",
-    "XXX",
+    "CLEAR_HEAD",
     "NO_FEAR",
     "NO_STUN",
     "NO_CONF",
