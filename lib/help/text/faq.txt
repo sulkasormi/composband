@@ -162,6 +162,21 @@ sometimes confuses players who've seen or heard about the game and
 expect a wilderness.
 
 
+Q: I tried to reach a dungeon through the overworld, and the overworld 
+map says I should be right on top of it; yet when I go to the normal 
+map I can't see a dungeon entrance anywhere. What's wrong?
+
+A: Dungeon entrances in the wilderness can sometimes be tricky to 
+locate because one square on the overworld map corresponds to a fairly 
+large area on the normal map. First, press ] or Ctrl+O (the object list 
+commands) to confirm there is indeed no entrance in sight. If the lack 
+of an entrance is confirmed by the object list, explore the nearby area 
+until you find the dungeon; most commonly you'll have to travel further 
+in the same direction you last moved in on the overworld map. If you 
+still can't find the entrance, check the overworld map to confirm you 
+haven't moved out of the right area, and then try again.
+
+
 Q: I want to play as an Android, Balrog, Golem, Skeleton, Zombie, 
 Spectre, or Ent.  But I can't find any scrolls of satisfy hunger. And 
 Berserkers no longer have racial ability of satisfy hunger. How do I 
@@ -223,6 +238,21 @@ diminishing returns for speed; the difference between +30 speed and +40
 speed is only ten percent. Potions of Speed, and in the late game 
 Staves of Speed, are extremely useful items you should ideally always 
 have.
+
+
+Q: I've reached the town of Anambar, and can't find a home there. Do I 
+not have a home in Anambar?
+
+A: Locate the Police Station and complete the quest they offer. You 
+will receive a home as a reward. (However, Zul is a town where you 
+really don't have a home.)
+
+
+Q: I'm seeing "empty" rings or amulets that seem to do absolutely 
+nothing. Is there any point to them, or are they just flavor?
+
+A: Empty rings and amulets are not directly useful, but they can be 
+used as the base item for a potentially useful artifact reforge.
 
 
 Q: I tried to dual wield two weapons.  But I couldn't hit anything!
@@ -307,6 +337,167 @@ command, and give your mount a target.  The horse which was given a
 target will no longer run around aimlessly.
 
 
+Q: I have acquired a mutation! Is that bad?
+
+A: Some mutations are good, while others are bad. Two towns - Zul and 
+Anambar - offer a "cure mutation" service that allows you to get rid of 
+bad mutations (the Zul service is much cheaper). Note, though, that you 
+don't get to choose which mutation is removed - you might be "cured" of 
+a good mutation, with the bad one staying in place...
+
+Potions of New Life also cure mutations among their other effects, and 
+potions of Polymorph both give and cure mutations at random.
+
+
+Q: How important is Telepathy?
+
+A: Full telepathy is extremely nice to have - it tells you about 
+approaching threats, helps you locate fleeing or blinking enemies, and 
+even allows you to spot monsters that might otherwise be invisible to 
+you. However, it is still more of a convenience than something that you 
+absolutely need, especially if you have easy and reliable access to 
+Detection and have no or minimal problems seeing invisible creatures. A 
+player without telepathy needs to detect monsters more often but can 
+usually get by.
+
+
+Q: What do monsters' vampiric attacks do?
+
+A: They drain life from you, thereby healing the monster, increasing 
+its maximum HP and consuming your life points.
+
+
+Q: Are Unlife attacks the same as vampiric attacks?
+
+A: Unlife attacks are very similar to vampiric attacks, but instead of 
+healing the monster or increasing its maximum HP they make the monster 
+more powerful. A powerful monster has a higher AC, hits harder and 
+casts more dangerous spells, but its maximum HP is not increased.
+
+
+Q: What do the player's vampiric attacks do?
+
+A: They drain life from the target monster; the monster will lose HP 
+like on a normal attack, but in addition its max HP will be lowered 
+slightly, and you will recover either a small amount of life points or 
+a small amount of HP, should you need either. (If both your life points 
+and hit points have fallen below the maximum, your life points will 
+recover first.) Vampiric attacks are very useful and powerful; however, 
+they only work on living monsters. Many strong monsters, like golems, 
+vortices, demons, undead and the Serpent of Chaos, are immune to 
+vampirism.
+
+
+Q: What are "life points", anyway?
+
+A: Life points determine your effective maximum HP. Normally, your 
+effective max HP and displayed max HP will be identical; but if your 
+life points fall below 100%, your effective max HP is lowered. Life 
+points are only shown (e.g. "Life: 95%") if they fall below the 
+maximum; a loss of a few points shouldn't worry you too much, but a 
+more significant drop can ruin your day.
+
+Since life points only account for half of your max HP, your max HP 
+will never hit zero; accordingly, it is possible to run out of life 
+points without being killed outright. If this happens, you will be 
+permanently transformed into an undead - either a skeleton, a vampire, 
+a zombie or a spectre - and regain full life points (or "unlife 
+points") since the undead are immune to loss of life.
+
+
+Q: My current HP is lower than my max HP - but it's still shown in 
+green, not yellow, and it seems I can't heal any further. What's 
+happening?
+
+A: You've hit your effective maximum HP, which is lower than your 
+displayed maximum HP because you've lost life points.
+
+
+Q: How can I regain my lost life points?
+
+A: Life points can be regained either through any type of vampiric 
+attack, or by using a potion, device or activation. Potions of Restore 
+Life Levels are a common way to regain life points, though they only 
+restore up to 15 percentage points at a time.
+
+
+Q: There's a building in Morivant that offers artifact reforging. What 
+does that mean? Is it something I should do?
+
+A: For reforging, you need a source item - any artifact - and a 
+destination item - any item that can be equipped and isn't already an 
+artifact or ego item. (For rings and amulets this means an "empty" 
+item, as all non-empty rings and amulets are considered ego items.) The 
+original artifact will be destroyed, and the destination item is turned 
+into a new artifact. The properties of the old artifact are not 
+retained; however, if the destination item already had special 
+properties despite being non-ego (e.g. resists on a dragon shield), 
+those will be retained.
+
+How powerful the new artifact will be depends mostly on the power of 
+the source artifact. Usually it's going to be somewhat less powerful 
+than the source, especially if the source artifact represented a 
+"strong" slot (the strongest slots are the weapon slot and the body 
+armor slot) while the target represented a weak slot (the weakest slots 
+are lamps and amulets).
+
+There are many reasons why reforging can be a good idea; for example, 
+you may be unhappy with your item in a particular equipment slot, or 
+you have an annoying resistance hole, or you have a very strong 
+artifact that has a high score but for some reason isn't useful to you 
+directly; or you're already wearing a non-ego item and want to upgrade 
+it into an artifact. Ninjas (and Ninja-Lawyers) often reforge onto 
+lamps, hoping to get an artifact lamp of darkness.
+
+
+Q: What kind of source artifacts should I use for reforging? What kind 
+of destination items should I use?
+
+A: Stronger artifacts give better results, so use the strongest 
+artifact you have that you can afford to reforge and that doesn't 
+exceed your reforge power limit. (Of course, don't use a source 
+artifact that's already useful to you, since the reforge will consume 
+it!) If you're reforging onto a weaker slot, consider using a source 
+artifact that's strong for its slot, rather than strong in absolute 
+terms; this way, less power is lost to a slot downgrade. (For example, 
+if you want a lamp, and you have artifact gloves with a 40K score and 
+artifact armor with a 70K score, use the gloves; the two items will 
+produce similar lamps, but the armor will produce a much better armor 
+or weapon since none of its power is lost to a slot downgrade.)
+
+If possible, use a destination item that's already good in some useful 
+way - for example, dragon wings that already have resistances you'd 
+like, or a diamond edge with sharpness and high base damage - but not 
+one that's already good in some way you don't need, since that would be 
+lost value. Don't use a destination item that's too powerful compared 
+to the source item, since the reforge would be left without much room 
+for improvements.
+
+Reforge from strong slots to strong slots, weak slots to weak slots, 
+and - if necessary - strong slots to weak slots; but never reforge from 
+a weak slot onto a strong slot.
+
+
+Q: What determines my reforge power limit?
+
+A: Your reforge power limit is determined by how famous you are. You 
+gain fame by completing quests, turning in wanted monsters, killing 
+enemies in the Thalos arena, and killing uniques (especially high-level 
+uniques). You lose fame by failing quests or being defeated in an Arena 
+fight. There is a soft reforge-power limit of 90000 or slot-adjusted 
+equivalent - it is possible for a sufficiently famous player to use a 
+source artifact that exceeds this limit, but the extra power will be 
+ignored.
+
+
+Q: When should I reforge?
+
+A: Reforging is at its best relatively late in the game, when you've 
+both found many very strong artifacts and accrued enough fame to use 
+them as source items. Don't be afraid of trying it out earlier, though, 
+especially if you need something specific like a dark lamp.
+
+
 Q: What is the genesis of FrogComposband?
 
 A: FrogComposband is a fork of ComPosband, a fork of PosChengband, 
@@ -350,5 +541,6 @@ Original   : Hengband FAQ written by Mogami
 Updated    : Hengband 1.5.4
 Updated    : PosChengband 1.0.0
 Updated    : FrogComposband 7.0.strawberry
+Updated    : FrogComposband 7.0.peppermint
 
 
