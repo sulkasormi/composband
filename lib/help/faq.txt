@@ -257,5 +257,5 @@ Original   : Hengband FAQ written by Mogami
 Updated    : Hengband 1.5.4
 Updated    : PosChengband 1.0.0
 Updated    : FrogComposband 7.0.strawberry
-Upadted    : FrogComposband 7.0.peppermint
+Updated    : FrogComposband 7.0.peppermint
 </color>
