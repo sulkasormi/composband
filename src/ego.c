@@ -314,15 +314,17 @@ static void _art_create_random(object_type *o_ptr, int level, int power)
     int     i;
     u32b    mode = CREATE_ART_NORMAL;
     point_t min_tbl[2] = { {20, 0}, {70, 50000} };
-    point_t max_tbl[5] = { {0, 5000}, {10, 10000}, {30, 30000}, {70, 110000}, {100, 160000} };
+    point_t max_tbl[5] = { {0, 5000}, {10, 10000}, {30, 30000}, {70, 100000}, {100, 150000} };
     int     min = interpolate(level, min_tbl, 2);
     int     max = interpolate(level, max_tbl, 5);
     int     pct = get_slot_power(o_ptr);
+    int     softmax;
 
     /* normalize based on the slot for this object (cf artifact.c)
      * weapons/armor are 100%; amulets/lights 50%; etc. */
     min = min * pct / 100;
     max = max * pct / 100;
+    softmax = MIN(800L * pct, MAX(5000, max * 7 / 8));
 
     if (power < 0)
         mode = CREATE_ART_CURSED;
@@ -337,6 +339,7 @@ static void _art_create_random(object_type *o_ptr, int level, int power)
 
         if (score < min) continue;
         if (score > max) continue;
+        if ((score > softmax) && (one_in_(2))) continue;
 
         *o_ptr = forge;
         return;
