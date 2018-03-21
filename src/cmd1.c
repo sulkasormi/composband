@@ -2786,7 +2786,7 @@ static bool py_attack_aux(int y, int x, bool *fear, bool *mdeath, s16b hand, int
     int             num_blow;
     bool            is_human;
     bool            is_lowlevel;
-    bool            zantetsu_mukou = FALSE, e_j_mukou = FALSE;
+    bool            zantetsu_mukou = FALSE, e_j_mukou = FALSE, bird_recoil = FALSE;
     int             knock_out = 0;
     int             dd, ds, old_hp;
     bool            hit_ct = 0;
@@ -2830,6 +2830,8 @@ static bool py_attack_aux(int y, int x, bool *fear, bool *mdeath, s16b hand, int
             zantetsu_mukou = TRUE;
         if (o_ptr->name1 == ART_EXCALIBUR_J && r_ptr->d_char == 'S')
             e_j_mukou = TRUE;
+        if (o_ptr->name1 == ART_SKYNAIL && r_ptr->d_char == 'B')
+            bird_recoil = TRUE;
     }
     else
     {
@@ -2924,7 +2926,7 @@ static bool py_attack_aux(int y, int x, bool *fear, bool *mdeath, s16b hand, int
     {
         if (weaponmaster_get_toggle() == TOGGLE_SHIELD_BASH && o_ptr->tval == TV_SHIELD)
             skills_shield_gain(o_ptr->sval, r_ptr->level);
-        else
+        else if (!bird_recoil)
             skills_weapon_gain(o_ptr->tval, o_ptr->sval, r_ptr->level);
     }
     else
@@ -3019,6 +3021,12 @@ static bool py_attack_aux(int y, int x, bool *fear, bool *mdeath, s16b hand, int
 
         if (p_ptr->paralyzed)
             break;
+
+        if (bird_recoil)
+        {
+            msg_print("You recoil at the thought of harming a bird!");
+            break;
+        }
 
         /* Weaponmaster Whirlwind turns a normal strike into a sweeping whirlwind strike */
         if (p_ptr->whirlwind && mode == 0)
@@ -3390,7 +3398,7 @@ static bool py_attack_aux(int y, int x, bool *fear, bool *mdeath, s16b hand, int
 
             if (zantetsu_mukou)
             {
-                msg_print("You cannot cut such a elastic thing!");
+                msg_print("You cannot cut such an elastic thing!");
                 k = 0;
             }
 
