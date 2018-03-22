@@ -1,3 +1,101 @@
+Changes in FrogComposband 7.0.peppermint (and the development version of
+7.0.strawberry):
+
+* Added new monsters and tweaked existing ones
+
+* Added a new option (easy_mimics) for players who really hate mimics,
+cloakers, death swords, wall monsters etc. and want to reglyph them.
+Turning on easy_mimics makes these monsters use the 'x' glyph instead of
+their normal glyph (the monsters will retain their normal color, unless
+that's pitch black, in which case it's changed to a slightly less black
+black). It also makes monsters with the ATTR_CLEAR flag possible to see.
+(Note that easy_mimics does not affect tree monsters or weird fumes, which
+can be recognized through their color, nor does it affect creeping coins or
+death scythes)
+
+* It is now possible to request a new quest immediately after receiving the
+reward for the old one, without the need to exit and re-enter the building
+
+* Adapted some changes to artifacts that Gwarl made for ComPosband 7.0.4
+
+* Added a new quest in Zul that enables teleporting between Zul and other
+towns if successfully completed
+[A fair warning about this quest. It's not *that* hard if you have good
+stealth, but if you have poor stealth - or worse, aggravation - things can
+get... entertaining. This is true of most quests of course, but particularly
+true here. Doing it with aggravation and low speed is not recommended.]
+
+* Fixed a bug in Thalos that made the library inaccessible in late game
+
+* Fixed a bug with lawyer *identify* (it cost zero mana and allowed the
+player to also do normal identify on a different item)
+
+* Fixed a bug that caused items in the home display to be sometimes shown
+with a value of zero
+
+* Fixed an old bug that caused some timed effects to be decreased on game
+load, allowing the player to cure fear by saving and loading repeatedly.
+(Something similar may still happen with other things, the code needs
+closer scrutiny)
+
+* Fixed an old PosChengband bug that allowed hidden information about
+immunities to leak to the player through the character sheet
+
+* Fixed an old PosChengband bug that sometimes caused the game to crash on
+mangy leper attacks due to division by zero (thanks to Hugo for spotting
+and reporting it)
+
+* Fixed an ancient bug that made quests uncompletable if one of the target
+monsters evolved or got polymorphed (this should now be impossible), and
+tweaked monster evolution code (all of which is now in time_lord.c, instead
+of being needlessly duplicated)
+
+* Slightly lowered the max power of ultra-strong deep dungeon randarts
+
+* Slightly changed how the reforge cap is calculated to compensate for it
+now being easier to acquire fame (due to the increased number of quests).
+The cap now increases slightly slower in the fame range 128 to 223 (early
+late game), with no effect on either midgame reforging or very-late-game
+reforging. Essentially, the idea behind this change is to keep midgame
+reforging viable and keep late game reforging strong, but still make it
+somewhat harder to reach the late game reforge power
+
+* Removed rogues' class life rating bonus
+
+* Imported Polyphemus from Vanilla and installed him as bottom guardian
+of Mine
+
+* Made the black aura worse
+
+* Amulets of anti-summoning can no longer be generated on a shuffle
+
+* Added a new deep cloak ego
+
+* Added new artifacts
+
+* Improved savefile compatibility when new uniques are added
+
+* The Hideout entrance, while still in Outpost, has been moved south; and
+the player now starts the game on the Warrens entrance, not the Hideout one.
+[Copied from ComPosband 7.1.0a]
+
+* Tweaked the walls of Crystal Castle
+[Copied from ComPosband 7.0.4]
+
+* Introduced a new flag that gives confused monsters a chance to shake
+their confusion off super-fast before they move. (Currently, no monster
+actually has this flag, apart from Utgard-Loke)
+
+* Monsters should no longer generate on top of enclosed 1x1 dark pits
+
+* Corrected a minor issue with fear message grammar after a throw attack
+
+* Moved the Dragon Slayer and Demon Slayer quests much deeper
+
+* Updated the in-game FAQ
+
+-------------------------------------------------------
+
 Changes in FrogComposband 7.0.strawberry (compared to ComPosband 7.0.3):
 
 * Rebalanced artifact reforging. The goal was to prevent silly-powerful items
@@ -161,9 +259,6 @@ scale mails (but not quite to the same extent as in ComPosband 7.0.4)
 
 To do:
 
-* Add a new high-level quest in Zul that, upon completion, enables
-teleporting between Zul and other towns
-
 * Bring back the Lazy personality
 
 * Look into adding new classes
@@ -178,8 +273,5 @@ teleporting between Zul and other towns
 
 * Review the effect that Chris's changes to FA/SI/fear have on unusual
 races like rings and death-swords, and fix the problems
-
-* Fix the bug that causes fear messages to take the form "Him flees in
-terror!" instead of "He flees in terror!"
 
 * Examine MITZE's bug with quest_unique turned off, and fix if needed
