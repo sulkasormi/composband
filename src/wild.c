@@ -731,7 +731,7 @@ void _generate_cave(rect_t exclude)
             if (wilderness[wild_y][wild_x].town)
             {
                 p_ptr->town_num = wilderness[wild_y][wild_x].town;
-                town_on_visit(p_ptr->town_num);
+                if (p_ptr->town_num != TOWN_ZUL) town_on_visit(p_ptr->town_num);
             }
 
             /* ... before excluding this tile during scrolling.
@@ -1178,7 +1178,8 @@ void wilderness_gen(void)
                 f_ptr = &f_info[c_ptr->feat];
                 if (have_flag(f_ptr->flags, FF_BLDG))
                 {
-                    if ((f_ptr->subtype == 4) || ((p_ptr->town_num == TOWN_OUTPOST) && (f_ptr->subtype == 0)))
+                    if ((f_ptr->subtype == 4) || ((p_ptr->town_num == TOWN_OUTPOST) && (f_ptr->subtype == 0))
+                    || ((p_ptr->town_num == TOWN_ZUL) && (f_ptr->subtype == 8)))
                     {
                         if (c_ptr->m_idx) delete_monster_idx(c_ptr->m_idx);
                         p_ptr->oldpy = y;
