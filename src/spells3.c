@@ -1873,9 +1873,10 @@ static bool _alchemy_aux(obj_ptr obj, bool force)
     {
         price /= 3;
         if (price > 30000) price = 30000;
+        if (no_selling) price /= 3;
         price *= obj->number;
 
-        msg_format("You turn %s to %d coins worth of gold.", o_name, price);
+        msg_format("You turn %s to %d coins' worth of gold.", o_name, price);
 
         p_ptr->au += price;
         stats_on_gold_selling(price); /* ? */
