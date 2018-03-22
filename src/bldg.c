@@ -17,6 +17,7 @@
 
 /* hack as in leave_store in store.c */
 static bool leave_bldg = FALSE;
+static bool paivita = FALSE;
 
 int get_bldg_member_code(cptr name)
 {
@@ -201,7 +202,7 @@ static void show_building(building_type* bldg)
     }
 
     prt(" ESC) Exit building", 23, 0);
-
+    paivita = FALSE;
 }
 
 /*
@@ -2190,6 +2191,43 @@ static bool inn_comm(int cmd)
 }
 
 /*
+ * Refresh buildings (epic hack)
+ */
+static void refresh_buildings(void)
+{
+    room_ptr dummy;
+    init_buildings();
+    dummy = towns_get_map();
+    if (dummy)
+    {
+        int y, x;
+        bool loytyi = FALSE;
+        cave_type *ruutu = &cave[py][px];
+        s16b etsittava = ruutu->feat;
+        for (y = 0; y < dummy->height && !loytyi; y++)
+        {
+            cptr line = vec_get(dummy   ->map, y);
+            for (x = 0; x < dummy->width && !loytyi; x++)
+            {
+                char letter = line[x];
+                room_grid_ptr my_grid = int_map_find(dummy->letters, letter);
+                if (!my_grid) my_grid = int_map_find(room_letters, letter);
+                if (!my_grid) continue;
+                if (etsittava == conv_dungeon_feat(my_grid->cave_feat))
+                {
+                    loytyi = TRUE;
+
+                    /* Update the quest indicator for the building we're in */
+                    ruutu->special = my_grid->extra;
+                }
+            }
+        }
+        room_free(dummy);
+    }
+    paivita = TRUE;
+}
+
+/*
  * Request a quest from the Lord.
  */
 static void castle_quest(void)
@@ -2214,8 +2252,10 @@ static void castle_quest(void)
 
     if (quest->status == QS_COMPLETED)
     {
+        if (strpos("Eddies", quest->name)) town_on_visit(TOWN_ZUL);
         quest_reward(quest);
         reinit_wilderness = TRUE;
+        refresh_buildings();
     }
     else if (quest->status == QS_FAILED)
     {
@@ -2225,6 +2265,7 @@ static void castle_quest(void)
         string_free(s);
         quest->status = QS_FAILED_DONE;
         reinit_wilderness = TRUE;
+        refresh_buildings();
     }
     else if (quest->status == QS_TAKEN)
     {
@@ -3767,11 +3808,18 @@ void do_cmd_bldg(void)
             msg_print(NULL);
             leave_bldg = TRUE;
         }
+
         /* Notice stuff */
         notice_stuff();
 
         /* Handle stuff */
         handle_stuff();
+
+        if (paivita)
+        {
+            if (leave_bldg) paivita = FALSE;
+            else { inkey(); show_building(bldg); }
+        }
     }
 
     store_hack = FALSE;
