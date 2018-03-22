@@ -4,11 +4,20 @@ L:z:SHALLOW_WATER
 L:y:MOUNTAIN
 L:x:TREE
 L:A:JEWELER
+L:w:GRASS
 
+#################### Quest 77 - Eddies #############################
+?:[EQU $QUEST77 Taken]
+L:w:QUEST_ENTER(77)
+?:[EQU $QUEST77 Untaken Taken Completed Failed]
+L:i:BUILDING_8(77)
+?:[EQU $QUEST77 Finished FailedDone]
+L:i:BUILDING_8(10)
+?:1
 #################### Quest 10 - Node of Sorcery ####################
 ?:[EQU $QUEST10 Taken]
 L:z:QUEST_ENTER(10)
-?:[EQU $QUEST10 Untaken Taken Completed Failed]
+?:[EQU $QUEST10 Taken Completed Failed]
 L:i:BUILDING_8(10)
 ?:[EQU $QUEST10 Finished FailedDone]
 L:i:BUILDING_8(0)
@@ -34,7 +43,13 @@ L:p:BUILDING_15(0)
 
 B:8:N:Tower of Sorcery:Tanistil:Elf
 B:8:A:0:Identify possessions:100:800:i:26:0
+B:8:A:1:Request quest:0:0:q:6:0
+?:[EQU $QUEST77 Finished]
 B:8:A:1:Request quest:0:0:q:6:1
+B:8:A:2:Teleport to other town:200:500:m:42:0
+?:[EQU $QUEST77 FailedDone]
+B:8:A:1:Request quest:0:0:q:6:1
+?:1
 B:8:M:*:None
 B:8:M:Sorcery:Owner
 
@@ -84,11 +99,11 @@ M:                         ^^^^^-----....--------------.----^
 M:                             ^^1^^----..........-----.-^^^^                                   
 M:               ^^^^^^^^^^^    ^^^^^^^^^--------...--...-^                                     
 M:               ^A......--^^^^^^       ^^5^^^^----....-.-^^^^                                  
-M:               ^^^^^^^-...----^^^^^    ^^^ ^^^^^^-----.---D^                                  
-M:                     ^^---...-----^^^^^^^^^^----------.--^^^                                  
-M:                      ^^^^---....--------------------..---3^                                  
-M:                         ^^------........----------...--^^^^                                  
-M:                          ^^^^---------....-----...---^^^                                     
+M:               ^^^^^^^-...----^^^^^    ^^^ ^^^^^^-----.---D^                          ----    
+M:                     ^^---...-----^^^^^^^^^^----------.--^^^                         ----,-   
+M:                      ^^^^---....--------------------..---3^                         ----,-w  
+M:                         ^^------........----------...--^^^^                         ----,-   
+M:                          ^^^^---------....-----...---^^^                             ----    
 M:                             ^^^^^---------..---..---^^^^^^^^^^                               
 M:                                 ^^--------.....--------------^^^^^^^                         
 M:                                  ^--......................---------^^^^^                     
