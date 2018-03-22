@@ -368,7 +368,7 @@ bool leprechaun_steal(int m_idx)
             }
             else if (loot.tval == TV_GOLD)
             {
-                msg_format("You steal %d gold pieces worth of %s.", (int)loot.pval, o_name);
+                msg_format("You steal %d gold pieces' worth of %s.", (int)loot.pval, o_name);
                 sound(SOUND_SELL);
                 p_ptr->au += loot.pval;
                 stats_on_gold_find(loot.pval);
@@ -397,7 +397,7 @@ bool _destroy_object(object_type *o_ptr)
             char o_name[MAX_NLEN];
 
             object_desc(o_name, o_ptr, OD_COLOR_CODED);
-            msg_format("You turn %s to %d coins worth of gold.", o_name, amt);
+            msg_format("You turn %s to %d coins' worth of gold.", o_name, amt);
 
             p_ptr->au += amt;
             stats_on_gold_selling(amt); /* ? */
