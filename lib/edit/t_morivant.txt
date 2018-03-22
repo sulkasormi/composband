@@ -116,13 +116,13 @@ L:h:BUILDING_7(57)
 ?:[EQU $QUEST57 Finished FailedDone]
 L:h:BUILDING_7(58)
 ?:1
-############### Quest 58 - Ancient Gold Dragons ###############
+############### Quest 58 - Wyrms of Many Colours #########
 ?:[EQU $QUEST58 Taken Completed Failed]
 L:h:BUILDING_7(58)
 ?:[EQU $QUEST58 Finished FailedDone]
 L:h:BUILDING_7(59)
 ?:1
-############### Quest 59 - Greater Balrogs ###############
+############### Quest 59 - Pit Fiends ################
 ?:[EQU $QUEST59 Taken Completed Failed]
 L:h:BUILDING_7(59)
 ?:[EQU $QUEST59 Finished FailedDone]
