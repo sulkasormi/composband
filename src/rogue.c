@@ -73,7 +73,7 @@ static cptr _rogue_pick_pocket(int power)
             }
             else if (loot.tval == TV_GOLD)
             {
-                msg_format("You steal %d gold pieces worth of %s.", (int)loot.pval, o_name);
+                msg_format("You steal %d gold pieces' worth of %s.", (int)loot.pval, o_name);
                 sound(SOUND_SELL);
                 p_ptr->au += loot.pval;
                 stats_on_gold_find(loot.pval);
