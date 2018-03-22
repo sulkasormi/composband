@@ -36,9 +36,9 @@ L:y:QUEST_ENTER(3)
 ?:[EQU $QUEST3 Untaken Taken Completed Failed]
 L:b:BUILDING_1(3)
 ?:[EQU $QUEST3 Finished FailedDone]
-L:b:BUILDING_1(6)
+L:b:BUILDING_1(4)
 ?:1
-############### Quest 6 - The Volcano ###############
+############### Quest 6 - The Obsolete Volcano ###############
 ?:[EQU $QUEST6 Taken]
 L:r:QUEST_ENTER(6)
 ?:[EQU $QUEST6 Taken Completed Failed]
@@ -72,13 +72,13 @@ L:b:BUILDING_1(16)
 ?:[EQU $QUEST16 Finished FailedDone]
 L:b:BUILDING_1(34)
 ?:1
-#################### Quest 34 - The Mountain Shrine
+#################### Quest 34 - The Mountain Shrine ###############
 ?:[EQU $QUEST34 Taken]
 L:t:QUEST_ENTER(34)
 ?:[EQU $QUEST34 Taken Completed Failed]
 L:b:BUILDING_1(34)
 ?:[EQU $QUEST34 Finished FailedDone]
-L:b:BUILDING_1(15)
+L:b:BUILDING_1(78)
 ?:1
 #################### Quest 26 - Killing Fields ####################
 #?:[EQU $QUEST26 Taken]
@@ -86,8 +86,16 @@ L:b:BUILDING_1(15)
 #?:[EQU $QUEST26 Taken Completed Failed]
 #L:b:BUILDING_1(26)
 #?:[EQU $QUEST26 Finished FailedDone]
-#L:b:BUILDING_1(15)
+#L:b:BUILDING_1(78)
 #?:1
+#################### Quest 78 - The Volcano #######################
+?:[EQU $QUEST78 Taken]
+L:r:QUEST_ENTER(78)
+?:[EQU $QUEST78 Taken Completed Failed]
+L:b:BUILDING_1(78)
+?:[EQU $QUEST78 Finished FailedDone]
+L:b:BUILDING_1(15)
+?:1
 #################### Quest 15 - Eric's Stronghold ####################
 ?:[EQU $QUEST15 Taken]
 L:v:QUEST_ENTER(15)
