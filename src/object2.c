@@ -3862,8 +3862,17 @@ bool make_gold(object_type *j_ptr, bool do_boost)
     au = au * (625 - virtue_current(VIRTUE_SACRIFICE)) / 625;
     if (do_boost)
         au += au * object_level / 7;
+    if ((no_selling) && (dungeon_type) && (dun_level > 0))
+    {
+        /* Selling players rely less and less on selling, and more and more on drops,
+           as the game progresses. Accordingly, there is less need to inflate gold
+           drops for no_selling mode in the late game */
+        point_t skaala[5] = { {1, 605}, {15, 363}, {30, 284}, {40, 242}, {100, 150} };
+        int kerroin = interpolate(dun_level, skaala, 5);
+        au = au * kerroin / 100;
+    }
     if (au > MAX_SHORT)
-        au = MAX_SHORT;
+        au = MAX_SHORT - randint0(1000);
     j_ptr->pval = au;
 
     /* Success */
