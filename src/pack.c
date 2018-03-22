@@ -88,7 +88,7 @@ void pack_get(obj_ptr obj)
     {
         int value = obj->pval;
 
-        msg_format("You collect %d gold pieces worth of %s.",
+        msg_format("You collect %d gold pieces' worth of %s.",
                value, name);
 
         sound(SOUND_SELL);
