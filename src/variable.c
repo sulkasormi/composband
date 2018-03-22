@@ -309,6 +309,7 @@ bool random_artifacts;
 byte random_artifact_pct = 100;
 bool no_artifacts;
 bool no_egos;
+bool no_selling;
 bool enable_virtues;
 bool easy_thalos;
 bool reduce_uniques;
