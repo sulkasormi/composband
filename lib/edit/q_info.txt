@@ -38,9 +38,9 @@ N:5:35:The Barrow Downs (Telmora)
 T:TOWN | GENERATE
 F:q_barrow_downs.txt
 
-N:6:30:The Volcano (Telmora)
+N:6:30:Trial by Fire (Telmora)
 T:TOWN | GENERATE
-F:q_volcano.txt
+F:q_volc_old.txt
 
 N:8:99:Oberon
 T:RETAKE
@@ -314,6 +314,14 @@ T:TOWN | GENERATE
 G:FIND(mokomagi)
 F:q_staff.txt
 
+N:77:55:Eddies in the Space-Time Continuum (Zul)
+T:TOWN | GENERATE
+F:q_eddies.txt
+
+N:78:60:The Volcano (Telmora)
+T:TOWN | GENERATE
+F:q_volc.txt
+
 #####################################################################
 # Fighters guild quests
 #####################################################################
@@ -324,22 +332,37 @@ W:orc
 G:KILL(^olog$, 10)
 F:q_trollslayer.txt
 
+# Move to depth 36
 N:57:35:Giant Slayer (Morivant)
 T:TOWN
 W:giant
 G:KILL(lesser titan, 10)
 F:q_giantslayer.txt
 
+# Obsoleted but retained for savefile compatibility
 N:58:38:Dragon Slayer (Morivant)
 T:TOWN
 W:lonely
-G:KILL(ancient gold dragon, 10)
-F:q_dragonslayer.txt
+G:KILL(ancient gold, 10)
+F:q_drag_old.txt
 
+# Obsoleted but retained for savefile compatibility
 N:59:45:Demon Slayer (Morivant)
 T:TOWN
 W:angband
 G:KILL(lesser balrog, 10)
+F:q_dem_old.txt
+
+N:79:66:Dragon Slayer (Morivant)
+T:TOWN
+W:dragon
+G:KILL(great wyrm of many, 10)
+F:q_dragonslayer.txt
+
+N:80:72:Demon Slayer (Morivant)
+T:TOWN
+W:angband
+G:KILL(pit fiend, 10)
 F:q_demonslayer.txt
 
 # vim: filetype=qi :
