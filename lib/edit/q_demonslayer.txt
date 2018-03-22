@@ -1,0 +1,53 @@
+?:[EQU $QUEST80 Taken InProgress]
+D:You're one of the strongest we've seen, so here's your final
+D:test - go to Angband and kill ten pit fiends. If you can do 
+D:it, we'll sing songs to your glorious triumph.
+?:1
+
+?:[EQU $QUEST80 Completed]
+D:Wow! Here's a trophy of your great victory.
+?:1
+
+?:[EQU $QUEST80 Failed]
+D:So you were never that good really.
+?:1
+
+R:OBJ(mithril chain mail):EGO(^of the demon$)
+
+?:[EQU $RACE Dragon Hound Spider Ring Beholder Vortex]
+R:OBJ(^ring$):EGO(combat)
+
+?:[EQU $RACE Centipede]
+R:OBJ(metal shod boots):EGO(speed)
+
+?:[EQU $RACE Hydra Quylthulg]
+R:OBJ(^cloak$):EGO(aman)
+
+?:[AND [EQU $CLASS Weaponmaster] [EQU $SPECIALITY Axes] ]
+R:OBJ(broad axe):EGO(daemon)
+
+?:[AND [EQU $CLASS Weaponmaster] [EQU $SPECIALITY Clubs] ]
+R:OBJ(war hammer):EGO(daemon)
+
+?:[AND [EQU $CLASS Weaponmaster] [EQU $SPECIALITY Daggers] ]
+R:OBJ(^dagger$):EGO(daemon)
+
+?:[AND [EQU $CLASS Weaponmaster] [EQU $SPECIALITY Polearms] ]
+R:OBJ(^glaive$):EGO(daemon)
+
+?:[AND [EQU $CLASS Weaponmaster] [EQU $SPECIALITY Staves] ]
+R:OBJ(quarterstaff):EGO(daemon)
+
+?:[AND [EQU $CLASS Weaponmaster] [EQU $SPECIALITY Swords] ]
+R:OBJ(long sword):EGO(daemon)
+
+?:[EQU $CLASS Cavalry]
+R:OBJ(lance):EGO(daemon)
+
+?:[EQU $CLASS Ninja Ninja-Lawyer]
+R:OBJ(ninjato):EGO(daemon)
+
+?:[EQU $CLASS Archaeologist]
+R:OBJ(whip):EGO(daemon)
+
+# vim: filetype=q :

@@ -1,0 +1,59 @@
+# Adapted from Kangband by Gwarl
+# Modified for FrogComposband 7.0.peppermint
+
+?:[EQU $QUEST78 Taken InProgress]
+D:A volcano has been rumbling in the eastern part of our
+D:territory. But, we do not think it is natural.
+D:Now, it is time to eliminate all creatures that are
+D:making their home at the volcano. You must exterminate
+D:them all if we are to avoid having lava ruin our crops!
+?:1
+
+?:[EQU $QUEST78 Completed]
+D:Here is a reward for your good work.
+?:1
+
+?:[EQU $QUEST78 Failed]
+D:You have failed me, beware you do not do so again!
+?:1
+
+T:QUEST:NORMAL
+L:<:UP_STAIR
+L:#:PERMANENT
+L:.:FLOOR
+L:L:DEEP_LAVA
+L:K:SHALLOW_LAVA
+L:a:MON(efreeti)
+L:b:MON(fire vortex)
+L:c:MON(magma elemental)
+L:d:MON(plasma vortex)
+L:e:MON(elder fire giant)
+L:f:MON(fire elemental)
+L:g:MON(ancient red dragon)
+L:h:MON(11-headed hydra)
+L:i:MON(plasma hound)
+L:j:MON(lava golem)
+L:k:MON(fire angel)
+L:l:MON(cacodemon)
+
+M:####################################################################
+M:#####..#..#####<.##..a.###########........gKKKKKKKLLKKKKKKKf.....###
+M:##..b.......#.j...j.......#####...b...KKLLLLLKKKKLLLKKKKKKKK..k...##
+M:##.........................#.......KKKKKKKKLLLKKKLLLKKKKKKKKKK....##
+M:###......a............c...........KKKKKKKKKKLLLKLLLLKKKKKKKKKKKK...#
+M:##..............................KKKKKKKKKKKLLLLLLLLLLKKKKKKKKKKK...#
+M:##..d.........d..............b....bKKKKLLLLLLLLLLLLLKKKKKKKKKKK....#
+M:##........b.......................KKKKKKKKKKLLLLLLLLKKKKKKKKKK..a..#
+M:#.....c.................b.......l.KKKKKKKKKLLLKKKLLLKKKKKKKKK.....##
+M:#f............a.....................KKKKKKLLLKKKKLLLKKKKKKKKKKl....#
+M:##.k..............................d.KKKKKLKKKKKKKLLLKKKKKKK....l..h#
+M:##......................a.............KKKKKKKKKKLLLKKKKKKK........##
+M:##...........................k...........KKKKKKKLLLKKKKKK...e.....##
+M:###..b..........c............................KKLLKKKKKKK....k......#
+M:##................#..j..............e....i......KKKKKKK...........g#
+M:#....g..l..f...#####....###.....b..................h..............##
+M:#############################...####...####....##########......f####
+M:####################################################################
+R:OBJ(phial):ART(lava)
+
+

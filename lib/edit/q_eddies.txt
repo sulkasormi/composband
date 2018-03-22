@@ -1,0 +1,92 @@
+# Eddies in the Space-Time Continuum
+# New quest for FrogComposband 7.0.peppermint
+
+?:[EQU $QUEST77 Taken InProgress]
+D:Unfortunately, reliable teleporting between Zul and the outside world
+D:has become impossible, thanks to a group of strange time mages who moved
+D:in some time ago. Their experiments have twisted the space-time fabric
+D:around our town. We could probably fix it with sorcery, but as things
+D:stand there would be little point - it would just get messed up all over
+D:again tomorrow. The time mages have refused to either leave or start
+D:behaving, and there's too many of them for us to drive out of the town by
+D:force. We need the help of a great hero like you, I hope you can catch
+D:them napping.
+?:1
+
+?:[EQU $QUEST77 Completed]
+D:Yes, I heard of your success; news travel fast here. Thank you for your
+D:help, now we can teleport to other towns again without fear of landing
+D:on the wrong planet or in the wrong century. I found this strange object
+D:when we went out to admire your work and smooth out the space-time fabric;
+D:I am not sure what it is, but it looks like some kind of club. We have no
+D:use for it, please take it as a memento and thank-you gift.
+?:1
+
+?:[EQU $QUEST77 Failed]
+D:Too bad, the whole town was counting on you.
+?:1
+
+T:QUEST:NORMAL
+L:#:PERMANENT
+L:<:UP_STAIR
+L:.:GRASS
+L:,:DIRT
+L:T:TREE(ICKY)
+L:1:DIRT:MON(temporal champion)
+L:2:GRASS:MON(chronomage)
+L:3:DIRT:MON(chronomage)
+L:4:DIRT:MON(chronomage)
+L:5:DIRT:MON(chronomage)
+L:6:DIRT:MON(temporal champion)
+L:7:GRASS:MON(chronomage)
+L:8:GRASS:MON(chronomage)
+L:9:GRASS:MON(temporal champion)
+L:?:FLOOR:MON(time initiate)
+L:=:FLOOR:MON(time initiate):OBJ(CLOAK, DEPTH+30):EGO(bat)
+L:!:FLOOR:MON(chronomage)
+
+M:#############################
+M:############,,,,,############
+M:#########,,,,...,,,,#########
+M:#######,,,.........,,,#######
+M:#####,,,.............,,,#####
+M:####,,.................,,####
+M:###,,...................,,###
+M:##,,.....................,,##
+M:##,..........8............,##
+M:#,,.......................,,#
+M:#,.........................,#
+M:#,.7.....................9.,#
+M:#,.........................,#
+M:#,.........................,#
+M:#,.........................,#
+M:#,.........................,#
+M:#,..........,,,,,..........,#
+M:#,.......,,,,,,,,,,,.......,#
+M:#,......,,,6,,,,,4,,,......,#
+M:#,.....,,,,,,,.,,,,,,,.....,#
+M:#,....,,,,,,,...,,,,,,,....,#
+M:##,...,,,,,,.....,,,,,,...,##
+M:##,..,,,,,,.......,,,,,,..,##
+M:###,.,,,,,.........,,,,,.,###
+M:####,.,5,.....,.....,3,.,####
+M:####,..,.....,1,.....,..,#T##
+M:#####,..,.....,.....,..,#####
+M:####!#,..,.........,..,#!####
+M:####?#,...,.......,...,#?####
+M:####??#,...,.....,...,#??####
+M:#####??#,...,...,...,#??#####
+M:######?#,....,.,....,#?######
+M:#T####=##,....,....,##=####T#
+M:##T#######,...2...,##########
+M:#TT#######,,.....,,#####T####
+M:###########,,,<,,,###########
+M:#############################
+
+R:ART(sotkamo)
+?:[EQU [MOD $RANDOM77 3] 1]
+R:ART(visiting team)
+?:[GEQ [MOD $RANDOM77 3] 2]
+R:ART(superbat)
+
+# vim: filetype=q :
