@@ -61,7 +61,7 @@ enum
     TOWN_RANDOM,
     TOWN_MIN = TOWN_OUTPOST,
     TOWN_MAX = TOWN_RANDOM,
-    TOWN_MAX_STD = TOWN_THALOS,
+    TOWN_MAX_STD = TOWN_ZUL,
     /* XXX This may get redone at some point. See the q_info.txt changes
      * for my thoughts ... */
 };
