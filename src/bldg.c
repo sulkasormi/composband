@@ -2206,7 +2206,7 @@ static void refresh_buildings(void)
         s16b etsittava = ruutu->feat;
         for (y = 0; y < dummy->height && !loytyi; y++)
         {
-            cptr line = vec_get(dummy   ->map, y);
+            cptr line = vec_get(dummy->map, y);
             for (x = 0; x < dummy->width && !loytyi; x++)
             {
                 char letter = line[x];
