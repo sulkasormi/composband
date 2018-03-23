@@ -2268,7 +2268,18 @@ bool identify_item(object_type *o_ptr)
             virtue_add(VIRTUE_KNOWLEDGE, 1);
     }
 
-    obj_identify(o_ptr);
+    if (easy_id)
+    {
+        obj_identify_fully(o_ptr);
+        if ( p_ptr->prace == RACE_MON_POSSESSOR
+          && o_ptr->tval == TV_CORPSE
+          && o_ptr->sval == SV_CORPSE )
+            (void)lore_do_probe(o_ptr->pval);
+    }
+    else
+    {
+        obj_identify(o_ptr);
+    }
     stats_on_identify(o_ptr);
     o_ptr->marked |= OM_TOUCHED;
     gear_notice_id(o_ptr);
