@@ -3696,7 +3696,9 @@ void calc_bonuses(void)
     p_ptr->align = friend_align;
     p_ptr->maul_of_vice = FALSE;
 
-	if (easy_id || p_ptr->lev >= 20)
+    if (easy_id)
+        p_ptr->auto_id = TRUE;
+    else if (p_ptr->lev >= 20)
         p_ptr->auto_pseudo_id = TRUE;
 
     if (p_ptr->tim_sustain_str) p_ptr->sustain_str = TRUE;
