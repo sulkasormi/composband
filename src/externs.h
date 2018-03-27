@@ -148,6 +148,7 @@ extern s16b resting;
 extern s16b cur_hgt;
 extern s16b cur_wid;
 extern s16b dun_level;
+extern byte room_object_origin;
 extern s16b unique_count;
 extern s16b num_repro;
 extern s16b num_repro_kill;
@@ -263,6 +264,8 @@ extern bool ignore_unview;    /* Ignore whenever any monster does */
 extern bool display_distance;    /* Display distance of LoS monsters in monster list */
 extern bool display_race; /* Display monster races with their racial char */
 extern bool easy_mimics;  /* Use the 'x' glyph for monsters that look like things */
+extern bool show_origins; /* Show object origins */
+extern bool show_discovery; /* Show pickup time */
 
 /*** Game-Play Options ***/
 
@@ -326,6 +329,8 @@ extern bool no_egos;
 extern bool no_selling;
 extern bool enable_virtues;
 extern bool easy_thalos;
+extern bool never_forget;
+extern bool no_chris;
 extern bool reduce_uniques;
 extern byte reduce_uniques_pct;
 
@@ -1248,10 +1253,12 @@ extern void object_wipe(object_type *o_ptr);
 extern void object_prep(object_type *o_ptr, int k_idx);
 extern void object_copy(object_type *o_ptr, object_type *j_ptr);
 extern void object_mention(object_type *o_ptr);
+extern void object_origins(object_type *j_ptr, byte origin);
+extern void object_mitze(object_type *j_ptr, byte mode);
 extern bool apply_magic(object_type *o_ptr, int lev, u32b mode);
 extern int  apply_magic_ego;
 extern void choose_obj_kind(int mode); /* Hack for BM to use new object tval frequencies */
-extern bool make_object(object_type *j_ptr, u32b mode);
+extern bool make_object(object_type *j_ptr, u32b mode, byte origin);
 extern bool kind_is_good(int k_idx);
 extern bool kind_is_great(int k_idx);
 extern bool kind_is_device(int k_idx);
@@ -1265,11 +1272,11 @@ extern bool kind_is_armor(int k_idx);
 extern bool kind_is_weapon(int k_idx);
 extern bool kind_is_bow_ammo(int k_idx);
 extern bool kind_is_misc(int k_idx);
-extern void place_object(int y, int x, u32b mode);
+extern void place_object(int y, int x, u32b mode, byte origin);
 extern bool make_gold(object_type *j_ptr, bool do_boost);
 extern void place_gold(int y, int x);
 extern s16b drop_near(object_type *o_ptr, int chance, int y, int x);
-extern void acquirement(int y1, int x1, int num, bool great, bool known);
+extern void acquirement(int y1, int x1, int num, bool great, bool known, byte origin);
 extern void init_normal_traps(void);
 extern s16b choose_random_trap(void);
 extern void disclose_grid(int y, int x);
@@ -1924,10 +1931,10 @@ extern s32b create_artifact(object_type *o_ptr, u32b mode);
 extern void curse_object(object_type *o_ptr);
 extern void get_bloody_moon_flags(object_type *o_ptr);
 extern void random_artifact_resistance(object_type * o_ptr, artifact_type *a_ptr);
-extern bool create_named_art(int a_idx, int y, int x);
+extern bool create_named_art(int a_idx, int y, int x, byte origin, int xtra);
 extern bool create_named_art_aux(int a_idx, object_type *o_ptr);
 extern bool create_named_art_aux_aux(int a_idx, object_type *o_ptr);
-extern bool create_replacement_art(int a_idx, object_type *o_ptr);
+extern bool create_replacement_art(int a_idx, object_type *o_ptr, byte origin);
 extern bool reforge_artifact(object_type *src, object_type *dest, int fame);
 extern void get_random_name(char *return_name, object_type *o_ptr, int power);
 extern int get_slot_weight(obj_ptr obj);
