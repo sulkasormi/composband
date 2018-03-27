@@ -12,6 +12,7 @@ extern void device_display_doc(object_type *o_ptr, doc_ptr doc);
 extern void device_display_smith(object_type *o_ptr, doc_ptr doc);
 
 static void _display_name(object_type *o_ptr, doc_ptr doc);
+static bool _display_origin(object_type *o_ptr, doc_ptr doc);
 static void _display_desc(object_type *o_ptr, doc_ptr doc);
 static void _display_stats(object_type *o_ptr, u32b flgs[OF_ARRAY_SIZE], doc_ptr doc);
 static void _display_sustains(u32b flgs[OF_ARRAY_SIZE], doc_ptr doc);
@@ -96,6 +97,275 @@ static void _display_name(object_type *o_ptr, doc_ptr doc)
     object_desc(o_name, o_ptr, OD_COLOR_CODED | OD_NAME_AND_ENCHANT | OD_NO_FLAVOR);
     doc_printf(doc, "%s\n", o_name);
 }
+
+static void _selita_paikka(char *paikka_text, byte paikka, byte taso, byte origin)
+{
+    bool tehtava = ((origin == ORIGIN_QUEST) || (origin == ORIGIN_QUEST_DROP) || (origin == ORIGIN_QUEST_REWARD));
+    bool kaupunki = ((!tehtava) && (paikka < ORIGIN_DUNGEONS_AFTER));
+    if (paikka > ORIGIN_QUESTS_AFTER)
+    {
+        paikka -= ORIGIN_QUESTS_AFTER;
+        tehtava = TRUE;
+    }
+
+    if (kaupunki)
+    {
+        byte mika = ORIGIN_DUNGEONS_AFTER - paikka;
+        strcpy(paikka_text, "in ");
+        if (mika > TOWN_MAX)
+        {
+            strcat(paikka_text, "a bizarre town");
+        }
+        else
+        {
+            strcat(paikka_text, town_name(mika));
+        }
+        return;
+    }
+    else if (tehtava)
+    {
+        if (!paikka)
+        {
+            strcpy(paikka_text, "in a bizarre quest");
+            return;
+        }
+        else
+        {
+            quest_ptr q = quests_get(paikka);
+            cptr nimi;
+            if ((!q) || (!q->id) || (q->id != paikka))
+            {
+                strcpy(paikka_text, "in a bizarre quest");
+                return;
+            }
+            strcpy(paikka_text, (origin == ORIGIN_QUEST_REWARD) ? "the quest '" : "in the quest '");
+            strcat(paikka_text, lyhytnimi(q, &nimi));
+            free((vptr)nimi);
+            strcat(paikka_text, "'");
+            return;
+        }
+    }
+    else if ((paikka == ORIGIN_DUNGEONS_AFTER) || (!taso))
+    {
+        strcpy(paikka_text, "in the wilderness");
+        return;
+    }
+    else /* originated in a regular dungeon */
+    {
+        int dung = paikka - ORIGIN_DUNGEONS_AFTER;
+        int aitotaso = taso;
+        string_ptr apu;
+        char *dung_name;
+        if (dung == DUNGEON_HEAVEN) aitotaso += 512;
+        else if (dung == DUNGEON_HELL) aitotaso += 640;
+        if (dung > DUNGEON_MAX) dung = DUNGEON_MAX; /* desperation */
+        dung_name = d_name + d_info[dung].name;
+        apu = string_alloc_format("on level %d of %s", aitotaso, dung_name);
+        strcpy(paikka_text, string_buffer(apu));
+        string_free(apu);
+        return;
+    }
+}
+
+static bool _display_origin(object_type *o_ptr, doc_ptr doc)
+{
+    byte origin = o_ptr->origin_type;
+    byte paikka = o_ptr->origin_place / ORIGIN_MODULO;
+    byte taso = o_ptr->origin_place % ORIGIN_MODULO;
+    char paikka_text[80];
+    char pudottaja[80];
+
+    if ((origin == ORIGIN_NONE) || (origin == ORIGIN_MIXED)) return FALSE;
+    if ((!show_discovery) && (o_ptr->mitze_type & MITZE_MIXED)) return FALSE;
+    if ((origin != ORIGIN_CHEAT) && (origin != ORIGIN_PLAYER_MADE) && (origin != ORIGIN_GAMBLE) && (origin != ORIGIN_ENDLESS)
+     && (origin != ORIGIN_REFORGE) && (origin != ORIGIN_BIRTH) && (origin != ORIGIN_ARENA_REWARD) && (origin != ORIGIN_WANTED))
+    {
+        _selita_paikka(paikka_text, paikka, taso, origin);
+    }
+    if ((origin == ORIGIN_DROP) || (origin == ORIGIN_QUEST_DROP) || (origin == ORIGIN_STOLEN) || (origin == ORIGIN_ARENA_REWARD)
+     || (origin == ORIGIN_WANTED))
+    {
+        monster_race *r_ptr = &r_info[o_ptr->origin_xtra];
+        if ((o_ptr->origin_xtra) && (o_ptr->origin_xtra < max_r_idx) && (r_ptr) && (r_ptr->name))
+        {
+            cptr mon_name = r_name + r_ptr->name;
+            if (r_ptr->flags1 & RF1_UNIQUE)
+            {
+                strcpy(pudottaja, mon_name);
+            }
+            else
+            {
+                strcpy(pudottaja, is_a_vowel(mon_name[0]) ? "an " : "a ");
+                strcat(pudottaja, mon_name);
+            }
+        }
+        else strcpy(pudottaja, "a bizarre monster");
+    }
+
+    switch (origin)
+    {
+        case ORIGIN_FLOOR:
+        case ORIGIN_QUEST:
+        {
+            doc_printf(doc, "Found lying on the floor %s.", paikka_text);
+            break;
+        }
+        case ORIGIN_DROP:
+        case ORIGIN_QUEST_DROP:
+        {
+            doc_printf(doc, "Dropped by %s %s.", pudottaja, paikka_text);
+            break;
+        }
+        case ORIGIN_CHEST:
+        {
+            doc_printf(doc, "Found in a chest %s.", paikka_text);
+            break;
+        }
+        case ORIGIN_SPECIAL:
+        {
+            doc_printf(doc, "Found lying on the floor of a special room %s.", paikka_text);
+            break;
+        }
+        case ORIGIN_VAULT:
+        {
+            doc_printf(doc, "Found lying on the floor in a vault %s.", paikka_text);
+            break;
+        }
+        case ORIGIN_RUBBLE:
+        {
+            doc_printf(doc, "Found under some rubble %s.", paikka_text);
+            break;
+        }
+        case ORIGIN_ACQUIRE:
+        {
+            if ((o_ptr->tval == TV_FOOD) && (o_ptr->sval == SV_FOOD_RATION)) /* Produce Food/Create Food */
+            {
+                if (p_ptr->prace == RACE_HOBBIT) doc_printf(doc, "Conjured forth by an expert cook %s.", paikka_text);
+                else doc_printf(doc, "Manna from heaven.");
+            }
+            else
+                doc_printf(doc, "Conjured forth by magic %s.", paikka_text);
+            break;
+        }
+        case ORIGIN_STORE:
+        {
+            doc_printf(doc, "Bought from a store %s.", paikka_text);
+            break;
+        }
+        case ORIGIN_BIRTH:
+        {
+            if (o_ptr->number == 1) doc_printf(doc, "You can't remember ever not having it.");
+            else doc_printf(doc, "You can't remember ever not having them.");
+            break;
+        }
+        case ORIGIN_DROP_UNKNOWN:
+        {
+            doc_printf(doc, "Dropped by an unknown creature %s.", paikka_text);
+            break;
+        }
+        case ORIGIN_CHEAT:
+        {
+            doc_printf(doc, "Created by a debug option.");
+            break;
+        }
+        case ORIGIN_QUEST_REWARD:
+        {
+            doc_printf(doc, "Received as a reward for completing %s.", paikka_text);
+            break;
+        }
+        case ORIGIN_ANGBAND_REWARD:
+        {
+            doc_printf(doc, "Dropped by the level guardian %s.", paikka_text);
+            break;
+        }
+        case ORIGIN_ARENA_REWARD:
+        {
+            doc_printf(doc, "Dropped by %s in the Thalos Arena.", pudottaja);
+            break;
+        }
+        case ORIGIN_NAGA:
+        {
+            doc_printf(doc, "Received as a gift from Spiritnaga & Co. %s.", paikka_text);
+            break;
+        }
+        case ORIGIN_PATTERN:
+        {
+            doc_printf(doc, "Received from the Pattern %s.", paikka_text);
+            break;
+        }
+        case ORIGIN_PLAYER_MADE:
+        {
+            doc_printf(doc, "Your own handiwork.", paikka_text);
+            break;
+        }
+        case ORIGIN_ART_CREATION:
+        {
+            doc_printf(doc, "Magically improved by a scroll %s.", paikka_text);
+            break;
+        }
+        case ORIGIN_STOLEN:
+        {
+            doc_printf(doc, "Stolen from %s %s.", pudottaja, paikka_text);
+            break;
+        }
+        case ORIGIN_REFORGE:
+        {
+            doc_printf(doc, "Reforged in Morivant.");
+            break;
+        }
+        case ORIGIN_GAMBLE:
+        {
+            doc_printf(doc, "You won it in an object lottery.");
+            break;
+        }
+        case ORIGIN_ENDLESS:
+        {
+            doc_printf(doc, "Conjured forth by an endless quiver.");
+            break;
+        }
+        case ORIGIN_PATRON:
+        {
+            if (o_ptr->origin_xtra >= MAX_PATRON) /* bizarre patron */
+                 doc_printf(doc, "Received as a gift from your chaos patron %s.", paikka_text);
+            else doc_printf(doc, "Received as a gift from %s %s.", chaos_patrons[o_ptr->origin_xtra], paikka_text);
+            break;
+        }
+        case ORIGIN_PHOTO:
+        {
+            doc_printf(doc, "Taken %s.", paikka_text);
+            break;
+        }
+        case ORIGIN_KAWARIMI:
+        {
+            doc_printf(doc, "Left behind %s.", paikka_text);
+            break;
+        }
+        case ORIGIN_WANTED:
+        {
+            doc_printf(doc, "Received as a reward for turning in the corpse of %s.", pudottaja);
+            break;
+        }
+        case ORIGIN_CAN_OF_TOYS:
+        {
+            doc_printf(doc, "Found in a Can of Toys %s.", paikka_text);
+            break;
+        }
+    }
+    if ((show_discovery) && (o_ptr->mitze_type) && (o_ptr->mitze_turn))
+    {
+        int day = 0, hour = 0, min = 0;
+        doc_printf(doc, "\n");
+        if (o_ptr->mitze_type & MITZE_ID) doc_printf(doc, "Identified: ");
+        else if (o_ptr->mitze_type & MITZE_PICKUP) doc_printf(doc, "Picked up: ");
+        extract_day_hour_min_imp(o_ptr->mitze_turn, &day, &hour, &min);
+        doc_printf(doc, "Day %d, %d:%02d, at CL %d.", day, hour, min, o_ptr->mitze_level);
+        if (o_ptr->mitze_type & MITZE_MIXED) doc_printf(doc, "\n(Details may apply to the first item in a pile of similar items.)");
+    }
+
+    doc_printf(doc, "\n\n");
+    return TRUE;
+}
+
 
 static void _display_desc(object_type *o_ptr, doc_ptr doc)
 {
@@ -1057,6 +1327,10 @@ void obj_display_doc(object_type *o_ptr, doc_ptr doc)
 
     _display_name(o_ptr, doc);
     doc_insert(doc, "  <indent>");
+    if (show_origins || show_discovery)
+    {
+        (void)_display_origin(o_ptr, doc);
+    }
     _display_desc(o_ptr, doc);
     doc_insert(doc, "<style:indent>"); /* Indent a bit when word wrapping long lines */
 
@@ -1169,6 +1443,10 @@ void device_display_doc(object_type *o_ptr, doc_ptr doc)
 
     _display_name(o_ptr, doc);
     doc_insert(doc, "  <indent>");
+    if (show_origins || show_discovery)
+    {
+        (void)_display_origin(o_ptr, doc);
+    }
     _display_desc(o_ptr, doc);
 
     if (o_ptr->tval == TV_SCROLL || o_ptr->tval == TV_POTION)
