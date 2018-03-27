@@ -56,6 +56,31 @@ cptr kayttonimi(quest_ptr q)
     else return q->name;
 }
 
+/* It's a bit ugly to have two functions that essentially do the same thing.
+ * The problem with using kayttonimi() for everything is that it actually
+ * changes the quest's name, which saves time (no need to truncate the name
+ * repeatedly) and avoids memory leaks, but is inconvenient if we don't use
+ * lite-town and therefore actually want to keep the long name. We can't even
+ * use kayttonimi() to put the long name back in, because the long name isn't
+ * retained and the quest doesn't actually "know" which town it belongs to.
+ * Therefore, we use lyhytnimi() to get the short name when we don't want
+ * to actually change the quest's name, but it is a much less convenient
+ * function than kayttonimi(), because it allocates memory for the name
+ * but relies on its users to free that memory elsewhere. */
+cptr lyhytnimi(quest_ptr q, cptr *nimi)
+{
+    if (strpos("(", q->name) > 2)
+    {
+        char putsattu[50];
+        int paikka = strpos("(", q->name);
+        my_strcpy(putsattu, q->name, MIN((int)sizeof(putsattu), paikka - 1));
+        *nimi = _strcpy(putsattu);
+    }
+    else *nimi = _strcpy(q->name);
+    return *nimi;
+}
+
+
 /************************************************************************
  * Quest Status
  ***********************************************************************/
@@ -108,10 +133,11 @@ void quest_complete(quest_ptr q, point_t p)
     if (!(q->flags & QF_TOWN)) /* non-town quest get rewarded immediately */
     {
         int i, ct = q->level/25 + 1;
+        if ((q->level > 14) && (q->level < 25) && (one_in_(5))) ct++;
         for (i = 0; i < ct; i++)
         {
             obj_t forge = {0};
-            if (make_object(&forge, AM_GOOD | AM_GREAT | AM_TAILORED | AM_QUEST))
+            if (make_object(&forge, AM_GOOD | AM_GREAT | AM_TAILORED | AM_QUEST, ORIGIN_ANGBAND_REWARD))
                 drop_near(&forge, -1, p.y, p.x);
             else
                 msg_print("Software Bug ... you missed out on your reward!");
@@ -215,6 +241,11 @@ obj_ptr quest_get_reward(quest_ptr q)
             if (!letter->object_level)
                 letter->object_level = 1; /* Hack: force at least AM_GOOD */
             reward = room_grid_make_obj(letter, q->level);
+            if (reward)
+            {
+                object_origins(reward, ORIGIN_QUEST_REWARD);
+                reward->origin_place = (q->id * ORIGIN_MODULO);
+            }
         }
         _temp_reward = NULL;
         free(letter);
@@ -520,6 +551,11 @@ quest_ptr quests_get_current(void)
 {
     if (!_current) return NULL;
     return int_map_find(_quests, _current);
+}
+
+int quest_id_current(void)
+{
+    return _current;
 }
 
 quest_ptr quests_get(int id)
@@ -1605,10 +1641,11 @@ static void _reward_cmd(_ui_context_ptr context)
             {
                 int i, ct = quest->level/25 + 1;
                 object_level = quest->level;
+                if ((quest->level > 14) && (quest->level < 25) && (one_in_(5))) ct++;
                 for (i = 0; i < ct; i++)
                 {
                     obj_t forge = {0};
-                    if (make_object(&forge, AM_GOOD | AM_GREAT | AM_TAILORED | AM_QUEST))
+                    if (make_object(&forge, AM_GOOD | AM_GREAT | AM_TAILORED | AM_QUEST, ORIGIN_ANGBAND_REWARD))
                     {
                         char name[MAX_NLEN];
                         obj_identify_fully(&forge);
