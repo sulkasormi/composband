@@ -1808,6 +1808,8 @@ static void _forge_wanted_monster_prize(obj_ptr obj, int r_idx)
 
     object_prep(obj, lookup_kind(tval, sval));
     apply_magic(obj, object_level, AM_NO_FIXED_ART);
+    object_origins(obj, ORIGIN_WANTED);
+    obj->origin_xtra = r_idx;
     obj_make_pile(obj);
     obj_identify_fully(obj);
 }
@@ -2536,6 +2538,7 @@ static bool _gamble_shop(const _gamble_shop_t *choices)
 
     k_idx = lookup_kind(choices[choice].tval, choices[choice].sval);
     object_prep(&forge, k_idx);
+    object_origins(&forge, ORIGIN_GAMBLE);
 
     return _gamble_shop_aux(&forge);
 }
@@ -2553,6 +2556,7 @@ static bool _gamble_shop_object(object_p pred)
         if (pred && !pred(&forge))
             continue;
         apply_magic(&forge, lvl, AM_GOOD);
+        object_origins(&forge, ORIGIN_GAMBLE);
         switch (forge.tval)
         {
             case TV_SPIKE:
@@ -2584,7 +2588,10 @@ static bool _gamble_shop_device(int tval)
         k_idx = lookup_kind(tval, SV_ANY);
         object_prep(&forge, k_idx);
         if (device_init(&forge, lvl, 0))
+        {
+            object_origins(&forge, ORIGIN_GAMBLE);
             break;
+        }
     }
 
     return _gamble_shop_aux(&forge);
@@ -2605,6 +2612,7 @@ static bool _gamble_shop_artifact(void)
         apply_magic(&forge, lvl, AM_GOOD | AM_GREAT | AM_SPECIAL);
         if (!forge.art_name)
             continue;
+        object_origins(&forge, ORIGIN_GAMBLE);
 
         break;
     }
