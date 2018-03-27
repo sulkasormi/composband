@@ -56,3 +56,6 @@ M:#######.#.V..#####.#
 M:#######<#....-..r..#
 M:####################
 R:OBJ(WAND_DRAIN_LIFE)
+
+?:[EQU $CLASS Berserker]
+R:OBJ(long sword):EGO(death)
