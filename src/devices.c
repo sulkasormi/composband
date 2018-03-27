@@ -653,15 +653,14 @@ static cptr _do_potion(int sval, int mode)
         }
         break;
     case SV_POTION_CURE_CRITICAL:
-        if (desc) return "It heals you, reduces poisoning and cures stunning, cuts and berserk when you quaff it.";
+        if (desc) return "It heals you and cures stunning, cuts and berserk when you quaff it.";
         if (info) return info_heal(12, _potion_power(8), 0);
         if (cast)
         {
             if (hp_player(_potion_power(damroll(12, 8)))) device_noticed = TRUE;
             if (set_stun(0, TRUE)) device_noticed = TRUE;
             if (set_cut(0, TRUE)) device_noticed = TRUE;
-			if (set_poisoned(p_ptr->poisoned - MAX(150, p_ptr->poisoned / 3), TRUE))
-				device_noticed = TRUE;
+//	if (set_poisoned(p_ptr->poisoned - MAX(150, p_ptr->poisoned / 3), TRUE)) device_noticed = TRUE;
             if (set_shero(0,TRUE)) device_noticed = TRUE;
         }
         break;
@@ -1018,7 +1017,7 @@ static cptr _do_potion(int sval, int mode)
         }
         break;
     case SV_POTION_NEO_TSUYOSHI:
-        if (desc) return "It cures hallucination and increases your strength and constitution temporarily when you quaff it but your strength and constitution decrease permanently than before when the effect expires.";
+        if (desc) return "It cures hallucination and increases your strength and constitution temporarily when you quaff it but your strength and constitution permanently decrease lower than before when the effect expires.";
         if (cast)
         {
             set_image(0, TRUE);
@@ -1529,7 +1528,7 @@ static cptr _do_scroll(int sval, int mode)
         if (desc) return "It creates one great item when you read it.";
         if (cast)
         {
-            acquirement(py, px, 1, TRUE, FALSE);
+            acquirement(py, px, 1, TRUE, FALSE, ORIGIN_ACQUIRE);
             device_noticed = TRUE;
         }
         break;
@@ -1537,7 +1536,7 @@ static cptr _do_scroll(int sval, int mode)
         if (desc) return "It creates some great items when you read it.";
         if (cast)
         {
-            acquirement(py, px, _scroll_power(randint1(2) + 1), TRUE, FALSE);
+            acquirement(py, px, _scroll_power(randint1(2) + 1), TRUE, FALSE, ORIGIN_ACQUIRE);
             device_noticed = TRUE;
         }
         break;
@@ -6525,6 +6524,7 @@ cptr do_effect(effect_t *effect, int mode, int boost)
             object_prep(&forge, lookup_kind(tval, SV_ARROW)); /* Hack: SV_ARROW == SV_BOLT == SV_PEBBLE */
             forge.number = MAX(0, MIN(50, quiver_capacity() - quiver_count(NULL)));
             obj_identify_fully(&forge);
+            object_origins(&forge, ORIGIN_ENDLESS);
 
             if (!forge.number)
                 msg_print("Your quiver is full.");
@@ -6809,7 +6809,8 @@ cptr do_effect(effect_t *effect, int mode, int boost)
             forge.number = (byte)rand_range(5, 10);
             apply_magic(&forge, p_ptr->lev, AM_NO_FIXED_ART);
             obj_identify(&forge);
-
+            object_origins(&forge, ORIGIN_ACQUIRE);
+            
             forge.discount = 99;
 
             object_desc(o_name, &forge, 0);
