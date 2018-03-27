@@ -19,7 +19,7 @@
 #define VER_MAJOR 7
 #define VER_MINOR 0
 #define VER_PATCH "strawberry"
-#define VER_EXTRA 0
+#define VER_EXTRA 2
 
 #define GAME_MODE_BEGINNER  0
 #define GAME_MODE_NORMAL    1
@@ -4268,6 +4268,7 @@ extern int PlayerUID;
 #define MON_OGRE_SHAMAN   479
 #define MON_NEXUS_QUYLTHULG             480
 #define MON_NINJA         485
+#define MON_MEMORY_MOSS   486
 #define MON_STORM_GIANT 487
 #define MON_SPECTATOR 488
 #define MON_BICLOPS       490
@@ -4856,6 +4857,7 @@ extern int PlayerUID;
 #define DUNGEON_WARREN   30
 #define DUNGEON_HIDEOUT  31
 #define DUNGEON_BATTLEFIELD  32
+#define DUNGEON_MAX      DUNGEON_BATTLEFIELD
 
 #define DUNGEON_FEAT_PROB_NUM 3
 
@@ -5751,6 +5753,54 @@ enum effect_e
 #define BIAS_DEMON           0x00080000
 #define BIAS_PROTECTION      0x00100000
 #define BIAS_ARCHER          0x00200000
+
+/* Item origins */
+
+enum {
+    ORIGIN_NONE = 0,
+    ORIGIN_FLOOR,			/* found on the dungeon floor */
+    ORIGIN_DROP,			/* normal monster drops */
+    ORIGIN_QUEST_DROP,          /* monster drop in a quest */
+    ORIGIN_CHEST,               /* found in a chest */
+    ORIGIN_SPECIAL,			/* on the floor of a special room */
+    ORIGIN_VAULT,			/* on the floor of a vault */
+    ORIGIN_RUBBLE,			/* found under rubble */
+    ORIGIN_MIXED,			/* stack with mixed origins */
+    ORIGIN_ACQUIRE,			/* called forth by scroll */
+    ORIGIN_STORE,			/* something you bought */
+    ORIGIN_BIRTH,			/* objects created at character birth */
+    ORIGIN_DROP_UNKNOWN,        /* drops from unseen foes - not currently supported */
+    ORIGIN_CHEAT,			/* created by wizard mode */
+    ORIGIN_QUEST,			/* from a quest */
+    ORIGIN_QUEST_REWARD,		/* a quest reward */
+    ORIGIN_ANGBAND_REWARD,      /* an Angband quest reward */
+    ORIGIN_ARENA_REWARD,        /* an arena reward */
+    ORIGIN_NAGA,                /* a gift from Spiritnaga & Co. */
+    ORIGIN_PATTERN,             /* reward for walking the pattern */
+    ORIGIN_PLAYER_MADE,         /* player-made item */ 
+    ORIGIN_ART_CREATION,        /* created by scroll of art creation */ 
+    ORIGIN_REFORGE,             /* reforge */ 
+    ORIGIN_GAMBLE,              /* gamble */ 
+    ORIGIN_WANTED,              /* reward for turning in a wanted monster */ 
+    ORIGIN_PATRON,              /* reward from your chaos patron */
+    ORIGIN_ENDLESS,             /* created by an endless quiver */
+    ORIGIN_PHOTO,               /* taken with a camera */
+    ORIGIN_KAWARIMI,            /* statue left behind by kawarimi */
+    ORIGIN_STOLEN,              /* stolen by a pickpocket */
+    ORIGIN_CAN_OF_TOYS,         /* found in a can of toys */
+
+    ORIGIN_MAX
+};
+
+#define ORIGIN_MODULO 128
+#define ORIGIN_DUNGEONS_AFTER 32  /* everything after this is a dungeon */
+#define ORIGIN_QUESTS_AFTER 127   /* except everything after this is a quest */
+
+/* MITZE bitflags */
+
+#define MITZE_ID 0x01
+#define MITZE_PICKUP 0x02
+#define MITZE_MIXED 0x04
 
 /* Lawyer hacks */
 #define LAWYER_HACK_LEVEL 1
