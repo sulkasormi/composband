@@ -1177,11 +1177,11 @@ bool gf_affect_m(int who, mon_ptr mon, int type, int dam, int flags)
     char killer[80];
 
     /* Is the monster "seen"? Note: mon_show_msg() requires
-     * the monster sqaure to be lit if ignore_unview is on. This
+     * the monster square to be lit if ignore_unview is on. This
      * means that if the player is lobbing fireballs at a telepathically
      * seen monster, they would miss the resistance message. So, if
      * the player is doing this, then we just use ml instead. If the
-     * player is not doing this affect, then we better respect ignore_unview
+     * player is not doing this, then we better respect ignore_unview
      * or we'll turn the message spammer back on full blast! */
     bool seen = mon->ml;
     bool seen_msg = (who == GF_WHO_PLAYER) ? mon->ml : mon_show_msg(mon);
@@ -4527,6 +4527,7 @@ bool gf_affect_m(int who, mon_ptr mon, int type, int dam, int flags)
         object_prep(q_ptr, lookup_kind(TV_STATUE, SV_PHOTO));
 
         q_ptr->pval = photo;
+        object_origins(q_ptr, ORIGIN_PHOTO);
 
         /* Mark the item as fully known */
         q_ptr->ident |= (IDENT_KNOWN);
