@@ -1035,13 +1035,13 @@ errr mon_spell_parse(mon_spell_ptr spell, int rlev, char *token)
         }
         else
         {
-            msg_format("Error: Unkown spell %s.", name);
+            msg_format("Error: Unknown spell %s.", name);
             return PARSE_ERROR_GENERIC;
         }
         gf = gf_parse_name(suffix);
         if (!gf)
         {
-            msg_format("Error: Unkown type %s.", name + 3);
+            msg_format("Error: Unknown type %s.", name + 3);
             return PARSE_ERROR_GENERIC;
         }
         spell->id.effect = gf->id;
@@ -2779,7 +2779,7 @@ static cptr _ball_msg(void)
     gf_info_ptr gf = gf_lookup(_current.spell->id.effect);
     if (!gf)
     {
-        msg_format("Unkown Ball %d", _current.spell->id.effect);
+        msg_format("Unknown Ball %d", _current.spell->id.effect);
         return NULL;
     }
     assert(gf);
@@ -3378,6 +3378,8 @@ static void _ai_direct(mon_spell_cast_ptr cast)
         _remove_spell(spells, _id(MST_ANNOY, ANNOY_PARALYZE));
     if (p_ptr->confused)
         _remove_spell(spells, _id(MST_ANNOY, ANNOY_CONFUSE));
+    if (never_forget) 
+        _remove_spell(spells, _id(MST_ANNOY, ANNOY_AMNESIA));
 
     /* require a direct shot to player for bolts */
     if (!_clean_shot(cast->src, cast->dest))
