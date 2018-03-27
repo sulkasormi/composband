@@ -2107,6 +2107,7 @@ static cptr do_nature_spell(int spell, int mode)
 
                 /* Create the food ration */
                 object_prep(q_ptr, lookup_kind(TV_FOOD, SV_FOOD_RATION));
+                object_origins(q_ptr, ORIGIN_ACQUIRE);
 
                 /* Drop the object from heaven */
                 drop_near(q_ptr, -1, py, px);
