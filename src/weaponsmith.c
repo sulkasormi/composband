@@ -433,6 +433,13 @@ static void _absorb_all(object_type *o_ptr, _absorb_essence_f absorb_f)
     new_obj.next_o_idx = old_obj.next_o_idx;
     new_obj.marked = old_obj.marked;
     new_obj.number = old_obj.number;
+    new_obj.origin_type = old_obj.origin_type;
+    new_obj.origin_place = old_obj.origin_place;
+    new_obj.origin_xtra = old_obj.origin_xtra;
+    new_obj.mitze_type = old_obj.mitze_type;
+    new_obj.mitze_level = old_obj.mitze_level;
+    new_obj.mitze_turn = old_obj.mitze_turn;
+
     if (old_obj.tval == TV_DRAG_ARMOR) new_obj.timeout = old_obj.timeout;
     obj_identify_fully(&new_obj);
     obj_flags(&new_obj, new_flgs);
