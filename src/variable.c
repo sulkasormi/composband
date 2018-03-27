@@ -116,6 +116,7 @@ s16b resting;            /* Current counter for resting, if any */
 s16b cur_hgt;            /* Current dungeon height */
 s16b cur_wid;            /* Current dungeon width */
 s16b dun_level;            /* Current dungeon level */
+byte room_object_origin = ORIGIN_SPECIAL;
 s16b unique_count;
 s16b num_repro;            /* Current reproducer count */
 s16b num_repro_kill;
@@ -248,7 +249,8 @@ bool ignore_unview;    /* Ignore whenever any monster does */
 bool display_distance;
 bool display_race; /* Display monster races with their racial char */
 bool easy_mimics;  /* Use the 'x' glyph for monsters that look like things */
-
+bool show_origins; /* Show origin in object description */
+bool show_discovery; /* Show time of discovery in object description */
 
 /*** Game-Play Options ***/
 
@@ -312,6 +314,8 @@ bool no_egos;
 bool no_selling;
 bool enable_virtues;
 bool easy_thalos;
+bool never_forget;
+bool no_chris;
 bool reduce_uniques;
 byte reduce_uniques_pct = 100; /* This is the pct of uniques to face */
 
