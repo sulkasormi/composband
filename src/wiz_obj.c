@@ -594,6 +594,7 @@ static void _reroll_aux(object_type *o_ptr, int flags, int min)
     }
     assert(best.k_idx == o_ptr->k_idx);
     best.number = o_ptr->number; /* ammo */
+    object_origins(&best, ORIGIN_CHEAT);
     *o_ptr = best;
 }
 
@@ -662,6 +663,7 @@ static obj_ptr _reroll_obj = NULL;
 static bool _reroll_creator(obj_ptr obj, u32b mode)
 {
     object_prep(obj, _reroll_obj->k_idx);
+    object_origins(obj, ORIGIN_CHEAT);
     return apply_magic(obj, dun_level, mode);
 }
 static void _reroll_stats_aux(object_type *o_ptr, int flags)
@@ -737,7 +739,7 @@ static int _smith_reroll(object_type *o_ptr)
         case 'X': {
             int which = o_ptr->name1;
             if (!which) which = o_ptr->name3;
-            create_replacement_art(which, &copy);
+            create_replacement_art(which, &copy, ORIGIN_CHEAT);
             obj_identify_fully(&copy);
             break;}
         }
