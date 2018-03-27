@@ -652,6 +652,40 @@ bool obj_can_combine(obj_ptr dest, obj_ptr obj, int loc)
     return TRUE;
 }
 
+bool _obj_origins_match(obj_ptr dest, obj_ptr obj, bool check_mitze)
+{
+    if (dest->origin_type == ORIGIN_MIXED) return TRUE; /* no need to change anything */
+    if (dest->origin_type != obj->origin_type) return FALSE;
+    if (dest->origin_place != obj->origin_place) return FALSE;
+    if (dest->origin_xtra != obj->origin_xtra) return FALSE;
+    if (!check_mitze) return TRUE;
+    if (dest->mitze_type != obj->mitze_type) return FALSE;
+    if (dest->mitze_turn != obj->mitze_turn) return FALSE;
+    return TRUE;
+}
+
+void _obj_combine_origins(obj_ptr dest, obj_ptr obj)
+{
+    if (!show_discovery)
+    {
+        if (!_obj_origins_match(dest, obj, FALSE))
+        {
+            dest->origin_type = ORIGIN_MIXED;
+            return;
+        }
+    }
+    if ((dest->mitze_turn > obj->mitze_turn) && (obj->mitze_turn > 0))
+    { /* Dest should inherit obj's origin */
+        dest->origin_type = obj->origin_type;
+        dest->origin_place = obj->origin_place;
+        dest->origin_xtra = obj->origin_xtra;
+        dest->mitze_type = obj->mitze_type;
+        dest->mitze_turn = obj->mitze_turn;
+        dest->mitze_level = obj->mitze_level;
+    }
+    dest->mitze_type |= MITZE_MIXED;
+}
+
 /* combine obj into dest up to the max stack size.
  * decrease obj->number by the amount combined and 
  * return the amount combined. */
@@ -683,6 +717,9 @@ int obj_combine(obj_ptr dest, obj_ptr obj, int loc)
             if (obj->ident & IDENT_STORE) obj->ident &= ~IDENT_STORE;
             if (dest->ident & IDENT_STORE) dest->ident &= ~IDENT_STORE;
         }
+
+        /* Mixed origins */
+        if (!_obj_origins_match(dest, obj, TRUE)) _obj_combine_origins(dest, obj);
 
         /* Hack -- blend "inscriptions" */
         if (obj->inscription && !dest->inscription) dest->inscription = obj->inscription;
@@ -1182,6 +1219,8 @@ enum object_save_fields_e {
     OBJ_SAVE_KNOWN_CURSE_FLAGS,
     OBJ_SAVE_LEVEL,
     OBJ_SAVE_KNOWN_XTRA,
+    OBJ_SAVE_ORIGIN,
+    OBJ_SAVE_MITZE,
 };
 
 void obj_load(obj_ptr obj, savefile_ptr file)
@@ -1347,6 +1386,16 @@ void obj_load(obj_ptr obj, savefile_ptr file)
             break;
         case OBJ_SAVE_LEVEL:
             obj->level = savefile_read_s16b(file);
+            break;
+        case OBJ_SAVE_ORIGIN:
+            obj->origin_type = savefile_read_byte(file);
+            obj->origin_place = savefile_read_u16b(file);
+            obj->origin_xtra = savefile_read_s16b(file);
+            break;
+        case OBJ_SAVE_MITZE:
+            obj->mitze_type = savefile_read_byte(file);
+            obj->mitze_level = savefile_read_byte(file);
+            obj->mitze_turn = savefile_read_s32b(file);
             break;
         /* default:
             TODO: Report an error back to the load routine!!*/
@@ -1570,6 +1619,20 @@ void obj_save(obj_ptr obj, savefile_ptr file)
     {
         savefile_write_byte(file, OBJ_SAVE_LEVEL);
         savefile_write_s16b(file, obj->level);
+    }
+    if ((obj->origin_type) && (obj->origin_type != ORIGIN_MIXED))
+    {
+        savefile_write_byte(file, OBJ_SAVE_ORIGIN);
+        savefile_write_byte(file, obj->origin_type);
+        savefile_write_u16b(file, obj->origin_place);
+        savefile_write_s16b(file, obj->origin_xtra);
+        if (obj->mitze_type)
+        {
+            savefile_write_byte(file, OBJ_SAVE_MITZE);
+            savefile_write_byte(file, obj->mitze_type);
+            savefile_write_byte(file, obj->mitze_level);
+            savefile_write_s32b(file, obj->mitze_turn);
+        }
     }
 
     savefile_write_byte(file, OBJ_SAVE_DONE);
