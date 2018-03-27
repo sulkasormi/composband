@@ -1122,6 +1122,7 @@ static void _nexus_pick_dungeon(void)
 }
 static void _nexus_travel(void)
 {
+    if (no_chris) return; /* paranoia */
     if (!py_on_surface() && !py_in_dungeon())
     {
         msg_print("There is no effect.");
@@ -1187,7 +1188,7 @@ void apply_nexus(monster_type *m_ptr)
                 msg_print("Your body starts to scramble...");
                 wild_talent_scramble();
             }
-            else if (no_wilderness)
+            else if (no_wilderness || no_chris)
             {
                 msg_print("Your body starts to scramble...");
                 mutate_player();
@@ -2243,7 +2244,10 @@ bool artifact_scroll(void)
         if (one_in_(3)) virtue_add(VIRTUE_ENCHANTMENT, -1);
     }
     else
+    {
+        object_origins(prompt.obj, ORIGIN_ART_CREATION);
         virtue_add(VIRTUE_ENCHANTMENT, 1);
+    }
 
     android_calc_exp();
 
@@ -2371,6 +2375,12 @@ bool mundane_spell(bool only_equip)
         byte marked = prompt.obj->marked;
         u16b inscription = prompt.obj->inscription;
         int  number = prompt.obj->number;
+        byte orig = prompt.obj->origin_type;
+        int  orig_x = prompt.obj->origin_xtra;
+        int  orig_p = prompt.obj->origin_place;
+        byte mitze_tp = prompt.obj->mitze_type;
+        byte mitze_lv = prompt.obj->mitze_level;
+        s32b mitze_tn = prompt.obj->mitze_turn;
 
         /* Wipe it clean ... note this erases info that must
          * not be erased. Thus, all the code to remember and restore ... sigh. */
@@ -2381,6 +2391,12 @@ bool mundane_spell(bool only_equip)
         prompt.obj->marked = marked;
         prompt.obj->inscription = inscription;
         prompt.obj->number = number;
+        prompt.obj->origin_type = orig;
+        prompt.obj->origin_xtra = orig_x;
+        prompt.obj->origin_place = orig_p;
+        prompt.obj->mitze_type = mitze_tp;
+        prompt.obj->mitze_level = mitze_lv;
+        prompt.obj->mitze_turn = mitze_tn;
     }
     p_ptr->update |= PU_BONUS;
     android_calc_exp();
