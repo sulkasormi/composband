@@ -1590,6 +1590,9 @@ s16b get_mon_num_aux(int level, int min_level, u32b options)
         if (quests_get_current() && (r_ptr->flags1 & RF1_NO_QUEST)) continue;
         if (summon_specific_who != SUMMON_WHO_NOBODY && (r_ptr->flags1 & RF1_NO_SUMMON)) continue;
 
+        /* No point in generating memory mosses if the never_forget birth option is on */
+        if ((never_forget) && (r_idx == MON_MEMORY_MOSS)) continue;
+
         if (!p_ptr->inside_battle && !chameleon_change_m_idx)
         {
             /* Hack -- "unique" monsters must be "unique" */
