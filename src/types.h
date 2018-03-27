@@ -382,6 +382,12 @@ struct object_type
     obj_loc_t loc;
 
     s16b level;         /* object_level on generation for my statistical pleasures */
+    u16b origin_place;  /* dungeon and level of generation */ 
+    byte origin_type;   /* type of generation */
+    s16b origin_xtra;   /* extra information about the item's origin */
+    byte mitze_type;    /* MITZE type */
+    byte mitze_level;   /* level on MITZE */
+    s32b mitze_turn;    /* turn on MITZE */
     int  scratch;
 };
 #define object_is_(O, T, S) ((O)->tval == (T) && (O)->sval == (S))
