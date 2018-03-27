@@ -43,7 +43,7 @@ L:8:GRASS:MON(chronomage)
 L:9:GRASS:MON(temporal champion)
 L:?:FLOOR:MON(time initiate)
 L:=:FLOOR:MON(time initiate):OBJ(CLOAK, DEPTH+30):EGO(bat)
-L:!:FLOOR:MON(chronomage)
+L:!:FLOOR:MON(time initiate)
 
 M:#############################
 M:############,,,,,############
