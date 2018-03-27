@@ -217,7 +217,7 @@ static bool wiz_dimension_door(void)
  */
 static void wiz_create_named_art(int a_idx)
 {
-    if (create_named_art(a_idx, py, px))
+    if (create_named_art(a_idx, py, px, ORIGIN_CHEAT, 0))
         a_info[a_idx].generated = TRUE;
 }
 
@@ -615,7 +615,7 @@ static void wiz_create_item(void)
             if (a_info[i].sval != k_info[k_idx].sval) continue;
 
             /* Create this artifact */
-            if (create_named_art(i, py, px))
+            if (create_named_art(i, py, px, ORIGIN_CHEAT, 0))
                 a_info[i].generated = TRUE;
 
             /* All done */
@@ -658,6 +658,8 @@ static void wiz_create_item(void)
         q_ptr->pval = n;
     else
         q_ptr->number = n;
+
+    object_origins(q_ptr, ORIGIN_CHEAT);
 
     /* Drop the object from heaven */
     (void)drop_near(q_ptr, -1, py, px);
@@ -1578,13 +1580,13 @@ void do_cmd_debug(void)
         while (num--)
         {
             object_wipe(&forge);
-            if (!make_object(&forge, AM_GOOD)) continue;
+            if (!make_object(&forge, AM_GOOD, ORIGIN_CHEAT)) continue;
             drop_near(&forge, -1, py, px);
         }
     }
 #else
         if (command_arg <= 0) command_arg = 10;
-        acquirement(py, px, command_arg, FALSE, TRUE);
+        acquirement(py, px, command_arg, FALSE, TRUE, ORIGIN_CHEAT);
 #endif
         break;
 
@@ -1784,7 +1786,7 @@ void do_cmd_debug(void)
     /* Very Good Objects */
     case 'v':
         if (command_arg <= 0) command_arg = 1;
-        acquirement(py, px, command_arg, TRUE, TRUE);
+        acquirement(py, px, command_arg, TRUE, TRUE, ORIGIN_CHEAT);
         break;
 
     /* Wizard Light the Level */
