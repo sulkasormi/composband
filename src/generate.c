@@ -373,7 +373,7 @@ static void alloc_object(int set, int typ, int num)
             }
             else
                 object_level = base_level; /* paranoia */
-            place_object(y, x, 0L);
+            place_object(y, x, 0L, ORIGIN_FLOOR);
             object_level = base_level;
             break;
 
@@ -384,6 +384,7 @@ static void alloc_object(int set, int typ, int num)
                 k_idx = lookup_kind(TV_FOOD, SV_FOOD_RATION);
             object_prep(&forge, k_idx);
             obj_make_pile(&forge);
+            object_origins(&forge, ORIGIN_FLOOR);
             drop_near(&forge, -1, y, x);
             break;
 
@@ -395,12 +396,14 @@ static void alloc_object(int set, int typ, int num)
             object_prep(&forge, k_idx);
             apply_magic(&forge, dun_level, 0);
             obj_make_pile(&forge);
+            object_origins(&forge, ORIGIN_FLOOR);
             drop_near(&forge, -1, y, x);
             break;
 
         case ALLOC_TYP_RECALL:
             k_idx = lookup_kind(TV_SCROLL, SV_SCROLL_WORD_OF_RECALL);
             object_prep(&forge, k_idx);
+            object_origins(&forge, ORIGIN_FLOOR);
             /*obj_make_pile(&forge);*/
             drop_near(&forge, -1, y, x);
             break;
@@ -409,6 +412,7 @@ static void alloc_object(int set, int typ, int num)
             k_idx = lookup_kind(TV_CORPSE, SV_SKELETON);
             object_prep(&forge, k_idx);
             apply_magic(&forge, dun_level, 0);
+            object_origins(&forge, ORIGIN_FLOOR);
             drop_near(&forge, -1, y, x);
             break;
         }
@@ -1621,7 +1625,7 @@ void generate_cave(void)
             object_type forge;
             char        buf[MAX_NLEN];
 
-            make_object(&forge, 0); /* TODO: DROP_GOOD? */
+            make_object(&forge, 0, ORIGIN_CHEAT); /* TODO: DROP_GOOD? */
             /*if (forge.name1 || forge.name2)*/
             if (forge.curse_flags)
             {
