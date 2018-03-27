@@ -27,6 +27,7 @@ static bool _create_arrows(void)
     forge.number = rand_range(5, 10);
     apply_magic(&forge, p_ptr->lev, AM_NO_FIXED_ART);
     obj_identify_fully(&forge);
+    object_origins(&forge, ORIGIN_PLAYER_MADE);
     forge.discount = 99;
 
     object_desc(name, &forge, OD_COLOR_CODED);
@@ -59,6 +60,7 @@ static bool _create_bolts(void)
     forge.number = rand_range(4, 8);
     apply_magic(&forge, p_ptr->lev, AM_NO_FIXED_ART);
     obj_identify_fully(&forge);
+    object_origins(&forge, ORIGIN_PLAYER_MADE);
     forge.discount = 99;
 
     object_desc(name, &forge, OD_COLOR_CODED);
@@ -101,6 +103,7 @@ static bool _create_shots(void)
     forge.number = (byte)rand_range(15,30);
     apply_magic(&forge, p_ptr->lev, AM_NO_FIXED_ART);
     obj_identify_fully(&forge);
+    object_origins(&forge, ORIGIN_PLAYER_MADE);
     forge.discount = 99;
 
     object_desc(name, &forge, OD_COLOR_CODED);
