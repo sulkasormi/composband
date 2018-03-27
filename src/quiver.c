@@ -58,6 +58,7 @@ void quiver_carry(obj_ptr obj)
         xtra = ct + obj->number - cap;
         obj->number -= xtra;
     }
+    object_mitze(obj, MITZE_PICKUP);
     inv_combine_ex(_inv, obj);
     if (obj->number)
     {
