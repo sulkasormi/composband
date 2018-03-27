@@ -416,6 +416,7 @@ void create_food_spell(int cmd, variant *res)
 
         object_prep(&forge, lookup_kind(TV_FOOD, SV_FOOD_RATION));
         drop_near(&forge, -1, py, px);
+        object_origins(&forge, ORIGIN_ACQUIRE);
 
         var_set_bool(res, TRUE);
         break;
