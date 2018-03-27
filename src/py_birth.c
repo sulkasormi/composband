@@ -154,6 +154,8 @@ void py_birth_obj(object_type *o_ptr)
         return;
     }
 
+    object_origins(o_ptr, ORIGIN_BIRTH);
+
     slot = equip_first_empty_slot(o_ptr);
     if (slot && o_ptr->number == 1)
         equip_wield(o_ptr, slot);
