@@ -48,6 +48,8 @@ static cptr _rogue_pick_pocket(int power)
             object_copy(&loot, &o_list[m_ptr->hold_o_idx]);
             delete_object_idx(m_ptr->hold_o_idx);
             loot.held_m_idx = 0;
+            object_origins(&loot, ORIGIN_STOLEN);
+            loot.origin_xtra = m_ptr->r_idx;
         }
         else if (m_ptr->drop_ct > m_ptr->stolen_ct)
         {
@@ -56,6 +58,8 @@ static cptr _rogue_pick_pocket(int power)
                 m_ptr->stolen_ct++;
                 if (r_ptr->flags1 & RF1_UNIQUE)
                     r_ptr->stolen_ct++;
+                object_origins(&loot, ORIGIN_STOLEN);
+                loot.origin_xtra = m_ptr->r_idx;
             }
         }
 
