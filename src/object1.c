@@ -356,6 +356,8 @@ static void _obj_identify_aux(object_type *o_ptr)
     o_ptr->ident &= ~(IDENT_SENSE | IDENT_EMPTY | IDENT_TRIED);
     o_ptr->ident |= IDENT_KNOWN;
 
+    object_mitze(o_ptr, MITZE_ID);
+
     /* Lore on unidentified objects is tricky, but flavorful.
        Patch up the lore flags, putting them in their correct
        hierarchical locations. */
