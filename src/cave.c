@@ -4702,7 +4702,7 @@ void cave_alter_feat(int y, int x, int action)
         if (have_flag(old_f_ptr->flags, FF_HAS_ITEM) && !have_flag(f_ptr->flags, FF_HAS_ITEM) && (randint0(100) < (15 - dun_level / 2)))
         {
             /* Place object */
-            place_object(y, x, 0L);
+            place_object(y, x, 0L, ORIGIN_RUBBLE);
             found = TRUE;
         }
 
@@ -4819,8 +4819,8 @@ void hit_mon_trap(int y, int x, int m_idx)
                     break;
                 }
             }
-            else if (have_flag(f_info[c_ptr->mimic].flags, FF_ROGUE_TRAP_2))
-            {
+            else if ((have_flag(f_info[c_ptr->mimic].flags, FF_ROGUE_TRAP_2)) && (p_ptr->pclass == CLASS_ROGUE))
+            {                
                 switch (randint1(7))
                 {
                 case 1: /* Seeker Bolt */
@@ -4865,7 +4865,68 @@ void hit_mon_trap(int y, int x, int m_idx)
                     num = 1 + p_ptr->lev/10;
                     for (i = 0; i < num; i++)
                     {
-                        summon_specific(0, y, x, p_ptr->lev * 2, SUMMON_PIRANHA, (PM_ALLOW_GROUP | PM_FORCE_PET));
+                        summon_specific(SUMMON_WHO_PLAYER, y, x, p_ptr->lev * 2, SUMMON_PIRANHA, (PM_ALLOW_GROUP | PM_FORCE_PET));
+                    }
+                    break;
+                }
+                }
+            }
+            else if ((have_flag(f_info[c_ptr->mimic].flags, FF_ROGUE_TRAP_2)) && (p_ptr->pclass != CLASS_ROGUE))
+            {                
+                switch (randint1(7))
+                {
+                case 1: /* Seeker Bolt */
+                    if (m_ptr->ml)
+                        msg_format("%^s is hit by a seeker bolt.", m_name);
+                    project(PROJECT_WHO_TRAP, 1, m_ptr->fy, m_ptr->fx, 2*(damroll(6, 5) + p_ptr->lev/3), GF_MISSILE, (PROJECT_GRID | PROJECT_ITEM | PROJECT_KILL | PROJECT_JUMP ));
+                    break;
+                case 2: /* Sound Ball */
+                    if (m_ptr->ml)
+                        msg_format("%^s is hit by a ball of sound.", m_name);
+                    project(PROJECT_WHO_TRAP, 2, y, x, damroll(8, 8) + (p_ptr->lev / 2), GF_SOUND, (PROJECT_GRID | PROJECT_ITEM | PROJECT_KILL | PROJECT_JUMP ));
+                    break;
+                case 3: /* Shard Ball */
+                    if (m_ptr->ml)
+                        msg_format("%^s is hit by a large rock.", m_name);
+                    project(PROJECT_WHO_TRAP, 2, y, x, damroll(8, 8) + p_ptr->lev, GF_SHARDS, (PROJECT_GRID | PROJECT_ITEM | PROJECT_KILL | PROJECT_JUMP ));
+                    break;
+                case 4: /* Elemental Balls */
+                    if (m_ptr->ml)
+                        msg_format("%^s is hit by a shower of elements.", m_name);
+                    project(PROJECT_WHO_TRAP, 2, y, x, (damroll(4, 6) + p_ptr->lev/5), GF_FIRE, (PROJECT_GRID | PROJECT_ITEM | PROJECT_KILL | PROJECT_JUMP ));
+                    project(PROJECT_WHO_TRAP, 2, y, x, (damroll(4, 6) + p_ptr->lev/5), GF_COLD, (PROJECT_GRID | PROJECT_ITEM | PROJECT_KILL | PROJECT_JUMP ));
+                    project(PROJECT_WHO_TRAP, 2, y, x, (damroll(4, 6) + p_ptr->lev/5), GF_ELEC, (PROJECT_GRID | PROJECT_ITEM | PROJECT_KILL | PROJECT_JUMP ));
+                    project(PROJECT_WHO_TRAP, 2, y, x, (damroll(4, 6) + p_ptr->lev/5), GF_ACID, (PROJECT_GRID | PROJECT_ITEM | PROJECT_KILL | PROJECT_JUMP ));
+                    project(PROJECT_WHO_TRAP, 2, y, x, (damroll(4, 6) + p_ptr->lev/5), GF_POIS, (PROJECT_GRID | PROJECT_ITEM | PROJECT_KILL | PROJECT_JUMP ));
+                    break;
+                case 5: /* Disintegration Ball */
+                    if (m_ptr->ml)
+                        msg_format("%^s is hit by a disintegration ball.", m_name);
+                    project(PROJECT_WHO_TRAP, 5, y, x, (damroll(7, 7) + p_ptr->lev), GF_DISINTEGRATE, (PROJECT_GRID | PROJECT_ITEM | PROJECT_KILL | PROJECT_JUMP ));
+                    break;
+                case 6: /* Stasis */
+                    project(PROJECT_WHO_TRAP, 1, m_ptr->fy, m_ptr->fx, (5*p_ptr->lev)/3, GF_STASIS, (PROJECT_GRID | PROJECT_ITEM | PROJECT_KILL | PROJECT_JUMP ));
+                    break;
+                case 7: /* Piranha Trap */
+                {
+                    int i, num;
+                    msg_print("Your trap explodes and suddenly the room is filled with water and piranhas!");
+                    project(PROJECT_WHO_TRAP, 10, y, x, 50, GF_DISINTEGRATE, (PROJECT_GRID | PROJECT_ITEM | PROJECT_KILL | PROJECT_JUMP ));
+                    project(PROJECT_WHO_TRAP, 10, y, x, 1, GF_WATER_FLOW, (PROJECT_GRID | PROJECT_ITEM | PROJECT_KILL | PROJECT_JUMP  | PROJECT_HIDE));
+
+                    num = 1 + p_ptr->lev/10;
+                    if (one_in_(3))
+                    {
+                        for (i = 0; i < num; i++)
+                        {
+                            summon_specific(SUMMON_WHO_PLAYER, y, x, p_ptr->lev * 2, SUMMON_PIRANHA, (PM_ALLOW_GROUP | PM_FORCE_PET));
+                        }
+                    }
+                    else {
+                        for (i = 0; i < num; i++)
+                        {
+                            summon_specific(SUMMON_WHO_PLAYER, y, x, p_ptr->lev * 2, SUMMON_PIRANHA, PM_ALLOW_GROUP);
+                        }
                     }
                     break;
                 }
