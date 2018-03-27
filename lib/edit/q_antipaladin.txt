@@ -36,5 +36,16 @@ M:#<............#
 M:###############
 R:OBJ(long bow):EGO(accuracy)
 
+?:[EQU $RACE Beholder Spider Ring Dragon]
+R:OBJ(^ring$):EGO(combat)
+
+?:[EQU $RACE Death-Sword]
+R:OBJ(long sword, DEPTH+10)
+
+?:[EQU $RACE Hydra]
+R:OBJ(^cloak$):EGO(elemental protection)
+
+?:[EQU $RACE Centipede]
+R:OBJ(hard leather boots):EGO(dwarven)
 
 # vim: filetype=q :
