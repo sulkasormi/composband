@@ -16381,7 +16381,7 @@ I:120:10d7:25:25:5:10
 W:15:2:50:50:0:0
 F:NEVER_BLOW | NEVER_MOVE | NO_SLEEP | NO_FEAR | NO_CONF | CAN_FLY
 F:RES_COLD | RES_FIRE | RES_POIS | RES_ACID | ONLY_ITEM | DROP_60 | NONLIVING
-F:POS_GAIN_AC
+F:POS_GAIN_AC | NASTY_GLYPH |
 P:Copy:Snotling:Warrior
 P:Body:Orb
 S:1_IN_1
@@ -22094,7 +22094,7 @@ D:A crook-beaked bird with bedraggled black feathers.  It mocks you, and you
 D:realise that its scorn can kill.
 
 # Frogspawn monsters (plus the beer elemental from ComPosband 7.0.4 and
-# Lorgan from Vanilla, and some FrogComposband originals)
+# Lorgan and Polyphemus from Vanilla, and some FrogComposband originals)
 
 N:1225:Justshorn, Sorcerer-King of the Sheeple
 G:p:W
@@ -22156,7 +22156,7 @@ D:Basement Cat is watching you die.
 N:1228:Beer elemental
 G:E:U
 I:110:25d8:12:40:50:200
-W:35:20:999:500:0:0
+W:35:20:999:363:0:0
 B:ENGULF:CONFUSE(1d10)
 B:ENGULF:CONFUSE(1d10)
 B:ENGULF:POISON(1d10)
@@ -22198,7 +22198,7 @@ W:91:3:999:85184:0:0
 B:BITE:HURT(15d8):CUT(4d8):DAM(1d75, 50%)
 B:BITE:HURT(15d8):POISON(12d3)
 B:CLAW:HURT(7d13):CUT(8d14)
-B:CLAW:HURT(7d13):POISON(5d4)
+B:CLAW:HURT(7d13):POISON(5d6)
 F:FORCE_SLEEP | FORCE_MAXHP | RES_TELE | UNIQUE | SELF_DARK_1 | PASS_WALL |
 F:COLD_BLOOD | OPEN_DOOR | BASH_DOOR | DROP_4D2 | DROP_GREAT | MOVE_BODY |
 F:DRAGON | IM_FIRE | RES_COLD | RES_WATE | CAN_FLY | RES_ACID | NO_STUN |
@@ -22457,7 +22457,7 @@ D:guided to Osiris, those that are not are devoured by Ammit.
 N:1243:Ammit, the Devourer
 G:H:U
 I:135:60d100:30:135:80:530
-W:68:2:999:36300:0:0
+W:73:2:999:36300:0:0
 B:BITE:FIRE(12d12)
 B:BITE:TERRIFY(12d12)
 B:BITE:FIRE(12d12)
@@ -22610,6 +22610,71 @@ D:No ordinary cyclops, but the son of a sea-god: he wields the powers of
 D:elemental water as well as the considerable strength of a cyclops.  His one
 D:eye was blinded long ago by the warrior Odysseus, but he has trained himself
 D:to hear so well that it nearly makes up for his disability.
+
+N:1251:Mathmag, the Prince of Whales
+G:l:U
+I:128:52d121:35:170:30:2000
+W:74:2:999:39930:0:0
+B:CRUSH:HURT(16d16):STUN(4d5, 50%)
+B:CRUSH:HURT(16d16):STUN(4d5, 50%)
+B:CRUSH:HURT(16d16)
+B:CRUSH:HURT(16d16)
+F:FORCE_SLEEP | FORCE_MAXHP | AQUATIC | WILD_OCEAN | UNIQUE | MALE |
+F:ONLY_ITEM | DROP_3D2 | DROP_GOOD | DROP_GREAT | RES_NEXU | RES_DISE |
+F:BASH_DOOR | MOVE_BODY | SMART | RES_WATE | RES_DARK | RES_TELE |
+F:RES_ELEC | NO_CONF | NO_SLEEP | RES_POIS | RES_FIRE | RES_ACID | ANIMAL
+F:DROP_CORPSE | POS_GAIN_AC | NO_FEAR
+P:Copy:Half-Titan:Mauler
+P:Body:Fish
+S:1_IN_5 |
+S:BRAIN_SMASH | TELE_TO | TELE_OTHER | THROW | S_MONSTER
+S:BA_WATER(1d192+50) | BR_NEXUS | BR_NUKE | BR_FORCE | S_KIN
+D:The greatest and strongest of the whales, old but wily and seemingly
+D:untouched by age. All creatures of the deep seas answer to his call.
+
+N:1252:Shrieking eel
+G:l:D
+I:113:11d11:22:40:10:100
+W:23:3:75:150:0:0
+B:BITE:HURT(4d7):CUT(2d3, 50%)
+F:ANIMAL | AQUATIC | WILD_OCEAN | RES_WATE | FRIENDS(1d4, 42%)
+F:POS_TELEPATHY
+S:1_IN_6
+S:SHRIEK
+P:Copy:Human:Warrior
+P:Body:Fish
+D:It always grows louder when it's about to feed.
+
+N:1253:Metatron, the High Angel
+G:A:G
+I:136:108d148:100:192:2:250
+W:100:1:999:80586:0:0
+B:HIT:HURT(20d20):DISENCHANT(6d6, 66%)
+B:GAZE:HURT(7d7):TERRIFY
+B:GAZE:HURT(7d7):LOSE_ALL
+B:HIT:HURT(42d7):STUN(4d5, 69%)
+A:LIGHT(3d6):DARK(3d6)
+F:FORCE_SLEEP | FORCE_MAXHP | GOOD | SELF_LITE_2 |
+F:ONLY_ITEM | DROP_2D2 | DROP_3D2 | DROP_4D2 | DROP_GOOD | DROP_GREAT
+F:SMART | KILL_ITEM | OPEN_DOOR | BASH_DOOR | MOVE_BODY | RES_DISE |
+F:RES_ACID | IM_FIRE | IM_COLD | RES_ELEC | RES_POIS | RES_LITE | RES_DARK |
+F:AURA_FEAR | ESCORT | UNIQUE | REGENERATE | NO_STUN | MALE | RES_NEXU
+F:NO_CONF | NO_SLEEP | CAN_FLY | KILL_WALL | NO_FEAR | REFLECTING | RES_TELE
+F:POS_HOLD_LIFE | POS_SEE_INVIS | POS_GAIN_AC |
+P:Copy:Archon:Paladin
+P:Stats:2:2:2:2:2:6
+P:Speed:+10
+S:FREQ_36 |
+S:TELE_TO | INVULN | BR_FIRE | PSY_SPEAR | BR_DISENCHANT | BR_MANA | S_ANGEL
+S:BA_LITE | BO_MANA | BRAIN_SMASH | HASTE | HEAL | ANTI_MAGIC | BR_GRAVITY
+S:BLINK | BR_NEXUS | MANA_STORM | BA_DARK | S_HI_DRAGON
+D:You assume that, as the leading angel in Heaven, he must be officially good;
+D:but you sense in him a ruthless scheming manipulator, one who has remained
+D:home and ruled in absolute comfort as Michael and Raphael have led the
+D:heavenly legions to the world outside in their fight against evil.
+D:Surrounded by light and darkness, master of contradictions and opposites,
+D:Metatron is an imposing and immensely powerful figure... but it is his low
+D:cunning you truly fear.
 
 # N: serial number : monster name
 # G: symbol : color
