@@ -611,11 +611,12 @@ bool get_monster_drop(int m_idx, object_type *o_ptr)
     }
     else
     {
-        if (!make_object(o_ptr, mo_mode))
+        if (!make_object(o_ptr, mo_mode, ORIGIN_DROP))
         {
             obj_drop_theme = 0;
             return FALSE;
         }
+        o_ptr->origin_xtra = m_ptr->r_idx;
     }
 
     object_level = base_level;
@@ -896,6 +897,8 @@ void monster_death(int m_idx, bool drop_item)
                 obj_make_pile(q_ptr);
             }
 
+            q_ptr->origin_type = ORIGIN_ARENA_REWARD;
+            q_ptr->origin_xtra = m_ptr->r_idx;
             (void)drop_near(q_ptr, -1, y, x);
         }
 
@@ -1077,6 +1080,9 @@ void monster_death(int m_idx, bool drop_item)
 
             apply_magic(q_ptr, object_level, AM_NO_FIXED_ART | mo_mode);
 
+            object_origins(q_ptr, ORIGIN_DROP);
+            q_ptr->origin_xtra = MON_BLOODLETTER;
+
             /* Drop it in the dungeon */
             (void)drop_near(q_ptr, -1, y, x);
         }
@@ -1098,8 +1104,11 @@ void monster_death(int m_idx, bool drop_item)
                 get_obj_num_hook = _kind_is_book;
 
             /* Make a book */
-            if (make_object(q_ptr, mo_mode))
+            if (make_object(q_ptr, mo_mode, ORIGIN_DROP))
+            {
+                q_ptr->origin_xtra = MON_RAAL;
                 (void)drop_near(q_ptr, -1, y, x);
+            }
         }
         break;
 
@@ -1148,9 +1157,9 @@ void monster_death(int m_idx, bool drop_item)
 
     case MON_SERPENT:
         if (!drop_chosen_item) break;
-        if (create_named_art(ART_GROND, y, x))
+        if (create_named_art(ART_GROND, y, x, ORIGIN_DROP, MON_SERPENT))
             a_info[ART_GROND].generated = TRUE;
-        if (create_named_art(ART_CHAOS, y, x))
+        if (create_named_art(ART_CHAOS, y, x, ORIGIN_DROP, MON_SERPENT))
             a_info[ART_CHAOS].generated = TRUE;
         break;
 
@@ -1162,6 +1171,9 @@ void monster_death(int m_idx, bool drop_item)
 
             /* Prepare to make a broken sword */
             object_prep(q_ptr, lookup_kind(TV_SWORD, randint1(2)));
+
+            object_origins(q_ptr, ORIGIN_DROP);
+            q_ptr->origin_xtra = MON_B_DEATH_SWORD;
 
             /* Drop it in the dungeon */
             (void)drop_near(q_ptr, -1, y, x);
@@ -1180,6 +1192,8 @@ void monster_death(int m_idx, bool drop_item)
             object_prep(q_ptr, lookup_kind(TV_CHEST, SV_CHEST_KANDUME));
 
             apply_magic(q_ptr, object_level, AM_NO_FIXED_ART);
+
+            object_origins(q_ptr, ORIGIN_NAGA);
 
             /* Drop it in the dungeon */
             (void)drop_near(q_ptr, -1, y, x);
@@ -1203,14 +1217,17 @@ void monster_death(int m_idx, bool drop_item)
         if (one_in_(odds))
         {
             int         k_idx = lookup_kind(TV_RING, 0);
-            object_type forge;
+            q_ptr = &forge;
 
-            object_prep(&forge, k_idx);
+            object_prep(q_ptr, k_idx);
 
             apply_magic_ego = EGO_RING_DWARVES;
-            apply_magic(&forge, object_level, AM_GOOD | AM_GREAT | AM_FORCE_EGO);
+            apply_magic(q_ptr, object_level, AM_GOOD | AM_GREAT | AM_FORCE_EGO);
 
-            drop_near(&forge, -1, y, x);
+            object_origins(q_ptr, ORIGIN_DROP);
+            q_ptr->origin_xtra = m_ptr->r_idx;
+
+            (void)drop_near(q_ptr, -1, y, x);
         }
         break;
     }
@@ -1223,26 +1240,30 @@ void monster_death(int m_idx, bool drop_item)
         if (one_in_(3))
         {
             int         k_idx = lookup_kind(TV_RING, 0);
-            object_type forge;
+            q_ptr = &forge;
 
-            object_prep(&forge, k_idx);
+            object_prep(q_ptr, k_idx);
 
             apply_magic_ego = EGO_RING_NAZGUL;
-            apply_magic(&forge, object_level, AM_GOOD | AM_GREAT | AM_FORCE_EGO);
+            apply_magic(q_ptr, object_level, AM_GOOD | AM_GREAT | AM_FORCE_EGO);
+            object_origins(q_ptr, ORIGIN_DROP);
+            q_ptr->origin_xtra = m_ptr->r_idx;
 
-            drop_near(&forge, -1, y, x);
+            (void)drop_near(q_ptr, -1, y, x);
         }
         else if (one_in_(6))
         {
             int         k_idx = lookup_kind(TV_CLOAK, SV_CLOAK);
-            object_type forge;
+            q_ptr = &forge;
 
-            object_prep(&forge, k_idx);
+            object_prep(q_ptr, k_idx);
 
             apply_magic_ego = EGO_CLOAK_NAZGUL;
-            apply_magic(&forge, object_level, AM_GOOD | AM_GREAT | AM_FORCE_EGO);
+            apply_magic(q_ptr, object_level, AM_GOOD | AM_GREAT | AM_FORCE_EGO);
+            object_origins(q_ptr, ORIGIN_DROP);
+            q_ptr->origin_xtra = m_ptr->r_idx;
 
-            drop_near(&forge, -1, y, x);
+            (void)drop_near(q_ptr, -1, y, x);
         }
         break;
     }
@@ -1264,8 +1285,11 @@ void monster_death(int m_idx, bool drop_item)
                 get_obj_num_hook = _kind_is_cloak;
 
                 /* Make a cloak */
-                if (make_object(q_ptr, mo_mode))
+                if (make_object(q_ptr, mo_mode, ORIGIN_DROP))
+                { 
+                    q_ptr->origin_xtra = m_ptr->r_idx;
                     (void)drop_near(q_ptr, -1, y, x);
+                }
             }
             break;
 
@@ -1282,8 +1306,11 @@ void monster_death(int m_idx, bool drop_item)
                 get_obj_num_hook = _kind_is_polearm;
 
                 /* Make a poleweapon */
-                if (make_object(q_ptr, mo_mode))
+                if (make_object(q_ptr, mo_mode, ORIGIN_DROP))
+                {
+                    q_ptr->origin_xtra = m_ptr->r_idx;
                     (void)drop_near(q_ptr, -1, y, x);
+                }
             }
             break;
 
@@ -1300,8 +1327,11 @@ void monster_death(int m_idx, bool drop_item)
                 get_obj_num_hook = _kind_is_armor;
 
                 /* Make a hard armor */
-                if (make_object(q_ptr, mo_mode))
+                if (make_object(q_ptr, mo_mode, ORIGIN_DROP))
+                {
+                    q_ptr->origin_xtra = m_ptr->r_idx;
                     (void)drop_near(q_ptr, -1, y, x);
+                }
             }
             break;
 
@@ -1318,8 +1348,11 @@ void monster_death(int m_idx, bool drop_item)
                 get_obj_num_hook = _kind_is_hafted;
 
                 /* Make a hafted weapon */
-                if (make_object(q_ptr, mo_mode))
+                if (make_object(q_ptr, mo_mode, ORIGIN_DROP))
+                {
+                    q_ptr->origin_xtra = m_ptr->r_idx;
                     (void)drop_near(q_ptr, -1, y, x);
+                }
             }
             break;
 
@@ -1336,8 +1369,11 @@ void monster_death(int m_idx, bool drop_item)
                 get_obj_num_hook = _kind_is_sword;
 
                 /* Make a sword */
-                if (make_object(q_ptr, mo_mode))
+                if (make_object(q_ptr, mo_mode, ORIGIN_DROP))
+                {
+                    q_ptr->origin_xtra = m_ptr->r_idx;
                     (void)drop_near(q_ptr, -1, y, x);
+                }
             }
             break;
         }
@@ -1348,7 +1384,7 @@ void monster_death(int m_idx, bool drop_item)
     {
         int k_idx;
         int mode = 0;
-        object_type forge;
+        q_ptr = &forge;
 
         if (m_ptr->mflag2 & MFLAG2_DROP_PRIZE)
         {
@@ -1380,11 +1416,13 @@ void monster_death(int m_idx, bool drop_item)
             get_obj_num_prep();
         }
 
-        object_prep(&forge, k_idx);
-        if (!apply_magic(&forge, object_level, mode) && object_is_device(&forge))
-            apply_magic(&forge, object_level, 0);
-        obj_make_pile(&forge);
-        drop_near(&forge, -1, y, x);
+        object_prep(q_ptr, k_idx);
+        if (!apply_magic(q_ptr, object_level, mode) && object_is_device(q_ptr))
+            apply_magic(q_ptr, object_level, 0);
+        obj_make_pile(q_ptr);
+        object_origins(q_ptr, ORIGIN_DROP);
+        q_ptr->origin_xtra = m_ptr->r_idx;
+        drop_near(q_ptr, -1, y, x);
     }
 
     /* Mega-Hack -- drop fixed items */
@@ -1864,7 +1902,7 @@ void monster_death(int m_idx, bool drop_item)
             if (!a_ptr->generated)
             {
                 /* Create the artifact */
-                if (create_named_art(a_idx, y, x))
+                if (create_named_art(a_idx, y, x, ORIGIN_DROP, m_ptr->r_idx))
                 {
                     a_ptr->generated = TRUE;
 
@@ -1892,7 +1930,7 @@ void monster_death(int m_idx, bool drop_item)
                 if (!a_ptr->generated)
                 {
                     /* Create the artifact */
-                    if (create_named_art(a_idx, y, x))
+                    if (create_named_art(a_idx, y, x, ORIGIN_DROP, m_ptr->r_idx))
                     {
                         a_ptr->generated = TRUE;
 
@@ -1908,13 +1946,14 @@ void monster_death(int m_idx, bool drop_item)
                 else
                 {
                     object_type forge;
-                    create_replacement_art(a_idx, &forge);
+                    create_replacement_art(a_idx, &forge, ORIGIN_DROP);
+                    forge.origin_xtra = m_ptr->r_idx;
                     drop_here(&forge, y, x);
                     if (!d_info[dungeon_type].final_object) k_idx = 0;
                 }
             }
 
-            /* Hack: Lonely Mountain grants first realm's spellbook.
+            /* Hack: Witch Wood grants first realm's spellbook.
                I tried to do this in d_info.txt using ?:[EQU $REALM1 ...] but
                d_info.txt is processed before the save file is even loaded. */
             if (k_idx == lookup_kind(TV_LIFE_BOOK, 2) && p_ptr->realm1)
@@ -1970,6 +2009,10 @@ void monster_death(int m_idx, bool drop_item)
                 {
                     apply_magic(q_ptr, object_level, AM_NO_FIXED_ART | AM_GOOD | AM_QUEST);
                 }
+                object_origins(q_ptr, ORIGIN_DROP);
+                q_ptr->origin_xtra = m_ptr->r_idx;
+
+
                 /* Drop it in the dungeon */
                 (void)drop_near(q_ptr, -1, y, x);
             }
