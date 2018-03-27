@@ -610,6 +610,7 @@ static void _generate_encounters(int x, int y, rect_t r, rect_t exclude)
 {
     int    ct, prob, i, x2, y2, r_idx, j;
     rect_t invalid = {0};
+    bool player_in_town = ((wilderness[p_ptr->wilderness_y][p_ptr->wilderness_x].town > 0) && (p_ptr->town_num != TOWN_ZUL));
 
     if (rect_is_valid(exclude))
         invalid = rect_intersect(r, exclude);
@@ -625,12 +626,14 @@ static void _generate_encounters(int x, int y, rect_t r, rect_t exclude)
     base_level = wilderness_level(x, y);
     monster_level = base_level;
     object_level = base_level;
+    if (player_in_town) generate_encounter = FALSE;
 
     /* Special Encounter? */
     if ( !wilderness[y][x].town
       && !wilderness[y][x].road
       && !wilderness[y][x].entrance
       && !no_wilderness
+      && !player_in_town
       && !generate_encounter
       && !no_encounters_hack
       && one_in_(_WILD_ENCOUNTER_CHANCE))
@@ -663,6 +666,8 @@ static void _generate_encounters(int x, int y, rect_t r, rect_t exclude)
     else
         ct = 4;
 
+    if ((player_in_town) && (!wilderness[y][x].town)) ct = MIN(ct, 5);
+
     ct = ct * 100 * (rect_area(r) - rect_area(invalid)) / (MAX_HGT * MAX_WID);
     prob = ct % 100;
     ct /= 100;
@@ -692,6 +697,18 @@ static void _generate_encounters(int x, int y, rect_t r, rect_t exclude)
                 if (r_idx)
                 {
                     if (r_info[r_idx].level == 0) options |= PM_ALLOW_SLEEP;
+                    else if ((player_in_town) && (!(r_info[r_idx].flags7 & RF7_CAN_SWIM)))
+                    {
+                        if ((r_info[r_idx].flags1 & RF1_UNIQUE) || (r_info[r_idx].flags1 & RF1_ESCORT))
+                        {
+                            if (!one_in_(5)) break;
+                        }
+                        else if (!one_in_(20)) /* Avoid generating groups. Sometimes generate a single monster from a group race */
+                        {
+                            options = (options & PM_ALLOW_SLEEP);
+                            if ((r_info[r_idx].flags1 & RF1_FRIENDS) && (!one_in_(7))) break;
+                        }
+                    }
                     place_monster_aux(0, y2, x2, r_idx, options);
                 }
                 break;
