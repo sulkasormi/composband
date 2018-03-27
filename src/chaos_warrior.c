@@ -256,7 +256,7 @@ void chaos_warrior_reward(void)
             msg_print("'Thou didst not deserve that, slave.'");
 
             if (p_ptr->prace == RACE_ANDROID)
-                msg_print("But, nothing happen.");
+                msg_print("But, nothing happens.");
             else
             {
                 lose_exp(p_ptr->exp / 6);
@@ -266,14 +266,14 @@ void chaos_warrior_reward(void)
             msg_format("The voice of %s whispers:",
                 chaos_patrons[p_ptr->chaos_patron]);
             msg_print("'Use my gift wisely.'");
-            acquirement(py, px, 1, FALSE, FALSE);
+            acquirement(py, px, 1, FALSE, FALSE, ORIGIN_PATRON);
             break;
         case REW_GREA_OBJ:
             msg_format("The voice of %s booms out:",
                 chaos_patrons[p_ptr->chaos_patron]);
             msg_print("'Use my gift wisely.'");
 
-            acquirement(py, px, 1, TRUE, FALSE);
+            acquirement(py, px, 1, TRUE, FALSE, ORIGIN_PATRON);
             break;
         case REW_CHAOS_WP:
         {
@@ -375,6 +375,7 @@ void chaos_warrior_reward(void)
             forge.to_h = 3 + randint1(dun_level) % 10;
             forge.to_d = 3 + randint1(dun_level) % 10;
             one_resistance(&forge);
+            object_origins(&forge, ORIGIN_PATRON);
             forge.name2 = EGO_WEAPON_CHAOS;
 
             drop_near(&forge, -1, py, px);
@@ -385,14 +386,14 @@ void chaos_warrior_reward(void)
                 chaos_patrons[p_ptr->chaos_patron]);
             msg_print("'Thy deed hath earned thee a worthy reward.'");
 
-            acquirement(py, px, randint1(2) + 1, FALSE, FALSE);
+            acquirement(py, px, randint1(2) + 1, FALSE, FALSE, ORIGIN_PATRON);
             break;
         case REW_GREA_OBS:
             msg_format("The voice of %s booms out:",
                 chaos_patrons[p_ptr->chaos_patron]);
             msg_print("'Behold, mortal, how generously I reward thy loyalty.'");
 
-            acquirement(py, px, randint1(2) + 1, TRUE, FALSE);
+            acquirement(py, px, randint1(2) + 1, TRUE, FALSE, ORIGIN_PATRON);
             break;
         case REW_TY_CURSE:
             msg_format("The voice of %s thunders:",
