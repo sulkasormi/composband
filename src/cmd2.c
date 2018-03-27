@@ -359,7 +359,7 @@ static void chest_death(bool scatter, int y, int x, s16b o_idx)
     for (i = 0; i < ct_objects; i++)
     {
         object_type forge = {0};
-        if (!make_object(&forge, mode)) continue;
+        if (!make_object(&forge, mode, ((mode & AM_GREAT) ? ORIGIN_CAN_OF_TOYS : ORIGIN_CHEST))) continue;
         if (scatter) _chest_scatter(&forge);
         else drop_near(&forge, -1, y, x);
     }
