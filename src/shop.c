@@ -1817,6 +1817,13 @@ static bool _sell_aux(shop_ptr shop, obj_ptr obj)
     obj->feeling = FEEL_NONE;
     obj->marked &= ~OM_RESERVED;
 
+    /* Almost all origins are marked on item creation, but origin_store is
+     * marked on purchase to avoid message spam and misleading messages
+     * ("bought from store" for items that have not yet been bought).
+     * However, we may be repurchasing an item that we previously sold, so
+     * we need to avoid overwriting such items' original origins */
+    if ((!obj->origin_type) || (obj->origin_type == ORIGIN_MIXED)) object_origins(obj, ORIGIN_STORE);
+
     obj_identify_fully(obj);
     stats_on_purchase(obj);
 
