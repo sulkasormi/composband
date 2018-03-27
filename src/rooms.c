@@ -1896,7 +1896,7 @@ obj_ptr room_grid_make_obj(room_grid_ptr grid, int level)
             object_prep(&forge, lookup_kind(TV_SCROLL, SV_SCROLL_ACQUIREMENT));
         else if (_replace_art(grid->object))
         {
-            create_replacement_art(grid->object, &forge);
+            create_replacement_art(grid->object, &forge, room_object_origin);
             a_info[grid->object].generated = TRUE;
         }
         else
@@ -1914,7 +1914,7 @@ obj_ptr room_grid_make_obj(room_grid_ptr grid, int level)
             mode = AM_GOOD | AM_GREAT;
         else if (grid->object_level)
             mode = AM_GOOD;
-        make_object(&forge, mode);
+        make_object(&forge, mode, room_object_origin);
     }
     else if ((grid->flags & ROOM_GRID_OBJ_TYPE) && grid->object == TV_GOLD)
     {
@@ -1995,7 +1995,11 @@ obj_ptr room_grid_make_obj(room_grid_ptr grid, int level)
         }
     }
     object_level = base_level;
-    if (forge.k_idx) return obj_copy(&forge);
+    if (forge.k_idx) 
+    {
+        object_origins(&forge, room_object_origin);
+        return obj_copy(&forge);
+    }
     return NULL;
 }
 
@@ -2080,7 +2084,11 @@ static obj_ptr _make_obj_theme(room_grid_ptr grid, int level)
         }
     }
     object_level = base_level;
-    if (forge.k_idx) return obj_copy(&forge);
+    if (forge.k_idx) 
+    {
+        object_origins(&forge, room_object_origin);
+        return obj_copy(&forge);
+    }
     return NULL;
 }
 
@@ -2110,6 +2118,10 @@ static void _apply_room_grid_obj(point_t p, room_grid_ptr grid, room_ptr room)
 
     if (0 < grid->obj_pct && randint1(100) > grid->obj_pct)
         return;
+
+    if (room->type == ROOM_VAULT) room_object_origin = ORIGIN_VAULT;
+    else if (room->type == ROOM_QUEST) room_object_origin = ORIGIN_QUEST;
+    else room_object_origin = ORIGIN_SPECIAL;
 
     /* Experimental: Excellent vault tiles roll best of X objects */
     if (room->type == ROOM_VAULT && grid->flags & ROOM_GRID_EGO_RANDOM)
@@ -2566,7 +2578,7 @@ void build_room_template_aux(room_ptr room, transform_ptr xform, wild_scroll_ptr
                 case 'A':
                     /* Reward for Pattern walk */
                     object_level = base_level + 12;
-                    place_object(p.y, p.x, AM_GOOD | AM_GREAT);
+                    place_object(p.y, p.x, AM_GOOD | AM_GREAT, ORIGIN_PATTERN);
                     object_level = base_level;
                     break;
             }
@@ -3615,7 +3627,7 @@ static void fill_treasure(int x1, int x2, int y1, int y2, int difficulty)
                     place_monster(y, x, (PM_ALLOW_SLEEP | PM_ALLOW_GROUP));
                     monster_level = base_level;
                     object_level = base_level + 20;
-                    place_object(y, x, AM_GOOD);
+                    place_object(y, x, AM_GOOD, ORIGIN_VAULT);
                     object_level = base_level;
                 }
                 else if (value < 5)
@@ -3625,7 +3637,7 @@ static void fill_treasure(int x1, int x2, int y1, int y2, int difficulty)
                     place_monster(y, x, (PM_ALLOW_SLEEP | PM_ALLOW_GROUP));
                     monster_level = base_level;
                     object_level = base_level + 10;
-                    place_object(y, x, AM_GOOD);
+                    place_object(y, x, AM_GOOD, ORIGIN_VAULT);
                     object_level = base_level;
                 }
                 else if (value < 10)
@@ -3651,7 +3663,7 @@ static void fill_treasure(int x1, int x2, int y1, int y2, int difficulty)
                     /* Object or trap */
                     if (randint0(100) < 25)
                     {
-                        place_object(y, x, 0L);
+                        place_object(y, x, 0L, ORIGIN_VAULT);
                     }
                     else
                     {
@@ -3678,7 +3690,7 @@ static void fill_treasure(int x1, int x2, int y1, int y2, int difficulty)
                     if (randint0(100) < 50)
                     {
                         object_level = base_level + 7;
-                        place_object(y, x, 0L);
+                        place_object(y, x, 0L, ORIGIN_VAULT);
                         object_level = base_level;
                     }
                 }
@@ -3702,7 +3714,7 @@ static void fill_treasure(int x1, int x2, int y1, int y2, int difficulty)
                     }
                     else if (randint0(100) < 50)
                     {
-                        place_object(y, x, 0L);
+                        place_object(y, x, 0L, ORIGIN_VAULT);
                     }
                 }
 
@@ -4040,7 +4052,7 @@ static bool build_type12(void)
         build_small_room(x0, y0);
 
         /* Place a treasure in the vault */
-        place_object(y0, x0, 0L);
+        place_object(y0, x0, 0L, ORIGIN_SPECIAL);
 
         /* Let's guard the treasure well */
         vault_monsters(y0, x0, randint0(2) + 3);
