@@ -3300,13 +3300,15 @@ bool reforge_artifact(object_type *src, object_type *dest, int fame)
     else
         dest->art_name = src->art_name;
 
+    object_origins(dest, ORIGIN_REFORGE);
+
     return result;
 }
 
 int original_score = 0;
 int replacement_score = 0;
 
-bool create_replacement_art(int a_idx, object_type *o_ptr)
+bool create_replacement_art(int a_idx, object_type *o_ptr, byte origin)
 {
     object_type    forge1 = {0};
     object_type    forge2 = {0};
@@ -3370,6 +3372,7 @@ bool create_replacement_art(int a_idx, object_type *o_ptr)
             replacement_score += power;
             object_level = old_level;
             object_copy(o_ptr, &forge2);
+            object_origins(o_ptr, origin);
             o_ptr->name3 = a_idx;
             o_ptr->weight = forge1.weight;
             o_ptr->level = a_ptr->level;
@@ -3443,7 +3446,7 @@ bool create_named_art_aux(int a_idx, object_type *o_ptr)
     return TRUE;
 }
 
-bool create_named_art(int a_idx, int y, int x)
+bool create_named_art(int a_idx, int y, int x, byte origin, int xtra)
 {
     assert(0 <= a_idx && a_idx < max_a_idx);
     if (no_artifacts) return FALSE;
@@ -3453,14 +3456,21 @@ bool create_named_art(int a_idx, int y, int x)
       && randint0(100) < random_artifact_pct )
     {
         object_type forge;
-        if (create_replacement_art(a_idx, &forge))
+        if (create_replacement_art(a_idx, &forge, origin))
+        {
+            if (origin == ORIGIN_DROP) forge.origin_xtra = xtra;
             return drop_near(&forge, -1, y, x) ? TRUE : FALSE;
+        }
     }
     else
     {
         object_type forge;
         if (create_named_art_aux(a_idx, &forge))
+        {
+            object_origins(&forge, origin);
+            if (origin == ORIGIN_DROP) forge.origin_xtra = xtra;
             return drop_near(&forge, -1, y, x) ? TRUE : FALSE;
+        }
     }
     return FALSE;
 }
