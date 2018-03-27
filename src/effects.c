@@ -5481,6 +5481,12 @@ static void _forget(obj_ptr obj)
 
 bool lose_all_info(void)
 {
+    if (never_forget) 
+    {
+        msg_print("You feel very forgetful for a moment, but the feeling passes.");
+        return FALSE;
+    }
+
     virtue_add(VIRTUE_KNOWLEDGE, -5);
     virtue_add(VIRTUE_ENLIGHTENMENT, -5);
 
