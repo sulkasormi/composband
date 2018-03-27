@@ -4226,10 +4226,13 @@ bool activate_ty_curse(bool stop_ty, int *count)
             (void)do_dec_stat(randint0(6));
             if (!one_in_(6)) break;
         case 24:
-            msg_print("Huh? Who am I? What am I doing here?");
+            if (!never_forget)
+            {
+                msg_print("Huh? Who am I? What am I doing here?");
 
-            lose_all_info();
-            if (!one_in_(6)) break;
+                lose_all_info();
+                if (!one_in_(6)) break;
+            }
         case 25:
             /*
              * Only summon Cyberdemons deep in the dungeon.
@@ -4570,6 +4573,7 @@ bool kawarimi(bool success)
         object_wipe(&forge);
         object_prep(&forge, lookup_kind(TV_STATUE, SV_WOODEN_STATUE));
         forge.pval = MON_NINJA;
+        object_origins(&forge, ORIGIN_KAWARIMI);
         drop_near(&forge, -1, y, x);
     }
 
