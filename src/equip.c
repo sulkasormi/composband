@@ -620,6 +620,7 @@ static void _wield(obj_ptr obj, slot_t slot)
     if (old_obj)
         equip_takeoff(slot);
 
+    object_mitze(obj, MITZE_PICKUP);
     stats_on_use(obj, 1);
     inv_add_at(_inv, obj, slot);
 }
