@@ -47,3 +47,14 @@ M:#............#...........<...........#
 M:######################################
 R:OBJ(hard studded leather)
 
+?:[EQU $RACE Beholder Spider Ring Dragon]
+R:OBJ(^ring$):EGO(protection)
+
+?:[EQU $RACE Death-Sword]
+R:OBJ(broad sword)
+
+?:[EQU $RACE Hydra]
+R:OBJ(^cloak$)
+
+?:[EQU $RACE Centipede]
+R:OBJ(hard leather boots)
