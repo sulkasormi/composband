@@ -1475,7 +1475,7 @@ magic_type technic_info[NUM_TECHNIC][32] =
         { REALM_LAW, 42, 50,  70,   80}, /* Semicolon of Warding */
 
         { REALM_LAW, 12,  8,  25,   13}, /* Charm Monster */
-        { REALM_LAW, 18, 16,  30,   25}, /* Expert Trap */
+        { REALM_LAW, 18, 18,  30,   45}, /* Expert Trap */
         { REALM_LAW, 20, 10,  35,   30}, /* Getaway */
         { REALM_LAW, 30, 20,  40,   35}, /* Blame Undead */
         { REALM_LAW, 32, 20,  50,   45}, /* Probe */
@@ -2237,6 +2237,12 @@ option_type option_info[] =
     { &display_race,		        TRUE, OPT_PAGE_TEXT, 2, 29,
     "display_race",                 "Player character depends on race" },
 
+    { &show_origins,		        TRUE, OPT_PAGE_TEXT, 2, 28,
+    "show_origins",                 "Show object origins on examination" },
+
+    { &show_discovery,		        FALSE, OPT_PAGE_TEXT, 2, 26,
+    "show_discovery",                 "Show time of discovery on examination" },
+
     { &easy_mimics,		        FALSE, OPT_PAGE_TEXT, 2, 27,
     "easy_mimics",                  "Use 'x' for monsters that look like things" },
 
@@ -2338,6 +2344,9 @@ option_type option_info[] =
 	{ &easy_thalos,					TRUE, OPT_PAGE_BIRTH, 6, 28,
 	"easy_thalos",					"Allow easy teleportation to Thalos" },
 
+	{ &never_forget,				FALSE, OPT_PAGE_BIRTH, 6, 27,
+	"never_forget",					"Easy Labyrinth and no item amnesia" },
+
     { &smart_learn,                 TRUE,  OPT_PAGE_BIRTH, 1, 14,
     "smart_learn",                  "Monsters learn from their mistakes (*)" },
 
@@ -2391,6 +2400,9 @@ option_type option_info[] =
 
     { &reduce_uniques,              FALSE, OPT_PAGE_BIRTH, 6, 26,
     "reduce_uniques",               "Reduce the number of uniques (randomly)" },
+
+    { &no_chris,			FALSE, OPT_PAGE_BIRTH, 6, 12,
+    "no_chris",				"Nexus attacks never teleport to another dungeon" },
 
     /*** Easy Object Auto-Destroyer ***/
 
