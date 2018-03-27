@@ -5186,7 +5186,7 @@ bool move_player_effect(int ny, int nx, u32b mpe_mode)
         if ((!p_ptr->blind && !no_lite()) || !is_trap(c_ptr->feat)) c_ptr->info &= ~(CAVE_UNSAFE);
 
         /* For get everything when requested hehe I'm *NASTY* */
-        if (dun_level && (d_info[dungeon_type].flags1 & DF1_FORGET)) wiz_dark();
+        if (dun_level && (d_info[dungeon_type].flags1 & DF1_FORGET) && !never_forget) wiz_dark();
 
         /* Handle stuff */
         if (mpe_mode & MPE_HANDLE_STUFF) handle_stuff();
