@@ -98,6 +98,9 @@ void reset_visuals(void)
         /* Process "font-<playername>.prf" */
         process_pref_file(buf);
     }
+
+    /* Respect easy_mimics */
+    if (easy_mimics) toggle_easy_mimics(TRUE);
 }
 
 
