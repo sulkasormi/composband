@@ -42,14 +42,15 @@ static magic_type *_get_spell_info(int realm, int spell)
 static void _list_spell(doc_ptr doc, int realm, int spell, int choice, int options)
 {
     magic_type *spell_ptr = _get_spell_info(realm, spell);
-    int         cost = calculate_cost(spell_ptr->smana);
-    int         fail = calculate_fail_rate(spell_ptr->slevel, spell_ptr->sfail, p_ptr->stat_ind[A_INT]);
+    int         sp_level = lawyer_hack(spell_ptr, LAWYER_HACK_LEVEL);
+    int         cost = calculate_cost(lawyer_hack(spell_ptr, LAWYER_HACK_MANA));
+    int         fail = calculate_fail_rate(sp_level, lawyer_hack(spell_ptr, LAWYER_HACK_FAILRATE), p_ptr->stat_ind[A_INT]);
 
     if (cost > p_ptr->csp)
         doc_insert(doc, "<color:D>");
     else if (choice == _browse_choice)
         doc_insert(doc, "<color:B>");
-    else if (spell_ptr->slevel > p_ptr->lev)
+    else if (sp_level > p_ptr->lev)
     {
         if (options & _FROM_BOOK)
             doc_insert(doc, "<color:D>");
@@ -59,15 +60,15 @@ static void _list_spell(doc_ptr doc, int realm, int spell, int choice, int optio
     else
         doc_insert(doc, "<color:w>");
 
-    if (spell_ptr->slevel > p_ptr->lev)
+    if (sp_level > p_ptr->lev)
         doc_printf(doc, " <color:D>%c)</color> ", I2A(choice));
     else
         doc_printf(doc, " %c) ", I2A(choice));
 
     doc_printf(doc, "%-20.20s ", do_spell(realm, spell, SPELL_NAME));
-    doc_printf(doc, "%3d %3d %3d%% ", spell_ptr->slevel, cost, fail);
+    doc_printf(doc, "%3d %3d %3d%% ", sp_level, cost, fail);
 
-    if (spell_ptr->slevel > p_ptr->lev)
+    if (sp_level > p_ptr->lev)
     {
         if (options & _FROM_BOOK)
             doc_printf(doc, "%-15.15s", "");
@@ -444,7 +445,7 @@ static int _choose_spell_to_gain(object_type *o_ptr)
             int         spell_idx = o_ptr->sval * _SPELLS_PER_BOOK + A2I(cmd);
             magic_type *spell_ptr = _get_spell_info(tval2realm(o_ptr->tval), spell_idx);
 
-            if (spell_ptr->slevel <= p_ptr->lev) /* Note: Illegible spells have slevel == 99 in m_info.txt */
+            if (lawyer_hack(spell_ptr, LAWYER_HACK_LEVEL) <= p_ptr->lev) /* Note: Illegible spells have slevel == 99 in m_info.txt */
             {
                 done = TRUE;
                 result = spell_idx;
@@ -492,12 +493,13 @@ void gray_mage_cast_spell(void)
     if (slot_ptr)
     {
         magic_type *spell_ptr = _get_spell_info(slot_ptr->realm, slot_ptr->spell);
-        int         cost = calculate_cost(spell_ptr->smana);
-        int         fail = calculate_fail_rate(spell_ptr->slevel, spell_ptr->sfail, p_ptr->stat_ind[A_INT]);
+        int         sp_level = lawyer_hack(spell_ptr, LAWYER_HACK_LEVEL);
+        int         cost = calculate_cost(lawyer_hack(spell_ptr, LAWYER_HACK_MANA));
+        int         fail = calculate_fail_rate(sp_level, lawyer_hack(spell_ptr, LAWYER_HACK_FAILRATE), p_ptr->stat_ind[A_INT]);
 
-        if (spell_ptr->slevel > p_ptr->lev) /* Experience Drain? */
+        if (sp_level > p_ptr->lev) /* Experience Drain? */
         {
-            msg_format("You need to be level %d to use that spell.", spell_ptr->slevel);
+            msg_format("You need to be level %d to use that spell.", sp_level);
             return;
         }
 
