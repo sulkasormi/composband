@@ -838,6 +838,7 @@ typedef struct magic_type magic_type;
 struct magic_type
 {
     byte realm;         /* Which realm the spell is in */
+    byte idx;           /* Index of the spell */
     byte slevel;        /* Required level (to learn) */
     byte smana;            /* Required mana (to cast) */
     byte sfail;            /* Minimum chance of failure */
