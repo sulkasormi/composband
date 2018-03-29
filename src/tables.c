@@ -1456,236 +1456,236 @@ magic_type technic_info[NUM_TECHNIC][32] =
 {
     {
         /* Law */
-        { REALM_LAW, 1,  1,  10,   2}, /* Detect Money */
-        { REALM_LAW, 2,  1,  10,   2}, /* Detect Traps */
-        { REALM_LAW, 3,  2,  10,   4}, /* Satisfy Hunger */
-        { REALM_LAW, 4,  2,  20,   4}, /* Detect Objects */
-        { REALM_LAW, 6,  3,  20,   8}, /* Basic Trap */
-        { REALM_LAW, 8,  4,  20,   8}, /* Disarm Traps */
-        { REALM_LAW, 10, 5,  30,   12}, /* Identify */
-        { REALM_LAW, 12, 5,  30,   12}, /* Dig */
+        { REALM_LAW, 0, 1,  1,  10,   2}, /* Detect Money */
+        { REALM_LAW, 1, 2,  1,  10,   2}, /* Detect Traps */
+        { REALM_LAW, 2, 3,  2,  10,   4}, /* Satisfy Hunger */
+        { REALM_LAW, 3, 4,  2,  20,   4}, /* Detect Objects */
+        { REALM_LAW, 4, 6,  3,  20,   8}, /* Basic Trap */
+        { REALM_LAW, 5, 8,  4,  20,   8}, /* Disarm Traps */
+        { REALM_LAW, 6, 10, 5,  30,   12}, /* Identify */
+        { REALM_LAW, 7, 12, 5,  30,   12}, /* Dig */
 
-        { REALM_LAW, 10,  5,  25,   20}, /* Detect Monsters */
-        { REALM_LAW, 12,  6,  30,   35}, /* Slow Monster */
-        { REALM_LAW, 14,  6,  30,   25}, /* Confuse Monster */
-        { REALM_LAW, 15,  7,  30,   30}, /* Scare Monster */
-        { REALM_LAW, 25, 25,  50,   50}, /* Semicolon of Punishment */
-        { REALM_LAW, 27, 15,  50,   50}, /* Confuse Everybody */
-        { REALM_LAW, 35, 30,  60,   70}, /* Create Doors */
-        { REALM_LAW, 42, 50,  70,   80}, /* Semicolon of Warding */
+        { REALM_LAW, 8, 10,  5,  25,   20}, /* Detect Monsters */
+        { REALM_LAW, 9, 12,  6,  30,   35}, /* Slow Monster */
+        { REALM_LAW, 10, 14,  6,  30,   25}, /* Confuse Monster */
+        { REALM_LAW, 11, 15,  7,  30,   30}, /* Scare Monster */
+        { REALM_LAW, 12, 25, 25,  50,   50}, /* Semicolon of Punishment */
+        { REALM_LAW, 13, 27, 15,  50,   50}, /* Confuse Everybody */
+        { REALM_LAW, 14, 35, 30,  60,   70}, /* Create Doors */
+        { REALM_LAW, 15, 42, 50,  70,   80}, /* Semicolon of Warding */
 
-        { REALM_LAW, 12,  8,  25,   13}, /* Charm Monster */
-        { REALM_LAW, 18, 18,  30,   45}, /* Expert Trap */
-        { REALM_LAW, 20, 10,  35,   30}, /* Getaway */
-        { REALM_LAW, 30, 20,  40,   35}, /* Blame Undead */
-        { REALM_LAW, 32, 20,  50,   45}, /* Probe */
-        { REALM_LAW, 35, 25,  50,   60}, /* Spin */
-        { REALM_LAW, 40, 40,  60,   70}, /* Advanced Bloodsucking - values must match lawyer.c */
-        { REALM_LAW, 50, 150, 75,  200}, /* Alter Reality */
+        { REALM_LAW, 16, 12,  8,  25,   13}, /* Charm Monster */
+        { REALM_LAW, 17, 18, 18,  30,   45}, /* Expert Trap */
+        { REALM_LAW, 18, 20, 10,  35,   30}, /* Getaway */
+        { REALM_LAW, 19, 30, 20,  40,   35}, /* Blame Undead */
+        { REALM_LAW, 20, 32, 20,  50,   45}, /* Probe */
+        { REALM_LAW, 21, 35, 25,  50,   60}, /* Spin */
+        { REALM_LAW, 22, 40, 40,  60,   70}, /* Advanced Bloodsucking */
+        { REALM_LAW, 23, 50, 150, 75,  200}, /* Alter Reality */
 
-        { REALM_LAW, 10,  10,  25,   15}, /* Blink */
-        { REALM_LAW, 15,  12,  30,   25}, /* Tread Softly */
-        { REALM_LAW, 20,  18,  35,   35}, /* Map Surroundings */
-        { REALM_LAW, 25,  25,  45,   45}, /* Dig Deep */
-        { REALM_LAW, 30,  30,  45,   55}, /* Unholy Rage */
-        { REALM_LAW, 35,  32,  55,   65}, /* Subpoena */
-        { REALM_LAW, 40,  35,  55,   75}, /* Teleport */
-        { REALM_LAW, 45,  60,  70,   85}  /* Dazzle */
+        { REALM_LAW, 24, 10,  10,  25,   15}, /* Blink */
+        { REALM_LAW, 25, 15,  12,  30,   25}, /* Tread Softly */
+        { REALM_LAW, 26, 20,  18,  35,   35}, /* Map Surroundings */
+        { REALM_LAW, 27, 25,  25,  45,   45}, /* Dig Deep */
+        { REALM_LAW, 28, 30,  30,  45,   55}, /* Unholy Rage */
+        { REALM_LAW, 29, 35,  32,  55,   65}, /* Subpoena */
+        { REALM_LAW, 30, 40,  35,  55,   75}, /* Teleport */
+        { REALM_LAW, 31, 45,  60,  70,   85}  /* Dazzle */
     },
 
     {
         /* Music */
-        { REALM_MUSIC, 1,  1,  10,   2},
-        { REALM_MUSIC, 2,  1,  10,   2},
-        { REALM_MUSIC, 3,  2,  20,   3},
-        { REALM_MUSIC, 4,  2,  20,   4},
-        { REALM_MUSIC, 5,  2,  20,   6},
-        { REALM_MUSIC, 7,  4,  30,   8},
-        { REALM_MUSIC, 9,  3,  30,   10},
-        { REALM_MUSIC, 10, 2,  30,   12},
+        { REALM_MUSIC, 0, 1,  1,  10,   2},
+        { REALM_MUSIC, 1, 2,  1,  10,   2},
+        { REALM_MUSIC, 2, 3,  2,  20,   3},
+        { REALM_MUSIC, 3, 4,  2,  20,   4},
+        { REALM_MUSIC, 4, 5,  2,  20,   6},
+        { REALM_MUSIC, 5, 7,  4,  30,   8},
+        { REALM_MUSIC, 6, 9,  3,  30,   10},
+        { REALM_MUSIC, 7, 10, 2,  30,   12},
 
-        { REALM_MUSIC, 12,  3,   40,   20},
-        { REALM_MUSIC, 15, 16,  42,   35},
-        { REALM_MUSIC, 17, 18,  40,   25},
-        { REALM_MUSIC, 18,  2,  45,   30},
-        { REALM_MUSIC, 23,  8,  50,   38},
-        { REALM_MUSIC, 28, 30,  50,   41},
-        { REALM_MUSIC, 33, 35,  60,   42},
-        { REALM_MUSIC, 38, 35,  70,   46},
+        { REALM_MUSIC, 8, 12,  3,   40,   20},
+        { REALM_MUSIC, 9, 15, 16,  42,   35},
+        { REALM_MUSIC, 10, 17, 18,  40,   25},
+        { REALM_MUSIC, 11, 18,  2,  45,   30},
+        { REALM_MUSIC, 12, 23,  8,  50,   38},
+        { REALM_MUSIC, 13, 28, 30,  50,   41},
+        { REALM_MUSIC, 14, 33, 35,  60,   42},
+        { REALM_MUSIC, 15, 38, 35,  70,   46},
 
-        { REALM_MUSIC, 10,  4,  20,   13},
-        { REALM_MUSIC, 22,  5,  30,   26},
-        { REALM_MUSIC, 23,  3,  35,   27},
-        { REALM_MUSIC, 26,  28,  37,   29},
-        { REALM_MUSIC, 32,  37,  41,   36},
-        { REALM_MUSIC, 33,  22,  43,   40},
-        { REALM_MUSIC, 37,  35,  46,   42},
-        { REALM_MUSIC, 45,  60,  50,   56},
+        { REALM_MUSIC, 16, 10,  4,  20,   13},
+        { REALM_MUSIC, 17, 22,  5,  30,   26},
+        { REALM_MUSIC, 18, 23,  3,  35,   27},
+        { REALM_MUSIC, 19, 26,  28,  37,   29},
+        { REALM_MUSIC, 20, 32,  37,  41,   36},
+        { REALM_MUSIC, 21, 33,  22,  43,   40},
+        { REALM_MUSIC, 22, 37,  35,  46,   42},
+        { REALM_MUSIC, 23, 45,  60,  50,   56},
 
-        { REALM_MUSIC, 23,  18,  20,   23},
-        { REALM_MUSIC, 30,  30,  30,   26},
-        { REALM_MUSIC, 33,  65,  41,   30},
-        { REALM_MUSIC, 37,  35,  43,   35},
-        { REALM_MUSIC, 40,  30,  46,   50},
-        { REALM_MUSIC, 42,  75,  50,   68},
-        { REALM_MUSIC, 45,  58,  62,   73},
-        { REALM_MUSIC, 49,  48,  70,  200}
+        { REALM_MUSIC, 24, 23,  18,  20,   23},
+        { REALM_MUSIC, 25, 30,  30,  30,   26},
+        { REALM_MUSIC, 26, 33,  65,  41,   30},
+        { REALM_MUSIC, 27, 37,  35,  43,   35},
+        { REALM_MUSIC, 28, 40,  30,  46,   50},
+        { REALM_MUSIC, 29, 42,  75,  50,   68},
+        { REALM_MUSIC, 30, 45,  58,  62,   73},
+        { REALM_MUSIC, 31, 49,  48,  70,  200}
     },
 
     {
         /* Hissatsu */
-        { REALM_HISSATSU, 1,   15,   0,   0},
-        { REALM_HISSATSU, 3,   10,   0,   0},
-        { REALM_HISSATSU, 6,   15,   0,   0},
-        { REALM_HISSATSU, 9,    8,   0,   0},
-        { REALM_HISSATSU, 10,  12,   0,   0},
-        { REALM_HISSATSU, 12,  25,   0,   0},
-        { REALM_HISSATSU, 14,   7,   0,   0},
-        { REALM_HISSATSU, 17,  20,   0,   0},
+        { REALM_HISSATSU, 0, 1,   15,   0,   0},
+        { REALM_HISSATSU, 1, 3,   10,   0,   0},
+        { REALM_HISSATSU, 2, 6,   15,   0,   0},
+        { REALM_HISSATSU, 3, 9,    8,   0,   0},
+        { REALM_HISSATSU, 4, 10,  12,   0,   0},
+        { REALM_HISSATSU, 5, 12,  25,   0,   0},
+        { REALM_HISSATSU, 6, 14,   7,   0,   0},
+        { REALM_HISSATSU, 7, 17,  20,   0,   0},
 
-        { REALM_HISSATSU, 19,  10,   0,   0},
-        { REALM_HISSATSU, 22,  20,   0,   0},
-        { REALM_HISSATSU, 24,  30,   0,   0},
-        { REALM_HISSATSU, 25,  10,   0,   0},
-        { REALM_HISSATSU, 27,  15,   0,   0},
-        { REALM_HISSATSU, 29,  45,   0,   0},
-        { REALM_HISSATSU, 32,  70,   0,   0},
-        { REALM_HISSATSU, 35,  50,   0,   0},
+        { REALM_HISSATSU, 8, 19,  10,   0,   0},
+        { REALM_HISSATSU, 9, 22,  20,   0,   0},
+        { REALM_HISSATSU, 10, 24,  30,   0,   0},
+        { REALM_HISSATSU, 11, 25,  10,   0,   0},
+        { REALM_HISSATSU, 12, 27,  15,   0,   0},
+        { REALM_HISSATSU, 13, 29,  45,   0,   0},
+        { REALM_HISSATSU, 14, 32,  70,   0,   0},
+        { REALM_HISSATSU, 15, 35,  50,   0,   0},
 
-        { REALM_HISSATSU, 18,  40,   0,   0},
-        { REALM_HISSATSU, 22,  22,   0,   0},
-        { REALM_HISSATSU, 24,  30,   0,   0},
-        { REALM_HISSATSU, 26,  35,   0,   0},
-        { REALM_HISSATSU, 30,  30,   0,   0},
-        { REALM_HISSATSU, 32,  60,   0,   0},
-        { REALM_HISSATSU, 36,  40,   0,   0},
-        { REALM_HISSATSU, 39,  80,   0,   0},
+        { REALM_HISSATSU, 16, 18,  40,   0,   0},
+        { REALM_HISSATSU, 17, 22,  22,   0,   0},
+        { REALM_HISSATSU, 18, 24,  30,   0,   0},
+        { REALM_HISSATSU, 19, 26,  35,   0,   0},
+        { REALM_HISSATSU, 20, 30,  30,   0,   0},
+        { REALM_HISSATSU, 21, 32,  60,   0,   0},
+        { REALM_HISSATSU, 22, 36,  40,   0,   0},
+        { REALM_HISSATSU, 23, 39,  80,   0,   0},
 
-        { REALM_HISSATSU, 26,  20,   0,   0},
-        { REALM_HISSATSU, 29,  40,   0,   0},
-        { REALM_HISSATSU, 31,  35,   0,   0},
-        { REALM_HISSATSU, 36,  80,   0,   0},
-        { REALM_HISSATSU, 39, 100,   0,   0},
-        { REALM_HISSATSU, 42, 110,   0,   0},
-        { REALM_HISSATSU, 45, 130,   0,   0},
-        { REALM_HISSATSU, 50, 255,   0,   0}
+        { REALM_HISSATSU, 24, 26,  20,   0,   0},
+        { REALM_HISSATSU, 25, 29,  40,   0,   0},
+        { REALM_HISSATSU, 26, 31,  35,   0,   0},
+        { REALM_HISSATSU, 27, 36,  80,   0,   0},
+        { REALM_HISSATSU, 28, 39, 100,   0,   0},
+        { REALM_HISSATSU, 29, 42, 110,   0,   0},
+        { REALM_HISSATSU, 30, 45, 130,   0,   0},
+        { REALM_HISSATSU, 31, 50, 255,   0,   0}
     },
 
     {
         /* Hex */
-        { REALM_HEX,  1,  2, 20,   2},
-        { REALM_HEX,  1,  2, 20,   2},
-        { REALM_HEX,  3,  2, 30,   3},
-        { REALM_HEX,  5,  3, 30,   4},
-        { REALM_HEX,  7,  3, 40,   6},
-        { REALM_HEX,  8, 10, 60,   8},
-        { REALM_HEX,  9,  3, 30,  10},
-        { REALM_HEX, 10,  5, 40,  12},
+        { REALM_HEX, 0,  1,  2, 20,   2},
+        { REALM_HEX, 1,  1,  2, 20,   2},
+        { REALM_HEX, 2,  3,  2, 30,   3},
+        { REALM_HEX, 3,  5,  3, 30,   4},
+        { REALM_HEX, 4,  7,  3, 40,   6},
+        { REALM_HEX, 5,  8, 10, 60,   8},
+        { REALM_HEX, 6,  9,  3, 30,  10},
+        { REALM_HEX, 7, 10,  5, 40,  12},
 
-        { REALM_HEX, 12,  8, 40,  15},
-        { REALM_HEX, 12,  9, 35,  15},
-        { REALM_HEX, 15, 10, 50,  20},
-        { REALM_HEX, 20, 12, 45,  35},
-        { REALM_HEX, 25, 15, 50,  50},
-        { REALM_HEX, 30, 12, 60,  70},
-        { REALM_HEX, 35, 10, 60,  80},
-        { REALM_HEX, 40, 16, 70, 100},
+        { REALM_HEX, 8, 12,  8, 40,  15},
+        { REALM_HEX, 9, 12,  9, 35,  15},
+        { REALM_HEX, 10, 15, 10, 50,  20},
+        { REALM_HEX, 11, 20, 12, 45,  35},
+        { REALM_HEX, 12, 25, 15, 50,  50},
+        { REALM_HEX, 13, 30, 12, 60,  70},
+        { REALM_HEX, 14, 35, 10, 60,  80},
+        { REALM_HEX, 15, 40, 16, 70, 100},
 
-        { REALM_HEX, 15,  8, 20,  20},
-        { REALM_HEX, 18, 15, 50,  20},
-        { REALM_HEX, 22, 10, 65,  35},
-        { REALM_HEX, 25, 28, 70,  50},
-        { REALM_HEX, 28, 10, 70,  60},
-        { REALM_HEX, 30, 20, 60,  60},
-        { REALM_HEX, 36, 22, 70,  80},
-        { REALM_HEX, 40, 28, 70, 100},
+        { REALM_HEX, 16, 15,  8, 20,  20},
+        { REALM_HEX, 17, 18, 15, 50,  20},
+        { REALM_HEX, 18, 22, 10, 65,  35},
+        { REALM_HEX, 19, 25, 28, 70,  50},
+        { REALM_HEX, 20, 28, 10, 70,  60},
+        { REALM_HEX, 21, 30, 20, 60,  60},
+        { REALM_HEX, 22, 36, 22, 70,  80},
+        { REALM_HEX, 23, 40, 28, 70, 100},
 
-        { REALM_HEX,  5,  6, 35,   5},
-        { REALM_HEX, 22, 24, 70,  40},
-        { REALM_HEX, 25,  2, 65,  50},
-        { REALM_HEX, 32, 20, 50,  70},
-        { REALM_HEX, 35, 35, 70,  80},
-        { REALM_HEX, 38, 32, 70,  90},
-        { REALM_HEX, 42, 24, 70, 120},
-        { REALM_HEX, 46, 45, 80, 200}
+        { REALM_HEX, 24,  5,  6, 35,   5},
+        { REALM_HEX, 25, 22, 24, 70,  40},
+        { REALM_HEX, 26, 25,  2, 65,  50},
+        { REALM_HEX, 27, 32, 20, 50,  70},
+        { REALM_HEX, 28, 35, 35, 70,  80},
+        { REALM_HEX, 29, 38, 32, 70,  90},
+        { REALM_HEX, 30, 42, 24, 70, 120},
+        { REALM_HEX, 31, 46, 45, 80, 200}
     },
 
     {
         /* Unused */
-        { REALM_RAGE, 0,   0,   0,   0},
-        { REALM_RAGE, 0,   0,   0,   0},
-        { REALM_RAGE, 0,   0,   0,   0},
-        { REALM_RAGE, 0,   0,   0,   0},
-        { REALM_RAGE, 0,   0,   0,   0},
-        { REALM_RAGE, 0,   0,   0,   0},
-        { REALM_RAGE, 0,   0,   0,   0},
-        { REALM_RAGE, 0,   0,   0,   0},
+        { REALM_RAGE, 0, 0,   0,   0,   0},
+        { REALM_RAGE, 0, 0,   0,   0,   0},
+        { REALM_RAGE, 0, 0,   0,   0,   0},
+        { REALM_RAGE, 0, 0,   0,   0,   0},
+        { REALM_RAGE, 0, 0,   0,   0,   0},
+        { REALM_RAGE, 0, 0,   0,   0,   0},
+        { REALM_RAGE, 0, 0,   0,   0,   0},
+        { REALM_RAGE, 0, 0,   0,   0,   0},
 
-        { REALM_RAGE, 0,   0,   0,   0},
-        { REALM_RAGE, 0,   0,   0,   0},
-        { REALM_RAGE, 0,   0,   0,   0},
-        { REALM_RAGE, 0,   0,   0,   0},
-        { REALM_RAGE, 0,   0,   0,   0},
-        { REALM_RAGE, 0,   0,   0,   0},
-        { REALM_RAGE, 0,   0,   0,   0},
-        { REALM_RAGE, 0,   0,   0,   0},
+        { REALM_RAGE, 0, 0,   0,   0,   0},
+        { REALM_RAGE, 0, 0,   0,   0,   0},
+        { REALM_RAGE, 0, 0,   0,   0,   0},
+        { REALM_RAGE, 0, 0,   0,   0,   0},
+        { REALM_RAGE, 0, 0,   0,   0,   0},
+        { REALM_RAGE, 0, 0,   0,   0,   0},
+        { REALM_RAGE, 0, 0,   0,   0,   0},
+        { REALM_RAGE, 0, 0,   0,   0,   0},
 
-        { REALM_RAGE, 0,   0,   0,   0},
-        { REALM_RAGE, 0,   0,   0,   0},
-        { REALM_RAGE, 0,   0,   0,   0},
-        { REALM_RAGE, 0,   0,   0,   0},
-        { REALM_RAGE, 0,   0,   0,   0},
-        { REALM_RAGE, 0,   0,   0,   0},
-        { REALM_RAGE, 0,   0,   0,   0},
-        { REALM_RAGE, 0,   0,   0,   0},
+        { REALM_RAGE, 0, 0,   0,   0,   0},
+        { REALM_RAGE, 0, 0,   0,   0,   0},
+        { REALM_RAGE, 0, 0,   0,   0,   0},
+        { REALM_RAGE, 0, 0,   0,   0,   0},
+        { REALM_RAGE, 0, 0,   0,   0,   0},
+        { REALM_RAGE, 0, 0,   0,   0,   0},
+        { REALM_RAGE, 0, 0,   0,   0,   0},
+        { REALM_RAGE, 0, 0,   0,   0,   0},
 
-        { REALM_RAGE, 0,   0,   0,   0},
-        { REALM_RAGE, 0,   0,   0,   0},
-        { REALM_RAGE, 0,   0,   0,   0},
-        { REALM_RAGE, 0,   0,   0,   0},
-        { REALM_RAGE, 0,   0,   0,   0},
-        { REALM_RAGE, 0,   0,   0,   0},
-        { REALM_RAGE, 0,   0,   0,   0},
-        { REALM_RAGE, 0,   0,   0,   0}
+        { REALM_RAGE, 0, 0,   0,   0,   0},
+        { REALM_RAGE, 0, 0,   0,   0,   0},
+        { REALM_RAGE, 0, 0,   0,   0,   0},
+        { REALM_RAGE, 0, 0,   0,   0,   0},
+        { REALM_RAGE, 0, 0,   0,   0,   0},
+        { REALM_RAGE, 0, 0,   0,   0,   0},
+        { REALM_RAGE, 0, 0,   0,   0,   0},
+        { REALM_RAGE, 0, 0,   0,   0,   0}
     },
 
     {
         /* Burglary */
-        { REALM_BURGLARY,   1,  1, 30,   2},
-        { REALM_BURGLARY,   3,  2, 30,   2},
-        { REALM_BURGLARY,   5,  3, 40,   3},
-        { REALM_BURGLARY,   7,  3, 40,   4},
-        { REALM_BURGLARY,   9,  3, 40,   6},
-        { REALM_BURGLARY,  11, 10, 45,   8},
-        { REALM_BURGLARY,  13, 10, 45,  10},
-        { REALM_BURGLARY,  15, 15, 50,  12},
+        { REALM_BURGLARY,   0,  1,  1, 30,   2},
+        { REALM_BURGLARY,   1,  3,  2, 30,   2},
+        { REALM_BURGLARY,   2,  5,  3, 40,   3},
+        { REALM_BURGLARY,   3,  7,  3, 40,   4},
+        { REALM_BURGLARY,   4,  9,  3, 40,   6},
+        { REALM_BURGLARY,   5, 11, 10, 45,   8},
+        { REALM_BURGLARY,   6, 13, 10, 45,  10},
+        { REALM_BURGLARY,   7, 15, 15, 50,  12},
 
-        { REALM_BURGLARY,  17, 15, 50,  15},
-        { REALM_BURGLARY,  20, 20, 60,  15},
-        { REALM_BURGLARY,  22, 20, 60,  20},
-        { REALM_BURGLARY,  23, 25, 60,  35},
-        { REALM_BURGLARY,  25, 25, 40,  50},
-        { REALM_BURGLARY,  30, 15, 40,  70},
-        { REALM_BURGLARY,  32, 30, 60,  80},
-        { REALM_BURGLARY,  33, 25, 50, 100},
+        { REALM_BURGLARY,   8, 17, 15, 50,  15},
+        { REALM_BURGLARY,   9, 20, 20, 60,  15},
+        { REALM_BURGLARY,  10, 22, 20, 60,  20},
+        { REALM_BURGLARY,  11, 23, 25, 60,  35},
+        { REALM_BURGLARY,  12, 25, 25, 40,  50},
+        { REALM_BURGLARY,  13, 30, 15, 40,  70},
+        { REALM_BURGLARY,  14, 32, 30, 60,  80},
+        { REALM_BURGLARY,  15, 33, 25, 50, 100},
 
-        { REALM_BURGLARY,  10, 20, 60,  20},
-        { REALM_BURGLARY,  15, 10, 60,  20},
-        { REALM_BURGLARY,  17, 10, 60,  35},
-        { REALM_BURGLARY,  25, 20, 60,  40},
-        { REALM_BURGLARY,  27, 30, 70,  50},
-        { REALM_BURGLARY,  30, 30, 70,  60},
-        { REALM_BURGLARY,  32, 35, 70,  60},
-        { REALM_BURGLARY,  40, 40, 70,  80},
+        { REALM_BURGLARY,  16, 10, 20, 60,  20},
+        { REALM_BURGLARY,  17, 15, 10, 60,  20},
+        { REALM_BURGLARY,  18, 17, 10, 60,  35},
+        { REALM_BURGLARY,  19, 25, 20, 60,  40},
+        { REALM_BURGLARY,  20, 27, 30, 70,  50},
+        { REALM_BURGLARY,  21, 30, 30, 70,  60},
+        { REALM_BURGLARY,  22, 32, 35, 70,  60},
+        { REALM_BURGLARY,  23, 40, 40, 70,  80},
 
-        { REALM_BURGLARY,   5,  7, 50,   5},
-        { REALM_BURGLARY,  12,  9, 60,  40},
-        { REALM_BURGLARY,  35, 20, 70,  50},
-        { REALM_BURGLARY,  39, 30, 70,  70},
-        { REALM_BURGLARY,  42, 30, 70,  80},
-        { REALM_BURGLARY,  45, 50, 85,  90},
-        { REALM_BURGLARY,  47,100, 90, 120},
-        { REALM_BURGLARY,  50,100, 95, 200}
+        { REALM_BURGLARY,  24,  5,  7, 50,   5},
+        { REALM_BURGLARY,  25, 12,  9, 60,  40},
+        { REALM_BURGLARY,  26, 35, 20, 70,  50},
+        { REALM_BURGLARY,  27, 39, 30, 70,  70},
+        { REALM_BURGLARY,  28, 42, 30, 70,  80},
+        { REALM_BURGLARY,  29, 45, 50, 85,  90},
+        { REALM_BURGLARY,  30, 47,100, 90, 120},
+        { REALM_BURGLARY,  31, 50,100, 95, 200}
     },
 
 };
