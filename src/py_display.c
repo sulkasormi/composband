@@ -2358,7 +2358,7 @@ static void _add_html_header(doc_ptr doc)
     string_printf(header,  " <meta name='variant' value='%s'>\n", VERSION_NAME);
     string_printf(header,  " <meta name='variant_version' value='%d.%d.%s'>\n", VER_MAJOR, VER_MINOR, VER_PATCH);
     string_printf(header,  " <meta name='character_name' value='%s'>\n", player_name);
-    string_printf(header,  " <meta name='race' value='%s'>\n", get_race()->name);
+    string_printf(header,  " <meta name='race' value='%s'>\n", get_true_race()->name);
     string_printf(header,  " <meta name='class' value='%s'>\n", get_class()->name);
     string_printf(header,  " <meta name='level' value='%d'>\n", p_ptr->lev);
     string_printf(header,  " <meta name='experience' value='%d'>\n", p_ptr->max_exp);
