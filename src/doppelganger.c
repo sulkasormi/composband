@@ -3,15 +3,21 @@
 void mimic_race(int new_race, const char *msg)
 {
     int  old_race = p_ptr->mimic_form;
+    bool suppress = ((msg) && (strpos("uppress", msg))); /* suppress message */
 
     if (p_ptr->prace != RACE_DOPPELGANGER) return;
-    if (p_ptr->tim_mimic) return;
+    if ((p_ptr->tim_mimic) && (new_race != MIMIC_NONE)) return;
     if (new_race == old_race) return;
 
-    if (msg)
+    if ((msg) && (!suppress))
         msg_print(msg);
-    
-    if (old_race == RACE_HUMAN || old_race == RACE_DEMIGOD)
+
+    /* The first part of this or is total paranoia. There were bugs that allowed
+     * the player to slip out of human/demigod form without losing the powers,
+     * and my fixes elsewhere should be enough to make that impossible, but I
+     * don't want anybody to prove me wrong... 
+     * Note that it's okay to call mut_present(-1) */    
+    if (mut_present(p_ptr->demigod_power[0]) || old_race == RACE_HUMAN || old_race == RACE_DEMIGOD)
     {
         int i, idx;
         for (i = 0; i < MAX_DEMIGOD_POWERS; i++)
@@ -26,19 +32,24 @@ void mimic_race(int new_race, const char *msg)
             }
         }
     }
+  
+    if (p_ptr->tim_mimic) return;
 
     /* Shifting form causes mutations to vanish! */
     mut_lose_all();
 
-    if (new_race == MIMIC_NONE)
-        msg_print("You resume your true form.");
-    else
+    if (!suppress)
     {
-        race_t *race_ptr = get_race_aux(new_race, 0);
-        if (is_a_vowel(race_ptr->name[0]))
-            msg_format("You turn into an %s!", race_ptr->name);
+        if (new_race == MIMIC_NONE)
+            msg_print("You resume your true form.");
         else
-            msg_format("You turn into a %s!", race_ptr->name);
+        {
+            race_t *race_ptr = get_race_aux(new_race, 0);
+            if (is_a_vowel(race_ptr->name[0]))
+                msg_format("You turn into an %s!", race_ptr->name);
+            else
+                msg_format("You turn into a %s!", race_ptr->name);
+        }
     }
 
     p_ptr->mimic_form = new_race;
