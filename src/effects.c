@@ -150,7 +150,11 @@ void reset_tim_flags(void)
     p_ptr->tim_res_nether = 0;
     p_ptr->tim_res_time = 0;
     p_ptr->tim_mimic = 0;
-    p_ptr->mimic_form = MIMIC_NONE;
+    if (p_ptr->prace == RACE_DOPPELGANGER && p_ptr->mimic_form != MIMIC_NONE)
+    {
+        mimic_race(MIMIC_NONE, NULL);
+    }
+    else p_ptr->mimic_form = MIMIC_NONE;
     p_ptr->tim_reflect = 0;
     p_ptr->multishadow = 0;
     p_ptr->dustrobe = 0;
@@ -662,6 +666,7 @@ bool set_mimic(int v, int p, bool do_dec)
         else if ((!p_ptr->tim_mimic) || (p_ptr->mimic_form != p))
         {
             msg_print("You feel that your body changes.");
+            if (p_ptr->prace == RACE_DOPPELGANGER) mimic_race(MIMIC_NONE, "suppress");
             p_ptr->mimic_form=p;
             notice = TRUE;
         }
@@ -673,7 +678,12 @@ bool set_mimic(int v, int p, bool do_dec)
         if (p_ptr->tim_mimic)
         {
             msg_print("You are no longer transformed.");
-            p_ptr->mimic_form= MIMIC_NONE;
+            if (p_ptr->prace == RACE_DOPPELGANGER) 
+            {
+                p_ptr->tim_mimic = v; 
+                mimic_race(MIMIC_NONE, NULL);
+            }
+            else p_ptr->mimic_form= MIMIC_NONE;
             notice = TRUE;
             p = MIMIC_NONE;
         }
