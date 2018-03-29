@@ -2303,7 +2303,8 @@ errr parse_m_info(char *buf, header *head)
         if (4 != sscanf(buf+2, "%d:%d:%d:%d",
                 &level, &mana, &fail, &exp)) return (1);
 
-        m_ptr->info[realm][magic_idx].realm = realm;
+        m_ptr->info[realm][magic_idx].realm = realm + 1; /* the realms are off by 1 */
+        m_ptr->info[realm][magic_idx].idx = magic_idx;
         m_ptr->info[realm][magic_idx].slevel = level;
         m_ptr->info[realm][magic_idx].smana = mana;
         m_ptr->info[realm][magic_idx].sfail = fail;
