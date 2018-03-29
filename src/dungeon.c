@@ -5324,7 +5324,7 @@ void play_game(bool new_game)
     load_all_pref_files();
 
     /* Turn on easy mimics */
-    if (easy_mimics) toggle_easy_mimics(TRUE);
+    toggle_easy_mimics(easy_mimics);
 
     Term_xtra(TERM_XTRA_REACT, 0);
     p_ptr->window |= (PW_INVEN | PW_EQUIP | PW_SPELL);
