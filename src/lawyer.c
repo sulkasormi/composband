@@ -4,12 +4,22 @@
 
 /* Epic mother of all hacks
  * Returns the slevel, smana or sfail of a spell after certain adjustments
- * Although this is named lawyer_hack() and currently only changes anything
- * in the law realm, it could easily support similar adjustments for other
+ * Although this is named lawyer_hack() and mostly only changes anything
+ * in the law realm, it can easily support similar adjustments for other
  * realms (or classes or races) as well */
 byte lawyer_hack(magic_type *s_ptr, int tyyppi)
 {
     int kerroin = 100, sopivuus = 3;
+    if ((tyyppi == LAWYER_HACK_MANA) && (s_ptr->realm == REALM_DEATH) && (s_ptr->idx == 21)) /* vampirism true */
+    {
+        int tulos = (int)s_ptr->smana;
+        int lisays = tulos;
+        if (lisays < 50) lisays = 50;
+        if (lisays > 100) lisays = 100;
+        tulos += lisays;
+        if (tulos > 250) tulos = 250;
+        return tulos;
+    }
     if (s_ptr->realm == REALM_LAW)
     {
         if (prace_is_(RACE_VAMPIRE) || prace_is_(RACE_ENT)) sopivuus++;
@@ -18,7 +28,7 @@ byte lawyer_hack(magic_type *s_ptr, int tyyppi)
 
         /* No Advanced Bloodsucking for blood mages */
         if ((tyyppi == LAWYER_HACK_LEVEL) && (p_ptr->pclass == CLASS_BLOOD_MAGE) &&
-            (s_ptr->slevel == 40) && (s_ptr->sfail == 60) && (s_ptr->sexp == 70)) return 99;
+            (s_ptr->idx == 22)) return 99;
 
         if (sopivuus != 3)
         {
