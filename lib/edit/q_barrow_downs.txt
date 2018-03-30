@@ -6,12 +6,17 @@ D:Please, we are desperate. We don't have much to offer, but we beg you
 D:to help us!
 ?:1
 
-?:[EQU $QUEST5 Completed]
+?:[AND [EQU $QUEST5 Completed] [EQU $WILDERNESS NORMAL] ]
 D:Thank you! You have saved our town and our people rejoice!
 D:I've talked with Astinus, the local librarian, Suiyan, the local
 D:weaponmaster, and Lorien, the local beastmaster. They will offer you
 D:a special discount price when they serve you. It is not much, but
 D:we are a poor people.
+?:1
+
+?:[AND [EQU $QUEST5 Completed] [EQU $WILDERNESS NONE] ]
+D:Thank you! You have saved our town and our people rejoice!
+D:Please accept this gift.
 ?:1
 
 ?:[EQU $QUEST5 Failed]
@@ -69,5 +74,8 @@ M:#................;;;......;;;..................;......#
 M:#..................;;;;;;;;....................;..ZW..#
 M:#<.................................A...........;....92#
 M:#######################################################
+
+?:[EQU $WILDERNESS NONE]
+R:OBJ(potion of new life)
 
 # vim: filetype=q :
