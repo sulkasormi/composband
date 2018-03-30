@@ -2,7 +2,7 @@
 
 ?:[EQU $QUEST25 Taken InProgress]
 D:There is something evil going on in the old, thatched house
-D:near the south-west corner of the city wall. People say that
+D:near the south-east corner of the city wall. People say that
 D:the house is haunted and refuse to go near it. We need someone
 D:to exorcise the evil spirits that are infesting the house.
 ?:[EQU $QUEST25 Completed]
