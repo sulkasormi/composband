@@ -1,20 +1,36 @@
-?:[EQU $QUEST28 Taken InProgress]
+?:[AND [EQU $QUEST28 Taken InProgress] [EQU $WILDERNESS NORMAL] ]
 D:A mysterious force has entered the royal crypt and is
 D:desecrating the graves of the king's noble ancestors. Their
-D:bodily remains have been magicly animated and their spirits
+D:bodily remains have been magically animated and their spirits
 D:enslaved and forcibly turned to evil. You must enter the
 D:crypt and seek out the Archliches. Once they have been
 D:eliminated, my guards should be able to take care of the
 D:rest.
 ?:1
 
-?:[EQU $QUEST28 Completed]
+?:[AND [EQU $QUEST28 Completed] [EQU $WILDERNESS NORMAL] ]
 D:How can I ever thank you? Let the people rejoice - a hero
 D:of legend walks this day in Outpost. My treasurer tells me
 D:a number of rather valuable heirlooms seem to be missing
 D:from the crypt - how about I turn a blind eye and we call
 D:it quits? Oh wait a moment ... Now where did I put that?
 D:Ah! Take this trinket and be glad you still live.
+?:1
+
+?:[AND [EQU $QUEST28 Taken InProgress] [EQU $WILDERNESS NONE] ]
+D:A mysterious force has entered the royal crypt and is
+D:desecrating the graves of the king's noble ancestors. Their
+D:bodily remains have been magically animated and their spirits
+D:enslaved and forcibly turned to evil. You must enter the
+D:crypt and seek out the Archliches. Once they have been
+D:eliminated, the town guard should be able to take care of the
+D:rest.
+?:1
+
+?:[AND [EQU $QUEST28 Completed] [EQU $WILDERNESS NONE] ]
+D:How can we ever thank you? Let the people rejoice - a hero
+D:of legend walks this day in Outpost. This land will forever
+D:remain in your debt.
 ?:1
 
 ?:[EQU $QUEST28 Failed]
