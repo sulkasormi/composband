@@ -4,7 +4,7 @@ static cptr _desc =
     "Demons are powerful servants of evil and come in many forms. Being monsters, they "
     "may not choose a normal class. Instead, they rely on their devilish powers or their "
     "brutish strength to survive.\n \n"
-    "The various demonic races include the Balrog, powerful demons of fire; the Sevants "
+    "The various demonic races include the Balrog, powerful demons of fire; the Servants "
     "of Khorne, mighty warriors of destruction; the Tanar'ri, weaker demons whose ultimate "
     "form has three sets of arms, but prefers to fight naked; and Cyberdemons, whose firepower "
     "is unsurpassable.\n \n"
