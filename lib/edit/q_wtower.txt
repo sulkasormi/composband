@@ -1,16 +1,31 @@
 # New quest for FrogComposband 7.0.strawberry
 
-?:[EQU $QUEST69 Taken InProgress]
+?:[AND [EQU $QUEST69 Taken InProgress] [EQU $WILDERNESS NORMAL] ]
 D:Unfortunately, the citizens of Thalos are still not safe. A young boy
 D:disappeared last week while out on a walk; we found his corpse in the
 D:forest a few days later, lifeless and sucked dry of blood. The city's
 D:lawyers, afraid of being blamed by the public, are pressuring me to drive
 D:out the vampires who have taken over the old watchtower near the shore.
 D:Please help me eliminate the vampires, you will be well rewarded.
+?:1
 
-?:[EQU $QUEST69 Completed]
+?:[AND [EQU $QUEST69 Completed] [EQU $WILDERNESS NORMAL] ]
 D:Thank you once more for your help. Here's your reward, let's hope the
 D:innocent children of Thalos will never be attacked again.
+?:1
+
+?:[AND [EQU $QUEST69 Taken InProgress] [EQU $WILDERNESS NONE] ]
+D:An old watchtower in the forest west of here, near the river, has been
+D:taken over by vampires. A young boy disappeared last week while out on
+D:a walk in the forest; his corpse was found near the tower a few days later,
+D:lifeless and sucked dry of blood. My lawyers are afraid of being blamed
+D:by the public and want the vampires driven out. Please help me eliminate
+D:the vampires, you will be well rewarded.
+?:1
+
+?:[AND [EQU $QUEST69 Completed] [EQU $WILDERNESS NONE] ]
+D:Thank you for your help. Here's your reward, let's hope the innocent
+D:children of Outpost will never be attacked again.
 ?:1
 
 ?:[EQU $QUEST69 Failed]
