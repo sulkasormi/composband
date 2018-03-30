@@ -80,7 +80,7 @@ L:b:BUILDING_1(0)
 ############### Quest Sequence #2
 ############### Quest 29 - Thieves Quest 1 ###############
 ?:[EQU $QUEST29 Taken]
-L:s:QUEST_ENTER(29)
+L:r:QUEST_ENTER(29)
 ?:[EQU $QUEST29 Untaken Taken Completed Failed]
 L:k:BUILDING_10(29)
 ?:[EQU $QUEST29 Finished FailedDone]
@@ -88,7 +88,7 @@ L:k:BUILDING_10(30)
 ?:1
 ############### Quest 30 - Thieves Quest 2 ###############
 ?:[EQU $QUEST30 Taken]
-L:r:QUEST_ENTER(30)
+L:s:QUEST_ENTER(30)
 ?:[EQU $QUEST30 Taken Completed Failed]
 L:k:BUILDING_10(30)
 ?:[EQU $QUEST30 Finished FailedDone]
