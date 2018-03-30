@@ -4,7 +4,7 @@
 D:The Black Market's owner is thinking of opening another Thieves' Guild. 
 D:I do not need the competition, here is the key to the Black Market's
 D:treasure room. Destroy everything you find there and you will
-D:be rewarded. The quest is located behind the Magic Shop.
+D:be rewarded.
 ?:1
 
 ?:[EQU $QUEST30 Completed]
