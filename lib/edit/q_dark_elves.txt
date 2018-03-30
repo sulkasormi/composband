@@ -5,8 +5,8 @@
 D:A small group of Dark Elven Lords have set up a small shop
 D:in town. I do not need any competition, so kill everything 
 D:in their shop. You will be very well rewarded. Their shop
-D:is located in a building behind this one. They are well
-D:guarded so be careful.
+D:is located in the Magic Shop's building. They are well
+D:guarded, so be careful.
 ?:1
 
 ?:[EQU $QUEST32 Completed]
