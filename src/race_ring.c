@@ -348,6 +348,23 @@ static int _calc_needed(int amount, int power, int rep)
     return result;
 }
 
+static int _free_act_needed(void)
+{
+    int paljonko = 1;
+    if (_essences[OF_FREE_ACT] >= 1) paljonko = 4;
+    if (_essences[OF_FREE_ACT] >= 4) paljonko = 9;
+    return paljonko;
+}
+
+static int _see_invis_needed(void)
+{
+    int paljonko = 1;
+    if (_essences[OF_SEE_INVIS] >= 1) paljonko = 4;
+    if (_essences[OF_SEE_INVIS] >= 4) paljonko = 9;
+    if (_essences[OF_SEE_INVIS] >= 9) paljonko = 16;
+    return paljonko;
+}
+
 static int _calc_stat_bonus(int flag)
 {
     return _calc_amount(_essences[flag], 2, 1);
@@ -1420,7 +1437,17 @@ static void _calc_bonuses(void)
         p_ptr->levitation = TRUE;
     if (_essences[OF_FREE_ACT] >= 1)
         p_ptr->free_act++;
+    if (_essences[OF_FREE_ACT] >= 4)
+        p_ptr->free_act++;
+    if (_essences[OF_FREE_ACT] >= 9)
+        p_ptr->free_act++;
     if (_essences[OF_SEE_INVIS] >= 1)
+        p_ptr->see_inv++;
+    if (_essences[OF_SEE_INVIS] >= 4)
+        p_ptr->see_inv++;
+    if (_essences[OF_SEE_INVIS] >= 9)
+        p_ptr->see_inv++;
+    if (_essences[OF_SEE_INVIS] >= 16)
         p_ptr->see_inv++;
     if (_essences[OF_SLOW_DIGEST] >= 2)
         p_ptr->slow_digest = TRUE;
@@ -1560,12 +1587,33 @@ static void _dump_ability_flag(doc_ptr doc, int which, int threshold, cptr name)
     int n = _essences[which];
     if (n > 0)
     {
-        doc_printf(doc, "   %-22.22s %5d %5d %5.5s\n",
-            name,
-            n, 
-            threshold,
-            n >= threshold ? "Y" : ""
-        );
+        if ((p_ptr->free_act) && (which == OF_FREE_ACT))
+        {
+            doc_printf(doc, "   %-22.22s %5d %5d %4dx\n",
+                name,
+                n, 
+                threshold,
+                p_ptr->free_act
+            );
+        }
+        else if ((p_ptr->see_inv) && (which == OF_SEE_INVIS))
+        {
+            doc_printf(doc, "   %-22.22s %5d %5d %4dx\n",
+                name,
+                n, 
+                threshold,
+                p_ptr->see_inv
+            );
+        }
+        else
+        {
+            doc_printf(doc, "   %-22.22s %5d %5d %5.5s\n",
+                name,
+                n, 
+                threshold,
+                n >= threshold ? "Y" : ""
+            );
+        }
     }
 }
 static void _dump_bonus_flag(doc_ptr doc, int which, int power, int rep, cptr name)
@@ -1671,8 +1719,8 @@ static void _character_dump(doc_ptr doc)
     _dump_ability_flag(doc, OF_IM_COLD, 2, "Immune Cold");
 
     doc_printf(doc, "\n   <color:G>%-22.22s Total  Need Bonus</color>\n", "Abilities");
-    _dump_ability_flag(doc, OF_FREE_ACT, 1, "Free Action");
-    _dump_ability_flag(doc, OF_SEE_INVIS, 1, "See Invisible");
+    _dump_ability_flag(doc, OF_FREE_ACT, _free_act_needed(), "Free Action");
+    _dump_ability_flag(doc, OF_SEE_INVIS, _see_invis_needed(), "See Invisible");
     _dump_ability_flag(doc, OF_LEVITATION, 2, "Levitation");
     _dump_ability_flag(doc, OF_SLOW_DIGEST, 2, "Slow Digestion");
     _dump_ability_flag(doc, OF_HOLD_LIFE, 7, "Hold Life");
