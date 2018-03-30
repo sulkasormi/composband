@@ -1,6 +1,9 @@
 # Adapted from Frogspawn
+# (This quest is normally in Anambar, but doubles as a lite-town quest.
+# The settings of these quests require totally different descriptions,
+# but apart from that they're the same)
 
-?:[EQU $QUEST73 Taken InProgress]
+?:[AND [EQU $QUEST73 Taken InProgress] [EQU $WILDERNESS NORMAL] ]
 D:Illegal mushrooms are showing up on the streets and even in the school,
 D:and more and more people are getting addicted. At first we thought the
 D:new shroomery was to blame, but we raided the place and couldn't find
@@ -12,18 +15,37 @@ D:search warrant, so legally there's absolutely nothing we can do.
 D:We'd appreciate it if a private detective paid those sons of vampire bats
 D:a quick visit and maybe killed them in self-defence. Their base is a small
 D:house just north of here.
+?:1
 
-?:[EQU $QUEST73 Completed]
+?:[AND [EQU $QUEST73 Completed] [EQU $WILDERNESS NORMAL] ]
 D:Thank you for your discreet help. You may keep any interesting mushrooms
 D:you found; here's a legal extra one we booked as evidence earlier,
 D:hopefully it will be of use to you. Er... you did kill the smugglers in
 D:self-defence, right?
 ?:1
 
-?:[EQU $QUEST73 Failed]
+?:[AND [EQU $QUEST73 Failed] [EQU $WILDERNESS NORMAL] ]
 D:Well, that's just fantabulous. Let's say you blundered in by accident and
 D:happened to see a humongous pile of illegal mushrooms? Maybe we can use
 D:that as evidence.
+?:1
+
+?:[AND [EQU $QUEST73 Taken InProgress] [EQU $WILDERNESS NONE] ]
+D:Illegal mushrooms are showing up on the streets, and I'm not behind it.
+D:The actual culprits are smugglers who get the shrooms cheap from some old
+D:hobbit, sneak them into the town and sell them at a tidy profit. I'd like
+D:to expand a bit and take over their operation, or at least steal their
+D:mushrooms; but it's very dangerous, they're a pretty tough group. I would
+D:appreciate your help, their base is a small house south of the Arena.
+?:1
+
+?:[AND [EQU $QUEST73 Completed] [EQU $WILDERNESS NONE] ]
+D:Thank you for your help. I managed to steal this one mushroom earlier,
+D:you can have it as a bonus.
+?:1
+
+?:[AND [EQU $QUEST73 Failed] [EQU $WILDERNESS NONE] ]
+D:Too bad. Say, can you give me a blueprint of their place?
 ?:1
 
 T:QUEST:NORMAL
