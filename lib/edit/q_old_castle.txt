@@ -2,15 +2,19 @@
 # By Shayne Steele (steele@cs.fsu.edu)
 
 ?:[EQU $QUEST27 Taken InProgress]
-D:The old castle has been taken over by evil beings. Mighty undead,
-D:evil spell casters, dragons, and even titans are rumored to be
-D:in there. The entrance to the old castle is in a large clearing 
-D:east of here. Destroy ALL the monsters within the castle, and your
-D:reward will be an artifact of great value.
+D:The old castle northwest of here has been taken over by evil beings. 
+D:Mighty undead, evil spell casters, dragons, and even titans are 
+D:rumored to lurk there. Destroy ALL the monsters within the castle, 
+D:and your reward will be an artifact of great value.
 ?:1
 
-?:[EQU $QUEST27 Completed]
+?:[AND [EQU $QUEST27 Completed] [EQU $WILDERNESS NORMAL] ]
 D:Impressive!! You have served me well. May this final gift aid you
+D:well in your future adventures.
+?:1
+
+?:[AND [EQU $QUEST27 Completed] [EQU $WILDERNESS NONE] ]
+D:Impressive!! You have served me well. May this gift aid you
 D:well in your future adventures.
 ?:1
 
