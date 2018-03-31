@@ -5468,7 +5468,7 @@ void play_game(bool new_game)
                 fame_on_failure();
 
                 /* Leave through the exit */
-                prepare_change_floor_mode(CFM_SAVE_FLOORS | CFM_RAND_CONNECT);
+                prepare_change_floor_mode(CFM_FIRST_FLOOR);
 
                 /* prepare next floor */
                 leave_floor();
