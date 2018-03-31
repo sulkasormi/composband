@@ -3730,6 +3730,9 @@ void do_cmd_bldg(void)
             /* Re-enter the arena */
             command_new = SPECIAL_KEY_BUILDING;
 
+            /* Refresh buildings (otherwise bad things happen if we saved and loaded inside the arena) */
+            refresh_buildings();
+
             /* No energy needed to re-enter the arena */
             energy_use = 0;
         }
@@ -3832,6 +3835,9 @@ void do_cmd_bldg(void)
 
     store_hack = FALSE;
     msg_line_init(ui_msg_rect());
+
+    /* Force reinit if which == 2 (or bad things happen if we saved and loaded inside the arena) */
+    if (which == 2) reinit_wilderness = TRUE;
 
     /* Reinit wilderness to activate quests ... */
     if (reinit_wilderness)
