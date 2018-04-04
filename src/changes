@@ -1,7 +1,18 @@
-Changes in FrogComposband 7.0.peppermint (and the development version of
-7.0.strawberry):
+Changes in FrogComposband 7.0.peppermint:
 
-* Added new monsters and tweaked existing ones
+* Totally revamped the no-wilderness town, and fixed quest descriptions so
+they're accurate with both wilderness and no wilderness
+
+* Introduced a V-like system for tracking and describing object origins
+(e.g. "Dropped by the Variant Maintainer on level 19 of Orc Cave."). This
+system can be turned off (or expanded further) in the text display options
+
+* Added back the no_selling birth option. In no_selling mode, selling items
+is disabled but gold drops are increased to compensate. The intention is
+that selling players and non-selling players will accumulate gold at roughly
+the same pace, but since this was calibrated based on my own games, it
+may not hold for players with different playstyles. No_selling mode does
+not have any effect on gold drops in the wilderness
 
 * Added a new option (easy_mimics) for players who really hate mimics,
 cloakers, death swords, wall monsters etc. and want to reglyph them.
@@ -13,17 +24,35 @@ black). It also makes monsters with the ATTR_CLEAR flag possible to see.
 can be recognized through their color, nor does it affect creeping coins or
 death scythes)
 
+* Made easy_id stronger (it now *identifies* all items on walkover)
+
 * It is now possible to request a new quest immediately after receiving the
 reward for the old one, without the need to exit and re-enter the building
+
+* Added a never_forget birth option for the ellipos types, which essentially
+protects the player from amnesia and also gives ellipos's easy labyrinth
+
+* Added two new birth options (no_chris and no_scrambling) that prevent
+dungeon teleports and stat scrambling, respectively. (Both cause different
+bad things to happen instead; they are not intended as easy-mode, but as
+options for players who find chrissing and/or stat scrambling unfun and
+think the game would be better if those effects didn't exist.)
+
+* Added new monsters and tweaked existing ones
 
 * Adapted some changes to artifacts that Gwarl made for ComPosband 7.0.4
 
 * Added a new quest in Zul that enables teleporting between Zul and other
 towns if successfully completed
-[A fair warning about this quest. It's not *that* hard if you have good
+[A fair warning about this quest. It's not *that* hard if you have great
 stealth, but if you have poor stealth - or worse, aggravation - things can
 get... entertaining. This is true of most quests of course, but particularly
-true here. Doing it with aggravation and low speed is not recommended.]
+true here. Doing it with both aggravation and low speed is not recommended,
+and Sexy characters should treat it as an endgame quest and approach it with
+extreme caution.]
+
+* Rings and Death Swords are no longer limited to 1x free action or see
+invisible
 
 * Fixed a bug in Thalos that made the library inaccessible in late game
 
@@ -50,6 +79,39 @@ monsters evolved or got polymorphed (this should now be impossible), and
 tweaked monster evolution code (all of which is now in time_lord.c, instead
 of being needlessly duplicated)
 
+* Fixed a problem with using the '-' key to select a floor item in the
+inscription menu
+
+* Fixed an old bug that caused the game to crash with quest_unique off if
+too many target monsters were killed in a random Angband quest
+
+* Fixed an old bug that allowed skeletons to double their food pile by
+eating from it
+
+* Fixed an old bug that caused the wilderness to not generate properly
+(potentially causing crashes) if the player saved and loaded the game
+inside the arena
+
+* Fixed a minor bug with using an unidentified device of detect traps,
+which didn't mark grids as trap-detected even in cases where the effect's
+obviousness meant there was no need to avoid spoiling (thanks to nikheizen
+for reporting this)
+
+* Plugged a number of old loopholes that allowed doppelgangers to retain
+their demigod powers in forms other than Human and Demigod (thanks to murphy
+for reporting this)
+
+* Plugged an old information leak when uppercase keys were used in the
+object prompt (thanks to murphy for reporting this as well)
+
+* Objects thrown at a wall now land on the last square before the wall,
+rather than attempting to land on the wall itself and ending up placed on
+a random square adjacent to it (potentially creating the impression of an
+object flying through a wall - thanks to bostock for reminding me of this)
+
+* Destroying high-level law books now gives XP where appropriate (thanks
+to bostock for this too)
+
 * Slightly lowered the max power of ultra-strong deep dungeon randarts
 
 * Slightly changed how the reforge cap is calculated to compensate for it
@@ -62,22 +124,46 @@ somewhat harder to reach the late game reforge power
 
 * Removed rogues' class life rating bonus
 
-* Imported Polyphemus from Vanilla and installed him as bottom guardian
-of Mine
+* Mine and Heaven now have bottom guardians
 
 * Made the black aura worse
 
 * Amulets of anti-summoning can no longer be generated on a shuffle
 
+* Snotlings and doppelgangers can no longer shuffle for mushrooms
+
 * Added a new deep cloak ego
 
 * Added new artifacts
 
+* Added more race-specific rewards for unusual races
+
+* Made the Death realm's Vampirism True spell considerably more expensive
+
+* Nerfed the Law realm's Expert Trap spell
+
+* Made lawyer melee slightly weaker
+
 * Improved savefile compatibility when new uniques are added
+
+* Reduced the number of non-town monsters, and especially monster groups,
+that appear in areas near towns
+
+* Some early random Angband quests have a 20% chance to generate a bonus
+reward (to compensate for an earlier change by Chris in PosChengband that
+affected these quests negatively)
+
+* Made melee attacks slightly more likely to break a glyph of warding
 
 * The Hideout entrance, while still in Outpost, has been moved south; and
 the player now starts the game on the Warrens entrance, not the Hideout one.
 [Copied from ComPosband 7.1.0a]
+
+* Imported new random artifact names from ComPosband 7.1.0a
+
+* Potions of cure critical wounds no longer cure poison
+[they were never intended to in ComPosband, and it was weird that they did
+when potions of healing did not]
 
 * Tweaked the walls of Crystal Castle
 [Copied from ComPosband 7.0.4]
@@ -88,9 +174,16 @@ actually has this flag, apart from Utgard-Loke)
 
 * Monsters should no longer generate on top of enclosed 1x1 dark pits
 
+* Made the Temple more likely to stock potions of cure serious wounds
+during the early game
+
 * Corrected a minor issue with fear message grammar after a throw attack
 
-* Moved the Dragon Slayer and Demon Slayer quests much deeper
+* Improved the oook data in HTML character dumps (it now gives max exp
+rather than cur exp, and also gives the player's true race rather than
+a race they were temporarily polymorphed into or mimicking)
+
+* Moved the Volcano, Dragon Slayer and Demon Slayer quests much deeper
 
 * Updated the in-game FAQ
 
@@ -261,17 +354,9 @@ To do:
 
 * Bring back the Lazy personality
 
-* Look into adding new classes
-
-* Look into making easy ID more powerful
+* Look into adding new classes and/or personalities
 
 * Look into adapting the bank from Frogspawn
 
-* Look into updating the no_wilderness town
-
-* Make it possible to select Floor with the '-' key in the inscription menu
-
-* Review the effect that Chris's changes to FA/SI/fear have on unusual
-races like rings and death-swords, and fix the problems
-
-* Examine MITZE's bug with quest_unique turned off, and fix if needed
+* Look into importing content from poschengband-R (requested so far:
+coffeebreak mode and the Alchemist class)
