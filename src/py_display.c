@@ -2158,8 +2158,10 @@ void py_display_dungeons(doc_ptr doc)
         }
         else if (quests_get_current())
         {
+            cptr quest_name;
             doc_printf(doc, "You were killed by %s in the quest '%s'.\n",
-                p_ptr->died_from, quests_get_current()->name);
+                p_ptr->died_from, lyhytnimi(quests_get_current(), &quest_name));
+            free((vptr)quest_name);
         }
         else /* ??? */
         {
@@ -2173,7 +2175,11 @@ void py_display_dungeons(doc_ptr doc)
         else if (py_in_dungeon())
             doc_printf(doc, "Now, you are exploring level %d of %s.\n", dun_level, map_name());
         else if (quests_get_current())
-            doc_printf(doc, "Now, you are in the quest '%s'.\n", quests_get_current()->name);
+        {
+            cptr quest_name;
+            doc_printf(doc, "Now, you are in the quest '%s'.\n", lyhytnimi(quests_get_current(), &quest_name));
+            free((vptr)quest_name);
+        }
         else
             doc_insert(doc, "Hmmm ... Where are you?");
     }
