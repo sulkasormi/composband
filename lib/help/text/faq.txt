@@ -125,7 +125,8 @@ resistance, the chances of an item being destroyed by that element are
 significantly reduced; with two levels of resistance, the item will 
 only be destroyed if you're really unlucky; with three levels of 
 resistance the item will be safe. Watch out for fire, acid, cold and 
-electricity in the early game, and also chaos in the late game.
+electricity in the early game, and also chaos in the late game. Sound 
+and shards can destroy potions.
 
 If you don't have the appropriate resist and don't want to risk losing 
 the item, avoid monsters that might destroy it; or, if they only 
@@ -255,6 +256,50 @@ A: Empty rings and amulets are not directly useful, but they can be
 used as the base item for a potentially useful artifact reforge.
 
 
+Q: How does Free Action work in FrogComposband?
+
+A: Free Action provides protection from paralysis, a potentially lethal 
+condition. One level of Free Action provides partial protection and 
+helps recover faster if you do get paralyzed; two levels of Free Action 
+provide complete protection against low-level monsters and very good 
+protection against high-level monsters; three levels of Free Action 
+provide complete protection against paralysis, except in the special 
+case of the Ancient Foul Curse.
+
+How good "imperfect" Free Action (one level of protection in the early 
+game, or one or two levels in the late game) is depends on the level of 
+the attacking monster, and also on your saving throw. The better your 
+saving throw is, the less of a risk you're taking by not having three 
+levels of Free Action.
+
+In many other Angband variants one source of Free Action is enough to 
+give complete paralysis immunity; if you've played such variants, be 
+careful not to rely too much on a single Free Action source in 
+FrogComposband.
+
+
+Q: Is there any way to gain paralysis immunity even against the Ancient 
+Foul Curse?
+
+A: A good saving throw improves your chances of not being paralyzed by 
+the curse. With a sufficiently good saving throw the chances of being 
+paralyzed by the curse become zero. Anti-Magic items push your saving 
+throw up to this level, but can be inconvenient for characters that 
+rely heavily on magic.
+
+
+Q: How does See Invisible work in FrogComposband?
+
+A: Every level of See Invisible improves your chances of noticing an 
+invisible creature. How good those chances become depends on the level 
+of the monster (high-level monsters are harder to see) and on your 
+Searching skill. Sometimes an invisible creature flickers in and out of 
+sight - now you make the sight roll, the next turn you don't. If you 
+have several sources of See Invisible and still have trouble seeing 
+invisible creatures, you may need either Telepathy or an item that 
+improves your Searching skill.
+
+
 Q: I tried to dual wield two weapons.  But I couldn't hit anything!
 
 A: You need to practice your dual wielding skill (proficiency level) 
@@ -278,13 +323,22 @@ decreases risk of falling from your mount.
 Q: How do I increase my proficiency level?
 
 A: Proficiency level of a weapon will increase when you hit a monster 
-whose level is high enough compared with your character level. 
-Proficiency level of a spell will increase when you cast the spell at a 
-dungeon level deep enough compared with the spell level. The needed 
-conditions to increase riding proficiency are rather complex; 
-generally, you need to hit a monster whose level is high enough 
-compared with current riding proficiency level or to shoot a monster 
-while riding on a high level mount.
+whose level is high enough compared to your character level and to your 
+current proficiency. Proficiency level of a spell will increase when 
+you cast the spell at a dungeon level deep enough compared with the 
+spell level. The needed conditions to increase riding proficiency are 
+rather complex; generally, you need to hit a monster whose level is 
+high enough compared with current riding proficiency level or to shoot 
+a monster while riding on a high level mount.
+
+
+Q: I'm a level 15 ranger and have been shooting everybody from the 
+beginning, but my short bow proficiency is still Beginner (+0). Is 
+something wrong?
+
+A: Beginner (+0) doesn't sound great, but it's a lot better than 
+Unskilled (-20), and is good enough you need to shoot monsters of 
+native level 15 (or deeper) to get your proficiency up to +1.
 
 
 Q: I'm a fighter type and rely largely on melee. Which weapon should I 
@@ -317,6 +371,14 @@ case of Priests, however, the melee penalty is relatively small and the
 main drawback of an icky weapon is its effect on prayer fail rates.
 
 
+Q: I'm in a very dangerous spot, but there's a trap door right next to 
+me. Is there any way I can deliberately fall through the trap door 
+without making the automatic attempt to disarm it?
+
+A: Use the '-' key, followed by the direction, to deliberately walk 
+into the trap.
+
+
 Q: How do I ride on a monster?
 
 A: At first, summon, charm or capture some suitable monster. Then use 
@@ -325,7 +387,7 @@ the pet menu command 'p'.
 
 Q: How do I use a Capture Ball?
 
-A: Just equip it and activate 'A' to a dying monster.
+A: Equip it and activate ('A') to a dying monster.
 
 
 Q: I cannot hold a weapon and a shield without losing control of my 
@@ -359,6 +421,24 @@ absolutely need, especially if you have easy and reliable access to
 Detection and have no or minimal problems seeing invisible creatures. A 
 player without telepathy needs to detect monsters more often but can 
 usually get by.
+
+
+Q: What does Reflection do? How important is it?
+
+A: It gives you a 75% chance of reflecting any incoming bolt or 
+bolt-like attack. A reflected bolt will not damage you in any way, and 
+may bounce back and damage the monster that fired it in the first 
+place. Some monsters also have Reflection - in this case, they have a 
+75% chance of reflecting your bolt attacks, potentially back at you. If 
+both you and the monster have Reflection, it's possible for a bolt to 
+bounce between you two for a while... The main difference between 
+monster reflection and player reflection is that monsters cannot 
+reflect actual crossbow bolts (or arrows, sling ammo etc.) but you can 
+reflect monster arrows.
+
+Reflection is very helpful (and remains useful throughout the game) but 
+is never really absolutely needed. Early on, it's particularly useful 
+in the Camelot dungeon, which has many dangerous bolt casters.
 
 
 Q: What do monsters' vampiric attacks do?
@@ -496,6 +576,47 @@ A: Reforging is at its best relatively late in the game, when you've
 both found many very strong artifacts and accrued enough fame to use 
 them as source items. Don't be afraid of trying it out earlier, though, 
 especially if you need something specific like a dark lamp.
+
+
+Q: What do Poison Needles do?
+
+A: Poison needles are a special weapon. A poison needle only gets one 
+hit per turn and usually only deals 1 damage on that hit; however, 
+poison needle hits have a small chance of instantly killing any monster 
+in the game, no matter how strong, unless it is a unique. Poison 
+needles are often used to kill metal babbles, which are very difficult 
+to kill through any other means. (The Metal Babble at the bottom of the 
+Arena dungeon is technically a unique, but is still susceptible to a 
+poison needle kill.)
+
+Poison needles cannot be used in a reforge, and cannot be enchanted 
+through any normal means. (Some classes, like Weaponsmiths, can use 
+their special abilities to "enchant" a poison needle, but this has no 
+actual effect on the needle's performance.) Poison needles have a 100% 
+hit chance, unless the player is dual-wielding, in which case they have 
+a 50% hit chance.
+
+
+Q: How do I create a character dump?
+
+A: If your character is still alive, press Shift+C for the character 
+sheet, then press | to dump it. If you're dead, the tombstone screen 
+offers easy character dumping - simply type the filename you want 
+(usually something like "name.html" or "name_dead.html") and press 
+Enter. If you died earlier and forgot to take a character dump, access 
+the character sheet through the high score list (the '~' key, followed 
+by the 'H' key) and then press '|' as before. If you're playing on the 
+angband.live online server and have trouble dumping your character 
+(users on some keyboard/browser combinations have experienced problems 
+using the '|' key online), you can request help from your fellow 
+players; the angband.live high score list is shared between all 
+players, so anyone can use it to create a dump of your character.
+
+
+Q: I want to post my character dump to the ladder on angband.oook.cz. 
+Should I use a TXT dump or an HTML dump?
+
+A: Use an HTML dump.
 
 
 Q: What is the genesis of FrogComposband?
