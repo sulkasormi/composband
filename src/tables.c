@@ -2345,7 +2345,7 @@ option_type option_info[] =
 	"easy_thalos",					"Allow easy teleportation to Thalos" },
 
 	{ &never_forget,				FALSE, OPT_PAGE_BIRTH, 6, 27,
-	"never_forget",					"Easy Labyrinth and no item amnesia" },
+	"never_forget",					"Easy Labyrinth and no amnesia" },
 
     { &smart_learn,                 TRUE,  OPT_PAGE_BIRTH, 1, 14,
     "smart_learn",                  "Monsters learn from their mistakes (*)" },
@@ -2403,6 +2403,9 @@ option_type option_info[] =
 
     { &no_chris,			FALSE, OPT_PAGE_BIRTH, 6, 12,
     "no_chris",				"Nexus attacks never teleport to another dungeon" },
+
+    { &no_scrambling,			FALSE, OPT_PAGE_BIRTH, 6, 15,
+    "no_scrambling",			"Disallow stat scrambling from monster attacks" },
 
     /*** Easy Object Auto-Destroyer ***/
 
