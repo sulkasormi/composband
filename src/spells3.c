@@ -1041,11 +1041,44 @@ bool apply_disenchant(int mode)
     return FALSE;
 }
 
-
+/* Scramble stats */
 void mutate_player(void)
 {
     int max1, cur1, max2, cur2, ii, jj, i;
     bool sustains[6] = {0};
+
+    if (no_scrambling)
+    { /* Do temporary bad things instead */
+        (void)fear_set_p(p_ptr->afraid + damroll(4, 42));
+        (void)set_stun(p_ptr->stun + randint1(42), FALSE);
+        if (one_in_(2))
+        {
+            do_dec_stat(A_STR);
+            do_dec_stat(A_INT);
+            do_dec_stat(A_WIS);
+            do_dec_stat(A_DEX);
+            do_dec_stat(A_CON);
+            do_dec_stat(A_CHR);
+        }
+        else
+        {
+            set_image(p_ptr->image + 10 + randint1(10), FALSE);
+            if (one_in_(3)) do_dec_stat(A_STR);
+            if (one_in_(3)) do_dec_stat(A_INT);
+            if (one_in_(3)) do_dec_stat(A_WIS);
+            if (one_in_(3)) do_dec_stat(A_DEX);
+            if (one_in_(3)) do_dec_stat(A_CON);
+            if (one_in_(3)) do_dec_stat(A_CHR);
+        }
+        if ((one_in_(5)) && (p_ptr->exp > 0))
+        {
+            msg_print("You feel your memories fade.");
+            virtue_add(VIRTUE_KNOWLEDGE, -5);
+            lose_exp(p_ptr->exp / (p_ptr->hold_life ? 24 : 8));
+        }
+        if ((!one_in_(4)) && (!res_save_default(RES_DISEN))) (void)apply_disenchant(0);
+        return;
+    }
 
     /* Pick a pair of stats. Sustains give players a chance to protect
      * key stats in the early game (e.g. mages are forced to hyper focus
@@ -1190,7 +1223,7 @@ void apply_nexus(monster_type *m_ptr)
             }
             else if (no_wilderness || no_chris)
             {
-                msg_print("Your body starts to scramble...");
+                if (!no_scrambling) msg_print("Your body starts to scramble...");
                 mutate_player();
             }
             else
