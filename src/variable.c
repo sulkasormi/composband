@@ -316,6 +316,7 @@ bool enable_virtues;
 bool easy_thalos;
 bool never_forget;
 bool no_chris;
+bool no_scrambling;
 bool reduce_uniques;
 byte reduce_uniques_pct = 100; /* This is the pct of uniques to face */
 
