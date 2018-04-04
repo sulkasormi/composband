@@ -18,8 +18,8 @@
 
 #define VER_MAJOR 7
 #define VER_MINOR 0
-#define VER_PATCH "strawberry"
-#define VER_EXTRA 2
+#define VER_PATCH "peppermint"
+#define VER_EXTRA 0
 
 #define GAME_MODE_BEGINNER  0
 #define GAME_MODE_NORMAL    1
