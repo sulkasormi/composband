@@ -735,7 +735,7 @@ Stealth
     Dexterity     +3        Stealth     Excellent    
     Constitution  +1        Searching   Good         
     Charisma      +1        Perception  Fair         
-    Life Rating  110%       Melee       Excellent    
+    Life Rating  100%       Melee       Excellent    
     Base HP       12        Bows        Good         
     Experience   125%
     
@@ -1320,7 +1320,7 @@ Devicemaster   -1   +2   +1   +2   -2   -2  101%   +6  130%
 Magic-Eater    -1   +2   +1   +2   -2   -2  103%   +6  130%
 Priest         -1   -3   +3   -1   +0   +2  100%   +4  120%
 Ninja          +0   -1   -1   +3   +2   +2  100%   +4  120%
-Rogue          +2   +1   -1   +3   +1   +1  110%  +12  125%
+Rogue          +2   +1   -1   +3   +1   +1  100%  +12  125%
 Scout          +1   -1   +2   +3   +0   +0  104%   +8  130%
 Chaos-Warrior  +2   +1   -1   +0   +2   +1  111%  +12  125%
 Ninja-Lawyer   -1   +0   +0   +2   +0   +2   99%   +8  115%
@@ -1450,5 +1450,5 @@ Wild-Talent   Fair          Poor          Very Good     Very Good
 
 
 
-Automatically generated for FrogComposband 7.0.strawberry.
+Automatically generated for FrogComposband 7.0.peppermint.
 
