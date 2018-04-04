@@ -331,6 +331,7 @@ extern bool enable_virtues;
 extern bool easy_thalos;
 extern bool never_forget;
 extern bool no_chris;
+extern bool no_scrambling;
 extern bool reduce_uniques;
 extern byte reduce_uniques_pct;
 
