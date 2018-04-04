@@ -2803,7 +2803,9 @@ bool mon_take_hit(int m_idx, int dam, bool *fear, cptr note)
 
         if (_mon_is_wanted(m_idx))
         {
-            msg_format("There is a price on %s's head.", m_name);
+            char m_posname[MAX_NLEN];
+            monster_desc(m_posname, m_ptr, MD_TRUE_NAME | MD_POSSESSIVE);
+            msg_format("There is a price on %s head.", m_posname);
         }
 
         /* Generate treasure */
