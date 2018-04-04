@@ -14,8 +14,6 @@
 
 <color:R>A:</color> In Outpost, walk to the large building just outside the city walls and press 'q' to request a quest from the Count. Then walk to the building in the northeast of the city and press '>' at the quest entrance.
 
-(If you're playing in beginner mode or no_wilderness mode, walk to the small building in the northeast of the city and request the quest from the Mayor.)
-
 
 <color:G>Q:</color> Where do I find the other quests in the game?
 
