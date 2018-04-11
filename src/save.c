@@ -710,6 +710,7 @@ static void wr_extra(savefile_ptr file)
     savefile_write_byte(file, p_ptr->wait_report_score);
     savefile_write_u32b(file, seed_flavor);
     savefile_write_u32b(file, seed_town);
+    if (p_ptr->personality == PERS_CHAOTIC) savefile_write_u32b(file, chaotic_py_seed);
     savefile_write_u16b(file, p_ptr->panic_save);
     savefile_write_u16b(file, p_ptr->total_winner);
     savefile_write_u16b(file, p_ptr->noscore);
