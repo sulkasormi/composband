@@ -149,7 +149,7 @@ Life Rating   99%       Melee       <color:D>Very Bad     </color>
 Experience   100%       Bows        <color:g>Superb       </color>
 </style></indent>
 <topic:Hasty><color:o>Hasty</color>
-A Hasty person edeavors to do all things quickly. Speed, rather than skill and patience, are paramount, and the Hasty adventurer moves quickly through the dungeon, bungling much.
+A Hasty person endeavors to do all things quickly. Speed, rather than skill and patience, are paramount, and the Hasty adventurer moves quickly through the dungeon, bungling much.
 
   <indent><style:table><color:G>Stats                   Skills</color>
 Strength      +0        Disarming   <color:D>Very Bad     </color>
@@ -160,6 +160,71 @@ Constitution  -1        Searching   <color:D>Very Bad     </color>
 Charisma      +0        Perception  <color:r>Bad          </color>
 Life Rating  100%       Melee       <color:D>Very Bad     </color>
 Experience   100%       Bows        <color:r>Bad          </color>
+</style></indent>
+<topic:Lazy><color:o>Lazy</color>
+A Lazy person has no good stats and can do no action well. Also it has a direct bad influence on your spell fail rate.
+
+  <indent><style:table><color:G>Stats                   Skills</color>
+Strength      -2        Disarming   <color:D>Very Bad     </color>
+Intelligence  -2        Device      <color:D>Very Bad     </color>
+Wisdom        -2        Save        <color:D>Very Bad     </color>
+Dexterity     -2        Stealth     <color:r>Bad          </color>
+Constitution  -2        Searching   <color:D>Very Bad     </color>
+Charisma      -2        Perception  <color:r>Bad          </color>
+Life Rating   95%       Melee       <color:D>Very Bad     </color>
+Experience   100%       Bows        <color:D>Very Bad     </color>
+</style></indent>
+<topic:Unlucky><color:o>Unlucky</color>
+An Unlucky adventurer looks impressive on paper and should, by rights, have an easy time - but somehow their fights don't go quite so smoothly, and the items they most need never seem to drop...
+
+  <indent><style:table><color:G>Stats                   Skills</color>
+Strength      +2        Disarming   <color:D>Very Bad     </color>
+Intelligence  +2        Device      <color:y>Good         </color>
+Wisdom        +2        Save        <color:D>Very Bad     </color>
+Dexterity     +2        Stealth     <color:R>Poor         </color>
+Constitution  +2        Searching   <color:o>Fair         </color>
+Charisma      +2        Perception  <color:G>Excellent    </color>
+Life Rating  104%       Melee       <color:r>Bad          </color>
+Experience   100%       Bows        <color:R>Poor         </color>
+</style></indent>
+<topic:Chaotic><color:o>Chaotic</color>
+Chaotic adventurers are servants of the Demon Lords of Chaos, and often receive a reward - or punishment - from their patrons when they gain a level. Their strengths and weaknesses are unpredictable; even their stat bonuses are subject to change.
+
+  <indent><style:table><color:G>Stats                   Skills</color>
+Strength      +0        Disarming   <color:R>Poor         </color>
+Intelligence  +0        Device      <color:R>Poor         </color>
+Wisdom        +0        Save        <color:R>Poor         </color>
+Dexterity     +0        Stealth     <color:R>Poor         </color>
+Constitution  +0        Searching   <color:o>Fair         </color>
+Charisma      +0        Perception  <color:o>Fair         </color>
+Life Rating  100%       Melee       <color:R>Poor         </color>
+Experience   100%       Bows        <color:o>Fair         </color>
+</style></indent>
+<topic:Mundane><color:o>Mundane</color>
+Mundane adventurers have few talents to speak of, and are incapable of using spells and not very good with magical devices; but their anti-magic allows them to resist the effects of many dangerous magical attacks.
+
+  <indent><style:table><color:G>Stats                   Skills</color>
+Strength      -1        Disarming   <color:R>Poor         </color>
+Intelligence  -1        Device      <color:D>Very Bad     </color>
+Wisdom        -1        Save        <color:g>Superb       </color>
+Dexterity     -1        Stealth     <color:R>Poor         </color>
+Constitution  -1        Searching   <color:o>Fair         </color>
+Charisma      -1        Perception  <color:o>Fair         </color>
+Life Rating   97%       Melee       <color:R>Poor         </color>
+Experience   100%       Bows        <color:o>Fair         </color>
+</style></indent>
+<topic:Munchkin><color:o>Munchkin</color>
+The Munchkin personality is for players who love being overpowered. It raises all your stats and skills; with this personality, you can win the game easily, but gain no honor in doing so.
+
+  <indent><style:table><color:G>Stats                   Skills</color>
+Strength      +3        Disarming   <color:g>Superb       </color>
+Intelligence  +3        Device      <color:v>Amber[12]    </color>
+Wisdom        +3        Save        <color:b>Heroic       </color>
+Dexterity     +3        Stealth     <color:G>Excellent    </color>
+Constitution  +3        Searching   <color:v>Amber[15]    </color>
+Charisma      +3        Perception  <color:v>Amber[15]    </color>
+Life Rating  150%       Melee       <color:v>Amber[62]    </color>
+Experience    50%       Bows        <color:v>Amber[27]    </color>
 </style></indent>
 <topic:Tables><style:heading>Table 1 - Personality Statistic Bonus Table</style>
 
@@ -176,6 +241,11 @@ Lucky           -2   -2   -2   -2   -2   -2   98%  100%
 Patient         -1   -1   +1   -2   +2   +0  102%  100%
 Craven          -1   +1   +1   -1   -1   -2   99%  100%
 Hasty           +0   -1   -2   +2   -1   +0  100%  100%
+Lazy            -2   -2   -2   -2   -2   -2   95%  100%
+Unlucky         +2   +2   +2   +2   +2   +2  104%  100%
+Chaotic         +0   +0   +0   +0   +0   +0  100%  100%
+Mundane         -1   -1   -1   -1   -1   -1   97%  100%
+Munchkin        +3   +3   +3   +3   +3   +3  150%   50%
 
 </style>
 <topic:Skills1><style:heading>Table 2 - Personality Skill Bonus Table I</style>
@@ -193,6 +263,11 @@ Lucky        <color:g>Superb       </color> <color:G>Excellent    </color> <colo
 Patient      <color:D>Very Bad     </color> <color:r>Bad          </color> <color:y>Good         </color> <color:o>Fair         </color>
 Craven       <color:G>Excellent    </color> <color:G>Excellent    </color> <color:r>Bad          </color> <color:y>Good         </color>
 Hasty        <color:D>Very Bad     </color> <color:D>Very Bad     </color> <color:D>Very Bad     </color> <color:r>Bad          </color>
+Lazy         <color:D>Very Bad     </color> <color:D>Very Bad     </color> <color:D>Very Bad     </color> <color:r>Bad          </color>
+Unlucky      <color:D>Very Bad     </color> <color:y>Good         </color> <color:D>Very Bad     </color> <color:R>Poor         </color>
+Chaotic      <color:R>Poor         </color> <color:R>Poor         </color> <color:R>Poor         </color> <color:R>Poor         </color>
+Mundane      <color:R>Poor         </color> <color:D>Very Bad     </color> <color:g>Superb       </color> <color:R>Poor         </color>
+Munchkin     <color:g>Superb       </color> <color:v>Amber[12]    </color> <color:b>Heroic       </color> <color:G>Excellent    </color>
 
 </style>
 <topic:Skills2><style:heading>Table 3 - Personality Skill Bonus Table II</style>
@@ -210,8 +285,13 @@ Lucky        <color:g>Superb       </color> <color:g>Superb       </color> <colo
 Patient      <color:o>Fair         </color> <color:r>Bad          </color> <color:D>Very Bad     </color> <color:r>Bad          </color>
 Craven       <color:o>Fair         </color> <color:o>Fair         </color> <color:D>Very Bad     </color> <color:g>Superb       </color>
 Hasty        <color:D>Very Bad     </color> <color:r>Bad          </color> <color:D>Very Bad     </color> <color:r>Bad          </color>
+Lazy         <color:D>Very Bad     </color> <color:r>Bad          </color> <color:D>Very Bad     </color> <color:D>Very Bad     </color>
+Unlucky      <color:o>Fair         </color> <color:G>Excellent    </color> <color:r>Bad          </color> <color:R>Poor         </color>
+Chaotic      <color:o>Fair         </color> <color:o>Fair         </color> <color:R>Poor         </color> <color:o>Fair         </color>
+Mundane      <color:o>Fair         </color> <color:o>Fair         </color> <color:R>Poor         </color> <color:o>Fair         </color>
+Munchkin     <color:v>Amber[15]    </color> <color:v>Amber[15]    </color> <color:v>Amber[62]    </color> <color:v>Amber[27]    </color>
 
 </style>
 
 
-<color:s>Automatically generated for FrogComposband 7.0.strawberry.</color>
+<color:s>Automatically generated for FrogComposband 7.0.peppermint.</color>
