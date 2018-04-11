@@ -3741,6 +3741,7 @@ static void _dispatch_command(int old_now_turn)
             break;
 
         case KTRL('O'):
+        case 'O':
         case ']':
             if (!p_ptr->image)
                 do_cmd_list_objects();
