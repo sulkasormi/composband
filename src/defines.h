@@ -875,6 +875,11 @@ enum {
     PERS_PATIENT,
     PERS_CRAVEN,
     PERS_HASTY,
+    PERS_LAZY,
+    PERS_UNLUCKY,
+    PERS_CHAOTIC,
+    PERS_MUNDANE,
+    PERS_MUNCHKIN,
     MAX_PERSONALITIES,
 };
 
@@ -4996,7 +5001,7 @@ enum mon_save_fields_e {
 #define MPE_DO_PICKUP     0x00000020
 #define MPE_BREAK_TRAP    0x00000040
 #define MPE_DONT_SWAP_MON 0x00000080
-
+#define MPE_DO_JUMP       0x00000100
 
 /*
  * Bit flags for screen_object()
