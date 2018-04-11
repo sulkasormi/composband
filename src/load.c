@@ -630,6 +630,7 @@ static void rd_extra(savefile_ptr file)
 
     seed_flavor = savefile_read_u32b(file);
     seed_town = savefile_read_u32b(file);
+    if (p_ptr->personality == PERS_CHAOTIC) chaotic_py_seed = savefile_read_u32b(file);
     p_ptr->panic_save = savefile_read_u16b(file);
     p_ptr->total_winner = savefile_read_u16b(file);
     p_ptr->noscore = savefile_read_u16b(file);
