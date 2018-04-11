@@ -1603,7 +1603,7 @@ static int _check_hit(int power)
 /*
  * Handle player hitting a real trap
  */
-static void hit_trap(bool break_trap)
+static void hit_trap(bool break_trap, bool do_jump)
 {
     int i, num, dam;
     int x = px, y = py;
@@ -1625,7 +1625,7 @@ static void hit_trap(bool break_trap)
     {
         case TRAP_TRAPDOOR:
         {
-            if (p_ptr->levitation)
+            if (p_ptr->levitation && !do_jump)
             {
                 msg_print("You fly over a trap door.");
 
@@ -5306,7 +5306,7 @@ bool move_player_effect(int ny, int nx, u32b mpe_mode)
         }
 
         /* Hit the trap */
-        hit_trap((mpe_mode & MPE_BREAK_TRAP) ? TRUE : FALSE);
+        hit_trap((mpe_mode & MPE_BREAK_TRAP) ? TRUE : FALSE, (mpe_mode & MPE_DO_JUMP) ? TRUE : FALSE);
 
         if (!player_bold(ny, nx) || p_ptr->is_dead || p_ptr->leaving) return FALSE;
     }
@@ -5842,10 +5842,12 @@ void move_player(int dir, bool do_pickup, bool break_trap)
 #ifdef ALLOW_EASY_DISARM /* TNB */
 
         if (do_pickup != always_pickup) mpe_mode |= MPE_DO_PICKUP;
+        if (do_pickup) mpe_mode |= MPE_DO_JUMP;
 
 #else /* ALLOW_EASY_DISARM -- TNB */
 
         if (do_pickup) mpe_mode |= MPE_DO_PICKUP;
+        if (do_pickup != always_pickup) mpe_mode |= MPE_DO_JUMP;
 
 #endif /* ALLOW_EASY_DISARM -- TNB */
 
