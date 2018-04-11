@@ -181,7 +181,7 @@ impressive. But their stats and other skills are somewhat wanting.
   Experience   100%       Bows        Superb       
   
 Hasty
-A Hasty person edeavors to do all things quickly. Speed, rather than 
+A Hasty person endeavors to do all things quickly. Speed, rather than 
 skill and patience, are paramount, and the Hasty adventurer moves 
 quickly through the dungeon, bungling much.
 
@@ -194,6 +194,82 @@ quickly through the dungeon, bungling much.
   Charisma      +0        Perception  Bad          
   Life Rating  100%       Melee       Very Bad     
   Experience   100%       Bows        Bad          
+  
+Lazy
+A Lazy person has no good stats and can do no action well. Also it has 
+a direct bad influence on your spell fail rate.
+
+  Stats                   Skills
+  Strength      -2        Disarming   Very Bad     
+  Intelligence  -2        Device      Very Bad     
+  Wisdom        -2        Save        Very Bad     
+  Dexterity     -2        Stealth     Bad          
+  Constitution  -2        Searching   Very Bad     
+  Charisma      -2        Perception  Bad          
+  Life Rating   95%       Melee       Very Bad     
+  Experience   100%       Bows        Very Bad     
+  
+Unlucky
+An Unlucky adventurer looks impressive on paper and should, by rights, 
+have an easy time - but somehow their fights don't go quite so 
+smoothly, and the items they most need never seem to drop...
+
+  Stats                   Skills
+  Strength      +2        Disarming   Very Bad     
+  Intelligence  +2        Device      Good         
+  Wisdom        +2        Save        Very Bad     
+  Dexterity     +2        Stealth     Poor         
+  Constitution  +2        Searching   Fair         
+  Charisma      +2        Perception  Excellent    
+  Life Rating  104%       Melee       Bad          
+  Experience   100%       Bows        Poor         
+  
+Chaotic
+Chaotic adventurers are servants of the Demon Lords of Chaos, and often 
+receive a reward - or punishment - from their patrons when they gain a 
+level. Their strengths and weaknesses are unpredictable; even their 
+stat bonuses are subject to change.
+
+  Stats                   Skills
+  Strength      +0        Disarming   Poor         
+  Intelligence  +0        Device      Poor         
+  Wisdom        +0        Save        Poor         
+  Dexterity     +0        Stealth     Poor         
+  Constitution  +0        Searching   Fair         
+  Charisma      +0        Perception  Fair         
+  Life Rating  100%       Melee       Poor         
+  Experience   100%       Bows        Fair         
+  
+Mundane
+Mundane adventurers have few talents to speak of, and are incapable of 
+using spells and not very good with magical devices; but their 
+anti-magic allows them to resist the effects of many dangerous magical 
+attacks.
+
+  Stats                   Skills
+  Strength      -1        Disarming   Poor         
+  Intelligence  -1        Device      Very Bad     
+  Wisdom        -1        Save        Superb       
+  Dexterity     -1        Stealth     Poor         
+  Constitution  -1        Searching   Fair         
+  Charisma      -1        Perception  Fair         
+  Life Rating   97%       Melee       Poor         
+  Experience   100%       Bows        Fair         
+  
+Munchkin
+The Munchkin personality is for players who love being overpowered. It 
+raises all your stats and skills; with this personality, you can win 
+the game easily, but gain no honor in doing so.
+
+  Stats                   Skills
+  Strength      +3        Disarming   Superb       
+  Intelligence  +3        Device      Amber[12]    
+  Wisdom        +3        Save        Heroic       
+  Dexterity     +3        Stealth     Excellent    
+  Constitution  +3        Searching   Amber[15]    
+  Charisma      +3        Perception  Amber[15]    
+  Life Rating  150%       Melee       Amber[62]    
+  Experience    50%       Bows        Amber[27]    
   
 Table 1 - Personality Statistic Bonus Table
 
@@ -210,6 +286,11 @@ Lucky           -2   -2   -2   -2   -2   -2   98%  100%
 Patient         -1   -1   +1   -2   +2   +0  102%  100%
 Craven          -1   +1   +1   -1   -1   -2   99%  100%
 Hasty           +0   -1   -2   +2   -1   +0  100%  100%
+Lazy            -2   -2   -2   -2   -2   -2   95%  100%
+Unlucky         +2   +2   +2   +2   +2   +2  104%  100%
+Chaotic         +0   +0   +0   +0   +0   +0  100%  100%
+Mundane         -1   -1   -1   -1   -1   -1   97%  100%
+Munchkin        +3   +3   +3   +3   +3   +3  150%   50%
 
 
 Table 2 - Personality Skill Bonus Table I
@@ -227,6 +308,11 @@ Lucky        Superb        Excellent     Good          Fair
 Patient      Very Bad      Bad           Good          Fair         
 Craven       Excellent     Excellent     Bad           Good         
 Hasty        Very Bad      Very Bad      Very Bad      Bad          
+Lazy         Very Bad      Very Bad      Very Bad      Bad          
+Unlucky      Very Bad      Good          Very Bad      Poor         
+Chaotic      Poor          Poor          Poor          Poor         
+Mundane      Poor          Very Bad      Superb        Poor         
+Munchkin     Superb        Amber[12]     Heroic        Excellent    
 
 
 Table 3 - Personality Skill Bonus Table II
@@ -244,9 +330,14 @@ Lucky        Superb        Superb        Heroic        Superb
 Patient      Fair          Bad           Very Bad      Bad          
 Craven       Fair          Fair          Very Bad      Superb       
 Hasty        Very Bad      Bad           Very Bad      Bad          
+Lazy         Very Bad      Bad           Very Bad      Very Bad     
+Unlucky      Fair          Excellent     Bad           Poor         
+Chaotic      Fair          Fair          Poor          Fair         
+Mundane      Fair          Fair          Poor          Fair         
+Munchkin     Amber[15]     Amber[15]     Amber[62]     Amber[27]    
 
 
 
 
-Automatically generated for FrogComposband 7.0.strawberry.
+Automatically generated for FrogComposband 7.0.peppermint.
 
