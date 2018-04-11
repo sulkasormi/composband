@@ -94,6 +94,7 @@ bool creating_savefile;        /* New savefile is currently created */
 
 u32b seed_flavor;        /* Hack -- consistent object colors */
 u32b seed_town;            /* Hack -- consistent town layout */
+u32b chaotic_py_seed;    /* Seed for chaotic personality's random stats */
 
 s16b command_cmd;        /* Current "Angband Command" */
 
