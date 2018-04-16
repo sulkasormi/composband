@@ -394,6 +394,9 @@ bool test_hit_fire(int chance, int ac, int vis)
     /* Hack -- Instant miss or hit */
     if (k < 10) return (k < 5);
 
+    /* Punish lazy characters */
+    if ((p_ptr->personality == PERS_LAZY) && (one_in_(20))) return (FALSE);
+
     /* Power competes against armor */
     if (randint0(chance) < (ac * 3 / 4)) return (FALSE);
 
@@ -423,6 +426,9 @@ bool test_hit_norm(int chance, int ac, int vis)
 
     /* Hack -- Instant miss or hit */
     if (k < 10) return (k < 5);
+
+    /* Punish lazy characters */
+    if ((p_ptr->personality == PERS_LAZY) && (one_in_(20))) return (FALSE);
 
     /* Power must defeat armor */
     if (randint0(chance) < (ac * 3 / 4)) return (FALSE);
@@ -1584,6 +1590,9 @@ static int _check_hit(int power)
 
     /* Hack -- 5% hit, 5% miss */
     if (k < 10) return (k < 5);
+
+    /* Punish lazy characters */
+    if ((p_ptr->personality == PERS_LAZY) && (one_in_(20))) return (TRUE);
 
     /* Paranoia -- No power */
     if (power <= 0) return (FALSE);
