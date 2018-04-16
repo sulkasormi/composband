@@ -3104,6 +3104,7 @@ static void calc_mana(void)
             msp += (msp * adj / 20);
         }
 
+        if (msp && (p_ptr->personality == PERS_MUNCHKIN)) msp += msp / 2;
         if (msp && (get_class_idx() == CLASS_SORCERER)) msp += msp*(25+p_ptr->lev)/100;
     }
 
