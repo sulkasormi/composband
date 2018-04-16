@@ -1155,6 +1155,50 @@ void monster_death(int m_idx, bool drop_item)
         }
         break;
 
+    case MON_UNICORN_ORD:
+    case MON_MORGOTH:
+    case MON_ONE_RING:
+        /* Reward for "lazy" player */
+        if (p_ptr->personality == PERS_LAZY)
+        {
+            int a_idx = 0, yritys = 0;
+            artifact_type *a_ptr = NULL;
+
+            if (!drop_chosen_item) break;
+
+            do
+            {
+                switch (randint0(3))
+                {
+                case 0:
+                    a_idx = ART_NAMAKE_HAMMER;
+                    break;
+                case 1:
+                    a_idx = ART_NAMAKE_BOW;
+                    break;
+                case 2:
+                    a_idx = ART_NAMAKE_ARMOR;
+                    break;
+                }
+
+                a_ptr = &a_info[a_idx];
+                yritys++;
+            }
+            while ((yritys < 100) && (a_ptr->generated));
+
+            if (yritys > 99) break; 
+
+            /* Create the artifact */
+            if (create_named_art(a_idx, y, x, ORIGIN_DROP, m_ptr->r_idx))
+            {
+                a_ptr->generated = TRUE;
+
+                /* Hack -- Memorize location of artifact in saved floors */
+                if (character_dungeon) a_ptr->floor_id = p_ptr->floor_id;
+            }
+        }
+        break;
+
     case MON_SERPENT:
         if (!drop_chosen_item) break;
         if (create_named_art(ART_GROND, y, x, ORIGIN_DROP, MON_SERPENT))
@@ -2102,6 +2146,14 @@ void monster_death(int m_idx, bool drop_item)
     if ((m_ptr->r_idx == MON_SERPENT) && !cloned)
     {
         p_ptr->fame += 50;
+
+        if (p_ptr->personality == PERS_MUNCHKIN)
+        {
+            cmsg_print(TERM_YELLOW, "YOU'RE WINNER ! ");
+            msg_print(NULL);
+            msg_print("(Now do it with a real character.)");
+            return;
+        }
 
         /* Total winner */
         p_ptr->total_winner = TRUE;
