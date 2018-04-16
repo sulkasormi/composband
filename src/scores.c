@@ -92,7 +92,7 @@ score_ptr score_current(void)
 
     score->gold = p_ptr->au;
     score->turns = player_turn;
-    score->clvl = p_ptr->lev;
+    score->clvl = p_ptr->max_plv;
     score->dlvl = dun_level;
     score->dungeon = _str_copy(map_name());
     score->killer = _killer();
