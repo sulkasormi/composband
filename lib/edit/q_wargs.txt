@@ -26,6 +26,9 @@ R:OBJ(long sword)
 ?:[EQU $CLASS Scout]
 R:OBJ(light crossbow)
 
+?:[EQU $CLASS Archer Ranger Sniper]
+R:OBJ(short bow)
+
 ?:[EQU $CLASS Mage High-Mage Blue-Mage Sorcerer Mirror-Master Blood-Mage Yellow-Mage Gray-Mage]
 R:OBJ(WAND_BOLT_ELEC)
 
