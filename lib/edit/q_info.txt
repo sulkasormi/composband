@@ -211,7 +211,7 @@ W:angband
 G:KILL(*)
 
 #####################################################################
-# New Quests adapted from Kangband
+# New Quests adapted from Kangband (and new FrogComposband quests)
 #####################################################################
 
 N:50:5:Trouble at Home (Outpost)
@@ -265,7 +265,7 @@ F:q_sorcerer.txt
 
 N:65:20:Tidy the Laboratory (Thalos)
 T:TOWN | GENERATE
-F:q_laboratory.txt
+F:q_tidy.txt
 
 N:66:40:Basilisk Cave (Thalos)
 T:TOWN | GENERATE
@@ -332,7 +332,7 @@ W:orc
 G:KILL(^olog$, 10)
 F:q_trollslayer.txt
 
-# Move to depth 36
+# Obsoleted but retained for savefile compatibility
 N:57:35:Giant Slayer (Morivant)
 T:TOWN
 W:giant
@@ -364,5 +364,11 @@ T:TOWN
 W:angband
 G:KILL(pit fiend, 10)
 F:q_demonslayer.txt
+
+N:81:36:Giant Slayer (Morivant)
+T:TOWN
+W:giant
+G:KILL(lesser titan, 10)
+F:q_giantslayer.txt
 
 # vim: filetype=qi :
