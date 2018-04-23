@@ -1,14 +1,14 @@
-?:[EQU $QUEST57 Taken InProgress]
+?:[OR [EQU $QUEST57 Taken InProgress] [EQU $QUEST81 Taken InProgress] ]
 D:You're not a total wimp but how about something a bit more
 D:challenging? Go to the Giant's Hall and kill ten lesser
 D:titans to show us you're really strong.
 ?:1
 
-?:[EQU $QUEST57 Completed]
+?:[OR [EQU $QUEST57 Completed] [EQU $QUEST81 Completed] ]
 D:Not bad. Our armourers have made you another trophy.
 ?:1
 
-?:[EQU $QUEST57 Failed]
+?:[OR [EQU $QUEST57 Failed] [EQU $QUEST81 Failed] ]
 D:So you're not stronger than a titan.
 ?:1
 
