@@ -108,21 +108,27 @@ L:k:BUILDING_10(0)
 ?:[EQU $QUEST56 Untaken Taken Completed Failed]
 L:h:BUILDING_7(56)
 ?:[EQU $QUEST56 Finished FailedDone]
-L:h:BUILDING_7(57)
+L:h:BUILDING_7(81)
 ?:1
-############### Quest 57 - Rock Giants ###############
+############### Quest 81 - Lesser Titans ###############
+?:[EQU $QUEST81 Taken Completed Failed]
+L:h:BUILDING_7(81)
+?:[EQU $QUEST81 Finished FailedDone]
+L:h:BUILDING_7(79)
+?:1
+############### Quest 57 - Lesser Titans (compatibility) ###
 ?:[EQU $QUEST57 Taken Completed Failed]
 L:h:BUILDING_7(57)
 ?:[EQU $QUEST57 Finished FailedDone]
 L:h:BUILDING_7(79)
 ?:1
-############### Quest 58 - Ancient Gold Dragons #########
+############### Quest 58 - Gold Dragons (compatibility) ####
 ?:[EQU $QUEST58 Taken Completed Failed]
 L:h:BUILDING_7(58)
 ?:[EQU $QUEST58 Finished FailedDone]
 L:h:BUILDING_7(80)
 ?:1
-############### Quest 59 - Lesser Balrogs ################
+############### Quest 59 - Lesser Balrogs (compatibility) ##
 ?:[EQU $QUEST59 Taken Completed Failed]
 L:h:BUILDING_7(59)
 ?:[EQU $QUEST59 Finished FailedDone]
