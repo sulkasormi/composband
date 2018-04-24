@@ -991,7 +991,10 @@ static void _display_extra(object_type *o_ptr, u32b flgs[OF_ARRAY_SIZE], doc_ptr
         doc_insert(doc, "It will transform into a pet when thrown.\n");
 
     if (o_ptr->name3)
-        doc_printf(doc, "It reminds you of the artifact <color:R>%s</color>.\n", a_name + a_info[o_ptr->name3].name);
+    {
+        cptr nimi = a_name + a_info[o_ptr->name3].name;
+        doc_printf(doc, "It reminds you of the artifact <color:R>%s</color>.\n", ((nimi[0] == '&') && (strlen(nimi) > 2)) ? nimi + 2 : nimi);
+    }
 }
 
 static void _ego_display_extra(u32b flgs[OF_ARRAY_SIZE], doc_ptr doc)
