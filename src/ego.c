@@ -2160,6 +2160,17 @@ static void _ego_create_weapon(object_type *o_ptr, int level)
             if (one_in_(3))
                 add_flag(o_ptr->flags, OF_RES_FEAR);
             break;
+        case EGO_WEAPON_GONDOLIN:
+            if (one_in_(44))
+            {
+                remove_flag(o_ptr->flags, OF_SLAY_DEMON);
+                add_flag(o_ptr->flags, OF_KILL_DEMON);
+            }
+            else if (one_in_(12))
+                add_flag(o_ptr->flags, OF_RES_FEAR);
+            if (randint1(60 + (level / 10)) > 56)
+                add_flag(o_ptr->flags, OF_SLAY_EVIL);
+            break;
         case EGO_WEAPON_PATTERN:
             if (one_in_(3))
                 add_flag(o_ptr->flags, OF_HOLD_LIFE);
