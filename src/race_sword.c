@@ -108,7 +108,7 @@ static bool _absorb(object_type *o_ptr)
 {
     bool result = FALSE;
     int i;
-    int div = 1;
+    int mult = o_ptr->number, div = 1;
     object_kind *k_ptr = &k_info[o_ptr->k_idx];
     u32b flags[OF_ARRAY_SIZE];
     obj_flags(o_ptr, flags);
@@ -120,9 +120,9 @@ static bool _absorb(object_type *o_ptr)
 
     if (!have_flag(flags, OF_BRAND_ORDER) && !have_flag(flags, OF_BRAND_WILD))
     {
-        if (_add_essence(_ESSENCE_XTRA_DICE, (o_ptr->ds - k_ptr->ds)/1/*div?*/))
+        if (_add_essence(_ESSENCE_XTRA_DICE, (o_ptr->ds - k_ptr->ds)*mult/1/*div?*/))
             result = TRUE;
-        if (_add_essence(_ESSENCE_XTRA_DICE, (o_ptr->dd - k_ptr->dd)/1/*div?*/))
+        if (_add_essence(_ESSENCE_XTRA_DICE, (o_ptr->dd - k_ptr->dd)*mult/1/*div?*/))
             result = TRUE;
     }
 
@@ -133,22 +133,22 @@ static bool _absorb(object_type *o_ptr)
         {
             if (is_pval_flag(i))
             {
-                if (_add_essence(i, o_ptr->pval/div))
+                if (_add_essence(i, o_ptr->pval*mult/div))
                     result = TRUE;
             }
             else
             {
-                _essences[i]++;
+                _essences[i] += mult;
                 result = TRUE;
             }
         }
     }
 
-    if (_add_essence(_ESSENCE_AC, o_ptr->to_a/div))
+    if (_add_essence(_ESSENCE_AC, o_ptr->to_a*mult/div))
         result = TRUE;
-    if (_add_essence(_ESSENCE_TO_HIT, o_ptr->to_h/div))
+    if (_add_essence(_ESSENCE_TO_HIT, o_ptr->to_h*mult/div))
         result = TRUE;
-    if (_add_essence(_ESSENCE_TO_DAM, o_ptr->to_d/div))
+    if (_add_essence(_ESSENCE_TO_DAM, o_ptr->to_d*mult/div))
         result = TRUE;
 
     if (result)
