@@ -235,7 +235,7 @@ static bool _absorb(object_type *o_ptr)
 {
     bool result = FALSE;
     int i;
-    int div = 1;
+    int mult = o_ptr->number, div = 1;
     u32b flags[OF_ARRAY_SIZE];
     obj_flags(o_ptr, flags);
 
@@ -251,19 +251,19 @@ static bool _absorb(object_type *o_ptr)
         {
             if (is_pval_flag(i))
             {
-                if (_add_essence(i, o_ptr->pval/div))
+                if (_add_essence(i, o_ptr->pval*mult/div))
                     result = TRUE;
             }
             else
             {
-                _essences[i]++;
-                if (i == OF_AURA_FIRE && !have_flag(flags, OF_LITE)) _essences[OF_LITE]++;
+                _essences[i] += mult;
+                if (i == OF_AURA_FIRE && !have_flag(flags, OF_LITE)) _essences[OF_LITE] += mult;
                 result = TRUE;
             }
         }
     }
 
-    if (_add_essence(_ESSENCE_AC, o_ptr->to_a/div))
+    if (_add_essence(_ESSENCE_AC, o_ptr->to_a*mult/div))
         result = TRUE;
 
     if (obj_has_effect(o_ptr))
