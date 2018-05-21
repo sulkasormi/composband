@@ -51,20 +51,16 @@ M:###########............a.....................oo...#######
 M:##############..............................#############
 M:################.........................################
 M:#########################################################
-R:OBJ(SWORD):EGO(slaying)
+R:OBJ(STAFF_ENLIGHTENMENT)
 ?:[AND [EQU $CLASS Weaponmaster] [EQU $SPECIALITY Axes Polearms] ]
 R:OBJ(POLEARM):EGO(slaying)
-?:[EQU $CLASS Priest]
-R:OBJ(HAFTED):EGO(slaying)
-?:[EQU $RACE Angel]
+?:[EQU $CLASS Priest Berserker]
 R:OBJ(HAFTED):EGO(slaying)
 ?:[AND [EQU $CLASS Weaponmaster] [EQU $SPECIALITY Clubs Staves] ]
 R:OBJ(HAFTED):EGO(slaying)
 ?:[EQU $CLASS Monk Force-Trainer Mystic]
 R:OBJ(GLOVES):EGO(slaying)
-?:[EQU $CLASS Ninja Ninja-Lawyer]
-R:OBJ(tanto):EGO(slaying)
-?:[EQU $RACE Beholder]
-R:OBJ(^ring$):EGO(protection)
+#?:[EQU $RACE Beholder]
+#R:OBJ(^ring$):EGO(protection)
 
 # vim: filetype=q :
