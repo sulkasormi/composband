@@ -83,6 +83,7 @@ extern quest_ptr  quests_get_current(void);
 extern int        quest_id_current(void);
 extern quest_ptr  quests_get(int id);
 extern cptr       quests_get_name(int id);
+extern int        quests_get_level(int id);
 extern vec_ptr    quests_get_all(void);
 extern vec_ptr    quests_get_active(void);
 extern vec_ptr    quests_get_finished(void);
