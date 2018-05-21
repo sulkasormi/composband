@@ -304,6 +304,14 @@ static void rd_options(savefile_ptr file)
     /* Extract the options */
     extract_option_vars();
 
+    /* Display_percentages is now the easy_damage birth option, and the
+     * former slot of display_percentages is now occupied by list_stairs */
+    if ((savefile_is_older_than(file, 7, 0, 5, 4)) && (list_stairs))
+    {
+        easy_damage = TRUE;
+        list_stairs = FALSE;
+    }
+
     /*** Window Options ***/
     for (n = 0; n < 8; n++) flag[n] = savefile_read_u32b(file);
     for (n = 0; n < 8; n++) mask[n] = savefile_read_u32b(file);
@@ -666,6 +674,7 @@ static void rd_extra(savefile_ptr file)
 
     playtime = savefile_read_u32b(file);
     p_ptr->count = savefile_read_u32b(file);
+    p_ptr->upkeep_warning = FALSE;
     for (i = 0; i < 16; i++) (void)savefile_read_s32b(file);
 
     {
@@ -1053,6 +1062,7 @@ static errr rd_savefile_new_aux(savefile_ptr file)
 
         /* Hack -- Reset the death counter */
         r_ptr->max_num = 100;
+        r_ptr->ball_num = 0;
 
         if (r_ptr->flags1 & RF1_UNIQUE) r_ptr->max_num = 1;
 
@@ -1076,6 +1086,10 @@ static errr rd_savefile_new_aux(savefile_ptr file)
         byte header = savefile_read_byte(file);
 
         race->max_num = savefile_read_byte(file);
+        if (!savefile_is_older_than(file, 7, 0, 5, 1))
+        {
+            race->ball_num = savefile_read_byte(file);
+        }
         race->floor_id = savefile_read_s16b(file);
         race->stolen_ct = savefile_read_byte(file);
         if (header & 0x01)
