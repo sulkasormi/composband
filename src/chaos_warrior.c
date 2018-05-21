@@ -566,6 +566,7 @@ void chaos_warrior_reward(void)
             msg_print("'Die, mortal!'");
 
             take_hit(DAMAGE_LOSELIFE, MIN(p_ptr->mhp * 2 / 3, p_ptr->lev * 4), wrath_reason);
+            if (p_ptr->chp < 0) break; /* We've probably done enough */
             for (dummy = 0; dummy < 6; dummy++)
                 dec_stat(dummy, 10 + randint1(15), FALSE);
             activate_hi_summon(py, px, FALSE);
