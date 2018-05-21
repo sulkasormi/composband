@@ -190,7 +190,11 @@ static bool alloc_stairs(int feat, int num, int walls)
             shaft_num = 0;
         }
         else */if (dun_level > d_info[dungeon_type].mindepth)
+        {
             shaft_num = (randint1(num+1))/2;
+            /* Battlefield is all shafts */
+            if (dungeon_type == DUNGEON_BATTLEFIELD) shaft_num = num;
+        }
     }
     else if (have_flag(f_ptr->flags, FF_MORE))
     {
@@ -210,12 +214,12 @@ static bool alloc_stairs(int feat, int num, int walls)
         /*&& quests_allow_downshaft()*/)
         {
             shaft_num = (randint1(num)+1)/2;
+            if (dungeon_type == DUNGEON_BATTLEFIELD) shaft_num = num;
         }
     }
 
     /* Paranoia */
     else return FALSE;
-
 
     /* Place "num" stairs */
     for (i = 0; i < num; i++)
