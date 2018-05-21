@@ -70,7 +70,7 @@ static void _kiss_spell(int cmd, variant *res)
                 }
                 else
                 {
-                    set_friendly(m_ptr);
+                    set_friendly_ingame(m_ptr);
                     msg_format("%^s suddenly becomes friendly.", desc);
                 }
             }
