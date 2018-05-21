@@ -149,6 +149,36 @@ void quest_complete(quest_ptr q, point_t p)
         q->status = QS_FINISHED;
     }
     p_ptr->redraw |= PR_DEPTH;
+
+    /* Winner? */
+    if (q->goal == QG_KILL_MON && q->goal_idx == MON_SERPENT)
+    {
+        p_ptr->fame += 50;
+
+        if (p_ptr->personality == PERS_MUNCHKIN)
+        {
+            cmsg_print(TERM_YELLOW, "YOU'RE WINNER ! ");
+            msg_print(NULL);
+            msg_print("(Now do it with a real character.)");
+            return;
+        }
+
+        /* Total winner */
+        p_ptr->total_winner = TRUE;
+
+        /* Redraw the "title" */
+        if ((p_ptr->pclass == CLASS_CHAOS_WARRIOR) || mut_present(MUT_CHAOS_GIFT))
+        {
+            msg_format("The voice of %s booms out:", chaos_patrons[p_ptr->chaos_patron]);
+            msg_print("'Thou art donst well, mortal!'");
+        }
+
+        /* Congratulations */
+        msg_print("*** CONGRATULATIONS ***");
+        msg_print("You have won the game!");
+        msg_print("You may retire (commit suicide) when you are ready.");
+        /*cf quest_complete: msg_add_tiny_screenshot(50, 24);*/
+    }
 }
 
 void quest_reward(quest_ptr q)
@@ -261,6 +291,7 @@ obj_ptr quest_get_reward(quest_ptr q)
                 }
                 object_origins(reward, ORIGIN_QUEST_REWARD);
                 reward->origin_place = (q->id * ORIGIN_MODULO);
+                if (object_is_fixed_artifact(reward)) a_info[reward->name1].found = TRUE;
             }
         }
         _temp_reward = NULL;
@@ -351,7 +382,7 @@ bool quest_post_generate(quest_ptr q)
         int           ct = q->goal_count - q->goal_current;
 
         if ( !r_ptr->name  /* temp ... remove monsters without breaking savefiles */
-          || ((r_ptr->flags1 & RF1_UNIQUE) && r_ptr->max_num == 0) )
+          || ((r_ptr->flags1 & RF1_UNIQUE) && (mon_available_num(r_ptr) < 1)) )
         {
             msg_print("It seems that this level was protected by someone before...");
             q->status = QS_FINISHED;
@@ -852,13 +883,128 @@ void quests_on_restore_floor(int dungeon, int level)
     }
 }
 
+/* Handle the death of a dungeon's bottom guardian
+ * This code was formerly in xtra2.c */
+void _dungeon_boss_death(mon_ptr mon)
+{
+    monster_race *r_ptr = &r_info[mon->r_idx];
+    if (!dungeon_type) return;
+    if ((!(r_ptr->flags7 & RF7_GUARDIAN)) || (d_info[dungeon_type].final_guardian != mon->r_idx)) return;
+    if (!politician_dungeon_on_statup(dungeon_type)) return;
+    else {
+        int k_idx = d_info[dungeon_type].final_object ? d_info[dungeon_type].final_object
+            : lookup_kind(TV_SCROLL, SV_SCROLL_ACQUIREMENT);
+        object_type forge, *q_ptr;
+
+        gain_chosen_stat();
+        p_ptr->fame += randint1(3);
+
+        if (d_info[dungeon_type].final_artifact)
+        {
+            int a_idx = d_info[dungeon_type].final_artifact;
+            artifact_type *a_ptr = &a_info[a_idx];
+
+            if (!a_ptr->generated)
+            {
+                /* Create the artifact */
+                if (create_named_art(a_idx, mon->fy, mon->fx, ORIGIN_DROP, mon->r_idx))
+                {
+                    a_ptr->generated = TRUE;
+
+                    /* Hack -- Memorize location of artifact in saved floors */
+                    if (character_dungeon) a_ptr->floor_id = p_ptr->floor_id;
+                }
+                else if (!preserve_mode)
+                    a_ptr->generated = TRUE;
+
+                /* Prevent rewarding both artifact and "default" object */
+                if (!d_info[dungeon_type].final_object) k_idx = 0;
+            }
+            else
+            {
+                create_replacement_art(a_idx, &forge, ORIGIN_DROP);
+                forge.origin_xtra = mon->r_idx;
+                drop_here(&forge, mon->fy, mon->fx);
+                if (!d_info[dungeon_type].final_object) k_idx = 0;
+            }
+        }
+
+        /* Hack: Witch Wood grants first realm's spellbook.
+           I tried to do this in d_info.txt using ?:[EQU $REALM1 ...] but
+           d_info.txt is processed before the save file is even loaded. */
+        if (k_idx == lookup_kind(TV_LIFE_BOOK, 2) && p_ptr->realm1)
+        {
+            int tval = realm2tval(p_ptr->realm1);
+            k_idx = lookup_kind(tval, 2);
+        }
+
+        if (k_idx == lookup_kind(TV_LIFE_BOOK, 3) && p_ptr->realm1)
+        {
+            int tval = realm2tval(p_ptr->realm1);
+            k_idx = lookup_kind(tval, 3);
+        }
+
+        if (k_idx)
+        {
+            int ego_index = d_info[dungeon_type].final_ego;
+
+            /* Get local object */
+            q_ptr = &forge;
+
+            /* Prepare to make a reward */
+            object_prep(q_ptr, k_idx);
+
+            if (ego_index)
+            {
+                if (object_is_device(q_ptr))
+                {
+                    /* Hack: There is only a single k_idx for each class of devices, so
+                     * we use the ego index to pick an effect. This means there is no way
+                     * to actually grant an ego device ...*/
+                    if (!device_init_fixed(q_ptr, ego_index))
+                    {
+                        if (ego_index)
+                        {
+                            char     name[255];
+                            effect_t e = {0};
+                            e.type = ego_index;
+                            sprintf(name, "%s", do_effect(&e, SPELL_NAME, 0));
+                            msg_format("Software Bug: %s is not a valid effect for this device.", name);
+                            msg_print("Generating a random device instead.");
+                        }
+                        device_init(q_ptr, object_level, 0);
+                    }
+                }
+                else
+                {
+                    apply_magic_ego = ego_index;
+                    apply_magic(q_ptr, object_level, AM_NO_FIXED_ART | AM_GOOD | AM_FORCE_EGO);
+                }
+            }
+            else
+            {
+                apply_magic(q_ptr, object_level, AM_NO_FIXED_ART | AM_GOOD | AM_QUEST);
+            }
+            object_origins(q_ptr, ORIGIN_DROP);
+            q_ptr->origin_xtra = mon->r_idx;
+
+            /* Drop it in the dungeon */
+            (void)drop_near(q_ptr, -1, mon->fy, mon->fx);
+        }
+        cmsg_format(TERM_L_GREEN, "You have conquered %s!",d_name+d_info[dungeon_type].name);
+        virtue_add(VIRTUE_VALOUR, 5);
+        msg_add_tiny_screenshot(50, 24);
+    }
+}
+
 void quests_on_kill_mon(mon_ptr mon)
 {
     quest_ptr q;
+    assert(mon);
+    _dungeon_boss_death(mon);
     if (!_current) return;
     q = quests_get(_current);
     assert(q);
-    assert(mon);
     /* handle monsters summoned *after* the quest was completed ... */
     if (q->status == QS_COMPLETED) return;
 
