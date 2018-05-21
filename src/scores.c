@@ -98,7 +98,7 @@ score_ptr score_current(void)
     score->killer = _killer();
     score->status = _status();
 
-    score->exp = p_ptr->max_exp;
+    score->exp = oook_score();
     score->max_depth = _max_depth();
     score->fame = p_ptr->fame;
 
@@ -433,7 +433,7 @@ static void _add_html_header(score_ptr score, doc_ptr doc)
     string_append_s(header, " <meta name='filetype' value='character dump'>\n");
     string_printf(header,  " <meta name='variant' value='%s'>\n", VERSION_NAME); /* never changes */
     string_printf(header,  " <meta name='variant_version' value='%s'>\n", score->version);
-    string_printf(header,  " <meta name='character_name' value='%s'>\n", score->name);
+    string_printf(header,  " <meta name=\"character_name\" value=\"%s\">\n", score->name);
     string_printf(header,  " <meta name='race' value='%s'>\n", score->race);
     string_printf(header,  " <meta name='class' value='%s'>\n", score->class_);
     string_printf(header,  " <meta name='level' value='%d'>\n", score->clvl);
