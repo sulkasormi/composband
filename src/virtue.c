@@ -222,6 +222,7 @@ void virtue_init(void)
     case CLASS_MAGE:
     case CLASS_BLOOD_MAGE:
     case CLASS_NECROMANCER:
+    case CLASS_ALCHEMIST:
     case CLASS_YELLOW_MAGE:
     case CLASS_GRAY_MAGE:
         p_ptr->vir_types[i++] = VIRTUE_KNOWLEDGE;
