@@ -1539,7 +1539,7 @@ static bool project_o(int who, int r, int y, int x, int dam, int typ)
         cptr note_kill = NULL;
 
         /* Get the "plural"-ness */
-        bool plural = (o_ptr->number > 1);
+        bool plural = object_plural(o_ptr);
 
         /* Acquire next object */
         next_o_idx = o_ptr->next_o_idx;
