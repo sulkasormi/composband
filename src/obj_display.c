@@ -10,9 +10,9 @@ extern void obj_display_doc(object_type *o_ptr, doc_ptr doc);
 extern void obj_display_smith(object_type *o_ptr, doc_ptr doc);
 extern void device_display_doc(object_type *o_ptr, doc_ptr doc);
 extern void device_display_smith(object_type *o_ptr, doc_ptr doc);
+extern bool display_origin(object_type *o_ptr, doc_ptr doc);
 
 static void _display_name(object_type *o_ptr, doc_ptr doc);
-static bool _display_origin(object_type *o_ptr, doc_ptr doc);
 static void _display_desc(object_type *o_ptr, doc_ptr doc);
 static void _display_stats(object_type *o_ptr, u32b flgs[OF_ARRAY_SIZE], doc_ptr doc);
 static void _display_sustains(u32b flgs[OF_ARRAY_SIZE], doc_ptr doc);
@@ -167,7 +167,7 @@ static void _selita_paikka(char *paikka_text, byte paikka, byte taso, byte origi
     }
 }
 
-static bool _display_origin(object_type *o_ptr, doc_ptr doc)
+bool display_origin(object_type *o_ptr, doc_ptr doc)
 {
     byte origin = o_ptr->origin_type;
     byte paikka = o_ptr->origin_place / ORIGIN_MODULO;
@@ -254,7 +254,7 @@ static bool _display_origin(object_type *o_ptr, doc_ptr doc)
         }
         case ORIGIN_BIRTH:
         {
-            if (o_ptr->number == 1) doc_printf(doc, "You can't remember ever not having it.");
+            if (!object_plural(o_ptr)) doc_printf(doc, "You can't remember ever not having it.");
             else doc_printf(doc, "You can't remember ever not having them.");
             break;
         }
@@ -357,14 +357,16 @@ static bool _display_origin(object_type *o_ptr, doc_ptr doc)
     {
         int day = 0, hour = 0, min = 0;
         doc_printf(doc, "\n");
-        if (o_ptr->mitze_type & MITZE_ID) doc_printf(doc, "Identified: ");
+        if (origin == ORIGIN_STORE) doc_printf(doc, "Purchased: ");
+        else if (origin == ORIGIN_PHOTO) doc_printf(doc, "Snapped: ");
+        else if (o_ptr->mitze_type & MITZE_REFORGE) doc_printf(doc, "Received: ");
+        else if (o_ptr->mitze_type & MITZE_ID) doc_printf(doc, "Identified: ");
         else if (o_ptr->mitze_type & MITZE_PICKUP) doc_printf(doc, "Picked up: ");
         extract_day_hour_min_imp(o_ptr->mitze_turn, &day, &hour, &min);
         doc_printf(doc, "Day %d, %d:%02d, at CL %d.", day, hour, min, o_ptr->mitze_level);
         if (o_ptr->mitze_type & MITZE_MIXED) doc_printf(doc, "\n(Details may apply to the first item in a pile of similar items.)");
     }
 
-    doc_printf(doc, "\n\n");
     return TRUE;
 }
 
@@ -1334,7 +1336,8 @@ void obj_display_doc(object_type *o_ptr, doc_ptr doc)
     doc_insert(doc, "  <indent>");
     if (show_origins || show_discovery)
     {
-        (void)_display_origin(o_ptr, doc);
+        if (display_origin(o_ptr, doc)) doc_printf(doc, "\n\n");
+
     }
     _display_desc(o_ptr, doc);
     doc_insert(doc, "<style:indent>"); /* Indent a bit when word wrapping long lines */
@@ -1450,7 +1453,8 @@ void device_display_doc(object_type *o_ptr, doc_ptr doc)
     doc_insert(doc, "  <indent>");
     if (show_origins || show_discovery)
     {
-        (void)_display_origin(o_ptr, doc);
+        if (display_origin(o_ptr, doc)) doc_printf(doc, "\n\n");
+
     }
     _display_desc(o_ptr, doc);
 
