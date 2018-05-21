@@ -5,7 +5,7 @@
 # across a range of different makefiles, to cut down on maintenance.
 #
 
-VERSION = 7.0.strawberry
+VERSION = 7.0.mango
 COPYRIGHT = (c) 1995-2018 Angband contributors
 PROGNAME = frogcomposband
 
@@ -36,7 +36,7 @@ X11MAINFILES = main-x11.o
 WINMAINFILES = $(PROGNAME).res main-win.o readdib.o
 
 ANGFILES = \
-    archaeologist.o archer.o artifact.o autopick.o virtue.o bard.o \
+    alky.o archaeologist.o archer.o artifact.o autopick.o virtue.o bard.o \
     beastmaster.o berserker.o birth.o bldg.o blood_knight.o blood_mage.o \
     cavalry.o cave.o chaos_warrior.o classes.o cmd1.o cmd2.o cmd3.o cmd4.o cmd5.o \
     cmd6.o combat.o demigod.o devicemaster.o devices.o do-spell.o doppelganger.o duelist.o dungeon.o \
@@ -45,14 +45,14 @@ ANGFILES = \
     magic_eater.o mauler.o melee1.o melee2.o menu.o message.o mindcrafter.o mirror_master.o \
     mon.o mon_display.o mon_spell.o monk.o monster.o monster1.o monster2.o mspells1.o mspells2.o mut.o \
     mut_a.o mystic.o necromancer.o ninja.o ninjalaw.o obj.o obj_display.o obj_prompt.o \
-	object1.o object2.o object3.o obj_kind.o pack.o paladin.o \
-    personality.o priest.o psion.o py_birth.o py_display.o py_throw.o quest.o quiver.o \
+	object1.o object2.o object3.o obj_kind.o pack.o paladin.o personality.o \
+    polly.o priest.o psion.o py_birth.o py_display.o py_throw.o quest.o quiver.o \
 	races.o races_a.o races_k.o races_mimic.o race_angel.o \
     race_beholder.o race_centipede.o race_demon.o race_dragon.o race_elemental.o race_giant.o race_golem.o \
     race_hound.o race_hydra.o race_jelly.o race_leprechaun.o race_lich.o \
 	race_mimic.o race_possessor.o race_quylthulg.o race_spider.o \
     race_ring.o race_sword.o race_troll.o race_vampire.o race_vortex.o \
-    race_xorn.o racial.o rage-mage.o ranger.o rect.o red_mage.o \
+    race_xorn.o racial.o rage-mage.o randname.o ranger.o rect.o red_mage.o \
     resist.o rogue.o rooms.o rune_knight.o samurai.o save.o savefile.o scores.o scout.o shop.o skillmaster.o \
     skills.o sniper.o sorcerer.o spells.o spells1.o spells2.o spells3.o spells_a.o \
     spells_c.o spells_h.o spells_m.o spells_s.o spoilers.o str-map.o streams.o \
