@@ -241,7 +241,6 @@ bool equippy_chars;    /* Display 'equippy' chars */
 bool display_food_bar;
 bool display_hp_bar;
 bool display_sp_bar;
-bool display_percentages;
 bool compress_savefile;    /* Compress messages in savefiles */
 bool abbrev_extra;    /* Describe obj's extra resistances by abbreviation */
 bool abbrev_all;    /* Describe obj's all resistances by abbreviation */
@@ -252,6 +251,10 @@ bool display_race; /* Display monster races with their racial char */
 bool easy_mimics;  /* Use the 'x' glyph for monsters that look like things */
 bool show_origins; /* Show origin in object description */
 bool show_discovery; /* Show time of discovery in object description */
+bool final_dump_origins; /* Show equipment origins in final dumps */
+bool always_dump_origins; /* Show equipment origins in all dumps */
+bool list_stairs;  /* Display stairs in object list */
+bool display_skill_num; /* Give skills numerically in char sheet */
 
 /*** Game-Play Options ***/
 
@@ -294,6 +297,7 @@ bool alert_trap_detect;    /* Alert when leaving trap detected area */
 
 bool easy_id;        /* Easy Identify */
 bool easy_lore;      /* Easy Monster Lore */
+bool easy_damage;    /* Access wizard info about damage and monster health */
 bool allow_spoilers;
 bool power_tele;     /* Use old-style, non-fuzzy telepathy */
 bool smart_learn;    /* Monsters learn from their mistakes (*) */
@@ -349,7 +353,7 @@ bool cheat_save;    /* Ask for saving death */
 
 /* Special options */
 
-byte hitpoint_warn = 3;    /* Hitpoint warning (0 to 9) */
+byte hitpoint_warn = 5;    /* Hitpoint warning (0 to 9) */
 byte mana_warn;    /* Mana color (0 to 9) */
 
 byte delay_factor = 2;    /* Delay factor (0 to 9) */
@@ -409,6 +413,12 @@ char player_base[32];
  */
 char savefile[1024];
 char savefile_base[40];
+
+/*
+ * Array[RANDNAME_NUM_TYPES][num_names] of random names
+ * Lifted from Vanilla 3.5.1
+ */
+const char ***name_sections;
 
 /*
  * Array of grids lit by player lite (see "cave.c")
