@@ -1303,8 +1303,8 @@ static void _generate_entrance(int x, int y, int dx, int dy)
     /* Hack -- Induce consistant town layout */
     Rand_value = wilderness[y][x].seed;
 
-    y2 = rand_range(6, cur_hgt - 6) + dy;
-    x2 = rand_range(6, cur_wid - 6) + dx;
+    y2 = rand_range(13, cur_hgt - 13) + dy;
+    x2 = rand_range(13, cur_wid - 13) + dx;
 
     if (in_bounds(y2, x2))
     {
