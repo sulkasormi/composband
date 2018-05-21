@@ -319,10 +319,42 @@ void crafting_spell(int cmd, variant *res)
         prompt.where[3] = INV_FLOOR;
 
         obj_prompt(&prompt);
-        if (!prompt.obj) return;
+        if (!prompt.obj || !prompt.obj->number) return;
 
         object_desc(o_name, prompt.obj, (OD_OMIT_PREFIX | OD_NAME_ONLY));
 
+        if (!object_is_nameless(prompt.obj))
+        {
+            msg_print("You cannot enchant that item any further.");
+            return;
+        }
+
+        if ((!object_is_ammo(prompt.obj)) && (prompt.obj->number > 1))
+        {
+            msg_print("You cannot use Crafting on more than one item at a time.");
+            return;
+        }
+
+        if ((object_is_(prompt.obj, TV_SWORD, SV_POISON_NEEDLE)) ||
+            (object_is_(prompt.obj, TV_SWORD, SV_RUNESWORD)) ||
+            (object_is_(prompt.obj, TV_POLEARM, SV_DEATH_SCYTHE)))
+        {
+            msg_print("You cannot enchant that item.");
+            return;
+        }
+
+        if (prompt.obj->number > 59)
+        {
+            msg_print("You cannot use Crafting on more than 59 projectiles at a time.");
+            return;
+        }
+
+        if (prompt.obj->number > 30)
+        {
+            if (!get_check("The enchantment has a chance to fail. Proceed anyway? "))
+            return;
+        }
+        
         if (object_is_nameless(prompt.obj))
         {
             if (object_is_ammo(prompt.obj) && randint1(30) > (prompt.obj->number - 30))
