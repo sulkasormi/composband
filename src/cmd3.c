@@ -1122,6 +1122,7 @@ static void _mon_display_probe(doc_ptr doc, int m_idx)
     speed = m_ptr->mspeed - 110;
     if (MON_FAST(m_ptr)) speed += 10;
     if (MON_SLOW(m_ptr)) speed -= 10;
+    if (p_ptr->filibuster) speed -= SPEED_ADJ_FILIBUSTER;
     if (m_ptr->nickname)
         doc_printf(doc, "Name : <color:R>%13s</color>\n", quark_str(m_ptr->nickname));
     doc_printf(doc, "Speed: <color:G>%+13d</color>\n", speed);
@@ -1678,7 +1679,7 @@ static _obj_list_ptr _create_obj_list(void)
 
     /* The object list now includes features, at least on the surface. This permits
        easy town traveling to the various shops */
-    if (!dun_level && !p_ptr->wild_mode)
+    if ((!dun_level || list_stairs) && !p_ptr->wild_mode)
     {
         for (y = 0; y < cur_hgt - 1; y++)
         {
@@ -1686,7 +1687,9 @@ static _obj_list_ptr _create_obj_list(void)
             {
                 cave_type *c_ptr = &cave[y][x];
                 feature_type *f_ptr = &f_info[c_ptr->feat];
-                if (have_flag(f_ptr->flags, FF_STORE) || have_flag(f_ptr->flags, FF_STAIRS) || have_flag(f_ptr->flags, FF_BLDG))
+                if (((!dun_level) && ((have_flag(f_ptr->flags, FF_STORE)) || (have_flag(f_ptr->flags, FF_STAIRS)) ||
+                    (have_flag(f_ptr->flags, FF_BLDG)))) || ((list_stairs) && (have_flag(f_ptr->flags, FF_STAIRS)) &&
+                    (c_ptr->info & (CAVE_MARK))) )
                 {
                     _obj_list_info_ptr info = _obj_list_info_alloc();
                     info->group = _GROUP_FEATURE;
@@ -1883,6 +1886,7 @@ void do_cmd_list_objects(void)
 {
     _obj_list_ptr list = _create_obj_list();
     rect_t        display_rect = ui_menu_rect();
+    bool          stairs_on = list_stairs;
 
     if (display_rect.cx > 50)
         display_rect.cx = 50;
@@ -1932,6 +1936,16 @@ void do_cmd_list_objects(void)
             case ']':
                 done = TRUE;
                 break;
+            case 'S':
+            {
+                list_stairs = !list_stairs;
+                _obj_list_free(list);
+                list = _create_obj_list();
+                screen_load();
+                screen_save();
+                redraw = TRUE;
+                break;
+            }
             case '/':
             case 'I':
             {
@@ -2099,6 +2113,7 @@ void do_cmd_list_objects(void)
         msg_print("You see no objects.");
 
     _obj_list_free(list);
+    list_stairs = stairs_on; /* Keep old default */
 }
 
 void _fix_object_list_aux(void)
