@@ -256,7 +256,6 @@ extern bool equippy_chars;    /* Display 'equippy' chars */
 extern bool display_food_bar;    /* Like the monster health bar, only tastier! */
 extern bool display_hp_bar; /* Display player HP just like the monster health bar */
 extern bool display_sp_bar; /* Display player SP just like the monster health bar */
-extern bool display_percentages; /* 63% rather than [******----] */
 extern bool compress_savefile;    /* Compress messages in savefiles */
 extern bool abbrev_extra;    /* Describe obj's extra resistances by abbreviation */
 extern bool abbrev_all;    /* Describe obj's all resistances by abbreviation */
@@ -267,6 +266,10 @@ extern bool display_race; /* Display monster races with their racial char */
 extern bool easy_mimics;  /* Use the 'x' glyph for monsters that look like things */
 extern bool show_origins; /* Show object origins */
 extern bool show_discovery; /* Show pickup time */
+extern bool final_dump_origins; /* Show equipment origins in final dumps */
+extern bool always_dump_origins; /* Show equipment origins in all dumps */
+extern bool list_stairs; /* Display stairs in the object list */
+extern bool display_skill_num; /* Give skills numerically in char sheet */
 
 /*** Game-Play Options ***/
 
@@ -309,6 +312,7 @@ extern bool alert_trap_detect;    /* Alert when leaving trap detected area */
 
 extern bool easy_id;        /* Easy Identify */
 extern bool easy_lore;      /* Easy Monster Lore */
+extern bool easy_damage;    /* Peek into damage and monster health */
 extern bool allow_spoilers;
 extern bool power_tele;     /* Use old-style, non-fuzzy telepathy */
 extern bool smart_learn;    /* Monsters learn from their mistakes (*) */
@@ -429,6 +433,7 @@ extern char misc_to_char[256];
 extern byte tval_to_attr[128];
 extern char tval_to_char[128];
 extern cptr keymap_act[KEYMAP_MODES][256];
+extern const char ***name_sections;
 extern player_type *p_ptr;
 extern player_magic *mp_ptr;
 extern birther previous_char;
@@ -808,10 +813,15 @@ extern void do_cmd_use_staff(void);
 extern void do_cmd_zap_rod(void);
 extern void do_cmd_activate(void);
 extern void do_cmd_rerate_aux(void);
-extern int life_rating(void);
+extern int  life_rating(void);
 extern void do_cmd_rerate(bool display);
 extern void ring_of_power(int dir);
 extern bool restore_mana(void);
+extern int  decrease_ball_num(int idx);
+extern void increase_ball_num(int idx);
+extern void capture_ball_opening(object_type *j_ptr, int y, int x, bool from_drop);
+extern bool capture_ball_release(object_type *o_ptr, int y, int x, int mode);
+extern void empty_capture_ball(object_type *o_ptr);
 
 /* devices.c */
 extern int  device_calc_fail_rate(object_type *o_ptr); /*95.2% returned as 952*/
@@ -1084,6 +1094,7 @@ extern monster_hook_type get_wilderness_monster_hook(int x, int y);
 extern monster_hook_type get_monster_hook(void);
 extern monster_hook_type get_monster_hook2(int y, int x); /* x, y is standard!!! */
 extern void set_friendly(monster_type *m_ptr);
+extern void set_friendly_ingame(monster_type *m_ptr);
 extern void set_pet(monster_type *m_ptr);
 extern void set_hostile(monster_type *m_ptr);
 extern void anger_monster(monster_type *m_ptr);
@@ -1112,6 +1123,7 @@ extern void wipe_m_list(void);
 extern bool mon_attack_mon(int m_idx, int t_idx);
 
 extern bool mon_is_type(int r_idx, int type); /* Uses the various SUMMON_* constants */
+extern int mon_available_num(monster_race *r_ptr);
 
 extern s16b pack_info_pop(void);
 extern void pack_info_push(int idx);
@@ -1130,6 +1142,8 @@ extern s16b get_mon_num(int level);
 #define GMN_POWER_BOOST 0x01 /* pick best roll out of several */
 #define GMN_NO_UNIQUES  0x02 /* prohibit unique monsters */
 #define GMN_ALLOW_OOD   0x04 /* allow level param to be mysteriously boosted */
+#define GMN_LIMIT_UNIQUES 0x08 /* prohibit strong uniques */
+#define GMN_NO_SUMMONERS 0x10 /* prohibit summoners */
 #define GMN_DEFAULT     (GMN_ALLOW_OOD)
 extern s16b get_mon_num_aux(int level, int min_level, u32b options);
 extern void monster_desc(char *desc, monster_type *m_ptr, int mode);
@@ -1168,6 +1182,7 @@ extern void device_display_doc(object_type *o_ptr, doc_ptr doc);
 extern void ego_display(ego_type *e_ptr);
 extern void ego_display_rect(ego_type *e_ptr, rect_t display);
 extern void ego_display_doc(ego_type *e_ptr, doc_ptr doc);
+extern bool display_origin(object_type *o_ptr, doc_ptr doc);
 
 /* py_display.c */
 extern void py_display(void);
@@ -1177,6 +1192,7 @@ extern void py_display_spells_aux(doc_ptr doc, spell_info *table, int ct);
 extern void py_display_powers(doc_ptr doc, spell_info *table, int ct);
 extern void py_display_character_sheet(doc_ptr doc);
 extern void py_display_dungeons(doc_ptr doc);
+extern int  oook_score(void);
 
 /* object1.c */
 extern s16b m_bonus(int max, int level);
@@ -1264,6 +1280,7 @@ extern bool make_object(object_type *j_ptr, u32b mode, byte origin);
 extern bool kind_is_good(int k_idx);
 extern bool kind_is_great(int k_idx);
 extern bool kind_is_device(int k_idx);
+extern bool kind_is_potion(int k_idx);
 extern bool kind_is_jewelry(int k_idx);
 extern bool kind_is_book(int k_idx);
 extern bool kind_is_body_armor(int k_idx);
@@ -2346,6 +2363,12 @@ extern int get_powers_aux(spell_info* spells, int max, power_info* table);
 extern int get_spells_aux(spell_info* spells, int max, spell_info* table);
 extern void dump_spells_aux(FILE *fff, spell_info *table, int ct);
 
+/* alky.c */
+extern void     alchemist_cast(int tval);
+extern class_t *alchemist_get_class(void);
+extern int      alchemist_infusion_energy_use(void);
+extern void     alchemist_super_potion_effect(int sval);
+
 /* duelist.c */
 extern cptr duelist_current_challenge(void);
 extern class_t *duelist_get_class(void);
@@ -2536,6 +2559,7 @@ extern int      skillmaster_calc_xtra_hp(int amt);
 extern bool     skillmaster_weapon_is_icky(int tval);
 
 extern class_t *tourist_get_class(void);
+extern int      tourist_sell_photo_aux(object_type *o_ptr, int amount, bool merkitse);
 extern class_t *scout_get_class(void);
 extern class_t *sniper_get_class(void);
 extern class_t *sorcerer_get_class(void);
@@ -2558,6 +2582,21 @@ extern bool     repose_of_the_dead;
 extern cptr     do_necromancy_spell(int spell, int mode);
 extern class_t *necromancer_get_class(void);
 extern void     on_p_hit_m(int m_idx);
+
+/* polly.c */
+extern class_t *politician_get_class(void);
+extern int      politician_get_toggle(void);
+extern int      politician_get_cost(const spell_info *loitsu);
+extern int      politician_max_cost(void);
+extern int      politician_verify_spell(spell_info *loitsu);
+extern void     politician_android_experience(void);
+extern void     politician_check_experience(bool new_level);
+extern void     politician_check_au(bool new_level);
+extern void     politician_set_friend(int which, bool kamu);
+extern bool     politician_dungeon_on_statup(int which);
+extern bool     unique_is_friend(int which);
+extern bool     dungeon_conquered(int which);
+extern bool     object_is_deaggravated(object_type *o_ptr);
 
 /* skills.c */
 extern skill_table *s_info; /* deprecated ... in process of removing naked table reads*/
