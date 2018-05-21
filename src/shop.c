@@ -684,19 +684,48 @@ static bool _weapon_create(obj_ptr obj, u32b mode)
     int k_idx;
     int l1 = _mod_lvl(20);
     int l2 = _mod_lvl(rand_range(1, 15));
-    if (one_in_(3))
+    if ((p_ptr->lev < 12) && (one_in_(3)))
+    {
+        static byte vuoro = 0;
+        switch (vuoro % 3)
+        {
+            case 0: k_idx = lookup_kind(TV_SHOT, SV_PEBBLE); break;
+            case 1: k_idx = lookup_kind(TV_ARROW, SV_ARROW); break;
+            default: k_idx = lookup_kind(TV_BOLT, SV_BOLT); break;
+        }
+        if (vuoro < 100) vuoro++;
+        else vuoro = 0;
+    }
+    else if (one_in_(3))
         k_idx = _get_k_idx(_weapon_book_p, l1);
     else if (one_in_(4))
         k_idx = _get_k_idx(_weapon_stock_shooter_p, l1);
-    else if (one_in_(3))
+    else if (one_in_((p_ptr->lev < 12 ? 5 : 3)))
         k_idx = _get_k_idx(_stock_ammo_p, l1);
-    else if (one_in_(9))
+    else if (one_in_((p_ptr->lev < 14) ? 5 : 10))
         k_idx = lookup_kind(TV_QUIVER, 0);
     else
         k_idx = _get_k_idx(_weapon_stock_p, l1);
     if (!_create(obj, k_idx, l2, mode)) return FALSE;
+    if ((object_is_ammo(obj)) && (p_ptr->lev < 12))
+    {
+        if ((obj->to_d > 0) && (!obj->name2) && (!one_in_(3)))
+        {
+            obj->to_h = 0;
+            obj->to_d = 0;
+        }
+        obj->number -= (obj->number / 3);
+    }
 	if (obj->to_a < 0 || obj->to_h < 0)
 	{
+		if (object_is_ammo(obj) && (!obj->name2))
+		{
+			obj->to_h = 0;
+			obj->to_d = 0;
+			obj->curse_flags = 0;
+			obj->known_curse_flags = 0;
+			return TRUE;
+		}
 		return FALSE;
 	}
 	return TRUE;
@@ -1605,6 +1634,11 @@ static bool _buy_aux(shop_ptr shop, obj_ptr obj)
         msg_print("I have no interest in your junk!");
         return FALSE;
     }
+    if ((obj->tval == TV_CAPTURE) && (obj->pval > 0) && (r_info[obj->pval].ball_num))
+    {
+        msg_print("I wouldn't take that if you paid me!");
+        return FALSE;
+    }
     price = _buy_price(shop, price);
     price *= obj->number;
 
@@ -1858,11 +1892,11 @@ static void _sell(_ui_context_ptr context)
 		{
 			if (prace_is_(RACE_SNOTLING) || prace_is_(RACE_DOPPELGANGER)) {
 				msg_print("We don't serve your kind here.");
-				return FALSE;
+				return;
 			}
 			if ((p_ptr->prace == RACE_SNOTLING) || (p_ptr->prace == RACE_DOPPELGANGER)) {
 				msg_print("I'm wise to your tricks. You can't have my mushrooms.");
-				return FALSE;
+				return;
 			}
 		}
 
@@ -1989,6 +2023,7 @@ static int _stock_base(shop_ptr shop)
         return 10 - 2 + randint1(4);
 	if (shop->type->id == SHOP_SHROOMERY)
 		return 6 + randint1(4);
+    if ((shop->type->id == SHOP_WEAPON) && (p_ptr->lev < 12)) return 18 + randint1(5);
     return _STOCK_BASE - 4 + randint1(8);
 }
 
