@@ -1,5 +1,7 @@
 #include "angband.h"
 
+static byte *photos_sold; /* List of monster races by photographs sold */
+
 static void _take_photo_spell(int cmd, variant *res)
 {
     switch (cmd)
@@ -64,6 +66,35 @@ static caster_info * _caster_info(void)
     return &me;
 }
 
+static void _ini_photo_list(void)
+{
+    C_MAKE(photos_sold, max_r_idx, byte);
+}
+
+static void _load_player(savefile_ptr file)
+{
+    u32b old_max_race;
+    unsigned int i;
+    _ini_photo_list();
+    if (savefile_is_older_than(file, 7, 0, 5, 2)) return;
+    old_max_race = savefile_read_u32b(file);
+    for (i = 0; i < old_max_race; i++)
+    {
+        if (i < max_r_idx) photos_sold[i] = savefile_read_byte(file);
+        else (void)savefile_read_byte(file);
+    }
+}
+
+static void _save_player(savefile_ptr file)
+{
+    int i;
+    savefile_write_u32b(file, (u32b)max_r_idx);
+    for (i = 0; i < max_r_idx; i++)
+    {
+        savefile_write_byte(file, photos_sold[i]);
+    }
+}
+
 static void _birth(void)
 {
     py_birth_obj_aux(TV_FOOD, SV_FOOD_BISCUIT, rand_range(2, 4));
@@ -76,6 +107,30 @@ static void _birth(void)
     py_birth_obj_aux(TV_BOW, SV_SLING, 1);
     py_birth_obj_aux(TV_SHOT, SV_PEBBLE, rand_range(20, 40));
     p_ptr->au += 2000;
+    _ini_photo_list();
+}
+
+int tourist_sell_photo_aux(object_type *o_ptr, int amount, bool merkitse)
+{
+    monster_race *r_ptr;
+    int myyty, laji, hyvaksy, tarjous = 0;
+    if (!o_ptr->number) return 0;
+    laji = o_ptr->pval;
+    if ((o_ptr->tval != TV_STATUE) || (o_ptr->sval != SV_PHOTO) || (laji < 1) || (laji >= max_r_idx)) return 0;
+    if (merkitse)
+    {
+        photos_sold[laji] += amount;
+        return 0;
+    }
+    myyty = photos_sold[laji];
+    r_ptr = &r_info[laji];
+    if (!r_ptr || !r_ptr->name) return 0;
+    hyvaksy = MIN(15 - myyty, amount);
+    if (hyvaksy < 1) return -1;
+    tarjous = ((r_ptr->level + 10) / 10) * hyvaksy;
+    if (r_ptr->flags1 & RF1_UNIQUE) tarjous += (15 * hyvaksy);
+    if ((!myyty) && (laji == MON_SASQUATCH)) tarjous += (((seed_town % 3) * 1000) + 3000);
+    return tarjous;
 }
 
 class_t *tourist_get_class(void)
@@ -120,6 +175,8 @@ class_t *tourist_get_class(void)
         me.get_spells = _get_spells;*/
         me.get_powers = _get_powers;
         me.character_dump = spellbook_character_dump;
+        me.load_player = _load_player;
+        me.save_player = _save_player;
         init = TRUE;
     }
 
