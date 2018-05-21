@@ -170,6 +170,7 @@ static void player_wipe(void)
 
         /* Hack -- Reset the counter */
         r_ptr->cur_num = 0;
+        r_ptr->ball_num = 0;
 
         /* Hack -- Reset the max counter */
         r_ptr->max_num = 100;
@@ -243,6 +244,9 @@ static void player_wipe(void)
     /* Assume no cheating */
     p_ptr->noscore = 0;
     p_ptr->wizard = FALSE;
+
+    /* Assume no upkeep warning */
+    p_ptr->upkeep_warning = FALSE;
 
     /* Not waiting to report score */
     p_ptr->wait_report_score = FALSE;
