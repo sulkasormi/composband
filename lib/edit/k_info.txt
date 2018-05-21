@@ -1852,7 +1852,7 @@ W:35:0:0:200:1000
 A:35/7
 P:15:1d1:-1:0:0
 
-N:*:Sexy Swimsuit
+N:*:Sexy Swimsuit~
 G:(:v
 I:36:50:0
 W:30:0:0:2:78000
@@ -3176,6 +3176,7 @@ I:75:59:0
 W:65:0:0:4:25000
 A:65/1
 P:0:1d1:0:0:0
+F:NO_SHUFFLE
 M:5:1d2
 
 N:*:Resistance:Yellow
