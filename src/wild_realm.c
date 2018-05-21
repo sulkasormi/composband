@@ -198,7 +198,7 @@ _counter_type _types[] = {
     { WILD_PASSWALL, _wild_passwall_on, _wild_passwall_off, PR_STATUS, PU_BONUS },
     { WILD_REVENGE, _wild_revenge_on, _wild_revenge_off, PR_STATUS, 0 },
     { WILD_INVULN, _wild_invulnerability_on, _wild_invulnerability_off,  PR_STATUS | PR_MAP, PU_BONUS | PU_MONSTERS },
-    { WILD_WRAITH, _wild_wraith_on, _wild_wraith_off,  PR_STATUS, PU_BONUS },
+    { WILD_WRAITH, _wild_wraith_on, _wild_wraith_off,  PR_STATUS, PU_BONUS | PU_HP },
     { WILD_LIGHT_SPEED, _wild_speed_on, _wild_speed_off, PR_STATUS, PU_BONUS },
     { -1, 0, 0, 0, 0 },
 };
