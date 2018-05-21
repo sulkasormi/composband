@@ -102,7 +102,7 @@ static void _chaotic_calc_things(personality_ptr pers_ptr)
     { 
         pers_ptr->stats[i] = stat_modifiers[i];
     }
-    pers_ptr->life = 100 - summa;
+    pers_ptr->life = 99 - summa;
 }
 
 static personality_ptr _get_chaotic_personality(void)
@@ -118,7 +118,7 @@ static personality_ptr _get_chaotic_personality(void)
                     "they gain a level. Their strengths and weaknesses are "
                     "unpredictable; even their stat bonuses are subject to change.";	
 
-        me.life = 100;
+        me.life = 99;
         me.exp = 100;
 
         me.birth = _chaotic_birth;
@@ -190,10 +190,10 @@ static personality_ptr _get_craven_personality(void)
     if (!init)
     {
         me.name = "Craven";
-        me.desc = "A Craven person is a coward, preferring to avoid a fight at "
-                    "any cost. Craven adventurers shoot and use devices well, "
-                    "and their stealth is impressive. But their stats and other "
-                    "skills are somewhat wanting.";
+        me.desc = "A Craven person is a coward, preferring to avoid a fight at any "
+                    "cost. Craven adventurers shoot and use devices well, their "
+                    "stealth is impressive, and they can move fast when not fighting;"
+                    "but their stats and other skills are somewhat wanting.";
 
         me.stats[A_STR] = -1;
         me.stats[A_INT] =  1;
