@@ -597,7 +597,7 @@ static bool _wield_confirm(obj_ptr obj, slot_t slot)
     {
         char dummy[MAX_NLEN+80];
         object_desc(o_name, obj, OD_OMIT_PREFIX | OD_NAME_ONLY);
-        msg_format("%s will transforms you into a vampire permanently when equiped.", o_name);
+        msg_format("%s will permanently transform you into a vampire when equipped.", o_name);
         sprintf(dummy, "Do you become a vampire?");
         if (!get_check(dummy)) return FALSE;
     }
