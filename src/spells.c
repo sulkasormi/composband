@@ -331,21 +331,45 @@ static void _list_spells(spell_info* spells, int ct, int max_cost)
     int  col_height = _col_height(ct);
     int  col_width;
     variant name, info, color;
+    bool poli = (p_ptr->pclass == CLASS_POLITICIAN);
 
     var_init(&name);
     var_init(&info);
     var_init(&color);
 
+    if (poli) 
+    /* Hack - use normal display for powers, so must identify we are using powers
+     * Politicians have no spells with zero cost but do have powers with zero cost,
+     * so we use that as a marker */
+    {
+        for (i = 0; i < ct; i++)
+        {
+            spell_info* spell = &spells[i];
+            if (spell->cost == 0)
+            {
+                poli = FALSE;
+                break;
+            } 
+        }        
+    }
+
     Term_erase(display.x, display.y, display.cx);
     if (col_height == ct)
     {
-        put_str("Lvl Cost Fail Desc", display.y, display.x + 29);
+        if (poli) put_str("Lvl   Cost   Fail   Desc", display.y, display.x + 29);
+        else put_str("Lvl Cost Fail Desc", display.y, display.x + 29);
     }
-    else
+    else if (!poli)
     {
         col_width = 42;
         put_str("Lvl Cost Fail", display.y, display.x + 29);
         put_str("Lvl Cost Fail", display.y, display.x + col_width + 29);
+    }
+    else
+    {
+        col_width = 48;
+        put_str("Lvl   Cost   Fail", display.y, display.x + 29);
+        put_str("Lvl   Cost   Fail", display.y, display.x + col_width + 29);
     }
 
     for (i = 0; i < ct; i++)
@@ -353,6 +377,7 @@ static void _list_spells(spell_info* spells, int ct, int max_cost)
         char letter = '\0';
         byte attr = TERM_WHITE;
         spell_info* spell = &spells[i];
+        int spell_cost = spell->cost;
 
         var_set_int(&color, TERM_WHITE);
 
@@ -371,11 +396,26 @@ static void _list_spells(spell_info* spells, int ct, int max_cost)
 
         sprintf(temp, "  %c) ", letter);
 
-        strcat(temp, format("%-23.23s %3d %4d %3d%%",
+        if (!poli)
+        {
+            strcat(temp, format("%-23.23s %3d %4d %3d%%",
                             var_get_string(&name),
                             spell->level,
                             spell->cost,
                             spell->fail));
+        }
+        else
+        {
+            char temp2[10];
+            spell_cost = politician_get_cost(spell);
+            big_num_display(spell_cost, temp2);
+            strcat(temp, format("%-23.23s %3d %6s %5d%%",
+                            var_get_string(&name),
+                            spell->level,
+                            temp2,
+                            spell->fail));
+            if (col_height == ct) strcat(temp, "  ");
+        }
 
         if (col_height == ct)
             strcat(temp, format(" %s", var_get_string(&info)));
@@ -383,7 +423,7 @@ static void _list_spells(spell_info* spells, int ct, int max_cost)
         if (spell->fail == 100)
             attr = TERM_L_DARK;
 
-        if (spell->cost > max_cost)
+        if (spell_cost > max_cost)
             attr = TERM_L_DARK;
 
         if (spell->level > p_ptr->lev)
@@ -689,6 +729,7 @@ void do_cmd_spell(void)
     int ct = 0;
     int choice = 0;
     int max_cost = 0;
+    bool poli = (p_ptr->pclass == CLASS_POLITICIAN);
 
     if (!caster)
     {
@@ -696,7 +737,14 @@ void do_cmd_spell(void)
         return;
     }
 
+    if ((poli) && (p_ptr->lev < POLITICIAN_FIRST_SPELL)) 
+    {
+        msg_print("You haven't learned any political skills yet.");
+        return;
+    }
+
     hp_caster = ((caster->options & CASTER_USE_HP) || (p_ptr->pclass == CLASS_NINJA_LAWYER));
+    if (poli) hp_caster = (politician_get_toggle() == POLLY_TOGGLE_HPCAST);
 
     if (p_ptr->confused)
     {
@@ -726,6 +774,8 @@ void do_cmd_spell(void)
         max_cost = p_ptr->concent;
     else if (hp_caster)
         max_cost = p_ptr->chp;
+    else if (poli)
+        max_cost = politician_max_cost();
     else if (caster->options & CASTER_USE_AU)
         max_cost = p_ptr->au;
     else
@@ -735,12 +785,15 @@ void do_cmd_spell(void)
     if (choice >= 0 && choice < ct)
     {
         spell_info *spell = &spells[choice];
+        int ongelma = 0;
 
         if (spell->level > p_ptr->lev)
         {
             msg_print("You can't use that spell yet!");
             return;
         }
+
+        if (poli) ongelma = politician_verify_spell(spell);
 
         /* Verify Cost ... Note, I'm removing options for over exertion
            Also note we now pay casting costs up front for mana casters.
@@ -770,7 +823,18 @@ void do_cmd_spell(void)
                 return;
             }
         }
-        else
+        else if (ongelma == POLLY_TOGGLE_AUCAST)
+        {
+            msg_print("You do not have enough disposable gold to use this power.");
+            return;
+        }
+        else if (ongelma == POLLY_TOGGLE_XPCAST)
+        {
+            if (prace_is_(RACE_ANDROID)) msg_print("You have taxed your construction too much to use this power now.");
+            else msg_print("You do not have enough experience to draw on.");
+            return;
+        }
+        else if (!poli)
         {
             if (spell->cost > p_ptr->csp)
             {
@@ -789,7 +853,7 @@ void do_cmd_spell(void)
             if (flush_failure) flush();
             msg_print("You failed to concentrate hard enough!");
             if (prompt_on_failure) msg_print(NULL);
-            if (!(caster->options & CASTER_USE_AU) && !hp_caster && demigod_is_(DEMIGOD_ATHENA) )
+            if (!(caster->options & CASTER_USE_AU) && !hp_caster && !poli && demigod_is_(DEMIGOD_ATHENA) )
                 p_ptr->csp += spell->cost/2;
             if (caster->on_fail != NULL)
                 (caster->on_fail)(spell);
@@ -797,10 +861,11 @@ void do_cmd_spell(void)
         else
         {
             if (!cast_spell(spell->fn))
-            {
+            {	
                 /* Give back the spell cost, since the user canceled the spell
                  * There is no CASTER_USE_SP flag so we need to check all the alternatives */
-                if ((!hp_caster) && (!(caster->options & (CASTER_USE_AU | CASTER_USE_CONCENTRATION)))) p_ptr->csp += spell->cost;
+                if ((!hp_caster) && (!poli) && (!(caster->options & (CASTER_USE_AU | CASTER_USE_CONCENTRATION)))) 
+                    p_ptr->csp += spell->cost;
                 return;
             }
             spell_stats_on_cast(spell);
@@ -809,9 +874,12 @@ void do_cmd_spell(void)
 
         energy_use = get_spell_energy(spell->fn);
 
-        if ((hp_caster) && spell->cost > 0)
+        if (poli) /* Do nothing - let on_cast handle it */
+        {
+        }
+        else if ((hp_caster) && spell->cost > 0)
             take_hit(DAMAGE_USELIFE, spell->cost, "concentrating too hard");
-        if ((caster->options & CASTER_USE_AU) && spell->cost > 0)
+        else if ((caster->options & CASTER_USE_AU) && spell->cost > 0)
         {
             p_ptr->au -= spell->cost;
             stats_on_gold_services(spell->cost); /* ? */
