@@ -1,14 +1,27 @@
 N:*:Default
+'Albert'
+'Algol'
 'Aquilon Lamp'
+'Blinder'
+'Centennial Light'
 'Corona'
+'Everyellow'
 'Eye of Argon'
 'Fairie Light'
 'Firefly'
 'Foxfire'
+'Glow in the Dark'
+'Headlight'
 'Lucky Star'
+'Mimosa'
 'Moonglow'
+'Morning Moth'
+'Orange Star'
 'Pathfinder'
+'Photonspitter'
+'Pizza'
 'Planaria'
+'Red Eye'
 'Scintillator'
 'Silverlight'
 'Skycleaver'
@@ -16,6 +29,16 @@ N:*:Default
 'Talisman'
 'Tarazed'
 'Trailblazer'
+'Yellow Light'
 of Alhazred
 of Mordenkainen
 of Otiluke
+of Nargothrond
+of Thalos
+of Elenna
+of Cherenkov
+of the Long Night
+of Tume
+of Alimoit
+of the Forest Martens
+of the Illuminati
