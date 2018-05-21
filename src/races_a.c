@@ -91,8 +91,8 @@ int android_obj_exp(object_type *o_ptr)
 
     value = _obj_value(o_ptr);
     if (value <= 0) return 0;
-    if (object_is_(o_ptr, TV_SOFT_ARMOR, SV_ABUNAI_MIZUGI) && p_ptr->personality != PERS_SEXY)
-        value /= 32;
+    if (object_is_(o_ptr, TV_SOFT_ARMOR, SV_ABUNAI_MIZUGI) && p_ptr->personality != PERS_SEXY
+        && p_ptr->pclass != CLASS_POLITICIAN) value /= 32;
     if (value > 5000000) value = 5000000;
 
     level = MAX(k_info[o_ptr->k_idx].level - 8, 1);
@@ -161,6 +161,7 @@ void android_calc_exp(void)
         total_exp += android_obj_exp(o_ptr);
     }
     p_ptr->exp = p_ptr->max_exp = total_exp;
+    if (p_ptr->pclass == CLASS_POLITICIAN) politician_android_experience();
     check_experience();
 }
 
@@ -448,7 +449,8 @@ race_t *balrog_get_race(void)
  ****************************************************************/
 static void _barbarian_gain_level(int new_level)
 {
-	if (new_level >= 30)
+	if ((new_level >= 30) && (p_ptr->prace != RACE_DOPPELGANGER)) 
+      /* bostock says doppel barbies are strong enough without a demigod power */
 	{
 		if (p_ptr->demigod_power[0] < 0)
 		{
@@ -1170,6 +1172,7 @@ static int _draconian_attack_level(void)
     case CLASS_RED_MAGE:
     case CLASS_WEAPONSMITH:
     case CLASS_ROGUE:
+    case CLASS_ALCHEMIST:
         l = MAX(1, l * 105 / 100);
         break;
     case CLASS_PRIEST:
@@ -1188,6 +1191,7 @@ static int _draconian_attack_level(void)
     case CLASS_BARD:
     case CLASS_TIME_LORD:
     case CLASS_WARLOCK:
+    case CLASS_POLITICIAN:
     case CLASS_RAGE_MAGE:
         l = MAX(1, l * 90 / 100);
         break;
@@ -1512,7 +1516,7 @@ race_t *draconian_get_race(int psubrace)
  ****************************************************************/
 static void _dunadan_gain_level(int new_level)
 {
-	if (new_level >= 30)
+	if ((new_level >= 30) && (p_ptr->prace != RACE_DOPPELGANGER))
 	{
 		if (p_ptr->demigod_power[0] < 0)
 		{
