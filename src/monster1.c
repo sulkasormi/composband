@@ -535,6 +535,13 @@ void set_friendly(monster_type *m_ptr)
     m_ptr->smart |= (1U << SM_FRIENDLY);
 }
 
+void set_friendly_ingame(monster_type *m_ptr)
+{
+    m_ptr->smart |= (1U << SM_FRIENDLY);
+    quests_on_kill_mon(m_ptr);
+    politician_set_friend(m_ptr->r_idx, TRUE);
+}
+
 void set_pet(monster_type *m_ptr)
 {
     if (!is_pet(m_ptr)) check_pets_num_and_align(m_ptr, TRUE);
@@ -544,19 +551,69 @@ void set_pet(monster_type *m_ptr)
     m_ptr->smart |= (1U << SM_PET);
     if (!(r_info[m_ptr->r_idx].flags3 & (RF3_EVIL | RF3_GOOD)))
         m_ptr->sub_align = SUB_ALIGN_NEUTRAL;
+    politician_set_friend(m_ptr->r_idx, TRUE);
 }
 
 /*
  * Makes the monster hostile towards the player
  */
 void set_hostile(monster_type *m_ptr)
-{
+{   
+    int i;
+    bool was_pet = FALSE;
     if (p_ptr->inside_battle) return;
+    if (is_hostile(m_ptr)) return; /* Nothing to do */
 
-    if (is_pet(m_ptr)) check_pets_num_and_align(m_ptr, FALSE);
+    if (is_pet(m_ptr)) 
+    {
+        check_pets_num_and_align(m_ptr, FALSE);
+        was_pet = TRUE;
+    }
 
     m_ptr->smart &= ~(1U << SM_PET);
     m_ptr->smart &= ~(1U << SM_FRIENDLY);
+    politician_set_friend(m_ptr->r_idx, FALSE);
+    for (i = 1; i < m_max; i++) /* The monster's dependents also turn hostile */
+    {
+        monster_type *mon = &m_list[i];
+        bool seuraaja = FALSE;
+        if (!mon || !mon->r_idx) continue; /* No monster */
+        if (i == p_ptr->riding) continue; /* Not the mount */
+        if (!mon->pack_idx && !mon->parent_m_idx) continue;
+        if (is_hostile(mon)) continue;
+        if (mon->parent_m_idx == m_ptr->id) seuraaja = TRUE;
+        else if ((mon->pack_idx) && (pack_info_list[mon->pack_idx].leader_idx == m_ptr->id)) seuraaja = TRUE;
+        if (seuraaja) {
+            monster_race *r_ptr = &r_info[mon->r_idx];
+            bool same_type = (r_ptr->d_char == r_info[m_ptr->r_idx].d_char);
+            bool hostile_align = monster_has_hostile_align(NULL, 0, -1, r_ptr);
+            if ((is_pet(mon)) && (!mon->pack_idx))
+            {
+                if ((!was_pet) || (one_in_(same_type ? (hostile_align ? (p_ptr->spin ? 12 : 24) : (p_ptr->spin ? 3 : 6)) : (hostile_align ? (p_ptr->spin ? 3 : 6) : (p_ptr->spin ? 1 : 3)))))
+                /* The monster becomes our direct pet */
+                {
+                    mon_set_parent(mon, 0);
+                    continue;
+                }                
+            }
+            else if (!mon->pack_idx)
+            {
+                if ((!hostile_align) && (one_in_(same_type ? (p_ptr->spin ? 5 : 10) : (p_ptr->spin ? 3 : 5))))
+                {
+                    mon_set_parent(mon, 0);
+                    continue;
+                }
+            }
+            /* Mon gets angry */
+            if (mon->ml)
+            {
+                char m_name[80];                     
+                monster_desc(m_name, mon, 0);
+                msg_format("%^s gets angry!", m_name);
+            }
+            set_hostile(mon); /* We call ourselves from inside a loop because that's how awesome we are */
+        }
+    }
 }
 
 
@@ -566,7 +623,8 @@ void set_hostile(monster_type *m_ptr)
 void anger_monster(monster_type *m_ptr)
 {
     if (p_ptr->inside_battle) return;
-    if (is_friendly(m_ptr))
+    if ((is_friendly(m_ptr)) || (is_pet(m_ptr) && (one_in_(3)) &&
+        (r_info[m_ptr->r_idx].max_num < 10) && (m_ptr->id != p_ptr->riding)))
     {
         char m_name[80];
 
