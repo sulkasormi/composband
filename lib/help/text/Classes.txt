@@ -579,6 +579,28 @@ Magic
     
   
 Devices
+  Alchemist
+  Alchemists are masters of tinctures, concoctions and infusions. They 
+  can prepare themselves set infusions from potions that replicate the 
+  effect - without consuming inventory space or being in danger of 
+  shattering. They are reasonably good at melee, especially with the 
+  right potions, though they cannot rival melee specialists. Even bad 
+  potions are useful in their hands, as weapons or ingredients. Their 
+  other abilities include creating copies of potions and turning items 
+  to gold. They require intelligence for some of their abilities.
+  
+  
+    Stats                   Skills
+    Strength      +0        Disarming   Excellent    
+    Intelligence  +2        Device      Fair         
+    Wisdom        -1        Save        Fair         
+    Dexterity     +2        Stealth     Excellent    
+    Constitution  +0        Searching   Excellent    
+    Charisma      -2        Perception  Fair         
+    Life Rating  101%       Melee       Excellent    
+    Base HP       12        Bows        Excellent    
+    Experience   135%
+    
   Devicemaster
   Devicemasters are excellent with magical devices, but poor in most 
   other skills. They may shoot or use melee in a pinch, but this will 
@@ -1181,6 +1203,25 @@ Other
     Base HP       12        Bows        Fair         
     Experience   115%
     
+  Politician
+  Politicians are masters of spinning and manipulation, seeking to 
+  convert others to their cause and to destroy those they cannot 
+  convert. They are not very good at either direct combat or at using 
+  magical devices, and rely on their savvy and special skills and on 
+  the help of their friends to win fights. Charisma is a key stat for 
+  Politicians.
+  
+    Stats                   Skills
+    Strength      -2        Disarming   Superb       
+    Intelligence  +1        Device      Fair         
+    Wisdom        +0        Save        Good         
+    Dexterity     -2        Stealth     Superb       
+    Constitution  +0        Searching   Excellent    
+    Charisma      +2        Perception  Fair         
+    Life Rating  100%       Melee       Very Bad     
+    Base HP        9        Bows        Bad          
+    Experience   130%
+    
   Rage-Mage
   The Rage Mage is part of a secret sect descending from the Barbarians 
   in response to their natural foes, the mages. As time passed, other 
@@ -1316,6 +1357,7 @@ Mage           -4   +3   +0   +1   -2   -2   95%   +0  130%
 Necromancer    -2   +3   -4   +1   -1   -2   95%   +2  125%
 Sorcerer       -5   +0   -2   +2   +0   +6   65%   +0  160%
 Yellow-Mage    -4   +3   +0   +1   -2   -2   95%   +0  130%
+Alchemist      +0   +2   -1   +2   +0   -2  101%  +12  135%
 Devicemaster   -1   +2   +1   +2   -2   -2  101%   +6  130%
 Magic-Eater    -1   +2   +1   +2   -2   -2  103%   +6  130%
 Priest         -1   -3   +3   -1   +0   +2  100%   +4  120%
@@ -1338,6 +1380,7 @@ Warlock        -1   +2   -3   +0   +2   +4  107%  +15  135%
 Archaeologist  -1   +1   +2   +1   -1   +0  106%   +8  120%
 Bard           -2   +1   +2   -1   -2   +4  100%   +4  140%
 Lawyer         -3   +2   +0   +0   -1   +1  102%  +12  115%
+Politician     -2   +1   +0   -2   +0   +2  100%   +9  130%
 Rage-Mage      +3   -2   -2   -2   +2   +1  106%   +6  150%
 Skillmaster    +0   +0   +0   +0   +0   +0  100%  +10  130%
 Tourist        -1   -1   -1   -1   -1   -3   95%   +0   70%
@@ -1368,6 +1411,7 @@ Mage          Fair          Superb        Good          Good
 Necromancer   Fair          Superb        Good          Very Good    
 Sorcerer      Fair          Heroic        Heroic        Fair         
 Yellow-Mage   Fair          Superb        Good          Good         
+Alchemist     Excellent     Fair          Fair          Excellent    
 Devicemaster  Poor          Superb        Fair          Fair         
 Magic-Eater   Poor          Superb        Fair          Fair         
 Priest        Poor          Very Good     Excellent     Fair         
@@ -1390,6 +1434,7 @@ Warlock       Poor          Superb        Excellent     Very Good
 Archaeologist Superb        Excellent     Fair          Very Good    
 Bard          Poor          Excellent     Fair          Very Bad     
 Lawyer        Superb        Very Good     Good          Good         
+Politician    Superb        Fair          Good          Superb       
 Rage-Mage     Bad           Bad           Superb        Bad          
 Skillmaster   Very Bad      Very Bad      Very Bad      Poor         
 Tourist       Bad           Bad           Bad           Fair         
@@ -1420,6 +1465,7 @@ Mage          Poor          Fair          Very Bad      Very Bad
 Necromancer   Poor          Fair          Very Bad      Very Bad     
 Sorcerer      Poor          Fair          Very Bad      Very Bad     
 Yellow-Mage   Poor          Fair          Very Bad      Very Bad     
+Alchemist     Excellent     Fair          Excellent     Excellent    
 Devicemaster  Fair          Poor          Fair          Poor         
 Magic-Eater   Fair          Poor          Fair          Poor         
 Priest        Poor          Bad           Fair          Poor         
@@ -1442,6 +1488,7 @@ Warlock       Poor          Fair          Fair          Poor
 Archaeologist Excellent     Good          Very Good     Poor         
 Bard          Poor          Fair          Bad           Bad          
 Lawyer        Excellent     Good          Good          Fair         
+Politician    Excellent     Fair          Very Bad      Bad          
 Rage-Mage     Poor          Bad           Fair          Fair         
 Skillmaster   Bad           Bad           Very Bad      Very Bad     
 Tourist       Poor          Bad           Fair          Bad          
