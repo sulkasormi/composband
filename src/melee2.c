@@ -248,6 +248,9 @@ void mon_take_hit_mon(int m_idx, int dam, bool *fear, cptr note, int who)
         }
     }
 
+    /* Mark monster as hurt */
+    if (dam > 0) m_ptr->mflag2 |= MFLAG2_HURT;
+
     /* Hurt it */
     m_ptr->hp -= dam;
 
@@ -2150,6 +2153,49 @@ static void process_monster(int m_idx)
             }
         }
     }
+    else if ((is_pet(m_ptr)) && (p_ptr->csp * 15 <= p_ptr->msp * 14))
+    {
+        int upkeep_factor = calculate_upkeep();
+        while (upkeep_factor > SAFE_UPKEEP_PCT) /* Neglected pets */
+        {
+            if (unique_is_friend(m_ptr->r_idx)) break;
+            if (p_ptr->csp * 3 > p_ptr->msp) 
+            {
+                 if (randint0(p_ptr->msp) < p_ptr->csp) break;
+            }
+            /* Evil monsters and good monsters turn hostile more easily
+             * (evil monsters because they're untrustworthy, and good
+             * monsters because they expect more from the player) */
+            if (!one_in_((r_ptr->flags3 & (RF3_EVIL | RF3_GOOD)) ? 2 : 4)) break;
+            if (randint1(1500) > upkeep_factor) break;
+            /* Preferentially keep uniques and high-level pets */
+            if ((r_ptr->flags1 & RF1_UNIQUE) && ((!one_in_(3)) || (randint1(1500) > upkeep_factor))) break;
+            if ((randint1(125) < r_ptr->level) && (randint1(2000) > upkeep_factor)) break;
+            if ((!m_ptr->parent_m_idx) && (one_in_(2))) break;
+            /* Uniques turn hostile less often. Hydras always disappear */
+            if (((r_ptr->flags1 & RF1_UNIQUE) && (one_in_(2))) || (r_ptr->d_char == 'M') ||
+                ((p_ptr->csp) && (randint0(p_ptr->msp) < p_ptr->csp) && (randint1(125) > r_ptr->level))) /* Screw this, I'm outta here */
+            {
+                if (see_m)
+                {
+                    char m_name[80];
+                    monster_desc(m_name, m_ptr, 0);
+                    msg_format("<color:G>%^s</color> feels neglected.", m_name);
+                    cmsg_format(TERM_L_RED, "%^s disappears!", m_name);
+                }
+                delete_monster_idx(m_idx);
+                return;
+            }
+            else /* Turn hostile */
+            {
+                char m_name[80];
+                monster_desc(m_name, m_ptr, 0);
+                msg_format("<color:G>%^s</color> feels neglected.", m_name);
+                cmsg_format(TERM_L_RED, "%^s gets angry!", m_name);
+                set_hostile(m_ptr);
+            }
+        }
+    }
 
     if ((m_ptr->mflag2 & MFLAG2_CHAMELEON) && one_in_(13) && !MON_CSLEEP(m_ptr))
     {
@@ -2240,7 +2286,7 @@ static void process_monster(int m_idx)
     if (m_ptr->r_idx == MON_SHURYUUDAN)
         mon_take_hit_mon(m_idx, 1, &fear, " explodes into tiny shreds.", m_idx);
 
-    if ((is_pet(m_ptr) || is_friendly(m_ptr)) && ((r_ptr->flags1 & RF1_UNIQUE) || (r_ptr->flags7 & RF7_NAZGUL)) && !p_ptr->inside_battle)
+    if (((is_pet(m_ptr)) || ((is_friendly(m_ptr)) && ((r_ptr->flags1 & RF1_UNIQUE) || (r_ptr->flags7 & RF7_NAZGUL)))) && (!p_ptr->inside_battle))
     {
         static int riding_pinch = 0;
 
@@ -2270,8 +2316,8 @@ static void process_monster(int m_idx)
                         player_has_los_bold(m_ptr->fy, m_ptr->fx) && projectable(m_ptr->fy, m_ptr->fx, py, px))
                     {
                         msg_format("%^s says 'It is the pinch! I will retreat'.", m_name);
+                        msg_format("%^s reads a scroll of Teleport Level.", m_name);
                     }
-                    msg_format("%^s reads a scroll of Teleport Level.", m_name);
                     msg_format("%^s disappears.", m_name);
                 }
 
@@ -2331,10 +2377,10 @@ static void process_monster(int m_idx)
     }
 
     /* No one wants to be your friend if you're aggravating */
-    if (is_friendly(m_ptr) && (p_ptr->cursed & OFC_AGGRAVATE))
+    if (is_friendly(m_ptr) && (p_ptr->cursed & OFC_AGGRAVATE) && (!p_ptr->uimapuku))
         gets_angry = TRUE;
 
-    /* Paranoia... no pet uniques outside wizard mode -- TY */
+    /* Uniques are hard to keep tame */
     if (is_pet(m_ptr) &&
         ((((r_ptr->flags1 & RF1_UNIQUE) || (r_ptr->flags7 & RF7_NAZGUL)) &&
           monster_has_hostile_align(NULL, 10, -10, r_ptr))))
@@ -2464,7 +2510,7 @@ static void process_monster(int m_idx)
             /* Select the file for monster quotes */
             if (MON_MONFEAR(m_ptr))
                 filename = "monfear.txt";
-            else if (is_friendly(m_ptr))
+            else if ((is_friendly(m_ptr)) || (is_pet(m_ptr)))
                 filename = "monfrien.txt";
             else
                 filename = "monspeak.txt";
@@ -2566,6 +2612,7 @@ static void process_monster(int m_idx)
         /* Angry monsters will eventually spell if they get too pissed off.
          * Monsters are angered by distance attacks (spell casters/archers) */
         freq += m_ptr->anger;
+
         if (freq > 100) freq = 100;
 
         /* XXX Adapt spell frequency down if monster is stunned (EXPERIMENTAL)
@@ -2595,6 +2642,7 @@ static void process_monster(int m_idx)
                     if (mon_show_msg(m_ptr))
                         msg_format("%^s tries to break your anti-magic ray but fails.", m_name);
                     m_ptr->anti_magic_ct--;
+
                     return;
                 }
                 else
@@ -3799,6 +3847,7 @@ void process_monsters(void)
 
             if (MON_FAST(m_ptr)) speed += 10;
             if (MON_SLOW(m_ptr)) speed -= 10;
+            if (p_ptr->filibuster) speed -= SPEED_ADJ_FILIBUSTER;
         }
 
         /* Give this monster some energy */
@@ -3851,6 +3900,9 @@ void process_monsters(void)
         process_monster(i);
 
         reset_target(m_ptr);
+
+        /* Mark as not hurt */
+        m_ptr->mflag2 &= ~(MFLAG2_HURT);
 
         /* Give up flow_by_smell when it might useless */
         if (p_ptr->no_flowed && one_in_(3))
