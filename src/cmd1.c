@@ -5454,9 +5454,9 @@ void move_player(int dir, bool do_pickup, bool break_trap)
                 py_attack(y, x, 0);
                 oktomove = FALSE;
             }
-            else if (monster_can_cross_terrain(cave[py][px].feat, r_ptr, 0))
+            else if ((monster_can_cross_terrain(cave[py][px].feat, r_ptr, 0)))
             {
-                do_past = TRUE;
+                do_past = (m_ptr->id != p_ptr->riding);
             }
             else
             {
@@ -6678,9 +6678,8 @@ void travel_step(void)
     int old_run = travel.run;
     int dirs[8] = { 2, 4, 6, 8, 1, 7, 9, 3 };
     point_t pt_best = {0};
-	cave_type *c_ptr;
-	int py_old=py;
-	int px_old=px;
+    int py_old=py;
+    int px_old=px;
 
     find_prevdir = travel.dir;
 
