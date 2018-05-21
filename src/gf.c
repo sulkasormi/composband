@@ -831,7 +831,7 @@ int gf_affect_p(int who, int type, int dam, int flags)
     case GF_MANA:
     case GF_SEEKER:
     case GF_SUPER_RAY:
-        if (fuzzy) msg_print("You are hit by an touch of magic!");
+        if (fuzzy) msg_print("You are hit by pure magic!");
         result = take_hit(damage_type, dam, m_name);
         break;
     case GF_PSY_SPEAR:
@@ -2717,6 +2717,11 @@ bool gf_affect_m(int who, mon_ptr mon, int type, int dam, int flags)
         break;
     case GF_CHARM:
     case GF_CHARM_RING_BEARER:
+    {
+        int voima, taso = race->level, mon_difficulty = 0;
+        bool is_friend = is_friendly(mon);
+        if ((type == GF_CHARM) && (is_pet(mon))) return (obvious);
+
         if (seen) obvious = TRUE;
 
         if (type == GF_CHARM_RING_BEARER)
@@ -2731,12 +2736,42 @@ bool gf_affect_m(int who, mon_ptr mon, int type, int dam, int flags)
         else
         {
             dam += (adj_con_fix[p_ptr->stat_ind[A_CHR]] - 1);
-            dam += virtue_current(VIRTUE_HARMONY)/10;
-            dam -= virtue_current(VIRTUE_INDIVIDUALISM)/20;
+            if (p_ptr->pclass != CLASS_POLITICIAN)
+            {
+                dam += virtue_current(VIRTUE_HARMONY)/10;
+                dam -= virtue_current(VIRTUE_INDIVIDUALISM)/20;
+            }
+            else
+            {
+                switch (politician_get_toggle())
+                {
+                    case POLLY_TOGGLE_AUCAST:
+                        if (race->flags3 & RF3_EVIL) dam += (dam / 10);
+                        break;
+                    case POLLY_TOGGLE_XPCAST:
+                        if (!(race->flags3 & RF3_EVIL) && !(race->flags3 & RF3_GOOD)) dam += (dam / 10);
+                        break;
+                    default:
+                        if (race->flags3 & RF3_GOOD) dam += (dam / 10);
+                        break;
+                }
+            }
             if (p_ptr->spin > 0) dam += MAX(25, dam * 2 / 5);
-            if ((race->flags1 & RF1_UNIQUE) || (race->flags7 & RF7_NAZGUL))
-                dam = dam * 2 / 3;
+            if (p_ptr->uimapuku) dam = dam * 3 / 2;
+            if ((race->flags1 & RF1_UNIQUE) || (race->flags7 & RF7_NAZGUL) ||
+                (mon->mflag2 & MFLAG2_QUESTOR))
+            {
+                if (p_ptr->uimapuku) dam = dam * 18 / 25; /* Fine-tuned to give a maxed-out mode-bonus polly a 1 in 90 chance of charming a level 100 unique */
+                else dam = dam * 2 / 3;
+            }
         }
+        if (race->flags1 & RF1_UNIQUE) mon_difficulty = 25;
+        if ((dungeon_type) && (d_info[dungeon_type].final_guardian == mon->r_idx)) mon_difficulty = 50;
+        if (mon->mflag2 & MFLAG2_QUESTOR) mon_difficulty = 50;
+        taso = MAX(taso, mon_difficulty);
+        voima = randint1(dam);
+
+        if (p_ptr->wizard) msg_format("Charm power: %d/%d", voima, dam);
 
         if ((race->flagsr & RFR_RES_ALL) || (mon->mflag2 & MFLAG2_NOPET) || p_ptr->inside_arena)
         {
@@ -2745,34 +2780,45 @@ bool gf_affect_m(int who, mon_ptr mon, int type, int dam, int flags)
             mon_lore_r(mon, RFR_RES_ALL);
             break;
         }
-        else if (mon->mflag2 & MFLAG2_QUESTOR)
+        else if ((mon->mflag2 & MFLAG2_QUESTOR) && (!p_ptr->uimapuku))
         {
-            note = " is unaffected!";
+            if (!is_friend) note = " is unaffected!";
             obvious = FALSE;
         }
-        else if (race->level > randint1(dam))
+        else if (taso > voima)
         {
-            note = " resists!";
+            if (!is_friend) note = " resists!";
             obvious = FALSE;
-            if (one_in_((p_ptr->spin > 0) ? 10 : 5)) mon->mflag2 |= MFLAG2_NOPET;
+            if ((one_in_((p_ptr->spin > 0) ? 10 : 5)) && (!p_ptr->uimapuku) && (!is_friendly(mon))) mon->mflag2 |= MFLAG2_NOPET;
         }
-        else if (p_ptr->cursed & OFC_AGGRAVATE)
+        else if ((p_ptr->cursed & OFC_AGGRAVATE) && ((!p_ptr->uimapuku) || (!one_in_(3))))
         {
-            note = " hates you too much!";
-            if (one_in_((p_ptr->spin > 0) ? 10 : 5)) mon->mflag2 |= MFLAG2_NOPET;
+            if (!is_friend) note = " hates you too much!";
+            if ((one_in_((p_ptr->spin > 0) ? 10 : 5)) && (!p_ptr->uimapuku) && (!is_friendly(mon))) mon->mflag2 |= MFLAG2_NOPET;
         }
         else
         {
-            note = " suddenly seems friendly!";
+            bool upgrade = !is_friend;
 
-            set_pet(mon);
+            if ((!mon_difficulty) || (dam > taso * 2) || (one_in_(10)))
+            {
+                set_pet(mon);
+                upgrade = TRUE;
+            }
+            else set_friendly_ingame(mon);
 
-            virtue_add(VIRTUE_INDIVIDUALISM, -1);
-            if (race->flags3 & RF3_ANIMAL)
-                virtue_add(VIRTUE_NATURE, 1);
+            if (upgrade)
+            {
+                virtue_add(VIRTUE_INDIVIDUALISM, -1);
+                if (race->flags3 & RF3_ANIMAL)
+                    virtue_add(VIRTUE_NATURE, 1);
+                if (is_friend) note = " suddenly seems even more friendly!";
+                else note = " suddenly seems friendly!";
+            }
         }
         dam = 0;
         break;
+    }
     case GF_CONTROL_UNDEAD:
         if (seen) obvious = TRUE;
 
@@ -3735,11 +3781,20 @@ bool gf_affect_m(int who, mon_ptr mon, int type, int dam, int flags)
             skipped = TRUE;
             break;
         }
-        if ( (race->flags1 & RF1_UNIQUE)
-          || (race->flags7 & RF7_NAZGUL)
-          || (race->flags7 & RF7_UNIQUE2)
+        if ( (race->flags7 & RF7_UNIQUE2)
           || (mon->mflag2 & MFLAG2_QUESTOR)
+          || (mon->r_idx == MON_BANOR)
+          || (mon->r_idx == MON_LUPART)
+          || (mon->r_idx == MON_BANORLUPART)
           || mon->parent_m_idx )
+        {
+            msg_format("%^s is unaffected.", m_name);
+            skipped = TRUE;
+            break;
+        }
+        if ( ((race->flags1 & RF1_UNIQUE)
+          || (race->flags7 & RF7_NAZGUL))
+          && (!is_pet(mon)))
         {
             msg_format("%^s is unaffected.", m_name);
             skipped = TRUE;
@@ -3787,6 +3842,10 @@ bool gf_affect_m(int who, mon_ptr mon, int type, int dam, int flags)
         }
         break; }
     case GF_ATTACK: /* dam = py_attack_mode */
+        if (who > 0)
+        {
+            return mon_attack_mon(who, mon->id);
+        }
         if (dam == BEHOLDER_GAZE && !los(mon->fy, mon->fx, py, px))
         {
             if (seen_msg) msg_format("%^s can't see you, and isn't affected!", m_name);
@@ -4525,7 +4584,7 @@ bool gf_affect_m(int who, mon_ptr mon, int type, int dam, int flags)
         /* Get local object */
         q_ptr = &forge;
 
-        /* Prepare to make a Blade of Chaos */
+        /* Prepare to make a photograph */
         object_prep(q_ptr, lookup_kind(TV_STATUE, SV_PHOTO));
 
         q_ptr->pval = photo;
@@ -4535,7 +4594,8 @@ bool gf_affect_m(int who, mon_ptr mon, int type, int dam, int flags)
         q_ptr->ident |= (IDENT_KNOWN);
 
         /* Drop it in the dungeon */
-        (void)drop_near(q_ptr, -1, py, px);
+        pack_carry(q_ptr);
+        obj_release(q_ptr, OBJ_RELEASE_QUIET);
     }
 
     /* Return "Anything seen?" */
