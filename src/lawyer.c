@@ -20,6 +20,14 @@ byte lawyer_hack(magic_type *s_ptr, int tyyppi)
         if (tulos > 250) tulos = 250;
         return tulos;
     }
+    if ((s_ptr->realm == REALM_LIFE) && (tyyppi == LAWYER_HACK_LEVEL)
+        && (s_ptr->idx == 23) && (p_ptr->realm1 != REALM_LIFE))
+    {
+        /* Warding True - only available to primary-realm Life casters
+         * Warding True very easily runs into conflicts with the 11-glyph
+         * limit (which primary-realm Life casters are exempt from) */
+        return 99;
+    }
     if (s_ptr->realm == REALM_LAW)
     {
         if (prace_is_(RACE_VAMPIRE) || prace_is_(RACE_ENT)) sopivuus++;
