@@ -355,7 +355,22 @@ Experience   130%
 </style></indent>
 </indent>
 <style:heading>Devices</style>
-  <indent><topic:Devicemaster><color:o>Devicemaster</color>
+  <indent><topic:Alchemist><color:o>Alchemist</color>
+Alchemists are masters of tinctures, concoctions and infusions. They can prepare themselves set infusions from potions that replicate the effect - without consuming inventory space or being in danger of shattering. They are reasonably good at melee, especially with the right potions, though they cannot rival melee specialists. Even bad potions are useful in their hands, as weapons or ingredients. Their other abilities include creating copies of potions and turning items to gold. They require intelligence for some of their abilities.
+
+
+  <indent><style:table><color:G>Stats                   Skills</color>
+Strength     <color:w> +0</color>        Disarming   <color:G>Excellent    </color>
+Intelligence <color:v> +2</color>        Device      <color:o>Fair         </color>
+Wisdom       <color:w> -1</color>        Save        <color:o>Fair         </color>
+Dexterity    <color:w> +2</color>        Stealth     <color:G>Excellent    </color>
+Constitution <color:w> +0</color>        Searching   <color:G>Excellent    </color>
+Charisma     <color:w> -2</color>        Perception  <color:o>Fair         </color>
+Life Rating  101%       Melee       <color:G>Excellent    </color>
+Base HP       12        Bows        <color:G>Excellent    </color>
+Experience   135%
+</style></indent>
+<topic:Devicemaster><color:o>Devicemaster</color>
 Devicemasters are excellent with magical devices, but poor in most other skills. They may shoot or use melee in a pinch, but this will never be their forte. Instead, they must rely on their arsenal of magical devices in order to survive.
  
 The Devicemaster chooses to specialize in a particular class of devices and they gain extra bonuses when using devices from their speciality. These bonuses include increased damage, increased speed of activation, extra resistance to charge draining, and even the ability to occasionally power these devices without consuming charges. Each of these abilities becomes greater with experience. In addition, they gain enhanced device skill with speciality devices.
@@ -713,6 +728,20 @@ Life Rating  102%       Melee       <color:y>Good         </color>
 Base HP       12        Bows        <color:o>Fair         </color>
 Experience   115%
 </style></indent>
+<topic:Politician><color:o>Politician</color>
+Politicians are masters of spinning and manipulation, seeking to convert others to their cause and to destroy those they cannot convert. They are not very good at either direct combat or at using magical devices, and rely on their savvy and special skills and on the help of their friends to win fights. Charisma is a key stat for Politicians.
+
+  <indent><style:table><color:G>Stats                   Skills</color>
+Strength     <color:w> -2</color>        Disarming   <color:g>Superb       </color>
+Intelligence <color:w> +1</color>        Device      <color:o>Fair         </color>
+Wisdom       <color:w> +0</color>        Save        <color:y>Good         </color>
+Dexterity    <color:w> -2</color>        Stealth     <color:g>Superb       </color>
+Constitution <color:w> +0</color>        Searching   <color:G>Excellent    </color>
+Charisma     <color:v> +2</color>        Perception  <color:o>Fair         </color>
+Life Rating  100%       Melee       <color:D>Very Bad     </color>
+Base HP        9        Bows        <color:r>Bad          </color>
+Experience   130%
+</style></indent>
 <topic:Rage-Mage><color:o>Rage-Mage</color>
 The Rage Mage is part of a secret sect descending from the Barbarians in response to their natural foes, the mages. As time passed, other races have also begun to learn their arts. The powers of the Rage Mage are spells learned from books, but they don't work the way normal spells do. First of all, the Rage Mage must perform a special Ritual of Anger to learn a spell, and this ritual destroys the spell book in the process. As a result, it may take a long time for the Rage Mage to learn all of their high level powers. Once learned, the Rage Mage no longers requires the spell book in order to perform the power.
  
@@ -804,6 +833,7 @@ Mage           -4 <color:v>  +3 </color>  +0   +1   -2   -2   95%   +0  130%
 Necromancer    -2 <color:v>  +3 </color>  -4   +1   -1   -2   95%   +2  125%
 Sorcerer       -5   +0   -2   +2   +0 <color:v>  +6 </color>  65%   +0  160%
 Yellow-Mage    -4 <color:v>  +3 </color>  +0   +1   -2   -2   95%   +0  130%
+Alchemist      +0 <color:v>  +2 </color>  -1   +2   +0   -2  101%  +12  135%
 Devicemaster   -1 <color:v>  +2 </color>  +1   +2   -2   -2  101%   +6  130%
 Magic-Eater    -1   +2   +1   +2   -2   -2  103%   +6  130%
 Priest         -1   -3 <color:v>  +3 </color>  -1   +0   +2  100%   +4  120%
@@ -826,6 +856,7 @@ Warlock        -1   +2   -3   +0   +2 <color:v>  +4 </color> 107%  +15  135%
 Archaeologist  -1   +1 <color:v>  +2 </color>  +1   -1   +0  106%   +8  120%
 Bard           -2   +1   +2   -1   -2 <color:v>  +4 </color> 100%   +4  140%
 Lawyer         -3   +2 <color:v>  +0 </color>  +0   -1   +1  102%  +12  115%
+Politician     -2   +1   +0   -2   +0 <color:v>  +2 </color> 100%   +9  130%
 Rage-Mage    <color:v>  +3 </color>  -2   -2   -2   +2   +1  106%   +6  150%
 Skillmaster    +0   +0   +0   +0   +0   +0  100%  +10  130%
 Tourist        -1 <color:v>  -1 </color>  -1   -1   -1   -3   95%   +0   70%
@@ -856,6 +887,7 @@ Mage          <color:o>Fair         </color> <color:g>Superb       </color> <col
 Necromancer   <color:o>Fair         </color> <color:g>Superb       </color> <color:y>Good         </color> <color:y>Very Good    </color>
 Sorcerer      <color:o>Fair         </color> <color:b>Heroic       </color> <color:b>Heroic       </color> <color:o>Fair         </color>
 Yellow-Mage   <color:o>Fair         </color> <color:g>Superb       </color> <color:y>Good         </color> <color:y>Good         </color>
+Alchemist     <color:G>Excellent    </color> <color:o>Fair         </color> <color:o>Fair         </color> <color:G>Excellent    </color>
 Devicemaster  <color:R>Poor         </color> <color:g>Superb       </color> <color:o>Fair         </color> <color:o>Fair         </color>
 Magic-Eater   <color:R>Poor         </color> <color:g>Superb       </color> <color:o>Fair         </color> <color:o>Fair         </color>
 Priest        <color:R>Poor         </color> <color:y>Very Good    </color> <color:G>Excellent    </color> <color:o>Fair         </color>
@@ -878,6 +910,7 @@ Warlock       <color:R>Poor         </color> <color:g>Superb       </color> <col
 Archaeologist <color:g>Superb       </color> <color:G>Excellent    </color> <color:o>Fair         </color> <color:y>Very Good    </color>
 Bard          <color:R>Poor         </color> <color:G>Excellent    </color> <color:o>Fair         </color> <color:D>Very Bad     </color>
 Lawyer        <color:g>Superb       </color> <color:y>Very Good    </color> <color:y>Good         </color> <color:y>Good         </color>
+Politician    <color:g>Superb       </color> <color:o>Fair         </color> <color:y>Good         </color> <color:g>Superb       </color>
 Rage-Mage     <color:r>Bad          </color> <color:r>Bad          </color> <color:g>Superb       </color> <color:r>Bad          </color>
 Skillmaster   <color:D>Very Bad     </color> <color:D>Very Bad     </color> <color:D>Very Bad     </color> <color:R>Poor         </color>
 Tourist       <color:r>Bad          </color> <color:r>Bad          </color> <color:r>Bad          </color> <color:o>Fair         </color>
@@ -908,6 +941,7 @@ Mage          <color:R>Poor         </color> <color:o>Fair         </color> <col
 Necromancer   <color:R>Poor         </color> <color:o>Fair         </color> <color:D>Very Bad     </color> <color:D>Very Bad     </color>
 Sorcerer      <color:R>Poor         </color> <color:o>Fair         </color> <color:D>Very Bad     </color> <color:D>Very Bad     </color>
 Yellow-Mage   <color:R>Poor         </color> <color:o>Fair         </color> <color:D>Very Bad     </color> <color:D>Very Bad     </color>
+Alchemist     <color:G>Excellent    </color> <color:o>Fair         </color> <color:G>Excellent    </color> <color:G>Excellent    </color>
 Devicemaster  <color:o>Fair         </color> <color:R>Poor         </color> <color:o>Fair         </color> <color:R>Poor         </color>
 Magic-Eater   <color:o>Fair         </color> <color:R>Poor         </color> <color:o>Fair         </color> <color:R>Poor         </color>
 Priest        <color:R>Poor         </color> <color:r>Bad          </color> <color:o>Fair         </color> <color:R>Poor         </color>
@@ -930,6 +964,7 @@ Warlock       <color:R>Poor         </color> <color:o>Fair         </color> <col
 Archaeologist <color:G>Excellent    </color> <color:y>Good         </color> <color:y>Very Good    </color> <color:R>Poor         </color>
 Bard          <color:R>Poor         </color> <color:o>Fair         </color> <color:r>Bad          </color> <color:r>Bad          </color>
 Lawyer        <color:G>Excellent    </color> <color:y>Good         </color> <color:y>Good         </color> <color:o>Fair         </color>
+Politician    <color:G>Excellent    </color> <color:o>Fair         </color> <color:D>Very Bad     </color> <color:r>Bad          </color>
 Rage-Mage     <color:R>Poor         </color> <color:r>Bad          </color> <color:o>Fair         </color> <color:o>Fair         </color>
 Skillmaster   <color:r>Bad          </color> <color:r>Bad          </color> <color:D>Very Bad     </color> <color:D>Very Bad     </color>
 Tourist       <color:R>Poor         </color> <color:r>Bad          </color> <color:o>Fair         </color> <color:r>Bad          </color>
