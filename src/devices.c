@@ -546,13 +546,13 @@ static cptr _do_potion(int sval, int mode)
         }
         break;
     case SV_POTION_CURE_POISON: //anti-toxin
-        if (desc) return "It cures poison and grants temporary poison resistance when you quaff it.";
+        if (desc) return "It relieves poisoning and grants temporary poison resistance when you quaff it.";
         if (cast)
         {
 			int dur = _potion_power(10 + randint1(10));
 			if (set_poisoned(p_ptr->poisoned - MAX(400, p_ptr->poisoned / 2), TRUE))
                 device_noticed = TRUE;
-			if (set_oppose_pois(p_ptr->oppose_cold + dur, FALSE))
+			if (set_oppose_pois(p_ptr->oppose_pois + dur, FALSE))
 			{
 				device_noticed = TRUE;
 			}
@@ -1096,6 +1096,14 @@ static cptr _do_potion(int sval, int mode)
     return "";
 }
 
+static bool _scroll_check_no_effect(int sval)
+{
+    int k_idx = lookup_kind(TV_SCROLL, sval);
+    if (!k_info[k_idx].aware) return TRUE;
+    if (msg_prompt("This scroll will have no effect here. Read it anyway? <color:y>[y/n]</color>", "ny", PROMPT_DEFAULT) == 'y') return TRUE;
+    return FALSE;
+}
+
 static cptr _do_scroll(int sval, int mode)
 {
     bool desc = (mode == SPELL_DESC) ? TRUE : FALSE;
@@ -1177,6 +1185,7 @@ static cptr _do_scroll(int sval, int mode)
             int type = 0;
             if (p_ptr->prace == RACE_MON_RING)
                 type = SUMMON_RING_BEARER;
+            if (p_ptr->inside_arena && !type && !prace_is_(RACE_MON_QUYLTHULG) && !_scroll_check_no_effect(sval)) return NULL;
             if (summon_specific(-1, py, px, _scroll_power(dun_level), type, (PM_ALLOW_GROUP | PM_FORCE_PET)))
                 device_noticed = TRUE;
         }
@@ -1185,6 +1194,7 @@ static cptr _do_scroll(int sval, int mode)
         if (desc) return "It summons a monster corresponds to your race as your pet when you read it.";
         if (cast)
         {
+            if (p_ptr->inside_arena && !prace_is_(RACE_MON_QUYLTHULG) && !_scroll_check_no_effect(sval)) return NULL;
             if (summon_kin_player(_scroll_power(p_ptr->lev), py, px, (PM_FORCE_PET | PM_ALLOW_GROUP)))
                 device_noticed = TRUE;
         }
@@ -1222,6 +1232,7 @@ static cptr _do_scroll(int sval, int mode)
         if (desc) return "It teleports you one dungeon level up or down immediately when you read it.";
         if (cast)
         {
+            if ((TELE_LEVEL_IS_INEFF(-1)) && (!_scroll_check_no_effect(sval))) return NULL;
             teleport_level(0);
             device_noticed = TRUE;
         }
@@ -1453,6 +1464,8 @@ static cptr _do_scroll(int sval, int mode)
         if (desc) return "It destroys everything nearby you when you read it.";
         if (cast)
         {
+            if (((!py_in_dungeon()) || (!quests_allow_all_spells()))
+               && (!_scroll_check_no_effect(sval))) return NULL;
             if (destroy_area(py, px, 13 + randint0(5), _scroll_power(2000)))
                 device_noticed = TRUE;
             else
@@ -1496,6 +1509,8 @@ static cptr _do_scroll(int sval, int mode)
                 p_ptr->pclass == CLASS_SCOUT ||
                 p_ptr->pclass == CLASS_MYSTIC ||
                 p_ptr->pclass == CLASS_MAULER ||
+                p_ptr->pclass == CLASS_POLITICIAN ||
+                p_ptr->pclass == CLASS_ALCHEMIST ||
                 p_ptr->pclass == CLASS_SKILLMASTER )
             {
                 msg_print("There is no effect.");
@@ -1512,6 +1527,8 @@ static cptr _do_scroll(int sval, int mode)
         if (desc) return "It eliminates an entire class of monster, exhausting you. Powerful or unique monsters may resist.";
         if (cast)
         {
+            if (((!quests_allow_all_spells()) || (p_ptr->inside_arena) || (p_ptr->inside_battle))
+               && (!_scroll_check_no_effect(sval))) return NULL;
             if (!symbol_genocide(_scroll_power(300), TRUE)) return NULL;
             device_noticed = TRUE;
         }
@@ -1520,6 +1537,8 @@ static cptr _do_scroll(int sval, int mode)
         if (desc) return "It eliminates all nearby monsters, exhausting you. Powerful or unique monsters may be able to resist.";
         if (cast)
         {
+            if (((!quests_allow_all_spells()) || (p_ptr->inside_arena) || (p_ptr->inside_battle))
+               && (!_scroll_check_no_effect(sval))) return NULL;
             mass_genocide(_scroll_power(300), TRUE);
             device_noticed = TRUE;
         }
@@ -1765,8 +1784,13 @@ cptr do_device(object_type *o_ptr, int mode, int boost)
     {
         switch (o_ptr->tval)
         {
-        case TV_SCROLL: result = _do_scroll(o_ptr->sval, mode); break;
-        case TV_POTION: result = _do_potion(o_ptr->sval, mode); break;
+            case TV_SCROLL: result = _do_scroll(o_ptr->sval, mode); break;
+            case TV_POTION:
+            {
+                result = _do_potion(o_ptr->sval, mode);
+                if ((p_ptr->pclass == CLASS_ALCHEMIST) && (mode & SPELL_CAST)) alchemist_super_potion_effect(o_ptr->sval);
+                break;
+            }
         }
     }
     device_known = FALSE;
@@ -4161,10 +4185,18 @@ cptr do_effect(effect_t *effect, int mode, int boost)
         {
             int num = randint1(3);
             int i;
+            bool hostile = (one_in_(10)) ? TRUE : FALSE;
             for (i = 0; i < num; i++)
             {
-                if (summon_specific(-1, py, px, dun_level, 0, PM_FORCE_PET | PM_ALLOW_GROUP))
+                if ((hostile) && (summon_specific(-1, py, px, dun_level + 5, 0, PM_NO_PET | PM_NO_KAGE | PM_ALLOW_GROUP)))
+                {
+                    msg_print("You get the feeling that something's wrong...");
                     device_noticed = TRUE;
+                }
+                else if (summon_specific(-1, py, px, dun_level, 0, PM_FORCE_PET | PM_ALLOW_GROUP | PM_NO_SUMMONERS))
+                {
+                    device_noticed = TRUE;
+                }
             }
         }
         break;
@@ -4176,10 +4208,18 @@ cptr do_effect(effect_t *effect, int mode, int boost)
         {
             int num = randint1(3);
             int i;
+            bool hostile = (one_in_(4)) ? TRUE : FALSE;
             for (i = 0; i < num; i++)
             {
-                if (summon_specific(-1, py, px, dun_level, SUMMON_HOUND, PM_FORCE_PET | PM_ALLOW_GROUP))
+                if ((hostile) && (summon_specific(-1, py, px, dun_level + 5, SUMMON_HOUND, PM_NO_PET | PM_NO_KAGE | PM_ALLOW_GROUP)))
+                {
+                    msg_print("You get the feeling that something's wrong...");
                     device_noticed = TRUE;
+                }
+                else if (summon_specific(-1, py, px, dun_level, SUMMON_HOUND, PM_FORCE_PET | PM_ALLOW_GROUP))
+                {
+                    device_noticed = TRUE;
+                }
             }
         }
         break;
@@ -4191,10 +4231,18 @@ cptr do_effect(effect_t *effect, int mode, int boost)
         {
             int num = randint1(3);
             int i;
+            bool hostile = (one_in_(3)) ? TRUE : FALSE;
             for (i = 0; i < num; i++)
             {
-                if (summon_specific(-1, py, px, dun_level, SUMMON_ANT, PM_FORCE_PET | PM_ALLOW_GROUP))
+                if ((hostile) && (summon_specific(-1, py, px, dun_level + 5, SUMMON_ANT, PM_NO_PET | PM_NO_KAGE | PM_ALLOW_GROUP)))
+                {
+                    msg_print("You get the feeling that something's wrong...");
                     device_noticed = TRUE;
+                }
+                else if (summon_specific(-1, py, px, dun_level, SUMMON_ANT, PM_FORCE_PET | PM_ALLOW_GROUP))
+                {
+                    device_noticed = TRUE;
+                }
             }
         }
         break;
@@ -4206,10 +4254,18 @@ cptr do_effect(effect_t *effect, int mode, int boost)
         {
             int num = randint1(3);
             int i;
+            bool hostile = (one_in_(3)) ? TRUE : FALSE;
             for (i = 0; i < num; i++)
             {
-                if (summon_specific(-1, py, px, dun_level, SUMMON_HYDRA, PM_FORCE_PET | PM_ALLOW_GROUP))
+                if ((hostile) && (summon_specific(-1, py, px, dun_level + 5, SUMMON_REPTILE, PM_NO_PET | PM_NO_KAGE | PM_ALLOW_GROUP)))
+                {
+                    msg_print("You get the feeling that something's wrong...");
                     device_noticed = TRUE;
+                }
+                else if (summon_specific(-1, py, px, dun_level, SUMMON_HYDRA, PM_FORCE_PET | PM_ALLOW_GROUP))
+                {
+                    device_noticed = TRUE;
+                }
             }
         }
         break;
@@ -5834,11 +5890,12 @@ cptr do_effect(effect_t *effect, int mode, int boost)
 	}
 	case EFFECT_BREATHE_WATER:
 	{
-		int dam = _extra(effect, 50 + effect->power * 2);
+		int dam = _extra(effect, 41 + effect->power * 7 / 4);
 		if (name) return "Tsunami";
 		if (desc) return "It fires a torrent of water.";
 		if (info) return info_damage(0, 0, _BOOST(dam));
 		if (value) return format("%d", 30 * dam);
+		if (cost) return format("%d", dam/32);
 		if (cast)
 		{
 			if (!get_fire_dir(&dir)) return NULL;
