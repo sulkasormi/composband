@@ -709,6 +709,13 @@ static int _ninjutsu_handler(obj_prompt_context_ptr context, int cmd)
     return OP_CMD_SKIPPED;
 }
 
+static int _politics_handler(obj_prompt_context_ptr context, int cmd)
+{
+    if ((cmd == 'P') || (cmd == 'p'))
+        return OP_CMD_DISMISS;
+    return OP_CMD_SKIPPED;
+}
+
 #define _CAST 1
 #define _BROWSE 2
 static obj_ptr _get_spellbook(int mode)
@@ -720,7 +727,8 @@ static obj_ptr _get_spellbook(int mode)
         mode == _CAST ? "Use" : "Browse",
         p_ptr->pclass == CLASS_FORCETRAINER ?
             " (<color:keypress>F</color> for the Force)" : p_ptr->pclass == CLASS_NINJA_LAWYER ?
-            " (<color:keypress>N</color> for Ninjutsu)" : "");
+            " (<color:keypress>N</color> for Ninjutsu)" : ((politician_is_magic) && (p_ptr->lev >= POLITICIAN_FIRST_SPELL)) ?
+            " (<color:keypress>P</color> for Politics)" : "");
 
     prompt.prompt = msg;
     prompt.error = "You have no books that you can read.";
@@ -762,6 +770,23 @@ static obj_ptr _get_spellbook(int mode)
         return prompt.obj;
     }
 
+    if (politician_is_magic)
+    {
+        prompt.error = NULL;
+        prompt.cmd_handler = _politics_handler;
+        switch (obj_prompt(&prompt))
+        {
+        case OP_CUSTOM:
+        case OP_NO_OBJECTS:
+            if (mode == _CAST)
+                do_cmd_spell();
+            else
+                do_cmd_spell_browse();
+            return NULL;
+        }
+        return prompt.obj;
+    }
+
     obj_prompt(&prompt);
     return prompt.obj;
 }
@@ -776,7 +801,7 @@ void do_cmd_cast(void)
     int          need_mana;
     int          take_mana;
     int          vaikeustaso;
-    bool	      hp_caster;
+    bool         hp_caster;
     cptr         prayer;
     cptr         spl_verb;
     magic_type  *s_ptr;
@@ -785,9 +810,14 @@ void do_cmd_cast(void)
     /* Require spell ability */
     if (!p_ptr->realm1 && p_ptr->pclass != CLASS_SORCERER && p_ptr->pclass != CLASS_RED_MAGE)
     {
-        msg_print("You cannot cast spells!");
+        if (p_ptr->pclass == CLASS_POLITICIAN)
+        {
+            do_cmd_spell(); /* non-magical politician */
+        }
+        else msg_print("You cannot cast spells!");
         return;
     }
+
 
     /* Require lite */
     if (p_ptr->blind || no_lite())
@@ -1004,7 +1034,7 @@ void do_cmd_cast(void)
         if (hp_caster)
             take_hit(DAMAGE_USELIFE, need_mana, "concentrating too hard");
 
-        if (caster_ptr && caster_ptr->on_cast != NULL)
+        if (caster_ptr && caster_ptr->on_cast != NULL && p_ptr->pclass != CLASS_POLITICIAN)
         {
             spell_info hack = {0};
             hack.level = vaikeustaso;
@@ -1141,7 +1171,7 @@ void do_cmd_cast(void)
                         desc[new_level],
                         do_spell(use_realm, spell % 32, SPELL_NAME));
                 }
-                else if (p_ptr->wizard)
+                else if (p_ptr->wizard || easy_damage)
                 {
                     msg_format("You now have <color:B>%d</color> proficiency in <color:R>%s</color>.",
                         p_ptr->spell_exp[index],
@@ -1335,6 +1365,7 @@ void check_pets_num_and_align(monster_type *m_ptr, bool inc)
 int calculate_upkeep(void)
 {
     s32b old_friend_align = friend_align;
+    bool old_warning = p_ptr->upkeep_warning;
     int m_idx;
     bool have_a_unique = FALSE;
     s32b total_friend_levels = 0;
@@ -1405,7 +1436,10 @@ int calculate_upkeep(void)
         upkeep_factor = (total_friend_levels - (p_ptr->lev * 80 / div));
 
         if (upkeep_factor < 0) upkeep_factor = 0;
-        if (upkeep_factor > 1000) upkeep_factor = 1000;
+        if (upkeep_factor > 100) upkeep_factor += ((upkeep_factor - 100) / 2); /* Punish excessive upkeep */
+        if (upkeep_factor > 1500) upkeep_factor = 1500;
+        p_ptr->upkeep_warning = (upkeep_factor > SAFE_UPKEEP_PCT) ? TRUE : FALSE;
+        if (p_ptr->upkeep_warning != old_warning) p_ptr->redraw |= (PR_STATUS);
         return upkeep_factor;
     }
     else
@@ -1760,6 +1794,22 @@ bool do_riding(bool force)
         {
             msg_print("That monster is not a pet.");
 
+            return FALSE;
+        }
+
+        if (m_ptr->r_idx == MON_AUDE)
+        {
+            int noppa = randint0(9);
+            switch (noppa)
+            {
+             case 0: 
+             case 1: { msg_print("In your dreams."); break; }
+             case 2: 
+             case 3: { msg_print("No can do."); break; }
+             case 4: { msg_print("What game do you think you're playing, Leisure Suit Larry?"); break; }
+             case 5: { msg_print("What game do you think you're playing, Frogspawn?"); break; }
+             default: { msg_print("Feature turned off due to the controversy aroused by the release of FrogComposband 6.9.cream."); break; }
+            }
             return FALSE;
         }
 
