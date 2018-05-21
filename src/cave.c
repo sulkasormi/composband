@@ -4699,14 +4699,15 @@ void cave_alter_feat(int y, int x, int action)
         }
 
         /* Handle item */
-        if (have_flag(old_f_ptr->flags, FF_HAS_ITEM) && !have_flag(f_ptr->flags, FF_HAS_ITEM) && (randint0(100) < (15 - dun_level / 2)))
+        if (have_flag(old_f_ptr->flags, FF_HAS_ITEM) && !have_flag(f_ptr->flags, FF_HAS_ITEM) && (dungeon_type > 0) && (dungeon_type < max_d_idx)
+             && (randint0((dungeon_type == DUNGEON_BATTLEFIELD) ? 600 : 200) < (MAX(1, MIN(24, 36 - dun_level)))) && (dun_level > d_info[dungeon_type].mindepth))
         {
             /* Place object */
             place_object(y, x, 0L, ORIGIN_RUBBLE);
             found = TRUE;
         }
 
-        if (found && character_dungeon && player_can_see_bold(y, x))
+        if (found && character_dungeon && player_can_see_bold(y, x) && cave[y][x].o_idx)
         {
             msg_print("You have found something!");
         }
@@ -4884,21 +4885,21 @@ void hit_mon_trap(int y, int x, int m_idx)
                 case 2: /* Sound Ball */
                     if (m_ptr->ml)
                         msg_format("%^s is hit by a ball of sound.", m_name);
-                    project(PROJECT_WHO_TRAP, 2, y, x, damroll(8, 8) + (p_ptr->lev / 2), GF_SOUND, (PROJECT_GRID | PROJECT_ITEM | PROJECT_KILL | PROJECT_JUMP ));
+                    project(PROJECT_WHO_TRAP, 2, y, x, damroll(8, 7) + (p_ptr->lev / 2), GF_SOUND, (PROJECT_GRID | PROJECT_ITEM | PROJECT_KILL | PROJECT_JUMP ));
                     break;
                 case 3: /* Shard Ball */
                     if (m_ptr->ml)
                         msg_format("%^s is hit by a large rock.", m_name);
-                    project(PROJECT_WHO_TRAP, 2, y, x, damroll(8, 8) + p_ptr->lev, GF_SHARDS, (PROJECT_GRID | PROJECT_ITEM | PROJECT_KILL | PROJECT_JUMP ));
+                    project(PROJECT_WHO_TRAP, randint1(2), y, x, damroll(8, 8) + p_ptr->lev, GF_SHARDS, (PROJECT_GRID | PROJECT_ITEM | PROJECT_KILL | PROJECT_JUMP ));
                     break;
                 case 4: /* Elemental Balls */
                     if (m_ptr->ml)
                         msg_format("%^s is hit by a shower of elements.", m_name);
-                    project(PROJECT_WHO_TRAP, 2, y, x, (damroll(4, 6) + p_ptr->lev/5), GF_FIRE, (PROJECT_GRID | PROJECT_ITEM | PROJECT_KILL | PROJECT_JUMP ));
-                    project(PROJECT_WHO_TRAP, 2, y, x, (damroll(4, 6) + p_ptr->lev/5), GF_COLD, (PROJECT_GRID | PROJECT_ITEM | PROJECT_KILL | PROJECT_JUMP ));
-                    project(PROJECT_WHO_TRAP, 2, y, x, (damroll(4, 6) + p_ptr->lev/5), GF_ELEC, (PROJECT_GRID | PROJECT_ITEM | PROJECT_KILL | PROJECT_JUMP ));
-                    project(PROJECT_WHO_TRAP, 2, y, x, (damroll(4, 6) + p_ptr->lev/5), GF_ACID, (PROJECT_GRID | PROJECT_ITEM | PROJECT_KILL | PROJECT_JUMP ));
-                    project(PROJECT_WHO_TRAP, 2, y, x, (damroll(4, 6) + p_ptr->lev/5), GF_POIS, (PROJECT_GRID | PROJECT_ITEM | PROJECT_KILL | PROJECT_JUMP ));
+                    project(PROJECT_WHO_TRAP, randint1(2), y, x, (damroll(4, 6) + p_ptr->lev/5), GF_FIRE, (PROJECT_GRID | PROJECT_ITEM | PROJECT_KILL | PROJECT_JUMP ));
+                    project(PROJECT_WHO_TRAP, randint1(2), y, x, (damroll(4, 6) + p_ptr->lev/5), GF_COLD, (PROJECT_GRID | PROJECT_ITEM | PROJECT_KILL | PROJECT_JUMP ));
+                    project(PROJECT_WHO_TRAP, randint1(2), y, x, (damroll(4, 6) + p_ptr->lev/5), GF_ELEC, (PROJECT_GRID | PROJECT_ITEM | PROJECT_KILL | PROJECT_JUMP ));
+                    project(PROJECT_WHO_TRAP, randint1(2), y, x, (damroll(4, 6) + p_ptr->lev/5), GF_ACID, (PROJECT_GRID | PROJECT_ITEM | PROJECT_KILL | PROJECT_JUMP ));
+                    project(PROJECT_WHO_TRAP, randint1(2), y, x, (damroll(4, 6) + p_ptr->lev/5), GF_POIS, (PROJECT_GRID | PROJECT_ITEM | PROJECT_KILL | PROJECT_JUMP ));
                     break;
                 case 5: /* Disintegration Ball */
                     if (m_ptr->ml)
@@ -4906,7 +4907,7 @@ void hit_mon_trap(int y, int x, int m_idx)
                     project(PROJECT_WHO_TRAP, 5, y, x, (damroll(7, 7) + p_ptr->lev), GF_DISINTEGRATE, (PROJECT_GRID | PROJECT_ITEM | PROJECT_KILL | PROJECT_JUMP ));
                     break;
                 case 6: /* Stasis */
-                    project(PROJECT_WHO_TRAP, 1, m_ptr->fy, m_ptr->fx, (5*p_ptr->lev)/3, GF_STASIS, (PROJECT_GRID | PROJECT_ITEM | PROJECT_KILL | PROJECT_JUMP ));
+                    project(PROJECT_WHO_TRAP, 1, m_ptr->fy, m_ptr->fx, (3*p_ptr->lev)/2, GF_STASIS, (PROJECT_GRID | PROJECT_ITEM | PROJECT_KILL | PROJECT_JUMP ));
                     break;
                 case 7: /* Piranha Trap */
                 {
