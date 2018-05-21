@@ -219,7 +219,7 @@ static cptr _rogue_negotiate(void)
                     if (!(r_ptr->flags1 & RF1_UNIQUE) && !mon_save_p(m_ptr->r_idx, A_CHR))
                         set_pet(m_ptr);
                     else
-                        set_friendly(m_ptr);
+                        set_friendly_ingame(m_ptr);
                 }
             }
             else
