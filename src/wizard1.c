@@ -112,6 +112,8 @@ static grouper group_item[] =
     { TV_STATUE,        "Statues" },
     { TV_CORPSE,        "Corpses" },
 
+    { TV_QUIVER,        "Quivers" },
+
     { TV_SKELETON,      "Misc" },
 
     { TV_BOTTLE,        NULL },
