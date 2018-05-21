@@ -1218,6 +1218,7 @@ static parse_tbl_t _summon_type_tbl[] = {
     { SUMMON_MONK, "Monks", TERM_WHITE, "", "MONK", 20 },
     { SUMMON_MAGE, "Mages", TERM_WHITE, "", "MAGE", 20 },
     { SUMMON_SPECIAL, "Special", TERM_WHITE, "", "SPECIAL", 30 },
+    { SUMMON_REPTILE, "Reptiles", TERM_WHITE, "", "REPTILE", 30 },
     { 0 }
 };
 
@@ -4537,7 +4538,6 @@ errr parse_d_info(char *buf, header *head)
     /* Success */
     return (0);
 }
-
 
 #else    /* ALLOW_TEMPLATES */
 
