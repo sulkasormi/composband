@@ -1856,7 +1856,7 @@ static void _apply_room_grid_mon(point_t p, room_grid_ptr grid, room_ptr room)
         }
         else if (r_info[grid->monster].flags7 & RF7_NAZGUL)
         {
-            if (r_info[grid->monster].cur_num == r_info[grid->monster].max_num)
+            if (r_info[grid->monster].cur_num == mon_available_num(&r_info[grid->monster]))
             {
                 r_info[grid->monster].max_num++;
             }
