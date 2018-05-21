@@ -1772,6 +1772,8 @@ s32b realm_choices1[MAX_CLASS] =
     CH_NONE,                /* Skillmaster */
     CH_LAW,                 /* Lawyer */
     CH_LAW,                 /* Ninja-Lawyer */
+    CH_NONE,                /* Alchemist */
+    CH_NONE,                /* Politician */
 };
 
 
@@ -1843,6 +1845,8 @@ s32b realm_choices2[MAX_CLASS] =
     CH_NONE,                /* Skillmaster */
     CH_NONE,                /* Lawyer */
     CH_NONE,                /* Ninja-Lawyer */
+    CH_NONE,                /* Alchemist */
+    CH_NONE,                /* Politician */
 };
 
 
@@ -2213,8 +2217,8 @@ option_type option_info[] =
     { &display_food_bar,            FALSE,  OPT_PAGE_TEXT, 1, 13,
     "display_food_bar",             "Display detailed food status" },
 
-    { &display_percentages,         FALSE,  OPT_PAGE_TEXT, 1, 10,
-    "display_percentages",          "Display percentages rather than status bars" },
+//    { &display_percentages,         FALSE,  OPT_PAGE_TEXT, 1, 10,
+//    "display_percentages",          "Display percentages rather than status bars" },
 
     { &compress_savefile,           FALSE, OPT_PAGE_TEXT, 1, 26,
     "compress_savefile",            "Compress messages in savefiles" },
@@ -2243,8 +2247,20 @@ option_type option_info[] =
     { &show_discovery,		        FALSE, OPT_PAGE_TEXT, 2, 26,
     "show_discovery",                 "Show time of discovery on examination" },
 
+    { &final_dump_origins,		TRUE, OPT_PAGE_TEXT, 2, 17,
+    "final_dump_origins",             "Show origins in final character dumps" },
+
+    { &always_dump_origins,		FALSE, OPT_PAGE_TEXT, 2, 19,
+    "always_dump_origins",             "Show origins in all character dumps" },
+
     { &easy_mimics,		        FALSE, OPT_PAGE_TEXT, 2, 27,
     "easy_mimics",                  "Use 'x' for monsters that look like things" },
+
+    { &list_stairs,                  FALSE,  OPT_PAGE_TEXT, 1, 10,
+    "list_stairs",                  "Display stairs in the object list" },
+
+    { &display_skill_num,            FALSE,  OPT_PAGE_TEXT, 2, 22,
+    "display_skill_num",            "Display skills as numbers in character sheet" },
 
     /*** Game-Play ***/
 
@@ -2329,23 +2345,26 @@ option_type option_info[] =
 
     /*** Birth Options ***/
 
-	{ &easy_id,						FALSE, OPT_PAGE_BIRTH, 6, 31,
-	"easy_id",						"Easy Identify" },
+	{ &easy_id,			FALSE, OPT_PAGE_BIRTH, 6, 31,
+	"easy_id",			"Easy Identify" },
 	
-	{ &easy_lore,					FALSE, OPT_PAGE_BIRTH, 6, 30,
-	"easy_lore",					"Easy Lore" },
+	{ &easy_lore,			FALSE, OPT_PAGE_BIRTH, 6, 30,
+	"easy_lore",			"Easy Lore" },
 
-	{ &allow_spoilers,				FALSE, OPT_PAGE_BIRTH, 6, 29,
-	"allow_spoilers",				"Allow spoilers" },
+	{ &easy_damage,			FALSE, OPT_PAGE_BIRTH, 6, 16,
+	"easy_damage",			"Easy monster health and damage information (*)" },
+
+	{ &allow_spoilers,		FALSE, OPT_PAGE_BIRTH, 6, 29,
+	"allow_spoilers",		"Allow spoilers" },
 	
-	{ &power_tele,					FALSE, OPT_PAGE_BIRTH, 6, 6,
-	"power_tele",					"Use enhanced telepathy" },
+	{ &power_tele,			FALSE, OPT_PAGE_BIRTH, 6, 6,
+	"power_tele",			"Use enhanced telepathy" },
 
-	{ &easy_thalos,					TRUE, OPT_PAGE_BIRTH, 6, 28,
-	"easy_thalos",					"Allow easy teleportation to Thalos" },
+	{ &easy_thalos,			TRUE, OPT_PAGE_BIRTH, 6, 28,
+	"easy_thalos",			"Allow easy teleportation to Thalos" },
 
-	{ &never_forget,				FALSE, OPT_PAGE_BIRTH, 6, 27,
-	"never_forget",					"Easy Labyrinth and no amnesia" },
+	{ &never_forget,		FALSE, OPT_PAGE_BIRTH, 6, 27,
+	"never_forget",			"Easy Labyrinth and no amnesia" },
 
     { &smart_learn,                 TRUE,  OPT_PAGE_BIRTH, 1, 14,
     "smart_learn",                  "Monsters learn from their mistakes (*)" },
