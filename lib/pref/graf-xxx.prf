@@ -4729,12 +4729,6 @@ K:75:22:0xBC/0x87
 # a Violet Speckled Potion
 K:75:23:0xBC/0x8E
 
-# a White Potion
-K:75:24:0xBC/0x83
-
-# a Smoky Potion
-K:75:25:0xBC/0x84
-
 # a Tangerine Potion
 K:75:26:0xBC/0x8B
 
@@ -5328,4 +5322,3 @@ K:81:1:0x0E/0x2A
 
 # Load the special player pictures
 %:xtra-xxx.prf
-
