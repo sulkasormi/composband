@@ -56,6 +56,35 @@ static bool _add_bad_flag(object_type *o_ptr, int bad_flag, int good_flag)
     return FALSE;
 }
 
+static int _trim(int start_val, int hi_val, int very_hi_val, int item_lv)
+{
+    int vahennys = 0, i, koitto;
+    if (very_hi_val < hi_val) hi_val = very_hi_val;
+    if (start_val <= hi_val) return start_val;
+    koitto = MIN(very_hi_val - hi_val, start_val - hi_val);
+    for (i = 0; i < koitto; i++)
+    {
+        if (one_in_(2)) vahennys++;
+        else if (randint0(100 + item_lv) < 80) vahennys++;
+    }
+    koitto = start_val - very_hi_val;
+    for (i = 0; i < koitto; i++)
+    {
+        if (!one_in_(4)) vahennys++;
+        else if (randint0(100 + item_lv) < 120) vahennys++;
+    }
+    return start_val - vahennys;
+}
+
+static void _sanitise_flags(object_type *o_ptr)
+{
+    if (have_flag(o_ptr->flags, OF_LITE) && have_flag(o_ptr->flags, OF_DARKNESS))
+    {
+        if (one_in_(2)) remove_flag(o_ptr->flags, OF_DARKNESS);
+        else remove_flag(o_ptr->flags, OF_LITE);
+    }
+}
+
 /*
  * Choose one random sustain
  */
@@ -1364,7 +1393,7 @@ static void random_misc(object_type * o_ptr)
 
 static void random_slay_aux(object_type *o_ptr)
 {
-    switch (randint1(29 + object_level/15))
+    switch (randint1((o_ptr->tval == TV_BOW) ? 25 : (29 + object_level/15)))
     {
         case 1:
         case 2:
@@ -1556,7 +1585,7 @@ static void random_slay(object_type *o_ptr)
         switch (randint1(6))
         {
             case 1:
-                if (one_in_(100))
+                if (!one_in_(6))
                 {
                     random_slay_aux(o_ptr);
                     break;
@@ -2082,6 +2111,7 @@ s32b create_artifact(object_type *o_ptr, u32b mode)
             case CLASS_NINJA:
             case CLASS_SCOUT:
             case CLASS_NINJA_LAWYER:
+            case CLASS_ALCHEMIST:
                 artifact_bias = BIAS_ROGUE;
                 warrior_artifact_bias = 30;
                 break;
@@ -2105,6 +2135,7 @@ s32b create_artifact(object_type *o_ptr, u32b mode)
                 warrior_artifact_bias = 60;
                 break;
             case CLASS_LAWYER:
+            case CLASS_POLITICIAN:
             case CLASS_MONK:
             case CLASS_FORCETRAINER:
                 artifact_bias = BIAS_PRIESTLY;
@@ -2382,7 +2413,7 @@ s32b create_artifact(object_type *o_ptr, u32b mode)
             break;
 
         case TV_BOW:
-            switch (randint1(8))
+            switch (randint1(9))
             {
             case 1: case 2:
                 random_plus(o_ptr);
@@ -2391,10 +2422,10 @@ s32b create_artifact(object_type *o_ptr, u32b mode)
             case 3: case 4: case 5:
                 random_slay(o_ptr);
                 break;
-            case 6:
+            case 6: case 7:
                 random_misc(o_ptr);
                 break;
-            case 7: case 8:
+            case 8: case 9:
                 random_resistance(o_ptr);
                 break;
             }
@@ -2742,8 +2773,7 @@ s32b create_artifact(object_type *o_ptr, u32b mode)
         int max = 20;
         if (object_is_body_armour(o_ptr)) max += 5;
         o_ptr->to_a += a;
-        if (o_ptr->to_a > max)
-            o_ptr->to_a = max;
+        if (o_ptr->to_a > max - 5) o_ptr->to_a = _trim(o_ptr->to_a, max - 5, max, lev);
     }
     else if (object_is_weapon_ammo(o_ptr))
     {
@@ -2751,10 +2781,8 @@ s32b create_artifact(object_type *o_ptr, u32b mode)
         int d = randint1(5) + m_bonus(5, lev) + m_bonus(10, lev);
         o_ptr->to_h += h;
         o_ptr->to_d += d;
-        if (o_ptr->to_h > 25)
-            o_ptr->to_h = 25;
-        if (o_ptr->to_d > 25)
-            o_ptr->to_d = 25;
+        if (o_ptr->to_h > 22) o_ptr->to_h = _trim(o_ptr->to_h, 20, 25, lev);
+        if (o_ptr->to_d > 20) o_ptr->to_d = _trim(o_ptr->to_h, 20, 25, lev);
 
         if ((have_flag(o_ptr->flags, OF_WIS)) && (o_ptr->pval > 0)) add_flag(o_ptr->flags, OF_BLESSED);
     }
@@ -2872,6 +2900,8 @@ s32b create_artifact(object_type *o_ptr, u32b mode)
 
     if (object_is_melee_weapon(o_ptr))
         ego_weapon_adjust_weight(o_ptr);
+
+    _sanitise_flags(o_ptr);
 
     total_flags = new_object_cost(o_ptr, COST_REAL);
     if (cheat_peek) msg_format("Score: %d", total_flags);
