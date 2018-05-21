@@ -6548,3 +6548,117 @@ R:11:0
 # I:book:stat:xtra:type:first:weight
 # R:realm:readable
 # T:level:mana:fail:exp
+
+### Alchemist ###
+N:50
+I:NONE:INT:0x00:0:99:0
+# Life
+R:0:0
+
+# Sorcery
+R:1:0
+
+# Nature
+R:2:0
+
+# Chaos
+R:3:0
+
+# Death
+R:4:0
+
+# Trump
+R:5:0
+
+# Arcane
+R:6:0
+
+# Craft
+R:7:0
+
+# Deamon
+R:8:0
+
+# Crusade
+R:9:0
+
+# Necromancy
+R:10:0
+
+# Armageddon
+R:11:0
+
+### Politician ###
+N:51
+I:NONE:CHR:0x04:0:1:300
+# Life
+R:0:0
+
+# Sorcery
+R:1:0
+
+# Nature
+R:2:0
+
+# Chaos
+R:3:0
+
+# Death
+R:4:0
+
+# Trump
+R:5:1
+T:1:1:25:3  #0
+T:3:3:25:4
+T:5:6:37:8
+T:6:7:40:8
+T:7:9:20:4
+T:11:15:30:6
+T:14:18:30:5
+T:18:25:30:8
+T:20:25:40:8  #1
+T:23:25:35:9
+T:25:30:30:8
+T:30:35:40:12
+T:33:35:35:10
+T:35:40:45:12
+T:40:45:40:15
+T:42:50:35:12
+T:22:45:70:40  #2
+T:24:32:35:25
+T:26:35:35:30
+T:30:35:35:9
+T:30:38:35:35
+T:35:88:40:100
+T:40:125:45:250
+T:45:125:45:200
+T:30:38:30:50  #3
+T:35:52:45:100
+T:36:70:40:150
+T:39:100:40:150
+T:41:55:70:100
+T:47:125:40:150
+T:48:125:40:200
+T:49:125:40:220
+
+# Arcane
+R:6:0
+
+# Craft
+R:7:0
+
+# Deamon
+R:8:0
+
+# Crusade
+R:9:0
+
+# Necromancy
+R:10:0
+
+# Armageddon
+R:11:0
+
+# I:book:stat:xtra:type:first:weight
+# R:realm:readable
+# T:level:mana:fail:exp
