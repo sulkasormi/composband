@@ -443,6 +443,7 @@ static tval_desc tvals[] =
     { TV_BURGLARY_BOOK,     "Thieves' Guide"       },
     { TV_PARCHMENT,         "Parchment" },
     { TV_WHISTLE,           "Whistle"    },
+    { TV_QUIVER,            "Quiver"               },
     { TV_SPIKE,             "Spikes"               },
     { TV_DIGGING,           "Digger"               },
     { TV_CHEST,             "Chest"                },
@@ -863,12 +864,16 @@ static void do_cmd_wiz_named(int r_idx)
         monster_race *r_ptr = &r_info[r_idx];
         if (((r_ptr->flags1 & (RF1_UNIQUE)) ||
                 (r_ptr->flags7 & (RF7_NAZGUL))) &&
-            (r_ptr->cur_num >= r_ptr->max_num))
+            (r_ptr->cur_num >= mon_available_num(r_ptr)))
         {
-            r_ptr->cur_num = 0;
-            r_ptr->max_num = 1;
+            r_ptr->max_num = MAX(r_ptr->max_num, 1);
+            /* In the event that the summon still fails, let it fail
+             * We resurrect dead uniques but not captured uniques and do
+             * not create multiple copies of the unique */
         }
+//        msg_format("Max: %d Cur: %d Ball: %d", r_ptr->max_num, r_ptr->cur_num, r_ptr->ball_num);
     }
+
 
     (void)summon_named_creature(0, y, x, r_idx, (PM_ALLOW_SLEEP | PM_ALLOW_GROUP));
 }
