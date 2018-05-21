@@ -167,8 +167,9 @@ skills. Also it directly influences your life rating.
   
 Craven
 A Craven person is a coward, preferring to avoid a fight at any cost. 
-Craven adventurers shoot and use devices well, and their stealth is 
-impressive. But their stats and other skills are somewhat wanting.
+Craven adventurers shoot and use devices well, their stealth is 
+impressive, and they can move fast when not fighting;but their stats 
+and other skills are somewhat wanting.
 
   Stats                   Skills
   Strength      -1        Disarming   Excellent    
@@ -237,7 +238,7 @@ stat bonuses are subject to change.
   Dexterity     +0        Stealth     Poor         
   Constitution  +0        Searching   Fair         
   Charisma      +0        Perception  Fair         
-  Life Rating  100%       Melee       Poor         
+  Life Rating   99%       Melee       Poor         
   Experience   100%       Bows        Fair         
   
 Mundane
@@ -288,7 +289,7 @@ Craven          -1   +1   +1   -1   -1   -2   99%  100%
 Hasty           +0   -1   -2   +2   -1   +0  100%  100%
 Lazy            -2   -2   -2   -2   -2   -2   95%  100%
 Unlucky         +2   +2   +2   +2   +2   +2  104%  100%
-Chaotic         +0   +0   +0   +0   +0   +0  100%  100%
+Chaotic         +0   +0   +0   +0   +0   +0   99%  100%
 Mundane         -1   -1   -1   -1   -1   -1   97%  100%
 Munchkin        +3   +3   +3   +3   +3   +3  150%   50%
 
