@@ -278,6 +278,7 @@ int anti_magic_check(void)
     case CLASS_BERSERKER:
     case CLASS_WEAPONSMITH:
     case CLASS_ARCHER:
+    case CLASS_ALCHEMIST:
     case CLASS_CAVALRY:
         return 0;
 
@@ -448,6 +449,9 @@ bool dispel_check(int m_idx)
 
     /* Light speed */
     if (IS_LIGHT_SPEED() && (m_ptr->mspeed < 136)) return (TRUE);
+
+    /* Filibuster */
+    if ((p_ptr->filibuster) && (m_ptr->mspeed < p_ptr->pspeed)) return (TRUE);
 
     if (p_ptr->riding && (m_list[p_ptr->riding].mspeed < 135))
     {
