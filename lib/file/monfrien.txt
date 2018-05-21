@@ -85,6 +85,10 @@ says, 'foo are yu?'
 N:53:Grip, Farmer Maggot's dog
 N:54:Wolf, Farmer Maggot's dog
 N:55:Fang, Farmer Maggot's dog
+chases its tail.
+barks loudly.
+wags its tail.
+rolls over.
 
 N:772:Gandalf the Grey
 says, 'Don't space out. Cover me! Bogan!'
@@ -100,69 +104,246 @@ shouts, 'Fire-finger1!'
 shouts, 'Fire-finger2!'
 shouts, 'Blockhead!'
 
-#N:63:Smeagol
-#N:135:Mughash the Kobold Lord
-#N:137:Wormtongue, Agent of Saruman
-#N:138:Robin Hood, the Outlaw
+N:63:Smeagol
+mutters, 'My precious, where's my precious?'
+says, 'Come on, quickly, follow Smeagol'
+grovels.
+eats some slimy creatures.
+shouts, 'No Master Hobbitsisisisis!'
+cries, 'The ring was ours for agesisisisis!'
+says, 'Smeagol sneeking! ME! Shneekingsisis!'
+whines, 'Weees wants some fishises.'
+says, 'No food, no rest; Smeagol a SNEAK!'
+says, 'Hobbitses always SOOOO Polite.'
+says, 'If you findesis it, give it us back.'
+
+N:135:Mughash the Kobold Lord
+says, 'That Gwarl, eh? Doesn't show us kobolds no respect. Wants to give our dungeon to a rat!'
+says, 'Let's pillage!'
+says, 'It's a good business, running a starter dungeon. Easy pickings from casual adventurers.'
+says, 'The age of kobolds is at hand!'
+
+N:137:Wormtongue, Agent of Saruman
+says, 'You have no reason to doubt my friendship.'
+says, 'Saruman the White is a mighty ally; he could help us.'
+says, 'Would it not be better to stay home and maintain peace, than to pick fights with those who could be our friends?'
+says, 'What need have we for war, my lord?'
+
+N:138:Robin Hood, the Outlaw
+says, 'Next time you meet the Variant Maintainer, tell him to put in some of my Merry Men. I'm awfully lonely.'
+says, 'Do you know if anyone's coming this way?'
+says, 'If you hear my horn, that means I need your help.'
+says, 'What is it? Is it the Sheriff's men?'
+says, 'I have a plan so cunning, you could put nine tails on it and call it a nine-tailed fox.'
+
 #N:169:Brodda, the Easterling
 #N:291:Ulfast, Son of Ulfang
-#N:180:Orfax, Son of Boldor
-#N:237:Boldor, King of the Yeeks
-#N:200:Hobbes the Tiger
-#N:140:Lagduf, the Snaga
-#N:186:Grishnakh, the Hill Orc
-#N:215:Golfimbul, the Hill Orc Chief
-#N:260:Ufthak of Cirith Ungol
-#N:314:Shagrat, the Orc Captain
-#N:315:Gorbag, the Orc Captain
-#N:330:Bolg, Son of Azog
-#N:350:Ugluk, the Uruk
-#N:356:Lugdush, the Uruk
-#N:373:Azog, King of the Uruk-Hai
+
+N:180:Orfax, Son of Boldor
+N:237:Boldor, King of the Yeeks
+shouts, 'LET'S PILLAGE!'
+says, 'We'll show the Boits!'
+shouts, 'YEEK! YEEK! YEEK!'
+says, 'This dungeon should be ours!'
+spouts torrents of obscenities.
+
+N:200:Hobbes the Tiger
+says, 'Let's find some food!'
+says, 'Too many people are wary of tigers just because we're better.'
+
+N:140:Lagduf, the Snaga
+N:186:Grishnakh, the Hill Orc
+N:215:Golfimbul, the Hill Orc Chief
+N:260:Ufthak of Cirith Ungol
+N:285:Orc captain
+N:314:Shagrat, the Orc Captain
+N:315:Gorbag, the Orc Captain
+N:330:Bolg, Son of Azog
+N:350:Ugluk, the Uruk
+N:356:Lugdush, the Uruk
+N:373:Azog, King of the Uruk-Hai
+N:1182:Balcmeg, the Relentless
+N:1183:Lug, the Grotesque
+N:1184:Boldog, the Merciless
+N:1185:Othrod, Lord of the Orcs
+N:1186:Orcogar, Son of Orcobal
+N:1187:Orcobal the Mighty
+fingers his blade and grins evilly.
+sings, 'Down, down, to dungeon-town we go!'
+says, 'Let's pillage!'
+says, 'Time to loot, time to plunder!'
+belches and spits.
+scratches his armpits.
+says, 'I love the smell of fresh blood.'
+says, 'I love being psychotic!'
+says, 'Heh-heh, heh-heh, killing people is cool, isn't it?'
+says, 'We are the fighting Uruk-hai!'
+
 #N:382:Mime, the Nibelung
-#N:383:Hagen, son of Alberich
 #N:419:Alberich the Nibelung King
-#N:392:Sangahyando of Umbar
-#N:380:Angamaite of Umbar
-#N:393:It
-#N:409:Kharis the Powerslave
+
+N:383:Hagen, son of Alberich
+says, 'Did you hear what the ravens said? Revenge, that is what they cry!'
+shouts, 'Hoiho! Hoiho! To arms! To arms!'
+grumbles, 'I hate the happy, and I am never glad.'
+cries, 'Keep away from the Ring!'
+boasts, 'My spear will certainly cut down the wrongful one.'
+cries, 'There! There shall my spear strike!'
+states, 'I am but avenging perjury.'
+shouts, 'Hoiho! Hoiho-hoho!'
+
+N:393:It
+says, 'Nyah, nyah, betcha can't find me!'
+says, 'Come get some!'
+magically summons mighty undead opponents!
+chuckles evilly.
+magically summons Cyberdemons!
+summons special opponents!
+concentrates on its wounds.
+concentrates on its body. It starts moving faster.
+teleports away.
+dies. You feel something roll beneath your feet.
+
+N:409:Kharis the Powerslave
+says, 'Open the gates of my hell, I will strike from the grave!'
+moans, 'Braaiiiiins... braaiiiiiins...'
+
 #N:413:Ulwarth, Son of Ulfang
 #N:431:Grendel
-#N:441:Barney the Dinosaur
+
+N:441:Gachapin
+N:1061:Barney the Dinosaur
+says, 'Cooperation! That's the magic word!'
+mutters, 'I *hate* those Teletubbies...'
+says, 'Let's all sing a HAPPY SONG!'
+mugs for the camera.
+simpers disgustingly.
+chews up a 'Tinky Winky' doll.
+
 #N:489:Bokrug
-#N:493:Bert the Stone Troll
-#N:494:Bill the Stone Troll
-#N:495:Tom the Stone Troll
-#N:505:Groo the Wanderer
-#N:506:Fasolt the Giant
+N:493:Bert the Stone Troll
+N:494:Bill the Stone Troll
+N:495:Tom the Stone Troll
+asks, 'What's a burrahobbit, d'you know?'
+says, 'Good grub here in the dungeon, what? No more eatin' mutton every day!'
+says, 'Let's get 'em!'
+says, 'That'll teach 'em!'
+
+N:505:Goemon
+says, 'Zantetsuken is sharp this night. '
+mumbles, 'Sigh..Another trifling thing I've cut....'
+buttons his lips, '.....'
+
+N:1062:Groo the Wanderer
+says, 'A fray! A fray!'
+
+N:506:Fasolt the Giant
+grumbles, 'Stop, greedy one! Leave something for me!'
+
 #N:517:Jurt the Living Trump
 #N:551:Rogrog the Black Troll
+
 #N:573:Lord Borel of Hendrake
+
 #N:595:Father Dagon
 #N:596:Mother Hydra
-#N:598:Mandor, Master of the Logrus
+
+N:598:Mandor, Master of the Logrus
+enjoys espresso coffee between battle.
+says, 'My slaves fight with you.'
+says, 'Excuse me, I have no time to continue a small fight.'
+says, 'It is a great pleasure to fight with such a worthy friend as you.'
+
 #N:606:Loge, Spirit of Fire
 #N:615:Moire, Queen of Rebma
 #N:616:Kavlax the Many-Headed
 #N:628:Malekith the Accursed
+
 #N:642:Jasra, Brand's Mistress
-#N:651:Strygalldwir
-#N:654:Judge Fire
-#N:656:Judge Mortis
-#N:660:Rinaldo, son of Brand
-#N:670:Jack of Shadows
-#N:674:Judge Fear
+
+N:651:Strygalldwir
+says, 'Tonight I will suck the marrow from their bones!'
+says, 'Obey the power of chaos!'
+
+N:654:Judge Fire
+N:656:Judge Mortis
+N:674:Judge Fear
+N:686:Judge Death
+hisses, 'Thisssss dungeon issss guilty.'
+hisses, 'The crime isssss life.'
+hisses, 'The sssentencce isss death!'
+hisses, 'The crime issss life. The sssentencce isss death.'
+
+N:660:Rinaldo, son of Brand
+says, 'I am Rinaldo I, Kashfan King and B.S. in Business Management, UC Berkeley.'
+says, 'If you buy a Grand-D machine, I'll throw Werewindle into the bargain.'
+says, 'Can I get you a chicken? Maybe some white mice and aluminum foil?'
+
+N:670:Jack of Shadows
+says, 'Be made to realize my darkness hold.'
+says, 'Power of shadow is infinite.'
+says, 'With the Key of Kolwynia, I am invincible!'
+says, 'Soul? What is it of use to?'
+casts Light Speed.
+
+N:685:Shoggoth
+wails, 'Tekeli-li!  Tekeli-li!'
+
 #N:681:Chaugnar Faugn, Horror from the Hills
-#N:686:Judge Death
 #N:687:Ariel, Queen of Air
-#N:697:Smaug the Golden
-#N:712:Fafner the Dragon
-#N:713:Fangorn the Treebeard
-#N:715:Glaurung, Father of the Dragons
+
+N:697:Smaug the Golden
+laughs with a devastating sound which shakes the ground.
+asks, 'Where are those who dare approach me?'
+gloats, 'I am old and strong, strong, strong.'
+boasts, 'My armour is like tenfold shields, no blade can pierce me.'
+boasts, 'My teeth are swords, my claws are spears, my breath is death.'
+
+N:712:Fafner the Dragon
+says, 'I'm sure we'll find a peaceful way to divide the treasure.'
+says, 'Do you know what's happened to my helmet?'
+complains about the taste of orc flesh.
+says, 'I never killed my brother! That's a filthy lie!'
+
+N:713:Fangorn the Treebeard
+says, 'Side? I am on nobody's side, because nobody is on my side.'
+says, 'I spoke hastily. We must not be hasty. I have become too hot. I must cool myself, for I am vulnerable to heat.'
+says, 'I have been idle. I have let things slip. It must stop!'
+
+N:715:Glaurung, Father of the Dragons
+N:766:Ancalagon the Black
+says, 'Do you know any good lawyers? Fat ones, for preference.'
+grumbles, 'Why do dwarves get all the good songs about gold?'
+says, 'We're a perfect team, aren't we? I have the wisdom and the power; and you have the total lack of any self-preservation instinct.'
+says, 'Time to burn, burn, burn.'
+says, 'They cannot avoid the ballyhack.'
+
 #N:729:Ulik the Troll
 #N:730:Baphomet the Minotaur Lord
-#N:732:Bull Gates
-#N:733:Santa Claus
+
+N:732:Bull Gates
+says, '640K should be enough for ANYBODY!'
+says, 'Buy Windows 2000; the filesystem rocks!'
+says, 'Linux?  Never heard of it...'
+says, 'Resistance is futile--they will be assimilated.'
+says, 'NT is the solution for ALL your needs!'
+hacks out some code and calls it a Service Pack.
+says, 'We don't have a monopoly... MacOS still exists! We need to do something about that.'
+wonders if he should buy a small country.
+cackles diabolically.
+
+N:733:Santa Claus
+says, 'They called me fictional! Fictional! But I will show them all! HOHOHOHOHOHO!'
+says, 'Have you been naughty... or really naughty?'
+says, 'SCIENCE! It works, bitches!'
+says, 'They think I have it easy because I get three hundred and sixty-four days off every year! That one day, do you know what it's like? Is it any wonder if I'm burned out?'
+says, 'When you meet as many people as I meet, you realize things about mankind as a species; and what I've realized is that mankind as a species needs to go.'
+laments the lack of snow.
+sings, 'You'd better not breathe, you'd better not move...'
+says, 'Christmas is so stressful!'
+says, 'What is with that chimney thing, anyway? Some people believe the strangest things.'
+says, 'I'm sick of this notion that developing superintelligent robots is risky because they might take over. I mean, what's the worst that could happen? They wipe us out. Dumb species replaced with a smart one. I don't see any scenario where the results are actually bad - as long as we ensure the robots are completely out of our control.'
+
 #N:738:Khamul the Easterling
 #N:743:The Phoenix
 #N:753:Nidhogg the Hel-Drake
@@ -170,68 +351,317 @@ shouts, 'Blockhead!'
 #N:755:Thuringwethil
 #N:762:Fundin Bluecloak
 #N:763:Dworkin Barimen
-#N:764:Uriel, Angel of Fire
-#N:765:Azriel, Angel of Death
-#N:769:Raphael, the Messenger
-#N:766:Ancalagon the Black
+
+N:764:Uriel, Angel of Fire
+N:765:Azriel, Angel of Death
+N:769:Raphael, the Messenger
+N:1179:Michael, the Guardian Overlord
+says, 'No enemy can stand against the power of Heaven!'
+says, 'The false gods and all who follow them are condemned to eternal pain!'
+says, 'We shall trample the ungodly!'
+says, 'With angels by your side, you need never fear.'
+says, 'Time to cleanse this dungeon!'
+says, 'For the light to be seen, we must take it to dark places.'
+
 #N:767:Daoloth, the Render of the Veils
 #N:770:Artsi the Champion of Chaos
-#N:771:Saruman of Many Colours
-#N:772:Gandalf the Grey
-#N:773:Brand, Mad Visionary of Amber
+
+N:771:Saruman of Many Colours
+says, 'The time of the Elves is over, but our time is at hand.'
+says, 'We must have power, power to order all things as we will, for that good which only the Wise can see.'
+says, 'The Ruling Ring? If we could command that, then the Power would pass to us.'
+says, 'We can accomplish much together, to heal the disorders of the world.'
+says, 'Our friendship will profit us both alike.'
+
 #N:777:Bast, Goddess of Cats
 #N:780:Vlad Dracula, Prince of Darkness
 #N:787:Hypnos, Lord of Sleep
-#N:789:Bleys, Master of Manipulation
-#N:791:Fiona the Sorceress
+
+N:773:Brand, Mad Visionary of Amber
+N:789:Bleys, Master of Manipulation
+N:791:Fiona the Sorceress
+N:794:Julian, Master of Forest Amber
+N:799:Caine, the Conspirator
+N:813:Eric the Usurper
+N:820:Corwin, Lord of Avalon
+N:824:Benedict, the Ideal Warrior
+says, 'You have chosen wisely, my friend. You couldn't trust any of the others.'
+says, 'Only a son or daughter of Oberon may walk the Pattern and live.'
+says, 'How do I know I can rely on your friendship?'
+says, 'The throne of Amber can never be yours.'
+says, 'Your best interests are conjoined with my own - for now.'
+says, 'What do you know of the black road?'
+
 #N:792:Tselakus, the Dreadlord
-#N:794:Julian, Master of Forest Amber
 #N:796:The Norsa
-#N:799:Caine, the Conspirator
 #N:805:Omarax the Eye Tyrant
+
 #N:807:Gerard, Strongman of Amber
+
 #N:809:Atlach-Nacha, the Spider God
-#N:813:Eric the Usurper
+
 #N:814:Yig, Father of Serpents
 #N:817:Hela, Queen of the Dead
-#N:820:Corwin, Lord of Avalon
-#N:824:Benedict, the Ideal Warrior
+
 #N:825:The Witch-King of Angmar
 #N:828:Ithaqua the Windwalker
 #N:834:Ymir the Ice Giant
 #N:835:Loki the Trickster
-#N:837:Surtur the Giant Fire Demon
-#N:655:Ubbo-Sathla, the Unbegotten Source
-#N:695:Zoth-Ommog
-#N:706:Yibb-Tstll the Patient One
-#N:734:Eihort, the Thing in the Labyrinth
-#N:735:The King in Yellow
-#N:757:Hastur the Unspeakable
-#N:760:Nyogtha, the Thing that Should not Be
-#N:761:Ahtu, Avatar of Nyarlathotep
-#N:788:Glaaki
-#N:797:Rhan-Tegoth
-#N:806:Tsathoggua, the Sleeper of N'kai
-#N:810:Y'golonac
-#N:826:Cyaegha
-#N:833:Abhoth, Source of Uncleanness
-#N:841:Shuma-Gorath
-#N:845:Yog-Sothoth, the All-in-One
-#N:848:Shub-Niggurath, Black Goat of the Woods
-#N:849:Nodens, Lord of the Great Abyss
-#N:851:Nyarlathotep, the Crawling Chaos
-#N:857:Great Cthulhu
-#N:850:Carcharoth, the Jaws of Thirst
-#N:846:Fenris Wolf
-#N:840:Draugluin, Sire of All Werewolves
-#N:830:Cantoras, the Skeletal Lord
-#N:831:Mephistopheles, Lord of Hell
-#N:818:The Mouth of Sauron
-#N:819:Klingsor, Evil Master of Magic
-#N:804:Vecna, the Emperor Lich
-#N:844:Kaschei the Immortal
-#N:856:Gothmog, the High Captain of Balrogs
+
+N:837:Surtur the Giant Fire Demon
+yells, 'Everything will burn!'
+waves his flaming sword.
+roars defiantly.
+says, 'Whose idea was Sokoban???'
+says, 'Sound the battlecry, that all who live may hear it and despair!'
+
+N:655:Ubbo-Sathla, the Unbegotten Source
+N:695:Zoth-Ommog
+N:706:Yibb-Tstll the Patient One
+N:734:Eihort, the Thing in the Labyrinth
+N:735:The King in Yellow
+N:757:Hastur the Unspeakable
+N:760:Nyogtha, the Thing that Should not Be
+N:761:Ahtu, Avatar of Nyarlathotep
+N:788:Glaaki
+N:797:Rhan-Tegoth
+N:806:Tsathoggua, the Sleeper of N'kai
+N:810:Y'golonac
+N:826:Cyaegha
+N:833:Abhoth, Source of Uncleanness
+N:841:Shuma-Gorath
+N:845:Yog-Sothoth, the All-in-One
+N:848:Shub-Niggurath, Black Goat of the Woods
+N:849:Nodens, Lord of the Great Abyss
+N:851:Nyarlathotep, the Crawling Chaos
+N:857:Great Cthulhu
+slurps and gibbers disgustingly.
+shrieks fit to wake the dead.
+oozes nasty, glistening slime all over the dungeon.
+farts thunderously.
+lets off a mind-numbing stench.
+howls, 'Tekeli-li!  Tekeli-li!'
+makes a chilling slithering sound.
+seethes and fumes sickeningly.
+waves nasty-looking tentacles about.
+snorts and slobbers with glee.
+
+N:850:Carcharoth, the Jaws of Thirst
+N:846:Fenris Wolf
+N:840:Draugluin, Sire of All Werewolves
+yaps excitedly.
+fetches you an unrounded pebble.
+sits down and begs.
+drools all over the dungeon.
+lifts his leg at the nearest wall.
+wags his tail.
+
+N:819:Klingsor, Evil Master of Magic
+says, 'Soon, I think, we shall guard the Grail ourselves.'
+says, 'My Spear shall fix the fool!'
+says, 'May the whole brood of knights slaughter themselves!'
+says, 'They are all venal; they will fall if we offer the right price.'
+calls, 'Kundry! Kundry!'
+
+N:830:Cantoras, the Skeletal Lord
+N:831:Mephistopheles, Lord of Hell
+N:818:The Mouth of Sauron
+N:804:Vecna, the Emperor Lich
+N:844:Kaschei the Immortal
+N:856:Gothmog, the High Captain of Balrogs
 #N:858:Sauron, the Sorcerer
 #N:860:Oberon, King of Amber
-#N:862:The Serpent of Chaos
-#N:*:Default lines
+brags, 'My power is beyond compare!'
+says, 'Time to crack everyone's heads open and feast on the goo inside!'
+asks, 'Do you know if we'll need special boots to crush the thrones of the world beneath our feet?'
+laughs as he contemplates the utter destruction of all enemies.
+says, 'Death shall come to all who oppose us; death and humiliation.'
+says, 'I will spare you for now, mortal.'
+says, 'We are powerful, and the Serpent is weak.'
+
+N:862:The Serpent of Chaos
+N:883:Zombified Serpent of Chaos
+says, 'So, now you see, Chaos will always triumph, because Order is dumb.'
+shouts, 'MOO HA HA HA! I am CHAOS incarnate!'
+says, 'Remind me what's in this for me? I already ruled the world.'
+absent-mindedly obliterates half a wall.
+says, 'They kicked me out, you know! They said I wasn't modern enough.'
+yells, 'DEATH!'
+says, 'Don't you like the way a man's brains ooze out if you hit them hard enough?'
+
+N:873:Combat-Echizen
+says, 'Something comes from above! Be careful!'
+says, 'What is this stair?'
+says, 'Because it's time, I choose this red door!'
+chunters, 'Tonight, someone dies again...'
+
+N:878:Dio Brando
+says, 'Know this. I may be your friend but I'm not one to be trifled with. In all things, I am number one!'
+says, 'I have disowned my weakness in favor of life everlasting!'
+says, 'I have such plans for this world!'
+shouts, 'WRYYYYYYYYY!!!!!!'
+says, 'Humanity will kneel at Dio Brando's feet!'
+says, 'I am the pinnacle of all creation.'
+
+N:880:Wong
+says, 'I knew that you come'
+says, 'Make your dream come true in the heaven'
+says, 'I am only man who actuate the time...'
+says, 'I can set forward the time and puch back the time as I like...'
+says, 'Time, move for only me!'
+says, 'What I boss is not the "Human being" but the "Time"...'
+says, 'A broken clock only have a detrimental effect on our doing.'
+says, 'I get here at any minute... And I get the world...'
+says, 'Nobody can stop the time, now...'
+says, '...For the future, I am the time...'
+says, 'Everything is as I like... huh...'
+
+N:921:Internet Exploder
+is slow.
+throws off some dorky packets.
+tries to download a 100MB service pack.
+requests a reboot, gets tired of asking nicely, and shuts down your PC.
+quietly installs the latest malware.
+
+#N:931:Caldarm the third
+
+N:936:Kenshirou of hokuto
+says, 'Fist of the north star is invincible!!'
+shouts, 'AAATATATATATATATATATATATATATATATA!!!!'
+
+N:1003:The ghost 'Q'
+says, 'Refill'
+says, 'Sho, I'm hungry..'
+
+N:1005:Antharom, Magic Master in the Castle of Darkness
+says, 'Go to 14!'
+shouts, 'Remember! Curiosity killed the cat!'
+says, 'Welcome, youth...'
+says, 'Antharom, Ansalom... what's the difference'
+
+N:1014:M. Bison
+says, 'Soon the world will know the loving grip of the Pax Bisonica!'
+asks, 'Why do they still call me a warlord? And mad?'
+says, 'Peace will reign in the world, and all humanity shall bow to me, in humble gratitude.'
+says, 'Psycho Power will never lose.'
+says, 'Mercy is for the weak.'
+says, 'My Psycho Power knows no limits!'
+
+N:1029:Baby satan
+magically summons Cyberdemons!
+magically summons special opponents!
+invokes a mana storm.
+invokes a darkness storm.
+invokes a starburst.
+throws a Psycho-Spear.
+invokes the Hand of Doom!
+casts a Globe of Invulnerability.
+magically summons Lords of Amber!
+yells 'The World!' Time has stopped!
+casts Anti-Magic. You feel your spells are blocked!
+throws a large rock.
+invokes a stasis field.
+casts polymorph other ... You turn into a giant toad!
+says, 'I'm BABY SATAN'
+
+N:1063:lousy, the King of louses
+says, 'You, transform a louse!'
+says, 'Don't look me as I was a louse!'
+says, 'Here a louse.'
+says, 'Die. Die. Damn thing is strong!'
+
+N:1094:The Variant Maintainer
+says, 'We may be friends now, but I'm still not adding it as an option.'
+says, 'Not until the refactoring is done!'
+says, 'Composband is NOT too easy!'
+takes another swig of Jolt cola.
+opens another bag of Doritos.
+says, 'Game balance? What is this ... game ... balance?'
+wonders why monsters can get multiple effects on a single blow and you can't.
+says, 'Have you heard about the new version of Composband?'
+says, 'How do you know your win really counts, if you're using options?'
+says, 'Modifying this line shouldn't crash anything.'
+says, 'Potions of Healing are much too easy to find.'
+
+N:1095:Monkey Clone
+says, "Monkey see, monkey do!"
+says, "Don't you monkey with the monkey!"
+munches on a banana.
+says, "Hear no evil, see no evil, speak no evil."
+
+N:1225:Justshorn, Sorcerer-King of the Sheeple
+yells, 'THE TIME HAS COME FOR THE MEEK TO INHERIT!'
+claims the Amulet of Oretna is his by right.
+recounts how he defeated the seven guardians of the Emerald Dagger.
+tells you an awesome story about a dragon and a man named Justin.
+says, 'Only one can match my power: the man called Sjijn."
+says, 'You don't worry about Good and Evil much, do you? You worry about Us and Them.'
+says, 'Destiny doesn't just come about. You need to work for it.'
+says, 'One good thing about the dungeons, messing with magic here can't screw up the climate.'
+
+N:1231:Implorington III
+casts an impressive death spell.
+hums to his favorite tune.
+says, 'We can rule the world together!'
+says, 'Do you know what happens if you try to ride a sheep? ...not that I've ever tried it.'
+says, 'Just between you and me, there's really good loot on the next level.'
+challenges you not to think of many-headed warthogs.
+says, 'Have you seen lycra leggings anywhere in this game? ...I'm asking for a friend.'
+asks, 'Just between you and me, are you carrying anything good?'
+asks, 'What's your favourite troll band?'
+advices you never to be surrounded by more than three walls.
+tries not to be obvious about eyeing your pockets.
+
+N:1236:Moe, the Cyclops
+says, 'Do you know who slaughtered my daughter?'
+says, 'There's so much senseless violence in this world...'
+says, 'When I find out who killed my baby girl, I'll tie them up and drop them in a big box full of tiny baby rats and sing As Time Goes By as I watch the rats slowly eat them from the toes up!'
+shakes his head.
+sighs wistfully.
+
+N:1148:Aude
+says, 'I will send you to Heaven!'
+says, 'I am sure we will get along like a hero on fire.'
+says, 'Dally with me darling - before you fall!'
+says, 'Have you lost your way? Come hither...'
+says, 'Live your life to the fullest; it may not last much longer.'
+says, 'If your heart is aflame, why, do not fear death; it is but a big sneeze.'
+
+N:1149:Helga
+says, 'I see doom coming; doom and death; spread by us, perhaps, if we take the opportunity.'
+says, 'There's no playing with the occult; give it a finger, and it takes your whole hand.'
+says, 'You want to have power, don't you? Power will have you.'
+shrieks, 'When shall we two meet again?'
+cackles maliciously.
+
+N:1150:Gertrude
+says, 'I am the fairest of them all!'
+says, 'Every hour is witching hour!'
+says, 'Never trust a dog with orange eyebrows.'
+says, 'Where's my eye of newt?'
+says, 'Hubble dubble toil and trouble.'
+says, 'Fire burn and cauldron bubble.'
+
+# these were mostly adapted from Hamsty's lines in Frogspawn
+N:*:Default lines
+says, 'Let's pillage!'
+asks, 'Are we in this for the fun, or for the profit?'
+requests new dungeon survival tips.
+requests new gambling tips.
+says, 'Hey, had any interesting adventures lately?'
+congratulates you on your progress so far.
+tells you a colorful anecdote about an ogre, a sheep and a grandma from Erie.
+laments that the average guy has no real power in the dungeon society.
+says, 'Hey, what d'you say we bait some trolls for the heck of it?'
+says, 'Never trust rumors, mate, they're full of alternative facts.'
+tells you to be careful around great wyrms.
+says, 'Watch out for great unclean ones, toxic waste has some real nasty side-effects.'
+warns you about the man called Sjijn.
+says, 'You're a dirty lootin' bastard, I'm a dirty lootin' bastard... this is the good life, innit?'
+says, 'You know what's even more fun than an octopus alien? An octopus alien on a Potion of Speed!'
+says, 'Never trust the Goddess, she's no lady.'
+says, 'I've always had a great appreciation for the arts, you know.'
+says, 'Got time for a hand of poker?'
+asks if you have any spare mushrooms.
+says, 'They says Hell is other people, and as usual they's wrong, Hell's a dungeon of its own, just less nasty than other people.'
+says, 'You can't conquer a dungeon without breaking a few heads.'
