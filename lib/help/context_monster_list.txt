@@ -11,7 +11,7 @@ This command lists all monsters you are currently aware of. The list is grouped 
   <color:keypress>/ or R</color>             Recall Selected Monster
   <color:keypress>P</color>                  Probe Selected Monster (if allowed)
   <color:keypress>N</color>                  Name Selected Pet (if allowed)
-  <color:keypress>`</color>                  Travel to Selected Monster
+  <color:keypress>` or J</color>             Travel to Selected Monster
   <color:keypress>* or T or 5</color>        Target Selected Monster
 
   <color:keypress>ESC or Q</color>           Quit this Command
