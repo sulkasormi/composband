@@ -152,6 +152,9 @@ B:7:C:Mauler:Owner
 
 B:8:N:Journalists' Guild:Garamund:Dwarf
 B:8:A:0:Listen for rumors:2:2:u:19:0
+?:[EQU $CLASS Tourist]
+B:8:A:1:Sell photograph:0:0:p:58:0
+?:1
 
 B:9:N:Temple of Mammon:Tolya the Gray:Android
 B:9:A:0:Pay for healing:0:500:h:28:0
