@@ -335,7 +335,7 @@ static void _display_resists(monster_race *r_ptr, doc_ptr doc)
         if (which >= 0 && (r_ptr->flagsr & which))
             vec_add(v, _get_res_name(i));
     }
-    if ((r_ptr->flagsr & RFR_RES_TELE) && !(r_ptr->flags1 & RF1_UNIQUE))
+    if ((r_ptr->flagsr & RFR_RES_TELE) && !(r_ptr->flags1 & RF1_UNIQUE) && !(r_ptr->flagsr & RFR_RES_ALL))
         vec_add(v, string_copy_s("<color:o>Teleportation</color>"));
     if (r_ptr->flagsr & RFR_RES_WATE)
         vec_add(v, string_copy_s("<color:b>Water</color>"));
@@ -357,7 +357,9 @@ static void _display_resists(monster_race *r_ptr, doc_ptr doc)
     /* Immunities */
     vec_clear(v);
     if (r_ptr->flagsr & RFR_RES_ALL)
+    {
         vec_add(v, string_copy_s("<color:y>Everything</color>"));
+    }
     if (r_ptr->flagsr & RFR_IM_ACID)
         vec_add(v, _get_res_name(RES_ACID));
     if (r_ptr->flagsr & RFR_IM_ELEC)
@@ -376,7 +378,7 @@ static void _display_resists(monster_race *r_ptr, doc_ptr doc)
         vec_add(v, string_copy_s("<color:U>Confusion</color>"));
     if (r_ptr->flags3 & RF3_NO_SLEEP)
         vec_add(v, string_copy_s("<color:b>Sleep</color>"));
-    if ((r_ptr->flagsr & RFR_RES_TELE) && (r_ptr->flags1 & RF1_UNIQUE))
+    if ((r_ptr->flagsr & RFR_RES_TELE) && ((r_ptr->flags1 & RF1_UNIQUE) || (r_ptr->flagsr & RFR_RES_ALL)))
         vec_add(v, string_copy_s("<color:o>Teleportation</color>"));
 
     if (vec_length(v))
