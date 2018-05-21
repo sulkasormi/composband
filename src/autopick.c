@@ -1435,6 +1435,10 @@ static bool is_autopick_aux(object_type *o_ptr, autopick_type *entry, cptr o_nam
                 is_special = TRUE;
             }
         }
+        else if (p_ptr->pclass == CLASS_ALCHEMIST)
+        {
+            if (o_ptr->tval == TV_POTION) is_special = TRUE;
+        }
         else if (weaponmaster_is_(WEAPONMASTER_DIGGERS))
         {
             if (o_ptr->tval == TV_CORPSE || o_ptr->tval == TV_SKELETON)
@@ -2135,6 +2139,7 @@ static byte _get_object_feeling(object_type *o_ptr)
     if (o_ptr->tval == TV_RING || o_ptr->tval == TV_AMULET) return FEEL_AVERAGE;
 
     if (o_ptr->to_a > 0) return FEEL_GOOD;
+    if (o_ptr->tval == TV_GLOVES || o_ptr->tval == TV_BOOTS) return FEEL_AVERAGE;
     if (o_ptr->to_h + o_ptr->to_d > 0) return FEEL_GOOD;
 
     return FEEL_AVERAGE;
@@ -2168,6 +2173,9 @@ bool autopick_auto_id(object_type *o_ptr)
         slot_t slot;
 
         if (p_ptr->pclass == CLASS_MAGIC_EATER && magic_eater_auto_id(o_ptr))
+            return TRUE;
+
+        if (p_ptr->pclass == CLASS_ALCHEMIST && o_ptr->tval == TV_POTION)
             return TRUE;
 
         slot = pack_find_obj(TV_SCROLL, SV_SCROLL_IDENTIFY);
@@ -2224,6 +2232,10 @@ static void _get_obj(obj_ptr obj)
     {
         identify_item(obj);
         equip_learn_flag(OF_LORE2);
+    }
+    else if ((p_ptr->pclass == CLASS_ALCHEMIST) && (obj->tval == TV_POTION))
+    {
+        identify_item(obj);
     }
     else if (p_ptr->auto_pseudo_id)
     {
