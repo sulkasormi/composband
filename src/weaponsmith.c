@@ -43,6 +43,7 @@ enum {                  /* stored in object.xtra1 when object.xtra3 = _ESSENCE_S
     _SPECIAL_PROTECTION,
 	_SPECIAL_VITALITY,
     _SPECIAL_AURA_ELEMENTS,
+    /* next flag should be 11 instead of 10, unless it's actually used for deaggravation, which is 10 */
 };
 
 /* Essences are grouped by type for display to the user */
