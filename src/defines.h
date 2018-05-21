@@ -19,7 +19,7 @@
 #define VER_MAJOR 7
 #define VER_MINOR 0
 #define VER_PATCH "peppermint"
-#define VER_EXTRA 0
+#define VER_EXTRA 4
 
 #define GAME_MODE_BEGINNER  0
 #define GAME_MODE_NORMAL    1
@@ -814,7 +814,9 @@ enum _mimic_types {
 #define CLASS_SKILLMASTER       47
 #define CLASS_LAWYER            48
 #define CLASS_NINJA_LAWYER      49
-#define MAX_CLASS               50
+#define CLASS_ALCHEMIST         50
+#define CLASS_POLITICIAN        51
+#define MAX_CLASS               52
 
 /*
 #define CLASS_LOGRUS_MASTER     47
@@ -2023,6 +2025,9 @@ enum {
 #define SV_POTION_CLARITY               70
 #define SV_POTION_GREAT_CLARITY         71
 
+#define POTION_MAX                      72
+
+
 /* The "sval" codes for TV_FLASK */
 #define SV_FLASK_OIL                   0
 
@@ -2287,6 +2292,7 @@ enum {
 #define PR_MAP              0x00008000     /* Display Map */
 #define PR_WIPE             0x00010000     /* Hack -- Total Redraw */
 #define PR_MSG_LINE         0x00020000
+#define PR_POOL             0x00040000     /* Display Pool */
 
 /* xxx */
 /* xxx */
@@ -2331,7 +2337,7 @@ enum {
 #define PM_WALL_SCUMMER   0x00001000
 #define PM_RING_BEARER    0x00002000
 #define PM_QUESTOR        0x00004000
-
+#define PM_NO_SUMMONERS   0x00008000
 
 /* Bit flags for monster_desc() */
 #define MD_OBJECTIVE      0x00000001 /* Objective (or Reflexive) */
@@ -2513,6 +2519,7 @@ enum summon_specific_e {
     SUMMON_MONK,
     SUMMON_MAGE,
     SUMMON_SPECIAL, /* mon->id specific code */
+    SUMMON_REPTILE,
 };
 
 #define DAMAGE_FORCE    1
@@ -2640,7 +2647,7 @@ enum summon_specific_e {
 #define MFLAG2_SHOW             0x00000020    /* Monster is recently memorized */
 #define MFLAG2_MARK             0x00000040    /* Monster is currently memorized */
 #define MFLAG2_TRIPPED          0x00000080
-#define MFLAG2_XXXXXXXX         0x00000100
+#define MFLAG2_HURT             0x00000100    /* Monster was hurt */
 #define MFLAG2_NODESTRUCT       0x00000200
 #define MFLAG2_AWARE            0x00000400
 #define MFLAG2_DROP_BASIC       0x00000800
@@ -3350,6 +3357,9 @@ enum r_drop_e
 #define is_pet(A) \
      (bool)(((A)->smart & (1U << SM_PET)) ? TRUE : FALSE)
 
+#define is_pet_idx(IDX) \
+     (bool)((IDX) > 0 && is_pet(&m_list[(IDX)]))
+
 #define is_aware(A) \
      (bool)(((A)->mflag2 & MFLAG2_AWARE) ? TRUE : FALSE)
 
@@ -3911,6 +3921,7 @@ extern int PlayerUID;
 #define BACT_REPUTATION             55
 #define BACT_REFORGE_ARTIFACT       56
 #define BACT_CHANGE_NAME            57
+#define BACT_SELL_PHOTO             58
 
 /*
  * Initialization flags
@@ -3931,6 +3942,8 @@ extern int PlayerUID;
 
 /*
  * Modes for the random name generator
+ * (This is out of date. These definitions are not used by the actual
+ * random name generator)
  */
 #define NAME_DWARF  1
 #define NAME_ELF    2
@@ -4167,6 +4180,7 @@ extern int PlayerUID;
 #define MON_GREEN_G             100
 #define MON_DEATH_SWORD         107
 #define MON_NOV_PRIEST_G        109
+#define MON_DISEMBODIED_HAND    112
 #define MON_SILVER_COINS        117
 #define MON_D_ELF               122
 #define MON_MANES               128
@@ -4223,6 +4237,7 @@ extern int PlayerUID;
 #define MON_AIR_HOUND           338
 #define MON_WATER_HOUND         340
 #define MON_QUYLTHULG           342
+#define MON_SASQUATCH           343
 #define MON_D_ELF_LORD          348
 #define MON_CLOUD_GIANT         349
 #define MON_FIRE_VORTEX         354
@@ -4294,6 +4309,7 @@ extern int PlayerUID;
 #define MON_JURT           517
 #define MON_LICH           518
 #define MON_MASTER_VAMPIRE 520
+#define MON_ORIENTAL_VAMPIRE 521
 #define MON_GREATER_MUMMY  522
 #define MON_BLOODLETTER    523
 #define MON_BLOODLETTER_KHORNE 523
@@ -4301,6 +4317,7 @@ extern int PlayerUID;
 #define MON_AIR_ELEMENTAL   526
 #define MON_EOG_GOLEM 530
 #define MON_DREAD         534
+#define MON_STAR_VAMPIRE 536
 #define MON_OLOG         538
 #define MON_HALFLING_S    539
 #define MON_GRAV_HOUND    540
@@ -4335,6 +4352,7 @@ extern int PlayerUID;
 #define MON_SERAPH                 605
 #define MON_LOGE                   606
 #define MON_MONASTIC_LICH 611
+#define MON_FIRE_VAMPIRE 613
 #define MON_SEVEN_HEADED_HYDRA 614
 #define MON_MOIRE           615
 #define MON_KAVLAX        616
@@ -5211,6 +5229,10 @@ enum {
     WARLOCK_DRAGON_TOGGLE_GALLOP,
     WARLOCK_DRAGON_TOGGLE_HEALING,
     WARLOCK_DRAGON_TOGGLE_HEROIC_CHARGE,
+
+    POLLY_TOGGLE_HPCAST = 150,
+    POLLY_TOGGLE_XPCAST,
+    POLLY_TOGGLE_AUCAST,
 };
 
 /* Wild Counters */
@@ -5737,6 +5759,13 @@ enum effect_e
     EFFECT_MAX
 };
 
+/* Filibuster speed adjustment */
+#define SPEED_ADJ_FILIBUSTER 12
+
+#define politician_is_magic ((p_ptr->pclass == CLASS_POLITICIAN) && (p_ptr->realm1 != REALM_NONE))
+#define politician_is_nonmagic ((p_ptr->pclass == CLASS_POLITICIAN) && (p_ptr->realm1 == REALM_NONE))
+#define POLITICIAN_FIRST_SPELL 6
+
 /* "Biases" for random artifact generation */
 #define BIAS_ELEC            0x00000001
 #define BIAS_POIS            0x00000002
@@ -5809,6 +5838,7 @@ enum {
 #define MITZE_ID 0x01
 #define MITZE_PICKUP 0x02
 #define MITZE_MIXED 0x04
+#define MITZE_REFORGE 0x08 /* Separate from ORIGIN_REFORGE for historical compatibility */
 
 /* Lawyer hacks */
 #define LAWYER_HACK_LEVEL 1
@@ -5840,3 +5870,10 @@ enum ui_result_e
     UI_ERROR
 };
 
+/* Capture ball release modes */
+#define CAPTURE_BALL_DEC_NUM       0x01
+#define CAPTURE_BALL_FORCE_RELEASE 0x02
+#define CAPTURE_BALL_ALLOW_HOSTILE 0x04
+
+/* Limit of upkeep acceptable to monsters */
+#define SAFE_UPKEEP_PCT 484
