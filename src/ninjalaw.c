@@ -174,6 +174,9 @@ static caster_info * _caster_info(void)
         me.magic_desc = "ninjutsu";
         me.which_stat = A_WIS;
         me.min_fail = 1;
+        me.encumbrance.max_wgt = 160;
+        me.encumbrance.weapon_pct = 0;
+        me.encumbrance.enc_wgt = 500;
         init = TRUE;
     }
     return &me;
