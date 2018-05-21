@@ -11,7 +11,7 @@ void pack_init(void)
     inv_free(_inv);
     vec_free(_overflow);
 
-    _inv = inv_alloc("Inventory", INV_PACK, PACK_MAX);
+    _inv = inv_alloc("Inventory", INV_PACK, pack_max());
     _overflow = vec_alloc(free);
 }
 
@@ -234,6 +234,7 @@ obj_ptr pack_obj(slot_t slot)
 
 int pack_max(void)
 {
+    if (p_ptr->pclass == CLASS_ALCHEMIST) return PACK_MAX - 3; /* infusion space */
     return PACK_MAX;
 }
 
@@ -280,7 +281,7 @@ slot_t pack_find_obj(int tval, int sval)
 slot_t pack_find_device(int effect)
 {
     int slot;
-    for (slot = 1; slot <= PACK_MAX; slot++)
+    for (slot = 1; slot <= pack_max(); slot++)
     {
         obj_ptr obj = inv_obj(_inv, slot);
         if (!obj) continue;
@@ -423,7 +424,7 @@ int pack_count_slots(obj_p p)
 
 bool pack_is_full(void)
 {
-    return pack_count_slots(obj_exists) == PACK_MAX;
+    return pack_count_slots(obj_exists) == pack_max();
 }
 
 /* Savefiles */
