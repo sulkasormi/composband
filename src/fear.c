@@ -179,7 +179,11 @@ bool fear_allow_device(void)
 
 bool fear_allow_magic(void)
 {
-    if (p_ptr->afraid && !fear_save_p(p_ptr->afraid)) return FALSE;
+    if (p_ptr->afraid && !fear_save_p(p_ptr->afraid))
+    {
+        if (p_ptr->pclass == CLASS_ALCHEMIST) return !one_in_(3);
+        return FALSE;
+    }
     return TRUE;
 }
 
