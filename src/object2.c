@@ -682,7 +682,7 @@ s16b get_obj_num(int level)
         k_idx = table[i].index;
         k_ptr = &k_info[k_idx];
         if (k_ptr->tval == TV_FOOD && k_ptr->sval == SV_FOOD_AMBROSIA && dungeon_type != DUNGEON_OLYMPUS) continue;
-        if (k_ptr->tval == TV_BOW && k_ptr->sval == SV_HARP && p_ptr->pclass != CLASS_BARD) continue;
+        if (k_ptr->tval == TV_BOW && k_ptr->sval == SV_HARP) continue;
 		if (easy_id && k_ptr->tval == TV_SCROLL && k_ptr->sval == SV_SCROLL_STAR_IDENTIFY) continue;
         /* Hack -- prevent embedded chests */
         if (opening_chest && (k_ptr->tval == TV_CHEST)) continue;
@@ -827,31 +827,37 @@ void stats_on_save(savefile_ptr file)
 void stats_on_gold_find(int au)
 {
     stats_gold_counts.found += au;
+    if (p_ptr->pclass == CLASS_POLITICIAN) politician_check_au(FALSE);
 }
 
 void stats_on_gold_selling(int au)
 {
     stats_gold_counts.selling += au;
+    if (p_ptr->pclass == CLASS_POLITICIAN) politician_check_au(FALSE);
 }
 
 void stats_on_gold_buying(int au)
 {
     stats_gold_counts.buying += au;
+    if (p_ptr->pclass == CLASS_POLITICIAN) politician_check_au(FALSE);
 }
 
 void stats_on_gold_services(int au)
 {
     stats_gold_counts.services += au;
+    if (p_ptr->pclass == CLASS_POLITICIAN) politician_check_au(FALSE);
 }
 
 void stats_on_gold_winnings(int au)
 {
     stats_gold_counts.winnings += au;
+    if (p_ptr->pclass == CLASS_POLITICIAN) politician_check_au(FALSE);
 }
 
 void stats_on_gold_stolen(int au)
 {
     stats_gold_counts.stolen += au;
+    if (p_ptr->pclass == CLASS_POLITICIAN) politician_check_au(FALSE);
 }
 
 void stats_on_purchase(object_type *o_ptr)
@@ -2415,6 +2421,7 @@ static bool _is_device_class(void)
     case CLASS_SORCERER:
     case CLASS_YELLOW_MAGE:
     case CLASS_GRAY_MAGE:
+    case CLASS_ALCHEMIST:
         return TRUE;
     }
     /* Note: Devicemasters only want their speciality, which is checked below. */
@@ -2775,7 +2782,7 @@ bool kind_is_device(int k_idx) {
     }
     return FALSE;
 }
-static bool _kind_is_potion(int k_idx) {
+bool kind_is_potion(int k_idx) {
     switch (k_info[k_idx].tval)
     {
     case TV_POTION:
@@ -3527,7 +3534,7 @@ static _kind_p _choose_obj_kind(u32b mode)
                 switch (p_ptr->psubclass)
                 {
                 case DEVICEMASTER_POTIONS:
-                    _kind_hook1 = _kind_is_potion;
+                    _kind_hook1 = kind_is_potion;
                     break;
                 case DEVICEMASTER_SCROLLS:
                     _kind_hook1 = _kind_is_scroll;
@@ -3543,6 +3550,10 @@ static _kind_p _choose_obj_kind(u32b mode)
                     break;
                 }
             }
+            break;
+        case CLASS_ALCHEMIST:
+            if (one_in_(5))
+                _kind_hook1 = kind_is_potion;
             break;
         case CLASS_MAGIC_EATER:
             if (one_in_(5))
@@ -4025,7 +4036,7 @@ s16b drop_near(object_type *j_ptr, int chance, int y, int x)
     bool done = FALSE;
 
     /* Extract plural */
-    bool plural = (j_ptr->number != 1);
+    bool plural = object_plural(j_ptr);
 
     /* Describe object */
     object_desc(o_name, j_ptr, (OD_OMIT_PREFIX | OD_NAME_ONLY));
@@ -4035,6 +4046,16 @@ s16b drop_near(object_type *j_ptr, int chance, int y, int x)
         msg_print("The potion goes sour.");
         j_ptr->sval = SV_POTION_SALT_WATER;
         j_ptr->k_idx = lookup_kind(TV_POTION, SV_POTION_SALT_WATER);
+    }
+
+    /* Release the monster on dropping a capture ball
+     * We need to do this to avoid ball_num counting monsters in capture balls that
+     * got left behind on levels that no longer exist. Even if we meticulously "opened"
+     * every capture ball on leaving a dungeon, things could still go horribly wrong in the
+     * all-too-common case that the temporal files for those levels need to be deleted */
+    if ((j_ptr->tval == TV_CAPTURE) && (j_ptr->pval > 0))
+    {
+        capture_ball_opening(j_ptr, y, x, TRUE);
     }
 
     /* Handle normal "breakage" */
