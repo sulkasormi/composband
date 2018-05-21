@@ -10,7 +10,7 @@ D:I need you to take this foul invader out.
 ?:1
 
 ?:[EQU $QUEST3 Completed]
-D:You saved us from deep trouble again. Please accept this modest gift.
+D:You saved us from deep trouble. Please accept this modest gift.
 ?:1
 
 ?:[EQU $QUEST3 Failed]
