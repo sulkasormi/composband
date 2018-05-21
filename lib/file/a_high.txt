@@ -1,6 +1,7 @@
 N: 1:BIAS_ELEC
 of Galactic Barrier
-of Resist *Lightning*
+of Sparks
+of the Two-Headed Guy
 of Thor
 of Zeus
 'Shambler'
@@ -8,7 +9,7 @@ of Zeus
 
 N: 2:BIAS_POIS
 'Poison Barrier'
-'Great unclean one'
+'Great Unclean One'
 'Tir-karakse'
 'Healing Bottle'
 'Soul Purification'
@@ -58,6 +59,7 @@ of Slortar
 of Slaanesh
 of Collapsium
 of Great Destruction
+of Sigmund
 
 N:14:BIAS_NECROMANTIC
 'Bloodmail of Lucifer'
@@ -106,7 +108,7 @@ of Merlin's Pattern
 of the Great Magi
 of Loki
 'Clear Mind'
-'the Eye of the Aethiopica'
+'The Eye of the Aethiopica'
 'Mana Prism'
 'Ivory Tower'
 
@@ -142,7 +144,7 @@ N:10:BIAS_CON
 'Orb of Destiny'
 'Amber Prison'
 of Corwin's Pattern
-of C('i)adan
+'Wyrmskin'
 
 N:11:BIAS_CHR
 'Brilliant of Laurelin'
@@ -162,12 +164,15 @@ of Diamond
 'Living Armour'
 'Living Wall'
 of Malachite
+of Sverdlovsk
 'Citadel'
 'Genesis'
 of the Dungeon Master
 of the Dungeon Keeper
+of Narus Darkstone
 'Intact'
-of Great Barrier
+'Great Barrier'
+'Bouncing Antwerp'
 'Battlemech'
 'Meganoid'
 'Imperium'
@@ -179,4 +184,5 @@ of Thrain
 of Deirdre
 of Random
 of Celeborn
+of Awesomeness
 'Eternal Bastion'
