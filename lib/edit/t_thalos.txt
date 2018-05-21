@@ -221,8 +221,8 @@ B:13:A:0:Request quest:0:0:q:6:0
 B:13:C:*:None
 
 B:14:N:Druids' Grove:Dorrio Greenleaf:Elf
-B:14:A:1:Healing prayer:200:1000:r:28:0
-B:14:A:2:Restoration:200:1000:i:29:0
+B:14:A:0:Healing prayer:50:300:h:28:0
+B:14:A:1:Restoration:200:1000:r:29:0
 B:14:C:*:None
 
 ############### Town Layout ###############
