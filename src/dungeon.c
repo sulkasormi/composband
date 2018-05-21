@@ -126,7 +126,7 @@ static void _sense_obj(obj_ptr obj)
     {
         msg_format("You feel the %s (%c) you are wearing %s %s...",
                name, slot_label(obj->loc.slot),
-               obj->number == 1 ? "is" : "are",
+               !object_plural(obj) ? "is" : "are",
                    game_inscriptions[feel]);
     }
     else
@@ -134,7 +134,7 @@ static void _sense_obj(obj_ptr obj)
         msg_format("You feel the %s (%c) in your %s %s %s...",
                name, slot_label(obj->loc.slot),
                obj->loc.where == INV_QUIVER ? "quiver" : "pack", 
-               obj->number == 1 ? "is" : "are",
+               !object_plural(obj) ? "is" : "are",
                    game_inscriptions[feel]);
     }
 
@@ -478,6 +478,7 @@ static void regenhp(int percent)
     if (p_ptr->action == ACTION_STALK) return;
     if (mimic_no_regen()) return;
     if (weaponmaster_get_toggle() == TOGGLE_SHADOW_STANCE) return;
+    if (p_ptr->filibuster) return;
 
     /* Save the old hitpoints */
     old_chp = p_ptr->chp;
@@ -682,6 +683,10 @@ static bool _is_captured_mon(obj_ptr obj) { return obj->tval == TV_CAPTURE && ob
 static void _regen_captured_mon(obj_ptr obj)
 {
     monster_race *r_ptr = &r_info[obj->pval];
+
+    /* Uniques and Nazguls regenerate very slowly in capture balls */ 
+    if ((r_ptr->ball_num) && ((game_turn % (TURNS_PER_TICK*60)))) return;
+
     if (obj->xtra4 < obj->xtra5)
     {
         int amt = obj->xtra5 / 100;
@@ -809,7 +814,7 @@ bool psychometry(void)
     }
 
     msg_format("You feel that the %s %s %s...",
-               o_name, ((prompt.obj->number == 1) ? "is" : "are"),
+               o_name, ((!object_plural(prompt.obj)) ? "is" : "are"),
                game_inscriptions[feel]);
 
 
@@ -1266,6 +1271,7 @@ static void process_world_aux_hp_and_sp(void)
         p_ptr->action == ACTION_QUICK_WALK ||
         p_ptr->action == ACTION_STALK ||
         (p_ptr->special_defense & KATA_KOUKIJIN) ||
+        p_ptr->filibuster ||
         weaponmaster_get_toggle() == TOGGLE_SHADOW_STANCE)
     {
         upkeep_factor += 100;
@@ -1278,6 +1284,16 @@ static void process_world_aux_hp_and_sp(void)
         upkeep_regen = upkeep_regen * 2;
 
     regenmana(upkeep_regen);
+
+    /* Mega-hack - interrupt resting if we're only resting for mana and our mana isn't regenerating */
+    if ((resting < 0) && ((p_ptr->chp == p_ptr->mhp) || (mimic_no_regen()))
+        && (upkeep_regen <= 0) && (!magic_eater_can_regen()) && (!samurai_can_concentrate())
+        && (!p_ptr->blind) && (!p_ptr->confused) && (!p_ptr->poisoned) && (!p_ptr->afraid)
+        && (!p_ptr->stun) && (!p_ptr->cut) && (!p_ptr->slow) && (!p_ptr->paralyzed)
+        && (!p_ptr->image) && (!p_ptr->word_recall) && (!p_ptr->alter_reality))
+    {
+        set_action(ACTION_NONE);
+    }
 
     if (magic_eater_regen(regen_amount))
         wild_regen = 20;
@@ -3413,6 +3429,7 @@ static void _dispatch_command(int old_now_turn)
                      p_ptr->pclass == CLASS_MAULER ||
                      p_ptr->pclass == CLASS_MYSTIC ||
                      p_ptr->pclass == CLASS_SNIPER ||
+                     p_ptr->pclass == CLASS_ALCHEMIST ||
                      p_ptr->pclass == CLASS_TIME_LORD )
             {
                 /* This is the preferred entry point ... I'm still working on
@@ -3440,12 +3457,14 @@ static void _dispatch_command(int old_now_turn)
             {
                 msg_print("You are too scared!");
                 energy_use = 100;
+                if (p_ptr->pclass == CLASS_ALCHEMIST) energy_use = alchemist_infusion_energy_use();
             }
             else if ( dun_level && (d_info[dungeon_type].flags1 & DF1_NO_MAGIC)
                    && p_ptr->pclass != CLASS_BERSERKER
                    && p_ptr->pclass != CLASS_BLOOD_KNIGHT
                    && p_ptr->pclass != CLASS_WEAPONMASTER
                    && p_ptr->pclass != CLASS_MAULER
+                   && p_ptr->pclass != CLASS_ALCHEMIST
                    && p_ptr->prace  != RACE_MON_POSSESSOR
                    && p_ptr->prace  != RACE_MON_MIMIC)
             {
@@ -3457,6 +3476,7 @@ static void _dispatch_command(int old_now_turn)
                    && p_ptr->pclass != CLASS_BLOOD_KNIGHT
                    && p_ptr->pclass != CLASS_WEAPONMASTER
                    && p_ptr->pclass != CLASS_MAULER
+                   && p_ptr->pclass != CLASS_ALCHEMIST
                    && p_ptr->prace  != RACE_MON_POSSESSOR
                    && p_ptr->prace  != RACE_MON_MIMIC)
             {
@@ -3480,7 +3500,8 @@ static void _dispatch_command(int old_now_turn)
                 equip_learn_flag(OF_NO_MAGIC);
                 energy_use = 0;
             }
-            else if (IS_SHERO() && p_ptr->pclass != CLASS_BERSERKER && p_ptr->pclass != CLASS_BLOOD_KNIGHT && p_ptr->pclass != CLASS_RAGE_MAGE)
+            else if (IS_SHERO() && p_ptr->pclass != CLASS_BERSERKER && p_ptr->pclass != CLASS_BLOOD_KNIGHT && p_ptr->pclass != CLASS_RAGE_MAGE
+             && p_ptr->pclass != CLASS_ALCHEMIST)
             {
                 msg_format("You cannot think clearly!");
                 energy_use = 0;
@@ -3499,6 +3520,8 @@ static void _dispatch_command(int old_now_turn)
                     do_cmd_hissatsu();
                 else if (p_ptr->pclass == CLASS_GRAY_MAGE)
                     gray_mage_cast_spell();
+                else if (p_ptr->pclass == CLASS_ALCHEMIST)
+                    alchemist_cast(0);
                 else if (p_ptr->pclass == CLASS_ARCHAEOLOGIST ||
                             p_ptr->pclass == CLASS_BERSERKER ||
                             p_ptr->pclass == CLASS_DUELIST ||
@@ -3641,7 +3664,7 @@ static void _dispatch_command(int old_now_turn)
         {
             if (!p_ptr->wild_mode)
             {
-                if (p_ptr->inside_arena && !devicemaster_is_(DEVICEMASTER_POTIONS))
+                if (p_ptr->inside_arena && !devicemaster_is_(DEVICEMASTER_POTIONS) && p_ptr->pclass != CLASS_ALCHEMIST)
                 {
                     msg_print("The arena absorbs all attempted magic!");
                     msg_print(NULL);
@@ -4091,7 +4114,7 @@ static void process_player(void)
                 || p_ptr->pclass == CLASS_RAGE_MAGE
                 || mimic_no_regen() )
               && !magic_eater_can_regen()
-			  && !samurai_can_concentrate()
+              && !samurai_can_concentrate()
               && !p_ptr->blind
               && !p_ptr->confused
               && !p_ptr->poisoned
@@ -4779,7 +4802,7 @@ static void dungeon(bool load_game)
     /* Print quest message if appropriate */
     if ((dun_level == d_info[dungeon_type].maxdepth) && d_info[dungeon_type].final_guardian)
     {
-        if (r_info[d_info[dungeon_type].final_guardian].max_num)
+        if (mon_available_num(&r_info[d_info[dungeon_type].final_guardian]))
         {
             cmsg_format(
                 TERM_YELLOW, "%^s lives in this level as the keeper of %s.",
@@ -5116,7 +5139,7 @@ void play_game(bool new_game)
     }
 
     /* Extract the options */
-    extract_option_vars();
+    if (!character_loaded) extract_option_vars();
 
     creating_savefile = new_game;
 
