@@ -610,6 +610,12 @@ void dispel_player(void)
     psion_dispel_player();
     mimic_dispel_player();
 
+    /* Stop filibuster */
+    if (p_ptr->filibuster)
+    {
+        p_ptr->filibuster = FALSE;
+        msg_print("You stop filibustering.");
+    }
 
     /* Cancel glowing hands */
     if (p_ptr->special_attack & ATTACK_CONFUSE)
@@ -2656,8 +2662,8 @@ bool set_wraith_form(int v, bool do_dec)
             /* Redraw map */
             p_ptr->redraw |= (PR_MAP);
 
-            /* Update monsters */
-            p_ptr->update |= (PU_MONSTERS);
+            /* Update monsters and HP*/
+            p_ptr->update |= (PU_MONSTERS | PU_HP);
 
             /* Window stuff */
             p_ptr->window |= (PW_OVERHEAD | PW_DUNGEON);
@@ -2677,7 +2683,7 @@ bool set_wraith_form(int v, bool do_dec)
             p_ptr->redraw |= (PR_MAP);
 
             /* Update monsters */
-            p_ptr->update |= (PU_MONSTERS);
+            p_ptr->update |= (PU_MONSTERS | PU_HP);
 
             /* Window stuff */
             p_ptr->window |= (PW_OVERHEAD | PW_DUNGEON);
@@ -4718,7 +4724,7 @@ bool set_food(int v)
     v = (v > 20000) ? 20000 : (v < 0) ? 0 : v;
 
     /* CTK: I added a "food bar" to track hunger ... */
-    if (display_percentages)
+    if (easy_damage || p_ptr->wizard)
     {
         old_pct = p_ptr->food * 100 / PY_FOOD_FULL;
         new_pct = v * 100 / PY_FOOD_FULL;
@@ -5560,7 +5566,7 @@ void change_race(int new_race, cptr effect_msg)
 
     _lock = TRUE;
 
-    if (old_race == RACE_HUMAN || old_race == RACE_DEMIGOD)
+    if (old_race == RACE_HUMAN || old_race == RACE_DEMIGOD || mut_present(p_ptr->demigod_power[0]))
     {
         int i, idx;
         for (i = 0; i < MAX_DEMIGOD_POWERS; i++)
@@ -5612,7 +5618,8 @@ void change_race(int new_race, cptr effect_msg)
     /* The experience level may be modified */
     check_experience();
 
-    if (p_ptr->prace == RACE_HUMAN || p_ptr->prace == RACE_DEMIGOD || p_ptr->prace == RACE_DRACONIAN)
+    if (p_ptr->prace == RACE_HUMAN || p_ptr->prace == RACE_DEMIGOD || p_ptr->prace == RACE_DRACONIAN ||
+        p_ptr->prace == RACE_BARBARIAN || p_ptr->prace == RACE_DUNADAN || p_ptr->prace == RACE_HALF_ORC)
     {
         race_t *race_ptr = get_true_race();
         if (race_ptr != NULL && race_ptr->gain_level != NULL)
@@ -5906,7 +5913,7 @@ int take_hit(int damage_type, int damage, cptr hit_from)
     }
 
     
-    if (p_ptr->wizard && damage > 0)
+    if ((p_ptr->wizard || easy_damage) && (damage > 0))
         msg_format("You take %d damage.", damage);
 
     p_ptr->chp -= damage;
