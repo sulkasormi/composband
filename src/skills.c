@@ -112,7 +112,8 @@ skill_desc_t skills_describe(int amt, int div)
         default:
         {
             int k = (n - 17) * 5 / 2;
-            result.desc = format("Amber[%d]", k); /*Legendary is too long for tables */
+            if ((p_ptr->wizard) || (display_skill_num)) result.desc = "Amber";
+            else result.desc = format("Amber[%d]", k); /*Legendary is too long for tables */
             result.color = TERM_VIOLET;
             break;
         }
@@ -1005,6 +1006,7 @@ void skills_on_birth(void)
                 p_ptr->weapon_exp[i][j] = WEAPON_EXP_BEGINNER;
             else
                 p_ptr->weapon_exp[i][j] = s_info[class_idx].w_start[i][j];
+            if (p_ptr->weapon_exp[i][j] == 0) p_ptr->weapon_exp[i][j] = MIN(WEAPON_EXP_BEGINNER / 2, s_info[class_idx].w_max[i][j]);
         }
     }
     if (p_ptr->personality == PERS_SEXY)
