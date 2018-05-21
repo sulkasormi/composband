@@ -403,20 +403,28 @@ static bool _spell_book_p(object_type *o_ptr)
 /* cmd5.c get_spell() was blowing up when I attempted code reuse ...
    so roll our own (much simpler) version */
 #define _SPELLS_PER_BOOK 8
-static void _display_spells_to_gain(object_type *o_ptr, rect_t r)
+static void _display_spells_to_gain(object_type *o_ptr, rect_t r, int tutki)
 {
     doc_ptr doc = doc_alloc(r.cx);
     int     i;
     int     realm = tval2realm(o_ptr->tval);
     int     start_idx = o_ptr->sval * _SPELLS_PER_BOOK;
 
+    r.x = 0;
+    r.y = 0;
+    doc_insert(doc, "Memorize which spell [<color:keypress>A</color>-<color:keypress>H</color> to browse]:\n");
     doc_insert(doc, "<style:table>");
     doc_printf(doc, "<color:G>    %-20.20s Lvl  SP Fail Desc</color>\n", "Name");
 
     for (i = start_idx; i < start_idx + _SPELLS_PER_BOOK; i++)
-        _list_spell(doc, realm, i, i - start_idx, _FROM_BOOK);
-
+        _list_spell(doc, realm, i, i - start_idx, (_FROM_BOOK | _SHOW_INFO));
     doc_insert(doc, "</style>");
+
+    if ((tutki >= 0) && (tutki < _SPELLS_PER_BOOK))
+    {
+        doc_printf(doc, "    <indent>%s</indent>\n",
+            do_spell(realm, start_idx + tutki, SPELL_DESC));
+    }
 
     doc_sync_term(doc, doc_range_all(doc), doc_pos_create(r.x, r.y));
     doc_free(doc);
@@ -426,19 +434,21 @@ static int _choose_spell_to_gain(object_type *o_ptr)
 {
     rect_t r = _menu_rect();
     int    result = -1;
+    int    tutki = -1;
     int    cmd;
     bool   done = FALSE;
 
     screen_save();
     while (!done)
     {
-        prt("Memorize which spell?", 0, 0);
-        _display_spells_to_gain(o_ptr, r);
+        _display_spells_to_gain(o_ptr, r, tutki);
 
         cmd = inkey_special(FALSE);
 
         if (cmd == ESCAPE || cmd == 'q' || cmd == 'Q')
             done = TRUE;
+
+        tutki = -1;
 
         if ('a' <= cmd && cmd < 'a' + _SPELLS_PER_BOOK)
         {
@@ -449,6 +459,19 @@ static int _choose_spell_to_gain(object_type *o_ptr)
             {
                 done = TRUE;
                 result = spell_idx;
+            }
+        }        
+        else 
+        {
+            screen_load();
+            screen_save();
+            if (isupper(cmd))
+            {
+                cmd = tolower(cmd);
+                if ('a' <= cmd && cmd < 'a' + _SPELLS_PER_BOOK)
+                {
+                    tutki = A2I(cmd);
+                }
             }
         }
     }
