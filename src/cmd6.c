@@ -788,6 +788,31 @@ static void do_cmd_read_scroll_aux(obj_ptr o_ptr)
         used_up = device_use(o_ptr, 0);
         if (object_is_(o_ptr, TV_SCROLL, SV_SCROLL_IDENTIFY))
             number = device_used_charges;
+        if ((!used_up) && (o_ptr->tval == TV_SCROLL)) /* Abort without taking a turn */
+        {
+            switch (o_ptr->sval)
+            {
+                 case SV_SCROLL_STAR_DESTRUCTION:
+                 case SV_SCROLL_MASS_GENOCIDE:
+                 case SV_SCROLL_TELEPORT_LEVEL:
+                 case SV_SCROLL_SUMMON_PET:
+                 case SV_SCROLL_SUMMON_KIN:
+                 case SV_SCROLL_CRAFTING:
+                 {
+                     energy_use = 0;
+                     break;
+                 }
+                 case SV_SCROLL_GENOCIDE:
+                 {
+                     if ((k_info[o_ptr->k_idx].aware) && (!quests_allow_all_spells() || (p_ptr->inside_arena) || (p_ptr->inside_battle)))
+                     {
+                         energy_use = 0;
+                         break;
+                     }
+                 }
+                 default: break;
+            }
+        }
     }
     else if (o_ptr->name1 == ART_POWER)
     {
@@ -1210,6 +1235,159 @@ void ring_of_power(int dir)
     }
 }
 
+int decrease_ball_num(int idx)
+{
+    monster_race *r_ptr = &r_info[idx];
+    if (!r_ptr->ball_num) return 0;
+    r_ptr->ball_num--;
+    return idx;
+}
+
+void increase_ball_num(int idx)
+{
+    monster_race *r_ptr = &r_info[idx];
+    if ((r_ptr->flags1 & RF1_UNIQUE) || (r_ptr->flags7 & RF7_NAZGUL))
+    /* We only do this for uniques and Nazguls to prevent the theoretical
+     * possibility, however unlikely, of someone building a collection of
+     * 100 captured unmakers to prevent any more from generating
+     * (That would be OK as long as the limit of 100 isn't actually enforced,
+     * but then there's no point in keeping track of ball_num anyway)
+     * Note that monsters with the UNIQUE2 flag are outright uncapturable */
+    {
+        monster_race *r_ptr = &r_info[cap_mon];
+        r_ptr->ball_num++;
+    }
+}
+
+void empty_capture_ball(object_type *o_ptr)
+{
+    if (o_ptr->tval != TV_CAPTURE) return;
+    o_ptr->pval = 0;
+    o_ptr->xtra3 = 0;
+    o_ptr->xtra4 = 0;
+    o_ptr->xtra5 = 0;
+}
+
+void capture_ball_opening(object_type *j_ptr, int y, int x, bool from_drop)
+{
+    int release_mon = 0;
+    int mode = from_drop ? (CAPTURE_BALL_FORCE_RELEASE | CAPTURE_BALL_ALLOW_HOSTILE) : CAPTURE_BALL_FORCE_RELEASE;
+    if ((j_ptr->tval != TV_CAPTURE) || (j_ptr->pval < 1)) return;
+    release_mon = decrease_ball_num(j_ptr->pval);
+    if (release_mon || !from_drop)
+    {
+        monster_race *r_ptr = &r_info[j_ptr->pval];
+        int my = 0, mx = 0;
+        cmsg_format(TERM_YELLOW, "The Capture Ball %s!", from_drop ? "opens" : "shatters");
+        if (monster_can_enter(y, x, r_ptr, 0))
+        {
+            my = y;
+            mx = x;
+        }
+        else /* Attempt to find nearby square. Adapted from player_place() */
+        {
+            int yritys, etaisyys = 1, nx, ny, dx, dy, kokeilu = 0;
+            for (yritys = randint1(16); yritys < 2000; yritys++)
+            {
+                dx = ((yritys % 8) < 4) ? randint0(etaisyys + 1) : etaisyys;
+                dy = ((yritys % 8) < 4) ? etaisyys : randint0(etaisyys + 1);
+                nx = (yritys % 2) ? x + dx : x - dx;
+                ny = ((yritys % 4) < 2) ? y + dy : y - dy;
+                kokeilu++;
+                if (kokeilu >= ((etaisyys * etaisyys) + 5))
+                {
+                    etaisyys++;
+                    kokeilu = 0;
+                }
+                if (!in_bounds(ny, nx)) continue;
+                if (!monster_can_enter(ny, nx, r_ptr, 0)) continue;
+                mx = nx;
+                my = ny;
+                break;
+            }
+             
+        }
+        if (!my || !mx || !in_bounds(my, mx) || !capture_ball_release(j_ptr, my, mx, mode))
+        {
+            cmsg_format(TERM_BLUE, "%s%^s disappears.", (r_ptr->flags1 & RF1_UNIQUE) ? "" : "The ", r_name + r_ptr->name);
+        }
+    }
+}
+
+bool capture_ball_release(object_type *o_ptr, int y, int x, int mode)
+{
+    /* Need to do this first. Otherwise place_monster_aux() fails to
+     * place the unique because it detects it as being inside the ball */
+    if (mode & CAPTURE_BALL_DEC_NUM) (void)decrease_ball_num(o_ptr->pval);
+    if (place_monster_aux(0, y, x, o_ptr->pval, (PM_FORCE_PET | PM_NO_KAGE)))
+    {
+        if (o_ptr->xtra3) m_list[hack_m_idx_ii].mspeed = o_ptr->xtra3;
+        if (o_ptr->xtra5) m_list[hack_m_idx_ii].max_maxhp = o_ptr->xtra5;
+        if (o_ptr->xtra4) m_list[hack_m_idx_ii].hp = o_ptr->xtra4;
+        m_list[hack_m_idx_ii].maxhp = m_list[hack_m_idx_ii].max_maxhp;
+        if ((mode & CAPTURE_BALL_ALLOW_HOSTILE) && (one_in_(4)))
+        {
+            /* Monster turns hostile. We do this to discourage dropping
+             * or throwing capture balls as a cheap alternative to
+             * activating the ball (do_dec is FALSE if and only if the
+             * ball was not activated). We don't do this on destroying the
+             * ball, both for thematic reasons (the monster should be happy
+             * we let it loose and destroyed its prison!) and because the
+             * loss of the ball is punishment enough for the player */
+            char mon_name[80];
+            monster_type *m_ptr = &m_list[hack_m_idx_ii];
+            monster_desc(mon_name, m_ptr, 0);
+            cmsg_format(TERM_BLUE, "%^s gets angry!", mon_name);
+            set_hostile(m_ptr);
+        }
+        if (o_ptr->inscription)
+        {
+            char buf[80];
+            cptr t;
+            bool quote = FALSE;
+
+            t = quark_str(o_ptr->inscription);
+            for (t = quark_str(o_ptr->inscription);*t && (*t != '#'); t++)
+            {
+            }
+            if (*t)
+            {
+                char *s = buf;
+                t++;
+                if (*t =='\'')
+                {
+                    t++;
+                    quote = TRUE;
+                }
+                while(*t)
+                {
+                    *s = *t;
+                    t++;
+                    s++;
+                }
+                if (quote && *(s-1) =='\'')
+                    s--;
+                *s = '\0';
+                m_list[hack_m_idx_ii].nickname = quark_add(buf);
+                t = quark_str(o_ptr->inscription);
+                s = buf;
+                while(*t && (*t != '#'))
+                {
+                    *s = *t;
+                    t++;
+                    s++;
+                }
+                *s = '\0';
+                o_ptr->inscription = quark_add(buf);
+            }
+        }
+        empty_capture_ball(o_ptr);
+        return TRUE;
+    }
+    if (mode & CAPTURE_BALL_FORCE_RELEASE) empty_capture_ball(o_ptr);
+    else increase_ball_num(o_ptr->pval); /* Release failed, so there's still a mon in the ball */
+    return FALSE;
+}
 
 static void _do_capture_ball(object_type *o_ptr)
 {
@@ -1231,6 +1409,7 @@ static void _do_capture_ball(object_type *o_ptr)
             o_ptr->xtra3 = cap_mspeed;
             o_ptr->xtra4 = cap_hp;
             o_ptr->xtra5 = cap_maxhp;
+            increase_ball_num(cap_mon);
             if (cap_nickname)
             {
                 cptr t;
@@ -1265,59 +1444,7 @@ static void _do_capture_ball(object_type *o_ptr)
         if (!get_rep_dir2(&dir)) return;
         if (monster_can_enter(py + ddy[dir], px + ddx[dir], &r_info[o_ptr->pval], 0))
         {
-            if (place_monster_aux(0, py + ddy[dir], px + ddx[dir], o_ptr->pval, (PM_FORCE_PET | PM_NO_KAGE)))
-            {
-                if (o_ptr->xtra3) m_list[hack_m_idx_ii].mspeed = o_ptr->xtra3;
-                if (o_ptr->xtra5) m_list[hack_m_idx_ii].max_maxhp = o_ptr->xtra5;
-                if (o_ptr->xtra4) m_list[hack_m_idx_ii].hp = o_ptr->xtra4;
-                m_list[hack_m_idx_ii].maxhp = m_list[hack_m_idx_ii].max_maxhp;
-                if (o_ptr->inscription)
-                {
-                    char buf[80];
-                    cptr t;
-                    bool quote = FALSE;
-
-                    t = quark_str(o_ptr->inscription);
-                    for (t = quark_str(o_ptr->inscription);*t && (*t != '#'); t++)
-                    {
-                    }
-                    if (*t)
-                    {
-                        char *s = buf;
-                        t++;
-                        if (*t =='\'')
-                        {
-                            t++;
-                            quote = TRUE;
-                        }
-                        while(*t)
-                        {
-                            *s = *t;
-                            t++;
-                            s++;
-                        }
-                        if (quote && *(s-1) =='\'')
-                            s--;
-                        *s = '\0';
-                        m_list[hack_m_idx_ii].nickname = quark_add(buf);
-                        t = quark_str(o_ptr->inscription);
-                        s = buf;
-                        while(*t && (*t != '#'))
-                        {
-                            *s = *t;
-                            t++;
-                            s++;
-                        }
-                        *s = '\0';
-                        o_ptr->inscription = quark_add(buf);
-                    }
-                }
-                o_ptr->pval = 0;
-                o_ptr->xtra3 = 0;
-                o_ptr->xtra4 = 0;
-                o_ptr->xtra5 = 0;
-                success = TRUE;
-            }
+            success = capture_ball_release(o_ptr, py + ddy[dir], px + ddx[dir], CAPTURE_BALL_DEC_NUM);
         }
         if (!success)
             msg_print("Oops. You failed to release your pet.");
