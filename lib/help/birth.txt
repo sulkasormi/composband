@@ -51,11 +51,11 @@ Race : <color:B>Hobbit</color><color:d>              </color> <color:G> -2</colo
 Class: <color:B>Rogue</color><color:d>               </color> <color:G> +2</color><color:r>  </color><color:v> +1</color><color:r>  </color><color:G> -1</color><color:r>  </color><color:G> +3</color><color:r>  </color><color:G> +1</color><color:r>  </color><color:G> +1</color><color:r>  110%  +12  125%</color>       
 Magic: <color:B>Burglary</color><color:d>            </color> <color:R> +0</color><color:r>  </color><color:v> +2</color><color:r>  </color><color:R> +0</color><color:r>  </color><color:R> +6</color><color:r>  </color><color:R> +3</color><color:r>  </color><color:R> +2</color><color:r>  </color><color:R>101%  +26  150%</color>       
 <color:d>                           </color>                                                     
-  <color:y>n</color>) Change Name<color:d>              </color> <color:y>  ?</color>) Help                                        
-  <color:y>s</color>) Change Sex<color:d>               </color> <color:y>TAB</color>) More Info                                   
-  <color:y>r</color>) Change Race<color:d>              </color> <color:y>RET</color>) Next Screen                                 
-  <color:y>c</color>) Change Class<color:d>             </color> <color:y>ESC</color>) Prev Screen                                 
-  <color:y>m</color>) Change Magic<color:d>             </color>                                                  
+  <color:y>n</color>) Change Name<color:d>              </color> <color:y>  *</color>) Random Name                                        
+  <color:y>s</color>) Change Sex<color:d>               </color> <color:y>  ?</color>) Help                                        
+  <color:y>r</color>) Change Race<color:d>              </color> <color:y>TAB</color>) More Info                                   
+  <color:y>c</color>) Change Class<color:d>             </color> <color:y>RET</color>) Next Screen                                 
+  <color:y>m</color>) Change Magic<color:d>             </color> <color:y>ESC</color>) Prev Screen                                 
 <color:d>                              </color>                                                  
 <color:G>Tip:</color> You can often get specific help by entering the uppercase letter           
      for a command. For example, type <color:o>R</color> on this screen to receive help          
