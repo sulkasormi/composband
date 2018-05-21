@@ -1779,7 +1779,7 @@ static void _process_todays_prize(obj_ptr obj)
     if (get_check(buf))
     {
         int mult = obj->sval == SV_CORPSE ? 50 : 30;
-        int amt = (r_info[today_mon].level * mult + 100) * obj->number;
+        int amt = ((r_info[today_mon].level + 2) * mult) * obj->number;
         _obj_reward(obj, amt);
     }
     ++_prize_count;
@@ -1819,6 +1819,12 @@ static bool _is_wanted_corpse(obj_ptr obj)
         return TRUE;
     return FALSE;
 }
+static bool _is_wanted_captureball(obj_ptr obj)
+{
+    if (obj->tval == TV_CAPTURE && _is_wanted_monster(obj->pval))
+        return TRUE;
+    return FALSE;
+}
 static void _process_wanted_corpse(obj_ptr obj)
 {
     char  name[MAX_NLEN];
@@ -1834,7 +1840,16 @@ static void _process_wanted_corpse(obj_ptr obj)
     if (!get_check(buf)) return;
 
     _forge_wanted_monster_prize(&prize, r_idx);
-    obj->number = 0;
+    if (obj->tval == TV_CAPTURE)
+    {
+        r_info[r_idx].max_num = 0;
+        r_info[r_idx].ball_num = 0;
+        empty_capture_ball(obj);
+    }
+    else
+    {
+        obj->number = 0;
+    }
     obj_release(obj, 0);
 
     virtue_add(VIRTUE_JUSTICE, 5);
@@ -1861,6 +1876,8 @@ static bool kankin(void)
     pack_for_each_that(_process_tsuchinoko, _is_corpse_tsuchinoko);
     pack_for_each_that(_process_todays_prize, _is_todays_prize);
     pack_for_each_that(_process_wanted_corpse, _is_wanted_corpse);
+    equip_for_each_that(_process_wanted_corpse, _is_wanted_captureball);
+    pack_for_each_that(_process_wanted_corpse, _is_wanted_captureball);
     if (!_prize_count)
     {
         msg_print("You have nothing that I want.");
@@ -2174,6 +2191,11 @@ static bool inn_comm(int cmd)
                         msg_print("You awake refreshed for the evening.");
                     else
                         msg_print("You awake refreshed for the new day.");
+                }
+                /* Update daily wanted */
+                if (prev_hour >= 18) /* Proxy for date change */
+                {
+                    determine_today_mon(FALSE);
                 }
             }
             break;
@@ -2804,6 +2826,11 @@ static bool _reforge_artifact(void)
     msg_print("After several hours, you are presented your new artifact...");
     game_turn += rand_range(5000, 15000);
 
+    /* Update discovery details to apply to the reforged item
+     * We do this after updating the turn to get the correct time */
+    dest->mitze_type = 0;
+    object_mitze(dest, MITZE_REFORGE);
+
     obj_identify_fully(dest);
     gear_notice_enchant(dest);
     handle_stuff();
@@ -3366,6 +3393,98 @@ static bool research_mon(void)
     return (!notpicked);
 }
 
+static bool _object_is_photograph(object_type *o_ptr)
+{
+    return (object_is_(o_ptr, TV_STATUE, SV_PHOTO));
+}
+
+/* Loosely based on _buy and _buy_aux from shop.c */
+static void _sell_photo_local_aux(object_type *o_ptr)
+{
+    int amt = o_ptr->number, tarjous = 0, jaljella = 0;
+    bool myy = FALSE;
+    char name[MAX_NLEN];
+    if (o_ptr->number > 1)
+    {
+        if (!msg_input_num("Quantity", &amt, 1, o_ptr->number)) return;
+    }
+    if (o_ptr->pval == MON_BARNEY)
+    {
+        msg_format("Thanks, but we already have more than enough photographs of him.");
+        return;
+    }
+    tarjous = tourist_sell_photo_aux(o_ptr, amt, FALSE);
+    if (tarjous == -1)
+    {
+        msg_format("We're not interested in %s.", (amt == 1) ? "this photograph" : "these photographs");
+        return;
+    }
+    myy = ((tarjous > 0) && (!no_selling));
+    if (tarjous > 2000)
+    {
+        msg_print("Is that... BIGFOOT????");
+        myy = TRUE;
+        if (no_selling) tarjous = (tarjous / 1000) * 1000;
+    }
+    if (!myy) tarjous = 0;
+    jaljella = o_ptr->number - amt;
+    o_ptr->number = amt;
+    object_desc(name, o_ptr, OD_COLOR_CODED);
+    if (!tarjous)
+    {
+        if (!get_check(format("Really give %s? ", name)))
+        {
+            o_ptr->number = amt + jaljella;
+            return;
+        }
+    }
+    else
+    {
+        if (!get_check(format("Really sell %s for <color:R>%d</color> gp? ", name, tarjous)))
+        {
+            o_ptr->number = amt + jaljella;
+            return;
+        }
+        p_ptr->au += tarjous;
+        stats_on_gold_selling(tarjous);
+        p_ptr->redraw |= PR_GOLD;
+        if (prace_is_(RACE_MON_LEPRECHAUN))
+            p_ptr->update |= (PU_BONUS | PU_HP | PU_MANA);
+    }
+
+    object_desc(name, o_ptr, OD_COLOR_CODED);
+    if (!tarjous)
+        msg_format("You gave %s.", name);
+    else
+        msg_format("You sold %s for <color:R>%d</color> gold.", name, tarjous);
+    (void)tourist_sell_photo_aux(o_ptr, amt, TRUE);
+    o_ptr->number = jaljella;
+    p_ptr->notice |= (PN_CARRY | PN_OPTIMIZE_PACK);
+}
+
+static void _sell_photo(void)
+{
+    obj_prompt_t prompt = {0};
+    if (p_ptr->pclass != CLASS_TOURIST) return;
+
+    if (no_selling)
+    {
+        prompt.prompt = "Give which photograph?";
+    }
+    else
+    {
+        prompt.prompt = "Sell which photograph?";
+    }
+    prompt.error = "You don't have any photographs.";
+    prompt.filter = _object_is_photograph;
+    prompt.where[0] = INV_PACK;
+    prompt.where[1] = INV_QUIVER;
+
+    obj_prompt(&prompt);
+    if (!prompt.obj) return;
+    _sell_photo_local_aux(prompt.obj);
+    obj_release(prompt.obj, OBJ_RELEASE_QUIET);
+}
 
 /*
  * Execute a building command
@@ -3610,7 +3729,11 @@ static void bldg_process_command(building_type *bldg, int i)
         paid = _reforge_artifact();
         break;
     case BACT_CHANGE_NAME:
-        if (py_get_name())
+        if (p_ptr->pclass == CLASS_POLITICIAN)
+        {
+            msg_print("No way! Think of your name recognition.");
+        }
+        else if (py_get_name())
         {
             process_player_name(FALSE);
             paid = TRUE;
@@ -3634,6 +3757,9 @@ static void bldg_process_command(building_type *bldg, int i)
         else
             cmsg_print(TERM_VIOLET, "The bards doth sing of ye: Heroic ballads both far 'n wide!");
         paid = TRUE;
+        break;
+    case BACT_SELL_PHOTO:
+        _sell_photo();
         break;
     }
 
@@ -3663,8 +3789,17 @@ void do_cmd_quest(void)
     else
     {
         int quest_id = cave[py][px].special;
+        int danger = quests_get_level(quest_id);
         msg_format("This is the entrance to the quest: <color:B>%s</color>.",
             quests_get_name(quest_id));
+        if (((danger < 23) && (p_ptr->lev < danger - 4)) ||
+            ((danger < 34) && (p_ptr->lev < danger - 7)) ||
+            ((danger > 33) && (danger < 46) && (p_ptr->lev < (danger / 2) + 11)) ||
+            ((danger > 45) && (p_ptr->lev < (danger * 4 / 5) - 3) && (p_ptr->lev < 46)))
+        {
+            msg_format("\n<color:R>WARNING:</color> This is a level <color:o>%d</color> quest.\n", danger);
+            sound(SOUND_WARN);
+        }
         if (!get_check("Do you enter? ")) return;
 
         /* Player enters a new quest XXX */
