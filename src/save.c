@@ -249,6 +249,7 @@ static void wr_r_info(savefile_ptr file)
 
         savefile_write_byte(file, header);
         savefile_write_byte(file, race->max_num);
+        savefile_write_byte(file, race->ball_num);
         savefile_write_s16b(file, race->floor_id);
         savefile_write_byte(file, race->stolen_ct);
 
