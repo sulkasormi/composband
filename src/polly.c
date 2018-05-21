@@ -28,8 +28,9 @@ bool unique_is_friend(int which)
 bool dungeon_conquered(int which)
 {
     if ((which < 1) || (which >= max_d_idx)) return FALSE;
+    if (!d_info[which].maxdepth) return FALSE;
     if (d_info[which].flags1 & DF1_RANDOM) return FALSE;
-    if (!d_info[which].final_guardian) return (max_dlv[which] == d_info[which].maxdepth);
+    if (!d_info[which].final_guardian) return ((max_dlv[which] == d_info[which].maxdepth) ? TRUE : FALSE);
     if (!r_info[d_info[which].final_guardian].max_num) return TRUE;
     return (unique_is_friend(d_info[which].final_guardian));
 }
