@@ -932,10 +932,10 @@ char tval_to_attr_char(int tval)
  * The "Specials" never use "modifiers" if they are "known", since they
  * have special "descriptions", such as "The Necklace of the Dwarves".
  *
- * Special Lite's use the "k_info" base-name (Phial, Star, or Arkenstone),
+ * Special Lites use the "k_info" base-name (Phial, Star, or Arkenstone),
  * plus the artifact name, just like any other artifact, if known.
  *
- * Special Ring's and Amulet's, if not "aware", use the same code as normal
+ * Special Rings and Amulets, if not "aware", use the same code as normal
  * rings and amulets, and if "aware", use the "k_info" base-name (Ring or
  * Amulet or Necklace). They will NEVER "append" the "k_info" name. But,
  * they will append the artifact name, just like any artifact, if known.
@@ -1074,9 +1074,9 @@ void object_desc(char *buf, object_type *o_ptr, u32b mode)
                     }
                     else
                     {
-                        sprintf(tmp_val2, "(%s)", t);
+                        sprintf(tmp_val2, " (%s)", t);
 
-                        modstr = t;
+                        modstr = tmp_val2;
                     }
                 }
             }
@@ -1561,8 +1561,8 @@ void object_desc(char *buf, object_type *o_ptr, u32b mode)
 
                 /* XXX XXX XXX Mega-Hack */
 
-                /* Hack -- "Cutlass-es" and "Torch-es" */
-                if ((k == 's') || (k == 'h')) *t++ = 'e';
+                /* Hack -- "Cutlass-es" and "Torch-es", but "Photograph-s" */
+                if ((k == 's') || ((k == 'h') && (o_ptr->tval != TV_STATUE))) *t++ = 'e';
 
                 /* Add an 's' */
                 *t++ = 's';
@@ -2087,11 +2087,21 @@ void object_desc(char *buf, object_type *o_ptr, u32b mode)
 
         if (strlen(tmp_val2) > 0)
             strcat(tmp_val2, " ");
-        
-        if (mode & OD_COLOR_CODED)
-            sprintf(buf, "<color:B>A:%s</color>", do_effect(&e, SPELL_NAME, 0));
+
+        if ((o_ptr->tval == TV_CAPTURE) && (o_ptr->pval > 0))
+        { /* Special case */
+            if (mode & OD_COLOR_CODED)
+                sprintf(buf, "<color:B>A:Release Pet</color>");
+            else
+                sprintf(buf, "A:Release Pet");
+        }
         else
-            sprintf(buf, "A:%s", do_effect(&e, SPELL_NAME, 0));
+        {            
+            if (mode & OD_COLOR_CODED)
+                sprintf(buf, "<color:B>A:%s</color>", do_effect(&e, SPELL_NAME, 0));
+            else
+                sprintf(buf, "A:%s", do_effect(&e, SPELL_NAME, 0));
+        }
         strcat(tmp_val2, buf);
     }
 
@@ -2125,36 +2135,38 @@ void object_desc(char *buf, object_type *o_ptr, u32b mode)
 
         if (!o_ptr->art_name || !streq(t, quark_str(o_ptr->art_name)))
         {
-            char  buf[255];
-            char *u = buf;
-
-            /* of Hammerhand -> Hammerhand
-               'Thalkettoth' -> Thalkettoth
-               of the Dwarves -> Dwarves
-            */
-            if (*t == 'o' && *(t+1) == 'f')
-                 t += 2;
-
-            while (*t && *t == ' ')
-                t++;
-
-            if (*t == 't' && *(t+1) == 'h' && *(t+2) == 'e')
-                 t += 3;
-
-            while (*t && *t == ' ')
-                t++;
-
-            *u++ = ' ';
-            while (*t)
             {
-                if (*t == '\'' || *t == '&')
-                    t++;
-                else
-                    *u++ = *t++;
-            }
+                char  buf[255];
+                char *u = buf;
+    
+                /* of Hammerhand -> Hammerhand
+                   'Thalkettoth' -> Thalkettoth
+                   of the Dwarves -> Dwarves
+                */
+                if (*t == 'o' && *(t+1) == 'f')
+                     t += 2;
 
-            *u = '\0';
-            strcat(tmp_val2, buf);
+                while (*t && *t == ' ')
+                    t++;
+
+                if (*t == 't' && *(t+1) == 'h' && *(t+2) == 'e')
+                     t += 3;
+
+                while (*t && *t == ' ')
+                    t++;
+
+                *u++ = ' ';
+                while (*t)
+                {
+                    if (*t == '\'' || *t == '&')
+                        t++;
+                    else
+                        *u++ = *t++;
+                }
+
+                *u = '\0';
+                strcat(tmp_val2, buf);
+            }
         }
     }
 
