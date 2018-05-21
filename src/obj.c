@@ -529,7 +529,6 @@ bool obj_can_combine(obj_ptr dest, obj_ptr obj, int loc)
     case TV_STAFF:
     case TV_WAND:
     case TV_ROD:
-    case TV_QUIVER:
         return FALSE;
 
     case TV_STATUE:
@@ -560,6 +559,7 @@ bool obj_can_combine(obj_ptr dest, obj_ptr obj, int loc)
     case TV_SOFT_ARMOR:
     case TV_HARD_ARMOR:
     case TV_DRAG_ARMOR:
+    case TV_QUIVER:
     case TV_RING:
     case TV_AMULET:
     case TV_LITE:
@@ -1073,7 +1073,22 @@ void obj_destroy_ui(void)
 
 static void _destroy(obj_ptr obj)
 {
+    bool silent = FALSE;
     stats_on_p_destroy(obj, obj->number);
+
+    /* Destroying a capture ball releases the monster inside */
+    if ((obj->tval == TV_CAPTURE) && (obj->pval > 0)) 
+    {
+        int y = py;
+        int x = px;
+        if (obj->loc.where == INV_FLOOR)
+        {
+            y = obj->loc.y;
+            x = obj->loc.x;
+        }
+        capture_ball_opening(obj, y, x, FALSE);
+        silent = TRUE; /* capture ball destruction has its own messages */
+    }
     {
         race_t  *race_ptr = get_race();
         class_t *class_ptr = get_class();
@@ -1085,7 +1100,7 @@ static void _destroy(obj_ptr obj)
         if (!handled && class_ptr->destroy_object)
             handled = class_ptr->destroy_object(obj);
 
-        if (!handled)
+        if (!handled && !silent)
         {
             if (obj->loc.where)
                 msg_print("Destroyed.");
