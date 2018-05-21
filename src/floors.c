@@ -1364,6 +1364,13 @@ void change_floor(void)
     /* Remember when this level was "created" */
     old_turn = game_turn;
 
+    /* Politicians have level-based resource pools */
+    if (p_ptr->pclass == CLASS_POLITICIAN)
+    {
+        politician_check_experience(TRUE);
+        politician_check_au(TRUE);
+    }
+
     /* No dungeon feeling yet */
     p_ptr->feeling_turn = old_turn;
     p_ptr->feeling = 0;
