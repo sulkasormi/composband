@@ -6964,7 +6964,7 @@ static void do_cmd_knowledge_stat(void)
 
     if (race_ptr->subdesc && strlen(race_ptr->subdesc))
     {
-        doc_printf(doc, "<color:r>Subace:</color> <color:B>%s</color>\n", race_ptr->subname);
+        doc_printf(doc, "<color:r>Subrace:</color> <color:B>%s</color>\n", race_ptr->subname);
         doc_insert(doc, race_ptr->subdesc);
         doc_insert(doc, "\n\n");
     }
