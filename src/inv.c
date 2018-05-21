@@ -767,6 +767,24 @@ void inv_calculate_labels(inv_ptr inv, slot_t start, slot_t stop, int flags)
             }
         }
     }
+
+    /* Add new labels to prevent unusable items */ 
+    for (slot = start; slot <= stop; slot++)
+    {
+        obj_ptr obj = inv_obj(inv, slot);
+        if ((obj) && (obj->scratch == ' '))
+        {
+            int i;
+            unsigned char lowercase[27] = "abcdefghijklmnopqrstuvwxyz";
+            for (i = 0; i < 26; i++)
+            {
+                slot_t slot2 = inv_label_slot(inv, lowercase[i]);
+                if (slot2) continue;
+                obj->scratch = lowercase[i];     
+                break;
+            }
+        }
+    }
 }
 
 /* Savefiles */
