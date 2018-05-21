@@ -160,12 +160,17 @@ int _mut_prob_gain(int i)
     {
     case MUT_CHAOS_GIFT:
         /* TODO: Birth Chaos Warriors with this mutation */
-        if (p_ptr->pclass == CLASS_CHAOS_WARRIOR)
+        if ((p_ptr->pclass == CLASS_CHAOS_WARRIOR) || (p_ptr->personality == PERS_CHAOTIC))
             return 0;
         break;
 
     case MUT_BAD_LUCK:
         if (mut_locked(MUT_GOOD_LUCK))
+            return 0;
+        break;
+
+    case MUT_GOOD_LUCK:
+        if (mut_locked(MUT_BAD_LUCK))
             return 0;
         break;
 
