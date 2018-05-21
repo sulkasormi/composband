@@ -87,11 +87,11 @@ Race : Hobbit                -2   +1   +1   +3   +2   +1   92%  +14  120%
 Class: Rogue                 +2   +1   -1   +3   +1   +1  110%  +12  125%       
 Magic: Burglary              +0   +2   +0   +6   +3   +2  101%  +26  150%       
                                                                                 
-  n) Change Name                 ?) Help                                        
-  s) Change Sex                TAB) More Info                                   
-  r) Change Race               RET) Next Screen                                 
-  c) Change Class              ESC) Prev Screen                                 
-  m) Change Magic                                                               
+  n) Change Name                 *) Random Name                                 
+  s) Change Sex                  ?) Help                                        
+  r) Change Race               TAB) More Info                                   
+  c) Change Class              RET) Next Screen                                 
+  m) Change Magic              ESC) Prev Screen                                 
                                                                                 
 Tip: You can often get specific help by entering the uppercase letter           
      for a command. For example, type R on this screen to receive help          
