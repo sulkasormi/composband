@@ -447,6 +447,7 @@ says, 'Christmas is so stressful!'
 N:764:Uriel, Angel of Fire
 N:765:Azriel, Angel of Death
 N:769:Raphael, the Messenger
+N:1179:Michael, the Guardian Ovelord
 says, 'Repent, evildoer!'
 says, 'My righteousness shall cleanse you!'
 says, 'Don't EVER steal from the collection plate!'
@@ -522,7 +523,7 @@ N:820:Corwin, Lord of Avalon
 says, 'I teach you bite of Grayswandir.'
 throws his cloak.
 says, 'Sorry but I have no time to continue a small fight like this.'
-says, 'death and dreck'
+says, 'Death and dreck.'
 says, 'This isn't exactly the Olympic Games.'
 
 N:824:Benedict, the Ideal Warrior
@@ -634,10 +635,10 @@ yawns at your pathetic efforts to kill it.
 says, 'Another day, another bastard to slaughter...'
 says, 'I can't be bothered... minions, slaughter this fool!'
 says, 'Such a doomed, pathetic gesture as yours verges on the heroic!'
-says, 'Mere mortals such as you should not meddle the affair of the Powers!'
+says, 'Mere mortals such as you should not meddle in the affairs of the Powers!'
 
 N:873:Combat-Echizen
-says, 'Somethig comes from above! Be careful!'
+says, 'Something comes from above! Be careful!'
 says, 'What is this stair?'
 says, 'Because it's time, I choose this red door!'
 chunters, 'Tonight, someone dies again...'
@@ -864,7 +865,7 @@ says, 'Thou shalt repent of thy cunning.'
 says, 'Verily, thou shalt be one dead cretin.'
 says, 'Surrender or die!'
 says, 'Savor thy breath, it be thine last.'
-says, 'Prepare do die, miscreant!'
+says, 'Prepare to die, miscreant!'
 says, 'You're history, dude!'
 says, 'Feeling lucky, punk?'
 says, 'You're toast!'
