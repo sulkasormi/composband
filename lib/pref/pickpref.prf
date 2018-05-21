@@ -4,7 +4,11 @@
 mushroom of restoring#!E
 ~mushroom of hallucination
 
-potions:resist#!kq
+?:[EQU $RACE Snotling Doppelganger]
+~mushroom
+?:1
+
+potions:resist heat and cold#!kq
 potions:resistance#!kq
 potions:stone skin#!k
 potions:heroism
@@ -58,6 +62,7 @@ rods:heroic speed#@zs!sdk
 ?staves:healing#@uh!sdk
 ?staves:speed#@us!sdk
 ?staves:destruction#@ud!sdk
+?staves:confusing lights#@uz!sdk
 ?wands:rocket#@ar!sdk
 ?wands:disintegrate#@ad!sdk
 
@@ -87,6 +92,10 @@ dragon helm
 dragon wings
 dragon fang
 armors:dragon
+
+?:[EQU $CLASS Politician]
+sexy swimsuit#!sdk
+?:1
 
 #elven cloak
 shadow cloak
