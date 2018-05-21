@@ -58,6 +58,9 @@ class_t *result = NULL;
 
     switch (pclass)
     {
+    case CLASS_ALCHEMIST:
+        result = alchemist_get_class();
+        break;
     case CLASS_ARCHAEOLOGIST:
         result = archaeologist_get_class();
         break;
@@ -138,6 +141,9 @@ class_t *result = NULL;
         break;
     case CLASS_PALADIN:
         result = paladin_get_class();
+        break;
+    case CLASS_POLITICIAN:
+        result = politician_get_class();
         break;
     case CLASS_PRIEST:
         result = priest_get_class();
