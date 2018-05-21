@@ -2867,6 +2867,7 @@ long total_points(void)
     if (ironman_shops) mult += 50;
     if (ironman_empty_levels) mult += 20;
     if (ironman_nightmare) mult += 100;
+    if (easy_damage) mult /= 2;
 
     if (mult < 5) mult = 5;
 
