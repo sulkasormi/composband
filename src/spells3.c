@@ -808,16 +808,11 @@ int choose_dungeon(cptr note, int y, int x)
     for(i = 1; i < max_d_idx; i++)
     {
         char buf[80];
-        bool seiha = FALSE;
+        bool seiha = dungeon_conquered(i);
 
         if (!d_info[i].maxdepth) continue;
         if (d_info[i].flags1 & DF1_RANDOM) continue;
         if (!max_dlv[i]) continue;
-        if (d_info[i].final_guardian)
-        {
-            if (!r_info[d_info[i].final_guardian].max_num) seiha = TRUE;
-        }
-        else if (max_dlv[i] == d_info[i].maxdepth) seiha = TRUE;
 
         sprintf(buf," %c) %c%-16s : Max level %d ", 'a'+num, seiha ? '!' : ' ', d_name + d_info[i].name, max_dlv[i]);
         put_str(buf, y + num, x);
@@ -1724,6 +1719,61 @@ void alter_reality(void)
 }
 
 
+static int _trap_counter(void)
+{
+    int y, x, count = 0;
+    for (y = 1; y < cur_hgt - 1; y++)
+    {
+        for (x = 1; x < cur_wid - 1; x++)
+        {
+            cave_type *c_ptr;
+            if (!in_bounds(y, x)) continue; /* Paranoia - should never happen */
+            c_ptr = &cave[y][x];            
+            if ((is_glyph_grid(c_ptr)) && (p_ptr->realm1 != REALM_LIFE)) count++;
+            else if (is_mon_trap_grid(c_ptr)) count++;
+        }
+    }
+    return count;
+}
+
+static bool _counter_allows_trap(int feature)
+{
+    char *s1, *s2, *s3;
+    if (p_ptr->pclass == CLASS_ROGUE) return TRUE; /* Rogues are overpowered by design */
+    if (feature == feat_glyph)
+    {
+        s1 = "inscribe";
+        s2 = "glyph";
+        s3 = "inscribing";
+    }
+    else if (feature == feat_semicolon)
+    {
+        s1 = "inscribe";
+        s2 = "semicolon";
+        s3 = "inscribing";
+   }
+   else if (feature == feat_explosive_rune)
+   {
+        s1 = "set";
+        s2 = "rune";
+        s3 = "setting";
+   }
+   else
+   {
+        s1 = "set";
+        s2 = "trap";
+        s3 = "setting";
+    }
+    if (_trap_counter() > 10) /* Limit other classes to 11 traps */
+    {
+        if (!one_in_(7)) msg_format("Something suddenly feels wrong, and you decide to not %s the %s.", s1, s2);
+        else if (one_in_(2)) msg_format("Something about what you're doing feels either not hunky or not dory. You are not quite sure which one it is, but get cold feet about %s the %s anyway.", s3, s2);
+        else msg_format("You have a brief vision of a fat, bearded humanoid in sweatpants and an old T-shirt, yelling <color:R>'No! Don't %s that %s! That would disturb the cosmic balance!'</color> You aren't entirely sure what just happened, but decide not to %s the %s.", s1, s2, s1, s2);
+        return FALSE;
+    }
+    return TRUE;
+}
+
 /*
  * Leave a "glyph of warding" which prevents monster movement
  */
@@ -1736,6 +1786,8 @@ bool warding_glyph(void)
 
         return FALSE;
     }
+
+    if ((p_ptr->realm1 != REALM_LIFE) && (!_counter_allows_trap(feat_glyph))) return FALSE;
 
     /* Create a glyph */
     cave[py][px].info |= CAVE_OBJECT;
@@ -1750,7 +1802,6 @@ bool warding_glyph(void)
     return TRUE;
 }
 
-
 bool set_trap(int y, int x, int feature)
 {
     if (!in_bounds(y, x)) return FALSE;
@@ -1761,6 +1812,8 @@ bool set_trap(int y, int x, int feature)
             msg_print("The object resists the spell.");
         return FALSE;
     }
+
+    if (!_counter_allows_trap(feature)) return FALSE;
 
     cave[y][x].info |= CAVE_OBJECT;
     cave[y][x].mimic = feature;
@@ -3739,7 +3792,7 @@ static void _damage_obj(obj_ptr obj, int p1, int p2, int which_res)
             msg_format("%d of your %s %s destroyed!",
                         amt, o_name, (amt > 1) ? "were" : "was");
         else if (obj->number == 1)
-            msg_format("Your %s was destroyed!", o_name);
+            msg_format("Your %s %s destroyed!", o_name, object_plural(obj) ? "were" : "was"/* "Your Black Clothes were destroyed" */);
         else
             msg_format("All of your %s were destroyed!", o_name);
 
@@ -3827,12 +3880,12 @@ int minus_ac(void)
         if (have_flag(flgs, OF_IGNORE_ACID))
         {
             if (disturb_minor)
-                msg_format("Your %s is unaffected!", o_name);
+                msg_format("Your %s %s unaffected!", o_name, object_plural(o_ptr) ? "are" : "is");
             obj_learn_flag(o_ptr, OF_IGNORE_ACID);
             return TRUE;
         }
 
-        msg_format("Your %s is damaged!", o_name);
+        msg_format("Your %s %s damaged!", o_name, object_plural(o_ptr) ? "are" : "is");
         o_ptr->to_a--;
         p_ptr->update |= PU_BONUS;
         p_ptr->window |= PW_EQUIP;
