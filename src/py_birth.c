@@ -1,4 +1,5 @@
 #include "angband.h"
+#include "randname.h"
 
 #include <assert.h>
 
@@ -214,8 +215,8 @@ static int _welcome_ui(void)
         );
 
         doc_insert(_doc,
-            "First, you must decide what type of game to play. If you are new, "
-            "it is recommended you play in <color:keyword>Beginner Mode</color>.\n\n"
+            "First, you must decide what type of game to play. <color:keyword>Beginner Mode</color> is "
+            "very quirky and not necessarily recommended even to beginners.\n\n"
         );
 
         doc_insert(_doc, "<color:G>Choose the Type of Game to Play</color>\n");
@@ -432,6 +433,7 @@ static int _race_class_ui(void)
                 doc_insert(cols[0], "  <color:y>m</color>) Change Magic\n");
         }
 
+        doc_insert(cols[1], "<color:y>  *</color>) Random Name\n");
         doc_insert(cols[1], "<color:y>  ?</color>) Help\n");
         if (game_mode != GAME_MODE_BEGINNER)
             doc_insert(cols[1], "<color:y>  =</color>) Options\n");
@@ -466,6 +468,12 @@ static int _race_class_ui(void)
             break;
         case '?':
             doc_display_help("birth.txt", "RaceClass");
+            break;
+        case '*':
+            if (one_in_(847)) sprintf(player_name, "Epic Space Hero");
+            else if (one_in_(8)) randname_make(RANDNAME_SCROLL, 4 + randint0(3), 5 + damroll(2, 5), player_name, sizeof(player_name), name_sections);
+            else randname_make(RANDNAME_TOLKIEN, 4 + randint0(3), 5 + damroll(2, 5), player_name, sizeof(player_name), name_sections);
+            player_name[0] = toupper(player_name[0]);
             break;
         case 'n':
             _change_name();
@@ -899,13 +907,13 @@ static int _subrace_ui_aux(int ct, cptr desc, cptr help, cptr topic)
         else if (cmd == '\t') _inc_rcp_state();
         else if (cmd == '=') _birth_options();
         else if (cmd == '?') doc_display_help(help, topic);
-        else if (isupper(cmd) && !topic)
+        else if (isupper(cmd))
         {
             i = A2I(tolower(cmd));
             if (0 <= i && i < ct)
             {
                 race_t *race_ptr = get_race_aux(p_ptr->prace, i);
-                doc_display_help(help, race_ptr->subname);
+                doc_display_help(help, topic ? topic : race_ptr->subname);
             }
         }
         else
@@ -966,7 +974,7 @@ static _class_group_t _class_groups[_MAX_CLASS_GROUPS] = {
     { "Martial Arts", {CLASS_FORCETRAINER, CLASS_MONK, CLASS_MYSTIC, -1} },
     { "Magic", {CLASS_BLOOD_MAGE, CLASS_GRAY_MAGE, CLASS_HIGH_MAGE, CLASS_MAGE,
                     CLASS_NECROMANCER, CLASS_SORCERER, CLASS_YELLOW_MAGE, -1} },
-    { "Devices", {CLASS_DEVICEMASTER, CLASS_MAGIC_EATER, -1} },
+    { "Devices", { CLASS_ALCHEMIST, CLASS_DEVICEMASTER, CLASS_MAGIC_EATER, -1} },
     { "Prayer", {CLASS_PRIEST, -1} },
     { "Stealth", {CLASS_NINJA, CLASS_ROGUE, CLASS_SCOUT, -1} },
     { "Hybrid", {CLASS_CHAOS_WARRIOR, CLASS_NINJA_LAWYER, CLASS_PALADIN, CLASS_RANGER,
@@ -974,8 +982,8 @@ static _class_group_t _class_groups[_MAX_CLASS_GROUPS] = {
     { "Riding", {CLASS_BEASTMASTER, CLASS_CAVALRY, -1} },
     { "Mind", {CLASS_MINDCRAFTER, CLASS_MIRROR_MASTER, CLASS_PSION,
                     CLASS_TIME_LORD, CLASS_WARLOCK, -1} },
-    { "Other", {CLASS_ARCHAEOLOGIST, CLASS_BARD, CLASS_LAWYER, CLASS_RAGE_MAGE,
-                    CLASS_SKILLMASTER, CLASS_TOURIST, CLASS_WILD_TALENT, -1} },
+    { "Other", {CLASS_ARCHAEOLOGIST, CLASS_BARD, CLASS_LAWYER, CLASS_POLITICIAN,
+                CLASS_RAGE_MAGE, CLASS_SKILLMASTER, CLASS_TOURIST, CLASS_WILD_TALENT, -1} },
 };
 
 static void _class_group_ui(void)
@@ -2117,6 +2125,12 @@ static void _stats_init(void)
             _stats_init_aux(stats);
             break;
         }
+        case CLASS_ALCHEMIST:
+        {
+            int stats[6] = { 16, 16, 8, 14, 16, 11 };
+            _stats_init_aux(stats);
+            break;
+        }
         case CLASS_BLOOD_KNIGHT:
         {
             int stats[6] = { 17, 8, 8, 15, 17, 9 };
@@ -2125,7 +2139,6 @@ static void _stats_init(void)
         }
         case CLASS_MAGE:
         case CLASS_HIGH_MAGE:
-        case CLASS_GRAY_MAGE:
         case CLASS_YELLOW_MAGE:
         case CLASS_MIRROR_MASTER:
         case CLASS_BLOOD_MAGE:
@@ -2135,6 +2148,14 @@ static void _stats_init(void)
             _stats_init_aux(stats);
             break;
         }
+
+        case CLASS_GRAY_MAGE:
+        {
+            int stats[6] = { 16, 17, 8, 13, 15, 10 };
+            _stats_init_aux(stats);
+            break;
+        }
+
         case CLASS_SORCERER:
         {
             int stats[6] = { 16, 9, 9, 9, 16, 17 };
@@ -2181,6 +2202,7 @@ static void _stats_init(void)
         }
         case CLASS_BEASTMASTER:
         case CLASS_BARD:
+        case CLASS_POLITICIAN:
         case CLASS_WARLOCK:
         {
             int stats[6] = { 16, 8, 8, 16, 11, 17 };
