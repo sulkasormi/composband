@@ -13,6 +13,7 @@
 #include "angband.h"
 
 #include "init.h"
+#include "randname.h"
 #include "z-doc.h"
 
 #ifdef HAVE_STAT
@@ -1563,6 +1564,10 @@ void init_angband(void)
 
     /* Initialize vault info */
     if (init_v_info(0)) quit("Cannot initialize vaults");
+
+    /* Initialize monster info */
+    note("[Initializing arrays... (random names)]");
+    if (name_parser()) quit("Cannot initialize random names");
 
     /* Initialize some other arrays */
     note("[Initializing arrays... (other)]");
