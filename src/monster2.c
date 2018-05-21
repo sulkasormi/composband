@@ -827,7 +827,7 @@ static bool summon_unique_okay = FALSE;
 static bool summon_cloned_okay = FALSE;
 static bool summon_wall_scummer = FALSE;
 static bool summon_ring_bearer = FALSE;
-
+static bool summon_summoner_okay = FALSE;
 
 static bool summon_specific_aux(int r_idx)
 {
@@ -847,18 +847,19 @@ bool mon_is_type(int r_idx, int type)
         return vault_aux_chapel_e(r_idx);
 
     case SUMMON_ULTIMATE:
-        if ( r_idx == 1083 || r_idx == 1087 || r_idx == 1088 || r_idx == 1085 || r_idx == 1084
-            || r_idx == 847 || r_idx == 793 || r_idx == 800 || r_idx == 798 || r_idx == 836
-            || r_idx == 816 )
+        if ( r_idx == MON_ULT_MAGUS || r_idx == MON_TONBERRY || r_idx == MON_NINJA_TONBERRY 
+            || r_idx == MON_SPELLWARP || r_idx == MON_DEATH_SCYTHE || r_idx == MON_WYRM_POWER
+            || r_idx == MON_SKY_DRAKE || r_idx == MON_MASTER_Q || r_idx == MON_BLACK_REAVER
+            || r_idx == MON_SPAWN_CTH || r_idx == MON_CYBER )
         {
             return TRUE;
         }
         break;
     case SUMMON_BALROG:
-        if (r_idx == 720 || r_idx == 940) return TRUE;
+        if (r_idx == MON_GREATER_BALROG || r_idx == MON_LESSER_BALROG) return TRUE;
         break;
     case SUMMON_CLUBBER_DEMON:
-        if (r_idx == 648) return TRUE;
+        if (r_idx == MON_CLUB_DEMON) return TRUE;
         break;
     case SUMMON_DEMON_SUMMONER:
         if (!(r_ptr->flags1 & RF1_UNIQUE) && mon_race_can_summon(r_ptr, SUMMON_DEMON))
@@ -1139,11 +1140,11 @@ bool mon_is_type(int r_idx, int type)
             return TRUE;
         else if (r_idx == MON_ANGMAR || r_idx == MON_HOARMURATH || r_idx == MON_DWAR || r_idx == MON_KHAMUL)
              return TRUE;
-        else if (r_ptr->d_char == 'V' && r_idx != 521 && r_idx != 536 && r_idx != 613)
+        else if (r_ptr->d_char == 'V' && r_idx != MON_ORIENTAL_VAMPIRE && r_idx != MON_STAR_VAMPIRE && r_idx != MON_FIRE_VAMPIRE)
             return TRUE;
-        else if (r_ptr->d_char == 'L' && r_idx != 666)
+        else if (r_ptr->d_char == 'L' && r_idx != MON_IRON_LICH)
             return TRUE;
-        else if (r_idx == 112 || r_idx == 748)
+        else if (r_idx == MON_DISEMBODIED_HAND || r_idx == MON_HAND_DRUJ)
             return TRUE;
         break;
     case SUMMON_MONK:
@@ -1163,6 +1164,10 @@ bool mon_is_type(int r_idx, int type)
                 return TRUE;
             }
         }
+        break;
+    case SUMMON_REPTILE:
+        if (r_idx == MON_CHAMELEON || r_idx == MON_CHAMELEON_K) return FALSE;
+        if (r_ptr->d_char == 'R') return TRUE;
         break;
     }
     return FALSE;
@@ -1433,6 +1438,11 @@ static int mysqrt(int n)
     return kaeriti;
 }
 
+int mon_available_num(monster_race *r_ptr)
+{
+    return (r_ptr->max_num - r_ptr->ball_num);
+}
+
 /*
  * Choose a monster race that seems "appropriate" to the given level
  *
@@ -1483,6 +1493,12 @@ s16b get_mon_num_aux(int level, int min_level, u32b options)
         if (!one_in_(odds))
             options |= GMN_NO_UNIQUES;
     }
+    else if ((summon_specific_who >= 0) && ((is_friendly_idx(summon_specific_who)) || (is_pet_idx(summon_specific_who))))
+    {
+        if ((one_in_(2)) && (summon_specific_type != SUMMON_UNIQUE)) options |= GMN_NO_UNIQUES;
+        else options |= GMN_LIMIT_UNIQUES;
+        if (one_in_(2)) options |= GMN_NO_SUMMONERS;
+    }
 
     if (options & GMN_ALLOW_OOD)
     {
@@ -1509,7 +1525,7 @@ s16b get_mon_num_aux(int level, int min_level, u32b options)
         }
 
         /* Boost the level */
-        if (level > 0 && !p_ptr->inside_battle && !(d_info[dungeon_type].flags1 & DF1_BEGINNER))
+        if (level > 0 && !p_ptr->inside_battle && !(d_info[dungeon_type].flags1 & DF1_BEGINNER) && !(options & GMN_LIMIT_UNIQUES))
         {
             /* Nightmare mode allows more out-of depth monsters */
             if (ironman_nightmare && !randint0(pls_kakuritu))
@@ -1570,7 +1586,7 @@ s16b get_mon_num_aux(int level, int min_level, u32b options)
         r_idx = table[i].index;
         r_ptr = &r_info[r_idx];
 
-        /* Hack: Camelot monsters only appear in Camelot. Olympians in Mt Olympus. Southerings in the Stronghold */
+        /* Hack: Camelot monsters only appear in Camelot. Olympians in Mt Olympus. Southerings in the Hideout */
         if (no_wilderness)
         {
             /* Camelot Knights are all rarity 1 and extremely OP for their depth.
@@ -1597,7 +1613,7 @@ s16b get_mon_num_aux(int level, int min_level, u32b options)
         {
             /* Hack -- "unique" monsters must be "unique" */
             if ( ((r_ptr->flags1 & RF1_UNIQUE) || (r_ptr->flags7 & RF7_NAZGUL) || (r_idx == MON_CAMELOT_KNIGHT))
-              && r_ptr->cur_num >= r_ptr->max_num)
+              && r_ptr->cur_num >= mon_available_num(r_ptr))
             {
                 /* Serpent can "resurrect" uniques, but not weak ones! */
                 if (!summon_cloned_okay || r_ptr->level < 70) continue;
@@ -1605,6 +1621,15 @@ s16b get_mon_num_aux(int level, int min_level, u32b options)
 
             if ((r_ptr->flags1 & RF1_UNIQUE) && (options & GMN_NO_UNIQUES))
                 continue;
+
+            if (((r_ptr->flags1 & RF1_UNIQUE) || (r_ptr->flags7 & RF7_NAZGUL)) && (options & GMN_LIMIT_UNIQUES))
+            {
+                if (r_ptr->level > level - 4) continue;
+                if (r_ptr->level > 50 + randint1(42)) continue;
+            }
+
+            if ((options & GMN_NO_SUMMONERS) && (mon_race_can_summon(r_ptr, -1)) &&
+                (summon_specific_type != SUMMON_UNIQUE) && (summon_specific_type != SUMMON_KIN))
 
             if ((r_ptr->flags7 & (RF7_UNIQUE2)) &&
                 (r_ptr->cur_num >= 1))
@@ -1617,6 +1642,9 @@ s16b get_mon_num_aux(int level, int min_level, u32b options)
                 if (r_info[MON_BANOR].cur_num > 0) continue;
                 if (r_info[MON_LUPART].cur_num > 0) continue;
             }
+
+            /* No spamming summoning staves for tsuchinokos */
+            if ((r_idx == MON_TSUCHINOKO) && (summon_specific_who == SUMMON_WHO_PLAYER)) continue;
         }
 
         table[i].prob3 = table[i].prob2;
@@ -2012,7 +2040,7 @@ void monster_desc(char *desc, monster_type *m_ptr, int mode)
         strcat(desc, buf);
     }
     #endif
-    if (p_ptr->wizard && m_ptr->mpower != 1000)
+    if ((p_ptr->wizard || easy_damage) && (m_ptr->mpower != 1000))
     {
         strcat(desc, format(" (%d.%d%%)", m_ptr->mpower/10, m_ptr->mpower%10));
     }
@@ -3196,12 +3224,12 @@ int place_monster_one(int who, int y, int x, int r_idx, int pack_idx, u32b mode)
     if (!p_ptr->inside_battle)
     {
         /* Mega-hack - improve savefile compatibility */
-        if ((r_ptr->flags1 & (RF1_UNIQUE)) && (r_ptr->max_num > 1)) r_ptr->max_num = 1;
+        if ((r_ptr->flags1 & (RF1_UNIQUE)) && ((r_ptr->max_num + r_ptr->ball_num) > 1)) r_ptr->max_num = MAX(0, 1 - r_ptr->ball_num);
 
         /* Hack -- "unique" monsters must be "unique" */
         if (((r_ptr->flags1 & (RF1_UNIQUE)) ||
              (r_ptr->flags7 & (RF7_NAZGUL))) &&
-            (r_ptr->cur_num >= r_ptr->max_num))
+            (r_ptr->cur_num >= mon_available_num(r_ptr)))
         {
             /* Cannot create */
             if (mode & PM_ALLOW_CLONED)
@@ -3229,6 +3257,7 @@ int place_monster_one(int who, int y, int x, int r_idx, int pack_idx, u32b mode)
             /* Cannot create */
             return 0;
         }
+
         /* XXX Arena and quest accidents. RF1_FIXED_UNIQUE *should* have been set ...
          * if (r_ptr->flagsx & RFX_SUPPRESS) return 0;*/
     }
@@ -3377,7 +3406,7 @@ int place_monster_one(int who, int y, int x, int r_idx, int pack_idx, u32b mode)
         m_ptr->mflag2 |= MFLAG2_KAGE;
     }
 
-    if (mode & PM_NO_PET) m_ptr->mflag2 |= MFLAG2_NOPET;
+    if ((!p_ptr->uimapuku) && (mode & PM_NO_PET)) m_ptr->mflag2 |= MFLAG2_NOPET;
 
     /* Not visible */
     m_ptr->ml = FALSE;
@@ -3385,9 +3414,28 @@ int place_monster_one(int who, int y, int x, int r_idx, int pack_idx, u32b mode)
     /* Pet? */
     if (mode & PM_FORCE_PET)
     {
-        set_pet(m_ptr);
+        if (((r_ptr->flags1 & (RF1_UNIQUE)) || (r_ptr->flags7 & (RF7_NAZGUL))) &&
+            ((who > 0) || ((p_ptr->pclass == CLASS_POLITICIAN) && (!unique_is_friend(m_ptr->r_idx)))))
+            set_friendly(m_ptr);
+        else
+            set_pet(m_ptr);
     }
     /* Friendly? */
+    else if (unique_is_friend(m_ptr->r_idx))
+    {
+        set_friendly(m_ptr);
+    }
+    else if ((pack_idx) && (unique_is_friend(m_list[pack_info_list[pack_idx].leader_idx].r_idx))) /* Escorts of a friendly unique */
+    {
+        set_friendly(m_ptr);
+    }
+    else if ((who > 0) && (is_friendly_idx(who))) /* Summons of a friendly monster */
+    {
+        if (!(r_info[m_list[who].r_idx].flags2 & RF2_STUPID) && (!one_in_(10)))
+        {
+            set_friendly(m_ptr);
+        }
+    }
     else if ((r_ptr->flags7 & RF7_FRIENDLY) ||
          (mode & PM_FORCE_FRIENDLY) || is_friendly_idx(who))
     {
@@ -3873,7 +3921,7 @@ bool place_monster_aux(int who, int y, int x, int r_idx, u32b mode)
 
             /* Set the escort index */
             place_monster_idx = r_idx;
-
+         
             /* Try to place several "escorts" */
             for (i = 0; i < 32; i++)
             {
@@ -4034,7 +4082,7 @@ bool alloc_guardian(bool def_val)
 {
     int guardian = d_info[dungeon_type].final_guardian;
 
-    if (guardian && (d_info[dungeon_type].maxdepth == dun_level) && (r_info[guardian].cur_num < r_info[guardian].max_num))
+    if (guardian && (d_info[dungeon_type].maxdepth == dun_level) && (r_info[guardian].cur_num < mon_available_num(&r_info[guardian])))
     {
         int oy;
         int ox;
@@ -4207,6 +4255,8 @@ static bool summon_specific_okay(int r_idx)
         }
     }
 
+    if (!summon_summoner_okay && (mon_race_can_summon(r_ptr, -1))) return FALSE;
+
     /* Hack -- no specific type specified */
     if (!summon_specific_type) return (TRUE);
 
@@ -4285,6 +4335,7 @@ bool summon_specific(int who, int y1, int x1, int lev, int type, u32b mode)
     summon_cloned_okay = (mode & PM_ALLOW_CLONED) ? TRUE : FALSE;
     summon_wall_scummer = (mode & PM_WALL_SCUMMER) && one_in_(2) ? TRUE : FALSE;
     summon_ring_bearer = (mode & PM_RING_BEARER) ? TRUE : FALSE;
+    summon_summoner_okay = (mode & PM_NO_SUMMONERS) ? FALSE : TRUE;
 
     /* Prepare allocation table */
     get_mon_num_prep(summon_specific_okay, get_monster_hook2(y, x));
@@ -4381,7 +4432,7 @@ bool summon_named_creature (int who, int oy, int ox, int r_idx, u32b mode)
 
     r_ptr = &r_info[r_idx];
 
-    if ((!(r_ptr->flags7 & RF7_GUARDIAN) || no_wilderness || p_ptr->wizard) && r_ptr->cur_num < r_ptr->max_num)
+    if ((!(r_ptr->flags7 & RF7_GUARDIAN) || no_wilderness || p_ptr->wizard) && r_ptr->cur_num < mon_available_num(r_ptr))
         result = place_monster_aux(who, y, x, r_idx, (mode | PM_NO_KAGE));
 
     if (!result && (r_ptr->flags1 & RF1_UNIQUE) && one_in_(2))
@@ -4895,7 +4946,7 @@ bool player_place(int y, int x)
                 etaisyys++;
                 kokeilu = 0;
             }
-            if (!in_bounds2(ny, nx)) continue;
+            if (!in_bounds(ny, nx)) continue;
             if (!player_can_enter(cave[ny][nx].feat, 0)) continue;
             if (cave[ny][nx].m_idx != 0) continue;
             x = nx;
