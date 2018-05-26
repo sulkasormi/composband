@@ -18,8 +18,8 @@
 
 #define VER_MAJOR 7
 #define VER_MINOR 0
-#define VER_PATCH "peppermint"
-#define VER_EXTRA 4
+#define VER_PATCH "mango"
+#define VER_EXTRA 1
 
 #define GAME_MODE_BEGINNER  0
 #define GAME_MODE_NORMAL    1
@@ -4977,7 +4977,8 @@ enum mon_save_fields_e {
 #define TELE_LEVEL_IS_INEFF(TARGET) \
     (p_ptr->inside_arena || p_ptr->inside_battle || \
      !quests_allow_all_spells() || \
-     (((TARGET) <= 0) && (quests_get_current() || (dun_level >= d_info[dungeon_type].maxdepth)) && \
+     (((TARGET) <= 0) && (quests_get_current() || (dun_level >= d_info[dungeon_type].maxdepth) || \
+     ((coffee_break) && (coffeebreak_recall_level(FALSE) == dun_level))) && \
       (dun_level >= 1) && ironman_downward))
 
 
