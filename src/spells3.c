@@ -687,7 +687,7 @@ void teleport_level(int m_idx)
     }
 
     /* Down only */
-    if ((ironman_downward && (m_idx <= 0)) || (dun_level <= d_info[dungeon_type].mindepth))
+    if ((ironman_downward && (m_idx <= 0) && (!quests_get_current())) || (dun_level <= d_info[dungeon_type].mindepth))
     {
         if (see_m) msg_format("%^s sink%s through the floor.", m_name, (m_idx <= 0) ? "" : "s");
         if (m_idx <= 0) /* To player */
@@ -704,6 +704,11 @@ void teleport_level(int m_idx)
             if (!dun_level)
             {
                 dun_level = d_info[dungeon_type].mindepth;
+                if (coffee_break)
+                {
+                    dun_level = coffeebreak_recall_level(TRUE);
+                    dungeon_type = DUNGEON_ANGBAND; /* paranoia */
+                }
                 prepare_change_floor_mode(CFM_RAND_PLACE);
             }
             else
