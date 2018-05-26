@@ -2868,6 +2868,11 @@ long total_points(void)
     if (ironman_empty_levels) mult += 20;
     if (ironman_nightmare) mult += 100;
     if (easy_damage) mult /= 2;
+    if (coffee_break)
+    {
+        mult /= 2; /* This only cancels out the x2 from ironman_downward */
+        mult -= (p_ptr->coffee_lv_revisits / 2);
+    }
 
     if (mult < 5) mult = 5;
 
@@ -3278,18 +3283,33 @@ void kingly(void)
     Term_clear();
 
     /* Display a crown */
-    put_str("#", cy - 11, cx - 1);
-    put_str("#####", cy - 10, cx - 3);
-    put_str("#", cy - 9, cx - 1);
-    put_str(",,,  $$$  ,,,", cy - 8, cx - 7);
-    put_str(",,=$   \"$$$$$\"   $=,,", cy - 7, cx - 11);
-    put_str(",$$        $$$        $$,", cy - 6, cx - 13);
-    put_str("*>         <*>         <*", cy - 5, cx - 13);
-    put_str("$$         $$$         $$", cy - 4, cx - 13);
-    put_str("\"$$        $$$        $$\"", cy - 3, cx - 13);
-    put_str("\"$$       $$$       $$\"", cy - 2, cx - 12);
-    put_str("*#########*#########*", cy - 1, cx - 11);
-    put_str("*#########*#########*", cy, cx - 11);
+    if (!coffee_break) {
+        put_str("#", cy - 11, cx - 1);
+        put_str("#####", cy - 10, cx - 3);
+        put_str("#", cy - 9, cx - 1);
+        put_str(",,,  $$$  ,,,", cy - 8, cx - 7);
+        put_str(",,=$   \"$$$$$\"   $=,,", cy - 7, cx - 11);
+        put_str(",$$        $$$        $$,", cy - 6, cx - 13);
+        put_str("*>         <*>         <*", cy - 5, cx - 13);
+        put_str("$$         $$$         $$", cy - 4, cx - 13);
+        put_str("\"$$        $$$        $$\"", cy - 3, cx - 13);
+        put_str("\"$$       $$$       $$\"", cy - 2, cx - 12);
+        put_str("*#########*#########*", cy - 1, cx - 11);
+        put_str("*#########*#########*", cy, cx - 11); }
+    else { /* Display a coffee cup */
+        put_str("	 $$$$$$$", cy - 11, cx - 8);
+        put_str(" .-''$$$$$$$''-.", cy - 10, cx - 10);
+        put_str("((-''$$$$$$$$'-))", cy - 9, cx - 10);
+        put_str("|'=::_______::='|", cy - 8, cx - 10);
+        put_str("|             __|", cy - 7, cx - 10);
+        put_str("|            (_ '-. ", cy - 6, cx - 10);
+        put_str("|              '-. ) ", cy - 5, cx - 10);
+        put_str("|               || |", cy - 4, cx - 10);
+        put_str("|             _ || |", cy - 3, cx - 10);
+        put_str("|            ( '-| |", cy - 2, cx - 10);
+        put_str("|             '-.__)", cy - 1, cx - 10);
+        put_str(" '-.._______..-'", cy, cx - 10);
+    }
 
     /* Display a message */
     put_str("Veni, Vidi, Vici!", cy + 3, cx - 9);
