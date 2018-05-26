@@ -763,7 +763,7 @@ static void _politician_check_magic(bool syntyma)
         poli->life = 98;
         poli->stats[A_WIS] = -2;
         p_ptr->realm1 = REALM_TRUMP;
-        if (syntyma) py_birth_obj_aux(TV_TRUMP_BOOK, 1, 0);
+        if (syntyma) py_birth_obj_aux(TV_TRUMP_BOOK, 0, 1);
     }
     else p_ptr->realm1 = REALM_NONE;
 }
