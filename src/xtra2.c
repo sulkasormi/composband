@@ -514,6 +514,12 @@ byte get_monster_drop_ct(monster_type *m_ptr)
         number = 2 + (number - 2) / 2;
     }
 
+    if ((number) && (coffee_break) && (py_in_dungeon()))
+    {
+        number *= 2;
+        if (number > 7) number -= (number / 7);
+    }
+
     if (is_pet(m_ptr) || p_ptr->inside_battle || p_ptr->inside_arena)
         number = 0; /* Pets drop no stuff */
 
@@ -2271,6 +2277,17 @@ static void get_exp_from_mon(int dam, monster_type *m_ptr)
     /* Intelligence affects learning! */
     s64b_mul(&new_exp, &new_exp_frac, 0, adj_exp_gain[p_ptr->stat_ind[A_INT]]);
     s64b_div(&new_exp, &new_exp_frac, 0, 100);
+
+    if ((coffee_break) && (py_in_dungeon())) /* Accelerated EXP gain */
+    {
+        int coffee_mult = 2;
+        if (p_ptr->lev < 50)
+        {
+           coffee_mult = 3;
+           if (!(r_ptr->flags2 & RF2_MULTIPLY)) coffee_mult = (((p_ptr->lev / 10) == 1) || ((p_ptr->lev >= 38) && (p_ptr->max_max_exp < 2239530L))) ? 7 : 8;
+        }
+        s64b_mul(&new_exp, &new_exp_frac, 0, coffee_mult);
+    }
 
     /* Gain experience */
     gain_exp_64(new_exp, new_exp_frac);
