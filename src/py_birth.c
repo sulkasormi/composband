@@ -2792,6 +2792,14 @@ static void _birth_finalize(void)
     if (game_mode == GAME_MODE_BEGINNER)
         no_wilderness = TRUE;
 
+    if (coffee_break)
+    {
+        no_wilderness = TRUE;
+        ironman_downward = TRUE;
+//      reduce_uniques = TRUE;
+//      reduce_uniques_pct = 90;
+    }
+
     equip_init();
     pack_init();
     quiver_init();
