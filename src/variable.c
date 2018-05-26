@@ -295,6 +295,7 @@ bool alert_trap_detect;    /* Alert when leaving trap detected area */
 
 /*** Birth Options ***/
 
+bool coffee_break;   /* Coffee-break mode */
 bool easy_id;        /* Easy Identify */
 bool easy_lore;      /* Easy Monster Lore */
 bool easy_damage;    /* Access wizard info about damage and monster health */
