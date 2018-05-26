@@ -2345,6 +2345,9 @@ option_type option_info[] =
 
     /*** Birth Options ***/
 
+	{ &coffee_break,		FALSE, OPT_PAGE_BIRTH, 6, 3,
+	"coffee_break",			"Coffee-break mode (accelerated game) (*)" },
+
 	{ &easy_id,			FALSE, OPT_PAGE_BIRTH, 6, 31,
 	"easy_id",			"Easy Identify" },
 	
