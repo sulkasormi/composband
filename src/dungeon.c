@@ -318,7 +318,7 @@ static void pattern_teleport(void)
         teleport_player(200, 0L);
         return;
     }
-    else if (!ironman_downward && get_check("Recall? "))
+    else if (((coffee_break) || (!ironman_downward)) && (get_check("Recall? ")))
     {
         recall_player(1);
         return;
@@ -767,6 +767,28 @@ void fame_on_failure(void)
     assert (dec <= p_ptr->fame);
     p_ptr->fame -= dec;
 }
+
+byte coffeebreak_recall_level(bool laskuri)
+{
+    byte taso = (byte)max_dlv[DUNGEON_ANGBAND];
+    if (taso < 99)
+    {
+        taso++;
+        if (!level_is_questlike(DUNGEON_ANGBAND, taso)) taso++;
+    }
+    else if ((taso == 99) && (!level_is_questlike(DUNGEON_ANGBAND, taso))) taso++;
+    if ((p_ptr->total_winner) && (taso < d_info[DUNGEON_ANGBAND].maxdepth)) taso++;
+    /* Mega-hack
+     * coffeebreak_recall_level() is actually called every time a dungeon
+     * level is entered in coffee-break mode. This means that if it's called,
+     * and taso == max_dlv, we are revisiting the depth */
+    if ((laskuri) && (taso == (byte)max_dlv[DUNGEON_ANGBAND]) && (p_ptr->coffee_lv_revisits < 251) && (taso < 101))
+    {
+        p_ptr->coffee_lv_revisits++;
+    }
+    return taso;
+}
+
 
 /*
  * Forcibly pseudo-identify an object in the inventory
@@ -2273,6 +2295,8 @@ void process_world_aux_movement(void)
                 dungeon_type = p_ptr->recall_dungeon;
                 dun_level = max_dlv[dungeon_type];
                 if (dun_level < 1) dun_level = 1;
+
+                if (coffee_break) dun_level = coffeebreak_recall_level(TRUE);
 
                 /* Nightmare mode makes recall more dangerous */
                 if (ironman_nightmare && !randint0(666) && (dungeon_type == DUNGEON_ANGBAND))
@@ -5406,6 +5430,7 @@ void play_game(bool new_game)
             py_birth_food();
             py_birth_light();
         }
+        if ((coffee_break) && (p_ptr->pclass != CLASS_BERSERKER)) py_birth_obj_aux(TV_SCROLL, SV_SCROLL_WORD_OF_RECALL, 1);
 
         spell_stats_on_birth();
 
