@@ -2262,6 +2262,19 @@ static void _build_options(doc_ptr doc)
     if (game_mode != GAME_MODE_NORMAL)
         doc_printf(doc, " Game Mode:          %s\n", _game_mode_text[game_mode]);
 
+    if (coffee_break)
+        doc_printf(doc, " Coffeebreak Mode:   On\n");
+
+    if ((p_ptr->coffee_lv_revisits) || (coffee_break && p_ptr->total_winner))
+    {
+        if (!p_ptr->coffee_lv_revisits)
+            doc_printf(doc, " Depth Revisits:     None\n");
+        else if (p_ptr->coffee_lv_revisits > 250)
+            doc_printf(doc, " Depth Revisits:     250+\n");
+        else
+            doc_printf(doc, " Depth Revisits:     %d\n", p_ptr->coffee_lv_revisits);
+    }
+
     doc_printf(doc, " Preserve Mode:      %s\n", preserve_mode ? "On" : "Off");
 
 
@@ -2280,7 +2293,7 @@ static void _build_options(doc_ptr doc)
     if (ironman_shops)
         doc_printf(doc, " No Shops:           On\n");
 
-    if (ironman_downward)
+    if ((ironman_downward) && (!coffee_break))
         doc_printf(doc, " Diving Only:        On\n");
 
     if (ironman_nightmare)
@@ -2377,6 +2390,12 @@ int oook_score(void)
     return tulos;
 }
 
+char *version_modifier(void)
+{
+    if (coffee_break) return " (coffee)";
+    return "";
+}
+
 static void _add_html_header(doc_ptr doc)
 {
     string_ptr s = string_alloc_format("%s.html", player_base);
@@ -2387,7 +2406,7 @@ static void _add_html_header(doc_ptr doc)
     string_append_s(header, "<head>\n");
     string_append_s(header, " <meta name='filetype' value='character dump'>\n");
     string_printf(header,  " <meta name='variant' value='%s'>\n", VERSION_NAME);
-    string_printf(header,  " <meta name='variant_version' value='%d.%d.%s'>\n", VER_MAJOR, VER_MINOR, VER_PATCH);
+    string_printf(header,  " <meta name='variant_version' value='%d.%d.%s%s'>\n", VER_MAJOR, VER_MINOR, VER_PATCH, version_modifier());
     string_printf(header,  " <meta name=\"character_name\" value=\"%s\">\n", player_name);
     string_printf(header,  " <meta name='race' value='%s'>\n", get_true_race()->name);
     string_printf(header,  " <meta name='class' value='%s'>\n", get_class()->name);
