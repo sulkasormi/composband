@@ -1140,10 +1140,19 @@ void do_cmd_cast(void)
 
                 if (cur_exp < max_exp)
                 {
-                    point_t gain_tbl[9] = { /* 0->900->1200->1400->1600 */
-                        {0, 128}, {200, 64}, {400, 32}, {600, 16},
-                        {800, 8}, {1000, 4}, {1200, 2}, {1400, 1}, {1600, 1} };
-                    exp_gain = interpolate(cur_exp, gain_tbl, 9);
+                    if (!coffee_break)
+                    {
+                        point_t gain_tbl[9] = { /* 0->900->1200->1400->1600 */
+                            {0, 128}, {200, 64}, {400, 32}, {600, 16},
+                            {800, 8}, {1000, 4}, {1200, 2}, {1400, 1}, {1600, 1} };
+                        exp_gain = interpolate(cur_exp, gain_tbl, 9);
+                    }
+                    else {
+                        point_t gain_tbl[9] = { /* 0->900->1200->1400->1600 */
+                            {0, 640}, {200, 320}, {400, 160}, {600, 80},
+                            {800, 40}, {1000, 20}, {1200, 10}, {1400, 5}, {1600, 3} };
+                        exp_gain = interpolate(cur_exp, gain_tbl, 9);
+                    }
                 }
                 else if (p_ptr->wizard)
                 {
@@ -1443,7 +1452,11 @@ int calculate_upkeep(void)
         return upkeep_factor;
     }
     else
+    {
+        p_ptr->upkeep_warning = FALSE;
+        if (p_ptr->upkeep_warning != old_warning) p_ptr->redraw |= (PR_STATUS);
         return 0;
+    }
 }
 
 void do_cmd_pet_dismiss(void)
