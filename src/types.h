@@ -1231,6 +1231,7 @@ struct player_type
     s16b word_recall;      /* Word of recall counter */
     s16b alter_reality;      /* Alter reality counter */
     byte recall_dungeon;      /* Dungeon set to be recalled */
+    byte coffee_lv_revisits;  /* Count 99/100 spam by coffee-breakers */
 
     s16b energy_need;      /* Energy needed for next move */
 
@@ -1238,7 +1239,7 @@ struct player_type
 
     u32b special_attack;      /* Special attack capacity -LM- */
     u32b special_defense;      /* Special block capacity -LM- */
-    byte action;          /* Currently action */
+    byte action;          /* Current action */
 
     u32b spell_learned1;      /* bit mask of spells learned */
     u32b spell_learned2;      /* bit mask of spells learned */
