@@ -310,6 +310,7 @@ extern bool alert_trap_detect;    /* Alert when leaving trap detected area */
 
 /*** Birth Options ***/
 
+extern bool coffee_break;   /* Coffeebreak mode */
 extern bool easy_id;        /* Easy Identify */
 extern bool easy_lore;      /* Easy Monster Lore */
 extern bool easy_damage;    /* Peek into damage and monster health */
@@ -922,6 +923,7 @@ extern s32b turn_real(s32b hoge);
 extern void prevent_turn_overflow(void);
 extern void process_world_aux_movement(void);  /* yuk!  refactor the recall code instead */
 extern void fame_on_failure(void);
+extern byte coffeebreak_recall_level(bool laskuri);
 extern void recharged_notice(object_type *o_ptr);
 extern byte value_check_aux1(object_type *o_ptr); /* pseudo-id */
 
@@ -1193,6 +1195,7 @@ extern void py_display_powers(doc_ptr doc, spell_info *table, int ct);
 extern void py_display_character_sheet(doc_ptr doc);
 extern void py_display_dungeons(doc_ptr doc);
 extern int  oook_score(void);
+extern char *version_modifier(void);
 
 /* object1.c */
 extern s16b m_bonus(int max, int level);
