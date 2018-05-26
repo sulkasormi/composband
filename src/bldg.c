@@ -2685,6 +2685,12 @@ static bool _reforge_artifact(void)
     int src_max_power = f*150 + f*f*3/2;
     int dest_max_power = 0;
 
+    if (coffee_break) /* Accelerated reforging */
+    {
+        f += (p_ptr->lev * 3 / 2);
+        src_max_power = f*150 + f*f*3/2;
+    }
+
     if (p_ptr->prace == RACE_MON_SWORD || p_ptr->prace == RACE_MON_RING)
     {
         msg_print("Go enchant yourself!");
@@ -3838,7 +3844,12 @@ void do_cmd_bldg(void)
     /* Don't re-init the wilderness */
     reinit_wilderness = FALSE;
 
-    if ((which == 2) && (p_ptr->arena_number < 0))
+    if ((no_wilderness) && (p_ptr->lev < 10) && (which == 6))
+    {
+        msg_print("Get some adventuring under your belt before you start gambling!");
+        return;
+    }
+    else if ((which == 2) && (p_ptr->arena_number < 0))
     {
         msg_print("'There's no place here for a LOSER like you!'");
         return;
