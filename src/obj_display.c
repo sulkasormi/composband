@@ -25,7 +25,7 @@ static void _display_auras(u32b flgs[OF_ARRAY_SIZE], doc_ptr doc);
 static void _display_extra(object_type *o_ptr, u32b flgs[OF_ARRAY_SIZE], doc_ptr doc);
 static void _display_curses(object_type *o_ptr, u32b flgs[OF_ARRAY_SIZE], doc_ptr doc);
 static void _display_activation(object_type *o_ptr, u32b flgs[OF_ARRAY_SIZE], doc_ptr doc);
-static void _display_activation_aux(effect_t *effect, bool full_info, doc_ptr doc);
+static void _display_activation_aux(effect_t *effect, bool full_info, doc_ptr doc, bool cb_hack);
 static void _display_ignore(u32b flgs[OF_ARRAY_SIZE], doc_ptr doc);
 static void _display_autopick(object_type *o_ptr, doc_ptr doc);
 static void _display_score(object_type *o_ptr, doc_ptr doc);
@@ -1091,9 +1091,9 @@ static void _display_curses(object_type *o_ptr, u32b flgs[OF_ARRAY_SIZE], doc_pt
     vec_free(v);
 }
 
-static void _display_activation_aux(effect_t *effect, bool full_info, doc_ptr doc)
+static void _display_activation_aux(effect_t *effect, bool full_info, doc_ptr doc, bool cb_hack)
 {
-    cptr res = do_effect(effect, SPELL_NAME, 0);
+    cptr res = cb_hack ? "Release Pet" : do_effect(effect, SPELL_NAME, 0);
 
     doc_newline(doc);
     doc_printf(doc, "<color:U>Activation:</color><tab:12><color:B>%s</color>\n", res);
@@ -1119,7 +1119,8 @@ static void _display_activation(object_type *o_ptr, u32b flgs[OF_ARRAY_SIZE], do
         if (have_flag(flgs, OF_ACTIVATE))
         {
             effect_t e = obj_get_effect(o_ptr);
-            _display_activation_aux(&e, obj_is_identified_fully(o_ptr), doc);
+            bool capture_ball_hack = ((o_ptr->tval == TV_CAPTURE) && (o_ptr->pval > 0));
+            _display_activation_aux(&e, obj_is_identified_fully(o_ptr), doc, capture_ball_hack);
             doc_newline(doc);
         }
         else
@@ -1814,7 +1815,7 @@ void ego_display_doc(ego_type *e_ptr, doc_ptr doc)
         _display_auras(flgs, doc);
         _ego_display_extra(flgs, doc);
         if (have_flag(flgs, OF_ACTIVATE))
-            _display_activation_aux(&e_ptr->activation, FALSE, doc);
+            _display_activation_aux(&e_ptr->activation, FALSE, doc, FALSE); /* no ego capture balls */
         _display_ignore(flgs, doc);
         doc_insert(doc, "</style></indent>\n");
     }
