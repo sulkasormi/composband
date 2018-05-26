@@ -128,12 +128,19 @@ void quest_complete(quest_ptr q, point_t p)
         }
 
         cmsg_print(TERM_L_BLUE, "A magical staircase appears...");
-        cave_set_feat(y, x, feat_down_stair);
+        if ((!coffee_break) || (level_is_questlike(dungeon_type, dun_level + 1)))
+        {
+            cave_set_feat(y, x, feat_down_stair);
+        }
+        else
+        {
+            cave_set_feat(y, x, feat_state(feat_down_stair, FF_SHAFT));
+        }
         p_ptr->update |= PU_FLOW;
     }
     if (!(q->flags & QF_TOWN)) /* non-town quest get rewarded immediately */
     {
-        int i, ct = q->level/25 + 1;
+        int i, ct = (q->level/(coffee_break ? 13 : 25)) + 1;
         if ((q->level > 14) && (q->level < 25) && (one_in_(5))) ct++;
         for (i = 0; i < ct; i++)
         {
@@ -815,7 +822,7 @@ void quests_on_birth(void)
 static int _quest_dungeon(quest_ptr q)
 {
     int d = q->dungeon;
-    /* move wargs quest from 'Stronghold' to 'Angband' */
+    /* move wargs quest from 'Warrens' to 'Angband' */
     if (d && no_wilderness)
         d = DUNGEON_ANGBAND;
     return d;
@@ -840,6 +847,29 @@ static quest_ptr _find_quest(int dungeon, int level)
         result = q;
         break;
     }
+
+    /* Prevent quests from becoming uncompletable in forced-descent mode
+     * should the player request them too late (adapted from Pos-R) */
+    if ((!result) && (ironman_downward) && (dungeon == DUNGEON_ANGBAND) &&
+        (level < 99))
+    {
+        for (i = 0; i < vec_length(v); i++)
+        {
+            quest_ptr q = vec_get(v, i);
+            int       d = _quest_dungeon(q);
+
+            if (d != dungeon) continue;
+            if ((!(q->flags & QF_TOWN)) || ((q->status != QS_TAKEN) && (q->status != QS_IN_PROGRESS))) continue;
+            if (q->level >= level) continue;
+            if (q->goal != QG_KILL_MON) continue;
+            if (q->goal_count < 2) continue;
+            if (q->id == _current) continue;
+
+            result = q;
+            break;
+        }
+    }
+
     vec_free(v);
     return result;
 }
@@ -870,6 +900,18 @@ void quests_generate(int id)
     _current = id;
     q->status = QS_IN_PROGRESS;
     quest_generate(q);
+}
+
+bool level_is_questlike(int dungeon, int level)
+{
+    if ((dungeon < 1) || (dungeon >= max_d_idx)) return FALSE;
+    if (level == d_info[dungeon].maxdepth) return TRUE;
+    else
+    {
+        quest_ptr q = _find_quest(dungeon, level);
+        if (q) return TRUE;
+    }
+    return FALSE;
 }
 
 void quests_on_restore_floor(int dungeon, int level)
@@ -1167,7 +1209,7 @@ void quests_on_leave(void)
         if (!statistics_hack && (q->flags & QF_RETAKE))
         {
             fail = FALSE;
-            if (q->flags & QF_RANDOM)
+            if ((q->flags & QF_RANDOM) && (!coffee_break))
             {
                 cptr p = "If you like, you may choose to intentionally fail this quest. "
                     "Choose this option if you feel that you really cannot handle this opponent or "
@@ -1808,7 +1850,7 @@ static void _reward_cmd(_ui_context_ptr context)
             quest_ptr quest = vec_get(context->quests, idx);
             if (!(quest->flags & QF_TOWN))
             {
-                int i, ct = quest->level/25 + 1;
+                int i, ct = (quest->level/(coffee_break ? 13 : 25)) + 1;
                 object_level = quest->level;
                 if ((quest->level > 14) && (quest->level < 25) && (one_in_(5))) ct++;
                 for (i = 0; i < ct; i++)
