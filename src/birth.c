@@ -248,6 +248,9 @@ static void player_wipe(void)
     /* Assume no upkeep warning */
     p_ptr->upkeep_warning = FALSE;
 
+    /* No coffee revisits yet */
+    p_ptr->coffee_lv_revisits = 0;
+
     /* Not waiting to report score */
     p_ptr->wait_report_score = FALSE;
 
