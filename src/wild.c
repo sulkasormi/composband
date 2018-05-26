@@ -2076,7 +2076,7 @@ bool py_in_dungeon(void)
 
 bool py_can_recall(void)
 {
-    if (p_ptr->inside_arena || ironman_downward)
+    if ((p_ptr->inside_arena) || ((ironman_downward) && (!coffee_break)))
         return FALSE;
 
     return TRUE;
