@@ -2075,6 +2075,11 @@ bool apply_magic(object_type *o_ptr, int lev, u32b mode)
         f1 += 5;
         f2 += 2;
     }
+    if (coffee_break)
+    {
+        f1 += 3;
+        f2 += 3;
+    }
 
     f1 += virtue_current(VIRTUE_CHANCE) / 50;
     f2 += virtue_current(VIRTUE_CHANCE) / 100;
