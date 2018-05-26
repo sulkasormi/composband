@@ -675,6 +675,8 @@ static void rd_extra(savefile_ptr file)
     playtime = savefile_read_u32b(file);
     p_ptr->count = savefile_read_u32b(file);
     p_ptr->upkeep_warning = FALSE;
+    if (savefile_is_older_than(file, 7, 0, 6, 1)) p_ptr->coffee_lv_revisits = 0;
+    else p_ptr->coffee_lv_revisits = savefile_read_byte(file);
     for (i = 0; i < 16; i++) (void)savefile_read_s32b(file);
 
     {
