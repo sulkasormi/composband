@@ -3759,7 +3759,7 @@ void calc_bonuses(void)
 
     if (easy_id)
         p_ptr->auto_id = TRUE;
-    else if (p_ptr->lev >= 20)
+    else if ((p_ptr->lev >= 20) || (coffee_break))
         p_ptr->auto_pseudo_id = TRUE;
 
     if (p_ptr->tim_sustain_str) p_ptr->sustain_str = TRUE;
@@ -4212,6 +4212,9 @@ void calc_bonuses(void)
 
     if (race_ptr->calc_bonuses)
         race_ptr->calc_bonuses();
+
+    /* This should override racial SUST_CON */
+    if (politician_is_magic) p_ptr->sustain_con = FALSE;
 
     /* Temporary "Hero" ... moved after class processing for the Swordmaster */
     if (IS_HERO() || warlock_get_toggle() == WARLOCK_DRAGON_TOGGLE_HEROIC_CHARGE)
