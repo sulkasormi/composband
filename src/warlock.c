@@ -859,7 +859,7 @@ static void _mount_attack_spell(int cmd, variant *res)
             return;
         }
 
-        if (use_old_target && target_okay())
+        if (old_target_okay())
         {
             y = target_row;
             x = target_col;
