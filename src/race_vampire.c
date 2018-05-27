@@ -99,7 +99,7 @@ static void _bite_spell(int cmd, variant *res)
             int x = 0, y = 0, amt, m_idx = 0;
             int dir = 0;
 
-            if (use_old_target && target_okay())
+            if (old_target_okay())
             {
                 y = target_row;
                 x = target_col;
