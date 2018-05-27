@@ -36,6 +36,12 @@ M:#<............#
 M:###############
 R:OBJ(long bow):EGO(accuracy)
 
+?:[AND [EQU $CLASS Weaponmaster] [EQU $SPECIALITY Crossbows] ]
+R:OBJ(cloak):EGO(electricity)
+
+?:[AND [EQU $CLASS Weaponmaster] [EQU $SPECIALITY Slings] ]
+R:OBJ(sling):EGO(accuracy)
+
 ?:[EQU $RACE Beholder Spider Ring Dragon]
 R:OBJ(^ring$):EGO(combat)
 
