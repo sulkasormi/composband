@@ -103,7 +103,7 @@ bool do_blow(int type)
     /* For ergonomics sake, use currently targeted monster. This allows
        a macro of \e*tmaa or similar to pick an adjacent foe, while
        \emaa*t won't work, since get_rep_dir2() won't allow a target. */
-    if (use_old_target && target_okay())
+    if (old_target_okay())
     {
         y = target_row;
         x = target_col;
