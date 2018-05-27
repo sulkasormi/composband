@@ -59,7 +59,7 @@ static void _summon(int what, int num, bool fail)
     else
         num = spell_power(num);
 
-    if (!fail && use_old_target && target_okay() && los(py, px, target_row, target_col) && !one_in_(3))
+    if (!fail && old_target_okay() && los(py, px, target_row, target_col) && !one_in_(3))
     {
         y = target_row;
         x = target_col;
