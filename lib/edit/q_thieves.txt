@@ -58,6 +58,9 @@ R:OBJ(two-handed sword)
 ?:[EQU $RACE Lich Quylthulg]
 R:OBJ(^ring$):EGO(protection)
 
+?:[EQU $RACE Demon]
+R:OBJ(studded leather gloves)
+
 ?:[EQU $CLASS Duelist]
 R:OBJ(rapier)
 
@@ -72,6 +75,9 @@ R:OBJ(gauntlets)
 
 ?:[EQU $CLASS Samurai]
 R:OBJ(katana)
+
+?:[EQU $CLASS Mauler]
+R:OBJ(potion of cure critical wounds)
 
 ?:[EQU $CLASS Warrior Paladin]
 R:OBJ(broad sword)
