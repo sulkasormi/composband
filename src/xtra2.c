@@ -3217,6 +3217,7 @@ bool target_able_aux(int m_idx, int mode)
  *
  * We return TRUE if the target is "okay" and FALSE otherwise.
  */
+bool old_target_okay(void) { return (use_old_target && !p_ptr->confused && target_okay_aux(TARGET_KILL)); }
 bool target_okay(void) { return target_okay_aux(TARGET_KILL); }
 bool target_okay_aux(int mode)
 {
@@ -4554,7 +4555,7 @@ bool target_set(int mode)
 bool get_fire_dir(int *dp) { return get_fire_dir_aux(dp, TARGET_KILL); }
 bool get_fire_dir_aux(int *dp, int target_mode)
 {
-	if (use_old_target && target_okay_aux(target_mode)) {
+	if (use_old_target && !p_ptr->confused && target_okay_aux(target_mode)) {
 		*dp = 5;
 		p_ptr->redraw |= PR_HEALTH_BARS;
 		return TRUE;
