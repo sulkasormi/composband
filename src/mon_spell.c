@@ -4844,7 +4844,7 @@ static bool _prompt_plr(mon_spell_cast_ptr cast)
         int dir, m_idx;
         if (cast->spell->flags & MSF_DIRECT)
         {
-            if (use_old_target && target_okay_aux(TARGET_KILL))
+            if (old_target_okay())
             {
             }
             else if (!target_set(TARGET_KILL)) return FALSE;
