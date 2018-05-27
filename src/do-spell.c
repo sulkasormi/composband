@@ -4063,7 +4063,7 @@ static cptr do_trump_spell(int spell, int mode)
     int x = px;
     int y = py;
 
-    if (!fail && use_old_target && target_okay() && los(py, px, target_row, target_col) && !one_in_(3))
+    if (!fail && old_target_okay() && los(py, px, target_row, target_col) && !one_in_(3))
     {
         y = target_row;
         x = target_col;
