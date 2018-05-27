@@ -30,7 +30,7 @@ L:c:PATTERN_3
 L:d:PATTERN_4
 L:A:PATTERN_START
 L:L:PATTERN_EXIT
-L:p:FLOOR(ICKY):MON(old sorcerer)
+L:p:FLOOR(ICKY):MON(old sorcerer, NO_SLEEP)
 L:$:OBJ(DEVICE)
 L:?:OBJ(HI_BOOK)
 M:#########################
