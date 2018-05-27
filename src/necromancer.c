@@ -93,7 +93,7 @@ static bool _necro_do_touch(int type, int dice, int sides, int base)
     /* For ergonomics sake, use currently targeted monster. This allows
        a macro of \e*tmaa or similar to pick an adjacent foe, while
        \emaa*t won't work, since get_rep_dir2() won't allow a target. */
-    if (use_old_target && target_okay())
+    if (old_target_okay())
     {
         y = target_row;
         x = target_col;
@@ -159,7 +159,7 @@ static void _necro_do_summon(int what, int num, bool fail)
     else
         num = spell_power(num);
 
-    if (!fail && use_old_target && target_okay() && los(py, px, target_row, target_col) && !one_in_(3))
+    if (!fail && old_target_okay() && los(py, px, target_row, target_col) && !one_in_(3))
     {
         y = target_row;
         x = target_col;
