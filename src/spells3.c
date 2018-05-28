@@ -65,6 +65,13 @@ bool teleport_away(int m_idx, int dis, u32b mode)
     /* Paranoia */
     if (!m_ptr->r_idx) return (FALSE);
 
+    /* More paranoia */
+    if (m_idx == p_ptr->riding)
+    {
+        teleport_player(dis, mode);
+        return TRUE;
+    }
+
     /* Save the old location */
     oy = m_ptr->fy;
     ox = m_ptr->fx;
@@ -174,6 +181,13 @@ void teleport_monster_to(int m_idx, int ty, int tx, int power, u32b mode)
 
     /* "Skill" test */
     if (randint1(100) > power) return;
+
+    /* More paranoia */
+    if (m_idx == p_ptr->riding)
+    {
+        teleport_player_to(ty, tx, mode);
+        return;
+    }
 
     /* Initialize */
     ny = m_ptr->fy;
