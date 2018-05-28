@@ -1977,8 +1977,11 @@ static void _escape(void)
     switch (_current.spell->id.effect)
     {
     case ESCAPE_TELE_SELF:
-        if (_current.flags & MSC_SRC_PLAYER)
+        if ((_current.flags & MSC_SRC_PLAYER) || (_current.mon->id == p_ptr->riding))
+        {
+            if (_current.mon->id == p_ptr->riding) msg_format("%s teleports away.", _current.name);
             teleport_player(10 + 2*_current.race->level, 0);
+        }
         else if (teleport_barrier(_current.mon->id))
             msg_format("Magic barrier obstructs teleporting of %s.", _current.name);
         else
@@ -2040,7 +2043,9 @@ static void _m_tactic(void)
         {
             if (!p_ptr->blind && _current.mon->ml)
                 msg_format("%s blinks away.", _current.name);
-            teleport_away(_current.mon->id, 10, 0);
+            if (_current.mon->id == p_ptr->riding)
+                teleport_player(10, 0);
+            else teleport_away(_current.mon->id, 10, 0);
             p_ptr->update |= PU_MONSTERS;
         }
         break;
@@ -2073,7 +2078,9 @@ static void _m_tactic(void)
             _roll(_current.spell->parm.v.dice)*5/4, /* XXX */
             _current.spell->id.effect,
             PROJECT_GRID | PROJECT_ITEM | PROJECT_KILL | PROJECT_PLAYER);
-        teleport_away(_current.mon->id, 10, 0); 
+        if (_current.mon->id == p_ptr->riding)
+            teleport_player(10, 0);
+        else teleport_away(_current.mon->id, 10, 0);
         p_ptr->update |= PU_MONSTERS;
     }
 }
