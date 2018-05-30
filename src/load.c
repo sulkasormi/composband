@@ -677,6 +677,8 @@ static void rd_extra(savefile_ptr file)
     p_ptr->upkeep_warning = FALSE;
     if (savefile_is_older_than(file, 7, 0, 6, 1)) p_ptr->coffee_lv_revisits = 0;
     else p_ptr->coffee_lv_revisits = savefile_read_byte(file);
+    if (savefile_is_older_than(file, 7, 0, 6, 2)) p_ptr->filibuster = FALSE;
+    else p_ptr->filibuster = savefile_read_byte(file) ? TRUE : FALSE;
     for (i = 0; i < 16; i++) (void)savefile_read_s32b(file);
 
     {
