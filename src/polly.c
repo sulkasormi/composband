@@ -372,6 +372,20 @@ static void _diplomatic_impunity_spell(int cmd, variant *res)
     }
 }
 
+void set_filibuster(bool paalle)
+{
+    bool old_fili = p_ptr->filibuster;
+    p_ptr->filibuster = paalle;
+    if (old_fili != paalle)
+    {
+        if (old_fili) msg_print("You stop filibustering.");
+        else msg_print("You start filibustering.");
+        p_ptr->redraw |= PR_STATUS;
+        p_ptr->update |= PU_BONUS;
+        handle_stuff();
+    }
+}
+
 static void _filibuster_spell(int cmd, variant *res)
 {
     switch (cmd)
@@ -385,16 +399,7 @@ static void _filibuster_spell(int cmd, variant *res)
     case SPELL_CAST:
         p_ptr->redraw |= PR_STATUS;
         p_ptr->update |= PU_BONUS;
-        if (p_ptr->filibuster)
-        {
-            p_ptr->filibuster = FALSE;
-            msg_print("You stop filibustering.");
-        }
-        else
-        {
-            msg_print("You start filibustering!");
-            p_ptr->filibuster = TRUE;
-        }
+        set_filibuster(p_ptr->filibuster ? FALSE : TRUE);
         var_set_bool(res, p_ptr->filibuster);
         break;
     default:
@@ -534,7 +539,7 @@ int politician_get_cost(const spell_info *loitsu)
         {
             int base = (loitsu->cost * loitsu->cost * loitsu->cost) / 30;
             int tila = MAX(_exp_pool, _au_pool / 2);
-            int bonus = MIN(base * 10, (tila * loitsu->level) / 1000);
+            int bonus = MIN(base * 10, (tila * loitsu->level) / ((p_ptr->lev == 50) ? 605 : 968));
             return ((base + bonus) / _ANDROID_DIV);
         }
         case POLLY_TOGGLE_AUCAST:
@@ -677,7 +682,7 @@ static int _get_spells(spell_info* spells, int max)
             current->fn = base->fn;
             current->level = base->level;
             current->cost = base->cost;
-            current->fail = calculate_fail_rate(base->level, base->fail, p_ptr->stat_ind[A_DEX]);
+            current->fail = calculate_fail_rate(base->level, base->fail, p_ptr->stat_ind[A_CHR]);
 
             ct++;
         }
@@ -846,13 +851,13 @@ static void _save_player(savefile_ptr file)
 
 static void _birth(void)
 {
-    py_birth_obj_aux(TV_SWORD, SV_DAGGER, 1);
+    py_birth_obj_aux(TV_SWORD, SV_RAPIER, 1);
     py_birth_obj_aux(TV_SOFT_ARMOR, SV_ROBE, 1);
     py_birth_obj_aux(TV_POTION, SV_POTION_CURE_LIGHT, 3 + randint1(3));
     py_birth_obj_aux(TV_SCROLL, SV_SCROLL_PHASE_DOOR, 3 + randint1(3));
     py_birth_spellbooks();
 
-    p_ptr->au += 100;
+    p_ptr->au += 150;
     _ini_friend_list();
     _ini_statup_list();
     _politician_check_magic(TRUE);
