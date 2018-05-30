@@ -730,6 +730,7 @@ static void wr_extra(savefile_ptr file)
     savefile_write_u32b(file, playtime);
     savefile_write_u32b(file, p_ptr->count);
     savefile_write_byte(file, p_ptr->coffee_lv_revisits);
+    savefile_write_byte(file, p_ptr->filibuster);
     for (i = 0; i < 16; i++)
         savefile_write_s32b(file, 0); /* Future use */
 
