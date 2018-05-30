@@ -604,6 +604,7 @@ static void prt_stat(int stat)
 #define BAR_GREASE 177
 #define BAR_GLORY 178
 #define BAR_UPKEEP 179
+#define BAR_FILIBUSTER 180
 
 static struct {
     byte attr;
@@ -792,6 +793,7 @@ static struct {
     {TERM_YELLOW, "uAU", "Grease"},
     {TERM_L_GREEN, "uXP", "Glory"},
     {TERM_L_RED, "Upk", "Upkeep"},
+    {TERM_ORANGE, "Flb", "Filibuster"},
     {0, NULL, NULL}
 };
 
@@ -985,6 +987,7 @@ static void prt_status(void)
     if (p_ptr->tim_no_spells) ADD_FLG(BAR_NO_SPELLS);
     if (p_ptr->tim_blood_revenge) ADD_FLG(BAR_BLOOD_REVENGE);
     if (p_ptr->tim_force) ADD_FLG(BAR_FORCE);
+    if (p_ptr->filibuster) ADD_FLG(BAR_FILIBUSTER);
     if (p_ptr->pclass == CLASS_WEAPONMASTER)
     {
         switch (weaponmaster_get_toggle())
