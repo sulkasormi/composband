@@ -610,12 +610,7 @@ void dispel_player(void)
     psion_dispel_player();
     mimic_dispel_player();
 
-    /* Stop filibuster */
-    if (p_ptr->filibuster)
-    {
-        p_ptr->filibuster = FALSE;
-        msg_print("You stop filibustering.");
-    }
+    set_filibuster(FALSE);
 
     /* Cancel glowing hands */
     if (p_ptr->special_attack & ATTACK_CONFUSE)
