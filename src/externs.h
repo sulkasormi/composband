@@ -2601,6 +2601,7 @@ extern bool     politician_dungeon_on_statup(int which);
 extern bool     unique_is_friend(int which);
 extern bool     dungeon_conquered(int which);
 extern bool     object_is_deaggravated(object_type *o_ptr);
+extern void     set_filibuster(bool paalle);
 
 /* skills.c */
 extern skill_table *s_info; /* deprecated ... in process of removing naked table reads*/
