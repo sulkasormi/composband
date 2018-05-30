@@ -2555,11 +2555,7 @@ void do_cmd_rest(void)
 
     if (p_ptr->special_defense & NINJA_S_STEALTH) set_superstealth(FALSE);
 
-    if (p_ptr->filibuster)
-    {
-        msg_print("You stop filibustering.");
-        p_ptr->filibuster = FALSE;
-    }
+    if (p_ptr->filibuster) set_filibuster(FALSE);
 
     /* Take a turn XXX XXX XXX (?) */
     energy_use = 100;
