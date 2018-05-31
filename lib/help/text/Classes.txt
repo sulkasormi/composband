@@ -1208,8 +1208,10 @@ Other
   convert others to their cause and to destroy those they cannot 
   convert. They are not very good at either direct combat or at using 
   magical devices, and rely on their savvy and special skills and on 
-  the help of their friends to win fights. Charisma is a key stat for 
-  Politicians.
+  the help of their friends to win fights. They have the ability to 
+  toggle between hit points, wealth and experience as the source of 
+  their power, although the latter two only become available at higher 
+  levels. Charisma is a key stat for Politicians.
   
     Stats                   Skills
     Strength      -2        Disarming   Superb       
@@ -1497,5 +1499,5 @@ Wild-Talent   Fair          Poor          Very Good     Very Good
 
 
 
-Automatically generated for FrogComposband 7.0.peppermint.
+Automatically generated for FrogComposband 7.0.mango.
 
