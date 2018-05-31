@@ -729,7 +729,7 @@ Base HP       12        Bows        <color:o>Fair         </color>
 Experience   115%
 </style></indent>
 <topic:Politician><color:o>Politician</color>
-Politicians are masters of spinning and manipulation, seeking to convert others to their cause and to destroy those they cannot convert. They are not very good at either direct combat or at using magical devices, and rely on their savvy and special skills and on the help of their friends to win fights. Charisma is a key stat for Politicians.
+Politicians are masters of spinning and manipulation, seeking to convert others to their cause and to destroy those they cannot convert. They are not very good at either direct combat or at using magical devices, and rely on their savvy and special skills and on the help of their friends to win fights. They have the ability to toggle between hit points, wealth and experience as the source of their power, although the latter two only become available at higher levels. Charisma is a key stat for Politicians.
 
   <indent><style:table><color:G>Stats                   Skills</color>
 Strength     <color:w> -2</color>        Disarming   <color:g>Superb       </color>
@@ -973,4 +973,4 @@ Wild-Talent   <color:o>Fair         </color> <color:R>Poor         </color> <col
 </style>
 
 
-<color:s>Automatically generated for FrogComposband 7.0.peppermint.</color>
+<color:s>Automatically generated for FrogComposband 7.0.mango.</color>
