@@ -167,6 +167,7 @@ s16b hack_m_idx = 0;    /* Hack -- see "process_monsters()" */
 s16b hack_m_idx_ii = 0;
 int  hack_max_m_dam = 0;
 char summon_kin_type;   /* Hack, by Julian Lighton: summon 'relatives' */
+s16b warning_hack_hp = 0;
 
 int total_friends = 0;
 s32b friend_align = 0;
