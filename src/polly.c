@@ -333,6 +333,7 @@ static void _doctoring_spell(int cmd, variant *res)
         var_set_string(res, info_heal(0, 0, p_ptr->lev + 5));
         break;
     case SPELL_CAST:
+        warning_hack_hp = p_ptr->chp;
         hp_player(p_ptr->lev + 5);
         set_stun(0, TRUE);
 
@@ -879,8 +880,10 @@ class_t *politician_get_class(void)
                   "to convert others to their cause and to destroy those they cannot "
                   "convert. They are not very good at either direct combat or at using "
                   "magical devices, and rely on their savvy and special skills and on "
-                  "the help of their friends to win fights. Charisma is a key stat for "
-                  "Politicians.";
+                  "the help of their friends to win fights. They have the ability to "
+                  "toggle between hit points, wealth and experience as the source of "
+                  "their power, although the latter two only become available at higher "
+                  "levels. Charisma is a key stat for Politicians.";
 
         me.stats[A_STR] = -2;
         me.stats[A_INT] =  1;
