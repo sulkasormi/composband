@@ -1256,7 +1256,7 @@ parse_tbl_ptr summon_type_lookup(int id)
 
 int parse_lookup_monster(cptr name, int options)
 {
-    int i;
+    int i, paras = 0;
     for (i = 1; i < max_r_idx; i++)
     {
         monster_race *r_ptr = &r_info[i];
@@ -1265,10 +1265,24 @@ int parse_lookup_monster(cptr name, int options)
         _prep_name(buf, r_name + r_ptr->name);
         if (strstr(buf, name))
         {
+            if ((!paras) && (r_ptr->flags9 & RF9_DEPRECATED))
+            {
+                paras = i;
+                continue;
+            }
             if (trace_doc)
                 doc_printf(trace_doc, "Mapping <color:B>%s</color> to <color:R>%s</color> (%d).\n", name, buf, i);
             return i;
         }
+    }
+    if (paras > 0)
+    {
+        monster_race *r_ptr = &r_info[paras];
+        char buf[255];
+        _prep_name(buf, r_name + r_ptr->name);
+        if (trace_doc)
+            doc_printf(trace_doc, "Mapping <color:B>%s</color> to <color:R>%s</color> (%d).\n", name, buf, paras);
+        return paras;
     }
     return 0;
 }
