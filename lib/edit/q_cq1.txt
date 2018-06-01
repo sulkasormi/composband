@@ -44,7 +44,7 @@ L:P:GRASS:MON(novice paladin, NO_GROUP)
 L:A:GRASS:MON(novice archer, NO_GROUP)
 L:B:GRASS:MON(raven)
 L:C:GRASS:MON(knight archer)
-L:r:MON(novice ranger)
+L:r:MON(novice ranger, NO_GROUP)
 L:W:MON(swordsman)
 L:!:TREE
 L:?:FLOWER
