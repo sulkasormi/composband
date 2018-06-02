@@ -4188,7 +4188,7 @@ bool gf_affect_m(int who, mon_ptr mon, int type, int dam, int flags)
                 msg_format("%^s%s", m_name, note);
             }
 
-            if (who > 0) monster_gain_exp(who, mon->r_idx);
+            if (who > 0) monster_gain_exp(who, mon->id);
 
             mon_check_kill_unique(mon->id);
 
