@@ -667,7 +667,7 @@ struct coord
 
 typedef struct monster_type monster_type;
 enum {
-    SM_REFLECTION = RES_MAX,
+    SM_REFLECTION = RES_MAX, /* 18 */
     SM_FREE_ACTION,
     SM_GUARDIAN,
     SM_CLONED,
