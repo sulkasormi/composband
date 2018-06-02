@@ -2656,7 +2656,7 @@ enum summon_specific_e {
 #define MFLAG2_DROP_MASK        (MFLAG2_DROP_BASIC | MFLAG2_DROP_UTILITY | MFLAG2_DROP_PRIZE)
 #define MFLAG2_QUESTOR          0x00004000   /* using monster_race.flags1 & RF1_QUESTOR is error prone */
 #define MFLAG2_FUZZY            0x00008000   /* fuzzy telepathy */
-
+#define MFLAG2_PLAYER_SUMMONED  0x00010000   /* Monster was summoned by player (or player-aligned mon) */
 
 /*
  * Object Flags (OF_*)
