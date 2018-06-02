@@ -1884,6 +1884,224 @@ int doc_display_aux(doc_ptr doc, cptr caption, int top, rect_t display)
     return rc;
 }
 
+/* Modified version of doc_display_aux() to fulfill the needs of the proficiency table */
+int weapon_exp_display(doc_ptr doc, cptr caption, int *top)
+{
+    int     rc = 0;
+    bool    change_mode = FALSE;
+    int     i;
+    char    finder_str[81];
+    char    back_str[81];
+    int     page_size;
+    bool    done = FALSE;
+    rect_t display = {0};
+    Term_get_size(&display.cx, &display.cy);
+
+    strcpy(finder_str, "");
+
+    page_size = display.cy - 4;
+
+    if (*top < 0)
+        *top = 0;
+    if (*top > doc->cursor.y - page_size)
+        *top = MAX(0, doc->cursor.y - page_size);
+
+    for (i = 0; i < display.cy; i++)
+        Term_erase(display.x, display.y + i, display.cx);
+
+    while (!done)
+    {
+        int cmd;
+
+        Term_erase(display.x, display.y, display.cx);
+        c_put_str(TERM_L_GREEN, format("[%s, Line %d/%d]", caption, *top, doc->cursor.y), display.y, display.x);
+        doc_sync_term(doc, doc_region_create(0, *top, doc->width, *top + page_size - 1), doc_pos_create(display.x, display.y + 2));
+        Term_erase(display.x, display.y + display.cy - 1, display.cx);
+        c_put_str(TERM_L_GREEN, "[Press ESC to exit. Press M to toggle mode. Press ? for help]", display.y + display.cy - 1, display.x);
+
+        cmd = inkey_special(TRUE);
+
+        /* vi like movement for roguelike keyset */
+        if (rogue_like_commands)
+        {
+            if (cmd == 'j')
+            {
+                *top += 1;
+                if (*top > doc->cursor.y - page_size)
+                    *top = MAX(0, doc->cursor.y - page_size);
+                continue;
+            }
+            else if (cmd == 'k')
+            {
+                *top -= 1;
+                if (*top < 0) *top = 0;
+                continue;
+            }
+            else if (cmd == KTRL('F'))
+            {
+                *top += page_size;
+                if (*top > doc->cursor.y - page_size)
+                    *top = MAX(0, doc->cursor.y - page_size);
+                continue;
+            }
+            else if (cmd == KTRL('B'))
+            {
+                *top -= page_size;
+                if (*top < 0) *top = 0;
+                continue;
+            }
+        }
+
+        switch (cmd)
+        {
+        case '?':
+            if (!strstr(caption, "helpinfo.txt"))
+            {
+                rc = doc_display_help_aux("helpinfo.txt", NULL, display);
+                if (rc == 1)
+                    done = TRUE;
+            }
+            break;
+        case ESCAPE:
+        case 'q':
+            done = TRUE;
+            break;
+        case SKEY_TOP:
+        case '7':
+            *top = 0;
+            break;
+        case SKEY_BOTTOM:
+        case '1':
+            *top = MAX(0, doc->cursor.y - page_size);
+            break;
+        case SKEY_PGUP:
+        case '9':
+            *top -= page_size;
+            if (*top < 0) *top = 0;
+            break;
+        case SKEY_PGDOWN:
+        case '3':
+            *top += page_size;
+            if (*top > doc->cursor.y - page_size)
+                *top = MAX(0, doc->cursor.y - page_size);
+            break;
+        case SKEY_UP:
+        case '8':
+            *top -= 1;
+            if (*top < 0) *top = 0;
+            break;
+        case SKEY_DOWN:
+        case '2':
+            *top += 1;
+            if (*top > doc->cursor.y - page_size)
+                *top = MAX(0, doc->cursor.y - page_size);
+            break;
+        case '>':
+        {
+            doc_pos_t pos = doc_next_bookmark(doc, doc_pos_create(doc->width - 1, *top));
+            if (doc_pos_is_valid(pos))
+            {
+                *top = pos.y;
+                if (*top > doc->cursor.y - page_size)
+                    *top = MAX(0, doc->cursor.y - page_size);
+            }
+            break;
+        }
+        case '<':
+        {
+            doc_pos_t pos = doc_prev_bookmark(doc, doc_pos_create(0, *top));
+            if (doc_pos_is_valid(pos))
+                *top = pos.y;
+            else
+                *top = 0;
+            break;
+        }
+        case '|':
+        {
+            FILE *fp2;
+            char buf[1024];
+            char name[82];
+            int  cb;
+            int  format = DOC_FORMAT_TEXT;
+
+            strcpy(name, string_buffer(doc->name));
+
+            if (!get_string("File name: ", name, 80)) break;
+            path_build(buf, sizeof(buf), ANGBAND_DIR_USER, name);
+            fp2 = my_fopen(buf, "w");
+            if (!fp2)
+            {
+                msg_format("Failed to open file: %s", buf);
+                break;
+            }
+
+            cb = strlen(buf);
+            if (cb > 5 && strcmp(buf + cb - 5, ".html") == 0)
+                format = DOC_FORMAT_HTML;
+            else if (cb > 4 && strcmp(buf + cb - 4, ".htm") == 0)
+                format = DOC_FORMAT_HTML;
+
+            doc_write_file(doc, fp2, format);
+            my_fclose(fp2);
+            msg_format("Created file: %s", buf);
+            msg_print(NULL);
+            break;
+        }
+        case '/':
+            Term_erase(display.x, display.y + display.cy - 1, display.cx);
+            put_str("Find: ", display.y + display.cy - 1, display.x);
+            strcpy(back_str, finder_str);
+            if (askfor(finder_str, 80))
+            {
+                if (finder_str[0])
+                {
+                    doc_pos_t pos = doc->selection.stop;
+                    if (!doc_pos_is_valid(pos))
+                        pos = doc_pos_create(0, *top);
+                    pos = doc_find_next(doc, finder_str, pos);
+                    if (doc_pos_is_valid(pos))
+                    {
+                        *top = pos.y;
+                        if (*top > doc->cursor.y - page_size)
+                            *top = MAX(0, doc->cursor.y - page_size);
+                    }
+                }
+            }
+            else strcpy(finder_str, back_str);
+            break;
+        case '\\':
+            Term_erase(display.x, display.y + display.cy - 1, display.cx);
+            put_str("Find: ", display.y + display.cy - 1, display.x);
+            strcpy(back_str, finder_str);
+            if (askfor(finder_str, 80))
+            {
+                if (finder_str[0])
+                {
+                    doc_pos_t pos = doc->selection.start;
+                    if (!doc_pos_is_valid(pos))
+                        pos = doc_pos_create(doc->width, *top + page_size);
+                    pos = doc_find_prev(doc, finder_str, pos);
+                    if (doc_pos_is_valid(pos))
+                    {
+                        *top = pos.y;
+                        if (*top > doc->cursor.y - page_size)
+                            *top = MAX(0, doc->cursor.y - page_size);
+                    }
+                }
+            }
+            else strcpy(finder_str, back_str);
+            break;
+        case 'm':
+        case 'M':
+            change_mode = TRUE;
+            done = TRUE;
+            break;
+        default:
+            break;
+        }
+    }
+    return (change_mode) ? 1 : 0;
+}
 int doc_display_help(cptr file_name, cptr topic)
 {
     rect_t display = {0};
