@@ -3361,6 +3361,11 @@ int place_monster_one(int who, int y, int x, int r_idx, int pack_idx, u32b mode)
     if (who > 0)
         m_ptr->smart |= (1U << SM_SUMMONED);
 
+    if (who == SUMMON_WHO_PLAYER)
+        m_ptr->mflag2 |= MFLAG2_PLAYER_SUMMONED;
+    else if ((who > 0) && ((is_pet_idx(who)) || (is_friendly_idx(who)) || (m_list[who].mflag2 & MFLAG2_PLAYER_SUMMONED)))
+        m_ptr->mflag2 |= MFLAG2_PLAYER_SUMMONED;
+
     /* Place the monster at the location */
     m_ptr->fy = y;
     m_ptr->fx = x;
