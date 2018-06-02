@@ -300,7 +300,7 @@ void mon_take_hit_mon(int m_idx, int dam, bool *fear, cptr note, int who)
                 }
             }
 
-            monster_gain_exp(who, m_ptr->r_idx);
+            monster_gain_exp(who, m_idx);
 
             mon_check_kill_unique(m_idx);
 
@@ -4401,6 +4401,7 @@ void mon_gain_exp(mon_ptr mon, int amt)
 void monster_gain_exp(int m_idx, int s_idx)
 {
     monster_type *m_ptr;
+    monster_type *sm_ptr;
     monster_race *r_ptr;
     monster_race *s_ptr;
     int new_exp;
@@ -4413,10 +4414,20 @@ void monster_gain_exp(int m_idx, int s_idx)
     /* Paranoia -- Skip dead monsters */
     if (!m_ptr->r_idx) return;
 
+    /* The other monster shouldn't have been deleted yet */
+    sm_ptr = &m_list[s_idx];
+    if (!sm_ptr->r_idx) return;
+
     r_ptr = &r_info[m_ptr->r_idx];
-    s_ptr = &r_info[s_idx];
+    s_ptr = &r_info[sm_ptr->r_idx];
 
     if (p_ptr->inside_battle) return;
+
+    /* No XP for player-aligned monsters killing player summons
+     * (or summons of player summons) */
+    if ((sm_ptr->mflag2 & MFLAG2_PLAYER_SUMMONED) && ((is_pet(m_ptr)) ||
+        (is_friendly(m_ptr)) || (m_ptr->mflag2 & MFLAG2_PLAYER_SUMMONED)))
+        return;
 
     new_exp = s_ptr->mexp * s_ptr->level / (r_ptr->level + 2);
     if (m_idx == p_ptr->riding) new_exp = (new_exp + 1) / 2;
