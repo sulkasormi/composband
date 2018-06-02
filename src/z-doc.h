@@ -224,5 +224,6 @@ int doc_display_help(cptr file_name, cptr topic);
 int doc_display_help_aux(cptr file_name, cptr topic, rect_t display);
 int doc_display(doc_ptr doc, cptr caption, int top);
 int doc_display_aux(doc_ptr doc, cptr caption, int top, rect_t display);
+int weapon_exp_display(doc_ptr doc, cptr caption, int *top);
 
 #endif
