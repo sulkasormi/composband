@@ -1982,6 +1982,8 @@ static void _build_statistics(doc_ptr doc)
     _object_counts_imp(doc, TV_SCROLL, SV_SCROLL_STAR_IDENTIFY);
     _object_counts_imp(doc, TV_SCROLL, SV_SCROLL_REMOVE_CURSE);
     _object_counts_imp(doc, TV_SCROLL, SV_SCROLL_STAR_REMOVE_CURSE);
+    if (class_uses_spell_scrolls(p_ptr->pclass))
+        _object_counts_imp(doc, TV_SCROLL, SV_SCROLL_SPELL);
     _object_counts_imp(doc, TV_SCROLL, SV_SCROLL_TELEPORT);
     _object_counts_imp(doc, TV_SCROLL, SV_SCROLL_TELEPORT_LEVEL);
     _object_counts_imp(doc, TV_SCROLL, SV_SCROLL_STAR_DESTRUCTION);
@@ -1989,6 +1991,7 @@ static void _build_statistics(doc_ptr doc)
     _object_counts_imp(doc, TV_SCROLL, SV_SCROLL_MASS_GENOCIDE);
     _object_counts_imp(doc, TV_SCROLL, SV_SCROLL_FOREST_CREATION);
     _object_counts_imp(doc, TV_SCROLL, SV_SCROLL_BANISHMENT);
+    _object_counts_imp(doc, TV_SCROLL, SV_SCROLL_CRAFTING);
     _object_counts_imp(doc, TV_SCROLL, SV_SCROLL_ACQUIREMENT);
     _object_counts_imp(doc, TV_SCROLL, SV_SCROLL_STAR_ACQUIREMENT);
     _object_counts_imp(doc, TV_SCROLL, SV_SCROLL_ARTIFACT);
