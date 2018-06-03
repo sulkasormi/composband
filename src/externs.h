@@ -826,6 +826,7 @@ extern bool capture_ball_release(object_type *o_ptr, int y, int x, int mode);
 extern void empty_capture_ball(object_type *o_ptr);
 
 /* devices.c */
+extern bool class_uses_spell_scrolls(int mika);
 extern int  device_calc_fail_rate(object_type *o_ptr); /*95.2% returned as 952*/
 extern int  device_calc_fail_rate_aux(int skill, int difficulty);
 extern bool device_try(object_type *o_ptr);
