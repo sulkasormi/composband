@@ -32,6 +32,40 @@ static bool ang_sort_comp_pet(vptr u, vptr v, int a, int b)
     return w1 <= w2;
 }
 
+bool class_uses_spell_scrolls(int mika)
+{
+    if (mika == CLASS_WARRIOR ||
+      mika == CLASS_MINDCRAFTER ||
+      mika == CLASS_PSION ||
+      mika == CLASS_SORCERER ||
+      mika == CLASS_ARCHER ||
+      mika == CLASS_MAGIC_EATER ||
+      mika == CLASS_DEVICEMASTER ||
+      mika == CLASS_RED_MAGE ||
+      mika == CLASS_SAMURAI ||
+      mika == CLASS_CAVALRY ||
+      mika == CLASS_BERSERKER ||
+      mika == CLASS_WEAPONSMITH ||
+      mika == CLASS_MIRROR_MASTER ||
+      mika == CLASS_TIME_LORD ||
+      mika == CLASS_BLOOD_KNIGHT ||
+      mika == CLASS_WARLOCK ||
+      mika == CLASS_ARCHAEOLOGIST ||
+      mika == CLASS_DUELIST ||
+      mika == CLASS_RUNE_KNIGHT ||
+      mika == CLASS_WILD_TALENT ||
+      mika == CLASS_NINJA ||
+      mika == CLASS_NINJA_LAWYER ||
+      mika == CLASS_SCOUT ||
+      mika == CLASS_MYSTIC ||
+      mika == CLASS_MAULER ||
+      mika == CLASS_POLITICIAN ||
+      mika == CLASS_ALCHEMIST ||
+      mika == CLASS_SKILLMASTER )
+        return FALSE;
+    return TRUE;
+}
+
 /* Devices: We are following the do_spell() pattern which is quick and dirty,
    but not my preferred approach ... */
 
@@ -1484,34 +1518,7 @@ static cptr _do_scroll(int sval, int mode)
         if (desc) return "It increases the number you can study spells when you read. If you are the class can't study or don't need to study, it has no effect.";
         if (cast)
         {
-            if (p_ptr->pclass == CLASS_WARRIOR ||
-                p_ptr->pclass == CLASS_MINDCRAFTER ||
-                p_ptr->pclass == CLASS_PSION ||
-                p_ptr->pclass == CLASS_SORCERER ||
-                p_ptr->pclass == CLASS_ARCHER ||
-                p_ptr->pclass == CLASS_MAGIC_EATER ||
-                p_ptr->pclass == CLASS_DEVICEMASTER ||
-                p_ptr->pclass == CLASS_RED_MAGE ||
-                p_ptr->pclass == CLASS_SAMURAI ||
-                p_ptr->pclass == CLASS_CAVALRY ||
-                p_ptr->pclass == CLASS_BERSERKER ||
-                p_ptr->pclass == CLASS_WEAPONSMITH ||
-                p_ptr->pclass == CLASS_MIRROR_MASTER ||
-                p_ptr->pclass == CLASS_TIME_LORD ||
-                p_ptr->pclass == CLASS_BLOOD_KNIGHT ||
-                p_ptr->pclass == CLASS_WARLOCK ||
-                p_ptr->pclass == CLASS_ARCHAEOLOGIST ||
-                p_ptr->pclass == CLASS_DUELIST ||
-                p_ptr->pclass == CLASS_RUNE_KNIGHT ||
-                p_ptr->pclass == CLASS_WILD_TALENT ||
-                p_ptr->pclass == CLASS_NINJA ||
-                p_ptr->pclass == CLASS_NINJA_LAWYER ||
-                p_ptr->pclass == CLASS_SCOUT ||
-                p_ptr->pclass == CLASS_MYSTIC ||
-                p_ptr->pclass == CLASS_MAULER ||
-                p_ptr->pclass == CLASS_POLITICIAN ||
-                p_ptr->pclass == CLASS_ALCHEMIST ||
-                p_ptr->pclass == CLASS_SKILLMASTER )
+            if (!class_uses_spell_scrolls(p_ptr->pclass))
             {
                 msg_print("There is no effect.");
             }
