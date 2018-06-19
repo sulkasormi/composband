@@ -380,8 +380,8 @@ static cptr _do_potion(int sval, int mode)
         if (desc) return "It makes you nearly faint from hunger and paralyzes you, but it cures poison when you quaff it.";
         if (cast)
         {
-            if ( !(get_race()->flags & RACE_IS_NONLIVING)
-              && !prace_is_(RACE_MON_JELLY) )
+            if (( !(get_race()->flags & RACE_IS_NONLIVING)
+              && !prace_is_(RACE_MON_JELLY) ) || prace_is_(RACE_EINHERI))
             {
                 msg_print("The potion makes you vomit!");
                 set_food(PY_FOOD_STARVE - 1);
@@ -2591,6 +2591,19 @@ static int _effect_rarity(device_effect_info_ptr entry, int level)
     return r;
 }
 
+static void _device_adjust_activation_difficulty(object_type *o_ptr, device_effect_info_ptr entry)
+{
+    int d = 10*(o_ptr->activation.power - o_ptr->activation.difficulty);
+    int b = entry->difficulty_base * d / 100;
+
+    b += randint0(entry->difficulty_xtra * d / 100);
+    o_ptr->activation.difficulty += b/10;
+    if (randint0(10) < b%10)
+        o_ptr->activation.difficulty++;
+    if (o_ptr->activation.difficulty > o_ptr->activation.power) /* paranoia */
+        o_ptr->activation.difficulty = o_ptr->activation.power;
+}
+
 static void _device_pick_effect(object_type *o_ptr, device_effect_info_ptr table, int level, int mode)
 {
     int i, n;
@@ -2643,15 +2656,7 @@ static void _device_pick_effect(object_type *o_ptr, device_effect_info_ptr table
             o_ptr->activation.difficulty = entry->level;
             if (o_ptr->activation.power > o_ptr->activation.difficulty)
             {
-                int d = 10*(o_ptr->activation.power - o_ptr->activation.difficulty);
-                int b = entry->difficulty_base * d / 100;
-
-                b += randint0(entry->difficulty_xtra * d / 100);
-                o_ptr->activation.difficulty += b/10;
-                if (randint0(10) < b%10)
-                    o_ptr->activation.difficulty++;
-                if (o_ptr->activation.difficulty > o_ptr->activation.power) /* paranoia */
-                    o_ptr->activation.difficulty = o_ptr->activation.power;
+                _device_adjust_activation_difficulty(o_ptr, entry);
             }
 
             cost = entry->cost;
@@ -2797,6 +2802,12 @@ bool device_init_fixed(object_type *o_ptr, int effect)
     }
 
     o_ptr->xtra3 = e_ptr->level;
+    if (o_ptr->level < 0) /* Level hack */
+    {
+        o_ptr->xtra3 = MAX(e_ptr->level, MIN(e_ptr->level - o_ptr->level, (e_ptr->max_depth ? e_ptr->max_depth : 100)));
+        o_ptr->level = 0;
+    }
+
     if (o_ptr->xtra3 < 7)
         o_ptr->xtra3 = 7;
 
@@ -2810,6 +2821,11 @@ bool device_init_fixed(object_type *o_ptr, int effect)
     o_ptr->activation.type = e_ptr->type;
     o_ptr->activation.power = o_ptr->xtra3;
     o_ptr->activation.difficulty = e_ptr->level;
+    if (o_ptr->activation.power > o_ptr->activation.difficulty)
+    {
+        _device_adjust_activation_difficulty(o_ptr, e_ptr);
+    }
+
     o_ptr->activation.cost = e_ptr->cost + effect_cost_extra(&o_ptr->activation);
 
     if (e_ptr->flags & _NO_DESTROY)
