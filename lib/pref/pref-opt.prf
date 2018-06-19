@@ -63,6 +63,8 @@ Y:abbrev_all
 Y:exp_need
 Y:ignore_unview
 X:display_distance
+Y:show_discovery
+Y:always_dump_origins
 
 ##### Game-Play #####
 
