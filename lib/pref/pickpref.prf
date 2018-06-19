@@ -81,6 +81,12 @@ wizardstaff
 ?unidentified wands
 
 #########################################
+# Artifacts
+#########################################
+
+?unidentified artifact items
+
+#########################################
 # Armor
 #########################################
 
@@ -93,7 +99,7 @@ dragon shield
 dragon helm
 dragon wings
 dragon fang
-armors:dragon
+~armors:dragon
 
 ?:[EQU $CLASS Politician]
 sexy swimsuit#!sdk
