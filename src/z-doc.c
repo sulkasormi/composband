@@ -8,20 +8,6 @@
 
 #define _INVALID_COLOR 255
 
-struct doc_s
-{
-    doc_pos_t      cursor;
-    doc_region_t   selection;
-    int            width;
-    vec_ptr        pages;
-    str_map_ptr    styles;
-    vec_ptr        bookmarks;
-    int_map_ptr    links;
-    vec_ptr        style_stack;
-    string_ptr     name;
-    string_ptr     html_header;
-};
-
 doc_pos_t doc_pos_create(int x, int y)
 {
     doc_pos_t result;
