@@ -1496,6 +1496,26 @@ static int _lookup_ego_type(int object)
     }
 }
 
+static int _lookup_ego(cptr name, int type, int options)
+{
+    int i;
+    for (i = 1; i < max_e_idx; i++)
+    {
+        ego_type *e_ptr = &e_info[i];
+        char      buf[255];
+        if (!e_ptr->name) continue;
+        if (type && !(e_ptr->type & type)) continue;
+        _prep_name(buf, e_name + e_ptr->name);
+        if (strstr(buf, name))
+        {
+            if (trace_doc)
+                doc_printf(trace_doc, "Matching ego <color:B>%s</color> to <color:R>%s</color> (%d).\n", name, e_name + e_ptr->name, i);
+            return i;
+        }
+    }
+    return 0;
+}
+
 static int _lookup_kind(char *arg, int options)
 {
     int i;
@@ -1572,7 +1592,8 @@ static errr _parse_room_grid_object(char **args, int arg_ct, room_grid_ptr grid,
     {
         char *flags[10];
         int   flag_ct = z_string_split(args[1], flags, 10, "|");
-        int   i, n;
+        int   i, n, nn, nnn;
+        char tyyppi[80] = "";
 
         for (i = 0; i < flag_ct; i++)
         {
@@ -1580,6 +1601,51 @@ static errr _parse_room_grid_object(char **args, int arg_ct, room_grid_ptr grid,
             if (sscanf(flag, "DEPTH+%d", &n) == 1)
             {
                 grid->object_level = n;
+            }
+            else if (sscanf(flag, "NUMBER=%d+%dd%d", &n, &nn, &nnn) == 3)
+            {
+                if ((n < 1) || (nn < 1) || (nnn < 1))
+                {
+                    msg_format("Error: Invalid object pile size specifier %s.", flag);
+                    return PARSE_ERROR_GENERIC;
+                }
+                grid->extra2 = n + damroll(nn, nnn);
+            }
+            else if (sscanf(flag, "NUMBER=%dd%d", &n, &nn) == 2)
+            {
+                if ((n < 1) || (nn < 1))
+                {
+                    msg_format("Error: Invalid object pile size specifier %s.", flag);
+                    return PARSE_ERROR_GENERIC;
+                }
+                grid->extra2 = damroll(n, nn);
+            }
+            else if (sscanf(flag, "NUMBER=%d", &n) == 1)
+            {
+                grid->extra2 = n;
+            }
+            else if (sscanf(flag, "TYPE=%d", &n) == 1)
+            {
+                /* Number and Type can share the same extra parameter,
+                 * because Type is only used by devices (for ego generation),
+                 * and devices are never generated in piles */
+                grid->extra2 = n;
+//                grid->flags |= ROOM_GRID_EGO;
+            }
+            else if (streq(flag, "TYPE=*"))
+            {
+                grid->extra2 = -1;
+//                grid->flags |= ROOM_GRID_EGO_RANDOM;
+            }
+            else if (sscanf(flag, "TYPE=%s", tyyppi) == 1)
+            {
+                unsigned int j;
+                for (j = 0; j < strlen(tyyppi); j++)
+                {
+                    tyyppi[j] = tolower(tyyppi[j]);
+                }
+                grid->extra2 = _lookup_ego(tyyppi, 0, options);
+//                grid->flags |= ROOM_GRID_EGO;
             }
             else if (sscanf(flag, "%d%%", &n) == 1)
             {
@@ -1636,26 +1702,6 @@ static errr _parse_room_grid_object(char **args, int arg_ct, room_grid_ptr grid,
     default:
         msg_print("Error: Invalid OBJ() directive. Syntax: OBJ(<which> [,<flags>]).");
         return PARSE_ERROR_TOO_FEW_ARGUMENTS;
-    }
-    return 0;
-}
-
-static int _lookup_ego(cptr name, int type, int options)
-{
-    int i;
-    for (i = 1; i < max_e_idx; i++)
-    {
-        ego_type *e_ptr = &e_info[i];
-        char      buf[255];
-        if (!e_ptr->name) continue;
-        if (type && !(e_ptr->type & type)) continue;
-        _prep_name(buf, e_name + e_ptr->name);
-        if (strstr(buf, name))
-        {
-            if (trace_doc)
-                doc_printf(trace_doc, "Matching ego <color:B>%s</color> to <color:R>%s</color> (%d).\n", name, e_name + e_ptr->name, i);
-            return i;
-        }
     }
     return 0;
 }
