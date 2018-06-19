@@ -1970,11 +1970,10 @@ obj_ptr room_grid_make_obj(room_grid_ptr grid, int level)
             object_prep(&forge, k_idx);
             if (object_is_device(&forge) && (grid->flags & ROOM_GRID_OBJ_EFFECT))
             {
-                /* Hack: There is only a single k_idx for each class of devices, so
-                 * we use the ego index to pick an effect. This means there is no way
-                 * to actually grant an ego device ...*/
+                if (grid->object_level) forge.level = 1 - grid->object_level; /* Mega-hack */
                 if (!device_init_fixed(&forge, grid->extra))
                 {
+                    forge.level = 0;
                     if (grid->extra)
                     {
                         char     name[255];
@@ -1986,11 +1985,30 @@ obj_ptr room_grid_make_obj(room_grid_ptr grid, int level)
                     }
                     device_init(&forge, object_level, 0);
                 }
+                else if (grid->extra2 != 0) /* Generate an ego device */
+                {
+                    forge.level = 0;
+                    device_pick_ego(&forge, object_level, grid->extra2);
+
+                    /* Make sure devices of capacity generate fully charged */
+                    forge.xtra5 = forge.xtra4 * 100;
+                }
             }
             else
             {
                 apply_magic(&forge, object_level, mode);
-                obj_make_pile(&forge);
+                if (grid->extra2 > 0)
+                {
+                    int luku = MIN(grid->extra2, 99); /* sanity check */
+                    object_kind *k_ptr = &k_info[forge.k_idx];
+                    forge.number = luku;
+                    k_ptr->counts.generated += luku - 1;
+                    if (forge.name2) e_info[forge.name2].counts.generated += luku - 1;
+                }
+                else
+                {
+                    obj_make_pile(&forge);
+                }
             }
         }
     }
