@@ -625,7 +625,8 @@
 #define RACE_MON_CENTIPEDE      61
 #define RACE_MON_VORTEX         62
 #define RACE_HALF_ORC           63
-#define MAX_RACES               64
+#define RACE_EINHERI            64
+#define MAX_RACES               65
 
 #define DEMIGOD_MINOR           0
 #define DEMIGOD_ZEUS            1
@@ -5488,6 +5489,8 @@ enum ego_type_e {
     EGO_QUIVER_PHASE,
 };
 
+#define EGO_DEVICE_START  EGO_DEVICE_RESISTANCE
+#define EGO_DEVICE_END    EGO_DEVICE_QUICKNESS
 
 enum effect_e
 {
