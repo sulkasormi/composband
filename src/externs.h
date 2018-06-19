@@ -1242,6 +1242,7 @@ extern bool obj_has_lore(object_type *o_ptr);
 /* ego.c */
 extern void ego_create_ring(object_type *o_ptr, int level, int power, int mode);
 extern void ego_create_amulet(object_type *o_ptr, int level, int power, int mode);
+extern void device_pick_ego(object_type *o_ptr, int level, int preference);
 extern bool obj_create_device(object_type *o_ptr, int level, int power, int mode);
 extern void obj_create_weapon(object_type *o_ptr, int level, int power, int mode);
 extern void obj_create_armor(object_type *o_ptr, int level, int power, int mode);
@@ -2218,6 +2219,7 @@ extern race_t *doppelganger_get_race(void);
 extern race_t *draconian_get_race(int psubrace);
 extern race_t *dunadan_get_race(void);
 extern race_t *dwarf_get_race(void);
+extern race_t *einheri_get_race(void);
 extern race_t *ent_get_race(void);
 extern race_t *gnome_get_race(void);
 extern race_t *golem_get_race(void);
