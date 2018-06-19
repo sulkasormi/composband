@@ -1652,6 +1652,96 @@ race_t *dwarf_get_race(void)
 }
 
 /****************************************************************
+ * Einheri
+ ****************************************************************/
+static power_info _einheri_powers[] =
+{
+    { A_STR, {1, 10, 50, berserk_spell}},
+    { -1, {-1, -1, -1, NULL} }
+};
+static int _einheri_get_powers(spell_info* spells, int max)
+{
+    return get_powers_aux(spells, max, _einheri_powers);
+}
+
+static void _einheri_gain_level(int new_level)
+{
+	if (new_level >= 30)
+	{
+		if (p_ptr->demigod_power[0] < 0)
+		{
+			int idx = mut_gain_choice(mut_demigod_pred/*mut_human_pred*/);
+			mut_lock(idx);
+			p_ptr->demigod_power[0] = idx;
+		}
+		else if (!mut_present(p_ptr->demigod_power[0]))
+		{
+			mut_gain(p_ptr->demigod_power[0]);
+			mut_lock(p_ptr->demigod_power[0]);
+		}
+	}
+}
+
+static void _einheri_calc_bonuses(void)
+{
+    p_ptr->hold_life++;
+    p_ptr->regen += 100;
+}
+static void _einheri_get_flags(u32b flgs[OF_ARRAY_SIZE])
+{
+    add_flag(flgs, OF_HOLD_LIFE);
+    add_flag(flgs, OF_REGEN);
+}
+race_t *einheri_get_race(void)
+{
+    static race_t me = {0};
+    static bool init = FALSE;
+
+    if (!init)
+    {
+        me.name = "Einheri";
+        me.desc = "Dead heroes returning to the mortal world for one last fight, Einherjar are highly "
+                    "skilled in hand-to-hand combat and start with the ability to enter a battle frenzy; "
+                    "however, they are also passably good at using devices, and do not necessarily make "
+                    "weak magic users. Already having one lifetime's adventures behind them, Einherjar are "
+                    "very strong at the beginning but learn new things slowly. Like other undead races, they "
+                    "are immune to life draining. Einherjar have one serious weakness: magical healing only "
+                    "has a partial effect on them, healing them half as much as it would any other race.";
+
+        me.stats[A_STR] =  2;
+        me.stats[A_INT] =  0;
+        me.stats[A_WIS] =  0;
+        me.stats[A_DEX] =  2;
+        me.stats[A_CON] =  1;
+        me.stats[A_CHR] =  1;
+
+        me.skills.dis = 5;
+        me.skills.dev = 3;
+        me.skills.sav = 8;
+        me.skills.stl = -1;
+        me.skills.srh = 7;
+        me.skills.fos = 10;
+        me.skills.thn = 22;
+        me.skills.thb = 8;
+
+        me.life = 113;
+        me.base_hp = 44;
+        me.exp = 160;
+        me.infra = 3;
+        me.shop_adjust = 100;
+
+        me.flags = RACE_IS_NONLIVING | RACE_IS_UNDEAD;
+        me.calc_bonuses = _einheri_calc_bonuses;
+        me.get_powers = _einheri_get_powers;
+        me.get_flags = _einheri_get_flags;
+        me.gain_level = _einheri_gain_level;
+        init = TRUE;
+    }
+
+    return &me;
+}
+
+/****************************************************************
  * Ent
  ****************************************************************/
 static power_info _ent_powers[] =
@@ -1931,7 +2021,7 @@ race_t *half_giant_get_race(void)
     if (!init)
     {
         me.name = "Half-Giant";
-		me.desc = "Half-Giants limited intelligence makes it difficult for them to become full spellcasters, "
+		me.desc = "Half-Giants' limited intelligence makes it difficult for them to become full spellcasters, "
 					"but with their huge strength they make excellent warriors. Their thick skin makes "
 					"them resistant to shards, and like Half-Trolls, they have their strength sustained.";
 
