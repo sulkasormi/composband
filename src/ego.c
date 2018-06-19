@@ -1534,6 +1534,48 @@ static void _create_amulet_aux(object_type *o_ptr, int level, int power, int mod
     ego_finalize(o_ptr, level, power, mode);
 }
 
+void device_pick_ego(object_type *o_ptr, int level, int preference)
+{
+    bool done = FALSE, koitettu = FALSE;
+    u32b flgs[OF_ARRAY_SIZE];
+
+    obj_flags(o_ptr, flgs);
+
+    while (!done)
+    {
+        if (!koitettu)
+        {
+            koitettu = TRUE;
+            apply_magic_ego = preference;
+        }
+        o_ptr->name2 = ego_choose_type(EGO_TYPE_DEVICE, level);
+        done = TRUE;
+
+        if ((o_ptr->name2 < EGO_DEVICE_START) || (o_ptr->name2 > EGO_DEVICE_END)) done = FALSE;
+
+        if ( o_ptr->name2 == EGO_DEVICE_RESISTANCE
+          && (have_flag(flgs, OF_IGNORE_ACID) || o_ptr->tval == TV_ROD) )
+        {
+            done = FALSE;
+        }
+        apply_magic_ego = 0;
+    }
+
+    switch (o_ptr->name2)
+    {
+        case EGO_DEVICE_CAPACITY:
+            o_ptr->pval = 1 + m_bonus(4, level);
+            o_ptr->xtra4 += o_ptr->xtra4 * o_ptr->pval * 10 / 100;
+            break;
+        case EGO_DEVICE_SIMPLICITY:
+        case EGO_DEVICE_POWER:
+        case EGO_DEVICE_REGENERATION:
+        case EGO_DEVICE_QUICKNESS:
+            o_ptr->pval = 1 + m_bonus(4, level);
+            break;
+    }
+}
+
 /*************************************************************************
  * Devices
  *************************************************************************/
@@ -1546,36 +1588,7 @@ bool obj_create_device(object_type *o_ptr, int level, int power, int mode)
 
     if (abs(power) > 1)
     {
-        bool done = FALSE;
-        u32b flgs[OF_ARRAY_SIZE];
-
-        obj_flags(o_ptr, flgs);
-
-        while (!done)
-        {
-            o_ptr->name2 = ego_choose_type(EGO_TYPE_DEVICE, level);
-            done = TRUE;
-
-            if ( o_ptr->name2 == EGO_DEVICE_RESISTANCE
-              && (have_flag(flgs, OF_IGNORE_ACID) || o_ptr->tval == TV_ROD) )
-            {
-                done = FALSE;
-            }
-        }
-
-        switch (o_ptr->name2)
-        {
-        case EGO_DEVICE_CAPACITY:
-            o_ptr->pval = 1 + m_bonus(4, level);
-            o_ptr->xtra4 += o_ptr->xtra4 * o_ptr->pval * 10 / 100;
-            break;
-        case EGO_DEVICE_SIMPLICITY:
-        case EGO_DEVICE_POWER:
-        case EGO_DEVICE_REGENERATION:
-        case EGO_DEVICE_QUICKNESS:
-            o_ptr->pval = 1 + m_bonus(4, level);
-            break;
-        }
+        device_pick_ego(o_ptr, level, 0);
     }
 
     /* XXX Let's turn off cursed devices for a bit. While exploding devices
