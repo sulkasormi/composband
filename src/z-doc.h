@@ -109,6 +109,19 @@ struct doc_link_s
 };
 typedef struct doc_link_s doc_link_t, *doc_link_ptr;
 
+struct doc_s
+{
+    doc_pos_t      cursor;
+    doc_region_t   selection;
+    int            width;
+    vec_ptr        pages;
+    str_map_ptr    styles;
+    vec_ptr        bookmarks;
+    int_map_ptr    links;
+    vec_ptr        style_stack;
+    string_ptr     name;
+    string_ptr     html_header;
+};
 typedef struct doc_s doc_t, *doc_ptr;
 
 
