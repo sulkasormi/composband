@@ -145,6 +145,7 @@ struct room_grid_s
 
     s16b object;
     s16b extra;
+    s16b extra2;
 
     u32b flags;
 
