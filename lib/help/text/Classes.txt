@@ -125,7 +125,7 @@ Melee
     Dexterity     -1        Stealth     Poor         
     Constitution  +3        Searching   Poor         
     Charisma      +2        Perception  Bad          
-    Life Rating  111%       Melee       Superb       
+    Life Rating  110%       Melee       Superb       
     Base HP       18        Bows        Very Bad     
     Experience   120%
     
@@ -1341,7 +1341,7 @@ Table 1 - Class Statistic Bonus Table
 Berserker      +8  -20  -20   +4   +4   +4  200%  +22  160%
 Blood-Knight   +2   -2   -2   +0   +3   +2  120%  +20  150%
 Duelist        +2   +1   -2   +2   -3   +2  100%   +4  150%
-Mauler         +5   -2   -2   -1   +3   +2  111%  +18  120%
+Mauler         +5   -2   -2   -1   +3   +2  110%  +18  120%
 Rune-Knight    +2   +1   -1   +1   +0   +1  102%   +6  150%
 Samurai        +3   -2   +1   +2   +1   +1  111%  +12  130%
 Warrior        +4   -2   -2   +2   +2   +1  115%  +18  100%
