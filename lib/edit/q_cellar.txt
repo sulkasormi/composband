@@ -41,7 +41,7 @@ M:#........f#
 M:#........##
 M:#........<#
 M:###########
-R:OBJ(STAFF_DESTRUCTION)
+R:OBJ(STAFF_DESTRUCTION, TYPE=*)
 
 ?:[EQU $CLASS Berserker]
-R:OBJ(potion of life)
+R:OBJ(potion of life, NUMBER=1)
