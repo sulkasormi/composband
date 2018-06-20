@@ -168,7 +168,7 @@ skills. Also it directly influences your life rating.
 Craven
 A Craven person is a coward, preferring to avoid a fight at any cost. 
 Craven adventurers shoot and use devices well, their stealth is 
-impressive, and they can move fast when not fighting;but their stats 
+impressive, and they can move fast when not fighting; but their stats 
 and other skills are somewhat wanting.
 
   Stats                   Skills
@@ -340,5 +340,5 @@ Munchkin     Amber[15]     Amber[15]     Amber[62]     Amber[27]
 
 
 
-Automatically generated for FrogComposband 7.0.peppermint.
+Automatically generated for FrogComposband 7.0.mango.
 
