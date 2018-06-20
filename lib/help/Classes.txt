@@ -69,7 +69,7 @@ Wisdom       <color:w> -2</color>        Save        <color:y>Very Good    </col
 Dexterity    <color:w> -1</color>        Stealth     <color:R>Poor         </color>
 Constitution <color:w> +3</color>        Searching   <color:R>Poor         </color>
 Charisma     <color:w> +2</color>        Perception  <color:r>Bad          </color>
-Life Rating  111%       Melee       <color:g>Superb       </color>
+Life Rating  110%       Melee       <color:g>Superb       </color>
 Base HP       18        Bows        <color:D>Very Bad     </color>
 Experience   120%
 </style></indent>
@@ -815,7 +815,7 @@ Experience   110%
 Berserker    <color:v>  +8 </color> -20  -20   +4   +4   +4  200%  +22  160%
 Blood-Knight   +2   -2   -2   +0 <color:v>  +3 </color>  +2  120%  +20  150%
 Duelist        +2   +1   -2 <color:v>  +2 </color>  -3   +2  100%   +4  150%
-Mauler       <color:v>  +5 </color>  -2   -2   -1   +3   +2  111%  +18  120%
+Mauler       <color:v>  +5 </color>  -2   -2   -1   +3   +2  110%  +18  120%
 Rune-Knight    +2 <color:v>  +1 </color>  -1   +1   +0   +1  102%   +6  150%
 Samurai        +3   -2 <color:v>  +1 </color>  +2   +1   +1  111%  +12  130%
 Warrior        +4   -2   -2   +2   +2   +1  115%  +18  100%
