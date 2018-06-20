@@ -269,7 +269,7 @@ Base HP       24        Bows        <color:g>Superb       </color>
 Experience   155%       Infravision 10'
 </style></indent>
 <topic:Half-Giant><color:o>Half-Giant</color>
-Half-Giants limited intelligence makes it difficult for them to become full spellcasters, but with their huge strength they make excellent warriors. Their thick skin makes them resistant to shards, and like Half-Trolls, they have their strength sustained.
+Half-Giants' limited intelligence makes it difficult for them to become full spellcasters, but with their huge strength they make excellent warriors. Their thick skin makes them resistant to shards, and like Half-Trolls, they have their strength sustained.
 
   <indent><style:table><color:G>Stats                   Skills</color>
 Strength      +4        Disarming   <color:D>Very Bad     </color>
@@ -368,7 +368,21 @@ Experience    45%       Infravision 20'
 </style></indent>
 </indent>
 <style:heading>The Undead</style>
-  <indent><topic:Skeleton><color:o>Skeleton</color>
+  <indent><topic:Einheri><color:o>Einheri</color>
+Dead heroes returning to the mortal world for one last fight, Einherjar are highly skilled in hand-to-hand combat and start with the ability to enter a battle frenzy; however, they are also passably good at using devices, and do not necessarily make weak magic users. Already having one lifetime's adventures behind them, Einherjar are very strong at the beginning but learn new things slowly. Like other undead races, they are immune to life draining. Einherjar have one serious weakness: magical healing only has a partial effect on them, healing them half as much as it would any other race.
+
+  <indent><style:table><color:G>Stats                   Skills</color>
+Strength      +2        Disarming   <color:y>Good         </color>
+Intelligence  +0        Device      <color:o>Fair         </color>
+Wisdom        +0        Save        <color:y>Very Good    </color>
+Dexterity     +2        Stealth     <color:r>Bad          </color>
+Constitution  +1        Searching   <color:G>Excellent    </color>
+Charisma      +1        Perception  <color:g>Superb       </color>
+Life Rating  113%       Melee       <color:g>Superb       </color>
+Base HP       44        Bows        <color:G>Excellent    </color>
+Experience   160%       Infravision 30'
+</style></indent>
+<topic:Skeleton><color:o>Skeleton</color>
 There are two types of skeletons: the ordinary, warrior-like skeletons, and the spell-using skeletons, which are also called liches. As undead beings, skeletons need to worry very little about poison or attacks that can drain life. They do not really use eyes for perceiving things, and are thus not fooled by invisibility. Their bones are resistant to sharp shrapnel, and they will quickly become resistant to cold. Although the magical effects of these will affect the skeleton even without entering the skeleton's (non-existent) belly, the potion or food itself will fall through the skeleton's jaws, giving no nutritional benefit. They can absorb mana from staves and wands as their energy source.
 
   <indent><style:table><color:G>Stats                   Skills</color>
@@ -625,6 +639,7 @@ Half-Titan    +5   +1   +2   -2   +3   +3  110%  +28  200%   90%
 Half-Troll    +4   -4   -1   -3   +3   -2  107%  +25  150%  135%
 Kobold        +1   -1   +0   +1   +0   -2   98%  +19   90%  120%
 Snotling      -2   -2   -2   -2   -2   -5   85%  +10   45%  125%
+Einheri       +2   +0   +0   +2   +1   +1  113%  +44  160%  100%
 Skeleton      +0   +1   -2   +0   +1   +1  100%  +21  115%  125%
 Spectre       -5   +4   +2   +2   -2   -3   90%  +13  250%  135%
 Vampire       +3   +3   -1   -1   +1   +2  102%  +22  200%  130%
@@ -671,6 +686,7 @@ Half-Titan   <color:r>Bad          </color> <color:o>Fair         </color> <colo
 Half-Troll   <color:r>Bad          </color> <color:D>Very Bad     </color> <color:r>Bad          </color> <color:r>Bad          </color>
 Kobold       <color:r>Bad          </color> <color:r>Bad          </color> <color:R>Poor         </color> <color:r>Bad          </color>
 Snotling     <color:r>Bad          </color> <color:r>Bad          </color> <color:r>Bad          </color> <color:o>Fair         </color>
+Einheri      <color:y>Good         </color> <color:o>Fair         </color> <color:y>Very Good    </color> <color:r>Bad          </color>
 Skeleton     <color:r>Bad          </color> <color:R>Poor         </color> <color:o>Fair         </color> <color:r>Bad          </color>
 Spectre      <color:G>Excellent    </color> <color:G>Excellent    </color> <color:G>Excellent    </color> <color:G>Excellent    </color>
 Vampire      <color:o>Fair         </color> <color:y>Good         </color> <color:y>Good         </color> <color:y>Very Good    </color>
@@ -717,6 +733,7 @@ Half-Titan   <color:r>Bad          </color> <color:G>Excellent    </color> <colo
 Half-Troll   <color:D>Very Bad     </color> <color:y>Good         </color> <color:g>Superb       </color> <color:r>Bad          </color>   30'
 Kobold       <color:r>Bad          </color> <color:G>Excellent    </color> <color:G>Excellent    </color> <color:y>Very Good    </color>   30'
 Snotling     <color:r>Bad          </color> <color:G>Excellent    </color> <color:D>Very Bad     </color> <color:R>Poor         </color>   20'
+Einheri      <color:G>Excellent    </color> <color:g>Superb       </color> <color:g>Superb       </color> <color:G>Excellent    </color>   30'
 Skeleton     <color:D>Very Bad     </color> <color:G>Excellent    </color> <color:G>Excellent    </color> <color:o>Fair         </color>   20'
 Spectre      <color:y>Good         </color> <color:b>Heroic       </color> <color:D>Very Bad     </color> <color:R>Poor         </color>   50'
 Vampire      <color:r>Bad          </color> <color:G>Excellent    </color> <color:y>Good         </color> <color:o>Fair         </color>   50'
@@ -737,4 +754,4 @@ Yeek         <color:y>Good         </color> <color:b>Heroic       </color> <colo
 </style>
 
 
-<color:s>Automatically generated for FrogComposband 7.0.strawberry.</color>
+<color:s>Automatically generated for FrogComposband 7.0.mango.</color>
