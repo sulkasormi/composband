@@ -100,4 +100,4 @@ M:#......rr1.&....C..#
 M:#..........#.......#
 M:#4..<......#$.....6#
 M:####################
-R:OBJ(mushroom of restoring)
+R:OBJ(mushroom of restoring, NUMBER=1)
