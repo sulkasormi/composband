@@ -63,9 +63,9 @@ M:#~~~~~~~~~~~~~~~~~~~~~~~~~.;..;T.;;.;;..:~~~~~~~~~~~~#
 M:#~~~~~~~~~~~~~~~~~~~~~~~~~~~~;;...~~~~~~~~~~~~~~~~~~~#
 M:#~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~#
 M:######################################################
-R:OBJ(STAFF_CONFUSING_LITE)
+R:OBJ(STAFF_CONFUSING_LITE, TYPE=simplicity)
 
 ?:[EQU $CLASS Berserker]
-R:OBJ(potion of life)
+R:OBJ(potion of life, NUMBER=1)
 
 # vim: filetype=q :
