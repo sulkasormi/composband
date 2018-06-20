@@ -76,6 +76,6 @@ M:#<.................................A...........;....92#
 M:#######################################################
 
 ?:[EQU $WILDERNESS NONE]
-R:OBJ(potion of new life)
+R:OBJ(potion of new life, NUMBER=1)
 
 # vim: filetype=q :
