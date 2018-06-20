@@ -136,7 +136,7 @@ Life Rating  102%       Melee       <color:D>Very Bad     </color>
 Experience   100%       Bows        <color:r>Bad          </color>
 </style></indent>
 <topic:Craven><color:o>Craven</color>
-A Craven person is a coward, preferring to avoid a fight at any cost. Craven adventurers shoot and use devices well, their stealth is impressive, and they can move fast when not fighting;but their stats and other skills are somewhat wanting.
+A Craven person is a coward, preferring to avoid a fight at any cost. Craven adventurers shoot and use devices well, their stealth is impressive, and they can move fast when not fighting; but their stats and other skills are somewhat wanting.
 
   <indent><style:table><color:G>Stats                   Skills</color>
 Strength      -1        Disarming   <color:G>Excellent    </color>
@@ -294,4 +294,4 @@ Munchkin     <color:v>Amber[15]    </color> <color:v>Amber[15]    </color> <colo
 </style>
 
 
-<color:s>Automatically generated for FrogComposband 7.0.peppermint.</color>
+<color:s>Automatically generated for FrogComposband 7.0.mango.</color>
