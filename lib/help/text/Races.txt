@@ -364,7 +364,7 @@ Orcs/Trolls/Giants
     Experience   155%       Infravision 10'
     
   Half-Giant
-  Half-Giants limited intelligence makes it difficult for them to 
+  Half-Giants' limited intelligence makes it difficult for them to 
   become full spellcasters, but with their huge strength they make 
   excellent warriors. Their thick skin makes them resistant to shards, 
   and like Half-Trolls, they have their strength sustained.
@@ -494,6 +494,28 @@ Orcs/Trolls/Giants
     
   
 The Undead
+  Einheri
+  Dead heroes returning to the mortal world for one last fight, 
+  Einherjar are highly skilled in hand-to-hand combat and start with 
+  the ability to enter a battle frenzy; however, they are also passably 
+  good at using devices, and do not necessarily make weak magic users. 
+  Already having one lifetime's adventures behind them, Einherjar are 
+  very strong at the beginning but learn new things slowly. Like other 
+  undead races, they are immune to life draining. Einherjar have one 
+  serious weakness: magical healing only has a partial effect on them, 
+  healing them half as much as it would any other race.
+  
+    Stats                   Skills
+    Strength      +2        Disarming   Good         
+    Intelligence  +0        Device      Fair         
+    Wisdom        +0        Save        Very Good    
+    Dexterity     +2        Stealth     Bad          
+    Constitution  +1        Searching   Excellent    
+    Charisma      +1        Perception  Superb       
+    Life Rating  113%       Melee       Superb       
+    Base HP       44        Bows        Excellent    
+    Experience   160%       Infravision 30'
+    
   Skeleton
   There are two types of skeletons: the ordinary, warrior-like 
   skeletons, and the spell-using skeletons, which are also called 
@@ -862,6 +884,7 @@ Half-Titan    +5   +1   +2   -2   +3   +3  110%  +28  200%   90%
 Half-Troll    +4   -4   -1   -3   +3   -2  107%  +25  150%  135%
 Kobold        +1   -1   +0   +1   +0   -2   98%  +19   90%  120%
 Snotling      -2   -2   -2   -2   -2   -5   85%  +10   45%  125%
+Einheri       +2   +0   +0   +2   +1   +1  113%  +44  160%  100%
 Skeleton      +0   +1   -2   +0   +1   +1  100%  +21  115%  125%
 Spectre       -5   +4   +2   +2   -2   -3   90%  +13  250%  135%
 Vampire       +3   +3   -1   -1   +1   +2  102%  +22  200%  130%
@@ -908,6 +931,7 @@ Half-Titan   Bad           Fair          Fair          Bad
 Half-Troll   Bad           Very Bad      Bad           Bad          
 Kobold       Bad           Bad           Poor          Bad          
 Snotling     Bad           Bad           Bad           Fair         
+Einheri      Good          Fair          Very Good     Bad          
 Skeleton     Bad           Poor          Fair          Bad          
 Spectre      Excellent     Excellent     Excellent     Excellent    
 Vampire      Fair          Good          Good          Very Good    
@@ -954,6 +978,7 @@ Half-Titan   Bad           Excellent     Heroic        Fair             0'
 Half-Troll   Very Bad      Good          Superb        Bad             30'
 Kobold       Bad           Excellent     Excellent     Very Good       30'
 Snotling     Bad           Excellent     Very Bad      Poor            20'
+Einheri      Excellent     Superb        Superb        Excellent       30'
 Skeleton     Very Bad      Excellent     Excellent     Fair            20'
 Spectre      Good          Heroic        Very Bad      Poor            50'
 Vampire      Bad           Excellent     Good          Fair            50'
@@ -974,5 +999,5 @@ Yeek         Good          Heroic        Bad           Fair            20'
 
 
 
-Automatically generated for FrogComposband 7.0.strawberry.
+Automatically generated for FrogComposband 7.0.mango.
 
