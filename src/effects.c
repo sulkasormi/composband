@@ -5181,6 +5181,8 @@ bool hp_player_aux(int num)
         num += num/5;
     }
 
+    if (prace_is_(RACE_EINHERI)) num /= 2;
+
     /* Healing needed */
     if (p_ptr->chp < p_ptr->mhp)
     {
@@ -5233,12 +5235,13 @@ bool lp_player(int num)
         if (p_ptr->pclass != CLASS_MONSTER)
         {
             int which;
-            switch (randint1(4))
+            switch (randint1(5))
             {
             case 1: which = RACE_VAMPIRE; break;
             case 2: which = RACE_SKELETON; break;
             case 3: which = RACE_ZOMBIE; break;
             case 4: which = RACE_SPECTRE; break;
+            case 5: which = RACE_EINHERI; break;
             }
 
             msg_print("<color:v>Your life force is exhausted!</color>");
