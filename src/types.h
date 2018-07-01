@@ -748,6 +748,7 @@ struct monster_type
     byte ego_whip_pow;
     byte anti_magic_ct;
     byte anger;
+    byte minislow;
     s16b mana;
 
     s32b pexp;    /* player experience gained (x100). kept <= r_ptr->mexp */
@@ -1232,6 +1233,8 @@ struct player_type
     s16b alter_reality;      /* Alter reality counter */
     byte recall_dungeon;      /* Dungeon set to be recalled */
     byte coffee_lv_revisits;  /* Count 99/100 spam by coffee-breakers */
+    byte minislow;
+    u16b mini_energy;
 
     s16b energy_need;      /* Energy needed for next move */
 
@@ -1749,6 +1752,7 @@ struct dungeon_info_type {
     int final_artifact;    /* The artifact you'll find at the bottom */
     int final_guardian;    /* The artifact's guardian. If an artifact is specified, then it's NEEDED */
     int initial_guardian;  /* Guarding the entrance */
+    byte pantheon;       /* Pantheon associated with this dungeon */
 
     byte special_div;    /* % of monsters affected by the flags/races allowed, to add some variety */
     int tunnel_percent;
@@ -2083,3 +2087,16 @@ struct personality_s
 };
 
 typedef struct personality_s personality_t, *personality_ptr;
+
+typedef struct pantheon_type pantheon_type;
+
+struct pantheon_type
+{
+    byte id;
+    u32b flag;
+    u32b flag2; /* for monsters associated with the pantheon,
+                 * but not part of the pantheon proper */
+    char name[20];
+    char short_name[5];
+    char plural[20];
+};
