@@ -19,7 +19,8 @@
 #define VER_MAJOR 7
 #define VER_MINOR 0
 #define VER_PATCH "mango"
-#define VER_EXTRA 2
+#define VER_EXTRA 4
+#define VERSION_IS_DEVELOPMENT (TRUE)
 
 #define GAME_MODE_BEGINNER  0
 #define GAME_MODE_NORMAL    1
@@ -151,11 +152,11 @@
  * by insisting on a single allocation size for all info files.
  * r_info requires 116771 bytes of text info, but k_info, a_info
  * and d_info only need about 11k, 27k and 1k respectively. Also,
- * its a bit tedious to figure current memory requirements. Why
+ * it's a bit tedious to figure current memory requirements. Why
  * not just malloc() string data and let the C library handle things?
  */
 #define FAKE_NAME_SIZE  20 * 1024   /* max is 18532 (r_info) */
-#define FAKE_TEXT_SIZE  128 * 1024  /* max is 116771 (r_info) */
+#define FAKE_TEXT_SIZE  144 * 1024  /* max is 116771 (r_info) */
 #define FAKE_TAG_SIZE   3 * 1024    /* max is 2092 (f_info) */
 
 
@@ -1186,6 +1187,7 @@ enum {
 #define ART_HELL                 218
 #define ART_CHARMED              219
 #define ART_GOGO                 220
+#define ART_KUNDRY               348
 
 /* Rings */
 #define ART_FRAKIR               8
@@ -1353,6 +1355,7 @@ enum {
 #define ART_ETERNAL_BLADE       294
 #define ART_MICRODOLLAR         334
 #define ART_SKYNAIL             341
+#define ART_AMUN                350
 
 /* Polearms */
 #define ART_THEODEN             93
@@ -1984,7 +1987,7 @@ enum {
 #define SV_POTION_BOLDNESS              28
 #define SV_POTION_SPEED                 29
 #define SV_POTION_THERMAL               30
-#define SV_POTION_RESIST_ELEC           31
+#define SV_POTION_VIGOR                 31
 #define SV_POTION_HEROISM               32
 #define SV_POTION_BERSERK_STRENGTH      33
 #define SV_POTION_CURE_LIGHT            34
@@ -2482,7 +2485,7 @@ enum summon_specific_e {
     SUMMON_ARMAGE_GOOD,
     SUMMON_ARMAGE_EVIL,
     SUMMON_SOFTWARE_BUG,
-    SUMMON_OLYMPIAN,
+    SUMMON_PANTHEON,
     SUMMON_RAT,
     SUMMON_BAT,
     SUMMON_WOLF,
@@ -3148,8 +3151,8 @@ enum {
 #define RF3_HURT_FIRE       0x00004000  /* Hurt badly by fire */
 #define RF3_HURT_COLD       0x00008000  /* Hurt badly by cold */
 #define RF3_OLYMPIAN        0x00010000
-#define RF3_XXX17           0x00020000
-#define RF3_XXX18           0x00040000
+#define RF3_EGYPTIAN        0x00020000
+#define RF3_EGYPTIAN2       0x00040000
 #define RF3_XXX19           0x00080000
 #define RF3_XXX20           0x00100000
 #define RF3_XXX21           0x00200000
@@ -4645,6 +4648,11 @@ extern int PlayerUID;
 #define MON_ZOOPI               1229
 #define MON_FESTIVUS            1230
 #define MON_DUCK                1241
+#define MON_HORUS               1244
+#define MON_KUNDRY              1254
+#define MON_OSIRIS              1259
+#define MON_ISIS                1263
+#define MON_AMUN                1266
 
 /* The Metal Babble guards the Arena dungeon, but this requires the guardian to be a unique
    monster or the dungeon never gets flagged as completed. Note, this messes up the needle
@@ -4850,7 +4858,7 @@ extern int PlayerUID;
 #define DF1_NO_MELEE            0x08000000
 #define DF1_CHAMELEON           0x10000000
 #define DF1_DARKNESS            0x20000000
-#define DF1_XXX30               0x40000000
+#define DF1_ALL_SHAFTS          0x40000000
 #define DF1_XXX31               0x80000000
 
 #define DF1_LAKE_MASK (DF1_LAKE_WATER | DF1_LAKE_LAVA | DF1_LAKE_RUBBLE | DF1_LAKE_TREE)
@@ -4884,7 +4892,8 @@ extern int PlayerUID;
 #define DUNGEON_HIDEOUT  31
 #define DUNGEON_BATTLEFIELD  32
 #define DUNGEON_TIDAL_CAVE 33
-#define DUNGEON_MAX      DUNGEON_TIDAL_CAVE
+#define DUNGEON_MOUND    34
+#define DUNGEON_MAX      DUNGEON_MOUND
 
 #define DUNGEON_FEAT_PROB_NUM 3
 
@@ -4940,6 +4949,7 @@ enum mon_save_fields_e {
     SAVE_MON_PEXP,
     SAVE_MON_ANGER,
     SAVE_MON_MANA,
+    SAVE_MON_MINISLOW,
 };
 
 /* Sub-alignment flags for neutral monsters */
@@ -5881,3 +5891,11 @@ enum ui_result_e
 
 /* Limit of upkeep acceptable to monsters */
 #define SAFE_UPKEEP_PCT 484
+
+/* Pantheons */
+enum
+{
+    PANTHEON_OLYMPIAN = 1,
+    PANTHEON_EGYPTIAN,
+    PANTHEON_MAX,
+};
