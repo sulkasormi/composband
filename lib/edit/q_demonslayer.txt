@@ -23,6 +23,9 @@ R:OBJ(metal shod boots):EGO(speed)
 ?:[EQU $RACE Hydra Quylthulg]
 R:OBJ(^cloak$):EGO(aman)
 
+?:[EQU $RACE Death-Sword]
+R:OBJ(long sword):EGO(daemon)
+
 ?:[AND [EQU $CLASS Weaponmaster] [EQU $SPECIALITY Axes] ]
 R:OBJ(broad axe):EGO(daemon)
 
