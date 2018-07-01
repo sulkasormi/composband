@@ -1760,6 +1760,7 @@ static bool prt_speed(int row, int col)
 {
     int i = p_ptr->pspeed;
     bool is_fast = IS_FAST();
+    byte hitaus = player_slow();
 
     byte attr = TERM_WHITE;
     char buf[32] = "";
@@ -1773,12 +1774,15 @@ static bool prt_speed(int row, int col)
         if (p_ptr->riding)
         {
             monster_type *m_ptr = &m_list[p_ptr->riding];
-            if (MON_FAST(m_ptr) && !MON_SLOW(m_ptr)) attr = TERM_L_BLUE;
-            else if (MON_SLOW(m_ptr) && !MON_FAST(m_ptr)) attr = TERM_VIOLET;
+            byte m_nopeus = (MON_FAST(m_ptr) ? 10 : 0);
+            byte m_hitaus = monster_slow(m_ptr);
+            if (m_nopeus > m_hitaus) attr = TERM_L_BLUE;
+            else if (m_hitaus > m_nopeus) attr = TERM_VIOLET;
             else attr = TERM_GREEN;
         }
-        else if ((is_fast && !p_ptr->slow) || IS_LIGHT_SPEED() || psion_speed()) attr = TERM_YELLOW;
-        else if (p_ptr->slow && !is_fast) attr = TERM_VIOLET;
+        else if ((is_fast && !hitaus) || IS_LIGHT_SPEED() || psion_speed()) attr = TERM_YELLOW;
+        else if (hitaus && !is_fast) attr = TERM_VIOLET;
+        else if ((is_fast) && (hitaus) && (hitaus != 10)) attr = ((hitaus > 10) ? TERM_VIOLET : TERM_YELLOW);
         else if (p_ptr->filibuster) attr = TERM_ORANGE;
         else attr = TERM_L_GREEN;
         sprintf(buf, "Fast (+%d)", (i - 110));
@@ -1791,12 +1795,15 @@ static bool prt_speed(int row, int col)
         if (p_ptr->riding)
         {
             monster_type *m_ptr = &m_list[p_ptr->riding];
-            if (MON_FAST(m_ptr) && !MON_SLOW(m_ptr)) attr = TERM_L_BLUE;
-            else if (MON_SLOW(m_ptr) && !MON_FAST(m_ptr)) attr = TERM_VIOLET;
+            byte m_nopeus = (MON_FAST(m_ptr) ? 10 : 0);
+            byte m_hitaus = monster_slow(m_ptr);
+            if (m_nopeus > m_hitaus) attr = TERM_L_BLUE;
+            else if (m_hitaus > m_nopeus) attr = TERM_VIOLET;
             else attr = TERM_RED;
         }
-        else if (is_fast && !p_ptr->slow) attr = TERM_YELLOW;
-        else if (p_ptr->slow && !is_fast) attr = TERM_VIOLET;
+        else if (is_fast && !hitaus) attr = TERM_YELLOW;
+        else if (hitaus && !is_fast) attr = TERM_VIOLET;
+        else if ((is_fast) && (hitaus) && (hitaus != 10)) attr = ((hitaus > 10) ? TERM_VIOLET : TERM_YELLOW);
         else if (p_ptr->filibuster) attr = TERM_ORANGE;
         else attr = TERM_L_UMBER;
         sprintf(buf, "Slow (-%d)", (110 - i));
@@ -4147,8 +4154,7 @@ void calc_bonuses(void)
     else if (p_ptr->tim_spurt)
         p_ptr->pspeed += 3;
 
-    if (p_ptr->slow)
-        p_ptr->pspeed -= 10;
+    p_ptr->pspeed -= player_slow();
 
     if (p_ptr->filibuster)
         p_ptr->pspeed -= SPEED_ADJ_FILIBUSTER;
@@ -4459,7 +4465,7 @@ void calc_bonuses(void)
             p_ptr->pspeed += (skills_riding_current() + p_ptr->lev *160)/3200;
         }
         if (MON_FAST(riding_m_ptr)) p_ptr->pspeed += 10;
-        if (MON_SLOW(riding_m_ptr)) p_ptr->pspeed -= 10;
+        p_ptr->pspeed -= monster_slow(riding_m_ptr);
 
         if (warlock_is_(WARLOCK_DRAGONS))
         {
