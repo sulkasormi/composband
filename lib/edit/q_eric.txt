@@ -65,4 +65,7 @@ M:#TTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTT#
 M:##########################################################################
 R:OBJ(ROD_HEAL_CURING_HERO)
 
+?:[EQU $CLASS Berserker]
+R:OBJ(potion of enlightenment, NUMBER=5+1d4)
+
 # vim: filetype=q :
