@@ -1475,7 +1475,7 @@ void tim_player_flags(u32b flgs[OF_ARRAY_SIZE])
         add_flag(flgs, OF_REGEN);
     if (IS_TIM_ESP())
         add_flag(flgs, OF_TELEPATHY);
-    if (IS_FAST() || p_ptr->slow)
+    if (IS_FAST() || player_slow())
         add_flag(flgs, OF_SPEED);
 
     if (IS_OPPOSE_ACID() && !(p_ptr->special_defense & DEFENSE_ACID) && !(prace_is_(RACE_YEEK) && (p_ptr->lev > 19)))
