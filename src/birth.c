@@ -251,6 +251,10 @@ static void player_wipe(void)
     /* No coffee revisits yet */
     p_ptr->coffee_lv_revisits = 0;
 
+    /* No minislow */
+    p_ptr->minislow = 0;
+    p_ptr->mini_energy = 0;
+
     /* Not waiting to report score */
     p_ptr->wait_report_score = FALSE;
 
