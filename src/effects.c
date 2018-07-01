@@ -116,6 +116,8 @@ void reset_tim_flags(void)
     p_ptr->fast = 0;            /* Timed -- Fast */
     p_ptr->lightspeed = 0;
     p_ptr->slow = 0;            /* Timed -- Slow */
+    p_ptr->minislow = 0;        /* Pseudo-timed */
+    p_ptr->mini_energy = 0;
     p_ptr->blind = 0;           /* Timed -- Blindness */
     p_ptr->paralyzed = 0;       /* Timed -- Paralysis */
     p_ptr->confused = 0;        /* Timed -- Confusion */
@@ -219,6 +221,83 @@ void reset_tim_flags(void)
         p_ptr->magic_num1[0] = 0;
         p_ptr->magic_num2[0] = 0;
     }
+}
+
+byte _slow_calc(bool is_slow, byte minislow)
+{
+    if (is_slow) return (10 + (minislow / 4));
+    return minislow;
+}
+
+byte player_slow(void)
+{
+    return _slow_calc(((p_ptr->slow > 0) ? TRUE : FALSE), p_ptr->minislow);
+}
+
+byte monster_slow(monster_type *m_ptr)
+{
+    return _slow_calc(((MON_SLOW(m_ptr) > 0) ? TRUE : FALSE), m_ptr->minislow);
+}
+
+byte _inc_minislow(int minislow, int lisays)
+{
+    minislow += lisays;
+    
+    /* Force good values */
+    if (minislow < 0) minislow = 0;
+    if (minislow > 10) minislow = 10;
+
+    return minislow;
+}
+
+/* Return TRUE if something happened, FALSE otherwise */
+bool p_inc_minislow(int lisays)
+{
+    byte vanha = p_ptr->minislow;
+    bool tulos;
+
+    if (p_ptr->is_dead) return FALSE; /* paranoia */
+
+    p_ptr->minislow = _inc_minislow(p_ptr->minislow, lisays);
+    tulos = (p_ptr->minislow != vanha);
+
+    if (!tulos) return FALSE;
+
+    if (!p_ptr->minislow)
+    {
+        msg_print("You no longer feel sluggish.");
+    }
+    else if (!vanha)
+    {
+        msg_print("You feel very sluggish!");
+    }
+
+    /* Disturb */
+    if (disturb_state) disturb(0, 0);
+
+    /* Recalculate bonuses */
+    p_ptr->update |= PU_BONUS;
+
+    /* Handle stuff */
+    handle_stuff();
+
+    return TRUE;
+}
+
+bool m_inc_minislow(monster_type *m_ptr, int lisays)
+{
+    byte vanha = m_ptr->minislow;
+    bool tulos;
+    m_ptr->minislow = _inc_minislow(m_ptr->minislow, lisays);
+    tulos = (m_ptr->minislow != vanha);
+
+    if (!tulos) return FALSE;
+
+    /* Check if the player's mount was affected */
+    if ((p_ptr->riding == m_ptr->id) && (!p_ptr->leaving))
+        p_ptr->update |= PU_BONUS;
+
+    return TRUE;
 }
 
 /* TODO: Timed player effects needs a complete rework ... */
