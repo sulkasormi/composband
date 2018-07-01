@@ -2372,13 +2372,19 @@ void speed_flux_mut(int cmd, variant *res)
                 if (p_ptr->fast > 0)
                     set_fast(0, TRUE);
                 else
-                    set_slow(randint1(30) + 10, FALSE);
+                {
+                    if ((!p_ptr->slow) && (one_in_(2))) set_slow(randint1(30) + 10, FALSE);
+                    else (void)p_inc_minislow(10);
+                }
             }
             else
             {
                 msg_print("You feel more energetic.");
-                if (p_ptr->slow > 0)
-                    set_slow(0, TRUE);
+                if ((p_ptr->slow > 0) || (p_ptr->minislow > 0))
+                {
+                    if (p_ptr->slow > 0) set_slow(0, TRUE);
+                    if (p_ptr->minislow > 0) (void)p_inc_minislow(-10);
+                }
                 else
                     set_fast(randint1(30) + 10, FALSE);
             }
