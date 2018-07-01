@@ -2423,6 +2423,9 @@ option_type option_info[] =
     { &reduce_uniques,              FALSE, OPT_PAGE_BIRTH, 6, 26,
     "reduce_uniques",               "Reduce the number of uniques (randomly)" },
 
+    { &single_pantheon,             FALSE, OPT_PAGE_BIRTH, 5, 9,
+    "single_pantheon",              "Play with only one pantheon" },
+
     { &no_chris,			FALSE, OPT_PAGE_BIRTH, 6, 12,
     "no_chris",				"Nexus attacks never teleport to another dungeon" },
 
