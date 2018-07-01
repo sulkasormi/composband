@@ -2454,7 +2454,7 @@ const _gamble_shop_t _gamble_shop_potions[] = {
     { TV_POTION, SV_POTION_RES_CHR, 50},
     { TV_POTION, SV_POTION_CLARITY, 50},
     { TV_POTION, SV_POTION_THERMAL, 50},
-    { TV_POTION, SV_POTION_RESIST_ELEC, 50},
+    { TV_POTION, SV_POTION_VIGOR, 50},
     { 0, 0, 0}
 };
 
