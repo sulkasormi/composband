@@ -854,6 +854,17 @@ void do_cmd_options_aux(int page, cptr info)
                     strcat(buf, "no  ");
                 sprintf(buf + strlen(buf), "(%.19s)", option_info[opt[i]].o_text);
             }
+            else if (option_info[opt[i]].o_var == &single_pantheon)
+            {
+                sprintf(buf, "%-48s: ", option_info[opt[i]].o_desc);
+                if ((single_pantheon) && (game_pantheon))
+                {
+                    sprintf(buf + strlen(buf), "%.3s ", (game_pantheon < PANTHEON_MAX) ? pant_list[game_pantheon].short_name : "Rnd");
+                }
+                else
+                    strcat(buf, "no  ");
+                sprintf(buf + strlen(buf), "(%.19s)", option_info[opt[i]].o_text);
+            }
             else
             {
                 sprintf(buf, "%-48s: %s (%.19s)",
@@ -937,6 +948,19 @@ void do_cmd_options_aux(int page, cptr info)
                         if (reduce_uniques_pct >= 100) reduce_uniques = FALSE;
                     }
                 }
+                else if (option_info[opt[k]].o_var == &single_pantheon)
+                {
+                    if (!single_pantheon)
+                    {
+                        single_pantheon = TRUE;
+                        game_pantheon = PANTHEON_MAX;
+                    }
+                    else
+                    {
+                        game_pantheon--;
+                        if (game_pantheon == 0) single_pantheon = FALSE;
+                    }
+                }
                 else
                 {
                     (*option_info[opt[k]].o_var) = TRUE;
@@ -977,6 +1001,23 @@ void do_cmd_options_aux(int page, cptr info)
                         {
                             reduce_uniques = FALSE;
                             reduce_uniques_pct = 100;
+                        }
+                    }
+                }
+                else if (option_info[opt[k]].o_var == &single_pantheon)
+                {
+                    if (!single_pantheon)
+                    {
+                        single_pantheon = TRUE;
+                        game_pantheon = 1;
+                    }
+                    else
+                    {
+                        game_pantheon++;
+                        if (game_pantheon > PANTHEON_MAX)
+                        {
+                            single_pantheon = FALSE;
+                            game_pantheon = 0;
                         }
                     }
                 }
@@ -4472,7 +4513,7 @@ static vec_ptr _prof_weapon_alloc(int tval)
     {
         object_kind *k_ptr = &k_info[i];
         if (k_ptr->tval != tval) continue;
-        if (tval == TV_POLEARM && k_ptr->sval == SV_DEATH_SCYTHE_HACK) continue;
+        if ((tval == TV_POLEARM) && (k_ptr->sval == (prace_is_(RACE_MON_SWORD) ? SV_DEATH_SCYTHE : SV_DEATH_SCYTHE_HACK))) continue;
         if (tval == TV_BOW && k_ptr->sval == SV_HARP) continue;
         if (tval == TV_BOW && k_ptr->sval == SV_CRIMSON) continue;
         if (tval == TV_BOW && k_ptr->sval == SV_RAILGUN) continue;
