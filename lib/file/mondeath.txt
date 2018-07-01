@@ -64,10 +64,13 @@ says, 'Now what's going to happen to my No Teleporting code?'
 says, 'I died, so that means there will be changes.'
 
 N:1231:Implorington III
-says, 'I will be resurrected!'
+says, 'I'll be back!'
 
 N:1236:Moe, the Cyclops
 shouts, 'I don't deserve this kind of shabby treatment!'
+
+N:1255:Gazhak, the Ogre Tyrant
+shouts, 'Betrayed by my own folk!'
 
 N:*:Default
 shouts, 'AAAARRRGGGHHH!!!'
