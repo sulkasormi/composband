@@ -829,6 +829,27 @@ says, 'Fire burn and cauldron bubble.'
 says, 'Whether ye be soldier or wanderer or sailor lost, into my stew you must be tossed.'
 says, 'Please don't make yourself at home.'
 
+N:1255:Gazhak, the Ogre Tyrant
+says, 'Puny fighter! Do not be a fool!'
+says, 'Gazhak no tyrant! Gazhak big supporter of freedom! Gazhak eat people for freedom!'
+yells defiantly.
+screams, 'I crush you like a bug!'
+boasts, 'Power! Treasures! Children to eat! Gazhak have it all!'
+says, 'Always been the greatest, the greatest!'
+says, 'Kneel before the king!'
+yells, 'Gazhak shall liberate the world! All shall be free!'
+thumps his chest and roars.
+
+N:1256:Baba Yaga
+says, 'They call me evil, would you believe, just because I like exotic cookery!'
+intones, 'Spirits of marshlands and powers of forest, turn this adventurer into a... how does that spell go?'
+says, 'Fee fi fo fum, do I smell a hero sandwich?'
+says, 'Bring me the leaves of a peppermint plant, and I'll let you live.'
+says, 'Have you seen young Ivan? I invited him to come over, but he never showed up.'
+says, 'You seem entertaining, don't go anywhere just yet.'
+says, 'Won't you stay for dinner? I have soup boiling.'
+casts an impressive but ineffective dazzling spell.
+
 N:*:Default lines
 cackles evilly.
 cackles diabolically.
@@ -938,4 +959,4 @@ screams, 'I'll have your guts for garters!'
 says, 'Your time has come.'
 says, 'Say your prayers.'
 says, 'Cower before me.'
-says, 'Your deeds have lead you to this.'
+says, 'Your deeds have led you to this.'
