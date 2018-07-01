@@ -316,6 +316,8 @@ bool allow_pets; /* Allow pets: Note, this makes some classes unplayable. */
 bool quest_unique; /* Random quests for unique monsters only */
 bool random_artifacts;
 byte random_artifact_pct = 100;
+bool single_pantheon; /* Only use one pantheon */
+byte game_pantheon = 0;
 bool no_artifacts;
 bool no_egos;
 bool no_selling;
@@ -1170,3 +1172,15 @@ travel_type travel;
 
 /* for snipers */
 bool reset_concent = FALSE;   /* Concentration reset flag */
+
+/* Initialize pantheons
+ * Note that pantheon flags should be RF3_something because code in
+ * several places compares them to r_ptr->rflags3 */
+pantheon_type pant_list[PANTHEON_MAX] =
+{
+    { 0, 0, 0, "BUGGY", "Bug", "Software Bugs"},
+    { PANTHEON_OLYMPIAN, RF3_OLYMPIAN, 0, "Olympian", "Oly", "Olympians"},
+    { PANTHEON_EGYPTIAN, RF3_EGYPTIAN, RF3_EGYPTIAN2, "Egyptian", "Egy", "Egyptian gods"},
+};
+
+byte summon_pantheon_hack;
