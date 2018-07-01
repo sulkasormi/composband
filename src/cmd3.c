@@ -1121,7 +1121,7 @@ static void _mon_display_probe(doc_ptr doc, int m_idx)
 
     speed = m_ptr->mspeed - 110;
     if (MON_FAST(m_ptr)) speed += 10;
-    if (MON_SLOW(m_ptr)) speed -= 10;
+    speed -= monster_slow(m_ptr);
     if (p_ptr->filibuster) speed -= SPEED_ADJ_FILIBUSTER;
     if (m_ptr->nickname)
         doc_printf(doc, "Name : <color:R>%13s</color>\n", quark_str(m_ptr->nickname));
