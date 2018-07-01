@@ -193,7 +193,7 @@ static bool alloc_stairs(int feat, int num, int walls)
         {
             shaft_num = (randint1(num+1))/2;
             /* Battlefield is all shafts */
-            if ((dungeon_type == DUNGEON_BATTLEFIELD) || (coffee_break)) shaft_num = num;
+            if ((d_info[dungeon_type].flags1 & DF1_ALL_SHAFTS) || (coffee_break)) shaft_num = num;
         }
     }
     else if (have_flag(f_ptr->flags, FF_MORE))
@@ -214,7 +214,7 @@ static bool alloc_stairs(int feat, int num, int walls)
         /*&& quests_allow_downshaft()*/)
         {
             shaft_num = (randint1(num)+1)/2;
-            if ((dungeon_type == DUNGEON_BATTLEFIELD) || (coffee_break)) shaft_num = num;
+            if ((d_info[dungeon_type].flags1 & DF1_ALL_SHAFTS) || (coffee_break)) shaft_num = num;
         }
     }
 
@@ -1356,6 +1356,7 @@ static bool level_gen(cptr *why)
         small = TRUE;
     if ((dungeon_type == DUNGEON_ICKY) && (dun_level == 10)) small = TRUE;
     if ((coffee_break) && (dun_level < 99) && (randint0(484) < 484 - (dun_level * 2))) small = TRUE;
+    if ((dungeon_type == DUNGEON_MOUND) && (randint0(125) < (460 - (dun_level * 5)))) small = TRUE;
 
     if (small)
     {
@@ -1382,7 +1383,7 @@ static bool level_gen(cptr *why)
                 wid = randint1(max_wid);
                 if (hgt == max_hgt && wid == max_wid) continue;
                 /* exclude 1x1, 1x2 and 2x1 */
-                if (hgt * wid <= (coffee_break ? ((dun_level + 10 + randint1(35)) / 25) : 2)) continue;
+                if (hgt * wid <= (coffee_break ? (MIN(6, (dun_level + 10 + randint1(35)) / 25)) : 2)) continue;
                 break;
             }
         }
