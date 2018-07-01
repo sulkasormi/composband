@@ -1946,7 +1946,7 @@ D:Miyamoto Musashi, and wielded with his left hand in combat.
 N:173:'Iron ball'
 I:21:6:6
 W:66:40:666:66666
-P:0:25d5:-30:0:20
+P:0:22d5:-30:0:20
 F:DEC_SPEED | DEC_STEALTH | DEC_WIS | STR | IMPACT | SHOW_MODS | HIDE_TYPE |
 F:CURSED | HEAVY_CURSE
 
@@ -3521,6 +3521,61 @@ P:0:2d7:16:15:0
 F:CON | SUST_CON | RES_FEAR | REGEN | HOLD_LIFE | SLOW_DIGEST | HIDE_TYPE |
 F:BLESSED
 D:The lonely traveller's one true friend.
+
+N:348:of Kundry
+I:40:0:2
+W:70:40:2:50000
+P:0:0d0:0:0:0
+E:CLARITY:70:30:15
+F:QUESTITEM | HIDE_TYPE | MAGIC_MASTERY | MAGIC_RESISTANCE | RES_TIME
+F:SEARCH | HOLD_LIFE | SUST_INT | SUST_WIS | SUST_CHR
+D:A shining golden pendant with powerful magics stored within to keep its
+D: wearer's mind clear.
+
+N:349:of Tweutox
+I:22:2:2
+W:15:30:50:30000
+P:0:1d8:6:9:0
+F:SPEED | STR | RES_FEAR | DEC_STEALTH | BRAND_CHAOS | RIDING | HIDE_TYPE
+D:Tiotullo, the spear of Tweutox, carved from the wood of a Seepumis tree.
+D:It seems to pulsate with energy as you hold it.
+
+N:350:of Amun
+I:23:4:5
+W:60:120:12:100000
+P:0:3d5:24:17:0
+F:BRAND_FIRE | BRAND_POIS | IM_FIRE | RES_POIS | INT | SPEED | RES_LITE
+F:RES_ELEC | RES_SOUND | STEALTH | SEARCH | FREE_ACT | SEE_INVIS | HIDE_TYPE
+F:VORPAL | SLAY_TROLL | BLESSED
+E:TELEPATHY:60:100
+D:An ancient, well-balanced steel blade with beautiful decorations on its
+D:golden hilt, once held by Amun the everliving. Despite its age, the dagger
+D:remains shiny and razor-sharp.
+
+# The original Angrist was converted into Caine... so here's Angrist
+# (with the description from V)
+
+N:351:'Angrist'
+I:23:4:2
+W:25:40:12:100000
+P:0:2d5:16:14:6
+F:DEX | HIDE_TYPE | STEALTH | VORPAL | BLOWS
+F:SLAY_EVIL | SLAY_TROLL | SLAY_ORC | BRAND_POIS
+F:FREE_ACT | RES_FEAR | SUST_DEX | SEE_INVIS | HIDE_TYPE
+D:Forged by Telchar, greatest of the Dwarven smiths, and used by Beren to
+D:gouge a Silmaril out of Morgoth's crown, this long chopping dagger slices
+D:through ordinary metal as easily as its name, "Iron Cleaver", suggests.
+
+N:352:Mithril Spear of Liweris
+I:22:7:4
+W:55:55:100:80000
+P:0:3d11:13:23:0
+F:DEC_WIS | SLAY_GOOD | KILL_DRAGON | HIDE_TYPE | FULL_NAME | HEAVY_CURSE
+F:RIDING | RANDOM_CURSE0
+D:Forged from stolen mithril for the evil king of Liweris, it is imbued
+D:with dark powers that make it a mortal enemy of all things good, and deadly
+D:to dragonkind. The city of Liweris was razed by dragons as soon as the word
+D:got out, and the king died in flames; but his spear survived.
 
 # N: serial number : item name
 # I: tval : sval : pval
