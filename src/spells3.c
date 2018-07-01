@@ -2996,7 +2996,7 @@ bool potion_smash_effect(int who, int y, int x, int k_idx)
         case SV_POTION_CURE_POISON:
         case SV_POTION_BOLDNESS:
         case SV_POTION_THERMAL:
-        case SV_POTION_RESIST_ELEC:
+        case SV_POTION_VIGOR:
         case SV_POTION_HEROISM:
         case SV_POTION_BERSERK_STRENGTH:
         case SV_POTION_RES_STR:
