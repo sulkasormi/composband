@@ -7,7 +7,7 @@ N: 1:BIAS_ELEC
 'Shockbringer'
 'Thunder Mountain'
 'Lightning Conductor'
-'Static Eletricity'
+'Static Electricity'
 'Blue Blink'
 of Shockness
 
@@ -187,7 +187,7 @@ N:*:Default
 'Peashooter'
 'Bugslayer'
 'Gilettar'
-'Angrist'
+'Sentinel'
 'Belangil'
 of Severe Pain
 of Horror
