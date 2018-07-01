@@ -23,14 +23,24 @@ The birth options can only be accessed while creating a new character
 (press = while creating the character). There is no way to turn them 
 off after the creation is finished!
   
+  
+  Coffee-break mode (accelerated game) (coffee_break)
+  Coffee-break mode is a shorter and more compact version of the game. 
+  The player gains experience much faster and finds more and better 
+  objects in the dungeon, as well as more money; most forms of 
+  proficiency gain are also accelerated. Coffee-break mode uses a 
+  single town with no wilderness; forced descent is turned on (but 
+  recalling back to the town is allowed), and all stairs in the dungeon 
+  are two-level shafts. Small levels generate more often in the early 
+  part of the game but become rarer (and less small) towards the 
+  endgame. Unlike ironman-downward mode (see [b]), the player is 
+  allowed to skip dungeon quests by recalling, although doing so incurs 
+  a large fame penalty.
+  
   Easy Identify (easy_id)
-  This option will affect the early game pseudo-identification of 
-  objects. Normally, objects must be carried in your pack for some time 
-  before you become aware of their quality. The length of time is class 
-  dependent, as is the amount of information revealed through 
-  pseudo-identification (see [b]). With Easy Identify enabled, all 
-  players will get instantaneous and full pseudo-identification of 
-  objects, making this aspect of gameplay redundant.
+  With this option enabled, all objects are automatically fully 
+  identified on walkover, and items, spells and town services of 
+  Identify/*Identify* become unnecessary.
   
   Easy Lore (easy_lore)
   With this option enabled, the player will be born with complete 
@@ -43,11 +53,48 @@ off after the creation is finished!
   them as you encounter them, and the town Beastmaster Lore service to 
   learn about monsters before you see them (for a price, of course).
   
+  Easy monster health and damage information (easy_damage)
+  Also known as "Fnord-mode", this option allows the player to see the 
+  exact damage delivered by each attack, and to receive additional 
+  information about monster health and debuffs through a percentage 
+  display. Player health bars are also converted to use percentages. 
+  This is a very powerful easy-mode, and using it gives a score 
+  penalty.
+  
+  Allow spoilers (allow_spoilers)
+  Enabling this option allows the player to view some spoiler files 
+  in-game using the ^Z command. (This option should never be used on 
+  the angband.live online server for technical reasons.)
+  
+  Use enhanced telepathy (power_tele)
+  With this option enabled, the player can see the race of a 
+  telepathically detected monster (i.e. telepathically seen monsters 
+  are treated identically to monsters seen through any other means). 
+  With this option off ("fuzzy telepathy"), only the monster's 
+  "species" (default display character) is shown, but its color and 
+  race are hidden.
+  
+  Allow easy teleportation to Thalos (easy_thalos)
+  If this option is on, inns will start offering teleportation to the 
+  town of Thalos as soon as at least one out of Anambar, Angwil, 
+  Morivant or Telmora has been visited by the player. Since Thalos is 
+  located on an island, travelling there by foot is very dangerous for 
+  a low-level character, especially at night. This option makes it 
+  possible to reach Thalos safely earlier in the game.
+  
+  Easy Labyrinth and no amnesia (never_forget)
+  This option removes amnesia attacks from the game, and allows the 
+  player to map the normally unmappable Labyrinth dungeon in the same 
+  way as all other dungeons. (Turning this option on does not 
+  necessarily make the game easier, since monsters who might normally 
+  use the annoying but ultimately harmless Amnesia spell will instead 
+  select one of their other, more dangerous spell options.)
+  
   Monsters learn from their mistakes (smart_learn)
   Allow monsters to learn what spell attacks you are resistant to, and 
   to use this information to choose the best attacks.
   
-  Monsters exploit players weaknesses (smart_cheat)
+  Monsters exploit player's weaknesses (smart_cheat)
   Allow monsters to know what spell attacks you are resistant to, and 
   to use this information to choose the best attacks. Combine this with 
   Easy Lore to regain lost honour.
@@ -56,8 +103,8 @@ off after the creation is finished!
   This option disables the wilderness, forcing you to play with a 
   single special town level. As a result, the only dungeon that will be 
   available is the Pits of Angband. However, the town is relatively 
-  well serviced and many, if not most, of the various fixed quests will 
-  be available for your pleasure (see [c]).
+  well serviced and many of the various fixed quests will be available 
+  for your pleasure (see [c]).
   
   Stores are permanently closed (ironman_shops)
   This option closes all shops. Try to survive in the deeps of the 
@@ -79,15 +126,68 @@ off after the creation is finished!
   various situations. Furthermore, at 12:00 every night, you will have 
   a real nightmare. You need to be crazy to turn this option on!
   
+  Enable virtues (enable_virtues)
+  Turns on the virtue system. Virtues can help or hinder the player; 
+  among other things, they affect spell fail rates, the strength of 
+  many magical effects, and the friendliness of some monsters.
+  
   Preserve artifacts (preserve_mode)
   In non-preserve mode, once a fixed artifact is generated (either on 
   the dungeon floor or in a monster drop), it will never be generated 
   again during that game. This means that if you miss the artifact by 
   leaving the level before you pick it up it is gone forever. On the 
   other hand, in preserve mode this behavior is only exhibited once you 
-  have identified the artifact. It is therefor safer to leave a level 
-  before it is completely explored as any fixed artifact can be 
-  regenerated in subsequent levels.
+  have identified the artifact; it is therefore safer to leave a level 
+  before it is completely explored, as any undiscovered fixed artifact 
+  can be regenerated on a subsequent level.
+  
+  Random quests for unique monsters only (quest_unique)
+  With this option turned on, the ten random quests in the Pits of 
+  Angband will all require you to kill a unique monster. With the 
+  option off, some of them (especially the early ones) may feature 
+  groups of non-unique monsters instead, similarly to the fixed Warg 
+  Quest.
+  
+  Disable selling but increase gold drops (no_selling)
+  With this option on, the player cannot sell items for money (only 
+  give them for free), and turning items into gold through Alchemy is 
+  less effective; but gold drops in quests and dungeons are increased 
+  to compensate. (Gold drops in the wilderness are not affected.)
+  
+  Reduce the number of uniques (randomly) (reduce_uniques)
+  This option removes some percentage of uniques from the game. A few 
+  uniques (mostly those who appear in either quests or the Thalos 
+  arena) are fixed and will never be removed.
+  
+  Play with only one pantheon (single_pantheon)
+  This option removes one of the game's two main monster pantheons 
+  (Olympian or Egyptian) from the game, but also re-adds all members of 
+  the remaining pantheon if they have been removed by the 
+  reduce_uniques option. In wilderness mode, the dungeon associated 
+  with the removed pantheon is also removed from the game. Which 
+  pantheon remains can be either specified by the player or left to a 
+  random decision.
+  
+  Nexus attacks never teleport to another dungeon (no_chris)
+  Turning on this option disables the "Chris effect" (a nexus attack 
+  effect that teleports the player to another dungeon, potentially one 
+  that's highly dangerous and was never previously visited by the 
+  player). As a substitute for the Chris effect, the player's stats 
+  will be scrambled; or if stat scrambling is also disabled, the Baby 
+  Foul Curse (a less deadly version of the infamous Ancient Foul Curse) 
+  will trigger. This option has no effect (or, rather, is effectively 
+  always on) in no-wilderness mode, since no-wilderness mode only has 
+  the one dungeon.
+  
+  Disallow stat scrambling from monster attacks (no_scrambling)
+  Selecting this option disables stat scrambling, an effect that 
+  permanently switches two of the player's six stats (as well as their 
+  respective stat caps). Stat scrambling can potentially set the player 
+  back a long way if a high key stat is swapped with a low, less 
+  important stat. Attacks (and other effects) that would normally 
+  trigger a scramble will instead trigger the Baby Foul Curse, which is 
+  more dangerous in the short-term but doesn't have the same long-term 
+  effects.
   
   
 Input Options
@@ -450,6 +550,51 @@ Text Display Options
   be represented by a Q. If the option is turned off the player will 
   always be @. 
   
+  Show object origins on examination (show_origins)
+  With this option selected, the origins of an object (where you found 
+  it, and who or what you got it from) are displayed when the object is 
+  examined.
+  
+  Show time of discovery on examination (show_discovery)
+  With this option enabled, the date of object discovery and the 
+  player's character level at time of discovery are added to the 
+  object's origins. (Also, with this option off, if a pile of objects 
+  with different origins is formed, all information about the origins 
+  is lost. With this option on, the details of the first object to be 
+  discovered are applied to the whole pile instead.)
+  
+  Show origins in final character dumps (final_dump_origins)
+  If this option is on, the origins of the player's equipment are 
+  included in character dumps if the character is either dead or a 
+  winner, but omitted otherwise. (Whether discovery details are 
+  included with the origins depends on whether show_discovery is on or 
+  not.)
+  
+  Show origins in all character dumps (always_dump_origins)
+  If this option is on, the origins of the player's equipment are 
+  always included in character dumps.
+  
+  Use 'x' for monsters that look like things (easy_mimics)
+  If this option is enabled, monsters that are easily mistaken for 
+  non-monsters (like mimics, cloakers, death swords and wall monsters) 
+  will be displayed with the 'x' glyph instead of their native glyph. 
+  (A few thing-like monsters do still retain their original glyphs; 
+  these include death scythes, mushrooms and creeping coins.)
+  
+  Display stairs in the object list (list_stairs)
+  If this option is enabled, the list of visible objects (accessible 
+  in-game by pressing O) will include stairs in its Interesting 
+  Features section. (The inclusion of stairs in the object list can be 
+  toggled in the list itself by pressing S, but this option determines 
+  whether stairs are shown by default.)
+  
+  Display skills as numbers in the character sheet (display_skill_num)
+  If this option is on, the character sheet displays the player's 
+  skills numerically in addition to the usual verbal description; 
+  Superb may become Superb (82), for example. This format is familiar 
+  to players of Composband, where the numerical display is always on.
+  
+  
 Game Play Options
   
   Merge inscriptions when stacking (stack_force_notes)
@@ -524,6 +669,13 @@ Disturbance Options
   use a wand, etc. This is very useful if you use macros which include 
   "directional" components with commands that can fail, since it will 
   prevent you from walking towards monsters when your spells fail.
+  
+  Give -more- prompts on device/spell failures (prompt_on_failure)
+  This option forces a -more- prompt whenever an attempt to use a 
+  device or cast a spell fails. This is useful if the player is in the 
+  habit of pressing keys (e.g. to target the device) on the assumption 
+  the device won't fail, which if unchecked can result in a potentially 
+  costly lost turn when the device does fail.
   
   Flush input whenever disturbed (flush_disturb)
   This option forces the game to flush all pending input whenever the 
@@ -785,5 +937,6 @@ Easy Auto-Destroyer Options
   Updated    : Zangband DevTeam
   Updated    : Hengband 1.5.2
   Updated    : PosChengband 4.0.0
+  Updated    : FrogComposband 7.0.nougat
   
   
