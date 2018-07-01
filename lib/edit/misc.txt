@@ -10,7 +10,7 @@ WX:99
 WY:66
 
 # Maximum number of monsters in r_info.txt
-R:1280
+R:1360
 
 # Maximum number of body types in b_info.txt
 B:150
