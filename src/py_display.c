@@ -218,13 +218,13 @@ static void _build_general2(doc_ptr doc)
         if (!p_ptr->riding)
         {
             if (IS_FAST()) tmp_speed += 10;
-            if (p_ptr->slow) tmp_speed -= 10;
+            tmp_speed -= player_slow();
             if (IS_LIGHT_SPEED()) tmp_speed = 99;
         }
         else
         {
             if (MON_FAST(&m_list[p_ptr->riding])) tmp_speed += 10;
-            if (MON_SLOW(&m_list[p_ptr->riding])) tmp_speed -= 10;
+            tmp_speed -= monster_slow(&m_list[p_ptr->riding]);
         }
 
         string_clear(s);
@@ -2410,6 +2410,9 @@ static void _build_options(doc_ptr doc)
 
     doc_printf(doc, " Arena Levels:       %s\n", ironman_empty_levels ? "*Always*" :
                                                     empty_levels ? "Sometimes" : "Never");
+
+    if ((single_pantheon) && (game_pantheon > 0) && (game_pantheon < PANTHEON_MAX))
+        doc_printf(doc, " Pantheon:           %s\n", pant_list[game_pantheon].name);
 
     if (no_artifacts)
         doc_printf(doc, " No Artifacts:       On\n");
