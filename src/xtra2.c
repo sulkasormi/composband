@@ -736,13 +736,13 @@ static bool _kind_is_utility(int k_idx)
         case SV_SCROLL_TELEPORT:
         case SV_SCROLL_PHASE_DOOR:
         case SV_SCROLL_WORD_OF_RECALL:
-        case SV_SCROLL_IDENTIFY:
         case SV_SCROLL_REMOVE_CURSE:
         case SV_SCROLL_STAR_REMOVE_CURSE:
         case SV_SCROLL_MAPPING:
         /* case SV_SCROLL_PROTECTION_FROM_EVIL: XXX This was a bad idea! */
         case SV_SCROLL_DETECT_MONSTERS:
             return TRUE;
+        case SV_SCROLL_IDENTIFY:
         case SV_SCROLL_STAR_IDENTIFY:
 			return easy_id ? FALSE : TRUE;
         }
@@ -753,7 +753,7 @@ static bool _kind_is_utility(int k_idx)
         {
         case SV_POTION_SPEED:
         case SV_POTION_THERMAL:
-        case SV_POTION_RESIST_ELEC:
+        case SV_POTION_VIGOR:
         case SV_POTION_RESISTANCE:
         case SV_POTION_HEROISM:
         case SV_POTION_CURE_SERIOUS:
@@ -853,13 +853,16 @@ void monster_death(int m_idx, bool drop_item)
     {
         if (r_ptr->blows[i].method == RBM_EXPLODE)
         {
-            int flg = PROJECT_GRID | PROJECT_ITEM | PROJECT_KILL;
-            int typ = r_ptr->blows[i].effects[0].effect;
-            int d_dice = r_ptr->blows[i].effects[0].dd;
-            int d_side = r_ptr->blows[i].effects[0].ds;
-            int damage = damroll(d_dice, d_side);
+            for (j = 0; ((j < MAX_MON_BLOW_EFFECTS) && (r_ptr->blows[i].effects[j].effect)); j++)
+            {
+                int flg = PROJECT_GRID | PROJECT_ITEM | PROJECT_KILL;
+                int typ = r_ptr->blows[i].effects[j].effect;
+                int d_dice = r_ptr->blows[i].effects[j].dd;
+                int d_side = r_ptr->blows[i].effects[j].ds;
+                int damage = damroll(d_dice, d_side);
 
-            project(m_idx, 3, y, x, damage, typ, flg);
+                project(m_idx, 3, y, x, damage, typ, flg);
+            }
             break;
         }
     }
@@ -1090,6 +1093,22 @@ void monster_death(int m_idx, bool drop_item)
 
             object_origins(q_ptr, ORIGIN_DROP);
             q_ptr->origin_xtra = MON_BLOODLETTER;
+
+            /* Drop it in the dungeon */
+            (void)drop_near(q_ptr, -1, y, x);
+        }
+        break;
+
+    case MON_OSIRIS:
+        if (drop_chosen_item)
+        {
+            /* Get local object */
+            q_ptr = &forge;
+
+            object_prep(q_ptr, lookup_kind(TV_POTION, SV_POTION_NEW_LIFE));
+
+            object_origins(q_ptr, ORIGIN_DROP);
+            q_ptr->origin_xtra = MON_OSIRIS;
 
             /* Drop it in the dungeon */
             (void)drop_near(q_ptr, -1, y, x);
@@ -1822,6 +1841,14 @@ void monster_death(int m_idx, bool drop_item)
                 chance = 50;
             else
                 chance = 5;
+            break;
+        case MON_KUNDRY:
+            a_idx = ART_KUNDRY;
+            chance = 12;
+            break;
+        case MON_AMUN:
+            a_idx = ART_AMUN;
+            chance = 100;
             break;
         case MON_CARCHAROTH:
             a_idx = ART_CARCHAROTH;
