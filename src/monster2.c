@@ -834,6 +834,17 @@ static bool summon_specific_aux(int r_idx)
     return mon_is_type(r_idx, summon_specific_type);
 }
 
+byte monster_pantheon(monster_race *r_ptr)
+{
+    int i;
+    if ((!r_ptr) || (!r_ptr->name)) return 0; /* paranoia */
+    for (i = 1; i < PANTHEON_MAX; i++)
+    {
+        if (r_ptr->flags3 & pant_list[i].flag) return i;
+    }
+    return 0;
+}
+
 bool mon_is_type(int r_idx, int type)
 {
     monster_race *r_ptr = &r_info[r_idx];
@@ -947,9 +958,16 @@ bool mon_is_type(int r_idx, int type)
     case SUMMON_AMBERITE:
         if (r_ptr->flags3 & (RF3_AMBERITE)) return TRUE;
         break;
-    case SUMMON_OLYMPIAN:
-        if (r_ptr->flags3 & (RF3_OLYMPIAN)) return TRUE;
+    case SUMMON_PANTHEON:
+    {
+        if ((!summon_pantheon_hack) || (summon_pantheon_hack >= PANTHEON_MAX))
+        { /* Paranoia - detect problem and summon uniques instead */
+            if (r_ptr->flags1 & RF1_UNIQUE) return TRUE;
+            break;
+        }
+        if (r_ptr->flags3 & (pant_list[summon_pantheon_hack].flag)) return TRUE;
         break;
+    }
     case SUMMON_HUMAN:
         if (r_ptr->flags2 & RF2_HUMAN) return TRUE;
         break;
@@ -1596,10 +1614,18 @@ s16b get_mon_num_aux(int level, int min_level, u32b options)
         }
         else
         {
+            int mon_pant = 0;
             if ((r_ptr->flags2 & RF2_CAMELOT) && dungeon_type != DUNGEON_CAMELOT) continue;
             if ((r_ptr->flags2 & RF2_SOUTHERING) && dungeon_type != DUNGEON_HIDEOUT) continue;
-            if ((r_ptr->flags3 & RF3_OLYMPIAN) && dungeon_type != DUNGEON_OLYMPUS) continue;
-			if ((r_ptr->flags2 & RF2_FOREST) && dungeon_type != DUNGEON_WOOD) continue;
+            if ((r_ptr->flags2 & RF2_FOREST) && dungeon_type != DUNGEON_WOOD) continue;
+
+            /* Only generate Olympians in Mt. Olympus, etc. */
+            mon_pant = monster_pantheon(r_ptr);
+            if (mon_pant > 0)
+            {
+                if (!dungeon_type) continue;
+                if ((mon_pant != d_info[dungeon_type].pantheon) && ((d_info[dungeon_type].pantheon) || (!(r_ptr->flags3 & pant_list[mon_pant].flag2)))) continue; 
+            }
         }
 
         /* Hack: Some monsters are restricted from quests and summons */
@@ -2208,10 +2234,11 @@ void sanity_blast(monster_type *m_ptr, bool necro)
         if (!(r_ptr->flags2 & RF2_ELDRITCH_HORROR))
             return; /* oops */
 
-
-
         if (is_pet(m_ptr))
             return; /* Pet eldritch horrors are safe most of the time */
+
+        if (is_friendly(m_ptr))
+            return; /* Ditto friendly eldritch horrors */
 
         if (randint1(100) > power) return;
 
