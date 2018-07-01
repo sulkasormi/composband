@@ -361,8 +361,8 @@ static cptr r_info_flags3[] =
     "HURT_FIRE",
     "HURT_COLD",
     "OLYMPIAN",
-    "XXX",
-    "XXX",
+    "EGYPTIAN",
+    "EGYPTIAN2",
     "XXX",
     "XXX",
     "XXX",
@@ -840,7 +840,7 @@ static cptr d_info_flags1[] =
     "NO_MELEE",
     "CHAMELEON",
     "DARKNESS",
-    "XXX",
+    "ALL_SHAFTS",
     "XXX"
 };
 
@@ -1180,7 +1180,7 @@ static parse_tbl_t _summon_type_tbl[] = {
     { SUMMON_ARMAGE_GOOD, "Holy Monsters", TERM_WHITE, "", "ARMAGE_GOOD", 40 },
     { SUMMON_ARMAGE_EVIL, "Foul Monsters", TERM_WHITE, "", "ARMAGE_EVIL", 40 },
     { SUMMON_SOFTWARE_BUG, "Software Bugs", TERM_WHITE, "", "SOFTWARE_BUG", 1 },
-    { SUMMON_OLYMPIAN, "Olympians", TERM_WHITE, "", "OLYMPIAN", 150 },
+    { SUMMON_PANTHEON, "Gods", TERM_WHITE, "", "PANTHEON", 150 },
     { SUMMON_RAT, "Rats", TERM_WHITE, "", "RAT", 2 },
     { SUMMON_BAT, "Bats", TERM_WHITE, "", "BAT", 5 },
     { SUMMON_WOLF, "Wolves", TERM_WHITE, "", "WOLF", 7 },
@@ -4465,7 +4465,7 @@ errr parse_d_info(char *buf, header *head)
     /* Process 'F' for "Dungeon Flags" (multiple lines) */
     else if (buf[0] == 'F')
     {
-        int artif = 0, monst = 0, tval = 0, sval = 0;
+        int artif = 0, monst = 0, tval = 0, sval = 0, pant = 0;
 
         /* Parse every entry */
         for (s = buf + 2; *s; )
@@ -4510,10 +4510,10 @@ errr parse_d_info(char *buf, header *head)
                 continue;
             }
 
-            /* XXX XXX XXX Hack -- Read Artifact Guardian */
+            /* XXX XXX XXX Hack -- Read Final Guardian */
             if (1 == sscanf(s, "FINAL_GUARDIAN_%d", &monst))
             {
-                /* Extract a "Artifact Guardian" */
+                /* Extract final guardian */
                 d_ptr->final_guardian = monst;
 
                 /* Start at next entry */
@@ -4526,6 +4526,19 @@ errr parse_d_info(char *buf, header *head)
             {
                 d_ptr->initial_guardian = monst;
                 s = t;
+                continue;
+            }
+
+            /* XXX XXX XXX Hack -- Read Associated Pantheon */
+            if (1 == sscanf(s, "PANTHEON_%d", &pant))
+            {
+                /* Extract pantheon */
+                d_ptr->pantheon = pant;
+
+                /* Start at next entry */
+                s = t;
+
+                /* Continue */
                 continue;
             }
 
