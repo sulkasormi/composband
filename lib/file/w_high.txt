@@ -40,7 +40,7 @@ N: 4:BIAS_COLD
 'Absolute Zero'
 'Ice Master'
 'Belangil'
-'Angrist'
+'Polaris'
 'Ice Edge'
 'Snowbringer'
 'Diamond Dust'
