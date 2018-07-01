@@ -191,6 +191,7 @@ extern s32b friend_align;
 extern bool reinit_wilderness;
 extern char summon_kin_type;
 extern bool hack_mind;
+extern byte summon_pantheon_hack;
 
 /*
  * Software options (set via the '=' command).  See "tables.c"
@@ -331,6 +332,8 @@ extern bool allow_pets; /* Allow pets: Note, this makes some classes unplayable.
 extern bool quest_unique; /* Random quests for unique monsters only */
 extern bool random_artifacts;
 extern byte random_artifact_pct;
+extern bool single_pantheon; /* Only use one pantheon */
+extern byte game_pantheon;
 extern bool no_artifacts;
 extern bool no_egos;
 extern bool no_selling;
@@ -532,6 +535,7 @@ extern bool new_mane;
 extern bool mon_fight;
 extern bool generate_encounter;
 extern cptr screen_dump;
+extern pantheon_type pant_list[PANTHEON_MAX];
 
 /*** Terrain feature variables ***/
 extern s16b feat_none;
@@ -1170,6 +1174,7 @@ extern void choose_new_monster(int m_idx, bool born, int r_idx);
 extern byte get_mspeed(monster_race *r_ptr);
 extern bool player_place(int y, int x);
 extern void monster_drop_carried_objects(monster_type *m_ptr);
+extern byte monster_pantheon(monster_race *r_ptr);
 
 /* mon_display.c */
 extern void mon_display(monster_race *r_ptr);
@@ -1683,6 +1688,10 @@ extern void check_mon_health_redraw(int m_idx);
 extern bool free_act_save_p(int ml);
 extern void set_action(int typ);
 extern void reset_tim_flags(void);
+extern byte player_slow(void);
+extern byte monster_slow(monster_type *m_ptr);
+extern bool p_inc_minislow(int lisays);
+extern bool m_inc_minislow(monster_type *m_ptr, int lisays);
 extern void dispel_player(void);
 extern bool disenchant_player(void);
 extern bool set_mimic(int v, int p, bool do_dec);
