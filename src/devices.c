@@ -635,16 +635,13 @@ static cptr _do_potion(int sval, int mode)
 			}
         }
         break;
-    case SV_POTION_RESIST_ELEC:
-        if (desc) return "You get temporary resistance to electricity when you quaff it. This resistance is cumulative with equipment.";
-        if (info) return format("Dur d%d+%d", _potion_power(10), _potion_power(10));
+    case SV_POTION_VIGOR:
+        if (desc) return "It cures all stunning and temporary slowness when you quaff it.";
         if (cast)
         {
-            int dur = _potion_power(10 + randint1(10));
-			if (set_oppose_elec(p_ptr->oppose_elec + dur, FALSE))
-			{
-				device_noticed = TRUE;
-			}
+            if (set_stun(0, TRUE)) device_noticed = TRUE;
+            if (set_slow(0, TRUE)) device_noticed = TRUE;
+            if (p_inc_minislow(-10)) device_noticed = TRUE;
         }
         break;
     case SV_POTION_HEROISM:
@@ -721,6 +718,7 @@ static cptr _do_potion(int sval, int mode)
             if (set_stun(0, TRUE)) device_noticed = TRUE;
             if (set_cut(0, TRUE)) device_noticed = TRUE;
             if (set_shero(0,TRUE)) device_noticed = TRUE;
+            if (p_inc_minislow(-1)) device_noticed = TRUE;
         }
         break; }
     case SV_POTION_STAR_HEALING:
@@ -735,10 +733,11 @@ static cptr _do_potion(int sval, int mode)
             if (set_stun(0, TRUE)) device_noticed = TRUE;
             if (set_cut(0, TRUE)) device_noticed = TRUE;
             if (set_shero(0,TRUE)) device_noticed = TRUE;
+            if (p_inc_minislow(-1)) device_noticed = TRUE;
         }
         break;
     case SV_POTION_LIFE:
-        if (desc) return "It heals you completely, restores life, experience and all your stats and cures blindness, confusion, poison, hallucination, stunned, cuts and berserk when you quaff it.";
+        if (desc) return "It heals you completely, restores life, experience and all your stats and cures blindness, confusion, poison, hallucination, stunned, cuts, slowness and berserk when you quaff it.";
         if (info) return info_heal(0, 0, _potion_power(5000));
         if (cast)
         {
@@ -760,6 +759,8 @@ static cptr _do_potion(int sval, int mode)
             do_res_stat(A_INT);
             do_res_stat(A_CHR);
             set_shero(0,TRUE);
+            (void)p_inc_minislow(-10);
+            p_ptr->slow = 0;
             update_stuff(); /* hp may change if Con was drained ... */
             hp_player(_potion_power(5000));
             device_noticed = TRUE;
@@ -4714,6 +4715,7 @@ cptr do_effect(effect_t *effect, int mode, int boost)
             if (set_stun(0, TRUE)) device_noticed = TRUE;
             if (set_shero(0,TRUE)) device_noticed = TRUE;
             if (set_hero(_BOOST(randint1(25) + 25), FALSE)) device_noticed = TRUE;
+            if (p_inc_minislow(-1)) device_noticed = TRUE;
         }
         break;
     }
