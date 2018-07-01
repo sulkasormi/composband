@@ -167,6 +167,11 @@ static void wr_monster(savefile_ptr file, monster_type *m_ptr)
         savefile_write_byte(file, SAVE_MON_MANA);
         savefile_write_s16b(file, m_ptr->mana);
     }
+    if (m_ptr->minislow)
+    {
+        savefile_write_byte(file, SAVE_MON_MINISLOW);
+        savefile_write_byte(file, m_ptr->minislow);
+    }
 
     savefile_write_byte(file, SAVE_MON_DONE);
 }
@@ -464,6 +469,7 @@ static void wr_extra(savefile_ptr file)
     wr_quick_start(file);
 
     savefile_write_s32b(file, game_mode);
+    savefile_write_byte(file, game_pantheon);
     savefile_write_byte(file, p_ptr->prace);
     savefile_write_byte(file, p_ptr->pclass);
     savefile_write_byte(file, p_ptr->personality);
@@ -547,6 +553,8 @@ static void wr_extra(savefile_ptr file)
     savefile_write_s16b(file, p_ptr->energy_need);
     savefile_write_s16b(file, p_ptr->fast);
     savefile_write_s16b(file, p_ptr->slow);
+    savefile_write_byte(file, p_ptr->minislow);
+    savefile_write_u16b(file, p_ptr->mini_energy);
     savefile_write_s16b(file, p_ptr->afraid);
     savefile_write_s16b(file, p_ptr->cut);
     savefile_write_s16b(file, p_ptr->stun);
