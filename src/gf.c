@@ -151,6 +151,9 @@ static gf_info_t _gf_tbl[GF_COUNT] = {
     { GF_DRAINING_TOUCH, "Draining Touch", TERM_L_DARK, RES_INVALID, "DRAINING_TOUCH" },
     { GF_DEATH_TOUCH, "Touch of Death", TERM_L_DARK, RES_INVALID, "DEATH_TOUCH" },
     { GF_STEAL, "Steal", TERM_WHITE, RES_INVALID, "STEAL" },
+
+    /* New */
+    { GF_SLOW, "Slow", TERM_ORANGE, RES_INVALID, "SLOW" },
 };
 
 typedef struct {
@@ -167,7 +170,7 @@ static _alias_t _aliases[] = {
     { "PULVERISE", GF_TELEKINESIS },
     { "TERRIFY", GF_TURN_ALL },
     { "POLYMORPH", GF_OLD_POLY },
-    { "SLOW", GF_OLD_SLOW },
+    { "BIG_SLOW", GF_OLD_SLOW },
     { "SLEEP", GF_OLD_SLEEP },
     { 0 }
 };
@@ -628,10 +631,22 @@ int gf_affect_p(int who, int type, int dam, int flags)
         update_smart_learn(who, RES_SHARDS);
         break;
     case GF_INERT:
-        if (!touch && fuzzy) msg_print("You are hit by something slow!");
+        if (touch) msg_print("You are <color:W>decelerated</color>!");
+        else if (fuzzy) msg_print("You are hit by something slow!");
         /*if (touch) ... */
-        if (!CHECK_MULTISHADOW() && !free_act_save_p(MAX(rlev, dam)))
-            set_slow(p_ptr->slow + randint0(4) + 4, FALSE);
+        if (!CHECK_MULTISHADOW())
+        {
+            if (!free_act_save_p(MAX(rlev, dam)))
+                (void)p_inc_minislow(5);
+            else (void)p_inc_minislow(1);
+        }
+        result = take_hit(damage_type, dam, m_name);
+        break;
+    case GF_SLOW:
+        if (touch) msg_print("You are <color:W>slowed</color>!");
+        else if (fuzzy) msg_print("You are hit by something exhausting!");
+        if (!CHECK_MULTISHADOW())
+            (void)p_inc_minislow(1);
         result = take_hit(damage_type, dam, m_name);
         break;
     case GF_LITE:
@@ -747,7 +762,8 @@ int gf_affect_p(int who, int type, int dam, int flags)
         result = take_hit(damage_type, dam, m_name);
         break;
     case GF_GRAVITY:
-        if (!touch && fuzzy) msg_print("You are hit by something heavy!");
+        if (touch) msg_print("You are <color:W>warped</color>!");
+        else if (fuzzy) msg_print("You are hit by something heavy!");
         /*if (touch) ... */
         msg_print("Gravity warps around you.");
         if (!CHECK_MULTISHADOW())
@@ -1730,6 +1746,7 @@ bool gf_affect_m(int who, mon_ptr mon, int type, int dam, int flags)
             do_stun = mon_stun_amount(dam);
         break;
     case GF_INERT:
+        if (touch && seen_msg) msg_format("%^s is <color:W>decelerated</color>!", m_name);
         if (seen) obvious = TRUE;
         _BABBLE_HACK()
         if (race->flagsr & RFR_RES_INER)
@@ -1748,9 +1765,28 @@ bool gf_affect_m(int who, mon_ptr mon, int type, int dam, int flags)
                 obvious = FALSE;
             }
             /* Normal monsters slow down */
-            else if (set_monster_slow(mon->id, MON_SLOW(mon) + 50))
+            else if (m_inc_minislow(mon, 5))
                 note = " starts moving slower.";
         }
+        break;
+    case GF_SLOW:
+        if (touch && seen_msg) msg_format("%^s is <color:W>slowed</color>!", m_name);
+        if (seen) obvious = TRUE;
+        _BABBLE_HACK()
+        if (race->flagsr & RFR_RES_INER)
+        {
+            note = " resists.";
+
+            dam *= 3; dam /= randint1(6) + 6;
+            mon_lore_r(mon, RFR_RES_INER);
+        }
+        else if ((race->flags1 & (RF1_UNIQUE)) || (race->flags7 & (RF7_NAZGUL)) ||
+                 (randint1(race->level) > randint1(MAX(62, dam))))
+        {
+            obvious = FALSE;
+        }
+        else if (m_inc_minislow(mon, 1))
+            note = " starts moving slower.";
         break;
     case GF_TIME:
         if (touch && seen_msg) msg_format("%^s is <color:B>chronosmashed</color>!", m_name);
@@ -1866,6 +1902,7 @@ bool gf_affect_m(int who, mon_ptr mon, int type, int dam, int flags)
     case GF_GRAVITY: {
         bool resist_tele = FALSE;
 
+        if (touch && seen_msg && type == GF_GRAVITY) msg_format("%^s is <color:W>warped</color>!", m_name);
         if (seen) obvious = TRUE;
         _BABBLE_HACK()
         if (race->flagsr & RFR_RES_TELE)
