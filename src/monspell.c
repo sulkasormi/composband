@@ -1,6 +1,6 @@
 #include "angband.h"
 
-#include "mon_spell.h"
+#include "monspell.h"
 #include <assert.h>
 
 /*************************************************************************
@@ -266,6 +266,12 @@ static _parse_t _bolt_tbl[] = {
           "$CASTER makes a strange noise.",
           "$CASTER fires an arrow at $TARGET.",
           "You fire an arrow." }, MSF_INNATE | MSF_TARGET },
+    { "BO_TIME", { MST_BOLT, GF_TIME },
+        { "Time Wave", TERM_L_BLUE,
+          "$CASTER casts a <color:B>Time Wave</color>.",
+          "$CASTER mumbles.",
+          "$CASTER casts a <color:B>Time Wave</color> at $TARGET.",
+          "You cast a <color:B>Time Wave</color>." }, MSF_TARGET },
     {0}
 };
 
@@ -736,6 +742,9 @@ static mon_spell_parm_t _bolt_parm(int which, int rlev)
     case GF_MANA:
         parm.v.dice = _dice(1, 7*rlev/2, 50);
         break;
+    case GF_TIME:
+        parm.v.dice = _dice(2, rlev, rlev / 3);
+        break;
     case GF_MISSILE:
         parm.v.dice = _dice(2, 6, rlev/3);
     case GF_ATTACK:
@@ -824,7 +833,7 @@ static mon_spell_parm_t _summon_parm(int which)
     case SUMMON_UNIQUE:
     case SUMMON_GUARDIAN:
     case SUMMON_AMBERITE:
-    case SUMMON_OLYMPIAN: /* Zeus, Hermes, Aprhrodite */
+    case SUMMON_PANTHEON: /* Zeus, Hermes, Aphrodite, Amun */
         parm.v.dice = _dice(1, 2, 0);
         break;
     case SUMMON_SPIDER:
@@ -2200,6 +2209,11 @@ static void _summon_type(int type)
         if (_current.mon)
             who = _current.mon->id;
     }
+    if (type == SUMMON_PANTHEON)
+    {
+        summon_pantheon_hack = monster_pantheon(mon_race(_current.mon));
+        if ((!summon_pantheon_hack) && (single_pantheon)) summon_pantheon_hack = MIN(game_pantheon, PANTHEON_MAX - 1);
+    }
     summon_specific(who, where.y, where.x, _current.race->level, type, mode);
 }
 /* XXX Vanilla has a 'friends' concept ... perhaps we could do likewise? */
@@ -2404,6 +2418,16 @@ static void _summon_special(void)
 			msg_format("%s calls forth nightmares.", _current.name);
 		r_idx = MON_NIGHTMARE;
 		break;
+    case MON_OSIRIS:
+        num = 1;
+        if (_current.flags & MSC_SRC_PLAYER)
+            msg_print("You summon your family!");
+        else
+            msg_format("%s summons his family!'", _current.name);
+        r_idx = MON_HORUS;
+        r_idx2 = MON_ISIS;
+        break;
+
     }
     for (i = 0; i < num; i++)
     {
