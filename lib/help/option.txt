@@ -12,20 +12,39 @@ Various concepts are mentioned in the descriptions below, including <color:keywo
 
 The birth options can only be accessed while creating a new character (press <color:keypress>=</color> while creating the character). There is no way to turn them off after the creation is finished!
   <indent>
+
+<topic:coffee_break><color:U>Coffee-break mode (accelerated game)</color> <color:D>(coffee_break)</color>
+Coffee-break mode is a shorter and more compact version of the game. The player gains experience much faster and finds more and better objects in the dungeon, as well as more money; most forms of proficiency gain are also accelerated. <color:U>Coffee-break mode</color> uses a single town with no wilderness; forced descent is turned on (but recalling back to the town is allowed), and all stairs in the dungeon are two-level shafts. Small levels generate more often in the early part of the game but become rarer (and less small) towards the endgame. Unlike ironman-downward mode (see <link:option.txt#ironman_downward>), the player is allowed to skip dungeon quests by recalling, although doing so incurs a large fame penalty.
+
 <topic:easy_id><color:U>Easy Identify</color> <color:D>(easy_id)</color>
-This option will affect the early game pseudo-identification of objects. Normally, objects must be carried in your pack for some time before you become aware of their quality. The length of time is class dependent, as is the amount of information revealed through pseudo-identification (see <link:objects.txt#Pseudo-ID>). With <color:keyword>Easy Identify</color> enabled, all players will get instantaneous and full pseudo-identification of objects, making this aspect of gameplay redundant.
+With this option enabled, all objects are automatically fully identified on walkover, and items, spells and town services of Identify/*Identify* become unnecessary.
 
 <topic:easy_lore><color:U>Easy Lore</color> <color:D>(easy_lore)</color>
 With this option enabled, the player will be born with complete knowledge of monster lore, including the various attacks and nasty surprises that many monsters usually offer to the uninitiated. This is a bit of a spoiler option, but is available for those who don't enjoy learning each of the many monsters present in the game. <color:U>Easy Lore</color> also renders a few aspects of the game non-functional or pointless, including the ability to <color:keyword>Probe</color> monsters to learn about them as you encounter them, and the town <color:keyword>Beastmaster Lore</color> service to learn about monsters before you see them (for a price, of course).
 
+<topic:easy_damage><color:U>Easy monster health and damage information</color> <color:D>(easy_damage)</color>
+Also known as "Fnord-mode", this option allows the player to see the exact damage delivered by each attack, and to receive additional information about monster health and debuffs through a percentage display. Player health bars are also converted to use percentages. This is a very powerful easy-mode, and using it gives a score penalty.
+
+<topic:allow_spoilers><color:U>Allow spoilers</color> <color:D>(allow_spoilers)</color>
+Enabling this option allows the player to view some spoiler files in-game using the ^Z command. (This option should never be used on the angband.live online server for technical reasons.)
+
+<topic:power_tele><color:U>Use enhanced telepathy</color> <color:D>(power_tele)</color>
+With this option enabled, the player can see the race of a telepathically detected monster (i.e. telepathically seen monsters are treated identically to monsters seen through any other means). With this option off ("fuzzy telepathy"), only the monster's "species" (default display character) is shown, but its color and race are hidden.
+
+<topic:easy_thalos><color:U>Allow easy teleportation to Thalos</color> <color:D>(easy_thalos)</color>
+If this option is on, inns will start offering teleportation to the town of <color:keyword>Thalos</color> as soon as at least one out of Anambar, Angwil, Morivant or Telmora has been visited by the player. Since Thalos is located on an island, travelling there by foot is very dangerous for a low-level character, especially at night. This option makes it possible to reach Thalos safely earlier in the game.
+
+<topic:never_forget><color:U>Easy Labyrinth and no amnesia</color> <color:D>(never_forget)</color>
+This option removes amnesia attacks from the game, and allows the player to map the normally unmappable <color:keyword>Labyrinth</color> dungeon in the same way as all other dungeons. (Turning this option on does not necessarily make the game easier, since monsters who might normally use the annoying but ultimately harmless Amnesia spell will instead select one of their other, more dangerous spell options.)
+
 <topic:smart_learn><color:U>Monsters learn from their mistakes</color> <color:D>(smart_learn)</color>
 Allow monsters to learn what spell attacks you are resistant to, and to use this information to choose the best attacks.
 
-<topic:smart_cheat><color:U>Monsters exploit players weaknesses</color> <color:D>(smart_cheat)</color>
+<topic:smart_cheat><color:U>Monsters exploit player's weaknesses</color> <color:D>(smart_cheat)</color>
 Allow monsters to know what spell attacks you are resistant to, and to use this information to choose the best attacks. Combine this with Easy Lore to regain lost honour.
 
 <topic:no_wilderness><color:U>Play without a wilderness</color> <color:D>(no_wilderness)</color>
-This option disables the wilderness, forcing you to play with a single special town level. As a result, the only dungeon that will be available is the <color:keyword>Pits of Angband</color>. However, the town is relatively well serviced and many, if not most, of the various fixed quests will be available for your pleasure (see <link:town.txt#NoWilderness>).
+This option disables the wilderness, forcing you to play with a single special town level. As a result, the only dungeon that will be available is the <color:keyword>Pits of Angband</color>. However, the town is relatively well serviced and many of the various fixed quests will be available for your pleasure (see <link:town.txt#NoWilderness>).
 
 <topic:ironman_shops><color:U>Stores are permanently closed</color> <color:D>(ironman_shops)</color>
 This option closes all shops. Try to survive in the deeps of the dungeon without supplies from town. Your Home still functions normally, and various town services are still available.
@@ -39,8 +58,29 @@ If this option is enabled, then every level will be empty 'arena' level. See the
 <topic:ironman_nightmare><color:U>Nightmare mode(it isn't even remotely fair!)</color> <color:D>(ironman_nightmare)</color>
 If this option is enabled, all monsters become unusually powerful, and fast. And there will be various unbelievable things happening in various situations. Furthermore, at 12:00 every night, you will have a real nightmare. You need to be crazy to turn this option on!
 
+<topic:enable_virtues><color:U>Enable virtues</color> <color:D>(enable_virtues)</color>
+Turns on the virtue system. Virtues can help or hinder the player; among other things, they affect spell fail rates, the strength of many magical effects, and the friendliness of some monsters.
+
 <topic:preserve_mode><color:U>Preserve artifacts</color> <color:D>(preserve_mode)</color>
-In non-preserve mode, once a fixed artifact is generated (either on the dungeon floor or in a monster drop), it will never be generated again during that game. This means that if you miss the artifact by leaving the level before you pick it up it is gone forever. On the other hand, in preserve mode this behavior is only exhibited once you have identified the artifact. It is therefor safer to leave a level before it is completely explored as any fixed artifact can be regenerated in subsequent levels.
+In non-preserve mode, once a fixed artifact is generated (either on the dungeon floor or in a monster drop), it will never be generated again during that game. This means that if you miss the artifact by leaving the level before you pick it up it is gone forever. On the other hand, in preserve mode this behavior is only exhibited once you have identified the artifact; it is therefore safer to leave a level before it is completely explored, as any undiscovered fixed artifact can be regenerated on a subsequent level.
+
+<topic:quest_unique><color:U>Random quests for unique monsters only</color> <color:D>(quest_unique)</color>
+With this option turned on, the ten <color:keyword>random quests</color> in the Pits of Angband will all require you to kill a unique monster. With the option off, some of them (especially the early ones) may feature groups of non-unique monsters instead, similarly to the fixed Warg Quest.
+
+<topic:no_selling><color:U>Disable selling but increase gold drops</color> <color:D>(no_selling)</color>
+With this option on, the player cannot sell items for money (only give them for free), and turning items into gold through Alchemy is less effective; but gold drops in quests and dungeons are increased to compensate. (Gold drops in the wilderness are not affected.)
+
+<topic:reduce_uniques><color:U>Reduce the number of uniques (randomly)</color> <color:D>(reduce_uniques)</color>
+This option removes some percentage of uniques from the game. A few uniques (mostly those who appear in either quests or the Thalos arena) are fixed and will never be removed.
+
+<topic:single_pantheon><color:U>Play with only one pantheon</color> <color:D>(single_pantheon)</color>
+This option removes one of the game's two main monster pantheons (Olympian or Egyptian) from the game, but also re-adds all members of the remaining pantheon if they have been removed by the reduce_uniques option. In wilderness mode, the dungeon associated with the removed pantheon is also removed from the game. Which pantheon remains can be either specified by the player or left to a random decision.
+
+<topic:no_chris><color:U>Nexus attacks never teleport to another dungeon</color> <color:D>(no_chris)</color>
+Turning on this option disables the "Chris effect" (a nexus attack effect that teleports the player to another dungeon, potentially one that's highly dangerous and was never previously visited by the player). As a substitute for the Chris effect, the player's stats will be scrambled; or if stat scrambling is also disabled, the Baby Foul Curse (a less deadly version of the infamous Ancient Foul Curse) will trigger. This option has no effect (or, rather, is effectively always on) in no-wilderness mode, since no-wilderness mode only has the one dungeon.
+
+<topic:no_scrambling><color:U>Disallow stat scrambling from monster attacks</color> <color:D>(no_scrambling)</color>
+Selecting this option disables <color:keyword>stat scrambling</color>, an effect that permanently switches two of the player's six stats (as well as their respective stat caps). Stat scrambling can potentially set the player back a long way if a high key stat is swapped with a low, less important stat. Attacks (and other effects) that would normally trigger a scramble will instead trigger the Baby Foul Curse, which is more dangerous in the short-term but doesn't have the same long-term effects.
 
 </indent>
 <topic:Input><style:heading>Input Options</style>
@@ -215,6 +255,28 @@ With this option, you won't receive messages when out of sight monsters fight on
 
 <topic:display_race><color:U>Player character depends on their race</color> <color:D>(display_race)</color>
 With this option a player who plays as a Quylthulg, for example, will be represented by a Q. If the option is turned off the player will always be @. 
+
+<topic:show_origins><color:U>Show object origins on examination</color> <color:D>(show_origins)</color>
+With this option selected, the origins of an object (where you found it, and who or what you got it from) are displayed when the object is examined.
+
+<topic:show_discovery><color:U>Show time of discovery on examination</color> <color:D>(show_discovery)</color>
+With this option enabled, the date of object discovery and the player's character level at time of discovery are added to the object's origins. (Also, with this option off, if a pile of objects with different origins is formed, all information about the origins is lost. With this option on, the details of the first object to be discovered are applied to the whole pile instead.)
+
+<topic:final_dump_origins><color:U>Show origins in final character dumps</color> <color:D>(final_dump_origins)</color>
+If this option is on, the origins of the player's equipment are included in character dumps if the character is either dead or a winner, but omitted otherwise. (Whether discovery details are included with the origins depends on whether show_discovery is on or not.)
+
+<topic:always_dump_origins><color:U>Show origins in all character dumps</color> <color:D>(always_dump_origins)</color>
+If this option is on, the origins of the player's equipment are always included in character dumps.
+
+<topic:easy_mimics><color:U>Use 'x' for monsters that look like things</color> <color:D>(easy_mimics)</color>
+If this option is enabled, monsters that are easily mistaken for non-monsters (like mimics, cloakers, death swords and wall monsters) will be displayed with the 'x' glyph instead of their native glyph. (A few thing-like monsters do still retain their original glyphs; these include death scythes, mushrooms and creeping coins.)
+
+<topic:list_stairs><color:U>Display stairs in the object list</color> <color:D>(list_stairs)</color>
+If this option is enabled, the list of visible objects (accessible in-game by pressing O) will include stairs in its Interesting Features section. (The inclusion of stairs in the object list can be toggled in the list itself by pressing S, but this option determines whether stairs are shown by default.)
+
+<topic:display_skill_num><color:U>Display skills as numbers in the character sheet</color> <color:D>(display_skill_num)</color>
+If this option is on, the character sheet displays the player's skills numerically in addition to the usual verbal description; <color:g>Superb</color> may become <color:g>Superb</color> (82), for example. This format is familiar to players of Composband, where the numerical display is always on.
+
 </indent>
 <topic:GamePlay><style:heading>Game Play Options</style>
   <indent>
@@ -255,6 +317,9 @@ Turning this option off will avoid checking to see if the user has pressed a key
 
 <topic:flush_failure><color:U>Flush input on various failures</color> <color:D>(flush_failure)</color>
 This option forces the game to flush all pending input whenever various "failures" occur, such as failure to cast a spell, failure to use a wand, etc. This is very useful if you use macros which include "directional" components with commands that can fail, since it will prevent you from walking towards monsters when your spells fail.
+
+<topic:prompt_on_failure><color:U>Give -more- prompts on device/spell failures</color> <color:D>(prompt_on_failure)</color>
+This option forces a <color:B>-more-</color> prompt whenever an attempt to use a device or cast a spell fails. This is useful if the player is in the habit of pressing keys (e.g. to target the device) on the assumption the device won't fail, which if unchecked can result in a potentially costly lost turn when the device does fail.
 
 <topic:flush_disturb><color:U>Flush input whenever disturbed</color> <color:D>(flush_disturb)</color>
 This option forces the game to flush all pending input whenever the character is "disturbed". This is useful if you use macros which take time, since it will prevent you from continuing your macro while being attacked by a monster.
@@ -437,4 +502,5 @@ Updated    : Zangband 2.2.0 through 2.2.6c by Robert Ruehlmann
 Updated    : Zangband DevTeam
 Updated    : Hengband 1.5.2
 Updated    : PosChengband 4.0.0
+Updated    : FrogComposband 7.0.nougat
 </color>
