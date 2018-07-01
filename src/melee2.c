@@ -3846,7 +3846,7 @@ void process_monsters(void)
             if (ironman_nightmare) speed += 5;
 
             if (MON_FAST(m_ptr)) speed += 10;
-            if (MON_SLOW(m_ptr)) speed -= 10;
+            speed -= monster_slow(m_ptr);
             if (p_ptr->filibuster) speed -= SPEED_ADJ_FILIBUSTER;
         }
 
@@ -4284,6 +4284,10 @@ static void process_mon_mtimed(mon_ptr mon)
                 msg_format("%^s is no longer invulnerable.", m_name);
             }
         }
+    }
+    if ((mon->minislow) && (randint0(race->flags2 & RF2_REGENERATE ? 50 : 100) < mon->minislow))
+    {
+        (void)m_inc_minislow(mon, -1);
     }
 }
 
