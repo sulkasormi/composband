@@ -1281,7 +1281,7 @@ void ring_cast(void)
     {
         effect_t effect = _effect(&spell);
         device_known = TRUE; /* Hack */
-        if (!do_effect(&effect, SPELL_CAST, _boost(spell.effect)))
+        if (!effect_use(&effect, _boost(spell.effect)))
         {
             p_ptr->csp += spell.cost;
         }
