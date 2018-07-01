@@ -357,7 +357,6 @@ static void pattern_teleport(void)
     p_ptr->leaving = TRUE;
 }
 
-
 static void wreck_the_pattern(void)
 {
     int to_ruin = 0, r_y, r_x;
@@ -462,9 +461,50 @@ static bool pattern_effect(void)
     return TRUE;
 }
 
+static void _suppress_extra_pantheons(void)
+{
+    u32b pantheon_flag_mask = 0;
+    int i;
 
+    if ((!game_pantheon) || (!single_pantheon)) return; /* paranoia */
 
+    /* Initialize pantheon flag mask (with flags of all pantheons) */
+    for (i = 0; i < PANTHEON_MAX; i++)
+    {
+        pantheon_flag_mask |= pant_list[i].flag;
+    }
 
+    /* Pick a random pantheon if one hasn't been selected yet */
+    if (game_pantheon >= PANTHEON_MAX) game_pantheon = randint1(PANTHEON_MAX - 1);
+
+    /* Wipe dungeons associated with other pantheons */
+    for (i = 1; i < max_d_idx; i++)
+    {
+        dungeon_info_type *d_ptr = &d_info[i];
+        if ((d_ptr->pantheon) && (d_ptr->pantheon != game_pantheon))
+        { /* Wipe the dungeon */
+            WIPE(&d_info[i], dungeon_info_type);
+        }
+    }
+
+    /* Suppress monsters who belong to other pantheons, and unsuppress the active pantheon */
+    for (i = 1; i < max_r_idx; i++)
+    {
+        monster_race *r_ptr = &r_info[i];
+        u32b race_flag_match;
+
+        if ((!r_ptr) || (!r_ptr->name)) continue;
+        race_flag_match = (r_ptr->flags3 & pantheon_flag_mask);
+        if ((race_flag_match > 0) && (!(r_ptr->flags3 & pant_list[game_pantheon].flag)))
+        { /* Suppress member of rival pantheon */
+            r_ptr->flagsx |= RFX_SUPPRESS;
+        }
+        else if (race_flag_match) /* Unsuppress */
+        {
+            r_ptr->flagsx &= ~RFX_SUPPRESS;
+        }
+    }
+}
 
 /*
  * Regenerate hit points                -RAK-
@@ -1322,7 +1362,7 @@ static void process_world_aux_hp_and_sp(void)
     if ((resting < 0) && ((p_ptr->chp == p_ptr->mhp) || (mimic_no_regen()))
         && (upkeep_regen <= 0) && (!magic_eater_can_regen()) && (!samurai_can_concentrate())
         && (!p_ptr->blind) && (!p_ptr->confused) && (!p_ptr->poisoned) && (!p_ptr->afraid)
-        && (!p_ptr->stun) && (!p_ptr->cut) && (!p_ptr->slow) && (!p_ptr->paralyzed)
+        && (!p_ptr->stun) && (!p_ptr->cut) && (!player_slow()) && (!p_ptr->paralyzed)
         && (!p_ptr->image) && (!p_ptr->word_recall) && (!p_ptr->alter_reality))
     {
         set_action(ACTION_NONE);
@@ -1559,6 +1599,20 @@ static void process_world_aux_timeout(void)
         do { set_slow(p_ptr->slow - 1, TRUE); }
             while (p_ptr->slow && free_act_save_p(dun_level*2));
     }
+
+    /* Mini-slow recovery - regen helps */
+    if (p_ptr->minislow)
+    {
+        int myregen = MAX(0, p_ptr->regen / 100);        
+        if ((!myregen) && (one_in_(3))) myregen++;
+        p_ptr->mini_energy += myregen * ((p_ptr->minislow * 2) + 2) / 3;
+        if (p_ptr->mini_energy >= 100)
+        {
+            p_ptr->mini_energy -= 100;
+            p_inc_minislow(-1);
+        }
+    }
+    else p_ptr->mini_energy = 0;
 
     /* Protection from evil */
     if (p_ptr->protevil)
@@ -4156,7 +4210,7 @@ static void process_player(void)
               && !p_ptr->afraid
               && !p_ptr->stun
               && !p_ptr->cut
-              && !p_ptr->slow
+              && !player_slow()
               && !p_ptr->paralyzed
               && !p_ptr->image
               && !p_ptr->word_recall
@@ -5278,6 +5332,9 @@ void play_game(bool new_game)
             }
         }
     }
+
+    /* Suppress extra pantheons */
+    if (single_pantheon) _suppress_extra_pantheons();
 
     creating_savefile = FALSE;
 
