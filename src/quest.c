@@ -557,7 +557,7 @@ static errr _parse_q_info(char *line, int options)
         }
         else
         {
-            msg_format("Error: Unkown quest goal %s. Try KILL(name[, ct]) or FIND(art).", name);
+            msg_format("Error: Unknown quest goal %s. Try KILL(name[, ct]) or FIND(art).", name);
             return PARSE_ERROR_INVALID_FLAG;
         }
     }
@@ -567,7 +567,7 @@ static errr _parse_q_info(char *line, int options)
         quest->dungeon = parse_lookup_dungeon(line + 2, options);
         if (!quest->dungeon)
         {
-            msg_format("Error: Unkown dungeon %s. Consult d_info.txt.", line + 2);
+            msg_format("Error: Unknown dungeon %s. Consult d_info.txt.", line + 2);
             return PARSE_ERROR_INVALID_FLAG;
         }
     }
