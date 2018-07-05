@@ -956,7 +956,7 @@ P:0:4d6:23:24:0
 F:SLAY_DRAGON | SLAY_EVIL | SLAY_UNDEAD | SLAY_TROLL | SLAY_GIANT |
 F:SLAY_HUMAN | SLAY_ORC | SEE_INVIS | SHOW_MODS | VORPAL | BRAND_POIS
 D:A giant's weapon, with a long blade tall and straight thrusting out from a
-D:massive double-pronged hint. On its blade are written doomspells against
+D:massive double-pronged hilt. On its blade are written doomspells against
 D:both the living and undead.
 
 # The Katana 'Aglarang'
