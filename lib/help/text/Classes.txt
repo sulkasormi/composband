@@ -251,7 +251,7 @@ Melee
   improved only once, but they can remove a previously added essence 
   from improved equipment to improve it with another essence. To-hit, 
   to-damage bonus, and AC can be improved freely up to a maximum value 
-  depending on level. Weaponsmiths now use class powers for Smithing 
+  depending on level. Weaponsmiths use class powers for Smithing 
   commands.
   
     Stats                   Skills
@@ -261,7 +261,7 @@ Melee
     Dexterity     +1        Stealth     Fair         
     Constitution  +0        Searching   Fair         
     Charisma      +0        Perception  Bad          
-    Life Rating  111%       Melee       Excellent    
+    Life Rating  108%       Melee       Excellent    
     Base HP       12        Bows        Good         
     Experience   130%
     
@@ -1346,7 +1346,7 @@ Rune-Knight    +2   +1   -1   +1   +0   +1  102%   +6  150%
 Samurai        +3   -2   +1   +2   +1   +1  111%  +12  130%
 Warrior        +4   -2   -2   +2   +2   +1  115%  +18  100%
 Weaponmaster   +4   -3   -2   -1   +2   +1  109%  +12  135%
-Weaponsmith    +3   -1   -1   +1   +0   +0  111%  +12  130%
+Weaponsmith    +3   -1   -1   +1   +0   +0  108%  +12  130%
 Archer         +2   -1   -1   +2   +1   +0  111%  +12  110%
 Sniper         +2   -1   -1   +2   +1   +0  100%   +4  110%
 Force-Trainer  +0   -1   +3   +2   +1   +0  100%   +4  135%
