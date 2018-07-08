@@ -144,7 +144,7 @@ Experience   135%
 <topic:Weaponsmith><color:o>Weaponsmith</color>
 A Weaponsmith can improve weapons and armors for him or herself. They are good at fighting, and they have potential ability to become even better than Warriors using improved equipment. They cannot cast spells, and are poor at skills such as stealth or magic defense.
  
-A Weaponsmith extracts the essences of special effects from weapons or armors which have various special abilities, and can add these essences to another weapon or armor. Normally, each equipment can be improved only once, but they can remove a previously added essence from improved equipment to improve it with another essence. To-hit, to-damage bonus, and AC can be improved freely up to a maximum value depending on level. Weaponsmiths now use class powers for Smithing commands.
+A Weaponsmith extracts the essences of special effects from weapons or armors which have various special abilities, and can add these essences to another weapon or armor. Normally, each equipment can be improved only once, but they can remove a previously added essence from improved equipment to improve it with another essence. To-hit, to-damage bonus, and AC can be improved freely up to a maximum value depending on level. Weaponsmiths use class powers for Smithing commands.
 
   <indent><style:table><color:G>Stats                   Skills</color>
 Strength     <color:w> +3</color>        Disarming   <color:y>Good         </color>
@@ -153,7 +153,7 @@ Wisdom       <color:w> -1</color>        Save        <color:R>Poor         </col
 Dexterity    <color:w> +1</color>        Stealth     <color:o>Fair         </color>
 Constitution <color:w> +0</color>        Searching   <color:o>Fair         </color>
 Charisma     <color:w> +0</color>        Perception  <color:r>Bad          </color>
-Life Rating  111%       Melee       <color:G>Excellent    </color>
+Life Rating  108%       Melee       <color:G>Excellent    </color>
 Base HP       12        Bows        <color:y>Good         </color>
 Experience   130%
 </style></indent>
@@ -820,7 +820,7 @@ Rune-Knight    +2 <color:v>  +1 </color>  -1   +1   +0   +1  102%   +6  150%
 Samurai        +3   -2 <color:v>  +1 </color>  +2   +1   +1  111%  +12  130%
 Warrior        +4   -2   -2   +2   +2   +1  115%  +18  100%
 Weaponmaster <color:v>  +4 </color>  -3   -2   -1   +2   +1  109%  +12  135%
-Weaponsmith    +3   -1   -1   +1   +0   +0  111%  +12  130%
+Weaponsmith    +3   -1   -1   +1   +0   +0  108%  +12  130%
 Archer         +2   -1   -1   +2   +1   +0  111%  +12  110%
 Sniper         +2   -1   -1 <color:v>  +2 </color>  +1   +0  100%   +4  110%
 Force-Trainer  +0   -1 <color:v>  +3 </color>  +2   +1   +0  100%   +4  135%
