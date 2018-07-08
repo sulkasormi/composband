@@ -2611,7 +2611,7 @@ class_t *weaponsmith_get_class(void)
 
     if (!init)
     {           /* dis, dev, sav, stl, srh, fos, thn, thb */
-    skills_t bs = { 30,  28,  28,   1,  20,  10,  60,  45};
+    skills_t bs = { 30,  28,  25,   1,  20,  10,  60,  45};
     skills_t xs = { 10,  10,  10,   0,   0,   0,  21,  15};
 
         me.name = "Weaponsmith";
@@ -2626,7 +2626,7 @@ class_t *weaponsmith_get_class(void)
                     "be improved only once, but they can remove a previously added "
                     "essence from improved equipment to improve it with another "
                     "essence. To-hit, to-damage bonus, and AC can be improved freely "
-                    "up to a maximum value depending on level. Weaponsmiths now use class "
+                    "up to a maximum value depending on level. Weaponsmiths use class "
                     "powers for Smithing commands.";
 
         me.stats[A_STR] =  3;
@@ -2637,7 +2637,7 @@ class_t *weaponsmith_get_class(void)
         me.stats[A_CHR] =  0;
         me.base_skills = bs;
         me.extra_skills = xs;
-        me.life = 111;
+        me.life = 108;
         me.base_hp = 12;
         me.exp = 130;
         me.pets = 40;
