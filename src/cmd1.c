@@ -3037,6 +3037,17 @@ static bool py_attack_aux(int y, int x, bool *fear, bool *mdeath, s16b hand, int
             break;
         }
 
+        /* Check for easy tiring */
+        if (mut_present(MUT_EASY_TIRING) && (one_in_(16 - p_ptr->minislow)))
+        {
+            if (p_ptr->mini_energy >= 50)
+            {
+                p_ptr->mini_energy -= 50;
+            }
+            else if (p_inc_minislow(1)) p_ptr->mini_energy += 50;
+            else p_ptr->mini_energy = 0;
+        }
+
         /* Weaponmaster Whirlwind turns a normal strike into a sweeping whirlwind strike */
         if (p_ptr->whirlwind && mode == 0)
         {
