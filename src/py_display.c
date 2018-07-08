@@ -143,6 +143,14 @@ static void _display_skill(doc_ptr doc, cptr name, int amt, int div)
     doc_newline(doc);
 }
 
+static char _stat_color(int i, int mode)
+{
+    if ((!p_ptr->unwell) || ((i != A_DEX) && (i != A_CON)) || (!unwell_effect(p_ptr->unwell)))
+        return ((mode == 2) || ((p_ptr->stat_use[i] < p_ptr->stat_top[i]) && (mode != 1))) ? 'y' : 'G';
+    else
+        return ((mode == 2) || ((p_ptr->stat_use[i] < p_ptr->stat_top[i]) && (mode != 1))) ? 'B' : 'W';
+}
+
 static void _build_general2(doc_ptr doc)
 {
     string_ptr s = string_alloc();
@@ -163,7 +171,7 @@ static void _build_general2(doc_ptr doc)
             doc_insert(doc, "  : ");
 
         cnv_stat(p_ptr->stat_use[i], buf);
-        doc_printf(doc, "<color:%c>%9.9s</color>\n", p_ptr->stat_use[i] < p_ptr->stat_top[i] ? 'y' : 'G', buf);
+        doc_printf(doc, "<color:%c>%9.9s</color>\n", _stat_color(i, 0), buf);
     }
 
     doc_newline(doc);
@@ -874,13 +882,13 @@ static void _build_stats(doc_ptr doc, _flagzilla_ptr flagzilla)
 
         /* Total */
         cnv_stat(p_ptr->stat_top[i], buf);
-        doc_printf(doc, " <color:G>%6.6s</color>", buf);
+        doc_printf(doc, " <color:%c>%6.6s</color>", _stat_color(i, 1), buf);
 
         /* Current */
         if (p_ptr->stat_use[i] < p_ptr->stat_top[i])
         {
             cnv_stat(p_ptr->stat_use[i], buf);
-            doc_printf(doc, " <color:y>%6.6s</color>", buf);
+            doc_printf(doc, " <color:%c>%6.6s</color>", _stat_color(i, 2), buf);
         }
 
         doc_newline(doc);
