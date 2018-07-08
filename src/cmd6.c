@@ -74,7 +74,7 @@ bool restore_mana(void)
 static void do_cmd_eat_food_aux(obj_ptr obj)
 {
     int  lev = k_info[obj->k_idx].level;
-    bool ident = FALSE;
+    bool ident = FALSE, no_food = FALSE;
 
     if (music_singing_any()) bard_stop_singing();
     if (hex_spelling_any()) stop_hex_spell_all();
@@ -282,6 +282,17 @@ static void do_cmd_eat_food_aux(obj_ptr obj)
 
             case SV_FOOD_WAYBREAD:
             {
+                if (mut_present(MUT_WAYBREAD_INTO))
+                {
+                    msg_print("The waybread makes you vomit!");
+                    set_food(PY_FOOD_STARVE - 1);
+                    set_paralyzed(randint1(4), FALSE);
+                    set_poisoned(0, TRUE);
+                    ident = TRUE;
+                    no_food = TRUE;
+                    break;
+                }
+
                 msg_print("That tastes good.");
                 set_poisoned(p_ptr->poisoned - MAX(100, p_ptr->poisoned / 5), TRUE);
                 hp_player(damroll(4, 8));
@@ -330,7 +341,10 @@ static void do_cmd_eat_food_aux(obj_ptr obj)
     }
 
     /* Food can feed the player */
-    if ( prace_is_(RACE_VAMPIRE)
+    if (no_food)
+    {
+    }
+    else if ( prace_is_(RACE_VAMPIRE)
       || prace_is_(RACE_MON_VAMPIRE)
       || p_ptr->mimic_form == MIMIC_VAMPIRE )
     {
