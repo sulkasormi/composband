@@ -912,7 +912,7 @@ void mut_process(void)
     if (p_ptr->wild_mode) return;
 
     /* Sneezing isn't strictly a mutation process, but it goes here anyway */
-    if ((p_ptr->unwell) && (one_in_(100)))
+    if ((p_ptr->unwell) && (p_ptr->unwell <= UNWELL_EFFECTIVE_MAX) && (one_in_(100)))
     {
         do_sneeze();
     }
