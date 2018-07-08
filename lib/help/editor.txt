@@ -253,7 +253,7 @@ If you are using keywords to build a match predicate, then you must specify exac
 <color:G>Dice Boosted</color> <indent>When used with <color:R>Weapons</color> or <color:R>Shooters</color>, this adjective indicates that the object has higher damage dice than usual. Archers in particular should be on the lookout for <color:G>Dice Boosted</color> <color:R>Shooters</color>!</indent>
 <color:G>Wanted</color>       <indent>Combine with <color:R>Corpses</color> or <color:R>Skeletons</color> to indicated that the corpse or skeleton belongs to a wanted monster. These may be turned in at the Hunter's Office for a prize.</indent>
 
-As an example of using multiple adjectives, the phrase <color:G>unidentified ego</color> <color:R>weapons</color> applies to, well, all melee weapons that are both excellent and not yet identified. Of course this means that you must have gotten a psuedo-id on the object in order to be aware that the object is excellent, since it is not yet identified. Still, this is a very useful phrase when combined with the <color:keypress>?</color> command letter!
+As an example of using multiple adjectives, the phrase <color:G>unidentified ego</color> <color:R>weapons</color> applies to, well, all melee weapons that are both excellent and not yet identified. Of course this means that you must have gotten a pseudo-id on the object in order to be aware that the object is excellent, since it is not yet identified. Still, this is a very useful phrase when combined with the <color:keypress>?</color> command letter!
 
 Finally, use a search string to further refine the match. If you don't use any adjective or noun keywords, then the entire text of your rule (starting after any command letters, and including all text up to the <color:keypress>#</color> inscription character) is used as the search string. If you are using keywords, then you will need to mark the end of the keyword section with the <color:keypress>:</color> separator letter. Examples are discussed below.
 </indent>
@@ -298,7 +298,7 @@ In practice, we wouldn't want these right away since they say to destroy common 
 So, now our character is merrily picking up all equipment and then auto-destroying the average stuff once pseudo-id kicks in. Can we do more? Well, try adding:
   ?<color:G>unidentified ego </color><color:R>items</color>
 
-Now, the egos are automatically being identified on psuedo-id as well. Pretty sweet! Finally, eventually you will learn that some ego types are junk, and perhaps would have auto registered some lines like:
+Now, the egos are automatically being identified on pseudo-id as well. Pretty sweet! Finally, eventually you will learn that some ego types are junk, and perhaps would have auto registered some lines like:
 
   (!<color:G>common ego </color><color:R>cloaks</color>:of protection
   (!<color:G>common ego </color><color:R>weapons</color>:of *slay* orc
@@ -323,7 +323,7 @@ In summary, the complete order of your rules might be:
   (!<color:G>common ego </color><color:R>cloaks</color>:of protection
   (!<color:G>common ego </color><color:R>weapons</color>:of *slay* orc
 
-New armors and weapons come down and hit rule 5 or 6 when your character steps on them, so they get placed into your pack automatically (Remember, matching is based on your current knowledge of the object, not what it truly is. So, when you find, say, a dagger (+0, +0), it is not immediately destroyed since it is unidentified and not yet pseudo-identified: You don't yet know it is <color:G>average</color>!). Eventually, pseudo-id will kick in revealing the object as average, in which case it is destroyed by rule 3 or rule 4, or as excellent, in which case it is processed by rule 2 which auto-identifies the ego item and rescans the rules. If it is a cloak of protection, it is destroyed by rule 7, while if it is a weapon of *slay* orc, it is destroyed by rule 8. Unless it happened to be hugely dice boosted, in which case it got protected by rule 1 (remember, rules are processed in order). Easy, right? What happens to weapons/armors that psuedo-id as {Good}? Or {Special}?
+New armors and weapons come down and hit rule 5 or 6 when your character steps on them, so they get placed into your pack automatically (Remember, matching is based on your current knowledge of the object, not what it truly is. So, when you find, say, a dagger (+0, +0), it is not immediately destroyed since it is unidentified and not yet pseudo-identified: You don't yet know it is <color:G>average</color>!). Eventually, pseudo-id will kick in revealing the object as average, in which case it is destroyed by rule 3 or rule 4, or as excellent, in which case it is processed by rule 2 which auto-identifies the ego item and rescans the rules. If it is a cloak of protection, it is destroyed by rule 7, while if it is a weapon of *slay* orc, it is destroyed by rule 8. Unless it happened to be hugely dice boosted, in which case it got protected by rule 1 (remember, rules are processed in order). Easy, right? What happens to weapons/armors that pseudo-id as {Good}? Or {Special}?
 </indent>
   <indent><color:B>Scenario #2</color>: Flavored Objects
 This one is easier, and I'll give the full set of rules first:
