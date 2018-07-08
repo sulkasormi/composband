@@ -462,6 +462,26 @@ static void cast_invoke_spirits(int dir)
     }
 }
 
+void do_sneeze(void)
+{
+    int kiep_ct = randint1(3), y = 0, x = 0, yrk = 1000, i;
+    while (yrk--)
+    {
+        scatter(&y, &x, py, px, 4, 0);
+        if (!cave_have_flag_bold(y, x, FF_PROJECT)) continue;
+        if (!player_bold(y, x)) break;
+    }
+
+    for (i = 0; i < kiep_ct; i++)
+    {
+        disturb(0, 0);
+        msg_print("AAAAHHHHH-CHEEOO!");
+        msg_print(NULL);
+
+        project(0, 0, y, x, p_ptr->lev / 2, GF_COLD,
+            PROJECT_BEAM | PROJECT_THRU | PROJECT_GRID | PROJECT_KILL);
+    }
+}
 
 static void wild_magic(int spell)
 {
