@@ -470,7 +470,7 @@ discuss each of these in turn.
   As an example of using multiple adjectives, the phrase unidentified 
   ego weapons applies to, well, all melee weapons that are both 
   excellent and not yet identified. Of course this means that you must 
-  have gotten a psuedo-id on the object in order to be aware that the 
+  have gotten a pseudo-id on the object in order to be aware that the 
   object is excellent, since it is not yet identified. Still, this is a 
   very useful phrase when combined with the ? command letter!
   
@@ -574,7 +574,7 @@ multiple rules to accomplish common tasks. Ready?
   more? Well, try adding:
     ?unidentified ego items
   
-  Now, the egos are automatically being identified on psuedo-id as 
+  Now, the egos are automatically being identified on pseudo-id as 
   well. Pretty sweet! Finally, eventually you will learn that some ego 
   types are junk, and perhaps would have auto registered some lines 
   like:
@@ -618,7 +618,7 @@ multiple rules to accomplish common tasks. Ready?
   destroyed by rule 7, while if it is a weapon of *slay* orc, it is 
   destroyed by rule 8. Unless it happened to be hugely dice boosted, in 
   which case it got protected by rule 1 (remember, rules are processed 
-  in order). Easy, right? What happens to weapons/armors that psuedo-id 
+  in order). Easy, right? What happens to weapons/armors that pseudo-id 
   as {Good}? Or {Special}?
   
   Scenario #2: Flavored Objects
