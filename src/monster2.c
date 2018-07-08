@@ -965,6 +965,7 @@ bool mon_is_type(int r_idx, int type)
             if (r_ptr->flags1 & RF1_UNIQUE) return TRUE;
             break;
         }
+        if (!(r_ptr->flags1 & RF1_UNIQUE)) return FALSE;
         if (r_ptr->flags3 & (pant_list[summon_pantheon_hack].flag)) return TRUE;
         break;
     }
