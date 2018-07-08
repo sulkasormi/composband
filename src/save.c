@@ -555,6 +555,7 @@ static void wr_extra(savefile_ptr file)
     savefile_write_s16b(file, p_ptr->slow);
     savefile_write_byte(file, p_ptr->minislow);
     savefile_write_u16b(file, p_ptr->mini_energy);
+    savefile_write_byte(file, p_ptr->unwell);
     savefile_write_s16b(file, p_ptr->afraid);
     savefile_write_s16b(file, p_ptr->cut);
     savefile_write_s16b(file, p_ptr->stun);
