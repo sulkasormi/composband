@@ -59,7 +59,7 @@ In this section, each rune is displayed along with each type of object to which 
 <color:R>Cloaks</color>        <color:G>L19</color> Aura of Shards
 
 <color:B>Understanding</color>
-<color:R>Helmets</color>       <color:G>L21</color> +2 INT; Fast Psuedo-id
+<color:R>Helmets</color>       <color:G>L21</color> +2 INT; Easy Identify
 <color:R>Lights</color>        <color:G>L21</color> +1 INT
 
 <color:B>Elemental Protection</color>
@@ -157,7 +157,7 @@ In this section, the various runes are grouped according to equipment slot. This
 <color:B>Protection</color>    <color:G>L5</color>  AC Bonus; Protection from Corrosion
 <color:B>Light</color>         <color:G>L15</color> Resist Light
 <color:B>Shadow</color>        <color:G>L17</color> Resist Darkness
-<color:B>Understanding</color> <color:G>L21</color> +2 INT; Fast Pseudo-id
+<color:B>Understanding</color> <color:G>L21</color> +2 INT; Easy Identify
 <color:B>Seeing</color>        <color:G>L27</color> Resist Blindness; See Invisible
 <color:B>Stability</color>     <color:G>L31</color> Resist Nexus
 <color:B>Death</color>         <color:G>L35</color> Resist Nether
