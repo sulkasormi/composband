@@ -738,7 +738,7 @@ static void _psionic_blending_spell(int power, int cmd, variant *res)
         var_set_string(res, "You will temporarily blend into your surroundings, gaining increased stealth.");
         break;
     case SPELL_INFO:
-        var_set_string(res, format("+%d stealth", 5*power));
+        var_set_string(res, format("+%d stealth", 3*power));
         break;
     case SPELL_CAST:
         var_set_bool(res, FALSE);
@@ -1968,7 +1968,7 @@ static void _calc_bonuses(void)
 
     if (p_ptr->magic_num1[_BLENDING])
     {
-        p_ptr->skills.stl += 5 * p_ptr->magic_num2[_BLENDING];
+        p_ptr->skills.stl += 3 * p_ptr->magic_num2[_BLENDING];
         if ((p_ptr->cursed & OFC_AGGRAVATE) && p_ptr->magic_num2[_BLENDING] == 5)
         {
             p_ptr->cursed &= ~(OFC_AGGRAVATE);
