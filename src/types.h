@@ -1143,6 +1143,7 @@ struct player_type
 
     s16b tim_killing_spree;
     s16b tim_slay_sentient;
+    byte unwell; /* Never takes high values */
     bool maul_of_vice;
     bool uimapuku;
     bool upkeep_warning; /* Unsafe upkeep - pets may turn hostile */
