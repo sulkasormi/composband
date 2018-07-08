@@ -394,14 +394,16 @@ static void prt_stat(int stat)
 {
     char tmp[32];
     rect_t r = ui_char_info_rect();
-
+    byte vari;
 
     /* Display "injured" stat */
     if (p_ptr->stat_cur[stat] < p_ptr->stat_max[stat])
     {
         put_str(stat_names_reduced[stat], r.y + ROW_STAT + stat, r.x + COL_STAT);
         cnv_stat(p_ptr->stat_use[stat], tmp);
-        c_put_str(TERM_YELLOW, tmp, r.y + ROW_STAT + stat, r.x + COL_STAT + 6);
+        vari = TERM_YELLOW;
+        if ((p_ptr->unwell) && (unwell_effect(p_ptr->unwell)) && (stat == A_DEX || stat == A_CON)) vari = TERM_L_BLUE;
+        c_put_str(vari, tmp, r.y + ROW_STAT + stat, r.x + COL_STAT + 6);
     }
 
     /* Display "healthy" stat */
@@ -409,7 +411,9 @@ static void prt_stat(int stat)
     {
         put_str(stat_names[stat], r.y + ROW_STAT + stat, r.x + COL_STAT);
         cnv_stat(p_ptr->stat_use[stat], tmp);
-        c_put_str(TERM_L_GREEN, tmp, r.y + ROW_STAT + stat, r.x + COL_STAT + 6);
+        vari = TERM_L_GREEN;
+        if ((p_ptr->unwell) && (unwell_effect(p_ptr->unwell)) && (stat == A_DEX || stat == A_CON)) vari = TERM_L_WHITE;
+        c_put_str(vari, tmp, r.y + ROW_STAT + stat, r.x + COL_STAT + 6);
     }
 
     /* Indicate natural maximum */
@@ -605,6 +609,7 @@ static void prt_stat(int stat)
 #define BAR_GLORY 178
 #define BAR_UPKEEP 179
 #define BAR_FILIBUSTER 180
+#define BAR_UNWELL 181
 
 static struct {
     byte attr;
@@ -794,6 +799,7 @@ static struct {
     {TERM_L_GREEN, "uXP", "Glory"},
     {TERM_L_RED, "Upk", "Upkeep"},
     {TERM_ORANGE, "Flb", "Filibuster"},
+    {TERM_L_WHITE, "Unw", "Unwell"},
     {0, NULL, NULL}
 };
 
@@ -977,6 +983,8 @@ static void prt_status(void)
 
     /* Dangerously high upkeep */
     if (p_ptr->upkeep_warning) ADD_FLG(BAR_UPKEEP);
+
+    if (unwell_effect(p_ptr->unwell)) ADD_FLG(BAR_UNWELL);
 
     if (p_ptr->tim_spurt) ADD_FLG(BAR_TIME_SPURT);
     if (p_ptr->tim_blood_shield) ADD_FLG(BAR_BLOOD_SHIELD);
@@ -3990,6 +3998,12 @@ void calc_bonuses(void)
     for (i = 0; i < MAX_STATS; i++)
     {
         p_ptr->stat_add[i] += (race_ptr->stats[i] + class_ptr->stats[i] + pers_ptr->stats[i]);
+    }
+
+    if (p_ptr->unwell)
+    {
+        p_ptr->stat_add[A_DEX] -= unwell_effect(p_ptr->unwell);
+        p_ptr->stat_add[A_CON] -= unwell_effect(p_ptr->unwell);
     }
 
     mut_calc_bonuses();  /* Process before equip for MUT_FLESH_ROT */
