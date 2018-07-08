@@ -464,6 +464,30 @@ void berserk_rage_mut(int cmd, variant *res)
     }
 }
 
+void cerebral_pultitis_mut(int cmd, variant *res)
+{
+    switch (cmd)
+    {
+    case SPELL_NAME:
+        var_set_string(res, "Cerebral Pultitis");
+        break;
+    case SPELL_GAIN_MUT:
+        msg_print("Your brain feels like porridge...");
+        mut_lose(MUT_HYPER_INT);
+        mut_lose(MUT_MORONIC);
+        break;
+    case SPELL_LOSE_MUT:
+        msg_print("Your brain no longer feels like porridge.");
+        break;
+    case SPELL_MUT_DESC:
+        var_set_string(res, "You suffer from cerebral pultitis (-3 INT).");
+        break;
+    default:
+        default_spell(cmd, res);
+        break;
+    }
+}
+
 void chaos_deity_mut(int cmd, variant *res)
 {
     switch (cmd)
@@ -497,6 +521,7 @@ void cowardice_mut(int cmd, variant *res)
     case SPELL_GAIN_MUT:
         msg_print("You become an incredible coward!");
         mut_lose(MUT_FEARLESS);
+        mut_lose(MUT_NO_INHIBITIONS);
         break;
     case SPELL_LOSE_MUT:
         msg_print("You are no longer an incredible coward!");
@@ -924,6 +949,28 @@ void draconian_strike_mut(int cmd, variant *res)
     }
 }
 
+void easy_tiring_mut(int cmd, variant *res)
+{
+    switch (cmd)
+    {
+    case SPELL_NAME:
+        var_set_string(res, "Easy Tiring");
+        break;
+    case SPELL_GAIN_MUT:
+        msg_print("You suddenly feel out of shape.");
+        break;
+    case SPELL_LOSE_MUT:
+        msg_print("You no longer feel out of shape.");
+        break;
+    case SPELL_MUT_DESC:
+        var_set_string(res, "Physical combat exhausts you.");
+        break;
+    default:
+        default_spell(cmd, res);
+        break;
+    }
+}
+
 void eat_light_mut(int cmd, variant *res)
 {
     switch (cmd)
@@ -984,6 +1031,7 @@ void einstein_mut(int cmd, variant *res)
     case SPELL_GAIN_MUT:
         msg_print("Your brain evolves into a living computer!");
         mut_lose(MUT_MORONIC);
+        mut_lose(MUT_PULTITIS);
         break;
     case SPELL_LOSE_MUT:
         msg_print("Your brain reverts to normal.");
@@ -1208,6 +1256,7 @@ void fearless_mut(int cmd, variant *res)
     case SPELL_GAIN_MUT:
         msg_print("You become completely fearless.");
         mut_lose(MUT_COWARDICE);
+        mut_lose(MUT_NO_INHIBITIONS);
         break;
     case SPELL_LOSE_MUT:
         msg_print("You begin to feel fear again.");
@@ -1496,6 +1545,44 @@ void horns_mut(int cmd, variant *res)
     }
 }
 
+void hypochondria_mut(int cmd, variant *res)
+{
+    switch (cmd)
+    {
+    case SPELL_NAME:
+        var_set_string(res, "Acute Hypochondria");
+        break;
+    case SPELL_GAIN_MUT:
+        msg_print("You feel very worried about your health.");
+        break;
+    case SPELL_LOSE_MUT:
+        msg_print("You no longer worry about your health.");
+        break;
+    case SPELL_MUT_DESC:
+        var_set_string(res, "You are a hypochondriac.");
+        break;
+    case SPELL_PROCESS:
+        if (one_in_(1815))
+        {
+            if (one_in_(2))
+            {
+                disturb(0, 0);
+                msg_print("You feel incredibly worried!");
+                fear_add_p(FEAR_SCARED);
+            }
+            else
+            {
+                disturb(0, 0);
+                set_unwell(50, TRUE);
+            }
+        }
+        break;
+    default:
+        default_spell(cmd, res);
+        break;
+    }
+}
+
 void illusion_normal_mut(int cmd, variant *res)
 {
     switch (cmd)
@@ -1511,6 +1598,28 @@ void illusion_normal_mut(int cmd, variant *res)
         break;
     case SPELL_MUT_DESC:
         var_set_string(res, "Your appearance is masked with illusion.");
+        break;
+    default:
+        default_spell(cmd, res);
+        break;
+    }
+}
+
+void impotence_mut(int cmd, variant *res)
+{
+    switch (cmd)
+    {
+    case SPELL_NAME:
+        var_set_string(res, "Impotence");
+        break;
+    case SPELL_GAIN_MUT:
+        msg_print("Your magic device suddenly feels limp.");
+        break;
+    case SPELL_LOSE_MUT:
+        msg_print("Your magic device no longer feels limp.");
+        break;
+    case SPELL_MUT_DESC:
+        var_set_string(res, "You are impotent.");
         break;
     default:
         default_spell(cmd, res);
@@ -1562,6 +1671,31 @@ void infravision_mut(int cmd, variant *res)
         break;
     case SPELL_CALC_BONUS:
         p_ptr->see_infra += 3;
+        break;
+    default:
+        default_spell(cmd, res);
+        break;
+    }
+}
+
+void inspired_smithing_mut(int cmd, variant *res)
+{
+    switch (cmd)
+    {
+    case SPELL_NAME:
+        var_set_string(res, "Inspired Smithing");
+        break;
+    case SPELL_GAIN_MUT:
+        msg_print("You gain the ability to inspire smiths!");
+        break;
+    case SPELL_LOSE_MUT:
+        msg_print("You can no longer inspire smiths.");
+        break;
+    case SPELL_MUT_DESC:
+        var_set_string(res, "Your presence inspires smiths.");
+        break;
+    case SPELL_HELP_DESC:
+        var_set_string(res, "You will receive better results from item reforging.");
         break;
     default:
         default_spell(cmd, res);
@@ -1712,6 +1846,7 @@ void moron_mut(int cmd, variant *res)
     case SPELL_GAIN_MUT:
         msg_print("Your brain withers away...");
         mut_lose(MUT_HYPER_INT);
+        mut_lose(MUT_PULTITIS);
         break;
     case SPELL_LOSE_MUT:
         msg_print("Your brain reverts to normal.");
@@ -1781,6 +1916,33 @@ void nausea_mut(int cmd, variant *res)
             if (hex_spelling_any()) stop_hex_spell_all();
             warlock_stop_singing();
         }
+        break;
+    default:
+        default_spell(cmd, res);
+        break;
+    }
+}
+
+void no_inhibitions_mut(int cmd, variant *res)
+{
+    switch (cmd)
+    {
+    case SPELL_NAME:
+        var_set_string(res, "No Inhibitions");
+        break;
+    case SPELL_GAIN_MUT:
+        msg_print("You suddenly feel free to do anything.");
+        mut_lose(MUT_COWARDICE);
+        mut_lose(MUT_FEARLESS);
+        break;
+    case SPELL_LOSE_MUT:
+        msg_print("You no longer feel incredibly free.");
+        break;
+    case SPELL_MUT_DESC:
+        var_set_string(res, "You have no inhibitions.");
+        break;
+    case SPELL_CALC_BONUS:
+        res_add(RES_FEAR);
         break;
     default:
         default_spell(cmd, res);
@@ -2008,6 +2170,29 @@ void puny_mut(int cmd, variant *res)
         break;
     case SPELL_MUT_DESC:
         var_set_string(res, "You are puny (-4 STR).");
+        break;
+    default:
+        default_spell(cmd, res);
+        break;
+    }
+}
+
+void purple_mut(int cmd, variant *res)
+{
+    switch (cmd)
+    {
+    case SPELL_NAME:
+        var_set_string(res, "Purple Patron");
+        break;
+    case SPELL_GAIN_MUT:
+        msg_print("You attract the attention of a Purple!");
+        /* In case it isn't obvious, every character has a chaos deity assigned at birth. */
+        break;
+    case SPELL_LOSE_MUT:
+        msg_print("You lose the attention of the Purples.");
+        break;
+    case SPELL_MUT_DESC:
+        var_set_string(res, "You are the disciple of a Purple.");
         break;
     default:
         default_spell(cmd, res);
@@ -2266,6 +2451,32 @@ void scorpion_tail_mut(int cmd, variant *res)
         p_ptr->innate_attacks[p_ptr->innate_attack_ct++] = a;
         break;
     }
+    default:
+        default_spell(cmd, res);
+        break;
+    }
+}
+
+void sensitive_eyes_mut(int cmd, variant *res)
+{
+    switch (cmd)
+    {
+    case SPELL_NAME:
+        var_set_string(res, "Sensitive Eyes");
+        break;
+    case SPELL_GAIN_MUT:
+        msg_print("Your eyes suddenly feel very sensitive.");
+        break;
+    case SPELL_LOSE_MUT:
+        msg_print("Your eyes no longer feel sensitive.");
+        break;
+    case SPELL_MUT_DESC:
+        var_set_string(res, "Your eyes are very sensitive.");
+        break;
+    case SPELL_CALC_BONUS:
+        p_ptr->see_infra += 4;
+        res_add_vuln(RES_BLIND);
+        break;
     default:
         default_spell(cmd, res);
         break;
@@ -2818,6 +3029,31 @@ void wasting_mut(int cmd, variant *res)
                 dec_stat(which_stat, randint1(6) + 6, one_in_(6));
             }
         }
+        break;
+    default:
+        default_spell(cmd, res);
+        break;
+    }
+}
+
+void waybread_into_mut(int cmd, variant *res)
+{
+    switch (cmd)
+    {
+    case SPELL_NAME:
+        var_set_string(res, "Waybread Intolerance");
+        break;
+    case SPELL_GAIN_MUT:
+        msg_print("The idea of lembas suddenly disgusts you!");
+        break;
+    case SPELL_LOSE_MUT:
+        msg_print("You are cured of your waybread intolerance.");
+        break;
+    case SPELL_MUT_DESC:
+        var_set_string(res, "You have a waybread intolerance.");
+        break;
+    case SPELL_CALC_BONUS:
+        p_ptr->levitation = TRUE;
         break;
     default:
         default_spell(cmd, res);
