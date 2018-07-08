@@ -72,7 +72,7 @@ Body Armor    L19 Resist Shards; Aura of Shards
 Cloaks        L19 Aura of Shards
 
 Understanding
-Helmets       L21 +2 INT; Fast Psuedo-id
+Helmets       L21 +2 INT; Easy Identify
 Lights        L21 +1 INT
 
 Elemental Protection
@@ -176,7 +176,7 @@ Helmet
 Protection    L5  AC Bonus; Protection from Corrosion
 Light         L15 Resist Light
 Shadow        L17 Resist Darkness
-Understanding L21 +2 INT; Fast Pseudo-id
+Understanding L21 +2 INT; Easy Identify
 Seeing        L27 Resist Blindness; See Invisible
 Stability     L31 Resist Nexus
 Death         L35 Resist Nether
