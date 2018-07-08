@@ -40,7 +40,7 @@ Object Knowledge and Object Quality are related concepts (You gain kowledge abou
 
 <topic:Quality><style:heading>How Good is this Object, Anyway?</style>
 
-The broad quality of a wearable object (i.e., equipment) is given by the strong version of psuedo-id. Objects are, in increasing/decreasing order of quality, one of average, good/bad, excellent/awful or special/terrible. What does this mean?
+The broad quality of a wearable object (i.e., equipment) is given by the strong version of pseudo-id. Objects are, in increasing/decreasing order of quality, one of average, good/bad, excellent/awful or special/terrible. What does this mean?
 
 If you did some shopping, then you probably saw what average equipment looks like. For example, the Weapon Smiths might have inventory like the following:
 <style:screenshot>
