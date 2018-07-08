@@ -1600,6 +1600,12 @@ static void process_world_aux_timeout(void)
             while (p_ptr->slow && free_act_save_p(dun_level*2));
     }
 
+    /* Unwellness recovery */
+    if (p_ptr->unwell)
+    {
+        (void)set_unwell(p_ptr->unwell - 1, TRUE);
+    }
+
     /* Mini-slow recovery - regen helps */
     if (p_ptr->minislow)
     {
