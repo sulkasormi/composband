@@ -143,6 +143,16 @@ static mutation_info _mutations[MAX_MUTATIONS] =
     {MUT_RATING_GOOD,       MUT_TYPE_BONUS,             0, 0, {0,  0,   0, draconian_resistance_mut}},
     {MUT_RATING_GOOD,                    0,             0, 0, {0,  0,   0, draconian_metamorphosis_mut}},
 
+    {MUT_RATING_AWFUL,                   0,             0, 4, {0,  0,   0, easy_tiring_mut}},
+    {MUT_RATING_AVERAGE,    MUT_TYPE_BONUS,             0, 4, {0,  0,   0, sensitive_eyes_mut}},
+    {MUT_RATING_AVERAGE,    MUT_TYPE_BONUS,             0, 4, {0,  0,   0, no_inhibitions_mut}},
+    {MUT_RATING_BAD,                     0,             0, 4, {0,  0,   0, waybread_into_mut}},
+    {MUT_RATING_AWFUL,      MUT_TYPE_BONUS,             0, 4, {0,  0,   0, cerebral_pultitis_mut}},
+    {MUT_RATING_BAD,        MUT_TYPE_EFFECT,            0, 4, {0,  0,   0, hypochondria_mut}},
+    {MUT_RATING_GOOD,                    0,             0, 0, {0,  0,   0, purple_mut}},
+    {MUT_RATING_GREAT,                   0,             0, 0, {0,  0,   0, inspired_smithing_mut}},
+    {MUT_RATING_BAD,                     0,             0, 4, {0,  0,   0, impotence_mut}},
+
 };
 
 int _mut_prob_gain(int i)
@@ -160,7 +170,12 @@ int _mut_prob_gain(int i)
     {
     case MUT_CHAOS_GIFT:
         /* TODO: Birth Chaos Warriors with this mutation */
-        if ((p_ptr->pclass == CLASS_CHAOS_WARRIOR) || (p_ptr->personality == PERS_CHAOTIC))
+        if ((p_ptr->pclass == CLASS_CHAOS_WARRIOR) || (p_ptr->personality == PERS_CHAOTIC) || (mut_present(MUT_PURPLE_GIFT)))
+            return 0;
+        break;
+
+    case MUT_PURPLE_GIFT:
+        if ((p_ptr->pclass == CLASS_CHAOS_WARRIOR) || (mut_present(MUT_CHAOS_GIFT)))
             return 0;
         break;
 
@@ -194,6 +209,10 @@ int _mut_prob_gain(int i)
             return racial_odds;
         break;
 
+    case MUT_IMPOTENCE:
+        if (p_ptr->psex == SEX_FEMALE) return 0;
+        break;
+
     case MUT_TENTACLES:
         if (p_ptr->prace == RACE_MIND_FLAYER)
             return racial_odds;
@@ -225,6 +244,7 @@ int _mut_prob_gain(int i)
         case MUT_ALBINO:
         case MUT_XTRA_LEGS:
         case MUT_SHORT_LEG:
+        case MUT_SENSITIVE_EYES:
             result = 0;
             break;
         }
@@ -313,8 +333,17 @@ void mut_get_flags(u32b flgs[OF_ARRAY_SIZE])
     if (mut_present(MUT_FEARLESS))
         add_flag(flgs, OF_RES_FEAR);
 
+    if (mut_present(MUT_NO_INHIBITIONS))
+        add_flag(flgs, OF_RES_FEAR);
+
     if (mut_present(MUT_REGEN))
         add_flag(flgs, OF_REGEN);
+
+    if (mut_present(MUT_SENSITIVE_EYES))
+    {
+        add_flag(flgs, OF_INFRA);
+        add_flag(flgs, OF_VULN_BLIND);
+    }
 
     if (mut_present(MUT_ESP))
         add_flag(flgs, OF_TELEPATHY);
@@ -385,6 +414,10 @@ void mut_calc_stats(s16b stats[MAX_STATS])
         stats[A_INT] -= 4;
         stats[A_WIS] -= 4;
     }
+    if (mut_present(MUT_PULTITIS))
+        stats[A_INT] -= 3;
+    if (mut_present(MUT_NO_INHIBITIONS))
+        stats[A_WIS] -= 4;
     if (mut_present(MUT_STEEL_SKIN))
         stats[A_DEX] -= 1;
     if (mut_present(MUT_LIMBER))
@@ -681,6 +714,7 @@ bool mut_demigod_pred(int mut_idx)
     case MUT_BLACK_MARKETEER:
     case MUT_FELL_SORCERY:
     case MUT_TREAD_SOFTLY:
+    case MUT_INSPIRED_SMITHING:
         return TRUE;
         break;
 
@@ -876,6 +910,12 @@ void mut_process(void)
 
     /* No effect on the global map */
     if (p_ptr->wild_mode) return;
+
+    /* Sneezing isn't strictly a mutation process, but it goes here anyway */
+    if ((p_ptr->unwell) && (one_in_(100)))
+    {
+        do_sneeze();
+    }
 
     var_init(&v);
 
