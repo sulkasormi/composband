@@ -2993,7 +2993,6 @@ enum obj_flags_e {
 #define AM_QUEST        0x00000800
 #define AM_SHUFFLING    0x00001000
 
-
 /*** Monster blow constants ***/
 
 
@@ -5899,3 +5898,6 @@ enum
     PANTHEON_EGYPTIAN,
     PANTHEON_MAX,
 };
+
+/* Maximum duration of unwellness */
+#define UNWELL_EFFECTIVE_MAX 55
