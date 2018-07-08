@@ -138,7 +138,18 @@
 #define MUT_DRACONIAN_RESISTANCE 129
 #define MUT_DRACONIAN_METAMORPHOSIS 130
 
-#define MAX_MUTATIONS      131   /* see also MUT_FLAG_SIZE in defines.h */
+/* Frog(spawn) mutations */
+#define MUT_EASY_TIRING       131
+#define MUT_SENSITIVE_EYES    132
+#define MUT_NO_INHIBITIONS    133
+#define MUT_WAYBREAD_INTO     134
+#define MUT_PULTITIS          135
+#define MUT_HYPOCHONDRIA      136
+#define MUT_PURPLE_GIFT       137
+#define MUT_INSPIRED_SMITHING 138
+#define MUT_IMPOTENCE         139
+
+#define MAX_MUTATIONS      140   /* see also MUT_FLAG_SIZE in defines.h */
 
 typedef enum {
     MUT_RATING_AWFUL = -2,
@@ -202,6 +213,7 @@ extern void black_marketeer_mut(int cmd, variant *res);
 extern void beak_mut(int cmd, variant *res);
 extern void berserk_rage_mut(int cmd, variant *res);
 extern void blank_face_mut(int cmd, variant *res);
+extern void cerebral_pultitis_mut(int cmd, variant *res);
 extern void chaos_deity_mut(int cmd, variant *res);
 extern void cowardice_mut(int cmd, variant *res);
 extern void cult_of_personality_mut(int cmd, variant *res);
@@ -218,6 +230,7 @@ extern void draconian_resistance_mut(int cmd, variant *res);
 extern void draconian_shield_mut(int cmd, variant *res);
 extern void draconian_strike_mut(int cmd, variant *res);
 
+extern void easy_tiring_mut(int cmd, variant *res);
 extern void einstein_mut(int cmd, variant *res);
 extern void elec_aura_mut(int cmd, variant *res);
 extern void evasion_mut(int cmd, variant *res);
@@ -237,9 +250,12 @@ extern void good_luck_mut(int cmd, variant *res);
 extern void hallucination_mut(int cmd, variant *res);
 extern void he_man_mut(int cmd, variant *res);
 extern void horns_mut(int cmd, variant *res);
+extern void hypochondria_mut(int cmd, variant *res);
 extern void illusion_normal_mut(int cmd, variant *res);
+extern void impotence_mut(int cmd, variant *res);
 extern void infernal_deal_mut(int cmd, variant *res);
 extern void infravision_mut(int cmd, variant *res);
+extern void inspired_smithing_mut(int cmd, variant *res);
 extern void invulnerability_mut(int cmd, variant *res);
 extern void limber_mut(int cmd, variant *res);
 extern void loremaster_mut(int cmd, variant *res);
@@ -248,6 +264,7 @@ extern void merchants_friend_mut(int cmd, variant *res);
 extern void moron_mut(int cmd, variant *res);
 extern void motion_mut(int cmd, variant *res);
 extern void nausea_mut(int cmd, variant *res);
+extern void no_inhibitions_mut(int cmd, variant *res);
 extern void normality_mut(int cmd, variant *res);
 extern void one_with_magic_mut(int cmd, variant *res);
 extern void peerless_sniper_mut(int cmd, variant *res);
@@ -256,6 +273,7 @@ extern void polymorph_wounds_mut(int cmd, variant *res);
 extern void potion_chugger_mut(int cmd, variant *res);
 extern void produce_mana_mut(int cmd, variant *res);
 extern void puny_mut(int cmd, variant *res);
+extern void purple_mut(int cmd, variant *res);
 extern void random_banish_mut(int cmd, variant *res);
 extern void random_teleport_mut(int cmd, variant *res);
 extern void random_telepathy_mut(int cmd, variant *res);
@@ -266,6 +284,7 @@ extern void rotting_flesh_mut(int cmd, variant *res);
 extern void sacred_vitality_mut(int cmd, variant *res);
 extern void scales_mut(int cmd, variant *res);
 extern void scorpion_tail_mut(int cmd, variant *res);
+extern void sensitive_eyes_mut(int cmd, variant *res);
 extern void shadow_walk_mut(int cmd, variant *res);
 extern void short_legs_mut(int cmd, variant *res);
 extern void silly_voice_mut(int cmd, variant *res);
@@ -283,6 +302,7 @@ extern void vulnerability_mut(int cmd, variant *res);
 extern void warning_mut(int cmd, variant *res);
 extern void warts_mut(int cmd, variant *res);
 extern void wasting_mut(int cmd, variant *res);
+extern void waybread_into_mut(int cmd, variant *res);
 extern void weapon_skills_mut(int cmd, variant *res);
 extern void weird_mind_mut(int cmd, variant *res);
 extern void wings_mut(int cmd, variant *res);
