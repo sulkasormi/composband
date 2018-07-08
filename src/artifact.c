@@ -1917,7 +1917,7 @@ static _slot_weight_t _slot_weight_tbl[] = {
     {"Amulets", object_is_amulet, 40},
     {"Lights", object_is_lite, 36},
     {"Body Armor", object_is_body_armour, 80},
-    {"Cloaks", object_is_cloak, 45},
+    {"Cloaks", object_is_cloak, 43},
     {"Helmets", object_is_helmet, 50},
     {"Gloves", object_is_gloves, 45},
     {"Boots", object_is_boots, 50},
@@ -3278,6 +3278,12 @@ bool reforge_artifact(object_type *src, object_type *dest, int fame)
     {
         min_power = 3 * base_power / 4;
         max_power = MAX(6000, 5 * base_power / 4);
+    }
+
+    if (mut_present(MUT_INSPIRED_SMITHING))
+    {
+        min_power += (min_power / 8);
+        max_power += (max_power / 12);
     }
 
     /* Better Fame means better results! */
