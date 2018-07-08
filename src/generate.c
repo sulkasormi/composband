@@ -1340,6 +1340,7 @@ static void battle_gen(void)
 static bool level_gen(cptr *why)
 {
     bool small = FALSE;
+    bool coffee = FALSE;
 
     /* XXX Roll for a small level. Users should not be able to control
      * the level size at runtime. For example, I personally used to force
@@ -1355,8 +1356,12 @@ static bool level_gen(cptr *why)
     else if (one_in_(SMALL_LEVEL))
         small = TRUE;
     if ((dungeon_type == DUNGEON_ICKY) && (dun_level == 10)) small = TRUE;
-    if ((coffee_break) && (dun_level < 99) && (randint0(484) < 484 - (dun_level * 2))) small = TRUE;
-    if ((dungeon_type == DUNGEON_MOUND) && (randint0(125) < (460 - (dun_level * 5)))) small = TRUE;
+    if (((coffee_break) || ((dungeon_type == DUNGEON_ANGBAND) && (!ironman_downward))))
+    {
+        coffee = TRUE;
+        if ((dun_level < 99) && (randint0(484) < 484 - (dun_level * 2))) small = TRUE;
+    }
+    if ((dungeon_type == DUNGEON_MOUND) && (randint0(125) < (484 - (dun_level * 5)))) small = TRUE;
 
     if (small)
     {
@@ -1383,7 +1388,7 @@ static bool level_gen(cptr *why)
                 wid = randint1(max_wid);
                 if (hgt == max_hgt && wid == max_wid) continue;
                 /* exclude 1x1, 1x2 and 2x1 */
-                if (hgt * wid <= (coffee_break ? (MIN(6, (dun_level + 10 + randint1(35)) / 25)) : 2)) continue;
+                if (hgt * wid <= (coffee ? (MIN(6, (dun_level + 10 + randint1(35)) / 25)) : 2)) continue;
                 break;
             }
         }
