@@ -153,6 +153,13 @@ int device_calc_fail_rate(object_type *o_ptr)
         if (devicemaster_is_speciality(o_ptr))
             skill_boost = 5 + 3*p_ptr->lev/5; /* 40+15 base = 115 -> 150 */
 
+        if ((mut_present(MUT_IMPOTENCE)) && (o_ptr->tval == TV_STAFF || o_ptr->tval == TV_ROD))
+        {
+            skill_boost -= 10;
+            if (effect.type == EFFECT_SPEED || effect.type == EFFECT_SPEED_HERO || o_ptr->name2 == EGO_DEVICE_QUICKNESS)
+                skill_boost -= 20;
+        }
+
         obj_flags(o_ptr, flgs);
         if (have_flag(flgs, OF_EASY_SPELL))
         {
@@ -722,7 +729,7 @@ static cptr _do_potion(int sval, int mode)
         }
         break; }
     case SV_POTION_STAR_HEALING:
-        if (desc) return "It heals you and cures blindness, confusion, poison, stunned, cuts and berserk when you quaff it.";
+        if (desc) return "It heals you and cures blindness, confusion, poison, stunned, cuts, illnesses and berserk when you quaff it.";
         if (info) return info_heal(0, 0, _potion_power(1000));
         if (cast)
         {
@@ -732,12 +739,14 @@ static cptr _do_potion(int sval, int mode)
             if (set_poisoned(0, TRUE)) device_noticed = TRUE;
             if (set_stun(0, TRUE)) device_noticed = TRUE;
             if (set_cut(0, TRUE)) device_noticed = TRUE;
-            if (set_shero(0,TRUE)) device_noticed = TRUE;
+            if (set_shero(0, TRUE)) device_noticed = TRUE;
+            if (set_unwell(0, TRUE)) device_noticed = TRUE;
             if (p_inc_minislow(-1)) device_noticed = TRUE;
+            update_stuff(); /* hp may change if the player was unwell ... */
         }
         break;
     case SV_POTION_LIFE:
-        if (desc) return "It heals you completely, restores life, experience and all your stats and cures blindness, confusion, poison, hallucination, stunned, cuts, slowness and berserk when you quaff it.";
+        if (desc) return "It heals you completely, restores life, experience and all your stats and cures blindness, confusion, poison, hallucination, stunned, cuts, slowness, illnesses and berserk when you quaff it.";
         if (info) return info_heal(0, 0, _potion_power(5000));
         if (cast)
         {
@@ -752,6 +761,7 @@ static cptr _do_potion(int sval, int mode)
             set_image(0, TRUE);
             set_stun(0, TRUE);
             set_cut(0, TRUE);
+            set_unwell(0, TRUE);
             do_res_stat(A_STR);
             do_res_stat(A_CON);
             do_res_stat(A_DEX);
@@ -761,7 +771,7 @@ static cptr _do_potion(int sval, int mode)
             set_shero(0,TRUE);
             (void)p_inc_minislow(-10);
             p_ptr->slow = 0;
-            update_stuff(); /* hp may change if Con was drained ... */
+            update_stuff();
             hp_player(_potion_power(5000));
             device_noticed = TRUE;
         }
