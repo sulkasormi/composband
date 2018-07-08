@@ -2269,6 +2269,79 @@ bool set_slow(int v, bool do_dec)
     return (TRUE);
 }
 
+/*
+ * Effect of unwellness
+ */
+byte unwell_effect(int uw)
+{
+   if ((!uw) || (uw > 55)) return 0;
+   if (uw > 30) return 4;
+   return ((uw + 9) / 10);
+}
+
+/*
+ * Set "p_ptr->unwell", notice observable changes
+ */
+bool set_unwell(int v, bool do_dec)
+{
+    bool notice = FALSE;
+    byte old_eff = 0, new_eff = 0;
+
+    /* Hack -- Force good values */
+    v = (v > 100) ? 100 : (v < 0) ? 0 : v;
+
+    if (p_ptr->is_dead) return FALSE;
+
+    if ((p_ptr->unwell > 40) && (v >= p_ptr->unwell)) return FALSE;
+
+    /* Open */
+    if (v)
+    {
+        if (p_ptr->unwell && !do_dec)
+        {
+            if (p_ptr->unwell > v) return FALSE;
+        }
+    }
+
+    /* Shut */
+    else
+    {
+        if (p_ptr->unwell)
+        {
+            msg_print("You no longer feel unwell.");
+
+            notice = TRUE;
+        }
+    }
+    old_eff = unwell_effect(p_ptr->unwell);
+    new_eff = unwell_effect(v);
+
+    /* Notice changes in unwellness level */
+    if ((!notice) && (old_eff != new_eff)) notice = TRUE;
+    if ((new_eff) && (!old_eff))
+    {
+        msg_print("You suddenly feel unwell!");
+    }
+
+    /* Use the value */
+    p_ptr->unwell = v;
+
+    /* Nothing to notice */
+    if (!notice) return (FALSE);
+
+    /* Disturb */
+    if (disturb_state) disturb(0, 0);
+
+    /* Recalculate bonuses */
+    p_ptr->update |= (PU_BONUS);
+    p_ptr->redraw |= (PR_STATUS);
+
+    /* Handle stuff */
+    handle_stuff();
+
+    /* Result */
+    return (TRUE);
+}
 
 /*
  * Set "p_ptr->shield", notice observable changes
@@ -5744,7 +5817,7 @@ void do_poly_self(void)
             {
                 p_ptr->psex = SEX_FEMALE;
                 sprintf(effect_msg, "female ");
-
+                mut_lose(MUT_IMPOTENCE);
             }
             else
             {
