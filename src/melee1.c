@@ -777,6 +777,12 @@ bool make_attack_normal(int m_idx)
                             obvious = TRUE;
                         }
                     }
+                    else if ((one_in_(4)) && ((one_in_(4)) || (!res_save_default(RES_POIS))) 
+                       && (p_ptr->prace != RACE_ANDROID))
+                    {
+                        if (p_ptr->unwell > UNWELL_EFFECTIVE_MAX) set_unwell(MAX(UNWELL_EFFECTIVE_MAX + 1, p_ptr->unwell - 10), TRUE);
+                        else if (!p_ptr->unwell) set_unwell(75 + randint1(25), TRUE);
+                    }
                     break;
                 case RBE_VAMP:
                     obvious = TRUE;
