@@ -485,6 +485,12 @@ static void rd_extra(savefile_ptr file)
         p_ptr->minislow = 0;
         p_ptr->mini_energy = 0;
     } 
+    if (!savefile_is_older_than(file, 7,0,6,5))
+    {
+       p_ptr->unwell = savefile_read_byte(file);
+    }
+    else p_ptr->unwell = 0;
+
     p_ptr->afraid = savefile_read_s16b(file);
     p_ptr->cut = savefile_read_s16b(file);
     p_ptr->stun = savefile_read_s16b(file);
