@@ -2274,7 +2274,7 @@ bool set_slow(int v, bool do_dec)
  */
 byte unwell_effect(int uw)
 {
-   if ((!uw) || (uw > 55)) return 0;
+   if ((!uw) || (uw > UNWELL_EFFECTIVE_MAX)) return 0;
    if (uw > 30) return 4;
    return ((uw + 9) / 10);
 }
@@ -2330,7 +2330,7 @@ bool set_unwell(int v, bool do_dec)
     if (!notice) return (FALSE);
 
     /* Disturb */
-    if (disturb_state) disturb(0, 0);
+    if ((disturb_state) && ((!new_eff) || (!old_eff))) disturb(0, 0);
 
     /* Recalculate bonuses */
     p_ptr->update |= (PU_BONUS);
