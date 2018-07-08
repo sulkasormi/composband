@@ -192,7 +192,7 @@ so now it is time to turn our attention to quality.
 How Good is this Object, Anyway?
 
 The broad quality of a wearable object (i.e., equipment) is given by 
-the strong version of psuedo-id. Objects are, in increasing/decreasing 
+the strong version of pseudo-id. Objects are, in increasing/decreasing 
 order of quality, one of average, good/bad, excellent/awful or 
 special/terrible. What does this mean?
 
