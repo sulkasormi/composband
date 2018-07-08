@@ -11158,9 +11158,9 @@ N:673:Mumak
 G:q:s
 I:110:90d10:20:55:100:700
 W:40:2:90:1000:50000:716
-B:BUTT:HURT(4d6)
-B:BUTT:HURT(4d6)
-B:CRUSH:HURT(4d6):HURT(4d6, 20%)
+B:BUTT:HURT(5d6)
+B:BUTT:HURT(5d6)
+B:CRUSH:HURT(5d6):HURT(5d6, 20%)
 F:FRIENDS(3d3) |
 F:BASH_DOOR |
 F:ANIMAL | RIDING
@@ -12619,7 +12619,7 @@ B:BITE:HURT(8d6):FIRE(4d6)
 B:HIT:HURT(6d12):FIRE(3d12)
 B:HIT:HURT(6d12):FIRE(3d12)
 F:UNIQUE | CAN_SPEAK | RES_PLAS | AURA_FIRE | SELF_LITE_1 | SELF_LITE_2 |
-F:FORCE_SLEEP | FORCE_MAXHP | CAN_FLY | RES_LITE |
+F:FORCE_SLEEP | FORCE_MAXHP | CAN_FLY | RES_LITE | EGYPTIAN2 |
 F:ONLY_ITEM | DROP_2D2 | DROP_GOOD |
 F:OPEN_DOOR | BASH_DOOR | RIDING | GOOD |
 F:ANIMAL | RES_ACID | IM_FIRE | RES_ELEC | RES_POIS | NO_CONF | NO_SLEEP
@@ -22719,7 +22719,7 @@ F:DROP_CORPSE
 P:Copy:Ogre:Warrior
 P:Stats:3:1:-1:0:3:-1
 O:DROP_WARRIOR
-S:FREQ_10 |
+S:FREQ_16 |
 S:BERSERK | S_KIN | S_MONSTER(1d3) | SCARE | THROW
 D:A brutal and feared ogre king, known not to be too picky about what he has
 D: for lunch.
@@ -22774,9 +22774,9 @@ D:of Egypt and its pharaohs. Her venom is unrivaled, the gaze of her eye
 D:deadly, and her fiery breath reduces the unwary to ashes.
 
 N:1258:Nekhbet, the Vulture Mother
-G:B:d
+G:B:D
 I:130:22d187:40:110:10:100
-W:57:3:999:25652:0:0
+W:57:2:999:25652:0:0
 B:CLAW:HURT(10d9):CUT(8d6)
 B:CLAW:HURT(10d9):CUT(8d6)
 B:BITE:HURT(8d7):UNLIFE(6d5)
@@ -23015,7 +23015,7 @@ D:mightier still.
 
 N:1268:Mummified sorceror
 G:z:r
-I:128:22d55:20:70:10:150
+I:128:22d55:25:70:10:150
 W:47:3:999:6050:36300:1267
 B:CLAW:HURT(4d8):BLIND(3d3, 50%)
 B:CLAW:DISEASE(4d8):DISENCHANT(3d3, 20%)
@@ -23036,6 +23036,43 @@ O:DROP_MAGE
 D:A powerful magician in life, his skills appear to have been only sharpened
 D:by death; wrapped in blood-red linen, the mummy sorceror advances, no
 D:longer held back by the weaknesses and mundane needs of the living.
+
+N:1269:Serpopard
+G:H:U
+I:140:40d27:40:99:0:200
+W:58:4:999:2178:0:0
+B:BITE:HURT(4d8):CUT(3d7)
+B:BITE:HURT(4d8):POISON(5d9):BLIND(3d3, 50%)
+B:CLAW:HURT(4d8):CUT(4d7)
+B:CLAW:HURT(4d8):CUT(3d7):CHAOS(3d3, 10%)
+F:BASH_DOOR | WILD_GRASS | ANIMAL | EGYPTIAN2 | RES_CHAO | RANGED_MELEE
+F:RES_POIS | FRIENDS(2d5) | DROP_SKELETON | DROP_CORPSE | POS_GAIN_AC
+F:FORCE_SLEEP | NO_CONF | NO_SLEEP | RES_SOUN | RES_SHAR | POS_TELEPATHY
+F:RES_FIRE | RIDING
+P:Copy:Kutar:Rogue
+P:Body:Hound
+D:A fierce feline creature with a long, serpentine neck, the serpopard moves
+D:at blinding speed; its venomous teeth bite into you before you've noticed
+D:it closing in, and then its razor-sharp claws cut you open.
+
+N:1270:Sha
+G:H:r
+I:144:22d121:30:128:20:200
+W:65:4:999:12826:0:0
+B:BITE:HURT(5d12):CUT(5d7):CHAOS(4d6, 40%)
+B:BITE:HURT(5d12):CUT(5d7):ELEC(4d6)
+B:BUTT:HURT(8d14):STUN(6d6)
+B:BUTT:HURT(4d7):STUN(3d3)
+F:BASH_DOOR | ANIMAL | EGYPTIAN2 | RES_WALL | REFLECTING | RIDING |
+F:RES_POIS | RES_CHAO | DROP_SKELETON | DROP_CORPSE | POS_GAIN_AC | IM_ELEC |
+F:FORCE_SLEEP | FORCE_MAXHP | NO_CONF | NO_STUN | RES_FIRE | RES_ELEC |
+F:EVIL | MOVE_BODY | RES_ACID | RES_DARK | RES_NETH | EGYPTIAN
+P:Copy:Half-Titan:Warrior-Mage
+S:1_IN_8 |
+S:DRAIN_MANA | BR_FORCE
+D:A large, lean, bizarre creature associated with the god Seth, it seems
+D:part jackal, part donkey and all menace. Its wagging forked tail does not
+D:appear to indicate friendliness...
 
 # N: serial number : monster name
 # G: symbol : color
