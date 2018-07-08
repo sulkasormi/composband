@@ -27,7 +27,7 @@ void rune_calc_bonuses(object_type *o_ptr)
     if (o_ptr->rune == RUNE_ABSORPTION)
         p_ptr->magic_resistance += 15;
     if (o_ptr->rune == RUNE_UNDERSTANDING && object_is_helmet(o_ptr))
-        p_ptr->auto_pseudo_id = TRUE;
+        p_ptr->auto_id = TRUE;
     if (o_ptr->rune == RUNE_SHADOW)
     {
         if (object_is_body_armour(o_ptr) || o_ptr->tval == TV_CLOAK)
