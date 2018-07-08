@@ -915,6 +915,7 @@ extern cptr info_weight(int weight);
 extern bool cast_summon_greater_demon(void);
 extern bool cast_wrath_of_the_god(int dam, int rad);
 bool trump_summoning(int num, bool pet, int y, int x, int lev, int type, u32b mode);
+extern void do_sneeze(void);
 
 /* dungeon.c */
 extern void extract_option_vars(void);
@@ -1694,6 +1695,7 @@ extern bool p_inc_minislow(int lisays);
 extern bool m_inc_minislow(monster_type *m_ptr, int lisays);
 extern void dispel_player(void);
 extern bool disenchant_player(void);
+extern byte unwell_effect(int uw);
 extern bool set_mimic(int v, int p, bool do_dec);
 extern bool set_blind(int v, bool do_dec);
 extern bool set_confused(int v, bool do_dec);
@@ -1702,6 +1704,7 @@ extern bool set_paralyzed(int v, bool do_dec);
 extern bool set_image(int v, bool do_dec);
 extern bool set_fast(int v, bool do_dec);
 extern bool set_slow(int v, bool do_dec);
+extern bool set_unwell(int v, bool do_dec);
 extern bool set_shield(int v, bool do_dec);
 extern bool set_tsubureru(int v, bool do_dec);
 extern bool set_magicdef(int v, bool do_dec);
