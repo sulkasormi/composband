@@ -5495,7 +5495,7 @@ void play_game(bool new_game)
             py_birth_food();
             py_birth_light();
         }
-        if ((coffee_break) && (p_ptr->pclass != CLASS_BERSERKER)) py_birth_obj_aux(TV_SCROLL, SV_SCROLL_WORD_OF_RECALL, 1);
+        if ((coffee_break) && (p_ptr->pclass != CLASS_BERSERKER)) py_birth_obj_aux(TV_SCROLL, SV_SCROLL_WORD_OF_RECALL, (game_mode == GAME_MODE_BEGINNER) ? 10 : 1);
 
         spell_stats_on_birth();
 
