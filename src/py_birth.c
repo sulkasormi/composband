@@ -2799,7 +2799,7 @@ static void _birth_finalize(void)
 
     /* Other Initialization */
     if (game_mode == GAME_MODE_BEGINNER)
-        no_wilderness = TRUE;
+        coffee_break = TRUE;
 
     if (coffee_break)
     {
