@@ -103,7 +103,7 @@ The wilderness is not uninhabited and can be dangerous for the unwary. As a gene
 
 Since this world is very large, it is convenient to go into global map mode by pressing the <color:keypress><</color> key, and then return to local map mode by pressing the <color:keypress>></color> key when you are at the destination. In the global map, however, you might suddenly get ambushed by monsters. In such a situation, you cannot simply run away using the <color:keypress><</color> key but you might try escaping with a scroll of teleport.
 
-Each of the towns contains the standard nine shops where you can purchase your supplies for your trips into the dungeon and sell the items you have collected. There are also special buildings offering services for a fee. The services available and the prices charged may vary from town to town so it can be worth hunting around for the best prices.
+Each of the towns contains the standard ten shops where you can purchase your supplies for your trips into the dungeon and sell the items you have collected. There are also special buildings offering services for a fee. The services available and the prices charged may vary from town to town so it can be worth hunting around for the best prices.
 
 <topic:NoWilderness><style:heading>The No Wilderness Option</style>
 <style:screenshot>
@@ -134,7 +134,7 @@ HP <color:G>  43</color>/<color:G>  43</color> .................................
              <color:U>#############################</color>.<color:U>################################</color>....
                                                                            Town
 </style>
-The <color:keyword>No Wilderness</color> option creates a 1x1 wilderness square containing a single town. This town contains the nine standard shops, the special buildings and access to a limited wilderness. Some fixed quests are also available. This option is intended to be used by players who want to take advantage of the special buildings and fixed quests but don't want the large wilderness and by players who need a smaller wilderness for computer efficiency reasons.
+The <color:keyword>No Wilderness</color> option creates a 1x1 wilderness square containing a single town. This town contains the ten standard shops, the special buildings and access to a limited wilderness. Some fixed quests are also available. This option is intended to be used by players who want to take advantage of the special buildings and fixed quests but don't want the large wilderness and by players who need a smaller wilderness for computer efficiency reasons.
 
 <topic:Townspeople><style:heading>Townspeople</style>
 
@@ -192,6 +192,9 @@ This is your house where you can store objects that you cannot carry on your tra
 
   <indent><color:B>The Bookstore</color> (<$:FF_BOOKSTORE>)
 The Bookstore deals in all sorts of magical books. You can purchase and sell spellbooks for the spellcasters here.</indent>
+
+  <indent><color:B>The Shroomery</color> (<$:FF_SHROOMERY>)
+The Shroomery sells many useful basic mushrooms, including the always-handy Cure Poison, Cure Confusion and Fast Recovery.</indent>
 
   <indent><color:B>The Museum</color> (<$:FF_MUSEUM>)
 This is a place where you can donate any item to display. Use it when you find interesting but needless items and you want to leave it in memory. See <link:context_home.txt#Museum> for more information.</indent>
@@ -258,7 +261,7 @@ Once you have accepted a quest an quest entrance will appear and you may enter t
 
 Whether you complete a quest or fail it, be sure to return to the person who assigned the quest and report. If you were successful you may receive a reward which will be waiting for you outside the building when you leave. However the rewards may take other forms. If you failed, you will receive a damning review of your performance. Note that you may not request another quest from that person until you have collected your reward or reported your failure. And if you do fail, the quest granter might not be willing to trust you in the future, so you will need to look elsewhere for fame and glory (and loot).
 
-<style:note>Note: You can not use Genocide, Mass Genocide or Destruction inside a quest.</style>
+<style:note>Note: You can not use Genocide, Mass Genocide, Destruction or Teleport Level inside a quest.</style>
 
 <color:D>
 Original   : (??)
@@ -266,5 +269,6 @@ Updated    : (??)
 Updated    : Zangband DevTeam
 Updated    : Hengband 1.0.11
 Updated    : PosChengband 4.0.0
+Updated    : FrogComposband 7.0.nougat
 </color>
 
