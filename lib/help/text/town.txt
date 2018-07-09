@@ -157,7 +157,7 @@ however, you might suddenly get ambushed by monsters. In such a
 situation, you cannot simply run away using the < key but you might try 
 escaping with a scroll of teleport.
 
-Each of the towns contains the standard nine shops where you can 
+Each of the towns contains the standard ten shops where you can 
 purchase your supplies for your trips into the dungeon and sell the 
 items you have collected. There are also special buildings offering 
 services for a fee. The services available and the prices charged may 
@@ -194,7 +194,7 @@ HP   43/  43 ..............................................................##..
                                                                            Town
 
 The No Wilderness option creates a 1x1 wilderness square containing a 
-single town. This town contains the nine standard shops, the special 
+single town. This town contains the ten standard shops, the special 
 buildings and access to a limited wilderness. Some fixed quests are 
 also available. This option is intended to be used by players who want 
 to take advantage of the special buildings and fixed quests but don't 
@@ -324,6 +324,10 @@ List of Shops
   The Bookstore deals in all sorts of magical books. You can purchase 
   and sell spellbooks for the spellcasters here.
 
+  The Shroomery (0)
+  The Shroomery sells many useful basic mushrooms, including the 
+  always-handy Cure Poison, Cure Confusion and Fast Recovery.
+
   The Museum (M)
   This is a place where you can donate any item to display. Use it when 
   you find interesting but needless items and you want to leave it in 
@@ -429,8 +433,8 @@ collected your reward or reported your failure. And if you do fail, the
 quest granter might not be willing to trust you in the future, so you 
 will need to look elsewhere for fame and glory (and loot).
 
-    Note: You can not use Genocide, Mass Genocide or 
-    Destruction inside a quest.
+    Note: You can not use Genocide, Mass Genocide, 
+    Destruction or Teleport Level inside a quest.
 
 
 Original   : (??)
@@ -438,6 +442,7 @@ Updated    : (??)
 Updated    : Zangband DevTeam
 Updated    : Hengband 1.0.11
 Updated    : PosChengband 4.0.0
+Updated    : FrogComposband 7.0.nougat
 
 
 
