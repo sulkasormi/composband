@@ -567,8 +567,12 @@ Beginner Mode  Designed for new players, this mode greatly restricts
                player is unable to enter birth options (=) and must 
                play with the default options (Too much to confuse new 
                players otherwise). Finally, this option forces the 
-               player to play without a wilderness, using the special 
-               Light Town.
+               player to play in coffee-break mode, which accelerates 
+               the game, eliminates the wilderness and uses the special 
+               Light Town. Since up staircases don't generate in 
+               coffee-break mode, beginners start with extra scrolls of 
+               Word of Recall so they (hopefully) won't get stuck in 
+               the dungeon.
 
 Normal Mode    This is the standard way to play: the Full Monty, so to 
                speak. All races and classes are available to choose 
@@ -584,14 +588,14 @@ Monster Mode   This mode allows the player to play as a monster rather
                (The game forces a special Monster class that has 
                absolutely no gameplay effects). Instead, the racial 
                (and subracial) choices determine the type of monster to 
-               play. There are many options to choose from. Most monter 
-               forms evolve from weak forms to stronger ones (e.g. from 
-               a Forest Troll to a Fire Troll, and so forth) and many 
-               forms have unique body types (e.g. a Xorn has two full 
-               sets of arms and can wield up to four weapons in melee). 
-               In addition, most monster races have a boss who will 
-               drop a nifty artifact when slain. But the goal of the 
-               game remains the same: kill the Serpent of Chaos.
+               play. There are many options to choose from. Most 
+               monster forms evolve from weak forms to stronger ones 
+               (e.g. from a Forest Troll to a Fire Troll, and so forth) 
+               and many forms have unique body types (e.g. a Xorn has 
+               two full sets of arms and can wield up to four weapons 
+               in melee). In addition, most monster races have a boss 
+               who will drop a nifty artifact when slain. But the goal 
+               of the game remains the same: kill the Serpent of Chaos.
 
 Quick Start    Once an existing character dies you may create a new one 
                from the same savefile. If so, you will be asked whether 
