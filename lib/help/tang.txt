@@ -8,7 +8,7 @@ FrogComposband is a single player role playing game where you, the brave adventu
 
 <topic:CreatingACharacter><style:heading>Creating a Character</style>
 
-Your first step will be to create your character. Since you are new to the game, I suggest you choose <color:keyword>Beginner Mode</color> at the initial prompt. This will greatly limit the complexity of the character creation process and also remove the wilderness option. After playing a few characters to get an idea of how to play, you can start a new character in <color:keyword>Normal Mode</color> to view all the options as well as enable the wilderness. Hey, it's not like your first character is going to win anyway!
+Your first step will be to create your character. Since you are new to the game, I suggest you choose <color:keyword>Beginner Mode</color> at the initial prompt. This will greatly limit the complexity of the character creation process and also activate "coffee-break mode", a faster-paced version of the game with accelerated leveling-up and no wilderness. After playing a few characters to get an idea of how to play, you can start a new character in <color:keyword>Normal Mode</color> to view all the options as well as enable the wilderness. Hey, it's not like your first character is going to win anyway!
 
 After choosing Beginner Mode, the game is going to walk you through creating your character. You can refer to <link:birth.txt> for more detailed info, but the basics are that you will choose a sex, a race and a class and then roll for stats. While your sex is not important (to the game), your race and class are key to everything that follows. Normally, the game has a vast (overwhelming?) array of choices that offer myriad, diverse playstyles, and it can take a while to even learn what is available. For now, we'll consider a few basic playstyles in order to get you going.
 
@@ -326,7 +326,7 @@ But never fear, I can quickly start over. Notice the new birth option:
 </style>
 Choosing <color:keypress>y</color> immediately recreates a new character with the same race, class and stats as the old one and immediately places me back in town. This is a brand new character, so any objects I acquired (like that sling) are gone, and I have no experience. However, my monster memory survives, so I don't have to memorize all the monsters as you encounter them.
 
-Go ahead an play a bit. At this point, the tutorial is over and I'll just give some basic tidbits about the game.
+Go ahead and play a bit. At this point, the tutorial is over and I'll just give some basic tidbits about the game.
 
 <topic:Tidbits><style:heading>Tidbits</style>
 
