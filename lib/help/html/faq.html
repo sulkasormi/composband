@@ -51,7 +51,48 @@ entrances only appear after you request the quest.
 A small number of quests are offered by towns but appear in dungeons. 
 The first of these is Pest Control (offered by the Count after you've 
 completed Thieves' Hideout), which is located on level 5 of the Warrens 
-dungeon, or level 5 of Angband if you play in no-wilderness mode.
+dungeon, or level 5 of Angband in coffee-break mode and no-wilderness 
+mode.
+
+
+</font><font color="#00ff00">Q: </font><font color="#ffffff">What is "coffee-break mode"? How does it differ from normal play?
+
+</font><font color="#ff0000">A: </font><font color="#ffffff">Coffee-break mode is a quicker, simpler and more streamlined version 
+of the game. There is no wilderness, only one town (the "Light Town" 
+version of Outpost) and only one dungeon (Angband). Experience gain 
+(and many forms of proficiency gain) are greatly accelerated, monster 
+drops are improved, and the player receives bonus fame for reforging 
+purposes. All stairs in the dungeon are two-level shafts, and forced 
+descent is turned on. Small levels generate more often in the early 
+part of the game, but become rarer (and less small) towards the 
+endgame. Unlike normal forced-descent play, the player is allowed to 
+recall back to town, as well as to skip random dungeon quests by 
+recalling (although recalling out of a quest incurs a large fame 
+penalty).
+
+Coffee-break mode is a birth option; it is automatically turned on for 
+players who select the 'Beginner' option at character creation, but can 
+also be selected the normal way by non-beginners. Coffee-break mode is 
+not an easy-mode; it is activated for beginners because it is simpler 
+and allows faster progress, not because it is easy.
+
+
+</font><font color="#00ff00">Q: </font><font color="#ffffff">I can't find any up staircases, only down staircases! Is there any 
+way I can get back to town?
+
+</font><font color="#ff0000">A: </font><font color="#ffffff">In coffee-break mode (and Beginner mode), up staircases never 
+generate, but you can return to Outpost by reading a scroll of Word of 
+Recall (or using the 'Recall' class power on a Berserker). Be careful 
+not to run out of scrolls; if you start running low, buy a few more at 
+the Temple or the Alchemy Shop. (If all else fails, you can hope to 
+find a scroll in the dungeon.)
+
+In pure forced-descent mode, up staircases never generate and recalling 
+is disabled, so you do not have any way to return to the surface once 
+you've left it.
+
+In normal play every down staircase is matched by an up staircase, so 
+you can simply walk back, though recalling is still usually faster.
 
 
 </font><font color="#00ff00">Q: </font><font color="#ffffff">I keep dying! What am I doing wrong?
@@ -160,10 +201,11 @@ map.
 
 </font><font color="#ff0000">A: </font><font color="#ffffff">You are either playing in no-wilderness mode, which has no overworld 
 map, or there is a monster nearby and the game won't let you escape too 
-easily by entering the overworld. Selecting 'Beginner' (instead of 
-'Normal') at character creation forces no-wilderness mode, which 
-sometimes confuses players who've seen or heard about the game and 
-expect a wilderness.
+easily by entering the overworld. Coffee-break mode forces 
+no-wilderness play. Selecting 'Beginner' (instead of 'Normal') at 
+character creation forces coffee-break mode (and consequently 
+no-wilderness play), which sometimes confuses players who've seen or 
+heard about the game and expect a wilderness.
 
 
 </font><font color="#00ff00">Q: </font><font color="#ffffff">I tried to reach a dungeon through the overworld, and the overworld 
@@ -627,11 +669,57 @@ Should I use a TXT dump or an HTML dump?
 </font><font color="#ff0000">A: </font><font color="#ffffff">FrogComposband is a fork of ComPosband, a fork of PosChengband, 
 which was based on Chengband, which was based on Hengband, which was 
 based on Japanese ZAngband, which was based on regular ZAngband, a fork 
-of Angband, which was based on Moria and Umoria. (Whew!) In addition to 
-these direct ancestors, FrogComposband and its "family" have been 
-strongly influenced by a number of other Angband variants, like 
-KAngband, Posband, ToME and OAngband.
-   
+of Angband, which was based on Moria and Umoria. (Whew!)
+
+In addition to these direct ancestors, FrogComposband and its "family" 
+have been strongly influenced by a number of other Angband variants, 
+like KAngband, Posband, ToME and OAngband. FrogComposband specifically 
+has also inherited quite a bit of content - starting with its name - 
+from Frogspawn, an unpublished fork of vanilla Angband.
+
+
+</font><font color="#00ff00">Q: </font><font color="#ffffff">What is the design philosophy of FrogComposband?
+
+</font><font color="#ff0000">A: </font><font color="#ffffff">Above all else, FrogComposband aims to be 1) fun and 2) challenging. 
+(It also aims to sneakily bring about Armageddon and the ascendancy of 
+hyperintelligent robots.)
+
+The pursuit of a fun game involves quite a few things. The game tries 
+to be fair to the player - unavoidable deaths out of nowhere should be 
+unknown or at least extremely rare, and non-lethal attacks should add 
+to the challenge and atmosphere but not spoil the fun. (Some unpopular 
+effects can be turned off in the birth options.) Normal play should 
+always keep the player on his toes, offering new situations to tackle 
+and new decisions to make. FrogComposband also has much humorous 
+content to lighten the mood, some of it hidden to be discovered when 
+least expected.
+
+You decide what's fun and what isn't! The game allows many different 
+playstyles, from speed-diving to a slow, methodical grind, without 
+trying to enforce any one of them on the player. It is also designed to 
+be highly customizable, with about 100 options and a number of other 
+ways to modify things. I don't try to make the decisions for you, 
+beyond providing generally popular default settings; every player wants 
+different things.
+
+Winning the game should be an achievement! FrogComposband attempts to 
+not be easy, but also to avoid artificial difficulty of the "screw you, 
+you're dead" type; a player who makes no mistakes and knows what he's 
+doing should always have a good chance to win. The game also aims to be 
+balanced; while some classes, races, items and spell realms are much 
+stronger than others, none should be so strong as to make the game 
+unchallenging or uninteresting.
+
+The game should be infinitely replayable; different personalities, 
+races and (especially) classes present very different challenges, and 
+even two characters of the same race, class and personality can play 
+very differently based on the decisions made, items found and monsters 
+encountered.
+
+The game is constantly evolving (and hopefully improving); it does not 
+claim to have fully reached any of its aims yet, but it's trying to get 
+closer and closer. Player feedback helps there!
+
 
 </font><font color="#00ff00">Q: </font><font color="#ffffff">Who wrote Hengband?
 
