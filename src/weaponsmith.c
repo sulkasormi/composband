@@ -428,6 +428,9 @@ static void _absorb_all(object_type *o_ptr, _absorb_essence_f absorb_f)
 
     obj_flags(&old_obj, old_flgs);
 
+    /* Check whether the item we are absorbing completes a quest */
+    quests_on_get_obj(o_ptr);
+
     /* Mundanity */
     object_prep(&new_obj, o_ptr->k_idx);
     new_obj.loc = old_obj.loc;
