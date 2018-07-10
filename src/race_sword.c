@@ -113,6 +113,9 @@ static bool _absorb(object_type *o_ptr)
     u32b flags[OF_ARRAY_SIZE];
     obj_flags(o_ptr, flags);
 
+    /* Check whether the item we are absorbing completes a quest */
+    quests_on_get_obj(o_ptr);
+
     if (o_ptr->curse_flags & OFC_AGGRAVATE)
         div++;
     if (o_ptr->curse_flags & (OFC_TY_CURSE | OFC_HEAVY_CURSE))
