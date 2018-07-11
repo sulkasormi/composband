@@ -4638,9 +4638,10 @@ extern int PlayerUID;
 #define MON_MARILITH            1130
 #define MON_MIMIC               1131
 #define MON_MULTIHUED_CENTIPEDE 1132
-#define MON_AUDE				1148
-#define MON_HELGA				1149
+#define MON_AUDE		1148
+#define MON_HELGA		1149
 #define MON_GERTRUDE            1150
+#define MON_WIRUIN              1192
 #define MON_NIGHTMARE_DRAGON    1215
 #define MON_JUSTSHORN           1225
 #define MON_SHEEP               1226
