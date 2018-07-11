@@ -685,6 +685,7 @@ race_t *mon_vortex_get_race(void)
         me.get_flags = _get_flags;
         me.gain_level = _gain_level;
         me.birth = _birth;
+        me.boss_r_idx = MON_WIRUIN;
 
         me.flags = RACE_IS_MONSTER | RACE_IS_NONLIVING;
 
