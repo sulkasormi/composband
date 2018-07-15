@@ -627,7 +627,8 @@
 #define RACE_MON_VORTEX         62
 #define RACE_HALF_ORC           63
 #define RACE_EINHERI            64
-#define MAX_RACES               65
+#define RACE_WEREWOLF           65
+#define MAX_RACES               66
 
 #define DEMIGOD_MINOR           0
 #define DEMIGOD_ZEUS            1
@@ -729,7 +730,7 @@
 
 #define DEPRECATED           0x80000000 /* race, class, personality (TODO) */
 
-/* Mimicry uses races too ... Its just that players
+/* Mimicry uses races too ... It's just that players
    cannot choose these races during birth. */
 #define MIMIC_NONE            -1                  /* RACE_HUMAN is 0 and Dopplegangers can mimic humans! */
 
@@ -1425,6 +1426,7 @@ enum {
 #define ART_DEFENDER_OF_THE_CROWN 252
 #define ART_MONKEY_KING            255
 #define ART_MAUL_OF_VICE        279
+#define ART_SILVER_HAMMER       335
 
 /* Bows */
 #define ART_BELTHRONDING        124
@@ -1853,7 +1855,7 @@ enum {
 #define SV_DRAGON_SHINING               10
 #define SV_DRAGON_LAW                   12
 #define SV_DRAGON_BRONZE                14
-#define SV_DRAGON_SILVER                14
+#define SV_DRAGON_SILVER                15
 #define SV_DRAGON_GOLD                  16
 #define SV_DRAGON_CHAOS                 18
 #define SV_DRAGON_BALANCE               20
@@ -2631,6 +2633,7 @@ enum summon_specific_e {
 #define OM_ART_COUNTED     0x0200    /* Stats */
 #define OM_EFFECT_COUNTED  0x0400    /* Stats */
 #define OM_DELAYED_MSG     0x0800    /* Describe inventory slot *after* resorting */
+#define OM_BEING_SHUFFLED  0x1000
 
 
 /*
@@ -3152,7 +3155,7 @@ enum {
 #define RF3_OLYMPIAN        0x00010000
 #define RF3_EGYPTIAN        0x00020000
 #define RF3_EGYPTIAN2       0x00040000
-#define RF3_XXX19           0x00080000
+#define RF3_OLYMPIAN2       0x00080000
 #define RF3_XXX20           0x00100000
 #define RF3_XXX21           0x00200000
 #define RF3_XXX22           0x00400000
@@ -3192,6 +3195,7 @@ enum {
 #define RF7_CAN_CLIMB           0x00100000
 #define RF7_RANGED_MELEE        0x00200000  /* Monster has ranged melee */
 #define RF7_NASTY_GLYPH         0x00400000  /* Monster has nasty glyph */
+#define RF7_SILVER              0x00800000  /* Made of silver */
 
 /*
  * Monster race flags
@@ -3210,7 +3214,7 @@ enum {
 #define RF8_WILD_ALL            0x80000000
 
 /*
- * Monster Corspe Info, including a bunch of stuff for The Possessor
+ * Monster Corpse Info, including a bunch of stuff for The Possessor
  */
 #define RF9_DROP_CORPSE         0x00000001
 #define RF9_DROP_SKELETON       0x00000002
@@ -4241,6 +4245,7 @@ extern int PlayerUID;
 #define MON_WATER_HOUND         340
 #define MON_QUYLTHULG           342
 #define MON_SASQUATCH           343
+#define MON_WEREWOLF            347
 #define MON_D_ELF_LORD          348
 #define MON_CLOUD_GIANT         349
 #define MON_FIRE_VORTEX         354
@@ -5902,3 +5907,40 @@ enum
 
 /* Maximum duration of unwellness */
 #define UNWELL_EFFECTIVE_MAX 55
+
+/* Melee slay and brand powers
+ * (note that ranged slays and brands use different code and values) */
+#define SLAY_MULT_BASIC 190
+#define SLAY_MULT_MID 240
+#define SLAY_MULT_HIGH 280
+#define KILL_MULT_BASIC 320
+#define KILL_MULT_MID 370
+#define KILL_MULT_HIGH 450
+#define SLAY_MULT_EVIL SLAY_MULT_BASIC
+#define SLAY_MULT_SENTIENT SLAY_MULT_BASIC
+#define SLAY_MULT_GOOD SLAY_MULT_BASIC
+#define SLAY_MULT_LIVING SLAY_MULT_BASIC
+#define SLAY_MULT_ANIMAL SLAY_MULT_MID
+#define SLAY_MULT_HUMAN SLAY_MULT_MID
+#define BRAND_MULT_ELEC SLAY_MULT_MID
+#define BRAND_MULT_ACID SLAY_MULT_MID
+#define BRAND_MULT_POIS SLAY_MULT_MID
+#define BRAND_MULT_FIRE SLAY_MULT_MID
+#define BRAND_MULT_COLD SLAY_MULT_MID
+#define SLAY_MULT_UNDEAD SLAY_MULT_HIGH
+#define SLAY_MULT_DEMON SLAY_MULT_HIGH
+#define SLAY_MULT_DRAGON SLAY_MULT_HIGH
+#define SLAY_MULT_ORC SLAY_MULT_HIGH
+#define SLAY_MULT_TROLL SLAY_MULT_HIGH
+#define SLAY_MULT_GIANT SLAY_MULT_HIGH
+#define KILL_MULT_EVIL KILL_MULT_BASIC
+#define KILL_MULT_GOOD KILL_MULT_BASIC
+#define KILL_MULT_LIVING KILL_MULT_BASIC
+#define KILL_MULT_ANIMAL KILL_MULT_MID
+#define KILL_MULT_HUMAN KILL_MULT_MID
+#define KILL_MULT_UNDEAD KILL_MULT_HIGH
+#define KILL_MULT_DEMON KILL_MULT_HIGH
+#define KILL_MULT_DRAGON KILL_MULT_HIGH
+#define KILL_MULT_ORC KILL_MULT_HIGH
+#define KILL_MULT_TROLL KILL_MULT_HIGH
+#define KILL_MULT_GIANT KILL_MULT_HIGH
