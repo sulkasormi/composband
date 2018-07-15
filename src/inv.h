@@ -37,6 +37,7 @@ typedef struct inv_s inv_t, *inv_ptr; /* Hidden/Abstract */
 #define INV_HOME      6
 #define INV_MUSEUM    7
 #define INV_TMP_ALLOC 8  /* Hack so obj_release knows to free() temp objs */
+#define INV_SPECIAL1  9
 
 /* Creation ... be sure to inv_free() any returned inv_ptr */
 extern inv_ptr inv_alloc(cptr name, int type, int max);
