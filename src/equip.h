@@ -103,5 +103,6 @@ extern void    equip_learn_slay(int slay_flag, cptr msg);
 
 extern void    equip_load(savefile_ptr file);
 extern void    equip_save(savefile_ptr file);
+extern inv_ptr get_equipment(void);
 
 #endif
