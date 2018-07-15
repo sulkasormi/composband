@@ -3674,9 +3674,16 @@ static void _ai_think(mon_spell_cast_ptr cast)
     if (p_ptr->inside_arena || p_ptr->inside_battle)
         _remove_group(cast->race->spells->groups[MST_SUMMON], NULL);
 
-    /* Being tele-leveled out of giant slayer is too annoying */
-    if (quest_id_current())
-        _remove_spell(cast->race->spells, _id(MST_ANNOY, ANNOY_TELE_LEVEL));
+    if (cast->flags & MSC_DEST_PLAYER)
+    {
+        /* Being tele-leveled out of giant slayer is too annoying */
+        if (quest_id_current())
+            _remove_spell(cast->race->spells, _id(MST_ANNOY, ANNOY_TELE_LEVEL));
+
+        /* Don't try Poly Other if the player is known to resist */
+        if (player_obviously_poly_immune() || mut_present(MUT_DRACONIAN_METAMORPHOSIS))
+            _remove_spell(cast->race->spells, _id(MST_BIFF, BIFF_POLYMORPH));
+    }
 
     /* Generally, we require direct los to spell against the player.
      * However, smart monsters might splash, summon, heal or escape.
