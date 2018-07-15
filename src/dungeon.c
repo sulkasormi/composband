@@ -2953,6 +2953,7 @@ static void process_world(void)
         if (min != prev_min)
         {
             determine_today_mon(FALSE);
+            if (p_ptr->prace == RACE_WEREWOLF) werewolf_check_midnight();
         }
     }
 
