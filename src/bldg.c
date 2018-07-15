@@ -2199,6 +2199,7 @@ static bool inn_comm(int cmd)
                 if (prev_hour >= 18) /* Proxy for date change */
                 {
                     determine_today_mon(FALSE);
+                    if (p_ptr->prace == RACE_WEREWOLF) werewolf_check_midnight();
                 }
             }
             break;
