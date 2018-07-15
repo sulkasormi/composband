@@ -12,6 +12,35 @@ static void _sync_doc(doc_ptr doc);
 
 static int  _basic_cmd(obj_prompt_context_ptr context, int cmd);
 
+void _obj_prompt_add_race_packs(obj_prompt_ptr prompt)
+{
+    int i;
+    race_t *race_ptr = get_race();
+    if (!(race_ptr->bonus_pack)) return;
+    if (prompt->where[MAX_LOC - 1]) return; /* No room for another pack */
+    for (i = 0; i < MAX_LOC; i++)
+    {
+        if (!prompt->where[i]) 
+        {
+            prompt->where[i] = INV_SPECIAL1;
+            return;
+        }
+    }
+}
+
+inv_ptr _racial_pack_filter(obj_p p)
+{
+    inv_ptr race_inv = get_race()->bonus_pack;
+    if (!race_inv) return NULL;
+    return inv_filter(race_inv, p);
+}
+
+void obj_prompt_add_special_packs(obj_prompt_ptr prompt)
+{
+    _obj_prompt_add_race_packs(prompt);
+    /* _obj_prompt_add_class_packs goes here */
+}
+
 int obj_prompt(obj_prompt_ptr prompt)
 {
     obj_prompt_context_t context = {0};
@@ -208,6 +237,9 @@ static void _context_make(obj_prompt_context_ptr context)
             inv = quiver_filter(filter);
             if (!use_pack_slots) /* quiver might contain non-matching ammo */
                 inv_sort(inv);
+            break;
+        case INV_SPECIAL1:
+            inv = _racial_pack_filter(filter);
             break;
         }
         if (inv)
