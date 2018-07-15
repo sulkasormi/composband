@@ -837,6 +837,28 @@ Other Races
     Base HP       26        Bows        Bad          
     Experience   175%       Infravision 20'
     
+  Werewolf
+  Werewolves are fearsome hunters who can assume either human or wolf 
+  shape. They are exceptionally durable in both forms, and have great 
+  powers of regeneration, though they are infamously vulnerable to fire 
+  and silver, and are not particularly good at using magical spells or 
+  devices in either shape. While in wolf form, werewolves wield no 
+  weapons; instead, they attack with their teeth and claws. As 
+  werewolves wear different equipment in human form and wolf form, they 
+  use one inventory slot for a special satchel in which they keep the 
+  items not needed in their current shape.
+  
+    Stats                   Skills
+    Strength      +1        Disarming   Poor         
+    Intelligence  +0        Device      Very Bad     
+    Wisdom        +0        Save        Fair         
+    Dexterity     +0        Stealth     Fair         
+    Constitution  +1        Searching   Good         
+    Charisma      +0        Perception  Superb       
+    Life Rating  103%       Melee       Fair         
+    Base HP       27        Bows        Fair         
+    Experience   140%       Infravision 50'
+    
   Yeek
   Yeeks are among the most pathetic creatures. Fortunately, their 
   horrible screams can scare away less confident foes, and their skin 
@@ -900,6 +922,7 @@ Klackon       +2   -1   -1   +1   +2   +1  105%  +23  170%  115%
 Kutar         +0   -1   -1   +1   +2   +2  102%  +21  175%   95%
 Mindflayer    -3   +4   +4   +0   -2   -1   97%  +18  150%  115%
 Tonberry      +4   +0   -2   -4   +5   +0  108%  +26  175%  115%
+Werewolf      +1   +0   +0   +0   +1   +0  103%  +27  140%  100%
 Yeek          -2   +1   -2   +1   -2   -4   92%  +14   70%  105%
 
 
@@ -947,6 +970,7 @@ Klackon      Excellent     Bad           Fair          Poor
 Kutar        Bad           Fair          Good          Excellent    
 Mindflayer   Excellent     Excellent     Excellent     Fair         
 Tonberry     Bad           Bad           Fair          Fair         
+Werewolf     Poor          Very Bad      Fair          Fair         
 Yeek         Fair          Fair          Good          Good         
 
 
@@ -994,6 +1018,7 @@ Klackon      Very Bad      Superb        Good          Very Good       20'
 Kutar        Very Bad      Very Good     Poor          Fair             0'
 Mindflayer   Good          Superb        Very Bad      Poor            40'
 Tonberry     Very Bad      Good          Superb        Bad             20'
+Werewolf     Good          Superb        Fair          Fair            50'
 Yeek         Good          Heroic        Bad           Fair            20'
 
 
