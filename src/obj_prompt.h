@@ -70,6 +70,7 @@ struct obj_prompt_context_s
  * if (prompt.obj) to see if the user selected an object
  * and just ignore the return code. */
 extern int obj_prompt(obj_prompt_ptr prompt);
+extern void obj_prompt_add_special_packs(obj_prompt_ptr prompt);
 enum {
     OP_NO_OBJECTS = 1,
       /* No objects meet prompt->filter in the various prompt->where locations.
