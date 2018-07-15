@@ -7467,6 +7467,11 @@ void do_cmd_time(void)
         }
     }
 
+    if (p_ptr->prace == RACE_WEREWOLF)
+    {
+        strcat(desc, werewolf_moon_message());
+    }
+
     /* Message */
     msg_print(desc);
 
