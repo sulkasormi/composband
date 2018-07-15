@@ -89,19 +89,25 @@ void pack_get(obj_ptr obj)
     {
         int value = obj->pval;
 
-        msg_format("You collect %d gold pieces' worth of %s.",
+        if ((p_ptr->prace == RACE_WEREWOLF) && (strpos("silver", name)))
+        {
+            msg_print("You carefully avoid touching a pile of silver coins.");
+        }
+        else
+        {
+            msg_format("You collect %d gold pieces' worth of %s.",
                value, name);
 
-        sound(SOUND_SELL);
+            sound(SOUND_SELL);
 
-        p_ptr->au += value;
-        stats_on_gold_find(value);
+            p_ptr->au += value;
+            stats_on_gold_find(value);
 
-        p_ptr->redraw |= PR_GOLD;
+            p_ptr->redraw |= PR_GOLD;
 
-        if (prace_is_(RACE_MON_LEPRECHAUN))
-            p_ptr->update |= PU_BONUS | PU_HP | PU_MANA;
-
+            if (prace_is_(RACE_MON_LEPRECHAUN))
+                p_ptr->update |= PU_BONUS | PU_HP | PU_MANA;
+        }
         obj->number = 0;
     }
     else
@@ -234,8 +240,10 @@ obj_ptr pack_obj(slot_t slot)
 
 int pack_max(void)
 {
-    if (p_ptr->pclass == CLASS_ALCHEMIST) return PACK_MAX - 3; /* infusion space */
-    return PACK_MAX;
+    int vahennys = 0;
+    if (p_ptr->pclass == CLASS_ALCHEMIST) vahennys += 3; /* infusion space */
+    if (p_ptr->prace == RACE_WEREWOLF) vahennys += 1; /* werewolf pack */
+    return PACK_MAX - vahennys;
 }
 
 inv_ptr pack_filter(obj_p p)
