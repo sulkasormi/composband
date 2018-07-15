@@ -1,0 +1,461 @@
+Changes in <color:keyword>FrogComposband 7.0.nougat</color>:
+
+* Added two new races (Einheri and Werewolf). Einherjar are very powerful but only receive partial benefits from magical healing. Werewolves can (big surprise) assume either human or wolf shape, with both shapes having their strengths and weaknesses
+
+* Slowing is no longer a purely binary status (either no slowing or -10 to speed); while the binary slowing still exists, some forms of slowing are now incremental and can take any value between no slowing and -10. The two forms of slowing partially add together, so a player (or monster) afflicted with both forms can be slowed by up to -12 in total (thanks to Derakon for this idea)
+
+* Shuffled some of the buildings in Anambar to reduce travel distances (the shroomery/black market building and the archery guild building switched places; the library is now in the formerly empty building southwest of the main square, the beastmaster is now where the library was, and the former beastmaster building is now empty)
+
+* Added more Egyptian gods, and a new dungeon they now inhabit. Added a new birth option (single_pantheon) to play with only one of the two pantheons currently in the game (Greek or Egyptian); selecting this option will remove the other pantheon, and its associated dungeon, from the game
+
+* Added new monsters and artifacts
+
+* Added one new demigod power (Inspired Smithing, which improves reforge results) and several new mutations (adapted from Frogspawn)
+
+* Coffee-break mode's modified level size algorithm is now always used in the Angband dungeon, except in the case of ironman non-coffee-break games. Generally, this means smaller levels in the early game
+
+* Friendly monsters no longer trigger the Eldritch Horror sanity-blast
+
+* Replaced potions of resist electricity with potions of vigor, which cure all temporary slowing effects (both binary and incremental) plus stunning. (Potions of life now also cure all temporary slowing effects, and potions of healing and *healing* and rods of angelic healing reduce incremental slowing by 1)
+
+* Fixed a bug that allowed alchemists to receive special benefits from some potions just by inspecting them (thanks to TauzentBlitz for reporting this)
+
+* A list of allied uniques is now shown in the character sheet for classes who can permanently befriend a monster (currently, just politicians)
+
+* The player's life rating (if known) is now shown in the character sheet (at the bottom of the Statistics section)
+
+* Tweaked item valuation again (items with high-pval weaponmastery are now worth more)
+
+* Tweaked the Mauler class. Their Close In spell can now be cancelled during targetting without HP or energy loss (thanks to Mocht for that suggestion), but their archery skills and life rating were reduced a bit
+
+* Coffee-break mode's max reforge power bonus (accelerated reforging) is now permanently reduced if the character fails any of the random Angband quests
+
+* Buffed the Fell Sorcery demigod power
+
+* Improved item parsing. It is now possible to specify an ego device, as well as to specify a pile size, and specified devices are no longer necessarily generated at the lowest level supported by the effect. Some of the quest device rewards are now ego
+
+* Fixed a bug that caused the Identify spell to not work properly for Ring player-monsters (thanks to TauzentBlitz for reporting this)
+
+* The show_discovery and always_dump_origins options are now on by default due to their popularity
+
+* An item's weight is now displayed when the item is examined (thanks to Mocht for reminding me of this)
+
+* The proficiency screen didn't display proper statistics for player death scythes; this has been fixed (thanks to Nivim for reporting this)
+
+* "Cursed" status was not updated properly if the curse was broken by an enchantment; this has been fixed
+
+* Monsters can no longer tele-level the player out of dungeon quest levels (in the case of fixed quests this caused an automatic quest failure, which was highly annoying and somewhat unfair) (thanks to Bucephalus for bringing this up)
+
+* Item quests could become uncompletable for Death-Swords and Weaponsmiths if they absorbed the item without picking it up first; this has been fixed (thanks to Prandar for reporting this)
+
+* Disease attacks can now cause temporary unwellness
+
+* Explosions can now have multiple effects (e.g. Internet Exploders now slow the player a bit in addition to the time damage)
+
+* Psionic Blending now gives +3 stealth per power level instead of +5
+
+* Slightly lowered weaponsmiths' life rating
+
+* Vortex player-monsters now have a race boss (Wiruin)
+
+* Oremorj the Cyberdemon Lord now has fewer hitpoints, but can sometimes recover from confusion speedily
+
+* The Confusing Lights spell is now slightly weaker (staves of Confusing Lights are not affected by this change)
+
+* The "You have no artifacts to reforge" error message now displays the reforge power limit (thanks to bostock for suggesting this)
+
+* Plugged wobbly's Black Market potion reserving exploit
+
+* Made selling caps in key shops (armoury and weapon shop) friendlier to the player, and removed some duplication in the shopkeeper list
+
+* Added more random ring artifact names
+
+* Beginner mode now uses the coffee_break option
+
+* Updated some of the help files
+
+* Various minor tweaks and code improvements
+
+-------------------------------------------------------
+
+Changes in <color:keyword>FrogComposband 7.0.mango</color>:
+
+* Introduced three new personalities (Chaotic, Mundane and Unlucky) and restored the removed Lazy and Munchkin personalities. (Thanks to MITZE for suggesting the Chaotic personality and helping me devise it)
+
+* Adapted the Alchemist class from PosChengband-R
+
+* Adapted the Politician class from Frogspawn
+
+* Restored the special Lazy artifacts (with some tweaks)
+
+* Improved wilderness design (borders between different types of terrain are now less ugly - say goodbye to rectangular oceans)
+
+* Adapted PosChengband-R's coffee-break mode (optional accelerated game) [faster exp gain and loot, no wilderness, forced descent but recall allowed] [it is currently possible to do DL99 and/or DL100 repeatedly]
+
+* The Craven personality now gives vulnerability to fear, but also a moderate quick walk (thanks to MITZE for this suggestion)
+
+* Toned down chaos patron punishments - they happen less often now, and are less insta-killy (it should now be impossible for a punishment to insta-kill a fully healthy player outright, although they can still kill a player who was already hurt, and TY_CURSE is still a possibility at high levels)
+
+* Spellcasting monsters can now use spells in response to being hurt by the player, even if the player is not in their line of sight or within range of their splash attacks. This makes it harder to kill drujs or quylthulgs safely by abusing line of sight (adapted from Frogspawn)
+
+* Tweaked randart creation (bows are now more likely to have slays/brands or a miscellaneous attribute; instead of disproportionately generating randart armors with to-AC of exactly +20 or weapons with to-hit/dam of exactly +25,+25, the bonuses are now somewhat more random)
+
+* Tweaked item valuation (some resists are now worth a bit more, others are now worth a bit less, and items with many high resists are worth a bit more in general. Also, off-weapon slays were not properly valued, while off-weapon brands are now somewhat less valuable)
+
+* Made the Crow's Nest quest saner; it would previously give either heaps of good objects or very few good objects, now it's guaranteed to have a moderate amount of them
+
+* Made the Orc Camp and Tidy the Laboratory quests more compact
+
+* Prevented the player from getting quite so many level-ups from Shadow Fairies and Tidy the Laboratory
+
+* Added some new class-specific quest rewards (no, not for Sand Pit)
+
+* The default reward for Orc Camp is now a staff of enlightenment
+
+* Uniques and monster groups should no longer generate in Trouble at Home
+
+* Due to an oversight, being poly_selfed with no_scrambling on could have extremely bad, potentially lethal consequences; this has been fixed
+
+* The names and descriptions of random (or reforged) artifacts based on a standard artifact with the FULL_NAME flag will no longer be mangled
+
+* Fixed an old bug that sometimes caused staves of cure wounds to appear as staves of healing (or vice versa) in the character sheet's Statistics section
+
+* Fixed some serious bugs in the old code intended to prevent pets from killing the player with friendly fire. (Also, this code now applies to friendly monsters as well as pets; this is only fair, given what happens when the player's spells cause collateral damage to friendly monsters... Monsters with the "stupid" flag are an exception to this.)
+
+* Fixed an old bug that caused quest monsters with escorts to not be correctly marked as questors, making them not reappear if destructed
+
+* Fixed a bug that caused ninja-lawyers to be encumbered by any armor at all, effectively lowering their max SP (thanks to OmniNegro for reporting this)
+
+* Fixed an old bug with rings and death-swords absorbing stacks of identical items (thanks to OmniNegro for reporting this)
+
+* Fixed an old bug with teleporting mounts (thanks to TauzentBlitz for reporting this)
+
+* Fixed an old bug that caused attacks by beholders on other monsters to be treated as attacks by the player (resulting in bizarre messages and damage, giving the player free experience, and allowing beholders to kill uniques). Also fixed a similar but unrelated bug that sometimes caused the message "You invoke Anti-Magic" to appear when a monster invoked it
+
+* Fixed an old bug that caused listed skeleton rewards and actual skeleton rewards to be out of sync (thanks to the person who reported this bug. Unfortunately I forgot to note who it was)
+
+* Fixed a minor bug with doppelgangers (they could gain a demigod power if they levelled up in barbarian or dunadan form, but could only access those powers normally in human or demigod form). Doppelganger barbarians and dunedain no longer receive demigod powers on level-up
+
+* Fixed two old issues with possessors receiving monster lore on possessing a corpse. The first issue was that if the player never saw the monster alive, it would not count as seen, and would be ignored by the knowledge menu. (All possessed monsters are now marked as seen.) The second issue was that deprecated monsters were sometimes inappropriately generated (this should no longer happen), and they were also ignored by the knowledge menu. (Thanks to robinhood for reporting this)
+
+* It is no longer possible to get unlimited hits against a monster by letting it stair-follow the player repeatedly (thanks to Gwarl for reporting this exploit)
+
+* The use_old_target option no longer allows the player to ignore confusion while targetting (thanks to bostock for reporting this exploit)
+
+* Plugged an old exploit that allowed weaponsmiths to permanently remove slaying penalties from heavy body armor, cloaks of the bat etc. by adding a token amount of Slaying essence to the item and then removing that (there are some very specific circumstances in which this exploit can still work, but the advantage gained should be minuscule compared to before)
+
+* Monsters not currently visible are now always displayed as white in the monster health bar, unless enhanced telepathy is used. This prevents the health bar from accidentally revealing a monster's identity (thanks to vertigo for reminding me of this)
+
+* High-level adversaries in the Thalos Arena no longer drop gold (thanks to Mocht for pointing out that they did)
+
+* Standard artifacts received as quest rewards were not marked as "found", which caused the artifact counter in the character sheet to not notice them, though the bug did not allow them to be actually generated repeatedly (thanks to Mocht for reporting this)
+
+* Fixed a minor bug that caused the message "You have found something!" to sometimes be displayed on rubble clearing even if nothing was actually found (thanks to Mocht for reporting this). Also, tweaked item generation in rubble (previously, items could only be found in low-level rubble. Now there's a small chance of finding items in high-level rubble too, but spamming for rubble items is harder)
+
+* It is now possible to use the 'J' key to auto-travel to an object-list or monster-list entry. (This was already possible with the '`' key, but that option doesn't give full compatibility with non-English keyboards)
+
+* Level 10 of Icky Cave is now guaranteed to be small or smallish
+
+* All staircases generated in the Battlefield dungeon will now be shafts
+
+* Tourists can now sell photographs for loose change at the Journalists' Guild in Anambar
+
+* Improved gray-mages' spell UI
+
+* Improved weapon proficiency display (it is now possible to see the class-specific proficiency caps for each weapon in-game, and to view the player's current proficiency as a percentage of either full mastery or the class-specific cap)
+
+* Characters with levitation are no longer unable to deliberately jump into trap doors
+
+* Scrolls will now ask for confirmation if reading them would have no effect (e.g. Teleport Level or Genocide inside a quest)
+
+* Scrolls of Crafting now cancel outright if reading them is guaranteed to not have an effect (however, in cases where reading them might have an effect but doesn't, they still get used up like before)
+
+* Nazguls are now immune to polymorphing
+
+* Made wands of tsunami slightly less overpowered
+
+* The weapon shop now stocks projectiles and quivers more often during the very early game (thanks to CyclopsSlayer for bringing up the annoyance of not having any ammo)
+
+* Slightly nerfed the Death realm's Nether Storm spell
+
+* "Empty" barbarian talismans with nothing on them should no longer generate
+
+* Monsters now cast spells slightly more intelligently (thanks to Mocht for suggesting that they be able to learn about anti-teleportation)
+
+* Skillmasters no longer get Vampirism True cheaper than other classes
+
+* Races with more HP than spectres now have their racial HP reduced to that of the spectre while in wraithform
+
+* All items in an object prompt are now guaranteed to have a slot label (previously, conflicts caused by an inscribed item overriding another object's slot label could cause objects to not have slot labels)
+
+* All carried items now recharge fully while the player waits for a reforge. (This is only fair, since sleeping in the inn has this effect, even on short naps that consume less game time than a reforge does)
+
+* Limited the number of active monster traps (or glyphs of warding) the player can concurrently have on a single level to 11, to discourage the very tedious but effective approach of filling large chunks of the level with traps before taking on a strong foe, and to encourage careful trap placement when more moderate versions of this approach are used. Rogues are exempt from this limit (because rogues). Primary-realm Life casters are exempt in the special case of glyphs of warding, so they can still freely use the Warding True spell
+
+* Identical quivers will now stack in inventories
+
+* Harps can generate for non-bards again
+
+* Weapons of Gondolin now appear slightly earlier and sometimes have random buffs
+
+* Improved the show_discovery option (in particular, a reforged object is now recorded as discovered at the time of reforging, instead of inheriting the base object's discovery date; it is also displayed as "received" rather than "picked up" or "identified")
+
+* The daily wanted monster is now updated at midnight even if the player's sleeping in the inn (thanks to MITZE for suggesting this)
+
+* Fixed various typos (don't worry! There are still plenty left)
+
+* The display_percentages option (which was a bit of an easy-mode) has been combined with the wizard mode's "show damage/hit" features into a new easy_damage birth option. (7.0.peppermint characters with display_percentages on will have easy_damage turned on if they upgrade to 7.0.mango)
+
+* Tweaked weapon proficiency slightly (characters who previously started at Unskilled (-20) with a weapon will now start at Unskilled (-10), unless Unskilled (-20) is their maximum proficiency for that weapon). This has minimal effects on the game's balance or difficulty, but reduces proficiency-grinding tedium a bit
+
+* Axemasters can now master hatchets (however, some of their melee bonuses still don't apply to hatchets, only to larger axes)
+
+* Unidentified ammo is now automatically placed in the quiver if it is known to combine with ammo already in the quiver
+
+* Pet uniques now have a chance of turning hostile if damaged by the player (this does not apply to the player's current mount)
+
+* Monsters summoned by friendly monsters will now usually also be friendly (except in the case of stupid summoners, e.g. quylthulgs)
+
+* Tweaked pet summoning (pets are now less likely to summon uniques, especially strong uniques)
+
+* Friendly monsters now have a chance to turn hostile if their parent monster (group leader or summoner) was friendly and turns hostile
+
+* Mana is now lost slightly faster if the player's pet upkeep factor is too high; and if the upkeep is totally excessive, pets may feel neglected and either dismiss themselves or turn hostile. (Thanks to vertigo for his feedback on pet upkeep)
+
+* Fixed a bizarre issue with mana loss (the hungrier the player was, the slower mana was lost; if the player was fainting from hunger, no mana was lost at all)
+
+* It is now possible to use capture balls on pet uniques and Nazguls
+
+* Added more talk lines for friendly monsters
+
+* Nerfed summoning staves in response to feedback from players. Staves of Summon Hounds, Ants and Hydras now have a meaningful chance (1/3 to 1/4) of summoning hostile monsters (note that summon hydras summons hostile reptiles rather than hostile hydras). Staves of Summon Monsters have a lower (1/10) hostility chance, but cannot summon non-hostile summoners
+
+* Player-aligned (or player-summoned) monsters no longer receive XP for killing other player-summoned monsters (plugging an exploit mentioned by wobbly)
+
+* Added more random artifact names (mostly for lamps and amulets)
+
+* Added a random player name generator (based on Vanilla's random artifact name generator). The generator mostly suggests Tolkienian-sounding names, but sometimes offers a Latin-sounding name instead
+
+* Changed hitpoint warning default from 30% to 50%
+
+* Cancelling a throw during the targetting phase no longer costs a turn
+
+* The object list now displays all town buildings, not just shops (partly copied from Composband 7.1.alpha). There is also a new option to display stairs in the object list (useful if you want to dive and can map the nearby area easily). This option can be speedily toggled in the object list itself by pressing S
+
+* The highscore list and the hidden oook data now give the maximum level attained by a character, rather than current level
+
+* Improved oook compatibility for character names with apostrophes (thanks to pav for helping with this)
+
+* Introduced options to display equipment origins in the character dump (on as a default for winners and dead characters, off as a default for living non-winners)
+
+* Random quest rewards can no longer be cursed (unless the game fails to generate a reward that isn't cursed)
+
+* Various minor tweaks and code improvements
+
+-------------------------------------------------------
+
+Changes in <color:keyword>FrogComposband 7.0.peppermint</color>:
+
+* Totally revamped the no-wilderness town, and fixed quest descriptions so they're accurate with both wilderness and no wilderness
+
+* Introduced a V-like system for tracking and describing object origins (e.g. "Dropped by the Variant Maintainer on level 19 of Orc Cave."). This system can be turned off (or expanded further) in the text display options
+
+* Added back the no_selling birth option. In no_selling mode, selling items is disabled but gold drops are increased to compensate. The intention is that selling players and non-selling players will accumulate gold at roughly the same pace, but since this was calibrated based on my own games, it may not hold for players with different playstyles. No_selling mode does not have any effect on gold drops in the wilderness
+
+* Added a new option (easy_mimics) for players who really hate mimics, cloakers, death swords, wall monsters etc. and want to reglyph them. Turning on easy_mimics makes these monsters use the 'x' glyph instead of their normal glyph (the monsters will retain their normal color, unless that's pitch black, in which case it's changed to a slightly less black black). It also makes monsters with the ATTR_CLEAR flag possible to see. (Note that easy_mimics does not affect tree monsters or weird fumes, which can be recognized through their color, nor does it affect creeping coins or death scythes)
+
+* Made easy_id stronger (it now *identifies* all items on walkover)
+
+* It is now possible to request a new quest immediately after receiving the reward for the old one, without the need to exit and re-enter the building
+
+* Added a never_forget birth option for the ellipos types, which essentially protects the player from amnesia and also gives ellipos's easy labyrinth
+
+* Added two new birth options (no_chris and no_scrambling) that prevent dungeon teleports and stat scrambling, respectively. (Both cause different bad things to happen instead; they are not intended as easy-mode, but as options for players who find chrissing and/or stat scrambling unfun and think the game would be better if those effects didn't exist.)
+
+* Added new monsters and tweaked existing ones
+
+* Adapted some changes to artifacts that Gwarl made for ComPosband 7.0.4
+
+* Added a new quest in Zul that enables teleporting between Zul and other towns if successfully completed
+[A fair warning about this quest. It's not *that* hard if you have great stealth, but if you have poor stealth - or worse, aggravation - things can get... entertaining. This is true of most quests of course, but particularly true here. Doing it with both aggravation and low speed is not recommended, and Sexy characters should treat it as an endgame quest and approach it with extreme caution.]
+
+* Rings and Death Swords are no longer limited to 1x free action or see invisible
+
+* Fixed a bug in Thalos that made the library inaccessible in late game
+
+* Fixed a bug with lawyer *identify* (it cost zero mana and allowed the player to also do normal identify on a different item)
+
+* Fixed a bug that caused items in the home display to be sometimes shown with a value of zero
+
+* Fixed an old bug that caused some timed effects to be decreased on game load, allowing the player to cure fear by saving and loading repeatedly. (Something similar may still happen with other things, the code needs closer scrutiny)
+
+* Fixed an old PosChengband bug that allowed hidden information about immunities to leak to the player through the character sheet
+
+* Fixed an old PosChengband bug that sometimes caused the game to crash on mangy leper attacks due to division by zero (thanks to Hugo for spotting and reporting it)
+
+* Fixed an ancient bug that made quests uncompletable if one of the target monsters evolved or got polymorphed (this should now be impossible), and tweaked monster evolution code (all of which is now in time_lord.c, instead of being needlessly duplicated)
+
+* Fixed a problem with using the '-' key to select a floor item in the inscription menu
+
+* Fixed an old bug that caused the game to crash with quest_unique off if too many target monsters were killed in a random Angband quest
+
+* Fixed an old bug that allowed skeletons to double their food pile by eating from it
+
+* Fixed an old bug that caused the wilderness to not generate properly (potentially causing crashes) if the player saved and loaded the game inside the arena
+
+* Fixed a minor bug with using an unidentified device of detect traps, which didn't mark grids as trap-detected even in cases where the effect's obviousness meant there was no need to avoid spoiling (thanks to nikheizen for reporting this)
+
+* Plugged a number of old loopholes that allowed doppelgangers to retain their demigod powers in forms other than Human and Demigod (thanks to murphy for reporting this)
+
+* Plugged an old information leak when uppercase keys were used in the object prompt (thanks to murphy for reporting this as well)
+
+* Objects thrown at a wall now land on the last square before the wall, rather than attempting to land on the wall itself and ending up placed on a random square adjacent to it (potentially creating the impression of an object flying through a wall - thanks to bostock for reminding me of this)
+
+* Destroying high-level law books now gives XP where appropriate (thanks to bostock for this too)
+
+* Slightly lowered the max power of ultra-strong deep dungeon randarts
+
+* Slightly changed how the reforge cap is calculated to compensate for it now being easier to acquire fame (due to the increased number of quests). The cap now increases slightly slower in the fame range 128 to 223 (early late game), with no effect on either midgame reforging or very-late-game reforging. Essentially, the idea behind this change is to keep midgame reforging viable and keep late game reforging strong, but still make it somewhat harder to reach the late game reforge power
+
+* Removed rogues' class life rating bonus
+
+* Mine and Heaven now have bottom guardians
+
+* Made the black aura worse
+
+* Amulets of anti-summoning can no longer be generated on a shuffle
+
+* Snotlings and doppelgangers can no longer shuffle for mushrooms
+
+* Added a new deep cloak ego
+
+* Added new artifacts
+
+* Added more race-specific rewards for unusual races
+
+* Made the Death realm's Vampirism True spell considerably more expensive
+
+* Nerfed the Law realm's Expert Trap spell
+
+* Made lawyer melee slightly weaker
+
+* Improved savefile compatibility when new uniques are added
+
+* Reduced the number of non-town monsters, and especially monster groups, that appear in areas near towns
+
+* Some early random Angband quests have a 20% chance to generate a bonus reward (to compensate for an earlier change by Chris in PosChengband that affected these quests negatively)
+
+* Made melee attacks slightly more likely to break a glyph of warding
+
+* The Hideout entrance, while still in Outpost, has been moved south; and the player now starts the game on the Warrens entrance, not the Hideout one. [Copied from ComPosband 7.1.0a]
+
+* Imported new random artifact names from ComPosband 7.1.0a
+
+* Potions of cure critical wounds no longer cure poison [they were never intended to in ComPosband, and it was weird that they did when potions of healing did not]
+
+* Tweaked the walls of Crystal Castle
+[Copied from ComPosband 7.0.4]
+
+* Introduced a new flag that gives confused monsters a chance to shake their confusion off super-fast before they move. (Currently, no monster actually has this flag, apart from Utgard-Loke)
+
+* Monsters should no longer generate on top of enclosed 1x1 dark pits
+
+* Made the Temple more likely to stock potions of cure serious wounds during the early game
+
+* Corrected a minor issue with fear message grammar after a throw attack
+
+* Improved the oook data in HTML character dumps (it now gives max exp rather than cur exp, and also gives the player's true race rather than a race they were temporarily polymorphed into or mimicking)
+
+* Moved the Volcano, Dragon Slayer and Demon Slayer quests much deeper
+
+* Updated the in-game FAQ
+
+-------------------------------------------------------
+
+Changes in <color:keyword>FrogComposband 7.0.strawberry</color> (compared to ComPosband 7.0.3):
+
+* Rebalanced artifact reforging. The goal was to prevent silly-powerful items while still allowing very strong items (so a character can reasonably expect to use reforged items in the endgame and final fights). The importance of fame in reforging was reduced slightly to make early/mid-game reforging more appealing, though realistically reforging will likely remain mostly a late-game thing. Slot weights were also adjusted slightly, with effects on both reforging and randart creation. The hard cap of 90000 on the source artifact's power was removed, although stronger artifacts will still be treated as if they had a power of 90000, or even less for less weighty slots. This prevents situations in which a very strong item is effectively worse than a weaker item because it doesn't fit the player's needs directly and cannot ever be reforged. Reforging is now also slightly cheaper
+
+* Rebalanced shop shuffling. The cheap shuffling introduced in ComPosband allowed characters to acquire silly piles of extremely powerful consumables very easily, as long as they found a dungeon shop and had enough money. The cheap shuffling has been retained, but many of the most powerful items (like !Healing, !*Healing*, !Life, stat potions, ?Genocide, ?MassGenocide and !NewLife) can no longer be generated on a shuffle. Also, Black Market shuffling is more expensive now
+
+* Moved Thalos, and added a new town (Anambar) where Thalos used to be. Prettied up the Thalos map (and edited t_pref to include additional terrain types). Mt. Olympus is now slightly more accessible since Thalos is closer to it than any town was before (originally, I moved Thalos even closer to Mt. Olympus, but then I decided I didn't hate you players enough). There's an option to allow teleporting to Thalos as soon as any two other towns (including Outpost) have been visited (because I decided I didn't want you players to hate me either...!)
+
+* Fixed an old PosChengband bug where quest seeds were lost on save/load, meaning players who exited the game after requesting a quest would receive a seed of 0 for that quest and consequently always get the first item from a list of supposedly random rewards
+
+* Fixed another old PosChengband bug whereby uniques seen through fuzzy telepathy would sometimes acquire a stray "the" in front of their name (e.g. "The Gertrude dies.")
+
+* Fixed an old bug with file handling on Windows
+
+* Fixed several minor old bugs related to weapon slays (chaos weapons were getting massive extra damage against good monsters from the KILL_EVIL flag instead of the KILL_GOOD flag; the displayed damage for a KILL_HUMAN missile didn't match the actual damage; in the character sheet, the *Human* slay's statistics were displayed for weapons with KILL_LIVING rather than weapons with KILL_HUMAN)
+
+* Updated the rumor list and silly name list
+
+* Added a new realm (Law) and two new classes (Lawyer and Ninja-Lawyer)
+
+* Added new monsters (and restored the deleted Egyptian gods)
+
+* Added a few artifacts (and brought back the GHB's T-shirt)
+
+* Added new random artifact names
+
+* Added new quests (I actually feel like there may be too many early-game quests now; feedback on the number of quests, and quests [whether new or old] that players like or don't like, would be particularly welcome; of course, there is no need to attempt to do every quest in the game at depth)
+
+* In ComPosband, if a quest level was buggy and didn't generate properly, the game would crash and the player would be forced to fail it on resuming play. In FrogComposband, while the game will still crash, the player can continue normally on resumption and can retake the quest after it has been fixed. This should make life easier for both developers and test-players
+
+* Gave eldraks a significant buff, they are now stronger than ettins (consequently, swapped ettin and eldrak in the troll evolution sequence; however, player trolls still evolve into ettins rather than eldraks)
+
+* A small number of monsters can now initiate melee attacks from 2 squares away. (Fair's fair - player samurai, dragons and archaeologists with whips can do this!) Currently the only monsters with this ability are large dinosaurs, novice archaeologists, balrogs, samurai, Godzilla and Jormungand. (Jormungand, who was a soft guardian for its depth, also received a number of other buffs; most notably, it now has the CAN_SWIM flag instead of the AQUATIC flag.)
+
+* Made ninjas slightly less outrageous by nerfing Bunshin (which now gives a 1-in-3 chance of evading attacks, not 1-in-2) and Swap Position (which now requires perfectly clear line of sight) and changing their weight limit equation. The Swap Position nerf also affects the relevant mutation and wild talent (the weight limit change does not affect other classes with a weight limit, apart from ninja-lawyers)
+
+* Restored the option of playing without virtues
+
+* Fixed some typos here and there. (I know this will offend some people! But they can take solace in that there are still plenty left.)
+
+* Buffed Lucifer and made him dungeon boss of Hell
+
+* The name of Sultan the Midget was reverted back to Snafu the Midget (because of the one-Sultan rule - there's a sultan in Thalos)
+
+* Players are now less likely to be ambushed by dangerous high-level sea monsters in coastal towns
+
+* Added some alternatives for non-English keyboards to support play on angband.live: Y and Z for [ and {, Ctrl+Y for Ctrl+W, Ctrl+E for @ and Ctrl+O for ]
+
+* Made free action stronger because Chris's system was somewhat confusing and unpopular, though the change here is not as big as what Gwarl did in ComPosband 7.0.4. 1 source of free action works the same in FrogComposband as in ComPosband 7.0.3 (and the last versions of PosChengband). 2 sources are slightly stronger in FrogComposband (and give total paralysis immunity against low-level monsters), and 3 sources give total immunity against all monsters, except in special cases like ty_curse
+
+* Changed how cur SP is calculated after a change to max SP
+
+* Restored the old non-fuzzy telepathy as an option. Chris's fuzzy telepathy is still the default
+
+* Added an option (off by default) to force a -more- prompt on device/spell fails
+
+* Attempts to charm a monster with the hidden NOPET flag now give the message "X is immune", rather than "X resists"; the NOPET flag is unpopular enough without it making players guess whether the monster has it or not. (It's also now slightly harder for monsters to acquire the NOPET flag.)
+
+* Commented out the Windows pref file (font-win.prf). Windows users will notice this as a change to the default appearance of walls and mountains
+
+* Various minor tweaks and code improvements
+
+Changes copied or adapted from ComPosband 7.0.4:
+
+* Added Gwarl's new quests and adopted some of his changes to existing quests
+
+* The entrance to Hideout is now in Outpost, and the entrance to Icky Cave is now in Thalos
+
+* Adapted the new acid floor
+
+* Magic shop now sells offensive wands
+
+* Moved Tidal Cave
+
+* Battlefield's entrance guardian is now a black wraith instead of a grave wight
+
+* Visual change to the appearance of Crystal Castle's glass floor
+
+* Added Gwarl's buff to non-specialist riding
+
+* Tweaked the depth and rarity of a number of items, especially dragon scale mails (but not quite to the same extent as in ComPosband 7.0.4)
+
+* Tweaked a number of monsters
+
+-------------------------------------------------------
+
+For ancient history, see <link:vers_old.txt>.
