@@ -462,6 +462,21 @@ void equip_wield_ui(void)
     obj_ptr obj = _wield_get_obj();
 
     if (!obj) return;
+
+    if ((p_ptr->prace == RACE_WEREWOLF) && ((object_is_(obj, TV_DRAG_ARMOR, SV_DRAGON_SILVER)) || (obj->name1 == ART_SILVER_HAMMER)))
+    {
+        if (object_is_(obj, TV_DRAG_ARMOR, SV_DRAGON_SILVER))
+        {
+            msg_print("You briefly contemplate wearing silver armor, but conclude you're not really into that kind of thing. (Now, balance dragon armor, on the other hand...)");
+            return;
+        }
+        else
+        {
+            msg_print("You consider wielding the silver hammer, but then remember that the idea behind weapons is to hurt the enemy, not yourself.");
+            return;
+        }
+    }
+
     if (obj_is_ammo(obj))
     {
         int amt = obj->number;
@@ -592,6 +607,7 @@ static bool _wield_confirm(obj_ptr obj, slot_t slot)
       && object_is_known(obj)
       && p_ptr->prace != RACE_VAMPIRE
       && p_ptr->prace != RACE_ANDROID
+      && p_ptr->prace != RACE_WEREWOLF
       && !(get_race()->flags & RACE_IS_MONSTER)
       && p_ptr->pclass != CLASS_BLOOD_KNIGHT)
     {
@@ -665,6 +681,7 @@ static void _wield_after(slot_t slot)
     if ( obj->name1 == ART_STONEMASK
       && p_ptr->prace != RACE_VAMPIRE
       && p_ptr->prace != RACE_ANDROID
+      && p_ptr->prace != RACE_WEREWOLF
       && p_ptr->pclass != CLASS_BLOOD_KNIGHT )
     {
         change_race(RACE_VAMPIRE, "");
@@ -1888,3 +1905,12 @@ void equip_save(savefile_ptr file)
     inv_save(_inv, file);
 }
 
+inv_ptr get_equipment(void)
+{
+    return _inv;
+}
+
+void set_equip_template(equip_template_ptr new_template)
+{
+    _template = new_template;
+}
