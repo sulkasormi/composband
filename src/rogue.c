@@ -77,11 +77,18 @@ static cptr _rogue_pick_pocket(int power)
             }
             else if (loot.tval == TV_GOLD)
             {
-                msg_format("You steal %d gold pieces' worth of %s.", (int)loot.pval, o_name);
-                sound(SOUND_SELL);
-                p_ptr->au += loot.pval;
-                stats_on_gold_find(loot.pval);
-                p_ptr->redraw |= (PR_GOLD);
+                if ((p_ptr->prace == RACE_WEREWOLF) && (strpos("silver", o_name)))
+                {
+                    msg_print("You steal some silver coins, but drop them immediately.");
+                    take_hit(DAMAGE_NOESCAPE, randint1(10), "contact with silver coins");
+                }
+                else {
+                    msg_format("You steal %d gold pieces' worth of %s.", (int)loot.pval, o_name);
+                    sound(SOUND_SELL);
+                    p_ptr->au += loot.pval;
+                    stats_on_gold_find(loot.pval);
+                    p_ptr->redraw |= (PR_GOLD);
+                }
             }
             else
             {
