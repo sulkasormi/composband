@@ -1111,3 +1111,18 @@ S:ANY:Any
 S:ANY:Any
 S:ANY:Any
 S:ANY:Any
+
+# Hound with a quiver slot (but no bow slot)
+
+N:107:Wolf
+S:RING:Ring
+S:RING:Ring
+S:RING:Ring
+S:RING:Ring
+S:AMULET:Amulet
+S:LITE:Light
+S:BODY_ARMOR:Body
+S:CLOAK:Cloak
+S:HELMET:Helm
+S:BOOTS:Boots
+S:QUIVER:Quiver
