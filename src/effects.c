@@ -273,7 +273,7 @@ bool p_inc_minislow(int lisays)
     }
 
     /* Disturb */
-    if (disturb_state) disturb(0, 0);
+    if ((disturb_state) && ((!p_ptr->minislow) || (lisays > 0))) disturb(0, 0);
 
     /* Recalculate bonuses */
     p_ptr->update |= PU_BONUS;
@@ -735,6 +735,17 @@ bool set_mimic(int v, int p, bool do_dec)
     v = (v > 10000) ? 10000 : (v < 0) ? 0 : v;
 
     if (p_ptr->is_dead) return FALSE;
+
+    /* Werewolves get their own two forms - human and wolf - and that's it.
+     * In any case, horrible things might happen if werewolves could mimic,
+     * or if anyone else could mimic a werewolf, due to the mega-hacks
+     * involved in werewolf equipment handling */
+    if (prace_is_(RACE_WEREWOLF)) return FALSE;
+    if (p == RACE_WEREWOLF) /* please don't let this even happen */
+    {
+        v = 0;
+        p = MIMIC_NONE; /* paranoia */
+    }
 
     /* Open */
     if (v)
@@ -5718,7 +5729,7 @@ void change_race(int new_race, cptr effect_msg)
     if (get_race()->flags & RACE_IS_MONSTER) return;
     if (get_race_aux(new_race, 0)->flags & RACE_IS_MONSTER) return;
     if (old_race == RACE_ANDROID) return;
-    if (old_race == RACE_DOPPELGANGER) return;
+    if (player_obviously_poly_immune()) return;
     if (new_race == old_race) return;
 
     _lock = TRUE;
@@ -5807,7 +5818,7 @@ void do_poly_self(void)
 
     virtue_add(VIRTUE_CHANCE, 1);
 
-    if ((power > randint0(20)) && one_in_(3) && (p_ptr->prace != RACE_ANDROID))
+    if ((power > randint0(20)) && one_in_(3) && (p_ptr->prace != RACE_ANDROID) && (p_ptr->prace != RACE_WEREWOLF))
     {
         char effect_msg[80] = "";
         int new_race, expfact, goalexpfact;
