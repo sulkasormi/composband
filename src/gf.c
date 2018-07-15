@@ -269,6 +269,17 @@ static bool _failed_charm_nopet_chance(mon_ptr mon)
     if ((one_in_((p_ptr->spin > 0) ? 10 : 5)) && (!p_ptr->uimapuku) && (!is_friendly(mon))) return TRUE;
     return FALSE;
 }
+
+bool player_obviously_poly_immune(void)
+{
+    if (prace_is_(RACE_ANDROID)
+       || p_ptr->pclass == CLASS_MONSTER
+       || p_ptr->prace == RACE_DOPPELGANGER
+       || p_ptr->prace == RACE_WEREWOLF)
+       return TRUE;
+    return FALSE;
+}
+
 int gf_affect_p(int who, int type, int dam, int flags)
 {
     int          result = 0;
@@ -1094,9 +1105,7 @@ int gf_affect_p(int who, int type, int dam, int flags)
         }
         break;
     case GF_OLD_POLY:
-        if ( prace_is_(RACE_ANDROID)
-          || p_ptr->pclass == CLASS_MONSTER
-          || p_ptr->prace == RACE_DOPPELGANGER
+        if ( player_obviously_poly_immune()
           || mut_present(MUT_DRACONIAN_METAMORPHOSIS) )
         {
             if (flags & GF_AFFECT_SPELL)
@@ -1138,6 +1147,7 @@ int gf_affect_p(int who, int type, int dam, int flags)
                       && which != RACE_DEMIGOD
                       && which != RACE_DRACONIAN
                       && which != RACE_ANDROID
+                      && which != RACE_WEREWOLF
                       && p_ptr->prace != which
                       && !(get_race_aux(which, 0)->flags & RACE_IS_MONSTER) )
                     {
