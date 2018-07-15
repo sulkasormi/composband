@@ -1179,7 +1179,7 @@ bool reset_concent = FALSE;   /* Concentration reset flag */
 pantheon_type pant_list[PANTHEON_MAX] =
 {
     { 0, 0, 0, "BUGGY", "Bug", "Software Bugs"},
-    { PANTHEON_OLYMPIAN, RF3_OLYMPIAN, 0, "Olympian", "Oly", "Olympians"},
+    { PANTHEON_OLYMPIAN, RF3_OLYMPIAN, RF3_OLYMPIAN2, "Olympian", "Oly", "Olympians"},
     { PANTHEON_EGYPTIAN, RF3_EGYPTIAN, RF3_EGYPTIAN2, "Egyptian", "Egy", "Egyptian gods"},
 };
 
