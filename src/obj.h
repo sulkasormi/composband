@@ -97,4 +97,8 @@ extern void obj_clear_dun_info(obj_ptr obj);
 /* Savefiles */
 extern void obj_load(obj_ptr obj, savefile_ptr file);
 extern void obj_save(obj_ptr obj, savefile_ptr file);
+
+/* Handle special inventories */
+extern void special1_drop(obj_ptr obj);
+extern void special1_remove(int slot);
 #endif
