@@ -92,6 +92,12 @@ static void _sanitise_flags(object_type *o_ptr)
             remove_flag(o_ptr->flags, i + OF_DEC_STR - OF_STR);
         }
     }
+
+    /* Check for weapons with VORPAL2 but no VORPAL
+     * They need VORPAL for consistent inscriptions, even though it has no
+     * effect on their performance */
+    if ((have_flag(o_ptr->flags, OF_VORPAL2)) && (!have_flag(o_ptr->flags, OF_VORPAL)))
+        add_flag(o_ptr->flags, OF_VORPAL);
 }
 
 /*
