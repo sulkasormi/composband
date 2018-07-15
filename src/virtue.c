@@ -392,7 +392,7 @@ void virtue_init(void)
     case RACE_HALF_TROLL: case RACE_BARBARIAN: case RACE_HALF_ORC:
         p_ptr->vir_types[i++] = VIRTUE_VALOUR;
         break;
-    case RACE_HIGH_ELF: case RACE_KUTAR:
+    case RACE_HIGH_ELF: case RACE_KUTAR: case RACE_WEREWOLF:
         p_ptr->vir_types[i++] = VIRTUE_VITALITY;
         break;
     case RACE_HALF_GIANT: case RACE_GOLEM: case RACE_ARCHON: case RACE_BALROG:
