@@ -596,6 +596,20 @@ Life Rating  108%       Melee       <color:g>Superb       </color>
 Base HP       26        Bows        <color:r>Bad          </color>
 Experience   175%       Infravision 20'
 </style></indent>
+<topic:Werewolf><color:o>Werewolf</color>
+Werewolves are fearsome hunters who can assume either human or wolf shape. They are exceptionally durable in both forms, and have great powers of regeneration, though they are infamously vulnerable to fire and silver, and are not particularly good at using magical spells or devices in either shape. While in wolf form, werewolves wield no weapons; instead, they attack with their teeth and claws. As werewolves wear different equipment in human form and wolf form, they use one inventory slot for a special satchel in which they keep the items not needed in their current shape.
+
+  <indent><style:table><color:G>Stats                   Skills</color>
+Strength      +1        Disarming   <color:R>Poor         </color>
+Intelligence  +0        Device      <color:D>Very Bad     </color>
+Wisdom        +0        Save        <color:o>Fair         </color>
+Dexterity     +0        Stealth     <color:o>Fair         </color>
+Constitution  +1        Searching   <color:y>Good         </color>
+Charisma      +0        Perception  <color:g>Superb       </color>
+Life Rating  103%       Melee       <color:o>Fair         </color>
+Base HP       27        Bows        <color:o>Fair         </color>
+Experience   140%       Infravision 50'
+</style></indent>
 <topic:Yeek><color:o>Yeek</color>
 Yeeks are among the most pathetic creatures. Fortunately, their horrible screams can scare away less confident foes, and their skin becomes more and more resistant to acid, as they gain experience. But having said that, even a mediocre monster can wipe the proverbial floor with an unwary Yeek.
 
@@ -655,6 +669,7 @@ Klackon       +2   -1   -1   +1   +2   +1  105%  +23  170%  115%
 Kutar         +0   -1   -1   +1   +2   +2  102%  +21  175%   95%
 Mindflayer    -3   +4   +4   +0   -2   -1   97%  +18  150%  115%
 Tonberry      +4   +0   -2   -4   +5   +0  108%  +26  175%  115%
+Werewolf      +1   +0   +0   +0   +1   +0  103%  +27  140%  100%
 Yeek          -2   +1   -2   +1   -2   -4   92%  +14   70%  105%
 
 </style>
@@ -702,6 +717,7 @@ Klackon      <color:G>Excellent    </color> <color:r>Bad          </color> <colo
 Kutar        <color:r>Bad          </color> <color:o>Fair         </color> <color:y>Good         </color> <color:G>Excellent    </color>
 Mindflayer   <color:G>Excellent    </color> <color:G>Excellent    </color> <color:G>Excellent    </color> <color:o>Fair         </color>
 Tonberry     <color:r>Bad          </color> <color:r>Bad          </color> <color:o>Fair         </color> <color:o>Fair         </color>
+Werewolf     <color:R>Poor         </color> <color:D>Very Bad     </color> <color:o>Fair         </color> <color:o>Fair         </color>
 Yeek         <color:o>Fair         </color> <color:o>Fair         </color> <color:y>Good         </color> <color:y>Good         </color>
 
 </style>
@@ -749,6 +765,7 @@ Klackon      <color:D>Very Bad     </color> <color:g>Superb       </color> <colo
 Kutar        <color:D>Very Bad     </color> <color:y>Very Good    </color> <color:R>Poor         </color> <color:o>Fair         </color>    0'
 Mindflayer   <color:y>Good         </color> <color:g>Superb       </color> <color:D>Very Bad     </color> <color:R>Poor         </color>   40'
 Tonberry     <color:D>Very Bad     </color> <color:y>Good         </color> <color:g>Superb       </color> <color:r>Bad          </color>   20'
+Werewolf     <color:y>Good         </color> <color:g>Superb       </color> <color:o>Fair         </color> <color:o>Fair         </color>   50'
 Yeek         <color:y>Good         </color> <color:b>Heroic       </color> <color:r>Bad          </color> <color:o>Fair         </color>   20'
 
 </style>
