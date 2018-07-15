@@ -965,7 +965,7 @@ N:81:'Aglarang'
 I:23:20:5
 W:50:40:50:150000
 P:0:8d5:0:0:0
-F:DEX | HIDE_TYPE | VORPAL2 |
+F:DEX | HIDE_TYPE | VORPAL2 | VORPAL |
 F:SUST_DEX | SHOW_MODS | SPEED | TUNNEL
 D:An utterly perfect, cleanly chiseled sword, with a edge that effortlessly
 D: slices rock and bone and spells to render the wearer lithe and nimble. It
@@ -1021,7 +1021,7 @@ N:85:'Chainsword'
 I:23:16:2
 W:50:50:130:66666
 P:0:9d6:-30:7:0
-F:DEC_DEX | DEC_CHR | HIDE_TYPE | AGGRAVATE | VORPAL2
+F:DEC_DEX | DEC_CHR | HIDE_TYPE | AGGRAVATE | VORPAL2 | VORPAL
 F:SLAY_HUMAN | SLAY_TROLL | SLAY_ORC | SEE_INVIS | SHOW_MODS |
 F:ESP_ORC | ESP_TROLL | ESP_HUMAN
 
@@ -1102,7 +1102,7 @@ N:92:'Vorpal Blade'
 I:23:17:2
 W:90:240:150:250000
 P:0:5d6:32:32:0
-F:VORPAL2 | SLAY_EVIL | HIDE_TYPE |
+F:VORPAL2 | SLAY_EVIL | HIDE_TYPE | VORPAL |
 F:FREE_ACT | LITE | SEE_INVIS | SLOW_DIGEST | REGEN | SPEED | STR | DEX | CHR
 D:"One, two! One, two! And through, and through, the vorpal blade
 D:went snicker-snack!"
@@ -1710,7 +1710,7 @@ I:23:20:4
 W:66:200:200:1000000
 P:0:10d6:0:0:-20
 F:HIDE_TYPE | BLOWS | VORPAL2 | BRAND_VAMP | SLAY_HUMAN | SLAY_GOOD |
-F:SHOW_MODS | SPEED | RES_DISEN | NO_TELE |
+F:SHOW_MODS | SPEED | RES_DISEN | NO_TELE | VORPAL |
 F:DRAIN_EXP | AGGRAVATE | RES_DARK | RES_NETHER | TY_CURSE |
 E:MURAMASA:1
 E:The Muramasa pulsates...
