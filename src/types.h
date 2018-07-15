@@ -1933,6 +1933,7 @@ typedef void(*process_world_fn)(void);
 typedef void(*move_monster_fn)(int m_idx);
 typedef void(*calc_bonuses_fn)(void);
 typedef void(*calc_innate_attacks_fn)(void);
+typedef int(*calc_extra_weight_fn)(obj_p p);
 typedef void(*birth_fn)(void);
 typedef void(*calc_weapon_bonuses_fn)(object_type *o_ptr, weapon_info_t *info_ptr);
 typedef void(*calc_shooter_bonuses_fn)(object_type *o_ptr, shooter_info_t *info_ptr);
@@ -1974,6 +1975,7 @@ typedef struct {
     stats_fn                calc_stats;      /* ... and stat related stuff here */
     calc_weapon_bonuses_fn  calc_weapon_bonuses;
     calc_shooter_bonuses_fn calc_shooter_bonuses;
+    calc_extra_weight_fn    calc_extra_weight;
     caster_info_fn          caster_info;
     get_spells_fn           get_spells;
     get_spells_fn           get_powers;
@@ -2009,6 +2011,7 @@ typedef struct {
     calc_weapon_bonuses_fn  calc_weapon_bonuses;
     calc_shooter_bonuses_fn calc_shooter_bonuses;
     calc_innate_attacks_fn  calc_innate_attacks;
+    calc_extra_weight_fn    calc_extra_weight;
     caster_info_fn          caster_info;
     get_spells_fn           get_spells;
     get_spells_fn           get_powers;
@@ -2028,6 +2031,7 @@ typedef struct {
     object_p                destroy_object;
     s16b                    pseudo_class_idx; /* For the "Monster" class ... */
     s16b                    shop_adjust;
+    inv_ptr                 bonus_pack;
 } race_t, *race_ptr;
 
 typedef struct {
