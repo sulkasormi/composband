@@ -77,6 +77,11 @@ byte lawyer_hack(magic_type *s_ptr, int tyyppi)
         }
         default:
         {
+            if (p_ptr->prace == RACE_WEREWOLF) /* increased fail rates */
+            {
+                if (werewolf_in_human_form()) return s_ptr->sfail + ((kerroin < 101) ? 15 : 20);
+                else return MAX(s_ptr->sfail + ((kerroin < 101) ? 25 : 30), s_ptr->sfail * 2);
+            }
             return ((kerroin < 101) ? s_ptr->sfail : s_ptr->sfail + 10);
         }
     }
