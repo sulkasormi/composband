@@ -3329,6 +3329,7 @@ static cptr do_chaos_spell(int spell, int mode)
                       && which != RACE_DEMIGOD
                       && which != RACE_DRACONIAN
                       && which != RACE_ANDROID
+                      && which != RACE_WEREWOLF
                       && which != RACE_DOPPELGANGER
                       && p_ptr->prace != which
                       && !(get_race_aux(which, 0)->flags & RACE_IS_MONSTER) )
