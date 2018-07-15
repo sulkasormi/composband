@@ -217,6 +217,10 @@ int _mut_prob_gain(int i)
         if (p_ptr->prace == RACE_MIND_FLAYER)
             return racial_odds;
         break;
+
+    case MUT_MIDAS_TOUCH:
+        if (p_ptr->pclass == CLASS_ALCHEMIST) return 0;
+        break;
     }
 
     if ( _mutations[i].rating < MUT_RATING_AVERAGE
