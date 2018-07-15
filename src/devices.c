@@ -156,7 +156,7 @@ int device_calc_fail_rate(object_type *o_ptr)
         if ((mut_present(MUT_IMPOTENCE)) && (o_ptr->tval == TV_STAFF || o_ptr->tval == TV_ROD))
         {
             skill_boost -= 10;
-            if (effect.type == EFFECT_SPEED || effect.type == EFFECT_SPEED_HERO || o_ptr->name2 == EGO_DEVICE_QUICKNESS)
+            if (effect.type == EFFECT_SPEED || effect.type == EFFECT_SPEED_HERO || effect.type == EFFECT_BALL_FIRE || o_ptr->name2 == EGO_DEVICE_QUICKNESS)
                 skill_boost -= 20;
         }
 
@@ -289,6 +289,7 @@ static bool _do_identify(void)
     prompt.where[2] = INV_QUIVER;
     prompt.where[3] = INV_FLOOR;
     prompt.cmd_handler = _cmd_handler;
+    obj_prompt_add_special_packs(&prompt);
 
     switch (obj_prompt(&prompt))
     {
