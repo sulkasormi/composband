@@ -511,7 +511,7 @@ static void _display_weapon_slay(int base_mult, int slay_mult, bool force, int t
 
     mult = slay_mult;
     if (force)
-        mult = mult * 3/2 + 150;
+        mult = mult * 3/2 + 140;
     mult = mult * base_mult / 100;
 
     dam = mult * dd * (ds + 1)/200 + to_d;
@@ -629,74 +629,74 @@ void py_throw_doc(py_throw_ptr context, doc_ptr doc)
         _display_weapon_slay(mult, 100, force, context->mult, num_throw, context->obj->dd, context->obj->ds, to_d, "Force", TERM_L_BLUE, cols[0]);
 
     if (have_flag(context->flags, OF_KILL_ANIMAL))
-        _display_weapon_slay(mult, 400, force, context->mult, num_throw, context->obj->dd, context->obj->ds, to_d, "Animals", TERM_YELLOW, cols[0]);
+        _display_weapon_slay(mult, KILL_MULT_ANIMAL, force, context->mult, num_throw, context->obj->dd, context->obj->ds, to_d, "Animals", TERM_YELLOW, cols[0]);
     else if (have_flag(context->flags, OF_SLAY_ANIMAL))
-        _display_weapon_slay(mult, 250, force, context->mult, num_throw, context->obj->dd, context->obj->ds, to_d, "Animals", TERM_YELLOW, cols[0]);
+        _display_weapon_slay(mult, SLAY_MULT_ANIMAL, force, context->mult, num_throw, context->obj->dd, context->obj->ds, to_d, "Animals", TERM_YELLOW, cols[0]);
 
     if (have_flag(context->flags, OF_KILL_EVIL))
-        _display_weapon_slay(mult, 350, force, context->mult, num_throw, context->obj->dd, context->obj->ds, to_d, "Evil", TERM_YELLOW, cols[0]);
+        _display_weapon_slay(mult, KILL_MULT_EVIL, force, context->mult, num_throw, context->obj->dd, context->obj->ds, to_d, "Evil", TERM_YELLOW, cols[0]);
     else if (have_flag(context->flags, OF_SLAY_EVIL))
-        _display_weapon_slay(mult, 200, force, context->mult, num_throw, context->obj->dd, context->obj->ds, to_d, "Evil", TERM_YELLOW, cols[0]);
+        _display_weapon_slay(mult, SLAY_MULT_EVIL, force, context->mult, num_throw, context->obj->dd, context->obj->ds, to_d, "Evil", TERM_YELLOW, cols[0]);
 
 	if (have_flag(context->flags, OF_KILL_GOOD))
-		_display_weapon_slay(mult, 350, force, context->mult, num_throw, context->obj->dd, context->obj->ds, to_d, "Good", TERM_YELLOW, cols[0]);
+		_display_weapon_slay(mult, KILL_MULT_GOOD, force, context->mult, num_throw, context->obj->dd, context->obj->ds, to_d, "Good", TERM_YELLOW, cols[0]);
 	else if (have_flag(context->flags, OF_SLAY_GOOD))
-        _display_weapon_slay(mult, 200, force, context->mult, num_throw, context->obj->dd, context->obj->ds, to_d, "Good", TERM_YELLOW, cols[0]);
+        _display_weapon_slay(mult, SLAY_MULT_GOOD, force, context->mult, num_throw, context->obj->dd, context->obj->ds, to_d, "Good", TERM_YELLOW, cols[0]);
 
 	if (have_flag(context->flags, OF_KILL_LIVING))
-		_display_weapon_slay(mult, 350, force, context->mult, num_throw, context->obj->dd, context->obj->ds, to_d, "Living", TERM_YELLOW, cols[0]);
+		_display_weapon_slay(mult, KILL_MULT_LIVING, force, context->mult, num_throw, context->obj->dd, context->obj->ds, to_d, "Living", TERM_YELLOW, cols[0]);
 	else if (have_flag(context->flags, OF_SLAY_LIVING))
-        _display_weapon_slay(mult, 200, force, context->mult, num_throw, context->obj->dd, context->obj->ds, to_d, "Living", TERM_YELLOW, cols[0]);
+        _display_weapon_slay(mult, SLAY_MULT_LIVING, force, context->mult, num_throw, context->obj->dd, context->obj->ds, to_d, "Living", TERM_YELLOW, cols[0]);
 
     if (have_flag(context->flags, OF_KILL_HUMAN))
-        _display_weapon_slay(mult, 400, force, context->mult, num_throw, context->obj->dd, context->obj->ds, to_d, "Human", TERM_YELLOW, cols[0]);
+        _display_weapon_slay(mult, KILL_MULT_HUMAN, force, context->mult, num_throw, context->obj->dd, context->obj->ds, to_d, "Human", TERM_YELLOW, cols[0]);
     else if (have_flag(context->flags, OF_SLAY_HUMAN))
-        _display_weapon_slay(mult, 250, force, context->mult, num_throw, context->obj->dd, context->obj->ds, to_d, "Human", TERM_YELLOW, cols[0]);
+        _display_weapon_slay(mult, SLAY_MULT_HUMAN, force, context->mult, num_throw, context->obj->dd, context->obj->ds, to_d, "Human", TERM_YELLOW, cols[0]);
 
     if (have_flag(context->flags, OF_KILL_UNDEAD))
-        _display_weapon_slay(mult, 500, force, context->mult, num_throw, context->obj->dd, context->obj->ds, to_d, "Undead", TERM_YELLOW, cols[0]);
+        _display_weapon_slay(mult, KILL_MULT_UNDEAD, force, context->mult, num_throw, context->obj->dd, context->obj->ds, to_d, "Undead", TERM_YELLOW, cols[0]);
     else if (have_flag(context->flags, OF_SLAY_UNDEAD))
-        _display_weapon_slay(mult, 300, force, context->mult, num_throw, context->obj->dd, context->obj->ds, to_d, "Undead", TERM_YELLOW, cols[0]);
+        _display_weapon_slay(mult, SLAY_MULT_UNDEAD, force, context->mult, num_throw, context->obj->dd, context->obj->ds, to_d, "Undead", TERM_YELLOW, cols[0]);
 
     if (have_flag(context->flags, OF_KILL_DEMON))
-        _display_weapon_slay(mult, 500, force, context->mult, num_throw, context->obj->dd, context->obj->ds, to_d, "Demons", TERM_YELLOW, cols[0]);
+        _display_weapon_slay(mult, KILL_MULT_DEMON, force, context->mult, num_throw, context->obj->dd, context->obj->ds, to_d, "Demons", TERM_YELLOW, cols[0]);
     else if (have_flag(context->flags, OF_SLAY_DEMON))
-        _display_weapon_slay(mult, 300, force, context->mult, num_throw, context->obj->dd, context->obj->ds, to_d, "Demons", TERM_YELLOW, cols[0]);
+        _display_weapon_slay(mult, SLAY_MULT_DEMON, force, context->mult, num_throw, context->obj->dd, context->obj->ds, to_d, "Demons", TERM_YELLOW, cols[0]);
 
     if (have_flag(context->flags, OF_KILL_ORC))
-        _display_weapon_slay(mult, 500, force, context->mult, num_throw, context->obj->dd, context->obj->ds, to_d, "Orcs", TERM_YELLOW, cols[0]);
+        _display_weapon_slay(mult, KILL_MULT_ORC, force, context->mult, num_throw, context->obj->dd, context->obj->ds, to_d, "Orcs", TERM_YELLOW, cols[0]);
     else if (have_flag(context->flags, OF_SLAY_ORC))
-        _display_weapon_slay(mult, 300, force, context->mult, num_throw, context->obj->dd, context->obj->ds, to_d, "Orcs", TERM_YELLOW, cols[0]);
+        _display_weapon_slay(mult, SLAY_MULT_ORC, force, context->mult, num_throw, context->obj->dd, context->obj->ds, to_d, "Orcs", TERM_YELLOW, cols[0]);
 
     if (have_flag(context->flags, OF_KILL_TROLL))
-        _display_weapon_slay(mult, 500, force, context->mult, num_throw, context->obj->dd, context->obj->ds, to_d, "Trolls", TERM_YELLOW, cols[0]);
+        _display_weapon_slay(mult, KILL_MULT_TROLL, force, context->mult, num_throw, context->obj->dd, context->obj->ds, to_d, "Trolls", TERM_YELLOW, cols[0]);
     else if (have_flag(context->flags, OF_SLAY_TROLL))
-        _display_weapon_slay(mult, 300, force, context->mult, num_throw, context->obj->dd, context->obj->ds, to_d, "Trolls", TERM_YELLOW, cols[0]);
+        _display_weapon_slay(mult, SLAY_MULT_TROLL, force, context->mult, num_throw, context->obj->dd, context->obj->ds, to_d, "Trolls", TERM_YELLOW, cols[0]);
 
     if (have_flag(context->flags, OF_KILL_GIANT))
-        _display_weapon_slay(mult, 500, force, context->mult, num_throw, context->obj->dd, context->obj->ds, to_d, "Giants", TERM_YELLOW, cols[0]);
+        _display_weapon_slay(mult, KILL_MULT_GIANT, force, context->mult, num_throw, context->obj->dd, context->obj->ds, to_d, "Giants", TERM_YELLOW, cols[0]);
     else if (have_flag(context->flags, OF_SLAY_GIANT))
-        _display_weapon_slay(mult, 300, force, context->mult, num_throw, context->obj->dd, context->obj->ds, to_d, "Giants", TERM_YELLOW, cols[0]);
+        _display_weapon_slay(mult, SLAY_MULT_GIANT, force, context->mult, num_throw, context->obj->dd, context->obj->ds, to_d, "Giants", TERM_YELLOW, cols[0]);
 
     if (have_flag(context->flags, OF_KILL_DRAGON))
-        _display_weapon_slay(mult, 500, force, context->mult, num_throw, context->obj->dd, context->obj->ds, to_d, "Dragons", TERM_YELLOW, cols[0]);
+        _display_weapon_slay(mult, KILL_MULT_DRAGON, force, context->mult, num_throw, context->obj->dd, context->obj->ds, to_d, "Dragons", TERM_YELLOW, cols[0]);
     else if (have_flag(context->flags, OF_SLAY_DRAGON))
-        _display_weapon_slay(mult, 300, force, context->mult, num_throw, context->obj->dd, context->obj->ds, to_d, "Dragons", TERM_YELLOW, cols[0]);
+        _display_weapon_slay(mult, SLAY_MULT_DRAGON, force, context->mult, num_throw, context->obj->dd, context->obj->ds, to_d, "Dragons", TERM_YELLOW, cols[0]);
 
     if (have_flag(context->flags, OF_BRAND_ACID))
-        _display_weapon_slay(mult, 250, force, context->mult, num_throw, context->obj->dd, context->obj->ds, to_d, "Acid", TERM_RED, cols[0]);
+        _display_weapon_slay(mult, BRAND_MULT_ACID, force, context->mult, num_throw, context->obj->dd, context->obj->ds, to_d, "Acid", TERM_RED, cols[0]);
 
     if (have_flag(context->flags, OF_BRAND_ELEC))
-        _display_weapon_slay(mult, 250, force, context->mult, num_throw, context->obj->dd, context->obj->ds, to_d, "Elec", TERM_RED, cols[0]);
+        _display_weapon_slay(mult, BRAND_MULT_ELEC, force, context->mult, num_throw, context->obj->dd, context->obj->ds, to_d, "Elec", TERM_RED, cols[0]);
 
     if (have_flag(context->flags, OF_BRAND_FIRE))
-        _display_weapon_slay(mult, 250, force, context->mult, num_throw, context->obj->dd, context->obj->ds, to_d, "Fire", TERM_RED, cols[0]);
+        _display_weapon_slay(mult, BRAND_MULT_FIRE, force, context->mult, num_throw, context->obj->dd, context->obj->ds, to_d, "Fire", TERM_RED, cols[0]);
 
     if (have_flag(context->flags, OF_BRAND_COLD))
-        _display_weapon_slay(mult, 250, force, context->mult, num_throw, context->obj->dd, context->obj->ds, to_d, "Cold", TERM_RED, cols[0]);
+        _display_weapon_slay(mult, BRAND_MULT_COLD, force, context->mult, num_throw, context->obj->dd, context->obj->ds, to_d, "Cold", TERM_RED, cols[0]);
 
     if (have_flag(context->flags, OF_BRAND_POIS))
-        _display_weapon_slay(mult, 250, force, context->mult, num_throw, context->obj->dd, context->obj->ds, to_d, "Poison", TERM_RED, cols[0]);
+        _display_weapon_slay(mult, BRAND_MULT_POIS, force, context->mult, num_throw, context->obj->dd, context->obj->ds, to_d, "Poison", TERM_RED, cols[0]);
 
     /* Column #1 */
     doc_insert(cols[1], "<color:G>Accuracy</color>\n");
