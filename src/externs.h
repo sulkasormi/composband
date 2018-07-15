@@ -1574,6 +1574,7 @@ extern int bow_energy(int sval);
 extern int bow_range(object_type *o_ptr);
 extern int bow_mult(object_type *o_ptr);
 extern int class_melee_mult(void);
+extern int race_melee_mult(void);
 extern void display_weapon_info(doc_ptr doc, int hand);
 extern int display_weapon_mode;
 extern int display_shooter_mode;
@@ -2202,6 +2203,9 @@ extern race_t *get_race(void);      /* Actual Race (cf Mimics) */
 extern race_t *get_true_race(void); /* True Race */
 extern race_t *get_race_aux(int prace, int psubrace);
 
+/* from gf.c */
+extern bool player_obviously_poly_immune(void);
+
 /* Player Races */
 extern void mimic_race(int new_race, const char *msg);
 extern void mimic_upkeep(void);
@@ -2256,11 +2260,18 @@ extern race_t *spectre_get_race(void);
 extern race_t *sprite_get_race(void);
 extern race_t *tonberry_get_race(void);
 extern race_t *vampire_get_race(void);
+extern void    werewolf_change_shape_spell(int cmd, variant *res);
+extern race_t *werewolf_get_race(void);
+extern bool    werewolf_in_human_form(void);
+extern char   *werewolf_moon_message(void);
+extern void    werewolf_check_midnight(void);
+extern void    werewolf_silver_effect(int power, bool allow_mitigation);
 extern race_t *wood_elf_get_race(void);
 extern race_t *yeek_get_race(void);
 extern race_t *zombie_get_race(void);
 
 extern void equip_shuffle(cptr tag); /* For shapeshifters ... */
+extern void set_equip_template(equip_template_ptr new_template);
 
 /* Monster Races */
 extern race_t *mon_angel_get_race(void);
