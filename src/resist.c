@@ -252,6 +252,8 @@ int res_pct_aux(int which, int count)
         {
             if (prace_is_(RACE_ENT))
                 result = result * 7 / 10;
+            else if (prace_is_(RACE_WEREWOLF))
+                result = result * 4 / 5;
         }
 
         if (which == RES_ELEC)
@@ -354,6 +356,8 @@ bool res_save_inventory(int which)
         power = 54;
     if (prace_is_(RACE_ANDROID) && which == RES_ELEC)
         power = 54;
+    if (prace_is_(RACE_WEREWOLF) && which == RES_FIRE)
+        power = 53;
 
     return res_save(which, power);
 }
