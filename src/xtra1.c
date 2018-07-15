@@ -1841,7 +1841,6 @@ static void prt_cut(int row, int col)
         c_put_str(cut.attr, cut.desc, row, col);
 }
 
-
 static void prt_stun(int row, int col)
 {
     stun_info_t s = stun_info(p_ptr->stun);
@@ -1921,6 +1920,13 @@ static void prt_effects(void)
         race_t *race_ptr = get_race();
         sprintf(buf, "[%.10s]", race_ptr->name);
         c_put_str(TERM_RED, buf, row++, col);
+    }
+    else if (prace_is_(RACE_WEREWOLF))
+    {
+        char buf[MAX_NLEN];
+        if (werewolf_in_human_form()) sprintf(buf, "[Human]");
+        else sprintf(buf, "[Wolf]");
+        c_put_str(TERM_ORANGE, buf, row++, col);
     }
     if (monk_armour_aux)
         c_put_str(TERM_RED, "Heavy Armor", row++, col);
@@ -3494,10 +3500,17 @@ static void calc_torch(void)
 int py_total_weight(void)
 {
     int weight = 0;
+    race_t  *race_ptr = get_true_race();
+    class_t *class_ptr = get_class();
 
     weight += equip_weight(NULL);
     weight += pack_weight(NULL);
     weight += quiver_weight(NULL);
+
+    if (race_ptr->calc_extra_weight)
+        weight += race_ptr->calc_extra_weight(NULL);
+    if (class_ptr->calc_extra_weight)
+        weight += class_ptr->calc_extra_weight(NULL);
 
     return weight;
 }
@@ -3586,7 +3599,6 @@ void calc_bonuses(void)
 
     /* Clear the stat modifiers */
     for (i = 0; i < 6; i++) p_ptr->stat_add[i] = 0;
-
 
     /* Clear the Displayed/Real armor class */
     p_ptr->dis_ac = p_ptr->ac = 0;
@@ -4441,7 +4453,6 @@ void calc_bonuses(void)
                 p_ptr->weapon_info[i].dual_wield_pct = 100;
         }
     }
-
 
     /* Extract the current weight (in tenth pounds) */
     j = py_total_weight();
