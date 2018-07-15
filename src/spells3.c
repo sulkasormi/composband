@@ -2430,6 +2430,7 @@ bool ident_spell(object_p p)
     prompt.where[1] = INV_EQUIP;
     prompt.where[2] = INV_QUIVER;
     prompt.where[3] = INV_FLOOR;
+    obj_prompt_add_special_packs(&prompt); 
 
     obj_prompt(&prompt);
     if (!prompt.obj) return FALSE;
@@ -2462,6 +2463,7 @@ bool mundane_spell(bool only_equip)
     prompt.where[1] = INV_EQUIP;
     prompt.where[2] = INV_QUIVER;
     prompt.where[3] = INV_FLOOR;
+    obj_prompt_add_special_packs(&prompt); 
 
     obj_prompt(&prompt);
     if (!prompt.obj) return FALSE;
@@ -2548,6 +2550,7 @@ bool identify_fully(object_p p)
     prompt.where[1] = INV_EQUIP;
     prompt.where[2] = INV_QUIVER;
     prompt.where[3] = INV_FLOOR;
+    obj_prompt_add_special_packs(&prompt); 
 
     obj_prompt(&prompt);
     if (!prompt.obj) return FALSE;
@@ -4339,6 +4342,9 @@ bool summon_kin_player(int level, int y, int x, u32b mode)
                 break;
             case RACE_ENT:
                 summon_kin_type = '#';
+                break;
+            case RACE_WEREWOLF:
+                summon_kin_type = 'C';
                 break;
             case RACE_ARCHON:
                 summon_kin_type = 'A';
