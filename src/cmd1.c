@@ -2348,7 +2348,7 @@ static void innate_attacks(s16b m_idx, bool *fear, bool *mdeath, int mode)
                     dam -= dam * MIN(100, p_ptr->stun) / 150;
                     base_dam -= base_dam * MIN(100, p_ptr->stun) / 150;
                 }
-                dam = ((dam * (class_melee_mult() * race_melee_mult() / 100)) + 50) / 100;
+                dam = ((dam * (class_melee_mult() * race_melee_mult(TRUE) / 100)) + 50) / 100;
 
                 /* More slop for Draconian Metamorphosis ... */
                 if ( (player_is_ninja)
@@ -3501,7 +3501,7 @@ static bool py_attack_aux(int y, int x, bool *fear, bool *mdeath, s16b hand, int
             }
 
             /* Adjust for race/class penalties */
-            k = ((k * (class_melee_mult() * race_melee_mult() / 100)) + 50) / 100;
+            k = ((k * (class_melee_mult() * race_melee_mult(FALSE) / 100)) + 50) / 100;
 
             if (poison_needle || mode == HISSATSU_KYUSHO || mode == MYSTIC_KILL)
             {
