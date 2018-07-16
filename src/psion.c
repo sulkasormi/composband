@@ -104,6 +104,14 @@ bool psion_combat(void)
     return FALSE;
 }
 
+/* Mega-Hack - no weapon, so the extra blows go to innate attacks
+ * We don't use the normal innate attack extra blow code because that only
+ * gives extra blows to one innate attack per round */
+void psion_combat_innate_blows(innate_attack_t *a_ptr)
+{
+    a_ptr->blows += 20*p_ptr->magic_num2[_COMBAT];
+}
+
 bool psion_archery(void)
 {
     if (p_ptr->pclass != CLASS_PSION) return FALSE;
@@ -128,7 +136,7 @@ bool psion_backlash(void)
 int psion_backlash_dam(int dam)
 {
     if (psion_backlash())
-        dam = dam * (25 + 35*p_ptr->magic_num2[_BACKLASH]) / 100;
+        dam = dam * (25 + 25*p_ptr->magic_num2[_BACKLASH]) / 100;
     return dam;
 }
 
@@ -149,7 +157,7 @@ bool psion_mindspring(void)
 void psion_do_mindspring(int energy)
 {
     if (!psion_mindspring()) return;
-    p_ptr->csp += 20*p_ptr->magic_num2[_MINDSPRING] * energy / 100;
+    p_ptr->csp += 16*p_ptr->magic_num2[_MINDSPRING] * energy / 100;
     if (p_ptr->csp >= p_ptr->msp)
     {
         p_ptr->csp = p_ptr->msp;
@@ -257,7 +265,7 @@ bool psion_process_monster(int m_idx)
         else
         {
             msg_format("Your ego whip lashes %s!", m_name);
-            result = mon_take_hit(m_idx, spell_power(40*m_ptr->ego_whip_pow), &fear, NULL);
+            result = mon_take_hit(m_idx, spell_power(30*m_ptr->ego_whip_pow), &fear, NULL);
             m_ptr->ego_whip_ct--;
             if (!projectable(py, px, m_ptr->fy, m_ptr->fx))
                 mon_anger(m_ptr);
@@ -345,7 +353,7 @@ static void _brain_smash_spell(int power, int cmd, variant *res)
         if (!get_fire_dir(&dir)) return;
 
         fire_ball(
-            GF_PSI_BRAIN_SMASH, 
+            GF_PSI_BRAIN_SMASH,
             dir, 
             power,
             2
@@ -377,7 +385,7 @@ static void _combat_transformation_spell(int power, int cmd, variant *res)
         var_set_string(res, "For a short while, you focus your mental powers on effective combat.");
         break;
     case SPELL_INFO:
-        var_set_string(res, format("Blows: +%d.%d", power/2, (power % 2)*5));
+        var_set_string(res, format("Blows: +%d.%d", power * 2 / 5, (power * 4) % 10));
         break;
     case SPELL_CAST:
         var_set_bool(res, FALSE);
@@ -660,7 +668,7 @@ static void _mindspring_spell(int power, int cmd, variant *res)
         var_set_string(res, "For a short time, you regain mana with every action.");
         break;
     case SPELL_INFO:
-        var_set_string(res, format("Recover %d sp/rnd", 20*power));
+        var_set_string(res, format("Recover %d sp/rnd", 16*power));
         break;
     case SPELL_CAST:
         var_set_bool(res, FALSE);
@@ -699,7 +707,7 @@ static void _psionic_backlash_spell(int power, int cmd, variant *res)
         var_set_string(res, "For a short while, monsters are damaged whenever they hurt you.");
         break;
     case SPELL_INFO:
-        var_set_string(res, format("Revenge: %d%%", 25 + 35*power));
+        var_set_string(res, format("Revenge: %d%%", 25 + 25*power));
         break;
     case SPELL_CAST:
         var_set_bool(res, FALSE);
@@ -1034,10 +1042,10 @@ static void _psionic_healing_spell(int power, int cmd, variant *res)
         var_set_string(res, "Use your mental powers to repair your body.");
         break;
     case SPELL_INFO:
-        var_set_string(res, info_heal(0, 0, spell_power(120*power - 50)));
+        var_set_string(res, info_heal(0, 0, spell_power(79*power - (MAX(32, 5 * power +15)))));
         break;
     case SPELL_CAST:
-        hp_player(spell_power(120*power - 50));
+        hp_player(spell_power(79*power - (MAX(32, 5 * power +15))));
         
         set_blind(0, TRUE);
         set_confused(0, TRUE); /* Probably, @ can't cast this while confused! */
@@ -1280,7 +1288,7 @@ static void _psionic_storm_spell(int power, int cmd, variant *res)
         var_set_string(res, "Fires a ball of psionic energy.");
         break;
     case SPELL_INFO:
-        var_set_string(res, info_damage(0, 0, spell_power(power*125 - 25)));
+        var_set_string(res, info_damage(0, 0, spell_power(power*96 + 4)));
         break;
     case SPELL_CAST:
     {
@@ -1291,7 +1299,7 @@ static void _psionic_storm_spell(int power, int cmd, variant *res)
         fire_ball_aux(
             GF_PSI_STORM, 
             dir, 
-            spell_power(power*125 - 25),
+            spell_power(power*96 + 4),
             2 + power/5,
             0
         );
@@ -1383,10 +1391,10 @@ static void _psionic_wave_spell(int power, int cmd, variant *res)
         var_set_string(res, "Inflict mental damage on all visible monsters.");
         break;
     case SPELL_INFO:
-        var_set_string(res, info_damage(0, 0, spell_power(power*50)));
+        var_set_string(res, info_damage(0, 0, spell_power(power*42)));
         break;
     case SPELL_CAST:
-        project_hack(GF_PSI_STORM, spell_power(power*50));
+        project_hack(GF_PSI_STORM, spell_power(power*42));
         var_set_bool(res, TRUE);
         break;
     default:
@@ -1535,10 +1543,10 @@ static _spell_t __spells[] =
     },
     { "Psionic Travel", _PSION_TRAVEL, 10, {  
         {  2,  25, _psionic_travel1_spell },
-        {  7,  35, _psionic_travel2_spell },
-        {  9,  50, _psionic_travel3_spell },
-        { 30, 120, _psionic_travel4_spell },
-        { 40, 170, _psionic_travel5_spell }},
+        {  8,  35, _psionic_travel2_spell },
+        { 10,  50, _psionic_travel3_spell },
+        { 42, 128, _psionic_travel4_spell },
+        { 54, 170, _psionic_travel5_spell }},
         "Psionic Travel grants a wide array of teleportation powers. From inexpensive short "
           "ranged 'blinking' to long ranged escapes, you will have it all. Indeed, with great "
           "focus you will even be able to control your teleportation and choose where you land!"
@@ -1603,8 +1611,8 @@ static _spell_t __spells[] =
         {  7,  40, _psionic_healing1_spell }, /*  70hp */
         { 21,  60, _psionic_healing2_spell }, /* 190hp */
         { 42,  80, _psionic_healing3_spell }, /* 310hp */
-        { 65, 100, _psionic_healing4_spell }, /* 430hp */
-        { 90, 125, _psionic_healing5_spell }},/* 550hp */
+        { 69, 100, _psionic_healing4_spell }, /* 430hp */
+        {102, 125, _psionic_healing5_spell }},/* 550hp */
         "Psionic Healing is a recovery spell. By focusing your mind, you will be able "
           "to heal your wounds. In addition, cuts, stuns and poison will be cured. With "
           "total focus, you can even restore your stats."
@@ -1619,11 +1627,11 @@ static _spell_t __spells[] =
           "a powerful mental attack on your foes which may confuse, stun or slow them."
     },
     { "Mind Wave", _PSION_WAVE, 30, {  
-        { 10,  60, _psionic_wave1_spell }, /*  50hp */
-        { 20,  75, _psionic_wave2_spell }, /* 100hp */
-        { 40,  90, _psionic_wave3_spell }, /* 150hp */
-        { 70, 105, _psionic_wave4_spell }, /* 200hp */
-        {100, 125, _psionic_wave5_spell }},/* 250hp */
+        { 10,  60, _psionic_wave1_spell }, /*  42hp */
+        { 20,  75, _psionic_wave2_spell }, /*  84hp */
+        { 40,  90, _psionic_wave3_spell }, /* 126hp */
+        { 70, 105, _psionic_wave4_spell }, /* 168hp */
+        {100, 125, _psionic_wave5_spell }},/* 210hp */
         "Mind Wave unleashes the effects of your mental focus on all visible monsters. The damage is not "
         "as great as Psionic Storm but the ability to affect many monsters at once compensates for this."
     },
@@ -1638,10 +1646,10 @@ static _spell_t __spells[] =
     },
     { "Psionic Storm", _PSION_STORM, 40, {  
         { 12,  50, _psionic_storm1_spell }, /* 100hp */
-        { 35,  65, _psionic_storm2_spell }, /* 225hp */
-        { 65,  80, _psionic_storm3_spell }, /* 350hp */
-        {100,  95, _psionic_storm4_spell }, /* 475hp */
-        {135, 110, _psionic_storm5_spell }},/* 600hp */
+        { 35,  65, _psionic_storm2_spell }, /* 196hp */
+        { 65,  80, _psionic_storm3_spell }, /* 292hp */
+        {100,  95, _psionic_storm4_spell }, /* 388hp */
+        {135, 110, _psionic_storm5_spell }},/* 484hp */
         "Psionic Storm unleashes your mental focus in a large, powerful ball of mana."
     },
     { "Psionic Backlash", _PSION_BACKLASH, 40, {  
@@ -1988,7 +1996,7 @@ static void _calc_bonuses(void)
 
     if (p_ptr->magic_num1[_COMBAT])
     {
-        p_ptr->skills.thn += 20*p_ptr->magic_num2[_COMBAT];
+        p_ptr->skills.thn += 15*p_ptr->magic_num2[_COMBAT];
     }
 
     if (p_ptr->magic_num1[_ARCHERY])
@@ -2053,7 +2061,7 @@ static void _calc_weapon_bonuses(object_type *o_ptr, weapon_info_t *info_ptr)
 
     if (p_ptr->magic_num1[_COMBAT])
     {
-        info_ptr->xtra_blow += p_ptr->magic_num2[_COMBAT] * 50;
+        info_ptr->xtra_blow += p_ptr->magic_num2[_COMBAT] * 40;
     }
 }
 
@@ -2227,7 +2235,7 @@ class_t *psion_get_class(void)
                     "but they can scale their powers to determine the SP cost and the "
                     "powers' potency. Psionic powers require great concentration, however, "
                     "and psions do not have the mind to spare to care for others. "
-                    "The Psion gains powers a the following levels: 1, 10, 15, 20, 30, 35, 40 and 50. "
+                    "The Psion gains powers at the following levels: 1, 10, 15, 20, 30, 35, 40 and 50. "
                     "The Psion uses Intelligence, Wisdom or Charisma as their primary "
                     "spell stat, which ever is currently highest. In this respect, Psions "
                     "are truly unique!";
@@ -2240,7 +2248,7 @@ class_t *psion_get_class(void)
         me.stats[A_CHR] =  2;
         me.base_skills = bs;
         me.extra_skills = xs;
-        me.life = 100;
+        me.life = 96;
         me.base_hp = 4;
         me.exp = 150;
         me.pets = 35;
