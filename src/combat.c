@@ -87,14 +87,15 @@ int class_melee_mult(void)
 }
 
 /* Race-dependent melee multiplier */
-int race_melee_mult(void)
+int race_melee_mult(bool attack_is_innate)
 {
     switch ((p_ptr->mimic_form != MIMIC_NONE) ? p_ptr->mimic_form : p_ptr->prace)
     {
         case RACE_WEREWOLF:
         {
             if (werewolf_in_human_form()) return 100;
-            else return MIN(110, MAX(63, 58 + (get_class()->base_skills.thn * 3 / 5)));
+            else if (!attack_is_innate) return 100;
+            else return MIN(115, MAX(66, 61 + (get_class()->base_skills.thn * 3 / 5)));
         }
         default: return 100;
     }
@@ -505,8 +506,8 @@ static void _display_weapon_slay(int base_mult, int slay_mult, bool force, int b
     min = blows * (mult*dd/100 + to_d) / 100;
     max = blows * (mult*dd*ds/100 + to_d) / 100;
 
-    min = ((min * (class_melee_mult() * race_melee_mult() / 100)) + 50) / 100;
-    max = ((max * (class_melee_mult() * race_melee_mult() / 100)) + 50) / 100;
+    min = ((min * (class_melee_mult() * race_melee_mult(FALSE) / 100)) + 50) / 100;
+    max = ((max * (class_melee_mult() * race_melee_mult(FALSE) / 100)) + 50) / 100;
 
     if (p_ptr->stun)
     {
@@ -938,6 +939,12 @@ void display_innate_attack_info(doc_ptr doc, int which)
         min2 -= min2 * MIN(100, p_ptr->stun) / 150;
         max2 -= max2 * MIN(100, p_ptr->stun) / 150;
     }
+    min_base = (min_base * (class_melee_mult() * race_melee_mult(TRUE) / 100) + 50) / 100;
+    max_base = (max_base * (class_melee_mult() * race_melee_mult(TRUE) / 100) + 50) / 100;
+    min = (min * (class_melee_mult() * race_melee_mult(TRUE) / 100) + 50) / 100;
+    min2 = (min2 * (class_melee_mult() * race_melee_mult(TRUE) / 100) + 50) / 100;
+    max = (max * (class_melee_mult() * race_melee_mult(TRUE) / 100) + 50) / 100;
+    max2 = (max2 * (class_melee_mult() * race_melee_mult(TRUE) / 100) + 50) / 100;
 
     if (a->effect[0] == GF_OLD_CONF) /* Hack for Umber Hulk ... */
     {
