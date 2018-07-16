@@ -2020,7 +2020,7 @@ bool gf_affect_m(int who, mon_ptr mon, int type, int dam, int flags)
         {
             int mult = 1;
 
-            do_stun = mon_stun_amount(dam);
+            do_stun = mon_stun_amount(dam * 2 / 3);
             if (race->flags1 & RF1_UNIQUE)
                 mult++;
 
@@ -2035,12 +2035,14 @@ bool gf_affect_m(int who, mon_ptr mon, int type, int dam, int flags)
             switch (randint1(3))
             {
                 case 1:
-                    do_conf = 3 + randint1(dam);
+                    do_conf = (race->flags3 & RF3_NO_CONF) ? 2 : 3 + randint1((dam + 9) / 10);
                     break;
                 case 2:
+                    if ((race->flags3 & RF3_NO_FEAR) && (one_in_(2))) break;
                     do_fear = 3 + randint1(dam);
                     break;
                 case 3:
+                    if ((race->flags3 & RF3_NO_SLEEP) && (one_in_(2))) break;
                     note = " falls asleep!";
                     do_sleep = 3 + randint1(dam);
                     break;
@@ -3587,7 +3589,7 @@ bool gf_affect_m(int who, mon_ptr mon, int type, int dam, int flags)
                 mon_lore_3(mon, RF3_NO_STUN);
             else
                 do_stun = 2*dam;
-            set_monster_slow(mon->id, MON_SLOW(mon) + 2*dam);
+            m_inc_minislow(mon, dam);
             dam = 0;
         }
         break;
