@@ -3546,6 +3546,13 @@ int place_monster_one(int who, int y, int x, int r_idx, int pack_idx, u32b mode)
     m_ptr->ac_adj = 0;
     m_ptr->mpower = 1000;
 
+    /* Discourage level repetitions in coffee-break mode */
+    if ((coffee_break) && (m_ptr->r_idx == MON_SERPENT) && (p_ptr->coffee_lv_revisits))
+    {
+        m_ptr->mpower += MIN(600, p_ptr->coffee_lv_revisits * 15);
+        m_ptr->mspeed += MIN(30, p_ptr->coffee_lv_revisits / 2);
+    }
+
     if (mode & PM_HASTE) (void)set_monster_fast(c_ptr->m_idx, 100);
 
     /* Give a random starting energy */
