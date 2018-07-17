@@ -853,6 +853,10 @@ byte coffeebreak_recall_level(bool laskuri)
      * and taso == max_dlv, we are revisiting the depth */
     if ((laskuri) && (taso == (byte)max_dlv[DUNGEON_ANGBAND]) && (p_ptr->coffee_lv_revisits < 251) && (taso < 101))
     {
+        if (p_ptr->coffee_lv_revisits == 2) /* warn the player about J's increasing mpower */
+        {
+            msg_print("You have a brief vision of a red-faced, overweight humanoid with an unkempt beard, yelling <color:R>'Get to it already! The longer you bum around, the stronger the Serpent grows!'</color> You aren't sure who this strange apparition is, but given how tense and irritable he appears, you hope he's not the ultimate supreme deity.");
+        }
         p_ptr->coffee_lv_revisits++;
     }
     return taso;
