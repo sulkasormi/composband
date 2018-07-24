@@ -240,17 +240,17 @@ static s32b _resistances_q(u32b flgs[OF_ARRAY_SIZE])
     cost += _check_flag_and_score(flgs, OF_RES_ELEC, 3000, &count);
     cost += _check_flag_and_score(flgs, OF_RES_FIRE, 3000, &count);
     cost += _check_flag_and_score(flgs, OF_RES_COLD, 3000, &count);
-    cost += _check_flag_and_score(flgs, OF_RES_POIS, 4000, &count);
+    cost += _check_flag_and_score(flgs, OF_RES_POIS, 3500, &count);
     bigcount = count;
 
     /* High Resists */
     count = 0;
     cost += _check_flag_and_score(flgs, OF_RES_LITE, 2500, &count);
     bigcount = ((bigcount + count) >= 5) ? (2 - count) : ((bigcount + count) >= 2) ? (1 - count) : (0 - count);
-    cost += _check_flag_and_score(flgs, OF_RES_DARK, 3500, &count);
-    cost += _check_flag_and_score(flgs, OF_RES_CONF, 3500, &count);
+    cost += _check_flag_and_score(flgs, OF_RES_DARK, 4000, &count);
+    cost += _check_flag_and_score(flgs, OF_RES_CONF, 4000, &count);
     cost += _check_flag_and_score(flgs, OF_RES_NETHER, 5000, &count);
-    cost += _check_flag_and_score(flgs, OF_RES_NEXUS, 4000, &count);
+    cost += _check_flag_and_score(flgs, OF_RES_NEXUS, 3500, &count);
     cost += _check_flag_and_score(flgs, OF_RES_CHAOS, 6000, &count);
     cost += _check_flag_and_score(flgs, OF_RES_SOUND, 5000, &count);
     cost += _check_flag_and_score(flgs, OF_RES_SHARDS, 7000, &count);
@@ -435,7 +435,7 @@ s32b _finalize_p(s32b p, u32b flgs[OF_ARRAY_SIZE], object_type *o_ptr, int optio
     {
         /* Do we know this is an artifact? */
         if ( (known && object_is_artifact(o_ptr))
-          || (o_ptr->feeling & (FEEL_SPECIAL | FEEL_TERRIBLE)) )
+          || (o_ptr->feeling == FEEL_SPECIAL) || (o_ptr->feeling == FEEL_TERRIBLE))
         {
         }
         else
@@ -956,7 +956,7 @@ s32b quiver_cost(object_type *o_ptr, int options)
 s32b armor_cost(object_type *o_ptr, int options)
 {
     s32b a, y, q, p;
-    int  to_h = 0, to_d = 0, to_a = 0, pval = 0;
+    int  to_h = k_info[o_ptr->k_idx].to_h, to_d = k_info[o_ptr->k_idx].to_d, to_a = k_info[o_ptr->k_idx].to_a, pval = 0;
     u32b flgs[OF_ARRAY_SIZE];
     char dbg_msg[512];
 
@@ -967,7 +967,7 @@ s32b armor_cost(object_type *o_ptr, int options)
 
     if ((options & COST_REAL) || object_is_known(o_ptr))
     {
-        to_h = o_ptr->to_h - k_info[o_ptr->k_idx].to_h;
+        to_h = o_ptr->to_h - MIN(0, k_info[o_ptr->k_idx].to_h);
         to_d = o_ptr->to_d;
         to_a = o_ptr->to_a;
     }
@@ -1121,6 +1121,7 @@ s32b armor_cost(object_type *o_ptr, int options)
             }
         }
     }
+
     /* (+x,+y) */
     if (to_h != 0 || to_d != 0)
     {
