@@ -1887,6 +1887,15 @@ static void _annoy(void)
     else
         _annoy_m();
 }
+
+static bool _one_with_magic_chance(void)
+{
+    if (IS_WRAITH()) return magik(33);
+    if (p_ptr->prace == RACE_DOPPELGANGER) return magik(77);
+    if (p_ptr->mimic_form == MIMIC_NONE) return magik(77);
+    return magik(44);
+} 
+
 static void _biff_p(void)
 {
     if (check_foresight()) return;
@@ -1895,7 +1904,7 @@ static void _biff_p(void)
     case BIFF_ANTI_MAGIC:
         if (_curse_save())
             msg_print("You resist the effects!");
-        else if (mut_present(MUT_ONE_WITH_MAGIC) && one_in_(2))
+        else if (mut_present(MUT_ONE_WITH_MAGIC) && _one_with_magic_chance())
             msg_print("You resist the effects!");
         else if (psion_mental_fortress())
             msg_print("Your mental fortress is impenetrable!");
@@ -1903,7 +1912,7 @@ static void _biff_p(void)
             set_tim_no_spells(p_ptr->tim_no_spells + 3 + randint1(3), FALSE);
         break;
     case BIFF_DISPEL_MAGIC:
-        if (mut_present(MUT_ONE_WITH_MAGIC) && one_in_(2))
+        if (mut_present(MUT_ONE_WITH_MAGIC) && _one_with_magic_chance())
             msg_print("You resist the effects!");
         else if (psion_mental_fortress())
             msg_print("Your mental fortress is impenetrable!");
@@ -2467,6 +2476,7 @@ static point_t _choose_point_near(point_t src, point_t dest, _path_p filter)
 static void _summon(void)
 {
     int ct, i;
+    bool summoner_is_pet = is_pet(_current.mon);
     if (!_projectable(_current.src, _current.dest))
     {
         point_t new_dest = {0};
@@ -2481,6 +2491,7 @@ static void _summon(void)
     if (_current.spell->id.effect == SUMMON_SPECIAL)
     {
         _summon_special();
+        if (summoner_is_pet) calculate_upkeep();
         return;
     }
     assert(_current.spell->parm.tag == MSP_DICE);
@@ -2489,6 +2500,8 @@ static void _summon(void)
         summon_kin_type = _current.race->d_char;
     for (i = 0; i < ct; i++)
         _summon_type(_current.spell->id.effect);
+    /* Check upkeep on pet summoning */
+    if (summoner_is_pet) calculate_upkeep();
 }
 static void _weird_bird_p(void)
 {
