@@ -1911,21 +1911,29 @@ void init_wilderness_terrains(void)
         feat_shallow_water, 4,
         feat_swamp, MAX_FEAT_IN_TERRAIN - 11);
 
-    init_terrain_table(TERRAIN_DIRT, feat_dirt, "abcdef",
-        feat_floor, 3,
-        feat_dirt, 10,
-        feat_flower, 1,
-        feat_brake, 1,
+    init_terrain_table(TERRAIN_DIRT, feat_dirt, "abcdefghijk",
+        feat_floor, 2,
+        feat_dirt, 4,
         feat_grass, 1,
-        feat_tree, MAX_FEAT_IN_TERRAIN - 16);
+        feat_brake, 1,
+        feat_dirt, 2,
+        feat_tree, 1,
+        feat_dirt, MAX_FEAT_IN_TERRAIN - 16,
+        feat_tree, 1,
+        feat_flower, 1,
+        feat_grass, 1,
+        feat_dirt, 2);
 
-    init_terrain_table(TERRAIN_GRASS, feat_grass, "abcdef",
+    init_terrain_table(TERRAIN_GRASS, feat_grass, "abcdefghi",
         feat_floor, 2,
         feat_dirt, 2,
-        feat_grass, 9,
+        feat_brake, 1,
+        feat_grass, 5,
+        feat_brake, 1,
+        feat_tree, 1,
         feat_flower, 1,
-        feat_brake, 2,
-        feat_tree, MAX_FEAT_IN_TERRAIN - 16);
+        feat_grass, 4,
+        feat_tree, MAX_FEAT_IN_TERRAIN - 17);
 
     init_terrain_table(TERRAIN_TREES, feat_tree, "abcde",
         feat_floor, 2,
@@ -1950,13 +1958,16 @@ void init_wilderness_terrains(void)
         feat_deep_lava, 10,
         feat_mountain, MAX_FEAT_IN_TERRAIN - 16);
 
-    init_terrain_table(TERRAIN_MOUNTAIN, feat_mountain, "abcdef",
+    init_terrain_table(TERRAIN_MOUNTAIN, feat_mountain, "abcdefghi",
         feat_floor, 1,
         feat_brake, 1,
-        feat_grass, 3,
-        feat_dirt, 3,
-        feat_tree, 3,
-        feat_mountain, MAX_FEAT_IN_TERRAIN - 11);
+        feat_grass, 2,
+        feat_dirt, 2,
+        feat_tree, 2,
+        feat_mountain, MAX_FEAT_IN_TERRAIN - 11,
+        feat_tree, 1,
+        feat_dirt, 1,
+        feat_grass, 1);
 }
 
 
