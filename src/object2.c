@@ -1437,6 +1437,9 @@ void object_prep(object_type *o_ptr, int k_idx)
     if (k_ptr->gen_flags & (OFG_RANDOM_CURSE0)) o_ptr->curse_flags |= get_curse(0, o_ptr);
     if (k_ptr->gen_flags & (OFG_RANDOM_CURSE1)) o_ptr->curse_flags |= get_curse(1, o_ptr);
     if (k_ptr->gen_flags & (OFG_RANDOM_CURSE2)) o_ptr->curse_flags |= get_curse(2, o_ptr);
+
+    /* Inherit plurality */
+    if (have_flag(k_ptr->flags, OF_PLURAL)) add_flag(o_ptr->flags, OF_PLURAL);
 }
 
 
@@ -2752,6 +2755,7 @@ bool kind_is_good(int k_idx)
             if (k_ptr->sval == SV_SCROLL_ICE) return TRUE;
             if (k_ptr->sval == SV_SCROLL_CHAOS) return TRUE;
             if (k_ptr->sval == SV_SCROLL_MANA) return TRUE;
+            if (k_ptr->sval == SV_SCROLL_INVEN_PROT) return TRUE;
             return FALSE;
         }
         case TV_WAND:
