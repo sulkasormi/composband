@@ -18,6 +18,7 @@
 /* hack as in leave_store in store.c */
 static bool leave_bldg = FALSE;
 static bool paivita = FALSE;
+static bool paivitys_no_inkey_hack = FALSE;
 
 int get_bldg_member_code(cptr name)
 {
@@ -2165,6 +2166,7 @@ static bool inn_comm(int cmd)
                 prevent_turn_overflow();
 
                 p_ptr->chp = p_ptr->mhp;
+                reset_tim_flags();
 
                 if (ironman_nightmare)
                 {
@@ -2181,9 +2183,6 @@ static bool inn_comm(int cmd)
                 }
                 else
                 {
-                    set_blind(0, TRUE);
-                    set_confused(0, TRUE);
-                    p_ptr->stun = 0;
                     p_ptr->chp = p_ptr->mhp;
                     if (p_ptr->pclass != CLASS_RUNE_KNIGHT)
                         p_ptr->csp = p_ptr->msp;
@@ -2681,15 +2680,23 @@ static obj_ptr _get_reforge_dest(int max_power)
     return prompt.obj;
 }
 
+static int _calculate_reforge_cost(int value, int slot_weight)
+{
+    int cost = MAX(10000, MIN(value, 1125L * slot_weight)) * (coffee_break ? 7 : 8);
+    cost -= cost % 1000;
+    return cost;
+}
+
 static bool _reforge_artifact(void)
 {
-    int  cost;
+    int  cost, extra_cost = 0, value;
     char o_name[MAX_NLEN];
     object_type *src, *dest;
     int f = ((p_ptr->fame <= 128) || (p_ptr->fame >= 224)) ? p_ptr->fame : (((p_ptr->fame - 128) * 3) / 4) + 128;
     /* 90K max kind of removed - stronger objects are allowed but get scaled down */
     int src_max_power = f*150 + f*f*3/2;
     int dest_max_power = 0;
+    int src_weight = 80;
 
     if (coffee_break) /* Accelerated reforging */
     {
@@ -2730,27 +2737,26 @@ static bool _reforge_artifact(void)
         return FALSE;
     }
 
-    cost = obj_value_real(src);
+    value = obj_value_real(src);
+    src_weight = get_slot_weight(src);
     
-    dest_max_power = MIN(1125L * get_slot_weight(src) / 2, cost / 2);
+    dest_max_power = MIN(1125L * src_weight / 2, value / 2);
     if (dest_max_power < 1000) /* Reforging won't try to power match weak stuff ... */
         dest_max_power = 1000;
-    
-    cost *= 8;
-    cost -= cost % 1000;
 
-    if (cost < 80000)
-        cost = 80000;
-    if (cost > 9000L * get_slot_weight(src))
-        cost = 9000L * get_slot_weight(src);
-
-    if (coffee_break) cost -= (cost / 8);
+    cost = _calculate_reforge_cost(value, src_weight);
 
     msg_format("Reforging will cost you %d gold.", cost);
     if (p_ptr->au < cost)
     {
         msg_print("You do not have that much.");
         return FALSE;
+    }
+    else if ((dest_max_power < value / 2) && (src_weight < 80))
+    {
+        msg_print("(Additional costs may be incurred reforging this item into certain equipment slots.)");
+        paivita = TRUE; /* The long message wipes the storeminder's name, so we need to redraw it */
+        paivitys_no_inkey_hack = TRUE;
     }
 
     object_desc(o_name, src, OD_NAME_ONLY | OD_COLOR_CODED);
@@ -2808,6 +2814,26 @@ static bool _reforge_artifact(void)
         return FALSE;
     }
 
+    /* Items like Vilya count for the full 90K when reforged into e.g.
+     * the armour slot, so the reforge should also cost accordingly */
+    if (dest_max_power < value / 2)
+    {
+        int dest_weight = get_slot_weight(dest);
+        if (dest_weight > src_weight)
+        {
+            extra_cost = _calculate_reforge_cost(value, dest_weight) - cost;
+            if (extra_cost > 0)
+            {
+                if (p_ptr->au < cost + extra_cost)
+                {
+                    msg_format("This reforge will cost an additional %d gold. You do not have that much.", extra_cost);
+                    return FALSE;
+                }
+                if (!get_check(format("This reforge will cost an additional %d gold. Proceed?", extra_cost))) return FALSE;
+            }
+        }
+    }
+
     if (p_ptr->wizard)
     {
         doc_ptr doc = doc_alloc(80);
@@ -2847,6 +2873,7 @@ static bool _reforge_artifact(void)
     obj_release(src, OBJ_RELEASE_QUIET);
     src = NULL;
 
+    if (extra_cost > 0) cost += extra_cost;
     p_ptr->au -= cost;
     stats_on_gold_services(cost);
 
@@ -2855,15 +2882,12 @@ static bool _reforge_artifact(void)
 
     /* The items we carried recharged during those hours */
     _recharge_player_items();
-    if ((!p_ptr->poisoned) && (!p_ptr->cut))
-    {
-        set_blind(0, TRUE);
-        set_confused(0, TRUE);
-        p_ptr->stun = 0;
-        p_ptr->chp = p_ptr->mhp;
-        if (p_ptr->pclass != CLASS_RUNE_KNIGHT)
-            p_ptr->csp = p_ptr->msp;
-    }
+    reset_tim_flags(); /* this can miraculously cure the player of cuts or
+                        * poisoning, but given the cost of reforging that's
+                        * probably only fair... */
+    p_ptr->chp = p_ptr->mhp;
+    if (p_ptr->pclass != CLASS_RUNE_KNIGHT)
+        p_ptr->csp = p_ptr->msp;
 
     /* Update discovery details to apply to the reforged item
      * We do this after updating the turn to get the correct time */
@@ -4008,7 +4032,12 @@ void do_cmd_bldg(void)
         if (paivita)
         {
             if (leave_bldg) paivita = FALSE;
-            else { inkey(); show_building(bldg); }
+            else
+            {
+                if (!paivitys_no_inkey_hack) inkey();
+                paivitys_no_inkey_hack = FALSE;
+                show_building(bldg);
+            }
         }
     }
 
@@ -4022,6 +4051,7 @@ void do_cmd_bldg(void)
     if (reinit_wilderness)
     {
         p_ptr->leaving = TRUE;
+        quest_reward_drop_hack = TRUE;
     }
 
     /* Hack -- Decrease "icky" depth */
