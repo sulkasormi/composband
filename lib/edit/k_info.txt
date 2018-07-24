@@ -1843,7 +1843,7 @@ I:36:13:1
 W:15:0:0:80:5000
 A:40/4
 P:4:1d1:0:0:12
-F:STEALTH | IGNORE_FIRE
+F:STEALTH | IGNORE_FIRE | PLURAL
 
 N:*:Stone and Hide Armour~
 G:(:U
@@ -2344,7 +2344,7 @@ A:1/1
 F:TOWN
 M:90:2d6
 
-N:*:Teleportation:arzemi zunag
+N:*:Teleportation:hiden goseke
 G:?:w
 I:70:9:0
 W:10:0:0:5:40
@@ -2684,7 +2684,7 @@ N:*:Fire:itus whamko
 G:?:w
 I:70:58:0
 W:50:0:0:5:1000
-A:50/2
+A:50/3
 F:IGNORE_FIRE
 M:100:1d5
 
@@ -2719,6 +2719,13 @@ W:50:0:0:5:5000
 A:50/4
 F:IGNORE_COLD | IGNORE_FIRE | IGNORE_ACID | IGNORE_ELEC
 M:20:1d5
+
+N:*:Inventory Protection:arsemi zunag
+G:?:w
+I:70:63:0
+W:45:0:0:5:2500
+A:45/2
+M:75:1d4
 
 ########################################################################
 #  Potions (TV_POTION)
@@ -4186,11 +4193,13 @@ N:*:garnets
 G:$:r
 I:127:7:0
 W:1:0:0:0:9
+F:PLURAL
 
 N:*:garnets
 G:$:r
 I:127:8:0
 W:1:0:0:0:10
+F:PLURAL
 
 N:*:gold
 G:$:y
@@ -4211,26 +4220,31 @@ N:*:opals
 G:$:W
 I:127:12:0
 W:1:0:0:0:18
+F:PLURAL
 
 N:*:sapphires
 G:$:b
 I:127:13:0
 W:1:0:0:0:20
+F:PLURAL
 
 N:*:rubies
 G:$:r
 I:127:14:0
 W:1:0:0:0:24
+F:PLURAL
 
 N:*:diamonds
 G:$:w
 I:127:15:0
 W:1:0:0:0:28
+F:PLURAL
 
 N:*:emeralds
 G:$:g
 I:127:16:0
 W:1:0:0:0:32
+F:PLURAL
 
 N:*:mithril
 G:$:B
