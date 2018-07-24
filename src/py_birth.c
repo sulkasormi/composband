@@ -198,6 +198,9 @@ static bool _stats_changed = FALSE;
 
 static int _welcome_ui(void)
 {
+    /* Mega-Hack */
+    werewolf_init();
+
     for (;;)
     {
         int cmd;
@@ -2034,9 +2037,14 @@ static void _stats_init(void)
         }
         case RACE_MON_LICH:
         case RACE_MON_BEHOLDER:
-        case RACE_MON_RING:
         {
             int stats[6] = { 16, 17, 9, 9, 16, 9 };
+            _stats_init_aux(stats);
+            break;
+        }
+        case RACE_MON_RING:
+        {
+            int stats[6] = { 11, 17, 10, 10, 16, 15 };
             _stats_init_aux(stats);
             break;
         }
