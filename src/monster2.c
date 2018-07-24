@@ -1587,7 +1587,7 @@ s16b get_mon_num_aux(int level, int min_level, u32b options)
         if (table[i].level > level) break; /* Monsters are sorted by depth */
         table[i].prob3 = 0;
 
-        if (!_ignore_depth_hack && table[i].max_level < level) continue;
+        if (((!_ignore_depth_hack) || (table[i].max_level == 0)) && (table[i].max_level < level)) continue;
         if (table[i].level < min_level) continue;
 
         /* Hack: Sparing early unique monsters is no longer a viable end game strategy */
@@ -1656,7 +1656,7 @@ s16b get_mon_num_aux(int level, int min_level, u32b options)
             }
 
             if ((options & GMN_NO_SUMMONERS) && (mon_race_can_summon(r_ptr, -1)) &&
-                (summon_specific_type != SUMMON_UNIQUE) && (summon_specific_type != SUMMON_KIN))
+                (summon_specific_type != SUMMON_UNIQUE) && (summon_specific_type != SUMMON_KIN)) continue;
 
             if ((r_ptr->flags7 & (RF7_UNIQUE2)) &&
                 (r_ptr->cur_num >= 1))
@@ -2243,6 +2243,12 @@ void sanity_blast(monster_type *m_ptr, bool necro)
 
         if (randint1(100) > power) return;
 
+        if (m_ptr->mflag2 & MFLAG2_HORROR) 
+        {
+            /* Avoid having the same monster trigger Eldritch Horror too often */
+            if (!one_in_(5)) return;
+        }
+
         if (saving_throw(p_ptr->skills.sav - power))
         {
             return; /* Save, no adverse effects */
@@ -2280,6 +2286,7 @@ void sanity_blast(monster_type *m_ptr, bool necro)
         {
             if (saving_throw(25 + p_ptr->lev)) return;
         }
+        m_ptr->mflag2 |= MFLAG2_HORROR;
     }
     else
     {
@@ -3559,6 +3566,7 @@ int place_monster_one(int who, int y, int x, int r_idx, int pack_idx, u32b mode)
     if (!ironman_nightmare)
     {
         m_ptr->energy_need = ENERGY_NEED() - (s16b)randint0(100);
+        if (who) m_ptr->energy_need = MAX(25, m_ptr->energy_need);
     }
     else
     {
