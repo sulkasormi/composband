@@ -571,7 +571,7 @@ static void prt_stat(int stat)
 #define BAR_TUNNEL 140
 #define BAR_QUICK_WALK 141
 #define BAR_INVEN_PROT 142
-#define BAR_XXXX2 143
+#define BAR_INVEN_PROT2 143
 #define BAR_WEAPONMASTERY 144
 #define BAR_DEVICE_POWER 145
 #define BAR_SPLATTER 146
@@ -761,7 +761,7 @@ static struct {
     {TERM_L_DARK, "Tn", "Tunnel"},
     {TERM_YELLOW, "QW", "Quickwalk"},
     {TERM_L_BLUE, "IP", "InvenProt"},
-    {TERM_YELLOW, "Sk", "Shrike"},
+    {TERM_VIOLET, "IP", "InvenProt"},
     {TERM_L_BLUE, "Wp", "Weapon"},
     {TERM_VIOLET, "Dv", "Device"},
     {TERM_RED, "*", "Splatter"},
@@ -1244,7 +1244,8 @@ static void prt_status(void)
     if (p_ptr->tim_hold_life) ADD_FLG(BAR_HOLD_LIFE);
     if (p_ptr->tim_transcendence) ADD_FLG(BAR_TRANSCENDENCE);
     if (p_ptr->tim_quick_walk) ADD_FLG(BAR_QUICK_WALK);
-    if (p_ptr->tim_inven_prot) ADD_FLG(BAR_INVEN_PROT);
+    if (p_ptr->tim_inven_prot2) ADD_FLG(BAR_INVEN_PROT2);
+    else if (p_ptr->tim_inven_prot) ADD_FLG(BAR_INVEN_PROT);
     if (p_ptr->tim_device_power) ADD_FLG(BAR_DEVICE_POWER);
     if (p_ptr->tim_sh_time) ADD_FLG(BAR_SH_TIME);
     if (p_ptr->free_turns) ADD_FLG(BAR_DBL_MOVE);
