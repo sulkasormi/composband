@@ -278,6 +278,9 @@ Movement costs less energy.</indent>
   <indent><color:G>Infernal Deal</color>
 You will regain hp and sp whenever a nearby enemy monster is slain.</indent>
 
+  <indent><color:G>Inspired Smithing</color>
+You will receive better results from item reforging.</indent>
+
   <indent><color:G>Loremaster</color>
 Items will automatically identify as you pick them up.</indent>
 
@@ -321,4 +324,4 @@ You resist the Eldritch Horror.</indent>
 
 
 
-<color:s>Automatically generated for FrogComposband 7.0.strawberry.</color>
+<color:s>Automatically generated for FrogComposband 7.0.mango.</color>
