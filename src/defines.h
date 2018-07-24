@@ -19,7 +19,7 @@
 #define VER_MAJOR 7
 #define VER_MINOR 0
 #define VER_PATCH "mango"
-#define VER_EXTRA 5
+#define VER_EXTRA 7
 #define VERSION_IS_DEVELOPMENT (TRUE)
 
 #define GAME_MODE_BEGINNER  0
@@ -1956,6 +1956,7 @@ enum {
 #define SV_SCROLL_CHAOS                 60
 #define SV_SCROLL_MANA                  61
 #define SV_SCROLL_BANISHMENT            62
+#define SV_SCROLL_INVEN_PROT            63
 
 /* The "sval" codes for TV_POTION */
 #define SV_POTION_WATER                  0
@@ -2664,6 +2665,8 @@ enum summon_specific_e {
 #define MFLAG2_QUESTOR          0x00004000   /* using monster_race.flags1 & RF1_QUESTOR is error prone */
 #define MFLAG2_FUZZY            0x00008000   /* fuzzy telepathy */
 #define MFLAG2_PLAYER_SUMMONED  0x00010000   /* Monster was summoned by player (or player-aligned mon) */
+#define MFLAG2_HORROR           0x00020000   /* Monster has triggered Eldritch Horror */
+#define MFLAG2_COUNTED_KILLED   0x00040000   /* Monster has been counted as killed by quests_on_kill_mon() */
 
 /*
  * Object Flags (OF_*)
@@ -2902,6 +2905,9 @@ enum obj_flags_e {
     OF_TELEPORT,
     OF_AGGRAVATE,
     OF_TY_CURSE,
+
+    /* Plural */
+    OF_PLURAL,
 
     /* A few places loop from 0 <= i < OF_COUNT ... (init1, race_sword and race_ring) */
     OF_COUNT,
@@ -4494,6 +4500,7 @@ extern int PlayerUID;
 #define MON_SURTUR              837
 #define MON_TARRASQUE           838
 #define MON_LUNGORTHIN          839
+#define MON_DRAUGLUIN           840
 #define MON_CYBER_KING          843
 #define MON_OREMORJ             843
 #define MON_WYRM_POWER          847
