@@ -51,6 +51,7 @@ enum _keyword_e {
 
     /* Object Attributes */
     FLG_BOOSTED,
+    FLG_ICKY,
 
     /* Spellbooks */
     FLG_UNREADABLE,
@@ -144,6 +145,7 @@ static char KEY_COMMON[] = "common";
 static char KEY_WORTHLESS[] = "worthless";
 
 static char KEY_BOOSTED[] = "dice boosted";
+static char KEY_ICKY[] = "icky";
 
 static char KEY_UNREADABLE[] = "unreadable";
 static char KEY_REALM1[] = "first realm's";
@@ -323,6 +325,7 @@ static bool autopick_new_entry(autopick_type *entry, cptr str, bool allow_defaul
         if (MATCH_KEY(KEY_WORTHLESS)) ADD_FLG(FLG_WORTHLESS);
 
         if (MATCH_KEY(KEY_BOOSTED)) ADD_FLG(FLG_BOOSTED);
+        if (MATCH_KEY(KEY_ICKY)) ADD_FLG(FLG_ICKY);
 
         if (MATCH_KEY(KEY_UNREADABLE)) ADD_FLG(FLG_UNREADABLE);
         if (MATCH_KEY(KEY_REALM1)) ADD_FLG(FLG_REALM1);
@@ -536,6 +539,25 @@ static bool autopick_new_entry(autopick_type *entry, cptr str, bool allow_defaul
     return TRUE;
 }
 
+/* Check object's ickiness */
+static bool _object_is_icky(object_type *o_ptr)
+{
+    if (!object_is_wearable(o_ptr)) return FALSE;
+    else {
+        class_t *class_ptr = get_class();
+        if ((o_ptr->tval == TV_GLOVES) && (class_ptr->caster_info) && ((obj_is_identified(o_ptr)) || (o_ptr->feeling == FEEL_AVERAGE) || (o_ptr->feeling == FEEL_GOOD)))
+        {
+            if (get_caster_info()->options & CASTER_GLOVE_ENCUMBRANCE)
+            {
+                u32b flgs[OF_ARRAY_SIZE];
+                obj_flags(o_ptr, flgs);
+                if (!(have_flag(flgs, OF_FREE_ACT)) && !(have_flag(flgs, OF_MAGIC_MASTERY)) && !((have_flag(flgs, OF_DEX)) && (o_ptr->pval > 0))) return TRUE;
+            }
+        }
+        if (class_ptr->known_icky_object) return class_ptr->known_icky_object(o_ptr);
+        return FALSE;
+    }
+}
 
 /*
  * Get auto-picker entry from o_ptr.
@@ -728,6 +750,8 @@ static void autopick_entry_from_object(autopick_type *entry, object_type *o_ptr)
         ADD_FLG(FLG_REALM2);
         name = FALSE;
     }
+
+    if (_object_is_icky(o_ptr)) ADD_FLG(FLG_ICKY);
 
     if (o_ptr->tval >= TV_LIFE_BOOK && 0 == o_ptr->sval)
         ADD_FLG(FLG_FIRST);
@@ -1017,6 +1041,7 @@ string_ptr autopick_line_from_entry(autopick_type *entry, int options)
     if (IS_FLG(FLG_RARE)) string_printf(s, "%s ", KEY_RARE);
     if (IS_FLG(FLG_COMMON)) string_printf(s, "%s ", KEY_COMMON);
     if (IS_FLG(FLG_WORTHLESS)) string_printf(s, "%s ", KEY_WORTHLESS);
+    if (IS_FLG(FLG_ICKY)) string_printf(s, "%s ", KEY_ICKY);
 
     if (IS_FLG(FLG_BOOSTED)) string_printf(s, "%s ", KEY_BOOSTED);
 
@@ -1350,6 +1375,10 @@ static bool is_autopick_aux(object_type *o_ptr, autopick_type *entry, cptr o_nam
 
     /*** Worthless items ***/
     if (IS_FLG(FLG_WORTHLESS) && obj_value(o_ptr) > 0)
+        return FALSE;
+
+    /*** Icky items ***/
+    if (IS_FLG(FLG_ICKY) && !_object_is_icky(o_ptr))
         return FALSE;
 
     /*** Artifact object ***/
@@ -1842,6 +1871,8 @@ int is_autopick(object_type *o_ptr)
 
     if (o_ptr->tval == TV_GOLD) return -1;
 
+    if (no_mogaminator) return -1;
+
     if (o_ptr->inscription && my_strstr(quark_str(o_ptr->inscription), "=g"))
     {
         /* see init_autopick ... I think at some point I broke this line: we
@@ -2074,6 +2105,8 @@ void autopick_alter_obj(obj_ptr o_ptr, bool allow_destroy)
     /* Get the index in the auto-pick/destroy list */
     int idx = is_autopick(o_ptr);
 
+    if (no_mogaminator) return;
+
     /* Auto-id: Try "?unidentified good" for a L30 monk ... */
     if (idx >= 0 && autopick_list[idx].action & DO_AUTO_ID)
     {
@@ -2242,6 +2275,8 @@ static void _get_obj(obj_ptr obj)
         _sense_object_floor(obj);
         equip_learn_flag(OF_LORE1);
     }
+
+    if (no_mogaminator) return;
 
     idx = is_autopick(obj);
 
@@ -2439,6 +2474,12 @@ bool autopick_autoregister(object_type *o_ptr)
     string_ptr line = 0;
 
     int match_autopick = is_autopick(o_ptr);
+
+    if (no_mogaminator)
+    {
+        msg_print("The Mogaminator is not currently active.");
+        return FALSE;
+    }
 
     /* Already registered */
     if (match_autopick != -1)
@@ -2703,6 +2744,12 @@ static void describe_autopick(char *buff, autopick_type *entry)
     {
         before_str[before_n++] = "worthless";
         which_str[which_n++] = "can not be sold at stores";
+    }
+
+    /*** Icky/uncomfortable item ***/
+    if (IS_FLG(FLG_ICKY))
+    {
+        before_str[before_n++] = "uncomfortable";
     }
 
     /*** Artifacto ***/
@@ -4100,6 +4147,7 @@ enum {
     EC_IK_IDENTIFIED,
     EC_IK_STAR_IDENTIFIED,
     EC_OK_BOOSTED,
+    EC_OK_ICKY,
     EC_OK_MORE_DICE,
     EC_OK_MORE_BONUS,
     EC_OK_MORE_LEVEL,
@@ -4207,6 +4255,7 @@ static char MN_CL_AUTO_ID[] = "'?' (Auto identify)";
 static char MN_ADJECTIVE_GEN[] = "Adjective (general)";
 static char MN_RARE[] = "rare (equipments)";
 static char MN_COMMON[] = "common (equipments)";
+static char MN_ICKY[] = "icky (equipments)";
 
 static char MN_ADJECTIVE_SPECIAL[] = "Adjective (special)";
 static char MN_BOOSTED[] = "dice boosted (weapons)";
@@ -4300,6 +4349,7 @@ command_menu_type menu_data[] =
     {KEY_WORTHLESS, 1, -1, EC_OK_WORTHLESS},
     {MN_RARE, 1, -1, EC_OK_RARE},
     {MN_COMMON, 1, -1, EC_OK_COMMON},
+    {MN_ICKY, 1, -1, EC_OK_ICKY},
 
      {MN_ADJECTIVE_SPECIAL, 0, -1, -1},
     {MN_BOOSTED, 1, -1, EC_OK_BOOSTED},
@@ -6016,6 +6066,7 @@ static bool do_editor_command(text_body_type *tb, int com_id)
     case EC_KK_BOOTS: toggle_keyword(tb, FLG_BOOTS); break;
     case EC_OK_COLLECTING: toggle_keyword(tb, FLG_COLLECTING); break;
     case EC_OK_BOOSTED: toggle_keyword(tb, FLG_BOOSTED); break;
+    case EC_OK_ICKY: toggle_keyword(tb, FLG_ICKY); break;
     case EC_OK_MORE_DICE: toggle_keyword(tb, FLG_MORE_DICE); break;
     case EC_OK_MORE_BONUS: toggle_keyword(tb, FLG_MORE_BONUS); break;
     case EC_OK_MORE_LEVEL: toggle_keyword(tb, FLG_MORE_LEVEL); break;
