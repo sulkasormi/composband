@@ -40,6 +40,20 @@ static caster_info * _caster_info(void)
     return &me;
 }
 
+static bool _priest_weapon_is_icky(object_type *o_ptr)
+{
+    if (!object_is_weapon(o_ptr)) return FALSE;
+    if (!obj_is_identified(o_ptr)) return FALSE; /* Might be icky... but we don't know yet */
+    if ((o_ptr->tval != TV_SWORD) && (o_ptr->tval != TV_POLEARM)) return FALSE;
+    if (is_evil_realm(p_ptr->realm1)) return FALSE;
+    else
+    {
+        u32b flgs[OF_ARRAY_SIZE];
+        obj_flags(o_ptr, flgs);
+        return !have_flag(flgs, OF_BLESSED);
+    }
+}
+
 static void _calc_weapon_bonuses(object_type *o_ptr, weapon_info_t *info_ptr)
 {
     if (o_ptr->tval == TV_SWORD || o_ptr->tval == TV_POLEARM)
@@ -141,6 +155,7 @@ class_t *priest_get_class(void)
         me.get_powers = _get_powers;
         me.calc_weapon_bonuses = _calc_weapon_bonuses;
         me.character_dump = spellbook_character_dump;
+        me.known_icky_object = _priest_weapon_is_icky;
         init = TRUE;
     }
 
