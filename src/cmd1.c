@@ -3338,7 +3338,7 @@ static bool py_attack_aux(int y, int x, bool *fear, bool *mdeath, s16b hand, int
                     }
                 }
 
-                if (have_flag(flgs, OF_STUN) && randint1(100) < k)
+                if ((have_flag(flgs, OF_STUN) && randint1(100) < k) || ((o_ptr->name1 == ART_SILVER_HAMMER) && ((r_ptr->id == MON_WEREWOLF) || (r_ptr->id == MON_DRAUGLUIN) || (r_ptr->id == MON_CARCHAROTH))))
                 {
                     if ( (r_ptr->flagsr & RFR_RES_ALL)
                       || (r_ptr->flags3 & RF3_NO_STUN) )
@@ -5170,8 +5170,8 @@ bool move_player_effect(int ny, int nx, u32b mpe_mode)
          * dismiss such targets, but only once the player moves. */
         if (target_who < 0)
         {
-            if ( !in_bounds(target_row, target_col)
-              || !projectable(py, px, target_row, target_col) )
+            if ( (!in_bounds(target_row, target_col))
+              || (!projectable(py, px, target_row, target_col)) || ((target_row == oy) && (target_col == ox)) )
             {
                 target_who = 0;
                 target_row = 0;
