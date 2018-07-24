@@ -103,7 +103,8 @@ void quest_complete(quest_ptr q, point_t p)
     if ((q->status == QS_COMPLETED) || (q->status == QS_FINISHED)) return;
     assert(q->status == QS_IN_PROGRESS);
     q->status = QS_COMPLETED;
-    q->completed_lev = p_ptr->lev;
+    q->completed_lev = (prace_is_(RACE_ANDROID)) ? p_ptr->lev : p_ptr->max_plv;
+    q->completed_turn = game_turn;
 
     virtue_add(VIRTUE_VALOUR, 2);
     p_ptr->fame += randint1(2);
@@ -128,7 +129,7 @@ void quest_complete(quest_ptr q, point_t p)
         }
 
         cmsg_print(TERM_L_BLUE, "A magical staircase appears...");
-        if ((!coffee_break) || (level_is_questlike(dungeon_type, dun_level + 1)))
+        if ((!coffee_break) || (dun_level == 99))
         {
             cave_set_feat(y, x, feat_down_stair);
         }
@@ -650,6 +651,8 @@ static int _quest_cmp_level(quest_ptr l, quest_ptr r)
 {
     if (l->level < r->level) return -1;
     if (l->level > r->level) return 1;
+    if (l->completed_turn < r->completed_turn) return -1;
+    if (l->completed_turn > r->completed_turn) return 1;
     if (l->completed_lev < r->completed_lev) return -1;
     if (l->completed_lev > r->completed_lev) return 1;
     if (l->id < r->id) return -1;
@@ -758,7 +761,7 @@ static void _get_questor(quest_ptr q)
         r_idx = get_mon_num(mon_lev);
         r_ptr = &r_info[r_idx];
 
-        /* Try to enforce preferences, but its virtually impossible to prevent
+        /* Try to enforce preferences, but it's virtually impossible to prevent
            high level quests for uniques */
         if (attempt < 4000)
         {
@@ -1067,6 +1070,7 @@ void quests_on_kill_mon(mon_ptr mon)
 
     if (q->goal == QG_KILL_MON && mon->r_idx == q->goal_idx)
     {
+        if ((q->goal_count > 1) && (mon->mflag2 & MFLAG2_COUNTED_KILLED)) return;
         q->goal_current++;
         if (q->goal_current >= q->goal_count)
             quest_complete(q, point(mon->fx, mon->fy));
@@ -1086,6 +1090,9 @@ void quests_on_kill_mon(mon_ptr mon)
         if (done)
             quest_complete(q, point(mon->fx, mon->fy));
     }
+
+    /* Make sure the monster won't be counted more than once */
+    mon->mflag2 |= MFLAG2_COUNTED_KILLED;
 }
 
 /* Check whether we need to prevent a quest monster from polymorphing or evolving */
@@ -1353,7 +1360,50 @@ static cptr _safe_r_name(int id)
         return "Monster Removed";
     return r_name + r->name;
 }
-static void quest_doc(quest_ptr q, doc_ptr doc)
+static void _quest_doc(quest_ptr q, doc_ptr doc)
+{
+    int day, hour, min;
+    if (q->flags & QF_RANDOM)
+    {
+        if (q->goal == QG_KILL_MON)
+        {
+            if (q->completed_lev == 0)
+            {
+                doc_printf(doc, "  Kill %.44s <tab:53>DL%-3d <color:B>Cancelled</color>\n",
+                    _safe_r_name(q->goal_idx), q->level);
+            }
+            else if (q->goal_count > 1)
+            {
+                char name[MAX_NLEN];
+                strcpy(name, _safe_r_name(q->goal_idx));
+                plural_aux(name);
+                extract_day_hour_min_imp(q->completed_turn, &day, &hour, &min);
+                if (strlen(name) > 29) {
+                    doc_printf(doc, "  Kill %d %.41s <tab:53>DL%-3d CL%-2d  Day %d, %d:%02d\n",
+                        q->goal_count, name, q->goal_current, q->level, q->completed_lev, day, hour, min);
+                }
+                else {
+                    doc_printf(doc, "  Kill %d %s (%d killed) <tab:53>DL%-3d CL%-2d  Day %d, %d:%02d\n",
+                        q->goal_count, name, q->goal_current, q->level, q->completed_lev, day, hour, min);
+                }
+            }
+            else
+            {
+                extract_day_hour_min_imp(q->completed_turn, &day, &hour, &min);
+                doc_printf(doc, "  Kill %.44s <tab:53>DL%-3d CL%-2d  Day %d, %d:%02d\n",
+                    _safe_r_name(q->goal_idx), q->level, q->completed_lev, day, hour, min);
+            }
+        }
+    }
+    else
+    {
+        extract_day_hour_min_imp(q->completed_turn, &day, &hour, &min);
+        doc_printf(doc, "  %.49s <tab:53>DL%-3d CL%-2d  Day %d, %d:%02d\n",
+            kayttonimi(q), q->level, q->completed_lev, day, hour, min);
+    }
+}
+
+static void _quest_doc_noturn(quest_ptr q, doc_ptr doc)
 {
     if (q->flags & QF_RANDOM)
     {
@@ -1385,20 +1435,26 @@ static void quest_doc(quest_ptr q, doc_ptr doc)
             kayttonimi(q), q->level, q->completed_lev);
     }
 }
-
 void quests_doc(doc_ptr doc)
 {
     int     i;
+    bool    show_turns = TRUE;
     vec_ptr v = quests_get_finished();
 
     doc_insert(doc, "<style:table>");
     if (vec_length(v))
     {
+        for (i = 0; i < vec_length(v); i++)
+        {
+            quest_ptr quest = vec_get(v, i);
+            if (quest->completed_turn < 1) show_turns = FALSE;
+        }
         doc_printf(doc, "  <color:G>Completed Quests</color>\n");
         for (i = 0; i < vec_length(v); i++)
         {
             quest_ptr quest = vec_get(v, i);
-            quest_doc(quest, doc);
+            if (show_turns) _quest_doc(quest, doc);
+            else _quest_doc_noturn(quest, doc);
         }
     }
     vec_free(v);
@@ -1407,11 +1463,17 @@ void quests_doc(doc_ptr doc)
     v = quests_get_failed();
     if (vec_length(v))
     {
+        for (i = 0; i < vec_length(v); i++)
+        {
+            quest_ptr quest = vec_get(v, i);
+            if (quest->completed_turn < 1) show_turns = FALSE;
+        }
         doc_printf(doc, "  <color:r>Failed Quests</color>\n");
         for (i = 0; i < vec_length(v); i++)
         {
             quest_ptr quest = vec_get(v, i);
-            quest_doc(quest, doc);
+            if (show_turns) _quest_doc(quest, doc);
+            else _quest_doc_noturn(quest, doc);
         }
     }
     vec_free(v);
@@ -1434,6 +1496,8 @@ void quests_load(savefile_ptr file)
         assert(q);
         q->status = savefile_read_byte(file);
         q->completed_lev = savefile_read_byte(file);
+        if (savefile_is_older_than(file, 7,0,6,7)) q->completed_turn = 0;
+        else q->completed_turn = savefile_read_u32b(file);
         q->goal_current = savefile_read_s16b(file);
         q->seed  = savefile_read_u32b(file);
         if (q->flags & QF_RANDOM)
@@ -1460,6 +1524,7 @@ void quests_save(savefile_ptr file)
         savefile_write_s16b(file, q->id);
         savefile_write_byte(file, q->status);
         savefile_write_byte(file, q->completed_lev);
+        savefile_write_u32b(file, q->completed_turn);
         savefile_write_s16b(file, q->goal_current);
         savefile_write_u32b(file, q->seed);
         if (q->flags & QF_RANDOM)
