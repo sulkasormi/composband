@@ -2215,11 +2215,12 @@ bool enchant_spell(int num_hit, int num_dam, int num_ac)
 
     prompt.prompt = "Enchant which item?";
     prompt.error = "You have nothing to enchant.";
-    prompt.filter = num_ac ? object_is_armour : object_allow_enchant_weapon;
+    prompt.filter = num_ac ? object_allow_enchant_armour : object_allow_enchant_weapon;
     prompt.where[0] = INV_PACK;
     prompt.where[1] = INV_EQUIP;
     prompt.where[2] = INV_QUIVER;
     prompt.where[3] = INV_FLOOR;
+    obj_prompt_add_special_packs(&prompt);
 
     obj_prompt(&prompt);
     if (!prompt.obj) return FALSE;
@@ -3842,6 +3843,7 @@ void inven_damage(inven_func typ, int p1, int which)
 
     if (p_ptr->rune_elem_prot) p2 = 50;
     if (p_ptr->inven_prot) p2 = 50;
+    if (p_ptr->tim_inven_prot2 > 0) p2 = 0;
 
     /* Pack */
     for (slot = 1; slot <= pack_max(); slot++)
@@ -4004,7 +4006,7 @@ void blast_object(object_type *o_ptr)
 }
 
 /*
- * Curse the players armor
+ * Curse the player's armor
  */
 bool curse_armor(int slot)
 {
@@ -4035,7 +4037,7 @@ bool curse_armor(int slot)
 
 
 /*
- * Curse the players weapon
+ * Curse the player's weapon
  */
 bool curse_weapon(bool force, int slot)
 {
