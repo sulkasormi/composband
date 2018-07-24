@@ -1374,8 +1374,7 @@ static void _list_monsters_aux(_mon_list_ptr list, rect_t display_rect, int mode
                 {
                     health_track(info_ptr->m_idx);
                     target_who = info_ptr->m_idx;
-                    target_row = m_list[info_ptr->m_idx].fy;
-                    target_col = m_list[info_ptr->m_idx].fx;
+                    target_grab(m_list[info_ptr->m_idx].fy, m_list[info_ptr->m_idx].fx);
                     p_ptr->redraw |= PR_HEALTH_BARS;
                     p_ptr->window |= PW_MONSTER_LIST;
                     done = TRUE; /* Building a better target command :) */
