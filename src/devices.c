@@ -1237,7 +1237,7 @@ static cptr _do_scroll(int sval, int mode)
         }
         break;
     case SV_SCROLL_SUMMON_KIN:
-        if (desc) return "It summons a monster corresponds to your race as your pet when you read it.";
+        if (desc) return "It summons a monster corresponding to your race as your pet when you read it.";
         if (cast)
         {
             if (p_ptr->inside_arena && !prace_is_(RACE_MON_QUYLTHULG) && !_scroll_check_no_effect(sval)) return NULL;
@@ -1474,13 +1474,17 @@ static cptr _do_scroll(int sval, int mode)
         if (desc) return "You can confuse monster you hit just for once when you read it.";
         if (cast)
         {
-            if (!(p_ptr->special_attack & ATTACK_CONFUSE))
+            if (p_ptr->prace == RACE_MON_RING) /* no melee attacks */
+            {
+                msg_print("There is no effect.");
+            }
+            else if (!(p_ptr->special_attack & ATTACK_CONFUSE))
             {
                 msg_print("Your hands begin to glow.");
                 p_ptr->special_attack |= ATTACK_CONFUSE;
                 p_ptr->redraw |= (PR_STATUS);
-                device_noticed = TRUE;
             }
+            device_noticed = TRUE;
         }
         break;
     case SV_SCROLL_PROTECTION_FROM_EVIL:
@@ -1495,8 +1499,9 @@ static cptr _do_scroll(int sval, int mode)
         if (desc) return "It creates a glyph on the floor you stand when you read it.";
         if (cast)
         {
-            warding_glyph();
             device_noticed = TRUE;
+            if ((!cave_clean_bold(py, px)) && (msg_prompt("Glyphs of Warding can only be created on empty squares. Read the scroll anyway? <color:y>[y/n]</color>", "ny", PROMPT_DEFAULT) != 'y')) return NULL;
+            warding_glyph();
         }
         break;
     case SV_SCROLL_TRAP_DOOR_DESTRUCTION:
@@ -1690,7 +1695,7 @@ static cptr _do_scroll(int sval, int mode)
             }
             else if (n < 95)
             {
-                _do_scroll(SV_SCROLL_CRAFTING, mode);
+                if (!_do_scroll(SV_SCROLL_CRAFTING, mode)) return NULL;
             }
             else
             {
@@ -1775,6 +1780,13 @@ static cptr _do_scroll(int sval, int mode)
         {
             if (banish_monsters(_scroll_power(150)))
                 device_noticed = TRUE;
+        }
+        break;
+    case SV_SCROLL_INVEN_PROT:
+        if (desc) return "It creates a temporary protective shield around your inventory.";
+        if (cast)
+        {
+            if (set_tim_inven_prot2(25, FALSE)) device_noticed = TRUE;
         }
         break;
     }
@@ -6674,7 +6686,7 @@ cptr do_effect(effect_t *effect, int mode, int boost)
         if (name) return "Confuse Monster";
         if (desc) return "It confuses a monster when you use it.";
         if (info) return format("Power %d", _BOOST(power));
-        if (value) return format("%d", 10*power);
+        if (value) return format("%d", 15*power);
         if (color) return format("%d", res_color(RES_CONF));
         if (cast)
         {
