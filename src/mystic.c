@@ -591,6 +591,7 @@ class_t *mystic_get_class(void)
         me.caster_info = _caster_info;
         me.get_spells = _get_spells;
         me.character_dump = _character_dump;
+        me.known_icky_object = skills_obj_is_icky_weapon;
         init = TRUE;
     }
 
