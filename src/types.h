@@ -391,7 +391,7 @@ struct object_type
     int  scratch;
 };
 #define object_is_(O, T, S) ((O)->tval == (T) && (O)->sval == (S))
-#define object_plural(O) (((O)->number != 1) || (object_is_((O), TV_SOFT_ARMOR, SV_BLACK_CLOTHES)))
+#define object_plural(O) (((O)->number != 1) || (have_flag((O)->flags, OF_PLURAL)))
 
 /* Monster blows ... Redone. Note that changing any
  * of the following values will break savefiles (or
@@ -1203,6 +1203,7 @@ struct player_type
     s16b tim_transcendence;
     s16b tim_quick_walk;
     s16b tim_inven_prot;
+    s16b tim_inven_prot2;
     s16b tim_device_power;
     s16b tim_sh_time;
     s16b free_turns;
@@ -1937,6 +1938,7 @@ typedef int(*calc_extra_weight_fn)(obj_p p);
 typedef void(*birth_fn)(void);
 typedef void(*calc_weapon_bonuses_fn)(object_type *o_ptr, weapon_info_t *info_ptr);
 typedef void(*calc_shooter_bonuses_fn)(object_type *o_ptr, shooter_info_t *info_ptr);
+typedef bool(*known_icky_fn)(object_type *o_ptr);
 typedef caster_info*(*caster_info_fn)(void);
 typedef int(*get_spells_fn)(spell_info* spells, int max);
 typedef void(*gain_level_fn)(int new_level);
@@ -1976,6 +1978,7 @@ typedef struct {
     calc_weapon_bonuses_fn  calc_weapon_bonuses;
     calc_shooter_bonuses_fn calc_shooter_bonuses;
     calc_extra_weight_fn    calc_extra_weight;
+    known_icky_fn           known_icky_object;
     caster_info_fn          caster_info;
     get_spells_fn           get_spells;
     get_spells_fn           get_powers;
