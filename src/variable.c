@@ -173,6 +173,7 @@ int total_friends = 0;
 s32b friend_align = 0;
 
 bool reinit_wilderness = FALSE;
+bool quest_reward_drop_hack = FALSE;
 
 int current_flow_depth = 0;
 
@@ -342,7 +343,7 @@ bool leave_wanted;    /* Auto-destroyer leaves wanted corpses */
 bool leave_corpse;    /* Auto-destroyer leaves corpses and skeletons */
 bool leave_junk;    /* Auto-destroyer leaves junk */
 bool leave_special;    /* Auto-destroyer leaves items your race/class needs */
-
+bool no_mogaminator;   /* Deactivate the Mogaminator */
 
 
 /* Cheating options */
