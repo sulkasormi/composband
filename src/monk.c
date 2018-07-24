@@ -708,6 +708,12 @@ static caster_info *_caster_info(void)
     return &me;
 }
 
+bool skills_obj_is_icky_weapon(object_type *o_ptr)
+{
+    if (!object_is_weapon(o_ptr)) return FALSE;
+    return skills_weapon_is_icky(o_ptr->tval, o_ptr->sval);
+}
+
 static void _birth(void)
 {
     py_birth_obj_aux(TV_POTION, SV_POTION_HEROISM, randint1(5));
@@ -763,6 +769,7 @@ class_t *monk_get_class(void)
         me.calc_stats = _calc_stats;
         me.get_flags = _get_flags;
         me.caster_info = _caster_info;
+        me.known_icky_object = skills_obj_is_icky_weapon;
         /* TODO: This class uses spell books, so we are SOL
         me.get_spells = _get_spells;*/
         me.get_powers = _get_powers;
