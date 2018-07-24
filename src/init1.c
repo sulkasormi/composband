@@ -765,6 +765,9 @@ static cptr k_info_flags[OF_COUNT] =
     "TELEPORT",
     "AGGRAVATE",
     "TY_CURSE",
+
+    /* Plural */
+    "PLURAL",
 };
 
 
