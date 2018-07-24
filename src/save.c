@@ -690,6 +690,7 @@ static void wr_extra(savefile_ptr file)
     savefile_write_s16b(file, p_ptr->tim_transcendence);
     savefile_write_s16b(file, p_ptr->tim_quick_walk);
     savefile_write_s16b(file, p_ptr->tim_inven_prot);
+    savefile_write_s16b(file, p_ptr->tim_inven_prot2);
     savefile_write_s16b(file, p_ptr->tim_device_power);
     savefile_write_s16b(file, p_ptr->tim_sh_time);
     savefile_write_s16b(file, p_ptr->free_turns);
