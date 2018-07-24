@@ -410,14 +410,16 @@ bool object_is_equipment(object_type *o_ptr)
     return FALSE;
 }
 
-
-/*
- * Poison needle can not be enchanted
- */
-bool object_refuse_enchant_weapon(object_type *o_ptr)
+/* Check for unenchantability */
+bool object_is_unenchantable(object_type *o_ptr)
 {
+    u32b flgs[OF_ARRAY_SIZE];
+    if (o_ptr->name2 == EGO_ROBE_TWILIGHT) return TRUE;
     if (o_ptr->tval == TV_SWORD && o_ptr->sval == SV_DOKUBARI) return TRUE;
     if (o_ptr->tval == TV_SWORD && o_ptr->sval == SV_RUNESWORD) return TRUE;
+
+    obj_flags(o_ptr, flgs);
+    if (have_flag(flgs, OF_NO_ENCHANT)) return TRUE;
 
     return FALSE;
 }
@@ -428,7 +430,7 @@ bool object_refuse_enchant_weapon(object_type *o_ptr)
  */
 bool object_allow_enchant_weapon(object_type *o_ptr)
 {
-    if (object_is_weapon_ammo(o_ptr) && !object_refuse_enchant_weapon(o_ptr)) return TRUE;
+    if (object_is_weapon_ammo(o_ptr) && !object_is_unenchantable(o_ptr)) return TRUE;
 
     return FALSE;
 }
@@ -439,7 +441,17 @@ bool object_allow_enchant_weapon(object_type *o_ptr)
  */
 bool object_allow_enchant_melee_weapon(object_type *o_ptr)
 {
-    if (object_is_melee_weapon(o_ptr) && !object_refuse_enchant_weapon(o_ptr)) return TRUE;
+    if (object_is_melee_weapon(o_ptr) && !object_is_unenchantable(o_ptr)) return TRUE;
+
+    return FALSE;
+}
+
+/*
+ * Check if an object is melee weapon and allows enchantment
+ */
+bool object_allow_enchant_armour(object_type *o_ptr)
+{
+    if (object_is_armour(o_ptr) && !object_is_unenchantable(o_ptr)) return TRUE;
 
     return FALSE;
 }
