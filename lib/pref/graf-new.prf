@@ -1289,9 +1289,6 @@ K:75:30:0x85/0x83
 # a Silver Speckled Potion
 K:75:31:0x85/0x81
 
-# a Smoky Potion
-K:75:25:0x85/0x81
-
 # a Tangerine Potion
 K:75:26:0x85/0x82
 
@@ -1300,9 +1297,6 @@ K:75:27:0x85/0x89
 
 # a Vermilion Potion
 K:75:40:0x85/0x83
-
-# a White Potion
-K:75:24:0x85/0x80
 
 # a Yellow Potion
 K:75:60:0x85/0x8A
@@ -2131,6 +2125,9 @@ K:104:2:0x8C/0x9E
 
 # Acquiris Quodcumque Rapis
 K:104:3:0x8C/0x9F
+
+# a Scroll titled "arsemi zunag"
+K:70:63:0x01/0x3F
 
 ##### Monster attr/char definitions #####
 
