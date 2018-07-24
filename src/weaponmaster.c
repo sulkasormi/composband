@@ -2468,6 +2468,7 @@ static _speciality _specialities[_MAX_SPECIALITIES] = {
         { TV_SHIELD, SV_MIRROR_SHIELD },
         { TV_SHIELD, SV_SMALL_LEATHER_SHIELD },
         { TV_SHIELD, SV_SMALL_METAL_SHIELD },
+        { TV_SHIELD, SV_MITHRIL_SHIELD },
         { 0, 0 },
       },
       {
