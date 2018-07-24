@@ -8,15 +8,17 @@
 static int _werewolf_form = 0;
 static inv_ptr _werewolf_pack = NULL;
 static bool _pack_initialized = FALSE;
+static bool _do_init_pack = FALSE;
 
 static bool _moon_is_full(void);
 
 void _werewolf_pack_init(void)
 {
-    if (_pack_initialized) return;
+    if ((_pack_initialized) && (!_do_init_pack)) return;
     inv_free(_werewolf_pack);
     _werewolf_pack = inv_alloc("Satchel", INV_SPECIAL1, _MAX_PACK_SLOTS);
     _pack_initialized = TRUE;
+    _do_init_pack = FALSE;
 }
 
 equip_template_ptr _werewolf_equip_template(int hahmo)
@@ -74,6 +76,14 @@ void _equip_on_change_form(void)
         if (!src) continue;
         src->marked |= OM_BEING_SHUFFLED;
         new_slot = equip_first_empty_slot(src);
+
+        /* Assume lone shields are in the left hand */
+        if ((_werewolf_form == WEREWOLF_FORM_HUMAN) && (slot == 1) && (new_slot == 1) && (src->tval == TV_SHIELD) && (!(weaponmaster_is_(WEAPONMASTER_SHIELDS))) && (!equip_obj(2)))
+        {
+            obj_ptr tmp_obj = inv_obj(temp2, 2);
+            if ((!tmp_obj) || ((tmp_obj->tval != TV_SHIELD) && (!object_is_melee_weapon(tmp_obj)))) new_slot = 2;
+        }
+
         if (new_slot)
             equip_wield(src, new_slot);
         else
@@ -95,6 +105,7 @@ void _equip_on_change_form(void)
  **********************************************************************/
 static void _birth(void)
 {
+    _do_init_pack = TRUE;
     _werewolf_pack_init();
 
     _werewolf_form = 0;
@@ -257,6 +268,11 @@ static void _werewolf_load(savefile_ptr file)
     _werewolf_pack_init();
     inv_load(_werewolf_pack, file);
     _werewolf_form = savefile_read_byte(file);
+}
+
+void werewolf_init(void)
+{
+    _werewolf_form = 0;
 }
 
 #define MOON_NEW 0
