@@ -1054,7 +1054,7 @@ Mind
   they can scale their powers to determine the SP cost and the powers' 
   potency. Psionic powers require great concentration, however, and 
   psions do not have the mind to spare to care for others. The Psion 
-  gains powers a the following levels: 1, 10, 15, 20, 30, 35, 40 and 
+  gains powers at the following levels: 1, 10, 15, 20, 30, 35, 40 and 
   50. The Psion uses Intelligence, Wisdom or Charisma as their primary 
   spell stat, which ever is currently highest. In this respect, Psions 
   are truly unique!
@@ -1066,7 +1066,7 @@ Mind
     Dexterity     -1        Stealth     Fair         
     Constitution  -1        Searching   Poor         
     Charisma      +2        Perception  Bad          
-    Life Rating  100%       Melee       Fair         
+    Life Rating   96%       Melee       Fair         
     Base HP        4        Bows        Poor         
     Experience   150%
     
@@ -1376,7 +1376,7 @@ Beastmaster    +1   -1   -1   +1   +0   +2  103%   +6  120%
 Cavalry        +2   -2   -2   +2   +2   +1  111%  +10  120%
 Mindcrafter    -1   +0   +3   -1   -1   +2  100%   +4  125%
 Mirror-Master  -2   +3   +1   -1   -2   -2  100%   +4  130%
-Psion          -1   +2   +2   -1   -1   +2  100%   +4  150%
+Psion          -1   +2   +2   -1   -1   +2   96%   +4  150%
 Time-Lord      -1   +0   +3   -1   -1   +0   96%   +0  125%
 Warlock        -1   +2   -3   +0   +2   +4  107%  +15  135%
 Archaeologist  -1   +1   +2   +1   -1   +0  106%   +8  120%
