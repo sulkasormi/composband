@@ -354,6 +354,14 @@ static void do_cmd_eat_food_aux(obj_ptr obj)
         if (p_ptr->food < PY_FOOD_ALERT)   /* Hungry */
             msg_print("Your hunger can only be satisfied with fresh blood!");
     }
+    else if (prace_is_(RACE_ANDROID))
+    {
+        if (obj->tval == TV_FLASK)
+        {
+            msg_print("You replenish yourself with the oil.");
+            set_food(p_ptr->food + 5000);
+        }
+    }
     else if (prace_is_(RACE_MON_JELLY))
     {
         jelly_eat_object(obj);
@@ -483,6 +491,8 @@ static bool _can_eat(object_type *o_ptr)
             return TRUE;
     }
     else if (prace_is_(RACE_MON_JELLY))
+        return TRUE;
+    else if ((prace_is_(RACE_ANDROID)) && (o_ptr->tval == TV_FLASK))
         return TRUE;
 
     return FALSE;
@@ -808,6 +818,7 @@ static void do_cmd_read_scroll_aux(obj_ptr o_ptr)
             {
                  case SV_SCROLL_STAR_DESTRUCTION:
                  case SV_SCROLL_MASS_GENOCIDE:
+                 case SV_SCROLL_RUNE_OF_PROTECTION:
                  case SV_SCROLL_TELEPORT_LEVEL:
                  case SV_SCROLL_SUMMON_PET:
                  case SV_SCROLL_SUMMON_KIN:
