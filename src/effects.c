@@ -182,6 +182,7 @@ void reset_tim_flags(void)
     p_ptr->tim_transcendence = 0;
     p_ptr->tim_quick_walk = 0;
     p_ptr->tim_inven_prot = 0;
+    p_ptr->tim_inven_prot2 = 0;
     p_ptr->tim_device_power = 0;
     p_ptr->tim_sh_time = 0;
     p_ptr->tim_foresight = 0;
@@ -528,9 +529,10 @@ bool disenchant_player(void)
             }
             break;
         case 28:
-            if (p_ptr->tim_inven_prot)
+            if ((p_ptr->tim_inven_prot) || (p_ptr->tim_inven_prot2))
             {
                 (void)set_tim_inven_prot(0, TRUE);
+                (void)set_tim_inven_prot2(0, TRUE);
                 result = TRUE;
                 return result;
             }
@@ -672,6 +674,7 @@ void dispel_player(void)
     set_tim_transcendence(0, TRUE);
     set_tim_quick_walk(0, TRUE);
     set_tim_inven_prot(0, TRUE);
+    set_tim_inven_prot2(0, TRUE);
     set_tim_device_power(0, TRUE);
     set_tim_sh_time(0, TRUE);
     set_tim_foresight(0, TRUE);
@@ -5351,7 +5354,7 @@ bool hp_player_aux(int num)
         num += num/5;
     }
 
-    if (prace_is_(RACE_EINHERI)) num /= 2;
+    if ((p_ptr->prace == RACE_EINHERI) || (p_ptr->mimic_form == RACE_EINHERI)) num /= 2;
 
     /* Healing needed */
     if (p_ptr->chp < p_ptr->mhp)
@@ -7274,6 +7277,55 @@ bool set_tim_inven_prot(int v, bool do_dec)
     }
 
     p_ptr->tim_inven_prot = v;
+    if (!notice) return FALSE;
+    if (disturb_state) disturb(0, 0);
+    p_ptr->redraw |= PR_STATUS;
+    p_ptr->update |= PU_BONUS;
+    handle_stuff();
+    return TRUE;
+}
+
+bool set_tim_inven_prot2(int v, bool do_dec)
+{
+    bool notice = FALSE;
+
+    /* Hack -- Force good values */
+    v = (v > 50) ? 50 : (v < 0) ? 0 : v;
+
+    if (p_ptr->is_dead) return FALSE;
+
+    /* Open */
+    if (v)
+    {
+        if (p_ptr->tim_inven_prot2)
+        {
+            if (p_ptr->tim_inven_prot2 > v && !do_dec) return FALSE;
+        }
+        else
+        {
+            if (p_ptr->pclass == CLASS_ROGUE)
+                msg_print("You feel your loot is safe.");
+            else
+                msg_print("Your inventory seems safer now.");
+            notice = TRUE;
+        }
+    }
+    /* Shut */
+    else
+    {
+        if (p_ptr->tim_inven_prot2)
+        {
+            if (p_ptr->pclass == CLASS_ROGUE)
+                msg_print("Your loot is no longer completely safe.");
+            else if (p_ptr->tim_inven_prot)
+                msg_print("Your inventory is no longer completely safe.");
+            else
+                msg_print("Your inventory is no longer protected.");
+            notice = TRUE;
+        }
+    }
+
+    p_ptr->tim_inven_prot2 = v;
     if (!notice) return FALSE;
     if (disturb_state) disturb(0, 0);
     p_ptr->redraw |= PR_STATUS;
