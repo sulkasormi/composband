@@ -2012,13 +2012,14 @@ void aggravate_monsters(int who)
                 (void)set_monster_csleep(i, 0);
                 sleep = TRUE;
             }
-            if (!is_pet(m_ptr)) m_ptr->mflag2 |= MFLAG2_NOPET;
+            if ((is_hostile(m_ptr)) && ((who < 0) || (!p_ptr->uimapuku) ||
+                ((one_in_((r_info[m_ptr->r_idx].max_num == 1) ? 33 : 9))))) m_ptr->mflag2 |= MFLAG2_NOPET;
         }
 
         /* Speed up monsters in line of sight */
         if (player_has_los_bold(m_ptr->fy, m_ptr->fx))
         {
-            if (!is_pet(m_ptr))
+            if (is_hostile(m_ptr))
             {
                 (void)set_monster_fast(i, MON_FAST(m_ptr) + 100);
                 speed = TRUE;
