@@ -89,7 +89,7 @@ Selecting this option disables <color:keyword>stat scrambling</color>, an effect
 Selects the <color:keyword>roguelike</color> command set which is an alternative way of mapping keystrokes to underlying game commands. (see <link:command.txt#RogueKeyset> for info).
 
 <topic:always_pickup><color:U>Pick things up by default</color> <color:D>(always_pickup)</color>
-Tells the game that walking onto an item should attempt to pick it up. Otherwise, you must use the <color:keypress>g</color> command, or the <color:keypress>-</color> command while walking. Combined with <color:keyword>carry_query_flag</color>, allows you to selectively pick up all items which you step on.
+Tells the game that walking onto an item should attempt to pick it up. Otherwise, you must use the <color:keypress>g</color> command, or the <color:keypress>-</color> command while walking. Combined with <color:keyword>carry_query_flag</color>, allows you to selectively pick up all items which you step on. This option disables the autodestroyer functions of the Mogaminator, so it's often used together with <color:keyword>destroy_items</color> for the easy auto-destroyer.
 
 <topic:quick_messages><color:U>Activate quick messages</color> <color:D>(quick_messages)</color>
 Allows the use of any keypress as a response to the <color:B>-more-</color> prompt (useful for monster farming). Allows most keys to mean "no" to any "(y/n)" prompt.
@@ -359,7 +359,7 @@ This option alerts you with message when the player is moving out of the trap-de
 <topic:destroy_items><color:U>Use easy auto-destroyer</color> <color:D>(destroy_items)</color>
 This option turns The Easy Destroyer on and off. If enabled, The Easy Destroyer will destroy all objects unless the object is protected by one or more of the leave_* options discussed below.
 
-<style:note>Note: The <color:keyword>Easy Auto-Destroyer</color> is a simpler to use version of the full featured <color:keyword>Mogaminator</color> discussed in <link:editor.txt>. It is designed for those who feel the full version is too complicated to use. However, you really should only use one or the other. So if you are using the full version, then you should not also enable the easy version.</style>
+<style:note>Note: The <color:keyword>Easy Auto-Destroyer</color> is a simpler to use version of the full featured <color:keyword>Mogaminator</color> discussed in <link:editor.txt>. It is designed for those who feel the full version is too complicated to use. However, you really should only use one or the other. So if you are using the full version, then you should not also enable the easy version, unless you have turned on the <color:keyword>always_pickup</color> option.</style>
 
 <topic:destroy_feeling><color:U>Apply auto-destroy on sensing an item</color> <color:D>(destroy_feeling)</color>
 If this option is turned on, both The Mogaminator and The Easy Destroyer will take actions whenever the player senses the quality of an object (i.e., whenever pseudo-id kicks in).
@@ -378,8 +378,11 @@ In addition, the matching rule will be displayed when inspecting objects. For ex
   Resist <color:g>Acid</color>, <color:b>Electricity</color>, <color:r>Fire</color>, <color:W>Cold</color>, <color:G>Poison</color>
   <color:R>Free Action</color>; <color:B>See Invisible</color>; <color:B>Levitation</color>
   <color:B>It cannot be harmed by the elements.</color>
-  <color:r>Autopick:</color> ~<color:G>*identified* </color><color:R>amulets</color><color:o> more value than 10000</color>
+  <color:r>Autopick:</color> ~<color:G>*identified* </color><color:R>amulets</color><color:o> more value than 10000</color></indent>
 </style>
+<topic:no_mogaminator><color:U>Never apply the Mogaminator</color> <color:D>(no_mogaminator)</color>
+This option deactivates the Mogaminator. (It is redundant if the Mogaminator was never activated in the first place.)
+
 <topic:leave_worth><color:U>Auto-destroyer leaves known worthy items</color> <color:D>(leave_worth)</color>
 This option protects known objects that can be sold in stores from auto-destruction by The Easy Destroyer.
 
