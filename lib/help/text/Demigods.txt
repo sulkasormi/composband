@@ -334,6 +334,9 @@ you will choose for your character.
   Infernal Deal
   You will regain hp and sp whenever a nearby enemy monster is slain.
 
+  Inspired Smithing
+  You will receive better results from item reforging.
+
   Loremaster
   Items will automatically identify as you pick them up.
 
@@ -379,5 +382,5 @@ you will choose for your character.
 
 
 
-Automatically generated for FrogComposband 7.0.strawberry.
+Automatically generated for FrogComposband 7.0.mango.
 
