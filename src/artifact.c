@@ -3278,7 +3278,7 @@ bool reforge_artifact(object_type *src, object_type *dest, int fame)
         base_power = base_power * dest_weight / src_weight;
 
     /* Power sanity check */
-    base_power = MIN(base_power, 1125L * src_weight);
+    base_power = MIN(base_power, 1125L * MAX(src_weight, dest_weight));
 
     /* Pay a Power Tax! */
     base_power = base_power*3/4 + randint1(base_power*MIN(255, fame)/1500);
