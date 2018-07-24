@@ -6015,7 +6015,7 @@ D:A strange reptilian hybrid with four heads, guarding its hoard.
 N:388:Lesser hell-beast
 G:U:s
 I:115:15d100:10:100:50:300
-W:24:4:999:400:0:0
+W:24:4:999:666:0:0
 B:GAZE:DAM(1d4):TERRIFY
 B:GAZE:DAM(1d4):LOSE_CHR(50%)
 B:CRUSH:HURT(33d1):HURT(33d1, 20%)
@@ -22837,7 +22837,7 @@ F:UNIQUE | MALE | FORCE_MAXHP | FORCE_SLEEP | EVIL | KILL_BODY |
 F:ONLY_ITEM | DROP_3D2 | DROP_GOOD | DROP_GREAT | DROP_CORPSE |
 F:TAKE_ITEM | KILL_WALL | CAN_FLY | RES_FIRE | RES_ELEC | RES_ACID | RES_DARK
 F:RES_CHAO | RES_NETH | RES_SOUN | RES_WALL | NO_CONF | POS_GAIN_AC |
-F:POS_SEE_INVIS | EGYPTIAN
+F:POS_SEE_INVIS | EGYPTIAN | NO_QUEST
 P:Copy:Half-Titan:Warrior-Mage
 S:1_IN_4 |
 S:BR_ELEC | BR_STORM | BR_FORCE | BO_MANA | THROW | BRAIN_SMASH |
@@ -22928,7 +22928,7 @@ F:UNIQUE | FEMALE | RES_DARK | RES_POIS | RES_CHAO | RES_DISE | RES_COLD |
 F:RES_ELEC | RES_FIRE | FORCE_MAXHP | FORCE_SLEEP | REGENERATE | CAN_SWIM |
 F:REFLECTING | DROP_3D2 | DROP_GOOD | DROP_GREAT | SMART | OPEN_DOOR |
 F:SELF_DARK_2 | RES_TELE | NO_CONF | NO_STUN | RES_SHAR | RES_SOUN | RES_WALL
-F:POS_SEE_INVIS | POS_TELEPATHY | EGYPTIAN
+F:POS_SEE_INVIS | POS_TELEPATHY | EGYPTIAN | NO_QUEST
 P:Copy:Amberite:Priest
 P:Stats:0:0:3:0:0:3
 S:1_IN_3 |
@@ -23073,6 +23073,28 @@ S:DRAIN_MANA | BR_FORCE
 D:A large, lean, bizarre creature associated with the god Seth, it seems
 D:part jackal, part donkey and all menace. Its wagging forked tail does not
 D:appear to indicate friendliness...
+
+N:1271:Hathor, the Heavenly Cow
+G:q:b
+I:130:66d110:40:135:10:400
+W:82:3:999:62920:0:0
+B:BUTT:HURT(10d10):STUN(4d4):BLIND
+B:KICK:HURT(10d10):STUN(4d4)
+B:CRUSH:SLOW(10d10):ELEC(4d4)
+B:TOUCH:LITE(10d10):ACID(4d4):BLIND
+F:UNIQUE | FEMALE | RES_DARK | RES_POIS | RES_ACID | RES_DISE | RES_COLD |
+F:RES_ELEC | RES_FIRE | FORCE_MAXHP | FORCE_SLEEP | REGENERATE | CAN_FLY |
+F:DROP_3D2 | DROP_GOOD | DROP_GREAT | SMART | OPEN_DOOR | RES_TELE | GOOD |
+F:NO_CONF | NO_SLEEP | RES_LITE | POS_SEE_INVIS | POS_TELEPATHY | EGYPTIAN
+F:NO_QUEST | RES_WATE
+P:Copy:Amberite:Priest
+P:Stats:0:0:3:0:0:3
+S:FREQ_37 |
+S:BR_ELEC | BR_STORM | S_MONSTER(1d3) | ANIM_DEAD | S_ANIMAL | TELE_TO |
+S:BA_WATER(1d164+50) | HASTE | BA_LITE | BLINK_OTHER | S_PANTHEON
+D:Hathor, the cow goddess of nature, fertility and the sky, is both a
+D:fearsome adversary in her own right and a popular deity capable of
+D:finding helpers should she need them.
 
 # N: serial number : monster name
 # G: symbol : color
