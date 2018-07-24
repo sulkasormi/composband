@@ -4519,7 +4519,7 @@ K:70:7:0x86/0x82
 # a Scroll titled "ankh sanfu bit"
 K:70:8:0x86/0x82
 
-# a Scroll titled "arzemi zunag"
+# a Scroll titled "hiden goseke"
 K:70:9:0x86/0x82
 
 # a Scroll titled "bie xuxuval"
@@ -4671,6 +4671,9 @@ K:70:61:0x01/0x3F
 
 # a Scroll titled "wonto maroki"
 K:70:62:0x01/0x3F
+
+# a Scroll titled "arsemi zunag"
+K:70:63:0x01/0x3F
 
 # a Clear Potion
 K:75:0:0xBC/0x83
