@@ -676,6 +676,7 @@ class_t *force_trainer_get_class(void)
         me.get_spells = _get_spells;
         me.get_powers = _get_powers;
         me.character_dump = _character_dump;
+        me.known_icky_object = skills_obj_is_icky_weapon;
         init = TRUE;
     }
 
