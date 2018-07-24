@@ -192,6 +192,7 @@ extern bool reinit_wilderness;
 extern char summon_kin_type;
 extern bool hack_mind;
 extern byte summon_pantheon_hack;
+extern bool quest_reward_drop_hack;
 
 /*
  * Software options (set via the '=' command).  See "tables.c"
@@ -358,6 +359,7 @@ extern bool leave_wanted;    /* Auto-destroyer leaves wanted corpses */
 extern bool leave_corpse;    /* Auto-destroyer leaves corpses and skeletons */
 extern bool leave_junk;    /* Auto-destroyer leaves junk */
 extern bool leave_special;    /* Auto-destroyer leaves items your race/class needs */
+extern bool no_mogaminator;
 
 extern bool cheat_peek;
 extern bool cheat_hear;
@@ -1767,6 +1769,7 @@ extern bool set_tim_hold_life(int v, bool do_dec);
 extern bool set_tim_transcendence(int v, bool do_dec);
 extern bool set_tim_quick_walk(int v, bool do_dec);
 extern bool set_tim_inven_prot(int v, bool do_dec);
+extern bool set_tim_inven_prot2(int v, bool do_dec);
 extern bool set_tim_device_power(int v, bool do_dec);
 extern bool set_tim_sh_time(int v, bool do_dec);
 extern bool set_tim_foresight(int v, bool do_dec);
@@ -1899,6 +1902,7 @@ extern bool target_okay(void);
 extern bool target_able_aux(int m_idx, int mode);
 extern bool target_okay_aux(int mode);
 extern bool target_set(int mode);
+extern void target_grab(int y, int x);
 
 /* get_fire_dir will attempt to auto_target (if set) and should be used
  * by any offensive player spell.
@@ -2103,9 +2107,10 @@ extern bool object_is_melee_weapon(object_type *o_ptr);
 extern bool object_is_jewelry(object_type *o_ptr);
 extern bool object_is_wearable(object_type *o_ptr);
 extern bool object_is_equipment(object_type *o_ptr);
-extern bool object_refuse_enchant_weapon(object_type *o_ptr);
+extern bool object_is_unenchantable(object_type *o_ptr);
 extern bool object_allow_enchant_weapon(object_type *o_ptr);
 extern bool object_allow_enchant_melee_weapon(object_type *o_ptr);
+extern bool object_allow_enchant_armour(object_type *o_ptr);
 extern bool object_is_smith(object_type *o_ptr);
 extern bool object_is_artifact(object_type *o_ptr);
 extern bool object_is_dragon_armor(object_type *o_ptr);
@@ -2263,6 +2268,7 @@ extern race_t *vampire_get_race(void);
 extern void    werewolf_change_shape_spell(int cmd, variant *res);
 extern race_t *werewolf_get_race(void);
 extern bool    werewolf_in_human_form(void);
+extern void    werewolf_init(void);
 extern char   *werewolf_moon_message(void);
 extern void    werewolf_check_midnight(void);
 extern void    werewolf_silver_effect(int power, bool allow_mitigation);
@@ -2449,6 +2455,7 @@ extern void monk_posture_spell(int cmd, variant *res);
 extern int  monk_get_attack_idx(void);
 extern critical_t monk_get_critical(martial_arts *ma_ptr, int hand, int mode);
 extern void monk_display_attack_info(doc_ptr, int hand);
+extern bool skills_obj_is_icky_weapon(object_type *o_ptr);
 
 
 /* mystic.c */
