@@ -1852,6 +1852,9 @@ static void process_world_aux_timeout(void)
     if (p_ptr->tim_inven_prot)
         set_tim_inven_prot(p_ptr->tim_inven_prot - 1, TRUE);
 
+    if (p_ptr->tim_inven_prot2)
+        set_tim_inven_prot2(p_ptr->tim_inven_prot2 - 1, TRUE);
+
     if (p_ptr->tim_device_power)
         set_tim_device_power(p_ptr->tim_device_power - 1, TRUE);
 
@@ -2639,6 +2642,7 @@ static byte get_dungeon_feeling(void)
  */
 static void update_dungeon_feeling(void)
 {
+    bool feeling_was_special = (p_ptr->feeling == 1);
     byte new_feeling;
     int delay;
 
@@ -2678,7 +2682,7 @@ static void update_dungeon_feeling(void)
     p_ptr->redraw |= (PR_DEPTH);
 
     /* Disturb */
-    if (disturb_minor) disturb(0, 0);
+    if ((disturb_minor) && ((feeling_was_special) || (p_ptr->feeling == 1))) disturb(0, 0);
 }
 
 
@@ -5732,6 +5736,7 @@ void play_game(bool new_game)
                     /* Leaving */
                     p_ptr->wild_mode = FALSE;
                     p_ptr->leaving = TRUE;
+                    quest_reward_drop_hack = FALSE;
 
                     /* Prepare next floor */
                     leave_floor();
