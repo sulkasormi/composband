@@ -19,6 +19,13 @@ static void _calc_bonuses(void)
     p_ptr->dis_to_a -= 50;
 }
 
+static bool _sorcerer_weapon_is_icky(object_type *o_ptr)
+{
+    if (!object_is_weapon(o_ptr)) return FALSE;
+    if (object_is_(o_ptr, TV_HAFTED, SV_WIZSTAFF) || object_is_(o_ptr, TV_HAFTED, SV_NAMAKE_HAMMER)) return FALSE;
+    return TRUE;
+}
+
 static void _calc_weapon_bonuses(object_type *o_ptr, weapon_info_t *info_ptr)
 {
     if ( object_is_(o_ptr, TV_HAFTED, SV_WIZSTAFF)
@@ -116,6 +123,7 @@ class_t *sorcerer_get_class(void)
         me.get_spells = _get_spells;*/
         me.get_powers = _get_powers;
         me.character_dump = spellbook_character_dump;
+        me.known_icky_object = _sorcerer_weapon_is_icky;
         init = TRUE;
     }
 
