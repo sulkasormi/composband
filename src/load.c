@@ -618,6 +618,8 @@ static void rd_extra(savefile_ptr file)
     p_ptr->tim_transcendence = savefile_read_s16b(file);
     p_ptr->tim_quick_walk = savefile_read_s16b(file);
     p_ptr->tim_inven_prot = savefile_read_s16b(file);
+    if (!savefile_is_older_than(file, 7,0,6,6)) p_ptr->tim_inven_prot2 = savefile_read_s16b(file);
+    else p_ptr->tim_inven_prot2 = 0;
     p_ptr->tim_device_power = savefile_read_s16b(file);
     p_ptr->tim_sh_time = savefile_read_s16b(file);
     p_ptr->free_turns = savefile_read_s16b(file);
