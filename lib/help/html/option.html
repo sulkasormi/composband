@@ -203,7 +203,9 @@ off after the creation is finished!
   </font><font color="#ffffff">Tells the game that walking onto an item should attempt to pick it 
   up. Otherwise, you must use the </font><font color="#ff8000">g </font><font color="#ffffff">command, or the </font><font color="#ff8000">- </font><font color="#ffffff">command while 
   walking. Combined with </font><font color="#ff0000">carry_query_flag</font><font color="#ffffff">, allows you to selectively 
-  pick up all items which you step on.
+  pick up all items which you step on. This option disables the 
+  autodestroyer functions of the Mogaminator, so it's often used 
+  together with </font><font color="#ff0000">destroy_items </font><font color="#ffffff">for the easy auto-destroyer.
   
 <a name="quick_messages"></a>  </font><font color="#c08040">Activate quick messages </font><font color="#707070">(quick_messages)
   </font><font color="#ffffff">Allows the use of any keypress as a response to the </font><font color="#00ffff">-more- </font><font color="#ffffff">prompt 
@@ -749,7 +751,8 @@ off after the creation is finished!
     is too complicated to use. However, you really should 
     only use one or the other. So if you are using the full 
     version, then you should not also enable the easy 
-    version.
+    version, unless you have turned on the </font><font color="#ff0000">always_pickup 
+    </font><font color="#00ff00">option.
   
 <a name="destroy_feeling"></a>  </font><font color="#c08040">Apply auto-destroy on sensing an item </font><font color="#707070">(destroy_feeling)
   </font><font color="#ffffff">If this option is turned on, both The Mogaminator and The Easy 
@@ -779,168 +782,182 @@ off after the creation is finished!
       </font><font color="#ff0000">Free Action</font><font color="#ffffff">; </font><font color="#00ffff">See Invisible</font><font color="#ffffff">; </font><font color="#00ffff">Levitation
       It cannot be harmed by the elements.
       </font><font color="#c00000">Autopick: </font><font color="#ffffff">~</font><font color="#00ff00">*identified* </font><font color="#ff0000">amulets </font><font color="#ff8000">more value than 10000
-    
+  
+<a name="no_mogaminator"></a>  </font><font color="#c08040">Never apply the Mogaminator </font><font color="#707070">(no_mogaminator)
+  </font><font color="#ffffff">This option deactivates the Mogaminator. (It is redundant if the 
+  Mogaminator was never activated in the first place.)
+  
 <a name="leave_worth"></a>  </font><font color="#c08040">Auto-destroyer leaves known worthy items </font><font color="#707070">(leave_worth)
-  </font><font color="#ffffff">This option protects known objects that can be sold in stores from auto-destr 
+  </font><font color="#ffffff">This option protects known objects that can be sold in stores from 
+  auto-destruction by The Easy Destroyer.
   
 <a name="leave_equip"></a>  </font><font color="#c08040">Auto-destroyer leaves weapons and armour </font><font color="#707070">(leave_equip)
-  </font><font color="#ffffff">This option protects all weapons and armour from auto-destruction by The EasyD
+  </font><font color="#ffffff">This option protects all weapons and armour from auto-destruction by 
+  The Easy Destroyer.
   
 <a name="leave_chest"></a>  </font><font color="#c08040">Auto-destroyer leaves closed chests </font><font color="#707070">(leave_chest)
-  </font><font color="#ffffff">This option protects all chests which are not yet opened from auto-destructio 
+  </font><font color="#ffffff">This option protects all chests which are not yet opened from 
+  auto-destruction by The Easy Destroyer.
   
 <a name="leave_wanted"></a>  </font><font color="#c08040">Auto-destroyer leaves wanted corpses </font><font color="#707070">(leave_wanted)
-  </font><font color="#ffffff">This option protects corpses of monsters wanted at the Hunter's office from a 
+  </font><font color="#ffffff">This option protects corpses of monsters wanted at the Hunter's 
+  office from auto-destruction by The Easy Destroyer.
   
 <a name="leave_corpse"></a>  </font><font color="#c08040">Auto-destroyer leaves corpses and skeletons </font><font color="#707070">(leave_corpse)
-  </font><font color="#ffffff">This option protects all corpses and skeletons from auto-destruction by The E 
+  </font><font color="#ffffff">This option protects all corpses and skeletons from auto-destruction 
+  by The Easy Destroyer.
   
 <a name="leave_junk"></a>  </font><font color="#c08040">Auto-destroyer leaves junk </font><font color="#707070">(leave_junk)
-  </font><font color="#ffffff">This option protects all 'junk', such as Shards of Pottery or Broken Stick, f 
+  </font><font color="#ffffff">This option protects all 'junk', such as Shards of Pottery or Broken 
+  Stick, from auto-destruction by The Easy Destroyer. This is 
+  especially helpful for Archers.
   
 <a name="leave_special"></a>  </font><font color="#c08040">Auto-destroyer leaves items your race/class needs </font><font color="#707070">(leave_special)
-  </font><font color="#ffffff">This option protects specific items which are normally worthless, but very im 
+  </font><font color="#ffffff">This option protects specific items which are normally worthless, but 
+  very important for specific classes or races. These include bones for 
+  Archers, ego light sources of darkness for Ninja, Wands of Heal 
+  Monster for BeastMaster and Cavalry, and humanoid corpses for 
+  Balrogs, etc...
   
-<a name="BaseDelay"></a>  </font><font color="#c00000">Base Delay Factor
+<a name="BaseDelay"></a></font><font color="#c00000">Base Delay Factor
+
+</font><font color="#ffffff">The </font><font color="#ff0000">delay_factor </font><font color="#ffffff">value, if non-zero, is used to slow down the game, 
+which is useful to allow you to observe the animations of bolt, beam, 
+and ball attacks. The actual delay is equal to delay_factor cubed, in 
+milliseconds.
+
+<a name="Hitpoint"></a></font><font color="#c00000">Hitpoint Warning
+
+</font><font color="#ffffff">The </font><font color="#ff0000">hitpoint_warn </font><font color="#ffffff">value, if non-zero, is the percentage of maximal 
+hitpoints at which the player is warned that he may die. It is also 
+used as the cut-off for using red to display both hitpoints and mana.
+
+<a name="Autosave"></a></font><font color="#c00000">Autosave Options
+
+</font><font color="#ffffff">Ideally, the game should be so stable that these options are not needed 
+at all. However, even if the game were 100% reliable (which it, to be 
+frank, probably is not), the user might forget to save and his hardware 
+could fail him. For all of these reasons, you may want to use these 
+options:
   
-  </font><font color="#ffffff">The </font><font color="#ff0000">delay_factor </font><font color="#ffffff">value, if non-zero, is used to slow down the game, 
-  which is useful to allow you to observe the animations of bolt, beam, 
-  and ball attacks. The actual delay is equal to delay_factor cubed, in 
-  milliseconds.
+<a name="autosave_l"></a>  </font><font color="#c08040">Autosave when entering new levels </font><font color="#707070">(autosave_l)
+  </font><font color="#ffffff">If this option is set, the program will attempt to save your 
+  character every time before creating a new dungeon level.
   
-<a name="Hitpoint"></a>  </font><font color="#c00000">Hitpoint Warning
+<a name="autosave_t"></a>  </font><font color="#c08040">Timed autosave </font><font color="#707070">(autosave_t)
+  </font><font color="#ffffff">If this option is set, the program will attempt to save your 
+  character every n game turns, where n is the "frequency". To set the 
+  frequency press </font><font color="#ff8000">F</font><font color="#ffffff">. It will increase the frequency to the next 
+  category (and from 25000 to 0), the categories being every 50, 100, 
+  250, 500, 1000, 2500, 5000, 10000 and 25000 turns. Note that the 
+  frequency must be higher than 0 and the "Timed autosave" set to "yes" 
+  for timed autosaves to take place.
   
-  </font><font color="#ffffff">The </font><font color="#ff0000">hitpoint_warn </font><font color="#ffffff">value, if non-zero, is the percentage of maximal 
-  hitpoints at which the player is warned that he may die. It is also 
-  used as the cut-off for using red to display both hitpoints and mana.
+<a name="Window"></a></font><font color="#c00000">Window Flags
+
+</font><font color="#ffffff">These options select what kind of information is displayed in which 
+window. Some platforms support "sub-windows", which are windows which 
+can be used to display useful information generally available through 
+other means. The best thing about these windows is that they are 
+updated automatically (usually) to reflect the current state of the 
+world. The "window options" can be used to specify what should be 
+displayed in each window. The possible choices should be pretty 
+obvious.
   
-<a name="Autosave"></a>  </font><font color="#c00000">Autosave Options
+  </font><font color="#c08040">Display inven/equip
+  </font><font color="#ffffff">Display the player inventory (and sometimes the equipment). Note that 
+  you can toggle between Inventory and Equipment by pressing </font><font color="#ff8000">^I</font><font color="#ffffff">.
   
-  </font><font color="#ffffff">Ideally, the game should be so stable that these options are not 
-  needed at all. However, even if the game were 100% reliable (which 
-  it, to be frank, probably is not), the user might forget to save and 
-  his hardware could fail him. For all of these reasons, you may want 
-  to use these options:
-    
-<a name="autosave_l"></a>    </font><font color="#c08040">Autosave when entering new levels </font><font color="#707070">(autosave_l)
-    </font><font color="#ffffff">If this option is set, the program will attempt to save your 
-    character every time before creating a new dungeon level.
-    
-<a name="autosave_t"></a>    </font><font color="#c08040">Timed autosave </font><font color="#707070">(autosave_t)
-    </font><font color="#ffffff">If this option is set, the program will attempt to save your 
-    character every n game turns, where n is the "frequency". To set 
-    the frequency press </font><font color="#ff8000">F</font><font color="#ffffff">. It will increase the frequency to the next 
-    category (and from 25000 to 0), the categories being every 50, 100, 
-    250, 500, 1000, 2500, 5000, 10000 and 25000 turns. Note that the 
-    frequency must be higher than 0 and the "Timed autosave" set to 
-    "yes" for timed autosaves to take place.
-    
-<a name="Window"></a>  </font><font color="#c00000">Window Flags
+  </font><font color="#c08040">Display equip/inven
+  </font><font color="#ffffff">Display the player equipment (and sometimes the inventory). Note that 
+  you can toggle between Inventory and Equipment by pressing </font><font color="#ff8000">^I</font><font color="#ffffff">.
   
-  </font><font color="#ffffff">These options select what kind of information is displayed in which 
-  window. Some platforms support "sub-windows", which are windows which 
-  can be used to display useful information generally available through 
-  other means. The best thing about these windows is that they are 
-  updated automatically (usually) to reflect the current state of the 
-  world. The "window options" can be used to specify what should be 
-  displayed in each window. The possible choices should be pretty 
-  obvious.
-    
-    </font><font color="#c08040">Display inven/equip
-    </font><font color="#ffffff">Display the player inventory (and sometimes the equipment). Note 
-    that you can toggle between Inventory and Equipment by pressing </font><font color="#ff8000">^I</font><font color="#ffffff">.
-    
-    </font><font color="#c08040">Display equip/inven
-    </font><font color="#ffffff">Display the player equipment (and sometimes the inventory). Note 
-    that you can toggle between Inventory and Equipment by pressing </font><font color="#ff8000">^I</font><font color="#ffffff">.
-    
-    </font><font color="#c08040">Display Object List
-    </font><font color="#ffffff">This option displays the results of the </font><font color="#ff0000">Object List </font><font color="#ffffff">command (</font><font color="#ff8000">]</font><font color="#ffffff">). 
-    For example:
-    
-      There is 1 wanted object:
-       </font><font color="#707070">! </font><font color="#00ffff">a Potion of Resistance               </font><font color="#ffffff">S 17 E 29
-    
-      There are 4 other objects:
-       </font><font color="#d0d0d0">| </font><font color="#ffffff">a Two-Handed Sword (3d6)             S 18 E 30
-       </font><font color="#707070">\ </font><font color="#ffffff">a Lead-Filled Mace (3d4)             S 18 E 28
-       </font><font color="#909090">] </font><font color="#c08040">a Pair of Metal Shod Boots [6]       </font><font color="#ffffff">S 18 E 29
-       </font><font color="#909090">/ </font><font color="#ffffff">an Awl-Pike (1d8)                    S 19 E 29
-    
-    </font><font color="#c08040">Display Monster List
-    </font><font color="#ffffff">This option displays the results of the </font><font color="#ff0000">Monster List </font><font color="#ffffff">command (</font><font color="#ff8000">[</font><font color="#ffffff">). 
-    For example:
-    
-      You are aware of 4 monsters, 4 are awake:
-       </font><font color="#ff8000">t </font><font color="#ffffff">Aimless looking merchant (2 awake)
-       </font><font color="#707070">t </font><font color="#ffffff">Agent of black market                N  9 W 54
-       </font><font color="#ffff00">t </font><font color="#ffffff">Singing, happy drunk                 S 22 E 72
-    
-    </font><font color="#c08040">Display messages
-    </font><font color="#ffffff">Display the most recently generated messages (cf The </font><font color="#ff8000">^P </font><font color="#ffffff">command).
-    
-    </font><font color="#c08040">Display overhead view
-    </font><font color="#ffffff">Display an overhead view of the entire dungeon. This is very slow 
-    and gives the same results as the </font><font color="#ff8000">M </font><font color="#ffffff">command.
-    
-    </font><font color="#c08040">Display monster recall
-    </font><font color="#ffffff">Display a description of the most monster which has been most 
-    recently attacked, targeted, or examined in some way.
-    
-    </font><font color="#c08040">Display object recall
-    </font><font color="#ffffff">Display a description of the most recently selected object. 
-    Currently this only affects spellbooks and prayerbooks. This window 
-    flag may be usefully combined with others, such as "monster 
-    recall".
-    
-    </font><font color="#c08040">Display dungeon view
-    </font><font color="#ffffff">Display a copy of dungeon map.
-    
-    </font><font color="#c08040">Display borg messages
-    </font><font color="#ffffff">This window flag is currently used only by the Borg which is not 
-    currently supported in this variant.
-    
-    </font><font color="#c08040">Display borg status
-    </font><font color="#ffffff">This window flag is currently used only by the Borg which is not 
-    currently supported in this variant.
-    
-<a name="Cheating"></a>  </font><font color="#c00000">Cheating Options
+  </font><font color="#c08040">Display Object List
+  </font><font color="#ffffff">This option displays the results of the </font><font color="#ff0000">Object List </font><font color="#ffffff">command (</font><font color="#ff8000">]</font><font color="#ffffff">). For 
+  example:
   
-  </font><font color="#ffffff">Using the cheating options marks your character as "Cheater" and you 
-  won't get into the high-score list. Turning off the cheating options 
-  later does NOT allow your character to get a highscore entry, so 
-  think twice before using any cheat.
-    
-<a name="cheat_peek"></a>    </font><font color="#c08040">Peek into object creation </font><font color="#707070">(cheat_peek)
-    </font><font color="#ffffff">Cheaters never win. But they can peek at object creation.
-    
-<a name="cheat_hear"></a>    </font><font color="#c08040">Peek into monster creation </font><font color="#707070">(cheat_hear)
-    </font><font color="#ffffff">Cheaters never win. But they can peek at monster creation.
-    
-<a name="cheat_room"></a>    </font><font color="#c08040">Peek into dungeon creation </font><font color="#707070">(cheat_room)
-    </font><font color="#ffffff">Cheaters never win. But they can peek at room creation.
-    
-<a name="cheat_xtra"></a>    </font><font color="#c08040">Peek into something else </font><font color="#707070">(cheat_xtra)
-    </font><font color="#ffffff">Cheaters never win. But they can see debugging messages.
-    
-<a name="cheat_know"></a>    </font><font color="#c08040">Know complete monster info </font><font color="#707070">(cheat_know)
-    </font><font color="#ffffff">Cheaters never win. But they can know all about monsters.
-    
-<a name="cheat_live"></a>    </font><font color="#c08040">Allow player to avoid death </font><font color="#707070">(cheat_live)
-    </font><font color="#ffffff">Cheaters never win. But they can cheat death.
-    
-<a name="cheat_save"></a>    </font><font color="#c08040">Ask for saving death </font><font color="#707070">(cheat_save)
-    </font><font color="#ffffff">Cheaters never win. But they can choose whether they save dead 
-    character data or not when they die.
-    
+    There is 1 wanted object:
+     </font><font color="#707070">! </font><font color="#00ffff">a Potion of Resistance               </font><font color="#ffffff">S 17 E 29
   
-  </font><font color="#707070">Original   : Ben Harrison
-  Updated    : Zangband 2.1.* by Topi Ylinen
-  Updated    : Zangband 2.2.0 through 2.2.6c by Robert Ruehlmann
-  Updated    : Zangband DevTeam
-  Updated    : Hengband 1.5.2
-  Updated    : PosChengband 4.0.0
-  Updated    : FrogComposband 7.0.nougat
+    There are 4 other objects:
+     </font><font color="#d0d0d0">| </font><font color="#ffffff">a Two-Handed Sword (3d6)             S 18 E 30
+     </font><font color="#707070">\ </font><font color="#ffffff">a Lead-Filled Mace (3d4)             S 18 E 28
+     </font><font color="#909090">] </font><font color="#c08040">a Pair of Metal Shod Boots [6]       </font><font color="#ffffff">S 18 E 29
+     </font><font color="#909090">/ </font><font color="#ffffff">an Awl-Pike (1d8)                    S 19 E 29
   
+  </font><font color="#c08040">Display Monster List
+  </font><font color="#ffffff">This option displays the results of the </font><font color="#ff0000">Monster List </font><font color="#ffffff">command (</font><font color="#ff8000">[</font><font color="#ffffff">). For 
+  example:
   
+    You are aware of 4 monsters, 4 are awake:
+     </font><font color="#ff8000">t </font><font color="#ffffff">Aimless looking merchant (2 awake)
+     </font><font color="#707070">t </font><font color="#ffffff">Agent of black market                N  9 W 54
+     </font><font color="#ffff00">t </font><font color="#ffffff">Singing, happy drunk                 S 22 E 72
+  
+  </font><font color="#c08040">Display messages
+  </font><font color="#ffffff">Display the most recently generated messages (cf The </font><font color="#ff8000">^P </font><font color="#ffffff">command).
+  
+  </font><font color="#c08040">Display overhead view
+  </font><font color="#ffffff">Display an overhead view of the entire dungeon. This is very slow and 
+  gives the same results as the </font><font color="#ff8000">M </font><font color="#ffffff">command.
+  
+  </font><font color="#c08040">Display monster recall
+  </font><font color="#ffffff">Display a description of the most monster which has been most 
+  recently attacked, targeted, or examined in some way.
+  
+  </font><font color="#c08040">Display object recall
+  </font><font color="#ffffff">Display a description of the most recently selected object. Currently 
+  this only affects spellbooks and prayerbooks. This window flag may be 
+  usefully combined with others, such as "monster recall".
+  
+  </font><font color="#c08040">Display dungeon view
+  </font><font color="#ffffff">Display a copy of dungeon map.
+  
+  </font><font color="#c08040">Display borg messages
+  </font><font color="#ffffff">This window flag is currently used only by the Borg which is not 
+  currently supported in this variant.
+  
+  </font><font color="#c08040">Display borg status
+  </font><font color="#ffffff">This window flag is currently used only by the Borg which is not 
+  currently supported in this variant.
+  
+<a name="Cheating"></a></font><font color="#c00000">Cheating Options
+
+</font><font color="#ffffff">Using the cheating options marks your character as "Cheater" and you 
+won't get into the high-score list. Turning off the cheating options 
+later does NOT allow your character to get a highscore entry, so think 
+twice before using any cheat.
+  
+<a name="cheat_peek"></a>  </font><font color="#c08040">Peek into object creation </font><font color="#707070">(cheat_peek)
+  </font><font color="#ffffff">Cheaters never win. But they can peek at object creation.
+  
+<a name="cheat_hear"></a>  </font><font color="#c08040">Peek into monster creation </font><font color="#707070">(cheat_hear)
+  </font><font color="#ffffff">Cheaters never win. But they can peek at monster creation.
+  
+<a name="cheat_room"></a>  </font><font color="#c08040">Peek into dungeon creation </font><font color="#707070">(cheat_room)
+  </font><font color="#ffffff">Cheaters never win. But they can peek at room creation.
+  
+<a name="cheat_xtra"></a>  </font><font color="#c08040">Peek into something else </font><font color="#707070">(cheat_xtra)
+  </font><font color="#ffffff">Cheaters never win. But they can see debugging messages.
+  
+<a name="cheat_know"></a>  </font><font color="#c08040">Know complete monster info </font><font color="#707070">(cheat_know)
+  </font><font color="#ffffff">Cheaters never win. But they can know all about monsters.
+  
+<a name="cheat_live"></a>  </font><font color="#c08040">Allow player to avoid death </font><font color="#707070">(cheat_live)
+  </font><font color="#ffffff">Cheaters never win. But they can cheat death.
+  
+<a name="cheat_save"></a>  </font><font color="#c08040">Ask for saving death </font><font color="#707070">(cheat_save)
+  </font><font color="#ffffff">Cheaters never win. But they can choose whether they save dead 
+  character data or not when they die.
+  
+
+</font><font color="#707070">Original   : Ben Harrison
+Updated    : Zangband 2.1.* by Topi Ylinen
+Updated    : Zangband 2.2.0 through 2.2.6c by Robert Ruehlmann
+Updated    : Zangband DevTeam
+Updated    : Hengband 1.5.2
+Updated    : PosChengband 4.0.0
+Updated    : FrogComposband 7.0.nougat
+
+
 </font></pre></body></html>
