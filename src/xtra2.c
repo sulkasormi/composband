@@ -17,6 +17,8 @@
 #define REWARD_CHANCE 10
 #define OLYMPIAN_CHANCE 20 /* Olympians are now a bit easier */
 
+static bool old_target_never_okay = FALSE;
+
  /* Experience required to advance from level to level + 1
     Note the table is off by 1, so we encapsulate that fact.
     (e.g. table[0] gives xp needed to go from L1 to L2!)
@@ -2311,7 +2313,7 @@ static void get_exp_from_mon(int dam, monster_type *m_ptr)
         if (p_ptr->lev < 50)
         {
            coffee_mult = 3;
-           if (!(r_ptr->flags2 & RF2_MULTIPLY)) coffee_mult = (((p_ptr->lev / 10) == 1) || ((p_ptr->lev >= 38) && (p_ptr->max_max_exp < 2239530L))) ? 7 : 8;
+           if (!(r_ptr->flags2 & RF2_MULTIPLY)) coffee_mult = (((p_ptr->lev / 10) == 1) || ((p_ptr->lev >= 38))) ? 7 : 8;
         }
         s64b_mul(&new_exp, &new_exp_frac, 0, coffee_mult);
     }
@@ -3244,7 +3246,22 @@ bool target_able_aux(int m_idx, int mode)
  *
  * We return TRUE if the target is "okay" and FALSE otherwise.
  */
-bool old_target_okay(void) { return (use_old_target && !p_ptr->confused && target_okay_aux(TARGET_KILL)); }
+bool old_target_okay_mode(int mode)
+{
+    if (!use_old_target) return FALSE;
+    if (p_ptr->confused) return FALSE;
+    if (old_target_never_okay) return FALSE;
+    if (!target_okay_aux(mode)) return FALSE;
+    return TRUE;
+}
+void target_grab(int y, int x)
+{
+    target_row = y;
+    target_col = x;
+    old_target_never_okay = FALSE;
+    if ((y == py) && (x == px) && (p_ptr->riding)) old_target_never_okay = TRUE;
+}
+bool old_target_okay(void) { return old_target_okay_mode(TARGET_KILL); }
 bool target_okay(void) { return target_okay_aux(TARGET_KILL); }
 bool target_okay_aux(int mode)
 {
@@ -3255,15 +3272,13 @@ bool target_okay_aux(int mode)
 
     /* Check moving targets */
     if (target_who > 0)
-    {
+    {        
         /* Accept reasonable targets */
         if (target_able_aux(target_who, mode))
         {
             monster_type *m_ptr = &m_list[target_who];
 
-            /* Acquire monster location */
-            target_row = m_ptr->fy;
-            target_col = m_ptr->fx;
+            target_grab(m_ptr->fy, m_ptr->fx);
 
             /* Good target */
             return (TRUE);
@@ -4165,8 +4180,7 @@ bool target_set(int mode)
                     {
                         health_track(c_ptr->m_idx);
                         target_who = c_ptr->m_idx;
-                        target_row = y;
-                        target_col = x;
+                        target_grab(y, x);
                         done = TRUE;
                     }
                     else
@@ -4404,8 +4418,7 @@ bool target_set(int mode)
                         target_who = c_ptr->m_idx;
                     else
                         target_who = -1;
-                    target_row = y;
-                    target_col = x;
+                    target_grab(y, x);
                     done = TRUE;
                 }
                 else
@@ -4582,7 +4595,7 @@ bool target_set(int mode)
 bool get_fire_dir(int *dp) { return get_fire_dir_aux(dp, TARGET_KILL); }
 bool get_fire_dir_aux(int *dp, int target_mode)
 {
-	if (use_old_target && !p_ptr->confused && target_okay_aux(target_mode)) {
+	if (old_target_okay_mode(target_mode)) {
 		*dp = 5;
 		p_ptr->redraw |= PR_HEALTH_BARS;
 		return TRUE;
@@ -4608,8 +4621,7 @@ bool get_fire_dir_aux(int *dp, int target_mode)
         if (best_m_idx)
         {
             target_who = best_m_idx;
-            target_row = m_list[best_m_idx].fy;
-            target_col = m_list[best_m_idx].fx;
+            target_grab(m_list[best_m_idx].fy, m_list[best_m_idx].fx);
             *dp = 5;
             p_ptr->redraw |= PR_HEALTH_BARS;
             return TRUE;
@@ -4643,7 +4655,7 @@ bool get_aim_dir_aux(int *dp, int target_mode)
         /* Confusion? */
 
         /* Verify */
-        if (!(*dp == 5 && !target_okay_aux(target_mode)))
+        if (!((*dp == 5) && ((!target_okay_aux(target_mode)) || (old_target_never_okay))))
         {
 /*            return (TRUE); */
             dir = *dp;
@@ -4708,7 +4720,7 @@ bool get_aim_dir_aux(int *dp, int target_mode)
         }
 
         /* Verify requested targets */
-        if ((dir == 5) && !target_okay_aux(target_mode)) dir = 0;
+        if ((dir == 5) && (!target_okay_aux(target_mode))) dir = 0;
 
         /* Error */
         if (!dir) bell();
