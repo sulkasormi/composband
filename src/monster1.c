@@ -779,6 +779,9 @@ bool are_enemies(monster_type *m_ptr, monster_type *n_ptr)
         if (!(m_ptr->mflag2 & MFLAG2_CHAMELEON) || !(n_ptr->mflag2 & MFLAG2_CHAMELEON)) return TRUE;
     }
 
+    /* Demeter's ents keep killing her... */
+    if ((((m_ptr->r_idx == MON_DEMETER) && (n_ptr->r_idx == MON_ENT)) || ((m_ptr->r_idx == MON_ENT) && (n_ptr->r_idx == MON_DEMETER))) && (!prace_is_(RACE_ENT))) return FALSE;
+
     /* Hostile vs. non-hostile */
     if (is_hostile(m_ptr) != is_hostile(n_ptr))
     {
