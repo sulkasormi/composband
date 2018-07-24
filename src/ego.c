@@ -2642,6 +2642,60 @@ static void _ego_create_armor_celestial_protection(object_type *o_ptr, int level
             add_flag(o_ptr->flags, OF_SLOW_DIGEST);
         if (one_in_(17))
             add_flag(o_ptr->flags, OF_REFLECT);
+
+        /* Supercharge */
+        if ((rolls >= 4) && (one_in_(2)) && (randint1((rolls == 4) ? 242 : 160) < level) && (randint1((rolls == 4) ? 242 : 160) < level) && (randint1(MAX(1, k_info[o_ptr->k_idx].ac)) < 16))
+        {
+            int yrk = 6;
+            one_high_resistance(o_ptr);
+            if (one_in_(7))
+                add_flag(o_ptr->flags, OF_HOLD_LIFE);
+            if (one_in_(7))
+                add_flag(o_ptr->flags, OF_WARNING);
+            if (one_in_(3))
+                one_sustain(o_ptr);
+            if (one_in_(15))
+                add_flag(o_ptr->flags, OF_REFLECT);
+            if (one_in_(99))
+                add_flag(o_ptr->flags, OF_RES_TIME);
+            if (!one_in_((rolls > 4) ? 10 : 2))
+            {
+                switch (randint0(6))
+                {
+                    case 0: one_high_resistance(o_ptr); break;
+                    case 1: one_ele_resistance(o_ptr); break;
+                    case 2: one_sustain(o_ptr); break;
+                    case 3:
+                    {
+                        u32b flgs[OF_ARRAY_SIZE];
+                        obj_flags(o_ptr, flgs);
+                        if (!have_flag(flgs, OF_FREE_ACT))
+                        {
+                            add_flag(o_ptr->flags, OF_FREE_ACT);
+                            break;
+                        }
+                        if (!have_flag(flgs, OF_HOLD_LIFE))
+                        {
+                            add_flag(o_ptr->flags, OF_HOLD_LIFE);
+                            break;
+                        }
+                        if (!have_flag(flgs, OF_REFLECT))
+                        {
+                            add_flag(o_ptr->flags, OF_REFLECT);
+                            break;
+                        }
+                        add_flag(o_ptr->flags, OF_BLESSED);
+                        if (one_in_(2)) add_flag(o_ptr->flags, OF_ESP_EVIL);
+                        break;
+                    }
+                    default:
+                    {
+                        do { o_ptr->to_a += 4; yrk--; } while ((one_in_(2)) && (yrk));
+                        break;
+                    }
+                }
+            }
+        }
     }
     else if (object_is_shield(o_ptr))
     {
