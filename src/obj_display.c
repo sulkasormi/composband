@@ -1088,7 +1088,7 @@ static void _display_curses(object_type *o_ptr, u32b flgs[OF_ARRAY_SIZE], doc_pt
         vec_add(v, string_copy_s("<color:o>Drains You</color>"));
     if (o_ptr->known_curse_flags & OFC_DRAIN_MANA)
         vec_add(v, string_copy_s("<color:B>Drains Mana</color>"));
-    if (have_flag(flgs, OF_NO_ENCHANT) || o_ptr->name2 == EGO_ROBE_TWILIGHT || object_is_(o_ptr, TV_SWORD, SV_POISON_NEEDLE))
+    if (object_is_unenchantable(o_ptr))
         vec_add(v, string_copy_s("<color:r>Unenchantable</color>"));
 
     if (vec_length(v))
