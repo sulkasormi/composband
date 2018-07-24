@@ -385,7 +385,8 @@ static void _combat_transformation_spell(int power, int cmd, variant *res)
         var_set_string(res, "For a short while, you focus your mental powers on effective combat.");
         break;
     case SPELL_INFO:
-        var_set_string(res, format("Blows: +%d.%d", power * 2 / 5, (power * 4) % 10));
+        if (prace_is_(RACE_TONBERRY)) var_set_string(res, format("Blows: +%d.%2.2d", power / 4, (power * 25) % 100));
+        else var_set_string(res, format("Blows: +%d.%d", power * 2 / 5, (power * 4) % 10));
         break;
     case SPELL_CAST:
         var_set_bool(res, FALSE);
@@ -2061,7 +2062,7 @@ static void _calc_weapon_bonuses(object_type *o_ptr, weapon_info_t *info_ptr)
 
     if (p_ptr->magic_num1[_COMBAT])
     {
-        info_ptr->xtra_blow += p_ptr->magic_num2[_COMBAT] * 40;
+        info_ptr->xtra_blow += p_ptr->magic_num2[_COMBAT] * (prace_is_(RACE_TONBERRY) ? 25 : 40);
     }
 }
 
