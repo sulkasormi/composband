@@ -1868,7 +1868,7 @@ bool gf_affect_m(int who, mon_ptr mon, int type, int dam, int flags)
                     if (!unique)
                     {
                         note = " is suspended!";
-                        do_paralyzed = 5;
+                        do_paralyzed = 3;
                     }
                     else
                     {
@@ -2631,7 +2631,7 @@ bool gf_affect_m(int who, mon_ptr mon, int type, int dam, int flags)
         else
         {
             note = " is suspended!";
-            do_paralyzed = 5;
+            do_paralyzed = 3;
         }
         dam = 0;
         break;
@@ -2661,7 +2661,8 @@ bool gf_affect_m(int who, mon_ptr mon, int type, int dam, int flags)
         else
         {
             note = " is suspended!";
-            do_paralyzed = 3;
+            do_paralyzed = 2;
+            if (one_in_(15)) do_paralyzed++;
         }
         dam = 0;
         break;
@@ -3913,7 +3914,7 @@ bool gf_affect_m(int who, mon_ptr mon, int type, int dam, int flags)
             {
                 /* Go to sleep (much) later */
                 note = " falls asleep!";
-                do_paralyzed = 5;
+                do_paralyzed = 3;
             }
         }
 
