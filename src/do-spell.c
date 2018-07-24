@@ -100,6 +100,14 @@ cptr info_heal(int dice, int sides, int base)
         base /= 2;
     }
 
+    if ( p_ptr->prace == RACE_EINHERI
+      || p_ptr->mimic_form == RACE_EINHERI )
+    {
+        if (dice % 2) sides /= 2;
+        else dice /= 2;
+        base /= 2;
+    }
+
     return info_string_dice("heal ", dice, sides, base);
 }
 
@@ -1728,7 +1736,7 @@ static cptr do_sorcery_spell(int spell, int mode)
         }
 
         {
-            int power = spell_power(plev * 4);
+            int power = spell_power(plev * ((plev < 35) ? 10 : 7) / 3);
 
             if (info) return info_power(power);
 
