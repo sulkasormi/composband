@@ -49,6 +49,7 @@ struct quest_s
 
     int  status;
     int  completed_lev;
+    u32b completed_turn;
 
     u32b seed;        /* For $RANDOM_ in quest files */
 };
