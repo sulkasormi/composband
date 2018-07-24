@@ -621,6 +621,61 @@ static void place_pet(void)
     C_WIPE(party_mon, MAX_PARTY_MON, monster_type);
 }
 
+static vec_ptr saily_objects = NULL;
+
+/*
+ * Hack -- preserve quest rewards on the town floor when a new quest is
+ * requested
+ */
+static void preserve_object_aux(object_type *o_ptr)
+{
+    object_type *saily_obj = obj_alloc();
+    if (!saily_objects)
+    {
+        saily_objects = vec_alloc(free);
+    }
+    object_copy(saily_obj, o_ptr);
+    vec_add(saily_objects, saily_obj);
+    quest_reward_drop_hack = TRUE;
+}
+
+static void preserve_objects(void)
+{
+    int i;
+    if (!py_on_surface()) quest_reward_drop_hack = FALSE; /* paranoia */
+    if (!quest_reward_drop_hack) return;
+    quest_reward_drop_hack = FALSE;
+    for (i = 0; i < max_o_idx; i++)
+    {
+        object_type *o_ptr = &o_list[i];
+        if (!o_ptr->k_idx) continue;
+        if (o_ptr->loc.where != INV_FLOOR) continue; /* paranoia */
+        if (o_ptr->origin_type != ORIGIN_QUEST_REWARD) continue;
+        preserve_object_aux(o_ptr);
+    }
+}
+
+static void place_saily_objects(void)
+{
+    if (!quest_reward_drop_hack) return;
+    if ((!saily_objects) || (!vec_length(saily_objects))) return; /* paranoia */
+    while (vec_length(saily_objects))
+    {
+        object_type *saily_obj = vec_pop(saily_objects);
+
+        /* Copy the object */
+//        object_copy(o_ptr, saily_obj);
+
+        /* Drop it */
+        (void)drop_near(saily_obj, -1, saily_obj->loc.y, saily_obj->loc.x);
+
+        obj_free(saily_obj);
+//        obj_free(o_ptr);
+    }
+    vec_free(saily_objects);
+    saily_objects = NULL;
+    quest_reward_drop_hack = FALSE;
+}
 
 /*
  * Hack -- Update location of unique monsters and artifacts
@@ -869,6 +924,9 @@ void leave_floor(void)
     /* Preserve pets and prepare to take these to next floor */
     preserve_pet();
 
+    /* Preserve objects (in special cases) */
+    preserve_objects();
+
     /* Remove all mirrors without explosion */
     remove_all_mirrors(FALSE);
 
@@ -933,6 +991,10 @@ void leave_floor(void)
         /* Shafts are deeper than normal stairs */
         if (change_floor_mode & CFM_SHAFT)
             move_num += SGN(move_num);
+
+        /* Pyramidal Mound has 4-level shafts near the top */
+        if ((dungeon_type == DUNGEON_MOUND) && (dun_level < ((change_floor_mode & CFM_DOWN) ? 78 : 82)))
+            move_num += SGN(move_num) * 2;
 
         /* Get out from or Enter the dungeon */
         if (change_floor_mode & CFM_DOWN)
@@ -1211,7 +1273,7 @@ void change_floor(void)
                 }
             }
 
-            /* Maintain artifatcs */
+            /* Maintain artifacts */
             for (i = 1; i < o_max; i++)
             {
                 object_type *o_ptr = &o_list[i];
@@ -1353,6 +1415,9 @@ void change_floor(void)
 
     /* Place preserved pet monsters */
     place_pet();
+
+    /* Place preserved quest rewards */
+    place_saily_objects();
 
     /* Hack -- maintain unique and artifacts */
     update_unique_artifact(new_floor_id);
