@@ -977,7 +977,7 @@ void do_cmd_open(void)
         {
             /* Message */
             msg_print("You see nothing there to open.");
-
+            if (p_ptr->confused) energy_use = 50;
         }
 
         /* Monster in the way */
@@ -1137,6 +1137,7 @@ void do_cmd_close(void)
         {
             /* Message */
             msg_print("You see nothing there to close.");
+            if (p_ptr->confused) energy_use = 50; /* prevent free turns until the right direction is picked */
         }
 
         /* Monster in the way */
