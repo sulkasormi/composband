@@ -1201,7 +1201,7 @@ void equip_calc_bonuses(void)
     if (prace_is_(RACE_MON_SWORD) && p_ptr->lev >= 10)
         p_ptr->weapon_info[0].wield_how = WIELD_TWO_HANDS;
 
-    /* Its convenient to have an accurate weapon count later */
+    /* It's convenient to have an accurate weapon count later */
     p_ptr->weapon_ct = 0;
     for (i = 0; i < MAX_HANDS; i++)
     {
