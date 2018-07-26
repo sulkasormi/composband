@@ -3694,7 +3694,7 @@ static void bldg_process_command(building_type *bldg, int i)
         enchant_item(object_is_bow, bcost, 1, 1, 0, is_guild);
         break;
     case BACT_RECALL:
-        if (recall_player(1)) paid = TRUE;
+        if (recall_player(1, FALSE)) paid = TRUE;
         break;
     case BACT_TELEPORT_LEVEL:
     {
