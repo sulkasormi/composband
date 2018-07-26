@@ -1342,7 +1342,7 @@ static cptr do_life_spell(int spell, int mode)
 
             if (cast)
             {
-                if (!word_of_recall()) return NULL;
+                if (!word_of_recall(TRUE)) return NULL;
             }
         }
         break;
@@ -1883,8 +1883,7 @@ static cptr do_sorcery_spell(int spell, int mode)
         {
             if (cast)
             {
-                if (!get_check("Are you sure? (Teleport Level)")) return NULL;
-                teleport_level(0);
+                if (!py_teleport_level("Are you sure? (Teleport Level) ")) return NULL;
             }
         }
         break;
@@ -1901,7 +1900,7 @@ static cptr do_sorcery_spell(int spell, int mode)
 
             if (cast)
             {
-                if (!word_of_recall()) return NULL;
+                if (!word_of_recall(TRUE)) return NULL;
             }
         }
         break;
@@ -4351,8 +4350,7 @@ static cptr do_trump_spell(int spell, int mode)
         {
             if (cast)
             {
-                if (!get_check("Are you sure? (Teleport Level)")) return NULL;
-                teleport_level(0);
+                if (!py_teleport_level("Are you sure? (Teleport Level) ")) return NULL;
             }
         }
         break;
@@ -4387,7 +4385,7 @@ static cptr do_trump_spell(int spell, int mode)
 
             if (cast)
             {
-                if (!word_of_recall()) return NULL;
+                if (!word_of_recall(TRUE)) return NULL;
             }
         }
         break;
@@ -5189,8 +5187,7 @@ static cptr do_arcane_spell(int spell, int mode)
         {
             if (cast)
             {
-                if (!get_check("Are you sure? (Teleport Level)")) return NULL;
-                teleport_level(0);
+                if (!py_teleport_level("Are you sure? (Teleport Level) ")) return NULL;
             }
         }
         break;
@@ -5263,7 +5260,7 @@ static cptr do_arcane_spell(int spell, int mode)
 
             if (cast)
             {
-                if (!word_of_recall()) return NULL;
+                if (!word_of_recall(TRUE)) return NULL;
             }
         }
         break;
