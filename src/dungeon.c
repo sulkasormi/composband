@@ -322,7 +322,7 @@ static void pattern_teleport(void)
     }
     else if (((coffee_break) || (!ironman_downward)) && (get_check("Recall? ")))
     {
-        recall_player(1);
+        recall_player(1, FALSE);
         return;
     }
     else
