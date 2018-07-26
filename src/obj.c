@@ -504,8 +504,17 @@ bool obj_confirm_choice(obj_ptr obj)
             }
             else if (!isalpha(*pos))
             {
-                if (*pos == '!') pos--; /* !k!q */
-                break;
+                if (*pos == '!') { pos--; break; } /* !k!q */
+                else if (*pos == '?')
+                {
+                    while ((*(pos++)) && (isdigit(*pos)))
+                    {
+                    }
+                    if (!*pos) return TRUE;
+                    else if (*pos == '!') { pos--; break; }
+                    else if (isalpha(*pos)) pos--;
+                }
+                else break;
             }
         }
     }
