@@ -546,8 +546,7 @@ cptr do_burglary_spell(int spell, int mode)
 
         if (cast)
         {
-            if (!get_check("Are you sure? (Flee Level)")) return NULL;
-            teleport_level(0);
+            if (!py_teleport_level("Are you sure? (Flee Level) ")) return NULL;
         }
         break;
 
