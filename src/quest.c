@@ -1132,7 +1132,7 @@ bool quests_check_leave(void)
     assert(q);
     if (q->status == QS_IN_PROGRESS)
     {
-        if (q->flags & QF_RETAKE)
+        if (q->flags & QF_RETAKE) /* quests_check_leave() is only called from do_cmd_go_up(), so never in coffeebreak mode */
         {
             char       c;
             string_ptr s = string_alloc();
@@ -1164,6 +1164,38 @@ bool quests_check_leave(void)
             string_free(s);
             if (c == 'n') return FALSE;
         }
+    }
+    return TRUE;
+}
+
+bool quests_check_ini_leave(cptr varoitus, cptr toimi, bool *kysyttiin)
+{
+    quest_ptr q;
+    if (kysyttiin) *kysyttiin = FALSE;
+    if (!_current) return TRUE;
+    q = quests_get(_current);
+    assert(q);
+    if ((q->flags & QF_RETAKE) && ((!coffee_break) || (dun_level >= 99))) return TRUE;
+    if (q->status == QS_IN_PROGRESS)
+    {
+        char       c;
+        string_ptr s = string_alloc();
+
+        string_append_s(s, "<color:r>Warning,</color> you are about to ");
+        string_append_s(s, varoitus);
+        string_append_s(s, " the quest: <color:R>");
+        if ((q->flags & QF_RANDOM) && q->goal == QG_KILL_MON)
+            string_printf(s, "Kill %s", r_name + r_info[q->goal_idx].name);
+        else
+            string_append_s(s, kayttonimi(q));
+        string_append_s(s, "</color>. <color:v>You will fail this quest if you leave it before completing it!</color> "
+                          "Are you sure you want to ");
+        string_append_s(s, toimi);
+        string_append_s(s, "? <color:y>[Y,n]</color>");
+        c = msg_prompt(string_buffer(s), "nY", PROMPT_NEW_LINE | PROMPT_ESCAPE_DEFAULT | PROMPT_CASE_SENSITIVE);
+        string_free(s);
+        if (kysyttiin) *kysyttiin = TRUE;
+        if (c == 'n') return FALSE;
     }
     return TRUE;
 }
