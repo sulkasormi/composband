@@ -329,7 +329,7 @@ static void _mirror_of_recall_spell(int cmd, variant *res)
         var_set_string(res, "Recalls player from dungeon to town, or from town to the deepest level of dungeon.");
         break;
     case SPELL_CAST:
-        var_set_bool(res, word_of_recall());
+        var_set_bool(res, word_of_recall(TRUE));
         break;
     default:
         default_spell(cmd, res);
