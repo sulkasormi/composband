@@ -294,6 +294,7 @@ extern bool allow_debug_opts;    /* Allow use of debug/cheat options */
 
 extern bool find_ignore_stairs;    /* Run past stairs */
 extern bool find_ignore_doors;    /* Run through open doors */
+extern bool find_ignore_veins;  /* Run past gold veins */
 extern bool find_cut;    /* Run past known corners */
 extern bool check_abort;    /* Check for user abort while continuous command */
 extern bool flush_failure;    /* Flush input on various failures */
