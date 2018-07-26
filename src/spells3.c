@@ -650,6 +650,22 @@ void teleport_away_followable(int m_idx)
     }
 }
 
+/* Teleport the player one level up or down, but ask for confirmation if
+ * we are inside a dungeon quest that cannot be retaken */
+bool py_teleport_level(cptr prompt)
+{
+    bool kysyttiin = FALSE;
+    if ((py_in_dungeon()) && (!TELE_LEVEL_IS_INEFF(0)))
+    {
+        if (!quests_check_ini_leave("teleport out of", "teleport", &kysyttiin)) return FALSE;
+    }
+    if ((!kysyttiin) && (prompt) && (strlen(prompt)))
+    {
+        if (!get_check(prompt)) return FALSE;
+    }
+    teleport_level(0);
+    return TRUE;
+}
 
 /*
  * Teleport the player one level up or down (random when legal)
@@ -874,13 +890,15 @@ int choose_dungeon(cptr note, int y, int x)
 /*
  * Recall the player to town or dungeon
  */
-bool recall_player(int turns)
+bool recall_player(int turns, bool varmista)
 {
     if (!py_can_recall())
     {
         msg_print("Nothing happens.");
         return TRUE;
     }
+
+    if ((varmista) && (!p_ptr->word_recall) && (!quests_check_ini_leave("recall out of", "recall", NULL))) return FALSE;
 
     if ( py_in_dungeon()
       && !(d_info[dungeon_type].flags1 & DF1_RANDOM)
@@ -921,9 +939,9 @@ bool recall_player(int turns)
 }
 
 
-bool word_of_recall(void)
+bool word_of_recall(bool varmista)
 {
-    return(recall_player(randint0(21) + 15));
+    return(recall_player(randint0(21) + 15, varmista));
 }
 
 
