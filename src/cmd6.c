@@ -820,6 +820,7 @@ static void do_cmd_read_scroll_aux(obj_ptr o_ptr)
                  case SV_SCROLL_MASS_GENOCIDE:
                  case SV_SCROLL_RUNE_OF_PROTECTION:
                  case SV_SCROLL_TELEPORT_LEVEL:
+                 case SV_SCROLL_WORD_OF_RECALL:
                  case SV_SCROLL_SUMMON_PET:
                  case SV_SCROLL_SUMMON_KIN:
                  case SV_SCROLL_CRAFTING:
