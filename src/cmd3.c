@@ -110,6 +110,7 @@ static bool _lite_is_darkness(object_type *lite)
  */
 static void do_cmd_refill_lamp(object_type *lantern)
 {
+    bool check_id = FALSE;
     obj_prompt_t prompt = {0};
 
     prompt.prompt = "Refill with which flask?";
@@ -128,17 +129,26 @@ static void do_cmd_refill_lamp(object_type *lantern)
     {
         lantern->xtra4 = 0;
         msg_print("Your lamp has gone out!");
+        check_id = TRUE;
     }
     else if (_lite_is_darkness(prompt.obj) || _lite_is_darkness(lantern))
     {
         lantern->xtra4 = 0;
         msg_print("Curiously, your lamp doesn't light.");
+        check_id = TRUE;        
     }
     else if (lantern->xtra4 >= FUEL_LAMP)
     {
         lantern->xtra4 = FUEL_LAMP;
         msg_print("Your lamp is full.");
+        
+        /* If the lamp is average, we now know it */ 
+        check_id = TRUE;
     }
+
+    if ((check_id) && (!obj_is_identified(lantern)) && (lantern->ident & IDENT_SENSE)
+       && (lantern->feeling == FEEL_AVERAGE))
+    identify_item(lantern);
 
     prompt.obj->number--;
     obj_release(prompt.obj, 0);
