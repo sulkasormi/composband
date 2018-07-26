@@ -2667,6 +2667,7 @@ enum summon_specific_e {
 #define MFLAG2_PLAYER_SUMMONED  0x00010000   /* Monster was summoned by player (or player-aligned mon) */
 #define MFLAG2_HORROR           0x00020000   /* Monster has triggered Eldritch Horror */
 #define MFLAG2_COUNTED_KILLED   0x00040000   /* Monster has been counted as killed by quests_on_kill_mon() */
+#define MFLAG2_MON_HIT_OKAY     0x00080000
 
 /*
  * Object Flags (OF_*)
