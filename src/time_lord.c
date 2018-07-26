@@ -546,7 +546,7 @@ static void _rewind_time_spell(int cmd, variant *res)
             return;
         }
 
-        recall_player(1);
+        recall_player(1, FALSE);
         p_ptr->leaving_method = LEAVING_REWIND_TIME; /* Set after recall_player() to override LEAVING_RECALL */
         process_world_aux_movement(); /* Hack! Recall Now, Now, Now!!! */
 
