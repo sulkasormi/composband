@@ -1571,8 +1571,7 @@ void teleport_level_spell(int cmd, variant *res)
         break;
     case SPELL_CAST:
         var_set_bool(res, FALSE);
-        if (!get_check("Are you sure? (Teleport Level)")) return;
-        teleport_level(0);
+        if (!py_teleport_level("Are you sure? (Teleport Level) ")) return;
         var_set_bool(res, TRUE);
         break;
     default:
