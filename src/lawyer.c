@@ -364,8 +364,7 @@ cptr do_law_spell(int spell, int mode)
                 stair_creation(FALSE);
                 break;
             default:
-                if (get_check("Teleport Level? "))
-                    teleport_level(0);
+                (void)py_teleport_level("Teleport Level? ");
             }
         }
         break;
