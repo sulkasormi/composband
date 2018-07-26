@@ -1057,7 +1057,7 @@ void recall_spell(int cmd, variant *res)
         break;
     case SPELL_CAST:
         var_set_bool(res, FALSE);
-        if (word_of_recall())
+        if (word_of_recall(TRUE))
             var_set_bool(res, TRUE);
         break;
     default:
