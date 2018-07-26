@@ -2295,6 +2295,9 @@ option_type option_info[] =
     { &find_ignore_doors,           TRUE,  OPT_PAGE_DISTURBANCE, 0, 17,
     "find_ignore_doors",            "Run through open doors" },
 
+    { &find_ignore_veins,           TRUE,  OPT_PAGE_DISTURBANCE, 0, 19,
+    "find_ignore_veins",            "Run past buried treasure" },
+
     { &find_cut,                    FALSE, OPT_PAGE_DISTURBANCE, 0, 18,
     "find_cut",                     "Run past known corners" },
 
