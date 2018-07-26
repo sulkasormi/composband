@@ -6185,7 +6185,33 @@ static bool find_openarea;
 static bool find_breakright;
 static bool find_breakleft;
 
+static bool adjacent_treasure;
 
+/* Check for buried treasure in an adjacent square */
+static bool _treasure_is_adjacent(int iy, int ix)
+{
+    bool loytyi = FALSE;
+    if (find_ignore_veins) return TRUE; /* Don't waste time */
+    else {
+        int i, nx, ny;
+        cave_type *c_ptr;
+        s16b feat;
+        for (i = 0; i < 9; i++) /* Note that we do check the square the player's standing on */
+        {
+            ny = iy + ddy_ddd[i];
+            nx = ix + ddx_ddd[i];
+            if (!in_bounds(ny, nx)) continue;
+            c_ptr = &cave[ny][nx];
+            feat = get_feat_mimic(c_ptr);
+            if (have_flag(f_info[feat].flags, FF_HAS_GOLD))
+            {
+                loytyi = TRUE;
+                break;
+            }
+        }
+    }
+    return loytyi;
+}
 
 /*
  * Initialize the running algorithm for a new direction.
@@ -6222,6 +6248,9 @@ static void run_init(int dir)
     /* Assume no nearby walls */
     deepleft = deepright = FALSE;
     shortright = shortleft = FALSE;
+
+    /* Check adjacent treasure */
+    adjacent_treasure = _treasure_is_adjacent(py, px);
 
     p_ptr->run_py = py;
     p_ptr->run_px = px;
@@ -6293,7 +6322,6 @@ static void run_init(int dir)
     }
 }
 
-
 /*
  * Update the current "run" path
  *
@@ -6311,7 +6339,6 @@ static bool run_test(void)
 
     /* Where we came from */
     prev_dir = find_prevdir;
-
 
     /* Range of newly adjacent grids */
     max = (prev_dir & 0x01) + 1;
@@ -6599,6 +6626,14 @@ static bool run_test(void)
     if (see_wall(find_current, py, px))
     {
         return (TRUE);
+    }
+
+    /* Stop for treasure if find_ignore_treasure is off */
+    if (!find_ignore_veins)
+    {
+        bool old_adj_treasure = adjacent_treasure;
+        adjacent_treasure = _treasure_is_adjacent(py, px);
+        if ((!old_adj_treasure) && (adjacent_treasure)) return (TRUE);
     }
 
     /* Failure */
