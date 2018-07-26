@@ -800,6 +800,11 @@ void notice_lite_change(object_type *o_ptr)
         disturb(0, 0);
         msg_print("Your light has gone out!");
 
+        /* We now know how many turns of light it has - zero */
+        if ((!obj_is_identified(o_ptr)) && (o_ptr->ident & IDENT_SENSE)
+           && (o_ptr->feeling == FEEL_AVERAGE))
+        identify_item(o_ptr);
+
         /* Recalculate torch radius */
         p_ptr->update |= (PU_TORCH);
 
