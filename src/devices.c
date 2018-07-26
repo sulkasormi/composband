@@ -1279,8 +1279,12 @@ static cptr _do_scroll(int sval, int mode)
         if (cast)
         {
             if ((TELE_LEVEL_IS_INEFF(-1)) && (!_scroll_check_no_effect(sval))) return NULL;
-            teleport_level(0);
             device_noticed = TRUE;
+            if (k_info[lookup_kind(TV_SCROLL, sval)].aware)
+            {
+                if (!py_teleport_level(NULL)) return NULL;
+            }
+            else teleport_level(0);
         }
         break;
     case SV_SCROLL_WORD_OF_RECALL:
@@ -1288,7 +1292,7 @@ static cptr _do_scroll(int sval, int mode)
         if (cast)
         {
             device_noticed = TRUE;
-            if (!word_of_recall()) return NULL;
+            if (!word_of_recall(k_info[lookup_kind(TV_SCROLL, sval)].aware)) return NULL;
         }
         break;
     case SV_SCROLL_IDENTIFY:
@@ -3543,8 +3547,7 @@ cptr do_effect(effect_t *effect, int mode, int boost)
                 stair_creation(FALSE);
                 break;
             default:
-                if (get_check("Teleport Level? "))
-                    teleport_level(0);
+                (void)py_teleport_level("Teleport Level? ");
             }
             device_noticed = TRUE;
         }
@@ -3557,7 +3560,7 @@ cptr do_effect(effect_t *effect, int mode, int boost)
         if (cast)
         {
             device_noticed = TRUE;
-            if (!word_of_recall()) return NULL;
+            if (!word_of_recall(TRUE)) return NULL;
         }
         break;
 
@@ -6887,7 +6890,7 @@ cptr do_effect(effect_t *effect, int mode, int boost)
             detect_doors(DETECT_RAD_DEFAULT);
             detect_stairs(DETECT_RAD_DEFAULT);
             if (get_check("Activate recall? "))
-                word_of_recall();
+                word_of_recall(TRUE);
             device_noticed = TRUE;
         }
         break;
