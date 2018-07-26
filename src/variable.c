@@ -278,6 +278,7 @@ bool allow_debug_opts;    /* Allow use of debug/cheat options */
 
 bool find_ignore_stairs;    /* Run past stairs */
 bool find_ignore_doors;    /* Run through open doors */
+bool find_ignore_veins;  /* Run past gold veins */
 bool find_cut;    /* Run past known corners */
 bool check_abort;    /* Check for user abort while continuous command */
 bool flush_failure;    /* Flush input on various failures */
