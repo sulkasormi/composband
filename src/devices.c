@@ -653,7 +653,7 @@ static cptr _do_potion(int sval, int mode)
         }
         break;
     case SV_POTION_HEROISM:
-        if (desc) return "It removes fear and causes you temporary heroism when you quaff it.";
+        if (desc) return (p_ptr->pclass == CLASS_ALCHEMIST) ? "It removes fear, causes temporary heroism and provides special Alchemist bonuses (+2 speed and level-dependent extra to-hit, extra to-dam and extra shots) when you quaff it." : "It removes fear and causes you temporary heroism when you quaff it.";
         if (info) return format("Dur d%d+%d", _potion_power(25), _potion_power(25));
         if (cast)
         {
@@ -662,7 +662,7 @@ static cptr _do_potion(int sval, int mode)
         }
         break;
     case SV_POTION_BERSERK_STRENGTH:
-        if (desc) return "It removes fear and causes you to go berserk when you quaff it.";
+        if (desc) return (p_ptr->pclass == CLASS_ALCHEMIST) ? "It removes fear, causes you to go berserk and provides special Alchemist bonuses (+4 speed and level-dependent extra to-hit, extra to-dam, extra blows and extra shots) when you quaff it." : "It removes fear and causes you to go berserk when you quaff it.";
         if (info) return format("Dur d%d+%d", _potion_power(25), _potion_power(25));
         if (cast)
         {
@@ -795,7 +795,7 @@ static cptr _do_potion(int sval, int mode)
         }
         break;
     case SV_POTION_GREAT_CLARITY:
-        if (desc) return "It greatly clears your mind when you quaff it and cures confusion and hallucinations.";
+        if (desc) return (p_ptr->pclass == CLASS_ALCHEMIST) ? "It greatly clears your mind when you quaff it and cures confusion, stunning and hallucinations." : "It greatly clears your mind when you quaff it and cures confusion and hallucinations.";
         if (info) return format("10d%d + %d", _potion_power(10), _potion_power(15));
         if (cast)
         {
@@ -937,7 +937,7 @@ static cptr _do_potion(int sval, int mode)
         }
         break;
     case SV_POTION_ENLIGHTENMENT:
-        if (desc) return "It maps, lights permanently and detects all items on the entire level when you quaff it.";
+        if (desc) return (p_ptr->pclass == CLASS_ALCHEMIST) ? "It maps, lights permanently and detects all items on the entire level and provides temporary telepathy when you quaff it." : "It maps, lights permanently and detects all items on the entire level when you quaff it.";
         if (cast)
         {
             virtue_add(VIRTUE_KNOWLEDGE, 1);
@@ -947,8 +947,8 @@ static cptr _do_potion(int sval, int mode)
             device_noticed = TRUE;
         }
         break;
-    case SV_POTION_STAR_ENLIGHTENMENT:
-        if (desc) return "It maps, lights permanently and detects all items on the entire level, increases your intelligence and wisdom, detects all traps, doors, stairs, treasures in your vicinity, identifies all items in pack and gives information about yourself when you quaff it.";
+    case SV_POTION_STAR_ENLIGHTENMENT: /* warning - long line ahead */
+        if (desc) return (p_ptr->pclass == CLASS_ALCHEMIST) ? "It maps, lights permanently and detects all items on the entire level, increases your intelligence and wisdom, detects all traps, doors, stairs, treasures in your vicinity, identifies all items in pack, provides temporary telepathy and gives information about yourself when you quaff it." : "It maps, lights permanently and detects all items on the entire level, increases your intelligence and wisdom, detects all traps, doors, stairs, treasures in your vicinity, identifies all items in pack and gives information about yourself when you quaff it.";
         if (cast)
         {
             msg_print("You begin to feel more enlightened...");
