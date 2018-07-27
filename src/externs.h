@@ -1828,6 +1828,7 @@ extern bool set_sanctuary(bool set);
 /* xtra2.c */
 extern void check_experience(void);
 extern int exp_requirement(int level);
+extern int divide_exp_by(int kills);
 extern void gain_chosen_stat(void);
 extern cptr extract_note_dies(monster_race *r_ptr);
 extern void monster_death(int m_idx, bool drop_item);
