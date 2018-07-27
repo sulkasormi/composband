@@ -2346,6 +2346,12 @@ option_type option_info[] =
     { &alert_trap_detect,           FALSE, OPT_PAGE_DISTURBANCE, 0, 25,
     "alert_trap_detect",            "Alert when leaving trap detected area" },
 
+    { &alert_device_gone,           TRUE,  OPT_PAGE_DISTURBANCE, 0, 13,
+    "alert_device_gone",            "Alert when carried device is destroyed or stolen" },
+
+    { &alert_insc_gone,             TRUE,  OPT_PAGE_DISTURBANCE, 0, 2,
+    "alert_insc_gone",              "Alert when inscribed item is destroyed or stolen" },
+
     /*** Birth Options ***/
 
 	{ &coffee_break,		FALSE, OPT_PAGE_BIRTH, 6, 3,
