@@ -3812,11 +3812,12 @@ int set_cold_destroy(object_type *o_ptr)
  * Note that missiles are no longer necessarily all destroyed
  * Destruction taken from "melee.c" code for "stealing".
  * New-style wands and rods handled correctly. -LM-
- * Returns number of items destroyed.
+ * Returns TRUE if we must force a -more- prompt.
  */
-static void _damage_obj(obj_ptr obj, int p1, int p2, int which_res)
+static bool _damage_obj(obj_ptr obj, int p1, int p2, int which_res)
 {
     int i, amt = 0;
+    bool warn_player = FALSE;
 
     /* Test each and every object in the pile for destruction */
     for (i = 0; i < obj->number; i++)
@@ -3842,6 +3843,9 @@ static void _damage_obj(obj_ptr obj, int p1, int p2, int which_res)
         else
             msg_format("All of your %s were destroyed!", o_name);
 
+        if ((alert_device_gone) && (object_is_device(obj))) warn_player = TRUE;
+        if ((alert_insc_gone) && (obj_is_inscribed(obj))) warn_player = TRUE;
+
         if (object_is_potion(obj))
             potion_smash_effect(0, py, px, obj->k_idx);
 
@@ -3850,11 +3854,13 @@ static void _damage_obj(obj_ptr obj, int p1, int p2, int which_res)
         obj->number -= amt;
         obj_release(obj, OBJ_RELEASE_QUIET);
     }
+    return warn_player;
 }
 void inven_damage(inven_func typ, int p1, int which)
 {
     slot_t slot;
     int    p2 = 100;
+    bool   varoita = FALSE;
 
     if (CHECK_MULTISHADOW()) return;
     if (p_ptr->inside_arena) return;
@@ -3872,7 +3878,7 @@ void inven_damage(inven_func typ, int p1, int which)
         if (object_is_artifact(obj)) continue;
         if (!typ(obj)) continue;
 
-        _damage_obj(obj, p1, p2, which);
+        if (_damage_obj(obj, p1, p2, which)) varoita = TRUE;
     }
 
     /* Quiver */
@@ -3890,10 +3896,13 @@ void inven_damage(inven_func typ, int p1, int which)
                 if (object_is_artifact(obj)) continue;
                 if (!typ(obj)) continue;
 
-                _damage_obj(obj, p1, p2, which);
+                (void)_damage_obj(obj, p1, p2, which);
             }
         }
     }
+
+    /* Alert the player */
+    if (varoita) msg_print(NULL);
 }
 
 
