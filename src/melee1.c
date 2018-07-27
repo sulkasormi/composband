@@ -624,9 +624,9 @@ bool make_attack_normal(int m_idx)
 
                         object_desc(o_name, obj, OD_OMIT_PREFIX);
 
-                        msg_format("%sour %s was stolen!",
+                        msg_format("%sour %s %s stolen!",
                                ((obj->number > 1) ? "One of y" : "Y"),
-                               o_name);
+                               o_name, have_flag(obj->flags, OF_PLURAL) ? "were" : "was");
 
                         virtue_add(VIRTUE_SACRIFICE, 1);
 
@@ -645,9 +645,16 @@ bool make_attack_normal(int m_idx)
                             m_ptr->hold_o_idx = o_idx;
                         }
 
+                        if (((alert_device_gone) && (object_is_device(obj))) ||
+                           ((alert_insc_gone) && (obj_is_inscribed(obj))))
+                        {
+                            msg_print(NULL); /* -more- prompt */
+                        }
+
                         obj->number--;
                         obj_release(obj, OBJ_RELEASE_QUIET);
 
+        
                         obvious = TRUE;
                         blinked = TRUE;
                         break;
