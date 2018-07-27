@@ -1642,6 +1642,7 @@ extern bool get_string(cptr prompt, char *buf, int len);
 extern bool get_check(cptr prompt);
 extern bool get_check_strict(cptr prompt, int mode);
 extern bool get_com(cptr prompt, char *command, bool z_escape);
+extern s16b get_quantity_aux(cptr prompt, int max, int default_amt);
 extern s16b get_quantity(cptr prompt, int max);
 extern void pause_line(int row);
 extern void pause_line_aux(cptr prompt, int row, int col);
