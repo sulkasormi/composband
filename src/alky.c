@@ -23,6 +23,7 @@ static cptr _tiername[_CTIER_MAX] = {
 };
 
 static object_type _infusions[_MAX_INF_SLOTS];
+static bool _infusions_init = FALSE;
 
 static int _CHEM[] = {0,0,0};
 
@@ -132,6 +133,7 @@ static void _birth(void)
 	{
 		memset(&_infusions[i], 0, sizeof(object_type));
 	}
+	_infusions_init = TRUE;
 	for (i = 0; i < _CTIER_MAX; i++)
 	{
 		_CHEM[i] = 0;
@@ -245,12 +247,13 @@ object_type *_chooseInfusion(cptr verb, int tval, int options)
 {
 	object_type *result = NULL;
 	int          slot = 0;
-	int          cmd;
+	int          cmd, komento = 0;
 	rect_t       display = ui_menu_rect();
 	int          which_tval = tval;
 	string_ptr   prompt = NULL;
 	bool         done = FALSE;
 	bool         exchange = FALSE;
+	bool         toisto = FALSE;
 	int          slot1 = _INVALID_SLOT, slot2 = _INVALID_SLOT;
 
 	if (display.cx > 80)
@@ -259,6 +262,12 @@ object_type *_chooseInfusion(cptr verb, int tval, int options)
 	which_tval = TV_POTION;
 	prompt = string_alloc();
 	screen_save();
+
+	if ((REPEAT_PULL(&komento)) && ('a' <= komento && komento < 'a' + _MAX_INF_SLOTS))
+	{ /* use pulled cmd */
+		cmd = komento;
+		toisto = TRUE;
+	}
 
 	while (!done)
 	{
@@ -287,7 +296,11 @@ object_type *_chooseInfusion(cptr verb, int tval, int options)
 		prt(string_buffer(prompt), 0, 0);
 		_displayInfusions(display);
 
-		cmd = inkey_special(FALSE);
+		if ((komento) && (cmd == komento)) /* use pulled command once */
+		{
+			komento = 0;
+		}
+		else cmd = inkey_special(FALSE);
 
 		if (cmd == ESCAPE || cmd == 'q' || cmd == 'Q')
 			done = TRUE;
@@ -338,6 +351,20 @@ object_type *_chooseInfusion(cptr verb, int tval, int options)
 
 	screen_load();
 	string_free(prompt);
+
+	if (result)
+	{
+		REPEAT_PUSH(I2A(slot));
+		if ((toisto) && (result->number > 0) && ((streq("Use", verb)) || (streq("Reproduce", verb))))
+		{ /* Inform player */
+			char o_name[MAX_NLEN];
+			result->number--;
+			object_desc(o_name, result, OD_COLOR_CODED);
+			msg_format("You have %s.", o_name);
+			result->number++;
+		}
+	}
+
 	return result;
 }
 
@@ -359,7 +386,7 @@ void _use_infusion(object_type* o_ptr, int overdose)
 		return;
 	}
 
-	if (o_ptr->sval == SV_POTION_DEATH
+	if (o_ptr->sval == SV_POTION_DEATH || o_ptr->sval == SV_POTION_BOOZE
 		|| o_ptr->sval == SV_POTION_RUINATION
 		|| o_ptr->sval == SV_POTION_DETONATIONS){
 
@@ -462,7 +489,10 @@ static bool create_infusion(void)
 			return FALSE;
 	}
 
-	if (prompt.obj->number > 1) infct = get_quantity(NULL, MIN(prompt.obj->number,_INFUSION_CAP));
+	if (prompt.obj->number > 1)
+	{
+		infct = get_quantity_aux(NULL, MIN(prompt.obj->number, _INFUSION_CAP), MIN(prompt.obj->number, _INFUSION_CAP));
+	}
 
 	if (infct <= 0) { msg_format("You do nothing.");  return FALSE; }
 	
@@ -646,10 +676,13 @@ static bool evaporate(void){
 	object_type *o_ptr;
 	bool EvapInf = TRUE;
 	bool success = FALSE;
+	int komento = 0;
 
 	char kehote[80];
 	sprintf(kehote, "Evaporate [Q] Potion or [m] Infusion?\n");
-	if (msg_prompt(kehote, "qm", PROMPT_DEFAULT) == 'q')
+
+	if ((REPEAT_PULL(&komento)) && ((komento == 'm') || (komento == 'M'))) {}
+	else if (msg_prompt(kehote, "qm", PROMPT_DEFAULT) == 'q')
 		EvapInf = FALSE;
 
 	if (EvapInf == FALSE){
@@ -673,6 +706,7 @@ static bool evaporate(void){
 		else return FALSE;
 	} 
 	else {
+		REPEAT_PUSH('m');
 		o_ptr = _chooseInfusion("Evaporate", TV_POTION, 0);
 		if (!o_ptr){ return FALSE; }
 
@@ -747,7 +781,7 @@ static bool break_down_potion(void){
 
 	if (!prompt.obj) return FALSE;
 
-	ct = (prompt.obj->number == 1 ? 1 : get_quantity(NULL, prompt.obj->number));
+	ct = (prompt.obj->number == 1 ? 1 : get_quantity_aux(NULL, prompt.obj->number, prompt.obj->number));
 	if (ct <= 0) return FALSE;
 
 	if (prompt.obj->sval == SV_POTION_WATER) {
@@ -955,6 +989,7 @@ static void _load_list(savefile_ptr file)
 		object_type *o_ptr = _infusions + i;
 		memset(o_ptr, 0, sizeof(object_type));
 	}
+	_infusions_init = TRUE;
 
 	while (1)
 	{
@@ -1027,6 +1062,21 @@ static void _character_dump(doc_ptr doc)
 	_dump_list(doc);
 
 	doc_newline(doc);
+}
+
+/* Weight of the infusions */
+int _calc_extra_weight(obj_p p)
+{
+    int i, laskuri = 0;
+    if (!_infusions_init) return 0;
+    for (i = 0; i < _MAX_INF_SLOTS; i++)
+    {
+        object_type *o_ptr = _which_obj(TV_POTION, i);
+        if ((!o_ptr) || (!o_ptr->k_idx) || (!o_ptr->number)) continue;
+        laskuri += o_ptr->number;
+    }
+
+    return (laskuri / 2);
 }
 
 static caster_info * _caster_info(void)
@@ -1133,6 +1183,7 @@ class_t *alchemist_get_class(void)
 		me.load_player = _load_player;
 		me.save_player = _save_player;
 		me.destroy_object = _on_destroy_object;
+		me.calc_extra_weight = _calc_extra_weight;
 
 		init = TRUE;
 	}
