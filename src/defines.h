@@ -18,8 +18,8 @@
 
 #define VER_MAJOR 7
 #define VER_MINOR 0
-#define VER_PATCH "mango"
-#define VER_EXTRA 7
+#define VER_PATCH "nougat"
+#define VER_EXTRA 0
 #define VERSION_IS_DEVELOPMENT (TRUE)
 
 #define GAME_MODE_BEGINNER  0
