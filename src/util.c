@@ -3082,7 +3082,7 @@ bool get_com(cptr prompt, char *command, bool z_escape)
  *
  * Hack -- allow "command_arg" to specify a quantity
  */
-s16b get_quantity(cptr prompt, int max)
+s16b get_quantity_aux(cptr prompt, int max, int default_amt)
 {
     bool res;
     int amt;
@@ -3141,7 +3141,7 @@ s16b get_quantity(cptr prompt, int max)
     prt(prompt, 0, 0);
 
     /* Default to one */
-    amt = 1;
+    amt = MAX(1, MIN(default_amt, max));
 
     /* Build the default */
     sprintf(buf, "%d", amt);
@@ -3178,6 +3178,14 @@ s16b get_quantity(cptr prompt, int max)
 
     /* Return the result */
     return (amt);
+}
+
+/*
+ * Request a "quantity" from the user
+ */
+s16b get_quantity(cptr prompt, int max)
+{
+    return get_quantity_aux(prompt, max, 1);
 }
 
 
