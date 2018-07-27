@@ -531,6 +531,8 @@ byte get_monster_drop_ct(monster_type *m_ptr)
         int cap = 600;
         if (r_ptr->flags1 & RF1_ONLY_GOLD)
             cap = 200; /* About 110k gp at DL21 */
+        if (no_selling) cap /= 2; /* Gold drops are bigger with no_selling */
+        if (coffee_break) cap /= 2; /* More drops in coffee_break mode */
         if (r_ptr->r_akills > cap)
             number = 0;
     }
@@ -549,6 +551,9 @@ byte get_monster_drop_ct(monster_type *m_ptr)
                 max_kills = 100;
             else if (pr_ptr->d_char == 'Q')
                 max_kills = 100;
+
+            if ((no_selling) && (r_ptr->flags1 & RF1_ONLY_GOLD)) max_kills /= 2;
+            if (coffee_break) max_kills /=2;
 
             if (pr_ptr->r_skills > max_kills)
                 number = 0;
