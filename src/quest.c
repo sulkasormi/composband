@@ -1095,6 +1095,22 @@ void quests_on_kill_mon(mon_ptr mon)
     mon->mflag2 |= MFLAG2_COUNTED_KILLED;
 }
 
+/* Check if race is target race
+ * (A lot of code that might call this doesn't currently call this. We are
+ * presently only called to prevent quest target monsters from being revived */
+bool mon_is_quest_target(int r_idx)
+{
+    quest_ptr q;
+    if (!_current) return FALSE;
+    q = quests_get(_current);
+    assert(q);
+    if (q->status != QS_IN_PROGRESS) return FALSE;
+    if (q->goal != QG_KILL_MON) return FALSE;
+    if ((q->goal_idx == r_idx) && (r_idx > 0)) return TRUE;
+    return FALSE;
+}
+
+
 /* Check whether we need to prevent a quest monster from polymorphing or evolving */
 bool quest_allow_poly(mon_ptr mon)
 {
