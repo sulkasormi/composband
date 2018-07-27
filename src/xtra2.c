@@ -2153,6 +2153,16 @@ int mon_damage_mod_mon(monster_type *m_ptr, int dam, bool is_psy_spear)
     return (dam);
 }
 
+int divide_exp_by(int kills)
+{
+    return MAX(2, MIN(1000, (kills - 37) / 21));
+}
+
+static void _adjust_kill_exp(s32b *new_exp, u32b *new_exp_frac, int kills)
+{
+    s64b_mul(new_exp, new_exp_frac, 0, 2);
+    s64b_div(new_exp, new_exp_frac, 0, divide_exp_by(kills));
+}
 
 /*
  * Calculate experience point to be get
@@ -2198,10 +2208,14 @@ static void get_exp_from_mon(int dam, monster_type *m_ptr)
     else
         s64b_mul(&div_h, &div_l, 0, r_ptr->hdice * (ironman_nightmare ? 2 : 1) * r_ptr->hside * 2);
 
-    /* Do division first to prevent overflaw */
+    /* Do division first to prevent overflow */
     s64b_div(&new_exp, &new_exp_frac, div_h, div_l);
 
-    /* Special penalty for mutiply-monster    */
+    /* Limit exp gain after the 99th kill */
+    if (r_ptr->r_akills > 99)
+    {
+        _adjust_kill_exp(&new_exp, &new_exp_frac, r_ptr->r_akills);
+    }
     if ((r_ptr->flags2 & RF2_MULTIPLY) || (m_ptr->r_idx == MON_DAWN))
     {
         int biff = r_ptr->r_akills / 400;
