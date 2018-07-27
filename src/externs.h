@@ -310,6 +310,8 @@ extern bool town_no_disturb;    /* Never disturb when a town monster moves */
 extern bool ring_bell;    /* Audible bell (on errors, etc) */
 extern bool disturb_trap_detect;    /* Disturb when leaving trap detected area */
 extern bool alert_trap_detect;    /* Alert when leaving trap detected area */
+extern bool alert_device_gone;  /* Alert when device is destroyed or stolen */
+extern bool alert_insc_gone;    /* Alert when inscribed item is destroyed or stolen */
 
 
 /*** Birth Options ***/
