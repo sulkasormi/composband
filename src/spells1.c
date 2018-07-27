@@ -1692,7 +1692,8 @@ static bool project_o(int who, int r, int y, int x, int dam, int typ)
                 for (i = 0; i < o_ptr->number ; i++)
                 {
                     if (((o_ptr->sval == SV_CORPSE) && (randint1(100) > 80)) ||
-                        ((o_ptr->sval == SV_SKELETON) && (randint1(100) > 60)))
+                        ((o_ptr->sval == SV_SKELETON) && (randint1(100) > 60)) ||
+                        (mon_is_quest_target(o_ptr->pval)))
                     {
                         if (!note_kill)
                             note_kill = (plural ? " become dust." : " becomes dust.");
