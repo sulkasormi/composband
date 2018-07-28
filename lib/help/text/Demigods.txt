@@ -298,89 +298,100 @@ or changed, so you might want to study this list to decide which powers
 you will choose for your character.
 
   Ambidexterity
-  You will be able to dual wield more effectively.
+  Gives a bonus equivalent to 15 percentage points of dual-wielding 
+  skill.
 
   Arcane Mastery
-  Your spells will fail less often.
+  Reduces spell failure chances by 3 percentage points (maximum and 
+  minimum failure chances are still respected).
 
   Astral Guide
-  Teleportation costs less energy.
+  Reduces time needed for player-induced teleports by 67% to 70%.
 
   Black Marketeer
-  You will gain favorable pricing in the black market.
+  Gives you favorable pricing in the black market (all items 
+  half-price).
 
   Cult of Personality
-  Summoned monsters may sometimes switch alliances.
+  Summoned hostile monsters have an up to 50% chance to become friendly 
+  or even pets, depending on their level and the player's charisma.
 
   Demonic Grasp
-  You resist charge draining.
+  Gives immunity to charge draining.
 
   Evasion
-  You will dodge enemy breath attacks and have better odds for avoiding 
-  earthquakes.
+  Reduces damage from all enemy breath attacks, rockets and rocks by 
+  between 11% and 20%, and gives a 50% chance to avoid earthquakes.
 
   Fantastic Frenzy
-  You kill weak monsters more efficiently.
+  Saves the energy left over when a monster is killed in less than one 
+  turn, and also gives the power of Whirlwind Attack, which allows you 
+  to attack all adjacent monsters at a cost of 50 SP or HP.
 
   Fast Learner
-  You will gain a bonus to experience for each monster slain.
+  You gain 20% more experience for each monster slain.
 
   Fell Sorcery
-  Your spells will grow more powerful.
+  Your spells will grow more powerful (+15% spellpower), at the cost of 
+  a slight penalty to your strength, dexterity and constitution.
 
   Fleet of Foot
-  Movement costs less energy.
+  Walking costs 40% less energy.
 
   Infernal Deal
-  You will regain hp and sp whenever a nearby enemy monster is slain.
+  You will regain 10 HP and 5 SP whenever a nearby enemy monster is 
+  slain.
 
   Inspired Smithing
-  You will receive better results from item reforging.
+  You will receive better results from item reforging (10% average 
+  value improvement).
 
   Loremaster
-  Items will automatically identify as you pick them up.
+  Automatically identifies items as you pick them up.
 
   One with Magic
-  You will have a chance of resisting Dispel Magic.
+  Gives a 77% chance to resist Antimagic and Dispel Magic (lower while 
+  polymorphed or in wraithform).
 
   Peerless Sniper
   Damaging a monster with a missile weapon no longer provokes a 
   retaliation.
 
   Peerless Tracker
-  You will gain the ability to map your surroundings.
+  Gives the ability to map your surroundings and detect nearby 
+  monsters.
 
   Potion Chugger
-  You will be able to chug potions much faster than normal.
+  Allows you to drink potions twice as fast.
 
   Sacred Vitality
-  You will gain a bonus to all healing effects.
+  Gives a 20% bonus to all healing effects.
 
   Speed Reader
-  You will be able to read scrolls much faster than normal.
+  Allows you to read scrolls twice as fast.
 
   Subtle Casting
   Damaging a monster with distance magic no longer provokes a 
   retaliation.
 
   Tread Softly
-  Your stealth will increase.
+  Increases your stealth by 3.
 
   Untouchable
-  You will gain a bonus to armor class.
+  Gives +20 to armor class.
 
   Unyielding
-  You will gain a bonus to hitpoints.
+  Gives a bonus to hit points (+1 HP per character level).
 
   Weapon Versatility
-  You will be able to master any weapon.
+  Allows you to reach full proficiency with any weapon.
 
   Weird Mind
-  You resist the Eldritch Horror.
+  Protects your mind from hallucination and Eldritch Horrors.
 
 
 
 
 
-Automatically generated for FrogComposband 7.0.mango.
+Automatically generated for FrogComposband 7.0.nougat.
 
