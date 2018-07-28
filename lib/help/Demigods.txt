@@ -243,85 +243,85 @@ Aphrodite    <color:r>Bad          </color> <color:G>Excellent    </color> <colo
 All demigods have access to special powers. When they reach level 20, they may choose a single power from the following list. When they reach level, 40, they may choose another. These powers can never be removed or changed, so you might want to study this list to decide which powers you will choose for your character.
 
   <indent><color:G>Ambidexterity</color>
-You will be able to dual wield more effectively.</indent>
+Gives a bonus equivalent to 15 percentage points of dual-wielding skill.</indent>
 
   <indent><color:G>Arcane Mastery</color>
-Your spells will fail less often.</indent>
+Reduces spell failure chances by 3 percentage points (maximum and minimum failure chances are still respected).</indent>
 
   <indent><color:G>Astral Guide</color>
-Teleportation costs less energy.</indent>
+Reduces time needed for player-induced teleports by 67% to 70%.</indent>
 
   <indent><color:G>Black Marketeer</color>
-You will gain favorable pricing in the black market.</indent>
+Gives you favorable pricing in the black market (all items half-price).</indent>
 
   <indent><color:G>Cult of Personality</color>
-Summoned monsters may sometimes switch alliances.</indent>
+Summoned hostile monsters have an up to 50% chance to become friendly or even pets, depending on their level and the player's charisma.</indent>
 
   <indent><color:G>Demonic Grasp</color>
-You resist charge draining.</indent>
+Gives immunity to charge draining.</indent>
 
   <indent><color:G>Evasion</color>
-You will dodge enemy breath attacks and have better odds for avoiding earthquakes.</indent>
+Reduces damage from all enemy breath attacks, rockets and rocks by between 11% and 20%, and gives a 50% chance to avoid earthquakes.</indent>
 
   <indent><color:G>Fantastic Frenzy</color>
-You kill weak monsters more efficiently.</indent>
+Saves the energy left over when a monster is killed in less than one turn, and also gives the power of Whirlwind Attack, which allows you to attack all adjacent monsters at a cost of 50 SP or HP.</indent>
 
   <indent><color:G>Fast Learner</color>
-You will gain a bonus to experience for each monster slain.</indent>
+You gain 20% more experience for each monster slain.</indent>
 
   <indent><color:G>Fell Sorcery</color>
-Your spells will grow more powerful.</indent>
+Your spells will grow more powerful (+15% spellpower), at the cost of a slight penalty to your strength, dexterity and constitution.</indent>
 
   <indent><color:G>Fleet of Foot</color>
-Movement costs less energy.</indent>
+Walking costs 40% less energy.</indent>
 
   <indent><color:G>Infernal Deal</color>
-You will regain hp and sp whenever a nearby enemy monster is slain.</indent>
+You will regain 10 HP and 5 SP whenever a nearby enemy monster is slain.</indent>
 
   <indent><color:G>Inspired Smithing</color>
-You will receive better results from item reforging.</indent>
+You will receive better results from item reforging (10% average value improvement).</indent>
 
   <indent><color:G>Loremaster</color>
-Items will automatically identify as you pick them up.</indent>
+Automatically identifies items as you pick them up.</indent>
 
   <indent><color:G>One with Magic</color>
-You will have a chance of resisting Dispel Magic.</indent>
+Gives a 77% chance to resist Antimagic and Dispel Magic (lower while polymorphed or in wraithform).</indent>
 
   <indent><color:G>Peerless Sniper</color>
 Damaging a monster with a missile weapon no longer provokes a retaliation.</indent>
 
   <indent><color:G>Peerless Tracker</color>
-You will gain the ability to map your surroundings.</indent>
+Gives the ability to map your surroundings and detect nearby monsters.</indent>
 
   <indent><color:G>Potion Chugger</color>
-You will be able to chug potions much faster than normal.</indent>
+Allows you to drink potions twice as fast.</indent>
 
   <indent><color:G>Sacred Vitality</color>
-You will gain a bonus to all healing effects.</indent>
+Gives a 20% bonus to all healing effects.</indent>
 
   <indent><color:G>Speed Reader</color>
-You will be able to read scrolls much faster than normal.</indent>
+Allows you to read scrolls twice as fast.</indent>
 
   <indent><color:G>Subtle Casting</color>
 Damaging a monster with distance magic no longer provokes a retaliation.</indent>
 
   <indent><color:G>Tread Softly</color>
-Your stealth will increase.</indent>
+Increases your stealth by 3.</indent>
 
   <indent><color:G>Untouchable</color>
-You will gain a bonus to armor class.</indent>
+Gives +20 to armor class.</indent>
 
   <indent><color:G>Unyielding</color>
-You will gain a bonus to hitpoints.</indent>
+Gives a bonus to hit points (+1 HP per character level).</indent>
 
   <indent><color:G>Weapon Versatility</color>
-You will be able to master any weapon.</indent>
+Allows you to reach full proficiency with any weapon.</indent>
 
   <indent><color:G>Weird Mind</color>
-You resist the Eldritch Horror.</indent>
+Protects your mind from hallucination and Eldritch Horrors.</indent>
 
 
 
 
 
-<color:s>Automatically generated for FrogComposband 7.0.mango.</color>
+<color:s>Automatically generated for FrogComposband 7.0.nougat.</color>
