@@ -4778,6 +4778,7 @@ static void process_player(void)
                 p_ptr->energy_need = ENERGY_NEED();
                 handle_stuff();
             }
+            predictable_energy_hack = FALSE;
         }
         else
             player_turn--;
