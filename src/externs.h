@@ -193,6 +193,8 @@ extern char summon_kin_type;
 extern bool hack_mind;
 extern byte summon_pantheon_hack;
 extern bool quest_reward_drop_hack;
+extern bool very_nice_summon_hack;
+extern bool predictable_energy_hack;
 
 /*
  * Software options (set via the '=' command).  See "tables.c"
