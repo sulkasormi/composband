@@ -288,7 +288,7 @@
 /*
  * Random energy
  */
-#define ENERGY_NEED() (randnor(100, 18))
+#define ENERGY_NEED() ((predictable_energy_hack) ? 100 : (randnor(100, 18)))
 
 
 /*
