@@ -2630,11 +2630,14 @@ bool mon_take_hit(int m_idx, int dam, bool *fear, cptr note)
 
             curse_equipment(100, 50);
 
+            very_nice_summon_hack = TRUE;
+
             do
             {
                 stop_ty = activate_ty_curse(stop_ty, &count);
             }
             while (--curses);
+            very_nice_summon_hack = FALSE;
         }
 
         if (r_ptr->flags2 & RF2_CAN_SPEAK)
