@@ -887,7 +887,7 @@ static void _display_kills(monster_race *r_ptr, doc_ptr doc)
         int xp = r_ptr->mexp * r_ptr->level / (plev + 2);
         char buf[10];
 
-        if (r_ptr->r_akills > 99)
+        if (r_ptr->r_akills > (coffee_break ? 49 : 99))
         {
             xp *= 2;
             xp /= divide_exp_by(r_ptr->r_akills);
