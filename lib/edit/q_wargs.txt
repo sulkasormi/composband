@@ -32,6 +32,9 @@ R:OBJ(short bow)
 ?:[EQU $CLASS Mage High-Mage Blue-Mage Sorcerer Mirror-Master Blood-Mage Yellow-Mage Gray-Mage]
 R:OBJ(WAND_BOLT_ELEC)
 
+?:[EQU $CLASS Necromancer]
+R:OBJ(sepulchral ways, NUMBER=1)
+
 ?:[EQU $RACE Dragon Hound Spider]
 R:OBJ(^ring$):EGO(combat)
 
