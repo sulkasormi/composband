@@ -59,6 +59,7 @@ void obj_make_pile(obj_ptr obj)
     if (object_is_ego(obj) && !object_is_ammo(obj)) return;
     if (!k_ptr->stack_chance) return;
     if (randint1(100) > k_ptr->stack_chance) return;
+    if ((quest_id_current() == 60) && (k_ptr->gen_flags & OFG_NO_SHUFFLE)) return; /* mega-hack - Clear the Tunnels */
 
     assert(k_ptr->stack_dice);
     assert(k_ptr->stack_sides);
