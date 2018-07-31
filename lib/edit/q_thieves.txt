@@ -70,6 +70,9 @@ R:OBJ(^whip$)
 ?:[EQU $CLASS Beastmaster Cavalry]
 R:OBJ(broad spear)
 
+?:[EQU $CLASS Necromancer]
+R:OBJ(fur cloak)
+
 ?:[EQU $CLASS Monk Force-Trainer Mystic]
 R:OBJ(gauntlets)
 
