@@ -1643,6 +1643,7 @@ void quests_wizard(void)
         case 'c': _status_cmd(&context, QS_COMPLETED); break;
         case 'f': _status_cmd(&context, QS_FAILED); break;
         case 'u': _status_cmd(&context, QS_UNTAKEN); break;
+        case 't': _status_cmd(&context, QS_TAKEN); break;
         case '$': _reward_cmd(&context); break;
         case '?': _analyze_cmd(&context); break;
         case 'R':
@@ -1802,6 +1803,7 @@ static void _display_menu(_ui_context_ptr context)
         "<color:keypress>$</color> to see reward. "
         "<color:keypress>c</color> to set complete. "
         "<color:keypress>f</color> to set failed. "
+        "<color:keypress>t</color> to set taken. "
         "<color:keypress>u</color> to set untaken.\n"
         "<color:keypress>?</color> to analyze quest file.\n");
 
@@ -1958,6 +1960,7 @@ static void _status_cmd(_ui_context_ptr context, int status)
             quest->status = status;
             if (quest->status >= QS_COMPLETED)
                 quest->completed_lev = p_ptr->lev;
+            if ((quest->status == QS_TAKEN) && (quest->flags & QF_RANDOM)) quest->status = QS_UNTAKEN;
             break;
         }
     }
