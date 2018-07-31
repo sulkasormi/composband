@@ -240,7 +240,8 @@ N:55:50:The Underground City (Morivant)
 T:TOWN | GENERATE
 F:q_underground.txt
 
-N:60:25:Clear the Tunnels (Anambar)
+# hardcoded as quest 60 in obj.c
+N:60:27:Clear the Tunnels (Anambar)
 T:TOWN | GENERATE
 F:q_tunnels.txt
 
