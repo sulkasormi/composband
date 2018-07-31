@@ -14,7 +14,7 @@ D:Please keep the sword, it will aid you in your future quests.
 
 ?:[EQU $QUEST4 Failed]
 D:You didn't find the sword? Well, the monsters have probably
-D:carried it away. Too bad, Sting would have been quiet helpful
+D:carried it away. Too bad, Sting would have been quite helpful
 D:in driving the evil out of our town.
 ?:1
 
