@@ -2160,6 +2160,7 @@ int mon_damage_mod_mon(monster_type *m_ptr, int dam, bool is_psy_spear)
 
 int divide_exp_by(int kills)
 {
+    if (coffee_break) kills *= 2;
     return MAX(2, MIN(1000, (kills - 37) / 21));
 }
 
@@ -2217,7 +2218,7 @@ static void get_exp_from_mon(int dam, monster_type *m_ptr)
     s64b_div(&new_exp, &new_exp_frac, div_h, div_l);
 
     /* Limit exp gain after the 99th kill */
-    if (r_ptr->r_akills > 99)
+    if (r_ptr->r_akills > (coffee_break ? 49 : 99))
     {
         _adjust_kill_exp(&new_exp, &new_exp_frac, r_ptr->r_akills);
     }
