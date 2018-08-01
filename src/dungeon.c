@@ -3545,6 +3545,8 @@ static void _dispatch_command(int old_now_turn)
                 rage_mage_browse_spell();
             else if (p_ptr->pclass == CLASS_SKILLMASTER)
                 skillmaster_browse();
+            else if (p_ptr->pclass == CLASS_ALCHEMIST)
+                alchemist_browse();
             else if (p_ptr->pclass == CLASS_GRAY_MAGE)
                 gray_mage_browse_spell();
             else if (p_ptr->pclass == CLASS_ARCHAEOLOGIST ||
@@ -3565,7 +3567,6 @@ static void _dispatch_command(int old_now_turn)
                      p_ptr->pclass == CLASS_MAULER ||
                      p_ptr->pclass == CLASS_MYSTIC ||
                      p_ptr->pclass == CLASS_SNIPER ||
-                     p_ptr->pclass == CLASS_ALCHEMIST ||
                      p_ptr->pclass == CLASS_TIME_LORD )
             {
                 /* This is the preferred entry point ... I'm still working on
