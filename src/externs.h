@@ -1989,6 +1989,7 @@ extern bool create_replacement_art(int a_idx, object_type *o_ptr, byte origin);
 extern bool reforge_artifact(object_type *src, object_type *dest, int fame);
 extern void get_random_name(char *return_name, object_type *o_ptr, int power);
 extern int get_slot_weight(obj_ptr obj);
+extern int get_dest_weight(obj_ptr dest);
 extern int get_slot_power(obj_ptr obj);
 
 /* scores.c */
