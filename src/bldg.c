@@ -2687,6 +2687,12 @@ static int _calculate_reforge_cost(int value, int slot_weight)
     return cost;
 }
 
+static bool _reforge_artifact_exit(void)
+{
+    if (paivita) (void)inkey();
+    return FALSE;
+}
+
 static bool _reforge_artifact(void)
 {
     int  cost, extra_cost = 0, value;
@@ -2769,56 +2775,56 @@ static bool _reforge_artifact(void)
     if (dest->number > 1)
     {
         msg_print("Don't be greedy! You may only reforge a single object.");
-        return FALSE;
+        return _reforge_artifact_exit();
     }
 
     if (object_is_artifact(dest))
     {
         msg_print("This item is already an artifact!");
-        return FALSE;
+        return _reforge_artifact_exit();
     }
 
     if (dest->tval == TV_QUIVER)
     {
         msg_print("I am unable to reforge quivers.");
-        return FALSE;
+        return _reforge_artifact_exit();
     }
 
     if (object_is_ammo(dest))
     {
         msg_print("I'm a weaponsmith not a fletcher. Perhaps you should check elsewhere?");
-        return FALSE;
+        return _reforge_artifact_exit();
     }
 
     if (have_flag(dest->flags, OF_NO_REMOVE))
     {
         msg_print("You cannot be reforged!");
-        return FALSE;
+        return _reforge_artifact_exit();
     }
 
     if (object_is_ego(dest))
     {
         msg_print("This item is already an ego item!");
-        return FALSE;
+        return _reforge_artifact_exit();
     }
 
     if (!equip_first_slot(dest))
     {
         msg_print("This item cannot be reforged.");
-        return FALSE;
+        return _reforge_artifact_exit();
     }
 
     if (obj_value_real(dest) > dest_max_power)
     {
         msg_print("This item is too powerful for the source artifact you have chosen.");
-        return FALSE;
+        return _reforge_artifact_exit();
     }
 
     /* Items like Vilya count for the full 90K when reforged into e.g.
      * the armour slot, so the reforge should also cost accordingly */
     if (dest_max_power < value / 2)
     {
-        int dest_weight = get_slot_weight(dest);
+        int dest_weight = get_dest_weight(dest);
         if (dest_weight > src_weight)
         {
             extra_cost = _calculate_reforge_cost(value, dest_weight) - cost;
@@ -2827,7 +2833,7 @@ static bool _reforge_artifact(void)
                 if (p_ptr->au < cost + extra_cost)
                 {
                     msg_format("This reforge will cost an additional %d gold. You do not have that much.", extra_cost);
-                    return FALSE;
+                    return _reforge_artifact_exit();
                 }
                 if (!get_check(format("This reforge will cost an additional %d gold. Proceed?", extra_cost))) return FALSE;
             }
@@ -2857,8 +2863,8 @@ static bool _reforge_artifact(void)
             doc_printf(doc, "%d) <indent><style:indent>%s (%d%%)</style></indent>\n",
                 i + 1, buf, score * 100 / base);
         }
-        doc_printf(doc, "\n\n<color:B>Average Reforge: <color:R>%d%%</color></color>\n",
-            total * 100 / (base * ct));
+        doc_printf(doc, "\n\n<color:B>Average Reforge: <color:R>%d%%</color> (Score: <color:R>%d</color>)</color>\n",
+            total / base, total / ct);
         doc_display(doc, "Reforging", 0);
         doc_free(doc);
         return FALSE;
@@ -2866,7 +2872,7 @@ static bool _reforge_artifact(void)
     if (!reforge_artifact(src, dest, p_ptr->fame))
     {
         msg_print("The reforging failed!");
-        return FALSE;
+        return _reforge_artifact_exit();
     }
 
     src->number = 0;
