@@ -3,13 +3,14 @@ Changes in FrogComposband 7.0.nougat:
 * Added two new races (Einheri and Werewolf). Einherjar are very 
 powerful but only receive partial benefits from magical healing. 
 Werewolves can (big surprise) assume either human or wolf shape, with 
-both shapes having their strengths and weaknesses
+both shapes having their strengths and weaknesses (thanks to murphy and 
+CyclopsSlayer for their pre-release werewolf feedback)
 
 * Slowing is no longer a purely binary status (either no slowing or -10 
 to speed); while the binary slowing still exists, some forms of slowing 
 are now incremental and can take any value between no slowing and -10. 
 The two forms of slowing partially add together, so a player (or 
-monster) afflicted with both forms can be slowed by up to -12 in total 
+monster) afflicted with both forms can be slowed by up to -12 in total
 (thanks to Derakon for this idea)
 
 * Shuffled some of the buildings in Anambar to reduce travel distances 
@@ -30,8 +31,11 @@ the game
 reforge results) and several new mutations (adapted from Frogspawn)
 
 * Coffee-break mode's modified level size algorithm is now always used 
-in the Angband dungeon, except in the case of ironman non-coffee-break 
-games. Generally, this means smaller levels in the early game
+in the Angband dungeon (except in the case of games with 
+ironman_downward on and coffee_break off). Generally, this means 
+smaller levels in the early game
+
+* Beginner mode now uses the coffee_break option
 
 * Friendly monsters no longer trigger the Eldritch Horror sanity-blast
 
@@ -55,16 +59,19 @@ sheet (at the bottom of the Statistics section)
 * Tweaked item valuation again (items with high-pval weaponmastery are 
 now worth more)
 
-* Tweaked the Mauler class. Their Close In spell can now be cancelled 
-during targetting without HP or energy loss (thanks to Mocht for that 
-suggestion), but their archery skills and life rating were reduced a 
-bit
-
 * Coffee-break mode's max reforge power bonus (accelerated reforging) 
 is now permanently reduced if the character fails any of the random 
 Angband quests
 
-* Buffed the Fell Sorcery demigod power
+* Buffed the Fell Sorcery and One with Magic demigod powers. The effect 
+of Fell Sorcery on spell power was doubled. One with Magic now 
+successfully resists dispelling and anti-magic 77% of the time instead 
+of the old 50%, unless the player is mimicking or in wraithform (the 
+mimicking restriction does not apply to doppelgangers)
+
+* Added a new scroll (Scroll of Inventory Protection). Unlike other 
+sources of temporary inventory protection (which only reduce the 
+chances of item damage), the scrolls provide complete protection
 
 * Improved item parsing. It is now possible to specify an ego device, 
 as well as to specify a pile size, and specified devices are no longer 
@@ -72,7 +79,9 @@ necessarily generated at the lowest level supported by the effect. Some
 of the quest device rewards are now ego
 
 * Fixed a bug that caused the Identify spell to not work properly for 
-Ring player-monsters (thanks to TauzentBlitz for reporting this)
+Ring player-monsters (thanks to TauzentBlitz for reporting this). Also 
+changed the default point allocation for Rings per TauzentBlitz's 
+suggestion
 
 * The show_discovery and always_dump_origins options are now on by 
 default due to their popularity
@@ -95,34 +104,195 @@ Bucephalus for bringing this up)
 Weaponsmiths if they absorbed the item without picking it up first; 
 this has been fixed (thanks to Prandar for reporting this)
 
+* Some *vorpal* weapons had misleading inscriptions due to lacking the 
+VORPAL flag; this has been fixed (thanks to Nivim for reporting this)
+
+* Monsters with long (2-square) melee were not able to use it 
+diagonally; this has been fixed
+
+* Shield weaponmasters were not allowed to use mithril shields; this 
+has been fixed (thanks to Bucephalus for reporting this)
+
+* One of the Trump Shuffle effects ("picture of a strange monster") 
+didn't work properly due to an old bug (thanks to bostock for reporting 
+this)
+
+* Coffee-break mode inappropriately created normal down stairs instead 
+of a shaft to connect random dungeon quests on consecutive levels; this 
+has been fixed
+
+* Improved valuation of unidentified items, and fixed a longstanding 
+bug that allowed unidentified good, awful and average items to receive 
+a value bonus intended only for artifacts
+
+* Failed attempts to close a door while confused now take some time 
+(although less than a full turn)
+
+* Improved support for Adam Bolt's tiles by copying things from 
+ZAngband
+
 * Disease attacks can now cause temporary unwellness
 
 * Explosions can now have multiple effects (e.g. Internet Exploders now 
 slow the player a bit in addition to the time damage)
 
-* Psionic Blending now gives +3 stealth per power level instead of +5
+* The location of permanent features (like stairs or permanent walls) 
+is no longer forgotten by the player after earthquakes or destruction
+
+* Tweaked the Mauler class. Their Close In spell can now be cancelled 
+during targetting without HP or energy loss (thanks to Mocht for that 
+suggestion), but their melee power, archery skills and life rating were 
+reduced a bit. (Don't worry - they still do silly damage with the right 
+weapons...)
+
+* Made psions a little less overpowered
 
 * Slightly lowered weaponsmiths' life rating
 
+* Tweaked repeated targetting a bit. A new target is now always 
+requested if the old target was the player's mount, and also if the 
+player targetted himself and has moved since. Not cancelling the old 
+targets in these cases sometimes caused unexpected behavior, especially 
+with the use_old_target option on (thanks to FlauterFiddle for bringing 
+this up)
+
+* The Enchant Weapon and Enchant Armor object selection menus no longer 
+allow futile attempts to enchant items with the NO_ENCHANT flag (thanks 
+to murphy for suggesting this)
+
 * Vortex player-monsters now have a race boss (Wiruin)
+
+* Slightly reduced the power of melee slays and brands
+(Gwarl's weapon die buff in ComPosband effectively made slays and 
+brands more powerful than they used to be, since their power depends on 
+dice; so for most weapons, the power of slays and brands now is fairly 
+similar to what it was in PosChengband before Gwarl's weapon buff)
+
+* Fixed a number of bugs with melee slays and brands. (Most notably, 
+Slay *Living* didn't work properly [it had the same effect as normal 
+Slay Living])
+
+* In some unusual cases, a single monster could be counted as a kill 
+for quest completion purposes more than once. In general, any player 
+strong enough to take "advantage" of this was better off just 
+curbstomping the quest the normal way, but the loopholes have been 
+plugged anyway
+
+* Attempts to revive a quest target monster will now always fail
 
 * Oremorj the Cyberdemon Lord now has fewer hitpoints, but can 
 sometimes recover from confusion speedily
 
+* Elder storm giants now resist confusion
+
+* Sleeping in the inn or reforging an item now resets all timed flags
+
+* Nerfed the Sorcery Realm's Mass Stasis spell, which now has much 
+lower power and shorter duration if effective (it's still one of the 
+best spells in that realm...) Some other stasis/paralysing effects also 
+have shorter duration now
+
 * The Confusing Lights spell is now slightly weaker (staves of 
 Confusing Lights are not affected by this change)
+
+* Teleport Level and Word of Recall now request confirmation if the 
+player is about to recall/teleport out of a quest that cannot be 
+retaken
+
+* Retaking level 99 or 100 in coffee-break mode now slightly increases 
+the Serpent's mpower
+
+* Body armour of Celestial Protection sometimes has additional buffs 
+now, especially at high levels
 
 * The "You have no artifacts to reforge" error message now displays the 
 reforge power limit (thanks to bostock for suggesting this)
 
 * Plugged wobbly's Black Market potion reserving exploit
 
+* Androids can now use the Eat command (in addition to the old Quaff 
+command) to consume a flask of oil (thanks to Mocht and bostock for 
+suggesting this)
+
 * Made selling caps in key shops (armoury and weapon shop) friendlier 
 to the player, and removed some duplication in the shopkeeper list
 
-* Added more random ring artifact names
+* Slightly reduced the cost of reforging in coffee-break mode to 
+compensate for the more limited money supply
 
-* Beginner mode now uses the coffee_break option
+* Monsters summoned by Amberite blood curses now appear with more 
+energy needed, and therefore won't insta-kill the player unless the 
+player is paralyzed or has low speed
+
+* The Enchantment spell (available to mariliths and dragons, and as an 
+activation on the hammer of Hephaestus) now applies the usual 99% 
+discount to enchanted non-ego items (thanks to Bucephalus for 
+suggesting this)
+
+* Ultra-powerful items from normally low-weight slots whose score 
+exceeds the reforge power cap of their native slot (e.g. Nenya or 
+Vilya) can now have the power cap of the destination slot applied to 
+them if reforged into a higher-weight slot
+
+* Added a new disturbance option ("Run past buried treasure"; on by 
+default)
+
+* Experience from a monster kill is now reduced if 100 or more monsters 
+of that race have been killed. (Copied from Frogspawn; replaces the 
+previous exp reduction formula that only applied to breeders and kicked 
+in after 400 kills)
+
+* The Mogaminator now accepts "icky" as an adjective (so "!icky" means 
+"destroy all icky items", and "!nameless icky weapons" means "destroy 
+all icky melee weapons that aren't ego or artifact"). The Mogaminator 
+defines icky items as either weapons that trigger icky wield, or gloves 
+that trigger encumbrance. It is possible that the "icky" keyword 
+doesn't work correctly for some classes yet; any such reports will be 
+appreciated (thanks to BobZero for this suggestion)
+
+* Added an option to deactivate the Mogaminator (thanks to BobZero for 
+this suggestion)
+
+* It is now possible to inscribe a weapon with !? to request 
+confirmation of melee attacks, preventing accidental melee (this may be 
+desirable for pure magic users, or in the case of temporarily wielded 
+objects like shovels). The inscription may also include a monster level 
+(e.g. !?45 asks the player to confirm attacks against monsters of level 
+45 or above, but not against monsters of level 44 or below). Once an 
+attack against a monster has been confirmed, all further attacks 
+against that monster are automatically assumed to be acceptable. 
+Consecutive attacks against monsters of the same race are also assumed 
+to be intentional; for example, if the player confirms an attack 
+against an olog, all further attacks against ologs will be 
+automatically confirmed until the player attacks a monster who is not 
+an olog. Only the player's primary weapon is checked for the !? 
+inscription (thanks to BobZero for this suggestion)
+
+* A -more- prompt is now given to alert the player whenever a device or 
+any inscribed item in the player's inventory is stolen or destroyed. 
+These warnings can be turned off in the disturbance options
+(thanks to kt for this suggestion)
+
+* Implemented some of bostock's suggested alchemist improvements:
+- Alchemists can now use the same infusion repeatedly with the 'n' 
+command
+- The Break Down and Create Infusion operations quantity prompts now 
+default to the whole stack
+- Infusions of Booze now warn the player on attempts to use them
+- Potions with special super-effects for alchemists now have different 
+descriptions when inspected by an alchemist
+- An infusion-browsing function existed but could not be accessed 
+in-game
+
+* Alchemist infusions are now only almost weightless, not totally 
+weightless (they weigh 0.05 lbs each, one-tenth of a potion's weight)
+
+* Requesting a new quest with the previous quest's reward waiting 
+outside no longer results in the permanent loss of the previous reward. 
+(Note that it is *only* quest rewards that aren't lost - any other 
+objects you may have left waiting outside will still be lost.)
+
+* Added more random ring artifact names
 
 * Updated some of the help files
 
