@@ -1949,6 +1949,25 @@ int get_slot_weight(obj_ptr obj)
     }
     return 80;
 }
+
+int get_dest_weight(obj_ptr dest)
+{
+    int dest_weight = get_slot_weight(dest);
+    /* Penalize reforging a powerful slot into a weak slot (e.g. weapons into lites)
+     * Also penalize moving power into ninja weapons */
+    if (object_is_melee_weapon(dest))
+    {
+        int dice = k_info[dest->k_idx].dd * k_info[dest->k_idx].ds;
+        if (dice == 2) /* hack for wizardstaves */
+        {
+            dest_weight = 55;
+        }
+        else if (dice < 12)
+            dest_weight = dest_weight * dice / 12;
+    }
+    return dest_weight;
+}
+
 /* This might also benefit the rand-art power channels in ego.c */
 int get_slot_power(obj_ptr obj)
 {
@@ -3257,28 +3276,16 @@ bool reforge_artifact(object_type *src, object_type *dest, int fame)
     int         min_power, max_power;
     int         old_level, i;
     int         src_weight = get_slot_weight(src);
-    int         dest_weight = get_slot_weight(dest);
+    int         dest_weight = get_dest_weight(dest);
 
     /* Score the Original */
     base_power = obj_value_real(src);
 
-    /* Penalize reforging a powerful slot into a weak slot (e.g. weapons into lites)
-     * Also penalize moving power into ninja weapons */
-    if (object_is_melee_weapon(dest))
-    {
-        int dice = k_info[dest->k_idx].dd * k_info[dest->k_idx].ds;
-        if (dice == 2) /* hack for wizardstaves */
-        {
-            dest_weight = 55;
-        }
-        else if (dice < 12)
-            dest_weight = dest_weight * dice / 12;
-    }
     if (src_weight > dest_weight)
         base_power = base_power * dest_weight / src_weight;
 
     /* Power sanity check */
-    base_power = MIN(base_power, 1125L * MAX(src_weight, dest_weight));
+    base_power = MIN(base_power, 1125L * dest_weight);
 
     /* Pay a Power Tax! */
     base_power = base_power*3/4 + randint1(base_power*MIN(255, fame)/1500);
