@@ -2410,6 +2410,7 @@ extern void dump_spells_aux(FILE *fff, spell_info *table, int ct);
 
 /* alky.c */
 extern void     alchemist_cast(int tval);
+extern void     alchemist_browse(void);
 extern class_t *alchemist_get_class(void);
 extern int      alchemist_infusion_energy_use(void);
 extern void     alchemist_super_potion_effect(int sval);
