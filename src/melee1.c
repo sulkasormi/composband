@@ -141,6 +141,9 @@ bool make_attack_normal(int m_idx)
     int opy = py;
     int opx = px;
 
+    /* Silver monsters have special effects on werewolves */
+    bool track_werewolf_dam = (((p_ptr->prace == RACE_WEREWOLF) || (p_ptr->current_r_idx == MON_WEREWOLF)) && (r_ptr->flags7 & RF7_SILVER)) ? TRUE : FALSE;
+
     /* Not allowed to attack */
     if (r_ptr->flags1 & (RF1_NEVER_BLOW)) return (FALSE);
 
@@ -242,6 +245,7 @@ bool make_attack_normal(int m_idx)
         if ( !blow->effects[0].effect  /* XXX B:BEG or B:INSULT */
           || _check_hit(skill, ac))
         {
+            int werewolf_hurt_max = 0;
             /* Always disturbing */
             disturb(1, 0);
 
@@ -417,6 +421,8 @@ bool make_attack_normal(int m_idx)
                 {
                     effect_dam -= effect_dam/3;
                 }
+
+                if (track_werewolf_dam) werewolf_hurt_max = MAX(werewolf_hurt_max, effect_dam / 2);
 
                 switch (effect->effect)
                 {
@@ -1194,6 +1200,12 @@ bool make_attack_normal(int m_idx)
                         mon_lore_r(m_ptr, RFR_RES_ALL | RFR_RES_DARK);
                     }
                 }
+            }
+
+            /* werewolf in contact with silver */
+            if (werewolf_hurt_max)
+            {
+                werewolf_silver_effect(werewolf_hurt_max, TRUE);
             }
         }
 
