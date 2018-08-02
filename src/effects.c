@@ -6363,7 +6363,7 @@ bool set_ultimate_res(int v, bool do_dec)
     {
         if (p_ptr->ult_res)
         {
-            msg_print("You feel less resistant");
+            msg_print("You feel less resistant.");
 
             notice = TRUE;
         }
