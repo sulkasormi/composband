@@ -7597,7 +7597,7 @@ static cptr do_music_spell(int spell, int mode)
 
             if (!p_ptr->oppose_pois)
             {
-                msg_print("You feel less resistant to pois.");
+                msg_print("You feel less resistant to poison.");
             }
         }
 
