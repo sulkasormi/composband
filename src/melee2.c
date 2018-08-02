@@ -1567,9 +1567,6 @@ bool mon_attack_mon(int m_idx, int t_idx)
     bool known = (m_ptr->cdis <= MAX_SIGHT) || (t_ptr->cdis <= MAX_SIGHT);
     bool do_silly_attack = (one_in_(2) && p_ptr->image);
 
-    /* Silver monsters have special effects on werewolves */
-    bool track_werewolf_dam = (((p_ptr->prace == RACE_WEREWOLF) || (p_ptr->current_r_idx == MON_WEREWOLF)) && (r_ptr->flags7 & RF7_SILVER)) ? TRUE : FALSE;
-
     /* Cannot attack self */
     if (m_idx == t_idx) return FALSE;
 
@@ -1660,7 +1657,6 @@ bool mon_attack_mon(int m_idx, int t_idx)
         if ( !r_ptr->blows[ap_cnt].effects[0].effect  /* XXX B:BEG or B:INSULT */
           || check_hit2(power, rlev, ac, stun) )
         {
-            int werewolf_hurt_max = 0;
             (void)set_monster_csleep(t_idx, 0);
 
             if (t_ptr->ml)
@@ -1790,8 +1786,6 @@ bool mon_attack_mon(int m_idx, int t_idx)
                 damage = damroll(e.dd + to_dd, e.ds);
                 if (stun)
                     damage -= damage * MIN(100, stun) / 150;
-
-                if (track_werewolf_dam) werewolf_hurt_max = MAX(werewolf_hurt_max, damage / 2);
 
                 effect_type = BLOW_EFFECT_TYPE_NONE;
                 pt = GF_MISSILE;
@@ -1962,12 +1956,6 @@ bool mon_attack_mon(int m_idx, int t_idx)
                     }
                 }
             } /* for each effect */
-
-            /* werewolf in contact with silver */
-            if (werewolf_hurt_max)
-            {
-                werewolf_silver_effect(werewolf_hurt_max, TRUE);
-            }
         }
 
         /* Monster missed monster */
