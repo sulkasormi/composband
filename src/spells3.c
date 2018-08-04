@@ -566,11 +566,17 @@ void teleport_player_to(int ny, int nx, u32b mode)
             return;
         }
 
+        /* Disallow squares with no los to target in rush attacks */
+        if ((mode & TELEPORT_RUSH_ATTACK) && (!los(y, x, ny, nx))) continue;
+
         /* Accept any grid when wizard mode */
         if (p_ptr->wizard && !(mode & TELEPORT_PASSIVE) && (!cave[y][x].m_idx || (cave[y][x].m_idx == p_ptr->riding))) break;
 
         /* Accept teleportable floor grids */
         if (cave_player_teleportable_bold(y, x, mode)) break;
+
+        /* Desperation */
+        if ((mode & TELEPORT_RUSH_ATTACK) && (dis > 1) && (distance(y, x, ny, nx) < dis) && (cave_player_teleportable_bold(y, x, ((mode) | (TELEPORT_PASSIVE))))) break;
 
         /* Occasionally advance the distance */
         if (++ctr > (4 * dis * dis + 4 * dis + 1))
