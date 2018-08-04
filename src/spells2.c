@@ -4689,7 +4689,7 @@ bool rush_attack(int rng, bool *mdeath)
         }
 
         /* Move player before updating the monster */
-        if (!player_bold(ty, tx)) teleport_player_to(ty, tx, TELEPORT_NONMAGICAL);
+        if (!player_bold(ty, tx)) teleport_player_to(ty, tx, TELEPORT_NONMAGICAL | TELEPORT_RUSH_ATTACK);
 
         /* Update the monster */
         update_mon(cave[ny][nx].m_idx, TRUE);
@@ -4711,14 +4711,14 @@ bool rush_attack(int rng, bool *mdeath)
             msg_format("You quickly jump in and attack %s!", m_name);
         }
 
-        if (!player_bold(ty, tx)) teleport_player_to(ty, tx, TELEPORT_NONMAGICAL);
+        if (!player_bold(ty, tx)) teleport_player_to(ty, tx, TELEPORT_NONMAGICAL | TELEPORT_RUSH_ATTACK);
         moved = TRUE;
         tmp_mdeath = py_attack(ny, nx, HISSATSU_NYUSIN);
 
         break;
     }
 
-    if (!moved && !player_bold(ty, tx)) teleport_player_to(ty, tx, TELEPORT_NONMAGICAL);
+    if (!moved && !player_bold(ty, tx)) teleport_player_to(ty, tx, TELEPORT_NONMAGICAL | TELEPORT_RUSH_ATTACK);
     if (!dun_level && !p_ptr->wild_mode && !p_ptr->inside_arena && !p_ptr->inside_battle)
     {
         wilderness_scroll_lock = FALSE;
