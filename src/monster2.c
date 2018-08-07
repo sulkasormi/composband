@@ -3187,7 +3187,7 @@ byte get_mspeed(monster_race *r_ptr)
     if (!(r_ptr->flags1 & RF1_UNIQUE) && !p_ptr->inside_arena)
     {
         /* Allow some small variation per monster */
-        int i = SPEED_TO_ENERGY(r_ptr->speed) / (one_in_(4) ? 3 : 10);
+        int i = SPEED_TO_ENERGY(r_ptr->speed) / (((one_in_(4)) && (!very_nice_summon_hack)) ? 3 : 10);
         if (i) mspeed += rand_spread(0, i);
     }
 
@@ -3580,7 +3580,7 @@ int place_monster_one(int who, int y, int x, int r_idx, int pack_idx, u32b mode)
     }
 
     /* Force monster to wait for player, unless in Nightmare mode */
-    if ((r_ptr->flags1 & RF1_FORCE_SLEEP) && !ironman_nightmare)
+    if (((r_ptr->flags1 & RF1_FORCE_SLEEP) || (very_nice_summon_hack)) && (!ironman_nightmare))
     {
         /* Monster is still being nice */
         m_ptr->mflag |= (MFLAG_NICE);
