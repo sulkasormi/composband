@@ -32,6 +32,7 @@ N: 2:BIAS_POIS
 'Assassinstrike'
 of Venoms
 of Poison
+of the Black Adder
 
 N: 3:BIAS_FIRE
 'Flame Saber'
@@ -60,11 +61,13 @@ N: 4:BIAS_COLD
 'White Death'
 'Crescent Moon'
 'Arctic Moon'
+'North Wind'
 of Aurora
 of Alaska
 of Ezo
 of the Winter Wonderland
 of Cold Fury
+of the Abominable Snowman
 
 N: 5:BIAS_ACID
 'Rust Monster'
@@ -75,6 +78,7 @@ N: 5:BIAS_ACID
 'Acid Drop'
 'Nitrate'
 'Preoxy'
+'Sargassonne'
 of the Cube Prince
 
 N:12:BIAS_CHAOS
@@ -96,7 +100,6 @@ of Nothingness
 
 N:14:BIAS_NECROMANTIC
 'Reaper'
-'Hellwind'
 'Chief of Souls'
 'Edge of Miasma'
 'Death Sword'
@@ -109,7 +112,9 @@ N:14:BIAS_NECROMANTIC
 'Scream of the Damned'
 'Scarlet Silk'
 'Manhunter'
+'Soulgobbler'
 of Helthing
+of Helband
 of Darkness Storm
 of Genocide
 of Thuringwethil
@@ -140,7 +145,6 @@ of Mind
 of Soul
 of the Dawn
 
-
 N:16:BIAS_ROGUE
 'Thiefbane'
 'Quylthulg Smasher'
@@ -154,6 +158,7 @@ of the Night
 of Jack of Shadows
 of Koga
 of the Superlemming
+of the Spymaster
 
 N:17:BIAS_MAGE
 N: 7:BIAS_INT
@@ -165,7 +170,7 @@ N: 7:BIAS_INT
 'Brainstorm'
 'Laplace's Devil'
 of Grand Wizardry
-of Concentration
+of Zarathustra
 of Ritual
 
 N:18:BIAS_WARRIOR
@@ -175,9 +180,9 @@ N:10:BIAS_CON
 'Bonebreaker'
 'Skullbuster'
 'Skull Smasher'
+'Sidesplitter'
 'Giant Strength'
 'Dragonbane'
-'Crash of Rhinos'
 'Cycle of Life'
 'Bull Elephant'
 'Warrior's Honor'
@@ -186,6 +191,8 @@ of Crushing
 of Tomoe
 of Halbarad
 of Erkenbrando
+of the Edgelord
+of Genghis Khan
 
 N: 9:BIAS_DEX
 'Gilettar'
@@ -208,14 +215,11 @@ N:19:BIAS_RANGER
 'Sunstrike'
 'Hellwind'
 'Shooting Star'
-'Invisible Death'
 'Autumn Harvest'
 of the Eagle Lord
 of Entanglement
 of the Druid
 of the Valkyrie
-of the Hunter
-of Marksmanship
 
 N:*:Default
 'Weapon Alpha'
@@ -235,14 +239,17 @@ N:*:Default
 'Pandemonium'
 'Bloodrain'
 'Delta'
-'Cubragol'
 'Cutting Edge'
 'Perfectly Normal Weapon'
+'Pacifier'
+'Standart'
+'Cakecutter'
+'Fight Insurance'
 of Joshua
-of Slay Mold
 of Damocles
 of the Shogun
 of the Borg
 of Hatred
 of Osric
 of Finndo
+of Gibbitude
