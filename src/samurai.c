@@ -210,7 +210,7 @@ cptr do_hissatsu_spell(int spell, int mode)
 
     case 9:
         if (name) return "Zammaken";
-        if (desc) return "Attacks an evil unliving monster with great damage. No effect to other  monsters.";
+        if (desc) return "Attacks an evil unliving monster with great damage. No effect to other monsters.";
         if (cast)
         {
             int y, x;
@@ -1296,7 +1296,7 @@ class_t *samurai_get_class(void)
         me.stats[A_CHR] =  1;
         me.base_skills = bs;
         me.extra_skills = xs;
-        me.life = 111;
+        me.life = 109;
         me.base_hp = 12;
         me.exp = 130;
         me.pets = 40;
