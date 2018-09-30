@@ -1547,7 +1547,7 @@ static void _loop(_ui_context_ptr context)
         pack_unlock();
         notice_stuff(); /* PW_INVEN and PW_PACK ... */
         handle_stuff(); /* Plus 'C' to view character sheet */
-        if (pack_overflow_count())
+        if (pack_overflow_count() > ((pack_is_full()) ? 0 : 1))
         {
             msg_print("<color:v>Your pack is overflowing!</color> It's time for you to leave!");
             msg_print(NULL);
