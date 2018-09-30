@@ -2360,10 +2360,10 @@ void rotting_flesh_mut(int cmd, variant *res)
         msg_print("Your flesh is no longer afflicted by a rotting disease!");
         break;
     case SPELL_MUT_DESC:
-        var_set_string(res, "Your flesh is rotting (-2 CON, -1 CHR).");
+        var_set_string(res, "Your flesh is rotting (-2 CON, -1 CHR, Slow Regen).");
         break;
     case SPELL_CALC_BONUS:
-        p_ptr->regen -= 100;
+        p_ptr->regen -= 80;
         break;
     default:
         default_spell(cmd, res);
