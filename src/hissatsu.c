@@ -1,6 +1,6 @@
-/* File: mind.c */
+/* File: hissatsu.c */
 
-/* Purpose: Mindcrafter code */
+/* Purpose: Kendo code */
 
 /*
  * Copyright (c) 1997 Ben Harrison, James E. Wilson, Robert A. Koeneke
@@ -14,8 +14,31 @@
 
 #define TECHNIC_HISSATSU (REALM_HISSATSU - MIN_TECHNIC)
 
+static void _dump_description(doc_ptr doc, char *kuvaus)
+{
+    doc_printf(doc, "%s", kuvaus);
+}
+
+static void _display(rect_t r, char *kuvaus)
+{
+    doc_ptr doc = doc_alloc(r.cx);
+    _dump_description(doc, kuvaus);
+    doc_sync_term(doc, doc_range_all(doc), doc_pos_create(r.x, r.y));
+    doc_free(doc);
+}
+
+static rect_t _menu_rect(int y)
+{
+    rect_t r = ui_menu_rect();
+    r.y = y;
+    r.x = 17;
+    if (r.cx > 63)
+        r.cx = 63;
+    return r;
+}
+
 /*
- * Allow user to choose a mindcrafter power.
+ * Allow user to choose a hissatsu power.
  *
  * If a valid spell is chosen, saves it in '*sn' and returns TRUE
  * If the user hits escape, returns FALSE, and set '*sn' to -1
@@ -44,6 +67,7 @@ static int get_hissatsu_power(int *sn)
     magic_type spell;
     bool            flag, redraw;
     int menu_line = (use_menu ? 1 : 0);
+    bool            is_browsing = FALSE;
 
     /* Assume cancelled */
     *sn = (-1);
@@ -80,10 +104,11 @@ static int get_hissatsu_power(int *sn)
 
     /* Build a prompt (accept all spells) */
     (void) strnfmt(out_val, 78, 
-               "(%^ss %c-%c, *=List, ESC=exit) Use which %s? ",
+               "(%^ss %c-%c, ?=Browse, ESC=exit) Use which %s? ",
                p, I2A(0), "abcdefghijklmnopqrstuvwxyz012345"[num-1], p);
 
-    if (use_menu) screen_save();
+//    if (use_menu) screen_save();
+    screen_save();
 
     /* Get a spell from the user */
 
@@ -92,6 +117,9 @@ static int get_hissatsu_power(int *sn)
     {
         if(choice==ESCAPE) choice = ' '; 
         else if( !get_com(out_val, &choice, FALSE) )break;
+
+        screen_load();
+        screen_save();
 
         if (use_menu && choice != ' ')
         {
@@ -169,8 +197,21 @@ static int get_hissatsu_power(int *sn)
                 }
             }
         }
+
+        if (choice == '?')
+        {
+            is_browsing = !is_browsing;
+            (void) strnfmt(out_val, 78,
+               "(%^ss %c-%c, ?=Browse, ESC=exit) %s which %s? ",
+               p, I2A(0), "abcdefghijklmnopqrstuvwxyz012345"[num-1], is_browsing ? "Browse" : "Use", p);
+        }
+
+        if ((choice == '?') || (is_browsing))
+        {
+            redraw = FALSE;
+        }
+
         /* Request redraw */
-        if ((choice == ' ') || (choice == '*') || (choice == '?') || (use_menu && ask))
         {
             /* Show the list */
             if (!redraw || use_menu)
@@ -181,8 +222,7 @@ static int get_hissatsu_power(int *sn)
                 /* Show list */
                 redraw = TRUE;
 
-                /* Save the screen */
-                if (!use_menu) screen_save();
+//                if ((use_menu) screen_save();
 
                 /* Display a list of spells */
                 prt("", y, x);
@@ -233,11 +273,11 @@ put_str("name              Lv  SP      name              Lv  SP ", y, x + 5);
                 redraw = FALSE;
 
                 /* Restore the screen */
-                screen_load();
+//                screen_load();
             }
 
             /* Redo asking */
-            continue;
+            if ((choice == ' ') || (choice == '*') || (choice == '?') || (use_menu && ask)) continue;
         }
 
         if (!use_menu)
@@ -270,6 +310,17 @@ put_str("name              Lv  SP      name              Lv  SP ", y, x + 5);
 
         j = sentaku[i];
 
+        if (is_browsing)
+        {
+            char spell_desc[512];
+            int desc_y = (num > 15) ? 19 : 3 + num;
+            prt("", desc_y, 17);
+            (void)strnfmt(spell_desc, sizeof(spell_desc), "%s", do_spell(REALM_HISSATSU, j, SPELL_DESC));
+            ask = FALSE;
+            _display(_menu_rect(desc_y), spell_desc);
+            continue;
+        }
+
         /* Verify it */
         if (ask)
         {
@@ -288,7 +339,7 @@ put_str("name              Lv  SP      name              Lv  SP ", y, x + 5);
     }
 
     /* Restore the screen */
-    if (redraw) screen_load();
+    screen_load();
 
     /* Show choices */
     p_ptr->window |= (PW_SPELL);
@@ -313,11 +364,6 @@ put_str("name              Lv  SP      name              Lv  SP ", y, x + 5);
     return (TRUE);
 }
 
-
-/*
- * do_cmd_cast calls this function if the player's class
- * is 'mindcrafter'.
- */
 void do_cmd_hissatsu(void)
 {
     int             n = 0;
