@@ -1301,7 +1301,7 @@ bool make_attack_normal(int m_idx)
         /* hisself */
         monster_desc(m_name_self, m_ptr, MD_PRON_VISIBLE | MD_POSSESSIVE | MD_OBJECTIVE);
 
-        msg_format("The attack of %s has wounded %s!", m_name, m_name_self);
+        msg_format("%^s wounds %s!", m_name, m_name_self);
         project(0, 0, m_ptr->fy, m_ptr->fx, psion_backlash_dam(total_dam), GF_MISSILE, PROJECT_KILL);
         if (p_ptr->tim_eyeeye) set_tim_eyeeye(p_ptr->tim_eyeeye-5, TRUE);
     }
