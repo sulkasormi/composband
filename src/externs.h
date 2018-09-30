@@ -348,6 +348,7 @@ extern bool easy_thalos;
 extern bool never_forget;
 extern bool no_chris;
 extern bool no_scrambling;
+extern bool comp_mode;
 extern bool reduce_uniques;
 extern byte reduce_uniques_pct;
 
@@ -927,6 +928,7 @@ extern void do_sneeze(void);
 /* dungeon.c */
 extern void extract_option_vars(void);
 extern void determine_today_mon(bool conv_old);
+extern s16b energy_need_clipper(void);
 extern void notice_lite_change(object_type *o_ptr);
 extern void play_game(bool new_game);
 extern bool psychometry(void);
