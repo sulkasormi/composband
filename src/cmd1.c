@@ -296,7 +296,7 @@ void death_scythe_miss(object_type *o_ptr, int hand, int mode)
                 case RACE_SNOTLING:
                 case RACE_HALF_TROLL:
                 case RACE_OGRE:
-				case RACE_HALF_ORC:
+            	case RACE_HALF_ORC:
                 case RACE_HALF_GIANT:
                 case RACE_HALF_TITAN:
                 case RACE_CYCLOPS:
@@ -802,6 +802,9 @@ s16b tot_dam_aux(object_type *o_ptr, int tdam, monster_type *m_ptr, s16b hand, i
         case TV_SWORD:
         case TV_DIGGING:
         {
+            int hissatsu_brand = 0;
+            char m_name_subject[MAX_NLEN];
+            monster_desc(m_name_subject, m_ptr, MD_PRON_VISIBLE);
 
             if (monster_living(r_ptr) && have_flag(flgs, OF_KILL_LIVING))
             {
@@ -900,11 +903,11 @@ s16b tot_dam_aux(object_type *o_ptr, int tdam, monster_type *m_ptr, s16b hand, i
                     msg_format("Your %s slays good.", o_name);
                     obj_learn_slay(o_ptr, OF_BRAND_CHAOS, "has the <color:v>Mark of Chaos</color>");
                     mon_lore_3(m_ptr, RF3_GOOD);
-					if (have_flag(flgs, OF_KILL_GOOD))
-					{
-						if (mult < KILL_MULT_GOOD / 8) mult = KILL_MULT_GOOD / 8;
-						obj_learn_slay(o_ptr, OF_KILL_GOOD, "slays <color:W>*Good*</color>");
-					}
+                if (have_flag(flgs, OF_KILL_GOOD))
+                {
+                        if (mult < KILL_MULT_GOOD / 8) mult = KILL_MULT_GOOD / 8;
+                        obj_learn_slay(o_ptr, OF_KILL_GOOD, "slays <color:W>*Good*</color>");
+            		}
                     else if (have_flag(flgs, OF_SLAY_GOOD))
                     {
                         if (mult < SLAY_MULT_GOOD * 2 / 15) mult = SLAY_MULT_GOOD * 2 / 15;
@@ -918,13 +921,13 @@ s16b tot_dam_aux(object_type *o_ptr, int tdam, monster_type *m_ptr, s16b hand, i
                 }
                 else
                 {
-					if (have_flag(flgs, OF_KILL_GOOD))
-					{
-						mon_lore_3(m_ptr, RF3_GOOD);
-						obj_learn_slay(o_ptr, OF_KILL_GOOD, "slays <color:y>*Good*</color>");
-						if (mult < KILL_MULT_GOOD / 10) mult = KILL_MULT_GOOD / 10;
-					}
-					else if (have_flag(flgs, OF_SLAY_GOOD))
+            		if (have_flag(flgs, OF_KILL_GOOD))
+            		{
+                        mon_lore_3(m_ptr, RF3_GOOD);
+                        obj_learn_slay(o_ptr, OF_KILL_GOOD, "slays <color:y>*Good*</color>");
+                        if (mult < KILL_MULT_GOOD / 10) mult = KILL_MULT_GOOD / 10;
+            		}
+            		else if (have_flag(flgs, OF_SLAY_GOOD))
                     {
                         mon_lore_3(m_ptr, RF3_GOOD);
                         obj_learn_slay(o_ptr, OF_SLAY_GOOD, "slays <color:W>Good</color>");
@@ -1250,6 +1253,7 @@ s16b tot_dam_aux(object_type *o_ptr, int tdam, monster_type *m_ptr, s16b hand, i
               || mode == HISSATSU_ELEC
               || chaos_slay == OF_BRAND_ELEC )
             {
+                int old_mult = mult;
                 if (r_ptr->flagsr & RFR_EFF_IM_ELEC_MASK)
                 {
                     mon_lore_r(m_ptr, RFR_EFF_IM_ELEC_MASK);
@@ -1261,19 +1265,27 @@ s16b tot_dam_aux(object_type *o_ptr, int tdam, monster_type *m_ptr, s16b hand, i
                     if (have_flag(flgs, OF_BRAND_ELEC))
                     {
                         obj_learn_slay(o_ptr, OF_BRAND_ELEC, "is <color:b>Lightning Branded</color>");
-                        if (mode == HISSATSU_ELEC) mult = MAX(mult, BRAND_MULT_ELEC * 4 / 13);
+                        if (mode == HISSATSU_ELEC)
+                            mult = MAX(mult, BRAND_MULT_ELEC * 4 / 13);
                         else mult = MAX(mult, BRAND_MULT_ELEC * 2 / 15);
                     }
-                    else if (mode == HISSATSU_ELEC) mult = MAX(mult, BRAND_MULT_ELEC * 4 / 17);
+                    else if (mode == HISSATSU_ELEC)
+                        mult = MAX(mult, BRAND_MULT_ELEC * 4 / 17);
                     else mult = MAX(mult, BRAND_MULT_ELEC / 10);
                 }
                 else if (have_flag(flgs, OF_BRAND_ELEC))
                 {
                     obj_learn_slay(o_ptr, OF_BRAND_ELEC, "is <color:b>Lightning Branded</color>");
-                    if (mode == HISSATSU_ELEC) mult = MAX(mult, BRAND_MULT_ELEC * 4 / 15);
+                    if (mode == HISSATSU_ELEC)
+                        mult = MAX(mult, BRAND_MULT_ELEC * 4 / 15);
                     else mult = MAX(mult, BRAND_MULT_ELEC / 10);
                 }
-                else if (mode == HISSATSU_ELEC) mult = MAX(mult, BRAND_MULT_ELEC * 4 / 21);
+                else if (mode == HISSATSU_ELEC)
+                    mult = MAX(mult, BRAND_MULT_ELEC * 4 / 21);
+                if ((mult > old_mult) && (mode == HISSATSU_ELEC))
+                {
+                    hissatsu_brand = OF_BRAND_ELEC;
+                }
             }
 
             /* Brand (Fire) */
@@ -1311,6 +1323,7 @@ s16b tot_dam_aux(object_type *o_ptr, int tdam, monster_type *m_ptr, s16b hand, i
                     tmp *= 2;
                     mon_lore_3(m_ptr, RF3_HURT_FIRE);
                 }
+                if (tmp > mult) hissatsu_brand = ((mode == HISSATSU_FIRE) ? OF_BRAND_FIRE : 0);
                 mult = MAX(mult, tmp);
             }
 
@@ -1350,6 +1363,7 @@ s16b tot_dam_aux(object_type *o_ptr, int tdam, monster_type *m_ptr, s16b hand, i
                     tmp *= 2;
                     mon_lore_3(m_ptr, RF3_HURT_COLD);
                 }
+                if (tmp > mult) hissatsu_brand = ((mode == HISSATSU_COLD) ? OF_BRAND_COLD : 0);
                 mult = MAX(mult, tmp);
             }
 
@@ -1358,6 +1372,7 @@ s16b tot_dam_aux(object_type *o_ptr, int tdam, monster_type *m_ptr, s16b hand, i
               || mode == HISSATSU_POISON
               || chaos_slay == OF_BRAND_POIS )
             {
+                int old_mult = mult;
                 if (r_ptr->flagsr & RFR_EFF_IM_POIS_MASK)
                 {
                     mon_lore_r(m_ptr, RFR_EFF_IM_POIS_MASK);
@@ -1382,20 +1397,22 @@ s16b tot_dam_aux(object_type *o_ptr, int tdam, monster_type *m_ptr, s16b hand, i
                     else mult = MAX(mult, BRAND_MULT_POIS / 10);
                 }
                 else if (mode == HISSATSU_POISON) mult = MAX(mult, BRAND_MULT_POIS / 10);
+                if (mult > old_mult) hissatsu_brand = ((mode == HISSATSU_POISON) ? OF_BRAND_POIS : 0);
             }
 
-			/* 'light brand' */
-			if (have_flag(flgs, OF_LITE) && (r_ptr->flags3 & RF3_HURT_LITE))
-			{
-				msg_format("It cringes.");
-				if (mult == 10) mult = SLAY_MULT_BASIC / 10;
-				else if (mult < KILL_MULT_HIGH / 8) mult = MIN(KILL_MULT_HIGH / 8, mult + 10);
-			}
+            /* 'light brand' */
+            if (have_flag(flgs, OF_LITE) && (r_ptr->flags3 & RF3_HURT_LITE))
+            {
+            	if (mult < KILL_MULT_HIGH / 8) msg_format("%^s cringes.", m_name_subject);
+            	if (mult == 10) mult = SLAY_MULT_BASIC / 10;
+            	else if (mult < KILL_MULT_HIGH / 8) mult = MIN(KILL_MULT_HIGH / 8, mult + 10);
+            }
 
             if ((mode == HISSATSU_ZANMA) && !monster_living(r_ptr) && (r_ptr->flags3 & RF3_EVIL))
             {
                 if (mult < 15) mult = 25;
                 else if (mult < KILL_MULT_HIGH / 10) mult = MIN(KILL_MULT_HIGH / 10, mult+(SLAY_MULT_BASIC / 10));
+                hissatsu_brand = OF_SLAY_EVIL;
             }
             if (mode == HISSATSU_UNDEAD)
             {
@@ -1407,6 +1424,7 @@ s16b tot_dam_aux(object_type *o_ptr, int tdam, monster_type *m_ptr, s16b hand, i
                 }
                 if (mult == 10) mult = KILL_MULT_HIGH * 2 / 25;
                 else if (mult < KILL_MULT_HIGH * 4 / 15) mult = MIN(KILL_MULT_HIGH * 4 / 15, mult + (KILL_MULT_HIGH / 18));
+                hissatsu_brand = OF_SLAY_UNDEAD;
             }
             if ((mode == HISSATSU_SEKIRYUKA) && p_ptr->cut && monster_living(r_ptr))
             {
@@ -1418,6 +1436,7 @@ s16b tot_dam_aux(object_type *o_ptr, int tdam, monster_type *m_ptr, s16b hand, i
                 mon_lore_3(m_ptr, RF3_HURT_ROCK);
                 if (mult == 10) mult = KILL_MULT_MID / 10;
                 else if (mult < KILL_MULT_HIGH / 8) mult = KILL_MULT_HIGH / 8;
+                hissatsu_brand = 0;
             }
             if (p_ptr->tim_slay_sentient && p_ptr->weapon_info[hand].wield_how == WIELD_TWO_HANDS)
             {
@@ -1430,6 +1449,43 @@ s16b tot_dam_aux(object_type *o_ptr, int tdam, monster_type *m_ptr, s16b hand, i
                     if (mult < SLAY_MULT_BASIC / 10) mult = SLAY_MULT_BASIC / 10;
                 }
             }
+
+            if (hissatsu_brand)
+            {
+                switch (hissatsu_brand)
+                {
+                case OF_BRAND_ELEC:
+                        msg_format("%^s is <color:b>shocked</color>!", m_name_subject);
+                        break;
+                case OF_BRAND_ACID:
+                        msg_format("%^s is <color:g>dissolved</color>!", m_name_subject);
+                        break;
+                case OF_BRAND_FIRE:
+                        msg_format("%^s is <color:r>burned</color>!", m_name_subject);
+                        break;
+                case OF_BRAND_COLD:
+                        msg_format("%^s is <color:W>frozen</color>!", m_name_subject);
+                        break;
+                case OF_BRAND_POIS:
+                        msg_format("%^s is <color:G>poisoned</color>!", m_name_subject);
+                        break;
+                default: break;
+                /* Messages from Composband - possible future use
+                        msg_format("It howls!");
+                        msg_format("It wails!");
+                        msg_format("It screeches!");
+                        msg_format("It convulses!");
+                        msg_format("It shrieks!");
+                        msg_format("It cowers!");
+                        msg_format("It cringes.");
+                        msg_format("It winces.");
+                        msg_format("It recoils.");
+                        msg_format("It staggers.");
+                        msg_format("It groans.");
+                        msg_format("It shudders."); */
+                }
+            }
+
             if (have_flag(flgs, OF_BRAND_MANA) || p_ptr->tim_force)
             {
                 int          cost = 0;
@@ -2514,13 +2570,13 @@ static void innate_attacks(s16b m_idx, bool *fear, bool *mdeath, int mode)
                                 e = 0;
                             }
                             break;
-						case GF_INERT:
-							if (r_ptr->flags3 & RFR_RES_INER)
-							{
-								mon_lore_3(m_ptr, RFR_RES_INER);
-								e = 0;
-							}
-							break;
+                        case GF_INERT:
+                        	if (r_ptr->flags3 & RFR_RES_INER)
+                        	{
+                        		mon_lore_3(m_ptr, RFR_RES_INER);
+                        		e = 0;
+                        	}
+                        	break;
                         }
                     }
 
@@ -3438,18 +3494,18 @@ static bool py_attack_aux(int y, int x, bool *fear, bool *mdeath, s16b hand, int
                 {
                     if (MON_STUNNED(m_ptr))
                     {
-                        msg_format("%s is more dazed.", m_name_subject);
+                        msg_format("%^s is more dazed.", m_name_subject);
                         tmp /= 2;
                     }
                     else
                     {
-                        msg_format("%s is dazed.", m_name_subject);
+                        msg_format("%^s is dazed.", m_name_subject);
                     }
                     (void)set_monster_stunned(c_ptr->m_idx, MON_STUNNED(m_ptr) + tmp);
                 }
                 else
                 {
-                    msg_format("%s is not effected.", m_name_subject);
+                    msg_format("%^s is not affected.", m_name_subject);
                 }
             }
 
