@@ -50,6 +50,9 @@ R:OBJ(hard studded leather)
 ?:[EQU $CLASS Monk Mystic Force-Trainer Ninja Ninja-Lawyer Scout]
 R:OBJ(padded armour)
 
+?:[EQU $CLASS Warrior Blood-Knight Mauler Samurai]
+R:OBJ(set of studded leather gloves)
+
 ?:[EQU $RACE Beholder Spider Ring Dragon]
 R:OBJ(^ring$):EGO(protection)
 
