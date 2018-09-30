@@ -54,7 +54,7 @@ N: 5:BIAS_ACID
 'Oozearmor'
 'Phlogiston'
 of Aqua Regia
-of the Devine Jewel
+of the Divine Jewel
 of Diamond
 
 N:12:BIAS_CHAOS
@@ -69,6 +69,7 @@ of Reason
 of Seldon
 of the Chaos Lord
 of the Twelve Fiends
+of the Milkman
 
 N:14:BIAS_NECROMANTIC
 'Total Eclipse'
@@ -83,6 +84,7 @@ of Mephistopheles
 of the Ruler of Wallachia
 of the Netherlands
 of Blackest Pitch
+of the Wraith
 
 N:15:BIAS_LAW
 N:13:BIAS_PRIESTLY
@@ -103,6 +105,8 @@ N: 8:BIAS_WIS
 of Eden
 of Piety
 of the Pious Believer
+of the Undying Lands
+of the Sentinel
 of Ceremony
 of Revelation
 of Rite
@@ -126,6 +130,7 @@ N: 9:BIAS_DEX
 'Crypt Creep'
 'Smoke Ball'
 'Maple Leaf'
+'Catwalk'
 of Nevrast
 of Quietness
 of the Ninja
@@ -135,13 +140,14 @@ of Fnordja
 of the Hidden Chamber
 of Forgotten Pathways
 of the Shadow's Footfall
+of the Burrahobbits
 
 N:17:BIAS_MAGE
 N: 7:BIAS_INT
 'Magi's Seeing'
 'Sign of Brilliance'
 'Tome of Intelligence'
-of *Intelligence*
+of Finwe
 of the Wizard
 of Knowledge
 of the Spellcaster
@@ -150,6 +156,7 @@ of Martin
 of the Sorcerer-King
 of Simon Magus
 of Zul
+of Erasmus
 
 N:18:BIAS_WARRIOR
 N: 6:BIAS_STR
@@ -162,6 +169,7 @@ N: 6:BIAS_STR
 'Stonecold'
 of Vader
 of the Valkyrie
+of the Ogre King
 of Daybreak
 of Diamond
 of Sad Giant
@@ -196,6 +204,8 @@ of Tupuna
 of Benten
 of Nimue
 of Titania
+of Nimrodel
+of Iodine
 of the Entwives
 of the Cephalopods
 
@@ -215,5 +225,6 @@ of the Fretful Porpentine
 of Kevlar
 of the Borg
 of Gondor
+of Moldoux
 of Belegennon
 of Magnitude
