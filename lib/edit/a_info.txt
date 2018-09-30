@@ -3577,6 +3577,36 @@ D:with dark powers that make it a mortal enemy of all things good, and deadly
 D:to dragonkind. The city of Liweris was razed by dragons as soon as the word
 D:got out, and the king died in flames; but his spear survived.
 
+N:353:of Manychin
+I:22:3:3
+W:20:9:70:25000
+P:0:3d4:4:8:0
+F:STR | DEC_STEALTH | SLAY_HUMAN | SLAY_UNDEAD | ESP_HUMAN | ESP_UNDEAD |
+F:RES_FEAR | FREE_ACT | VORPAL |
+E:CHARM_MONSTER:40:25
+E:You proclaim your intention to liberate Angband!
+D:The lost sickle of the legendary hero Manychin, who renounced his
+D: comfortable life as a prince to lead oppressed serfs in revolt against the
+D: nobility.
+
+N:354:of Multi-Skills
+I:30:2:4
+W:40:76:20:100000
+P:2:1d1:3:2:3
+F:SPEED | STR | DEX | CON | RES_DISEN | REGEN | FREE_ACT | AGGRAVATE
+F:NO_ENCHANT
+E:EXPERTSEXCHANGE:80:100
+D:Wearing these state-of-the-art boots, you feel strong, agile, and
+D: healthy... and yet strangely unsure of yourself.
+
+N:355:of Dogram
+I:31:1:3
+W:40:15:5:30000
+P:1:0d0:9:1:12
+F:SPEED | DEX | STEALTH | FREE_ACT | RES_FEAR | SUST_DEX
+D:The gloves of Dogram the Terrible, master criminal and hybrid-burglar
+D:nonpareil.
+
 # N: serial number : item name
 # I: tval : sval : pval
 # W: depth : rarity : weight : cost
