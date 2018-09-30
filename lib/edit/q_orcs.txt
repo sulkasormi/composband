@@ -51,7 +51,7 @@ M:###########............a.....................oo...#######
 M:##############..............................#############
 M:################.........................################
 M:#########################################################
-R:OBJ(STAFF_ENLIGHTENMENT)
+R:OBJ(WAND_BALL_COLD)
 ?:[AND [EQU $WILDERNESS NONE] [EQU [MOD $RANDOM22 3] 0] ]
 R:OBJ(WAND_STONE_TO_MUD)
 ?:[AND [EQU $WILDERNESS NONE] [EQU [MOD $RANDOM22 3] 1] ]
