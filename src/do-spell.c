@@ -4862,7 +4862,7 @@ static cptr do_arcane_spell(int spell, int mode)
 
     case 6:
         if (name) return "Trap & Door Destruction";
-        if (desc) return "Fires a beam which destroy traps and doors.";
+        if (desc) return "Fires a beam which destroys traps and doors.";
 
         {
             if (cast)
@@ -6792,7 +6792,7 @@ static cptr do_crusade_spell(int spell, int mode)
 
     case 16:
         if (name) return "Unbarring Ways";
-        if (desc) return "Fires a beam which destroy traps and doors.";
+        if (desc) return "Fires a beam which destroys traps and doors.";
 
         {
             if (cast)
