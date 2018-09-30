@@ -221,6 +221,7 @@ void quest_fail(quest_ptr q)
     assert(q);
     q->status = QS_FAILED;
     q->completed_lev = p_ptr->lev;
+    q->completed_turn = game_turn;
     msg_format("You have <color:v>failed</color> the quest: <color:R>%s</color>.", kayttonimi(q));
     virtue_add(VIRTUE_VALOUR, -2);
     fame_on_failure();
