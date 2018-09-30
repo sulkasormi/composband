@@ -56,4 +56,7 @@ M:###########.<.###########
 M:#########################
 R:OBJ(ROD_DETECT_ALL)
 
+?:[EQU $CLASS Berserker]
+R:OBJ(sling, DEPTH+15):EGO(hunter)
+
 # vim: filetype=q :
