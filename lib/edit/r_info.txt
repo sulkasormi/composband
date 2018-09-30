@@ -5957,7 +5957,7 @@ B:CLAW:HURT(7d5)
 B:BITE:HURT(5d7)
 F:CAN_FLY | UNIQUE | FORCE_MAXHP |
 F:WILD_ONLY | WILD_MOUNTAIN | WILD_VOLCANO |
-F:ANIMAL | GOOD | RIDING
+F:ANIMAL | GOOD | RIDING | CLEAR_HEAD
 F:DROP_CORPSE | POS_GAIN_AC
 S:1_IN_2
 S:BIRD_DROP | S_EAGLE
@@ -6382,14 +6382,14 @@ D:He is out to have a revenge on you who have desecrated his tomb.
 
 N:410:Gwaihir the Windlord
 G:B:B
-I:142:15d100:20:65:20:150
+I:142:22d66:20:65:20:150
 W:40:1:999:8000:0:0
 B:CLAW:HURT(15d5)
 B:CLAW:HURT(15d5)
 B:BITE:HURT(5d10)
 F:CAN_FLY | UNIQUE | FORCE_MAXHP |
 F:WILD_ONLY | WILD_MOUNTAIN | WILD_VOLCANO |
-F:ANIMAL | GOOD | RIDING
+F:ANIMAL | GOOD | RIDING | CLEAR_HEAD
 F:DROP_CORPSE | POS_GAIN_AC
 S:1_IN_2
 S:BIRD_DROP | S_EAGLE
@@ -7383,21 +7383,21 @@ D:The biggest white shark who has ever lived, it is hunting for you now!
 
 N:468:Thorondor
 G:B:v
-I:142:30d100:20:65:20:150
+I:142:11d253:20:65:20:150
 W:55:1:999:22222:0:0
 B:CLAW:HURT(16d5)
 B:CLAW:HURT(16d5)
 B:BITE:HURT(6d10)
 F:CAN_FLY | UNIQUE | ESCORT | FORCE_MAXHP |
 F:WILD_ONLY | WILD_MOUNTAIN | WILD_VOLCANO |
-F:ANIMAL | GOOD | RIDING
+F:ANIMAL | GOOD | RIDING | CLEAR_HEAD
 F:DROP_CORPSE | POS_GAIN_AC
 S:1_IN_2
 S:BIRD_DROP | S_EAGLE
 P:Copy:Dunadan:Mystic
 P:Life:80
 P:Body:Giant Bird
-D:An agent of supernatural being, Thorondor is the lord of eagles.
+D:An agent of supernatural beings, Thorondor is the lord of eagles.
 
 N:469:Giant blue ant
 G:a:b
@@ -8256,7 +8256,7 @@ B:HIT:HURT(5d5)
 B:HIT:HURT(5d5)
 B:HIT:HURT(5d5)
 F:UNIQUE | MALE | CAN_SPEAK | HAS_LITE_1 | HUMAN | EVIL | FORCE_MAXHP |
-F:ONLY_ITEM | DROP_2D2 | DROP_GOOD |
+F:ONLY_ITEM | DROP_2D2 | DROP_GOOD | NO_CONF |
 F:TAKE_ITEM | OPEN_DOOR | BASH_DOOR | TRUMP
 F:DROP_SKELETON | DROP_CORPSE | POS_SEE_INVIS
 P:Copy:Dunadan:Beastmaster
@@ -12109,7 +12109,7 @@ P:Copy:Balrog:Chaos-Warrior
 S:1_IN_4 |
 S:PARALYZE | BLINK | CONFUSE | S_DEMON | BRAIN_SMASH | BR_NETHER
 D:A loathsome, sturdy, winged, horned demon, with talons that could tear
-D:a stone wall down
+D:a stone wall down.
 
 N:720:Greater Balrog
 G:U:R
@@ -15054,7 +15054,7 @@ B:CLAW:HURT(15d6)
 B:BITE:HURT(20d6)
 F:UNIQUE | ANIMAL | EVIL | CAN_SPEAK | FORCE_SLEEP | FORCE_MAXHP |
 F:RAND_25 | TAKE_ITEM | OPEN_DOOR | BASH_DOOR | KILL_BODY |
-F:ONLY_ITEM | DROP_1D2 | DROP_GOOD |
+F:ONLY_ITEM | DROP_1D2 | DROP_GOOD | NO_CONF |
 F:RES_POIS | RES_FIRE | RES_COLD | RES_DARK |
 F:DROP_CORPSE | POS_GAIN_AC
 S:FREQ_10 | BR_DARK | BR_POISON | BR_COLD
@@ -16093,7 +16093,7 @@ B:HIT:HURT(8d4)
 B:HIT:HURT(8d4)
 F:DROP_60 | WEIRD_MIND | OPEN_DOOR | BASH_DOOR | MOVE_BODY |
 F:TAKE_ITEM | GOOD | RES_ELEC | NO_CONF | NO_SLEEP |
-F:CAN_FLY | RES_COLD
+F:CAN_FLY | RES_COLD | RES_FIRE
 F:POS_SUST_STR
 P:Copy:Half-Giant:Mauler
 S:1_IN_6 |
@@ -19557,7 +19557,7 @@ F:FORCE_MAXHP | MOVE_BODY | KILL_BODY
 F:ONLY_ITEM | DROP_3D2 | DROP_GOOD | DROP_GREAT
 F:SMART | TAKE_ITEM | BASH_DOOR | HAS_LITE_2 |
 F:OLYMPIAN | NO_QUEST | REGENERATE | CAN_SWIM
-F:RES_FIRE | IM_ACID | RES_POIS | RES_ELEC | RES_COLD
+F:RES_FIRE | IM_ACID | RES_POIS | RES_ELEC | RES_COLD | RES_WATE
 F:NO_CONF | NO_SLEEP | AURA_FEAR
 P:Copy:Half-Titan:Beastmaster
 P:Stats:1:0:0:1:1:2
@@ -20553,7 +20553,7 @@ B:BUTT:HURT(2d5)
 B:BITE:HURT(1d6):POISON(1d6)
 B:KICK:HURT(3d4)
 F:OPEN_DOOR | DROP_CORPSE |
-F:RES_ACID | RES_NETH | RES_POIS
+F:RES_ACID | RES_NETH | RES_POIS | RIDING
 F:NO_QUEST | ANIMAL  | FRIENDS(3d3)
 S:1_IN_20
 S:BR_POIS | SHRIEK
@@ -22039,7 +22039,7 @@ I:104:110d10:20:50:10:700
 W:30:2:90:500:0:0
 B:CLAW:HURT(4d6):POISON(4d6):CUT(2d6, 50%)
 B:CLAW:HURT(4d6):POISON(4d6):CUT(2d6, 50%)
-F:BASH_DOOR | WILD_GRASS
+F:BASH_DOOR | WILD_GRASS | RANGED_MELEE
 F:ANIMAL | RES_POIS | KILL_WALL
 F:DROP_CORPSE | POS_GAIN_AC
 S:1_IN_5 | SLOW
@@ -22377,7 +22377,7 @@ D: cunning; you have never met its equal, and have absolutely no wish to.
 
 N:1239:The Ancient Roc of Okeldad
 G:B:U
-I:130:80d55:20:120:10:250
+I:130:44d88:20:120:10:250
 W:52:3:999:12826:0:0
 B:CRUSH:HURT(16d12)
 B:CRUSH:HURT(16d12)
@@ -22386,7 +22386,7 @@ B:CLAW:HURT(11d14):ELEC(8d12)
 F:BASH_DOOR | CAN_FLY | WILD_MOUNTAIN | WILD_WOOD | UNIQUE | FORCE_MAXHP
 F:ANIMAL | RES_ELEC | RES_GRAV | RES_WALL | RES_SOUN | RES_CHAO | RES_TIME |
 F:RIDING | DROP_CORPSE | POS_GAIN_AC | WILD_VOLCANO | NO_SLEEP | RES_TELE
-F:FORCE_SLEEP
+F:CLEAR_HEAD | FORCE_SLEEP
 S:1_IN_3
 S:BIRD_DROP
 P:Copy:Dunadan:Mystic
@@ -22633,7 +22633,7 @@ D:untouched by age. All creatures of the deep seas answer to his call.
 N:1252:Shrieking eel
 G:l:D
 I:113:11d11:22:40:10:100
-W:23:3:75:150:0:0
+W:23:2:75:150:0:0
 B:BITE:HURT(4d7):CUT(2d3, 50%)
 F:ANIMAL | AQUATIC | WILD_OCEAN | RES_WATE | FRIENDS(1d4, 42%)
 F:POS_TELEPATHY
@@ -22910,7 +22910,7 @@ S:MANA_STORM(10d10+352) | BA_LITE | HASTE | HEAL | TELE_TO |
 S:PSY_SPEAR(1d176+150) | BR_DISENCHANT | BO_MANA | BR_INERTIA
 S:ANIM_DEAD | BRAIN_SMASH | DARKNESS | BO_ELEC(15d15+264) | S_ANIMAL |
 S:BLINK_OTHER
-D:The consort of Osiris and mother oF Horus, Isis has many names and titles,
+D:The consort of Osiris and mother of Horus, Isis has many names and titles,
 D:and her mastery of magic is almost unparallelled. She loves her family and
 D:followers dearly, and will do anything to protect them; but those who would
 D:threaten them she destroys without mercy.
@@ -23095,6 +23095,156 @@ S:BA_WATER(1d164+50) | HASTE | BA_LITE | BLINK_OTHER | S_PANTHEON
 D:Hathor, the cow goddess of nature, fertility and the sky, is both a
 D:fearsome adversary in her own right and a popular deity capable of
 D:finding helpers should she need them.
+
+N:1272:Flying fishrooster
+G:H:W
+I:142:18d121:30:262:15:1000
+W:73:4:999:15730:0:0
+B:CRUSH:FORCE(15d15)
+B:CRUSH:HURT(12d12)
+B:CRUSH:GRAVITY(5d5)
+F:FORCE_SLEEP | NONLIVING | FORCE_MAXHP | RES_TELE | RES_ELEC
+F:RES_FIRE | RES_COLD | RES_NEXU | RES_GRAV | RES_DISE | RES_WALL | RES_INER
+F:NO_CONF | NO_SLEEP | NO_STUN | RES_SOUN | IM_POIS | REFLECTING | DROP_4D2
+F:RES_WATE | RES_LITE | RES_DARK | RES_PLAS | RES_SHAR | BASH_DOOR | CAN_FLY
+F:POS_GAIN_AC
+P:Copy:Golem:Warrior
+S:FREQ_27 | BR_SOUND | BR_STORM | SHRIEK | S_MONSTER
+D:A bizarre, majestic, awe-inspiring monstrosity, large enough to swallow
+D:dozens of people at once. You have never seen anything else like it, and
+D:presume it may be a creature from another world, renowned there in song
+D:and story. It emits strange whistling sounds as it approaches, about to
+D:crush you into a pulp.
+
+N:1273:Giant moth
+G:I:g
+I:132:2d2:25:10:10:3
+W:2:2:12:3:0:0
+B:TOUCH:TERRIFY(1d1):TERRIFY(25%)
+F:ANIMAL | WEIRD_MIND | CAN_FLY | RAND_25 | WILD_WOOD | WILD_SWAMP
+F:POS_GAIN_AC
+P:Copy:Snotling:Tourist
+P:Life:50
+P:Body:Scrawny
+D:A nocturnal lepidopteran with a thick, furry body the size of a small
+D:mouse. It flitters around the dungeon, harmless but creepy.
+
+N:1274:Akuvalt the Deceiver
+G:U:o
+I:125:66d99:45:145:0:1000
+W:72:3:999:38115:0:0
+B:HIT:HURT(8d12):CONFUSE(3d4)
+B:CRUSH:SLOW(8d12):STUN(3d4)
+B:GAZE:TERRIFY:PARALYZE:SLOW(3d4, 50%)
+B:TOUCH:DISEASE(20d4):DRAIN_EXP(80d6):DISENCHANT(3d4, 50%)
+F:UNIQUE | FORCE_MAXHP | EVIL | FORCE_SLEEP | CAN_SPEAK | DEMON |
+F:DROP_3D2 | DROP_2D2 | DROP_GOOD | MOVE_BODY | RES_CHAO | RES_POIS |
+F:IM_FIRE | RES_ELEC | RES_SOUN | ESCORT | RES_TIME | SELF_LITE_1 |
+F:NO_SLEEP | NO_CONF | NO_FEAR | OPEN_DOOR | CAN_FLY | REGENERATE |
+F:POS_HOLD_LIFE | POS_SEE_INVIS | POS_GAIN_AC
+P:Copy:Amberite:Chaos-Warrior
+S:FREQ_35 |
+S:ROCKET(400) | DISPEL_MAGIC | BR_NUKE | BO_PLASMA(8d7+119) | PSY_SPEAR |
+S:CONFUSE | SCARE | S_DEMON | S_MONSTER | HEAL | SHRIEK | BR_CONFUSION |
+S:BR_CHAOS | BA_CHAOS | S_SPIDER | DRAIN_MANA | BLINK
+O:DROP_MAGE
+D:A Duke of Hell and rival of Mephistopheles, tasked with corrupting people
+D: and tempting the foolish into unwittingly furthering the aims of his
+D: master Lucifer. He has assumed a humanoid shape and appears friendly
+D: and charming at first sight, but the faint orange glow he retains
+D: regardless of form reveals his true identity.
+
+N:1275:Untamo the Cruel
+G:p:u
+I:111:33d22:25:75:25:170
+W:23:3:999:404:0:0
+B:HIT:HURT(5d6):STUN(2d3)
+B:HIT:HURT(5d6):CUT(3d4)
+B:HIT:HURT(5d6)
+F:UNIQUE | MALE | CAN_SPEAK | DROP_SKELETON | DROP_CORPSE
+F:FORCE_SLEEP | FORCE_MAXHP | HUMAN | EVIL | ESCORT
+F:ONLY_ITEM | DROP_90 | DROP_1D2 | DROP_GOOD |
+F:OPEN_DOOR | BASH_DOOR | RES_COLD | NO_CONF | NO_SLEEP
+S:1_IN_6 |
+S:SCARE | TRAPS
+P:Copy:Dunadan:Chaos-Warrior
+O:DROP_WARRIOR
+D:An ambitious captain of men, infamous for slaying his brother,
+D:enslaving his nephew and usurping their lands.
+
+N:1276:Sea giant
+G:P:B
+I:123:22d55:30:95:20:400
+W:45:3:999:3630:0:0
+B:HIT:HURT(7d10):STUN(4d4, 44%)
+B:HIT:COLD(3d10):CONFUSE(4d4, 44%)
+B:HIT:ACID(3d10):CONFUSE(4d4, 44%)
+B:HIT:ACID(3d10):TERRIFY(44%)
+F:FORCE_SLEEP | FORCE_MAXHP | AQUATIC | FRIENDS(2d3, 30%)
+F:DROP_2D2 | SMART | TAKE_ITEM | WILD_OCEAN | REGENERATE |
+F:OPEN_DOOR | BASH_DOOR | IM_ACID | RES_WATE
+F:EVIL | GIANT | RES_COLD | RES_SOUN
+F:DROP_SKELETON | DROP_CORPSE |
+F:POS_GAIN_AC
+P:Copy:Half-Titan:Warrior
+S:FREQ_22
+S:TELE_TO | HEAL | SCARE | S_MONSTER(1d1) | BA_WATER(1d90+50) | BERSERK
+S:BA_ACID(1d135+50) | BO_ICE(6d8+90) | PARALYZE
+D:An aquatic relative of the ice giants, almost twenty feet tall, and full
+D:of dark cunning.
+
+N:1277:Aegir, God-King of the Sea Giants
+G:P:G
+I:129:44d209:30:160:15:1000
+W:77:3:999:55660:0:0
+B:HIT:COLD(11d11):CONFUSE(5d5):STUN(5d5, 80%)
+B:HIT:COLD(11d11):CONFUSE(5d5):STUN(5d5, 80%)
+B:HIT:COLD(11d11):SLOW(5d5):TERRIFY(5d5, 80%)
+B:HIT:COLD(11d11):ACID(7d7)
+F:UNIQUE | MALE | GIANT | NO_QUEST | RES_TELE |
+F:FORCE_SLEEP | FORCE_MAXHP | MOVE_BODY | RANGED_MELEE |
+F:ONLY_ITEM | DROP_3D2 | DROP_GOOD | DROP_GREAT
+F:SMART | TAKE_ITEM | BASH_DOOR | HAS_LITE_2 |
+F:CAN_SWIM | REGENERATE | IM_ACID | IM_COLD | IM_FIRE
+F:RES_WATE | RES_SOUN | NO_SLEEP | NO_CONF
+P:Copy:Half-Titan:Beastmaster
+P:Stats:1:0:0:1:1:2
+P:Life:105
+S:1_IN_3 |
+S:BA_WATER(1d154+50) | BO_ICE(1d154+50) | TELE_TO | HEAL | S_SPECIAL |
+S:BA_ACID(1d484+77) | BA_COLD(1d484+77) | HASTE | BR_STORM |
+D:Aegir, lord of the sea, is not as given to casual brutality as most of his
+D:giant kin; at times he can be friendly and cheerful, and is famed as the
+D:brewer and party-host of the gods. But he has a temper, and is as violent
+D:and fearsome when angered as the oceans he has claimed as his kingdom...
+
+N:1278:Herringfolt, the Great Wild Boar
+G:q:R
+I:125:66d11:25:77:10:350
+W:24:1:999:1210:0:0
+B:CRUSH:HURT(5d10):STUN(3d4)
+B:BUTT:HURT(4d10):CUT(5d6)
+B:BITE:HURT(3d6)
+F:BASH_DOOR | FORCE_MAXHP | FORCE_SLEEP | UNIQUE |
+F:ANIMAL | WILD_WOOD | WILD_ONLY | MALE | DROP_CORPSE | NO_CONF |
+F:POS_GAIN_AC |
+S:BERSERK
+P:Copy:Half-Giant:Mauler
+P:Body:Bear
+D:A monstrous boar unequalled in size and ferocity, descended from the wild
+D:beasts of the Firien Wood: Herringfolt, the man-slayer, its tusks still
+D:red with the blood of its previous victims.
+
+N:1279:Blinking light
+G:*:v
+I:115:7d8:15:20:0:150
+W:19:3:44:64:0:0
+F:RES_LITE | EMPTY_MIND | CAN_FLY | NONLIVING | SELF_LITE_1 | NEVER_BLOW |
+F:NO_CONF | RAND_50 | ATTR_MULTI | POS_GAIN_AC
+P:Copy:Snotling:Warrior
+P:Body:Wisp
+S:FREQ_75 | JMP_LIGHT(5d5)
+D:Whatever you do... don't just relax and watch the blinking light.
 
 # N: serial number : monster name
 # G: symbol : color
