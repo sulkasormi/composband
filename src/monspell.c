@@ -2167,7 +2167,13 @@ static void hp_mon(mon_ptr mon, int amt) /* this should be public */
     {
         set_monster_monfear(mon->id, 0);
         if (!p_ptr->blind && mon_show_msg(mon))
-            msg_format("%s recovers its courage.", _current.name); /* XXX */
+        {
+            char m_poss[80];
+            char m_name[80];
+            monster_desc(m_poss, mon, MD_PRON_VISIBLE | MD_POSSESSIVE);
+            monster_desc(m_name, mon, 0);
+            msg_format("%^s recovers %s courage.", m_name, m_poss); /* XXX */
+        }
     }
 }
 static void _heal(void)
@@ -2436,6 +2442,25 @@ static void _summon_special(void)
         r_idx = MON_HORUS;
         r_idx2 = MON_ISIS;
         break;
+    case MON_AEGIR:
+        fire_ball_hide(GF_WATER_FLOW, 0, 3, 8);
+        if (one_in_(2))
+        {
+            if (_current.flags & MSC_SRC_PLAYER)
+                msg_print("You summon your servants!");
+            else
+                msg_format("%s summons his servants!", _current.name);
+            r_idx = MON_SEA_GIANT;
+        }
+        else
+        {
+            if (_current.flags & MSC_SRC_PLAYER)
+                msg_print("You summon Kraken!");
+            else
+                msg_format("%s summons Kraken!", _current.name);
+            r_idx = MON_LESSER_KRAKEN;
+        }
+        break;
 
     }
     for (i = 0; i < num; i++)
@@ -2543,7 +2568,7 @@ static void _weird_bird_p(void)
 
             monster_desc(m_name_self, _current.mon, MD_PRON_VISIBLE | MD_POSSESSIVE | MD_OBJECTIVE);
 
-            msg_format("The attack of %s has wounded %s!", _current.name, m_name_self);
+            msg_format("%^s wounds %s!", _current.name, m_name_self);
             project(0, 0, _current.src.y, _current.src.x, psion_backlash_dam(get_damage), GF_MISSILE, PROJECT_KILL);
             if (p_ptr->tim_eyeeye)
                 set_tim_eyeeye(p_ptr->tim_eyeeye-5, TRUE);
@@ -2612,7 +2637,7 @@ static void _weird_bird_m(void)
                 /* hisself */
                 monster_desc(m_name_self, _current.mon, MD_PRON_VISIBLE | MD_POSSESSIVE | MD_OBJECTIVE);
 
-                msg_format("The attack of %s has wounded %s!", _current.name, m_name_self);
+                msg_format("%^s wounds %s!", _current.name, m_name_self);
                 project(0, 0, _current.src.y, _current.src.x, psion_backlash_dam(get_damage), GF_MISSILE, PROJECT_KILL);
                 if (p_ptr->tim_eyeeye) set_tim_eyeeye(p_ptr->tim_eyeeye-5, TRUE);
             }
@@ -2783,6 +2808,11 @@ static _custom_msg_t _mon_msg_tbl[] = {
         "$CASTER quacks.",
         "$CASTER quacks.",
         "You quack." }, 
+   { MON_FISHROOSTER, {MST_SUMMON, SUMMON_MONSTER},
+        "$CASTER spits out undigested monsters.",
+        "$CASTER spits out undigested monsters.",
+        "$CASTER spits out undigested monsters.",
+        "You spit out undigested monsters." },
     {0}
 };
 static cptr _custom_msg(void)
