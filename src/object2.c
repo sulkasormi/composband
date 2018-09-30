@@ -2228,6 +2228,8 @@ bool apply_magic(object_type *o_ptr, int lev, u32b mode)
 
         /* Extract the other fields */
         o_ptr->pval = a_ptr->pval;
+        if ((object_is_(o_ptr, TV_BOW, SV_HARP)) && (p_ptr->pclass != CLASS_BARD))
+            o_ptr->pval -= (o_ptr->pval / 2);
         o_ptr->ac = a_ptr->ac;
         o_ptr->dd = a_ptr->dd;
         o_ptr->ds = a_ptr->ds;
