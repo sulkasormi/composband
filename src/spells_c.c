@@ -351,7 +351,8 @@ void crafting_spell(int cmd, variant *res)
 
         if (prompt.obj->number > 30)
         {
-            if (!get_check("The enchantment has a chance to fail. Proceed anyway? "))
+            int mahis = ((prompt.obj->number * 20) - 597) / 6;
+            if (!get_check(format("The enchantment has %s %d%% chance to fail. Proceed anyway? ", ((mahis / 10) == 8) ? "an" : "a", mahis)))
             return;
         }
         
