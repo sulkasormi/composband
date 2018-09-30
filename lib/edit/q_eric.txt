@@ -3,7 +3,7 @@ D:When Oberon, the rightful ruler of Amber, disappeared, Eric
 D:did not waste much time making his claim for the throne.
 D:Eric is waiting for his own coronation in a secure stronghold.
 D:You must eliminate him before he is crowned, or other Amberites
-D:may feel to obliged to obey him -- and he'll be invincible!
+D:may feel obliged to obey him -- and he'll be invincible!
 ?:1
 
 ?:[EQU $QUEST15 Completed]
