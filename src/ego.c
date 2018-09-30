@@ -2978,8 +2978,6 @@ static void _ego_create_helmet(object_type *o_ptr, int level)
         case EGO_HELMET_KNOWLEDGE:
             if (one_in_(7))
                 add_flag(o_ptr->flags, OF_MAGIC_MASTERY);
-            if (one_in_(5))
-                add_flag(o_ptr->flags, OF_LORE2);
             if (one_in_(ACTIVATION_CHANCE))
             {
                 int choices[] = {
