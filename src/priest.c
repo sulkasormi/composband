@@ -108,7 +108,7 @@ class_t *priest_get_class(void)
 
     if (!init)
     {           /* dis, dev, sav, stl, srh, fos, thn, thb */
-    skills_t bs = { 25,  35,  40,   2,  16,   8,  48,  35};
+    skills_t bs = { 25,  28,  40,   2,  16,   8,  48,  35};
     skills_t xs = {  7,  11,  12,   0,   0,   0,  13,  11};
 
         me.name = "Priest";
