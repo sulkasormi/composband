@@ -4353,6 +4353,7 @@ static bool summon_specific_okay(int r_idx)
 bool summon_specific(int who, int y1, int x1, int lev, int type, u32b mode)
 {
     int x, y, r_idx;
+    int summon_level = dun_level;
     bool mon_summoned = FALSE;
 
     if (who > 0 && mon_spell_current() && mon_spell_current()->id.type == MST_SUMMON)
@@ -4402,19 +4403,22 @@ bool summon_specific(int who, int y1, int x1, int lev, int type, u32b mode)
     if (summon_specific_who != SUMMON_WHO_NOBODY)
         _ignore_depth_hack = TRUE;
 
+    /* Hack - preserve old level of summoning in the Vault */
+    if ((quest_id_current()) && (strpos("The Vault", quests_get_current()->name) == 1)) summon_level -= 5;
+
     /* Pick a monster, using the level calculation */
-    r_idx = get_mon_num((dun_level + lev) / 2 + 5);
+    r_idx = get_mon_num((summon_level + lev) / 2 + 5);
 
     /* No pass/kill wall monsters allowed? Well, just pick a normal one then ... */
     if (!r_idx && summon_wall_scummer)
     {
         summon_wall_scummer = FALSE;
-        r_idx = get_mon_num((dun_level + lev) / 2 + 5);
+        r_idx = get_mon_num((summon_level + lev) / 2 + 5);
     }
     if (!r_idx && summon_ring_bearer)
     {
         summon_ring_bearer = FALSE;
-        r_idx = get_mon_num((dun_level + lev) / 2 + 5);
+        r_idx = get_mon_num((summon_level + lev) / 2 + 5);
     }
 
     /* Hack: For summoning spells, try again ignoring any
@@ -4426,7 +4430,7 @@ bool summon_specific(int who, int y1, int x1, int lev, int type, u32b mode)
     if (!r_idx && summon_specific_who != SUMMON_WHO_NOBODY)
     {
         _ignore_depth_hack = TRUE;
-        r_idx = get_mon_num((dun_level + lev) / 2 + 5);
+        r_idx = get_mon_num((summon_level + lev) / 2 + 5);
     } XXX cf above for why this is commented out. */
 
     _ignore_depth_hack = FALSE;
