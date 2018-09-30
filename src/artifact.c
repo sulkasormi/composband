@@ -1814,6 +1814,11 @@ static void get_random_name_aux(char *return_name, object_type *o_ptr, int power
         }
         get_rnd_line(filename, bias_hack, return_name);
     }
+    else if (object_is_bow(o_ptr))
+    {
+        cptr filename = "ranged.txt";
+        get_rnd_line(filename, one_in_(2) ? o_ptr->sval : 0, return_name);
+    }
     else
     {
         cptr filename;
@@ -1941,6 +1946,17 @@ static _slot_weight_t _slot_weight_tbl[] = {
 int get_slot_weight(obj_ptr obj)
 {
     int i;
+
+    /* Hack - harps are too strong
+     * Also, non-bards shouldn't get full benefits from harps
+     * Since this would be hard to code, we just generate weaker harps
+     * This code also prevents reforges onto mundanified guns from getting
+     * completely ridiculous */
+    if ((obj->tval == TV_BOW) && (obj->sval > SV_RANGED_MAX_NORMAL) && (obj->sval != SV_NAMAKE_BOW))
+    {
+        return ((obj->sval == SV_HARP) && (p_ptr->pclass == CLASS_BARD)) ? 50 : 40;
+    }
+
     for (i = 0; ; i++)
     {
         _slot_weight_ptr row = &_slot_weight_tbl[i];
@@ -3483,6 +3499,8 @@ bool create_named_art_aux_aux(int a_idx, object_type *o_ptr)
 
     o_ptr->name1 = a_idx;
     o_ptr->pval = a_ptr->pval;
+    if ((object_is_(o_ptr, TV_BOW, SV_HARP)) && (p_ptr->pclass != CLASS_BARD))
+        o_ptr->pval -= (o_ptr->pval / 2);
     o_ptr->ac = a_ptr->ac;
     o_ptr->dd = a_ptr->dd;
     o_ptr->ds = a_ptr->ds;
