@@ -2129,6 +2129,7 @@ bool symbol_genocide(int power, bool player_cast)
     int  i;
     char typ;
     bool do_virtue = FALSE;
+    bool okay = FALSE;
 
     /* Prevent genocide in quest levels */
     if (!quests_allow_all_spells()) return TRUE;
@@ -2138,8 +2139,16 @@ bool symbol_genocide(int power, bool player_cast)
     }
 
     /* Mega-Hack -- Get a monster symbol */
-    if (!get_com("Choose a monster race (by symbol) to genocide: ", &typ, FALSE))
-        return FALSE;
+    while (!okay)
+    {
+        if (!get_com("Choose a monster race (by symbol) to genocide: ", &typ, FALSE))
+            return FALSE;
+        if (typ == 'n') /* naga hack */
+        {
+            if (msg_prompt("Really genocide Nagas? <color:y>[Y/N]</color>", "NY", PROMPT_DEFAULT) != 'Y') continue;
+        }
+        okay = TRUE;
+    }
 
     /* Delete the monsters of that "type" */
     for (i = 1; i < m_max; i++)
