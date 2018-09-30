@@ -19,8 +19,8 @@
 #define VER_MAJOR 7
 #define VER_MINOR 0
 #define VER_PATCH "nougat"
-#define VER_EXTRA 0
-#define VERSION_IS_DEVELOPMENT (FALSE)
+#define VER_EXTRA 1
+#define VERSION_IS_DEVELOPMENT (TRUE)
 
 #define GAME_MODE_BEGINNER  0
 #define GAME_MODE_NORMAL    1
@@ -155,8 +155,8 @@
  * it's a bit tedious to figure current memory requirements. Why
  * not just malloc() string data and let the C library handle things?
  */
-#define FAKE_NAME_SIZE  20 * 1024   /* max is 18532 (r_info) */
-#define FAKE_TEXT_SIZE  144 * 1024  /* max is 116771 (r_info) */
+#define FAKE_NAME_SIZE  24 * 1024   /* max is 18532 (r_info) */
+#define FAKE_TEXT_SIZE  160 * 1024  /* max is 116771 (r_info) */
 #define FAKE_TAG_SIZE   3 * 1024    /* max is 2092 (f_info) */
 
 
@@ -288,7 +288,7 @@
 /*
  * Random energy
  */
-#define ENERGY_NEED() ((predictable_energy_hack) ? 100 : (randnor(100, 18)))
+#define ENERGY_NEED() ((predictable_energy_hack) ? 100 : energy_need_clipper())
 
 
 /*
@@ -1650,6 +1650,7 @@ enum {
 #define SV_RAILGUN                      51
 #define SV_NAMAKE_BOW                   63
 #define SV_HARP                         70
+#define SV_RANGED_MAX_NORMAL            24
 
 /* The "sval" codes for TV_DIGGING */
 #define SV_SHOVEL                        1
@@ -4668,6 +4669,9 @@ extern int PlayerUID;
 #define MON_OSIRIS              1259
 #define MON_ISIS                1263
 #define MON_AMUN                1266
+#define MON_FISHROOSTER         1272
+#define MON_SEA_GIANT           1276
+#define MON_AEGIR               1277
 
 /* The Metal Babble guards the Arena dungeon, but this requires the guardian to be a unique
    monster or the dungeon never gets flagged as completed. Note, this messes up the needle
@@ -4856,7 +4860,7 @@ extern int PlayerUID;
 #define DF1_CAVE                0x00000400
 #define DF1_CAVERN              0x00000800
 #define DF1_RANDOM              0x00001000
-#define DF1_XXX13               0x00002000
+#define DF1_COFFEE              0x00002000
 #define DF1_XXX14               0x00004000
 #define DF1_XXX15               0x00008000
 #define DF1_FORGET              0x00010000
@@ -5784,6 +5788,7 @@ enum effect_e
     EFFECT_SACRED_KNIGHTS,
     EFFECT_GONG,
     EFFECT_MURAMASA,
+    EFFECT_EXPERTSEXCHANGE,
 
     EFFECT_MAX
 };
