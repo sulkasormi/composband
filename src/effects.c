@@ -5419,8 +5419,14 @@ bool lp_player(int num)
 
             msg_print("<color:v>Your life force is exhausted!</color>");
             change_race(which, "");
-            p_ptr->clp = 1000; /* full unlife */
-            assert(get_race()->flags & RACE_IS_NONLIVING); /* no more life drain */
+            if (!(get_race()->flags & RACE_IS_NONLIVING)) /* race change failed for whatever reason, so instead of being undead we are now dead */
+            {
+                take_hit(DAMAGE_NOESCAPE, p_ptr->chp + 10, "running out of life force");
+            }
+            else
+            {
+                p_ptr->clp = 1000; /* full unlife */
+            }
         }
         else
             p_ptr->clp = 0; /* monsters can't change their race ... */
@@ -5734,6 +5740,7 @@ void change_race(int new_race, cptr effect_msg)
     if (old_race == RACE_ANDROID) return;
     if (player_obviously_poly_immune()) return;
     if (new_race == old_race) return;
+    if (comp_mode) return;
 
     _lock = TRUE;
 
