@@ -171,13 +171,9 @@ N:19:BIAS_RANGER
 'Tiger Baton'
 'Whirlwind'
 'Animalbane'
-'Sniper'
-'Shootingstar'
 'Nature's Wrath'
 'Galaxy'
 of Umbar
-of Amras
-of Amrod
 
 N:11:BIAS_CHR
 'Charm of Kaguya'
