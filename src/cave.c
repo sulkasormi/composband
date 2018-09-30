@@ -4791,7 +4791,7 @@ void hit_mon_trap(int y, int x, int m_idx)
                     }
                     break;
                 case 5: /* Trap Door */
-                    if (!quests_get_current() && !p_ptr->inside_arena)
+                    if (!quests_get_current() && !p_ptr->inside_arena && dungeon_type && (dun_level < d_info[dungeon_type].maxdepth))
                     {
                         if (r_ptr->flags7 & RF7_CAN_FLY)
                         {
