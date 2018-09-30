@@ -416,7 +416,7 @@ N:85:(Lore)
 T:DRAGON_ARMOR
 W:0:*:1
 C:0:0:0:3
-F:INT | LORE1
+F:INT | LORE2
 
 N:86:(Breath)
 T:DRAGON_ARMOR
@@ -536,7 +536,7 @@ N:110:of Knowledge
 T:HELMET
 W:0:40:1
 C:0:0:0:3
-F:INT | SUST_INT | LORE1
+F:INT | SUST_INT | LORE2
 
 N:111:of Piety
 T:HELMET
