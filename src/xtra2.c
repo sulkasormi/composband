@@ -1122,6 +1122,23 @@ void monster_death(int m_idx, bool drop_item)
         }
         break;
 
+    case MON_AEGIR:
+        if (drop_chosen_item)
+        {
+            /* Get local object */
+            q_ptr = &forge;
+
+            object_prep(q_ptr, lookup_kind(TV_POTION, SV_POTION_CONFUSION));
+
+            object_origins(q_ptr, ORIGIN_DROP);
+            q_ptr->origin_xtra = MON_AEGIR;
+            q_ptr->number = randint1(25);
+
+            /* Drop it in the dungeon */
+            (void)drop_near(q_ptr, -1, y, x);
+        }
+        break;
+
     case MON_RAAL:
         if (drop_chosen_item && (dun_level > 9))
         {
@@ -1857,6 +1874,10 @@ void monster_death(int m_idx, bool drop_item)
             a_idx = ART_AMUN;
             chance = 100;
             break;
+        case MON_AEGIR:
+            a_idx = ART_AEGIR;
+            chance = 25;
+            break;
         case MON_CARCHAROTH:
             a_idx = ART_CARCHAROTH;
             chance = 5;
@@ -2334,6 +2355,7 @@ static void get_exp_from_mon(int dam, monster_type *m_ptr)
         {
            coffee_mult = 3;
            if (!(r_ptr->flags2 & RF2_MULTIPLY)) coffee_mult = (((p_ptr->lev / 10) == 1) || ((p_ptr->lev >= 38))) ? 7 : 8;
+           if (p_ptr->lev >= 42) coffee_mult = MIN(coffee_mult, 6);
         }
         s64b_mul(&new_exp, &new_exp_frac, 0, coffee_mult);
     }
