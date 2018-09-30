@@ -2,8 +2,8 @@
 # By Shayne Steele (steele@cs.fsu.edu)
 ?:[EQU $QUEST31 Taken InProgress]
 D:Old Man Willow has gone too far! He has turned a small section
-D:of the forest against all men. Kill everything you find in Old 
-D:Man Willow's section of the forest. You will be well rewarded 
+D:of the forest against all men. Please kill him before his
+D:influence can spread any further, you will be well rewarded 
 D:for completing this quest. The quest is in a clearing east of
 D:the town.
 ?:1
