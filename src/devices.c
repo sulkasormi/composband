@@ -778,7 +778,7 @@ static cptr _do_potion(int sval, int mode)
         }
         break;
     case SV_POTION_CLARITY:
-        if (desc) return "It clears your mind a bit when you quaff it and cures confusion.";
+        if (desc) return "It clears your mind when you quaff it, curing confusion and restoring some mana.";
         if (info) return format("3d%d + %d", _potion_power(6), _potion_power(3));
         if (cast)
         {
@@ -791,7 +791,7 @@ static cptr _do_potion(int sval, int mode)
                 msg_print("You feel your mind clear.");
                 device_noticed = TRUE;
             }
-			if (set_confused(0, TRUE)) device_noticed = TRUE;
+		if (set_confused(0, TRUE)) device_noticed = TRUE;
         }
         break;
     case SV_POTION_GREAT_CLARITY:
@@ -2212,6 +2212,7 @@ static _effect_info_t _effect_info[] =
     {"SACRED_KNIGHTS",  EFFECT_SACRED_KNIGHTS,       0,   0,  0, 0},
     {"GONG",            EFFECT_GONG,                 0,   0,  0, 0},
     {"MURAMASA",        EFFECT_MURAMASA,             0,   0,  0, 0},
+    {"EXPERTSEXCHANGE", EFFECT_EXPERTSEXCHANGE,      0,   0,  0, 0},
 
     {0}
 };
@@ -7112,6 +7113,51 @@ cptr do_effect(effect_t *effect, int mode, int boost)
             }
         }
         break;
+    case EFFECT_EXPERTSEXCHANGE: /* adapted from Frogspawn */
+        if (name) return "Change Sex";
+        if (desc) return "It changes your biological gender.";
+        if (value) return format("%d", 100);
+        if (cast)
+        {
+            p_ptr->psex = (SEX_MALE + SEX_FEMALE) - p_ptr->psex;
+            if (p_ptr->psex == SEX_FEMALE)
+            {
+                mut_lose(MUT_IMPOTENCE);
+                take_hit(DAMAGE_NOESCAPE, 10, "sex reassignment");
+                msg_print("Congratulations! You are now a female!");
+                switch (randint0(7))
+                {
+                    case 0: msg_print("(Well, that was quick, and didn't hurt. Much.)"); break;
+                    case 1: msg_print("(Time to start kicking ass.)"); break;
+                    case 2: msg_print("(Already you hate those chauvinist male pigs.)"); break;
+                    case 3: msg_print("(Your remaining inner dirty male is already getting ideas...)"); break;
+                    case 4: msg_print("(At last you can think clearly, without all those weird hormones flowing through your body.)"); break;
+                    case 5: msg_print("(The unfair sex! You've looked forward to this!)"); break;
+                    default: msg_print("(You miss your old body a bit, but you've never been afraid to experiment.)"); break;
+                }
+            }
+            else
+            {
+                if ((one_in_(12)) && (p_ptr->prace != RACE_ENT))
+                {
+                    msg_print("Congratulations! You are now an Ent!");
+                    msg_print(NULL);
+                    msg_print("Nah, just kidding. You are now a male.");
+                    break;
+                }
+                else msg_print("Congratulations! You are now a male!");
+                switch (randint0(7))
+                {
+                    case 0: msg_print("(Well, that was quick. You'll make them suffer now.)"); break;
+                    case 1: msg_print("(You feel testosterone flowing through your body. Time to pillage!)"); break;
+                    case 2: msg_print("(Who are you going to boss around now?)"); break;
+                    case 3: msg_print("RAAAAAAAARRH!"); break;
+                    case 4: msg_print("You feel very strong! (Maybe that's just you, though? Either that, or your stats haven't updated properly.)"); break;
+                    case 5: msg_print("(You hope other males will stop pestering you now.)"); break;
+                    default: msg_print("(They'd better pay you a hundred gold pieces for every eighty you earn now.)"); break;
+                }
+            }
+        }
     default:
         if (name) return format("Invalid Effect: %d", effect->type);
     }
