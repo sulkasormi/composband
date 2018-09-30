@@ -82,6 +82,7 @@ int class_melee_mult(void)
         case CLASS_MAULER: return 91;
         case CLASS_ALCHEMIST: return 88;
         case CLASS_POLITICIAN: return 86;
+        case CLASS_PRIEST: return 94;
         default: return 100;
     }
 }
