@@ -267,7 +267,12 @@ static void sense_inventory2(void)
     equip_for_each_that(_sense_obj, obj_can_sense2);
 }
 
-
+/* Random energy */
+s16b energy_need_clipper(void)
+{
+    s16b tulos = randnor(100, 18);
+    return MIN(133, MAX(67, tulos));
+}
 
 /*
  * Go to any level (ripped off from wiz_jump)
@@ -4088,6 +4093,13 @@ static void _dispatch_command(int old_now_turn)
         case '`':
         {
             if (!p_ptr->wild_mode) do_cmd_travel();
+            break;
+        }
+
+        case 'J':
+        {
+            if ((!p_ptr->wild_mode) && (travel.x) && (travel.y) && ((px != travel.x) || (py != travel.y)) && (in_bounds(travel.x, travel.y)) && (get_check("Resume travelling? ")))
+            travel_begin(TRAVEL_MODE_NORMAL, travel.x, travel.y);
             break;
         }
 
