@@ -926,9 +926,12 @@ static int _draconian_breath_amount(void)
         break;
 
     case DRACONIAN_CRYSTAL:
-    case DRACONIAN_BRONZE:
     case DRACONIAN_GOLD:
         amt = MIN(350, p_ptr->chp * (20 + l*l*l*30/125000) / 100);
+        break;
+
+    case DRACONIAN_BRONZE:
+        amt = MIN(300, p_ptr->chp * (17 + l*l*l*25/125000) / 100);
         break;
     }
 
@@ -1357,18 +1360,18 @@ race_t *draconian_get_race(int psubrace)
         me.stats[A_CHR] =  2;
 
         me.skills.dis = -2;
-        me.skills.dev = 3;
+        me.skills.dev = 1;
         me.skills.sav = 2;
         me.skills.stl = 1;
         me.skills.srh = 1;
         me.skills.fos = 10;
         me.skills.thn = 5;
-        me.skills.thb = 3;
+        me.skills.thb = 1;
 
         me.infra = 2;
 
         me.exp = 190;
-        me.life = 103;
+        me.life = 101;
         me.shop_adjust = 105;
 
 
