@@ -1719,6 +1719,13 @@ bool gf_affect_m(int who, mon_ptr mon, int type, int dam, int flags)
             dam *= 3; dam /= randint1(6) + 6;
             mon_lore_3(mon, RF3_NO_CONF);
         }
+        else if (randint1(race->level) >= randint1(caster_lev))
+        {
+            do_conf = 0;
+            dam -= (dam / 10);
+            note = " resists the effects!";
+        }
+
         else do_conf = _gf_distance_mod(10 + randint1(15));
         break;
     case GF_DISENCHANT:
@@ -1868,7 +1875,7 @@ bool gf_affect_m(int who, mon_ptr mon, int type, int dam, int flags)
                     if (!unique)
                     {
                         note = " is suspended!";
-                        do_paralyzed = 3;
+                        do_paralyzed = 2;
                     }
                     else
                     {
