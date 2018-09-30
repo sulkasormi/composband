@@ -1,0 +1,134 @@
+N:2:Sling
+of Bungo
+of Leo
+of Lugh
+of the Master Rogue
+of Sorrow
+of Happiness
+of Hope
+of Sargon
+of the Elf-friends
+of Dunn
+of Labion
+of the Nibelung
+of the Syrup Smugglers
+'Moplu'
+'Hailmaker'
+'Bunnybane'
+'Flyharmer'
+'Nutcase'
+'Nose Container'
+'Skullcrusher'
+'Pebblethrower 2000'
+
+N:12:Short Bow
+N:13:Long Bow
+of Sherwood
+of Will Scarlet
+of Impasse
+of Gorhendad
+of Otto
+of Neith
+of Ossiriand
+of Tristan
+of Wildantor
+of the Guerrilla
+of the Centaurs
+of Eurytus
+of Chester
+of Atalanta
+of Amras
+of Amrod
+of Agincourt
+'Second String'
+'Silkstring'
+'Tigerbow'
+'Gandiva'
+'Bearslayer'
+
+N:23:Light Crossbow
+N:24:Heavy Crossbow
+of the Stone Trolls
+of the Lesser Gods
+of Kurik
+of Rubble
+of Lamorkand
+of Blitzen
+of Corpsing
+of Gragomani
+'Cubragol'
+'Armor Piercer'
+'Lemon Juice'
+'Gastraphetes'
+'Debrismaker'
+'Machinebow'
+'Hurricane'
+'Crossfire'
+'Pink Mumak'
+'Overkiller'
+'Reminder'
+'Black Death'
+'Thump'
+
+N:70:Harp
+of Ernie
+of Flights
+of Joukahainen
+of Amber's Melody
+of the Horned Harper
+of the Angry Butcher
+of Cheer
+of Blondel
+of Alan-a-Dale
+of Cacofonix
+'Oon'
+'Sulosointu'
+'Silversound'
+'Megakiller'
+
+N:*:Default
+of Umbar
+of Loki
+of Angwil
+of Olbani
+of the Whispering Shadows
+of Uvatha
+of Suzi Shootem
+of the Eternal Virgin
+of the Mushroom Patches
+of Upeenimi
+of Matilda
+of You
+of the Angels
+of the Hunter
+of the Huntress
+of Marksmanship
+of Concentration
+of Gore
+of Slay Mold
+of the Almighty Janitor
+of Barnaby Bobble-Hat
+of Svitrigaila
+of Ballisto
+of the King
+of the Easterlings
+'Eaglewing'
+'Oivypoc'
+'Slingy'
+'Mortalizer'
+'Witchfire'
+'Bloodrain'
+'Fury'
+'Tempest'
+'Shooting Star'
+'Hellwind'
+'Invisible Death'
+'Sniper'
+'Undiscoverd Typo'
+'Disasterator'
+'Roomcleaner'
+'Bazooka'
+'Roarer'
+'Crash of Rhinos'
+'Life Collector'
+'Phoenix'
