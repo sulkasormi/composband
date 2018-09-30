@@ -1356,7 +1356,7 @@ static bool level_gen(cptr *why)
     else if (one_in_(SMALL_LEVEL))
         small = TRUE;
     if ((dungeon_type == DUNGEON_ICKY) && (dun_level == 10)) small = TRUE;
-    if (((coffee_break) || ((dungeon_type == DUNGEON_ANGBAND) && (!ironman_downward))))
+    if (((coffee_break) || ((d_info[dungeon_type].flags1 & DF1_COFFEE) && (!ironman_downward))))
     {
         coffee = TRUE;
         if ((dun_level < 99) && (randint0(484) < 484 - (dun_level * 2))) small = TRUE;
