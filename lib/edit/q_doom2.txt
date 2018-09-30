@@ -79,4 +79,7 @@ M:#d%%................e.....#$....................+....##$$$..h...$$$##
 M:#####################################################################
 R:OBJ(STAFF_HEAL_CURING)
 
+?:[EQU $CLASS Berserker]
+R:OBJ(potion of healing, NUMBER=5+1d4)
+
 # vim: filetype=q :
