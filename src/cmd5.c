@@ -517,7 +517,7 @@ void do_cmd_study(void)
             msg_format("You don't need to study this %s anymore.", p);
             return;
         }
-        if (!get_check(format("You will study a %s of %s again. Are you sure? ", p, name)))
+        if (!get_check(format("You will study the %s of %s again. Are you sure? ", p, name)))
         {
             return;
         }
