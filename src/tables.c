@@ -2441,6 +2441,9 @@ option_type option_info[] =
     { &no_scrambling,			FALSE, OPT_PAGE_BIRTH, 6, 15,
     "no_scrambling",			"Disallow stat scrambling from monster attacks" },
 
+    { &comp_mode,			FALSE, OPT_PAGE_BIRTH, 5, 18,
+    "comp_mode",			"Disallow permanent changes to player race" },
+
     /*** Easy Object Auto-Destroyer ***/
 
     { &destroy_items,               FALSE, OPT_PAGE_AUTODESTROY, 7, 0,
