@@ -29,7 +29,7 @@ T:TOWN | GENERATE
 G:KILL(anti-paladin)
 F:q_antipaladin.txt
 
-N:4:30:The Vault (Telmora)
+N:4:35:The Vault (Telmora)
 T:TOWN | GENERATE
 G:FIND(sting)
 F:q_vault.txt
@@ -135,6 +135,7 @@ F:q_mimics_treasure.txt
 
 N:31:22:Old Man Willow Quest (Outpost)
 T:TOWN | GENERATE
+G:KILL(old man willow)
 F:q_old_man_willow.txt
 
 N:32:25:The Dark Elven Lords (Morivant)
