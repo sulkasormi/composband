@@ -195,6 +195,10 @@ C:1:^C
 A:U
 C:1:O
 
+# Journey
+A:J
+C:1:(
+
 # Display Game Time
 #A:^t
 #C:1:'
