@@ -33,9 +33,9 @@ potions:new life#!**
 potions:self knowledge#!k
 
 potions:curing
-potions:healing#!kq
+potions:of healing#!kq
 potions:of life#!kq
-potions:*healing*#!kq
+potions:of *healing*#!kq
 potions:restore mana#!kq
 
 ?:[NOT [EQU $CLASS Berserker]]
