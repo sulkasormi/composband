@@ -364,7 +364,10 @@ static void do_cmd_eat_food_aux(obj_ptr obj)
     }
     else if (prace_is_(RACE_MON_JELLY))
     {
+        int luku = obj->number;
+        obj->number = 1;
         jelly_eat_object(obj);
+        obj->number = luku;
     }
     else if ( ( prace_is_(RACE_SKELETON)
              || prace_is_(RACE_GOLEM)
