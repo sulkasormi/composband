@@ -2048,7 +2048,9 @@ void monster_death(int m_idx, bool drop_item)
 
     if ( r_ptr->level && !p_ptr->inside_arena && !p_ptr->inside_battle
       && ( (r_ptr->flags1 & (RF1_DROP_GOOD | RF1_DROP_GREAT))
-        || (r_ptr->flags2 & RF2_THIEF) ) )
+        || (r_ptr->flags2 & RF2_THIEF) ) &&
+        ((!(r_ptr->flags2 & RF2_MULTIPLY)) ||
+        (r_ptr->r_akills < ((coffee_break || no_selling) ? 42 : 84))))
     {
         int r = (r_ptr->flags1 & RF1_DROP_GREAT) ? 7 : 3;
         int n = randint0(r);
