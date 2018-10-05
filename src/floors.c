@@ -1431,6 +1431,10 @@ void change_floor(void)
     /* Remember when this level was "created" */
     old_turn = game_turn;
 
+    /* We have no travelling target on this level */
+    travel.x = 0;
+    travel.y = 0;
+
     /* Politicians have level-based resource pools */
     if (p_ptr->pclass == CLASS_POLITICIAN)
     {
