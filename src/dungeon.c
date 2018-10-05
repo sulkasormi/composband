@@ -2692,7 +2692,7 @@ static void update_dungeon_feeling(void)
     p_ptr->redraw |= (PR_DEPTH);
 
     /* Disturb */
-    if ((disturb_minor) && ((feeling_was_special) || (p_ptr->feeling == 1))) disturb(0, 0);
+    if ((p_ptr->feeling == 1) || ((disturb_minor) && (feeling_was_special))) disturb(0, 0);
 }
 
 
