@@ -3644,7 +3644,7 @@ static void bldg_process_command(building_type *bldg, int i)
         enchant_item(object_allow_enchant_melee_weapon, bcost, 1, 1, 0, is_guild);
         break;
     case BACT_ENCHANT_ARMOR:
-        enchant_item(object_is_armour, bcost, 0, 0, 1, is_guild);
+        enchant_item(object_allow_enchant_armour, bcost, 0, 0, 1, is_guild);
         break;
     case BACT_RECHARGE:
         msg_print("My apologies, but that service is no longer available!");
