@@ -93,13 +93,13 @@ S:ANY:Belly
 
 N:9:Jelly7
 S:WEAPON_SHIELD:Pseudopod
-S:ANY:Any
-S:ANY:Any
-S:ANY:Any
-S:ANY:Any
-S:ANY:Any
-S:ANY:Any
-S:ANY:Any
+S:ANY:Belly
+S:ANY:Belly
+S:ANY:Belly
+S:ANY:Belly
+S:ANY:Belly
+S:ANY:Belly
+S:ANY:Belly
 
 # Beholders
 N:10:Eye
