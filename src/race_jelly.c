@@ -24,7 +24,7 @@ static cptr _desc =
   "armors and weapons. For convenience, destroying an object ('k' or the autodestroyer) "
   "automatically eats the object, and jellies never become bloated, their appetite being "
   "insatiable.\n \n"
-  "Like all monster races, jellies begin as weak monster of their race and evolve to "
+  "Like all monster races, jellies begin as a weak monster of their race and evolve to "
   "better forms as they gain experience. Jellies begin life as a small puddle of black "
   "ooze with very little carrying capacity for equipment. However, they quickly evolve "
   "into a Gelatinous Cube and then into an Acidic Cytoplasm. Jellies take one additional "
@@ -181,11 +181,10 @@ static void _acidic_cytoplasm_calc_bonuses(void)
 {
     p_ptr->pspeed += 3;
     p_ptr->free_act++;
-    p_ptr->to_a += p_ptr->lev/3;
-    p_ptr->dis_to_a += p_ptr->lev/3;
+    p_ptr->to_a += p_ptr->lev/6;
+    p_ptr->dis_to_a += p_ptr->lev/6;
     res_add_immune(RES_ACID);
     res_add(RES_CONF);
-    res_add_immune(RES_FEAR);
 
     add_flag(p_ptr->weapon_info[0].flags, OF_BRAND_ACID);
 
@@ -199,7 +198,6 @@ static void _acidic_cytoplasm_get_flags(u32b flgs[OF_ARRAY_SIZE])
     add_flag(flgs, OF_BRAND_ACID);
 
     add_flag(flgs, OF_IM_ACID);
-    add_flag(flgs, OF_IM_FEAR);
 
     _gelatinous_cube_get_flags(flgs);
 }
@@ -225,7 +223,7 @@ race_t *_acidic_cytoplasm_get_race_t(void)
         me.stats[A_CON] =  3;
         me.stats[A_CHR] = -1;
         
-        me.life = 105;
+        me.life = 102;
         me.infra = 0;
 
         me.calc_bonuses = _acidic_cytoplasm_calc_bonuses;
@@ -233,6 +231,7 @@ race_t *_acidic_cytoplasm_get_race_t(void)
 
         init = TRUE;
     }
+    me.life = 82 + (p_ptr->lev / 2);
     return &me;
 }
 
@@ -240,8 +239,8 @@ static void _shoggoth_calc_bonuses(void)
 {
     p_ptr->pspeed += 2;
     p_ptr->regen += 100;
-    p_ptr->to_a += p_ptr->lev/3;
-    p_ptr->dis_to_a += p_ptr->lev/3;
+    p_ptr->to_a += p_ptr->lev/6;
+    p_ptr->dis_to_a += p_ptr->lev/6;
     p_ptr->no_eldritch = TRUE;
 
     res_add(RES_TELEPORT);
@@ -275,7 +274,7 @@ race_t *_shoggoth_get_race_t(void)
         me.stats[A_CON] =  4;
         me.stats[A_CHR] =  0;
         
-        me.life = 108;
+        me.life = 103;
         me.infra = 0;
 
         me.calc_bonuses = _shoggoth_calc_bonuses;
@@ -289,7 +288,7 @@ race_t *_shoggoth_get_race_t(void)
 static void _gain_level(int new_level) 
 {
     if ( p_ptr->current_r_idx == MON_BLACK_OOZE
-      && new_level >= 10 )
+      && new_level >= 14 )
     {
         p_ptr->current_r_idx = MON_GELATINOUS_CUBE;
         msg_print("You have evolved into a Gelatinous Cube.");
@@ -297,7 +296,7 @@ static void _gain_level(int new_level)
         p_ptr->redraw |= PR_MAP | PR_BASIC;
     }
     else if ( p_ptr->current_r_idx == MON_GELATINOUS_CUBE
-           && new_level >= 25 )
+           && new_level >= 28 )
     {
         p_ptr->current_r_idx = MON_ACIDIC_CYTOPLASM;
         msg_print("You have evolved into an Acidic Cytoplasm.");
@@ -305,7 +304,7 @@ static void _gain_level(int new_level)
         p_ptr->redraw |= PR_MAP | PR_BASIC;
     }
     else if ( p_ptr->current_r_idx == MON_ACIDIC_CYTOPLASM
-           && new_level >= 40 )
+           && new_level >= 42 )
     {
         p_ptr->current_r_idx = MON_SHOGGOTH;
         msg_print("You have evolved into a Shoggoth.");
@@ -384,10 +383,8 @@ race_t *mon_jelly_get_race(void)
 bool jelly_eat_object(object_type *o_ptr)
 {
     char o_name[MAX_NLEN];
-    object_type copy = *o_ptr;
-    copy.number = 1;
-    object_desc(o_name, &copy, OD_COLOR_CODED);
-    set_food(MIN(PY_FOOD_FULL - 1, p_ptr->food + o_ptr->weight * 50));
+    object_desc(o_name, o_ptr, OD_COLOR_CODED);
+    set_food(MIN(PY_FOOD_FULL - 1, p_ptr->food + o_ptr->weight * 50 * o_ptr->number));
     msg_format("You assimilate %s into your gelatinous frame.", o_name);
     /* TODO: Consider giving timed benefits based on what is absorbed.
        For example, TR_RES_FIRE might give temp fire resistance and 
