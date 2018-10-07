@@ -2458,8 +2458,8 @@ static _speciality _specialities[_MAX_SPECIALITIES] = {
     /*  S   I   W   D   C   C */
       {+2,  0, +1,  0, +2,  0},
     /* Dsrm Dvce Save Stlh Srch Prcp Thn Thb*/
-      {  25,  24,  40,   1,  12,   2, 68, 25},
-      {  10,   9,  12,   0,   0,   0, 21, 11},
+      {  25,  24,  40,   1,  12,   2, 54, 25},
+      {  10,   8,  12,   0,   0,   0, 22, 11},
       {
         { TV_SHIELD, SV_DRAGON_SHIELD },
         { TV_SHIELD, SV_KNIGHT_SHIELD },
@@ -2729,6 +2729,12 @@ void _on_birth(void)
     _object_kind kind;
     int i;
 
+    if (p_ptr->psubclass == WEAPONMASTER_SHIELDS)
+    {
+        object_prep(&forge, lookup_kind(TV_SWORD, SV_LONG_SWORD));
+        py_birth_obj(&forge);
+    }
+
     /* Give the player a starting weapon from this group */
     kind = _specialities[p_ptr->psubclass].birth_obj;
     object_prep(&forge, lookup_kind(kind.tval, kind.sval));
@@ -2775,6 +2781,10 @@ void _on_birth(void)
         skills_shield_init(SV_SMALL_METAL_SHIELD, WEAPON_EXP_BEGINNER, WEAPON_EXP_MASTER);
         skills_shield_init(SV_LARGE_LEATHER_SHIELD, WEAPON_EXP_BEGINNER, WEAPON_EXP_MASTER);
         skills_shield_init(SV_LARGE_METAL_SHIELD, WEAPON_EXP_BEGINNER, WEAPON_EXP_MASTER);
+        skills_shield_init(SV_MITHRIL_SHIELD, WEAPON_EXP_BEGINNER, WEAPON_EXP_MASTER);
+        skills_shield_init(SV_MIRROR_SHIELD, WEAPON_EXP_BEGINNER, WEAPON_EXP_MASTER);
+        skills_shield_init(SV_DRAGON_SHIELD, WEAPON_EXP_BEGINNER, WEAPON_EXP_MASTER);
+        skills_shield_init(SV_KNIGHT_SHIELD, WEAPON_EXP_BEGINNER, WEAPON_EXP_MASTER);
     }
     weaponmaster_adjust_skills();
 
@@ -3023,10 +3033,6 @@ static void _calc_bonuses(void)
 
             if (p_ptr->lev >= 45)
             {
-                res_add(RES_ACID);
-                res_add(RES_COLD);
-                res_add(RES_FIRE);
-                res_add(RES_ELEC);
                 p_ptr->reflect = TRUE;
             }
 
@@ -3139,9 +3145,15 @@ static void _calc_bonuses(void)
     if (character_xtra) return;
 
     /* Message about favored gear */
-    if (!init || spec != last_spec)
+    if ((!init) || (spec != last_spec))
     {
         int kind = _specialities[p_ptr->psubclass].kind;
+
+        init = TRUE;
+        last_spec = spec;
+
+        if (!character_generated) return;
+
         if (!spec)
         {
             switch (kind)
@@ -3172,9 +3184,6 @@ static void _calc_bonuses(void)
                 break;
             }
         }
-
-        init = TRUE;
-        last_spec = spec;
     }
 }
 
@@ -3762,7 +3771,7 @@ static void _character_dump(doc_ptr doc)
         if (p_ptr->lev >= 20)
             doc_printf(doc, "  * <indent>Your inventory items are somewhat protected from destruction when wielding a shield.</indent>\n");
         if (p_ptr->lev >= 45)
-            doc_printf(doc, "  * You gain basic resistance and reflection when wielding a shield.\n");
+            doc_printf(doc, "  * You gain reflection when wielding a shield.\n");
 
         if (p_ptr->lev >= 5)
             doc_printf(doc, "  * You gain double the AC benefit when wielding a shield.\n");
@@ -3821,7 +3830,7 @@ class_t *weaponmaster_get_class(int subclass)
                   "weaponmaster is truly lousy when using any weapon "
                   "outside their chosen specialty so focus is key.";
 
-        me.life = 109;
+        me.life = 107;
         me.base_hp = 12;
         me.exp = 135;
         me.pets = 40;
