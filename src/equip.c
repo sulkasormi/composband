@@ -865,8 +865,6 @@ void _unwield(obj_ptr obj, bool drop)
 
 void _unwield_after(void)
 {
-    if (weaponmaster_is_(WEAPONMASTER_SHIELDS))
-        handle_stuff(); /* Explain! */
     android_calc_exp();
 }
 
