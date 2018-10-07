@@ -493,7 +493,8 @@ cptr skills_bow_describe_current(int sval)
 static cptr skills_shield_calc_name(int sval)
 {
     static char buf[MAX_NLEN];
-    sprintf(buf, "Shield.%d", sval);
+    int k_idx = lookup_kind(TV_SHIELD, sval);
+    strip_name(buf, k_idx);
     return buf;
 }
 
