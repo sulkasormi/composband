@@ -62,12 +62,16 @@ R:OBJ(ROD_LITE_AREA, TYPE=Capacity | DEPTH+10)
 R:OBJ(ROD_LITE_AREA, TYPE=Capacity | DEPTH+10)
 ?:[EQU $CLASS Archaeologist]
 R:OBJ(ROD_BEAM_ELEC, DEPTH+3)
-?:[AND [EQU $CLASS Weaponmaster] [EQU $SPECIALITY Axes Polearms] ]
-R:OBJ(POLEARM):EGO(slaying)
+?:[AND [EQU $CLASS Weaponmaster] [EQU $SPECIALITY Axes] ]
+R:OBJ(battle axe):EGO(slaying)
+?:[AND [EQU $CLASS Weaponmaster] [EQU $SPECIALITY Polearms] ]
+R:OBJ(halberd):EGO(slaying)
 ?:[EQU $CLASS Priest Berserker]
 R:OBJ(HAFTED):EGO(slaying)
-?:[AND [EQU $CLASS Weaponmaster] [EQU $SPECIALITY Clubs Staves] ]
-R:OBJ(HAFTED):EGO(slaying)
+?:[AND [EQU $CLASS Weaponmaster] [EQU $SPECIALITY Clubs] ]
+R:OBJ(flail):EGO(slaying)
+?:[AND [EQU $CLASS Weaponmaster] [EQU $SPECIALITY Staves] ]
+R:OBJ(bo staff):EGO(slaying)
 ?:[EQU $CLASS Monk Force-Trainer Mystic]
 R:OBJ(GLOVES):EGO(slaying)
 #?:[EQU $RACE Beholder]
