@@ -20526,6 +20526,7 @@ F:RES_FIRE | RES_ACID | RES_WATE | RES_COLD | RES_POIS | RES_NETH
 F:NO_SLEEP | NO_CONF | WILD_WOOD | NO_QUEST
 S:FREQ_25 |
 S:BO_WATER | TELE_TO | BLINK | TELE_SELF | HEAL | BO_ICE | BO_COLD | BA_WATER
+P:Copy:Human:Mage
 D:This malevolent water sprite babbles and shifts in the shadows of the
 D:forest, luring you toward a watery doom.
 
@@ -20542,6 +20543,8 @@ F:RES_DARK | FRIENDS(2d2) | HURT_LITE
 F:WILD_WOOD | NO_QUEST | SELF_DARK_1
 S:FREQ_25 | CONFUSE | BLIND | SLOW | CAUSE_1 |
 S:DARKNESS | TELE_TO | BLINK | TELE_SELF | HEAL | BO_MANA
+P:Copy:Dark-Elf:Rogue
+P:Speed:+3
 D:This mysterious creature makes its home in this forest and uses its
 D:magic to drive out intruders like you.
 
@@ -20557,6 +20560,8 @@ F:RES_ACID | RES_NETH | RES_POIS | RIDING
 F:NO_QUEST | ANIMAL  | FRIENDS(3d3)
 S:1_IN_20
 S:BR_POIS | SHRIEK
+P:Copy:Human:Warrior
+P:Body:Horse
 D:A hellish donkey with glowing red eyes, snorting acrid fumes and honking
 D:with the fury of the damned.
 
@@ -20571,6 +20576,8 @@ F:EVIL | HURT_FIRE | FRIENDS(1d3)
 F:NO_SLEEP | NO_CONF | WILD_WOOD | NO_QUEST | RAND_50
 S:FREQ_15
 S:CONFUSE | PARALYZE | BLIND | CAUSE_1 | DARKNESS | SCARE
+P:Copy:Snotling:Chaos-Warrior
+P:Life:100
 D:A bundle of sticks with a pumpkin for a head is grinning madly as it
 D:dances gracelessly toward you.
 
@@ -20590,6 +20597,8 @@ F:NO_SLEEP | RES_POIS | WILD_WOOD | NO_QUEST | SELF_DARK_2
 S:FREQ_15 |
 S:DARKNESS | TELE_TO | TELE_SELF | S_HOUND | HEAL |
 S:HELL_LANCE | HASTE | SHRIEK |
+P:Copy:Human:Paladin
+P:Life:105
 D:The Devil's Huntsman serves the witches and their master. He wears a
 D:rotting cape about his body and draws his weapon slowly. He has been
 D:preparing for the Great Hunt and in a low voice he intones your name.
@@ -20612,6 +20621,7 @@ S:1_IN_3 |
 S:BO_FIRE | TELE_SELF | HEAL | BA_FIRE | BO_ELEC | BA_ELEC
 S:BO_COLD | BA_COLD | BO_PLASMA | BO_ICE | TELE_TO |
 O:DROP_MAGE
+P:Copy:Dunadan:Mage
 D:Her shimmering long hair, the color of corn-silk shimmers as it catches
 D:the sparks from the fire. Aude looks at you with moistened lips and half
 D:closed eyes issuing an invitation you somehow cannot resist.
@@ -20636,6 +20646,7 @@ S:1_IN_3 |
 S:TELE_SELF | HEAL | BA_NETHER | CAUSE_3 | ANIM_DEAD
 S:BLINK | SHRIEK | BO_NETHER | TELE_TO
 O:DROP_MAGE
+P:Copy:Dunadan:Necromancer
 D:Helga has been called back from the Nether realms to join Gertrude.
 D:Born in a half-living, half-dead state, she harnesses the power 
 D:of the undead to destroy you!
@@ -20660,6 +20671,7 @@ S:1_IN_3 |
 S:BA_ACID | S_SPECIAL | HEAL | POLYMORPH | CAUSE_3 | BRAIN_SMASH
 S:BA_POIS | TRAPS | BO_MANA | TELE_OTHER | TELE_TO
 O:DROP_MAGE
+P:Copy:Dunadan:Mage
 D:This battered old soul has wandered far and long from her coven Dulritch.
 D:The years have not been good to her, her eyes filled with weary hatred,
 D:her mottled cheeks and her gnarled skin testify to her long suffering and
@@ -20720,6 +20732,7 @@ F:EVIL | DEMON | OPEN_DOOR
 S:1_IN_9
 S:BO_FIRE
 S:S_DEMON
+P:Copy:Imp:Chaos-Warrior
 D:It is a demon of lizard form with cruel-looking jaws.
 
 N:1154:Pit Fiend
@@ -20755,6 +20768,7 @@ F:EVIL | DEMON | OPEN_DOOR
 S:1_IN_9
 S:BO_FIRE
 S:S_DEMON
+P:Copy:Imp:Chaos-Warrior
 D:It is demon with arms and pincers, its form a true mockery of life.
 
 N:1156:Nalfeshnee
@@ -20772,6 +20786,7 @@ S:1_IN_9
 S:BLIND | CONFUSE
 S:BR_FIRE
 S:S_DEMON
+P:Copy:Imp:Chaos-Warrior
 D:It is a large demon with the head of a giant boar.  Flames run up and down
 D: its length.
 
@@ -20789,6 +20804,7 @@ F:EVIL | DEMON | OPEN_DOOR
 S:1_IN_10
 S:SCARE
 S:S_DEMON
+P:Copy:Imp:Mauler
 D:A foul, humanoid creature with a long tail, clawed hands and feet, and a
 D: disgusting, wiry, snaky beard.  They are the elite shock troops of the
 D: hells, capable of a terrifying berserk fury.
@@ -20805,6 +20821,7 @@ F:IM_FIRE | FRIENDS(4d4)
 F:EVIL | DEMON | OPEN_DOOR | BASH_DOOR
 S:1_IN_8
 S:BLIND | CONFUSE
+P:Copy:Imp:Mauler
 D:It is a demon with a long neck and raking claws.
 
 # Tomenet
@@ -21002,6 +21019,8 @@ F:RES_POIS | OPEN_DOOR | BASH_DOOR | RES_PLAS | NONLIVING |
 F:RES_FIRE | NO_CONF | NO_SLEEP | EVIL | DEMON | FORCE_MAXHP | CAN_FLY
 F:POS_HOLD_LIFE | POS_SEE_INVIS | POS_GAIN_AC | RAND_50 | FRIENDS(2d2)
 S:1_IN_4 | BO_PLASMA
+P:Copy:Imp:Warrior-Mage
+P:Body:Eye6
 D:A giant one-eyed floating meatball, spitting plasma.
 
 N:1169:Chitauli
@@ -21546,6 +21565,8 @@ F:FORCE_SLEEP | FORCE_MAXHP | SELF_DARK_1 | SELF_DARK_2 | AURA_FEAR |
 F:ONLY_ITEM | DROP_2D2 | DROP_3D2 | DROP_GOOD | EMPTY_MIND | UNIQUE |
 F:OPEN_DOOR | BASH_DOOR | MOVE_BODY | RES_POIS | RES_DARK | NO_CONF |
 F:COLD_BLOOD |
+P:Copy:Kutar:Mauler
+P:Body:Bear
 S:1_IN_5 |
 S:DARKNESS | BLIND | CONFUSE | SCARE | TELE_TO | BR_DARK
 D:It waits for you in the ink-black of the dungeon.
@@ -21584,6 +21605,8 @@ F:NO_CONF | NO_SLEEP | NO_STUN | NO_FEAR | NONLIVING |
 F:RES_LITE | REFLECTING
 S:1_IN_3 |
 S:BO_PLASMA | BA_FIRE | BR_FIRE | BA_ELEC | S_DEMON | TELE_TO
+P:Copy:Golem:Mauler
+P:Life:120
 D:A gigantic four-armed animated bronze statue, glowing with great heat.
 
 N:1199:Bone golem
@@ -21601,6 +21624,8 @@ F:NO_CONF | NO_SLEEP | NO_FEAR | NONLIVING
 S:1_IN_3 |
 S:TELE_TO | CAUSE_4 | DRAIN_MANA |
 S:BRAIN_SMASH | BA_NETHER | S_HI_UNDEAD
+P:Copy:Golem:Warrior-Mage
+P:Life:120
 D:A skeletal form, black as night, constructed from the bones of its
 D:previous victims.
 
@@ -21758,6 +21783,7 @@ F:ONLY_ITEM | DROP_4D2 | DROP_GOOD | NO_CONF |
 F:NO_SLEEP | NO_FEAR | OPEN_DOOR | BASH_DOOR |
 S:1_IN_2 |
 S:SHOOT(6d6) | HEAL | BLINK | TELE_SELF
+P:Copy:Human:Ranger
 D:Seemingly out of nowhere, a gentleman steps towards you.
 D:He is wearing a fine suit covered by a dark cloak. He
 D:tips his top hat towards you. "Good evening", he says
@@ -21965,6 +21991,8 @@ B:BITE:HURT(4d6)
 F:IM_COLD | IM_POIS | UNDEAD | RIDING | EVIL | CAN_FLY | FORCE_MAXHP
 S:1_IN_6
 S:BR_DARK | BR_NETHER | BR_POISON
+P:Copy:Zombie:Warrior
+P:Body:Bird
 D:A terrifying sight: a winged creature greater than any bird you have ever
 D: seen, and with no feathers on its horrid black leathery wings.  Descended
 D: from a creature of an older world perhaps, bred by Sauron to be a winged
