@@ -3392,11 +3392,17 @@ void do_cmd_fire_aux2(obj_ptr bow, obj_ptr arrows, int sx, int sy, int tx, int t
                     hit = test_hit_fire(chance2 - cur_dis, armour, m_ptr->ml);
                 }
 
+                if ((bow->name1 == ART_TUBER) && (r_ptr->d_char == 'B')) /* Hack - avoid harming birds with Tuber's bow */
+                {
+                    msg_print("Your bow twitches in your hands!");
+                    hit = FALSE;
+                }
+
                 if (p_ptr->painted_target)
                 {
                     if (shoot_hack == SHOOT_BOUNCE && shoot_count > 0)
                     {
-                        /* A richochet from bouncing pebble should not reset the
+                        /* A ricochet from bouncing pebble should not reset the
                             painted target */
                     }
                     else if (!hit)
