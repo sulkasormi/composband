@@ -1440,6 +1440,7 @@ enum {
 #define ART_NAMAKE_BOW          182
 #define ART_ROBIN_HOOD          221
 #define ART_HELLFIRE            222
+#define ART_TUBER               356
 
 /* Arrows */
 #define ART_BARD_ARROW          153
