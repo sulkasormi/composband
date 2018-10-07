@@ -3607,6 +3607,15 @@ F:SPEED | DEX | STEALTH | FREE_ACT | RES_FEAR | SUST_DEX
 D:The gloves of Dogram the Terrible, master criminal and hybrid-burglar
 D:nonpareil.
 
+N:356:of Tuber
+I:19:13:3
+W:48:28:40:30000
+P:0:x3.50:39:16:0
+F:WIS | BRAND_COLD | RES_COLD | RES_FEAR | HIDE_TYPE | SHOW_MODS
+E:STASIS_MONSTERS:66:300:92
+D:The bow of sure-aimed Tuber, son of the hero Bubo, imbued with the powers
+D:of the frost spirits who once held him captive.
+
 # N: serial number : item name
 # I: tval : sval : pval
 # W: depth : rarity : weight : cost
