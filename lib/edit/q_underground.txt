@@ -5,9 +5,14 @@ D:It stands to reason that you might find some interesting items in
 D:the process.
 ?:1
 
-?:[EQU $QUEST55 Completed]
+?:[AND [EQU $QUEST55 Completed] [NEQ $RACE Centipede Beholder Ring Dragon Quylthulg Death-Sword Hydra Vortex Jelly] ]
 D:You have our undying gratitude for your heroic efforts. Here, take
 D:my old battle gloves for your victory.
+?:1
+
+?:[AND [EQU $QUEST55 Completed] [EQU $RACE Centipede Beholder Ring Dragon Quylthulg Death-Sword Hydra Vortex Jelly] ]
+D:You have our undying gratitude for your heroic efforts. Here, take
+D:this reward for your victory.
 ?:1
 
 ?:[EQU $QUEST55 Failed]
@@ -60,4 +65,10 @@ M:#....WWWWWWWWWWWWWWWWWWWWW......###########################.......%.#
 M:#.................................................................%<#
 M:#####################################################################
 
-R:OBJ(mithril gauntlets):ART(*)
+R:OBJ(mithril gauntlets, DEPTH+5):ART(*)
+
+?:[EQU $RACE Centipede]
+R:OBJ(hard leather boots):ART(*)
+
+?:[EQU $RACE Beholder Ring Dragon Quylthulg Death-Sword Hydra Vortex Jelly]
+R:OBJ(ROD_BALL_NETHER, TYPE=Regeneration | DEPTH+5)
