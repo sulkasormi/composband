@@ -3398,13 +3398,17 @@ static void _dispatch_command(int old_now_turn)
         /* Stay still (usually pick things up) */
         case ',':
         {
+            delay_autopick_hack = TRUE;
             do_cmd_stay(always_pickup);
+            delay_autopick_hack = FALSE;
             break;
         }
 
         case 'g':
         {
+            delay_autopick_hack = TRUE;
             do_cmd_get();
+            delay_autopick_hack = FALSE;
             break;
         }
 
