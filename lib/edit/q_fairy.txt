@@ -47,3 +47,12 @@ M:%777777777::777777777777777777.7%
 M:%777777777777777777777777777777<%
 M:%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 R:OBJ(hard leather cap):EGO(seeing)
+
+?:[EQU $RACE Ring Centipede]
+R:OBJ(amulet):EGO(dwarven necklace)
+
+?:[EQU $RACE Beholder Quylthulg]
+R:OBJ(feanorian lamp)
+
+?:[EQU $RACE Death-Sword]
+R:OBJ(potion of sight, NUMBER=5+3d3)
