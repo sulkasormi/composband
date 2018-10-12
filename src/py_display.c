@@ -2070,6 +2070,7 @@ static void _build_statistics(doc_ptr doc)
     _object_counts_imp(doc, TV_POTION, SV_POTION_CURE_CRITICAL);
     _object_counts_imp(doc, TV_POTION, SV_POTION_CURING);
     _object_counts_imp(doc, TV_POTION, SV_POTION_SPEED);
+    _object_counts_imp(doc, TV_POTION, SV_POTION_CLARITY);
     _object_counts_imp(doc, TV_POTION, SV_POTION_HEALING);
     _object_counts_imp(doc, TV_POTION, SV_POTION_STAR_HEALING);
     _object_counts_imp(doc, TV_POTION, SV_POTION_LIFE);
