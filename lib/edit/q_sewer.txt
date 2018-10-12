@@ -60,4 +60,7 @@ M:#%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%.......#
 M:#####################################################################
 R:OBJ(hard leather boots):EGO(levitation)
 
+?:[AND [EQU $CLASS Monster] [EQU $RACE Dragon Demon Hydra Beholder Death-Sword Spider Quylthulg Ring Jelly] ]
+R:OBJ(ROD_BEAM_ACID, DEPTH+2)
+
 # vim: filetype=q :
