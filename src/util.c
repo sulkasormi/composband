@@ -1992,8 +1992,12 @@ static char inkey_aux(void)
     /* Push the macro "action" onto the key queue */
     while (n > 0)
     {
+        /* Mega-Hack - allow numlockless players to play on angband.live */
+        char my_key = act[--n];
+        if ((online_macros) && (my_key == '.')) my_key = ';';
+        
         /* Push the key, notice over-flow */
-        if (Term_key_push(act[--n])) return (0);
+        if (Term_key_push(my_key)) return (0);
     }
 
 
