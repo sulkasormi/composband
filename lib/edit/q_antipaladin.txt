@@ -52,7 +52,7 @@ R:OBJ(long sword, DEPTH+10)
 R:OBJ(^cloak$):EGO(elemental protection)
 
 ?:[EQU $RACE Centipede]
-R:OBJ(hard leather boots):EGO(dwarven)
+R:OBJ(metal shod boots):EGO(dwarven)
 
 ?:[EQU $RACE Demon Xorn Jelly Hound Vortex]
 R:OBJ(STAFF_CONFUSE_MONSTERS)
