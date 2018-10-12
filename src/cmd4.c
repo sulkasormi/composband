@@ -825,7 +825,7 @@ void do_cmd_options_aux(int page, cptr info)
 
 
         /* HACK -- description for easy-auto-destroy options */
-        if (page == OPT_PAGE_AUTODESTROY) c_prt(TERM_YELLOW, "Following options will protect items from easy auto-destroyer.", 8, 3);
+        if (page == OPT_PAGE_AUTODESTROY) c_prt(TERM_YELLOW, "Following options will protect items from easy auto-destroyer.", 9, 3);
 
         /* Display the options */
         for (i = 0; i < n; i++)
@@ -872,11 +872,11 @@ void do_cmd_options_aux(int page, cptr info)
                     (*option_info[opt[i]].o_var ? "yes" : "no "),
                     option_info[opt[i]].o_text);
             }
-            if ((page == OPT_PAGE_AUTODESTROY) && i > 4) c_prt(a, buf, i + 6, 0);
+            if ((page == OPT_PAGE_AUTODESTROY) && i > 5) c_prt(a, buf, i + 5, 0);
             else c_prt(a, buf, i + 2, 0);
         }
 
-        if ((page == OPT_PAGE_AUTODESTROY) && (k > 4)) l = 4;
+        if ((page == OPT_PAGE_AUTODESTROY) && (k > 5)) l = 5;
         else l = 0;
 
         /* Hilite current option */
