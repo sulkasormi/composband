@@ -2277,6 +2277,7 @@ static void _get_obj(obj_ptr obj)
     }
 
     if (no_mogaminator) return;
+    if (delay_autopick_hack) return;
 
     idx = is_autopick(obj);
 
