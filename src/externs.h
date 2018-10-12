@@ -185,6 +185,7 @@ extern s16b m_cnt;
 extern s16b hack_m_idx;
 extern s16b hack_m_idx_ii;
 extern s16b warning_hack_hp;
+extern s16b run_count;
 extern int hack_max_m_dam;
 extern int total_friends;
 extern s32b friend_align;
@@ -195,6 +196,7 @@ extern byte summon_pantheon_hack;
 extern bool quest_reward_drop_hack;
 extern bool very_nice_summon_hack;
 extern bool predictable_energy_hack;
+extern bool delay_autopick_hack;
 
 /*
  * Software options (set via the '=' command).  See "tables.c"
@@ -204,6 +206,7 @@ extern bool predictable_energy_hack;
 
 extern bool rogue_like_commands;    /* Rogue-like commands */
 extern bool always_pickup;    /* Pick things up by default */
+extern bool online_macros;    /* Disable Run in macros */
 extern bool quick_messages;    /* Activate quick messages */
 extern bool command_menu;    /* Enable command selection menu */
 extern bool use_old_target;    /* Use old target by default */
@@ -283,6 +286,7 @@ extern bool stack_force_costs;    /* Merge discounts when stacking */
 extern bool expand_list;    /* Expand the power of the list commands */
 extern bool empty_levels;    /* Allow empty 'arena' levels */
 extern bool bound_walls_perm;    /* Boundary walls become 'permanent wall' */
+extern bool delay_autopick;  /* Always use delayed autopick */
 extern bool last_words;    /* Leave last words when your character dies */
 
 #ifdef WORLD_SCORE
