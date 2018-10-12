@@ -182,10 +182,19 @@ bool pack_get_floor(void)
     bool    result = FALSE;
     inv_ptr floor;
 
+    if (delay_autopick) delay_autopick_hack = TRUE;
+
     autopick_get_floor(); /* no energy charge */
 
     floor = inv_filter_floor(point(px, py), NULL);
     result = _get_floor(floor);
+
+    if (delay_autopick_hack)
+    {
+        delay_autopick_hack = FALSE;
+        autopick_get_floor();
+    }
+    
     inv_free(floor);
 
     return result;
