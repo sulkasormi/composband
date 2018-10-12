@@ -176,6 +176,8 @@ bool reinit_wilderness = FALSE;
 bool quest_reward_drop_hack = FALSE;
 bool very_nice_summon_hack = FALSE;
 bool predictable_energy_hack = FALSE;
+bool delay_autopick_hack = FALSE;
+s16b run_count = 0;
 
 int current_flow_depth = 0;
 
@@ -187,6 +189,7 @@ int current_flow_depth = 0;
 
 bool rogue_like_commands;    /* Rogue-like commands */
 bool always_pickup;    /* Pick things up by default */
+bool online_macros;    /* Disable Run in macros */
 bool quick_messages;    /* Activate quick messages */
 bool command_menu;    /* Enable command selection menu */
 bool use_old_target;    /* Use old target by default */
@@ -267,6 +270,7 @@ bool stack_force_costs;    /* Merge discounts when stacking */
 bool expand_list;    /* Expand the power of the list commands */
 bool empty_levels;    /* Allow empty 'arena' levels */
 bool bound_walls_perm;    /* Boundary walls become 'permanent wall' */
+bool delay_autopick;  /* Always use delayed autopick */
 bool last_words;    /* Leave last words when your character dies */
 
 #ifdef WORLD_SCORE
