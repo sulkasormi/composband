@@ -2087,6 +2087,9 @@ option_type option_info[] =
     { &always_pickup,               FALSE, OPT_PAGE_INPUT, 0, 5,
     "always_pickup",                "Pick things up by default" },
 
+    { &online_macros,               FALSE, OPT_PAGE_INPUT, 1, 11,
+    "online_macros",                "Substitute Walk for Run in macros" },
+
     { &quick_messages,              TRUE,  OPT_PAGE_INPUT, 0, 1,
     "quick_messages",               "Activate quick messages" },
 
@@ -2460,6 +2463,9 @@ option_type option_info[] =
 
     { &no_mogaminator,              FALSE, OPT_PAGE_AUTODESTROY, 7, 11,
     "no_mogaminator",               "Never apply the Mogaminator" },
+
+    { &delay_autopick,              FALSE, OPT_PAGE_AUTODESTROY, 1, 9,
+    "delay_autopick",               "Allow manual pickup before applying auto-pickup" },
 
     { &leave_worth,                 TRUE,  OPT_PAGE_AUTODESTROY, 7, 2,
     "leave_worth",                  "Auto-destroyer leaves known worthy items" },
