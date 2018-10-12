@@ -2244,6 +2244,8 @@ void do_cmd_walk(bool pickup)
 
     bool more = FALSE;
 
+    /* Hack - assume no unwanted auto-running */
+    run_count = 5;
 
     /* Allow repeated command */
     if (command_arg)
@@ -2323,6 +2325,24 @@ void do_cmd_walk(bool pickup)
 void do_cmd_run(void)
 {
     int dir;
+
+    if ((!online_macros) && ((++run_count) == 4))
+    {
+        msg_print("The game has detected multiple calls to the 'Run' command");
+        msg_print("without any calls to the 'Walk' command, a possible sign");
+        msg_print("of undesired autorunning. If you are playing on the angband.live");
+        msg_print("online server, you can turn on the online_macros option to");
+        msg_print("disable autorunning. (If your keyboard has a Num Lock key,");
+        msg_print("you should toggle it instead of online_macros.)\n\n");
+        msg_print("This message will not appear again, but you can toggle online_macros");
+        msg_print("at any time in the Input Options menu.");
+        msg_print(NULL);
+        if (msg_prompt("Turn on the online_macros option? <color:y>[y/n]</color>", "ny", PROMPT_DEFAULT) == 'y')
+            online_macros = TRUE;
+        run_count = 5;
+        p_ptr->redraw |= (PR_MAP);
+        handle_stuff();
+    }
 
     if (p_ptr->special_defense & KATA_MUSOU)
         set_action(ACTION_NONE);
