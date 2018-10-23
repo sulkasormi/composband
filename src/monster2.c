@@ -728,7 +728,29 @@ void pack_on_slay_monster(int m_idx)
         pack_ptr->count--;
 
         if (m_ptr->smart & (1U << SM_GUARDIAN))
-            dungeon_flags[pack_ptr->guard_idx] |= DUNGEON_NO_GUARDIAN;
+        {
+            if (pack_ptr->guard_idx) dungeon_flags[pack_ptr->guard_idx] |= DUNGEON_NO_GUARDIAN;
+            else if (py_on_surface()) {
+                /* There used to be a number of bugs that could cause the pack's
+                 * guard index to be lost or misassigned. I hope I have fixed
+                 * them now, but just to be on the safe side, we try to detect
+                 * the symptoms of such bugs and fix them as well */
+                 int j;
+                 for (j = 1; j < max_d_idx; j++)
+                 {
+                     dungeon_info_type *d_ptr = &d_info[j];
+                     if ((!d_ptr->initial_guardian) || (dungeon_flags[j] & DUNGEON_NO_GUARDIAN)) continue;
+                     if (d_ptr->initial_guardian == m_ptr->r_idx)
+                     {
+                         dungeon_flags[j] |= DUNGEON_NO_GUARDIAN;
+                         msg_print("A <color:r>software bug</color> has been detected!");
+                         msg_print("This bug will likely have <color:G>no effects</color> on your game whatsoever, but please report it to the maintainer anyway. (Or, alternatively, yell at Gwarl.)");
+                         msg_print(NULL);
+                         break;
+                     }
+                 }
+            }
+        }
 
         if (pack_ptr->count <= 0)
             pack_info_push(m_ptr->pack_idx);
@@ -828,6 +850,7 @@ static bool summon_cloned_okay = FALSE;
 static bool summon_wall_scummer = FALSE;
 static bool summon_ring_bearer = FALSE;
 static bool summon_summoner_okay = FALSE;
+static bool summon_friendly_unique_okay = FALSE;
 
 static bool summon_specific_aux(int r_idx)
 {
@@ -2236,6 +2259,9 @@ void sanity_blast(monster_type *m_ptr, bool necro)
 
         if (!m_ptr->ml)
             return; /* Cannot see it for some reason */
+
+        if (m_ptr->mflag2 & MFLAG2_FUZZY)
+            return; /* paranoia */
 
         if (!(r_ptr->flags2 & RF2_ELDRITCH_HORROR))
             return; /* oops */
@@ -4315,6 +4341,11 @@ static bool summon_specific_okay(int r_idx)
 
     if (!summon_summoner_okay && (mon_race_can_summon(r_ptr, -1))) return FALSE;
 
+    if (summon_friendly_unique_okay)
+    {
+        if (((r_ptr->flags1 & RF1_UNIQUE) || (r_ptr->flags7 & RF7_NAZGUL)) && (!unique_is_friend(r_idx))) return FALSE;
+    }
+
     /* Hack -- no specific type specified */
     if (!summon_specific_type) return (TRUE);
 
@@ -4395,6 +4426,9 @@ bool summon_specific(int who, int y1, int x1, int lev, int type, u32b mode)
     summon_wall_scummer = (mode & PM_WALL_SCUMMER) && one_in_(2) ? TRUE : FALSE;
     summon_ring_bearer = (mode & PM_RING_BEARER) ? TRUE : FALSE;
     summon_summoner_okay = (mode & PM_NO_SUMMONERS) ? FALSE : TRUE;
+    summon_friendly_unique_okay = FALSE;
+    if ((mode & PM_FORCE_PET) && ((p_ptr->pclass == CLASS_POLITICIAN) || (!one_in_(3))))
+        summon_friendly_unique_okay = TRUE;
 
     /* Prepare allocation table */
     get_mon_num_prep(summon_specific_okay, get_monster_hook2(y, x));
