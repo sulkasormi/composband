@@ -76,7 +76,15 @@ static void _build_general1(doc_ptr doc)
             if (paikka >= 20)
             {
                 nimi[paikka - 1] = '\0';
+                break;
             }
+            paikka = strpos(" of ", nimi);
+            if (paikka) 
+            {
+                nimi[paikka - 1] = '\0';
+                break;
+            }
+            nimi[25] = '\0';
             break;
         }
 
