@@ -571,7 +571,7 @@ static void do_cmd_options_cheat(cptr info)
          * HACK - Try to translate the key into a direction
          * to allow using the roguelike keys for navigation.
          */
-        dir = get_keymap_dir(ch);
+        dir = get_keymap_dir(ch, FALSE);
         if ((dir == 2) || (dir == 4) || (dir == 6) || (dir == 8))
             ch = I2D(dir);
 
@@ -889,7 +889,7 @@ void do_cmd_options_aux(int page, cptr info)
          * HACK - Try to translate the key into a direction
          * to allow using the roguelike keys for navigation.
          */
-        dir = get_keymap_dir(ch);
+        dir = get_keymap_dir(ch, FALSE);
         if ((dir == 2) || (dir == 4) || (dir == 6) || (dir == 8))
             ch = I2D(dir);
 
@@ -1198,7 +1198,7 @@ static void do_cmd_options_win(void)
 
             default:
             {
-                d = get_keymap_dir(ch);
+                d = get_keymap_dir(ch, FALSE);
 
                 x = (x + ddx[d] + 8) % 8;
                 y = (y + ddy[d] + 16) % 16;
@@ -3393,6 +3393,7 @@ static cptr monster_group_text[] =
     "Wanted monsters",
     "Amberite",
     "Olympian",
+    "Egyptian",
     "Ant",
     "Bat",
     "Centipede",
@@ -3465,6 +3466,7 @@ static cptr monster_group_char[] =
     (char *) -4L,
     (char *) -5L,
     (char *) -6L,
+    (char *) -7L,
     "a",
     "b",
     "c",
@@ -3571,6 +3573,7 @@ static int collect_monsters(int grp_cur, s16b mon_idx[], byte mode)
     bool        grp_wanted = (monster_group_char[grp_cur] == (char *) -4L);
     bool        grp_amberite = (monster_group_char[grp_cur] == (char *) -5L);
     bool        grp_olympian = (monster_group_char[grp_cur] == (char *) -6L);
+    bool        grp_egyptian = (monster_group_char[grp_cur] == (char *) -7L);
     int_map_ptr available_corpses = NULL;
 
     if (grp_corpses)
@@ -3672,6 +3675,11 @@ static int collect_monsters(int grp_cur, s16b mon_idx[], byte mode)
         else if (grp_olympian)
         {
             if (!(r_ptr->flags3 & RF3_OLYMPIAN)) continue;
+        }
+
+        else if (grp_egyptian)
+        {
+            if ((!(r_ptr->flags3 & RF3_EGYPTIAN)) && (!(r_ptr->flags3 & RF3_EGYPTIAN2))) continue;
         }
 
         else
@@ -5119,7 +5127,7 @@ static void browser_cursor(char ch, int *column, int *grp_cur, int grp_cnt,
     }
     else
     {
-        d = get_keymap_dir(ch);
+        d = get_keymap_dir(ch, FALSE);
     }
 
     if (!d) return;
@@ -5382,7 +5390,7 @@ static bool visual_mode_command(char ch, bool *visual_list_ptr,
         if (*visual_list_ptr)
         {
             int eff_width;
-            int d = get_keymap_dir(ch);
+            int d = get_keymap_dir(ch, FALSE);
             byte a = (*cur_attr_ptr & 0x7f);
             byte c = *cur_char_ptr;
 
