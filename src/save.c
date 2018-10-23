@@ -172,6 +172,11 @@ static void wr_monster(savefile_ptr file, monster_type *m_ptr)
         savefile_write_byte(file, SAVE_MON_MINISLOW);
         savefile_write_byte(file, m_ptr->minislow);
     }
+    if (m_ptr->hold_o_idx)
+    {
+        savefile_write_byte(file, SAVE_MON_HOLD_O_IDX);
+        savefile_write_s16b(file, m_ptr->hold_o_idx);
+    }
 
     savefile_write_byte(file, SAVE_MON_DONE);
 }
@@ -741,6 +746,7 @@ static void wr_extra(savefile_ptr file)
     savefile_write_u32b(file, p_ptr->count);
     savefile_write_byte(file, p_ptr->coffee_lv_revisits);
     savefile_write_byte(file, p_ptr->filibuster);
+    savefile_write_byte(file, p_ptr->upset_okay);
     for (i = 0; i < 16; i++)
         savefile_write_s32b(file, 0); /* Future use */
 
@@ -1375,29 +1381,49 @@ bool save_player(void)
     return (result);
 }
 
-static char *versio_nimi(int tavu)
+static char *versio_nimi(int tavu, int keski)
 {
-	switch (tavu)
+	switch (keski)
 	{
-		case 0: return "toffee";
-		case 1: return "chocolate";
-		case 2: return "liquorice";
-		case 3: return "salmiak";
-		case 4: return "strawberry";
-		case 5: return "peppermint";
-		case 6: return "mango";
-		case 7: return "nougat";
-		case 8: return "raspberry";
-		default: return "cloudberry";
+		case 0: {
+			switch (tavu)
+			{
+				case 0: return "toffee";
+				case 1: return "chocolate";
+				case 2: return "liquorice";
+				case 3: return "salmiak";
+				case 4: return "strawberry";
+				case 5: return "peppermint";
+				case 6: return "mango";
+				case 7: return "nougat";
+				case 8: return "raspberry";
+				default: return "cloudberry";
+			}
+		}
+		default: {
+			switch (tavu)
+			{
+				case 0: return "toffee";
+				case 1: return "chocolate";
+				case 2: return "liquorice";
+				case 3: return "salmiak";
+				case 4: return "raspberry";
+				case 5: return "spearmint";
+				case 6: return "peach";
+				case 7: return "apricot";
+				case 8: return "blueberry";
+				default: return "cloudberry";
+			}
+		}
 	}
 }
 
 extern byte versio_sovitus(void)
 {
 	int i;
-	for (i = 0; i < 9; i++)
+	for (i = 0; i < 10; i++)
 	{
-		if (streq(VER_PATCH, versio_nimi(i))) return i;
+		if (streq(VER_PATCH, versio_nimi(i, VER_MINOR))) return i;
 	}
 	return 4;
 }
@@ -1556,7 +1582,7 @@ bool load_player(void)
         /* Extract version */
         z_major = vvv[0];
         z_minor = vvv[1];
-        strcpy(z_patch, versio_nimi(vvv[2]));
+        strcpy(z_patch, versio_nimi(vvv[2], z_minor));
         sf_extra = vvv[3];
 
 
