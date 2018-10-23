@@ -329,7 +329,7 @@ void do_cmd_locate(void)
             if (command == '5') break;
 
             /* Extract the action (if any) */
-            dir = get_keymap_dir(command);
+            dir = get_keymap_dir(command, FALSE);
 
             /* Error */
             if (!dir) bell();
@@ -1139,7 +1139,9 @@ static void _mon_display_probe(doc_ptr doc, int m_idx)
     if (p_ptr->filibuster) speed -= SPEED_ADJ_FILIBUSTER;
     if (m_ptr->nickname)
         doc_printf(doc, "Name : <color:R>%13s</color>\n", quark_str(m_ptr->nickname));
-    doc_printf(doc, "Speed: <color:G>%+13d</color>\n", speed);
+    if (effective_speed)
+        doc_printf(doc, "Speed: <color:G>%10d.%dx</color>\n", SPEED_TO_ENERGY(speed + 110) / 10, SPEED_TO_ENERGY(speed + 110) % 10);
+    else doc_printf(doc, "Speed: <color:G>%+13d</color>\n", speed);
     doc_printf(doc, "HP   : <color:%c>%6d</color>/<color:G>%6d</color>\n",
         _mon_health_color(m_ptr),
         m_ptr->hp,
