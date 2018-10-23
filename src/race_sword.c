@@ -1,4 +1,5 @@
 #include "angband.h"
+#include <assert.h>
 
 static int _rank(void)
 {
@@ -104,6 +105,24 @@ static bool _add_essence(int which, int amount)
     return FALSE;
 }
 
+void obj_essence_flags(object_type *o_ptr, u32b flgs[OF_ARRAY_SIZE])
+{
+    obj_flags(o_ptr, flgs);
+    
+    /* Make sure the Slay flag exists if the Kill flag exists */
+    if (have_flag(flgs, OF_KILL_EVIL)) add_flag(flgs, OF_SLAY_EVIL);
+    if (have_flag(flgs, OF_KILL_GOOD)) add_flag(flgs, OF_SLAY_GOOD);
+    if (have_flag(flgs, OF_KILL_LIVING)) add_flag(flgs, OF_SLAY_LIVING);
+    if (have_flag(flgs, OF_KILL_DRAGON)) add_flag(flgs, OF_SLAY_DRAGON);
+    if (have_flag(flgs, OF_KILL_DEMON)) add_flag(flgs, OF_SLAY_DEMON);
+    if (have_flag(flgs, OF_KILL_ANIMAL)) add_flag(flgs, OF_SLAY_ANIMAL);
+    if (have_flag(flgs, OF_KILL_UNDEAD)) add_flag(flgs, OF_SLAY_UNDEAD);
+    if (have_flag(flgs, OF_KILL_HUMAN)) add_flag(flgs, OF_SLAY_HUMAN);
+    if (have_flag(flgs, OF_KILL_ORC)) add_flag(flgs, OF_SLAY_ORC);
+    if (have_flag(flgs, OF_KILL_TROLL)) add_flag(flgs, OF_SLAY_TROLL);
+    if (have_flag(flgs, OF_KILL_GIANT)) add_flag(flgs, OF_SLAY_GIANT);
+}
+
 static bool _absorb(object_type *o_ptr)
 {
     bool result = FALSE;
@@ -111,10 +130,21 @@ static bool _absorb(object_type *o_ptr)
     int mult = o_ptr->number, div = 1;
     object_kind *k_ptr = &k_info[o_ptr->k_idx];
     u32b flags[OF_ARRAY_SIZE];
-    obj_flags(o_ptr, flags);
+    obj_essence_flags(o_ptr, flags);
 
     /* Check whether the item we are absorbing completes a quest */
     quests_on_get_obj(o_ptr);
+
+    /* No absorbing the same artifact repeatedly... */
+    if (o_ptr->name1) 
+    {
+        if (!p_ptr->noscore) assert(a_info[o_ptr->name1].generated);
+        a_info[o_ptr->name1].found = TRUE;
+    }
+    else if ((o_ptr->art_name) && (!(o_ptr->marked & OM_ART_COUNTED))) /* Bookkeeping */
+    {
+        stats_rand_art_counts.found += o_ptr->number;
+    }
 
     if (o_ptr->curse_flags & OFC_AGGRAVATE)
         div++;
@@ -449,7 +479,7 @@ static void _calc_bonuses(void)
     p_ptr->life += 3*_calc_amount(_essences[OF_LIFE], 7, 1);
 
     p_ptr->skills.stl += _calc_amount(_essences[OF_STEALTH], 2, 1);
-    p_ptr->pspeed += _calc_amount(_essences[OF_SPEED], 1, 10);
+    p_ptr->pspeed += _calc_amount(_essences[OF_SPEED], 1, 6);
     p_ptr->skills.dev += 8*_calc_amount(_essences[OF_MAGIC_MASTERY], 2, 1);
     p_ptr->device_power += _calc_amount(_essences[OF_DEVICE_POWER], 2, 1);
     p_ptr->skills.srh += 5*_calc_amount(_essences[OF_SEARCH], 2, 1);
@@ -929,7 +959,7 @@ static void _character_dump(doc_ptr doc)
     _dump_bonus_flag(doc, _ESSENCE_TO_DAM, 1, 1, "To Dam");
     _dump_bonus_flag(doc, _ESSENCE_AC, 2, 10, "To AC");
     _dump_bonus_flag(doc, OF_STEALTH, 2, 1, "Stealth");
-    _dump_bonus_flag(doc, OF_SPEED, 1, 10, "Speed");
+    _dump_bonus_flag(doc, OF_SPEED, 1, 6, "Speed");
     if (_essences[OF_BLOWS])
     {
         int blows = _calc_amount(_essences[OF_BLOWS], _rank_decay(32), 1);
