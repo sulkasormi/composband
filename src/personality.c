@@ -143,8 +143,7 @@ static personality_ptr _get_combat_personality(void)
         me.desc = "The Combat personality favors melee and shooting at the expense "
                     "of other skills such as disarming, devices, and saving throws. "
                     "Strength and agility are enhanced, but intelligence and wisdom "
-                    "are decreased. All Combat people have great respect "
-                    "for the legendary \"Combat Echizen\".\n(See \"Death Crimson\" / Ecole Software Corp.)";
+                    "are decreased.";
 
         me.stats[A_STR] =  1;
         me.stats[A_INT] = -1;
