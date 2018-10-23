@@ -912,8 +912,7 @@ static void _water_damage(obj_ptr obj)
     obj_flags(obj, flgs);
     if (have_flag(flgs, OF_IM_ACID)) return;
     if (have_flag(flgs, OF_RES_ACID)) return;
-    if (have_flag(flgs, OF_IGNORE_ACID) && !one_in_(10)) return;
-    if (object_is_artifact(obj) && !one_in_(2)) return;
+    if (have_flag(flgs, OF_IGNORE_ACID)) return;
 
     object_desc(o_name, obj, OD_OMIT_PREFIX | OD_NAME_ONLY | OD_COLOR_CODED);
     msg_format("Your watery touch corrodes your %s!", o_name);
