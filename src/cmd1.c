@@ -4526,6 +4526,11 @@ bool py_attack(int y, int x, int mode)
     {
         msg_print("You have no melee attacks.");
         energy_use = 0;
+        if (travel.mode != TRAVEL_MODE_NORMAL)
+        {
+            travel.run = 0;
+            travel.mode = TRAVEL_MODE_NORMAL;
+        }
         return FALSE;
     }
 
