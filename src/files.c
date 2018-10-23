@@ -1747,7 +1747,7 @@ cptr map_name(void)
  * and trigger its usage from various places in the code.
  */
 bool character_dump_hack = FALSE;
-static errr file_character(cptr name)
+static errr file_character(cptr name, bool no_msgs)
 {
     int        fd = -1;
     FILE        *fff = NULL;
@@ -1812,10 +1812,40 @@ static errr file_character(cptr name)
     my_fclose(fff);
 
 
-    /* Message */
-    msg_print("Character dump successful.");
+    if (!no_msgs)
+    {
+        /* Message */
+        msg_print("Character dump successful.");
 
-    msg_print(NULL);
+        if (!strpos("htm", name)) /* Assume we know better than the player */
+        {
+            char nuname[1024];
+            int i, paikka;
+            strcpy(nuname, name);
+            for (i = strlen(name) - 1; ((i > 0) && (i > (int)strlen(name) - 7)); i--)
+            {
+                unsigned char testi = name[i];
+                if (testi == '/') break;
+                if (testi == '\\') break;
+                if (testi == '.')
+                {
+                    paikka = i + 1;
+                    break;
+                }
+            }
+            if (paikka)
+            {
+                for (i = strlen(name) - 1; i > paikka - 2; i--)
+                {
+                    nuname[i] = '\0';
+                }
+            }
+            strcat(nuname, ".html");
+            file_character(nuname, TRUE);
+            msg_format("Secondarily dumped as %s (angband.oook.cz ladder format)", nuname);
+        }
+        msg_print(NULL);
+    }
 
     /* Success */
     return (0);
@@ -3175,7 +3205,7 @@ static void show_info(void)
         screen_save();
 
         /* Dump a character file */
-        (void)file_character(out_val);
+        (void)file_character(out_val, FALSE);
 
         /* Load screen */
         screen_load();
