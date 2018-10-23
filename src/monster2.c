@@ -656,7 +656,7 @@ void pack_choose_ai(int m_idx)
                 pack_ptr->ai = AI_SEEK;
                 break;
             case 4:
-                if (r_ptr->freq_spell)
+                if ((r_ptr->spells) && (r_ptr->spells->freq))
                     pack_ptr->ai = AI_SHOOT;
                 else
                     pack_ptr->ai = AI_LURE;
@@ -682,7 +682,7 @@ void pack_choose_ai(int m_idx)
                     pack_ptr->ai = AI_GUARD_MON;
                     pack_ptr->guard_idx = pack_ptr->leader_idx;
                 }
-                else if (r_ptr->freq_spell)
+                else if ((r_ptr->spells) && (r_ptr->spells->freq))
                 {
                     pack_ptr->ai = AI_GUARD_POS;
                     pack_ptr->guard_x = m_ptr->fx;
@@ -692,7 +692,7 @@ void pack_choose_ai(int m_idx)
                     pack_ptr->ai = AI_LURE;
                 break;
             case 10:
-                if (r_ptr->freq_spell)
+                if ((r_ptr->spells) && (r_ptr->spells->freq))
                     pack_ptr->ai = AI_SHOOT;
                 else
                     pack_ptr->ai = AI_SEEK;
