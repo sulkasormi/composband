@@ -2156,7 +2156,7 @@ static void process_monster(int m_idx)
     else if ((is_pet(m_ptr)) && (p_ptr->csp * 15 <= p_ptr->msp * 14))
     {
         int upkeep_factor = calculate_upkeep();
-        while (upkeep_factor > SAFE_UPKEEP_PCT) /* Neglected pets */
+        while ((upkeep_factor > SAFE_UPKEEP_PCT) && (p_ptr->upset_okay)) /* Neglected pets */
         {
             if (unique_is_friend(m_ptr->r_idx)) break;
             if (p_ptr->csp * 3 > p_ptr->msp) 
