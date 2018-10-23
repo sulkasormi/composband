@@ -72,4 +72,7 @@ M:X##################################################X
 M:XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX
 R:OBJ(dragon wings)
 
+?:[EQU $RACE Death-Sword]
+R:OBJ(dragon fang)
+
 # vim: filetype=q :
