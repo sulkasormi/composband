@@ -1903,6 +1903,8 @@ P:0:2d6:18:9:0
 F:CON | SEARCH | BLOWS |
 F:SLAY_EVIL | KILL_DRAGON | ESP_DRAGON |
 F:SHOW_MODS
+D:The sword of dragon-slayer Bellomarius, and later of Giles. Hidden within
+D:its unassuming blade are powerful spells to detect and slay wyrms.
 
 N:168:of Giles
 I:37:2:2
@@ -2833,7 +2835,7 @@ E:SUMMON_MONSTERS:40:25
 E:Your golden apple pulsates!
 D:The legendary Apple of Discord, created by Eris in revenge for
 D:not being invited to the wedding of Peleus and Thetis. On this
-D:apple is engrave "For the Fairest," and Athena, Hera, and Aphrodite
+D:apple is engraved "For the Fairest," and Athena, Hera, and Aphrodite
 D:all laid claim to it. When the Trojan Prince gave the apple to
 D:Aphrodite, he received Helen of Troy, which sparked the Trojan War.
 
@@ -3118,7 +3120,7 @@ W:80:40:30:125000
 P:0:1d1:0:0:12
 F:QUESTITEM | HIDE_TYPE
 F:INT | CHR | SPEED |
-F:RES_COLD | RES_FIRE | RES_ACID | RES_ELEC | RES_POIS | RES_NETHER | RES_DARK | RES_LITE
+F:RES_COLD | RES_ELEC | RES_POIS | RES_NETHER | RES_DARK | RES_LITE
 F:DEC_MANA | SPELL_CAP
 F:REGEN | XTRA_H_RES
 
@@ -3615,6 +3617,14 @@ F:WIS | BRAND_COLD | RES_COLD | RES_FEAR | HIDE_TYPE | SHOW_MODS
 E:STASIS_MONSTERS:66:300:92
 D:The bow of sure-aimed Tuber, son of the hero Bubo, imbued with the powers
 D:of the frost spirits who once held him captive.
+
+N:357:of Ossian
+I:34:4:3
+W:40:20:60:30000
+P:6:1d2:0:0:22
+F:STR | CON | REGEN | REFLECT | RES_FEAR | SUST_STR | SUST_CON
+D:This magical shield once protected strong-armed Ossian, who never
+D:backed away from a struggle.
 
 # N: serial number : item name
 # I: tval : sval : pval
