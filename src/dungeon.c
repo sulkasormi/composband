@@ -4528,14 +4528,14 @@ static void process_player(void)
         /* Refresh (optional) */
         if (fresh_before) Term_fresh();
 
-
         /* Hack -- Pack Overflow */
         pack_overflow();
-
 
         /* Hack -- cancel "lurking browse mode" */
         if (!command_new) command_see = FALSE;
 
+        /* Check if pets may turn hostile this turn */
+        p_ptr->upset_okay = p_ptr->upkeep_warning;
 
         /* Assume free turn */
         energy_use = 0;
@@ -5401,6 +5401,9 @@ void play_game(bool new_game)
     /* Suppress extra pantheons */
     if (single_pantheon) _suppress_extra_pantheons();
 
+    /* Empty lore */
+    if ((new_game) && (empty_lore)) empty_lore_wipe();
+
     creating_savefile = FALSE;
 
     p_ptr->teleport_town = FALSE;
@@ -5490,7 +5493,6 @@ void play_game(bool new_game)
 
     /* Character is now "complete" */
     character_generated = TRUE;
-
 
     /* Hack -- Character is no longer "icky" */
     character_icky = FALSE;
