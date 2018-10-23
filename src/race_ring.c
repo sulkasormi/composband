@@ -1,4 +1,5 @@
 #include "angband.h"
+#include <assert.h>
 
 static cptr _mon_name(int r_idx)
 {
@@ -242,6 +243,17 @@ static bool _absorb(object_type *o_ptr)
     /* Check whether the item we are absorbing completes a quest 
      * (for rings this currently never happens, but some day it might) */
     quests_on_get_obj(o_ptr);
+
+    /* No absorbing the same artifact repeatedly... */
+    if (o_ptr->name1) 
+    {
+        if (!p_ptr->noscore) assert(a_info[o_ptr->name1].generated);
+        a_info[o_ptr->name1].found = TRUE;
+    }
+    else if ((o_ptr->art_name) && (!(o_ptr->marked & OM_ART_COUNTED))) /* Bookkeeping */
+    {
+        stats_rand_art_counts.found += o_ptr->number;
+    }
 
     if (o_ptr->curse_flags & OFC_AGGRAVATE)
         div++;
