@@ -1794,7 +1794,8 @@ static bool prt_speed(int row, int col)
         else if ((is_fast) && (hitaus) && (hitaus != 10)) attr = ((hitaus > 10) ? TERM_VIOLET : TERM_YELLOW);
         else if (p_ptr->filibuster) attr = TERM_ORANGE;
         else attr = TERM_L_GREEN;
-        sprintf(buf, "Fast (+%d)", (i - 110));
+        if (effective_speed) sprintf(buf, "Fast (%d.%dx)", SPEED_TO_ENERGY(i) / 10, SPEED_TO_ENERGY(i) % 10);
+        else sprintf(buf, "Fast (+%d)", (i - 110));
 
     }
 
@@ -1815,7 +1816,8 @@ static bool prt_speed(int row, int col)
         else if ((is_fast) && (hitaus) && (hitaus != 10)) attr = ((hitaus > 10) ? TERM_VIOLET : TERM_YELLOW);
         else if (p_ptr->filibuster) attr = TERM_ORANGE;
         else attr = TERM_L_UMBER;
-        sprintf(buf, "Slow (-%d)", (110 - i));
+        if (effective_speed) sprintf(buf, "Slow (%d.%dx)", SPEED_TO_ENERGY(i) / 10, SPEED_TO_ENERGY(i) % 10);
+        else sprintf(buf, "Slow (-%d)", (110 - i));
     }
     else if (p_ptr->riding)
     {
