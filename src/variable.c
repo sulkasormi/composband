@@ -240,6 +240,7 @@ bool display_path;    /* Display actual path before shooting */
 bool plain_descriptions;    /* Plain object descriptions */
 bool always_show_list;    /* Always show list when choosing items */
 bool depth_in_feet;    /* Show dungeon level in feet */
+bool effective_speed;  /* Use Ighalli's speed display */
 bool show_labels;    /* Show labels in object listings */
 bool show_weights;    /* Show weights in object listings */
 bool show_discounts;
@@ -308,6 +309,7 @@ bool alert_insc_gone;    /* Alert when inscribed item is destroyed or stolen */
 bool coffee_break;   /* Coffee-break mode */
 bool easy_id;        /* Easy Identify */
 bool easy_lore;      /* Easy Monster Lore */
+bool empty_lore;     /* Always start with empty item lore */
 bool easy_damage;    /* Access wizard info about damage and monster health */
 bool allow_spoilers;
 bool power_tele;     /* Use old-style, non-fuzzy telepathy */
