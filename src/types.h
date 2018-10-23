@@ -1147,6 +1147,7 @@ struct player_type
     bool maul_of_vice;
     bool uimapuku;
     bool upkeep_warning; /* Unsafe upkeep - pets may turn hostile */
+    bool upset_okay;
 
     counter_t wild_counters[MAX_WILD_COUNTERS];    /* Wild Weapons */
 
@@ -1775,6 +1776,7 @@ typedef struct {
     byte bonus;         /* Items which have more than 'bonus' magical bonus match */
     byte level;
     byte weight;
+    byte charges;
     int  value;
 } autopick_type;
 
