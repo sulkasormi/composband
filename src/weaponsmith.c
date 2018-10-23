@@ -426,10 +426,21 @@ static void _absorb_all(object_type *o_ptr, _absorb_essence_f absorb_f)
     object_type  old_obj = *o_ptr;
     object_type  new_obj = {0};
 
-    obj_flags(&old_obj, old_flgs);
+    obj_essence_flags(&old_obj, old_flgs);
 
     /* Check whether the item we are absorbing completes a quest */
     quests_on_get_obj(o_ptr);
+
+    /* Make sure an artifact will be counted if we've somehow got this far without IDing it */
+    if (o_ptr->name1)
+    {
+        if (!p_ptr->noscore) assert(a_info[o_ptr->name1].generated);
+        a_info[o_ptr->name1].found = TRUE;
+    }
+    else if ((o_ptr->art_name) && (!(o_ptr->marked & OM_ART_COUNTED))) /* Bookkeeping */
+    {
+        stats_rand_art_counts.found += o_ptr->number;
+    }
 
     /* Mundanity */
     object_prep(&new_obj, o_ptr->k_idx);
@@ -447,7 +458,7 @@ static void _absorb_all(object_type *o_ptr, _absorb_essence_f absorb_f)
 
     if (old_obj.tval == TV_DRAG_ARMOR) new_obj.timeout = old_obj.timeout;
     obj_identify_fully(&new_obj);
-    obj_flags(&new_obj, new_flgs);
+    obj_essence_flags(&new_obj, new_flgs);
 
     /* Ammo and Curses */
     if (o_ptr->curse_flags & OFC_PERMA_CURSE) div++;
@@ -2057,10 +2068,7 @@ static int _smith_add_pval(object_type *o_ptr, int type)
 static void _character_dump_aux(doc_ptr doc);
 static bool _can_enchant(object_type *o_ptr)
 {
-    u32b flgs[OF_ARRAY_SIZE];
-    obj_flags(o_ptr, flgs);
-    if (have_flag(flgs, OF_NO_ENCHANT)) /* Harps, Guns, Runeswords, Kamikaze Robes, etc. */
-        return FALSE;
+    if (object_is_unenchantable(o_ptr)) return FALSE;
     return TRUE;
 }
 static void _list_current_essences(void)
