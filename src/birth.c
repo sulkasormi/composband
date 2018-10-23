@@ -118,11 +118,18 @@ int calc_exp_factor(void)
     return exp;
 }
 
-static void e_info_reset(void)
+static void e_info_reset(bool empty)
 {
+    int i, j;
+    if (!empty) return;
+    for (i = 1; i < max_e_idx; i++)
+    {
+        ego_type *e_ptr = &e_info[i];
+        for (j = 0; j < OF_ARRAY_SIZE; j++) e_ptr->known_flags[j] = 0;
+    }
 }
 
-static void k_info_reset(void)
+static void k_info_reset(bool empty)
 {
     int i;
 
@@ -134,6 +141,30 @@ static void k_info_reset(void)
         k_ptr->tried = FALSE;
         k_ptr->aware = FALSE;
     }
+}
+
+static void a_info_reset(bool empty)
+{
+   int i;
+   /* Start with no artifacts made yet */
+    for (i = 0; i < max_a_idx; i++)
+    {
+        artifact_type *a_ptr = &a_info[i];
+        a_ptr->generated = FALSE;
+        a_ptr->found = FALSE;
+        if (empty)
+        {
+            int j;
+            for (j = 0; j < OF_ARRAY_SIZE; j++) a_ptr->known_flags[j] = 0;
+        }
+    }
+}
+
+void empty_lore_wipe(void)
+{
+    e_info_reset(TRUE);
+    k_info_reset(TRUE);
+    a_info_reset(TRUE);
 }
 
 /*
@@ -150,17 +181,11 @@ static void player_wipe(void)
     (void)WIPE(p_ptr, player_type);
     p_ptr->mimic_form = MIMIC_NONE;
 
-    /* Start with no artifacts made yet */
-    for (i = 0; i < max_a_idx; i++)
-    {
-        artifact_type *a_ptr = &a_info[i];
-        a_ptr->generated = FALSE;
-        a_ptr->found = FALSE;
-    }
 
     /* Reset the objects */
-    k_info_reset();
-    e_info_reset();
+    a_info_reset(FALSE);
+    k_info_reset(FALSE);
+    e_info_reset(FALSE);
     stats_reset();
 
     /* Reset the "monsters" */
