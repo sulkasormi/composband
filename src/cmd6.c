@@ -978,6 +978,15 @@ static void do_cmd_device_aux(obj_ptr obj)
     if (have_flag(flgs, OF_SPEED))
         energy_use -= energy_use * obj->pval / 10;
 
+    if (device_sp(obj) < obj->activation.cost)
+    {
+        if (flush_failure) flush();
+        msg_print("The device has no charges left.");
+        if (prompt_on_failure) msg_print(NULL);
+        energy_use = 0;
+        return;
+    }
+
     if (p_ptr->tim_no_device)
     {
         msg_print("An evil power blocks your magic!");
@@ -1030,15 +1039,6 @@ static void do_cmd_device_aux(obj_ptr obj)
             PROJECT_STOP | PROJECT_GRID | PROJECT_ITEM | PROJECT_KILL);
         obj->number = 0;
         obj_release(obj, OBJ_RELEASE_QUIET);
-        return;
-    }
-
-    if (device_sp(obj) < obj->activation.cost)
-    {
-        if (flush_failure) flush();
-        msg_print("The device has no charges left.");
-        if (prompt_on_failure) msg_print(NULL);
-        energy_use = 0;
         return;
     }
 
