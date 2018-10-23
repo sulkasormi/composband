@@ -1592,7 +1592,7 @@ bool detect_monsters_magical(int range)
     /* Describe */
     if (flag)
     {
-        msg_print("You sense magical foes");
+        msg_print("You sense the presence of magical foes!");
     }
 
     /* Result */
