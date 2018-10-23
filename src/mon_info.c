@@ -193,7 +193,8 @@ static void _display_speed(monster_race *r_ptr, doc_ptr doc)
 {                        /* v~~~~~~byte */
     int speed = r_ptr->speed - 110;
     int rand = 0;
-    doc_printf(doc, "Speed: <color:%c>%+d</color>", _speed_color(speed), speed);
+    if (effective_speed) doc_printf(doc, "Speed: <color:%c>%d.%dx</color>", _speed_color(speed), SPEED_TO_ENERGY(r_ptr->speed) / 10, SPEED_TO_ENERGY(r_ptr->speed) % 10);
+    else doc_printf(doc, "Speed: <color:%c>%+d</color>", _speed_color(speed), speed);
 
     if (r_ptr->flags1 & RF1_RAND_50) rand += 50;
     if (r_ptr->flags1 & RF1_RAND_25) rand += 25;
