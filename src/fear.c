@@ -360,6 +360,7 @@ void fear_process_p(void)
         if (!projectable(py, px, m_ptr->fy, m_ptr->fx)) continue;
 
         r_level = _r_level(r_ptr);
+        if ((m_ptr->mflag2 & MFLAG2_FUZZY) && (randint1(200) > r_level)) continue;
         if (!fear_save_p(r_level/MAX(1, m_ptr->cdis-2)))
         {
             char m_name[80];
