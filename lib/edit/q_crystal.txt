@@ -18,4 +18,7 @@ D:experienced.
 
 R:OBJ(AMULET):ART(*)
 
+?:[EQU $RACE Death-Sword]
+R:OBJ(broad sword):EGO(sharpness)
+
 # vim: filetype=q :
