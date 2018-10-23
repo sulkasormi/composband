@@ -4177,14 +4177,14 @@ bool target_set(int mode)
             if ( target_able(c_ptr->m_idx)
              || ((mode & (TARGET_MARK|TARGET_DISI|TARGET_XTRA)) && m_list[c_ptr->m_idx].ml))
             {
-                strcpy(info, "q,t,p,o,+,-,?,<dir>");
+                strcpy(info, "q,t,p,o,x,+,-,?,<dir>");
 
             }
 
             /* Dis-allow target */
             else
             {
-                strcpy(info, "q,p,o,+,-,?,<dir>");
+                strcpy(info, "q,p,o,x,+,-,?,<dir>");
 
             }
 
@@ -4297,7 +4297,7 @@ bool target_set(int mode)
                 default:
                 {
                     /* Extract the action (if any) */
-                    d = get_keymap_dir(query);
+                    d = get_keymap_dir(query, FALSE);
 
                     if (!d) bell();
                     break;
@@ -4420,9 +4420,9 @@ bool target_set(int mode)
             c_ptr = &cave[y][x];
 
             if ((mode & TARGET_MARK) && !m_list[c_ptr->m_idx].ml)
-                strcpy(info, "q,p,o,+,-,?,<dir>");
+                strcpy(info, "q,p,o,x,+,-,?,<dir>");
             else
-                strcpy(info, "q,t,p,m,+,-,?,<dir>");
+                strcpy(info, "q,t,p,m,x,+,-,?,<dir>");
 
 
             /* Describe and Prompt (enable "TARGET_LOOK") */
@@ -4536,7 +4536,7 @@ bool target_set(int mode)
                 default:
                 {
                     /* Extract the action (if any) */
-                    d = get_keymap_dir(query);
+                    d = get_keymap_dir(query, FALSE);
 
                     /* XTRA HACK MOVEFAST */
                     if (isupper(query)) move_fast = TRUE;
@@ -4760,7 +4760,7 @@ bool get_aim_dir_aux(int *dp, int target_mode)
             default:
             {
                 /* Extract the action (if any) */
-                dir = get_keymap_dir(command);
+                dir = get_keymap_dir(command, FALSE);
 
                 break;
             }
@@ -4862,7 +4862,7 @@ int get_rep_dir(int *dp, bool under)
 
 
         /* Look up the direction */
-        dir = get_keymap_dir(ch);
+        dir = get_keymap_dir(ch, under);
 
         /* Oops */
         if (!dir) bell();
@@ -4987,7 +4987,7 @@ bool get_rep_dir2(int *dp)
 
 
         /* Look up the direction */
-        dir = get_keymap_dir(ch);
+        dir = get_keymap_dir(ch, FALSE);
 
         /* Oops */
         if (!dir) bell();
@@ -5219,7 +5219,7 @@ bool tgt_pt(int *x_ptr, int *y_ptr, int rng)
 
         default:
             /* Look up the direction */
-            d = get_keymap_dir(ch);
+            d = get_keymap_dir(ch, FALSE);
 
             /* XTRA HACK MOVEFAST */
             if (isupper(ch)) move_fast = TRUE;
@@ -5374,7 +5374,7 @@ bool get_hack_dir(int *dp)
             default:
             {
                 /* Look up the direction */
-                dir = get_keymap_dir(command);
+                dir = get_keymap_dir(command, FALSE);
 
                 break;
             }
