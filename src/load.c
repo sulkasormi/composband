@@ -168,6 +168,9 @@ static void rd_monster(savefile_ptr file, monster_type *m_ptr)
         case SAVE_MON_MINISLOW:
             m_ptr->minislow = savefile_read_byte(file);
             break;
+        case SAVE_MON_HOLD_O_IDX:
+            m_ptr->hold_o_idx = savefile_read_s16b(file);
+            break;
         /* default:
             TODO: Report an error back to the load routine!!*/
         }
@@ -702,6 +705,8 @@ static void rd_extra(savefile_ptr file)
     else p_ptr->coffee_lv_revisits = savefile_read_byte(file);
     if (savefile_is_older_than(file, 7, 0, 6, 2)) p_ptr->filibuster = FALSE;
     else p_ptr->filibuster = savefile_read_byte(file) ? TRUE : FALSE;
+    if (savefile_is_older_than(file, 7, 0, 9, 1)) p_ptr->upset_okay = FALSE;
+    else p_ptr->upset_okay = savefile_read_byte(file) ? TRUE : FALSE;
     for (i = 0; i < 16; i++) (void)savefile_read_s32b(file);
 
     {
@@ -848,13 +853,7 @@ static errr rd_saved_floor(savefile_ptr file, saved_floor_type *sf_ptr)
         if (i != o_idx) return 152;
         o_ptr = &o_list[o_idx];
         rd_item(file, o_ptr);
-        if (o_ptr->held_m_idx)
-        {
-            monster_type *m_ptr = &m_list[o_ptr->held_m_idx];
-            o_ptr->next_o_idx = m_ptr->hold_o_idx;
-            m_ptr->hold_o_idx = o_idx;
-        }
-        else
+        if (!o_ptr->held_m_idx) /* We will sort that out later */
         {
             cave_type *c_ptr = &cave[o_ptr->loc.y][o_ptr->loc.x];
             o_ptr->next_o_idx = c_ptr->o_idx;
@@ -878,9 +877,30 @@ static errr rd_saved_floor(savefile_ptr file, saved_floor_type *sf_ptr)
         c_ptr = &cave[m_ptr->fy][m_ptr->fx];
         c_ptr->m_idx = m_idx;
         real_r_ptr(m_ptr)->cur_num++;
+
+        /* Build a chain of objects carried */
+        if (m_ptr->hold_o_idx)
+        {
+            int j;
+
+            /* The first object in the chain points to no object */
+            m_ptr->hold_o_idx = 0;
+
+            for (j = 1; j < o_max; j++)
+            {
+                object_type *o_ptr = &o_list[j];
+                if (o_ptr->held_m_idx == m_idx)
+                {
+                    o_ptr->next_o_idx = m_ptr->hold_o_idx;
+                    m_ptr->hold_o_idx = j;
+                }
+            }
+        }
+
         /* XXX monster removed from r_info */
         if (!r_info[m_ptr->r_idx].name)
             delete_monster_idx(m_idx);
+
     }
 
     {
@@ -906,7 +926,7 @@ static errr rd_saved_floor(savefile_ptr file, saved_floor_type *sf_ptr)
             ptr->guard_y = savefile_read_s16b(file);
             ptr->distance = savefile_read_s16b(file);
 
-            if (ptr->guard_idx && !m_list[ptr->guard_idx].r_idx) /* XXX monster removed from r_info */
+            if (ptr->guard_idx && !m_list[ptr->guard_idx].r_idx && ptr->ai == AI_GUARD_MON) /* XXX monster removed from r_info */
             {
                 ptr->guard_idx = 0;
                 ptr->ai = AI_SEEK;
@@ -917,9 +937,16 @@ static errr rd_saved_floor(savefile_ptr file, saved_floor_type *sf_ptr)
                and object indices won't change after a save and reload. */
             for (j = 1; j < max_m_idx; ++j)
             {
-                if (m_list[j].pack_idx == old_idx)
+                if ((m_list[j].pack_idx == old_idx) && (!(m_list[j].mflag & MFLAG_PACKHACK)))
+                {
                     m_list[j].pack_idx = new_idx;
+                    m_list[j].mflag |= (MFLAG_PACKHACK);
+                }
             }
+        }
+        for (i = 1; i < max_m_idx; ++i)
+        {
+            if (m_list[i].mflag & MFLAG_PACKHACK) m_list[i].mflag &= ~(MFLAG_PACKHACK);
         }
     }
 
