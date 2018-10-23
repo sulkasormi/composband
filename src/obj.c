@@ -1650,7 +1650,7 @@ void obj_save(obj_ptr obj, savefile_ptr file)
         savefile_write_byte(file, OBJ_SAVE_LEVEL);
         savefile_write_s16b(file, obj->level);
     }
-    if ((obj->origin_type) && (obj->origin_type != ORIGIN_MIXED))
+    if (obj->origin_type)
     {
         savefile_write_byte(file, OBJ_SAVE_ORIGIN);
         savefile_write_byte(file, obj->origin_type);
