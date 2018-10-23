@@ -3923,7 +3923,7 @@ static bool insert_str(char *buf, cptr target, cptr insert)
  * generally only apply to single keys, which makes it no more
  * than 128, so a char should suffice... but keymap_act is 256...
  */
-int get_keymap_dir(char ch)
+int get_keymap_dir(char ch, bool under)
 {
     int d = 0;
 
@@ -3965,7 +3965,7 @@ int get_keymap_dir(char ch)
     }
 
     /* Paranoia */
-    if (d == 5) d = 0;
+    if ((d == 5) && (!under)) d = 0;
 
     /* Return direction */
     return (d);
