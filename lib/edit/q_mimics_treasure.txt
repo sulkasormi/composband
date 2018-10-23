@@ -49,4 +49,7 @@ R:OBJ(^ring$):EGO(protection)
 ?:[EQU $RACE Hydra]
 R:OBJ(^amulet$):EGO(trickery)
 
+?:[EQU $RACE Death-Sword]
+R:OBJ(potion of sight, NUMBER=4+1d4)
+
 # vim: filetype=q :
