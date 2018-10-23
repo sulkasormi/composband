@@ -393,10 +393,21 @@ static void _drop(_ui_context_ptr context)
         prompt.error = "You have nothing to drop.";
     }
     prompt.where[0] = INV_PACK;
-    prompt.where[1] = INV_QUIVER;
+    prompt.where[1] = INV_EQUIP;
+    prompt.where[2] = INV_QUIVER;
 
     obj_prompt(&prompt);
     if (!prompt.obj) return;
+
+    if (prompt.obj->loc.where == INV_EQUIP)
+    {
+        if (prompt.obj->tval == TV_QUIVER && quiver_count(NULL))
+        {
+            msg_print("Your quiver still holds ammo. Remove all the ammo from your quiver first.");
+            return;
+        }
+        if (!equip_can_takeoff(prompt.obj)) return;
+    }
 
     if (inv_loc(context->inv) == INV_MUSEUM)
     {
@@ -422,6 +433,16 @@ static void _drop(_ui_context_ptr context)
     {
         /* *identify* here rather than in _drop_aux in case the user splits a pile. */
         obj_identify_fully(prompt.obj);
+    }
+
+    if (prompt.obj->loc.where == INV_EQUIP)
+    {
+        char name[MAX_NLEN];
+        object_desc(name, prompt.obj, OD_COLOR_CODED);
+        msg_format("You are no longer wearing %s.", name);
+        p_ptr->update |= PU_BONUS | PU_TORCH | PU_MANA;
+        p_ptr->redraw |= PR_EQUIPPY;
+        p_ptr->window |= PW_EQUIP;        
     }
 
     if (amt < prompt.obj->number)
