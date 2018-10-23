@@ -75,6 +75,7 @@ enum _keyword_e {
     FLG_MORE_BONUS,
     FLG_MORE_LEVEL,
     FLG_MORE_WEIGHT,
+    FLG_MORE_CHARGES,
     FLG_MORE_VALUE,
 
 /* Nouns */
@@ -121,7 +122,7 @@ enum _keyword_e {
 #define FLG_QUALITY_BEGIN       FLG_AVERAGE
 #define FLG_QUALITY_END         FLG_NAMELESS
 #define FLG_SPECIAL_FORM_BEGIN  FLG_MORE_DICE
-#define FLG_SPECIAL_FORM_END    FLG_MORE_WEIGHT
+#define FLG_SPECIAL_FORM_END    FLG_MORE_VALUE
 #define FLG_NOUN_BEGIN          FLG_ITEMS
 #define FLG_NOUN_END            (FLG_MAX - 1)
 
@@ -166,6 +167,7 @@ static char KEY_MORE_DICE[] =  "more dice than";
 static char KEY_MORE_BONUS[] =  "more bonus than";
 static char KEY_MORE_LEVEL[] =  "more level than";
 static char KEY_MORE_WEIGHT[] =  "more weight than";
+static char KEY_MORE_CHARGES[] =  "more charges than";
 static char KEY_MORE_VALUE[] =  "more value than";
 
 static char KEY_ITEMS[] = "items";
@@ -479,6 +481,31 @@ static bool autopick_new_entry(autopick_type *entry, cptr str, bool allow_defaul
         {
             if (' ' == *ptr) ptr++;
             ADD_FLG(FLG_MORE_WEIGHT);
+        }
+        else
+            ptr = prev_ptr;
+    }
+
+    if (MATCH_KEY2(KEY_MORE_CHARGES))
+    {
+        int k = 0;
+        entry->charges = 0;
+
+        /* Drop leading spaces */
+        while (' ' == *ptr) ptr++;
+
+        /* Read number */
+        while ('0' <= *ptr && *ptr <= '9')
+        {
+            entry->charges = 10 * entry->charges + (*ptr - '0');
+            ptr++;
+            k++;
+        }
+
+        if (k > 0 && k <= 3)
+        {
+            if (' ' == *ptr) ptr++;
+            ADD_FLG(FLG_MORE_CHARGES);
         }
         else
             ptr = prev_ptr;
@@ -1139,6 +1166,15 @@ string_ptr autopick_line_from_entry(autopick_type *entry, int options)
             string_append_s(s, "</color>");
     }
 
+    if (IS_FLG(FLG_MORE_CHARGES))
+    {
+        if (options & AUTOPICK_COLOR_CODED)
+            string_append_s(s, "<color:o>");
+        string_printf(s, " %s %d", KEY_MORE_CHARGES, entry->charges);
+        if (options & AUTOPICK_COLOR_CODED)
+            string_append_s(s, "</color>");
+    }
+
     if (IS_FLG(FLG_MORE_VALUE))
     {
         if (options & AUTOPICK_COLOR_CODED)
@@ -1370,6 +1406,12 @@ static bool is_autopick_aux(object_type *o_ptr, autopick_type *entry, cptr o_nam
     {
         if (o_ptr->weight <= entry->weight * 10)
             return FALSE;
+    }
+
+    if (IS_FLG(FLG_MORE_CHARGES))
+    {
+        if (!object_is_device(o_ptr)) return FALSE;
+        if ((device_max_sp(o_ptr) / o_ptr->activation.cost) <= entry->charges) return FALSE;
     }
 
     if (IS_FLG(FLG_MORE_VALUE))
@@ -2593,8 +2635,8 @@ bool autopick_autoregister(object_type *o_ptr)
         /* Add the header */
         fprintf(pref_fff, "%s\n", autoregister_header);
 
-        fprintf(pref_fff, "%s\n", "# *Waring!* The lines below will be deleated later.");
-        fprintf(pref_fff, "%s\n", "# Keep it by cut & paste if you need these lines for future characters.");
+        fprintf(pref_fff, "%s\n", "# *Warning!* The lines below will be deleted later.");
+        fprintf(pref_fff, "%s\n", "# Keep them by cut & paste if you need them for future characters.");
 
         /* Now auto register is in-use */
         p_ptr->autopick_autoregister = TRUE;
@@ -2857,6 +2899,12 @@ static void describe_autopick(char *buff, autopick_type *entry)
         static char more_weight_desc_str[50];
         sprintf(more_weight_desc_str, "weight is more than %d lbs", entry->weight);
         whose_str[whose_n++] = more_weight_desc_str;
+    }
+    if (IS_FLG(FLG_MORE_CHARGES))
+    {
+        static char more_charges_desc_str[50];
+        sprintf(more_charges_desc_str, "number of charges is higher than %d", entry->charges);
+        whose_str[whose_n++] = more_charges_desc_str;
     }
     if (IS_FLG(FLG_MORE_VALUE))
     {
@@ -4165,6 +4213,7 @@ enum {
     EC_OK_MORE_BONUS,
     EC_OK_MORE_LEVEL,
     EC_OK_MORE_WEIGHT,
+    EC_OK_MORE_CHARGES,
     EC_OK_MORE_VALUE,
     EC_OK_WORTHLESS,
     EC_OK_ARTIFACT,
@@ -4277,6 +4326,7 @@ static char MN_MORE_BONUS[] = "more bonus than # (rings etc.)";
 static char MN_MORE_LEVEL[] = "more level than # (corpses)";
 static char MN_MORE_WEIGHT[] = "more weight than #";
 static char MN_MORE_VALUE[] = "more value than #";
+static char MN_MORE_CHARGES[] = "more charges than #";
 static char MN_WANTED[] = "wanted (corpse)";
 static char MN_UNIQUE[] = "unique (corpse)";
 static char MN_HUMAN[] = "human (corpse)";
@@ -4370,6 +4420,7 @@ command_menu_type menu_data[] =
     {MN_MORE_BONUS, 1, -1, EC_OK_MORE_BONUS},
     {MN_MORE_LEVEL, 1, -1, EC_OK_MORE_LEVEL},
     {MN_MORE_WEIGHT, 1, -1, EC_OK_MORE_WEIGHT},
+    {MN_MORE_CHARGES, 1, -1, EC_OK_MORE_CHARGES},
     {MN_MORE_VALUE, 1, -1, EC_OK_MORE_VALUE},
     {MN_WANTED, 1, -1, EC_OK_WANTED},
     {MN_UNIQUE, 1, -1, EC_OK_UNIQUE},
@@ -6084,6 +6135,7 @@ static bool do_editor_command(text_body_type *tb, int com_id)
     case EC_OK_MORE_BONUS: toggle_keyword(tb, FLG_MORE_BONUS); break;
     case EC_OK_MORE_LEVEL: toggle_keyword(tb, FLG_MORE_LEVEL); break;
     case EC_OK_MORE_WEIGHT: toggle_keyword(tb, FLG_MORE_WEIGHT); break;
+    case EC_OK_MORE_CHARGES: toggle_keyword(tb, FLG_MORE_CHARGES); break;
     case EC_OK_MORE_VALUE: toggle_keyword(tb, FLG_MORE_VALUE); break;
     case EC_OK_WORTHLESS: toggle_keyword(tb, FLG_WORTHLESS); break;
     case EC_OK_ARTIFACT: toggle_keyword(tb, FLG_ARTIFACT); break;
