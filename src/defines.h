@@ -18,7 +18,7 @@
 
 #define VER_MAJOR 7
 #define VER_MINOR 0
-#define VER_PATCH "nougat"
+#define VER_PATCH "cloudberry"
 #define VER_EXTRA 1
 #define VERSION_IS_DEVELOPMENT (TRUE)
 
@@ -2646,7 +2646,7 @@ enum summon_specific_e {
  */
 #define MFLAG_VIEW      0x01    /* Monster is in line of sight */
 #define MFLAG_TEMP      0x02    /* Monster is marked for project_hack() */
-#define MFLAG_XXX2      0x04    /* (unused) */
+#define MFLAG_PACKHACK  0x04    /* Pack loading hack */
 #define MFLAG_XXX3      0x08    /* (unused) */
 #define MFLAG_BORN      0x10    /* Monster is still being born */
 #define MFLAG_NICE      0x20    /* Monster is still being nice */
@@ -4970,6 +4970,7 @@ enum mon_save_fields_e {
     SAVE_MON_ANGER,
     SAVE_MON_MANA,
     SAVE_MON_MINISLOW,
+    SAVE_MON_HOLD_O_IDX,
 };
 
 /* Sub-alignment flags for neutral monsters */
