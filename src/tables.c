@@ -2196,6 +2196,9 @@ option_type option_info[] =
     { &depth_in_feet,               FALSE, OPT_PAGE_TEXT, 0, 7,
     "depth_in_feet",                "Show dungeon level in feet" },
 
+    { &effective_speed,             FALSE, OPT_PAGE_TEXT, 0, 29,
+    "effective_speed",              "Show speeds as energy multipliers" },
+
     { &show_labels,                 TRUE,  OPT_PAGE_TEXT, 0, 10,
     "show_labels",                  "Show labels in object listings" },
 
@@ -2380,6 +2383,9 @@ option_type option_info[] =
 
 	{ &never_forget,		FALSE, OPT_PAGE_BIRTH, 6, 27,
 	"never_forget",			"Easy Labyrinth and no amnesia" },
+
+	{ &empty_lore,			FALSE, OPT_PAGE_BIRTH, 1, 16,
+	"empty_lore",			"Always forget item lore between games" },
 
     { &smart_learn,                 TRUE,  OPT_PAGE_BIRTH, 1, 14,
     "smart_learn",                  "Monsters learn from their mistakes (*)" },
