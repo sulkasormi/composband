@@ -209,6 +209,11 @@ void reset_tim_flags(void)
     world_player = FALSE;
 
     if (p_ptr->pclass == CLASS_BERSERKER) p_ptr->shero = 1;
+    else if (p_ptr->pclass == CLASS_ALCHEMIST)
+    {
+        alchemist_set_hero(NULL, 0, TRUE);
+        alchemist_set_hero(NULL, 0, FALSE);
+    }
 
     if (p_ptr->riding)
     {
@@ -2649,6 +2654,9 @@ bool set_hero(int v, bool do_dec)
         }
     }
 
+    /* Alchemist bookkeeping */
+    if ((p_ptr->pclass == CLASS_ALCHEMIST) && (v < p_ptr->hero)) alchemist_set_hero(&notice, v, TRUE);
+
     /* Use the value */
     p_ptr->hero = v;
 
@@ -2713,6 +2721,9 @@ bool set_shero(int v, bool do_dec)
             notice = TRUE;
         }
     }
+
+    /* Alchemist bookkeeping */
+    if ((p_ptr->pclass == CLASS_ALCHEMIST) && (v < p_ptr->shero)) alchemist_set_hero(&notice, v, FALSE);
 
     /* Use the value */
     p_ptr->shero = v;
