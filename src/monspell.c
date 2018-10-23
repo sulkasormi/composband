@@ -2568,7 +2568,7 @@ static void _weird_bird_p(void)
 
             monster_desc(m_name_self, _current.mon, MD_PRON_VISIBLE | MD_POSSESSIVE | MD_OBJECTIVE);
 
-            msg_format("%^s wounds %s!", _current.name, m_name_self);
+            msg_format("%^s harms %s!", _current.name, m_name_self);
             project(0, 0, _current.src.y, _current.src.x, psion_backlash_dam(get_damage), GF_MISSILE, PROJECT_KILL);
             if (p_ptr->tim_eyeeye)
                 set_tim_eyeeye(p_ptr->tim_eyeeye-5, TRUE);
@@ -2637,7 +2637,7 @@ static void _weird_bird_m(void)
                 /* hisself */
                 monster_desc(m_name_self, _current.mon, MD_PRON_VISIBLE | MD_POSSESSIVE | MD_OBJECTIVE);
 
-                msg_format("%^s wounds %s!", _current.name, m_name_self);
+                msg_format("%^s harms %s!", _current.name, m_name_self);
                 project(0, 0, _current.src.y, _current.src.x, psion_backlash_dam(get_damage), GF_MISSILE, PROJECT_KILL);
                 if (p_ptr->tim_eyeeye) set_tim_eyeeye(p_ptr->tim_eyeeye-5, TRUE);
             }
