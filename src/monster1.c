@@ -840,7 +840,7 @@ bool monster_living(monster_race *r_ptr)
 
 bool monster_magical(monster_race *r_ptr)
 {
-    if (r_ptr->freq_spell >= 16)
+    if ((r_ptr->spells) && (r_ptr->spells->freq >= 16))
         return TRUE;
     else
         return FALSE;
