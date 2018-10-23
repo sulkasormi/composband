@@ -180,6 +180,7 @@ void werewolf_change_shape_spell(int cmd, variant *res)
         _equip_on_change_form();
         if (_werewolf_form == WEREWOLF_FORM_WOLF) msg_format("You turn into %s wolf!", ((one_in_(8)) && (p_ptr->food < PY_FOOD_ALERT)) ? "a ravenous" : "a");
         else msg_format("You turn into %s human!", ((one_in_(8)) && (p_ptr->food < PY_FOOD_ALERT)) ? "a ravenous" : "a");
+        if ((_werewolf_form == WEREWOLF_FORM_HUMAN) && (p_ptr->action == ACTION_STALK)) set_action(ACTION_NONE);
         var_set_bool(res, TRUE);
         handle_stuff();
         break;
