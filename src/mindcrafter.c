@@ -144,9 +144,9 @@ void _minor_displacement_spell(int cmd, variant *res)
         break;
     case SPELL_DESC:
         if (p_ptr->lev >= 45)
-            var_set_string(res, "Attempt to teleport to a specific location.");
+            var_set_string(res, "Attempts to teleport to a specific location.");
         else
-            var_set_string(res, "Teleport short distance.");
+            var_set_string(res, "Teleports a short distance.");
         break;
     case SPELL_SPOIL_DESC:
         var_set_string(res, "Teleports the player (Range 10). At L45, gives dimension door instead (Range L/2 + 10).");
@@ -184,7 +184,7 @@ void _major_displacement_spell(int cmd, variant *res)
         var_set_string(res, "Major Displacement");
         break;
     case SPELL_DESC:
-        var_set_string(res, "Teleport long distance.");
+        var_set_string(res, "Teleports a long distance.");
         break;
     case SPELL_SPOIL_DESC:
         var_set_string(res, "Teleports the player (Range L*5).");
@@ -209,10 +209,10 @@ void _domination_spell(int cmd, variant *res)
         var_set_string(res, "Domination");
         break;
     case SPELL_DESC:
-        var_set_string(res, "Stuns, confuses or scares a monster. Or attempts to charm all monsters in sight at level 30.");
+        var_set_string(res, "Stuns, confuses, scares or charms a monster. From level 30, attempts to charm all monsters in sight.");
         break;
     case SPELL_SPOIL_DESC:
-        var_set_string(res, "Stuns, confuses or scares a monster. Or attempts to charm all monsters in sight at L30.");
+        var_set_string(res, "Stuns, confuses, scares or charms a monster. Or attempts to charm all monsters in sight at L30.");
         break;
     case SPELL_CAST:
     {
@@ -226,7 +226,7 @@ void _domination_spell(int cmd, variant *res)
         }
         else
         {
-            charm_monsters(spell_power(p_ptr->lev * 2));
+            charm_monsters(spell_power((p_ptr->lev * 3 / 2) + 15));
         }
         var_set_bool(res, TRUE);
         break;
@@ -287,8 +287,8 @@ void _character_armor_spell(int cmd, variant *res)
         var_set_string(res, "Character Armour");
         break;
     case SPELL_DESC:
-        var_set_string(res, "Gives stone skin and some resistance to elements for a while. The level "
-                              "increased, the more number of resistances given.");
+        var_set_string(res, "Turns your skin to stone and provides temporary resistance to the elements. "
+                              "More resistances are given at higher levels.");
         break;
     case SPELL_SPOIL_DESC:
         var_set_string(res, "Gives Stone Skin, Resist Acid (L15), Resist Fire (L20), Resist Cold (L25), Resist Lightning (L30) and Resist Poison (L35).");
@@ -319,14 +319,14 @@ void _psychometry_spell(int cmd, variant *res)
         var_set_string(res, "Psychometry");
         break;
     case SPELL_DESC:
-        var_set_string(res, "Gives feeling of an item. Or identify an item at level 25.");
+        var_set_string(res, "Returns a feeling about an item. Identifies the item at level 20 and above.");
         break;
     case SPELL_SPOIL_DESC:
-        var_set_string(res, "Pseudo-identifies and object. At L25, identifies an object instead.");
+        var_set_string(res, "Pseudo-identifies an object. At L20, identifies an object instead.");
         break;
     case SPELL_CAST:
     {
-        if (p_ptr->lev < 25)
+        if (p_ptr->lev < 20)
             var_set_bool(res, psychometry());
         else
             var_set_bool(res, ident_spell(NULL));
@@ -346,8 +346,8 @@ void _mind_wave_spell(int cmd, variant *res)
         var_set_string(res, "Mind Wave");
         break;
     case SPELL_DESC:
-        var_set_string(res, "Generate a ball centered on you which inflict monster with PSI damage. "
-                              "Or inflict all monsters with PSI damage at level 25.");
+        var_set_string(res, "At low levels, generates a ball of psionic energy centered on you. "
+                              "At level 25 and above, inflicts psionic damage on all monsters in line of sight.");
         break;
 
     case SPELL_SPOIL_DESC:
@@ -391,7 +391,7 @@ void _adrenaline_spell(int cmd, variant *res)
         var_set_string(res, "Adrenaline Channeling");
         break;
     case SPELL_DESC:
-        var_set_string(res, "Removes fear and stun. Gives heroism and speed. Heals HP a little unless "
+        var_set_string(res, "Removes fear and stunning. Gives heroism and speed. Heals HP a little unless "
                               "you already have heroism and temporary speed boost.");
         break;
     case SPELL_SPOIL_DESC:
@@ -456,8 +456,8 @@ void _psychic_drain_spell(int cmd, variant *res)
         var_set_string(res, "Psychic Drain");
         break;
     case SPELL_DESC:
-        var_set_string(res, "Fires a ball which damages monsters and absorbs monsters' mind power. "
-                              "Absorbing takes from 0 to 1.5 more turns.");
+        var_set_string(res, "Fires a ball which damages monsters and absorbs their mind power. "
+                            "A successful absorption also consumes some of your own energy, costing an additional 0.01 to 1.50 turns.");
         break;
     case SPELL_SPOIL_DESC:
         var_set_string(res, "Drain target monster (Damage (L/2)d6) to regain 5d(damage)/4 spell points. But this spell also consumes 1d150 extra energy.");
@@ -493,7 +493,7 @@ void psycho_spear_spell(int cmd, variant *res)
         var_set_string(res, "Psycho-Spear");
         break;
     case SPELL_DESC:
-        var_set_string(res, "Fires a beam of pure energy which penetrate the invulnerability barrier.");
+        var_set_string(res, "Fires a beam of pure energy which penetrates invulnerability globes.");
         break;
     case SPELL_INFO:
         var_set_string(res, info_damage(1, spell_power(p_ptr->lev * 3), spell_power(p_ptr->lev * 3 + p_ptr->to_d_spell)));
@@ -686,8 +686,8 @@ class_t *mindcrafter_get_class(void)
     /* static info never changes */
     if (!init)
     {           /* dis, dev, sav, stl, srh, fos, thn, thb */
-    skills_t bs = { 30,  33,  38,   3,  22,  16,  50,  40 };
-    skills_t xs = { 10,  11,  10,   0,   0,   0,  14,  18 };
+    skills_t bs = { 30,  33,  38,   3,  22,  16,  48,  40 };
+    skills_t xs = { 10,  11,  10,   0,   0,   0,  12,  17 };
 
         me.name = "Mindcrafter";
         me.desc = "The Mindcrafter is a unique class that uses the powers of the mind "
@@ -710,7 +710,7 @@ class_t *mindcrafter_get_class(void)
         me.stats[A_CHR] =  2;
         me.base_skills = bs;
         me.extra_skills = xs;
-        me.life = 100;
+        me.life = 99;
         me.base_hp = 4;
         me.exp = 125;
         me.pets = 35;
