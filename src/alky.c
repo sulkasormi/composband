@@ -27,6 +27,8 @@ static bool _infusions_init = FALSE;
 
 static int _CHEM[] = {0,0,0};
 
+static u16b _alchemist_hero = 0;
+static u16b _alchemist_shero = 0;
 
 int _AlchemistSkill(void) {
 	return MAX(1, ((p_ptr->lev * 6 / 5) + (2 * adj_mag_stat[p_ptr->stat_ind[A_INT]])));
@@ -909,6 +911,31 @@ static void _reproduce_infusion_spell(int cmd, variant *res)
 	}
 }
 
+/* Note that we don't check here whether p_ptr->pclass == CLASS_ALCHEMIST.
+ * The game probably won't crash if we call alchemist_set_hero() from a
+ * non-alchemist, but it's still a good idea to check first... */
+void alchemist_set_hero(bool *notice, int uus_arvo, bool normal_hero)
+{
+    u16b *kohde = (normal_hero ? &_alchemist_hero : &_alchemist_shero);
+    int tulos;
+    bool oli = ((*kohde > 0) && (notice)); /* checks for NULL notice */
+    if (uus_arvo < 1)
+    {
+        if (oli) *notice = TRUE;
+        *kohde = 0;
+        return;
+    }
+    tulos = *kohde;
+    tulos += uus_arvo;
+    tulos -= (normal_hero ? p_ptr->hero : p_ptr->shero);
+    if (tulos < 0) tulos = 0;
+    if ((!tulos) && (oli)) *notice = TRUE;
+    if ((tulos > 0) && (!oli) && (notice)) *notice = TRUE;
+    if (tulos > 200) tulos = 200;
+    tulos = MIN(tulos, uus_arvo);
+    *kohde = (u16b)tulos;
+}
+
 void alchemist_super_potion_effect(int sval){
 
 	switch (sval)
@@ -936,7 +963,7 @@ static void _calc_bonuses(void) {
 		add_flag(p_ptr->shooter_info.flags, OF_BRAND_ACID);
 	}
 
-	if (IS_SHERO()){ // extra benefits from things.
+	if (_alchemist_shero){ // extra benefits from things.
 		boost = 2 + p_ptr->lev / 5;
 
 		p_ptr->weapon_info[0].xtra_blow += py_prorata_level_aux(75, 1, 1, 1);
@@ -948,7 +975,7 @@ static void _calc_bonuses(void) {
 		p_ptr->pspeed += 4;
 		p_ptr->shooter_info.xtra_shot += p_ptr->lev * 120 / 80;
 	}
-	else if (IS_HERO()){
+	else if (_alchemist_hero){
 		boost = 1 + p_ptr->lev / 10;
 		p_ptr->pspeed += 2;
 		p_ptr->to_h_m += boost;
@@ -1005,6 +1032,9 @@ static void _load_list(savefile_ptr file)
 	for (i = 0; i < _CTIER_MAX; i++){
 		_CHEM[i] = savefile_read_s32b(file);
 	}
+	if (savefile_is_older_than(file, 7, 0, 9, 0)) return;
+	_alchemist_hero = savefile_read_u16b(file);
+	_alchemist_shero = savefile_read_u16b(file);
 }
 
 static void _load_player(savefile_ptr file)
@@ -1028,12 +1058,13 @@ static void _save_list(savefile_ptr file)
 	for (i = 0; i < _CTIER_MAX; i++){
 		savefile_write_s32b(file, (s32b)_CHEM[i]); // save chemical count.
 	}
-	
 }
 
 static void _save_player(savefile_ptr file)
 {
 	_save_list(file);
+	savefile_write_u16b(file, _alchemist_hero);
+	savefile_write_u16b(file, _alchemist_shero);
 }
 
 /* Character Dump */
@@ -1142,8 +1173,8 @@ class_t *alchemist_get_class(void)
 	if (!init)
 	{           
 		/* dis, dev, sav, stl, srh, fos, thn, thb */
-		skills_t bs = { 30, 30, 34, 6, 50, 24, 55, 55 };
-		skills_t xs = { 15, 9, 10, 0, 0, 0, 20, 20 };
+		skills_t bs = { 30, 30, 34, 6, 50, 24, 52, 52 };
+		skills_t xs = { 15, 9, 10, 0, 0, 0, 17, 17 };
 
 		me.name = "Alchemist";
 		me.desc = "Alchemists are masters of tinctures, concoctions and "
