@@ -1345,13 +1345,13 @@ bool gf_affect_m(int who, mon_ptr mon, int type, int dam, int flags)
     case GF_MANA_CLASH:
         if (seen) obvious = TRUE;
         _BABBLE_HACK()
-        if (!race->freq_spell)
+        if ((!race->spells) || (!race->spells->freq))
         {
             note = " is immune.";
             dam = 0;
         }
         else /* 900 max dam coming in ... ~600 max dam going out */
-            dam = dam * MIN(66, race->freq_spell) / 100;
+            dam = dam * MIN(66, race->spells->freq) / 100;
         break;
     case GF_ACID:
         if (touch && seen_msg) msg_format("%^s is <color:G>dissolved</color>!", m_name);
