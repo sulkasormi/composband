@@ -666,6 +666,50 @@ static char *inscribe_flags_aux(flag_insc_table *fi_ptr, u32b flgs[OF_ARRAY_SIZE
     return ptr;
 }
 
+int resist_opposite_flag(int i)
+{
+    byte loytyi = 0;
+    cptr my_english = NULL;
+    flag_insc_table *flgs = flag_insc_resistance;
+    while (flgs->english)
+    {
+        if (i == flgs->flag)
+        {
+            loytyi = 1;
+            my_english = flgs->english;
+            break;
+        }
+        flgs++;
+    }
+    if (!loytyi)
+    {
+        flgs = flag_insc_vulnerability;
+        while (flgs->english)
+        {
+            if (i == flgs->flag)
+            {
+                loytyi = 2;
+                my_english = flgs->english;
+                break;
+            }
+            flgs++;
+        }
+    }
+    if (!loytyi)
+    {
+        return OF_INVALID;
+    }
+    flgs = (loytyi == 2) ? flag_insc_resistance : flag_insc_vulnerability;
+    while (flgs->english)
+    {
+        if (streq(flgs->english, my_english))
+        {
+            return flgs->flag;
+        }
+        flgs++;
+    }
+    return OF_INVALID;
+}
 
 /*
  *  Special variation of have_flag for auto-inscription
@@ -721,6 +765,8 @@ static char *get_ability_abbreviation(char *ptr, object_type *o_ptr, bool all)
         }
     }
 
+    /* Remove opposite flags */
+    remove_opposite_flags(flgs);
 
     /* Plusses */
     ptr = inscribe_flags_aux(flag_insc_plus, flgs, ptr);
