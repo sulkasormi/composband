@@ -256,6 +256,7 @@ extern bool display_path;    /* Display actual path before shooting */
 extern bool plain_descriptions;    /* Plain object descriptions */
 extern bool always_show_list;    /* Always show list when choosing items */
 extern bool depth_in_feet;    /* Show dungeon level in feet */
+extern bool effective_speed;  /* Use Ighalli's speed display */
 extern bool show_labels;    /* Show labels in object listings */
 extern bool show_weights;    /* Show weights in object listings */
 extern bool show_discounts;
@@ -325,6 +326,7 @@ extern bool alert_insc_gone;    /* Alert when inscribed item is destroyed or sto
 extern bool coffee_break;   /* Coffeebreak mode */
 extern bool easy_id;        /* Easy Identify */
 extern bool easy_lore;      /* Easy Monster Lore */
+extern bool empty_lore;     /* Always start with empty item lore */
 extern bool easy_damage;    /* Peek into damage and monster health */
 extern bool allow_spoilers;
 extern bool power_tele;     /* Use old-style, non-fuzzy telepathy */
@@ -635,6 +637,7 @@ extern bool birth_hack;
 extern void add_history_from_pref_line(cptr t);
 extern cptr birth_get_class_desc(int i);
 extern cptr birth_get_realm_desc(int i);
+extern void empty_lore_wipe(void);
 extern void player_birth(void);
 extern void get_max_stats(void);
 extern int calc_exp_factor(void);
@@ -1003,6 +1006,7 @@ extern char tval_to_attr_char(int tval);
 extern char attr_to_attr_char(byte a);
 extern char *object_desc_kosuu(char *t, object_type *o_ptr);
 extern void object_desc(char *buf, object_type *o_ptr, u32b mode);
+extern int resist_opposite_flag(int i);
 
 /* floors.c */
 extern void init_saved_floors(bool force);
@@ -1190,13 +1194,13 @@ extern bool player_place(int y, int x);
 extern void monster_drop_carried_objects(monster_type *m_ptr);
 extern byte monster_pantheon(monster_race *r_ptr);
 
-/* mon_display.c */
+/* mon_info.c */
 extern void mon_display(monster_race *r_ptr);
 extern void mon_display_rect(monster_race *r_ptr, rect_t display);
 extern void mon_display_doc(monster_race *r_ptr, doc_ptr doc);
 extern void mon_display_possessor(monster_race *r_ptr, doc_ptr doc);
 
-/* obj_display.c */
+/* obj_info.c */
 extern void obj_display(object_type *o_ptr);
 extern void obj_display_rect(object_type *o_ptr, rect_t display);
 extern void obj_display_doc(object_type *o_ptr, doc_ptr doc);
@@ -1205,9 +1209,10 @@ extern void device_display_doc(object_type *o_ptr, doc_ptr doc);
 extern void ego_display(ego_type *e_ptr);
 extern void ego_display_rect(ego_type *e_ptr, rect_t display);
 extern void ego_display_doc(ego_type *e_ptr, doc_ptr doc);
+extern void remove_opposite_flags(u32b flgs[OF_ARRAY_SIZE]);
 extern bool display_origin(object_type *o_ptr, doc_ptr doc);
 
-/* py_display.c */
+/* py_info.c */
 extern void py_display(void);
 extern void py_display_birth(void);
 extern void py_display_spells(doc_ptr doc, spell_info *table, int ct);
@@ -1366,6 +1371,9 @@ extern s32b new_object_cost(object_type *o_ptr, int options);
 /* racial.c */
 extern bool can_do_cmd_cast(void);
 extern void stop_mouth(void);
+
+/* race_sword.c */
+extern void obj_essence_flags(object_type *o_ptr, u32b flgs[OF_ARRAY_SIZE]);
 
 /* save.c */
 extern bool save_player(void);
@@ -1656,7 +1664,7 @@ extern void pause_line(int row);
 extern void pause_line_aux(cptr prompt, int row, int col);
 extern void request_command(int shopping);
 extern bool is_a_vowel(int ch);
-extern int get_keymap_dir(char ch);
+extern int get_keymap_dir(char ch, bool under);
 extern errr type_string(cptr str, uint len);
 extern void roff_to_buf(cptr str, int wlen, char *tbuf, size_t bufsize);
 
@@ -2421,6 +2429,7 @@ extern void     alchemist_browse(void);
 extern class_t *alchemist_get_class(void);
 extern int      alchemist_infusion_energy_use(void);
 extern void     alchemist_super_potion_effect(int sval);
+extern void     alchemist_set_hero(bool *notice, int uus_arvo, bool normal_hero);
 
 /* duelist.c */
 extern cptr duelist_current_challenge(void);
