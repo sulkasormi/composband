@@ -1641,6 +1641,7 @@ int doc_display_aux(doc_ptr doc, cptr caption, int top, rect_t display)
     char    back_str[81];
     int     page_size;
     bool    done = FALSE;
+    bool    verify_format_hack = (strpos("Character Sheet", caption) == 1);
 
     strcpy(finder_str, "");
 
@@ -1789,18 +1790,46 @@ int doc_display_aux(doc_ptr doc, cptr caption, int top, rect_t display)
 
             if (!get_string("File name: ", name, 80)) break;
             path_build(buf, sizeof(buf), ANGBAND_DIR_USER, name);
-            fp2 = my_fopen(buf, "w");
-            if (!fp2)
-            {
-                msg_format("Failed to open file: %s", buf);
-                break;
-            }
 
             cb = strlen(buf);
             if (cb > 5 && strcmp(buf + cb - 5, ".html") == 0)
                 format = DOC_FORMAT_HTML;
             else if (cb > 4 && strcmp(buf + cb - 4, ".htm") == 0)
                 format = DOC_FORMAT_HTML;
+
+            if ((format != DOC_FORMAT_HTML) && (verify_format_hack) && (strlen(buf)))
+            {
+                char nuname[1024], prompt[256];
+                int i, paikka = 0;
+                strcpy(nuname, buf);
+                for (i = strlen(buf) - 1; ((i > 0) && (i > (int)strlen(buf) - 7)); i--)
+                {
+                    unsigned char testi = buf[i];
+                    if (testi == '/') break;
+                    if (testi == '.')
+                    {
+                        paikka = i + 1;
+                        break;
+                    }
+                }
+                if (paikka)
+                {
+                    for (i = strlen(buf) - 1; i > paikka - 2; i--)
+                    {
+                        nuname[i] = '\0';
+                    }
+                }
+                strcat(nuname, ".html");
+                sprintf(prompt, "Please note that the FrogComposband Ladder at angband.oook.cz only accepts HTML dumps.\n<color:y>Save dump as</color> <color:R>%s</color><color:y>? [y/n]</color>", nuname);
+                if (msg_prompt(prompt, "ny", PROMPT_DEFAULT) == 'y') strcpy(buf, nuname);
+            }
+
+            fp2 = my_fopen(buf, "w");
+            if (!fp2)
+            {
+                msg_format("Failed to open file: %s", buf);
+                break;
+            }
 
             doc_write_file(doc, fp2, format);
             my_fclose(fp2);
