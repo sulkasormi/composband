@@ -55,3 +55,8 @@ M:###...c...#######...............##############################......####
 M:####..l..###########..........####################################....+#
 M:########################################################################
 R:OBJ(amulet):EGO(sacred)
+
+?:[AND [EQU $RACE Death-Sword Jelly] [EQU [MOD $RANDOM60 2] 0] ]
+R:OBJ(potion of intelligence, NUMBER=1)
+?:[AND [EQU $RACE Death-Sword Jelly] [EQU [MOD $RANDOM60 2] 1] ]
+R:OBJ(potion of charisma, NUMBER=1)
