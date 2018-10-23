@@ -659,6 +659,15 @@ static cptr _do_potion(int sval, int mode)
         {
             int dur = _potion_power(25 + randint1(25));
             if (set_hero(p_ptr->hero + dur, FALSE)) device_noticed = TRUE;
+            if (p_ptr->pclass == CLASS_ALCHEMIST)
+            {
+                alchemist_set_hero(&device_noticed, p_ptr->hero + dur, TRUE);
+                if (device_noticed)
+                {
+                    p_ptr->update |= (PU_BONUS);
+                    handle_stuff();
+                }
+            }
         }
         break;
     case SV_POTION_BERSERK_STRENGTH:
@@ -669,6 +678,15 @@ static cptr _do_potion(int sval, int mode)
             int dur = _potion_power(25 + randint1(25));
             if (set_shero(p_ptr->shero + dur, FALSE)) device_noticed = TRUE;
             if (hp_player(30)) device_noticed = TRUE;
+            if (p_ptr->pclass == CLASS_ALCHEMIST)
+            {
+                alchemist_set_hero(&device_noticed, p_ptr->shero + dur, FALSE);
+                if (device_noticed)
+                {
+                    p_ptr->update |= (PU_BONUS);
+                    handle_stuff();
+                }
+            }
         }
         break;
     case SV_POTION_CURE_LIGHT:
