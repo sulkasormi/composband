@@ -2608,9 +2608,12 @@ static void innate_attacks(s16b m_idx, bool *fear, bool *mdeath, int mode)
                     case GF_OLD_CONF:
                     case GF_OLD_SLOW:
                     case GF_STUN:
-                        _gf_innate(m_ptr, e, effect_pow);
+                    {
+                        int pow = (prace_is_(RACE_MON_GOLEM)) ? (effect_pow / (5 + (p_ptr->lev / 9) + randint1(4))) : effect_pow;
+                        _gf_innate(m_ptr, e, pow);
                         *mdeath = (m_ptr->r_idx == 0);
                         break;
+                    }
                     case GF_DRAIN_MANA:
                     {
                         int amt = MIN(effect_pow, max_drain_amt - drain_amt);
