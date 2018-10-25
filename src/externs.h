@@ -1685,6 +1685,7 @@ extern int my_stricmp(cptr a, cptr b);
 extern void str_tolower(char *str);
 extern int inkey_special(bool numpad_cursor);
 extern unsigned int strpos(const char *mika, const char *missa);
+extern bool clip_and_locate(char *poista, char *mista);
 
 /* xtra1.c */
 extern void cnv_stat(int val, char *out_val);
