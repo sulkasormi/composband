@@ -605,6 +605,12 @@ critical_t critical_norm(int weight, int plus, s16b meichuu, int mode, int hand)
         }
     }
 
+    /* Golem criticals are too strong */
+    if (prace_is_(RACE_MON_GOLEM) && (result.mul > 100))
+    {
+        result.mul -= ((result.mul - 100) / 3);
+    }
+
     return result;
 }
 
@@ -2609,7 +2615,7 @@ static void innate_attacks(s16b m_idx, bool *fear, bool *mdeath, int mode)
                     case GF_OLD_SLOW:
                     case GF_STUN:
                     {
-                        int pow = (prace_is_(RACE_MON_GOLEM)) ? (effect_pow / (5 + (p_ptr->lev / 9) + randint1(4))) : effect_pow;
+                        int pow = (prace_is_(RACE_MON_GOLEM)) ? (effect_pow / (5 + (p_ptr->lev / 9) + (p_ptr->lev / 48) + randint1(4))) : effect_pow;
                         _gf_innate(m_ptr, e, pow);
                         *mdeath = (m_ptr->r_idx == 0);
                         break;
