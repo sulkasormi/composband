@@ -4611,6 +4611,51 @@ unsigned int strpos(const char *mika, const char *missa)
 }
 
 /*
+ * Clips away everything from paikka to paikka + pituus - 1
+ * (this considers the array as starting at 1; it actually starts at 0,
+ * so make sure paikka accounts for that)
+ */
+void string_clip(char *apu, unsigned int paikka, int pituus)
+{
+	unsigned int i;
+	if ((paikka < 1) || (pituus < 1)) return; /* Abort */
+	if ((paikka + pituus) >= (strlen(apu) + 1)) /* Speedy treatment */
+	{
+		apu[paikka - 1] = '\0';
+		return;
+	}
+	for (i = paikka - 1; i < strlen(apu) - pituus; i++)
+	{
+		apu[i] = apu[i + pituus];
+	}
+	apu[i++] = '\0';
+	return;
+}
+
+/*
+ * Locates and clips a substring from a string. Checks if consecutive spaces
+ * or spaces at the end of the string are created as a result, and removes
+ * them if necessary
+ */
+bool clip_and_locate(char *poista, char *mista)
+{
+	unsigned int sijainti = strpos(poista, mista);
+	unsigned int pituus = strlen(poista);
+	unsigned int pituus2 = strlen(mista);
+	int loppu, erotus;
+	byte tyhjat = 0;
+	if ((!sijainti) || (!pituus)) return FALSE;
+	loppu = pituus + sijainti - 1;
+	erotus = pituus2 - loppu;
+	if ((sijainti > 1) && (mista[sijainti - 2] == ' ')) tyhjat++;
+	if (((tyhjat) || (sijainti == 1)) && (erotus) && (mista[loppu] == ' ')) tyhjat += (sijainti > 1) ? 1 : 2;
+	if ((tyhjat == 1) && (!erotus)) { sijainti--; pituus++; }
+	string_clip(mista, sijainti, (tyhjat >= 2) ? pituus + 1 : pituus);
+	return TRUE;
+}
+
+
+/*
  * Get a keypress from the user.
  * And interpret special keys as internal code.
  *
