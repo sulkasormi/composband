@@ -10,7 +10,8 @@ by using the Shift key), which is preferred by some players. This
 mechanic sometimes leads to unwanted running, especially on the 
 angband.live online server which has some very odd default settings. If 
 you are playing there, see if toggling Num Lock helps you stop running, 
-or else request help in the server chat.
+turn on the online_macros option in the Input Options menu (the '=' 
+key), or else request help in the server chat.
 
 
 Q: All right, I have a character up and walking. What should I do?
@@ -126,7 +127,8 @@ strong later, while others (like psions, an extremely powerful endgame
 class) have the opposite curve. Ninjas are often used as an example of 
 a strong class, and while it's very debatable whether they are the 
 strongest, they do have the advantage of steady development that keeps 
-them powerful through all phases of the game.
+them powerful through all phases of the game. The same thing could be 
+said of weaponsmiths.
 
 Demigods and Amberites are two of the most powerful races, but they 
 also have a very steep leveling-up penalty, which can be a significant 
@@ -203,6 +205,19 @@ no-wilderness play. Selecting 'Beginner' (instead of 'Normal') at
 character creation forces coffee-break mode (and consequently 
 no-wilderness play), which sometimes confuses players who've seen or 
 heard about the game and expect a wilderness.
+
+
+Q: I keep getting ambushed in the wilderness! How do I survive?
+
+A: Take enough Scrolls of Teleportation with you (or a Teleport staff), 
+and some form of healing (like potions of cure serious wounds or cure 
+critical wounds) for emergencies. Avoid high-level wilderness (like 
+mountains or deep seas, or the areas around high-level dungeons) until 
+you know your character can survive there. Daytime travelling is 
+somewhat safer than travelling at night, as ambushes are more likely at 
+night and approaching dangerous monsters are easier to spot in 
+daylight. Characters with low stealth are also more likely to be 
+ambushed.
 
 
 Q: I tried to reach a dungeon through the overworld, and the overworld 
@@ -491,7 +506,8 @@ you. However, it is still more of a convenience than something that you
 absolutely need, especially if you have easy and reliable access to 
 Detection and have no or minimal problems seeing invisible creatures. A 
 player without telepathy needs to detect monsters more often but can 
-usually get by.
+usually get by. Staves of Telepathy are also a handy option for players 
+without permanent telepathy.
 
 
 Q: What does Reflection do? How important is it?
