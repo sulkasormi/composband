@@ -194,7 +194,7 @@ Melee
     Dexterity     +2        Stealth     Fair         
     Constitution  +1        Searching   Poor         
     Charisma      +1        Perception  Bad          
-    Life Rating  111%       Melee       Superb       
+    Life Rating  109%       Melee       Superb       
     Base HP       12        Bows        Good         
     Experience   130%
     
@@ -235,7 +235,7 @@ Melee
     Dexterity     -1        Stealth     Fair         
     Constitution  +2        Searching   Poor         
     Charisma      +1        Perception  Bad          
-    Life Rating  109%       Melee       Superb       
+    Life Rating  107%       Melee       Superb       
     Base HP       12        Bows        Bad          
     Experience   135%
     
@@ -364,12 +364,12 @@ Martial Arts
   
     Stats                   Skills
     Strength      +2        Disarming   Superb       
-    Intelligence  -1        Device      Very Good    
+    Intelligence  -1        Device      Good         
     Wisdom        +1        Save        Fair         
     Dexterity     +3        Stealth     Excellent    
     Constitution  +2        Searching   Good         
     Charisma      +1        Perception  Fair         
-    Life Rating  110%       Melee       Excellent    
+    Life Rating  102%       Melee       Excellent    
     Base HP       12        Bows        Excellent    
     Experience   130%
     
@@ -597,8 +597,8 @@ Devices
     Dexterity     +2        Stealth     Excellent    
     Constitution  +0        Searching   Excellent    
     Charisma      -2        Perception  Fair         
-    Life Rating  101%       Melee       Excellent    
-    Base HP       12        Bows        Excellent    
+    Life Rating  101%       Melee       Good         
+    Base HP       12        Bows        Very Good    
     Experience   135%
     
   Devicemaster
@@ -692,7 +692,7 @@ Prayer
   
     Stats                   Skills
     Strength      -1        Disarming   Poor         
-    Intelligence  -3        Device      Very Good    
+    Intelligence  -3        Device      Good         
     Wisdom        +3        Save        Excellent    
     Dexterity     -1        Stealth     Fair         
     Constitution  +0        Searching   Poor         
@@ -1013,7 +1013,7 @@ Mind
     Dexterity     -1        Stealth     Good         
     Constitution  -1        Searching   Fair         
     Charisma      +2        Perception  Poor         
-    Life Rating  100%       Melee       Fair         
+    Life Rating   99%       Melee       Fair         
     Base HP        4        Bows        Good         
     Experience   125%
     
@@ -1343,14 +1343,14 @@ Blood-Knight   +2   -2   -2   +0   +3   +2  120%  +20  150%
 Duelist        +2   +1   -2   +2   -3   +2  100%   +4  150%
 Mauler         +5   -2   -2   -1   +3   +2  110%  +18  120%
 Rune-Knight    +2   +1   -1   +1   +0   +1  102%   +6  150%
-Samurai        +3   -2   +1   +2   +1   +1  111%  +12  130%
+Samurai        +3   -2   +1   +2   +1   +1  109%  +12  130%
 Warrior        +4   -2   -2   +2   +2   +1  115%  +18  100%
-Weaponmaster   +4   -3   -2   -1   +2   +1  109%  +12  135%
+Weaponmaster   +4   -3   -2   -1   +2   +1  107%  +12  135%
 Weaponsmith    +3   -1   -1   +1   +0   +0  108%  +12  130%
 Archer         +2   -1   -1   +2   +1   +0  111%  +12  110%
 Sniper         +2   -1   -1   +2   +1   +0  100%   +4  110%
 Force-Trainer  +0   -1   +3   +2   +1   +0  100%   +4  135%
-Monk           +2   -1   +1   +3   +2   +1  110%  +12  130%
+Monk           +2   -1   +1   +3   +2   +1  102%  +12  130%
 Mystic         +2   -1   -2   +3   +1   +2  100%   +4  130%
 Blood-Mage     -4   +3   -2   +1   +2   -2  108%  +10  135%
 Gray-Mage      -4   +3   +0   +1   -2   -2   95%   +0  130%
@@ -1374,7 +1374,7 @@ Red-Mage       +2   +2   -1   +1   +0   -1  106%   +8  140%
 Warrior-Mage   +2   +2   +0   +1   +0   +1  106%   +8  140%
 Beastmaster    +1   -1   -1   +1   +0   +2  103%   +6  120%
 Cavalry        +2   -2   -2   +2   +2   +1  111%  +10  120%
-Mindcrafter    -1   +0   +3   -1   -1   +2  100%   +4  125%
+Mindcrafter    -1   +0   +3   -1   -1   +2   99%   +4  125%
 Mirror-Master  -2   +3   +1   -1   -2   -2  100%   +4  130%
 Psion          -1   +2   +2   -1   -1   +2   96%   +4  150%
 Time-Lord      -1   +0   +3   -1   -1   +0   96%   +0  125%
@@ -1404,7 +1404,7 @@ Weaponsmith   Good          Fair          Poor          Fair
 Archer        Excellent     Fair          Fair          Very Good    
 Sniper        Good          Fair          Poor          Excellent    
 Force-Trainer Good          Very Good     Good          Very Good    
-Monk          Superb        Very Good     Fair          Excellent    
+Monk          Superb        Good          Fair          Excellent    
 Mystic        Superb        Very Good     Fair          Excellent    
 Blood-Mage    Fair          Superb        Good          Good         
 Gray-Mage     Fair          Superb        Good          Good         
@@ -1416,7 +1416,7 @@ Yellow-Mage   Fair          Superb        Good          Good
 Alchemist     Excellent     Fair          Fair          Excellent    
 Devicemaster  Poor          Superb        Fair          Fair         
 Magic-Eater   Poor          Superb        Fair          Fair         
-Priest        Poor          Very Good     Excellent     Fair         
+Priest        Poor          Good          Excellent     Fair         
 Ninja         Superb        Fair          Fair          Superb       
 Rogue         Superb        Excellent     Fair          Excellent    
 Scout         Excellent     Very Good     Fair          Excellent    
@@ -1467,7 +1467,7 @@ Mage          Poor          Fair          Very Bad      Very Bad
 Necromancer   Poor          Fair          Very Bad      Very Bad     
 Sorcerer      Poor          Fair          Very Bad      Very Bad     
 Yellow-Mage   Poor          Fair          Very Bad      Very Bad     
-Alchemist     Excellent     Fair          Excellent     Excellent    
+Alchemist     Excellent     Fair          Good          Very Good    
 Devicemaster  Fair          Poor          Fair          Poor         
 Magic-Eater   Fair          Poor          Fair          Poor         
 Priest        Poor          Bad           Fair          Poor         
@@ -1499,5 +1499,5 @@ Wild-Talent   Fair          Poor          Very Good     Very Good
 
 
 
-Automatically generated for FrogComposband 7.0.mango.
+Automatically generated for FrogComposband 7.0.cloudberry.
 
