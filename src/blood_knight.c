@@ -288,7 +288,8 @@ void _blood_pool_spell(int cmd, variant *res)
 
         msg_print("You feel light headed.");
         object_prep(&forge, lookup_kind(TV_POTION, SV_POTION_BLOOD));
-
+        if (!object_is_known(&forge)) obj_identify(&forge);
+        object_origins(&forge, ORIGIN_BLOOD);
         pack_carry(&forge);
         msg_print("You store your blood for future use.");
         var_set_bool(res, TRUE);
@@ -479,6 +480,7 @@ static void _calc_bonuses(void)
 static void _get_flags(u32b flgs[OF_ARRAY_SIZE])
 {
     add_flag(flgs, OF_REGEN);
+    if (p_ptr->lev >= 30) add_flag(flgs, OF_RES_FEAR);
 }
 
 static void _calc_weapon_bonuses(object_type *o_ptr, weapon_info_t *info_ptr)
