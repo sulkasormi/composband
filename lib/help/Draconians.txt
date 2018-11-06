@@ -7,13 +7,13 @@ Red Draconians have an affinity for fire, which they both breathe at will and re
 
   <indent><style:table><color:G>Stats                   Skills</color>
 Strength      +3        Disarming   <color:r>Bad          </color>
-Intelligence  +0        Device      <color:R>Poor         </color>
+Intelligence  +0        Device      <color:r>Bad          </color>
 Wisdom        +0        Save        <color:o>Fair         </color>
 Dexterity     +1        Stealth     <color:r>Bad          </color>
 Constitution  +2        Searching   <color:r>Bad          </color>
 Charisma      +2        Perception  <color:g>Superb       </color>
-Life Rating  106%       Melee       <color:g>Superb       </color>
-Base HP       22        Bows        <color:y>Very Good    </color>
+Life Rating  104%       Melee       <color:g>Superb       </color>
+Base HP       22        Bows        <color:y>Good         </color>
 Experience   190%       Infravision 20'
 </style></indent>
 <topic:White><color:o>White</color>
@@ -21,13 +21,13 @@ White Draconians have an affinity for frost, which they both breathe at will and
 
   <indent><style:table><color:G>Stats                   Skills</color>
 Strength      +3        Disarming   <color:r>Bad          </color>
-Intelligence  +0        Device      <color:R>Poor         </color>
+Intelligence  +0        Device      <color:r>Bad          </color>
 Wisdom        +0        Save        <color:o>Fair         </color>
 Dexterity     +1        Stealth     <color:r>Bad          </color>
 Constitution  +2        Searching   <color:r>Bad          </color>
 Charisma      +2        Perception  <color:g>Superb       </color>
-Life Rating  106%       Melee       <color:g>Superb       </color>
-Base HP       22        Bows        <color:y>Very Good    </color>
+Life Rating  104%       Melee       <color:g>Superb       </color>
+Base HP       22        Bows        <color:y>Good         </color>
 Experience   190%       Infravision 20'
 </style></indent>
 <topic:Blue><color:o>Blue</color>
@@ -35,13 +35,13 @@ Blue Draconians have an affinity for lightning, which they both breathe at will 
 
   <indent><style:table><color:G>Stats                   Skills</color>
 Strength      +2        Disarming   <color:r>Bad          </color>
-Intelligence  +1        Device      <color:o>Fair         </color>
+Intelligence  +1        Device      <color:R>Poor         </color>
 Wisdom        +1        Save        <color:o>Fair         </color>
 Dexterity     +1        Stealth     <color:R>Poor         </color>
 Constitution  +2        Searching   <color:r>Bad          </color>
 Charisma      +2        Perception  <color:g>Superb       </color>
-Life Rating  105%       Melee       <color:G>Excellent    </color>
-Base HP       22        Bows        <color:y>Very Good    </color>
+Life Rating  103%       Melee       <color:G>Excellent    </color>
+Base HP       22        Bows        <color:y>Good         </color>
 Experience   190%       Infravision 20'
 </style></indent>
 <topic:Black><color:o>Black</color>
@@ -49,13 +49,13 @@ Black Draconians have an affinity for acid, which they both breathe at will and 
 
   <indent><style:table><color:G>Stats                   Skills</color>
 Strength      +2        Disarming   <color:r>Bad          </color>
-Intelligence  +1        Device      <color:o>Fair         </color>
+Intelligence  +1        Device      <color:R>Poor         </color>
 Wisdom        +1        Save        <color:o>Fair         </color>
 Dexterity     +1        Stealth     <color:R>Poor         </color>
 Constitution  +2        Searching   <color:r>Bad          </color>
 Charisma      +2        Perception  <color:g>Superb       </color>
-Life Rating  105%       Melee       <color:g>Superb       </color>
-Base HP       22        Bows        <color:y>Very Good    </color>
+Life Rating  103%       Melee       <color:g>Superb       </color>
+Base HP       22        Bows        <color:y>Good         </color>
 Experience   190%       Infravision 20'
 </style></indent>
 <topic:Green><color:o>Green</color>
@@ -68,8 +68,8 @@ Wisdom        +1        Save        <color:o>Fair         </color>
 Dexterity     +1        Stealth     <color:o>Fair         </color>
 Constitution  +2        Searching   <color:r>Bad          </color>
 Charisma      +2        Perception  <color:g>Superb       </color>
-Life Rating  103%       Melee       <color:y>Good         </color>
-Base HP       22        Bows        <color:y>Very Good    </color>
+Life Rating  101%       Melee       <color:y>Good         </color>
+Base HP       22        Bows        <color:y>Good         </color>
 Experience   205%       Infravision 20'
 </style></indent>
 <topic:Bronze><color:o>Bronze</color>
@@ -77,13 +77,13 @@ Bronze Draconians are the most intelligent of their kind, and the best with magi
 
   <indent><style:table><color:G>Stats                   Skills</color>
 Strength      +1        Disarming   <color:r>Bad          </color>
-Intelligence  +2        Device      <color:y>Very Good    </color>
+Intelligence  +2        Device      <color:y>Good         </color>
 Wisdom        +1        Save        <color:o>Fair         </color>
 Dexterity     +1        Stealth     <color:o>Fair         </color>
 Constitution  +2        Searching   <color:r>Bad          </color>
 Charisma      +2        Perception  <color:g>Superb       </color>
-Life Rating  103%       Melee       <color:o>Fair         </color>
-Base HP       22        Bows        <color:y>Very Good    </color>
+Life Rating  101%       Melee       <color:o>Fair         </color>
+Base HP       22        Bows        <color:y>Good         </color>
 Experience   215%       Infravision 20'
 </style></indent>
 <topic:Crystal><color:o>Crystal</color>
@@ -91,13 +91,13 @@ Hard of skin, the Crystal Draconian is difficult to hit in melee. But their agil
 
   <indent><style:table><color:G>Stats                   Skills</color>
 Strength      +1        Disarming   <color:r>Bad          </color>
-Intelligence  -1        Device      <color:R>Poor         </color>
+Intelligence  -1        Device      <color:r>Bad          </color>
 Wisdom        +1        Save        <color:o>Fair         </color>
 Dexterity     +0        Stealth     <color:R>Poor         </color>
 Constitution  +3        Searching   <color:r>Bad          </color>
 Charisma      +2        Perception  <color:g>Superb       </color>
-Life Rating  105%       Melee       <color:G>Excellent    </color>
-Base HP       22        Bows        <color:y>Very Good    </color>
+Life Rating  103%       Melee       <color:G>Excellent    </color>
+Base HP       22        Bows        <color:y>Good         </color>
 Experience   250%       Infravision 20'
 </style></indent>
 <topic:Gold><color:o>Gold</color>
@@ -105,13 +105,13 @@ The wisest of their kind, Gold Draconians are resilient in the face of magical a
 
   <indent><style:table><color:G>Stats                   Skills</color>
 Strength      +1        Disarming   <color:r>Bad          </color>
-Intelligence  +1        Device      <color:y>Good         </color>
+Intelligence  +1        Device      <color:o>Fair         </color>
 Wisdom        +2        Save        <color:y>Good         </color>
 Dexterity     +1        Stealth     <color:o>Fair         </color>
 Constitution  +2        Searching   <color:r>Bad          </color>
 Charisma      +2        Perception  <color:g>Superb       </color>
-Life Rating  104%       Melee       <color:y>Good         </color>
-Base HP       22        Bows        <color:y>Very Good    </color>
+Life Rating  102%       Melee       <color:y>Good         </color>
+Base HP       22        Bows        <color:y>Good         </color>
 Experience   220%       Infravision 20'
 </style></indent>
 <topic:Shadow><color:o>Shadow</color>
@@ -119,55 +119,55 @@ Lithe, stealthy and nimble, the Shadow Draconian is seldom seen in this world. T
 
   <indent><style:table><color:G>Stats                   Skills</color>
 Strength      +0        Disarming   <color:r>Bad          </color>
-Intelligence  +1        Device      <color:y>Good         </color>
+Intelligence  +1        Device      <color:o>Fair         </color>
 Wisdom        +1        Save        <color:o>Fair         </color>
 Dexterity     +3        Stealth     <color:y>Very Good    </color>
 Constitution  +2        Searching   <color:r>Bad          </color>
 Charisma      +2        Perception  <color:g>Superb       </color>
-Life Rating  102%       Melee       <color:R>Poor         </color>
-Base HP       22        Bows        <color:y>Very Good    </color>
+Life Rating  100%       Melee       <color:R>Poor         </color>
+Base HP       22        Bows        <color:y>Good         </color>
 Experience   225%       Infravision 40'
 </style></indent>
 <topic:Tables><style:heading>Table 1 - Draconian Statistic Bonus Table</style>
 
 <style:table><color:G>               STR  INT  WIS  DEX  CON  CHR  Life  Exp  Shop</color>
-Red             +3   +0   +0   +1   +2   +2  106%  190%  115%
-White           +3   +0   +0   +1   +2   +2  106%  190%  115%
-Blue            +2   +1   +1   +1   +2   +2  105%  190%  110%
-Black           +2   +1   +1   +1   +2   +2  105%  190%  110%
-Green           +1   +1   +1   +1   +2   +2  103%  205%  105%
-Bronze          +1   +2   +1   +1   +2   +2  103%  215%  100%
-Crystal         +1   -1   +1   +0   +3   +2  105%  250%  105%
-Gold            +1   +1   +2   +1   +2   +2  104%  220%   95%
-Shadow          +0   +1   +1   +3   +2   +2  102%  225%  105%
+Red             +3   +0   +0   +1   +2   +2  104%  190%  115%
+White           +3   +0   +0   +1   +2   +2  104%  190%  115%
+Blue            +2   +1   +1   +1   +2   +2  103%  190%  110%
+Black           +2   +1   +1   +1   +2   +2  103%  190%  110%
+Green           +1   +1   +1   +1   +2   +2  101%  205%  105%
+Bronze          +1   +2   +1   +1   +2   +2  101%  215%  100%
+Crystal         +1   -1   +1   +0   +3   +2  103%  250%  105%
+Gold            +1   +1   +2   +1   +2   +2  102%  220%   95%
+Shadow          +0   +1   +1   +3   +2   +2  100%  225%  105%
 
 </style>
 <topic:Skills1><style:heading>Table 2 - Draconian Skill Bonus Table I</style>
 <style:table>
              <color:w>Disarming     Device        Save          Stealth      </color>
-Red          <color:r>Bad          </color> <color:R>Poor         </color> <color:o>Fair         </color> <color:r>Bad          </color>
-White        <color:r>Bad          </color> <color:R>Poor         </color> <color:o>Fair         </color> <color:r>Bad          </color>
-Blue         <color:r>Bad          </color> <color:o>Fair         </color> <color:o>Fair         </color> <color:R>Poor         </color>
-Black        <color:r>Bad          </color> <color:o>Fair         </color> <color:o>Fair         </color> <color:R>Poor         </color>
+Red          <color:r>Bad          </color> <color:r>Bad          </color> <color:o>Fair         </color> <color:r>Bad          </color>
+White        <color:r>Bad          </color> <color:r>Bad          </color> <color:o>Fair         </color> <color:r>Bad          </color>
+Blue         <color:r>Bad          </color> <color:R>Poor         </color> <color:o>Fair         </color> <color:R>Poor         </color>
+Black        <color:r>Bad          </color> <color:R>Poor         </color> <color:o>Fair         </color> <color:R>Poor         </color>
 Green        <color:r>Bad          </color> <color:o>Fair         </color> <color:o>Fair         </color> <color:o>Fair         </color>
-Bronze       <color:r>Bad          </color> <color:y>Very Good    </color> <color:o>Fair         </color> <color:o>Fair         </color>
-Crystal      <color:r>Bad          </color> <color:R>Poor         </color> <color:o>Fair         </color> <color:R>Poor         </color>
-Gold         <color:r>Bad          </color> <color:y>Good         </color> <color:y>Good         </color> <color:o>Fair         </color>
-Shadow       <color:r>Bad          </color> <color:y>Good         </color> <color:o>Fair         </color> <color:y>Very Good    </color>
+Bronze       <color:r>Bad          </color> <color:y>Good         </color> <color:o>Fair         </color> <color:o>Fair         </color>
+Crystal      <color:r>Bad          </color> <color:r>Bad          </color> <color:o>Fair         </color> <color:R>Poor         </color>
+Gold         <color:r>Bad          </color> <color:o>Fair         </color> <color:y>Good         </color> <color:o>Fair         </color>
+Shadow       <color:r>Bad          </color> <color:o>Fair         </color> <color:o>Fair         </color> <color:y>Very Good    </color>
 
 </style>
 <topic:Skills2><style:heading>Table 3 - Draconian Skill Bonus Table II</style>
 <style:table>
              <color:w>Searching     Perception    Melee         Bows          Infra</color>
-Red          <color:r>Bad          </color> <color:g>Superb       </color> <color:g>Superb       </color> <color:y>Very Good    </color>   20'
-White        <color:r>Bad          </color> <color:g>Superb       </color> <color:g>Superb       </color> <color:y>Very Good    </color>   20'
-Blue         <color:r>Bad          </color> <color:g>Superb       </color> <color:G>Excellent    </color> <color:y>Very Good    </color>   20'
-Black        <color:r>Bad          </color> <color:g>Superb       </color> <color:g>Superb       </color> <color:y>Very Good    </color>   20'
-Green        <color:r>Bad          </color> <color:g>Superb       </color> <color:y>Good         </color> <color:y>Very Good    </color>   20'
-Bronze       <color:r>Bad          </color> <color:g>Superb       </color> <color:o>Fair         </color> <color:y>Very Good    </color>   20'
-Crystal      <color:r>Bad          </color> <color:g>Superb       </color> <color:G>Excellent    </color> <color:y>Very Good    </color>   20'
-Gold         <color:r>Bad          </color> <color:g>Superb       </color> <color:y>Good         </color> <color:y>Very Good    </color>   20'
-Shadow       <color:r>Bad          </color> <color:g>Superb       </color> <color:R>Poor         </color> <color:y>Very Good    </color>   40'
+Red          <color:r>Bad          </color> <color:g>Superb       </color> <color:g>Superb       </color> <color:y>Good         </color>   20'
+White        <color:r>Bad          </color> <color:g>Superb       </color> <color:g>Superb       </color> <color:y>Good         </color>   20'
+Blue         <color:r>Bad          </color> <color:g>Superb       </color> <color:G>Excellent    </color> <color:y>Good         </color>   20'
+Black        <color:r>Bad          </color> <color:g>Superb       </color> <color:g>Superb       </color> <color:y>Good         </color>   20'
+Green        <color:r>Bad          </color> <color:g>Superb       </color> <color:y>Good         </color> <color:y>Good         </color>   20'
+Bronze       <color:r>Bad          </color> <color:g>Superb       </color> <color:o>Fair         </color> <color:y>Good         </color>   20'
+Crystal      <color:r>Bad          </color> <color:g>Superb       </color> <color:G>Excellent    </color> <color:y>Good         </color>   20'
+Gold         <color:r>Bad          </color> <color:g>Superb       </color> <color:y>Good         </color> <color:y>Good         </color>   20'
+Shadow       <color:r>Bad          </color> <color:g>Superb       </color> <color:R>Poor         </color> <color:y>Good         </color>   40'
 
 </style>
 <topic:Powers><style:heading>Table 4 - Draconian Special Powers</style>
@@ -205,4 +205,4 @@ You will be able to summon aid from dragons.</indent>
 
 
 
-<color:s>Automatically generated for FrogComposband 7.0.strawberry.</color>
+<color:s>Automatically generated for FrogComposband 7.0.cloudberry.</color>
