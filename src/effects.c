@@ -5474,6 +5474,8 @@ bool sp_player(int num)
     bool notice = FALSE;
     int old_csp = p_ptr->csp;
 
+    if (elemental_is_(ELEMENTAL_WATER)) return FALSE;
+
     p_ptr->csp += num;
     if (num > 0 && p_ptr->csp > p_ptr->msp) /* Mystics and Samurai super charge */
     {
