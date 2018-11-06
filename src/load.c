@@ -707,6 +707,8 @@ static void rd_extra(savefile_ptr file)
     else p_ptr->filibuster = savefile_read_byte(file) ? TRUE : FALSE;
     if (savefile_is_older_than(file, 7, 0, 9, 1)) p_ptr->upset_okay = FALSE;
     else p_ptr->upset_okay = savefile_read_byte(file) ? TRUE : FALSE;
+    if (savefile_is_older_than(file, 7, 0, 9, 2)) p_ptr->py_summon_kills = 0;
+    else p_ptr->py_summon_kills = savefile_read_byte(file);
     for (i = 0; i < 16; i++) (void)savefile_read_s32b(file);
 
     {
