@@ -489,13 +489,13 @@ See <link:Draconians.txt> for more details on draconians.
 
   <indent><style:table><color:G>Stats                   Skills</color>
 Strength      +3        Disarming   <color:r>Bad          </color>
-Intelligence  +0        Device      <color:R>Poor         </color>
+Intelligence  +0        Device      <color:r>Bad          </color>
 Wisdom        +0        Save        <color:o>Fair         </color>
 Dexterity     +1        Stealth     <color:r>Bad          </color>
 Constitution  +2        Searching   <color:r>Bad          </color>
 Charisma      +2        Perception  <color:g>Superb       </color>
-Life Rating  106%       Melee       <color:g>Superb       </color>
-Base HP       22        Bows        <color:y>Very Good    </color>
+Life Rating  104%       Melee       <color:g>Superb       </color>
+Base HP       22        Bows        <color:y>Good         </color>
 Experience   190%       Infravision 20'
 </style></indent>
 <topic:Doppelganger><color:o>Doppelganger</color>
@@ -661,7 +661,7 @@ Zombie        +2   -6   -6   +1   +4   -3  108%  +24  180%  140%
 Android       +3   -1   -5   +1   +3   +0  108%  +26  200%  120%
 Beastman      +2   -2   -1   -1   +2   +1  102%  +22  150%  130%
 Centaur       +3   -2   +1   +2   +1   +0  103%  +22  190%   95%
-Draconian     +3   +0   +0   +1   +2   +2  106%  +22  190%  115%
+Draconian     +3   +0   +0   +1   +2   +2  104%  +22  190%  115%
 Doppelganger  -3   -3   -3   -3   -3   -3   85%  +12  150%  150%
 Ent           +2   +0   +2   -3   +2   +0  105%  +25  135%   95%
 Golem         +4   -5   -5   -2   +4   +0  105%  +23  185%  120%
@@ -709,7 +709,7 @@ Zombie       <color:r>Bad          </color> <color:r>Bad          </color> <colo
 Android      <color:R>Poor         </color> <color:r>Bad          </color> <color:R>Poor         </color> <color:r>Bad          </color>
 Beastman     <color:r>Bad          </color> <color:R>Poor         </color> <color:R>Poor         </color> <color:r>Bad          </color>
 Centaur      <color:R>Poor         </color> <color:r>Bad          </color> <color:o>Fair         </color> <color:o>Fair         </color>
-Draconian    <color:r>Bad          </color> <color:R>Poor         </color> <color:o>Fair         </color> <color:r>Bad          </color>
+Draconian    <color:r>Bad          </color> <color:r>Bad          </color> <color:o>Fair         </color> <color:r>Bad          </color>
 Doppelganger <color:D>Very Bad     </color> <color:D>Very Bad     </color> <color:D>Very Bad     </color> <color:G>Excellent    </color>
 Ent          <color:r>Bad          </color> <color:o>Fair         </color> <color:y>Good         </color> <color:r>Bad          </color>
 Golem        <color:r>Bad          </color> <color:r>Bad          </color> <color:y>Good         </color> <color:r>Bad          </color>
@@ -757,7 +757,7 @@ Zombie       <color:D>Very Bad     </color> <color:y>Good         </color> <colo
 Android      <color:o>Fair         </color> <color:b>Heroic       </color> <color:g>Superb       </color> <color:G>Excellent    </color>    0'
 Beastman     <color:D>Very Bad     </color> <color:y>Good         </color> <color:G>Excellent    </color> <color:y>Very Good    </color>    0'
 Centaur      <color:o>Fair         </color> <color:y>Good         </color> <color:G>Excellent    </color> <color:G>Excellent    </color>    0'
-Draconian    <color:r>Bad          </color> <color:g>Superb       </color> <color:g>Superb       </color> <color:y>Very Good    </color>   20'
+Draconian    <color:r>Bad          </color> <color:g>Superb       </color> <color:g>Superb       </color> <color:y>Good         </color>   20'
 Doppelganger <color:D>Very Bad     </color> <color:g>Superb       </color> <color:D>Very Bad     </color> <color:D>Very Bad     </color>    0'
 Ent          <color:r>Bad          </color> <color:g>Superb       </color> <color:g>Superb       </color> <color:o>Fair         </color>    0'
 Golem        <color:D>Very Bad     </color> <color:G>Excellent    </color> <color:g>Superb       </color> <color:o>Fair         </color>   40'
@@ -771,4 +771,4 @@ Yeek         <color:y>Good         </color> <color:b>Heroic       </color> <colo
 </style>
 
 
-<color:s>Automatically generated for FrogComposband 7.0.mango.</color>
+<color:s>Automatically generated for FrogComposband 7.0.cloudberry.</color>
