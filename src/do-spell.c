@@ -196,7 +196,7 @@ bool trump_summoning(int num, bool pet, int y, int x, int lev, int type, u32b mo
 {
     int plev = p_ptr->lev;
 
-    int who;
+    int who = SUMMON_WHO_PLAYER;
     int i;
     bool success = FALSE;
 
@@ -215,17 +215,11 @@ bool trump_summoning(int num, bool pet, int y, int x, int lev, int type, u32b mo
             if (randint1(50 + plev) >= plev / 10)
                 mode &= ~PM_ALLOW_UNIQUE;
         }
-
-        /* Player is who summons */
-        who = -1;
     }
     else
     {
         /* Prevent taming, allow unique monster */
         mode |= PM_NO_PET;
-
-        /* Behave as if they appear by themselfs */
-        who = 0;
     }
 
     for (i = 0; i < num; i++)
@@ -360,7 +354,7 @@ static void cast_invoke_spirits(int dir)
     {
         msg_print("Oh no! Mouldering forms rise from the earth around you!");
 
-        (void)summon_specific(0, py, px, dun_level, SUMMON_UNDEAD, (PM_ALLOW_GROUP | PM_ALLOW_UNIQUE | PM_NO_PET));
+        (void)summon_specific(SUMMON_WHO_PLAYER, py, px, dun_level, SUMMON_UNDEAD, (PM_ALLOW_GROUP | PM_ALLOW_UNIQUE | PM_NO_PET));
         virtue_add(VIRTUE_UNLIFE, 1);
     }
     else if (die < 14)
@@ -632,7 +626,7 @@ static void cast_shuffle(void)
     {
         msg_print("Oh no! It's the Devil!");
 
-        summon_specific(0, py, px, dun_level, SUMMON_DEMON, (PM_ALLOW_GROUP | PM_ALLOW_UNIQUE | PM_NO_PET));
+        summon_specific(SUMMON_WHO_PLAYER, py, px, dun_level, SUMMON_DEMON, (PM_ALLOW_GROUP | PM_ALLOW_UNIQUE | PM_NO_PET));
     }
     else if (die < 18)
     {
@@ -947,7 +941,7 @@ bool cast_summon_greater_demon(void)
 
     summon_lev = plev * 2 / 3 + r_info[prompt.obj->pval].level;
 
-    if (summon_specific(-1, py, px, summon_lev, SUMMON_HI_DEMON, (PM_ALLOW_GROUP | PM_FORCE_PET)))
+    if (summon_specific(SUMMON_WHO_PLAYER, py, px, summon_lev, SUMMON_HI_DEMON, (PM_ALLOW_GROUP | PM_FORCE_PET)))
     {
         msg_print("The area fills with a stench of sulphur and brimstone.");
         msg_print("'What is thy bidding... Master?'");
@@ -3231,7 +3225,7 @@ static cptr do_chaos_spell(int spell, int mode)
                 else mode |= PM_NO_PET;
                 if (!(pet && (plev < 50))) mode |= PM_ALLOW_GROUP;
 
-                if (summon_specific((pet ? -1 : 0), py, px, (plev * 3) / 2, SUMMON_DEMON, mode))
+                if (summon_specific(SUMMON_WHO_PLAYER, py, px, (plev * 3) / 2, SUMMON_DEMON, mode))
                 {
                     msg_print("The area fills with a stench of sulphur and brimstone.");
 
@@ -3953,7 +3947,7 @@ static cptr do_death_spell(int spell, int mode)
                 if (pet) mode |= PM_FORCE_PET;
                 else mode |= (PM_ALLOW_UNIQUE | PM_NO_PET);
 
-                if (summon_specific((pet ? -1 : 0), py, px, (plev * 3) / 2, type, mode))
+                if (summon_specific(SUMMON_WHO_PLAYER, py, px, (plev * 3) / 2, type, mode))
                 {
                     msg_print("Cold winds begin to blow around you, carrying with them the stench of decay...");
 
@@ -6010,7 +6004,7 @@ static cptr do_daemon_spell(int spell, int mode)
         {
             if (cast)
             {
-                if (!summon_specific(-1, py, px, spell_power(plev * 3 / 2), SUMMON_MANES, (PM_ALLOW_GROUP | PM_FORCE_PET)))
+                if (!summon_specific(SUMMON_WHO_PLAYER, py, px, spell_power(plev * 3 / 2), SUMMON_MANES, (PM_ALLOW_GROUP | PM_FORCE_PET)))
                 {
                     msg_print("No Manes arrive.");
                 }
@@ -6193,7 +6187,7 @@ static cptr do_daemon_spell(int spell, int mode)
                 else mode |= PM_NO_PET;
                 if (!(pet && (plev < 50))) mode |= PM_ALLOW_GROUP;
 
-                if (summon_specific((pet ? -1 : 0), py, px, spell_power(plev*2/3+randint1(plev/2)), SUMMON_DEMON, mode))
+                if (summon_specific(SUMMON_WHO_PLAYER, py, px, spell_power(plev*2/3+randint1(plev/2)), SUMMON_DEMON, mode))
                 {
                     msg_print("The area fills with a stench of sulphur and brimstone.");
 
@@ -6920,7 +6914,7 @@ static cptr do_crusade_spell(int spell, int mode)
                 else mode |= PM_NO_PET;
                 if (!(pet && (plev < 50))) mode |= PM_ALLOW_GROUP;
 
-                if (summon_specific((pet ? -1 : 0), py, px, (plev * 3) / 2, SUMMON_ANGEL, mode))
+                if (summon_specific(SUMMON_WHO_PLAYER, py, px, (plev * 3) / 2, SUMMON_ANGEL, mode))
                 {
                     if (pet)
                     {
