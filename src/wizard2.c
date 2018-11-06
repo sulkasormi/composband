@@ -699,7 +699,7 @@ static void do_cmd_wiz_cure_all(void)
     /* Restore mana */
     if (p_ptr->csp < p_ptr->msp)
     {
-        p_ptr->csp = p_ptr->msp;
+        if (!elemental_is_(ELEMENTAL_WATER)) p_ptr->csp = p_ptr->msp;
         p_ptr->csp_frac = 0;
 
         p_ptr->redraw |= (PR_MANA);
