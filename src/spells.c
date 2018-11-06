@@ -901,6 +901,8 @@ void do_cmd_power(void)
     spell_info spells[MAX_SPELLS];
     int ct = 0;
     int choice = 0;
+    int budget = p_ptr->chp;
+    bool hp_only = (elemental_is_(ELEMENTAL_WATER));
     race_t *race_ptr = get_race();
     class_t *class_ptr = get_class();
 
@@ -909,6 +911,8 @@ void do_cmd_power(void)
         msg_print("You are too confused!");
         return;
     }
+
+    if (!hp_only) budget += p_ptr->csp;
 
     /* Hack ... Rethink this a bit, but the alternative of hacking into
        the 'm' command is a million times worse!
@@ -939,7 +943,7 @@ void do_cmd_power(void)
 
     _add_extra_costs_powers(spells, ct);
 
-    choice = choose_spell(spells, ct, "power", p_ptr->csp + p_ptr->chp);
+    choice = choose_spell(spells, ct, "power", budget);
 
     if (p_ptr->special_defense & (KATA_MUSOU | KATA_KOUKIJIN))
     {
@@ -956,7 +960,7 @@ void do_cmd_power(void)
             return;
         }
 
-        if (spell->cost > p_ptr->chp + p_ptr->csp)
+        if (spell->cost > budget)
         {
             msg_print("Using this power will kill you!  Why not rest a bit first?");
             return;
@@ -983,7 +987,11 @@ void do_cmd_power(void)
         energy_use = get_spell_energy(spell->fn);
 
         /* Casting costs spill over into hit points */
-        if (p_ptr->csp < spell->cost)
+        if (hp_only)
+        {
+            take_hit(DAMAGE_NOESCAPE, spell->cost, "concentrating too hard");
+        }
+        else if (p_ptr->csp < spell->cost)
         {
             int cost = spell->cost - p_ptr->csp;
             p_ptr->csp = 0;
