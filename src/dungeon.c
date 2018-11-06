@@ -624,6 +624,7 @@ static void regenmana(int percent)
     s32b old_csp = p_ptr->csp;
 
     if (p_ptr->pclass == CLASS_RUNE_KNIGHT || p_ptr->pclass == CLASS_RAGE_MAGE) return;
+    if (elemental_is_(ELEMENTAL_WATER)) return;
     if (mimic_no_regen())
     {
         if (p_ptr->csp > p_ptr->msp) /* Doppelganger Samurai/Mystics should still decay supercharged mana! */
@@ -1992,6 +1993,7 @@ static void process_world_aux_curse(void)
                 o_ptr = equip_obj(i);
 
                 if (!o_ptr) continue;
+                if (o_ptr->marked & OM_SLIPPING) continue;
                 obj_flags(o_ptr, flgs);
                 if (have_flag(flgs, OF_TELEPORT))
                 {
@@ -4249,6 +4251,7 @@ static void process_player(void)
               && ( p_ptr->csp >= p_ptr->msp
                 || p_ptr->pclass == CLASS_RUNE_KNIGHT
                 || p_ptr->pclass == CLASS_RAGE_MAGE
+                || elemental_is_(ELEMENTAL_WATER)
                 || mimic_no_regen() )
               && !magic_eater_can_regen() 
 			  && !samurai_can_concentrate())
@@ -4265,6 +4268,7 @@ static void process_player(void)
               && ( p_ptr->csp >= p_ptr->msp
                 || p_ptr->pclass == CLASS_RUNE_KNIGHT
                 || p_ptr->pclass == CLASS_RAGE_MAGE
+                || elemental_is_(ELEMENTAL_WATER)
                 || mimic_no_regen() )
               && !magic_eater_can_regen()
               && !samurai_can_concentrate()
@@ -4502,6 +4506,15 @@ static void process_player(void)
         }
 
         fear_recover_p();
+        if ((elemental_is_(ELEMENTAL_WATER)) && (p_ptr->csp))
+        {
+            int tiputus = MAX(5, p_ptr->csp / 20);
+            if (cave_have_flag_bold(py, px, FF_WATER)) tiputus -= (tiputus / 2);
+            p_ptr->csp -= tiputus;
+            p_ptr->csp = MAX(0, p_ptr->csp);
+            p_ptr->update |= (PU_BONUS);
+            p_ptr->redraw |= (PR_MANA | PR_STATS);
+        }
     }
 
     load = FALSE;
@@ -4513,6 +4526,7 @@ static void process_player(void)
     {
         p_ptr->sutemi = FALSE;
         p_ptr->counter = FALSE;
+        monsters_damaged_hack = FALSE;
 
         player_turn++;
 
