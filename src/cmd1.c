@@ -337,7 +337,7 @@ void death_scythe_miss(object_type *o_ptr, int hand, int mode)
         if (!res_save_default(RES_POIS) && mult < 25)
             mult = 25;
 
-        if ((have_flag(flgs, OF_BRAND_MANA) || p_ptr->tim_force) && (p_ptr->csp > (p_ptr->msp / 30)))
+        if ((have_flag(flgs, OF_BRAND_MANA) || p_ptr->tim_force) && (p_ptr->csp > (p_ptr->msp / 30)) && (!elemental_is_(ELEMENTAL_WATER)))
         {
             p_ptr->csp -= (1+(p_ptr->msp / 30));
             p_ptr->redraw |= (PR_MANA);
@@ -1492,7 +1492,7 @@ s16b tot_dam_aux(object_type *o_ptr, int tdam, monster_type *m_ptr, s16b hand, i
                 }
             }
 
-            if (have_flag(flgs, OF_BRAND_MANA) || p_ptr->tim_force)
+            if ((have_flag(flgs, OF_BRAND_MANA) || p_ptr->tim_force) && (!elemental_is_(ELEMENTAL_WATER)))
             {
                 int          cost = 0;
                 int          dd = o_ptr->dd + p_ptr->weapon_info[hand].to_dd;
@@ -3061,6 +3061,8 @@ static bool py_attack_aux(int y, int x, bool *fear, bool *mdeath, s16b hand, int
     {
         bool do_whirlwind = FALSE;
 
+        water_mana_action(FALSE, (mode == PY_ATTACK_ACID) ? 24 : 18);
+
         /* We now check fear on every blow, and only lose energy equal to the number of blows attempted.
            Monsters with AURA_FEAR can induce fear any time the player damages them! */
         if (p_ptr->afraid)
@@ -4540,6 +4542,7 @@ bool py_attack(int y, int x, int mode)
             travel.run = 0;
             travel.mode = TRAVEL_MODE_NORMAL;
         }
+        if (!m_ptr->ml) energy_use = 50; /* bumping into an invisible monster shouldn't give a free turn */
         return FALSE;
     }
 
