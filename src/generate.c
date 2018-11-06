@@ -1589,7 +1589,7 @@ void generate_cave(void)
 
         if (okay)
             break;
-        if (why)
+        if ((why) && (p_ptr->wizard))
             msg_format("Generation restarted (%s)", why);
 
         wipe_o_list();
