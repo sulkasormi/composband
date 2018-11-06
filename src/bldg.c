@@ -2184,7 +2184,7 @@ static bool inn_comm(int cmd)
                 else
                 {
                     p_ptr->chp = p_ptr->mhp;
-                    if (p_ptr->pclass != CLASS_RUNE_KNIGHT)
+                    if ((p_ptr->pclass != CLASS_RUNE_KNIGHT) && (!elemental_is_(ELEMENTAL_WATER)))
                         p_ptr->csp = p_ptr->msp;
 
                     _recharge_player_items();
@@ -2892,7 +2892,7 @@ static bool _reforge_artifact(void)
                         * poisoning, but given the cost of reforging that's
                         * probably only fair... */
     p_ptr->chp = p_ptr->mhp;
-    if (p_ptr->pclass != CLASS_RUNE_KNIGHT)
+    if ((p_ptr->pclass != CLASS_RUNE_KNIGHT) && (!elemental_is_(ELEMENTAL_WATER)))
         p_ptr->csp = p_ptr->msp;
 
     /* Update discovery details to apply to the reforged item
