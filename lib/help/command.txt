@@ -24,7 +24,7 @@ Don't be overwhelmed by the sheer number of commands. Many are not often used or
    g  Get Objects                          <color:y>G</color>  Gain new spells/prayers
    <color:D>h  (unused)</color>                             <color:D>H  (unused)</color>
    <color:y>i</color>  Inventory list                       I  Inspect an item
-   j  Jam a door                           <color:D>J  (unused)</color>
+   j  Jam a door                           J  Resume travelling
    k  Destroy an item                      <color:D>K  (unused)</color>
    <color:y>l</color>  Look around                          L  Locate player on map
    <color:y>m</color>  Cast a spell / use mental power      <color:y>M</color>  Full dungeon map
@@ -113,7 +113,7 @@ Don't be overwhelmed by the sheer number of commands. Many are not often used or
    ^  (special - control key)             ^F  Repeat level feeling
    &  Interact with colors                ^G  Auto-Get nearby objects
    <color:y>*</color>  Target monster or location          ^H  (tunnel - west)
-   <color:D>(  (unused)</color>                            ^I  Toggle Choice Window
+   (  Resume travelling                   ^I  Toggle Choice Window
    )  Create screen dump                  ^J  (tunnel - south)
    {  Inscribe an object                  ^K  (tunnel - north)
    }  Uninscribe an object                ^L  (tunnel - east)
