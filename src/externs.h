@@ -197,6 +197,7 @@ extern bool quest_reward_drop_hack;
 extern bool very_nice_summon_hack;
 extern bool predictable_energy_hack;
 extern bool delay_autopick_hack;
+extern bool monsters_damaged_hack;
 
 /*
  * Software options (set via the '=' command).  See "tables.c"
@@ -2397,6 +2398,9 @@ extern void    vampire_feed(int amt);
 extern void    vampire_check_light_status(void);
 extern void    vampire_take_light_damage(int amt);
 extern void    vampire_take_dark_damage(int amt);
+
+extern int     water_flow_rate(void);
+extern void    water_mana_action(byte check_hurt_mode, int mana);
 
 /* Mimic Forms */
 extern race_t *bat_get_race(void);
