@@ -728,7 +728,7 @@ void summon_amberites_spell(int cmd, variant *res)
 
         msg_print("You summon a Lord of Amber!");
         if (!summon_specific(-1, py, px, l, SUMMON_AMBERITE, PM_FORCE_PET | PM_ALLOW_UNIQUE))
-            msg_print("No Amberites arrives.");
+            msg_print("No Amberites arrive.");
 
         var_set_bool(res, TRUE);
         break;
@@ -845,7 +845,7 @@ void summon_demon_spell(int cmd, variant *res)
         else mode |= PM_NO_PET;
         if (!(pet && (p_ptr->lev < 50))) mode |= PM_ALLOW_GROUP;
 
-        if (summon_specific((pet ? -1 : 0), py, px, spell_power(p_ptr->lev*2/3+randint1(p_ptr->lev/2)), SUMMON_DEMON, mode))
+        if (summon_specific(SUMMON_WHO_PLAYER, py, px, spell_power(p_ptr->lev*2/3+randint1(p_ptr->lev/2)), SUMMON_DEMON, mode))
         {
             msg_print("The area fills with a stench of sulphur and brimstone.");
             if (pet)
@@ -1835,6 +1835,8 @@ void water_bolt_spell(int cmd, variant *res)
     int dd = 7 + p_ptr->lev / 4;
     int ds = 15;
 
+    if (elemental_is_(ELEMENTAL_WATER)) dd = (dd - 3 + water_flow_rate() / 10);
+
     switch (cmd)
     {
     case SPELL_NAME:
@@ -1849,13 +1851,11 @@ void water_bolt_spell(int cmd, variant *res)
     case SPELL_CAST:
     {
         int dir = 0;
+        int dam = spell_power(damroll(dd, ds) + p_ptr->to_d_spell);
         var_set_bool(res, FALSE);
         if (!get_fire_dir(&dir)) return;
-        fire_bolt(
-            GF_WATER,
-            dir,
-            spell_power(damroll(dd, ds) + p_ptr->to_d_spell)
-        );
+        fire_bolt(GF_WATER, dir, dam);
+        water_mana_action(2, dam / 2);
         var_set_bool(res, TRUE);
         break;
     }
