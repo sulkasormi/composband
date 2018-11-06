@@ -21,17 +21,17 @@ static mutation_info _mutations[MAX_MUTATIONS] =
     {MUT_RATING_GOOD,        MUT_TYPE_ACTIVATION, A_INT, 6, {3,  2,  30, smell_metal_spell}},
     {MUT_RATING_GOOD,        MUT_TYPE_ACTIVATION, A_INT, 8, {5,  4,  30, smell_monsters_spell}},
     {MUT_RATING_GOOD,        MUT_TYPE_ACTIVATION, A_WIS, 6, {3,  3,  30, phase_door_spell}},
-    {MUT_RATING_AVERAGE,    MUT_TYPE_ACTIVATION, A_CON, 4, {8, 12,  40, eat_rock_spell}},
+    {MUT_RATING_GOOD,        MUT_TYPE_ACTIVATION, A_CON, 4, {8, 12,  40, eat_rock_spell}},
     {MUT_RATING_GOOD,        MUT_TYPE_ACTIVATION, A_DEX, 4, {15, 12,  40, swap_pos_spell}},    
     {MUT_RATING_GOOD,        MUT_TYPE_ACTIVATION, A_CON, 6, {20, 14,  40, shriek_spell}},
     {MUT_RATING_AVERAGE,    MUT_TYPE_ACTIVATION, A_INT, 6, {3,  2,  30, light_area_spell}},
     {MUT_RATING_AVERAGE,    MUT_TYPE_ACTIVATION, A_WIS, 4, {7, 14,  30, detect_curses_spell}},
     {MUT_RATING_GREAT,        MUT_TYPE_ACTIVATION, A_STR, 6, {8,  8,  50, berserk_spell}},
     {MUT_RATING_AVERAGE,    MUT_TYPE_ACTIVATION, A_CON, 2, {18, 20,  50, polymorph_self_spell}},
-    {MUT_RATING_AVERAGE,    MUT_TYPE_ACTIVATION, A_INT, 4, {10,  5,  70, alchemy_spell}},
+    {MUT_RATING_GOOD,       MUT_TYPE_ACTIVATION, A_INT, 4, {10,  5,  70, alchemy_spell}},
     {MUT_RATING_GOOD,        MUT_TYPE_ACTIVATION, A_CON, 2, {1,  6,  60, grow_mold_spell}},
     {MUT_RATING_GREAT,        MUT_TYPE_ACTIVATION, A_CON, 6, {25, 10,  50, resist_elements_spell}},
-    {MUT_RATING_GOOD,        MUT_TYPE_ACTIVATION, A_STR, 6, {12, 12,  50, earthquake_spell}},
+    {MUT_RATING_AVERAGE,      MUT_TYPE_ACTIVATION, A_STR, 6, {12, 12,  50, earthquake_spell}},
     {MUT_RATING_GREAT,        MUT_TYPE_ACTIVATION, A_WIS, 2, {17,  1,  80, eat_magic_spell}},
     {MUT_RATING_AVERAGE,    MUT_TYPE_ACTIVATION, A_INT, 4, {6,  6,  50, weigh_magic_spell}},
     {MUT_RATING_GREAT,        MUT_TYPE_ACTIVATION, A_CHR, 2, {12, 23,  70, sterility_spell}},
@@ -96,7 +96,7 @@ static mutation_info _mutations[MAX_MUTATIONS] =
     {MUT_RATING_AVERAGE,    MUT_TYPE_BONUS,             0, 6, {0,  0,   0, warts_mut}},
     {MUT_RATING_GOOD,        MUT_TYPE_BONUS,             0, 6, {0,  0,   0, scales_mut}},
     {MUT_RATING_GREAT,        MUT_TYPE_BONUS,             0, 4, {0,  0,   0, steel_skin_mut}},
-    {MUT_RATING_AVERAGE,    MUT_TYPE_BONUS,             0, 4, {0,  0,   0, wings_mut}},
+    {MUT_RATING_GOOD,    MUT_TYPE_BONUS,             0, 4, {0,  0,   0, wings_mut}},
     {MUT_RATING_AVERAGE,    MUT_TYPE_BONUS,             0, 6, {0,  0,   0, fearless_mut}},
     {MUT_RATING_GOOD,        MUT_TYPE_BONUS,             0, 4, {0,  0,   0, regeneration_mut}},
     {MUT_RATING_GREAT,        MUT_TYPE_BONUS,             0, 4, {0,  0,   0, telepathy_mut}},
@@ -164,6 +164,9 @@ int _mut_prob_gain(int i)
         return 0;
 
     if (p_ptr->pclass == CLASS_BERSERKER && mut_type(i) & MUT_TYPE_ACTIVATION)
+        return 0;
+
+    if ((elemental_is_(ELEMENTAL_WATER)) && ((i == MUT_HP_TO_SP) || (i == MUT_SP_TO_HP)))
         return 0;
 
     switch (i)
