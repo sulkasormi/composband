@@ -666,6 +666,8 @@ static bool do_cmd_open_chest(int y, int x, s16b o_idx)
         chest_death(FALSE, y, x, o_idx);
     }
 
+    water_mana_action(FALSE, 10);
+
     /* Result */
     return (more);
 }
@@ -891,6 +893,8 @@ static bool do_cmd_open_aux(int y, int x)
         /* Sound */
         sound(SOUND_OPENDOOR);
     }
+
+    water_mana_action(FALSE, 10);
 
     /* Result */
     return (more);
@@ -1602,6 +1606,8 @@ static bool do_cmd_disarm_chest(int y, int x, s16b o_idx)
         chest_trap(y, x, o_idx);
     }
 
+    water_mana_action(FALSE, 5);
+
     /* Result */
     return (more);
 }
@@ -1714,6 +1720,8 @@ static bool do_cmd_disarm_aux(int y, int x, int dir)
 
 #endif /* ALLOW_EASY_DISARM -- TNB */
     }
+
+    water_mana_action(FALSE, 5);
 
     /* Result */
     return (more);
@@ -1921,6 +1929,8 @@ static bool do_cmd_bash_aux(int y, int x, int dir)
         /* Hack -- Lose balance ala paralysis */
         (void)set_paralyzed(randint1(4), FALSE);
     }
+
+    water_mana_action(FALSE, 20);
 
     /* Result */
     return (more);
@@ -3088,6 +3098,7 @@ bool do_cmd_fire_aux1(obj_ptr bow, obj_ptr arrows)
 
     do_cmd_fire_aux2(bow, arrows, px, py, tx, ty);
     obj_release(arrows, OBJ_RELEASE_QUIET);
+    water_mana_action(FALSE, MIN(5, energy_use / 5));
     return TRUE;
 }
 void do_cmd_fire_aux2(obj_ptr bow, obj_ptr arrows, int sx, int sy, int tx, int ty)
