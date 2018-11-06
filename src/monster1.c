@@ -549,6 +549,7 @@ void set_pet(monster_type *m_ptr)
     quests_on_kill_mon(m_ptr);
 
     m_ptr->smart |= (1U << SM_PET);
+    m_ptr->mflag2 |= MFLAG2_WASPET;
     if (!(r_info[m_ptr->r_idx].flags3 & (RF3_EVIL | RF3_GOOD)))
         m_ptr->sub_align = SUB_ALIGN_NEUTRAL;
     politician_set_friend(m_ptr->r_idx, TRUE);
