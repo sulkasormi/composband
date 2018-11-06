@@ -90,6 +90,14 @@ off after the creation is finished!
   use the annoying but ultimately harmless Amnesia spell will instead 
   select one of their other, more dangerous spell options.)
   
+  Always forget item lore between games (empty_lore)
+  With this option off, a new game started by opening a dead 
+  character's savefile inherits the dead character's ability to 
+  recognize attributes on excellent items and artifacts. Turning this 
+  option on empties this item lore. This option has no effect if the 
+  game is not started by opening a dead character's savefile, since the 
+  character then starts with no item lore anyway.
+  
   Monsters learn from their mistakes (smart_learn)
   Allow monsters to learn what spell attacks you are resistant to, and 
   to use this information to choose the best attacks.
@@ -188,6 +196,13 @@ off after the creation is finished!
   trigger a scramble will instead trigger the Baby Foul Curse, which is 
   more dangerous in the short-term but doesn't have the same long-term 
   effects.
+  
+  Disallow permanent changes to player race (comp_mode)
+  Disables all effects (except for monster evolution) that might 
+  permanently change the player's race during the game. This option is 
+  intended for use in competitions, and to ensure challenging builds 
+  remain challenging. (It can also be used to ensure an easy build 
+  remains easy, but who'd do that?!)
   
   
 Input Options
@@ -467,6 +482,11 @@ Text Display Options
   Show dungeon level in feet (depth_in_feet)
   Display the dungeon depth in "feet" instead of as an actual level. 
   This also affects the monster memory display.
+  
+  Show speeds as energy multipliers (effective_speed)
+  Display player and monster speeds as energy multipliers. This style 
+  is somewhat ugly, but helps players understand what a given speed 
+  actually means in terms of energy.
   
   Show labels in object listings (show_labels)
   Display the labels for objects in the equipment list, and in any 
