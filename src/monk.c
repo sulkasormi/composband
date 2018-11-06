@@ -728,8 +728,8 @@ class_t *monk_get_class(void)
 
     if (!init)
     {           /* dis, dev, sav, stl, srh, fos, thn, thb */
-    skills_t bs = { 45,  34,  36,   5,  32,  24,  64,  60};
-    skills_t xs = { 15,  11,  10,   0,   0,   0,  18,  18};
+    skills_t bs = { 45,  30,  36,   5,  32,  24,  64,  60};
+    skills_t xs = { 15,  10,  10,   0,   0,   0,  18,  18};
 
         me.name = "Monk";
         me.desc = "The Monk character class is very different from all other classes. "
@@ -757,7 +757,7 @@ class_t *monk_get_class(void)
         me.stats[A_CHR] =  1;
         me.base_skills = bs;
         me.extra_skills = xs;
-        me.life = 110;
+        me.life = 102;
         me.base_hp = 12;
         me.exp = 130;
         me.pets = 35;
