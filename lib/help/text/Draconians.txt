@@ -17,13 +17,13 @@ of Dragon Strike, their blows will burn their enemies.
 
   Stats                   Skills
   Strength      +3        Disarming   Bad          
-  Intelligence  +0        Device      Poor         
+  Intelligence  +0        Device      Bad          
   Wisdom        +0        Save        Fair         
   Dexterity     +1        Stealth     Bad          
   Constitution  +2        Searching   Bad          
   Charisma      +2        Perception  Superb       
-  Life Rating  106%       Melee       Superb       
-  Base HP       22        Bows        Very Good    
+  Life Rating  104%       Melee       Superb       
+  Base HP       22        Bows        Good         
   Experience   190%       Infravision 20'
   
 White
@@ -36,13 +36,13 @@ Dragon Strike, their blows will freeze their enemies.
 
   Stats                   Skills
   Strength      +3        Disarming   Bad          
-  Intelligence  +0        Device      Poor         
+  Intelligence  +0        Device      Bad          
   Wisdom        +0        Save        Fair         
   Dexterity     +1        Stealth     Bad          
   Constitution  +2        Searching   Bad          
   Charisma      +2        Perception  Superb       
-  Life Rating  106%       Melee       Superb       
-  Base HP       22        Bows        Very Good    
+  Life Rating  104%       Melee       Superb       
+  Base HP       22        Bows        Good         
   Experience   190%       Infravision 20'
   
 Blue
@@ -54,13 +54,13 @@ Dragon Strike, their blows will electrocute their enemies.
 
   Stats                   Skills
   Strength      +2        Disarming   Bad          
-  Intelligence  +1        Device      Fair         
+  Intelligence  +1        Device      Poor         
   Wisdom        +1        Save        Fair         
   Dexterity     +1        Stealth     Poor         
   Constitution  +2        Searching   Bad          
   Charisma      +2        Perception  Superb       
-  Life Rating  105%       Melee       Excellent    
-  Base HP       22        Bows        Very Good    
+  Life Rating  103%       Melee       Excellent    
+  Base HP       22        Bows        Good         
   Experience   190%       Infravision 20'
   
 Black
@@ -71,13 +71,13 @@ their enemies.
 
   Stats                   Skills
   Strength      +2        Disarming   Bad          
-  Intelligence  +1        Device      Fair         
+  Intelligence  +1        Device      Poor         
   Wisdom        +1        Save        Fair         
   Dexterity     +1        Stealth     Poor         
   Constitution  +2        Searching   Bad          
   Charisma      +2        Perception  Superb       
-  Life Rating  105%       Melee       Superb       
-  Base HP       22        Bows        Very Good    
+  Life Rating  103%       Melee       Superb       
+  Base HP       22        Bows        Good         
   Experience   190%       Infravision 20'
   
 Green
@@ -93,8 +93,8 @@ their enemies.
   Dexterity     +1        Stealth     Fair         
   Constitution  +2        Searching   Bad          
   Charisma      +2        Perception  Superb       
-  Life Rating  103%       Melee       Good         
-  Base HP       22        Bows        Very Good    
+  Life Rating  101%       Melee       Good         
+  Base HP       22        Bows        Good         
   Experience   205%       Infravision 20'
   
 Bronze
@@ -105,13 +105,13 @@ melee attacks of the Bronze Draconian will baffle their enemies.
 
   Stats                   Skills
   Strength      +1        Disarming   Bad          
-  Intelligence  +2        Device      Very Good    
+  Intelligence  +2        Device      Good         
   Wisdom        +1        Save        Fair         
   Dexterity     +1        Stealth     Fair         
   Constitution  +2        Searching   Bad          
   Charisma      +2        Perception  Superb       
-  Life Rating  103%       Melee       Fair         
-  Base HP       22        Bows        Very Good    
+  Life Rating  101%       Melee       Fair         
+  Base HP       22        Bows        Good         
   Experience   215%       Infravision 20'
   
 Crystal
@@ -124,13 +124,13 @@ enemies.
 
   Stats                   Skills
   Strength      +1        Disarming   Bad          
-  Intelligence  -1        Device      Poor         
+  Intelligence  -1        Device      Bad          
   Wisdom        +1        Save        Fair         
   Dexterity     +0        Stealth     Poor         
   Constitution  +3        Searching   Bad          
   Charisma      +2        Perception  Superb       
-  Life Rating  105%       Melee       Excellent    
-  Base HP       22        Bows        Very Good    
+  Life Rating  103%       Melee       Excellent    
+  Base HP       22        Bows        Good         
   Experience   250%       Infravision 20'
   
 Gold
@@ -141,13 +141,13 @@ Strike, even their melee attacks will stun their enemies.
 
   Stats                   Skills
   Strength      +1        Disarming   Bad          
-  Intelligence  +1        Device      Good         
+  Intelligence  +1        Device      Fair         
   Wisdom        +2        Save        Good         
   Dexterity     +1        Stealth     Fair         
   Constitution  +2        Searching   Bad          
   Charisma      +2        Perception  Superb       
-  Life Rating  104%       Melee       Good         
-  Base HP       22        Bows        Very Good    
+  Life Rating  102%       Melee       Good         
+  Base HP       22        Bows        Good         
   Experience   220%       Infravision 20'
   
 Shadow
@@ -159,55 +159,55 @@ Dragon Strike, they may steal life from their enemies in melee.
 
   Stats                   Skills
   Strength      +0        Disarming   Bad          
-  Intelligence  +1        Device      Good         
+  Intelligence  +1        Device      Fair         
   Wisdom        +1        Save        Fair         
   Dexterity     +3        Stealth     Very Good    
   Constitution  +2        Searching   Bad          
   Charisma      +2        Perception  Superb       
-  Life Rating  102%       Melee       Poor         
-  Base HP       22        Bows        Very Good    
+  Life Rating  100%       Melee       Poor         
+  Base HP       22        Bows        Good         
   Experience   225%       Infravision 40'
   
 Table 1 - Draconian Statistic Bonus Table
 
                STR  INT  WIS  DEX  CON  CHR  Life  Exp  Shop
-Red             +3   +0   +0   +1   +2   +2  106%  190%  115%
-White           +3   +0   +0   +1   +2   +2  106%  190%  115%
-Blue            +2   +1   +1   +1   +2   +2  105%  190%  110%
-Black           +2   +1   +1   +1   +2   +2  105%  190%  110%
-Green           +1   +1   +1   +1   +2   +2  103%  205%  105%
-Bronze          +1   +2   +1   +1   +2   +2  103%  215%  100%
-Crystal         +1   -1   +1   +0   +3   +2  105%  250%  105%
-Gold            +1   +1   +2   +1   +2   +2  104%  220%   95%
-Shadow          +0   +1   +1   +3   +2   +2  102%  225%  105%
+Red             +3   +0   +0   +1   +2   +2  104%  190%  115%
+White           +3   +0   +0   +1   +2   +2  104%  190%  115%
+Blue            +2   +1   +1   +1   +2   +2  103%  190%  110%
+Black           +2   +1   +1   +1   +2   +2  103%  190%  110%
+Green           +1   +1   +1   +1   +2   +2  101%  205%  105%
+Bronze          +1   +2   +1   +1   +2   +2  101%  215%  100%
+Crystal         +1   -1   +1   +0   +3   +2  103%  250%  105%
+Gold            +1   +1   +2   +1   +2   +2  102%  220%   95%
+Shadow          +0   +1   +1   +3   +2   +2  100%  225%  105%
 
 
 Table 2 - Draconian Skill Bonus Table I
 
              Disarming     Device        Save          Stealth      
-Red          Bad           Poor          Fair          Bad          
-White        Bad           Poor          Fair          Bad          
-Blue         Bad           Fair          Fair          Poor         
-Black        Bad           Fair          Fair          Poor         
+Red          Bad           Bad           Fair          Bad          
+White        Bad           Bad           Fair          Bad          
+Blue         Bad           Poor          Fair          Poor         
+Black        Bad           Poor          Fair          Poor         
 Green        Bad           Fair          Fair          Fair         
-Bronze       Bad           Very Good     Fair          Fair         
-Crystal      Bad           Poor          Fair          Poor         
-Gold         Bad           Good          Good          Fair         
-Shadow       Bad           Good          Fair          Very Good    
+Bronze       Bad           Good          Fair          Fair         
+Crystal      Bad           Bad           Fair          Poor         
+Gold         Bad           Fair          Good          Fair         
+Shadow       Bad           Fair          Fair          Very Good    
 
 
 Table 3 - Draconian Skill Bonus Table II
 
              Searching     Perception    Melee         Bows          Infra
-Red          Bad           Superb        Superb        Very Good       20'
-White        Bad           Superb        Superb        Very Good       20'
-Blue         Bad           Superb        Excellent     Very Good       20'
-Black        Bad           Superb        Superb        Very Good       20'
-Green        Bad           Superb        Good          Very Good       20'
-Bronze       Bad           Superb        Fair          Very Good       20'
-Crystal      Bad           Superb        Excellent     Very Good       20'
-Gold         Bad           Superb        Good          Very Good       20'
-Shadow       Bad           Superb        Poor          Very Good       40'
+Red          Bad           Superb        Superb        Good            20'
+White        Bad           Superb        Superb        Good            20'
+Blue         Bad           Superb        Excellent     Good            20'
+Black        Bad           Superb        Superb        Good            20'
+Green        Bad           Superb        Good          Good            20'
+Bronze       Bad           Superb        Fair          Good            20'
+Crystal      Bad           Superb        Excellent     Good            20'
+Gold         Bad           Superb        Good          Good            20'
+Shadow       Bad           Superb        Poor          Good            40'
 
 
 Table 4 - Draconian Special Powers
@@ -251,5 +251,5 @@ to decide which power you will choose for your character.
 
 
 
-Automatically generated for FrogComposband 7.0.strawberry.
+Automatically generated for FrogComposband 7.0.cloudberry.
 
