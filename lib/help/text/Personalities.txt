@@ -106,10 +106,7 @@ influence on your hit-points.
 Combat
 The Combat personality favors melee and shooting at the expense of 
 other skills such as disarming, devices, and saving throws. Strength 
-and agility are enhanced, but intelligence and wisdom are decreased. 
-All Combat people have great respect for the legendary "Combat 
-Echizen".
-(See "Death Crimson" / Ecole Software Corp.)
+and agility are enhanced, but intelligence and wisdom are decreased.
 
   Stats                   Skills
   Strength      +1        Disarming   Bad          
@@ -340,5 +337,5 @@ Munchkin     Amber[15]     Amber[15]     Amber[62]     Amber[27]
 
 
 
-Automatically generated for FrogComposband 7.0.mango.
+Automatically generated for FrogComposband 7.0.cloudberry.
 
