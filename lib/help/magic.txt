@@ -63,6 +63,9 @@ Finally, there are some classes with special rules. For example, the Sorcerer ma
 
 In addition to the realms listed above, there are a few class specific spell realms. These realms also use books to gain access to magic but might behave slightly differently than normal spellbook realms.
 
+<topic:Law><color:G>Law</color>
+  <indent>The realm of Law is the speciality of Lawyers. It straddles the line between general and class-specific magic - it can be studied by non-specialists, but no other class can master it as easily or completely as the Lawyer. The Law realm offers a fairly comprehensive set of utility tricks, allowing its practitioner to detect threats and opportunities, mystify enemies, set traps, charm potential friends and weasel out of dangerous situations; but it offers few direct offensive options.</indent>
+
 <topic:Music><color:G>Music</color>
   <indent>Unique to Bards, this realm grants power through song. As such, only a single spell may be sung at a time, and the effects of the various spells endure (and perhaps grow stronger) so long as the song is continued. Reading a scroll, or quaffing a potion, interrupts the current song, discontinuing its effects. It is said that certain harps may enhance this form of magic.</indent>
 
