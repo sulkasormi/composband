@@ -19,8 +19,8 @@
 #define VER_MAJOR 7
 #define VER_MINOR 0
 #define VER_PATCH "cloudberry"
-#define VER_EXTRA 1
-#define VERSION_IS_DEVELOPMENT (TRUE)
+#define VER_EXTRA 3
+#define VERSION_IS_DEVELOPMENT (FALSE)
 
 #define GAME_MODE_BEGINNER  0
 #define GAME_MODE_NORMAL    1
@@ -2639,6 +2639,7 @@ enum summon_specific_e {
 #define OM_EFFECT_COUNTED  0x0400    /* Stats */
 #define OM_DELAYED_MSG     0x0800    /* Describe inventory slot *after* resorting */
 #define OM_BEING_SHUFFLED  0x1000
+#define OM_SLIPPING        0x2000    /* Object has slipped off */
 
 
 /*
@@ -2672,6 +2673,8 @@ enum summon_specific_e {
 #define MFLAG2_HORROR           0x00020000   /* Monster has triggered Eldritch Horror */
 #define MFLAG2_COUNTED_KILLED   0x00040000   /* Monster has been counted as killed by quests_on_kill_mon() */
 #define MFLAG2_MON_HIT_OKAY     0x00080000
+#define MFLAG2_WASPET           0x00100000   /* Monster is or was a pet */
+#define MFLAG2_DIRECT_PY_SUMMON 0x00200000   /* Monster was summoned by the player */
 
 /*
  * Object Flags (OF_*)
@@ -5861,6 +5864,7 @@ enum {
     ORIGIN_KAWARIMI,            /* statue left behind by kawarimi */
     ORIGIN_STOLEN,              /* stolen by a pickpocket */
     ORIGIN_CAN_OF_TOYS,         /* found in a can of toys */
+    ORIGIN_BLOOD,               /* blood pool */
 
     ORIGIN_MAX
 };
