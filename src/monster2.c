@@ -851,6 +851,7 @@ static bool summon_wall_scummer = FALSE;
 static bool summon_ring_bearer = FALSE;
 static bool summon_summoner_okay = FALSE;
 static bool summon_friendly_unique_okay = FALSE;
+static bool summon_check_alignment = FALSE;
 
 static bool summon_specific_aux(int r_idx)
 {
@@ -3428,7 +3429,7 @@ int place_monster_one(int who, int y, int x, int r_idx, int pack_idx, u32b mode)
         m_ptr->smart |= (1U << SM_SUMMONED);
 
     if (who == SUMMON_WHO_PLAYER)
-        m_ptr->mflag2 |= MFLAG2_PLAYER_SUMMONED;
+        m_ptr->mflag2 |= (MFLAG2_PLAYER_SUMMONED | MFLAG2_DIRECT_PY_SUMMON);
     else if ((who > 0) && ((is_pet_idx(who)) || (is_friendly_idx(who)) || (m_list[who].mflag2 & MFLAG2_PLAYER_SUMMONED)))
         m_ptr->mflag2 |= MFLAG2_PLAYER_SUMMONED;
 
@@ -3542,6 +3543,9 @@ int place_monster_one(int who, int y, int x, int r_idx, int pack_idx, u32b mode)
         if (allow_friendly_monster && !monster_has_hostile_align(NULL, 0, -1, r_ptr))
             set_friendly(m_ptr);
     }
+
+    if ((who > 0) && ((is_pet(m_ptr) || is_friendly(m_ptr))) && (m_ptr->mflag2 & MFLAG2_PLAYER_SUMMONED))
+        m_ptr->mflag2 |= MFLAG2_DIRECT_PY_SUMMON;
 
     /* Assume no sleeping */
     m_ptr->mtimed[MTIMED_CSLEEP] = 0;
@@ -4330,7 +4334,7 @@ static bool summon_specific_okay(int r_idx)
         if (monster_has_hostile_align(m_ptr, 0, 0, r_ptr)) return FALSE;
     }
     /* Use the player's alignment */
-    else if (summon_specific_who < 0)
+    else if ((summon_specific_who < 0) && (summon_check_alignment))
     {
         /* Do not summon enemies of the pets */
         if (monster_has_hostile_align(NULL, 10, -10, r_ptr))
@@ -4351,7 +4355,7 @@ static bool summon_specific_okay(int r_idx)
 
     if (!summon_unique_okay && ((r_ptr->flags1 & RF1_UNIQUE) || (r_ptr->flags7 & RF7_NAZGUL))) return FALSE;
 
-    if ((summon_specific_who < 0) &&
+    if ((summon_specific_who < 0) && (summon_check_alignment) &&
         ((r_ptr->flags1 & RF1_UNIQUE) || (r_ptr->flags7 & RF7_NAZGUL)) &&
         monster_has_hostile_align(NULL, 10, -10, r_ptr))
         return FALSE;
@@ -4418,7 +4422,7 @@ bool summon_specific(int who, int y1, int x1, int lev, int type, u32b mode)
 
     /* Save the "summon" type */
     summon_specific_type = type;
-    if ((type == SUMMON_BIZARRE1 || type == SUMMON_THIEF) && who == -1)
+    if ((type == SUMMON_BIZARRE1 || type == SUMMON_THIEF) && who == SUMMON_WHO_PLAYER)
         _ignore_depth_hack = TRUE;
 
     summon_unique_okay = (mode & PM_ALLOW_UNIQUE) ? TRUE : FALSE;
@@ -4429,6 +4433,7 @@ bool summon_specific(int who, int y1, int x1, int lev, int type, u32b mode)
     summon_friendly_unique_okay = FALSE;
     if ((mode & PM_FORCE_PET) && ((p_ptr->pclass == CLASS_POLITICIAN) || (!one_in_(3))))
         summon_friendly_unique_okay = TRUE;
+    summon_check_alignment = ((who < 0) && (mode & PM_FORCE_PET)) ? TRUE : FALSE;
 
     /* Prepare allocation table */
     get_mon_num_prep(summon_specific_okay, get_monster_hook2(y, x));
