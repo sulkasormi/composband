@@ -202,7 +202,7 @@ Wisdom       <color:w> -6</color>        Save        <color:g>Superb       </col
 Dexterity    <color:w> -3</color>        Stealth     <color:R>Poor         </color>
 Constitution <color:w> +7</color>        Searching   <color:r>Bad          </color>
 Charisma     <color:w> +3</color>        Perception  <color:r>Bad          </color>
-Life Rating  140%       Melee       <color:g>Superb       </color>
+Life Rating  137%       Melee       <color:g>Superb       </color>
 Base HP       40        Bows        <color:r>Bad          </color>
 Experience   250%       Infravision 50'
 </style></indent>
@@ -222,7 +222,7 @@ Ethereal Drake     +2   +1   -1   +0   +1   +1  102%  +40  250%  130%
 Crystal Drake      +1   -1   -2   +0   +0   +0  100%  +40  275%  130%
 Bronze Dragon      +4   +3   +0   +2   +3   +3  110%  +40  250%  130%
 Gold Dragon        +4   +3   +0   +2   +3   +3  110%  +40  250%  130%
-Steel Dragon       +8   -6   -6   -3   +7   +3  140%  +40  250%  130%
+Steel Dragon       +8   -6   -6   -3   +7   +3  137%  +40  250%  130%
 
 </style>
 <topic:Skills1><style:heading>Table 2 - Dragon Skill Bonus Table I</style>
@@ -265,4 +265,4 @@ Steel Dragon      <color:r>Bad          </color> <color:r>Bad          </color> 
 </style>
 
 
-<color:s>Automatically generated for FrogComposband 7.0.strawberry.</color>
+<color:s>Automatically generated for FrogComposband 7.0.cloudberry.</color>
