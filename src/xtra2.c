@@ -524,6 +524,10 @@ byte get_monster_drop_ct(monster_type *m_ptr)
 
     if (is_pet(m_ptr) || p_ptr->inside_battle || p_ptr->inside_arena)
         number = 0; /* Pets drop no stuff */
+    else if (m_ptr->mflag2 & MFLAG2_WASPET)
+    {
+        number /= 8;
+    }
 
     /* No more farming quartz veins for millions in gold */
     if (r_ptr->flags2 & RF2_MULTIPLY)
@@ -813,6 +817,7 @@ void monster_death(int m_idx, bool drop_item)
     u32b mo_mode = 0L;
 
     bool cloned = (m_ptr->smart & (1U << SM_CLONED)) ? TRUE : FALSE;
+    bool was_pet = (m_ptr->mflag2 & MFLAG2_WASPET) ? TRUE : FALSE;
     bool do_vampire_servant = FALSE;
     char m_name[MAX_NLEN];
     int corpse_chance = 3;
@@ -821,7 +826,7 @@ void monster_death(int m_idx, bool drop_item)
     object_type *q_ptr;
 
     bool drop_chosen_item = drop_item && !cloned && !p_ptr->inside_arena
-        && !p_ptr->inside_battle && !is_pet(m_ptr);
+        && !p_ptr->inside_battle && !is_pet(m_ptr) && !was_pet;
 
 
     monster_desc(m_name, m_ptr, MD_TRUE_NAME);
@@ -2196,13 +2201,13 @@ static void _adjust_kill_exp(s32b *new_exp, u32b *new_exp_frac, int kills)
 /*
  * Calculate experience point to be get
  *
- * Even the 64 bit operation is not big enough to avoid overflaw
+ * Even the 64 bit operation is not big enough to avoid overflow
  * unless we carefully choose orders of multiplication and division.
  *
  * Get the coefficient first, and multiply (potentially huge) base
  * experience point of a monster later.
  */
-static void get_exp_from_mon(int dam, monster_type *m_ptr)
+static void get_exp_from_mon(int dam, monster_type *m_ptr, bool mon_dead)
 {
     monster_race *r_ptr = &r_info[m_ptr->r_idx];
 
@@ -2212,7 +2217,7 @@ static void get_exp_from_mon(int dam, monster_type *m_ptr)
     u32b div_l;
 
     if (!m_ptr->r_idx) return;
-    if (is_pet(m_ptr) || p_ptr->inside_battle) return;
+    if (is_pet(m_ptr) || p_ptr->inside_battle || (m_ptr->mflag2 & MFLAG2_WASPET)) return;
 
     /*
      * - Ratio of monster's level to player's level effects
@@ -2350,6 +2355,24 @@ static void get_exp_from_mon(int dam, monster_type *m_ptr)
     s64b_mul(&new_exp, &new_exp_frac, 0, adj_exp_gain[p_ptr->stat_ind[A_INT]]);
     s64b_div(&new_exp, &new_exp_frac, 0, 100);
 
+    /* Farming summons for XP is not good either... */
+    if ((m_ptr->mflag2 & MFLAG2_PLAYER_SUMMONED) && (p_ptr->lev > 14) &&
+        (((r_ptr->level < 55) && (!(r_ptr->flags1 & RF1_UNIQUE))) ||
+         (m_ptr->r_idx == MON_CYBER)))
+    {
+        int exp_div = ironman_downward ? 220 : 110;
+        if ((mon_dead) && (p_ptr->py_summon_kills < 200) && (!(r_ptr->flags2 & RF2_MULTIPLY)) &&
+           (((long)(r_ptr->mexp * r_ptr->level / p_ptr->lev) > (p_ptr->max_exp / ((m_ptr->mflag2 & MFLAG2_DIRECT_PY_SUMMON) ? (1694L * (10 + r_ptr->level) / exp_div) : 1000))) || (one_in_(10))) &&
+           ((m_ptr->mflag2 & MFLAG2_DIRECT_PY_SUMMON) || (ironman_downward) || (one_in_(2)))) p_ptr->py_summon_kills++;
+        s64b_mul(&new_exp, &new_exp_frac, 0, 20);
+        s64b_div(&new_exp, &new_exp_frac, 0, 20 + p_ptr->py_summon_kills);
+        if (m_ptr->mflag2 & MFLAG2_DIRECT_PY_SUMMON)
+        {
+            s64b_mul(&new_exp, &new_exp_frac, 0, 10 + MIN(99, r_ptr->level));
+            s64b_div(&new_exp, &new_exp_frac, 0, exp_div);
+        }
+    }
+
     if ((coffee_break) && (py_in_dungeon())) /* Accelerated EXP gain */
     {
         int coffee_mult = 2;
@@ -2482,7 +2505,7 @@ bool mon_take_hit(int m_idx, int dam, bool *fear, cptr note)
         expdam = (m_ptr->hp > dam) ? dam : m_ptr->hp;
         if (mon_race_has_healing(r_ptr)) expdam = (expdam+1) * 2 / 3;
 
-        get_exp_from_mon(expdam, m_ptr);
+        get_exp_from_mon(expdam, m_ptr, FALSE);
 
         /* Genocided by chaos patron */
         if (!m_ptr->r_idx) m_idx = 0;
@@ -2532,7 +2555,11 @@ bool mon_take_hit(int m_idx, int dam, bool *fear, cptr note)
         pack_on_damage_monster(m_idx);
 
     /* Mark monster as hurt */
-    if (dam > 0) m_ptr->mflag2 |= MFLAG2_HURT;
+    if (dam > 0) 
+    {
+        m_ptr->mflag2 |= MFLAG2_HURT;
+        monsters_damaged_hack = TRUE;
+    }
 
     /* It is dead now */
     if (m_ptr->hp < 0)
@@ -2861,9 +2888,9 @@ bool mon_take_hit(int m_idx, int dam, bool *fear, cptr note)
 
         /* Prevent bug of chaos patron's reward */
         if (r_ptr->flags7 & RF7_KILL_EXP)
-            get_exp_from_mon((long)exp_mon.max_maxhp*2, &exp_mon);
+            get_exp_from_mon((long)exp_mon.max_maxhp*2, &exp_mon, TRUE);
         else
-            get_exp_from_mon(((long)exp_mon.max_maxhp+1L) * 9L / 10L, &exp_mon);
+            get_exp_from_mon(((long)exp_mon.max_maxhp+1L) * 9L / 10L, &exp_mon, TRUE);
 
         /* Not afraid */
         (*fear) = FALSE;
