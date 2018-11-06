@@ -276,7 +276,7 @@ have the most hitpoints of all dragons.
   Dexterity     -3        Stealth     Poor         
   Constitution  +7        Searching   Bad          
   Charisma      +3        Perception  Bad          
-  Life Rating  140%       Melee       Superb       
+  Life Rating  137%       Melee       Superb       
   Base HP       40        Bows        Bad          
   Experience   250%       Infravision 50'
   
@@ -296,7 +296,7 @@ Ethereal Drake     +2   +1   -1   +0   +1   +1  102%  +40  250%  130%
 Crystal Drake      +1   -1   -2   +0   +0   +0  100%  +40  275%  130%
 Bronze Dragon      +4   +3   +0   +2   +3   +3  110%  +40  250%  130%
 Gold Dragon        +4   +3   +0   +2   +3   +3  110%  +40  250%  130%
-Steel Dragon       +8   -6   -6   -3   +7   +3  140%  +40  250%  130%
+Steel Dragon       +8   -6   -6   -3   +7   +3  137%  +40  250%  130%
 
 
 Table 2 - Dragon Skill Bonus Table I
@@ -339,5 +339,5 @@ Steel Dragon      Bad           Bad           Superb        Bad             50'
 
 
 
-Automatically generated for FrogComposband 7.0.strawberry.
+Automatically generated for FrogComposband 7.0.cloudberry.
 
