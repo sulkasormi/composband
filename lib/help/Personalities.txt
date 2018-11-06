@@ -83,8 +83,7 @@ Life Rating   98%       Melee       <color:G>Excellent    </color>
 Experience   100%       Bows        <color:o>Fair         </color>
 </style></indent>
 <topic:Combat><color:o>Combat</color>
-The Combat personality favors melee and shooting at the expense of other skills such as disarming, devices, and saving throws. Strength and agility are enhanced, but intelligence and wisdom are decreased. All Combat people have great respect for the legendary "Combat Echizen".
-(See "Death Crimson" / Ecole Software Corp.)
+The Combat personality favors melee and shooting at the expense of other skills such as disarming, devices, and saving throws. Strength and agility are enhanced, but intelligence and wisdom are decreased.
 
   <indent><style:table><color:G>Stats                   Skills</color>
 Strength      +1        Disarming   <color:r>Bad          </color>
@@ -294,4 +293,4 @@ Munchkin     <color:v>Amber[15]    </color> <color:v>Amber[15]    </color> <colo
 </style>
 
 
-<color:s>Automatically generated for FrogComposband 7.0.mango.</color>
+<color:s>Automatically generated for FrogComposband 7.0.cloudberry.</color>
