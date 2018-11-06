@@ -50,7 +50,7 @@ Original Keyset
    g  Get Objects                          G  Gain new spells/prayers
    h  (unused)                             H  (unused)
    i  Inventory list                       I  Inspect an item
-   j  Jam a door                           J  (unused)
+   j  Jam a door                           J  Resume travelling
    k  Destroy an item                      K  (unused)
    l  Look around                          L  Locate player on map
    m  Cast a spell / use mental power      M  Full dungeon map
@@ -139,7 +139,7 @@ Roguelike Keyset
    ^  (special - control key)             ^F  Repeat level feeling
    &  Interact with colors                ^G  Auto-Get nearby objects
    *  Target monster or location          ^H  (tunnel - west)
-   (  (unused)                            ^I  Toggle Choice Window
+   (  Resume travelling                   ^I  Toggle Choice Window
    )  Create screen dump                  ^J  (tunnel - south)
    {  Inscribe an object                  ^K  (tunnel - north)
    }  Uninscribe an object                ^L  (tunnel - east)
