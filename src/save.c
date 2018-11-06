@@ -747,6 +747,7 @@ static void wr_extra(savefile_ptr file)
     savefile_write_byte(file, p_ptr->coffee_lv_revisits);
     savefile_write_byte(file, p_ptr->filibuster);
     savefile_write_byte(file, p_ptr->upset_okay);
+    savefile_write_byte(file, p_ptr->py_summon_kills);
     for (i = 0; i < 16; i++)
         savefile_write_s32b(file, 0); /* Future use */
 
