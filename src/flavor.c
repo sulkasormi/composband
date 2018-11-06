@@ -1468,6 +1468,9 @@ void object_desc(char *buf, object_type *o_ptr, u32b mode)
             t = object_desc_str(t, "<<Hold>> ");
     }
 
+    if (o_ptr->marked & OM_SLIPPING)
+        t = object_desc_str(t, "<<Slipped>> ");
+
     if (o_ptr->marked & OM_WORN)
         t = object_desc_str(t, "<<Worn>> ");
 
