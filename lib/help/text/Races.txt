@@ -687,13 +687,13 @@ Other Races
   
     Stats                   Skills
     Strength      +3        Disarming   Bad          
-    Intelligence  +0        Device      Poor         
+    Intelligence  +0        Device      Bad          
     Wisdom        +0        Save        Fair         
     Dexterity     +1        Stealth     Bad          
     Constitution  +2        Searching   Bad          
     Charisma      +2        Perception  Superb       
-    Life Rating  106%       Melee       Superb       
-    Base HP       22        Bows        Very Good    
+    Life Rating  104%       Melee       Superb       
+    Base HP       22        Bows        Good         
     Experience   190%       Infravision 20'
     
   Doppelganger
@@ -914,7 +914,7 @@ Zombie        +2   -6   -6   +1   +4   -3  108%  +24  180%  140%
 Android       +3   -1   -5   +1   +3   +0  108%  +26  200%  120%
 Beastman      +2   -2   -1   -1   +2   +1  102%  +22  150%  130%
 Centaur       +3   -2   +1   +2   +1   +0  103%  +22  190%   95%
-Draconian     +3   +0   +0   +1   +2   +2  106%  +22  190%  115%
+Draconian     +3   +0   +0   +1   +2   +2  104%  +22  190%  115%
 Doppelganger  -3   -3   -3   -3   -3   -3   85%  +12  150%  150%
 Ent           +2   +0   +2   -3   +2   +0  105%  +25  135%   95%
 Golem         +4   -5   -5   -2   +4   +0  105%  +23  185%  120%
@@ -962,7 +962,7 @@ Zombie       Bad           Bad           Good          Bad
 Android      Poor          Bad           Poor          Bad          
 Beastman     Bad           Poor          Poor          Bad          
 Centaur      Poor          Bad           Fair          Fair         
-Draconian    Bad           Poor          Fair          Bad          
+Draconian    Bad           Bad           Fair          Bad          
 Doppelganger Very Bad      Very Bad      Very Bad      Excellent    
 Ent          Bad           Fair          Good          Bad          
 Golem        Bad           Bad           Good          Bad          
@@ -1010,7 +1010,7 @@ Zombie       Very Bad      Good          Superb        Fair            20'
 Android      Fair          Heroic        Superb        Excellent        0'
 Beastman     Very Bad      Good          Excellent     Very Good        0'
 Centaur      Fair          Good          Excellent     Excellent        0'
-Draconian    Bad           Superb        Superb        Very Good       20'
+Draconian    Bad           Superb        Superb        Good            20'
 Doppelganger Very Bad      Superb        Very Bad      Very Bad         0'
 Ent          Bad           Superb        Superb        Fair             0'
 Golem        Very Bad      Excellent     Superb        Fair            40'
@@ -1024,5 +1024,5 @@ Yeek         Good          Heroic        Bad           Fair            20'
 
 
 
-Automatically generated for FrogComposband 7.0.mango.
+Automatically generated for FrogComposband 7.0.cloudberry.
 
