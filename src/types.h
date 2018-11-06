@@ -1238,6 +1238,7 @@ struct player_type
     byte coffee_lv_revisits;  /* Count 99/100 spam by coffee-breakers */
     byte minislow;
     u16b mini_energy;
+    byte py_summon_kills;
 
     s16b energy_need;      /* Energy needed for next move */
 
