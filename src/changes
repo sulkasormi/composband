@@ -1,3 +1,201 @@
+Changes in FrogComposband 7.0.cloudberry:
+
+* Improved support for play on the angband.live online server
+(unwanted auto-running on keyboards with no Num Lock, which has been a
+perennial problem for angband.live newcomers, can now be very easily
+disabled; and the game attempts to detect this problem automatically
+and help the player solve it)
+
+* Plugged a loophole that allowed Amberite blood curses to still be
+deadlier than intended after the earlier nerf in 7.0.nougat
+(thanks to Gwarl for being unlucky enough to discover this)
+
+* Ranged weapons now have their own list of random artifact names, separate
+from that of melee weapons
+
+* Completely redesigned player Water Elementals based on Nivim's ideas
+(thanks also to wobbly for the feedback on old water elementals)
+
+* Added some new monsters and artifacts
+
+* Added mimic/possessor data for most of the monsters that lacked it
+
+* Djinnis now resist fire
+
+* Several additional monsters now either resist confusion or can shake it off
+rapidly. (Notably, Fenris, Maeglin, Eol and Jurt now resist confusion, and
+the bird uniques can shake it off rapidly; but the bird uniques' HP was
+slightly reduced to compensate)
+
+* The two main types of confusion attack (GF_CONFUSION and GF_OLD_CONF) now
+both give monsters a save against the effects; previously, only GF_OLD_CONF
+gave monsters a save
+
+* The Vault is now described as a level 35 quest, instead of level 30. (This
+change has no effect on how dangerous the quest actually is; it is intended
+simply to give the player a more accurate idea of its danger level. The
+change does have minor effects on object generation within the quest.)
+
+* Swapped the wilderness-mode rewards of Crow's Nest and Orc Camp
+
+* Fixed minor issues with the descriptions for potions of Clarity and Great
+Clarity
+
+* Swapping equipment at home (or in a shop) with a full inventory no longer
+throws the player out of the building with an erroneous pack overflow warning
+
+* The dates of quest failures were not recorded properly; this has been fixed
+
+* Attempting to summon monsters on a Possessor caused the game to crash;
+this has been fixed (thanks to bostock for reporting)
+
+* Fixed a display bug in the character sheet when a monster with a long name
+was being possessed or mimicked
+
+* Humanoid corpses are no longer auto-destroyed while a player demon is
+temporarily polymorphed into a non-demon (thanks to Mocht for reporting)
+
+* Player traps can no longer roll the Trap Door effect on the bottom level
+of a dungeon (thanks to bostock for suggesting this)
+
+* Nerfed harp randarts, and slightly reduced the power of all harp
+artifacts for non-bards
+
+* Added partial inscription support for devices absorbed by Magic-Eaters
+
+* Added an option to disallow permanent changes to the player's race
+(intended mostly for use in future competitions)
+
+* Added an option to start with empty item lore even when the game is based
+on a dead character's savefile
+
+* Improved samurai (added browsing support in the spell UI and imported some
+attack flavor messages from Composband, and reduced the life rating a bit)
+
+* Player jellies eating a stack of objects works properly now
+
+* The Old Man Willow quest now counts as completed when Old Man Willow is
+killed (copied from Composband)
+
+* Helmets of Knowledge and Dragon Armor of Lore now give auto-identify
+instead of auto-pseudo-identify
+
+* The Phial of Galadriel now gives rDark and +5 to searching
+
+* Improved warning message when Crafting has a chance to fail
+
+* Reduced XP gain from player summons (to discourage spamming staves of
+summoning for XP)
+
+* Clipped the extremes of the random energy function
+
+* It is now possible to use the 'J' key (the '(' key in the roguelike keyset)
+to resume travelling to the same target after being disturbed mid-travel
+
+* Modified the message when a monster hurts itself (thanks to murphy for
+reporting this problem)
+
+* In some unusual circumstances, the Zombified Serpent of Chaos could be
+generated without the normal Serpent of Chaos having been killed first; this
+has been fixed
+
+* The "Bless Weapon" power, which previously had a 1 in 3 chance of
+successfully blessing a strong weapon and a 2 in 3 chance of disenchanting it,
+will now always succeed except in the case of some fundamentally unholy items
+(thanks to wobbly and bostock for their feedback)
+
+* Werewolves could change from wolf to human while stalking and still stalk;
+this has been fixed (thanks to wobbly for reporting)
+
+* Weaponsmiths can no longer remove shop discounts from items
+(thanks to CyclopsSlayer for bringing this up)
+
+* Fixed several issues with shieldmasters (thanks to Fnord for reporting)
+
+* Fixed a minor issue with the description of use-IDed *Sharp* weapons
+
+* Toned down death-swords' speed gain a bit (thanks to Nivim for suggesting)
+
+* Rebalanced player-monster golems (thanks to Bucephalus for the feedback)
+
+* Using autoget with no melee attacks sometimes caused the game to get stuck
+and crash; this has been fixed (thanks to bostock for the report)
+
+* Bumping into an invisible monster with no melee attacks now costs a bit of
+time, though less than a full turn (thanks to vertigo for suggesting this)
+
+* Lists of stolen objects carried by monsters were not loaded properly,
+causing such objects to fall into a limbo; this has been fixed
+
+* Fixed two bugs with monster packs (their most notable effect was that
+dungeon entrance guardians were sometimes not properly marked as killed)
+
+* Artifacts absorbed by Death-Swords and Rings are now marked as found even
+if not identified
+
+* For the purposes of Weaponsmith and Death-Sword item absorption, all objects
+with a Kill flag are now considered to also have the corresponding Slay flag
+(thanks to Prandar for bringing this up)
+
+* Sense Living, once acquired, was never turned off (thanks to wobbly for
+reporting)
+
+* Monsters from Egyptian mythology now have their own monster-knowledge group
+(thanks to Mocht for suggesting this)
+
+* A device having no charges left now takes priority over other possible
+problems (like failing to use the device or being too scared to use it)
+(thanks to Mocht for suggesting this)
+
+* Potions of Blood are now automatically identified
+(thanks to Mocht for suggesting this)
+
+* The character sheet's equipment flags table now has lines for Stunning
+and Life Rating (thanks to Mocht for suggesting the latter)
+
+* Improved interaction of manual pickup with auto-pickup
+
+* The presence of other chests or doors/traps in adjacent squares no longer
+makes it impossible to open/disarm a chest the player's standing on
+
+* Redundant object flag inscriptions (like "Li;-Li") should no longer appear.
+Also, made sure such flags have no effect on the object's value
+
+* Item valuation ignored magic resistance; this has been fixed
+
+* Alchemists no longer receive special Hero/Berserk bonuses from any source
+other than potions
+
+* Fixed bugs with some Rage-Mage spells (thanks to Aver for reporting)
+
+* Fixed the Throw Object wild talent (thanks to budswell for reporting)
+
+* Added Ighalli's effective_speed option from V
+(show speeds as energy multipliers, except in the character sheet)
+
+* Added new class-specific rewards and tweaked some existing ones to make them
+more appropriate (thanks to Mocht and CyclopsSlayer for reporting issues)
+
+* The Mogaminator now supports the "more charges than" item descriptor
+(e.g. "staves more charges than 15:cure wounds#@uu!sdk" picks up staves of
+cure wounds with at least 16 charges, and inscribes them with @uu!sdk)
+
+* The Mogaminator now supports loading other characters' preference files
+(including pickpref.prf, the default preference file)
+
+* Pets take a bit longer to feel neglected now
+
+* Nerfed a number of races and classes slightly (priest, time-lord, jelly,
+steel dragon, bronze draconian, shieldmaster, mindcrafter, monk, possibly
+others that I forget)
+
+* Verification is now requested for any attempt to genocide nagas (or xorns
+for users of the roguelike keyset)
+
+* Various minor tweaks and code improvements
+
+-------------------------------------------------------
+
 Changes in FrogComposband 7.0.nougat:
 
 * Added two new races (Einheri and Werewolf). Einherjar are very powerful but
@@ -944,6 +1142,16 @@ scale mails (but not quite to the same extent as in ComPosband 7.0.4)
 
 To do:
 
-* Look into adding new classes and/or races
+* Implement purple-mages
+
+* Implement player dinosaurs
+
+* Implement emulord's armor player-monsters (player filthy rags?)
 
 * Look into adapting the bank from Frogspawn
+
+------------------------------------------------------
+
+Known issues:
+
+* Players have been hit by friendly psycho-spears in some unusual situations
