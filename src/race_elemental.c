@@ -23,7 +23,12 @@ static cptr _desc =
     "to ash!\n \n"
     "Finally, there are the Water Elementals, creatures able to conjure deadly "
     "water bolts. They are immune to stunning. Their attacks can be quite corrosive, "
-    "but, alas, sometimes their armor corrodes as well!";
+    "but, alas, sometimes their armor corrodes as well! They also have a unique "
+    "energy system based on the speed of their internal water flow; fighting and "
+    "the use of elemental powers excite them and turn them into a raging torrent, "
+    "while resting or aimlessly splashing about slows them down again. High flow "
+    "rates make water elementals stronger, but their armor sometimes gets caught in "
+    "the flow and slips off!";
 
 static void _calc_bonuses(void) 
 {
@@ -82,6 +87,7 @@ static bool _elemental_travel(int flag)
         else
             teleport_player_to(y, x, 0);
     }
+    water_mana_action(1, 25);
     return TRUE;
 }
 
@@ -111,7 +117,12 @@ static bool _elemental_healing(int flag)
     }
 
     msg_print("You bask in your element and slowly feel your life returning ... ");
-    hp_player(100 + p_ptr->lev * 3);
+    if (elemental_is_(ELEMENTAL_WATER)) 
+    {
+        hp_player(50 + water_flow_rate() * 2);
+        water_mana_action(1, 20);
+    }
+    else hp_player(100 + p_ptr->lev * 3);
     return TRUE;
 }
 
@@ -182,7 +193,7 @@ static void _elemental_pack_destroy(object_p p, cptr destroy_fmt, int chance)
 
 /**********************************************************************
  *             25
- * Earth Spirt -> Earth Elemental
+ * Earth Spirit -> Earth Elemental
  **********************************************************************/
 static void _earth_birth(void) 
 { 
@@ -454,7 +465,7 @@ static race_t *_earth_get_race_t(void)
 
 /**********************************************************************
  *           25
- * Air Spirt -> Air Elemental
+ * Air Spirit -> Air Elemental
  **********************************************************************/
 static void _air_birth(void) 
 { 
@@ -719,8 +730,67 @@ static race_t *_air_get_race_t(void)
 
 /**********************************************************************
  *             25
- * Water Spirt -> Water Elemental
+ * Water Spirit -> Water Elemental
  **********************************************************************/
+int water_flow_rate(void)
+{
+    return (p_ptr->csp / 10);
+}
+
+static bool _armor_melt_hack = FALSE;
+static byte _toistot = 0;
+
+void water_mana_action(byte check_hurt_mode, int mana)
+{
+    static s32b kieppi = 0;
+    static u16b kieppi_mana = 0;
+    bool uuskieppi = TRUE;
+    if (!elemental_is_(ELEMENTAL_WATER)) return;
+    if (!mana) return;
+    if ((check_hurt_mode == 2) && (!monsters_damaged_hack)) return;
+    if (check_hurt_mode == 1) _toistot = MIN(10, _toistot + 1);
+    else if ((monsters_damaged_hack) || (mana < 25) || (kieppi_mana)) _toistot = 0;
+    if (_toistot > 0) mana /= _toistot;
+    if ((kieppi == game_turn) && (mana > 0)) /* Multiple blows in one round - diminishing returns */
+    {
+        mana -= mana * (MIN(50, kieppi_mana * 3 / 4)) / 100;
+        uuskieppi = FALSE;
+    }
+    else kieppi_mana = 0;
+    kieppi = game_turn;
+    kieppi_mana += mana;
+    p_ptr->csp += mana;
+    if (p_ptr->csp > 1000) p_ptr->csp = 1000;
+    if (p_ptr->csp < 0) p_ptr->csp = 0;
+    p_ptr->update |= (PU_BONUS);
+    p_ptr->redraw |= (PR_MANA); 
+    if ((mana > 0) && ((uuskieppi) || (one_in_(5))) && (randint0(2178) < MIN(76, ((water_flow_rate() * 9 / 5) - 83))))
+    {
+        slot_t slot = equip_find_first(object_is_body_armour);
+        if (slot)
+        {
+            object_type *o_ptr = equip_obj(slot);
+            char o_name[MAX_NLEN];
+            if (o_ptr->marked & OM_SLIPPING) return;
+            object_desc(o_name, o_ptr, OD_NAME_ONLY | OD_OMIT_PREFIX | OD_OMIT_INSCRIPTION | OD_COLOR_CODED);
+            o_ptr->marked |= OM_SLIPPING;
+            msg_format("You flow too fast! Your %s is caught in the flow and slips off!", o_name);
+            if ((object_is_(o_ptr, TV_SOFT_ARMOR, SV_ABUNAI_MIZUGI)) && (p_ptr->personality == PERS_SEXY))
+            {
+                msg_print("You roar!");
+                p_ptr->csp = 1000;
+                set_fast(p_ptr->fast + 15, FALSE);
+                set_hero(p_ptr->hero + 15, FALSE);
+            }
+            p_ptr->update |= (PU_HP | PU_SPELLS);
+            p_ptr->redraw |= (PR_STATS);
+            p_ptr->window |= (PW_EQUIP);
+            msg_print(NULL);
+        }
+    }
+    handle_stuff();
+}
+
 static void _water_birth(void) 
 { 
     object_type forge;
@@ -743,6 +813,7 @@ static void _water_birth(void)
     py_birth_light();
 
     p_ptr->current_r_idx = MON_WATER_SPIRIT; 
+    p_ptr->csp = 0;
 }
 
 static void _water_gain_level(int new_level) 
@@ -752,6 +823,56 @@ static void _water_gain_level(int new_level)
         p_ptr->current_r_idx = MON_WATER_ELEMENTAL;
         msg_print("You have evolved into a Water Elemental.");
         p_ptr->redraw |= PR_MAP;
+    }
+}
+
+static bool _adjust_armor_aux(void)
+{
+    slot_t slot = equip_find_first(object_is_body_armour);
+    if (!slot)
+    {
+        msg_print("You're not even attempting to wear body armour.");
+        return FALSE;
+    }
+    else
+    {
+        object_type *o_ptr = equip_obj(slot);
+//        char o_name[MAX_NLEN];
+        if (!(o_ptr->marked & OM_SLIPPING))
+        {
+            msg_print("Your armour does not need adjusting.");
+            return FALSE;
+        }
+        o_ptr->marked &= ~OM_SLIPPING;
+//        object_desc(o_name, o_ptr, OD_NAME_ONLY | OD_OMIT_PREFIX | OD_OMIT_INSCRIPTION | OD_COLOR_CODED);
+        obj_release(o_ptr, 0);
+    }
+    p_ptr->update |= (PU_BONUS | PU_HP | PU_SPELLS);
+    p_ptr->redraw |= (PR_STATS);
+    p_ptr->window |= (PW_EQUIP);
+    handle_stuff();
+    return TRUE;
+}
+
+static void _adjust_armor_spell(int cmd, variant *res)
+{
+    switch (cmd)
+    {
+    case SPELL_NAME:
+        var_set_string(res, "Adjust Armour");
+        break;
+    case SPELL_DESC:
+        var_set_string(res, "Flow back into a slipping body armour, at the cost of two turns.");
+        break;
+    case SPELL_CAST:
+        var_set_bool(res, _adjust_armor_aux());
+        break;
+    case SPELL_ENERGY:
+        var_set_int(res, 200);
+        break;
+    default:
+        default_spell(cmd, res);
+        break;
     }
 }
 
@@ -766,7 +887,17 @@ static void _acid_strike_spell(int cmd, variant *res)
         var_set_string(res, "Attack an adjacent opponent with a corrosive blow.");
         break;
     case SPELL_CAST:
+        if (p_ptr->lev >= 25) 
+        {
+            p_ptr->melt_armor = TRUE;
+            _armor_melt_hack = TRUE;
+        }
         var_set_bool(res, do_blow(PY_ATTACK_ACID));
+        p_ptr->melt_armor = FALSE;
+        _armor_melt_hack = FALSE;        
+        break;
+    case SPELL_COST_EXTRA:
+        var_set_int(res, (p_ptr->lev >= 25) ? 5 : 0);
         break;
     default:
         default_spell(cmd, res);
@@ -776,7 +907,8 @@ static void _acid_strike_spell(int cmd, variant *res)
 
 static void _water_ball_spell(int cmd, variant *res)
 {
-    int dam = py_prorata_level(300);
+    int dam = 28 + py_prorata_level(144);
+    dam += MIN(dam, water_flow_rate());
 
     switch (cmd)
     {
@@ -796,10 +928,11 @@ static void _water_ball_spell(int cmd, variant *res)
         if (!get_fire_dir(&dir)) return;
         fire_ball(GF_WATER2, dir, dam, 4);
         var_set_bool(res, TRUE);
+        water_mana_action(2, dam * 2 / 5);
         break;
     }
     case SPELL_COST_EXTRA:
-        var_set_int(res, dam / 10);
+        var_set_int(res, dam / 5);
         break;
     default:
         default_spell(cmd, res);
@@ -834,10 +967,10 @@ static void _water_healing_spell(int cmd, variant *res)
         var_set_string(res, "Healing Bath");
         break;
     case SPELL_DESC:
-        var_set_string(res, "If you are surrounded by water, you may heal yourself at the cost of several acts.");
+        var_set_string(res, "If you are surrounded by water, you may heal yourself at the cost of two turns.");
         break;
     case SPELL_INFO:
-        var_set_string(res, info_heal(0, 0, 100 + p_ptr->lev * 3));
+        var_set_string(res, info_heal(0, 0, 50 + water_flow_rate()*2));
         break;
     case SPELL_CAST:
         var_set_bool(res, _elemental_healing(FF_WATER));
@@ -853,13 +986,14 @@ static void _water_healing_spell(int cmd, variant *res)
 
 static power_info _water_powers[] = 
 {
+    { A_DEX, {  1,  0,  0, _adjust_armor_spell}},
     { A_DEX, {  5,  5,  0, _acid_strike_spell}},
     { A_STR, { 12,  7, 35, acid_bolt_spell}},
     { A_STR, { 17, 10, 40, _elemental_rage_spell}},
-    { A_STR, { 23, 15, 65, water_bolt_spell}},
+    { A_STR, { 23, 16, 65, water_bolt_spell}},
     { A_STR, { 32,  0, 65, _water_ball_spell}},
-    { A_CON, { 35,  0, 65, _water_healing_spell}},
-    { A_DEX, { 40, 50, 75, _water_gate_spell}},
+    { A_CON, { 38,  0, 75, _water_healing_spell}},
+    { A_DEX, { 42, 50, 75, _water_gate_spell}},
     {    -1, { -1, -1, -1, NULL} }
 };
 
@@ -872,12 +1006,12 @@ static void _water_calc_bonuses(void)
 {
     res_add(RES_ACID);
     p_ptr->no_stun = TRUE;
-
+    p_ptr->pspeed += water_flow_rate() / 27;
+    
     if (p_ptr->lev >= 25)
     {
-        p_ptr->pspeed += 3;
-        p_ptr->melt_armor = TRUE;
         res_add(RES_ACID);
+        p_ptr->melt_armor = _armor_melt_hack;
     }
 
     if (p_ptr->lev >= 50)
@@ -890,7 +1024,7 @@ static void _water_get_flags(u32b flgs[OF_ARRAY_SIZE])
 {
     add_flag(flgs, OF_RES_ACID);
 
-    if (p_ptr->lev >= 25)
+    if (water_flow_rate() >= 27)
         add_flag(flgs, OF_SPEED);
 
     if (p_ptr->lev >= 50)
@@ -906,13 +1040,15 @@ static void _water_damage(obj_ptr obj)
     int  chance = 15;
 
     if (!object_is_armour(obj)) return;
-    if (randint0(1000) >= chance) return;
+    if (randint0(1452) >= chance) return;
     if (obj->ac + obj->to_a <= 0) return;
 
     obj_flags(obj, flgs);
     if (have_flag(flgs, OF_IM_ACID)) return;
     if (have_flag(flgs, OF_RES_ACID)) return;
     if (have_flag(flgs, OF_IGNORE_ACID)) return;
+//    if (have_flag(flgs, OF_IGNORE_ACID) && !(one_in_(10))) return;
+//    if (object_is_artifact(obj) && !(one_in_(2))) return;
 
     object_desc(o_name, obj, OD_OMIT_PREFIX | OD_NAME_ONLY | OD_COLOR_CODED);
     msg_format("Your watery touch corrodes your %s!", o_name);
@@ -934,6 +1070,31 @@ static void _water_process_world(void)
     pack_for_each(_water_damage);
 }
 
+static caster_info * _water_caster_info(void)
+{
+    static caster_info me = {0};
+    static bool init = FALSE;
+    if (!init)
+    {
+        me.magic_desc = "elemental power";
+        me.which_stat = A_STR;
+        me.options = CASTER_USE_HP;
+        init = TRUE;
+    }
+    return &me;
+}
+
+static void _water_load_player(savefile_ptr file)
+{
+    if (savefile_is_older_than(file, 7, 0, 9, 3)) _toistot = 0;
+    else _toistot = savefile_read_byte(file);
+}
+
+static void _water_save_player(savefile_ptr file)
+{
+    savefile_write_byte(file, _toistot);
+}
+
 static race_t *_water_get_race_t(void)
 {
     static race_t me = {0};
@@ -945,8 +1106,8 @@ static race_t *_water_get_race_t(void)
 
     if (!init)
     {           /* dis, dev, sav, stl, srh, fos, thn, thb */
-    skills_t bs = { 28,  25,  35,   5,  25,  16,  65,  35};
-    skills_t xs = {  8,  10,   9,   0,   0,   0,  20,  15};
+    skills_t bs = { 28,  25,  35,   5,  25,  16,  62,  35};
+    skills_t xs = {  8,  10,   9,   0,   0,   0,  18,  15};
 
         me.skills = bs;
         me.extra_skills = xs;
@@ -960,6 +1121,7 @@ static race_t *_water_get_race_t(void)
         me.get_flags = _water_get_flags;
         me.gain_level = _water_gain_level;
         me.process_world = _water_process_world;
+        me.caster_info = _water_caster_info;
         init = TRUE;
     }
 
@@ -970,15 +1132,17 @@ static race_t *_water_get_race_t(void)
     me.stats[A_DEX] =  1 + rank;
     me.stats[A_CON] =  2 + 2*rank;
     me.stats[A_CHR] =  1;
-    me.life = 100 + 10*rank;
+    me.life = 96 + MIN(6, p_ptr->lev/5);
     me.boss_r_idx = MON_MOIRE;
+    me.load_player = _water_load_player;
+    me.save_player = _water_save_player;
 
     return &me;
 }
 
 /**********************************************************************
  *            25                40
- * Fire Spirt -> Fire Elemental -> Magma Elemental
+ * Fire Spirit -> Fire Elemental -> Magma Elemental
  **********************************************************************/
 static void _fire_birth(void) 
 { 
