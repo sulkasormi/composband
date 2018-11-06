@@ -177,7 +177,7 @@ Angel/Demon
   their devilish powers or their brutish strength to survive.
    
   The various demonic races include the Balrog, powerful demons of 
-  fire; the Sevants of Khorne, mighty warriors of destruction; the 
+  fire; the Servants of Khorne, mighty warriors of destruction; the 
   Tanar'ri, weaker demons whose ultimate form has three sets of arms, 
   but prefers to fight naked; and Cyberdemons, whose firepower is 
   unsurpassable.
@@ -295,7 +295,13 @@ Elemental/Vortex
    
   Finally, there are the Water Elementals, creatures able to conjure 
   deadly water bolts. They are immune to stunning. Their attacks can be 
-  quite corrosive, but, alas, sometimes their armor corrodes as well!
+  quite corrosive, but, alas, sometimes their armor corrodes as well! 
+  They also have a unique energy system based on the speed of their 
+  internal water flow; fighting and the use of elemental powers excite 
+  them and turn them into a raging torrent, while resting or aimlessly 
+  splashing about slows them down again. High flow rates make water 
+  elementals stronger, but their armor sometimes gets caught in the 
+  flow and slips off!
   
     Stats                   Skills
     Strength      +5        Disarming   Fair         
@@ -373,7 +379,7 @@ Golem
     Dexterity     -3        Stealth     Poor         
     Constitution  +4        Searching   Bad          
     Charisma      +2        Perception  Bad          
-    Life Rating  115%       Melee       Superb       
+    Life Rating  108%       Melee       Superb       
     Base HP       50        Bows        Bad          
     Experience   200%       Infravision 50'
     
@@ -405,7 +411,7 @@ Jelly
   automatically eats the object, and jellies never become bloated, 
   their appetite being insatiable.
    
-  Like all monster races, jellies begin as weak monster of their race 
+  Like all monster races, jellies begin as a weak monster of their race 
   and evolve to better forms as they gain experience. Jellies begin 
   life as a small puddle of black ooze with very little carrying 
   capacity for equipment. However, they quickly evolve into a 
@@ -751,7 +757,7 @@ Beholder      -3   +7   +0   +2   +0   +1  100%  +20  200%  140%
 Dragon        +4   +2   +1   +1   +3   +2  115%  +40  250%  130%
 Elemental     +5   -5   -5   -4   +6   +0  120%  +30  170%  120%
 Vortex        +0   -5   -5   +2   +1   +0  102%  +25  125%  120%
-Golem         +4   -4   -4   -3   +4   +2  115%  +50  200%  130%
+Golem         +4   -4   -4   -3   +4   +2  108%  +50  200%  130%
 Jelly         +1   -5   -5   +1   +1   -2   90%  +40  150%  125%
 Quylthulg     -3   -3   -3   -3   -3   +8   95%   +0  150%  120%
 Leprechaun    -6   +1   +1   +7   -2   -2   80%  +15  150%   85%
@@ -822,5 +828,5 @@ Xorn         Poor          Bad           Excellent     Bad             50'
 
 
 
-Automatically generated for FrogComposband 7.0.strawberry.
+Automatically generated for FrogComposband 7.0.cloudberry.
 
