@@ -292,6 +292,7 @@ int res_ct_known(int which)
         u32b         flgs_known[OF_ARRAY_SIZE];
 
         if (!o_ptr) continue;
+        if (o_ptr->marked & OM_SLIPPING) continue;
         obj_flags(o_ptr, flgs);
         obj_flags_known(o_ptr, flgs_known);
 
