@@ -19,6 +19,7 @@ bool py_throw(py_throw_ptr context)
     if (!_init_context(context)) return FALSE;
     _throw(context);
     _return(context);
+    water_mana_action(FALSE, 5);
     return TRUE;
 }
 
