@@ -105,7 +105,7 @@ Wisdom       <color:v> +1</color>        Save        <color:o>Fair         </col
 Dexterity    <color:w> +2</color>        Stealth     <color:o>Fair         </color>
 Constitution <color:w> +1</color>        Searching   <color:R>Poor         </color>
 Charisma     <color:w> +1</color>        Perception  <color:r>Bad          </color>
-Life Rating  111%       Melee       <color:g>Superb       </color>
+Life Rating  109%       Melee       <color:g>Superb       </color>
 Base HP       12        Bows        <color:y>Good         </color>
 Experience   130%
 </style></indent>
@@ -137,7 +137,7 @@ Wisdom       <color:w> -2</color>        Save        <color:o>Fair         </col
 Dexterity    <color:w> -1</color>        Stealth     <color:o>Fair         </color>
 Constitution <color:w> +2</color>        Searching   <color:R>Poor         </color>
 Charisma     <color:w> +1</color>        Perception  <color:r>Bad          </color>
-Life Rating  109%       Melee       <color:g>Superb       </color>
+Life Rating  107%       Melee       <color:g>Superb       </color>
 Base HP       12        Bows        <color:r>Bad          </color>
 Experience   135%
 </style></indent>
@@ -218,12 +218,12 @@ The different sects of monks are devoted to different areas of magic. They selec
 
   <indent><style:table><color:G>Stats                   Skills</color>
 Strength     <color:w> +2</color>        Disarming   <color:g>Superb       </color>
-Intelligence <color:w> -1</color>        Device      <color:y>Very Good    </color>
+Intelligence <color:w> -1</color>        Device      <color:y>Good         </color>
 Wisdom       <color:v> +1</color>        Save        <color:o>Fair         </color>
 Dexterity    <color:w> +3</color>        Stealth     <color:G>Excellent    </color>
 Constitution <color:w> +2</color>        Searching   <color:y>Good         </color>
 Charisma     <color:w> +1</color>        Perception  <color:o>Fair         </color>
-Life Rating  110%       Melee       <color:G>Excellent    </color>
+Life Rating  102%       Melee       <color:G>Excellent    </color>
 Base HP       12        Bows        <color:G>Excellent    </color>
 Experience   130%
 </style></indent>
@@ -366,8 +366,8 @@ Wisdom       <color:w> -1</color>        Save        <color:o>Fair         </col
 Dexterity    <color:w> +2</color>        Stealth     <color:G>Excellent    </color>
 Constitution <color:w> +0</color>        Searching   <color:G>Excellent    </color>
 Charisma     <color:w> -2</color>        Perception  <color:o>Fair         </color>
-Life Rating  101%       Melee       <color:G>Excellent    </color>
-Base HP       12        Bows        <color:G>Excellent    </color>
+Life Rating  101%       Melee       <color:y>Good         </color>
+Base HP       12        Bows        <color:y>Very Good    </color>
 Experience   135%
 </style></indent>
 <topic:Devicemaster><color:o>Devicemaster</color>
@@ -413,7 +413,7 @@ Good priests have a strong affinity for Life prayers, and learn them very well, 
 
   <indent><style:table><color:G>Stats                   Skills</color>
 Strength     <color:w> -1</color>        Disarming   <color:R>Poor         </color>
-Intelligence <color:w> -3</color>        Device      <color:y>Very Good    </color>
+Intelligence <color:w> -3</color>        Device      <color:y>Good         </color>
 Wisdom       <color:v> +3</color>        Save        <color:G>Excellent    </color>
 Dexterity    <color:w> -1</color>        Stealth     <color:o>Fair         </color>
 Constitution <color:w> +0</color>        Searching   <color:R>Poor         </color>
@@ -614,7 +614,7 @@ Wisdom       <color:v> +3</color>        Save        <color:o>Fair         </col
 Dexterity    <color:w> -1</color>        Stealth     <color:y>Good         </color>
 Constitution <color:w> -1</color>        Searching   <color:o>Fair         </color>
 Charisma     <color:w> +2</color>        Perception  <color:R>Poor         </color>
-Life Rating  100%       Melee       <color:o>Fair         </color>
+Life Rating   99%       Melee       <color:o>Fair         </color>
 Base HP        4        Bows        <color:y>Good         </color>
 Experience   125%
 </style></indent>
@@ -817,14 +817,14 @@ Blood-Knight   +2   -2   -2   +0 <color:v>  +3 </color>  +2  120%  +20  150%
 Duelist        +2   +1   -2 <color:v>  +2 </color>  -3   +2  100%   +4  150%
 Mauler       <color:v>  +5 </color>  -2   -2   -1   +3   +2  110%  +18  120%
 Rune-Knight    +2 <color:v>  +1 </color>  -1   +1   +0   +1  102%   +6  150%
-Samurai        +3   -2 <color:v>  +1 </color>  +2   +1   +1  111%  +12  130%
+Samurai        +3   -2 <color:v>  +1 </color>  +2   +1   +1  109%  +12  130%
 Warrior        +4   -2   -2   +2   +2   +1  115%  +18  100%
-Weaponmaster <color:v>  +4 </color>  -3   -2   -1   +2   +1  109%  +12  135%
+Weaponmaster <color:v>  +4 </color>  -3   -2   -1   +2   +1  107%  +12  135%
 Weaponsmith    +3   -1   -1   +1   +0   +0  108%  +12  130%
 Archer         +2   -1   -1   +2   +1   +0  111%  +12  110%
 Sniper         +2   -1   -1 <color:v>  +2 </color>  +1   +0  100%   +4  110%
 Force-Trainer  +0   -1 <color:v>  +3 </color>  +2   +1   +0  100%   +4  135%
-Monk           +2   -1 <color:v>  +1 </color>  +3   +2   +1  110%  +12  130%
+Monk           +2   -1 <color:v>  +1 </color>  +3   +2   +1  102%  +12  130%
 Mystic         +2   -1   -2   +3   +1 <color:v>  +2 </color> 100%   +4  130%
 Blood-Mage     -4 <color:v>  +3 </color>  -2   +1   +2   -2  108%  +10  135%
 Gray-Mage      -4 <color:v>  +3 </color>  +0   +1   -2   -2   95%   +0  130%
@@ -848,7 +848,7 @@ Red-Mage       +2 <color:v>  +2 </color>  -1   +1   +0   -1  106%   +8  140%
 Warrior-Mage   +2 <color:v>  +2 </color>  +0   +1   +0   +1  106%   +8  140%
 Beastmaster    +1   -1   -1   +1   +0 <color:v>  +2 </color> 103%   +6  120%
 Cavalry        +2   -2   -2   +2   +2   +1  111%  +10  120%
-Mindcrafter    -1   +0 <color:v>  +3 </color>  -1   -1   +2  100%   +4  125%
+Mindcrafter    -1   +0 <color:v>  +3 </color>  -1   -1   +2   99%   +4  125%
 Mirror-Master  -2 <color:v>  +3 </color>  +1   -1   -2   -2  100%   +4  130%
 Psion          -1   +2   +2   -1   -1   +2   96%   +4  150%
 Time-Lord      -1   +0 <color:v>  +3 </color>  -1   -1   +0   96%   +0  125%
@@ -878,7 +878,7 @@ Weaponsmith   <color:y>Good         </color> <color:o>Fair         </color> <col
 Archer        <color:G>Excellent    </color> <color:o>Fair         </color> <color:o>Fair         </color> <color:y>Very Good    </color>
 Sniper        <color:y>Good         </color> <color:o>Fair         </color> <color:R>Poor         </color> <color:G>Excellent    </color>
 Force-Trainer <color:y>Good         </color> <color:y>Very Good    </color> <color:y>Good         </color> <color:y>Very Good    </color>
-Monk          <color:g>Superb       </color> <color:y>Very Good    </color> <color:o>Fair         </color> <color:G>Excellent    </color>
+Monk          <color:g>Superb       </color> <color:y>Good         </color> <color:o>Fair         </color> <color:G>Excellent    </color>
 Mystic        <color:g>Superb       </color> <color:y>Very Good    </color> <color:o>Fair         </color> <color:G>Excellent    </color>
 Blood-Mage    <color:o>Fair         </color> <color:g>Superb       </color> <color:y>Good         </color> <color:y>Good         </color>
 Gray-Mage     <color:o>Fair         </color> <color:g>Superb       </color> <color:y>Good         </color> <color:y>Good         </color>
@@ -890,7 +890,7 @@ Yellow-Mage   <color:o>Fair         </color> <color:g>Superb       </color> <col
 Alchemist     <color:G>Excellent    </color> <color:o>Fair         </color> <color:o>Fair         </color> <color:G>Excellent    </color>
 Devicemaster  <color:R>Poor         </color> <color:g>Superb       </color> <color:o>Fair         </color> <color:o>Fair         </color>
 Magic-Eater   <color:R>Poor         </color> <color:g>Superb       </color> <color:o>Fair         </color> <color:o>Fair         </color>
-Priest        <color:R>Poor         </color> <color:y>Very Good    </color> <color:G>Excellent    </color> <color:o>Fair         </color>
+Priest        <color:R>Poor         </color> <color:y>Good         </color> <color:G>Excellent    </color> <color:o>Fair         </color>
 Ninja         <color:g>Superb       </color> <color:o>Fair         </color> <color:o>Fair         </color> <color:g>Superb       </color>
 Rogue         <color:g>Superb       </color> <color:G>Excellent    </color> <color:o>Fair         </color> <color:G>Excellent    </color>
 Scout         <color:G>Excellent    </color> <color:y>Very Good    </color> <color:o>Fair         </color> <color:G>Excellent    </color>
@@ -941,7 +941,7 @@ Mage          <color:R>Poor         </color> <color:o>Fair         </color> <col
 Necromancer   <color:R>Poor         </color> <color:o>Fair         </color> <color:D>Very Bad     </color> <color:D>Very Bad     </color>
 Sorcerer      <color:R>Poor         </color> <color:o>Fair         </color> <color:D>Very Bad     </color> <color:D>Very Bad     </color>
 Yellow-Mage   <color:R>Poor         </color> <color:o>Fair         </color> <color:D>Very Bad     </color> <color:D>Very Bad     </color>
-Alchemist     <color:G>Excellent    </color> <color:o>Fair         </color> <color:G>Excellent    </color> <color:G>Excellent    </color>
+Alchemist     <color:G>Excellent    </color> <color:o>Fair         </color> <color:y>Good         </color> <color:y>Very Good    </color>
 Devicemaster  <color:o>Fair         </color> <color:R>Poor         </color> <color:o>Fair         </color> <color:R>Poor         </color>
 Magic-Eater   <color:o>Fair         </color> <color:R>Poor         </color> <color:o>Fair         </color> <color:R>Poor         </color>
 Priest        <color:R>Poor         </color> <color:r>Bad          </color> <color:o>Fair         </color> <color:R>Poor         </color>
@@ -973,4 +973,4 @@ Wild-Talent   <color:o>Fair         </color> <color:R>Poor         </color> <col
 </style>
 
 
-<color:s>Automatically generated for FrogComposband 7.0.mango.</color>
+<color:s>Automatically generated for FrogComposband 7.0.cloudberry.</color>
