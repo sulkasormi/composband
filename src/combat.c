@@ -98,6 +98,11 @@ int race_melee_mult(bool attack_is_innate)
             else if (!attack_is_innate) return 100;
             else return MIN(115, MAX(66, 61 + (get_class()->base_skills.thn * 3 / 5)));
         }
+        case RACE_MON_ELEMENTAL:
+        {
+            if (elemental_is_(ELEMENTAL_WATER)) return 75 + (water_flow_rate() / 2);
+            return 100;
+        }
         default: return 100;
     }
 }
@@ -571,7 +576,7 @@ void display_weapon_info(doc_ptr doc, int hand)
     }
 
     weapon_flags_known(hand, flgs);
-    if (have_flag(flgs, OF_BRAND_MANA) || p_ptr->tim_force)
+    if ((have_flag(flgs, OF_BRAND_MANA) || p_ptr->tim_force) && (!elemental_is_(ELEMENTAL_WATER)))
     {
         caster_info *caster = get_caster_info();
         int          cost = 0;
