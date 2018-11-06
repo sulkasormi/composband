@@ -1689,6 +1689,8 @@ static bool _buy_aux(shop_ptr shop, obj_ptr obj)
         msg_print("The potion goes sour.");
         obj->sval = SV_POTION_SALT_WATER;
         obj->k_idx = lookup_kind(TV_POTION, SV_POTION_SALT_WATER);
+        object_origins(obj, ORIGIN_BLOOD);
+        obj->mitze_type = 0;
     }
 
     price = obj_value(obj); /* correctly handle unidentified items */
