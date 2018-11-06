@@ -2336,13 +2336,6 @@ static void _get_obj(obj_ptr obj)
 
     idx = is_autopick(obj);
 
-    if (delay_autopick_hack)
-    {
-        auto_destroy_obj(obj, idx);
-        obj_release(obj, OBJ_RELEASE_QUIET);
-        return;
-    }
-
     /* AutoID (?unaware items) */
     if (idx >= 0 && autopick_list[idx].action & DO_AUTO_ID)
     {
@@ -2358,6 +2351,13 @@ static void _get_obj(obj_ptr obj)
 
     /* Inscribe */
     auto_inscribe_item(obj, idx);
+
+    if (delay_autopick_hack)
+    {
+        auto_destroy_obj(obj, idx);
+        obj_release(obj, OBJ_RELEASE_QUIET);
+        return;
+    }
 
     /* Pickup */
     if (idx >= 0 &&
