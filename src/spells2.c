@@ -67,6 +67,7 @@ void self_knowledge(void)
 
         o_ptr = equip_obj(k);
         if (!o_ptr) continue;
+        if (o_ptr->marked & OM_SLIPPING) continue;
 
         /* Extract the flags */
         obj_flags(o_ptr, tflgs);
@@ -4291,6 +4292,7 @@ int activate_hi_summon(int y, int x, bool can_pet)
     int summon_lev;
     u32b mode = PM_ALLOW_GROUP;
     bool pet = FALSE;
+    int kuka = (can_pet) ? SUMMON_WHO_PLAYER : SUMMON_WHO_NOBODY;
 
     if (can_pet)
     {
@@ -4318,51 +4320,51 @@ int activate_hi_summon(int y, int x, bool can_pet)
             switch (randint1(25) + (dun_level / 20))
             {
                 case 1: case 2:
-                    ct = summon_specific((pet ? -1 : 0), y, x, summon_lev, SUMMON_ANT, mode);
+                    ct = summon_specific(kuka, y, x, summon_lev, SUMMON_ANT, mode);
                     break;
                 case 3: case 4:
-                    ct = summon_specific((pet ? -1 : 0), y, x, summon_lev, SUMMON_SPIDER, mode);
+                    ct = summon_specific(kuka, y, x, summon_lev, SUMMON_SPIDER, mode);
                     break;
                 case 5: case 6:
-                    ct = summon_specific((pet ? -1 : 0), y, x, summon_lev, SUMMON_HOUND, mode);
+                    ct = summon_specific(kuka, y, x, summon_lev, SUMMON_HOUND, mode);
                     break;
                 case 7: case 8:
-                    ct = summon_specific((pet ? -1 : 0), y, x, summon_lev, SUMMON_HYDRA, mode);
+                    ct = summon_specific(kuka, y, x, summon_lev, SUMMON_HYDRA, mode);
                     break;
                 case 9: case 10:
-                    ct = summon_specific((pet ? -1 : 0), y, x, summon_lev, SUMMON_ANGEL, mode);
+                    ct = summon_specific(kuka, y, x, summon_lev, SUMMON_ANGEL, mode);
                     break;
                 case 11: case 12:
-                    ct = summon_specific((pet ? -1 : 0), y, x, summon_lev, SUMMON_UNDEAD, mode);
+                    ct = summon_specific(kuka, y, x, summon_lev, SUMMON_UNDEAD, mode);
                     break;
                 case 13: case 14:
-                    ct = summon_specific((pet ? -1 : 0), y, x, summon_lev, SUMMON_DRAGON, mode);
+                    ct = summon_specific(kuka, y, x, summon_lev, SUMMON_DRAGON, mode);
                     break;
                 case 15: case 16:
-                    ct = summon_specific((pet ? -1 : 0), y, x, summon_lev, SUMMON_DEMON, mode);
+                    ct = summon_specific(kuka, y, x, summon_lev, SUMMON_DEMON, mode);
                     break;
                 case 17:
                     if (can_pet) break;
-                    ct = summon_specific((pet ? -1 : 0), y, x, summon_lev, SUMMON_AMBERITE, (mode | PM_ALLOW_UNIQUE));
+                    ct = summon_specific(kuka, y, x, summon_lev, SUMMON_AMBERITE, (mode | PM_ALLOW_UNIQUE));
                     break;
                 case 18: case 19:
                     if (can_pet) break;
-                    ct = summon_specific((pet ? -1 : 0), y, x, summon_lev, SUMMON_UNIQUE, (mode | PM_ALLOW_UNIQUE));
+                    ct = summon_specific(kuka, y, x, summon_lev, SUMMON_UNIQUE, (mode | PM_ALLOW_UNIQUE));
                     break;
                 case 20: case 21:
                     if (!can_pet) mode |= PM_ALLOW_UNIQUE;
-                    ct = summon_specific((pet ? -1 : 0), y, x, summon_lev, SUMMON_HI_UNDEAD, mode);
+                    ct = summon_specific(kuka, y, x, summon_lev, SUMMON_HI_UNDEAD, mode);
                     break;
                 case 22: case 23:
                     if (!can_pet) mode |= PM_ALLOW_UNIQUE;
-                    ct = summon_specific((pet ? -1 : 0), y, x, summon_lev, SUMMON_HI_DRAGON, mode);
+                    ct = summon_specific(kuka, y, x, summon_lev, SUMMON_HI_DRAGON, mode);
                     break;
                 case 24:
-                    ct = summon_specific((pet ? -1 : 0), y, x, 100, SUMMON_CYBER, mode);
+                    ct = summon_specific(kuka, y, x, 100, SUMMON_CYBER, mode);
                     break;
                 default:
                     if (!can_pet) mode |= PM_ALLOW_UNIQUE;
-                    ct = summon_specific((pet ? -1 : 0), y, x,pet ? summon_lev : (((summon_lev * 3) / 2) + 5), 0, mode);
+                    ct = summon_specific(kuka, y, x,pet ? summon_lev : (((summon_lev * 3) / 2) + 5), 0, mode);
             }
         }
         count += ct;
