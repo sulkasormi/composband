@@ -129,7 +129,9 @@ bool do_blow(int type)
         if (!m_idx)
         {
             msg_print("There is no monster there.");
-            return FALSE;
+
+            /* Consume energy if we couldn't know there was no monster there */
+            return (p_ptr->blind > 0);
         }
 
     }
