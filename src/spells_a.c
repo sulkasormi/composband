@@ -33,6 +33,8 @@ void acid_bolt_spell(int cmd, variant *res)
     int dd = 5 + p_ptr->lev / 4;
     int ds = 8;
 
+    if (elemental_is_(ELEMENTAL_WATER)) dd = 2 + p_ptr->lev / 5 + water_flow_rate() / 10;
+
     switch (cmd)
     {
     case SPELL_NAME:
@@ -47,15 +49,17 @@ void acid_bolt_spell(int cmd, variant *res)
     case SPELL_CAST:
     {
         int dir = 0;
+        int dam = spell_power(damroll(dd, ds) + p_ptr->to_d_spell);
         var_set_bool(res, FALSE);
         if (!get_fire_dir(&dir)) return;
-        fire_bolt_or_beam(
-            beam_chance(),
-            GF_ACID,
-            dir,
-            spell_power(damroll(dd, ds) + p_ptr->to_d_spell)
-        );
+        fire_bolt_or_beam(beam_chance(), GF_ACID, dir, dam);
         var_set_bool(res, TRUE);
+        water_mana_action(2, dam * 3 / 5);
+        break;
+    }
+    case SPELL_COST_EXTRA:
+    {
+        if (elemental_is_(ELEMENTAL_WATER)) var_set_int(res, dd * 3 / 2 - 6);
         break;
     }
     default:
@@ -484,9 +488,15 @@ void berserk_spell(int cmd, variant *res)
         break;
     case SPELL_CAST:
     {
+        if ((elemental_is_(ELEMENTAL_WATER)) && (p_ptr->shero))
+        {
+            msg_print("You are already in a berserk rage!");
+            break;
+        }
         msg_print("Raaagh! You feel like hitting something.");
         set_shero(10 + randint1(p_ptr->lev), FALSE);
         var_set_bool(res, TRUE);
+        water_mana_action(FALSE, 50);
         break;
     }
     default:
