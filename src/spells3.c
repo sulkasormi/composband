@@ -4420,5 +4420,5 @@ bool summon_kin_player(int level, int y, int x, u32b mode)
     if (p_ptr->current_r_idx)
         summon_kin_type = r_info[p_ptr->current_r_idx].d_char;
 
-    return summon_specific((pet ? -1 : 0), y, x, level, SUMMON_KIN, mode);
+    return summon_specific(SUMMON_WHO_PLAYER, y, x, level, SUMMON_KIN, mode);
 }
