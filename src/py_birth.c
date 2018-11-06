@@ -2025,7 +2025,7 @@ static void _stats_init(void)
         case RACE_MON_SWORD:
         case RACE_MON_GOLEM:
         {
-            int stats[6] = { 17, 8, 8, 17, 15, 9 };
+            int stats[6] = { 17, 13, 8, 16, 15, 10 };
             _stats_init_aux(stats);
             break;
         }
