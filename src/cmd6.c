@@ -39,7 +39,7 @@ bool restore_mana(void)
         magic_eater_restore();
         result = TRUE;
     }
-    else if (p_ptr->csp < p_ptr->msp)
+    else if ((p_ptr->csp < p_ptr->msp) && (!elemental_is_(ELEMENTAL_WATER)))
     {
         if (p_ptr->pclass == CLASS_RUNE_KNIGHT)
             p_ptr->csp += (p_ptr->msp - p_ptr->csp) / 3;
@@ -601,6 +601,8 @@ static void do_cmd_quaff_potion_aux(obj_ptr obj)
         p_ptr->notice |= PN_OPTIMIZE_PACK;
     }
 
+    water_mana_action(FALSE, (obj->sval == SV_POTION_WATER) ? 20 : 10);
+
     /* Potions can feed the player */
     switch (p_ptr->mimic_form)
     {
@@ -889,6 +891,8 @@ static void do_cmd_read_scroll_aux(obj_ptr o_ptr)
     if (!used_up)
         return;
 
+    water_mana_action(FALSE, 5);
+
     sound(SOUND_SCROLL);
     if (devicemaster_is_(DEVICEMASTER_SCROLLS) && !devicemaster_desperation && randint1(2*p_ptr->lev) > MAX(10, lev))
     {
@@ -1083,6 +1087,7 @@ static void do_cmd_device_aux(obj_ptr obj)
     if (used)
     {
         stats_on_use(obj, charges);
+        water_mana_action(FALSE, 5);
 
         /* Devicemasters can power the device with their mana once in a while */
         if ( is_devicemaster
