@@ -4056,6 +4056,8 @@ s16b drop_near(object_type *j_ptr, int chance, int y, int x)
         msg_print("The potion goes sour.");
         j_ptr->sval = SV_POTION_SALT_WATER;
         j_ptr->k_idx = lookup_kind(TV_POTION, SV_POTION_SALT_WATER);
+        object_origins(j_ptr, ORIGIN_BLOOD);
+        j_ptr->mitze_type = 0;
     }
 
     /* Release the monster on dropping a capture ball
