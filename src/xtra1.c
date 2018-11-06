@@ -1504,6 +1504,19 @@ static void prt_sp(void)
         return;
     }
 
+    if (elemental_is_(ELEMENTAL_WATER))
+    {
+        put_str("Flow", r.y + ROW_CURSP, r.x + COL_CURSP);
+        sprintf(tmp, "%3d%%", water_flow_rate());
+        if (p_ptr->csp > 800) color = TERM_WHITE;
+        else if (p_ptr->csp > 600) color = TERM_L_BLUE;
+        else if (p_ptr->csp > 400) color = TERM_BLUE;
+        else if (p_ptr->csp > 200) color = TERM_GREEN;
+        else color = TERM_UMBER;
+        c_put_str(color, tmp, r.y + ROW_CURSP, r.x + COL_CURSP + 8);
+        return;
+    }
+
     put_str("SP", r.y + ROW_CURSP, r.x + COL_CURSP);
     sprintf(tmp, "%4d", p_ptr->csp);
     if (p_ptr->csp >= p_ptr->msp)
@@ -3142,6 +3155,12 @@ static void calc_mana(void)
         return;
     }
 
+    if (elemental_is_(ELEMENTAL_WATER))
+    {
+        p_ptr->msp = 1000;
+        return;
+    }
+
     if ( (caster_ptr->options & (CASTER_USE_HP | CASTER_USE_AU | CASTER_USE_CONCENTRATION))
       || p_ptr->lev < caster_ptr->min_level)
     {
@@ -3590,6 +3609,7 @@ void calc_bonuses(void)
     bool old_esp_evil = p_ptr->esp_evil;
     bool old_esp_good = p_ptr->esp_good;
     bool old_esp_nonliving = p_ptr->esp_nonliving;
+    bool old_esp_living = p_ptr->esp_living;
     bool old_esp_unique = p_ptr->esp_unique;
     bool old_esp_magical = p_ptr->esp_magical;
     s16b old_see_inv = p_ptr->see_inv;
@@ -3717,6 +3737,7 @@ void calc_bonuses(void)
     p_ptr->esp_evil = FALSE;
     p_ptr->esp_good = FALSE;
     p_ptr->esp_nonliving = FALSE;
+    p_ptr->esp_living = FALSE;
     p_ptr->esp_unique = FALSE;
     p_ptr->esp_magical = FALSE;
     p_ptr->lite = FALSE;
@@ -4235,6 +4256,7 @@ void calc_bonuses(void)
         (p_ptr->esp_evil != old_esp_evil) ||
         (p_ptr->esp_good != old_esp_good) ||
         (p_ptr->esp_nonliving != old_esp_nonliving) ||
+        (p_ptr->esp_living != old_esp_living) ||
         (p_ptr->esp_unique != old_esp_unique) ||
         p_ptr->esp_magical != old_esp_magical )
     {
