@@ -280,6 +280,9 @@ static void player_wipe(void)
     p_ptr->minislow = 0;
     p_ptr->mini_energy = 0;
 
+    /* No player summoned monsters killed */
+    p_ptr->py_summon_kills = 0;
+
     /* Not waiting to report score */
     p_ptr->wait_report_score = FALSE;
 
