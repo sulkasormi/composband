@@ -4942,7 +4942,7 @@ void hit_mon_trap(int y, int x, int m_idx)
                     num = 1 + p_ptr->lev/10;
                     for (i = 0; i < num; i++)
                     {
-                        summon_specific(0, y, x, p_ptr->lev * 2, SUMMON_BIRD, (PM_ALLOW_GROUP | PM_FORCE_PET));
+                        summon_specific(SUMMON_WHO_PLAYER, y, x, p_ptr->lev * 2, SUMMON_BIRD, (PM_ALLOW_GROUP | PM_FORCE_PET));
                     }
                     break;
                 }
@@ -4956,7 +4956,7 @@ void hit_mon_trap(int y, int x, int m_idx)
                     num = 1 + p_ptr->lev/10;
                     for (i = 0; i < num; i++)
                     {
-                        summon_specific(0, y, x, p_ptr->lev * 2, SUMMON_DEMON, (PM_ALLOW_GROUP | PM_FORCE_PET));
+                        summon_specific(SUMMON_WHO_PLAYER, y, x, p_ptr->lev * 2, SUMMON_DEMON, (PM_ALLOW_GROUP | PM_FORCE_PET));
                     }
                     break;
                 }
@@ -4969,7 +4969,7 @@ void hit_mon_trap(int y, int x, int m_idx)
                     num = 1 + p_ptr->lev/10;
                     for (i = 0; i < num; i++)
                     {
-                        summon_specific(0, y, x, p_ptr->lev * 2, SUMMON_ANGEL, (PM_ALLOW_GROUP | PM_FORCE_PET));
+                        summon_specific(SUMMON_WHO_PLAYER, y, x, p_ptr->lev * 2, SUMMON_ANGEL, (PM_ALLOW_GROUP | PM_FORCE_PET));
                     }
                     break;
                 }
@@ -4992,7 +4992,7 @@ void hit_mon_trap(int y, int x, int m_idx)
                     num = 1 + p_ptr->lev/10;
                     for (i = 0; i < num; i++)
                     {
-                        summon_specific(0, y, x, p_ptr->lev * 2, SUMMON_HI_DRAGON, (PM_ALLOW_GROUP | PM_FORCE_PET));
+                        summon_specific(SUMMON_WHO_PLAYER, y, x, p_ptr->lev * 2, SUMMON_HI_DRAGON, (PM_ALLOW_GROUP | PM_FORCE_PET));
                     }
                     break;
                 }
