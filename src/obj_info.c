@@ -360,6 +360,14 @@ bool display_origin(object_type *o_ptr, doc_ptr doc)
             doc_printf(doc, "Found in a Can of Toys %s.", paikka_text);
             break;
         }
+        case ORIGIN_BLOOD:
+        {
+            if (object_is_(o_ptr, TV_POTION, SV_POTION_BLOOD))
+                doc_printf(doc, "Created from your own blood %s.", paikka_text);
+            else
+                doc_printf(doc, "Resulted from %s going sour %s.", object_plural(o_ptr) ? "Potions of Blood" : "a Potion of Blood", paikka_text);
+            break;
+        }
     }
     if ((show_discovery) && (o_ptr->mitze_type) && (o_ptr->mitze_turn) && (origin != ORIGIN_BIRTH))
     {
