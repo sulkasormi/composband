@@ -1253,8 +1253,12 @@ F:STR | DEX | HIDE_TYPE |
 F:SLAY_TROLL | SLAY_ORC | SHOW_MODS
 E:HEAL:10:4:30
 E:Your battle axe radiates deep purple...
-D:A superbly crafted double-bladed axe that slays the creatures of earth and
-D:allows rapid recovery from their blows.
+D:A superbly crafted battle axe with spells to slay all creatures of earth
+D:and allow rapid recovery from their blows, renowned in legends of the North
+D:as a token of the lasting friendship between dwarves and men. Lord Gwilim
+D:once wielded it in battle, its twin blades singing in the night as he
+D:conquered the forest camp of the orcs of Morgul and single-handedly
+D:repelled their foul invasion.
 
 # The Lochaber Axe 'Mundwine' -> of the Dwarves
 
