@@ -173,10 +173,13 @@
   Download the binary archive for Windows.  Unzip it to any location that you 
   will have full permissions and launch poschengband to play.
 
-  To compile, download the poschengband source code and unzip. I currently use
-  Visual C++ 2010 Express which is freely available. I tried and don't recommend
-  the 2012 Express edition as the MS seems to have "broken" Intellisense once
-  again. Open poschengband.sln and compile.
+  To compile the source code in MinGW:
+  $ ./autogen.sh
+  $ ./configure --enable-win
+  $ make
+
+  MinGW sometimes randomly chokes on one of these steps, in which case you
+  will need to redo that step.
 
 
 -----  Basic for Playing  ------
