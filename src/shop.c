@@ -2071,9 +2071,9 @@ static void _maintain(shop_ptr shop)
         else if (ct > _STOCK_HI) _cull(shop, _stock_base(shop));
         else
         {
-            ct = _cull(shop, MAX(_STOCK_LO, ct - randint1(9)));
+            ct = _cull(shop, isompi(_STOCK_LO, ct - randint1(9)));
             if (allow_restock)
-                ct = _restock(shop, MIN(_STOCK_HI, ct + randint1(9)), FALSE);
+                ct = _restock(shop, pienempi(_STOCK_HI, ct + randint1(9)), FALSE);
         }
     }
 }
