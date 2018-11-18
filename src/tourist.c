@@ -130,6 +130,7 @@ int tourist_sell_photo_aux(object_type *o_ptr, int amount, bool merkitse)
     tarjous = ((r_ptr->level + 10) / 10) * hyvaksy;
     if (r_ptr->flags1 & RF1_UNIQUE) tarjous += (15 * hyvaksy);
     if ((!myyty) && (laji == MON_SASQUATCH)) tarjous += (((seed_town % 3) * 1000) + 3000);
+    else if ((!myyty) && (laji == MON_TSUCHINOKO)) tarjous += (((seed_town % 3) * 800) + 2400);
     return tarjous;
 }
 
