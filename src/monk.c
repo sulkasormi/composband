@@ -190,6 +190,9 @@ void monk_display_attack_info(doc_ptr doc, int hand)
         to_d -= to_d * MIN(100, p_ptr->stun)/150;
     }
 
+    tot_dam = (tot_dam * (class_melee_mult() * race_melee_mult(FALSE) / 100) + 50) / 100;
+    to_d = (to_d * (class_melee_mult() * race_melee_mult(FALSE) / 100) + 50) / 100;
+
     doc_printf(cols[0], "<tab:8>%20s %3d.%1d +%3d\n", "One Strike:", tot_dam/10, tot_dam%10, to_d/10);
 
     /* Second Column */
