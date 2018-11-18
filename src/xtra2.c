@@ -1883,6 +1883,10 @@ void monster_death(int m_idx, bool drop_item)
             a_idx = ART_AEGIR;
             chance = 25;
             break;
+        case MON_AIJEM:
+            a_idx = ART_BLACK_BELET;
+            chance = 7;
+            break;
         case MON_CARCHAROTH:
             a_idx = ART_CARCHAROTH;
             chance = 5;
@@ -2029,6 +2033,9 @@ void monster_death(int m_idx, bool drop_item)
         }
     }
 
+    /* Re-roll drop count (leprechaun nerf) */
+    if ((r_ptr->r_akills > 40) || (r_ptr->flags1 & RF1_ONLY_GOLD)) m_ptr->drop_ct = MAX(m_ptr->stolen_ct, get_monster_drop_ct(m_ptr));
+
     /* Determine how much we can drop */
     number = m_ptr->drop_ct - m_ptr->stolen_ct;
 
@@ -2130,7 +2137,7 @@ int mon_damage_mod(monster_type *m_ptr, int dam, bool is_psy_spear)
         }
     }
 
-    if (MON_INVULNER(m_ptr))
+    if ((MON_INVULNER(m_ptr)) && (!p_ptr->ignore_invuln))
     {
         if (is_psy_spear)
         {
