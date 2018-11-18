@@ -48,6 +48,7 @@ extern int py_birth(void);
                     static int _mon_golem_ui(void);
                     static int _mon_spider_ui(void);
                     static int _mon_troll_ui(void);
+                    static int _mon_orc_ui(void);
     static int _stats_ui(void);
 
 extern void py_birth_obj(object_type *o_ptr);
@@ -143,6 +144,8 @@ void py_birth_obj(object_type *o_ptr)
 
     obj_identify_fully(o_ptr);
 
+    object_origins(o_ptr, ORIGIN_BIRTH);
+
     /* Big hack for sexy players ... only wield the starting whip,
      * but carry the alternate weapon. Previously, sexy characters
      * would usually start off dual-wielding (ineffectual and confusing)*/
@@ -154,8 +157,6 @@ void py_birth_obj(object_type *o_ptr)
         pack_carry(o_ptr);
         return;
     }
-
-    object_origins(o_ptr, ORIGIN_BIRTH);
 
     slot = equip_first_empty_slot(o_ptr);
     if (slot && o_ptr->number == 1)
@@ -689,7 +690,7 @@ static _race_group_t _race_groups[_MAX_RACE_GROUPS] = {
     { "Undead",
         {RACE_EINHERI, RACE_SKELETON, RACE_SPECTRE, RACE_VAMPIRE, RACE_ZOMBIE, -1} },
     { "Other",
-        {RACE_ANDROID, RACE_BEASTMAN, RACE_CENTAUR, RACE_DRACONIAN, RACE_DOPPELGANGER, RACE_ENT,
+        {RACE_ANDROID, RACE_BEASTMAN, RACE_BOIT, RACE_CENTAUR, RACE_DRACONIAN, RACE_DOPPELGANGER, RACE_ENT,
          RACE_GOLEM, RACE_KLACKON, RACE_KUTAR, RACE_MIND_FLAYER, RACE_TONBERRY, RACE_WEREWOLF, RACE_YEEK,-1 } },
 };
 
@@ -1547,9 +1548,9 @@ static _race_group_t _mon_race_groups[_MAX_MON_RACE_GROUPS] = {
     { "Leprechaun",
         {RACE_MON_LEPRECHAUN, -1} },
     { "Mimic/Possessor",
-        {RACE_MON_SWORD, /*RACE_MON_ARMOR,*/ RACE_MON_MIMIC, RACE_MON_POSSESSOR, RACE_MON_RING, -1} },
+        {RACE_MON_SWORD, RACE_MON_ARMOR, RACE_MON_MIMIC, RACE_MON_POSSESSOR, RACE_MON_RING, -1} },
     { "Orc/Troll/Giant",
-        {RACE_MON_GIANT, /*RACE_MON_KOBOLD, RACE_MON_ORC,*/ RACE_MON_TROLL, -1} },
+        {RACE_MON_GIANT, /*RACE_MON_KOBOLD,*/ RACE_MON_ORC, RACE_MON_TROLL, -1} },
     { "Undead",
         {/*RACE_MON_GHOST,*/ RACE_MON_LICH, RACE_MON_VAMPIRE, /*RACE_MON_WRAITH, RACE_MON_ZOMBIE,*/ -1 } },
     { "Xorn",
@@ -1705,6 +1706,8 @@ static int _mon_subrace_ui(void)
         return _mon_spider_ui();
     else if (p_ptr->prace == RACE_MON_TROLL)
         return _mon_troll_ui();
+    else if (p_ptr->prace == RACE_MON_ORC)
+        return _mon_orc_ui();
     else
     {
         p_ptr->psubrace = 0;
@@ -1716,6 +1719,12 @@ static int _mon_demon_ui(void)
 {
     assert(p_ptr->prace == RACE_MON_DEMON);
     return _subrace_ui_aux(DEMON_MAX, "Demon Subrace", "Demons.txt", NULL);
+}
+
+static int _mon_orc_ui(void)
+{
+    assert(p_ptr->prace == RACE_MON_ORC);
+    return _subrace_ui_aux(ORC_MAX, "Orc Subrace", "Orcs.txt", NULL);
 }
 
 static int _mon_dragon_ui(void)
@@ -2023,7 +2032,9 @@ static void _stats_init(void)
         case RACE_MON_LEPRECHAUN:
         case RACE_MON_ELEMENTAL:
         case RACE_MON_SWORD:
+        case RACE_MON_ARMOR:
         case RACE_MON_GOLEM:
+        case RACE_MON_ORC:
         {
             int stats[6] = { 17, 13, 8, 16, 15, 10 };
             _stats_init_aux(stats);
@@ -2118,9 +2129,14 @@ static void _stats_init(void)
     {
         switch (p_ptr->pclass)
         {
+        case CLASS_BERSERKER:
+        {
+            int stats[6] = { 17, 8, 8, 17, 15, 9 };
+            _stats_init_aux(stats);
+            break;
+        }
         case CLASS_WARRIOR:
         case CLASS_CAVALRY:
-        case CLASS_BERSERKER:
         case CLASS_MAULER:
         case CLASS_ARCHER:
         case CLASS_SAMURAI:
@@ -2131,7 +2147,7 @@ static void _stats_init(void)
         case CLASS_DUELIST:
         case CLASS_RAGE_MAGE:
         {
-            int stats[6] = { 17, 8, 8, 17, 15, 9 };
+            int stats[6] = { 17, 13, 8, 16, 15, 10 };
             _stats_init_aux(stats);
             break;
         }
