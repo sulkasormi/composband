@@ -2723,7 +2723,7 @@ static bool _reforge_artifact(void)
         src_max_power = f*150 + f*f*3/2;
     }
 
-    if (p_ptr->prace == RACE_MON_SWORD || p_ptr->prace == RACE_MON_RING)
+    if (p_ptr->prace == RACE_MON_SWORD || p_ptr->prace == RACE_MON_RING || p_ptr->prace == RACE_MON_ARMOR)
     {
         msg_print("Go enchant yourself!");
         return FALSE;
@@ -2948,7 +2948,7 @@ static bool enchant_item(obj_p filter, int cost, int to_hit, int to_dam, int to_
     if (cost == 0)
         cost = town_service_price(1500);
 
-    if (p_ptr->prace == RACE_MON_SWORD)
+    if ((p_ptr->prace == RACE_MON_SWORD) || (p_ptr->prace == RACE_MON_ARMOR))
     {
         msg_print("Go enchant yourself!");
         return FALSE;
@@ -3491,7 +3491,8 @@ static void _sell_photo_local_aux(object_type *o_ptr)
     myy = ((tarjous > 0) && (!no_selling));
     if (tarjous > 2000)
     {
-        msg_print("Is that... BIGFOOT????");
+        if (o_ptr->pval == MON_TSUCHINOKO) msg_print("Hey, nice find!");
+        else msg_print("Is that... BIGFOOT????");
         myy = TRUE;
         if (no_selling) tarjous = (tarjous / 1000) * 1000;
     }
