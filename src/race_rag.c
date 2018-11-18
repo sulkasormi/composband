@@ -879,8 +879,11 @@ static void _gain_level(int new_level)
         object_type *o_ptr = equip_obj(equip_find_first(object_is_body_armour));
         msg_print("You have evolved into a Sexy Swimsuit.");
         p_ptr->current_r_idx = MON_SEXY_SWIMSUIT;
+        o_ptr->k_idx = lookup_kind(TV_SOFT_ARMOR, SV_ABUNAI_MIZUGI);
         o_ptr->sval = SV_ABUNAI_MIZUGI;
+        o_ptr->weight = 2;
         o_ptr->ac = 0;
+        o_ptr->to_a += 1;
         add_flag(o_ptr->flags, OF_AGGRAVATE);
     }
     p_ptr->redraw |= (PR_MAP | PR_BASIC | PR_EQUIPPY);
