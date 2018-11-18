@@ -56,4 +56,7 @@ R:OBJ(^dagger$):EGO(westernesse)
 ?:[EQU $RACE Hydra]
 R:OBJ(^amulet$):EGO(elemental)
 
+?:[EQU $RACE Filthy-Rag]
+R:OBJ(set of leather gloves):EGO(free action)
+
 # vim: filetype=q :
