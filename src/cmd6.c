@@ -373,6 +373,7 @@ static void do_cmd_eat_food_aux(obj_ptr obj)
              || prace_is_(RACE_GOLEM)
              || prace_is_(RACE_MON_GOLEM)
              || prace_is_(RACE_MON_SWORD)
+             || prace_is_(RACE_MON_ARMOR)
              || prace_is_(RACE_MON_RING)
              || p_ptr->mimic_form == MIMIC_CLAY_GOLEM
              || p_ptr->mimic_form == MIMIC_IRON_GOLEM
@@ -434,7 +435,7 @@ static void do_cmd_eat_food_aux(obj_ptr obj)
             msg_print("The food falls through your jaws and vanishes!");
         }
     }
-    else if (((get_race()->flags & RACE_IS_NONLIVING) && (!prace_is_(RACE_EINHERI))) || prace_is_(RACE_ENT))
+    else if (((get_race()->flags & RACE_IS_NONLIVING) && (!prace_is_(RACE_EINHERI))) || prace_is_(RACE_ENT) || prace_is_(RACE_MON_ARMOR))
     {
         msg_print("The food of mortals is poor sustenance for you.");
         set_food(p_ptr->food + obj->pval / 20);
@@ -472,6 +473,7 @@ static bool _can_eat(object_type *o_ptr)
         prace_is_(RACE_GOLEM) ||
         prace_is_(RACE_MON_GOLEM) ||
         prace_is_(RACE_MON_SWORD) ||
+        prace_is_(RACE_MON_ARMOR) ||
         prace_is_(RACE_MON_RING) ||
         p_ptr->mimic_form == MIMIC_CLAY_GOLEM ||
         p_ptr->mimic_form == MIMIC_IRON_GOLEM ||
@@ -625,6 +627,7 @@ static void do_cmd_quaff_potion_aux(obj_ptr obj)
             case RACE_SPECTRE:
             case RACE_MON_DEMON:
             case RACE_MON_SWORD:
+            case RACE_MON_ARMOR:
             case RACE_MON_RING:
                 set_food(p_ptr->food + obj->pval / 20);
                 break;
@@ -829,6 +832,7 @@ static void do_cmd_read_scroll_aux(obj_ptr o_ptr)
                  case SV_SCROLL_SUMMON_PET:
                  case SV_SCROLL_SUMMON_KIN:
                  case SV_SCROLL_CRAFTING:
+                 case SV_SCROLL_MUNDANITY:
                  {
                      energy_use = 0;
                      break;
