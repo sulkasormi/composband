@@ -20,7 +20,7 @@
 #define VER_MINOR 0
 #define VER_PATCH "cloudberry"
 #define VER_EXTRA 3
-#define VERSION_IS_DEVELOPMENT (FALSE)
+#define VERSION_IS_DEVELOPMENT (TRUE)
 
 #define GAME_MODE_BEGINNER  0
 #define GAME_MODE_NORMAL    1
@@ -628,7 +628,10 @@
 #define RACE_HALF_ORC           63
 #define RACE_EINHERI            64
 #define RACE_WEREWOLF           65
-#define MAX_RACES               66
+#define RACE_MON_ARMOR          66
+#define RACE_BOIT               67
+#define RACE_MON_ORC            68
+#define MAX_RACES               69
 
 #define DEMIGOD_MINOR           0
 #define DEMIGOD_ZEUS            1
@@ -707,6 +710,10 @@
 #define ELEMENTAL_WATER   2
 #define ELEMENTAL_FIRE    3
 #define ELEMENTAL_MAX     4
+
+#define ORC_FIGHTER    0
+#define ORC_WARLOCK    1
+#define ORC_MAX        2
 
 /* TODO */
 #define RACE_IS_NONLIVING    0x0001
@@ -1251,6 +1258,7 @@ enum {
 #define ART_AMBER               42
 #define ART_NUMENOR             132
 #define ART_STONEMASK           146
+#define ART_BLACK_BELET         360
 
 /* Cloaks */
 #define ART_JACK                43
@@ -1766,6 +1774,7 @@ enum {
 #define SV_YATA_MIRROR                  50
 
 /* The "sval" codes for TV_HELM */
+#define SV_KNIT_CAP                      1
 #define SV_HARD_LEATHER_CAP              2
 #define SV_METAL_CAP                     3
 #define SV_JINGASA                       4  /* 4 */
@@ -2917,8 +2926,11 @@ enum obj_flags_e {
     /* Plural */
     OF_PLURAL,
 
+    /* Ignore Invulnerability */
+    OF_IGNORE_INVULN,
+
     /* A few places loop from 0 <= i < OF_COUNT ... (init1, race_sword and race_ring) */
-    OF_COUNT,
+    OF_COUNT, /* currently 177 */
 };
 #define OF_ARRAY_SIZE          6
 /* u32b flgs[OF_ARRAY_SIZE];
@@ -4203,13 +4215,16 @@ extern int PlayerUID;
 #define MON_NOV_PRIEST_G        109
 #define MON_DISEMBODIED_HAND    112
 #define MON_SILVER_COINS        117
+#define MON_SNAGA               118
 #define MON_D_ELF               122
+#define MON_CAVE_ORC            126
 #define MON_MANES               128
 #define MON_LOST_SOUL           133
 #define MON_ROBIN_HOOD          138
 #define MON_NOV_PALADIN_G       147
 #define MON_PHANTOM_W           152
 #define MON_WOUNDED_BEAR        159
+#define MON_ORC_SHAMAN          162
 #define MON_GIANT_SPIDER        175
 #define MON_D_ELF_MAGE          178
 #define MON_D_ELF_WARRIOR       182
@@ -4249,6 +4264,7 @@ extern int PlayerUID;
 #define MON_FIRE_HOUND          307
 #define MON_COLD_HOUND          308
 #define MON_ENERGY_HOUND        309
+#define MON_URUK                313
 #define MON_SHAGRAT             314
 #define MON_GORBAG              315
 #define MON_STONE_GIANT         321
@@ -4661,6 +4677,9 @@ extern int PlayerUID;
 #define MON_AUDE		1148
 #define MON_HELGA		1149
 #define MON_GERTRUDE            1150
+#define MON_OTHROD              1185
+#define MON_ORC_WARLOCK         1189
+#define MON_ORC_WARLORD         1190
 #define MON_WIRUIN              1192
 #define MON_NIGHTMARE_DRAGON    1215
 #define MON_JUSTSHORN           1225
@@ -4676,6 +4695,9 @@ extern int PlayerUID;
 #define MON_FISHROOSTER         1272
 #define MON_SEA_GIANT           1276
 #define MON_AEGIR               1277
+#define MON_AIJEM               1281
+#define MON_FILTHY_RAG          1282
+#define MON_SEXY_SWIMSUIT       1283
 
 /* The Metal Babble guards the Arena dungeon, but this requires the guardian to be a unique
    monster or the dungeon never gets flagged as completed. Note, this messes up the needle
@@ -4984,7 +5006,7 @@ enum mon_save_fields_e {
 /* Temporary flags macro */
 #define IS_FAST() (p_ptr->fast || music_singing(MUSIC_SPEED) || music_singing(MUSIC_SHERO) || wild_has_power(WILD_SPEED))
 #define IS_LIGHT_SPEED() (p_ptr->lightspeed || wild_has_power(WILD_LIGHT_SPEED))
-#define IS_INVULN() (p_ptr->invuln || music_singing(MUSIC_INVULN) || wild_has_power(WILD_INVULN) || (p_ptr->special_defense & DEFENSE_SANCTUARY))
+#define IS_INVULN() ((p_ptr->invuln || music_singing(MUSIC_INVULN) || wild_has_power(WILD_INVULN) || (p_ptr->special_defense & DEFENSE_SANCTUARY)) && (!p_ptr->ignore_invuln))
 #define IS_HERO() (p_ptr->hero || music_singing(MUSIC_HERO) || music_singing(MUSIC_SHERO) || p_ptr->constant_hero || player_is_monster_king())
 #define IS_BLESSED() (p_ptr->blessed || music_singing(MUSIC_BLESS) || hex_spelling(HEX_BLESS) || wild_has_power(WILD_BLESS))
 #define IS_SHERO() (p_ptr->shero || p_ptr->pclass == CLASS_BERSERKER || wild_has_power(WILD_BERSERK))
@@ -5425,6 +5447,7 @@ enum ego_type_e {
     EGO_HELMET_DWARVEN,
     EGO_HELMET_VALKYRIE,
     EGO_HELMET_RAGE = 120,
+    EGO_HELMET_TOMTE,
 
     EGO_CROWN_TELEPATHY = 125,
     EGO_CROWN_MAGI,
