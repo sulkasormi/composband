@@ -115,4 +115,7 @@ R:OBJ(quarterstaff)
 ?:[AND [EQU $CLASS Weaponmaster] [EQU $SPECIALITY Polearms] ]
 R:OBJ(^pike$)
 
+?:[EQU $RACE Filthy-Rag]
+R:OBJ(robe):EGO(protection)
+
 # vim: filetype=q :
