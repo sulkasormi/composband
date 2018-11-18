@@ -235,6 +235,8 @@ int skills_weapon_current(int tval, int sval)
     int max;
     int cur;
 
+    if (p_ptr->prace == RACE_MON_ARMOR) return WEAPON_EXP_BEGINNER; /* Skills? What skills? */
+
     assert(TV_WEAPON_BEGIN <= tval && tval <= TV_WEAPON_END);
 
     if (tval == TV_BOW)
@@ -269,6 +271,8 @@ void skills_weapon_init(int tval, int sval, int skill)
 
 int skills_weapon_max(int tval, int sval)
 {
+    if ((p_ptr->prace == RACE_MON_ARMOR) && (tval == TV_GLOVES)) return WEAPON_EXP_BEGINNER; /* Skills? What skills? */
+
     assert(TV_WEAPON_BEGIN <= tval && tval <= TV_WEAPON_END);
 
     if (tval == TV_BOW)
@@ -364,6 +368,8 @@ void skills_weapon_gain(int tval, int sval, int rlvl)
     int max;
     int cur;
 
+    if (p_ptr->prace == RACE_MON_ARMOR) return; /* No skill gain for you */
+    
     assert(TV_WEAPON_BEGIN <= tval && tval <= TV_WEAPON_END);
     assert(tval != TV_BOW);
 
