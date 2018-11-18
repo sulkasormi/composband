@@ -4848,6 +4848,17 @@ int inkey_special(bool numpad_cursor)
     return (int)((unsigned char)key);
 }
 
+/* For use with randints and other varying input
+ * MIN and MAX cannot handle unpredictable input properly */
+int pienempi(int a, int b)
+{
+    return MIN(a, b);
+}
+int isompi(int a, int b)
+{
+    return MAX(a, b);
+}
+
 int count_bits(u32b x)
 {
     int n = 0;
