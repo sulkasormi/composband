@@ -603,6 +603,97 @@ race_t *beastman_get_race(void)
     return &me;
 }
 
+/****************************************************************
+ * Boit
+ ****************************************************************/
+
+static void _boit_vomit_spell(int cmd, variant *res)
+{
+    switch (cmd)
+    {
+    case SPELL_NAME:
+        var_set_string(res, "Vomit");
+        break;
+    case SPELL_DESC:
+        var_set_string(res, "Ejects the contents of your stomach, making you extremely hungry and curing poison. Vomiting on an already empty stomach hurts a bit.");
+        break;
+    case SPELL_CAST:
+        msg_print("You throw up!");
+        if (p_ptr->food < PY_FOOD_STARVE + 15)
+        {
+            take_hit(DAMAGE_NOESCAPE, 10, "vomiting on an empty stomach");
+            energy_use += 15;
+        }
+        set_food(PY_FOOD_STARVE - 1);
+        set_poisoned(0, TRUE);
+        var_set_bool(res, TRUE);
+        break;
+    default:
+        default_spell(cmd, res);
+        break;
+    }
+}
+
+static power_info _boit_powers[] =
+{
+    { A_STR, {1, 0, 0, _boit_vomit_spell}},
+    { -1, {-1, -1, -1, NULL} }
+};
+static int _boit_get_powers(spell_info* spells, int max)
+{
+    return get_powers_aux(spells, max, _boit_powers);
+}
+static void _boit_calc_bonuses(void)
+{
+    p_ptr->pspeed += 2;
+}
+static void _boit_get_flags(u32b flgs[OF_ARRAY_SIZE])
+{
+    add_flag(flgs, OF_SPEED);
+}
+race_t *boit_get_race(void)
+{
+    static race_t me = {0};
+    static bool init = FALSE;
+
+    if (!init)
+    {
+        me.name = "Boit";
+        me.desc = "Boits are small bipedal creatures covered in yellow, lilac, brown or green "
+                    "fur, distantly related to the Yeeks. Boits move speedily, and can eject "
+                    "the contents of their stomachs at will, but they are not particularly "
+                    "well-suited for melee, ranged combat, use of magical devices, or spellcasting.";
+
+        me.stats[A_STR] = -1;
+        me.stats[A_INT] = -2;
+        me.stats[A_WIS] = -2;
+        me.stats[A_DEX] = -2;
+        me.stats[A_CON] =  0;
+        me.stats[A_CHR] = -2;
+
+        me.skills.dis = 2;
+        me.skills.dev = -5;
+        me.skills.sav = -1;
+        me.skills.stl = 0;
+        me.skills.srh = 0;
+        me.skills.fos = 10;
+        me.skills.thn = -8;
+        me.skills.thb = -8;
+
+        me.life = 95;
+        me.base_hp = 15;
+        me.exp = 80;
+        me.infra = 1;
+        me.shop_adjust = 105;
+
+        me.calc_bonuses = _boit_calc_bonuses;
+        me.get_powers = _boit_get_powers;
+        me.get_flags = _boit_get_flags;
+        init = TRUE;
+    }
+
+    return &me;
+}
 
 /****************************************************************
  * Centaur
@@ -2161,11 +2252,11 @@ race_t *half_orc_get_race(void)
 	if (!init)
 	{
 		me.name = "Half-Orc";
-		me.desc = "Half - orcs make excellent warriors, but are terrible at magic. "
+		me.desc = "Half-orcs make excellent warriors, but are terrible at magic. "
 			"They are as bad as dwarves at stealth, and horrible at searching, "
-			"disarming, and perception. Half - orcs are quite ugly, and tend to "
+			"disarming, and perception. Half-orcs are quite ugly, and tend to "
 			"pay more for goods in town. Because of their preference to living "
-			"underground to on the surface, half - orcs resist darkness attacks. "
+			"underground to on the surface, half-orcs resist darkness attacks. "
 			"The human part of their heritage allows them to select a talent at "
 			"Level 30.";
 
