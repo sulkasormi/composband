@@ -727,6 +727,7 @@ static personality_ptr _get_pious_personality(void)
 static void _sexy_birth(void)
 {
     if ( p_ptr->prace != RACE_MON_SWORD
+      && p_ptr->prace != RACE_MON_ARMOR
       && !demon_is_(DEMON_BALROG) )
     {
         object_type forge = {0};
