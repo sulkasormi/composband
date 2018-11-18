@@ -285,6 +285,7 @@ void death_scythe_miss(object_type *o_ptr, int hand, int mode)
             switch (p_ptr->prace)
             {
                 case RACE_YEEK:
+                case RACE_BOIT:
                 case RACE_KLACKON:
                 case RACE_HUMAN:
                 case RACE_AMBERITE:
@@ -807,6 +808,7 @@ s16b tot_dam_aux(object_type *o_ptr, int tdam, monster_type *m_ptr, s16b hand, i
         case TV_POLEARM:
         case TV_SWORD:
         case TV_DIGGING:
+        case TV_GLOVES:
         {
             int hissatsu_brand = 0;
             char m_name_subject[MAX_NLEN];
@@ -2892,6 +2894,13 @@ static bool py_attack_aux(int y, int x, bool *fear, bool *mdeath, s16b hand, int
             to_h += 2*o_ptr->to_h;
             to_d += 2*o_ptr->to_d;
         }
+        else if (p_ptr->prace == RACE_MON_ARMOR)
+        {
+            dd = 0;
+            ds = 0;
+            to_d = o_ptr->to_d;
+            to_h = o_ptr->to_h;
+        }
         else
         {
             dd = o_ptr->dd;
@@ -3350,7 +3359,7 @@ static bool py_attack_aux(int y, int x, bool *fear, bool *mdeath, s16b hand, int
                     k = (dd + p_ptr->weapon_info[hand].to_dd) * (ds + p_ptr->weapon_info[hand].to_ds);
                 else
                     k = damroll(dd + p_ptr->weapon_info[hand].to_dd, ds + p_ptr->weapon_info[hand].to_ds);
-                k = tot_dam_aux(o_ptr, k, m_ptr, hand, mode, FALSE);
+                k = tot_dam_aux(o_ptr, k, m_ptr, hand, mode, FALSE);                
 
                 if (backstab)
                 {
@@ -3555,7 +3564,7 @@ static bool py_attack_aux(int y, int x, bool *fear, bool *mdeath, s16b hand, int
                   && !mon_save_p(m_ptr->r_idx, A_DEX) )
                 {
                     msg_format("%^s is dealt a <color:r>wounding</color> strike.", m_name_subject);
-                    k += MIN(m_ptr->hp / 5, randint1(3) * d);
+                    k += pienempi(m_ptr->hp / 5, randint1(3) * d);
                     drain_result = k;
                 }
                 if ( p_ptr->lev >= 40    /* Greater Wounding Strike */
