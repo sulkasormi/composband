@@ -1668,6 +1668,8 @@ extern bool is_a_vowel(int ch);
 extern int get_keymap_dir(char ch, bool under);
 extern errr type_string(cptr str, uint len);
 extern void roff_to_buf(cptr str, int wlen, char *tbuf, size_t bufsize);
+extern int pienempi(int a, int b);
+extern int isompi(int a, int b);
 
 #ifdef SORT_R_INFO
 extern void tag_sort(tag_type elements[], int number);
@@ -2007,6 +2009,7 @@ extern void get_random_name(char *return_name, object_type *o_ptr, int power);
 extern int get_slot_weight(obj_ptr obj);
 extern int get_dest_weight(obj_ptr dest);
 extern int get_slot_power(obj_ptr obj);
+extern int trim(int start_val, int hi_val, int very_hi_val, int item_lv);
 
 /* scores.c */
 extern void display_scores_aux(int from, int to, int note, high_score *score);
@@ -2253,6 +2256,7 @@ extern race_t *archon_get_race(void);
 extern race_t *balrog_get_race(void);
 extern race_t *barbarian_get_race(void);
 extern race_t *beastman_get_race(void);
+extern race_t *boit_get_race(void);
 
 extern race_t *centaur_get_race(void);
 extern void    jump_spell(int cmd, variant *res);
@@ -2319,6 +2323,7 @@ extern race_t *mon_jelly_get_race(void);
 extern race_t *mon_leprechaun_get_race(void);
 extern race_t *mon_lich_get_race(void);
 extern race_t *mon_mimic_get_race(void);
+extern race_t *mon_orc_get_race(int psubrace);
 extern race_t *mon_possessor_get_race(void);
 extern race_t *mon_quylthulg_get_race(void);
 extern race_t *mon_ring_get_race(void);
@@ -2329,6 +2334,7 @@ extern race_t *mon_troll_get_race(int psubrace);
 extern race_t *mon_vampire_get_race(void);
 extern race_t *mon_vortex_get_race(void);
 extern race_t *mon_xorn_get_race(void);
+extern race_t *mon_armor_get_race(void);
 
 extern bool dragon_vamp_hack;
 extern int dragon_vamp_amt;
@@ -2384,6 +2390,12 @@ extern int     leprechaun_get_toggle(void);
 
 extern int     sword_calc_torch(void);
 extern bool    sword_disenchant(void);
+
+extern int     armor_calc_torch(void);
+extern void    armor_calc_obj_bonuses(object_type *o_ptr, bool get_flags);
+extern int     rag_effect_pval(object_type *o_ptr, int slot, int i, bool is_resist);
+extern void    res_calc_rag_bonuses(object_type *o_ptr);
+extern void    res_calc_rag_flags(object_type *o_ptr);
 
 extern int     ring_calc_torch(void);
 extern bool    ring_disenchant(void);
