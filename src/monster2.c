@@ -2750,12 +2750,13 @@ void update_mon(int m_idx, bool full)
                 equip_learn_flag(OF_ESP_NONLIVING);
             }
 
-			/* Magical sensing */
-			if ((p_ptr->esp_living) && monster_living(r_ptr))
-			{
-				flag = TRUE;
-				/* There is no RF3_LIVING flag, so you won't gain any monster memory here ... */
-			}
+            /* Magical sensing */
+            if ((p_ptr->esp_living) && monster_living(r_ptr))
+            {
+                flag = TRUE;
+                equip_learn_flag(OF_ESP_LIVING);
+		/* There is no RF3_LIVING flag, so you won't gain any monster memory here ... */
+            }
 
             /* Magical sensing */
             if ((p_ptr->esp_unique) && (r_ptr->flags1 & (RF1_UNIQUE)))
