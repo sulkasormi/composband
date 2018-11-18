@@ -451,6 +451,8 @@ void teleport_player(int dis, u32b mode)
     if (!teleport_player_aux(dis, mode)) return;
     if (!dun_level) return; /* Wilderness scrolling ... */
 
+    if ((!mode) && (strpos("Alexander", player_name) == 1) && (one_in_(88))) msg_print("You feel a strange pulling sensation!");
+
     /* Monsters with teleport ability may follow the player */
     for (xx = -2; xx < 3; xx++)
     {
@@ -1020,6 +1022,13 @@ bool apply_disenchant(int mode)
 
         if (o_ptr->to_h <= 0 && o_ptr->to_d <= 0 && o_ptr->to_a <= 0 && o_ptr->pval <= 1)
             return FALSE;
+
+        if (p_ptr->prace == RACE_MON_ARMOR) /* Eat life rating instead */
+        {
+            int vahinko = res_calc_dam(RES_DISEN, randint1(50));
+            if (vahinko > 0) lp_player(0 - vahinko);
+            return FALSE;
+        }
 
         object_desc(o_name, o_ptr, (OD_OMIT_PREFIX | OD_NAME_ONLY));
 
@@ -2492,6 +2501,15 @@ bool mundane_spell(bool only_equip)
 
     obj_prompt(&prompt);
     if (!prompt.obj) return FALSE;
+
+    if ((prompt.obj->discount == 99) && (object_is_ego(prompt.obj)))
+    {
+        char o_name[MAX_NLEN];
+        object_desc(o_name, prompt.obj, (OD_OMIT_PREFIX | OD_NAME_ONLY | OD_SINGULAR));
+        
+        msg_format("The masterful craftsmanship of the %s resists mundanization!", o_name);
+        return FALSE;
+    }
 
     if (prompt.obj->name1 == ART_HAND_OF_VECNA || prompt.obj->name1 == ART_EYE_OF_VECNA)
     {
@@ -4341,6 +4359,7 @@ bool summon_kin_player(int level, int y, int x, u32b mode)
             case RACE_CYCLOPS:
                 summon_kin_type = 'P';
                 break;
+            case RACE_BOIT:
             case RACE_YEEK:
                 summon_kin_type = 'y';
                 break;
