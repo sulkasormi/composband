@@ -98,9 +98,9 @@ D:The ancient heirloom of Ingwe, high lord of the Vanyar, against whom nothing
 D:of evil could stand.
 
 N:6:Necklace of the Dwarves
-I:40:0:3
+I:40:0:2
 W:70:35:3:75000
-F:STR | CON | INFRA | HIDE_TYPE | RES_BLIND | DEC_STEALTH
+F:STR | CON | LIFE | INFRA | HIDE_TYPE | RES_BLIND | DEC_STEALTH
 F:SEE_INVIS | FREE_ACT | REGEN | LITE | FULL_NAME
 D:The Nauglamir; a carencet of gold set with a multitude of shining gems of
 D:Valinor, accenting a radiant Silmaril. The sturdy spirits of Dwarvish
@@ -720,7 +720,7 @@ F:RES_NEXUS
 E:SPEED:30:200
 E:Your boots glow bright green...
 D:This wondrous pair of leather boots once sped Feanor, creator of the
-D:Simarils and the mightiest of the Eldar, along the Grinding Ice and to
+D:Silmarils and the mightiest of the Eldar, along the Grinding Ice and to
 D:Middle Earth at last.
 
 # The Pair of Soft Leather Boots 'Dal-i-thalion' -> of Flora
@@ -3467,7 +3467,7 @@ D: make.)
 
 N:341:'Skynail'
 I:23:16:3
-W:60:55:150:150000
+W:60:50:150:150000
 P:0:4d6:19:12:0
 F:SLAY_EVIL | BRAND_FIRE | RES_COLD | RES_DARK | LITE | SHOW_MODS | RIDING |
 F:XTRA_RES_OR_POWER | SPEED | STR | DEX | RES_CHAOS | VORPAL
@@ -3629,6 +3629,60 @@ P:6:1d2:0:0:22
 F:STR | CON | REGEN | REFLECT | RES_FEAR | SUST_STR | SUST_CON
 D:This magical shield once protected strong-armed Ossian, who never
 D:backed away from a struggle.
+
+N:358:'Nightcap'
+I:32:1:3
+W:30:5:8:15000
+P:1:0d0:0:0:6
+F:STEALTH | RES_COLD | RES_DARK | RES_FEAR | DARKNESS | HOLD_LIFE
+F:ESP_UNDEAD
+D:A warm woolly hat, ideal for those who creep in cold, dark places.
+
+N:359:of the Four Winds
+I:32:1:0
+W:30:10:8:15000
+P:1:0d0:0:0:12
+F:RES_COLD | RES_FIRE | RES_ELEC | RES_ACID
+D:A red-and-blue hat with a four-pointed star on top, mystic spells laid
+D:upon it to protect its wearer from the elements.
+
+N:360:'Black Belet'
+I:32:1:0
+W:56:90:8:50000
+P:1:0d0:0:0:18
+F:RES_SOUND | RES_TIME | RES_FEAR | SUST_STR | SUST_INT | SUST_WIS | SUST_DEX
+F:SUST_CON | SUST_CHR | REGEN | RES_FIRE | RES_DISEN | FREE_ACT | HOLD_LIFE
+F:SEE_INVIS | RES_CONF | ESP_HUMAN | ESP_ANIMAL
+D:The legendary black hat of Aijem the walrus, sewn in the mists of time, and
+D:rumoured to keep its owner's mind and body ever fresh.
+
+N:361:Bobble Hat of Barnaby
+I:32:1:2
+W:16:10:8:10000
+P:1:0d0:0:0:8
+F:INT | DEX | CHR | STEALTH | FREE_ACT | RES_COLD | SEARCH | FULL_NAME
+E:PHASE_DOOR:1:5
+D:A camouflage bobble-hat knitted from wool, once worn by the great adventurer
+D:Barnaby.
+
+N:362:'Dragonchip'
+I:40:0:3
+W:65:90:3:70000
+F:CHR | NO_MAGIC | MAGIC_RESISTANCE | IGNORE_INVULN
+D:A golden amulet of unparallelled craftsmanship, shaped like a flying dragon
+D:and inlaid with precious gems. Powerful runes have been inscribed upon it,
+D:and no magic, whether the wearer's or an enemy's, can function properly
+D:near it.
+
+N:363:Pendant 'Efki'
+I:40:0:3
+W:65:65:3:50000
+P:0:0d0:0:0:5
+F:SPEED | RES_FEAR | HOLD_LIFE | FULL_NAME
+E:SPEED:60:150:30
+D:A powerful rune of speed has been inscribed on this protective talisman.
+D:You feel calm and safe from dangers with its reassuring weight around your
+D:neck, knowing there are few enemies you cannot outrun.
 
 # N: serial number : item name
 # I: tval : sval : pval
