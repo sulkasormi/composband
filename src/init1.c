@@ -768,6 +768,9 @@ static cptr k_info_flags[OF_COUNT] =
 
     /* Plural */
     "PLURAL",
+
+    /* Ignore Invulnerability Spheres */
+    "IGNORE_INVULN",
 };
 
 
@@ -5072,6 +5075,14 @@ static cptr process_dungeon_file_expr(char **sp, char *fp)
             else if (streq(b+1, "RACE"))
             {
                 v = get_true_race()->name;
+                while (1)
+                {
+                    unsigned int paikka = strpos(" ", v);
+                    if (!paikka) break;
+                    sprintf(tmp, v);
+                    tmp[paikka - 1] = '-';
+                    v = tmp;
+                }
             }
             else if (streq(b+1, "SUBRACE"))
             {
