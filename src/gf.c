@@ -154,6 +154,7 @@ static gf_info_t _gf_tbl[GF_COUNT] = {
 
     /* New */
     { GF_SLOW, "Slow", TERM_ORANGE, RES_INVALID, "SLOW" },
+    { GF_CHICKEN, "Chicken", TERM_YELLOW, RES_INVALID, "CHICKEN" },
 };
 
 typedef struct {
@@ -258,10 +259,12 @@ static int _align_dam_pct(int align)
 }
 int gf_holy_dam(int dam)
 {
+    if ((prace_is_(RACE_MON_DEMON)) || (prace_is_(RACE_BALROG))) dam += MIN(dam * 2 / 3, 30);
     return dam * _align_dam_pct(p_ptr->align) / 100;
 }
 int gf_hell_dam(int dam)
 {
+    if ((prace_is_(RACE_MON_ANGEL)) || (prace_is_(RACE_ARCHON))) dam += MIN(dam * 2 / 3, 30);
     return dam * _align_dam_pct(-p_ptr->align) / 100;
 }
 static bool _failed_charm_nopet_chance(mon_ptr mon)
@@ -637,6 +640,16 @@ int gf_affect_p(int who, int type, int dam, int flags)
         if (!res_save_default(RES_SOUND) && !CHECK_MULTISHADOW())
             set_stun(p_ptr->stun + randint1(20), FALSE);
         result = take_hit(damage_type, dam, m_name);
+        break;
+    case GF_CHICKEN:
+        if (fuzzy) msg_print("You are hit by a chicken!");
+        if (!res_save_default(RES_SOUND) && !CHECK_MULTISHADOW())
+            set_stun(p_ptr->stun + randint1(20), FALSE);
+        if (!touch) inven_damage(set_cold_destroy, 2, RES_SOUND);
+        result = take_hit(damage_type, dam, m_name);
+        fear_scare_p(m_ptr);
+        update_smart_learn(who, RES_FEAR);
+        if (!touch) update_smart_learn(who, RES_SOUND);
         break;
     case GF_ROCKET:
         if (fuzzy) msg_print("There is an explosion!");
@@ -1016,7 +1029,7 @@ int gf_affect_p(int who, int type, int dam, int flags)
                     set_paralyzed(randint1(4), FALSE);
 
                 set_slow(p_ptr->slow + randint0(4) + 4, FALSE);
-                set_stun(p_ptr->stun + MIN(50, dam/6 + randint1(dam/6)), FALSE);
+                set_stun(p_ptr->stun + pienempi(50, dam/6 + randint1(dam/6)), FALSE);
 
                 while (!_plr_save(who, 0))
                     do_dec_stat(A_INT);
@@ -1034,7 +1047,7 @@ int gf_affect_p(int who, int type, int dam, int flags)
             if (one_in_(4))
                 teleport_player(5, TELEPORT_PASSIVE);
             if (!_plr_save(who, dam/5))
-                set_stun(p_ptr->stun + MIN(25, dam/6 + randint1(dam/6)), FALSE);
+                set_stun(p_ptr->stun + pienempi(25, dam/6 + randint1(dam/6)), FALSE);
         }
         result = take_hit(damage_type, dam, m_name);
         break;
@@ -1911,7 +1924,7 @@ bool gf_affect_m(int who, mon_ptr mon, int type, int dam, int flags)
                 }
                 else if (which <= 90)
                 {
-                    mon->mpower = MAX(300, mon->mpower * (850 + randint0(100)) / 1000);
+                    mon->mpower = isompi(300, mon->mpower * (850 + randint0(100)) / 1000);
                     note = " shrinks!";
                 }
                 else
