@@ -83,6 +83,7 @@ int class_melee_mult(void)
         case CLASS_ALCHEMIST: return 88;
         case CLASS_POLITICIAN: return 86;
         case CLASS_PRIEST: return 94;
+        case CLASS_MONK: return (94 - (p_ptr->lev / 11));
         default: return 100;
     }
 }
@@ -103,6 +104,8 @@ int race_melee_mult(bool attack_is_innate)
             if (elemental_is_(ELEMENTAL_WATER)) return 75 + (water_flow_rate() / 2);
             return 100;
         }
+        case RACE_MON_ORC:
+        case RACE_BOIT: return 95;
         default: return 100;
     }
 }
@@ -311,7 +314,12 @@ void init_blows_calc(object_type *o_ptr, weapon_info_t *info_ptr)
 
     case CLASS_MONSTER:
         info_ptr->blows_calc.max = 500; info_ptr->blows_calc.wgt = 70; info_ptr->blows_calc.mult = 50;
-        if (prace_is_(RACE_MON_LICH))
+        if (prace_is_(RACE_MON_ARMOR))
+        {
+            info_ptr->blows_calc.max = 666;
+            info_ptr->blows_calc.mult = 40;
+        }
+        else if (prace_is_(RACE_MON_LICH))
         {
             info_ptr->blows_calc.max = 400;
             info_ptr->blows_calc.mult = 30;
@@ -1392,6 +1400,4 @@ void display_shooter_info(doc_ptr doc)
         obj_ptr ammo = pack_obj(i);
         _shooter_info_aux(doc, bow_ptr, ammo, ++j);
     }
-
 }
-
