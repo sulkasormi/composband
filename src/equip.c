@@ -656,7 +656,8 @@ static void _wield_after(slot_t slot)
     handle_stuff();
 
     object_desc(o_name, obj, OD_COLOR_CODED);
-    if (p_ptr->prace == RACE_MON_SWORD || p_ptr->prace == RACE_MON_RING)
+    if ((p_ptr->prace == RACE_MON_SWORD || p_ptr->prace == RACE_MON_RING) || 
+        ((p_ptr->prace == RACE_MON_ARMOR) && (obj->tval == TV_SOFT_ARMOR)))
         msg_format("You are %s.", o_name);
     else
         msg_format("You are wearing %s (%c).", o_name, slot - 1 + 'a');
@@ -1064,8 +1065,9 @@ void equip_calc_bonuses(void)
     /* Find the weapons */
     for (slot = 1; slot <= _template->max; slot++)
     {
-        if ( _template->slots[slot].type == EQUIP_SLOT_WEAPON_SHIELD
-          || _template->slots[slot].type == EQUIP_SLOT_WEAPON )
+        if ( (_template->slots[slot].type == EQUIP_SLOT_WEAPON_SHIELD)
+          || (_template->slots[slot].type == EQUIP_SLOT_WEAPON)
+          || ((p_ptr->prace == RACE_MON_ARMOR) && (_template->slots[slot].type == EQUIP_SLOT_GLOVES)) )
         {
             obj_ptr obj;
             int     hand = _template->slots[slot].hand;
@@ -1199,6 +1201,8 @@ void equip_calc_bonuses(void)
     /* Hack for Death Swords ... but not Broken Death Swords ;) */
     if (prace_is_(RACE_MON_SWORD) && p_ptr->lev >= 10)
         p_ptr->weapon_info[0].wield_how = WIELD_TWO_HANDS;
+    if (prace_is_(RACE_MON_ARMOR))
+        p_ptr->weapon_info[0].wield_how = WIELD_ONE_HAND;
 
     /* It's convenient to have an accurate weapon count later */
     p_ptr->weapon_ct = 0;
@@ -1218,6 +1222,12 @@ void equip_calc_bonuses(void)
 
         if (!obj) continue;
         if (obj->marked & OM_SLIPPING) continue;
+
+        if (p_ptr->prace == RACE_MON_ARMOR)
+        {
+            armor_calc_obj_bonuses(obj, FALSE);
+            continue;
+        }
 
         obj_flags(obj, flgs);
         obj_flags_known(obj, known_flgs);
@@ -1310,6 +1320,7 @@ void equip_calc_bonuses(void)
                 int arm = hand / 2;
                 int rhand = arm*2;
                 int lhand = arm*2 + 1;
+                if (p_ptr->prace == RACE_MON_ARMOR) break;
                 if (p_ptr->weapon_info[rhand].wield_how != WIELD_NONE && p_ptr->weapon_info[lhand].wield_how != WIELD_NONE)
                 {
                     if (amt > 0)
@@ -1492,6 +1503,7 @@ void equip_calc_bonuses(void)
         if (have_flag(flgs, OF_NO_MAGIC)) p_ptr->anti_magic = TRUE;
         if (have_flag(flgs, OF_NO_TELE))  p_ptr->anti_tele = TRUE;
         if (have_flag(flgs, OF_NO_SUMMON)) p_ptr->anti_summon = TRUE;
+        if (have_flag(flgs, OF_IGNORE_INVULN)) p_ptr->ignore_invuln = TRUE;
 
         if (have_flag(flgs, OF_SUST_STR)) p_ptr->sustain_str = TRUE;
         if (have_flag(flgs, OF_SUST_INT)) p_ptr->sustain_int = TRUE;
