@@ -1126,3 +1126,9 @@ S:CLOAK:Cloak
 S:HELMET:Helm
 S:BOOTS:Boots
 S:QUIVER:Quiver
+
+N:108:Armor
+S:BODY_ARMOR:You
+S:GLOVES:Gloves:0
+S:BOOTS:Boots
+
