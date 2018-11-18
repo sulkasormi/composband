@@ -52,7 +52,7 @@ M:#...<...#
 M:#########
 R:OBJ(^amulet$):EGO(trickery)
 
-?:[EQU $RACE Death-Sword]
+?:[EQU $RACE Death-Sword Filthy-Rag]
 R:OBJ(potion of resistance, NUMBER=2+1d3)
 
 # vim: filetype=q :
