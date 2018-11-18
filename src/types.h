@@ -1378,6 +1378,7 @@ struct player_type
     bool sh_shards;
     bool sh_retaliation;
     bool sh_fear;
+    bool ignore_invuln;
 
     bool no_eldritch;
     bool no_stun;
