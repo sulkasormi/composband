@@ -150,6 +150,7 @@ static byte spell_color(int type)
             case GF_ICE:            return (0x01);
             case GF_ROCKET:         return (0x0F);
             case GF_DEATH_RAY:      return (0x07);
+            case GF_CHICKEN:        return (0x0B);
             case GF_NUKE:           return (mh_attr(2));
             case GF_DISINTEGRATE:   return (0x05);
             case GF_PSI:
@@ -906,7 +907,7 @@ static bool project_f(int who, int r, int y, int x, int dam, int typ)
             message = "is washed away.";
             break;
         case GF_GRAVITY:
-            message = "disappears";
+            message = "disappears.";
             break;
         }
         if (message)
@@ -1405,6 +1406,7 @@ static bool project_f(int who, int r, int y, int x, int dam, int typ)
         case GF_SHARDS:
         case GF_ROCK:
         case GF_ROCKET:
+        case GF_CHICKEN:
         {
             if (is_mirror_grid(c_ptr))
             {
