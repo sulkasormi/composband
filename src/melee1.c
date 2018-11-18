@@ -153,7 +153,7 @@ bool make_attack_normal(int m_idx)
     if (!is_hostile(m_ptr)) return FALSE;
 
     /* Extract the effective monster level */
-    rlev = r_ptr->level;
+    rlev = MAX(4, r_ptr->level);
     rlev = rlev * m_ptr->mpower / 1000;
 
     /* Get the monster name (or "it") */
