@@ -3680,8 +3680,8 @@ N:243:Cloaker
 G:(:g
 I:115:7d7:20:40:0:10
 W:13:5:50:30:0:0
-B:HIT:HURT(5d5):PARALYZE(75%)
-B:HIT:HURT(5d5):TERRIFY
+B:HIT:HURT(4d5):PARALYZE(75%)
+B:HIT:HURT(4d5):TERRIFY
 F:NEVER_MOVE | NONLIVING | NO_FEAR | NASTY_GLYPH
 F:STUPID | EMPTY_MIND | COLD_BLOOD | CHAR_MULTI | NO_CONF | NO_SLEEP |
 F:EVIL | RES_COLD | FORCE_MAXHP | RES_ELEC | IM_POIS
@@ -20832,7 +20832,7 @@ W:60:5:999:18000:0:0
 B:GAZE:PARALYZE(5d3)
 B:BITE:DISEASE(15d10)
 B:BITE:DISEASE(15d10)
-F:ONLY_ITEM | DROP_1D2 | DROP_GOOD | FORCE_MAXHP
+F:ONLY_ITEM | DROP_1D2 | DROP_GOOD | FORCE_MAXHP | FORCE_SLEEP
 F:OPEN_DOOR | BASH_DOOR | EVIL | RES_FIRE | RES_COLD | RES_ACID |
 F:RES_ELEC | RES_POIS | DROP_CORPSE | RES_NETH | RES_DARK |
 F:ANIMAL | CAN_SWIM | HURT_LITE
@@ -23266,7 +23266,7 @@ D:red with the blood of its previous victims.
 
 N:1279:Blinking light
 G:*:v
-I:115:7d8:15:20:0:150
+I:115:7d8:15:20:0:10
 W:19:3:44:64:0:0
 F:RES_LITE | EMPTY_MIND | CAN_FLY | NONLIVING | SELF_LITE_1 | NEVER_BLOW |
 F:NO_CONF | RAND_50 | ATTR_MULTI | POS_GAIN_AC
@@ -23274,6 +23274,85 @@ P:Copy:Snotling:Warrior
 P:Body:Wisp
 S:FREQ_75 | JMP_LIGHT(5d5)
 D:Whatever you do... don't just relax and watch the blinking light.
+
+N:1280:Snow golem
+G:g:w
+I:110:16d12:14:28:10:150
+W:18:1:35:90:0:0
+B:HIT:COLD(4d5)
+B:HIT:ACID(4d5)
+F:EMPTY_MIND | BASH_DOOR | COLD_BLOOD |
+F:RES_ELEC | IM_COLD | RES_POIS | RES_WATE |
+F:NO_CONF | NO_SLEEP | NO_FEAR | NONLIVING
+F:POS_GAIN_AC | POS_HOLD_LIFE
+S:FREQ_10 |
+S:BA_COLD(18)
+P:Copy:Golem:Warrior
+D:A vaguely humanoid creature, built out of snow.
+
+N:1281:Aijem, the Walrus
+G:q:U
+I:130:58d121:100:160:0:200
+W:83:4:999:61710:0:0
+B:PUNCH:HURT(13d15):STUN(5d5)
+B:BITE:HURT(8d8):POISON(6d6):CUT(6d6, 66%)
+B:KICK:HURT(10d10):STUN(5d5):SLOW(2d4)
+B:SLASH:HURT(10d10):CUT(9d9)
+F:UNIQUE | MALE | ANIMAL | RES_TELE | RES_CHAO | RES_ELEC |
+F:FORCE_SLEEP | FORCE_MAXHP | MOVE_BODY | RES_INER | RES_GRAV |
+F:DROP_4D2 | DROP_GOOD | DROP_GREAT | RES_SHAR | RES_DISE | REFLECTING |
+F:SMART | TAKE_ITEM | BASH_DOOR | HAS_LITE_2 | CAN_FLY | RES_TIME |
+F:CAN_SWIM | REGENERATE | RES_ACID | RES_COLD | RES_FIRE | RES_POIS |
+F:RES_WATE | RES_SOUN | RES_TIME | NO_STUN | NO_FEAR | NO_SLEEP | NO_CONF
+F:POS_HOLD_LIFE | POS_SUST_INT | POS_GAIN_AC |
+P:Copy:Human:Warrior-Mage
+P:Body:Elephant
+S:FREQ_33
+S:BA_FIRE(1d498+166) | ROCKET(500) | CHICKEN(200) | TRAPS | HEAL
+S:S_MONSTER(1d3)
+D:Before the first man he was: Aijem, the ageless, who has been everywhere
+D:and seen everything and done everything. The passing of time has only made
+D:him tougher and given him more experience and opportunities to learn.
+
+# Not a real monster. For player rag use only
+
+N:1282:Filthy Rag
+G:(:D
+I:110:1d1:0:0:0:2
+W:50:0:0:0:0:0
+F:DEPRECATED
+P:Body:Armor
+D:A pile of dirty, old, timeworn clothing, brought to life and sentience
+D:by magic (or perhaps just by accumulating enough micro-organisms) and
+D:filled with a strong desire to get back at all those clean, polished,
+D:fashionable plate mails. Something, likely a thick layer of grime, has
+D:permanently attached an old pair of boots and two plain leather gloves
+D:to the original rag, allowing it to walk about and punch its enemies...
+
+N:1283:Sexy Swimsuit
+G:(:v
+I:110:1d1:0:0:0:2
+W:50:0:0:0:0:0
+F:DEPRECATED
+P:Body:Armor
+D:It was an itsy bitsy teenie weenie violet move-about entkini...
+
+N:1284:Hisser
+G:G:B
+I:115:13d13:20:30:10:100
+W:26:2:60:150:0:0
+B:GAZE:TERRIFY
+B:TOUCH:ELEC(3d8)
+A:ELEC(2d3)
+F:FORCE_SLEEP | DROP_60 | COLD_BLOOD | PASS_WALL |
+F:EVIL | UNDEAD | RES_COLD | RES_ELEC | IM_POIS | RES_NETH |
+F:NO_CONF | NO_SLEEP | CAN_FLY | RAND_25 |
+F:POS_SEE_INVIS | POS_HOLD_LIFE
+P:Copy:Spectre:Rogue
+S:1_IN_10 |
+S:SCARE
+D:A ghostly apparition, faintly visible as a pale blue outline hissing and
+D:crackling with electricity.
 
 # N: serial number : monster name
 # G: symbol : color
