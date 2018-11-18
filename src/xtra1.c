@@ -3488,6 +3488,8 @@ static void calc_torch(void)
         p_ptr->cur_lite += sword_calc_torch();
     if (prace_is_(RACE_MON_RING))
         p_ptr->cur_lite += ring_calc_torch();
+    if (prace_is_(RACE_MON_ARMOR))
+        p_ptr->cur_lite += armor_calc_torch();
 
     equip_for_each(_calc_torch_imp);
 
@@ -3763,6 +3765,7 @@ void calc_bonuses(void)
     p_ptr->anti_magic = FALSE;
     p_ptr->anti_tele = FALSE;
     p_ptr->anti_summon = FALSE;
+    p_ptr->ignore_invuln = FALSE;
     p_ptr->warning = FALSE;
     p_ptr->mighty_throw = FALSE;
     p_ptr->see_nocto = FALSE;
@@ -4891,7 +4894,7 @@ void calc_bonuses(void)
             }
             else
             {
-                p_ptr->weapon_info[i].base_blow += MIN(600, 600 * blow_base / 60);
+                p_ptr->weapon_info[i].base_blow += MIN(550, 550 * blow_base / 60);
             }
 
             if (heavy_armor() && (p_ptr->pclass != CLASS_BERSERKER))
@@ -4950,6 +4953,7 @@ void calc_bonuses(void)
                 p_ptr->weapon_info[i].to_h += bonus;
                 p_ptr->weapon_info[i].dis_to_h += bonus;
             }
+            else if (p_ptr->prace == RACE_MON_ARMOR) {} /* no bonus */
             else
             {
                 int bonus = skills_weapon_calc_bonus(obj->tval, obj->sval);
