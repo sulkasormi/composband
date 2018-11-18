@@ -224,6 +224,10 @@ Iron Spike#@vz
 (unsensed shooters
 ?:1
 
+?:[EQU $CLASS Tourist]
+~photograph
+?:1
+
 ~special items
 !worthless items
 #!unusable items
