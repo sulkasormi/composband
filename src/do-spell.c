@@ -5765,17 +5765,13 @@ static cptr do_craft_spell(int spell, int mode)
         break;
 
     case 25:
-        if (name) return "Walk through Wall";
-        if (desc) return "Gives ability to pass walls for a while.";
+        if (name) return "Simplification";
+        if (desc) return "Removes all of an item's magical attributes, including its status as an ego item or artifact. Magically improved ego items cannot be simplified.";
 
         {
-            int base = spell_power(plev / 2);
-
-            if (info) return info_duration(base, base);
-
             if (cast)
             {
-                set_kabenuke(randint1(base) + base, FALSE);
+                if (!mundane_spell(FALSE)) return NULL;
             }
         }
         break;
