@@ -1359,7 +1359,7 @@ static bool level_gen(cptr *why)
     if (((coffee_break) || ((d_info[dungeon_type].flags1 & DF1_COFFEE) && (!ironman_downward))))
     {
         coffee = TRUE;
-        if ((dun_level < 99) && (randint0(484) < 484 - (dun_level * 2))) small = TRUE;
+        if ((dun_level < 99) && (randint0(484) < 484 - (MIN(60, dun_level) * 2))) small = TRUE;
     }
     if ((dungeon_type == DUNGEON_MOUND) && (randint0(125) < (484 - (dun_level * 5)))) small = TRUE;
 
@@ -1384,11 +1384,12 @@ static bool level_gen(cptr *why)
 
             for (;;)
             {
+                int sattuma = randint1(35);
                 hgt = randint1(max_hgt);
                 wid = randint1(max_wid);
                 if (hgt == max_hgt && wid == max_wid) continue;
                 /* exclude 1x1, 1x2 and 2x1 */
-                if (hgt * wid <= (coffee ? (MIN(6, (dun_level + 10 + randint1(35)) / 25)) : 2)) continue;
+                if (hgt * wid <= (coffee ? (MIN(4, (dun_level + 10 + sattuma) / 25)) : 2)) continue;
                 break;
             }
         }
