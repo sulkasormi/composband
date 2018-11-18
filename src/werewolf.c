@@ -385,7 +385,7 @@ void werewolf_silver_effect(int power, bool allow_mitigation)
         case 1:
         {
             msg_print("The silver hurts you!");
-            take_hit(DAMAGE_NOESCAPE, MIN(randint1(power), 32), "contact with silver");
+            take_hit(DAMAGE_NOESCAPE, pienempi(randint1(power), 32), "contact with silver");
             break;
         }
         case 2:
@@ -400,8 +400,9 @@ void werewolf_silver_effect(int power, bool allow_mitigation)
         } /* Fall through */
         case 3:
         {
+            int dam = randint1(MIN(40, power));
             if (noppa == 3) msg_print("The silver saps your energy away!");
-            p_inc_minislow(MAX(1, randint1(MIN(40, power)) / 8));
+            p_inc_minislow(MAX(1, dam / 8));
             break;
         }
         case 4:
