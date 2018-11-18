@@ -22,7 +22,7 @@ K:750
 F:255
 
 # Maximum number of artifacts in a_info.txt
-A:360
+A:400
 
 # Maximum number of ego-items in e_info.txt
 E:500
