@@ -49,8 +49,8 @@ ANGFILES = \
     polly.o priest.o psion.o py_birth.o py_info.o py_throw.o quest.o quiver.o \
 	races.o races_a.o races_k.o races_mimic.o race_angel.o \
     race_beholder.o race_centipede.o race_demon.o race_dragon.o race_elemental.o race_giant.o race_golem.o \
-    race_hound.o race_hydra.o race_jelly.o race_leprechaun.o race_lich.o \
-	race_mimic.o race_possessor.o race_quylthulg.o race_spider.o \
+    race_hound.o race_hydra.o race_jelly.o race_leprechaun.o race_lich.o race_mimic.o \
+	race_orc.o race_possessor.o race_quylthulg.o race_rag.o race_spider.o \
     race_ring.o race_sword.o race_troll.o race_vampire.o race_vortex.o \
     race_xorn.o racial.o rage-mage.o randname.o ranger.o rect.o red_mage.o \
     resist.o rogue.o rooms.o rune_knight.o samurai.o save.o savefile.o scores.o scout.o shop.o skillmaster.o \
