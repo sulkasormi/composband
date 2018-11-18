@@ -243,6 +243,12 @@ static _parse_t _ball_tbl[] = {
           "$CASTER shouts, 'Haaa!!'.",
           "$CASTER throws a large rock at $TARGET.", 
           "You throw a large rock." }, MSF_INNATE | MSF_BALL0 | MSF_TARGET},
+    { "CHICKEN", { MST_BALL, GF_CHICKEN },
+        { "Chicken", TERM_YELLOW,
+          "$CASTER fires a <color:y>Chicken</color>.",
+          "$CASTER shoots something.",
+          "$CASTER fires a <color:y>Chicken</color> at $TARGET.",
+          "You fire a <color:y>Chicken</color>." }, MSF_INNATE | MSF_BALL0 | MSF_TARGET },
     {0}
 };
 
@@ -703,6 +709,9 @@ static mon_spell_parm_t _ball_parm(int which, int rlev)
     case GF_ROCKET:
         parm.v.dice = _dice(0, 0, 6*rlev);
         break;
+    case GF_CHICKEN:
+        parm.v.dice = _dice(0, 0, 5*rlev/2);
+        break;
     default:
         parm.v.dice = _dice(5, 5, rlev);
     }
@@ -747,6 +756,7 @@ static mon_spell_parm_t _bolt_parm(int which, int rlev)
         break;
     case GF_MISSILE:
         parm.v.dice = _dice(2, 6, rlev/3);
+        break;
     case GF_ATTACK:
     case GF_ARROW:
         /* SHOOT always specifies dice overrides */
@@ -1607,6 +1617,7 @@ static void _ball(void)
     switch (_current.spell->id.effect)
     {
     case GF_ROCKET:
+    case GF_CHICKEN:
         flags |= PROJECT_STOP;
         break;
     case GF_DRAIN_MANA:
@@ -3520,6 +3531,7 @@ static void _ai_direct(mon_spell_cast_ptr cast)
     {
         _remove_group(spells->groups[MST_BOLT], NULL);
         _remove_spell(spells, _id(MST_BALL, GF_ROCKET));
+        _remove_spell(spells, _id(MST_BALL, GF_CHICKEN));
     }
 
     if (spells->groups[MST_SUMMON] && !_summon_possible(cast->dest))
@@ -3636,6 +3648,7 @@ static void _ai_indirect(mon_spell_cast_ptr cast)
     _remove_group(spells->groups[MST_CURSE], NULL);
     _remove_group(spells->groups[MST_WEIRD], NULL);
     _remove_spell(spells, _id(MST_BALL, GF_ROCKET));
+    _remove_spell(spells, _id(MST_BALL, GF_CHICKEN));
 
     if (_pt_is_valid(new_dest))
     {
@@ -4064,6 +4077,7 @@ static void _ai_think_mon(mon_spell_cast_ptr cast)
     {
         _remove_group(spells->groups[MST_BOLT], NULL);
         _remove_spell(spells, _id(MST_BALL, GF_ROCKET));
+        _remove_spell(spells, _id(MST_BALL, GF_CHICKEN));
     }
 
     if (spells->groups[MST_SUMMON] && !_summon_possible(cast->dest))
