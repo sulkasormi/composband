@@ -54,7 +54,7 @@ R:OBJ(^cloak$):EGO(elemental protection)
 ?:[EQU $RACE Centipede]
 R:OBJ(metal shod boots):EGO(dwarven)
 
-?:[EQU $RACE Demon Xorn Jelly Hound Vortex]
+?:[EQU $RACE Demon Xorn Jelly Hound Vortex Filthy-Rag]
 R:OBJ(STAFF_CONFUSE_MONSTERS)
 
 # vim: filetype=q :
