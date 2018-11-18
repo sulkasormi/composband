@@ -840,7 +840,10 @@ static void _build_stats(doc_ptr doc, _flagzilla_ptr flagzilla)
                 if (have_flag(flagzilla->obj_flgs[j], dec_flg))
                     adj = -o_ptr->pval;
                 else if (have_flag(flagzilla->obj_flgs[j], flg))
+                {
                     adj += o_ptr->pval;
+                    if (p_ptr->prace == RACE_MON_ARMOR) adj += rag_effect_pval(o_ptr, -1, flg, FALSE);
+                }
 
                 if (adj)
                 {
