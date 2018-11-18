@@ -335,6 +335,7 @@ void virtue_init(void)
         p_ptr->vir_types[i++] = VIRTUE_NATURE;
         break;
     case RACE_MON_SWORD:
+    case RACE_MON_ARMOR:
         p_ptr->vir_types[i++] = VIRTUE_ENCHANTMENT;
         break;
     case RACE_MON_ANGEL:
@@ -365,6 +366,7 @@ void virtue_init(void)
     case RACE_MON_SPIDER:
         p_ptr->vir_types[i++] = VIRTUE_NATURE;
         break;
+    case RACE_MON_ORC:
     case RACE_MON_TROLL:
         p_ptr->vir_types[i++] = VIRTUE_VITALITY;
         break;
@@ -401,7 +403,7 @@ void virtue_init(void)
     case RACE_HALF_TITAN:
         p_ptr->vir_types[i++] = VIRTUE_HARMONY;
         break;
-    case RACE_YEEK:
+    case RACE_YEEK: case RACE_BOIT:
         p_ptr->vir_types[i++] = VIRTUE_SACRIFICE;
         break;
     case RACE_MIND_FLAYER:
