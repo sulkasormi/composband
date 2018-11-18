@@ -400,13 +400,13 @@ Orcs/Trolls/Giants
     Experience   140%       Infravision 0'
     
   Half-Orc
-  Half - orcs make excellent warriors, but are terrible at magic. They 
+  Half-orcs make excellent warriors, but are terrible at magic. They 
   are as bad as dwarves at stealth, and horrible at searching, 
-  disarming, and perception. Half - orcs are quite ugly, and tend to 
-  pay more for goods in town. Because of their preference to living 
-  underground to on the surface, half - orcs resist darkness attacks. 
-  The human part of their heritage allows them to select a talent at 
-  Level 30.
+  disarming, and perception. Half-orcs are quite ugly, and tend to pay 
+  more for goods in town. Because of their preference to living 
+  underground to on the surface, half-orcs resist darkness attacks. The 
+  human part of their heritage allows them to select a talent at Level 
+  30.
   
     Stats                   Skills
     Strength      +2        Disarming   Bad          
@@ -652,6 +652,24 @@ Other Races
     Life Rating  102%       Melee       Excellent    
     Base HP       22        Bows        Very Good    
     Experience   150%       Infravision 0'
+    
+  Boit
+  Boits are small bipedal creatures covered in yellow, lilac, brown or 
+  green fur, distantly related to the Yeeks. Boits move speedily, and 
+  can eject the contents of their stomachs at will, but they are not 
+  particularly well-suited for melee, ranged combat, use of magical 
+  devices, or spellcasting.
+  
+    Stats                   Skills
+    Strength      -1        Disarming   Fair         
+    Intelligence  -2        Device      Bad          
+    Wisdom        -2        Save        Poor         
+    Dexterity     -2        Stealth     Poor         
+    Constitution  +0        Searching   Bad          
+    Charisma      -2        Perception  Superb       
+    Life Rating   95%       Melee       Very Bad     
+    Base HP       15        Bows        Bad          
+    Experience    80%       Infravision 10'
     
   Centaur
   Centaurs are creatures with the head, arms and torso of a human 
@@ -913,6 +931,7 @@ Vampire       +3   +3   -1   -1   +1   +2  102%  +22  200%  130%
 Zombie        +2   -6   -6   +1   +4   -3  108%  +24  180%  140%
 Android       +3   -1   -5   +1   +3   +0  108%  +26  200%  120%
 Beastman      +2   -2   -1   -1   +2   +1  102%  +22  150%  130%
+Boit          -1   -2   -2   -2   +0   -2   95%  +15   80%  105%
 Centaur       +3   -2   +1   +2   +1   +0  103%  +22  190%   95%
 Draconian     +3   +0   +0   +1   +2   +2  104%  +22  190%  115%
 Doppelganger  -3   -3   -3   -3   -3   -3   85%  +12  150%  150%
@@ -961,6 +980,7 @@ Vampire      Fair          Good          Good          Very Good
 Zombie       Bad           Bad           Good          Bad          
 Android      Poor          Bad           Poor          Bad          
 Beastman     Bad           Poor          Poor          Bad          
+Boit         Fair          Bad           Poor          Poor         
 Centaur      Poor          Bad           Fair          Fair         
 Draconian    Bad           Bad           Fair          Bad          
 Doppelganger Very Bad      Very Bad      Very Bad      Excellent    
@@ -1009,6 +1029,7 @@ Vampire      Bad           Excellent     Good          Fair            50'
 Zombie       Very Bad      Good          Superb        Fair            20'
 Android      Fair          Heroic        Superb        Excellent        0'
 Beastman     Very Bad      Good          Excellent     Very Good        0'
+Boit         Bad           Superb        Very Bad      Bad             10'
 Centaur      Fair          Good          Excellent     Excellent        0'
 Draconian    Bad           Superb        Superb        Good            20'
 Doppelganger Very Bad      Superb        Very Bad      Very Bad         0'
