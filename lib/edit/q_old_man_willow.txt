@@ -52,10 +52,10 @@ R:OBJ(^ring$):EGO(elemental)
 ?:[EQU $RACE Hydra]
 R:OBJ(^amulet$):EGO(elemental)
 
-?:[AND [EQU $RACE Death-Sword] [EQU $WILDERNESS NORMAL] ]
+?:[AND [EQU $RACE Death-Sword Filthy-Rag] [EQU $WILDERNESS NORMAL] ]
 R:OBJ(ROD_LITE_AREA, DEPTH+12)
 
-?:[AND [EQU $RACE Death-Sword] [EQU $WILDERNESS NONE] ]
+?:[AND [EQU $RACE Death-Sword Filthy-Rag] [EQU $WILDERNESS NONE] ]
 R:OBJ(ROD_BEAM_ACID, DEPTH+5)
 
 
