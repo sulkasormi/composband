@@ -238,7 +238,7 @@ int _mut_prob_gain(int i)
         result = 1;
     }
 
-    if (p_ptr->prace == RACE_MON_RING || p_ptr->prace == RACE_MON_SWORD)
+    if (p_ptr->prace == RACE_MON_RING || p_ptr->prace == RACE_MON_SWORD || p_ptr->prace == RACE_MON_ARMOR)
     {
         switch (i)
         {
