@@ -1113,7 +1113,7 @@ bool sword_disenchant(void)
         if (i == OF_SPEED) continue;
         if (res_save(RES_DISEN, 44)) continue;
         
-        _essences[i] -= MAX(1, _essences[i] * randint1(r) / 20);
+        _essences[i] -= isompi(1, _essences[i] * randint1(r) / 20);
         if (_essences[i] < n)
             result = TRUE;
     }
