@@ -220,6 +220,7 @@ void curse_equipment(int chance, int heavy_chance)
 
         if (!o_ptr) return;
         if (randint1(100) > chance) return;
+        if (p_ptr->prace == RACE_MON_ARMOR) return;
 
         obj_flags(o_ptr, oflgs);
         object_desc(o_name, o_ptr, (OD_OMIT_PREFIX | OD_NAME_ONLY));
@@ -339,9 +340,11 @@ int anti_magic_check(void)
         case RACE_MON_TROLL:
         case RACE_MON_ELEMENTAL:
         case RACE_MON_SWORD:
+        case RACE_MON_ARMOR:
         case RACE_MON_GOLEM:
         case RACE_MON_CENTIPEDE:
         case RACE_MON_VORTEX:
+        case RACE_MON_ORC:
             return 0;
         }
     }
