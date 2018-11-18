@@ -47,6 +47,9 @@ R:OBJ(^ring$):EGO(elemental)
 ?:[EQU $RACE Hydra Quylthulg]
 R:OBJ(^cloak$)
 
+?:[EQU $RACE Filthy-Rag]
+R:OBJ(potion of sight, NUMBER=5+3d3)
+
 ?:[AND [EQU $CLASS Weaponmaster] [EQU $SPECIALITY Axes] ]
 R:OBJ(broad axe)
 
