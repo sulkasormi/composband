@@ -1039,6 +1039,9 @@ static void _display_extra(object_type *o_ptr, u32b flgs[OF_ARRAY_SIZE], doc_ptr
     if (object_is_(o_ptr, TV_POLEARM, SV_DEATH_SCYTHE))
         doc_insert(doc, "It causes you to strike yourself sometimes.\nIt always penetrates invulnerability barriers.\n");
 
+    if (have_flag(flgs, OF_IGNORE_INVULN))
+        doc_insert(doc, "It negates invulnerability spheres.\n");
+
     if (have_flag(flgs, OF_DUAL_WIELDING))
         doc_insert(doc, "It affects your ability to hit when you are wielding two weapons.\n");
 
