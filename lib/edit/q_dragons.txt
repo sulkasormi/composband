@@ -75,4 +75,7 @@ R:OBJ(dragon wings)
 ?:[EQU $RACE Death-Sword]
 R:OBJ(dragon fang)
 
+?:[EQU $RACE Filthy-Rag]
+R:OBJ(gold dragon scale mail):EGO(87)
+
 # vim: filetype=q :
