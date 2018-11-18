@@ -56,7 +56,7 @@ static bool _add_bad_flag(object_type *o_ptr, int bad_flag, int good_flag)
     return FALSE;
 }
 
-static int _trim(int start_val, int hi_val, int very_hi_val, int item_lv)
+int trim(int start_val, int hi_val, int very_hi_val, int item_lv)
 {
     int vahennys = 0, i, koitto;
     if (very_hi_val < hi_val) hi_val = very_hi_val;
@@ -67,7 +67,7 @@ static int _trim(int start_val, int hi_val, int very_hi_val, int item_lv)
         if (one_in_(2)) vahennys++;
         else if (randint0(100 + item_lv) < 80) vahennys++;
     }
-    koitto = start_val - very_hi_val;
+    koitto = (start_val - vahennys) - very_hi_val;
     for (i = 0; i < koitto; i++)
     {
         if (!one_in_(4)) vahennys++;
@@ -2823,7 +2823,7 @@ s32b create_artifact(object_type *o_ptr, u32b mode)
         int max = 20;
         if (object_is_body_armour(o_ptr)) max += 5;
         o_ptr->to_a += a;
-        if (o_ptr->to_a > max - 5) o_ptr->to_a = _trim(o_ptr->to_a, max - 5, max, lev);
+        if (o_ptr->to_a > max - 5) o_ptr->to_a = trim(o_ptr->to_a, max - 5, max, lev);
     }
     else if (object_is_weapon_ammo(o_ptr))
     {
@@ -2831,8 +2831,8 @@ s32b create_artifact(object_type *o_ptr, u32b mode)
         int d = randint1(5) + m_bonus(5, lev) + m_bonus(10, lev);
         o_ptr->to_h += h;
         o_ptr->to_d += d;
-        if (o_ptr->to_h > 22) o_ptr->to_h = _trim(o_ptr->to_h, 20, 25, lev);
-        if (o_ptr->to_d > 20) o_ptr->to_d = _trim(o_ptr->to_h, 20, 25, lev);
+        if (o_ptr->to_h > 22) o_ptr->to_h = trim(o_ptr->to_h, 20, 25, lev);
+        if (o_ptr->to_d > 20) o_ptr->to_d = trim(o_ptr->to_h, 20, 25, lev);
 
         if ((have_flag(o_ptr->flags, OF_WIS)) && (o_ptr->pval > 0)) add_flag(o_ptr->flags, OF_BLESSED);
     }
