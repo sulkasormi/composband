@@ -372,6 +372,16 @@ s32b _finalize_p(s32b p, u32b flgs[OF_ARRAY_SIZE], object_type *o_ptr, int optio
         }
     }
 
+    if (have_flag(flgs, OF_IGNORE_INVULN))
+    {
+        p += 8000;
+        if (cost_calc_hook)
+        {
+            sprintf(dbg_msg, "  * Ignore Invu: p = %d", p);
+            cost_calc_hook(dbg_msg);
+        }
+    }
+
     if (have_flag(flgs, OF_AGGRAVATE))
     {
         p = p * 8 / 10;
