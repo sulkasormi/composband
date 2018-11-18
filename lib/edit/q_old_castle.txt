@@ -154,6 +154,12 @@ R:ART(kaschei)
 ?:[AND [EQU $RACE Lich] [GEQ [MOD $RANDOM27 5] 1] ]
 R:ART(indra)
 ##########################################################################
+# Filthy Rag
+?:[AND [EQU $RACE Filthy-Rag] [EQU [MOD $RANDOM27 5] 0] ]
+R:ART(haramakido of yositsune)
+?:[AND [EQU $RACE Filthy-Rag] [GEQ [MOD $RANDOM27 5] 1] ]
+R:ART(isildur)
+##########################################################################
 # Spider
 ?:[AND [EQU $RACE Spider] [EQU [MOD $RANDOM27 5] 0] ]
 R:ART(luthien)
