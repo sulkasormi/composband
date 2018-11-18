@@ -509,6 +509,28 @@ Mimic/Possessor
     Base HP       30        Bows        Very Bad     
     Experience   150%       Infravision 30'
     
+  Filthy Rag
+  A pile of dirty, old, timeworn clothing, brought to life and 
+  sentience by magic (or perhaps just by accumulating enough 
+  micro-organisms) and filled with a strong desire to get back at all 
+  those clean, polished, fashionable plate mails. Something, likely a 
+  thick layer of grime, has permanently attached an old pair of boots 
+  and two plain leather gloves to the original rag, allowing it to walk 
+  about and punch enemies. If you think the thing looks ugly now, just 
+  wait until it's found some other protective armour and has had the 
+  time to take it apart and absorb its magical qualities...
+  
+    Stats                   Skills
+    Strength      -2        Disarming   Good         
+    Intelligence  -2        Device      Bad          
+    Wisdom        -2        Save        Excellent    
+    Dexterity     -2        Stealth     Very Good    
+    Constitution  -2        Searching   Poor         
+    Charisma      -4        Perception  Bad          
+    Life Rating   98%       Melee       Good         
+    Base HP       20        Bows        Very Bad     
+    Experience   110%       Infravision 20'
+    
   Mimic
   Mimics are similar to possessors but instead of controlling the 
   corpses of the vanquished, the mimic imitates those about them. This 
@@ -636,6 +658,31 @@ Orc/Troll/Giant
     Base HP       46        Bows        Fair         
     Experience   200%       Infravision 50'
     
+  Orc
+  Orcs are Morgoth's creation and the backbone of his armies. They are 
+  accustomed to caves and tunnels, and resist darkness but tend to be 
+  vulnerable to light. Orcs are ugly, brutish pillagers by reputation 
+  and should not expect much love from shopkeepers. Morgoth's spirit 
+  lives in orcs and drives them forward, making them hard to frighten. 
+  What orcs lack in stealth and subtlety they make up for with their 
+  sheer brute strength, and generally have little trouble brushing 
+  aside weak enemies like kobolds; yet in the deep dungeons, where the 
+  strongest fighters and most powerful magicians reside, orcs are 
+  rarely seen.
+  
+  See [h] for more details on orcs.
+  
+    Stats                   Skills
+    Strength      +2        Disarming   Good         
+    Intelligence  -1        Device      Very Bad     
+    Wisdom        -5        Save        Fair         
+    Dexterity     +0        Stealth     Fair         
+    Constitution  +3        Searching   Poor         
+    Charisma      -5        Perception  Bad          
+    Life Rating   99%       Melee       Excellent    
+    Base HP       30        Bows        Excellent    
+    Experience   100%       Infravision 30'
+    
   Troll
   Trolls are disgusting creatures: Big, strong and stupid. They make 
   excellent warriors but are hopeless with magical devices. Trolls have 
@@ -762,10 +809,12 @@ Jelly         +1   -5   -5   +1   +1   -2   90%  +40  150%  125%
 Quylthulg     -3   -3   -3   -3   -3   +8   95%   +0  150%  120%
 Leprechaun    -6   +1   +1   +7   -2   -2   80%  +15  150%   85%
 Death-Sword   +4   -5   -5   +1   +4   +0  100%  +30  150%  110%
+Filthy Rag    -2   -2   -2   -2   -2   -4   98%  +20  110%  120%
 Mimic         +0   +1   -1   +2   +0   -1  108%  +15  250%  110%
 Possessor     -3   +0   -3   +0   -3   -7   60%  +15  250%  110%
 Ring          -3   +4   +1   +0   -1   +3   85%  +10  150%  110%
 Giant         +8   -3   -3   -2   +5   +1  117%  +46  200%  130%
+Orc           +2   -1   -5   +0   +3   -5   99%  +30  100%  140%
 Troll         +5   -5   -5   -1   +5   +0  112%  +50  150%  135%
 Lich          -3   +4   -4   +2   -1   +1   98%  +20  275%  135%
 Vampire       +4   +1   -3   +2   -2   +4   96%  +20  250%  130%
@@ -789,10 +838,12 @@ Jelly        Good          Bad           Good          Superb
 Quylthulg    Fair          Superb        Excellent     Superb       
 Leprechaun   Very Good     Heroic        Good          Heroic       
 Death-Sword  Good          Fair          Excellent     Very Good    
+Filthy Rag   Good          Bad           Excellent     Very Good    
 Mimic        Poor          Good          Fair          Fair         
 Possessor    Bad           Bad           Poor          Superb       
 Ring         Fair          Superb        Good          Excellent    
 Giant        Fair          Bad           Fair          Poor         
+Orc          Good          Very Bad      Fair          Fair         
 Troll        Poor          Bad           Fair          Fair         
 Lich         Fair          Superb        Very Good     Superb       
 Vampire      Poor          Excellent     Fair          Superb       
@@ -816,10 +867,12 @@ Jelly        Poor          Bad           Superb        Bad              0'
 Quylthulg    Fair          Good          Very Bad      Very Bad        50'
 Leprechaun   Fair          Poor          Fair          Fair            50'
 Death-Sword  Poor          Bad           Excellent     Very Bad        30'
+Filthy Rag   Poor          Bad           Good          Very Bad        20'
 Mimic        Fair          Poor          Very Good     Excellent        0'
 Possessor    Poor          Poor          Fair          Bad             70'
 Ring         Poor          Fair          Very Bad      Very Bad        50'
 Giant        Poor          Bad           Heroic        Fair            50'
+Orc          Poor          Bad           Excellent     Excellent       30'
 Troll        Poor          Bad           Superb        Bad             50'
 Lich         Fair          Good          Very Bad      Very Bad        50'
 Vampire      Good          Fair          Excellent     Poor            50'
