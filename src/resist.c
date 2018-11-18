@@ -80,6 +80,33 @@ static _res_info_t _resist_map[RES_MAX] = {
     { "Teleportation",  TERM_ORANGE,  OF_NO_TELE,     OF_INVALID,     OF_INVALID }
 };
 
+/* For rag use only */
+void res_calc_rag_bonuses(object_type *o_ptr)
+{
+    int i;
+    for (i = RES_BEGIN; i < RES_END; i++)
+    {
+        _res_info_t m = _resist_map[i];
+        if (m.flg != OF_INVALID && have_flag(o_ptr->flags, m.flg))
+            res_add_amt(i, rag_effect_pval(o_ptr, 0, m.flg, TRUE));
+        if (m.im_flg != OF_INVALID && have_flag(o_ptr->flags, m.im_flg))
+            res_add_immune(i);
+    }
+}
+
+void res_calc_rag_flags(object_type *o_ptr)
+{
+    int i;
+    for (i = RES_BEGIN; i < RES_END; i++)
+    {
+        _res_info_t m = _resist_map[i];
+        if (m.flg != OF_INVALID && rag_effect_pval(o_ptr, -1, m.flg, TRUE))
+            add_flag(o_ptr->flags, m.flg);
+        if (m.im_flg != OF_INVALID && rag_effect_pval(o_ptr, -1, m.im_flg, TRUE))
+            add_flag(o_ptr->flags, m.im_flg);
+    }
+}
+
 void res_calc_bonuses(u32b flgs[OF_ARRAY_SIZE])
 {
     int i;
@@ -231,6 +258,50 @@ int res_pct_aux(int which, int count)
         result = _lo_pcts[idx];
     else
         result = _hi_pcts[idx];
+
+    if (p_ptr->prace == RACE_MON_ARMOR)
+    {
+        if (!res_is_low(which))
+        {
+            switch (result)
+            {
+                case 30: result = 16; break;
+                case 40: result = 25; break;
+                case 45: result = 32; break;
+                case 47: result = 37; break;
+                case 48: result = 41; break;
+                case 49: result = 44; break;
+                case 50: result = 46; break;
+                case 51: result = 48; break;
+                case 52: result = 50; break;
+/*              case 30: result = 22; break;
+                case 40: result = 33; break;
+                case 45: result = 40; break;
+                case 47: result = 45; break;
+                case 50: result = 40; break;
+                case 65: result = 55; break;
+                case 72: result = 65; break;
+                case 75: result = 72; break;             */
+                default: break;
+            }
+        }
+        else
+        {
+            switch (result)
+            {
+                case 50: result = 32; break;
+                case 65: result = 47; break;
+                case 72: result = 56; break;
+                case 75: result = 63; break;
+                case 77: result = 68; break;
+                case 78: result = 72; break;
+                case 79: result = 75; break;
+                case 80: result = 78; break;
+                case 81: result = 80; break;
+                default: break;
+            }
+        }
+    }
 
     if (count < 0)
         result *= -1;
