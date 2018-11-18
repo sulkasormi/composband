@@ -159,7 +159,7 @@ static _race_group_t _race_groups[_MAX_RACE_GROUPS] = {
     { "The Undead",
         {RACE_EINHERI, RACE_SKELETON, RACE_SPECTRE, RACE_VAMPIRE, RACE_ZOMBIE, -1} },
     { "Other Races",
-        {RACE_ANDROID, RACE_BEASTMAN, RACE_CENTAUR, RACE_DRACONIAN, RACE_DOPPELGANGER, RACE_ENT,
+        {RACE_ANDROID, RACE_BEASTMAN, RACE_BOIT, RACE_CENTAUR, RACE_DRACONIAN, RACE_DOPPELGANGER, RACE_ENT,
          RACE_GOLEM, RACE_KLACKON, RACE_KUTAR, RACE_MIND_FLAYER, RACE_TONBERRY, RACE_WEREWOLF, RACE_YEEK,-1 } },
 };
 
@@ -562,9 +562,9 @@ static _race_group_t _mon_race_groups[_MAX_MON_RACE_GROUPS] = {
     { "Leprechaun",
         {RACE_MON_LEPRECHAUN, -1} },
     { "Mimic/Possessor",
-        {RACE_MON_SWORD, /*RACE_MON_ARMOR,*/ RACE_MON_MIMIC, RACE_MON_POSSESSOR, RACE_MON_RING, -1} },
+        {RACE_MON_SWORD, RACE_MON_ARMOR, RACE_MON_MIMIC, RACE_MON_POSSESSOR, RACE_MON_RING, -1} },
     { "Orc/Troll/Giant",
-        {RACE_MON_GIANT, /*RACE_MON_KOBOLD, RACE_MON_ORC,*/ RACE_MON_TROLL, -1} },
+        {RACE_MON_GIANT, /*RACE_MON_KOBOLD,*/ RACE_MON_ORC, RACE_MON_TROLL, -1} },
     { "Undead",
         {/*RACE_MON_GHOST,*/ RACE_MON_LICH, RACE_MON_VAMPIRE, /*RACE_MON_WRAITH, RACE_MON_ZOMBIE,*/ -1 } },
     { "Xorn",
@@ -627,6 +627,9 @@ static void _mon_race_help(FILE *fp, int idx)
     case RACE_MON_DRAGON:
         fputs("See <link:Dragons.txt> for more details on dragons.\n", fp);
         fputs("See <link:DragonRealms.txt> for more details on dragon realms.\n\n", fp);
+        break;
+    case RACE_MON_ORC:
+        fputs("See <link:Orcs.txt> for more details on orcs.\n\n", fp);
         break;
     case RACE_MON_DEMON:
         fputs("See <link:Demons.txt> for more details on demons.\n\n", fp);
@@ -972,6 +975,66 @@ static void _dragon_realms_help(FILE* fp)
         fprintf(fp, " %s", _skill_desc(realm->skills.fos, 1));
         fprintf(fp, " %s", _skill_desc(realm->skills.thn + 10, 2));
         fprintf(fp, " %s", _skill_desc(realm->skills.thb + 10, 2));
+        fputc('\n', fp);
+    }
+    fputs("\n</style>\n", fp);
+}
+
+static void _orcs_help(FILE* fp)
+{
+    int i;
+    fputs("<style:title>Orcs</style>\n\n", fp);
+    fputs(get_race_aux(RACE_MON_ORC, ORC_FIGHTER)->desc, fp);
+    fputs("\n\n", fp);
+
+    for (i = 0; i < ORC_MAX; i++)
+    {
+        race_t *race_ptr = get_race_aux(RACE_MON_ORC, i);
+
+        fprintf(fp, "<topic:%s><color:o>%s</color>\n", race_ptr->subname, race_ptr->subname);
+        fprintf(fp, "%s\n\n", race_ptr->subdesc);
+        _mon_race_help_table(fp, race_ptr);
+    }
+
+    fputs("<topic:Tables><style:heading>Table 1 - Orc Statistic Bonus Table</style>\n<style:table>\n", fp);
+    fprintf(fp, "<color:G>%-17.17s</color> <color:G>STR  INT  WIS  DEX  CON  CHR  Life  BHP  Exp  Shop</color>\n", "");
+    for (i = 0; i < ORC_MAX; i++)
+    {
+        race_t *race_ptr = get_race_aux(RACE_MON_ORC, i);
+        fprintf(fp, "%-17.17s %+3d  %+3d  %+3d  %+3d  %+3d  %+3d  %3d%%  %+3d  %3d%% %4d%%\n",
+            race_ptr->subname,
+            race_ptr->stats[A_STR], race_ptr->stats[A_INT], race_ptr->stats[A_WIS],
+            race_ptr->stats[A_DEX], race_ptr->stats[A_CON], race_ptr->stats[A_CHR],
+            race_ptr->life, race_ptr->base_hp, race_ptr->exp, race_ptr->shop_adjust
+        );
+    }
+    fputs("\n</style>\n", fp);
+
+    fputs("<topic:Skills1><style:heading>Table 2 - Orc Skill Bonus Table I</style>\n<style:table>\n", fp);
+    fprintf(fp, "%-17.17s <color:w>%-13.13s %-13.13s %-13.13s %-13.13s</color>\n", "", "Disarming", "Device", "Save", "Stealth");
+    for (i = 0; i < ORC_MAX; i++)
+    {
+        race_t *race_ptr = get_race_aux(RACE_MON_ORC, i);
+        fprintf(fp, "%-17.17s", race_ptr->subname);
+        fprintf(fp, " %s", _mon_race_dis_skill_desc(race_ptr));
+        fprintf(fp, " %s", _mon_race_dev_skill_desc(race_ptr));
+        fprintf(fp, " %s", _mon_race_sav_skill_desc(race_ptr));
+        fprintf(fp, " %s", _mon_race_stl_skill_desc(race_ptr));
+        fputc('\n', fp);
+    }
+    fputs("\n</style>\n", fp);
+
+    fputs("<topic:Skills2><style:heading>Table 3 - Orc Skill Bonus Table II</style>\n<style:table>\n", fp);
+    fprintf(fp, "%-17.17s <color:w>%-13.13s %-13.13s %-13.13s %-13.13s %s</color>\n", "", "Searching", "Perception", "Melee", "Bows", "Infra");
+    for (i = 0; i < ORC_MAX; i++)
+    {
+        race_t *race_ptr = get_race_aux(RACE_MON_ORC, i);
+        fprintf(fp, "%-17.17s", race_ptr->subname);
+        fprintf(fp, " %s", _skill_desc(race_ptr->skills.srh + 5*race_ptr->extra_skills.srh, 6));
+        fprintf(fp, " %s", _skill_desc(race_ptr->skills.fos + 5*race_ptr->extra_skills.fos, 6));
+        fprintf(fp, " %s", _mon_race_thn_skill_desc(race_ptr));
+        fprintf(fp, " %s", _mon_race_thb_skill_desc(race_ptr));
+        fprintf(fp, " %4d'", race_ptr->infra * 10);
         fputc('\n', fp);
     }
     fputs("\n</style>\n", fp);
@@ -1758,6 +1821,7 @@ void generate_spoilers(void)
     _help_file("Demons.txt", _demons_help);
     _help_file("Dragons.txt", _dragons_help);
     _help_file("DragonRealms.txt", _dragon_realms_help);
+    _help_file("Orcs.txt", _orcs_help);
 
     _csv_file("PossessorStats.csv", _possessor_stats_table);
     _csv_file("Skills-Racial.csv", _skills_race_table);
