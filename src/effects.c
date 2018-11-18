@@ -2912,7 +2912,7 @@ bool set_invuln(int v, bool do_dec)
         {
             if (p_ptr->invuln > v) return FALSE;
         }
-        else if (!IS_INVULN())
+        else if ((!IS_INVULN()) && (!p_ptr->ignore_invuln))
         {
             msg_print("Invulnerability!");
 
