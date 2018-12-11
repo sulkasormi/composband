@@ -685,7 +685,7 @@ static void do_cmd_quaff_potion_aux(obj_ptr obj)
         if (obj->loc.where == INV_FLOOR)
             stats_on_pickup(obj);
 
-        obj->number -= number;
+        obj_dec_number(obj, number, TRUE);
         obj_release(obj, OBJ_RELEASE_DELAYED_MSG);
     }
 }
@@ -905,7 +905,7 @@ static void do_cmd_read_scroll_aux(obj_ptr o_ptr)
     else
     {
         stats_on_use(o_ptr, number);
-        o_ptr->number -= number;
+        obj_dec_number(o_ptr, number, TRUE);
         obj_release(o_ptr, OBJ_RELEASE_DELAYED_MSG);
     }
 }
@@ -1110,7 +1110,7 @@ static void do_cmd_device_aux(obj_ptr obj)
                 char o_name[MAX_NLEN];
                 object_desc(o_name, obj, OD_OMIT_PREFIX | OD_NAME_ONLY | OD_COLOR_CODED);
                 msg_format("Desperation magic consumes your %s!", o_name);
-                obj->number = 0;
+                obj_zero(obj);
             }
             else
             {
@@ -1519,6 +1519,12 @@ static void do_cmd_activate_aux(obj_ptr obj)
         return;
     }
 
+    if (obj->timeout)
+    {
+        msg_print("It whines, glows and fades...");
+        return;
+    }
+
     effect = obj_get_effect(obj);
     if (!effect_try(&effect))
     {
@@ -1526,12 +1532,6 @@ static void do_cmd_activate_aux(obj_ptr obj)
         msg_print("You failed to activate it properly.");
         if (prompt_on_failure) msg_print(NULL);
         sound(SOUND_FAIL);
-        return;
-    }
-
-    if (obj->timeout)
-    {
-        msg_print("It whines, glows and fades...");
         return;
     }
 
