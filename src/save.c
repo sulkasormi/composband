@@ -1202,6 +1202,7 @@ static bool wr_savefile_new(savefile_ptr file)
     quiver_save(file);
     towns_save(file);
     home_save(file);
+    cornucopia_save(file);
 
     savefile_write_s16b(file, p_ptr->pet_follow_distance);
     savefile_write_s16b(file, p_ptr->pet_extra_flags);
