@@ -81,6 +81,9 @@ bool object_is_shoukinkubi(object_type *o_ptr)
     /* Unique monster */
     if (mon_is_wanted(o_ptr->pval)) return TRUE;
 
+    /* Implorington */
+    if ((!no_wilderness) && (o_ptr->pval == MON_IMPLORINGTON)) return TRUE;
+
     /* Not wanted */
     return FALSE;
 }
