@@ -257,12 +257,12 @@ Melee
     Stats                   Skills
     Strength      +3        Disarming   Good         
     Intelligence  -1        Device      Fair         
-    Wisdom        -1        Save        Poor         
+    Wisdom        -1        Save        Bad          
     Dexterity     +1        Stealth     Fair         
-    Constitution  +0        Searching   Fair         
-    Charisma      +0        Perception  Bad          
-    Life Rating  108%       Melee       Excellent    
-    Base HP       12        Bows        Good         
+    Constitution  +0        Searching   Poor         
+    Charisma      -1        Perception  Bad          
+    Life Rating  106%       Melee       Excellent    
+    Base HP       12        Bows        Fair         
     Experience   130%
     
   
@@ -1300,13 +1300,13 @@ Other
   identify - is very weak indeed.
   
     Stats                   Skills
-    Strength      -1        Disarming   Bad          
-    Intelligence  -1        Device      Bad          
+    Strength      -2        Disarming   Bad          
+    Intelligence  -1        Device      Very Bad     
     Wisdom        -1        Save        Bad          
     Dexterity     -1        Stealth     Fair         
-    Constitution  -1        Searching   Poor         
+    Constitution  -2        Searching   Poor         
     Charisma      -3        Perception  Bad          
-    Life Rating   95%       Melee       Fair         
+    Life Rating   94%       Melee       Fair         
     Base HP        0        Bows        Bad          
     Experience    70%
     
@@ -1346,7 +1346,7 @@ Rune-Knight    +2   +1   -1   +1   +0   +1  102%   +6  150%
 Samurai        +3   -2   +1   +2   +1   +1  109%  +12  130%
 Warrior        +4   -2   -2   +2   +2   +1  115%  +18  100%
 Weaponmaster   +4   -3   -2   -1   +2   +1  107%  +12  135%
-Weaponsmith    +3   -1   -1   +1   +0   +0  108%  +12  130%
+Weaponsmith    +3   -1   -1   +1   +0   -1  106%  +12  130%
 Archer         +2   -1   -1   +2   +1   +0  111%  +12  110%
 Sniper         +2   -1   -1   +2   +1   +0  100%   +4  110%
 Force-Trainer  +0   -1   +3   +2   +1   +0  100%   +4  135%
@@ -1385,7 +1385,7 @@ Lawyer         -3   +2   +0   +0   -1   +1  102%  +12  115%
 Politician     -2   +1   +0   -2   +0   +2  100%   +9  130%
 Rage-Mage      +3   -2   -2   -2   +2   +1  106%   +6  150%
 Skillmaster    +0   +0   +0   +0   +0   +0  100%  +10  130%
-Tourist        -1   -1   -1   -1   -1   -3   95%   +0   70%
+Tourist        -2   -1   -1   -1   -2   -3   94%   +0   70%
 Wild-Talent    -1   +1   +1   +1   -2   +1  100%   +4  110%
 
 
@@ -1400,7 +1400,7 @@ Rune-Knight   Fair          Good          Fair          Fair
 Samurai       Good          Bad           Fair          Fair         
 Warrior       Good          Bad           Fair          Fair         
 Weaponmaster  Fair          Bad           Fair          Fair         
-Weaponsmith   Good          Fair          Poor          Fair         
+Weaponsmith   Good          Fair          Bad           Fair         
 Archer        Excellent     Fair          Fair          Very Good    
 Sniper        Good          Fair          Poor          Excellent    
 Force-Trainer Good          Very Good     Good          Very Good    
@@ -1439,7 +1439,7 @@ Lawyer        Superb        Very Good     Good          Good
 Politician    Superb        Fair          Good          Superb       
 Rage-Mage     Bad           Bad           Superb        Bad          
 Skillmaster   Very Bad      Very Bad      Very Bad      Poor         
-Tourist       Bad           Bad           Bad           Fair         
+Tourist       Bad           Very Bad      Bad           Fair         
 Wild-Talent   Fair          Good          Fair          Fair         
 
 
@@ -1454,7 +1454,7 @@ Rune-Knight   Fair          Poor          Fair          Poor
 Samurai       Poor          Bad           Superb        Good         
 Warrior       Poor          Bad           Superb        Superb       
 Weaponmaster  Poor          Bad           Superb        Bad          
-Weaponsmith   Fair          Bad           Excellent     Good         
+Weaponsmith   Poor          Bad           Excellent     Fair         
 Archer        Fair          Poor          Very Good     Heroic       
 Sniper        Good          Fair          Poor          Superb       
 Force-Trainer Good          Fair          Fair          Fair         
