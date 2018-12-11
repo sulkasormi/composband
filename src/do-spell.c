@@ -951,7 +951,7 @@ bool cast_summon_greater_demon(void)
     }
     else
     {
-        msg_print("No Greater Demon arrive.");
+        msg_print("No Greater Demons arrive.");
     }
 
     return TRUE;
@@ -1076,7 +1076,7 @@ static cptr do_life_spell(int spell, int mode)
         break;
     case 6:
         if (name) return "Cure Poison";
-        if (desc) return "Cure poison status.";
+        if (desc) return "Relieves poisoning a bit. Completely cures low-level poisoning.";
         if (cast)
             set_poisoned(p_ptr->poisoned - MAX(125, p_ptr->poisoned / 3), TRUE);
         break;
@@ -2195,7 +2195,7 @@ static cptr do_nature_spell(int spell, int mode)
 
     case 7:
         if (name) return "Cure Wounds & Poison";
-        if (desc) return "Heals all cut and poison status. Heals HP a little.";
+        if (desc) return "Heals all cuts. Heals HP a little. Relieves poisoning a bit; completely cures low-level poisoning.";
 
         {
             int dice = 2;
@@ -4967,7 +4967,7 @@ static cptr do_arcane_spell(int spell, int mode)
 
     case 13:
         if (name) return "Cure Poison";
-        if (desc) return "Cures poison status.";
+        if (desc) return "Relieves poisoning a bit. Completely cures low-level poisoning.";
 
         {
             if (cast)
@@ -5586,7 +5586,7 @@ static cptr do_craft_spell(int spell, int mode)
 
     case 14:
         if (name) return "Curing";
-        if (desc) return "It cures what ails you including fear, poison, stunning, cuts and hallucination.";
+        if (desc) return "It cures what ails you including fear, poison, stunning, cuts and hallucination. Serious poisoning may not be cured completely.";
         {
             if (cast)
             {
