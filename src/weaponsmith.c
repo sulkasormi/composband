@@ -2623,8 +2623,8 @@ class_t *weaponsmith_get_class(void)
 
     if (!init)
     {           /* dis, dev, sav, stl, srh, fos, thn, thb */
-    skills_t bs = { 30,  28,  25,   1,  20,  10,  60,  45};
-    skills_t xs = { 10,  10,  10,   0,   0,   0,  21,  15};
+    skills_t bs = { 30,  23,  23,   1,  15,  10,  60,  45};
+    skills_t xs = { 10,   9,   9,   0,   0,   0,  19,  14};
 
         me.name = "Weaponsmith";
         me.desc = "A Weaponsmith can improve weapons and armors for him or herself. "
@@ -2646,10 +2646,10 @@ class_t *weaponsmith_get_class(void)
         me.stats[A_WIS] = -1;
         me.stats[A_DEX] =  1;
         me.stats[A_CON] =  0;
-        me.stats[A_CHR] =  0;
+        me.stats[A_CHR] = -1;
         me.base_skills = bs;
         me.extra_skills = xs;
-        me.life = 108;
+        me.life = 106;
         me.base_hp = 12;
         me.exp = 130;
         me.pets = 40;
