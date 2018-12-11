@@ -1953,7 +1953,7 @@ static void do_name_pet(void)
         }
         if (r_info[m_ptr->r_idx].flags1 & RF1_UNIQUE)
         {
-            msg_format("You cannot change name of this monster!");
+            msg_format("You cannot rename this monster!");
             return;
         }
         monster_desc(m_name, m_ptr, 0);
