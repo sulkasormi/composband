@@ -85,6 +85,7 @@ wizardstaff
 #########################################
 
 ?unidentified artifact items
+?unidentified ego items
 
 #########################################
 # Armor
@@ -92,6 +93,7 @@ wizardstaff
 
 power dragon
 balance dragon
+t-shirt
 
 dragon gloves
 dragon boots
@@ -104,6 +106,8 @@ dragon fang
 ?:[EQU $CLASS Politician]
 sexy swimsuit#!sdk
 ?:1
+
+~sexy swimsuit
 
 #elven cloak
 shadow cloak
@@ -128,6 +132,8 @@ rune sword
 ?:[EQU $CLASS Mauler]
 weapons more weight than 39
 ?:1
+
+~gun
 
 #########################################
 # Corpses
