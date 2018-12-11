@@ -2812,6 +2812,32 @@ static void _ego_create_body_armor(object_type *o_ptr, int level)
                     effect_add_random(o_ptr, BIAS_DEMON);
             }
             break;
+        case EGO_BODY_IMP:
+            if (o_ptr->tval == TV_HARD_ARMOR)
+            {
+                done = FALSE;
+                break;
+            }
+            while (1)
+            {
+                bool pval_used = FALSE;
+                if (one_in_(2)) { add_flag(o_ptr->flags, OF_DEX); pval_used = TRUE; }
+                if (one_in_(2)) { add_flag(o_ptr->flags, OF_DEC_WIS); pval_used = TRUE; }
+                if (one_in_(7)) { add_flag(o_ptr->flags, OF_INT); pval_used = TRUE; }
+                if (one_in_(7)) { add_flag(o_ptr->flags, OF_DEC_STR); pval_used = TRUE; }
+                if ((pval_used) && (one_in_(9))) add_flag(o_ptr->flags, OF_STEALTH);
+                if (pval_used) break;
+            }
+            if ((level > 55) && (one_in_(5)))
+                add_flag(o_ptr->flags, OF_RES_NETHER);
+            if (((level > 66) || (one_in_(11))) && (one_in_(6)))
+                add_flag(o_ptr->flags, OF_SPEED);
+            if (one_in_(ACTIVATION_CHANCE * 2))
+                effect_add_random(o_ptr, BIAS_DEMON);
+            if (one_in_(2)) o_ptr->to_h += 2;
+            break;
+        case EGO_BODY_AUGMENTATION:
+            break;
         }
     }
 }
