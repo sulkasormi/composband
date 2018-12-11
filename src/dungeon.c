@@ -31,43 +31,26 @@ static int wild_regen = 20;
  */
 byte value_check_aux1(object_type *o_ptr)
 {
-    /* Artifacts */
     if (object_is_artifact(o_ptr))
     {
-        /* Cursed/Broken */
         if (object_is_cursed(o_ptr) || object_is_broken(o_ptr)) return FEEL_TERRIBLE;
-
-        /* Normal */
         return FEEL_SPECIAL;
     }
 
-    /* Ego-Items */
     if (object_is_ego(o_ptr))
     {
-        /* Cursed/Broken */
-        if ((object_is_cursed(o_ptr) || object_is_broken(o_ptr)) && !object_is_device(o_ptr)) return FEEL_AWFUL;
-
-        /* Normal */
+        if (object_is_cursed(o_ptr) || object_is_broken(o_ptr)) return FEEL_AWFUL;
         return FEEL_EXCELLENT;
     }
 
-    /* Cursed items */
-    if (object_is_cursed(o_ptr) && !object_is_device(o_ptr)) return FEEL_BAD;
-
-    /* Broken items */
+    if (object_is_cursed(o_ptr)) return FEEL_BAD;
     if (object_is_broken(o_ptr)) return FEEL_BROKEN;
-
     if (o_ptr->tval == TV_RING || o_ptr->tval == TV_AMULET) return FEEL_AVERAGE;
 
-    /* Good "armor" bonus */
     if (o_ptr->to_a > 0) return FEEL_GOOD;
-
     if (o_ptr->tval == TV_GLOVES || o_ptr->tval == TV_BOOTS) return FEEL_AVERAGE;
-
-    /* Good "weapon" bonus */
     if (o_ptr->to_h + o_ptr->to_d > 0) return FEEL_GOOD;
 
-    /* Default to "average" */
     return FEEL_AVERAGE;
 }
 
@@ -96,6 +79,9 @@ static byte value_check_aux2(object_type *o_ptr)
 
     /* Good armor bonus */
     if (o_ptr->to_a > 0) return FEEL_ENCHANTED;
+
+    /* Don't be fooled by native to-hit/dam bonuses */
+    if (o_ptr->tval == TV_GLOVES || o_ptr->tval == TV_BOOTS) return FEEL_AVERAGE;
 
     /* Good weapon bonuses */
     if (o_ptr->to_h + o_ptr->to_d > 0) return FEEL_ENCHANTED;
