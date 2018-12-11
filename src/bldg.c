@@ -2693,17 +2693,10 @@ static bool _reforge_artifact_exit(void)
     return FALSE;
 }
 
-static bool _reforge_artifact(void)
+int reforge_limit(void)
 {
-    int  cost, extra_cost = 0, value;
-    char o_name[MAX_NLEN];
-    object_type *src, *dest;
     int f = ((p_ptr->fame <= 128) || (p_ptr->fame >= 224)) ? p_ptr->fame : (((p_ptr->fame - 128) * 3) / 4) + 128;
     /* 90K max kind of removed - stronger objects are allowed but get scaled down */
-    int src_max_power = f*150 + f*f*3/2;
-    int dest_max_power = 0;
-    int src_weight = 80;
-
     if (coffee_break) /* Accelerated reforging */
     {
         int i;
@@ -2720,8 +2713,18 @@ static bool _reforge_artifact(void)
         vec_free(v);
 
         if (failed_quests < 2) f += ((p_ptr->lev * 3 / 2) / (1 + failed_quests));
-        src_max_power = f*150 + f*f*3/2;
     }
+    return (f*150 + f*f*3/2);
+}
+
+static bool _reforge_artifact(void)
+{
+    int  cost, extra_cost = 0, value;
+    char o_name[MAX_NLEN];
+    object_type *src, *dest;
+    int src_max_power = reforge_limit();
+    int dest_max_power = 0;
+    int src_weight = 80;
 
     if (p_ptr->prace == RACE_MON_SWORD || p_ptr->prace == RACE_MON_RING || p_ptr->prace == RACE_MON_ARMOR)
     {
@@ -3831,6 +3834,14 @@ static void bldg_process_command(building_type *bldg, int i)
     case BACT_SELL_PHOTO:
         _sell_photo();
         break;
+    case BACT_LOAN:
+    case BACT_DEPOSIT:
+    case BACT_INSURANCE:
+    case BACT_CORNY_CASH_IN:
+    case BACT_VIEW_POLICY:
+    case BACT_VIEW_POSTER:
+        cornucopia_do_command(bldg, bact);
+        break;
     }
 
     if (paid)
@@ -3840,7 +3851,6 @@ static void bldg_process_command(building_type *bldg, int i)
         if (prace_is_(RACE_MON_LEPRECHAUN))
             p_ptr->update |= (PU_BONUS | PU_HP | PU_MANA);
     }
-
 }
 
 
@@ -3947,6 +3957,11 @@ void do_cmd_bldg(void)
             energy_use = 0;
         }
 
+        return;
+    }
+    else if (prace_is_(RACE_MON_LEPRECHAUN) && strpos("Cornucopia", bldg->name))
+    {
+        msg_print("We don't serve your kind in here!");
         return;
     }
     else if (p_ptr->inside_battle)
