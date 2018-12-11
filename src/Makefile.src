@@ -38,8 +38,8 @@ WINMAINFILES = $(PROGNAME).res main-win.o readdib.o
 ANGFILES = \
     alky.o archaeologist.o archer.o artifact.o autopick.o virtue.o bard.o \
     beastmaster.o berserker.o birth.o bldg.o blood_knight.o blood_mage.o \
-    cavalry.o cave.o chaos_warrior.o classes.o cmd1.o cmd2.o cmd3.o cmd4.o cmd5.o \
-    cmd6.o combat.o demigod.o devicemaster.o devices.o do-spell.o doppelganger.o duelist.o dungeon.o \
+    cavalry.o cave.o chaos_warrior.o classes.o cmd1.o cmd2.o cmd3.o cmd4.o cmd5.o cmd6.o \
+    combat.o corny.o demigod.o devicemaster.o devices.o do-spell.o doppelganger.o duelist.o dungeon.o \
     ego.o effects.o equip.o fear.o files.o flavor.o floors.o force_trainer.o generate.o gf.o gray_mage.o \
     grid.o hex.o high_mage.o hissatsu.o home.o init1.o init2.o int-map.o inv.o lawyer.o load.o mage.o \
     magic_eater.o mauler.o melee1.o melee2.o menu.o message.o mindcrafter.o mirror_master.o \
