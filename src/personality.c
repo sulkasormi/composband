@@ -478,6 +478,7 @@ static void _munchkin_calc_bonuses(void)
     res_add(RES_BLIND);
     res_add(RES_CONF);
     p_ptr->hold_life = TRUE;
+    p_ptr->munchkin_pseudo_id = TRUE;
     if (p_ptr->pclass != CLASS_NINJA)
         p_ptr->lite = TRUE;
 
