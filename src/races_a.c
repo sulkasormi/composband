@@ -624,7 +624,7 @@ static void _boit_vomit_spell(int cmd, variant *res)
             take_hit(DAMAGE_NOESCAPE, 10, "vomiting on an empty stomach");
             energy_use += 15;
         }
-        set_food(PY_FOOD_STARVE - 1);
+        set_food(MIN(p_ptr->food - 15, PY_FOOD_STARVE + 2));
         set_poisoned(0, TRUE);
         var_set_bool(res, TRUE);
         break;
