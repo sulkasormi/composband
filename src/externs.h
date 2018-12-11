@@ -198,6 +198,7 @@ extern bool very_nice_summon_hack;
 extern bool predictable_energy_hack;
 extern bool delay_autopick_hack;
 extern bool monsters_damaged_hack;
+extern bool shop_exit_hack;
 
 /*
  * Software options (set via the '=' command).  See "tables.c"
@@ -844,6 +845,17 @@ extern void increase_ball_num(int idx);
 extern void capture_ball_opening(object_type *j_ptr, int y, int x, bool from_drop);
 extern bool capture_ball_release(object_type *o_ptr, int y, int x, int mode);
 extern void empty_capture_ball(object_type *o_ptr);
+
+/* corny.c */
+extern void cornucopia_mark_destroyed(int policy, int amt);
+extern void cornucopia_object_destroyed(object_type *o_ptr, int amt, bool mon_attack);
+extern void cornucopia_do_command(building_type *bldg, int bact);
+extern void cornucopia_init(void);
+extern void cornucopia_save(savefile_ptr file);
+extern void cornucopia_load(savefile_ptr file);
+extern int  cornucopia_item_policy(object_type *o_ptr);
+extern void cornucopia_item_disenchanted(object_type *o_ptr, int new_to_a, int new_to_h, int new_to_d, int new_pval);
+extern void cornucopia_print_stats(doc_ptr doc);
 
 /* devices.c */
 extern bool class_uses_spell_scrolls(int mika);
@@ -1573,7 +1585,7 @@ extern int set_acid_destroy(object_type *o_ptr);
 extern int set_elec_destroy(object_type *o_ptr);
 extern int set_fire_destroy(object_type *o_ptr);
 extern int set_cold_destroy(object_type *o_ptr);
-extern void inven_damage(inven_func typ, int perc, int which);
+extern void inven_damage(int who, inven_func typ, int perc, int which);
 extern bool rustproof(void);
 extern bool curse_armor(int slot);
 extern bool curse_weapon(bool force, int slot);
@@ -1591,6 +1603,7 @@ extern void battle_monsters(void);
 extern void do_cmd_bldg(void);
 extern void do_cmd_quest(void);
 extern bool tele_town(void);
+extern int reforge_limit(void);
 
 /* combat.c */
 extern int bow_energy(int sval);
