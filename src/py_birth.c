@@ -2300,6 +2300,7 @@ static int _stats_score(void)
               <tips and help>
    ----------------------------------- */
 
+static void _name_line(doc_ptr doc);
 static void _race_class_header(doc_ptr doc);
 static void _race_class_info(doc_ptr doc);
 
@@ -2310,6 +2311,7 @@ static void _race_class_top(doc_ptr doc)
     cols[0] = doc_alloc(27);
     cols[1] = doc_alloc(53);
 
+    _name_line(doc);
     _race_class_header(cols[0]);
     _race_class_info(cols[1]);
     doc_insert_cols(doc, cols, 2, 1);
@@ -2328,7 +2330,6 @@ static void _magic_line(doc_ptr doc);
 
 static void _race_class_header(doc_ptr doc)
 {
-    _name_line(doc);
     _sex_line(doc);
     if (game_mode != GAME_MODE_BEGINNER)
         _pers_line(doc);
@@ -2460,7 +2461,6 @@ static void _race_class_info(doc_ptr doc)
     dragon_realm_ptr realm_ptr = dragon_get_realm(p_ptr->dragon_realm); /* 0 is OK */
     int spell_stat = get_spell_stat();
     
-    doc_newline(doc);
     if (_rcp_state == _RCP_STATS)
     {
         s16b stats[MAX_STATS] = {0};
@@ -2600,7 +2600,7 @@ static void _change_name(void)
         char tmp[64];
         strcpy(tmp, player_name);
         Term_gotoxy(7, 0); /* Hack */
-        if (askfor(tmp, 15))
+        if (askfor(tmp, 22))
             strcpy(player_name, tmp);
         if (0 == strlen(player_name))
             strcpy(player_name, "PLAYER");
@@ -2672,6 +2672,7 @@ static void _bounty_uniques(void)
             int          id = get_mon_num(MAX_DEPTH - 1);
             mon_race_ptr race = &r_info[id];
 
+            if ((id == MON_IMPLORINGTON) && (!no_wilderness)) continue;
             if (!(race->flags1 & RF1_UNIQUE)) continue;
             if (race->flags1 & RF1_NO_QUEST) continue;
             if (race->flagsx & RFX_WANTED) continue;
@@ -2842,6 +2843,7 @@ static void _birth_finalize(void)
     towns_init();
     home_init();
     virtue_init();
+    cornucopia_init();
 
     /* Suppress any deprecated monsters for this new game. Upgrading an existing
      * game should continue to generate deprecated monsters, since they may be wanted
