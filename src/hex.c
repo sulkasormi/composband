@@ -31,7 +31,7 @@ bool stop_hex_spell_all(void)
 
     /* Redraw status */
     p_ptr->update |= (PU_BONUS | PU_HP | PU_MANA | PU_SPELLS);
-    p_ptr->redraw |= (PR_EXTRA | PR_HP | PR_MANA);
+    p_ptr->redraw |= (PR_EXTRA | PR_HP | PR_MANA | PR_STATUS);
 
     return TRUE;
 }
@@ -106,7 +106,7 @@ bool stop_hex_spell(void)
 
     /* Redraw status */
     p_ptr->update |= (PU_BONUS | PU_HP | PU_MANA | PU_SPELLS);
-    p_ptr->redraw |= (PR_EXTRA | PR_HP | PR_MANA);
+    p_ptr->redraw |= (PR_EXTRA | PR_HP | PR_MANA | PR_STATUS);
 
     return flag;
 }
