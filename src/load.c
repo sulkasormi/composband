@@ -1328,6 +1328,7 @@ static errr rd_savefile_new_aux(savefile_ptr file)
     quiver_load(file);
     towns_load(file);
     home_load(file);
+    cornucopia_load(file);
 
     p_ptr->pet_follow_distance = savefile_read_s16b(file);
     p_ptr->pet_extra_flags = savefile_read_s16b(file);
