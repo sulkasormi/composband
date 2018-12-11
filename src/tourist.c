@@ -20,6 +20,14 @@ static void _take_photo_spell(int cmd, variant *res)
         project_length = 1;
         fire_beam(GF_PHOTO, dir, 1);
         var_set_bool(res, TRUE);
+
+        /* Maybe vampires shouldn't do photography... */
+        if ((prace_is_(RACE_VAMPIRE)) && (!res_save(RES_LITE, 20)))
+        {
+            int dam = res_calc_dam(RES_LITE, 20);
+            msg_print("You cringe from the flash!");
+            take_hit(DAMAGE_NOESCAPE, dam, "taking a photograph");
+        }
         break;
     }
     default:
@@ -141,8 +149,8 @@ class_t *tourist_get_class(void)
 
     if (!init)
     {           /* dis, dev, sav, stl, srh, fos, thn, thb */
-    skills_t bs = { 15,  18,  28,   1,  12,   2,  48,  20};
-    skills_t xs = {  5,   7,   9,   0,   0,   0,  13,  11};
+    skills_t bs = { 15,  18,  28,   1,  12,   2,  46,  19};
+    skills_t xs = {  5,   6,   9,   0,   0,   0,  12,  10};
 
         me.name = "Tourist";
         me.desc = "Tourists have visited this world for the purpose of sightseeing. "
@@ -155,15 +163,15 @@ class_t *tourist_get_class(void)
                     "Photograph' and 'Identify True'. Their magic is based on Arcane, "
                     "and - aside from identify - is very weak indeed.";
 
-        me.stats[A_STR] = -1;
+        me.stats[A_STR] = -2;
         me.stats[A_INT] = -1;
         me.stats[A_WIS] = -1;
         me.stats[A_DEX] = -1;
-        me.stats[A_CON] = -1;
+        me.stats[A_CON] = -2;
         me.stats[A_CHR] = -3;
         me.base_skills = bs;
         me.extra_skills = xs;
-        me.life = 95;
+        me.life = 94;
         me.base_hp = 0;
         me.exp = 70;
         me.pets = 40;
