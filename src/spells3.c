@@ -1078,6 +1078,7 @@ bool apply_disenchant(int mode)
             msg_format("Your %s was disenchanted!", o_name);
             virtue_add(VIRTUE_HARMONY, 1);
             virtue_add(VIRTUE_ENCHANTMENT, -2);
+            if (o_ptr->insured) cornucopia_item_disenchanted(o_ptr, to_a, to_h, to_d, pval);
 
             p_ptr->update |= (PU_BONUS);
             p_ptr->window |= (PW_EQUIP);
@@ -2058,14 +2059,14 @@ bool alchemy(void)
         copy.number = amt;
         if (_alchemy_aux(&copy, force))
         {
-            prompt.obj->number -= amt;
+            obj_dec_number(prompt.obj, amt, TRUE);
             obj_release(prompt.obj, 0);
             return TRUE;
         }
     }
     if (_alchemy_aux(prompt.obj, force))
     {
-        prompt.obj->number = 0;
+        obj_zero(prompt.obj);
         obj_release(prompt.obj, 0);
         return TRUE;
     }
@@ -2536,6 +2537,7 @@ bool mundane_spell(bool only_equip)
         byte mitze_tp = prompt.obj->mitze_type;
         byte mitze_lv = prompt.obj->mitze_level;
         s32b mitze_tn = prompt.obj->mitze_turn;
+        int  insured = prompt.obj->insured;
 
         /* Wipe it clean ... note this erases info that must
          * not be erased. Thus, all the code to remember and restore ... sigh. */
@@ -2552,6 +2554,12 @@ bool mundane_spell(bool only_equip)
         prompt.obj->mitze_type = mitze_tp;
         prompt.obj->mitze_level = mitze_lv;
         prompt.obj->mitze_turn = mitze_tn;
+        if (insured)
+        {
+            prompt.obj->insured = insured;
+            cornucopia_mark_destroyed(cornucopia_item_policy(prompt.obj), prompt.obj->number);
+            prompt.obj->insured = 0;
+        }
     }
     p_ptr->update |= PU_BONUS;
     android_calc_exp();
@@ -2811,7 +2819,7 @@ bool recharge_from_device(int power)
             object_desc(name, src_ptr, OD_OMIT_PREFIX | OD_COLOR_CODED);
             msg_format("Recharging consumes your %s!", name);
 
-            src_ptr->number = 0;
+            obj_zero(src_ptr);
             obj_release(src_ptr, OBJ_RELEASE_QUIET);
         }
     }
@@ -3842,7 +3850,7 @@ int set_cold_destroy(object_type *o_ptr)
  * New-style wands and rods handled correctly. -LM-
  * Returns TRUE if we must force a -more- prompt.
  */
-static bool _damage_obj(obj_ptr obj, int p1, int p2, int which_res)
+static bool _damage_obj(obj_ptr obj, int p1, int p2, int which_res, bool mon_attack)
 {
     int i, amt = 0;
     bool warn_player = FALSE;
@@ -3879,12 +3887,14 @@ static bool _damage_obj(obj_ptr obj, int p1, int p2, int which_res)
 
         stats_on_m_destroy(obj, amt);
 
-        obj->number -= amt;
+        if (obj->insured) cornucopia_object_destroyed(obj, amt, mon_attack);
+
+        obj->number -= amt; /* calling obj_dec_number() here would be bad */
         obj_release(obj, OBJ_RELEASE_QUIET);
     }
     return warn_player;
 }
-void inven_damage(inven_func typ, int p1, int which)
+void inven_damage(int who, inven_func typ, int p1, int which)
 {
     slot_t slot;
     int    p2 = 100;
@@ -3906,7 +3916,7 @@ void inven_damage(inven_func typ, int p1, int which)
         if (object_is_artifact(obj)) continue;
         if (!typ(obj)) continue;
 
-        if (_damage_obj(obj, p1, p2, which)) varoita = TRUE;
+        if (_damage_obj(obj, p1, p2, which, (who > 0))) varoita = TRUE;
     }
 
     /* Quiver */
@@ -3924,7 +3934,7 @@ void inven_damage(inven_func typ, int p1, int which)
                 if (object_is_artifact(obj)) continue;
                 if (!typ(obj)) continue;
 
-                (void)_damage_obj(obj, p1, p2, which);
+                (void)_damage_obj(obj, p1, p2, which, (who > 0));
             }
         }
     }
