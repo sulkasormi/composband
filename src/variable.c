@@ -178,6 +178,7 @@ bool very_nice_summon_hack = FALSE;
 bool predictable_energy_hack = FALSE;
 bool delay_autopick_hack = FALSE;
 bool monsters_damaged_hack = FALSE;
+bool shop_exit_hack = FALSE;
 s16b run_count = 0;
 
 int current_flow_depth = 0;
