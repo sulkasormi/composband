@@ -1123,7 +1123,9 @@ static bool _jeweler_create(obj_ptr obj, u32b mode)
     int l1 = 20 + spread/4 + randint0(3*spread/4);
     int l2 = 20 + spread/4 + randint0(3*spread/4);
     int k_idx = _get_k_idx(_jeweler_stock_p, _mod_lvl(l1));
-    return _create(obj, k_idx, _mod_lvl(l2), mode);
+    bool okei = _create(obj, k_idx, _mod_lvl(l2), mode);
+    if ((okei) && (object_is_artifact(obj))) return (one_in_(6)); /* too many artifacts in jewelry shop */
+    return okei;
 }
 
 /************************************************************************
@@ -1547,10 +1549,12 @@ static void _loop(_ui_context_ptr context)
         pack_unlock();
         notice_stuff(); /* PW_INVEN and PW_PACK ... */
         handle_stuff(); /* Plus 'C' to view character sheet */
-        if (pack_overflow_count() > ((pack_is_full()) ? 0 : 1))
+        if ((shop_exit_hack) || (pack_overflow_count() > ((pack_is_full()) ? 0 : 1)))
         {
-            msg_print("<color:v>Your pack is overflowing!</color> It's time for you to leave!");
+            if (shop_exit_hack) msg_print("It's time for you to leave!");
+            else msg_print("<color:v>Your pack is overflowing!</color> It's time for you to leave!");
             msg_print(NULL);
+            shop_exit_hack = FALSE;
             break;
         }
     }
@@ -1734,11 +1738,19 @@ static void _buy(_ui_context_ptr context)
     if (amt < prompt.obj->number)
     {
         obj_t copy = *prompt.obj;
+        int vakuutettu = 0;
+        if (prompt.obj->insured)
+        {
+            vakuutettu = MAX(0, (prompt.obj->insured % 100) - prompt.obj->number + amt);
+            if (vakuutettu) copy.insured = (prompt.obj->insured / 100) * 100 + vakuutettu;
+            else copy.insured = 0;
+        }
         copy.number = amt;
         if (_buy_aux(context->shop, &copy))
         {
             obj_identify_fully(prompt.obj);
             prompt.obj->number -= amt;
+            if (vakuutettu) obj_dec_insured(prompt.obj, vakuutettu);
             prompt.obj->marked |= OM_DELAYED_MSG;
             p_ptr->notice |= PN_CARRY;
             if (prompt.obj->loc.where == INV_QUIVER)
@@ -1918,9 +1930,19 @@ static void _sell(_ui_context_ptr context)
         if (amt < obj->number)
         {
             obj_t copy = *obj;
+            int vakuutettu = 0;
+            if (obj->insured)
+            {
+                vakuutettu = MIN((obj->insured % 100), amt);
+                if (vakuutettu) copy.insured = (obj->insured / 100) * 100 + vakuutettu;
+                else copy.insured = 0;
+            }
             copy.number = amt;
             if (_sell_aux(context->shop, &copy))
+            {
                 obj->number -= amt;
+                if (vakuutettu) obj_dec_insured(obj, vakuutettu);
+            }
         }
         else
         {
@@ -2087,6 +2109,7 @@ static int _cull(shop_ptr shop, int target)
 {
     int ct = inv_count_slots(shop->inv, obj_exists);
     int attempt;
+    int old_num;
 
     assert(ct >= target);
     for (attempt = 1; ct > target && attempt < 100; attempt++)
@@ -2100,12 +2123,21 @@ static int _cull(shop_ptr shop, int target)
         assert(obj->number > 0);
         assert (!(obj->marked & OM_RESERVED));
 
+        old_num = obj->number;
+
         if (one_in_(2))
             obj->number = (obj->number + 1)/2;
         else if (one_in_(2))
             obj->number--;
         else
             obj->number = 0;
+
+        if (obj->insured) /* Ye gods */
+        {
+            int poisto = old_num - obj->number;
+            obj->number = old_num;
+            obj_dec_number(obj, poisto, TRUE);
+        }
 
         if (!obj->number)
         {
@@ -2221,7 +2253,16 @@ bool shop_common_cmd_handler(int cmd)
     case '\r':
         return TRUE;
     case 'w':
+        if (pack_overflow_count()) return FALSE;
         equip_wield_ui();
+
+        /* This can happen if we equipped from a pile */
+        if (pack_overflow_count() > ((pack_is_full()) ? 0 : 1))
+        {
+            shop_exit_hack = TRUE;
+        }
+
+        pack_overflow();
         return TRUE;
     case 't': case 'T':
         equip_takeoff_ui();
