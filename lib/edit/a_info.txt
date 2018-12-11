@@ -369,10 +369,10 @@ D:truly more than it appears.
 # The Leather Scale Mail 'Thalkettoth'
 
 N:28:'Thalkettoth'
-I:36:11:3
+I:36:11:2
 W:30:3:60:25000
 P:11:1d1:-1:0:25
-F:DEX | HIDE_TYPE | RES_ACID | RES_SHARDS | XTRA_H_RES
+F:SPEED | DEX | HIDE_TYPE | RES_ACID | RES_SHARDS | XTRA_H_RES
 D:An amazingly light tunic and skirt sewn with thick, overlapping scales of
 D:hardened leather whose wearer moves with agility and assurance.
 
@@ -2478,7 +2478,7 @@ N:233:of the Heavenly Maiden
 I:35:5:4
 W:50:3:0:45000
 P:0:0d0:0:0:20
-F:CHR | LEVITATION | SEE_INVIS | FREE_ACT |
+F:CHR | LEVITATION | SEE_INVIS | FREE_ACT | AGGRAVATE
 F:RES_COLD | RES_ELEC | XTRA_H_RES | XTRA_POWER
 E:RECALL:25:200
 E:Your cloak glows soft white...
@@ -2856,7 +2856,7 @@ N:269:of Vecna
 I:39:10:2
 W:66:222:1:666666
 P:0:1d1:0:0:0
-F:INT | SPELL_CAP
+F:INT | SPELL_CAP | NIGHT_VISION |
 F:TELEPATHY | PERMA_CURSE | QUESTITEM | INSTA_ART
 D:It is a shriveled vestige of the once
 D:great Emperor Lich.
@@ -3470,7 +3470,7 @@ I:23:16:3
 W:60:50:150:150000
 P:0:4d6:19:12:0
 F:SLAY_EVIL | BRAND_FIRE | RES_COLD | RES_DARK | LITE | SHOW_MODS | RIDING |
-F:XTRA_RES_OR_POWER | SPEED | STR | DEX | RES_CHAOS | VORPAL
+F:XTRA_RES_OR_POWER | SPEED | STR | DEX | RES_CHAOS | VORPAL | BLESSED |
 D:A shining blade so sturdy it could even hold the stars in place.
 
 N:342:Lava Lamp of Telmora
@@ -3683,6 +3683,23 @@ E:SPEED:60:150:30
 D:A powerful rune of speed has been inscribed on this protective talisman.
 D:You feel calm and safe from dangers with its reassuring weight around your
 D:neck, knowing there are few enemies you cannot outrun.
+
+N:364:& All-Seeing Eye
+I:39:26:5
+W:70:250:5:100000
+P:0:1d1:0:0:0
+F:FULL_NAME | INSTA_ART | RES_BLIND | SEE_INVIS | TELEPATHY | NIGHT_VISION
+F:SEARCH | RES_LITE | RES_DARK | PERMA_CURSE
+E:DETECT_ALL:35:5
+E:Your eye glows a bright blue...
+
+N:365:of the Hypnotoad
+I:39:27:0
+W:60:180:5:100000
+P:0:1d1:0:0:0
+F:FREE_ACT
+E:EYE_HYPNO:66:6:128
+E:Your eye blinks hypnotically...
 
 # N: serial number : item name
 # I: tval : sval : pval
