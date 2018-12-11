@@ -1,0 +1,183 @@
+Common Mistakes to Avoid
+
+The number of possible mistakes and bad ideas in the game is 
+essentially unlimited, and players are constantly finding new ways to 
+go spectacularly wrong. There are some particularly popular errors, 
+though, that new players should learn to avoid... and experienced 
+players should remember to avoid.
+
+Early-Game/Newbie Mistakes and Needs
+
+Always carry some form of healing - Potions of Cure Serious Wounds or 
+Cure Critical Wounds are the most common options in the early game. Do 
+not be too slow in recalling home if you start running out of healing 
+potions - it's better to lose a fight or miss out on loot than to die.
+
+Always have some way to escape dangerous situations; in the early game, 
+this will likely be a healthy pile of Scrolls of Phase Door or Scrolls 
+of Teleportation, or (ideally) both. Early-game characters are 
+extremely likely to need Teleportation if they enter the wilderness. 
+About the only characters who shouldn't carry Scrolls of Phase Door and 
+Teleportation in the early game are Berserkers, who cannot read 
+scrolls.
+
+Do not neglect the quests that town buildings offer. They are a fairly 
+fast (and fun) way to level up, and tend to provide comparatively good 
+loot. Many characters (including practically all melee-class 
+characters) can do the Thieves' Hideout quest starting at character 
+level 1.
+
+Do not wander too deep without some way to deal with confusion. As 
+early as dungeon level 10, you should always have Mushrooms of Cure 
+Confusion and/or Potions of Curing or Clarity with you. Even then, 
+monsters who melee to confuse remain highly dangerous, as they may 
+immediately re-confuse you as soon as you cure the confusion, giving 
+you no opportunity to escape. If you've found any Potions of Speed, 
+always carry at least one (and ideally more) for emergencies like this. 
+Later, unless you're playing a Berserker, Staves of Teleport will allow 
+you to teleport away while confused.
+
+Do not worry too much about traps, except in situations where you have 
+specific reasons to expect them (like in the Thieves' Hideout and Orc 
+Camp quests, or because a monster just cast a trap-creation spell). 
+Early-game traps are a minor nuisance rather than deadly, and in the 
+unlikely case you are killed by a trap it will probably be a very new 
+character you haven't invested much energy into. Accordingly, it's no 
+big deal if you have no means of detecting traps. Even if you have a 
+Rod of Detect Traps, don't be shy about dropping it if you need that 
+inventory slot for something else. Only start detecting traps regularly 
+when you get your first Rod of Detection; even then, worry more about 
+monsters and objects than traps.
+
+Do not bother with digging into treasure veins for money, at least if 
+you're playing with selling on - there are faster and more productive 
+ways to get rich. Digging for money can work in the early game in 
+no-selling games (where gold finds are increased and opportunities to 
+earn money in other ways are more limited), especially if you have some 
+item or power (like a Wand of Stone to Mud, a cheap digging spell or a 
++5 weapon of Sharpness) that makes it exceptionally easy to dig.
+
+Do not forget to pack enough food and oil for long journeys.
+
+Do not underestimate items that confuse, even the humble Wand of 
+Confuse Monster. They make many fights radically safer and easier. 
+Potions of Booze can confuse monsters if thrown!
+
+Do not be too slow in escaping or healing if you start running low on 
+HP. If you escape too late, a device-fail or an unlucky teleport into 
+another dangerous area might kill you. (This mistake is very much not 
+exclusive to newbies or the early game, but it's good to get out of 
+your system early!)
+
+Do not fight monsters in melee if they have highly dangerous (or 
+annoying) melee attacks but no way to hurt you from range.
+
+
+Middle-Game Mistakes and Needs
+
+Always detect regularly. Make sure you know where the monsters are.
+
+Always have at least one level of Free Action, ideally two (or even 
+three in the late game). Free Action is not absolutely needed in the 
+early game but becomes necessary in the middlegame. Do not enter the 
+Old Barracks quest or the Old Man Willow quest without Free Action.
+
+Always have a source of either See Invisible or Telepathy.
+
+Always carry a Wand of Teleport Other (unless you're a Berserker). 
+Teleporting the enemy is safer than teleporting yourself, because you 
+might land into another trouble spot - also, there are a few enemies 
+who can follow your teleports! Note, though, that some monsters can 
+resist teleportation or are even completely immune to it.
+
+Always prepare adequately before entering a quest. Quests are a leading 
+killer of characters. Take larger piles of cure wounds/healing potions 
+into quests than into dungeons.
+
+Always haste yourself when you're about to enter a fight or quest you 
+know will be dangerous. If you feel this makes you use too many Potions 
+of Speed, simply avoid fights that would require hasting to win safely, 
+until you have more Potions of Speed or some other source of Haste 
+Self.
+
+Store most of your Potions of Healing and Potions of *Healing* at home 
+- you will need them more later than you need them now. Nevertheless, 
+do carry at least *some* Potions of Healing for emergencies; and in the 
+late game, start carrying one or more Potions of *Healing* too.
+
+Do not completely neglect items useful in niche situations, especially 
+if you know where those situations will happen. You might not carry 
+Potions of Resist Heat and Cold all the time, but it's still a good 
+idea to take some to the Smaug and Utgard-Loke fights. Similarly, 
+Potions of Vigor will be highly valuable in the Micro$oft quest.
+
+Do not underestimate mushrooms, especially Mushrooms of Cure Poison 
+(the game's most effective means to neutralize poison) and the 
+always-handy Mushrooms of Fast Recovery.
+
+Still do not underestimate items that confuse. In the middlegame, this 
+usually means a Staff of Confuse Monsters, though if you're really 
+lucky you might find an early Staff of Confusing Lights!
+
+Prefer loot you might one day wear (or otherwise use) to loot that's 
+only good for selling, even if the latter has a higher nominal value. 
+Do not ignore items that meet your needs, even if their nominal value 
+is low.
+
+Always keep backups at home for key devices that might get destroyed.
+
+
+Late-Game Mistakes and Needs
+
+Always have enough speed, and haste yourself for dangerous encounters. 
+Double-moves are a leading cause of late-game death, and low speed 
+makes them much more likely.
+
+Always choose appropriate escapes. The best way to deal with a 
+dangerous situation can be any of Phase Door, Teleport, Teleport Level, 
+Teleport Other, Destruction or Dimension Door (or simply Healing or 
+*Healing*), depending on the particulars of the situation; do not rely 
+too much on any one method.
+
+Do not forget about reforging. Do not use mid-level, 50K weapons or 
+armour as reforge source items. (As long as you're reforging into 
+lower-value slots, a 40K bow, a 30K pair of gloves or even a 25K lamp 
+will give better results more cheaply.)
+
+Do not hang around in open areas where many dangerous high-level 
+monsters simultaneously have you in their lines of sight, unless 
+there's a reason you know it to be safe (for example, if the monsters 
+are safely confused Cyberdemons and unlikely to recover for some time).
+
+Do not stop carrying Potions of Healing when you find your first Staff 
+of Healing. Staves of Healing are great, but potions are still needed 
+for emergencies. At the same time, try to keep such emergencies to a 
+minimum.
+
+Remember to drop Staves of Destruction, Staves of Genocide and Wands of 
+Annihilation before entering a quest. They are all highly useful items, 
+but they won't work in quests. (The same goes for Scrolls of 
+Destruction, Genocide, Mass Genocide and Teleport Level, and spells 
+with the same effects.)
+
+Do not underestimate high-level monsters, especially uniques. Nodens, 
+in particular, can kill a character even faster than the Serpent of 
+Chaos. Teleport Nodens away on sight or destruct him - unless you're 
+really, really sure you want to fight him...
+
+Do not underestimate high-level quests, especially the Spawning Pits.
+
+Do not accidentally destruct the Serpent of Chaos (or another questor 
+you're fighting, like Oberon) - it will restore them to full health.
+
+Do not enter the Serpent fight with a full stomach (or anything near 
+it), unless you know you can keep the fight short or have some way to 
+empty your stomach. In a long Serpent fight you might need enough 
+mushrooms and potions to make you gorged, costing critical speed.
+
+Above all else...
+
+DO NOT get overconfident. It's easy to start feeling complacent on a 
+character who seems invincible, but no character is too strong to be 
+killed.
+
