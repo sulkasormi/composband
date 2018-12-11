@@ -348,7 +348,7 @@ int gf_affect_p(int who, int type, int dam, int flags)
                 if (minus_ac()) dam = (dam + 1) / 2;
             }
             result = take_hit(damage_type, dam, m_name);
-            inven_damage(set_acid_destroy, 3, RES_ACID);
+            inven_damage(who, set_acid_destroy, 3, RES_ACID);
         }
         update_smart_learn(who, RES_ACID);
         break;
@@ -365,7 +365,7 @@ int gf_affect_p(int who, int type, int dam, int flags)
             }
 
             result = take_hit(damage_type, dam, m_name);
-            inven_damage(set_fire_destroy, 3, RES_FIRE);
+            inven_damage(who, set_fire_destroy, 3, RES_FIRE);
         }
         update_smart_learn(who, RES_FIRE);
         break;
@@ -381,7 +381,7 @@ int gf_affect_p(int who, int type, int dam, int flags)
                     do_dec_stat(A_STR);
             }
             result = take_hit(damage_type, dam, m_name);
-            inven_damage(set_cold_destroy, 3, RES_COLD);
+            inven_damage(who, set_cold_destroy, 3, RES_COLD);
         }
         update_smart_learn(who, RES_COLD);
         break;
@@ -397,7 +397,7 @@ int gf_affect_p(int who, int type, int dam, int flags)
                     do_dec_stat(A_DEX);
             }
             result = take_hit(damage_type, dam, m_name);
-            inven_damage(set_elec_destroy, 3, RES_ELEC);
+            inven_damage(who, set_elec_destroy, 3, RES_ELEC);
         }
         update_smart_learn(who, RES_ELEC);
         break;
@@ -446,7 +446,7 @@ int gf_affect_p(int who, int type, int dam, int flags)
                     else
                         mutate_player();
                 }
-                inven_damage(set_acid_destroy, 2, RES_POIS);
+                inven_damage(who, set_acid_destroy, 2, RES_POIS);
             }
         }
         update_smart_learn(who, RES_POIS);
@@ -487,7 +487,7 @@ int gf_affect_p(int who, int type, int dam, int flags)
             set_stun(p_ptr->stun + k, FALSE);
         }
 
-        if (!touch) inven_damage(set_acid_destroy, 3, RES_FIRE);
+        if (!touch) inven_damage(who, set_acid_destroy, 3, RES_FIRE);
         break;
     case GF_UNLIFE:
         if (!(get_race()->flags & RACE_IS_NONLIVING) && !life_save_p(rlev))
@@ -523,7 +523,7 @@ int gf_affect_p(int who, int type, int dam, int flags)
                 set_stun(p_ptr->stun + randint1(40), FALSE);
             if (!res_save_default(RES_CONF))
                 set_confused(p_ptr->confused + randint1(5) + 5, FALSE);
-            inven_damage(set_cold_destroy, 3, RES_SOUND);
+            inven_damage(who, set_cold_destroy, 3, RES_SOUND);
         }
         result = take_hit(damage_type, dam, m_name);
         break;
@@ -554,8 +554,8 @@ int gf_affect_p(int who, int type, int dam, int flags)
 
             if (!touch)
             {
-                inven_damage(set_elec_destroy, 2, RES_CHAOS);
-                inven_damage(set_fire_destroy, 2, RES_CHAOS);
+                inven_damage(who, set_elec_destroy, 2, RES_CHAOS);
+                inven_damage(who, set_fire_destroy, 2, RES_CHAOS);
             }
         }
         result = take_hit(damage_type, dam, m_name);
@@ -567,7 +567,7 @@ int gf_affect_p(int who, int type, int dam, int flags)
         {
             if (!res_save_default(RES_SHARDS) && !CHECK_MULTISHADOW())
                 set_cut(p_ptr->cut + dam/2, FALSE);
-            inven_damage(set_cold_destroy, 2, RES_SHARDS);
+            inven_damage(who, set_cold_destroy, 2, RES_SHARDS);
         }
         else
         {
@@ -576,7 +576,7 @@ int gf_affect_p(int who, int type, int dam, int flags)
                 int k = (randint1((dam > 90) ? 35 : (dam / 3 + 5)));
                 set_stun(p_ptr->stun + k, FALSE);
             }
-            inven_damage(set_cold_destroy, 2, RES_SOUND);
+            inven_damage(who, set_cold_destroy, 2, RES_SOUND);
         }
         result = take_hit(damage_type, dam, m_name);
         break;
@@ -586,7 +586,7 @@ int gf_affect_p(int who, int type, int dam, int flags)
         dam = res_calc_dam(RES_SHARDS, dam);
         if (!res_save_default(RES_SHARDS) && !CHECK_MULTISHADOW())
             set_cut(p_ptr->cut + dam, FALSE);
-        if (!touch) inven_damage(set_cold_destroy, 2, RES_SHARDS);
+        if (!touch) inven_damage(who, set_cold_destroy, 2, RES_SHARDS);
         result = take_hit(damage_type, dam, m_name);
         update_smart_learn(who, RES_SHARDS);
         break;
@@ -599,7 +599,7 @@ int gf_affect_p(int who, int type, int dam, int flags)
             int k = (randint1((dam > 90) ? 35 : (dam / 3 + 5)));
             set_stun(p_ptr->stun + k, FALSE);
         }
-        if (!touch) inven_damage(set_cold_destroy, 2, RES_SOUND);
+        if (!touch) inven_damage(who, set_cold_destroy, 2, RES_SOUND);
         result = take_hit(damage_type, dam, m_name);
         update_smart_learn(who, RES_SOUND);
         break;
@@ -645,7 +645,7 @@ int gf_affect_p(int who, int type, int dam, int flags)
         if (fuzzy) msg_print("You are hit by a chicken!");
         if (!res_save_default(RES_SOUND) && !CHECK_MULTISHADOW())
             set_stun(p_ptr->stun + randint1(20), FALSE);
-        if (!touch) inven_damage(set_cold_destroy, 2, RES_SOUND);
+        if (!touch) inven_damage(who, set_cold_destroy, 2, RES_SOUND);
         result = take_hit(damage_type, dam, m_name);
         fear_scare_p(m_ptr);
         update_smart_learn(who, RES_FEAR);
@@ -658,7 +658,7 @@ int gf_affect_p(int who, int type, int dam, int flags)
             set_stun(p_ptr->stun + randint1(20), FALSE);
         if (!res_save_default(RES_SHARDS) && !CHECK_MULTISHADOW())
             set_cut(p_ptr->cut + (dam / 2), FALSE);
-        inven_damage(set_cold_destroy, 3, RES_SHARDS);
+        inven_damage(who, set_cold_destroy, 3, RES_SHARDS);
         result = take_hit(damage_type, dam, m_name);
         update_smart_learn(who, RES_SHARDS);
         break;
@@ -813,7 +813,7 @@ int gf_affect_p(int who, int type, int dam, int flags)
         {
             dam = (dam * 2) / 3;
         }
-        inven_damage(set_cold_destroy, 2, RES_SOUND);
+        inven_damage(who, set_cold_destroy, 2, RES_SOUND);
         result = take_hit(damage_type, dam, m_name);
         break;
     case GF_DISINTEGRATE:
@@ -894,8 +894,8 @@ int gf_affect_p(int who, int type, int dam, int flags)
     case GF_METEOR:
         if (fuzzy) msg_print("Something falls from the sky on you!");
         result = take_hit(damage_type, dam, m_name);
-        inven_damage(set_fire_destroy, 2, RES_FIRE);
-        inven_damage(set_cold_destroy, 2, RES_SHARDS);
+        inven_damage(who, set_fire_destroy, 2, RES_FIRE);
+        inven_damage(who, set_cold_destroy, 2, RES_SHARDS);
         break;
     case GF_ICE:
         if (touch) msg_print("You are <color:W>frozen</color>!");
@@ -907,7 +907,7 @@ int gf_affect_p(int who, int type, int dam, int flags)
                 set_cut(p_ptr->cut + (touch ? damroll(3, 5) : damroll(5, 8)), FALSE);
             if (!res_save_default(RES_SOUND))
                 set_stun(p_ptr->stun + (touch ? randint1(7) : randint1(15)), FALSE);
-            inven_damage(set_cold_destroy, 3, RES_COLD);
+            inven_damage(who, set_cold_destroy, 3, RES_COLD);
         }
         update_smart_learn(who, RES_COLD);
         break;
