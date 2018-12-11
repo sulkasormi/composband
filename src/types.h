@@ -388,6 +388,7 @@ struct object_type
     byte mitze_type;    /* MITZE type */
     byte mitze_level;   /* level on MITZE */
     s32b mitze_turn;    /* turn on MITZE */
+    u16b insured;       /* Item is part of insurance policy */
     int  scratch;
 };
 #define object_is_(O, T, S) ((O)->tval == (T) && (O)->sval == (S))
@@ -1411,6 +1412,7 @@ struct player_type
 
     bool auto_id;
     bool auto_pseudo_id;
+    bool munchkin_pseudo_id;
     int  auto_id_sp;
     bool cult_of_personality;
     bool fairy_stealth;
