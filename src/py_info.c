@@ -2060,14 +2060,15 @@ static void _build_statistics(doc_ptr doc)
         doc_printf(doc, "  Selling  : <color:w>%8d</color>\n", stats_gold_counts.selling);
     else
         doc_printf(doc, "  Alchemy  : <color:w>%8d</color>\n", stats_gold_counts.selling);
-    doc_printf(doc, "  Winnings : <color:w>%8d</color> <color:w>%8d</color>\n",
+    doc_printf(doc, "  Winnings : <color:w>%8d</color> <color:G>%8d</color>\n",
         stats_gold_counts.winnings,
         stats_gold_counts.found + stats_gold_counts.selling + stats_gold_counts.winnings);
     doc_printf(doc, "  Purchases: <color:w>%8d</color>\n", stats_gold_counts.buying);
     doc_printf(doc, "  Services : <color:w>%8d</color>\n", stats_gold_counts.services);
-    doc_printf(doc, "  Stolen   : <color:w>%8d</color> <color:w>%8d</color>\n",
+    doc_printf(doc, "  Stolen   : <color:w>%8d</color> <color:R>%8d</color>\n",
         stats_gold_counts.stolen,
         stats_gold_counts.buying + stats_gold_counts.services + stats_gold_counts.stolen);
+    cornucopia_print_stats(doc);
     doc_printf(doc, "                      <color:y>%8d</color>\n\n", p_ptr->au);
 
     /* Objects */
