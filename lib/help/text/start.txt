@@ -4,22 +4,23 @@ Welcome to the Online Help System
     [a] General Information
     [b] Creating a Character    
     [c] Frequently Asked Questions
+    [d] Common Mistakes to Avoid
 
     Core Concepts:
-    [d] Races, Classes and Personalities
-    [e] The Town and Wilderness
-    [f] The Dungeon
-    [g] Objects
-    [h] Monsters and Pets
-    [i] Attacking and Weapons
-    [j] Defending and Armor
-    [k] Magic Realms
-    [l] Commands
+    [e] Races, Classes and Personalities
+    [f] The Town and Wilderness
+    [g] The Dungeon
+    [h] Objects
+    [i] Monsters and Pets
+    [j] Attacking and Weapons
+    [k] Defending and Armor
+    [l] Magic Realms
+    [m] Commands
 
     Advanced Topics:
-    [m] Options
-    [n] User Preference Files
-    [o] The Mogaminator
+    [n] Options
+    [o] User Preference Files
+    [p] The Mogaminator
 
     (?) Help System Commands
 
