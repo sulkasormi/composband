@@ -2221,8 +2221,8 @@ static void prt_mon_health_bar(int m_idx, int row, int col)
             if (MON_INVULNER(m_ptr)) attr = TERM_WHITE;
             else if (MON_PARALYZED(m_ptr)) attr = TERM_BLUE;
             else if (MON_CSLEEP(m_ptr)) attr = TERM_BLUE;
-            else if (MON_STUNNED(m_ptr)) attr = TERM_L_BLUE;
             else if (MON_CONFUSED(m_ptr)) attr = TERM_UMBER;
+            else if (MON_STUNNED(m_ptr)) attr = TERM_L_BLUE;
             else if (MON_MONFEAR(m_ptr)) attr = TERM_VIOLET;
             Term_putstr(col+1, row, 11, base_attr, "[---------]");
 
@@ -3725,6 +3725,7 @@ void calc_bonuses(void)
     p_ptr->hold_life = 0;
     p_ptr->auto_id = FALSE;
     p_ptr->auto_pseudo_id = FALSE;
+    p_ptr->munchkin_pseudo_id = FALSE;
     p_ptr->auto_id_sp = 0;
     p_ptr->cult_of_personality = FALSE;
     p_ptr->telepathy = FALSE;
@@ -3916,9 +3917,6 @@ void calc_bonuses(void)
         o_ptr = equip_obj(slot);
         switch (o_ptr->name1)
         {
-        case ART_EYE_OF_VECNA:
-            p_ptr->see_nocto = TRUE;
-            break;
         case ART_STONE_OF_NATURE:
             p_ptr->easy_realm1 = REALM_NATURE;
             break;
