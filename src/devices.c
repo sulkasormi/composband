@@ -127,7 +127,7 @@ static int effect_calc_fail_rate_aux(effect_t *effect, int skill_boost)
     if (p_ptr->confused) skill = 3 * skill / 4;
 
     fail = device_calc_fail_rate_aux(skill, effect->difficulty);
-    if (p_ptr->stun)
+    if ((p_ptr->stun) && (fail < 950))
     {
         fail += 500 * p_ptr->stun / 100;
         if (fail > 950) fail = 950;
@@ -187,7 +187,7 @@ int device_calc_fail_rate(object_type *o_ptr)
     else
         fail = (USE_DEVICE-1)*1000/chance;
 
-    if (p_ptr->stun)
+    if ((p_ptr->stun) && (fail < 950))
     {
         fail += 500 * p_ptr->stun / 100;
         if (fail > 950) fail = 950;
@@ -2231,6 +2231,7 @@ static _effect_info_t _effect_info[] =
     {"GONG",            EFFECT_GONG,                 0,   0,  0, 0},
     {"MURAMASA",        EFFECT_MURAMASA,             0,   0,  0, 0},
     {"EXPERTSEXCHANGE", EFFECT_EXPERTSEXCHANGE,      0,   0,  0, 0},
+    {"EYE_HYPNO",       EFFECT_EYE_HYPNO,            0,   0,  0, 0},
 
     {0}
 };
@@ -3064,10 +3065,10 @@ int device_value(object_type *o_ptr, int options)
         result += result * 10 * pval / 100;
 
     if (have_flag(flgs, OF_DEVICE_POWER))
-        result += result * 25 * pval / 100;
+        result += result * 20 * pval / 100;
 
     if (have_flag(flgs, OF_HOLD_LIFE))
-        result += result * 30 / 100;
+        result += result * 40 / 100;
 
     if (have_flag(flgs, OF_SPEED))
         result += result * 25 * pval / 100;
@@ -3612,7 +3613,7 @@ cptr do_effect(effect_t *effect, int mode, int boost)
         if (name) return "Destruction";
         if (desc) return "It destroys everything nearby.";
         if (info) return format("Power %d", _BOOST(power));
-        if (value) return format("%d", power*20);
+        if (value) return format("%d", power * 8 + ((100 - (MIN(100, 8000 / power))) * 125));
         if (color) return format("%d", TERM_RED);
         if (cost) return format("%d", power/15);
         if (cast)
@@ -4717,7 +4718,7 @@ cptr do_effect(effect_t *effect, int mode, int boost)
             if (desc) return "It heals your hitpoints and cures your ailments.";
         }
         if (info) return info_heal(0, 0, _BOOST(amt));
-        if (value) return format("%d", 500 + 15*amt);
+        if (value) return format("%d", ((amt > 100) ? 5000 : 1000) + 23*amt);
         if (color) return format("%d", TERM_YELLOW);
         if (cost) return format("%d", amt/10);
         if (cast)
@@ -6554,6 +6555,22 @@ cptr do_effect(effect_t *effect, int mode, int boost)
         {
             if (stasis_monsters(_BOOST(pow)))
                 device_noticed = TRUE;
+        }
+        break;
+    }
+    case EFFECT_EYE_HYPNO:
+    {
+        int pow = _extra(effect, effect->power*2);
+        if (name) return "Hypnotize";
+        if (desc) return "It attempts to freeze and charm all nearby visible monsters.";
+        if (info) return format("Power %d", pow);
+        if (value) return format("%d", 125*pow);
+        if (color) return format("%d", TERM_L_GREEN);
+        if (cast)
+        {
+            (void)stasis_monsters(_BOOST(pow));
+            (void)charm_monsters(MIN(56, _BOOST(pow) / 2));
+            device_noticed = TRUE;
         }
         break;
     }
