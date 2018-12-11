@@ -9658,7 +9658,7 @@ F:DROP_CORPSE | POS_GAIN_AC | POS_SEE_INVIS
 P:Copy:Imp:Priest
 S:1_IN_7 |
 S:S_KIN | S_DEMON | BO_WATER | BA_WATER | BO_ACID | BA_ACID
-D:The king of the deep ones. "Vast, Polyphemous-like, and loathsome, it
+D:The king of the deep ones. "Vast, Polyphemus-like, and loathsome, it
 D:darted like a stupendous monster of nightmares..."
 
 N:596:Mother Hydra
@@ -9678,7 +9678,7 @@ F:DROP_CORPSE | POS_GAIN_AC | POS_SEE_INVIS
 P:Copy:Imp:Warrior-Mage
 S:1_IN_7 |
 S:S_HYDRA | S_DEMON | DARKNESS | BA_WATER | BO_ACID | BA_ACID
-D:The queen of the deep ones. "Vast, Polyphemous-like, and loathsome, it
+D:The queen of the deep ones. "Vast, Polyphemus-like, and loathsome, it
 D:darted like a stupendous monster of nightmares..."
 
 N:597:Death knight
@@ -11854,7 +11854,7 @@ D:"There, about the pulsating body of the Ancient One, hugely
 D:winged reptilian creatures without faces cluttered and clutched
 D:at a multitude of blackly writhing, pendulous breasts! (Its eyes)
 D:moved quickly, independently -- sliding with vile viscosity over
-D:the whole rotten surface of Yib-Tstll's pulpy, glistening head!"
+D:the whole rotten surface of Yibb-Tstll's pulpy, glistening head!"
 
 N:707:Ghatanothoa
 G:H:D
@@ -22738,7 +22738,7 @@ B:HIT:HURT(8d9)
 B:GAZE:TERRIFY
 B:BITE:HURT(5d6):CUT(7d7)
 F:UNIQUE | MALE | CAN_SPEAK |
-F:FORCE_MAXHP |
+F:FORCE_MAXHP | FORCE_SLEEP |
 F:ESCORT | HAS_LITE_2 |
 F:DROP_3D2 | DROP_60 | DROP_GOOD | MOVE_BODY |
 F:OPEN_DOOR | BASH_DOOR | CAN_SWIM | NO_CONF | NO_FEAR | RES_WALL
@@ -22981,7 +22981,7 @@ F:ONLY_ITEM | DROP_3D2 | DROP_2D2 | DROP_GOOD | DROP_GREAT | EGYPTIAN
 F:SMART | TAKE_ITEM | BASH_DOOR | HAS_LITE_2 | RES_TELE | CAN_SWIM |
 F:RES_FIRE | RES_COLD | RES_ACID | RES_POIS | RES_ELEC | REFLECTING |
 F:RES_SOUN | RES_SHAR | RES_CHAO | RES_DISE | NO_CONF | NO_SLEEP | AURA_FEAR
-F:POS_GAIN_AC | POS_TELEPATHY | POS_SUST_DEX
+F:POS_GAIN_AC | POS_TELEPATHY | POS_SUST_DEX | FORCE_SLEEP
 P:Copy:Dwarf:Weaponsmith
 S:1_IN_2
 S:ROCKET(498) | PSY_SPEAR(1d166+150) | BO_TIME(10d10+83) | TELE_TO |
@@ -23282,7 +23282,7 @@ W:18:1:35:90:0:0
 B:HIT:COLD(4d5)
 B:HIT:ACID(4d5)
 F:EMPTY_MIND | BASH_DOOR | COLD_BLOOD |
-F:RES_ELEC | IM_COLD | RES_POIS | RES_WATE |
+F:RES_ELEC | IM_COLD | RES_POIS | RES_WATE | HURT_FIRE
 F:NO_CONF | NO_SLEEP | NO_FEAR | NONLIVING
 F:POS_GAIN_AC | POS_HOLD_LIFE
 S:FREQ_10 |
@@ -23339,8 +23339,8 @@ D:It was an itsy bitsy teenie weenie violet move-about entkini...
 
 N:1284:Hisser
 G:G:B
-I:115:13d13:20:30:10:100
-W:26:2:60:150:0:0
+I:115:18d18:20:30:10:100
+W:26:2:60:220:0:0
 B:GAZE:TERRIFY
 B:TOUCH:ELEC(3d8)
 A:ELEC(2d3)
