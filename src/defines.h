@@ -19,7 +19,7 @@
 #define VER_MAJOR 7
 #define VER_MINOR 0
 #define VER_PATCH "cloudberry"
-#define VER_EXTRA 3
+#define VER_EXTRA 4
 #define VERSION_IS_DEVELOPMENT (TRUE)
 
 #define GAME_MODE_BEGINNER  0
@@ -2929,8 +2929,11 @@ enum obj_flags_e {
     /* Ignore Invulnerability */
     OF_IGNORE_INVULN,
 
+    /* Night vision */
+    OF_NIGHT_VISION,
+
     /* A few places loop from 0 <= i < OF_COUNT ... (init1, race_sword and race_ring) */
-    OF_COUNT, /* currently 177 */
+    OF_COUNT, /* currently 178 */
 };
 #define OF_ARRAY_SIZE          6
 /* u32b flgs[OF_ARRAY_SIZE];
@@ -3955,6 +3958,12 @@ extern int PlayerUID;
 #define BACT_REFORGE_ARTIFACT       56
 #define BACT_CHANGE_NAME            57
 #define BACT_SELL_PHOTO             58
+#define BACT_LOAN                   59
+#define BACT_DEPOSIT                60
+#define BACT_INSURANCE              61
+#define BACT_CORNY_CASH_IN          62
+#define BACT_VIEW_POLICY            63
+#define BACT_VIEW_POSTER            64
 
 /*
  * Initialization flags
@@ -4686,6 +4695,7 @@ extern int PlayerUID;
 #define MON_SHEEP               1226
 #define MON_ZOOPI               1229
 #define MON_FESTIVUS            1230
+#define MON_IMPLORINGTON        1231
 #define MON_DUCK                1241
 #define MON_HORUS               1244
 #define MON_KUNDRY              1254
@@ -5411,6 +5421,8 @@ enum ego_type_e {
     EGO_BODY_OLOG_HAI,
     EGO_BODY_DEMON,
     EGO_BODY_DEMON_LORD,
+    EGO_BODY_IMP,
+    EGO_BODY_AUGMENTATION,
 
     EGO_ROBE_PERMANENCE = 80,
     EGO_ROBE_TWILIGHT,
@@ -5817,6 +5829,7 @@ enum effect_e
     EFFECT_GONG,
     EFFECT_MURAMASA,
     EFFECT_EXPERTSEXCHANGE,
+    EFFECT_EYE_HYPNO,
 
     EFFECT_MAX
 };
@@ -5888,6 +5901,7 @@ enum {
     ORIGIN_STOLEN,              /* stolen by a pickpocket */
     ORIGIN_CAN_OF_TOYS,         /* found in a can of toys */
     ORIGIN_BLOOD,               /* blood pool */
+    ORIGIN_CORNUCOPIA,          /* Cornucopia replacement */
 
     ORIGIN_MAX
 };
