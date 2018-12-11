@@ -1131,6 +1131,7 @@ static void _shooter_info_aux(doc_ptr doc, object_type *bow, object_type *arrow,
     critical_t   crit = {0};
     int          crit_pct = 0;
     int          num_fire = 0;
+    int          real_snipe = 0;
     doc_ptr      cols[2] = {0};
     bool         force = FALSE;
 
@@ -1189,7 +1190,10 @@ static void _shooter_info_aux(doc_ptr doc, object_type *bow, object_type *arrow,
     object_desc(o_name, arrow, OD_OMIT_INSCRIPTION | OD_COLOR_CODED);
     doc_printf(cols[0], "<color:u> Ammo #%-2d</color>: <indent><style:indent>%s</style></indent>\n", ct, o_name);
 
+    real_snipe = shoot_hack;
+    if (display_shooter_mode) shoot_hack = display_shooter_mode;
     doc_printf(cols[0], " %-8.8s: %d%%\n", "Breakage", breakage_chance(arrow));
+    shoot_hack = real_snipe;
     doc_printf(cols[0], " %-8.8s: %d.%d lbs\n", "Weight", arrow->weight/10, arrow->weight%10);
     doc_printf(cols[0], " %-8.8s: %d + %d = %d\n", "To Hit", to_h, to_h_bow + to_h_xtra, to_h + to_h_bow + to_h_xtra);
     doc_printf(cols[0], " %-8.8s: %d (%s)\n", "To Dam", to_d, "Multiplier Applies");
