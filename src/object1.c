@@ -219,7 +219,7 @@ void obj_flags(object_type *o_ptr, u32b flgs[OF_ARRAY_SIZE])
 
     if (object_is_smith(o_ptr))
         weaponsmith_object_flags(o_ptr, flgs);
-    if (object_is_deaggravated(o_ptr)) 
+    if (object_is_deaggravated(o_ptr))
         remove_flag(flgs, OF_AGGRAVATE);
 }
 
@@ -313,7 +313,7 @@ void obj_flags_known(object_type *o_ptr, u32b flgs[OF_ARRAY_SIZE])
 
     if (object_is_smith(o_ptr))
         weaponsmith_object_flags(o_ptr, flgs);
-    if (object_is_deaggravated(o_ptr)) 
+    if (object_is_deaggravated(o_ptr))
         remove_flag(flgs, OF_AGGRAVATE);
 }
 
