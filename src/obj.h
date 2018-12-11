@@ -90,6 +90,9 @@ extern bool obj_confirm_choice(obj_ptr obj);
 extern bool obj_can_combine(obj_ptr dest, obj_ptr obj, int options);
 extern int  obj_combine(obj_ptr dest, obj_ptr obj, int options);
 extern void obj_delayed_describe(obj_ptr obj);
+extern void obj_dec_number(obj_ptr obj, int amount, bool mark);
+extern void obj_dec_insured(obj_ptr obj, int amount);
+extern void obj_zero(obj_ptr obj);
 
 /* Helpers */
 extern void obj_clear_dun_info(obj_ptr obj);
