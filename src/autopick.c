@@ -2089,6 +2089,9 @@ static void auto_destroy_obj(object_type *o_ptr, int autopick_idx)
     bool destroy = FALSE;
     char name[MAX_NLEN];
 
+    /* Never autodestroy an insured item */
+    if (o_ptr->insured) return;
+
     /* Easy-Auto-Destroyer (3rd priority) */
     if (is_opt_confirm_destroy(o_ptr)) destroy = TRUE;
 
@@ -2182,66 +2185,14 @@ void autopick_alter_obj(obj_ptr o_ptr, bool allow_destroy)
         auto_destroy_obj(o_ptr, idx);
 }
 
-static bool _can_sense_object(object_type *o_ptr)
-{
-    switch (o_ptr->tval)
-    {
-    case TV_SHOT:
-    case TV_ARROW:
-    case TV_BOLT:
-    case TV_BOW:
-    case TV_DIGGING:
-    case TV_HAFTED:
-    case TV_POLEARM:
-    case TV_SWORD:
-    case TV_BOOTS:
-    case TV_GLOVES:
-    case TV_HELM:
-    case TV_CROWN:
-    case TV_SHIELD:
-    case TV_CLOAK:
-    case TV_SOFT_ARMOR:
-    case TV_HARD_ARMOR:
-    case TV_DRAG_ARMOR:
-    case TV_CARD:
-        return TRUE;
-    }
-    return FALSE;
-}
-
-static byte _get_object_feeling(object_type *o_ptr)
-{
-    if (object_is_artifact(o_ptr))
-    {
-        if (object_is_cursed(o_ptr) || object_is_broken(o_ptr)) return FEEL_TERRIBLE;
-        return FEEL_SPECIAL;
-    }
-
-    if (object_is_ego(o_ptr))
-    {
-        if (object_is_cursed(o_ptr) || object_is_broken(o_ptr)) return FEEL_AWFUL;
-        return FEEL_EXCELLENT;
-    }
-
-    if (object_is_cursed(o_ptr)) return FEEL_BAD;
-    if (object_is_broken(o_ptr)) return FEEL_BROKEN;
-    if (o_ptr->tval == TV_RING || o_ptr->tval == TV_AMULET) return FEEL_AVERAGE;
-
-    if (o_ptr->to_a > 0) return FEEL_GOOD;
-    if (o_ptr->tval == TV_GLOVES || o_ptr->tval == TV_BOOTS) return FEEL_AVERAGE;
-    if (o_ptr->to_h + o_ptr->to_d > 0) return FEEL_GOOD;
-
-    return FEEL_AVERAGE;
-}
-
 static void _sense_object_floor(object_type *o_ptr)
 {
     if (o_ptr->ident & IDENT_SENSE) return;
     if (object_is_known(o_ptr)) return;
-    if (!_can_sense_object(o_ptr)) return;
+    if ((!obj_can_sense1(o_ptr)) && (!obj_can_sense2(o_ptr))) return;
 
     o_ptr->ident |= IDENT_SENSE;
-    o_ptr->feeling = _get_object_feeling(o_ptr);
+    o_ptr->feeling = value_check_aux1(o_ptr);
 }
 
 /* Automatically identify objects, consuming requisite resources.
@@ -2326,7 +2277,7 @@ static void _get_obj(obj_ptr obj)
     {
         identify_item(obj);
     }
-    else if (p_ptr->auto_pseudo_id)
+    else if ((p_ptr->auto_pseudo_id) || (p_ptr->munchkin_pseudo_id))
     {
         _sense_object_floor(obj);
         equip_learn_flag(OF_LORE1);
