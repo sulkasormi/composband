@@ -256,7 +256,7 @@ static bool _transfer_effect(void)
 
     /* Destroy the source */
     assert(src_obj->number == 1); /* Wands/Rods/Staves no longer stack */
-    src_obj->number = 0;
+    obj_zero(src_obj);
     obj_release(src_obj, 0);
 
     return TRUE;
@@ -316,7 +316,7 @@ static bool _transfer_essence(void)
 
     /* Perform the transfer */
     dest_obj->number += dest_charges;
-    src_obj->number -= src_charges;
+    obj_dec_number(src_obj, src_charges, TRUE);
 
     obj_release(dest_obj, 0);
     obj_release(src_obj, 0);
