@@ -149,12 +149,12 @@ A Weaponsmith extracts the essences of special effects from weapons or armors wh
   <indent><style:table><color:G>Stats                   Skills</color>
 Strength     <color:w> +3</color>        Disarming   <color:y>Good         </color>
 Intelligence <color:w> -1</color>        Device      <color:o>Fair         </color>
-Wisdom       <color:w> -1</color>        Save        <color:R>Poor         </color>
+Wisdom       <color:w> -1</color>        Save        <color:r>Bad          </color>
 Dexterity    <color:w> +1</color>        Stealth     <color:o>Fair         </color>
-Constitution <color:w> +0</color>        Searching   <color:o>Fair         </color>
-Charisma     <color:w> +0</color>        Perception  <color:r>Bad          </color>
-Life Rating  108%       Melee       <color:G>Excellent    </color>
-Base HP       12        Bows        <color:y>Good         </color>
+Constitution <color:w> +0</color>        Searching   <color:R>Poor         </color>
+Charisma     <color:w> -1</color>        Perception  <color:r>Bad          </color>
+Life Rating  106%       Melee       <color:G>Excellent    </color>
+Base HP       12        Bows        <color:o>Fair         </color>
 Experience   130%
 </style></indent>
 </indent>
@@ -782,13 +782,13 @@ Tourists have visited this world for the purpose of sightseeing. Their fighting 
 Tourists are always seeing more of the world to add to their stock of information; no other class can compete with their identification skills. They have two class powers - 'Take a Photograph' and 'Identify True'. Their magic is based on Arcane, and - aside from identify - is very weak indeed.
 
   <indent><style:table><color:G>Stats                   Skills</color>
-Strength     <color:w> -1</color>        Disarming   <color:r>Bad          </color>
-Intelligence <color:v> -1</color>        Device      <color:r>Bad          </color>
+Strength     <color:w> -2</color>        Disarming   <color:r>Bad          </color>
+Intelligence <color:v> -1</color>        Device      <color:D>Very Bad     </color>
 Wisdom       <color:w> -1</color>        Save        <color:r>Bad          </color>
 Dexterity    <color:w> -1</color>        Stealth     <color:o>Fair         </color>
-Constitution <color:w> -1</color>        Searching   <color:R>Poor         </color>
+Constitution <color:w> -2</color>        Searching   <color:R>Poor         </color>
 Charisma     <color:w> -3</color>        Perception  <color:r>Bad          </color>
-Life Rating   95%       Melee       <color:o>Fair         </color>
+Life Rating   94%       Melee       <color:o>Fair         </color>
 Base HP        0        Bows        <color:r>Bad          </color>
 Experience    70%
 </style></indent>
@@ -820,7 +820,7 @@ Rune-Knight    +2 <color:v>  +1 </color>  -1   +1   +0   +1  102%   +6  150%
 Samurai        +3   -2 <color:v>  +1 </color>  +2   +1   +1  109%  +12  130%
 Warrior        +4   -2   -2   +2   +2   +1  115%  +18  100%
 Weaponmaster <color:v>  +4 </color>  -3   -2   -1   +2   +1  107%  +12  135%
-Weaponsmith    +3   -1   -1   +1   +0   +0  108%  +12  130%
+Weaponsmith    +3   -1   -1   +1   +0   -1  106%  +12  130%
 Archer         +2   -1   -1   +2   +1   +0  111%  +12  110%
 Sniper         +2   -1   -1 <color:v>  +2 </color>  +1   +0  100%   +4  110%
 Force-Trainer  +0   -1 <color:v>  +3 </color>  +2   +1   +0  100%   +4  135%
@@ -859,7 +859,7 @@ Lawyer         -3   +2 <color:v>  +0 </color>  +0   -1   +1  102%  +12  115%
 Politician     -2   +1   +0   -2   +0 <color:v>  +2 </color> 100%   +9  130%
 Rage-Mage    <color:v>  +3 </color>  -2   -2   -2   +2   +1  106%   +6  150%
 Skillmaster    +0   +0   +0   +0   +0   +0  100%  +10  130%
-Tourist        -1 <color:v>  -1 </color>  -1   -1   -1   -3   95%   +0   70%
+Tourist        -2 <color:v>  -1 </color>  -1   -1   -2   -3   94%   +0   70%
 Wild-Talent    -1   +1   +1   +1   -2   +1  100%   +4  110%
 
 </style>
@@ -874,7 +874,7 @@ Rune-Knight   <color:o>Fair         </color> <color:y>Good         </color> <col
 Samurai       <color:y>Good         </color> <color:r>Bad          </color> <color:o>Fair         </color> <color:o>Fair         </color>
 Warrior       <color:y>Good         </color> <color:r>Bad          </color> <color:o>Fair         </color> <color:o>Fair         </color>
 Weaponmaster  <color:o>Fair         </color> <color:r>Bad          </color> <color:o>Fair         </color> <color:o>Fair         </color>
-Weaponsmith   <color:y>Good         </color> <color:o>Fair         </color> <color:R>Poor         </color> <color:o>Fair         </color>
+Weaponsmith   <color:y>Good         </color> <color:o>Fair         </color> <color:r>Bad          </color> <color:o>Fair         </color>
 Archer        <color:G>Excellent    </color> <color:o>Fair         </color> <color:o>Fair         </color> <color:y>Very Good    </color>
 Sniper        <color:y>Good         </color> <color:o>Fair         </color> <color:R>Poor         </color> <color:G>Excellent    </color>
 Force-Trainer <color:y>Good         </color> <color:y>Very Good    </color> <color:y>Good         </color> <color:y>Very Good    </color>
@@ -913,7 +913,7 @@ Lawyer        <color:g>Superb       </color> <color:y>Very Good    </color> <col
 Politician    <color:g>Superb       </color> <color:o>Fair         </color> <color:y>Good         </color> <color:g>Superb       </color>
 Rage-Mage     <color:r>Bad          </color> <color:r>Bad          </color> <color:g>Superb       </color> <color:r>Bad          </color>
 Skillmaster   <color:D>Very Bad     </color> <color:D>Very Bad     </color> <color:D>Very Bad     </color> <color:R>Poor         </color>
-Tourist       <color:r>Bad          </color> <color:r>Bad          </color> <color:r>Bad          </color> <color:o>Fair         </color>
+Tourist       <color:r>Bad          </color> <color:D>Very Bad     </color> <color:r>Bad          </color> <color:o>Fair         </color>
 Wild-Talent   <color:o>Fair         </color> <color:y>Good         </color> <color:o>Fair         </color> <color:o>Fair         </color>
 
 </style>
@@ -928,7 +928,7 @@ Rune-Knight   <color:o>Fair         </color> <color:R>Poor         </color> <col
 Samurai       <color:R>Poor         </color> <color:r>Bad          </color> <color:g>Superb       </color> <color:y>Good         </color>
 Warrior       <color:R>Poor         </color> <color:r>Bad          </color> <color:g>Superb       </color> <color:g>Superb       </color>
 Weaponmaster  <color:R>Poor         </color> <color:r>Bad          </color> <color:g>Superb       </color> <color:r>Bad          </color>
-Weaponsmith   <color:o>Fair         </color> <color:r>Bad          </color> <color:G>Excellent    </color> <color:y>Good         </color>
+Weaponsmith   <color:R>Poor         </color> <color:r>Bad          </color> <color:G>Excellent    </color> <color:o>Fair         </color>
 Archer        <color:o>Fair         </color> <color:R>Poor         </color> <color:y>Very Good    </color> <color:b>Heroic       </color>
 Sniper        <color:y>Good         </color> <color:o>Fair         </color> <color:R>Poor         </color> <color:g>Superb       </color>
 Force-Trainer <color:y>Good         </color> <color:o>Fair         </color> <color:o>Fair         </color> <color:o>Fair         </color>
