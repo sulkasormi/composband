@@ -2566,6 +2566,7 @@ static _speciality _specialities[_MAX_SPECIALITIES] = {
         { TV_SWORD, SV_TWO_HANDED_SWORD } ,
         { TV_SWORD, SV_WAKIZASHI } ,
         { TV_SWORD, SV_ZWEIHANDER } ,
+        { TV_SWORD, SV_RUNESWORD } ,
         { 0, 0 },
       },
       {
