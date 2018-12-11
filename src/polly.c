@@ -203,6 +203,7 @@ static bool _object_is_aggravating(object_type *o_ptr)
 
 bool object_is_deaggravated(object_type *o_ptr)
 {
+     if ((o_ptr->name1 == ART_HEAVENLY_MAIDEN) && (p_ptr->psex == SEX_FEMALE)) return TRUE;
      return (o_ptr->xtra1 == _OBJ_DEAGGRAVATED);
 }
 
