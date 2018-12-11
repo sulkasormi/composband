@@ -196,6 +196,11 @@ static void _add_aux(inv_ptr inv, obj_ptr obj, slot_t slot)
     copy->marked |= OM_DELAYED_MSG;
 
     obj->number -= ct;
+    if (obj->insured)
+    {
+        obj_dec_insured(obj, ct);
+        if (obj->number) obj_dec_insured(copy, obj->insured % 100);
+    }
 }
 
 slot_t inv_add(inv_ptr inv, obj_ptr obj)
