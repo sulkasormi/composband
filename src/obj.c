@@ -29,6 +29,29 @@ obj_ptr obj_split(obj_ptr obj, int amt)
     copy->number = amt;
     obj->number -= amt;
 
+    if (obj->insured)
+    {
+        if (((obj->loc.where == INV_EQUIP) || (obj->loc.where == INV_PACK)) && (obj->insured % 100 > obj->number))
+        {
+            int vahennys = (obj->insured % 100) - obj->number;
+            copy->insured = (obj->insured / 100) * 100 + vahennys;
+            obj_dec_insured(obj, vahennys);
+        }
+        else if ((obj->loc.where != INV_EQUIP) && (obj->loc.where != INV_PACK))
+        {
+            int vahennys = MIN((obj->insured % 100), amt);
+            copy->insured = (obj->insured / 100) * 100 + vahennys;
+            obj_dec_insured(obj, vahennys);
+        }
+        else if (obj->insured % 100 > obj->number)
+        {
+            int vahennys = (obj->insured % 100) - obj->number;
+            copy->insured = (obj->insured / 100) * 100 + vahennys;
+            obj_dec_insured(obj, vahennys);
+        }
+        else copy->insured = 0;
+    }
+
     return copy;
 }
 
@@ -155,6 +178,32 @@ void obj_release(obj_ptr obj, int options)
         break;
     }
 }
+
+/* obj_zero() is for objects being destroyed (not moved, dropped, etc.) */
+void obj_zero(obj_ptr obj)
+{
+    if (obj->insured) cornucopia_mark_destroyed(cornucopia_item_policy(obj), obj->number);
+    obj->number = 0;
+}
+
+void obj_dec_number(obj_ptr obj, int amount, bool mark)
+{
+    obj->number -= amount;
+    if (!obj->insured) return;
+    else {
+        int uninsured = MAX(0, (obj->number + amount) - (obj->insured % 100));
+        if (mark) cornucopia_mark_destroyed(cornucopia_item_policy(obj), amount - uninsured);
+        if ((obj->number) && ((obj->insured % 100) > obj->number)) obj->insured = (obj->insured / 100) * 100 + obj->number;
+    }
+}
+
+void obj_dec_insured(obj_ptr obj, int amount)
+{
+    int vakuutettu = (obj->insured % 100);
+    if (amount >= vakuutettu) obj->insured = 0;
+    else obj->insured -= amount;
+}
+
 
 void gear_notice_id(obj_ptr obj)
 {
@@ -663,6 +712,9 @@ bool obj_can_combine(obj_ptr dest, obj_ptr obj, int loc)
         if (!stack_force_costs && dest->discount != obj->discount) return FALSE;
     }
 
+    /* Objects insured under separate policies do not combine */
+    if ((obj->insured) && (dest->insured) && ((cornucopia_item_policy(obj)) != (cornucopia_item_policy(dest)))) return FALSE;
+
     return TRUE;
 }
 
@@ -719,6 +771,33 @@ int obj_combine(obj_ptr dest, obj_ptr obj, int loc)
 
     dest->number += amt;
     obj->number -= amt;
+
+    /* Combine insurance */
+    if ((obj->insured) && (amt > 0))
+    {
+        if (dest->insured == 0)
+        {
+            dest->insured = obj->insured;
+            obj->insured = 0;
+        }
+        else
+        {
+            int _policy = (dest->insured / 100); /* Both items insured, must be under same policy or combine would have failed */
+            int dest_vk = (dest->insured % 100), obj_vk = (obj->insured % 100);
+            if (dest_vk + obj_vk < 100)
+            {
+                dest_vk += obj_vk;
+                obj_vk = 0;
+            }
+            else
+            {
+                obj_vk = dest_vk + obj_vk - 99;
+                dest_vk = 99;
+            }
+            dest->insured = _policy * 100 + dest_vk;
+            obj->insured = (obj_vk) ? (_policy * 100 + obj_vk) : 0;
+        }
+    }
 
     if (loc != INV_SHOP)
     {
@@ -963,7 +1042,12 @@ void obj_drop(obj_ptr obj, int amt)
     {
         obj_t copy = *obj;
         copy.number = amt;
-        obj->number -= amt;
+        if (obj->insured)
+        {
+            copy.insured = 0;
+            if ((obj->insured % 100) > (obj->number - amt)) copy.insured = (obj->insured / 100) * 100 + (obj->insured % 100) - (obj->number - amt);
+        }
+        obj_dec_number(obj, amt, FALSE);
 
         obj->marked |= OM_DELAYED_MSG;
         p_ptr->notice |= PN_CARRY;
@@ -1000,8 +1084,12 @@ void obj_drop_at(obj_ptr obj, int amt, int x, int y, int break_chance)
     {
         obj_t copy = *obj;
         copy.number = amt;
-        obj->number -= amt;
-        copy.marked &= ~OM_WORN;
+        if (obj->insured)
+        {
+            copy.insured = 0;
+            if ((obj->insured % 100) > (obj->number - amt)) copy.insured = (obj->insured / 100) * 100 + (obj->insured % 100) - (obj->number - amt);
+        }
+        obj_dec_number(obj, amt, FALSE);
         _drop_at(&copy, x, y, break_chance);
     }
     else
@@ -1157,7 +1245,7 @@ void obj_destroy(obj_ptr obj, int amt)
     {
         obj_t copy = *obj;
         copy.number = amt;
-        obj->number -= amt;
+        obj_dec_number(obj, amt, TRUE);
         _destroy(&copy);
         if (obj->loc.where == INV_PACK)
             p_ptr->window |= PW_INVEN;
@@ -1165,7 +1253,7 @@ void obj_destroy(obj_ptr obj, int amt)
     else
     {
         _destroy(obj);
-        obj->number = 0;
+        obj_zero(obj);
         obj_release(obj, OBJ_RELEASE_QUIET);
     }
 }
@@ -1251,6 +1339,7 @@ enum object_save_fields_e {
     OBJ_SAVE_KNOWN_XTRA,
     OBJ_SAVE_ORIGIN,
     OBJ_SAVE_MITZE,
+    OBJ_SAVE_INSURED,
 };
 
 void obj_load(obj_ptr obj, savefile_ptr file)
@@ -1426,6 +1515,9 @@ void obj_load(obj_ptr obj, savefile_ptr file)
             obj->mitze_type = savefile_read_byte(file);
             obj->mitze_level = savefile_read_byte(file);
             obj->mitze_turn = savefile_read_s32b(file);
+            break;
+        case OBJ_SAVE_INSURED:
+            obj->insured = savefile_read_u16b(file);
             break;
         /* default:
             TODO: Report an error back to the load routine!!*/
@@ -1663,6 +1755,11 @@ void obj_save(obj_ptr obj, savefile_ptr file)
             savefile_write_byte(file, obj->mitze_level);
             savefile_write_s32b(file, obj->mitze_turn);
         }
+    }
+    if (obj->insured)
+    {
+        savefile_write_byte(file, OBJ_SAVE_INSURED);
+        savefile_write_u16b(file, obj->insured);
     }
 
     savefile_write_byte(file, OBJ_SAVE_DONE);
