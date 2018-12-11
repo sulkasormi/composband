@@ -231,10 +231,12 @@ static void _ui(_ui_context_ptr context)
         pack_unlock();
         notice_stuff(); /* PW_INVEN and PW_PACK ... */
         handle_stuff(); /* Plus 'C' to view character sheet */
-        if (pack_overflow_count() > ((pack_is_full()) ? 0 : 1))
+        if ((shop_exit_hack) || (pack_overflow_count() > ((pack_is_full()) ? 0 : 1)))
         {
-            msg_print("<color:v>Your pack is overflowing!</color> It's time for you to leave!");
+            if (shop_exit_hack) msg_print("It's time for you to leave!");
+            else msg_print("<color:v>Your pack is overflowing!</color> It's time for you to leave!");
             msg_print(NULL);
+            shop_exit_hack = FALSE;
             break;
         }
     }
@@ -337,6 +339,12 @@ static void _get(_ui_context_ptr context)
             obj_t copy = *obj;
             copy.number = amt;
             obj->number -= amt;
+            if (obj->insured)
+            {
+                int vahennys = MIN(amt, (obj->insured % 100));
+                copy.insured = (obj->insured / 100) * 100 + vahennys;
+                obj_dec_insured(obj, vahennys);
+            }
             _get_aux(&copy);
         }
         else
@@ -452,6 +460,16 @@ static void _drop(_ui_context_ptr context)
         obj_t copy = *prompt.obj;
         copy.number = amt;
         prompt.obj->number -= amt;
+        if (prompt.obj->insured)
+        {
+            copy.insured = 0;
+            if ((prompt.obj->insured % 100) > prompt.obj->number)
+            {
+                int vahennys = (prompt.obj->insured % 100) - prompt.obj->number;
+                copy.insured = prompt.obj->insured / 100 * 100 + vahennys;
+                obj_dec_insured(prompt.obj, vahennys);
+            }
+        }
         _drop_aux(&copy, context);
     }
     else
