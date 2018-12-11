@@ -649,6 +649,7 @@ static bool _mon_is_wanted(int m_idx)
 {
     monster_type *m_ptr = &m_list[m_idx];
     monster_race *r_ptr = &r_info[m_ptr->r_idx];
+    if ((m_ptr->r_idx == MON_IMPLORINGTON) && (!no_wilderness)) return TRUE;
     if ((r_ptr->flags1 & RF1_UNIQUE) && !(m_ptr->smart & (1U << SM_CLONED)))
     {
         int i;
@@ -1365,6 +1366,22 @@ void monster_death(int m_idx, bool drop_item)
 
             (void)drop_near(q_ptr, -1, y, x);
         }
+        break;
+    }
+    case MON_SANTACLAUS:
+    {
+        int k_idx = lookup_kind(TV_HELM, SV_KNIT_CAP);
+        q_ptr = &forge;
+
+        object_prep(q_ptr, k_idx);
+
+        apply_magic_ego = EGO_HELMET_TOMTE;
+        apply_magic(q_ptr, object_level, AM_GOOD | AM_GREAT | AM_FORCE_EGO);
+
+        object_origins(q_ptr, ORIGIN_DROP);
+        q_ptr->origin_xtra = m_ptr->r_idx;
+
+        (void)drop_near(q_ptr, -1, y, x);
         break;
     }
     default:
