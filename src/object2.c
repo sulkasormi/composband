@@ -139,6 +139,8 @@ void excise_object_idx(int o_idx)
             prev_o_idx = this_o_idx;
         }
     }
+
+    if (j_ptr->insured) cornucopia_mark_destroyed(cornucopia_item_policy(j_ptr), j_ptr->number);
     p_ptr->window |= PW_OBJECT_LIST;
 }
 
@@ -208,6 +210,9 @@ void delete_object(int y, int x)
 
         /* Acquire next object */
         next_o_idx = o_ptr->next_o_idx;
+
+        /* Tell Cornucopia not to track the item anymore */
+        if (o_ptr->insured) cornucopia_mark_destroyed(cornucopia_item_policy(o_ptr), o_ptr->number);
 
         /* Wipe the object */
         object_wipe(o_ptr);
@@ -492,6 +497,9 @@ void wipe_o_list(void)
             /* Hack -- see above */
             c_ptr->o_idx = 0;
         }
+
+        /* Insurance tracking */
+        if (o_ptr->insured) cornucopia_mark_destroyed(cornucopia_item_policy(o_ptr), o_ptr->number);
 
         /* Wipe the object */
         object_wipe(o_ptr);
@@ -1627,6 +1635,9 @@ static bool make_artifact_special(object_type *o_ptr)
 
         /* Artifact "rarity roll" */
         if (!one_in_(a_ptr->rarity)) continue;
+
+        /* We can't make Feanor rare enough with a byte */
+        if ((i == ART_FEANOR) && (!one_in_(3))) continue;
 
         /* Find the base object */
         k_idx = lookup_kind(a_ptr->tval, a_ptr->sval);
