@@ -771,6 +771,9 @@ static cptr k_info_flags[OF_COUNT] =
 
     /* Ignore Invulnerability Spheres */
     "IGNORE_INVULN",
+
+    /* Night Vision */
+    "NIGHT_VISION",
 };
 
 
