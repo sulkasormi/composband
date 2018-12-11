@@ -1,0 +1,56 @@
+<style:title>Cornucopia Banking and Insurance Services - Terms and Conditions</style>
+
+Cornucopia of Anambar ("Cornucopia") is your only option for personal banking, highly interesting loans and item insurance. By using any Cornucopia product or service, such as the Cornucopia Banking and Insurance Services ("Services") or the Cornucopia Official Help File ("Terms" or "Terms and Conditions"), you signify your agreement to all terms and conditions set out herein, which may be revised by Cornucopia or by the FrogComposband Maintainer (the "Maintainer") from time to time without explicit notice.
+
+<topic:Deposits><style:heading>Deposit Accounts</style>
+
+As a Cornucopia customer, you (the "Customer") are entitled to open one (1) personal deposit account ("Account") at any Cornucopia office. Every time you deposit money in your Account, you will be charged a transaction fee of 500 gold pieces (or 0.02 percent of the money being deposited, whichever is higher), to be paid immediately. Your deposits will accumulate compound interest at a rate of 0.01 percent per diem, added to your Account every midnight. You may withdraw money from your Account at any time at any Cornucopia office, without additional transaction fees.
+
+<topic:Loans><style:heading>Loans</style>
+
+Cornucopia offers loans to customers ("Loans") up to a total amount of 1,500 gold pieces, or twice your reforge limit (up to a maximum of one-tenth of your known career gross earnings), whichever is higher, the initial Loan not exceeding 300,000 gold pieces. Cornucopia charges compound interest on all Loans at a rate of 10 percent per diem, applying immediately upon request of the Loan, and subsequently every midnight. The Loan can be repaid, fully or in part, at any time at any Cornucopia office. Cornucopia values prompt repayment of loans, but there is no absolute deadline for repayment - we are happy to repossess your estate if necessary. However, in the case of a very large outstanding Loan (exceeding 400,000 gold pieces) not covered by deposits in your Account, Cornucopia reserves the right to refuse you all further Services, including but not limited to settlement of insurance claims and withdrawal of deposits, until such time as the Loan is reduced to no more than 300,000 gold pieces.
+
+<topic:Insurance><style:heading>Insurance</style>
+
+Cornucopia offers two basic types of item insurance policy ("Policies"): insurance against disenchantment of the item ("Disenchantment Insurance"), and insurance against destruction of the item ("Destruction Insurance"), as further explained below. A single Policy can cover either one item, or in the case of Destruction Insurance, one pile of identical items. As a Cornucopia customer, you may have up to four (4) Policies at any given time, and replace any Policy that has become inactive with a new, active Policy.
+
+<color:keyword>Disenchantment Insurance</color> applies to a wearable item ("Equipment"), and can be bought by the Customer for any base value ("Value") of up to 2,000 gold pieces, or one-twentieth of the item's value, whichever is lower. If the insured Equipment is disenchanted for any reason, the Customer will be entitled to claim monetary recompense ("Compensation") according to the severity of the damage and the quality of the item. The amount of Compensation per unit of damage for each type of disenchantment, shown in units of half the Value, is displayed in the table below:
+
+<color:v>                 To Hit   To Dam   To AC    Pval</color>
+<color:B>Normal Weapon</color>    1        2        3        2
+<color:B>Ego Weapon</color>       2        4        6        20
+<color:B>Artifact Weapon</color>  4        8        12       40
+<color:B>Normal Armour</color>    3        6        1        2
+<color:B>Ego Armour</color>       6        12       2        20
+<color:B>Artifact Armour</color>  12       24       4        40
+
+No Compensation shall be paid for any damages that can be easily repaired by the Customer. The following damages shall be considered easily repairable: any damage that can be repaired at the Fighters' Hall, at the time the damage is suffered; for users of the Craft realm, any damage that can be repaired with the Enchantment spell; for weaponsmiths, any damage that can be repaired by a level 50 weaponsmith.
+
+<color:keyword>Destruction Insurance</color> applies to an inventory item (Potion, Scroll, Staff or Wand), or to a pile of identical Scrolls or Potions. A Destruction Insurance Policy can cover an item in either or both of two ways: an identical item is provided to the Customer by Cornucopia ("Item Replacement"), or Compensation is paid for the destruction of the item ("Item Compensation").
+
+An Item Compensation Policy ("Regular Plan") can be bought for a Value of one-third the insured item's value for Staves and Wands, or the full amount of the insured item's value for Scrolls and Potions. If the insured item is destroyed by an enemy attack while in the Customer's inventory, the Customer is entitled to claim Compensation up to four times the Value for Staves and Wands, or two times the Value for Scrolls and Potions.
+
+An Item Replacement Policy ("Replacement Plan") can be bought for fifteen times the insured item's value, or thirty times the insured item's value in case of ego items, for Staves and Wands only. If the item so insured is destroyed, an identical item will be provided to the Customer at a Cornucopia office. The original Replacement Plan will not apply to the copy.
+
+All Destruction Insurance Policies only apply to items in the Customer's equipment or inventory, damaged or destroyed by enemy attacks. No Policies cover theft, items dropped on the dungeon floor, lost accidentally, consumed, or destroyed or made unavailable to the Customer in any other additional way. Disenchantment Insurance Policies only cover damage from disenchantment, not similar damage resulting from other sources such as acid attacks. Unlike some insurance companies, however, we do cover acts of God.
+
+You agree not to deliberately seek situations in which an insured item is likely to be disenchanted or destroyed.
+
+<topic:Exposure Limits><style:heading>Exposure Limits</style>
+
+Cornucopia's insurance exposure limit with respect to you (the "Limit") is equal to one percent of your lifetime gold acquired, never being less than 5,000 gold pieces, and never being more than 50,000 gold pieces. The lifetime monetary losses of Cornucopia, resulting from Policies with Compensation claimed by you, and excluding all money used to buy Item Replacement policies and all monetary transactions not involving any Policy, shall never exceed the Limit. Any Compensation claimed by you in excess of the Limit shall be forfeited to and kept by Cornucopia, and shall not be considered owed to you. Cornucopia shall warn you when settling a claim would result in the Limit being exceeded.
+
+The Limits were set up in response to the substantial losses incurred by Cornucopia in its dealings with the adventurer Implorington III ("That Two-Faced Bastard"), later determined to have been the result of insurance fraud, and we regret their necessity.
+
+<topic:Disclaimer><style:heading>Disclaimer</style>
+
+IN NO EVENT SHALL CORNUCOPIA OF ANAMBAR, ANY OF ITS EMPLOYEES OR REPRESENTATIVES, ANY OTHER PERSON OR ENTITY ASSOCIATED WITH CORNUCOPIA, OR THE FROGCOMPOSBAND MAINTAINER BE LIABLE FOR ANY INCIDENTAL, CONSEQUENTIAL, PUNITIVE OR ANY OTHER DAMAGES WHATSOEVER RESULTING FROM YOUR USE OF, OR INABILITY TO USE, ANY CORNUCOPIA SERVICES, WHETHER BASED ON WARRANTY, CONTRACT, TORT, EXTORT OR ANY OTHER LEGAL THEORY, AND WHETHER OR NOT CORNUCOPIA HAS BEEN ADVISED OF THE POSSIBILITY OF SUCH DAMAGES, EXCEPT WHERE OTHERWISE SPECIFIED IN THE TERMS AND CONDITIONS.
+
+<topic:Dispute Resolution><style:heading>Dispute Resolution</style>
+
+The Terms and Conditions, and your relationship with Cornucopia under the Terms, shall be governed by the whims of the Maintainer without any regard to any actual laws. You and Cornucopia agree to submit to the exclusive jurisdiction of the Maintainer to resolve any legal matter or dispute arising from the Terms.
+
+<color:D>
+Last updated  : FrogComposband 7.1.toffee
+</color>
+
