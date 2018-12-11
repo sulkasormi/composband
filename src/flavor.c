@@ -534,6 +534,7 @@ static flag_insc_table flag_insc_misc[] =
     { "Sd", OF_SLOW_DIGEST, -1 },
     { "Rg", OF_REGEN, -1 },
     { "Lv", OF_LEVITATION, -1 },
+    { "Nv", OF_NIGHT_VISION, -1 },
     { "Lu", OF_LITE, -1 },
     { "Wr", OF_WARNING, -1 },
     { "Xm", OF_XTRA_MIGHT, -1 },
@@ -1697,6 +1698,17 @@ void object_desc(char *buf, object_type *o_ptr, u32b mode)
         }
     }
 
+    /* Hack - pluralize staves - only ever needed if there are none */
+    if ((o_ptr->number < 1) && (o_ptr->tval == TV_STAFF))
+    {
+        int paikka = strpos("no more Staffs", tmp_val);
+        if (paikka)
+        {
+            tmp_val[paikka + 10] = 'v';
+            tmp_val[paikka + 11] = 'e';
+        }
+    }
+
     /* No more details wanted */
     if (mode & OD_NAME_ONLY) goto object_desc_done;
 
@@ -2242,6 +2254,14 @@ void object_desc(char *buf, object_type *o_ptr, u32b mode)
     if (o_ptr->feeling)
     {
         strcpy(fake_insc_buf, game_inscriptions[o_ptr->feeling]);
+    }
+
+    else if ((p_ptr->munchkin_pseudo_id) && ((obj_can_sense1(o_ptr)) || (obj_can_sense2(o_ptr))) &&
+             (!(o_ptr->ident & IDENT_SENSE)) && (!object_is_known(o_ptr)))
+    {
+        o_ptr->ident |= IDENT_SENSE;
+        o_ptr->feeling = value_check_aux1(o_ptr);
+        if (o_ptr->feeling) strcpy(fake_insc_buf, game_inscriptions[o_ptr->feeling]);
     }
 
     /* Note "cursed" if the item is known to be cursed */
