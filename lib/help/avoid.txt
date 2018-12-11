@@ -1,0 +1,79 @@
+<style:title>Common Mistakes to Avoid</style>
+
+The number of possible mistakes and bad ideas in the game is essentially unlimited, and players are constantly finding new ways to go spectacularly wrong. There are some particularly popular errors, though, that new players should learn to avoid... and experienced players should remember to avoid.
+
+<topic:Early-Game Mistakes><style:heading>Early-Game/Newbie Mistakes and Needs</style>
+
+<color:G>Always</color> carry some form of healing - <color:B>Potions of Cure Serious Wounds</color> or <color:B>Cure Critical Wounds</color> are the most common options in the early game. <color:r>Do not</color> be too slow in recalling home if you start running out of healing potions - it's better to lose a fight or miss out on loot than to die.
+
+<color:G>Always</color> have some way to escape dangerous situations; in the early game, this will likely be a healthy pile of Scrolls of Phase Door or Scrolls of Teleportation, or (ideally) both. <color:o>Early-game characters are extremely likely to need Teleportation if they enter the wilderness.</color> About the only characters who shouldn't carry Scrolls of Phase Door and Teleportation in the early game are Berserkers, who cannot read scrolls.
+
+<color:r>Do not</color> neglect the quests that town buildings offer. They are a fairly fast (and fun) way to level up, and tend to provide comparatively good loot. Many characters (including practically all melee-class characters) can do the Thieves' Hideout quest starting at character level 1.
+
+<color:r>Do not</color> wander too deep without some way to deal with <color:U>confusion</color>. As early as dungeon level 10, you should <color:o>always have</color> <color:U>Mushrooms of Cure Confusion</color> and/or <color:B>Potions of Curing</color> or <color:B>Clarity</color> with you. Even then, monsters who melee to confuse remain highly dangerous, as they may immediately re-confuse you as soon as you cure the confusion, giving you no opportunity to escape. If you've found any <color:B>Potions of Speed</color>, always carry at least one (and ideally more) for emergencies like this. Later, unless you're playing a Berserker, <color:U>Staves of Teleport</color> will allow you to teleport away while confused.
+
+<color:r>Do not</color> worry too much about traps, except in situations where you have specific reasons to expect them (like in the Thieves' Hideout and Orc Camp quests, or because a monster just cast a trap-creation spell). Early-game traps are a minor nuisance rather than deadly, and in the unlikely case you are killed by a trap it will probably be a very new character you haven't invested much energy into. Accordingly, it's no big deal if you have no means of detecting traps. Even if you have a Rod of Detect Traps, don't be shy about dropping it if you need that inventory slot for something else. Only start detecting traps regularly when you get your first <color:v>Rod of Detection</color>; even then, worry more about monsters and objects than traps.
+
+<color:r>Do not</color> bother with digging into treasure veins for money, at least if you're playing with selling on - there are faster and more productive ways to get rich. Digging for money can work in the early game in <color:U>no-selling games</color> (where gold finds are increased and opportunities to earn money in other ways are more limited), especially if you have some item or power (like a <color:g>Wand of Stone to Mud</color>, a cheap digging spell or a +5 weapon of Sharpness) that makes it exceptionally easy to dig.
+
+<color:r>Do not</color> forget to pack enough food and oil for long journeys.
+
+<color:r>Do not</color> underestimate items that confuse, even the humble <color:g>Wand of Confuse Monster</color>. They make many fights radically safer and easier. <color:B>Potions of Booze</color> can confuse monsters if thrown!
+
+<color:r>Do not</color> be too slow in escaping or healing if you start running low on HP. If you escape too late, a device-fail or an unlucky teleport into another dangerous area might kill you. (This mistake is very much not exclusive to newbies or the early game, but it's good to get out of your system early!)
+
+<color:r>Do not</color> fight monsters in melee if they have highly dangerous (or annoying) melee attacks but no way to hurt you from range.
+
+
+<topic:Middle-Game Mistakes><style:heading>Middle-Game Mistakes and Needs</style>
+
+<color:G>Always</color> detect regularly. Make sure you know where the monsters are.
+
+<color:G>Always</color> have at least one level of <color:r>Free Action</color>, ideally two (or even three in the late game). Free Action is not absolutely needed in the early game but becomes necessary in the middlegame. <color:r>Do not</color> enter the Old Barracks quest or the Old Man Willow quest without Free Action.
+
+<color:G>Always</color> have a source of either See Invisible or Telepathy.
+
+<color:G>Always</color> carry a <color:g>Wand of Teleport Other</color> (unless you're a Berserker). Teleporting the enemy is safer than teleporting yourself, because you might land into another trouble spot - also, there are a few enemies who can follow your teleports! Note, though, that some monsters can <color:o>resist teleportation</color> or are even completely <color:o>immune</color> to it.
+
+<color:G>Always</color> prepare adequately before entering a quest. <color:o>Quests are a leading killer of characters.</color> Take larger piles of cure wounds/healing potions into quests than into dungeons.
+
+<color:G>Always</color> haste yourself when you're about to enter a fight or quest you know will be dangerous. If you feel this makes you use too many Potions of Speed, simply avoid fights that would require hasting to win safely, until you have more Potions of Speed or some other source of Haste Self.
+
+<color:y>Store</color> most of your <color:B>Potions of Healing</color> and <color:B>Potions of *Healing*</color> at home - you will need them more later than you need them now. Nevertheless, <color:G>do carry</color> at least *some* Potions of Healing for emergencies; and in the late game, start carrying one or more Potions of *Healing* too.
+
+<color:r>Do not</color> completely neglect items useful in niche situations, especially if you know where those situations will happen. You might not carry <color:B>Potions of Resist Heat and Cold</color> all the time, but it's still a good idea to take some to the Smaug and Utgard-Loke fights. Similarly, <color:B>Potions of Vigor</color> will be highly valuable in the Micro$oft quest.
+
+<color:r>Do not</color> underestimate mushrooms, especially <color:U>Mushrooms of Cure Poison</color> (the game's most effective means to neutralize poison) and the always-handy <color:U>Mushrooms of Fast Recovery</color>.
+
+<color:r>Still do not</color> underestimate items that confuse. In the middlegame, this usually means a <color:U>Staff of Confuse Monsters</color>, though if you're really lucky you might find an early <color:U>Staff of Confusing Lights</color>!
+
+<color:y>Prefer</color> loot you might one day wear (or otherwise use) to loot that's only good for selling, even if the latter has a higher nominal value. <color:r>Do not</color> ignore items that meet your needs, even if their nominal value is low.
+
+<color:G>Always keep</color> backups at home for key devices that might get destroyed.
+
+
+<topic:Late-Game Mistakes><style:heading>Late-Game Mistakes and Needs</style>
+
+<color:G>Always</color> have enough speed, and haste yourself for dangerous encounters. Double-moves are a leading cause of late-game death, and low speed makes them much more likely.
+
+<color:G>Always</color> choose appropriate escapes. The best way to deal with a dangerous situation can be any of Phase Door, Teleport, Teleport Level, Teleport Other, Destruction or Dimension Door (or simply Healing or *Healing*), depending on the particulars of the situation; do not rely too much on any one method.
+
+<color:r>Do not</color> forget about reforging. <color:r>Do not</color> use mid-level, 50K weapons or armour as reforge source items. (As long as you're reforging into lower-value slots, a 40K bow, a 30K pair of gloves or even a 25K lamp will give better results more cheaply.)
+
+<color:r>Do not</color> hang around in open areas where many dangerous high-level monsters simultaneously have you in their lines of sight, unless there's a reason you know it to be safe (for example, if the monsters are safely confused Cyberdemons and unlikely to recover for some time).
+
+<color:r>Do not</color> stop carrying <color:B>Potions of Healing</color> when you find your first <color:U>Staff of Healing</color>. Staves of Healing are great, but potions are still needed for emergencies. At the same time, try to keep such emergencies to a minimum.
+
+<color:y>Remember</color> to drop <color:U>Staves of Destruction</color>, <color:U>Staves of Genocide</color> and <color:g>Wands of Annihilation</color> before entering a quest. They are all highly useful items, but they won't work in quests. (The same goes for Scrolls of Destruction, Genocide, Mass Genocide and Teleport Level, and spells with the same effects.)
+
+<color:r>Do not</color> underestimate high-level monsters, especially uniques. <color:o>Nodens</color>, in particular, can kill a character even faster than the Serpent of Chaos. Teleport Nodens away on sight or destruct him - unless you're really, really sure you want to fight him...
+
+<color:r>Do not</color> underestimate high-level quests, especially the Spawning Pits.
+
+<color:r>Do not</color> accidentally destruct the Serpent of Chaos (or another questor you're fighting, like Oberon) - it will restore them to full health.
+
+<color:r>Do not</color> enter the Serpent fight with a full stomach (or anything near it), unless you know you can keep the fight short or have some way to empty your stomach. In a long Serpent fight you might need enough mushrooms and potions to make you gorged, costing critical speed.
+
+Above all else...
+
+<color:R>DO NOT get overconfident</color>. It's easy to start feeling complacent on a character who seems invincible, but no character is too strong to be killed.
