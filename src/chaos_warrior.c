@@ -507,6 +507,14 @@ void chaos_warrior_reward(void)
         case REW_CURSE_WP:
         {
             int slot = equip_random_slot(object_is_melee_weapon);
+            if (prace_is_(RACE_MON_SWORD) || prace_is_(RACE_MON_RING) || prace_is_(RACE_MON_ARMOR))
+            {
+                msg_format("The voice of %s booms out:",
+                    chaos_patrons[p_ptr->chaos_patron]);
+                msg_print("'Now shalt thou pay for annoying me.'");
+                _nonlethal_ty_substitute();
+                break;
+            }
             if (slot)
             {
                 msg_format("The voice of %s booms out:",
@@ -519,6 +527,14 @@ void chaos_warrior_reward(void)
         case REW_CURSE_AR:
         {
             int slot = equip_random_slot(object_is_armour);
+            if (prace_is_(RACE_MON_SWORD) || prace_is_(RACE_MON_RING) || prace_is_(RACE_MON_ARMOR))
+            {
+                msg_format("The voice of %s booms out:",
+                    chaos_patrons[p_ptr->chaos_patron]);
+                msg_print("'Now shalt thou pay for annoying me.'");
+                _nonlethal_ty_substitute();
+                break;
+            }
             if (slot)
             {
                 msg_format("The voice of %s booms out:",
@@ -542,7 +558,14 @@ void chaos_warrior_reward(void)
                     activate_hi_summon(py, px, FALSE);
                     break;
                 case 3:
-                    if (one_in_(2))
+                    if (prace_is_(RACE_MON_SWORD) || prace_is_(RACE_MON_RING) || prace_is_(RACE_MON_ARMOR))
+                    {
+                        msg_format("The voice of %s booms out:",
+                            chaos_patrons[p_ptr->chaos_patron]);
+                        msg_print("'Now shalt thou pay for annoying me.'");
+                        _nonlethal_ty_substitute();
+                    }
+                    else if (one_in_(2))
                     {
                         int slot = equip_random_slot(object_is_melee_weapon);
                         if (slot)
