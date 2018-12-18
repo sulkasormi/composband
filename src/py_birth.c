@@ -2600,7 +2600,7 @@ static void _change_name(void)
         char tmp[64];
         strcpy(tmp, player_name);
         Term_gotoxy(7, 0); /* Hack */
-        if (askfor(tmp, 22))
+        if (askfor(tmp, PY_NAME_LEN))
             strcpy(player_name, tmp);
         if (0 == strlen(player_name))
             strcpy(player_name, "PLAYER");
