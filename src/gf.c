@@ -155,6 +155,7 @@ static gf_info_t _gf_tbl[GF_COUNT] = {
     /* New */
     { GF_SLOW, "Slow", TERM_ORANGE, RES_INVALID, "SLOW" },
     { GF_CHICKEN, "Chicken", TERM_YELLOW, RES_INVALID, "CHICKEN" },
+    { GF_BOMB, "Bomb", TERM_SLATE, RES_INVALID, "BOMB" },
 };
 
 typedef struct {
@@ -267,6 +268,44 @@ int gf_hell_dam(int dam)
     if ((prace_is_(RACE_MON_ANGEL)) || (prace_is_(RACE_ARCHON))) dam += MIN(dam * 2 / 3, 30);
     return dam * _align_dam_pct(-p_ptr->align) / 100;
 }
+static void _bomb_calc_dam(int *dam, int *shard_dam, int *sound_dam, int kuka)
+{
+    int rr;
+    /* Bomb damage is weird because a) we need to calculate two types of damage,
+     * shard damage and sound damage and b) they dissipate in different ways.
+     * Code adapted from Frogspawn */
+    *sound_dam = ((*dam) * 2 + 2) / 3;
+    *shard_dam = ((*dam) - (*sound_dam));
+    for (rr = 0; rr < gf_distance_hack; rr++)
+    {
+        *shard_dam -= ((*shard_dam) / 5);
+    }
+    *sound_dam = (((*sound_dam) + gf_distance_hack) / (gf_distance_hack + 1));
+    if (kuka < 0)
+    {
+        *shard_dam = res_calc_dam(RES_SHARDS, *shard_dam);
+        *sound_dam = res_calc_dam(RES_SOUND, *sound_dam);
+    }
+    else
+    {
+        monster_type *m_ptr = &m_list[kuka];
+        if ((!m_ptr) || (!m_ptr->r_idx)) {} /* paranoia */
+        else
+        {
+            monster_race *race = mon_race(m_ptr);
+            if (race->flagsr & RFR_RES_SHAR)
+            {
+                (*shard_dam) *= 3; (*shard_dam) /= randint1(6) + 6;
+            }
+            if (race->flagsr & RFR_RES_SOUN)
+            {
+                (*sound_dam) *= 2; (*sound_dam) /= randint1(6) + 6;
+            }
+        }
+    }
+    *dam = (*sound_dam) + (*shard_dam);
+}
+
 static bool _failed_charm_nopet_chance(mon_ptr mon)
 {
     if ((one_in_((p_ptr->spin > 0) ? 10 : 5)) && (!p_ptr->uimapuku) && (!is_friendly(mon))) return TRUE;
@@ -603,6 +642,29 @@ int gf_affect_p(int who, int type, int dam, int flags)
         result = take_hit(damage_type, dam, m_name);
         update_smart_learn(who, RES_SOUND);
         break;
+    case GF_BOMB: /* combined sound and shards, but damage is weird */
+    {
+        int shard_dam, sound_dam;
+        if (touch) msg_print("You are <color:s>blasted</color>!");
+        else if (fuzzy) msg_print("There is an explosion! You are hit by shrapnel!"); /* If you want to complain about this terminology, write your own variant */
+        _bomb_calc_dam(&dam, &shard_dam, &sound_dam, -1);
+        if (!res_save_default(RES_SHARDS) && !CHECK_MULTISHADOW())
+            set_cut(p_ptr->cut + shard_dam, FALSE);
+        if (!res_save_default(RES_SOUND) && !CHECK_MULTISHADOW())
+        {
+            int k = (randint1((sound_dam > 90) ? 35 : (sound_dam / 3 + 5)));
+            set_stun(p_ptr->stun + k, FALSE);
+        }
+        if (!touch)
+        {
+            inven_damage(who, set_cold_destroy, 2, RES_SHARDS);
+            inven_damage(who, set_cold_destroy, 2, RES_SOUND);
+        }
+        result = take_hit(damage_type, dam, m_name);
+        update_smart_learn(who, RES_SHARDS);
+        update_smart_learn(who, RES_SOUND);
+        break;
+    }
     case GF_CONFUSION:
         if (!touch && fuzzy) msg_print("You are hit by something puzzling!");
         /*if (touch) ... */
@@ -1639,6 +1701,29 @@ bool gf_affect_m(int who, mon_ptr mon, int type, int dam, int flags)
             mon_lore_r(mon, RFR_RES_SHAR);
         }
         break;
+    case GF_BOMB:
+    {
+        int sound_dam = 0, shard_dam = 0;
+        if (touch && seen_msg) msg_format("%^s is <color:s>blasted</color>!", m_name);
+        if (seen) obvious = TRUE;
+        _BABBLE_HACK()
+        _bomb_calc_dam(&dam, &sound_dam, &shard_dam, mon->id);
+        if (race->flagsr & RFR_RES_SHAR)
+        {
+            note = " resists somewhat.";
+            mon_lore_r(mon, RFR_RES_SHAR);
+        }
+        if (race->flagsr & RFR_RES_SOUN)
+        {
+            note = (race->flagsr & RFR_RES_SHAR) ? " resists." : " resists somewhat.";
+            mon_lore_r(mon, RFR_RES_SOUN);
+        }
+        else if (who == GF_WHO_PLAYER && mon_stun_save(race->level, sound_dam))
+            note = " resists stunning.";
+        else if (sound_dam > 0)
+            do_stun = mon_stun_amount(sound_dam);
+        break;
+    }
     case GF_ROCKET:
         if (seen) obvious = TRUE;
         _BABBLE_HACK()
