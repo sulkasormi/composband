@@ -2263,6 +2263,15 @@ static void _summon_special(void)
             msg_format("%s summons sheep!", _current.name);
         r_idx = MON_SHEEP;
         break;
+    case MON_GRAGOMANI:
+        if (_current.flags & MSC_SRC_PLAYER)
+            msg_print("You summon your followers!");
+        else
+            msg_format("%s summons his followers!", _current.name);
+        if (one_in_(4)) r_idx = MON_MALICIOUS_LEPRECHAUN;
+        else r_idx = MON_LEPRECHAUN_FANATIC;
+        num += 4;
+        break;
     case MON_ZOOPI:
         if (_current.flags & MSC_SRC_PLAYER)
             msg_print("You summon your minions!");
