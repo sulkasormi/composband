@@ -977,6 +977,7 @@ static void _character_dump(doc_ptr doc)
     _dump_flag(doc, OF_SEE_INVIS, "See Invisible", FALSE);
     _dump_flag(doc, OF_SLOW_DIGEST, "Slow Digestion", FALSE);
     _dump_flag(doc, OF_REGEN, "Regeneration", FALSE);
+    _dump_flag(doc, OF_LEVITATION, "Levitation", FALSE);
     _dump_flag(doc, OF_NO_MAGIC, "Antimagic", FALSE);
     _dump_flag(doc, OF_LORE2, "Auto-Identify", FALSE);
     _dump_flag(doc, OF_REFLECT, "Reflection", FALSE);
