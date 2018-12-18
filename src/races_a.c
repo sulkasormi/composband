@@ -619,12 +619,12 @@ static void _boit_vomit_spell(int cmd, variant *res)
         break;
     case SPELL_CAST:
         msg_print("You throw up!");
-        if (p_ptr->food < PY_FOOD_STARVE + 15)
+        if (p_ptr->food < PY_FOOD_FAINT + 15)
         {
             take_hit(DAMAGE_NOESCAPE, 10, "vomiting on an empty stomach");
             energy_use += 15;
         }
-        set_food(MIN(p_ptr->food - 15, PY_FOOD_STARVE + 2));
+        set_food(MAX(1, MIN(p_ptr->food - 100, PY_FOOD_FAINT + 4)));
         set_poisoned(0, TRUE);
         var_set_bool(res, TRUE);
         break;
@@ -646,6 +646,7 @@ static int _boit_get_powers(spell_info* spells, int max)
 static void _boit_calc_bonuses(void)
 {
     p_ptr->pspeed += 2;
+    p_ptr->skill_tht += 25;
 }
 static void _boit_get_flags(u32b flgs[OF_ARRAY_SIZE])
 {
