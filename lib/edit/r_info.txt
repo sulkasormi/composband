@@ -1915,7 +1915,7 @@ P:Copy:Zombie:Tourist
 D:Corpses awakened from their sleep by dark sorceries.
 
 N:126:Cave orc
-G:o:U
+G:o:G
 I:110:11d9:20:32:30:130
 W:7:1:40:20:0:0
 B:HIT:HURT(1d9)
@@ -2122,7 +2122,7 @@ D:It is a minor demon servitor of Nurgle. It looks like a hairless
 D:teddy bear, with twisted eyes and rotting, ghoulish skin.
 
 N:140:Lagduf, the Snaga
-G:o:u
+G:o:o
 I:110:19d10:20:32:30:160
 W:8:2:999:80:0:0
 B:HIT:HURT(2d6):STUN(1d4,10%)
@@ -2809,7 +2809,7 @@ S:1_IN_5 | SHOOT(2d5) | MULTIPLY
 D:It looks weird.
 
 N:186:Grishnakh, the Hill Orc
-G:o:u
+G:o:o
 I:110:23d10:20:20:20:190
 W:10:3:999:160:0:0
 B:HIT:HURT(1d12):STUN(1d4,10%)
@@ -3251,7 +3251,7 @@ S:MULTIPLY
 D:Even more disgusting dark worms, their essence that of unbeing.
 
 N:215:Golfimbul, the Hill Orc Chief
-G:o:u
+G:o:o
 I:110:24d10:20:60:20:200
 W:12:3:999:230:0:0
 B:HIT:HURT(1d12):STUN(1d4,10%)
@@ -3790,7 +3790,7 @@ S:BR_COLD
 D:It is a large fly that drips frost.
 
 N:251:Snaga sapper
-G:o:G
+G:o:y
 I:111:8d8:20:32:30:100
 W:14:2:50:15:0:0
 B:HIT:HURT(1d8)
@@ -3928,7 +3928,7 @@ S:MULTIPLY
 D:It makes you itch just to look at it.
 
 N:260:Ufthak of Cirith Ungol
-G:o:g
+G:o:o
 I:110:32d10:20:50:20:200
 W:14:3:999:200:0:0
 B:HIT:HURT(3d4):STUN(1d4,10%)
@@ -4335,7 +4335,7 @@ D:It is a weird, small animal with two antennae popping forth from
 D:its forehead. It looks hungry.
 
 N:285:Orc captain
-G:o:g
+G:o:U
 I:110:20d10:20:59:20:190
 W:16:3:50:40:0:0
 B:HIT:HURT(3d4):STUN(1d4,10%)
@@ -4802,7 +4802,7 @@ D:He is a cunning orc of power, as tall as a man, and stronger. It fears
 D:little.
 
 N:314:Shagrat, the Orc Captain
-G:o:u
+G:o:o
 I:110:40d10:20:60:20:200
 W:18:2:999:400:0:0
 B:HIT:HURT(3d8):STUN(1d4,10%)
@@ -4820,7 +4820,7 @@ O:DROP_WARRIOR
 D:He is an Uruk of power and great cunning.
 
 N:315:Gorbag, the Orc Captain
-G:o:u
+G:o:o
 I:110:40d10:20:60:20:200
 W:18:3:999:400:0:0
 B:HIT:HURT(3d8):STUN(1d4,10%)
@@ -5056,7 +5056,7 @@ D:A very strong near-sentient tree, which has become hostile
 D:to humanoid forms of life.
 
 N:330:Bolg, Son of Azog
-G:o:R
+G:o:r
 I:115:75d10:20:75:20:200
 W:24:4:999:800:0:0
 B:HIT:HURT(3d6):STUN(1d4,10%)
@@ -5388,7 +5388,7 @@ O:DROP_WARRIOR
 D:It is a twenty foot tall giant wreathed in clouds.
 
 N:350:Ugluk, the Uruk
-G:o:u
+G:o:o
 I:110:64d10:20:90:20:200
 W:20:4:999:550:0:0
 B:HIT:HURT(3d5):STUN(1d4,10%)
@@ -5492,7 +5492,7 @@ S:BR_ACID
 D:A caustic spinning whirlpool of water.
 
 N:356:Lugdush, the Uruk
-G:o:b
+G:o:r
 I:110:72d10:20:95:20:200
 W:21:3:999:550:0:0
 B:HIT:HURT(3d8):STUN(1d4,10%)
@@ -11722,8 +11722,8 @@ N:700:Leprechaun fanatic
 G:h:D
 I:123:6d6:8:13:8:50
 W:46:6:80:80:0:0
-B:EXPLODE:DAM(20d5)
-F:MULTIPLY | RAND_25 | TAKE_ITEM | SMART |
+B:EXPLODE:BOMB(12d12)
+F:MULTIPLY | RAND_25 | TAKE_ITEM | SMART | FORCE_SLEEP
 F:EVIL | OPEN_DOOR | MALE | HAS_LITE_1 |
 P:Copy:Dark-Elf:Rogue
 P:Speed:+13
@@ -18230,7 +18230,7 @@ I:125:25d100:30:125:15:180
 W:50:3:999:13500:0:0
 B:PUNCH:HURT(10d8)
 B:HIT:SHATTER(10d10)
-F:UNIQUE | MALE | CAN_SPEAK | RES_TELE
+F:UNIQUE | MALE | CAN_SPEAK | RES_TELE | NO_CONF |
 F:DROP_SKELETON | DROP_CORPSE
 F:FORCE_SLEEP | FORCE_MAXHP | KILL_WALL | HUMAN |
 F:ONLY_ITEM | DROP_4D2 | DROP_GOOD | MOVE_BODY |
@@ -19111,7 +19111,7 @@ D:When angered or frightened,
 D:it protects itself with a burst of blinding light.
 
 N:1072:Mauhur, the Orc Captain
-G:o:u
+G:o:o
 I:110:24d10:20:60:20:170
 W:12:3:999:160:0:0
 B:HIT:HURT(1d12):STUN(1d4,10%)
@@ -19803,7 +19803,7 @@ S:1_IN_3 |
 S:HEAL | BLINK | S_UNIQUE | S_PANTHEON | TELE_SELF
 
 N:1108:Orc digger
-G:o:s
+G:o:W
 I:110:20d9:20:32:30:150
 W:19:1:50:50:0:0
 B:HIT:HURT(1d11)
@@ -21281,7 +21281,7 @@ D:slowly turning around and around forever.
 # orcs from FA/Sil
 
 N:1182:Balcmeg, the Relentless
-G:o:U
+G:o:o
 I:110:21d10:20:32:30:160
 W:9:2:999:80:0:0
 B:HIT:HURT(1d10):STUN(1d4,10%)
@@ -21301,7 +21301,7 @@ D: and carrying a short broad blade which he tosses from
 D: one hand to the other with unsettling dexterity.
 
 N:1183:Lug, the Grotesque
-G:o:y
+G:o:o
 I:110:25d10:20:20:20:190
 W:11:3:999:160:0:0
 B:HIT:HURT(2d6):STUN(1d4,10%)
@@ -21318,7 +21318,7 @@ D: and carrying a shield and much-notched axe. He is
 D: scarred of face and his eyes are small and baleful.
 
 N:1184:Boldog, the Merciless
-G:o:o
+G:o:r
 I:115:60d10:20:80:20:200
 W:22:2:999:400:0:0
 B:HIT:HURT(3d8):STUN(1d4,10%)
@@ -21337,7 +21337,7 @@ D:A great captain of the orcs, who leads many raids into the
 D: lands of the elves.
 
 N:1185:Othrod, Lord of the Orcs
-G:o:g
+G:o:R
 I:120:180d10:20:105:20:200
 W:32:3:999:550:0:0
 B:HIT:HURT(4d8):STUN(1d4,10%)
@@ -21361,7 +21361,7 @@ D: the intelligence that has kept him a favourite
 D: of the black enemy for many years.
 
 N:1186:Orcogar, Son of Orcobal
-G:o:B
+G:o:r
 I:115:70d10:20:70:20:200
 W:23:4:999:800:0:0
 B:HIT:HURT(3d6):STUN(1d4,10%)
@@ -21380,7 +21380,7 @@ D:A large and powerful orc.  He looks just like his daddy.  He is tall and
 D:fast, but fortunately blessed with orcish brains.
 
 N:1187:Orcobal the Mighty
-G:o:R
+G:o:r
 I:120:120d10:20:90:20:220
 W:27:5:999:1111:0:0
 B:HIT:HURT(5d5):STUN(1d4,10%)
@@ -23353,6 +23353,31 @@ S:1_IN_10 |
 S:SCARE
 D:A ghostly apparition, faintly visible as a pale blue outline hissing and
 D:crackling with electricity.
+
+N:1285:Gragomani, the Leprechaun Prophet
+G:h:g
+I:131:42d121:30:175:10:180
+W:61:3:999:26620:0:0
+B:HIT:HURT(9d9):CUT(4d6)
+B:HIT:HURT(7d7)
+B:HIT:HURT(7d7)
+B:HIT:CAUSE_2(6d6):CONFUSE(50%)
+F:UNIQUE | MALE | FORCE_SLEEP | FORCE_MAXHP | SMART |
+F:ONLY_ITEM | DROP_3D2 | DROP_GOOD | DROP_GREAT |
+F:OPEN_DOOR | BASH_DOOR | NO_FEAR | RES_NETH | RES_SHAR | RES_SOUN |
+F:RES_ACID | RES_FIRE | RES_COLD | RES_ELEC | RES_POIS | NO_CONF | NO_SLEEP |
+F:DROP_CORPSE | POS_SEE_INVIS | POS_HOLD_LIFE
+P:Copy:Dwarf:Priest
+S:1_IN_3 | HEAL | BO_MANA | CONFUSE | SCARE | CAUSE_3 | CAUSE_4 | BRAIN_SMASH |
+S:HAND_DOOM | S_KIN | S_SPECIAL | SHRIEK | AMNESIA |
+S:DETECT_MONSTERS | MAPPING | BLESS | HEROISM
+O:DROP_PRIEST
+D:The great prophet Gragomani towers above his followers, a giant among the
+D:leprechauns. He claims his size and toughness to be a divine gift, but
+D:detractors allege he's actually just a dwarven priest in disguise...
+D:Whatever the truth, he commands a dangerous army of fanatic followers and
+D:is a very formidable opponent even in his own right; you pray that the god
+D:he claims to speak for is not truly on his side.
 
 # N: serial number : monster name
 # G: symbol : color
