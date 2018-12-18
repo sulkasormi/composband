@@ -2324,6 +2324,8 @@ static bool _smithing(void)
     prompt.filter = object_is_weapon_armour_ammo;
     prompt.where[0] = INV_PACK;
     prompt.where[1] = INV_FLOOR;
+    prompt.where[2] = INV_EQUIP;
+    prompt.where[3] = INV_QUIVER;
 
     obj_prompt(&prompt);
     if (!prompt.obj) return FALSE;
