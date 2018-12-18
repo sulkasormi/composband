@@ -2057,6 +2057,11 @@ static void _ego_create_weapon(object_type *o_ptr, int level)
         case EGO_WEAPON_SHARPNESS:
             if (o_ptr->tval != TV_POLEARM && o_ptr->tval != TV_SWORD)
                 done = FALSE;
+            else if (object_is_(o_ptr, TV_SWORD, SV_DIAMOND_EDGE))
+            {
+                if (one_in_(8)) add_flag(o_ptr->flags, OF_VORPAL2);
+                else done = FALSE;
+            }
             else
             {
                 if (one_in_(2))
@@ -3130,6 +3135,8 @@ static void _ego_create_cloak(object_type *o_ptr, int level)
             if (one_in_(3))
                 add_flag(o_ptr->flags, OF_DEC_STR);
         }
+        if (one_in_(12))
+            add_flag(o_ptr->flags, OF_NIGHT_VISION);
         break;
     case EGO_CLOAK_NAZGUL:
         o_ptr->to_d += 6;
@@ -3523,6 +3530,8 @@ void ego_finalize(object_type *o_ptr, int level, int power, int mode)
             {
                 o_ptr->pval += randint1(e_ptr->max_pval);
                 if ((o_ptr->name2 == EGO_CLOAK_HERO) && (o_ptr->pval > 3)) o_ptr->pval = 3; /* prevent oppy elven cloaks */
+                else if ((o_ptr->name2 == EGO_BODY_AUGMENTATION) && (o_ptr->pval > 4)) o_ptr->pval = 4 + randint0(2);
+                else if ((object_is_weapon(o_ptr)) && (o_ptr->pval > e_ptr->max_pval) && (o_ptr->tval != TV_DIGGING)) o_ptr->pval = randint1(e_ptr->max_pval);
             }
         }
 
