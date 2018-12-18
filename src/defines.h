@@ -131,6 +131,9 @@
 # define MA_KNEE 1
 # define MA_SLOW 2
 
+/* Maximum length of the player's name */
+#define PY_NAME_LEN 22
+
 /* Hallucination stuff */
 #define MAX_SILLY_ATTACK 29
 
@@ -4362,6 +4365,7 @@ extern int PlayerUID;
 #define MON_BLOODLETTER_KHORNE 523
 #define MON_EARTH_ELEMENTAL 525
 #define MON_AIR_ELEMENTAL   526
+#define MON_MALICIOUS_LEPRECHAUN 529
 #define MON_EOG_GOLEM 530
 #define MON_DREAD         534
 #define MON_STAR_VAMPIRE 536
@@ -4708,6 +4712,7 @@ extern int PlayerUID;
 #define MON_AIJEM               1281
 #define MON_FILTHY_RAG          1282
 #define MON_SEXY_SWIMSUIT       1283
+#define MON_GRAGOMANI           1285
 
 /* The Metal Babble guards the Arena dungeon, but this requires the guardian to be a unique
    monster or the dungeon never gets flagged as completed. Note, this messes up the needle
