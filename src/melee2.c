@@ -2283,6 +2283,9 @@ static void process_monster(int m_idx)
         }
     }
 
+    if ((m_ptr->r_idx == MON_LEPRECHAUN_FANATIC) && (m_ptr->mflag & MFLAG_NICE))
+        return;	
+    
     if (m_ptr->r_idx == MON_SHURYUUDAN)
         mon_take_hit_mon(m_idx, 1, &fear, " explodes into tiny shreds.", m_idx);
 
