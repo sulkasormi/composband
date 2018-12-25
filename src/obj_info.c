@@ -264,7 +264,8 @@ bool display_origin(object_type *o_ptr, doc_ptr doc)
         }
         case ORIGIN_BIRTH:
         {
-            if (!object_plural(o_ptr)) doc_printf(doc, "You can't remember ever not having it.");
+            if ((p_ptr->pclass == CLASS_MONSTER) && (have_flag(o_ptr->flags, OF_NO_REMOVE))) return FALSE; /* Hack - Death-Swords, Rings, Filthy Rags */
+            else if (!object_plural(o_ptr)) doc_printf(doc, "You can't remember ever not having it.");
             else doc_printf(doc, "You can't remember ever not having them.");
             break;
         }
