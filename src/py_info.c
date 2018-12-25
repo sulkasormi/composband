@@ -977,7 +977,8 @@ static void _build_equipment(doc_ptr doc)
             object_desc(o_name, o_ptr, OD_COLOR_CODED);
             doc_printf(doc, " %c) <indent><style:indent>%s</style></indent>\n", slot - 1 + 'a', o_name);
             if (((always_dump_origins) || ((final_dump_origins) && ((p_ptr->total_winner) || (p_ptr->is_dead))))
-              && (o_ptr->origin_type != ORIGIN_NONE) && (o_ptr->origin_type != ORIGIN_MIXED))
+              && (o_ptr->origin_type != ORIGIN_NONE) && (o_ptr->origin_type != ORIGIN_MIXED)
+              && (!prace_is_(RACE_MON_SWORD)) && (!prace_is_(RACE_MON_ARMOR)) && (!prace_is_(RACE_MON_RING)))
             {
                 doc_printf(doc, "    <indent><style:indent><color:W>");
                 (void)display_origin(o_ptr, doc);
