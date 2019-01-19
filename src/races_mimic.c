@@ -227,7 +227,7 @@ static void _demon_lord_calc_bonuses(void)
     res_add(RES_DISEN);
     res_add(RES_NEXUS);
     res_add(RES_FEAR);
-    p_ptr->sh_fire = TRUE;
+    p_ptr->sh_fire++;
     p_ptr->see_inv++;
     p_ptr->telepathy = TRUE;
     p_ptr->levitation = TRUE;
