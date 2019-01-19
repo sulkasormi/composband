@@ -1373,10 +1373,10 @@ struct player_type
     s16b life;
 
     bool reflect;
-    bool sh_fire;
-    bool sh_elec;
-    bool sh_cold;
-    bool sh_shards;
+    byte sh_fire;
+    byte sh_elec;
+    byte sh_cold;
+    byte sh_shards;
     bool sh_retaliation;
     bool sh_fear;
     bool ignore_invuln;
