@@ -944,9 +944,9 @@ void samurai_posture_calc_bonuses(void)
         p_ptr->lite = TRUE;
         res_add_all();
         p_ptr->reflect = TRUE;
-        p_ptr->sh_fire = TRUE;
-        p_ptr->sh_elec = TRUE;
-        p_ptr->sh_cold = TRUE;
+        p_ptr->sh_fire++;
+        p_ptr->sh_elec++;
+        p_ptr->sh_cold++;
         p_ptr->to_a += 100;
         p_ptr->dis_to_a += 100;
     }
