@@ -523,6 +523,10 @@ void armor_calc_obj_bonuses(object_type *o_ptr, bool get_flags)
     p_ptr->regen += _manage_my_pval(o_ptr, slot, get_flags, OF_REGEN, 50);
     p_ptr->see_inv += _manage_my_pval(o_ptr, slot, get_flags, OF_SEE_INVIS, 1);
     p_ptr->free_act += _manage_my_pval(o_ptr, slot, get_flags, OF_FREE_ACT, 1);
+    p_ptr->sh_fire += _manage_my_pval(o_ptr, slot, get_flags, OF_AURA_FIRE, 1);
+    p_ptr->sh_elec += _manage_my_pval(o_ptr, slot, get_flags, OF_AURA_ELEC, 1);
+    p_ptr->sh_cold += _manage_my_pval(o_ptr, slot, get_flags, OF_AURA_COLD, 1);
+    p_ptr->sh_shards += _manage_my_pval(o_ptr, slot, get_flags, OF_AURA_SHARDS, 1);
     if (get_flags)
     {
         (void)_manage_my_pval(o_ptr, slot, TRUE, OF_SLOW_DIGEST, 0);
@@ -541,10 +545,6 @@ void armor_calc_obj_bonuses(object_type *o_ptr, bool get_flags)
         (void)_manage_my_pval(o_ptr, slot, TRUE, OF_ESP_LIVING, 0);
         (void)_manage_my_pval(o_ptr, slot, TRUE, OF_ESP_UNIQUE, 0);
         (void)_manage_my_pval(o_ptr, slot, TRUE, OF_REFLECT, 0);
-        (void)_manage_my_pval(o_ptr, slot, TRUE, OF_AURA_FIRE, 0);
-        (void)_manage_my_pval(o_ptr, slot, TRUE, OF_AURA_ELEC, 0);
-        (void)_manage_my_pval(o_ptr, slot, TRUE, OF_AURA_COLD, 0);
-        (void)_manage_my_pval(o_ptr, slot, TRUE, OF_AURA_SHARDS, 0);
         (void)_manage_my_pval(o_ptr, slot, TRUE, OF_AURA_REVENGE, 0);
         (void)_manage_my_pval(o_ptr, slot, TRUE, OF_NO_MAGIC, 0);
         (void)_manage_my_pval(o_ptr, slot, TRUE, OF_SUST_STR, 0);
@@ -574,10 +574,6 @@ void armor_calc_obj_bonuses(object_type *o_ptr, bool get_flags)
         if (have_flag(o_ptr->flags, OF_ESP_LIVING)) p_ptr->esp_living = TRUE;
         if (have_flag(o_ptr->flags, OF_ESP_UNIQUE))  p_ptr->esp_unique = TRUE;
         if (have_flag(o_ptr->flags, OF_REFLECT))  p_ptr->reflect = TRUE;
-        if (have_flag(o_ptr->flags, OF_AURA_FIRE))  p_ptr->sh_fire = TRUE;
-        if (have_flag(o_ptr->flags, OF_AURA_ELEC))  p_ptr->sh_elec = TRUE;
-        if (have_flag(o_ptr->flags, OF_AURA_COLD))  p_ptr->sh_cold = TRUE;
-        if (have_flag(o_ptr->flags, OF_AURA_SHARDS))  p_ptr->sh_shards = TRUE;
         if (have_flag(o_ptr->flags, OF_AURA_REVENGE))  p_ptr->sh_retaliation = TRUE;
         if (have_flag(o_ptr->flags, OF_NO_MAGIC)) p_ptr->anti_magic = TRUE;
 
@@ -984,6 +980,8 @@ static void _character_dump(doc_ptr doc)
     _dump_flag(doc, OF_AURA_FIRE, "Aura Fire", FALSE);
     _dump_flag(doc, OF_AURA_ELEC, "Aura Elec", FALSE);
     _dump_flag(doc, OF_AURA_COLD, "Aura Cold", FALSE);
+    _dump_flag(doc, OF_AURA_SHARDS, "Aura Shards", FALSE);
+    _dump_flag(doc, OF_AURA_REVENGE, "Revenge", FALSE);
     for (i = 0; i < 6; i++) /* Assume in order */
         _dump_flag(doc, OF_SUST_STR + i, format("Sustain %s", stat_name_true[A_STR + i]), FALSE);
 
