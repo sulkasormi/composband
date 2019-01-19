@@ -636,7 +636,7 @@ static void _fire_calc_bonuses(void) {
     if (p_ptr->lev >= 30)
     {
         res_add(RES_FIRE);
-        p_ptr->sh_fire = TRUE;
+        p_ptr->sh_fire++;
     }
     if (p_ptr->lev >= 40)
         res_add(RES_FIRE);
@@ -770,7 +770,7 @@ static void _frost_calc_bonuses(void) {
     if (p_ptr->lev >= 30)
     {
         res_add(RES_COLD);
-        p_ptr->sh_cold = TRUE;
+        p_ptr->sh_cold++;
     }
     if (p_ptr->lev >= 40)
         res_add(RES_COLD);
@@ -941,7 +941,7 @@ static void _storm_calc_bonuses(void) {
 
     if (p_ptr->lev >= 40)
     {
-        p_ptr->sh_elec = TRUE;
+        p_ptr->sh_elec++;
         res_add(RES_ELEC);
     }
     p_ptr->skill_tht += 2*p_ptr->lev;
