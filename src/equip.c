@@ -1496,10 +1496,10 @@ void equip_calc_bonuses(void)
         res_calc_bonuses(flgs);
 
         if (have_flag(flgs, OF_REFLECT))  p_ptr->reflect = TRUE;
-        if (have_flag(flgs, OF_AURA_FIRE))  p_ptr->sh_fire = TRUE;
-        if (have_flag(flgs, OF_AURA_ELEC))  p_ptr->sh_elec = TRUE;
-        if (have_flag(flgs, OF_AURA_COLD))  p_ptr->sh_cold = TRUE;
-        if (have_flag(flgs, OF_AURA_SHARDS))  p_ptr->sh_shards = TRUE;
+        if (have_flag(flgs, OF_AURA_FIRE))  p_ptr->sh_fire++;
+        if (have_flag(flgs, OF_AURA_ELEC))  p_ptr->sh_elec++;
+        if (have_flag(flgs, OF_AURA_COLD))  p_ptr->sh_cold++;
+        if (have_flag(flgs, OF_AURA_SHARDS))  p_ptr->sh_shards++;
         if (have_flag(flgs, OF_AURA_REVENGE))  p_ptr->sh_retaliation = TRUE;
         if (have_flag(flgs, OF_NO_MAGIC)) p_ptr->anti_magic = TRUE;
         if (have_flag(flgs, OF_NO_TELE))  p_ptr->anti_tele = TRUE;
