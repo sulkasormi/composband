@@ -3756,10 +3756,10 @@ void calc_bonuses(void)
     p_ptr->life = 0;
     p_ptr->reflect = FALSE;
 
-    p_ptr->sh_fire = FALSE;
-    p_ptr->sh_elec = FALSE;
-    p_ptr->sh_cold = FALSE;
-    p_ptr->sh_shards = FALSE;
+    p_ptr->sh_fire = 0;
+    p_ptr->sh_elec = 0;
+    p_ptr->sh_cold = 0;
+    p_ptr->sh_shards = 0;
     p_ptr->sh_retaliation = FALSE;
     p_ptr->sh_fear = FALSE;
 
@@ -3968,9 +3968,9 @@ void calc_bonuses(void)
         p_ptr->lite = TRUE;
         res_add_all();
         p_ptr->reflect = TRUE;
-        p_ptr->sh_fire = TRUE;
-        p_ptr->sh_elec = TRUE;
-        p_ptr->sh_cold = TRUE;
+        p_ptr->sh_fire++;
+        p_ptr->sh_elec++;
+        p_ptr->sh_cold++;
         p_ptr->to_a += 100;
         p_ptr->dis_to_a += 100;
     }
@@ -4003,18 +4003,18 @@ void calc_bonuses(void)
     }
 
     if (p_ptr->tim_sh_fire)
-        p_ptr->sh_fire = TRUE;
+        p_ptr->sh_fire++;
 
     if (p_ptr->tim_sh_shards)
-        p_ptr->sh_shards = TRUE;
+        p_ptr->sh_shards++;
 
     if (p_ptr->tim_sh_elements)
     {
-        p_ptr->sh_fire = TRUE;
+        p_ptr->sh_fire++;
         if (p_ptr->lev >= 25)
-            p_ptr->sh_cold = TRUE;
+            p_ptr->sh_cold++;
         if (p_ptr->lev >= 35)
-            p_ptr->sh_elec = TRUE;
+            p_ptr->sh_elec++;
     }
 
     if (IS_INVULN())
@@ -4084,18 +4084,18 @@ void calc_bonuses(void)
         if (hex_spelling(HEX_DETECT_EVIL)) p_ptr->esp_evil = TRUE;
         if (hex_spelling(HEX_DEMON_AURA))
         {
-            p_ptr->sh_fire = TRUE;
+            p_ptr->sh_fire++;
             p_ptr->regen += 100;
         }
         if (hex_spelling(HEX_ICE_ARMOR))
         {
-            p_ptr->sh_cold = TRUE;
+            p_ptr->sh_cold++;
             p_ptr->to_a += 30;
             p_ptr->dis_to_a += 30;
         }
         if (hex_spelling(HEX_SHOCK_CLOAK))
         {
-            p_ptr->sh_elec = TRUE;
+            p_ptr->sh_elec++;
             p_ptr->pspeed += 3;
         }
         for (i = 1; i <= equip_max(); i++)
