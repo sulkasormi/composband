@@ -1473,11 +1473,11 @@ static void _calc_bonuses(void)
         p_ptr->reflect = TRUE;
 
     if (_essences[OF_AURA_FIRE] >= 7)
-        p_ptr->sh_fire = TRUE;
+        p_ptr->sh_fire++;
     if (_essences[OF_AURA_ELEC] >= 7)
-        p_ptr->sh_elec = TRUE;
+        p_ptr->sh_elec++;
     if (_essences[OF_AURA_COLD] >= 7)
-        p_ptr->sh_cold = TRUE;
+        p_ptr->sh_cold++;
 }
 
 static void _calc_stats(s16b stats[MAX_STATS])
