@@ -566,9 +566,9 @@ void monk_posture_calc_bonuses(void)
             res_add(RES_ELEC);
             res_add(RES_COLD);
             res_add(RES_POIS);
-            p_ptr->sh_fire = TRUE;
-            p_ptr->sh_elec = TRUE;
-            p_ptr->sh_cold = TRUE;
+            p_ptr->sh_fire++;
+            p_ptr->sh_elec++;
+            p_ptr->sh_cold++;
             p_ptr->levitation = TRUE;
         }
         else if (p_ptr->special_defense & KAMAE_GENBU)
