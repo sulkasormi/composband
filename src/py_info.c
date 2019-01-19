@@ -598,7 +598,15 @@ static void _build_flags_aura(doc_ptr doc, cptr name, int flg, _flagzilla_ptr fl
 {
     if (_build_flags_imp(doc, name, flg, OF_INVALID, flagzilla))
     {
-        doc_printf(doc, " %dd%d+2", 1 + p_ptr->lev/10, 2 + p_ptr->lev/ 10);
+        if (flg == OF_AURA_FIRE)
+             doc_printf(doc, " %dd%d+2", 2 * p_ptr->sh_fire - 1 + p_ptr->lev/10, 2 + p_ptr->lev/ 10);
+        else if (flg == OF_AURA_COLD)
+             doc_printf(doc, " %dd%d+2", 2 * p_ptr->sh_cold - 1 + p_ptr->lev/10, 2 + p_ptr->lev/ 10);
+        else if (flg == OF_AURA_ELEC)
+             doc_printf(doc, " %dd%d+2", 2 * p_ptr->sh_elec - 1 + p_ptr->lev/10, 2 + p_ptr->lev/ 10);
+        else if (flg == OF_AURA_SHARDS)
+             doc_printf(doc, " %dd%d+2", 2 * p_ptr->sh_shards - 1 + p_ptr->lev/10, 2 + p_ptr->lev/ 10);
+        else doc_printf(doc, " %dd%d+2", 1 + p_ptr->lev/10, 2 + p_ptr->lev/ 10);
     }
     doc_newline(doc);
 }
