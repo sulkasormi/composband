@@ -467,13 +467,13 @@ static void _calc_bonuses(void)
         res_add(RES_FIRE);
         res_add(RES_FIRE);
         res_add_vuln(RES_COLD);
-        p_ptr->sh_fire = TRUE;
+        p_ptr->sh_fire++;
         break;
     case MON_COLD_VORTEX:
         res_add(RES_COLD);
         res_add(RES_COLD);
         res_add_vuln(RES_FIRE);
-        p_ptr->sh_cold = TRUE;
+        p_ptr->sh_cold++;
         break;
 
     case MON_WATER_VORTEX:
@@ -485,7 +485,7 @@ static void _calc_bonuses(void)
         p_ptr->pspeed += 1;
         res_add(RES_ELEC);
         res_add(RES_ELEC);
-        p_ptr->sh_elec = TRUE;
+        p_ptr->sh_elec++;
         break;
 
     case MON_NEXUS_VORTEX:
@@ -497,8 +497,8 @@ static void _calc_bonuses(void)
         p_ptr->pspeed += 3;
         res_add(RES_FIRE);
         res_add(RES_ELEC);
-        p_ptr->sh_fire = TRUE;
-        p_ptr->sh_elec = TRUE;
+        p_ptr->sh_fire++;
+        p_ptr->sh_elec++;
         break;
     case MON_SHIMMERING_VORTEX:
         p_ptr->pspeed += 3;
@@ -513,7 +513,7 @@ static void _calc_bonuses(void)
         p_ptr->pspeed += 5;
         p_ptr->skill_dig += 100;
         res_add(RES_SHARDS);
-        p_ptr->sh_shards = TRUE;
+        p_ptr->sh_shards++;
         break;
     case MON_CHAOS_VORTEX:
         p_ptr->pspeed += 7;
@@ -541,9 +541,9 @@ static void _calc_bonuses(void)
         res_add(RES_CHAOS);
         res_add(RES_DISEN);
         res_add(RES_TIME);
-        p_ptr->sh_cold = TRUE;
-        p_ptr->sh_fire = TRUE;
-        p_ptr->sh_elec = TRUE;
+        p_ptr->sh_cold++;
+        p_ptr->sh_fire++;
+        p_ptr->sh_elec++;
         break;
     }
 }
