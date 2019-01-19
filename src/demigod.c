@@ -430,7 +430,7 @@ static void _poseidon_get_flags(u32b flgs[OF_ARRAY_SIZE])
 static void _zeus_calc_bonuses(void)
 {
     res_add(RES_ELEC);
-    p_ptr->sh_elec = TRUE;
+    p_ptr->sh_elec++;
 }
 static void _zeus_get_flags(u32b flgs[OF_ARRAY_SIZE])
 {
