@@ -834,19 +834,19 @@ void draconian_shield_mut(int cmd, variant *res)
         switch (p_ptr->psubrace)
         {
         case DRACONIAN_RED:
-            p_ptr->sh_fire = TRUE;
+            p_ptr->sh_fire++;
             amt = 15;
             break;
         case DRACONIAN_WHITE:
-            p_ptr->sh_cold = TRUE;
+            p_ptr->sh_cold++;
             amt = 15;
             break;
         case DRACONIAN_BLUE:
-            p_ptr->sh_elec = TRUE;
+            p_ptr->sh_elec++;
             amt = 15;
             break;
         case DRACONIAN_CRYSTAL:
-            p_ptr->sh_shards = TRUE;
+            p_ptr->sh_shards++;
             amt = 10;
             break;
         }
@@ -1062,7 +1062,7 @@ void elec_aura_mut(int cmd, variant *res)
         var_set_string(res, "Electricity is running through your veins.");
         break;
     case SPELL_CALC_BONUS:
-        p_ptr->sh_elec = TRUE;
+        p_ptr->sh_elec++;
         break;
     default:
         default_spell(cmd, res);
@@ -1318,7 +1318,7 @@ void fire_aura_mut(int cmd, variant *res)
         var_set_string(res, "Your body is enveloped in flames.");
         break;
     case SPELL_CALC_BONUS:
-        p_ptr->sh_fire = TRUE;
+        p_ptr->sh_fire++;
         p_ptr->lite = TRUE;
         break;
     default:
