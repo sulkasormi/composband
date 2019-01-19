@@ -543,9 +543,9 @@ static void _calc_bonuses(void) {
         res_add(RES_CHAOS);
         res_add(RES_DISEN);
         res_add(RES_TIME);
-        p_ptr->sh_cold = TRUE;
-        p_ptr->sh_fire = TRUE;
-        p_ptr->sh_elec = TRUE;
+        p_ptr->sh_cold++;
+        p_ptr->sh_fire++;
+        p_ptr->sh_elec++;
         p_ptr->free_act++;
         break;
     }
