@@ -446,7 +446,7 @@ static void _marilith_calc_bonuses(void) {
     case MON_BODAK:
         res_add(RES_CONF);
         res_add(RES_POIS);
-        p_ptr->sh_fire = TRUE;
+        p_ptr->sh_fire++;
         p_ptr->free_act++;
         p_ptr->see_inv++;
         break;
@@ -660,7 +660,7 @@ static void _balrog_calc_bonuses(void) {
     p_ptr->hold_life++;
     p_ptr->no_eldritch = TRUE;
     p_ptr->pspeed += p_ptr->lev/8; /* Angels get +7 speed. Demons get +6 speed. */
-    p_ptr->sh_fire = TRUE;
+    p_ptr->sh_fire++;
 
     if (equip_find_art(ART_STONE_OF_DAEMON))
     {
