@@ -638,7 +638,7 @@ static void _air_calc_bonuses(void)
         res_add(RES_ACID);
         res_add(RES_FIRE);
         res_add(RES_COLD);
-        p_ptr->sh_elec = TRUE;
+        p_ptr->sh_elec++;
     }
     if (p_ptr->lev >= 50)
         res_add_immune(RES_ELEC);
@@ -1341,7 +1341,7 @@ static void _fire_calc_bonuses(void)
 {
     res_add(RES_FIRE);
     res_add_vuln(RES_COLD);
-    p_ptr->sh_fire = TRUE;
+    p_ptr->sh_fire++;
 
     if (p_ptr->lev >= 25)
     {
