@@ -949,11 +949,11 @@ void possessor_calc_bonuses(void)
     if ((r_ptr->flags2 & RF2_ELDRITCH_HORROR) || strchr("GLUVW", r_ptr->d_char))
         p_ptr->no_eldritch = TRUE;
     if (r_ptr->flags2 & RF2_AURA_FIRE)
-        p_ptr->sh_fire = TRUE;
+        p_ptr->sh_fire++;
     if (r_ptr->flags2 & RF2_AURA_ELEC)
-        p_ptr->sh_elec = TRUE;
+        p_ptr->sh_elec++;
     if (r_ptr->flags3 & RF3_AURA_COLD)
-        p_ptr->sh_cold = TRUE;
+        p_ptr->sh_cold++;
     if (r_ptr->flags2 & RF2_PASS_WALL)
     {
         p_ptr->pass_wall = TRUE;
