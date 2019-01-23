@@ -303,6 +303,9 @@ void hex_stop_spelling_spell(int cmd, variant *res)
     case SPELL_ENERGY:
         var_set_int(res, 10);
         break;
+    case SPELL_FLAGS:
+        var_set_int(res, PWR_AFRAID | PWR_CONFUSED);
+        break;
     case SPELL_CAST:
         var_set_bool(res, stop_hex_spell());
         break;
