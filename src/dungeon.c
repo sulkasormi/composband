@@ -3850,13 +3850,11 @@ static void _dispatch_command(int old_now_turn)
         {
             if (!p_ptr->wild_mode)
             {
-                if (!fear_allow_magic())
+                if ((do_cmd_power() & PWR_AFRAID) && (energy_use < 100))
                 {
-                    msg_print("You are too scared!");
+                    msg_print("You tremble in fear!");
                     energy_use = 100;
                 }
-                else
-                    do_cmd_power();
             }
             break;
         }
