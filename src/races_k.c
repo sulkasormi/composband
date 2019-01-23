@@ -501,6 +501,9 @@ static void _devour_flesh_spell(int cmd, variant *res)
     case SPELL_DESC:
         var_set_string(res, "Devour flesh (yours) in order to fill your belly.");
         break;
+    case SPELL_FLAGS:
+        var_set_int(res, PWR_CONFUSED);
+        break;
     case SPELL_CAST:
         var_set_bool(res, FALSE);
         if (!get_check("It might hurt a bit. Are you sure?")) return;
