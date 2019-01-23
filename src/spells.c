@@ -242,6 +242,17 @@ int get_spell_cost_extra(ang_spell spell)
     return n;
 }
 
+int get_spell_flags(ang_spell spell)
+{
+    int n;
+    variant res;
+    var_init(&res);
+    spell(SPELL_FLAGS, &res);
+    n = var_get_int(&res);
+    var_clear(&res);
+    return n;
+}
+
 int get_spell_fail_min(ang_spell spell)
 {
     int n;
@@ -896,21 +907,39 @@ void do_cmd_spell(void)
     }
 }
 
-void do_cmd_power(void)
+int _puhdista(spell_info* spells, int ct, byte liput)
+{
+    int i, confirmed_spells = 0;
+    byte vanha_paikka[MAX_SPELLS] = {0};
+    if (!liput) return ct; /* paranoia */
+    for (i = 0; i < ct; i++)
+    {
+        if ((get_spell_flags(spells[i].fn) & liput) == liput)
+        {
+            vanha_paikka[confirmed_spells] = i;
+            confirmed_spells++;
+        }
+    }
+    for (i = 0; i < ct; i++)
+    {
+        if ((i < confirmed_spells) && (i != vanha_paikka[i])) spells[i] = spells[vanha_paikka[i]];
+    }
+    return confirmed_spells;
+}
+
+byte do_cmd_power(void)
 {
     spell_info spells[MAX_SPELLS];
     int ct = 0;
     int choice = 0;
     int budget = p_ptr->chp;
+    byte ongelma = 0;
     bool hp_only = (elemental_is_(ELEMENTAL_WATER));
     race_t *race_ptr = get_race();
     class_t *class_ptr = get_class();
 
-    if (p_ptr->confused)
-    {
-        msg_print("You are too confused!");
-        return;
-    }
+    if (!fear_allow_magic()) ongelma |= PWR_AFRAID;
+    if (p_ptr->confused) ongelma |= PWR_CONFUSED;
 
     if (!hp_only) budget += p_ptr->csp;
 
@@ -938,9 +967,20 @@ void do_cmd_power(void)
     if (ct == 0)
     {
         msg_print("You have no powers.");
-        return;
+        return 0; /* No energy use even if frightened! */
     }
 
+    if (ongelma)
+    {
+        ct = _puhdista(spells, ct, ongelma);
+        if (ct == 0)
+        {
+             if (ongelma & PWR_AFRAID) msg_print("You are too scared!");
+             else if (ongelma & PWR_CONFUSED) msg_print("You are too confused!");
+             return ongelma;
+        }
+    }
+    
     _add_extra_costs_powers(spells, ct);
 
     choice = choose_spell(spells, ct, "power", budget);
@@ -957,13 +997,13 @@ void do_cmd_power(void)
         if (spell->level > p_ptr->lev)
         {
             msg_print("You can't use that power yet!");
-            return;
+            return ongelma;
         }
 
         if (spell->cost > budget)
         {
             msg_print("Using this power will kill you!  Why not rest a bit first?");
-            return;
+            return ongelma;
         }
 
         /* Check for Failure */
@@ -979,7 +1019,7 @@ void do_cmd_power(void)
         else
         {
             if (!cast_spell(spell->fn))
-                return;
+                return ongelma;
             spell_stats_on_cast(spell);
             sound(SOUND_ZAP); /* Wahoo! */
         }
@@ -1004,6 +1044,7 @@ void do_cmd_power(void)
         p_ptr->redraw |= (PR_HP);
         p_ptr->window |= (PW_SPELL);
     }
+    return ongelma;
 }
 
 /***********************************************************************
