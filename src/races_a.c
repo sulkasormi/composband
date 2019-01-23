@@ -617,6 +617,9 @@ static void _boit_vomit_spell(int cmd, variant *res)
     case SPELL_DESC:
         var_set_string(res, "Ejects the contents of your stomach, making you extremely hungry and curing poison. Vomiting on an already empty stomach hurts a bit.");
         break;
+    case SPELL_FLAGS:
+        var_set_int(res, PWR_AFRAID | PWR_CONFUSED);
+        break;
     case SPELL_CAST:
         msg_print("You throw up!");
         if (p_ptr->food < PY_FOOD_FAINT + 24)
