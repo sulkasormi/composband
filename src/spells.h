@@ -6,12 +6,13 @@ extern int calculate_fail_rate_aux(int caster_lvl, int spell_lvl, int base_fail,
 extern bool cast_spell(ang_spell spell);
 extern int  choose_spell(spell_info* spells, int ct, cptr desc, int max_cost);
 extern void default_spell(int cmd, variant *res);
-extern void do_cmd_power(void);
+extern byte do_cmd_power(void);
 extern void do_cmd_spell(void);
 extern void do_cmd_spell_browse(void);
 extern void fail_spell(ang_spell spell);
 extern int get_spell_energy(ang_spell spell);
 extern int get_spell_cost_extra(ang_spell spell);
+extern int get_spell_flags(ang_spell spell);
 extern int get_spell_fail_min(ang_spell spell);
 extern cptr get_spell_name(ang_spell spell); /* buffer reset on each call */
 extern cptr get_spell_stat_name(ang_spell spell); /* buffer reset on each call */
