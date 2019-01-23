@@ -40,6 +40,7 @@ of Atalanta
 of Amras
 of Amrod
 of Agincourt
+of the Dryad
 'Second String'
 'Silkstring'
 'Tigerbow'
@@ -81,6 +82,7 @@ of Cheer
 of Blondel
 of Alan-a-Dale
 of Cacofonix
+'Beetlelute'
 'Oon'
 'Sulosointu'
 'Silversound'
