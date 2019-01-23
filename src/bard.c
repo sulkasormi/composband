@@ -113,6 +113,9 @@ static void _stop_singing_spell(int cmd, variant *res)
     case SPELL_DESC:
         var_set_string(res, "");
         break;
+    case SPELL_FLAGS:
+        var_set_int(res, PWR_AFRAID | PWR_CONFUSED);
+        break;
     case SPELL_CAST:
         var_set_bool(res, FALSE);
         if (!p_ptr->magic_num1[0] && !p_ptr->magic_num1[1]) return;
