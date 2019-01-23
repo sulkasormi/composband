@@ -541,6 +541,7 @@
 #define SPELL_VALUE          19      /* For valuing object activations */
 #define SPELL_ON_BROWSE      20      /* Custom Handler for browsing the spell */
 #define SPELL_STAT_NAME      21      /* In case display name (SPELL_NAME) is duplicated/renamed */
+#define SPELL_FLAGS          22
 
 /*
  * Indexes of the various "stats" (hard-coded by savefiles, etc).
@@ -6007,3 +6008,9 @@ enum
 #define KILL_MULT_ORC KILL_MULT_HIGH
 #define KILL_MULT_TROLL KILL_MULT_HIGH
 #define KILL_MULT_GIANT KILL_MULT_HIGH
+
+/* Power usability flags */
+#define PWR_AFRAID 0x01
+#define PWR_CONFUSED 0x02
+/* to-do: PWR_ANTIMAGIC? */
+
