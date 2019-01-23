@@ -2539,6 +2539,8 @@ extern void     rodeo_spell(int cmd, variant *res);
 
 extern class_t *chaos_warrior_get_class(void);
 extern void     chaos_warrior_reward(void);
+extern void     nonlethal_ty_substitute(bool do_dec);
+
 extern class_t *devicemaster_get_class(int psubclass);
 extern bool     devicemaster_desperation;
 extern cptr     devicemaster_speciality_name(int psubclass);
