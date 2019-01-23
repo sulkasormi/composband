@@ -9,15 +9,18 @@ of R'lyeh
 of Thunder
 of Helldiver
 of the Firmament
+of Ukko
 
 N: 2:BIAS_POIS
 'Poison Barrier'
+'Venom's End'
 of Scorpio
 of Cleanness
 of Immunity
 of Mughash
 of the Snake Master
 of the Bee Master
+of the Modern Knight
 
 N: 3:BIAS_FIRE
 'Blessed Fusion'
@@ -46,6 +49,7 @@ of Santa Claus
 of the Yeti
 of Midwinter
 of the Seven Peaks
+of Slippery Slopes
 
 N: 5:BIAS_ACID
 'Gelatinous Cube'
@@ -53,9 +57,12 @@ N: 5:BIAS_ACID
 'Shield of Water'
 'Oozearmor'
 'Phlogiston'
+'Old Yellow'
+'Untouchable'
 of Aqua Regia
 of the Divine Jewel
 of Diamond
+of the Tidal Cave
 
 N:12:BIAS_CHAOS
 'Day of the Dove'
@@ -70,6 +77,7 @@ of Seldon
 of the Chaos Lord
 of the Twelve Fiends
 of the Milkman
+of the Keyboard Cat
 
 N:14:BIAS_NECROMANTIC
 'Total Eclipse'
@@ -85,6 +93,7 @@ of the Ruler of Wallachia
 of the Netherlands
 of Blackest Pitch
 of the Wraith
+of Louhi
 
 N:15:BIAS_LAW
 N:13:BIAS_PRIESTLY
@@ -141,6 +150,9 @@ of the Hidden Chamber
 of Forgotten Pathways
 of the Shadow's Footfall
 of the Burrahobbits
+of Silk
+of the Silent Spy
+of the Sneak
 
 N:17:BIAS_MAGE
 N: 7:BIAS_INT
@@ -157,6 +169,8 @@ of the Sorcerer-King
 of Simon Magus
 of Zul
 of Erasmus
+of Uncommon Sense
+of the Mastermind
 
 N:18:BIAS_WARRIOR
 N: 6:BIAS_STR
@@ -171,8 +185,11 @@ of Vader
 of the Valkyrie
 of the Ogre King
 of Daybreak
-of Diamond
+of the Graveyard Cyclops
 of Sad Giant
+of Eternal Glory
+of Victory
+of the Beornings
 
 N:19:BIAS_RANGER
 N:10:BIAS_CON
@@ -192,6 +209,7 @@ of the Waxing Moon
 of the Full Moon
 of the New Moon
 of the Falling Leaves
+of Tapio
 
 N:11:BIAS_CHR
 'Snow White'
@@ -217,6 +235,7 @@ N:*:Default
 'Camelot'
 'Legacy Typo'
 'Placeholder Name'
+'Edge-blunter'
 of Champion
 of Crystal
 of Icarus
