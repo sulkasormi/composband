@@ -2288,7 +2288,7 @@ bool destroy_area(int y1, int x1, int r, int power)
         in_generate = TRUE;
 
     /* Prevent destruction of quest levels and town */
-    if (!py_in_dungeon() || !quests_allow_all_spells())
+    if (!py_in_dungeon() || !quests_allow_all_spells() || dungeon_type == DUNGEON_WOOD)
     {
         return (FALSE);
     }
