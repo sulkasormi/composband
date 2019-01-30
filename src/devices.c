@@ -1537,7 +1537,7 @@ static cptr _do_scroll(int sval, int mode)
         if (desc) return "It destroys everything nearby you when you read it.";
         if (cast)
         {
-            if (((!py_in_dungeon()) || (!quests_allow_all_spells()))
+            if (((!py_in_dungeon()) || (!quests_allow_all_spells()) || (dungeon_type == DUNGEON_WOOD))
                && (!_scroll_check_no_effect(sval))) return NULL;
             if (destroy_area(py, px, 13 + randint0(5), _scroll_power(2000)))
                 device_noticed = TRUE;
