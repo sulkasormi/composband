@@ -375,7 +375,7 @@ static spell_info _marilith_spells[] = {
     { 22,  9, 40, summon_manes_spell},
     { 25, 16, 40, fire_ball_spell},
     { 30, 18, 45, cause_wounds_III_spell},
-    { 32, 20, 50, amnesia_spell},
+//    { 32, 20, 50, amnesia_spell},
     { 36, 70, 85, summon_demon_spell},
     { 40, 10, 50, enchantment_spell}, /* Note: Mariliths need corpses to eat, so they cannot spam
                                          this spell in the town the way other characters may */
@@ -468,6 +468,7 @@ static void _marilith_calc_bonuses(void) {
         p_ptr->pspeed += 5;
         p_ptr->free_act++;
         p_ptr->see_inv++;
+        p_ptr->easy_2weapon = TRUE;
         break;
     }
 }
@@ -554,7 +555,7 @@ static race_t *_marilith_get_race_t(void)
 
     if (!init)
     {           /* dis, dev, sav, stl, srh, fos, thn, thb */
-    skills_t bs = { 20,  35,  36,   3,  16,  10,  56,  35};
+    skills_t bs = { 20,  33,  36,   3,  16,  10,  56,  35};
     skills_t xs = { 12,  11,  10,   0,   0,   0,  20,  11};
 
         me.subdesc = "Tanar'ri were originally slave demons, but rose up to overthrow their masters. "
@@ -565,7 +566,7 @@ static race_t *_marilith_get_race_t(void)
         me.skills = bs;
         me.extra_skills = xs;
 
-        me.exp = 250;
+        me.exp = 200;
         me.infra = 5;
         me.base_hp = 30;
 
@@ -584,13 +585,13 @@ static race_t *_marilith_get_race_t(void)
         me.subname = "Tanar'ri";
     else
         me.subname = titles[rank];
-    me.stats[A_STR] =  rank;
+    me.stats[A_STR] =  (rank == 3) ? 0 : rank;
     me.stats[A_INT] =  rank/2;
     me.stats[A_WIS] = -5;
     me.stats[A_DEX] =  rank;
-    me.stats[A_CON] =  rank;
+    me.stats[A_CON] =  (rank == 3) ? 1 : MIN(3, rank);
     me.stats[A_CHR] =  rank/2;
-    me.life = 95 + 2*rank;
+    me.life = (rank == 4) ? 105 : 95;
 
     me.equip_template = mon_get_equip_template();
     me.boss_r_idx = MON_MEPHISTOPHELES;
