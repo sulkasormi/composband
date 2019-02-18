@@ -71,6 +71,8 @@ static void _load(savefile_ptr file)
         if (0 <= j && j < EFFECT_MAX)
             _effects[j] += n;
     }
+    ini_statup_list();
+    if (!savefile_is_older_than(file, 7,1,0,1)) dungeon_statup_load(file);
 }
 
 static void _save(savefile_ptr file)
@@ -113,6 +115,7 @@ static void _save(savefile_ptr file)
             savefile_write_s16b(file, _effects[i]);
         }
     }
+    dungeon_statup_save(file);
 }
 
 static bool _skip_flag(int which)
@@ -456,6 +459,8 @@ static void _birth(void)
 
     for (i = 0; i < EFFECT_MAX; i++)
         _effects[i] = 0;
+
+    ini_statup_list();
 
     p_ptr->current_r_idx = MON_RING_MIMIC;
     equip_on_change_race();
