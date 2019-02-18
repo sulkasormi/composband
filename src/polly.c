@@ -32,6 +32,7 @@ bool dungeon_conquered(int which)
     if (d_info[which].flags1 & DF1_RANDOM) return FALSE;
     if (!d_info[which].final_guardian) return ((max_dlv[which] == d_info[which].maxdepth) ? TRUE : FALSE);
     if (!r_info[d_info[which].final_guardian].max_num) return TRUE;
+    if ((prace_is_(RACE_MON_RING)) && (have_flag(dungeon_statup, which))) return TRUE;
     return (unique_is_friend(d_info[which].final_guardian));
 }
 
@@ -48,7 +49,7 @@ void politician_set_friend(int which, bool kamu)
 
 bool politician_dungeon_on_statup(int which)
 {
-    if (p_ptr->pclass != CLASS_POLITICIAN) return TRUE;
+    if ((p_ptr->pclass != CLASS_POLITICIAN) && (!prace_is_(RACE_MON_RING))) return TRUE;
     if (have_flag(dungeon_statup, which)) return FALSE;
     else add_flag(dungeon_statup, which);
     return TRUE;
@@ -59,7 +60,7 @@ static void _ini_friend_list(void)
     C_MAKE(friend_list, _mon_array_size, u32b);
 }
 
-static void _ini_statup_list(void)
+void ini_statup_list(void)
 {
     int i;
     for (i = 0; i < _dung_array_size; i++) dungeon_statup[i] = 0;
@@ -812,10 +813,22 @@ static caster_info * _caster_info(void)
     }
     return &me;
 }
+
+void dungeon_statup_load(savefile_ptr file)
+{
+    byte _old_dung_array_size = savefile_read_byte(file);
+    int i;
+    for (i = 0; i < _old_dung_array_size; i++)
+    {
+        if (i < _dung_array_size) dungeon_statup[i] = savefile_read_u32b(file);
+        else (void)savefile_read_u32b(file);
+    }
+}
+
 static void _load_player(savefile_ptr file)
 {
     _ini_friend_list();
-    _ini_statup_list();
+    ini_statup_list();
     _peak_au = savefile_read_s32b(file);
     if (_peak_au == 0xFFF4)
     {
@@ -830,18 +843,23 @@ static void _load_player(savefile_ptr file)
     }
     if (_peak_au == 0xFFF5)
     {
-        byte _old_dung_array_size = savefile_read_byte(file);
-        int i;
-        for (i = 0; i < _old_dung_array_size; i++)
-        {
-            if (i < _dung_array_size) dungeon_statup[i] = savefile_read_u32b(file);
-            else (void)savefile_read_u32b(file);
-        }
+        dungeon_statup_load(file);
         _peak_au = savefile_read_s32b(file);
     }
     _peak_exp = savefile_read_s32b(file);
     _spent_exp = savefile_read_s32b(file);
     _politician_check_magic(FALSE);
+}
+
+void dungeon_statup_save(savefile_ptr file)
+{
+    int i;
+    savefile_write_byte(file, _dung_array_size);
+    for (i = 0; i < _dung_array_size; i++)
+    {
+        u32b tmp = dungeon_statup[i];
+        savefile_write_u32b(file, tmp);
+    }
 }
 
 static void _save_player(savefile_ptr file)
@@ -855,12 +873,7 @@ static void _save_player(savefile_ptr file)
         savefile_write_u32b(file, tmp);
     }
     savefile_write_s32b(file, 0xFFF5); /* marker for compatibility of dev versions */
-    savefile_write_byte(file, _dung_array_size);
-    for (i = 0; i < _dung_array_size; i++)
-    {
-        u32b tmp = dungeon_statup[i];
-        savefile_write_u32b(file, tmp);
-    }
+    dungeon_statup_save(file);
     savefile_write_s32b(file, _peak_au);
     savefile_write_s32b(file, _peak_exp);
     savefile_write_s32b(file, _spent_exp);
@@ -876,7 +889,7 @@ static void _birth(void)
 
     p_ptr->au += 150;
     _ini_friend_list();
-    _ini_statup_list();
+    ini_statup_list();
     _politician_check_magic(TRUE);
 }
 
