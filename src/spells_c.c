@@ -162,7 +162,7 @@ void clear_mind_spell(int cmd, variant *res)
             msg_print("You need to concentrate on your pets now.");
             return;
         }
-        if (p_ptr->pclass == CLASS_RUNE_KNIGHT)
+        if ((p_ptr->pclass == CLASS_RUNE_KNIGHT) || (p_ptr->pclass == CLASS_RAGE_MAGE))
         {
             msg_print("Your mind remains cloudy.");
             return;
