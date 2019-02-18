@@ -2697,6 +2697,9 @@ extern bool     unique_is_friend(int which);
 extern bool     dungeon_conquered(int which);
 extern bool     object_is_deaggravated(object_type *o_ptr);
 extern void     set_filibuster(bool paalle);
+extern void     ini_statup_list(void);
+extern void     dungeon_statup_load(savefile_ptr file);
+extern void     dungeon_statup_save(savefile_ptr file);
 
 /* skills.c */
 extern skill_table *s_info; /* deprecated ... in process of removing naked table reads*/
