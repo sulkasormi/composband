@@ -717,7 +717,6 @@ static void _absorb_spell(int cmd, variant *res)
     case SPELL_CAST:
     {
         obj_prompt_t prompt = {0};
-        char o_name[MAX_NLEN];
 
         var_set_bool(res, FALSE);
         prompt.prompt = "Absorb the powers of which item?";
@@ -729,8 +728,6 @@ static void _absorb_spell(int cmd, variant *res)
         obj_prompt(&prompt);
         if (!prompt.obj) return;
 
-        object_desc(o_name, prompt.obj, OD_NAME_ONLY);
-        msg_format("You absorb the power of %s!", o_name);
         _absorb(prompt.obj);
 
         prompt.obj->number = 0;
