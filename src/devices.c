@@ -802,7 +802,7 @@ static cptr _do_potion(int sval, int mode)
         {
             int amt = _potion_power(damroll(3, 6) + 3);
 
-            if (p_ptr->pclass == CLASS_RUNE_KNIGHT)
+            if ((p_ptr->pclass == CLASS_RUNE_KNIGHT) || (p_ptr->pclass == CLASS_RAGE_MAGE))
                 msg_print("You are unaffected.");
             else if (sp_player(amt))
             {
@@ -819,7 +819,7 @@ static cptr _do_potion(int sval, int mode)
         {
             int amt = _potion_power(damroll(10, 10) + 15);
 
-            if (p_ptr->pclass == CLASS_RUNE_KNIGHT)
+            if ((p_ptr->pclass == CLASS_RUNE_KNIGHT) || (p_ptr->pclass == CLASS_RAGE_MAGE))
                 msg_print("You are unaffected.");
             else if (sp_player(amt))
             {
@@ -4855,7 +4855,7 @@ cptr do_effect(effect_t *effect, int mode, int boost)
         if (color) return format("%d", TERM_L_BLUE);
         if (cast)
         {
-            if (p_ptr->pclass == CLASS_RUNE_KNIGHT)
+            if ((p_ptr->pclass == CLASS_RUNE_KNIGHT) || (p_ptr->pclass == CLASS_RAGE_MAGE))
                 msg_print("You are unaffected.");
             else if (sp_player(_BOOST(amt)))
             {
@@ -4875,7 +4875,7 @@ cptr do_effect(effect_t *effect, int mode, int boost)
         if (color) return format("%d", TERM_L_BLUE);
         if (cast)
         {
-            if (p_ptr->pclass == CLASS_RUNE_KNIGHT)
+            if ((p_ptr->pclass == CLASS_RUNE_KNIGHT) || (p_ptr->pclass == CLASS_RAGE_MAGE))
                 msg_print("You are unaffected.");
             else if (sp_player(_BOOST(amt)))
             {
