@@ -309,7 +309,13 @@ static bool _absorb_object(object_type *o_ptr)
     if (object_is_jewelry(o_ptr))
     {
         char o_name[MAX_NLEN];
-        object_desc(o_name, o_ptr, OD_NAME_ONLY);
+        bool tunnettu = (((obj_is_identified(o_ptr)) || (o_ptr->feeling == FEEL_AVERAGE)) && (obj_is_identified_fully(o_ptr)));
+        if (!tunnettu)
+        {
+            obj_identify_fully(o_ptr);
+            object_desc(o_name, o_ptr, OD_COLOR_CODED);
+        }
+        else object_desc(o_name, o_ptr, OD_NAME_ONLY | OD_COLOR_CODED);
         msg_format("You attempt to drain power from %s.", o_name);
         _absorb(o_ptr);
         return TRUE;
@@ -587,6 +593,7 @@ static void _absorb_spell(int cmd, variant *res)
     {
         obj_prompt_t prompt = {0};
         char o_name[MAX_NLEN];
+        bool tunnettu;
 
         var_set_bool(res, FALSE);
         prompt.prompt = "Absorb which item?";
@@ -598,6 +605,8 @@ static void _absorb_spell(int cmd, variant *res)
         obj_prompt(&prompt);
         if (!prompt.obj) return;
 
+        tunnettu = (((obj_is_identified(prompt.obj)) || (prompt.obj->feeling == FEEL_AVERAGE)) && (obj_is_identified_fully(prompt.obj)));
+        if (!tunnettu) obj_identify_fully(prompt.obj);
         object_desc(o_name, prompt.obj, OD_NAME_ONLY);
         msg_format("You absorb the power of %s!", o_name);
         _absorb(prompt.obj);
