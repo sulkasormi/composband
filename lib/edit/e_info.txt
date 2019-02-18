@@ -966,7 +966,7 @@ T:AMULET
 W:30:*:2
 F:FULL_NAME | HIDE_TYPE
 
-N:222:& Hell Harness
+N:222:& Hell Harness~
 T:AMULET
 W:50:*:3
 F:FULL_NAME
