@@ -209,7 +209,7 @@ cptr equip_describe_slot(slot_t slot)
                 return "Both Arms";
         }
         if (p_ptr->weapon_info[hand].riding)
-            return "Riding Reins";
+            return "Reins";
     }
     if (_template->slots[slot].type == EQUIP_SLOT_BOW)
     {
@@ -1229,7 +1229,7 @@ void equip_calc_bonuses(void)
             continue;
         }
 
-        obj_flags(obj, flgs);
+        obj_flags_effective(obj, flgs);
         obj_flags_known(obj, known_flgs);
 
         p_ptr->cursed |= obj->curse_flags;
@@ -1421,32 +1421,11 @@ void equip_calc_bonuses(void)
         if (have_flag(flgs, OF_DRAIN_EXP))   p_ptr->cursed |= OFC_DRAIN_EXP;
         if (have_flag(flgs, OF_TY_CURSE))    p_ptr->cursed |= OFC_TY_CURSE;
 
-        if (have_flag(flgs, OF_DEC_MANA))
-        {
-            /* In general, you need to be a Mage/Priest to gain from wizardstaves, et. al.
-             * There are exceptions (e.g. Bards and the two artifact harps; Vampires
-             * and The Amulet of the Pitch Dark Night; etc). You will find code
-             * for these exceptions in class/race specific calc_bonuses functions.
-             * However, The Yumi of Irresponsibility works for everybody! */
-            if (obj->name1 == ART_NAMAKE_BOW)
-            {
-                p_ptr->dec_mana = TRUE;
-            }
-            else
-            {
-                caster_info *caster_ptr = get_caster_info();
-                if (caster_ptr && (caster_ptr->options & CASTER_ALLOW_DEC_MANA))
-                    p_ptr->dec_mana = TRUE;
-            }
-
-        }
-        if (have_flag(flgs, OF_EASY_SPELL))
-        {
-            caster_info *caster_ptr = get_caster_info();
-            if (caster_ptr && (caster_ptr->options & CASTER_ALLOW_DEC_MANA))
-                p_ptr->easy_spell = TRUE;
-        }
-
+        /* Whether these two flags should be available to the player is now
+         * calculated in obj_flags_effective() */
+        if (have_flag(flgs, OF_DEC_MANA)) p_ptr->dec_mana = TRUE;
+        if (have_flag(flgs, OF_EASY_SPELL)) p_ptr->easy_spell = TRUE;
+            
         if (have_flag(flgs, OF_SPELL_POWER)) p_ptr->spell_power += obj->pval;
         if (have_flag(flgs, OF_DEC_SPELL_POWER)) p_ptr->spell_power -= obj->pval;
         if (have_flag(flgs, OF_SPELL_CAP))   p_ptr->spell_cap += obj->pval;
