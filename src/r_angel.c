@@ -100,12 +100,6 @@ static void _calc_bonuses(void) {
     p_ptr->levitation = TRUE;
     res_add(RES_POIS);
 
-    if (equip_find_art(ART_STONE_OF_CRUSADE))
-    {
-        p_ptr->dec_mana = TRUE;
-        p_ptr->easy_spell = TRUE;
-    }
-
     if (p_ptr->lev >= 10)
     {
         res_add(RES_FIRE);
