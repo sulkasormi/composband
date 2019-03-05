@@ -987,9 +987,7 @@ static void _display_extra(object_type *o_ptr, u32b flgs[OF_ARRAY_SIZE], doc_ptr
 
     if (have_flag(flgs, OF_DEC_MANA))
     {
-        caster_info *caster_ptr = get_caster_info();
-        if (caster_ptr && (caster_ptr->options & CASTER_ALLOW_DEC_MANA))
-            doc_insert(doc, "It decreases your mana consumption.\n");
+        doc_insert(doc, "It decreases your mana consumption.\n");
     }
 
     net = _calc_net_bonus(o_ptr->pval, flgs, OF_WEAPONMASTERY, OF_INVALID);
@@ -1420,7 +1418,7 @@ void obj_display_doc(object_type *o_ptr, doc_ptr doc)
         return;
     }
 
-    obj_flags_known(o_ptr, flgs);
+    obj_flags_display(o_ptr, flgs);
 
     _display_name(o_ptr, doc);
     doc_insert(doc, "  <indent>");
@@ -1483,7 +1481,7 @@ void obj_display_smith(object_type *o_ptr, doc_ptr doc)
         return;
     }
 
-    obj_flags_known(o_ptr, flgs);
+    obj_flags_display(o_ptr, flgs);
 
     _display_name(o_ptr, doc);
     doc_insert(doc, "  <indent><style:indent>");
