@@ -2206,7 +2206,7 @@ static void _stats_init(void)
         }
         case CLASS_BLOOD_KNIGHT:
         {
-            int stats[6] = { 17, 8, 8, 15, 17, 9 };
+            int stats[6] = { 17, 13, 8, 15, 16, 10 };
             _stats_init_aux(stats);
             break;
         }
