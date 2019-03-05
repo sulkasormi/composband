@@ -772,14 +772,6 @@ static void _character_dump(doc_ptr doc)
 
 static void _calc_bonuses(void)
 {
-    if (equip_find_art(ART_YATA))
-    {
-        p_ptr->dec_mana = TRUE;
-        p_ptr->easy_spell = TRUE;
-    }
-    if (equip_find_art(ART_GIL_GALAD))
-        p_ptr->dec_mana = TRUE;
-
     if (p_ptr->lev >= 40) 
         p_ptr->reflect = TRUE;
 }
