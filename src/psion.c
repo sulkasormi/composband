@@ -1966,12 +1966,6 @@ static int _get_spells(spell_info* spells, int max)
 
 static void _calc_bonuses(void)
 {
-    if (equip_find_art(ART_STONE_OF_MIND))
-    {
-        p_ptr->dec_mana = TRUE;
-        p_ptr->easy_spell = TRUE;
-    }
-
     if (p_ptr->lev >= 15)
         p_ptr->clear_mind = TRUE;
 
