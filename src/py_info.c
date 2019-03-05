@@ -401,7 +401,7 @@ static _flagzilla_ptr _flagzilla_alloc(void)
 
         if (o_ptr)
         {
-            obj_flags_known(o_ptr, flagzilla->obj_flgs[i]);
+            obj_flags_display(o_ptr, flagzilla->obj_flgs[i]);
             switch (o_ptr->rune)
             {
             case RUNE_ABSORPTION:
