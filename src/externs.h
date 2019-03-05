@@ -1160,6 +1160,7 @@ extern void set_target(monster_type *m_ptr, int y, int x);
 extern void reset_target(monster_type *m_ptr);
 extern monster_race *real_r_ptr(monster_type *m_ptr);
 extern int real_r_idx(monster_type *m_ptr);
+extern void inc_cur_num(monster_type *m_ptr, int i);
 extern void delete_monster_idx(int i);
 extern void delete_monster(int y, int x);
 extern void compact_monsters(int size);
@@ -1246,6 +1247,7 @@ extern s16b m_bonus(int max, int level);
 
 extern void reset_visuals(void);
 extern void obj_flags(object_type *o_ptr, u32b flgs[OF_ARRAY_SIZE]);
+extern void obj_flags_effective(object_type *o_ptr, u32b flgs[OF_ARRAY_SIZE]);
 extern void weapon_flags(int hand, u32b flgs[OF_ARRAY_SIZE]);
 extern void weapon_flags_known(int hand, u32b flgs[OF_ARRAY_SIZE]);
 extern void missile_flags(object_type *arrow, u32b flgs[OF_ARRAY_SIZE]);
@@ -1257,6 +1259,7 @@ extern void toggle_mon_obj_lists(void);
 /* Object Lore */
 extern void obj_flags_known(object_type *o_ptr, u32b flgs[OF_ARRAY_SIZE]);
 extern void obj_flags_unknown(object_type *o_ptr, u32b flgs[OF_ARRAY_SIZE]);
+extern void obj_flags_display(object_type *o_ptr, u32b flgs[OF_ARRAY_SIZE]);
 extern bool obj_is_identified(object_type *o_ptr);
 extern bool obj_is_identified_fully(object_type *o_ptr);
 extern void obj_identify(object_type *o_ptr);
