@@ -1645,8 +1645,8 @@ void infernal_deal_mut(int cmd, variant *res)
         var_set_string(res, "You have made an infernal deal.");
         break;
     case SPELL_HELP_DESC:
-        if ((p_ptr->pclass == CLASS_RUNE_KNIGHT) || (p_ptr->pclass == CLASS_SAMURAI) || (p_ptr->pclass == CLASS_MYSTIC) || ((p_ptr->lev > 18) && (p_ptr->msp == 0))) var_set_string(res, "You will regain 15 HP whenever a nearby enemy monster is slain.");
-        else var_set_string(res, "You will regain 10 HP and 5 SP whenever a nearby enemy monster is slain.");
+        if ((p_ptr->pclass == CLASS_RUNE_KNIGHT) || (p_ptr->pclass == CLASS_SAMURAI) || (p_ptr->pclass == CLASS_MYSTIC) || ((p_ptr->lev > 18) && (p_ptr->msp == 0))) var_set_string(res, "You will regain HP whenever a nearby enemy monster is slain, the amount equalling two-thirds of the monster's native level.");
+        else var_set_string(res, "You will regain HP and SP whenever a nearby enemy monster is slain, the amount equalling four-ninths of the monster's native level for HP and half that for SP.");
         break;
     default:
         default_spell(cmd, res);
