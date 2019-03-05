@@ -509,7 +509,7 @@ void precalc_cur_num_of_pet(void)
         if (!m_ptr->r_idx) continue;
 
         /* Hack -- Increase the racial counter */
-        real_r_ptr(m_ptr)->cur_num++;
+        inc_cur_num(m_ptr, 1);
     }
 }
 
@@ -613,7 +613,7 @@ static void place_pet(void)
             msg_format("You have lost sight of %s.", m_name);
 
             /* Pre-calculated in precalc_cur_num_of_pet(), but need to decrease */
-            if (r_ptr->cur_num) r_ptr->cur_num--;
+            if (r_ptr->cur_num) inc_cur_num(m_ptr, -1);
         }
     }
 
