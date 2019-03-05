@@ -884,7 +884,7 @@ static errr rd_saved_floor(savefile_ptr file, saved_floor_type *sf_ptr)
         rd_monster(file, m_ptr);
         c_ptr = &cave[m_ptr->fy][m_ptr->fx];
         c_ptr->m_idx = m_idx;
-        real_r_ptr(m_ptr)->cur_num++;
+        inc_cur_num(m_ptr, 1);
 
         /* Build a chain of objects carried */
         if (m_ptr->hold_o_idx)
