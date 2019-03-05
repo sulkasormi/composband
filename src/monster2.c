@@ -163,6 +163,13 @@ monster_race *real_r_ptr(monster_type *m_ptr)
     }
 }
 
+void inc_cur_num(monster_type *m_ptr, int i)
+{
+    if (!m_ptr) return;
+    if (m_ptr->smart & (1U << SM_CLONED)) return;
+    real_r_ptr(m_ptr)->cur_num += i;
+}
+
 int real_r_idx(monster_type *m_ptr)
 {
     monster_race *r_ptr = &r_info[m_ptr->r_idx];
@@ -203,7 +210,7 @@ void delete_monster_idx(int i)
 
 
     /* Hack -- Reduce the racial counter */
-    real_r_ptr(m_ptr)->cur_num--;
+    inc_cur_num(m_ptr, -1);
 
     /* Hack -- count the number of "reproducers" */
     if (r_ptr->flags2 & (RF2_MULTIPLY)) num_repro--;
@@ -3651,7 +3658,7 @@ int place_monster_one(int who, int y, int x, int r_idx, int pack_idx, u32b mode)
 
 
     /* Count the monsters on the level */
-    real_r_ptr(m_ptr)->cur_num++;
+    inc_cur_num(m_ptr, 1);
 
     /*
      * Memorize location of the unique monster in saved floors.
