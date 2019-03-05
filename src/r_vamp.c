@@ -446,12 +446,6 @@ static void _calc_bonuses(void)
     p_ptr->hold_life++;
     p_ptr->see_nocto = TRUE;
 
-    if (equip_find_art(ART_NIGHT))
-    {
-        p_ptr->dec_mana = TRUE;
-        p_ptr->easy_spell = TRUE;
-    }
-
     if (p_ptr->lev >= 35)
     {
         res_add(RES_DARK);
