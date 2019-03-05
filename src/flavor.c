@@ -737,7 +737,7 @@ static char *get_ability_abbreviation(char *ptr, object_type *o_ptr, bool all)
         return ptr;
 
     /* Extract the flags */
-    obj_flags_known(o_ptr, flgs);
+    obj_flags_display(o_ptr, flgs);
 
     /* Remove obvious flags */
     if (!all)
