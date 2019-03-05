@@ -529,11 +529,6 @@ static void _calc_bonuses(void)
     p_ptr->align -= 200;
     p_ptr->spell_cap += 2;
 
-    if (equip_find_art(ART_EYE_OF_VECNA))
-        p_ptr->dec_mana = TRUE;
-    if (equip_find_art(ART_HAND_OF_VECNA))
-        p_ptr->easy_spell = TRUE;
-
     if (p_ptr->lev >= 5) res_add(RES_COLD);
     if (p_ptr->lev >= 15) p_ptr->see_inv++;
     if (p_ptr->lev >= 25) p_ptr->hold_life++;
