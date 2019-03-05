@@ -5471,7 +5471,7 @@ bool vamp_player(int num)
         num -= lp;
         assert(num > 0);
     }
-    return hp_player_aux(num);
+    return hp_player(num);
 }
 
 bool sp_player(int num)
