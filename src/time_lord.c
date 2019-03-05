@@ -58,13 +58,13 @@ void mon_change_race(mon_ptr mon, int new_r_idx, cptr verb)
     old_r_idx = mon->r_idx;
     old_sub_align = mon->sub_align;
 
-    mon_true_race(mon)->cur_num--;
+    inc_cur_num(mon, -1);
 
     monster_desc(m_name, mon, 0);
     mon->r_idx = new_r_idx;
     mon->drop_ct = get_monster_drop_ct(mon);
 
-    mon_true_race(mon)->cur_num++;
+    inc_cur_num(mon, 1);
 
     mon->ap_r_idx = mon->r_idx;
     race = mon_race(mon);
@@ -780,12 +780,6 @@ static int _get_spells(spell_info* spells, int max)
 
 static void _calc_bonuses(void)
 {
-    if ( equip_find_art(ART_ETERNITY)
-      || equip_find_art(ART_ETERNAL_BLADE) )
-    {
-        p_ptr->dec_mana = TRUE;
-        p_ptr->easy_spell = TRUE;
-    }
     if (p_ptr->lev >= 30) res_add(RES_TIME);
     p_ptr->pspeed += (p_ptr->lev) / 7;
 }
