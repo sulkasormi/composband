@@ -754,9 +754,6 @@ static void _calc_bonuses(void)
     /* rogues are decent shooters all around, but especially good with slings */
     slot_t slot = equip_find_obj(TV_BOW, SV_SLING); /* fyi, shooter_info not set yet ... */
     if (slot) p_ptr->skills.thb += 20 + p_ptr->lev;
-
-    if (p_ptr->realm1 == REALM_BURGLARY && equip_find_ego(EGO_GLOVES_THIEF))
-        p_ptr->dec_mana = TRUE;
 }
 
 static caster_info * _caster_info(void)
