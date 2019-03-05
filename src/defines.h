@@ -19,7 +19,7 @@
 #define VER_MAJOR 7
 #define VER_MINOR 1
 #define VER_PATCH "toffee"
-#define VER_EXTRA 2
+#define VER_EXTRA 3
 #define VERSION_IS_DEVELOPMENT (TRUE)
 
 #define GAME_MODE_BEGINNER  0
@@ -1818,7 +1818,7 @@ enum {
 #define SV_SET_OF_MITHRIL_GAUNTLETS      5
 #define SV_SET_OF_DRAGON_GLOVES          6
 #define SV_SET_OF_CESTI                  7
-#define SV_HAND                          6
+#define SV_HAND                          8
 
 /* The "sval" codes for TV_SOFT_ARMOR */
 #define SV_T_SHIRT                       0
