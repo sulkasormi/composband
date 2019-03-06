@@ -3,6 +3,7 @@ include $(MKPATH)buildsys.mk
 
 DATA = attack_contents.txt \
 attack.txt \
+avoid.txt \
 birth_contents.txt \
 birth.txt \
 bldg.txt \
@@ -19,6 +20,7 @@ context_object_list.txt \
 context_obj_prompt.txt \
 context_shop.txt \
 context_targetting.txt \
+corny.txt \
 defend_contents.txt \
 defend.txt \
 Demigods.txt \
@@ -44,6 +46,7 @@ objects_contents.txt \
 objects.txt \
 option_contents.txt \
 option.txt \
+Orcs.txt \
 Personalities.txt \
 pref_contents.txt \
 pref.txt \
@@ -58,6 +61,7 @@ tang.txt \
 town_contents.txt \
 town.txt \
 version.txt \
+vers_old.txt \
 Warlocks.txt \
 Weaponmasters.txt
 
