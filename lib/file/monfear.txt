@@ -33,7 +33,10 @@ screams, 'Don't hurt a poor helpless hobbit!'
 yells, 'Where are my vicious dogs when I need them?'
 
 #N:19:Martti Ihrasaari
-N:19:Lion Heart
+N:19:Nick the Butcher
+yells, 'You can't do this to me! I'm friends with the Variant Maintainer!'
+says, 'And they say Angband is too easy.'
+
 N:1059:Mori troll
 N:1060:Noborta Kesyta
 yells, 'I'm a head of state!  You can't *do* this!'
