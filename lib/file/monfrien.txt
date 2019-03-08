@@ -29,33 +29,22 @@ seems sad about something.
 asks if you have seen his dogs.
 mumbles something about mushrooms.
 
-N:19:Lion Heart
-says, 'We must stand up with firm resolve to strive for the eradication of terrorism, together with other nations of the world'
-says, 'Japan supports the U.S. position that it will not bow to terrorism. Ithink it is only natural for President Bush to hunt down the culprits and take firm steps against this serious crime.'
-says, 'The terrorist acts are extremely heinous and outrageous and cannot be forgiven.'
-says, 'It is a challenge not only to the U.S. but also to democracy, and I am outraged.'
-says, 'Japan-U.S. alliance is becoming bigger and bigger.'
-says, 'Not only for borth countries, but in the Asia-Pacific region and the entire world.'
-says, 'The safe society is crumbling and this is a significant incident.'
-### says, 'Logic of previous the Ministry of Posts and Telecommunications that is not clear in meaning is not translate well to K*izumi Cabinet!'
-### says, 'I am not a entertainer but a politician.'
-sings, 'As K*izumi as the day is long...'
-says, 'I don't think there's any going back to what politics was in this country even three weeks ago.'
-says, 'What will the prime minister do if the anti-reform forces within the Liveral Democratic Party regain power?'
-says, 'People are driving the LDP members, and the LDP members are driveing the party. That is a total reversal of the past.'
-says, 'No pain, no gain.'
-says, 'Here's a present for you. A compact disc of X-JAPAN!'
-sings, 'Forever...'
-is composing haiku, 'Liberal Democrats, You said it's good, Let's go voting.'
-says, 'Perfect circle, round, round, Perfect circle.'
-says, 'You stuck it out despite the pain. I was thrilled. Congratulations.'
-says, 'The illegal entry was one thing and the abduction issue was another, although I think it is necessary for the government to take sufficient measures toward families of the abducted people.'
-says, 'I am starting with the issue that is the most difficalt and which draws the strongest resistance.'
-says, 'Though the ministry is making a hard effort to consider reforms, all of you will just have to wait and see.'
-says, 'People call me a eccentric, but I am a man of reform.'
-says, 'Structural reforms without sanctuaries.'
-says, 'No structural reforms, no economic recovery.'
-says, 'The belief -A pain of today makes affluence of tommorow- '
+N:19:Nick the Butcher
+says, 'The general philosophy is that everybody will hit traps at some time.'
+says, 'Everyone was fully warned, and most of them seem to be complicit.'
+says, 'Having more gold than you can use is simply how things unfold, and I'm really reluctant to use it for anything meaningful.'
+says, 'No more magical ID!'
+says, 'No more active searching!'
+says, 'I took up the maintainership with the explicit intent of ruining a number of aspects of the game.'
+says, 'I must be due for promotion. What's the next rank after Saint?'
+says, 'If you think I need votes, you have misunderstood my management style.'
+says, 'Angband has moved to a much more open, community-driven model.'
+says, 'I have only ever seen "good game design" used to mean "my current opinion".'
+cheerfully says, 'Hey, if I don't piss a few people off, I'm doing it wrong.'
+tries to open a wormhole for things from the First Age to crawl through.
+mumbles about something called 'Beleriand', and how awesome it will be when he completes it.
+complains about the lack of complainers.
+says, 'My advice is to complain more frequently.'
 
 N:1059:Noborta Kesyta
 says, 'Haw iz my 100,000,000 gold kasino?'
