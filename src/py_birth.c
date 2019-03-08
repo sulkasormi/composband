@@ -2884,6 +2884,7 @@ static void _birth_finalize(void)
     home_init();
     virtue_init();
     cornucopia_init();
+    wipe_labels();
 
     /* Suppress any deprecated monsters for this new game. Upgrading an existing
      * game should continue to generate deprecated monsters, since they may be wanted
