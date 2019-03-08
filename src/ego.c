@@ -2848,7 +2848,7 @@ static void _ego_create_body_armor(object_type *o_ptr, int level)
             }
             if ((level > 55) && (one_in_(5)))
                 add_flag(o_ptr->flags, OF_RES_NETHER);
-            if (((level > 66) || (one_in_(11))) && (one_in_(6)))
+            if (((level > 66) || (one_in_(4))) && (one_in_(4)))
                 add_flag(o_ptr->flags, OF_SPEED);
             if (one_in_(ACTIVATION_CHANCE * 2))
                 effect_add_random(o_ptr, BIAS_DEMON);
