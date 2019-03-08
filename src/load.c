@@ -716,6 +716,16 @@ static void rd_extra(savefile_ptr file)
     if (savefile_is_older_than(file, 7, 0, 9, 2)) p_ptr->py_summon_kills = 0;
     else p_ptr->py_summon_kills = savefile_read_byte(file);
     for (i = 0; i < 16; i++) (void)savefile_read_s32b(file);
+    wipe_labels();
+    if (!savefile_is_older_than(file, 7, 1, 0, 4))
+    {
+        for (i = 0; i < MAX_POWER_LABEL; i++)
+        {
+            int merkki = savefile_read_byte(file);
+            if (merkki > MAX_POWER_LABEL) continue;
+            savefile_read_cptr(file, power_labels[i], 15);
+        }
+    }
 
     {
     race_t  *race_ptr = get_true_race();
