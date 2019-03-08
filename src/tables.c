@@ -2277,6 +2277,10 @@ option_type option_info[] =
     { &reforge_details,              TRUE,  OPT_PAGE_TEXT, 2, 16,
     "reforge_details",              "Show statistics before proceeding with a reforge" },
 
+    { &auto_sticky_labels,           TRUE,  OPT_PAGE_TEXT, 2, 17,
+    "auto_sticky_labels",           "Automatically make all power labels sticky" },
+
+
     /*** Game-Play ***/
 
     { &stack_force_notes,           TRUE,  OPT_PAGE_GAMEPLAY, 0, 8,
