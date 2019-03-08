@@ -823,38 +823,24 @@ static void _spell_turning_spell(int cmd, variant *res)
     }
 }
 
-static void _summon_commando_team_spell(int cmd, variant *res)
+static void _dispel_curse_spell(int cmd, variant *res)
 {
     switch (cmd)
     {
     case SPELL_NAME:
-        var_set_string(res, "Summon Commando Team");
+        var_set_string(res, "Dispel Curses");
         break;
     case SPELL_DESC:
-        var_set_string(res, "Summons Grand Master Mystics for assistance.");
+        var_set_string(res, "Dispels any weak curses placed on your equipment, with a chance to dispel strong curses.");
+        break;
+    case SPELL_SPOIL_DESC:
+        var_set_string(res, "Dispels all weak curses placed on your equipment, with a 1 in 3 chance to dispel heavy curses as well.");
         break;
     case SPELL_CAST:
-    {
-        int num = 1 + randint1(2);
-        int mode = PM_FORCE_PET;
-        int i, x, y;
-
-        var_set_bool(res, FALSE);
-
-        if (p_ptr->shero)
-            mode |= PM_HASTE;
-
-        if (!target_set(TARGET_KILL)) return;
-        x = target_col;
-        y = target_row;
-
-        for (i = 0; i < num; i++)
-        {
-            summon_named_creature(-1, y, x, MON_G_MASTER_MYS, mode);
-        }
+        if (one_in_(3) ? remove_all_curse() : remove_curse()) msg_print("You dispel the evil magic!");
+        else msg_print("Nothing happens.");
         var_set_bool(res, TRUE);
         break;
-    }
     default:
         default_spell(cmd, res);
         break;
@@ -969,7 +955,7 @@ static book_t _books[4] = {
          {35,  0, 90, _greater_focus_rage_spell},
          {38, 60, 95, _spell_turning_spell},
          {40, 55, 80, _shatter_device_spell},
-         {42, 40, 50, _summon_commando_team_spell},
+         {42, 50, 75, _dispel_curse_spell},
          {43, 70, 80, _anti_magic_ray_spell},
          {47,  0, 80, _rage_strike_spell}}
     },
@@ -1051,7 +1037,7 @@ static bool _gain_spell(int book)
         return FALSE;
     }
 
-    which = choose_spell(spells, ct, "rage", 1000);
+    which = choose_spell(spells, ct, "rage", 1000, FALSE);
     if (which >= 0 && which < ct)
     {
         _learn_spell(book, indices[which]);
@@ -1096,9 +1082,9 @@ void rage_mage_gain_spell(void)
     {
         char o_name[MAX_NLEN];
 
-        object_desc(o_name, prompt.obj, OD_COLOR_CODED | OD_SINGULAR);
+        object_desc(o_name, prompt.obj, OD_SINGULAR);
 
-        msg_format("%^s is destroyed.", o_name);
+        msg_format("<color:%c>%^s</color> is destroyed.", tval_to_attr_char(prompt.obj->tval), o_name);
         prompt.obj->number--;
         obj_release(prompt.obj, 0);
 
