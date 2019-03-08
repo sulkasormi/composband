@@ -102,10 +102,10 @@ static bool _whip_fetch(int dir, int rng)
         return TRUE; /* didn't work, but charge the player energy anyway */
     }
 
-    object_desc(o_name, o_ptr, OD_NAME_ONLY);
+    object_desc(o_name, o_ptr, OD_NAME_ONLY | OD_COLOR_CODED);
 
     /* Get the object */
-    msg_format("You skillfully crack your whip and fetch %^s.", o_name);
+    msg_format("You skillfully crack your whip and fetch %s.", o_name);
     pack_carry(o_ptr);
     obj_release(o_ptr, OBJ_RELEASE_QUIET);
 
