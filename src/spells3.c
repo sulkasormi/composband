@@ -1648,9 +1648,9 @@ void fetch(int dir, int wgt, bool require_los)
     char            o_name[MAX_NLEN];
 
     /* Check to see if an object is already there */
-    if (cave[py][px].o_idx)
+    if ((cave[py][px].o_idx) || (!cave_drop_bold(py, px)))
     {
-        msg_print("You can't fetch when you're already standing on something.");
+        msg_print("You need empty floor under your feet to fetch.");
 
         return;
     }
