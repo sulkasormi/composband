@@ -84,6 +84,7 @@ static void _list(menu_ptr menu, char *keys)
         var_clear(&key);
         var_clear(&text);
         var_clear(&color);
+        var_clear(&paikka);
     }
     Term_erase(x, y + menu->count, 255);
 }
