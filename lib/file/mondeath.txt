@@ -1,3 +1,6 @@
+N:19:Nick the Butcher
+sighs, 'Was that really worth it, for the sake of a cheap item?'
+
 N:53:Grip, Farmer Maggot's dog
 N:54:Wolf, Farmer Maggot's dog
 N:55:Fang, Farmer Maggot's dog
