@@ -284,6 +284,7 @@ extern bool always_dump_origins; /* Show equipment origins in all dumps */
 extern bool list_stairs; /* Display stairs in the object list */
 extern bool display_skill_num; /* Give skills numerically in char sheet */
 extern bool reforge_details; /* Show statistics before reforge */
+extern bool auto_sticky_labels; /* Automatically make power labels sticky */
 
 /*** Game-Play Options ***/
 
@@ -485,6 +486,7 @@ extern char *b_tag;
 extern dungeon_info_type *d_info;
 extern char *d_name;
 extern char *d_text;
+extern char power_labels[MAX_POWER_LABEL][15];
 extern cptr ANGBAND_SYS;
 extern cptr ANGBAND_KEYBOARD;
 extern cptr ANGBAND_GRAF;
@@ -1709,6 +1711,7 @@ extern int my_stricmp(cptr a, cptr b);
 extern void str_tolower(char *str);
 extern int inkey_special(bool numpad_cursor);
 extern unsigned int strpos(const char *mika, const char *missa);
+extern unsigned int chrpos(const char mika, const char *missa);
 extern bool clip_and_locate(char *poista, char *mista);
 
 /* xtra1.c */
