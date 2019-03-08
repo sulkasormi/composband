@@ -19,7 +19,7 @@
 #define VER_MAJOR 7
 #define VER_MINOR 1
 #define VER_PATCH "toffee"
-#define VER_EXTRA 3
+#define VER_EXTRA 4
 #define VERSION_IS_DEVELOPMENT (TRUE)
 
 #define GAME_MODE_BEGINNER  0
@@ -6020,3 +6020,4 @@ enum
 #define PWR_CONFUSED 0x02
 /* to-do: PWR_ANTIMAGIC? */
 
+#define MAX_POWER_LABEL 62 /* uppercase, lowercase, and numbers */
