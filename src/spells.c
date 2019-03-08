@@ -334,7 +334,7 @@ static int _col_height(int ct)
     return result;
 }
 
-static void _list_spells(spell_info* spells, int ct, int max_cost)
+static void _list_spells(spell_info* spells, int ct, int max_cost, char *labels)
 {
     char temp[140];
     int  i;
@@ -398,7 +398,8 @@ static void _list_spells(spell_info* spells, int ct, int max_cost)
 
         attr = var_get_int(&color);
 
-        if (i < 26)
+        if ((labels) && (i < (int)strlen(labels))) letter = labels[i];
+        else if (i < 26)
             letter = I2A(i);
         else if (i < 52)
             letter = 'A' + i - 26;
@@ -493,50 +494,174 @@ static bool _describe_spell(spell_info *spell, int col_height)
     return result;
 }
 
-static int _choose_spell(spell_info* spells, int ct, cptr desc, int max_cost)
+static void _make_sticky_label(spell_info *spell, int paikka)
+{
+    my_strcpy(power_labels[paikka], get_spell_spoiler_name(spell->fn), 15);
+}
+
+void wipe_labels(void)
+{
+    memset(power_labels, 0, sizeof(power_labels));
+}
+
+static int _choose_spell(spell_info* spells, int ct, cptr desc, int max_cost, bool power)
 {
     int choice = -1;
     char prompt1[140];
     char prompt2[140];
-    variant name;
+    char prompt3[140];
     bool describe = FALSE;
+    bool inscribe = FALSE;
+    char labels[100] = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789#$%&'()*+,-./:;<=>{|}...............";
+    static char multicase[64] = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789";
 
-    var_init(&name);
+    if (power)
+    {
+        int i;
+        bool compute_labels = FALSE;
+        bool auto_labels[98] = {0};
+        bool exists[MAX_POWER_LABEL] = {0};
+        bool kaytetty[MAX_POWER_LABEL] = {0};
+        for (i = 0; i < MAX_POWER_LABEL; i++)
+        {
+            if (power_labels[i][0])
+            {
+                compute_labels = TRUE;
+                exists[i] = TRUE;
+            }
+        }
+        if (compute_labels)
+        {
+            int kaytossa = 0;
+            for (i = 0; i < MIN(ct, 98); i++)
+            {
+                char mininimi[15];
+                int j;
+                my_strcpy(mininimi, get_spell_spoiler_name(spells[i].fn), 15);
+                for (j = 0; j < MAX_POWER_LABEL; j++)
+                {
+                    if (!exists[j]) continue;
+                    if (kaytetty[j]) continue;
+                    if (streq(mininimi, power_labels[j]))
+                    {
+                        kaytetty[j] = TRUE;
+                        auto_labels[i] = TRUE;
+                        if (multicase[j] != labels[i])
+                        {
+                            int paikka = chrpos(multicase[j], labels);
+                            if (paikka) labels[paikka - 1] = labels[i];
+                            labels[i] = multicase[j];
+                        }
+                        break;
+                    }
+                }
+                if ((!auto_labels[i]) && (i < MAX_POWER_LABEL))
+                {
+                    int paikka = chrpos(labels[i], multicase);
+                    if ((paikka) && (exists[paikka - 1]))
+                    {
+                        int laskuri = 0;
+                        for (j = 0; j < MAX_POWER_LABEL; j++)
+                        {
+                            int paikka2;
+                            if (exists[j]) continue;
+                            laskuri++;
+                            if (laskuri <= kaytossa) continue;
+                            kaytossa++;
+                            paikka2 = chrpos(multicase[j], labels);
+                            if (!paikka2)
+                            {
+                                labels[i] = multicase[j];
+                                break;
+                            }
+                            else
+                            {
+                                char muisti = labels[i];
+                                labels[i] = multicase[j];
+                                labels[paikka2 - 1] = muisti;
+                                break;
+                            }
+                        }
+                    }
+                }
+            }
+        }
+        if (auto_sticky_labels)
+        {
+            int paikka;
+            for (i = 0; i < MIN(ct, 98); i++)
+            {
+                if (auto_labels[i]) continue;
+                paikka = chrpos(labels[i], multicase);
+                if ((paikka) && (paikka <= MAX_POWER_LABEL)) _make_sticky_label(&spells[i], paikka - 1);
+            }
+        }
+    }
+
+    labels[MIN(ct, 98)] = '\0';
+
+    if (power)
+    {
+        strnfmt(prompt1, 78, "Use which %s? ('?' to Browse, '!' to Label) ", desc);
+        strnfmt(prompt2, 78, "Browse which %s? ('?' to Use, '!' to Label) ", desc);
+        strnfmt(prompt3, 78, "Label which %s? ('!' to Use, '=' to wipe inactive) ", desc);
+    }
+    else
+    {
+        strnfmt(prompt1, 78, "Use which %s? (Type '?' to Browse) ", desc);
+        strnfmt(prompt2, 78, "Browse which %s? (Type '?' to Use) ", desc);
+    }
 
     for (;;)
     {
         char ch = '\0';
+        int paikka;
 
-        strnfmt(prompt1, 78, "Use which %s? (Type '?' to Browse) ", desc);
-        strnfmt(prompt2, 78, "Browse which %s? (Type '?' to Use)", desc);
-        _list_spells(spells, ct, max_cost);
+        _list_spells(spells, ct, max_cost, labels);
 
         /* Prompt User */
         choice = -1;
 
-        if (!get_com(describe ? prompt2 : prompt1, &ch, FALSE)) break;
+        if (!get_com(describe ? prompt2 : inscribe ? prompt3 : prompt1, &ch, FALSE)) break;
 
         if (ch == '?')
         {
             describe = !describe;
+            inscribe = FALSE;
             if (!get_com(describe ? prompt2 : prompt1, &ch, FALSE)) break;
         }
 
-        if (isupper(ch))
+        if ((ch == '!') && (power))
         {
-            if (ct < 26) /* browse unless a big spell list */
+            inscribe = !inscribe;
+            describe = FALSE;
+            if (!get_com(inscribe ? prompt3 : prompt1, &ch, FALSE)) break;
+        }
+
+        if ((inscribe) && (ch == '='))
+        {
+            int i;
+            wipe_labels();
+            for (i = 0; i < ct; i++)
             {
-                choice = ch - 'A';
-                if (0 <= choice && choice < ct)
-                    _describe_spell(&spells[choice], _col_height(ct));
+                int paikka = chrpos(labels[i], multicase);
+                if ((paikka) && (paikka <= MAX_POWER_LABEL)) _make_sticky_label(&spells[i], paikka - 1);
+            }
+            continue;
+        }
+
+        paikka = chrpos(ch, labels);
+        if (paikka) choice = paikka - 1;
+        else if (isupper(ch))
+        {
+            paikka = chrpos(tolower(ch), labels);
+            if (paikka)
+            {
+                choice = paikka - 1;
+               _describe_spell(&spells[choice], _col_height(ct));
                 continue;
             }
-            choice = ch - 'A' + 26;
         }
-        else if (islower(ch))
-            choice = ch - 'a';
-        else if (ch >= '0' && ch <= '9')
-            choice = ch - '0' + 52;
 
         /* Valid Choice? */
         if (choice < 0 || choice >= ct)
@@ -550,16 +675,44 @@ static int _choose_spell(spell_info* spells, int ct, cptr desc, int max_cost)
             _describe_spell(&spells[choice], _col_height(ct));
             continue;
         }
+        else if ((inscribe) && (get_com("New label ('!' to unstick): ", &ch, FALSE)))
+        {
+            char muisti = labels[choice];
+            paikka = chrpos(ch, multicase);
+            if ((paikka) && (paikka <= MAX_POWER_LABEL))
+            {
+                int vanha = chrpos(ch, labels);
+                if (vanha != choice + 1) /* no change needed */
+                {
+                    int paikka2 = chrpos(muisti, multicase);
+                    if ((paikka2) && (paikka2 <= MAX_POWER_LABEL)) strcpy(power_labels[paikka2 - 1], "\0");
+                    if ((vanha) && (vanha <= ct))
+                    {
+                        int paikka3 = chrpos(vanha, multicase);
+                        labels[vanha - 1] = muisti;
+                        if ((paikka3) && (paikka3 <= MAX_POWER_LABEL)) _make_sticky_label(&spells[vanha - 1], paikka3 - 1);
+                    }
+                    labels[choice] = ch;
+                    _make_sticky_label(&spells[choice], paikka - 1);
+                }
+            }
+            else if (ch == '!')
+            {
+                int paikka2 = chrpos(muisti, multicase);
+                if ((paikka2) && (paikka2 <= MAX_POWER_LABEL)) strcpy(power_labels[paikka2 - 1], "\0");
+                inscribe = FALSE;
+            }
+            continue;
+        }
 
         /* Good to go! */
         break;
     }
 
-    var_clear(&name);
     return choice;
 }
 
-int choose_spell(spell_info* spells, int ct, cptr desc, int max_cost)
+int choose_spell(spell_info* spells, int ct, cptr desc, int max_cost, bool power)
 {
     int choice = -1;
 
@@ -571,7 +724,7 @@ int choose_spell(spell_info* spells, int ct, cptr desc, int max_cost)
 
     screen_save();
 
-    choice = _choose_spell(spells, ct, desc, max_cost);
+    choice = _choose_spell(spells, ct, desc, max_cost, power);
     REPEAT_PUSH(choice);
 
     screen_load();
@@ -587,7 +740,7 @@ void browse_spells(spell_info* spells, int ct, cptr desc)
     {
         int choice = -1;
 
-        choice = _choose_spell(spells, ct, desc, 10000);
+        choice = _choose_spell(spells, ct, desc, 10000, FALSE);
         if (choice < 0 || choice >= ct) break;
 
         if (_describe_spell(&spells[choice], _col_height(ct)))
@@ -821,7 +974,7 @@ void do_cmd_spell(void)
         max_cost = p_ptr->au;
     else
         max_cost = p_ptr->csp;
-    choice = choose_spell(spells, ct, caster->magic_desc, max_cost);
+    choice = choose_spell(spells, ct, caster->magic_desc, max_cost, FALSE);
 
     if (choice >= 0 && choice < ct)
     {
@@ -994,7 +1147,7 @@ byte do_cmd_power(void)
     
     _add_extra_costs_powers(spells, ct);
 
-    choice = choose_spell(spells, ct, "power", budget);
+    choice = choose_spell(spells, ct, "power", budget, TRUE);
 
     if (p_ptr->special_defense & (KATA_MUSOU | KATA_KOUKIJIN))
     {
