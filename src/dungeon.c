@@ -3592,6 +3592,7 @@ static void _dispatch_command(int old_now_turn)
                    && p_ptr->pclass != CLASS_WEAPONMASTER
                    && p_ptr->pclass != CLASS_MAULER
                    && p_ptr->pclass != CLASS_ALCHEMIST
+                   && p_ptr->pclass != CLASS_RAGE_MAGE
                    && p_ptr->prace  != RACE_MON_POSSESSOR
                    && p_ptr->prace  != RACE_MON_MIMIC)
             {
@@ -3604,6 +3605,7 @@ static void _dispatch_command(int old_now_turn)
                    && p_ptr->pclass != CLASS_WEAPONMASTER
                    && p_ptr->pclass != CLASS_MAULER
                    && p_ptr->pclass != CLASS_ALCHEMIST
+                   && p_ptr->pclass != CLASS_RAGE_MAGE
                    && p_ptr->prace  != RACE_MON_POSSESSOR
                    && p_ptr->prace  != RACE_MON_MIMIC)
             {
@@ -3620,8 +3622,6 @@ static void _dispatch_command(int old_now_turn)
                     which_power = "ninjutsu";
                 else if (mp_ptr->spell_book == TV_LIFE_BOOK)
                     which_power = "prayer";
-                else if (mp_ptr->spell_book == TV_RAGE_BOOK)
-                    which_power = "rage";
 
                 msg_format("An anti-magic shell disrupts your %s!", which_power);
                 equip_learn_flag(OF_NO_MAGIC);
