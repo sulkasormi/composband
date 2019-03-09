@@ -396,7 +396,10 @@ void crafting_spell(int cmd, variant *res)
         else
         {
             virtue_add(VIRTUE_ENCHANTMENT, 1);
+            object_origins(prompt.obj, ORIGIN_CRAFTING);
+            prompt.obj->mitze_type = 0;
             obj_identify_fully(prompt.obj);
+            if (!prompt.obj->mitze_type) object_mitze(prompt.obj, MITZE_ID);
             obj_display(prompt.obj);
             obj_release(prompt.obj, OBJ_RELEASE_ENCHANT);
         }
