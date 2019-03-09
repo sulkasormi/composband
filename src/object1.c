@@ -539,6 +539,7 @@ static void _obj_identify_fully_aux(object_type *o_ptr)
     }
 
     _obj_learn_curses(o_ptr);
+    object_mitze(o_ptr, MITZE_ID);
 }
 
 bool obj_is_identified(object_type *o_ptr)
