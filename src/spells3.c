@@ -2542,12 +2542,6 @@ bool mundane_spell(bool only_equip)
         byte marked = prompt.obj->marked;
         u16b inscription = prompt.obj->inscription;
         int  number = prompt.obj->number;
-        byte orig = prompt.obj->origin_type;
-        int  orig_x = prompt.obj->origin_xtra;
-        int  orig_p = prompt.obj->origin_place;
-        byte mitze_tp = prompt.obj->mitze_type;
-        byte mitze_lv = prompt.obj->mitze_level;
-        s32b mitze_tn = prompt.obj->mitze_turn;
         int  insured = prompt.obj->insured;
 
         /* Wipe it clean ... note this erases info that must
@@ -2559,12 +2553,8 @@ bool mundane_spell(bool only_equip)
         prompt.obj->marked = marked;
         prompt.obj->inscription = inscription;
         prompt.obj->number = number;
-        prompt.obj->origin_type = orig;
-        prompt.obj->origin_xtra = orig_x;
-        prompt.obj->origin_place = orig_p;
-        prompt.obj->mitze_type = mitze_tp;
-        prompt.obj->mitze_level = mitze_lv;
-        prompt.obj->mitze_turn = mitze_tn;
+        object_origins(prompt.obj, ORIGIN_MUNDANITY);
+        object_mitze(prompt.obj, MITZE_ID);
         if (insured)
         {
             prompt.obj->insured = insured;
