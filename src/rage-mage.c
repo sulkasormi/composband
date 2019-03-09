@@ -1001,7 +1001,7 @@ static bool _gain_spell(int book)
     spell_info spells[_SPELLS_PER_BOOK];
     int        indices[_SPELLS_PER_BOOK];
     int        which;
-    int        ct = 0, i;
+    int        ct = 0, skip = 0, i;
 
     /* Build a list of learnable spells. Spells can only be
        learned once (no spell skills) and we only display spells
@@ -1154,7 +1154,7 @@ static void _calc_bonuses(void)
 
 static int _get_spells_imp(spell_info* spells, int max, int book)
 {
-    int ct = 0, i;
+    int ct = 0, skip = 0, i;
     for (i = 0; i < _SPELLS_PER_BOOK; i++)
     {
         spell_info *src, *dest;
@@ -1162,20 +1162,18 @@ static int _get_spells_imp(spell_info* spells, int max, int book)
         if (ct >= max) break;
         src = &_books[book].spells[i];
 
-        if (_is_spell_known(book, i))
+        dest = &spells[ct++];
+        dest->level = src->level;
+        dest->cost = src->cost;
+        dest->fail = calculate_fail_rate(src->level, src->fail, p_ptr->stat_ind[A_STR]);
+        dest->fn = src->fn;
+        if (!_is_spell_known(book, i)) 
         {
-            dest = &spells[ct++];
-            dest->level = src->level;
-            dest->cost = src->cost;
-            dest->fail = calculate_fail_rate(
-                src->level,
-                src->fail,
-                p_ptr->stat_ind[A_STR]
-            );
-            dest->fn = src->fn;
+            dest->level = 99;
+            skip++;
         }
     }
-    return ct;
+    return (ct - skip);
 }
 
 static void _book_menu_fn(int cmd, int which, vptr cookie, variant *res)
@@ -1202,8 +1200,11 @@ static int _get_spells(spell_info* spells, int max)
 
     ct = _get_spells_imp(spells, max, idx);
     if (ct == 0)
+    {
         msg_print("You don't know any of those techniques yet!");
-    return ct;
+        return 0;
+    }
+    return 8;
 }
 
 static void _get_flags(u32b flgs[OF_ARRAY_SIZE])
