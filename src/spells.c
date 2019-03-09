@@ -334,7 +334,7 @@ static int _col_height(int ct)
     return result;
 }
 
-static void _list_spells(spell_info* spells, int ct, int max_cost, char *labels)
+static void _list_spells(spell_info* spells, int ct, int max_cost, char *labels, bool rage_hack)
 {
     char temp[140];
     int  i;
@@ -343,6 +343,7 @@ static void _list_spells(spell_info* spells, int ct, int max_cost, char *labels)
     int  col_width;
     variant name, info, color;
     bool poli = (p_ptr->pclass == CLASS_POLITICIAN);
+    byte skipped = 0;
 
     var_init(&name);
     var_init(&info);
@@ -362,6 +363,12 @@ static void _list_spells(spell_info* spells, int ct, int max_cost, char *labels)
                 break;
             } 
         }        
+    }
+
+    if (rage_hack)
+    {
+        ct = 8;
+        col_height = _col_height(8);
     }
 
     Term_erase(display.x, display.y, display.cx);
@@ -389,6 +396,12 @@ static void _list_spells(spell_info* spells, int ct, int max_cost, char *labels)
         byte attr = TERM_WHITE;
         spell_info* spell = &spells[i];
         int spell_cost = spell->cost;
+
+        if ((rage_hack) && (spell->level == 99))
+        {
+            skipped++;
+            continue;
+        }
 
         var_set_int(&color, TERM_WHITE);
 
@@ -441,17 +454,17 @@ static void _list_spells(spell_info* spells, int ct, int max_cost, char *labels)
         if (spell->level > p_ptr->lev)
             attr = TERM_L_DARK;
 
-        if (i < col_height)
+        if ((i - skipped) < col_height)
         {
-            Term_erase(display.x, display.y + i + 1, display.cx);
-            c_put_str(attr, temp, display.y + i + 1, display.x);
+            Term_erase(display.x, display.y + i + 1 - skipped, display.cx);
+            c_put_str(attr, temp, display.y + i + 1 - skipped, display.x);
         }
         else
         {
-            c_put_str(attr, temp, display.y + (i - col_height) + 1, display.x + col_width);
+            c_put_str(attr, temp, display.y + (i - col_height) + 1 - skipped, display.x + col_width);
         }
     }
-    Term_erase(display.x, display.y + col_height + 1, display.cx);
+    Term_erase(display.x, display.y + col_height + 1 - skipped, display.cx);
     var_clear(&name);
     var_clear(&info);
     var_clear(&color);
@@ -504,16 +517,29 @@ void wipe_labels(void)
     memset(power_labels, 0, sizeof(power_labels));
 }
 
-static int _choose_spell(spell_info* spells, int ct, cptr desc, int max_cost, bool power)
+/* Mega-hack */
+static int _rage_mage_count_spells(spell_info *spells)
+{
+    int i, ct = 0;
+    for (i = 0; i < 8; i++)
+    {
+        if (spells[i].level < 99) ct++;
+    }
+    return ct;
+}
+
+static int _choose_spell(spell_info* spells, int ct, cptr desc, int max_cost, bool power, bool force_browsing)
 {
     int choice = -1;
+    int korkeus = 0;
     char prompt1[140];
     char prompt2[140];
     char prompt3[140];
-    bool describe = FALSE;
+    bool describe = force_browsing;
     bool inscribe = FALSE;
     char labels[100] = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789#$%&'()*+,-./:;<=>{|}...............";
     static char multicase[64] = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789";
+    bool rage_hack = ((streq("rage", desc)) && (ct == 8));
 
     if (power)
     {
@@ -600,7 +626,11 @@ static int _choose_spell(spell_info* spells, int ct, cptr desc, int max_cost, bo
 
     labels[MIN(ct, 98)] = '\0';
 
-    if (power)
+    if (force_browsing)
+    {
+        strnfmt(prompt2, 78, "Browse which %s?", desc);
+    }
+    else if (power)
     {
         strnfmt(prompt1, 78, "Use which %s? ('?' to Browse, '!' to Label) ", desc);
         strnfmt(prompt2, 78, "Browse which %s? ('?' to Use, '!' to Label) ", desc);
@@ -612,31 +642,44 @@ static int _choose_spell(spell_info* spells, int ct, cptr desc, int max_cost, bo
         strnfmt(prompt2, 78, "Browse which %s? (Type '?' to Use) ", desc);
     }
 
+    if (rage_hack)
+    {
+        int i;
+        for (i = 0; i < ct; i++)
+        {
+            if (spells[i].level == 99) labels[i] = 'i';
+        }
+    }
+
+    korkeus = _col_height(rage_hack ? _rage_mage_count_spells(spells) : ct);
+
     for (;;)
     {
         char ch = '\0';
         int paikka;
 
-        _list_spells(spells, ct, max_cost, labels);
+        _list_spells(spells, ct, max_cost, labels, rage_hack);
 
         /* Prompt User */
         choice = -1;
 
         if (!get_com(describe ? prompt2 : inscribe ? prompt3 : prompt1, &ch, FALSE)) break;
 
-        if (ch == '?')
+        if ((ch == '?') && (!force_browsing))
         {
             describe = !describe;
             inscribe = FALSE;
             if (!get_com(describe ? prompt2 : prompt1, &ch, FALSE)) break;
         }
 
-        if ((ch == '!') && (power))
+        if ((ch == '!') && (power) && (!force_browsing))
         {
             inscribe = !inscribe;
             describe = FALSE;
             if (!get_com(inscribe ? prompt3 : prompt1, &ch, FALSE)) break;
         }
+
+        if ((rage_hack) && (ch == 'i')) continue;
 
         if ((inscribe) && (ch == '='))
         {
@@ -658,7 +701,7 @@ static int _choose_spell(spell_info* spells, int ct, cptr desc, int max_cost, bo
             if (paikka)
             {
                 choice = paikka - 1;
-               _describe_spell(&spells[choice], _col_height(ct));
+               _describe_spell(&spells[choice], korkeus);
                 continue;
             }
         }
@@ -672,7 +715,7 @@ static int _choose_spell(spell_info* spells, int ct, cptr desc, int max_cost, bo
 
         if (describe)
         {
-            _describe_spell(&spells[choice], _col_height(ct));
+            _describe_spell(&spells[choice], korkeus);
             continue;
         }
         else if ((inscribe) && (get_com("New label ('!' to unstick): ", &ch, FALSE)))
@@ -724,7 +767,7 @@ int choose_spell(spell_info* spells, int ct, cptr desc, int max_cost, bool power
 
     screen_save();
 
-    choice = _choose_spell(spells, ct, desc, max_cost, power);
+    choice = _choose_spell(spells, ct, desc, max_cost, power, FALSE);
     REPEAT_PUSH(choice);
 
     screen_load();
@@ -740,10 +783,14 @@ void browse_spells(spell_info* spells, int ct, cptr desc)
     {
         int choice = -1;
 
-        choice = _choose_spell(spells, ct, desc, 10000, FALSE);
+        choice = _choose_spell(spells, ct, desc, 10000, FALSE, TRUE);
         if (choice < 0 || choice >= ct) break;
-
-        if (_describe_spell(&spells[choice], _col_height(ct)))
+        if (p_ptr->pclass == CLASS_RAGE_MAGE)
+        {
+            if (spells[choice].level == 99) continue;
+            if (_describe_spell(&spells[choice], _col_height(_rage_mage_count_spells(spells)))) break;
+        }
+        else if (_describe_spell(&spells[choice], _col_height(ct)))
             break;
     }
     screen_load();
@@ -958,9 +1005,9 @@ void do_cmd_spell(void)
         ct = _puhdista(spells, ct, spell_problem);
         if (ct == 0)
         {
-             if (spell_problem & PWR_CONFUSED) msg_print("You are too confused!");
-             else if (spell_problem & PWR_AFRAID) msg_print("You are too scared!");
-             return;
+            if (spell_problem & PWR_CONFUSED) msg_print("You are too confused!");
+            else if (spell_problem & PWR_AFRAID) msg_print("You are too scared!");
+            return;
         }
     }
 
