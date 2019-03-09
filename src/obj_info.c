@@ -374,6 +374,17 @@ bool display_origin(object_type *o_ptr, doc_ptr doc)
         case ORIGIN_CORNUCOPIA:
         {
             doc_printf(doc, "Received from Cornucopia of Anambar as a replacement item.");
+            break;
+        }
+        case ORIGIN_CRAFTING:
+        {
+            doc_printf(doc, "Crafted %s.", paikka_text);
+            break;
+        }
+        case ORIGIN_MUNDANITY:
+        {
+            doc_printf(doc, "Mundanized %s.", paikka_text);
+            break;
         }
     }
     if ((show_discovery) && (o_ptr->mitze_type) && (o_ptr->mitze_turn) && (origin != ORIGIN_BIRTH))
