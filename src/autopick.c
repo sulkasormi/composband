@@ -2092,6 +2092,9 @@ static void auto_destroy_obj(object_type *o_ptr, int autopick_idx)
     /* Never autodestroy an insured item */
     if (o_ptr->insured) return;
 
+    /* Never autodestroy a mundanified item */
+    if (o_ptr->origin_type == ORIGIN_MUNDANITY) return;
+
     /* Easy-Auto-Destroyer (3rd priority) */
     if (is_opt_confirm_destroy(o_ptr)) destroy = TRUE;
 
