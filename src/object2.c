@@ -4092,6 +4092,9 @@ s16b drop_near(object_type *j_ptr, int chance, int y, int x)
         /* Debug */
         if (p_ptr->wizard) msg_print("(breakage)");
 
+        /* Track destruction for insurance policy */
+        if (j_ptr->insured) obj_zero(j_ptr);
+
         stats_on_m_destroy(j_ptr, 1);
 
         /* Failure */
