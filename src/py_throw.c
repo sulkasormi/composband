@@ -485,7 +485,7 @@ void _return(py_throw_ptr context)
                         }
                     }
                 }
-                context->obj->number--;
+                obj_dec_number(context->obj, 1, TRUE);
                 obj_release(context->obj, OBJ_RELEASE_QUIET);
             }
             /* everything else drops (perhaps breaks) at the end of the path */
