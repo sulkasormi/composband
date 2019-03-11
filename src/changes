@@ -1,3 +1,331 @@
+Changes in FrogComposband 7.1.toffee:
+
+* Random ring and amulet artifacts can now generate occasionally
+
+* Added a new building in Anambar offering banking and insurance services
+
+* Dungeon entrances are now easier to locate
+
+* Added two new playable monster races (Orc, Filthy Rag)
+[Special thanks to everyone who helped me play-test filthy rags! They are
+still a bit beta though because I don't really know what rag endgame is like.
+Also, everybody should get a fair warning that they are... not very strong,
+at least not in the early game]
+
+* Added one new playable normal race (Boit)
+
+* Added new objects, ego types, artifacts and monsters
+
+* Added new random artifact names
+
+* Multiple player auras of the same type can now stack for extra damage
+
+* Enabled sticky labels for race/class/mutation powers (permanently attaching
+a power to one letter, similarly to what @ inscriptions do for items)
+
+* Updated the list of Arena opponents (spectral tyrannosaurus, mummy king and
+great unclean one added; greater balrog appears much later in accordance with
+its high native depth). Also tweaked the rewards dropped by top-end opponents
+
+* Made damage reduction from resistances somewhat less random
+
+* Changed how cut damage works. The total amount of damage remains the same,
+but it is suffered more evenly (e.g. instead of taking 100 damage one turn
+and 0 damage the turn after, the player will take 50 damage on both turns);
+and unlucky "instableeding" with no opportunity to cure the cut first can no
+longer happen
+
+* Changed orc colours to make uniques, warlords and sappers stand out more
+
+* Weaponsmiths can now improve equipped items without having to unequip them
+
+* Nappa the Saiyan resists confusion now
+
+* Many high-level demons now resist nether
+
+* Polyphemus can now clear his head (some people seemed to be under the
+impression that he already had this ability, convincing me that he ought to)
+
+* Leprechaun fanatics now do bomb damage (adapted from Frogspawn), which can
+be resisted through rShard and rSound, instead of unresistable raw damage
+
+* Increased the chance of deep Angband levels being small (and reduced their
+average size when they do generate as small)
+
+* Destruction no longer works in Witch Wood (because it's outdoors)
+
+* Confusion now takes priority over stunning for monster health-bar colouring
+
+* Tweaked item valuation a bit
+- some devices, notably Staves of Healing and Staves of Destruction, are
+  worth more now
+- tweaked pval valuation, for most pvals the change is minimal, but items
+  with pvals of 1 and 2 are worth a bit more now
+- auras are worth a bit more now that they can stack
+- off-weapon vampirism brands had no score value; this has been fixed
+- off-amulet anti-magic no longer has a negative effect on the item's value
+- valuation of activations now accounts for timeout length
+- fixed some weirdness with valuation of vulnerabilities
+
+* Fixed an old PosChengband bug that sometimes caused artifacts to be
+permanently lost with no chance to ever find them at all
+(thanks to bostock for reporting)
+
+* Fixed a bug with ESP Living not use-IDing properly
+
+* Fixed a loophole to anti-scumming item/gold drop limits
+
+* Fixed generation of standarts from chests (previously, standart generation
+depended on the level at which the chest was opened, while generation of all
+other chest objects depended on the level of the chest itself)
+
+* Ammo breakage chances are now displayed correctly for snipers browsing
+a sniping shot (thanks to TauzentBlitz for reporting)
+
+* Fixed some weirdness with throwing calculations
+(thanks to TauzentBlitz for reporting)
+
+* Fixed a number of closely related information leaks with unidentified
+scrolls and potions (thanks to mewmew for reporting)
+
+* Some high-level monsters were missing the FORCE_SLEEP flag, allowing
+them to immediately cast spells or breathe on the player when summoned;
+this has been fixed
+
+* Fixed a bug with scrolling in the object list while using the S toggle
+
+* Fixed a number of minor issues with the town of Thalos (item recharging
+services were advertised but no longer truly available; two buildings offered
+the same services, and a Thieves' Guild was specified but had no location; it
+has now taken over one of the redundant buildings)
+
+* Fixed an infinite loop with Berserkers getting brain-smashed (thanks to
+floatRand for reporting)
+
+* The Bard invulnerability song "Fingolfin's Challenge" did not consume an
+extra turn when the invulnerability ended; this has been fixed (thanks to
+bostock for reporting)
+
+* Fixed a bug with friendly fire from ancient dragons
+(thanks to TauzentBlitz and Benly for reporting)
+
+* It was still possible for nexus effects to teleport the player out of a
+dungeon quest level; this has been fixed (thanks to Oneiron for reporting)
+
+* Player Rings could potentially conquer a single dungeon multiple times;
+this has been fixed (thanks to Oneiron for reporting)
+
+* Rage-Mages received a class bonus to spell capacity but were missing the
+corresponding flag; this has been fixed (thanks to MITZE for reporting)
+
+* Fixed further travelling-related infinite or unintendedly lengthy loops
+(thanks to bostock for reporting)
+
+* Fixed weird message when a named pet evolved
+(thanks to vertigo for reporting)
+
+* Fixed a bug that sometimes allowed summoning multiple copies of the real
+unique in the Cloning Pits if enough of the clones were killed first
+(thanks to Philip for reporting)
+
+* Fixed a bug with Endless Quiver behavior when combined with harps or guns
+(thanks to wobbly for reporting)
+
+* The curse status indicator was not updated properly after Mundanity;
+this has been fixed
+
+* Reforging consumed game time but did not check if midnight had passed;
+this has been fixed
+
+* Being stunned sometimes made devices easier to use; this has been fixed
+
+* Some menus, in particular the option UI and the demigod talent selection UI,
+no longer work quite as badly in cases where the number of options exceeds
+the number of available lines. Also fixed a minor cursor placement issue on
+the autodestroyer options page
+
+* Travel resumption sometimes produced strange results in the wilderness;
+this has been fixed
+
+* Hex High-Mages lost the spelling indicator on entering the Arena but did
+not actually stop spelling; this has been fixed
+
+* Potions of Salt Water did not cure poison despite promising to; this has
+been fixed
+
+* Stair Creation spells could create normal stairs in all-shafts dungeons and
+in coffee-break mode; this has been fixed
+
+* Insta-kill attacks (e.g. poison needle hits) could have their damage
+reduced if the player was stunned; this has been fixed
+
+* Fixed weirdness with telekinesis prevention (the code only checked if there
+was already an object in the target square; it didn't check for traps,
+stairs, deep lava or even walls)
+
+* Fixed broken flavoring on the Hand of Vecna
+
+* Updated outdated makefiles that were causing problems for some Linux users
+(thanks to introsp3ctive for reporting this problem)
+
+* Player breaths aimed in a direction rather than at a specific point will
+no longer stop at the first monster hit
+
+* Amberites can no longer embed themselves in rock with their own death
+curses (allowing this sometimes resulted in strange or undesired behavior,
+including non-generation of wanted corpses)
+
+* Spell-browsing UI now supports slightly longer spell descriptions
+
+* Prevented ego diamond edges from generating with extra-high pvals
+
+* Deep puddles and shallow puddles now count as mimics for the easy_mimics
+option (thanks to bostock for suggesting this)
+
+* Cancelling a Ring spell during the targetting phase no longer consumes a
+turn (thanks to clouded for suggesting this)
+
+* The automatic attack on Polearm weaponmasters no longer triggers on pets
+or friendly monsters (thanks to Aav for suggesting this)
+
+* The Hard Leather Boots of Feanor are now rarer
+
+* All stairs in the Graveyard dungeon are now shafts
+
+* Renamed the Mountain dungeon to Eyrie; all stairs there are now shafts
+
+* Monster polymorph race selection now accounts for the terrain (e.g. if a
+monster is within a wall, it will try to polymorph into another wall-passing
+monster, as was already the case for chameleons)
+
+* Slightly tweaked coffee-break mode's XP-gain and loot-generation bonuses
+
+* In coffee-break mode, all late-game level guardians will now appear on
+either odd levels or even levels
+
+* The Battlefield reward is now a rune sword instead of a scythe of slicing
+(copied from Composband). Also, sword weaponmasters can now use rune swords
+
+* The Restoration town service now restores life points and experience in
+addition to stats (copied from Composband)
+
+* Allowed Chaos-Warriors and Chaotic characters to choose their patron at
+character creation (copied from Composband)
+
+* Buffed dwarven body armour (inspired by Composband)
+
+* Chaos patrons will no longer attempt (and fail) to curse the player's
+equipment if the player is a Death-Sword, a Filthy Rag or a Ring; they will
+hit the player with the Baby Foul Curse instead
+
+* Haste Monster and Heal Monster are no longer reflectable
+(thanks to MITZE for suggesting this)
+
+* Tweaked Rage-Mages (thanks to MITZE for suggestions)
+- Rage-Mages can no longer gain SP from Clarity/Great Clarity/Restore Mana
+- Rage-Mages can now use their skills through anti-magic shields
+- Rage-Mage spell letters are now fixed, allowing better macro use
+- Substituted "Dispel Curse" for "Summon Commando Team"
+
+* Confirmation is now always requested for alchemizing an inscribed item,
+even if it has no value, and wanted corpses cannot be alchemized at all
+(thanks to Draghmar for bringing this up).
+Also fixed an issue with cancelling requests to alchemize parts of stacks
+
+* Duelist Isolation now fully respects teleportation immunity
+(thanks to bostock for bringing this up)
+
+* Most population-specific charming effects now report if a monster is immune,
+similarly to what the generic charming effect already did
+(thanks to vertigo for noting this)
+
+* Tweaked disappearance of pets at low health
+(thanks to vertigo for feedback)
+
+* Some race/class/mutation powers will now be available even if the player is
+confused or trembling in fear (e.g. the 'Stop Singing' ability on Bards)
+
+* Rings and Death-Swords now automatically *id* all items they absorb
+(so the player isn't left checking the essence sheet to see what was absorbed)
+
+* Player Demons and Balrogs now take some extra damage from Holy Fire
+
+* Player Angels and Archons now take some extra damage from Hell Fire
+
+* Made player Xorns a little more fragile
+
+* Nerfed monk melee a bit
+
+* Nerfed tourists slightly
+
+* Buffed the Necklace of the Dwarves
+
+* Buffed the Infernal Deal demigod talent to make it more competitive in the
+late game (inspired by Composband)
+
+* Added a new demigod talent (Strong Mind) that provides immunity to mana
+draining
+
+* The Craft spell "Walk through Wall" was replaced with "Simplification"
+(which mundanifies an item)
+
+* Autodestroy now ignores mundanified items
+
+* Mundanity no longer works on ego items with a 99% discount
+
+* Updated player Tanar'ri (thanks to MITZE for the central idea)
+- the early forms, especially death quasit, are a bit more fragile now
+- mariliths can no longer wear shields, but get a bonus to dual-wielding
+- reduced the XP modifier
+
+* Updated player vortices, especially the final form (aether vortex).
+Aether vortices now have lower speed and melee damage than before, but can
+choose one of three possible vortex powers (one giving increased melee damage,
+one giving increased speed, and one allowing them to control which element
+they breathe). Also fixed bugs with flags on some vortex forms, removed
+the 1-in-66 chance of random movement, gave plasma and disintegration
+vortices invisible "resists" to their respective elements, and reduced
+off-weapon +At from +0.50 blows/unit to +0.25 blows/unit
+
+* Tweaked Kawarimi a bit (increased the chance of a blink-type effect
+compared to a long-distance teleport)
+
+* Blood-Knight extra blows are now more gradual
+
+* The healing penalty on Blood-Knights and Blood-Mages now applies to
+vampirism
+
+* Special-cased the weapon stat display for Poison Needles
+
+* Tweaked the skill description scale (earning most of the medium rankings
+takes a bit more now, and Superb no longer covers such a large range)
+
+* Spawning Pits is now displayed as danger level 80 (with no effect on
+anything in the quest, which remains unchanged)
+
+* Eating a Mushroom of Hallucination now sets mana to zero (unless resisted),
+in addition to inducing hallucinations
+
+* The "icky" autopicker keyword should now work for Weaponmasters
+
+* Tweaked visibility of the Es and Dm flags to be more in line with the
+actual availability of easy-spell and dec-mana to the player
+
+* Monsters are now always assumed visible for player death purposes (so
+they should show up as "Killed by Yibb-Tstll, the Patient One" instead of
+"Killed by the Monster", even if not visible)
+
+* Added a new help file listing basic tips and common mistakes to avoid
+
+* Added an option (on by default) to show explanatory statistics before
+proceeding with a reforge
+
+* Updated some outdated and misleading spell and item descriptions
+
+* Various minor tweaks and code improvements
+
+-------------------------------------------------------
+
 Changes in FrogComposband 7.0.cloudberry:
 
 * Improved support for play on the angband.live online server
@@ -1142,16 +1470,25 @@ scale mails (but not quite to the same extent as in ComPosband 7.0.4)
 
 To do:
 
-* Implement purple-mages
+* Implement purple-mages (purple disciples?)
 
 * Implement player dinosaurs
 
-* Implement emulord's armor player-monsters (player filthy rags?)
+* Add new races and personalities
 
-* Look into adapting the bank from Frogspawn
+* Partially randomize quest lines with new quests sometimes taking the
+place of old ones
+
+* See if it's possible to reasonably re-add blue-mages
 
 ------------------------------------------------------
 
 Known issues:
 
 * Players have been hit by friendly psycho-spears in some unusual situations
+
+* If the last monster in a quest is a pink horror, the quest counts as
+completed on the pink horror's death, even though blue horrors will appear
+
+* The item inspection menu sometimes doesn't offer floor items as an option
+even when there is a floor item that could be inspected
