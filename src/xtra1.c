@@ -3446,7 +3446,8 @@ static void _calc_torch_imp(object_type *o_ptr)
     obj_flags(o_ptr, flgs);
     if (o_ptr->tval == TV_LITE)
     {
-        if (have_flag(flgs, OF_DARKNESS))
+        if (o_ptr->name1 == ART_ALL_SEEING_EYE) return;
+        else if (have_flag(flgs, OF_DARKNESS))
         {
             if (o_ptr->sval == SV_LITE_TORCH)
                 p_ptr->cur_lite -= 1;
