@@ -703,7 +703,7 @@ static void _shatter_device_spell(int cmd, variant *res)
                 _object_dam_type(prompt.obj),
                 PROJECT_STOP | PROJECT_GRID | PROJECT_ITEM | PROJECT_KILL);
         }
-        prompt.obj->number--;
+        obj_zero(prompt.obj);
         obj_release(prompt.obj, 0);
         break;
     }
@@ -1152,7 +1152,7 @@ static void _calc_bonuses(void)
     }
 }
 
-static int _get_spells_imp(spell_info* spells, int max, int book)
+static int _get_spells_imp(spell_info* spells, int max, int book, bool total_skip)
 {
     int ct = 0, skip = 0, i;
     for (i = 0; i < _SPELLS_PER_BOOK; i++)
@@ -1162,15 +1162,18 @@ static int _get_spells_imp(spell_info* spells, int max, int book)
         if (ct >= max) break;
         src = &_books[book].spells[i];
 
-        dest = &spells[ct++];
-        dest->level = src->level;
-        dest->cost = src->cost;
-        dest->fail = calculate_fail_rate(src->level, src->fail, p_ptr->stat_ind[A_STR]);
-        dest->fn = src->fn;
-        if (!_is_spell_known(book, i)) 
+        if ((!total_skip) || (_is_spell_known(book, i)))
         {
-            dest->level = 99;
-            skip++;
+            dest = &spells[ct++];
+            dest->level = src->level;
+            dest->cost = src->cost;
+            dest->fail = calculate_fail_rate(src->level, src->fail, p_ptr->stat_ind[A_STR]);
+            dest->fn = src->fn;
+            if (!_is_spell_known(book, i)) 
+            {
+                dest->level = 99;
+                skip++;
+            }
         }
     }
     return (ct - skip);
@@ -1198,7 +1201,7 @@ static int _get_spells(spell_info* spells, int max)
     idx = menu_choose(&menu);
     if (idx < 0) return 0;
 
-    ct = _get_spells_imp(spells, max, idx);
+    ct = _get_spells_imp(spells, max, idx, FALSE);
     if (ct == 0)
     {
         msg_print("You don't know any of those techniques yet!");
@@ -1218,7 +1221,7 @@ static void _character_dump(doc_ptr doc)
     int        ct = 0, i;
 
     for (i = 0; i < 4; i++)
-        ct += _get_spells_imp(spells + ct, MAX_SPELLS - ct, i);
+        ct += _get_spells_imp(spells + ct, MAX_SPELLS - ct, i, TRUE);
 
     py_display_spells(doc, spells, ct);
 }
