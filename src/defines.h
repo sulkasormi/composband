@@ -19,8 +19,8 @@
 #define VER_MAJOR 7
 #define VER_MINOR 1
 #define VER_PATCH "toffee"
-#define VER_EXTRA 4
-#define VERSION_IS_DEVELOPMENT (TRUE)
+#define VER_EXTRA 5
+#define VERSION_IS_DEVELOPMENT (FALSE)
 
 #define GAME_MODE_BEGINNER  0
 #define GAME_MODE_NORMAL    1
@@ -1494,6 +1494,7 @@ enum {
 #define ART_STONE_OF_WAR        291
 #define ART_STONE_OF_ARMAGEDDON 297
 #define ART_STONE_OF_MIND       328
+#define ART_ALL_SEEING_EYE      364
 
 #define ART_HOLY_GRAIL      293
 
