@@ -176,6 +176,10 @@ void obj_release(obj_ptr obj, int options)
         if ((obj->number <= 0) && (!(obj->marked & OM_BEING_SHUFFLED)))
             special1_remove(obj->loc.slot);
         break;
+    case INV_SPECIAL2:
+        if ((obj->number <= 0) && (!(obj->marked & OM_BEING_SHUFFLED)))
+            special2_remove(obj->loc.slot);
+        break;
     }
 }
 
@@ -1770,6 +1774,11 @@ void special1_remove(int slot)
     inv_remove(get_race()->bonus_pack, slot);
 }
 
+void special2_remove(int slot)
+{
+    inv_remove(get_class()->bonus_pack, slot);
+}
+
 void special1_drop(obj_ptr obj)
 {
     int amt = obj->number;
@@ -1793,6 +1802,39 @@ void special1_drop(obj_ptr obj)
         char o_name[MAX_NLEN];
         char i_name[80];
         inv_ptr special_pack = get_race()->bonus_pack;
+        assert(special_pack);
+        object_desc(o_name, obj, OD_COLOR_CODED);
+        strcpy(i_name, inv_name(special_pack));
+        i_name[0] = tolower(i_name[0]);
+        msg_format("You no longer have %s in your %s.", o_name, i_name);
+    }
+
+    obj_drop(obj, amt);
+}
+
+void special2_drop(obj_ptr obj)
+{
+    int amt = obj->number;
+
+    assert(obj);
+    assert(obj->loc.where == INV_SPECIAL2);
+    assert(obj->number > 0);
+
+    if (obj->number > 1)
+    {
+        amt = get_quantity(NULL, obj->number);
+        if (amt <= 0)
+        {
+            energy_use = 0;
+            return;
+        }
+    }
+
+    if (amt >= obj->number)
+    {
+        char o_name[MAX_NLEN];
+        char i_name[80];
+        inv_ptr special_pack = get_class()->bonus_pack;
         assert(special_pack);
         object_desc(o_name, obj, OD_COLOR_CODED);
         strcpy(i_name, inv_name(special_pack));
