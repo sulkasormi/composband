@@ -64,3 +64,5 @@ of Tetelo
 'Albatross'
 'Raptor Medallion'
 'Luck of the Gander'
+of Pluto
+of Gromit
