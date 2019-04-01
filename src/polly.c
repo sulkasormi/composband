@@ -775,6 +775,12 @@ static void _calc_bonuses(void)
 
 static void _politician_check_magic(bool syntyma)
 {
+    if ((!strlen(player_name)))
+    {
+        p_ptr->realm1 = REALM_NONE;
+        return;
+    }
+
     /* Some politicians can access a magic realm */
     if ((strpos("Don", player_name)) || (strpos("ump", player_name)) ||
         (strpos("Small", player_name)) || (strpos("Little", player_name)) ||
