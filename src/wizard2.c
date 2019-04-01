@@ -44,7 +44,9 @@ void stats_add_rand_art(object_type *o_ptr)
     {
         object_type *copy = malloc(sizeof(object_type));
         *copy = *o_ptr;
+        no_karrot_hack = TRUE;
         obj_identify_fully(copy);
+        no_karrot_hack = FALSE;
         vec_add(stats_rand_arts(), copy);
     }
 }
@@ -1359,6 +1361,8 @@ static void _wiz_stats_inspect(int level)
     class_t *class_ptr = get_class();
     int      i;
 
+    no_karrot_hack = TRUE;
+
     for (i = 0; i < max_o_idx; i++)
     {
         object_type *o_ptr = &o_list[i];
@@ -1454,6 +1458,7 @@ static void _wiz_stats_inspect(int level)
     pack_overflow();
     home_optimize();
     if (p_ptr->cursed) remove_all_curse();
+    no_karrot_hack = FALSE;
 }
 static void _wiz_stats_gather(int which_dungeon, int level, int reps)
 {
@@ -1633,6 +1638,7 @@ void do_cmd_debug(void)
     {
         int i, ct = 0;
         char buf[MAX_NLEN];
+        no_karrot_hack = TRUE;
         for (i = 0; i < max_o_idx; i++)
         {
             if (!o_list[i].k_idx) continue;
@@ -1644,6 +1650,7 @@ void do_cmd_debug(void)
                 msg_print(buf);
             }
         }
+        no_karrot_hack = FALSE;
         msg_format("Objects=%d", ct);
         break;
     }
@@ -1764,6 +1771,7 @@ void do_cmd_debug(void)
                 cave[y][x].info |= (CAVE_GLOW | CAVE_MARK | CAVE_AWARE);
             }
         }
+        no_karrot_hack = TRUE;
         wiz_lite(FALSE);
         if (0) detect_treasure(255);
         if (1)
@@ -1787,6 +1795,7 @@ void do_cmd_debug(void)
             }
             if (0) msg_format("Objects=%d", ct);
         }
+        no_karrot_hack = FALSE;
         break;
 
 
