@@ -2287,6 +2287,7 @@ static void _get_obj(obj_ptr obj)
     }
 
     if (no_mogaminator) return;
+    if ((!obj) || (!obj->k_idx)) return;
 
     idx = is_autopick(obj);
 
@@ -2302,6 +2303,8 @@ static void _get_obj(obj_ptr obj)
                 idx = new_idx;
         }
     }
+
+    if ((!obj) || (!obj->k_idx)) return;
 
     /* Inscribe */
     auto_inscribe_item(obj, idx);
