@@ -179,6 +179,8 @@ bool predictable_energy_hack = FALSE;
 bool delay_autopick_hack = FALSE;
 bool monsters_damaged_hack = FALSE;
 bool shop_exit_hack = FALSE;
+bool no_karrot_hack = FALSE;
+byte troika_spell_hack = 0;
 byte spell_problem = 0;
 s16b run_count = 0;
 
@@ -1109,6 +1111,7 @@ s16b feat_rogue_trap2;
 s16b feat_rogue_trap3;
 s16b feat_semicolon;
 s16b feat_mirror;
+s16b feat_shadow_zap;
 
 /* Doors */
 door_type feat_door[MAX_DOOR_TYPES];
