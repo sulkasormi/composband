@@ -112,10 +112,10 @@ static bool _whip_fetch(int dir, int rng)
     return TRUE;
 }
 
-static bool _sense_great_discovery(int range)
+bool sense_great_discovery(void)
 {
     int i, y, x;
-    int range2 = range;
+    int range2 = 3 + (p_ptr->lev / 10);
 
     bool detect = FALSE;
 
@@ -170,7 +170,7 @@ static void _ancient_protection_spell(int cmd, variant *res)
         var_set_string(res, "Ancient Protection");
         break;
     case SPELL_DESC:
-        var_set_string(res, "Sets a glyph on the floor beneath you. Monsters cannot attack you if you are on a glyph, but can try to break glyph.");
+        var_set_string(res, "Sets a glyph on the floor beneath you. Monsters cannot attack you if you are on a glyph, but can try to break the glyph.");
         break;
     case SPELL_CAST:
         warding_glyph();
@@ -724,7 +724,7 @@ bool archaeologist_is_favored_weapon(object_type *o_ptr)
 
 static void _process_player(void)
 {
-    bool sense = _sense_great_discovery(3 + p_ptr->lev/10);
+    bool sense = sense_great_discovery();
     if (sense && !p_ptr->sense_artifact)
     {
         msg_print("You feel close to a great discovery!");
