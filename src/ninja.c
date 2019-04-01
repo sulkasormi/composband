@@ -197,6 +197,9 @@ void floating_spell(int cmd, variant *res)
     case SPELL_DESC:
         var_set_string(res, "Gives levitation for a while.");
         break;
+    case SPELL_INFO:
+        var_set_string(res, info_duration(20, 20));
+        break;
     case SPELL_CAST:
         set_tim_levitation(randint1(20) + 20, FALSE);
         var_set_bool(res, TRUE);
