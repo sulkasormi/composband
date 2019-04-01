@@ -485,7 +485,7 @@ F:STR | DEX | CON | HIDE_TYPE |
 F:RES_ACID | RES_ELEC | RES_FIRE | RES_COLD | RES_LITE | RES_BLIND |
 F:LITE | SEE_INVIS | TELEPATHY
 E:SCARE_MONSTERS:20:100
-D:The legendary dragon helm of Turin Turambar, a object of dread to the
+D:The legendary dragon helm of Turin Turambar, an object of dread to the
 D:servants of Morgoth.
 
 # The Iron Helm 'Holhenneth'
@@ -2001,6 +2001,8 @@ F:BLOWS
 F:SLAY_UNDEAD | SLAY_DRAGON | SLAY_ANIMAL |
 F:RES_FIRE | BLESSED |
 F:SLOW_DIGEST | SHOW_MODS
+D:Crafted by a legendary wizard and wielded for a long time by the hero Pip,
+D:this sword is powerfully magical but notoriously arachnophobic...
 
 #### GAP
 
@@ -3700,6 +3702,19 @@ P:0:1d1:0:0:0
 F:FREE_ACT
 E:EYE_HYPNO:66:6:128
 E:Your eye blinks hypnotically...
+
+N:366:'Urog'
+I:23:28:3
+W:60:50:300:180000
+P:0:6d6:17:23:10
+F:STR | CON | CHR | RES_DARK | RES_DISEN | SHOW_MODS | VORPAL | SEE_INVIS |
+F:INFRA | DARKNESS | SEARCH | SLAY_GIANT | DEC_STEALTH | BRAND_VAMP |
+F:SPEED | BRAND_DARK | QUESTITEM | FIXED_ART
+E:BALL_DARK:50:100:250
+E:A storm of darkness erupts!
+D:The ultimate reward for your loyal service: Karrot's massive blade of
+D:shadows, which no ordinary man could wield. A chilling darkness strikes
+D:your enemies with every blow as you proudly swing it.
 
 # N: serial number : item name
 # I: tval : sval : pval
