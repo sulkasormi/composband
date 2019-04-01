@@ -1130,6 +1130,7 @@ struct player_type
     s16b tim_building_up;
     s16b tim_vicious_strike;
     s16b tim_enlarge_weapon;
+    s16b tim_field;
 
     s16b tim_spell_reaction;
     s16b tim_resist_curses;
@@ -1994,6 +1995,7 @@ typedef struct {
     save_fn                 save_player;
     obj_p                   destroy_object;
     obj_f                   get_object;
+    inv_ptr                 bonus_pack;
 } class_t, *class_ptr;
 
 struct equip_template_s;
