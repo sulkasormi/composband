@@ -505,8 +505,8 @@ W:15:0:0:140:350
 A:15/1
 P:0:3d5:0:0:0
 F:SHOW_MODS | TOWN
-D:Also known as the hand-and-a-half blade.  A larger-than-normal straight-
-D:sided sword with two cutting edges.
+D:Also known as the hand-and-a-half blade.  A larger-than-normal
+D:straight-sided sword with two cutting edges.
 
 N:*:& Falchion~
 G:|:W
