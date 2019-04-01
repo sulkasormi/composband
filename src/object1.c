@@ -115,6 +115,7 @@ void weapon_flags(int hand, u32b flgs[OF_ARRAY_SIZE])
         obj_flags(o_ptr, flgs);
         for (i = 0; i < OF_ARRAY_SIZE; i++)
             flgs[i] |= p_ptr->weapon_info[hand].flags[i];
+        if ((disciple_is_(DISCIPLE_TROIKA)) && (object_is_melee_weapon(o_ptr))) troika_bonus_flags(o_ptr, flgs);
     }
 }
 
@@ -127,6 +128,7 @@ void weapon_flags_known(int hand, u32b flgs[OF_ARRAY_SIZE])
         obj_flags_known(o_ptr, flgs);
         for (i = 0; i < OF_ARRAY_SIZE; i++)
             flgs[i] |= p_ptr->weapon_info[hand].known_flags[i];
+        if (disciple_is_(DISCIPLE_TROIKA)) troika_bonus_flags(o_ptr, flgs);
     }
 }
 
@@ -399,6 +401,7 @@ void obj_flags_effective(object_type *o_ptr, u32b flgs[OF_ARRAY_SIZE])
 {
     obj_flags(o_ptr, flgs);
     _obj_esdm_flags(o_ptr, flgs, FALSE);
+    if ((disciple_is_(DISCIPLE_TROIKA)) && (object_is_melee_weapon(o_ptr))) troika_bonus_flags(o_ptr, flgs);
 }
 
 void obj_flags_display(object_type *o_ptr, u32b flgs[OF_ARRAY_SIZE])
@@ -454,6 +457,14 @@ static void _obj_identify_aux(object_type *o_ptr)
     o_ptr->ident |= IDENT_KNOWN;
 
     object_mitze(o_ptr, MITZE_ID);
+
+    if ((!o_ptr) || (!o_ptr->number)) return;
+
+    if ((p_ptr->sense_artifact) && (o_ptr->loc.where = INV_FLOOR) && (object_is_artifact(o_ptr)))
+    {
+        p_ptr->sense_artifact = sense_great_discovery();
+        if (!p_ptr->sense_artifact) p_ptr->redraw |= PR_STATUS;
+    }
 
     /* Lore on unidentified objects is tricky, but flavorful.
        Patch up the lore flags, putting them in their correct
@@ -583,9 +594,10 @@ void obj_identify(object_type *o_ptr)
 
 void obj_identify_fully(object_type *o_ptr)
 {
-    assert(o_ptr);
+    if ((!o_ptr) || (!o_ptr->k_idx)) return;
     if (!obj_is_identified(o_ptr))
         _obj_identify_aux(o_ptr);
+    if ((!o_ptr) || (!o_ptr->k_idx)) return;
     if (!obj_is_identified_fully(o_ptr))
         _obj_identify_fully_aux(o_ptr);
     else
