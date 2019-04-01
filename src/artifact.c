@@ -1825,17 +1825,48 @@ static void get_random_name_aux(char *return_name, object_type *o_ptr, int power
 
         if (object_is_armour(o_ptr))
         {
-            switch (power)
+            if (magik(40))
             {
-            case 0:
-                filename = "a_cursed.txt";
-                break;
-            case 1:
-            case 2:
-                filename = "a_med.txt";
-                break;
-            default:
-                filename = "a_high.txt";
+                switch (o_ptr->tval)
+                {
+                    case TV_SOFT_ARMOR:
+                    case TV_HARD_ARMOR:
+                    case TV_DRAG_ARMOR:
+                        filename = "aa_med.txt";
+                        break;
+                    case TV_BOOTS:
+                        filename = "ab_med.txt";
+                        break;
+                    case TV_CLOAK:
+                        filename = "ac_med.txt";
+                        break;
+                    case TV_GLOVES:
+                        filename = "ag_med.txt";
+                        break;
+                    case TV_HELM:
+                    case TV_CROWN:
+                        filename = "ah_med.txt";
+                        break;
+                    default:
+                        filename = "as_med.txt";
+                        break;
+                }
+            }
+            else
+            {
+                switch (power)
+                {
+                    case 0:
+                        filename = "a_cursed.txt";
+                        break;
+                    case 1:
+                    case 2:
+                        filename = "a_med.txt";
+                        break;
+                    default:
+                        filename = "a_high.txt";
+                        break;
+                }
             }
         }
         else
@@ -2219,7 +2250,22 @@ s32b create_artifact(object_type *o_ptr, u32b mode)
                 }
                 warrior_artifact_bias = 20;
                 break;
-
+            case CLASS_DISCIPLE:
+                if (disciple_is_(DISCIPLE_KARROT))
+                {
+                    artifact_bias = BIAS_CHAOS;
+                    warrior_artifact_bias = 40;
+                }
+                else if (disciple_is_(DISCIPLE_TROIKA))
+                {
+                    artifact_bias = BIAS_WARRIOR;
+                }
+                else
+                {
+                    artifact_bias = BIAS_INT;
+                    warrior_artifact_bias = 30;
+                }
+                break;
             default:
                 artifact_bias = BIAS_WARRIOR;
                 break;
@@ -3045,8 +3091,10 @@ s32b create_artifact(object_type *o_ptr, u32b mode)
         char dummy_name[80] = "";
         cptr ask_msg = "What do you want to call the artifact? ";
 
+        no_karrot_hack = TRUE;
         obj_identify_fully(o_ptr);
         obj_display(o_ptr);
+        no_karrot_hack = FALSE;
 
         if (!get_string(ask_msg, dummy_name, sizeof dummy_name)
             || !dummy_name[0])
