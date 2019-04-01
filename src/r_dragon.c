@@ -2084,7 +2084,7 @@ static void _dragon_get_flags(u32b flgs[OF_ARRAY_SIZE])
 /**********************************************************************
  * Dragon Powers (Common to all Types)
  **********************************************************************/
-static void _reach_spell(int cmd, variant *res)
+void dragon_reach_spell(int cmd, variant *res)
 {
     switch (cmd)
     {
@@ -2115,7 +2115,7 @@ static void _reach_spell(int cmd, variant *res)
     }
 }
 
-static void _tail_sweep_spell(int cmd, variant *res)
+void dragon_tail_sweep_spell(int cmd, variant *res)
 {
     switch (cmd)
     {
@@ -2156,7 +2156,7 @@ static void _tail_sweep_spell(int cmd, variant *res)
     }
 }
 
-static void _wing_storm_spell(int cmd, variant *res)
+void dragon_wing_storm_spell(int cmd, variant *res)
 {
     switch (cmd)
     {
@@ -2179,15 +2179,15 @@ static void _wing_storm_spell(int cmd, variant *res)
 
 static power_info _dragon_powers[] = {
     { A_CON, {  1,  0, 30, _breathe_spell}},
-    { A_DEX, { 20,  7,  0, _reach_spell}},
-    { A_DEX, { 25, 10,  0, _tail_sweep_spell}},
-    { A_DEX, { 30, 20,  0, _wing_storm_spell}},
+    { A_DEX, { 20,  7,  0, dragon_reach_spell}},
+    { A_DEX, { 25, 10,  0, dragon_tail_sweep_spell}},
+    { A_DEX, { 30, 20,  0, dragon_wing_storm_spell}},
     {    -1, { -1, -1, -1, NULL} }
 };
 static power_info _steel_powers[] = {
-    { A_DEX, { 20,  7,  0, _reach_spell}},
-    { A_DEX, { 25, 10,  0, _tail_sweep_spell}},
-    { A_DEX, { 30, 20,  0, _wing_storm_spell}},
+    { A_DEX, { 20,  7,  0, dragon_reach_spell}},
+    { A_DEX, { 25, 10,  0, dragon_tail_sweep_spell}},
+    { A_DEX, { 30, 20,  0, dragon_wing_storm_spell}},
     {    -1, { -1, -1, -1, NULL} }
 };
 static int _dragon_get_powers(spell_info* spells, int max) {
