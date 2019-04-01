@@ -258,6 +258,7 @@ static cptr f_info_flags[] =
     "ROGUE_TRAP_3",
     "WEB",
     "SEMI_PUN",
+    "SHADOW_ZAP",
 };
 
 
@@ -774,6 +775,8 @@ static cptr k_info_flags[OF_COUNT] =
 
     /* Night Vision */
     "NIGHT_VISION",
+
+    "BRAND_DARK",
 };
 
 
@@ -5099,6 +5102,7 @@ static cptr process_dungeon_file_expr(char **sp, char *fp)
             else if (streq(b+1, "SUBCLASS"))
             {
                 v = get_class()->subname;
+                if (!v) v = "why are we here";
             }
             /* Realms */
             else if (streq(b+1, "REALM1"))
