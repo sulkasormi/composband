@@ -477,6 +477,8 @@ void equip_wield_ui(void)
         }
     }
 
+    if ((disciple_is_(DISCIPLE_TROIKA)) && (!troika_allow_equip_item(obj))) return;
+
     if (obj_is_ammo(obj))
     {
         int amt = obj->number;
@@ -510,6 +512,8 @@ void equip_wield_ui(void)
         energy_use = weaponmaster_wield_hack(obj);
         _wield(obj, slot);
 
+        if ((!obj) || (!obj->k_idx)) return;
+
         _wield_after(slot);
         obj_release(obj, OBJ_RELEASE_QUIET);
     }
@@ -518,6 +522,7 @@ void equip_wield_ui(void)
 void equip_wield(obj_ptr obj, slot_t slot)
 {
     _wield(obj, slot);
+    if ((!obj) || (!obj->k_idx)) return;
     _wield_after(slot);
 }
 
@@ -633,10 +638,12 @@ static void _wield(obj_ptr obj, slot_t slot)
 {
     obj_ptr old_obj = inv_obj(_inv, slot);
 
+    object_mitze(obj, MITZE_PICKUP);
+    if ((!obj) || (!obj->k_idx)) return;
+
     if (old_obj)
         equip_takeoff(slot);
 
-    object_mitze(obj, MITZE_PICKUP);
     stats_on_use(obj, 1);
     inv_add_at(_inv, obj, slot);
 }
@@ -748,6 +755,7 @@ static void equip_takeoff(slot_t slot)
     {
         _unwield(obj, FALSE);
         _unwield_after();
+        if (p_ptr->tim_field && object_is_melee_weapon(obj)) set_tim_field(0, TRUE);
     }
 }
 
