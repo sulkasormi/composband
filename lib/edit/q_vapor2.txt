@@ -59,4 +59,7 @@ R:OBJ(ROD_DETECT_ALL)
 ?:[EQU $CLASS Berserker]
 R:OBJ(sling, DEPTH+15):EGO(hunter)
 
+?:[AND [EQU $CLASS Disciple] [EQU $SUBCLASS Troika] ]
+R:OBJ(STAFF_SLEEP_MONSTERS, DEPTH+10)
+
 # vim: filetype=q :
