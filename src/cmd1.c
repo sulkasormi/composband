@@ -1408,6 +1408,20 @@ s16b tot_dam_aux(object_type *o_ptr, int tdam, monster_type *m_ptr, s16b hand, i
                 if (mult > old_mult) hissatsu_brand = ((mode == HISSATSU_POISON) ? OF_BRAND_POIS : 0);
             }
 
+            /* Dark brand */
+            if ( have_flag(flgs, OF_BRAND_DARK))
+            {
+                if (r_ptr->flagsr & RFR_EFF_RES_DARK_MASK)
+                {
+                    mon_lore_r(m_ptr, RFR_EFF_RES_DARK_MASK);
+                }
+                else
+                {
+                    obj_learn_slay(o_ptr, OF_BRAND_DARK, "has <color:G>Shadow Sweep</color>");
+                    mult = MAX(mult, BRAND_MULT_DARK / 10);
+                }
+            }
+
             /* 'light brand' */
             if (have_flag(flgs, OF_LITE) && (r_ptr->flags3 & RF3_HURT_LITE))
             {
@@ -3415,7 +3429,7 @@ static bool py_attack_aux(int y, int x, bool *fear, bool *mdeath, s16b hand, int
                     }
                 }
 
-                if ((have_flag(flgs, OF_STUN) && randint1(100) < k) || ((o_ptr->name1 == ART_SILVER_HAMMER) && ((r_ptr->id == MON_WEREWOLF) || (r_ptr->id == MON_DRAUGLUIN) || (r_ptr->id == MON_CARCHAROTH))))
+                if ((((have_flag(flgs, OF_STUN)) || (p_ptr->tim_field)) && randint1(100) < k) || ((o_ptr->name1 == ART_SILVER_HAMMER) && ((r_ptr->id == MON_WEREWOLF) || (r_ptr->id == MON_DRAUGLUIN) || (r_ptr->id == MON_CARCHAROTH))))
                 {
                     if ( (r_ptr->flagsr & RFR_RES_ALL)
                       || (r_ptr->flags3 & RF3_NO_STUN) )
@@ -3572,7 +3586,7 @@ static bool py_attack_aux(int y, int x, bool *fear, bool *mdeath, s16b hand, int
                   && !mon_save_p(m_ptr->r_idx, A_DEX) )
                 {
                     msg_format("%^s is dealt a <color:v>*WOUNDING*</color> strike.", m_name_subject);
-                    k += MIN(m_ptr->hp * 2 / 5, rand_range(2, 10) * d);
+                    k += pienempi(m_ptr->hp * 2 / 5, rand_range(2, 10) * d);
                     drain_result = k;
                 }
             }
@@ -4273,6 +4287,12 @@ static bool py_attack_aux(int y, int x, bool *fear, bool *mdeath, s16b hand, int
             {
                 death_scythe_miss(o_ptr, hand, mode);
             }
+
+            if (disciple_is_(DISCIPLE_TROIKA))
+            {
+                if (chaos_effect) troika_effect(TROIKA_CHANCE);
+                else troika_effect(TROIKA_HIT);
+            }
         }
         /* Player misses */
         else
@@ -4614,6 +4634,7 @@ bool py_attack(int y, int x, int mode)
                 virtue_add(VIRTUE_HONOUR, -1);
                 virtue_add(VIRTUE_JUSTICE, -1);
                 virtue_add(VIRTUE_COMPASSION, -1);
+                if (disciple_is_(DISCIPLE_TROIKA)) troika_effect(TROIKA_VILLAINY);
             }
             else
             {
@@ -5468,6 +5489,19 @@ bool move_player_effect(int ny, int nx, u32b mpe_mode)
         energy_use = 0;
         /* Hack -- Enter quest level */
         command_new = SPECIAL_KEY_QUEST;
+    }
+
+    else if (c_ptr->mimic == feat_shadow_zap)
+    {
+        /* Disturb */
+        disturb(0, 0);
+
+        /* Merge with shadow */
+        c_ptr->info &= ~(CAVE_MARK);
+        c_ptr->info &= ~(CAVE_OBJECT);
+        c_ptr->mimic = 0;
+        note_spot(py, px);
+        msg_print("You merge with your shadow!");
     }
 
     /* Set off a trap */
