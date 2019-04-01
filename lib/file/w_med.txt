@@ -49,6 +49,7 @@ N: 3:BIAS_FIRE
 of Solar Wind
 of Flame
 of Zhuque
+of Aziraphale
 
 N: 4:BIAS_COLD
 'Silver Frost'
@@ -62,6 +63,7 @@ N: 4:BIAS_COLD
 'Crescent Moon'
 'Arctic Moon'
 'North Wind'
+'Frostbite'
 of Aurora
 of Alaska
 of Ezo
@@ -79,13 +81,13 @@ N: 5:BIAS_ACID
 'Nitrate'
 'Preoxy'
 'Sargassonne'
+'Eliminator'
 of the Cube Prince
 of the Icky Queen
 
 N:12:BIAS_CHAOS
 'Cyclcraze'
 'Armageddon'
-'Lunatic'
 'Chaosbane'
 'Warped Edge'
 'Lawslayer'
@@ -93,9 +95,13 @@ N:12:BIAS_CHAOS
 'Banquet of Azathoth'
 'Cosmic Horror'
 'Amanitaceae Aroma'
+'Pandemonium'
+'Mandible'
 of Ron the Deathwreaker
 of Changes
+of Nick the Butcher
 of Dara
+of Gehn
 of Hionhurn
 of Nothingness
 
@@ -115,6 +121,7 @@ N:14:BIAS_NECROMANTIC
 'Manhunter'
 'Soulgobbler'
 'Death Metal'
+'Deathstick'
 of Helthing
 of Helband
 of Darkness Storm
@@ -174,6 +181,7 @@ N: 7:BIAS_INT
 'Whip of Evil Eye'
 'Brainstorm'
 'Laplace's Devil'
+'Norn Iron'
 of Grand Wizardry
 of Zarathustra
 of Ritual
@@ -192,6 +200,7 @@ N:10:BIAS_CON
 'Cycle of Life'
 'Bull Elephant'
 'Warrior's Honor'
+'Dyrnwyn'
 of Rage
 of Crushing
 of Tomoe
@@ -201,6 +210,7 @@ of the Edgelord
 of Genghis Khan
 of Lorgan
 of Lokar
+of Attila
 
 N: 9:BIAS_DEX
 'Gilettar'
@@ -246,7 +256,6 @@ N:*:Default
 'Weapon of Choice'
 'Witchfire'
 'Lord of Flies'
-'Pandemonium'
 'Bloodrain'
 'Delta'
 'Cutting Edge'
@@ -255,6 +264,10 @@ N:*:Default
 'Standart'
 'Cakecutter'
 'Fight Insurance'
+'Murder Weapon'
+'Old Gory'
+'Orphanizer'
+'Lootbringer'
 of Joshua
 of Damocles
 of the Shogun
