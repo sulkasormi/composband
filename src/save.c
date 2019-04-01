@@ -625,6 +625,7 @@ static void wr_extra(savefile_ptr file)
     savefile_write_s16b(file, p_ptr->tim_building_up);
     savefile_write_s16b(file, p_ptr->tim_vicious_strike);
     savefile_write_s16b(file, p_ptr->tim_enlarge_weapon);
+    savefile_write_s16b(file, p_ptr->tim_field);
 
     savefile_write_s16b(file, p_ptr->tim_spell_reaction);
     savefile_write_s16b(file, p_ptr->tim_resist_curses);
