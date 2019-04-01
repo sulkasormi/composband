@@ -3,6 +3,7 @@ N:*:Default
 'Algol'
 'Aquilon Lamp'
 'Blinder'
+'Bright Spark'
 'Centennial Light'
 'Corona'
 'Everyellow'
@@ -42,3 +43,4 @@ of Tume
 of Alimoit
 of the Forest Martens
 of the Illuminati
+of Feldegast
