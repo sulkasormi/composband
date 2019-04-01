@@ -495,7 +495,7 @@ static void prt_stat(int stat)
 #define BAR_VAMPILIC 64
 #define BAR_CURE 65
 #define BAR_ESP_EVIL 66
-#define BAR_XXXX1 67
+#define BAR_CHAOTIC 67
 #define BAR_BLOOD_SHIELD 68
 #define BAR_BLOOD_SEEK 69
 #define BAR_BLOOD_REVENGE 70
@@ -510,7 +510,7 @@ static void prt_stat(int stat)
 #define BAR_FLYING_DAGGER 79
 #define BAR_SHADOW_STANCE 80
 #define BAR_FRENZY_STANCE 81
-#define BAR_XXXX3 82
+#define BAR_SLAY_ORC 82
 #define BAR_FORCE 83
 #define BAR_COMBAT_EXPERTISE 84
 #define BAR_STONE_BONES 85
@@ -610,6 +610,16 @@ static void prt_stat(int stat)
 #define BAR_UPKEEP 179
 #define BAR_FILIBUSTER 180
 #define BAR_UNWELL 181
+#define BAR_FIELD 182
+#define BAR_SLAY_HUMAN 183
+#define BAR_SLAY_GIANT 184
+#define BAR_SLAY_TROLL 185
+#define BAR_SLAY_DRAGON 186
+#define BAR_SLAY_DEMON 187
+#define BAR_SLAY_UNDEAD 188
+#define BAR_SLAY_ANIMAL 189
+#define BAR_WP_STUN 190
+#define BAR_WP_SHARP 191
 
 static struct {
     byte attr;
@@ -685,7 +695,7 @@ static struct {
     {TERM_RED, "Vm", "Vampiric"},
     {TERM_WHITE, "Cu", "Cure"},
     {TERM_L_DARK, "ET", "EvilTele"},
-    {TERM_RED, "At", "Attacks"},
+    {TERM_VIOLET, "Ch", "Chaotic"},
     {TERM_ORANGE, "Sh", "Shield"},
     {TERM_YELLOW, "Sk", "Seek"},
     {TERM_RED, "Rv", "Revenge"},
@@ -700,7 +710,7 @@ static struct {
     {TERM_L_BLUE, "FD", "Flying Dagger"},
     {TERM_L_BLUE, "Sw", "Shadow"},
     {TERM_L_BLUE, "Fz", "Frenzy"},
-    {TERM_YELLOW, "Gj", "Genji"},
+    {TERM_L_UMBER, "/o", "/Orc"},
     {TERM_L_BLUE, "Fc", "Force"},
     {TERM_L_BLUE, "DS", "Defensive Stance"},
     {TERM_UMBER, "SB", "Stone Bones"},
@@ -800,6 +810,16 @@ static struct {
     {TERM_L_RED, "Upk", "Upkeep"},
     {TERM_ORANGE, "Flb", "Filibuster"},
     {TERM_L_WHITE, "Unw", "Unwell"},
+    {TERM_ORANGE, "Fld", "ForceField"},
+    {TERM_WHITE, "/p", "/Human"},
+    {TERM_L_UMBER, "/P", "/Giant"},
+    {TERM_L_WHITE, "/T", "/Troll"},
+    {TERM_GREEN, "/D", "/Dragon"},
+    {TERM_L_RED, "/U", "/Demon"},
+    {TERM_SLATE, "/L", "/Undead"},
+    {TERM_L_GREEN, "/Z", "/Animal"},
+    {TERM_ORANGE, "|St", "Stun"},
+    {TERM_L_WHITE, "|S", "Vorpal"},
     {0, NULL, NULL}
 };
 
@@ -995,6 +1015,7 @@ static void prt_status(void)
     if (p_ptr->tim_no_spells) ADD_FLG(BAR_NO_SPELLS);
     if (p_ptr->tim_blood_revenge) ADD_FLG(BAR_BLOOD_REVENGE);
     if (p_ptr->tim_force) ADD_FLG(BAR_FORCE);
+    if (p_ptr->tim_field) ADD_FLG(BAR_FIELD);
     if (p_ptr->filibuster) ADD_FLG(BAR_FILIBUSTER);
     if (p_ptr->pclass == CLASS_WEAPONMASTER)
     {
@@ -1093,6 +1114,28 @@ static void prt_status(void)
         }
 
         if (p_ptr->entrenched) ADD_FLG(BAR_ENTRENCHED);
+    }
+
+    if (disciple_is_(DISCIPLE_TROIKA))
+    {
+        if (troika_timeout_flag(OF_BRAND_FIRE)) ADD_FLG(BAR_ATTKFIRE);
+        if (troika_timeout_flag(OF_BRAND_COLD)) ADD_FLG(BAR_ATTKCOLD);
+        if (troika_timeout_flag(OF_BRAND_ELEC)) ADD_FLG(BAR_ATTKELEC);
+        if (troika_timeout_flag(OF_BRAND_ACID)) ADD_FLG(BAR_ATTKACID);
+        if (troika_timeout_flag(OF_BRAND_MANA)) ADD_FLG(BAR_FORCE);
+        if (troika_timeout_flag(OF_BRAND_VAMP)) ADD_FLG(BAR_VAMPILIC);
+        if (troika_timeout_flag(OF_BRAND_CHAOS)) ADD_FLG(BAR_CHAOTIC);
+        if (troika_timeout_flag(OF_SLAY_EVIL)) ADD_FLG(BAR_HOLY_BLADE);
+        if (troika_timeout_flag(OF_SLAY_ORC)) ADD_FLG(BAR_SLAY_ORC);
+        if (troika_timeout_flag(OF_SLAY_GIANT)) ADD_FLG(BAR_SLAY_GIANT);
+        if (troika_timeout_flag(OF_SLAY_TROLL)) ADD_FLG(BAR_SLAY_TROLL);
+        if (troika_timeout_flag(OF_SLAY_DRAGON)) ADD_FLG(BAR_SLAY_DRAGON);
+        if (troika_timeout_flag(OF_SLAY_DEMON)) ADD_FLG(BAR_SLAY_DEMON);
+        if (troika_timeout_flag(OF_SLAY_HUMAN)) ADD_FLG(BAR_SLAY_HUMAN);
+        if (troika_timeout_flag(OF_SLAY_UNDEAD)) ADD_FLG(BAR_SLAY_UNDEAD);
+        if (troika_timeout_flag(OF_SLAY_ANIMAL)) ADD_FLG(BAR_SLAY_ANIMAL);
+        if (troika_timeout_flag(OF_STUN)) ADD_FLG(BAR_WP_STUN);
+        if (troika_timeout_flag(OF_VORPAL)) ADD_FLG(BAR_WP_SHARP);
     }
 
     if (p_ptr->pclass == CLASS_MYSTIC)
@@ -3368,6 +3411,20 @@ static int _calc_xtra_hp(int amt)
             break;
         }
         break;
+    case CLASS_DISCIPLE:
+        switch (p_ptr->psubclass)
+        {
+        case DISCIPLE_YEQREZH:
+            w1 = 0; w2 = 1; w3 = 1;
+            break;
+        case DISCIPLE_TROIKA:
+            w1 = 2; w2 = 1; w3 = 0;
+            break;
+        default:
+            w1 = 1; w2 = 1; w3 = 1;
+            break;
+        }
+        break;
     }
 
     return py_prorata_level_aux(amt, w1, w2, w3);
@@ -4696,6 +4753,11 @@ void calc_bonuses(void)
                 info_ptr->dis_to_h -= 20;
                 info_ptr->to_h -= 20;
             }
+        }
+
+        if ((p_ptr->tim_field) && (p_ptr->weapon_ct == 1))
+        {
+            info_ptr->to_dd += 1;
         }
 
         if (info_ptr->wield_how == WIELD_TWO_HANDS)
