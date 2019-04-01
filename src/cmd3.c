@@ -53,6 +53,9 @@ void do_cmd_drop(void)
     case INV_SPECIAL1:
         special1_drop(prompt.obj);
         break;
+    case INV_SPECIAL2:
+        special2_drop(prompt.obj);
+        break;
     }
 }
 
