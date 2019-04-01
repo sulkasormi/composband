@@ -143,9 +143,8 @@ void py_birth_obj(object_type *o_ptr)
         return;
     }
 
-    obj_identify_fully(o_ptr);
-
     object_origins(o_ptr, ORIGIN_BIRTH);
+    obj_identify_fully(o_ptr);
 
     /* Big hack for sexy players ... only wield the starting whip,
      * but carry the alternate weapon. Previously, sexy characters
@@ -642,7 +641,7 @@ static void _pers_ui(void)
         }
     }
     vec_free(v);
-    if (p_ptr->personality == PERS_CHAOTIC) (void)_patron_ui();
+    if ((p_ptr->personality == PERS_CHAOTIC) && (p_ptr->pclass != CLASS_DISCIPLE)) (void)_patron_ui();
 }
 
 static int _pers_cmp(personality_ptr l, personality_ptr r)
@@ -993,8 +992,8 @@ static _class_group_t _class_groups[_MAX_CLASS_GROUPS] = {
     { "Devices", { CLASS_ALCHEMIST, CLASS_DEVICEMASTER, CLASS_MAGIC_EATER, -1} },
     { "Prayer", {CLASS_PRIEST, -1} },
     { "Stealth", {CLASS_NINJA, CLASS_ROGUE, CLASS_SCOUT, -1} },
-    { "Hybrid", {CLASS_CHAOS_WARRIOR, CLASS_NINJA_LAWYER, CLASS_PALADIN, CLASS_RANGER,
-                    CLASS_RED_MAGE, CLASS_WARRIOR_MAGE, -1} },
+    { "Hybrid", {CLASS_CHAOS_WARRIOR, CLASS_DISCIPLE, CLASS_NINJA_LAWYER, CLASS_PALADIN,
+                    CLASS_RANGER, CLASS_RED_MAGE, CLASS_WARRIOR_MAGE, -1} },
     { "Riding", {CLASS_BEASTMASTER, CLASS_CAVALRY, -1} },
     { "Mind", {CLASS_MINDCRAFTER, CLASS_MIRROR_MASTER, CLASS_PSION,
                     CLASS_TIME_LORD, CLASS_WARLOCK, -1} },
@@ -1166,7 +1165,7 @@ static int _subclass_ui(void)
             rc = _devicemaster_ui();
         else if (p_ptr->pclass == CLASS_GRAY_MAGE)
             rc = _gray_mage_ui();
-        else if (p_ptr->pclass == CLASS_CHAOS_WARRIOR)
+        else if ((p_ptr->pclass == CLASS_CHAOS_WARRIOR) || (p_ptr->pclass == CLASS_DISCIPLE))
             rc = _patron_ui();
         else
         {
@@ -1369,11 +1368,31 @@ static int _gray_mage_ui(void)
     }
 }
 
+static int _random_patron(void)
+{
+    if (p_ptr->pclass == CLASS_DISCIPLE)
+    {
+        int patron = (MIN_PURPLE_PATRON + randint0(MAX_PURPLE_PATRON - MIN_PURPLE_PATRON));
+        if ((p_ptr->psubclass >= MIN_PURPLE_PATRON) && (p_ptr->psubclass < MAX_PURPLE_PATRON)) patron = p_ptr->psubclass;
+        else p_ptr->psubclass = patron;
+        return patron;
+    }
+    return randint0(MAX_CHAOS_PATRON);
+}
+
 static int _patron_ui(void)
 {
     for (;;)
     {
         int cmd, i, alku = 0, loppu = MAX_CHAOS_PATRON;
+
+        if (p_ptr->pclass == CLASS_DISCIPLE)
+        {
+            alku = MIN_PURPLE_PATRON;
+            loppu = MAX_PURPLE_PATRON;
+            p_ptr->realm1 = REALM_NONE;
+            p_ptr->realm2 = REALM_NONE;
+        }
 
         doc_clear(_doc);
         _race_class_top(_doc);
@@ -1382,7 +1401,7 @@ static int _patron_ui(void)
         for (i = alku; i < loppu; i++)
         {
             cptr patron_name = chaos_patrons[i];
-            doc_printf(_doc, "  <color:y>%c</color>) <color:%c>%s</color>\n", I2A(i), p_ptr->chaos_patron == i ? 'B' : 'w', patron_name);
+            doc_printf(_doc, "  <color:y>%c</color>) <color:%c>%s</color>\n", I2A(i - alku), p_ptr->chaos_patron == i ? 'B' : 'w', patron_name);
         }
         doc_insert(_doc, "  <color:y>*</color>) Random\n");
 
@@ -1391,13 +1410,24 @@ static int _patron_ui(void)
         if (cmd == '\t') _inc_rcp_state();
         else if (cmd == '=') _birth_options();
         else if (cmd == ESCAPE) return UI_OK; /* ! */
+        else if ((isupper(cmd)) && (p_ptr->pclass == CLASS_DISCIPLE))
+        {
+            i = A2I(tolower(cmd)) + alku;
+            if (alku <= i && i < loppu)
+            {
+                class_t *class_ptr = get_class_aux(p_ptr->pclass, i);
+                doc_display_help("Disciples.txt", class_ptr->subname);
+            }
+        }
         else
         {
-            if (cmd == '*') i = RANDOM_PATRON + alku;
-            else i = A2I(cmd);
-            if ((alku <= i && i < loppu) || (i == RANDOM_PATRON + alku))
+            if (cmd == '*') i = RANDOM_PATRON;
+            else i = A2I(cmd) + alku;
+            if ((alku <= i && i < loppu) || (i == RANDOM_PATRON))
             {
-                p_ptr->chaos_patron = i - alku;
+                if (i == RANDOM_PATRON) i = _random_patron();
+                p_ptr->chaos_patron = i;
+                if (p_ptr->pclass == CLASS_DISCIPLE) p_ptr->psubclass = i;
                 return UI_OK;
             }
         }
@@ -2282,6 +2312,31 @@ static void _stats_init(void)
             _stats_init_aux(stats);
             break;
         }
+        case CLASS_DISCIPLE:
+        {
+            switch (p_ptr->psubclass)
+            {
+                case DISCIPLE_KARROT:
+                {
+                    int stats[6] = { 17, 15, 8, 15, 14, 13 };
+                    _stats_init_aux(stats);
+                    break;
+                }
+                case DISCIPLE_TROIKA:
+                {
+                    int stats[6] = { 17, 13, 8, 16, 15, 10 };
+                    _stats_init_aux(stats);
+                    break;
+                }
+                default:
+                {
+                    int stats[6] = { 16, 16, 9, 14, 16, 10 };
+                    _stats_init_aux(stats);
+                    break;
+                }
+            }
+            break;
+        }
         /* TODO */
         case CLASS_WILD_TALENT:
         case CLASS_PSION:
@@ -2905,8 +2960,10 @@ static void _birth_finalize(void)
 
     /* Everybody gets a chaos patron. The chaos warrior is obvious,
      * but anybody else can acquire MUT_CHAOS_GIFT during the game */
-    if ((p_ptr->chaos_patron == RANDOM_PATRON) || ((p_ptr->pclass != CLASS_CHAOS_WARRIOR) && (p_ptr->personality != PERS_CHAOTIC)))
-        p_ptr->chaos_patron = randint0(MAX_CHAOS_PATRON);
+    if ((p_ptr->chaos_patron == RANDOM_PATRON) || ((p_ptr->pclass != CLASS_CHAOS_WARRIOR) &&
+        (p_ptr->pclass != CLASS_DISCIPLE) && (p_ptr->personality != PERS_CHAOTIC)) || ((p_ptr->pclass == CLASS_DISCIPLE) && (p_ptr->chaos_patron < MIN_PURPLE_PATRON)) ||
+        ((p_ptr->pclass != CLASS_DISCIPLE) && (p_ptr->chaos_patron > MAX_CHAOS_PATRON)))
+        p_ptr->chaos_patron = _random_patron();
 
     get_max_stats();
     do_cmd_rerate_aux();
