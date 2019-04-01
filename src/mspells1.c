@@ -300,6 +300,7 @@ int anti_magic_check(void)
     case CLASS_BEASTMASTER:
     case CLASS_BLOOD_KNIGHT:
     case CLASS_MAULER:
+    case CLASS_DISCIPLE:
         return 20;
 
     case CLASS_MINDCRAFTER:
@@ -396,6 +397,7 @@ bool dispel_check(int m_idx)
     /* Craft Munckin Checks :) */
     if (p_ptr->tim_force) return TRUE;
     if (p_ptr->tim_enlarge_weapon) return TRUE;
+    if (p_ptr->tim_field) return TRUE;
     if (p_ptr->kabenuke) return TRUE;
 
     /* Elemental resistances */
