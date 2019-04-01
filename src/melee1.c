@@ -1305,6 +1305,8 @@ bool make_attack_normal(int m_idx)
         /* hisself */
         monster_desc(m_name_self, m_ptr, MD_PRON_VISIBLE | MD_POSSESSIVE | MD_OBJECTIVE);
 
+        /* This message can be triggered by an already dead exploder -
+         * but in that case it's still pretty appropriate... */
         msg_format("%^s harms %s!", m_name, m_name_self);
         project(0, 0, m_ptr->fy, m_ptr->fx, psion_backlash_dam(total_dam), GF_MISSILE, PROJECT_KILL);
         if (p_ptr->tim_eyeeye) set_tim_eyeeye(p_ptr->tim_eyeeye-5, TRUE);
