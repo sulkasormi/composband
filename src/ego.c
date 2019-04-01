@@ -2294,6 +2294,99 @@ static void _ego_create_weapon(object_type *o_ptr, int level)
                     effect_add_random(o_ptr, BIAS_PRIESTLY);
             }
             break;
+        case EGO_WEAPON_TROIKA:
+            if ( o_ptr->tval != TV_SWORD )
+            {
+                done = FALSE;
+            }
+            else
+            {
+                int _lva = MIN(6, MAX(2, 6 - ((level + 6 - randint0(33)) / 25)));
+                bool lippu = TRUE;
+                if (one_in_(_lva)) _ego_create_weapon_craft(o_ptr, level);
+                else if (one_in_(_lva)) _ego_create_weapon_slaying(o_ptr, level);
+                else lippu = FALSE;
+                if (one_in_(_lva))
+                {
+                    int lisa = 0;
+                    o_ptr->dd++;
+                    while ((one_in_(_lva)) && (lisa < 4)) { lisa++; }
+                    o_ptr->dd += lisa;
+                    if (one_in_(_lva * _lva))
+                    {
+                        o_ptr->ds++;
+                        if (one_in_(_lva * _lva)) o_ptr->ds++;
+                    }
+                    lippu = TRUE;
+                }
+                if (one_in_(_lva * 2))
+                {
+                    add_flag(o_ptr->flags, OF_BRAND_VAMP);
+                    lippu = TRUE;
+                }
+                else if (one_in_(_lva * _lva))
+                {
+                    add_flag(o_ptr->flags, OF_BRAND_CHAOS);
+                    lippu = TRUE;
+                }
+                if (one_in_(_lva * 88))
+                {
+                    add_flag(o_ptr->flags, OF_VORPAL2);
+                    lippu = TRUE;
+                }
+                else if (one_in_(_lva))
+                {
+                    add_flag(o_ptr->flags, OF_VORPAL);
+                    lippu = TRUE;
+                }
+                if ((one_in_(_lva)) || (have_flag(o_ptr->flags, OF_VORPAL2)))
+                {
+                    add_flag(o_ptr->flags, OF_AGGRAVATE);
+                    lippu = TRUE;
+                }
+                if (one_in_(22))
+                {
+                    one_ele_resistance(o_ptr);
+                    lippu = TRUE;
+                }
+                if (one_in_(22))
+                {
+                    one_resistance(o_ptr);
+                    lippu = TRUE;
+                }
+                if (one_in_(22))
+                {
+                    one_sustain(o_ptr);
+                    lippu = TRUE;
+                }
+                if (one_in_(22))
+                {
+                    one_ability(o_ptr);
+                    lippu = TRUE;
+                }
+                if (one_in_(7))
+                {
+                    add_flag(o_ptr->flags, OF_BLESSED);
+                    lippu = TRUE;
+                }
+                if (one_in_(_lva))
+                {
+                    o_ptr->to_a += 8 - randint1(level / 3);
+                    lippu = TRUE;
+                }
+                if ((one_in_(22 * _lva)) || (!lippu))
+                {
+                    add_flag(o_ptr->flags, OF_BLOWS);
+                    if (one_in_(22 * _lva)) o_ptr->pval = 2;
+                    else o_ptr->pval = 1;
+                }
+                if (level < 30)
+                {
+                    o_ptr->to_h -= (34 - level) / 5;
+                    o_ptr->to_d -= (34 - level) / 5;
+                }
+            }
+            break;
         }
     }
     /* Hack -- Super-charge the damage dice, but only if they haven't already
@@ -2464,7 +2557,7 @@ static void _ego_create_dragon_armor(object_type *o_ptr, int level)
             if (one_in_(5))
                 add_flag(o_ptr->flags, OF_LORE2);
             if (one_in_(ACTIVATION_CHANCE))
-            {   /* Only do strong effects since we loose the DSM's breathe activation! */
+            {   /* Only do strong effects since we lose the DSM's breathe activation! */
                 int choices[] = {
                     EFFECT_IDENTIFY_FULL, EFFECT_DETECT_ALL, EFFECT_ENLIGHTENMENT,
                     EFFECT_CLAIRVOYANCE, EFFECT_SELF_KNOWLEDGE, -1
@@ -2519,7 +2612,7 @@ static void _ego_create_dragon_armor(object_type *o_ptr, int level)
                 if (one_in_(6))
                     add_flag(o_ptr->flags, OF_BRAND_VAMP);
                 if (one_in_(ACTIVATION_CHANCE))
-                {   /* Only do strong effects since we loose the DSM's breathe activation! */
+                {   /* Only do strong effects since we lose the DSM's breathe activation! */
                     int choices[] = {
                         EFFECT_GENOCIDE, EFFECT_MASS_GENOCIDE, EFFECT_WRAITHFORM,
                         EFFECT_DARKNESS_STORM, -1
@@ -2848,7 +2941,7 @@ static void _ego_create_body_armor(object_type *o_ptr, int level)
             }
             if ((level > 55) && (one_in_(5)))
                 add_flag(o_ptr->flags, OF_RES_NETHER);
-            if (((level > 66) || (one_in_(4))) && (one_in_(4)))
+            if (((level > 36) || (one_in_(5))) && (one_in_(3)))
                 add_flag(o_ptr->flags, OF_SPEED);
             if (one_in_(ACTIVATION_CHANCE * 2))
                 effect_add_random(o_ptr, BIAS_DEMON);
