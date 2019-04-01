@@ -1,0 +1,111 @@
+N: 1:BIAS_ELEC
+of the Storm Knight
+'Shazam'
+'Alagion'
+'Insulator'
+'Thundercoat'
+'Cracklejacket'
+
+N: 2:BIAS_POIS
+of the Modern Knight
+of the Savage
+of the Amazons
+'Stingbender'
+'Thicko'
+
+N: 3:BIAS_FIRE
+of the Desert
+of Shapeir
+of Loge
+'Flamecoat'
+'Heatshield'
+'Backburner'
+
+N: 4:BIAS_COLD
+of the Alps
+of Polar Wind
+of Forochel
+of Winter Nights
+'Royal Anorak'
+
+N: 5:BIAS_ACID
+of Hithlum
+of Zoopi
+of Esgaroth
+'Oozearmor'
+'Evershining'
+
+N:12:BIAS_CHAOS
+of Eequor
+of the Void
+of Loopiness
+'Day of the Dove'
+'Nameless Thing'
+
+N:14:BIAS_NECROMANTIC
+of Rituals
+of Tynian
+'Necrologia'
+'Spirit Armour'
+'Black Mail'
+
+N:15:BIAS_LAW
+N:13:BIAS_PRIESTLY
+N: 8:BIAS_WIS
+of Righteousness
+of Redemption
+'Suit of Law'
+'Shadow-Banisher'
+'Parament of Holy Brume'
+
+N:16:BIAS_ROGUE
+N: 9:BIAS_DEX
+of the Sneaky Devil
+of the Hidden Smials
+of Damogran
+'Shadow'
+'Keeper of Darkness'
+
+N:17:BIAS_MAGE
+N: 7:BIAS_INT
+of the High King
+of Idler
+of Klatha
+of the Warrior-Mage
+of Takapiru
+
+N:18:BIAS_WARRIOR
+N: 6:BIAS_STR
+of the Stress Brothers
+of Starkad
+of Mimbre
+of Bladorthin
+of Daisy
+of Ynci
+of Golfimbul
+
+N:19:BIAS_RANGER
+N:10:BIAS_CON
+'Bringer of Joy'
+'Silverback'
+'Wargskin'
+'Trollhide'
+'Backrubber'
+'Link to Life'
+
+N:11:BIAS_CHR
+of Xena
+of Delban
+of Impression
+of Phobos
+'Dreamform'
+
+N:*:Default
+of Kevlar
+of Belegennon
+of Ivanhoe
+of the Mailman
+of Hutilo
+'Steelskin'
+'Edge-blunter'
+

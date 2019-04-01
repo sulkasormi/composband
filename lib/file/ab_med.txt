@@ -1,0 +1,112 @@
+N: 1:BIAS_ELEC
+of the Iron Duke
+of Gwindor
+'Pride of the Goblins'
+'Stormwalker'
+
+N: 2:BIAS_POIS
+of Mirkwood
+of Barahir
+of Bregalad
+'Anklesaver'
+
+N: 3:BIAS_FIRE
+of the Lava Fields
+of Vulcan
+of Pepper
+of Mustafar
+of Firewalking
+'Ceasefire'
+
+N: 4:BIAS_COLD
+of the Cool Cat
+of Mono Island
+of Ursus
+'Snow Lynx'
+'Snow Shoes'
+
+N: 5:BIAS_ACID
+of Muddy Roads
+of Rustless Legs
+of Wader
+of the Quagmire
+'Hipposhanks'
+'Jelly Legs'
+
+N:12:BIAS_CHAOS
+of Sirrus
+of Achenar
+of the Doom Treader
+'Big Boots'
+
+N:14:BIAS_NECROMANTIC
+of Witch Wood
+of the Spacewalker
+of Guybrush
+'Nightwalker'
+
+N:15:BIAS_LAW
+N:13:BIAS_PRIESTLY
+N: 8:BIAS_WIS
+of the Bishop
+of the Messenger
+'Angel Boots'
+'Aether Flash'
+'Excelsior'
+
+N:16:BIAS_ROGUE
+N: 9:BIAS_DEX
+of the Shadow's Footfall
+of the Sneak
+'Silentwalker'
+'Catwalk'
+'Mercury'
+'Quickstep'
+
+N:17:BIAS_MAGE
+N: 7:BIAS_INT
+of Utility
+of Mikael Harfoot
+'Grizzly'
+'Lohil'
+
+N:18:BIAS_WARRIOR
+N: 6:BIAS_STR
+of Victory
+of Triumph
+of Achilles
+of Slorpik
+'Crusher of Thrones'
+
+N:19:BIAS_RANGER
+of Marinera
+of the Woodsman
+of the Hunter
+of Roots
+of Spring
+
+N:10:BIAS_CON
+of the Long March
+of the Silver Horde
+of the Bigfoot
+'Dal-i-Thalion'
+'Homebringer'
+
+N:11:BIAS_CHR
+of Cinderella
+of Idril
+of the Moonwalker
+'Red Ballet'
+'Dashing Boots'
+
+N:*:Default
+of Odo
+of Bombur
+of Bunion
+'Proudfoot'
+'Foot-pleaser'
+'Wolf's Leap'
+'Seven-Toe Boots'
+'Kangaroo Shoes'
+'Legend'
+

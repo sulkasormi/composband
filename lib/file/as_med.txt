@@ -1,0 +1,96 @@
+N: 1:BIAS_ELEC
+'Skyguard'
+'Tornado Shield'
+of the Cloud Giant
+of Vastus
+
+N: 2:BIAS_POIS
+'Fangbender'
+'Arrowcatcher'
+of Survival
+of Darius
+
+N: 3:BIAS_FIRE
+of Apollo
+of Gemini
+'Heatshield'
+'Sunscreen'
+'Duban'
+
+N: 4:BIAS_COLD
+of the Frozen Seas
+of the Long Winter
+'Ice Mirror'
+'Snowflake'
+
+N: 5:BIAS_ACID
+of Borin
+of Azanulbizar
+of the Peaceful Lake
+'Shield of Water'
+'Drop of the Year'
+
+N:12:BIAS_CHAOS
+of Zagranost
+'Sad Giant's Shield'
+'Eye of the Void'
+'Lunatic'
+
+N:14:BIAS_NECROMANTIC
+of the Royal Crypt
+of the Mummy
+of Totality
+of Redrum
+
+N:15:BIAS_LAW
+N:13:BIAS_PRIESTLY
+N: 8:BIAS_WIS
+'Omens of Life'
+of Divine Protection
+of Eternal Wisdom
+of Evalach
+of Ceremony
+
+N:16:BIAS_ROGUE
+N: 9:BIAS_DEX
+of Konna
+of Turgon
+of Artful Dodging
+of the Mole
+
+N:17:BIAS_MAGE
+N: 7:BIAS_INT
+of the Sorceress
+of Erasmus
+of Bazhdog
+
+N:18:BIAS_WARRIOR
+N: 6:BIAS_STR
+'Power Shield'
+of the Valkyrie
+of the Watchman
+of Ajax
+
+N:19:BIAS_RANGER
+N:10:BIAS_CON
+'Ankh of Amun'
+of the Waning Moon
+of the Waxing Moon
+of Otto
+of Atwood
+
+N:11:BIAS_CHR
+of Arvarodd
+of Angantyr
+of Dernhelm
+of the Shieldmaiden
+of Okeewana
+
+N:*:Default
+'Yay'
+'Opportunity'
+of Magnitude
+of Nelitavu
+of the Ancient Marilith
+of Curufin
+

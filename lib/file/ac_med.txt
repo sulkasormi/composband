@@ -1,0 +1,100 @@
+N: 1:BIAS_ELEC
+of Thanks
+of the Gentle Djinni
+'Rubber Coat'
+'Wind Force'
+'Wings of the Storm'
+
+N: 2:BIAS_POIS
+of the Jungle
+of Sadi
+of Arjuna
+
+N: 3:BIAS_FIRE
+of Io
+of the South-East
+of the Badlands
+'Shimmering Wings'
+'Thermoweave'
+
+N: 4:BIAS_COLD
+of Halla
+of Lumikeli
+'Losgol'
+'Snow Angel'
+'Windcheater'
+
+N: 5:BIAS_ACID
+of Hithlum
+of Sapetus
+'Raincloak'
+'October Rain'
+
+N:12:BIAS_CHAOS
+of the Anti-Hero
+of Ashaba
+of Seldon
+'Threadbare'
+
+N:14:BIAS_NECROMANTIC
+of the Dark Lady
+of the Ghost Pirate
+of Misty Shadows
+of the Wombat
+'Nightwing'
+
+N:15:BIAS_LAW
+N:13:BIAS_PRIESTLY
+N: 8:BIAS_WIS
+of Revelation
+of Zarquon
+'Righteous Aura'
+'Moral Fibre'
+'Spirit of the Old Oak'
+
+N:16:BIAS_ROGUE
+N: 9:BIAS_DEX
+of the Assassin
+of the Cloaker
+of Sigurd
+'Cover of Darkness'
+'Maple Leaf'
+'Phantom'
+
+N:17:BIAS_MAGE
+N: 7:BIAS_INT
+of Rationality
+of Vordai
+of the Necessary Humpback
+'Greyhame'
+'Sign of Brilliance'
+
+N:18:BIAS_WARRIOR
+N: 6:BIAS_STR
+of Argon
+of Ilion
+of the Angry Boits
+'Panther Coat'
+
+N:19:BIAS_RANGER
+N:10:BIAS_CON
+of the Hunter
+of the Nandor
+'Silverback'
+'Wargskin'
+'Life of Leaf'
+
+N:11:BIAS_CHR
+of Melidere
+of Elanor
+'Undiscoverd Paradise'
+'Lumos'
+'Dreamcoat'
+
+N:*:Default
+of Kevlar
+of Kutina
+of Good Hope
+of Bossu
+'Winimo'
+'Road Cape'

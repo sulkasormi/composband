@@ -1,0 +1,98 @@
+N: 1:BIAS_ELEC
+of Igor
+of Sparks
+'Zapper'
+'Shock Treatment'
+
+N: 2:BIAS_POIS
+of Cleanness
+of Nogini
+of Quintessence
+of Itsukama
+
+N: 3:BIAS_FIRE
+of Toimi
+of the Master Smith
+of Ogun
+'Blacknail'
+'Oven Mitts'
+
+N: 4:BIAS_COLD
+of Siberia
+of the Snow Castle
+of the North
+of the Almighty Duck
+of Luke
+
+N: 5:BIAS_ACID
+of the Sea-Kings
+of Rauros
+of Utu
+of Senji
+
+N:12:BIAS_CHAOS
+of Dr. Strangelove
+of Gorgoroth
+of the Lepus
+'Devil's Fist'
+
+N:14:BIAS_NECROMANTIC
+of Tselakus
+of Izanami
+'Touch of Death'
+'Mittens of Doom'
+
+N:15:BIAS_LAW
+N:13:BIAS_PRIESTLY
+N: 8:BIAS_WIS
+of Katumus
+'Enlightenment from Heaven'
+'Hand of God'
+'Gospel'
+
+N:16:BIAS_ROGUE
+N: 9:BIAS_DEX
+of Stragen
+of Rorimac
+of the Trapper
+'Invisible Hand'
+
+N:17:BIAS_MAGE
+N: 7:BIAS_INT
+of the Senior Wrangler
+of the Alchemist
+of Gildor
+of Kaptah
+
+N:18:BIAS_WARRIOR
+N: 6:BIAS_STR
+of Angbor
+of Zakath
+'Terminater'
+'Steelgrip'
+'Boarfist'
+'Thumper'
+'Jarngreipr'
+
+N:19:BIAS_RANGER
+N:10:BIAS_CON
+of Aiwendil
+of Grinudil
+of the Explorer
+of Nujok
+'Bear's Hand'
+
+N:11:BIAS_CHR
+of Nimue
+of Emeldir
+of Lothario
+of Approval
+'Silk Gloves'
+
+N:*:Default
+of the Duke
+of Rejection
+'Mauling Mammoth'
+'Mumak Punch'
+'Glory of Morivant'
+'Option'
