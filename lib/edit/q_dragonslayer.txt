@@ -26,4 +26,7 @@ R:OBJ(^ring$, DEPTH+20):EGO(defender)
 ?:[EQU $RACE Centipede]
 R:OBJ(dragon boots, DEPTH+11):EGO(golem)
 
+?:[AND [EQU $CLASS Disciple] [EQU $SUBCLASS Troika] ]
+R:OBJ(multi-hued dragon scale mail, DEPTH+10)
+
 # vim: filetype=q :
