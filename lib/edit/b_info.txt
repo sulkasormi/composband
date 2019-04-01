@@ -1132,3 +1132,15 @@ S:BODY_ARMOR:You
 S:GLOVES:Gloves:0
 S:BOOTS:Boots
 
+N:109:Dragon2
+S:RING:Ring
+S:RING:Ring
+S:RING:Ring
+S:RING:Ring
+S:RING:Ring
+S:RING:Ring
+S:AMULET:Amulet
+S:LITE:Light
+S:CLOAK:Cloak
+S:HELMET:Helm
+S:QUIVER:Quiver
