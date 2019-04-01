@@ -2367,7 +2367,11 @@ static void process_monster(int m_idx)
     if (MON_CSLEEP(m_ptr))
     {
         /* Handle non-aggravation - Still sleeping */
-        if (!(p_ptr->cursed & OFC_AGGRAVATE)) return;
+        if (!(p_ptr->cursed & OFC_AGGRAVATE))
+        {
+            /* Troika disciples always wake orcs up */
+            if ((!disciple_is_(DISCIPLE_TROIKA)) || (!(r_ptr->flags3 & RF3_ORC))) return;
+        }
 
         /* Handle aggravation */
 
@@ -3842,7 +3846,7 @@ void process_monsters(void)
 
         /* Handle "sight" and "aggravation" */
         else if ((m_ptr->cdis <= MAX_SIGHT) &&
-            (player_has_los_bold(fy, fx) || (p_ptr->cursed & OFC_AGGRAVATE)))
+            (player_has_los_bold(fy, fx) || (p_ptr->cursed & OFC_AGGRAVATE) || ((disciple_is_(DISCIPLE_TROIKA)) && (r_ptr->flags3 & RF3_ORC))))
         {
             /* We can "see" or "feel" the player */
             test = TRUE;
