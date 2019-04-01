@@ -324,10 +324,10 @@ B:7:A:0:Enchant weapon:400:800:w:23:0
 B:7:A:1:Enchant armor:300:600:a:24:0
 B:7:A:2:Reforge artifact:0:0:r:56:0
 B:7:A:3:Compare weapons:1000:1000:c:21:0
-B:7:A:4:Evaluate AC:1000:1000:a:46:0
+B:7:A:4:Evaluate AC:1000:1000:A:46:0
 ?:[EQU $QUEST5 Finished]
 B:7:A:3:Compare weapons:150:150:c:21:0
-B:7:A:4:Evaluate AC:150:150:a:46:0
+B:7:A:4:Evaluate AC:150:150:A:46:0
 ?:1
 B:7:C:*:None
 B:7:C:Warrior:Owner
