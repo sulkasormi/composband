@@ -171,6 +171,7 @@ void reset_tim_flags(void)
     p_ptr->tim_blood_revenge = 0;
     p_ptr->tim_superstealth = 0;
     p_ptr->tim_force = 0;
+    p_ptr->tim_field = 0;
     p_ptr->fasting = FALSE;
     p_ptr->tim_sustain_str = 0;
     p_ptr->tim_sustain_int = 0;
@@ -227,6 +228,7 @@ void reset_tim_flags(void)
         p_ptr->magic_num1[0] = 0;
         p_ptr->magic_num2[0] = 0;
     }
+    if (disciple_is_(DISCIPLE_TROIKA)) troika_wipe_timeouts();
 }
 
 byte _slow_calc(bool is_slow, byte minislow)
@@ -311,6 +313,7 @@ bool disenchant_player(void)
 {
     int attempts = 200;
     bool result = FALSE;
+    if (disciple_is_(DISCIPLE_TROIKA)) result = troika_dispel_timeouts();
     for (; attempts; attempts--)
     {
         switch (randint1(32))
@@ -501,6 +504,13 @@ bool disenchant_player(void)
             }
             break;
         case 23:
+            if (p_ptr->tim_field)
+            {
+                (void)set_tim_field(0, TRUE);
+                result = TRUE;
+                return result;
+            }
+            break;
         case 24:
             if (p_ptr->tim_force)
             {
@@ -663,6 +673,7 @@ void dispel_player(void)
     set_tim_force(0, TRUE);
     set_tim_building_up(0, TRUE);
     set_tim_enlarge_weapon(0, TRUE);
+    set_tim_field(0, TRUE);
 
     set_tim_spell_reaction(0, TRUE);
     set_tim_resist_curses(0, TRUE);
@@ -738,6 +749,7 @@ void dispel_player(void)
 bool set_mimic(int v, int p, bool do_dec)
 {
     bool notice = FALSE;
+    bool dragon_poly = FALSE;
 
     /* Hack -- Force good values */
     v = (v > 10000) ? 10000 : (v < 0) ? 0 : v;
@@ -749,11 +761,29 @@ bool set_mimic(int v, int p, bool do_dec)
      * or if anyone else could mimic a werewolf, due to the mega-hacks
      * involved in werewolf equipment handling */
     if (prace_is_(RACE_WEREWOLF)) return FALSE;
+    if (get_race()->flags & RACE_NO_POLY) return FALSE;
     if (p == RACE_WEREWOLF) /* please don't let this even happen */
     {
         v = 0;
         p = MIMIC_NONE; /* paranoia */
     }
+
+
+    if (p == MIMIC_DRAGON)
+    {
+        if (!disciple_is_(DISCIPLE_KARROT)) /* further paranoia */
+        {
+            v = 0;
+            p = MIMIC_NONE;
+        }
+    }
+    if ((p != MIMIC_NONE) && ((get_race_aux(p, 0)->flags & RACE_NO_POLY)))
+    {
+        v = 0;
+        p = MIMIC_NONE;
+    }
+
+    dragon_poly = ((p == MIMIC_DRAGON) || (p_ptr->mimic_form == MIMIC_DRAGON));
 
     /* Open */
     if (v)
@@ -790,6 +820,7 @@ bool set_mimic(int v, int p, bool do_dec)
 
     /* Use the value */
     p_ptr->tim_mimic = v;
+    if (dragon_poly) karrot_equip_on_poly();
     equip_on_change_race();
 
     /* Nothing to notice */
@@ -1873,6 +1904,58 @@ bool set_tim_enlarge_weapon(int v, bool do_dec)
 
     /* Use the value */
     p_ptr->tim_enlarge_weapon = v;
+
+    /* Nothing to notice */
+    if (!notice) return (FALSE);
+
+    /* Disturb */
+    if (disturb_state) disturb(0, 0);
+
+    /* Recalculate bonuses */
+    p_ptr->redraw |= (PR_STATUS);
+    p_ptr->update |= (PU_BONUS);
+
+    /* Handle stuff */
+    handle_stuff();
+
+    /* Result */
+    return (TRUE);
+}
+
+bool set_tim_field(int v, bool do_dec)
+{
+    bool notice = FALSE;
+
+    /* Hack -- Force good values */
+    v = (v > 10000) ? 10000 : (v < 0) ? 0 : v;
+
+    if (p_ptr->is_dead) return FALSE;
+
+    /* Open */
+    if (v)
+    {
+        if (p_ptr->tim_field)
+        {
+            if (p_ptr->tim_field > v && !do_dec) return FALSE;
+        }
+        else
+        {
+            msg_print("An invisible force field surrounds your weapon!");
+            notice = TRUE;
+        }
+    }
+    /* Shut */
+    else
+    {
+        if (p_ptr->tim_field)
+        {
+            msg_print("Your weapon is no longer surrounded by a force field.");
+            notice = TRUE;
+        }
+    }
+
+    /* Use the value */
+    p_ptr->tim_field = v;
 
     /* Nothing to notice */
     if (!notice) return (FALSE);
@@ -5371,6 +5454,7 @@ bool hp_player_aux(int num)
     }
 
     if ((p_ptr->prace == RACE_EINHERI) || (p_ptr->mimic_form == RACE_EINHERI)) num /= 2;
+    if (disciple_is_(DISCIPLE_YEQREZH)) num = hp_player_yeqrezh(num);
 
     /* Healing needed */
     if (p_ptr->chp < p_ptr->mhp)
@@ -6149,6 +6233,7 @@ int take_hit(int damage_type, int damage, cptr hit_from)
     {
         virtue_add(VIRTUE_SACRIFICE, 1);
         virtue_add(VIRTUE_CHANCE, 2);
+        if (disciple_is_(DISCIPLE_TROIKA)) troika_effect(TROIKA_CHANCE);
     }
 
     /* Dead player */
@@ -6269,6 +6354,10 @@ int take_hit(int damage_type, int damage, cptr hit_from)
     if (p_ptr->wild_mode && !p_ptr->leaving && (p_ptr->chp < MAX(warning, p_ptr->mhp/5)))
     {
         change_wild_mode();
+    }
+    else if ((disciple_is_(DISCIPLE_TROIKA)) && (p_ptr->mhp / (MAX(1, old_chp - p_ptr->chp))) < 6) /* counterintuitively, the MAX(1,) is needed - the difference actually can be zero in some strange circumstances */
+    {
+        troika_effect(TROIKA_TAKE_HIT);
     }
     return damage;
 }
