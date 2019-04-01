@@ -287,6 +287,7 @@ void virtue_init(void)
         p_ptr->vir_types[i++] = VIRTUE_CHANCE;
         break;
     case CLASS_WILD_TALENT:
+    case CLASS_DISCIPLE:
         p_ptr->vir_types[i++] = VIRTUE_CHANCE;
         break;
     case CLASS_BEASTMASTER:
