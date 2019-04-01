@@ -1806,6 +1806,11 @@ static void process_world_aux_timeout(void)
         set_tim_enlarge_weapon(p_ptr->tim_enlarge_weapon - 1, TRUE);
     }
 
+    if (p_ptr->tim_field)
+    {
+        set_tim_field(p_ptr->tim_field - 1, TRUE);
+    }
+
     if (p_ptr->tim_spell_reaction)
         set_tim_spell_reaction(p_ptr->tim_spell_reaction - 1, TRUE);
 
@@ -1879,6 +1884,9 @@ static void process_world_aux_timeout(void)
 
     if (p_ptr->pclass == CLASS_PSION)
         psion_decrement_counters();
+
+    if (disciple_is_(DISCIPLE_TROIKA))
+        troika_reduce_timeouts();
 
     if (p_ptr->fasting && one_in_(7))
     {
@@ -2589,7 +2597,10 @@ static byte get_dungeon_feeling(void)
         }
 
         /* Skip pseudo-known objects */
-        if (o_ptr->ident & IDENT_SENSE) continue;
+        if (o_ptr->ident & IDENT_SENSE)
+        {
+            if ((!p_ptr->munchkin_pseudo_id) || (o_ptr->marked & OM_TOUCHED)) continue;
+        }
 
         /* Experimental Hack: Force Special Feelings for artifacts no matter what. */
         if (object_is_artifact(o_ptr))
@@ -3670,6 +3681,7 @@ static void _dispatch_command(int old_now_turn)
                             p_ptr->pclass == CLASS_MYSTIC ||
                             p_ptr->pclass == CLASS_PSION ||
                             p_ptr->pclass == CLASS_SNIPER ||
+                            p_ptr->pclass == CLASS_DISCIPLE ||
                             p_ptr->pclass == CLASS_TIME_LORD )
                 {
                     /* This is the preferred entrypoint for spells ...
@@ -4011,7 +4023,11 @@ static void _dispatch_command(int old_now_turn)
         /* Repeat level feeling */
         case KTRL('F'):
         {
-            if (!p_ptr->wild_mode) do_cmd_feeling();
+            if (!p_ptr->wild_mode)
+            {
+                do_cmd_feeling();
+                if (p_ptr->pclass == CLASS_DISCIPLE) disciple_feeling();
+            }
             break;
         }
 
