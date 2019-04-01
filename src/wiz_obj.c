@@ -30,13 +30,21 @@ typedef struct {
     object_p pred;
 } _flag_info_t, *_flag_info_ptr;
 
+static void _obj_identify_fully(object_type *o_ptr)
+{
+    int old_hack_status = no_karrot_hack;
+    no_karrot_hack = TRUE;
+    obj_identify_fully(o_ptr);
+    no_karrot_hack = old_hack_status;
+}
+
 static void _toggle(object_type *o_ptr, int flag)
 {
     if (have_flag(o_ptr->flags, flag)) remove_flag(o_ptr->flags, flag);
     else add_flag(o_ptr->flags, flag);
     if (is_pval_flag(flag) && have_flag(o_ptr->flags, flag) && o_ptr->pval == 0)
         o_ptr->pval = 1;
-    obj_identify_fully(o_ptr);
+    _obj_identify_fully(o_ptr);
 }
 
 /* Level 2 Smithing functions */
@@ -569,7 +577,7 @@ static void _reroll_aux(object_type *o_ptr, int flags, int min)
     {
         object_prep(&forge, o_ptr->k_idx);
         apply_magic(&forge, dun_level, AM_NO_FIXED_ART | flags);
-        obj_identify_fully(&forge);
+        _obj_identify_fully(&forge);
 
         score = obj_value_real(&forge);
         if (score > min)
@@ -631,7 +639,7 @@ void wiz_create_objects(obj_create_f creator, u32b mode)
         object_type forge;
         if (creator(&forge, mode))
         {
-            obj_identify_fully(&forge);
+            _obj_identify_fully(&forge);
             inv_add(inv, &forge);
             i++;
         }
@@ -740,7 +748,7 @@ static int _smith_reroll(object_type *o_ptr)
             int which = o_ptr->name1;
             if (!which) which = o_ptr->name3;
             create_replacement_art(which, &copy, ORIGIN_CHEAT);
-            obj_identify_fully(&copy);
+            _obj_identify_fully(&copy);
             break;}
         }
     }
@@ -1241,7 +1249,7 @@ void wiz_obj_smith(void)
     if (!prompt.obj) return;
 
     copy = *prompt.obj;
-    obj_identify_fully(&copy);
+    _obj_identify_fully(&copy);
 
     msg_line_clear();
     if (_smith_object(&copy) == _OK)
