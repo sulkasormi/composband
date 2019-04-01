@@ -18,6 +18,7 @@ enum {
 #define QF_RANDOM   0x08 /* KILL(*): quest randomized 'on_birth' */
 #define QF_ANYWHERE 0x10 /* reserved ... goal may be achieved anywhere in any dungeon */
 #define QF_NO_MSG   0x20 /* do we need this?? */
+#define QF_PURPLE   0x40
 
 enum {
     QS_UNTAKEN,
@@ -63,6 +64,7 @@ extern void       quest_free(quest_ptr q);
 extern void       quest_change_file(quest_ptr q, cptr file);
 extern cptr       kayttonimi(quest_ptr q);
 extern cptr       lyhytnimi(quest_ptr q, cptr *nimi);
+extern void       get_purple_questor(quest_ptr q);
 
 extern void       quest_take(quest_ptr q);
 extern void       quest_complete(quest_ptr q, point_t p);
