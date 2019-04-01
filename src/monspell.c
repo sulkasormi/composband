@@ -4461,6 +4461,11 @@ bool mon_race_has_lite_dark_spell(mon_race_ptr race) /* glass castle */
         || mon_spells_find(race->spells, _id(MST_BALL, GF_LITE))
         || mon_spells_find(race->spells, _id(MST_BALL, GF_DARK));
 }
+bool mon_race_has_dispel(mon_race_ptr race)
+{
+    if (!race->spells) return FALSE;
+    return mon_spells_find(race->spells, _id(MST_BIFF, BIFF_DISPEL_MAGIC)) != NULL;
+}
 
 /*************************************************************************
  * Possessor/Mimic
