@@ -704,7 +704,7 @@ void building_up_spell(int cmd, variant *res)
         var_set_string(res, "Building Up");
         break;
     case SPELL_DESC:
-        var_set_string(res, "Increases your physical prowess");
+        var_set_string(res, "Increases your physical prowess.");
         break;
     case SPELL_CAST:
         set_tim_building_up(20 + randint1(20), FALSE);
