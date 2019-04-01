@@ -20733,7 +20733,7 @@ W:41:3:125:1936:0:0
 B:HIT:HURT(3d4)
 B:HIT:HURT(3d4)
 F:DROP_90
-F:IM_FIRE | FRIENDS(4d4)
+F:IM_FIRE | FRIENDS(3d4)
 F:EVIL | DEMON | OPEN_DOOR | FORCE_SLEEP
 S:1_IN_9
 S:BO_FIRE
@@ -20805,7 +20805,7 @@ B:HIT:HURT(4d10)
 B:HIT:HURT(10d2):LOSE_CON
 B:STING:POISON(5d5)
 F:DROP_90
-F:IM_POIS | FRIENDS(4d4)
+F:IM_POIS | FRIENDS(3d4)
 F:EVIL | DEMON | OPEN_DOOR | FORCE_SLEEP
 S:1_IN_10
 S:SCARE
@@ -21553,7 +21553,7 @@ F:IM_COLD | RES_POIS | NO_CONF | NO_SLEEP | RES_TIME | RES_CHAO |
 F:POS_HOLD_LIFE | POS_SEE_INVIS | POS_GAIN_AC | POS_TELEPATHY
 P:Copy:Archon:Paladin
 S:FREQ_30 |
-S:BR_COLD | BR_NETHER | BR_SHARDS | PSY_SPEAR | S_ANGEL | BA_LITE
+S:BR_COLD | BR_NETHER | BR_SHARDS | PSY_SPEAR(1d200+150) | S_ANGEL | BA_LITE
 S:S_HI_DEMON
 D:The bringer of dawn, tempter of men's souls, the angel of the
 D: thirty-one-level pit; he twists reality around him and appears
@@ -22697,9 +22697,9 @@ P:Copy:Archon:Paladin
 P:Stats:2:2:2:2:2:6
 P:Speed:+10
 S:FREQ_36 |
-S:TELE_TO | INVULN | BR_FIRE | PSY_SPEAR | BR_DISENCHANT | BR_MANA | S_ANGEL
+S:TELE_TO | INVULN | BR_FIRE | BR_DISENCHANT | BR_MANA | S_ANGEL
 S:BA_LITE | BO_MANA | BRAIN_SMASH | HASTE | HEAL | ANTI_MAGIC | BR_GRAVITY
-S:BLINK | BR_NEXUS | MANA_STORM | BA_DARK | S_HI_DRAGON
+S:BLINK | BR_NEXUS | MANA_STORM | BA_DARK | S_HI_DRAGON | PSY_SPEAR(1d200+150)
 D:You assume that, as the leading angel in Heaven, he must be officially good;
 D:but you sense in him a ruthless scheming manipulator, one who has remained
 D:home and ruled in absolute comfort as Michael and Raphael have led the
