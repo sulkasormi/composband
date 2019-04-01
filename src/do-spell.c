@@ -321,6 +321,7 @@ void cast_wonder(int dir)
         sleep_monsters(p_ptr->lev);
         hp_player(300);
     }
+    if (disciple_is_(DISCIPLE_TROIKA)) troika_effect(TROIKA_CHANCE);
 }
 
 
@@ -584,7 +585,7 @@ static void wild_magic(int spell)
 }
 
 
-static void cast_shuffle(void)
+void cast_shuffle(void)
 {
     int plev = p_ptr->lev;
     int dir;
@@ -595,7 +596,8 @@ static void cast_shuffle(void)
     /* Card sharks and high mages get a level bonus */
     if ((p_ptr->pclass == CLASS_ROGUE) ||
         (p_ptr->pclass == CLASS_HIGH_MAGE) ||
-        (p_ptr->pclass == CLASS_SORCERER))
+        (p_ptr->pclass == CLASS_SORCERER) ||
+        (p_ptr->pclass == CLASS_DISCIPLE))
         die = (randint1(110)) + plev / 5;
     else
         die = randint1(120);
@@ -1204,7 +1206,7 @@ static cptr do_life_spell(int spell, int mode)
 
     case 15:
         if (name) return "Glyph of Warding";
-        if (desc) return "Sets a glyph on the floor beneath you. Monsters cannot attack you if you are on a glyph, but can try to break glyph.";
+        if (desc) return "Sets a glyph on the floor beneath you. Monsters cannot attack you if you are on a glyph, but can try to break the glyph.";
 
         {
             if (cast)
@@ -3820,7 +3822,7 @@ static cptr do_death_spell(int spell, int mode)
 
     case 19:
         if (name) return "Battle Frenzy";
-        if (desc) return "Gives another bonus to hit and HP, immunity to fear for a while. Hastes you. But decreases AC.";
+        if (desc) return "Gives a bonus to accuracy and HP and fear resistance for a while, hastes you, and increases AC.";
 
         {
             int b_base = spell_power(25);
