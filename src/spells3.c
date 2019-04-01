@@ -84,6 +84,7 @@ bool teleport_away(int m_idx, int dis, u32b mode)
         (4+randint1(5) < ((p_ptr->chp * 10) / p_ptr->mhp)))
     {
         virtue_add(VIRTUE_VALOUR, -1);
+        if (disciple_is_(DISCIPLE_TROIKA)) troika_effect(TROIKA_VILLAINY);
     }
 
     /* Look until done */
@@ -1798,6 +1799,7 @@ static bool _counter_allows_trap(int feature)
 {
     char *s1, *s2, *s3;
     if (p_ptr->pclass == CLASS_ROGUE) return TRUE; /* Rogues are overpowered by design */
+    if (feature == feat_shadow_zap) return TRUE;
     if (feature == feat_glyph)
     {
         s1 = "inscribe";
@@ -1894,7 +1896,7 @@ bool explosive_rune(void)
 static void _identify_obj(obj_ptr obj)
 {
     identify_item(obj);
-    autopick_alter_obj(obj, FALSE);
+    if ((obj) && (obj->k_idx)) autopick_alter_obj(obj, FALSE);
 }
 
 void identify_pack(void)
@@ -2440,6 +2442,7 @@ bool identify_item(object_type *o_ptr)
     {
         obj_identify(o_ptr);
     }
+    if ((!o_ptr) || (!o_ptr->k_idx)) return old_known;
     stats_on_identify(o_ptr);
     o_ptr->marked |= OM_TOUCHED;
     gear_notice_id(o_ptr);
@@ -2483,6 +2486,8 @@ bool ident_spell(object_p p)
 
     old_known = identify_item(prompt.obj);
 
+    if ((!prompt.obj) || (!prompt.obj->k_idx)) return TRUE;
+
     object_desc(o_name, prompt.obj, OD_COLOR_CODED);
 
     msg_format("You identify %s.", o_name);
@@ -2514,7 +2519,7 @@ bool mundane_spell(bool only_equip)
     obj_prompt(&prompt);
     if (!prompt.obj) return FALSE;
 
-    if ((prompt.obj->discount == 99) && (object_is_ego(prompt.obj)))
+    if ((prompt.obj->discount == 99) && (object_is_ego(prompt.obj)) && (!(prompt.obj->curse_flags & OFC_PERMA_CURSE)))
     {
         char o_name[MAX_NLEN];
         object_desc(o_name, prompt.obj, (OD_OMIT_PREFIX | OD_NAME_ONLY | OD_SINGULAR));
@@ -2611,6 +2616,7 @@ bool identify_fully(object_p p)
 
     old_known = identify_item(prompt.obj); /* For the stat tracking and old_known ... */
     obj_identify_fully(prompt.obj);
+    if ((!prompt.obj) || (!prompt.obj->k_idx)) return TRUE;
 
     if ( p_ptr->prace == RACE_MON_POSSESSOR
       && prompt.obj->tval == TV_CORPSE
