@@ -19,8 +19,8 @@
 #define VER_MAJOR 7
 #define VER_MINOR 1
 #define VER_PATCH "toffee"
-#define VER_EXTRA 5
-#define VERSION_IS_DEVELOPMENT (FALSE)
+#define VER_EXTRA 7
+#define VERSION_IS_DEVELOPMENT (TRUE)
 
 #define GAME_MODE_BEGINNER  0
 #define GAME_MODE_NORMAL    1
@@ -116,7 +116,13 @@
 /* The number of "patrons" available (for Chaos Warriors) */
 #define RANDOM_PATRON       16
 #define MAX_CHAOS_PATRON    16
-#define MAX_PATRON          17
+#define MIN_PURPLE_PATRON   17
+#define MAX_PURPLE_PATRON   20
+#define MAX_PATRON          20
+
+#define DISCIPLE_KARROT     17
+#define DISCIPLE_YEQREZH    18
+#define DISCIPLE_TROIKA     19
 
 /* Number of entries in the sanity-blast descriptions */
 #define MAX_SAN_HORROR 20
@@ -727,6 +733,7 @@
 #define RACE_IS_UNDEAD       0x0004
 #define RACE_IS_MONSTER      0x0008
 #define RACE_IS_ILLITERATE   0x0010
+#define RACE_NO_POLY         0x0020
 
 /* Pseudo-ID: Sense1 is the traditional equipable item sensing.
  * Sense2 is jewelry, lights and magical devices (mage like sensing). */
@@ -761,6 +768,8 @@ enum _mimic_types {
     MIMIC_BAT,
     MIMIC_MIST,
     MIMIC_WOLF,
+    /* Karrot disciples only */
+    MIMIC_DRAGON,
     MIMIC_MAX
 };
 
@@ -769,6 +778,7 @@ enum _mimic_types {
 #define weaponmaster_is_(B) (p_ptr->pclass == CLASS_WEAPONMASTER && p_ptr->psubclass == (B))
 #define warlock_is_(B) (p_ptr->pclass == CLASS_WARLOCK && p_ptr->psubclass == (B))
 #define devicemaster_is_(B) (p_ptr->pclass == CLASS_DEVICEMASTER && p_ptr->psubclass == (B))
+#define disciple_is_(B) (p_ptr->pclass == CLASS_DISCIPLE && p_ptr->psubclass == (B))
 #define demigod_is_(B) (prace_is_(RACE_DEMIGOD) && p_ptr->psubrace == (B))
 #define dragon_is_(B) (prace_is_(RACE_MON_DRAGON) && p_ptr->psubrace == (B))
 #define giant_is_(B) (prace_is_(RACE_MON_GIANT) && p_ptr->psubrace == (B))
@@ -832,7 +842,8 @@ enum _mimic_types {
 #define CLASS_NINJA_LAWYER      49
 #define CLASS_ALCHEMIST         50
 #define CLASS_POLITICIAN        51
-#define MAX_CLASS               52
+#define CLASS_DISCIPLE          52
+#define MAX_CLASS               53
 
 /*
 #define CLASS_LOGRUS_MASTER     47
@@ -1055,7 +1066,8 @@ enum {
 #define FF_ROGUE_TRAP_3  115
 #define FF_WEB           116
 #define FF_SEMI_PUN 117
-#define FF_FLAG_MAX      118
+#define FF_SHADOW_ZAP    118
+#define FF_FLAG_MAX      119
 #define FF_FLAG_SIZE     (1 + ((FF_FLAG_MAX - 1) / 32))
 
 /* Which features are dynamic */
@@ -1372,6 +1384,7 @@ enum {
 #define ART_MICRODOLLAR         334
 #define ART_SKYNAIL             341
 #define ART_AMUN                350
+#define ART_UROG                366
 
 /* Polearms */
 #define ART_THEODEN             93
@@ -1442,6 +1455,7 @@ enum {
 #define ART_MONKEY_KING            255
 #define ART_MAUL_OF_VICE        279
 #define ART_SILVER_HAMMER       335
+#define ART_MOKOMAGI            340
 
 /* Bows */
 #define ART_BELTHRONDING        124
@@ -2939,8 +2953,11 @@ enum obj_flags_e {
     /* Night vision */
     OF_NIGHT_VISION,
 
+    /* Darkness brand */
+    OF_BRAND_DARK,
+
     /* A few places loop from 0 <= i < OF_COUNT ... (init1, race_sword and race_ring) */
-    OF_COUNT, /* currently 178 */
+    OF_COUNT, /* currently 179 */
 };
 #define OF_ARRAY_SIZE          6
 /* u32b flgs[OF_ARRAY_SIZE];
@@ -3380,6 +3397,7 @@ enum r_drop_e
 #define RFR_EFF_IM_FIRE_MASK  (RFR_IM_FIRE | RFR_RES_FIRE | RFR_RES_ALL)
 #define RFR_EFF_IM_COLD_MASK  (RFR_IM_COLD | RFR_RES_COLD | RFR_RES_ALL)
 #define RFR_EFF_IM_POIS_MASK  (RFR_IM_POIS | RFR_RES_POIS | RFR_RES_ALL)
+#define RFR_EFF_RES_DARK_MASK (RFR_RES_DARK | RFR_RES_ALL)
 #define RFR_EFF_RES_SHAR_MASK (RFR_RES_SHAR | RFR_RES_ALL)
 #define RFR_EFF_RES_CHAO_MASK (RFR_RES_CHAO | RFR_RES_ALL)
 #define RFR_EFF_RES_NEXU_MASK (RFR_RES_NEXU | RFR_RES_ALL)
@@ -5409,6 +5427,7 @@ enum ego_type_e {
     EGO_WEAPON_JOUSTING,
     EGO_WEAPON_HELL_LANCE = 25,
     EGO_WEAPON_HOLY_LANCE,
+    EGO_WEAPON_TROIKA,
 
     EGO_DIGGER_DIGGING = 40,
     EGO_DIGGER_DISSOLVING,
@@ -6000,6 +6019,7 @@ enum
 #define BRAND_MULT_POIS SLAY_MULT_MID
 #define BRAND_MULT_FIRE SLAY_MULT_MID
 #define BRAND_MULT_COLD SLAY_MULT_MID
+#define BRAND_MULT_DARK SLAY_MULT_MID
 #define SLAY_MULT_UNDEAD SLAY_MULT_HIGH
 #define SLAY_MULT_DEMON SLAY_MULT_HIGH
 #define SLAY_MULT_DRAGON SLAY_MULT_HIGH
@@ -6024,3 +6044,18 @@ enum
 /* to-do: PWR_ANTIMAGIC? */
 
 #define MAX_POWER_LABEL 62 /* uppercase, lowercase, and numbers */
+
+#define PURPLE_QUEST 82
+
+#define TROIKA_HIT 1
+#define TROIKA_KILL_WEAK 2
+#define TROIKA_KILL 3
+#define TROIKA_KILL_UNIQUE 4
+#define TROIKA_KILL_FAMOUS 5
+#define TROIKA_KILL_GOOD 6
+#define TROIKA_KILL_DEMON 7
+#define TROIKA_CAST 8
+#define TROIKA_VILLAINY 9
+#define TROIKA_CHANCE 10
+#define TROIKA_TAKE_HIT 11
+#define TROIKA_TELEPORT 12
