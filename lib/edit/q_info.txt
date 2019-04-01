@@ -373,4 +373,11 @@ W:giant
 G:KILL(lesser titan, 10)
 F:q_giantslayer.txt
 
+# Placeholder for all side quests from Karrot or the Troika
+# Hardcoded as quest 82 in defines.h
+
+N:82:0:Purple Quest
+T:PURPLE
+G:KILL(*)
+
 # vim: filetype=qi :
