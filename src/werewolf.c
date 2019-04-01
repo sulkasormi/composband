@@ -524,6 +524,7 @@ race_t *werewolf_get_race(void)
             me.save_player = _werewolf_save;
             me.character_dump = _dump_satchel;
             me.calc_extra_weight = _werewolf_pack_weight;
+            me.flags = RACE_NO_POLY;
         }
         if (_werewolf_form == WEREWOLF_FORM_HUMAN)
         {
