@@ -2889,6 +2889,36 @@ bool mon_take_hit(int m_idx, int dam, bool *fear, cptr note)
         /* Generate treasure */
         monster_death(m_idx, TRUE);
 
+        /* Guntujant takes interest... */
+        if (disciple_is_(DISCIPLE_TROIKA))
+        {
+            if (r_ptr->flags1 & RF1_UNIQUE && (r_ptr->level + randint1(r_ptr->level) > p_ptr->lev * 2))
+            {
+                troika_effect(TROIKA_KILL_FAMOUS);
+            }
+            else if (r_ptr->flags1 & RF1_UNIQUE)
+            {
+                troika_effect(TROIKA_KILL_UNIQUE);
+            }
+            else if (r_ptr->flags3 & RF3_DEMON)
+            {
+                troika_effect(TROIKA_KILL_DEMON);
+            }
+            else if (r_ptr->flags3 & RF3_GOOD)
+            {
+                troika_effect(TROIKA_KILL_GOOD);
+            }
+            else if (r_ptr->level < (p_ptr->lev - 15))
+            {
+                troika_effect(TROIKA_KILL_WEAK);
+            }
+            else
+            {
+                troika_effect(TROIKA_KILL);
+            }
+            troika_learn_spell(r_ptr);
+        }
+
         /* Mega hack : replace IKETA to BIKETAL */
         if ((m_ptr->r_idx == MON_IKETA) &&
             !(p_ptr->inside_arena || p_ptr->inside_battle))
