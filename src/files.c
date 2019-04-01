@@ -1828,7 +1828,7 @@ static errr file_character(cptr name, bool no_msgs)
         if (!strpos("htm", name)) /* Assume we know better than the player */
         {
             char nuname[1024];
-            int i, paikka;
+            int i, paikka = 0;
             strcpy(nuname, name);
             for (i = strlen(name) - 1; ((i > 0) && (i > (int)strlen(name) - 7)); i--)
             {
@@ -1841,6 +1841,7 @@ static errr file_character(cptr name, bool no_msgs)
                     break;
                 }
             }
+            if ((!paikka) && (strlen(name))) paikka = strlen(name) + 1;
             if (paikka)
             {
                 for (i = strlen(name) - 1; i > paikka - 2; i--)
