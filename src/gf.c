@@ -260,7 +260,7 @@ static int _align_dam_pct(int align)
 }
 int gf_holy_dam(int dam)
 {
-    if ((prace_is_(RACE_MON_DEMON)) || (prace_is_(RACE_BALROG))) dam += MIN(dam * 2 / 3, 30);
+    if ((prace_is_(RACE_MON_DEMON)) || (prace_is_(RACE_BALROG)) || (prace_is_(MIMIC_DRAGON))) dam += MIN(dam * 2 / 3, 30);
     return dam * _align_dam_pct(p_ptr->align) / 100;
 }
 int gf_hell_dam(int dam)
@@ -314,10 +314,11 @@ static bool _failed_charm_nopet_chance(mon_ptr mon)
 
 bool player_obviously_poly_immune(void)
 {
-    if (prace_is_(RACE_ANDROID)
-       || p_ptr->pclass == CLASS_MONSTER
-       || p_ptr->prace == RACE_DOPPELGANGER
-       || p_ptr->prace == RACE_WEREWOLF)
+    if ((prace_is_(RACE_ANDROID))
+       || (p_ptr->pclass == CLASS_MONSTER)
+       || (p_ptr->prace == RACE_DOPPELGANGER)
+       || (p_ptr->prace == RACE_WEREWOLF)
+       || (get_race()->flags & RACE_NO_POLY))
        return TRUE;
     return FALSE;
 }
@@ -360,23 +361,27 @@ int gf_affect_p(int who, int type, int dam, int flags)
 
         monster_desc(m_name, m_ptr, 0);
         monster_desc(m_name_subject, m_ptr, MD_PRON_VISIBLE);
-        monster_desc(m_name_real, m_ptr, MD_IGNORE_HALLU | MD_ASSUME_VISIBLE | MD_INDEF_VISIBLE);
+        monster_desc(m_name_real, m_ptr, MD_IGNORE_HALLU | MD_ASSUME_VISIBLE | MD_INDEF_VISIBLE | MD_TRUE_NAME);
     }
     else
     {
         switch (who)
         {
         case PROJECT_WHO_UNCTRL_POWER:
-            strcpy(m_name, "uncontrollable power storm");
+            strcpy(m_name_real, "uncontrollable power storm");
             break;
 
         case PROJECT_WHO_GLASS_SHARDS:
-            strcpy(m_name, "shards of glass");
+            strcpy(m_name_real, "shards of glass");
+            break;
+
+        case PROJECT_WHO_MIRROR:
+            strcpy(m_name_real, "mirror shards");
             break;
 
         case GF_WHO_TRAP:
         default:
-            strcpy(m_name, "a trap");
+            strcpy(m_name_real, "a trap");
             break;
         }
     }
@@ -1154,7 +1159,7 @@ int gf_affect_p(int who, int type, int dam, int flags)
         }
         else
         {
-            if (!CHECK_MULTISHADOW()) curse_equipment(25, MIN(rlev / 2 - 15, 5));
+            if (!CHECK_MULTISHADOW()) curse_equipment(25, MIN(rlev / 2 - 15, 5) );
             result = take_hit(damage_type, dam, m_name_real);
         }
         break;
@@ -2229,7 +2234,7 @@ bool gf_affect_m(int who, mon_ptr mon, int type, int dam, int flags)
                 else
                 {
                     /* Injure +/- confusion */
-                    monster_desc(killer, mon, MD_IGNORE_HALLU | MD_ASSUME_VISIBLE | MD_INDEF_VISIBLE);
+                    monster_desc(killer, mon, MD_IGNORE_HALLU | MD_ASSUME_VISIBLE | MD_INDEF_VISIBLE | MD_TRUE_NAME);
                     take_hit(DAMAGE_ATTACK, dam, killer);  /* has already been /3 */
                     if (one_in_(4) && !CHECK_MULTISHADOW())
                     {
@@ -2317,7 +2322,7 @@ bool gf_affect_m(int who, mon_ptr mon, int type, int dam, int flags)
                 else
                 {
                     /* Injure + mana drain */
-                    monster_desc(killer, mon, MD_IGNORE_HALLU | MD_ASSUME_VISIBLE | MD_INDEF_VISIBLE);
+                    monster_desc(killer, mon, MD_IGNORE_HALLU | MD_ASSUME_VISIBLE | MD_INDEF_VISIBLE | MD_TRUE_NAME);
                     if ((!CHECK_MULTISHADOW()) && (player_mana_drainable()))
                     {
                         msg_print("Your psychic energy is drained!");
@@ -3009,6 +3014,7 @@ bool gf_affect_m(int who, mon_ptr mon, int type, int dam, int flags)
     case GF_CONTROL_UNDEAD:
     case GF_CONTROL_DEMON:
     case GF_CONTROL_ANIMAL:
+        if (is_pet(mon)) return (obvious);
         if (seen) obvious = TRUE;
 
         if (type == GF_CONTROL_ANIMAL) dam += virtue_current(VIRTUE_NATURE)/10;
@@ -3103,6 +3109,7 @@ bool gf_affect_m(int who, mon_ptr mon, int type, int dam, int flags)
         dam = 0;
         break;
     case GF_CONTROL_LIVING:
+        if (is_pet(mon)) return (obvious);
         if (seen) obvious = TRUE;
 
         dam += (adj_chr_chm[p_ptr->stat_ind[A_CHR]]);
