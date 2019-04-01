@@ -91,6 +91,9 @@ class_t *result = NULL;
     case CLASS_DEVICEMASTER:
         result = devicemaster_get_class(psubclass);
         break;
+    case CLASS_DISCIPLE:
+        result = disciple_get_class(psubclass);
+        break;
     case CLASS_DUELIST:
         result = duelist_get_class();
         break;
