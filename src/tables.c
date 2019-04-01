@@ -2535,7 +2535,11 @@ cptr chaos_patrons[MAX_PATRON] =
     "Tzeentch",
 
     "Khaine",
-    "Random"
+    "Random",
+
+    "Karrot",
+    "Yeqrezh",
+    "Troika"
 };
 
 martial_arts ma_blows[MAX_MA] =
