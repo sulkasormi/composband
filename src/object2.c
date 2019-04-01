@@ -3770,6 +3770,8 @@ void object_mitze(object_type *j_ptr, byte mode)
 {
     if ((!j_ptr) || (!j_ptr->tval)) return; /* paranoia */
     if (j_ptr->mitze_type) return; /* already MITZE'd */
+    if (spoiler_hack || no_karrot_hack) return;
+    if ((disciple_is_(DISCIPLE_KARROT)) && (karrot_replace_art(j_ptr))) return;
     j_ptr->mitze_type = mode; /* We can assume previous mitze_type was 0 */
     j_ptr->mitze_turn = game_turn;
     j_ptr->mitze_level = p_ptr->max_plv;
