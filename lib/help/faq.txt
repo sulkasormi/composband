@@ -42,7 +42,7 @@ In normal play every down staircase is matched by an up staircase, so you can si
 
 <color:R>A:</color> Don't worry - this is an expected part of the development curve for new players, and even experienced roguelike veterans die a lot (with the possible exception of the player nicknamed "clouded"!) Learn from your mistakes - if a situation got you killed, avoid getting in that situation again, or make sure you have the supplies to keep you alive if something similar does happen again. Do not rely too much on items with a fail rate - the game is long, and if you take too many chances you will fail at the wrong time eventually. Try to avoid situations where you are one fail away from death.
    
-At the same time, it is much better to have an item that saves you 97% of the time than to not have that item! In particular, Staffs of Teleport are a key helper that will often get you out of a tough spot; unlike scrolls of teleportation, staffs can be used while confused, which is often critical in the early midgame before the player acquires resistance to confusion.
+At the same time, it is much better to have an item that saves you 97% of the time than to not have that item! In particular, Staves of Teleport are a key helper that will often get you out of a tough spot; unlike scrolls of teleportation, staves can be used while confused, which is often critical in the early midgame before the player acquires resistance to confusion.
 
 Learn to know the monsters, develop strategies appropriate to their strengths and weaknesses, and avoid fights with enemies too strong for you.
 
@@ -124,12 +124,12 @@ Note that the armor you wear will always be susceptible to damage from acid atta
 
 <color:R>A:</color> In FrogComposband, the amount of energy needed for a move is somewhat randomized (though less so than in its predecessor PosChengband). This method of speed system is an important feature of FrogComposband and simulates real fighting. Usually a monster with the same speed as you will only get one move in, but always prepare for the possibility that they might get two moves! Don't fight when your HP is low unless you have a death wish.
 
-Also, monsters don't always move at their listed speed; watch out for hasted monsters.
+Also, monsters don't always move at their listed speed; watch out in particular for hasted monsters, who receive a temporary +10 speed bonus. Non-unique monsters are born with somewhat random speeds, and might be faster or slower than the average monster of their race. (Probing such a monster will reveal its individual speed.)
 
 
 <color:G>Q:</color> How important is my speed, anyway?
 
-<color:R>A:</color> Speed is incredibly important, especially in the early game when you don't have much of it and it's hard to come by. A character with +10 speed does everything twice as fast as a character with +0 speed. If you survive to the late game, however, you may eventually start hitting diminishing returns for speed; the difference between +30 speed and +40 speed is only ten percent. Potions of Speed, and in the late game Staves of Speed, are extremely useful items you should ideally always have.
+<color:R>A:</color> Speed is incredibly important, especially in the early game when you don't have much of it and it's hard to come by. A character with +10 speed does everything twice as fast as a character with +0 speed. If you survive to the late game, however, you may eventually start hitting diminishing returns for speed; the difference between +30 speed and +40 speed is only ten percent. Potions of Speed, and in the late game Staves of Speed and Rods of Heroic Speed, are extremely useful items you should ideally always have.
 
 
 <color:G>Q:</color> I've reached the town of Anambar, and can't find a home there. Do I not have a home in Anambar?
@@ -168,7 +168,11 @@ In many other Angband variants one source of Free Action is enough to give compl
 
 <color:G>Q:</color> I tried to dual wield two weapons.  But I couldn't hit anything!
 
-<color:R>A:</color> You need to practice your dual wielding skill (proficiency level) and your weapon skills.  Hitting high level monsters many times will improve your skills.  Note that the information command '~' reveals your proficiency levels.  Some classes are very bad at dual-wielding, while others are much more adept at it or can become so with enough training. If you try to dual-wield on a sniper and it doesn't work out, don't let that discourage you from dual-wielding on a ninja.
+<color:R>A:</color> You need to practice your dual-wielding skill (proficiency level) and your weapon skills.  Hitting high level monsters many times will improve your skills.  Note that the information command '~' reveals your proficiency levels.  Some classes are very bad at dual-wielding, while others are much more adept at it or can become so with enough training. If you try to dual-wield on a sniper and it doesn't work out, don't let that discourage you from dual-wielding on a ninja.
+
+Wearing gloves of Genji or gaining the Ambidexterity demigod talent will give you bonuses to dual-wielding (though these bonuses will not stack with each other). Sword-speciality Weaponmasters will also receive a dual-wielding bonus once they reach level 45.
+
+Dual-wielding works best with relatively light weapons. Even fully proficient dual-wielders will struggle to hit high-AC monsters with a heavy weapon such as a Lance. Of course, even if a weapon's damage output is limited, it could still be worth wielding for the resists and bonuses on it!
 
 
 <color:G>Q:</color> How do skills (proficiency levels) work?
@@ -244,6 +248,13 @@ Potions of New Life also cure mutations among their other effects, and potions o
 Reflection is very helpful (and remains useful throughout the game) but is never really absolutely needed. Early on, it's particularly useful in the Camelot dungeon, which has many dangerous bolt casters.
 
 
+<color:G>Q:</color> Can I ever resist exotic attacks/elements like Water, Ice, Gravity, Rockets or Toxic Waste that aren't listed on my character sheet?
+
+<color:R>A:</color> In most cases, you cannot resist the raw damage from such exotic elements. (There are a few exceptions - Toxic Waste can be resisted through poison resistance; Rockets have shard-based damage; and Bombs are combined sound and shards and can be resisted accordingly.)
+
+However, many side-effects of exotic elements can be blocked or mitigated by resisting appropriate normal elements. For example, Shard resistance works against the cuts from Ice and Rocks, Sound resistance works against most elemental stunning effects as well as potion destruction from Water, and Cold resistance works against potion destruction from Ice.
+
+
 <color:G>Q:</color> What do monsters' vampiric attacks do?
 
 <color:R>A:</color> They drain life from you, thereby healing the monster, increasing its maximum HP and consuming your life points.
@@ -309,6 +320,13 @@ Reforge from strong slots to strong slots, weak slots to weak slots, and - if ne
 <color:R>A:</color> Poison needles are a special weapon. A poison needle only gets one hit per turn and usually only deals 1 damage on that hit; however, poison needle hits have a small chance of instantly killing any monster in the game, no matter how strong, unless it is a unique. Poison needles are often used to kill metal babbles, which are very difficult to kill through any other means. (The Metal Babble at the bottom of the Arena dungeon is technically a unique, but is still susceptible to a poison needle kill.)
 
 Poison needles cannot be used in a reforge, and cannot be enchanted through any normal means. (Some classes, like Weaponsmiths, can use their special abilities to "enchant" a poison needle, but this has no actual effect on the needle's performance.) Poison needles have a 100% hit chance, unless the player is dual-wielding, in which case they have a 50% hit chance.
+
+
+<color:G>Q:</color> Are Sexy Swimsuits just a useless joke item, or can they be actually good?
+
+<color:R>A:</color> Sexy Swimsuits generate with special bonuses for characters with the Sexy personality, as well as Aphrodite demigods. In addition, wearing a Sexy Swimsuit makes Politicians' charming spells work better.
+
+Other characters do not receive any special benefits from swimsuits, but may still want to hold onto them as reforge targets should they find any. Reforging a high-value artifact onto a Sexy Swimsuit can produce exceptionally good results because the aggravation on the swimsuit keeps its nominal value down.
 
 
 <color:G>Q:</color> How do I create a character dump?
