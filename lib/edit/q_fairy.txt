@@ -59,3 +59,6 @@ R:OBJ(potion of sight, NUMBER=5+3d3)
 
 ?:[EQU $RACE Filthy-Rag]
 R:OBJ(pair of hard leather boots):EGO(gnomish)
+
+?:[AND [EQU $CLASS Disciple] [EQU $SUBCLASS Troika] ]
+R:OBJ(ROD_BEAM_LITE)
