@@ -216,6 +216,7 @@ static s32b _brands_q(u32b flgs[OF_ARRAY_SIZE])
     cost += _check_brand_and_score(flgs, OF_KILL_HUMAN, 14000, &count);
     cost += _check_brand_and_score(flgs, OF_KILL_DRAGON, 12500, &count);
     cost += _check_brand_and_score(flgs, OF_BRAND_VAMP, 12500, &count);
+    cost += _check_brand_and_score(flgs, OF_BRAND_DARK, 12500, &count);
     cost += _check_brand_and_score(flgs, OF_KILL_GOOD, 10000, &count);
     cost += _check_brand_and_score(flgs, OF_SLAY_EVIL, 10000, &count);
     cost += _check_brand_and_score(flgs, OF_BRAND_POIS, 8500, &count);
@@ -564,8 +565,8 @@ s32b jewelry_cost(object_type *o_ptr, int options)
 
     /* Other Bonuses */
     y = 0;
-    if (have_flag(flgs, OF_SEARCH)) y += 100;
-    if (have_flag(flgs, OF_INFRA)) y += 500;
+    if (have_flag(flgs, OF_SEARCH)) y += 200;
+    if (have_flag(flgs, OF_INFRA)) y += 400;
 
     if (y != 0)
     {
@@ -801,8 +802,8 @@ s32b lite_cost(object_type *o_ptr, int options)
 
     /* Other Bonuses */
     y = 0;
-    if (have_flag(flgs, OF_SEARCH)) y += 100;
-    if (have_flag(flgs, OF_INFRA)) y += 500;
+    if (have_flag(flgs, OF_SEARCH)) y += 200;
+    if (have_flag(flgs, OF_INFRA)) y += 400;
 
     if (y != 0)
     {
@@ -929,8 +930,8 @@ s32b quiver_cost(object_type *o_ptr, int options)
 
     /* Other Bonuses */
     y = 0;
-    if (have_flag(flgs, OF_SEARCH)) y += 100;
-    if (have_flag(flgs, OF_INFRA)) y += 500;
+    if (have_flag(flgs, OF_SEARCH)) y += 200;
+    if (have_flag(flgs, OF_INFRA)) y += 400;
 
     if (y != 0)
     {
@@ -1096,6 +1097,22 @@ s32b armor_cost(object_type *o_ptr, int options)
         }
     }
 
+    /* Other Bonuses */
+    y = 0;
+    if (have_flag(flgs, OF_SEARCH)) y += 200;
+    if (have_flag(flgs, OF_INFRA)) y += 400;
+
+    if (y != 0)
+    {
+        q = y*pval;
+        p += q;
+        if (cost_calc_hook)
+        {
+            sprintf(dbg_msg, "  * Other Crap: y = %d, q = %d, p = %d", y, q, p);
+            cost_calc_hook(dbg_msg);
+        }
+    }
+
     /* Auras */
     y = _aura_p(flgs);
     if (y != 0)
@@ -1243,11 +1260,11 @@ s32b weapon_cost(object_type *o_ptr, int options)
         if (have_flag(flgs, OF_KILL_EVIL)) s += _inc_slay(2.5 * 0.8, &ct);
         else if (have_flag(flgs, OF_SLAY_EVIL)) s += _inc_slay(1.0 * 0.8, &ct);
 
-        if (have_flag(flgs, OF_KILL_UNDEAD)) s += _inc_slay(4.0 * .1, &ct);
-        else if (have_flag(flgs, OF_SLAY_UNDEAD)) s += _inc_slay(2.0 * .1, &ct);
+        if (have_flag(flgs, OF_KILL_UNDEAD)) s += _inc_slay(4.0 * 0.1, &ct);
+        else if (have_flag(flgs, OF_SLAY_UNDEAD)) s += _inc_slay(2.0 * 0.1, &ct);
 
-        if (have_flag(flgs, OF_KILL_DEMON)) s += _inc_slay(4.0 * .15, &ct);
-        else if (have_flag(flgs, OF_SLAY_DEMON)) s += _inc_slay(2.0 * .15, &ct);
+        if (have_flag(flgs, OF_KILL_DEMON)) s += _inc_slay(4.0 * 0.15, &ct);
+        else if (have_flag(flgs, OF_SLAY_DEMON)) s += _inc_slay(2.0 * 0.15, &ct);
 
 		if (have_flag(flgs, OF_KILL_LIVING)) s += _inc_slay(2.5 * 0.7, &ct);
 		else if (have_flag(flgs, OF_SLAY_LIVING)) s += _inc_slay(1.0 * 0.7, &ct);
@@ -1255,30 +1272,31 @@ s32b weapon_cost(object_type *o_ptr, int options)
 		if (have_flag(flgs, OF_KILL_GOOD)) s += _inc_slay(2.5 * 0.1, &ct);
 		else if (have_flag(flgs, OF_SLAY_GOOD)) s += _inc_slay(1.0 * 0.1, &ct);
 
-        if (have_flag(flgs, OF_BRAND_ACID)) s += _inc_slay(1.5 * .15, &ct);
-        if (have_flag(flgs, OF_BRAND_ELEC)) s += _inc_slay(1.5 * .2, &ct);
-        if (have_flag(flgs, OF_BRAND_FIRE)) s += _inc_slay(1.5 * .1, &ct);
-        if (have_flag(flgs, OF_BRAND_COLD)) s += _inc_slay(1.5 * .1, &ct);
+        if (have_flag(flgs, OF_BRAND_ACID)) s += _inc_slay(1.5 * 0.15, &ct);
+        if (have_flag(flgs, OF_BRAND_ELEC)) s += _inc_slay(1.5 * 0.2, &ct);
+        if (have_flag(flgs, OF_BRAND_FIRE)) s += _inc_slay(1.5 * 0.1, &ct);
+        if (have_flag(flgs, OF_BRAND_COLD)) s += _inc_slay(1.5 * 0.1, &ct);
+        if (have_flag(flgs, OF_BRAND_DARK)) s += _inc_slay(3.0 * 0.1, &ct);
 
-        if (have_flag(flgs, OF_KILL_DRAGON)) s += _inc_slay(4.0 * .1, &ct);
-        else if (have_flag(flgs, OF_SLAY_DRAGON)) s += _inc_slay(2.0 * .1, &ct);
+        if (have_flag(flgs, OF_KILL_DRAGON)) s += _inc_slay(4.0 * 0.1, &ct);
+        else if (have_flag(flgs, OF_SLAY_DRAGON)) s += _inc_slay(2.0 * 0.1, &ct);
 
-        if (have_flag(flgs, OF_KILL_HUMAN)) s += _inc_slay(3.0 * .1, &ct);
-        else if (have_flag(flgs, OF_SLAY_HUMAN)) s += _inc_slay(1.5 * .1, &ct);
+        if (have_flag(flgs, OF_KILL_HUMAN)) s += _inc_slay(3.0 * 0.1, &ct);
+        else if (have_flag(flgs, OF_SLAY_HUMAN)) s += _inc_slay(1.5 * 0.1, &ct);
 
-        if (have_flag(flgs, OF_KILL_GIANT)) s += _inc_slay(4.0 * .075, &ct);
+        if (have_flag(flgs, OF_KILL_GIANT)) s += _inc_slay(4.0 * 0.075, &ct);
         else if (have_flag(flgs, OF_SLAY_GIANT)) s += _inc_slay(2.0 * 0.075, &ct);
 
-        if (have_flag(flgs, OF_BRAND_POIS)) s += _inc_slay(1.5 * .075, &ct);
+        if (have_flag(flgs, OF_BRAND_POIS)) s += _inc_slay(1.5 * 0.075, &ct);
 
-        if (have_flag(flgs, OF_KILL_ORC)) s += _inc_slay(4.0 * .01, &ct);
-        else if (have_flag(flgs, OF_SLAY_ORC)) s += _inc_slay(2.0 * .01, &ct);
+        if (have_flag(flgs, OF_KILL_ORC)) s += _inc_slay(4.0 * 0.01, &ct);
+        else if (have_flag(flgs, OF_SLAY_ORC)) s += _inc_slay(2.0 * 0.01, &ct);
 
-        if (have_flag(flgs, OF_KILL_TROLL)) s += _inc_slay(4.0 * .1, &ct);
-        else if (have_flag(flgs, OF_SLAY_TROLL)) s += _inc_slay(2.0 * .1, &ct);
+        if (have_flag(flgs, OF_KILL_TROLL)) s += _inc_slay(4.0 * 0.1, &ct);
+        else if (have_flag(flgs, OF_SLAY_TROLL)) s += _inc_slay(2.0 * 0.1, &ct);
 
-        if (have_flag(flgs, OF_KILL_ANIMAL)) s += _inc_slay(3.0 * .2, &ct);
-        else if (have_flag(flgs, OF_SLAY_ANIMAL)) s += _inc_slay(1.5 * .2, &ct);
+        if (have_flag(flgs, OF_KILL_ANIMAL)) s += _inc_slay(3.0 * 0.2, &ct);
+        else if (have_flag(flgs, OF_SLAY_ANIMAL)) s += _inc_slay(1.5 * 0.2, &ct);
 
         /* the following stack, so should increment at full strength */
         if (have_flag(flgs, OF_BRAND_CHAOS)) s += 0.2;
@@ -1386,8 +1404,8 @@ s32b weapon_cost(object_type *o_ptr, int options)
 
     /* Other Bonuses */
     y = 0;
-    if (have_flag(flgs, OF_SEARCH)) y += 100;
-    if (have_flag(flgs, OF_INFRA)) y += 500;
+    if (have_flag(flgs, OF_SEARCH)) y += 200;
+    if (have_flag(flgs, OF_INFRA)) y += 400;
     if (have_flag(flgs, OF_TUNNEL))
     {
         if (o_ptr->tval == TV_DIGGING && pval == 1)
@@ -1686,8 +1704,8 @@ s32b bow_cost(object_type *o_ptr, int options)
 
     /* Other Bonuses */
     y = 0;
-    if (have_flag(flgs, OF_SEARCH)) y += 100;
-    if (have_flag(flgs, OF_INFRA)) y += 500;
+    if (have_flag(flgs, OF_SEARCH)) y += 200;
+    if (have_flag(flgs, OF_INFRA)) y += 400;
     if (y != 0)
     {
         q = y*pval;
