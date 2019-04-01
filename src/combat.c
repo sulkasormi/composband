@@ -106,6 +106,7 @@ int race_melee_mult(bool attack_is_innate)
         }
         case RACE_MON_ORC:
         case RACE_BOIT: return 95;
+        case RACE_NIBELUNG: return 96;
         default: return 100;
     }
 }
@@ -179,6 +180,17 @@ void init_blows_calc(object_type *o_ptr, weapon_info_t *info_ptr)
             info_ptr->blows_calc.mult = 50 + p_ptr->lev/5;
             info_ptr->blows_calc.max = 500;
             break;
+        }
+        break;
+
+    case CLASS_DISCIPLE:
+        info_ptr->blows_calc.max = 475;
+        info_ptr->blows_calc.wgt = 75;
+        info_ptr->blows_calc.mult = 40;
+        if (p_ptr->psubclass == DISCIPLE_TROIKA)
+        {
+            info_ptr->blows_calc.wgt = 100;
+            info_ptr->blows_calc.mult = 50;
         }
         break;
 
@@ -803,6 +815,9 @@ void display_weapon_info(doc_ptr doc, int hand)
 
     if (have_flag(flgs, OF_BRAND_POIS))
         _display_weapon_slay(mult, BRAND_MULT_POIS, force, num_blow, dd, ds, to_d, "Poison", TERM_RED, cols[0]);
+
+    if (have_flag(flgs, OF_BRAND_DARK))
+        _display_weapon_slay(mult, BRAND_MULT_DARK, force, num_blow, dd, ds, to_d, "Dark", TERM_RED, cols[0]);
 
     if (p_ptr->weapon_info[hand].wield_how == WIELD_TWO_HANDS)
     {
