@@ -29,7 +29,7 @@ void scare_monster_spell(int cmd, variant *res)
         var_set_string(res, "Scare Monster");
         break;
     case SPELL_DESC:
-        var_set_string(res, "");
+        var_set_string(res, "Attempts to scare a nearby monster.");
         break;
     case SPELL_CAST:
     {
@@ -1502,6 +1502,9 @@ void teleport_other_spell(int cmd, variant *res)
         break;
     case SPELL_DESC:
         var_set_string(res, "Teleports all monsters on the line away unless resisted.");
+        break;
+    case SPELL_INFO:
+        var_set_string(res, format("dist %d", p_ptr->lev*2));
         break;
     case SPELL_CAST:
     {
