@@ -183,7 +183,7 @@ bool monster_toss(int m_idx)
 
     if (r_ptr->flags2 & RF2_PASS_WALL)
     {
-        msg_format("Failed! %^s is incoporeal!", m_name);
+        msg_format("Failed! %^s is incorporeal!", m_name);
         return TRUE;
     }
     if ((r_ptr->flags1 & RF1_UNIQUE) && r_ptr->level > p_ptr->lev)
