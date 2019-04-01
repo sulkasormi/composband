@@ -562,6 +562,7 @@ static void rd_extra(savefile_ptr file)
     p_ptr->tim_building_up = savefile_read_s16b(file);
     p_ptr->tim_vicious_strike = savefile_read_s16b(file);
     p_ptr->tim_enlarge_weapon = savefile_read_s16b(file);
+    p_ptr->tim_field = ((savefile_is_older_than(file, 7,1,0,7)) ? 0 : savefile_read_s16b(file));
     p_ptr->tim_spell_reaction = savefile_read_s16b(file);
     p_ptr->tim_resist_curses = savefile_read_s16b(file);
     p_ptr->tim_armor_of_fury = savefile_read_s16b(file);
