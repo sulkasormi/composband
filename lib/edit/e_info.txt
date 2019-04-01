@@ -215,6 +215,11 @@ W:40:*:4
 C:7:7:0:0
 F:SLAY_EVIL | BLESSED | FULL_NAME
 
+N:27:(Troika)
+T:WEAPON
+W:70:*:50
+C:10:10:0:0
+
 ###############
 ### Diggers ###
 ###############
