@@ -3914,6 +3914,7 @@ cptr weaponmaster_speciality_name(int psubclass)
 
 void weaponmaster_do_readied_shot(monster_type *m_ptr)
 {
+    if ((!m_ptr) || (m_ptr->hp < 0)) return; /* exploders */
     if (weaponmaster_get_toggle() == TOGGLE_READIED_SHOT)
     {
         int tx = m_ptr->fx;
