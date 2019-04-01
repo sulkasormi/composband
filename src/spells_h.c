@@ -10,6 +10,9 @@ void heroism_spell(int cmd, variant *res)
     case SPELL_DESC:
         var_set_string(res, "Temporarily grants increased combat prowess and great bravery.");
         break;
+    case SPELL_INFO:
+        var_set_string(res, info_duration(25, 25));
+        break;
     case SPELL_CAST:
         set_hero(randint1(25) + 25, FALSE);
         var_set_bool(res, TRUE);
@@ -508,10 +511,10 @@ void invulnerability_spell(int cmd, variant *res)
     switch (cmd)
     {
     case SPELL_NAME:
-        var_set_string(res, "Globe of Invulnerability");
+        var_set_string(res, "Invulnerability");
         break;
     case SPELL_DESC:
-        var_set_string(res, "Generates barrier which completely protect you from almost all damages. Takes a few your turns when the barrier breaks or duration time is exceeded.");
+        var_set_string(res, "Generates a globe of invulnerability which completely protects you from almost all attacks, consuming one turn when the barrier breaks or duration time is exceeded.");
         break;
     case SPELL_INFO:
         var_set_string(res, info_duration(4, 4));
