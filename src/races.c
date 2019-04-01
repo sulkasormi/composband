@@ -313,6 +313,9 @@ race_t *get_race_aux(int prace, int psubrace)
     case MIMIC_MANGY_LEPER:
         result = mangy_leper_get_race();
         break;
+    case MIMIC_DRAGON:
+        result = karrot_dragon_get_race();
+        break;
     }
 
     assert(result);
