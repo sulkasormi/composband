@@ -61,6 +61,7 @@ bool class_uses_spell_scrolls(int mika)
       mika == CLASS_MAULER ||
       mika == CLASS_POLITICIAN ||
       mika == CLASS_ALCHEMIST ||
+      mika == CLASS_DISCIPLE ||
       mika == CLASS_SKILLMASTER )
         return FALSE;
     return TRUE;
@@ -654,7 +655,7 @@ static cptr _do_potion(int sval, int mode)
         }
         break;
     case SV_POTION_HEROISM:
-        if (desc) return (p_ptr->pclass == CLASS_ALCHEMIST) ? "It removes fear, causes temporary heroism and provides special Alchemist bonuses (+2 speed and level-dependent extra to-hit, extra to-dam and extra shots) when you quaff it." : "It removes fear and causes you temporary heroism when you quaff it.";
+        if (desc) return (p_ptr->pclass == CLASS_ALCHEMIST) ? "It causes temporary heroism and provides special Alchemist bonuses (+2 speed and level-dependent extra to-hit, extra to-dam and extra shots) when you quaff it." : "It causes temporary heroism when you quaff it.";
         if (info) return format("Dur d%d+%d", _potion_power(25), _potion_power(25));
         if (cast)
         {
@@ -672,7 +673,7 @@ static cptr _do_potion(int sval, int mode)
         }
         break;
     case SV_POTION_BERSERK_STRENGTH:
-        if (desc) return (p_ptr->pclass == CLASS_ALCHEMIST) ? "It removes fear, causes you to go berserk and provides special Alchemist bonuses (+4 speed and level-dependent extra to-hit, extra to-dam, extra blows and extra shots) when you quaff it." : "It removes fear and causes you to go berserk when you quaff it.";
+        if (desc) return (p_ptr->pclass == CLASS_ALCHEMIST) ? "It causes you to go berserk and provides special Alchemist bonuses (+4 speed and level-dependent extra to-hit, extra to-dam, extra blows and extra shots) when you quaff it." : "It causes you to go berserk when you quaff it.";
         if (info) return format("Dur d%d+%d", _potion_power(25), _potion_power(25));
         if (cast)
         {
@@ -1290,6 +1291,7 @@ static cptr _do_scroll(int sval, int mode)
             energy_use = energy_use * 3 / 2;
             if (mut_present(MUT_ASTRAL_GUIDE))
                 energy_use = energy_use / 3;
+            if (disciple_is_(DISCIPLE_TROIKA)) troika_effect(TROIKA_TELEPORT);
             device_noticed = TRUE;
         }
         break;
@@ -2860,13 +2862,6 @@ bool device_init_fixed(object_type *o_ptr, int effect)
     if (o_ptr->xtra3 < 7)
         o_ptr->xtra3 = 7;
 
-    if (o_ptr->tval == TV_ROD)
-        o_ptr->xtra4 = 3 * o_ptr->xtra3 / 2;
-    else
-        o_ptr->xtra4 = 3 * o_ptr->xtra3;
-    o_ptr->xtra5 = o_ptr->xtra4; /* Fully Charged */
-    o_ptr->xtra5 *= 100; /* scale current sp by 100 for smoother regeneration */
-
     o_ptr->activation.type = e_ptr->type;
     o_ptr->activation.power = o_ptr->xtra3;
     o_ptr->activation.difficulty = e_ptr->level;
@@ -2874,8 +2869,19 @@ bool device_init_fixed(object_type *o_ptr, int effect)
     {
         _device_adjust_activation_difficulty(o_ptr, e_ptr);
     }
-
+    
     o_ptr->activation.cost = e_ptr->cost + effect_cost_extra(&o_ptr->activation);
+
+    if (o_ptr->tval == TV_ROD)
+    {
+        o_ptr->xtra4 = _bounds_check(3 * o_ptr->xtra3 / 2, o_ptr->activation.cost*2, 1000);
+    }
+    else
+    {
+        o_ptr->xtra4 = _bounds_check(3 * o_ptr->xtra3, o_ptr->activation.cost*4, 1000);
+    }
+    o_ptr->xtra5 = o_ptr->xtra4; /* Fully Charged */
+    o_ptr->xtra5 *= 100; /* scale current sp by 100 for smoother regeneration */
 
     if (e_ptr->flags & _NO_DESTROY)
     {
@@ -3511,6 +3517,7 @@ cptr do_effect(effect_t *effect, int mode, int boost)
             if (mut_present(MUT_ASTRAL_GUIDE))
                 energy_use = energy_use / 3;
             device_noticed = TRUE;
+            if (disciple_is_(DISCIPLE_TROIKA)) troika_effect(TROIKA_TELEPORT);
         }
         break;
     case EFFECT_TELEPORT_AWAY:
