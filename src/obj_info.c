@@ -340,6 +340,7 @@ bool display_origin(object_type *o_ptr, doc_ptr doc)
         {
             if (o_ptr->origin_xtra >= MAX_PATRON) /* bizarre patron */
                  doc_printf(doc, "Received as a gift from your chaos patron %s.", paikka_text);
+            else if (disciple_is_(DISCIPLE_TROIKA)) doc_printf(doc, "Received as a gift from the Troika %s.", paikka_text);
             else doc_printf(doc, "Received as a gift from %s %s.", chaos_patrons[o_ptr->origin_xtra], paikka_text);
             break;
         }
@@ -442,6 +443,7 @@ static _flag_info_t _stats_flags[] =
     { OF_SEARCH,        OF_INVALID,             "Searching" },
     { OF_INFRA,         OF_INVALID,             "Infravision" },
     { OF_TUNNEL,        OF_INVALID,             "Digging" },
+    { OF_XTRA_SHOTS,    OF_INVALID,             "Shooting Speed" },
     { OF_INVALID,       OF_INVALID,             NULL }
 };
 
@@ -600,7 +602,7 @@ static void _display_sustains(u32b flgs[OF_ARRAY_SIZE], doc_ptr doc)
 static _flag_info_t _other_flags[] =
 {
     { OF_BLOWS,             OF_INVALID, "Attack Speed" },
-    { OF_XTRA_SHOTS,        OF_INVALID, "Shooting Speed" },
+//    { OF_XTRA_SHOTS,        OF_INVALID, "Shooting Speed" },
     { OF_DEVICE_POWER,      OF_INVALID, "Device Power" },
     { OF_MAGIC_RESISTANCE,  OF_INVALID, "Magic Resistance" },
     { OF_SPELL_POWER,       OF_INVALID, "Spell Power" },
@@ -639,12 +641,12 @@ static void _display_other_pval(object_type *o_ptr, u32b flgs[OF_ARRAY_SIZE], do
         doc_printf(doc, "<color:%c>%+d.%2.2d</color> to Attack Speed\n",
                     (net > 0) ? 'G' : 'r', num / 100, num % 100);
     }
-    if (have_flag(flgs, OF_XTRA_SHOTS))
+/*    if (have_flag(flgs, OF_XTRA_SHOTS))
     {
         int num = o_ptr->pval * 15;
         doc_printf(doc, "<color:%c>%+d.%2.2d</color> to Shooting Speed\n",
                     (net > 0) ? 'G' : 'r', num / 100, num % 100);
-    }
+    }*/
 
     net = _calc_net_bonus(o_ptr->pval, flgs, OF_DEVICE_POWER, OF_DEC_MAGIC_MASTERY);
     if (net)
@@ -704,6 +706,8 @@ static void _display_brands(u32b flgs[OF_ARRAY_SIZE], doc_ptr doc)
         vec_add(v, string_copy_s("<color:v>Mark of Chaos</color>"));
     if (have_flag(flgs, OF_BRAND_VAMP))
         vec_add(v, string_copy_s("<color:D>Vampiric</color>"));
+    if (have_flag(flgs, OF_BRAND_DARK))
+        vec_add(v, string_copy_s("<color:D>Shadow Sweep</color>"));
     if (have_flag(flgs, OF_IMPACT))
         vec_add(v, string_copy_s("<color:U>Earthquakes</color>"));
     if (have_flag(flgs, OF_VORPAL2))
