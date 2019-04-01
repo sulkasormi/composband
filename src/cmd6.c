@@ -86,6 +86,12 @@ static void do_cmd_eat_food_aux(obj_ptr obj)
         return;
     }
 
+    if ((disciple_is_(DISCIPLE_TROIKA)) && (object_is_(obj, TV_FOOD, SV_FOOD_CURE_POISON)) && (p_ptr->poisoned > 0))
+    {
+        msg_print("Using mushrooms to cure poison is an abomination unto Uxip!");
+        return;
+    }
+
     sound(SOUND_EAT);
     energy_use = 100;
     ident = FALSE;
@@ -971,6 +977,10 @@ static void do_cmd_device_aux(obj_ptr obj)
     u32b flgs[OF_ARRAY_SIZE];
 
     assert(obj->number == 1); /* Devices no longer stack */
+
+    /* Check what Uxip thinks... */
+    if ((disciple_is_(DISCIPLE_TROIKA)) && (!troika_allow_use_device(obj))) return;
+
     obj_flags(obj, flgs);
 
     /* Devicemasters get extra power */
