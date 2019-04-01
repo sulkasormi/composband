@@ -83,7 +83,10 @@ R:OBJ(quarterstaff)
 ?:[AND [EQU $CLASS Weaponmaster] [EQU $SPECIALITY Swords] ]
 R:OBJ(long sword)
 
-?:[EQU $CLASS Beastmaster Cavalry Ninja]
+?:[AND [EQU $CLASS Disciple] [EQU $SUBCLASS Troika] ]
+R:OBJ(short bow)
+
+?:[EQU $CLASS Beastmaster Cavalry Ninja Ninja-Lawyer]
 R:OBJ(gauntlets)
 
 ?:[EQU $CLASS Mauler]
