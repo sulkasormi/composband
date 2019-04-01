@@ -193,5 +193,6 @@ extern bool mon_race_has_drain_mana(mon_race_ptr race);
 extern bool mon_race_can_summon(mon_race_ptr race, int summon_type);
 extern bool mon_race_can_teleport(mon_race_ptr race);
 extern bool mon_race_has_lite_dark_spell(mon_race_ptr race);
+extern bool mon_race_has_dispel(mon_race_ptr race);
 #endif
 
