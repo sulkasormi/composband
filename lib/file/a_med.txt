@@ -1,93 +1,76 @@
 N: 1:BIAS_ELEC
 'Registor'
-'Rubber Coat'
 'One Million Volt'
 'Electron'
 'Call of Thundercloud'
 of the Tempest
 of R'lyeh
 of Thunder
-of Helldiver
 of the Firmament
 of Ukko
 
 N: 2:BIAS_POIS
 'Poison Barrier'
 'Venom's End'
+'Bitestopper'
 of Scorpio
-of Cleanness
 of Immunity
 of Mughash
 of the Snake Master
 of the Bee Master
-of the Modern Knight
 
 N: 3:BIAS_FIRE
 'Blessed Fusion'
-'Flameturner'
 'Red Sun'
-'Shimmering Wings'
-'Lion in Flame'
+'Flameturner'
 'Salamander'
-'Flamecoat'
-'Heatshield'
 'Fires of Adversity'
+'Dromedarius'
 of Libyan Desert
 of Tropics
-of Desert
 of Lungorthin
 
 N: 4:BIAS_COLD
 'Icy Princess'
 'White Snow'
 'Great Icefield'
-of Siberia
 of White Ice
 of Arctic Ocean
 of Antarctic Land
 of Santa Claus
 of the Yeti
 of Midwinter
-of the Seven Peaks
 of Slippery Slopes
 
 N: 5:BIAS_ACID
 'Gelatinous Cube'
-'Skin of Dhole'
-'Shield of Water'
-'Oozearmor'
 'Phlogiston'
 'Old Yellow'
 'Untouchable'
+'Skin of Dhole'
 of Aqua Regia
-of the Divine Jewel
 of Diamond
 of the Tidal Cave
+of Wowbagger
 
 N:12:BIAS_CHAOS
-'Day of the Dove'
 'Prince of Chaos'
-'Chaos Tile'
-'Sad Giant's Shield'
 'Ever-Faithful'
 'Guard of Law'
+'Piper's Dream'
 of Harmony
-of Reason
-of Seldon
+of Dworkin
 of the Chaos Lord
 of the Twelve Fiends
 of the Milkman
 of the Keyboard Cat
 
 N:14:BIAS_NECROMANTIC
-'Total Eclipse'
 'The Depth of Abyss'
 'Jet-black Bird'
-'Necrologia'
 'Total Solar Eclipse'
 'Undertaker'
 'Black Wind'
-of Rituals
 of Mephistopheles
 of the Ruler of Wallachia
 of the Netherlands
@@ -98,30 +81,19 @@ of Louhi
 N:15:BIAS_LAW
 N:13:BIAS_PRIESTLY
 N: 8:BIAS_WIS
-'Enlightenment from Heaven'
 'Holy Chant'
 'Holy Prayer'
-'Righteousness'
-'Gospel'
 'Guardian Angel'
 'Hope and Glory'
-'Aether Flash'
-'Parament of Holy Brume'
 'Holy Destiny'
-'Keeper of Light'
-'Righteous Aura'
-'Nuts of Wisdom'
 of Eden
 of Piety
 of the Pious Believer
 of the Undying Lands
 of the Sentinel
-of Ceremony
-of Revelation
 of Rite
 of Midsummer
 of Grace
-of Observance
 of Purity
 of Charity
 of Benediction
@@ -130,34 +102,21 @@ of Dawn's Hope
 
 N:16:BIAS_ROGUE
 N: 9:BIAS_DEX
-'Silentwalker'
-'Mercury'
 'Darknesslurker'
-'Shadow'
-'Phantom'
-'Keeper of Darkness'
 'Crypt Creep'
-'Smoke Ball'
-'Maple Leaf'
-'Catwalk'
-of Nevrast
+of Forgotten Pathways
 of Quietness
 of the Ninja
 of Phasing
 of the Fairy
 of Fnordja
 of the Hidden Chamber
-of Forgotten Pathways
-of the Shadow's Footfall
 of the Burrahobbits
 of Silk
 of the Silent Spy
-of the Sneak
 
 N:17:BIAS_MAGE
 N: 7:BIAS_INT
-'Magi's Seeing'
-'Sign of Brilliance'
 'Tome of Intelligence'
 of Finwe
 of the Wizard
@@ -168,7 +127,6 @@ of Martin
 of the Sorcerer-King
 of Simon Magus
 of Zul
-of Erasmus
 of Uncommon Sense
 of the Mastermind
 
@@ -176,51 +134,34 @@ N:18:BIAS_WARRIOR
 N: 6:BIAS_STR
 'Steel Bull'
 'Avatar of Might'
-'Terminater'
 'Die Hard'
-'Power Shield'
 'Power Matrix'
 'Stonecold'
-of Vader
-of the Valkyrie
 of the Ogre King
 of Daybreak
 of the Graveyard Cyclops
 of Sad Giant
 of Eternal Glory
-of Victory
 of the Beornings
 
 N:19:BIAS_RANGER
 N:10:BIAS_CON
 'Hound'
-'Red Belet'
-'Bear's Hand'
 'Springsleeper'
-'Life of Leaf'
-'Wargskin'
-'Silverback'
 of Hyper Nature
-of the Hunter
-of Marinera
 of Numenor
-of the Waning Moon
-of the Waxing Moon
-of the Full Moon
-of the New Moon
 of the Falling Leaves
+of the Dunedain
 of Tapio
+of Gondor
 
 N:11:BIAS_CHR
 'Snow White'
 'Maiden's Hope'
-'Undiscoverd Paradise'
 'Kiss of Succubus'
+'Evening Star'
 of Dysnomia
-of Cinderella
 of Tupuna
-of Benten
-of Nimue
 of Titania
 of Nimrodel
 of Iodine
@@ -228,22 +169,18 @@ of the Entwives
 of the Cephalopods
 
 N:*:Default
-'Dal-i-Thalion'
 'Guardian'
 'Defender'
-'Steelskin'
 'Camelot'
 'Legacy Typo'
 'Placeholder Name'
-'Edge-blunter'
+'Lifesaver'
+'Last Drop'
 of Champion
 of Crystal
 of Icarus
-of the Dark Tiger
 of the Fretful Porpentine
-of Kevlar
 of the Borg
-of Gondor
 of Moldoux
-of Belegennon
-of Magnitude
+of the Oompa-Loompas
+
