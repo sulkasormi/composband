@@ -4750,7 +4750,36 @@ void hit_mon_trap(int y, int x, int m_idx)
 
     monster_desc(m_name, m_ptr, 0);
 
-    if (randint1(BREAK_MON_TRAP * p_ptr->lev / 50) > r_ptr->level)
+    if ((c_ptr->info & CAVE_MARK) && (have_flag(f_info[c_ptr->mimic].flags, FF_SHADOW_ZAP)))
+    {
+        byte kipu = 0;
+        if ((mon_race_has_dispel(r_ptr)) || (m_ptr->r_idx == MON_JUSTSHORN))
+        {
+            msg_format("%^s dispels your shadow!", m_name);
+            kipu = 4;
+        }
+        else if ((r_ptr->flagsr & RFR_IM_ELEC) || (randint1(BREAK_MON_TRAP * p_ptr->lev / 50) <= r_ptr->level))
+        {
+            msg_format("%^s destroys your shadow!", m_name);
+            kipu = 2;
+        }
+        else
+        {
+            msg_format("%^s is hit by lightning!", m_name);
+            project(PROJECT_WHO_PLAYER, 0, m_ptr->fy, m_ptr->fx, damroll(8 + p_ptr->lev / 3, 6), GF_ELEC, (PROJECT_GRID | PROJECT_ITEM | PROJECT_KILL | PROJECT_JUMP));
+            if ((randint1(300) < r_ptr->level) || (one_in_(9)))
+            {
+                msg_print("Your shadow explodes!");
+                kipu = 1;
+            }
+        }
+        if (kipu)
+        {
+            take_hit(DAMAGE_NOESCAPE, 15 * kipu, "shadow pain");
+        }
+        else return;
+    }
+    else if (randint1(BREAK_MON_TRAP * p_ptr->lev / 50) > r_ptr->level)
     {
         if (c_ptr->info & CAVE_MARK)
         {
