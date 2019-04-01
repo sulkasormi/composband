@@ -423,7 +423,7 @@ static name_desc_t _info[TROLL_MAX] = {
     { "Spirit Troll", "Spirit trolls may pass through walls on their quest to demolish "
                         "all that oppose them." },
     { "Troll King", "Troll Kings are lords of their kind, fast and extremely deadly in "
-                        "melee. They may blink themselves out of harms way." },
+                        "melee. They may blink themselves out of harm's way." },
 };
 
 /******************************************************************************
