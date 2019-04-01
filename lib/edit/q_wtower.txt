@@ -74,3 +74,6 @@ R:OBJ(WAND_DRAIN_LIFE)
 
 ?:[EQU $CLASS Berserker]
 R:OBJ(long sword):EGO(death)
+
+?:[AND [EQU $CLASS Disciple] [EQU $SUBCLASS Troika] ]
+R:OBJ(two-handed sword):EGO(death)
