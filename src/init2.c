@@ -836,6 +836,7 @@ static errr init_feat_variables(void)
     feat_rogue_trap3 = f_tag_to_index_in_init("ROGUE_TRAP_3");
     feat_semicolon = f_tag_to_index_in_init("SEMI_PUN");
     feat_mirror = f_tag_to_index_in_init("MIRROR");
+    feat_shadow_zap = f_tag_to_index_in_init("SHADOW_ZAP");
 
     /* Doors */
     feat_door[DOOR_DOOR].open = f_tag_to_index_in_init("OPEN_DOOR");
