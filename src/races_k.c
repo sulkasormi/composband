@@ -311,11 +311,11 @@ race_t *nibelung_get_race(void)
                     "not much bothered by darkness. Their natural inclination to magical items "
                     "has made them resistant to effects which could disenchant magical energy.";
 
-        me.stats[A_STR] =  1;
-        me.stats[A_INT] = -1;
-        me.stats[A_WIS] =  2;
-        me.stats[A_DEX] =  0;
-        me.stats[A_CON] =  2;
+        me.stats[A_STR] =  0;
+        me.stats[A_INT] =  1;
+        me.stats[A_WIS] =  0;
+        me.stats[A_DEX] =  1;
+        me.stats[A_CON] =  1;
         me.stats[A_CHR] = -2;
 
         me.skills.dis =  3;
@@ -324,12 +324,12 @@ race_t *nibelung_get_race(void)
         me.skills.stl =  1;
         me.skills.srh =  5;
         me.skills.fos = 10;
-        me.skills.thn =  9;
+        me.skills.thn = 10;
         me.skills.thb =  0;
 
-        me.life = 103;
-        me.base_hp = 22;
-        me.exp = 165;
+        me.life = 101;
+        me.base_hp = 21;
+        me.exp = 150;
         me.infra = 5;
         me.shop_adjust = 115;
 
