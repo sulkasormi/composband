@@ -2458,8 +2458,7 @@ void do_cmd_get(void)
 {
     if (!cave[py][px].o_idx)
         msg_print("You see no objects here. Try <color:keypress>^G</color> to auto-get nearby objects.");
-    if (pack_get_floor())
-        energy_use = 100;
+    (void)pack_get_floor();
 }
 void do_cmd_autoget(void)
 {
