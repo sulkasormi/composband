@@ -594,7 +594,7 @@ void skills_dual_wielding_gain(monster_race *r_ptr)
     if (p_ptr->pclass == CLASS_SKILLMASTER) return;
 
     current = p_ptr->skill_exp[SKILL_DUAL_WIELDING];
-    max = s_info[_class_idx()].s_max[SKILL_DUAL_WIELDING];
+    max = skills_dual_wielding_max();
 
     if (current < max && (current - 1000) / 200 < r_ptr->level)
     {
@@ -619,7 +619,7 @@ int skills_dual_wielding_current(void)
     else
     {
         int current = p_ptr->skill_exp[SKILL_DUAL_WIELDING];
-        int max = s_info[_class_idx()].s_max[SKILL_DUAL_WIELDING];
+        int max = skills_dual_wielding_max();
         return MIN(current, max);
     }
 }
@@ -628,6 +628,7 @@ int skills_dual_wielding_max(void)
 {
     if (p_ptr->pclass == CLASS_SKILLMASTER)
         return skillmaster_dual_wielding_prof();
+    if (disciple_is_(DISCIPLE_TROIKA)) return WEAPON_EXP_MASTER;
     return s_info[_class_idx()].s_max[SKILL_DUAL_WIELDING];
 }
 
