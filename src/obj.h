@@ -104,4 +104,6 @@ extern void obj_save(obj_ptr obj, savefile_ptr file);
 /* Handle special inventories */
 extern void special1_drop(obj_ptr obj);
 extern void special1_remove(int slot);
+extern void special2_drop(obj_ptr obj);
+extern void special2_remove(int slot);
 #endif
