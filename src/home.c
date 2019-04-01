@@ -442,7 +442,9 @@ static void _drop(_ui_context_ptr context)
     if (inv_loc(context->inv) == INV_MUSEUM)
     {
         /* *identify* here rather than in _drop_aux in case the user splits a pile. */
+        no_karrot_hack = TRUE;
         obj_identify_fully(prompt.obj);
+        no_karrot_hack = FALSE;
     }
 
     if (prompt.obj->loc.where == INV_EQUIP)
