@@ -1285,6 +1285,7 @@ static int _draconian_attack_level(void)
     case CLASS_DEVICEMASTER:
     case CLASS_FORCETRAINER:
     case CLASS_SKILLMASTER:
+    case CLASS_DISCIPLE:
         /*l = MAX(1, l * 100 / 100);*/
         break;
     case CLASS_BARD:
