@@ -199,6 +199,8 @@ extern bool predictable_energy_hack;
 extern bool delay_autopick_hack;
 extern bool monsters_damaged_hack;
 extern bool shop_exit_hack;
+extern bool no_karrot_hack;
+extern byte troika_spell_hack;
 extern byte spell_problem;
 
 /*
@@ -568,6 +570,7 @@ extern s16b feat_rogue_trap1;
 extern s16b feat_rogue_trap2;
 extern s16b feat_rogue_trap3;
 extern s16b feat_semicolon;
+extern s16b feat_shadow_zap;
 extern door_type feat_door[MAX_DOOR_TYPES];
 extern s16b feat_up_stair;
 extern s16b feat_down_stair;
@@ -932,6 +935,7 @@ extern bool craft_enchant(int max, int inc);
 extern int get_realm_idx(cptr name);
 extern int beam_chance(void);
 extern void cast_wonder(int dir);
+extern void cast_shuffle(void);
 extern int device_power(int pow);
 extern int device_power_aux(int pow, int bonus);
 extern int spell_power(int pow);
@@ -1790,6 +1794,7 @@ extern bool set_tim_force(int v, bool do_dec);
 extern bool set_tim_building_up(int v, bool do_dec);
 extern bool set_tim_vicious_strike(int v, bool do_dec);
 extern bool set_tim_enlarge_weapon(int v, bool do_dec);
+extern bool set_tim_field(int v, bool do_dec);
 extern bool set_tim_superstealth(int v, bool do_dec);
 extern bool set_tim_no_spells(int v, bool do_dec);
 extern bool set_tim_no_device(int v, bool do_dec);
@@ -2365,6 +2370,9 @@ extern race_t *mon_armor_get_race(void);
 extern bool dragon_vamp_hack;
 extern int dragon_vamp_amt;
 extern dragon_realm_ptr dragon_get_realm(int which);
+extern void dragon_reach_spell(int cmd, variant *res);
+extern void dragon_tail_sweep_spell(int cmd, variant *res);
+extern void dragon_wing_storm_spell(int cmd, variant *res);
 extern int subjugation_power(void);
 extern bool monster_toss(int m_idx);
 
@@ -2474,6 +2482,35 @@ extern int      alchemist_infusion_energy_use(void);
 extern void     alchemist_super_potion_effect(int sval);
 extern void     alchemist_set_hero(bool *notice, int uus_arvo, bool normal_hero);
 
+/* disciple.c */
+extern class_t *disciple_get_class(int psubclass);
+extern class_t *karrot_get_class(void);
+extern class_t *yeqrezh_get_class(void);
+extern class_t *troika_get_class(void);
+extern void     disciple_birth(void);
+extern int      karrot_level(void);
+extern void     disciple_feeling(void);
+extern quest_ptr disciple_get_quest(int dungeon, int level);
+extern quest_ptr karrot_get_quest(int dungeon, int level);
+extern void     karrot_quest_finished(quest_ptr q, bool success);
+extern quest_ptr troika_get_quest(int dungeon, int level);
+extern void     troika_quest_finished(quest_ptr q, bool success);
+extern void     yeqrezh_help(FILE *fp);
+extern int      hp_player_yeqrezh(int num);
+extern void     karrot_equip_on_poly(void);
+extern race_t  *karrot_dragon_get_race(void);
+extern bool     karrot_replace_art(object_type *o_ptr);
+extern void     troika_effect(int reason);
+extern void     troika_learn_spell(monster_race *r_ptr);
+extern void     troika_wipe_timeouts(void);
+extern bool     troika_dispel_timeouts(void);
+extern void     troika_reduce_timeouts(void);
+extern bool     troika_timeout_flag(int which);
+extern void     troika_punish_quest_fail(void);
+extern bool     troika_allow_equip_item(object_type *o_ptr);
+extern bool     troika_allow_use_device(object_type *o_ptr);
+extern void     troika_bonus_flags(object_type *o_ptr, u32b flgs[OF_ARRAY_SIZE]);
+
 /* duelist.c */
 extern cptr duelist_current_challenge(void);
 extern class_t *duelist_get_class(void);
@@ -2481,7 +2518,7 @@ extern bool duelist_issue_challenge(void);
 extern bool duelist_can_challenge(void);
 extern int duelist_skill_sav(int m_idx);
 extern void strafing_spell(int cmd, variant *res);
-extern bool nemesis_hack;    /* Actually, its in melee1.c */
+extern bool nemesis_hack;    /* Actually, it's in melee1.c */
 extern cptr duelist_equip_error(void);
 
 /* magic_eater.c */
@@ -2536,6 +2573,8 @@ extern void quick_walk_spell(int cmd, variant *res);
 extern class_t *archaeologist_get_class(void);
 extern bool     archaeologist_is_favored_weapon(object_type *o_ptr);
 extern int      archaeologist_spell_stat_idx(void);
+extern bool     sense_great_discovery(void);
+
 extern class_t *archer_get_class(void);
 extern class_t *bard_get_class(void);
 extern void     bard_check_music(void);
