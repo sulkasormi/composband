@@ -1037,7 +1037,7 @@ static bool _gain_spell(int book)
         return FALSE;
     }
 
-    which = choose_spell(spells, ct, "rage", 1000, FALSE);
+    which = choose_spell(spells, ct, "Learn", "rage", 1000, FALSE);
     if (which >= 0 && which < ct)
     {
         _learn_spell(book, indices[which]);
