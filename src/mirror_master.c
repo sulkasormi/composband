@@ -528,7 +528,7 @@ static void _multi_shadow_spell(int cmd, variant *res)
         var_set_string(res, "Multishadow");
         break;
     case SPELL_DESC:
-        var_set_string(res, "Completely protects you from any attacks at one in two chance.");
+        var_set_string(res, "Gives you a 1 in 3 chance to completely evade an attack.");
         break;
     case SPELL_CAST:
         set_multishadow(6 + randint1(6), FALSE);
