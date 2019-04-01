@@ -1601,6 +1601,7 @@ void generate_cave(void)
     wipe_generate_cave_flags();
 
 #if 0
+    no_karrot_hack = TRUE;
     wiz_lite(FALSE);
     detect_all(255);
     if (1)
@@ -1654,5 +1655,6 @@ void generate_cave(void)
             }
         }
     }
+    no_karrot_hack = FALSE;
 #endif
 }
