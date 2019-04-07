@@ -606,7 +606,10 @@ void obj_identify_fully(object_type *o_ptr)
 
 void obj_learn_store(object_type *o_ptr)
 {
+    bool ohs = no_karrot_hack;
+    no_karrot_hack = TRUE;
     _obj_identify_fully_aux(o_ptr);
+    no_karrot_hack = ohs;
 }
 
 bool obj_learn_flag(object_type *o_ptr, int which)
