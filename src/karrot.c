@@ -836,7 +836,8 @@ bool karrot_replace_art(object_type *o_ptr)
         default: break;
     }
     /* This is a very ugly hack, but also a very simple one */
-    if ((o_ptr->name1 == ART_STING) || (o_ptr->name1 == ART_MOKOMAGI)) return FALSE;
+    if ((o_ptr->name1 == ART_STING) || (o_ptr->name1 == ART_MOKOMAGI) || (o_ptr->name1 == ART_JONES) ||
+        (o_ptr->name3 == ART_STING) || (o_ptr->name3 == ART_MOKOMAGI) || (o_ptr->name3 == ART_JONES)) return FALSE;
     arvo = obj_value_real(o_ptr);
     if (randint1(1000) > isompi(arvo / get_slot_weight(o_ptr), 250L)) return FALSE;
     else /* Try to generate a replacement artifact */
