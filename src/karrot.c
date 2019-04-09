@@ -565,7 +565,8 @@ quest_ptr karrot_get_quest(int dungeon, int level)
 {
     point_t tbl[3] = { {30, 130}, {34, 134}, {50, 166} };
     int mahis = (no_wilderness ? 5 : 9);
-    int verrokki = isompi(karrot_level() + 5, (karrot_level() * interpolate(karrot_level(), tbl, 3) / 100) + randint1(mahis) - 3);
+    int klev = karrot_level();
+    int verrokki = isompi(klev + 5, (klev * interpolate(klev, tbl, 3) / 100) + randint1(mahis) - 3);
     quest_ptr q;
 
     /* No quest if level too low */
@@ -588,7 +589,7 @@ quest_ptr karrot_get_quest(int dungeon, int level)
     /* Not too many quests in one dungeon */
     if (!no_wilderness)
     {
-        int i, osumat = 0, limit = (dungeon == DUNGEON_ANGBAND) ? 5 : 3;
+        int i, osumat = 0, limit = (dungeon == DUNGEON_ANGBAND) ? 6 : 3;
         for (i = 0; i < _q_idx; i++)
         {
             if (_kt_quests[i].dungeon == dungeon) osumat++;
@@ -619,7 +620,7 @@ quest_ptr karrot_get_quest(int dungeon, int level)
 
     /* Roll a new quest */
     q = quests_get(PURPLE_QUEST);
-    q->level = MIN(88, (MAX(p_ptr->max_plv + 5, (p_ptr->max_plv * interpolate(p_ptr->max_plv, tbl, 3) / 100)) + level) / 2);
+    q->level = MIN(88, (MAX(klev + 5, (klev * interpolate(klev, tbl, 3) / 100)) + level) / 2);
     q->dungeon = dungeon;
     get_purple_questor(q);
     q->goal = QG_KILL_MON;
