@@ -19,12 +19,12 @@ void disciple_birth(void)
     mut_lock(MUT_PURPLE_GIFT);
 }
 
-/* Basically, this is the level the player would be if he were a Beastman */
+/* Basically, this is the level the player would be if he were a Dunadan */
 int karrot_level(void)
 {
     int real_xp_factor = p_ptr->expfact;
     int i, sopiva = 1;
-    p_ptr->expfact = 187;
+    p_ptr->expfact = 200;
     for (i = 1; i < PY_MAX_LEVEL; i++)
     {
         if (p_ptr->max_max_exp >= exp_requirement(i))
