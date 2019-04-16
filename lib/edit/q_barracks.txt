@@ -1,3 +1,7 @@
+?:[GEQ [MOD $RANDOM0 56] 28]
+K:92
+?:1
+
 ?:[EQU $QUEST52 Taken InProgress]
 D:The next building will be the barracks. As you have noticed, there are
 D:a lot of lost souls wandering the ruined buildings. Therefore, this could
