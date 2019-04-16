@@ -19,7 +19,7 @@
 #define VER_MAJOR 7
 #define VER_MINOR 1
 #define VER_PATCH "toffee"
-#define VER_EXTRA 7
+#define VER_EXTRA 8
 #define VERSION_IS_DEVELOPMENT (TRUE)
 
 #define GAME_MODE_BEGINNER  0
@@ -1385,6 +1385,7 @@ enum {
 #define ART_SKYNAIL             341
 #define ART_AMUN                350
 #define ART_UROG                366
+#define ART_SURVEILLANCE        367
 
 /* Polearms */
 #define ART_THEODEN             93
@@ -2678,7 +2679,7 @@ enum summon_specific_e {
 #define MFLAG_VIEW      0x01    /* Monster is in line of sight */
 #define MFLAG_TEMP      0x02    /* Monster is marked for project_hack() */
 #define MFLAG_PACKHACK  0x04    /* Pack loading hack */
-#define MFLAG_XXX3      0x08    /* (unused) */
+#define MFLAG_BORN2     0x08    /* Monster is still being born (pet) */
 #define MFLAG_BORN      0x10    /* Monster is still being born */
 #define MFLAG_NICE      0x20    /* Monster is still being nice */
 
@@ -3213,7 +3214,7 @@ enum {
 #define RF3_XXX21           0x00200000
 #define RF3_XXX22           0x00400000
 #define RF3_XXX23           0x00800000
-#define RF3_XXX24           0x01000000
+#define RF3_COMPOST         0x01000000
 #define RF3_XXX25           0x02000000
 #define RF3_XXX26           0x04000000
 #define RF3_CLEAR_HEAD      0x08000000  /* Can recover from confusion suddenly */
@@ -4739,6 +4740,10 @@ extern int PlayerUID;
 #define MON_FILTHY_RAG          1282
 #define MON_SEXY_SWIMSUIT       1283
 #define MON_GRAGOMANI           1285
+#define MON_ARACHNOTRON         1290
+#define MON_PIXEL               1291
+#define MON_MUG                 1292
+#define MON_NIZUKIL             1299
 
 /* The Metal Babble guards the Arena dungeon, but this requires the guardian to be a unique
    monster or the dungeon never gets flagged as completed. Note, this messes up the needle
@@ -6046,6 +6051,7 @@ enum
 #define MAX_POWER_LABEL 62 /* uppercase, lowercase, and numbers */
 
 #define PURPLE_QUEST 82
+#define SEWER_QUEST 2
 
 #define TROIKA_HIT 1
 #define TROIKA_KILL_WEAK 2
