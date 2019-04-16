@@ -17499,7 +17499,7 @@ D:armour. As strong as he is magical, Eol is a worthy opponent.
 
 N:977:Maeglin, Betrayer of Gondolin
 G:h:r
-I:120:32d100:20:50:20:150
+I:120:32d100:20:90:20:150
 W:56:5:999:20000:0:0
 B:HIT:HURT(4d11):LOSE_WIS
 B:HIT:HURT(4d11):LOSE_INT
@@ -20572,7 +20572,7 @@ D:with the fury of the damned.
 N:1146:Pumpkin man
 G:g:o
 I:112:30d10:30:50:15:170
-W:18:1:999:150:0:0
+W:18:1:999:150:20000:1300
 B:HIT:HURT(2d8)
 B:HIT:HURT(2d6)
 B:HIT:HURT(2d6)
@@ -22119,7 +22119,7 @@ B:BITE:HURT(1d6)
 B:CLAW:HURT(1d4)
 F:ANIMAL | CAN_FLY | FRIENDS | WILD_WASTE | WILD_MOUNTAIN | WILD_WOOD
 F:DROP_CORPSE | POS_GAIN_AC
-P:Copy:Human:Warrior
+P:Copy:Human:Warrior-Mage
 P:Body:Bird
 S:1_IN_9 | CAUSE_1
 D:A crook-beaked bird with bedraggled black feathers.  It mocks you, and you 
@@ -23442,6 +23442,222 @@ D:Since the dawn of time has Iku-Turso lurked in the oceans: the gigantic
 D:terror of the open seas, umpteen-headed, umpteen-horned, his slimy tentacles
 D:reaching out to catch his prey; as if every other sea monster had been
 D:bundled together and scaled up.
+
+N:1289:Lord Bovin of the High Tower
+G:p:s
+I:128:12d242:20:135:10:170
+W:52:255:999:16000:0:0
+B:HIT:HURT(10d8)
+B:HIT:HURT(10d8):CONFUSE(5d5)
+B:HIT:DRAIN_EXP(80d6)
+B:HIT:DRAIN_EXP(80d6)
+F:UNIQUE | MALE | NO_QUEST | HUMAN | RES_ELEC | FIXED_UNIQUE |
+F:FORCE_SLEEP | FORCE_MAXHP | SMART | RES_FIRE | RES_COLD | RES_POIS |
+F:ONLY_ITEM | DROP_1D2 | DROP_2D2 | RES_NETH | RES_NEXU | RES_PLAS |
+F:COLD_BLOOD | OPEN_DOOR | BASH_DOOR | EVIL | CAN_SWIM |
+F:DROP_CORPSE | POS_SEE_INVIS
+P:Copy:Dunadan:Paladin
+S:1_IN_5 |
+S:BLIND | SCARE | CAUSE_4 | BA_NETHER | BA_FIRE | BO_PLASMA | S_MONSTER | DETECT_MONSTERS
+O:DROP_PALADIN_EVIL
+D:Once, he was the darling of Anambar - young, rich, handsome, athletic, and
+D:full of promises of a better future for the city. Now he's plotting to take
+D:over with the backing of dark sorcerers and demonic armies, destroying all
+D:who stand in the way of his quest for more wealth and power.
+
+N:1290:Arachnotron
+G:S:W
+I:120:32d56:25:75:10:170
+W:52:7:999:3000:0:0
+B:CRUSH:HURT(5d5)
+B:SPIT:PLASMA(6d6)
+F:DEMON | NONLIVING | FORCE_SLEEP | RES_PLAS | EVIL | ONLY_ITEM | STUPID |
+F:DROP_60 | DROP_CORPSE | POS_SEE_INVIS | FRIENDS(1d3, 25%) | NO_CONF
+F:RES_NETH | IM_POIS |
+P:Copy:Dunadan:Paladin
+S:FREQ_95 |
+S:BO_PLASMA(4d4+32)
+D:This monstrous demonic spider-golem seems to be all legs and oversized
+D:brain, yet still moves with surprising agility. Jets of plasma constantly
+D:emerge from its strange gaping mouth, incinerating anyone foolish enough
+D:to defy it.
+
+N:1291:Tracking pixel
+G:.:o
+I:123:18d37:30:60:10:50
+W:52:9:999:1998:0:0
+B:TOUCH:SLOW(4d4)
+B:TOUCH:DISEASE(4d4)
+B:TOUCH:DRAIN_MANA(4d4)
+B:TOUCH:DRAIN_CHARGES(4d4)
+F:EVIL | NONLIVING | FORCE_SLEEP | RES_NETH | RES_CHAO | IM_ELEC | RES_NEXU |
+F:PASS_WALL | INVISIBLE | CHAR_CLEAR | NASTY_GLYPH | POS_TELEPATHY
+F:IM_POIS | RES_DARK | SMART | CAN_FLY | NO_CONF | NO_SLEEP | NO_STUN
+S:1_IN_2 |
+S:SHRIEK | S_MONSTER | S_DEMON
+D:A silently creeping spy from Hell.
+
+N:1292:The Gospel of Mug
+G:?:b
+I:128:111d15:20:125:15:10
+W:56:255:999:1500:0:0
+B:TOUCH:SLOW
+B:TOUCH:EAT_GOLD
+B:TOUCH:EAT_ITEM
+F:UNIQUE | NEVER_MOVE | NONLIVING | NASTY_GLYPH | FORCE_SLEEP | EVIL |
+F:FIXED_UNIQUE | NO_QUEST | COLD_BLOOD | EMPTY_MIND | RES_DARK |
+F:FORCE_MAXHP | NO_CONF | NO_FEAR | NO_SLEEP | NO_STUN | RES_CHAO |
+F:RES_ACID | IM_POIS | RES_COLD | RES_ELEC | RES_NETH | RES_TELE
+F:DROP_CORPSE | POS_GAIN_AC | POS_TELEPATHY | POS_SEE_INVIS
+F:DROP_1D2 | DROP_4D2 | DROP_GOOD
+P:Copy:High-Elf:Mage
+P:Body:Tome
+S:1_IN_2 |
+S:S_SPECIAL | BA_NETHER | BA_CHAOS | BA_DARK(150) | SLOW |
+D:You have no idea what's written in it, and are probably happier not knowing.
+
+N:1293:Plague monk
+G:r:g
+I:112:9d10:10:20:12:90
+W:14:2:50:65:0:0
+B:CLAW:HURT(1d4):POISON(1d4):DISEASE(20%)
+B:BITE:HURT(1d6):LOSE_CON(20%)
+A:POISON(1d2)
+F:DROP_60 | DROP_90 | COMPOST
+F:OPEN_DOOR | BASH_DOOR | FRIENDS(1d3)
+F:ANIMAL | EVIL | RES_POIS
+F:DROP_CORPSE | POS_GAIN_AC
+P:Copy:Yeek:Priest
+P:Body:Scrawny
+S:1_IN_6 |
+S:BA_POISON
+D:A crazed disease-ridden fanatic from clan Pestilens.
+
+N:1294:Skaven assassin
+G:r:D
+I:114:8d10:10:25:10:90
+W:14:2:50:70:0:0
+B:HIT:HURT(1d9):EAT_ITEM(10%)
+B:HIT:HURT(1d8):POISON(1d8)
+F:DROP_60 | DROP_90 | COMPOST
+F:OPEN_DOOR | BASH_DOOR | FRIENDS(1d2)
+F:ANIMAL | EVIL | RES_POIS
+F:DROP_CORPSE | POS_GAIN_AC
+P:Copy:Yeek:Priest
+P:Body:Scrawny
+S:1_IN_8 |
+S:DARKNESS
+D:A swift and deadly killer trained by clan Eshin.
+
+N:1295:Rat-ogre
+G:r:U
+I:115:25d10:20:33:18:250
+W:15:3:50:50:0:0
+B:CLAW:HURT(2d8)
+B:BITE:HURT(1d8)
+F:DROP_60 | DROP_90 | COMPOST
+F:OPEN_DOOR | BASH_DOOR |
+F:EVIL | ANIMAL
+P:Copy:Ogre:Warrior
+D:A large creature resembling a skaven but with great size and strength.
+
+N:1296:Grey seer
+G:r:w
+I:116:24d10:10:30:10:30
+W:17:3:50:110:0:0
+B:CLAW:HURT(1d8)
+B:CLAW:HURT(1d8)
+B:BITE:HURT(2d6)
+F:FORCE_SLEEP | ESCORT | FORCE_MAXHP
+F:DROP_60 | DROP_90 | COMPOST
+F:OPEN_DOOR | BASH_DOOR |
+F:ANIMAL | EVIL | RES_POIS
+F:DROP_CORPSE | POS_GAIN_AC
+P:Copy:Yeek:Priest
+P:Body:Scrawny
+S:1_IN_4 |
+S:BLINK | CAUSE_2 | BLIND | BA_POISON | S_KIN | SLOW
+D:A skaven with white fur and horns, possessed of great skill and power.
+
+N:1297:Swamp rat
+G:r:g
+I:115:5d10:12:20:12:20
+W:10:2:40:70:0:0
+B:BITE:HURT(2d3):POIS(1d3)
+B:BITE:HURT(3d2):ACID(1d3, 5%)
+F:EVIL | ANIMAL | RES_POIS | COMPOST
+F:DROP_CORPSE | POS_GAIN_AC | FRIENDS(2d3)
+P:Copy:Yeek:Rogue
+P:Body:Scrawny
+D:A disgusting four foot rodent with grimy fur. It stinks of refuse.
+
+N:1298:Plague rat
+G:r:y
+I:116:6d10:12:20:12:20
+W:11:2:40:80:0:0
+B:BITE:HURT(2d3):DISEASE(15%)
+B:BITE:HURT(3d2):LOSE_CON(15%)
+A:POISON(1d2)
+F:EVIL | ANIMAL | RES_POIS | COMPOST
+F:DROP_CORPSE | POS_GAIN_AC | FRIENDS(2d3)
+P:Copy:Yeek:Rogue
+P:Body:Scrawny
+D:A large rat known to carry deadly diseases. It has sharp teeth.
+
+N:1299:Nizukil, Prince of Rats
+G:r:v
+I:117:20d10:18:28:20:90
+W:16:3:999:240:0:0
+B:CLAW:HURT(1d9)
+B:CLAW:HURT(1d9)
+B:BITE:HURT(1d8)
+F:UNIQUE | MALE | NO_QUEST | COMPOST |
+F:FORCE_SLEEP | FORCE_MAXHP | FIXED_UNIQUE
+F:ESCORT |
+F:ONLY_ITEM | DROP_90 | DROP_2D2 | DROP_GOOD | DROP_60
+F:SMART | OPEN_DOOR | BASH_DOOR | DROP_CORPSE
+F:ANIMAL | EVIL | RES_POIS
+S:1_IN_5 |
+S:HEAL | BLINK | SHRIEK | DARKNESS | MISSILE | CONFUSE
+P:Copy:Yeek:Mage
+P:Speed:+7
+D:A great purple rat with sharp teeth and sorcerous powers.
+
+N:1300:Death pumpkin
+G:#:o
+I:120:66d44:30:75:15:500
+W:45:4:999:2178:0:0
+B:CRUSH:HURT(5d9):STUN(3d3)
+B:BITE:HURT(7d9):CUT(6d9):UNLIFE(4d6)
+B:BITE:HURT(6d9):UNLIFE(4d6)
+B:BITE:HURT(5d9):VAMP(4d6)
+F:RES_FIRE | RES_LITE | RES_NETH | NO_CONF | NO_SLEEP | HAS_LITE_1 | EVIL |
+F:FORCE_SLEEP | ONLY_ITEM | DROP_1D2 | OPEN_DOOR | BASH_DOOR | WILD_SWAMP
+F:WILD_WOOD | RES_DISE | POS_GAIN_AC
+S:1_IN_10 |
+S:BR_LITE(10%)
+P:Copy:Ent:Warrior
+P:Body:Pumpkin
+D:Once it was a vaguely humanoid creature with a pumpkin for a head, but
+D:now only the head remains, having grown too large and heavy for a body to
+D:support. Orange lights glow within the gaping mouth of this man-high
+D:monster pumpkin as it rolls along the floor of the cave, preparing to drink
+D:the blood of yet another victim.
+
+N:1301:Hrulga
+G:q:U
+I:122:22d16:20:30:0:280
+W:31:4:60:484:0:0
+B:BITE:HURT(3d8):CUT(2d4)
+B:CLAW:HURT(2d8):CUT(2d8)
+B:KICK:HURT(2d8):STUN(2d4)
+F:WILD_MOUNTAIN | BASH_DOOR | RAND_25 | ANIMAL | RIDING | FRIENDS(4d2)
+F:DROP_SKELETON | DROP_CORPSE | POS_GAIN_AC
+P:Copy:Demigod:Warrior
+P:Body:Horse
+P:Speed:+7
+D:It looks much like a horse - but it's bigger, faster, nastier, has
+D:razor-sharp claws and eats meat...
 
 # N: serial number : monster name
 # G: symbol : color
