@@ -157,6 +157,7 @@ struct room_grid_s
     byte trap_pct;
     byte mon_pct;
     byte obj_pct;
+    byte feat_pct;
 };
 typedef struct room_grid_s room_grid_t, *room_grid_ptr;
 extern obj_ptr room_grid_make_obj(room_grid_ptr grid, int level);
