@@ -1,6 +1,10 @@
 # Adapted from Kangband by Gwarl
 # Modified for FrogComposband 7.0.peppermint
 
+?:[GEQ [MOD $RANDOM0 88] 44]
+K:96
+?:1
+
 ?:[EQU $QUEST78 Taken InProgress]
 D:A volcano has been rumbling in the eastern part of our
 D:territory. But, we do not think it is natural.
