@@ -1,3 +1,7 @@
+?:[GEQ [MOD $RANDOM0 98] 49]
+K:88
+?:1
+
 ?:[EQU $QUEST3 Taken InProgress]
 D:One of the houses in town was recently sold to a foreign
 D:merchant. Now more and more alarming things happen like a
