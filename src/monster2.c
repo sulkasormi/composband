@@ -1662,6 +1662,7 @@ s16b get_mon_num_aux(int level, int min_level, u32b options)
 
         /* Hack: Some monsters are restricted from quests and summons */
         if (quests_get_current() && (r_ptr->flags1 & RF1_NO_QUEST)) continue;
+        if ((r_ptr->flags3 & RF3_COMPOST) && (quest_id_current() != SEWER_QUEST)) continue;
         if (summon_specific_who != SUMMON_WHO_NOBODY && (r_ptr->flags1 & RF1_NO_SUMMON)) continue;
 
         /* No point in generating memory mosses if the never_forget birth option is on */
@@ -3491,6 +3492,9 @@ int place_monster_one(int who, int y, int x, int r_idx, int pack_idx, u32b mode)
     /* Not visible */
     m_ptr->ml = FALSE;
 
+    /* Being born */
+    m_ptr->mflag |= MFLAG_BORN2;
+
     /* Pet? */
     if (mode & PM_FORCE_PET)
     {
@@ -3551,6 +3555,7 @@ int place_monster_one(int who, int y, int x, int r_idx, int pack_idx, u32b mode)
         if (allow_friendly_monster && !monster_has_hostile_align(NULL, 0, -1, r_ptr))
             set_friendly(m_ptr);
     }
+    m_ptr->mflag &= ~(MFLAG_BORN2);
 
     if ((who > 0) && ((is_pet(m_ptr) || is_friendly(m_ptr))) && (m_ptr->mflag2 & MFLAG2_PLAYER_SUMMONED))
         m_ptr->mflag2 |= MFLAG2_DIRECT_PY_SUMMON;
