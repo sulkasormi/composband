@@ -481,7 +481,10 @@ bool make_attack_normal(int m_idx)
                         obvious = TRUE;
 
                         if (p_ptr->no_charge_drain)
+                        {
+                            drained = TRUE; /* No food drain! */
                             break;
+                        }
 
                         if (p_ptr->pclass == CLASS_DEVICEMASTER)
                         {
