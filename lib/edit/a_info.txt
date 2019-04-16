@@ -3387,6 +3387,9 @@ F:SLAY_UNDEAD | SLAY_DRAGON | SLAY_DEMON | SLAY_EVIL
 F:SHOW_MODS | CURSED
 D:You swell with pride as you wield this spiked mace.
 
+# That the Midnight Dragon Scale Mail has no weight was originally an input
+# error that was retained for being cool
+
 N:332:Midnight Dragon Scale Mail
 I:38:1:2
 W:60:8:0:200:30000
@@ -3715,6 +3718,15 @@ E:A storm of darkness erupts!
 D:The ultimate reward for your loyal service: Karrot's massive blade of
 D:shadows, which no ordinary man could wield. A chilling darkness strikes
 D:your enemies with every blow as you proudly swing it.
+
+N:367:of Surveillance
+I:40:0:2
+W:50:15:3:60000
+F:CHR | STEALTH | HIDE_TYPE | FREE_ACT | SEE_INVIS | TELEPATHY | ESP_NONLIVING
+E:PROBING:30:10
+E:You raise the amulet to your eyes...
+D:This amulet reveals all the secrets of the world. You're very glad it's
+D:not in less responsible hands...
 
 # N: serial number : item name
 # I: tval : sval : pval
