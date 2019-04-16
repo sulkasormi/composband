@@ -202,6 +202,12 @@ As you start finding {excellent} weapons and artifacts, you may well want to wie
 <color:R>A:</color> Some classes have a very strong preference for a certain weapon or type of weapon, to the extent that other weapons are marked as icky. The exact effects of wielding an icky weapon depend on class, but as a general rule you should always assume that an icky weapon will be worse than a non-icky one, at least from a melee perspective. In the specific case of Priests, however, the melee penalty is relatively small and the main drawback of an icky weapon is its effect on prayer fail rates.
 
 
+<color:G>Q:</color> What exactly does the "Weapon Versatility" demigod talent do? Does it allow me to use icky weapons?
+
+<color:R>A:</color> It allows you to reach Master proficiency with all weapons, including icky ones. However, the icky weapons will still be considered icky and incur the same icky-wield penalties.
+
+
+
 <color:G>Q:</color> Some weapons have slays (like Slay Orc) or brands (like Viper's Fang). What do these mean?
 
 <color:R>A:</color> Slays and brands do extra damage against the appropriate monsters (so Slay Orc does extra damage against orcs, and Viper's Fang does extra damage against monsters who don't resist poison). Slays and brands work by multiplying the weapon's dice (which makes them much more valuable on a 5d6 blade of chaos than on a 1d5 dagger).
@@ -246,6 +252,13 @@ Potions of New Life also cure mutations among their other effects, and potions o
 <color:R>A:</color> It gives you a 75% chance of reflecting any incoming bolt or bolt-like attack. A reflected bolt will not damage you in any way, and may bounce back and damage the monster that fired it in the first place. Some monsters also have Reflection - in this case, they have a 75% chance of reflecting your bolt attacks, potentially back at you. If both you and the monster have Reflection, it's possible for a bolt to bounce between you two for a while... The main difference between monster reflection and player reflection is that monsters cannot reflect actual crossbow bolts (or arrows, sling ammo etc.) but you can reflect monster arrows.
 
 Reflection is very helpful (and remains useful throughout the game) but is never really absolutely needed. Early on, it's particularly useful in the Camelot dungeon, which has many dangerous bolt casters.
+
+
+<color:G>Q:</color> Some elements don't just deal damage, but also cause status effects like confusion or blindness. How much resistance do I need to be safe from status effects?
+
+<color:R>A:</color> Most status effects compare your resistance to a 33-sided die (or a 55-sided die in the case of base elements). Accordingly, 30% confusion resistance gives you a 30 in 33 (about 91%) chance of resisting that status effect, and 40% confusion resistance will provide immunity.
+
+In some very unusual cases your resistance may not be checked at all, or a special calculation may be used. (For example, a backfiring Invoke Spirits spell can completely bypass your confusion resistance.)
 
 
 <color:G>Q:</color> Can I ever resist exotic attacks/elements like Water, Ice, Gravity, Rockets or Toxic Waste that aren't listed on my character sheet?
@@ -386,4 +399,5 @@ Updated    : FrogComposband 7.0.strawberry
 Updated    : FrogComposband 7.0.peppermint
 Updated    : FrogComposband 7.0.nougat
 Updated    : FrogComposband 7.1.toffee
+Updated    : FrogComposband 7.1.chocolate
 </color>
