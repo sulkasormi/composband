@@ -1,5 +1,9 @@
 # a quick creation by Jeff Coleburn <vsp@netaxs.com>
 
+?:[AND [EQU $WILDERNESS NORMAL] [GEQ [MOD $RANDOM0 52] 26] ]
+K:85
+?:1
+
 ?:[EQU $QUEST21 Taken InProgress]
 D:Another strange hole in reality has opened up on the edge of
 D:our town, and appears to be even more dangerous than the 
