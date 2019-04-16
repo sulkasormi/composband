@@ -1,5 +1,11 @@
 # New quest for FrogComposband 7.0.strawberry
 
+# Same check as for anti-pally vs. swamp lights - always have one quest
+# with a lamp artifact as the reward
+?:[GEQ [MOD $RANDOM0 98] 49]
+K:89
+?:1
+
 ?:[EQU $QUEST70 Taken InProgress]
 D:We've had a few problems lately with the rogue djinni who lives in a
 D:cavern to the northeast of the city. It was previously quite tame and
