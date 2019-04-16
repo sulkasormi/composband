@@ -17,6 +17,9 @@ L:u:MOUNTAIN
 # Default for Quest 75 = entrance is shallow water
 L:w:SHALLOW_WATER
 
+# Default for Quest 83 = entrance is permanent
+L:W:PERMANENT
+
 # Default for Quest 72 = entrance is permanent
 L:x:PERMANENT
 
@@ -97,8 +100,10 @@ L:b:BUILDING_1(67)
 L:b:BUILDING_1(75)
 ?:1
 ############### Quest 75 - The Mystery of Apina Island(TM)
-?:[EQU $QUEST75 Taken]
+?:[AND [EQU $QUEST75 Taken] [LEQ [MOD $RANDOM0 64] 31] ]
 L:w:QUEST_ENTER(75)
+?:[AND [EQU $QUEST75 Taken] [GEQ [MOD $RANDOM0 64] 32] ]
+L:W:QUEST_ENTER(75)
 ?:[EQU $QUEST75 Taken Completed Failed]
 L:b:BUILDING_1(75)
 ?:[EQU $QUEST75 Finished FailedDone]
@@ -205,10 +210,10 @@ M:       VVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVV---::-VVVVVVVVVVVVVVVVVVV..-V..VVVVVVV
 M:                VVVVVVVVVVVVVVVVVVVVVVV--::T:T::VVVVVVVVVVVVVV.VVV..-.VVVVVVVVVVVVVVVVVVVVVVVVVVV.-.VVVVVVVVV.VVVVVVVVVVVVVVVVVVVVVVVVVVVVVVV                          VVVVVVVVVVVVVVVVVVVVVVVV      ?
 M:                        VVVVVVVVVVVVVVVwV-:-TT-T-VVVVVVVVVVVV..VVVV.V.VVVVVVVVVVVVVVVVVVVV.VVVVV--..VVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVV                                 VVVVVVVVVVVVVVVVV        -
 M:                           VVVVVVV..VVVVVVV---??VVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVV...VVVVVVVVVVVVVVVVVVVV        VVVVVVVVVVV                   ^^                   VVVVVVVVV           -
-M:                             VVVVVV.VVVVVVVVVVVVVVVVVVVVV.VVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVV.VVVVVVVV                                          ^^^                                      -
-M:                              VVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVV                                            ^^^^^                                     -
-M:                               VVVVVVVV.VVVVVVVVVVVVVVVVVVVVVVVVVVV-.VVVVVVVVVVVVVVVVVVVVVV.VVVVVVVVVVVVVVVVV                                              ^^^^^                                     -
-M:                                VVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVV..VVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVV                                               ^^^^                                      :
+M:                             VVVVVV.VVVVVVVVVVVVVVVVVVVVV.VVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVV.VVVVVVVV                                          #W#                                      -
+M:                              VVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVV                                            #####                                     -
+M:                               VVVVVVVV.VVVVVVVVVVVVVVVVVVVVVVVVVVV-.VVVVVVVVVVVVVVVVVVVVVV.VVVVVVVVVVVVVVVVV                                              #####                                     -
+M:                                VVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVV..VVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVV                                               ^###                                      :
 M:                                  VVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVV.VVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVV                                                  ^^                                       :
 M:                                     VVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVV                                                                                                    -
 M:                                        VVVVVVVVVVVVVVVVVVVVVVVVV          VVVVVVVVVVVVV                                                                                                             -
