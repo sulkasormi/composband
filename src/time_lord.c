@@ -52,6 +52,7 @@ void mon_change_race(mon_ptr mon, int new_r_idx, cptr verb)
     assert(mon);
     if (new_r_idx <= 0) return;
     if (!quest_allow_poly(mon)) return;
+    if (!p_ptr->inside_arena) return;
 
     old_hp = mon->hp;
     old_maxhp = mon->max_maxhp;
