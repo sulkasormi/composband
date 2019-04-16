@@ -1,3 +1,9 @@
+# New quest for Composband
+
+?:[AND [GEQ [MOD $RANDOM0 64] 1] [LEQ [MOD $RANDOM0 64] 32] ]
+K:90
+?:1
+
 ?:[EQU $QUEST66 Taken InProgress]
 D:Hey you came back. Okay, next thing you should study
 D:is that cave up there to the north. It's full of basilisks.
