@@ -1767,6 +1767,11 @@ void monster_death(int m_idx, bool drop_item)
             }
             break;
 
+        case MON_MUG:
+            a_idx = ART_SURVEILLANCE;
+            chance = 100;
+            break;
+
         case MON_LUNGORTHIN:
             a_idx = ART_CALRIS;
             chance = 50;
