@@ -22,6 +22,7 @@ L:w:BRAKE
 
 # Default for Quest 70 = entrance is mountain
 L:x:MOUNTAIN
+L:L:MOUNTAIN
 
 # Default for Quest 69 = entrance is mountain
 L:z:MOUNTAIN
@@ -31,6 +32,12 @@ L:y:PERMANENT
 
 # Default for Quest 33
 L:q:PERMANENT
+
+# Museum quest
+?:[AND [EQU $QUEST66 Taken] [GEQ [MOD $RANDOM0 64] 1] [LEQ [MOD $RANDOM0 64] 32] ]
+L:M:QUEST_ENTER(66)
+?:[AND [EQU $QUEST66 Completed Failed FailedDone] [GEQ [MOD $RANDOM0 64] 1] [LEQ [MOD $RANDOM0 64] 32] ]
+L:M:PERMANENT
 
 ##################### Sultan's Quests ##############
 
@@ -46,8 +53,10 @@ L:F:FLOWER
 L:b:BUILDING_1(70)
 ?:1
 ############### Quest 70 - Djinni's Cavern
-?:[EQU $QUEST70 Taken]
+?:[AND [EQU $QUEST70 Taken] [LEQ [MOD $RANDOM0 98] 48] ]
 L:x:QUEST_ENTER(70)
+?:[AND [EQU $QUEST70 Taken] [GEQ [MOD $RANDOM0 98] 49] ]
+L:L:QUEST_ENTER(70)
 ?:[EQU $QUEST70 Taken Completed Failed]
 L:b:BUILDING_1(70)
 ?:[EQU $QUEST70 Finished FailedDone]
@@ -91,16 +100,20 @@ L:n:BUILDING_13(65)
 L:r:QUEST_ENTER(65)
 ?:[EQU $QUEST65 Taken Completed Failed]
 L:n:BUILDING_13(65)
-?:[EQU $QUEST65 Finished FailedDone]
+?:[AND [EQU $QUEST65 Finished FailedDone] [OR [EQU [MOD $RANDOM0 64] 0] [GEQ [MOD $RANDOM0 64] 33] ] ]
 L:n:BUILDING_13(66)
+?:[EQU $QUEST65 Finished FailedDone]
+L:n:BUILDING_13(76)
 ?:1
 ############### Quest 66 - Basilisks ###############
-?:[EQU $QUEST66 Taken]
+?:[AND [EQU $QUEST66 Taken] [OR [EQU [MOD $RANDOM0 64] 0] [GEQ [MOD $RANDOM0 64] 33] ] ]
 L:p:QUEST_ENTER(66)
 ?:[EQU $QUEST66 Taken Completed Failed]
 L:n:BUILDING_13(66)
 ?:[EQU $QUEST66 Finished FailedDone]
 L:n:BUILDING_13(76)
+?:[AND [EQU $QUEST66 Finished FailedDone] [EQU $QUEST65 Finished FailedDone] ]
+L:n:BUILDING_13(64)
 ?:1
 ############### Quest 76 - Staff Recovery ###############
 ?:[EQU $QUEST76 Taken]
@@ -108,6 +121,8 @@ L:s:QUEST_ENTER(76)
 ?:[EQU $QUEST76 Taken Completed Failed]
 L:n:BUILDING_13(76)
 ?:[EQU $QUEST76 Finished FailedDone]
+L:n:BUILDING_13(66)
+?:[AND [EQU $QUEST76 Finished FailedDone] [EQU $QUEST66 Finished FailedDone] ]
 L:n:BUILDING_13(64)
 ?:1
 ############### Quest 64 - Renegade Sorcerer ############
@@ -251,7 +266,7 @@ M::::--#;;;,,,,..........................#####.........#####........-T-TT--#####
 M:-::--#;;,,,..........................#########.....#########........-T--..k####--T-T-WWWWWWWW,T-.....##-------##........#--T::::--?:--TT:TT:TTT:T------T--::-?--..-?-:TT::TT--TT::::--::T::-:-??---VVV
 M::-:--#;,,,.......###############....###########...###########......-T-T.T######,,,,,,WWWWWWWWTT-.....##--###--##........#--:::::::TT-:::--TTTT-TT--??----TT-?--..:-T-T:----:-?:::-:T::-TT-:----T---VVV
 M:?::--#;,,........###############....###########...###########.......-T.T-TTTT--TT-T-,TWWWWWWTT-.....######j######.......#--:?:?:::-:T:T-----TTT::-------T-----..T:T::---T-:TT??:--T--:TTT:-;------VVVV
-M::TT--#,,...........#####a#####.......#########.....#########.......-T.T-T-T-TTTT---TTT-T-TT--.......#####...#####.......#--::::?:::-T:---?-----::T--T-?------..----:--T:TT::T??T--:T::-^^;;------VVVVV
+M::TT--#,,...........#####a#####.......#########.....#########.......-T.T-T-T-TTTT---TTT-T-TT--.......#####...#####.......#--::::?:::-T:---?-----::T--T-?------..----:--T:TT::T??T--:T::-^L;;------VVVVV
 M:--T--#...#######.......................##i##.........##n##.........-T.T--T..............................................#--::---::T-T----?-??---TT:TTT?-?---..------TT-:T---T-?--::TT-^^^^-----VVVVVVV
 M:-T:--#...######g...................................................-T...................................................#--------:TT--TT-----?---?::T:--?--..--?-----T:T:TT--TT----::-.^^-----VVVVVVVV
 M::TT--#...#######........................................................................................................#---TT--::-T-T::::-------TTTT-----..-----------?::--?::--TT-:..------VVVVVVVVV
