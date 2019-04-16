@@ -405,6 +405,8 @@ static void rd_extra(savefile_ptr file)
     p_ptr->exp = savefile_read_s32b(file);
     p_ptr->exp_frac = savefile_read_u32b(file);
     p_ptr->lev = savefile_read_s16b(file);
+    if (savefile_is_older_than(file, 7,1,0,8)) p_ptr->quest_seed = 0;
+    else p_ptr->quest_seed = savefile_read_u32b(file);
 
     for (i = 0; i < 64; i++) p_ptr->spell_exp[i] = savefile_read_s16b(file);
     for (i = 0; i < 5; i++) for (j = 0; j < 64; j++) p_ptr->weapon_exp[i][j] = savefile_read_s16b(file);
@@ -1252,6 +1254,7 @@ static errr rd_savefile_new_aux(savefile_ptr file)
     }
     if (arg_fiddle) note("Loaded Object Memory");
 
+    p_ptr->quest_seed = 0; /* paranoia */
     quests_load(file); /* quests must load after monster lore ... see above */
     if (arg_fiddle) note("Loaded Quests");
 
