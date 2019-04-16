@@ -1,3 +1,7 @@
+?:[GEQ [MOD $RANDOM0 72] 36]
+K:93
+?:1
+
 ?:[EQU $QUEST53 Taken InProgress]
 D:While you were gone, I had a visit from an old friend and we were 
 D:reminiscing about the infamous storekeeper from the ancient city. 
