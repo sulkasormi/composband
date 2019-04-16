@@ -30,9 +30,14 @@ L:t:TREE
 # Default for quest 34 = stone
 L:s:MOUNTAIN
 
+# Default for quest 88 = floor
+L:X:FLOOR
+
 ############### Quest 3 - The Stranger ###############
-?:[EQU $QUEST3 Taken]
+?:[AND [EQU $QUEST3 Taken] [LEQ [MOD $RANDOM0 98] 48] ]
 L:y:QUEST_ENTER(3)
+?:[AND [EQU $QUEST3 Taken] [GEQ [MOD $RANDOM0 98] 49] ]
+L:X:QUEST_ENTER(3)
 ?:[EQU $QUEST3 Untaken Taken Completed Failed]
 L:b:BUILDING_1(3)
 ?:[EQU $QUEST3 Finished FailedDone]
@@ -73,8 +78,10 @@ L:b:BUILDING_1(16)
 L:b:BUILDING_1(34)
 ?:1
 #################### Quest 34 - The Mountain Shrine ###############
-?:[EQU $QUEST34 Taken]
+?:[AND [EQU $QUEST34 Taken] [LEQ [MOD $RANDOM0 30] 14] ]
 L:t:QUEST_ENTER(34)
+?:[AND [EQU $QUEST34 Taken] [GEQ [MOD $RANDOM0 30] 15] ]
+L:s:QUEST_ENTER(34)
 ?:[EQU $QUEST34 Taken Completed Failed]
 L:b:BUILDING_1(34)
 ?:[EQU $QUEST34 Finished FailedDone]
@@ -184,15 +191,15 @@ B:12:A:1:See Healers:0:150:h:28:0
 B:12:C:*:None
 B:12:C:Paladin:Owner
 
-M:-----------------------TT---------------------------------------------------------------TTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTT
-M:----------------------TTTT-------------------------------------------------------------TTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTT
-M:------------------------TT--------------------------------------------------------------TTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTT.TTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTT
-M:-------------------------------------------------------------------------------------------TTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTT...TTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTT
-M:------------------------------------------------------------------------------------,,,,,,,,,TTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTT.TTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTT
-M:-,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,-------,,..............----------------TTTTTTTTTTTTTTT-----TTTT------------TT--------.------TTTTTTTTT---TTTTTTTTTTTTTTTTTTT
-M:-.........................................................................,---,,,,,.-------------..--------------------TTTTTTT---------------------------------.----------TTTT----------TTTTTTTTTTTTTT
-M:-,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,.,,,,,....---------------..-----------------------------------------------------------.,----------------------------TTTTTTTTT
-M:-WWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWW-,......-------------------#v#########--------------------------------------------------.,,,------,,,,,,,,,--------,,,,,,,TTTTT
+M:-----------------------TT---------------------------------------------------------------TTTTTTTTTTTTTT-----TTT-----TT-----                               ------TTTTTTTT::::::TT:TT:TTT           :::.X
+M:----------------------TTTT-------------------------------------------------------------TTTTTTTTTT-TTTTTT---------TTTTTT------                       -------TTTTTTTTTTTTTT......TTTTTTTTTT         T..T
+M:------------------------TT--------------------------------------------------------------TTTTTTTTT--TTTTTT------TTTTTTTTTTTTTT          TTTTTT    TTTTTTTTTTTTTTTTTTT......TTTTT..TTTTTTTTTTTTTTTT...::
+M:-------------------------------------------------------------------------------------------TTTTTTTTTTTTTT---------TTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTT...TTTTTTTTTTTTTT..TT.TT...TTT...T:T:
+M:------------------------------------------------------------------------------------,,,,,,,,,TTTTTTTTTTT------------TTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTT.TTTTTTTTTTTTTTTTTTTTTTTTTT.....TT   -
+M:-,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,-------,,..............----------------T---TTTTTTTTTTT-----TTTT------------TT--------.------TTTTTTTTT---TTTTTTTTTTTT      -
+M:-.........................................................................,---,,,,,.-------------..--------------------TTTTTTT---------------------------------.----------TTTT----------TTTTT--   :  T
+M:-,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,.,,,,,....---------------..-----------------------------------------------------------.,----------------------------        -
+M:-WWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWW-,......-------------------#v#########--------------------------------------------------.,,,------,,,,,,,,,--------,,,,,,,    -
 M:WWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWW,.,-----------------------###########-----------------------------------------------,,,.,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,T
 M:W#####################################################################WW,.,-----------------------###########---------------------------------------------,,,,,.,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
 M:W#####################################################################WW,.,-----------------------###########-----------------------------------------------,,.,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
