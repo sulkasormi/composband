@@ -2,11 +2,11 @@
 ?:[AND [EQU $TOWN 1] [EQU $WILDERNESS NONE] ]
 %:t_lite.txt
 ?:[AND [EQU $TOWN 1] [EQU $WILDERNESS NORMAL] ]
-%:t_outpost.txt
+%:t_outp.txt
 ?:1
 
 ?:[EQU $TOWN 2]
-%:t_telmora.txt
+%:t_telmo.txt
 
 ?:[EQU $TOWN 3]
 %:t_morivant.txt
@@ -15,7 +15,7 @@
 %:t_angwil.txt
 
 ?:[EQU $TOWN 5]
-%:t_anambar.txt
+%:t_ana.txt
 
 ?:[EQU $TOWN 6]
 %:t_thalos.txt
