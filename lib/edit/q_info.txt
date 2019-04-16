@@ -20,12 +20,13 @@ N:1:5:The Thieves' Hideout (Outpost)
 T:TOWN | GENERATE
 F:q_thieves.txt
 
+# Hardcoded as quest 2 in defines.h
 N:2:15:The Sewer (Outpost)
-T:TOWN | GENERATE
+T:TOWN | GENERATE | SUBSTITUTE_87
 F:q_sewer.txt
 
 N:3:22:The Stranger (Telmora)
-T:TOWN | GENERATE
+T:TOWN | GENERATE | SUBSTITUTE_88
 G:KILL(anti-paladin)
 F:q_antipaladin.txt
 
@@ -91,7 +92,7 @@ T:TOWN | GENERATE
 F:q_vapor2.txt
 
 N:21:55:Doom Quest II (Angwil)
-T:TOWN | GENERATE
+T:TOWN | GENERATE | SUBSTITUTE_85
 F:q_doom2.txt
 
 N:22:20:The Orc Camp (Anambar)
@@ -103,7 +104,7 @@ T:TOWN | GENERATE | DANGER_LEVEL_80
 F:q_spawning_pits.txt
 
 N:24:50:The Rise and Fall of Micro$oft (Angwil)
-T:TOWN | GENERATE
+T:TOWN | GENERATE | SUBSTITUTE_86
 G:KILL(bull gates)
 F:q_microsoft.txt
 
@@ -147,7 +148,7 @@ T:TOWN | GENERATE
 F:q_cloning_pits.txt
 
 N:34:50:The Mountain Shrine (Telmora)
-T:TOWN | GENERATE
+T:TOWN | GENERATE | SUBSTITUTE_94
 F:q_shrine.txt
 
 N:35:42:Dragon Quest (Angwil)
@@ -155,7 +156,7 @@ T:TOWN | GENERATE
 F:q_dragons.txt
 
 N:36:38:The Sand Pit (Angwil)
-T:TOWN | GENERATE
+T:TOWN | GENERATE | SUBSTITUTE_91
 F:q_worms.txt
 
 ########################################################################
@@ -226,19 +227,19 @@ F:q_snakes.txt
 G:FIND(jones)
 
 N:52:25:The Old Barracks (Morivant)
-T:TOWN | GENERATE
+T:TOWN | GENERATE | SUBSTITUTE_92
 F:q_barracks.txt
 
 N:53:35:The Shopkeeper's Secret (Morivant)
-T:TOWN | GENERATE
+T:TOWN | GENERATE | SUBSTITUTE_93
 F:q_shopkeeper.txt
 
 N:54:40:The Elven Embassy (Morivant)
-T:TOWN | GENERATE
+T:TOWN | GENERATE | DANGER_LEVEL_42 | SUBSTITUTE_95
 F:q_embassy.txt
 
 N:55:50:The Underground City (Morivant)
-T:TOWN | GENERATE
+T:TOWN | GENERATE | DANGER_LEVEL_55
 F:q_underground.txt
 
 # hardcoded as quest 60 in obj.c
@@ -251,7 +252,7 @@ T:TOWN | GENERATE
 F:q_shipwreck.txt
 
 N:62:15:Crow's Nest (Outpost)
-T:TOWN | GENERATE
+T:TOWN | GENERATE | SUBSTITUTE_84
 F:q_birds.txt
 
 N:63:10:Mushrooms (Thalos)
@@ -270,7 +271,7 @@ T:TOWN | GENERATE
 F:q_tidy.txt
 
 N:66:40:Basilisk Cave (Thalos)
-T:TOWN | GENERATE
+T:TOWN | GENERATE | SUBSTITUTE_90
 F:q_basilisk.txt
 
 N:67:40:Crystal Quest (Anambar)
@@ -288,7 +289,7 @@ T:TOWN | GENERATE
 F:q_wtower.txt
 
 N:70:27:Djinni's Cavern (Thalos)
-T:TOWN | GENERATE
+T:TOWN | GENERATE | SUBSTITUTE_89
 F:q_djinni.txt
 
 N:71:20:Shadow Fairies (Thalos)
@@ -308,7 +309,7 @@ T:TOWN | GENERATE
 F:q_cq1.txt
 
 N:75:55:The Mystery of Apina Island (Anambar)
-T:TOWN | GENERATE
+T:TOWN | GENERATE | SUBSTITUTE_83
 F:q_apina.txt
 
 N:76:40:Staff Recovery (Thalos)
@@ -321,7 +322,7 @@ T:TOWN | GENERATE
 F:q_eddies.txt
 
 N:78:60:The Volcano (Telmora)
-T:TOWN | GENERATE
+T:TOWN | GENERATE | SUBSTITUTE_96
 F:q_volc.txt
 
 #####################################################################
@@ -379,5 +380,66 @@ F:q_giantslayer.txt
 N:82:0:Purple Quest
 T:PURPLE
 G:KILL(*)
+
+# Alternative quests
+
+N:83:50:The Treachery of Lord Bovin (Anambar)
+T:TOWN | GENERATE | DANGER_LEVEL_55
+F:q_htower.txt
+
+N:84:15:Bear Problem (Outpost)
+T:TOWN | GENERATE
+F:q_bears.txt
+
+N:85:55:Doom Quest II\: Hell in Angwil
+T:TOWN | GENERATE
+F:q_doom2c.txt
+
+N:86:45:Facing the Books (Angwil)
+T:TOWN | GENERATE | DANGER_LEVEL_55
+G:KILL(gospel of mug)
+F:q_mug.txt
+
+N:87:15:The Compost Heap (Outpost)
+T:TOWN | GENERATE
+F:q_cheap.txt
+
+N:88:30:Swamp Lights (Telmora)
+T:TOWN | GENERATE | DANGER_LEVEL_32
+F:q_lights.txt
+
+N:89:22:Cyclops's Lair (Thalos)
+T:TOWN | GENERATE
+G:KILL(cyclops)
+F:q_cyclo.txt
+
+N:90:45:Dark Academy (Thalos)
+T:TOWN | GENERATE | DANGER_LEVEL_42
+F:q_acadmy.txt
+
+N:91:38:The Pit of Despair (Angwil)
+T:TOWN | GENERATE
+F:q_pit2.txt
+
+N:92:30:Ghost Town (Morivant)
+T:TOWN | GENERATE
+F:q_ghosts.txt
+
+N:93:33:The Dwarven Embassy (Morivant)
+T:TOWN | GENERATE | DANGER_LEVEL_35
+F:q_dwarf.txt
+
+N:94:44:Troll Invasion (Telmora)
+T:TOWN | GENERATE | DANGER_LEVEL_42
+F:q_troll2.txt
+
+N:95:43:The Lost Temple of the Spider-God (Morivant)
+T:TOWN | GENERATE | DANGER_LEVEL_50
+F:q_spider.txt
+
+N:96:52:The Thing under the Mountain (Telmora)
+T:TOWN | GENERATE | DANGER_LEVEL_65
+G:KILL(greater balrog)
+F:q_balrog.txt
 
 # vim: filetype=qi :
