@@ -16,6 +16,9 @@ L:z:PERMANENT
 # Default for Quest 2 = entrance is floor
 L:r:FLOOR
 
+# Default for Quest 87 = entrance is dirt
+L:R:DIRT
+
 # Default for Quest 50 = entrance is stone
 L:p:PERMANENT
 
@@ -54,8 +57,10 @@ L:b:BUILDING_1(14)
 L:b:BUILDING_1(2)
 ?:1
 ############### Quest 2 - The Sewer ###############
-?:[EQU $QUEST2 Taken]
+?:[AND [EQU $QUEST2 Taken] [LEQ [MOD $RANDOM0 76] 37] ]
 L:r:QUEST_ENTER(2)
+?:[AND [EQU $QUEST2 Taken] [GEQ [MOD $RANDOM0 76] 38] ]
+L:R:QUEST_ENTER(2)
 ?:[EQU $QUEST2 Taken Completed Failed]
 L:b:BUILDING_1(2)
 ?:[EQU $QUEST2 Finished FailedDone]
@@ -204,8 +209,8 @@ M:         WWWWWW                                         ----------------------
 M:        VWWWWWWWW                                        ------                                                                     -------                                                .          
 M:       VWWWWWWWWWWV                                        --                                                                          --                                                   ^^^^      
 M:       WWWWWWWWWWWW                                                                                                                                                                     ^^^^<^^^^^    
-M:     WWWWWWWWWWWWWWWW                                                                                                                                                                y^^^^^^^^^^^^^   
-M:       WWWWWWWWWWWWW                                                                                                                                                               ^^^^^^^^^^^^^^^    
+M:     WWWWWWWWWWWWWWWW                                                                                                                                                 ,,,            y^^^^^^^^^^^^^   
+M:       WWWWWWWWWWWWW                                                                                                                                                   R,          ^^^^^^^^^^^^^^^    
 M:       VWWWWWWWWWWV                                                                                                                                                               ^^^^^^^^^^^^^^^     
 M:         VWWWWWWWV                                                                                                                                                                 ^^^^^^^^^^^^^      
 M:            VVVWWWW                                                                                                                                                                  ^^^^^^^^^        
