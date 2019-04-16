@@ -369,7 +369,7 @@ static cptr r_info_flags3[] =
     "XXX",
     "XXX",
     "XXX",
-    "XXX",
+    "COMPOST",
     "XXX",
     "XXX",
     "CLEAR_HEAD",
@@ -1640,7 +1640,8 @@ static errr _parse_room_grid_object(char **args, int arg_ct, room_grid_ptr grid,
             {
                 /* Number and Type can share the same extra parameter,
                  * because Type is only used by devices (for ego generation),
-                 * and devices are never generated in piles */
+                 * and statues (for marking the monster), and devices and
+                 * statues are never generated in piles */
                 grid->extra2 = n;
 //                grid->flags |= ROOM_GRID_EGO;
             }
@@ -1894,6 +1895,7 @@ static errr _parse_room_grid_feature(char* name, char **args, int arg_ct, room_g
         for (i = 0; i < flag_ct; i++)
         {
             char* flag = flags[i];
+            int n;
 
             if (streq(flag, "ROOM"))
                 grid->cave_info |= CAVE_ROOM;
@@ -1912,6 +1914,8 @@ static errr _parse_room_grid_feature(char* name, char **args, int arg_ct, room_g
                 grid->flags |= ROOM_GRID_SPECIAL;
                 grid->extra = atoi(flag);
             }
+            else if (sscanf(flag, "%d%%", &n) == 1)
+                grid->feat_pct = n;
             else
             {
                 msg_format("Error: Unknown Feature Option %s.", flag);
@@ -5161,7 +5165,8 @@ static cptr process_dungeon_file_expr(char **sp, char *fp)
             {
                 int q_idx = atoi(b+7);
                 /* "RANDOM" uses a special parameter to determine the number of the quest */
-                sprintf(tmp, "%d", quests_get(q_idx)->seed);
+                if (q_idx == 0) sprintf(tmp, "%d", p_ptr->quest_seed);
+                else sprintf(tmp, "%d", quests_get(q_idx)->seed);
                 v = tmp;
             }
 
