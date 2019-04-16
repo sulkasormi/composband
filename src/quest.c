@@ -9,6 +9,7 @@ static cptr _strcpy(cptr s)
 {
     char *r = malloc(strlen(s)+1);
     strcpy(r, s);
+    if (strpos("\\", r)) (void)clip_and_locate("\\", r);
     return r;
 }
 
@@ -582,6 +583,7 @@ static errr _parse_q_info(char *line, int options)
         quest->id = atoi(zz[0]);
         quest->level = atoi(zz[1]);
         quest->danger_level = quest->level;
+        quest->substitute = 0;
         int_map_add(_quests, quest->id, quest);
     }
     /* T:TOWN | GENERATE */
@@ -611,6 +613,8 @@ static errr _parse_q_info(char *line, int options)
                 quest->flags |= QF_PURPLE;
             else if (1 == sscanf(flag, "DANGER_LEVEL_%d", &fake_lev))
                 quest->danger_level = fake_lev;
+            else if (1 == sscanf(flag, "SUBSTITUTE_%d", &fake_lev))
+                quest->substitute = fake_lev;
             else
             {
                 msg_format("Error: Invalid quest flag %s.", flag);
@@ -712,10 +716,47 @@ void quests_cleanup(void)
     _current = 0;
 }
 
+static int _substitute_hack = 0;
+
+static errr _parse_substitute(char *line, int options)
+{
+    if (line[0] == 'K' && line[1] == ':')
+    {
+        if (1 == sscanf(line, "K:%d", &_substitute_hack)) return 0;
+        /* let's return 0 anyway and not crash needlessly */
+    }
+    return 0;
+}
+
+quest_ptr _quest_map_find(int which)
+{
+    quest_ptr q = int_map_find(_quests, which);
+    static bool _lukko = FALSE;
+    if (_lukko) return q;
+    if ((!q) || (!q->file) || (!q->substitute)) return q;
+    if (!p_ptr->quest_seed) return q; /* This also ensures we don't return an inappropriate result if quest_map_find is called before p_ptr->quest_seed is loaded (as actually happens during loading of saved games) */
+//    msg_format("Quest seed: %d Substitute: %d", p_ptr->quest_seed, q->substitute);
+    if (q->substitute > 0)
+    {
+        _substitute_hack = 0;
+        _lukko = TRUE;
+        if ((parse_edit_file(q->file, _parse_substitute, 0) != ERROR_SUCCESS) || (!_substitute_hack))
+        {
+            q->substitute = 0;
+            _lukko = FALSE;
+            return q;
+        }
+        q->substitute = 0 - _substitute_hack;
+        _lukko = FALSE;
+    }
+    if (q->substitute < 0) return int_map_find(_quests, 0 - q->substitute);
+    return q;
+}
+
 quest_ptr quests_get_current(void)
 {
     if (!_current) return NULL;
-    return int_map_find(_quests, _current);
+    return _quest_map_find(_current);
 }
 
 int quest_id_current(void)
@@ -725,7 +766,7 @@ int quest_id_current(void)
 
 quest_ptr quests_get(int id)
 {
-    return int_map_find(_quests, id);
+    return _quest_map_find(id);
 }
 
 cptr quests_get_name(int id)
@@ -923,6 +964,14 @@ void get_purple_questor(quest_ptr q)
         mon_lev = (min_lev + max_lev + 1) / 2;
         mon_lev += randint0(max_lev - mon_lev + 1);
         if ((mon_lev < 37) && (prevent_unique)) mon_lev += MIN(3, (44 - mon_lev) / 8);
+        if ((disciple_is_(DISCIPLE_KARROT)) && (mon_lev > 34) && (mon_lev > q->level + 4))
+        {
+            if (prevent_unique) mon_lev -= randint1(mon_lev - (q->level + 4));
+            else mon_lev -= 1;
+            max_lev -= 1;
+            min_lev -= 1;
+            if (max_lev > mon_lev + 4) max_lev -= randint1(max_lev - (mon_lev + 4));
+        }
 
         unique_count = 0; /* Hack: get_mon_num assume level generation and restricts uniques per level */
         r_idx = get_mon_num(mon_lev);
@@ -943,6 +992,7 @@ void get_purple_questor(quest_ptr q)
         if (r_ptr->flags7 & RF7_AQUATIC) continue;
         if (r_ptr->flags8 & RF8_WILD_ONLY) continue;
         if (r_ptr->flagsx & RFX_SUPPRESS) continue; /* paranoia */
+        if ((r_ptr->flags1 & RF1_ESCORT) && (!force_unique)) continue;
         if (r_ptr->level > max_lev) continue;
         if ((q->level <= 15) && (r_ptr->flags2 & RF2_INVISIBLE)) continue;
         if (r_ptr->level > min_lev || attempt > 5000)
@@ -956,8 +1006,9 @@ void get_purple_questor(quest_ptr q)
             else
             {
                 q->goal_count = rand_range(4, 8) + MAX(0, MIN(2, (54 - q->level) / 10));
-                if ((q->level > 75) && (q->goal_count > 6)) q->goal_count--;
+                if ((q->level > 70) && (q->goal_count > 6)) q->goal_count--;
                 if ((q->level > 85) && (q->goal_count > 6)) q->goal_count -= randint1(3);
+                if ((disciple_is_(DISCIPLE_KARROT)) && (r_ptr->level > 37) && (q->goal_count > 5)) q->goal_count--;
                 if (r_ptr->flags1 & RF1_FRIENDS)
                 {
                     if (r_ptr->pack_dice)
@@ -1259,10 +1310,10 @@ void quests_on_kill_mon(mon_ptr mon)
     /* handle monsters summoned *after* the quest was completed ... */
     if (q->status == QS_COMPLETED) return;
 
-    if (q->goal == QG_KILL_MON && mon->r_idx == q->goal_idx)
+    if ((q->goal == QG_KILL_MON) && (mon->r_idx == q->goal_idx))
     {
         if ((q->goal_count > 1) && (mon->mflag2 & MFLAG2_COUNTED_KILLED)) return;
-        q->goal_current++;
+        if (!(mon->mflag & MFLAG_BORN2)) q->goal_current++;
         if (q->goal_current >= q->goal_count)
             quest_complete(q, point(mon->fx, mon->fy));
     }
