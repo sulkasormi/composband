@@ -3421,7 +3421,7 @@ static int _calc_xtra_hp(int amt)
             w1 = 2; w2 = 1; w3 = 0;
             break;
         default:
-            w1 = 1; w2 = 1; w3 = 1;
+            w1 = 3; w2 = 2; w3 = 1;
             break;
         }
         break;
