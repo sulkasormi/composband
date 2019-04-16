@@ -1671,12 +1671,15 @@ static bool _obj_kind_hook(int k_idx)
 
 static void _apply_room_grid_feat(point_t p, room_grid_ptr grid, u16b room_flags)
 {
+    bool make_floor = FALSE;
     cave_type *c_ptr = &cave[p.y][p.x];
+
+    if ((grid->feat_pct) && (randint0(100) >= grid->feat_pct)) make_floor = TRUE;
 
     /* Feature */
     if (grid->cave_feat)
     {
-        c_ptr->feat = conv_dungeon_feat(grid->cave_feat);
+        c_ptr->feat = conv_dungeon_feat(make_floor ? feat_floor : grid->cave_feat);
         c_ptr->info = (c_ptr->info & (CAVE_MASK | CAVE_TEMP)) | grid->cave_info;
 
         if (grid->flags & ROOM_GRID_SPECIAL)
@@ -1924,6 +1927,7 @@ obj_ptr room_grid_make_obj(room_grid_ptr grid, int level)
     else if (grid->object)
     {
         int k_idx;
+        bool is_gold = FALSE;
 
         if (grid->flags & ROOM_GRID_OBJ_TYPE)
         {
@@ -1947,7 +1951,19 @@ obj_ptr room_grid_make_obj(room_grid_ptr grid, int level)
         else
             k_idx = grid->object;
 
-        if (k_idx)
+        if ((k_idx) && (!(grid->flags & ROOM_GRID_OBJ_TYPE)))
+        {
+            object_kind *k_ptr = &k_info[k_idx];
+            if ((k_ptr) && (k_ptr->tval == TV_GOLD))
+            {
+                is_gold = TRUE;
+                coin_type = k_ptr->sval;
+                make_gold(&forge, TRUE);
+                coin_type = 0;
+            }
+        }
+
+        if ((k_idx) && (!is_gold))
         {
             int mode = 0;
 
@@ -1999,11 +2015,18 @@ obj_ptr room_grid_make_obj(room_grid_ptr grid, int level)
                 apply_magic(&forge, object_level, mode);
                 if (grid->extra2 > 0)
                 {
-                    int luku = MIN(grid->extra2, 99); /* sanity check */
-                    object_kind *k_ptr = &k_info[forge.k_idx];
-                    forge.number = luku;
-                    k_ptr->counts.generated += luku - 1;
-                    if (forge.name2) e_info[forge.name2].counts.generated += luku - 1;
+                    if ((forge.tval == TV_STATUE) || (forge.tval == TV_FIGURINE))
+                    {
+                        forge.pval = grid->extra2;
+                    }
+                    else
+                    {
+                        int luku = MIN(grid->extra2, 99); /* sanity check */
+                        object_kind *k_ptr = &k_info[forge.k_idx];
+                        forge.number = luku;
+                        k_ptr->counts.generated += luku - 1;
+                        if (forge.name2) e_info[forge.name2].counts.generated += luku - 1;
+                    }
                 }
                 else
                 {
