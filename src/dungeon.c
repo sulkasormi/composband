@@ -4698,6 +4698,8 @@ static void process_player(void)
                 /* quickwalking ninjas should not be overly poisoned! */
                 amt = amt * energy_use / 100;
 
+                if ((amt < 1) && (randint0(100) < energy_use)) amt = 1;
+
                 if (amt > p_ptr->poisoned)
                     amt = p_ptr->poisoned;
                 if (0 || p_ptr->wizard)
