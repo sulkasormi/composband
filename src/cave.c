@@ -4758,7 +4758,7 @@ void hit_mon_trap(int y, int x, int m_idx)
             msg_format("%^s dispels your shadow!", m_name);
             kipu = 4;
         }
-        else if ((r_ptr->flagsr & RFR_IM_ELEC) || (randint1(BREAK_MON_TRAP * p_ptr->lev / 50) <= r_ptr->level))
+        else if ((r_ptr->flagsr & RFR_IM_ELEC) || (randint1(BREAK_MON_TRAP * p_ptr->lev / 40) <= r_ptr->level))
         {
             msg_format("%^s destroys your shadow!", m_name);
             kipu = 2;
