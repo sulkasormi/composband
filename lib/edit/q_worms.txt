@@ -1,4 +1,8 @@
 # The Sand Pit (clouded)
+?:[GEQ [MOD $RANDOM0 34] 17]
+K:91
+?:1
+
 ?:[EQU $QUEST36 Taken InProgress]
 D:We desperately need help in clearing out a foul nest of worms.
 D:These eldritch abominations are sleeping in a nearby pit, waiting
