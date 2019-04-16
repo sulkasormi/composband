@@ -3308,7 +3308,7 @@ static void _ego_create_boots(object_type *o_ptr, int level)
             o_ptr->pval = 6 + m_bonus(9, level);
             break;
         case EGO_BOOTS_DWARVEN:
-            if (o_ptr->sval != SV_PAIR_OF_METAL_SHOD_BOOTS)
+            if ((o_ptr->sval != SV_PAIR_OF_METAL_SHOD_BOOTS) && ((o_ptr->sval != SV_PAIR_OF_MITHRIL_SHOD_BOOTS) || (one_in_(2))))
             {
                 done = FALSE;
                 break;
