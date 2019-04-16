@@ -1,3 +1,7 @@
+?:[GEQ [MOD $RANDOM0 66] 33]
+K:86
+?:1
+
 ?:[EQU $QUEST24 Taken InProgress]
 D:A mysterious building has appeared, with the eldritch runes "M$"
 D:inscribed in its walls. An aura of evil radiates from this building.
