@@ -3061,10 +3061,13 @@ static cptr do_chaos_spell(int spell, int mode)
         {
             int base = 12;
             int sides = 4;
+            int power = spell_power(4 * plev);
+
+            if (info) return info_power(power);
 
             if (cast)
             {
-                destroy_area(py, px, base + randint1(sides), spell_power(4 * plev));
+                destroy_area(py, px, base + randint1(sides), power);
             }
         }
         break;
