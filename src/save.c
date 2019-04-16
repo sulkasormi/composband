@@ -498,6 +498,7 @@ static void wr_extra(savefile_ptr file)
     savefile_write_u32b(file, p_ptr->exp);
     savefile_write_u32b(file, p_ptr->exp_frac);
     savefile_write_s16b(file, p_ptr->lev);
+    savefile_write_u32b(file, p_ptr->quest_seed);
 
     for (i = 0; i < 64; i++) savefile_write_s16b(file, p_ptr->spell_exp[i]);
     for (i = 0; i < 5; i++) for (j = 0; j < 64; j++) savefile_write_s16b(file, p_ptr->weapon_exp[i][j]);
