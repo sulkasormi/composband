@@ -578,6 +578,7 @@ static flag_insc_table flag_insc_brand[] =
     { "S", OF_VORPAL, -1 },
     { "S", OF_VORPAL2, -1 },
     { "M", OF_BRAND_MANA, -1 },
+    { "Dk", OF_BRAND_DARK, -1 },
     { NULL, 0, -1 }
 };
 
