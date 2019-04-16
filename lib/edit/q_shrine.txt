@@ -1,4 +1,10 @@
-#The Mountain Shrine (clouded)
+# The Mountain Shrine (designed by clouded)
+
+# Same check as Elven Embassy vs. Lost Spider Temple
+?:[AND [EQU $WILDERNESS NORMAL] [GEQ [MOD $RANDOM0 30] 15] ]
+K:94
+?:1
+
 ?:[EQU $QUEST34 Taken InProgress]
 D:A forgotten shrine in a nearby mountain has become a den of
 D:monsters, please return silence to this ancient place. Be
