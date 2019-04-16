@@ -1,0 +1,69 @@
+# New quest for FrogComposband 7.1.chocolate
+
+?:[EQU $QUEST52 Taken InProgress]
+D:I would like you to explore the ruins of the old barracks. No one's been
+D:there in decades; the rooms have largely caved in, and the ghosts of the
+D:soldiers who died in the great earthquake are rumoured to haunt the place.
+D:You could check whether it's safe and whether anything valuable survived
+D:the earthquake.
+?:1
+
+?:[EQU $QUEST52 Completed]
+D:I hear there was still some good stuff left, you can keep anything you
+D:found as your reward.
+?:1
+
+?:[EQU $QUEST52 Failed]
+D:You have failed me, beware you do not do so again!
+?:1
+
+T:QUEST:NORMAL
+L:X:PERMANENT
+L:#:GRANITE
+L:.:FLOOR
+L:<:UP_STAIR
+L:k:OBJ(SHIELD, DEPTH+5):EGO(elemental)
+L:l:OBJ(HARD_ARMOR, DEPTH+10)
+L:h:OBJ(HELM, DEPTH+1)
+L:$:OBJ(*, DEPTH+5)
+L:!:OBJ(potion of sight)
+L:_:OBJ(STAFF_EARTHQUAKE)
+L:|:OBJ(long sword):EGO(armageddon)
+L:;:RUBBLE
+L:p:RUBBLE(60%)
+L:q:RUBBLE(20%)
+L:O:OBJ(WEAPON, DEPTH+8)
+L:G:MON(^ghost$)
+L:g:MON(^dread$, NO_GROUP)
+L:W:MON(black wraith)
+L:H:MON(hisser)
+L:b:MON(banshee)
+L:P:MON(phantom warrior)
+L:L:MON(lost soul)
+L:M:MON(moaning spirit)
+L:s:MON(spectre)
+L:*:MON(GHOST)
+L:e:MON(headless ghost)
+L:w:MON(grave wight)
+L:V:MON(white wraith)
+M:XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX
+M:X$...#..P$#<..#W.;.#...#$#b#$#_!X
+M:X*.pL#.p..###.#lh#.#V#.#;#;#;#;#X
+M:X.ppp#ppp.#...####.#.#.;.pppp.e.X
+M:X..pp#pp.w#.#.##.#.qq#.#;#;#;#;#X
+M:X###p#p####.####M#.###.#$#b#$#|!X
+M:X..qqVqq..#..q;..#H#.#.#########X
+M:X.qq.qqqq.##.##.##.#..H#....qq.$X
+M:X...qqqq.L;..M#.qq.#;###.;.#.p;.X
+M:X.P..qq.qq#.#.######...;qP;pp#..X
+M:X...qq.qq.#q#q#..q;..#.#....##.wX
+M:X###qqq####q#q#.######.###.q#.;.X
+M:X.q..qq..q#.bH#....#..b#....q..*X
+M:X.q.qq..q.#####;##;#;###########X
+M:X..qq.q.q..V...H#OO#.H.#$#$#$#$kX
+M:X..qqqqq..############p#p#p#p#p#X
+M:X....qqq.q#....qqqq..#ppqqqqqqqqX
+M:X.P.qqqGq.;...qqqqe..;.#p#p#p#p#X
+M:X#...qq.q.;.s..qqqq..#w#G#G#G#GgX
+M:X..qqqqq.q#..w..qqqq.###########X
+M:XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX

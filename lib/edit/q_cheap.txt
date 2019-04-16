@@ -1,0 +1,70 @@
+# New quest for FrogComposband 7.1.chocolate
+
+?:[EQU $QUEST2 Taken InProgress]
+D:The compost heap on the other side of the city has started attracting
+D:large numbers of rats, some of them of a type we've never seen before.
+D:Please try to locate their nest and stop the infestation.
+?:1
+
+?:[EQU $QUEST2 Completed]
+D:Thank you for eradicating those pests! It was a dirty job, but someone
+D:had to do it.
+?:1
+
+?:[EQU $QUEST2 Failed]
+D:Oh no! I hope we won't have to suffer the rats forever.
+?:1
+
+T:QUEST:NORMAL
+L:#:PERMANENT
+L:<:UP_STAIR
+L:.:FLOOR
+L:*:QUARTZ_TREASURE
+L:%:QUARTZ_VEIN
+L:G:GRANITE
+L:':BROKEN_DOOR
+L:~:SHALLOW_WATER
+L:V:DEEP_WATER
+L:&:MAGMA_VEIN
+L:R:MON(nizukil)
+L:r:MON(plague rat)
+L:w:MON(giant white rat)
+L:s:MON(swamp rat)
+L:W:MON(skaven shaman)
+L:2:MON(plague monk)
+!:SCRAMBLE(R,r,w,2)
+M:############################################
+M:#&%%&&&&%&&&&&&&&&&%%&%%%%&&&%&&%%%%&%%%%%%#
+M:#%GG%&&&&&%&&&%%&&%&GG%%%&%&%%%%%%&&&%%%%&&#
+M:#%%&%&&&&%.%%&&&%&&%%GG&&&&&&%%%%........&%#
+M:#&%%&&%%.......%&&&&&%&%%&&&%&%&%........&%#
+M:#&&%%%%%........&&%&&%%G%<%&%&%&%........&&#
+M:#%%%&%&&........................'........%&#
+M:#&%&&&&.........%&&&&&&&%%%&&%%%%....r...%&#
+M:#%&&%%....R.....%%%G%%%%%%&&%%%&&........G%#
+M:#%&%%%.........&&%%%&&%%&&%%%%&&&%%&.%GGG%%#
+M:#%%&&.......&%%%&&%%&%G%%%%%&&&%%%%%.%%&&%&#
+M:#GG%&%.....%%&&%%&%%&*%&&&&%%%&&G%&&.&%%%&%#
+M:#&&&&%%&.%%%%&&%%&&%&%%&%%&%&%%%%%&..%%&%%&#
+M:#&&&&&&%.%&&&&%%%%%&&&&&%&&&&%&%&%%.%&&&%&%#
+M:#&&%&&%%.G%%&&%&&%G%%%%&%%&&%GG%&%%.%%GGG%%#
+M:#%&&&%%&.%%%%&&&%&&%&&%%&&%%............G%&#
+M:#%&%%%&&.%%%&&&%%&&%&.%G&&%G............%&&#
+M:#G%%%.........%%&&&%%.%G%&&%............%%%#
+M:#%GG&.......2.&&%....W...............w..%%%#
+M:#%%&&.........&%%.%%%G&&%G%%............G%&#
+M:#&%%%.............&%&&&&&%%G........GGGGG%%#
+M:#%%%~~s.......G%%&&&%%%%&&%G........GG%G%GG#
+M:#GG~~~~.......GGG%GGG%GGG%GGGGGGGG%GG%%&&GG#
+M:#%~~~~~%%GGGGGG&%%G%G%G%G%G&%&%%%&&%&%%%%&&#
+M:#%~~~~%%&&&%%%GG%&GG&&G&G%G%G%%&&&%%&&%%GG%#
+M:#GV~~G%%%%&&&%G&&&GGG%G%G&G%G%%%%&&%%%%&G%%#
+M:#%GV~G%&&&&%&%G&&%G%G%GGG&GGG%&&%%&&%&&%G%&#
+M:#%%%GG&&%%%&%%%&&%%&%%%%&&&&&&&%%&G&%%&&&%G#
+M:############################################
+R:OBJ(hard leather boots):EGO(levitation)
+
+?:[AND [EQU $CLASS Monster] [EQU $RACE Dragon Demon Hydra Beholder Death-Sword Spider Quylthulg Ring Jelly] ]
+R:OBJ(ROD_BEAM_ACID, DEPTH+2)
+
+# vim: filetype=q :

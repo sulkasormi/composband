@@ -1,0 +1,105 @@
+# The Treachery of Lord Bovin
+# New quest for FrogComposband 7.1.chocolate
+
+?:[EQU $QUEST75 Taken InProgress]
+D:Lord Bovin, the once-beloved Warden of the High Tower, has joined forces
+D:with a black enchantress and turned to evil. Dark wizards and
+D:necromancers now frequent the High Tower, plotting against our city. Their
+D:plans must be disrupted before they raise an unstoppable army of demons,
+D:dragons and the dead. Please help us and save our city.
+?:1
+
+?:[EQU $QUEST75 Completed]
+D:Thank you! Now the people of Anambar can walk safely again.
+?:1
+
+?:[EQU $QUEST75 Failed]
+D:I should have known you wouldn't be up to this task. Fortunately Lord
+D:Gwilim, the great hero, happened to drop by and saved us from the dark
+D:armies of the traitor Bovin.
+?:1
+
+T:QUEST:NORMAL
+# Terrain
+L:#:PERMANENT
+L:%:GRANITE
+L:<:UP_STAIR
+L:.:FLOOR(ICKY)
+L:,:FLOOR
+L:2:OBJ(two-handed sword, DEPTH+5)
+L:3:OBJ(large steel chest)
+L:4:FLOOR(ICKY):OBJ(*, DEPTH+15)
+L:5:FLOOR(ICKY):OBJ(GOLD, DEPTH+10)
+L:6:FLOOR(ICKY):OBJ(pair of soft leather boots, DEPTH+25)
+L:7:FLOOR(ICKY):OBJ(GOLD, DEPTH+30)
+L:8:FLOOR(ICKY):OBJ(pair of soft leather boots, DEPTH+10):EGO(speed)
+L:?:FLOOR(ICKY):OBJ(scroll of acquirement)
+L:+:CLOSED_DOOR
+L:-:SECRET_DOOR
+L:C:CLOSED_CURTAIN
+L:^:TRAP(TRAP_ALARM)
+L:k:TRAP(TRAP_TELEPORT)
+L:~:DEEP_WATER
+L:D:MON(ancient multi-hued dragon, NO_SLEEP)
+L:e:MON(enchantress)
+L:u:MON(baron of hell, NO_SLEEP)
+L:p:MON(hell knight)
+L:q:MON(demonologist)
+L:g:MON(goat of mendes, NO_SLEEP)
+L:w:MON(wyrd sister)
+L:s:MON(sorcerer)
+L:i:MON(ipsissimus)
+L:W:MON(revenant, NO_SLEEP)
+L:L:MON(legate of the damned, NO_SLEEP)
+L:t:MON(grand master thief)
+L:d:MON(demonologist)
+L:h:MON(durahan)
+L:a:MON(archpriest)
+L:H:MON(high priest)
+L:x:MON(death knight)
+L:U:MON(lesser balrog, NO_SLEEP)
+L:B:MON(bovin)
+L:l:MON(dracolisk, NO_SLEEP)
+L:G:MON(ancient gold dragon, NO_SLEEP)
+L:v:MON(arch-vile, NO_SLEEP)
+L:V:MON(winged horror, NO_SLEEP)
+
+!:SCRAMBLE(6,8)
+
+# Dungeon layout
+M:######################################################
+M:######################################################
+M:##############.k..^.##############.^....##############
+M:###########..^.####....########..k.####.^..###########
+M:##########..##########^^######^^##########..##########
+M:#########..###vv#######-######-#######WW###..#########
+M:#########-###vV~~######l~~##~~G######~~gW###-#########
+M:########555##v~~..x..##~~,Be,~~##..s..~~W##444########
+M:########555###~.......#~,,,,,,~#.......~###4?4########
+M:########555%7##H..,...##,,,,,,##..,...a##^%444########
+M:########%###7##...,,..##3,,,,2##..,,...##^###%########
+M:########%###7###.......##,,,,##.......###^###%########
+M:########%###777######...##CC##...######6^^###%########
+M:########%%############...#,,#...############%%########
+M:#########%%###.p...####..,,,,..####...h.###%%#########
+M:##########%%~.......###.,,,,,,.###.......~%%##########
+M:###########u~....,....,,,,%%,,,,....,....~L###########
+M:###########u~....,....,,,,%%,,,,....,....~L###########
+M:##########%%~.......###.,,,,,,.###.......~%%##########
+M:#########%%###.q...####..,,,,..####...i.###%%#########
+M:########%%############...#,,#...############%%########
+M:########444#^^8######...##..##...######777#555########
+M:########4?4%^###.......###..###.......###7%555########
+M:########444####...,,..####..####..,,...####555########
+M:#########%%####e...,..####..####..,...w####%%#########
+M:##########%%##~.......####^^####.......~##%%##########
+M:###########%%#~~..t..#####++#####..d..~~#%%###########
+M:############%%D~~#########<.#########~~U%%############
+M:######################################################
+M:######################################################
+R:OBJ(STAFF_CONFUSING_LITE, TYPE=simplicity)
+
+?:[EQU $CLASS Berserker]
+R:OBJ(potion of life, NUMBER=1)
+
+# vim: filetype=q :

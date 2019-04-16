@@ -1,18 +1,22 @@
-# New quest for FrogComposband 7.0.strawberry
+# New quest for FrogComposband 7.0.strawberry (not actually used at the time)
+# The original description ended up as the description for Shadow Fairies,
+# and the original map ended up as the map for Djinni's Cavern...
+# Redesigned for FrogComposband 7.1.chocolate
 
-?:[EQU $QUEST71 Taken InProgress]
-D:The forests near our city have become increasingly dangerous as large
-D:numbers of bears have settled in the area. Before we'd only see the
-D:occasionally solitary bear, but now they're forming groups and even
-D:use our roads. My scouts have located their den; it's to the east of the
-D:city, at the base of a hill near the shore. I would be most thankful
-D:should you go there and eliminate this threat to our safety.
+?:[EQU $QUEST62 Taken InProgress]
+D:The bear population in our eastern forests has exploded recently; before
+D:we'd only see the occasional solitary grizzly, but now they're forming
+D:groups and even use our roads. They seem to live in a cave near the southern
+D:edge of the forest, at the base of a large hill. The Count believes them
+D:responsible for the disappearances of some of our citizens, who were last
+D:seen walking in that area. Please explore their den and make our town safe
+D:again.
 
-?:[EQU $QUEST71 Completed]
+?:[EQU $QUEST62 Completed]
 D:Thank you, truly you are stronger than any bear.
 ?:1
 
-?:[EQU $QUEST71 Failed]
+?:[EQU $QUEST62 Failed]
 D:I hope I can find someone more capable than you.
 ?:1
 
@@ -23,20 +27,31 @@ L:<:UP_STAIR
 L:i:DIRT
 L:.:DIRT
 L:m:MON(mad bear)
+L:M:MON(mad bear, NO_GROUP)
+L:N:MON(mad bear, NO_GROUP | NO_SLEEP)
 L:(:OBJ(filthy rag, DEPTH+18)
-L:o:OBJ(*)
-L:h:OBJ(skeleton)
-!:SCRAMBLE(h,i)
+L:h:OBJ(human skeleton)
+L:H:OBJ(human skeleton)
+L:i:OBJ(human skeleton)
+L:o:OBJ(*, DEPTH+1)
+L:O:OBJ(*, DEPTH+1)
+L:q:OBJ(*, DEPTH+1)
+L:p:OBJ(potion of berserk strength)
+!:SCRAMBLE(h,o,H,O)
+!:SCRAMBLE(i,q)
 
-M:%%%%%%%%%%%%%%%
-M:%#############%
-M:%####..#######%
-M:%##(.....#####%
-M:%#.ih.....####%
-M:%#h.mi..m...<#%
-M:%#i..h......##%
-M:%#.hi....#####%
-M:%####..o######%
-M:%#############%
-M:%%%%%%%%%%%%%%%
-R:OBJ(potion of berserk strength)
+M:%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+M:%#############################%
+M:%####M(######<################%
+M:%###OH..####...######ii#######%
+M:%##HNMo...##......##..Mq######%
+M:%##oM.h......####.......iq####%
+M:%###hO.....#######...m...q####%
+M:%####..m##########N.....M#####%
+M:%##################M...i######%
+M:%#############################%
+M:%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+R:OBJ(STAFF_ENLIGHTENMENT)
+
+?:[EQU $CLASS Berserker]
+R:OBJ(potion of enlightenment, NUMBER=1)

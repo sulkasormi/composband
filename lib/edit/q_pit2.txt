@@ -1,0 +1,51 @@
+# New quest for FrogComposband 7.1.chocolate
+
+?:[EQU $QUEST36 Taken InProgress]
+D:Unspeakable horrors inhabit the old quarry south of our town, spreading
+D:gloom and fear as they creep out at night. Please, help us before it's
+D:too late for Angwil.
+?:[EQU $QUEST36 Completed]
+D:Thank you.
+?:[EQU $QUEST36 Failed]
+D:Oh. no.
+?:1
+
+T:QUEST:NORMAL
+L:X:PERMANENT
+L:#:GRANITE
+L:.:DIRT
+L:;:RUBBLE
+L:<:UP_STAIR
+L:q:DIRT:MON(night mare)
+L:Q:DIRT:MON(night mare)
+L:w:DIRT:MON(wereworm)
+L:U:DIRT:MON(nightgaunt)
+L:p:DIRT:MON(fearmaster)
+L:u:DIRT:MON(deep one)
+!:SCRAMBLE(Q,w,U,p)
+M:XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX
+M:X;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;X
+M:X;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;X
+M:X;;;;;;;;;;;;;;;;;;;;;..;;....;;;;X
+M:X;;;;;;;;;;;;;;;;;.....Q...;:.;;;;X
+M:X;;;;;;;;;;;;;;;;..;;....;;;;..;;;X
+M:X;;;;;;;;;;;;;;;..;;;;..;;;;....;;X
+M:X;;;;;;;;;;;;;;..;;;;;;..;....w.;;X
+M:X;;;;;;;;;;;;;..;;;;;;;;...;;..;;;X
+M:X;;;;;;;;;;;;;.;;;..;;;;;.;;;;;;;;X
+M:X;;;;;;..::....;;....;;;;.;;;;;;;;X
+M:X;;;;;......;;.....u.;;;;........<X
+M:X;;;;;.q...;;;.;;;..;;;;;.;;;;;;;;X
+M:X;;;;;;;..;;;;.;;;;;;;;;;.;;;;;;;;X
+M:X;;;;;;;;;;;;;.;..;;;;;...;;;;;;;;X
+M:X;;;;;;;;;;;;;..p..;;...;..;;;;;;;X
+M:X;;;;;;;;;;;;;;.......;;;;....;;;;X
+M:X;;;;;;;;;;;;;;....:;;;;;;..U..;;;X
+M:X;;;;;;;;;;;;;;;..;;;;;;;;....;;;;X
+M:X;;;;;;;;;;;;;;;;.;;;....;;..;;;;;X
+M:X;;;;;;;;;;;;;;;;.....;;....;;;;;;X
+M:X;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;X
+M:XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX
+R:OBJ(blade of chaos, DEPTH+12)
+
+# vim: filetype=q :

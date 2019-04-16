@@ -1,0 +1,80 @@
+# New quest for Composband (adapted from Kangband 133)
+# Adapted further for FrogComposband 7.1.chocolate
+
+?:[EQU $QUEST66 Taken InProgress]
+D:One of our former students has brought shame on the order of
+D:wizards by taking over the local museum and turning it into
+D:an academy of evil. He has begun teaching the dark arts to
+D:all applicants, and what's worse, below market prices.
+D:Put a stop to his treachery and reclaim our honour.
+?:1
+
+?:[EQU $QUEST66 Completed]
+D:Well done! We will convert the building back into a museum, but
+D:you can have this amulet as your reward, it's too valuable to go
+D:back into the collection.
+?:1
+
+?:[EQU $QUEST66 Failed]
+D:You have failed us. I hate competition so much.
+?:1
+
+T:QUEST:NORMAL
+L:#:PERMANENT
+L:W:GLASS_WALL
+L:~:DEEP_WATER
+L:.:FLOOR
+L:<:UP_STAIR
+L:+:CLOSED_DOOR
+L:^:TRAP(*, 75%)
+L:a:MON(novice mage)
+L:b:MON(ogre mage)
+L:c:MON(enchantress)
+L:d:MON(demonologist)
+L:e:MON(spectator)
+L:f:MON(displacer beast)
+L:g:MON(silent watcher, NO_SLEEP)
+L:s:MON(^sorcerer$)
+L:h:MON(dark elven warlock)
+L:p:MON(master lich)
+L:$:OBJ(DEVICE)
+L:?:OBJ(HI_BOOK)
+L:K:OBJ(SCROLL)
+L:\:OBJ(wizardstaff):EGO(6)
+L:[:OBJ(crown):EGO(magi)
+L:":OBJ(amulet):EGO(magi)
+L:=:OBJ(^ring$):EGO(wizardry)
+L:S:OBJ(STATUE)
+L:M:OBJ(magical figurine, DEPTH+10)
+!:SCRAMBLE(s,p,d,c)
+M:##########################################################################
+M:##########################################################################
+M:#############################......<......################################
+M:########################S.....................S###########################
+M:######################...........................#########################
+M:#####################.............................########################
+M:####..............##...........WWW+++WWW...........#####.....c......######
+M:####..?########S..##....h.....WW.......WW....b.....#####...K....K...######
+M:####..............#..........WW.........WW..........####...######...######
+M:####..............#..........+....~~~....+..........####...K....K...######
+M:####.d?########S..+..........+....~g~....+..........+..+.....f......######
+M:####..............#..........+....~~~....+..........#########++###########
+M:####..............#..........WW.........WW..........#########..###########
+M:####..?########S..##..........WW.......WW..........##########..###########
+M:####..............##....b......WWW+++WWW.....h.....##########..###########
+M:#############+#######.............................###########..###########
+M:#############.########...........................############..#.e^=######
+M:#############.##########S.....................S##############..+.e^?######
+M:#############.###############.............###################..#.e^=######
+M:#############+####################+++########################..###########
+M:####...........###MMM#############...###################$$$##..###########
+M:####...........###^^^#############...###################^^^##..###########
+M:####...........###W+W#############...####################+###++###########
+M:####...........#.....^?###########...##################............#######
+M:####...#####...+.....^\###########....................+.......s....#######
+M:####.....p.....#.....^?###########....................+..a.........#######
+M:#######################################################............#######
+M:##########################################################################
+R:OBJ(amulet, DEPTH+2):EGO(magi)
+
+# vim: filetype=q :

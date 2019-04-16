@@ -1,0 +1,96 @@
+# New quest for FrogComposband 7.1.chocolate
+
+?:[EQU $QUEST53 Taken InProgress]
+D:The ruins of the old Dwarven Embassy might be worth checking out.
+D:Dangerous monsters lurk there now, but we both know dwarves' predilection
+D:for gold and treasures.
+?:1
+
+?:[EQU $QUEST53 Completed]
+D:Well done, you can keep everything you found.
+?:1
+
+?:[EQU $QUEST53 Failed]
+D:Too bad, I guess those old treasures are lost forever.
+?:1
+
+T:QUEST:NORMAL
+L:#:PERMANENT
+L:+:CLOSED_DOOR
+L:.:FLOOR
+L:<:UP_STAIR
+L:n:OBJ(small iron chest)
+L:':BROKEN_DOOR
+L:::RUBBLE
+L:,:FLOOR(ICKY)
+L:$:FLOOR(ICKY):OBJ(^gold$)
+L:S:FLOOR(ICKY):OBJ(^silver$)
+L:d:FLOOR(ICKY):OBJ(^gold$):MON(mature gold dragon)
+L:D:FLOOR(ICKY):OBJ(^silver$):MON(mature silver dragon)
+L:%:MON(roper)
+L:e:FLOOR(ICKY):MON(^beholder$)
+L:g:MON(silent watcher, NO_SLEEP)
+L:c:MON(carrion crawler)
+L:z:MON(^ghast$)
+L:Z:MON(^ghoul$)
+
+#?:[EQU [MOD $RANDOM53 3] 0]
+L:[:FLOOR(ICKY):OBJ(mithril chain mail):EGO(dwarven)
+?:[EQU [MOD $RANDOM53 3] 1]
+L:[:FLOOR(ICKY):OBJ(mithril helm):EGO(dwarven)
+?:[EQU [MOD $RANDOM53 3] 2]
+L:[:FLOOR(ICKY):OBJ(mithril shod boots):EGO(dwarven)
+?:1
+
+#?:[EQU [MOD $RANDOM53 3] 0]
+L:]:FLOOR(ICKY):OBJ(mithril shield):EGO(dwarven)
+?:[EQU [MOD $RANDOM53 3] 1]
+L:]:FLOOR(ICKY):OBJ(mithril plate mail):EGO(dwarven)
+?:[EQU [MOD $RANDOM53 3] 2]
+L:]:FLOOR(ICKY):OBJ(mithril gauntlets, DEPTH+15)
+?:1
+
+L:R:FLOOR(ICKY):MON(basilisk)
+L:m:FLOOR(ICKY):MON(mithril golem)
+L:/:FLOOR(ICKY):OBJ(battle axe, DEPTH+15)
+L:s:MON(giant skeleton troll)
+L:T:MON(cave troll)
+L:H:MON(shadow hound)
+L:b:MON(doombat)
+L:o:MON(doom drake)
+L:G:MON(bat of gorgoroth)
+L:p:FLOOR(ICKY)
+L:C:MON(creeping mithril coins)
+L:r:MON(giant grey rat)
+L:~:OBJ(dwarf skeleton, 15%)
+L:u:FLOOR
+L:U:MON(nightgaunt)
+L:N:FLOOR(ICKY)
+!:SCRAMBLE(z,Z)
+!:SCRAMBLE(e,R)
+!:SCRAMBLE(n,N)
+!:SCRAMBLE(p,C)
+!:SCRAMBLE(u,U)
+!:SCRAMBLE(b,o,T,H)
+
+M:###################################################
+M:#~.........~#~.......u#N#<#~..........#..........~#
+M:#...........#....G....#C#.#....c......#....s......#
+M:#....b......'.........#:#:#...........'.......s...#
+M:#...........#~........':#'#~..........#.....s.s...#
+M:#...........#####'#####:#.#######..c..#...s.......#
+M:#.Z.........#~.......~#p#.............#~.........U#
+M:#~.........~#.........#.#.#######.....######'######
+M:######'######.........#n#.#........c..#...........#
+M:#SSSS#.#$$$$#.........###.#....z......#.........r.#
+M:#SDSS#.#$$d$#....g........#...........#...........#
+M:#SSSS#.#$$$$#.........#########'#######...........#
+M:####:#.#:####.........#]........#~...o.........T..#
+M:#,,,,#.#,,,,#.........'...%.....#.................#
+M:#,,,,#.#,,,,#~........#.........#~................#
+M:#'####.####'#######################'###...........#
+M:#...~#.#~...#,,,,,,,,,#[,,,,,,,,#,,,,,#...........#
+M:#...........#,,,,m,,,,#,,,,R,,,,#,,m,,#...........#
+M:#.....e.....',,,,,,,,,#,,,,,,,,,',,,,,#...H.......#
+M:#~.........~#,,,,,,,,/#/,,,,,,,,#,,,,,#...........#
+M:###################################################

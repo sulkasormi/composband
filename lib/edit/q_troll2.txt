@@ -1,0 +1,88 @@
+# New quest for FrogComposband 7.1.chocolate
+
+?:[EQU $QUEST34 Taken InProgress]
+D:A few days ago, my men chanced upon a small group of trolls on the road to
+D:Angwil, and managed to fight them off after a hard-fought battle.
+D:Unfortunately, it seems the trolls they saw were only a scouting party for
+D:an enormous army hiding in the hills to the east, intent on destroying
+D:our town and subjecting us all to unimaginable horrors. Please,
+D:we cannot deal with this threat on our own, we need your help.
+?:[EQU $QUEST34 Completed]
+D:Thank you for saving our town, please put this reward to good use.
+?:[EQU $QUEST34 Failed]
+D:Oh no! Only the Maintainer being too lazy to actually wipe us off the map
+D:can save us now.
+?:1
+
+T:QUEST:NORMAL
+L:X:PERMANENT
+L:^:MOUNTAIN_WALL
+L:T:TREE
+L:.:DIRT
+L:#:GRANITE
+L:<:UP_STAIR
+L:E:MON(eldrak)
+L:e:MON(^ettin$)
+L:A:MON(algroth)
+L:S:MON(stone troll)
+L:W:MON(war troll)
+L:p:MON(troll priest)
+L:P:MON(troll priest)
+L:f:MON(forest troll)
+L:C:MON(cave troll)
+L:I:MON(ice troll)
+L:F:MON(fire troll)
+L:s:MON(storm troll)
+L:K:MON(troll king)
+L:h:MON(half-troll)
+L:o:MON(^olog$)
+!:SCRAMBLE(P,s)
+M:XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX
+M:X^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^X
+M:X^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^TT^^^^^^^^X
+M:X^^^^^^^^^^^^^^^^^^^^^..^^^^^^^^^^^^^^^^^^^^^^^^^.eE^^^^^^X
+M:X^^^^^^^^^^^^^^^^^^^...E^^^^^^^^^^^^^^^^^^^^^^^^.....^^^^^X
+M:X^^^^^^^^^^^^^^^^^...^..^^^^^^^^^^^^^^^^^^^^^^^T.....^^^^^X
+M:X^^^^^^^^^^^^^^^^..^^^^^^^^^^^...^^^^^^^^^^^^^^TT^..^^^^^^X
+M:X^^^^^^^^^...^^^..^^^^^^^^^^...e.......^^^^^^^^^^^..^^^^^^X
+M:X^^^^^^^^^.e.^.....^^^^^^^...^^...^^^pp...^^^^^^^..^^^^^^^X
+M:X^^^^^^^^^^....^^^.^^^^^^^.^^^^^^..^^..^^....^^^..^^^^^^^^X
+M:X^^^^^^^^^^..^^^^^.^^.......^^^^^^....^^^^^......^^^^^^^^^X
+M:X^^^^^^^^^^^^^^^^^...........^^^^^^^^^^^^^^^......^^^^^^^^X
+M:X^^^^^^^^^^^^^^^^^^...........^^^^^^^TT^^^^^^..W..^^^^^^^^X
+M:X^^^^^^^^^^^^^^^^^.....S......^^^^^^^^TT^^^^^......^^^^^^^X
+M:X^^^^^^^^^^^^^^^..............^^^^^^^^^TT^^^.......^^^^^^^X
+M:X^^^^^^^^^^^^^...^^..........^^^^^^^^^^^^T^..^......^^^^^^X
+M:X^^^^^^^^^^^^...^^^^........^^^^^^^^^^^^^^.^^^^....^^^^^^^X
+M:X^^^^^^^^^^^..^^^^^^^^^.....^^^^^^^^^^....^^^^^^^^.^^^^^^^X
+M:X^^^^^^^^^^^.^^^^^^^^^^^^^^^^^^^^^^XX..^^^^^^^^^^^TT^^T^^^X
+M:X^^^^^^^^^^^.^^^....^^^^^^^^^XXXXXXX..X^^^^^^^^^^^TT^^^TT^X
+M:X^^^^.............I..^^^^^^^XXXXXXXX.XX^^^^^^^^^^T^T..T^^^X
+M:X^....^^^..^^^^^.....^^^^^^XXXXXXXXX.XXX^^^^^^^^^^p..f..T^X
+M:X<...^^^^^^^^^^^^..^^^^^^^XXXXXXXXXX.XXXX^^^^^^^^T...T..^^X
+M:X....^^^^^^^^^^^^^^^XXXXXXXX.....XX..XXXXX^^^^^^^T..T..^T^X
+M:X..^^^^T^^^^^^^^^^^^XXXXXXXX.....XX.#XXXXXXXXXX^^^^..eT^T^X
+M:XTTTT^T^^^^^^^^^^^^^XXXXXXXX..C.....#XXXXXXXXXX^^^^TTT^^^^X
+M:XTT...^^T^^^^^^^^^^^XXXXXXXX.....##.#XXXXXXXXXX^^^^^^^^^^^X
+M:XTT....^T^^XXXXXXXXXXXXXXXXX.....##.######################X
+M:XTT..A.T^^XXXXXXXXXXXXXXXXXX#######.######################X
+M:X^TT...^^XXXXXXXXXXXXXXXXXXX####................##########X
+M:X^^^^..^XXXXXXXXXXXXXXXX..######.########.#####.##########X
+M:XXXX^^^^XXXXXXXXXXXXXX...p.#####.########.#####.##########X
+M:XXXXXXXXXXXXXXXXXXXXXX......####.########.#####.##########X
+M:XXXXXXXXXXXXXXXXXXXXXXX.....####.######..C#####.##########X
+M:XXXXXXXXXXXXXXXXXXXXXXX..o.......#############.....P.#####X
+M:XXXXXXXXXXXXXXXXXXXXXXX#....####.#############......######X
+M:XXXXXXXXXXXXXXXXXXXXXX##....####..................h.######X
+M:XXXXXXXXXXXXXXXXXXXXX###########.###############....######X
+M:XXXXXXXXXXXXXXXXX...############.###############....######X
+M:XXXXXXXXXXXXXX.......###########.............###.#########X
+M:XXXXXXXXXXXXXX...F...s.#########.####........###.#########X
+M:XXXXXXXXXXXXX##..................####....K.......#########X
+M:XXXXXXXXXXXX####......###############........#############X
+M:XXXXXXXXXXX##########################........#############X
+M:XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX
+R:OBJ(potion of life)
+
+# vim: filetype=q :
+

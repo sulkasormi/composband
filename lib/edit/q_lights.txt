@@ -1,0 +1,77 @@
+# Swamp Lights
+# New quest for FrogComposband 7.1.chocolate
+
+?:[EQU $QUEST3 Taken InProgress]
+D:Unusual and dangerous phenomena have been reported in the marshes to the
+D:northeast. Strange lights are said to blink around, luring travelers away
+D:from safe paths and into quagmires; and one fowler even claims to have
+D:narrowly escaped with his life after being set upon by what looked like
+D:an enormous rolling pumpkin! I do not know how much truth there is behind
+D:these stories, but I would appreciate it if you investigated and made sure
+D:the swamps are safe.
+?:1
+
+?:[EQU $QUEST3 Completed]
+D:Thank you! I sent a couple of scouts to see for themselves what happened,
+D:and one of them discovered this lamp in the remains of that giant pumpkin.
+D:Please take it as a reward for your good work.
+?:1
+
+?:[EQU $QUEST3 Failed]
+D:Oh no! If this keeps up, next we'll have hydras in the swamps...
+?:1
+
+T:QUEST:NORMAL
+# Terrain
+L:#:PERMANENT
+L:6:SHALLOW_WATER
+L:.:SWAMP
+L:,:FLOOR
+L:T:TREE
+L:D:DEEP_WATER
+L:<:UP_STAIR
+L:-:GRASS
+L:;:BRAKE
+L:J:FLOWER:MON(king cobra):OBJ(potion of healing, NUMBER=1)
+L:g:GRASS:MON(death pumpkin, NO_SLEEP)
+L:l:SWAMP:MON(blinking light)
+L:p:GRASS:MON(pumpkin man)
+L:R:SHALLOW_WATER:MON(white crocodile)
+L:*:SWAMP:MON(yellow light)
+L:E:SWAMP:MON(will o' the wisp)
+L:%:SWAMP:MON(vampiric mist)
+L:r:GRASS:MON(vorpal bunny)
+L:H:SWAMP:MON(swamp thing)
+L:G:SWAMP:MON(hisser)
+L:d:SHALLOW_WATER:MON(duck, NO_GROUP)
+
+# Dungeon layout
+M:##################################################################
+M:#...6......6.--.....;-....6666DDDDDD6666.........66D666666D666666#
+M:#.66.6............;;TT-...6..R.DDD666.666.6.--66-6-6D66666DDD6DDD#
+M:#....6...6.6..%....;;;........666.......--.........66DD6D6666DDDD#
+M:#..6............-.........--......6..--.....6.66.-.66--DDDDDDDDDD#
+M:#.....6..6..6..-...6...6.H.-...6....--...666.6D6.....66DDDDDDDDDD#
+M:#.......6...6.....-..6.....--.6..6.......6.DDD..-6....66-DD-DDDDD#
+M:#T.........6.66.....-......6,..6.--....66DDDDD6...6....66DDDDDD-J#
+M:#.....l.....--..66....-.....,,..--...E..66DDD66-......6666DDDDDDD#
+M:#.TT..................l...6..-.--.....6.66.66...-;.;.66..666DDDDD#
+M:#T-T.....T....;..............-p....l..66.66..-..;;.l.......66DDDD#
+M:#-66T...;;......l66....6.....-------...*...............6.6..666DD#
+M:#.T-......................;;--.....--......------..6....--...6666#
+M:#..--TT.*;;;......l.....6;---...6D...-----r-6666--....66....6....#
+M:#.TT-,,-----,---,--,,------;;;..6DDD...66--6.6.666--...666....H..#
+M:#<,,,,.T.T.............l.66----..D6...6...6..l...6.--..66...6-...#
+M:#....-T.--T...............66..-...DDD6..*...666.....----.......6.#
+M:#.-T....T......66..6...6....6.--...6DD6.6..6.........----...;...6#
+M:#TT-..T.*.6........6.6...6.....-..6..6.....DDD.......--gT.......D#
+M:#.---.66......6.l.66DD6....G.l.--...6..6....6.........-;;;.....6.#
+M:#-.T..6.....6.....6DDD.6.6......--.66..66......66666....-...;...6#
+M:#.--....6...6.......66......6....-...6...6.H..6666666....6...6...#
+M:#--T..........6..;;...6..--....66--6...;.....6666DD666.-......66D#
+M:#T...6.....6.............6--.....6..6...6.;-..666666666..66..66DD#
+M:#..........66.....666.....6...-.....6..........66R66d6666D66666DD#
+M:##################################################################
+R:OBJ(feanorian lamp, DEPTH+1):ART(*)
+
+# vim: filetype=q :

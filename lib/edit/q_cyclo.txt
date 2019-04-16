@@ -1,0 +1,85 @@
+# New quest for FrogComposband 7.1.chocolate
+
+?:[EQU $QUEST70 Taken InProgress]
+D:There's a cave to the east of the city, near the shore, that we've
+D:always been a bit afraid to approach; but until recently we never thought
+D:there was anything worse there than a couple of bears, and some spiders and
+D:bats near the entrance. Now, though, it seems the bears have been driven out
+D:by a man-eating cyclops! We need a hero to visit the cave and rid us of
+D:that one-eyed giant.
+
+?:[EQU $QUEST70 Completed]
+D:You saved us from deep trouble. Please accept this modest gift.
+?:1
+
+?:[EQU $QUEST70 Failed]
+D:You have failed me, beware you do not do so again!
+?:1
+
+T:QUEST:NORMAL
+L:#:MOUNTAIN_WALL
+L:%:PERMANENT
+L:<:UP_STAIR
+L:T:TREE
+L:B:BRAKE
+L:.:DIRT
+L:r:RUBBLE
+L:G:GRASS
+L:-:DIRT:OBJ(WAND_BALL_FIRE)
+L:P:DIRT:MON(cyclops)
+L:~:OBJ(human skeleton, 50%)
+L:S:BRAKE:MON(mirkwood spider)
+L:b:BRAKE:MON(vampire bat)
+L:d:TREE:MON(doombat)
+!:SCRAMBLE(-,P)
+
+M:%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+M:%###########################GGGGGGGGGGGGG..GG%
+M:%############################..GGGGGGGG.GGG.G%
+M:%#######################...####GGGGGGGGGGGGGG%
+M:%######################.~~..####GGGGGGGGGGGGG%
+M:%######################...~~.####GGGGGGGGTGGG%
+M:%####....############.......r.###GGGGGGGGGGGG%
+M:%##Prr.~~.##########..#.~~.rr-###.GGGGGGGGGGG%
+M:%##.r.......########.###..~~######GGGGGGGGGGG%
+M:%###...~..#....####..##############G.GGGGGGGG%
+M:%###.....~####...#..#################.rrGGGGG%
+M:%####..~~#######...########r##########rGGGGGG%
+M:%################.########rr##r###rr#GGGGGGGG%
+M:%################.########r##rdrrr##r#GGGGGGG%
+M:%################..#######rrrTT##Gr##r#GGGGGG%
+M:%G################~~.###rGGrG#r#rrr#r#rrGGGGG%
+M:%GG#################..#GrGrGG##rr#rrr##rrrGGG%
+M:%TBTGG###############.rrrrrbrGr.rrr.rrGrGrGGG%
+M:%TTTTTTTTTTBBGGG###GrG.GGGGBBGGrrGrrrGGrrGrGG%
+M:%TTTBTTTTTTTBGBGTTGTBBr..rBBGBrBBbBrGGGGGrGGG%
+M:%TTTTTTBTTTTTTTTTTBTBTB.r.BGBr.BTB.GrGGrGGTGG%
+M:%TTTBTTTTTTTTBTTTSTTTBBr...BBBBrGrBBBGbGGTrGG%
+M:%TTTTTBTTTBTTTTBBTTTTTBBB..G.BBBTB.BBGGGGGGGG%
+M:%TTTTTTTBBBTTTTTBTTTBBTBBGGBB.GGBB..GGGGGGGGG%
+M:%BBTTTTTTTTTTBTTTTTTSBBGGGTGG..<BTBBGGGGGGGGG%
+M:%BBBTTTTBTTBTTTTTTTTGTTGGBGGBGG..BBBBGGG:GGGG%
+M:%BBBBBTTTTTTTTTTTBBTTBGTGGGGBGGGGGTGBGGGGGGGG%
+M:%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+R:OBJ(sling):EGO(hunter)
+
+?:[AND [EQU $CLASS Weaponmaster] [EQU $SPECIALITY Crossbows] ]
+R:OBJ(cloak):EGO(electricity)
+
+?:[AND [EQU $CLASS Weaponmaster] [EQU $SPECIALITY Bows] ]
+R:OBJ(long bow):EGO(hunter)
+
+?:[EQU $RACE Beholder Spider Ring Dragon]
+R:OBJ(^ring$):EGO(combat)
+
+?:[EQU $RACE Death-Sword]
+R:OBJ(long sword, DEPTH+10)
+
+?:[EQU $RACE Hydra]
+R:OBJ(^cloak$):EGO(elemental protection)
+
+?:[EQU $RACE Centipede]
+R:OBJ(metal shod boots):EGO(dwarven)
+
+?:[EQU $RACE Demon Xorn Jelly Hound Vortex Filthy-Rag]
+R:OBJ(STAFF_CONFUSE_MONSTERS)

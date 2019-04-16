@@ -1,0 +1,76 @@
+# New quest for FrogComposband 7.1.chocolate
+
+?:[EQU $QUEST24 Taken InProgress]
+D:There's a warehouse at the northern edge of the city that Vanerion, the
+D:librarian, has used for storing rare books. About half a year ago, people
+D:started reporting a malevolent presence there, as if they were being spied
+D:on by someone unseen. Last week Vanerion went there for a book, and when
+D:he opened the door he barely recognized the place. A gang of thieves seems
+D:to have set up shop there; but more worryingly, the books themselves were
+D:coming to life. The malevolent presence was everywhere, and demonic signs
+D:appeared on the floor. Please locate and destroy the source of this evil,
+D:reports indicate the ability to kill from range could be of paramount
+D:importance.
+?:1
+
+?:[EQU $QUEST24 Completed]
+D:Thank you for eliminating this abomination!
+?:1
+
+?:[EQU $QUEST24 Failed]
+D:You have brought a terrible thing upon us! Now their spying
+D:eyes are everywhere.
+?:1
+
+T:QUEST:NORMAL:NO_ROTATE
+L:#:PERMANENT
+L:%:GRANITE
+L:<:UP_STAIR
+L:M:MON(gospel of mug, NO_SLEEP)
+L:?:MON(raal's tome)
+L:!:OBJ(BOOK)
+L:x:MON(tracking pixel, NO_SLEEP)
+L:p:MON(master thief)
+L:P:MON(master rogue)
+L:~:DEEP_LAVA(ICKY)
+L:^:TRAP(TRAP_ALARM)
+L:j:FLOOR(ICKY):OBJ(GOLD):MON(master thief)
+L:.:FLOOR
+L:,:FLOOR(ICKY)
+L:$:FLOOR(ICKY):OBJ(GOLD)
+L:u:OBJ(BOOK)
+L:v:OBJ(HI_BOOK)
+L:w:MON(raal's tome)
+L:+:LOCKED_DOOR_4
+L:/:OBJ(sickle, DEPTH+10)
+!:SCRAMBLE(u,v,w)
+M:#################################################
+M:#x%%%%%....#.....................%%%..%%%%%%%%%%#
+M:#%%%%%.....###..,,,,,,,,,,,..###.%%..%%%/%%%%%%%#
+M:#%%%%...%#.#%x.,,,,,,,,,,,,,..%#.%...%%%+%%%%%%%#
+M:#%%%...%%#.#%.,,,,,,,,,,,,,,,.%#...%..%%..%%%%%%#
+M:#%%%..%%%#.#%.,,,~~,,,,,~~,,,.%#..%%%..%%..%%%%%#
+M:#%%%..%%%#.#%.,,,,~~,,,~~,,,,.%#.%%%%%..%%.%%%%%#
+M:#%%%..%%%#.#%.,,,,~~~~~~~,,,,.%#.%%%%%%..%.%%%%%#
+M:#pPP..PPp#.#%.,,?,~~~~~~~,?,,.%#.%%%%%%%P..%%%%%#
+M:#pPP..PPp#.#%.,,,,,~~~~~,,,,,.%#.%%...%%...%%%%%#
+M:#%%%..%%%#.#%.,,,,~~~M~~~,,,,.%#.%..%....%..%%%%#
+M:#%x%..%x%#.#%.,,,~~~~~~~~~,,,.%#.%.%%%%%%%%..%%%#
+M:#%%%..%%%#.#%.,~~~~~~~~~~~~~,.%#.%+%%%%%%%%%..%%#
+M:#%%%..%%%#.#%.~~~~~~~~~~~~~~~.%#.%$$$$%%%%%%%+%%#
+M:#%%%..%%%#.#%.,,,,,,~~~,,,,,,.%#.%$$$$%%%%%%#$#%#
+M:#%%%..%%%#.#%..,,,,,~~~,,,,,..%#.%$$j$%%%%%%#$#%#
+M:#%%%..%%%#.#%%..u!,,~~~,,!v..%%#.%$$$j%%%%%%#$#%#
+M:#%%%..%%%#.##%%..!!,,~,,!!..%%##.%%%%%%%%%%%#$#%#
+M:#%%%..%%%#.p##%%..!!,~,!!..%%###.%%%%%%%%%###$###
+M:#%%%..%%%#%..##%%..!!w!!..%%###..%%%%%%%%%#$$$$$#
+M:#%%%..%%%#%%..##%%..,x,..%%###..%%%%%%%%%%#$$$$$#
+M:#%x%..%x%#%%%..##############..%%%%%%%%%%%#$$j$$#
+M:#%%%<.%%%#x%%%.....P..^.......%%x%%%%%%%%%#$$$$$#
+M:#################################################
+R:OBJ(^ring$, DEPTH+10):EGO(defender)
+
+?:[EQU $RACE Hydra]
+R:OBJ(^amulet$, DEPTH+10):EGO(defender)
+
+# vim: filetype=q :

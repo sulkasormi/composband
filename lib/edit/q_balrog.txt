@@ -1,0 +1,104 @@
+# New quest for FrogComposband 7.1.chocolate
+
+?:[EQU $QUEST78 Taken InProgress]
+D:One of the mountains in the eastern part of our territory used to host a
+D:dwarven mining community; but they moved out in a hurry after their
+D:tunnels started spitting out lava. At first we thought it was just a normal
+D:volcano that had lain dormant for centuries, but it now appears their
+D:diggings disturbed the sleep of something even more dangerous. A shadowy
+D:horror, cloaked in flames, is rumoured to have lived under the old mine; we
+D:occasionally hear the mountain rumble at night, as if some enormous monster
+D:were trying to dig its way out. We hope you can put it back to sleep before
+D:it reaches the open.
+?:1
+
+?:[EQU $QUEST78 Completed]
+D:Thank you! Here is a reward for your good work.
+?:1
+
+?:[EQU $QUEST78 Failed]
+D:That's horrible news.
+?:1
+
+T:QUEST:NORMAL
+L:<:UP_STAIR
+L:#:PERMANENT
+L:.:FLOOR
+L:l:SHALLOW_LAVA
+L:L:DEEP_LAVA
+L:a:DEEP_LAVA
+L:b:DEEP_LAVA
+L:c:DEEP_LAVA
+L:d:SHALLOW_LAVA
+L:e:PERMANENT
+L:f:PERMANENT
+L:g:PERMANENT
+L:h:PERMANENT
+L:0:SHALLOW_LAVA
+L:2:SHALLOW_LAVA
+L:4:SHALLOW_LAVA
+L:6:SHALLOW_LAVA
+L:8:SHALLOW_LAVA
+L:A:SHALLOW_LAVA
+L:1:PERMANENT
+L:3:PERMANENT
+L:5:PERMANENT
+L:7:PERMANENT
+L:9:PERMANENT
+L:B:PERMANENT
+L:C:DEEP_LAVA
+L:D:DEEP_LAVA
+L:E:DEEP_LAVA
+L:F:DEEP_LAVA
+L:G:DEEP_LAVA
+L:H:DEEP_LAVA
+L:I:DEEP_LAVA
+L:J:DEEP_LAVA:MON(greater balrog)
+L:N:FLOOR
+L:O:PERMANENT
+!:SCRAMBLE(a,b,c,d,e,f,g,h)
+!:SCRAMBLE(C,D,E,F,G,H,I,J)
+!:SCRAMBLE(A,B)
+!:SCRAMBLE(0,1)
+!:SCRAMBLE(2,3)
+!:SCRAMBLE(4,5)
+!:SCRAMBLE(6,7)
+!:SCRAMBLE(8,9)
+!:SCRAMBLE(N,O)
+
+M:####################################################################
+M:###################################<################################
+M:###################################..l##############################
+M:#################################lllllll############################
+M:###############################lllllllllll##########################
+M:#############################lll##LLllll#ll#########################
+M:############OO############lllll####LLLL###lll#######################
+M:##########OOOO##########lll###lll##########llllll###########NNNN####
+M:#########OOOOOO########ll#######lll#######llllllll#########NNNNNN###
+M:##########OOO#OO#####llll#######lllll####lllllllllll######NN#NNN####
+M:###############OO##llllll######lllllll#####llllll##ll####NN#########
+M:################llllllllll######lllllLL####l##ll####llllll##########
+M:###############ll####8##LL#####99lll#LL###LL###l#########ll#########
+M:############llll#####8########99###7#####LLLL#6ll#########ll########
+M:###########ll##ll####8888##9999###277####LLL##6#ll#########ll#######
+M:##########ll####l#####88889999###22#7######AA66##llll#####LLLL######
+M:#########llll##llll###88889999###2##77######66##ll##ll####LLLL######
+M:########lllll##lllll###888999###22###77####66###l####lll###LL#######
+M:#######lllll##llllll###333333#222#####777666###LLL####lll#BB########
+M:#######lllll###llll####333333#22222###llllll##LLLLL##lllllll########
+M:########ll00####12######3333##22222###llllll###LLL####llllll########
+M:########l##00##1122####33#33###222#####llll44#######55lllll#########
+M:#######ll###0#11##22#333###33##2222##333#l##444####55##llll#########
+M:######ll####0l1####ll3######3l22##2l33###l##444###55###l##ll########
+M:#####ll######l#####l#########l2####l3####ll###44##55###l###ll#######
+M:#####l######ll#####ll########l#####l######l####4455####ll###lll#####
+M:####ll#####llll###llll######ll###lll#####ll####llll####lll####ll####
+M:##llLlll##llllll#lllll####lllll#lllll####lll###lllll##llll####llll##
+M:##lLLLLLaaLLLlLLbLLLLLL###lLLLLdLLLLLLeeLLLLLfLLlllLggLLLLLhhLLLLll#
+M:###LLCLLLaLLDLLbbLLLLLLccLLLELLddLLJLLeLLLFLLfLLLGLLLgLLLILhhLLLHLL#
+M:###LLLLLL#LLLLL###LLLLLccLLLLLL##LLLL##LLLLl##LLLLLLL##LLLL#LLLLLL##
+M:####LLLLL###LLL####LLLL###LLLL####LLL###LLL#####LLLL####LL###LLLLL##
+M:####################################################################
+R:OBJ(phial):ART(lava)
+
+
