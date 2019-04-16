@@ -44,7 +44,7 @@ void disciple_feeling(void)
     if (p_ptr->max_plv < 3) return;
     if (disciple_is_(DISCIPLE_KARROT))
     {
-        point_t tbl[3] = { {30, 130}, {34, 134}, {50, 166} };
+        point_t tbl[3] = { {24, 124}, {34, 134}, {50, 166} };
         int verrokki1 = karrot_level() + 5;
         int verrokki2 = (karrot_level() * interpolate(karrot_level(), tbl, 3) / 100) - 2;
         if ((dun_level < verrokki1) || (dun_level < verrokki2))
