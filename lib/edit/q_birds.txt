@@ -1,3 +1,7 @@
+?:[GEQ [MOD $RANDOM0 44] 22]
+K:84
+?:1
+
 ?:[EQU $QUEST62 Taken InProgress]
 D:There have been a flock of birds attacking people on the roads and carrying 
 D:away their valuables. We think they have a nest up in the hills to the south. 
