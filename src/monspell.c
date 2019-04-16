@@ -2467,6 +2467,14 @@ static void _summon_special(void)
         r_idx = MON_HORUS;
         r_idx2 = MON_ISIS;
         break;
+    case MON_MUG:
+        if (_current.flags & MSC_SRC_PLAYER)
+            msg_print("You summon your minions!");
+        else
+            msg_format("%s summons his minions.", _current.name);
+        r_idx = MON_PIXEL;
+        if (num == 4) num = 3;
+        break;
     case MON_AEGIR:
         fire_ball_hide(GF_WATER_FLOW, 0, 3, 8);
         if (one_in_(2))
@@ -2843,6 +2851,16 @@ static _custom_msg_t _mon_msg_tbl[] = {
         "$CASTER spits out undigested monsters.",
         "$CASTER spits out undigested monsters.",
         "You spit out undigested monsters." },
+    { MON_ARACHNOTRON, {MST_BOLT, GF_PLASMA},
+        "$CASTER fires a <color:R>Jet of Plasma</color>.",
+        "$CASTER fires a <color:R>Jet of Plasma</color>.",
+        "$CASTER fires a <color:R>Jet of Plasma</color> at $TARGET.",
+        "You fire a <color:R>Jet of Plasma</color>."},
+    { MON_NIZUKIL, {MST_ANNOY, ANNOY_CONFUSE},
+        "$CASTER commands you to spell his name.",
+        "$CASTER commands you to spell his name.",
+        "$CASTER commands $TARGET to spell his name.",
+        "You organise an impromptu spelling bee."},
     {0}
 };
 static cptr _custom_msg(void)
@@ -4787,7 +4805,7 @@ static void _list_spells(doc_ptr doc, vec_ptr spells, mon_spell_cast_ptr cast)
         {
             cost = _spell_cost(spell, cast->race);
             avail = p_ptr->csp;
-            if (spell->flags & MSF_INNATE)
+            if ((spell->flags & MSF_INNATE) || ((!p_ptr->msp) && (get_race()->pseudo_class_idx == CLASS_WARRIOR)))
                 avail += p_ptr->chp;
             if (cost > avail) color = 'D';
         }
@@ -4817,7 +4835,7 @@ static void _prompt_plr_aux(mon_spell_cast_ptr cast, vec_ptr spells)
             mon_spell_ptr spell = vec_get(spells, i);
             int           cost = _spell_cost(spell, cast->race);
             int           avail = p_ptr->csp;
-            if (spell->flags & MSF_INNATE)
+            if ((spell->flags & MSF_INNATE) || ((!p_ptr->msp) && (get_race()->pseudo_class_idx == CLASS_WARRIOR)))
                 avail += p_ptr->chp;
             if (cost <= avail)
             {
@@ -4845,7 +4863,7 @@ static void _prompt_plr_aux(mon_spell_cast_ptr cast, vec_ptr spells)
                 mon_spell_ptr spell = vec_get(spells, i);
                 int           cost = _spell_cost(spell, cast->race);
                 int           avail = p_ptr->csp;
-                if (spell->flags & MSF_INNATE)
+                if ((spell->flags & MSF_INNATE) || ((!p_ptr->msp) && (get_race()->pseudo_class_idx == CLASS_WARRIOR)))
                     avail += p_ptr->chp;
                 if (!monster && cost > avail) continue; /* already grayed out */
                 cast->spell = spell;
@@ -5010,7 +5028,7 @@ bool mon_spell_cast_possessor(mon_race_ptr race)
     if (_prompt_plr(&cast))
     {
         int cost = _spell_cost(cast.spell, cast.race);
-        if ((cast.spell->flags & MSF_INNATE) && p_ptr->csp < cost)
+        if (((cast.spell->flags & MSF_INNATE) || ((!p_ptr->msp) && (get_race()->pseudo_class_idx == CLASS_WARRIOR))) && p_ptr->csp < cost)
         {
             int hp = cost - p_ptr->csp;
             sp_player(-p_ptr->csp);
