@@ -1144,3 +1144,14 @@ S:LITE:Light
 S:CLOAK:Cloak
 S:HELMET:Helm
 S:QUIVER:Quiver
+
+N:110:Pumpkin
+S:HELMET:Helm
+S:LITE:Light
+S:LITE:Light
+S:LITE:Light
+S:LITE:Light
+S:LITE:Light
+S:LITE:Light
+S:LITE:Light
+S:LITE:Light
