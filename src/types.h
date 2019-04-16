@@ -1027,6 +1027,8 @@ struct player_type
 
     s16b lev;            /* Level */
 
+    u32b quest_seed;     /* Seed for random quests */
+
     s16b town_num;            /* Current town number */
     s16b arena_number;        /* monster number in arena -KMW- */
     bool inside_arena;        /* Is character inside arena? */
