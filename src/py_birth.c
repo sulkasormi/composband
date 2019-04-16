@@ -2971,6 +2971,8 @@ static void _birth_finalize(void)
     p_ptr->start_race = p_ptr->prace;
     p_ptr->expfact = calc_exp_factor();
 
+    p_ptr->quest_seed = randint0(0x10000000);
+
     mp_ptr = &m_info[p_ptr->pclass];
     /* Hack ... external files always make easy stuff hard ... Burglary is natural for rogues!!!*/
     if (p_ptr->pclass == CLASS_ROGUE)
