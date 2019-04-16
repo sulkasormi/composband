@@ -1,6 +1,10 @@
 # The Mystery of Apina Island(TM)
 # New quest for FrogComposband 7.0.strawberry
 
+?:[GEQ [MOD $RANDOM0 64] 32]
+K:83
+?:1
+
 ?:[EQU $QUEST75 Taken InProgress]
 D:Sailors have become afraid of passing anywhere near Apina Island.
 D:They claim it's haunted by the crew of the dread pirate Roope, and
