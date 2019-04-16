@@ -142,7 +142,7 @@ static void _selita_paikka(char *paikka_text, byte paikka, byte taso, byte origi
         {
             quest_ptr q = quests_get(paikka);
             cptr nimi;
-            if ((!q) || (!q->id) || (q->id != paikka))
+            if ((!q) || (!q->id))
             {
                 strcpy(paikka_text, "in a bizarre quest");
                 return;
