@@ -952,7 +952,7 @@ void get_purple_questor(quest_ptr q)
     for(attempt = 0;; attempt++)
     {
         int min_lev = q->level + 1;
-        int max_lev = q->level + 9;
+        int max_lev = q->level + ((disciple_is_(DISCIPLE_TROIKA)) ? 9 : MIN(9, MAX(6, q->level / 3)));
         int mon_lev;
         if (q->level < 10)
             max_lev -= 2;
