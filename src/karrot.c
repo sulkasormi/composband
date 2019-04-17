@@ -563,7 +563,7 @@ static void _give_reward(int monesko)
 
 quest_ptr karrot_get_quest(int dungeon, int level)
 {
-    point_t tbl[3] = { {30, 130}, {34, 134}, {50, 166} };
+    point_t tbl[3] = { {24, 124}, {34, 134}, {50, 166} };
     int mahis = (no_wilderness ? 5 : 9);
     int klev = karrot_level();
     int verrokki = isompi(klev + 5, (klev * interpolate(klev, tbl, 3) / 100) + randint1(mahis) - 3);
