@@ -911,6 +911,7 @@ static void _get_questor(quest_ptr q)
         if (r_ptr->flags7 & RF7_FRIENDLY) continue;
         if (r_ptr->flags7 & RF7_AQUATIC) continue;
         if (r_ptr->flags8 & RF8_WILD_ONLY) continue;
+        if (r_ptr->flags7 & (RF7_UNIQUE2 | RF7_NAZGUL)) return FALSE;
         if (r_ptr->level > max_lev) continue;
         if (r_ptr->level > min_lev || attempt > 5000)
         {
@@ -991,6 +992,7 @@ void get_purple_questor(quest_ptr q)
         if (r_ptr->flags7 & RF7_FRIENDLY) continue;
         if (r_ptr->flags7 & RF7_AQUATIC) continue;
         if (r_ptr->flags8 & RF8_WILD_ONLY) continue;
+        if (r_ptr->flags7 & (RF7_UNIQUE2 | RF7_NAZGUL)) return FALSE;
         if (r_ptr->flagsx & RFX_SUPPRESS) continue; /* paranoia */
         if ((r_ptr->flags1 & RF1_ESCORT) && (!force_unique)) continue;
         if (r_ptr->level > max_lev) continue;
