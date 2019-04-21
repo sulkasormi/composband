@@ -245,6 +245,7 @@ static void _polymorph_dragon_spell(int cmd, variant *res)
         break;
     case SPELL_INFO:
         if (!no_poly) var_set_string(res, info_duration(500, 500));
+        else default_spell(cmd, res);
         break;
     case SPELL_CAST:
         var_set_bool(res, FALSE);
