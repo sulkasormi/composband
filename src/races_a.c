@@ -288,7 +288,7 @@ race_t *android_get_race(void)
         me.calc_bonuses = _android_calc_bonuses;
         me.get_powers = _android_get_powers;
         me.get_flags = _android_get_flags;
-        me.flags = RACE_IS_NONLIVING;
+        me.flags = RACE_IS_NONLIVING | RACE_NO_POLY;
 
         init = TRUE;
     }
