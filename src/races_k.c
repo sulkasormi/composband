@@ -746,6 +746,108 @@ race_t *sprite_get_race(void)
 }
 
 /****************************************************************
+ * Tomte
+ ****************************************************************/
+static power_info _tomte_powers[] =
+{
+    { A_INT, {1, 0, 20, probing_spell}},
+    { -1, {-1, -1, -1, NULL} }
+};
+static int _tomte_get_powers(spell_info* spells, int max)
+{
+    return get_powers_aux(spells, max, _tomte_powers);
+}
+
+int tomte_heavy_armor(void)
+{
+    slot_t slot = equip_find_obj(TV_HELM, SV_ANY);
+    if (!slot) slot = equip_find_obj(TV_CROWN, SV_ANY);
+    if (slot)
+    {
+        object_type *lakki = equip_obj(slot);
+        if ((lakki) && (lakki->weight > 10))
+        {
+            return (lakki->weight - 10);
+        }
+    }
+    return 0;
+}
+static void _tomte_calc_bonuses(void)
+{
+    int ylipaino = tomte_heavy_armor();
+    res_add(RES_COLD);
+    p_ptr->pspeed += (p_ptr->lev) / 15;
+    if (ylipaino)
+    {
+        p_ptr->stat_add[A_INT] -= ((ylipaino / 10) + 1);
+        p_ptr->skills.dev -= ((ylipaino + 6) / 2);
+    }
+    else
+    {
+        p_ptr->auto_pseudo_id = TRUE;
+        if (p_ptr->lev >= 40) p_ptr->auto_id = TRUE;
+    }
+}
+static void _tomte_get_flags(u32b flgs[OF_ARRAY_SIZE])
+{
+    add_flag(flgs, OF_RES_COLD);
+    if (p_ptr->lev >= 15)
+        add_flag(flgs, OF_SPEED);
+}
+static void _tomte_birth(void)
+{
+    py_birth_obj_aux(TV_HELM, SV_KNIT_CAP, 1);
+    py_birth_food();
+    py_birth_light();
+}
+race_t *tomte_get_race(void)
+{
+    static race_t me = {0};
+    static bool init = FALSE;
+
+    if (!init)
+    {
+        me.name = "Tomte";
+        me.desc = "Smaller and of lighter build than regular elves, Tomtes are nimble, intelligent, "
+                  "extremely stealthy and at home with magical devices, but their size handicaps them "
+                  "in physical combat. They greatly prefer light headwear, and cannot think clearly "
+                  "with a heavy helmet squeezing their brains. Tomtes have the ability to assess "
+                  "monsters and items at a glance (they gain auto-identify at level 40); and being "
+                  "accustomed to long winters, they are not much bothered by cold.";
+
+        me.stats[A_STR] = -4;
+        me.stats[A_INT] =  2;
+        me.stats[A_WIS] =  2;
+        me.stats[A_DEX] =  3;
+        me.stats[A_CON] = -3;
+        me.stats[A_CHR] =  0;
+
+        me.skills.dis = 10;
+        me.skills.dev = 15;
+        me.skills.sav =  0;
+        me.skills.stl =  6;
+        me.skills.srh = 10;
+        me.skills.fos = 10;
+        me.skills.thn = -1;
+        me.skills.thb = -5;
+
+        me.life = 94;
+        me.base_hp = 13;
+        me.exp = 150;
+        me.infra = 4;
+        me.shop_adjust = 100;
+
+        me.calc_bonuses = _tomte_calc_bonuses;
+        me.get_powers = _tomte_get_powers;
+        me.get_flags = _tomte_get_flags;
+        me.birth = _tomte_birth;
+        init = TRUE;
+    }
+
+    return &me;
+}
+
+/****************************************************************
  * Tonberry
  ****************************************************************/
 static void _tonberry_calc_bonuses(void)
