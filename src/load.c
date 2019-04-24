@@ -418,6 +418,7 @@ static void rd_extra(savefile_ptr file)
     p_ptr->start_race = savefile_read_byte(file);
     p_ptr->old_race1 = savefile_read_s32b(file);
     p_ptr->old_race2 = savefile_read_s32b(file);
+    p_ptr->old_race3 = savefile_is_older_than(file, 7,1,0,10) ? 0 : savefile_read_s32b(file);
     p_ptr->old_realm = savefile_read_s16b(file);
 
     for (i = 0; i < MAX_MANE; i++)
