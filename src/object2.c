@@ -2408,6 +2408,8 @@ bool apply_magic(object_type *o_ptr, int lev, u32b mode)
     return TRUE;
 }
 
+static bool _kind_is_(int k_idx, int tval, int sval);
+
 static bool _is_favorite_weapon(int tval, int sval)
 {
     if (p_ptr->pclass != CLASS_ARCHER)
@@ -2479,10 +2481,13 @@ static bool kind_is_tailored(int k_idx)
     case TV_CLOAK:
     case TV_BOOTS:
     case TV_GLOVES:
-    case TV_HELM:
-    case TV_CROWN:
     case TV_BOW:
         return equip_can_wield_kind(k_ptr->tval, k_ptr->sval);
+
+    case TV_HELM:
+    case TV_CROWN:
+        if (p_ptr->prace == RACE_TOMTE) return _kind_is_(k_idx, TV_HELM, SV_KNIT_CAP);
+        else return equip_can_wield_kind(k_ptr->tval, k_ptr->sval);
 
     case TV_RING:
     case TV_AMULET:
@@ -3941,6 +3946,7 @@ bool make_gold(object_type *j_ptr, bool do_boost)
         int kerroin = interpolate(dun_level, skaala, 5);
         au = au * kerroin / 100;
     }
+    if (p_ptr->personality == PERS_NOBLE) au += (au / 4);
     if (au > MAX_SHORT)
         au = MAX_SHORT - randint0(1000);
     j_ptr->pval = au;
