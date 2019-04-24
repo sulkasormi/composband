@@ -1293,6 +1293,7 @@ struct player_type
     byte start_race;          /* Race at birth */
     s32b old_race1;           /* Record of race changes */
     s32b old_race2;           /* Record of race changes */
+    s32b old_race3;           /* Record of race changes */
     s16b old_realm;           /* Record of realm changes */
 
     s16b pet_follow_distance; /* Length of the imaginary "leash" for pets */
@@ -2100,6 +2101,7 @@ struct personality_s
     int             flags;
     birth_fn        birth;
     calc_bonuses_fn calc_bonuses;
+    calc_weapon_bonuses_fn  calc_weapon_bonuses;
     flags_fn        get_flags;
 };
 
