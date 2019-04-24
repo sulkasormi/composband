@@ -1313,11 +1313,12 @@ static bool do_cmd_tunnel_aux(int y, int x)
             }
             else
             {
-                /* We may continue tunelling */
+                /* We may continue tunnelling */
                 msg_format("You tunnel into the %s.", name);
             }
 
-            more = TRUE;
+            /* Don't continue if it's completely futile */
+            if (p_ptr->skill_dig > power) more = TRUE;
         }
     }
 
@@ -1326,6 +1327,8 @@ static bool do_cmd_tunnel_aux(int y, int x)
         /* Occasional Search XXX XXX */
         if (randint0(100) < 25) search();
     }
+
+    p_inc_fatigue(MUT_EASY_TIRING2, 3);
 
     /* Result */
     return more;
@@ -3861,8 +3864,11 @@ void do_cmd_fire_aux2(obj_ptr bow, obj_ptr arrows, int sx, int sy, int tx, int t
     /* Sniper - Repeat shooting when double shots */
     }
 
-    /* Sniper - Loose his/her concentration after any shot */
+    /* Sniper - Lose concentration after any shot */
     if (p_ptr->concent) reset_concentration(FALSE);
+
+    /* Check for easy tiring */
+    p_inc_fatigue(MUT_EASY_TIRING2, 7500 / NUM_SHOTS);
 }
 
 
