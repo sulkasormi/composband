@@ -388,7 +388,7 @@ T:TOWN | GENERATE | DANGER_LEVEL_55
 F:q_htower.txt
 
 N:84:15:Bear Problem (Outpost)
-T:TOWN | GENERATE | DANGER_LEVEL_16
+T:TOWN | GENERATE | DANGER_LEVEL_18
 F:q_bears.txt
 
 N:85:55:Doom Quest II\: Hell in Angwil
