@@ -1155,3 +1155,14 @@ S:LITE:Light
 S:LITE:Light
 S:LITE:Light
 S:LITE:Light
+
+N:111:Bear2
+S:RING:Claw
+S:RING:Claw
+S:RING:Claw
+S:RING:Claw
+S:AMULET:Neck
+S:LITE:Light
+S:CLOAK:Cloak
+S:HELMET:Head
+S:QUIVER:Quiver
