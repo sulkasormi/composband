@@ -250,7 +250,7 @@ static int _get_powers(spell_info* spells, int max) {
 }
 static void _calc_bonuses(void)
 {
-    int to_a = py_prorata_level_aux(80, 1, 1, 1) + 20;
+    int to_a = py_prorata_level_aux(80, 1, 1, 1) + 15;
 
     p_ptr->sustain_str = TRUE;
     p_ptr->regen += 100;
@@ -427,10 +427,10 @@ race_t *beorning_get_race(void)
 
             me.skills.dis = -8;
             me.skills.dev = -24;
-            me.skills.sav = 5;
-            me.skills.stl = -2;
-            me.skills.srh = -1;
-            me.skills.fos = 0;
+            me.skills.sav = 10;
+            me.skills.stl = -1;
+            me.skills.srh = 3;
+            me.skills.fos = 3;
             me.skills.thn = 20;
             me.skills.thb = -15;
             me.calc_innate_attacks = _beorning_calc_innate_attacks;
