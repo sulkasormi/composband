@@ -124,6 +124,7 @@ static int effect_calc_fail_rate_aux(effect_t *effect, int skill_boost)
     int fail;
 
     if (p_ptr->pclass == CLASS_BERSERKER) return 1000;
+    if (beorning_is_(BEORNING_FORM_BEAR)) return 1000;
 
     if (p_ptr->confused) skill = 3 * skill / 4;
 
@@ -177,6 +178,7 @@ int device_calc_fail_rate(object_type *o_ptr)
         return effect_calc_fail_rate_aux(&effect, skill_boost);
     }
     if (p_ptr->pclass == CLASS_BERSERKER) return 1000;
+    if (beorning_is_(BEORNING_FORM_BEAR)) return 1000;
 
     lev = k_info[o_ptr->k_idx].level;
     if (lev > 50) lev = 50 + (lev - 50)/2;
