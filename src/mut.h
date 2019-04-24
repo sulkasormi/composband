@@ -155,7 +155,10 @@
 #define MUT_VORTEX_SPEED      142
 #define MUT_VORTEX_CONTROL    143
 
-#define MAX_MUTATIONS      144   /* see also MUT_FLAG_SIZE in defines.h */
+/* More frog muts */
+#define MUT_EASY_TIRING2      144
+
+#define MAX_MUTATIONS      145   /* see also MUT_FLAG_SIZE in defines.h */
 
 typedef enum {
     MUT_RATING_AWFUL = -2,
@@ -238,6 +241,7 @@ extern void draconian_shield_mut(int cmd, variant *res);
 extern void draconian_strike_mut(int cmd, variant *res);
 
 extern void easy_tiring_mut(int cmd, variant *res);
+extern void easy_tiring_II_mut(int cmd, variant *res);
 extern void einstein_mut(int cmd, variant *res);
 extern void elec_aura_mut(int cmd, variant *res);
 extern void evasion_mut(int cmd, variant *res);
