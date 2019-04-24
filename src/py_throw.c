@@ -20,6 +20,7 @@ bool py_throw(py_throw_ptr context)
     _throw(context);
     _return(context);
     water_mana_action(FALSE, 5);
+    if (energy_use > 0) p_inc_fatigue(MUT_EASY_TIRING, energy_use);
     return TRUE;
 }
 
