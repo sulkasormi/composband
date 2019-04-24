@@ -84,6 +84,9 @@ race_t *get_race_aux(int prace, int psubrace)
     case RACE_BEASTMAN:
         result = beastman_get_race();
         break;
+    case RACE_BEORNING:
+        result = beorning_get_race();
+        break;
     case RACE_BOIT:
         result = boit_get_race();
         break;
@@ -257,6 +260,9 @@ race_t *get_race_aux(int prace, int psubrace)
         break;
     case RACE_SPRITE:
         result = sprite_get_race();
+        break;
+    case RACE_TOMTE:
+        result = tomte_get_race();
         break;
     case RACE_TONBERRY:
         result = tonberry_get_race();
