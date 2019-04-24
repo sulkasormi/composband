@@ -969,7 +969,10 @@ void do_cmd_spell(void)
     int choice = 0;
     int max_cost = 0;
     bool poli = (p_ptr->pclass == CLASS_POLITICIAN);
+    bool _old_inkey_xtra = inkey_xtra;
     spell_problem = 0;
+
+    inkey_xtra = TRUE;
 
     if (!caster)
     {
@@ -1019,6 +1022,8 @@ void do_cmd_spell(void)
             return;
         }
     }
+
+    inkey_xtra = _old_inkey_xtra;
 
     if (caster->options & CASTER_USE_CONCENTRATION)
         max_cost = p_ptr->concent;
@@ -1126,6 +1131,7 @@ void do_cmd_spell(void)
         }
 
         energy_use = get_spell_energy(spell->fn);
+        p_inc_fatigue(MUT_EASY_TIRING2, 50 + MIN(50, spell->cost / 2));
 
         if (poli) /* Do nothing - let on_cast handle it */
         {
@@ -1201,6 +1207,7 @@ byte do_cmd_power(void)
         {
              if (ongelma & PWR_AFRAID) msg_print("You are too scared!");
              else if (ongelma & PWR_CONFUSED) msg_print("You are too confused!");
+             if (flush_failure) flush();
              return ongelma;
         }
     }
@@ -1249,6 +1256,7 @@ byte do_cmd_power(void)
         }
 
         energy_use = get_spell_energy(spell->fn);
+        p_inc_fatigue(MUT_EASY_TIRING2, 50 + MIN(50, spell->cost / 2));
 
         /* Casting costs spill over into hit points */
         if (hp_only)
