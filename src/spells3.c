@@ -4354,6 +4354,7 @@ bool summon_kin_player(int level, int y, int x, u32b mode)
             case RACE_DUNADAN:
             case RACE_DEMIGOD:
             case RACE_EINHERI:
+            case RACE_BEORNING:
                 summon_kin_type = 'p';
                 break;
             case RACE_TONBERRY:
@@ -4366,6 +4367,7 @@ bool summon_kin_player(int level, int y, int x, u32b mode)
             case RACE_MIND_FLAYER:
             case RACE_KUTAR:
             case RACE_SHADOW_FAIRY:
+            case RACE_TOMTE:
                 summon_kin_type = 'h';
                 break;
             case RACE_SNOTLING:
