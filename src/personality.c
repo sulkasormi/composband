@@ -272,6 +272,67 @@ static personality_ptr _get_fearless_personality(void)
 }
 
 /****************************************************************
+ * Fragile
+ ****************************************************************/
+static void _fragile_birth(void)
+{
+    mut_gain(MUT_EASY_TIRING);
+    mut_lock(MUT_EASY_TIRING);
+    mut_gain(MUT_EASY_TIRING2);
+    mut_lock(MUT_EASY_TIRING2);
+}
+
+static void _fragile_calc_bonuses(void)
+{
+    res_add_vuln(RES_FEAR);
+}
+static void _fragile_get_flags(u32b flgs[OF_ARRAY_SIZE])
+{
+    add_flag(flgs, OF_VULN_FEAR);
+}
+
+static personality_ptr _get_fragile_personality(void)
+{
+    static personality_t me = {0};
+    static bool init = FALSE;
+
+    if (!init)
+    {
+        me.name = "Fragile";
+        me.desc = "As a Fragile adventurer, you lack both self-confidence and physical toughness. "
+                    "Due to your incredibly low stamina, you are quickly exhausted by melee, "
+                    "or ranged combat, or magical combat, or any other strenuous activity. (Maybe you "
+                    "should just stay at home, quietly reading some book that isn't too heavy.)";
+
+        me.stats[A_STR] = -3;
+        me.stats[A_INT] =  0;
+        me.stats[A_WIS] =  1;
+        me.stats[A_DEX] = -1;
+        me.stats[A_CON] = -3;
+        me.stats[A_CHR] = -2;
+
+        me.skills.dis =  0;
+        me.skills.dev =  0;
+        me.skills.sav = -4;
+        me.skills.stl = -1;
+        me.skills.srh =  2;
+        me.skills.fos =  2;
+        me.skills.thn = -3;
+        me.skills.thb = -3;
+
+        me.life = 91;
+        me.exp = 100;
+
+        me.calc_bonuses = _fragile_calc_bonuses;
+        me.get_flags = _fragile_get_flags;
+        me.birth = _fragile_birth;
+
+        init = TRUE;
+    }
+    return &me;
+}
+
+/****************************************************************
  * Hasty
  ****************************************************************/
 static void _hasty_calc_bonuses(void)
@@ -618,6 +679,54 @@ static personality_ptr _get_nimble_personality(void)
 }
 
 /****************************************************************
+ * Noble
+ ****************************************************************/
+static void _noble_birth(void)
+{
+    p_ptr->au *= 2;
+    p_ptr->au += 2000;
+}
+static personality_ptr _get_noble_personality(void)
+{
+    static personality_t me = {0};
+    static bool init = FALSE;
+
+    if (!init)
+    {
+        me.name = "Noble";
+        me.desc = "As a Noble person, you have the benefits of an upper-class upbringing "
+                    "(at least, you consider them benefits). You start with extra "
+                    "money, and seem to have a relatively easy time acquiring even "
+                    "more money; but whether other aspects of the adventuring life "
+                    "will come to you as naturally remains to be seen.";
+
+        me.stats[A_STR] = 0;
+        me.stats[A_INT] = 0;
+        me.stats[A_WIS] = 0;
+        me.stats[A_DEX] = -2;
+        me.stats[A_CON] = -1;
+        me.stats[A_CHR] = 2;
+
+        me.skills.dis = -2;
+        me.skills.dev =  2;
+        me.skills.sav =  2;
+        me.skills.stl =  0;
+        me.skills.srh =  0;
+        me.skills.fos =  0;
+        me.skills.thn =  3;
+        me.skills.thb = -3;
+
+        me.life = 99;
+        me.exp = 110;
+
+        me.birth = _noble_birth;
+
+        init = TRUE;
+    }
+    return &me;
+}
+
+/****************************************************************
  * Ordinary
  ****************************************************************/
 static personality_ptr _get_odinary_personality(void)
@@ -832,6 +941,56 @@ static personality_ptr _get_shrewd_personality(void)
 }
 
 /****************************************************************
+ * Sneaky
+ ****************************************************************/
+static void _sneaky_calc_weapon_bonuses(object_type *o_ptr, weapon_info_t *info_ptr)
+{
+    if ((o_ptr) && (o_ptr->weight))
+    {
+        int bonus = (75 - o_ptr->weight) / 4;
+        info_ptr->to_h += bonus;
+        info_ptr->dis_to_h += bonus;
+    }
+}
+
+static personality_ptr _get_sneaky_personality(void)
+{
+    static personality_t me = {0};
+    static bool init = FALSE;
+
+    if (!init)
+    {
+        me.name = "Sneaky";
+        me.desc = "Sneaky adventurers are stealthy and at home with light stabbing "
+                    "weapons; but face-to-face combat with heavier weapons plays "
+                    "against their strengths.";
+
+        me.stats[A_STR] = -3;
+        me.stats[A_INT] =  1;
+        me.stats[A_WIS] =  1;
+        me.stats[A_DEX] =  2;
+        me.stats[A_CON] = -1;
+        me.stats[A_CHR] =  1;
+
+        me.skills.dis =  5;
+        me.skills.dev =  0;
+        me.skills.sav =  0;
+        me.skills.stl =  3;
+        me.skills.srh =  3;
+        me.skills.fos =  0;
+        me.skills.thn =  0;
+        me.skills.thb =  0;
+
+        me.life = 97;
+        me.exp = 100;
+        me.calc_weapon_bonuses = _sneaky_calc_weapon_bonuses;
+
+        init = TRUE;
+    }
+    return &me;
+}
+
+/****************************************************************
  * Unlucky
  ****************************************************************/
 static void _unlucky_birth(void)
@@ -899,6 +1058,9 @@ personality_ptr get_personality_aux(int index)
     case PERS_FEARLESS:
         result = _get_fearless_personality();
         break;
+    case PERS_FRAGILE:
+        result = _get_fragile_personality();
+        break;
     case PERS_HASTY:
         result = _get_hasty_personality();
         break;
@@ -920,6 +1082,9 @@ personality_ptr get_personality_aux(int index)
     case PERS_NIMBLE:
         result = _get_nimble_personality();
         break;
+    case PERS_NOBLE:
+        result = _get_noble_personality();
+        break;
     case PERS_ORDINARY:
         result = _get_odinary_personality();
         break;
@@ -934,6 +1099,9 @@ personality_ptr get_personality_aux(int index)
         break;
     case PERS_SHREWD:
         result = _get_shrewd_personality();
+        break;
+    case PERS_SNEAKY:
+        result = _get_sneaky_personality();
         break;
     case PERS_UNLUCKY:
         result = _get_unlucky_personality();
