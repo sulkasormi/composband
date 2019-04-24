@@ -3595,7 +3595,13 @@ static void _dispatch_command(int old_now_turn)
             else if (p_ptr->tim_no_spells)
             {
                 msg_print("Your spells are blocked!");
+                flush();
                 /*energy_use = 100;*/
+            }
+            else if (beorning_is_(BEORNING_FORM_BEAR))
+            {
+                msg_print("You cannot use magic in bear shape!");
+                flush();
             }
             else if ( dun_level && (d_info[dungeon_type].flags1 & DF1_NO_MAGIC)
                    && p_ptr->pclass != CLASS_BERSERKER
@@ -3607,6 +3613,7 @@ static void _dispatch_command(int old_now_turn)
                    && p_ptr->prace  != RACE_MON_POSSESSOR
                    && p_ptr->prace  != RACE_MON_MIMIC)
             {
+                if (flush_failure) flush();
                 msg_print("The dungeon absorbs all attempted magic!");
                 msg_print(NULL);
             }
@@ -3634,6 +3641,7 @@ static void _dispatch_command(int old_now_turn)
                 else if (mp_ptr->spell_book == TV_LIFE_BOOK)
                     which_power = "prayer";
 
+                if (flush_failure) flush();
                 msg_format("An anti-magic shell disrupts your %s!", which_power);
                 equip_learn_flag(OF_NO_MAGIC);
                 energy_use = 0;
@@ -3641,6 +3649,7 @@ static void _dispatch_command(int old_now_turn)
             else if (IS_SHERO() && p_ptr->pclass != CLASS_BERSERKER && p_ptr->pclass != CLASS_BLOOD_KNIGHT && p_ptr->pclass != CLASS_RAGE_MAGE
              && p_ptr->pclass != CLASS_ALCHEMIST)
             {
+                if (flush_failure) flush();
                 msg_format("You cannot think clearly!");
                 energy_use = 0;
             }
@@ -5629,7 +5638,7 @@ void play_game(bool new_game)
         monster_type *m_ptr;
         int pet_r_idx = ((p_ptr->pclass == CLASS_CAVALRY) ? MON_HORSE : MON_YASE_HORSE);
         monster_race *r_ptr = &r_info[pet_r_idx];
-        place_monster_aux(0, py, px - 1, pet_r_idx,
+        place_monster_aux(0, (no_wilderness) ? py - 1 : py + 1, px, pet_r_idx,
                   (PM_FORCE_PET | PM_NO_KAGE));
         m_ptr = &m_list[hack_m_idx_ii];
         m_ptr->mspeed = r_ptr->speed;
