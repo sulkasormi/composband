@@ -19,7 +19,7 @@
 #define VER_MAJOR 7
 #define VER_MINOR 1
 #define VER_PATCH "toffee"
-#define VER_EXTRA 8
+#define VER_EXTRA 10
 #define VERSION_IS_DEVELOPMENT (TRUE)
 
 #define GAME_MODE_BEGINNER  0
@@ -643,7 +643,9 @@
 #define RACE_MON_ARMOR          66
 #define RACE_BOIT               67
 #define RACE_MON_ORC            68
-#define MAX_RACES               69
+#define RACE_BEORNING           69
+#define RACE_TOMTE              70
+#define MAX_RACES               71
 
 #define DEMIGOD_MINOR           0
 #define DEMIGOD_ZEUS            1
@@ -786,6 +788,10 @@ enum _mimic_types {
 #define elemental_is_(B) (prace_is_(RACE_MON_ELEMENTAL) && p_ptr->psubrace == (B))
 #define draconian_is_(B) (prace_is_(RACE_DRACONIAN) && p_ptr->psubrace == (B))
 
+#define BEORNING_FORM_HUMAN 0
+#define BEORNING_FORM_BEAR 1
+#define beorning_is_(N) (prace_is_(RACE_BEORNING) && (beorning_shape_is_(N)))
+
 
 /*
  * Player class constants (hard-coded by save-files, arrays, etc)
@@ -909,6 +915,9 @@ enum {
     PERS_CHAOTIC,
     PERS_MUNDANE,
     PERS_MUNCHKIN,
+    PERS_FRAGILE,
+    PERS_SNEAKY,
+    PERS_NOBLE,
     MAX_PERSONALITIES,
 };
 
@@ -4909,6 +4918,7 @@ extern int PlayerUID;
 #define MODE_THROWING        87
 
 #define PY_ATTACK_MANA       88
+#define BEORNING_SWIPE       89
 
 #define HISSATSU_IAI    100
 
