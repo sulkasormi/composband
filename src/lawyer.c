@@ -77,10 +77,10 @@ byte lawyer_hack(magic_type *s_ptr, int tyyppi)
         }
         default:
         {
-            if (p_ptr->prace == RACE_WEREWOLF) /* increased fail rates */
+            if ((p_ptr->prace == RACE_WEREWOLF) || (p_ptr->prace == RACE_BEORNING)) /* increased fail rates */
             {
                 int tulos;
-                if (werewolf_in_human_form()) tulos = s_ptr->sfail + ((kerroin < 101) ? 15 : 20);
+                if (werewolf_in_human_form() || beorning_is_(BEORNING_FORM_HUMAN)) tulos = s_ptr->sfail + ((kerroin < 101) ? 15 : 20);
                 else tulos = MAX(s_ptr->sfail + ((kerroin < 101) ? 25 : 30), (int)s_ptr->sfail * 2);
                 if (tulos > 255) tulos = 255;
                 return tulos;
