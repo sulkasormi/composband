@@ -1257,7 +1257,8 @@ int gf_affect_p(int who, int type, int dam, int flags)
                       && which != RACE_ANDROID
                       && which != RACE_WEREWOLF
                       && p_ptr->prace != which
-                      && !(get_race_aux(which, 0)->flags & RACE_IS_MONSTER) )
+                      && !(get_race_aux(which, 0)->flags & RACE_IS_MONSTER)
+                      && !(get_race_aux(which, 0)->flags & RACE_NO_POLY) )
                     {
                         break;
                     }
