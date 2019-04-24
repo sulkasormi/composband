@@ -6648,7 +6648,7 @@ P:Body:Tree
 S:1_IN_5 |
 S:BA_FIRE | BA_ELEC | BA_POISON | HASTE |
 S:TRAPS | SHRIEK | PARALYZE | CONFUSE
-D:This creature look like a pillar of rock. However, a closer
+D:This creature looks like a pillar of rock. However, a closer
 D:inspection reveals a glaring eye and powerful tentacles,
 D:which crush its prey and feed it to the creature's hungry
 D:mouth.
@@ -9349,7 +9349,7 @@ F:DROP_CORPSE | POS_GAIN_AC
 P:Copy:Hobbit:Warrior
 P:Blows:300
 S:FREQ_5 | BR_CONFUSION | BR_CHAOS
-D:"It had the appearance of a butterfly, but but a butterfly with
+D:"It had the appearance of a butterfly, but a butterfly with
 D:wings so huge they blotted out the sun... it had a man's body,
 D:covered with hairs or feathers hued like a peacocks..."
 
