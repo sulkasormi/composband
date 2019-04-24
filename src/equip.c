@@ -614,6 +614,7 @@ static bool _wield_confirm(obj_ptr obj, slot_t slot)
       && p_ptr->prace != RACE_ANDROID
       && p_ptr->prace != RACE_WEREWOLF
       && !(get_race()->flags & RACE_IS_MONSTER)
+      && !(get_race()->flags & RACE_NO_POLY)
       && p_ptr->pclass != CLASS_BLOOD_KNIGHT)
     {
         char dummy[MAX_NLEN+80];
@@ -690,6 +691,7 @@ static void _wield_after(slot_t slot)
       && p_ptr->prace != RACE_VAMPIRE
       && p_ptr->prace != RACE_ANDROID
       && p_ptr->prace != RACE_WEREWOLF
+      && p_ptr->prace != RACE_BEORNING
       && p_ptr->pclass != CLASS_BLOOD_KNIGHT )
     {
         change_race(RACE_VAMPIRE, "");
@@ -800,7 +802,7 @@ bool _unwield_verify(obj_ptr obj)
     }
     if (object_is_cursed(obj) && obj->loc.where == INV_EQUIP)
     {
-        if ((obj->curse_flags & OFC_PERMA_CURSE) || p_ptr->pclass != CLASS_BERSERKER)
+        if ((obj->curse_flags & OFC_PERMA_CURSE) || ((p_ptr->pclass != CLASS_BERSERKER) && (!beorning_is_(BEORNING_FORM_BEAR))))
         {
             msg_print("Hmmm, it seems to be cursed.");
             energy_use = 0;
