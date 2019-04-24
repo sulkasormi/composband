@@ -2211,7 +2211,7 @@ bool autopick_auto_id(object_type *o_ptr)
     if (class_idx == CLASS_MONSTER)
         class_idx = race->pseudo_class_idx;
 
-    if (!object_is_known(o_ptr) && class_idx != CLASS_BERSERKER)
+    if (!object_is_known(o_ptr) && class_idx != CLASS_BERSERKER && !beorning_is_(BEORNING_FORM_BEAR))
     {
         slot_t slot;
 
