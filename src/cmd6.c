@@ -940,16 +940,19 @@ void do_cmd_read_scroll(void)
     /* Check some conditions */
     if (p_ptr->blind)
     {
+        flush();
         msg_print("You can't see anything.");
         return;
     }
     if (no_lite())
     {
+        flush();
         msg_print("You have no light to read by.");
         return;
     }
     if (p_ptr->confused)
     {
+        flush();
         msg_print("You are too confused!");
         return;
     }
@@ -1013,6 +1016,7 @@ static void do_cmd_device_aux(obj_ptr obj)
 
     if (p_ptr->tim_no_device)
     {
+        flush();
         msg_print("An evil power blocks your magic!");
         return;
     }
@@ -1020,6 +1024,7 @@ static void do_cmd_device_aux(obj_ptr obj)
     /* Devicemasters use devices even when afraid */
     if (!(is_devicemaster || fear_allow_device()))
     {
+        flush();
         msg_print("You are too scared!");
         return;
     }
@@ -1039,6 +1044,12 @@ static void do_cmd_device_aux(obj_ptr obj)
         msg_print("You failed to use the device properly.");
         if (prompt_on_failure) msg_print(NULL);
         sound(SOUND_FAIL);
+        if ((p_ptr->pclass == CLASS_BERSERKER) || (beorning_is_(BEORNING_FORM_BEAR)))
+        {
+            energy_use = 0; /* let's be nice */
+            return;
+        }
+
         if ( obj_is_identified(obj)
           && one_in_(10)
           && !obj_is_identified_fully(obj)
@@ -1051,6 +1062,7 @@ static void do_cmd_device_aux(obj_ptr obj)
             if (obj->known_xtra & OFL_DEVICE_POWER)
                 add_flag(obj->known_flags, OF_ACTIVATE);
         }
+        p_inc_fatigue(MUT_EASY_TIRING2, 50);
         return;
     }
 
@@ -1063,6 +1075,7 @@ static void do_cmd_device_aux(obj_ptr obj)
             PROJECT_STOP | PROJECT_GRID | PROJECT_ITEM | PROJECT_KILL);
         obj->number = 0;
         obj_release(obj, OBJ_RELEASE_QUIET);
+        p_inc_fatigue(MUT_EASY_TIRING2, 50);
         return;
     }
 
@@ -1135,6 +1148,7 @@ static void do_cmd_device_aux(obj_ptr obj)
                 p_ptr->notice |= PN_CARRY;
             }
         }
+        p_inc_fatigue(MUT_EASY_TIRING2, 50);
     }
     else
         energy_use = 0;
