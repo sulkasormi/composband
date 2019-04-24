@@ -209,7 +209,7 @@ void reset_tim_flags(void)
     while(p_ptr->energy_need < 0) p_ptr->energy_need += ENERGY_NEED();
     world_player = FALSE;
 
-    if (p_ptr->pclass == CLASS_BERSERKER) p_ptr->shero = 1;
+    if ((p_ptr->pclass == CLASS_BERSERKER) || (beorning_is_(BEORNING_FORM_BEAR))) p_ptr->shero = 1;
     else if (p_ptr->pclass == CLASS_ALCHEMIST)
     {
         alchemist_set_hero(NULL, 0, TRUE);
@@ -290,6 +290,22 @@ bool p_inc_minislow(int lisays)
     handle_stuff();
 
     return TRUE;
+}
+
+void p_inc_fatigue(int check_mut, int lisays)
+{
+    if ((!check_mut) || (!mut_present(check_mut)) || (lisays < 1)) return;
+
+    /* Check for easy tiring */
+    if ((one_in_(16 - p_ptr->minislow)) || ((check_mut == MUT_EASY_TIRING2) && (one_in_(6))))
+    {
+        if (p_ptr->mini_energy >= lisays)
+        {
+            p_ptr->mini_energy -= lisays;
+        }
+        else if (p_inc_minislow(1)) p_ptr->mini_energy += MAX(0, (100 - lisays));
+        else p_ptr->mini_energy = 0;
+    }
 }
 
 bool m_inc_minislow(monster_type *m_ptr, int lisays)
@@ -762,7 +778,7 @@ bool set_mimic(int v, int p, bool do_dec)
      * involved in werewolf equipment handling */
     if (prace_is_(RACE_WEREWOLF)) return FALSE;
     if (get_race()->flags & RACE_NO_POLY) return FALSE;
-    if (p == RACE_WEREWOLF) /* please don't let this even happen */
+    if ((p == RACE_WEREWOLF) || (p == RACE_BEORNING)) /* please don't let this even happen */
     {
         v = 0;
         p = MIMIC_NONE; /* paranoia */
@@ -2778,7 +2794,7 @@ bool set_shero(int v, bool do_dec)
 
     if (p_ptr->is_dead) return FALSE;
 
-    if (p_ptr->pclass == CLASS_BERSERKER) v = 1;
+    if ((p_ptr->pclass == CLASS_BERSERKER) || (beorning_is_(BEORNING_FORM_BEAR))) v = 1;
     /* Open */
     if (v)
     {
@@ -5891,9 +5907,13 @@ void change_race(int new_race, cptr effect_msg)
     {
         p_ptr->old_race1 |= 1L << p_ptr->prace;
     }
-    else
+    else if (p_ptr->prace < 64)
     {
         p_ptr->old_race2 |= 1L << (p_ptr->prace-32);
+    }
+    else if (p_ptr->prace < 96)
+    {
+        p_ptr->old_race3 |= 1L << (p_ptr->prace-64);
     }
     p_ptr->prace = new_race;
     p_ptr->psubrace = 0;
@@ -5938,7 +5958,7 @@ void do_poly_self(void)
 
     virtue_add(VIRTUE_CHANCE, 1);
 
-    if ((power > randint0(20)) && one_in_(3) && (p_ptr->prace != RACE_ANDROID) && (p_ptr->prace != RACE_WEREWOLF))
+    if ((power > randint0(20)) && one_in_(3) && (p_ptr->prace != RACE_ANDROID) && (p_ptr->prace != RACE_WEREWOLF) && (!(get_race()->flags & RACE_NO_POLY)))
     {
         char effect_msg[80] = "";
         int new_race, expfact, goalexpfact;
