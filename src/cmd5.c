@@ -1219,6 +1219,8 @@ void do_cmd_cast(void)
         }
     }
 
+    p_inc_fatigue(MUT_EASY_TIRING2, 50 + MIN(50, need_mana / 2));
+
     /* Redraw mana */
     p_ptr->redraw |= (PR_MANA);
 
