@@ -99,6 +99,12 @@ int race_melee_mult(bool attack_is_innate)
             else if (!attack_is_innate) return 100;
             else return MIN(115, MAX(66, 61 + (get_class()->base_skills.thn * 3 / 5)));
         }
+        case RACE_BEORNING:
+        {
+            if (beorning_is_(BEORNING_FORM_HUMAN)) return 100;
+            else if (!attack_is_innate) return 100;
+            else return MIN(140, MAX(55, 50 + (get_class()->base_skills.thn * 3 / 4)));
+        }
         case RACE_MON_ELEMENTAL:
         {
             if (elemental_is_(ELEMENTAL_WATER)) return 75 + (water_flow_rate() / 2);
@@ -106,6 +112,7 @@ int race_melee_mult(bool attack_is_innate)
         }
         case RACE_MON_ORC:
         case RACE_BOIT: return 95;
+        case RACE_TOMTE: return 82;
         case RACE_NIBELUNG: return 96;
         default: return 100;
     }
