@@ -158,6 +158,8 @@ static mutation_info _mutations[MAX_MUTATIONS] =
     {MUT_RATING_GOOD,       MUT_TYPE_BONUS,             0, 0, {0,  0,   0, vortex_speed_mut}},
     {MUT_RATING_GOOD,                    0,             0, 0, {0,  0,   0, vortex_control_mut}},
 
+    {MUT_RATING_AWFUL,                   0,             0, 0, {0,  0,   0, easy_tiring_II_mut}},
+
 };
 
 int _mut_prob_gain(int i)
@@ -237,8 +239,8 @@ int _mut_prob_gain(int i)
         result = 1;
     }
 
-    if ( _mutations[i].rating > MUT_RATING_AVERAGE
-      && mut_present(MUT_BAD_LUCK) )
+    if ( (_mutations[i].rating > MUT_RATING_AVERAGE)
+      && ((mut_present(MUT_BAD_LUCK)) || (p_ptr->personality == PERS_FRAGILE)) )
     {
         result = 1;
     }
