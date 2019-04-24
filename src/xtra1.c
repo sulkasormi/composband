@@ -1987,6 +1987,13 @@ static void prt_effects(void)
         else sprintf(buf, "[Wolf]");
         c_put_str(TERM_ORANGE, buf, row++, col);
     }
+    else if (prace_is_(RACE_BEORNING))
+    {
+        char buf[MAX_NLEN];
+        if (beorning_is_(BEORNING_FORM_HUMAN)) sprintf(buf, "[Human]");
+        else sprintf(buf, "[Bear]");
+        c_put_str(TERM_ORANGE, buf, row++, col);
+    }
     if (monk_armour_aux)
         c_put_str(TERM_RED, "Heavy Armor", row++, col);
     if (p_ptr->cumber_glove)
@@ -4791,6 +4798,8 @@ void calc_bonuses(void)
          * combat.c is required. */
         init_blows_calc(o_ptr, info_ptr);
 
+        if (pers_ptr->calc_weapon_bonuses)
+            pers_ptr->calc_weapon_bonuses(o_ptr, info_ptr);
         if (class_ptr->calc_weapon_bonuses)
             class_ptr->calc_weapon_bonuses(o_ptr, info_ptr);
         if (race_ptr->calc_weapon_bonuses)
@@ -5242,9 +5251,14 @@ void calc_bonuses(void)
       || p_ptr->pclass == CLASS_SKILLMASTER
       || p_ptr->pclass == CLASS_NINJA
       || p_ptr->pclass == CLASS_NINJA_LAWYER
-      || p_ptr->pclass == CLASS_SCOUT) && (monk_armour_aux != monk_notify_aux))
+      || p_ptr->pclass == CLASS_SCOUT
+      || prace_is_(RACE_TOMTE)) && (monk_armour_aux != monk_notify_aux))
     {
-        if (heavy_armor())
+        if (prace_is_(RACE_TOMTE) && (tomte_heavy_armor() > 0))
+        {
+            msg_print("The weight of your helmet squeezes your head.");
+        }
+        else if (heavy_armor())
         {
             msg_print("The weight of your armor disrupts your balance.");
             if (hack_mind)
@@ -5697,6 +5711,8 @@ void handle_stuff(void)
 bool heavy_armor(void)
 {
     u16b monk_arm_wgt = 0;
+
+    if ((prace_is_(RACE_TOMTE)) && (tomte_heavy_armor() > 0)) return TRUE;
 
     if (p_ptr->pclass != CLASS_MONK
      && p_ptr->pclass != CLASS_MYSTIC
