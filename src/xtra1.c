@@ -4221,7 +4221,7 @@ void calc_bonuses(void)
     {
         int ct = 0;
         int to_d = 3 + p_ptr->lev/5;
-        int pct = p_ptr->pclass == CLASS_RAGE_MAGE ? 50 : 100; /* XXX tweak me */
+        int pct = ((p_ptr->pclass == CLASS_RAGE_MAGE) || (beorning_is_(BEORNING_FORM_BEAR))) ? 50 : 100; /* XXX tweak me */
 
         res_add_immune(RES_FEAR);
 
