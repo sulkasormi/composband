@@ -971,6 +971,28 @@ void easy_tiring_mut(int cmd, variant *res)
     }
 }
 
+void easy_tiring_II_mut(int cmd, variant *res)
+{
+    switch (cmd)
+    {
+    case SPELL_NAME:
+        var_set_string(res, "Very Easy Tiring");
+        break;
+    case SPELL_GAIN_MUT:
+        msg_print("You suddenly feel incredibly tired.");
+        break;
+    case SPELL_LOSE_MUT:
+        msg_print("You no longer feel incredibly tired.");
+        break;
+    case SPELL_MUT_DESC:
+        var_set_string(res, "Using magic or ranged weapons exhausts you.");
+        break;
+    default:
+        default_spell(cmd, res);
+        break;
+    }
+}
+
 void eat_light_mut(int cmd, variant *res)
 {
     switch (cmd)
