@@ -385,7 +385,7 @@ bool dispel_check(int m_idx)
     if (p_ptr->dustrobe) return (TRUE);
 
     /* Berserk Strength */
-    if (IS_SHERO() && (p_ptr->pclass != CLASS_BERSERKER)) return (TRUE);
+    if (IS_SHERO() && (p_ptr->pclass != CLASS_BERSERKER) && (!beorning_is_(BEORNING_FORM_BEAR))) return (TRUE);
 
     /* Powerful Mimickry: Note Colossus and Demon-Lord have insane XP requirements,
        so will always trigger a dispel. */
