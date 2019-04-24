@@ -1184,7 +1184,7 @@ static void _build_spells(doc_ptr doc)
 /****************************** Miscellaneous ************************************/
 static void _build_race_history(doc_ptr doc)
 {
-    if (p_ptr->old_race1 || p_ptr->old_race2)
+    if (p_ptr->old_race1 || p_ptr->old_race2 || p_ptr->old_race3)
     {
         int i;
         const char *slaji = get_race_aux(p_ptr->start_race, 0)->name;
@@ -1197,9 +1197,13 @@ static void _build_race_history(doc_ptr doc)
             {
                 if (!(p_ptr->old_race1 & 1L << i)) continue;
             }
-            else
+            else if (i < 64)
             {
                 if (!(p_ptr->old_race2 & 1L << (i-32))) continue;
+            }
+            else
+            {
+                if (!(p_ptr->old_race3 & 1L << (i-64))) continue;
             }
             {
                 const char *laji = get_race_aux(i, 0)->name;
@@ -1405,7 +1409,9 @@ static void _build_pets(doc_ptr doc)
         doc_printf(doc, "  Allow cast summon spell:            %s\n", (p_ptr->pet_extra_flags & PF_SUMMON_SPELL) ? "ON" : "OFF");
         doc_printf(doc, "  Allow involve player in area spell: %s\n", (p_ptr->pet_extra_flags & PF_BALL_SPELL) ? "ON" : "OFF");
         if (p_ptr->wizard || easy_damage)
+        {
             doc_printf(doc, "  Riding Skill:                       %d\n", skills_riding_current());
+        }
 
         doc_newline(doc);
     }
