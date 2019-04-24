@@ -201,6 +201,7 @@ static int _welcome_ui(void)
 {
     /* Mega-Hack */
     werewolf_init();
+    beorning_init();
     p_ptr->chaos_patron = RANDOM_PATRON;
 
     for (;;)
@@ -677,9 +678,9 @@ typedef struct _race_group_s {
 } _race_group_t, *_race_group_ptr;
 static _race_group_t _race_groups[_MAX_RACE_GROUPS] = {
     { "Human",
-        {RACE_AMBERITE, RACE_BARBARIAN, RACE_DEMIGOD, RACE_DUNADAN, RACE_HUMAN, -1} },
+        {RACE_AMBERITE, RACE_BARBARIAN, RACE_BEORNING, RACE_DEMIGOD, RACE_DUNADAN, RACE_HUMAN, -1} },
     { "Elf",
-        {RACE_DARK_ELF, RACE_HIGH_ELF, RACE_WOOD_ELF, -1} },
+        {RACE_DARK_ELF, RACE_HIGH_ELF, RACE_TOMTE, RACE_WOOD_ELF, -1} },
     { "Hobbit/Dwarf",
         {RACE_DWARF, RACE_GNOME, RACE_HOBBIT, RACE_NIBELUNG, -1} },
     { "Fairy",
