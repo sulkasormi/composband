@@ -1083,6 +1083,7 @@ extern errr rd_savefile_new(void);
 extern bool load_floor(saved_floor_type *sf_ptr, u32b mode);
 extern void rd_item(savefile_ptr file, object_type *o_ptr);
 extern void wr_item(savefile_ptr file, object_type *o_ptr); /* save.c */
+extern void updatecharinfoS(void);
 
 /* melee1.c */
 extern int ac_melee_pct_aux(int ac, int max_reduce, int max_ac);
