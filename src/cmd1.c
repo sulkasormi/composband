@@ -2336,7 +2336,7 @@ static void innate_attacks(s16b m_idx, bool *fear, bool *mdeath, int mode)
         }
     }
 
-    if ((p_ptr->pclass == CLASS_DUELIST) && (m_ptr->maxhp > 100) && ((r_ptr->level >= (p_ptr->lev * 4 / 5)) || (m_ptr->maxhp > 1000)) && (m_idx != p_ptr->duelist_target_idx) && (!duelist_equip_error()))
+    if ((p_ptr->pclass == CLASS_DUELIST) && ((!retaliation_hack) || (!p_ptr->duelist_target_idx)) && (m_ptr->maxhp > 100) && ((r_ptr->level >= (p_ptr->lev * 4 / 5)) || (m_ptr->maxhp > 1000)) && (m_idx != p_ptr->duelist_target_idx) && (!duelist_equip_error()))
     {
         p_ptr->duelist_target_idx = m_idx;
         msg_format("You challenge %s to a duel!", duelist_current_challenge());
@@ -2971,7 +2971,7 @@ static bool py_attack_aux(int y, int x, bool *fear, bool *mdeath, s16b hand, int
 		{
 			duelist_attack = TRUE;
 		}
-		else if (!duelist_equip_error())
+		else if (((!retaliation_hack) || (!p_ptr->duelist_target_idx)) && ((r_ptr->level >= p_ptr->lev * 4 / 5) || (m_ptr->maxhp >= p_ptr->lev * 9)) && (!duelist_equip_error()))
 		{
 			duelist_challenge = TRUE;
 		}
@@ -3600,7 +3600,7 @@ static bool py_attack_aux(int y, int x, bool *fear, bool *mdeath, s16b hand, int
                   && !mon_save_p(m_ptr->r_idx, A_DEX) )
                 {
                     msg_format("%^s is dealt a <color:v>*WOUNDING*</color> strike.", m_name_subject);
-                    k += pienempi(m_ptr->hp * 2 / 5, rand_range(2, 10) * d);
+                    k += pienempi(m_ptr->hp * 2 / 5, rand_range(2, 6) * d);
                     drain_result = k;
                 }
             }
