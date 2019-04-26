@@ -9,7 +9,7 @@ cptr duelist_equip_error(void)
 {
     int wgt = equip_weight(object_is_armour);
 
-    if (wgt > (100 + (p_ptr->lev * 4)))
+    if (wgt > (120 + (p_ptr->lev * 3)))
         return "The weight of your equipment is disrupting your talents.";
 
     if (equip_find_obj(TV_SHIELD, SV_ANY) || equip_find_obj(TV_CAPTURE, SV_ANY))
@@ -500,7 +500,7 @@ static spell_info _spells[MAX_DUELIST_SPELLS] =
     { 32,  30,  0, _acrobatic_charge_spell },
     { 40,  60,  0, _isolation_spell },
     { 45,  60,  0, _darting_duel_spell },
-    { 48,  60,  0, _phase_charge_spell },
+    { 48,  80,  0, _phase_charge_spell },
 }; 
 
 static int _get_spells(spell_info* spells, int max)
@@ -621,7 +621,7 @@ class_t *duelist_get_class(void)
     /* static info never changes */
     if (!init)
     {           /* dis, dev, sav, stl, srh, fos, thn, thb */
-    skills_t bs = { 30,  24,  23,   3,  22,  16,  50,   0};
+    skills_t bs = { 30,  21,  23,   3,  22,  16,  50,   0};
     skills_t xs = { 10,  10,  10,   0,   0,   0,  14,   0};
 
         me.name = "Duelist";
