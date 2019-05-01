@@ -714,11 +714,24 @@ static void _cave_gen_monsters(void)
          * Most TEMPLATE rooms and all VAULT rooms will generate their own monsters
          * during room generation. */
         ct = d_info[dungeon_type].min_m_alloc_level; /* usually 14 */
-        ct += randint1(_depth_amt());
-        ct = _adjust_small_level(ct);
-        /* XXX I'm not a fan of always_small_levels, but this option may be too easy now */
-        if (ct < 4)
-            ct = 4;
+        if ((increase_density) && ((cur_hgt < MAX_HGT) || (cur_wid < MAX_WID)))
+        {
+            int small_tester = ct;
+            ct = (ct * cur_hgt) / MAX_HGT;
+            ct = (ct * cur_wid) / MAX_WID;
+            ct += 1;
+            if (ct > small_tester) ct = small_tester;
+            ct += _depth_amt();
+            ct += randint1(8);
+            if (dun_level >= 50) ct = (ct * 3 / 5);
+        }
+        else
+        {
+            ct += randint1(_depth_amt());
+            ct = _adjust_small_level(ct);
+            if (ct < 4)
+                ct = 4;
+        }
 
         for (i = 0; i < ct; i++)
             alloc_monster(0, PM_ALLOW_SLEEP);
@@ -1349,23 +1362,31 @@ static bool level_gen(cptr *why)
      * monsters (like most Amberites and Bull Gates). They are no longer harder
      * than normal sized levels since all aspects of dungeon generation scale
      * with dungeon size (including monster density). */
-    if (d_info[dungeon_type].flags1 & DF1_BIG)
+    if ((d_info[dungeon_type].flags1 & DF1_BIG) && ((dungeon_type == DUNGEON_ARENA) || (!no_big_dungeons)))
         small = FALSE;
     else if (d_info[dungeon_type].flags1 & DF1_SMALLEST)
         small = TRUE;
     else if (one_in_(SMALL_LEVEL))
         small = TRUE;
     if ((dungeon_type == DUNGEON_ICKY) && (dun_level == 10)) small = TRUE;
-    if (((coffee_break) || ((d_info[dungeon_type].flags1 & DF1_COFFEE) && (!ironman_downward))))
+    if (((coffee_break) || ((
+        ((small_level_type == SMALL_LVL_DUNG_COFFEE) && (dungeon_type != DUNGEON_ARENA))
+        || (d_info[dungeon_type].flags1 & DF1_COFFEE)) && (!ironman_downward))))
     {
         coffee = TRUE;
         if ((dun_level < 99) && (randint0(484) < 484 - (MIN(60, dun_level) * 2))) small = TRUE;
     }
     if ((dungeon_type == DUNGEON_MOUND) && (randint0(125) < (484 - (dun_level * 5)))) small = TRUE;
+    if ((small_level_type > SMALL_LVL_DUNG_COFFEE) && (dungeon_type != DUNGEON_ARENA))
+    {
+        small = TRUE;
+        if (small_level_type == SMALL_LVL_COFFEE) coffee = TRUE;
+    }
 
     if (small)
     {
         int hgt, wid;
+        bool big = (d_info[dungeon_type].flags1 & DF1_BIG) ? TRUE : FALSE;
 
         if (d_info[dungeon_type].flags1 & DF1_SMALLEST) /* Labyrinth and Mine */
         {
@@ -1376,6 +1397,121 @@ static bool level_gen(cptr *why)
         { 
             hgt = randint1(2); 
             wid = 1; 
+        }
+        else if ((big) && (!no_big_dungeons))
+        {
+            hgt = 3;
+            wid = 3;
+        }
+        else if (small_level_type > SMALL_LVL_COFFEE)
+        {
+            switch (small_level_type)
+            {
+                case SMALL_LVL_TINY:
+                    hgt = 1;
+                    wid = 1;
+                    break;
+                case SMALL_LVL_EXTREMELY_SMALL:
+                {
+                    for (;;)
+                    {
+                        hgt = randint1(2);
+                        wid = randint1(2);
+                        if (big)
+                        {
+                            hgt = 2;
+                            wid = 1;
+                        }
+                        if ((hgt * wid) > 2) continue;
+                        break;
+                    }
+                    break;
+                }
+                case SMALL_LVL_VERY_SMALL:
+                {
+                    for (;;)
+                    {
+                        hgt = randint1(3);
+                        wid = randint1(3);
+                        if ((hgt * wid) > 4) continue;
+                        if (((hgt * wid) == 1) && ((one_in_(2)) || (big))) continue;
+                        if (((hgt * wid) == 4) && (!big) && (!one_in_(6))) continue;
+                        if (((hgt * wid) == 3) && (!big) && (!one_in_(4))) continue;
+                        break;
+                    }
+                    break;
+                }
+                case SMALL_LVL_BABY_COFFEE:
+                {
+                    int sattuma = randint1(128);
+                    int minimi = MIN(3, (sattuma + dun_level) / 75);
+                    int maksimi = MAX(minimi, MIN(3, (sattuma + (dun_level * 3)) / 50)) + 1;
+                    if (big) minimi = MIN(3, minimi + 1);
+                    for (;;)
+                    {
+                        hgt = randint1(3);
+                        wid = randint1(3);
+                        if ((hgt * wid) > maksimi) continue;
+                        if ((hgt * wid) < minimi) continue;
+                        break;
+                    }
+                    break;
+                }
+                case SMALL_LVL_SMALL:
+                {
+                    for (;;)
+                    {
+                        hgt = randint1(3);
+                        wid = randint1(3);
+                        if ((hgt * wid) > (big ? 6 : 4)) continue;
+                        if ((big) && ((hgt * wid) < 4)) continue;
+                        break;
+                    }
+                    break;
+                }
+                case SMALL_LVL_INSTANT_COFFEE:
+                {
+                    int koko = MAX(0, MIN(dun_level + randint0(6) + (big ? 14 : 0), 90) / 10);
+                    static int minimit[10] =  {1, 1, 2, 2, 2, 3, 4, 4, 6, 6};
+                    static int maksimit[10] = {1, 2, 2, 3, 4, 4, 4, 6, 6, 6};
+                    for (;;)
+                    {
+                        hgt = randint1(3);
+                        wid = randint1(3);
+                        if ((hgt * wid) > maksimit[koko]) continue;
+                        if ((hgt * wid) < minimit[koko]) continue;
+                        break;
+                    }
+                    break;
+                }
+                case SMALL_LVL_INSTANT_COFFEE_BIG:
+                {
+                    int koko = MAX(0, MIN(dun_level + randint0(6) + (big ? 14 : 0), 100) / 10);
+                    static int minimit_big[11] =  {1, 1, 2, 2, 3, 4, 4, 4, 6, 6, 9};
+                    static int maksimit_big[11] = {1, 2, 2, 3, 4, 4, 4, 6, 6, 9, 9};
+                    for (;;)
+                    {
+                        hgt = randint1(3);
+                        wid = randint1(3);
+                        if ((hgt * wid) > maksimit_big[koko]) continue;
+                        if ((hgt * wid) < minimit_big[koko]) continue;
+                        break;
+                    }
+                    break;
+                }
+                default: /* medium */
+                {
+                    for (;;)
+                    {
+                        hgt = randint1(3);
+                        wid = randint1(3);
+                        if ((hgt * wid) > 6) continue;
+                        if ((hgt * wid) < (big ? 4 : 2)) continue;
+                        break;
+                    }
+                    break;
+                }
+            }
         }
         else
         {
@@ -1392,6 +1528,12 @@ static bool level_gen(cptr *why)
                 if (hgt * wid <= (coffee ? (MIN(4, (dun_level + 10 + sattuma) / 25)) : 2)) continue;
                 break;
             }
+        }
+
+        if ((even_proportions) && (hgt == 1) && (wid != 1) && (!one_in_(wid)))
+        {
+            hgt = wid;
+            wid = 1;
         }
 
         cur_hgt = hgt * SCREEN_HGT;
