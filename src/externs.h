@@ -97,6 +97,7 @@ extern cptr stat_name_true[6];
 extern cptr window_flag_desc[32];
 extern option_type option_info[];
 extern cptr chaos_patrons[MAX_PATRON];
+extern cptr lv_size_options[SMALL_LVL_MAX + 1];
 extern martial_arts ma_blows[MAX_MA];
 extern cptr game_inscriptions[];
 extern kamae kamae_shurui[MAX_KAMAE];
@@ -365,6 +366,11 @@ extern bool no_scrambling;
 extern bool comp_mode;
 extern bool reduce_uniques;
 extern byte reduce_uniques_pct;
+extern bool always_small_levels;
+extern byte small_level_type;
+extern bool increase_density;
+extern bool even_proportions;
+extern bool no_big_dungeons;
 
 /*** Easy Object Auto-Destroyer ***/
 
