@@ -2973,7 +2973,7 @@ static bool py_attack_aux(int y, int x, bool *fear, bool *mdeath, s16b hand, int
 		{
 			duelist_attack = TRUE;
 		}
-		else if (((!retaliation_hack) || (!p_ptr->duelist_target_idx)) && ((r_ptr->level >= p_ptr->lev * 4 / 5) || (m_ptr->maxhp >= p_ptr->lev * 9)) && (!duelist_equip_error()))
+		else if (((!retaliation_hack) || (!p_ptr->duelist_target_idx)) && ((r_ptr->level >= p_ptr->lev * 4 / 5) || (m_ptr->maxhp >= p_ptr->lev * 9) || ((p_ptr->lev < 35) && (m_ptr->r_idx == MON_OCHRE_JELLY))) && (!duelist_equip_error()))
 		{
 			duelist_challenge = TRUE;
 		}
