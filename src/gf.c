@@ -1646,7 +1646,7 @@ bool gf_affect_m(int who, mon_ptr mon, int type, int dam, int flags)
         if (touch && seen_msg) msg_format("%^s is <color:D>drained</color>!", m_name);
         if (seen) obvious = TRUE;
         _BABBLE_HACK()
-        if (race->flagsr & RFR_RES_NETH)
+        if ((race->flagsr & RFR_RES_NETH) || (race->flags3 & RF3_UNDEAD))
         {
             if (race->flags3 & RF3_UNDEAD)
             {
