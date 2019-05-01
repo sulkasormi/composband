@@ -2457,6 +2457,18 @@ option_type option_info[] =
     { &single_pantheon,             FALSE, OPT_PAGE_BIRTH, 5, 9,
     "single_pantheon",              "Play with only one pantheon" },
 
+    { &always_small_levels,         FALSE, OPT_PAGE_BIRTH, 4, 14,
+    "always_small_levels",          "Always generate small levels" },
+
+    { &increase_density,            FALSE, OPT_PAGE_BIRTH, 4, 15,
+    "increase_density",             "Increase monster density on small levels" },
+
+    { &no_big_dungeons,             FALSE, OPT_PAGE_BIRTH, 4, 17,
+    "no_big_dungeons",              "Allow small levels in all dungeons except Arena" },
+
+    { &even_proportions,            FALSE, OPT_PAGE_BIRTH, 4, 16,
+    "even_proportions",             "Sometimes reshape very flat \"pipe\" levels" },
+
     { &no_chris,			FALSE, OPT_PAGE_BIRTH, 6, 12,
     "no_chris",				"Nexus attacks never teleport to another dungeon" },
 
@@ -2540,6 +2552,21 @@ cptr chaos_patrons[MAX_PATRON] =
     "Karrot",
     "Yeqrezh",
     "Troika"
+};
+
+cptr lv_size_options[SMALL_LVL_MAX + 1] =
+{
+    "Normal",
+    "Coffee-break (allow big)",
+    "Coffee-break (never big)",
+    "Medium",
+    "Instant Coffee (allow big)",
+    "Instant Coffee (never big)",
+    "Small (classic)",
+    "Small Coffee",
+    "Very Small",
+    "Extremely Small",
+    "Tiny"
 };
 
 martial_arts ma_blows[MAX_MA] =
