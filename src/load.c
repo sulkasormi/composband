@@ -237,6 +237,7 @@ static void rd_options(savefile_ptr file)
     mana_warn = savefile_read_byte(file);
     random_artifact_pct = savefile_read_byte(file);
     reduce_uniques_pct = savefile_read_byte(file);
+    small_level_type = savefile_is_older_than(file, 7,1,0,11) ? 0 : savefile_read_byte(file);
 
     /*** Cheating options ***/
     c = savefile_read_u16b(file);
