@@ -79,6 +79,18 @@ This option removes some percentage of uniques from the game. A few uniques (mos
 <topic:single_pantheon><color:U>Play with only one pantheon</color> <color:D>(single_pantheon)</color>
 This option removes one of the game's two main monster pantheons (Olympian or Egyptian) from the game, but also re-adds all members of the remaining pantheon if they have been removed by the reduce_uniques option. In wilderness mode, the dungeon associated with the removed pantheon is also removed from the game. Which pantheon remains can be either specified by the player or left to a random decision.
 
+<topic:always_small_levels><color:U>Always generate small levels</color> <color:D>(always_small_levels)</color>
+This option allows you to select from a variety of different level-size selection methods. See <link:small_lv.txt> for more details.
+
+<topic:increase_density><color:U>Increase monster density on small levels</color> <color:D>(increase_density)</color>
+This option switches to the old PosChengband 6.1.0 monster density formula for small levels, increasing the number of monsters generated on newly entered small levels.
+
+<topic:no_big_dungeons><color:U>Allow small levels in all dungeons except Arena</color> <color:D>(no_big_dungeons)</color>
+If this option is enabled, small levels can generate even in dungeons that normally always generate maximum-sized levels. The exception is Arena, which will still always generate large levels.
+
+<topic:even_proportions><color:U>Sometimes reshape very flat "pipe" levels</color> <color:D>(even_proportions)</color>
+If this option is turned on, levels with a very high (6-to-1 or higher) width-to-height ratio are sometimes re-shaped to have the same total area but different proportions.
+
 <topic:no_chris><color:U>Nexus attacks never teleport to another dungeon</color> <color:D>(no_chris)</color>
 Turning on this option disables the "Chris effect" (a nexus attack effect that teleports the player to another dungeon, potentially one that's highly dangerous and was never previously visited by the player). As a substitute for the Chris effect, the player's stats will be scrambled; or if stat scrambling is also disabled, the Baby Foul Curse (a less deadly version of the infamous Ancient Foul Curse) will trigger. This option has no effect (or, rather, is effectively always on) in no-wilderness mode, since no-wilderness mode only has the one dungeon.
 
@@ -515,4 +527,5 @@ Updated    : Zangband DevTeam
 Updated    : Hengband 1.5.2
 Updated    : PosChengband 4.0.0
 Updated    : FrogComposband 7.0.nougat
+Updated    : FrogComposband 7.1.chocolate
 </color>
