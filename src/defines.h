@@ -19,7 +19,7 @@
 #define VER_MAJOR 7
 #define VER_MINOR 1
 #define VER_PATCH "toffee"
-#define VER_EXTRA 10
+#define VER_EXTRA 11
 #define VERSION_IS_DEVELOPMENT (TRUE)
 
 #define GAME_MODE_BEGINNER  0
@@ -4285,6 +4285,7 @@ extern int PlayerUID;
 #define MON_MITHRIL_COINS       239
 #define MON_DRUID               241
 #define MON_PINK_HORROR         242
+#define MON_OCHRE_JELLY         245
 #define MON_SOFTWARE_BUG        246
 #define MON_HILL_GIANT          255
 #define MON_CLAY_GOLEM          261
@@ -6075,3 +6076,15 @@ enum
 #define TROIKA_CHANCE 10
 #define TROIKA_TAKE_HIT 11
 #define TROIKA_TELEPORT 12
+
+#define SMALL_LVL_DUNG_COFFEE 1
+#define SMALL_LVL_COFFEE 2
+#define SMALL_LVL_MEDIUM 3
+#define SMALL_LVL_INSTANT_COFFEE_BIG 4
+#define SMALL_LVL_INSTANT_COFFEE 5
+#define SMALL_LVL_SMALL 6
+#define SMALL_LVL_BABY_COFFEE 7
+#define SMALL_LVL_VERY_SMALL 8
+#define SMALL_LVL_EXTREMELY_SMALL 9
+#define SMALL_LVL_TINY 10
+#define SMALL_LVL_MAX 10
