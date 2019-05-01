@@ -2468,6 +2468,8 @@ static void _build_options(doc_ptr doc)
 
     doc_printf(doc, " Preserve Mode:      %s\n", preserve_mode ? "On" : "Off");
 
+    if (small_level_type <= SMALL_LVL_MAX)
+         doc_printf(doc, " Level Size:         %s\n", lv_size_options[small_level_type]);
 
     if (easy_damage)
 		doc_printf(doc, " Easy Damage Info:   On\n");
@@ -2486,6 +2488,12 @@ static void _build_options(doc_ptr doc)
 
     if ((ironman_downward) && (!coffee_break))
         doc_printf(doc, " Diving Only:        On\n");
+
+    if (increase_density)
+        doc_printf(doc, " Dense Small Levels: On\n");
+
+    if (no_big_dungeons)
+        doc_printf(doc, " Large Dungeons:     Arena Only\n");
 
     if (ironman_nightmare)
         doc_printf(doc, " <color:v>Nightmare Mode</color>:     On\n");
