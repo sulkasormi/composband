@@ -880,6 +880,19 @@ void do_cmd_options_aux(int page, cptr info)
                     strcat(buf, "no  ");
                 sprintf(buf + strlen(buf), "(%.19s)", option_info[opt[i]].o_text);
             }
+            else if (option_info[opt[i]].o_var == &always_small_levels)
+            {
+                sprintf(buf, "%-48s: ", option_info[opt[i]].o_desc);
+                if (always_small_levels)
+                {
+                    sprintf(buf + strlen(buf), "%s ", lv_size_options[small_level_type]);
+                }
+                else
+                {
+                    strcat(buf, "no  ");
+                    sprintf(buf + strlen(buf), "(%.19s)", option_info[opt[i]].o_text);
+                }
+            }
             else
             {
                 sprintf(buf, "%-48s: %s (%.19s)",
@@ -989,6 +1002,23 @@ void do_cmd_options_aux(int page, cptr info)
                         if (game_pantheon == 0) single_pantheon = FALSE;
                     }
                 }
+                else if (option_info[opt[k]].o_var == &always_small_levels)
+                {
+                    if (!always_small_levels)
+                    {
+                        always_small_levels = TRUE;
+                        small_level_type = 1;
+                    }
+                    else
+                    {
+                        small_level_type++;
+                        if (small_level_type > SMALL_LVL_MAX)
+                        {
+                            always_small_levels = FALSE;
+                            small_level_type = 0;
+                        }
+                    }
+                }
                 else
                 {
                     (*option_info[opt[k]].o_var) = TRUE;
@@ -1052,6 +1082,19 @@ void do_cmd_options_aux(int page, cptr info)
                             single_pantheon = FALSE;
                             game_pantheon = 0;
                         }
+                    }
+                }
+                else if (option_info[opt[k]].o_var == &always_small_levels)
+                {
+                    if (!always_small_levels)
+                    {
+                        always_small_levels = TRUE;
+                        small_level_type = SMALL_LVL_MAX;
+                    }
+                    else
+                    {
+                        small_level_type--;
+                        if (small_level_type == 0) always_small_levels = FALSE;
                     }
                 }
                 else
