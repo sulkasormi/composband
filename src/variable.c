@@ -348,6 +348,11 @@ bool no_scrambling;
 bool comp_mode;
 bool reduce_uniques;
 byte reduce_uniques_pct = 100; /* This is the pct of uniques to face */
+bool always_small_levels;
+byte small_level_type = 0;
+bool increase_density;
+bool even_proportions;
+bool no_big_dungeons;
 
 /*** Easy Object Auto-Destroyer ***/
 
