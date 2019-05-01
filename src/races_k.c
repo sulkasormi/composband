@@ -841,6 +841,7 @@ race_t *tomte_get_race(void)
         me.get_powers = _tomte_get_powers;
         me.get_flags = _tomte_get_flags;
         me.birth = _tomte_birth;
+        me.boss_r_idx = MON_SANTACLAUS;
         init = TRUE;
     }
 
