@@ -443,6 +443,7 @@ static void wr_options(savefile_ptr file)
     savefile_write_byte(file, mana_warn);
     savefile_write_byte(file, random_artifact_pct);
     savefile_write_byte(file, reduce_uniques_pct);
+    savefile_write_byte(file, small_level_type);
 
     /*** Cheating options ***/
     c = 0;
