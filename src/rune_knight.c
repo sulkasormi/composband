@@ -275,8 +275,6 @@ bool rune_add(object_type *o_ptr, int which, bool prompt)    /* Birthing needs a
         break;
 
     case RUNE_MIGHT:
-        o_ptr->to_h += randint1(5);
-        o_ptr->to_d += randint1(5);
         if (object_is_body_armour(o_ptr))
         {
             _add_flag(o_ptr, OF_SUST_STR);
