@@ -544,6 +544,7 @@ void set_friendly_ingame(monster_type *m_ptr)
 
 void set_pet(monster_type *m_ptr)
 {
+    if (!allow_pets) return;
     if (!is_pet(m_ptr)) check_pets_num_and_align(m_ptr, TRUE);
 
     quests_on_kill_mon(m_ptr);
