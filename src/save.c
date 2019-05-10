@@ -553,6 +553,7 @@ static void wr_extra(savefile_ptr file)
     for (i = 0; i < MAX_MAGIC_NUM; i++) savefile_write_byte(file, p_ptr->magic_num2[i]);
 
     savefile_write_byte(file, p_ptr->start_race);
+    savefile_write_byte(file, p_ptr->start_sex);
     savefile_write_s32b(file, p_ptr->old_race1);
     savefile_write_s32b(file, p_ptr->old_race2);
     savefile_write_s32b(file, p_ptr->old_race3);
