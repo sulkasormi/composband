@@ -1777,6 +1777,7 @@ s32b realm_choices1[MAX_CLASS] =
     CH_LAW,                 /* Ninja-Lawyer */
     CH_NONE,                /* Alchemist */
     CH_NONE,                /* Politician */
+    CH_NONE,                /* Disciple */
 };
 
 
@@ -1850,6 +1851,7 @@ s32b realm_choices2[MAX_CLASS] =
     CH_NONE,                /* Ninja-Lawyer */
     CH_NONE,                /* Alchemist */
     CH_NONE,                /* Politician */
+    CH_NONE,                /* Disciple */
 };
 
 
