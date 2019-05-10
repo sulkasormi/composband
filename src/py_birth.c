@@ -2970,6 +2970,7 @@ static void _birth_finalize(void)
     do_cmd_rerate_aux();
 
     p_ptr->start_race = p_ptr->prace;
+    p_ptr->start_sex = p_ptr->psex;
     p_ptr->expfact = calc_exp_factor();
 
     p_ptr->quest_seed = randint0(0x10000000);
