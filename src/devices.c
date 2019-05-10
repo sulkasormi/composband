@@ -7165,6 +7165,11 @@ cptr do_effect(effect_t *effect, int mode, int boost)
         if (value) return format("%d", 100);
         if (cast)
         {
+            if ((prace_is_(RACE_MON_POSSESSOR)) || (prace_is_(RACE_MON_MIMIC)))
+            {
+                msg_print("Nothing happens. Maybe you should just try another body?");
+                break;
+            }
             p_ptr->psex = (SEX_MALE + SEX_FEMALE) - p_ptr->psex;
             if (p_ptr->psex == SEX_FEMALE)
             {
