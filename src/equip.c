@@ -1417,6 +1417,7 @@ void equip_calc_bonuses(void)
             _weapon_info_flag(slot, flgs, known_flgs, OF_SLAY_HUMAN); 
 			_weapon_info_flag(slot, flgs, known_flgs, OF_KILL_LIVING);  /* Thanos */
             _weapon_info_flag(slot, flgs, known_flgs, OF_BRAND_VAMP); /* Dragon Armor (Death), Helm of the Vampire */
+            _weapon_info_flag(slot, flgs, known_flgs, OF_BRAND_DARK); /* Allow possible future use */
         }
 
         if (have_flag(flgs, OF_XTRA_SHOTS))
