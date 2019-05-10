@@ -1471,7 +1471,7 @@ static bool level_gen(cptr *why)
                 }
                 case SMALL_LVL_INSTANT_COFFEE:
                 {
-                    int koko = MAX(0, MIN(dun_level + randint0(6) + (big ? 14 : 0), 90) / 10);
+                    int koko = isompi(0, pienempi(dun_level + randint0(6) + (big ? 14 : 0), 90) / 10);
                     static int minimit[10] =  {1, 1, 2, 2, 2, 3, 4, 4, 6, 6};
                     static int maksimit[10] = {1, 2, 2, 3, 4, 4, 4, 6, 6, 6};
                     for (;;)
@@ -1486,7 +1486,7 @@ static bool level_gen(cptr *why)
                 }
                 case SMALL_LVL_INSTANT_COFFEE_BIG:
                 {
-                    int koko = MAX(0, MIN(dun_level + randint0(6) + (big ? 14 : 0), 100) / 10);
+                    int koko = isompi(0, pienempi(dun_level + randint0(6) + (big ? 14 : 0), 100) / 10);
                     static int minimit_big[11] =  {1, 1, 2, 2, 3, 4, 4, 4, 6, 6, 9};
                     static int maksimit_big[11] = {1, 2, 2, 3, 4, 4, 4, 6, 6, 9, 9};
                     for (;;)
