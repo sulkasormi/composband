@@ -227,9 +227,30 @@ void _bear_charge_spell(int cmd, variant *res)
     }
 }
 
+void _bear_sniff_spell(int cmd, variant *res)
+{
+    switch (cmd)
+    {
+    case SPELL_NAME:
+        var_set_string(res, "Sniff");
+        break;
+    case SPELL_DESC:
+        var_set_string(res, "Attempt to smell nearby monsters.");
+        break;
+    case SPELL_CAST:
+        detect_monsters_living(DETECT_RAD_DEFAULT, "You smell nearby monsters.");
+        var_set_bool(res, TRUE);
+        break;
+    default:
+        default_spell(cmd, res);
+        break;
+    }
+}
+
 static power_info _bear_powers[] = {
     { A_DEX, { 20, 5, 25, _bear_swipe_spell } },
     { A_STR, { 25, 10, 30, _bear_charge_spell } },
+    { A_INT, { 40, 1, 30, _bear_sniff_spell } },
     {    -1, { -1, -1, -1, NULL}}
 };
 static power_info _man_powers[] = {
