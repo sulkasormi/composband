@@ -1189,7 +1189,8 @@ static void _build_race_history(doc_ptr doc)
         int i;
         const char *slaji = get_race_aux(p_ptr->start_race, 0)->name;
 
-        doc_printf(doc, "\n You were born as %s %s.\n", is_a_vowel(slaji[0]) ? "an" : "a", slaji);
+        if (p_ptr->psex == p_ptr->start_sex) doc_printf(doc, "\n You were born as %s %s.\n", is_a_vowel(slaji[0]) ? "an" : "a", slaji);
+        else doc_printf(doc, "\n You were born as a %s %s.\n", p_ptr->start_sex == SEX_FEMALE ? "female" : "male", slaji);
         for (i = 0; i < MAX_RACES; i++)
         {
             if (p_ptr->start_race == i) continue;
