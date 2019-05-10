@@ -2301,7 +2301,7 @@ static void _ego_create_weapon(object_type *o_ptr, int level)
             }
             else
             {
-                int _lva = MIN(6, MAX(2, 6 - ((level + 6 - randint0(33)) / 25)));
+                int _lva = pienempi(6, isompi(2, 6 - ((level + 6 - randint0(33)) / 25)));
                 bool lippu = TRUE;
                 if (one_in_(_lva)) _ego_create_weapon_craft(o_ptr, level);
                 else if (one_in_(_lva)) _ego_create_weapon_slaying(o_ptr, level);
