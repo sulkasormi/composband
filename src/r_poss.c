@@ -891,6 +891,8 @@ void possessor_calc_bonuses(void)
     if (!p_ptr->current_r_idx) /* Birth hack ... we haven't been "born" yet! */
         return;
 
+    p_ptr->psex = p_ptr->start_sex;
+
     if ((r_ptr->flags1 & RF1_FEMALE) && p_ptr->psex != SEX_FEMALE)
     {
         p_ptr->psex = SEX_FEMALE;
