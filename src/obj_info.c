@@ -187,7 +187,7 @@ bool display_origin(object_type *o_ptr, doc_ptr doc)
     if ((origin == ORIGIN_NONE) || (origin == ORIGIN_MIXED)) return FALSE;
     if ((!show_discovery) && (o_ptr->mitze_type & MITZE_MIXED)) return FALSE;
     if ((origin != ORIGIN_CHEAT) && (origin != ORIGIN_PLAYER_MADE) && (origin != ORIGIN_GAMBLE) && (origin != ORIGIN_ENDLESS)
-     && (origin != ORIGIN_REFORGE) && (origin != ORIGIN_BIRTH) && (origin != ORIGIN_ARENA_REWARD) && (origin != ORIGIN_WANTED)
+     && ((origin != ORIGIN_REFORGE) || (p_ptr->dragon_realm == DRAGON_REALM_CRAFT)) && (origin != ORIGIN_BIRTH) && (origin != ORIGIN_ARENA_REWARD) && (origin != ORIGIN_WANTED)
      && (origin != ORIGIN_CORNUCOPIA))
     {
         _selita_paikka(paikka_text, paikka, taso, origin);
@@ -322,6 +322,11 @@ bool display_origin(object_type *o_ptr, doc_ptr doc)
         }
         case ORIGIN_REFORGE:
         {
+            if (p_ptr->dragon_realm == DRAGON_REALM_CRAFT)
+            {
+                doc_printf(doc, "Reforged %s.", paikka_text);
+                break;
+            }
             if (!no_wilderness) doc_printf(doc, "Reforged in Morivant.");
             else doc_printf(doc, "Reforged at the Fighters' Hall.");
             break;
