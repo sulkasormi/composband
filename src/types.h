@@ -1291,6 +1291,7 @@ struct player_type
     byte knowledge;           /* Knowledge about yourself */
 
     byte start_race;          /* Race at birth */
+    byte start_sex;           /* Sex at birth */
     s32b old_race1;           /* Record of race changes */
     s32b old_race2;           /* Record of race changes */
     s32b old_race3;           /* Record of race changes */
