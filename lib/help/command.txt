@@ -37,7 +37,7 @@ Don't be overwhelmed by the sheer number of commands. Many are not often used or
    <color:y>t</color>  Take off equipment                   T  Dig a tunnel
    <color:y>u</color>  Use a staff                          U  Use Racial Power
    v  Throw an item                        V  Version info
-   <color:y>w</color>  Wear/wield equipment                 <color:D>W  (unused)</color>
+   <color:y>w</color>  Wear/wield equipment                 W  Switch ring fingers
    <color:D>x  (unused)</color>                             <color:D>X  (unused)</color>
    <color:D>y  (unused)</color>                             Y  Display monster list
    <color:y>z</color>  Zap a rod                            Z  Inscribe an object
