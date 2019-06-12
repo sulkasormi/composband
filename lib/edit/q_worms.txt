@@ -49,4 +49,7 @@ M:X;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;X
 M:XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX
 R:OBJ(blade of chaos, DEPTH+12)
 
+?:[EQU $RACE Pumpkin]
+R:OBJ(feanorian lamp)
+
 # vim: filetype=q :
