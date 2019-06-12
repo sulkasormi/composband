@@ -447,7 +447,7 @@ race_t *doppelganger_get_race(void)
     if (!init)
     {
         me.name = "Doppelganger";
-        me.desc = "Doppelgangers a truly pathetic creatures. While nobody has actually ever seen "
+        me.desc = "Doppelgangers are truly pathetic creatures. While nobody has actually ever seen "
                     "their true form, they are rumored to be small, plain, pathetic creatures. "
                     "Their one saving grace is the ability to mimic other races.";
         
