@@ -1772,6 +1772,11 @@ void monster_death(int m_idx, bool drop_item)
             chance = 100;
             break;
 
+        case MON_JACK_LANTERN:
+            a_idx = ART_JACK_LANTERN;
+            chance = 10;
+            break;
+
         case MON_LUNGORTHIN:
             a_idx = ART_CALRIS;
             chance = 50;
@@ -4145,7 +4150,7 @@ static int target_set_aux(int y, int x, int mode, cptr info)
             char f_idx_str[32];
             if (c_ptr->mimic) sprintf(f_idx_str, "%d/%d", c_ptr->feat, c_ptr->mimic);
             else sprintf(f_idx_str, "%d", c_ptr->feat);
-            sprintf(out_val, "%s%s%s%s [%s] %x %s %d %d %d (%d,%d)", s1, s2, s3, name, info, c_ptr->info, f_idx_str, c_ptr->dist, c_ptr->cost, c_ptr->when, y, x);
+            sprintf(out_val, "%s%s%s%s [%s] %x %s %d %d %d %d (%d,%d)", s1, s2, s3, name, info, c_ptr->info, f_idx_str, c_ptr->dist, c_ptr->cost, c_ptr->when, c_ptr->special, y, x);
         }
         else if (display_distance)
         {
