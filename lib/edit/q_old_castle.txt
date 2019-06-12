@@ -160,6 +160,12 @@ R:ART(haramakido of yositsune)
 ?:[AND [EQU $RACE Filthy-Rag] [GEQ [MOD $RANDOM27 5] 1] ]
 R:ART(isildur)
 ##########################################################################
+# Pumpkin
+?:[AND [EQU $RACE Pumpkin] [EQU [MOD $RANDOM27 5] 0] ]
+R:ART(dor-lomin)
+?:[AND [EQU $RACE Pumpkin] [GEQ [MOD $RANDOM27 5] 1] ]
+R:ART(indra)
+##########################################################################
 # Spider
 ?:[AND [EQU $RACE Spider] [EQU [MOD $RANDOM27 5] 0] ]
 R:ART(luthien)
