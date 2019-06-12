@@ -671,14 +671,14 @@ static vec_ptr _get_races_aux(int ids[]);
 static bool _is_valid_race_class(int race_id, int class_id);
 
 #define _MAX_RACES_PER_GROUP 23
-#define _MAX_RACE_GROUPS      8
+#define _MAX_RACE_GROUPS      9
 typedef struct _race_group_s {
     cptr name;
     int ids[_MAX_RACES_PER_GROUP];
 } _race_group_t, *_race_group_ptr;
 static _race_group_t _race_groups[_MAX_RACE_GROUPS] = {
     { "Human",
-        {RACE_AMBERITE, RACE_BARBARIAN, RACE_BEORNING, RACE_DEMIGOD, RACE_DUNADAN, RACE_HUMAN, -1} },
+        {RACE_AMBERITE, RACE_BARBARIAN, RACE_DEMIGOD, RACE_DUNADAN, RACE_HUMAN, -1} },
     { "Elf",
         {RACE_DARK_ELF, RACE_HIGH_ELF, RACE_TOMTE, RACE_WOOD_ELF, -1} },
     { "Hobbit/Dwarf",
@@ -690,11 +690,13 @@ static _race_group_t _race_groups[_MAX_RACE_GROUPS] = {
     { "Orc/Troll/Giant",
         {RACE_CYCLOPS, RACE_HALF_GIANT, RACE_OGRE, RACE_HALF_ORC,
          RACE_HALF_TITAN, RACE_HALF_TROLL, RACE_KOBOLD, RACE_SNOTLING, -1} },
+    { "Shapeshifter",
+        {RACE_BEORNING, RACE_DOPPELGANGER, RACE_WEREWOLF, -1} },
     { "Undead",
         {RACE_EINHERI, RACE_SKELETON, RACE_SPECTRE, RACE_VAMPIRE, RACE_ZOMBIE, -1} },
     { "Other",
-        {RACE_ANDROID, RACE_BEASTMAN, RACE_BOIT, RACE_CENTAUR, RACE_DRACONIAN, RACE_DOPPELGANGER, RACE_ENT,
-         RACE_GOLEM, RACE_KLACKON, RACE_KUTAR, RACE_MIND_FLAYER, RACE_TONBERRY, RACE_WEREWOLF, RACE_YEEK,-1 } },
+        {RACE_ANDROID, RACE_BEASTMAN, RACE_BOIT, RACE_CENTAUR, RACE_DRACONIAN, RACE_ENT,
+         RACE_GOLEM, RACE_KLACKON, RACE_KUTAR, RACE_MIND_FLAYER, RACE_TONBERRY, RACE_YEEK,-1 } },
 };
 
 static void _race_group_ui(void)
@@ -1624,8 +1626,8 @@ static _race_group_t _mon_race_groups[_MAX_MON_RACE_GROUPS] = {
         {RACE_MON_GIANT, /*RACE_MON_KOBOLD,*/ RACE_MON_ORC, RACE_MON_TROLL, -1} },
     { "Undead",
         {/*RACE_MON_GHOST,*/ RACE_MON_LICH, RACE_MON_VAMPIRE, /*RACE_MON_WRAITH, RACE_MON_ZOMBIE,*/ -1 } },
-    { "Xorn",
-        {RACE_MON_XORN, -1} },
+    { "Other",
+        {RACE_MON_PUMPKIN, RACE_MON_XORN, -1} },
 };
 
 static void _mon_race_group_ui(void)
@@ -2106,6 +2108,7 @@ static void _stats_init(void)
         case RACE_MON_ARMOR:
         case RACE_MON_GOLEM:
         case RACE_MON_ORC:
+        case RACE_MON_PUMPKIN:
         {
             int stats[6] = { 17, 13, 8, 16, 15, 10 };
             _stats_init_aux(stats);
@@ -2984,6 +2987,8 @@ static void _birth_finalize(void)
         else
             mp_ptr->spell_first = 5;
     }
+
+    if (!ironman_shops) birth_shop_items();
 
     /* Rest Up to Max HP and SP */
     p_ptr->update |= PU_BONUS | PU_HP | PU_MANA;
