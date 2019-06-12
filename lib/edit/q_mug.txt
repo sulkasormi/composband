@@ -73,4 +73,7 @@ R:OBJ(^ring$, DEPTH+10):EGO(defender)
 ?:[EQU $RACE Hydra]
 R:OBJ(^amulet$, DEPTH+10):EGO(defender)
 
+?:[EQU $RACE Pumpkin]
+R:OBJ(potion of *healing*)
+
 # vim: filetype=q :
