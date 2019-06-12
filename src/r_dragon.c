@@ -3378,7 +3378,7 @@ race_t *mon_dragon_get_race(int psubrace)
         result = _nether_get_race_t();
     }
 
-    if (p_ptr->dragon_realm && !spoiler_hack)
+    if (p_ptr->dragon_realm && !birth_hack && !spoiler_hack)
     {
         dragon_realm_ptr realm = _get_realm();
         int              i;
