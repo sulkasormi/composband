@@ -6606,9 +6606,9 @@ N:424:Algroth
 G:T:s
 I:110:21d12:20:60:40:250
 W:27:1:80:150:1200:454
-B:CLAW:HURT(2d3):POISON(1d3)
-B:CLAW:HURT(2d3):POISON(1d3)
-B:BITE:HURT(1d6):POISON(1d6)
+B:CLAW:HURT(1d6):POISON(1d6)
+B:CLAW:HURT(1d6):POISON(1d6)
+B:BITE:HURT(2d2):POISON(1d12)
 F:FRIENDS(3d3) | DROP_60 | WILD_WOOD | WILD_MOUNTAIN | WILD_SWAMP
 F:OPEN_DOOR | BASH_DOOR | REGENERATE |
 F:EVIL | TROLL
@@ -23607,7 +23607,7 @@ D:A large rat known to carry deadly diseases. It has sharp teeth.
 N:1299:Nizukil, Prince of Rats
 G:r:v
 I:117:20d10:18:28:20:90
-W:16:3:999:240:0:0
+W:16:255:999:240:0:0
 B:CLAW:HURT(1d9)
 B:CLAW:HURT(1d9)
 B:BITE:HURT(1d8)
@@ -23658,6 +23658,30 @@ P:Body:Horse
 P:Speed:+7
 D:It looks much like a horse - but it's bigger, faster, nastier, has
 D:razor-sharp claws and eats meat...
+
+N:1302:Jack of Lanterns
+G:p:o
+I:128:26d121:70:150:4:150
+W:52:4:999:8470:0:0
+B:HIT:HURT(5d9)
+B:HIT:HURT(5d9)
+B:HIT:HURT(2d9):EAT_ITEM
+B:HIT:HURT(2d9):EAT_ITEM
+A:LITE(3d3)
+F:NO_QUEST | MALE | FORCE_MAXHP | CAN_SPEAK | SELF_LITE_2
+F:REGENERATE | NO_CONF | NO_SLEEP |
+F:RES_TELE | HUMAN |
+F:ONLY_ITEM | DROP_1D2 | DROP_GOOD | DROP_GREAT | UNIQUE |
+F:TAKE_ITEM | OPEN_DOOR | BASH_DOOR | SMART |
+F:DROP_SKELETON | DROP_CORPSE | POS_TELEPATHY
+S:1_IN_4
+S:BLIND | HEAL | BA_LITE(10d10+218) | HASTE | CONFUSE |
+S:S_SPECIAL | JMP_LITE(86)
+D:The lord of the pumpkins.
+P:Copy:High-Elf:Rogue
+P:Skills:0:0:0:7:0:0:0:0
+P:Life:90
+P:Speed:+14
 
 # N: serial number : monster name
 # G: symbol : color
