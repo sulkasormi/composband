@@ -23,6 +23,9 @@ R:OBJ(dragon fang, DEPTH+20)
 ?:[EQU $RACE Dragon Hound Spider Ring Beholder Vortex]
 R:OBJ(^ring$, DEPTH+20):EGO(defender)
 
+?:[EQU $RACE Pumpkin]
+R:OBJ(dragon helm):ART(*)
+
 ?:[EQU $RACE Centipede]
 R:OBJ(dragon boots, DEPTH+11):EGO(golem)
 
