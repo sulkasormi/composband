@@ -361,7 +361,7 @@ int gf_affect_p(int who, int type, int dam, int flags)
 
         monster_desc(m_name, m_ptr, 0);
         monster_desc(m_name_subject, m_ptr, MD_PRON_VISIBLE);
-        monster_desc(m_name_real, m_ptr, MD_IGNORE_HALLU | MD_ASSUME_VISIBLE | MD_INDEF_VISIBLE | MD_TRUE_NAME);
+        monster_desc(m_name_real, m_ptr, MD_IGNORE_HALLU | MD_ASSUME_VISIBLE | MD_INDEF_VISIBLE);
     }
     else
     {
@@ -2235,7 +2235,7 @@ bool gf_affect_m(int who, mon_ptr mon, int type, int dam, int flags)
                 else
                 {
                     /* Injure +/- confusion */
-                    monster_desc(killer, mon, MD_IGNORE_HALLU | MD_ASSUME_VISIBLE | MD_INDEF_VISIBLE | MD_TRUE_NAME);
+                    monster_desc(killer, mon, MD_IGNORE_HALLU | MD_ASSUME_VISIBLE | MD_INDEF_VISIBLE);
                     take_hit(DAMAGE_ATTACK, dam, killer);  /* has already been /3 */
                     if (one_in_(4) && !CHECK_MULTISHADOW())
                     {
@@ -2323,7 +2323,7 @@ bool gf_affect_m(int who, mon_ptr mon, int type, int dam, int flags)
                 else
                 {
                     /* Injure + mana drain */
-                    monster_desc(killer, mon, MD_IGNORE_HALLU | MD_ASSUME_VISIBLE | MD_INDEF_VISIBLE | MD_TRUE_NAME);
+                    monster_desc(killer, mon, MD_IGNORE_HALLU | MD_ASSUME_VISIBLE | MD_INDEF_VISIBLE);
                     if ((!CHECK_MULTISHADOW()) && (player_mana_drainable()))
                     {
                         msg_print("Your psychic energy is drained!");
@@ -4383,6 +4383,8 @@ bool gf_affect_m(int who, mon_ptr mon, int type, int dam, int flags)
             }
 
             if (who > 0) monster_gain_exp(who, mon->id);
+
+            pack_on_slay_monster(mon->id);
 
             mon_check_kill_unique(mon->id);
 
