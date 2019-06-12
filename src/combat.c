@@ -355,6 +355,10 @@ void init_blows_calc(object_type *o_ptr, weapon_info_t *info_ptr)
         {
             info_ptr->blows_calc.max = 550;
         }
+        else if (prace_is_(RACE_MON_PUMPKIN))
+        {
+            info_ptr->blows_calc.max = 470;
+        }
         else if (prace_is_(RACE_MON_GIANT))
         {
             info_ptr->blows_calc.max = 550;
@@ -1044,6 +1048,7 @@ void display_innate_attack_info(doc_ptr doc, int which)
             int p = a->effect_chance[i];
             char xtra[255];
             if (!a->effect[i]) continue;
+            if ((p_ptr->current_r_idx == MON_DEATH_PUMPKIN) && (a->effect[i] == GF_OLD_DRAIN)) continue;
             if (!p)
                 sprintf(xtra, "%s", "");
             else
