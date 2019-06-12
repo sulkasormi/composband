@@ -346,6 +346,7 @@ int anti_magic_check(void)
         case RACE_MON_CENTIPEDE:
         case RACE_MON_VORTEX:
         case RACE_MON_ORC:
+        case RACE_MON_PUMPKIN:
             return 0;
         }
     }
