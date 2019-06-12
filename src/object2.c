@@ -4311,6 +4311,23 @@ s16b drop_near(object_type *j_ptr, int chance, int y, int x)
     /* Grid */
     c_ptr = &cave[by][bx];
 
+    if (j_ptr->tval == TV_BOTTLE)
+    {
+        feature_type *f_ptr = &f_info[c_ptr->feat];
+        if (have_flag(f_ptr->flags, FF_WATER))
+        {
+            j_ptr->tval = TV_POTION;
+            j_ptr->sval = ((py_on_surface()) && (base_level >= 45)) ? SV_POTION_SALT_WATER : SV_POTION_WATER;
+            j_ptr->k_idx = lookup_kind(j_ptr->tval, j_ptr->sval);
+        }
+        else if (have_flag(f_ptr->flags, FF_ACID))
+        {
+            j_ptr->tval = TV_POTION;
+            j_ptr->sval = SV_POTION_POISON;
+            j_ptr->k_idx = lookup_kind(j_ptr->tval, j_ptr->sval);
+        }
+    }
+
     /* Scan objects in that grid for combination */
     for (this_o_idx = c_ptr->o_idx; this_o_idx; this_o_idx = next_o_idx)
     {
