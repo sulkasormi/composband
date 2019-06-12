@@ -8633,12 +8633,14 @@ static cptr do_hex_spell(int spell, int mode)
                 {
                     msg_print("Heavy curse vanished away.");
                     prompt.obj->curse_flags = 0L;
+                    prompt.obj->known_curse_flags = 0L;
                 }
             }
             else if ((prompt.obj->curse_flags & (OFC_CURSED)) && one_in_(3))
             {
                 msg_print("Curse vanished away.");
                 prompt.obj->curse_flags = 0L;
+                prompt.obj->known_curse_flags = 0L;
             }
 
             add = FALSE;
