@@ -51,6 +51,7 @@ int get_race_idx(cptr name)
             case RACE_MON_VAMPIRE:
             case RACE_MON_ARMOR:
             case RACE_MON_ORC:
+            case RACE_MON_PUMPKIN:
                 continue;
             }
         }
@@ -230,6 +231,9 @@ race_t *get_race_aux(int prace, int psubrace)
         break;
     case RACE_MON_ARMOR:
         result = mon_armor_get_race();
+        break;
+    case RACE_MON_PUMPKIN:
+        result = mon_pumpkin_get_race();
         break;
     case RACE_MON_TROLL:
         result = mon_troll_get_race(psubrace);
