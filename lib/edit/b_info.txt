@@ -1155,6 +1155,12 @@ S:LITE:Light
 S:LITE:Light
 S:LITE:Light
 S:LITE:Light
+S:LITE:Light
+S:LITE:Light
+S:LITE:Light
+S:LITE:Light
+S:LITE:Light
+S:LITE:Light
 
 N:111:Bear2
 S:RING:Claw
