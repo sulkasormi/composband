@@ -2367,9 +2367,15 @@ void sanity_blast(monster_type *m_ptr, bool necro)
         }
         else equip_learn_flag(OF_FREE_ACT);
         while ((randint0(100) > p_ptr->skills.sav) && (p_ptr->stat_cur[A_INT] > 3))
+        {
             (void)do_dec_stat(A_INT);
+            if (p_ptr->sustain_int) break;
+        }
         while ((randint0(100) > p_ptr->skills.sav) && (p_ptr->stat_cur[A_WIS] > 3))
+        {
             (void)do_dec_stat(A_WIS);
+            if (p_ptr->sustain_wis) break;
+        }
         if (!res_save_default(RES_CHAOS))
         {
             (void)set_image(p_ptr->image + randint0(25) + 15, FALSE);
