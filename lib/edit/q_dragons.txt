@@ -78,4 +78,7 @@ R:OBJ(dragon fang)
 ?:[EQU $RACE Filthy-Rag]
 R:OBJ(gold dragon scale mail):EGO(87)
 
+?:[EQU $RACE Pumpkin]
+R:OBJ(WAND_BREATHE_COLD, DEPTH+5 | TYPE=capacity)
+
 # vim: filetype=q :
