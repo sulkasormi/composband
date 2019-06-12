@@ -50,7 +50,7 @@ ANGFILES = \
 	races.o races_a.o races_k.o races_mimic.o r_angel.o \
     r_centip.o r_demon.o r_dragon.o r_elem.o r_eye.o r_giant.o r_golem.o \
     r_hound.o r_hydra.o r_jelly.o r_leprec.o r_lich.o r_mimic.o \
-	r_orc.o r_poss.o r_quyl.o r_rag.o r_spider.o \
+	r_orc.o r_poss.o r_pump.o r_quyl.o r_rag.o r_spider.o \
     r_ring.o r_sword.o r_troll.o r_vamp.o r_vortex.o \
     r_xorn.o racial.o rage-mage.o randname.o ranger.o rect.o red_mage.o \
     resist.o rogue.o rooms.o rune_knight.o samurai.o save.o savefile.o scores.o scout.o shop.o skillmaster.o \
