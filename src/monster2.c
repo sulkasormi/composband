@@ -1847,7 +1847,7 @@ void monster_desc(char *desc, monster_type *m_ptr, int mode)
 
     /* Mode of MD_TRUE_NAME will reveal Chameleon's true name */
     if (mode & MD_TRUE_NAME) name = (r_name + real_r_ptr(m_ptr)->name);
-    else if (m_ptr->mflag2 & MFLAG2_FUZZY) name = "Monster";
+    else if ((m_ptr->mflag2 & MFLAG2_FUZZY) && (!(mode & MD_IGNORE_HALLU))) name = "Monster";
     else name = (r_name + r_ptr->name);
 
     /* Are we hallucinating? (Idea from Nethack...) */
