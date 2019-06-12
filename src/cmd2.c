@@ -1017,7 +1017,7 @@ void do_cmd_open(void)
     }
 
     /* Cancel repeat unless we may continue */
-    if (!more) disturb(0, 0);
+    if ((!more) && (!travel.run)) disturb(0, 0);
 }
 
 
