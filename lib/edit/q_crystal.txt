@@ -21,4 +21,7 @@ R:OBJ(AMULET):ART(*)
 ?:[EQU $RACE Death-Sword]
 R:OBJ(broad sword):EGO(sharpness)
 
+?:[EQU $RACE Pumpkin]
+R:OBJ(feanorian lamp):ART(*)
+
 # vim: filetype=q :
