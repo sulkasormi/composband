@@ -20,6 +20,9 @@ R:OBJ(^ring$):EGO(combat)
 ?:[EQU $RACE Centipede]
 R:OBJ(metal shod boots):EGO(speed)
 
+?:[EQU $RACE Pumpkin]
+R:OBJ(feanorian lamp):ART(*)
+
 ?:[EQU $RACE Hydra Quylthulg]
 R:OBJ(^cloak$):EGO(aman)
 
