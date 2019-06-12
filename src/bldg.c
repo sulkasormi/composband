@@ -2022,13 +2022,15 @@ void have_nightmare(int r_idx)
         {
             (void)set_paralyzed(randint1(4), FALSE);
         }
-        while (!saving_throw(p_ptr->skills.sav))
+        while ((!saving_throw(p_ptr->skills.sav)) && (p_ptr->stat_cur[A_INT] > 3))
         {
             (void)do_dec_stat(A_INT);
+            if (p_ptr->sustain_int) break;
         }
-        while (!saving_throw(p_ptr->skills.sav))
+        while ((!saving_throw(p_ptr->skills.sav)) && (p_ptr->stat_cur[A_WIS] > 3))
         {
             (void)do_dec_stat(A_WIS);
+            if (p_ptr->sustain_wis) break;
         }
         if (!res_save_default(RES_CHAOS))
         {
