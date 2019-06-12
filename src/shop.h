@@ -66,6 +66,8 @@ enum
      * for my thoughts ... */
 };
 
+#define TOWN_BIRTH TOWN_OUTPOST
+
 extern void     towns_init(void);
 
 extern town_ptr towns_current_town(void);
@@ -89,4 +91,6 @@ extern bool     town_visited(int which);
 extern cptr     town_name(int which);
 
 extern int      town_service_price(int price);
+
+extern void     birth_shop_items(void);
 #endif
