@@ -3279,7 +3279,7 @@ static void _dispatch_command(int old_now_turn)
         {
             if (!p_ptr->wild_mode) equip_wield_ui();
             break;
-        }
+        }        
 
         /* Take off equipment */
         case 't':
@@ -3313,6 +3313,12 @@ static void _dispatch_command(int old_now_turn)
         case 'i':
         {
             pack_ui();
+            break;
+        }
+
+        case 'W':
+        {
+            ring_finger_swap_ui(0, 0);
             break;
         }
 
