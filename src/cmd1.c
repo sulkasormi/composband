@@ -2257,6 +2257,19 @@ static bool _gf_innate(mon_ptr m, int type, int dam)
     return gf_affect_m(GF_WHO_PLAYER, m, type, dam, GF_AFFECT_ATTACK);
 }
 
+static bool _pumpkin_drain_life(mon_ptr m_ptr, int *power, bool *weak)
+{
+    int vahennys = 0;
+    if (p_ptr->prace != RACE_MON_PUMPKIN) return FALSE;
+    *power = damroll(2, (*power) / 6);
+    vahennys = ((*power)+7) / 8;
+    m_ptr->maxhp -= vahennys;
+    if (m_ptr->hp > m_ptr->maxhp) m_ptr->hp = m_ptr->maxhp;
+    if (m_ptr->maxhp < 1) m_ptr->maxhp = 1;
+    if (vahennys > 0) *weak = TRUE;
+    return TRUE;
+}
+
 static void innate_attacks(s16b m_idx, bool *fear, bool *mdeath, int mode)
 {
     int             dam, base_dam, effect_pow, to_h, chance;
@@ -2274,6 +2287,7 @@ static void innate_attacks(s16b m_idx, bool *fear, bool *mdeath, int mode)
     int             drain_amt = 0;
     int             steal_ct = 0;
     int             hit_ct = 0;
+    bool            weak = FALSE;
     const int       max_drain_amt = _max_vampiric_drain();
     bool            backstab = FALSE, fuiuchi = FALSE, stab_fleeing = FALSE, sleep_hit = FALSE;
     bool            do_werewolf_effect = (((p_ptr->prace == RACE_WEREWOLF) || (p_ptr->current_r_idx == MON_WEREWOLF)) && (r_ptr->flags7 & RF7_SILVER)) ? TRUE : FALSE;
@@ -2647,6 +2661,7 @@ static void innate_attacks(s16b m_idx, bool *fear, bool *mdeath, int mode)
                     case GF_STUN:
                     {
                         int pow = (prace_is_(RACE_MON_GOLEM)) ? (effect_pow / (5 + (p_ptr->lev / 9) + (p_ptr->lev / 48) + randint1(4))) : effect_pow;
+                        if (prace_is_(RACE_MON_PUMPKIN)) pow /= 2;
                         _gf_innate(m_ptr, e, pow);
                         *mdeath = (m_ptr->r_idx == 0);
                         break;
@@ -2660,7 +2675,7 @@ static void innate_attacks(s16b m_idx, bool *fear, bool *mdeath, int mode)
                         break;
                     }
                     case GF_OLD_DRAIN:
-                        if (monster_living(r_ptr) && _gf_innate(m_ptr, e, effect_pow))
+                        if (monster_living(r_ptr) && (_pumpkin_drain_life(m_ptr, &effect_pow, &weak) || _gf_innate(m_ptr, e, effect_pow)))
                         {
                             int amt = MIN(effect_pow, max_drain_amt - drain_amt);
                             if (prace_is_(MIMIC_BAT))
@@ -2749,6 +2764,8 @@ static void innate_attacks(s16b m_idx, bool *fear, bool *mdeath, int mode)
         _gf_innate(m_ptr, GF_STASIS, delay_stasis);
     if (delay_paralysis && !*mdeath)
         _gf_innate(m_ptr, GF_PARALYSIS, delay_paralysis);
+    if (weak && !(*mdeath))
+        msg_format("%^s seems weakened.", m_name_subject);
     if (steal_ct && !*mdeath)
     {
         if (mon_save_p(m_ptr->r_idx, A_DEX))
