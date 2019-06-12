@@ -300,6 +300,8 @@ void mon_take_hit_mon(int m_idx, int dam, bool *fear, cptr note, int who)
                 }
             }
 
+            pack_on_slay_monster(m_idx);
+
             monster_gain_exp(who, m_idx);
 
             mon_check_kill_unique(m_idx);
