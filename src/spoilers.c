@@ -137,14 +137,14 @@ static cptr _pers_stl_skill_desc(personality_ptr pers_ptr) { return _stl_skill_d
 /* TODO: This is copied/duplicated in birth.txt ... Spoiler generation is a convenience
    hack, so I'll turn a blind eye for now :) */
 #define _MAX_RACES_PER_GROUP 23
-#define _MAX_RACE_GROUPS      8
+#define _MAX_RACE_GROUPS      9
 typedef struct _race_group_s {
     cptr name;
     int ids[_MAX_RACES_PER_GROUP];
 } _race_group_t;
 static _race_group_t _race_groups[_MAX_RACE_GROUPS] = {
     { "Humans",
-        {RACE_AMBERITE, RACE_BARBARIAN, RACE_BEORNING, RACE_DEMIGOD, RACE_DUNADAN, RACE_HUMAN, -1} },
+        {RACE_AMBERITE, RACE_BARBARIAN, RACE_DEMIGOD, RACE_DUNADAN, RACE_HUMAN, -1} },
     { "Elves",
         {RACE_DARK_ELF, RACE_HIGH_ELF, RACE_TOMTE, RACE_WOOD_ELF, -1} },
     { "Hobbits/Dwarves",
@@ -156,11 +156,13 @@ static _race_group_t _race_groups[_MAX_RACE_GROUPS] = {
     { "Orcs/Trolls/Giants",
         {RACE_CYCLOPS, RACE_HALF_GIANT, RACE_OGRE, RACE_HALF_ORC,
          RACE_HALF_TITAN, RACE_HALF_TROLL, RACE_KOBOLD, RACE_SNOTLING, -1} },
+    { "Shapeshifters",
+        {RACE_BEORNING, RACE_DOPPELGANGER, RACE_WEREWOLF, -1} },
     { "The Undead",
         {RACE_EINHERI, RACE_SKELETON, RACE_SPECTRE, RACE_VAMPIRE, RACE_ZOMBIE, -1} },
     { "Other Races",
-        {RACE_ANDROID, RACE_BEASTMAN, RACE_BOIT, RACE_CENTAUR, RACE_DRACONIAN, RACE_DOPPELGANGER, RACE_ENT,
-         RACE_GOLEM, RACE_KLACKON, RACE_KUTAR, RACE_MIND_FLAYER, RACE_TONBERRY, RACE_WEREWOLF, RACE_YEEK,-1 } },
+        {RACE_ANDROID, RACE_BEASTMAN, RACE_BOIT, RACE_CENTAUR, RACE_DRACONIAN, RACE_ENT,
+         RACE_GOLEM, RACE_KLACKON, RACE_KUTAR, RACE_MIND_FLAYER, RACE_TONBERRY, RACE_YEEK,-1 } },
 };
 
 static void _race_help_table(FILE *fp, race_t *race_ptr)
@@ -567,8 +569,8 @@ static _race_group_t _mon_race_groups[_MAX_MON_RACE_GROUPS] = {
         {RACE_MON_GIANT, /*RACE_MON_KOBOLD,*/ RACE_MON_ORC, RACE_MON_TROLL, -1} },
     { "Undead",
         {/*RACE_MON_GHOST,*/ RACE_MON_LICH, RACE_MON_VAMPIRE, /*RACE_MON_WRAITH, RACE_MON_ZOMBIE,*/ -1 } },
-    { "Xorn",
-        {RACE_MON_XORN, -1} },
+    { "Other",
+        {RACE_MON_PUMPKIN, RACE_MON_XORN, -1} },
 };
 
 static void _mon_race_help_table(FILE *fp, race_t *race_ptr)
