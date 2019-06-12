@@ -702,7 +702,7 @@ static bool _weapon_create(obj_ptr obj, u32b mode)
         k_idx = _get_k_idx(_weapon_stock_shooter_p, l1);
     else if (one_in_((p_ptr->lev < 12 ? 5 : 3)))
         k_idx = _get_k_idx(_stock_ammo_p, l1);
-    else if (one_in_((p_ptr->lev < 14) ? 5 : 10))
+    else if (one_in_(10))
         k_idx = lookup_kind(TV_QUIVER, 0);
     else
         k_idx = _get_k_idx(_weapon_stock_p, l1);
@@ -875,9 +875,9 @@ static bool _alchemist_create(obj_ptr obj, u32b mode)
     int k_idx;
     if (one_in_(4))
         k_idx = lookup_kind(TV_SCROLL, SV_SCROLL_WORD_OF_RECALL);
-    else if (one_in_(22))
+    else if ((one_in_(22)) && (p_ptr->lev > 1))
         k_idx = lookup_kind(TV_SCROLL, SV_SCROLL_TELEPORT);
-    else if (one_in_(22))
+    else if ((one_in_(22)) && (p_ptr->lev > 1))
         k_idx = lookup_kind(TV_SCROLL, SV_SCROLL_PHASE_DOOR);
     else
         k_idx = _get_k_idx(_alchemist_stock_p, _mod_lvl(20));
@@ -2587,6 +2587,33 @@ void towns_on_turn_overflow(int rollback_turns)
         }
         int_map_iter_free(iter);
     }
+}
+
+void _town_add_shop_item(town_ptr town, int which, int k_idx, int ct)
+{
+    shop_ptr shop = town_get_shop(town, which);
+    int i;
+    if (!k_idx) return;
+    if (!inv_count_slots(shop->inv, obj_exists)) _restock(shop, _stock_base(shop), TRUE);
+    for (i = 0; i < ct; i++)
+    {
+        obj_t forge = {0};
+        if (_create(&forge, k_idx, _mod_lvl(rand_range(1, 15)), AM_STOCK_TOWN))
+        {
+            (void)_add_obj(shop, &forge, TRUE);
+        }
+    }
+    inv_sort(shop->inv);
+}
+
+void birth_shop_items(void)
+{
+    town_ptr town = towns_get_town(TOWN_BIRTH);
+    if (TOWN_BIRTH != TOWN_ZUL) _town_add_shop_item(town, SHOP_GENERAL, lookup_kind(TV_LITE, SV_LITE_LANTERN), 1);
+    _town_add_shop_item(town, SHOP_TEMPLE, lookup_kind(TV_POTION, SV_POTION_CURE_SERIOUS), 1);
+    _town_add_shop_item(town, SHOP_ALCHEMIST, lookup_kind(TV_SCROLL, SV_SCROLL_PHASE_DOOR), 1);
+    _town_add_shop_item(town, SHOP_ALCHEMIST, lookup_kind(TV_SCROLL, SV_SCROLL_TELEPORT), 1);
+    _town_add_shop_item(town, SHOP_WEAPON, lookup_kind(TV_QUIVER, 0), 1);
 }
 
 /************************************************************************
