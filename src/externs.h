@@ -2369,6 +2369,7 @@ extern race_t *mon_lich_get_race(void);
 extern race_t *mon_mimic_get_race(void);
 extern race_t *mon_orc_get_race(int psubrace);
 extern race_t *mon_possessor_get_race(void);
+extern race_t *mon_pumpkin_get_race(void);
 extern race_t *mon_quylthulg_get_race(void);
 extern race_t *mon_ring_get_race(void);
 extern race_t *mon_spider_get_race(int psubrace);
