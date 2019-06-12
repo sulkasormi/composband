@@ -6299,7 +6299,6 @@ int take_hit(int damage_type, int damage, cptr hit_from)
 
             msg_add_tiny_screenshot(50, 24);
 
-            p_ptr->total_winner = FALSE;
             flush();
 
             if (get_check_strict("Dump the screen? ", CHECK_NO_HISTORY))
