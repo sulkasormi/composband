@@ -2683,6 +2683,7 @@ static obj_ptr _get_reforge_dest(int max_power)
 static int _calculate_reforge_cost(int value, int slot_weight)
 {
     int cost = MAX(10000, MIN(value, 1125L * slot_weight)) * (coffee_break ? 7 : 8);
+    if (prace_is_(RACE_MON_PUMPKIN)) cost -= (cost / 5);
     cost -= cost % 1000;
     return cost;
 }
@@ -2883,6 +2884,10 @@ static bool _reforge_artifact(void)
         {
             c_put_str(TERM_RED, "Not recommended - source item has lower type strength", 10, 1);
         }
+        else if ((src_weight == 80) && (value < 39000L) && ((dest_weight >= 45) || (src_max_power >= 45000L)))
+        {
+            c_put_str(TERM_RED, "Not recommended - cheap source item of high type strength", 10, 1);
+        }
         /* Hack - there's no actual way to calculate a real expected score,
          * apart from generating a very large number of test artifacts and
          * calculating the average; but using that approach can cause the
@@ -3035,6 +3040,40 @@ static bool _reforge_artifact(void)
         paivita = TRUE;
         paivitys_no_inkey_hack = TRUE;
         if (!get_check("Proceed with this reforge? ")) return FALSE;
+    }
+
+    if (src->name1 == ART_STING)
+    {
+        char komento;
+        paivita = TRUE;
+        paivitys_no_inkey_hack = TRUE;
+        msg_print("You have chosen to <color:R>reforge Sting</color>, certified as a <color:y>Grade A1 (Premium) Very Bad Idea</color> by the Ministry of Silly Plans. Experts have concluded there are <color:G>no circumstances</color> in which reforging Sting would be a good decision.\nProceed anyway? <color:y>[y/n]</color>");
+        while (1)
+        {
+            bool lopeta = FALSE;
+            komento = inkey_special(FALSE);
+            switch (komento)
+            {
+                case ESCAPE:
+                case 'n':
+                case 'N':
+                case 'q':
+                case 'Q':
+                     msg_print("You wisely decide not to use Sting as a reforge source.");
+                     return FALSE;
+                case 'y':
+                case 'Y':
+                     lopeta = TRUE;
+                     break;
+                default: break;
+            }
+            if (lopeta) break;
+        };
+        if (!p_ptr->wizard)
+        {
+            msg_print("Very well, you asked for it! (In fact, you've asked for it repeatedly! Remember, it was YOUR bad idea.)");
+            (void)inkey();
+        }
     }
 
     if (p_ptr->wizard)
