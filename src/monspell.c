@@ -2475,6 +2475,13 @@ static void _summon_special(void)
         r_idx = MON_PIXEL;
         if (num == 4) num = 3;
         break;
+    case MON_JACK_LANTERN:
+        if (_current.flags & MSC_SRC_PLAYER)
+            msg_print("You summon your minions!");
+        else
+            msg_format("%s summons his minions.", _current.name);
+        r_idx = MON_DEATH_PUMPKIN;
+        break;
     case MON_AEGIR:
         fire_ball_hide(GF_WATER_FLOW, 0, 3, 8);
         if (one_in_(2))
