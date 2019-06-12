@@ -105,4 +105,6 @@ extern void    equip_load(savefile_ptr file);
 extern void    equip_save(savefile_ptr file);
 extern inv_ptr get_equipment(void);
 
+extern void    ring_finger_swap_ui(slot_t f1, slot_t f2);
+
 #endif
