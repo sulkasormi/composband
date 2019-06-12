@@ -645,7 +645,8 @@
 #define RACE_MON_ORC            68
 #define RACE_BEORNING           69
 #define RACE_TOMTE              70
-#define MAX_RACES               71
+#define RACE_MON_PUMPKIN        71
+#define MAX_RACES               72
 
 #define DEMIGOD_MINOR           0
 #define DEMIGOD_ZEUS            1
@@ -1395,6 +1396,7 @@ enum {
 #define ART_AMUN                350
 #define ART_UROG                366
 #define ART_SURVEILLANCE        367
+#define ART_JACK_LANTERN        368
 
 /* Polearms */
 #define ART_THEODEN             93
@@ -4722,6 +4724,7 @@ extern int PlayerUID;
 #define MON_MARILITH            1130
 #define MON_MIMIC               1131
 #define MON_MULTIHUED_CENTIPEDE 1132
+#define MON_PUMPKIN_MAN         1146
 #define MON_AUDE		1148
 #define MON_HELGA		1149
 #define MON_GERTRUDE            1150
@@ -4754,6 +4757,8 @@ extern int PlayerUID;
 #define MON_PIXEL               1291
 #define MON_MUG                 1292
 #define MON_NIZUKIL             1299
+#define MON_DEATH_PUMPKIN       1300
+#define MON_JACK_LANTERN        1302
 
 /* The Metal Babble guards the Arena dungeon, but this requires the guardian to be a unique
    monster or the dungeon never gets flagged as completed. Note, this messes up the needle
