@@ -1,9 +1,13 @@
 # New quest for FrogComposband 7.1.chocolate
 
-?:[EQU $QUEST36 Taken InProgress]
+?:[AND [EQU $QUEST36 Taken InProgress] [EQU $WILDERNESS NORMAL] ]
 D:Unspeakable horrors inhabit the old quarry south of our town, spreading
 D:gloom and fear as they creep out at night. Please, help us before it's
 D:too late for Angwil.
+?:[AND [EQU $QUEST36 Taken InProgress] [EQU $WILDERNESS NONE] ]
+D:Unspeakable horrors inhabit an old quarry in the forest to the northwest,
+D:spreading gloom and fear as they creep out at night. Please, 
+D:help us before it's too late for Outpost.
 ?:[EQU $QUEST36 Completed]
 D:Thank you.
 ?:[EQU $QUEST36 Failed]
@@ -47,5 +51,8 @@ M:X;;;;;;;;;;;;;;;;.....;;....;;;;;;X
 M:X;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;X
 M:XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX
 R:OBJ(blade of chaos, DEPTH+12)
+
+?:[EQU $RACE Pumpkin]
+R:OBJ(feanorian lamp)
 
 # vim: filetype=q :
