@@ -3728,6 +3728,15 @@ E:You raise the amulet to your eyes...
 D:This amulet reveals all the secrets of the world. You're very glad it's
 D:not in less responsible hands...
 
+N:368:Pumpkin Lamp of Jack of Lanterns
+I:39:2:4
+W:50:50:60:50000
+P:0:1d1:0:0:0
+F:STEALTH | CHR | RES_ACID | RES_ELEC | RES_FIRE | ESP_HUMAN | LITE
+F:QUESTITEM | FULL_NAME
+D:A soft light shines from the depths of this carved pumpkin. (You hope it
+D:isn't the glow of damned souls...)
+
 # N: serial number : item name
 # I: tval : sval : pval
 # W: depth : rarity : weight : cost
