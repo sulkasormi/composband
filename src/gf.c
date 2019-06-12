@@ -1116,9 +1116,15 @@ int gf_affect_p(int who, int type, int dam, int flags)
                 set_stun(p_ptr->stun + pienempi(50, dam/6 + randint1(dam/6)), FALSE);
 
                 while ((!_plr_save(who, 0)) && (p_ptr->stat_cur[A_INT] > 3))
-                    do_dec_stat(A_INT);
+                {
+                    (void)do_dec_stat(A_INT);
+                    if (p_ptr->sustain_int) break;
+                }
                 while ((!_plr_save(who, 0)) && (p_ptr->stat_cur[A_WIS] > 3))
-                    do_dec_stat(A_WIS);
+                {
+                    (void)do_dec_stat(A_WIS);
+                    if (p_ptr->sustain_wis) break;
+                }
 
                 if (!res_save_default(RES_CHAOS))
                     set_image(p_ptr->image + randint0(25) + 15, FALSE);
