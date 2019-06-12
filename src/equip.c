@@ -54,6 +54,18 @@ static bool _object_is_lite(obj_ptr obj)
 static bool _object_is_ring(obj_ptr obj)
     { return obj->tval == TV_RING; }
 
+static bool _object_is_combat_ring(obj_ptr obj)
+{
+    u32b flags[OF_ARRAY_SIZE];
+    if (!obj) return FALSE;
+    if (obj->tval != TV_RING) return FALSE;
+    obj_flags_known(obj, flags);
+    if (obj->name2 == EGO_RING_ARCHERY) return FALSE;
+    else if (have_flag(flags, OF_WEAPONMASTERY)) return TRUE;
+    else if ((object_is_known(obj)) && ((obj->to_h) || (obj->to_d))) return TRUE;
+    return FALSE;
+}
+
 static bool _object_is_weapon(obj_ptr obj)
 {
     switch (obj->tval)
@@ -634,6 +646,7 @@ static void _wield_before(obj_ptr obj, slot_t slot)
     quests_on_get_obj(obj);
 }
 
+static void _ring_finger_sanity_check(void);
 static void equip_takeoff(slot_t slot);
 static void _wield(obj_ptr obj, slot_t slot)
 {
@@ -696,6 +709,8 @@ static void _wield_after(slot_t slot)
     {
         change_race(RACE_VAMPIRE, "");
     }
+
+    if (object_is_melee_weapon(obj) || _object_is_ring(obj)) _ring_finger_sanity_check();
 
     p_ptr->update |= PU_BONUS;
     p_ptr->update |= PU_TORCH;
@@ -813,6 +828,7 @@ bool _unwield_verify(obj_ptr obj)
             msg_print("You tear the cursed equipment off by sheer strength!");
             obj->ident |= IDENT_SENSE;
             obj->curse_flags = 0L;
+            obj->known_curse_flags = 0L;
             obj->feeling = FEEL_NONE;
             p_ptr->update |= PU_BONUS;
             p_ptr->window |= PW_EQUIP;
@@ -1918,4 +1934,112 @@ inv_ptr get_equipment(void)
 void set_equip_template(equip_template_ptr new_template)
 {
     _template = new_template;
+}
+
+void _ring_finger_swap_aux(object_type *o_ptr, slot_t f1, slot_t f2)
+{
+    obj_p p;
+    if ((!f1) || (!f2) || (f1 >= _template->max) || (f2 >= _template->max)) return; /* Paranoia */
+    if (!o_ptr) return;
+    p = (_accept[_template->slots[f1].type]); /* More paranoia */
+    if (!p(o_ptr)) return;
+    p = (_accept[_template->slots[f2].type]);
+    if (!p(o_ptr)) return;
+    inv_swap(_inv, f1, f2);
+    msg_print("You nimbly switch ring fingers.");
+    p_ptr->update |= PU_BONUS;
+    _ring_finger_sanity_check();
+}
+
+void _ring_finger_sanity_check(void)
+{
+    slot_t hukattu = 0, tyhja = 0, i;
+    slot_t slot = equip_find_first(_object_is_combat_ring);
+    int ct;
+    slot_t slots[EQUIP_MAX + 1];
+    object_type *o_ptr;
+    if (!slot) return;
+    o_ptr = equip_obj(slot);
+    ct = _get_slots(o_ptr, slots);
+    if (ct < 2) return;
+    for (i = 0; i < ct; i++)
+    {
+        slot_t slot = slots[i];
+        int hand = _template->slots[slot].hand;
+        int arm = hand / 2;
+        int rhand = arm*2;
+        int lhand = arm*2 + 1;
+        int other_hand = (hand == rhand) ? lhand : rhand;
+        bool hand_is_weapon = FALSE, hand_is_combat_ring = FALSE;
+        object_type *obj = equip_obj(slot);
+        if (p_ptr->weapon_info[hand].wield_how != WIELD_NONE) hand_is_weapon = TRUE;
+        else if ((_template->slots[slot].type == EQUIP_SLOT_RING) && (p_ptr->weapon_info[other_hand].wield_how == WIELD_TWO_HANDS)) hand_is_weapon = TRUE;
+        if (obj) hand_is_combat_ring = _object_is_combat_ring(obj);
+        if (hand_is_weapon != hand_is_combat_ring)
+        {
+            if (hand_is_weapon) tyhja = slot;
+            else hukattu = slot;
+        }
+    }
+    if ((tyhja) && (hukattu))
+    {
+        if (get_check("Switch ring fingers so combat bonuses can apply to a weapon?")) _ring_finger_swap_aux(o_ptr, tyhja, hukattu);
+    }
+}
+
+void ring_finger_swap_ui(slot_t f1, slot_t f2)
+{
+    slot_t ring_slot = equip_find_first(_object_is_ring);
+    int ct;
+    slot_t slots[EQUIP_MAX + 1];
+    object_type *o_ptr;
+    if (!ring_slot)
+    {
+        msg_print("You do not have any rings equipped.");
+        return;
+    }
+    o_ptr = equip_obj(ring_slot);
+    if ((!o_ptr) || (o_ptr->tval != TV_RING))
+    {
+        msg_print("A software bug has occurred in the ring finger swap UI - please report!");
+        return;
+    }
+    ct = _get_slots(o_ptr, slots);
+    if (ct < 2)
+    {
+        msg_print("You cannot change ring fingers!");
+        return;
+    }
+    if (ct == 2)
+    {
+        _ring_finger_swap_aux(o_ptr, slots[0], slots[1]);
+        return;
+    }
+    if ((f1) && (f2))
+    {
+        _ring_finger_swap_aux(o_ptr, f1, f2);
+        return;
+    }
+    else if (ct > 2)
+    {
+        menu_t menu = { "Choose first slot", NULL, NULL,
+                        _slot_menu_fn, slots, ct, 0 };
+
+        int i, idx = menu_choose(&menu);
+        if (idx < 0) return;
+        f1 = slots[idx];
+        ct--;
+        for (i = idx; i < ct; i++)
+        {
+            slots[i] = slots[i + 1];
+        }
+        menu.count = ct;
+        menu.cookie = slots;
+        menu.choose_prompt = "Choose second slot";
+        idx = menu_choose(&menu);
+        if (idx < 0) return;
+        f2 = slots[idx];
+        _ring_finger_swap_aux(o_ptr, f1, f2);
+        return;
+    }
 }
