@@ -1130,6 +1130,39 @@ static byte _mon_exp_color(monster_type *m_ptr)
     return 'y';
 }
 
+static int _charm_probability(monster_type *m_ptr)
+{
+    static int _probs[2][19] =
+    {
+      { 1, 5, 15, 35, 70, 126, 210, 325, 470, 640, 826, 1015, 1190, 1330, 1420, 1451, 0, 0, 0 },
+      { 1, 6, 21, 56, 126, 252, 462, 786, 1251, 1876, 2667, 3612, 4676, 5796, 6891, 7872, 8652, 9156, 9331}
+    };
+    int nopat = (p_ptr->lev/17) + 4;
+    int i, paikkoja = (nopat * 6);
+    u32b tot = 0, success = 0;
+    int base = (p_ptr->lev / 2);
+    monster_race *race = &r_info[m_ptr->r_idx];
+    int taso = race->level;
+    if (m_ptr->mflag2 & MFLAG2_NOPET) return 0;
+    if (race->flagsr & RFR_RES_ALL) return 0;
+    if (p_ptr->inside_arena) return 0;
+    if ((nopat < 5) || (nopat > 6)) return 0; /* paranoia */
+    if ((!p_ptr->uimapuku) && ((m_ptr->mflag2 & MFLAG2_QUESTOR) || (p_ptr->cursed & OFC_AGGRAVATE))) return 0;
+    if ((taso < 50) && ((m_ptr->mflag2 & MFLAG2_QUESTOR) || ((dungeon_type) && (d_info[dungeon_type].final_guardian == m_ptr->r_idx)))) taso = 50;
+    if ((taso < 25) && (race->flags1 & RF1_UNIQUE)) taso = 25;
+    for (i = 0; i <= paikkoja; i++)
+    {
+        int mult = _probs[nopat - 5][MIN(i, paikkoja - i)];
+        int pow = charm_pow_modify(i + base + nopat, m_ptr);
+        int succ = MAX(0, pow + 1 - taso);
+        tot += (pow * mult);
+        success += (succ * mult);
+    }
+    if (!tot) return 0; /* paranoia */
+//    msg_format("Success/Tot: %d/%d", success, tot);
+    return MIN(10000, (int)((u32b)((success * 100L) / ((tot + 50) / 100L))));
+}
+
 static void _mon_display_probe(doc_ptr doc, int m_idx)
 {
     monster_type *m_ptr = &m_list[m_idx];
@@ -1175,6 +1208,13 @@ static void _mon_display_probe(doc_ptr doc, int m_idx)
             r_ptr->next_exp
         );
     }
+
+    if ((p_ptr->pclass == CLASS_POLITICIAN) && (!is_pet(m_ptr)) && (p_ptr->lev > 17))
+    {
+        int mahis = _charm_probability(m_ptr);
+        doc_printf(doc, "Charm: <color:B>%9d.%02d%%</color>\n", mahis / 100, mahis % 100);
+    }
+
     if (p_ptr->riding == m_idx)
         doc_printf(doc, "       <color:G>%13.13s</color>\n", "Riding");
 
