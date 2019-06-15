@@ -1301,6 +1301,42 @@ static bool _is_mental_attack(int type)
     }
     return FALSE;
 }
+
+int charm_pow_modify(int dam, monster_type *mon)
+{
+    monster_race *race = &r_info[mon->r_idx];
+    dam += (adj_con_fix[p_ptr->stat_ind[A_CHR]] - 1);
+    if (p_ptr->pclass != CLASS_POLITICIAN)
+    {
+        dam += virtue_current(VIRTUE_HARMONY)/10;
+        dam -= virtue_current(VIRTUE_INDIVIDUALISM)/20;
+    }
+    else
+    {
+        switch (politician_get_toggle())
+        {
+            case POLLY_TOGGLE_AUCAST:
+            if (race->flags3 & RF3_EVIL) dam += (dam / 10);
+                break;
+            case POLLY_TOGGLE_XPCAST:
+            if (!(race->flags3 & RF3_EVIL) && !(race->flags3 & RF3_GOOD)) dam += (dam / 10);
+                break;
+            default:
+            if (race->flags3 & RF3_GOOD) dam += (dam / 10);
+                break;
+        }
+    }
+    if (p_ptr->spin > 0) dam += MAX(25, dam * 2 / 5);
+    if (p_ptr->uimapuku) dam = dam * 3 / 2;
+    if ((race->flags1 & RF1_UNIQUE) || (race->flags7 & RF7_NAZGUL) ||
+        (mon->mflag2 & MFLAG2_QUESTOR))
+    {
+        if (p_ptr->uimapuku) dam = dam * 18 / 25; /* Fine-tuned to give a maxed-out mode-bonus polly a 1 in 90 chance of charming a level 100 unique */
+        else dam = dam * 2 / 3;
+    }
+    return dam;
+}
+
 #define _BABBLE_HACK() \
             if (race->flagsr & RFR_RES_ALL) \
             { \
@@ -2935,35 +2971,7 @@ bool gf_affect_m(int who, mon_ptr mon, int type, int dam, int flags)
         }
         else
         {
-            dam += (adj_con_fix[p_ptr->stat_ind[A_CHR]] - 1);
-            if (p_ptr->pclass != CLASS_POLITICIAN)
-            {
-                dam += virtue_current(VIRTUE_HARMONY)/10;
-                dam -= virtue_current(VIRTUE_INDIVIDUALISM)/20;
-            }
-            else
-            {
-                switch (politician_get_toggle())
-                {
-                    case POLLY_TOGGLE_AUCAST:
-                        if (race->flags3 & RF3_EVIL) dam += (dam / 10);
-                        break;
-                    case POLLY_TOGGLE_XPCAST:
-                        if (!(race->flags3 & RF3_EVIL) && !(race->flags3 & RF3_GOOD)) dam += (dam / 10);
-                        break;
-                    default:
-                        if (race->flags3 & RF3_GOOD) dam += (dam / 10);
-                        break;
-                }
-            }
-            if (p_ptr->spin > 0) dam += MAX(25, dam * 2 / 5);
-            if (p_ptr->uimapuku) dam = dam * 3 / 2;
-            if ((race->flags1 & RF1_UNIQUE) || (race->flags7 & RF7_NAZGUL) ||
-                (mon->mflag2 & MFLAG2_QUESTOR))
-            {
-                if (p_ptr->uimapuku) dam = dam * 18 / 25; /* Fine-tuned to give a maxed-out mode-bonus polly a 1 in 90 chance of charming a level 100 unique */
-                else dam = dam * 2 / 3;
-            }
+            dam = charm_pow_modify(dam, mon);
         }
         if (race->flags1 & RF1_UNIQUE) mon_difficulty = 25;
         if ((dungeon_type) && (d_info[dungeon_type].final_guardian == mon->r_idx)) mon_difficulty = 50;
