@@ -442,4 +442,10 @@ T:TOWN | GENERATE | DANGER_LEVEL_65
 G:KILL(greater balrog)
 F:q_balrog.txt
 
+N:97:585:Metatron
+T:RETAKE | INVIS
+W:heaven
+G:KILL(metatron)
+F:q_meta.txt
+
 # vim: filetype=qi :
