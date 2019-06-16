@@ -1756,6 +1756,11 @@ void monster_death(int m_idx, bool drop_item)
              chance = 100;
              break;
 
+        case MON_METATRON:
+             a_idx = ART_DESTINY;
+             chance = 100;
+             break;
+
         case MON_BULLGATES:
             if (one_in_(3)) {
              a_idx = ART_MICRODOLLAR;
@@ -2745,6 +2750,10 @@ bool mon_take_hit(int m_idx, int dam, bool *fear, cptr note)
                 screen_dump = make_screen_dump();
             }
 #endif
+        }
+        else if (m_ptr->r_idx == MON_R_MACHINE)
+        {
+             msg_format("%^s types, 'All you have done is seal the permanence of your fate!'", m_name);
         }
 
         if (!(d_info[dungeon_type].flags1 & DF1_BEGINNER))
