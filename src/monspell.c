@@ -844,6 +844,7 @@ static mon_spell_parm_t _summon_parm(int which)
     case SUMMON_GUARDIAN:
     case SUMMON_AMBERITE:
     case SUMMON_PANTHEON: /* Zeus, Hermes, Aphrodite, Amun */
+    case SUMMON_DEAD_UNIQ:
         parm.v.dice = _dice(1, 2, 0);
         break;
     case SUMMON_SPIDER:
@@ -2245,7 +2246,12 @@ static void _summon_type(int type)
         summon_pantheon_hack = monster_pantheon(mon_race(_current.mon));
         if ((!summon_pantheon_hack) && (single_pantheon)) summon_pantheon_hack = MIN(game_pantheon, PANTHEON_MAX - 1);
     }
+    else if (type == SUMMON_DEAD_UNIQ)
+    {
+        project(who, 5, where.y, where.x, 0, GF_DISINTEGRATE, PROJECT_STOP | PROJECT_GRID | PROJECT_ITEM | PROJECT_KILL | PROJECT_HIDE);
+    }
     summon_specific(who, where.y, where.x, _current.race->level, type, mode);
+    summon_pantheon_hack = 0;
 }
 /* XXX Vanilla has a 'friends' concept ... perhaps we could do likewise? */
 static void _summon_special(void)
@@ -2564,7 +2570,9 @@ static void _summon(void)
     if (_current.spell->id.effect == SUMMON_KIN)
         summon_kin_type = _current.race->d_char;
     for (i = 0; i < ct; i++)
+    {
         _summon_type(_current.spell->id.effect);
+    }
     /* Check upkeep on pet summoning */
     if (summoner_is_pet) calculate_upkeep();
 }
@@ -2858,6 +2866,11 @@ static _custom_msg_t _mon_msg_tbl[] = {
         "$CASTER spits out undigested monsters.",
         "$CASTER spits out undigested monsters.",
         "You spit out undigested monsters." },
+   { MON_R_MACHINE, {MST_SUMMON, SUMMON_DEAD_UNIQ},
+        "$CASTER reproduces monsters.",
+        "$CASTER reproduces monsters.",
+        "$CASTER reproduces monsters.",
+        "You reproduce monsters." },
     { MON_ARACHNOTRON, {MST_BOLT, GF_PLASMA},
         "$CASTER fires a <color:R>Jet of Plasma</color>.",
         "$CASTER fires a <color:R>Jet of Plasma</color>.",
