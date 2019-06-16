@@ -18,8 +18,8 @@
 
 #define VER_MAJOR 7
 #define VER_MINOR 1
-#define VER_PATCH "toffee"
-#define VER_EXTRA 12
+#define VER_PATCH "chocolate"
+#define VER_EXTRA 0
 #define VERSION_IS_DEVELOPMENT (TRUE)
 
 #define GAME_MODE_BEGINNER  0
@@ -2391,6 +2391,7 @@ enum {
 #define PM_RING_BEARER    0x00002000
 #define PM_QUESTOR        0x00004000
 #define PM_NO_SUMMONERS   0x00008000
+#define PM_ALLOW_DEAD     0x00010000
 
 /* Bit flags for monster_desc() */
 #define MD_OBJECTIVE      0x00000001 /* Objective (or Reflexive) */
@@ -2573,6 +2574,7 @@ enum summon_specific_e {
     SUMMON_MAGE,
     SUMMON_SPECIAL, /* mon->id specific code */
     SUMMON_REPTILE,
+    SUMMON_DEAD_UNIQ,
 };
 
 #define DAMAGE_FORCE    1
@@ -4728,6 +4730,7 @@ extern int PlayerUID;
 #define MON_AUDE		1148
 #define MON_HELGA		1149
 #define MON_GERTRUDE            1150
+#define MON_STAR_BLADE          1178
 #define MON_OTHROD              1185
 #define MON_ORC_WARLOCK         1189
 #define MON_ORC_WARLORD         1190
@@ -4740,6 +4743,7 @@ extern int PlayerUID;
 #define MON_IMPLORINGTON        1231
 #define MON_DUCK                1241
 #define MON_HORUS               1244
+#define MON_METATRON            1253
 #define MON_KUNDRY              1254
 #define MON_OSIRIS              1259
 #define MON_ISIS                1263
@@ -4759,6 +4763,7 @@ extern int PlayerUID;
 #define MON_NIZUKIL             1299
 #define MON_DEATH_PUMPKIN       1300
 #define MON_JACK_LANTERN        1302
+#define MON_R_MACHINE           1303
 
 /* The Metal Babble guards the Arena dungeon, but this requires the guardian to be a unique
    monster or the dungeon never gets flagged as completed. Note, this messes up the needle
