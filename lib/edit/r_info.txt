@@ -23683,6 +23683,28 @@ P:Skills:0:0:0:7:0:0:0:0
 P:Life:90
 P:Speed:+14
 
+N:1303:The Resurrection Machine
+G:g:R
+I:152:128d121:80:192:1:500
+W:100:2:999:121000:0:0
+A:ELEC(8d8)
+F:FORCE_SLEEP | FORCE_MAXHP | FIXED_UNIQUE | RES_TELE | NEVER_BLOW |
+F:KILL_WALL | UNIQUE | COLD_BLOOD | EMPTY_MIND | OPEN_DOOR | BASH_DOOR |
+F:RES_FIRE | RES_COLD | RES_ELEC | RES_POIS | RES_ACID | IM_POIS |
+F:NO_CONF | NO_SLEEP | NO_FEAR | NONLIVING | RES_LITE | RES_DARK | RES_NETH |
+F:RES_SHAR | RES_SOUN | RES_CHAO | RES_DISE | RES_TIME |
+F:DROP_3D2 | DROP_4D2 | DROP_GREAT |
+F:POS_GAIN_AC | POS_HOLD_LIFE
+F:DROP_CORPSE |
+P:Copy:Golem:Sorcerer
+S:1_IN_1 |
+S:S_DEAD_UNIQ
+D:The ultimate secret weapon of the hosts of Heaven, this machine stores
+D:the memory of hundreds of bodies and is capable of reproducing them
+D:perfectly, down to the last molecule on the flaming sword. You wonder
+D:what mad scientist designed this contraption, and whether he was also
+D:responsible for the Cloning Pits...
+
 # N: serial number : monster name
 # G: symbol : color
 # I: speed : hit points : vision : armor class : alertness : weight (lbs)
