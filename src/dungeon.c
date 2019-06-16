@@ -5726,17 +5726,19 @@ void play_game(bool new_game)
             else
             {
                 /* Mega-Hack -- Allow player to cheat death */
-                if ((p_ptr->wizard || cheat_live) && !get_check("Die? "))
+                if (((p_ptr->total_winner) && (unique_is_friend(MON_R_MACHINE))) || ((p_ptr->wizard || cheat_live) && !get_check("Die? ")))
                 {
                     quest_ptr qp = quests_get_current();
                     bool was_in_dung = (dun_level > 0);
+                    bool no_cheat = ((!p_ptr->wizard) && (!cheat_live));
 
                     /* Mark savefile */
-                    p_ptr->noscore |= 0x0001;
-
-                    /* Message */
-                    msg_print("You invoke wizard mode and cheat death.");
-                    msg_print(NULL);
+                    if (!no_cheat)
+                    {
+                        p_ptr->noscore |= 0x0001;
+                        msg_print("You invoke wizard mode and cheat death.");
+                        msg_print(NULL);
+                    }
 
                     /* Restore hit points */
                     p_ptr->chp = p_ptr->mhp;
@@ -5780,7 +5782,7 @@ void play_game(bool new_game)
                     }
 
                     /* Note cause of death XXX XXX XXX */
-                    (void)strcpy(p_ptr->died_from, "Cheating death");
+                    if (!no_cheat) (void)strcpy(p_ptr->died_from, "Cheating death");
 
                     /* Do not die */
                     p_ptr->is_dead = FALSE;
@@ -5828,6 +5830,13 @@ void play_game(bool new_game)
                     p_ptr->wild_mode = FALSE;
                     p_ptr->leaving = TRUE;
                     quest_reward_drop_hack = FALSE;
+
+                    if (no_cheat)
+                    {
+                        msg_print("You are resurrected!");
+                        dungeon_type = DUNGEON_HEAVEN;
+                        dun_level = d_info[dungeon_type].maxdepth;
+                    }
 
                     /* Prepare next floor */
                     leave_floor();
