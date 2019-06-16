@@ -9,7 +9,8 @@
 
 enum {
     QUEST_OBERON = 8,
-    QUEST_SERPENT = 9
+    QUEST_SERPENT = 9,
+    QUEST_METATRON = 97
 };
 
 #define QF_GENERATE 0x01 /* quest generates its own level (from q.file) */
@@ -19,6 +20,7 @@ enum {
 #define QF_ANYWHERE 0x10 /* reserved ... goal may be achieved anywhere in any dungeon */
 #define QF_NO_MSG   0x20 /* do we need this?? */
 #define QF_PURPLE   0x40
+#define QF_INVIS    0x80
 
 enum {
     QS_UNTAKEN,
