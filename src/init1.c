@@ -1231,6 +1231,7 @@ static parse_tbl_t _summon_type_tbl[] = {
     { SUMMON_MAGE, "Mages", TERM_WHITE, "", "MAGE", 20 },
     { SUMMON_SPECIAL, "Special", TERM_WHITE, "", "SPECIAL", 30 },
     { SUMMON_REPTILE, "Reptiles", TERM_WHITE, "", "REPTILE", 30 },
+    { SUMMON_DEAD_UNIQ, "Dead Uniques", TERM_WHITE, "", "DEAD_UNIQ", 150 },
     { 0 }
 };
 
