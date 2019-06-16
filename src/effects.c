@@ -6279,6 +6279,11 @@ int take_hit(int damage_type, int damage, cptr hit_from)
             msg_format("You are beaten by %s.", m_name);
             msg_print(NULL);
         }
+        else if ((p_ptr->total_winner) && (unique_is_friend(MON_R_MACHINE)))
+        {
+            msg_print(android ? "You are broken." : "You die.");
+            msg_print(NULL);
+        }
         else
         {
             bool seppuku = streq(hit_from, "Seppuku");
