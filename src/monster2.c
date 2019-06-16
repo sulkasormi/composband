@@ -1219,6 +1219,9 @@ bool mon_is_type(int r_idx, int type)
         if (r_idx == MON_CHAMELEON || r_idx == MON_CHAMELEON_K) return FALSE;
         if (r_ptr->d_char == 'R') return TRUE;
         break;
+    case SUMMON_DEAD_UNIQ:
+        if ((r_ptr->flags1 & RF1_UNIQUE) && (r_ptr->max_num == 0) && (r_ptr->cur_num == 0)) return TRUE;
+        break;
     }
     return FALSE;
 }
@@ -1636,6 +1639,26 @@ s16b get_mon_num_aux(int level, int min_level, u32b options)
         r_idx = table[i].index;
         r_ptr = &r_info[r_idx];
 
+        if (summon_specific_type == SUMMON_DEAD_UNIQ)
+        {
+            int delta;
+            if (r_ptr->max_num > 0) continue;
+            if (r_ptr->ball_num > 0) continue;
+            if (!(r_ptr->flags1 & RF1_UNIQUE)) continue;
+            if (r_ptr->flags7 & RF7_AQUATIC) continue;
+            if ((!no_wilderness) && (r_ptr->flags3 & RF3_EVIL) && !(r_ptr->flags3 & RF3_GOOD)) continue;
+            if (quests_get_current() && (r_ptr->flags1 & RF1_NO_QUEST)) continue;
+            if ((r_ptr->level < 45) && (!(r_ptr->flags2 & RF2_CAMELOT))) continue;
+            if (summon_specific_who != SUMMON_WHO_NOBODY && (r_ptr->flags1 & RF1_NO_SUMMON)) continue;
+            table[i].prob3 = table[i].prob2;
+            delta = level - r_ptr->level;
+            table[i].prob3 = table[i].prob3 >> (delta/8);
+            if (!table[i].prob3)
+                table[i].prob3 = 1;
+            total += table[i].prob3;
+            continue;
+        }
+
         /* Hack: Camelot monsters only appear in Camelot. Olympians in Mt Olympus. Southerings in the Hideout */
         if (no_wilderness)
         {
@@ -1656,7 +1679,7 @@ s16b get_mon_num_aux(int level, int min_level, u32b options)
             if (mon_pant > 0)
             {
                 if (!dungeon_type) continue;
-                if ((mon_pant != d_info[dungeon_type].pantheon) && ((d_info[dungeon_type].pantheon) || (!(r_ptr->flags3 & pant_list[mon_pant].flag2)))) continue; 
+                if ((mon_pant != d_info[dungeon_type].pantheon) && ((d_info[dungeon_type].pantheon) || (!(r_ptr->flags3 & pant_list[mon_pant].flag2)))) continue;
             }
         }
 
@@ -1707,6 +1730,11 @@ s16b get_mon_num_aux(int level, int min_level, u32b options)
                 if (r_info[MON_SERPENT].max_num > 0) continue;
             }
 
+            if (r_idx == MON_R_MACHINE)
+            {
+                if ((!dungeon_type) || (dun_level < d_info[dungeon_type].maxdepth)) continue;
+            }
+
             /* No spamming summoning staves for tsuchinokos */
             if ((r_idx == MON_TSUCHINOKO) && (summon_specific_who == SUMMON_WHO_PLAYER)) continue;
         }
@@ -1728,6 +1756,11 @@ s16b get_mon_num_aux(int level, int min_level, u32b options)
         }
 
         total += table[i].prob3;
+    }
+
+    if (summon_specific_type == SUMMON_DEAD_UNIQ)
+    {
+        if ((total <= 0) || (one_in_(13))) return MON_STAR_BLADE;
     }
 
     /* No legal monsters */
@@ -3314,7 +3347,11 @@ int place_monster_one(int who, int y, int x, int r_idx, int pack_idx, u32b mode)
             (r_ptr->cur_num >= mon_available_num(r_ptr)))
         {
             /* Cannot create */
-            if (mode & PM_ALLOW_CLONED)
+            if ((mode & PM_ALLOW_DEAD) && (!r_ptr->cur_num) && (!r_ptr->max_num) && (!r_ptr->ball_num))
+            {
+                r_ptr->max_num = 1;
+            }
+            else if (mode & PM_ALLOW_CLONED)
                 cloned = TRUE;
             else
                 return 0;
@@ -4443,6 +4480,11 @@ bool summon_specific(int who, int y1, int x1, int lev, int type, u32b mode)
     summon_specific_type = type;
     if ((type == SUMMON_BIZARRE1 || type == SUMMON_THIEF) && who == SUMMON_WHO_PLAYER)
         _ignore_depth_hack = TRUE;
+    if (type == SUMMON_DEAD_UNIQ)
+    {
+        mode |= PM_ALLOW_DEAD;
+        mode &= ~(PM_ALLOW_GROUP);
+    }
 
     summon_unique_okay = (mode & PM_ALLOW_UNIQUE) ? TRUE : FALSE;
     summon_cloned_okay = (mode & PM_ALLOW_CLONED) ? TRUE : FALSE;
