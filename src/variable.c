@@ -1213,4 +1213,4 @@ pantheon_type pant_list[PANTHEON_MAX] =
     { PANTHEON_EGYPTIAN, RF3_EGYPTIAN, RF3_EGYPTIAN2, "Egyptian", "Egy", "Egyptian gods"},
 };
 
-byte summon_pantheon_hack;
+byte summon_pantheon_hack = 0;
