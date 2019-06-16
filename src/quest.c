@@ -609,6 +609,8 @@ static errr _parse_q_info(char *line, int options)
                 quest->flags |= QF_ANYWHERE;
             else if (streq(flag, "NO_MSG"))
                 quest->flags |= QF_NO_MSG;
+            else if (streq(flag, "INVIS"))
+                quest->flags |= QF_INVIS;
             else if (streq(flag, "PURPLE"))
                 quest->flags |= QF_PURPLE;
             else if (1 == sscanf(flag, "DANGER_LEVEL_%d", &fake_lev))
@@ -816,7 +818,7 @@ static vec_ptr _quests_get(quest_p p)
 }
 
 
-static bool _is_active(quest_ptr q) { return q->status == QS_TAKEN || q->status == QS_IN_PROGRESS || q->status == QS_COMPLETED; }
+static bool _is_active(quest_ptr q) { return ((q->status == QS_TAKEN || q->status == QS_IN_PROGRESS || q->status == QS_COMPLETED) && (!(q->flags & QF_INVIS))); }
 static bool _is_finished(quest_ptr q) { return q->status == QS_FINISHED; }
 static bool _is_failed(quest_ptr q) { return q->status == QS_FAILED || q->status == QS_FAILED_DONE; }
 static bool _is_hidden(quest_ptr q) { return (q->flags & QF_RANDOM) && q->status == QS_UNTAKEN; }
@@ -1070,6 +1072,12 @@ void quests_on_birth(void)
 
     quests_get(QUEST_SERPENT)->status = QS_TAKEN;
     r_info[MON_SERPENT].flagsx |= RFX_QUESTOR;
+
+    if (!no_wilderness)
+    {
+        quests_get(QUEST_METATRON)->status = QS_TAKEN;
+        r_info[MON_METATRON].flagsx |= RFX_QUESTOR;
+    }
 }
 
 /************************************************************************
