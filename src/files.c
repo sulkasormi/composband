@@ -2820,7 +2820,7 @@ void do_cmd_suicide(void)
     p_ptr->leaving = TRUE;
 
     /* Cause of death */
-    (void)strcpy(p_ptr->died_from, "Quitting");
+    (void)strcpy(p_ptr->died_from, p_ptr->total_winner ? "Ripe Old Age" : "Quitting");
 }
 
 
@@ -3294,15 +3294,9 @@ void kingly(void)
 {
     int wid, hgt;
     int cx, cy;
-    bool seppuku = streq(p_ptr->died_from, "Seppuku");
 
     /* Hack -- retire in town */
     dun_level = 0;
-
-    /* Fake death */
-    if (!seppuku)
-        (void)strcpy(p_ptr->died_from, "Ripe Old Age");
-
 
     /* Restore the experience */
     p_ptr->exp = p_ptr->max_exp;
@@ -3392,7 +3386,7 @@ void close_game(void)
     if (p_ptr->is_dead)
     {
         /* Handle retirement */
-        if (p_ptr->total_winner) kingly();
+        if ((p_ptr->total_winner) && ((strpos("Ripe Old Age", p_ptr->died_from)) || (strpos("Seppuku", p_ptr->died_from)))) kingly();
 
         /* Save memories */
         if (!cheat_save || get_check("Save death? "))
