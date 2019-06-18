@@ -2349,7 +2349,7 @@ void py_display_dungeons(doc_ptr doc)
 
     if (p_ptr->is_dead)
     {
-        if (p_ptr->total_winner)
+        if ((p_ptr->total_winner) && ((strpos("Seppuku", p_ptr->died_from)) || (strpos("Ripe Old Age", p_ptr->died_from))))
         {
             doc_printf(doc, "<color:v>You %s after winning.</color>\n",
                 streq(p_ptr->died_from, "Seppuku") ? "did Seppuku" : "retired from the adventure");
