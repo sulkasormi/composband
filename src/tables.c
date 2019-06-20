@@ -2216,8 +2216,11 @@ option_type option_info[] =
     { &show_discounts,              TRUE,  OPT_PAGE_TEXT, 0, 12,
     "show_discounts",               "Show discounts in object listings" },
 
+    { &show_power,                  FALSE, OPT_PAGE_TEXT, 2, 14,
+    "show_power",                   "Show device power in object listings (if known)" },
+
     { &show_item_graph,             TRUE,  OPT_PAGE_TEXT, 2, 0,
-    "show_item_graph",              "Show items graphics" },
+    "show_item_graph",              "Show item graphics in object listings" },
 
     { &equippy_chars,               TRUE,  OPT_PAGE_TEXT, 1, 12,
     "equippy_chars",                "Display 'equippy' chars" },
@@ -2261,7 +2264,7 @@ option_type option_info[] =
     { &show_discovery,		        FALSE, OPT_PAGE_TEXT, 2, 26,
     "show_discovery",                 "Show time of discovery on examination" },
 
-    { &final_dump_origins,		TRUE, OPT_PAGE_TEXT, 2, 17,
+    { &final_dump_origins,		TRUE, OPT_PAGE_TEXT, 2, 18,
     "final_dump_origins",             "Show origins in final character dumps" },
 
     { &always_dump_origins,		FALSE, OPT_PAGE_TEXT, 2, 19,
