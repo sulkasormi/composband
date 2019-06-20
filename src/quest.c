@@ -1813,6 +1813,16 @@ void quests_load(savefile_ptr file)
             a_info[q->goal_idx].gen_flags |= OFG_QUESTITEM;
     }
     _current = savefile_read_s16b(file);
+    if ((savefile_is_older_than(file, 7, 1, 1, 1)) && (!no_wilderness) && (r_info[MON_METATRON].max_num == 1))
+    {
+        quest_ptr q = quests_get(QUEST_METATRON);
+        assert(q);
+        if (q->status == QS_UNTAKEN)
+        {
+            q->status = QS_TAKEN;
+            r_info[MON_METATRON].flagsx |= RFX_QUESTOR;
+        }
+    }
 }
 
 void quests_save(savefile_ptr file)
