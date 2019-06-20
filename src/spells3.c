@@ -2528,6 +2528,11 @@ bool mundane_spell(bool only_equip)
         return FALSE;
     }
 
+    if (object_is_dragon_armor(prompt.obj))
+    {
+        if (!get_check("All resists on this object will be lost. Proceed anyway? ")) return FALSE;
+    }
+
     if (prompt.obj->name1 == ART_HAND_OF_VECNA || prompt.obj->name1 == ART_EYE_OF_VECNA)
     {
         msg_print("There is no effect.");
@@ -2649,7 +2654,7 @@ static bool _obj_recharge_dest(object_type *o_ptr)
     switch (o_ptr->tval)
     {
     case TV_WAND: case TV_ROD: case TV_STAFF:
-        if (device_sp(o_ptr) < device_max_sp(o_ptr))
+        if ((device_sp(o_ptr) < device_max_sp(o_ptr)) && (o_ptr->activation.type != EFFECT_RESTORE_MANA))
             return TRUE;
         break;
     }
