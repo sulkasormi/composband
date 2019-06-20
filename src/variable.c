@@ -271,6 +271,7 @@ bool list_stairs;  /* Display stairs in object list */
 bool display_skill_num; /* Give skills numerically in char sheet */
 bool reforge_details; /* Show statistics before proceeding with reforge */
 bool auto_sticky_labels; /* Automatically make power labels sticky */
+bool show_power; /* Display device powers in inventory */
 
 /*** Game-Play Options ***/
 
