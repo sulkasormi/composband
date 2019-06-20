@@ -539,6 +539,7 @@ byte get_monster_drop_ct(monster_type *m_ptr)
             cap = 200; /* About 110k gp at DL21 */
         if (no_selling) cap /= 2; /* Gold drops are bigger with no_selling */
         if (coffee_break) cap /= 2; /* More drops in coffee_break mode */
+        if (r_ptr->flags1 & RF1_NEVER_MOVE) cap /= 2;
         if (r_ptr->r_akills > cap)
             number = 0;
     }
