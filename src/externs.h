@@ -288,6 +288,7 @@ extern bool list_stairs; /* Display stairs in the object list */
 extern bool display_skill_num; /* Give skills numerically in char sheet */
 extern bool reforge_details; /* Show statistics before reforge */
 extern bool auto_sticky_labels; /* Automatically make power labels sticky */
+extern bool show_power; /* Display device powers in inventory */
 
 /*** Game-Play Options ***/
 
