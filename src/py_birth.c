@@ -159,8 +159,13 @@ void py_birth_obj(object_type *o_ptr)
     }
 
     slot = equip_first_empty_slot(o_ptr);
-    if (slot && o_ptr->number == 1)
+    if ((slot) && (o_ptr->number == 1))
         equip_wield(o_ptr, slot);
+    else if ((slot) && (thrall_mode))
+    {
+        equip_wield(o_ptr, slot);
+        pack_carry(o_ptr);
+    }
     else
         pack_carry(o_ptr);
 }
@@ -461,6 +466,10 @@ static int _race_class_ui(void)
         switch (cmd)
         {
         case '\r':
+            if ((p_ptr->pclass == CLASS_CHAOS_WARRIOR) || ((p_ptr->personality == PERS_CHAOTIC) && (p_ptr->pclass != CLASS_DISCIPLE)))
+            {
+                if (_patron_ui() != UI_OK) break;
+            }
             if (_stats_ui() == UI_OK)
                 return UI_OK;
             break;
@@ -642,7 +651,7 @@ static void _pers_ui(void)
         }
     }
     vec_free(v);
-    if ((p_ptr->personality == PERS_CHAOTIC) && (p_ptr->pclass != CLASS_DISCIPLE)) (void)_patron_ui();
+//    if ((p_ptr->personality == PERS_CHAOTIC) && (p_ptr->pclass != CLASS_DISCIPLE)) (void)_patron_ui();
 }
 
 static int _pers_cmp(personality_ptr l, personality_ptr r)
@@ -1168,7 +1177,7 @@ static int _subclass_ui(void)
             rc = _devicemaster_ui();
         else if (p_ptr->pclass == CLASS_GRAY_MAGE)
             rc = _gray_mage_ui();
-        else if ((p_ptr->pclass == CLASS_CHAOS_WARRIOR) || (p_ptr->pclass == CLASS_DISCIPLE))
+        else if (p_ptr->pclass == CLASS_DISCIPLE)
             rc = _patron_ui();
         else
         {
@@ -1401,18 +1410,21 @@ static int _patron_ui(void)
         _race_class_top(_doc);
 
         doc_insert(_doc, "<color:G>Choose Patron</color>\n");
+        if (p_ptr->pclass != CLASS_DISCIPLE)
+            doc_insert(_doc, "  <color:y>*</color>) Random\n");
         for (i = alku; i < loppu; i++)
         {
             cptr patron_name = chaos_patrons[i];
             doc_printf(_doc, "  <color:y>%c</color>) <color:%c>%s</color>\n", I2A(i - alku), p_ptr->chaos_patron == i ? 'B' : 'w', patron_name);
         }
-        doc_insert(_doc, "  <color:y>*</color>) Random\n");
+        if (p_ptr->pclass == CLASS_DISCIPLE)
+            doc_insert(_doc, "  <color:y>*</color>) Random\n");
 
         _sync_term(_doc);
         cmd = _inkey();
         if (cmd == '\t') _inc_rcp_state();
         else if (cmd == '=') _birth_options();
-        else if (cmd == ESCAPE) return UI_OK; /* ! */
+        else if (cmd == ESCAPE) return UI_CANCEL;
         else if ((isupper(cmd)) && (p_ptr->pclass == CLASS_DISCIPLE))
         {
             i = A2I(tolower(cmd)) + alku;
@@ -1425,6 +1437,7 @@ static int _patron_ui(void)
         else
         {
             if (cmd == '*') i = RANDOM_PATRON;
+            if (cmd == '\r') i = (p_ptr->pclass == CLASS_DISCIPLE) ? DISCIPLE_YEQREZH : RANDOM_PATRON;
             else i = A2I(cmd) + alku;
             if ((alku <= i && i < loppu) || (i == RANDOM_PATRON))
             {
@@ -2935,6 +2948,9 @@ static void _birth_finalize(void)
 //      reduce_uniques = TRUE;
 //      reduce_uniques_pct = 90;
     }
+
+    /* Can't have people sneaking out of R'lyeh by way of nexus attack... */
+    if (thrall_mode) no_chris = TRUE;
 
     equip_init();
     pack_init();
