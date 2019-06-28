@@ -1267,6 +1267,12 @@ static void _disciples_help(FILE *fp)
         _class_help_table(fp, class_ptr);
     }
 
+    fprintf(fp, "<color:B>TIP</color>: The special random quests for Karrot and Troika disciples can only appear ");
+    fprintf(fp, "if you are sufficiently deep for the quest to be challenging. Pressing <color:y>CTRL+F</color> ");
+    fprintf(fp, "reveals your patron's opinion of your current depth. The Purples also like you to visit ");
+    fprintf(fp, "many different dungeons; do not expect a large number of assignments in a single dungeon, unless ");
+    fprintf(fp, "you are playing with no wilderness.\n\n");
+
     fputs("<topic:Tables><style:heading>Table 1 - Disciple Statistic Bonus Table</style>\n<style:table>\n", fp);
     fprintf(fp, "<color:G>%-17.17s</color> <color:G>STR  INT  WIS  DEX  CON  CHR  Life  BHP  Exp</color>\n", "");
     for (i = MIN_PURPLE_PATRON; i < MAX_PURPLE_PATRON; i++)
