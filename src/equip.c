@@ -1939,12 +1939,27 @@ void set_equip_template(equip_template_ptr new_template)
 void _ring_finger_swap_aux(object_type *o_ptr, slot_t f1, slot_t f2)
 {
     obj_p p;
+    object_type *t_ptr;
     if ((!f1) || (!f2) || (f1 >= _template->max) || (f2 >= _template->max)) return; /* Paranoia */
     if (!o_ptr) return;
     p = (_accept[_template->slots[f1].type]); /* More paranoia */
     if (!p(o_ptr)) return;
     p = (_accept[_template->slots[f2].type]);
     if (!p(o_ptr)) return;
+    t_ptr = equip_obj(f1);
+    if ((t_ptr) && (t_ptr->tval) && (object_is_cursed(t_ptr)))
+    {
+        msg_print("A dark curse prevents you from switching ring fingers!");
+        t_ptr->ident |= IDENT_SENSE;
+        return;
+    }
+    t_ptr = equip_obj(f2);
+    if ((t_ptr) && (t_ptr->tval) && (object_is_cursed(t_ptr)))
+    {
+        msg_print("A dark curse prevents you from switching ring fingers!");
+        t_ptr->ident |= IDENT_SENSE;
+        return;
+    }
     inv_swap(_inv, f1, f2);
     msg_print("You nimbly switch ring fingers.");
     p_ptr->update |= PU_BONUS;
@@ -1972,6 +1987,7 @@ void _ring_finger_sanity_check(void)
         int other_hand = (hand == rhand) ? lhand : rhand;
         bool hand_is_weapon = FALSE, hand_is_combat_ring = FALSE;
         object_type *obj = equip_obj(slot);
+        if ((obj) && (obj->known_curse_flags)) return;
         if (p_ptr->weapon_info[hand].wield_how != WIELD_NONE) hand_is_weapon = TRUE;
         else if ((_template->slots[slot].type == EQUIP_SLOT_RING) && (p_ptr->weapon_info[other_hand].wield_how == WIELD_TWO_HANDS)) hand_is_weapon = TRUE;
         if (obj) hand_is_combat_ring = _object_is_combat_ring(obj);
