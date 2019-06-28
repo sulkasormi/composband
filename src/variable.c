@@ -354,6 +354,8 @@ byte small_level_type = 0;
 bool increase_density;
 bool even_proportions;
 bool no_big_dungeons;
+bool thrall_mode;
+bool wacky_rooms;
 
 /*** Easy Object Auto-Destroyer ***/
 
