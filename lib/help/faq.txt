@@ -300,6 +300,38 @@ Since life points only account for half of your max HP, your max HP will never h
 <color:R>A:</color> Life points can be regained either through any type of vampiric attack, or by using a potion, device or activation. Potions of Restore Life Levels are a common way to regain life points, though they only restore up to 15 percentage points at a time. The Restoration service, available in most towns, also restores life points.
 
 
+<color:G>Q:</color> I also have a "life rating", unrelated to my life points. Actually, I seem to have several life ratings! Just how is my max HP calculated?
+
+<color:R>A:</color> Every character has a random "life rating" between 87% and 117%. This rating (the life rating proper) corresponds to the overall result of 49 randomly rolled HP gains (one for every character level after the first); the HP gains (and thus, your life rating) can be re-rolled during the game in several ways, most commonly by drinking a Potion of New Life. You are born with no knowledge of how good your life rating is, but drinking a Potion of Self Knowledge (or *Enlightenment*) will enlighten you. This is the only life rating you can affect in any way during play, and is the one displayed on your character sheet, if known.
+
+The random life rating only accounts for about half of the HP you get per level; the other half is non-random. The non-random gains always total exactly 300 points, but how that total is distributed across the 49 level-ups depends on your class. In general, the distribution is very late-game-heavy on mage-type classes (who will struggle with HP for much of the early game as a result, even if they have a good life rating and high CON), while fighter classes like warriors get a more even distribution.
+
+These two main contributions to your max HP are added together and multiplied by four non-random modifiers; the first three are the life rating multipliers of your race, your class and your personality. (These are prominently displayed at character generation, and new players are frequently confused by their relationship to the randomly generated life rating proper.) The fourth multiplier is based on your CON and any +Life or -Life items equipped.
+
+Finally, after the multipliers, some lump sums are added (your class base HP, race base HP, and any HP from active buffs like heroism); and your effective maximum HP is adjusted to account for any reduction in your life points. It's a complicated system, but during the game you only need to worry about your random life rating and your CON!
+
+
+<color:G>Q:</color> When should I reroll my life rating with a Potion of New Life?
+
+<color:R>A:</color> In general, you should never reroll unless you know what your life rating is, or have a very good reason to suspect that it's atrociously low. The average life rating is 102% (not 100%), so that's the theoretical break-even point for a single Potion of New Life; but in practice, if you're already doing well, the risks of rolling a really bad life may outweigh the potential benefits of rolling a great one. So unless your life rating is really bad, it's worth having one or more backup potions in case the first New Life just makes things worse. The larger your backup pile, the further you can push the envelope - but there's always the risk of a long streak of unlucky lives...
+
+Potions of New Life also remove all your mutations, and reroll all your internal stat caps. If you are very happy with either your mutations or your stat caps, that should make you more reluctant to drink a potion of New Life; though in general, your life rating is more important than your stat caps. Note that if you have already maxed out your stats, some of them are likely to be reduced by a Potion of New Life as new, potentially lower internal stat caps are applied.
+
+
+<color:G>Q:</color> I drank a potion of New Life and my max HP went down, yet Self Knowledge says my life rating is higher than before! What gives?
+
+<color:R>A:</color> Since your life rating is based on 49 random rolls, one for each character level, the life with the better end result at CL 50 is not necessarily better all the way through. Your old life might have had high rolls early on and lower rolls for the late levels, and your new life might be the opposite.
+
+The other possible explanation is that you rolled a lower CON stat cap and your constitution went down as a result.
+
+
+<color:G>Q:</color> How do internal stat caps (for STR, INT, WIS etc.) work?
+
+<color:R>A:</color> They are randomly generated, no lower than 18/70 and no higher than 18/130; the average across the six stats is always 18/100, but it's much more fun to have high caps in your key stats and low caps in stats you don't really need than the opposite! The stat caps determine how high the stat can go before modifiers from race, class, personality, equipment, mutations etc. are applied.
+
+The stat caps are much lower than the highest value a statistic can take after modifiers: 18/220, displayed as 18/***. By the endgame you will likely be getting large bonuses from your equipment; an extremely powerful character might even have all six stats maxed out at 18/220, regardless of the caps.
+
+
 <color:G>Q:</color> There's a building in Morivant that offers artifact reforging. What does that mean? Is it something I should do?
 
 <color:R>A:</color> For reforging, you need a source item - any artifact - and a destination item - any item that can be equipped and isn't already an artifact or ego item. (For rings and amulets this means an "empty" item, as all non-empty rings and amulets are considered ego items.) The original artifact will be destroyed, and the destination item is turned into a new artifact. The properties of the old artifact are not retained; however, if the destination item already had special properties despite being non-ego (e.g. resists on a dragon shield), those will be retained.
