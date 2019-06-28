@@ -210,6 +210,7 @@ void do_cmd_go_down(void)
                 /* Create a way back ... maybe */
                 if ( p_ptr->enter_dungeon
                   && down_num >= 20
+                  && !wacky_rooms
                   && !(d_info[dungeon_type].flags1 & DF1_RANDOM)
                   && !(d_info[dungeon_type].initial_guardian && !(dungeon_flags[dungeon_type] & DUNGEON_NO_GUARDIAN))
                   && one_in_(14) )
@@ -831,7 +832,7 @@ static bool do_cmd_open_aux(int y, int x)
     {
         /* Stuck */
         msg_format("The %s appears to be stuck.", f_name + f_info[get_feat_mimic(c_ptr)].name);
-
+        if (travel.run) flush();
     }
 
     /* Locked door */
@@ -873,7 +874,7 @@ static bool do_cmd_open_aux(int y, int x)
         else
         {
             /* Failure */
-            if (flush_failure) flush();
+            if ((flush_failure) && (!travel.run)) flush();
 
             /* Message */
             msg_print("You failed to pick the lock.");
@@ -1501,7 +1502,7 @@ bool easy_open_door(int y, int x, int dir)
         else
         {
             /* Failure */
-            if (flush_failure) flush();
+            if ((flush_failure) && (!travel.run)) flush();
 
             /* Message */
             msg_print("You failed to pick the lock.");
@@ -2307,8 +2308,10 @@ void do_cmd_walk(bool pickup)
         if (!is_daytime())
             tmp /= 2;
 
-        if ( lvl + 5 > p_ptr->lev / 2
-          && randint0(tmp) < 21 - p_ptr->skills.stl )
+        if (( lvl + 5 > p_ptr->lev / 2
+          && randint0(tmp) < 21 - p_ptr->skills.stl ) ||
+            ((thrall_mode) && (wilderness[py][px].terrain == TERRAIN_DEEP_WATER)
+             && (one_in_(MAX(3, p_ptr->pspeed - 110)))))
         {
             /* Inform the player of his horrible fate :=) */
             msg_print("You are ambushed!");
@@ -2321,7 +2324,7 @@ void do_cmd_walk(bool pickup)
             /* Give first move to monsters */
             energy_use = 100;
 
-            /* Hack -- set the encouter flag for the wilderness generation */
+            /* Hack -- set the encounter flag for the wilderness generation */
             generate_encounter = TRUE;
         }
     }
