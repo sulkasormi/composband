@@ -746,7 +746,13 @@ static void _doc_process_var(doc_ptr doc, cptr name)
     {
         string_ptr s = string_alloc_format("%d.%d.%s", VER_MAJOR, VER_MINOR, VER_PATCH);
         if (coffee_break) string_append_s(s, "<color:U> (Coffee)</color>");
-        if (VERSION_IS_DEVELOPMENT) string_append_s(s, "<color:B> (Development)</color>");
+        if (thrall_mode) string_append_s(s, "<color:R> (Thrall)</color>");
+        if (wacky_rooms) string_append_s(s, "<color:v> (Wacky)</color>");
+        if (VERSION_IS_DEVELOPMENT)
+        {
+            if ((coffee_break) && (wacky_rooms) && (thrall_mode)) string_append_s(s, "<color:B> (Dev)</color>");
+            else string_append_s(s, "<color:B> (Development)</color>");
+        }
         if ((VER_MINOR == 0) && (VER_MAJOR != 7)) string_append_s(s, "<color:r> (Beta)</color>");
         doc_insert(doc, string_buffer(s));
         string_free(s);
