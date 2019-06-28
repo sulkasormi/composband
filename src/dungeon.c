@@ -2452,6 +2452,14 @@ void process_world_aux_movement(void)
                 dungeon_type = 0;
                 quests_on_leave();
                 p_ptr->leaving = TRUE;
+
+                /* Mega-hack - place player on stairs to R'lyeh */
+                if ((thrall_mode) && (p_ptr->recall_dungeon == DUNGEON_CTH) &&
+                    (p_ptr->wilderness_y == d_info[DUNGEON_CTH].dy) &&
+                    (p_ptr->wilderness_x == d_info[DUNGEON_CTH].dx))
+                {
+                    p_ptr->leaving_dungeon = DUNGEON_CTH;
+                }
             }
 
             /* Sound */
@@ -5446,6 +5454,9 @@ void play_game(bool new_game)
                 if ((no_wilderness) && (!get_check("Really play with no wilderness? "))) no_wilderness = FALSE;
             }
         }
+
+        /* After the last opportunity to modify birth options... */
+        birth_location();
     }
     else
     {
@@ -5622,7 +5633,29 @@ void play_game(bool new_game)
             py_birth_food();
             py_birth_light();
         }
-        if ((coffee_break) && (p_ptr->pclass != CLASS_BERSERKER)) py_birth_obj_aux(TV_SCROLL, SV_SCROLL_WORD_OF_RECALL, (game_mode == GAME_MODE_BEGINNER) ? 10 : 1);
+        if ((coffee_break) && (!thrall_mode) && (p_ptr->pclass != CLASS_BERSERKER)) py_birth_obj_aux(TV_SCROLL, SV_SCROLL_WORD_OF_RECALL, (game_mode == GAME_MODE_BEGINNER) ? 10 : 1);
+        if (thrall_mode)
+        {
+            if (p_ptr->pclass == CLASS_BERSERKER)
+            {
+                py_birth_obj_aux(TV_POTION, SV_POTION_ENLIGHTENMENT, 10);
+                py_birth_obj_aux(TV_POTION, SV_POTION_CURING, 2);
+            }
+            else
+            {
+                object_type forge;
+                py_birth_obj_aux(TV_SCROLL, SV_SCROLL_IDENTIFY, 12);
+                py_birth_obj_aux(TV_SCROLL, SV_SCROLL_STAR_DESTRUCTION, 10);
+                py_birth_obj_aux(TV_SCROLL, SV_SCROLL_REMOVE_CURSE, 1);
+                py_birth_obj_aux(TV_POTION, SV_POTION_CURING, 2);
+                object_prep(&forge, lookup_kind(TV_ROD, SV_ANY));
+                device_init_fixed(&forge, EFFECT_DETECT_ALL);
+                py_birth_obj(&forge);
+            }
+
+            /* Start with no gold */
+            p_ptr->au = 0;
+        }
 
         spell_stats_on_birth();
 
@@ -5646,9 +5679,38 @@ void play_game(bool new_game)
     {
         monster_type *m_ptr;
         int pet_r_idx = ((p_ptr->pclass == CLASS_CAVALRY) ? MON_HORSE : MON_YASE_HORSE);
+        int my = (no_wilderness) ? py - 1 : py + 1;
+        int mx = px;
         monster_race *r_ptr = &r_info[pet_r_idx];
-        place_monster_aux(0, (no_wilderness) ? py - 1 : py + 1, px, pet_r_idx,
-                  (PM_FORCE_PET | PM_NO_KAGE));
+        if (!monster_can_enter(my, mx, r_ptr, 0)) /* Find empty place for initial pet */
+        {
+            int dmy, dmx, ties = 0, paras = 1000, etaisyys = 1;
+            for (etaisyys = 1; ((etaisyys < 8) && (paras >= etaisyys)); etaisyys++)
+            {
+                for (dmy = 0 - etaisyys; dmy <= etaisyys; dmy++)
+                {
+                    for (dmx = 0 - etaisyys; dmx <= etaisyys; dmx++)
+                    {
+                        int tulos = etaisyys;
+                        if ((ABS(dmy) != etaisyys) && (ABS(dmx) != etaisyys)) dmx = etaisyys;
+                        if (!in_bounds(py + dmy, px + dmx)) continue;
+                        if (!monster_can_enter(py + dmy, px + dmx, r_ptr, 0)) continue;
+                        if (!projectable(py, px, py + dmy, px + dmx)) tulos += 3;
+                        if (tulos < paras)
+                        {
+                            paras = tulos;
+                            ties = 0;
+                        }
+                        if ((tulos <= paras) && (one_in_(++ties)))
+                        {
+                            my = py + dmy;
+                            mx = px + dmx;
+                        }
+                    }
+                }
+            }
+        }
+        place_monster_aux(0, my, mx, pet_r_idx, (PM_FORCE_PET | PM_NO_KAGE));
         m_ptr = &m_list[hack_m_idx_ii];
         m_ptr->mspeed = r_ptr->speed;
         m_ptr->maxhp = r_ptr->hdice*(r_ptr->hside+1)/2;
