@@ -2906,6 +2906,8 @@ long total_points(void)
     if (ironman_shops) mult += 50;
     if (ironman_empty_levels) mult += 20;
     if (ironman_nightmare) mult += 100;
+    if (wacky_rooms) mult += 10;
+    if (thrall_mode) mult += (p_ptr->personality == PERS_SEXY) ? 50 : 10;
     if (easy_damage) mult /= 2;
     if (coffee_break)
     {
