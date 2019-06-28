@@ -6957,6 +6957,7 @@ void travel_step(void)
     int py_old=py;
     int px_old=px;
     bool ongelma = FALSE;
+    bool door_hack = FALSE;
 
     find_prevdir = travel.dir;
 
@@ -6992,6 +6993,7 @@ void travel_step(void)
     /* Closed door */
     else if (is_closed_door(cave[pt_best.y][pt_best.x].feat))
     {
+        door_hack = TRUE;
         if (!easy_open)
         {
             disturb(0, 0);
@@ -7016,7 +7018,7 @@ void travel_step(void)
     Term_fresh();
     travel.run = old_run;
 
-    if (((py == travel.y) && (px == travel.x)) || ((py == py_old)&&(px == px_old)) || (ongelma))
+    if (((py == travel.y) && (px == travel.x)) || ((py == py_old)&&(px == px_old) && (!door_hack)) || (ongelma))
     {
         travel_end();
     }
