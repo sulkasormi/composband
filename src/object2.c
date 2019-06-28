@@ -4205,6 +4205,8 @@ s16b drop_near(object_type *j_ptr, int chance, int y, int x)
     /* Handle lack of space */
     if (!flag && !object_is_artifact(j_ptr))
     {
+        if (!character_dungeon) return (0);
+
         /* Message */
         msg_format("The %s disappear%s.",
                o_name, (plural ? "" : "s"));
