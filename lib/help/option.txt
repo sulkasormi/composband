@@ -61,6 +61,12 @@ If this option is enabled, then every level will be empty 'arena' level. See the
 <topic:ironman_nightmare><color:U>Nightmare mode(it isn't even remotely fair!)</color> <color:D>(ironman_nightmare)</color>
 If this option is enabled, all monsters become unusually powerful, and fast. And there will be various unbelievable things happening in various situations. Furthermore, at 12:00 every night, you will have a real nightmare. You need to be crazy to turn this option on!
 
+<topic:thrall_mode><color:U>Thrall mode (start in extreme danger)</color> <color:D>(thrall_mode)</color>
+With this option enabled, you start the game on level 90 of R'lyeh (or level 90 of Angband in no-wilderness mode) as a runaway slave of the dungeon's demonic masters. With extreme care, you have managed to steal a few useful items that might help you in your escape. But now you've been noticed, everyone's on alert, and it is up to you to die, escape - or fight your way through...
+
+<topic:wacky_rooms><color:U>Always generate very unusual rooms</color> <color:D>(wacky_rooms)</color>
+If this option is enabled, every room becomes a vault (except in a few dungeons with special generation rules), vaults are allowed to generate extremely out-of-depth monsters and floor items, and extremely small levels are made slightly larger (to accommodate the vaults). This option is purposely game-unbalancing, and is intended for experienced players who have found they actually like the game unbalanced now and then.
+
 <topic:enable_virtues><color:U>Enable virtues</color> <color:D>(enable_virtues)</color>
 Turns on the virtue system. Virtues can help or hinder the player; among other things, they affect spell fail rates, the strength of many magical effects, and the friendliness of some monsters.
 
@@ -79,7 +85,7 @@ This option removes some percentage of uniques from the game. A few uniques (mos
 <topic:single_pantheon><color:U>Play with only one pantheon</color> <color:D>(single_pantheon)</color>
 This option removes one of the game's two main monster pantheons (Olympian or Egyptian) from the game, but also re-adds all members of the remaining pantheon if they have been removed by the reduce_uniques option. In wilderness mode, the dungeon associated with the removed pantheon is also removed from the game. Which pantheon remains can be either specified by the player or left to a random decision.
 
-<topic:always_small_levels><color:U>Always generate small levels</color> <color:D>(always_small_levels)</color>
+<topic:always_small_levels><color:U>Level size</color> <color:D>(always_small_levels)</color>
 This option allows you to select from a variety of different level-size selection methods. See <link:small_lv.txt> for more details.
 
 <topic:increase_density><color:U>Increase monster density on small levels</color> <color:D>(increase_density)</color>
