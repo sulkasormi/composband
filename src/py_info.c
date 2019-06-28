@@ -2467,6 +2467,9 @@ static void _build_options(doc_ptr doc)
             doc_printf(doc, " Depth Revisits:     %d\n", p_ptr->coffee_lv_revisits);
     }
 
+    if (thrall_mode)
+        doc_printf(doc, " Thrall Mode:        On\n");
+
     doc_printf(doc, " Preserve Mode:      %s\n", preserve_mode ? "On" : "Off");
 
     if (small_level_type <= SMALL_LVL_MAX)
@@ -2489,6 +2492,9 @@ static void _build_options(doc_ptr doc)
 
     if ((ironman_downward) && (!coffee_break))
         doc_printf(doc, " Diving Only:        On\n");
+
+    if (wacky_rooms)
+        doc_printf(doc, " Wacky Rooms:        On\n");
 
     if (increase_density)
         doc_printf(doc, " Dense Small Levels: On\n");
@@ -2598,8 +2604,7 @@ int oook_score(void)
 
 char *version_modifier(void)
 {
-    if (coffee_break) return " (coffee)";
-    return "";
+    return format("%s%s%s", coffee_break ? " (coffee)" : "", thrall_mode ? " (thrall)" : "", wacky_rooms ? " (wacky)" : "");
 }
 
 static void _add_html_header(doc_ptr doc)
