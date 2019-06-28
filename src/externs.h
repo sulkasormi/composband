@@ -372,6 +372,8 @@ extern byte small_level_type;
 extern bool increase_density;
 extern bool even_proportions;
 extern bool no_big_dungeons;
+extern bool thrall_mode;
+extern bool wacky_rooms;
 
 /*** Easy Object Auto-Destroyer ***/
 
@@ -659,6 +661,7 @@ extern void player_birth(void);
 extern void get_max_stats(void);
 extern int calc_exp_factor(void);
 extern bool monster_hook_human(int r_idx);
+extern void birth_location(void);
 
 /* py_birth.c */
 extern int  py_birth(void);
