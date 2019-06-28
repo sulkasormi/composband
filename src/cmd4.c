@@ -883,15 +883,7 @@ void do_cmd_options_aux(int page, cptr info)
             else if (option_info[opt[i]].o_var == &always_small_levels)
             {
                 sprintf(buf, "%-48s: ", option_info[opt[i]].o_desc);
-                if (always_small_levels)
-                {
-                    sprintf(buf + strlen(buf), "%s ", lv_size_options[small_level_type]);
-                }
-                else
-                {
-                    strcat(buf, "no  ");
-                    sprintf(buf + strlen(buf), "(%.19s)", option_info[opt[i]].o_text);
-                }
+                sprintf(buf + strlen(buf), "%s ", lv_size_options[small_level_type]);
             }
             else
             {
