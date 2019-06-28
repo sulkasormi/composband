@@ -194,10 +194,11 @@ void gain_chosen_stat(void)
  * Advance experience levels and print experience
  */
 
+
 void check_experience(void)
 {
-    bool level_inc_stat = FALSE;
-    int  old_lev = p_ptr->lev;
+    int old_lev = p_ptr->lev;
+    static bool level_inc_stat = FALSE;
 
     /* Hack -- lower limit */
     if (p_ptr->exp < 0) p_ptr->exp = 0;
@@ -258,6 +259,8 @@ void check_experience(void)
             if (class_ptr->gain_level != NULL)
                 (class_ptr->gain_level)(p_ptr->lev);
 
+            level_inc_stat = TRUE;
+
             if (mut_present(MUT_CHAOS_GIFT))
                 chaos_warrior_reward();
 
@@ -273,9 +276,6 @@ void check_experience(void)
                 if (race_ptr->gain_level != NULL)
                     (race_ptr->gain_level)(p_ptr->lev);
             }
-
-
-            level_inc_stat = TRUE;
         }
 
 
@@ -298,7 +298,10 @@ void check_experience(void)
         if (level_inc_stat)
         {
             if(p_ptr->max_plv % 5 == 0)
+            {
                 gain_chosen_stat();
+                level_inc_stat = FALSE;
+            }
         }
         p_ptr->update |= (PU_BONUS | PU_HP | PU_MANA | PU_SPELLS);
         p_ptr->redraw |= (PR_LEV);
