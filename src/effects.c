@@ -958,6 +958,7 @@ bool set_confused(int v, bool do_dec)
     /* Open */
     if (v)
     {
+        if ((p_ptr->confused > v) && (!do_dec)) return FALSE;
         if (!p_ptr->confused)
         {
             msg_print("You are confused!");
@@ -1047,6 +1048,7 @@ bool set_poisoned(int v, bool do_dec)
     /* Open */
     if (v)
     {
+        if ((p_ptr->poisoned > v) && (!do_dec)) return FALSE;
         if (!p_ptr->poisoned)
         {
             msg_print("You are poisoned!");
@@ -1205,6 +1207,7 @@ bool set_image(int v, bool do_dec)
     if (v)
     {
         set_tsuyoshi(0, TRUE);
+        if ((p_ptr->image > v) && (!do_dec)) return FALSE;
         if (!p_ptr->image)
         {
             msg_print("Oh, wow! Everything looks so cosmic now!");
