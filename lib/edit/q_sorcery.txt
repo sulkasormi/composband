@@ -23,7 +23,7 @@ L:~:SHALLOW_WATER
 L:.:FLOOR
 L:<:UP_STAIR
 L:a:SHALLOW_WATER:MON(guardian naga)
-L:b:MON(phantom warrior)
+L:b:MON(phantom warrior, NO_GROUP)
 L:c:MON(phantom beast)
 L:d:SHALLOW_WATER:MON(air elemental)
 L:e:DEEP_WATER:MON(great wyrm of many colours)
