@@ -892,7 +892,7 @@ static bool cave_gen(void)
 
         /* Make a hole in the dungeon roof sometimes at level 1
            But not in Angband. See Issue #3 */
-        if (dun_level == 1 && dungeon_type != DUNGEON_ANGBAND)
+        if (dun_level == 1 && dungeon_type != DUNGEON_ANGBAND && !wacky_rooms)
         {
             while (one_in_(DUN_MOS_DEN))
             {
@@ -1382,6 +1382,7 @@ static bool level_gen(cptr *why)
         small = TRUE;
         if (small_level_type == SMALL_LVL_COFFEE) coffee = TRUE;
     }
+    if (small_level_type == SMALL_LVL_HUGE) small = FALSE;
 
     if (small)
     {
@@ -1407,6 +1408,11 @@ static bool level_gen(cptr *why)
         {
             switch (small_level_type)
             {
+                case SMALL_LVL_HUGE:
+                case SMALL_LVL_RESPECTFUL_HUGE:
+                    hgt = 3;
+                    wid = 3;
+                    break;
                 case SMALL_LVL_TINY:
                     hgt = 1;
                     wid = 1;
@@ -1534,6 +1540,12 @@ static bool level_gen(cptr *why)
         {
             hgt = wid;
             wid = 1;
+        }
+
+        if ((wacky_rooms) && (hgt == 1) && (wid == 1) && (!(d_info[dungeon_type].flags1 & DF1_CHAMELEON)))
+        {
+            hgt = 2;
+            if ((one_in_(3)) && (small_level_type != SMALL_LVL_TINY) && (small_level_type != SMALL_LVL_EXTREMELY_SMALL)) wid = 2;
         }
 
         cur_hgt = hgt * SCREEN_HGT;
