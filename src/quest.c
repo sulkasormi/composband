@@ -105,6 +105,12 @@ void quest_complete(quest_ptr q, point_t p)
     if ((q->status == QS_COMPLETED) || (q->status == QS_FINISHED)) return;
     assert(q->status == QS_IN_PROGRESS);
 
+    if (q->goal == QG_KILL_MON)
+    {
+        monster_race *r_ptr = &r_info[q->goal_idx];
+        if (r_ptr) r_ptr->flagsx &= ~(RFX_QUESTOR);
+    }
+
     if (q->flags & QF_PURPLE)
     {
         if (disciple_is_(DISCIPLE_KARROT))
