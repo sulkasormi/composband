@@ -1031,6 +1031,7 @@ void do_cmd_cast(void)
             if (take_mana > 0)
                 p_ptr->csp += take_mana;
             energy_use = 0;
+            p_ptr->redraw |= PR_MANA;
             return;
         }
 
