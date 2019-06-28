@@ -952,8 +952,8 @@ void alchemist_super_potion_effect(int sval){
 	{
 		case SV_POTION_ENLIGHTENMENT: set_tim_esp(100 + randint0(p_ptr->lev * 2), FALSE); break;
 		case SV_POTION_STAR_ENLIGHTENMENT: set_tim_esp(300 + randint0(p_ptr->lev * 6), FALSE); break;
-		case SV_POTION_CLARITY: set_confused(0, FALSE); break;
-		case SV_POTION_GREAT_CLARITY: set_confused(0, FALSE); set_stun(0, FALSE); set_image(0, FALSE); break;
+		case SV_POTION_CLARITY: set_confused(0, TRUE); break;
+		case SV_POTION_GREAT_CLARITY: set_confused(0, TRUE); set_stun(0, TRUE); set_image(0, TRUE); break;
 	}
 
 }
