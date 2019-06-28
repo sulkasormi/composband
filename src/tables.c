@@ -2426,6 +2426,12 @@ option_type option_info[] =
     { &ironman_nightmare,           FALSE, OPT_PAGE_BIRTH, 6, 18,
     "ironman_nightmare",            "Nightmare mode(it isn't even remotely fair!)(*)" },
 
+    { &thrall_mode,                 FALSE, OPT_PAGE_BIRTH, 1, 19,
+    "thrall_mode",                  "Thrall mode (start in extreme danger) (*)" },
+
+    { &wacky_rooms,                 FALSE, OPT_PAGE_BIRTH, 1, 22,
+    "wacky_rooms",                  "Always generate very unusual rooms (*)" },
+
     { &enable_virtues,              FALSE, OPT_PAGE_BIRTH, 6, 13,
     "enable_virtues",               "Enable the virtue system" },
 
@@ -2463,7 +2469,7 @@ option_type option_info[] =
     "single_pantheon",              "Play with only one pantheon" },
 
     { &always_small_levels,         FALSE, OPT_PAGE_BIRTH, 4, 14,
-    "always_small_levels",          "Always generate small levels" },
+    "always_small_levels",          "Level size" },
 
     { &increase_density,            FALSE, OPT_PAGE_BIRTH, 4, 15,
     "increase_density",             "Increase monster density on small levels" },
@@ -2571,7 +2577,9 @@ cptr lv_size_options[SMALL_LVL_MAX + 1] =
     "Small Coffee",
     "Very Small",
     "Extremely Small",
-    "Tiny"
+    "Tiny",
+    "Huge",
+    "Huge (respect tiny)"
 };
 
 martial_arts ma_blows[MAX_MA] =
