@@ -329,6 +329,7 @@ extern bool disturb_trap_detect;    /* Disturb when leaving trap detected area *
 extern bool alert_trap_detect;    /* Alert when leaving trap detected area */
 extern bool alert_device_gone;  /* Alert when device is destroyed or stolen */
 extern bool alert_insc_gone;    /* Alert when inscribed item is destroyed or stolen */
+extern bool alert_wanted_kill;  /* Alert when killing a wanted monster */
 
 
 /*** Birth Options ***/
