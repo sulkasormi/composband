@@ -2376,6 +2376,9 @@ option_type option_info[] =
     { &alert_insc_gone,             TRUE,  OPT_PAGE_DISTURBANCE, 0, 2,
     "alert_insc_gone",              "Alert when inscribed item is destroyed or stolen" },
 
+    { &alert_wanted_kill,           FALSE,  OPT_PAGE_DISTURBANCE, 0, 30,
+    "alert_wanted_kill",            "Alert on killing wanted uniques" },
+
     /*** Birth Options ***/
 
 	{ &coffee_break,		FALSE, OPT_PAGE_BIRTH, 6, 3,
