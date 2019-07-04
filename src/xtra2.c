@@ -2907,6 +2907,7 @@ bool mon_take_hit(int m_idx, int dam, bool *fear, cptr note)
             char m_posname[MAX_NLEN];
             monster_desc(m_posname, m_ptr, MD_TRUE_NAME | MD_POSSESSIVE);
             msg_format("There is a price on %s head.", m_posname);
+            if (alert_wanted_kill) msg_print(NULL);
         }
 
         /* Generate treasure */
