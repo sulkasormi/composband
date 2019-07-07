@@ -4930,6 +4930,7 @@ extern int PlayerUID;
 
 #define PY_ATTACK_MANA       88
 #define BEORNING_SWIPE       89
+#define BEORNING_BIG_SWIPE   90
 
 #define HISSATSU_IAI    100
 
