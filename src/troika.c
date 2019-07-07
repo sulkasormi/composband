@@ -256,6 +256,8 @@ static void _troika_event(int effect)
     char wrath_reason[24] = "the Wrath of Guntujant";
     int count = 0, dummy;
 
+    if (p_ptr->is_dead) return;
+
     switch (effect)
     {
         case REW_POLY_SLF:
@@ -721,6 +723,7 @@ static void _troika_random_effect(void)
 static void _troika_reward(void)
 {
     int type = randint0(_MAX_REW * 5 / 3);
+    if (p_ptr->is_dead) return;
     if (type >= _MAX_REW)
     {
         int count;
