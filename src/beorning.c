@@ -108,7 +108,6 @@ static void _birth(void)
 
     _beorning_form = 0;
     skills_innate_init("Claw", WEAPON_EXP_BEGINNER, WEAPON_EXP_MASTER);
-    skills_innate_init("Bite", WEAPON_EXP_BEGINNER, WEAPON_EXP_MASTER);
     py_birth_food();
     py_birth_light();
 }
@@ -130,7 +129,7 @@ void _beorning_calc_innate_attacks(void)
         a.to_d += 3;
 
         a.weight = 100;
-        calc_innate_blows(&a, 444);
+        calc_innate_blows(&a, 386 + (l * 2));
         a.msg = "You claw.";
         a.name = "Claw";
 
@@ -248,10 +247,46 @@ void _bear_sniff_spell(int cmd, variant *res)
     }
 }
 
+void _raging_swipe_spell(int cmd, variant *res)
+{
+    switch (cmd)
+    {
+    case SPELL_NAME:
+        var_set_string(res, "Raging Swipe");
+        break;
+    case SPELL_DESC:
+        var_set_string(res, "Strike all adjacent monsters with a mighty blow, attempting to knock them back.");
+        break;
+    case SPELL_CAST:
+    {
+        int              dir, x, y;
+        cave_type       *c_ptr;
+        monster_type    *m_ptr;
+
+        for (dir = 0; dir < 8; dir++)
+        {
+            y = py + ddy_ddd[dir];
+            x = px + ddx_ddd[dir];
+            c_ptr = &cave[y][x];
+
+            m_ptr = &m_list[c_ptr->m_idx];
+
+            if (c_ptr->m_idx && (m_ptr->ml || cave_have_flag_bold(y, x, FF_PROJECT)))
+                py_attack(y, x, BEORNING_BIG_SWIPE);
+        }
+        var_set_bool(res, TRUE);
+        break;
+    }
+    default:
+        default_spell(cmd, res);
+        break;
+    }
+}
+
 static power_info _bear_powers[] = {
     { A_DEX, { 20, 5, 25, _bear_swipe_spell } },
     { A_STR, { 25, 10, 30, _bear_charge_spell } },
-    { A_INT, { 40, 1, 30, _bear_sniff_spell } },
+    { A_INT, { 35, 1, 25, _bear_sniff_spell } },
     {    -1, { -1, -1, -1, NULL}}
 };
 static power_info _man_powers[] = {
@@ -268,6 +303,15 @@ static int _get_powers(spell_info* spells, int max) {
     if (_beorning_form == BEORNING_FORM_BEAR)
         ct += get_powers_aux(spells + ct, max - ct, _bear_powers);
     else ct += get_powers_aux(spells + ct, max - ct, _man_powers);
+    if ((_beorning_form == BEORNING_FORM_BEAR) && (p_ptr->pclass != CLASS_SORCERER) && (p_ptr->pclass != CLASS_DUELIST))
+    {
+        static power_info _raging_swipe[2] = /* ugly but, hey, it works */
+        {
+            {A_DEX, {42, 25, 30, _raging_swipe_spell}},
+            {-1,    {-1, -1, -1, NULL}},
+        };
+        if (p_ptr->lev >= 42) ct += get_powers_aux(spells + ct, max - ct, _raging_swipe);
+    }
     return ct;
 }
 static void _calc_bonuses(void)
@@ -465,7 +509,7 @@ race_t *beorning_get_race(void)
 
     if (_beorning_form == BEORNING_FORM_BEAR)
     {
-        me.life = (p_ptr->pclass == CLASS_BERSERKER) ? 120 : 157 + (p_ptr->lev / 4);
+        me.life = (p_ptr->pclass == CLASS_BERSERKER) ? 115 + (p_ptr->lev / 3) : 155 + (p_ptr->lev / 3);
     }
 
     me.equip_template = _beorning_equip_template(_beorning_form);
