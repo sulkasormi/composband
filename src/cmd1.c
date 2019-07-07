@@ -2364,7 +2364,7 @@ static void innate_attacks(s16b m_idx, bool *fear, bool *mdeath, int mode)
     {
         innate_attack_ptr a = &p_ptr->innate_attacks[i];
         int               blows = _get_num_blow_innate(i);
-        if (mode == BEORNING_SWIPE) blows = 1;
+        if ((mode == BEORNING_SWIPE) || (mode == BEORNING_BIG_SWIPE)) blows = 1;
 
         if (a->flags & INNATE_SKIP) continue;
         if (m_ptr->fy != old_fy || m_ptr->fx != old_fx) break; /* Teleport Effect? */
@@ -2399,7 +2399,8 @@ static void innate_attacks(s16b m_idx, bool *fear, bool *mdeath, int mode)
 
                 hit_ct++;
                 sound(SOUND_HIT);
-                msg_format(a->msg, m_name_object);
+                if (mode == BEORNING_BIG_SWIPE) msg_print("You hit.");
+                else msg_format(a->msg, m_name_object);
 
                 base_dam = damroll(dd, a->ds);
                 if ((a->flags & INNATE_VORPAL) && one_in_(6))
@@ -2456,6 +2457,11 @@ static void innate_attacks(s16b m_idx, bool *fear, bool *mdeath, int mode)
                     base_dam -= base_dam * MIN(100, p_ptr->stun) / 150;
                 }
                 dam = ((dam * (class_melee_mult() * race_melee_mult(TRUE) / 100)) + 50) / 100;
+
+                if (mode == BEORNING_BIG_SWIPE)
+                {
+                    dam = (dam * (race_melee_mult(TRUE) + p_ptr->lev)) / 100;
+                }
 
                 /* More slop for Draconian Metamorphosis ... */
                 if ( (player_is_ninja)
@@ -2751,9 +2757,9 @@ static void innate_attacks(s16b m_idx, bool *fear, bool *mdeath, int mode)
         }
         if (mode == WEAPONMASTER_RETALIATION) break;
     }
-    if (mode == DRAGON_TAIL_SWEEP && !*mdeath && hit_ct)
+    if (((mode == DRAGON_TAIL_SWEEP) || (mode == BEORNING_BIG_SWIPE)) && (!*mdeath) && (hit_ct))
     {
-        int dist = randint1(1 + p_ptr->lev/20);
+        int dist = randint1((mode == BEORNING_BIG_SWIPE) ? 2 : 1 + p_ptr->lev/20);
         do_monster_knockback(m_ptr->fx, m_ptr->fy, dist);
     }
     if (delay_quake)
