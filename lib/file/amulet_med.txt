@@ -66,3 +66,7 @@ of Tetelo
 'Luck of the Gander'
 of Pluto
 of Gromit
+'World Oyster'
+'Placebo'
+of Cassima
+of Tamir
