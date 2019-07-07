@@ -206,6 +206,7 @@ void nonlethal_ty_substitute(bool do_dec)
 
 void chaos_warrior_reward(void)
 {
+    if (p_ptr->is_dead) return;
     if (one_in_(6))
     {
         msg_format("%^s rewards you with a mutation!",
