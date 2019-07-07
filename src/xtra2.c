@@ -210,6 +210,12 @@ void check_experience(void)
     if (p_ptr->max_exp > PY_MAX_EXP) p_ptr->max_exp = PY_MAX_EXP;
     if (p_ptr->max_max_exp > PY_MAX_EXP) p_ptr->max_max_exp = PY_MAX_EXP;
 
+    if (p_ptr->is_dead) /* Disallow posthumous XP gains */
+    {
+        if (p_ptr->exp > p_ptr->max_max_exp) p_ptr->exp = p_ptr->max_max_exp;
+        return;
+    }
+
     /* Hack -- maintain "max" experience */
     if (p_ptr->exp > p_ptr->max_exp) p_ptr->max_exp = p_ptr->exp;
 
