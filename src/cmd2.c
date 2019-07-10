@@ -3969,6 +3969,22 @@ void forget_travel_flow(void)
     }
 }
 
+static byte _travel_flow_bonus(feature_type *f_ptr)
+{
+    if ((have_flag(f_ptr->flags, FF_LAVA)) && (!elemental_is_(ELEMENTAL_FIRE)) && (res_pct(RES_FIRE) < 100))
+    {
+        int bonus = (have_flag(f_ptr->flags, FF_DEEP)) ? 16 : 1;
+        if (p_ptr->levitation) bonus /= 2;
+        if (res_pct(RES_FIRE) <= 50) bonus *= 4;
+        return bonus;
+    }
+    else if ((!p_ptr->levitation) && (!p_ptr->can_swim) && (have_flag(f_ptr->flags, FF_WATER)) && (have_flag(f_ptr->flags, FF_DEEP)) && (!elemental_is_(ELEMENTAL_WATER)) && (py_total_weight() > weight_limit()))
+    {
+        return 4;
+    }
+    else return 0;
+}
+
 static bool travel_flow_aux(int y, int x, int n, bool wall)
 {
     cave_type *c_ptr = &cave[y][x];
@@ -3986,8 +4002,10 @@ static bool travel_flow_aux(int y, int x, int n, bool wall)
      * route around the trap anyway ... */
     if (is_known_trap(c_ptr)) return wall;
 
+    n += _travel_flow_bonus(f_ptr);
+
     /* Ignore "pre-stamped" entries */
-    if (travel.cost[y][x] != TRAVEL_UNABLE) return wall;
+    if ((travel.cost[y][x] != TRAVEL_UNABLE) && (travel.cost[y][x] <= n)) return wall;
 
     /* Ignore "walls" and "rubble" (include "secret doors") */
     if (have_flag(f_ptr->flags, FF_WALL) ||
@@ -4203,4 +4221,70 @@ void do_cmd_travel(void)
     travel_begin(TRAVEL_MODE_NORMAL, x, y);
 }
 
+void do_cmd_get_nearest(void)
+{
+    int old_y = travel.y;
+    int old_x = travel.x;
+    int by = 0, bx = 0;
+    int i, _itms = 0;
+    int best = TRAVEL_UNABLE;
+    travel_cancel_fully();
+    for (i = 0; i < max_o_idx; i++)
+    {
+        object_type       *o_ptr = &o_list[i];
+        int                auto_pick_idx;
+        int                tulos;
+
+        if (!o_ptr->k_idx) continue;
+        if (!(o_ptr->marked & OM_FOUND)) continue;
+        if (o_ptr->tval == TV_GOLD) continue;
+        if (obj_is_known(o_ptr)) continue;
+        if ((o_ptr->ident & IDENT_SENSE) &&
+            (!obj_is_device(o_ptr)) &&
+            (o_ptr->feeling != FEEL_EXCELLENT) &&
+            (o_ptr->feeling != FEEL_SPECIAL) &&
+            (o_ptr->feeling != FEEL_AWFUL) &&
+            (o_ptr->feeling != FEEL_TERRIBLE) &&
+            (o_ptr->feeling != FEEL_ENCHANTED)) continue;
+        if (!in_bounds(o_ptr->loc.y, o_ptr->loc.x)) continue; /* paranoia */
+        _itms++;
+        if ((by) && (distance(py, px, o_ptr->loc.y, o_ptr->loc.x) >= by)) continue;
+        if ((o_ptr->loc.y == py) && (o_ptr->loc.x == px)) continue;
+        if ((o_ptr->loc.y == by) && (o_ptr->loc.x == bx)) continue;
+
+        if (max_autopick > 0)
+        {
+            auto_pick_idx = is_autopick(o_ptr);
+            if ((auto_pick_idx < 0) ||
+                (!(autopick_list[auto_pick_idx].action & (DO_AUTOPICK | DO_QUERY_AUTOPICK))))
+            {
+                _itms--;
+                continue;
+            }
+        }
+        forget_travel_flow();
+        travel_flow(o_ptr->loc.y, o_ptr->loc.x);
+        tulos = travel.cost[py][px];
+//        msg_format("Tulos: %d (%d,%d)", tulos, o_ptr->loc.y, o_ptr->loc.x);
+        if (tulos < best)
+        {
+            best = tulos;
+            by = o_ptr->loc.y;
+            bx = o_ptr->loc.x;
+        }
+    }
+    forget_travel_flow();
+    if (best < TRAVEL_UNABLE)
+    {
+        travel_begin(TRAVEL_MODE_NORMAL, bx, by);
+        return;
+    }
+    else
+    {
+        travel.y = old_y;
+        travel.x = old_x;
+        if (!_itms) msg_print("You are not aware of any interesting unidentified items.");
+        else if (best >= TRAVEL_UNABLE) msg_print("You cannot find a route to any interesting object.");
+    }
+}
 
