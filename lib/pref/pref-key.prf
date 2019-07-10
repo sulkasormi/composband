@@ -199,6 +199,10 @@ C:1:O
 A:J
 C:1:(
 
+# Journey to nearest
+A:H
+C:1:^E
+
 # Display Game Time
 #A:^t
 #C:1:'
