@@ -7441,7 +7441,7 @@ bool set_tim_inven_prot2(int v, bool do_dec)
     bool notice = FALSE;
 
     /* Hack -- Force good values */
-    v = (v > 50) ? 50 : (v < 0) ? 0 : v;
+    v = (v > 100) ? 100 : (v < 0) ? 0 : v;
 
     if (p_ptr->is_dead) return FALSE;
 
