@@ -2461,7 +2461,8 @@ static bool kind_is_tailored(int k_idx)
             && p_ptr->pclass != CLASS_NINJA
             && p_ptr->pclass != CLASS_NINJA_LAWYER
             && p_ptr->pclass != CLASS_MAULER
-            && p_ptr->pclass != CLASS_DUELIST;
+            && p_ptr->pclass != CLASS_DUELIST
+            && !disciple_is_(DISCIPLE_TROIKA);
 
     case TV_HARD_ARMOR:
     case TV_SOFT_ARMOR:
