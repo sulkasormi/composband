@@ -3429,6 +3429,11 @@ static void _dispatch_command(int old_now_turn)
             do_cmd_autoget();
             break;
         }
+        case 'H':
+        {
+            if (!p_ptr->wild_mode) do_cmd_get_nearest();
+            break;
+        }
         /* Rest -- Arg is time */
         case 'R':
         {
