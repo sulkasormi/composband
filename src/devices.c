@@ -1813,7 +1813,7 @@ static cptr _do_scroll(int sval, int mode)
         if (desc) return "It creates a temporary protective shield around your inventory.";
         if (cast)
         {
-            if (set_tim_inven_prot2(25, FALSE)) device_noticed = TRUE;
+            if (set_tim_inven_prot2(p_ptr->tim_inven_prot2 + _scroll_power(25), FALSE)) device_noticed = TRUE;
         }
         break;
     }
