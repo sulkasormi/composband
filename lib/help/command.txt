@@ -22,7 +22,7 @@ Don't be overwhelmed by the sheer number of commands. Many are not often used or
    <color:y>e</color>  Equipment list                       <color:y>E</color>  Eat some food
    <color:y>f</color>  Fire an arrow etc.                   <color:y>F</color>  Fuel your lantern/torch
    g  Get Objects                          <color:y>G</color>  Gain new spells/prayers
-   <color:D>h  (unused)</color>                             H  Travel to interesting object
+   <color:D>h  (unused)</color>                             H  Travel to interesting item
    <color:y>i</color>  Inventory list                       I  Inspect an item
    j  Jam a door                           J  Resume travelling
    k  Destroy an item                      <color:D>K  (unused)</color>
@@ -109,7 +109,7 @@ Don't be overwhelmed by the sheer number of commands. Many are not often used or
    @  Interact with macros                ^B  (tunnel - south west)
    #  Toggle search mode                  ^C  (special - break)
    $  Reload Auto-picker pref             ^D  Destroy item
-   %  Interact with visuals               ^E  Travel to interesting object
+   %  Interact with visuals               ^E  Travel to interesting item
    ^  (special - control key)             ^F  Repeat level feeling
    &  Interact with colors                ^G  Auto-Get nearby objects
    <color:y>*</color>  Target monster or location          ^H  (tunnel - west)
