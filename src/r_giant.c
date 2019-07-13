@@ -465,6 +465,7 @@ void monster_toss_spell(int cmd, variant *res)
         if (!m_idx)
         {
             msg_print("There is no monster there.");
+            if (p_ptr->blind > 0) var_set_bool(res, TRUE);
             return;
         }
 
