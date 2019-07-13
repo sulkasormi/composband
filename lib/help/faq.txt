@@ -166,13 +166,22 @@ In many other Angband variants one source of Free Action is enough to give compl
 <color:R>A:</color> Every level of See Invisible improves your chances of noticing an invisible creature. How good those chances become depends on the level of the monster (high-level monsters are harder to see) and on your Searching skill. Sometimes an invisible creature flickers in and out of sight - now you make the sight roll, the next turn you don't. If you have several sources of See Invisible and still have trouble seeing invisible creatures, you may need either Telepathy or an item that improves your Searching skill.
 
 
-<color:G>Q:</color> I tried to dual wield two weapons.  But I couldn't hit anything!
+<color:G>Q:</color> I tried to dual wield two weapons. But I couldn't hit anything!
 
 <color:R>A:</color> You need to practice your dual-wielding skill (proficiency level) and your weapon skills.  Hitting high level monsters many times will improve your skills.  Note that the information command '~' reveals your proficiency levels.  Some classes are very bad at dual-wielding, while others are much more adept at it or can become so with enough training. If you try to dual-wield on a sniper and it doesn't work out, don't let that discourage you from dual-wielding on a ninja.
 
 Wearing gloves of Genji or gaining the Ambidexterity demigod talent will give you bonuses to dual-wielding (though these bonuses will not stack with each other). Sword-speciality Weaponmasters will also receive a dual-wielding bonus once they reach level 45.
 
 Dual-wielding works best with relatively light weapons. Even fully proficient dual-wielders will struggle to hit high-AC monsters with a heavy weapon such as a Lance. Of course, even if a weapon's damage output is limited, it could still be worth wielding for the resists and bonuses on it!
+
+
+<color:G>Q:</color> What about wielding one weapon with both hands? Is that a good idea?
+
+<color:R>A:</color> From a purely melee-damage point of view, it is usually your best option: wielding a single weapon with both hands improves your damage and accuracy, and unless your blows per round are maxed out anyway you will also receive more blows. The downside is that you effectively have one fewer equipment slot, and miss out on the AC, stat bonuses, resists etc. that a shield or second weapon in that slot would give. Whether this is a good trade depends on your character, how much you gain, and how much you give up. A fairly typical approach is to wield your weapon with both hands until you find a good shield somewhere in the dungeon, and then stop.
+
+Many light weapons (specifically, those that weigh less than 10 pounds and are not polearms) cannot be wielded two-handed, and should always be used together with either a shield or a second weapon. On the other hand, very heavy weapons (compared to your strength) can only be wielded properly with two hands.
+
+Wearing Gloves of the Giant will give you more blows with a two-handed weapon, though if your blows per round are maxed out in any case this bonus has no effect.
 
 
 <color:G>Q:</color> How do skills (proficiency levels) work?
