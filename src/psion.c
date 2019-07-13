@@ -565,6 +565,11 @@ static void _graft_weapon_spell(int power, int cmd, variant *res)
             msg_print("Your weapon is already grafted!");
             return;
         }
+        if (!equip_find_first(object_is_melee_weapon))
+        {
+            msg_print("You are not wielding a weapon!");
+            return;
+        }
         msg_print("Your weapon fuses to your arm!");
         p_ptr->magic_num1[_WEAPON_GRAFT] = spell_power(8*power + 20);
         p_ptr->magic_num2[_WEAPON_GRAFT] = power;
