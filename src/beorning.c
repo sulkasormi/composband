@@ -156,6 +156,12 @@ void beorning_change_shape_spell(int cmd, variant *res)
             var_set_bool(res, FALSE);
             break;
         }
+        if (psion_weapon_graft())
+        {
+            msg_print("You cannot change shape with a weapon fused to your arm!");
+            var_set_bool(res, FALSE);
+            break;
+        }
         _beorning_form = 1 - _beorning_form;
         _beorning_equip_on_change_form();
         if (_beorning_form == BEORNING_FORM_BEAR) msg_format("You turn into a bear!");
