@@ -29,6 +29,7 @@ static void _charge_spell(int cmd, variant *res)
         if (!cave[y][x].m_idx)
         {
             msg_print("There is no monster there.");
+            if (p_ptr->blind > 0) var_set_bool(res, TRUE);
             return;
         }
 
