@@ -2984,10 +2984,13 @@ void device_regen_sp_aux(object_type *o_ptr, int per_mill)
             o_ptr->xtra5 = o_ptr->xtra4 * 100;
 
         if (device_is_fully_charged(o_ptr))
-            recharged_notice(o_ptr);
+            recharged_notice(o_ptr, '!');
 
         if (device_charges(o_ptr) != charges)
+        {
+            if (!charges) recharged_notice(o_ptr, '1');
             p_ptr->window |= PW_INVEN;
+        }
     }
 }
 
