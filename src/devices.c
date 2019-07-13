@@ -893,7 +893,7 @@ static cptr _do_potion(int sval, int mode)
         }
         break;
 	case SV_POTION_RES_ALL:
-		if (desc) return "It restores your stats when you quaff it.";
+		if (desc) return "It restores your stats, life and experience when you quaff it.";
 		if (cast)
 		{
 			if (do_res_stat(A_STR)) device_noticed = TRUE;
@@ -902,6 +902,8 @@ static cptr _do_potion(int sval, int mode)
 			if (do_res_stat(A_DEX)) device_noticed = TRUE;
 			if (do_res_stat(A_CON)) device_noticed = TRUE;
 			if (do_res_stat(A_CHR)) device_noticed = TRUE;
+            if (restore_level()) device_noticed = TRUE;
+            if (lp_player(150)) device_noticed = TRUE;
 		}
 		break;
     case SV_POTION_INC_STR:
