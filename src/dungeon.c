@@ -966,7 +966,7 @@ bool psychometry(void)
  * If player has inscribed the object with "!!", let him know when it's
  * recharged. -LM-
  */
-void recharged_notice(object_type *o_ptr)
+void recharged_notice(object_type *o_ptr, unsigned char neula)
 {
     char o_name[MAX_NLEN];
 
@@ -982,7 +982,7 @@ void recharged_notice(object_type *o_ptr)
     while (s)
     {
         /* Find another '!' */
-        if (s[1] == '!')
+        if (s[1] == neula)
         {
             /* Describe (briefly) */
             object_desc(o_name, o_ptr, OD_OMIT_PREFIX | OD_OMIT_INSCRIPTION | OD_COLOR_CODED);
@@ -990,6 +990,8 @@ void recharged_notice(object_type *o_ptr)
             /* Notify the player */
             if (o_ptr->number > 1)
                 msg_format("Your %s are recharged.", o_name);
+            else if (neula != '!')
+                msg_format("Your %s now has %c charge%s.", o_name, neula, (neula == '1') ? "" : "s");
             else
                 msg_format("Your %s is recharged.", o_name);
 
@@ -2304,7 +2306,7 @@ static void _recharge_aux(object_type *o_ptr)
         o_ptr->timeout--;
         if (!o_ptr->timeout)
         {
-            recharged_notice(o_ptr);
+            recharged_notice(o_ptr, '!');
             _recharge_changed = TRUE;
         }
     }
@@ -2349,7 +2351,7 @@ static void process_world_aux_recharge(void)
             if (o_ptr->timeout < 0) o_ptr->timeout = 0;
             if (!o_ptr->timeout)
             {
-                recharged_notice(o_ptr);
+                recharged_notice(o_ptr, '!');
                 _recharge_changed = TRUE;
             }
         }
