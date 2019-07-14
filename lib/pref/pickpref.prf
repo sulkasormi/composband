@@ -133,6 +133,19 @@ rune sword
 weapons more weight than 39
 ?:1
 
+?:[AND [EQU $CLASS Weaponmaster] [EQU $SPECIALITY Bows] ]
+?unidentified ammo:arrow
+?:1
+
+?:[AND [EQU $CLASS Weaponmaster] [EQU $SPECIALITY Slings] ]
+?unidentified ammo:shot
+?unidentified ammo:pebble
+?:1
+
+?:[AND [EQU $CLASS Weaponmaster] [EQU $SPECIALITY Crossbows] ]
+?unidentified ammo:bolt
+?:1
+
 ~gun
 
 #########################################
