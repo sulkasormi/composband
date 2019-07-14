@@ -955,6 +955,23 @@ cptr process_pref_file_expr(char **sp, char *fp)
                 v = get_class()->name;
             }
 
+            else if (streq(b+1, "SUBCLASS"))
+            {
+                v = get_class()->subname;
+                if (!v) v = "why are we here";
+            }
+
+            else if (streq(b+1, "SPECIALITY"))
+            {
+                if (p_ptr->pclass == CLASS_WEAPONMASTER)
+                    sprintf(tmp, "%s", weaponmaster_speciality_name(p_ptr->psubclass));
+                else if (p_ptr->pclass == CLASS_DEVICEMASTER)
+                    sprintf(tmp, "%s", devicemaster_speciality_name(p_ptr->psubclass));
+                else
+                    sprintf(tmp, "None");
+                v = tmp;
+            }
+
             /* Player */
             else if (streq(b+1, "PLAYER"))
             {
