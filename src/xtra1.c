@@ -3361,10 +3361,24 @@ static int _calc_xtra_hp(int amt)
     case CLASS_SAMURAI:
     case CLASS_ARCHER:
     case CLASS_WEAPONSMITH:
-    case CLASS_WEAPONMASTER:
     case CLASS_RAGE_MAGE:
         w1 = 2; w2 = 1; w3 = 0;
         break;
+
+    case CLASS_WEAPONMASTER:
+    {
+        switch (p_ptr->psubclass)
+        {
+            case WEAPONMASTER_SLINGS:
+            case WEAPONMASTER_BOWS:
+            case WEAPONMASTER_CROSSBOWS:
+                w1 = 1; w2 = 1; w3 = 0;
+                break;
+            default:
+                w1 = 2; w2 = 1; w3 = 0;
+                break;
+        }
+    }
 
     case CLASS_ROGUE:
     case CLASS_MONK:
