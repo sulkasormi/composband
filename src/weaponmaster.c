@@ -2290,7 +2290,7 @@ static _speciality _specialities[_MAX_SPECIALITIES] = {
     /*  S   I   W   D   C   C */
       { 0,  0,  0, +2, -1,  0},
     /* Dsrm Dvce Save Stlh Srch Prcp Thn Thb*/
-      {  30,  27,  29,   4,  23,  13, 48, 72},
+      {  30,  26,  29,   4,  23,  13, 48, 72},
       {   8,   9,  10,   0,   0,   0, 13, 28},
       { { TV_BOW, SV_SHORT_BOW },
         { TV_BOW, SV_LONG_BOW },
@@ -2317,7 +2317,7 @@ static _speciality _specialities[_MAX_SPECIALITIES] = {
     /*  S   I   W   D   C   C */
       {+2, -1, -1, -2, +1,  0},
     /* Dsrm Dvce Save Stlh Srch Prcp Thn Thb*/
-      {  25,  25,  35,   1,  14,   2, 65, 30},
+      {  25,  23,  35,   1,  14,   2, 65, 30},
       {   9,   9,  12,   0,   0,   0, 20, 15},
         { { TV_HAFTED, SV_BALL_AND_CHAIN },
           { TV_HAFTED, SV_CLUB },
@@ -2352,7 +2352,7 @@ static _speciality _specialities[_MAX_SPECIALITIES] = {
     /*  S   I   W   D   C   C */
       {+1, -1, -1, +1, +1,  0},
     /* Dsrm Dvce Save Stlh Srch Prcp Thn Thb*/
-      {  30,  27,  29,   3,  18,  10, 48, 72},
+      {  30,  26,  29,   3,  18,  10, 48, 72},
       {   8,   9,   9,   0,   0,   0, 13, 28},
       { { TV_BOW, SV_LIGHT_XBOW },
         { TV_BOW, SV_HEAVY_XBOW },
@@ -2382,7 +2382,7 @@ static _speciality _specialities[_MAX_SPECIALITIES] = {
     /*  S   I   W   D   C   C */
       { 0, +1,  0, +3, -1,  0},
     /* Dsrm Dvce Save Stlh Srch Prcp Thn Thb*/
-      {  30,  32,  31,   5,  30,  20, 60, 66},
+      {  30,  29,  31,   5,  30,  20, 60, 66},
       {  12,   9,  10,   0,   0,   0, 18, 20},
       { { TV_SWORD, SV_BASILLARD },
         { TV_SWORD, SV_BROKEN_DAGGER },
@@ -2490,7 +2490,7 @@ static _speciality _specialities[_MAX_SPECIALITIES] = {
     /*  S   I   W   D   C   C */
       {-1, +1, +1, +3, -1,  0},
     /* Dsrm Dvce Save Stlh Srch Prcp Thn Thb*/
-      {  30,  30,  29,   4,  23,  13, 48, 72},
+      {  30,  28,  29,   4,  23,  13, 48, 72},
       {   8,   9,  10,   0,   0,   0, 13, 28},
       { { TV_BOW, SV_SLING },
         { 0, 0 },
@@ -2515,7 +2515,7 @@ static _speciality _specialities[_MAX_SPECIALITIES] = {
     /*  S   I   W   D   C   C */
       { 0,  0,  0, +2, +1,  0},
     /* Dsrm Dvce Save Stlh Srch Prcp Thn Thb*/
-      {  25,  25,  31,   2,  14,   4, 63, 25},
+      {  25,  24,  31,   2,  14,   4, 63, 25},
       {  10,   9,  10,   0,   0,   0, 26, 11},
       {
         { TV_HAFTED, SV_BO_STAFF },
@@ -3881,6 +3881,7 @@ class_t *weaponmaster_get_class(int subclass)
 
         me.subname = ptr->name;
         me.subdesc = ptr->help;
+        if (ptr->kind == _WEAPONMASTER_BOWS) me.life = 104;
     }
     else
     {
