@@ -1368,6 +1368,8 @@ struct player_type
     s16b run_py;
     s16b run_px;
 
+    bool nice;
+
 
     /*** Extracted fields ***/
     s16b stat_add[6];    /* Modifiers to stat values */
