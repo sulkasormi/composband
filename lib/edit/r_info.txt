@@ -18885,7 +18885,7 @@ P:Body:Vampire
 
 N:1059:Noborta Kesyta, the Yeek President
 G:y:w
-I:109:10d20:50:15:4:90
+I:109:10d20:50:15:4:280
 W:0:255:999:0:0:0
 B:HIT:HURT(1d3):EAT_GOLD
 F:UNIQUE | FIXED_UNIQUE | MALE | CAN_SPEAK | UNDEAD |
@@ -23561,6 +23561,8 @@ F:EVIL | ANIMAL
 P:Copy:Ogre:Warrior
 D:A large creature resembling a skaven but with great size and strength.
 
+# I don't think grey seers can actually generate in any circumstances
+# right now... which some players might consider just as well.
 N:1296:Grey seer
 G:r:w
 I:116:24d10:10:30:10:30
