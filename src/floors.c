@@ -1448,6 +1448,9 @@ void change_floor(void)
 
     /* Clear all flags */
     change_floor_mode = 0L;
+
+    /* Player is still nice */
+    p_ptr->nice = TRUE;
 }
 
 
