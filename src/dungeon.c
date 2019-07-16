@@ -1086,7 +1086,7 @@ static bool _fast_mana_regen(void)
 static void process_world_aux_hp_and_sp(void)
 {
     feature_type *f_ptr = &f_info[cave[py][px].feat];
-    bool cave_no_regen = FALSE;
+    bool cave_no_regen = p_ptr->nice;
     int upkeep_factor = 0;
     int upkeep_regen;
 
@@ -1385,7 +1385,7 @@ static void process_world_aux_hp_and_sp(void)
     if ((_fast_mana_regen()) && (upkeep_regen > 0))
         upkeep_regen = upkeep_regen * 2;
 
-    regenmana(upkeep_regen);
+    if (!p_ptr->nice) regenmana(upkeep_regen);
 
     /* Mega-hack - interrupt resting if we're only resting for mana and our mana isn't regenerating */
     if ((resting < 0) && ((p_ptr->chp == p_ptr->mhp) || (mimic_no_regen()))
@@ -4453,14 +4453,15 @@ static void process_player(void)
         handle_stuff();
     }
 
-    /* Handle the player song */
-    if (!load) bard_check_music();
+    /* Handle the player song/hex spells */
+    if ((!load) && (!p_ptr->nice))
+    {
+        bard_check_music();
+        check_hex();
+        revenge_spell();
+    }
 
-    /* Hex - Handle the hex spells */
-    if (!load) check_hex();
-    if (!load) revenge_spell();
-
-    if (!load)
+    if ((!load) && (!p_ptr->nice))
     {
     class_t *class_ptr = get_class();
 
@@ -4476,7 +4477,7 @@ static void process_player(void)
      * game mechanics work better if they are indexed to player actions.
      * cf process_world_aux_hp_and_sp. */
 
-    if (!load)
+    if ((!load) && (!p_ptr->nice))
     {
         if (p_ptr->lightspeed)
         {
@@ -4560,6 +4561,7 @@ static void process_player(void)
         p_ptr->sutemi = FALSE;
         p_ptr->counter = FALSE;
         monsters_damaged_hack = FALSE;
+        p_ptr->nice = FALSE;
 
         player_turn++;
 
@@ -4689,6 +4691,21 @@ static void process_player(void)
         {
             /* Place the cursor on the player */
             move_cursor_relative(py, px);
+
+            /* This is a very ugly place for this alert, but it's the only
+             * way to make sure the alert serves its intended purpose and
+             * won't be completely broken by any minor tweaks in the future */
+            if ((alert_poison) && (p_ptr->poisoned > pienempi(p_ptr->mhp * 4 / 5, MIN(499, p_ptr->chp))))
+            {
+                if ((!poison_warning_hack) || ((int)poison_warning_hack < (p_ptr->poisoned + 9) / 10) || (p_ptr->poisoned / 4 > p_ptr->chp))
+                {
+                    msg_boundary();
+                    msg_format("<color:G>*** POISON WARNING! ***</color>");
+                    if ((!poison_warning_hack) || (p_ptr->poisoned / 4 > p_ptr->chp)) msg_print(NULL);
+                }
+                poison_warning_hack = MIN(255, (p_ptr->poisoned + 9) / 10);
+            }
+            else poison_warning_hack = 0;
 
             can_save = TRUE;
             /* Get a command (normal) */
