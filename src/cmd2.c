@@ -2345,7 +2345,7 @@ void do_cmd_run(void)
 {
     int dir;
 
-    if ((!online_macros) && ((++run_count) == 4))
+    if ((!online_macros) && ((++run_count) == 4) && (!rogue_like_commands))
     {
         msg_print("The game has detected multiple calls to the 'Run' command");
         msg_print("without any calls to the 'Walk' command, a possible sign");
