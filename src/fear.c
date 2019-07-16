@@ -273,6 +273,7 @@ bool fear_save_p(int ml)
             return TRUE;
         }
     }
+    equip_learn_vuln(OF_VULN_FEAR);
     return FALSE;
 }
 
