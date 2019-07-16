@@ -365,7 +365,7 @@ static void _arrow_of_slaying_spell(int cmd, variant *res)
         var_set_string(res, "Arrow of Slaying");
         break;
     case SPELL_DESC:
-        var_set_string(res, "Attempt to kill a monster a well aimed shot.");
+        var_set_string(res, "Attempts to kill a monster instantly by hitting a fatal spot, dealing 1 damage if unsuccessful.");
         break;
     default:
         _fire_spell(SHOOT_NEEDLE, cmd, res);
