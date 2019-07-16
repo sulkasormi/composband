@@ -2379,6 +2379,9 @@ option_type option_info[] =
     { &alert_wanted_kill,           FALSE,  OPT_PAGE_DISTURBANCE, 0, 30,
     "alert_wanted_kill",            "Alert on killing wanted uniques" },
 
+    { &alert_poison,                TRUE,  OPT_PAGE_DISTURBANCE, 2, 2,
+    "alert_poison",                 "Alert on dangerously high poison counter" },
+
     /*** Birth Options ***/
 
 	{ &coffee_break,		FALSE, OPT_PAGE_BIRTH, 6, 3,
