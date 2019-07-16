@@ -270,7 +270,7 @@ static void _summon_aide_spell(int cmd, variant *res)
         var_set_string(res, "Summons a friendly monster.");
         break;
     case SPELL_CAST:
-        (void)summon_specific(-1, py, px, (p_ptr->lev * 7 / 4) - 24, 0, PM_FORCE_PET);
+        (void)summon_specific(-1, py, px, (p_ptr->lev * 7 / 5) - 15, 0, PM_FORCE_PET);
         var_set_bool(res, TRUE);
         break;
     default:
