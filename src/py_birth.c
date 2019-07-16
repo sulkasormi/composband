@@ -400,6 +400,7 @@ static int _beginner_races[] = {
   RACE_DUNADAN,
   RACE_HIGH_ELF,
   RACE_HALF_TROLL,
+  RACE_WEREWOLF,
   -1
 };
 
@@ -411,6 +412,7 @@ static int _beginner_classes[] = {
   CLASS_RANGER,
   CLASS_PALADIN,
   CLASS_NINJA,
+  CLASS_WEAPONSMITH,
   -1
 };
 
