@@ -4223,6 +4223,18 @@ void do_cmd_bldg(void)
         msg_print("We don't serve your kind in here!");
         return;
     }
+    else if (((p_ptr->current_r_idx == MON_IMPLORINGTON) || ((prace_is_(RACE_MON_RING)) && (p_ptr->riding) && (m_list[p_ptr->riding].r_idx == MON_IMPLORINGTON)))
+             && (strpos("Cornucopia", bldg->name)))
+    {
+        static bool yritetty = FALSE;
+        if (!yritetty)
+        {
+            msg_print("You look in, spy a large \"Wanted\" poster, and decide not to enter.");
+            yritetty = TRUE;
+        }
+        else msg_print("That would be unwise.");
+        return;
+    }
     else if (p_ptr->inside_battle)
     {
         /* Don't save the arena as saved floor */
