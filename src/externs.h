@@ -186,6 +186,7 @@ extern s16b m_cnt;
 extern s16b hack_m_idx;
 extern s16b hack_m_idx_ii;
 extern s16b warning_hack_hp;
+extern byte poison_warning_hack;
 extern s16b run_count;
 extern int hack_max_m_dam;
 extern int total_friends;
@@ -330,6 +331,7 @@ extern bool alert_trap_detect;    /* Alert when leaving trap detected area */
 extern bool alert_device_gone;  /* Alert when device is destroyed or stolen */
 extern bool alert_insc_gone;    /* Alert when inscribed item is destroyed or stolen */
 extern bool alert_wanted_kill;  /* Alert when killing a wanted monster */
+extern bool alert_poison;       /* Alert on poisoning */
 
 
 /*** Birth Options ***/
