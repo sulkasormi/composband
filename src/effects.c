@@ -1068,6 +1068,8 @@ bool set_poisoned(int v, bool do_dec)
         }
     }
 
+    if ((v < p_ptr->poisoned) && (alert_poison)) poison_warning_hack = MIN(255, (v + 9) / 10);
+
     /* Use the value */
     p_ptr->poisoned = v;
 
