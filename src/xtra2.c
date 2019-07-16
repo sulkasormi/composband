@@ -1188,7 +1188,7 @@ void monster_death(int m_idx, bool drop_item)
          */
         if (!p_ptr->inside_arena && !p_ptr->inside_battle)
         {
-            if (!one_in_(5))
+            if (!one_in_(5) && !equip_find_art(ART_SILVER_HAMMER))
             {
                 int wy = y, wx = x;
                 int attempts = 100;
@@ -2644,7 +2644,7 @@ bool mon_take_hit(int m_idx, int dam, bool *fear, cptr note)
             /* When the player kills a Unique, it stays dead */
             if (r_ptr->flags1 & RF1_UNIQUE)
             {
-                if (m_ptr->r_idx == MON_PHOENIX && one_in_(3))
+                if (m_ptr->r_idx == MON_PHOENIX && one_in_(3) && !equip_find_art(ART_SILVER_HAMMER) /* blame bostock */)
                 {
                     m_ptr->hp = m_ptr->maxhp;
                     msg_print("The Phoenix rises again!");
