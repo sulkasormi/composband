@@ -6,51 +6,105 @@ CONFIG = a_info.txt \
 	d_info.txt \
 	e_info.txt \
 	f_info.txt \
+	help_upd.txt \
 	k_info.txt \
 	m_info.txt \
 	misc.txt \
+	q_acadmy.txt \
+	q_antipaladin.txt \
+	q_apina.txt \
+	q_balrog.txt \
+	q_barracks.txt \
 	q_barrow_downs.txt \
+	q_basilisk.txt \
+	q_bears.txt \
+	q_birds.txt \
+	q_cellar.txt \
 	q_chaos.txt \
+	q_cheap.txt \
 	q_cloning_pits.txt \
+	q_cq1.txt \
 	q_crypt.txt \
+	q_crystal.txt \
+	q_cyclo.txt \
 	q_dark_elves.txt \
+	q_dem_old.txt \
+	q_demonslayer.txt \
+	q_dino.txt \
+	q_djinni.txt \
 	q_doom1.txt \
 	q_doom2.txt \
+	q_doom2c.txt \
+	q_drag_old.txt \
+	q_dragons.txt \
+	q_dragonslayer.txt \
+	q_dwarf.txt \
+	q_eddies.txt \
+	q_embassy.txt \
 	q_eric.txt \
+	q_fairy.txt \
+	q_ghosts.txt \
+	q_giantslayer.txt \
 	q_haunted_house.txt \
+	q_htower.txt \
 	q_info.txt \
+	q_inntrouble.txt \
 	q_killing_fields.txt \
+	q_laboratory.txt \
+	q_lights.txt \
 	q_logrus_master.txt \
+	q_meta.txt \
 	q_microsoft.txt \
 	q_mimics_treasure.txt \
 	q_montsalvat.txt \
+	q_mug.txt \
+	q_mushrooms.txt \
 	q_nature.txt \
 	q_oberon.txt \
 	q_old_castle.txt \
 	q_old_man_willow.txt \
 	q_orcs.txt \
+	q_pit2.txt \
 	q_removed.txt \
 	q_serpent_of_chaos.txt \
 	q_sewer.txt \
-	q_sorcery.txt \
+	q_shipwreck.txt \
+	q_shopkeeper.txt \
+	q_shrine.txt \
+	q_smug.txt \
+	q_snakes.txt \
 	q_sorcerer.txt \
+	q_sorcery.txt \
 	q_spawning_pits.txt \
+	q_spider.txt \
+	q_staff.txt \
 	q_tengu_death_swords.txt \
 	q_thieves.txt \
+	q_tidy.txt \
+	q_troll2.txt \
+	q_trollslayer.txt \
+	q_tunnels.txt \
+	q_undeground.txt \
 	q_vapor2.txt \
 	q_vapor.txt \
 	q_vault.txt \
+	q_volc.txt \
+	q_volc_old.txt \
 	q_wargs.txt \
+	q_worms.txt \
+	q_wtower.txt \
 	r_info.txt \
 	s_info.txt \
+	t_anambar.txt \
 	t_angwil.txt \
 	t_basic.txt \
 	t_info.txt \
 	t_lite.txt \
 	t_morivant.txt \
-	t_outpost.txt \
+	t_outp.txt \
 	t_pref.txt \
-	t_telmora.txt \
+	t_telmo.txt \
+	t_thalos.txt \
 	t_zul.txt \
 	v_info.txt \
 	vaults.txt \
