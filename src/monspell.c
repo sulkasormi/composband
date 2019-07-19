@@ -2637,7 +2637,9 @@ static void _weird_bird_m(void)
 {
     if (one_in_(3) && (_current.flags & MSC_SRC_MONSTER))
     {
-        if (mon_show_msg(_current.mon))
+        if ((_current.mon) && (_current.mon->id == p_ptr->riding))
+            msg_format("%s suddenly flies away!", _current.name);
+        else if (mon_show_msg(_current.mon))
             msg_format("%s suddenly goes out of your sight!", _current.name);
         teleport_away(_current.mon->id, 10, TELEPORT_NONMAGICAL);
         p_ptr->update |= PU_MONSTERS;
