@@ -241,6 +241,9 @@ Display the weights of objects in the inventory and equipment lists, and in stor
 <topic:show_discounts><color:U>Show discounts in object listings</color> <color:D>(show_discounts)</color>
 Display the discount of the object, if any, as part of its inscription. Disabling this option won't remove the object's discount. Rather, this information will no longer be displayed to the player.
 
+<topic:show_power><color:U>Show device power in object listings (if known)</color> <color:D>(show_power)</color>
+Displays details about an object's power (like <color:g>dam 158</color> or <color:U>heal 250</color>) in inventories, allowing you to compare items at a glance.
+
 <topic:show_item_graph><color:U>Show items graphics</color> <color:D>(show_item_graph)</color>
 Displays small icons of the items in your inventory list, equipment list and stores.
 
@@ -304,6 +307,12 @@ If this option is enabled, the list of visible objects (accessible in-game by pr
 <topic:display_skill_num><color:U>Display skills as numbers in the character sheet</color> <color:D>(display_skill_num)</color>
 If this option is on, the character sheet displays the player's skills numerically in addition to the usual verbal description; <color:g>Superb</color> may become <color:g>Superb</color> (82), for example. This format is familiar to players of Composband, where the numerical display is always on.
 
+<topic:reforge_details><color:U>Show statistics before proceeding with a reforge</color> <color:D>(reforge_details)</color>
+This option shows statistics about how good a reforge result is likely to be (and why), gives warnings in case of reforges that look particularly misguided, and allows you to cancel the reforge if the statistics are not to your liking.
+
+<topic:auto_sticky_labels><color:U>Automatically make all power labels sticky</color> <color:D>(auto_sticky_labels)</color>
+With this option on, all powers used through the 'U' key ('O' in the roguelike keyset) will be assigned a permanent and unchanging letter slot, allowing reliable macros and keymaps (and finger memory).
+
 </indent>
 <topic:GamePlay><style:heading>Game Play Options</style>
   <indent>
@@ -335,6 +344,9 @@ Ignore stairs when running.
 
 <topic:find_ignore_doors><color:U>Run through open doors</color> <color:D>(find_ignore_doors)</color>
 Ignore open doors when running.
+
+<topic:find_ignore_veins><color:U>Run past buried treasure</color> <color:D>(find_ignore_veins)</color>
+Ignore treasure veins when running.
 
 <topic:find_cut><color:U>Run past known corners</color> <color:D>(find_cut)</color>
 Cut sharply around known corners when running. This will result in faster running, but may cause you to run into a lurking monster.
@@ -370,7 +382,10 @@ This option causes you to be disturbed by the map scrolling, as it does automati
 This option causes you to be disturbed whenever the player state changes, including changes in hunger, resistance, confusion, etc.
 
 <topic:disturb_minor><color:U>Disturb whenever boring things happen</color> <color:D>(disturb_minor)</color>
-This option causes you to be disturbed by various bring things, including monsters bashing down doors, inventory feelings, and beginning to run out of fuel.
+This option causes you to be disturbed by various boring things, including monsters bashing down doors, inventory feelings, and beginning to run out of fuel.
+
+<topic:town_no_disturb><color:U>Never disturb when a town monster moves</color> <color:D>(town_no_disturb)</color>
+With this option on, non-attacking moves by monsters native to towns (mercenaries, drunks, street urchins etc.) will never disturb you.
 
 <topic:ring_bell><color:U>Audible bell (on errors, etc)</color> <color:D>(ring_bell)</color>
 Attempt to make a bell noise when various errors occur.
@@ -379,7 +394,20 @@ Attempt to make a bell noise when various errors occur.
 This option causes you to be disturbed when the player is running out of trap-detected area.
 
 <topic:alert_trap_detect><color:U>Alert when leaving trap detected area</color> <color:D>(alert_trap_detect)</color>
-This option alerts you with message when the player is moving out of the trap-detected area.
+This option alerts you with a message when the player is moving out of the trap-detected area.
+
+<topic:alert_device_gone><color:U>Alert when carried device is destroyed or stolen</color> <color:D>(alert_device_gone)</color>
+This option forces a <color:B>-more-</color> prompt whenever any wand, rod or staff in your inventory is destroyed or stolen.
+
+<topic:alert_insc_gone><color:U>Alert when inscribed item is destroyed or stolen</color> <color:D>(alert_insc_gone)</color>
+This option forces a <color:B>-more-</color> prompt whenever any inscribed item in your inventory is destroyed or stolen.
+
+<topic:alert_wanted_kill><color:U>Alert on killing wanted uniques</color> <color:D>(alert_wanted_kill)</color>
+This option forces a <color:B>-more-</color> prompt when a unique with a price on its head is killed.
+
+<topic:alert_poison><color:U>Alert on dangerously high poison counter</color> <color:D>(alert_poison)</color>
+This option alerts you with a message before your move if your poison counter exceeds your current HP, 80% of your maximum HP, or 499 points, whichever is lowest. (Subsequent warnings for the same instance of poisoning will be displayed only if you are at immediate risk of dying from poison.)
+
 </indent>
 <topic:AutoDestroyer><style:heading>Easy Auto-Destroyer Options</style>
   <indent>
@@ -409,6 +437,9 @@ In addition, the matching rule will be displayed when inspecting objects. For ex
 </style>
 <topic:no_mogaminator><color:U>Never apply the Mogaminator</color> <color:D>(no_mogaminator)</color>
 This option deactivates the Mogaminator. (It is redundant if the Mogaminator was never activated in the first place.)
+
+<topic:delay_autopick><color:U>Allow manual pickup before applying auto-pickup</color> <color:D>(delay_autopick)</color>
+With this option on, any command that allows you to pick up items manually will give the manual pickup priority over auto-pickup. (With the option off, this only happens if you are picking up items from the square you were already on.)
 
 <topic:leave_worth><color:U>Auto-destroyer leaves known worthy items</color> <color:D>(leave_worth)</color>
 This option protects known objects that can be sold in stores from auto-destruction by The Easy Destroyer.
