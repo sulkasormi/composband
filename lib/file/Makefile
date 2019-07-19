@@ -5,10 +5,16 @@ DATA = a_cursed.txt \
 a_high.txt \
 a_low.txt \
 a_med.txt \
+aa_med.txt \
+ab_med.txt \
+ac_med.txt \
+ag_med.txt \
+ah_med.txt \
 amulet_cursed.txt \
 amulet_high.txt \
 amulet_low.txt \
 amulet_med.txt \
+as_med.txt \
 book-0_jp.txt \
 chainswd.txt \
 credits.txt \
