@@ -3347,6 +3347,7 @@ static cptr do_chaos_spell(int spell, int mode)
                 }
             }
             set_mimic(50 + randint1(50), which, FALSE);
+            if (p_ptr->mimic_form == MIMIC_NONE) msg_print("There is no effect.");
         }
         break;
 
@@ -4005,6 +4006,7 @@ static cptr do_death_spell(int spell, int mode)
             if (cast)
             {
                 set_mimic(base + randint1(base), MIMIC_VAMPIRE, FALSE);
+                if (p_ptr->mimic_form == MIMIC_NONE) msg_print("There is no effect.");
             }
         }
         break;
@@ -6301,6 +6303,7 @@ static cptr do_daemon_spell(int spell, int mode)
             if (cast)
             {
                 set_mimic(base + randint1(base), MIMIC_DEMON, FALSE);
+                if (p_ptr->mimic_form == MIMIC_NONE) msg_print("There is no effect.");
             }
         }
         break;
@@ -6479,6 +6482,7 @@ static cptr do_daemon_spell(int spell, int mode)
             if (cast)
             {
                 set_mimic(base + randint1(base), MIMIC_DEMON_LORD, FALSE);
+                if (p_ptr->mimic_form == MIMIC_NONE) msg_print("There is no effect.");
             }
         }
         break;
