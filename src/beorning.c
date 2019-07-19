@@ -94,7 +94,7 @@ static void _beorning_equip_on_change_form(void)
     else p_ptr->shero = 0; /* Don't be berserk for 1 more turn... */
 
     p_ptr->update |= PU_BONUS | PU_TORCH | PU_MANA | PU_HP;
-    p_ptr->redraw |= PR_EQUIPPY | PR_EFFECTS;
+    p_ptr->redraw |= PR_EQUIPPY | PR_EFFECTS | PR_STATUS;
     p_ptr->window |= PW_INVEN | PW_EQUIP;
 }
 
