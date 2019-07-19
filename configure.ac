@@ -1,5 +1,5 @@
 dnl Process this file with autoconf to produce a configure script.
-AC_INIT(FrogComposband, 7.0.cloudberry, http://angband.oook.cz)
+AC_INIT(FrogComposband, 7.1.chocolate, http://angband.oook.cz)
 AC_CONFIG_SRCDIR(src)
 
 AC_CANONICAL_HOST
