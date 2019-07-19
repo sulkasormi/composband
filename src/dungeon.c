@@ -2677,7 +2677,7 @@ static void update_dungeon_feeling(void)
     delay = delay * (625 - virtue_current(VIRTUE_ENLIGHTENMENT)) / 625;
 
      /* Not yet felt anything */
-    if (game_turn < p_ptr->feeling_turn + delay && !cheat_xtra) return;
+    if ((game_turn < p_ptr->feeling_turn + delay) && (!cheat_xtra)) return;
 
     if (!quests_allow_feeling()) return;
 
