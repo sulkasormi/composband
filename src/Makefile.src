@@ -5,7 +5,7 @@
 # across a range of different makefiles, to cut down on maintenance.
 #
 
-VERSION = 7.1.toffee
+VERSION = 7.1.chocolate
 COPYRIGHT = (c) 1995-2019 Angband contributors
 PROGNAME = frogcomposband
 
