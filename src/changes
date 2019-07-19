@@ -1,3 +1,261 @@
+Changes in FrogComposband 7.1.chocolate:
+
+* Added a new player class (Disciples; which are essentially three classes
+rolled in one, because the three subclasses don't have much in common)
+
+* Made quest lines less predictable (many quests now have an alternative
+version that can take the place of the original; some of the substitutes
+are simply different versions of the same basic quest, but most are
+connected only through similar rewards and themes, and a few are
+completely unrelated)
+
+* Added two new player races (Tomte and Beorning), one new player monster race
+(Pumpkin) and three new personalities (Fragile, Sneaky and Noble; thanks to
+emulord for suggesting Noble)
+
+* Added many new random artifact names; also, random body armour, shield,
+glove, boot, cloak and helm artifacts now sometimes pull their names from
+a sub-list specific to their slot
+
+* Added/re-added several options related to level generation
+- option to modify the level size algorithm
+  (can take any of 13 values, from "always tiny" to "always huge", allowing
+  all players to pick their preferred level size and to experiment)
+- option to have all rooms generate as vaults
+  (greater vaults unless one of the two smallest level size options is used)
+- option to increase monster density on small levels to match the density in
+  old versions of PosChengband
+- option to allow small levels even in dungeons with the "big" flag
+  (with the exception of Arena)
+- option to sometimes reshape levels with an extreme width-to-height ratio
+
+* Added "thrall mode" option (player starts on level 90, with a few extra
+items to make survival possible; inspired by FAangband and other variants
+with similar options)
+
+* Some key consumables are now guaranteed to generate in shops at birth
+
+* Plugged holes in input flushing after casting/device failures
+
+* Orc shamans crashed on casting attempts due to a missing magic descriptor
+(a rage-mage hack I added shortly before the 7.1.toffee release made this
+bug a lot more serious); this has been fixed (thanks to aban for reporting)
+
+* Monsters seen through fuzzy telepathy still appeared as "Monster" on the
+tombstone; this has been fixed
+
+* Level feelings did not work properly with munchkin pseudo-ID; this has
+been fixed
+
+* Fixed an old PosChengband bug that allowed non-Burglary realms to learn
+the Burglary realm during the game (thanks to Tiltorax for reporting)
+
+* Bowmasters' Readied Shot caused strange and undesirable results when
+triggered by an exploding monster; this has been fixed
+(thanks to Aav for reporting)
+
+* Questors were not marked correctly in a random quest for chameleons;
+this has hopefully been fixed
+
+* Archaeologists sometimes inappropriately received the "You feel you are
+leaving something special behind" message (thanks to Draghmar for reporting)
+
+* Deaths from unusual sources like traps and exploding mirrors were not
+listed correctly (thanks to bostock for reporting)
+
+* Spell points were sometimes temporarily displayed incorrectly after a spell
+was cancelled; this should be fixed now (thanks to bostock for prompting)
+
+* If a unique monster's clone was killed in the Monster Arena, the unique
+itself was erroneously marked dead; this has been fixed
+(thanks to the player who reported this - unfortunately I've forgotten who it
+was)
+
+* With a quest for non-unique monsters, summoning a pet of the target species
+counted as a kill towards the quest's goal; this has been fixed
+(thanks to bostock for reporting)
+
+* Some monster spells were inappropriately inaccessible on Possessors
+because they required mana but the monster's pseudo-class had no mana;
+this has been fixed (thanks to clouded for reporting)
+
+* For players who had permanently race-polymorphed, the character sheet
+sometimes listed inaccurate previous races; this has been fixed
+(thanks to MITZE and Thraalbee for reporting)
+
+* Fixed a bug reported by Hugo (picking up items only sometimes consumed time)
+by making picking up items never consume time
+
+* Directions could be given for collapsed dungeon entrances; this has been
+fixed (thanks to bostock for reporting)
+
+* Artifact Feanorian Lamps were described as giving light with radius 3, but
+actually had radius 2; fixed by buffing the actual radius
+(thanks to MITZE for reporting)
+
+* Quickwalking characters with a low poison counter could walk indefinitely
+without incurring any poison damage; this has been fixed
+(thanks to Oneiron for reporting)
+
+* Game-initial pets for Cavalry and Beastmasters were not placed properly
+due to outdated assumptions in the code; this has been fixed
+(thanks to Mitternatch for reporting)
+
+* Fixed several crashes/infinite loops with Berserkers getting stat-drained
+(thanks to SethaWetha and Marty for reporting)
+
+* Travelling ignored confusion; this has been fixed
+(thanks to bostock for reporting)
+
+* Autoget could get stuck in a loop trying to destroy artifacts; this has
+been fixed (thanks to bostock for reporting)
+
+* Fixed duplication of displayed dragon realm stat modifiers during character
+creation (thanks to TauzentBlitz for reporting)
+
+* Alchemists who died with a heroism buff on could have that buff carry over
+to their next incarnation; this has been fixed (thanks to Wolpertinger for
+reporting)
+
+* It was possible to die with positive HP if the player was posthumously cured
+by a chaos patron; this can no longer happen (thanks to Hugo for reporting)
+
+* Recall dungeons were improperly initialized at birth, allowing no-wilderness
+characters to recall to Warrens in some circumstances; this has been fixed
+(thanks to Hugo for prompting me to discover this bug)
+
+* Hex auras and Bard songs processed immediately on entering a new level,
+allowing players to hurt following monsters repeatedly with no retaliation;
+this has been fixed (thanks to Gwarl for reporting)
+
+* Some unusual situations (at least in Labyrinth) caused the game to plot
+travel routes through undiscovered secret doors; this has been fixed
+
+* Entrance guardians were not marked dead if killed by other monsters
+(including pets); this has been fixed
+
+* Item curse memory was not wiped for some unusual methods of uncursing,
+causing non-existent curses to be displayed on inspection; this has been fixed
+
+* Character dumps through the high score list had weird turncount indicators;
+this has been fixed (though not retroactively, so the weirdness will persist
+for retired characters)
+
+* Fixed a bug that sometimes allowed characters with chaos patrons to select
+more than one stat-up on reaching a level divisible by five
+
+* Fixed missing burden checks after destroying items or equipping ammo
+straight from the floor
+
+* If multiple chests were piled on the same square, only one of them was
+accessible to the "disarm" and "open" commands; this has been fixed
+
+* Hopefully fixed bug with Politicians sometimes randomly crashing at game
+start (I'm not 100% sure about this; if it still happens, please report)
+
+* Tweaked Nibelungs (they now have different bonuses, slightly lower life
+rating and melee, and a lower XP modifier)
+
+* Skillmasters are no longer allowed to pick the Weapon Versatility demigod
+talent (they received no benefits from it anyway, so this just protects them
+from picking a useless talent)
+
+* Werewolf psions can no longer change shape with Graft Weapon active (thanks
+to MITZE for suggesting). Also, using Graft Weapon requires an actual weapon
+
+* Doppelganger shape changes no longer reset visuals
+(thanks to clouded for suggesting this)
+
+* Mimics and Possessors no longer get permanently gender-swapped by
+temporarily mimicking/possessing a monster of the opposite sex
+(thanks to Oneiron for suggesting this)
+
+* Pets and friendly monsters no longer receive XP for killing other pets or
+friendly monsters
+
+* Various class-specific attacks that cancel if an empty square is attacked
+now always consume time if the player is blind (preventing the player from
+attacking each square in turn until he finds one with a monster in it)
+
+* Being immune to charge draining now also protects from food draining
+
+* Characters who die during the postgame no longer lose their Winner status
+
+* Nerfed recharging somewhat
+- Staves of Restore Mana can no longer be recharged with spells or devices
+- Blood-Mage damage from recharging spells now ignores invulnerability
+- Failed attempts to recharge a device from SP/HP now empty the target device
+  completely
+
+* Politicians' probing/background check now also displays the probability of
+successfully charming a monster with the current buffs active
+
+* Reduced Hezrou and Barbazu group sizes a bit
+
+* Slightly buffed player Filthy Rags
+
+* Added new command (H in the regular keyset, ^E in the roguelike keyset)
+for travelling to the nearest unidentified wanted item
+
+* The game now allows easy switching of ring fingers, and automatically
+suggests doing so if it detects a combat/weaponmastery ring and a non-combat
+ring being equipped the wrong way around. The easy switch can be triggered
+either from the automatic prompt or by pressing 'W' (regular keyset only),
+and costs no time
+
+* Potions of Restoring now also restore life levels
+
+* Tweaked Duelists a bit
+- the damage numbers on the character sheet are now more indicative
+- very weak monsters are no longer automatically challenged
+- retaliating against a monster no longer automatically challenges
+- slightly reduced top-end damage from Greater Wounding
+- Phase Charge is now slightly more expensive
+- removed the Nemesis effect
+- the weight limit formula is now more permissive in the early game and less
+  permissive in the late game
+
+* Finishing Heaven is now a bit more interesting (adapted from Frogspawn)
+(thanks to ster for testplaying and feedback)
+
+* Tweaked Rune-Knights a bit
+
+* Improved travel routing in areas with deep water and/or lava
+
+* Increased the tunnelling bonus on shovels and picks
+
+* Added a text display option to show device power in inventories if known
+(copied from Composband)
+
+* Added a disturbance option to alert when a wanted unique is killed
+(thanks to Bucephalus for suggesting)
+
+* Added a disturbance option (on by default) to alert when the poison counter
+is dangerously high (thanks to ster for suggesting)
+
+* Equipping an item with Auto-Identify now identifies all unidentified items
+in your inventory (including itself)
+
+* Allowed inscribing an item with '!1' to notify when it has 1 charge, and
+'!!1' to notify when it's either fully recharged or has 1 charge
+(thanks to wobbly for suggesting)
+
+* Allowed use-ID'ing fear vulnerability on equipment
+(thanks to wobbly for suggesting)
+
+* Reserving cheap objects is no longer hideously expensive
+
+* Tunnelling attempts are no longer automatically repeated if the attempt is
+completely futile
+
+* Opening doors no longer disturbs travelling
+
+* Updated the in-game FAQ
+
+* Various minor tweaks and code improvements
+
+-------------------------------------------------------
+
 Changes in FrogComposband 7.1.toffee:
 
 * Random ring and amulet artifacts can now generate occasionally
@@ -1470,14 +1728,14 @@ scale mails (but not quite to the same extent as in ComPosband 7.0.4)
 
 To do:
 
-* Implement purple-mages (purple disciples?)
+* Add new player races, monsters, etc.
 
-* Implement player dinosaurs
+* Add new curses
 
-* Add new races and personalities
+* Further limit approaches based on scumming shops for infinite healing
 
-* Partially randomize quest lines with new quests sometimes taking the
-place of old ones
+* Try to reimplement damage display for innate attacks on possessors
+(this will be a major pain...)
 
 * See if it's possible to reasonably re-add blue-mages
 
@@ -1492,3 +1750,8 @@ completed on the pink horror's death, even though blue horrors will appear
 
 * The item inspection menu sometimes doesn't offer floor items as an option
 even when there is a floor item that could be inspected
+
+* Dark squares previously illuminated by a light-carrying monster sometimes
+remain inappropriately lit
+
+* Items and stairs can co-exist on a square in some very unusual situations
