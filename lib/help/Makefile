@@ -25,6 +25,7 @@ defend_contents.txt \
 defend.txt \
 Demigods.txt \
 Demons.txt \
+Disciples.txt \
 Draconians.txt \
 DragonRealms.txt \
 Dragons.txt \
@@ -55,6 +56,7 @@ Races.txt \
 rings.txt \
 Runeknights.txt \
 Skillmasters.txt \
+small_lv.txt \
 start.txt \
 tang_contents.txt \
 tang.txt \
