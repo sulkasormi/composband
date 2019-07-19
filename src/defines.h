@@ -20,7 +20,7 @@
 #define VER_MINOR 1
 #define VER_PATCH "chocolate"
 #define VER_EXTRA 1
-#define VERSION_IS_DEVELOPMENT (TRUE)
+#define VERSION_IS_DEVELOPMENT (FALSE)
 
 #define GAME_MODE_BEGINNER  0
 #define GAME_MODE_NORMAL    1
