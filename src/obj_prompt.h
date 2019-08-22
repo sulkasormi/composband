@@ -23,7 +23,7 @@ enum {
 };
 
 /* Parameters to obj_prompt */
-#define MAX_LOC 5
+#define MAX_LOC 7
 struct obj_prompt_s
 {
     /* input */
