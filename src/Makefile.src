@@ -41,8 +41,8 @@ ANGFILES = \
     cavalry.o cave.o chaos_warrior.o classes.o cmd1.o cmd2.o cmd3.o cmd4.o cmd5.o cmd6.o combat.o \
     corny.o demigod.o devicemaster.o devices.o disciple.o do-spell.o doppelganger.o duelist.o dungeon.o \
     ego.o effects.o equip.o fear.o files.o flavor.o floors.o force_trainer.o generate.o gf.o gray_mage.o \
-    grid.o hex.o high_mage.o hissatsu.o home.o init1.o init2.o int-map.o inv.o karrot.o lawyer.o load.o mage.o \
-    magic_eater.o mauler.o melee1.o melee2.o menu.o message.o mindcrafter.o mirror_master.o \
+    grid.o hex.o high_mage.o hissatsu.o home.o igor.o init1.o init2.o int-map.o inv.o karrot.o lawyer.o \
+    load.o mage.o magic_eater.o mauler.o melee1.o melee2.o menu.o message.o mindcrafter.o mirror_master.o \
     mon.o mon_info.o monk.o monspell.o monster.o monster1.o monster2.o mspells1.o mspells2.o mut.o \
     mut_a.o mystic.o necromancer.o ninja.o ninjalaw.o obj.o obj_info.o obj_prompt.o \
 	object1.o object2.o object3.o obj_kind.o pack.o paladin.o personality.o \
