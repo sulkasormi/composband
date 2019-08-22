@@ -18,6 +18,17 @@ void _obj_prompt_add_race_packs(obj_prompt_ptr prompt)
     race_t *race_ptr = get_race();
     if (!(race_ptr->bonus_pack)) return;
     if (prompt->where[MAX_LOC - 1]) return; /* No room for another pack */
+    if ((allow_special3_hack) && (race_ptr->bonus_pack2))
+    {
+        for (i = 0; i < MAX_LOC; i++)
+        {
+            if (!prompt->where[i])
+            {
+                prompt->where[i] = INV_SPECIAL3;
+                break;
+            }
+        }
+    }
     for (i = 0; i < MAX_LOC; i++)
     {
         if (!prompt->where[i]) 
@@ -47,6 +58,13 @@ void _obj_prompt_add_class_packs(obj_prompt_ptr prompt)
 inv_ptr _racial_pack_filter(obj_p p)
 {
     inv_ptr race_inv = get_race()->bonus_pack;
+    if (!race_inv) return NULL;
+    return inv_filter(race_inv, p);
+}
+
+inv_ptr _racial2_pack_filter(obj_p p)
+{
+    inv_ptr race_inv = get_race()->bonus_pack2;
     if (!race_inv) return NULL;
     return inv_filter(race_inv, p);
 }
@@ -266,6 +284,9 @@ static void _context_make(obj_prompt_context_ptr context)
             break;
         case INV_SPECIAL2:
             inv = _class_pack_filter(filter);
+            break;
+        case INV_SPECIAL3:
+            inv = _racial2_pack_filter(filter);
             break;
         }
         if (inv)
