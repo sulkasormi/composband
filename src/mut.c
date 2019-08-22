@@ -159,6 +159,7 @@ static mutation_info _mutations[MAX_MUTATIONS] =
     {MUT_RATING_GOOD,                    0,             0, 0, {0,  0,   0, vortex_control_mut}},
 
     {MUT_RATING_AWFUL,                   0,             0, 0, {0,  0,   0, easy_tiring_II_mut}},
+    {MUT_RATING_BAD,                     0,             0, 4, {0,  0,   0, limp_mut}},
 
 };
 
@@ -196,6 +197,18 @@ int _mut_prob_gain(int i)
 
     case MUT_GOOD_LUCK:
         if (mut_locked(MUT_BAD_LUCK))
+            return 0;
+        break;
+
+    case MUT_BEAK:
+    case MUT_TRUNK:
+    case MUT_XTRA_LEGS:
+        if (p_ptr->prace == RACE_IGOR)
+            return 0;
+        break;
+
+    case MUT_BLINK:
+        if ((p_ptr->prace == RACE_IGOR) || (prace_is_(RACE_GNOME)))
             return 0;
         break;
 
