@@ -6,9 +6,9 @@
 #define MON_LEPRECHAUN_FANATIC 700
 
 static cptr _desc =
-    "Leprechauns are small, mischevous creatures, always scheming for gold. "
+    "Leprechauns are small, mischievous creatures, always scheming for gold. "
     "They are weak, but quick and stealthy. For combat, they prefer not to use "
-    "weapons at all. Rather, by keeping at least one hand free, they may pilfer "
+    "weapons at all. Rather, by keeping their weapon hand free, they may pilfer "
     "objects or gold from their foes and flee to safety, all in a single action. However, "
     "they are capable of fighting with normal weapons should the need arise, but "
     "one seldom hears of leprechauns inspiring fear in combat!\n \n"
