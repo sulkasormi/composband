@@ -376,6 +376,7 @@ void virtue_init(void)
         p_ptr->vir_types[i++] = VIRTUE_DILIGENCE;
         break;
     case RACE_HUMAN: case RACE_DEMIGOD: case RACE_TONBERRY: case RACE_DUNADAN:
+    case RACE_IGOR:
         p_ptr->vir_types[i++] = VIRTUE_INDIVIDUALISM;
         break;
     case RACE_SPRITE: case RACE_ENT:
