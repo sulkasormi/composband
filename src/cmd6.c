@@ -1523,9 +1523,6 @@ static void _do_capture_ball(object_type *o_ptr)
  * Activate a wielded object. Wielded objects never stack.
  * And even if they did, activatable objects never stack.
  *
- * Currently, only (some) artifacts, and Dragon Scale Mail, can be activated.
- * But one could, for example, easily make an activatable "Ring of Plasma".
- *
  * Note that it always takes a turn to activate an artifact, even if
  * the user hits "escape" at the "direction" prompt.
  */
@@ -1604,6 +1601,7 @@ void do_cmd_activate(void)
     prompt.error = "You have nothing to activate.";
     prompt.filter = _activate_p;
     prompt.where[0] = INV_EQUIP;
+    if (get_race()->bonus_pack2) prompt.where[1] = INV_SPECIAL3;
     prompt.flags = INV_SHOW_FAIL_RATES;
 
     obj_prompt(&prompt);
