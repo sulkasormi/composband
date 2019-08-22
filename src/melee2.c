@@ -1623,7 +1623,7 @@ bool mon_attack_mon(int m_idx, int t_idx)
     monster_desc(t_name, t_ptr, MD_PRON_VISIBLE);
 
     /* Scan through all four blows */
-    for (ap_cnt = 0; ap_cnt < 4; ap_cnt++)
+    for (ap_cnt = 0; ap_cnt < MAX_MON_BLOWS; ap_cnt++)
     {
         int method;
         int power = 0;
