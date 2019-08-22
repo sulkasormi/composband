@@ -198,10 +198,12 @@ extern byte summon_pantheon_hack;
 extern bool quest_reward_drop_hack;
 extern bool very_nice_summon_hack;
 extern bool predictable_energy_hack;
-extern bool delay_autopick_hack;
+extern byte delay_autopick_hack;
+extern bool obj_list_autopick_hack;
 extern bool monsters_damaged_hack;
 extern bool shop_exit_hack;
 extern bool no_karrot_hack;
+extern bool allow_special3_hack;
 extern byte troika_spell_hack;
 extern byte spell_problem;
 
@@ -391,6 +393,7 @@ extern bool leave_wanted;    /* Auto-destroyer leaves wanted corpses */
 extern bool leave_corpse;    /* Auto-destroyer leaves corpses and skeletons */
 extern bool leave_junk;    /* Auto-destroyer leaves junk */
 extern bool leave_special;    /* Auto-destroyer leaves items your race/class needs */
+extern bool leave_mogaminator; /* Read "destroy" as "leave" */
 extern bool no_mogaminator;
 
 extern bool cheat_peek;
@@ -2332,6 +2335,8 @@ extern race_t *half_troll_get_race(void);
 extern race_t *high_elf_get_race(void);
 extern race_t *hobbit_get_race(void);
 extern race_t *human_get_race(void);
+extern race_t *igor_get_race(void);
+extern void    igor_body_bonuses(void);
 extern race_t *imp_get_race(void);
 extern race_t *klackon_get_race(void);
 extern race_t *kobold_get_race(void);
