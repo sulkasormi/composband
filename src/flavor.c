@@ -1155,14 +1155,52 @@ void object_desc(char *buf, object_type *o_ptr, u32b mode)
         /* Corpses */
         case TV_CORPSE:
         {
-            monster_race *r_ptr = &r_info[o_ptr->pval];
-
-            modstr = r_name + r_ptr->name;
-
-            if (r_ptr->flags1 & RF1_UNIQUE)
-                basenm = "& % of #";
+            if (o_ptr->sval >= SV_BODY_HEAD)
+            {
+                int luku = (o_ptr->sval == SV_BODY_EARS) ? o_ptr->pval : o_ptr->xtra4;
+                if ((luku) && (luku < max_r_idx))
+                {
+                    monster_race *r_ptr = &r_info[luku];
+                    if (r_ptr->name)
+                    {
+                        if (r_ptr->flags1 & RF1_UNIQUE)
+                        {
+                            modstr = r_name + r_ptr->name;
+                            basenm = "The % of #";
+                        }
+                        else
+                        {
+                            modstr = r_name + r_ptr->name;
+                            if (is_a_vowel(modstr[0])) basenm = "the % of an #";
+                            else basenm = "the % of a #";
+                        }
+                    }
+                    else
+                    {
+                        modstr = "a Software bug";
+                        basenm = "the % of #";
+                    }
+                }
+                else
+                {
+                    modstr = "an Igor";
+                    basenm = "the % of #";
+                }
+                /* Body parts cannot be piled, so it's usually safe to use the
+                 * article "the"... but it is possible to have 0 of them */
+                if (!number) basenm += 4;
+            }
             else
-                basenm = "& # %";
+            {
+                monster_race *r_ptr = &r_info[o_ptr->pval];
+
+                modstr = r_name + r_ptr->name;
+
+                if (r_ptr->flags1 & RF1_UNIQUE)
+                    basenm = "& % of #";
+                else
+                    basenm = "& # %";
+            }
             break;
         }
 
@@ -1606,7 +1644,7 @@ void object_desc(char *buf, object_type *o_ptr, u32b mode)
         else if (*s == '~')
         {
             /* Add a plural if needed */
-            if (!(mode & OD_NO_PLURAL) && (number != 1))
+            if (!(mode & OD_NO_PLURAL) && ((number != 1) || (have_flag(o_ptr->flags, OF_PLURAL))))
             {
                 char k = t[-1];
 
@@ -2172,6 +2210,16 @@ void object_desc(char *buf, object_type *o_ptr, u32b mode)
             else
                 sprintf(buf, "A:%s", do_effect(&e, SPELL_NAME, 0));
         }
+        strcat(tmp_val2, buf);
+    }
+
+    if ((o_ptr->tval == TV_CORPSE) && (o_ptr->xtra5))
+    {
+        gf_info_ptr gf = gf_lookup(o_ptr->xtra5);
+        char buf[255];
+        sprintf(buf, "%sU:Breathe %s%s", (mode & OD_COLOR_CODED) ? "<color:G>" : "", gf ? gf->name : "Buggy", (mode & OD_COLOR_CODED) ? "</color>" : "");
+        if (strlen(tmp_val2) > 0)
+            strcat(tmp_val2, " ");
         strcat(tmp_val2, buf);
     }
 
