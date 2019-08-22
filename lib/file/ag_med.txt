@@ -35,6 +35,7 @@ of Dr. Strangelove
 of Gorgoroth
 of the Lepus
 'Devil's Fist'
+'Millennium Hand'
 
 N:14:BIAS_NECROMANTIC
 of Tselakus
@@ -96,3 +97,4 @@ of Rejection
 'Mumak Punch'
 'Glory of Morivant'
 'Option'
+'Second Hand'
