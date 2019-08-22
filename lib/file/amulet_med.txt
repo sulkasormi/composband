@@ -70,3 +70,5 @@ of Gromit
 'Placebo'
 of Cassima
 of Tamir
+of Eilonwy
+of Perditax
