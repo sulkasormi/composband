@@ -2512,6 +2512,9 @@ option_type option_info[] =
     { &no_mogaminator,              FALSE, OPT_PAGE_AUTODESTROY, 7, 11,
     "no_mogaminator",               "Never apply the Mogaminator" },
 
+    { &leave_mogaminator,           FALSE, OPT_PAGE_AUTODESTROY, 7, 12,
+    "leave_mogaminator",            "Leave items the Mogaminator wants to destroy" },
+
     { &delay_autopick,              FALSE, OPT_PAGE_AUTODESTROY, 1, 9,
     "delay_autopick",               "Allow manual pickup before applying auto-pickup" },
 
