@@ -112,7 +112,7 @@ enum _keyword_e {
     FLG_CORPSES,
     FLG_SKELETONS,
 
-    FLG_MAX,
+    FLG_MAX, /* watch out for AUTOPICK_FLAG_SIZE */
 };
 
 #define FLG_ADJECTIVE_BEGIN     FLG_ALL
@@ -1494,6 +1494,10 @@ static bool is_autopick_aux(object_type *o_ptr, autopick_type *entry, cptr o_nam
                 is_special = TRUE;
             }
         }
+        if (p_ptr->prace == RACE_IGOR)
+        {
+            if ((o_ptr->tval == TV_CORPSE) && (o_ptr->sval >= SV_CORPSE)) is_special = TRUE;
+        }
         if (p_ptr->pclass == CLASS_ARCHER)
         {
             if (o_ptr->tval == TV_SKELETON ||
@@ -1951,6 +1955,26 @@ int is_autopick(object_type *o_ptr)
     {
         autopick_type *entry = &autopick_list[i];
 
+        /* Hack - ignore the entry "items" if obj_list_autopick_hack is on */
+        if ((obj_list_autopick_hack) && (entry)  && (entry->action == (DO_AUTOPICK | DO_DISPLAY)) &&
+            ((!entry->name) || (!entry->name[0])) &&
+            (!entry->insc) && (!entry->level) && (!entry->dice) && (!entry->weight) &&
+            (!entry->charges) && (!entry->value) && (!entry->bonus))
+        {
+            u32b cmp_liput[AUTOPICK_FLAG_SIZE] = {0};
+            int ii;
+            bool notsame = FALSE;
+            cmp_liput[FLG_ITEMS / 32] |= (1L << (FLG_ITEMS % 32));
+            for (ii = 0; ii < AUTOPICK_FLAG_SIZE; ii++)
+            {
+                if (cmp_liput[ii] != entry->flag[ii])
+                {
+                    notsame = TRUE;
+                    break;
+                }
+            }
+            if (!notsame) continue;
+        }
         if (is_autopick_aux(o_ptr, entry, o_name))
             return i;
     }
@@ -2032,6 +2056,10 @@ static bool is_opt_confirm_destroy(object_type *o_ptr)
         {
             return FALSE;
         }
+        if ((p_ptr->prace == RACE_IGOR) && (o_ptr->tval == TV_CORPSE) && (o_ptr->sval != SV_SKELETON))
+        {
+            return FALSE;
+        }
         if (p_ptr->pclass == CLASS_ARCHER)
         {
             if (o_ptr->tval == TV_SKELETON ||
@@ -2099,12 +2127,12 @@ static void auto_destroy_obj(object_type *o_ptr, int autopick_idx)
     if (is_opt_confirm_destroy(o_ptr)) destroy = TRUE;
 
     /* Protected by auto-picker (2nd priotity) */
-    if (autopick_idx >= 0 &&
-        !(autopick_list[autopick_idx].action & DO_AUTODESTROY))
+    if ((!no_mogaminator) && (autopick_idx >= 0) &&
+        (!(autopick_list[autopick_idx].action & DO_AUTODESTROY)))
         destroy = FALSE;
 
     /* Auto-destroyer works only when !always_pickup */
-    if (!always_pickup)
+    if ((!always_pickup) && (!no_mogaminator) && (!leave_mogaminator))
     {
         /* Auto-picker/destroyer (1st priority) */
         if (autopick_idx >= 0 &&
@@ -2115,7 +2143,7 @@ static void auto_destroy_obj(object_type *o_ptr, int autopick_idx)
     /* Not to be destroyed */
     if (!destroy)
     {
-        if (destroy_debug && autopick_idx >= 0 && (autopick_list[autopick_idx].action & DONT_AUTOPICK))
+        if (destroy_debug && !no_mogaminator && autopick_idx >= 0 && (autopick_list[autopick_idx].action & DONT_AUTOPICK))
             msg_autopick(autopick_idx, "Leave");
         return;
     }
@@ -2286,8 +2314,17 @@ static void _get_obj(obj_ptr obj)
         equip_learn_flag(OF_LORE1);
     }
 
-    if (no_mogaminator) return;
     if ((!obj) || (!obj->k_idx)) return;
+
+    if (no_mogaminator)
+    {
+        if ((destroy_items) && (obj->loc.where != INV_EQUIP))
+        {
+            auto_destroy_obj(obj, -1);
+            obj_release(obj, OBJ_RELEASE_QUIET);
+        }
+        return;
+    }
 
     idx = is_autopick(obj);
 
