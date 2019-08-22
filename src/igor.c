@@ -120,7 +120,7 @@ static bool _igor_carry(object_type *o_ptr)
 {
     slot_t slot = _igor_object_body_slot(o_ptr);
     object_type *ulos;
-//    msg_format("Sopiva paikka: %d", slot);
+    msg_format("Sopiva paikka: %d", slot);
     if ((slot < 1) || (slot > _IB_MAX_ACTIVE)) return FALSE;
     ulos = inv_obj(_igor_body, slot);
     if ((ulos) && (ulos->k_idx))
