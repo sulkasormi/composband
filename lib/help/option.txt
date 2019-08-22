@@ -438,6 +438,9 @@ In addition, the matching rule will be displayed when inspecting objects. For ex
 <topic:no_mogaminator><color:U>Never apply the Mogaminator</color> <color:D>(no_mogaminator)</color>
 This option deactivates the Mogaminator. (It is redundant if the Mogaminator was never activated in the first place.)
 
+<topic:leave_mogaminator><color:U>Leave items the Mogaminator wants to destroy</color> <color:D>(leave_mogaminator)</color>
+With this option on, the Mogaminator never destroys items (the easy auto-destroyer can still destroy items), but items the Mogaminator wants to destroy are not automatically picked up on walkover even with the <color:keyword>always_pickup</color> option on.
+
 <topic:delay_autopick><color:U>Allow manual pickup before applying auto-pickup</color> <color:D>(delay_autopick)</color>
 With this option on, any command that allows you to pick up items manually will give the manual pickup priority over auto-pickup. (With the option off, this only happens if you are picking up items from the square you were already on.)
 
