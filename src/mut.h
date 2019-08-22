@@ -157,8 +157,9 @@
 
 /* More frog muts */
 #define MUT_EASY_TIRING2      144
+#define MUT_LIMP              145
 
-#define MAX_MUTATIONS      145   /* see also MUT_FLAG_SIZE in defines.h */
+#define MAX_MUTATIONS      146   /* see also MUT_FLAG_SIZE in defines.h */
 
 typedef enum {
     MUT_RATING_AWFUL = -2,
@@ -269,6 +270,7 @@ extern void infravision_mut(int cmd, variant *res);
 extern void inspired_smithing_mut(int cmd, variant *res);
 extern void invulnerability_mut(int cmd, variant *res);
 extern void limber_mut(int cmd, variant *res);
+extern void limp_mut(int cmd, variant *res);
 extern void loremaster_mut(int cmd, variant *res);
 extern void magic_resistance_mut(int cmd, variant *res);
 extern void merchants_friend_mut(int cmd, variant *res);
