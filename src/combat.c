@@ -110,6 +110,11 @@ int race_melee_mult(bool attack_is_innate)
             if (elemental_is_(ELEMENTAL_WATER)) return 75 + (water_flow_rate() / 2);
             return 100;
         }
+        case RACE_IGOR:
+        {
+            if (!attack_is_innate) return 100;
+            return MIN(115, MAX(66, 61 + (get_class()->base_skills.thn * 3 / 5)));
+        }
         case RACE_MON_ORC:
         case RACE_BOIT: return 95;
         case RACE_TOMTE: return 82;
