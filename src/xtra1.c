@@ -4142,7 +4142,9 @@ void calc_bonuses(void)
     if (class_ptr->calc_stats)
         class_ptr->calc_stats(stats); /* after equip_calc_bonuses, which might dismiss the current posture */
 
-    if (race_ptr->calc_stats)
+    /* Hack - Igors calculate their body stats elsewhere, but have calc_stats
+     * for py_info to call */
+    if ((race_ptr->calc_stats) && (!prace_is_(RACE_IGOR)))
         race_ptr->calc_stats(stats);
 
     for (i = 0; i < MAX_STATS; i++)
