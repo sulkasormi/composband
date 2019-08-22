@@ -166,6 +166,11 @@ wanted corpses#Wanted!kkk
 wanted skeletons#Wanted!kkk
 ?:1
 
+?:[EQU $RACE Igor]
+wanted ears#Wanted!kkk
+corpses
+?:1
+
 #########################################
 # Spellbooks
 #########################################
