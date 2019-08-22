@@ -405,6 +405,7 @@ static void _drop(_ui_context_ptr context)
     prompt.where[0] = INV_PACK;
     prompt.where[1] = INV_EQUIP;
     prompt.where[2] = INV_QUIVER;
+    obj_prompt_add_special_packs(&prompt);
 
     obj_prompt(&prompt);
     if (!prompt.obj) return;
