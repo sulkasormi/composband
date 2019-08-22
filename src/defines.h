@@ -20,7 +20,7 @@
 #define VER_MINOR 1
 #define VER_PATCH "chocolate"
 #define VER_EXTRA 1
-#define VERSION_IS_DEVELOPMENT (FALSE)
+#define VERSION_IS_DEVELOPMENT (TRUE)
 
 #define GAME_MODE_BEGINNER  0
 #define GAME_MODE_NORMAL    1
@@ -646,7 +646,8 @@
 #define RACE_BEORNING           69
 #define RACE_TOMTE              70
 #define RACE_MON_PUMPKIN        71
-#define MAX_RACES               72
+#define RACE_IGOR               72
+#define MAX_RACES               73
 
 #define DEMIGOD_MINOR           0
 #define DEMIGOD_ZEUS            1
@@ -1210,6 +1211,7 @@ enum {
 #define ART_PALANTIR             15
 #define ART_STONE_LORE           17
 #define ART_FLY_STONE            147
+#define ART_HYPNO                365
 
 /* Amulets */
 #define ART_CARLAMMAS            4
@@ -1659,6 +1661,13 @@ enum {
 /* The "sval" codes for TV_CORPSE */
 #define SV_SKELETON             0
 #define SV_CORPSE            1
+#define SV_BODY_HEAD         2
+#define SV_BODY_EYES         3
+#define SV_BODY_STOMACH      4
+#define SV_BODY_HEART        5
+#define SV_BODY_HANDS        6
+#define SV_BODY_LEGS         7
+#define SV_BODY_EARS         8
 
 /* TV_ARROW */
 #define SV_ARROW         1
@@ -2973,6 +2982,9 @@ enum obj_flags_e {
     /* A few places loop from 0 <= i < OF_COUNT ... (init1, race_sword and race_ring) */
     OF_COUNT, /* currently 179 */
 };
+#define OF_RES_START OF_RES_ACID
+#define OF_RES_END OF_RES_FEAR
+
 #define OF_ARRAY_SIZE          6
 /* u32b flgs[OF_ARRAY_SIZE];
    assert((OF_COUNT + 31)/32 == OF_ARRAY_SIZE); is checked during initialization */
@@ -4726,6 +4738,7 @@ extern int PlayerUID;
 #define MON_MARILITH            1130
 #define MON_MIMIC               1131
 #define MON_MULTIHUED_CENTIPEDE 1132
+#define MON_DONKEY              1145
 #define MON_PUMPKIN_MAN         1146
 #define MON_AUDE		1148
 #define MON_HELGA		1149
