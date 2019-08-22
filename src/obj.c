@@ -180,6 +180,8 @@ void obj_release(obj_ptr obj, int options)
         if ((obj->number <= 0) && (!(obj->marked & OM_BEING_SHUFFLED)))
             special2_remove(obj->loc.slot);
         break;
+    default:
+        break;
     }
 }
 
@@ -604,6 +606,7 @@ bool obj_can_combine(obj_ptr dest, obj_ptr obj, int loc)
     case TV_FIGURINE:
     case TV_CORPSE:
         if (dest->pval != obj->pval) return FALSE;
+        if ((dest->tval == TV_CORPSE) && (dest->sval >= SV_BODY_HEAD)) return FALSE;
         break;
 
     case TV_FOOD:
@@ -913,9 +916,11 @@ void obj_inspect_ui(void)
     prompt.where[2] = INV_QUIVER;
     prompt.where[3] = INV_FLOOR;
     prompt.cmd_handler = _inspector;
+    allow_special3_hack = TRUE;
     obj_prompt_add_special_packs(&prompt);
 
     obj_prompt(&prompt);
+    allow_special3_hack = FALSE;
 
     /* The '-' key autoselects a single floor object */
     if (prompt.obj)
@@ -1137,7 +1142,7 @@ void obj_destroy_ui(void)
     if (!prompt.obj) return;
 
     /* Verify unless quantity given beforehand */
-    if (!force && (confirm_destroy || (obj_value(prompt.obj) > 0)))
+    if (!force && (confirm_destroy || (obj_value(prompt.obj) > 0) || ((prompt.obj->tval == TV_CORPSE) && (prace_is_(RACE_IGOR)) && (prompt.obj->sval != SV_SKELETON))))
     {
         char ch;
         int  options = OD_COLOR_CODED;
@@ -1807,6 +1812,7 @@ void special1_drop(obj_ptr obj)
         object_desc(o_name, obj, OD_COLOR_CODED);
         strcpy(i_name, inv_name(special_pack));
         i_name[0] = tolower(i_name[0]);
+        if (streq("ice Bag", i_name)) i_name[4] = tolower(i_name[4]);
         msg_format("You no longer have %s in your %s.", o_name, i_name);
     }
 
@@ -1845,4 +1851,3 @@ void special2_drop(obj_ptr obj)
 
     obj_drop(obj, amt);
 }
-
