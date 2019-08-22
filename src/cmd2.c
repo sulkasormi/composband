@@ -112,6 +112,8 @@ void do_cmd_go_down(void)
         return;
     }
 
+    if ((quest_id_current()) && !quests_check_leave()) return;
+
     if (have_flag(f_ptr->flags, FF_TRAP)) fall_trap = TRUE;
 
     /* Quest entrance */
@@ -2237,6 +2239,7 @@ static void do_cmd_walk_aux(int dir, bool pickup)
 
     /* Hack -- In small scale wilderness it takes MUCH more time to move */
     if (p_ptr->wild_mode) energy_use *= ((MAX_HGT + MAX_WID) / 2);
+    if (mut_present(MUT_LIMP)) energy_use += (energy_use / 9);
 
     if (p_ptr->action == ACTION_QUICK_WALK) energy_use = (p_ptr->pclass == CLASS_NINJA_LAWYER) ? 
          energy_use * (60-(p_ptr->lev/2)) / 100 : energy_use * (45-(p_ptr->lev/2)) / 100;
