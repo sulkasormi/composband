@@ -59,6 +59,7 @@ extern void    equip_drop(obj_ptr obj);
 extern void    equip_remove(slot_t slot);
     /* helper fn ... try equip_takeoff instead */
 
+extern void    object_calc_bonuses(obj_ptr obj, slot_t slot);
 extern void    equip_calc_bonuses(void);
 extern void    equip_xtra_might(int pval);
 extern inv_ptr equip_filter(obj_p p);
