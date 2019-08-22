@@ -177,10 +177,12 @@ bool reinit_wilderness = FALSE;
 bool quest_reward_drop_hack = FALSE;
 bool very_nice_summon_hack = FALSE;
 bool predictable_energy_hack = FALSE;
-bool delay_autopick_hack = FALSE;
+byte delay_autopick_hack = 0;
+bool obj_list_autopick_hack = FALSE;
 bool monsters_damaged_hack = FALSE;
 bool shop_exit_hack = FALSE;
 bool no_karrot_hack = FALSE;
+bool allow_special3_hack = FALSE;
 byte troika_spell_hack = 0;
 byte spell_problem = 0;
 s16b run_count = 0;
@@ -373,6 +375,7 @@ bool leave_wanted;    /* Auto-destroyer leaves wanted corpses */
 bool leave_corpse;    /* Auto-destroyer leaves corpses and skeletons */
 bool leave_junk;    /* Auto-destroyer leaves junk */
 bool leave_special;    /* Auto-destroyer leaves items your race/class needs */
+bool leave_mogaminator; /* Mogaminator reads "destroy" as "leave" */
 bool no_mogaminator;   /* Deactivate the Mogaminator */
 
 
