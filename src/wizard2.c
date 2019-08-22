@@ -659,7 +659,10 @@ static void wiz_create_item(void)
     /* Apply magic */
     apply_magic(q_ptr, dun_level, AM_NO_FIXED_ART);
     if (k_info[k_idx].tval == TV_CORPSE)
-        q_ptr->pval = n;
+    {
+        if ((k_info[k_idx].sval >= SV_BODY_HEAD) && (k_info[k_idx].sval < SV_BODY_EARS)) q_ptr->xtra4 = n;
+        else q_ptr->pval = n;
+    }
     else
         q_ptr->number = n;
 
