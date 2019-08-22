@@ -10,13 +10,17 @@ N:*:Default
 'Eye of Argon'
 'Fairie Light'
 'Firefly'
+'Fire Marble'
 'Foxfire'
 'Glow in the Dark'
 'Headlight'
+'Hunk of Orium'
 'Lucky Star'
 'Mimosa'
 'Moonglow'
+'Moonshine'
 'Morning Moth'
+'One Star'
 'Orange Star'
 'Pathfinder'
 'Photonspitter'
@@ -26,10 +30,13 @@ N:*:Default
 'Scintillator'
 'Silverlight'
 'Skycleaver'
+'Spark of the Gods'
 'Sungazer'
 'Talisman'
 'Tarazed'
 'Trailblazer'
+'Ultralight'
+'Wyrmglow'
 'Yellow Light'
 of Alhazred
 of Mordenkainen
@@ -44,3 +51,8 @@ of Alimoit
 of the Forest Martens
 of the Illuminati
 of Feldegast
+of the Dark-Elves
+of Arien
+of Aglarond
+of Devouring Lightness
+of the Buddha
