@@ -178,21 +178,34 @@ static bool _get_floor(inv_ptr floor)
     return FALSE;
 }
 
+static bool _obj_not_autoleave(object_type *o_ptr)
+{
+    int idx;
+    if ((!o_ptr) || (!o_ptr->k_idx)) return FALSE;
+    idx = is_autopick(o_ptr);
+    if ((idx >= 0) && (autopick_list[idx].action & DO_AUTODESTROY))
+    {
+        obj_release(o_ptr, 0);
+        return FALSE;
+    }
+    return TRUE;
+}
+
 bool pack_get_floor(void)
 {
     bool    result = FALSE;
     inv_ptr floor;
 
-    if (delay_autopick) delay_autopick_hack = TRUE;
+    if ((delay_autopick) && (!delay_autopick_hack)) delay_autopick_hack = 1;
 
     autopick_get_floor(); /* no energy charge */
 
-    floor = inv_filter_floor(point(px, py), NULL);
+    floor = inv_filter_floor(point(px, py), ((leave_mogaminator) && (delay_autopick_hack < 2)) ? _obj_not_autoleave : NULL);
     result = _get_floor(floor);
 
     if (delay_autopick_hack)
     {
-        delay_autopick_hack = FALSE;
+        delay_autopick_hack = 0;
         autopick_get_floor();
     }
     
@@ -253,6 +266,7 @@ int pack_max(void)
     int vahennys = 0;
     if (p_ptr->pclass == CLASS_ALCHEMIST) vahennys += 3; /* infusion space */
     if (p_ptr->prace == RACE_WEREWOLF) vahennys += 1; /* werewolf pack */
+    if (p_ptr->prace == RACE_IGOR) vahennys += 1; /* cold storage */
     return PACK_MAX - vahennys;
 }
 
