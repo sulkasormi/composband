@@ -21,6 +21,7 @@ of Firewalking
 N: 4:BIAS_COLD
 of the Cool Cat
 of Mono Island
+of Monomania
 of Ursus
 'Snow Lynx'
 'Snow Shoes'
@@ -67,6 +68,7 @@ N:17:BIAS_MAGE
 N: 7:BIAS_INT
 of Utility
 of Mikael Harfoot
+of Anoia
 'Grizzly'
 'Lohil'
 
