@@ -64,7 +64,7 @@ N:2:of Elendil
 I:39:5:1
 W:50:25:5:32500
 P:0:1d1:0:0:0
-F:SEE_INVIS | HOLD_LIFE | INSTA_ART | SPEED
+F:SEE_INVIS | HOLD_LIFE | INSTA_ART | SPEED | CON | CHR | REGEN
 E:LITE_MAP_AREA:30:25
 E:The star shines brightly...
 D:The shining Star of the West, a famed heirloom of Elendil's house.
@@ -2103,6 +2103,7 @@ P:0:6d6:16:16:0
 F:BRAND_VAMP | STR | CON | FREE_ACT | HOLD_LIFE | RES_NETHER | RES_CONF |
 F:RES_CHAOS | QUESTITEM
 F:SLAY_HUMAN | SLAY_GOOD
+D:Death is all. Beware, cursed is the wielder.
 
 N:191:'Narsil'
 I:23:2:3
