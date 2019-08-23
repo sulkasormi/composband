@@ -1165,7 +1165,7 @@ void _dissect_corpse_spell(int cmd, variant *res)
         var_set_string(res, "Dissect Corpse");
         break;
     case SPELL_DESC:
-        var_set_string(res, "Cuts open a dead body, looking for a part worth salvaging.");
+        var_set_string(res, "Cuts open a dead body, looking for a part worth salvaging. (Don't be too clumsy!)");
         break;
     case SPELL_CAST:
         var_set_bool(res, _dissect_corpse());
