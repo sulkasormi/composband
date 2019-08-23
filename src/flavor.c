@@ -1188,7 +1188,7 @@ void object_desc(char *buf, object_type *o_ptr, u32b mode)
                 }
                 /* Body parts cannot be piled, so it's usually safe to use the
                  * article "the"... but it is possible to have 0 of them */
-                if (!number) basenm += 4;
+                if ((!number) || (mode & OD_OMIT_PREFIX)) basenm += 4;
             }
             else
             {
