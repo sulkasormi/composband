@@ -1816,9 +1816,9 @@ static void _forge_wanted_monster_prize(obj_ptr obj, int r_idx)
 }
 static bool _is_wanted_corpse(obj_ptr obj)
 {
-    if (obj->tval == TV_CORPSE && _is_wanted_monster(obj->pval))
-        return TRUE;
-    return FALSE;
+    if (obj->tval != TV_CORPSE) return FALSE;
+    if ((obj->sval < SV_BODY_HEAD) || (obj->sval == SV_BODY_EARS)) return (_is_wanted_monster(obj->pval));
+    return ((obj->sval == SV_BODY_HEAD) && (_is_wanted_monster(obj->xtra4)));
 }
 static bool _is_wanted_captureball(obj_ptr obj)
 {
@@ -1831,7 +1831,7 @@ static void _process_wanted_corpse(obj_ptr obj)
     char  name[MAX_NLEN];
     char  buf[MAX_NLEN+30];
     obj_t prize;
-    int   r_idx = obj->pval;
+    int   r_idx = ((object_is_(obj, TV_CORPSE, SV_BODY_HEAD)) ? obj->xtra4 : obj->pval);
     int   num, k, kubi_idx = _wanted_monster_idx(r_idx);
 
     ++_prize_count;
