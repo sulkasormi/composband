@@ -162,6 +162,7 @@ typedef struct {
 typedef bool (*mon_spell_ai)(mon_spell_cast_ptr cast);
 extern bool           mon_spell_ai_wizard(mon_spell_cast_ptr cast);
 
+extern int            mon_spell_cost(mon_spell_ptr spell, mon_race_ptr race);
 extern bool           mon_spell_cast(mon_ptr mon, mon_spell_ai ai);
 extern bool           mon_spell_cast_mon(mon_ptr mon, mon_spell_ai ai);
 extern void           mon_spell_wizard(mon_ptr mon, mon_spell_ai ai, doc_ptr doc);
@@ -194,5 +195,13 @@ extern bool mon_race_can_summon(mon_race_ptr race, int summon_type);
 extern bool mon_race_can_teleport(mon_race_ptr race);
 extern bool mon_race_has_lite_dark_spell(mon_race_ptr race);
 extern bool mon_race_has_dispel(mon_race_ptr race);
+
+/* Blue-Mage things that need local monspell.c stuff */
+extern void list_spell_info(doc_ptr doc, mon_spell_ptr spell, mon_race_ptr race);
+extern int  blue_mage_spell_fail_rate(mon_spell_ptr spell);
+extern int  blue_mage_spell_order(byte type, s16b effect);
+extern void blue_mage_learn_spell(void);
+extern void blue_mage_learn_spell_aux(byte type, s16b effect, s16b lore, s16b seniority, bool noisy);
+extern void blue_mage_update_parms(vec_ptr spells);
 #endif
 
