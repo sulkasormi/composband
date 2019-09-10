@@ -19,7 +19,7 @@
 #define VER_MAJOR 7
 #define VER_MINOR 1
 #define VER_PATCH "chocolate"
-#define VER_EXTRA 1
+#define VER_EXTRA 3
 #define VERSION_IS_DEVELOPMENT (TRUE)
 
 #define GAME_MODE_BEGINNER  0
@@ -819,7 +819,7 @@ enum _mimic_types {
 #define CLASS_RED_MAGE          18
 #define CLASS_SAMURAI           19
 #define CLASS_FORCETRAINER      20
-#define CLASS_XXX21             21
+#define CLASS_BLUE_MAGE         21
 #define CLASS_CAVALRY           22
 #define CLASS_BERSERKER         23
 #define CLASS_WEAPONSMITH       24
