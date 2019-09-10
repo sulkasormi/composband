@@ -3392,6 +3392,7 @@ static int _calc_xtra_hp(int amt)
     case CLASS_RED_MAGE:
     case CLASS_MIRROR_MASTER:
     case CLASS_TIME_LORD:
+    case CLASS_BLUE_MAGE:
     case CLASS_BLOOD_MAGE:
     case CLASS_NECROMANCER:
     case CLASS_POLITICIAN:
