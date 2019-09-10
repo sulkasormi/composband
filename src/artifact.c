@@ -2175,6 +2175,7 @@ s32b create_artifact(object_type *o_ptr, u32b mode)
             case CLASS_HIGH_MAGE:
             case CLASS_SORCERER:
             case CLASS_MAGIC_EATER:
+            case CLASS_BLUE_MAGE:
             case CLASS_WARLOCK:
             case CLASS_BLOOD_MAGE:
             case CLASS_NECROMANCER:
