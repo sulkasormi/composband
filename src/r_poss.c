@@ -524,10 +524,11 @@ void possessor_attack(point_t where, bool *fear, bool *mdeath, int mode)
  **********************************************************************/
 void possessor_cast(void)
 {
-    mon_race_ptr race = &r_info[p_ptr->current_r_idx];
+    mon_race_ptr race = &r_info[(p_ptr->pclass == CLASS_BLUE_MAGE) ? MON_SEXY_SWIMSUIT : p_ptr->current_r_idx];
     if (!race->spells)
     {
-        msg_print("Your current body has no spells.");
+        if (p_ptr->pclass == CLASS_BLUE_MAGE) msg_print("You have not learned any spells yet.");
+        else msg_print("Your current body has no spells.");
         return;
     }
     if (p_ptr->confused)
