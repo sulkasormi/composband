@@ -74,7 +74,6 @@ N:14:BIAS_NECROMANTIC
 of Mephistopheles
 of the Ruler of Wallachia
 of the Netherlands
-of Blackest Pitch
 of the Wraith
 of Louhi
 
@@ -183,4 +182,3 @@ of the Fretful Porpentine
 of the Borg
 of Moldoux
 of the Oompa-Loompas
-
