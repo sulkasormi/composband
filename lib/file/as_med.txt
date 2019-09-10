@@ -40,6 +40,7 @@ N:14:BIAS_NECROMANTIC
 of the Royal Crypt
 of the Mummy
 of Totality
+of Blackest Pitch
 of Redrum
 
 N:15:BIAS_LAW
