@@ -1636,7 +1636,7 @@ F:KILL_DRAGON | ESP_DRAGON | IM_FIRE | XTRA_RES_OR_POWER
 D:At the Nirnaeth the Dwarves stayed the onslaught of Glaurung, and
 D:Azaghal their lord drove this short blade into the drake's belly before
 D:he was trampled underfoot. The black blood of the Father of Dragons
-D:now serves as a rememberance for all dragons that come near it.
+D:now serves as a remembrance for all dragons that come near it.
 
 N:136:'Mjollnir'
 I:21:8:4
