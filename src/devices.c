@@ -54,6 +54,7 @@ bool class_uses_spell_scrolls(int mika)
       mika == CLASS_DUELIST ||
       mika == CLASS_RUNE_KNIGHT ||
       mika == CLASS_WILD_TALENT ||
+      mika == CLASS_BLUE_MAGE ||
       mika == CLASS_NINJA ||
       mika == CLASS_NINJA_LAWYER ||
       mika == CLASS_SCOUT ||
@@ -1561,7 +1562,7 @@ static cptr _do_scroll(int sval, int mode)
         }
         break;
     case SV_SCROLL_SPELL:
-        if (desc) return "It increases the number you can study spells when you read. If you are the class can't study or don't need to study, it has no effect.";
+        if (desc) return "Increases the number of spells you can study. Only has an effect for classes who study spells.";
         if (cast)
         {
             if (!class_uses_spell_scrolls(p_ptr->pclass))
