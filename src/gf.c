@@ -1277,6 +1277,8 @@ int gf_affect_p(int who, int type, int dam, int flags)
         make_attack_normal(who);
         break;
     }
+    if ((p_ptr->action == ACTION_LEARN) && (who > 0) && (flags & GF_AFFECT_SPELL) && (type != GF_ATTACK))
+        blue_mage_learn_spell();
     return result;
 }
 int gf_distance_hack = 1;
