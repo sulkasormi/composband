@@ -52,7 +52,7 @@ void set_action(int typ)
             resting = 0;
             break;
         case ACTION_LEARN:
-            msg_print("You stop Learning");
+            msg_print("You stop learning spells.");
             new_mane = FALSE;
             break;
         case ACTION_KAMAE:
@@ -91,7 +91,7 @@ void set_action(int typ)
         p_ptr->redraw |= PR_EFFECTS;
         break;
     case ACTION_LEARN:
-        msg_print("You begin Learning");
+        msg_print("You begin to learn spells.");
         break;
     case ACTION_FISH:
         msg_print("You begin fishing...");
