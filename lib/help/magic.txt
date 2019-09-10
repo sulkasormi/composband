@@ -82,7 +82,7 @@ In addition to the realms listed above, there are a few class specific spell rea
   <indent>More technique than magic, this realm is unique to the Rage-Mage: Sworn enemies of all that is magical. Talents are learned from books, to be sure, but the ritual of gaining spells involves the destruction of the book in the process, meaning the Rage-Mage can only learn one spell from each book they find. And once learned, the book is no longer required to cast the technique, which is perhaps fortunate. This realm offers various combat techniques as well as talents to shout down magical enemies. But it is not really magic after all, so really should be discussed elsewhere.</indent>
 
 <topic:Kendo><color:G>Kendo</color>
-  <indent>Another technique realm, Kendo is unqiue to the Samurai, offering powerful talents to directly enhance the effectiveness of hand-to-hand melee. Talents are learned from books, but, once learned, may be freely used without further reference to the book.</indent>
+  <indent>Another technique realm, Kendo is unique to the Samurai, offering powerful talents to directly enhance the effectiveness of melee. Talents are learned from books, but, once learned, may be freely used without further reference to the book.</indent>
 
 <topic:CastingSpells><style:heading>On Casting Spells</style>
 
