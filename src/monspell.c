@@ -66,7 +66,7 @@ static _parse_t _annoy_tbl[] = {
     { "AMNESIA", { MST_ANNOY, ANNOY_AMNESIA },
         { "Amnesia", TERM_L_BLUE,
           "$CASTER tries to blank your mind.",
-          "$CASTER tries to blank your mind."}, MSF_TARGET},
+          "$CASTER tries to blank your mind."}, MSF_TARGET | MSF_DIRECT},
     { "ANIM_DEAD", { MST_ANNOY, ANNOY_ANIMATE_DEAD },
         { "Animate Dead", TERM_L_DARK,
           "$CASTER casts a spell to revive the dead.",
@@ -74,11 +74,11 @@ static _parse_t _annoy_tbl[] = {
     { "BLIND", { MST_ANNOY, ANNOY_BLIND },
         { "Blind", TERM_WHITE,
           "$CASTER casts a spell, burning your eyes!",
-          "$CASTER mumbles."}, MSF_TARGET},
+          "$CASTER mumbles."}, MSF_TARGET | MSF_DIRECT},
     { "CONFUSE", { MST_ANNOY, ANNOY_CONFUSE },
         { "Confuse", TERM_L_UMBER,
           "$CASTER creates a mesmerizing illusion.",
-          "$CASTER mumbles, and you hear puzzling noises."}, MSF_TARGET},
+          "$CASTER mumbles, and you hear puzzling noises."}, MSF_TARGET | MSF_DIRECT},
     { "DARKNESS", { MST_ANNOY, ANNOY_DARKNESS },
         { "Create Darkness", TERM_L_DARK }},
     { "PARALYZE", { MST_ANNOY, ANNOY_PARALYZE },
@@ -88,11 +88,11 @@ static _parse_t _annoy_tbl[] = {
     { "SCARE", { MST_ANNOY, ANNOY_SCARE },
         { "Terrify", TERM_RED,
           "$CASTER casts a fearful illusion.",
-          "$CASTER mumbles, and you hear scary noises."}, MSF_TARGET},
+          "$CASTER mumbles, and you hear scary noises."}, MSF_TARGET | MSF_DIRECT},
     { "SLOW", { MST_ANNOY, ANNOY_SLOW },
         { "Slow", TERM_L_UMBER,
           "$CASTER drains power from your muscles!",
-          "$CASTER drains power from your muscles!"}, MSF_TARGET},
+          "$CASTER drains power from your muscles!"}, MSF_TARGET | MSF_DIRECT},
     { "SHRIEK", { MST_ANNOY, ANNOY_SHRIEK },
         { "Shriek", TERM_L_BLUE,
           "$CASTER makes a high pitched shriek.",
@@ -758,11 +758,12 @@ static mon_spell_parm_t _bolt_parm(int which, int rlev)
         parm.v.dice = _dice(2, 6, rlev/3);
         break;
     case GF_ATTACK:
+        break;
     case GF_ARROW:
-        /* SHOOT always specifies dice overrides */
+        parm.v.dice = _dice(MIN(6, 4 + rlev/24), MAX(2, rlev/4), 0);
         break;
     default:
-        assert(FALSE);
+        break;
     }
     return parm;
 }
@@ -781,7 +782,8 @@ static mon_spell_parm_t _beam_parm(int which, int rlev)
         parm.v.dice = _dice(0, 0, 2*rlev);
         break;
     default:
-        assert(FALSE);
+        if (p_ptr->pclass != CLASS_BLUE_MAGE) assert(FALSE);
+        break;
     }
     return parm;
 }
@@ -808,7 +810,8 @@ static mon_spell_parm_t _curse_parm(int which)
         parm.v.dice = _dice(1, 20, 40); /* This is percentage of chp! */
         break;
     default:
-        assert(FALSE);
+        if (p_ptr->pclass != CLASS_BLUE_MAGE) assert(FALSE);
+        break;
     }
     return parm;
 }
@@ -958,6 +961,7 @@ errr mon_spell_parm_parse(mon_spell_parm_ptr parm, char *token)
 static int _avg_dam_roll(int dd, int ds) { return dd * (ds + 1) / 2; }
 static int _avg_hp(mon_race_ptr r)
 {
+    if (r->id == MON_SEXY_SWIMSUIT) return p_ptr->mhp;
     if (r->flags1 & RF1_FORCE_MAXHP)
         return r->hdice * r->hside;
     return _avg_dam_roll(r->hdice, r->hside);
@@ -1195,6 +1199,8 @@ static void _group_grow(mon_spell_group_ptr group)
     }
 }
 
+static bool _blue_mage_group_hack = FALSE;
+
 void mon_spell_group_add(mon_spell_group_ptr group, mon_spell_ptr spell)
 {
     int i;
@@ -1206,7 +1212,9 @@ void mon_spell_group_add(mon_spell_group_ptr group, mon_spell_ptr spell)
     for (i = 0; i < group->count; i++)
     {
         if (group->spells[i].id.effect == spell->id.effect) return;
-        if (group->spells[i].id.effect > spell->id.effect)
+
+        /* Blue mage spells always go at the end, otherwise order by effect */
+        if ((group->spells[i].id.effect > spell->id.effect) && (!_blue_mage_group_hack))
             break;
     }
 
@@ -1463,11 +1471,36 @@ bool mon_spell_cast_mon(mon_ptr mon, mon_spell_ai ai)
     return FALSE;
 }
 
+int blue_mage_spell_fail_rate(mon_spell_ptr spell)
+{
+    int bonus = 20;
+    if (spell->prob > p_ptr->lev) return 100;
+    return calculate_fail_rate(spell->prob, spell->prob + bonus, p_ptr->stat_ind[get_caster_info()->which_stat]);
+}
+
+static bool _blue_mage_spell_fail(void)
+{
+    int fail = blue_mage_spell_fail_rate(_current.spell);
+    if (fail && randint0(100) < fail)
+    {
+        sound(SOUND_FAIL);
+        if (flush_failure) flush();
+        msg_print("You failed to concentrate hard enough!");
+        if (prompt_on_failure) msg_print(NULL);
+        return TRUE;
+    }
+    return FALSE;
+}
+
 static bool _projectable(point_t src, point_t dest);
 static bool _spell_fail(void)
 {
     int fail, stun;
 
+    if ((_current.flags & MSC_SRC_PLAYER) && (p_ptr->pclass == CLASS_BLUE_MAGE))
+    {
+        return _blue_mage_spell_fail();
+    }
     if (_current.spell->flags & MSF_INNATE)
         return FALSE;
     if (_current.race->flags2 & RF2_STUPID)
@@ -1601,6 +1634,8 @@ static int _avg_roll(dice_t dice)
         roll += dice.dd * (dice.ds + 1)/2;
     return roll;
 }
+static bool _ball_stop_hack = FALSE;
+
 static void _ball(void)
 {
     int    dam;
@@ -1627,6 +1662,12 @@ static void _ball(void)
     case GF_BRAIN_SMASH:
         flags |= PROJECT_HIDE | PROJECT_AIMED;
         break;
+    }
+
+    if (_ball_stop_hack)
+    {
+        flags |= PROJECT_STOP;
+        _ball_stop_hack = FALSE;
     }
 
     project(_who(), rad, _current.dest.y, _current.dest.x,
@@ -1863,6 +1904,7 @@ static void _annoy_p(void)
             msg_print("You resist the effects!");
         else
             set_slow(p_ptr->slow + randint0(4) + 4, FALSE);
+        if (p_ptr->action == ACTION_LEARN) blue_mage_learn_spell();
         update_smart_learn(_current.mon->id, SM_FREE_ACTION);
         break;
     case ANNOY_TELE_LEVEL:
@@ -1870,6 +1912,7 @@ static void _annoy_p(void)
             msg_print("You resist the effects!");
         else
             teleport_level(0);
+        if (p_ptr->action == ACTION_LEARN) blue_mage_learn_spell();
         update_smart_learn(_current.mon->id, RES_NEXUS);
         break;
     case ANNOY_TELE_TO:
@@ -1881,6 +1924,7 @@ static void _annoy_p(void)
             msg_print("You resist the effects!");
         else
             teleport_player_to(_current.src.y, _current.src.x, TELEPORT_PASSIVE);
+        if (p_ptr->action == ACTION_LEARN) blue_mage_learn_spell();
         update_smart_learn(_current.mon->id, RES_TELEPORT);
         break;
     case ANNOY_TRAPS:
@@ -1927,6 +1971,7 @@ static void _biff_p(void)
             msg_print("Your mental fortress is impenetrable!");
         else
             set_tim_no_spells(p_ptr->tim_no_spells + 3 + randint1(3), FALSE);
+        if (p_ptr->action == ACTION_LEARN) blue_mage_learn_spell();
         break;
     case BIFF_DISPEL_MAGIC:
         if (mut_present(MUT_ONE_WITH_MAGIC) && _one_with_magic_chance())
@@ -1939,6 +1984,7 @@ static void _biff_p(void)
             if (p_ptr->riding)
                 dispel_monster_status(p_ptr->riding);
         }
+        if (p_ptr->action == ACTION_LEARN) blue_mage_learn_spell();
         break;
     case BIFF_POLYMORPH:
         gf_affect_p(_current.mon->id, GF_OLD_POLY, 0, GF_AFFECT_SPELL);
@@ -2050,6 +2096,7 @@ static void _escape(void)
                 msg_print("You resist the effects!");
             else
                 teleport_player_away(_current.mon->id, 100);
+            if (p_ptr->action == ACTION_LEARN) blue_mage_learn_spell();
             update_smart_learn(_current.mon->id, RES_TELEPORT);
         }
         else if (_current.mon2) /* MSF_DIRECT */
@@ -2573,6 +2620,7 @@ static void _summon(void)
     {
         _summon_type(_current.spell->id.effect);
     }
+    if (p_ptr->action == ACTION_LEARN) blue_mage_learn_spell();
     /* Check upkeep on pet summoning */
     if (summoner_is_pet) calculate_upkeep();
 }
@@ -2804,7 +2852,7 @@ static void _spell_cast_aux(void)
     case MST_TACTIC:  _tactic();  break;
     case MST_WEIRD:   _weird();   break;
     case MST_POSSESSOR: _possessor(); break;
-    }
+    }    
 }
 
 /*************************************************************************
@@ -4512,6 +4560,13 @@ bool mon_race_has_dispel(mon_race_ptr race)
     return mon_spells_find(race->spells, _id(MST_BIFF, BIFF_DISPEL_MAGIC)) != NULL;
 }
 
+bool mon_race_has_spell(mon_race_ptr race, byte typ1, s16b typ2)
+{
+    if (!race->spells) return FALSE;
+    if (typ1 >= MST_COUNT) return FALSE;
+    return mon_spells_find(race->spells, _id(typ1, typ2)) != NULL;
+}
+
 /*************************************************************************
  * Possessor/Mimic
  ************************************************************************/
@@ -4585,6 +4640,7 @@ static int _breath_cost(mon_spell_ptr spell, mon_race_ptr race)
 {
     int div = _breath_cost_div(race);
     int dam = MIN(600, mon_spell_avg_dam(spell, race, FALSE));
+    if (race->id == MON_SEXY_SWIMSUIT) return (p_ptr->lev * 2 / 5) + 10;
     return (dam + div - 1)/div;
 }
 static int _dam_cost(int dam)
@@ -4733,7 +4789,7 @@ static int _spell_cost_aux(mon_spell_ptr spell, mon_race_ptr race)
     }
     return 0;
 }
-static int _spell_cost(mon_spell_ptr spell, mon_race_ptr race)
+int mon_spell_cost(mon_spell_ptr spell, mon_race_ptr race)
 {
     int cost = _spell_cost_aux(spell, race);
     if (p_ptr->dec_mana && cost > 0)
@@ -4749,7 +4805,8 @@ static void _list_dice(doc_ptr doc, dice_t dice)
     else
         doc_printf(doc, "%d", dice.base);
 }
-static void _list_spell_info(doc_ptr doc, mon_spell_ptr spell, mon_race_ptr race)
+
+void list_spell_info(doc_ptr doc, mon_spell_ptr spell, mon_race_ptr race)
 {
     switch (spell->id.type)
     {
@@ -4780,8 +4837,64 @@ static bool _no_magic(void)
     if (dun_level && (d_info[dungeon_type].flags1 & DF1_NO_MAGIC)) return TRUE;
     return FALSE;
 }
+
+int blue_mage_spell_order(byte type, s16b effect)
+{
+    monster_race *r_ptr = &r_info[MON_FILTHY_RAG];
+    if ((!r_ptr) || (!r_ptr->name) || (!r_ptr->spells)) return 0;
+    else
+    {
+        mon_spell_ptr spell = mon_spells_find(r_ptr->spells, _id(type, effect));
+        if ((!spell) || (!spell->lore)) return 0;
+        return spell->lore;
+    }
+}
+
+/* Separate from list_spells() to make sure parameters update correctly in
+ * case of level-up/level-down */
+void blue_mage_update_parms(vec_ptr spells)
+{
+    int i;
+    r_info[MON_SEXY_SWIMSUIT].level = p_ptr->lev;
+    for (i = 0; i < vec_length(spells); i++)
+    {
+        mon_spell_ptr spell = vec_get(spells, i);
+        spell->parm = mon_spell_parm_default(spell->id, p_ptr->lev * 7 / 4);
+        if (spell->id.type == MST_BREATH)
+        {
+            s32b adj_max = (s32b)spell->parm.v.hp_pct.max * p_ptr->mhp / 900L;
+            spell->parm.v.hp_pct.pct = spell_power(100);
+            spell->parm.v.hp_pct.max = (s16b)((s32b)spell->parm.v.hp_pct.max * (100L + (p_ptr->lev * p_ptr->lev)) / 3250L);
+            spell->parm.v.hp_pct.max -= spell->parm.v.hp_pct.max / 2;
+            spell->parm.v.hp_pct.max -= (s16b)((s32b)spell->parm.v.hp_pct.max * (45L - p_ptr->lev) / 60L);
+            spell->parm.v.hp_pct.max += (p_ptr->lev + 1 + p_ptr->to_d_spell);
+            spell->parm.v.hp_pct.max = MIN((s32b)spell->parm.v.hp_pct.max, adj_max * (p_ptr->lev + 25L) / 60);
+            spell->parm.v.hp_pct.max = spell_power(spell->parm.v.hp_pct.max);
+        }
+        else if ((spell->id.type == MST_BOLT || spell->id.type == MST_BALL))
+        {
+            if ((spell->id.type == MST_BALL) && (spell->id.effect == GF_ROCKET))
+            {
+                spell->parm.v.dice.base -= MIN(spell->parm.v.dice.base, 200);
+                spell->parm.v.dice.base += p_ptr->lev * 3;
+            }
+            if (spell->parm.v.dice.ds > spell->parm.v.dice.dd) spell->parm.v.dice.ds = spell_power(spell->parm.v.dice.ds);
+            else spell->parm.v.dice.dd = spell_power(spell->parm.v.dice.dd);
+            spell->parm.v.dice.base = spell_power(spell->parm.v.dice.base + p_ptr->to_d_spell);
+        }
+    }
+}
+
 static int _cmp_spells(mon_spell_ptr left, mon_spell_ptr right)
 {
+    if (p_ptr->pclass == CLASS_BLUE_MAGE)
+    {
+        int b1 = blue_mage_spell_order(left->id.type, left->id.effect);
+        int b2 = blue_mage_spell_order(right->id.type, right->id.effect);
+        if (b1 < b2) return -1;
+        if (b2 < b1) return 1;
+        return 0;
+    }
     if (left->id.type < right->id.type) return -1;
     if (left->id.type > right->id.type) return 1;
     /* XXX */
@@ -4789,10 +4902,10 @@ static int _cmp_spells(mon_spell_ptr left, mon_spell_ptr right)
     if (left->id.effect > right->id.effect) return 1;
     return 0;
 }
-static vec_ptr _spells_plr(mon_race_ptr race, _spell_p filter)
+static vec_ptr _spells_plr(mon_race_ptr race, _spell_p filter, int page)
 {
     vec_ptr v = vec_alloc(NULL);
-    int     i, j;
+    int     i, j, l = 0;
     bool    no_magic = _no_magic();
 
     for (i = 0; i < MST_COUNT; i++)
@@ -4802,25 +4915,51 @@ static vec_ptr _spells_plr(mon_race_ptr race, _spell_p filter)
         for (j = 0; j < group->count; j++)
         {
             mon_spell_ptr spell = &group->spells[j];
-            if (no_magic && !(spell->flags & MSF_INNATE)) continue;
+            if ((no_magic) && ((!(spell->flags & MSF_INNATE)) || (p_ptr->pclass == CLASS_BLUE_MAGE))) continue;
             if (filter && !filter(spell)) continue;
 
             if ( _spell_is_(spell, MST_BUFF, BUFF_INVULN)
               && p_ptr->prace == RACE_MON_MIMIC
               && p_ptr->lev < 45 ) continue;
 
+/*            l++;
+            if ((page >= 0) && (((l - 1) / 26) != page)) continue;*/
+
             vec_add(v, spell);
         }
     }
 
     vec_sort(v, (vec_cmp_f)_cmp_spells);
+    if ((page >= 0) && (vec_length(v) > 26))
+    {
+        vec_ptr v2 = vec_alloc(NULL);
+        for (i = 0; i < vec_length(v); i++)
+        {
+            mon_spell_ptr spell;
+            l++;
+            if ((page >= 0) && (((l - 1) / 26) != page)) continue;
+            spell = vec_get(v, i);
+            vec_add(v2, spell);
+        }
+        vec_free(v);
+        return v2;
+    }
     return v;
 }
+static bool _hp_casting_okay(mon_spell_ptr spell)
+{
+    return ((p_ptr->pclass != CLASS_BLUE_MAGE) &&
+            ((spell->flags & MSF_INNATE) || ((!p_ptr->msp) && (get_race()->pseudo_class_idx == CLASS_WARRIOR))));
+}
+
 static void _list_spells(doc_ptr doc, vec_ptr spells, mon_spell_cast_ptr cast)
 {
     int i;
+    bool is_blue_mage = ((p_ptr->pclass == CLASS_BLUE_MAGE) && (cast->flags & MSC_SRC_PLAYER));
     doc_insert(doc, " <color:R>Cast which spell?</color>");
-    doc_insert(doc, "<color:G><tab:30>Cost Info</color>\n");
+    if (is_blue_mage)
+        doc_insert(doc, "<color:G><tab:38>Lv Cost Fail Info</color>\n");
+    else doc_insert(doc, "<color:G><tab:30>Cost Info</color>\n");
     for (i = 0; i < vec_length(spells); i++)
     {
         mon_spell_ptr spell = vec_get(spells, i);
@@ -4830,21 +4969,30 @@ static void _list_spells(doc_ptr doc, vec_ptr spells, mon_spell_cast_ptr cast)
 
         if (cast->flags & MSC_SRC_PLAYER)
         {
-            cost = _spell_cost(spell, cast->race);
+            cost = mon_spell_cost(spell, cast->race);
             avail = p_ptr->csp;
-            if ((spell->flags & MSF_INNATE) || ((!p_ptr->msp) && (get_race()->pseudo_class_idx == CLASS_WARRIOR)))
+            if (_hp_casting_okay(spell))
                 avail += p_ptr->chp;
             if (cost > avail) color = 'D';
+            else if ((p_ptr->pclass == CLASS_BLUE_MAGE) && (spell->prob > p_ptr->lev)) color = 'D';
         }
         else if (spell == cast->spell)
             color = 'v';
         doc_printf(doc, " <color:%c>%c</color>) ", color, I2A(i));
         mon_spell_doc(spell, doc);
+        if (is_blue_mage)
+        {
+            doc_printf(doc, "<tab:38>%2d", spell->prob);
+        }
         if (cost)
-            doc_printf(doc, "<tab:30>%4d", cost);
+            doc_printf(doc, "%s%4d", is_blue_mage ? " " : "<tab:30>", cost);
         else
-            doc_insert(doc, "<tab:30>    ");
-        _list_spell_info(doc, spell, cast->race);
+            doc_printf(doc, "%s    ", is_blue_mage ? " " : "<tab:30>");
+        if (is_blue_mage)
+        {
+            doc_printf(doc, " %3d%%", blue_mage_spell_fail_rate(spell));
+        }
+        list_spell_info(doc, spell, cast->race);
         doc_newline(doc);
     }
 }
@@ -4854,17 +5002,19 @@ static void _prompt_plr_aux(mon_spell_cast_ptr cast, vec_ptr spells)
     int     cmd, i;
     bool    monster = BOOL(cast->flags & MSC_SRC_MONSTER); /* wizard */
 
+    if (p_ptr->pclass == CLASS_BLUE_MAGE) blue_mage_update_parms(spells);
+
     if (!monster && REPEAT_PULL(&cmd))
     {
         i = A2I(cmd);
         if (0 <= i && i < vec_length(spells))
         {
             mon_spell_ptr spell = vec_get(spells, i);
-            int           cost = _spell_cost(spell, cast->race);
+            int           cost = mon_spell_cost(spell, cast->race);
             int           avail = p_ptr->csp;
-            if ((spell->flags & MSF_INNATE) || ((!p_ptr->msp) && (get_race()->pseudo_class_idx == CLASS_WARRIOR)))
+            if (_hp_casting_okay(spell))
                 avail += p_ptr->chp;
-            if (cost <= avail)
+            if ((cost <= avail) && ((p_ptr->pclass != CLASS_BLUE_MAGE) || (spell->prob <= p_ptr->lev)))
             {
                 cast->spell = spell;
                 return;
@@ -4888,11 +5038,12 @@ static void _prompt_plr_aux(mon_spell_cast_ptr cast, vec_ptr spells)
             if (0 <= i && i < vec_length(spells))
             {
                 mon_spell_ptr spell = vec_get(spells, i);
-                int           cost = _spell_cost(spell, cast->race);
+                int           cost = mon_spell_cost(spell, cast->race);
                 int           avail = p_ptr->csp;
-                if ((spell->flags & MSF_INNATE) || ((!p_ptr->msp) && (get_race()->pseudo_class_idx == CLASS_WARRIOR)))
+                if (_hp_casting_okay(spell))
                     avail += p_ptr->chp;
                 if (!monster && cost > avail) continue; /* already grayed out */
+                if ((!monster) && (p_ptr->pclass == CLASS_BLUE_MAGE) && (spell->prob > p_ptr->lev)) continue;
                 cast->spell = spell;
                 REPEAT_PUSH(cmd);
                 break;
@@ -4911,16 +5062,29 @@ static void _set_target(mon_spell_cast_ptr cast, int m_idx)
 static bool _spell_is_breath(mon_spell_ptr spell) { return spell->id.type == MST_BREATH; }
 static bool _spell_is_offense(mon_spell_ptr spell) { return _is_attack_spell(spell) && !_spell_is_breath(spell); }
 static bool _spell_is_summon(mon_spell_ptr spell) { return spell->id.type == MST_SUMMON; }
+static bool _spell_is_ball(mon_spell_ptr spell) { return ((spell->id.type == MST_BALL) || (spell->id.type == MST_CURSE)); }
+static bool _spell_is_bolt(mon_spell_ptr spell) { return ((spell->id.type == MST_BOLT) || (spell->id.type == MST_BEAM)); }
 static bool _spell_is_defense(mon_spell_ptr spell) { return !_is_attack_spell(spell) && !_spell_is_summon(spell); }
 typedef struct {
     cptr name;
     _spell_p filter;
+    bool exists;
 } _group_t, *_group_ptr;
-static _group_t _groups[] = {
-    { "Breath", _spell_is_breath },
-    { "Offense", _spell_is_offense },
-    { "Defense", _spell_is_defense },
-    { "Summon", _spell_is_summon },
+static _group_t _mage_groups[] =
+{
+    { "Breath", _spell_is_breath, TRUE },
+    { "Bolt/Beam", _spell_is_bolt, TRUE },
+    { "Ball", _spell_is_ball, TRUE },
+    { "Utility", _spell_is_defense, TRUE },
+    { "Summon", _spell_is_summon, TRUE },
+    { 0 }
+};
+static _group_t _poss_groups[] =
+{
+    { "Breath", _spell_is_breath, TRUE },
+    { "Offense", _spell_is_offense, TRUE },
+    { "Defense", _spell_is_defense, TRUE },
+    { "Summon", _spell_is_summon, TRUE },
     { 0 }
 };
 static vec_ptr _spell_groups(mon_race_ptr race)
@@ -4929,11 +5093,12 @@ static vec_ptr _spell_groups(mon_race_ptr race)
     vec_ptr groups = vec_alloc(NULL);
     for (i = 0;; i++)
     {
-        _group_ptr g = &_groups[i];
+        _group_ptr g = ((p_ptr->pclass == CLASS_BLUE_MAGE) ? &_mage_groups[i] : &_poss_groups[i]);
         vec_ptr    v;
         if (!g->name) break;
-        v = _spells_plr(race, g->filter);
-        if (vec_length(v))
+        v = _spells_plr(race, g->filter, -1);
+        if (p_ptr->pclass == CLASS_BLUE_MAGE) g->exists = (vec_length(v) > 0);
+        if ((vec_length(v)) || (p_ptr->pclass == CLASS_BLUE_MAGE))
             vec_add(groups, g);
         vec_free(v);
     }
@@ -4946,25 +5111,50 @@ static void _list_groups(doc_ptr doc, vec_ptr groups)
     for (i = 0; i < vec_length(groups); i++)
     {
         _group_ptr group = vec_get(groups, i);
+        if ((p_ptr->pclass == CLASS_BLUE_MAGE) && (!group->exists))
+        doc_printf(doc, " <color:D>%c) %s</color>\n", I2A(i), group->name);
+        else
         doc_printf(doc, " <color:y>%c</color>) %s\n", I2A(i), group->name);
     }
 }
 static vec_ptr _prompt_spell_group(mon_race_ptr race)
 {
     doc_ptr doc;
-    int     cmd, i;
+    int     cmd, i, j;
     vec_ptr groups = _spell_groups(race);
     vec_ptr spells = NULL;
 
     if (REPEAT_PULL(&cmd))
     {
+        bool okei = TRUE;
         i = A2I(cmd);
         if (0 <= i && i < vec_length(groups))
         {
             _group_ptr g = vec_get(groups, i);
-            spells = _spells_plr(race, g->filter);
+            spells = _spells_plr(race, g->filter, -1);
+            if (vec_length(spells) > 26)
+            {
+                okei = FALSE;
+                if (REPEAT_PULL(&cmd))
+                {
+                    i = A2I(cmd);
+                    if ((0 <= i) && (i < ((vec_length(spells) + 25) / 26)))
+                    {
+                        vec_free(spells);
+                        spells = _spells_plr(race, g->filter, i);
+                        okei = TRUE;
+                    }
+                    else vec_free(spells);
+                }
+                else vec_free(spells);
+            }
             vec_free(groups);
-            return spells;
+            if (okei) return spells;
+            else if (spells)
+            {
+                vec_free(spells);
+                spells = NULL;
+            }
         }
     }
 
@@ -4973,9 +5163,9 @@ static vec_ptr _prompt_spell_group(mon_race_ptr race)
     Term_save();
     for (;;)
     {
-        doc_clear(doc);
-        _list_groups(doc, groups);
-        _sync_term(doc);
+       doc_clear(doc);
+       _list_groups(doc, groups);
+       _sync_term(doc);
         cmd = _inkey();
         if (cmd == ESCAPE) break;
         if (islower(cmd))
@@ -4984,9 +5174,42 @@ static vec_ptr _prompt_spell_group(mon_race_ptr race)
             if (0 <= i && i < vec_length(groups))
             {
                 _group_ptr g = vec_get(groups, i);
-                spells = _spells_plr(race, g->filter);
+                spells = _spells_plr(race, g->filter, -1);
                 REPEAT_PUSH(cmd);
                 break;
+            }
+        }
+        doc_clear(doc);
+    }
+    if ((spells) && (vec_length(spells) > 26))
+    {
+        for (;;)
+        {
+            doc_clear(doc);
+            doc_insert(doc, " <color:R>Cast spell from which page?</color>\n");
+            for (j = 0; j < (vec_length(spells) + 25) / 26; j++)
+            {
+                doc_printf(doc, " <color:B>%c) Page %d</color>\n", I2A(j), j + 1);
+            }
+            _sync_term(doc);
+            cmd = _inkey();
+            if (cmd == ESCAPE)
+            {
+                vec_free(spells);
+                spells = NULL;
+                break;
+            }
+            if (islower(cmd))
+            {
+                j = A2I(cmd);
+                if ((0 <= j) && (j < (vec_length(spells) + 25) / 26))
+                {
+                    _group_ptr g = vec_get(groups, i);
+                    vec_free(spells);
+                    spells = _spells_plr(race, g->filter, j);
+                    REPEAT_PUSH(cmd);
+                    break;
+                }
             }
         }
     }
@@ -4997,8 +5220,9 @@ static vec_ptr _prompt_spell_group(mon_race_ptr race)
 }
 static bool _prompt_plr(mon_spell_cast_ptr cast)
 {
-    vec_ptr spells = _spells_plr(cast->race, NULL);
-    if (vec_length(spells) > 26)
+    vec_ptr spells = (p_ptr->pclass == CLASS_BLUE_MAGE) ? _prompt_spell_group(cast->race) : _spells_plr(cast->race, NULL, -1);
+    if (!spells) return FALSE;
+    if ((p_ptr->pclass != CLASS_BLUE_MAGE) && (vec_length(spells) > 26))
     {
         vec_free(spells);
         spells = _prompt_spell_group(cast->race);
@@ -5044,6 +5268,10 @@ static bool _prompt_plr(mon_spell_cast_ptr cast)
                 if (m_idx) _set_target(cast, m_idx);
             }
         }
+
+        /* Monster balls always target a square, so we need to hack player balls
+         * to allow aiming in a direction */
+        if (cast->spell->id.type == MST_BALL) _ball_stop_hack = ((ABS(cast->dest.x - px) == 99) || (ABS(cast->dest.y - py) == 99));
     }
     return cast->spell != NULL;
 }
@@ -5054,14 +5282,18 @@ bool mon_spell_cast_possessor(mon_race_ptr race)
     assert(cast.race->spells);
     if (_prompt_plr(&cast))
     {
-        int cost = _spell_cost(cast.spell, cast.race);
-        if (((cast.spell->flags & MSF_INNATE) || ((!p_ptr->msp) && (get_race()->pseudo_class_idx == CLASS_WARRIOR))) && p_ptr->csp < cost)
+        int cost = mon_spell_cost(cast.spell, cast.race);
+        if ((_hp_casting_okay(cast.spell)) && (p_ptr->csp < cost))
         {
             int hp = cost - p_ptr->csp;
             sp_player(-p_ptr->csp);
             take_hit(DAMAGE_USELIFE, hp, "concentrating too hard");
         }
         else sp_player(-cost);
+        if (p_ptr->pclass == CLASS_BLUE_MAGE)
+        {
+            if (cast.spell->lore < MAX_SHORT) cast.spell->lore++;
+        }
         _current = cast;
         _spell_cast_aux();
         memset(&_current, 0, sizeof(mon_spell_cast_t));
@@ -5075,5 +5307,127 @@ bool mon_spell_ai_wizard(mon_spell_cast_ptr cast)
     if ((cast->flags & MSC_DEST_MONSTER) && !_choose_target(cast)) return FALSE;
     if ((cast->flags & MSC_DEST_PLAYER) && !_default_ai(cast)) return FALSE;
     return _prompt_plr(cast);
+}
+
+static int _tutki_taso(mon_spell_id_t id)
+{
+    monster_race *r_ptr = &r_info[MON_FILTHY_RAG]; /* Hack */
+    if (!r_ptr->spells) r_ptr->spells = mon_spells_alloc();
+    if (id.type >= MST_COUNT) return 99;
+    else
+    {
+        mon_spell_ptr spell = mon_spells_find(r_ptr->spells, id);
+        if (spell) return spell->prob; /* Further hack - use "prob" field to store level */
+        else
+        {
+            mon_spell_t loitsu = {{0}};
+            int i, eka = 127, laskuri = 0, summa = 0;
+            loitsu.id = id;
+            for (i = 1; i < max_r_idx; i++)
+            {
+                monster_race *rr_ptr = &r_info[i];
+                if ((!rr_ptr) || (!rr_ptr->name) || (!rr_ptr->spells)) continue;
+                if (rr_ptr->flagsx & RFX_SUPPRESS) continue;
+                if (!mon_race_has_spell(rr_ptr, id.type, id.effect)) continue;
+                laskuri++;
+                summa += rr_ptr->level;
+                eka = MIN(eka, rr_ptr->level);
+            }
+            if (!laskuri)
+            {
+                loitsu.prob = 99;
+            }
+            else
+            {
+                static point_t _tbl1[5] = { {5, 1}, {25, 19}, {35, 26}, {55, 35}, {88, 44}};
+                static point_t _tbl2[5] = { {1, 10}, {5, 4}, {25, 0}, {100, -2}, {500, -5}};
+                summa = (summa + (laskuri / 2)) / laskuri;
+                if (summa > 70) summa += (summa - 70) / 2;
+                loitsu.prob = pienempi(50, isompi(1, interpolate(eka, _tbl1, 5) +
+                     ((summa - 50) / 10) + interpolate(laskuri, _tbl2, 5)));
+            }
+            mon_spells_add(r_ptr->spells, &loitsu);
+            return loitsu.prob;
+        }
+    }    
+}
+
+void blue_mage_learn_spell_aux(byte type, s16b effect, s16b lore, s16b seniority, bool noisy)
+{
+    monster_race *r_ptr = &r_info[MON_SEXY_SWIMSUIT];
+    mon_spell_t spell = {{0}};
+    int i;
+    string_ptr s;
+    bool loytyi = FALSE;
+    spell.id.type = type;
+    spell.id.effect = effect;
+    spell.prob = _tutki_taso(spell.id);
+    spell.lore = lore;
+
+    for (i = 1; i < max_r_idx; i++)
+    {
+        monster_race *rr_ptr = &r_info[i];
+        mon_spell_ptr spell2;
+        if ((!rr_ptr) || (!rr_ptr->name) || (!rr_ptr->spells) || (rr_ptr->flagsx & RFX_SUPPRESS)) continue;
+        spell2 = mon_spells_find(rr_ptr->spells, spell.id);
+        if (spell2)
+        {
+            spell.flags = spell2->flags;
+            spell.display = spell2->display;
+            if (noisy)
+            {
+                loytyi = TRUE;
+                s = string_alloc();
+                mon_spell_print(spell2, s);
+            }
+            break;
+        }
+    }
+    if ((noisy) && (loytyi))
+    {
+        msg_format("You have learned the spell %s.", string_buffer(s));
+        new_mane = TRUE;
+        string_free(s);
+    }
+    if (!r_ptr->spells) r_ptr->spells = mon_spells_alloc();
+    _blue_mage_group_hack = TRUE;
+    mon_spells_add(r_ptr->spells, &spell);
+    _blue_mage_group_hack = FALSE;
+
+    if (seniority < 1)
+    {
+        vec_ptr v = mon_spells_all(r_ptr->spells);
+        seniority = vec_length(v);
+        vec_free(v);
+    }
+    {
+        monster_race *rr_ptr = &r_info[MON_FILTHY_RAG];
+        mon_spell_ptr loitsu;
+        if ((!rr_ptr) || (!rr_ptr->name) || (!rr_ptr->spells)) return; /* paranoia - should never ever happen */
+        loitsu = mon_spells_find(rr_ptr->spells, spell.id);
+        if (loitsu) loitsu->lore = seniority; /* Hack - we use swimsuit lore to track casts and rag lore to track spell seniority */
+    }
+}
+
+void blue_mage_learn_spell(void)
+{
+    if (p_ptr->action != ACTION_LEARN) return;
+    if (p_ptr->pclass != CLASS_BLUE_MAGE) return;
+    if ((p_ptr->confused) || (p_ptr->blind) || (p_ptr->image) || (p_ptr->stun) || (p_ptr->paralyzed)) return;
+    if (!(_current.spell)) return;
+    if (!(_current.flags & MSC_SRC_MONSTER)) return;
+    if (!(_current.flags & MSC_DEST_PLAYER)) return;
+    if (_current.flags & MSC_SPLASH) return;
+    if ((!_current.mon) || (!_current.mon->ml)) return;
+    if (!los(py, px, _current.src.y, _current.src.x)) return;
+    if (_spell_is_(_current.spell, MST_SUMMON, SUMMON_SPECIAL)) return;
+    if (_spell_is_(_current.spell, MST_SUMMON, SUMMON_PANTHEON)) return;
+    if (_spell_is_(_current.spell, MST_BOLT, GF_ATTACK)) return;
+    if (_current.spell->id.type >= MST_COUNT) return; /* paranoia */
+    if (mon_race_has_spell(&r_info[MON_SEXY_SWIMSUIT], _current.spell->id.type, _current.spell->id.effect)) return;
+    if (randint1(p_ptr->lev + 70) > _tutki_taso(_current.spell->id) + 40)
+    {
+        blue_mage_learn_spell_aux(_current.spell->id.type, _current.spell->id.effect, 0, 0, TRUE);
+    }
 }
 
