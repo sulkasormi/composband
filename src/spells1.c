@@ -1940,6 +1940,7 @@ static bool project_p(int who, cptr who_name, int r, int y, int x, int dam, int 
     {
         byte t_y, t_x;
         int max_attempts = 10;
+        static bool _lukko = FALSE;
 
         if (blind) msg_print("Something bounces!");
         else msg_print("The attack bounces!");
@@ -1970,7 +1971,15 @@ static bool project_p(int who, cptr who_name, int r, int y, int x, int dam, int 
             t_x = px - 2 + randint0(5);
         }
 
+        if ((p_ptr->action == ACTION_LEARN) && (!_lukko) && (who > 0))
+        {
+            blue_mage_learn_spell();
+            _lukko = TRUE;
+        }
+
         project(0, 0, t_y, t_x, dam, typ, (PROJECT_STOP|PROJECT_KILL|PROJECT_REFLECTABLE));
+
+        _lukko = FALSE;
 
         disturb(1, 0);
         return TRUE;
