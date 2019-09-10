@@ -2494,6 +2494,7 @@ extern race_t *wolf_get_race(void);
 /* classes.c */
 extern class_t *get_class(void);
 extern class_t *get_class_aux(int pclass, int psubclass);
+extern bool class_is_deprecated(int i);
 extern int lookup_class_idx(cptr name);
 extern int get_class_idx(void);
 extern caster_info *get_caster_info(void);
