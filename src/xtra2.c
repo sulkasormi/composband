@@ -2860,8 +2860,8 @@ bool mon_take_hit(int m_idx, int dam, bool *fear, cptr note)
         {
             if (r_ptr->flags1 & RF1_UNIQUE)
                 virtue_add(VIRTUE_JUSTICE, 3);
-            else if (1+((r_ptr->level) / 10 + (2 * dun_level))
-                >= randint1(100))
+            else if (((r_ptr->level) / 10 + (2 * dun_level))
+                >= randint0(100))
                 virtue_add(VIRTUE_JUSTICE, 1);
         }
         else if (innocent)
