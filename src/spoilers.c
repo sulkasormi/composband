@@ -1129,7 +1129,7 @@ static _class_group_t _class_groups[_MAX_CLASS_GROUPS] = {
                     CLASS_WEAPONSMITH, -1} },
     { "Archery", {CLASS_ARCHER, CLASS_SNIPER, -1} },
     { "Martial Arts", {CLASS_FORCETRAINER, CLASS_MONK, CLASS_MYSTIC, -1} },
-    { "Magic", {CLASS_BLOOD_MAGE, CLASS_GRAY_MAGE, CLASS_HIGH_MAGE, CLASS_MAGE,
+    { "Magic", {CLASS_BLOOD_MAGE, CLASS_BLUE_MAGE, CLASS_GRAY_MAGE, CLASS_HIGH_MAGE, CLASS_MAGE,
                     CLASS_NECROMANCER, CLASS_SORCERER, CLASS_YELLOW_MAGE, -1} },
     { "Devices", {CLASS_ALCHEMIST, CLASS_DEVICEMASTER, CLASS_MAGIC_EATER, -1} },
     { "Prayer", {CLASS_PRIEST, -1} },
@@ -1657,7 +1657,7 @@ static void _skills_class_table(FILE* fp)
     {
         int max_j = 1;
 
-        if (i == CLASS_MONSTER || i == CLASS_XXX12 || i == CLASS_XXX21)
+        if (i == CLASS_MONSTER || class_is_deprecated(i))
             continue;
         else if (i == CLASS_WEAPONMASTER)
             max_j = WEAPONMASTER_MAX;
@@ -1702,7 +1702,7 @@ static void _spells_table(FILE* fp) /*m_info.txt*/
     {
         class_t      *class_ptr;
         player_magic *magic_ptr;
-        if (class_idx == CLASS_XXX12 || class_idx == CLASS_XXX21) continue;
+        if (class_is_deprecated(class_idx)) continue;
         class_ptr = get_class_aux(class_idx, 0);
         magic_ptr = &m_info[class_idx];
         for (realm_idx = REALM_LIFE; realm_idx <= MAX_MAGIC; realm_idx++)
