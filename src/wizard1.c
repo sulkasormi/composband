@@ -2197,7 +2197,7 @@ static void spoil_spells_by_class(void)
 
     for (i = 0; i < MAX_CLASS; i++)
     {
-        if (i == CLASS_XXX12 || i == CLASS_XXX21) continue;
+        if (class_is_deprecated(i)) continue;
         vec_add_int(vec, i);
     }
 
@@ -2297,7 +2297,7 @@ static void _spoil_spells_by_realm_aux2(int realm_idx, int class1_idx)
 
     for (class_idx = 0; class_idx < MAX_CLASS; class_idx++)
     {
-        if (class_idx == CLASS_XXX12 || class_idx == CLASS_XXX21) continue;
+        if (class_is_deprecated(class_idx)) continue;
         if (_check_realm(class_idx, realm_idx))
             vec_add_int(vec, class_idx);
     }
@@ -2345,7 +2345,7 @@ static void _spoil_spells_by_realm_aux1(int realm_idx)
 
     for (class_idx = 0; class_idx < MAX_CLASS; class_idx++)
     {
-        if (class_idx == CLASS_XXX12 || class_idx == CLASS_XXX21) continue;
+        if (class_is_deprecated(class_idx)) continue;
         if (_check_realm(class_idx, realm_idx))
             vec_add_int(vec, class_idx);
     }
