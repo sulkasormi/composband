@@ -387,6 +387,14 @@ static void do_cmd_wiz_change(void)
     do_cmd_redraw();
 }
 
+/* Blue-Mage - learn spells for free */
+static void do_cmd_wiz_blue_mage(void)
+{
+    int n = get_quantity("Which type? ", MST_COUNT - 1);
+    int e = get_quantity("Which effect? ", 200);
+    blue_mage_learn_spell_aux(n, e, 0, 0, TRUE);
+}
+
 /*
  * A structure to hold a tval and its description
  */
@@ -1574,6 +1582,11 @@ void do_cmd_debug(void)
     /* Edit character */
     case 'e':
         do_cmd_wiz_change();
+        break;
+
+    /* Blue-Mage spells */
+    case 'E':
+        do_cmd_wiz_blue_mage();
         break;
 
     /* View item info */
