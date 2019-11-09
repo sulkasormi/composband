@@ -5895,6 +5895,7 @@ void move_player(int dir, bool do_pickup, bool break_trap)
     {
         /* FYI: Either the player was blocked from movement -OR- the player attacked
            because a monster was in the way.*/
+        if ((!energy_use) && (travel.mode != TRAVEL_MODE_NORMAL)) travel_cancel_fully(); /* disturb doesn't cancel autoget */
     }
     /*
      * Player can move through trees and
