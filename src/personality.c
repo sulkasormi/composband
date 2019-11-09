@@ -1081,7 +1081,8 @@ void split_shuffle(bool birth)
          mut_unlock(MUT_BAD_LUCK);
          mut_lose(MUT_BAD_LUCK);
      }
-     if ((_new_status[PERS_CHAOTIC] == SPLIT_SUPPRESSED) && (_split_status[PERS_CHAOTIC] != SPLIT_SUPPRESSED))
+     if ((_new_status[PERS_CHAOTIC] == SPLIT_SUPPRESSED) && (_split_status[PERS_CHAOTIC] != SPLIT_SUPPRESSED) && 
+         (p_ptr->pclass != CLASS_CHAOS_WARRIOR))
      {
          mut_unlock(MUT_CHAOS_GIFT);
          mut_lose(MUT_CHAOS_GIFT);
