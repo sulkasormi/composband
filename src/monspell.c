@@ -5300,6 +5300,7 @@ bool mon_spell_cast_possessor(mon_race_ptr race)
         _current = cast;
         _spell_cast_aux();
         memset(&_current, 0, sizeof(mon_spell_cast_t));
+        p_inc_fatigue(MUT_EASY_TIRING2, 50 + MIN(50, cost / 2));
         return TRUE;
     }
     return FALSE;
