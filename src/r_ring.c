@@ -1321,6 +1321,7 @@ void ring_cast(void)
             energy_use = 0;
         }
     }
+    if (energy_use == 100) p_inc_fatigue(MUT_EASY_TIRING2, 50 + MIN(50, spell.cost / 2));
     p_ptr->redraw |= PR_MANA;
     p_ptr->redraw |= PR_HP;
     p_ptr->window |= PW_SPELL;
