@@ -687,7 +687,7 @@ static int _get_powers(spell_info* spells, int max)
 
 static void _gain_level(int new_level)
 {
-    if ((new_level > 1) && (p_ptr->personality != PERS_CHAOTIC)) /* avoid double reward */
+    if ((new_level > 1) && (!mut_present(MUT_CHAOS_GIFT))) /* avoid double reward */
         chaos_warrior_reward();
 }
 
