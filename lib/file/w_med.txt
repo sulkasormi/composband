@@ -1,187 +1,87 @@
 N: 1:BIAS_ELEC
-'Lightning'
-'Lightning Blade'
-'Thunder Fang'
 'Blue Thunder'
-'Lightning Heart'
-'Thunderstriker'
-'Purple Lightning'
-'Hurricane'
 'Typhoon'
-'Tempest'
 'Storm Seeker'
-of Electricity
+'Tempest'
 of Energy
 
 N: 2:BIAS_POIS
-'Hornet'
-'Hydrazone'
-'Mercapto'
-'Chloride'
-'Poison Needle of Wasp'
-'Snake Fang'
-'Stinger'
-'Vipera's Fang'
-'Aflatoxin'
-'Needle Brand'
 'Assassin'
 'Scorpion'
 'Poison Brand'
 'Marsh Viper'
-'Poison Tornado'
 'Assassinstrike'
-of Venoms
-of Poison
 of the Black Adder
 
 N: 3:BIAS_FIRE
-'Flame Saber'
-'Fire Whip'
-'Fire Thorn'
-'Flame's Toungue'
-'Fire Brand'
 'Prominence'
 'Fire Tornado'
-'Burning Hammer'
-'Roaring Flames'
-'Heliotropic Wind'
-'Desert Sun'
+'Hot Wolf'
+'Hell's Tooth'
 of Solar Wind
-of Flame
 of Zhuque
-of Aziraphale
+of Vallach
 
 N: 4:BIAS_COLD
 'Silver Frost'
 'Icicle'
-'Ice Edge'
-'Freezing Point'
-'Frost Brand'
-'General of Winter'
-'Ice Climber'
 'White Death'
-'Crescent Moon'
-'Arctic Moon'
-'North Wind'
 'Frostbite'
-of Aurora
 of Alaska
-of Ezo
 of the Winter Wonderland
-of Cold Fury
 of the Abominable Snowman
 
 N: 5:BIAS_ACID
-'Rust Monster'
-'Sulfuric Acid'
-'Melted-in Balm'
-'Acid Blade'
-'Rustbringer'
 'Acid Drop'
-'Nitrate'
-'Preoxy'
 'Sargassonne'
 'Eliminator'
 of the Cube Prince
 of the Icky Queen
 
 N:12:BIAS_CHAOS
-'Cyclcraze'
-'Armageddon'
-'Chaosbane'
-'Warped Edge'
 'Lawslayer'
 'Distorter'
 'Banquet of Azathoth'
 'Cosmic Horror'
-'Amanitaceae Aroma'
-'Pandemonium'
-'Mandible'
-of Ron the Deathwreaker
-of Changes
-of Nick the Butcher
-of Dara
 of Gehn
 of Hionhurn
-of Nothingness
 
 N:14:BIAS_NECROMANTIC
-'Reaper'
-'Chief of Souls'
-'Edge of Miasma'
-'Death Sword'
-'Hell Blade'
-'Zombie Claw'
-'Pestilence'
-'Night Blade'
-'Dark Banisher'
 'Bloody Mary'
 'Scream of the Damned'
 'Scarlet Silk'
 'Manhunter'
-'Soulgobbler'
-'Death Metal'
-'Deathstick'
-of Helthing
 of Helband
-of Darkness Storm
-of Genocide
 of Thuringwethil
-of Dusk's Lament
 of the Erlking
+of the Styx
+of Nosferatu
+of Asmodeus
 
 N:15:BIAS_LAW
 N:13:BIAS_PRIESTLY
 N: 8:BIAS_WIS
 'Lawgiver'
-'Sun Sword'
 'Demonbane'
-'Gospel'
-'Advent'
-'Mundwine'
 'God Hand'
-'Ray Storm'
-'Crusader'
-'Demonbane'
-'Lightbringer'
-'Joyeuse'
-'Shiningcalibur'
-of Saladin
 of Holiness
 of Justice
 of the Priests
-of Awe
-of Mind
 of Soul
-of the Dawn
 of Pantheras
-of the Knights Templar
+of Mother Teresa
 
 N:16:BIAS_ROGUE
-'Thiefbane'
-'Quylthulg Smasher'
-'Cat's Claw'
-'Shinobi'
 'Speed King'
-'Quicker'
-'Spriggan'
-'Crimson Kiss'
+'Silencer'
 of the Night
-of Jack of Shadows
-of Koga
 of the Superlemming
 of the Spymaster
 
 N:17:BIAS_MAGE
 N: 7:BIAS_INT
-'Magicbane'
-'Hucker'
 'Manabringer'
-'Mirror of Seeing'
-'Whip of Evil Eye'
 'Brainstorm'
-'Laplace's Devil'
-'Norn Iron'
 of Grand Wizardry
 of Zarathustra
 of Ritual
@@ -190,91 +90,40 @@ of Logimagix
 N:18:BIAS_WARRIOR
 N: 6:BIAS_STR
 N:10:BIAS_CON
-'Skullbasher'
-'Bonebreaker'
-'Skullbuster'
-'Skull Smasher'
-'Sidesplitter'
 'Giant Strength'
-'Dragonbane'
-'Cycle of Life'
-'Bull Elephant'
+'Bonebreaker'
 'Warrior's Honor'
-'Dyrnwyn'
 of Rage
-of Crushing
-of Tomoe
-of Halbarad
 of Erkenbrando
-of the Edgelord
 of Genghis Khan
+of Conquest
 of Lorgan
-of Lokar
-of Attila
+of Ulath
 
 N: 9:BIAS_DEX
-'Gilettar'
-'Elvagil'
-'Orchast'
-'Cleaver'
-'Buttle Mastery'
-'Limbslicer'
-'Bryionak'
 'Mutant Smiley'
-of the Master
 of Charismatic Cook
-of Bobior
+of Nimipula
 
 N:19:BIAS_RANGER
-'Eaglesword'
-'Tigarbaton'
-'Lionfang'
-'Sharkcutter'
-'Bisonaxe'
-'Sunstrike'
 'Hellwind'
-'Shooting Star'
-'Autumn Harvest'
 'Grassroot'
 of the Eagle Lord
-of Entanglement
 of the Druid
 of the Valkyrie
 
 N:*:Default
 'Weapon Alpha'
-'Werebane'
-'Kitchen Sink'
-'Dragon Claw'
-'Kraken'
-'Blue Steele'
 'Fury'
 'Howler'
-'Hour Past Midnight'
 'Roarer'
-'Red October'
-'Weapon of Choice'
 'Witchfire'
-'Lord of Flies'
 'Bloodrain'
-'Delta'
-'Cutting Edge'
-'Perfectly Normal Weapon'
-'Pacifier'
-'Standart'
-'Cakecutter'
 'Fight Insurance'
 'Murder Weapon'
 'Old Gory'
 'Orphanizer'
 'Lootbringer'
-of Joshua
-of Damocles
-of the Shogun
-of the Borg
-of Hatred
-of Osric
-of Finndo
+'Deathblow'
 of Gibbitude
-of the Human Prince
-of Elmo
+
