@@ -6,6 +6,7 @@ N:*:Default
 'Bright Spark'
 'Centennial Light'
 'Corona'
+'Epic Phial'
 'Everyellow'
 'Eye of Argon'
 'Fairie Light'
@@ -14,6 +15,7 @@ N:*:Default
 'Foxfire'
 'Glow in the Dark'
 'Headlight'
+'Heart of Gundabad'
 'Hunk of Orium'
 'Lucky Star'
 'Mimosa'
@@ -56,3 +58,4 @@ of Arien
 of Aglarond
 of Devouring Lightness
 of the Buddha
+of Mazda
