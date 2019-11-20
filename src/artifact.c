@@ -1869,19 +1869,44 @@ static void get_random_name_aux(char *return_name, object_type *o_ptr, int power
                 }
             }
         }
-        else
+        else /* weapon/digger */
         {
-            switch (power)
+            int _odds = (bias_hack <= 0) ? 6 : 17;
+            if (o_ptr->tval == TV_DIGGING) _odds = 2;
+            if (one_in_(_odds))
             {
-            case 0:
-                filename = "w_cursed.txt";
-                break;
-            case 1:
-            case 2:
-                filename = "w_med.txt";
-                break;
-            default:
-                filename = "w_high.txt";
+                filename = "w_types.txt";
+                bias_hack = (100 * o_ptr->tval) + o_ptr->sval;
+            }
+            else if ((o_ptr->tval != TV_DIGGING) && (magik((power == 2) ? 33 : 55)))
+            {
+                switch (o_ptr->tval)
+                {
+                    case TV_SWORD:
+                        filename = "w_sword.txt";
+                        break;
+                    case TV_HAFTED:
+                        filename = "w_hafted.txt";
+                        break;
+                    default:
+                        filename = "w_pole.txt";
+                        break;
+                }
+            }
+            else
+            {
+                switch (power)
+                {
+                case 0:
+                    filename = "w_cursed.txt";
+                    break;
+                case 1:
+                case 2:
+                    filename = "w_med.txt";
+                    break;
+                default:
+                    filename = "w_high.txt";
+                }
             }
         }
 
