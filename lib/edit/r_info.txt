@@ -22853,7 +22853,7 @@ P:Stats:0:0:0:0:3:2
 P:Life:105
 S:1_IN_3 |
 S:HEAL | BR_NETHER | BA_NETHER(10d10+230) | S_HI_UNDEAD | BO_MANA | BA_DARK |
-S:BA_MANA | HAND_DOOM | S_SPECIAL | S_MONSTER | BR_FORCE | BR_NEXUS |
+S:MANA_STORM | HAND_DOOM | S_SPECIAL | S_MONSTER | BR_FORCE | BR_NEXUS |
 S:BA_NEXUS(10d10+138) | HASTE | ANIM_DEAD | PSY_SPEAR(1d184+160) | CAUSE_4 |
 D:The divine king of Egypt, Osiris was murdered and usurped by his brother
 D:Seth, and resurrected by his wife Isis and posthumous son Horus. He is now
