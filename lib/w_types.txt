@@ -1,0 +1,278 @@
+N:2001:Shovel
+N:2002:Gnomish Shovel
+N:2003:Dwarven Shovel
+N:2004:Pick
+N:2005:Orcish Pick
+N:2006:Dwarven Pick
+N:2007:Mattock
+'Gravedigger'
+'Ace of Spades'
+'Vein Opener'
+'Nuntius'
+'Gold Rush'
+of the Litter
+of the Long Dark
+of the Treasure Hunter
+of Golgotha
+
+N:2101:Club
+'Referee'
+'Potato Masher'
+'Club of Kings'
+'One Club'
+
+N:2102:Whip
+'Wizardcatcher'
+'Earbreaker'
+'Unsexy Whip'
+'Outsider'
+of Narse
+
+N:2103:Quarterstaff
+N:2104:Nunchaku
+N:2107:Jo Staff
+N:2111:Three Piece Rod
+N:2114:Bo Staff
+N:2121:Wizardstaff
+'Chopstaff'
+'Slapstick'
+'Bumper'
+'Big Bang'
+'Megapower'
+of Fezzik
+of Kepitys
+of Zoidberg
+of Circe
+of Dionysus
+of Gonnosuke
+of Michelangelo
+
+N:2105:Mace
+N:2115:Lead-Filled Mace
+N:2120:Mace of Disruption
+'Lachrymator'
+'Sharur'
+'Kaumodaki'
+'Nembutal'
+of Hanuman
+
+N:2112:Morning Star
+N:2113:Flail
+N:2116:Tetsubo
+N:2118:Two-Handed Flail
+'Ticket to Paradise'
+'Flying Hedgehog'
+'Spikemaster'
+'Rising Sun'
+'Thrasher'
+'Death Star'
+of Anambar
+of Positivity
+
+N:2106:Ball-and-Chain
+'Old Wife'
+'Brass Ball'
+'Spacestar'
+
+N:2108:War Hammer
+N:2119:Great Hammer
+N:2150:Mighty Hammer
+'Iron Whale'
+'Attitude Adjuster'
+'Ironhammer'
+'Bronze Hammer'
+of Anita
+of Zeppo
+of Spock
+of Byluck
+of Bazhdog
+
+N:2151:Baseball Bat
+of the Time Lord
+of Homer
+of Komu
+'Rocketbat'
+'Lost in Time'
+
+N:2163:Stick
+'loving idleness'
+of wgasa
+
+N:2201:Hatchet
+N:2210:Beaked Axe
+N:2211:Broad Axe
+N:2222:Battle Axe
+N:2225:Great Axe
+N:2228:Lochaber Axe
+'Kneebiter'
+'Amputator'
+'Timberbane'
+'Barukade'
+'Wellborn'
+of Nogrod
+of Belegost
+of the Longbeards
+of Shallag
+of Zirak
+of Ae'gura
+of Parashurama
+
+N:2202:Spear
+N:2204:Awl-Pike
+N:2205:Trident
+N:2207:Broad Spear
+N:2208:Pike
+N:2226:Trifurcate Spear
+'Oddpoint'
+'Rhongomiant'
+'Bryionak'
+'Bull Moose'
+'Happy Defender'
+'Gae Derg'
+'Horntip'
+'Otegine'
+'Heart Surgeon'
+of Osse
+of Jangar
+of Pushiness
+of Egil
+
+N:2203:Sickle
+'Haymaker'
+'Red October'
+'Weapon of Choice'
+
+N:2206:Fauchard
+N:2209:Naginata
+N:2212:Lucerne Hammer
+N:2214:Lajatang
+N:2215:Halberd
+N:2216:Guisarme
+'Deathspike'
+'Long Arm of the Law'
+'Spillgut'
+'Lifehacker'
+of Melgor
+of Vortigern
+of Hangaku
+of Halbarad
+of Honalee
+
+N:2220:Lance
+N:2229:Heavy Lance
+'Wyrmlance'
+'Dead Ent'
+of the Lonely Knight
+of the Marshal
+of the Pink Panther
+of Perivor
+
+N:2213:Glaive
+of Maim
+of Zonic
+of Gibbitude
+
+N:2217:Scythe
+N:2230:Scythe of Slicing
+'Life Harvester'
+'Grim Reaper'
+'Merry Reaper'
+'Tigerslicer'
+
+N:2240:Fishingpole
+'Inner Peace'
+'Gone Looting'
+'Dragoncatcher'
+of Gelane
+of Galileo
+
+N:2301:Broken Dagger
+N:2302:Broken Sword
+of Nomo
+of Jericho
+'Past Glory'
+'Reforge Fodder'
+'Curtana'
+
+N:2304:Dagger
+N:2308:Small Sword
+'Baby Tooth'
+'No Dice'
+'Runedagger'
+'Topaz Hilt'
+'Micro Sword'
+'Redblade'
+of Voronwe
+of Isengar
+
+N:2305:Main Gauche
+N:2306:Tanto
+N:2307:Rapier
+N:2309:Basillard
+N:2310:Short Sword
+N:2311:Sabre
+N:2312:Cutlass
+N:2313:Wakizashi
+N:2314:Khopesh
+N:2315:Tulwar
+N:2316:Broad Sword
+N:2317:Long Sword
+N:2318:Scimitar
+N:2319:Ninjato
+N:2320:Katana
+N:2321:Bastard Sword
+N:2322:Falchion
+N:2323:Claymore
+N:2324:Espadon
+N:2325:Two-Handed Sword
+N:2326:Flamberge
+N:2327:No-dachi
+N:2328:Executioner's Sword
+N:2329:Zweihander
+N:2331:Diamond Edge
+N:2333:Falcon Sword
+'Bloodsampler'
+'Masterkey'
+'Babysplitter'
+'Dreamkiller'
+'Varmahuti'
+'Widowmaker'
+'Zinging Blade'
+'Galatine'
+'Brainbiter'
+'Skin Opener'
+of Carla
+of Malkier
+of Elethiomel
+of Mandorin
+of Beamishness
+of Menelvagor
+of Artegal
+of Ecthelion
+of Azog
+of Rundorig
+of Rust
+of Neithan
+
+N:2330:Blade of Chaos
+'Hand of Doom'
+'Battleturner'
+of Habu
+of Disorder
+of Infinity
+
+N:2335:Dragon Fang
+'Manbiter'
+'Baby Fang'
+'Wartooth'
+of Bahamut
+of Pryftidustulyx
+
+N:*:Default
+'Forget-Me-Not'
+'Exterminator'
+'Weird Thing'
+'Unexpected Find'
+'Bug Surprise'
+of the Bug Reporter
+of Bizarro

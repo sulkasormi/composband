@@ -1,0 +1,116 @@
+N: 1:BIAS_ELEC
+'Lightning'
+'Atomizer'
+'Hurricane'
+of Electricity
+of Groucho
+
+N: 2:BIAS_POIS
+'Hornet'
+'Chloride'
+'Aflatoxin'
+'Poison Tornado'
+
+N: 3:BIAS_FIRE
+'Catroaster'
+'Heliotropic Wind'
+'Roaring Flames'
+'Tulirepo'
+'Radiator'
+of Flame
+
+N: 4:BIAS_COLD
+'Crescent Moon'
+'Ice Climber'
+'Beast of the North'
+of the Lossoth
+of Jadis
+of Aurora
+
+N: 5:BIAS_ACID
+'Sulfuric Acid'
+'Nitrate'
+'Preoxy'
+'Uranium Hand'
+
+N:12:BIAS_CHAOS
+'Chaosbane'
+'Pandemonium'
+of Dara
+of Horna
+of Zhozzap
+of Nick the Butcher
+
+N:14:BIAS_NECROMANTIC
+'Edge of Miasma'
+'Reaper'
+'Zombie Claw'
+'Pestilence'
+'Death Hack'
+of Darkness Storm
+of the Dark Knight
+of the Underworld
+
+N:15:BIAS_LAW
+N:13:BIAS_PRIESTLY
+N: 8:BIAS_WIS
+'Mundwine'
+'Crusader'
+'Holy Cleanser'
+of Awe
+of the Dawn
+of Pollyanna
+of the Knights Templar
+of Aslan
+of Leodegran
+
+N:16:BIAS_ROGUE
+'Cat's Claw'
+'Quicker'
+'Spriggan'
+of Silence Dogood
+of Moleman
+
+N:17:BIAS_MAGE
+N: 7:BIAS_INT
+'Magicbane'
+'Laplace's Devil'
+of Napoleon
+of Raistlin
+of Imladris
+
+N:18:BIAS_WARRIOR
+N: 6:BIAS_STR
+N:10:BIAS_CON
+'Skullbuster'
+'Nutcracker'
+'Cycle of Life'
+of the Ogre Queen
+of Lokar
+of Aybara
+of Wargun
+of Uvar
+of Eomer
+
+N: 9:BIAS_DEX
+'Cleaver'
+'Limbslicer'
+'Fine Art'
+
+N:19:BIAS_RANGER
+'Bisonaxe'
+'Autumn Harvest'
+'Death of Rats'
+of the Green Knight
+
+N:*:Default
+'Dragon Claw'
+'Werebane'
+'Hour Past Midnight'
+'Kraken'
+'Mind Flayer'
+of Vena
+of Wacune
+of Hatred
+of the Human Prince
+of the Edain

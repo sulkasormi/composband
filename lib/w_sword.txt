@@ -1,0 +1,121 @@
+N: 1:BIAS_ELEC
+'Lightning Blade'
+'Starblade'
+'Thunder Fang'
+'Ionic Storm'
+'Fragarach'
+
+N: 2:BIAS_POIS
+'Poison Needle of Wasp'
+'Snake Fang'
+'Stinger'
+'Vipera's Fang'
+'Needle Brand'
+
+N: 3:BIAS_FIRE
+'Flame Saber'
+'Fire Thorn'
+'Flame's Tongue'
+'Fire Brand'
+'Nargil'
+'Summerblade'
+'Callandor'
+of Aziraphale
+
+N: 4:BIAS_COLD
+'Ringil's Aunt'
+'Ice Edge'
+'Freezing Point'
+'Frost Brand'
+'Snowblade'
+'North Wind'
+
+N: 5:BIAS_ACID
+'Acid Blade'
+'Rustbringer'
+'Skin Eater'
+of Sulawesi
+of Sludge
+
+N:12:BIAS_CHAOS
+'Mandible'
+'Warped Edge'
+of Ron the Deathwreaker
+of Changes
+of Nothingness
+of Mordred
+
+N:14:BIAS_NECROMANTIC
+'Night Blade'
+'Hell Blade'
+'Death Sword'
+'Soulgobbler'
+'Death Metal'
+'Deadthorn'
+of Adunaphel
+of Ganelon
+
+N:15:BIAS_LAW
+N:13:BIAS_PRIESTLY
+N: 8:BIAS_WIS
+'Sun Sword'
+'Joyeuse'
+'Shiningcalibur'
+'Divine Wind'
+of Pellinore
+of Avalon
+of Saladin
+
+N:16:BIAS_ROGUE
+'Shinobi'
+'Crimson Kiss'
+of Koga
+of the Shadower
+of Kurki
+
+N:17:BIAS_MAGE
+N: 7:BIAS_INT
+'Norn Iron'
+'Occam's Razor'
+'Mind Opener'
+of Martel
+of Lego
+
+N:18:BIAS_WARRIOR
+N: 6:BIAS_STR
+N:10:BIAS_CON
+'Dyrnwyn'
+'Steel Dragon'
+'Sidesplitter'
+'Dragonbane'
+of the Edgelord
+of Attila
+of Tomoe
+of Inigo
+of Kaleva
+of Telumehtar
+of Kamalu
+
+N: 9:BIAS_DEX
+'Gilettar'
+'Elvagil'
+'Orchast'
+of Rugen
+
+N:19:BIAS_RANGER
+'Eaglesword'
+'Lionfang'
+'Sharkcutter'
+'Kingsfoil'
+
+N:*:Default
+'Cutting Edge'
+'Cakecutter'
+'Blue Steele'
+'Sharpie'
+'Wolf-Fang'
+of Damocles
+of Orion
+of Osric
+of Finndo
+of the Shogun

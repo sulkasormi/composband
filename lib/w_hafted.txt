@@ -1,0 +1,115 @@
+N: 1:BIAS_ELEC
+'Lightning Heart'
+'Purple Lightning'
+'Thunderstriker'
+of the Sky-Smith
+of Tishtrya
+
+N: 2:BIAS_POIS
+'Hydrazone'
+'Mercapto'
+of Venoms
+of Poison
+
+N: 3:BIAS_FIRE
+'Fire Whip'
+'Burning Hammer'
+'Fist of the Phoenix'
+'Desert Sun'
+'Flamingo'
+of Duruin
+
+N: 4:BIAS_COLD
+'Arctic Moon'
+'General of Winter'
+'Cool Thing'
+of Cold Fury
+of Ezo
+
+N: 5:BIAS_ACID
+'Rust Monster'
+'Melted-in Balm'
+'Icky Thing'
+'Acid of the Ants'
+
+N:12:BIAS_CHAOS
+'Armageddon'
+'Amanitaceae Aroma'
+'Cyclcraze'
+of the Mad Monk
+of Mormegauth
+
+N:14:BIAS_NECROMANTIC
+'Chief of Souls'
+'Dark Banisher'
+'Deathstick'
+'Nightstick'
+'Unholy Avenger'
+of Helthing
+of Dusk's Lament
+of Genocide
+
+N:15:BIAS_LAW
+N:13:BIAS_PRIESTLY
+N: 8:BIAS_WIS
+'Yagrush'
+'Ayamur'
+'Lightbringer'
+'Gospel'
+'Advent'
+'Ray Storm'
+of Hammurabi
+of Mind
+
+N:16:BIAS_ROGUE
+'Quylthulg Smasher'
+'Thiefbane'
+'Silent Hammer'
+of Jack of Shadows
+
+N:17:BIAS_MAGE
+N: 7:BIAS_INT
+'Whip of Evil Eye'
+'Hucker'
+'Mirror of Seeing'
+'Thaumic Thumper'
+of Ninurta
+
+N:18:BIAS_WARRIOR
+N: 6:BIAS_STR
+N:10:BIAS_CON
+'Skullbasher'
+'Skull Smasher'
+'Brain Smasher'
+'Bull Elephant'
+'Chainhammer'
+'Mindkiller'
+of Chodak
+of Crushing
+of Hercules
+of Rugila
+
+N: 9:BIAS_DEX
+'Buttle Mastery'
+of the Master
+of Bobior
+
+N:19:BIAS_RANGER
+'Tigarbaton'
+'Shooting Star'
+'Sunstrike'
+of Entanglement
+
+N:*:Default
+'Wristbreaker'
+'Lord of Flies'
+'Delta'
+'Pacifier'
+'Standart'
+'Earth-Flattener'
+'Kitchen Sink'
+'Perfectly Normal Weapon'
+of Joshua
+of the Borg
+of Swat
+of Elmo
