@@ -2926,7 +2926,8 @@ long total_points(void)
     if (wacky_rooms) mult += 10;
     if (thrall_mode) mult += (p_ptr->personality == PERS_SEXY) ? 50 : 10;
     if ((melee_challenge) && (p_ptr->pclass != CLASS_BERSERKER)) mult += 30;
-    if ((no_melee_challenge) && (p_ptr->pclass != CLASS_SORCERER) && (!prace_is_(RACE_MON_QUYLTHULG))) mult += 40;
+    if ((no_melee_challenge) && (p_ptr->pclass != CLASS_SORCERER) && (!prace_is_(RACE_MON_QUYLTHULG))
+        && (!prace_is_(RACE_MON_RING))) mult += 40;
     if (easy_damage) mult /= 2;
     if (coffee_break)
     {
