@@ -111,7 +111,7 @@ static void _calc_bonuses(void)
     p_ptr->sustain_dex = TRUE;
     p_ptr->sustain_con = TRUE;
     p_ptr->regen += 100;
-    p_ptr->free_act++;
+    p_ptr->free_act += 3;
     p_ptr->pspeed += 2;
     if (p_ptr->lev >= 30) p_ptr->pspeed++;
     if (p_ptr->lev >= 40) p_ptr->pspeed++;
