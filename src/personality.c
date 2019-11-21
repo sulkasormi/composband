@@ -1045,11 +1045,15 @@ void split_shuffle(bool birth)
      byte _new_status[MAX_PERSONALITIES] = {0}, laskuri = 0, i;
      int prob;
      byte muutos = 0;
-     for (i = 0; i < MAX_PERSONALITIES; i++)
+     if ((birth) || (!one_in_(7)))
      {
-         if (_split_status[i])
+         for (i = 0; i < MAX_PERSONALITIES; i++)
          {
-             if (one_in_(++laskuri)) _split_dominant = i;
+             if (_split_status[i])
+             {
+                 laskuri++;
+                 if (one_in_(laskuri)) _split_dominant = i;
+             }
          }
      }
 //     msg_format("Dominant personality: %s", get_personality_aux(_split_dominant)->name);
@@ -1192,7 +1196,7 @@ void split_save(savefile_ptr file)
 void split_load(savefile_ptr file)
 {
     byte i, kohde = savefile_read_byte(file);
-    _split_dominant = 0;
+    if (!_split_status_initialized) _split_dominant = 0;
     _split_recalc_bonuses = TRUE;
     _split_status_initialized = TRUE;
     for (i = 0; i < MAX(kohde, MAX_PERSONALITIES); i++)
