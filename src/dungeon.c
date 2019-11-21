@@ -5737,7 +5737,7 @@ void play_game(bool new_game)
                             paras = tulos;
                             ties = 0;
                         }
-                        if ((tulos <= paras) && (one_in_(++ties)))
+                        if ((tulos <= paras) && (randint0(++ties) == 0))
                         {
                             my = py + dmy;
                             mx = px + dmx;
