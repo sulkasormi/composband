@@ -20219,7 +20219,7 @@ N:1129:Soul
 G:G:B
 I:110:1d1:4:1:40:60
 W:50:0:0:0:0:0
-F:PASS_WALL | INVISIBLE | COLD_BLOOD
+F:PASS_WALL | INVISIBLE | COLD_BLOOD | CAN_FLY
 D:A naked spirit of a great sage, who had left his own body forever
 D: to seek and dominate the bodies of others. It looks like a small
 D: cloud of glowing white mist. In this form it is harmless, but
@@ -23102,6 +23102,7 @@ F:RES_POIS | RES_CHAO | DROP_SKELETON | DROP_CORPSE | POS_GAIN_AC | IM_ELEC |
 F:FORCE_SLEEP | FORCE_MAXHP | NO_CONF | NO_STUN | RES_FIRE |
 F:EVIL | MOVE_BODY | RES_ACID | RES_DARK | RES_NETH | EGYPTIAN | EGYPTIAN2
 P:Copy:Half-Titan:Warrior-Mage
+P:Body:Hound
 S:1_IN_8 |
 S:DRAIN_MANA | BR_FORCE
 D:A large, lean, bizarre creature associated with the god Seth, it seems
@@ -23143,6 +23144,7 @@ F:NO_CONF | NO_SLEEP | NO_STUN | RES_SOUN | IM_POIS | REFLECTING | DROP_4D2
 F:RES_WATE | RES_LITE | RES_DARK | RES_PLAS | RES_SHAR | BASH_DOOR | CAN_FLY
 F:POS_GAIN_AC
 P:Copy:Golem:Warrior
+P:Body:Fishrooster
 S:FREQ_27 | BR_SOUND | BR_STORM | SHRIEK | S_MONSTER
 D:A bizarre, majestic, awe-inspiring monstrosity, large enough to swallow
 D:dozens of people at once. You have never seen anything else like it, and
@@ -23438,6 +23440,9 @@ F:RES_ELEC | RES_FIRE | RES_COLD | RES_TIME | IM_ACID | NO_CONF | NO_SLEEP
 F:EVIL | DROP_CORPSE | POS_GAIN_AC
 S:1_IN_2 |
 S:TELE_TO | BA_WATER(1d124+62) | BR_ACID | BR_ELEC | BR_NEXUS
+P:Copy:Dunadan:Chaos-Warrior
+P:Body:Octopus
+P:Speed:+12
 D:Since the dawn of time has Iku-Turso lurked in the oceans: the gigantic
 D:terror of the open seas, umpteen-headed, umpteen-horned, his slimy tentacles
 D:reaching out to catch his prey; as if every other sea monster had been
@@ -23475,6 +23480,7 @@ F:DEMON | NONLIVING | FORCE_SLEEP | RES_PLAS | EVIL | ONLY_ITEM | STUPID |
 F:DROP_60 | DROP_CORPSE | POS_SEE_INVIS | FRIENDS(1d3, 25%) | NO_CONF
 F:RES_NETH | IM_POIS |
 P:Copy:Dunadan:Paladin
+P:Body:Spider
 S:FREQ_95 |
 S:BO_PLASMA(4d4+32)
 D:This monstrous demonic spider-golem seems to be all legs and oversized
@@ -23623,6 +23629,7 @@ S:1_IN_5 |
 S:HEAL | BLINK | SHRIEK | DARKNESS | MISSILE | CONFUSE
 P:Copy:Yeek:Mage
 P:Speed:+7
+P:Body:Puppy
 D:A great purple rat with sharp teeth and sorcerous powers.
 
 N:1300:Death pumpkin
