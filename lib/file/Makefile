@@ -63,9 +63,13 @@ sname.txt \
 timefun.txt \
 timenorm.txt \
 w_cursed.txt \
+w_hafted.txt \
 w_high.txt \
 w_low.txt \
-w_med.txt
+w_med.txt \
+w_pole.txt \
+w_sword.txt \
+w_types.txt
 
 PACKAGE = file
 
