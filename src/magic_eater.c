@@ -204,7 +204,8 @@ static object_type *_choose(cptr verb, int tval, int options)
 
         if (REPEAT_PULL(&cmd))
         {
-            slot = A2I(cmd);
+            _magic_eater_calculate_labels(_which_list(which_tval), TRUE);
+            slot = _magic_eater_label_slot(tolower((unsigned char)cmd));
             if (0 <= slot && slot < _MAX_SLOTS)
                 return _which_obj(which_tval, slot);
         }
