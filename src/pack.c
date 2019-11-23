@@ -198,7 +198,7 @@ bool pack_get_floor(void)
 
     if ((delay_autopick) && (!delay_autopick_hack)) delay_autopick_hack = 1;
 
-    autopick_get_floor(); /* no energy charge */
+    autopick_get_floor(TRUE); /* no energy charge */
 
     floor = inv_filter_floor(point(px, py), ((leave_mogaminator) && (delay_autopick_hack < 2)) ? _obj_not_autoleave : NULL);
     result = _get_floor(floor);
@@ -206,7 +206,7 @@ bool pack_get_floor(void)
     if (delay_autopick_hack)
     {
         delay_autopick_hack = 0;
-        autopick_get_floor();
+        autopick_get_floor(TRUE);
     }
     
     inv_free(floor);
