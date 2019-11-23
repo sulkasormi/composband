@@ -320,6 +320,7 @@ extern bool find_ignore_stairs;    /* Run past stairs */
 extern bool find_ignore_doors;    /* Run through open doors */
 extern bool find_ignore_veins;  /* Run past gold veins */
 extern bool find_cut;    /* Run past known corners */
+extern bool travel_ignore_items;  /* Ignore identified items while travelling */
 extern bool check_abort;    /* Check for user abort while continuous command */
 extern bool flush_failure;    /* Flush input on various failures */
 extern bool flush_disturb;    /* Flush input whenever disturbed */
@@ -659,7 +660,7 @@ extern errr process_autopick_file_command(char *buf);
 extern string_ptr autopick_line_from_entry(autopick_type *entry, int options);
 extern int is_autopick(object_type *o_ptr);
 extern void autopick_alter_obj(obj_ptr o_ptr, bool allow_destroy);
-extern void autopick_get_floor(void);
+extern void autopick_get_floor(bool allow_identified);
 extern bool autopick_autoregister(object_type *o_ptr);
 extern void do_cmd_edit_autopick(void);
 
