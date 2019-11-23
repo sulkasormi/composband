@@ -5504,7 +5504,10 @@ bool move_player_effect(int ny, int nx, u32b mpe_mode)
         {
             char name[MAX_NLEN];
             int  this_o_idx, next_o_idx = 0;
-            autopick_get_floor();
+            if ((!travel_ignore_items) || (!travel.run) || (travel.mode != TRAVEL_MODE_NORMAL) ||
+                ((travel.x == nx) && (travel.y == ny)))
+            autopick_get_floor(TRUE);
+            else autopick_get_floor(FALSE);
             for (this_o_idx = c_ptr->o_idx; this_o_idx; this_o_idx = next_o_idx)
             {
                 obj_ptr obj = &o_list[this_o_idx];
