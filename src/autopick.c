@@ -2394,9 +2394,34 @@ static void _get_obj(obj_ptr obj)
     obj_release(obj, OBJ_RELEASE_QUIET);
 }
 
-void autopick_get_floor(void)
+static bool _obj_allows_unid_pickup(obj_ptr obj)
 {
-    inv_ptr floor = inv_filter_floor(point(px, py), NULL);
+    int j;
+    if ((!obj) || (!obj->k_idx)) return FALSE;
+    if (obj->tval == TV_GOLD) return TRUE;
+    if ((obj->tval == TV_POTION) && /* Mega-hack - disturb for healing potions */
+       ((obj->sval == SV_POTION_HEALING) ||
+        (obj->sval == SV_POTION_STAR_HEALING) ||
+        (obj->sval == SV_POTION_LIFE))) return TRUE;
+    /* Check if we are carrying an identical item */
+    for (j = 1; j <= pack_max(); j++)
+    {
+        obj_ptr o_ptr = pack_obj(j);
+        if (o_ptr && obj_can_combine(o_ptr, obj, 0))
+            return TRUE;
+    }
+    if (obj->marked & OM_FOUND) return FALSE;
+    if (obj_is_known(obj)) return FALSE;
+    if ((obj->ident & IDENT_SENSE) && (!obj_is_device(obj)) &&
+        (obj->feeling != FEEL_EXCELLENT) && (obj->feeling != FEEL_SPECIAL) &&
+        (obj->feeling != FEEL_TERRIBLE) && (obj->feeling != FEEL_ENCHANTED) &&
+        (obj->feeling != FEEL_AWFUL)) return FALSE;
+    return TRUE;
+}
+
+void autopick_get_floor(bool allow_identified)
+{
+    inv_ptr floor = inv_filter_floor(point(px, py), allow_identified ? NULL : _obj_allows_unid_pickup);
     inv_for_each(floor, _get_obj);
     inv_free(floor);
 }
