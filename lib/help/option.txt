@@ -363,6 +363,9 @@ Ignore treasure veins when running.
 <topic:find_cut><color:U>Run past known corners</color> <color:D>(find_cut)</color>
 Cut sharply around known corners when running. This will result in faster running, but may cause you to run into a lurking monster.
 
+<topic:travel_ignore_items><color:U>Ignore identified items while travelling</color> <color:D>(travel_ignore_items)</color>
+With this option on, all identified items (except some extremely valuable objects, and objects that add to a stack of already carried items) are ignored by the Mogaminator while travelling. With the option off, the Mogaminator may try to pick up already identified items walked over during the travel, which is sometimes good but often disturbs the travel annoyingly.
+
 <topic:check_abort><color:U>Check for user abort while continuous command</color> <color:D>(check_abort)</color>
 Turning this option off will avoid checking to see if the user has pressed a key during resting or running or repeated commands. This not only makes the game much more efficient (on many systems), but also allows the use of certain obscure macro sequences, such as turning this option off, resting until done, turning this option on, and casting a spell. Resting for long periods of time with this option turned off is dangerous since the resting may not stop until the user takes damage from starvation.
 
