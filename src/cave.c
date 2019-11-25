@@ -5345,3 +5345,24 @@ void glow_deep_lava_and_bldg(void)
     /* Redraw map */
     p_ptr->redraw |= (PR_MAP);
 }
+
+bool floor_find_obj(int y, int x, int tval, int sval)
+{
+    cave_type *c_ptr = &cave[y][x];
+    int this_o_idx, next_o_idx = 0;
+
+    /* Objects */
+    for (this_o_idx = c_ptr->o_idx; this_o_idx; this_o_idx = next_o_idx)
+    {
+        object_type *o_ptr;
+
+        /* Acquire object */
+        o_ptr = &o_list[this_o_idx];
+
+        if ((!o_ptr) || (!o_ptr->k_idx)) return FALSE;
+        if (o_ptr->tval != tval) continue;
+        if (sval != SV_ANY && o_ptr->sval != sval) continue;
+        return TRUE;
+    }
+    return FALSE;
+}
