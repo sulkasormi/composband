@@ -739,6 +739,7 @@ extern void object_kind_track(int k_idx);
 extern void disturb(int stop_search, int flush_output);
 extern void glow_deep_lava_and_bldg(void);
 extern void py_get_display_char_attr(char *c, byte *a);
+extern bool floor_find_obj(int y, int x, int tval, int sval);
 
 /* cmd1.c */
 extern void death_scythe_miss(object_type *o_ptr, int hand, int mode);
