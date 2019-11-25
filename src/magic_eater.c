@@ -473,6 +473,7 @@ static bool gain_magic(void)
     obj_prompt_t prompt = {0};
     object_type *dest_ptr;
     char o_name[MAX_NLEN];
+    u16b _auto_insc = 0;
 
     prompt.prompt = "Absorb which device?";
     prompt.error = "You have nothing to absorb magic from.";
@@ -494,6 +495,11 @@ static bool gain_magic(void)
         sprintf(prompt, "Really replace %s? <color:y>[y/n]</color>", o_name);
         if (msg_prompt(prompt, "ny", PROMPT_DEFAULT) == 'n')
             return FALSE;
+        if (dest_ptr->inscription)
+        {
+            sprintf(prompt, "Copy inscription from %s? <color:y>[y/n]</color>", o_name);
+            if (msg_prompt(prompt, "ny", PROMPT_DEFAULT) == 'y') _auto_insc = dest_ptr->inscription;
+        }
     }
 
     object_desc(o_name, prompt.obj, OD_COLOR_CODED);
@@ -503,7 +509,7 @@ static bool gain_magic(void)
 
     dest_ptr->loc.where = 0;
     dest_ptr->loc.slot = 0;
-    dest_ptr->inscription = 0;
+    if (_auto_insc) dest_ptr->inscription = _auto_insc;
     obj_identify_fully(dest_ptr);
     stats_on_identify(dest_ptr);
 
