@@ -1112,6 +1112,7 @@ static void _cast_spell(_spell_info_ptr spell)
         sound(SOUND_ZAP);
         spell_stats_on_cast_old(spell->realm, spell->idx);
         virtue_on_cast_spell(spell->realm, spell->cost, spell->fail);
+        p_inc_fatigue(MUT_EASY_TIRING2, 50 + MIN(50, spell->cost / 2));
     }
     p_ptr->redraw |= PR_MANA;
     p_ptr->window |= PW_SPELL;
