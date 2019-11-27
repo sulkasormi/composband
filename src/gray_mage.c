@@ -560,6 +560,7 @@ void gray_mage_cast_spell(void)
             sound(SOUND_ZAP);
             spell_stats_on_cast_old(slot_ptr->realm, slot_ptr->spell);
         }
+        p_inc_fatigue(MUT_EASY_TIRING2, 50 + MIN(50, cost / 2));
     }
     p_ptr->redraw |= PR_MANA;
     p_ptr->window |= PW_SPELL;
