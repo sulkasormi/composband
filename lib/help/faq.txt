@@ -273,6 +273,11 @@ Potions of New Life also cure mutations among their other effects, and potions o
 Reflection is very helpful (and remains useful throughout the game) but is never really absolutely needed. Early on, it's particularly useful in the Camelot dungeon, which has many dangerous bolt casters.
 
 
+<color:G>Q:</color> What does Levitation do? How important is it?
+
+<color:R>A:</color> Levitation gives access to dark pits and mountainous wilderness, prevents overburdened characters from drowning in deep water, reduces damage from standing in (or over) deep lava or toxic waste, and allows you to harmlessly fly over some floor traps. It is a necessity for entering mountainous areas (and a practical necessity for entering deep seas on an overburdened character); it is very handy, but not strictly necessary, for navigating the Cloning Pits quest as well as dungeons with dark pits or deep water. In other situations Levitation is not very important; items that give levitation but are otherwise not that great can be left at home to be shuffled in when needed.
+
+
 <color:G>Q:</color> Some elements don't just deal damage, but also cause status effects like confusion or blindness. How much resistance do I need to be safe from status effects?
 
 <color:R>A:</color> Most status effects compare your resistance to a 33-sided die (or a 55-sided die in the case of base elements). Accordingly, 30% confusion resistance gives you a 30 in 33 (about 91%) chance of resisting that status effect, and 40% confusion resistance will provide immunity.
@@ -289,7 +294,7 @@ However, many side-effects of exotic elements can be blocked or mitigated by res
 
 <color:G>Q:</color> Staves of Destruction are supposed to be great, yet mine doesn't seem to do anything when I use it! What's wrong?
 
-<color:R>A:</color> A number of items and spells do nothing when used on a town quest level (any quest level not located inside a dungeon). In addition to Destruction, this includes all Genocide and Mass Genocide effects, as well as Teleport Level.
+<color:R>A:</color> A number of items and spells do nothing when used on a town quest level (any quest level not located inside a dungeon). In addition to Destruction, this includes all Genocide, Mass Genocide and Annihilation effects, as well as Teleport Level.
 
 Destruction also does not work in the wilderness or in the Witch Wood. This is because outdoors there's no ceiling to bring down!
 
@@ -458,4 +463,5 @@ Updated    : FrogComposband 7.0.peppermint
 Updated    : FrogComposband 7.0.nougat
 Updated    : FrogComposband 7.1.toffee
 Updated    : FrogComposband 7.1.chocolate
+Updated    : FrogComposband 7.1.liquorice
 </color>
