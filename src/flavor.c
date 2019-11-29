@@ -2235,7 +2235,7 @@ void object_desc(char *buf, object_type *o_ptr, u32b mode)
     {
         int  fail = device_calc_fail_rate(o_ptr);
         strcat(tmp_val2, format("%d%%", (fail + 5)/10));
-        if (statistics_hack || (mode & OD_SHOW_DEVICE_INFO))
+        if ((statistics_hack) || ((!show_power) && (mode & OD_SHOW_DEVICE_INFO)))
         {
             cptr info = do_device(o_ptr, SPELL_INFO, 0);
             if (info && strlen(info))
