@@ -34,12 +34,7 @@ bool restore_mana(void)
     bool   result = FALSE;
     slot_t slot;
 
-    if (p_ptr->pclass == CLASS_MAGIC_EATER)
-    {
-        magic_eater_restore();
-        result = TRUE;
-    }
-    else if ((p_ptr->csp < p_ptr->msp) && (!elemental_is_(ELEMENTAL_WATER)) && (p_ptr->pclass != CLASS_RAGE_MAGE))
+    if ((p_ptr->csp < p_ptr->msp) && (!elemental_is_(ELEMENTAL_WATER)) && (p_ptr->pclass != CLASS_RAGE_MAGE))
     {
         if (p_ptr->pclass == CLASS_RUNE_KNIGHT)
             p_ptr->csp += (p_ptr->msp - p_ptr->csp) / 3;
