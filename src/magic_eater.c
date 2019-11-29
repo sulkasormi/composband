@@ -835,15 +835,13 @@ class_t *magic_eater_get_class(void)
                     "used whenever charges are available. In effect, it is as "
                     "if the Magic-Eater had extra inventory slots for devices. "
                     "However, absorbed magic can not be drained the way normal "
-                    "devices can, nor can these objects be destroyed. There are "
-                    "fixed number of slots for each kind of device, and the Magic-Eater "
+                    "devices can, nor can these objects be destroyed. The number of "
+                    "slots for each kind of device is limited, and the Magic-Eater "
                     "will need to choose which object to replace once the slots are "
-                    "all used. Absorbed magic can not be recharged the way normal "
-                    "devices can. Instead, the Magic-Eater must rest to regain "
-                    "charges the way a normal spellcaster must rest to regain "
-                    "mana. Similarly, the Magic-Eater may quaff a potion to restore "
-                    "mana to speed this process, though this will not necessarily "
-                    "restore all of their absorbed magic.";
+                    "all used. Absorbed magic cannot be recharged through scrolls, "
+                    "spells, potions or activations; the Magic-Eater must rest to "
+                    "regain charges. The rate at which absorbed devices recharge "
+                    "is affected by Regeneration.";
 
         me.stats[A_STR] = -1;
         me.stats[A_INT] =  2;
