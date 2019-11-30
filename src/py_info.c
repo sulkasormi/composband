@@ -404,6 +404,7 @@ static _flagzilla_ptr _flagzilla_alloc(void)
         if (o_ptr)
         {
             obj_flags_display(o_ptr, flagzilla->obj_flgs[i]);
+            remove_opposite_flags(flagzilla->obj_flgs[i]);
             switch (o_ptr->rune)
             {
             case RUNE_ABSORPTION:
@@ -691,6 +692,7 @@ static void _display_known_count(doc_ptr doc, int total, int flg)
 }
 static void _build_flags2(doc_ptr doc, _flagzilla_ptr flagzilla)
 {
+    int _tmp;
     _equippy_chars(doc, 14);
     _equippy_heading(doc, "Abilities", 14);
 
@@ -715,7 +717,13 @@ static void _build_flags2(doc_ptr doc, _flagzilla_ptr flagzilla)
     _build_flags_imp(doc, "Hold Life", OF_HOLD_LIFE, OF_INVALID, flagzilla);
     _display_known_count(doc, p_ptr->hold_life, OF_HOLD_LIFE);
 
-    _build_flags(doc, "Life Rating", OF_LIFE, OF_DEC_LIFE, flagzilla);
+    _build_flags_imp(doc, "Life Rating", OF_LIFE, OF_DEC_LIFE, flagzilla);
+    _tmp = (p_ptr->life - adj_con_mhp[p_ptr->stat_ind[A_CON]]);
+    if (_tmp != 0)
+    {
+        doc_printf(doc, " %+3d%%", _tmp);
+    }
+    doc_newline(doc);
 
     _build_flags(doc, "Dec Mana", OF_DEC_MANA, OF_INVALID, flagzilla);
     _build_flags(doc, "Easy Spell", OF_EASY_SPELL, OF_INVALID, flagzilla);
@@ -724,22 +732,22 @@ static void _build_flags2(doc_ptr doc, _flagzilla_ptr flagzilla)
     _build_flags_imp(doc, "Magic Skill", OF_MAGIC_MASTERY, OF_DEC_MAGIC_MASTERY, flagzilla);
     if (p_ptr->device_power)
     {
-        int pow = device_power_aux(100, p_ptr->device_power) - 100;
-        doc_printf(doc, " %+3d%%", pow);
+        _tmp = device_power_aux(100, p_ptr->device_power) - 100;
+        doc_printf(doc, " %+3d%%", _tmp);
     }
     doc_newline(doc);
 
     if (_build_flags_imp(doc, "Spell Power", OF_SPELL_POWER, OF_DEC_SPELL_POWER, flagzilla))
     {
-        int  pow = spell_power_aux(100, p_ptr->spell_power) - 100;
-        doc_printf(doc, " %+3d%%", pow);
+        _tmp = spell_power_aux(100, p_ptr->spell_power) - 100;
+        doc_printf(doc, " %+3d%%", _tmp);
     }
     doc_newline(doc);
 
     if (_build_flags_imp(doc, "Spell Cap", OF_SPELL_CAP, OF_DEC_SPELL_CAP, flagzilla))
     {
-        int cap = spell_cap_aux(100, p_ptr->spell_cap) - 100;
-        doc_printf(doc, " %+3d%%", cap);
+        _tmp = spell_cap_aux(100, p_ptr->spell_cap) - 100;
+        doc_printf(doc, " %+3d%%", _tmp);
     }
     doc_newline(doc);
 
