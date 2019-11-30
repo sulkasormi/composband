@@ -479,6 +479,17 @@ static int _opposite_flag(int i)
         loydetty[i - 1] = tulos;
         return tulos;
     }
+    if (i == OF_LIFE)
+    {
+        loydetty[i - 1] = OF_DEC_LIFE;
+        return OF_DEC_LIFE;
+    }
+    if (i == OF_DEC_LIFE)
+    {
+        loydetty[i - 1] = OF_LIFE;
+        return OF_LIFE;
+    }
+  
     loydetty[i - 1] = OF_INVALID;
     return OF_INVALID;
 }
