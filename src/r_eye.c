@@ -327,6 +327,7 @@ static void _gain_level(int new_level) {
         p_ptr->current_r_idx = MON_UNDEAD_BEHOLDER;
         msg_print("You have evolved into an Undead Beholder.");
         equip_on_change_race();
+        lp_player(1000); /* undead - no life drain */
         p_ptr->redraw |= PR_MAP | PR_BASIC;
     }
     if (p_ptr->current_r_idx == MON_UNDEAD_BEHOLDER && new_level >= 45)
@@ -408,7 +409,6 @@ race_t *mon_beholder_get_race(void)
         me.get_flags = _get_flags;
         me.gain_level = _gain_level;
 
-        me.flags = RACE_IS_MONSTER;
         me.boss_r_idx = MON_OMARAX;
         init = TRUE;
     }
@@ -423,6 +423,11 @@ race_t *mon_beholder_get_race(void)
     me.stats[A_CHR] =  0 + rank/2;
 
     me.pseudo_class_idx = CLASS_MAGE;
+    me.flags = RACE_IS_MONSTER;
+    if (p_ptr->current_r_idx == MON_UNDEAD_BEHOLDER)
+    {
+        me.flags |= (RACE_IS_NONLIVING | RACE_IS_UNDEAD);
+    }
 
     me.equip_template = mon_get_equip_template();
 
