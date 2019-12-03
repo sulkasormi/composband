@@ -156,22 +156,30 @@ int  res_get_object_immune_flag(int which)
     return _resist_map[which].im_flg;
 }
 
-static int _randomize(int pct)
+static int _randomize(int pct, int modi)
 {
     if (pct != 100)
     {
         if (pct > 0)
-            pct = randnor(pct, pct/15);
+            pct = randnor(pct, modi);
         else if (pct < 0)
-            pct = -randnor(-pct, -pct/10);
+            pct = -randnor(-pct, modi);
     }
     return pct;
 }
 int res_calc_dam(int which, int dam)
 {
     int pct1 = res_pct(which);
-    int pct2 = _randomize(pct1);
+    int pct2 = _randomize(pct1, res_is_low(which) ? 3 : 2);
     int result = dam;
+
+    if ((p_ptr->resist[which] > 0) && (pct2 != 100))
+    {
+        int _max_rand = MAX(1, 6 - p_ptr->resist[which]);
+        if (res_is_low(which)) _max_rand *= 2;
+        if (pct2 < pct1 - _max_rand) pct2 = pct1 - _max_rand;
+        else if (pct2 > pct1 + _max_rand) pct2 = pct1 + _max_rand;
+    }
 
     result -= pct2 * dam / 100;
     if (result < 0)
