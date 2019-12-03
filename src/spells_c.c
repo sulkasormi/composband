@@ -748,7 +748,7 @@ void darkness_storm_II_spell(int cmd, variant *res)
         var_set_string(res, "Darkness Storm");
         break;
     case SPELL_DESC:
-        var_set_string(res, "Fires a huge ball of darkness of unmatched power");
+        var_set_string(res, "Fires a huge ball of darkness of unmatched power.");
         break;
     case SPELL_INFO:
         var_set_string(res, info_damage(0, 0, spell_power(_darkness_storm_II_dam() + p_ptr->to_d_spell)));
