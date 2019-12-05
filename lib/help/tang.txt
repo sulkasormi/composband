@@ -8,62 +8,71 @@ FrogComposband is a single player role playing game where you, the brave adventu
 
 <topic:CreatingACharacter><style:heading>Creating a Character</style>
 
-Your first step will be to create your character. Since you are new to the game, I suggest you choose <color:keyword>Beginner Mode</color> at the initial prompt. This will greatly limit the complexity of the character creation process and also activate "coffee-break mode", a faster-paced version of the game with accelerated leveling-up and no wilderness. After playing a few characters to get an idea of how to play, you can start a new character in <color:keyword>Normal Mode</color> to view all the options as well as enable the wilderness. Hey, it's not like your first character is going to win anyway!
+Your first step will be to create your character. Since you are new to the game, I suggest you choose <color:keyword>Beginner Mode</color> at the initial prompt. This will greatly limit the complexity of the character creation process and also activate <color:keyword>coffee-break mode</color>, a faster-paced version of the game with accelerated leveling-up and no wilderness. After playing a few characters to get an idea of how to play, you can start a new character in <color:keyword>Normal Mode</color> to view all the options as well as enable the wilderness. Hey, it's not like your first character is going to win anyway!
 
-After choosing Beginner Mode, the game is going to walk you through creating your character. You can refer to <link:birth.txt> for more detailed info, but the basics are that you will choose a sex, a race and a class and then roll for stats. While your sex is not important (to the game), your race and class are key to everything that follows. Normally, the game has a vast (overwhelming?) array of choices that offer myriad, diverse playstyles, and it can take a while to even learn what is available. For now, we'll consider a few basic playstyles in order to get you going.
+After choosing Beginner Mode, the game is going to walk you through creating your character. You can refer to <link:birth.txt> for more detailed info, but the basics are that you will choose a sex, a race, a class and the stats you start with. While your sex is not important (to the game), your race and class are key to everything that follows. Normally, the game has a vast (overwhelming?) array of choices that offer myriad, diverse playstyles, and it can take a while to even learn what is available. For now, we'll consider a few basic playstyles in order to get you going.
 
-The easiest style is 'Hack and Slash' and it is the essence of the warrior. Almost any race will make a good one, but you might consider trying a High-Elf or a Hobbit. Both are stealthy and have good magic skills that will assist the warriors weak points. But if you really want to turn on the melee power, nothing beats a Half-Troll. Be warned: Trolls are ugly and stupid, not to mention widely hated. Shopkeepers are loath to sell to one as ugly as you so you'll have a harder time shopping. You can compensate by going on a killing rampage, which is more fun anyway. As a warrior, there isn't much strategy: simply find monsters and kill them! Look for better armor and weapons. Perhaps you can shoot a crossbow for a little bit of distance damage but your mainstay will be hand to hand combat. For stats, you'll want to start with 17 in both Strength and Dexterity and can ignore everything else.
+The easiest style is 'Hack and Slash' and it is the essence of the warrior. Almost any race will make a good one, but you might consider trying a High-Elf or a Hobbit. Both are stealthy and have good magic skills that will assist the warriors weak points. But if you really want to turn on the melee power, nothing beats a Half-Troll. Be warned: Trolls are ugly and stupid, not to mention widely hated. Shopkeepers are loath to sell to one as ugly as you so you'll have a harder time shopping. You can compensate by going on a killing rampage, which is more fun anyway. As a warrior, there isn't much strategy: simply find monsters and kill them! Look for better armor and weapons. Perhaps you can shoot a crossbow for a little bit of distance damage but your mainstay will be hand to hand combat. For stats, you'll want to start with high Strength and Dexterity and some Constitution, maybe a bit of Intelligence since you will still need magical devices now and then.
 
-Another style is to take the stealthy approach and play a rogue. Again, Hobbits and High-Elves are good for beginners. You'll want good fighting stats (Strength and Dexterity) as before, but this time, you also have the ability to cast magic spells. And while magic is not your forte, it eventually becomes very useful, so you'll want a decent Intelligence as well. (Every spellcaster has a primary stat for purposes of casting spells, and you can find this information out by reading the various class descriptions during the birth process, or by refering to the help files). Now you can't just roll 17 for every stat you need, so you'll need to be less greedy. I'd go with 16 for each, or perhaps 17 for Str and Dex and 14 for Int. Play around to see what you can get from the auto-roller. Also, once you pick your class, you'll need to pick a spell realm as well. Try Sorcery or, better yet, Burglary. Both have good detection but Burglary is uniquely designed for rogues allowing the player to do things like set traps and pick pockets. Fun stuff!
+Another style is to take the stealthy approach and play a rogue. Again, Hobbits and High-Elves are good for beginners. You'll want good fighting stats (Strength and Dexterity) as before, but this time, you also have the ability to cast magic spells. And while magic is not your forte, it eventually becomes very useful, so you'll want to invest a bit more in Intelligence as well. (Every spellcaster has a primary stat for purposes of casting spells; you can find this information out by reading the various class descriptions during the birth process, or by referring to the help files.) Now you have a harder time affording every stat you need, so you'll need to be less greedy; play around to see what you can afford. Also, once you pick your class, you'll need to pick a spell realm as well. Try Sorcery or, better yet, Burglary. Both have good detection but Burglary is uniquely designed for rogues, allowing the player to do things like set traps and pick pockets. Fun stuff! Note that Burglary rogues, unlike other rogues, use Dexterity as their casting stat and therefore have somewhat less need for Intelligence.
 
-Finally, you can play with Magic as your forte as a mage. Gnomes and High-Elves are excellent choices here (Some would say that High-Elves are a munchkin race!). But magic takes some time to get good with, so I don't recommend this right away unless you are a patient person. Pick Chaos and then Sorcery for your spell realms and then roll a 17 Intelligence and a high Strength as well (say 15 or more). You'll need the Strength to carry goodies that you find in the dungeon. The Chaos realm gives good offense while Sorcery complements that with utility.
+Finally, you can play with Magic as your forte as a mage. Gnomes are a traditional mage race, but you might also go with the simple Human - access to demigod talents makes Humans a sneakily strong pick for most classes. But magic takes some time to get good with, so I don't recommend this right away unless you are a patient person. Pick Chaos and then Sorcery for your spell realms and then start with a 17 Intelligence and a high Strength as well (say 15 or more). You'll need the Strength to carry goodies that you find in the dungeon. The Chaos realm gives good offense while Sorcery complements that with utility.
 
 We'll discuss these three styles more as we proceed through this guide.
 
 <topic:EquippingForDanger><style:heading>Equipping for Danger</style>
 
-Once you have completed the birth process, you will find yourself in the town on the surface. Since you picked <color:keyword>Beginner Mode</color>, there will be no wilderness to explore. In this case, the only reason to return to the surface is to buy and sell equipment in the town. When you start, you have some initial gear that varies with your class, and it should already be equipped for you. You also have a small amount of gold which you can use to augment your supplies for that first trip into danger.
+Once you have completed the birth process, you will find yourself in the town on the surface. Since you picked <color:keyword>Beginner Mode</color>, there will be only one dungeon and no wilderness to explore. You will spend most of your adventures in the dungeon (if you live!), but return to the surface regularly to buy and sell equipment, complete town quests, and leave and pick up items at your home. When you start, you have some initial gear that varies with your class, and most of it should already be equipped for you. You also have a small amount of gold which you can use to augment your supplies for that first trip into danger.
 
 So, what do you see at first?
 <style:screenshot>
-LEVEL <color:G>     1</color> ..................................................................
-EXP <color:G>       6</color> ..................................................................
-AU  <color:G>     228</color> <color:U>################################</color>.<color:U>################################</color>.
-<color:d>            </color> <color:U>################################</color>.<color:U>#################################</color>
-STR : <color:G> 18/10</color> <color:U>#####</color>.......................................................<color:U>######</color>
-INT : <color:G> 18/30</color> <color:U>####</color><color:u>+</color>.......................................................<color:B>+</color><color:U>#####</color>
-WIS : <color:G>    11</color> <color:U>#####</color>.......................................................<color:U>######</color>
-DEX : <color:G> 18/50</color> <color:U>####</color>.........<color:U>###</color><color:v>0</color><color:U>###</color>..<color:U>####</color><color:o>+</color><color:U>####</color>...<color:U>####+####</color>..<color:U>###</color><color:G>+</color><color:U>###</color>.........<color:U>#####</color>
-CON : <color:G>    11</color> <color:U>#+#</color>...<color:U>#####</color>..<color:U>#######</color>..<color:U>#########</color>...<color:U>#########</color>..<color:U>#######</color>..<color:U>#####</color>...<color:U>#</color><color:B>+</color><color:U>##</color>
-CHR : <color:G>    12</color> ......<color:U>#####</color>..<color:U>#######</color>..<color:U>#########</color>...<color:U>#########</color>..<color:U>#######</color>..<color:U>#####</color>......<color:U>#</color>
-AC     <color:G>    7</color> ......<color:U>##+##</color>..<color:U>###</color><color:o>9</color><color:U>###</color>..<color:U>####</color>3<color:U>####</color>...<color:U>####</color><color:r>6</color><color:U>####</color>..<color:U>###</color><color:g>4</color><color:U>###</color>..<color:U>##+##</color>......<color:U>#</color>
-HP <color:G>  43</color>/<color:G>  43</color> .................................................................<color:U>#</color>
-             ......................................<color:U>f</color>..........................<color:U>#</color>
-             .................................................................<color:U>#</color>
-@[<color:G>*********</color>] ................................<color:v>></color>@................................
-<color:U>,</color>[*********] .................................................................<color:U>#</color>
-             .................................................................<color:U>#</color>
-             .................................................................<color:U>#</color>
-             ......<color:U>##1##</color>..<color:U>###</color><color:D>7</color><color:U>###</color>..<color:U>####</color><color:s>2</color><color:U>####</color>...<color:U>####</color><color:b>5</color><color:U>####</color>..<color:U>###</color><color:y>8</color><color:U>###</color>..<color:U>##+##</color>......<color:U>#</color>
-             ......<color:U>#####</color>..<color:U>#######</color>..<color:U>#########</color>...<color:U>#########</color>..<color:U>#######</color>..<color:U>#####</color>......<color:U>#</color>
-             <color:U>#+#</color>...<color:U>#####</color>..<color:U>#######</color>..<color:U>#########</color>...<color:U>#########</color>..<color:U>#######</color>..<color:U>#####</color>...<color:U>#</color><color:R>+</color><color:U>##</color>
-             <color:U>####</color>.........<color:U>###</color><color:v>+</color><color:U>###</color>..<color:U>####</color>+<color:U>####</color>...<color:U>####</color><color:B>+</color><color:U>####</color>..<color:U>#######</color>.........<color:U>#####</color>
-             <color:U>#####</color>.......................................................<color:U>######</color>
-             <color:U>#####</color>.......................................................<color:v>+</color><color:U>#####</color>
-             <color:U>#####</color>.......................................................<color:U>######</color>
-                                                                           Town
+
+<color:U>#</color><color:g>.</color><color:G>#</color><color:g>..</color><color:U>#</color><color:s>.</color><color:U>##</color><color:s>.</color><color:U>######</color><color:s>.</color><color:U>##</color><color:b>~~</color><color:U>####</color><color:G>#</color><color:g>.</color><color:s>...</color><color:g>.</color><color:G>#</color><color:U>####</color><color:b>~~</color><color:U>##########################</color><color:b>~</color><color:r>.</color><color:s>.</color> LEVEL <color:G>     1</color>
+<color:U>#</color><color:g>....</color><color:U>#</color><color:s>.</color><color:U>##</color><color:s>.</color><color:U>######</color><color:s>.</color><color:U>##</color><color:b>~~~~~</color><color:g>...</color><color:s>...</color><color:g>...</color><color:b>~~~~~</color><color:U>##</color><color:s>.....................</color><color:U>###</color><color:b>~</color><color:r>.</color><color:s>.</color> EXP <color:G>      23</color>
+<color:U>##</color><color:g>.</color><color:G>#</color><color:g>.</color><color:U>#</color><color:s>.</color><color:U>#</color><color:v>+</color><color:s>....</color><color:U>#</color><color:B>+</color><color:U>#</color><color:s>.</color><color:U>###</color><color:b>~~~~~~~</color><color:s>...</color><color:b>~~~~~~~~</color><color:U>##</color><color:s>.</color><color:U>#########</color><color:s>.</color><color:U>#########</color><color:s>.</color><color:U>##</color><color:b>~~</color><color:r>.</color><color:s>.</color> AU  <color:G>     907</color>
+<color:U>###</color><color:g>..</color><color:U>#</color>.<color:U>##</color><color:s>.......</color>.<color:U>##########</color><color:s>...</color><color:U>##########</color><color:s>.</color><color:U>#########</color><color:s>.</color><color:U>#########</color><color:s>.</color><color:U>##</color><color:b>~~</color><color:r>.</color><color:s>.</color> <color:W>|</color><color:d>       </color><color:U>(</color><color:d>   </color>
+<color:U>###</color><color:g>.</color><color:G>#</color><color:U>#</color>.<color:s>.........</color>..<color:U>#########</color><color:s>...</color><color:U>#########</color><color:s>..</color><color:U>####</color><color:s>2</color><color:U>####</color><color:s>.</color><color:U>#########</color><color:s>.</color><color:U>##</color><color:b>~~</color><color:r>.</color><color:s>.</color> STR : <color:G> 18/10</color>
+<color:g>4</color><color:U>###</color><color:g>.</color><color:U>#</color>..<color:s>..</color><color:U>###</color><color:s>..</color>.........<color:U>###</color>..<color:s>.</color><color:U>###</color><color:s>............................</color><color:U>##</color><color:b>~~</color><color:r>.</color><color:s>.</color> INT : <color:G>    18</color>
+<color:s>.</color><color:U>#</color>+<color:U>#</color><color:g>.</color><color:U>#</color>..<color:s>.</color><color:U>#####</color><color:s>.</color>..............<color:s>...................</color><color:U>######</color><color:s>..</color><color:U>####</color><color:s>.</color><color:U>##</color><color:b>~~</color><color:r>.</color><color:s>.</color> WIS : <color:G>     7</color>
+<color:s>.</color><color:g>....</color><color:U>#</color>...<color:U>#####</color>................<color:s>..................</color><color:U>###</color><color:y>8</color><color:U>##</color><color:s>..</color>3<color:U>###</color><color:s>.</color><color:U>###</color><color:b>~</color><color:r>.</color><color:s>.</color> DEX : <color:G> 18/40</color>
+<color:s>.</color><color:U>#####</color>....<color:U>#</color><color:B>+</color><color:U>#</color>.................<color:s>..................</color><color:g>...</color><color:s>.</color><color:U>##</color><color:s>..</color><color:U>####</color><color:s>.</color><color:U>###</color><color:b>~</color><color:r>.</color><color:s>.</color> CON : <color:G>    18</color>
+<color:s>..</color>.........................<color:U>f</color>...<color:s>..............................</color><color:U>###</color><color:b>~</color><color:r>.</color><color:s>.</color> CHR : <color:G>    12</color>
+<color:s>.....</color>..........................<color:s>....................................</color> AC     <color:G>    6</color>
+<color:s>........</color>..................<color:U>##</color><color:r>6</color><color:U>##</color><color:s>........</color><color:U>##</color><color:v>++</color><color:U>####</color><color:s>....</color><color:U>###+####</color><color:s>..</color><color:U>###</color><color:b>~</color><color:r>.</color><color:s>.</color> HP <color:G>  43</color>/<color:G>  43</color>
+<color:s>.......</color><color:U>###</color>.@.............<color:U>#######</color><color:s>......</color><color:U>##########</color><color:s>...</color><color:U>########</color><color:s>..</color><color:U>###</color><color:b>~</color><color:r>.</color><color:s>.</color> SP <color:G>  14</color>/<color:G>  14</color>
+<color:s>......</color><color:U>####</color><color:v>></color>..............<color:U>#######</color><color:s>.....</color><color:U>###</color><color:s>....</color><color:U>#####</color><color:s>..</color><color:U>########</color><color:r>.</color><color:s>.</color><color:U>##</color><color:b>~~</color><color:r>.</color><color:s>.</color>             
+<color:U>#</color><color:s>....</color><color:U>#######</color>.............<color:U>#######</color><color:s>.....</color><color:v>+</color><color:U>#</color><color:s>......</color><color:U>##+</color><color:s>......</color><color:U>#####</color><color:s>..</color><color:U>##</color><color:b>~~</color><color:r>.</color><color:s>.</color>             
+<color:U>1</color><color:s>....</color><color:U>#######</color>..............<color:U>#####</color><color:s>......</color><color:v>+</color><color:U>#</color><color:s>......</color><color:U>##+</color><color:s>.....</color><color:r>.</color><color:U>#####</color><color:s>..</color><color:U>##</color><color:b>~~</color><color:r>.</color><color:s>.</color>             
+<color:U>#</color><color:s>.....</color><color:U>#####</color><color:s>..</color>............<color:U>#######</color><color:s>.....</color><color:U>###</color><color:s>....</color><color:U>#####</color><color:r>.</color><color:s>..</color><color:U>#######</color><color:s>.</color><color:r>.</color><color:U>##</color><color:b>~~</color><color:r>.</color><color:s>.</color>             
+<color:U>#</color><color:s>......</color><color:U>###</color><color:s>...</color>............<color:o>+</color><color:U>#####</color><color:B>+</color><color:s>...</color><color:r>.</color><color:s>..</color><color:U>##########</color><color:s>....</color><color:U>#######</color><color:s>..</color><color:U>##</color><color:b>~~</color><color:r>.</color><color:s>.</color>             
+<color:s>.............</color>............<color:U>#######</color><color:s>....</color><color:r>..</color><color:s>.</color><color:U>##</color><color:v>++</color><color:U>####</color><color:s>.</color><color:r>..</color><color:s>.</color><color:r>.</color><color:s>.</color><color:r>.</color><color:s>..</color><color:r>.</color><color:s>..</color><color:r>.</color><color:s>.</color><color:U>##</color><color:b>~~</color><color:r>.</color><color:s>.</color>             
+<color:U>#</color><color:s>..</color><color:U>##</color><color:b>5</color><color:U>##</color><color:s>..</color><color:U>#####+#####</color>.....<color:s>............</color><color:r>.</color><color:s>.</color><color:r>.</color><color:s>.</color><color:r>.</color><color:s>....</color><color:r>..</color><color:G>#</color><color:U>#</color><color:s>.</color><color:U>##</color><color:D>7</color><color:G>#</color><color:U>##</color><color:G>#</color><color:s>..</color><color:U>##</color><color:b>~~</color><color:r>.</color><color:s>.</color>             
+<color:U>#</color><color:s>.</color><color:U>#######</color><color:s>.</color><color:U>##########</color><color:o>9</color><color:s>..</color>..<color:g>.....</color><color:s>......</color><color:U>##</color><color:G>0</color><color:U>##</color><color:s>.</color><color:U>###</color><color:r>.</color><color:U>#</color><color:G>#</color><color:U>###</color><color:s>.</color><color:U>#######</color><color:r>.</color><color:s>.</color><color:U>##</color><color:b>~~</color><color:r>.</color><color:s>.</color> <color:B>Study (1)</color>   
+<color:U>#</color><color:s>..</color><color:U>#####</color><color:s>..</color><color:U>###########</color><color:s>....</color><color:g>.</color><color:G>#</color><color:g>.</color><color:G>#</color><color:g>.</color><color:s>......</color><color:U>#####</color><color:s>.</color><color:U>###</color><color:r>.</color><color:U>#####</color><color:r>.</color><color:U>#######</color><color:s>..</color><color:U>##</color><color:b>~~</color><color:r>.</color><color:s>.</color>             
+<color:s>.........................</color><color:U>##</color><color:v>M</color><color:U>##</color><color:s>...........</color><color:r>.</color><color:s>..</color><color:r>.</color><color:s>..</color><color:r>..</color><color:s>..</color><color:r>.</color><color:s>......</color><color:r>.</color><color:s>.</color><color:r>.</color><color:U>##</color><color:b>~~</color><color:r>.</color><color:s>.</color>             
+<color:U>################################################################</color><color:b>~</color><color:r>.</color><color:s>.</color>             
+<color:U>################################################################</color><color:b>~</color><color:r>.</color><color:s>.</color>             
+Outpost                                                                         
 </style>
-Well, that @ in the center of the screen is you for starters. Also, those <color:U>#</color> characters are walls and you can see they are shaped into buildings for the various shops. Each building has a number or '+' character that you may enter by moving onto that square. Each number stands for a different type of shop. You can move about with the arrow keys and look about with the <color:keypress>l</color> command followed by the arrow keys. That <color:U>f</color> is a monster and you should look at it with the <color:keypress>l</color> command to see if it seems threatening:
+Well, that @ on the left side of the screen is you for starters. Also, those <color:U>#</color> characters are walls and you can see they are shaped into buildings for the various shops. Each building has a number or '+' character that you may enter by moving onto that square. Each number stands for a different type of shop. You can move about with the numpad keys, and look about with the <color:keypress>l</color> or <color:keypress>*</color> command followed by the numpad keys. (If you do not have a numpad, you should probably turn on the roguelike keyset through the <color:keypress>=</color> options menu; relying solely on the four arrow keys is too much of a pain when you need to move diagonally.) That <color:U>f</color> is a monster and you should look at it with the <color:keypress>*</color> command to see if it seems threatening:
 <style:screenshot>
-The Scrawny cat ('<color:U>f</color>')/('<color:U>f</color>'): [r,q,t,p,o,+,-,<dir>]
-No battles to the death are recalled.
+Monster: a Scrawny cat [r,q,t,p,o,x,+,-,?,<dir>]                                
+Name    : <color:B>Scrawny cat</color> (<color:U>f</color>)
+Level   : <color:G>Town</color><color:d>      </color>Speed: +0 <color:o>A Bit Erratic</color>
+AC      : <color:y>?</color><color:d>         </color>Type : <color:G>Natural</color>
+HP      : <color:y>?</color><color:d>         </color>
+<color:d>                    </color>
+Attacks : <color:y>?</color>
+
+Kills   : <color:G>0</color>
+Exp     : <color:G>0</color> at CL1
+
 A skinny little furball with sharp claws and a menacing look.
-It lives in the town, and moves a bit erratically at normal speed. Nothing is
-known about its attack.
 </style>
 Hmmm, probably no need to worry about Ms. Kitty.
 
-If you are playing a mage, your first order of business is to learn a new spell (<color:keypress>G</color> to Gain a spell). At first level, you can only learn one, so make it count. I recommend learning Magic Missile first, assuming you followed my advice and chose the Chaos realm. As a mage, you really need to use magic to kill stuff so your first spell has to be something offensive. Later on, when you are more experienced, you may pick Detect Monsters from the Sorcery realm. To cast a spell, use the magic command (<color:keypress>m</color>) and follow the instructions. Not every class can learn a spell right away, however. A rogue, for example, must reach level 5 (CL5) in order to learn their first spell.
+
+Notice the <color:B>Study (1)</color> on the bottom right of the screen, indicating you can study one new spell. If you are playing a mage, learning spells (<color:keypress>G</color> to Gain a spell) should be your top priority; but at the first level, you can only learn one, so make it count. I recommend learning Magic Missile first, assuming you followed my advice and chose the Chaos realm - as a mage, you really need to use magic to kill stuff so your first spell has to be something offensive. Later on, when you are more experienced, you may pick Detect Monsters from the Sorcery realm. To cast a spell, use the magic command (<color:keypress>m</color>) and follow the instructions. Not every class can learn a spell right away; non-Burglary rogues, for example, must reach character level 5 (CL5) in order to learn their first spell.
 
 Next, you should shop for gear. I recommend buying some means of escape, such as scrolls of teleport or phase door from the Alchemy Shop (<$:FF_ALCHEMY_SHOP>). Also, you will want some means of healing from the Temple (<$:FF_TEMPLE>). If you are playing a rogue, try to buy a sling and some ammo (pebbles or shots) from the Weapon Smiths (<$:FF_WEAPON_SMITHS>). When you enter a store, you will see a list of inventory as well as a list of commands to use. Simply follow the instructions to make a purchase.
 <style:screenshot>
@@ -71,228 +80,229 @@ Next, you should shop for gear. I recommend buying some means of escape, such as
 
    Item Description                                         Weight      Price
 a) <color:o>?</color> <color:u>2 Books of Kendo [Yagyuu Bugeichou]</color>                       3.0  <color:D>     1510  </color>
-b) <color:W>|</color> a Dagger (1d4) (+1,+2)                                    1.2        230
-c) <color:W>|</color> a Bastard Sword (3d4) (+0,+0)                            14.0  <color:D>      720  </color>
-d) <color:y>/</color> a Trident (1d8) (+0,+0)                                   7.0  <color:D>      267  </color>
-e) / a Broad Spear (1d9) (+3,+2)                              10.0  <color:D>      926  </color>
+b) <color:W>|</color> a Dagger (1d5) (+1,+2)                                    1.2        230
+c) <color:W>|</color> a Bastard Sword (3d5) (+0,+0)                            14.0        720
+d) <color:y>/</color> a Trident (1d10) (+0,+0)                                  7.0  <color:D>      267  </color>
+e) / a Broad Spear (1d11) (+3,+2)                             10.0  <color:D>      926  </color>
 f) <color:u>}</color> <color:u>a Sling (x2) (+0,+0)</color>                                      0.5         54
-g) <color:U>}</color> <color:u>a Short Bow (x3) (+0,+0)</color>                                  3.0        122
-h) <color:s>}</color> <color:u>2 Light Crossbows (x4) (+0,+0)</color>                           11.0  <color:D>      489  </color>
-i) <color:s>{</color> <color:U>26 Bolts (1d5) (+0,+0)</color>                                    0.3          3
-j) <color:s>{</color> <color:U>36 Rounded Pebbles (1d2) (+0,+0)</color>                          0.4          2
-k) <color:s>{</color> <color:U>17 Iron Shots (1d3) (+0,+0)</color>                               0.5          3
+g) <color:U>}</color> <color:u>a Short Bow (x2.50) (+0,+0)</color>                               3.0        122
+h) <color:s>}</color> <color:u>2 Light Crossbows (x3.50) (+0,+0)</color>                        11.0        489
+i) <color:s>{</color> <color:U>26 Bolts (3d5) (+0,+0)</color>                                    0.3          3
+j) <color:s>{</color> <color:U>36 Rounded Pebbles (2d3) (+0,+0)</color>                          0.4          2
+k) <color:s>{</color> <color:U>16 Iron Shots (3d3) (+0,+0)</color>                               0.5          3
 
 
 
 
 
-                                                     Gold Remaining:   231
-You may:
- ESC) Exit from Building.     p) Purchase an item       i/e) Inventry/Equipment
-                              s) Sell an item           w/t) Wear/Take off equi
-                              x) eXamine an item          b) Buyout store
+Gold Remaining: <color:y>907</color>
+
+<color:keypress>b</color> to buy. <color:keypress>s</color> to sell. <color:keypress>x</color> to begin examining items.
+<color:keypress>B</color> to buyout inventory. <color:keypress>S</color> to shuffle stock. <color:keypress>R</color> to reserve an item.
+<color:keypress>Esc</color> to exit. <color:keypress>?</color> to help.
+
 </style>
 After buying something, it will be added to your pack. Use the <color:keypress>i</color> command to view your pack:
 <style:screenshot>
-Inventory: carrying 39.2 pounds (30% of capacity). Command:
-LEVEL <color:G>     1</color> ...  a) <color:o>?</color> <color:u>a Thieves' Guide [Burglar's Handbook] {@ma!k}</color>     3.0 lb
-EXP <color:G>       6</color> ...  b) <color:U>,</color> <color:U>6 Rations of Food</color>                                 6.0 lb
-AU  <color:G>     126</color> <color:U>###</color>  c) <color:u>~</color> <color:y>3 Wooden Torches (with 2500 turns of light)</color>       9.0 lb
-<color:d>            </color> <color:U>###</color>  d) <color:u>}</color> <color:u>a Sling (x2) (+0,+0)</color>                              0.5 lb
-STR : <color:G> 18/10</color> <color:U>###</color>  e) <color:s>{</color> <color:U>17 Iron Shots (1d3) (+0,+0)</color>                       8.5 lb
-INT : <color:G> 18/30</color> <color:U>###</color>
-WIS : <color:G>    11</color> <color:U>#####</color>.......................................................<color:U>######</color>
-DEX : <color:G> 18/50</color> <color:U>####</color>.........<color:U>###</color><color:v>0</color><color:U>###</color>..<color:U>####</color><color:o>+</color><color:U>####</color>...<color:U>####+####</color>..<color:U>###</color><color:G>+</color><color:U>###</color>.........<color:U>#####</color>
-CON : <color:G>    11</color> <color:U>#+#</color>...<color:U>#####</color>..<color:U>#######</color>..<color:U>#########</color>...<color:U>#########</color>..<color:U>#######</color>..<color:U>#####</color>...<color:U>#</color><color:B>+</color><color:U>##</color>
-CHR : <color:G>    12</color> ......<color:U>#####</color>..<color:U>#######</color>..<color:U>#########</color>...<color:U>#########</color>..<color:U>#######</color>..<color:U>#####</color>......<color:U>#</color>
-AC     <color:G>    7</color> ......<color:U>##+##</color>..<color:U>###</color><color:o>9</color><color:U>###</color>..<color:U>####</color>@<color:U>####</color>...<color:U>####</color><color:r>6</color><color:U>####</color>..<color:U>###</color><color:g>4</color><color:U>###</color>..<color:U>##+##</color>......<color:U>#</color>
-HP <color:G>  43</color>/<color:G>  43</color> .................................................................<color:U>#</color>
-             .................................................................<color:U>#</color>
-             .................................................................<color:U>#</color>
-@[<color:G>*********</color>] ................................<color:v>></color>.................................
-<color:U>,</color>[*********] .................................................................<color:U>#</color>
-             .................................................................<color:U>#</color>
-             .................................................................<color:U>#</color>
-             ......<color:U>##1##</color>..<color:U>###</color><color:D>7</color><color:U>###</color>..<color:U>####</color><color:s>2</color><color:U>####</color>...<color:U>####</color><color:b>5</color><color:U>####</color>..<color:U>###</color><color:y>8</color><color:U>###</color>..<color:U>##+##</color>......<color:U>#</color>
-             ......<color:U>#####</color>..<color:U>#######</color>..<color:U>#########</color>...<color:U>#########</color>..<color:U>#######</color>..<color:U>#####</color>......<color:U>#</color>
-             <color:U>#+#</color>...<color:U>#####</color>..<color:U>#######</color>..<color:U>#########</color>...<color:U>#########</color>..<color:U>#######</color>..<color:U>#####</color>...<color:U>#</color><color:R>+</color><color:U>##</color>
-             <color:U>####</color>.........<color:U>###</color><color:v>+</color><color:U>###</color>..<color:U>####</color>+<color:U>####</color>...<color:U>####</color><color:B>+</color><color:U>####</color>..<color:U>#######</color>.........<color:U>#####</color>
-             <color:U>#####</color>.......................................................<color:U>######</color>
-             <color:U>#####</color>.......................................................<color:v>+</color><color:U>#####</color>
-             <color:U>#####</color>.......................................................<color:U>######</color>
-                                                                           Town
+<color:G>Inventory</color> <color:b>|</color> <color:D>Equipment</color>                                                           
+ a) <color:o>?</color> <color:u>a Thieves' Guide [Burglar's Handbook]</color>                  3.0 lb LEVEL <color:G>     1</color>
+ b) <color:U>,</color> <color:U>5 Rations of Food</color>                                      5.0 lb EXP <color:G>      23</color>
+ c) ? 2 Scrolls of Teleportation                             1.0 lb AU  <color:G>     805</color>
+ d) ? a Scroll of Word of Recall                             0.5 lb <color:W>|</color><color:d>      </color><color:u>~</color><color:U>(</color><color:d>   </color>
+ e) <color:u>~</color> <color:y>2 Wooden Torches (with 2500 turns of light)</color>            6.0 lb STR : <color:G> 18/10</color>
+ f) <color:u>}</color> <color:u>a Sling (x2) (+0,+0)</color>                                   0.5 lb INT : <color:G>    18</color>
+ g) <color:s>{</color> <color:U>16 Iron Shots (3d3) (+0,+0)</color>                            8.0 lb WIS : <color:G>     7</color>
+                                                          <color:R>  24.0 lb</color> DEX : <color:G> 18/40</color>
+Carrying 36.2 pounds (<color:G>27%</color> capacity).                                CON : <color:G>    18</color>
+                                                                    CHR : <color:G>    12</color>
+<color:y>Examine which item </color>(<color:o>Esc</color> to exit)<color:y>?</color>                                   AC     <color:G>    6</color>
+                                                                    HP <color:G>  43</color>/<color:G>  43</color>
+<color:s>....................................</color>............................... SP <color:G>  14</color>/<color:G>  14</color>
+<color:s>............................</color><color:U>##</color><color:r>6</color><color:U>##</color><color:s>....</color>....<color:U>##</color><color:v>++</color><color:U>####</color>....<color:U>###+####</color>..<color:U>###</color><color:b>~</color>             
+<color:s>.........</color><color:U>###</color><color:s>...............</color><color:U>#######</color><color:s>......</color><color:U>##########</color><color:s>...</color><color:U>########</color><color:s>..</color><color:U>###</color><color:b>~</color>             
+<color:s>........</color><color:U>####</color><color:v>></color><color:s>..............</color><color:U>#######</color><color:s>.....</color><color:U>###</color><color:s>....</color><color:U>#####</color><color:s>..</color><color:U>########</color><color:r>.</color><color:s>.</color><color:U>##</color><color:b>~~</color>             
+<color:U>###</color><color:s>....</color><color:U>#######</color><color:s>.............</color><color:U>#######</color><color:s>.....</color><color:v>+</color><color:U>#</color><color:s>......</color><color:U>##+</color><color:s>......</color><color:U>#####</color><color:s>..</color><color:U>##</color><color:b>~~</color>             
+<color:U>##1</color><color:s>....</color><color:U>#######</color><color:s>..............</color><color:U>#####</color><color:s>......</color><color:v>+</color><color:U>#</color><color:s>......</color><color:U>##+</color><color:s>.....</color><color:r>.</color><color:U>#####</color><color:s>..</color><color:U>##</color><color:b>~~</color>             
+<color:U>###</color><color:s>.....</color><color:U>#####</color><color:s>..............</color><color:U>#######</color><color:s>.....</color><color:U>###</color><color:s>....</color><color:U>#####</color><color:r>.</color><color:s>..</color><color:U>#######</color><color:s>.</color><color:r>.</color><color:U>##</color><color:b>~~</color>             
+<color:U>###</color><color:s>......</color><color:U>###</color><color:s>...............</color><color:o>+</color><color:U>#####</color><color:B>+</color><color:s>...</color><color:r>.</color><color:s>..</color><color:U>##########</color><color:s>....</color><color:U>#######</color><color:s>..</color><color:U>##</color><color:b>~~</color>             
+<color:s>...........................</color><color:U>#######</color><color:s>....</color><color:r>..</color><color:s>.</color><color:U>##</color><color:v>++</color><color:U>####</color><color:s>.</color><color:r>..</color><color:s>.</color><color:r>.</color><color:s>.</color><color:r>.</color><color:s>..</color><color:r>.</color><color:s>..</color><color:r>.</color><color:s>.</color><color:U>##</color><color:b>~~</color> <color:B>Study (1)</color>   
+<color:U>###</color><color:s>..</color><color:U>##</color><color:b>5</color><color:U>##</color><color:s>..</color><color:U>#####+#####</color><color:s>.................</color><color:r>.</color><color:s>.</color><color:r>.</color><color:s>.</color><color:r>.</color><color:s>....</color><color:r>..</color><color:G>#</color><color:U>#</color><color:s>.</color><color:U>##</color><color:D>7</color><color:G>#</color><color:U>##</color><color:G>#</color><color:s>..</color><color:U>##</color><color:b>~~</color>             
+<color:U>###</color><color:s>.</color><color:U>#######</color><color:s>.</color><color:U>##########</color><color:o>9</color><color:s>....</color><color:g>.....</color><color:s>......</color><color:U>##</color><color:G>0</color><color:U>##</color><color:s>.</color><color:U>###</color><color:r>.</color><color:U>#</color><color:G>#</color><color:U>###</color><color:s>.</color><color:U>#######</color><color:r>.</color><color:s>.</color><color:U>##</color><color:b>~~</color>             
+<color:U>###</color><color:s>..</color><color:U>#####</color><color:s>..</color><color:U>###########</color><color:s>....</color><color:g>.</color><color:G>#</color><color:g>.</color><color:G>#</color><color:g>.</color><color:s>......</color><color:U>#####</color><color:s>.</color><color:U>###</color><color:r>.</color><color:U>#####</color><color:r>.</color><color:U>#######</color><color:s>..</color><color:U>##</color><color:b>~~</color>             
+<color:s>...........................</color><color:U>##</color><color:v>M</color><color:U>##</color><color:s>...........</color><color:r>.</color><color:s>..</color><color:r>.</color><color:s>..</color><color:r>..</color><color:s>..</color><color:r>.</color><color:s>......</color><color:r>.</color><color:s>.</color><color:r>.</color><color:U>##</color><color:b>~~</color>             
+Outpost
 </style>
-In my case, I bought a sling and some ammo (Each type of missile weapon uses a corresponding type of ammo. Obviously, arrows are for bows and bolts are for crossbows, so they wouldn't work with my sling!). Now the sling is doing me no good in my pack: I need to equip it first in order to use it in combat, and I do this with the <color:keypress>w</color> command, after which is it visible in the equipment list which can be viewed with the <color:keypress>e</color> command.
+In my case, I bought a sling and some ammo. (Each type of missile weapon uses a corresponding type of ammo. Obviously, arrows are for bows and bolts are for crossbows, so they wouldn't work with my sling!) Now the sling is doing me no good in my pack: I need to equip it first in order to use it in combat, and I do this with the <color:keypress>w</color> command, after which is it visible in the equipment list which can be viewed with the <color:keypress>e</color> command.
 <style:screenshot>
-Equipment: carrying 39.2 pounds (30% of capacity). Command:
-LEVEL <color:G>  </color>  a) <color:W>|</color> Right Hand: a Dagger (1d4) (+0,+0)                        1.2 lb
-EXP <color:G>    </color>  b)   Left Hand :
-AU  <color:G>    </color>  c) <color:u>}</color> Shooting  : <color:u>a Sling (x2) (+0,+0)</color>                          0.5 lb
-<color:d>        </color>  d)   Right Ring:
-STR : <color:G> 1</color>  e)   Left Ring :
-INT : <color:G> 1</color>  f)   Neck      :
-WIS : <color:G>  </color>  g) <color:u>~</color> Light     : <color:y>a Wooden Torch (with 2442 turns of light)</color>     3.0 lb
-DEX : <color:G> 1</color>  h) <color:U>(</color> Body      : <color:s>Soft Leather Armour [4,+0]</color>                    8.0 lb
-CON : <color:G>  </color>  i)   Cloak     :
-CHR : <color:G>  </color>  j)   Head      :
-AC     <color:G> </color>  k)   Hands     :
-HP <color:G>  43</color>/  l)   Feet      :
-
-             .................................................................<color:U>#</color>
-@[<color:G>*********</color>] ................................<color:v>></color>.................................
-<color:U>,</color>[*********] .................................................................<color:U>#</color>
-             .................................................................<color:U>#</color>
-             .................................................................<color:U>#</color>
-             ......<color:U>##1##</color>..<color:U>###</color><color:D>7</color><color:U>###</color>..<color:U>####</color><color:s>2</color><color:U>####</color>...<color:U>####</color><color:b>5</color><color:U>####</color>..<color:U>###</color><color:y>8</color><color:U>###</color>..<color:U>##+##</color>......<color:U>#</color>
-             ......<color:U>#####</color>..<color:U>#######</color>..<color:U>#########</color>...<color:U>#########</color>..<color:U>#######</color>..<color:U>#####</color>......<color:U>#</color>
-             <color:U>#+#</color>...<color:U>#####</color>..<color:U>#######</color>..<color:U>#########</color>...<color:U>#########</color>..<color:U>#######</color>..<color:U>#####</color>...<color:U>#</color><color:R>+</color><color:U>##</color>
-             <color:U>####</color>.........<color:U>###</color><color:v>+</color><color:U>###</color>..<color:U>####</color>+<color:U>####</color>...<color:U>####</color><color:B>+</color><color:U>####</color>..<color:U>#######</color>.........<color:U>#####</color>
-             <color:U>#####</color>.......................................................<color:U>######</color>
-             <color:U>#####</color>.......................................................<color:v>+</color><color:U>#####</color>
-             <color:U>#####</color>.......................................................<color:U>######</color>
-                                                                           Town
+<color:D>Inventory</color> <color:b>|</color> <color:G>Equipment</color>                                                           
+ a) <color:W>|</color> Right Hand: a Dagger (1d5) (+0,+0)                     1.2 lb LEVEL <color:G>     1</color>
+ b)   Left Hand :                                                   EXP <color:G>      23</color>
+ c) <color:u>}</color> Shooting  : <color:u>a Sling (x2) (+0,+0)</color>                       0.5 lb AU  <color:G>     805</color>
+ d)   Quiver    :                                                   <color:W>|</color><color:d> </color><color:u>}</color><color:d>    </color><color:u>~</color><color:U>(</color><color:d>   </color>
+ e)   Right Ring:                                                   STR : <color:G> 18/10</color>
+ f)   Left Ring :                                                   INT : <color:G>    18</color>
+ g)   Neck      :                                                   WIS : <color:G>     7</color>
+ h) <color:u>~</color> Light     : <color:y>a Wooden Torch (with 2439 turns of ligh</color>    3.0 lb DEX : <color:G> 18/40</color>
+ i) <color:U>(</color> Body      : <color:s>Soft Leather Armour [4,+0]</color>                 8.0 lb CON : <color:G>    18</color>
+ j)   Cloak     :                                                   CHR : <color:G>    12</color>
+ k)   Head      :                                                   AC     <color:G>    6</color>
+ l)   Hands     :                                                   HP <color:G>  43</color>/<color:G>  43</color>
+ m)   Feet      :                                                   SP <color:G>  14</color>/<color:G>  14</color>
+                                                          <color:R>  12.7 lb</color>             
+Carrying 36.2 pounds (<color:G>27%</color> capacity).                                            
+                                                                                
+<color:y>Examine which item </color>(<color:o>Esc</color> to exit)<color:y>?</color>                                               
+                                                                                
+<color:U>###</color><color:s>.....</color><color:U>#####</color><color:s>..............</color><color:U>#######</color><color:s>.....</color><color:U>###</color><color:s>....</color><color:U>#####</color><color:r>.</color><color:s>..</color><color:U>#######</color><color:s>.</color><color:r>.</color><color:U>##</color><color:b>~~</color>             
+<color:U>###</color><color:s>......</color><color:U>###</color><color:s>...............</color><color:o>+</color><color:U>#####</color><color:B>+</color><color:s>...</color><color:r>.</color><color:s>..</color><color:U>##########</color><color:s>....</color><color:U>#######</color><color:s>..</color><color:U>##</color><color:b>~~</color>             
+<color:s>...........................</color><color:U>#######</color><color:s>....</color><color:r>..</color><color:s>.</color><color:U>##</color><color:v>++</color><color:U>####</color><color:s>.</color><color:r>..</color><color:s>.</color><color:r>.</color><color:s>.</color><color:r>.</color><color:s>..</color><color:r>.</color><color:s>..</color><color:r>.</color><color:s>.</color><color:U>##</color><color:b>~~</color> <color:B>Study (1)</color>   
+<color:U>###</color><color:s>..</color><color:U>##</color><color:b>5</color><color:U>##</color><color:s>..</color><color:U>#####+#####</color><color:s>.................</color><color:r>.</color><color:s>.</color><color:r>.</color><color:s>.</color><color:r>.</color><color:s>....</color><color:r>..</color><color:G>#</color><color:U>#</color><color:s>.</color><color:U>##</color><color:D>7</color><color:G>#</color><color:U>##</color><color:G>#</color><color:s>..</color><color:U>##</color><color:b>~~</color>             
+<color:U>###</color><color:s>.</color><color:U>#######</color><color:s>.</color><color:U>##########</color><color:o>9</color><color:s>....</color><color:g>.....</color><color:s>......</color><color:U>##</color><color:G>0</color><color:U>##</color><color:s>.</color><color:U>###</color><color:r>.</color><color:U>#</color><color:G>#</color><color:U>###</color><color:s>.</color><color:U>#######</color><color:r>.</color><color:s>.</color><color:U>##</color><color:b>~~</color>             
+<color:U>###</color><color:s>..</color><color:U>#####</color><color:s>..</color><color:U>###########</color><color:s>....</color><color:g>.</color><color:G>#</color><color:g>.</color><color:G>#</color><color:g>.</color><color:s>......</color><color:U>#####</color><color:s>.</color><color:U>###</color><color:r>.</color><color:U>#####</color><color:r>.</color><color:U>#######</color><color:s>..</color><color:U>##</color><color:b>~~</color>             
+<color:s>...........................</color><color:U>##</color><color:v>M</color><color:U>##</color><color:s>...........</color><color:r>.</color><color:s>..</color><color:r>.</color><color:s>..</color><color:r>..</color><color:s>..</color><color:r>.</color><color:s>......</color><color:r>.</color><color:s>.</color><color:r>.</color><color:U>##</color><color:b>~~</color>             
+Outpost
 </style>
-To shoot something simply fire (<color:keypress>f</color>) one of your bolts and see if you hit:
+To shoot something simply fire (<color:keypress>f</color>) one of your shots and see if you hit:
 <style:screenshot>
-             You have <color:U>16 Iron Shots (1d3) (+0,+0) (4/5)</color>. That was rather
-LEVEL <color:G>     1</color> dishonorable. The Iron Shot (1d3) (+0,+0) (4/5) hits the Scrawny
-EXP <color:G>       6</color> cat. The Scrawny cat mewls pitifully. The Scrawny cat flees in
-AU  <color:G>     126</color> terror!
-<color:d>            </color> <color:U>################################</color>.<color:U>#################################</color>
-STR : <color:G> 18/10</color> <color:U>#####</color>.......................................................<color:U>######</color>
-INT : <color:G> 18/30</color> <color:U>####</color><color:u>+</color>.......................................................<color:B>+</color><color:U>#####</color>
-WIS : <color:G>    11</color> <color:U>#####</color>.......................................................<color:U>######</color>
-DEX : <color:G> 18/50</color> <color:U>####</color>.........<color:U>###</color><color:v>0</color><color:U>###</color>..<color:U>####</color><color:o>+</color><color:U>####</color>...<color:U>####+####</color>..<color:U>###</color><color:G>+</color><color:U>###</color>.........<color:U>#####</color>
-CON : <color:G>    11</color> <color:U>#+#</color>...<color:U>#####</color>..<color:U>#######</color>..<color:U>#########</color>...<color:U>#########</color>..<color:U>#######</color>..<color:U>#####</color>...<color:U>#</color><color:B>+</color><color:U>##</color>
-CHR : <color:G>    12</color> ......<color:U>#####</color>..<color:U>#######</color>..<color:U>#########</color>...<color:U>#########</color>..<color:U>#######</color>..<color:U>#####</color>......<color:U>#</color>
-AC     <color:G>    7</color> ......<color:U>##+##</color>..<color:U>###</color><color:o>9</color><color:U>###</color>..<color:U>####</color>3<color:U>####</color>...<color:U>####</color><color:r>6</color><color:U>####</color>..<color:U>###</color><color:g>4</color><color:U>###</color>..<color:U>##+##</color>......<color:U>#</color>
-HP <color:G>  43</color>/<color:G>  43</color> .......................................<color:U>f</color>.........................<color:U>#</color>
-             ..............................@.......<color:s>{</color>..........................<color:U>#</color>
-             .................................................................<color:U>#</color>
-@[<color:G>*********</color>] ................................<color:v>></color>.................................
-<color:U>,</color>[*********] .................................................................<color:U>#</color>
-<color:U>f</color><color:R>[</color><color:v>*</color><color:R>--------]</color> .................................................................<color:U>#</color>
-             .................................................................<color:U>#</color>
-             ......<color:U>##1##</color>..<color:U>###</color><color:D>7</color><color:U>###</color>..<color:U>####</color><color:s>2</color><color:U>####</color>...<color:U>####</color><color:b>5</color><color:U>####</color>..<color:U>###</color><color:y>8</color><color:U>###</color>..<color:U>##+##</color>......<color:U>#</color>
-             ......<color:U>#####</color>..<color:U>#######</color>..<color:U>#########</color>...<color:U>#########</color>..<color:U>#######</color>..<color:U>#####</color>......<color:U>#</color>
-             <color:U>#+#</color>...<color:U>#####</color>..<color:U>#######</color>..<color:U>#########</color>...<color:U>#########</color>..<color:U>#######</color>..<color:U>#####</color>...<color:U>#</color><color:R>+</color><color:U>##</color>
-             <color:U>####</color>.........<color:U>###</color><color:v>+</color><color:U>###</color>..<color:U>####</color>+<color:U>####</color>...<color:U>####</color><color:B>+</color><color:U>####</color>..<color:U>#######</color>.........<color:U>#####</color>
-             <color:U>#####</color>.......................................................<color:U>######</color>
-             <color:U>#####</color>.......................................................<color:v>+</color><color:U>#####</color>
-             <color:U>#####</color>.......................................................<color:U>######</color>
-                                                                           Town
+The Iron Shot (3d3) (+0,+0) hits the Scrawny cat. The Scrawny cat
+mewls pitifully.                                                        LEVEL <color:G>     1</color>
+<color:g>...</color><color:G>#</color><color:g>..</color><color:G>#</color><color:U>#</color><color:s>...........</color><color:U>##</color><color:b>~~</color><color:U>######+++######</color><color:b>~~</color><color:U>##########################</color><color:b>~</color> EXP <color:G>      23</color>
+<color:g>..</color><color:U>#</color><color:g>.</color><color:G>#</color><color:g>..</color><color:U>#</color><color:s>.</color><color:U>##</color><color:s>.</color><color:U>######</color><color:s>.</color><color:U>##</color><color:b>~~</color><color:U>####</color><color:G>#</color><color:g>.</color><color:s>...</color><color:g>.</color><color:G>#</color><color:U>####</color><color:b>~~</color><color:U>##########################</color><color:b>~</color> AU  <color:G>     805</color>
+<color:G>#</color><color:g>.</color><color:U>#</color><color:g>....</color><color:U>#</color><color:s>.</color><color:U>##</color><color:s>.</color><color:U>######</color><color:s>.</color><color:U>##</color><color:b>~~~~~</color><color:g>...</color><color:s>...</color><color:g>...</color><color:b>~~~~~</color><color:U>##</color><color:s>.....................</color><color:U>###</color><color:b>~</color> <color:W>|</color><color:d> </color><color:u>}</color><color:d>    </color><color:u>~</color><color:U>(</color><color:d>   </color>
+<color:g>.</color><color:U>###</color><color:g>.</color><color:G>#</color><color:g>.</color><color:U>#</color><color:s>.</color><color:U>#</color><color:v>+</color><color:s>....</color><color:U>#</color><color:B>+</color><color:U>#</color><color:s>.</color><color:U>###</color><color:b>~~~~~~~</color><color:s>...</color><color:b>~~~~~~~~</color><color:U>##</color><color:s>.</color><color:U>#########</color><color:s>.</color><color:U>#########</color><color:s>.</color><color:U>##</color><color:b>~~</color> STR : <color:G> 18/10</color>
+<color:U>#####</color><color:g>..</color><color:U>#</color><color:s>.</color><color:U>##</color><color:s>........</color><color:U>##########</color><color:s>...</color><color:U>##########</color>.<color:U>#########</color><color:s>.</color><color:U>#########</color><color:s>.</color><color:U>##</color><color:b>~~</color> INT : <color:G>    18</color>
+<color:U>#####</color><color:g>.</color><color:G>#</color><color:U>#</color><color:s>............</color><color:U>#########</color><color:s>...</color><color:U>#########</color>..<color:U>####</color><color:s>2</color><color:U>####</color><color:s>.</color><color:U>#########</color><color:s>.</color><color:U>##</color><color:b>~~</color> WIS : <color:G>     7</color>
+<color:U>##</color><color:g>4</color><color:U>###</color><color:g>.</color><color:U>#</color><color:s>....</color><color:U>###</color><color:s>.....</color>......<color:U>###</color>...<color:U>###</color>.................<color:s>...........</color><color:U>##</color><color:b>~~</color> DEX : <color:G> 18/40</color>
+<color:G>+</color><color:U>#</color><color:s>.</color><color:U>#</color>+<color:U>#</color><color:g>.</color><color:U>#</color><color:s>...</color><color:U>#####</color><color:s>....</color>..............................<color:U>######</color><color:s>..</color><color:U>####</color><color:s>.</color><color:U>##</color><color:b>~~</color> CON : <color:G>    18</color>
+<color:g>..</color><color:s>.</color><color:g>....</color><color:U>#</color><color:s>...</color><color:U>#####</color><color:s>...</color>...............................<color:U>###</color><color:y>8</color><color:U>##</color><color:s>..</color>3<color:U>###</color><color:s>.</color><color:U>###</color><color:b>~</color> CHR : <color:G>    12</color>
+<color:U>##</color><color:s>.</color><color:U>#####</color><color:s>....</color><color:U>#</color><color:B>+</color><color:U>#</color><color:s>....</color>....................@..........<color:g>...</color>.<color:U>##</color><color:s>..</color><color:U>####</color><color:s>.</color><color:U>###</color><color:b>~</color> AC     <color:G>    6</color>
+<color:s>...................</color>...........<color:s>{</color>.............................<color:s>...</color><color:U>###</color><color:b>~</color> HP <color:G>  43</color>/<color:G>  43</color>
+<color:s>....................</color>.........<color:U>f</color>.............................<color:s>........</color> SP <color:G>  14</color>/<color:G>  14</color>
+<color:s>....................</color>........<color:U>##</color><color:r>6</color><color:U>##</color>........<color:U>##</color><color:v>++</color><color:U>####</color>....<color:U>###+####</color><color:s>..</color><color:U>###</color><color:b>~</color>             
+<color:s>.........</color><color:U>###</color><color:s>...............</color><color:U>#######</color>......<color:U>##########</color><color:s>...</color><color:U>########</color><color:s>..</color><color:U>###</color><color:b>~</color> <color:U>f</color><color:R>[</color><color:v>*</color><color:R>--------]</color>
+<color:s>........</color><color:U>####</color><color:v>></color><color:s>..............</color><color:U>#######</color>.....<color:U>###</color><color:s>....</color><color:U>#####</color><color:s>..</color><color:U>########</color><color:r>.</color><color:s>.</color><color:U>##</color><color:b>~~</color>             
+<color:U>###</color><color:s>....</color><color:U>#######</color><color:s>.............</color><color:U>#######</color>.....<color:v>+</color><color:U>#</color><color:s>......</color><color:U>##+</color><color:s>......</color><color:U>#####</color><color:s>..</color><color:U>##</color><color:b>~~</color>             
+<color:U>##1</color><color:s>....</color><color:U>#######</color><color:s>..............</color><color:U>#####</color>......<color:v>+</color><color:U>#</color><color:s>......</color><color:U>##+</color><color:s>.....</color><color:r>.</color><color:U>#####</color><color:s>..</color><color:U>##</color><color:b>~~</color>             
+<color:U>###</color><color:s>.....</color><color:U>#####</color><color:s>..............</color><color:U>#######</color>.....<color:U>###</color><color:s>....</color><color:U>#####</color><color:r>.</color><color:s>..</color><color:U>#######</color><color:s>.</color><color:r>.</color><color:U>##</color><color:b>~~</color>             
+<color:U>###</color><color:s>......</color><color:U>###</color><color:s>...............</color><color:o>+</color><color:U>#####</color><color:B>+</color>...<color:u>.</color>.<color:s>.</color><color:U>##########</color><color:s>....</color><color:U>#######</color><color:s>..</color><color:U>##</color><color:b>~~</color>             
+<color:s>...........................</color><color:U>#######</color>....<color:r>..</color><color:s>.</color><color:U>##</color><color:v>++</color><color:U>####</color><color:s>.</color><color:r>..</color><color:s>.</color><color:r>.</color><color:s>.</color><color:r>.</color><color:s>..</color><color:r>.</color><color:s>..</color><color:r>.</color><color:s>.</color><color:U>##</color><color:b>~~</color> <color:B>Study (1)</color>   
+<color:U>###</color><color:s>..</color><color:U>##</color><color:b>5</color><color:U>##</color><color:s>..</color><color:U>#####+#####</color><color:s>...........</color>....<color:s>..</color><color:r>.</color><color:s>.</color><color:r>.</color><color:s>.</color><color:r>.</color><color:s>....</color><color:r>..</color><color:G>#</color><color:U>#</color><color:s>.</color><color:U>##</color><color:D>7</color><color:G>#</color><color:U>##</color><color:G>#</color><color:s>..</color><color:U>##</color><color:b>~~</color>             
+<color:U>###</color><color:s>.</color><color:U>#######</color><color:s>.</color><color:U>##########</color><color:o>9</color><color:s>....</color><color:g>.....</color><color:s>.</color>.....<color:U>##</color><color:G>0</color><color:U>##</color><color:s>.</color><color:U>###</color><color:r>.</color><color:U>#</color><color:G>#</color><color:U>###</color><color:s>.</color><color:U>#######</color><color:r>.</color><color:s>.</color><color:U>##</color><color:b>~~</color>             
+<color:U>###</color><color:s>..</color><color:U>#####</color><color:s>..</color><color:U>###########</color><color:s>....</color><color:g>.</color><color:G>#</color><color:g>.</color><color:G>#</color><color:g>.</color><color:s>.</color>.....<color:U>#####</color><color:s>.</color><color:U>###</color><color:r>.</color><color:U>#####</color><color:r>.</color><color:U>#######</color><color:s>..</color><color:U>##</color><color:b>~~</color>             
+<color:s>...........................</color><color:U>##</color><color:v>M</color><color:U>##</color>......<color:s>.....</color><color:r>.</color><color:s>..</color><color:r>.</color><color:s>..</color><color:r>..</color><color:s>..</color><color:r>.</color><color:s>......</color><color:r>.</color><color:s>.</color><color:r>.</color><color:U>##</color><color:b>~~</color>             
+Outpost
 </style>
 Sorry about that, Ms. Kitty! She's not dead yet, but will be shortly. I want you to notice a few things. First, as you play the game, notice that messages will be displayed in the top region of the screen. Back when I was a youngster, the game only had a single message line, and we hapless players were plagued with <color:B>-more-</color> prompts out the wazoo, not to mention sore fingers from all the extra keypresses! You may still get a <color:B>-more-</color> from time to time. If you do, simply press <color:keypress>SPACE</color> when you are finished reading and the next batch of output will be displayed. The messages will clear automatically after you enter your next command, so make sure you are done reading before pressing any keys. You can always review messages with the <color:keyword>Previous Messages</color> command (<color:keypress>CTRL+P</color>).
 
-Next, on the left hand side of the screen you can see 3 status bars. The first one (@[<color:G>*********</color>]) is for the player's hp. It is full since I haven't been hurt yet. The second one (<color:U>,</color>[*********]) displays my food status. I'm not hungry yet, so this one is full as well. Both of these are optional (and the food one in particular might not interest you). But the third one (<color:U>f</color><color:R>[</color><color:v>*</color><color:R>--------]</color>) is very important. It tracks your current target, or the monster you most recently damaged. In this case, it shows me the health of Ms. Kitty, and you can see she is in some pretty dire straits.
+Next, on the right hand side of the screen you can see a status bar (<color:U>f</color><color:R>[</color><color:v>*</color><color:R>--------]</color>). This is very important - it tracks your current target, or the monster you most recently damaged. In this case, it shows me the health of Ms. Kitty, and you can see she is in some pretty dire straits.
 
 Finally, notice my shot (<color:s>{</color>) laying on the ground next to Ms. Kitty. Sometimes your missile ammo will break on impact, but if it doesn't you'll want to go gather it up after you are done fighting. You can pickup objects by moving on top of them and using the get command (<color:keypress>g</color>).
 
 Killing cats is fun, but it is time to move on. If you have money left over, go to the General Store (<color:U>1</color>) and buy a lantern and some oil. Lanterns cast more light than torches and allow you to see further in the dark. Sell your starting torches. Oh, and be sure to equip your lantern to actually use it (<color:keypress>w</color> to wear an item).
 
-Of course, it's possible that these items will not be available in the stores. The stores will "refresh" themselves every so often, getting rid of old items and buying new ones. If you ever find that there's something you need which the stores don't currently have, you can come back a bit later. However, to prevent <color:keyword>town scumming</color>, the stores won't actually restock unless you do a bit of adventuring first.
+Of course, it's possible that some of these items will not be available in the stores. The stores will "refresh" themselves every so often, getting rid of old items and buying new ones. If you ever find that there's something you need which the stores don't currently have, you can come back a bit later. However, to prevent <color:keyword>town scumming</color>, the stores won't actually restock unless you do a bit of adventuring first.
 
 Hopefully, you managed all of this without too much trouble from the locals (<color:G>t</color>), but occasionally the townsfolk will interact with you. This may be simply annoying, as there are plenty of drunks about, but it can also be dangerous as urchins have been known to steal gold and you look like an easy mark. You can attack a monster by simply moving into it, assuming you have a weapon equipped. If you are playing a mage, you should learn your Magic Missile spell first (<color:keypress>G</color> allows you to Gain a spell) and fight with that instead (<color:keypress>m</color> allows you to cast a magic spell).
 
 <topic:MyFirstTripDown><style:heading>My First Trip Down</style>
 
-Since this is the 'Beginner' mode, there is only one dungeon to enter. The <color:v>></color> character represents the entrance to a dungeon. >, in general refers to stairs down, but dungeon entrances <color:v>></color> and quest entrances <color:y>></color> are color coded to stand out. Similarly, < refers to stairs up. By some cosmic accident, these are also the keys you press to take the stairs: <color:keypress>></color> to go down and <color:keypress><</color> to go up. What could be easier to remember? So move to the stairs down to <color:keyword>Angband</color> and enter the dungeon!
+Since this is the 'Beginner' mode, there is only one dungeon to enter. The <color:v>></color> character represents the entrance to a dungeon. >, in general refers to stairs down, but dungeon entrances <color:v>></color> and quest entrances <color:y>></color> are color-coded to stand out. Similarly, < refers to stairs up. By some cosmic accident, these are also the keys you press to take the stairs: <color:keypress>></color> to go down and <color:keypress><</color> to go up. What could be easier to remember? So move to the stairs down to <color:keyword>Angband</color> and enter the dungeon!
 
-As you walk about, beware of monsters and use the look command (<color:keypress>l</color>) together with the recall option (<color:keypress>r</color>) to get a verbose monster description. For example:
+As you walk about, beware of monsters and use the look command (<color:keypress>*</color>) together with the recall option (<color:keypress>r</color>) to get a monster description. For example:
 <style:screenshot>
-The Soldier ant ('<color:u>a</color>')/('<color:u>a</color>'):  [r,q,t,p,o,+,-,?,<dir>]
-Your ancestors have killed at least 1 of these creatures.
-A large ant with powerful mandibles.
-It is normally found on dungeon level 1, won't be found deeper than dungeon
-level 10, and moves at normal speed.  A kill of this<color:G> natural</color> creature is worth
-about 1.50 points for a 2nd level character.  Nothing is known about its
-attack.
+Monster: a Soldier ant [r,q,t,p,o,x,+,-,?,<dir>]                                
+Name    : <color:B>Soldier ant</color> (<color:u>a</color>)                                               L <color:G>     1</color>
+Level   : <color:G>1 to 10</color><color:d>   </color>Speed: +0                                           <color:G>      23</color>
+AC      : <color:y>?</color><color:d>         </color>Type : <color:G>Natural</color>                                      <color:G>     805</color>
+HP      : <color:y>?</color><color:d>         </color>                                                    <color:d>   </color><color:u>~</color><color:U>(</color><color:d>   </color>
+<color:d>                    </color>                                                    : <color:G> 18/10</color>
+Attacks : <color:G>Type    Effects</color>                                               : <color:G>    18</color>
+          Bite    Hurt                                                  : <color:G>     7</color>
+                                                                        : <color:G> 18/40</color>
+Kills   : <color:G>0</color>                                                             : <color:G>    18</color>
+Exp     : <color:G>2</color> at CL1                                                      : <color:G>    12</color>
+                                                                           <color:G>    6</color>
+A large ant with powerful mandibles.                                    <color:G> 43</color>/<color:G>  43</color>
+                                 #.....<color:U>'</color>...                         SP <color:G>  14</color>/<color:G>  14</color>
+                                 #.@...#                                        
+                                 #<color:u>a</color>....#                            <color:u>a</color>[<color:b>*********</color>]
+                                 #.....#
+                                 #######                                        
+                                                                                
+                                                                                
+                                                                                
+                                                                    <color:B>Study (1)</color>   
+                                                                                
+                                                                                
+                                                                                
+                                                                                
+<color:s>Angband: L2</color></style>
 
-DEX : <color:G> 18/50</color>
-CON : <color:G>    11</color>
-CHR : <color:G>    12</color>
-AC     <color:G>    7</color>
-HP <color:G>  47</color>/<color:G>  47</color>
+In this case, a previous character had encountered a soldier ant, so I have some basic knowledge of this type of monster - not very much, but I do know it gets one attack per round and is worth 2 XP to kill (actually a fair bit more because of coffee-break mode's accelerated XP gain!). This illustrates what the game calls <color:keyword>Monster Memory</color>. As you battle monsters, you learn more about them, and the game tracks your knowledge for you. All of the memory is retained in your savefile so that future characters may benefit. After killing a foe, you can recall details of your glory through the <color:keypress>~</color> command (Knowledge Menu), followed by <color:keypress>m</color> for monster knowledge and arrows to select the appropriate monster. Notice that the description updates as you learn more.
 
+At this point, you basically explore the current level. In normal mode you could walk back to town at any time by going back up those stairs you just descended, but coffee-break mode disables up-stairs, so read a scroll of Word of Recall when you wish to return to town. You can also find new stairs down to deeper depths. Basically, the deeper you go, the more difficult things become - but the quality of the loot also improves, inviting you ever deeper...
 
-@[<color:G>*********</color>]
-<color:U>,</color>[*********]     #######<color:U>+</color>##<color:U>+</color>######<color:U>+</color>##.####
-<color:u>a</color>[<color:b>*********</color>]     #................<color:U>R</color>......#
-                 #.......................#
-                 #.......................#
-                 #.............<color:u>a</color>.........#
-                 #.......................#
-                 #............@..........#
-                 #.......................#
-                 #.......................#
-                 #########################
-                                                                    <color:s>Angband: L1</color>
-</style>
-In this case, a previous character had encountered and slain a soldier ant, so I have some basic knowledge of this type of monster. This illustrates what the game calls <color:keyword>Monster Memory</color>. As you battle monsters, you learn more about them, and the game tracks your knowledge for you. All of the memory is retained in your savefile so that future characters may benefit. After killing a foe, you can recall details of your glory with the <color:keypress>/</color> command, followed by the letter representing the monster (<color:u>a</color> in this case) and then follow the prompts to choose the recall option. Notice that the description updates.
-
-At this point, you basically explore the current level. You can walk back to town at any time by going back up those stairs you just descended. You can also find new stairs down to deeper depths. Basically, the deeper you go, the more difficult things become, so you'll want to take it easy on the stairs at first.
-
-So, walk around a bit and kill stuff. Don't worry too much about dying as it will probably happen quite a bit at first. And if it does, the next time you load this savefile the birth process will give you an extra option to <color:keyword>Quick Start</color> this character, which basically skips the entire birth process and rolls a character identical to the last one. So it's easy to start up again after you die. (See, we streamline the common cases :)
+So, walk around a bit and kill stuff. Don't worry too much about dying as it will probably happen quite a bit at first. And if it does, the next time you load this savefile the birth process will give you an extra option to <color:keyword>Quick Start</color> this character, which basically skips the entire birth process and rolls a character identical to the last one. So it's easy to start up again after you die. See, we streamline the common cases :)
 
 So, I will continue to play a bit. You can just sit back and watch! ... Oops, I think I'm in trouble:
 <style:screenshot>
-             <color:g>The Novice warrior attacks you: </color>He hits. He hits. He hits.
-LEVEL <color:G>     2</color> <color:g>The Novice warrior attacks you: </color>He hits. He hits. You stand your
-EXP <color:G>      24</color> ground! He hits. <color:v>*** LOW HITPOINT WARNING! ***</color> Press <color:y>Space</color> to
-AU  <color:G>     144</color> continue.
-<color:d>            </color>
-STR : <color:G> 18/10</color>
-INT : <color:G> 18/30</color>                                              #<color:s>%</color>##################<color:U>#</color>
-WIS : <color:G>    11</color>                                              <color:U>+</color>...................<color:U>#</color>
-DEX : <color:G> 18/50</color>                                              %...................<color:U>#</color>
-CON : <color:G>    11</color>                                              ....................<color:U>#</color>
-CHR : <color:G>    12</color>                                              #.......<...........<color:U>#</color>
-AC     <color:G>    6</color>                                              #...................<color:U>#</color>
-HP <color:r>  10</color>/<color:G>  47</color>                                              #<color:s>%</color>##.###############<color:U>#</color>
-                                                             #.#
-                                                             #.#
-@[<color:r>**</color>-------]                                       <color:s>%%%</color>%#%<color:s>%</color>##%%.#%#####%
-<color:U>,</color>[********-]                                       %<color:y>!</color>.................#
-<color:U>p</color>[<color:R>***</color>------]                                       <color:s>%</color>........<color:U>p</color>.........%
-                                                   %.....<color:U>CC</color>@.........<color:r>~</color>%
-                                                   <color:s>%</color>..................#
-                                                   <color:s>%</color>..............j...#
-                                                   <color:s>%</color>..................#
-                                                   <color:s>%</color>..................%
-                                                   %%#<color:s>%</color>%<color:s>%%%%</color>##.####%<color:U>+</color><color:s>%%</color>
-
-
-                                                                    <color:s>Angband: L2</color>
+<color:g>The Novice warrior attacks you:</color> He hits. He hits. <color:v>*** LOW HITPOINT </color>             
+<color:v>WARNING! ***</color> Press <color:y>Space</color> to continue.                               LEVEL <color:G>     2</color>
+                                                                    EXP <color:G>      21</color>
+                                                                    AU  <color:G>     805</color>
+                                                                    <color:W>|</color><color:d> </color><color:u>}</color><color:d>    </color><color:u>~</color><color:U>(</color><color:d>   </color>
+                                                                    STR : <color:G> 18/10</color>
+                                                                    INT : <color:G>    18</color>
+                                                                    WIS : <color:G>     7</color>
+                                                                    DEX : <color:G> 18/40</color>
+                                                                    CON : <color:G>    18</color>
+                                                                    CHR : <color:G>    12</color>
+                                      #.###                         AC     <color:G>    6</color>
+                                    #<color:s>.</color>..<color:U>p</color>.#                         HP <color:r>  10</color>/<color:G>  55</color>
+                                   #<color:s>.</color><color:D>(</color>.@...##                       SP <color:G>  18</color>/<color:G>  18</color>
+                                  #<color:s>...</color>....<color:s>..</color>#                                   
+                                  <color:s>...</color><color:D>|</color><color:s>.......</color>                                   
+                                  #<color:s>.........</color>#                                   
+                                   #<color:s>.......</color>##                                   
+                                   ##<color:s>....</color>                                       
+                                      #<color:s>.</color>#                                       
+                                      #<color:s>.</color>#                                       
+                                      #<color:s>.</color>#                           <color:B>Study (1)</color>   
+                                      #<color:s>.</color>#                                       
+                                      #<color:s>.</color>#                                       
+                                      #<color:s>.</color>#                                       
+                                      #<color:s>.</color>#                                       
+<color:s>Angband: L2</color>
 </style>
-Notice my <color:r>10</color> hp? Well, if my hp go below 0, I am dead. Also notice the very loud <color:v>*** LOW HITPOINT WARNING! ***</color>? This is to make sure you notice when you are in trouble. The game even forces me to press <color:keypress>SPACE</color> before continuing. Really, I think I am about to die!
+        Notice my <color:r>10</color> hp? Well, if my hp go below 0, I am dead. Also notice the very loud <color:v>*** LOW HITPOINT WARNING! ***</color>? This is to make sure you notice when you are in trouble. The game even forces me to press <color:keypress>SPACE</color> before continuing. Really, I think I am about to die!
 <style:screenshot>
-             <color:g>The Novice warrior attacks you: </color>He hits. What a noble sacrifice!
-LEVEL <color:G>     2</color>
-EXP <color:G>      23</color>
-AU  <color:G>     144</color>
-<color:d>            </color>
-STR : <color:G> 18/10</color>
-INT : <color:G> 18/30</color>                                              #<color:s>%</color>##################<color:U>#</color>
-WIS : <color:G>    11</color>                                              <color:U>+</color>...................<color:U>#</color>
-DEX : <color:G> 18/50</color>                                              %...................<color:U>#</color>
-CON : <color:G>    11</color>                                              ....................<color:U>#</color>
-CHR : <color:G>    12</color>                                              #.......<...........<color:U>#</color>
-AC     <color:G>    6</color>                                              #...................<color:U>#</color>
-HP <color:r>  -3</color>/<color:G>  47</color>                                              #<color:s>%</color>##.###############<color:U>#</color>
-                                                             #.#
-                                                             #.#
-@[<color:r>*</color>--------]                                       <color:s>%%%</color>%#%<color:s>%</color>##%%.#%#####%
-<color:U>,</color>[********-]                                       %<color:y>!</color>.................#
-                                                   <color:s>%</color>..................%
-                                                   %.....<color:U>C</color>@<color:U>p</color>.........<color:r>~</color>%
-                                                   <color:s>%</color>..................#
-                                                   <color:s>%</color>..............j...#
-                                                   <color:s>%</color>..................#
-                                                   <color:s>%</color>..................%
-                                                   %%#<color:s>%</color>%<color:s>%%%%</color>##.####%<color:U>+</color><color:s>%%</color>
-
-
-                                                                    <color:s>Angband: L2</color>
+<color:g>The Novice warrior attacks you:</color> He hits.<color:B>-more-</color>                                  
+                                                                    LEVEL <color:G>     2</color>
+                                                                    EXP <color:G>      21</color>
+                                                                    AU  <color:G>     805</color>
+                                                                    <color:W>|</color><color:d> </color><color:u>}</color><color:d>    </color><color:u>~</color><color:U>(</color><color:d>   </color>
+                                                                    STR : <color:G> 18/10</color>
+                                                                    INT : <color:G>    18</color>
+                                                                    WIS : <color:G>     7</color>
+                                                                    DEX : <color:G> 18/40</color>
+                                                                    CON : <color:G>    18</color>
+                                                                    CHR : <color:G>    12</color>
+                                      #.###                         AC     <color:G>    6</color>
+                                    #<color:s>.</color>..<color:U>p</color>.#                         HP <color:r>  -2</color>/<color:G>  55</color>
+                                   #<color:s>.</color><color:D>(</color>.@...##                       SP <color:G>  18</color>/<color:G>  18</color>
+                                  #<color:s>...</color>....<color:s>..</color>#                                   
+                                  <color:s>...</color><color:D>|</color><color:s>.......</color>                                   
+                                  #<color:s>.........</color>#                                   
+                                   #<color:s>.......</color>##                                   
+                                   ##<color:s>....</color>                                       
+                                      #<color:s>.</color>#                                       
+                                      #<color:s>.</color>#                                       
+                                      #<color:s>.</color>#                           <color:B>Study (1)</color>   
+                                      #<color:s>.</color>#                                       
+                                      #<color:s>.</color>#                                       
+                                      #<color:s>.</color>#                                       
+                                      #<color:s>.</color>#                                       
+<color:s>Angband: L2</color>
 </style>
 <color:v>Ouch!</color> That really hurt!
 <style:screenshot>
@@ -304,16 +314,16 @@ HP <color:r>  -3</color>/<color:G>  47</color>                                  
            /                             \  : _;,,,;_    :   :
           /            Filcher            \,;_          _;,,,;_
          |               the               |   ___
-         |            Cutpurse             |  /   \
+         |           Vanquished            |  /   \
          |                                 |  :   :
          |              Rogue              | _;,,,;_   ____
          |            Level: 2             |          /    \
-         |             Exp: 36             |          :    :
+         |             Exp: 38             |          :    :
          |             AU: 144             |          :    :
          |        Killed on Level 2        |         _;,,,,;_
          |      by a Novice warrior.       |
          |                                 |
-         |    Tue Sep 22 14:41:58 2015     |
+         |    Thu Dec 05 07:54:18 2019     |
         *|   *     *     *    *   *     *  | *
 ________)/\\_)_/___(\/___(//_\)/_\//__\\(/_|_)_______
 </style>
@@ -324,13 +334,15 @@ But never fear, I can quickly start over. Notice the new birth option:
 
           Use quick start? [y/N]
 </style>
-Choosing <color:keypress>y</color> immediately recreates a new character with the same race, class and stats as the old one and immediately places me back in town. This is a brand new character, so any objects I acquired (like that sling) are gone, and I have no experience. However, my monster memory survives, so I don't have to memorize all the monsters as you encounter them.
+Choosing <color:keypress>y</color> immediately recreates a new character with the same race and class as the old one and offers the same stat allocation. This is a brand new character, so any objects I acquired (like that sling) are gone, and I have no experience. However, my monster memory survives, so I don't have to memorize all the monsters as you encounter them.
 
-Go ahead and play a bit. At this point, the tutorial is over and I'll just give some basic tidbits about the game.
+Go ahead and play a bit. Note that you do not need to enter the dungeon immediately - you can also head north to the Mayor's castle and press <color:keypress>q</color> to request your first town quest, then go do the quest instead! The first quest is rated as danger level 5, so doing it right off the bat is a bit risky; but successfully completing it will give you a valuable item, and you are likely to find some money in the quest that also provides a nice leg-up.
+
+At this point, the tutorial is over and I'll just give some basic tidbits about the game.
 
 <topic:Tidbits><style:heading>Tidbits</style>
 
-Every monster uses a unique ASCII character that sort of tells you what it is. For example, rats use the letter 'r' while orcs use the letter 'o'. When you see a character you don't understand, press <color:keypress>l</color> to look at it. If it is a monster, you can then press <color:keypress>r</color> to recall information about it, including a description that will give you more information. Other characters like '/' and '!' represent objects that you may pick up (<color:keypress>g</color> to get) and then use.
+Every monster uses a unique ASCII character that sort of tells you what it is. For example, rats use the letter 'r' while orcs use the letter 'o'. When you see a character you don't understand, press <color:keypress>*</color> to look at it. If it is a monster, you can then press <color:keypress>r</color> to recall information about it, including a description that will give you more information. Other characters like '/' and '!' represent objects that you may pick up (<color:keypress>g</color> to get) and then use.
 
 How you use an object will depend upon its type. Some common examples are:
 <style:screenshot>
@@ -344,6 +356,8 @@ Char  Object         Usage
 <color:r>-</color>     Rod            <color:keypress>z</color> to zap it.
 <color:U>_</color>     Staff          <color:keypress>u</color> to use it.
 <color:U>~</color>     Lantern        <color:keypress>w</color> to wear it. <color:keypress>F</color> to refill it with oil.
+<color:U>~</color>     Quiver         <color:keypress>w</color> to wield it. <color:keypress>w</color> again to fill it with projectiles.
+<color:u>}</color>     Ranged Weapon  <color:keypress>w</color> to wield it.
 <color:o>/</color>     Polearm        <color:keypress>w</color> to wield it.
 <color:B>\</color>     Hafted Weapon  <color:keypress>w</color> to wield it.
 |     Sword          <color:keypress>w</color> to wield it.
@@ -353,70 +367,73 @@ Char  Object         Usage
 </style>
 If you want to know what a specific symbol stands for, type <color:keypress>/</color>, and then the symbol. For instance, if you're wondering what all the t's are, type <color:keypress>/t</color>, and the game will tell you that these are townspeople. You can also <color:keypress>l</color>ook at an item, feature, or monster. While looking, pressing space or enter will cycle through the different interesting things in view. There is also a full map function: type <color:keypress>M</color>. It will bring up a map of the entire area. Finally, if you type <color:keypress>L</color>, you can scroll the (full-zoom) map around the dungeon. In general, you can use <color:keypress>M</color> to find areas that look interesting and <color:keypress>L</color> to look at them in detail.
 
-From here on we'll be giving detailed dungeon survival information. Some of it is intuitive, and some of it you aren't likely to find out without a lot of deaths first. If you want to experience the painful learning process in all it's glory, don't read further. If, however, you're sick and tired of dying, read ahead.
+From here on we'll be giving detailed dungeon survival information. Some of it is intuitive, and some of it you aren't likely to find out without a lot of deaths first. If you want to experience the painful learning process in all its glory, don't read further. If, however, you're sick and tired of dying, read ahead.
  
 <topic:MultipleBlows><style:heading>On Weapons and Multiple Blows</style>
 
 Some characters will start the game being able to get multiple blows per round with their weapon when attacking. Whether or not you get more blows than this later in the game will be determined by your class, your weapon weight, your Strength, and your Dexterity. Check your Character Sheet (type <color:keypress>C</color>):
 <style:screenshot>
- Name       : <color:B>Filcher</color>                      ========== Stats ==========
- Sex        : <color:B>Male</color>                               STR  :    <color:G> 18/20</color>
- Personality: <color:B>Ordinary</color>                           INT  :    <color:G>    18</color>
- Race       : <color:B>High-Elf</color>                           WIS  :    <color:G>     9</color>
- Subrace    : <color:B>None</color>                               DEX  :    <color:G> 18/50</color>
- Class      : <color:B>Rogue</color>                              CON  :    <color:G>    11</color>
- Realm      : <color:B>Burglary</color>                           CHR  :    <color:G>    14</color>
-
- Level      :        <color:G>1</color>                           HP   :     <color:G>43/43</color>
- Cur Exp    :        <color:G>0</color>                           SP   :       <color:G>0/0</color>
- Max Exp    :        <color:G>0</color>                           AC   :         <color:G>7</color>
- Adv Exp    :       <color:G>23</color>                           Speed:        <color:B>+0</color>
-
-                                           ========== Skills =========
- Gold       :      <color:G>341</color>                     <color:y>Melee</color>      : <color:G>Excellent</color>
- Kills      :        <color:G>0</color>                     <color:y>Ranged</color>     : <color:G>Excellent</color>
- Uniques    :        <color:G>0</color>                     SavingThrow: <color:G>Excellent</color>
- Artifacts  :      <color:G>0+0</color>                     Stealth    : <color:g>Superb</color>
-                                           Perception : <color:y>Very Good</color>
- Game Day   :        <color:G>1</color>                     Searching  : <color:y>Good</color>
- Game Time  :     <color:G>6:01</color>                     Disarming  : <color:G>Excellent</color>
- Play Time  :    <color:G>00:00</color>                     Device     : <color:g>Superb</color>
+ Name       : <color:B>Filcher</color><color:d>                   </color>   ========== Stats ==========          
+ Sex        : <color:B>Male</color><color:d>                      </color>         STR  : <color:G>    18/10</color>               
+ Personality: <color:B>Ordinary</color><color:d>                  </color>         INT  : <color:G>       18</color>               
+ Race       : <color:B>High-Elf</color><color:d>                  </color>         WIS  : <color:G>        7</color>               
+ Subrace    : <color:B>None                      </color>         DEX  : <color:G>    18/40</color>               
+ Class      : <color:B>Rogue</color><color:d>                     </color>         CON  : <color:G>       18</color>               
+ Realm      : <color:B>Burglary</color><color:d>                  </color>         CHR  : <color:G>       12</color>               
+<color:d>                                        </color>                                        
+ Level      : <color:G>       1</color><color:d>                  </color>         HP   : <color:G>    43/43</color>               
+ Cur Exp    : <color:G>       0</color><color:d>                  </color>         SP   : <color:G>    14/14</color>               
+ Max Exp    : <color:G>       0</color><color:d>                  </color>         AC   : <color:G>        6</color>               
+ Adv Exp    : <color:G>      23</color><color:d>                  </color>         Speed: <color:U>       +0</color>               
+<color:d>                                        </color>                                        
+<color:d>                                        </color>   ========== Skills =========          
+ Gold       : <color:G>     774</color><color:d>                  </color>   Melee      : <color:y>Good</color>                    
+ Kills      : <color:G>       0</color><color:d>                  </color>   Archery    : <color:y>Good</color>                    
+ Uniques    : <color:G>       0</color><color:d>                  </color>   SavingThrow: <color:y>Good</color>                    
+ Artifacts  : <color:G>     0+0</color><color:d>                  </color>   Stealth    : <color:G>Excellent</color>               
+<color:d>                                        </color>   Perception : <color:y>Good</color>                    
+ Game Day   : <color:G>       1</color><color:d>                  </color>   Searching  : <color:o>Fair</color>                    
+ Game Time  : <color:G>    6:00</color><color:d>                  </color>   Disarming  : <color:y>Good</color>                    
+ Play Time  : <color:G>   00:00</color><color:d>                  </color>   Device     : <color:y>Good</color>
+<color:d>                                        </color>                                        
 
 </style>
 And then either scroll down to the Melee section, or press <color:keypress>m</color> to navigate more quickly:
 <style:screenshot>
-<color:y> Hand #1: a Dagger (1d4) (+0,+0)                           </color> <color:G>Accuracy</color>
+<color:y> Hand #1:</color> a Dagger (1d5) (+0,+0)                            <color:G>Accuracy</color>
  Weight : 1.2 lbs                                            AC Hit
  Profic : Beginner (+0 To Hit)                               25 75%
- To Hit : 0 + 5 = 5                                          50 55%
- To Dam : 0 + 3 = 3                                          75 34%
- Blows  : 2.74                                              100 13%
+ To Hit : 0 + 4 = 4                                          50 53%
+ To Dam : 0 + 2 = 2                                          75 32%
+ Blows  : 2.42                                              100 10%
 <color:G> Damage </color>                                                    125  5%
- Crits  : 1.00x (0.7%)                                      150  5%
- Normal : 14 (10-19) [1.00x]                                175  5%
+ Crits  : 1.00x (0.5%)                                      150  5%
+ Normal : 11                                                175  5%
                                                             200  5%
 </style>
-In my case, this is a newborn adventurer still using his starting dagger. But you'll notice that he is getting multiple blows per round, 2.74 in this case. What could that possibly mean? Actually, it's rather simple: 74% of the time I will get 3 attacks per round while 26% of the time, only 2. How is that number determined and what can I do to make it bigger? Good questions! The melee calculation is a little complicated, but basically it depends on the weapon and how heavy it is, your stats and how strong and dextrous you are, and your class. Rogues often get extra blows quicker, especially with lighter weapons. This is because their class favors light weapons such as daggers, and the game encourages this. Most other characters won't start with so many attacks. And you'll notice that while I get 2.74 attacks per round, my damage is rather pathetic (14 damage per round).
+In my case, this is a newborn adventurer still using his starting dagger. But you'll notice that he is getting multiple blows per round, 2.42 in this case. What could that possibly mean? Actually, it's rather simple: 42% of the time I will get 3 attacks per round while 58% of the time, only 2. How is that number determined and what can I do to make it bigger? Good questions! The melee calculation is a little complicated, but basically it depends on the weapon and how heavy it is, your stats and how strong and dextrous you are, and your class. Rogues often get extra blows quicker, especially with lighter weapons. This is because their class favors light weapons such as daggers, and the game encourages this. Most other characters won't start with so many attacks. And you'll notice that while I get 2.42 attacks per round, my damage is rather pathetic (11 damage per round).
 
-The Weapon Info screen also displays melee accuracy. Of course, you won't hit every time you swing. Accuracy depends on you skill with the weapon as well as its magical bonuses, if any. It also depends on your fighting skill (Shown on the initial Character Sheet above under the Skills section for Melee. My Melee skill is 'Excellent' in this case) which increases with stats (Strength and Dexterity) as well as experience (Level). All of this competes against the monster's armor class (AC). Basically, some monsters are harder to hit than others. Dragons are notoriously tough skinned, for example.
+The Weapon Info screen also displays melee accuracy. Of course, you won't hit every time you swing. Accuracy depends on you skill with the weapon as well as its magical bonuses, if any. It also depends on your fighting skill, shown on the initial Character Sheet above under the Skills section for Melee (mine is <color:y>Good</color>). Your Melee skill increases with stats (Strength and Dexterity) as well as experience (Level). All of this competes against the monster's armor class (AC); basically, some monsters are harder to hit than others. Dragons are notoriously tough skinned, for example.
 
 You may also see detailed information on your missile weapon in your character sheet. It is displayed right after the melee section (provided you are actually wielding a shooter), and can be quickly navigated to by pressing <color:keypress>s</color>:
 <style:screenshot>
-<color:y> Shooting: a Sling (x2) (+0,+0)                                                </color>
+<color:y> Shooting</color>: a Sling (x2) (+0,+0)                                                </color>
  Range   : 160'
- Shots   : 1.30
- Mult    : 2.06x
- To Hit  : 0 + 5 = 5
- To Dam  : 0 (Multiplier Applies)
+ Shots   : 1.39
+ Mult    : 2.04x
+ Profic  : Beginner (+0 To Hit)
+ To Hit  : 0 + 4 = 4
  Xtra Dam: 0 (Multiplier Does Not Apply)
 
-<color:u> Ammo #1 : 30 Rounded Pebbles (1d2) (+0,+0) (3/3)                </color> <color:G> AC Hit</color>
- Weight  : 0.4 lbs                                                 50 62%
- To Hit  : 0 + 5 = 5                                              100 28%
- To Dam  : 0 + 0 = 0 (Multiplier Applies)                         150  5%
-<color:G> Damage  </color>                                                         175  5%
- Crits   : 1.00x                                                  200  5%
- Normal  : 3 (2-5) [2.06x]
+<color:u> Ammo #1 </color>: <color:U>30 Rounded Pebbles (2d3) (+0,+0)</color><color:d>                 </color>  <color:G>AC Hit</color>            
+ Breakage: 8%<color:d>                                               </color>  25 79%            
+ Weight  : 0.4 lbs<color:d>                                          </color>  50 63%            
+ To Hit  : 0 + 4 = 4<color:d>                                        </color> 100 30%            
+ To Dam  : 0 (Multiplier Applies)<color:d>                           </color> 150  5%            
+ To Dam  : 0 (Multiplier Does Not Apply)<color:d>                    </color> 175  5%            
+ <color:G>Damage  </color><color:d>                                                   </color> 200  5%            
+ Crits   : 1.06x (4.1%)<color:d>                                     </color>
+ Normal  : 8/11<color:d>                                             </color>                    
 </style>
 In this case, you see I get multiple shots, but ranged combat works a bit differently than melee combat. Rather than taking all of your allowed shots in a single round, you take one at a time, but the game charges you less than the full amount of energy per shot. I haven't explained the speed system yet, but suffice it to say that less energy per action means you move faster, and can do more before any nearby monsters get a chance to act.
 
@@ -424,76 +441,79 @@ These two screens, Weapon Info and Shooter Info, will become more and more usefu
 
 <topic:OnArmorAndResistance><style:heading>On Armor and Resistance</style>
 
-We just saw how monsters have this attribute called armor class, and how this makes them harder to hit. Similarly, the player has an armor class which is determined by the armor they are currently wearing as well as their dexterity. In addition to making you harder to hit, AC also actually reduces the damage from certain types of melee attacks, so it is a very important attribute that you will want to increase as much as possible. If every you find yourself getting destroyed in melee, you'll want to look for better AC from your gear.
+We just saw how monsters have this attribute called armor class, and how this makes them harder to hit. Similarly, the player has an armor class which is determined by the armor they are currently wearing as well as their dexterity. In addition to making you harder to hit, AC also actually reduces the damage from certain types of melee attacks, so it is a very important attribute that you will want to increase as much as possible. If ever you find yourself getting destroyed in melee, you'll want to look for better AC from your gear.
 
 Here is my Character Screen where you can see my starting AC:
 <style:screenshot>
- Name       : <color:B>Filcher</color>                      ========== Stats ==========
- Sex        : <color:B>Male</color>                               STR  :    <color:G> 18/20</color>
- Personality: <color:B>Ordinary</color>                           INT  :    <color:G>    18</color>
- Race       : <color:B>High-Elf</color>                           WIS  :    <color:G>     9</color>
- Subrace    : <color:B>None</color>                               DEX  :    <color:G> 18/50</color>
- Class      : <color:B>Rogue</color>                              CON  :    <color:G>    11</color>
- Realm      : <color:B>Burglary</color>                           CHR  :    <color:G>    14</color>
-
- Level      :        <color:G>1</color>                           HP   :     <color:G>43/43</color>
- Cur Exp    :        <color:G>0</color>                           SP   :       <color:G>0/0</color>
- Max Exp    :        <color:G>0</color>                           <color:y>AC   :         7</color>
- Adv Exp    :       <color:G>23</color>                           Speed:        <color:B>+0</color>
-
-                                           ========== Skills =========
- Gold       :      <color:G>341</color>                     Melee      : <color:G>Excellent</color>
- Kills      :        <color:G>0</color>                     Ranged     : <color:G>Excellent</color>
- Uniques    :        <color:G>0</color>                     SavingThrow: <color:G>Excellent</color>
- Artifacts  :      <color:G>0+0</color>                     Stealth    : <color:g>Superb</color>
-                                           Perception : <color:y>Very Good</color>
- Game Day   :        <color:G>1</color>                     Searching  : <color:y>Good</color>
- Game Time  :     <color:G>6:01</color>                     Disarming  : <color:G>Excellent</color>
- Play Time  :    <color:G>00:00</color>                     Device     : <color:g>Superb</color>
-</style>
+ Name       : <color:B>Filcher</color><color:d>                   </color>   ========== Stats ==========          
+ Sex        : <color:B>Male</color><color:d>                      </color>         STR  : <color:G>    18/10</color>               
+ Personality: <color:B>Ordinary</color><color:d>                  </color>         INT  : <color:G>       18</color>               
+ Race       : <color:B>High-Elf</color><color:d>                  </color>         WIS  : <color:G>        7</color>               
+ Subrace    : <color:B>None                      </color>         DEX  : <color:G>    18/40</color>               
+ Class      : <color:B>Rogue</color><color:d>                     </color>         CON  : <color:G>       18</color>               
+ Realm      : <color:B>Burglary</color><color:d>                  </color>         CHR  : <color:G>       12</color>               
+<color:d>                                        </color>                                        
+ Level      : <color:G>       1</color><color:d>                  </color>         HP   : <color:G>    43/43</color>               
+ Cur Exp    : <color:G>       0</color><color:d>                  </color>         SP   : <color:G>    14/14</color>               
+ Max Exp    : <color:G>       0</color><color:d>                  </color>         <color:R>AC   :         6</color>
+ Adv Exp    : <color:G>      23</color><color:d>                  </color>         Speed: <color:U>       +0</color>               
+<color:d>                                        </color>                                        
+<color:d>                                        </color>   ========== Skills =========          
+ Gold       : <color:G>     774</color><color:d>                  </color>   Melee      : <color:y>Good</color>                    
+ Kills      : <color:G>       0</color><color:d>                  </color>   Archery    : <color:y>Good</color>                    
+ Uniques    : <color:G>       0</color><color:d>                  </color>   SavingThrow: <color:y>Good</color>                    
+ Artifacts  : <color:G>     0+0</color><color:d>                  </color>   Stealth    : <color:G>Excellent</color>               
+<color:d>                                        </color>   Perception : <color:y>Good</color>                    
+ Game Day   : <color:G>       1</color><color:d>                  </color>   Searching  : <color:o>Fair</color>                    
+ Game Time  : <color:G>    6:00</color><color:d>                  </color>   Disarming  : <color:y>Good</color>                    
+ Play Time  : <color:G>   00:00</color><color:d>                  </color>   Device     : <color:y>Good</color>
+ </style>
 In addition to AC, though, the player has a very important set of resistances. Or, in this case, rather a lack of resistances. Scroll down to the equipment section of your character sheet, or press <color:keypress>e</color> to navigate more quickly. Here you get to see, in all its gritty detail, how woefully inadequate your starting character actually is. Here is my screen:
 <style:screenshot>
-[Character Sheet, Line 26/286]
-
-============================= Character <color:o>E</color>quipment =============================
-
- a) a Dagger (1d4) (+0,+0)
- h) <color:W>Soft Leather Armour [4,+0]</color>
-
-              <color:W>|</color>      <color:U>(</color>    <color:d>              </color>              <color:W>|</color>      <color:U>(</color>    <color:d>              </color>
- <color:G>Resistances</color>  abcdefghijkl@<color:d>             </color> <color:G>Abilities  </color>  abcdefghijkl@<color:d>             </color>
- Acid       : <color:D>.............</color>   0%<color:d>        </color> Speed      : <color:D>.............</color><color:d>             </color>
- Electricity: <color:D>.............</color>   0%<color:d>        </color> Free Act   : <color:D>.............</color><color:d>             </color>
- Fire       : <color:D>.............</color>   0%<color:d>        </color> See Invis  : <color:D>............</color>+<color:d>             </color>
- Cold       : <color:D>.............</color>   0%<color:d>        </color> Warning    : <color:D>.............</color><color:d>             </color>
- Poison     : <color:D>.............</color>   0%<color:d>        </color> Slow Digest: <color:D>.............</color><color:d>             </color>
- Light      : <color:D>............</color>+ <color:y> 30%</color><color:d>        </color> Regenerate : <color:D>.............</color><color:d>             </color>
- Dark       : <color:D>.............</color>   0%<color:d>        </color> Levitation : <color:D>.............</color><color:d>             </color>
- Confusion  : <color:D>.............</color>   0%<color:d>        </color> Perm Lite  : <color:D>.............</color><color:d>             </color>
- Nether     : <color:D>.............</color>   0%<color:d>        </color> Reflection : <color:D>.............</color><color:d>             </color>
- Nexus      : <color:D>.............</color>   0%<color:d>        </color> Hold Life  : <color:D>.............</color><color:d>             </color>
- Sound      : <color:D>.............</color>   0%<color:d>        </color> Dec Mana   : <color:D>.............</color><color:d>             </color>
- Shards     : <color:D>.............</color>   0%<color:d>        </color> Easy Spell : <color:D>.............</color><color:d>             </color>
- Chaos      : <color:D>.............</color>   0%<color:d>        </color> Anti Magic : <color:D>.............</color><color:d>             </color>
- Disenchantm: <color:D>.............</color>   0%<color:d>        </color> Magic Skill: <color:D>.............</color><color:d>             </color>
- Time       : <color:D>.............</color>   0%<color:d>        </color> Spell Power: <color:D>.............</color><color:d>             </color>
- Blindness  : <color:D>.............</color>   0%<color:d>        </color> Spell Cap  : <color:D>.............</color><color:d>             </color>
- Fear       : <color:D>.............</color>   0x<color:d>        </color> Magic Res  : <color:D>.............</color><color:d>             </color>
-<color:d>                                        </color> Infravision: <color:D>............</color>+  40'<color:d>        </color>
-              <color:W>|</color>      <color:U>(</color>    <color:d>              </color> Stealth    : <color:D>.............</color><color:d>             </color>
- <color:G>Auras      </color>  abcdefghijkl@<color:d>             </color> Searching  : <color:D>.............</color><color:d>             </color>
- Aura Elec  : <color:D>.............</color><color:d>                                                     </color>
- Aura Fire  : <color:D>.............</color><color:d>             </color>              <color:W>|</color>      <color:U>(</color>    <color:d>              </color>
- Aura Cold  : <color:D>.............</color><color:d>             </color> <color:G>Sustains   </color>  abcdefghijkl@<color:d>             </color>
- Aura Shards: <color:D>.............</color><color:d>             </color> Sust Str   : <color:D>.............</color><color:d>             </color>
- Revenge    : <color:D>.............</color><color:d>             </color> Sust Int   : <color:D>.............</color><color:d>             </color>
-<color:d>                                        </color> Sust Wis   : <color:D>.............</color><color:d>             </color>
-              <color:W>|</color>      <color:U>(</color>    <color:d>              </color> Sust Dex   : <color:D>.............</color><color:d>             </color>
- <color:G>Slays      </color>  abcdefghijkl@<color:d>             </color> Sust Con   : <color:D>.............</color><color:d>             </color>
- Slay Evil  : <color:D>.............</color><color:d>             </color> Sust Chr   : <color:D>.............</color><color:d>             </color>
- Slay Undead: <color:D>.............</color><color:d>                                                     </color>
-
-[Press ESC to exit. Press ? for help]
+                                                                                
+============================= Character <color:o>E</color>quipment ============================= 
+                                                                                
+ a) a Dagger (1d5) (+0,+0)                                                      
+ c) <color:u>a Sling (x2) (+0,+0)</color>                                                        
+ i) <color:s>Soft Leather Armour [4,+0]</color>                                                  
+                                                                                
+              <color:W>|</color> <color:u>}</color>     <color:U>(</color>    <color:d>             </color>              <color:W>|</color> <color:u>}</color>     <color:U>(</color>                 
+ <color:G>Resistances</color>  abcdefghijklm@<color:d>            </color> <color:G>Abilities  </color>  abcdefghijklm@            
+ Acid       : <color:D>..............</color>   0%<color:d>       </color> Speed      : <color:D>..............</color>            
+ Electricity: <color:D>..............</color>   0%<color:d>       </color> Free Act   : <color:D>..............</color>            
+ Fire       : <color:D>..............</color>   0%<color:d>       </color> See Invis  : <color:D>.............</color>+   1x       
+ Cold       : <color:D>..............</color>   0%<color:d>       </color> Warning    : <color:D>..............</color>            
+ Poison     : <color:D>..............</color>   0%<color:d>       </color> Slow Digest: <color:D>..............</color>            
+ Light      : <color:D>.............</color>+ <color:y> 30%</color><color:d>       </color> Regenerate : <color:D>..............</color> 100%       
+ Dark       : <color:D>..............</color>   0%<color:d>       </color> Levitation : <color:D>..............</color>            
+ Confusion  : <color:D>..............</color>   0%<color:d>       </color> Perm Lite  : <color:D>..............</color>            
+ Nether     : <color:D>..............</color>   0%<color:d>       </color> Reflection : <color:D>..............</color>            
+ Nexus      : <color:D>..............</color>   0%<color:d>       </color> Hold Life  : <color:D>..............</color>            
+ Sound      : <color:D>..............</color>   0%<color:d>       </color> Life Rating: <color:D>..............</color>            
+ Shards     : <color:D>..............</color>   0%<color:d>       </color> Dec Mana   : <color:D>..............</color>            
+ Chaos      : <color:D>..............</color>   0%<color:d>       </color> Easy Spell : <color:D>..............</color>            
+ Disenchantm: <color:D>..............</color>   0%<color:d>       </color> Anti Magic : <color:D>..............</color>            
+ Time       : <color:D>..............</color>   0%<color:d>       </color> Magic Skill: <color:D>..............</color>            
+ Blindness  : <color:D>..............</color>   0%<color:d>       </color> Spell Power: <color:D>..............</color>            
+ Fear       : <color:D>..............</color>   0x<color:d>       </color> Spell Cap  : <color:D>..............</color>            
+<color:d>                                        </color> Magic Res  : <color:D>..............</color>            
+              <color:W>|</color> <color:u>}</color>     <color:U>(</color>    <color:d>             </color> Infravision: <color:D>.............</color>+  40'       
+ <color:G>Auras      </color>  abcdefghijklm@<color:d>            </color> Stealth    : <color:D>..............</color>            
+ Aura Elec  : <color:D>..............</color><color:d>            </color> Searching  : <color:D>..............</color>            
+ Aura Fire  : <color:D>..............</color><color:d>            </color>                                        
+ Aura Cold  : <color:D>..............</color><color:d>            </color>              <color:W>|</color> <color:u>}</color>     <color:U>(</color>                 
+ Aura Shards: <color:D>..............</color><color:d>            </color> <color:G>Sustains   </color>  abcdefghijklm@            
+ Revenge    : <color:D>..............</color><color:d>            </color> Sust Str   : <color:D>..............</color>            
+<color:d>                                        </color> Sust Int   : <color:D>..............</color>            
+              <color:W>|</color> <color:u>}</color>     <color:U>(</color>    <color:d>             </color> Sust Wis   : <color:D>..............</color>            
+ <color:G>Slays      </color>  abcdefghijklm@<color:d>            </color> Sust Dex   : <color:D>..............</color>            
+ Slay Evil  : <color:D>..............</color><color:d>            </color> Sust Con   : <color:D>..............</color>            
+ Slay Undead: <color:D>..............</color><color:d>            </color> Sust Chr   : <color:D>..............</color>            
+ Slay Demon : <color:D>..............</color><color:d>            </color>                                        
+ Slay Dragon: <color:D>..............</color><color:d>            </color>              <color:W>|</color> <color:u>}</color>     <color:U>(</color>                 
+ Slay Human : <color:D>..............</color><color:d>            </color> <color:G>Detection  </color>  abcdefghijklm@            
+ Slay Animal: <color:D>..............</color><color:d>            </color> Telepathy  : <color:D>..............</color>            
+ Slay Orc   : <color:D>..............</color><color:d>            </color> ESP Evil   : <color:D>..............</color>            
 </style>
 You'll notice a group of attributes for resistances and another for miscellaneous abilities along with some additional groupings for Slays and such. Let's just focus on Resistances for the time being.
 
@@ -501,77 +521,107 @@ So what is resistance and why should you care? Basically, monster attacks often 
 <style:screenshot>
 <color:w>Type       Comment
 ====       =============================================================</color>
-<color:D>Acid</color>       Destroys scrolls/staves. Damages armor. DL30.
-<color:b>Elec</color>       Destroys rings/wands and reduces Dex. DL30.
+<color:D>Acid</color>       Destroys scrolls/staves. Damages armor. DL20.
+<color:b>Elec</color>       Destroys rings/wands and reduces Dex. DL20.
 <color:R>Fire</color>       Destroys scrolls/staves/spellbooks. DL20.
-<color:w>Cold</color>       Destroys potions. DL30.
-<color:G>Poison</color>     Known to instantly kill many an adventurer. DL40
-<color:R>Nexus</color>      Scrambles stats and teleports player. Not very damaging.
-<color:r>Confusion</color>  Confuses you so you can't act. DL30.
-<color:v>Paralysis</color>  Freezes the player so you lose turns. Get Free Action by DL30.
+<color:w>Cold</color>       Destroys potions. DL20.
+<color:G>Poison</color>     Does high damage, but with some delay.
+           Can be cured with potions or mushrooms.
+<color:R>Nexus</color>      Scrambles stats and teleports you, sometimes to
+           very unexpected places. Not very damaging.
+<color:r>Confusion</color>  Confuses you so you can't act normally.
+           Carry mushrooms and potions to cure.
+<color:v>Paralysis</color>  Freezes the player so you lose turns.
+           Get Free Action by DL25 or Old Man Willow quest.
 </style>
 My character is not completely hopeless. Being a High-Elf, I begin with Light Resistance (30%) and See Invisible. The latter allows me to see ghosts and other invisible monsters. Without it, I wouldn't be able to see when certain monsters attack me, which can be very annoying, not to mention deadly. See Invisible (like Free Action) is one of the required abilities that you will want as soon as possible.
 
-And while your race can grant resistances and abilities, most of the time these come from your gear. The 'abcd...' list across the top of each column corresponds to my current equipment set, and the corresponding item character is displayed if an item is actually equipped in that slot (e.g. | for my dagger, which is categorized by the game as a sword). So you can track your current resistances and abilities here as well as see where you are getting a given attribute. The '@' character corresponds to the player (displayed as an @, remember?) and lists innate racial abilities, as well as temporarily acquired magical enhancements (There might be a potion that grants temporary resistance, for example).
+And while your race can grant resistances and abilities, most of the time these come from your gear. The 'abcd...' list across the top of each column corresponds to my current equipment set, and the corresponding item character is displayed if an item is actually equipped in that slot (e.g. | for my dagger, which is categorized by the game as a sword). So you can track your current resistances and abilities here as well as see where you are getting a given attribute. The '@' character corresponds to the player (displayed as an @, remember?) and lists innate racial abilities, as well as temporarily acquired magical enhancements (there might be a potion that grants temporary resistance, for example).
 
-In general, you will want to cover as many resistances as possible. They are not so important early in the game, but as you descend deeper, you will learn what you need and when. Abilities are often optional, except for Free Action and See Invisible which you will want by DL20 if possible. Hold Life starts to become desirable around DL35 or so. You can play without it, but it's just to darn annoying!
+In general, you will want to cover as many resistances as possible. They are not so important early in the game, but as you descend deeper, you will learn what you need and when. Abilities are often optional, except for Free Action and See Invisible which you will want by DL20-25 if possible. (You can get by without See Invisible if you are lucky enough to have full Telepathy.)
 
 Also note that resistances stack. If two items grant fire resistance, your percentage resistance goes up (but not linearly). Multiple sources of a given resistance also help to prevent many of the nasty side effects for various damage types.
 
-OK, I cannot help thinking that the starting character sheet is lame, since every single attribute is empty. Here is a more interesting sample from a Dragon character I am playing (Notice the different body type? He is playing in <color:r>Monster</color> mode where you get to play as a monster rather than a normal player):
+OK, I cannot help thinking that the starting character sheet is lame, since every single attribute is empty. Here is a more interesting sample from a Tanar'ri Demon character I played earlier (notice the different body type? He is playing in <color:r>Monster</color> mode where you get to play as a monster rather than a normal player):
 <style:screenshot>
-[Character Sheet, Line 26/780]
-
-============================= Character <color:o>E</color>quipment =============================
-
- a) <color:r>The Ring of Power (Narya) (+1) {A:Fire Ball}</color>
- b) <color:r>a Ring of the Dwarves (-8,+18) (+2) {-Dx;Di}</color>
- c) <color:r>The Ring of Tulkas (+4) {A:Heroic Speed, !!}</color>
- d) <color:r>a Ring (Defender) [+16] {LiDkShBlCfSoCaFe;FaSiLv(Cn}</color>
- e) <color:r>a Ring (Defender) [+3] {ShCa;FaSi(St}</color>
- f) <color:r>a Ring of Speed (+11)</color>
- g) <color:o>an Amulet (Defender) [+12] {AcElFiCoPo;FaSiLv}</color>
- h) <color:y>The Feanorian Lamp of Shiva's Avatar (+6,+6) (+4) </color>
-<color:y>      {StWiChSl;AcLiSoNtDi;SiHlLu}</color>
- i) <color:U>The Cloak of Jack of Shadows [1,+19] (+7)</color>
- j) <color:U>The Golden Crown of Dragonkind (+5,+5) [0,+15] (+2) {Nx}</color>
-
-              <color:g>======</color><color:y>"</color><color:o>~</color><color:g>(</color><color:y>]</color><color:d>                </color>              <color:g>======</color><color:y>"</color><color:o>~</color><color:g>(</color><color:y>]</color><color:d>                </color>
- <color:G>Resistances</color>  abcdefghij@<color:d>               </color> <color:G>Abilities  </color>  abcdefghij@<color:d>               </color>
- Acid       : <color:D>......</color>++<color:D>.</color>+<color:v>*</color> <color:v>100%</color><color:d>          </color> Speed      : +<color:D>.</color>+<color:D>..</color>+<color:D>...</color>++<color:d>               </color>
- Electricity: <color:D>......</color>+<color:D>..</color>+<color:D>.</color> <color:R> 65%</color><color:d>          </color> Free Act   : ++<color:D>.</color>++<color:D>.</color>+<color:D>.</color>+<color:D>.</color>+<color:d>               </color>
- Fire       : <color:v>*</color><color:D>.....</color>+<color:D>..</color>+<color:D>.</color> <color:v>100%</color><color:d>          </color> See Invis  : ++<color:D>.</color>++<color:D>.</color>+++<color:D>.</color>+<color:d>               </color>
- Cold       : <color:D>......</color>+<color:D>..</color>+<color:D>.</color> <color:R> 65%</color><color:d>          </color> Warning    : <color:D>...........</color><color:d>               </color>
- Poison     : <color:D>......</color>+<color:D>..</color>+<color:D>.</color> <color:R> 65%</color><color:d>          </color> Slow Digest: +<color:D>..........</color><color:d>               </color>
- Light      : <color:D>...</color>+<color:D>...</color>+<color:D>...</color> <color:R> 40%</color><color:d>          </color> Regenerate : ++<color:D>.......</color>+<color:D>.</color><color:d>               </color>
- Dark       : <color:D>...</color>+<color:D>.......</color> <color:y> 30%</color><color:d>          </color> Levitation : <color:D>...</color>+<color:D>..</color>+<color:D>...</color>+<color:d>               </color>
- Confusion  : <color:D>...</color>+<color:D>......</color>+ <color:R> 40%</color><color:d>          </color> Perm Lite  : <color:D>.......</color>+<color:D>...</color><color:d>               </color>
- Nether     : <color:D>.......</color>+<color:D>...</color> <color:y> 30%</color><color:d>          </color> Reflection : <color:D>...........</color><color:d>               </color>
- Nexus      : <color:D>.........</color>+<color:D>.</color> <color:y> 30%</color><color:d>          </color> Hold Life  : <color:D>.......</color>+++<color:D>.</color><color:d>               </color>
- Sound      : <color:D>...</color>+<color:D>...</color>+<color:D>...</color> <color:R> 40%</color><color:d>          </color> Dec Mana   : <color:D>...........</color><color:d>               </color>
- Shards     : <color:D>...</color>++<color:D>......</color> <color:R> 40%</color><color:d>          </color> Easy Spell : <color:D>...........</color><color:d>               </color>
- Chaos      : <color:D>...</color>++<color:D>......</color> <color:R> 40%</color><color:d>          </color> Anti Magic : <color:D>...........</color><color:d>               </color>
- Disenchantm: <color:D>.</color>+<color:D>.....</color>+<color:D>...</color> <color:R> 40%</color><color:d>          </color> Magic Skill: <color:D>...........</color><color:d>               </color>
- Time       : <color:D>...........</color>   0%<color:d>          </color> Spell Power: <color:D>...........</color><color:d>               </color>
- Blindness  : <color:D>.</color>+<color:D>.</color>+<color:D>......</color>+ <color:r> 45%</color><color:d>          </color> Spell Cap  : <color:D>...........</color><color:d>               </color>
- Fear       : <color:D>...</color>+<color:D>......</color><color:y>#</color>   3x<color:d>          </color> Magic Res  : <color:D>...........</color><color:d>               </color>
-<color:d>                                        </color> Infravision: <color:D>..........</color>+  50'<color:d>          </color>
-              <color:g>======</color><color:y>"</color><color:o>~</color><color:g>(</color><color:y>]</color><color:d>                </color> Stealth    : <color:D>.</color><color:R>-</color><color:D>.....</color>++<color:D>..</color><color:d>               </color>
- <color:G>Auras      </color>  abcdefghij@<color:d>               </color> Searching  : <color:D>........</color>+<color:D>..</color><color:d>               </color>
-
-[Press ESC to exit. Press ? for help]
+============================= Character <color:o>E</color>quipment ============================= 
+                                                                                
+ a) The Long Sword 'Excalibur' (5d6) (+21,+19) [+5] (+3)                        
+      {WiChDg;ShFe;SiHlWrBs|S/*UL(WiCh}                                         
+ b) The Katana 'Kusanagi-no-tsurugi' (4d4) (+15,+15) (+3)                       
+      {DxSl;AcElFiCoNtDi;SiRgLuBs/*DUZ <color:B>A:Getaway</color>}                               
+ c) <color:r>a Ring of Protection [+18] {SoShFe(StWiDxCnCh}</color>                              
+ d) <color:r>a Ring of Speed (+13) {Sp </color><color:B>A:Speed</color><color:r>}</color>                                          
+ e) <color:U>The Set of Mithril Gauntlets 'Power Shield' [5,+21] (+4) {StCn;ElCaFe;Fa~L}</color> 
+ f) The Scimitar 'Soulsword' (3d6) (+15,+15) (+3)                               
+      {InWiLf;DkNtNxCaDi;SiHlBs/*DULZ}                                          
+ g) a Lochaber Axe (Defender) (3d9) (+15,+15) [+12] {ShBl;FaSiRgLvWr(Cn}        
+ h) <color:U>a Set of Mithril Gauntlets of the Thief (+2,-3) [5,+20] (+4) {SpDxSl(Dx}</color>    
+ i) The Battle Axe of Balli Stonehand (3d9) (+15,+15) [+5] (+3)                 
+      {StCnSl;AcElFiCoBl;FaSiRgLv/oTU}                                          
+ j) The Pike 'Grassroot' (2d6) (+21,+21) (+4) {SpStDxCnSr/pZ <color:B>A:Summon Hydras</color>}   
+ k) <color:o>a Sacred Pendant [+15] (+3) {WiLf;Bs}</color>                                       
+ l) <color:y>The Feanorian Lamp 'Armageddon Stone' (+4) {In;NtBl;Wr[M(In}</color>                
+                                                                                
+              <color:W>||</color><color:g>==</color><color:B>]</color><color:W>|</color><color:D>/</color><color:B>]</color><color:s>//</color><color:y>"</color><color:o>~</color><color:d>              </color>              <color:W>||</color><color:g>==</color><color:B>]</color><color:W>|</color><color:D>/</color><color:B>]</color><color:s>//</color><color:y>"</color><color:o>~</color>              
+ <color:G>Resistances</color>  abcdefghijkl@<color:d>             </color> <color:G>Abilities  </color>  abcdefghijkl@             
+ Acid       : <color:D>.</color>+<color:D>......</color>+<color:D>....</color> <color:R> 65%</color><color:d>        </color> Speed      : <color:D>...</color>+<color:D>...</color>+<color:D>.</color>+<color:D>..</color><color:y>#</color>             
+ Electricity: <color:D>.</color>+<color:D>..</color>+<color:D>...</color>+<color:D>....</color> <color:r> 72%</color><color:d>        </color> Free Act   : <color:D>....</color>+<color:D>.</color>+<color:D>.</color>+<color:D>...</color>+   4x        
+ Fire       : <color:D>.</color>+<color:D>......</color>+<color:D>...</color>+ <color:r> 72%</color><color:d>        </color> See Invis  : ++<color:D>...</color>++<color:D>.</color>+<color:D>...</color>+   6x        
+ Cold       : <color:D>.</color>+<color:D>......</color>+<color:D>....</color> <color:R> 65%</color><color:d>        </color> Warning    : +<color:D>.....</color>+<color:D>....</color>+<color:D>.</color>             
+ Poison     : <color:D>............</color>+ <color:y> 50%</color><color:d>        </color> Slow Digest: <color:D>............</color>+             
+ Light      : <color:D>.............</color>   0%<color:d>        </color> Regenerate : <color:D>.</color>+<color:D>....</color>+<color:D>.</color>+<color:D>....</color> 400%        
+ Dark       : <color:D>.....</color>+<color:D>.......</color> <color:y> 30%</color><color:d>        </color> Levitation : <color:D>......</color>+<color:D>.</color>+<color:D>....</color>             
+ Confusion  : <color:D>............</color>+ <color:y> 30%</color><color:d>        </color> Perm Lite  : <color:D>.</color>+<color:D>...........</color>             
+ Nether     : <color:D>.</color>+<color:D>...</color>+<color:D>.....</color>++ <color:r> 47%</color><color:d>        </color> Reflection : <color:D>.............</color>             
+ Nexus      : <color:D>.....</color>+<color:D>.......</color> <color:y> 30%</color><color:d>        </color> Hold Life  : +<color:D>....</color>+<color:D>......</color>+   3x        
+ Sound      : <color:D>..</color>+<color:D>..........</color> <color:y> 30%</color><color:d>        </color> Life Rating: <color:D>.....</color>+<color:D>....</color>+<color:D>..</color> +18%        
+ Shards     : +<color:D>.</color>+<color:D>...</color>+<color:D>......</color> <color:r> 45%</color><color:d>        </color> Dec Mana   : <color:D>.............</color>             
+ Chaos      : <color:D>....</color>++<color:D>......</color>+ <color:r> 45%</color><color:d>        </color> Easy Spell : <color:D>.............</color>             
+ Disenchantm: <color:D>.</color>+<color:D>...</color>+<color:D>.......</color> <color:R> 40%</color><color:d>        </color> Anti Magic : <color:D>...........</color>+<color:D>.</color>             
+ Time       : <color:D>.............</color>   0%<color:d>        </color> Magic Skill: <color:D>.............</color>             
+ Blindness  : <color:D>......</color>+<color:D>.</color>+<color:D>..</color>+<color:D>.</color> <color:r> 45%</color><color:d>        </color> Spell Power: <color:D>.............</color>             
+ Fear       : +<color:D>.</color>+<color:D>.</color>+<color:D>.......</color><color:y>#</color>   4x<color:d>        </color> Spell Cap  : <color:D>.............</color>             
+<color:d>                                        </color> Magic Res  : <color:D>.............</color>             
+              <color:W>||</color><color:g>==</color><color:B>]</color><color:W>|</color><color:D>/</color><color:B>]</color><color:s>//</color><color:y>"</color><color:o>~</color><color:d>              </color> Infravision: <color:D>............</color>+  50'        
+ <color:G>Auras      </color>  abcdefghijkl@<color:d>             </color> Stealth    : <color:D>.</color>+<color:D>.....</color>++<color:D>....</color>             
+ Aura Elec  : <color:D>.............</color><color:d>             </color> Searching  : <color:D>.........</color>+<color:D>...</color>             
+ Aura Fire  : <color:D>.............</color><color:d>             </color>                                        
+ Aura Cold  : <color:D>.............</color><color:d>             </color>              <color:W>||</color><color:g>==</color><color:B>]</color><color:W>|</color><color:D>/</color><color:B>]</color><color:s>//</color><color:y>"</color><color:o>~</color>              
+ Aura Shards: <color:D>.............</color><color:d>             </color> <color:G>Sustains   </color>  abcdefghijkl@             
+ Revenge    : <color:D>.............</color><color:d>             </color> Sust Str   : <color:D>..</color>+<color:D>..........</color>             
 </style>
-Notice how the resistances stack, as well as how I have most of the resistances covered? This character is almost ready to face The Serpent of Chaos!
+Notice how the resistances stack, as well as how I have most of the resistances covered? This character is ready for the Serpent of Chaos!
+
+<topic:Skills><style:heading>On Skills</style>
+
+Your character sheet also indicates your mastery (or lack thereof) of a number of skills:
+<style:screenshot>
+           ========== Skills =========
+           Melee      : <color:v>Amber[15]</color>
+           Archery    : <color:y>Good</color>
+           SavingThrow: <color:v>Amber[7]</color>
+           Stealth    : <color:g>Superb</color>
+           Perception : <color:o>Fair</color>
+           Searching  : <color:o>Fair</color>
+           Disarming  : <color:g>Superb</color>
+           Device     : <color:g>Superb</color>
+</style>
+Apart from the obvious Melee and Archery, there are six others; your level in a particular skill depends on your race, class, personality, stats and equipment, and you will also gain class-dependent skill bonuses as you level up. With the exception of Stealth, your class usually accounts for the bulk of your aptitude for a particular skill, especially after you have leveled up a bit.
+
+Although resistances are a more obvious place to look for character weaknesses to remedy, you should not forget your skills either. In particular, Device Skill is highly important in the late game - all characters will rely on magical devices to some extent, and some valuable devices are extremely hard to use if your Device Skill is lacking. Stealth and Saving Throw are also very handy - Stealth means you can sneak around gathering loot and picking your fights without being constantly buried in unwelcome enemies, while Saving Throw allows you to resist evil curses and even improves your chances against paralysis.
+
+Searching, Perception and Disarming are less important skills, although they do have their uses; in particular, Searching helps you see invisible monsters more often. Both Searching and Perception allow you to perceive hidden doors and traps (Searching when you are actively looking for them, Perception when you're not). The Disarming skill makes you better at disarming traps without triggering them, improves your ability to unlock doors, and affects the fail rate on Rogues' panic teleports. Searching and Perception are closely related; an item that improves your Searching will also improve your Perception.
 
 <topic:OnMagicalItems><style:heading>On Important Magical Items</style>
 
-Magical Items are an important part of every players repertoire, even the warrior's. There are seveal types of magic that every player needs.
+Magical items are an important part of every player's repertoire, even the warrior's. There are several types of magic that everybody needs.
 
-  <indent><color:B>Teleporation and Escape</color>
+  <indent><color:B>Teleportation and Escape</color>
 
-It is very easy to become surrounded, or cut off from a safe retreat. Even the mightiest of warriors can become overwhelmed by sheer numbers. And this doesn't even account for the fact that many monsters can summon other monsters who can themselves summon other monster summoning monsters. Things can go bad in a heart beat, and when it does, you'll want to have a magical means of escape at the ready.
+It is very easy to become surrounded, or cut off from a safe retreat. Even the mightiest of warriors can become overwhelmed by sheer numbers. And this doesn't even account for the fact that many monsters can summon other monsters who can themselves summon other monster-summoning monsters. Things can go bad in a heartbeat, and when they do, you'll want to have a magical means of escape at the ready.
 
-<color:r>Phase Door</color>     <indent>This is a short range teleport that usually won't get you out of danger. It is useful for distance damage tactics such as the Shoot 'n Scoot maneuver discussed below.</indent>
+<color:r>Phase Door</color>     <indent>This is a short range teleport that usually won't get you out of danger. It is useful for distance damage tactics such as the Shoot 'n Scoot maneuver.</indent>
 
 <color:r>Teleport</color>       <indent>A longer range escape that is the mainstay of most retreats. However, this escape is a bit risky as you may land in a worse situation than you started in.</indent>
 
@@ -585,19 +635,27 @@ It is very easy to become surrounded, or cut off from a safe retreat. Even the m
 
 During your adventures, things will hurt you. This cannot be avoided. Fortunately, there are many magical potions that cure your wounds as well as various status ailments like blindness, confusion and poison.
 
-<color:r>Cure Light Wounds</color>    <indent>Restores a small amount of hitpoints, perhaps 10 or so. And while it won't completely cure cuts, it does reduce their effects (Cuts cause you to bleed out, losing hitpoints every few turns). It also cures blindness which is important since you need to be able to see in order to read a scroll or cast a spell from your spellbook (Not to mention see who is attacking you!).</indent>
+<color:r>Cure Light Wounds</color>    <indent>Restores a small amount of hitpoints, perhaps 20 or so. And while it won't completely cure cuts, it does reduce their effects. (Cuts cause you to bleed out, losing hitpoints every turn, although small cuts tend to heal before you die.)</indent>
 
-<color:r>Cure Serious Wounds</color>  <indent>Restores a bit more hp, perhaps 20 or so. It also cures blindness and confusion and reduces your cut status.</indent>
+<color:r>Cure Serious Wounds</color>  <indent>Restores a bit more hp, perhaps 35 or 40. It is also more effective at curing cuts. This is the staple potion that most early game characters should rely on.</indent>
 
-<color:r>Cure Critical Wounds</color> <indent>Even better! It heals about 30 hp and cures most ailments: blindness, confusion, cuts and stuns are completely cured. So is poison.</indent>
+<color:r>Cure Critical Wounds</color> <indent>Even better! It heals about 50-60 hp and cures both cuts and stunning completely.</indent>
 
-The above three are readily available in the town at the Temple, and you should stock up on them as much as possible. The following must be found in the dungeon or purchased in the Black Market:
+<color:r>Curing</color>               <indent>Does not restore any HP, but cures almost every status ailment - cuts, stunning, confusion, even hallucinations and blindness (always good to see who is attacking you, not to mention be able to read your scrolls and spellbooks!). Extreme poisoning may be only partially cured.</indent>
 
-<color:r>Curing</color>    <indent>Like Cure Critical Wounds, only better. It heals around 50hp and cures every status ailment excluding Fear. Even Hallucination is cured which is often very welcome as the mere sight of certain monsters is enough to trigger this crippling effect.</indent>
+Some mushrooms can also be very handy:
 
-<color:r>Healing</color>   <indent>Big time hp recovery at about 300hp. Also, most status ailments are cured except for fear and hallucination.</indent>
+<color:r>Cure Confusion</color>       <indent>Cures all confusion. Extremely useful in the early game, being cheaper and more reliably found than Potions of Curing; usually obsoleted by the midgame, as your stockpile of Potions of Curing grows and you start finding gear that provides resistance to confusion.</indent>
 
-<color:r>*Healing*</color> <indent>Bigger time hp recovery at about 1000hp. Also, most status ailments are cured except for fear and hallucination. These potions are very rare and should be saved for the final two battles.</indent>
+<color:r>Cure Poison</color>          <indent>Cures all poison. Most potions (and even spells) only partially cure massive poisoning, so this reliable option is very convenient in the later game, especially for characters with low Poison resistance.</indent>
+
+<color:r>Fast Recovery</color>        <indent>Restores a small amount of hitpoints (around 10), reduces cuts a bit, and speeds your regeneration.</indent>
+
+The above items are readily available in the town at the Temple and Shroomery, and you should stock up on them as much as possible. The following potions must be found in the dungeon or quests or purchased in the Black Market:
+
+<color:r>Healing</color>   <indent>Big time hp recovery at about 300hp. Also, most status ailments are cured except for fear, hallucinations and poison. These potions are not all that rare, but the final battles can eat up a lot of them, especially on melee builds, so only use them when necessary to make sure you'll have enough at the end.</indent>
+
+<color:r>*Healing*</color> <indent>Bigger time hp recovery at about 1000hp. Also, most status ailments are cured except for fear and hallucination. These potions are very rare and most of them should be saved for the final two battles.</indent>
 
 <color:r>Life</color>      <indent>Restores your stats, all your hp and removes all status ailments except Fear. These potions are so rare, they should be saved for the final battle.</indent>
 </indent>
@@ -605,7 +663,7 @@ The above three are readily available in the town at the Temple, and you should 
 
 When you find a new object, you generally won't know anything about it. In order to learn about the objects you find, you need some means of knowledge. Every player has an innate sense about some of the objects they find and simply carrying the object around in your pack for a while can give you a clue as to its worth. This ability is called pseudo-id and is discussed elsewhere in the documentation. In general, it only works on equipment such as weapons and armor, although certain classes like Mages can sense the worth of rings and amulets. I mention pseudo-id since it is your most important means of knowledge in the early game. You can also learn what some objects are by trying them out. For example, you can eat a newly found mushroom, or quaff that new potion in your pack. However, if you try this, you'll quickly learn it is a bad idea for mushrooms and potions. For magical devices like wands, rods and staves, it is acceptable to try them as you find them. But once you have Identify, you'll want to use that instead.
 
-Later on, you'll want to improve your means of knowledge and there are two steps in this process (after pseudo-id). The first is called Identify and the second is called *Identify*. The first gives cursory knowledge of an object, revealing its full name and magical combat bonuses or AC bonuses. For potions and scrolls it reveals the name of the object which is often enough for you to tell whether or not it is useful (And once you learn a given flavor of potion, scroll or mushroom, you will automatically recognize the next one you find. So identifying 'flavors' is important in the early game. By the way, you can also sell an object to *Identify* it, but then you won't have it anymore! Still, it's something to consider for the early game when most stuff is junk anyway). The second means of enhanced knowledge, *Identify*, gives complete information about the object, including all of its powers and resistances, many of which won't be learned by simply Identifying the object. Both Identify and *Identify* are available in scroll and device form. Both are also available as a town service (for a price). In general, you'll want to carry lots of Identify to weed out the junk while exploring the dungeon. Once you return to town, you can then pay to *Identify* whatever needs it.
+Later on, you'll want to improve your means of knowledge and there are two steps in this process (after pseudo-id). The first is called Identify and the second is called *Identify*. The first gives cursory knowledge of an object, revealing its full name and magical combat bonuses or AC bonuses. For potions and scrolls it reveals the name of the object which is often enough for you to tell whether or not it is useful. (And once you learn a given flavor of potion, scroll or mushroom, you will automatically recognize the next one you find; so identifying 'flavors' is important in the early game. By the way, you can also sell an object to *Identify* it, but then you won't have it anymore! Still, it's something to consider for the early game when most stuff is junk anyway.) The second means of enhanced knowledge, *Identify*, gives complete information about the object, including all of its powers and resistances, many of which won't be learned by simply Identifying the object. Both Identify and *Identify* are available in scroll and device form. Both are also available as a town service (for a price). In general, you'll want to carry lots of Identify to weed out the junk while exploring the dungeon. Once you return to town, you can then pay to *Identify* whatever needs it.
 
 In addition to Identifying objects, you also need to map the dungeon, detect traps, detect monsters and learn about unfamiliar monsters, especially uniques. There are magic items for all of these, so be on the lookout!
 </indent>
@@ -635,7 +693,7 @@ Weapons will show this:
 
 What do all these numbers mean?
 
-<color:B>(+x,+y)</color> <indent>This is the item's magical bonuses to your to-hit and to-damage bonus respectively. These are added to whatever other bonuses you have when you attack. Some armors have similar bonuses to your to-hit and to-damage, but they are mostly artifacts, the exceptions being Gloves/Gauntlets/Cesti of Slaying. Many body armors have a small negative number before the base armor bonus (see below); this is a penalty to your skill (the armor is so heavy that you have trouble moving around in it). However, this penalty is small enough for all but the youngest of characters to ignore.</indent>
+<color:B>(+x,+y)</color> <indent>This is the item's magical bonuses to your to-hit and to-damage bonus respectively. These are added to whatever other bonuses you have when you attack. Some armors have similar bonuses to your to-hit and to-damage, but they are mostly artifacts, the exceptions being Gauntlets/Caestus and a number of exceptional magical items. Many body armors have a small negative number before the base armor bonus (see below); this is a penalty to your skill (the armor is so heavy that you have trouble moving around in it). However, this penalty is small enough for all but the youngest of characters to ignore.</indent>
 
 <color:B>[a,+b]</color>  <indent>This is the item's base armor class and magical bonus to armor. The higher, the better. While theoretically, a weapon could provide a base armor bonus, none of them do, and only a few weapons have a magical bonus to armor.</indent>
 
@@ -643,7 +701,7 @@ What do all these numbers mean?
 
 <color:B>(XdY)</color>   <indent>This is the damage dice of a melee weapon. When you hit an opponent, the game rolls a Y sided die X times to figure out a base damage. This base damage can be multiplied by any slays on the weapon, and also by critical hits (lucky blows on your part). Then, the game adds all the plusses to damage to the total, including the +y from the (+x,+y) discussed above. So a melee weapon can be good because it has good damage dice (e.g. (5d6) (+0,+0)) or because it has a high damage bonus (e.g. (1d5) (+5,+30)). Ideally, it would have both: (5d6) (+5,+30)!</indent>
 
-In addition to these attributes, all of which are revealed by Identify, weapons and armors may have additional bonuses. Both may grant a particular resistance that we discussed earlier. In additions, weapons often have slays that target a specific class of monster. Slays work by multiplying the base damage roll (The (XdY) just discussed), and the multiplier varies with the type of slay. For example, a weapon of Slay Orc multiplies the damage dice by a factor of 3, while a *Slay Orc* weapon might (I say, might!) multiply by as high a factor as 5. Obviously, this means more on a (5d6) weapon than on a (1d5) weapon, so the quality of a magical weapon depends heavily on the base type of the object (Daggers do 1d5 while Blades of Chaos do 5d6). You sometimes need to *Identify* a weapon to learn its slays. But sometimes it is obvious from the name of the object (Slay Orc) and you only need to Identify the weapon. Artifacts always required *Identify* to learn their attributes.
+In addition to these attributes, all of which are revealed by Identify, weapons and armors may have additional bonuses. Both may grant a particular resistance that we discussed earlier. In additions, weapons often have slays that target a specific class of monster. Slays work by multiplying the base damage roll (the (XdY) just discussed), and the multiplier varies with the type of slay. For example, a weapon of Slay Orc multiplies the damage dice by a factor of 2.8, while a *Slay Orc* weapon might (I say, might!) multiply by as high a factor as 4.5. Obviously, this means more on a (5d6) weapon than on a (1d5) weapon, so the quality of a magical weapon depends heavily on the base type of the object (Daggers do 1d5 while Blades of Chaos do 5d6). You sometimes need to *Identify* a weapon to learn its slays. But sometimes it is obvious from the name of the object (Slay Orc) and you only need to Identify the weapon. Artifacts tend to require *Identify* to learn their full attributes. Inspect items (<color:keypress>I</color>) to see everything you know about them.
 
 <topic:OnExploration><style:heading>On Dungeon Exploration</style>
 
@@ -651,23 +709,23 @@ We'll close this Newbie guide with some various tips on exploring the dungeon.
 
   <indent><color:B>On Secret Doors</color>
 
-Throughout the dungeon, many doors are hidden from view. To find them, use the (S)earch command, which toggles on and off the Searching mode. However, it is often difficult enough just knowing where to search. Usually, situations like this will have secret doors (walls containing secret doors are marked by *s):
+Throughout the dungeon, many doors are hidden from view. To find them, use the (S)earch command, which toggles on and off the Searching mode. However, it is often difficult enough just knowing where to search. Usually, situations like this will have secret doors (walls likely to contain secret doors are marked by * in this example):
  
-#*###  ###'###  ####*#    ###*###
+#*###  ###'###  ####*#    #*#*###
 *@...  ..'@'..  ..@'.*    ..'@...
-#*###  ###*###  ####'#    #######
+#*###  ###*###  ####'#    #*#*###
  
 In general, if you see a door by itself in a corridor, there are usually others nearby. If you find a corner in a corridor with two doors, look for more. Intersections often have some secret doors. Finally, secret doors will never be in a situation where you have to move diagonally to open them. The dead-end situation (the first one) usually does have a secret door, but not always. If you search for a while and don't find anything, just give up and move on. Sometimes a dead end will occur near the end of a map, where there is no room to have a continuing corridor, and so no secret door is generated.
 </indent>
   <indent><color:B>On Level Feelings</color>
 
-After you have been on a new level for a considerable length of time, you receive a feeling giving you a vague idea how good the level is. In general, the more scary the feeling sounds, the better the items on the level, or the more difficult the monsters. Probably the latter. Each unusual item or monster bumps up the rating of the level a bit. An item or monster is considered unusual if it is out of depth [normally occurs at a lower depth; for instance, a Longsword has a base level of 20, and would be considered unusual anywhere above that level (although not below it)]. Items can be out of depth without necessarily being anything special; a normal, non-magical katana could provoke a high level feeling at low depths, because it is so unusual. Also, pits (large rooms filled with a single type of monster) and vaults (dense, dangerous rooms with many out of depth monsters and items) can cause high level feelings. There is also a Special feeling which tells the player that there is an artifact on the level.
+After you have been on a new level for a considerable length of time, you receive a feeling giving you a vague idea how good the level is. In general, the more scary the feeling sounds, the better the items on the level, or the more difficult the monsters. Probably the latter. Each unusual item or monster bumps up the rating of the level a bit. An item or monster is considered unusual if it is out of depth [normally occurs at a lower depth; for instance, a Longsword has a base level of 20, and would be considered unusual anywhere above that level (although not below it). Items can be out of depth without necessarily being anything special; a normal, non-magical katana could provoke a high level feeling at low depths, because it is so unusual. Also, pits (large rooms filled with a single type of monster) and vaults (dense, dangerous rooms with many out of depth monsters and items) can cause high level feelings. There is also a Special feeling which tells the player that there is an artifact on the level.
 
-The speed at which you receive level feelings is influenced by your Wisdom, so if your big, stupid warrior seems to wait forever for level feeling, check out his Wisdom and maybe roll up a better one next time.
+The speed at which you receive level feelings is influenced by your Wisdom, so if your big, stupid warrior seems to wait forever for level feeling, check out his Wisdom and maybe start with a better one next time.
 </indent>
   <indent><color:B>On the Monster Memory</color>
 
-In many other games, you are required to take notes on monster's weaknesses, strengths, spells, etc. However, we are not so cruel as that, and will automatically take notes for you with the handy Monster Memory. Every time you find out something new about a monster, like that it can breathe fire, this is added to your knowledge of the monster. To look over this knowledge, type /, then the symbol of the monster. You may have to scroll through other monster memories to get to the one you're looking for. Or use the look ('l') and recall ('r') commands the next time you see one.
+In many other games, you are required to take notes on monster's weaknesses, strengths, spells, etc. However, we are not so cruel as that, and will automatically take notes for you with the handy Monster Memory. Every time you find out something new about a monster, like that it can breathe fire, this is added to your knowledge of the monster. There are several ways to look over this knowledge; you can type <color:keypress>'/'</color>, then the symbol of the monster (you may have to scroll through other monster memories to get to the one you're looking for); you can use the <color:keypress>'~'</color> knowledge menu; or you can use the look (<color:keypress>'*'</color>) and recall (<color:keypress>'r'</color>) commands if the monster you are interested in is in view.
 
 In the unpleasant event of your character's death, you can create a new character using your old character's file (instead of simply creating a new character, open the dead character's savefile, and the Creating a Character section will come up). This new character will have all of the old one's monster memories, and some special text for the monster that killed him.
 </indent>
@@ -675,11 +733,15 @@ In the unpleasant event of your character's death, you can create a new characte
 
 Death in FrogComposband is permanent. Saving is meant only to let you pick up where you left off; if you die, your savefile is marked. The next time you try to use the savefile, you will get the new character dialogue. Ancestors of dead characters will retain their monster memory and preferences. Many people here have characters like "Yuppy XIV"; people die very often and death is common, so don't get discouraged. In general, you will kill monsters more often than they kill you!
 </indent>
+  <indent><color:B>I'm still unsure about something...?</color>
+
+Try looking elsewhere in the help, particularly in the Frequently Asked Questions. It's called that for a reason! You can also ask your question at the angband.oook.cz forums or the angband.live online chat; both usually have friendly people willing to share their maxed-out wisdom.</indent>
+
 <topic:OnBigBoyPants><style:heading>On Big Boy Pants</style>
 
 When you are ready to move past Beginner Mode, the game will open up a huge variety of race and class options for you as well as giving you a full wilderness to explore. All of this is discussed in the remainder of the help system, so when you are ready to move on, be sure to check out the rest of the documentation. Pay special attention to sections on the wilderness as well as the various gameplay options. And when you're ready for a real treat, fire up a game in Monster Mode and play as a Cyberdemon!
 
-<color:v>Have Fun! :)</color>
+<color:v>Good luck, have fun, and don't die! :)</color>
 
 <color:D>
 Original   : Chris Weisiger (TANG version 1.6.2)
@@ -688,4 +750,5 @@ Updated    : Hengband 1.0.11
 Updated    : PosChengband 1.0.0
 Updated    : PosChengband 4.0.0
 Updated    : FrogComposband 7.0.strawberry
+Updated    : FrogComposband 7.1.liquorice
 </color>
