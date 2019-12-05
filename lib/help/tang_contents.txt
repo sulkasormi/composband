@@ -9,6 +9,7 @@ Please choose one of the following sections:
     <link:tang.txt#Tidbits> Tidbits
     <link:tang.txt#MultipleBlows> On Weapons and Multiple Blows
     <link:tang.txt#OnArmorAndResistance> On Armor and Resistance
+    <link:tang.txt#Skills> On Skills
     <link:tang.txt#OnMagicalItems> On Important Magical Items
     <link:tang.txt#OnWeapons> On Weapons, Armor and Slays
     <link:tang.txt#OnExploration> On Dungeon Exploration
