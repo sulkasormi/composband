@@ -53,7 +53,7 @@ static int _necro_damroll(int dice, int sides, int base)
 
 void on_p_hit_m(int m_idx)
 {
-    if (p_ptr->special_attack & ATTACK_CONFUSE)
+    if ((p_ptr->special_attack & ATTACK_CONFUSE) || (hex_spelling(HEX_CONFUSION)))
     {
         monster_type *m_ptr = &m_list[m_idx];
         monster_race *r_ptr = &r_info[m_ptr->r_idx];
@@ -61,9 +61,12 @@ void on_p_hit_m(int m_idx)
 
         monster_desc(m_name, m_ptr, 0);
 
-        p_ptr->special_attack &= ~(ATTACK_CONFUSE);
-        msg_print("Your hands stop glowing.");
-        p_ptr->redraw |= (PR_STATUS);
+        if (p_ptr->special_attack & ATTACK_CONFUSE)
+        {
+            p_ptr->special_attack &= ~(ATTACK_CONFUSE);
+            msg_print("Your hands stop glowing.");
+            p_ptr->redraw |= (PR_STATUS);
+        }
 
         if (r_ptr->flags3 & RF3_NO_CONF)
         {
