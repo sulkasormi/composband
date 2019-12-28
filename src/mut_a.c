@@ -1919,7 +1919,7 @@ void motion_mut(int cmd, variant *res)
         msg_print("You move with less assurance.");
         break;
     case SPELL_MUT_DESC:
-        var_set_string(res, "Your movements are precise and forceful (+1 STL).");
+        var_set_string(res, "Your movements are precise and forceful (FA; +1 STL).");
         break;
     case SPELL_CALC_BONUS:
         p_ptr->free_act++;
