@@ -2472,7 +2472,7 @@ option_type option_info[] =
     "quest_unique",                 "Random quests for unique monsters only" },
 
     { &random_artifacts,            FALSE, OPT_PAGE_BIRTH, 6, 23,
-    "random_artifacts",             "Randomize Standard Artifacts" },
+    "random_artifacts",             "Randomize standard artifacts" },
 
     { &no_artifacts,                FALSE, OPT_PAGE_BIRTH, 6, 24,
     "no_artifacts",                 "Never create artifacts" },
