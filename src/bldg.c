@@ -2733,8 +2733,9 @@ int reforge_limit(void)
 static bool _reforge_artifact(void)
 {
     int  cost, extra_cost = 0, value;
+    bool is_copy = FALSE;
     char o_name[MAX_NLEN];
-    object_type *src, *dest;
+    object_type *src, *dest, copy;
     int src_max_power = reforge_limit();
     int dest_max_power = 0;
     int src_weight = 80;
@@ -2788,12 +2789,6 @@ static bool _reforge_artifact(void)
 
     dest = _get_reforge_dest(dest_max_power);
     if (!dest) return FALSE;
-
-    if (dest->number > 1)
-    {
-        msg_print("Don't be greedy! You may only reforge a single object.");
-        return _reforge_artifact_exit();
-    }
 
     if (object_is_artifact(dest))
     {
@@ -3110,7 +3105,7 @@ static bool _reforge_artifact(void)
             obj_identify_fully(&forge);
             score = obj_value_real(&forge);
             total += score;
-            object_desc(buf, &forge, OD_COLOR_CODED);
+            object_desc(buf, &forge, OD_COLOR_CODED | OD_SINGULAR);
             doc_printf(doc, "%d) <indent><style:indent>%s (%d%%)</style></indent>\n",
                 i + 1, buf, score * 100 / base);
         }
@@ -3120,11 +3115,23 @@ static bool _reforge_artifact(void)
         doc_free(doc);
         return FALSE;
     }
+    if ((dest->number > 1) && (!p_ptr->wizard))
+    {
+        copy = *dest;
+        obj_dec_number(&copy, 1, TRUE);
+        is_copy = TRUE;
+/*        msg_print("Don't be greedy! You may only reforge a single object.");
+        return _reforge_artifact_exit();*/
+    }
+
+
     if (!reforge_artifact(src, dest, p_ptr->fame))
     {
         msg_print("The reforging failed!");
         return _reforge_artifact_exit();
     }
+    else
+        dest->number = 1;
 
     src->number = 0;
     obj_release(src, OBJ_RELEASE_QUIET);
@@ -3174,6 +3181,17 @@ static bool _reforge_artifact(void)
 
     obj_identify_fully(dest);
     gear_notice_enchant(dest);
+
+    if (is_copy)
+    {
+        if (pack_is_full()) /* This should never happen since using a source artifact ought to give us an empty slot... */
+        {
+            msg_print("<color:v>Your pack is overflowing!</color>");
+            pack_carry(&copy);
+        }
+        else pack_carry(&copy);
+    }
+
     handle_stuff();
 
     obj_display(dest);
