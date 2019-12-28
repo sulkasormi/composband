@@ -4030,6 +4030,12 @@ static void _avoid_hurting_player(mon_spell_cast_ptr cast)
             _remove_group(spells->groups[MST_BEAM], NULL);
         }
 
+        if ( spells->groups[MST_BOLT]
+          && !clean_shot(cast->src.y, cast->src.x, cast->dest.y, cast->dest.x, TRUE) )
+        {
+            _remove_group(spells->groups[MST_BOLT], NULL);
+        }
+
         if (spells->groups[MST_BREATH])
         {
             int rad = ((cast->race->level >= 50) || (cast->race->d_char == 'D')) ? 3 : 2;
