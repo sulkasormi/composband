@@ -170,7 +170,7 @@ int fear_threat_level(void)
     return MAX(dl, ml);
 }
 
-/* Permissable Player Actions */
+/* Permissible Player Actions */
 bool fear_allow_device(void)
 {
     if (p_ptr->afraid && !fear_save_p(p_ptr->afraid)) return FALSE;
@@ -183,8 +183,7 @@ bool fear_allow_magic(void)
     if (last_passed == game_turn) return TRUE; /* don't punish cancelling the prompt */
     if (p_ptr->afraid && !fear_save_p(p_ptr->afraid))
     {
-        if (p_ptr->pclass == CLASS_ALCHEMIST) return !one_in_(3);
-        return FALSE;
+        if ((p_ptr->pclass != CLASS_ALCHEMIST) || (one_in_(3))) return FALSE;
     }
     last_passed = game_turn;
     return TRUE;
