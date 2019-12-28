@@ -3257,10 +3257,10 @@ menu_naiyou menu_info[10][10] =
         {"Items(use)", 3, FALSE},
         {"Items(other)", 4, FALSE},
         {"Equip", 5, FALSE},
-        {"Door/Box", 6, FALSE},
-        {"Informations", 7, FALSE},
+        {"Door", 6, FALSE},
+        {"Information", 7, FALSE},
         {"Options", 8, FALSE},
-        {"Other commands", 9, FALSE},
+        {"Save/Exit/Help", 9, FALSE},
         {"", 0, FALSE},
     },
 
@@ -3287,7 +3287,7 @@ menu_naiyou menu_info[10][10] =
         {"Go up stairs(<)", '<', TRUE},
         {"Go down stairs(>)", '>', TRUE},
         {"Command pets(p)", 'p', TRUE},
-        {"Search mode ON/OFF(S/#)", 'S', TRUE}
+        {"Toggle searching(S/#)", 'S', TRUE}
     },
 
     {
@@ -3307,12 +3307,12 @@ menu_naiyou menu_info[10][10] =
         {"Get items(g)", 'g', TRUE},
         {"Drop an item(d)", 'd', TRUE},
         {"Destroy an item(k/^d)", 'k', TRUE},
-        {"Inscribe an item({)", '{', TRUE},
+        {"Inscribe an item(Z/{)", 'Z', TRUE},
         {"Uninscribe an item(})", '}', TRUE},
-        {"Info about an item(I)", 'I', TRUE},
+        {"Inspect an item(I)", 'I', TRUE},
         {"Inventory list(i)", 'i', TRUE},
-        {"", 0, FALSE},
-        {"", 0, FALSE},
+        {"Travel to item(H/^E)", 'H', TRUE},
+        {"Resume travel(J/())", 'J', TRUE},
         {"", 0, FALSE}
     },
 
@@ -3321,7 +3321,7 @@ menu_naiyou menu_info[10][10] =
         {"Take off(t/T)", 't', TRUE},
         {"Refuel(F)", 'F', TRUE},
         {"Equipment list(e)", 'e', TRUE},
-        {"", 0, FALSE},
+        {"Switch ring fingers", 'W', TRUE},
         {"", 0, FALSE},
         {"", 0, FALSE},
         {"", 0, FALSE},
@@ -3343,16 +3343,16 @@ menu_naiyou menu_info[10][10] =
     },
 
     {
+        {"List monsters(Y/[)", 'Y', TRUE},
+        {"List objects(O/])", ']', TRUE},
+        {"Character sheet(C)", 'C', TRUE},
         {"Full map(M)", 'M', TRUE},
         {"Map(L/W)", 'L', TRUE},
         {"Level feeling(^f)", KTRL('F'), TRUE},
-        {"Character status(C)", 'C', TRUE},
         {"Identify symbol(/)", '/', TRUE},
         {"Show prev messages(^p)", KTRL('P'), TRUE},
         {"Current time(^t/')", KTRL('T'), TRUE},
-        {"Various informations(~)", '~', TRUE},
-        {"Play record menu(|)", '|', TRUE},
-        {"", 0, FALSE}
+        {"Knowledge menu(~)", '~', TRUE}
     },
 
     {
@@ -3361,7 +3361,7 @@ menu_naiyou menu_info[10][10] =
         {"Interact w/ visuals(%)", '%', TRUE},
         {"Interact with colors(&)", '&', TRUE},
         {"Enter a user pref(\")", '\"', TRUE},
-        {"Reload auto-pick pref($)", '$', TRUE},
+        {"Edit Mogaminator(_)", '_', TRUE},
         {"", 0, FALSE},
         {"", 0, FALSE},
         {"", 0, FALSE},
@@ -3371,13 +3371,13 @@ menu_naiyou menu_info[10][10] =
     {
         {"Save and quit(^x)", KTRL('X'), TRUE},
         {"Save(^s)", KTRL('S'), TRUE},
-        {"Help(obsoleted)(?)", '?', TRUE},
+        {"Help(?)", '?', TRUE},
         {"Redraw(^r)", KTRL('R'), TRUE},
         {"Take note(:)", ':', TRUE},
         {"Dump screen dump(()", ')', TRUE},
         {"Load screen dump())", '(', TRUE},
         {"Version info(V)", 'V', TRUE},
-        {"Quit(Q)", 'Q', TRUE},
+        {"Commit suicide(Q)", 'Q', TRUE},
         {"", 0, FALSE}
     },
 };
