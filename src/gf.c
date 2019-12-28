@@ -511,13 +511,13 @@ int gf_affect_p(int who, int type, int dam, int flags)
         result = take_hit(damage_type, dam, m_name_real);
         break;
     case GF_HOLY_FIRE:
-        if (touch) msg_format("You are <color:y>%s</color>!", p_ptr->align < -10 ? "*burned*" : "burned");
+        if (touch) msg_format("You are <color:y>%s</color>!", p_ptr->align < -10 ? "*immolated*" : "immolated");
         else if (fuzzy) msg_print("You are hit by something!");
         dam = gf_holy_dam(dam);
         result = take_hit(damage_type, dam, m_name_real);
         break;
     case GF_HELL_FIRE:
-        if (touch) msg_format("You are <color:D>%s</color>!", p_ptr->align > 10 ? "*burned*" : "burned");
+        if (touch) msg_format("You are <color:D>%s</color>!", p_ptr->align > 10 ? "*bedeviled*" : "bedeviled");
         else if (fuzzy) msg_print("You are hit by something!");
         dam = gf_hell_dam(dam);
         result = take_hit(damage_type, dam, m_name_real);
