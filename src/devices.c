@@ -1598,7 +1598,7 @@ static cptr _do_scroll(int sval, int mode)
         }
         break;
     case SV_SCROLL_ACQUIREMENT:
-        if (desc) return "It creates one great item when you read it.";
+        if (desc) return "It creates one great item when you read it. Gives better results on deep levels.";
         if (cast)
         {
             acquirement(py, px, 1, TRUE, FALSE, ORIGIN_ACQUIRE);
@@ -1606,7 +1606,7 @@ static cptr _do_scroll(int sval, int mode)
         }
         break;
     case SV_SCROLL_STAR_ACQUIREMENT:
-        if (desc) return "It creates some great items when you read it.";
+        if (desc) return "It creates some great items when you read it. Gives better results on deep levels.";
         if (cast)
         {
             acquirement(py, px, _scroll_power(randint1(2) + 1), TRUE, FALSE, ORIGIN_ACQUIRE);
@@ -1666,7 +1666,7 @@ static cptr _do_scroll(int sval, int mode)
         }
         break;
     case SV_SCROLL_ARTIFACT:
-        if (desc) return "It creates an artifact from a nameless weapon or armour when you read it. Don't be greedy - you will get only one artifact.";
+        if (desc) return "It creates an artifact from a nameless weapon or armour when you read it. Gives better results on deeper levels. Don't be greedy - you will get only one artifact.";
         if (cast)
         {
             device_noticed = TRUE;
