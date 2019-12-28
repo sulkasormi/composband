@@ -1740,6 +1740,33 @@ static void random_slay(object_type *o_ptr)
     random_slay_aux(o_ptr);
 }
 
+static void get_random_name_aux_aux(cptr file_name, int entry, int yrkka, char *output)
+{
+    int i;
+    if (yrkka < 10) yrkka = 10;
+    if (yrkka > 1000) yrkka = 1000;
+    while (1)
+    {
+        bool sopii = TRUE;
+        get_rnd_line(file_name, entry, output);
+        if (quark__num == QUARK_MAX) return;
+
+        /* Try to avoid quark duplication */
+        for (i = 1; i < quark__num; i++)
+        {
+            /* Check for equality */
+            if (streq(quark__str[i], output))
+            {
+                sopii = FALSE;
+                break;
+            }
+        }
+        if (sopii) return;
+        yrkka--;
+        if (yrkka < 1) return;
+    }
+}
+
 static void get_random_name_aux(char *return_name, object_type *o_ptr, int power)
 {
     /* Hack: BIAS_* got converted to bits but the artifact name files still use
@@ -1774,7 +1801,7 @@ static void get_random_name_aux(char *return_name, object_type *o_ptr, int power
         default:
             filename = "lite_high.txt";
         }
-        get_rnd_line(filename, bias_hack, return_name);
+        get_random_name_aux_aux(filename, bias_hack, 40, return_name);
     }
     else if (o_ptr->tval == TV_RING)
     {
@@ -1793,7 +1820,7 @@ static void get_random_name_aux(char *return_name, object_type *o_ptr, int power
         default:
             filename = "ring_high.txt";
         }
-        get_rnd_line(filename, bias_hack, return_name);
+        get_random_name_aux_aux(filename, bias_hack, 60, return_name);
     }
     else if (o_ptr->tval == TV_AMULET)
     {
@@ -1812,12 +1839,12 @@ static void get_random_name_aux(char *return_name, object_type *o_ptr, int power
         default:
             filename = "amulet_high.txt";
         }
-        get_rnd_line(filename, bias_hack, return_name);
+        get_random_name_aux_aux(filename, bias_hack, 80, return_name);
     }
     else if (object_is_bow(o_ptr))
     {
         cptr filename = "ranged.txt";
-        get_rnd_line(filename, one_in_(2) ? o_ptr->sval : 0, return_name);
+        get_random_name_aux_aux(filename, one_in_(2) ? o_ptr->sval : 0, 60, return_name);
     }
     else
     {
@@ -1910,7 +1937,7 @@ static void get_random_name_aux(char *return_name, object_type *o_ptr, int power
             }
         }
 
-        get_rnd_line(filename, bias_hack, return_name);
+        get_random_name_aux_aux(filename, bias_hack, 25, return_name);
     }
 }
 
@@ -3510,6 +3537,7 @@ bool reforge_artifact(object_type *src, object_type *dest, int fame)
                 strcat(buf, ((oldname[0] == '&') && (strlen(oldname) > 2)) ? oldname + 2 : oldname);
                 strcat(buf, minibuf);
             }
+            (void)clip_and_locate("~", buf);
             dest->art_name = quark_add(buf);
         }
         else dest->art_name = quark_add(a_name + a_info[src->name1].name);
