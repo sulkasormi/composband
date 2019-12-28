@@ -205,19 +205,12 @@ class_t *berserker_get_class(void)
         me.name = "Berserker";
         me.desc = "A Berserker is a fearful fighter indeed, immune to fear and "
                     "paralysis. At high levels, Berserkers can reflect bolt spells "
-                    "with their tough flesh. Furthermore, they can fight without "
-                    "weapons, can remove cursed equipment by force, and can even use "
-                    "their special combat techniques when surrounded by an anti-magic "
-                    "barrier. Berserkers, however, cannot use any magical devices or "
-                    "read any scrolls, and are hopeless at all non-combat skills. "
-                    "Since Berserker Spectres are quite easy to *win* with, their "
-                    "scores are lowered.\n \n"
-                    "Berserkers use a unique system of techniques called 'Rage'. They "
-                    "gain more techniques as they gain levels. They use no magic: "
-                    "indeed, they cannot use any magic devices or activate any "
-                    "artifacts, and cannot read scrolls. To offset these great "
-                    "disadvantages, Berserkers are allowed to have an important class "
-                    "power - 'Recall'.";
+                    "with their tough flesh. Furthermore, they can remove cursed equipment "
+                    "by force, and their special combat techniques are not affected by "
+                    "anti-magic barriers. Berserkers cannot, however, use any magical devices "
+                    "or read any scrolls, and are hopeless at all non-combat skills. To "
+                    "offset these great disadvantages, they gain an important class power - "
+                    "'Recall' - very early.";
 
         me.stats[A_STR] =   8;
         me.stats[A_INT] = -20;
