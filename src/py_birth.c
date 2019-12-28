@@ -253,6 +253,8 @@ static int _welcome_ui(void)
         cmd = _inkey();
         if (cmd == '?')
             doc_display_help("birth.txt", NULL /*"Welcome"*/);
+        else if (cmd == '!')
+            doc_display_help("start.txt", NULL /*"Welcome"*/);
         else if (cmd == ESCAPE)
             return UI_CANCEL;
         else if (cmd == '=')
@@ -401,6 +403,7 @@ static int _beginner_races[] = {
   RACE_HIGH_ELF,
   RACE_HALF_TROLL,
   RACE_WEREWOLF,
+  RACE_KLACKON,
   -1
 };
 
@@ -485,6 +488,9 @@ static int _race_class_ui(void)
             break;
         case '?':
             doc_display_help("birth.txt", "RaceClass");
+            break;
+        case '!':
+            doc_display_help("start.txt", NULL);
             break;
         case '*':
             if (one_in_(847)) sprintf(player_name, "Epic Space Hero");
@@ -659,6 +665,7 @@ static void _split_pers_ui(byte _old)
         else if (cmd == '\t') _inc_rcp_state();
         else if (cmd == '=') _birth_options();
         else if (cmd == '?') doc_display_help("Personalities.txt", NULL);
+        else if (cmd == '!') doc_display_help("start.txt", NULL);
         else if (isupper(cmd))
         {
             i = A2I(tolower(cmd));
@@ -738,6 +745,7 @@ static void _pers_ui(void)
         else if (cmd == '\t') _inc_rcp_state();
         else if (cmd == '=') _birth_options();
         else if (cmd == '?') doc_display_help("Personalities.txt", NULL);
+        else if (cmd == '!') doc_display_help("start.txt", NULL);
         else if (isupper(cmd))
         {
             i = A2I(tolower(cmd));
@@ -860,6 +868,7 @@ static void _race_group_ui(void)
         else if (cmd == '\t') _inc_rcp_state();
         else if (cmd == '=') _birth_options();
         else if (cmd == '?') doc_display_help("Races.txt", NULL);
+        else if (cmd == '!') doc_display_help("start.txt", NULL);
         else
         {
             if (cmd == '*') i = randint0(vec_length(groups));
@@ -920,6 +929,7 @@ static int _race_ui(int ids[])
         else if (cmd == '\t') _inc_rcp_state();
         else if (cmd == '=') _birth_options();
         else if (cmd == '?') doc_display_help("Races.txt", NULL);
+        else if (cmd == '!') doc_display_help("start.txt", NULL);
         else if (isupper(cmd))
         {
             i = A2I(tolower(cmd));
@@ -1049,6 +1059,7 @@ static int _subrace_ui_aux(int ct, cptr desc, cptr help, cptr topic)
         else if (cmd == '\t') _inc_rcp_state();
         else if (cmd == '=') _birth_options();
         else if (cmd == '?') doc_display_help(help, topic);
+        else if (cmd == '!') doc_display_help("start.txt", NULL);
         else if (isupper(cmd))
         {
             i = A2I(tolower(cmd));
@@ -1180,6 +1191,7 @@ static void _class_group_ui(void)
         else if (cmd == '\t') _inc_rcp_state();
         else if (cmd == '=') _birth_options();
         else if (cmd == '?') doc_display_help("Classes.txt", NULL);
+        else if (cmd == '!') doc_display_help("start.txt", NULL);
         else
         {
             if (cmd == '*') i = randint0(vec_length(groups));
@@ -1241,6 +1253,7 @@ static int _class_ui(int ids[])
         else if (cmd == '\t') _inc_rcp_state();
         else if (cmd == '=') _birth_options();
         else if (cmd == '?') doc_display_help("Classes.txt", NULL);
+        else if (cmd == '!') doc_display_help("start.txt", NULL);
         else if (isupper(cmd))
         {
             i = A2I(tolower(cmd));
@@ -1340,6 +1353,7 @@ static int _warlock_ui(void)
         else if (cmd == '\t') _inc_rcp_state();
         else if (cmd == '=') _birth_options();
         else if (cmd == '?') doc_display_help("Warlocks.txt", NULL);
+        else if (cmd == '!') doc_display_help("start.txt", NULL);
         else if (isupper(cmd))
         {
             i = A2I(tolower(cmd));
@@ -1391,6 +1405,7 @@ static int _weaponmaster_ui(void)
         else if (cmd == '\t') _inc_rcp_state();
         else if (cmd == '=') _birth_options();
         else if (cmd == '?') doc_display_help("Weaponmasters.txt", NULL);
+        else if (cmd == '!') doc_display_help("start.txt", NULL);
         else if (isupper(cmd))
         {
             i = A2I(tolower(cmd));
@@ -1441,6 +1456,7 @@ static int _devicemaster_ui(void)
         else if (cmd == '\t') _inc_rcp_state();
         else if (cmd == '=') _birth_options();
         else if (cmd == '?') doc_display_help("Classes.txt", "Devicemaster");
+        else if (cmd == '!') doc_display_help("start.txt", NULL);
         else
         {
             if (cmd == '*') i = randint0(DEVICEMASTER_MAX);
@@ -1482,6 +1498,7 @@ static int _gray_mage_ui(void)
         else if (cmd == '\t') _inc_rcp_state();
         else if (cmd == '=') _birth_options();
         else if (cmd == '?') doc_display_help("Classes.txt", "Gray-Mage");
+        else if (cmd == '!') doc_display_help("start.txt", NULL);
         else
         {
             if (cmd == '*') i = randint0(GRAY_MAGE_MAX);
@@ -1620,6 +1637,7 @@ static int _realm1_ui(void)
             _birth_options();
         else if (cmd == '?')
             doc_display_help("magic.txt", NULL);
+        else if (cmd == '!') doc_display_help("start.txt", NULL);
         else if (isupper(cmd))
         {
             i = A2I(tolower(cmd));
@@ -1706,6 +1724,7 @@ static int _realm2_ui(void)
             _birth_options();
         else if (cmd == '?')
             doc_display_help("magic.txt", NULL);
+        else if (cmd == '!') doc_display_help("start.txt", NULL);
         else if (isupper(cmd))
         {
             i = A2I(tolower(cmd));
@@ -1786,6 +1805,7 @@ static void _mon_race_group_ui(void)
         else if (cmd == '\t') _inc_rcp_state();
         else if (cmd == '=') _birth_options();
         else if (cmd == '?') doc_display_help("MonsterRaces.txt", NULL);
+        else if (cmd == '!') doc_display_help("start.txt", NULL);
         else if (isupper(cmd))
         {
             i = A2I(cmd);
@@ -1865,6 +1885,7 @@ static int _mon_race_ui(int ids[])
         else if (cmd == '\t') _inc_rcp_state();
         else if (cmd == '=') _birth_options();
         else if (cmd == '?') doc_display_help("MonsterRaces.txt", NULL);
+        else if (cmd == '!') doc_display_help("start.txt", NULL);
         else if (isupper(cmd))
         {
             i = A2I(tolower(cmd));
@@ -2007,6 +2028,7 @@ static int _dragon_realm_ui(void)
         else if (cmd == '\t') _inc_rcp_state();
         else if (cmd == '=') _birth_options();
         else if (cmd == '?') doc_display_help("DragonRealms.txt", NULL);
+        else if (cmd == '!') doc_display_help("start.txt", NULL);
         else if (isupper(cmd))
         {
             i = A2I(tolower(cmd));
@@ -2155,7 +2177,7 @@ static int _stats_ui(void)
             "keys. The lower case key decrements while the upper case increments "
             "the starting value. Values may range from 8 to 17 and each value that "
             "you enter is charged the indicated number of points. You only have 30 "
-            "points to spend so be sure to adjust those stats that matter most."
+            "points to spend, so be sure to adjust those stats that matter most."
             "</indent>");
 
         _sync_term(_doc);
@@ -2169,6 +2191,7 @@ static int _stats_ui(void)
             return UI_CANCEL;
         else if (cmd == '?')
             doc_display_help("birth.txt", "Stats");
+        else if (cmd == '!') doc_display_help("start.txt", NULL);
         else if (cmd == '\t')
             _inc_rcp_state();
         else if (cmd == '=')
@@ -2304,7 +2327,7 @@ static void _stats_init(void)
             }
             else if (p_ptr->dragon_realm == DRAGON_REALM_BREATH)
             {
-                int stats[6] = { 16, 8, 8, 16, 17, 11 };
+                int stats[6] = { 16, 13, 8, 15, 17, 10 };
                 _stats_init_aux(stats);
             }
             else if (p_ptr->dragon_realm == DRAGON_REALM_CRAFT)
@@ -2315,12 +2338,12 @@ static void _stats_init(void)
             else if ( p_ptr->dragon_realm == DRAGON_REALM_DOMINATION
                    || p_ptr->dragon_realm == DRAGON_REALM_CRUSADE )
             {
-                int stats[6] = { 16, 8, 8, 16, 15, 16 };
+                int stats[6] = { 16, 12 , 8, 15, 15, 16 };
                 _stats_init_aux(stats);
             }
             else
             {
-                int stats[6] = { 17, 8, 8, 17, 15, 9 };
+                int stats[6] = { 17, 13, 8, 16, 15, 10 };
                 _stats_init_aux(stats);
             }
             break;
@@ -2332,12 +2355,12 @@ static void _stats_init(void)
             }
             else if (p_ptr->psubrace == DEMON_CYBERDEMON)
             {
-                int stats[6] = { 17, 8, 8, 15, 17, 9 };
+                int stats[6] = { 17, 13, 8, 15, 16, 10 };
                 _stats_init_aux(stats);
             }
             else
             {
-                int stats[6] = { 17, 8, 8, 17, 15, 9 };
+                int stats[6] = { 17, 13, 8, 16, 15, 10 };
                 _stats_init_aux(stats);
             }
             break;
@@ -2423,7 +2446,7 @@ static void _stats_init(void)
         case CLASS_ARCHAEOLOGIST:
         case CLASS_SCOUT:
         {
-            int stats[6] = { 16, 8, 17, 16, 11, 8 };
+            int stats[6] = { 16, 11, 16, 16, 14, 8};
             _stats_init_aux(stats);
             break;
         }
@@ -2442,13 +2465,13 @@ static void _stats_init(void)
         }
         case CLASS_MONK:
         {
-            int stats[6] = { 16, 8, 16, 17, 11, 8 };
+            int stats[6] = { 16, 11, 16, 16, 14, 8 };
             _stats_init_aux(stats);
             break;
         }
         case CLASS_MYSTIC:
         {
-            int stats[6] = { 16, 8, 8, 17, 11, 16 };
+            int stats[6] = { 16, 11, 8, 16, 14, 16 };
             _stats_init_aux(stats);
             break;
         }
@@ -2552,8 +2575,8 @@ static void _race_class_top(doc_ptr doc)
 {
     doc_ptr cols[2];
 
-    cols[0] = doc_alloc(27);
-    cols[1] = doc_alloc(53);
+    cols[0] = doc_alloc(25);
+    cols[1] = doc_alloc(55);
 
     _name_line(doc);
     _race_class_header(cols[0]);
@@ -2715,25 +2738,30 @@ static void _race_class_info(doc_ptr doc)
         if (p_ptr->dragon_realm)
             _stats_add(stats, realm_ptr->stats);
 
-        doc_insert(doc, "<style:heading><color:w>STR  INT  WIS  DEX  CON  CHR  Life  BHP  Exp</color>\n");
+        doc_insert(doc, "<style:heading><color:w>  STR  INT  WIS  DEX  CON  CHR  Life  BHP  Exp</color>\n");
         if (game_mode != GAME_MODE_BEGINNER)
         {
+            doc_printf(doc, "  ");
             _stats_line(doc, pers_ptr->stats, spell_stat, 'G');
             doc_printf(doc, "%3d%%       %3d%%\n", pers_ptr->life, pers_ptr->exp);
         }
+        doc_printf(doc, "  ");
         _stats_line(doc, race_ptr->stats, spell_stat, 'G');
         doc_printf(doc, "%3d%%  %+3d  %3d%%\n", race_ptr->life, race_ptr->base_hp, race_ptr->exp);
         if (game_mode != GAME_MODE_MONSTER)
         {
+            doc_printf(doc, "  ");
             _stats_line(doc, class_ptr->stats, spell_stat, 'G');
             doc_printf(doc, "%3d%%  %+3d  %3d%%\n", class_ptr->life, class_ptr->base_hp, class_ptr->exp);
         }
         if (p_ptr->dragon_realm)
         {
+            doc_printf(doc, "  ");
             _stats_line(doc, realm_ptr->stats, spell_stat, 'G');
             doc_printf(doc, "%3d%%       %3d%%\n", realm_ptr->life, realm_ptr->exp);
         }
 
+        doc_printf(doc, "<color:R>==</color>");
         _stats_line(doc, stats, spell_stat, 'R');
         doc_printf(doc, "<color:R>%3d%%  %+3d  %3d%%</color>\n",
             race_ptr->life * class_ptr->life * pers_ptr->life * realm_ptr->life / 1000000,
@@ -2788,49 +2816,51 @@ static void _race_class_info(doc_ptr doc)
 
         if (_rcp_state == _RCP_SKILLS1)
         {
-            doc_printf(doc, "<color:w>%-10.10s %-10.10s %-10.10s %-10.10s</color>\n",
+            doc_printf(doc, "<color:w>   %-10.10s %-10.10s %-10.10s %-10.10s</color>\n",
                 "Disarming", "Device", "Save", "Stealth");
             if (game_mode != GAME_MODE_BEGINNER)
             {
-                doc_printf(doc, "%s %s %s %s\n",
+                doc_printf(doc, "   %s %s %s %s\n",
                     p_desc.dis, p_desc.dev, p_desc.sav, p_desc.stl);
             }
-            doc_printf(doc, "%s %s %s %s\n", /* Note: descriptions contain formatting tags, so %-10.10s won't work ... cf skills.c */
+            doc_printf(doc, "   %s %s %s %s\n", /* Note: descriptions contain formatting tags, so %-10.10s won't work ... cf skills.c */
                 r_desc.dis, r_desc.dev, r_desc.sav, r_desc.stl);
             if (game_mode != GAME_MODE_MONSTER)
             {
-                doc_printf(doc, "%s %s %s %s\n",
+                doc_printf(doc, "   %s %s %s %s\n",
                     c_desc.dis, c_desc.dev, c_desc.sav, c_desc.stl);
             }
             if (p_ptr->dragon_realm)
             {
-                doc_printf(doc, "%s %s %s %s\n",
+                doc_printf(doc, "   %s %s %s %s\n",
                     dr_desc.dis, dr_desc.dev, dr_desc.sav, dr_desc.stl);
             }
+            doc_printf(doc, "<color:R>== </color>");
             doc_printf(doc, "%s %s %s %s\n",
                 tot_desc.dis, tot_desc.dev, tot_desc.sav, tot_desc.stl);
         }
         else
         {
-            doc_printf(doc, "<color:w>%-10.10s %-10.10s %-10.10s %-10.10s</color>\n",
-                "Searching", "Perception", "Melee", "Bows");
+            doc_printf(doc, "<color:w>   %-10.10s %-10.10s %-10.10s %-10.10s</color>\n",
+                "Searching", "Perception", "Melee", "Archery");
             if (game_mode != GAME_MODE_BEGINNER)
             {
-                doc_printf(doc, "%s %s %s %s\n",
+                doc_printf(doc, "   %s %s %s %s\n",
                     p_desc.srh, p_desc.fos, p_desc.thn, p_desc.thb);
             }
-            doc_printf(doc, "%s %s %s %s\n",
+            doc_printf(doc, "   %s %s %s %s\n",
                 r_desc.srh, r_desc.fos, r_desc.thn, r_desc.thb);
             if (game_mode != GAME_MODE_MONSTER)
             {
-                doc_printf(doc, "%s %s %s %s\n",
+                doc_printf(doc, "   %s %s %s %s\n",
                     c_desc.srh, c_desc.fos, c_desc.thn, c_desc.thb);
             }
             if (p_ptr->dragon_realm)
             {
-                doc_printf(doc, "%s %s %s %s\n",
+                doc_printf(doc, "   %s %s %s %s\n",
                     dr_desc.srh, dr_desc.fos, dr_desc.thn, dr_desc.thb);
             }
+            doc_printf(doc, "<color:R>== </color>");
             doc_printf(doc, "%s %s %s %s\n",
                 tot_desc.srh, tot_desc.fos, tot_desc.thn, tot_desc.thb);
         }
@@ -3071,6 +3101,8 @@ static void _birth_finalize(void)
     {
         coffee_break = TRUE;
         effective_speed = TRUE;
+        command_menu = TRUE;
+        no_scrambling = TRUE;
     }
 
     if (coffee_break)
