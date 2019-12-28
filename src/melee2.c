@@ -22,6 +22,109 @@
 #define CYBERNOISE 20
 
 /*
+ * Urgh... Eaten from regular travel code
+ */
+int _flow_head = 0;
+int _flow_tail = 0;
+static byte _temp2_x[MAX_SHORT];
+static byte _temp2_y[MAX_SHORT];
+byte _hinta[MAX_HGT][MAX_WID];
+
+static bool _mon_travel_flow_aux(monster_race *r_ptr, int y, int x, int n, bool wall, bool okay)
+{
+    cave_type *c_ptr = &cave[y][x];
+    int old_head = _flow_head;
+
+    n = n % 199;
+
+    if (!okay)
+    {
+        /* Ignore out of bounds or undiscovered terrain */
+        if (!in_bounds(y, x)) return wall;
+        if (!monster_can_enter(y, x, r_ptr, 0)) return wall;
+        if (!(c_ptr->info & CAVE_AWARE)) return wall;
+        if (is_mon_trap_grid(c_ptr)) return wall;
+
+        /* Ignore "pre-stamped" entries */
+        if ((_hinta[y][x] > 199) || ((_hinta[y][x] < 199) && (_hinta[y][x] <= n))) return wall;
+    }
+    else
+    {
+        wall = (n < 30);
+    }
+
+    /* Save the flow cost */
+    _hinta[y][x] = n;
+    if (wall) _hinta[y][x] += 199;
+
+    /* Enqueue that entry */
+    _temp2_y[_flow_head] = y;
+    _temp2_x[_flow_head] = x;
+
+    /* Advance the queue */
+    if (++_flow_head == MAX_SHORT) _flow_head = 0;
+
+    /* Hack -- notice overflow by forgetting new entry */
+    if (_flow_head == _flow_tail) _flow_head = old_head;
+
+    return wall;
+}
+
+static bool _mon_travel_flow(monster_type *m_ptr, int *ty, int *tx)
+{
+    int x, y, d, best = 199;
+    bool wall = FALSE;
+    monster_race *r_ptr = &r_info[m_ptr->r_idx];
+
+    /* Reset the "queue" */
+    _flow_head = _flow_tail = 0;
+    for (y = 0; y < MAX_HGT; y++)
+    {
+        for (x = 0; x < MAX_WID; x++)
+        {
+            _hinta[y][x] = 199;
+        }
+    }
+
+    /* Add the target destination grid to the queue */
+    (void)_mon_travel_flow_aux(r_ptr, *ty, *tx, 0, wall, TRUE);
+    _hinta[*ty][*tx] = 0;
+
+    /* Now process the queue */
+    while (_flow_head != _flow_tail)
+    {
+        /* Extract the next entry */
+        y = _temp2_y[_flow_tail];
+        x = _temp2_x[_flow_tail];
+
+        /* Forget that entry */
+        if (++_flow_tail == MAX_SHORT) _flow_tail = 0;
+
+        /* Add the "children" */
+        for (d = 0; d < 8; d++)
+        {
+            /* Add that child if "legal" */
+            wall = _mon_travel_flow_aux(r_ptr, y + ddy_ddd[d], x + ddx_ddd[d], _hinta[y][x] + 1, wall, FALSE);
+        }
+    }
+
+    for (d = 0; d < 8; d++)
+    {
+        y = m_ptr->fy + ddy_ddd[d];
+        x = m_ptr->fx + ddx_ddd[d];
+        if (!in_bounds(y, x)) continue;
+        if (_hinta[y][x] < best)
+        {
+            *ty = ddy_ddd[d];
+            *tx = ddx_ddd[d];
+            best = _hinta[y][x];
+        }
+    }
+
+    return (best != 199);
+}
+
+/*
  * Calculate the direction to the next enemy
  */
 static bool get_enemy_dir(int m_idx, int *mm)
@@ -31,6 +134,7 @@ static bool get_enemy_dir(int m_idx, int *mm)
     int t_idx;
     int start;
     int plus = 1;
+    bool valmis = FALSE;
 
     monster_type *m_ptr = &m_list[m_idx];
     monster_race *r_ptr = &r_info[m_ptr->r_idx];
@@ -46,6 +150,11 @@ static bool get_enemy_dir(int m_idx, int *mm)
     {
         y = m_list[pet_t_m_idx].fy;
         x = m_list[pet_t_m_idx].fx;
+        if ((!projectable(m_ptr->fy, m_ptr->fx, y, x)) && (distance(m_ptr->fy, m_ptr->fx, y, x) < 15))
+        { /* Pathfind aggressively
+           * Potentially slow, so only applied in specific situations */
+            if (_mon_travel_flow(m_ptr, &y, &x)) valmis = TRUE;
+        }
     }
     else
     {
@@ -116,15 +225,18 @@ static bool get_enemy_dir(int m_idx, int *mm)
         if (!x && !y) return FALSE;
     }
 
-    /* Extract the direction */
-    x -= m_ptr->fx;
-    y -= m_ptr->fy;
-
-    /* Check for long melee */
-    if ((r_ptr->flags7 & RF7_RANGED_MELEE) && (MAX(ABS(x), ABS(y)) == 2) && (MIN(ABS(x), ABS(y)) < 2) && (very_clean_shot(m_ptr->fy, m_ptr->fx, m_ptr->fy + y, m_ptr->fx + x)))
+    if (!valmis)
     {
-        mm[0] = mm[1] = mm[2] = (30 - (5 * x) - y);
-        return (TRUE);
+        /* Extract the direction */
+        x -= m_ptr->fx;
+        y -= m_ptr->fy;
+
+        /* Check for long melee */
+        if ((r_ptr->flags7 & RF7_RANGED_MELEE) && (MAX(ABS(x), ABS(y)) == 2) && (MIN(ABS(x), ABS(y)) < 2) && (very_clean_shot(m_ptr->fy, m_ptr->fx, m_ptr->fy + y, m_ptr->fx + x)))
+        {
+            mm[0] = mm[1] = mm[2] = (30 - (5 * x) - y);
+            return (TRUE);
+        }
     }
 
     /* North */
@@ -1147,6 +1259,14 @@ static bool get_moves(int m_idx, int *mm)
             if ((allow_long_melee) && (ABS(y) < 3) && (ABS(x) < 3) && ((ABS(y) == 2) || (ABS(x) == 2)) && (very_clean_shot(m_ptr->fy, m_ptr->fx, m_ptr->target_y, m_ptr->target_x))) use_long_melee = TRUE;
             done = TRUE;
         }
+
+        /* TODO: Improve pet pathfinding */
+        if ((!done) && (is_pet(m_ptr)) && (t_m_idx) && (are_enemies(m_ptr, &m_list[t_m_idx])) && (distance(m_ptr->fy, m_ptr->fx, m_ptr->target_y, m_ptr->target_x) < 15))
+        {
+            y = m_ptr->fy - m_ptr->target_y;
+            x = m_ptr->fx - m_ptr->target_x;
+            done = TRUE;
+        }
     }
 
     /* Handle Packs ... */
@@ -2165,6 +2285,7 @@ static void process_monster(int m_idx)
         while ((upkeep_factor > SAFE_UPKEEP_PCT) && (p_ptr->upset_okay)) /* Neglected pets */
         {
             if (unique_is_friend(m_ptr->r_idx)) break;
+            if (m_ptr->r_idx == MON_MONKEY_CLONE) break;
             if (p_ptr->csp * 3 > p_ptr->msp) 
             {
                  if (randint0(p_ptr->msp) < p_ptr->csp) break;
@@ -2874,7 +2995,6 @@ static void process_monster(int m_idx)
     did_pass_wall = FALSE;
     did_kill_wall = FALSE;
 
-
     /* Take a zero-terminated array of "directions" */
     for (i = 0; mm[i]; i++)
     {
@@ -2901,6 +3021,9 @@ static void process_monster(int m_idx)
 
         /* Ignore locations off of edge */
         if (!in_bounds2(ny, nx)) continue;
+
+        /* Don't bump into the player */
+        if ((is_pet(m_ptr)) && (player_bold(ny, nx))) continue;
 
         /* Access that cave grid */
         c_ptr = &cave[ny][nx];
