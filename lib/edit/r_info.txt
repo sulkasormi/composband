@@ -14333,7 +14333,7 @@ F:RES_POIS | RES_FIRE | FORCE_SLEEP | FORCE_MAXHP | NONLIVING
 F:POS_HOLD_LIFE | POS_SEE_INVIS | POS_GAIN_AC
 P:Copy:Balrog:Mauler
 S:FREQ_15 | ROCKET(600)
-D:Reverbrant metal steps announce the arrival of this huge creature,
+D:Reverberant metal steps announce the arrival of this huge creature,
 D:half demon half machine. It has an unsurpassable firepower.
 
 N:817:Hela, Queen of the Dead
@@ -14916,7 +14916,7 @@ B:BITE:HURT(8d12):POISON(4d12)
 F:UNIQUE | MALE | CAN_SPEAK | ANIMAL | EVIL |
 F:FORCE_SLEEP | FORCE_MAXHP | ESCORT
 F:TAKE_ITEM | OPEN_DOOR | BASH_DOOR | MOVE_BODY | RAND_25 |
-F:ONLY_ITEM | DROP_1D2 | DROP_GOOD |
+F:ONLY_ITEM | DROP_1D2 | DROP_GOOD | NO_CONF |
 F:RES_POIS
 F:DROP_CORPSE | POS_GAIN_AC
 P:Copy:Barbarian:Mauler
@@ -17939,7 +17939,7 @@ F:RAND_50 | RAND_25 |
 F:FORCE_MAXHP | CAN_SPEAK |
 F:ONLY_ITEM | DROP_90 | DROP_GOOD |
 F:INVISIBLE | COLD_BLOOD | PASS_WALL | RES_NETH
-F:UNDEAD | NO_SLEEP
+F:UNDEAD | NO_SLEEP | NO_QUEST
 F:POS_SEE_INVIS | POS_HOLD_LIFE
 P:Copy:Hobbit:Warrior
 D:He has only three hair. He is careless, but kind, and always a bit hungry.
@@ -19516,9 +19516,9 @@ G:H:R
 I:110:60d10:20:80:0:170
 W:127:255:999:500:0:0
 B:HIT:HURT(1d1)
-F:MALE | FORCE_MAXHP | HAS_LITE_2 | HUMAN |
+F:FORCE_MAXHP | HAS_LITE_2 | HUMAN |
 F:OPEN_DOOR | BASH_DOOR | NO_FEAR | UNIQUE2
-D:He looks just like you!
+D:It looks just like you!
 
 N:1096:Zeus, King of the Olympians
 G:P:v
