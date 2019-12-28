@@ -1727,6 +1727,14 @@ int doc_display_aux(doc_ptr doc, cptr caption, int top, rect_t display)
                     done = TRUE;
             }
             break;
+        case '!':
+            if (!strstr(caption, "start.txt"))
+            {
+                rc = doc_display_help_aux("start.txt", NULL, display);
+                if (rc == _UNWIND)
+                    done = TRUE;
+            }
+            break;
         case ESCAPE:
             done = TRUE;
             break;
