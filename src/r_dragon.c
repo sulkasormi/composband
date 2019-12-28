@@ -997,6 +997,9 @@ static void _reforging_spell(int cmd, variant *res)
         src->number--;
         obj_release(src, 0);
 
+        dest->mitze_type = 0;
+        object_mitze(dest, MITZE_REFORGE);
+
         obj_identify_fully(dest);
 
         p_ptr->update |= PU_BONUS;
