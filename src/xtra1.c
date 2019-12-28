@@ -1871,6 +1871,7 @@ static bool prt_speed(int row, int col)
         else if ((is_fast && !hitaus) || IS_LIGHT_SPEED() || psion_speed()) attr = TERM_YELLOW;
         else if (hitaus && !is_fast) attr = TERM_VIOLET;
         else if ((is_fast) && (hitaus) && (hitaus != 10)) attr = ((hitaus > 10) ? TERM_VIOLET : TERM_YELLOW);
+        else if ((is_fast) && (hitaus) && (hitaus == 10)) attr = TERM_L_RED;
         else if (p_ptr->filibuster) attr = TERM_ORANGE;
         else attr = TERM_L_GREEN;
         if (effective_speed) sprintf(buf, "Fast (%d.%dx)", SPEED_TO_ENERGY(i) / 10, SPEED_TO_ENERGY(i) % 10);
