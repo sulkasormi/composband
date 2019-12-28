@@ -649,6 +649,7 @@ says, 'A monkey cannot be a human! You are a monkey for this Dio!!'
 shouts, 'WRYYYYYYYYY!!!!!!'
 says, 'You came here to die in vain!'
 says, 'You think that you have a little possibilities that you defeat me? You are dull fish!'
+says, 'You thought it was an oversized energy vortex, but it was me, Dio!'
 says, 'How many people I killed? Do you remember the amount of bread you ate?'
 
 N:880:Wong
