@@ -8741,7 +8741,7 @@ static cptr do_hex_spell(int spell, int mode)
         {
             int r;
             int a = 3 - (p_ptr->pspeed - 100) / 10;
-            r = 1 + randint1(2) + MAX(0, MIN(3, a));
+            r = 3 + randint1(2) + MAX(0, MIN(3, a));
 
             if (p_ptr->magic_num2[2] > 0)
             {
@@ -8751,7 +8751,7 @@ static cptr do_hex_spell(int spell, int mode)
 
             p_ptr->magic_num2[1] = 2;
             p_ptr->magic_num2[2] = r;
-            msg_format("You pronounce your revenge. %d turns left.", r);
+            msg_format("You pronounce your revenge. %d turns left.", r - 1);
             add = FALSE;
         }
         if (cont)
