@@ -3551,7 +3551,7 @@ bool lite_area(int dam, int rad)
 
     if (d_info[dungeon_type].flags1 & DF1_DARKNESS)
     {
-        msg_print("The darkness of this dungeon absorb your light.");
+        msg_print("The darkness of this dungeon absorbs your light.");
         return FALSE;
     }
 
