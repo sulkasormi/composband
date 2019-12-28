@@ -2374,7 +2374,7 @@ bool artifact_scroll(void)
     {
         if (prompt.obj->number > 1)
         {
-            msg_print("Not enough enough energy to enchant more than one object!");
+            msg_print("Not enough energy to enchant more than one object!");
             msg_format("%d of your %s %s destroyed!",(prompt.obj->number)-1, o_name, (prompt.obj->number>2?"were":"was"));
             prompt.obj->number = 1;
         }
@@ -2399,7 +2399,7 @@ bool artifact_scroll(void)
         /* Message */
         msg_print("The enchantment failed.");
 
-        if (one_in_(3)) virtue_add(VIRTUE_ENCHANTMENT, -1);
+        return (FALSE);
     }
     else
     {
