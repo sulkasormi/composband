@@ -225,6 +225,7 @@ static _type_t _types[] =
          { 24, "Lignus the Pungent",       10000, 110, RACE_SNOTLING },
          { 25, "Tilba",                    15000, 116, RACE_HOBBIT },
          { 26, "Myrildric the Wealthy",    15000, 111, RACE_HUMAN },
+         { 27, "Igor the Mixturemaker",    15000, 112, RACE_IGOR },
          { 0 }}},
 
     { SHOP_MAGIC, "Magic Shop", _magic_will_buy, _magic_create,
@@ -251,6 +252,7 @@ static _type_t _types[] =
          { 21, "Cthoaloth the Mystic",     20000, 113, RACE_MIND_FLAYER },
          { 22, "Ibeli the Illusionist",    30000, 110, RACE_SKELETON },
          { 23, "Heto the Necromancer",     30000, 110, RACE_YEEK },
+         { 24, "Nils the Nifty",           30000, 110, RACE_TOMTE },
          { 0 }}},
 
     { SHOP_BLACK_MARKET, "Black Market", _black_market_will_buy, _black_market_create,
@@ -325,6 +327,9 @@ static _type_t _types[] =
          { 11, "Gaudella",                 15000, 105, RACE_HUMAN },
          { 12, "Argwynna of the Wood",     40000, 105, RACE_WOOD_ELF },
          { 13, "Mugbasha",                  5000, 120, RACE_KOBOLD },
+         { 14, "Billing",                  25000, 113, RACE_DWARF },
+         { 15, "Regen",                    20000, 111, RACE_NIBELUNG },
+         { 16, "Aulendil",                 25000, 110, RACE_HIGH_ELF },
          { 0 }}},
 
 	{ SHOP_SHROOMERY, "Mushroom Store", _shroomery_will_buy, _shroomery_create,
