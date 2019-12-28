@@ -3415,7 +3415,7 @@ static bool py_attack_aux(int y, int x, bool *fear, bool *mdeath, s16b hand, int
                     k = (dd + p_ptr->weapon_info[hand].to_dd) * (ds + p_ptr->weapon_info[hand].to_ds);
                 else
                     k = damroll(dd + p_ptr->weapon_info[hand].to_dd, ds + p_ptr->weapon_info[hand].to_ds);
-                k = tot_dam_aux(o_ptr, k, m_ptr, hand, mode, FALSE);                
+                k = tot_dam_aux(o_ptr, k, m_ptr, hand, mode, FALSE);
 
                 if (backstab)
                 {
@@ -5081,7 +5081,8 @@ bool pattern_seq(int c_y, int c_x, int n_y, int n_x)
     }
     else if ((pattern_type_new == PATTERN_TILE_OLD) ||
          (pattern_type_new == PATTERN_TILE_END) ||
-         (pattern_type_new == PATTERN_TILE_WRECKED))
+         (pattern_type_new == PATTERN_TILE_WRECKED) ||
+         ((pattern_type_new == PATTERN_TILE_TELEPORT) && (!py_in_dungeon())))
     {
         if (is_pattern_tile_cur)
         {
