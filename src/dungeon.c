@@ -268,6 +268,8 @@ static void pattern_teleport(void)
     int min_level = 1;
     int max_level = 99;
 
+    if (!dungeon_type) return;
+
     /* Ask for level */
     if (get_check("Teleport level? "))
 
@@ -3951,6 +3953,7 @@ static void _dispatch_command(int old_now_turn)
         case '*':
         {
             if (!p_ptr->wild_mode) do_cmd_target();
+            else do_cmd_look();
             break;
         }
 
@@ -5041,7 +5044,7 @@ static void dungeon(bool load_game)
         if (mon_available_num(&r_info[d_info[dungeon_type].final_guardian]))
         {
             cmsg_format(
-                TERM_YELLOW, "%^s lives in this level as the keeper of %s.",
+                TERM_YELLOW, "%^s lives on this level as the keeper of %s.",
                 r_name + r_info[d_info[dungeon_type].final_guardian].name,
                 d_name + d_info[dungeon_type].name);
         }
