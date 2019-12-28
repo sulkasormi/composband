@@ -146,7 +146,7 @@ weapons more weight than 39
 ?unidentified ammo:bolt
 ?:1
 
-~^gun$
+~^gun
 
 #########################################
 # Corpses
