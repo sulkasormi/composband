@@ -69,7 +69,7 @@ void _blood_spray_spell(int cmd, variant *res)
         var_set_string(res, "Cuts yourself, splattering nearby enemies.");
         break;
     case SPELL_SPOIL_DESC:
-        var_set_string(res, "Generates a radius 3 blood ball centered on the player for 2*(3d5+L+L/5) damage. Radius is increased to 4 at L30.");
+        var_set_string(res, "Generates a radius 3 blood ball centered on the player for 2*(3d5+L+L/4) damage. Radius is increased to 4 at L30.");
         break;
     case SPELL_INFO:
         var_set_string(res, info_damage(3, 5, p_ptr->lev + p_ptr->lev/4));
