@@ -1284,7 +1284,7 @@ static errr rd_savefile_new_aux(savefile_ptr file)
     /* Important -- Initialize stuff */
     mp_ptr = &m_info[p_ptr->pclass];
     /* Hack ... external files always make easy stuff hard ... Burglary is natural for rogues!!!*/
-    /* Note: Class and Realm are read in in rd_extra a few lines back */
+    /* Note: Class and Realm are read in rd_extra a few lines back */
     if (p_ptr->pclass == CLASS_ROGUE)
     {
         if (p_ptr->realm1 == REALM_BURGLARY)
