@@ -2695,8 +2695,8 @@ D:without your trying.
 N:254:'Big Punch'
 I:21:15:0
 W:50:50:800:150000
-P:0:8d6:1:3:-6
-F:HIDE_TYPE | SHOW_MODS |
+P:0:8d5:1:3:-6
+F:HIDE_TYPE | SHOW_MODS | RES_SOUND
 D:This gigantic, dull-gray mace was rumored to be a gift
 D:from an ancient dwarven king to an adventurer for saving
 D:his people from a fearsome demon.
