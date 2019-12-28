@@ -2582,7 +2582,7 @@ race_t *human_get_race(void)
                     "than most other races because of their shorter life spans. No racial "
                     "adjustments or intrinsics occur to characters choosing human. However, "
                     "humans may choose special talents at L20 & 40 that more than make up "
-                    "for their overall mediocrity.";
+                    "for their apparent mediocrity.";
 
         me.stats[A_STR] =  0;
         me.stats[A_INT] =  0;
