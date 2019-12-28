@@ -842,6 +842,7 @@ static void do_cmd_read_scroll_aux(obj_ptr o_ptr)
                  case SV_SCROLL_SUMMON_KIN:
                  case SV_SCROLL_CRAFTING:
                  case SV_SCROLL_MUNDANITY:
+                 case SV_SCROLL_ARTIFACT:
                  {
                      energy_use = 0;
                      break;
