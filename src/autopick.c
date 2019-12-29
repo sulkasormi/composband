@@ -2813,7 +2813,7 @@ static void describe_autopick(char *buff, autopick_type *entry)
     {
         before_str[before_n++] = "very rare";
         body_str = "equipments";
-        after_str[after_n++] = "such like Dragon armors, Blades of Chaos, etc.";
+        after_str[after_n++] = "like Dragon armors, Blades of Chaos, etc.";
     }
 
     /*** Common equipments ***/
@@ -2859,7 +2859,7 @@ static void describe_autopick(char *buff, autopick_type *entry)
     if (IS_FLG(FLG_CURSED))
     {
         body_str = "equipment";
-        which_str[which_n++] = "is cursed";
+        which_str[which_n++] = "are cursed";
     }
 
     if (IS_FLG(FLG_SPECIAL))
@@ -2878,7 +2878,7 @@ static void describe_autopick(char *buff, autopick_type *entry)
     if (IS_FLG(FLG_NAMELESS))
     {
         body_str = "equipment";
-        which_str[which_n++] = "is neither ego-item nor artifact";
+        which_str[which_n++] = "are neither ego-item nor artifact";
     }
 
     /*** Average ***/
@@ -2921,7 +2921,7 @@ static void describe_autopick(char *buff, autopick_type *entry)
     if (IS_FLG(FLG_MORE_LEVEL))
     {
         static char more_level_desc_str[50];
-        sprintf(more_level_desc_str, "level is bigger than %d", entry->level);
+        sprintf(more_level_desc_str, "level is higher than %d", entry->level);
         whose_str[whose_n++] = more_level_desc_str;
     }
     if (IS_FLG(FLG_MORE_WEIGHT))
@@ -2947,7 +2947,7 @@ static void describe_autopick(char *buff, autopick_type *entry)
     if (IS_FLG(FLG_WANTED))
     {
         body_str = "corpse or skeletons";
-        which_str[which_n++] = "is wanted at the Hunter's Office";
+        which_str[which_n++] = "are wanted at the Hunter's Office";
     }
 
     /*** Human corpse/skeletons (for Daemon magic) ***/
@@ -3075,7 +3075,7 @@ static void describe_autopick(char *buff, autopick_type *entry)
         {
             str++;
             top = TRUE;
-            whose_str[whose_n++] = "name is beginning with \"";
+            whose_str[whose_n++] = "name begins with \"";
         }
         else
             which_str[which_n++] = "have \"";
@@ -3090,7 +3090,7 @@ static void describe_autopick(char *buff, autopick_type *entry)
     else if (act & DO_QUERY_AUTOPICK)
         strcpy(buff, "Ask to pick up ");
     else
-        strcpy(buff, "Pickup ");
+        strcpy(buff, "Pick up ");
 
     if (act & DO_AUTO_ID)
         strcat(buff, "and automatically identify ");
@@ -3147,7 +3147,7 @@ static void describe_autopick(char *buff, autopick_type *entry)
 
     /* whose ..., and which .... */
     if (whose_n && which_n)
-        strcat(buff, ", and ");
+        strcat(buff, ", and");
 
     /* which ... */
     for (i = 0; i < which_n && which_str[i]; i++)
@@ -3164,22 +3164,17 @@ static void describe_autopick(char *buff, autopick_type *entry)
     if (*str && !top)
     {
         strncat(buff, str, 80);
-        strcat(buff, "\" as part of its name");
+        strcat(buff, "\" as part of their name");
     }
     strcat(buff, ".");
 
     /* Describe whether it will be displayed on the full map or not */
-    if (act & DO_DISPLAY)
+    if (act & (DO_AUTOPICK | DO_QUERY_AUTOPICK))
     {
-        if (act & DONT_AUTOPICK)
-            strcat(buff, "  Display these items when you press the N key in the full 'M'ap.");
-        else if (act & DO_AUTODESTROY)
-            strcat(buff, "  Display these items when you press the K key in the full 'M'ap.");
-        else
-            strcat(buff, "  Display these items when you press the M key in the full 'M'ap.");
+        strcat(buff, " Display these items as wanted in object list.");
     }
     else
-        strcat(buff, " Not displayed in the full map.");
+        strcat(buff, " Do not display as wanted.");
 
 }
 
@@ -5111,7 +5106,7 @@ static void draw_text_editor(text_body_type *tb)
             default:
                 if (tb->states[tb->cy] & LSTAT_AUTOREGISTER)
                 {
-                    str2 = "This line will be delete later.";
+                    str2 = "This line will be deleted later.";
                 }
 
                 else if (tb->states[tb->cy] & LSTAT_BYPASS)
@@ -5133,7 +5128,7 @@ static void draw_text_editor(text_body_type *tb)
 
             if (tb->states[tb->cy] & LSTAT_AUTOREGISTER)
             {
-                strcat(buf, "  This line will be delete later.");
+                strcat(buf, "  This line will be deleted later.");
             }
 
             if (tb->states[tb->cy] & LSTAT_BYPASS)
@@ -6494,7 +6489,7 @@ void do_cmd_edit_autopick(void)
         tb->old_wid = tb->wid;
         tb->old_hgt = tb->hgt;
 
-        if ((!rogue_like_commands) && (numpad_as_cursorkey)) autopick_inkey_hack = 1;
+        if (numpad_as_cursorkey) autopick_inkey_hack = 1;
 
         /* Get a command */
         key = inkey_special(TRUE);
