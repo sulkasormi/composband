@@ -574,6 +574,8 @@ static void do_cmd_options_cheat(cptr info)
         /* Hilite current option */
         move_cursor(k + 2, 50);
 
+        autopick_inkey_hack = 1;
+
         /* Get a key */
         ch = inkey();
 
