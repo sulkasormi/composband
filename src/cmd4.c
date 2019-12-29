@@ -678,7 +678,7 @@ static s16b toggle_frequency(s16b current)
 
 
 /*
- * Interact with some options for cheating
+ * Interact with some options for autosaving
  */
 static void do_cmd_options_autosave(cptr info)
 {
@@ -906,6 +906,8 @@ void do_cmd_options_aux(int page, cptr info)
 
         /* Hilite current option */
         move_cursor(k + 2 + l - option_offset, 50);
+
+        autopick_inkey_hack = 1;
 
         /* Get a key */
         ch = inkey();
