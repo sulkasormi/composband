@@ -6,14 +6,12 @@ attack.txt \
 avoid.txt \
 birth_contents.txt \
 birth.txt \
-bldg.txt \
 Classes.txt \
 command_contents.txt \
 command.txt \
 commdesc_contents.txt \
 commdesc.txt \
 context_home.txt \
-context_message_recall.txt \
 context_monster_list.txt \
 context_more_prompt.txt \
 context_object_list.txt \
@@ -37,6 +35,7 @@ faq.txt \
 gambling.txt \
 general_contents.txt \
 general.txt \
+glossary.txt \
 helpinfo.txt \
 magic_contents.txt \
 magic.txt \
@@ -51,6 +50,8 @@ Orcs.txt \
 Personalities.txt \
 pref_contents.txt \
 pref.txt \
+prof_contents.txt \
+prof.txt \
 raceclass_contents.txt \
 Races.txt \
 rings.txt \
@@ -58,6 +59,9 @@ Runeknights.txt \
 Skillmasters.txt \
 small_lv.txt \
 start.txt \
+status_contents.txt \
+status.txt \
+subwin.txt \
 tang_contents.txt \
 tang.txt \
 town_contents.txt \
