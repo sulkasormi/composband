@@ -186,7 +186,7 @@ With this option, the object prompt will use and display the current inventory s
 <topic:MapScreen><style:heading>Map & Screen Options</style>
   <indent>
 <topic:center_player><color:U>Center map while walking</color> <color:D>(center_player)</color>
-With this option enabled, the map window automatically recenters on the player as you walk. I find this rather disturbing, but it helps if you are on a small monitor and worried about off screen monsters.
+With this option enabled, the map window automatically recenters on the player as you walk. I find this rather disturbing, but it helps if you are on a small monitor and worried about off-screen monsters.
 
 <topic:center_running><color:U>Centering even while running</color> <color:D>(center_running)</color>
 Normally, the map does not center on the player if the player moves with the "run" command, only when the running finishes. If this option is set, the map always centers on the player.
@@ -248,12 +248,12 @@ Display the labels for objects in the equipment list, and in any special window 
 Display the weights of objects in the inventory and equipment lists, and in stores, and in any special window which is displaying any of these lists.
 
 <topic:show_discounts><color:U>Show discounts in object listings</color> <color:D>(show_discounts)</color>
-Display the discount of the object, if any, as part of its inscription. Disabling this option won't remove the object's discount. Rather, this information will no longer be displayed to the player.
+Display the discount of the object, if any, as part of its inscription. Disabling this option won't remove the object's discount; it will just no longer be displayed to the player.
 
 <topic:show_power><color:U>Show device power in object listings (if known)</color> <color:D>(show_power)</color>
 Displays details about an object's power (like <color:g>dam 158</color> or <color:U>heal 250</color>) in inventories, allowing you to compare items at a glance.
 
-<topic:show_item_graph><color:U>Show items graphics</color> <color:D>(show_item_graph)</color>
+<topic:show_item_graph><color:U>Show item graphics in object listings</color> <color:D>(show_item_graph)</color>
 Displays small icons of the items in your inventory list, equipment list and stores.
 
 <topic:equippy_chars><color:U>Display 'equippy' chars</color> <color:D>(equippy_chars)</color>
@@ -427,15 +427,15 @@ This option alerts you with a message before your move if your poison counter ex
 <topic:AutoDestroyer><style:heading>Easy Auto-Destroyer Options</style>
   <indent>
 <topic:destroy_items><color:U>Use easy auto-destroyer</color> <color:D>(destroy_items)</color>
-This option turns The Easy Destroyer on and off. If enabled, The Easy Destroyer will destroy all objects unless the object is protected by one or more of the leave_* options discussed below.
+This option turns the Easy Destroyer on and off. If enabled, the Easy Destroyer will destroy all objects unless the object is protected by one or more of the leave_* options discussed below.
 
 <style:note>Note: The <color:keyword>Easy Auto-Destroyer</color> is a simpler to use version of the full featured <color:keyword>Mogaminator</color> discussed in <link:editor.txt>. It is designed for those who feel the full version is too complicated to use. However, you really should only use one or the other. So if you are using the full version, then you should not also enable the easy version, unless you have turned on the <color:keyword>always_pickup</color> option.</style>
 
 <topic:destroy_feeling><color:U>Apply auto-destroy on sensing an item</color> <color:D>(destroy_feeling)</color>
-If this option is turned on, both The Mogaminator and The Easy Destroyer will take actions whenever the player senses the quality of an object (i.e., whenever pseudo-id kicks in).
+If this option is turned on, both the Mogaminator and the Easy Destroyer will take actions whenever the player senses the quality of an object (i.e., whenever pseudo-id kicks in).
 
 <topic:destroy_identify><color:U>Apply auto-destroy on identifying an item</color> <color:D>(destroy_identify)</color>
-If this option is turned on, both The Mogaminator and The Easy Destroyer will take actions whenever the player identifies an object, whether with a spell or with a magical device (but, alas, not via a town service).
+If this option is turned on, both the Mogaminator and the Easy Destroyer will take actions whenever the player identifies an object, whether with a spell or with a magical device (but, alas, not via a town service).
 
 <topic:destroy_debug><color:U>List the rule used when applying the Mogaminator</color> <color:D>(destroy_debug)</color>
 This is a debugging option when using the full-featured Mogaminator. Enabling this option results in the reporting of the rule used whenever an action is taken, such as pickup, auto-identify or destroy. The rule in question will appear in the message line. For example:<style:screenshot>
@@ -460,22 +460,22 @@ With this option on, the Mogaminator never destroys items (the easy auto-destroy
 With this option on, any command that allows you to pick up items manually will give the manual pickup priority over auto-pickup. (With the option off, this only happens if you are picking up items from the square you were already on.)
 
 <topic:leave_worth><color:U>Auto-destroyer leaves known worthy items</color> <color:D>(leave_worth)</color>
-This option protects known objects that can be sold in stores from auto-destruction by The Easy Destroyer.
+This option protects known objects that can be sold in stores from auto-destruction by the Easy Destroyer.
 
 <topic:leave_equip><color:U>Auto-destroyer leaves weapons and armour</color> <color:D>(leave_equip)</color>
-This option protects all weapons and armour from auto-destruction by The Easy Destroyer.
+This option protects all weapons and armour from auto-destruction by the Easy Destroyer.
 
 <topic:leave_chest><color:U>Auto-destroyer leaves closed chests</color> <color:D>(leave_chest)</color>
-This option protects all chests which are not yet opened from auto-destruction by The Easy Destroyer.
+This option protects all chests which are not yet opened from auto-destruction by the Easy Destroyer.
 
 <topic:leave_wanted><color:U>Auto-destroyer leaves wanted corpses</color> <color:D>(leave_wanted)</color>
-This option protects corpses of monsters wanted at the Hunter's office from auto-destruction by The Easy Destroyer.
+This option protects corpses of monsters wanted at the Hunter's office from auto-destruction by the Easy Destroyer.
 
 <topic:leave_corpse><color:U>Auto-destroyer leaves corpses and skeletons</color> <color:D>(leave_corpse)</color>
-This option protects all corpses and skeletons from auto-destruction by The Easy Destroyer.
+This option protects all corpses and skeletons from auto-destruction by the Easy Destroyer.
 
 <topic:leave_junk><color:U>Auto-destroyer leaves junk</color> <color:D>(leave_junk)</color>
-This option protects all 'junk', such as Shards of Pottery or Broken Stick, from auto-destruction by The Easy Destroyer. This is especially helpful for Archers.
+This option protects all 'junk', such as Shards of Pottery or Broken Stick, from auto-destruction by the Easy Destroyer. This is especially helpful for Archers.
 
 <topic:leave_special><color:U>Auto-destroyer leaves items your race/class needs</color> <color:D>(leave_special)</color>
 This option protects specific items which are normally worthless, but very important for specific classes or races. These include bones for Archers, ego light sources of darkness for Ninja, Wands of Heal Monster for BeastMaster and Cavalry, and humanoid corpses for Balrogs, etc...
@@ -565,9 +565,6 @@ Cheaters never win. But they can peek at room creation.
 <topic:cheat_xtra><color:U>Peek into something else</color> <color:D>(cheat_xtra)</color>
 Cheaters never win. But they can see debugging messages.
 
-<topic:cheat_know><color:U>Know complete monster info</color> <color:D>(cheat_know)</color>
-Cheaters never win. But they can know all about monsters.
-
 <topic:cheat_live><color:U>Allow player to avoid death</color> <color:D>(cheat_live)</color>
 Cheaters never win. But they can cheat death.
 
@@ -583,4 +580,5 @@ Updated    : Hengband 1.5.2
 Updated    : PosChengband 4.0.0
 Updated    : FrogComposband 7.0.nougat
 Updated    : FrogComposband 7.1.chocolate
+Updated    : FrogComposband 7.1.liquorice
 </color>
