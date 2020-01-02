@@ -1739,21 +1739,21 @@ class_t *skillmaster_get_class(void)
     {
         me.name = "Skillmaster";
         me.desc = "The Skillmaster is not your ordinary class. Instead, you "
-                  "may design your own class, on the fly, using a point based "
-                  "skill system. Upon birth, you will get 5 points to spend "
-                  "and you should use these wisely to set the basic direction "
-                  "of your class. Upon gaining every fifth level, you will "
+                  "may design your own class, on the fly, using a point-based "
+                  "skill system. Upon birth, you will get 5 points to spend; "
+                  "use them wisely to set the basic direction of your class. "
+                  "Every fifth character level, you will "
                   "receive an additional point to spend, for fifteen points "
-                  "overall. You may use these points to learn melee or to "
-                  "gain access to spell realms. You can improve your speed or "
-                  "your stealth. Or you may gain increased magic device skills. "
-                  "In addition, you may learn riding skills, dual wielding or "
-                  "even martial arts. You will have a lot of flexibility in "
-                  "how you choose to play this class.\n \n"
+                  "overall. You may use these points to learn melee, to "
+                  "master a spell realm, to improve your speed or stealth, "
+                  "to increase your magic device skills, to gain special "
+                  "techniques, to learn riding, dual-wielding or martial "
+                  "arts... no other class, even Psion or Yeqrezh Disciple, "
+                  "offers as much flexibility.\n\n"
                   "Most skills allow the investment of multiple points for "
                   "increased proficiency, but some are abilities that you may "
                   "buy with a single point (e.g. Luck). This class is not recommended for "
-                  "beginning or immediate players. You only have a limited "
+                  "beginning players, despite being quite strong; you only have a limited "
                   "amount of points to spend, and your choices are irreversible.";
 
         me.exp = 130;
