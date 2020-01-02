@@ -1,15 +1,21 @@
 <style:title>Attacking and Weapons</style>
 
-Please choose one of the following online help files:
+Please choose one of the following help sections:
 
-    <link:attack.txt> Attacking and Weapons
+    <link:attack.txt> Overview
     <link:attack.txt#DistanceAttack> Attacking from a Distance
-    <link:attack.txt#AttackWalls> Attacking Monsters in Walls
     <link:attack.txt#MeleeWeapons> Melee Weapons
-    <link:attack.txt#MissileLaunch> Missile Launchers
+    <link:attack.txt#MissileLaunch> Ranged Weapons
     <link:attack.txt#EgoArtifact> Ego Weapons and Artifacts
-    <link:attack.txt#MagicalAids> Magical Aids to Physical Combat
+    <link:attack.txt#Slays> Slays and Brands
+    <link:attack.txt#Choices> Choosing the Right Weapon
+    <link:attack.txt#AttackWalls> Attacking Monsters in Walls
+    <link:attack.txt#AttackPets> Attacking Pets or Friendly Monsters
     <link:attack.txt#MonkAttacks> Martial Arts
+    <link:attack.txt#BothHands> Two-Handed Wielding
+    <link:attack.txt#DualWielding> Dual-Wielding
+    <link:attack.txt#MagicalAids> Magical Aids to Physical Combat
+    <link:attack.txt#ImproveOdds> Improving Your Odds
     <link:attack.txt#MeleeTactics> Basic Tactics
 
     <color:y>(?) Help System Commands</color>
