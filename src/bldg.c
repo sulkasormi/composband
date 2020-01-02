@@ -912,8 +912,7 @@ static bool gamble_comm(int cmd)
     if (cmd == BACT_GAMBLE_RULES)
     {
         /* Peruse the gambling help file */
-        (void)show_file(TRUE, "gambling.txt", NULL, 0, 0);
-
+        doc_display_help("gambling.txt", "Gambling");
     }
     else
     {
@@ -2329,7 +2328,7 @@ static void town_history(void)
     screen_save();
 
     /* Peruse the building help file */
-    (void)show_file(TRUE, "bldg.txt", NULL, 0, 0);
+    doc_display_help("town.txt#TheShops", NULL);
 
 
     /* Load screen */
