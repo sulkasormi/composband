@@ -3,23 +3,27 @@
     <color:R>Getting Started:</color>
     <link:general_contents.txt> General Information
     <link:birth_contents.txt> Creating a Character    
+    <link:command_contents.txt> Commands
     <link:faq.txt> Frequently Asked Questions
     <link:avoid.txt> Common Mistakes to Avoid
 
     <color:R>Core Concepts:</color>
     <link:raceclass_contents.txt> Races, Classes and Personalities
-    <link:town_contents.txt> The Town and Wilderness
-    <link:dungeon_contents.txt> The Dungeon
+    <link:town_contents.txt> The Towns and Wilderness
+    <link:dungeon_contents.txt> The Dungeons
     <link:objects_contents.txt> Objects
     <link:monster_contents.txt> Monsters and Pets
     <link:attack_contents.txt> Attacking and Weapons
     <link:defend_contents.txt> Defending and Armor
-    <link:magic_contents.txt> Magic Realms
-    <link:command_contents.txt> Commands
+    <link:magic_contents.txt> Spellcasting
+    <link:status_contents.txt> Status Effects
+    <link:glossary.txt> Glossary/List of Concepts
 
     <color:R>Advanced Topics:</color>
     <link:option_contents.txt> Options
     <link:pref_contents.txt> User Preference Files
-    <link:editor_contents.txt> The <color:U>Mo</color><color:y>g</color><color:o>am</color><color:R>in</color><color:r>at</color><color:v>or</color>
+    <link:prof_contents.txt> The Proficiency System
+    <link:editor_contents.txt> The Mogaminator
+    <link:subwin.txt> Subwindows
 
     <color:y>(?) Help System Commands</color>
