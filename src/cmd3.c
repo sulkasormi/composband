@@ -241,7 +241,7 @@ void do_cmd_refill(void)
 void do_cmd_target(void)
 {
     /* Target set */
-    if (target_set(TARGET_KILL))
+    if (target_set(TARGET_KILL | TARGET_TRVL))
     {
         if (target_who > 0)
         {
@@ -258,7 +258,7 @@ void do_cmd_target(void)
     }
 
     /* Target aborted */
-    else
+    else if (!travel.run)
     {
         msg_print("Target Aborted.");
 
