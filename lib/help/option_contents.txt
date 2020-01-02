@@ -1,6 +1,6 @@
 <style:title>Options</style>
 
-Please choose one of the following online help files:
+Please choose one of the following help sections:
 
     <link:option.txt> Options
     <link:option.txt#Birth> Birth/Start-Up Options
@@ -9,7 +9,7 @@ Please choose one of the following online help files:
     <link:option.txt#TextDisplay> Text Display Options
     <link:option.txt#GamePlay> Game Play Options
     <link:option.txt#Disturbance> Disturbance Options
-    <link:option.txt#AutoDestroyer> Easy Auto-Destroyer Options
+    <link:option.txt#AutoDestroyer> Auto-Destroyer Options
     <link:option.txt#BaseDelay> Base Delay Factor
     <link:option.txt#Hitpoint> Hitpoint Warning
     <link:option.txt#Autosave> Autosave Options
