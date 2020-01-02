@@ -4347,13 +4347,13 @@ static char MN_INSERT_BLOCK[] = "Insert conditional block";
 static char MN_INSERT_MACRO[] = "Insert a macro definition";
 static char MN_INSERT_KEYMAP[] = "Insert a keymap definition";
 
-static char MN_COMMAND_LETTER[] = "Command letter";
-static char MN_CL_AUTOPICK[] = "' ' (Auto pick)";
-static char MN_CL_DESTROY[] = "'!' (Auto destroy)";
-static char MN_CL_LEAVE[] = "'~' (Leave it on the floor)";
+static char MN_COMMAND_LETTER[] = "Action letter";
+static char MN_CL_AUTOPICK[] = "' ' (Pick up)";
+static char MN_CL_DESTROY[] = "'!' (Destroy)";
+static char MN_CL_LEAVE[] = "'~' (Leave on the floor)";
 static char MN_CL_QUERY[] = "';' (Query to pick up)";
-static char MN_CL_NO_DISP[] = "'(' (No display on the large map)";
-static char MN_CL_AUTO_ID[] = "'?' (Auto identify)";
+static char MN_CL_NO_DISP[] = "'(' (Hide on M map)";
+static char MN_CL_AUTO_ID[] = "'?' (Identify)";
 
 static char MN_ADJECTIVE_GEN[] = "Adjective (general)";
 static char MN_RARE[] = "rare (equipments)";
