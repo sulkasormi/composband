@@ -1,105 +1,111 @@
-<style:title>The Dungeon</style>
+<style:title>The Dungeons</style>
 
-Although the game contains an extensive town level featuring multiple towns and a large wilderness area, the bulk of your adventuring will take place in the dungeon. Symbols appearing on your screen will represent the dungeon's walls, floor, objects, features, and creatures lurking about. In order to direct your character through his adventure, you will enter single character commands (see command.txt <link:command.txt>).
+Although the game contains an extensive world featuring multiple towns (most offering special town quests) as well as a large wilderness area, the bulk of your adventuring will take place in the dungeons. Symbols appearing on your screen will represent the dungeon's walls, floor, objects, features, and creatures lurking about. In order to direct your character through his adventure, you will enter single character commands (see <link:command.txt>).
 
-<topic:MapSymbols><style:heading>Symbols On Your Map</style>
+<topic:MapSymbols><style:heading>Symbols on Your Map</style>
 
-Symbols on your map can be broken down into three categories: Features of the dungeon such as walls, floor, doors, and traps; Objects which can be picked up such as treasure, weapons, magical devices, etc; and creatures which may or may not move about the dungeon, but are mostly harmful to your character's well being.
+Symbols on your map can be broken down into three categories: Features of the dungeon such as walls, floor, doors, and traps; objects which can be picked up such as treasure, weapons, magical devices, etc; and creatures which may or may not move about the dungeon, but are mostly harmful to your character's well-being.
 
 Some symbols are used to represent more than one type of entity, and some symbols are used to represent entities in more than one category. The "@" symbol (by default) is used to represent the character.
 
-It will not be necessary to remember all of the symbols and their meanings. The "slash" command (<color:keypress>/</color>) will identify any character appearing on your map.
+It is not necessary to memorize all of the symbols and their meanings. The "slash" command (<color:keypress>/</color>) will identify any character appearing on your map, and the <color:keypress>l</color> look command and the <color:keypress>*</color> targetting command can also be used to inspect the features you see. As you play a bit, the most common symbols soon become familiar.
 
-<style:note>Note that you can use a <color:keyword>user pref file</color> to change any of these symbols to something you are more comfortable with.</style>
+See <link:town.txt#MapSymbols> for town and wilderness symbols and <link:monster.txt#MonsterSymbols> for monster symbols. You can use user preference files or the <color:keypress>%</color> command to change symbols, although that is quite advanced, and new players who do take that path sometimes walk so deep into the forest of visuals that they forget to play the game :) Most players just keep the default symbols.
 
   <color:U>Features that do not block line of sight</color><style:table>
-  <$:FF_FLOOR>   Floor                       <$:FF_MIRROR>   A Mirror
+  <$:FF_FLOOR>   Floor                       <$:FF_MIRROR>   A mirror
   <$:FF_INVIS>   A trap (hidden)             <$:FF_GLYPH>   A glyph of warding
-  <$:FF_TRAP_TELEPORT>   A trap (known)              <$:FF_EXPLOSIVE_RUNE>   A explosive rune
-  <$:FF_DIRT>   Dirt                        <$:FF_PATTERN_1>   Section of the Pattern
-  <$:FF_GRASS>   Patch of grass              <$:FF_PATTERN_2>   Section of the Pattern
-  <$:FF_FLOWER>   Flower                      <$:FF_GENERAL_STORE>   General Store
-  <$:FF_BRAKE>   Brake                       <$:FF_ARMOURY>   Armoury
-  <$:FF_SWAMP>   Swamp                       <$:FF_WEAPON_SMITHS>   Weapon Smiths
-  <$:FF_SHALLOW_WATER>   Shallow Water               <$:FF_TEMPLE>   Temple
-  <$:FF_DEEP_WATER>   Deep Water                  <$:FF_ALCHEMY_SHOP>   Alchemy Shop
-  <$:FF_SHALLOW_LAVA>   Shallow Lava                <$:FF_MAGIC_SHOP>   Magic Shop
-  <$:FF_DEEP_LAVA>   Deep Lava                   <$:FF_BLACK_MARKET>   Black Market
-  <$:FF_DARK_PIT>   Dark pit                    <$:FF_HOME>   Home
-  <$:FF_OPEN_DOOR>   An open door                <$:FF_BOOKSTORE>   Bookstore
-  <$:FF_BROKEN_DOOR>   A broken door               <$:FF_MUSEUM>   Museum
-  <$:FF_UP_STAIR>   A staircase up              <$:FF_BUILDING_13>   Other building
-  <$:FF_DOWN_STAIR>   A staircase down            <$:FF_BUILDING_10>   Other building
-  <$:FF_SHAFT_UP>   A shaft up
-  <$:FF_SHAFT_DOWN>   A shaft down
-  <$:FF_ENTRANCE>   An entrance to dungeon
-  <$:FF_QUEST_ENTER>   quest entrance
+  <$:FF_TRAP_TELEPORT>   A trap (known)              <$:FF_EXPLOSIVE_RUNE>   An explosive rune
+  <$:FF_DIRT>   Dirt                        <$:FF_SEMI_PUN>   Wet trout of punishment
+  <$:FF_SHALLOW_WATER>   Shallow water               <$:FF_PATTERN_1>   Section of the Pattern
+  <$:FF_DEEP_WATER>   Deep water                  <$:FF_PATTERN_2>   Section of the Pattern
+  <$:FF_SHALLOW_LAVA>   Shallow lava                <$:FF_OPEN_DOOR>   An open door
+  <$:FF_DEEP_LAVA>   Deep lava                   <$:FF_BROKEN_DOOR>   A broken door
+  <$:FF_UP_STAIR>   A staircase up              <$:FF_OPEN_GLASS_DOOR>   An open glass door
+  <$:FF_DOWN_STAIR>   A staircase down            <$:FF_OPEN_CURTAIN>   An open curtain
+  <$:FF_SHAFT_UP>   A shaft up                  <$:FF_DARK_PIT>   A dark pit
+  <$:FF_SHAFT_DOWN>   A shaft down                <$:FF_SHALLOW_WASTE>   Shallow nukage pool
+  <$:FF_ENTRANCE>   Dungeon entrance            <$:FF_DEEP_WASTE>   Deep nukage pool
+
 </style>
   <color:U>Features that block line of sight</color><style:table>
-  <$:FF_GRANITE>   A granite wall              <$:FF_TREE>   A Tree
-  <$:FF_MAGMA_VEIN>   A magma vein                <$:FF_MOUNTAIN>   Mountain chain
-  <$:FF_QUARTZ_VEIN>   A quartz vein               <$:FF_CLOSED_DOOR>   A door
-  <$:FF_SECRET_DOOR>   A secret door               <$:FF_RUBBLE>   A pile of rubble
-  <$:FF_MAGMA_TREASURE>   Treasure in wall
+  <$:FF_GRANITE>   A granite wall              <$:FF_PERMANENT>   A permanent wall
+  <$:FF_MAGMA_VEIN>   A magma vein                <$:FF_TREE>   A tree
+  <$:FF_QUARTZ_VEIN>   A quartz vein               <$:FF_MOUNTAIN>   A mountainside
+  <$:FF_SECRET_DOOR>   A secret door               <$:FF_CLOSED_DOOR>   A closed door
+  <$:FF_GLASS_WALL>   A glass wall                <$:FF_CLOSED_CURTAIN>   A closed curtain
+  <$:FF_MAGMA_TREASURE>   Treasure in wall            <$:FF_RUBBLE>   A pile of rubble
 </style>
 
-<topic:WithinDungeon><style:heading>Within The Dungeon</style>
+<topic:WithinDungeon><style:heading>Within the Dungeon</style>
 
-Once your character is adequately supplied with food, light, armor, and weapons, he is ready to enter the dungeon. Move on top of the <$:FF_ENTRANCE> symbol and use the <color:keyword>Down</color> command (<color:keypress>></color>).
+Once your character is adequately supplied with food, light, armor, weapons, and utility items, he is ready to enter the dungeon. Move on top of the <$:FF_ENTRANCE> symbol and use the <color:keyword>Down</color> command (<color:keypress>></color>).
 
-Your character will enter a maze of interconnecting staircases and finally arrive somewhere on the first level of the dungeon. Each level of the dungeon is fifty feet high (thus dungeon level "Lev 1" is often called "50 ft"), and is divided into (large) rectangular regions (several times larger than the screen) by titanium walls. Once you leave a level by a staircase, you will never again find your way back to that region of that level, but there are an infinite number of other regions at that same "depth" that you can explore later. So be careful that you have found all the treasure before you leave a level, or you may never find it again! The monsters, of course, can use the stairs, and you may eventually encounter them again.
+Your character will enter a maze of interconnecting staircases and finally arrive somewhere on the first level of the dungeon. Each floor of the dungeon is fifty feet high (thus dungeon level 1 is sometimes called "50 ft"), and the explorable areas are surrounded by permanent, unbreachable rock walls that separate them from other dungeon levels at the same depth. The size of a dungeon level can vary, but they are always rectangular and sometimes quite large, several times larger than the screen.
 
-In the dungeon, there are many things to find, but your character must survive many horrible and challenging encounters to find the treasure lying about and take it safely back to the town to sell.
+In Beginner Mode and coffee-break mode, once you leave a level you cannot ever return there, simply because up-stairs do not exist and every dungeon level you enter will be deeper than the one before it. If these modes (and the ironman option) are not selected, you can return to levels you have left as long as you remain inside the dungeon; although many different dungeon levels co-exist at the same depth, taking the same staircase again will always lead you to the same level. But as soon as you leave the dungeon, the levels you explored are lost and you will never find them again; upon your return to the same depth you will discover a completely new level. You might, however, run again into some of the monsters you left behind!
 
-There are two sources for light once inside the dungeon. Permanent light which has been magically placed within rooms, and a light source carried by the player. If neither is present, the character will be unable to see. This will affect searching, picking locks, disarming traps, reading scrolls, casting spells, browsing books, etc. So be very careful not to run out of light!
+In the dark depths of a dungeon, the need for sufficient illumination soon becomes apparent. Some rooms have already been lit by nature or magic, and need no further light; but most of the tunnels are pitch dark, so it is a good idea to carry your own portable light source around. If no light is present, the character will be unable to see. This will affect searching, picking locks, disarming traps, reading scrolls, casting spells, browsing books, seeing monsters, etc. So be very careful not to run out of light!
 
-A character must wield a torch or lamp in order to supply his own light. A torch or lamp burns fuel as it is used, and once it is out of fuel, it stops supplying light. You will be warned as the light approaches this point. You may use the "Fuel" command ("F") to refuel your lantern (with flasks of oil) or your torch (with other torches), so it is a good idea to carry extra torches or flasks of oil, as appropriate. There are rumors of objects of exceptional power which glow with their own never-ending light.
+A character must wield a torch, lantern or some other lamp in order to supply his own light. Torches and lantern burn fuel as they are used, and once out of fuel, they stop supplying light. You will be warned as the light approaches this point. You may use the "Fuel" command ("<color:keypress>F</color>") to refuel your lantern (with flasks of oil) or your torch (with other torches), so it is a good idea to carry extra torches or flasks of oil, as appropriate. There are rumors of objects of exceptional power which glow with their own never-ending light.
 
-<topic:Objects><style:heading>Objects In The Dungeon</style>
+Great treasures can be found in the dungeon, but your character must survive many horrible and challenging encounters to find the treasure lying about and take it safely back to the town to sell.
 
-The dungeons are full of objects just waiting to be picked up and used. How did they get there? Well, the main sources for useful items are all the foolish adventurers that proceeded into the dungeon before you. They get killed, and the helpful creatures scatter the various treasure throughout the dungeon. Most cursed items are placed there by the joyful evil sorcerers, who enjoy a good joke when it gets you killed.
+<topic:Objects><style:heading>Objects in the Dungeon</style>
 
-One item in particular will be discussed here. The scroll of "Word of Recall" can be found within the dungeon, or bought at the temple in town. It acts in two manners, depending upon your current location. If read within the dungeon, it will teleport you back to town. If read in town, it will teleport you back down to the deepest level of the dungeon which your character has previously been on. This makes the scroll very useful for getting back to the deeper levels. Once the scroll has been read it takes a while for the spell to act, so don't expect it to save you in a crisis. Reading a second scroll before the first has had a chance to take effect will cancel both scrolls.
+The dungeons are full of objects just waiting to be picked up and used. How did they get there? Well, the main sources for useful items are all the foolish adventurers that proceeded into the dungeon before you. They get killed, and the helpful creatures scatter the various treasure throughout the dungeon. Most cursed items are placed there by the playful evil sorcerers, who enjoy a good joke when it gets you killed.
 
-Since an accidental dive to a new depth (via a trapdoor, for example), may result in the Word of Recall dungeon depth being 'broken', so to speak (meaning that the next Word of Recall in town will take you back deeper than you would like to), there is a new feature which allows you to read a scroll of Word of Recall on a different level and 'reset' the recall depth to that level (instead of the deepest level).
+One item in particular will be discussed here. The scroll of "Word of Recall" can be found within the dungeon, or bought at the Temple and Alchemy Shop in towns. It acts in two manners, depending upon your current location. If read within the dungeon, it will teleport you back to the surface. <color:y>In Beginner Mode, Word of Recall is the only way to return to the town once you have left it,</color> since Beginner Mode activates coffee-break mode which disables all up-stairs. If read on the surface, Word of Recall will teleport you back down to your recall point in any dungeon of your choice that you have previously visited. This makes the scroll very useful for getting back to the deeper levels. Once the scroll has been read it takes a while for the spell to act, so don't expect it to save you in a crisis. Reading a second scroll before the first has had a chance to take effect will cancel both scrolls.
+
+Your recall point in a dungeon is usually the deepest level you have reached in that dungeon, but can be optionally set to a more shallow level if you read Word of Recall on such a level. There are two reasons it might be convenient not to have your recall point at the deepest level. The first is if you are not truly comfortable yet at the deepest level you visited; maybe you even fell there by accident through a trap door. The second reason is that some dungeons are located close to towns, so setting a recall point near the surface provides convenient access to the town! This is often the fastest way to reach a town if you are in the wilderness.
 
 A more complete description of objects is found elsewhere in the documentation (see <link:objects.txt>).
 
 <topic:Mining><style:heading>Mining</style>
 
-Much of the treasure within the dungeon can be found only by mining it out of the walls. Many rich strikes exist within each level, but must be found and mined. Quartz veins are the richest, yielding the most metals and gems, but magma veins will have some hordes hidden within.
+Much of the treasure within the dungeon can be found only by mining it out of the walls. Many rich strikes exist within each level, but must be found and mined. Quartz veins are the richest, yielding the most metals and gems, but magma veins will also have some treasures hidden within.
 
-Mining is rather difficult without a pick or shovel. Picks and shovels have an additional magical ability expressed as '(+#)'. The higher the number, the better the magical digging ability of the tool. A pick or shovel also has plusses to hit and damage, and can be used as a weapon, because, in fact, it is one.
+Mining is rather difficult without a pick or shovel, especially if your Strength is low. Picks and shovels give a bonus to your Digging ability, expressed as '(+2)', '(+3)' etc.; the higher the number, the better the digging ability of the tool. A pick or shovel may also give bonuses to your accuracy and damage, and can be used as a weapon.
 
-When a vein of quartz or magma is located, the character may wield his pick or shovel and begin digging out a section. When that section is removed, he can locate another section of the vein and begin the process again. Since granite rock is much harder to dig through, it is much faster to follow the vein exactly and dig around the granite. There is an option for highlighting magma and quartz. At a certain point, it becomes more cumbersome to dig out treasure than to simply kill monsters and discover items in the dungeon to sell. However, early on mineral veins can be a wonderful source of easy treasure.
+Having found a vein of quartz or magma, the character may wield his pick or shovel and begin digging out a section with the <color:keypress>T</color> or <color:keypress>+</color> command. When that section is removed, you can move on to another section of the vein and begin the process again. Since granite rock is much harder to dig through, it is generally better to follow quartz and magma and avoid the granite, even if it stands in your path. At a certain point, it becomes more cumbersome to dig out treasure than to simply kill monsters and discover items in the dungeon to sell (and many players prefer to do this from the beginning). Nevertheless, treasure veins can be a wonderful source of easy money, especially early in the game.
 
-If the character has a scroll, staff, or spell of treasure location, he can immediately locate all strikes of treasure within a vein shown on the screen. This makes mining much easier and more profitable.
+Some vein sections are obviously promising even to the untrained eye (these are denoted on the map with the <$:FF_MAGMA_TREASURE> symbol); but if your character has a scroll, staff, or spell of Treasure Location, you can easily locate the many further treasures likely to be hidden within the quartz and magma nearby. This makes mining much easier and more profitable.
 
-Note that a character with high strength and/or a heavy weapon does not need a shovel/pick to dig, but even the strongest character will benefit from a pick if trying to dig through a granite wall.
+A character with high strength and/or a heavy weapon does not need a shovel or a pick to dig. A number of enchanted weapons even give magical bonuses to your Digging ability, making them highly effective for digging through even the hardest rock. New players sometimes worry they might break or harm their valuable melee weapons trying to tunnel with them, but worry not, this will never happen! Some magical spells and devices have the power to turn any stone, even granite, into mud in a single turn; such spells and items make mining and digging faster and more convenient, and generally remove the need for more mundane digging tools.
 
-It is sometimes possible to get a character trapped within the dungeon by using various magical spells and items. So it can be a good idea to always carry some kind of digging tool, even when you are not planning on tunneling for treasure.
+Mining for treasure is not the only, or necessarily even the most common, reason you might wish to dig a tunnel. Digging new corridors to modify the terrain to your advantage is often a good idea when fighting dangerous monsters, and sometimes you will wish to access an area otherwise blocked off by walls or by monsters you would like to avoid. So it is always a good idea to carry something you can dig with, even if you are not planning on mining for treasure; but it does not always need to be a shovel or a pick.
 
-There are rumors of certain incredibly profitable rooms buried deep in the dungeon and completely surrounded by titanium and granite walls, requiring a digging implement or magical means to enter. The same rumors imply that these rooms are guarded by incredibly powerful monsters, so beware!
+<topic:Stairs><style:heading>Staircases and Shafts</style>
 
-<topic:StairsDoorsEtc><style:heading>Staircases, Secret Doors, Passages, and Rooms</style>
+Staircases are the manner in which you get deeper or climb out of the dungeon. The symbols for the up and down staircases are the same as the commands you need to type to use them: a "<$:FF_UP_STAIR>" represents an up staircase and a "<$:FF_DOWN_STAIR>" represents a down staircase. You must move your character over the staircase before you can use it. A shaft ("<$:FF_SHAFT_UP>" or "<$:FF_SHAFT_DOWN>") is basically a longer staircase; it will take you two levels up or down, instead of just one, except in a few special situations. Some levels might have no regular staircases, only shafts; in fact, in Beginner Mode, all staircases generate as shafts.
 
-Staircases are the manner in which you get deeper or climb out of the dungeon. The symbols for the up and down staircases are the same as the commands to use them. A "<$:FF_UP_STAIR>" represents an up staircase and a "<$:FF_DOWN_STAIR>" represents a down staircase. You must move your character over the staircase before you can use it.
+Each dungeon level has two or more down staircases, except for quest levels (which have none until the last quest monster on the level has been killed) and the levels at the bottom of a dungeon (which never have any downstairs because there's nowhere deeper to go!). All levels also have at least one up staircase, unless you are playing in Beginner Mode or coffee-break mode or have turned on the ironman_downward option. Sometimes these staircases can be tricky to find; you might have to go through some well-hidden secret doors, or dig through obstructions to get there, but you can always locate the stairs eventually if you look hard enough. Stairs, like permanent walls, and the doors into shops, cannot be destroyed by any means.
 
-Each level has at least one up staircase and at least two down staircases. There are no exceptions to this rule. You may have trouble finding some well hidden secret doors, or you may have to dig through obstructions to get to them, but you can always find the stairs if you look hard enough. Stairs, like titanium walls, and the doors into shops, cannot be destroyed by any means.
+<topic:SecretDoors><style:heading>Secret Doors</style>
 
-Many secret doors are used within the dungeon to confuse and demoralize adventurers foolish enough to enter. But with some luck, and lots of concentration, you can find these secret doors. Secret doors will sometimes hide rooms or corridors, or even entire sections of that level of the dungeon. Sometimes they simply hide small empty closets or even dead ends. Secret doors always look like granite walls, just like traps always look like normal floors.
+The dungeon has many secret doors to confuse and demoralize adventurers foolish enough to enter. But with some luck, skill and concentration, you can locate these doors; use the <color:keypress>s</color> or <color:keypress>S</color> searching commands to look for a secret door. Secret doors sometimes hide rooms or corridors, or even entire sections of that level of the dungeon. Sometimes they simply hide small empty closets or a dead end. Secret doors always look like granite walls, never quartz or magma. See <link:tang.txt#SecretDoors> for some tips on where secret doors might be found!
 
-Creatures in the dungeon will generally know and use these secret doors, and can often be counted on to leave them open behind them when they pass through.
+Characters with very low Searching skill may be completely unable to discover the secret doors, no matter how meticulously they search. This is generally only the case for Berserkers, who prefer to use their raw power to create their own openings in the walls.
 
-Doors can be broken down by bashing them. Once a door is bashed open, it is forever useless and cannot be closed.
+If a door turns out to be stuck, it can be broken down by bashing it. This sometimes takes a while to work, especially if your Strength is low. Once a door is bashed open, it is forever useless and cannot be closed. Many monsters are very good at bashing down doors... Creatures in the dungeon will generally know the locations of secret doors and may use them, and can often be counted on to leave them open behind them when they pass through.
+
+<topic:Traps><style:heading>Floor Traps</style>
+
+Secret doors are not the only things in the dungeon that are not quite what they look like. Some floor tiles contain hidden traps, there to harm or inconvenience you should you blunder into them. A few are even trap doors, dropping you down to the next level just when it is least convenient. Traps can be detected by <color:keypress>S</color>earching, just as secret doors, or through magical means such as Scrolls of Trap Detection. (Since traps could be anywhere and dungeon levels are often large, the Searching option generally only makes sense if you have specific reasons to expect a trap nearby.) Most traps in FrogComposband are fairly benign, so it is not a big deal if you don't have any trap-detection items; you'll be inconvenienced occasionally, maybe suffer some item damage, but it will not cost you the game outright. The spookiest traps are very rare and only appear in the late game, when nearly all characters regularly use powerful magical detection methods that reveal not only traps but also secret doors and much more besides.
+
+Known floor traps are indicated on the map with the <$:FF_TRAP_SLEEP> symbol. You can use the <color:keypress>l</color> look command or the <color:keypress>*</color> targetting command to inspect a trap more closely, telling you what kind of trap it is. You will quickly notice traps are color-coded; the dark-green trap of this example is one of four types of gas trap, and might briefly blind, poison, confuse or paralyze you.
+
+You can use the <color:keypress>D</color> disarm command to attempt to eliminate a known trap, turning the square back into a regular floor tile. Disarming is not guaranteed to work, though, and you might trigger the trap again in a failed attempt... Usually, walking into a known trap automatically attempts to disarm the trap (unless you are blind or confused); but there are a few very rare situations where you might actually wish to deliberately trigger a trap without any attempt to disarm it. This can be accomplished with the <color:keypress>-</color> key.
+
+Floor traps only affect you; monsters do not have to worry about triggering them. This may seem patently unfair, but no one ever said the forces of evil would give you a fair shake! A few classes, though, have the ability to turn the tables and set their own floor traps for monsters to walk into. Lawyers are notable for this, but the mightiest traps of all are set by Burglary rogues.
 
 <topic:Feelings><style:heading>Level Feelings</style>
 
-Once you have been on a particular dungeon level for a while, you will receive a 'feeling' prompt representing what your intuition tells you about the quality of objects and the difficulty of the monsters found on that level. You may check this prompt again at any time after receiving it by pressing 'Ctrl-F'.
+Once you have been on a particular dungeon level for a while, you will receive a "level feeling" representing what your intuition tells you about the quality of objects and the difficulty of the monsters found on that level. You may check this message again at any time after receiving it by pressing <color:keypress>Ctrl-F</color>.
 
-The actual 'feeling' prompt is generated based on a number of factors. Things which increase the feeling level include the presence of vaults and certain other special rooms, out of depth objects and monsters and objects of a certain quality (for example, ego items, artifacts and other objects that are considered 'great' (see <link:objects.txt>)). A feeling is only indicative of the level at the time you entered it and has no impact on subsequent monsters generated or items dropped.
+The actual "feeling" message is generated based on a number of factors. Things which increase the feeling level include the presence of unique monsters, out-of-depth monsters and objects, large monster groups, and unidentified artifacts and ego items (see <link:objects.txt#EgoItems>). A feeling is only indicative of the level at the time you received the feeling, although it may update later to reflect the presence of new monsters or items. Note that high level feelings do not cause dangerous monsters or quality loot; dangerous monsters and quality loot cause high feelings.
 
-In the game, the nastier the feeling prompt, the better the level. From worst to best, the prompts are as follows:
+In general, the nastier the feeling message, the better (or nastier) the level. From least to most interesting, the messages are as follows:
 
      <color:w>'What a boring place...'</color>
      <color:w>'This level looks reasonably safe.'</color>
@@ -111,7 +117,7 @@ In the game, the nastier the feeling prompt, the better the level. From worst to
      <color:r>'This level looks very dangerous.'</color>
      <color:v>'You nearly faint as horrible visions of death fill your mind!'</color>
 
-If your personality is 'Lucky' or you have the mutation of 'white aura', the prompts will be changed as follows:
+If you selected the Lucky personality or have otherwise acquired the "White Aura" good-luck mutation, the messages will appear in a more optimistic form:
 
      <color:w>'What a boring place...'</color>
      <color:w>'This level can't be all bad...'</color>
@@ -123,28 +129,94 @@ If your personality is 'Lucky' or you have the mutation of 'white aura', the pro
      <color:r>'You have an excellent feeling...'</color>
      <color:v>'You have a superb feeling about this level.'</color>
 
-There are also two other feeling prompts to denote special things. If you have not yet been on a level long enough to qualify for a prompt and press 'Ctrl-F', you will be given the prompt:
+There are also two other feeling messages to denote special things. If you have not yet been on a level long enough to develop a feeling when you press <color:keypress>Ctrl-F</color>, you will be given the prompt:
 
      <color:s>'Looks like any other level.'</color>
 
-If you are playing in non-preserve mode, you may also occasionally receive the following prompt:
+You may also occasionally be lucky enough to receive the following message:
 
      <color:B>'You feel there is something special about this level.'</color>
 
-A special feeling means one of two things, there is either a special room or vault on the level or there is an artifact on the level. As you get deeper on the dungeon, special feelings become increasingly less common for special room and vaults and are only commonly given when an artifact has been generated. Note it is possible that there could be both a vault and an artifact or more than one artifact on a special level so you should never leave a special level without fully exploring it unless your character's continued survival is in question.
+A special feeling means one of two things, there is either an undiscovered special item (artifact) on the level or your racial boss is on the level. Most player races do not even have a boss, so it's usually the former! As you get deeper on the dungeon, special feelings become increasingly common as you encounter more artifacts.
+
+Thoroughly check the object list (<color:keypress>]</color>) if you think you have fully explored a level but have failed to find the promised artifact. Often, the artifact will be an item you already detected but forgot to identify. If you mysteriously lose the special feeling, the opposite might have happened - some very absent-minded players have been known to identify valuable artifacts without noticing...
+
+Note that it is possible for a level to have more than one artifact, maybe even an entire treasure vault full of artifacts. So you should never leave a special level without fully exploring it unless you've lost that special feeling or your character's continued survival is in question.
 
 <topic:RandomQuests><style:heading>Random Quests</style>
 
-Every character will encounter a fixed number of random quests in the dungeon of Angband. By default, each quest is to kill a certain out of depth unique monster, though you may change this to kill a certain number of a random type of monster with a birth option <link:option.txt#Birth>. Be warned: unique monsters are generally powerful for their native depths, so fighting them out of depth is especially difficult!
+Every character will encounter ten random quests in the dungeon of Angband (unless they die first). By default, each quest is to kill a certain out-of-depth unique monster, though you may change this to kill a certain number of a random type of monster with a birth option <link:option.txt#quest_unique>. Be warned: unique monsters are generally powerful even at their native depths, so fighting them out of depth is especially difficult!
 
-On random quest levels, no down staircases are generated until the last monster is killed which means that you cannot continue further into the dungeon until you have completed your quests. When you kill the quest monster, the down staircase will be created and the monster will drop an item of 'excellent' quality or above. This is true even of monsters that do not normally drop items.
+On random quest levels, no down staircases are generated until the last quest monster is killed, which means that you cannot continue further into the dungeon until you have completed your quest. When you kill the quest monster, the down staircase will be created and the monster will drop one or more bonus items of 'excellent' quality or above. This is true even of monsters who normally drop nothing at all.
 
-The random quests in Angband will appear on random levels, so you won't be able to know or guess when they might happen. Should a given quest prove too difficult for you, then you may retreat to safety until you are more powerful. The quest monster will patiently await your return. To retreat is to shame oneself, but it is better to know your own limits then to die in a foolhearty attempt (with full honor). Upon retreating from a quest, you are also given the option to intentionally fail the quest. If you choose this path, then your fame will be greatly diminished, but at least you will be able to continue your descent in Angband.
+The random quests in Angband will occur at random depths, so you won't be able to guess exactly when you might encounter one, although you are guaranteed to run into quests during all phases of the game and can therefore expect another quest to appear soon if you have gone a long time without seeing any.
 
-<color:D>
+Should a given quest prove too difficult for you, you may retreat to safety (recall to town, or take an up staircase) until you are more powerful. In Beginner Mode and coffee-break mode, this automatically fails the quest; outside these modes, the quest monster will patiently await your return unless you deliberately choose to fail the quest. To abandon the quest is to shame oneself, but it is better to know your own limits than to die (even with full honor) in a foolhardy attempt at completion. If you choose to fail a quest, your fame will be greatly diminished, but at least you are alive and can continue your descent deeper into the pits of Angband.
+
+<topic:FixedQuests><style:heading>Fixed Quests</style>
+
+Several additional quests also appear in the dungeon that are always at the same depth for everybody and involve the same monsters. One of these you probably already know - kill the Serpent of Chaos on level 100 of Angband! Another is to kill Oberon, King of Amber, on level 99 of Angband; these two quests are assigned to you at birth, and must be completed to win the game.
+
+Other such quests are received from towns; although town buildings generally offer town quests, occasionally you will get a dungeon quest instead. One such quest you should know about is <color:y>Pest Control</color>, also known as the <color:y>Warg Quest</color> - a quest to kill eight Wargs on level 5 of Warrens, or on level 5 of Angband if the wilderness is off (as is the case in Beginner Mode). Killing eight Wargs will give you quite a lot of experience, so completing this quest really speeds up the early game! Note, though, that you must request and complete the Thieves' Hideout town quest in Outpost before you can receive the Warg Quest.
+
+Fixed dungeon quests obey the same rules as the random ones, except that for fixed quests received from a town the reward will be given to you by the quest-giver instead of being dropped by a monster. Also, you cannot abandon the quests to kill the Serpent of Chaos or Oberon; you can leave the quest levels, but not fail deliberately.
+
+<topic:Conquering><style:heading>Conquering Dungeons</style>
+
+If you are playing with the wilderness off (as is the case in Beginner Mode), the game only has one dungeon: Angband. But with wilderness on, there are dungeons all over the place - about thirty fixed ones, plus random one-level dungeons that occasionally appear in the wilderness. Most of these dungeons have their own monster theme and level generation rules, setting them apart from the others.
+
+High-level dungeons often have a special <color:keyword>entrance guardian</color>: a dangerous monster who will try to prevent you from getting in. Nearly all fixed dungeons have a <color:keyword>final guardian</color>, or <color:keyword>dungeon boss</color> - a powerful unique you can rely on to appear on the last level of the dungeon (and never anywhere else). Kill the boss, and you conquer the dungeon and will receive a free stat-up as your reward. Many dungeon bosses also drop a valuable fixed item.
+
+Dungeon bosses are not quest monsters, and there is no absolute need to kill any of them; you can win the game without conquering any dungeons besides Angband. Even apart from the rewards, though, there is a good reason to kill at least some of them - but we wouldn't want to spoil it for you :)
+
+This source of extra stat-ups is not available in no-wilderness play. To compensate for this, completing a random Angband quest gives a stat-up if the wilderness is off.
+
+See <link:town.txt#Dungeons> for more details on wilderness dungeons.
+
+<topic:List><style:heading>Wilderness Dungeons and Where to Find Them</style>
+
+This is a full list of all non-random wilderness dungeons... <color:y>or is it?</color> Dungeons are ordered by shallowest depth; and to avoid spoilers (only the shallowest depth is visible on the overworld map) this is the only depth indicated.
+  <indent>
+  <color:keyword>Warrens          </color><color:G>Level 1</color>   Accessed from Outpost.
+  <color:keyword>Angband          </color><color:G>Level 1</color>   <indent>Northeast of Morivant, must be conquered to win. Contains random quests.</indent>
+  <color:keyword>Hideout          </color><color:G>Level 8</color>   Accessed from Outpost.
+  <color:keyword>Icky Cave        </color><color:G>Level 10</color>  Accessed from Thalos.
+  <color:keyword>Tidal Cave       </color><color:G>Level 15</color>  South of Morivant.
+  <color:keyword>Orc Cave         </color><color:G>Level 15</color>  North of Outpost.
+  <color:keyword>Labyrinth        </color><color:G>Level 20</color>  West of Outpost.
+  <color:keyword>Camelot          </color><color:G>Level 20</color>  <indent>West of Outpost.
+Often visited together with Labyrinth.</indent>
+  <color:keyword>Witch Wood       </color><color:G>Level 25</color>  Southeast of Morivant.
+  <color:keyword>Battlefield      </color><color:G>Level 30</color>  <indent>Southeast of Morivant.
+Often visited together with Witch Wood.</indent>
+  <color:keyword>Lonely Mountain  </color><color:G>Level 30</color>  <indent>Mountains southwest of Morivant.
+Access requires levitation.</indent>
+  <color:keyword>Chameleon Cave   </color><color:G>Level 30</color>  Southeast of Telmora.
+  <color:keyword>Giant's Hall     </color><color:G>Level 30</color>  <indent>Mountains southeast of Angband.
+Access requires levitation.</indent>
+  <color:keyword>Eyrie            </color><color:G>Level 40</color>  <indent>Mountains west of Telmora.
+Access requires levitation.</indent>
+  <color:keyword>Castle           </color><color:G>Level 40</color>  <indent>East of the road from Telmora to Angwil.</indent>
+  <color:keyword>Crystal Castle   </color><color:G>Level 40</color>  <indent>Northwest of Morivant.
+Guarded by dangerous Ethereal Dragon.</indent>
+  <color:keyword>Anti-melee Cave  </color><color:G>Level 40</color>  North of Morivant.
+  <color:keyword>Anti-magic Cave  </color><color:G>Level 40</color>  East of Zul.
+  <color:keyword>Arena            </color><color:G>Level 50</color>  West of Zul.
+  <color:keyword>Graveyard        </color><color:G>Level 50</color>  East of Angwil.
+  <color:keyword>Volcano          </color><color:G>Level 50</color>  <indent>West of Outpost. Entrance in lava field.</indent>
+  <color:keyword>Numenor          </color><color:G>Level 55</color>  Deep sea north of Anambar.
+  <color:keyword>Dark Cave        </color><color:G>Level 55</color>  Northwest of Angwil.
+  <color:keyword>Dragon's Lair    </color><color:G>Level 60</color>  South of Angwil.
+  <color:keyword>Pyramidal Mound  </color><color:G>Level 64</color>  Northwest of Telmora, north of Eyrie.
+  <color:keyword>Mine             </color><color:G>Level 75</color>  Island northeast of Anambar.
+  <color:keyword>R'lyeh           </color><color:G>Level 80</color>  Deep sea northwest of the Dark Cave.
+  <color:keyword>Mount Olympus    </color><color:G>Level 80</color>  Island northwest of Thalos.
+  <color:D>
+--
 Original   : (??)
 Updated    : (??)
 Updated    : Zangband DevTeam
 Updated    : Hengband 1.0.11
 Updated    : PosChengband 4.0.0
+Updated    : FrogComposband 7.1.liquorice
 </color>
