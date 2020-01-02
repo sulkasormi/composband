@@ -1,32 +1,34 @@
-<style:title>Creating a Character</style>
+<style:note>Note: Although pressing <color:keypress>?</color> on the introduction screen will take you here, and this page does give a quick overview of much in the game, it is not the main page for the entire help system. Press <color:keypress>!</color> if you wish to access other parts of the FrogComposband help.</style>
 
-FrogComposband is a role playing game, in which you, the player, control a character in a dangerous world of myth and magic. The most important decision you make on your quest to the kill the <color:keyword>Serpent of Chaos</color> is what kind of character to play: Spell-wielding magician or sword-waving warrior? Stealthy rogue or musical bard? Holy priest or evil spawn of chaos? The choices are myriad and the process of generating a new character is described in this help file, which will also serve to introduce you to many of the core concepts of the game.
+<topic:CreateAt><style:title>Creating a Character</style>
 
-Character creation, or birth, is controlled through a variety of choices. You must choose your character's race (<color:keyword>Human</color>, <color:keyword>Elf</color>, <color:keyword>Hobbit</color>, <color:keyword>Orc</color>, <color:keyword>Undead</color>, <color:keyword>Demon</color>, etc), your character's class (<color:keyword>Warrior</color>, <color:keyword>Mage</color>, <color:keyword>Priest</color>, <color:keyword>Rogue</color>, etc) and you character's personality (<color:keyword>Mighty</color>, <color:keyword>Shrewd</color>, <color:keyword>Patient</color>, etc). Each of these choices are described in the help files (see <link:raceclass_contents.txt>).
+FrogComposband is a role-playing game in which you - the player - control a character in a dangerous world of myth and magic, populated with demons, dragons, deities, ducks and other rare and strange creatures of the Last Days. The most important decision you make on your quest to slay the <color:keyword>Serpent of Chaos</color> is what kind of character to play: spell-wielding magician or sword-waving warrior? Stealthy rogue or musical bard? Holy priest or evil spawn of chaos? The choices are myriad, and the process of generating a new character is described in this help file, which will also serve to introduce you to many of the core concepts of the game.
+
+Character creation, or birth, is controlled through a variety of choices. You must choose your character's race (<color:keyword>Human</color>, <color:keyword>Dwarf</color>, <color:keyword>Hobbit</color>, <color:keyword>Ogre</color>, <color:keyword>Vampire</color>, <color:keyword>Werewolf</color>, etc), your character's class (<color:keyword>Warrior</color>, <color:keyword>Mage</color>, <color:keyword>Priest</color>, <color:keyword>Lawyer</color>, etc) and your character's personality (<color:keyword>Mighty</color>, <color:keyword>Shrewd</color>, <color:keyword>Chaotic</color>, <color:keyword>Split</color>, etc). Each of these choices is described in the help files (see <link:raceclass_contents.txt>).
 
 There are three main screens for the birth process. The first is a brief welcome screen in which you select the type of game to play (the <color:keyword>Game Mode</color>). The next screen allows you to select or change your race, class, gender, personality and character's name. The final screen allows you to enter your starting stats. We will describe each of these screens in detail, explaining things as we go. Ready?
 
 <topic:Welcome><style:heading>The Welcome Screen</style>
-The first screen is the Welcome Screen. It simply introduces you to the game and allows you to choose one of several options that will control the birth process. It looks someting like this:
+The first screen is the Welcome Screen. It simply introduces you to the game and allows you to choose one of several options that will control the birth process. It looks something like this:
 <style:screenshot>  <indent>
-Welcome to <color:R>FrogComposband</color>, a dungeon exploration role playing game. Your          
-goal is to defeat the dreaded <color:R>Serpent of Chaos</color>, but before you can face         
-it, you must battle many foes. Your first step is to create a character         
-for this quest. The following screens will guide you through this               
-process so that you may quickly begin playing. You can get general help         
-at any time by pressing <color:o>?</color>.                                                      
+Welcome to <color:R>FrogComposband</color>, a dungeon exploration role playing game.             
+Your goal is to defeat the dreaded <color:R>Serpent of Chaos</color>, but before you can         
+face it, you must battle many foes. Your first step is to create a              
+character for this quest. The following screens will guide you through          
+this process so that you may quickly begin playing. You can get general         
+help at any time by pressing <color:o>?</color>.                                                 
                                                                                 
-First, you must decide what type of game to play. If you are new, it is         
-recommended you play in <color:R>Beginner Mode</color>.                                          
+First, you must decide what type of game to play. <color:R>Beginner Mode</color> limits          
+the options available, simplifying things for new players.                      
                                                                                 
-<color:G>Choose the Type of Game to Play</color>                                                 
+ <color:G>Choose the Type of Game to Play</color>                                                
   <color:y>b</color>) Beginner                                                                   
   <color:y>n</color>) Normal                                                                     
   <color:y>m</color>) Monster                                                                    
                                                                                 
-  <color:y>q</color>) Quick Start                                                                
   <color:y>=</color>) Options                                                                    
   <color:y>?</color>) Help                                                                       
+  <color:y>s</color>) View Scores                                                                
 <color:y>ESC</color>) <color:v>Quit</color>                                                                       
                                                                                 
 <color:G>Tip:</color> You can often get specific help by entering the uppercase letter           
@@ -34,25 +36,25 @@ recommended you play in <color:R>Beginner Mode</color>.
      on Beginner Mode.                                                          
 </indent></style>
 
-If you are new to the game then it is highly recommended you choose the <color:keyword>Beginner</color> option. With this option, you won't be so overwhelmed with choices as is normally the case, allowing you to breeze through the birth process and quickly begin playing (and enjoying) this game. Once you have played a few times and wish to experience more that the game has to offer, including a vast wilderness with many diverse dungeons to explore, then you should choose the <color:keyword>Normal</color> option.
+If you are new to the game, consider the <color:keyword>Beginner</color> mode. With this option, you won't be so overwhelmed with choices as is normally the case, allowing you to breeze through the birth process and quickly begin playing (and enjoying) this game. Once you have played a few times and wish to experience more of what the game has to offer, including a vast wilderness with many diverse dungeons to explore and the full array of race, class and personality choices, then you should choose the <color:keyword>Normal</color> mode.
 
-If you are truly bold, you can experiment with the <color:keyword>Monster</color> option which allows you to play as one of many different types of monster. Monsters don't have a class, but instead evolve into more powerful forms as they gain experience. They also tend to have variable body types, making the equipment sub-game both more fun and more challenging.
+If you are truly bold you can experiment with the <color:keyword>Monster</color> option, which allows you to play as one of many different types of monster. Monsters don't have a class, but instead evolve into more powerful forms as they gain experience. They also tend to have variable body types, making the equipment sub-game both more fun and more challenging.
 
-For the remainder of this document, and most of the rest of the help files, we will be assuming you are playing with the <color:keyword>Normal</color> option, which includes the full array of race and class choices as well as a vast wilderness to explore.
-
-Also on this screen may be an option to Quick Start. This option simply repeats the birth options from your previous character, who presumably just met an untimely demise. This is a useful option if you are dying often in the early game as it greatly speeds up the birth process.
+Also on this screen may be an option to <color:keyword>Quick Start</color>. This option simply repeats the birth selections of your previous character, who presumably just met an untimely demise. This is a useful option if you are dying often in the early game, as it greatly speeds up the birth process.
 
 <topic:RaceClass><style:heading>The Race/Class Screen</style>
-On this screen, you can change your race, class and possibly your personality. The screen will look something like the following:
-<style:screenshot>
-Name : <color:B>Fatty Bolger</color><color:d>        </color>                                                     
+On this screen, you can change your race, your class and (unless you picked Beginner Mode) your personality. The screen will look something like the following:
+<style:screenshot>  <indent>
+Name : <color:B>Fatty Bolger</color>                                                             
 Sex  : <color:B>Male</color><color:d>                </color> STR  INT  WIS  DEX  CON  CHR  Life  BHP  Exp        
-Race : <color:B>Hobbit</color><color:d>              </color> <color:G> -2</color><color:r>  </color><color:v> +1</color><color:r>  </color><color:G> +1</color><color:r>  </color><color:G> +3</color><color:r>  </color><color:G> +2</color><color:r>  </color><color:G> +1</color><color:r>   92%  +14  120%</color>       
-Class: <color:B>Rogue</color><color:d>               </color> <color:G> +2</color><color:r>  </color><color:v> +1</color><color:r>  </color><color:G> -1</color><color:r>  </color><color:G> +3</color><color:r>  </color><color:G> +1</color><color:r>  </color><color:G> +1</color><color:r>  110%  +12  125%</color>       
-Magic: <color:B>Burglary</color><color:d>            </color> <color:R> +0</color><color:r>  </color><color:v> +2</color><color:r>  </color><color:R> +0</color><color:r>  </color><color:R> +6</color><color:r>  </color><color:R> +3</color><color:r>  </color><color:R> +2</color><color:r>  </color><color:R>101%  +26  150%</color>       
+Pers : <color:B>Ordinary</color><color:d>            </color> <color:G> +0</color><color:r>  </color><color:G> +0</color><color:r>  </color><color:G> +0</color><color:r>  </color><color:v> +0</color><color:r>  </color><color:G> +0</color><color:r>  </color><color:G> +0</color><color:r>  100%       100%</color>       
+Race : <color:B>Hobbit</color><color:d>              </color> <color:G> -2</color><color:r>  </color><color:G> +1</color><color:r>  </color><color:G> +1</color><color:r>  </color><color:v> +3</color><color:r>  </color><color:G> +2</color><color:r>  </color><color:G> +1</color><color:r>   92%  +14  120%</color>       
+Class: <color:B>Rogue</color><color:d>               </color> <color:G> +2</color><color:r>  </color><color:G> +1</color><color:r>  </color><color:G> -1</color><color:r>  </color><color:v> +3</color><color:r>  </color><color:G> +1</color><color:r>  </color><color:G> +1</color><color:r>  100%  +12  125%</color>       
+Magic: <color:B>Burglary</color><color:d>           </color><color:R>== +0</color><color:r>  </color><color:R> +2</color><color:r>  </color><color:R> +0</color><color:r>  </color><color:v> +6</color><color:r>  </color><color:R> +3</color><color:r>  </color><color:R> +2</color><color:r>  </color><color:R> 92%  +26  150%</color>
 <color:d>                           </color>                                                     
-  <color:y>n</color>) Change Name<color:d>              </color> <color:y>  *</color>) Random Name                                        
+  <color:y>n</color>) Change Name<color:d>              </color> <color:y>  *</color>) Random Name                                 
   <color:y>s</color>) Change Sex<color:d>               </color> <color:y>  ?</color>) Help                                        
+  <color:y>p</color>) Change Personality<color:d>       </color> <color:y>  =</color>) Options                                     
   <color:y>r</color>) Change Race<color:d>              </color> <color:y>TAB</color>) More Info                                   
   <color:y>c</color>) Change Class<color:d>             </color> <color:y>RET</color>) Next Screen                                 
   <color:y>m</color>) Change Magic<color:d>             </color> <color:y>ESC</color>) Prev Screen                                 
@@ -60,224 +62,224 @@ Magic: <color:B>Burglary</color><color:d>            </color> <color:R> +0</colo
 <color:G>Tip:</color> You can often get specific help by entering the uppercase letter           
      for a command. For example, type <color:o>R</color> on this screen to receive help          
      on your currently selected race.                                           
-</style>
-So, what do we see? First, the fields in <color:B>blue</color> are those that you may change on this screen. You will notice that the game picked a starting race and class for you to play, but you probably want to change that (The default is for new players so they can just accept the defaults and experiment with playing a reasonably well chosen character).
+</indent></style>
+So, what do we see? First, the fields in <color:B>blue</color> are those that you may change on this screen. Default selections are already in (and sane enough to play with), but you probably want to change them and make your own picks. Your sex is essentially just flavor, and has almost no game-play effects (choices are limited to simply Male and Female, but at least the game is progressive enough to provide ways to swap between those during play!). The other selections you can make are much more important, though: your <color:keyword>race</color>, <color:keyword>class</color>, <color:keyword>personality</color>, and <color:keyword>magic realms</color> (if any) will form the key to your character.
 
-Next, to the right is a table displaying information about the stats and skills of your current race, class and personality. Every character has six basic attributes, called stats, that are very important to game play. Indeed, a large portion of the game involves increasing your character's stats so that they can fight better, or cast more powerful spells, etc. Your six basic stats are: Strength (STR), Intelligence (INT), Wisdom (WIS), Dexterity (DEX), Constitution (CON) and Charisma (CHR). See <link:birth.txt#PrimaryStats> below for more info. Your character's spell stat, if any, is displayed in <color:v>violet</color>. This is a very important stat for magical classes, since it determines how well the character can cast spells. Normally you want this as high as possible. For melee characters, you'll want to also have high strength and dexterity.
+To the right is a table displaying information about the stat bonuses and other modifiers you would receive from your current race, class and personality choices. Every character has six basic attributes, called <color:keyword>stats</color>, that are very important to game play; finding ways to increase your stats will be one of your main practical goals during the game. The six basic stats are: Strength (STR), Intelligence (INT), Wisdom (WIS), Dexterity (DEX), Constitution (CON) and Charisma (CHR); see <link:birth.txt#PrimaryStats> below for more detailed information. Your character's spell stat, if any, is displayed in <color:v>violet</color>; this is a very important stat for magical classes, since it determines how well the character can cast spells, and normally you want it to be as high as possible.
 
-On the next screen, you will choose the starting stats for this character, and the values you choose will be modified by the amount shown in the table. The bottom row in the table is the total row, showing you a nice summary of the cummulative effects of your various birth choices. It is the value in this row that gets added to your starting stats.
+On the next screen, you will choose the starting stats for this character, and the values you choose will be modified by the amount shown in the table. The bottom row in the table is the total row, showing you a nice summary of the cumulative effects of your various birth choices. It is the value in this row that gets added to your starting stats.
 
 Other fields in the table include:
-  <color:keyword>Life</color>: <indent>Short for Life Rating, this value determines how many hit points your player will get. Hit points are also affected by your constitution, although the amount isn't really noticeable until later in the game (Hint: Don't worry too much about your starting constitution). By the way, hit points are your player's health. If your hit points go below zero, you die!</indent>
-  <color:keyword>BHP</color>:  <indent>Short for Base Hit Points, this value is added to your starting hit points to make the early game easier.</indent>
-  <color:keyword>Exp</color>:  <indent>Short for Experience Factor, this percentage determines how quickly or slowly your character gains new levels (All players begin at level 1 and may advance up to level 50. Increasing your level gives more hit points, better skills, access to more powerful spells, and various other effects and bonuses).</indent>
+  <color:keyword>Life</color>: <indent>Life Rating Multiplier. This value multiplies your maximum hit points (HP). Hit points are your character's health; if your hit points go below zero, you die and the game is over! See <link:faq.txt#LifeRating> for more on how your maximum hit points are calculated.</indent>
+  <color:keyword>BHP</color>:  <indent>Short for Base Hit Points, this value is a lump sum added to your starting hit points to make the early game easier.</indent>
+  <color:keyword>Exp</color>:  <indent>Short for Experience Factor, this percentage determines how quickly or slowly your character gains new levels. (All players begin at level 1, and may advance up to level 50. Increasing your level gives more hit points, improves your skills, gives access to more powerful spells, and may also provide other effects or bonuses.)</indent>
 
-In addition to stats, your player also has skills (see <link:birth.txt#PrimarySkills> below). For example, your Melee skill determines your ability to hit monsters in hand to hand combat. Like stats, these skills are also affected by your birth options, and are displayed in the information table on this and the next screen. But, since your screen is only so wide, you'll need to use the <color:keypress>TAB</color> key:
-<style:screenshot>
-Name : <color:B>Fatty Bolger</color><color:d>        </color>                                                     
-Sex  : <color:B>Male</color><color:d>                </color> Disarming  Device     Save       Stealth            
-Race : <color:B>Hobbit</color><color:d>              </color> <color:g>Superb    </color> <color:G>Excellent </color> <color:G>Excellent </color> <color:G>Excellent </color>         
-Class: <color:B>Rogue</color><color:d>               </color> <color:g>Superb    </color> <color:G>Excellent </color> <color:o>Fair      </color> <color:G>Excellent </color>         
-Magic: <color:B>Burglary</color><color:d>            </color> <color:g>Superb    </color> <color:g>Superb    </color> <color:y>Very Good </color> <color:g>Superb    </color>         
-</style>
+In addition to stats, your player also has skills (see <link:birth.txt#PrimarySkills> below). For example, your Melee skill determines your ability to hit monsters in hand to hand combat. Like stats, these skills are also affected by your birth options, and are displayed in the information table on this and the next screen; but, since your screen is only so wide, you'll need to use the <color:keypress>TAB</color> key:
+<style:screenshot>  <indent>
+Name : <color:B>Fatty Bolger</color>                                                             
+Sex  : <color:B>Male</color><color:d>                 </color> Disarming  Device     Save       Stealth
+Pers : <color:B>Ordinary</color><color:d>             </color> <color:R>Poor      </color> <color:R>Poor      </color> <color:R>Poor      </color> <color:R>Poor      </color>
+Race : <color:B>Hobbit</color><color:d>               </color> <color:G>Excellent </color> <color:y>Good      </color> <color:y>Good      </color> <color:y>Good      </color>
+Class: <color:B>Rogue</color><color:d>                </color> <color:G>Excellent </color> <color:y>Good      </color> <color:o>Fair      </color> <color:y>Good      </color>
+Magic: <color:B>Burglary</color><color:d>          </color> <color:R>==</color><color:g> Superb    </color> <color:G>Excellent </color> <color:y>Good      </color> <color:g>Superb    </color>
+</indent></style>
 And <color:keypress>TAB</color> again:
-<style:screenshot>
-Name : <color:B>Fatty Bolger</color><color:d>        </color>                                                     
-Sex  : <color:B>Male</color><color:d>                </color> Searching  Perception Melee      Bows               
-Race : <color:B>Hobbit</color><color:d>              </color> <color:g>Superb    </color> <color:b>Heroic    </color> <color:D>Very Bad  </color> <color:g>Superb    </color>         
-Class: <color:B>Rogue</color><color:d>               </color> <color:y>Good      </color> <color:o>Fair      </color> <color:G>Excellent </color> <color:G>Excellent </color>         
-Magic: <color:B>Burglary</color><color:d>            </color> <color:G>Excellent </color> <color:y>Very Good </color> <color:G>Excellent </color> <color:g>Superb    </color>         
-</style>
-Ah, we see that hobbits aren't so good at melee. However, for this particular skill, your class choice has a much greater influence than your racial choice, and we can tell from the total line that this character's melee skill won't be so bad after all.
+<style:screenshot>  <indent>
+Name : <color:B>Fatty Bolger</color>
+Sex  : <color:B>Male</color><color:d>                 </color> Searching  Perception Melee      Archery
+Pers : <color:B>Ordinary</color><color:d>             </color> <color:R>Poor      </color> <color:R>Poor      </color> <color:R>Poor      </color> <color:R>Poor      </color>
+Race : <color:B>Hobbit</color><color:d>               </color> <color:g>Superb    </color> <color:b>Heroic    </color> <color:D>Very Bad  </color> <color:y>Good      </color>
+Class: <color:B>Rogue</color><color:d>                </color> <color:o>Fair      </color> <color:o>Fair      </color> <color:y>Good      </color> <color:o>Fair      </color>
+Magic: <color:B>Burglary</color><color:d>           </color><color:R>==</color><color:y> Good      </color> <color:y>Good      </color> <color:y>Good      </color> <color:y>Good      </color>
+</indent></style>
+Ah, we see that hobbits aren't so good at melee. However, the class choice of Rogue more than makes up for this, and we can tell from the summary line that this character's melee skill will be fairly good. It is a general rule that class influences skills more than race and personality do, especially later in the game (as you gain levels, you also gain skill bonuses, but only through your class). The main exception to this rule is Stealth, where the bonuses tend to be zero.
 
 Below the player fields and the information table is a list of commands that you may choose. These commands might bring up a menu of choices for you to select from, as, for example, the Change Race command:
-<style:screenshot>
-Name : <color:B>Fatty Bolger</color><color:d>        </color>                                                     
-Sex  : <color:B>Male</color><color:d>                </color> STR  INT  WIS  DEX  CON  CHR  Life  BHP  Exp        
-Race : <color:B>Hobbit</color><color:d>              </color> <color:G> -2</color><color:r>  </color><color:v> +1</color><color:r>  </color><color:G> +1</color><color:r>  </color><color:G> +3</color><color:r>  </color><color:G> +2</color><color:r>  </color><color:G> +1</color><color:r>   92%  +14  120%</color>       
-Class: <color:B>Rogue</color><color:d>               </color> <color:G> +2</color><color:r>  </color><color:v> +1</color><color:r>  </color><color:G> -1</color><color:r>  </color><color:G> +3</color><color:r>  </color><color:G> +1</color><color:r>  </color><color:G> +1</color><color:r>  110%  +12  125%</color>       
-Magic: <color:B>Burglary</color><color:d>            </color> <color:R> +0</color><color:r>  </color><color:v> +2</color><color:r>  </color><color:R> +0</color><color:r>  </color><color:R> +6</color><color:r>  </color><color:R> +3</color><color:r>  </color><color:R> +2</color><color:r>  </color><color:R>101%  +26  150%</color>       
+<style:screenshot>  <indent>
+Name : <color:B>Fatty Bolger</color>                                                             
+Sex  : <color:B>Male</color><color:d>                 </color> Searching  Perception Melee      Archery
+Pers : <color:B>Ordinary</color><color:d>             </color> <color:R>Poor      </color> <color:R>Poor      </color> <color:R>Poor      </color> <color:R>Poor      </color>
+Race : <color:B>Hobbit</color><color:d>               </color> <color:g>Superb    </color> <color:b>Heroic    </color> <color:D>Very Bad  </color> <color:y>Good      </color>
+Class: <color:B>Rogue</color><color:d>                </color> <color:o>Fair      </color> <color:o>Fair      </color> <color:y>Good      </color> <color:o>Fair      </color>
+Magic: <color:B>Burglary</color><color:d>           </color><color:R>==</color><color:y> Good      </color> <color:y>Good      </color> <color:y>Good      </color> <color:y>Good      </color>
 <color:d>                           </color>                                                     
-<color:G>Choose Your Race</color>                                                                
-  <color:y>a</color>) Human<color:d>                    </color>                                                  
-  <color:y>b</color>) Dwarf<color:d>                    </color>                                                  
-  <color:y>c</color>) <color:B>Hobbit</color><color:d>                   </color>                                                  
-  <color:y>d</color>) Gnome<color:d>                    </color>                                                  
-  <color:y>e</color>) Dunadan<color:d>                  </color>                                                  
-  <color:y>f</color>) High-Elf<color:d>                 </color>                                                  
-  <color:y>g</color>) Half-Troll<color:d>               </color>                                                  
-<color:d>                              </color>                                                  
-     Use SHIFT+choice to display help topic                                     
-</style>
+<color:G>Choose a Type of Race to Play</color>                                                   
+  <color:y>a</color>) Human                                                                      
+  <color:y>b</color>) Elf                                                                        
+  <color:y>c</color>) Hobbit/Dwarf                                                               
+  <color:y>d</color>) Fairy                                                                      
+  <color:y>e</color>) Angel/Demon                                                                
+  <color:y>f</color>) Orc/Troll/Giant                                                            
+  <color:y>g</color>) Shapeshifter                                                               
+  <color:y>h</color>) Undead                                                                     
+  <color:y>i</color>) Other                                                                      
+  <color:y>*</color>) Random                                                                     
+</indent></style>
 Aternatively, the command might take effect immediately, as with the Change Sex command. Or, if you use the Change Name command, you can edit your character's name directly in place:
-<style:screenshot>
-Name : <color:y>Fatty Bolger</color>   <color:d>     </color>                                                     
-Sex  : <color:B>Male</color><color:d>                </color> STR  INT  WIS  DEX  CON  CHR  Life  BHP  Exp        
-Race : <color:B>Hobbit</color><color:d>              </color> <color:G> -2</color><color:r>  </color><color:v> +1</color><color:r>  </color><color:G> +1</color><color:r>  </color><color:G> +3</color><color:r>  </color><color:G> +2</color><color:r>  </color><color:G> +1</color><color:r>   92%  +14  120%</color>       
-Class: <color:B>Rogue</color><color:d>               </color> <color:G> +2</color><color:r>  </color><color:v> +1</color><color:r>  </color><color:G> -1</color><color:r>  </color><color:G> +3</color><color:r>  </color><color:G> +1</color><color:r>  </color><color:G> +1</color><color:r>  110%  +12  125%</color>       
-Magic: <color:B>Burglary</color><color:d>            </color> <color:R> +0</color><color:r>  </color><color:v> +2</color><color:r>  </color><color:R> +0</color><color:r>  </color><color:R> +6</color><color:r>  </color><color:R> +3</color><color:r>  </color><color:R> +2</color><color:r>  </color><color:R>101%  +26  150%</color>       
+<style:screenshot>  <indent>
+Name : <color:y>Skinny Dipper</color>
+Sex  : <color:B>Male</color><color:d>                 </color> Searching  Perception Melee      Archery
+Pers : <color:B>Ordinary</color><color:d>             </color> <color:R>Poor      </color> <color:R>Poor      </color> <color:R>Poor      </color> <color:R>Poor      </color>
+Race : <color:B>Hobbit</color><color:d>               </color> <color:g>Superb    </color> <color:b>Heroic    </color> <color:D>Very Bad  </color> <color:y>Good      </color>
+Class: <color:B>Rogue</color><color:d>                </color> <color:o>Fair      </color> <color:o>Fair      </color> <color:y>Good      </color> <color:o>Fair      </color>
+Magic: <color:B>Burglary</color><color:d>           </color><color:R>==</color><color:y> Good      </color> <color:y>Good      </color> <color:y>Good      </color> <color:y>Good      </color>
 <color:d>                           </color>                                                     
-  <color:y>n</color>) Change Name<color:d>              </color> <color:y>  ?</color>) Help                                        
-  <color:y>s</color>) Change Sex<color:d>               </color> <color:y>TAB</color>) More Info                                   
-  <color:y>r</color>) Change Race<color:d>              </color> <color:y>RET</color>) Next Screen                                 
-  <color:y>c</color>) Change Class<color:d>             </color> <color:y>ESC</color>) Prev Screen                                 
-  <color:y>m</color>) Change Magic<color:d>             </color>                                                  
+  <color:y>n</color>) Change Name<color:d>              </color> <color:y>  *</color>) Random Name                                 
+  <color:y>s</color>) Change Sex<color:d>               </color> <color:y>  ?</color>) Help                                        
+  <color:y>p</color>) Change Personality<color:d>       </color> <color:y>  =</color>) Options                                     
+  <color:y>r</color>) Change Race<color:d>              </color> <color:y>TAB</color>) More Info                                   
+  <color:y>c</color>) Change Class<color:d>             </color> <color:y>RET</color>) Next Screen                                 
+  <color:y>m</color>) Change Magic<color:d>             </color> <color:y>ESC</color>) Prev Screen                                 
 <color:d>                              </color>                                                  
 <color:G>Tip:</color> You can often get specific help by entering the uppercase letter           
      for a command. For example, type <color:o>R</color> on this screen to receive help          
      on your currently selected race.                                           
-</style>
-When you are happy with your character choices, press <color:keypress>RET</color> to move on to the next screen. You can always <color:keypress>ESC</color> to back up and make changes, so don't worry too much about getting things perfect the first time through.
+</indent></style>
+When you are happy with your character choices, press <color:keypress>RET</color> to move on to the next screen. You can always <color:keypress>ESC</color> to back up and make changes, so experiment as much as you want.
 
 <topic:Stats><style:heading>The Stats Screen</style>
-On this screen, you enter your starting stats. Unlike previous versions, you no longer roll for random starting stats; nor is there an auto-roller. Instead, the game now uses a point based system where each stat that you enter gets charged a given amount, and you only have so many points to spend overall (currently, just 30). By default, the game tries to guess a reasonable allocation, and if you are a new player, you might just want to use the defaults.
+On this screen, you enter your starting stats. You do this by allocating points to each stat; you have a total of 30 points to spend, though you can get some more by allocating negative points to stats you really don't care about at all. Very high starting stats are expensive. By default, the game tries to guess a reasonable allocation, and if you are a new player, you might just want to use the defaults.
 
 Here is a sample screen:
-<style:screenshot>
-Name : <color:B>Fatty Bolger</color><color:d>        </color>                                                     
+<style:screenshot>  <indent>
+Name : <color:B>Fatty Bolger</color>                                                             
 Sex  : <color:B>Male</color><color:d>                </color> STR  INT  WIS  DEX  CON  CHR  Life  BHP  Exp        
-Race : <color:B>Hobbit</color><color:d>              </color> <color:G> -2</color><color:r>  </color><color:v> +1</color><color:r>  </color><color:G> +1</color><color:r>  </color><color:G> +3</color><color:r>  </color><color:G> +2</color><color:r>  </color><color:G> +1</color><color:r>   92%  +14  120%</color>       
-Class: <color:B>Rogue</color><color:d>               </color> <color:G> +2</color><color:r>  </color><color:v> +1</color><color:r>  </color><color:G> -1</color><color:r>  </color><color:G> +3</color><color:r>  </color><color:G> +1</color><color:r>  </color><color:G> +1</color><color:r>  110%  +12  125%</color>       
-Magic: <color:B>Burglary</color><color:d>            </color> <color:R> +0</color><color:r>  </color><color:v> +2</color><color:r>  </color><color:R> +0</color><color:r>  </color><color:R> +6</color><color:r>  </color><color:R> +3</color><color:r>  </color><color:R> +2</color><color:r>  </color><color:R>101%  +26  150%</color>       
+Pers : <color:B>Ordinary</color><color:d>            </color> <color:G> +0</color><color:r>  </color><color:G> +0</color><color:r>  </color><color:G> +0</color><color:r>  </color><color:v> +0</color><color:r>  </color><color:G> +0</color><color:r>  </color><color:G> +0</color><color:r>  100%       100%</color>       
+Race : <color:B>Hobbit</color><color:d>              </color> <color:G> -2</color><color:r>  </color><color:G> +1</color><color:r>  </color><color:G> +1</color><color:r>  </color><color:v> +3</color><color:r>  </color><color:G> +2</color><color:r>  </color><color:G> +1</color><color:r>   92%  +14  120%</color>       
+Class: <color:B>Rogue</color><color:d>               </color> <color:G> +2</color><color:r>  </color><color:G> +1</color><color:r>  </color><color:G> -1</color><color:r>  </color><color:v> +3</color><color:r>  </color><color:G> +1</color><color:r>  </color><color:G> +1</color><color:r>  100%  +12  125%</color>       
+Magic: <color:B>Burglary</color><color:d>           </color><color:R>== +0</color><color:r>  </color><color:R> +2</color><color:r>  </color><color:R> +0</color><color:r>  </color><color:v> +6</color><color:r>  </color><color:R> +3</color><color:r>  </color><color:R> +2</color><color:r>  </color><color:R> 92%  +26  150%</color>
 <color:d>                           </color>                                                     
 <color:G>Enter Your Starting Stats</color><color:d>       </color>                                                
          Base  Pts  Mod  Total<color:d>  </color>                                                
 <color:y>s</color>/<color:y>S</color>) STR   16   10  <color:R> +0</color>     16<color:d>  </color> <color:y>  n</color>) Change Name                               
 <color:y>i</color>/<color:y>I</color>) INT   16   10  <color:R> +2</color>     18<color:d>  </color> <color:y>  ?</color>) Help                                      
-<color:y>w</color>/<color:y>W</color>) WIS    9   -2  <color:R> +0</color>      9<color:d>  </color> <color:y>TAB</color>) More Info                                 
-<color:y>d</color>/<color:y>D</color>) DEX   16   10  <color:R> +6</color>  18/40<color:d>  </color> <color:y>RET</color>) <color:v>Begin Play</color>                                
-<color:y>c</color>/<color:y>C</color>) CON   14    3  <color:R> +3</color>     17<color:d>  </color> <color:y>ESC</color>) Prev Screen                               
-<color:y>r</color>/<color:y>R</color>) CHR   10   -1  <color:R> +2</color>     12<color:d>  </color>                                                
+<color:y>w</color>/<color:y>W</color>) WIS    9   -2  <color:R> +0</color>      9<color:d>  </color> <color:y>  =</color>) Options                                   
+<color:y>d</color>/<color:y>D</color>) DEX   16   10  <color:R> +6</color>  18/40<color:d>  </color> <color:y>TAB</color>) More Info                                 
+<color:y>c</color>/<color:y>C</color>) CON   14    3  <color:R> +3</color>     17<color:d>  </color> <color:y>RET</color>) <color:v>Begin Play</color>                                
+<color:y>r</color>/<color:y>R</color>) CHR   10   -1  <color:R> +2</color>     12<color:d>  </color> <color:y>ESC</color>) Prev Screen                               
                <color:G> 30</color><color:d>              </color>                                                
 <color:d>                                </color>                                                
 <color:G>Note: </color>You may adjust each starting stat using the indicated keys. The           
       lower case key decrements while the upper case increments the             
       starting value. Values may range from 8 to 17 and each value that         
       you enter is charged the indicated number of points. You only             
-      have 30 points to spend so be sure to adjust those stats that             
+      have 30 points to spend, so be sure to adjust those stats that
       matter most.                                                              
-</style>
-Follow the instructions to make changes. If your point total exceeds 30, the option to begin playing will be disabled until you decrease your overall score. When you are ready, press <color:keypress>RET</color> to begin playing!
+</indent></style>
+Follow the instructions to make changes. If your point total exceeds 30, the option to begin playing will be disabled until you decrease your overall score. When you are ready, press <color:keypress>ENTER</color> to begin play!
 
 <topic:WhatsNext><style:heading>Where to Go from Here?</style>
-You can begin playing at this point. Use the help system (<color:keypress>?</color>) to learn the basic commands. Alternatively, you may wish to read the <link:tang.txt> Newbie Guide next. It contains a brief tutorial to help get you started.
+You can begin playing at this point. Use the help system (<color:keypress>?</color>) to learn the basic commands. You may also wish to read some additional help files, like the <link:general.txt> General Information document or the <link:tang.txt> Newbie Guide; they explain more about what you'll be up against, and contain tips to help get you started. There is much more in the in-game help besides, but you probably don't really want to bury yourself in 500 pages of documentation!
 
 <topic:CharAttributes><style:heading>Character Attributes</style>
-Once you begin character generation you will be asked to choose your character's four primary attributes: sex, race, class and personality. If you have selected a spellcasting class, you will also be prompted for your choice of magic realm(s). Your character's sex has a minimal effect on game play, but some personalities are restricted to male only or female only. More details of attributes are found in the Races, Classes and Personalities section (see <link:raceclass_contents.txt>) and the Magic System section (see <link:magic_contents.txt>).
+During the game (and even during the birth process), you will see many different numerical values that are used to measure or determine your character's relative skills and abilities. Here's a quick overview:
 
-In addition to these attributes, there are several statistics which are used to determine your character's relative skills and abilities as follows:
-
-  <indent><color:B>Primary Statistics</color>
-Each character has six primary statistics or 'stats'. These are strength, intelligence, wisdom, dexterity, constitution and charisma, and they modify the abilities of the character in a variety of ways. For example, strength affects your carrying capacity, the amount of damage you do to a monster when you hit it and the number of blows per round you get with a weapon. A more complete discussion of the primary statistics is contained later in this document (see <link:birth.txt#PrimaryStats> below).
+  <indent><color:B>Statistics</color>
+Each character has six basic statistics (or more simply <color:keyword>stats</color>). These are strength, intelligence, wisdom, dexterity, constitution and charisma, and they modify the abilities of the character in a variety of ways. For example, strength affects your carrying capacity, the amount of damage you do to a monster when you hit it, and the number of blows per round you get with a weapon. See <link:birth.txt#PrimaryStats> below for more detail on the basic statistics.
 </indent>
-  <indent><color:B>Experience</color>
-Experience affects almost everything else about your character. Experience can be gained as your character kills monsters, casts spells for the first time, learns about an object kind by using it, disarms traps and unlocks doors. Certain classes may also gain experience by destroying specific dungeon spell books and there are potions in the dungeon that will boost your experience if you quaff them.
+  <indent><color:B>Experience (EXP/XP)</color>
+Experience affects almost everything else about your character. Experience is mostly gained by slaying monsters, but can also be earned by casting spells for the first time, disarming traps or unlocking doors. Certain classes may also gain experience by destroying specific dungeon spellbooks, and there are potions in the dungeon that will boost your experience if you quaff them. The Android race follows its own unique experience rules.
 
-When your character's experience crosses certain fixed boundaries, you will attain a new experience level (up to a maximum of 50). When this happens, your hitpoints, mana (if any), certain skills such as melee fighting and bows and throws will all increase. Some races and classes will also gain new powers and abilities when crossing certain experience thresholds.
+When your character's experience crosses certain fixed boundaries, you will attain a new <color:keyword>character level</color> (up to a maximum of 50). When this happens, your hit point pool, mana pool (if any) and primary skills will all increase; you might also gain new powers or abilities, or get to improve a stat of your choice. The character level boundaries depend on the Experience Factor noted above.
 
-Deep down inside, the real objective of the game is to increase your experience, and certain other characteristics, and also to collect useful items, to give you a decent chance against the dreaded <color:keyword>Serpent of Chaos</color>. Certain monsters can "drain" your experience, and thus your level, which will cause you to lose all of the effects of the higher level. Luckily, you can restore drained experience through magical means, or by simply regaining the experience all over again.
+Certain monsters can "drain" your experience, and thus potentially also lower your character level. Luckily, you can restore drained experience through magical means, through town services, or simply by regaining the experience all over again.
 </indent>
-  <indent><color:B>Gold (Au)</color>
-Each character has some gold, which can be used to buy items and services from the shops and other buildings on the town level. Gold can be obtained by selling items to the shops, taking it from the corpses of dead monsters, mining it and by finding it lying on the dungeon floor.
-
-Each character starts out with some gold, the amount of which is random. Each character also starts out with a few useful items, which may be kept, or sold to a shop-keeper for more gold.
+  <indent><color:B>Gold (AU)</color>
+Each character starts with some gold, which can be used to buy items and services from the shops and other buildings in towns. More gold can be obtained by selling items to the shops, taking it from the corpses of dead monsters, mining it, or simply by finding it lying on the dungeon floor.
 </indent>
   <indent><color:B>Hit Points (HP)</color>
-Each character has hit points, representing how much damage the character can sustain before he dies. Your hit points are derived from your race, class, level, and constitution, and can be boosted by magical means. Hit points may be regained by resting, or by a variety of magical means.
+Each character has hit points, representing how much damage the character can sustain before he dies. Your HP pool depends on your character level, race, class, personality, constitution, equipment and life rating, and can be temporarily boosted with magic; see <link:faq.txt#LifeRating> for a detailed explanation. Lost hit points may be regained by resting, or by a variety of magical means.
 </indent>
-  <indent><color:B>Spell Points (Mana)</color>
-Many characters have spell points, or mana, which represents how many spells a character can cast. Your spell points (sometimes called mana) are derived from your class, level, the primary spell stat of your class, and the race modifier of that stat. Spell points may be regained by resting, or by a few magical means.
+  <indent><color:B>Spell Points (SP/Mana)</color>
+Many characters have spell points, or mana, which represents how many spells they can cast. Your mana pool depends on your character level, class, the primary spellcasting stat of your class, and any penalties from sources like excessively heavy armor (see <link:magic.txt#CastingSpells>). Lost spell points may be regained by resting or by magical means.
 </indent>
-  <indent><color:B>Character Skills</color>
-Each character also has several primary skills: disarming, magic devices, saving throws, stealth, searching, perception, melee and bows and throws, which are derived from the character's race, class, experience level, stats and their current equipment. These skills have fairly obvious effects, but will be described more completely below. The starting abilities of a character are based upon race and class. Abilities may be adjusted by high or low stats, and may increase with the level of the character (see <link:birth.txt#PrimarySkills> below for details).
+  <indent><color:B>Skills</color>
+Each character has several primary skills: disarming, magic device skill, saving throw, stealth, searching, perception, melee, and archery (bows/throws). These skills are derived from the character's race, class, personality, stats, level and magical equipment. The skills are described in more detail below (see <link:birth.txt#PrimarySkills>).
 </indent>
   <indent><color:B>Speed</color>
-Speed is arguably the most important attribute of any character. In the beginning, you, and most monsters, will move at <color:keyword>Normal</color> speed. However, occasionally you will see a monster that is moving very fast, taking multiple actions for each of yours. That monster is <color:keyword>Fast</color> and has quite an advantage. Indeed, were it smart, it could nip you on your heels (I'm imagining one of Farmer Maggot's dogs to be concrete), and then back away before you could strike! Wouldn't you love to be able to do the same?
+Speed is an incredibly important attribute. The speed system is somewhat complicated; but basically, the more speed somebody has (whether it's you or a monster), the more often they get a turn compared to everybody else. If you are really slow, an enemy might get four or five or six moves for every one move you get, which obviously isn't ideal - but won't it be fun when you get more speed and can turn the tables?
 
-To increase your player's speed, you will generally need magic, either in the form of a spell or potion, or in the form of an enchanted piece of equipment (such as <color:keyword>Boots of Speed</color>). Potions of Speed will serve the early player well, and you should use them liberally against foes that seem too powerful otherwise (especially those pesky uniques). They are quite common. As you dive deeper, increasing your speed becomes more and more important as the monsters become more and more deadly. A slow player with lots of hitpoints can still die without getting a single action if they are slow and their opponent is fast.
+Losing speed is very easy: just carry more items than your strength comfortably allows. But to increase your speed you generally need magic, either in the form of a spell or potion, or in the form of an enchanted piece of equipment (such as <color:keyword>Boots of Speed</color>). Potions of Speed will serve the early player well, and you should use them liberally against foes that seem too powerful otherwise (especially quest monsters and level guardians!). As you dive deeper, you will quickly find normal unenchanted speed insufficient; even with bags of HP, you could still die from full health without getting a single action if your opponent is too fast compared to you.
 </indent>
-<topic:PrimaryStats><style:heading>Primary Statistics</style>
-Each character has six primary stats (strength, intelligence, wisdom, dexterity, constitution, and charisma) which modify the abilities of the character in a variety of ways. Every stat has a numerical value, ranging from a minimum of 3, up to a normal maximum of 18, and even higher, into the percentile range, represented as <color:keyword>18/01</color> through <color:keyword>18/220</color>, the maximal value which is generally displayed as <color:keyword>18/***</color>.
+<topic:PrimaryStats><style:heading>Statistics</style>
+Each character has six basic stats (strength, intelligence, wisdom, dexterity, constitution, and charisma) which modify the abilities of the character in a variety of ways. Every stat has a numerical value, ranging from a minimum of 3 to a tipping point at 18, and beyond that into a fractional range represented as <color:keyword>18/01</color> through <color:keyword>18/220</color>; 18/220 is the maximal value, and generally displayed as <color:keyword>18/***</color>. In this notation, 18/10 is equivalent to what a new player might intuitively think of as 19, 18/20 is equivalent to 20 etc.; but the switch in notations makes it clear that there is a tipping point at 18, beyond which sources of permanent stat gain work in a very different way.
 
-During the birth process, you will choose your starting stat values. It is very important that you pick good values in the key areas that your player intends to exploit. For example, if you are creating a mage, then you will want to make sure that your Intelligence is as high as possible. For a warrior, focus on Strength and Dexterity instead. You can't have it all, so you will need to balance good stats with bad stats.
+As you play the game, your stats can be increased through magical means, as a reward for accomplishing a difficult task, or as a reward for gaining enough experience to advance to a key level. Eventually, your stats will reach their internal maximum value (or <color:keyword>stat cap</color>), which is a value between 18/70 and 18/130 and is randomly chosen at character birth. At this point, it will be up to your race, class and personality modifiers, magical equipment, and maybe other sources like a bizarre mutation, to boost your stats further up to the 18/*** limit.
 
-As you play the game, your stats can be increased through magical means, or as a reward for accomplishing a difficult task, or as a reward for gaining enough experience to advance to a key level. Eventually, your stats will reach their internal maximum value, which is a value between 18/70 and 18/130 and which is randomly chosen at your player's birth. At this point, it will be up to your racial and class modifiers, and your equipment to boost your stats further up to the 18/*** limit.
+Your <color:keyword>primary stat</color> (or <color:keyword>spellcasting stat</color>) determines your spell fail rates and the size of your mana pool, as well as how many spells you can learn if you are a book spellcaster. As a general rule, if your spellcasting stat falls to 7 or below, you run out of mana altogether.
+
+Which stats are important varies from character to character, although practically everyone wants decent Strength and Intelligence, and Constitution becomes ever more valuable as the game progresses. Melee characters need Dexterity, and magic users require above all whichever stat is their spellcasting stat. Allocate your points accordingly!
 
   <indent><color:B>Strength (STR)</color>
-Strength is critical to fighting effectively in melee combat and with missile weapons. A high strength will improve your chances of getting multiple blows with your melee weapon and, in addition, will dramatically increase the amount of damage done with each hit. Strength also has a marginal effect on your chance to hit your opponent. Characters with low strength may receive penalties. Strength is also useful in tunneling, bashing and in carrying heavy items without being slowed down.</indent>
+Strength is critical to fighting effectively in melee combat and with missile weapons. A high strength will improve the number of blows you get with your melee weapon, increases the amount of damage done with each hit, allows you to use heavier weapons without penalties and slightly improves your accuracy. Strength is also useful for tunnelling, bashing doors and simply for carrying heavy items without being slowed down. Many melee classes, such as Maulers, Berserkers and Weaponmasters, use Strength as their primary stat.</indent>
 
   <indent><color:B>Intelligence (INT)</color>
-Intelligence affects the spellcasting abilities of mage-like spellcasters (high mages, mages, warrior-mages, chaos-warriors and rogues). Intelligence will affect the number of spells these classes may learn each level, the number of spell points they receive and their spell fail rates. These classes cannot learn spells if their intelligence is 7 or lower. Also, intelligent characters are better at using magic devices, picking locks and disarming traps. Finally, intelligence influences how quickly all characters learn from their experiences.</indent>
+Intelligent characters are better at using magic devices, picking locks and disarming traps. Intelligence also influences how quickly characters learn from their experiences. Intelligence is a common primary spellcasting stat for mage-like spellcasters.</indent>
 
   <indent><color:B>Wisdom (WIS)</color>
-Wisdom affects the ability of priest-like spellcasters (priests, paladins and monks) to use prayers. WIS will affect the number of spells these classes may learn each level, the number of spell points they receive and their spell fail rates. In addition, WIS is also used to determine a Mindcrafter's ability to use his or her mental powers. These classes cannot learn spells if their wisdom is 7 or lower. Wise character's will have better chances of resisting magical spells cast upon them by monsters. Wisdom also affects the player's awareness of their surroundings, granting faster or slower pseudo-id and level feelings.</indent>
+Wise characters have higher saving throws, giving them a better chance to resist evil curses and paralysis. Wisdom also affects the speed at which level feelings and object feelings appear. Wisdom is a common spellcasting stat for priest-like classes.</indent>
 
   <indent><color:B>Dexterity (DEX)</color>
-Dexterity is a combination of agility and quickness. A high dexterity may allow a character to get multiple blows with lighter weapons, thus greatly increasing his kill power, and will increase his chances of hitting with any weapon and dodging blows from enemies. Dexterity is also useful in picking locks, disarming traps, and protecting yourself from some of the thieves that inhabit the dungeons.</indent>
+Dexterity is a combination of agility and quickness. High dexterity allows you to get more blows with weapons, thus greatly improving your melee damage; it also improves your accuracy with any weapon, and directly affects your AC by allowing you to dodge blows from enemies. Dexterity is also useful in picking locks, disarming traps, and protecting yourself from the thieves that inhabit the dungeons. Dexterity is the spellcasting stat for a number of classes, including the "default"-selection Burglary Rogue.</indent>
 
   <indent><color:B>Constitution (CON)</color>
-Constitution is a character's ability to resist damage to his body, and to recover from damage received. Therefore a character with a high constitution will receive more hit points and also recover them faster while resting.</indent>
+Constitution is a character's ability to resist damage to his body. Characters with a high Constitution receive more hit points and recover from wounds and stunning more rapidly. Blood-Knights use constitution as their primary stat.</indent>
 
   <indent><color:B>Charisma (CHR)</color>
-Charisma represents a character's personality and force of will. A character with a high charisma will be better able to dominate foes and pets. Also, charisma is the primary stat used for determining player and monster fear. A low charisma player is often frightened, sometimes even to the point of paralysis! A high charisma player can more easily break the morale of their foes. In this game, fear is a very important and deadly component of gameplay. As such, charisma is a very important stat. Finally, some classes (Bards, Sorcerers, etc) use Charisma as their primary spell stat.</indent>
+Charisma represents a character's personality and force of will. Characters with a high Charisma receive more favorable pricing at shops, and all charming effects work better with high charisma. Additionally, charisma is used for determining player and monster fear; players with low charisma are often frightened, sometimes even to the point of paralysis (see <link:status.txt#Fear>)! Conversely, charismatic players can more easily break the morale of their foes. A number of classes, such as Bards and Sorcerers, use Charisma as their primary spell stat.</indent>
 
-<topic:PrimarySkills><style:heading>Primary Skills</style>
-Characters possess some different abilities which can help them to survive. The starting abilities of a character are based upon race and class. Abilities may be adjusted by high or low stats, and may increase with the level of the character.
+<topic:PrimarySkills><style:heading>Skills</style>
+These attributes are generally based largely on your class, but can also be affected by your race, personality, stats and equipment. They often, but not always, go up with character level:
 
   <indent><color:B>Melee</color>
-Melee is the ability to hit and do damage with weapons or fists. Normally a character gets a single blow from any weapon, but if his dexterity and strength are high enough, he may receive more blows per round with lighter weapons. Strength and dexterity both modify the ability to hit an opponent. This skill increases with the level of the character.</indent>
+Melee skill is very simply a baseline for your accuracy in melee combat (whether armed or unarmed). Strength and Dexterity boost this skill, and you can further boost your accuracy through combat bonuses on equipment. This skill increases with character level, except for Sorcerers who are uniformly poor at melee.</indent>
 
-  <indent><color:B>Bows and Throws</color>
-Using ranged missile weapons (and throwing objects) is included in this skill. Different stats apply to different weapons, but this ability may modify the distance an object is thrown/fired, the amount of damage done, and the ability to hit a creature. This skill increases with the level of the character.</indent>
+  <indent><color:B>Archery</color>
+This skill generally applies both to using ranged missile weapons and to throwing projectiles, although in some cases separate calculations might apply. Archery skill, like melee skill, is a baseline for your accuracy; but exceptionally high Archery skill can also improve your shooting speed and reduce the chance your ammunition breaks on impact. Strength and Dexterity can boost your Archery, although this boost only affects your accuracy and not the additional bonuses noted. Like Melee skill, Archery improves naturally with character level for all characters except Sorcerers.</indent>
 
-  <indent><color:B>Saving Throws</color>
-A Saving Throw is the ability of a character to resist the effects of a spell cast on him by another person/creature. This does not include spells cast on the player by his own stupidity, such as quaffing a nasty potion. This ability increases with the level of the character, but then most high level creatures are better at casting spells, so it tends to even out. A high wisdom also increases this ability.</indent>
+  <indent><color:B>Saving Throw</color>
+Saving Throw is the ability of your character to resist the effects of spells cast on you by a monster. Most commonly, Saving Throw is applied when the spell involves some kind of curse, either against you or against your equipment. Saving Throw also helps you against paralysis, though having Free Action is also needed for that! This skill increases naturally with level - but you'll also be running into nastier curses at high levels... Saving Throw is affected by Wisdom.</indent>
 
   <indent><color:B>Stealth</color>
-The ability to move silently about is very useful. Characters with good stealth can usually surprise their opponents, gaining the first blow. Also, creatures may fail to notice a stealthy character entirely, allowing a player to avoid certain fights. This skill is based entirely upon race and class, and will never improve unless magically enhanced.</indent>
+The ability to move silently is very useful. Characters with good stealth can usually surprise their opponents, gaining the first blow (or the opportunity to avoid a fight entirely), while characters with low Stealth will be mobbed by enemies as everybody nearby wakes up. Stealth generally does not improve with character level, and depends only on your race, class, personality and equipment. New players should value Stealth highly; the less experience you have handling monster mobs, the less you can afford to invite them.</indent>
 
   <indent><color:B>Disarming</color>
-Disarming is the ability to remove traps (safely), and includes picking locks on traps and doors. A successful disarming will gain the character some experience. A trap must be found before it can be disarmed. Dexterity and intelligence both modify the ability to disarm, and this ability increases with the level of the character.</indent>
+Disarming is the ability to remove traps (safely), and includes picking locks on chests and doors. A successful disarming will gain the character some experience. A trap must be found before it can be disarmed. Dexterity and Intelligence both affect Disarming skill, and this skill also increases with character level.</indent>
 
-  <indent><color:B>Magical Devices</color>
-Using a magical device such as a wand or staff requires experience and knowledge. Spell users such as magi and priests are therefore much better at using a magical device than say a warrior. This skill is modified by intelligence, and increases with the level of the character.</indent>
+  <indent><color:B>Magic Device Skill</color>
+Using magical devices requires experience and knowledge, and natural spellcasters such as mages tend to be much better at it than melee classes. Device Skill is the most important of all skills, especially in the late game; and although your class accounts for the bulk of your device skill, the bonuses from race and personality are also important simply because the skill itself is so important. Device Skill is affected by Intelligence, and improves with character level.</indent>
 
   <indent><color:B>Perception (Searching Frequency)</color>
-Perception is the ability to notice something without actively seeking it out. This skill is based entirely upon race and class, and will never improve unless magically enhanced.</indent>
+<color:B>Searching (Searching Ability)</color>
+These two skills are very closely related. Both help you notice secret doors, floor traps, and traps on chests; Searching helps when you are actively looking for them, and Perception might allow you to notice them without actively looking. Searching also improves your ability to see invisible monsters. These skills are based on your race, class, personality and equipment, and generally do not improve with character level.</indent>
 
-  <indent><color:B>Searching (Searching Ability)</color>
-To search is to actively look for secret doors, floor traps, and traps on chests. Rogues are the best at searching, but magi, rangers, and priests are also good at it. This skill is based entirely upon race and class, and will never improve unless magically enhanced.</indent>
+<topic:Abilities><style:heading>Additional Abilities</style>
 
-  <indent><color:B>Infra-vision</color>
-Infra-vision is the ability to see heat sources. Since most of the dungeon is cool or cold, infra-vision will not allow the player to see walls and objects. Infra-vision will allow a character to see any warm-blooded creatures up to a certain distance. This ability works equally well with or with out a light source. The majority of monsters are cold-blooded, and will not be detected unless lit up by a light source. Most non-human races have innate infra-vision ability. Humans can gain infra-vision only if it is magically enhanced.</indent>
+Like stats and skills, these additional abilities help your character survive and get about. They can be affected by your race, class or personality, but only in exceptional cases (apart from Infravision, which is based mostly on your race). As such, these abilities are not as prominently displayed during the birth process, but they do make a difference during the game!
 
-<topic:Proficiency><style:heading>Proficiency Levels</style>
-In FrogComposband, characters possess different proficiency levels or experiences for each weapon type, spells, and a few other skills. The starting proficiency levels and the maximum proficiency levels of a character are based upon class. Each proficiency level may increase when you practice with it, and can be checked by the 'Check various information' command (~).
+  <indent><color:B>Regeneration</color>
+Regeneration determines how quickly you recover lost hit points and mana. It is generally affected only by magical effects or equipment, not by your race or class, though there are some exceptions (for example, Amberites, Beornings, Werewolves and Einherjar regenerate exceptionally fast). If you get hit with an evil curse that affects your regeneration, or suffer hideous mutations that slow it down, the pain will hit very quickly...</indent>
 
-For weapon proficiency, you need to hit monsters many times with a weapon of that type to practice. And your to-hit bonus of the weapon will increases with the proficiency level of it. The rate of increase is dependent upon the level of the character and the level of the opponents.
+  <indent><color:B>Infravision</color>
+Infravision is the ability to see heat sources. Since dungeons tend to be cool or cold, infravision will not allow your character to see walls or objects, but does allow you to detect warm-blooded creatures up to a certain distance. Infravision works equally well with or without a light source. Many monsters are cold-blooded and so not detected by infravision, but especially in the early game (when warm-blooded monsters are more common and See Invisible is often lacking) infravision can make a difference. Most non-human races have some innate infravision, and any race can gain infravision from magical equipment.</indent>
 
-For spell proficiency, you need to cast the spell many times in a deep level of the dungeon to practice. However, simply casting the spell repeatedly for no purpose other than gaining experience will not work. Rather, the game detects this "spamming" so you really should practice spells out in the real world, not sequestered in some safe corner of the dungeon. Finally, the fail-rate and mana consumption rate of the spell decreases when the proficiency level increases.
-
-The effect of the proficiency level of the Dual Wielding and the Martial Arts is almost same as the weapon proficiency; These will effect upon your to-hit bonus of dual wielding combat or bare handed combat.
-
-For the proficiency level of the Riding, you need to attack in melee or shoot with missile weapon when riding. And your speed increases up to the mount's speed when the proficiency level increases. (see <link:monster.txt#Pets>)
+  <indent><color:B>Digging</color>
+This ability allows you to mine for treasures and create new tunnels more effectively. It is affected by Strength, by magical equipment, by digging implements such as picks and shovels, and by the weight of your weapon/digging implement (heavy weapons are better for digging). Digging is not usually affected by race, class or personality, although again there are some exceptions; Lawyers, for instance, are very good at digging.</indent>
 
 <topic:BirthOptions><style:heading>Birth Options</style>
-During character generation you may press '=' at any time to access the birth options. A more detailed description of the various birth options can be found in the section on the Options Page (see <link:option.txt#Birth>). Feel free to ignore these options if you are new to the game. In fact, if you chose the <color:keyword>Beginner</color> startup option as suggested, then the birth options won't even be displayed to you (i.e., you will play with the default options).
-
-Perhaps one of the most important features of the birth options is the ability to decide what type of town level you want. The various town options are discussed on the Town page (see <link:town.txt#TownLevel>).
+During character generation you may press '=' at any time to access the birth options, unless you selected <color:keyword>Beginner Mode</color> which assigns mostly-default options to you. Popular birth options include <color:keyword>coffee-break mode</color>, which accelerates the game (but removes the wilderness); <color:keyword>no selling</color>, which increases gold drops in the dungeon but prevents the player from selling items for money; and <color:keyword>no scrambling</color>, which removes the controversial Stat Scrambling mechanic from the game and replaces it with an incantation of the evil but less controversial Baby Foul Curse. There are dozens of other birth options as well, some likewise popular, others very niche; see <link:option.txt#Birth> for a detailed explanation of each.
 
 <topic:Reference><style:heading>Reference</style>
 
-<topic:BeginnerMode><style:keyword>Beginner Mode</style>  <indent>Designed for new players, this mode greatly restricts the races and classes available to the player. In addition, it removes <color:keyword>Personality</color> from the birth process, forcing the player to play with the Ordinary personality (which has absolutely no gameplay effects). Also, the player is unable to enter birth options (<color:keypress>=</color>) and must play with the default options (too much to confuse new players otherwise). The <color:keyword>effective_speed</color> display option ("Show speeds as energy multipliers") is turned on by default in Beginner Mode, as it makes the meanings of speed values clearer to new players. Finally, this option forces the player to play in <color:keyword>coffee-break mode</color>, which accelerates the game, eliminates the wilderness and uses the special Light Town. Since up staircases don't generate in coffee-break mode, beginners start with extra scrolls of Word of Recall so they (hopefully) won't get stuck in the dungeon.</indent>
+<topic:BeginnerMode><style:keyword>Beginner Mode</style>  <indent>Designed for new players, this mode greatly restricts the races and classes available to you. In addition, it removes <color:keyword>Personality</color> from the birth process, automatically assigning you the Ordinary personality (which has absolutely no gameplay effects). Birth option selection (<color:keypress>=</color>) is also disabled to speed up character creation; you will play with automatically assigned, mostly default options. The <color:keyword>effective_speed</color> display option ("Show speeds as energy multipliers") is turned on by default in Beginner Mode, as it makes the meanings of speed values clearer to new players. Finally, this option forces the player to play in <color:keyword>coffee-break mode</color>, which accelerates the game, eliminates the wilderness and uses the special Lite-Town as the only town. Since up staircases don't generate in coffee-break mode, beginners start with extra scrolls of Word of Recall so they (hopefully) won't get stuck in the dungeon.</indent>
 
-<topic:NormalMode><style:keyword>Normal Mode</style>    <indent>This is the standard way to play: the Full Monty, so to speak. All races and classes are available to choose from, even ones that might be under development and not yet fully tested. The player has access to both the Birth Options and the Personality subsystem. By using the Birth Options to turn off the no_wilderness option, the player may play with a vast surface wilderness, complete with numerous dungeons to explore.</indent>
+<topic:NormalMode><style:keyword>Normal Mode</style>    <indent>This is the standard way to play: the Full Monty, so to speak. All races and classes are available to choose from, even ones that might be under development and not yet fully tested. The player has access to both the Birth Options and the Personality subsystem. Here you may (if you wish!) play with a vast surface wilderness, complete with numerous dungeons and towns to explore.</indent>
 
-<topic:MonsterMode><style:keyword>Monster Mode</style>   <indent>This mode allows the player to play as a monster rather than a normal character. There is no class to choose (The game forces a special Monster class that has absolutely no gameplay effects). Instead, the racial (and subracial) choices determine the type of monster to play. There are many options to choose from. Most monster forms evolve from weak forms to stronger ones (e.g. from a Forest Troll to a Fire Troll, and so forth) and many forms have unique body types (e.g. a Xorn has two full sets of arms and can wield up to four weapons in melee). In addition, most monster races have a boss who will drop a nifty artifact when slain. But the goal of the game remains the same: kill the <color:keyword>Serpent of Chaos</color>.</indent>
+<topic:MonsterMode><style:keyword>Monster Mode</style>   <indent>This mode allows the player to play as a monster rather than a normal character. There is no class to choose; instead, the racial (and subracial) choices determine the type of monster you play, and are effectively both your race and your class. There are many options to choose from, including some really zany ones! Most monster forms evolve from weak forms to stronger ones (e.g. from a Forest Troll to a Fire Troll, and so forth); and many forms have unique body types (e.g. a Xorn has two full sets of arms, and can wield up to four melee weapons). In addition, most monster races have a boss who will drop a nifty artifact when slain. But the goal of the game remains the same: kill the <color:keyword>Serpent of Chaos</color>.</indent>
 
-<topic:QuickStart><style:keyword>Quick Start</style>    <indent>Once an existing character dies you may create a new one from the same savefile. If so, you will be asked whether you want to use quick start or not at start up. If you choose to use quick start, you get a new character with exactly the same race, class, stats, and personality as your last character. Since it is common to die early on, this option can save you the tedium of re-rolling a new character from scratch.</indent>
+<topic:QuickStart><style:keyword>Quick Start</style>    <indent>Once an existing character dies, you may create a new one from the same savefile. If so, you receive this extra option; choose quick start, and you get a new character with exactly the same race, class, options, and personality as your last character. Since it is common to die early on, Quick Start can save you the tedium of picking the same choices again and again.</indent>
 
-<topic:CharacterName><style:keyword>Character Name</style> <indent>During the birth process, you may change the name of your character. This name will be used for your savefile (unless you created this character inside an existing, already named savefile) and any options and preferences you may set. So choose your name carefully. Changing your name, as you may imagine, is a complicated legal process involving much paperwork (and a hefty fee). Should you decide to change your name in the future, inquire at the Mayor's office and he will direct you how to proceed.</indent>
+<topic:CharacterName><style:keyword>Character Name</style> <indent>During the birth process, you may change the name of your character. This name will be used for your savefile (unless you created this character inside an existing, already named savefile) and any options and preferences you may set. So choose your name carefully. Changing your name, as you may imagine, is a complicated legal process involving much paperwork (and a hefty fee). Should you decide to change your name in the future, inquire at Count Uldrik's castle and he will direct you how to proceed.</indent>
 
 <color:D>
 Original : (??)
@@ -287,4 +289,5 @@ Updated  : Hengband 1.5.2
 Updated  : PosChengband 1.0.0
 Updated  : PosChengband 4.0.0
 Updated  : PosChengband 5.0.3
+Updated  : FrogComposband 7.1.liquorice
 </color>
