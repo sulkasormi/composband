@@ -1,17 +1,21 @@
-<style:title>The Town and Wilderness</style>
+<style:title>The Towns and Wilderness</style>
 
-Please choose one of the following online help files:
+Please choose one of the following help sections:
 
-    <link:town.txt> The Town and Wilderness
+    <link:town.txt> The Towns and Wilderness
     <link:town.txt#MapSymbols> Town and Wilderness Symbols
-    <link:town.txt#TownLevel> The Town Level
-    <link:town.txt#Wilderness> The Wilderness Option
-    <link:town.txt#NoWilderness> The No Wilderness Option
+    <link:town.txt#TownLevel> What to Expect in a Town
     <link:town.txt#Townspeople> Townspeople
-    <link:town.txt#Shopping> Shopping in Town
+    <link:town.txt#Shopping> Shopping in the Town
     <link:town.txt#ObjectPricing> Object Pricing
     <link:town.txt#TheShops> List of Shops
     <link:town.txt#Buildings> Special Buildings
-    <link:town.txt#FixedQuests> Fixed Quests
+    <link:town.txt#TownQuests> Town Quests
+    <link:town.txt#Wilderness> The Wilderness Option
+    <link:town.txt#Dungeons> Discovering and Entering Dungeons
+    <link:town.txt#Visiting> Which Dungeons Should I Visit?
+    <link:town.txt#TownTravel> Travelling Between Towns
+    <link:town.txt#NoWilderness> The No Wilderness Option
+    <link:town.txt#Coffee> Coffee-Break Mode
 
     <color:y>(?) Help System Commands</color>
