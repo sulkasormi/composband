@@ -4260,6 +4260,7 @@ bool target_set(int mode)
     int        x = px;
     bool       done = FALSE;
     bool       flag = TRUE;
+    bool       travel_tgt = FALSE;
     char       query;
     char       info[80];
 
@@ -4303,14 +4304,14 @@ bool target_set(int mode)
             if ( target_able(c_ptr->m_idx)
              || ((mode & (TARGET_MARK|TARGET_DISI|TARGET_XTRA)) && m_list[c_ptr->m_idx].ml))
             {
-                strcpy(info, "q,t,p,o,x,+,-,?,<dir>");
+                strcpy(info, "q,t,p,o,x,j,+,-,?,<dir>");
 
             }
 
             /* Dis-allow target */
             else
             {
-                strcpy(info, "q,p,o,x,+,-,?,<dir>");
+                strcpy(info, "q,p,o,x,j,+,-,?,<dir>");
 
             }
 
@@ -4328,12 +4329,14 @@ bool target_set(int mode)
                 if (query == '\r') query = 't';
             }
 
+            if ((query == 'j') && (!rogue_like_commands)) query = 'J';
+
             /* Analyze */
             switch (query)
             {
                 case '?':
                     screen_save();
-                    show_file(TRUE, "context_targetting.txt", NULL, 0, 0);
+                    doc_display_help("context_targetting.txt", "Targetting");
                     screen_load();
                     break;
                 case ESCAPE:
@@ -4417,6 +4420,22 @@ bool target_set(int mode)
 
                 case 'm':
                 {
+                    break;
+                }
+
+                case 'J':
+                {
+                    if ((!p_ptr->wild_mode) && (in_bounds(y,x)) && (cave[y][x].info & CAVE_MARK) && ((y != py) || (x != px)) && (player_can_enter(cave[y][x].feat, 0)))
+                    {
+                        travel_cancel_fully();
+                        travel.y = y;
+                        travel.x = x;
+                        if (mode & TARGET_TRVL)
+                        {
+                            travel_tgt = TRUE;
+                            done = TRUE;
+                        }
+                    }
                     break;
                 }
 
@@ -4546,9 +4565,9 @@ bool target_set(int mode)
             c_ptr = &cave[y][x];
 
             if ((mode & TARGET_MARK) && !m_list[c_ptr->m_idx].ml)
-                strcpy(info, "q,p,o,x,+,-,?,<dir>");
+                strcpy(info, "q,p,o,x,j,+,-,?,<dir>");
             else
-                strcpy(info, "q,t,p,m,x,+,-,?,<dir>");
+                strcpy(info, "q,t,p,m,x,j,+,-,?,<dir>");
 
 
             /* Describe and Prompt (enable "TARGET_LOOK") */
@@ -4565,12 +4584,14 @@ bool target_set(int mode)
                 if (query == '\r') query = 't';
             }
 
+            if ((query == 'j') && (!rogue_like_commands)) query = 'J';
+
             /* Analyze the keypress */
             switch (query)
             {
                 case '?':
                     screen_save();
-                    show_file(TRUE, "context_targetting.txt", NULL, 0, 0);
+                    doc_display_help("context_targetting.txt", "Targetting");
                     screen_load();
                     break;
                 case ESCAPE:
@@ -4656,6 +4677,22 @@ bool target_set(int mode)
                     /* Nothing interesting */
                     if (bd == 999) flag = FALSE;
 
+                    break;
+                }
+
+                case 'J':
+                {
+                    if ((!p_ptr->wild_mode) && (in_bounds(y,x)) && (cave[y][x].info & CAVE_MARK) && ((y != py) || (x != px)) && (player_can_enter(cave[y][x].feat, 0)))
+                    {
+                        travel_cancel_fully();
+                        travel.y = y;
+                        travel.x = x;
+                        if (mode & TARGET_TRVL)
+                        {
+                            travel_tgt = TRUE;
+                            done = TRUE;
+                        }
+                    }
                     break;
                 }
 
@@ -4745,13 +4782,17 @@ bool target_set(int mode)
     handle_stuff();
     redraw_hack = FALSE;
 
+    if (travel_tgt)
+    {
+        travel_begin(TRAVEL_MODE_NORMAL, travel.x, travel.y);
+    }
+
     /* Failure to set target */
     if (!target_who) return (FALSE);
 
     /* Success */
     return (TRUE);
 }
-
 
 /*
  * Get an "aiming direction" from the user.
