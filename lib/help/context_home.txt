@@ -78,6 +78,6 @@ Another difference between the Museum and your home is that items given to the M
 
 <color:G>Display Options</color>
 <color:keypress>^W</color>        Toggle weights (see <link:option.txt#show_weights>)
-<color:keypress>^G</color>        Toggle wraphics (see <link:option.txt#show_item_graph>)
+<color:keypress>^G</color>        Toggle graphics (see <link:option.txt#show_item_graph>)
 </indent>
 
