@@ -1,6 +1,6 @@
 <style:title>Command Descriptions</style>
 
-Please choose one of the following online help files:
+Please choose one of the following help sections:
 
     <link:commdesc.txt> Command Descriptions
     <link:commdesc.txt#Inventory> Inventory Commands
@@ -9,9 +9,8 @@ Please choose one of the following online help files:
     <link:commdesc.txt#Searching> Searching Commands
     <link:commdesc.txt#Alter> Alter Commands
     <link:commdesc.txt#SpellPrayer> Spell and Prayer Commands
-    <link:commdesc.txt#ObjectManip> Object Manipulation Commands
-    <link:commdesc.txt#MagicalObject> Magical Item Commands
-    <link:commdesc.txt#ThrowFire> Throwing and Missile Weapons
+    <link:commdesc.txt#ObjectManip> Object Use Commands
+    <link:commdesc.txt#ThrowFire> Ranged Combat Commands
     <link:commdesc.txt#Looking> Looking Commands
     <link:commdesc.txt#Message> Message Commands
     <link:commdesc.txt#GameStatus> Game Status Commands
