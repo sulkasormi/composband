@@ -196,7 +196,7 @@ static void _race_help_table(FILE *fp, race_t *race_ptr)
         race_ptr->life,
         _race_thn_skill_desc(race_ptr));
 
-    fprintf(fp, "Base HP      %3d        Bows        %s\n",
+    fprintf(fp, "Base HP      %3d        Archery     %s\n",
         race_ptr->base_hp,
         _race_thb_skill_desc(race_ptr));
 
@@ -229,18 +229,17 @@ static void _races_help(FILE* fp)
 
     fputs("<style:title>The Races</style>\n", fp);
     fputs("There are many races in the world, each, for the most part, with both "
-          "strengths and weaknesses. Humans are the base race, and serve as the benchmark "
-          "of comparison for all the others. In general, the stronger a race is relative to "
-          "humans, the higher the <color:keyword>Experience Penalty</color> and the longer "
-          "it will take to gain levels.\n\n"
-          "For details on the <color:keyword>Primary Statistics</color>, see "
-          "<link:birth.txt#PrimaryStats>. For information about the various <color:keyword>Skills</color>, see "
-          "<link:birth.txt#PrimarySkills>. "
-          "The skill descriptions in this document are for comparison purposes only. "
-          "For example, your fledgling high-elf will not be born with <color:v>Legendary[2]</color> "
-          "device skill. In general, skills are influenced by level, race, class, stats and equipment. "
-          "To compare the various races, you might want to take a look "
-          "at <link:Races.txt#Tables> the race tables below.\n\n", fp);
+          "strengths and weaknesses. In general, the stronger a race is, the higher "
+          "its <color:keyword>Experience Penalty</color> and the longer it will take "
+          "to gain levels.\n\n"
+          "For details on the <color:keyword>Stats</color>, see "
+          "<link:birth.txt#PrimaryStats>. For information about the <color:keyword>Skills</color>, see "
+          "<link:birth.txt#PrimarySkills>. The skill descriptions in this document are "
+          "<color:v>for comparison purposes only</color>; they will tell you how good a race is compared to other races, "
+          "but should not be taken as a literal indicator of the skill level your fledgling character will "
+          "be born with. In general, skills are influenced by level, race, class, stats and equipment. "
+          "See the race tables <link:Races.txt#Tables> below for a quick comparison "
+          "of the various races.\n\n", fp);
     for (i = 0; i < _MAX_RACE_GROUPS; i++)
     {
         fprintf(fp, "<style:heading>%s</style>\n  <indent>", _race_groups[i].name);
@@ -296,7 +295,7 @@ static void _races_help(FILE* fp)
     fputs("\n</style>\n", fp);
 
     fputs("<topic:Skills2><style:heading>Table 3 - Race Skill Bonus Table II</style>\n<style:table>\n", fp);
-    fprintf(fp, "%-12.12s <color:w>%-13.13s %-13.13s %-13.13s %-13.13s %s</color>\n", "", "Searching", "Perception", "Melee", "Bows", "Infra");
+    fprintf(fp, "%-12.12s <color:w>%-13.13s %-13.13s %-13.13s %-13.13s %s</color>\n", "", "Searching", "Perception", "Melee", "Archery", "Infra");
     for (i = 0; i < _MAX_RACE_GROUPS; i++)
     {
         for (j = 0; ; j++)
@@ -384,7 +383,7 @@ static void _demigods_help(FILE* fp)
     fputs("\n</style>\n", fp);
 
     fputs("<topic:Skills2><style:heading>Table 3 - Demigod Skill Bonus Table II</style>\n<style:table>\n", fp);
-    fprintf(fp, "%-12.12s <color:w>%-13.13s %-13.13s %-13.13s %-13.13s %s</color>\n", "", "Searching", "Perception", "Melee", "Bows", "Infra");
+    fprintf(fp, "%-12.12s <color:w>%-13.13s %-13.13s %-13.13s %-13.13s %s</color>\n", "", "Searching", "Perception", "Melee", "Archery", "Infra");
     for (i = 0; i < DEMIGOD_MAX; i++)
     {
         race_t *race_ptr = get_race_aux(RACE_DEMIGOD, i);
@@ -487,7 +486,7 @@ static void _draconians_help(FILE* fp)
     fputs("\n</style>\n", fp);
 
     fputs("<topic:Skills2><style:heading>Table 3 - Draconian Skill Bonus Table II</style>\n<style:table>\n", fp);
-    fprintf(fp, "%-12.12s <color:w>%-13.13s %-13.13s %-13.13s %-13.13s %s</color>\n", "", "Searching", "Perception", "Melee", "Bows", "Infra");
+    fprintf(fp, "%-12.12s <color:w>%-13.13s %-13.13s %-13.13s %-13.13s %s</color>\n", "", "Searching", "Perception", "Melee", "Archery", "Infra");
     for (i = 0; i < DRACONIAN_MAX; i++)
     {
         race_t *race_ptr = get_race_aux(RACE_DRACONIAN, i);
@@ -608,7 +607,7 @@ static void _mon_race_help_table(FILE *fp, race_t *race_ptr)
     fprintf(fp, "Life Rating  %3d%%       Melee       %s\n",
         race_ptr->life,
         _mon_race_thn_skill_desc(race_ptr));
-    fprintf(fp, "Base HP      %3d        Bows        %s\n",
+    fprintf(fp, "Base HP      %3d        Archery     %s\n",
         race_ptr->base_hp,
         _mon_race_thb_skill_desc(race_ptr));
     fprintf(fp, "Experience   %3d%%       Infravision %d'\n", race_ptr->exp, race_ptr->infra*10);
@@ -647,32 +646,31 @@ static void _monster_races_help(FILE* fp)
     int i, j;
 
     fprintf(fp, "<style:title>Monster Races</style>\n\n");
-    fputs("So, you have decided to play as a monster. There are many options "
-            "to choose from and the various types of monsters are loosely grouped "
-            "by type below: Animals, Dragons, Demons, etc.\n\n"
-            "As a monster, you won't be able to choose a class the way normal "
-            "players do. Rather, most monster types gain abilities and powers "
-            "as they gain experience. For example, dragons can breathe fire as "
-            "well as access magical abilities. So you will want to check out both "
-            "the magic command (<color:keypress>m</color>) as well as the racial "
-            "power command (<color:keypress>U</color> or <color:keypress>O</color>) "
-            "to see what powers are available as you play.\n\n"
-            "In addition, most monsters have custom body types, and this will "
+    fputs("So, you feel ready to play as a monster? There are many monster races and "
+            "subraces to choose from, and the various races are loosely grouped "
+            "by type below: Animals, Dragons, Demons, and so forth.\n\n"
+            "As a monster, you will not be able to choose a normal class; your race will "
+            "essentially be your class as well. Most monster types gain abilities "
+            "and powers with experience; for example, fire dragons can breathe fire and "
+            "may gain access to magic spells. Check out both "
+            "the magic command (<color:keypress>m</color>) and the racial "
+            "power command (<color:keypress>U</color>/<color:keypress>O</color>) "
+            "to see what powers are available to you as you play.\n\n"
+            "Most monster races have custom body types, which may "
             "severely constrain the amount and kind of equipment you may wear. "
-            "For example, a beholder cannot wear armor or wield a sword ... That "
-            "would be an odd sight indeed! Instead, they may wear rings on their "
-            "numerous eyestalks. Details of this kind should be described below.\n\n"
-            "Finally, all monsters evolve. When they gain enough experience, they "
+            "For example, a <color:keyword>Beholder</color> cannot wear armor or wield a sword... that "
+            "would be an odd sight indeed! But to make up for this, they can wear up to "
+            "eight rings on their eyestalks. Details of this kind should be described below.\n\n"
+            "Finally, all monsters <color:keyword>evolve</color>. When they gain enough experience, they "
             "will assume a more powerful form. To continue with our example of dragons, "
-            "you might evolve from Baby to Young to Mature and finally Ancient forms, "
+            "you might evolve from Baby to Young to Mature to Ancient and finally to a Great Wyrm, "
             "becoming vastly more powerful in the process. The stats and skills listed "
-            "in this document only apply to the starting form, which is usually "
-            "very weak.\n\n"
-            "For details on the <color:keyword>Primary Statistics</color>, see "
-            "<link:birth.txt#PrimaryStats>. For information about the various "
+            "below assume a level 35 character.\n\n"
+            "For details on the <color:keyword>Stats</color>, see "
+            "<link:birth.txt#PrimaryStats>. For information about the "
             "<color:keyword>Skills</color>, see <link:birth.txt#PrimarySkills>. "
-            "To compare the various races at a glance, you might want to take a "
-            "look at <link:MonsterRaces.txt#Tables> the race tables below.\n\n", fp);
+            "To compare the various races at a glance, take a "
+            "look at the race tables below (<link:MonsterRaces.txt#Tables>).\n\n", fp);
 
     for (i = 0; i < _MAX_MON_RACE_GROUPS; i++)
     {
@@ -733,7 +731,7 @@ static void _monster_races_help(FILE* fp)
     fputs("\n</style>\n", fp);
 
     fputs("<topic:Skills2><style:heading>Table 3 - Race Skill Bonus Table II</style>\n<style:table>\n", fp);
-    fprintf(fp, "%-12.12s <color:w>%-13.13s %-13.13s %-13.13s %-13.13s %s</color>\n", "", "Searching", "Perception", "Melee", "Bows", "Infra");
+    fprintf(fp, "%-12.12s <color:w>%-13.13s %-13.13s %-13.13s %-13.13s %s</color>\n", "", "Searching", "Perception", "Melee", "Archery", "Infra");
     for (i = 0; i < _MAX_MON_RACE_GROUPS; i++)
     {
         for (j = 0; ; j++)
@@ -802,7 +800,7 @@ static void _demons_help(FILE* fp)
     fputs("\n</style>\n", fp);
 
     fputs("<topic:Skills2><style:heading>Table 3 - Demon Skill Bonus Table II</style>\n<style:table>\n", fp);
-    fprintf(fp, "%-17.17s <color:w>%-13.13s %-13.13s %-13.13s %-13.13s %s</color>\n", "", "Searching", "Perception", "Melee", "Bows", "Infra");
+    fprintf(fp, "%-17.17s <color:w>%-13.13s %-13.13s %-13.13s %-13.13s %s</color>\n", "", "Searching", "Perception", "Melee", "Archery", "Infra");
     for (i = 0; i < DEMON_MAX; i++)
     {
         race_t *race_ptr = get_race_aux(RACE_MON_DEMON, i);
@@ -863,7 +861,7 @@ static void _dragons_help(FILE* fp)
     fputs("\n</style>\n", fp);
 
     fputs("<topic:Skills2><style:heading>Table 3 - Dragon Skill Bonus Table II</style>\n<style:table>\n", fp);
-    fprintf(fp, "%-17.17s <color:w>%-13.13s %-13.13s %-13.13s %-13.13s %s</color>\n", "", "Searching", "Perception", "Melee", "Bows", "Infra");
+    fprintf(fp, "%-17.17s <color:w>%-13.13s %-13.13s %-13.13s %-13.13s %s</color>\n", "", "Searching", "Perception", "Melee", "Archery", "Infra");
     for (i = 0; i < DRAGON_MAX; i++)
     {
         race_t *race_ptr = get_race_aux(RACE_MON_DRAGON, i);
@@ -883,8 +881,8 @@ static void _dragon_realms_help(FILE* fp)
     int i, j;
     fputs("<style:title>Dragon Realms</style>\n\n", fp);
     fputs("Dragons are magical creatures and may choose to learn a particular branch of "
-           "dragon magic. Unlike normal spell casters, dragons do not need spell books to "
-           "cast or learn powers. Instead, they simply gain spells as they mature. Each "
+           "dragon magic. Dragons do not need spellbooks to cast spells or learn powers; "
+           "instead, they simply gain spells as they mature. Each "
            "realm of dragon magic has a direct impact on the player's stats and skills, and "
            "each realm also requires a different stat for casting purposes.\n\n", fp);
     for (i = 1; i < DRAGON_REALM_MAX; i++)
@@ -922,7 +920,7 @@ static void _dragon_realms_help(FILE* fp)
         fprintf(fp, "Life Rating  %3d%%       Melee       %s\n",
             realm->life,
             _skill_desc(realm->skills.thn + 10, 2));
-        fprintf(fp, "Experience   %3d%%       Bows        %s\n",
+        fprintf(fp, "Experience   %3d%%       Archery     %s\n",
             realm->exp,
             _skill_desc(realm->skills.thb + 10, 2));
         fprintf(fp, "Attack       %3d%%\n", realm->attack);
@@ -968,7 +966,7 @@ static void _dragon_realms_help(FILE* fp)
     fputs("\n</style>\n", fp);
 
     fputs("<topic:Skills2><style:heading>Table 3 - Dragon Realm Skill Bonus Table II</style>\n<style:table>\n", fp);
-    fprintf(fp, "%-14.14s <color:w>%-13.13s %-13.13s %-13.13s %-13.13s</color>\n", "", "Searching", "Perception", "Melee", "Bows");
+    fprintf(fp, "%-14.14s <color:w>%-13.13s %-13.13s %-13.13s %-13.13s</color>\n", "", "Searching", "Perception", "Melee", "Archery");
     for (i = 1; i < DRAGON_REALM_MAX; i++)
     {
         dragon_realm_ptr realm = dragon_get_realm(i);
@@ -1027,7 +1025,7 @@ static void _orcs_help(FILE* fp)
     fputs("\n</style>\n", fp);
 
     fputs("<topic:Skills2><style:heading>Table 3 - Orc Skill Bonus Table II</style>\n<style:table>\n", fp);
-    fprintf(fp, "%-17.17s <color:w>%-13.13s %-13.13s %-13.13s %-13.13s %s</color>\n", "", "Searching", "Perception", "Melee", "Bows", "Infra");
+    fprintf(fp, "%-17.17s <color:w>%-13.13s %-13.13s %-13.13s %-13.13s %s</color>\n", "", "Searching", "Perception", "Melee", "Archery", "Infra");
     for (i = 0; i < ORC_MAX; i++)
     {
         race_t *race_ptr = get_race_aux(RACE_MON_ORC, i);
@@ -1080,7 +1078,7 @@ static void _class_help_table(FILE *fp, class_t *class_ptr)
     fprintf(fp, "Life Rating  %3d%%       Melee       %s\n",
         class_ptr->life,
         _class_thn_skill_desc(class_ptr));
-    fprintf(fp, "Base HP      %3d        Bows        %s\n",
+    fprintf(fp, "Base HP      %3d        Archery     %s\n",
         class_ptr->base_hp,
         _class_thb_skill_desc(class_ptr));
     fprintf(fp, "Experience   %3d%%\n", class_ptr->exp);
@@ -1149,19 +1147,17 @@ static void _classes_help(FILE* fp)
 
     fputs("<style:title>The Classes</style>\n\n", fp);
     fputs("No decision is so important as which class to play. Below, the many "
-            "available classes are loosely grouped by their principle playstyle: "
-            "Melee, Archery, Martial Arts, Magic, Devices, etc. The hybrid classes "
-            "generally combine melee with a bit of magic and are a good option for "
-            "a balanced playstyle. In this document, the primary spell stat for "
-            "each class is <color:v>highlighted</color>.\n\n"
-            "For details on the <color:keyword>Primary Statistics</color>, see "
-            "<link:birth.txt#PrimaryStats>. For information about the various "
+            "available classes are loosely grouped by their principal strength or playstyle: "
+            "Melee, Archery, Martial Arts, Magic, Devices, Hybrid, etc. The "
+            "primary spell stat for each class is <color:v>highlighted</color>.\n\n"
+            "For details on the <color:keyword>Stats</color>, see "
+            "<link:birth.txt#PrimaryStats>. For information about the "
             "<color:keyword>Skills</color>, see <link:birth.txt#PrimarySkills>. "
-            "The skill descriptions in this document are for comparison purposes only. "
-            "For example, your fledgling berserker will not be born with <color:v>Legendary[32]</color> "
+            "The skill descriptions in this document are <color:v>for comparison purposes only</color>; "
+            "for example, your fledgling berserker will not really be born with <color:v>Amber[20]</color> "
             "melee skill. In general, skills are influenced by level, race, class, stats and equipment. "
-            "To compare the various classes at a glance, you might want to take "
-            "a look at <link:Classes.txt#Tables> the class tables below.\n\n", fp);
+            "See the tables at the bottom of this file (<link:Classes.txt#Tables>) to compare the various "
+            "classes' stat and skill boosts at a glance.\n\n", fp);
 
     for (i = 0; i < _MAX_CLASS_GROUPS; i++)
     {
@@ -1230,7 +1226,7 @@ static void _classes_help(FILE* fp)
     fputs("\n</style>\n", fp);
 
     fputs("<topic:Skills2><style:heading>Table 3 - Class Skill Bonus Table II</style>\n<style:table>\n", fp);
-    fprintf(fp, "%-13.13s <color:w>%-13.13s %-13.13s %-13.13s %-13.13s</color>\n", "", "Searching", "Perception", "Melee", "Bows");
+    fprintf(fp, "%-13.13s <color:w>%-13.13s %-13.13s %-13.13s %-13.13s</color>\n", "", "Searching", "Perception", "Melee", "Archery");
     for (i = 0; i < _MAX_CLASS_GROUPS; i++)
     {
         for (j = 0; ; j++)
@@ -1302,7 +1298,7 @@ static void _disciples_help(FILE *fp)
     fputs("\n</style>\n", fp);
 
     fputs("<topic:Skills2><style:heading>Table 3 - Disciple Skill Bonus Table II</style>\n<style:table>\n", fp);
-    fprintf(fp, "%-17.17s <color:w>%-13.13s %-13.13s %-13.13s %-13.13s</color>\n", "", "Searching", "Perception", "Melee", "Bows");
+    fprintf(fp, "%-17.17s <color:w>%-13.13s %-13.13s %-13.13s %-13.13s</color>\n", "", "Searching", "Perception", "Melee", "Archery");
     for (i = MIN_PURPLE_PATRON; i < MAX_PURPLE_PATRON; i++)
     {
         class_t *class_ptr = get_class_aux(CLASS_DISCIPLE, i);
@@ -1363,7 +1359,7 @@ static void _weaponmasters_help(FILE *fp)
     fputs("\n</style>\n", fp);
 
     fputs("<topic:Skills2><style:heading>Table 3 - Weaponmaster Skill Bonus Table II</style>\n<style:table>\n", fp);
-    fprintf(fp, "%-17.17s <color:w>%-13.13s %-13.13s %-13.13s %-13.13s</color>\n", "", "Searching", "Perception", "Melee", "Bows");
+    fprintf(fp, "%-17.17s <color:w>%-13.13s %-13.13s %-13.13s %-13.13s</color>\n", "", "Searching", "Perception", "Melee", "Archery");
     for (i = 0; i < WEAPONMASTER_MAX; i++)
     {
         class_t *class_ptr = get_class_aux(CLASS_WEAPONMASTER, i);
@@ -1422,7 +1418,7 @@ static void _warlocks_help(FILE *fp)
     fputs("\n</style>\n", fp);
 
     fputs("<topic:Skills2><style:heading>Table 3 - Warlock Skill Bonus Table II</style>\n<style:table>\n", fp);
-    fprintf(fp, "%-17.17s <color:w>%-13.13s %-13.13s %-13.13s %-13.13s</color>\n", "", "Searching", "Perception", "Melee", "Bows");
+    fprintf(fp, "%-17.17s <color:w>%-13.13s %-13.13s %-13.13s %-13.13s</color>\n", "", "Searching", "Perception", "Melee", "Archery");
     for (i = 0; i < WARLOCK_MAX; i++)
     {
         class_t *class_ptr = get_class_aux(CLASS_WARLOCK, i);
@@ -1475,7 +1471,7 @@ static void _personality_help(FILE *fp, int idx)
         pers_ptr->life,
         _pers_thn_skill_desc(pers_ptr));
 
-    fprintf(fp, "Experience   %3d%%       Bows        %s\n",
+    fprintf(fp, "Experience   %3d%%       Archery     %s\n",
         pers_ptr->exp,
         _pers_thb_skill_desc(pers_ptr));
     fputs("</style></indent>\n", fp);
@@ -1487,19 +1483,18 @@ static void _personalities_help(FILE* fp)
 
     fprintf(fp, "<style:title>The Personalities</style>\n\n");
     fputs("Your personality is the way you see and act in the world, and has "
-            "a small but significant effect on your stats and skills. In general "
+            "a small but significant effect on your stats and skills. In general, "
             "you should pick a personality that complements the strengths and "
-            "weaknesses inherent in your race and class. Your choice of personality "
-            "is the least important decision you make when creating your "
-            "character (after gender).\n\n"
-            "For details on the <color:keyword>Primary Statistics</color>, see "
-            "<link:birth.txt#PrimaryStats>. For information about the various <color:keyword>Skills</color>, see "
+            "weaknesses inherent in your race and class. Most personalities only make "
+            "a minor difference, but a few can change the game dramatically.\n\n"
+            "For details on the <color:keyword>Stats</color>, see "
+            "<link:birth.txt#PrimaryStats>. For information about the <color:keyword>Skills</color>, see "
             "<link:birth.txt#PrimarySkills>. "
-            "The skill descriptions in this document are for comparison purposes only. "
-            "For example, your fledgling munchkin will not be born with <color:v>Legendary[20]</color> "
+            "The skill descriptions in this document are <color:v>for comparison purposes only</color>; "
+            "for example, your fledgling munchkin will not be born with <color:v>Amber[62]</color> "
             "melee skill. In general, skills are also influenced by level, race, class, stats and equipment. "
-            "To compare the various personalities, you might want to take a look "
-            "at <link:Personalities.txt#Tables> the personality tables below.\n\n", fp);
+            "To compare the stat and skill boosts of each personality, take a look "
+            "at the <link:Personalities.txt#Tables> personality tables below.\n\n", fp);
     for (i = 0; i < MAX_PERSONALITIES; i++)
     {
         personality_ptr pers_ptr = get_personality_aux(i);
@@ -1540,7 +1535,7 @@ static void _personalities_help(FILE* fp)
     fputs("\n</style>\n", fp);
 
     fputs("<topic:Skills2><style:heading>Table 3 - Personality Skill Bonus Table II</style>\n<style:table>\n", fp);
-    fprintf(fp, "%-12.12s <color:w>%-13.13s %-13.13s %-13.13s %-13.13s</color>\n", "", "Searching", "Perception", "Melee", "Bows");
+    fprintf(fp, "%-12.12s <color:w>%-13.13s %-13.13s %-13.13s %-13.13s</color>\n", "", "Searching", "Perception", "Melee", "Archery");
     for (i = 0; i < MAX_PERSONALITIES; i++)
     {
         personality_ptr pers_ptr = get_personality_aux(i);
