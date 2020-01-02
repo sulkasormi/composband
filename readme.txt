@@ -1,12 +1,15 @@
-  This file was last updated for PosChengband. Most of the advice here
-  applies to FrogComposband, too; substitute FrogComposband for
-  PosChengband where appropriate.
+--- DISCLAIMER ---
+    FrogComposband may ruin your social life, work productivity, or
+    daily exercise routine. You play the game at your own risk; in no
+    event shall the FrogComposband authors owe you a new keyboard, or
+    be liable to you for any other direct, indirect, punitive, magical
+    or other injuries or damages of any nature whatsoever.
 
 ----- How to install -----
 
---- LINUX
+--- LINUX (instructions by Chris Kousky; lightly edited)
   Download and unpack the source archive, or clone the git repository:
-    $ git clone https://github.com/poschengband/poschengband.git
+    $ git clone https://github.com/sulkasormi/frogcomposband.git
 
   Make sure you have the appropriate development packages installed.
   For example, you might run (Ubuntu or Mint):
@@ -23,24 +26,24 @@
     $ make install
     $ exit
 
-  Then run poschengband as desired:
-    $ poschengband -- -n<number of windows>  ## for normal ASCII graphics
+  Then run frogcomposband as desired:
+    $ frogcomposband -- -n<number of windows>  ## for normal ASCII graphics (recommended)
   or
-    $ poschengband -g -- -n<# of windows>    ## for 8x8 tile graphics 
+    $ frogcomposband -g -- -n<# of windows>    ## for 8x8 tile graphics 
+
+  If make install fails, or the game does not run properly after make install,
+  try bypassing make install and just running the game from root.
 
   You can change game windows' font, location, and size, by environment 
-  variables.
-
-  Ex.
+  variables, for example:
     $ set env ANGBAND_X11_FONT '-*-*-medium-r-normal--24-*-*-*-*-*-iso8859-1'
-    $ poschengband -- -n
+    $ frogcomposband -- -n
 
   Then font size will be changed.
 
-  You can set ANGBAND_X11_FONT_n for specific window which have window number n.
-
-  Location of windows are ANGBAND_X11_AT_X_n, and ANGBAND_X11_AT_Y_n.
-  Size of windows are ANGBAND_X11_COLS_n, and ANGBAND_X11_ROWS_n.
+  You can set ANGBAND_X11_FONT_n for a specific window which has window number n.
+  Window locations are ANGBAND_X11_AT_X_n and ANGBAND_X11_AT_Y_n.
+  Window sizes are ANGBAND_X11_COLS_n and ANGBAND_X11_ROWS_n.
 
   (Thanks to Nick McConnell for implementing and improving building under Linux/MAC!)
 
@@ -50,8 +53,8 @@
     $ ./configure SANITIZE_FLAGS=-fsanitize=address --with-no-install CC=clang-3.5
     $ make clean
     $ make -j4
-    $ cp src/poschengband .
-    $ ASAN_SYMBOLIZER_PATH=/usr/bin/llvm-symbolizer-3.5 ./poschengband -g -u<Savefile> -- -n1
+    $ cp src/frogcomposband .
+    $ ASAN_SYMBOLIZER_PATH=/usr/bin/llvm-symbolizer-3.5 ./frogcomposband -g -u<Savefile> -- -n1
     
     Note: Never pass sanitizer flags to CFLAGS as sanitizing configure causes it to fail.
     Instead, configure will append SANITIZE_FLAGS to CFLAGS and LDFLAGS once it has finished
@@ -62,14 +65,14 @@
     your compiler, rather than gcc. Of course, 3.5 should be replaced with latest version of clang.).
 
     ***Fonts on Linux: My experience with linux has been that the fonts are just plain awful. Here, I document
-    how I managed to install better fonts and use them in PosChengband. I spent nearly a day on this, so I'm
+    how I managed to install better fonts and use them in FrogComposband. I spent nearly a day on this, so I'm
     hoping this might prove useful to somebody else. But mostly, it is here to remind me how I did so I don't
     stumble so much next time.
 
     [1] Install some better fonts. For example
     $ sudo apt-get install fonts-liberation
 
-    [2] See what fonts are on your system that PosChengband can use:
+    [2] See what fonts are on your system that FrogComposband can use:
     $ xlsfonts
     Notice that the new fonts aren't there!
 
@@ -119,8 +122,8 @@
     ... [and many more]
 
     [6] Now, try to find a font you like. For example:
-    $ cd [path to poschengband]
-    ~/Src/poschengband> ANGBAND_X11_FONT='-misc-liberation mono-medium-r-normal--20-0-0-0-m-0-iso8859-1' ./poschengband -mx11
+    $ cd [path to frogcomposband]
+    ~/Src/frogcomposband> ANGBAND_X11_FONT='-misc-liberation mono-medium-r-normal--20-0-0-0-m-0-iso8859-1' ./frogcomposband -mx11
     You can play with the point size since these are vector fonts. I chose 20pt since my eyes suck!
 
     [7] Smile. Grab beer to recover from step [4].
@@ -129,14 +132,14 @@
 
   Curses is for Linux, of course, so everything said above also applies here.
   To run with a single 'big' terminal, simply run, for example:
-    $ ./poschengband -mgcu -uCrusher
+    $ ./frogcomposband -mgcu -uCrusher
 
   To add additional terminal windows, you need to specify sub-options. You can
   configure, from the command line, a strip of terminals on the right hand side
   of the screen, or on the bottom of the screen, or both.
 
   For example:
-    $ ./poschengband -mgcu -uCrusher -- -right 57x26,*
+    $ ./frogcomposband -mgcu -uCrusher -- -right 57x26,*
 
   This specifies that the right hand strip will be be 57 columns wide, and will
   contain 2 additional terminals. The first one, on top, will be 57x26 (i.e., 26
@@ -144,7 +147,7 @@
   to whatever is leftover). These terminals will be numbered 1 and 2, respectively.
 
   Another example:
-    $ ./poschengband -mgcu -uCrusher -- -bottom -bottom *x10
+    $ ./frogcomposband -mgcu -uCrusher -- -bottom -bottom *x10
 
   This adds a bottom strip 10 rows high, and this strip will contain a single
   additional terminal window (numbered as Term-1) that will be as wide as the
@@ -152,7 +155,7 @@
 
   Finally, you can combine the -right and -bottom commands, in either order.
   For example:
-    $ ./poschengband -mgcu -uCrusher -- -right 57x26,* -bottom *x10
+    $ ./frogcomposband -mgcu -uCrusher -- -right 57x26,* -bottom *x10
 
   Here, Term-1 and Term-2 are on the right strip, sized as 57x26 and 57x(LINES-26),
   while Term-3 is on the bottom strip, sized (COLS-57)x10. Term-0, the Main Terminal,
@@ -164,14 +167,14 @@
   region in the bottom-right corner of the screen.
 
   For example, the meaning of the following should now be clear:
-    $ ./poschengband -mgcu -uCrusher -- -bottom *x10 -right 57x26,*
+    $ ./frogcomposband -mgcu -uCrusher -- -bottom *x10 -right 57x26,*
 
   You cannot specify more than 7 child terminals.
 
 --- Windows
 
   Download the binary archive for Windows.  Unzip it to any location that you 
-  will have full permissions and launch poschengband to play.
+  will have full permissions and launch frogcomposband to play.
 
   To compile the source code in MinGW:
   $ ./autogen.sh
@@ -182,22 +185,29 @@
   will need to redo that step.
 
 
------  Basic for Playing  ------
+----------  Basics  ------------
 
-  I've done quite a bit of work on the in-game documentation, though it never
-  seems to be a completable task. If you are new to the game, I recommend you
-  read the Newbie Guide (Press ? to activate the help system, then choose a for
-  General Information followed by e). This will give a quick tutorial as well
-  as some additional information about the game. Helpfiles are also available
-  as html files for viewing outside the game in your favorite browser. In this
-  case, open lib/help/html/tang.html.
+  The in-game documentation has been updated for FrogComposband 7.1.liquorice.
+  Press '?' to activate the help system, then select your favorite topic; e.g.
+  press 'a' twice for General Information; press 'a' followed by 'b' for an
+  introduction to the help files and how to best read them [yes, this is that
+  kind of manual!]; press 'a' followed by 'j' for the Newbie Guide. If you
+  get lost in the depths of the help system, press '!' to return to the
+  help's main page.
+
+  Helpfiles are also available as HTML files for viewing outside the game
+  in your favorite browser; for example, the General Information page is at
+  lib/help/html/general.html and the Newbie Guide at lib/help/html/tang.html.
+
+  If you are still stuck, you can usually find friendly people at angband.live
+  who will try to help you out.
 
 ---------  Commands  ----------- 
 
-  Again, please refer to the in-game help (It hurts me to keep the same information
-  up to date in multiple places). Press ? for help and then k for Commands. Choose
-  the topic that interests you (Command Descriptions for an overview, or one of the
-  Keyset options for reference on which keys to press).
+  Again, please refer to the in-game help; press '?' for help and then 'c'
+  for Commands. Choose the section that interests you ("Command Descriptions"
+  is a separate, lengthy file that explains all commands in detail).
 
-  Or open lib/help/html/commdesc.html or lib/help/html/command.html in your browser.
+  Or open lib/help/html/command.html or lib/help/html/commdesc.html in your browser.
 
+--- Most of this file inherited from PosChengband, updated for FrogComposband 7.1.liquorice.
