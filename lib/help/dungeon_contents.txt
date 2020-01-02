@@ -1,14 +1,19 @@
-<style:title>The Town and Dungeon</style>
+<style:title>The Dungeons</style>
 
-Please choose one of the following online help files:
+Please choose one of the following sections in the help file:
 
-    <link:dungeon.txt> Town and Dungeon
+    <link:dungeon.txt> The Dungeons
     <link:dungeon.txt#MapSymbols> Symbols on Your Map
     <link:dungeon.txt#WithinDungeon> Within the Dungeon
     <link:dungeon.txt#Objects> Objects in the Dungeon
     <link:dungeon.txt#Mining> Mining
-    <link:dungeon.txt#StairsDoorsEtc> Staircases, Doors, Passages & Rooms
+    <link:dungeon.txt#Stairs> Staircases
+    <link:dungeon.txt#SecretDoors> Secret Doors
+    <link:dungeon.txt#Traps> Floor Traps
     <link:dungeon.txt#Feelings> Level Feelings
     <link:dungeon.txt#RandomQuests> Random Quests
+    <link:dungeon.txt#FixedQuests> Fixed Quests
+    <link:dungeon.txt#Conquering> Conquering Dungeons
+    <link:dungeon.txt#List> List of Dungeons
 
     <color:y>(?) Help System Commands</color>
