@@ -2267,6 +2267,7 @@ enum {
  *            Don't restrict selection to LoS.
  *      DISI: Hack for The Bowmaster's Disintegration Arrow. Similar
  *            to MARK but also shows the path.
+ *      TRVL: Instantly start travel to target if 'j' is pressed.
  */
 #define TARGET_KILL        0x01
 #define TARGET_LOOK        0x02
@@ -2274,6 +2275,7 @@ enum {
 #define TARGET_GRID        0x08
 #define TARGET_MARK        0x10
 #define TARGET_DISI        0x20
+#define TARGET_TRVL        0x40
 
 
 /*
