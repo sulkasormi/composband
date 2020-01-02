@@ -1,408 +1,55 @@
-  [[[[B|Targetting
+<style:title>Targetting</style>
 
-  Note: If you are viewing this, it is because you pressed [[[[y|?| while being
-  prompted for a new target.
+The targetting prompt offers many options, and two different modes: <color:keyword>monster-targetting mode</color> and <color:keyword>free-targetting mode</color>. If there are hostile monsters in line of sight, targetting begins in monster-targetting mode; the first target offered will be the nearest such monster, with other hostile monsters in line of sight as alternative targets. Use direction keys to cycle between monsters; <color:keypress>+</color> and <color:keypress>-</color> also work, but are less intuitive. Turn on the <color:keyword>target_pet</color> option (<link:option.txt#target_pet>) if you want this mode to allow non-hostile monsters as targets.
 
-  Many times in the game, you need to select the target for a given action.
-  For example, suppose you wish to shoot a monster using your sling. To do
-  this, you will at some point need to specify the target to shoot at. This
-  topic will walk you through the basics of selecting a target.
+If you wish to target (or inspect) a square with no monster on it, press <color:keypress>p</color> or <color:keypress>o</color>, switching to free-targetting mode where direction keys simply move the cursor. (This mode is automatically entered if no hostile monsters are in line of sight.) <color:keypress>o</color> and <color:keypress>p</color> are identical except in one respect: pressing <color:keypress>p</color> (which stands for <color:keyword>player</color>) moves the cursor to your own location, while pressing <color:keypress>o</color> (which stands for <color:keyword>offset</color>) does not. 
 
-  Let's suppose you are in a room with a few monsters and press the [[[[y|*| key
-  to select a target:
+At any time, press <color:keypress>5</color>, <color:keypress>t</color> or <color:keypress>.</color> to accept the current target (and exit targetting mode), <color:keypress>q</color> or <color:keypress>ESC</color> to exit targetting mode without selecting a target, <color:keypress>r</color> to recall lore about a monster on the target square, <color:keypress>x</color> to see all items on the target square (including stolen or picked-up items carried by monsters, but excluding normal monster item drops), and <color:keypress>J</color> to select a square as a travel target.
 
-  [[[[w|Monster: a White worm mass [r,q,t,p,o,+,-,?,<dir>]
-  [[[[B|High-Elf|[[[[w|
-  [[[[B|Cutpurse|[[[[w|
-  [[[[w|LEVEL |[[[[G|     1|[[[[w|
-  [[[[w|EXP |[[[[G|      20|[[[[w|   #%#%|[[[[s|%%|[[[[w|#%%|[[[[s|%|[[[[w|%|[[[[s|%|[[[[w|#######              #########.####.####
-  [[[[w|AU |[[[[G|      273|[[[[w|   #.................#              #..............w..#
-  [[[[W|||[[[[d|     |[[[[u|~|[[[[U|(|[[[[d|    |[[[[w|   #.................%              ..#.............#.#
-  [[[[w|STR : |[[[[G| 18/10|[[[[w|   #.................#              #..........|[[[[y|R|[[[[R|w|[[[[w|....w.
-  [[[[w|INT : |[[[[G| 18/30|[[[[w| ###.................################............@..w.#
-  [[[[w|WIS : |[[[[G|    11|[[[[w| ..|[[[[U|'|[[[[w|..............................|[[[[v|~|[[[[w|.|[[[[U|'|[[[[w|................w#
-  [[[[w|DEX : |[[[[G| 18/50|[[[[w| ###.................##%#############.................#
-  [[[[w|CON : |[[[[G|    11|[[[[w|   #.................%              #.#.............#.#
-  [[[[w|CHR : |[[[[G|    12|[[[[w|   #<................%              #.................#
-  [[[[w|AC     |[[[[G|    7|[[[[w|   ##|[[[[s|%|[[[[w|##|[[[[s|%|[[[[w|##|[[[[s|%|[[[[w|##|[[[[s|%|[[[[w|####%##              #################.#
-  [[[[w|HP |[[[[G|  43|[[[[w|/|[[[[G|  43|[[[[w|
-  [[[[w|SP |[[[[G|   0|[[[[w|/|[[[[G|   0|[[[[w|
-  [[[[w|
-  [[[[w|[|[[[[G|**********|[[[[w|]
-  [[[[w|
-  [[[[w|
-  [[[[G|      |[[[[w|
-  [[[[w|
-  [[[[w|Day  1  6:39
-  [[[[w|   |[[[[U|Angband|[[[[w|
+Note that when you cast a spell or fire a missile at a target location, the path chosen is the <color:keyword>direct</color> path towards that location, which may or may not be the path you want. Sometimes, by clever choice of a side location as your target, you may be able to aim at squares not directly in line of sight:
+<style:screenshot>  <indent>
+Position: an unknown grid [q,t,p,m,x,j,+,-,?,<dir>]                             
+      ##........#.... #%%####
+      #........<color:U>\</color>......      #
+      %.......<color:U>}</color>{<color:u>\</color>@....      #
+    %#%..........<color:s>*</color>....      #
+   ##    ........<color:s>*</color>...   ... #
+   #       ......<color:s>*</color>...   .<color:G>d</color>. #
+   #        ..<color:W>(</color>.#<color:s>*</color>.     .#####
+   #          .##<color:s>*</color>       <color:y>T</color>   #
+   #    <color:g>^</color>   #####<color:s>*</color>           ##########                                         
+   ##       #   #<color:s>*</color>           <color:U>'</color>
+   #        #  ##<color:s>*</color>         ############                                         
+   #        #  #<color:R>*</color>        ###
+   #        # ##<color:s>*</color>       ##                                                      
+   ##       # # <color:s>*</color>        #                                                      
+    #       # ##<color:s>*</color>        #                                                      
+    #########  #<color:s>*</color>#########
+</indent></style>
+Notice that bright-red <color:R>*</color>? There's a dragon on that square I cannot target directly; but I managed to include that square in my spell's path by using <color:keypress>p</color> to target a location on the southern edge of the map.
 
-  Note: In all the screenshots in this topic, the current target will be
-  highlighted in [[[[R|red|. Normally, the game places the cursor on the current
-  target, but we can't do that in the help file system!
+Note that bolt spells always stop at the first monster in the spell's path, but beam and breath spells affect all squares in their paths, and ball spells can reach the target square by flying over monsters' heads if necessary.
 
-  So, what do you see? First of all, the game is communicating with you on the
-  message line, as is to be expected. The message is telling you about the
-  current choice of all the potential targets, and it is up to you to navigate
-  the cursor to the monster you want. The line also lists, rather cryptically,
-  all of the possible commands you can use: [r,q,t,p,o,+,-,?,<dir>]. Phew,
-  that's a lot!
+<topic:TargetTypes><style:heading>Location Targets vs Monster Targets</style>
 
-  First, since the cursor is currently on a monster, you can invoke the recall
-  option by pressing [[[[y|r|:
+When selecting a target, you may target either a <color:keyword>monster</color> or a <color:keyword>location</color>. This is an important difference: if you target a monster, the target will move when the monster moves; but if you target a location, the target remains stationary, even if the location had a monster in it. 
 
-  [[[[w|The White worm mass ('w')/('w'):  [r,q,t,p,o,+,-,?,<dir>]
-  [[[[w|No battles to the death are recalled.
-  [[[[w|It is a large slimy mass of worms.
-  [[[[w|It moves extremely erratically, and|[[[[B| slowly|[[[[w|.  |[[[[U|It breeds explosively.  |[[[[w|Nothing is
-  [[[[w|known about its attack.
-  [[[[w|
-  [[[[W|||[[[[d|     |[[[[u|~|[[[[U|(|[[[[d|    |[[[[w|   #.................%              ..#.............#.#
-  [[[[w|STR : |[[[[G| 18/10|[[[[w|   #.................#              #..........|[[[[y|R|[[[[w|w....w.
-  [[[[w|INT : |[[[[G| 18/30|[[[[w| ###.................################............@..w.#
-  [[[[w|WIS : |[[[[G|    11|[[[[w| ..|[[[[U|'|[[[[w|..............................|[[[[v|~|[[[[w|.|[[[[U|'|[[[[w|................w#
-  [[[[w|DEX : |[[[[G| 18/50|[[[[w| ###.................##%#############.................#
-  [[[[w|CON : |[[[[G|    11|[[[[w|   #.................%              #.#.............#.#
-  [[[[w|CHR : |[[[[G|    12|[[[[w|   #<................%              #.................#
-  [[[[w|AC     |[[[[G|    7|[[[[w|   ##|[[[[s|%|[[[[w|##|[[[[s|%|[[[[w|##|[[[[s|%|[[[[w|##|[[[[s|%|[[[[w|####%##              #################.#
-  [[[[w|HP |[[[[G|  43|[[[[w|/|[[[[G|  43|[[[[w|
-  [[[[w|SP |[[[[G|   0|[[[[w|/|[[[[G|   0|[[[[w|
-  [[[[w|
-  [[[[w|[|[[[[G|**********|[[[[w|]
-  [[[[w|
-  [[[[w|
-  [[[[G|      |[[[[w|
-  [[[[w|
-  [[[[w|Day  1  6:39
-  [[[[w|   |[[[[U|Angband|[[[[w|
+If you bypass targetting mode you can also target a <color:keyword>compass direction</color>, which for this purpose is always equivalent to targetting a <color:keyword>location</color>, even if there was an obvious monster in the direction indicated. So watch out if there's a monster due west of you, you fire west and then spam <color:keypress>n</color> (or <color:keypress>X</color> in the roguelike keyset) to repeat: this will work beautifully as long as the monster remains due west, but as soon as it moves north or south you will need to retarget, something you would not have needed to do had you selected the monster as your target.
 
-  You can dismiss the recall info by pressing [[[[y|r| again and this will leave the
-  cursor where you started.
+<topic:Summary><style:heading>Quick Summary</style>
 
-  Since there were multiple monsters in the room, there are multiple
-  potential targets, and the game built up a list of them all sorted by their
-  distance to you. I guess most of the time you will be wanting to target the
-  nearest monster, but this is not always the case. So in the navigation
-  commands, it will help if you keep in mind the list of potential targets as
-  well as the fact they are sorted by distance.
+  <color:keypress>5 t .</color>        Select new target and exit targetting mode
+  <color:keypress>ESC q</color>        Exit targetting mode with no target selected    
+  <color:keypress>DIR</color>          Move to square or monster in direction indicated
+  <color:keypress>+</color>            Move to more distant monster
+  <color:keypress>-</color>            Move to less distant monster
+  <color:keypress>J</color>            Select travel target (exit and travel if not aiming)
 
-  To navigate this list of potential targets to the one you want, you can use
-  the [[[[y|+| and [[[[y|-| commands. [[[[y|+| moves the cursor forward one in the sorted list of
-  candidates, while [[[[y|-| moves it back one. I will go ahead and press [[[[y|+|:
+  <color:keypress>m</color>            Enter monster-targetting mode
+  <color:keypress>p</color>            Enter free-targetting mode (move cursor to player)
+  <color:keypress>o</color>            Enter free-targetting mode (keep cursor location)
 
-  [[[[w|Monster: a Newt [r,q,t,p,o,+,-,?,<dir>]
-  [[[[B|High-Elf|[[[[w|
-  [[[[B|Cutpurse|[[[[w|
-  [[[[w|LEVEL |[[[[G|     1|[[[[w|
-  [[[[w|EXP |[[[[G|      20|[[[[w|   #%#%|[[[[s|%%|[[[[w|#%%|[[[[s|%|[[[[w|%|[[[[s|%|[[[[w|#######              #########.####.####
-  [[[[w|AU |[[[[G|      273|[[[[w|   #.................#              #..............w..#
-  [[[[W|||[[[[d|     |[[[[u|~|[[[[U|(|[[[[d|    |[[[[w|   #.................%              ..#.............#.#
-  [[[[w|STR : |[[[[G| 18/10|[[[[w|   #.................#              #..........|[[[[R|R|[[[[w|w....w.
-  [[[[w|INT : |[[[[G| 18/30|[[[[w| ###.................################............@..w.#
-  [[[[w|WIS : |[[[[G|    11|[[[[w| ..|[[[[U|'|[[[[w|..............................|[[[[v|~|[[[[w|.|[[[[U|'|[[[[w|................w#
-  [[[[w|DEX : |[[[[G| 18/50|[[[[w| ###.................##%#############.................#
-  [[[[w|CON : |[[[[G|    11|[[[[w|   #.................%              #.#.............#.#
-  [[[[w|CHR : |[[[[G|    12|[[[[w|   #<................%              #.................#
-  [[[[w|AC     |[[[[G|    7|[[[[w|   ##|[[[[s|%|[[[[w|##|[[[[s|%|[[[[w|##|[[[[s|%|[[[[w|##|[[[[s|%|[[[[w|####%##              #################.#
-  [[[[w|HP |[[[[G|  43|[[[[w|/|[[[[G|  43|[[[[w|
-  [[[[w|SP |[[[[G|   0|[[[[w|/|[[[[G|   0|[[[[w|
-  [[[[w|
-  [[[[w|[|[[[[b|**********|[[[[w|]
-  [[[[w|
-  [[[[w|
-  [[[[G|      |[[[[w|
-  [[[[w|
-  [[[[w|Day  1  6:39
-  [[[[w|   |[[[[U|Angband|[[[[w|
+  <color:keypress>r</color>            Recall monster lore     
+  <color:keypress>x</color>            Cycle between items on target square
 
-  The newt is the next nearest target, and you'll notice the cursor moved to
-  it. I can use the [[[[y|r| command to recall information about newts if they are
-  unfamiliar, but let's keep navigating instead. I will go ahead and press [[[[y|+|
-  again:
-
-  [[[[w|Monster: a White worm mass [r,q,t,p,o,+,-,?,<dir>]
-  [[[[B|High-Elf|[[[[w|
-  [[[[B|Cutpurse|[[[[w|
-  [[[[w|LEVEL |[[[[G|     1|[[[[w|
-  [[[[w|EXP |[[[[G|      20|[[[[w|   #%#%|[[[[s|%%|[[[[w|#%%|[[[[s|%|[[[[w|%|[[[[s|%|[[[[w|#######              #########.####.####
-  [[[[w|AU |[[[[G|      273|[[[[w|   #.................#              #..............w..#
-  [[[[W|||[[[[d|     |[[[[u|~|[[[[U|(|[[[[d|    |[[[[w|   #.................%              ..#.............#.#
-  [[[[w|STR : |[[[[G| 18/10|[[[[w|   #.................#              #..........|[[[[y|R|[[[[w|w....w.
-  [[[[w|INT : |[[[[G| 18/30|[[[[w| ###.................################............@..|[[[[R|w|[[[[w|.#
-  [[[[w|WIS : |[[[[G|    11|[[[[w| ..|[[[[U|'|[[[[w|..............................|[[[[v|~|[[[[w|.|[[[[U|'|[[[[w|................w#
-  [[[[w|DEX : |[[[[G| 18/50|[[[[w| ###.................##%#############.................#
-  [[[[w|CON : |[[[[G|    11|[[[[w|   #.................%              #.#.............#.#
-  [[[[w|CHR : |[[[[G|    12|[[[[w|   #<................%              #.................#
-  [[[[w|AC     |[[[[G|    7|[[[[w|   ##|[[[[s|%|[[[[w|##|[[[[s|%|[[[[w|##|[[[[s|%|[[[[w|##|[[[[s|%|[[[[w|####%##              #################.#
-  [[[[w|HP |[[[[G|  43|[[[[w|/|[[[[G|  43|[[[[w|
-  [[[[w|SP |[[[[G|   0|[[[[w|/|[[[[G|   0|[[[[w|
-  [[[[w|
-  [[[[w|[|[[[[G|**********|[[[[w|]
-  [[[[w|
-  [[[[w|
-  [[[[G|      |[[[[w|
-  [[[[w|
-  [[[[w|Day  1  6:39
-  [[[[w|   |[[[[U|Angband|[[[[w|
-
-  Can you see how the targets are coming up according to how close they are to
-  me?
-
-  Once you have positioned the cursor on the desired target, simply press [[[[y|t| to
-  choose that target. Or, if you wish to cancel the targetting command, you may
-  press [[[[y|q| or [[[[y|ESC|.
-
-  You can also navigate the list of potential targets using the arrow keys.
-  Rather than using distance to the player to find the next choice, the game
-  tries to find the nearest monster in the specified direction from the current
-  selection. So, if I go ahead and press the [[[[y|LEFT| arrow from the last screen,
-  you can see that the selection moved to the first monster to the left of the
-  previous selection:
-
-  [[[[w|Monster: a White worm mass [r,q,t,p,o,+,-,?,<dir>]
-  [[[[B|High-Elf|[[[[w|
-  [[[[B|Cutpurse|[[[[w|
-  [[[[w|LEVEL |[[[[G|     1|[[[[w|
-  [[[[w|EXP |[[[[G|      20|[[[[w|   #%#%|[[[[s|%%|[[[[w|#%%|[[[[s|%|[[[[w|%|[[[[s|%|[[[[w|#######              #########.####.####
-  [[[[w|AU |[[[[G|      273|[[[[w|   #.................#              #..............w..#
-  [[[[W|||[[[[d|     |[[[[u|~|[[[[U|(|[[[[d|    |[[[[w|   #.................%              ..#.............#.#
-  [[[[w|STR : |[[[[G| 18/10|[[[[w|   #.................#              #..........|[[[[y|R|[[[[R|w|[[[[w|....w.
-  [[[[w|INT : |[[[[G| 18/30|[[[[w| ###.................################............@..w.#
-  [[[[w|WIS : |[[[[G|    11|[[[[w| ..|[[[[U|'|[[[[w|..............................|[[[[v|~|[[[[w|.|[[[[U|'|[[[[w|................w#
-  [[[[w|DEX : |[[[[G| 18/50|[[[[w| ###.................##%#############.................#
-  [[[[w|CON : |[[[[G|    11|[[[[w|   #.................%              #.#.............#.#
-  [[[[w|CHR : |[[[[G|    12|[[[[w|   #<................%              #.................#
-  [[[[w|AC     |[[[[G|    7|[[[[w|   ##|[[[[s|%|[[[[w|##|[[[[s|%|[[[[w|##|[[[[s|%|[[[[w|##|[[[[s|%|[[[[w|####%##              #################.#
-  [[[[w|HP |[[[[G|  43|[[[[w|/|[[[[G|  43|[[[[w|
-  [[[[w|SP |[[[[G|   0|[[[[w|/|[[[[G|   0|[[[[w|
-  [[[[w|
-  [[[[w|[|[[[[G|**********|[[[[w|]
-  [[[[w|
-  [[[[w|
-  [[[[G|      |[[[[w|
-  [[[[w|
-  [[[[w|Day  1  6:39
-  [[[[w|   |[[[[U|Angband|[[[[w|
-
-  However, I find that using the arrows as direction keys to locate a target is
-  iffy at best. Sometimes the selection jumps very far from where I intended.
-
-  At this point, we've discussed the [[[[y|r|, [[[[y|q|, [[[[y|t|, [[[[y|+|, [[[[y|-| and [[[[y|<dir>|. And we don't need
-  to mention [[[[y|?| since you've already learned that [[[[y|?| brings you here for help.
-  That just leaves [[[[y|p| and [[[[y|o|.
-
-  The [[[[y|p| command returns the selection to the player. Normally, you would want
-  to select a monster for a target, but you can actually target a position
-  instead. This can be useful if monsters are hiding out of view and you happen
-  to have an area of effect spell, such as a fire ball. In that case, you could
-  select a position that is in view and let the fire ball explode around a
-  corner to fry the hiding monster. The [[[[y|p| and [[[[y|o| commands allow you to select a
-  position relative to your current location. As mentioned, [[[[y|p| sets the selection
-  on the player. If you then use the [[[[y|<dir>| commands, you will notice the
-  selection moving by position. For example, I'll press [[[[y|p| and then [[[[y|UP|:
-
-  [[[[w|Position: open floor [q,t,p,m,+,-,<dir>]
-  [[[[B|High-Elf|[[[[w|
-  [[[[B|Cutpurse|[[[[w|
-  [[[[w|LEVEL |[[[[G|     1|[[[[w|
-  [[[[w|EXP |[[[[G|      20|[[[[w|   #%#%|[[[[s|%%|[[[[w|#%%|[[[[s|%|[[[[w|%|[[[[s|%|[[[[w|#######              #########.####.####
-  [[[[w|AU |[[[[G|      273|[[[[w|   #.................#              #..............w..#
-  [[[[W|||[[[[d|     |[[[[u|~|[[[[U|(|[[[[d|    |[[[[w|   #.................%              ..#.............#.#
-  [[[[w|STR : |[[[[G| 18/10|[[[[w|   #.................#              #..........|[[[[y|R|[[[[w|w|[[[[R|.|[[[[w|...w.
-  [[[[w|INT : |[[[[G| 18/30|[[[[w| ###.................################............@..w.#
-  [[[[w|WIS : |[[[[G|    11|[[[[w| ..|[[[[U|'|[[[[w|..............................|[[[[v|~|[[[[w|.|[[[[U|'|[[[[w|................w#
-  [[[[w|DEX : |[[[[G| 18/50|[[[[w| ###.................##%#############.................#
-  [[[[w|CON : |[[[[G|    11|[[[[w|   #.................%              #.#.............#.#
-  [[[[w|CHR : |[[[[G|    12|[[[[w|   #<................%              #.................#
-  [[[[w|AC     |[[[[G|    7|[[[[w|   ##|[[[[s|%|[[[[w|##|[[[[s|%|[[[[w|##|[[[[s|%|[[[[w|##|[[[[s|%|[[[[w|####%##              #################.#
-  [[[[w|HP |[[[[G|  43|[[[[w|/|[[[[G|  43|[[[[w|
-  [[[[w|SP |[[[[G|   0|[[[[w|/|[[[[G|   0|[[[[w|
-  [[[[w|
-  [[[[w|[|[[[[G|**********|[[[[w|]
-  [[[[w|
-  [[[[w|
-  [[[[G|      |[[[[w|
-  [[[[w|
-  [[[[w|Day  1  6:39
-  [[[[w|   |[[[[U|Angband|[[[[w|
-
-  Can you see what happened? The cursor moved to the square above me.
-
-  The [[[[y|o| command stands for offset. With the cursor on a monster, if you press [[[[y|o|
-  and then the arrow keys, you can select a positional target relative to the
-  current monster. This is like pressing [[[[y|p| and then using the arrow keys to
-  select a positional target relative to the player.
-
-  [[[[r|Position vs Monster Targets
-
-  When selecting a target, you may either target a monster or a location. Since
-  it is possible to target the location of a monster, you need to pay attention
-  to the type of target you are selecting. If you target a monster, then the
-  target moves with the monster. This is normal, since you probably will want
-  to target one foe at a time, and then spend several rounds hurling attacks
-  at it. When the monster moves, you expect your attacks to move with it. This
-  is a moving target.
-
-  But a target can also be stationary. If you target a location, even if that
-  location currently has a monster present, the the target remains fixed. So
-  if I accidentally target the location of a monster, rather than the monster
-  itself, I will be in for a surprise if it moves.
-
-  For example:
-  [[[[w|Monster: Farmer Maggot [r,q,t,p,o,+,-,?,<dir>]
-  [[[[B|High-Elf|[[[[w|     |[[[[G|##################################################################
-  [[[[B|Cutpurse|[[[[w|     |[[[[G|##################################################################
-  [[[[w|LEVEL |[[[[G|     1|[[[[w| |[[[[G|###############################|[[[[U|###|[[[[G|################################
-  [[[[w|EXP |[[[[G|      20|[[[[w| |[[[[G|###############################|[[[[U|###|[[[[G|##############|[[[[w|.|[[[[G|##########|[[[[w|..|[[[[G|#####
-  [[[[w|AU |[[[[G|      273|[[[[w| |[[[[G|###############################|[[[[U|###|[[[[G|###|[[[[w|..|[[[[G|#|[[[[w|..|[[[[G|##|[[[[w|.......|[[[[G|#|[[[[w|...|[[[[G|#|[[[[w|..........
-  [[[[W|||[[[[d|     |[[[[u|~|[[[[U|(|[[[[d|    |[[[[w| |[[[[G|################################|[[[[w|.|[[[[G|#|[[[[w|.|[[[[G|#|[[[[w|.|[[[[G|#|[[[[w|............................
-  [[[[w|STR : |[[[[G| 18/10|[[[[w| |[[[[G|###############################|[[[[w|...................................
-  [[[[w|INT : |[[[[G| 18/30|[[[[w| |[[[[G|##############################|[[[[w|.|[[[[G|#|[[[[w|..................................
-  [[[[w|WIS : |[[[[G|    11|[[[[w| |[[[[G|############################|[[[[w|.....|[[[[U|################################|[[[[w|.
-  [[[[w|DEX : |[[[[G| 18/50|[[[[w| |[[[[G|########################|[[[[w|..|[[[[G|#|[[[[w|.|[[[[G|#|[[[[w|...|[[[[U|#################################|[[[[w|.
-  [[[[w|CON : |[[[[G|    11|[[[[w| |[[[[G|#########|[[[[w|:::|[[[[G|###########|[[[[w|.|[[[[G|#|[[[[w|......|[[[[U|#######|[[[[w|............................
-  [[[[w|CHR : |[[[[G|    12|[[[[w| |[[[[G|########|[[[[g|.|[[[[w|:|[[[[g|.|[[[[w|:|[[[[g|.|[[[[w|:|[[[[G|#######|[[[[w|.|[[[[G|#|[[[[w|........|[[[[U|######|[[[[u|+|[[[[w|............................
-  [[[[w|AC     |[[[[G|    7|[[[[w| |[[[[G|#######|[[[[w|:|[[[[G|#|[[[[g|...|[[[[G|########|[[[[w|.|[[[[G|##|[[[[w|........|[[[[U|#######|[[[[w|............................
-  [[[[w|HP |[[[[G|  43|[[[[w|/|[[[[G|  43|[[[[w| |[[[[G|########|[[[[g|.|[[[[w|:|[[[[g|..|[[[[w|:|[[[[G|#########|[[[[w|.........|[[[[U|######|[[[[w|.........|[[[[U|###|[[[[v|0|[[[[U|###|[[[[w|..|[[[[U|####|[[[[o|+|[[[[U|####|[[[[w|..
-  [[[[w|SP |[[[[G|   0|[[[[w|/|[[[[G|   0|[[[[w| |[[[[G|##########|[[[[g|.|[[[[G|##########|[[[[w|..........|[[[[U|###+#|[[[[w|...|[[[[U|#####|[[[[w|..|[[[[U|#######|[[[[w|..|[[[[U|#########|[[[[w|..
-  [[[[w|             |[[[[G|####################|[[[[w|...........|[[[[U|##|[[[[w|......|[[[[U|#####|[[[[w|..|[[[[U|#######|[[[[w|..|[[[[U|#########|[[[[w|..
-  [[[[w|[|[[[[y|**********|[[[[w|] |[[[[G|#####################|[[[[w|..........|[[[[U|##|[[[[w|......|[[[[U|##+##|[[[[w|..|[[[[U|###|[[[[o|9|[[[[U|###|[[[[w|..|[[[[U|####|[[[[w|3|[[[[U|####|[[[[w|..
-  [[[[w|             |[[[[G|#######################|[[[[w|........|[[[[U|##|[[[[w|.................................
-  [[[[w|             |[[[[G|####################|[[[[w|......|[[[[R|h|[[[[w|....|[[[[U|##|[[[[w|.................................
-  [[[[G|      |[[[[w|       |[[[[G|######################|[[[[w|......@..|[[[[U|##|[[[[w|.................................
-  [[[[w|             |[[[[G|####################|[[[[w|.............................................|[[[[v|>
-  [[[[w|Day  1  7:03 |[[[[G|#################|[[[[U|###|[[[[w|.|[[[[G|#|[[[[w|.........|[[[[U|##|[[[[w|.................................
-  [[[[w|    |[[[[U|Town|[[[[w|     |[[[[G|#################|[[[[U|###|[[[[G|#|[[[[w|..........|[[[[U|##|[[[[w|.................................
-  [[[[w|             |[[[[G|#################|[[[[U|###|[[[[w|...........|[[[[U|##|[[[[w|.................................
-  [[[[w|             |[[[[G|#################|[[[[U|###|[[[[w|...........|[[[[U|##|[[[[w|......|[[[[U|##1##|[[[[w|..|[[[[U|###|[[[[D|7|[[[[U|###|[[[[w|..|[[[[U|####|[[[[s|2|[[[[U|####|[[[[w|..
-  [[[[w|                                                                          Surf.
-
-  Here I am targetting Farmer Maggot. You know the target will be the monster
-  since the message line says "Monster: Farmer Maggot". But if I press a
-  direction key to find the next monster to the left (and there is none), then
-  the targetting mode will automatically switch from monster to position:
-
-  [[[[w|Position: open floor [q,t,p,m,+,-,<dir>]
-  [[[[B|High-Elf|[[[[w|     |[[[[G|##################################################################
-  [[[[B|Cutpurse|[[[[w|     |[[[[G|##################################################################
-  [[[[w|LEVEL |[[[[G|     1|[[[[w| |[[[[G|###############################|[[[[U|###|[[[[G|################################
-  [[[[w|EXP |[[[[G|      20|[[[[w| |[[[[G|###############################|[[[[U|###|[[[[G|##############|[[[[w|.|[[[[G|##########|[[[[w|..|[[[[G|#####
-  [[[[w|AU |[[[[G|      273|[[[[w| |[[[[G|###############################|[[[[U|###|[[[[G|###|[[[[w|..|[[[[G|#|[[[[w|..|[[[[G|##|[[[[w|.......|[[[[G|#|[[[[w|...|[[[[G|#|[[[[w|..........
-  [[[[W|||[[[[d|     |[[[[u|~|[[[[U|(|[[[[d|    |[[[[w| |[[[[G|################################|[[[[w|.|[[[[G|#|[[[[w|.|[[[[G|#|[[[[w|.|[[[[G|#|[[[[w|............................
-  [[[[w|STR : |[[[[G| 18/10|[[[[w| |[[[[G|###############################|[[[[w|...................................
-  [[[[w|INT : |[[[[G| 18/30|[[[[w| |[[[[G|##############################|[[[[w|.|[[[[G|#|[[[[w|..................................
-  [[[[w|WIS : |[[[[G|    11|[[[[w| |[[[[G|############################|[[[[w|.....|[[[[U|################################|[[[[w|.
-  [[[[w|DEX : |[[[[G| 18/50|[[[[w| |[[[[G|########################|[[[[w|..|[[[[G|#|[[[[w|.|[[[[G|#|[[[[w|...|[[[[U|#################################|[[[[w|.
-  [[[[w|CON : |[[[[G|    11|[[[[w| |[[[[G|#########|[[[[w|:::|[[[[G|###########|[[[[w|.|[[[[G|#|[[[[w|......|[[[[U|#######|[[[[w|............................
-  [[[[w|CHR : |[[[[G|    12|[[[[w| |[[[[G|########|[[[[g|.|[[[[w|:|[[[[g|.|[[[[w|:|[[[[g|.|[[[[w|:|[[[[G|#######|[[[[w|.|[[[[G|#|[[[[w|........|[[[[U|######|[[[[u|+|[[[[w|............................
-  [[[[w|AC     |[[[[G|    7|[[[[w| |[[[[G|#######|[[[[w|:|[[[[G|#|[[[[g|...|[[[[G|########|[[[[w|.|[[[[G|##|[[[[w|........|[[[[U|#######|[[[[w|............................
-  [[[[w|HP |[[[[G|  43|[[[[w|/|[[[[G|  43|[[[[w| |[[[[G|########|[[[[g|.|[[[[w|:|[[[[g|..|[[[[w|:|[[[[G|#########|[[[[w|.........|[[[[U|######|[[[[w|.........|[[[[U|###|[[[[v|0|[[[[U|###|[[[[w|..|[[[[U|####|[[[[o|+|[[[[U|####|[[[[w|..
-  [[[[w|SP |[[[[G|   0|[[[[w|/|[[[[G|   0|[[[[w| |[[[[G|##########|[[[[g|.|[[[[G|##########|[[[[w|..........|[[[[U|###+#|[[[[w|...|[[[[U|#####|[[[[w|..|[[[[U|#######|[[[[w|..|[[[[U|#########|[[[[w|..
-  [[[[w|             |[[[[G|####################|[[[[w|...........|[[[[U|##|[[[[w|......|[[[[U|#####|[[[[w|..|[[[[U|#######|[[[[w|..|[[[[U|#########|[[[[w|..
-  [[[[w|[|[[[[y|**********|[[[[w|] |[[[[G|#####################|[[[[w|..........|[[[[U|##|[[[[w|......|[[[[U|##+##|[[[[w|..|[[[[U|###|[[[[o|9|[[[[U|###|[[[[w|..|[[[[U|####|[[[[w|3|[[[[U|####|[[[[w|..
-  [[[[w|             |[[[[G|#######################|[[[[w|........|[[[[U|##|[[[[w|.................................
-  [[[[w|             |[[[[G|####################|[[[[w|.....|[[[[R|.|[[[[w|h....|[[[[U|##|[[[[w|.................................
-  [[[[G|      |[[[[w|       |[[[[G|######################|[[[[w|......@..|[[[[U|##|[[[[w|.................................
-  [[[[w|             |[[[[G|####################|[[[[w|.............................................|[[[[v|>
-  [[[[w|Day  1  7:03 |[[[[G|#################|[[[[U|###|[[[[w|.|[[[[G|#|[[[[w|.........|[[[[U|##|[[[[w|.................................
-  [[[[w|    |[[[[U|Town|[[[[w|     |[[[[G|#################|[[[[U|###|[[[[G|#|[[[[w|..........|[[[[U|##|[[[[w|.................................
-  [[[[w|             |[[[[G|#################|[[[[U|###|[[[[w|...........|[[[[U|##|[[[[w|.................................
-  [[[[w|             |[[[[G|#################|[[[[U|###|[[[[w|...........|[[[[U|##|[[[[w|......|[[[[U|##1##|[[[[w|..|[[[[U|###|[[[[D|7|[[[[U|###|[[[[w|..|[[[[U|####|[[[[s|2|[[[[U|####|[[[[w|..
-  [[[[w|                                                                          Surf.
-
-  You can tell that you are targetting a position since the top line reads
-  "Position: open floor". Suppose this was a mistake, and I really wanted to
-  target Farmer Maggot, so I press [[[[y|RIGHT| to get back to him:
-
-  [[[[w|Position: Farmer Maggot [r,q,t,p,m,+,-,<dir>]
-  [[[[B|High-Elf|[[[[w|     |[[[[G|##################################################################
-  [[[[B|Cutpurse|[[[[w|     |[[[[G|##################################################################
-  [[[[w|LEVEL |[[[[G|     1|[[[[w| |[[[[G|###############################|[[[[U|###|[[[[G|################################
-  [[[[w|EXP |[[[[G|      20|[[[[w| |[[[[G|###############################|[[[[U|###|[[[[G|##############|[[[[w|.|[[[[G|##########|[[[[w|..|[[[[G|#####
-  [[[[w|AU |[[[[G|      273|[[[[w| |[[[[G|###############################|[[[[U|###|[[[[G|###|[[[[w|..|[[[[G|#|[[[[w|..|[[[[G|##|[[[[w|.......|[[[[G|#|[[[[w|...|[[[[G|#|[[[[w|..........
-  [[[[W|||[[[[d|     |[[[[u|~|[[[[U|(|[[[[d|    |[[[[w| |[[[[G|################################|[[[[w|.|[[[[G|#|[[[[w|.|[[[[G|#|[[[[w|.|[[[[G|#|[[[[w|............................
-  [[[[w|STR : |[[[[G| 18/10|[[[[w| |[[[[G|###############################|[[[[w|...................................
-  [[[[w|INT : |[[[[G| 18/30|[[[[w| |[[[[G|##############################|[[[[w|.|[[[[G|#|[[[[w|..................................
-  [[[[w|WIS : |[[[[G|    11|[[[[w| |[[[[G|############################|[[[[w|.....|[[[[U|################################|[[[[w|.
-  [[[[w|DEX : |[[[[G| 18/50|[[[[w| |[[[[G|########################|[[[[w|..|[[[[G|#|[[[[w|.|[[[[G|#|[[[[w|...|[[[[U|#################################|[[[[w|.
-  [[[[w|CON : |[[[[G|    11|[[[[w| |[[[[G|#########|[[[[w|:::|[[[[G|###########|[[[[w|.|[[[[G|#|[[[[w|......|[[[[U|#######|[[[[w|............................
-  [[[[w|CHR : |[[[[G|    12|[[[[w| |[[[[G|########|[[[[g|.|[[[[w|:|[[[[g|.|[[[[w|:|[[[[g|.|[[[[w|:|[[[[G|#######|[[[[w|.|[[[[G|#|[[[[w|........|[[[[U|######|[[[[u|+|[[[[w|............................
-  [[[[w|AC     |[[[[G|    7|[[[[w| |[[[[G|#######|[[[[w|:|[[[[G|#|[[[[g|...|[[[[G|########|[[[[w|.|[[[[G|##|[[[[w|........|[[[[U|#######|[[[[w|............................
-  [[[[w|HP |[[[[G|  43|[[[[w|/|[[[[G|  43|[[[[w| |[[[[G|########|[[[[g|.|[[[[w|:|[[[[g|..|[[[[w|:|[[[[G|#########|[[[[w|.........|[[[[U|######|[[[[w|.........|[[[[U|###|[[[[v|0|[[[[U|###|[[[[w|..|[[[[U|####|[[[[o|+|[[[[U|####|[[[[w|..
-  [[[[w|SP |[[[[G|   0|[[[[w|/|[[[[G|   0|[[[[w| |[[[[G|##########|[[[[g|.|[[[[G|##########|[[[[w|..........|[[[[U|###+#|[[[[w|...|[[[[U|#####|[[[[w|..|[[[[U|#######|[[[[w|..|[[[[U|#########|[[[[w|..
-  [[[[w|             |[[[[G|####################|[[[[w|...........|[[[[U|##|[[[[w|......|[[[[U|#####|[[[[w|..|[[[[U|#######|[[[[w|..|[[[[U|#########|[[[[w|..
-  [[[[w|[|[[[[y|**********|[[[[w|] |[[[[G|#####################|[[[[w|..........|[[[[U|##|[[[[w|......|[[[[U|##+##|[[[[w|..|[[[[U|###|[[[[o|9|[[[[U|###|[[[[w|..|[[[[U|####|[[[[w|3|[[[[U|####|[[[[w|..
-  [[[[w|             |[[[[G|#######################|[[[[w|........|[[[[U|##|[[[[w|.................................
-  [[[[w|             |[[[[G|####################|[[[[w|......|[[[[R|h|[[[[w|....|[[[[U|##|[[[[w|.................................
-  [[[[G|      |[[[[w|       |[[[[G|######################|[[[[w|......@..|[[[[U|##|[[[[w|.................................
-  [[[[w|             |[[[[G|####################|[[[[w|.............................................|[[[[v|>
-  [[[[w|Day  1  7:03 |[[[[G|#################|[[[[U|###|[[[[w|.|[[[[G|#|[[[[w|.........|[[[[U|##|[[[[w|.................................
-  [[[[w|    |[[[[U|Town|[[[[w|     |[[[[G|#################|[[[[U|###|[[[[G|#|[[[[w|..........|[[[[U|##|[[[[w|.................................
-  [[[[w|             |[[[[G|#################|[[[[U|###|[[[[w|...........|[[[[U|##|[[[[w|.................................
-  [[[[w|             |[[[[G|#################|[[[[U|###|[[[[w|...........|[[[[U|##|[[[[w|......|[[[[U|##1##|[[[[w|..|[[[[U|###|[[[[D|7|[[[[U|###|[[[[w|..|[[[[U|####|[[[[s|2|[[[[U|####|[[[[w|..
-  [[[[w|                                                                          Surf.
-
-  Ah, but the game still thinks I am targetting a position rather than a
-  monster! Notice the top line: "Position: Farmer Maggot". To actually get the
-  targetting code back into monster mode, you actually need to press [[[[y|m|:
-
-  [[[[w|Monster: Farmer Maggot [r,q,t,p,o,+,-,?,<dir>]
-  [[[[B|High-Elf|[[[[w|     |[[[[G|##################################################################
-  [[[[B|Cutpurse|[[[[w|     |[[[[G|##################################################################
-  [[[[w|LEVEL |[[[[G|     1|[[[[w| |[[[[G|###############################|[[[[U|###|[[[[G|################################
-  [[[[w|EXP |[[[[G|      20|[[[[w| |[[[[G|###############################|[[[[U|###|[[[[G|##############|[[[[w|.|[[[[G|##########|[[[[w|..|[[[[G|#####
-  [[[[w|AU |[[[[G|      273|[[[[w| |[[[[G|###############################|[[[[U|###|[[[[G|###|[[[[w|..|[[[[G|#|[[[[w|..|[[[[G|##|[[[[w|.......|[[[[G|#|[[[[w|...|[[[[G|#|[[[[w|..........
-  [[[[W|||[[[[d|     |[[[[u|~|[[[[U|(|[[[[d|    |[[[[w| |[[[[G|################################|[[[[w|.|[[[[G|#|[[[[w|.|[[[[G|#|[[[[w|.|[[[[G|#|[[[[w|............................
-  [[[[w|STR : |[[[[G| 18/10|[[[[w| |[[[[G|###############################|[[[[w|...................................
-  [[[[w|INT : |[[[[G| 18/30|[[[[w| |[[[[G|##############################|[[[[w|.|[[[[G|#|[[[[w|..................................
-  [[[[w|WIS : |[[[[G|    11|[[[[w| |[[[[G|############################|[[[[w|.....|[[[[U|################################|[[[[w|.
-  [[[[w|DEX : |[[[[G| 18/50|[[[[w| |[[[[G|########################|[[[[w|..|[[[[G|#|[[[[w|.|[[[[G|#|[[[[w|...|[[[[U|#################################|[[[[w|.
-  [[[[w|CON : |[[[[G|    11|[[[[w| |[[[[G|#########|[[[[w|:::|[[[[G|###########|[[[[w|.|[[[[G|#|[[[[w|......|[[[[U|#######|[[[[w|............................
-  [[[[w|CHR : |[[[[G|    12|[[[[w| |[[[[G|########|[[[[g|.|[[[[w|:|[[[[g|.|[[[[w|:|[[[[g|.|[[[[w|:|[[[[G|#######|[[[[w|.|[[[[G|#|[[[[w|........|[[[[U|######|[[[[u|+|[[[[w|............................
-  [[[[w|AC     |[[[[G|    7|[[[[w| |[[[[G|#######|[[[[w|:|[[[[G|#|[[[[g|...|[[[[G|########|[[[[w|.|[[[[G|##|[[[[w|........|[[[[U|#######|[[[[w|............................
-  [[[[w|HP |[[[[G|  43|[[[[w|/|[[[[G|  43|[[[[w| |[[[[G|########|[[[[g|.|[[[[w|:|[[[[g|..|[[[[w|:|[[[[G|#########|[[[[w|.........|[[[[U|######|[[[[w|.........|[[[[U|###|[[[[v|0|[[[[U|###|[[[[w|..|[[[[U|####|[[[[o|+|[[[[U|####|[[[[w|..
-  [[[[w|SP |[[[[G|   0|[[[[w|/|[[[[G|   0|[[[[w| |[[[[G|##########|[[[[g|.|[[[[G|##########|[[[[w|..........|[[[[U|###+#|[[[[w|...|[[[[U|#####|[[[[w|..|[[[[U|#######|[[[[w|..|[[[[U|#########|[[[[w|..
-  [[[[w|             |[[[[G|####################|[[[[w|...........|[[[[U|##|[[[[w|......|[[[[U|#####|[[[[w|..|[[[[U|#######|[[[[w|..|[[[[U|#########|[[[[w|..
-  [[[[w|[|[[[[y|**********|[[[[w|] |[[[[G|#####################|[[[[w|..........|[[[[U|##|[[[[w|......|[[[[U|##+##|[[[[w|..|[[[[U|###|[[[[o|9|[[[[U|###|[[[[w|..|[[[[U|####|[[[[w|3|[[[[U|####|[[[[w|..
-  [[[[w|             |[[[[G|#######################|[[[[w|........|[[[[U|##|[[[[w|.................................
-  [[[[w|             |[[[[G|####################|[[[[w|......|[[[[R|h|[[[[w|....|[[[[U|##|[[[[w|.................................
-  [[[[G|      |[[[[w|       |[[[[G|######################|[[[[w|......@..|[[[[U|##|[[[[w|.................................
-  [[[[w|             |[[[[G|####################|[[[[w|.............................................|[[[[v|>
-  [[[[w|Day  1  7:03 |[[[[G|#################|[[[[U|###|[[[[w|.|[[[[G|#|[[[[w|.........|[[[[U|##|[[[[w|.................................
-  [[[[w|    |[[[[U|Town|[[[[w|     |[[[[G|#################|[[[[U|###|[[[[G|#|[[[[w|..........|[[[[U|##|[[[[w|.................................
-  [[[[w|             |[[[[G|#################|[[[[U|###|[[[[w|...........|[[[[U|##|[[[[w|.................................
-  [[[[w|             |[[[[G|#################|[[[[U|###|[[[[w|...........|[[[[U|##|[[[[w|......|[[[[U|##1##|[[[[w|..|[[[[U|###|[[[[D|7|[[[[U|###|[[[[w|..|[[[[U|####|[[[[s|2|[[[[U|####|[[[[w|..
-  [[[[w|                                                                          Surf.
-
-  That looks right. Press [[[[y|t| and we can see more clearly that we chose a monster
-  target correctly:
-
-  [[[[w|Targetting Farmer Maggot.
-  [[[[B|High-Elf|[[[[w|     |[[[[G|##################################################################
-  [[[[B|Cutpurse|[[[[w|     |[[[[G|##################################################################
-  [[[[w|LEVEL |[[[[G|     1|[[[[w| |[[[[G|###############################|[[[[U|###|[[[[G|################################
-  [[[[w|EXP |[[[[G|      20|[[[[w| |[[[[G|###############################|[[[[U|###|[[[[G|##############|[[[[w|.|[[[[G|##########|[[[[w|..|[[[[G|#####
-  [[[[w|AU |[[[[G|      273|[[[[w| |[[[[G|###############################|[[[[U|###|[[[[G|###|[[[[w|..|[[[[G|#|[[[[w|..|[[[[G|##|[[[[w|.......|[[[[G|#|[[[[w|...|[[[[G|#|[[[[w|..........
-  [[[[W|||[[[[d|     |[[[[u|~|[[[[U|(|[[[[d|    |[[[[w| |[[[[G|################################|[[[[w|.|[[[[G|#|[[[[w|.|[[[[G|#|[[[[w|.|[[[[G|#|[[[[w|............................
-  [[[[w|STR : |[[[[G| 18/10|[[[[w| |[[[[G|###############################|[[[[w|...................................
-  [[[[w|INT : |[[[[G| 18/30|[[[[w| |[[[[G|##############################|[[[[w|.|[[[[G|#|[[[[w|..................................
-  [[[[w|WIS : |[[[[G|    11|[[[[w| |[[[[G|############################|[[[[w|.....|[[[[U|################################|[[[[w|.
-  [[[[w|DEX : |[[[[G| 18/50|[[[[w| |[[[[G|########################|[[[[w|..|[[[[G|#|[[[[w|.|[[[[G|#|[[[[w|...|[[[[U|#################################|[[[[w|.
-  [[[[w|CON : |[[[[G|    11|[[[[w| |[[[[G|#########|[[[[w|:::|[[[[G|###########|[[[[w|.|[[[[G|#|[[[[w|......|[[[[U|#######|[[[[w|............................
-  [[[[w|CHR : |[[[[G|    12|[[[[w| |[[[[G|########|[[[[g|.|[[[[w|:|[[[[g|.|[[[[w|:|[[[[g|.|[[[[w|:|[[[[G|#######|[[[[w|.|[[[[G|#|[[[[w|........|[[[[U|######|[[[[u|+|[[[[w|............................
-  [[[[w|AC     |[[[[G|    7|[[[[w| |[[[[G|#######|[[[[w|:|[[[[G|#|[[[[g|...|[[[[G|########|[[[[w|.|[[[[G|##|[[[[w|........|[[[[U|#######|[[[[w|............................
-  [[[[w|HP |[[[[G|  43|[[[[w|/|[[[[G|  43|[[[[w| |[[[[G|########|[[[[g|.|[[[[w|:|[[[[g|..|[[[[w|:|[[[[G|#########|[[[[w|.........|[[[[U|######|[[[[w|.........|[[[[U|###|[[[[v|0|[[[[U|###|[[[[w|..|[[[[U|####|[[[[o|+|[[[[U|####|[[[[w|..
-  [[[[w|SP |[[[[G|   0|[[[[w|/|[[[[G|   0|[[[[w| |[[[[G|##########|[[[[g|.|[[[[G|##########|[[[[w|..........|[[[[U|###+#|[[[[w|...|[[[[U|#####|[[[[w|..|[[[[U|#######|[[[[w|..|[[[[U|#########|[[[[w|..
-  [[[[w|             |[[[[G|####################|[[[[w|...........|[[[[U|##|[[[[w|......|[[[[U|#####|[[[[w|..|[[[[U|#######|[[[[w|..|[[[[U|#########|[[[[w|..
-  [[[[w|[|[[[[y|**********|[[[[w|] |[[[[G|#####################|[[[[w|..........|[[[[U|##|[[[[w|......|[[[[U|##+##|[[[[w|..|[[[[U|###|[[[[o|9|[[[[U|###|[[[[w|..|[[[[U|####|[[[[w|3|[[[[U|####|[[[[w|..
-  [[[[w|             |[[[[G|#######################|[[[[w|........|[[[[U|##|[[[[w|.................................
-  [[[[w|             |[[[[G|####################|[[[[w|......h....|[[[[U|##|[[[[w|.................................
-  [[[[G|      |[[[[w|       |[[[[G|######################|[[[[w|......@..|[[[[U|##|[[[[w|.................................
-  [[[[w|             |[[[[G|####################|[[[[w|.............................................|[[[[v|>
-  [[[[w|Day  1  7:03 |[[[[G|#################|[[[[U|###|[[[[w|.|[[[[G|#|[[[[w|.........|[[[[U|##|[[[[w|.................................
-  [[[[w|    |[[[[U|Town|[[[[w|     |[[[[G|#################|[[[[U|###|[[[[G|#|[[[[w|..........|[[[[U|##|[[[[w|.................................
-  [[[[w|             |[[[[G|#################|[[[[U|###|[[[[w|...........|[[[[U|##|[[[[w|.................................
-  [[[[w|             |[[[[G|#################|[[[[U|###|[[[[w|...........|[[[[U|##|[[[[w|......|[[[[U|##1##|[[[[w|..|[[[[U|###|[[[[D|7|[[[[U|###|[[[[w|..|[[[[U|####|[[[[s|2|[[[[U|####|[[[[w|..
-  [[[[w|                                                                          Surf.
-
-  Had we been targetting a position, that last message would have read:
-  "Targetting Position 30, 59."
+  <color:keypress>?</color>            Display this help topic
