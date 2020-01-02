@@ -1739,6 +1739,7 @@ int doc_display_aux(doc_ptr doc, cptr caption, int top, rect_t display)
             done = TRUE;
             break;
         case 'q':
+        case 'Q':
             done = TRUE;
             rc = _UNWIND;
             break;
