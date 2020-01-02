@@ -313,7 +313,7 @@ static void msg_line_flush(void)
             else if (cmd == '?')
             {
                 screen_save_aux();
-                show_file(TRUE, "context_more_prompt.txt", NULL, 0, 0);
+                doc_display_help("context_more_prompt.txt", NULL);
                 screen_load_aux();
                 continue;
             }
