@@ -1,71 +1,71 @@
 <style:title>Shopping</style>
 
-Press <link:context_shop.txt#QuickRef> for the <color:keyword>Quick Reference</color>.
+Press <link:context_shop.txt#QuickRef> for the <color:keyword>Quick Reference</color> and <link:town.txt#Shopping> for details on shopping.
 
 Each town on the surface contains numerous shops where you may purchase supplies or sell unwanted objects. Each shop specializes in a certain class of items: The Weapon Smiths sells weapons (melee and missile) while the Armory sells armor; the Alchemist sells potions and scrolls while the General Store sells basic utilities such as food, lanterns and oil. Each town also has a Black Market where you may, for an exorbitant price, purchase items normally found only in the dungeon.
 
 <topic:Tutorial><style:heading>Your First Shopping Spree</style>
 
 When you enter a shop, you will see a screen describing the shop's owner and the items available for purchase:
-<style:screenshot>
-    <color:U>Selaxis (Zombie)</color>                                            <color:G>Armory</color> (<color:r>10000</color>)  
+<style:screenshot> <indent>
+    <color:U>Vengella the Cruel (Half-Troll)</color>                            <color:G>Armory</color> (<color:r>15000</color>)  
                                                                                 
-    Item Description                                               Weight  Price
- a) <color:s>Metal Scale Mail (-2) [13,+2]</color>                                25.0 lbs <color:D>  1860</color>
- b) <color:s>a Robe [2,+4]</color>                                                 2.0 lbs    592
- c) <color:s>2 Soft Studded Leathers [5,+0]</color>                                9.0 lbs    131
- d) <color:s>Hard Leather Armour (-1) [6,+0]</color>                              10.0 lbs    111
- e) <color:s>Hard Studded Leather (-1) [7,+0]</color>                             11.0 lbs    243
- f) <color:s>2 Rhino Hide Armours (-1) [8,+0]</color>                             11.0 lbs    420
- g) <color:s>Leather Scale Mail (-1) [11,+2]</color>                              14.0 lbs   1410
- h) <color:s>Leather Scale Mail (-1) [11,+1]</color>                              14.0 lbs   1270
- i) <color:s>5 Leather Scale Mails (-1) [11,+0]</color>                           14.0 lbs   1160
- j) <color:s>a Leather Jacket of Elemental Protection (-1) [12,+10] {El</color>   13.0 lbs <color:D>  8730</color>
- k) <color:U>a Small Metal Shield [5,+2]</color>                                   6.5 lbs    381
- l) <color:U>a Small Metal Shield [5,+0]</color>                                   6.5 lbs    131
-<color:B>(Page 1 of 2)</color>                                                                   
-Gold Remaining: <color:y>1.41k</color>                                                           
+    Item Description                                              Weight  Price
+ a) <color:U>(</color> <color:s>Soft Leather Armour of Protection [4,+16]</color>                  8.0 lbs <color:D> 10400</color>
+ b) <color:y>(</color> <color:s>Cord Armour [6,+4]</color>                                         8.0 lbs   1010
+ c) <color:y>(</color> <color:s>Cord Armour [6,+0]</color>                                         8.0 lbs    272
+ d) <color:U>(</color> <color:s>Leather Scale Mail (-1) [11,+0]</color>                           14.0 lbs   1540
+ e) <color:U>(</color> <color:s>a Leather Jacket (-1) [12,+0]</color>                             13.0 lbs   1870
+ f) <color:u>]</color> <color:U>a Hard Leather Cap [2,+3]</color>                                  1.5 lbs    546
+ g) <color:s>]</color> <color:U>a Metal Cap [3,+0]</color>                                         2.0 lbs     35
+ h) <color:U>]</color> <color:U>a Set of Studded Leather Gloves (+1) [1,+0]</color>                0.5 lbs   1010
+ i) <color:U>]</color> <color:U>a Set of Studded Leather Gloves (+1) [1,+0] {25% off}</color>      0.5 lbs    758
+ j) <color:U>]</color> <color:U>a Pair of Soft Leather Boots [2,+0]</color>                        2.0 lbs     10
+ k) <color:U>]</color> <color:U>a Pair of Hard Leather Boots [3,+0]</color>                        4.0 lbs     35
+ l) <color:s>]</color> <color:U>a Pair of Metal Shod Boots (+2) [4,+0]</color>                     8.0 lbs <color:D>  2220</color>
+                                                                                                                                                                                                                                               
+Gold Remaining: <color:y>1.94k</color>                                                           
                                                                                 
 <color:o>b</color> to buy. <color:o>s</color> to sell. <color:o>x</color> to begin examining items.                                
-<color:o>B</color> to buyout inventory.                                                          
+<color:o>B</color> to buyout inventory. <color:o>S</color> to shuffle stock. <color:o>R</color> to reserve an item.                
 <color:o>Esc</color> to exit. <color:o>?</color> for help.                                                        
-</style>
-A quick list of available commands is displayed on the bottom of the screen. Simply choose the appropriate command and follow the instructions. Use <color:keypress>Page Up</color> and <color:keypress>Page Down</color> to navigate long lists of shop objects.
+</indent></style>
+A quick list of available commands is displayed on the bottom of the screen. Simply choose the appropriate command and follow the instructions. Use <color:keypress>Page Up</color> and <color:keypress>Page Down</color> if the shop inventory extends to multiple pages.
 
-Every store owner has access to limited funds, and will only pay so much for items that you sell. This amount is listed next to the store type on the top of the display.
+Every store owner has access to limited funds, and will only pay so much for items that you sell; this amount is listed next to the store type on the top of the display.
 
 <topic:QuickRef><style:heading>Quick Reference</style>
   <indent><color:G>Basic Commands</color>
 <color:keypress>p b g</color>     Purchase an item from the shop
 <color:keypress>s d</color>       Sell an item to the shop
 <color:keypress>x</color>         Examine an item in the shop
-<color:keypress>B</color>         Buyout the entire shop inventory
-<color:keypress>S</color>         <indent>Shuffle the stock inventory (<color:r>restricted</color>)</indent>
-<color:keypress>R</color>         <indent>Reserve a shop item for future purchase (<color:r>restricted</color>)</indent>
+<color:keypress>B</color>         Buy out the entire shop inventory
+<color:keypress>S</color>         Pay to have shop inventory shuffled
+<color:keypress>R</color>         Reserve a shop item for future purchase
 <color:keypress>q Esc</color>     Leave the shop
 
 <color:G>Extra Commands</color>
 <color:keypress>w</color>         Wear an item
 <color:keypress>t T</color>       Take off an item
 <color:keypress>k ^D</color>      Destroy items in your pack
-<color:keypress>e</color>         Display Equipment
-<color:keypress>i</color>         Display Inventory
+<color:keypress>e</color>         Display equipment
+<color:keypress>i</color>         Display inventory
 <color:keypress>I</color>         Inspect objects in your pack
-<color:keypress>Tab</color>       Toggle Inventory/Equipment Windows
+<color:keypress>Tab</color>       Toggle inventory/equipment subwindows
 <color:keypress>{</color>         Inscribe objects in your pack
-<color:keypress>}</color>         Un-inscribe objects in your pack
-<color:keypress>C</color>         Display Character Sheet
+<color:keypress>}</color>         Uninscribe objects in your pack
+<color:keypress>C</color>         Display character sheet
 
 <style:note>Note: These <color:keyword>Extra Commands</color> are simply normal game commands made available for your convenience so you need not leave the shop to use them. However, the keybindings for these commands are <color:keyword>hard-coded</color> so any keymaps you may have defined will not apply.</style>
 
 <color:G>Navigation</color>
-<color:keypress>Page Up</color>   Scroll Through Long Object Lists
+<color:keypress>Page Up</color>   Scroll through long object lists
 <color:keypress>Page Down</color>
 <color:keypress>Space</color>     Same as Page Up
 <color:keypress>-</color>         Same as Page Down
 
 <color:G>Display Options</color>
-<color:keypress>^W</color>        Toggle Weights (see <link:option.txt#show_weights>)
-<color:keypress>^G</color>        Toggle Graphics (see <link:option.txt#show_item_graph>)
+<color:keypress>^W</color>        Toggle weights (see <link:option.txt#show_weights>)
+<color:keypress>^G</color>        Toggle graphics (see <link:option.txt#show_item_graph>)
 </indent>
 
