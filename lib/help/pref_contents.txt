@@ -1,6 +1,6 @@
 <style:title>User Preference Files</style>
 
-Please choose one of the following online help files:
+Please choose one of the following help sections:
 
     <link:pref.txt> User Preferences
     <link:pref.txt#Files> Preference Files
