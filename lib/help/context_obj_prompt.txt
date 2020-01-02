@@ -7,7 +7,7 @@ Objects are a big part of playing <color:keyword>FrogComposband</color>. Many co
 To view your gear, you press <color:keypress>i</color> for inventory or <color:keypress>e</color> for equipment. Both keys bring up the same dialog but select the appropriate tab for you:
 <style:screenshot>
 <color:D>Inventory</color> <color:b>|</color> <color:G>Equipment</color> <color:b>|</color> <color:D>Quiver</color>                                                  
- a) Right Hand: a Broad Sword (2d5) (+0,+0)                 15.0 lb LEVEL <color:G>     1</color>
+ a) Right Hand: a Broad Sword (2d6) (+0,+0)                 15.0 lb LEVEL <color:G>     1</color>
  b) Left Hand : <color:U>a Small Leather Shield [3,+0]</color>                5.0 lb EXP <color:G>      10</color>
  c) Shooting  : <color:u>a Short Bow (x2.50) (+0,+0)</color>                  3.0 lb AU  <color:G>   5.31k</color>
  d) Quiver    : <color:U>a Quiver [25 of 100]</color>                         1.0 lb <color:W>|</color><color:U>)}~</color><color:d>   </color><color:u>~</color><color:s>[</color><color:g>(</color><color:s>]</color><color:U>]</color>
@@ -70,36 +70,7 @@ To choose an object, simply press the indicated letter. What happens next depend
                                                                     INT : <color:G>     6</color>
 </style>
 
-You'll notice that selecting an object in this case did not dismiss the dialog. This is both unusual and useful, since you might want to inspect multiple objects before you are done. A few other game commands behave this way, such as Inscribing (<color:keypress>{</color>) objects, but most dialogs are dismissed by making a selection. For example, let's read a scroll (Press <color:keypress>r</color>):
-<style:screenshot>
-<color:G>Inventory</color>                                                     <color:r>Fail</color>              
- a) 9 Scrolls of Phase Door                                    8.3% LEVEL <color:G>     1</color>
- b) 15 Scrolls of Teleportation                                8.3% EXP <color:G>      10</color>
- c) 6 Scrolls of Word of Recall                                8.3% AU  <color:G>   5.31k</color>
- d) 10 Scrolls of Identify                                     8.3% <color:W>|</color><color:U>)}~</color><color:d>   </color><color:u>~</color><color:s>[</color><color:g>(</color><color:s>]</color><color:U>]</color>
-                                                                    STR : <color:G> 18/30</color>
-<color:y>Read which scroll? </color>                                                 INT : <color:G>     6</color>
-                                                                    WIS : <color:G>     6</color>
-......<color:U>##+##</color>..<color:U>###</color><color:o>9</color><color:U>###</color>..<color:U>####</color>3<color:U>####</color>...<color:U>####</color><color:r>6</color><color:U>####</color>..<color:U>###</color><color:g>4</color><color:U>###</color>..<color:U>##+##</color>......<color:U>##</color> DEX : <color:G> 18/10</color>
-.................................................................<color:U>##</color> CON : <color:G>    17</color>
-.................................................................<color:U>##</color> CHR : <color:G>    10</color>
-.................................................................<color:U>##</color> AC     <color:G>   28</color>
-................................<color:v>></color>.................................. HP <color:G>  56</color>/<color:G>  56</color>
-.................................................................<color:U>##</color>             
-..........................@......................................<color:U>##</color>             
-.................................................................<color:U>##</color>             
-......<color:U>##1##</color>..<color:U>###</color><color:D>7</color><color:U>###</color>..<color:U>####</color><color:s>2</color><color:U>####</color>...<color:U>####</color><color:b>5</color><color:U>####</color>..<color:U>###</color><color:y>8</color><color:U>###</color>..<color:U>##+##</color>......<color:U>##</color>             
-......<color:U>#####</color>..<color:U>#######</color>..<color:U>#########</color>...<color:U>#########</color>..<color:U>#######</color>..<color:U>#####</color>......<color:U>##</color>             
-<color:U>#+#</color>...<color:U>#####</color>..<color:U>#######</color>..<color:U>#########</color>...<color:U>#########</color>..<color:U>#######</color>..<color:U>#####</color>...<color:U>#</color><color:R>+</color><color:U>###</color>             
-<color:U>####</color>.........<color:U>###</color><color:v>+</color><color:U>###</color>..<color:U>####</color>+<color:U>####</color>...<color:U>####</color><color:B>+</color><color:U>####</color>..<color:U>#######</color>.........<color:U>######</color>             
-<color:U>#####</color>.......................................................<color:U>#######</color>             
-<color:U>#####</color>.......................................................<color:v>+</color><color:U>######</color>             
-<color:U>#####</color>.......................................................<color:U>#######</color>             
-Outpost                                                                         
-</style>
-Notice that the game only displays relevant objects and that choices are labelled starting with <color:y>a</color>. Please take the time to read the object dialogs as you play until you are used to this change. I think you will find it more pleasant eventually, but it might take a bit for you to adjust.
-
-This time, when I make a selection, the dialog is dismissed and the scroll is read.
+You'll notice that selecting an object in this case did not dismiss the dialog. This is both unusual and useful, since you might want to inspect multiple objects before you are done. A few other game commands behave this way, such as Inscribing (<color:keypress>{</color>) objects, but most dialogs are dismissed after a selection is made.
 
 <topic:QuickRef><style:heading>Quick Reference</style>
   <indent>
@@ -118,7 +89,7 @@ This time, when I make a selection, the dialog is dismissed and the scroll is re
 <color:keypress>^E</color>        Switch to Equipment Tab
 <color:keypress>^Q</color>        Switch to Quiver Tab
 <color:keypress>^F</color>        Switch to Floor Tab
-<color:keypress>- </color>        <indent>Switch to Floor Tab. Select the Floor Object if there is only one.</indent>
+<color:keypress>- </color>        <indent>Switch to Floor Tab. Select Floor Object if there is only one.</indent>
 
 <color:G>Display Options</color>
 <color:keypress>^W</color>        Toggle Weights (see <link:option.txt#show_weights>)
