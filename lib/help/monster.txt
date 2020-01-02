@@ -1,135 +1,292 @@
 <style:title>Monsters</style>
 
-There are hundreds of different creatures each of which poses a unique challenge to the adventurer. As you progress deeper into the dungeon, the creatures will become progressively more difficult to defeat.
+Encounters with monsters are the backbone of FrogComposband. It is mostly by killing monsters that you acquire treasures, gain experience and become more powerful; but not all monsters are hateful enemies who need to die.
 
+<indent><color:U>Monster Races</color>
+
+Each monster in the game represents some specific monster kind, usually known for convenience as the monster's <color:keyword>race</color>. (The term is somewhat misleading in that it does not necessarily imply a distinct species or ethnicity; human novice mages, human novice priests and human novice archaeologists are three separate monster races; also, I use semicolons too much.) Race determines most things about a monster: which melee attacks (if any) it can hit you with, which spells (if any) it can use, which of your attacks (if any) it can shrug off.
+
+Two monsters of the same race are not completely identical - there is some variation between individuals in terms of details such as hit points and speed - but most of the time you can ignore that variation and treat all members of a monster race as interchangeable, as impolite as that might seem. Distinct races, on the other hand, are far from interchangeable; each poses a unique challenge, apart from the few who pose no challenge at all.
+
+<color:U>Monster Species</color>
+
+Monster races can be grouped into categories (or <color:keyword>species</color>). Two monsters of the same species are always represented on the map by the same letter symbol; for example, all orcs share the letter o. Monsters of the same race also share the color (all orc warlocks are <color:v>o</color>). It is possible, but relatively rare, for a monster race to share both its letter and its color with another race of the same species.
+
+The symbols for all monster species are listed below.</indent>
 
 <topic:MonsterSymbols><style:heading>Monster Symbols</style>
 
-Many monsters have the same letter symbol and sometimes color on the screen. The exact species or type of creature can be discovered by <color:keypress>l</color>ooking at it (see <link:commdesc.txt#Looking>).
- 
-  <color:U>a</color>   Giant Ant                       <color:U>A</color>   Angelic being
-  <color:U>b</color>   Giant Bat                       <color:U>B</color>   Bird
-  <color:U>c</color>   Giant Centipede                 <color:U>C</color>   Canine
-  <color:U>d</color>   Dragon                          <color:U>D</color>   Ancient Dragon
-  <color:U>e</color>   Floating Eye                    <color:U>E</color>   Elemental
-  <color:U>f</color>   Feline                          <color:U>F</color>   Dragon Fly
+  <color:U>a</color>   Ant                             <color:U>A</color>   Angel
+  <color:U>b</color>   Bat                             <color:U>B</color>   Bird
+  <color:U>c</color>   Centipede                       <color:U>C</color>   Canine
+  <color:U>d</color>   Dragon                          <color:U>D</color>   Ancient Dragon/Wyrm
+  <color:U>e</color>   Eye                             <color:U>E</color>   Elemental
+  <color:U>f</color>   Feline/Fox                      <color:U>F</color>   Dragon Fly
   <color:U>g</color>   Golem                           <color:U>G</color>   Ghost
-  <color:U>h</color>   Humanoids                       <color:U>H</color>   Hybrid
-  <color:U>i</color>   Icky-Thing                      <color:U>I</color>   Insect
+  <color:U>h</color>   Humanoid                        <color:U>H</color>   Hybrid
+  <color:U>i</color>   Icky Thing                      <color:U>I</color>   Insect
   <color:U>j</color>   Jelly                           <color:U>J</color>   Snake
   <color:U>k</color>   Kobold                          <color:U>K</color>   Killer Beetle
   <color:U>l</color>   Aquatic monster                 <color:U>L</color>   Lich
   <color:U>m</color>   Mold                            <color:U>M</color>   Multi-Headed Hydra
-  <color:U>n</color>   Naga                            <color:U>N</color>   Shadower
+  <color:U>n</color>   Naga                            <color:D>N   (special - shadower)</color>
   <color:U>o</color>   Orc                             <color:U>O</color>   Ogre
-  <color:U>p</color>   Human                           <color:U>P</color>   Giant Human(oid)
+  <color:U>p</color>   Human                           <color:U>P</color>   Giant
   <color:U>q</color>   Quadruped                       <color:U>Q</color>   Quylthulg
   <color:U>r</color>   Rodent                          <color:U>R</color>   Reptile/Amphibian
   <color:U>s</color>   Skeleton                        <color:U>S</color>   Spider/Scorpion/Tick
   <color:U>t</color>   Townsperson                     <color:U>T</color>   Troll
   <color:U>u</color>   Minor demon                     <color:U>U</color>   Major demon
   <color:U>v</color>   Vortex                          <color:U>V</color>   Vampire
-  <color:U>w</color>   Worm or Worm Mass               <color:U>W</color>   Wight/Wraith
-  <color:D>x   (unused)</color>                        <color:U>X</color>   Xorn/Xaren
+  <color:U>w</color>   Worm/Worm Mass                  <color:U>W</color>   Wight/Wraith
+  <color:D>x   (special - easy mimic)</color>          <color:U>X</color>   Xorn/Xaren
   <color:U>y</color>   Yeek                            <color:U>Y</color>   Yeti
   <color:U>z</color>   Zombie/Mummy                    <color:U>Z</color>   Zephyr Hound
   <color:U>$</color>   Creeping Coins                  <color:U>,</color>   Mushroom Patch
-  <color:U>#</color>   Ent, Huorn, Fumes
+  <color:U>#</color>   Ent/Mist creature
 
-Note that some monsters disguise themselves by assuming the shape (ie. symbol) of common objects found in the dungeon. These include the |, ), ?, !, &, =, #, $ and * symbols.
+Unlike the race, the species of a monster does not tell you anything about how dangerous a monster is; the almost harmless giant green frog is a reptile/amphibian with the symbol <color:g>R</color>... but so is Godzilla. The species does, however, allow some generic assumptions; for example, nearly all dragons and zephyr hounds breathe something or other. You can also assume something with the <color:y>d</color> or <color:y>D</color> symbol will take extra damage from a weapon that slays dragons.
 
+<topic:Assessment><style:heading>Assessing a Monster</style>
 
-<topic:MonsterColors><style:heading>Monster Colors</style>
+The cheapest way to tell who a monster is and how much damage he deals in combat is by picking a fight with them and finding out. This can lead to complications such as death, though, so you may want to take a more measured approach.
 
-You can often determine some information about a monster based solely on the color it is described as having, like 'a White Dragon'. In general, <color:w>White</color> monsters are cold-based, <color:r>Red</color> are fire-based, <color:b>Blue</color> are electrical, <color:D>Black</color> are acidic, and <color:G>Green</color> are poisonous and a 'Multi-Hued' monster is all of these. By being cold-based, we mean that the monster has either melee, magical or breath attacks that are cold based.
+Use the <color:keypress>*</color> targetting command or the <color:keypress>l</color> look command to inspect a monster. Here I have used the <color:o>*</color> command to discover that the <color:D>h</color> to my north-east is a Nibelung:
 
-Unfortunately this rule is applied somewhat inconsistently and there are several notable exceptions so don't be surprised if that 'Green' monster spits acid at you. Note that this rule cannot be applied to the actual color a creature is displayed as but only to a color in its name.
+<style:screenshot>
+Monster: a Nibelung [r,q,t,p,o,x,j,+,-,?,<dir>]
+                                                                    LEVEL <color:G>     1</color>
+                                                                    EXP <color:G>      15</color>
+                                                                    AU  <color:G>      32</color>
+                                                                    <color:W>|</color><color:d>      </color><color:U>~(</color><color:d>   </color>
+                                                                    STR : <color:G>    16</color>
+                                                                    INT : <color:G>    18</color>
+                                                                    WIS : <color:G>     9</color>
+                <color:U>#</color>.. <color:D>h</color>                                               DEX : <color:G> 18/40</color>
+                <color:U>#</color>.<color:s>**</color>                                                CON : <color:G>    17</color>
+                <color:U>#</color>@..                                                CHR : <color:G>    12</color>
+                <color:U>####</color>                                                AC     <color:G>    6</color>
+                                                                    HP <color:G>  37</color>/<color:G>  37</color>
+                                                                    SP <color:G>  14</color>/<color:G>  14</color>
+                                                                                
+                                                                    <color:D>h</color>[<color:G>*********</color>]
+<color:B>Quest: L5</color>
+</style>
+If you are playing for the first time, just knowing the monster is a Nibelung does not help that much - <color:keyword>what are Nibelungs like?!</color> You can press <color:keypress>r</color> at this targetting prompt to bring up some additional information:
 
-Other color and attack-type relationships are 'Bronze' and confusion and 'Gold' and sound. Over time the inconsistencies referred to above will probably get cleaned up.
+<style:screenshot>
+Monster: a Nibelung [r,q,t,p,o,x,j,+,-,?,<dir>]
+Name    : <color:B>Nibelung</color> (<color:D>h</color>)                                                  L      <color:G>     1</color>
+Level   : <color:y>?</color><color:d>         </color>Speed: +0                                           <color:G>      15</color>
+AC      : <color:y>?</color><color:d>         </color>Type : <color:b>Male</color>                                         <color:G>      32</color>
+HP      : <color:y>?</color><color:d>         </color>                                                    <color:d>   </color><color:U>~(</color><color:d>   </color>
+<color:d>                    </color>                                                    : <color:G>    16</color>
+Attacks : <color:y>?</color>                                                             : <color:G>    18</color>
+                                                                        : <color:G>     9</color>
+Kills   : <color:G>0</color>                                                             : <color:G> 18/40</color>
+                                                                        : <color:G>    17</color>
+Night dwarfs collecting new riches for their master, Alberich.          : <color:G>    12</color>
+                <color:U>####</color>                                                AC     <color:G>    6</color>
+                                                                    HP <color:G>  37</color>/<color:G>  37</color>
+                                                                    SP <color:G>  14</color>/<color:G>  14</color>
+                                                                                
+                                                                    <color:D>h</color>[<color:G>*********</color>]
+<color:B>Quest: L5</color>
+</style>
+Had we met Nibelungs before, this screen would be populated with useful information. We haven't, so there's really just the speed and the flavor description... but the latter does strongly suggest that nibelungs might be thieves. (Jumping ahead of ourselves for a bit, it also implies there might be a unique nibelung called Alberich!)
 
+If I let the nibelung hit me a couple times, we find out I was right about nibelungs being thieves, and the monster recall updates with this new information:
 
-<topic:MonsterMemory><style:heading>Monster Memories</style>
+<style:screenshot>
+Monster: a Nibelung [r,q,t,p,o,x,j,+,-,?,<dir>]
+Name    : <color:B>Nibelung</color> (<color:D>h</color>)                                                  L <color:G>     2</color>
+Level   : <color:y>?</color><color:d>         </color>Speed: +0                                           <color:G>      21</color>
+AC      : <color:y>?</color><color:d>         </color>Type : <color:D>Thief</color>, <color:b>Male</color>                                  <color:G>       0</color>
+HP      : <color:y>?</color><color:d>         </color>                                                    <color:d>   </color><color:U>~(</color><color:d>   </color>
+<color:d>                    </color>                                                    : <color:G>    16</color>
+Attacks : <color:G>Type    Effects</color>                                               : <color:G>    18</color>
+          Hit     Hurt                                                  : <color:G>     9</color>
+          Touch   Steal Gold                                            : <color:G> 18/40</color>
+                                                                        : <color:G>    17</color>
+Kills   : <color:G>0</color>                                                             : <color:G>    12</color>
+                                                                           <color:G>    6</color>
+Night dwarfs collecting new riches for their master, Alberich.          <color:r> 15</color>/<color:G>  48</color>
+                                                                    SP <color:G>  18</color>/<color:G>  18</color>
+                                                                                
+                                                                    <color:D>h</color>[<color:R>**</color>-------]
+<color:B>Quest: L5</color>
+</style>
 
-Because there are so many monsters and because often different monsters share similar colors and symbols; it is very difficult to keep track of the capabilities of various creatures. Luckily, the game automatically keeps track of your experiences with a particular creature.
- 
-This feature is called the monster memory. Your monster memory recalls the particular attacks of each creature (whether or not technically a monster) which you have suffered, as well as recalling if you have observed them to multiply or move erratically, or drop treasure, etc. Similarly if you attack a creature with a magical attack and it resists, that fact is noted.
-
-If you have killed enough of a particular creature, or suffered enough attacks, recalling the monster memory may also provide you with information not otherwise available, such as an armor class or hit dice. These are not explained, but may be useful to give the relative danger of each creature.
- 
-Your monster memory may be accessed by pressing <style:keypress>/</style> and then entering the symbol you wish to research. Each monster with that symbol of which you have some knowledge will displayed in turn beginning with the deepest. Alternatively, you may enter targeting mode by pressing <style:keypress>*</style> and, with the cursor over the creature in question, press <style:keypress>r</style> to recall details.
-
-The best feature about your monster memory is that it can be passed on to a new character even after you die by means of a reduced save file. Simply use your old savefile as the base for creating your new character.
+Notice also the monster status bar on the right - that little <color:D>h</color>[<color:R>**</color>-------]? It indicates how healthy a monster is: I hit that Nibelung a couple times in return, and the seven empty slots next to the two red stars tell me he is already down to a fraction of his original health. Nibelungs probably aren't too tough if I could do so much damage so quickly! (See <link:monster.txt#HealthBar> below for a more detailed explanation of the status bar.)
 
 <topic:Uniques><style:heading>Unique Monsters</style>
 
-While there are many humans in the world, there is only one of you. Likewise, many monsters can only be killed once, and these monsters are called <style:keyword>Uniques</style>. A large part of the game involves killing as many unique monsters as possible. In fact, you need to kill a certain unique to win the game: <style:keyword>The Serpent of Chaos</style>. Many quests also involve killing a given unique.
+While there are many humans in the world, there is only one of you. Likewise, many monsters can only be killed once, and these monsters are called <style:keyword>unique monsters</style> or simply <style:keyword>uniques</color>. A large part of the game involves killing as many uniques as possible. In fact, you need to kill a certain unique to win the game: <style:keyword>the Serpent of Chaos</style>. Many quests also involve killing a unique.
 
-Unique monsters are typically based on a normal monster. For example, Tom the Stone Troll is based on the Stone Troll monster. However, Unique monsters usually have more hitpoints, hit harder and cast spells more effectively than the monster on which they are based. Unique monsters are often a different color from other monsters of their type to allow the player to more easily distinguish them but this is not always true.
+Uniques are typically some of the toughest monsters you will meet at a given depth. Many uniques, especially in the early game, are just bigger, badder versions of a regular monster; Mughash the Kobold Lord, for example, could be fairly described as a normal kobold who hits harder, has extra hitpoints and takes a posse of friends with him everywhere he goes. It is not unusual, however, for a unique to truly be one of a kind and have little in common with anybody else.
+
+The flipside to uniques' toughness is that they also drop some of the best treasures. A number of uniques even have <color:keyword>special drops</color> - the unique Arthur Pendragon, for example, might drop the highly valuable sword Excalibur. But that is a long way from guaranteed!
+
+A unique does not belong to any other monster race; from the game's point of view, each unique is a monster race of its own.
 
   <indent><color:U>Uniques' Resistance to Magic</color>
 
-Unique monsters tend to be more resistant to magic than the other dungeon inhabitants. Thus, slowing, confusing, sleeping and scaring will be less effective and may not work at all. In addition, Genocide and Mass-Genocide spells will never work on Uniques and *Destruction* will teleport them from a level but will not kill them.
-</indent>
-  <indent><color:U>Keeping Track of Uniques</color>
-
-Since Unique monsters are often very difficult to defeat, most players will attempt to kill them all before attempting to battle the <style:keyword>Serpent of Chaos</style> (itself a Unique monster). This avoids the need to battle two very difficult opponents at the same time.
-
-Each time your character happens upon a new Unique, this is recorded in your monster memory. Under the knowledge command ('~') is a menu item which allows you to look at which Uniques you have met and which of these have been defeated. It is a good idea to check this periodically to gauge your progress. For example:
-<style:screenshot>
-Knowledge - Monsters
-
-Group                  Name                                       Sym  Kills
-============================================================================
-<color:B>Uniques</color>              | Sangahyando of Umbar                         <color:o>p</color>  <color:D> dead</color>
-Ridable monsters     | It                                           <color:W>.</color>  <color:D> dead</color>
-Wanted monsters      | <color:B>Azog, King of the Uruk-Hai</color>                   <color:r>o</color>  <color:D> dead</color>
-Ant                  | Old Man Willow                               <color:s>#</color>  <color:D> dead</color>
-Bat                  | Lugdush, the Uruk                            <color:b>o</color>  alive
-Centipede            | Bolg, Son of Azog                            <color:R>o</color>  <color:D> dead</color>
-Dragon               | Shagrat, the Orc Captain                     <color:u>o</color>  <color:D> dead</color>
-Floating Eye         | Meng Huo, the King of Southerings            <color:o>p</color>  <color:D> dead</color>
-Feline               | Nar, the Dwarf                               <color:y>h</color>  <color:D> dead</color>
-Golem                | The Ghost 'Q'                                G  <color:D> dead</color>
-Hobbit/Elf/Dwarf     | Ufthak of Cirith Ungol                       <color:g>o</color>  <color:D> dead</color>
-Icky Thing           | Lady Zhurong, the Avatar of Flame Spirit     <color:R>p</color>  <color:D> dead</color>
-Jelly                | The Variant Maintainer                       <color:r>p</color>  <color:D> dead</color>
-Kobold               | Golfimbul, the Hill Orc Chief                <color:u>o</color>  <color:D> dead</color>
-Aquatic monster      | Mauhur, the Orc Captain                      <color:u>o</color>  <color:D> dead</color>
-Mold                 | Meng You, the Brother of Meng Huo            <color:o>p</color>  alive
-Naga                 | The Borshin                                  g  <color:D> dead</color>
-Orc                  | Orfax, Son of Boldor                         <color:B>y</color>  <color:D> dead</color>
-Person/Human         | Grishnakh, the Hill Orc                      <color:u>o</color>  alive
-</style>
+Unique monsters tend to be more resistant to magic than the other dungeon inhabitants. In particular, almost no magic is powerful enough to slow uniques or make them fall asleep. Uniques who resist Teleportation are always completely immune to it (most normal monsters only get a saving throw). In addition, Genocide and Mass-Genocide effects (see <link:monster.txt#Genocide> below) will never work on a unique.
 </indent>
   <indent><color:U>Speaking Uniques</color>
 
-Occasionally, you will find that a Unique monster will speak to you as it approaches. Typically, a monster will shout obscenities and challenges to combat but they may also refer to events relating to themselves. The game has no mechanism to allow you to respond to the monsters (other than with violence).
+Occasionally, you will find that a unique monster will speak to you as it approaches. Typically, a monster will shout insults and challenges to combat; but they may also mention topics relating to themselves, or just engage in friendly chatter if they are less hostile. The game has no mechanism to allow you to respond (other than with violence). Speaking is not strictly limited to uniques, but is much rarer in normal monster races.
 </indent>
-  <indent><color:U>Rewards for Killing Uniques</color>
+  <indent><color:U>Wanted Uniques</color>
 
-You may also find that occasionally after killing a Unique monster that the game will tell you that the Unique was wanted. And you will be rewarded for killing it when you take the Unique's corpse to the Hunter's office at the Outpost. The amount of the reward is dependent upon how deep in the dungeon the relevant Unique is normally found.
+For every character you play, the game rolls a new random list of twenty <color:keyword>wanted uniques</color>. You can view this list at the Bounty Offices in Outpost, Thalos and Anambar, and review it at any time through the <color:keypress>~</color> knowledge-menu command. When you kill a wanted unique, you are reminded of the price on its head; pick up the corpse or skeleton and turn it in at the Bounty Office, and you will receive one or more valuable items as a reward for your good work.
+
+The list of wanted uniques is sorted by the native depth of the unique; killing deeper uniques gives better rewards.
 </indent>
+
+<topic:MonsterList><style:heading>Listing All Monsters in View</style>
+
+Using the <color:keypress>*</color> command to inspect a single monster is great when you only have to worry about one monster, but often dozens of monsters will be nearby at once. Here's a more advanced character who has just walked into a quest and cast a magical monster-detection spell - who are all these guys?
+<style:screenshot>
+<color:y>You sense the presence of doors! You sense the presence of</color>          AU  <color:G>    475k</color>
+<color:y>monsters!</color> You hear a door burst open!                               <color:W>|</color><color:D>|</color><color:U>}~</color><color:g>==</color><color:y>"</color><color:o>~</color><color:y>(</color><color:g>(</color><color:u>]</color><color:U>]</color>
+                             <color:y>Z</color>   <color:y>Z</color>.<color:y>Z</color>                                STR : <color:G>18/113</color>
+                               <color:U>#++</color><color:y>Z</color><color:U>#</color>                                INT : <color:G>    10</color>
+                               <color:U>#</color>...<color:U>#</color>                                WIS : <color:G> 18/10</color>
+                               <color:U>#</color>...<color:U>#</color>             <color:u>}</color>                  DEX : <color:G>18/161</color>
+         <color:g>^</color>              <color:G>T</color>      <color:U>#</color>...<color:U>#</color>          <color:B>-</color>   <color:u>^</color>  p              CON : <color:G>18/153</color>
+                               <color:U>#</color>...<color:U>#</color>      <color:o>O</color>  <color:o>O</color>                      CHR : <color:G>    16</color>
+               <color:v>p</color>      <color:G>T</color><color:D>u</color><color:G>T</color> <color:U>######</color>...<color:U>######</color>           <color:U>z</color>               AC     <color:G>   93</color>
+        <color:s>[</color>           <color:G>hh</color>  <color:G>T</color> <color:U>+</color>.............<color:U>+</color><color:R>f</color>                <color:u>^</color>         HP <color:y> 502</color>/<color:G> 503</color>
+        <color:W>|</color>        <color:G>h</color> <color:G>h</color>  <color:U>=</color>  <color:G>T</color><color:U>+</color>......@......<color:U>+</color> <color:R>ff</color> <color:D>j</color>        <color:s>V</color>   <color:W>|</color>         SP <color:G> 100</color>/<color:G> 100</color>
+        <color:G>F</color>           <color:G>h</color>     <color:U>+</color>.............<color:U>+</color><color:R>f</color>                <color:y>d</color>                     
+                  <color:G>h</color>       <color:U>######</color>...<color:U>######</color><color:R>f</color>  <color:R>f</color>                                   
+                  <color:G>h</color> <color:G>h</color>          <color:U>#</color>...<color:U>#</color>      <color:R>f</color>        <color:u>G</color>                            
+                <color:s>K</color>  <color:G>h</color>   <color:G>h</color>       <color:U>#</color>...<color:U>#</color>      <color:R>f</color>                                     
+                               <color:U>#</color>...<color:U>#</color>         <color:R>f</color>                                  
+                               <color:U>#</color>...<color:U>#</color>                                            
+                               <color:U>#+++#</color>                                            
+                                                                    <color:G>Fast (+8)</color>   
+                                                                    <color:G>Full</color>        
+                                       <color:b>O</color>                            <color:B>Study (8)</color>   
+                           <color:o>g</color>   <color:U>Y</color>       <color:W>p</color>
+                                  ,                                             
+<color:B>Quest: L35</color>                                <color:G>DTrap</color>                                 
+</style>
+
+Even if you had been playing long enough that you could guess who a monster is from just the symbol, that would still be an awful lot of information to process. The solution here is to press <color:keypress>Y</color> (or <color:keypress>[</color> if you have switched to the roguelike keyset) to bring up the <color:keyword>monster list</color>:
+
+<style:screenshot>
+You see 2 monsters, 2 are awake:                                    LEVEL <color:G>    33</color>
+ <color:y>Z</color> Energy hound (2 awake)                                           EXP <color:G>   22.5k</color>
+                                                                    AU  <color:G>    475k</color>
+You are aware of 67 other monsters, 8 are awake:                    <color:W>|</color><color:D>|</color><color:U>}~</color><color:g>==</color><color:y>"</color><color:o>~</color><color:y>(</color><color:g>(</color><color:u>]</color><color:U>]</color>
+ <color:g>D</color> <color:D>Ancient green dragon                </color> N 17 E  1                   STR : <color:G>18/113</color>
+ <color:y>d</color> <color:D>Fire angel                          </color> S  1 E 25                   INT : <color:G>    10</color>
+ <color:D>u</color> <color:D>Bodak                               </color> N  2 W 10                   WIS : <color:G> 18/10</color>
+ <color:s>V</color> <color:D>Master vampire                      </color> N  0 E 21                   DEX : <color:G>18/161</color>
+ <color:v>p</color> <color:D>Logrus master                       </color> N  2 W 18 <color:u>^</color>  p              CON : <color:G>18/153</color>
+ p <color:D>Ivory monk                          </color> N  4 E 20                   CHR : <color:G>    16</color>
+ <color:b>O</color> <color:D>Ogre shaman                         </color> S 10 E  6   <color:U>z</color>               AC     <color:G>   93</color>
+ # <color:D>Granite wall                        </color> N  9 E  4         <color:u>^</color>         HP <color:y> 502</color>/<color:G> 503</color>
+ <color:U>Y</color> <color:D>Giant land sloth                    </color> S 11 W  2     <color:s>V</color>   <color:W>|</color>         SP <color:G> 100</color>/<color:G> 100</color>
+ = <color:D>Ring mimic                          </color> N  0 W 11         <color:y>d</color>                     
+ <color:g>,</color> <color:D>Corpser                             </color> N 10 W  4                               
+ <color:D>g</color> <color:v>The Ultimate Dungeon Cleaner (asleep</color> S 13 E  4  <color:u>G</color>                            
+ <color:B>p</color> <color:D>Clairvoyant                         </color> S 17 W  1                               
+ <color:o>O</color> <color:D>Ogre mage (2 asleep)                           </color>                              
+ <color:o>q</color> <color:D>Beast of Nurgle                     </color> N 13 W  8                               
+ <color:W>p</color> <color:D>Agent of Benedict (11 asleep)                  </color>                              
+ <color:U>z</color> <color:D>Ghoul                               </color> N  2 E 19                   <color:G>Fast (+8)</color>   
+ <color:D>j</color> <color:D>Black ooze                          </color> N  0 E 12                   <color:G>Full</color>        
+ <color:s>K</color> <color:D>Killer stag beetle                  </color> S  4 W 17                   <color:B>Study (8)</color>   
+ <color:y>H</color> <color:D>Nue                                 </color> N 16 E  5                               
+ <color:y>Z</color> Energy hound (7 awake)                                                       
+   <color:B>[Press ESC to exit. Press ? for help]</color>
+</style>
+
+That is still a lot of information; but the list is ordered primarily by line-of-sight (the two energy hounds go first because they are in direct view) and secondarily by the native depth of the monster, which is a rough indicator of the threat level. So the monsters near the top of the list are the ones we should worry about the most.
+
+The highest level monster in there is an ancient green dragon, a very nasty enemy in the wrong circumstances. My experience with the game makes me even more worried about the <color:keyword>bodak</color> and in particular the <color:keyword>logrus master</color> - but those are still near the top, so I spotted them easily.
+Luckily for me, the list has colored these monsters <color:D>black</color> rather than white, indicating they are still asleep. (Unique monsters, here the Ultimate Dungeon Cleaner, are listed in <color:v>violet</color>.)
+
+Not all of the monsters listed were actually visible in that earlier screenshot - many were offscreen, but still within detection range, so they show up on the monster list. All the better for us!
+
+You can press <color:keypress>R</color> to bring up additional information through the monster list; I chose the <color:keyword>fire angel</color> for this purpose here because that happened to be a monster this character already knew things about:
+
+<style:screenshot>
+<color:G>[Monster Info, Line 0/22]</color>                                           LEVEL <color:G>    33</color>
+                                                                    EXP <color:G>   22.5k</color>
+Name    : <color:B>Fire angel</color> (<color:y>d</color>)                                            AU  <color:G>    475k</color>
+Level   : <color:G>37 to 70</color><color:d>  </color>Speed: <color:R>+10</color>                                      <color:W>|</color><color:D>|</color><color:U>}~</color><color:g>==</color><color:y>"</color><color:o>~</color><color:y>(</color><color:g>(</color><color:u>]</color><color:U>]</color>
+AC      : <color:y>?</color><color:d>         </color>Type : <color:D>Evil</color>, <color:o>Dragon</color>                             STR : <color:G>18/113</color>
+HP      : <color:y>?</color><color:d>         </color>                                                INT : <color:G>    10</color>
+<color:d>                    </color>                                                WIS : <color:G> 18/10</color>
+Spells  : <color:G>14.28%</color> (1 of 7 moves) <color:y>Intelligent</color>                         DEX : <color:G>18/161</color>
+Breathe : <color:R>Plasma</color> (1x)                                               CON : <color:G>18/153</color>
+                                                                    CHR : <color:G>    16</color>
+Attacks : <color:G>Type    Effects</color>                                           AC     <color:G>   93</color>
+          Claw    Hurt                                              HP <color:y> 502</color>/<color:G> 503</color>
+          Claw    Hurt                                              SP <color:G> 100</color>/<color:G> 100</color>
+          Bite    Hurt, <color:r>Fire</color>                                                    
+          Bite    Hurt, <color:r>Fire</color>                                                    
+                                                                                
+Info    : <color:y>Shining</color>, <color:s>Suitable for Riding</color>                                          
+                                                                                
+Kills   : <color:G>1</color>                                                                     
+Exp     : <color:G>1.59k</color> at CL33                                                         
+Drops   : Up to 3 Objects                                           <color:G>Fast (+8)</color>   
+                                                                    <color:G>Full</color>        
+</style>
+A level 37 evil dragon with +10 speed who breathes plasma... you can see why the fire angel was also listed near the top.
+
+<topic:MonsterColors><style:heading>Monster Colors</style>
+
+Monsters associated with a particular element (damage type) are often color-coded. The most common and reliable associations are <color:r>Red</color> with fire and <color:w>White</color> with cold/frost - a red dragon, for example, breathes fire, bites to burn and is resistant to your own fire attacks. (This does not mean all red monsters will be fire-based, only that most fire-based monsters are red.)
+
+Other similar associations include <color:b>Blue</color> with lightning/electricity, <color:D>Black</color> and <color:s>Slate</color> with acid, <color:g>Green</color> with poison, <color:U>Bronze</color> with confusion, <color:y>Gold</color> with sound and <color:W>Silver</color> with inertia. <color:v>Multi-hued</color> monsters flicker in all colours and are typically associated with multiple elements; multi-hued dragons and multi-hued hounds both breathe and resist all of the five common elements (acid, cold, fire, electricity and poison).
+
+These general rules are not completely airtight - the acid-breathing Water Hounds, for example, are <color:b>Z</color> instead of the expected <color:D>Z</color> or <color:s>Z</color>. (This particular case is actually quite bizarre, in that they used to be <color:s>Z</color> in older versions of the game.)
+
 <topic:EldritchHorror><style:heading>Eldritch Horrors</style>
 
-Some of the monsters in the dungeons are so fearsome to look upon that doing so can have serious repercussions. When you meet one of these sanity blasting monsters, one of several nasty things may happen to you. These include having your intelligence and/or your wisdom temporarily reduced, becoming scared or confused, or suffering an attack of amnesia.
+Some of the monsters in the dungeons are so fearsome that just to look upon them can have serious repercussions. When you see one of these <color:keyword>sanity-blasting monsters</color>, one (or more) of several nasty things may happen to you; these include having your intelligence and wisdom temporarily reduced, becoming scared or confused, and suffering an attack of hallucinations or amnesia.
+
+If you can cope with your first sighting of a sanity-blasting monster, you can then safely keep that monster in view; it will not trigger the Eldritch Horror effect as long as it remains in view. It is possible for the effect to be triggered if the monster walks out of view and is then seen again, but a single monster very rarely blasts your sanity more than once.
+
+Although all player characters have some chance to resist sanity blasting, only a handful ever become fully immune to it.
 
 <topic:Pets><style:heading>Pets and Riding</style>
 
-In this game, pets are very useful. In other variants (such as Zangband), your pets are often so eager to destroy your opponents that they may forget all about you, and you get trampled under their feet as they charge at your foe. In FrogComposband, however, pets will never attack you by mistake; you can walk around in safety even as your pet Great Hell Wyrm breaths. Pets will also never be irritated with you; their will is perfectly dominated by you, and all pets are permanently your pets.
+What could be nicer than a loyal pet? People sometimes worry their pets will trample them underfoot; but in FrogComposband, <color:G>pets will never attack you by mistake</color>. You can walk around safely as your pet Great Hell Wyrm obliterates your enemies. Better still, some pets can summon new pets.
 
-One might think that they can make the game much easier. It is of course highly satisfying to send your pet Great Hell Wyrm into a Troll pit and wait outside listening for the howls of agony and terror, the sounds of guts splattering, bones crunching and so on. But one should not expect to gain much experience and item drops for such a combat: you will only gain full experience and items for creatures to whom you deliver the death blow yourself.
+One might think that pets can make the game much easier. It is of course highly satisfying to send your pet Wyrm into a troll pit and wait outside listening for the howls of agony and terror, the sounds of guts splattering, bones crunching and so on; but one should not expect to gain much experience from this. You only earn full experience when you deliver the death blow yourself.
 
-Finally, it takes a lot of mental energy to maintain your control over charmed monsters, and start taxing your mana regain rate. The higher the sum of the levels of your pets the less mana you will be able to regain. And after the upkeep became more then 100% mana, you begin to lose mana rather than regain. Keep this in mind if you have a pet which can summon or otherwise produce more pets...
+Pets retain some self-preservation instincts; at low health, a pet may decide to quit the fight (and the level) rather than to die for his master. Another limitation to the usefulness of pets is the rule that <color:G>unique monsters can only be killed by you</color> and never by another monster, including pets; pets can harm uniques, but not finish them off. (This is relaxed for player Quylthulgs due to their exceptional reliance on pets.)
+
+The practical approach to pets varies widely from player to player; some successful players like keeping pets, while others just ignore the possibility. Pets are not needed to win (on most characters), but they are fun!
 
   <indent><color:U>Obtaining a Pet</color>
 
-You may obtain pets in several different ways. Some magic realms offer the ability to summon pets magically or to charm the creatures you meet. Mindcrafters may 'dominate' their opponents. Chaos patrons may grant pets as a gift to their devotees. Magical figurines can be thrown to create a pet and wands of charm monster may be used as their name suggests.
+You may obtain pets in several different ways. Some magic realms offer the ability to summon pets magically or to charm the creatures you meet. Mindcrafters may 'dominate' their opponents. Chaos patrons may grant pets as a gift to their devotees. Magical figurines can be thrown to create a pet (though they might be cursed and create an enemy!); and wands of charm monster may be used as their name suggests.
 
-The Capture Ball is very useful tool and any player can use it. You can easily get this tool at a General Store. To use it, you must wield it on your hand, then 'A'ctivate it, and choose a target monster to capture the monster. And then you can 'A'ctivate it again to release the monster as your pet.
+The <color:keyword>Capture Ball</color> is a useful tool that (almost) any player can use. Capture Balls can often be bought at a General Store. To use one, you must wield it on your hand, then <color:keypress>A</color>ctivate it, and choose a target monster to be captured; if successful, you can then <color:keypress>A</color>ctivate the ball again to release the monster as your pet.
 
-Hostile monsters will attempt to resist from capturing. You must make the monster critically injured status before capture. Beastmasters are very good at using Capture Balls, and these limitation are relaxed for them.
+Hostile monsters will attempt to resist capturing, and can only be captured if they are critically injured. Beastmasters are very good at using Capture Balls, and this limitation is relaxed for them. Quest monsters are immune to being captured, as are uniques who are not already pets.
 </indent>
-  <indent><color:U>Commanding Your Pets</color>
+  <indent><color:U>Keeping Pets Happy</color>
+
+Pets will accept punishment from you; hurt a pet, and it remains your pet. But what pets do expect from you is attention! This is called <color:keyword>pet upkeep</color> and consumes some of your mana; the more pets you have, and the stronger they are, the higher the upkeep. At low upkeep (below 100%), no mana is actually lost, the upkeep just slows mana regeneration (this allows characters with no mana to keep some pets). But at higher levels of upkeep, you will lose mana; run out of mana, and you have no option but to dismiss enough pets to bring the upkeep level down. This often happens if you have a pet who likes to summon...
+
+At grossly excessive upkeep levels (starting around 500%), a red <color:keyword>upkeep warning</color> appears in your status bar. At this point, pets have a chance to feel <color:keyword>neglected</color> from lack of attention. Neglected pets sometimes turn hostile, but more often they just think "bugger this for a game of heroes" and leave the level.
+</indent>
+  <indent><color:U>Pet Evolution</color>
+
+Pets, like players, receive experience from damaging and killing hostile monsters. With enough experience, some pets may <color:keyword>evolve</color> into stronger monsters. For example, your baby multi-hued dragon might become a young multi-hued dragon, then a mature multi-hued dragon, and eventually a mighty Wyrm of Many Colours!
+
+One problem, though: evolving into very strong forms takes a long time, and placing a pet into a Capture Ball causes the pet to lose all experience. It will not devolve back into its original form, but loses any progress it had made towards the next form.
+</indent>
+<topic:PetCommands>  <indent><color:U>Commanding Your Pets</color>
 
 Your pets are fairly well trained and will respond to a variety of commands such as following you closely, staying nearby and searching out your enemies. You can command your pets using the pet command menu which can be found be pressing <style:keypress>p</style>.
 
@@ -139,7 +296,7 @@ Here is a list of available pet commands:
   <indent>Dismiss specified pets. Dismissed pets will immediately disappear from the current level. FrogComposband asks you whether you want to dismiss each pet in order from high level named pets to low level unnamed pets. You can press 'U' to dismiss all unnamed pets.</indent>
 
 <style:keyword>Specify Target of Pet</style>
-  <indent>Choose a target monster, then all your pets will begin to chase the target.</indent>
+  <indent>Choose a target monster; all your pets will begin to chase the target. This command causes pets to pathfind much more aggressively in cases where enemies are not in their line of sight.</indent>
 
 <style:keyword>Stay Close</style>
   <indent>Command your pets to slay as close as they can.</indent>
@@ -160,51 +317,155 @@ Here is a list of available pet commands:
   <indent>Toggle permission of pets to open doors.</indent>
 
 <style:keyword>Pets Pick Up Items</style>
-  <indent>Toggle permission of pets to pick up items.</indent>
+  <indent>Toggle permission of pets to pick up items. Pets will drop any items picked up earlier.</indent>
 
 <style:keyword>Allow Teleport</style>
   <indent>Toggle permission of pets to cast teleport spell and teleport away spell.</indent>
 
 <style:keyword>Allow Cast Attack Spell</style>
-  <indent>Toggle permission of pets to use attack spells and breath.</indent>
+  <indent>Toggle permission of pets to use breaths and attack spells.</indent>
 
 <style:keyword>Allow Cast Summon Spell</style>
   <indent>Toggle permission of pets to cast summoning spells.</indent>
 
 <style:keyword>Allow Involve Player in Area Spell</style>
-  <indent>Toggle permission of pets to use ball spells or breath involving player in the area of effect.</indent>
+  <indent>Toggle permission of pets to use ball spells or breath attacks even when you are close enough to take collateral damage.</indent>
  
 <style:keyword>Ride a Pet</style>
   <indent>Ride on a specified pet.</indent>
 
 <style:keyword>Get Off a Pet</style>
-  <indent>Get off from a riding pet.</indent>
+  <indent>Dismount from the pet you were riding.</indent>
 
 <style:keyword>Name Pets</style>
   <indent>Specify a target pet and name it.</indent>
 
+<style:keyword>Highlight Pets</style>
+  <indent>Toggles highlighting all pets in yellow.</indent>
+
 <style:keyword>Use Both Hands for a Weapon</style>
 <style:keyword>Use One Hand to Control a Riding Pet</style>
-  <indent>Toggle use of your left hand when you are riding. You can wield a weapon two-handed for maximum damage in melee, and command the riding pet to chase your target using the 'specify a target of pet' command.</indent>
+  <indent>Toggle use of your left hand when you are riding. You can wield a weapon two-handed for maximum damage in melee, and command the riding pet to chase your target using the 'specify target of pet' command.</indent>
 </indent>
   <indent><color:U>Riding</color>
+Not all pets are suitable for riding, but many are - horses, most dragons, and many others. To control your mount, you must keep one hand free for holding the reins; but your pet will attack your target together with you, and enemy attacks will be dispersed between you and your mount. As a result, you will take less damage in combat.
 
-In FrogComposband, the player can ride on pet horses or dragons, etc. To control your mount, you must keep one hand free for holding the reins. But your pet will attack your target together with you, and enemy's attack will be dispersed. As a result of these, player's damage in combat will get reduced in total.
+The most important feature of riding is speed. When you are riding on a pet, your speed does not depend on your original speed but only on the speed of your mount and your skill at riding. Quaffing a potion of speed has no effect on your mount's speed, but throwing it at a wall will hasten your pet if it is nearby. You can also simply use a wand or a spell of Haste Monster.
 
-The most important feature of riding is speed. When you are riding on a pet, your speed doesn't depend on your original speed but depends only on the speed of your mount and your skill at riding. Quaffing a potion of speed has no effect on your mount's speed, but throwing it at a wall will hasten your pet if it is nearby. You can use a wand or a spell of haste monster too.
+Note that your proficiency level for riding is very low at first (see '<style:keypress>P</style>roficiency' in the <style:keypress>~</style> Knowledge Menu). When your proficiency level is low, you cannot make good use of riding, and your speed while riding will be very low. You need to practice riding to gain the full speed of the creature you ride. Your riding proficiency will increase a little when you attack monsters in melee or shoot them with missile weapons while riding. Ride on low level creatures at first, and then switch to higher level mounts little by little.
 
-Note that your proficiency level for riding is very low at first (see '<style:keypress>P</style>roficiency' using the Knowledge command <style:keypress>~</style>). When your proficiency level is low, you cannot make good use of riding, and your speed is also very low. You need to practice riding to gain the full speed of the creature you ride. Proficiency level will increase a little when you attack in melee or shoot with missile weapon when riding. Ride on low level creatures at first, and then switch to higher level mounts little by little.
+You can also use the <color:keypress>~</color> Knowledge Menu to check your class-dependent <color:keyword>proficiency cap</color> for riding. If the cap is low, you will never get good at riding and are likely better off with another plan.
 </indent>
 <topic:Friendly><style:heading>Friendly Monsters</style>
 
-You will occasionally find a monster in the dungeon that isn't out to get you. Such monsters are described in game messages as being 'friendly'. A friendly monster will not attempt to hurt you but neither will it necessarily attack your enemies.
+You will occasionally find a monster in the dungeon that isn't out to get you. Such monsters are described in game messages as being 'friendly'. A friendly monster will not attempt to hurt you, but neither will it necessarily attack your enemies.
 
-Unlike pets, if you annoy a friendly monster it will turn against you. Like pets, any monsters a friendly monster summons will also be friendly. Unlike pets, friendly monsters require no mana upkeep and can not be commanded using the pet commands.
+Unlike pets, if you hurt a friendly monster it will turn against you. Like pets, any monsters a friendly monster summons will also be friendly (except in the case of really stupid friends, who summon indiscriminately). Unlike pets, friendly monsters require no mana upkeep and cannot be commanded using the pet commands.
 
+Note that the loyalty of friendly monsters' friendly summons may be to the original friendly monster, not you; if you piss him off, his summons might not take your side in the fight...
+
+Since uniques can never be killed by another monster, only by you, a friendly unique is a huge asset - who's going to stop them from killing everyone for you? Friendly uniques are very rare, though; and Politicians (the class most likely to have friendly uniques on their side) may find them escaping as their health is depleted.
+
+<topic:Mimics><style:heading>Mimics and Shadowers</style>
+
+A number of monsters disguise themselves by assuming the shape (and symbol) of common objects found in the dungeon. These include the <color:W>|</color>, <color:g>(</color>, ?, !, <color:W>&</color>, =, <color:b>~</color>, <color:y>$</color> and <color:r>*</color> symbols. Some players find this unfair (or unfun); to provide for them we have the <color:keyword>easy_mimics</color> display option <link:option.txt#easy_mimics>, which changes the symbols for most of these monsters to the special symbol <color:u>x</color>. This reduces immersion a bit, but if you hate being chopped to pieces by something you had thought was a cloak, go for it!
+
+These traditional mimics are not the only monsters who are trying to hide their identity. There are also <color:keyword>shadowers</color>, who might seem easily recognizable by the distinctive <color:D>N</color> symbol... except that shadowers are not a distinct race at all. Shadowers are monsters of other races, hiding their true identity. At times it is obvious who a shadower really is, at other times you may have to think. Most of the time shadowers are fairly harmless, but don't rely on it completely. Shadowers are quite rare, and uniques never appear as a shadower.
+
+Two further monster races like to play games with their appearance: the <color:keyword>chameleons</color> and the <color:keyword>tanuki</color>. Chameleons are true shape-changers: they assume not just the appearance but also the characteristics of another monster, and act like that monster in every way except that they might suddenly change shape. Tanuki, on the other hand, only look like monsters of another race; they are actually quite harmless, but might spook you into thinking otherwise.
+
+<topic:Breeders><style:heading>Breeding Monsters</style>
+
+There are a few monsters with the ability to <color:keyword>breed explosively</color> - they can multiply very fast, and fill entire rooms with new monsters of the same type. (It is probably best not to think too closely about exactly how they do this.) Breeders are rarely dangerous (with one notable exception), but they can be extremely annoying, especially on quest levels.
+
+It is best to kill breeders before they multiply out of control. They are very rare in town quests (where the stipulation for completion is often that you must empty the entire level of monsters!), but when they do appear in a town quest, they should always be your top priority. Breeders are particularly likely to be a pain if you select the <color:keyword>Sexy</color> personality; most characters can hope to catch the breeder asleep and kill it before it has the chance to multiply, but the aggravation on Sexy characters wakes everybody up and removes this possibility.
+
+Even in extreme cases, an entire level will never be filled with breeders (unless it's a really tiny level): there is a strict limit of no more than 100 breeders at a time. <color:keyword>Farming breeders</color> by deliberately letting them multiply so you can kill them for XP does not work very well in this game; the experience you can gain this way is very limited and tails off rapidly. There are many other ways to level up that are more interesting and productive.
+
+<topic:MonsterMemory><style:heading>Monster Knowledge</style>
+
+Because there are so many different kinds of monster (about 1300) and many of them share similar colors and symbols, it is very difficult to keep track of what each of them can do, especially when you are still new to the game. Luckily, the game automatically keeps track of your experiences with each monster; you will remember the melee, spell and breath attacks you have suffered, which of your own magical attacks it resisted, whether it dropped treasure, whether you saw it multiply, and how much XP you got for killing it.
+ 
+There are several ways to access this <color:keyword>monster lore</color>. Two were already shown above - pressing <color:keypress>*</color> to target a visible monster and then <color:keypress>r</color> to recall the information, and pressing <color:keypress>Y</color> to view the monster list and then <color:keypress>R</color> to recall the lore on a particular monster.
+
+These approaches only work if the monster you would like to know more about is currently visible, but you can use the <color:o>~</color> knowledge menu (select the <color:keyword>Known Monsters</color> submenu) to access the lore on any monster at any time. This is about what you will see:
+
+<style:screenshot>
+Knowledge - Monsters
+Group                  Name                                         Sym  Kills  
+==============================================================================  
+<color:B>Uniques</color>              | Jasra, Brand's Mistress                        <color:v>n</color>  alive  
+Ridable monsters     | Scylla                                         <color:y>M</color>  alive  
+Wanted monsters      | <color:B>Castamir the Usurper</color>                           <color:v>p</color>  <color:D> dead</color>  
+Egyptian             | The Minotaur of the Labyrinth                  <color:U>H</color>  <color:D> dead</color>  
+Ant                  | King Koopa                                     <color:g>D</color>  alive  
+Bat                  | Othrod, Lord of the Orcs                       <color:R>o</color>  <color:D> dead</color>  
+Centipede            | Xylibbogaz, the Disembodied Mouth              <color:W>f</color>  <color:D> dead</color>  
+Dragon               | Azog, King of the Uruk-Hai                     <color:r>o</color>  <color:D> dead</color>  
+Floating Eye         | The Ultimate Dungeon Cleaner                   <color:D>g</color>  alive  
+Feline/Fox           | Alberich the Nibelung King                     <color:D>h</color>  alive  
+Golem                | Grendel                                        <color:g>O</color>  <color:D> dead</color>  
+Hobbit/Elf/Dwarf     | Orcobal the Mighty                             <color:r>o</color>  <color:D> dead</color>  
+Icky Thing           | Ulwarth, Son of Ulfang                         <color:U>p</color>  <color:D> dead</color>  
+Jelly                | Bolg, Son of Azog                              <color:r>o</color>  <color:D> dead</color>  
+Kobold               | Mime, the Nibelung                             <color:u>h</color>  <color:D> dead</color>  
+Aquatic monster      | Hagen, Son of Alberich                         <color:o>h</color>  <color:D> dead</color>  
+Mold                 | It                                             <color:W>.</color>  alive  
+Naga                 | Orcogar, Son of Orcobal                        <color:r>o</color>  <color:D> dead</color>  
+Orc                  | Old Man Willow                                 <color:s>#</color>  <color:D> dead</color>  
+<dir>, '?' to recall, 'v' for visuals, 'c' to copy, ESC
+</style>
+If you now press <color:keypress>?</color> or <color:keypress>r</color> on a particular monster, everything you know about that monster will be displayed.
+
+This monster knowledge is still incomplete, though - it only tells you what you have learned through your experiences; if you want to know all there is to know about a monster without having to fight it over and over again, there are three ways to reach that goal.
+
+You can <color:keyword>probe</color> a nearby monster with the Probing spell (or item effect); this will reveal everything about both that individual monster and about its race. Another option is to find your local <color:keyword>Beastmaster</color> (most though not all towns have one; the Library serves this function in the no-wilderness town) and pay to have a monster race researched; this also reveals everything about that race. The final way is to just turn on the <color:keyword>Easy Lore</color> birth option (<link:option.txt#easy_lore>), which gives you full monster lore at birth; this does make the game a bit easier, but maybe that's what you want!
+
+You will retain your monster knowledge for as long as you use the same savefile, even if your character dies; the monster memory is not just for your character, but for you.
+
+<topic:Resistances><style:heading>It Resists...</style>
+
+Your cool bag of magical tricks is not guaranteed to have the same effect on every enemy; many monsters have an inherent resistance, sometimes even an immunity, to a particular damage type or status effect. An <color:keyword>immunity</color> means such an attack has no effect on the monster at all. A <color:keyword>resistance</color> to an element (for example fire) means the damage taken by the monster is greatly reduced, but a small amount of damage is still taken. Resisting against a status effect means a monster survived a saving throw against the effect; the higher the monster's level compared to the attack power, the better the monster's chance to resist. (Typically, this does not require a specific resistance; most status effects give all monsters a chance to resist, while some are completely immune.)
+
+Some monsters have immunities just by virtue of what they are; for example, all Nonliving monsters, Demons and Undead are immune to vampirism. Undead monsters also cannot be harmed by nether.
+
+The various feedback messages of the type "so-and-so is immune", "so-and-so resists" and "so-and-so is unaffected" sometimes leave players unsure as to whether it might be worth trying the same attack again; though "so-and-so is immune" reliably means you can forget about it. In the case of resistances noted in the monster lore (elemental resistances, status effect resistances, teleportation) you can look in the lore if you are uncertain; if the message you just got means the monster has a resistance or an immunity, that information will now appear in the lore.
+
+<topic:Genocide><style:heading>Genocide</style>
+
+Some powerful magical spells and devices allow you to <color:keyword>genocide</color> a monster species (all monsters sharing a given letter symbol). Genocide attempts to remove all monsters of the specified species from the level you are currently on.
+
+Genocide is not always fully effective; it does not affect uniques or quest monsters (including town quest monsters), and monsters other than uniques have a level-dependent chance to resist. Monsters who successfully resist genocide have a small chance of acquiring immunity to future attempts. Another downside is the strain involved in casting genocide: you will take some damage for each monster affected. The damage taken per monster is very small, but if the number of monsters is high, casting genocide can hurt you seriously or even kill you. (This does not happen if your chaos patron offers you a free genocide; in this case, it is the patron casting genocide, he is just letting you pick the species.)
+
+Two other spell effects are closely related and follow the same basic rules as Genocide does. <color:keyword>Annihilation</color> targets a single monster (even this is enough for it to be very valuable!), and <color:keyword>Mass Genocide</color> affects all non-unique monsters regardless of species, but is limited to your immediate surroundings (monsters within 20 squares of you) instead of affecting the entire level.
+
+Genocide is based on the underlying "true" letter symbols of monsters, and ignores any changes made by the player to the visual appearance of a monster. For example, casting genocide on the symbol <color:o>x</color> would have no effect on mimics even if you turned the easy_mimics option on, because <color:o>x</color> is not these mimics' true symbol. Similarly, genociding <color:o>D</color> would affect ancient dragons even if you had changed their visual appearance to something else.
+
+Friendly monsters will always be turned hostile by a failed attempt to genocide them, even if they are uniques and there was no chance the genocide would harm them personally. Genocide can affect pets (it will not turn them hostile), although your mount will never be affected.
+
+New players with previous experience in other roguelikes, but not in Angband variants, sometimes expect Genocide or Mass Genocide to remove a monster race or species from the game permanently. This does not happen; genocide only affects monsters on a single level, and even there, they have a chance to resist. In spite of these limitations, sources of Genocide and Mass Genocide are extremely valuable, and many players stockpile them for the end fights.
+
+<topic:HealthBar><style:heading>Health Bar Colors</style>
+
+The number of stars in a monster's status/health bar always indicates the monster's health; the color of the stars reveals some additional information about the monster. Here is a quick guide to health bar colors, ordered from highest priority to lowest (if multiple colors apply, the color with the highest priority is used):
+<style:table>
+      <color:u>U</color>[*********]   Monster is invulnerable
+      <color:u>U</color>[<color:b>*********</color>]   Monster is paralyzed or sleeping
+      <color:u>U</color>[<color:u>*********</color>]   Monster is confused
+      <color:u>U</color>[<color:B>*********</color>]   Monster is stunned
+      <color:u>U</color>[<color:v>*********</color>]   Monster is afraid
+      <color:u>U</color>[<color:r>*</color>--------]   Monster is below 10% health
+      <color:u>U</color>[<color:R>**</color>-------]   Monster is below 25% health
+      <color:u>U</color>[<color:o>*****</color>----]   Monster is below 60% health
+      <color:u>U</color>[<color:y>*********</color>]   Monster is below 100% health
+      <color:u>U</color>[<color:G>*********</color>]   Monster is at full health
+      U[---------]   Monster's status and location are unknown
+</style>
 <color:D>
 Original   : (??)
 Updated    : (??)
 Updated    : Zangband DevTeam
 Updated    : Hengband 1.0.11
 Updated    : PosChengband 4.0.0
+Updated    : FrogComposband 7.1.liquorice
 </color>
