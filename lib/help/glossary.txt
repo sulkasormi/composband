@@ -1,0 +1,444 @@
+<style:title>The FrogComposband Glossary</style>
+
+While playing FrogComposband, discussing it with other players, or even just reading the help files, you are likely to run into many esoteric game concepts, mysterious abbreviations, or words that have specific meanings within the game. It is by no means necessary for a new player to read this file before starting play - most players can (and do) just figure things out as they go along, the glossary includes many advanced topics in addition to the basics, and all the important concepts are also covered elsewhere in the help. But you can refer to this list as a quick cheat-sheet if you are unsure about a particular word or game concept, or just read the whole thing for your amusement :)
+
+See <link:objects.txt#InscriptionAbbrev> for item attribute abbreviations.
+
+<topic:CommonWords><style:heading>Common Words, Abbreviations and Game Concepts</style>
+
+<color:keyword>AC</color>: Armor Class; a measure of how hard you are to hit, or of how hard a monster is to hit; also directly reduces the damage you take from some types of melee attacks.
+
+<color:keyword>ambush</color>: A random situation that forces you to leave the global map. Ambushes often surround you with a large number of hostile monsters.
+
+<color:keyword>Arena</color>: 1) A level 50 to 80 dungeon with the Metal Babble as its bottom guardian, characterized by its distinctive winding corridors and bubble rooms each containing a single high-level monster. 2) A special building, found in Thalos and Lite-Town, where you can fight one monster at a time until you lose. 3) Monster arena; a building where you can bet on cloned monsters fighting each other.
+
+<color:keyword>artifact</color>: A special item that can only be found once in a game. Includes both <color:o>standard artifacts</color>, which remain the same or almost the same from game to game, and <color:o>random artifacts</color>, which are unpredictable.
+
+<color:keyword>aura</color>: 1) An elemental sheath around a monster, dealing a small amount of elemental damage when the monster is hit in melee; also, similar elemental sheaths around the player, dealing damage to monsters. 2) A description of the White Aura and Black Aura mutations, which provide good luck and bad luck respectively.
+
+<color:keyword>auto-destroyer</color>: A system for automatically destroying items; either the Mogaminator or the easy auto-destroyer.
+
+<color:keyword>average object</color>: An object without any magical enchantments or curses.
+
+<color:keyword>awful</color>: The object feeling for a cursed ego item.
+
+<color:keyword>ball</color>: An effect centered on a particular square, affecting all squares and monsters within a given radius of that square unless blocked by walls. Radius-0 ball: a ball that only affects one square but differs from a bolt in that it is not reflectable and can hit the target even if there are monsters between the target and the ball's source.
+
+<color:keyword>base element</color>: One of the four most common elements: acid, cold, fire or electricity; occasionally used in an extended sense to include poison.
+
+<color:keyword>beam</color>: An effect that affects all squares and monsters in its path, does not stop at the first monster it hits, and cannot be reflected. Compare bolt, ball.
+
+<color:keyword>blessed</color>: 1) An item attribute; makes the item somewhat resistant to being cursed, and allows priests to use it with no penalties if it is a weapon. 2) Blessing: a spell and scroll effect, temporarily increases the player's AC and to-hit.
+
+<color:keyword>blink</color>: Short-range teleport; Phase Door.
+
+<color:keyword>body type</color>: Also <color:keyword>body template</color>; a race-dependent list of your equipment slots and the types of item they accept. The most common body type is humanoid, shared by nearly all normal player races, but Monster Mode races often have distinct body types.
+
+<color:keyword>bolt</color>: An effect that only hits the first monster in its path, and can be reflected by monsters (or players) with Reflection. Compare beam, ball.
+
+<color:keyword>bottom guardian</color>: Also: <color:keyword>final guardian</color>, <color:keyword>dungeon guardian</color>, <color:keyword>dungeon keeper</color>, <color:keyword>dungeon boss</color>. A strong unique monster found at the bottom of a particular dungeon. All fixed dungeons except the Anti-magic cave and Anti-melee cave have a bottom guardian. Killing bottom guardians gives a free stat-up, often also a fixed item. Compare entrance guardian.
+
+<color:keyword>brand</color>: An elemental multiplier to weapon damage dice, applied only when the monster attacked does not resist that element. Essentially the same as a slay, just based on an element rather than monster type. Compare slay.
+
+<color:keyword>burden</color>: The total weight of all equipment, projectiles and inventory items carried. <color:o>Overburdening</color>: the condition of carrying more items than your strength comfortably allows, slowing you down and causing you to take damage from drowning if you enter deep water without Levitation.
+
+<color:keyword>chaos patron</color>: A Chaos-Lord taking a particular interest in your character, giving you gifts or punishing you as you level up. Each patron hands out slightly different gifts and punishments.
+
+<color:keyword>character dump</color>: An HTML file containing a character sheet.
+
+<color:keyword>character level</color>: An indicator of how advanced your character is. Character level depends on experience, and affects your skills, spell and racial power availability, spell and racial power fail rates, mana and hit-point pools, and the power of many spell effects and saving rolls; it also triggers stat-ups, demigod talents and player-monster evolution, and may give additional bonuses or have additional effects depending on your personality, class and race.
+
+<color:keyword>character sheet</color>: Also <color:keyword>character description</color>; an extended account of everything important about your character, accessible on your current character through the 'C' command. Can be dumped with the '|' command.
+
+<color:keyword>CL</color>: Character level.
+
+<color:keyword>class</color>: The type of character played; essentially, the character's profession, selected at character creation and unchangeable for the duration of the game. The selection of class is the most important one made during the birth process.
+
+<color:keyword>coffee-break mode</color>: A birth option that accelerates the game and turns the wilderness off. Automatically turned on if Beginner Mode is selected.
+
+<color:keyword>confusion</color>: 1) A status effect, affects both players and monsters. See <link:status.txt#Confusion>. 2) An element, causes the status effect if not resisted.
+
+<color:keyword>curse</color>: 1) Item curse; a negative, usually removable object attribute that prevents you from unequipping that object while it remains cursed. 2) A monster or player-monster spell attack, particularly one that offers a saving throw and deals non-elemental damage; one of Cause Light Wounds, Cause Serious Wounds, Cause Critical Wounds, Cause Mortal Wounds or Hand of Doom. 3) One of a number of special effects with similarity to item curses, such as the Amberite blood curse.
+
+<color:keyword>dazed</color>: Stunned; afflicted with the Stun status effect.
+
+<color:keyword>demigod powers</color>: Also <color:keyword>demigod talents</color>; the special permanent mutations available to Demigods, Humans and some Human-like races. See <link:Demigods.txt#Powers>.
+
+<color:keyword>depth</color>: A theoretical indicator of how far removed a dungeon level is from the surface, and a practical indicator of how dangerous monsters who generate on that level can be expected to be; expressed in either levels or feet. One level equals 50 feet.
+
+<color:keyword>device</color>: A self-recharging magical item with a particular effect: a wand, rod or staff; sometimes used in an extended sense to include scrolls, occasionally even potions. <color:o>Device skill</color>: the primary skill that determines your failrates for wands, rods, staves and scrolls.
+
+<color:keyword>disarming</color>: 1) Removing or attempting to remove floor or chest traps. 2) Disarming skill; the skill that affects your ability to remove traps safely.
+
+<color:keyword>disenchantment</color>: 1) The name of an element. 2) The reduction of to-hit, to-dam and to-AC bonuses (rarely pval) on an equipped item, caused by the element.
+
+<color:keyword>DL</color>: Dungeon level, in the sense of an indicator of depth. "Unmakers are native to DL 77." More dangerous monsters and more valuable items will appear at higher dungeon levels. In an extended sense, danger level; usually this is the same as the dungeon level, but wilderness areas have a danger level without having a dungeon level.
+
+<color:keyword>double move</color>: A situation where a monster attacks you twice without you getting a chance to react in between, either because the monster is faster than you are or because you got unlucky with energy randomness. Also, the analogous situation where a player receives consecutive moves against a monster.
+
+<color:keyword>dual-wielding</color>: Simultaneously wielding two weapons. Dual-wielding proficiency: the acquired skill that reduces accuracy penalties from dual-wielding.
+
+<color:keyword>dungeon</color>: An area built of interconnected, randomly generated non-permanent levels and generally treated as if it were underground; any game location apart from towns, town quests and the wilderness, or all such locations collectively. The game is won by entering the Angband dungeon, reaching dungeon level 100 and defeating the Serpent of Chaos.
+
+<color:keyword>dungeon book</color>: A high-level spellbook that does not usually generate in town shops and so needs to be acquired in the dungeon.
+
+<color:keyword>dungeon level</color>: 1) A particular random level that has generated within a dungeon. 2) DL; a particular depth.
+
+<color:keyword>ego</color>: Also <color:keyword>ego item</color>, <color:keyword>excellent item</color>; an exceptional item that is not an artifact, or a type of such exceptional items. "Protection is a common ego in the early game."
+
+<color:keyword>eldritch horror</color>: A sanity-blasting monster. See <link:monster.txt#EldritchHorror>.
+
+<color:keyword>element</color>: 1) A damage type, such as fire, acid, chaos, disenchantment, or nexus. 2) More narrowly, one of the base elements: fire, cold, acid, electricity or poison. Elemental protection; temporary resistance to the elements.
+
+<color:keyword>elemental</color>: 1) Based on or pertaining to an element. 2) A monster with the letter symbol E; each elemental is strongly associated with a single element. Available as a Monster Mode player-monster race, with several subraces.
+
+<color:keyword>energy</color>: 1) Energy determines how often the player (or a monster) gets to move. Players and monsters with higher speed accumulate energy faster, and therefore get turns more often. <color:o>Energy randomness</color>: limited randomness in how much energy a player or monster needs to accumulate before getting another turn. <color:o>Energy cost</color>: the amount of energy consumed by an action. 2) A monster flavor for some lightning breathers: energy hound, energy vortex.
+
+<color:keyword>entrance guardian</color>: A monster who guards the entrance to a particular dungeon, and who must be killed or avoided to enter that dungeon. Only some dungeons, mostly high-level ones, have an entrance guardian. "The entrance guardian of Crystal Castle is an ethereal dragon, so watch out." Compare bottom guardian.
+
+<color:keyword>equipment</color>: 1) The items your character is currently wearing or wielding, visible on your character sheet or through the 'e' command. 2) Items that can be equipped.
+
+<color:keyword>ESP</color>: Extrasensory perception. Full or partial telepathy.
+
+<color:keyword>evolution</color>: 1) The process by which monsters who have gained enough XP turn into stronger monsters. Seen in the player's pets, and in undead monsters who drain experience from the player. Also sometimes caused by the element Time. 2) Player-monster evolution; player characters in Monster mode usually evolve into stronger subraces after leveling up enough. This may give new stat bonuses, resistances, abilities, attacks or equipment slots.
+
+<color:keyword>EXP</color>: Also <color:keyword>XP</color>: experience. The most basic way of keeping score in the game, experience determines your character level. <color:o>Monster experience</color>: experience collected by a monster, usually a pet.
+
+<color:keyword>FA</color>: Free Action; the item attribute that protects against paralysis.
+
+<color:keyword>fail rate</color>: The probability, usually expressed as a percentage, of failing to cast a spell or use a particular item.
+
+<color:keyword>fame</color>: A measure of how many memorable feats your character has performed. Killing uniques, completing quests and winning Arena fights increases your fame; failing quests or losing an Arena fight decreases fame. Shop pricing and reforge power are affected by fame.
+
+<color:keyword>fear</color>: A status effect. Can prevent some actions, or in the case of extreme fear, cost a turn or partial turn without any actions. Fear resistance: a resistance that improves your chances of avoiding the negative effects of fear.
+
+<color:keyword>feeling</color>: 1) Level feeling. "A special feeling means there's an artifact on the level." See <link:dungeon.txt#Feelings>. 2) Object feeling; the quality of an object as indicated by pseudo-ID.
+
+<color:keyword>flag</color>: An indicator of whether an object, player or monster attribute is present or not present. Equipment and player flags are displayed on the Character Sheet.
+
+<color:keyword>friendly monster</color>: A monster who is not hostile, especially one who is also not a pet; such a monster may help you in fights, but you cannot command them to do so.
+
+<color:keyword>frost</color>: A synonym for the element cold, used to make it sound cooler. Distinguish from Ice, a separate (if related) element. Compare Lightning as a synonym for electricity.
+
+<color:keyword>fuzzy telepathy</color>: Telepathy that shows all otherwise invisible monsters as being white, regardless of their usual color; the game's default option for how telepathy works.
+
+<color:keyword>genocide</color>: An attempt to remove a monster species (all monsters sharing the same glyph) from a dungeon level. Does not affect uniques. See <link:monster.txt#Genocide>.
+
+<color:keyword>global map</color>: Also <color:keyword>overworld map</color>; a scaled map of the FrogComposband world, accessible in towns and the wilderness through the '<' command and generally used for travelling from towns to dungeons or from dungeon to dungeon.
+
+<color:keyword>good object</color>: An item that has some magical enchantments on it, but is not an artifact or ego item.
+
+<color:keyword>haste</color>: A temporary bonus of +10 to the speed of a player or monster.
+
+<color:keyword>health bar</color>: Also <color:keyword>status bar</color>; a bar on the right side of the screen, displaying the health and status of the monster being fought; or a similar, optional bar for the player. See <link:monster.txt#HealthBar>.
+
+<color:keyword>heavy curse</color>: An item curse that cannot be removed with normal Remove Curse, but can be removed with a Scroll of *Remove Curse*.
+
+<color:keyword>high resist</color>: A resistance to an element other than the base elements and poison.
+
+<color:keyword>hostile monster</color>: Any monster who is neither friendly nor a pet. The vast majority of monsters encountered will be hostile.
+
+<color:keyword>HP</color>: Hit points. A character or monster whose hit points drop below 0 will die.
+
+<color:keyword>icky wield</color>: Equipping an item unsuitable for the class, giving class-dependent penalties while the icky item remains equipped.
+
+<color:keyword>ID</color>: Identify. <color:o>*ID*</color>: *Identify*, full identification of an item.
+
+<color:keyword>immunity</color>: 100% resistance; an attribute that completely negates all damage and side effects from an element. Genocide immunity: acquired immunity to genocide. Destruction immunity: acquired immunity to destruction.
+
+<color:keyword>infravision</color>: The ability to see nearby monsters who are invisible but not ghostly or cold-blooded.
+
+<color:keyword>innate attack</color>: A player melee attack not based on an equipped weapon or on martial arts. Many Monster-mode player races have no equipment slots for a melee weapon, and rely on innate attacks such as biting or clawing to harm enemies in melee, but most normal player races can also acquire innate attacks through a mutation.
+
+<color:keyword>inscription</color>: 1) Text appended to an object's description by the player or automatically by the Mogaminator, it can be either pure flavoring or give instructions to the game about how to treat that item. See <link:objects.txt#Inscriptions>. 2) Anything appended to an object description, including the standard item attribute abbreviations.
+
+<color:keyword>inventory</color>: 1) Pack inventory, the list of items currently carried by your character, accessible through the 'i' command; in an extended sense, the pack itself. 2) Any similar list of items: shop inventory, home inventory.
+
+<color:keyword>invulnerability</color>: A temporary player or monster condition. Gives a 12 in 13 chance of taking zero damage from any given attack. Invulnerable monsters have white stars (<color:R>p</color>[********-]) in their health bars. Some special damage sources, notably Psycho-Spears, ignore invulnerability.
+
+<color:keyword>item score</color>: The monetary value or estimated value of an item, generally the higher the more powerful the item is.
+
+<color:keyword>jump</color>: A monster attack that blinks the monster and generates a large elemental ball centered on the monster's pre-blink location.
+
+<color:keyword>keymap</color>: A remapping of a particular key to represent another key command or combination of commands in the game's underlying command set. Compare macro.
+
+<color:keyword>kin</color>: Monsters that share their species (letter symbol) with a given monster, e.g. yeeks for Boldor; mostly used in the context of summons. For players: monsters whose letter symbol is associated with the player's race.
+
+<color:keyword>level</color>: 1) Character level; CL. "A level 46 character." 2) Dungeon level, in either the "explorable area" sense ("You have a bad feeling about this level") or the "depth" sense ("Unmakers are native to level 77"). 3) Danger level of a town quest or wilderness area. "Spawning Pits is a level 80 quest." 4) Monster level; the depth a monster is native to. 5) Spell level; the character level at which a spell becomes available. 6) Device level; a measure of how difficult a magical device is to use, determined by the device's effect and power.
+
+<color:keyword>level guardian</color>: A random quest monster in the Angband dungeon; in an extended sense, any monster tied to appearing at a particular depth in a particular dungeon, including Oberon, the Serpent of Chaos and sometimes dungeon bosses.
+
+<color:keyword>levitation</color>: The ability to float. Levitation gives access to dark pits and mountainous areas of the wilderness, allows you to avoid some traps, and reduces damage from standing in or over dangerous terrain. See <link:faq.txt#Levitation>.
+
+<color:keyword>life points</color>: A measure of your attachment to life, displayed on a range of 0% to 99% if depleted. Losing life points reduces effective maximum HP; if life points drop below 0, the character will transform into an undead race, or die outright if this is not possible. See <link:faq.txt#LifePoints>.
+
+<color:keyword>life rating</color>: 1) Random life rating; a measure, ranging from 87% to 117%, of how lucky you got with random hit-point gain rolls in your current life; life rating as revealed by Self Knowledge. See <link:faq.txt#LifeRating>. 2) Life rating multiplier; a fixed non-random HP multiplier based on your race, class or personality, not directly related to the random life rating. 3) +Life and -Life; item attributes that modify a constitution-based HP multiplier.
+
+<color:keyword>lightning</color>: A synonym for the element electricity.
+
+<color:keyword>lite-town</color>: The version of the town Outpost as it appears in no-wilderness games.
+
+<color:keyword>living</color>: Of a monster: not an undead, a demon or a nonliving monster. Not strictly an antonym of <color:o>nonliving</color>, since demons and undead are neither living nor nonliving.
+
+<color:keyword>logrus</color>: A synonym for the element chaos, often used for exceptionally powerful chaos effects.
+
+<color:keyword>macro</color>: The mapping of a keypress to represent one or more other keypresses, for example to cast with a single keypress a spell that normally requires multiple actions. Differs from a keymap in that macros accept a somewhat wider range of input, keys within macro sequences can trigger keymaps, and macros are applied in some situations (such as prompts and menus) where keymaps are not applied. See <link:pref.txt#Macros>.
+
+<color:keyword>mana</color>: The spell points of the player or of a magical device.
+
+<color:keyword>Mark of Chaos</color>: A random slay or brand, re-rolled for each blow. One of only two generally available brands that can stack with another brand.
+
+<color:keyword>melee</color>: Armed or unarmed hand-to-hand combat. Melee skill: your talent for such combat. Melee weapon: a weapon used in melee.
+
+<color:keyword>Mogaminator</color>: The auto-picker; the system for automatically picking up, destroying, identifying, inscribing or leaving on the floor particular items based on your pick-up preferences. Editable through the '_' command. So named for its original author, Hengband developer Mogami.
+
+<color:keyword>monster</color>: Any creature, hostile or friendly, encountered during the game.
+
+<color:keyword>monster list</color>: A list of all currently visible monsters, available as a subwindow or through the 'Y' and '[' commands.
+
+<color:keyword>monster mode</color>: A mode of play, selected during character creation, in which your character gains the qualities of a monster race instead of choosing a normal race and class.
+
+<color:keyword>monster race</color>: 1) A monster kind, e.g. filthy street urchin, or small kobold. 2) A player monster race; a race selected at character creation in Monster mode.
+
+<color:keyword>mount</color>: A pet you are currently riding; a monster suitable for riding.
+
+<color:keyword>mutation</color>: A player attribute, positive or negative, that is listed in the Mutations section of the character sheet. <color:o>Removable</color> or <color:o>unlocked mutations</color>; mutations which were acquired during the game, can be removed in various ways, and are not tied to the character's race, class, personality or equipment. <color:o>Permanent</color> or <color:o>locked mutations</color>: demigod talents, other racial talents, and class- or personality-guaranteed mutations such as the White Aura from Lucky personality.
+
+<color:keyword>nameless</color>: A Mogaminator keyword for a non-ego, non-artifact item that does not have a Weaponsmith essence on it.
+
+<color:keyword>nexus</color>: An element, seldom deadly but often highly annoying due to its side effects.
+
+<color:keyword>non-ego</color>: An item that is neither ego nor an artifact; a nameless item. "Reforging, Crafting and Artifact Creation only work on non-ego items."
+
+<color:keyword>object list</color>: A list of all known objects on the current dungeon level, accessible as a subwindow or through the ']' and 'O' commands. Can be used for travelling and to display additional features such as stairs.
+
+<color:keyword>out of depth</color>: Appearing at an unexpectedly shallow depth; used of monsters and items native to higher depths. A monster native to DL 80, encountered on DL 60, is said to be twenty levels out of depth.
+
+<color:keyword>overworld map</color>: See <color:keyword>global map</color>.
+
+<color:keyword>pack</color>: 1) The player's backpack; the inventory. 2) A group of similar monsters acting together.
+
+<color:keyword>permanent curse</color>: An item curse that can only be removed with Mundanity. Other curses on an item with a permanent curse may still be removable.
+
+<color:keyword>personality</color>: A character attribute, selected at character creation and unchangeable during the game. Each personality gives its own set of bonuses and maluses to your character, and many also have special effects like the chaos patrons on Chaotic or the aggravation on Sexy.
+
+<color:keyword>pet</color>: A friendly monster you can give commands to.
+
+<color:keyword>pet upkeep</color>: The cost of controlling all your pets and keeping them happy; consumes spell points if it exceeds 100%, forcing pets to be dismissed if you have no spell points left. Very high upkeep, above roughly 500%, may result in pets turning hostile.
+
+<color:keyword>polymorph</color>: 1) Temporary race polymorph; the condition of the player character temporarily belonging to another player race, as the result of a monster spell or player spell. This is indicated in red brackets (e.g. <color:r>[Cyclops]</color>) and wears off after a while. 2) Permanent race polymorph; the player permanently turning into another race. This is never triggered by a monster spell, but can be triggered by chaos patrons (other than Chardros and Hionhurn), by the Polymorph item activation, by the Polymorph power, by some other conditions such as running out of life points, and rarely by unresisted monster toxic waste attacks. Can be disabled as a birth option. 3) Monster polymorph; a monster turning into a different monster, or the act of causing this to happen. A wand effect, and an occasional effect of the element chaos. 4) Potion of Polymorph; a potion that randomly gives or cures mutations. This does not trigger race polymorph.
+
+<color:keyword>primary stat</color>: Spellcasting stat, as opposed to other stats; see <color:keyword>spellcasting stat</color>.
+
+<color:keyword>proficiency</color>: Your level of mastery with a particular task or item. Weapon proficiency: accuracy bonus from experience with a particular weapon kind. Spell proficiency: mana cost and fail rate bonus from experience with a spell. Riding proficiency, dual-wielding proficiency, martial arts proficiency.
+
+<color:keyword>pseudo-ID</color>: Pseudo-identify; the system for giving object feelings; the object feelings so given. "At level 20, the Mogaminator starts automatically destroying all weapons and shooters that pseudo-ID as {average}."
+
+<color:keyword>pval</color>: Plus value. An indicator of the size of any stat, skill and ability bonuses (or maluses) on an item; for example, an Iron Helm of Might that gives +3 to speed, strength, dexterity and constitution and -3 to intelligence has a pval of 3.
+
+<color:keyword>quest</color>: A mission within the game, with rewards for completion.  The game is won by completing the quest to kill the Serpent of Chaos. <color:o>Town quest</color>: any quest offered and rewarded by some building in a town, especially one where the quest level itself is also accessible from the town. <color:o>Angband quest</color>: any of the ten random level guardians who appear in the Angband dungeon.
+
+<color:keyword>race</color>: 1) Player race, selected at birth, and usually expected (though not guaranteed; see polymorph) to remain the same throughout the game. Race selection fundamentally affects a character. 2) A monster race; a monster kind, e.g. filthy street urchins.
+
+<color:keyword>racial power</color>: A spell-like ability you receive as the result of your race, used through the 'U' command ('O' with roguelike keys); e.g. Create Food on Beornings and Hobbits. In an extended sense, any power used through the 'U'/'O' command, regardless of its origin.
+
+<color:keyword>random teleportation</color>: 1) An item curse and mutation effect that causes the player to teleport unpredictably. 2) A positive object attribute that allows the player to follow teleporting monsters, and causes the player to teleport unpredictably but allows the choice of not teleporting.
+
+<color:keyword>ranged combat</color>: Combat based on shooting or throwing projectiles at a monster; in an extended sense, any non-melee combat.
+
+<color:keyword>ranged weapon</color>: A weapon suitable for ranged combat; a shooter; a sling, bow, or crossbow.
+
+<color:keyword>realm</color>: A school of magic based on a particular set of four spellbooks; e.g. the Arcane realm, the Chaos realm.
+
+<color:keyword>recall</color>: 1) Most commonly, Word of Recall: a spell or device effect that takes you from the surface to a dungeon or from the dungeon (or a quest) back to the surface. "Recalling out of a town quest will fail the quest but might save your life." 2) Less commonly, monster recall; monster knowledge look-up. "Press '*' to look at a monster and 'r' to recall information about it."
+
+<color:keyword>reflection</color>: The ability to turn back 75% of incoming bolts, available to both players and monsters.
+
+<color:keyword>reforging</color>: Turning an artifact into a new artifact, using a good or average destination item as the base for the new artifact. A town service offered at Fighters' Hall in Morivant and Lite-Town. See <link:faq.txt#Reforging>.
+
+<color:keyword>regeneration</color>: Your ability to recover lost HP and SP over time; also, the ability of a monster to recover lost HP over time.
+
+<color:keyword>resist</color>/<color:keyword>resistance</color>: An attribute, available to players and monsters, that reduces damage and blocks or mitigates side-effects from the resisted element. The opposite of a vulnerability.
+
+<color:keyword>resist base</color>/<color:keyword>rBase</color>: Resistance to all of the four base elements.
+
+<color:keyword>restoring</color>: Using an item, spell or town service that reverses stat drain, XP drain and/or loss of life points.
+
+<color:keyword>running</color>: Walking into an indicated direction until disturbed (by a fork, a monster, an interesting object etc.) or interrupted.
+
+<color:keyword>sanity blast</color>: The Eldritch Horror effect; can be triggered by the sight of an eldritch horror, or by reading from the Necronomicon.
+
+<color:keyword>scrambling</color>: 1) Stat scrambling. 2) A flavor message for auras and melee attacks based on the element nexus; these attacks do not trigger stat scrambling, but share its connection to nexus.
+
+<color:keyword>searching</color>: 1) Searching skill; the skill that determines your ability to locate traps and secret doors. 2) The act of searching for traps and secret doors, using the 's' command. <color:o>Searching mode</color>: a mode toggled with the 'S'/'#' command, causes you to automatically search every other turn. 3) Searching within help files with the '/' and '\' commands.
+
+<color:keyword>shaft</color>: A connection between two dungeon levels or between a dungeon level and the surface. Differs from stairs in that most shafts skip a depth; downstairs on DL 8 will always lead to DL 9, while a shaft down will lead to DL 10 unless there is a quest on level 9.
+
+<color:keyword>shuffle</color>: 1) Shop shuffle; paying a shopkeeper to restock the store with new items. 2) Equipment shuffle; updating multiple pieces of equipment at once. 3) The Shuffle spell, a spell in the Trump realm with highly unpredictable effects.
+
+<color:keyword>skill</color>: 1) One of the eight primary skills your character has; Melee, Archery, Saving Throw, Stealth, Perception, Searching, Disarming or Device Skill; in an extended sense, any similar improvable attribute like Digging or Infravision. See <link:birth.txt#PrimarySkills>. 2) Your level of mastery with a particular weapon or spell; proficiency. See <link:prof.txt>. 3) Anything a Skillmaster is or can be proficient in.
+
+<color:keyword>slay</color>: A multiplier to the damage dice of a weapon, applied only against monsters of a particular type. Compare brand. See <link:faq.txt#Slays>.
+
+<color:keyword>SP</color>: Spell points; mana.
+
+<color:keyword>spell</color>: 1) Book spells; magical effects learned by the player from studying a spellbook, and used through the 'm' command. 2) Any magical or mental power used through the 'm' command. 3) Monster spells, inherent to a particular monster race. 4) Powers; racial, class-based or mutation-based spell-like abilities used through the 'U'/'O' command.
+
+<color:keyword>spellcasting stat</color>: A stat that affects your spell failrates and/or the size of your mana pool; usually the same stat for all normal spells, but not necessarily for racial or mutation powers.
+
+<color:keyword>stat</color>: One of the six basic statistics your character has; Strength (STR), Intelligence (INT), Wisdom (WIS), Dexterity (DEX), Constitution (CON) or Charisma (CHR). See <link:birth.txt#PrimaryStats>.
+
+<color:keyword>stat base</color>: The value of a stat before race, class, personality, equipment and mutation bonuses are accounted for.
+
+<color:keyword>stat cap</color>: The highest value a stat base can take. Between 18/70 and 18/130.
+
+<color:keyword>stat drain</color>: Reduction of a stat, usually as the result of monster attacks, indicated by the stat turning yellow. Drained stats can be restored.
+
+<color:keyword>stat scrambling</color>: The permanent swapping of two stats' current base values as the result of an insufficiently resisted Nexus attack, avoidable as a birth option at the cost of suffering a curse effect instead.
+
+<color:keyword>stat-up</color>: An opportunity to increase a selected stat.
+
+<color:keyword>status bar</color>: See <color:keyword>health bar</color>.
+
+<color:keyword>status effect</color>: A temporary condition, especially a negative one such as confusion, blindness, poisoning, stunning or hallucination. Both the player and monsters can be affected by status effects. See <link:status.txt>.
+
+<color:keyword>subwindow</color>: A window other than the main (Term-0) game window, used by some players for convenient display of monster and object lists, equipment, recent messages or other information.
+
+<color:keyword>summon</color>: To cause new monsters to appear; an instance of summoning; a monster so summoned. "I'm buried in summoners who summon summoners."
+
+<color:keyword>the surface</color>: All non-dungeon and non-quest areas collectively; the wilderness, including towns.
+
+<color:keyword>sustain</color>: Stat sustain; an attribute that protects you from most effects that might reduce that particular stat. Exceptional sources of stat drain, particularly Time attacks, can ignore sustains.
+
+<color:keyword>tailored item</color>: An item guaranteed to be of a type suitable for your race and class; includes all Acquirement results, most quest rewards and a small portion of regular item drops.
+
+<color:keyword>telepathy</color>: The ability to know the type and location of nearby monsters without the need to detect them or see them directly.
+
+<color:keyword>terrible</color>: The object feeling for a cursed artifact.
+
+<color:keyword>to-AC</color>: Armor class bonus; the Y in [+Y] or [X,+Y], typically a magical enchantment. Often vulnerable to damage from disenchantment or acid. Distinguish from <color:keypress>base AC</color>, which is the X in [X,+Y] and cannot be damaged by either disenchantment or acid.
+
+<color:keyword>to-dam</color>: Damage bonus; the item attribute that improves your damage output; the Y in (+X,+Y) in an item description. Your character has separate to-dam for melee, ranged combat and spells, and an item may affect one or more of these.
+
+<color:keyword>to-hit</color>: Accuracy bonus; your ability to hit monsters; the item attribute that improves your ability to hit monsters; the X in (+X,+Y) in an item description. Your character has separate to-hit for melee and ranged combat, and an item may affect one or both of these.
+
+<color:keyword>town</color>: An area where shops and other buildings are located.
+
+<color:keyword>town service</color>: A service offered by a town building, usually for money, such as Research Item (*Identify*), Restoration or Sleep for the Night.
+
+<color:keyword>trap</color>: 1) A floor trap; a square on the floor that does not allow item drops and will usually attempt to harm or inconvenience the player if entered. 2) A chest trap; a mechanism, sometimes very nasty, that needs to be disarmed before a chest can be opened safely. 3) A monster trap; a floor trap set by the player for monsters to walk into.
+
+<color:keyword>travelling</color>: 1) The automated process of walking to another point on the level, commonly as a result of using auto-get or the 'H' or 'J' travel commands. 2) Manual travelling; manually walking from location to location, especially in the wilderness.
+
+<color:keyword>unique</color>: A named monster, usually more dangerous than regular monsters at the same depth, and immune to slowing, annihilation and genocide. The same unique can be encountered repeatedly and on different level until it has been killed, at which point it will not generate again.
+
+<color:keyword>unlife attack</color>: A monster melee attack type. A successful unlife attack makes the attacker more powerful and the attack's target less powerful. More powerful monsters hit harder and cast more dangerous spells. Compare and contrast with vampiric attack.
+
+<color:keyword>vampiric attack</color>: A player or monster attack that drains hit points from a living target, healing the attacker and slightly reducing the target's max HP. Compare unlife attack.
+
+<color:keyword>vault</color>: A special area of a dungeon level, characterized by the presence of permanent walls and a high concentration of both dangerous monsters and exceptional loot. In an extended sense, any special dungeon room with many out-of-depth monsters.
+
+<color:keyword>vulnerability</color>: An attribute that causes you to take more damage from an element, and makes your items more likely to be damaged or destroyed by that element. The opposite of a resistance.
+
+<color:keyword>wanted monster</color>: A monster whose corpse, skeleton or ears can be turned in at various town locations to collect a reward. <color:o>Daily wanted</color>: a non-unique wanted monster with monetary rewards, changing from day to day. <color:o>Wanted unique</color>: any of the 20 uniques on the list of wanted monsters for that game, with an item reward when the unique is turned in.
+
+<color:keyword>wilderness</color>: The areas outside dungeons and town quest levels; the surface; or more narrowly, areas of the surface not in the immediate vicinity of a town.
+
+<color:keyword>XP</color>: Experience; see <color:keyword>EXP</color>.
+
+
+<topic:Informal><style:heading>Less Formal Words and Abbreviations</style>
+
+The following terms are either slang, informal expressions or terms used in the code that you won't run into very often or at all during play, but might see used by fellow players:
+
+<color:keyword>AFC</color>: Ancient Foul Curse, the nastiest curse effect in the game. Also known as TY, Ty or TY_CURSE, after ZAngband developer Topi Ylinen.
+
+<color:keyword>ASC</color>: Anti-summoning corridor. A tunnel dug into the dungeon walls by you, especially one that zigzags, to limit space for summons and reduce the number of monsters that can attack you at once.
+
+<color:keyword>band</color>/<color:keyword>*band</color>: Any game descended from the original Angband, including FrogComposband.
+
+<color:keyword>bravery</color>: The quality displayed by your friend when he did something that by all rights should have got his character killed, but actually didn't because your friend is a lucky bastard. "That was pretty brave."
+
+<color:keyword>buff</color>: 1) Make stronger; something that is strong; an instance of making something stronger, in the context of game development. "The J is too weak and should be buffed." 2) A positive temporary effect, such as haste or heroism.
+
+<color:keyword>bump</color>: Melee; to hit things in melee. "Warriors get great bump attacks but not much else." Bump class: a class that relies on melee.
+
+<color:keyword>cheese</color>: A strategy that works but is considered uncool, usually because it either is extremely dull or relies on some exploit in game mechanics (or both). "LOS cheese is a lot less effective in FrogComposband than V, but still works at times."
+
+<color:keyword>CLW/CSW/CCW</color>: Cure Light Wounds/Cure Serious Wounds/Cure Critical Wounds; the three common minor healing potions, staple items of the early game.
+
+<color:keyword>cuddlywug</color>: Quylthulg, as spelled by someone who pretends not to remember how to spell it.
+
+<color:keyword>diving</color>: Play characterized by rapid progress to high depths; the opposite of grinding.
+
+<color:keyword>DSM</color>: Dragon Scale Mail. <color:keyword>BDSM</color> most commonly means Balance Dragon Scale Mail, but should be interpreted in context :)
+
+<color:keyword>easily</color>: Also: <color:keyword>just easily</color>. Usually said of something very difficult or risky, especially something that requires luck or is patently not viable at all in the short-term. "Easily kill Nodens"; "easily find Ringil"; "easily get the BDSM from Spawning Pits".
+
+<color:keyword>fix</color>: To improve things, to make things better, to repair problems; definitely not a synonym for "break" at all.
+
+<color:keyword>glhfdd</color>: Good luck, have fun, don't die; an expression of good wishes to a fellow player.
+
+<color:keyword>grinding</color>: Slow, meticulous play aimed at making a character stronger through accumulation of experience and loot before moving into more dangerous areas; the opposite of diving.
+
+<color:keyword>hat</color>: A cap, crown or helmet; especially, an extremely powerful artifact such as the Crown of Amber or the Golden Crown of Dragonkind.
+
+<color:keyword>Hugostyle</color>/<color:keyword>Hugo-style</color>: A playstyle characterized by very high early-game melee damage, rapid level gain, and spending much time in the wilderness; in an extended sense, any character resembling a Hugo-style character. So named after the style's main proponent, the player Hugo.
+
+<color:keyword>Indy</color>/<color:keyword>Indy's whip</color>: An artifact found in the I Hate Snakes! quest. "Do snakes for Indy if you don't get any decent weapons early."
+
+<color:keyword>J</color>/<color:keyword>the J</color>: The Serpent of Chaos, the final boss of the Angband dungeon and the monster you must kill to win a game of FrogComposband. "Going to J tonight?"
+
+<color:keyword>loot</color>: 1) All items and money discovered. 2) A particularly valuable item; an item worth picking up. "Don't forget to pick up Sam's hat, that's loot."
+
+<color:keyword>LOS</color>: Line of sight, of the player or of a monster. LOS effect: an effect that affects everyone in line of sight.
+
+<color:keyword>mild inconvenience</color>: Something that didn't get described as the worst because keepers of secrets are the worst.
+
+<color:keyword>mut</color>: A mutation.
+
+<color:keyword>nerf</color>: Make weaker; an instance of making something weaker, in the context of game development. The opposite of buff. "Tourists are too strong and need to be nerfed."
+
+<color:keyword>OOD</color>: Out of depth.
+
+<color:keyword>OP</color>: Oppy; overpowered; extremely strong, to the point where it probably ought to be nerfed for game balance. Said of whichever class or race you just finally got your first win with. <color:o>OPLotharang:</color> the battle axe Lotharang, a legendarily powerful artifact.
+
+<color:keyword>PD</color>: Phase Door.
+
+<color:keyword>post-game</color>: Gameplay after the game has already been won by killing the Serpent of Chaos; the parts of the game that become accessible once the Serpent has been killed.
+
+<color:keyword>pot</color>: A potion.
+
+<color:keyword>quythulg</color>: Quylthulg, as spelled by someone who actually does not remember how to spell it.
+
+<color:keyword>randart</color>: Random artifact.
+
+<color:keyword>resist hole</color>: The condition of lacking a particular resistance, especially on a strong character who has most or all other resistances covered. "Fighting Nebiros with dark and nether holes is brave."
+
+<color:keyword>rfe</color>: Request for enhancement; a serious or sarcastic request for FrogComposband to be changed in a particular way. "RFE: New mut that gives a flat chance of just teleing right next to the highest-DL monster on the level."
+
+<color:keyword>rip</color>: Rest In Peace; in an extended sense, to die. "RIP me"; "rip Oberon"; "rip tourists being OP"; "argh, just ripped to J again".
+
+<color:keyword>Scroll of Disappointment</color>: Scroll of Acquirement.
+
+<color:keyword>statstick</color>: An item, especially a melee or ranged weapon, that is not very good as an actual weapon but gives valuable resistances or stat bonuses. "Soulsword is a great statstick."
+
+<color:keyword>swap item</color>: An item that is not regularly equipped, but is carried in the inventory and can be temporarily equipped (to gain a particular resist, increased speed or damage etc.) when desirable. "I'm carrying Narya as a swap in case I find balrog uniques."
+
+<color:keyword>tag</color>: To very briefly visit a dungeon for the sole purpose of establishing a recall point there.
+
+<color:keyword>telefail</color>: Failure to use a Scroll of Teleportation, Staff of Teleport or some other means of teleport self. A common cause of player death.
+
+<color:keyword>TO</color>: Teleport Other. "TO the summons and easily kill Glaurung."
+
+<color:keyword>trickshot</color>: An attack by a player or monster that damages a target not in line of sight.
+
+<color:keyword>V</color>: Vanilla Angband; the game Angband, as distinguished from its variants.
+
+<color:keyword>wargs</color>: That quest with wargs in. "You should do wargs early." Similarly, <color:keyword>thieves</color> for Thieves' Hideout, <color:keyword>snakes</color> for I Hate Snakes!, <color:keyword>mimics</color> for The Mimic's Treasure etc.
+
+<color:keyword>the worst</color>: Used in the set phrase <color:o>keepers of secrets are the worst</color> to indicate that Keepers of Secrets are literally the worst possible thing a character can run into. Otherwise used to mean that a thing is annoying, dangerous or a mild inconvenience, but not literally the worst thing due to Keepers of Secrets being the worst.
+
+<color:D>
+Original   : FrogComposband 7.1.liquorice
+</color>

@@ -1,0 +1,19 @@
+<style:title>Painful Status Effects</style>
+
+Please choose one of the following help sections:
+
+    <link:status.txt> Overview of Painful Status Effects
+    <link:status.txt#Confusion> Confusion
+    <link:status.txt#Paralysis> Paralysis
+    <link:status.txt#Stunning> Stunning
+    <link:status.txt#Fear> Fear
+    <link:status.txt#Blindness> Blindness
+    <link:status.txt#Slowness> Slowness
+    <link:status.txt#Cuts> Cuts/Wounds
+    <link:status.txt#Poisoning> Poisoning
+    <link:status.txt#Unwellness> Unwellness
+    <link:status.txt#Hallucination> Hallucination
+    <link:status.txt#Polymorph> Polymorph
+    <link:status.txt#Resisting> Resisting Status Effects
+
+    <color:y>(?) Help System Commands</color>

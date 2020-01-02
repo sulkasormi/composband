@@ -1,0 +1,12 @@
+<style:title>The Proficiency System<style:normal>
+
+Please choose one of the following help sections:
+
+    <link:prof.txt> Overview
+    <link:prof.txt#Weapon> Weapon Proficiency
+    <link:prof.txt#Dual-Wielding> Dual-Wielding Proficiency
+    <link:prof.txt#MartialArts> Martial Arts Proficiency
+    <link:prof.txt#Riding> Riding Proficiency
+    <link:prof.txt#Spells> Spell Proficiency
+
+    <color:y>(?) Help System Commands<color:*>

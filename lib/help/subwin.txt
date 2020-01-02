@@ -1,0 +1,50 @@
+<style:title>Subwindows</style>
+
+In addition to the main game display terminal, which is always visible (and can show anything from dungeon maps to helpfiles), the game allows you to use up to seven <color:keyword>subwindows</color>; these are optional, additional display terminals used to keep important information permanently on the screen. Subwindows are numbered <color:keyword>Term-1</color> through <color:keyword>Term-7</color> (the main display is Term-0).
+
+<topic:WhyGood><color:U>Why Subwindows Are Good</color>
+
+The most commonly used subwindows are <color:keyword>monster list</color>, <color:keyword>object list</color>, <color:keyword>pack inventory</color> and <color:keyword>recent messages</color>. The monster list, in particular, is very convenient - a common cause of death is not realizing that there was a dangerous monster nearby, and this is much less likely to happen with a monster list subwindow there to alert you.
+
+The object list is likewise handy: it allows you to see at a glance if you're missing anything on the level, especially since the most valuable objects (and/or those wanted by the Mogaminator) will be displayed near the top. An object list subwindow will also help you quickly locate quest or dungeon entrances in towns and the wilderness.
+
+<topic:WhyBad><color:U>Why Subwindows Are Bad</color>
+
+Space occupied by subwindows is space not occupied by the main display; subwindows force you to make compromises with either the number of <color:keyword>rows</color> and <color:keyword>columns</color> in the main display, the <color:keyword>font size</color> of the main display, or both. If you have bad eyesight or a smallish monitor, I recommend maximizing the font size by using no subwindows.
+
+Having no subwindows also allows you to keep an iron focus on the main display, without the need to glance to the sides so often. Subwindows do provide useful information, but that information is also available through normal commands - <color:keypress>i</color> for the inventory, <color:keypress>Y</color>/<color:keypress>[</color> for the monster list, <color:keypress>O</color>/<color:keypress>]</color> for the object list, <color:keypress>^P</color> for recent messages - and these commands provide additional functionality (inspect item, travel to item, search for a message, etc.) not offered by subwindows.
+
+<topic:AngbandLive><color:U>Setting up subwindows on angband.live</color>
+
+Set the four values on the angband.live play page - <color:keyword>subwindow right cols</color>, <color:keyword>subwindow right split</color>, <color:keyword>subwindow top rows</color> and <color:keyword>subwindow bottom rows</color> - to your favorite settings. The standard example values are 40/25/0/5 respectively. Start your character, then type <color:keypress>=W</color> during play to determine what each of the subwindows should display.
+
+If the game crashes on start, you may have specified subwindows that occupy too much space; try lower values or a smaller font size. Note also that either "subwindow top rows" or "subwindow bottom rows" should be zero.
+
+To play on angband.live with no subwindows, simply keep all four values at zero.
+
+<topic:Windows><color:U>Setting up subwindows in offline play (Windows)</color>
+
+Select <color:keyword>Window</color> from the toolbar at the top and choose the <color:keyword>Visibility</color> option to toggle each of the seven subwindows on or off. Use the mouse to drag the newly activated subwindows to your favorite locations. Type <color:keypress>=W</color> during play to tell the game what each subwindow should display.
+
+<topic:Linux><color:U>Setting up subwindows in offline play (Linux with curses)</color>
+
+Use the command line to specify subwindow size and placement as you launch the game. Here are a few examples:
+
+<color:y>$ ./frogcomposband -mgcu -uCrusher -- -right 57x26,*</color>
+
+This specifies a subwindow strip to the right of the main display that is 57 columns wide; this strip will contain two subwindows, one that is 26 rows high and one that fills whatever space still remains.
+
+<color:y>$ ./frogcomposband -mgcu -uCrusher -- -right 57x26,* -bottom *x10</color>
+
+Specifies the same two subwindows as before plus a third subwindow (Term-3) below the main display, occupying 10 rows and (TOTAL-57) columns.
+
+<color:y>$ ./frogcomposband -mgcu -uCrusher -- -bottom *x10 -right 57x26,*</color>
+
+Same as above, except that the subwindow at the bottom is now Term-1 and gets to occupy every column.
+
+Type <color:keypress>=W</color> during play to determine what each subwindow displays.
+
+<color:D>
+--
+Original   : FrogComposband 7.1.liquorice
+</color>

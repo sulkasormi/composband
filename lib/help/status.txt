@@ -1,0 +1,152 @@
+<style:title>Painful Status Effects</style>
+
+During your adventures, you will often be afflicted with temporary conditions that limit your effectiveness. These conditions are called <color:keyword>status effects</color>, and the most notable ones are explained before.
+
+Status effects can be caused by monster attacks, by traps, or by any of a number of other causes. A status effect always wears off after a while... but not necessarily before you die. The good news is that most status effects can be cured, prevented or both - and that many monsters find status effects just as debilitating as you do.
+
+
+<topic:Confusion><style:heading>Confusion</style>
+
+Confusion is the newbie-killer, the little-death that brings total obliteration. A <color:v>confused</color> player cannot read scrolls, use magical spells, or even reliably move in the intended direction. You <color:keyword>can</color> still use magical devices - though not aim them - which means that once you find a <color:U>Staff of Teleportation</color> you can escape bad situations while confused. In the earliest part of the game, though, you probably don't have a Staff of Teleportation yet; during this phase of the game, confusion is extremely deadly for the unprepared.
+
+<color:U>Strategies for Handling Confusion in the Early Game</color>
+
+Confusion may take a very long time to wear off, but is actually not that hard to cure - <color:U>Mushrooms of Cure Confusion</color> are cheap and reliably found in the Mushroom Store (<$:FF_SHROOMERY>), and <color:B>Potions of Curing</color> also remove all confusion. Carrying these items becomes a good idea very early: in wilderness mode you should buy mushrooms of Cure Confusion as soon as you have completed Warrens (earlier if you can afford it), while with wilderness off (Beginner Mode or coffee-break mode) you should have them by DL 7.
+
+Not only do you have to be prepared with these items, though, but some monsters hit to confuse in melee; if your confusion was originally caused by such a monster, curing it might not do much good as you will likely just be re-confused the next turn. This is called <color:keyword>confusion lock</color>, and is best solved (in the absence of a Staff of Teleport) by quaffing a <color:B>Potion of Speed</color> before you start bingeing on mushrooms or potions of curing. The extra speed makes immediate re-confusion less likely; and even one turn with a clear head is (probably) enough for you to read a Scroll of Teleportation.
+
+If all other options are exhausted, you can try to just melee while confused; as unreliable as it is, sometimes you will get lucky.
+
+Acquiring your first Staff of Teleportation makes confusion much less dangerous, although carrying Mushrooms of Cure Confusion still remains a good idea. Once you find your first source of <color:keyword>confusion resistance</color>, you can drop the confusion-specific mushrooms and rely solely on Potions of Curing; one level of confusion resistance is not enough for full protection (see <link:status.txt#Resisting> below) but works most of the time, and also causes confusion to wear off much faster.
+
+After playing for a while, you will learn which early-game monsters confuse, and can avoid them or develop strategies against them that deprive them of the opportunity.
+
+<color:U>Turning the Tables</color>
+
+Many monsters, even some high-level uniques, are susceptible to confusion; and confused monsters are even less effective than a confused player. A confused monster cannot cast spells at all, cannot use its breath attacks, and will wander about aimlessly (possibly even stumbling into other monsters by mistake)... though you should still remain careful; just as you can get lucky hitting things while confused, so can a monster. Also, the monster's confusion sometimes wears off just when it's least convenient for you.
+
+Confused monsters are indicated by the <color:u>brown</color> coloring of their health bars (e.g. <color:B>p</color>[<color:u>*********</color>]).
+
+
+<topic:Paralysis><style:heading>Paralysis</style>
+
+Being <color:r>paralyzed</color> inactivates you completely; all you can do is watch as the surrounding monsters bash your face in, and hope the paralysis ends with you still alive. Needless to say, this situation is best avoided.
+
+Resistance to paralysis follows different rules from most status effects, and is based on your level of <color:keyword>Free Action</color> with some support from your Saving Throw. One source of Free Action gives some protection and causes paralysis to wear off faster. Two sources of Free Action give complete protection against early-game monsters (up to native level 41) and good protection against high-level monsters. Having three sources of Free Action provides immunity to paralysis, except in the special cases of starvation and the Ancient Foul Curse.
+
+In the very early game, paralysing monsters are few and (with the exception of the immobile Cloakers) not very dangerous, so Free Action is not immediately necessary. Usually, you will want at least one source by around DL 25, or by the time you enter the Old Man Willow quest, whichever comes earlier. The effectiveness of "imperfect" Free Action (one level of protection in the early game, or one or two levels in the late game) depends on the level of the attacking monster as well as your saving throw. The better your saving throw is, the less of a risk you are taking by not having three levels of Free Action.
+
+It is possible for monsters to be paralyzed, but this never becomes part of the average player character's toolkit. Only powerful magic can paralyze monsters, and even then, only briefly.
+
+
+<topic:Stunning><style:heading>Stunning</style>
+
+Stunning is a common side-effect of many elements (like water, plasma, gravity and sound), and quite a few monsters hit to stun in melee. Unlike confusion and paralysis, which have binary effects, stunning operates on a scale; heavy stunning is bad news, but a mild daze should not worry you too much. The level of stunning is roughly indicated by the labels <color:U>Dazed</color>, <color:y>Light Stun</color>, <color:o>Stun</color>, <color:R>Heavy Stun</color>, <color:r>Massive Stun</color> and finally <color:v>Knocked Out</color>.
+
+Being stunned increases the fail rates on your spells, scrolls and magic devices, and decreases your effectiveness in combat. As a general rule, you should always drink a <color:B>Potion of Curing</color> or cure stunning in some other way as soon as you reach the <color:R>Heavy Stun</color> level, sometimes earlier. Being <color:v>knocked out</color> is exponentially worse than the other levels of stunning; much like paralysis it puts you out of action altogether, and death tends to rapidly follow. Getting knocked out is to be avoided at any cost.
+
+Stunning cannot be resisted directly, but resistance to Sound gives you a save against it when it occurs as a side-effect of elemental damage. Stunning has very similar effects on monsters as it does on you: increased spell fail rates and reduced melee effectiveness. It is possible for monsters to be knocked out, although that tends to wear off rapidly. Some monsters and player-monster races, as well as player Golems, have immunity to stunning.
+
+Stunned monsters are indicated by the <color:B>light blue</color> coloring of their health bars (e.g. <color:u>U</color>[<color:B>*********</color>]). If a monster is both confused and stunned, it has a brown health bar; confusion gets higher priority.
+
+
+<topic:Fear><style:heading>Fear</style>
+
+There are many sources of fear, ranging from special spells and melee attacks through the sight of particularly horrifying monsters to simply taking so much damage you can't help feeling uneasy. Like stunning, fear operates on a scale, and the top end of the scale is best avoided.
+
+Fear does not affect spell or device fail rates directly, but in practice does do so indirectly: sometimes you will be too frightened to get the spell off. Fear can also cause you to quit a round of melee before its natural end (sometimes before hitting the monster at all), and extreme fear can cause you to tremble in hopeless terror for an entire turn. Apart from this loss of turns, <color:G>fear does not affect the reading of scrolls</color>, making a Scroll of Teleportation a more reliable escape while afraid than staves or spells with the same effect.
+
+   <indent><color:U>Fear Scale</color>
+
+<color:U>Uneasy</color>      low chance to fail fear checks
+<color:y>Nervous</color>     moderate chance to fail fear checks
+<color:R>Scared</color>      <indent>moderate chance to fail fear checks, low chance to miss three-tenths of a turn</indent>
+<color:r>Terrified</color>   <indent>high chance to fail fear checks, moderate chance to miss three-fifths of a turn</indent>
+<color:v>Petrified</color>   <indent>very high chance to fail fear checks, high chance to miss an entire turn</indent>
+</indent>
+Fear resistance works very differently from all other resistances, being more similar to See Invisible. Each level of fear resistance gives an additional roll to survive a fear check; the probability of any single roll being successful depends on your level, your charisma, and (depending on the situation) other factors such as the monster you are fighting, the dangerousness of the level and how afraid you already were. The level of Craven characters is discounted somewhat for this calculation, and Craven characters also start with vulnerability to fear, giving them one fewer roll.
+
+Fear resistance is not absolutely needed, but is generally a good idea, especially in the midgame and late game. Most, though not all, monsters can feel fear. Frightened monsters will try to run away from you, and (like you) can miss turns in cases of extreme fear. Frightened monsters remain capable of casting spells. Frightened monsters are indicated by the <color:v>violet</color> coloring of their health bars (e.g. <color:U>f</color>[<color:v>*********</color>]). Fear has the lowest priority of any health bar color.
+
+
+<topic:Blindness><style:heading>Blindness</style>
+
+<color:D>Blindness</color> is a common side effect of light- and darkness-based attacks, and can also result from monster spells or melee or the use of some magical devices. While blind, you cannot read scrolls, read spellbooks, see the area around you or even see monsters.
+
+All this makes blindness sound very bad on paper, but it is actually one of the least problematic status effects; it is easily cured, not as debilitating, long-lasting or lock-prone as confusion, and like confusion it allows the use of devices. Blindness also does not affect telepathic sight, allowing characters with telepathy to simply continue normal melee while blind. Blindness can be resisted, but for most characters blindness resistance is something that's nice to have, not something that is absolutely needed.
+
+Blindness as a concept is not usually applied to monsters. When it is, it is just a synonym for confusion, but this can only be seen in exceptional circumstances; light or darkness attacks that might blind the player, for example, will never confuse a monster.
+
+
+<topic:Slowness><style:heading>Slowness</style>
+
+Temporary slowness can be caused by traps, monster spells, monster melee, or elements like inertia and gravity. Being slowed turns your speed indicator purple [e.g. <color:v>Slow (-10)</color>]. There are two different types of slowness - binary slowness, which reduces your speed by 10, and incremental slowness, which can reduce your speed by anywhere from 1 to 10. The two types of slowing partly but not fully combine, for a maximum speed penalty of 12. Neither type of slowness can be resisted through equipment, although one specific source of binary slowness (the "Slow" monster spell) can be resisted through free action or saving throw, and Hermes demigods are immune to slowing.
+
+<color:B>Potions of Vigor</color> cure both types of slowness (as well as stunning), but have no other use and are therefore generally only carried when slowing attacks are specifically expected.
+
+Most monsters can be slowed, but uniques are immune. Slowness is not indicated by a monster's health bar.
+
+Temporary haste is the opposite of slowness: a bonus of +10 to speed. <color:B>Potions of Speed</color> do not cure slowness, but cancel out its effect by providing temporary haste.
+
+
+<topic:Cuts><style:heading>Cuts/Wounds</style>
+
+Cuts are a common side effect of melee, breath and spell attacks. While bleeding, you lose some HP every turn (how much HP you lose depends on the seriousness of the cut) and your HP regeneration is set to zero. Cuts other than Mortal Wounds heal on their own over time, but a sufficiently bad wound might kill you before it heals.
+
+The seriousness of a cut is (very roughly) indicated by the labels <color:y>Graze</color>, <color:y>Light Cut</color>, <color:o>Bad Cut</color>, <color:o>Nasty Cut</color>, <color:r>Severe Cut</color>, <color:r>Deep Gash</color> and <color:R>Mortal Wound</color>. Mortal Wounds do not heal on their own and must be cured by magic, making them the only exception to the rule that all status effects wear off given enough time. How rapidly lesser wounds heal depends on how serious they are, as well as your Constitution.
+
+Many devices and potions, including <color:B>Potions of Curing</color>, fully or partially heal cuts. Severe cuts and above are generally best cured, although in the heat of a battle it frequently happens that something else (like killing whoever caused the cut, or using Healing to also recover HP) takes higher priority than the cut.
+
+It is not possible to resist cuts directly, but resistance to Shards gives you a save against them when they occur as a side-effect of elemental damage. Monsters do not suffer cuts, and nonliving races and some player-monster races are also immune to them. Blood-Knights receive special bonuses from cuts, and are allowed to regenerate while bleeding, although they still also suffer cut damage.
+
+
+<topic:Poisoning><style:heading>Poisoning</style>
+
+Poisoning is caused by two elements: poison and toxic waste. These elements do not cause any damage immediately, but are very damaging over time, the damage is just delayed. Like cuts, poisoning causes some damage every turn; the more poisoned you are, the more damage you take. Poisoning, like bleeding, sets HP regeneration to zero.
+
+The level of poisoning is indicated by a <color:keyword>poison counter</color>, which takes the form <color:g>Poison:</color><color:G>609</color>. Suffering poison damage always reduces the counter by the equivalent amount; for example, next turn you might suffer 152 damage and the counter would be reduced to <color:g>Poison:</color><color:G>457</color>. In this respect poison differs from cuts, where the damage taken and the amount of cutting healed are decoupled.
+
+Poison resistance reduces the initial poisoning (50% poison resistance reduces the initial poisoning to half), but has no further effect on the damage taken. Thus, once <color:g>Poison:</color><color:G>609</color> shows up, it is too late for poison resistance: you will suffer 609 damage (over time) unless the poisoning is cured.
+
+<color:U>Mushrooms of Cure Poison</color> are the only common poison cure that is fully effective. <color:B>Potions of Curing</color> reduce poisoning but may not remove it completely. It is not necessary to use mushrooms, but players without mushrooms need poison resistance more. By DL 35 you should always have some way to mitigate poison damage, through either resistance and Potions of Curing or through mushrooms.
+
+Monsters do not suffer poisoning as a status effect; rather, they take the damage from poison and toxic waste immediately, in the same way as any other elemental damage. The damage is also slightly lower for monsters.
+
+
+<topic:Unwellness><style:heading>Unwellness</style>
+
+Disease attacks are the most common cause of <color:W>unwellness</color>, which is functionally simply a temporary reduction of your DEX and CON. The reduction starts at 4 points, and gets progressively smaller over time until you feel good again. Unwellness usually only appears some time after the initial contagion, and may occasionally cause uncontrollable sneezing - both of these mechanics are probably all too familiar to many players...
+
+There is no way to really resist unwellness, although poison resistance helps a bit when it's caused by a disease attack. Unwellness can be cured, but only with <color:B>Potions of *Healing*</color> and <color:B>Life</color>, which in practice are too valuable to be used for that purpose; it is better to just wait the unwellness out. Androids are immune to unwellness, and monsters do not suffer from it.
+
+
+<topic:Hallucination><style:heading>Hallucination</style>
+
+No status effect is wilder than <color:v>hallucination</color>, which fills the screen with random symbols and substitutes silly names for monsters' regular names. Hallucination disables the monster list (<color:keypress>Y</color>/<color:keypress>[</color>) and some class-specific abilities like smithing on Weaponsmiths, but otherwise allows normal use of items and spells.
+
+Most sources of hallucination can be resisted through resistance to Chaos. Hallucination is usually best cured, although it is not that debilitating; despite the random symbols, hallucinating players can usually still guess where the monsters are, and hit them or fire at them accordingly. The main risk is that if monsters are summoned, the player has no immediate way to assess their danger level.
+
+Monsters do not suffer hallucinations... or maybe we just don't notice any difference when they do.
+
+
+<topic:Polymorph><style:heading>Polymorph</style>
+
+Polymorph is a rare monster spell that temporarily changes your race. Your temporary race is selected randomly and indicated in brackets, for example <color:r>[Snotling]</color>; and until the polymorph wears off, you will be treated as a member of your new race for (almost) all intents and purposes. Here, for example, you would receive the stat, skill and life-rating penalties of a Snotling... but also the Snotling ability to get special buffs from mushrooms. You would not inherit Snotlings' ultra-low experience factor.
+
+Polymorph can be resisted only through Saving Throw. Being temporarily polymorphed is not exclusively bad, though; it <color:keyword>can</color> be bad, but occasionally it even helps. Polymorph is listed here with the bad status effects because new players sometimes get spooked by it, afraid they are permanently stuck in their new form.
+
+Although not a status effect, a full and permanent race-polymorph is possible, but will never be triggered by the <color:r>Polymorph Other</color> spell. Permanent race-polymorph can be caused by Toxic Waste attacks (prevented by having 55% poison resistance), by the Polymorph power or object activation (in which case you are usually hoping for it!), or by most of the chaos patrons (the only two who never do this are Chardros and Hionhurn). Some exotic situations, like running out of life points with HP left, can also trigger a permanent race change.
+
+Monsters do not suffer temporary polymorphs but can be polymorphed permanently, either with the Polymorph spell/device effect or through attacks based on Chaos or Toxic Waste.
+
+
+<topic:Resisting><style:heading>Resisting Status Effects</style>
+
+Many status effects can be prevented or greatly mitigated by having an appropriate resistance. Typically, your resistance level is compared to a <color:G>33-sided die</color>; thus, for example, 30% confusion resistance gives you a 30 in 33 (about 91%) chance of resisting that status effect, and 40% confusion resistance means you are safe. Blindness, hallucination (chaos), elemental stunning (sound) and elemental cuts (shards) follow the same rule, as do many elemental side-effects that are not status effects.
+
+As noted above, fear and paralysis follow their own rules; and poisoning cannot be completely prevented except through immunity.
+
+<color:D>
+Original   : FrogComposband 7.1.liquorice
+</color>
+
