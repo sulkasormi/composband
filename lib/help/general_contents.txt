@@ -3,7 +3,12 @@
 Please choose one of the following online help files:
 
     <link:general.txt> General Information
-    <link:general.txt#First> First Place to Go
+    <link:general.txt#Help> About the Help Files
+    <link:general.txt#Basics> The Basics of the Game
+    <link:general.txt#Modes> Play Modes
+    <link:general.txt#First> First Things to Do
+    <link:general.txt#Dungeon> Into the Dungeon
+    <link:general.txt#Wilderness> Wilderness
     <link:general.txt#Winning> Winning the Game
     <link:general.txt#UponDeath> Upon Death and Dying
     <link:tang_contents.txt> The Newbie Guide
