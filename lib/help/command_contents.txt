@@ -6,7 +6,8 @@ Please choose one of the following online help files:
     <link:command.txt#OriginalKeyset> Original Keyset
     <link:command.txt#RogueKeyset> Roguelike Keyset
     <link:command.txt#CommandCounts> Command Counts
-    <link:command.txt#SelectingObjects> Selecting Objects
+    <link:command.txt#CommandArguments> Command Arguments
+    <link:command.txt#SelectingObjects> Item Labels
     <link:commdesc_contents.txt> Command Descriptions
 
     <color:y>(?) Help System Commands</color>
