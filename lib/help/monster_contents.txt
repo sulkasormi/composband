@@ -1,14 +1,21 @@
 <style:title>Monsters</style>
 
-Please choose one of the following online help files:
+Please choose one of the following help sections:
 
-    <link:monster.txt> FrogComposband Monsters
+    <link:monster.txt> Overview
     <link:monster.txt#MonsterSymbols> Monster Symbols
-    <link:monster.txt#MonsterColors> Monster Color
-    <link:monster.txt#MonsterMemory> Monster Memory
+    <link:monster.txt#Assessment> Assessing a Monster
     <link:monster.txt#Uniques> Unique Monsters
+    <link:monster.txt#MonsterList> Listing All Monsters in View
+    <link:monster.txt#MonsterColors> Monster Color
     <link:monster.txt#EldritchHorror> Eldritch Horrors
     <link:monster.txt#Pets> Pets and Riding
     <link:monster.txt#Friendly> Friendly Monsters
+    <link:monster.txt#Mimics> Mimics and Shadowers
+    <link:monster.txt#Breeders> Breeding Monsters
+    <link:monster.txt#MonsterMemory> Monster Knowledge
+    <link:monster.txt#Resistances> It Resists...
+    <link:monster.txt#Genocide> Genocide
+    <link:monster.txt#HealthBar> Health Bar Colors
 
     <color:y>(?) Help System Commands</color>
