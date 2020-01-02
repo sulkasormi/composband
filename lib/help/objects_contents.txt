@@ -1,10 +1,10 @@
 <style:title>Objects</style>
 
-Please choose one of the following online help files:
+Please choose one of the following help sections:
 
-  The following topics are in tutorial format:
+  The following topics are in verbose tutorial format:
     <link:objects.txt> Objects
-    <link:objects.txt#Acquisition> Where Can I Get More Stuff?
+    <link:objects.txt#Acquisition> Where Can I Get Stuff?
     <link:objects.txt#Knowledge> OK, I Found Something. What Does It Do?
     <link:objects.txt#Quality> How Good is this Object, Anyway?
     <link:objects.txt#Flavors> Object Flavors
@@ -14,13 +14,14 @@ Please choose one of the following online help files:
     <link:objects.txt#Spellbooks> Spellbooks
     <link:objects.txt#Inscriptions> Object Inscriptions
 
-  The following topics are boring reference material:
+  The following topics are reference material:
     <link:objects.txt#ObjectSymbols> Object Symbols
     <link:objects.txt#ObjectCommands> Commands for Using Objects
+    <link:objects.txt#WeirdNumbers> Numbers on Items
     <link:objects.txt#Equipment> Equipment
-    <link:objects.txt#Inventory> Inventory
+    <link:objects.txt#Inventory> Inventory/Pack
     <link:objects.txt#Pseudo-ID> Pseudo-ID
-    <link:objects.txt#InscriptionAbbrev> Inscriptions: List of Abbreviations
+    <link:objects.txt#InscriptionAbbrev> List of Abbreviations
     <link:objects.txt#InscriptionSummary> Inscriptions: Summary
 
     <color:y>(?) Help System Commands</color>
