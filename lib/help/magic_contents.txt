@@ -1,12 +1,16 @@
-<style:title>The Magic System</style>
+<style:title>Spellcasting</style>
 
-Please choose one of the following online help files:
+Please choose one of the following help sections:
 
     <link:magic.txt> The Magic System
+    <link:magic.txt#Types> Spellcaster Types
     <link:magic.txt#Spellbook> Spellbook Magic
-    <link:magic.txt#MagicRealms> General Realms of Spellbook Magic
-    <link:magic.txt#OtherMagicRealms> Class Specific Realms of Spellbook Magic
+    <link:magic.txt#Proficiency> Spell Proficiency
+    <link:magic.txt#Book> What a Spellbook Looks Like
+    <link:magic.txt#MagicRealms> General Magic Realms
+    <link:magic.txt#OtherMagicRealms> Class-Specific Magic Realms
     <link:magic.txt#CastingSpells> On Casting Spells
     <link:magic.txt#SpellTypes> Spell Types
+    <link:magic.txt#Macros> Using Macros to Cast Spells
 
     <color:y>(?) Help System Commands</color>
