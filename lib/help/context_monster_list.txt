@@ -4,9 +4,9 @@ This command lists all monsters you are currently aware of. The list is grouped 
 
 <topic:Summary><style:heading>Quick Summary</style>
 
-  <color:keypress>UP/DOWN</color>            Scroll One Line at a Time
-  <color:keypress>PAGEUP/PAGEDOWN</color>    Scroll One Page at a Time
-  <color:keypress>HOME/END</color>           Scroll to Top/Bottom of List
+  <color:keypress>Up/Down</color>            Scroll One Line at a Time
+  <color:keypress>PageUp/PageDown</color>    Scroll One Page at a Time
+  <color:keypress>Home/End</color>           Scroll to Top/Bottom of List
 
   <color:keypress>/ or R</color>             Recall Selected Monster
   <color:keypress>P</color>                  Probe Selected Monster (if allowed)
@@ -19,42 +19,39 @@ This command lists all monsters you are currently aware of. The list is grouped 
 
   <color:keypress>[a-z]</color>              Select next matching entry
 
-<style:note>Note: Since lowercase keystrokes now attempt to match the next entry, only uppercase alphabetic commands are available. For example, to recall monster info, you now must press <color:keypress>R</color> rather than <color:keypress>r</color>.</style>
+<style:note>Note: Since lowercase keystrokes attempt to match the next entry, only uppercase alphabetic commands are available. For example, to recall monster info, you must press <color:keypress>R</color> rather than the usual <color:keypress>r</color>. The exception is that for users of the roguelike keyset, the usual up/down commands <color:keypress>k</color> and <color:keypress>j</color> will scroll up and down, even at the cost of not matching an entry.</style>
 
 <style:note>Note: If <color:keyword>quick_messages</color> is enabled, then an unhandled keystroke will dismiss the monster list.</style>
 
 <topic:Usage><style:heading>Usage</style>
 
-This command is very useful in crowded situations, allowing you to quickly ascertain whether any dangerous enemies are lurking nearby. For instance,
-<style:screenshot>
-You see 1 monster, 0 are awake:                   <color:s>%</color>#%#<color:s>%%</color>#%######### LEVEL <color:G>     1</color>
- <color:U>o</color> <color:D>Cave orc                            </color> N  3 W  2 %<color:s>%%%</color>###%##%###### EXP <color:G>      25</color>
-                                                  <color:s>%%</color>%<color:s>%</color>#<color:s>%</color>########### AU  <color:G>     262</color>
-You are aware of 15 other monsters, 0 are awake:  #<color:s>%</color>##<color:s>%</color>######.##### <color:W>|</color><color:d>     </color><color:y>*</color><color:U>(</color><color:d>   </color><color:U>]</color>
- <color:s>o</color> <color:D>Orc digger                          </color> S  5 E  5 #%%##<color:s>%</color>%%%%#.%#### STR : <color:G> 18/50</color>
- <color:u>o</color> <color:v>Lagduf, the Snaga (asleep)          </color> S  3 W  3 %##<color:s>%</color>%<color:s>%</color><color:o>*</color>%%...##<color:U>></color>## INT : <color:G>    11</color>
- <color:s>o</color> <color:D>Hill orc                            </color> S  5 W  2 <color:s>%</color>.<color:s>%%</color><color:o>*</color>%#%.#%....%% WIS : <color:G>    11</color>
- <color:U>o</color> <color:D>Cave orc (11 asleep)                           </color>......#.%#####.%% DEX : <color:G> 18/20</color>
- <color:G>o</color> <color:D>Snaga                               </color> N  0 W  3 ......%#.#%###.## CON : <color:G>    16</color>
-   <color:B>[Press ESC to exit. Press ? for help]</color>          ........#.###%.%# CHR : <color:G> 18/20</color>
-########<color:s>%</color>#<color:s>%</color>##<color:s>%</color>#.............########<color:s>%</color>#<color:s>%%</color>##%#<color:o>*</color>...............%#%#.<color:o>*</color># AC     <color:G>    9</color>
-####<color:s>%</color>####<color:s>%</color>#<color:s>%%%%</color>.............####<color:s>%</color>##<color:s>%%</color><color:U>></color><color:s>%</color>#%<color:s>%</color>##%.................##.## HP <color:G>  54</color>/<color:G>  54</color>
-#######<color:s>%</color>#<color:s>%%</color><color:o>*</color>##<color:s>%</color>.............%#<color:s>%</color>#####<color:s>%</color>.<color:s>%</color>#<color:o>*</color><color:s>%%</color>#<color:o>*</color>.................##.##
-########<color:s>%%</color>#<color:s>%%</color>##.............#%%######..........................%.##
-###<color:s>%</color>#<color:s>%%</color>##<color:s>%</color>#<color:s>%%%%</color>.............##<color:s>%</color>#<color:s>%</color>#%<<color:s>%</color>.#<color:o>*</color>##%##.................#%... @[<color:G>*********</color>]
-###<color:s>%</color>####<color:s>%%</color>#<color:s>%</color>#<color:s>%%</color>.............##<color:U>oo</color>.##...#<color:s>%</color>#####.................####. <color:U>,</color>[*********]
-###<color:s>%</color>###<color:s>%%%%</color>#<color:o>*</color>#<color:s>%</color>#<color:s>%</color>#<color:s>%</color>#####%#<color:u>'</color>#<color:s>%</color>#<color:U>o</color>#.##.###<color:s>%</color>#####.................####.
-#<color:s>%</color>#<color:s>%%</color>#<color:s>%</color>..##<color:s>%%%</color>..##<color:s>%</color>###<color:s>%</color>###<color:U>ooooo</color><color:s>%</color>..#.<color:s>%</color>########................######
-......<color:s>%</color>..#<color:s>%%</color>##.............##<color:s>%</color><color:G>o</color>#.@..#########.................#####
-#####.........:.#<color:s>%</color>###<color:s>%</color>#<color:s>%</color>#<color:s>%</color>####<color:U>o</color>#..###########......................
-##<color:s>%</color>#####<color:s>%</color>#<color:s>%</color>#<color:s>%%%%%%%</color>#<color:s>%</color>#<color:s>%</color>#<color:s>%</color>#<color:s>%%</color>##<color:U>o</color>#<color:s>%</color>.#########.#................###### <color:G>Fast (+15)</color>
-###<color:s>%</color>#######<color:s>%</color>####<color:s>%%%</color>#<color:s>%%%%%%</color>###<color:s>%</color><color:u>o</color>##>#########.#................######
-<color:s>%</color>#####<color:s>%%</color>###<color:s>%</color>#####<color:s>%%</color>###<color:s>%%</color>#<color:s>%%%%</color>#<color:U>o</color>#<color:s>%</color>##########.#<color:s>%</color>...............######
-....................:.....<color:s>%%%</color><color:o>*</color><color:U>o</color><color:s>o</color>#<color:s>%</color>####<color:s>o</color>......#...........<color:r>$</color>.........
-###<color:o>*</color>#####<color:s>%%</color>######<color:s>%%%</color>#<color:s>%</color>##<color:s>%</color>..<color:s>%%</color>##<color:s>%</color>######.####.................#######
-##<color:s>%</color>#####<color:s>%</color>###<color:s>%%%</color>###<color:s>%</color>###<color:s>%%%</color>.......:......####..##.............#######
-##########<color:s>%</color>######<color:s>%</color>######<color:s>%%%</color>########<color:s>%%</color>########<color:s>%</color>###...........#######
-<color:s>Angband: L30</color>
+This command is very useful in crowded situations, allowing you to quickly ascertain whether any dangerous enemies are lurking nearby. For instance:
+<style:screenshot>                                                                                
+You see 19 monsters, 19 are awake:                #...<color:B>.</color>...<color:B>.</color>...<color:B>.</color>.<color:B>.</color>.<color:B>.</color> LEVEL <color:G>    33</color>
+ <color:u>C</color> <color:v>Garm, Guardian of Hel               </color> S  2 W  0 #<color:B>.</color>##########<color:o>*</color>#%## EXP <color:G>   28.9k</color>
+ <color:v>W</color> Zephyr Lord                          N  1 E  1 #<color:B>.</color>############### AU  <color:G>    475k</color>
+ <color:v>Z</color> Nexus hound (8 awake)                          #<color:B>.</color>############### <color:W>|</color><color:D>|</color><color:U>}~</color><color:g>==</color><color:y>"</color><color:o>~</color><color:y>(</color><color:g>(</color><color:u>]</color><color:U>]</color>
+ <color:D>C</color> Werewolf                             N  1 W  1 #.############<color:o>*</color>## STR : <color:G>18/113</color>
+ <color:u>C</color> Mine-dog (8 awake)                             #.#########<color:o>*</color>##### INT : <color:G>    10</color>
+                                                  #.##%#####%<color:o>*</color>##### WIS : <color:G> 18/10</color>
+   <color:B>[Press ESC to exit. Press ? for help]</color>          <color:B>...</color>.############# DEX : <color:G>18/161</color>
+#%####%###########..<color:B>.</color>.<color:B>..</color>..<color:B>...</color>.#####.##.##%###%.#..######%%##<color:o>*</color>###%## CON : <color:G>18/153</color>
+####<color:o>*</color>##########<color:o>*</color>##<color:B>.</color>#########..#####<color:B>.</color>#<color:o>*</color><color:B>.</color>###%###'##%##<color:B>....</color>.....<color:B>...</color>... CHR : <color:G>    16</color>
+###<color:o>*</color>##%###########<color:B>.</color>################.##.####%##.<color:D>\</color><color:B>.</color>.<color:B>.</color>.<color:B>.</color>###%####<color:o>*</color>###<color:o>*</color>% AC     <color:G>   93</color>
+%####<color:o>*</color>#####%######.###<color:o>*</color>#%%%%%%%%%%%'%%<color:B>.</color>%%%%%%%'%%%%%%###%########<color:o>*</color># HP <color:y> 495</color>/<color:G> 503</color>
+%%%%%%%%%%%%%%%###.##%#<color:o>*</color>%....<color:B>...</color>..<color:B>.</color>..<color:D>C</color><color:v>Z</color><color:R>W</color><color:v>ZZ</color><color:B>..</color>..<color:g>=</color><color:v>!</color><color:B>.</color>..<color:B>.</color>%############## SP <color:G> 100</color>/<color:G> 100</color>
+%..<color:B>.</color>..........%###<color:B>.</color>#####%<color:B>.</color>.<color:B>...</color><color:W>|</color>.<color:B>..</color>.<color:u>C</color><color:s>/</color>.@...<color:u>C</color><color:W>[</color>...<color:v>|</color><color:B>.</color>...%###%#%##%<color:o>*</color>%###             
+%...<color:B>.</color>.<color:B>..</color>.....<color:B>.</color>%###.#####%<color:B>...</color>.<color:B>.</color>.<color:W>|</color><color:B>..</color>.<color:v>Z</color>.<color:v>Z</color><color:u>C</color><color:v>ZZ</color><color:B>..</color><color:u>CC</color>......<color:B>.</color>%%############# <color:v>W</color>[<color:y>*******</color>--]
+%..<color:B>.</color>...<color:B>.</color>......'...<color:B>.</color>#####%<color:B>.</color>.<color:B>.</color>.<color:B>.</color>..<color:B>.</color>..<color:B>.</color><color:s>)</color><color:u>CC</color>...<color:B>.</color><color:s>/</color>....<color:B>.</color>..<color:B>.</color>%############<color:o>*</color>#             
+%<color:B>.</color>.<color:B>.</color>.<color:B>..</color>...<color:B>.</color>.<color:B>..</color>%###<color:B>.</color>#####%<color:B>.</color>.<color:B>..</color>...<color:B>.</color>.<color:B>.</color>..<color:v>Z</color><color:B>.</color>.<color:u>C</color>.<color:B>.</color>........<color:B>.</color>%#####<color:o>*</color>######<color:o>*</color>#             
+%.<color:B>.</color>.<color:B>...</color>..<color:B>.</color>..<color:B>.</color>.%###<#####%.<color:B>.</color>..<color:B>.</color>...<color:B>.</color>.<color:B>.</color>.<color:B>.</color>....<color:B>.</color>.<color:B>.</color>.<color:B>..</color>....%<color:o>*</color>#####<color:o>*</color>#######             
+%%%%%%%%%%%%%%%###%#####%.<color:B>.</color>..<color:B>.</color>.<color:B>..</color>.<color:B>.</color>...<color:u>C</color><color:B>..</color>...<color:B>...</color>...<color:B>..</color>%########<color:o>**</color>####             
+########################%%%%%%%%%%%%%%%%%%%%%%%%%%%%%###%%#######<color:o>*</color>#             
+<color:U>###################################################################</color> <color:G>Fast (+8)</color>   
+                                                                    <color:G>Full</color>        
+                                                                    <color:B>Study (8)</color>   
+                                                                                
+                                                                                
+<color:B>Crystal castle: L40</color>                            <color:G>DTrap</color>                            
 </style>
-Here, I can quickly see that it is Lagduf who is hiding amongst all those Orcs. I guess I better run!
-
+Here, I can quickly see that one of the mine-dogs who just got summoned is actually Garm trying to blend in, so I'd better watch out!
