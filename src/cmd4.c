@@ -7366,7 +7366,7 @@ void do_cmd_knowledge(void)
         c_prt(TERM_RED, "Dungeon Knowledge", row++, col - 2);
         prt("(d) Dungeons", row++, col);
         prt("(q) Quests", row++, col);
-        prt("(t) Terrain Symbols.", row++, col);
+        prt("(t) Terrain Symbols", row++, col);
         row++;
 
         c_prt(TERM_RED, "Self Knowledge", row++, col - 2);
@@ -7380,7 +7380,7 @@ void do_cmd_knowledge(void)
         if (enable_virtues)
             prt("(v) Virtues", row++, col);
         if (class_ptr->character_dump || race_ptr->character_dump)
-            prt("(x) Extra info", row++, col);
+            prt("(x) Extra Info", row++, col);
         prt("(H) High Score List", row++, col);
         row++;
 
