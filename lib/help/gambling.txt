@@ -1,23 +1,25 @@
-=== Gambling Rules ===
+<style:title>Gambling Rules</style>
 
-Between : Three 12-sided dice rolled; 2 black, 1 red. The red
-       die must be between both black to win. If the red die.
-       matches a black die, you lose. Pays 3 to 1
-Craps: Two dice are rolled. On first roll, a 7 or 11 wins. A
-       2,3 or 12 loses. Otherwise roll until the first roll
-       is matched (win) or a 7 is rolled (loss). Pays 2 to 1
-Wheel: Pick a number from 0-9. If the number shows on wheel
-       after it stops spinning, you win. Pays 10 to 1
-Slots: Three dice rolled. Matches win gold. Numbers are:
-       1=Lemon, 2=Orange, 3=Sword, 4=Shield, 5=Plum, 6=Cherry
-       Payoffs are as follows:
-       Cherry Cherry Lemon  2-1   Cherry Cherry Orange  3-1
-       Cherry Cherry Sword  4-1   Cherry Cherry Shield  5-1
-       Cherry Cherry Plum   6-1
-       Lemon Lemon Lemon    4-1   Orange Orange Orange 16-1
-       Sword Sword Sword    6-1   Shield Shield Shield 25-1
-       Plum Plum Plum       9-1   Cherry Cherry Cherry 36-1
+<color:G>Between</color>: <indent>Three 12-sided dice rolled; 2 black, 1 red. The red die must be between both black dice to win. If the red die matches a black die, you lose. Pays 3 to 1</indent>
+<color:G>Craps</color>:   <indent>Two dice are rolled. On first roll, a 7 or 11 wins. A 2, 3 or 12 loses. Otherwise roll until the first roll is matched (win) or a 7 is rolled (loss). Pays 2 to 1</indent>
+<color:G>Wheel</color>:   <indent>Pick a number from 0-9. If the number shows on wheel after it stops spinning, you win. Pays 9 to 1</indent>
+<color:G>Slots</color>:   <indent>Three symbols rolled. Six possible symbols, all equally likely to appear. Payouts are as follows:
+<color:r>Cherry Cherry</color> <color:y>Lemon</color>  2-1   <color:r>Cherry Cherry</color> <color:o>Orange</color>  3-1
+<color:r>Cherry Cherry</color> <color:W>Sword</color>  4-1   <color:r>Cherry Cherry</color> <color:s>Shield</color>  5-1
+<color:r>Cherry Cherry</color> <color:v>Plum</color>   6-1
+<color:y>Lemon Lemon Lemon</color>    4-1   <color:o>Orange Orange Orange</color> 16-1
+<color:W>Sword Sword Sword</color>    6-1   <color:s>Shield Shield Shield</color> 25-1
+<color:v>Plum Plum Plum</color>       9-1   <color:r>Cherry Cherry Cherry</color> 36-1</indent>
+<color:G>Arena</color>:   <indent>Bet on a fight between four monsters. Only the winning monster pays, odds given depend on the strength of the monster. Very long fights are declared drawn and give your money back.</indent>
+<color:G>Poker</color>:   <indent>Play with a 53-card deck (four 13-card suits, one joker). Aces always count as a one, never as a 14. Bets can only be placed before the initial hand is dealt. There is one round of replacing cards, you can discard as many of your original cards as you wish. Payouts are:
+Two pair             1-1    Four of a kind      16-1
+Three of a kind      1-1    Straight flush      80-1
+Straight             4-1    Royal flush        200-1
+Flush                8-1    Five of a kind     400-1
+Full house          12-1    Five aces         3000-1</indent>
 
---
-This file was last updated for Kangband 2.8.3i.
-
+<color:D>--
+Original   : ??
+Updated    : Kangband 2.8.3i
+Updated    : FrogComposband 7.1.liquorice
+</color>
