@@ -1019,6 +1019,12 @@ cptr process_pref_file_expr(char **sp, char *fp)
                 sprintf(tmp, "%09d", p_ptr->au);
                 v = tmp;
             }
+            /* Money */
+            else if (streq(b+1, "SELLING"))
+            {
+                sprintf(tmp, no_selling ? "Off" : "On");
+                v = tmp;
+            }
         }
 
         /* Constant */
