@@ -4,9 +4,13 @@ The targetting prompt offers many options, and two different modes: <color:keywo
 
 If you wish to target (or inspect) a square with no monster on it, press <color:keypress>p</color> or <color:keypress>o</color>, switching to free-targetting mode where direction keys simply move the cursor. (This mode is automatically entered if no hostile monsters are in line of sight.) <color:keypress>o</color> and <color:keypress>p</color> are identical except in one respect: pressing <color:keypress>p</color> (which stands for <color:keyword>player</color>) moves the cursor to your own location, while pressing <color:keypress>o</color> (which stands for <color:keyword>offset</color>) does not. 
 
-At any time, press <color:keypress>5</color>, <color:keypress>t</color> or <color:keypress>.</color> to accept the current target (and exit targetting mode), <color:keypress>q</color> or <color:keypress>ESC</color> to exit targetting mode without selecting a target, <color:keypress>r</color> to recall lore about a monster on the target square, <color:keypress>x</color> to see all items on the target square (including stolen or picked-up items carried by monsters, but excluding normal monster item drops), and <color:keypress>J</color> to select a square as a travel target.
+At any time, press <color:keypress>5</color>, <color:keypress>t</color> or <color:keypress>.</color> to accept the current target (and exit targetting mode), <color:keypress>q</color> or <color:keypress>ESC</color> to exit targetting mode without selecting a target, <color:keypress>r</color> to recall lore about a monster on the target square, <color:keypress>x</color> to see all items on the target square (including stolen or picked-up items carried by monsters, but excluding normal monster item drops), and <color:keypress>(</color> to select a square as a travel target. In the original keyset, <color:keypress>J</color> and <color:keypress>j</color> also work as travel keys and are equivalent with <color:keypress>(</color>.
 
-Note that when you cast a spell or fire a missile at a target location, the path chosen is the <color:keyword>direct</color> path towards that location, which may or may not be the path you want. Sometimes, by clever choice of a side location as your target, you may be able to aim at squares not directly in line of sight:
+Users of the roguelike keyset have a bonus option in free-targetting mode: they can press <color:keypress>Shift+DIR</color> to move the cursor many squares at a time.
+
+<topic:Precision><style:heading>Precision Targetting</style>
+
+When you cast a spell or fire a missile at a target location, the path chosen is the <color:keyword>direct</color> path towards that location, which may or may not be the path you want. Sometimes, by clever choice of a side location as your target, you may be able to aim at squares not directly in line of sight:
 <style:screenshot>  <indent>
 Position: an unknown grid [q,t,p,m,x,j,+,-,?,<dir>]                             
       ##........#.... #%%####
@@ -43,7 +47,7 @@ If you bypass targetting mode you can also target a <color:keyword>compass direc
   <color:keypress>DIR</color>          Move to square or monster in direction indicated
   <color:keypress>+</color>            Move to more distant monster
   <color:keypress>-</color>            Move to less distant monster
-  <color:keypress>J</color>            Select travel target (exit and travel if not aiming)
+  <color:keypress>( j J</color>        Select travel target (exit and travel if not aiming)
 
   <color:keypress>m</color>            Enter monster-targetting mode
   <color:keypress>p</color>            Enter free-targetting mode (move cursor to player)
