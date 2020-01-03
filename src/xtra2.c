@@ -4304,15 +4304,13 @@ bool target_set(int mode)
             if ( target_able(c_ptr->m_idx)
              || ((mode & (TARGET_MARK|TARGET_DISI|TARGET_XTRA)) && m_list[c_ptr->m_idx].ml))
             {
-                strcpy(info, "q,t,p,o,x,j,+,-,?,<dir>");
-
+                strcpy(info, rogue_like_commands ? "q,t,p,o,x,(,+,-,?,<dir>" : "q,t,p,o,x,j,+,-,?,<dir>");
             }
 
             /* Dis-allow target */
             else
             {
-                strcpy(info, "q,p,o,x,j,+,-,?,<dir>");
-
+                strcpy(info, rogue_like_commands ? "q,p,o,x,(,+,-,?,<dir>" : "q,p,o,x,j,+,-,?,<dir>");
             }
 
             /* Describe and Prompt */
@@ -4329,7 +4327,7 @@ bool target_set(int mode)
                 if (query == '\r') query = 't';
             }
 
-            if ((query == 'j') && (!rogue_like_commands)) query = 'J';
+            if (((query == 'j') || (query == 'J')) && (!rogue_like_commands)) query = '(';
 
             /* Analyze */
             switch (query)
@@ -4423,7 +4421,7 @@ bool target_set(int mode)
                     break;
                 }
 
-                case 'J':
+                case '(':
                 {
                     if ((!p_ptr->wild_mode) && (in_bounds(y,x)) && (cave[y][x].info & CAVE_MARK) && ((y != py) || (x != px)) && (player_can_enter(cave[y][x].feat, 0)))
                     {
@@ -4565,9 +4563,9 @@ bool target_set(int mode)
             c_ptr = &cave[y][x];
 
             if ((mode & TARGET_MARK) && !m_list[c_ptr->m_idx].ml)
-                strcpy(info, "q,p,o,x,j,+,-,?,<dir>");
+                strcpy(info, rogue_like_commands ? "q,p,o,x,(,+,-,?,<dir>" : "q,p,o,x,j,+,-,?,<dir>");
             else
-                strcpy(info, "q,t,p,m,x,j,+,-,?,<dir>");
+                strcpy(info, rogue_like_commands ? "q,t,p,m,x,(,+,-,?,<dir>" : "q,t,p,m,x,j,+,-,?,<dir>");
 
 
             /* Describe and Prompt (enable "TARGET_LOOK") */
@@ -4584,7 +4582,7 @@ bool target_set(int mode)
                 if (query == '\r') query = 't';
             }
 
-            if ((query == 'j') && (!rogue_like_commands)) query = 'J';
+            if (((query == 'j') || (query == 'J')) && (!rogue_like_commands)) query = '(';
 
             /* Analyze the keypress */
             switch (query)
@@ -4680,7 +4678,7 @@ bool target_set(int mode)
                     break;
                 }
 
-                case 'J':
+                case '(':
                 {
                     if ((!p_ptr->wild_mode) && (in_bounds(y,x)) && (cave[y][x].info & CAVE_MARK) && ((y != py) || (x != px)) && (player_can_enter(cave[y][x].feat, 0)))
                     {
