@@ -1884,6 +1884,12 @@ bool do_riding(bool force)
 
         if (!pattern_seq(py, px, y, x)) return FALSE;
 
+        if (m_ptr->parent_m_idx > 0)
+        {
+            msg_print("That monster has divided loyalties, and would not be a trustworthy mount!");
+            return FALSE;
+        }
+
         if (!player_can_ride_aux(c_ptr, TRUE))
         {
             /* Feature code (applying "mimic" field) */
