@@ -1938,6 +1938,11 @@ bool ring_dominate_m(int m_idx)
             msg_format("%^s sees you for what you truly are!", m_name);
             m_ptr->mflag2 |= MFLAG2_AWARE;
         }
+        else if (m_ptr->parent_m_idx)
+        {
+            msg_format("%^s glances down at you, but seems to have doubts.", m_name);
+            return TRUE; /* partial success */
+        }
         else
         {
             /* Pick the pretty up! */
