@@ -1446,6 +1446,7 @@ static void _list_monsters_aux(_mon_list_ptr list, rect_t display_rect, int mode
         }
         /* Travel to Location */
         case 'J':
+        case '(':
         case '`':
         {
             int idx = top + pos;
@@ -2051,6 +2052,7 @@ void do_cmd_list_objects(void)
                 break;
             }
             case 'J':
+            case '(':
             case '`':
             {
                 int idx = top + pos;
