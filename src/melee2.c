@@ -701,6 +701,7 @@ static bool get_moves_aux(int m_idx, int *yp, int *xp, bool no_flow)
     monster_race *r_ptr = &r_info[m_ptr->r_idx];
 
     if ( p_ptr->action == ACTION_GLITTER
+      && !m_ptr->parent_m_idx
       && mon_is_type(m_ptr->r_idx, SUMMON_RING_BEARER) )
     {
         rng = AAF_LIMIT_RING;
@@ -2352,7 +2353,7 @@ static void process_monster(int m_idx)
         /* Its parent have gone, it also goes away.
            Hack: Only for pets.
         */
-        if (!is_pet(m_ptr))
+        if ((!is_pet(m_ptr)) || (is_riding_mon))
         {
             mon_set_parent(m_ptr, 0);
         }
@@ -2485,6 +2486,7 @@ static void process_monster(int m_idx)
     /* Hack: Rings wake up potential ring bearers */
     if ( MON_CSLEEP(m_ptr)
       && p_ptr->action == ACTION_GLITTER
+      && !m_ptr->parent_m_idx
       && mon_is_type(m_ptr->r_idx, SUMMON_RING_BEARER) )
     {
         set_monster_csleep(m_idx, 0);
