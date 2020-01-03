@@ -1,15 +1,15 @@
 <style:title>The Object List</style>
 
-This command displays all known objects on the current level. Objects are grouped into two categories. <color:keyword>Wanted</color> objects are those you have set to automatically pickup in your <color:keyword>Pickup Preferences</color> while <color:keyword>Other</color> objects include everything else. Each group is sorted according to its known value and the location of each, relative to your current position, is displayed.
+This command displays all known objects on the current level. Objects the <color:keyword>Mogaminator</color> would like to pick up are shown near the top in the <color:keyword>wanted objects</color> category, while everything else is shown below in the <color:keyword>other objects</color> category. Objects in both groups are sorted by their estimated value; the location of each object, relative to your current position, is indicated with directions as in <color:keyword>N 23 E 11</color>. The object list also displays dungeon entrances, quest entrances and town shops, and the inclusion of staircases in the list can be toggled.
 
 <topic:Summary><style:heading>Quick Summary</style>
 
-  <color:keypress>UP/DOWN</color>            Scroll One Line at a Time
-  <color:keypress>PAGEUP/PAGEDOWN</color>    Scroll One Page at a Time
-  <color:keypress>HOME/END</color>           Scroll to Top/Bottom of List
+  <color:keypress>Up/Down</color>            Scroll One Line at a Time
+  <color:keypress>PageUp/PageDown</color>    Scroll One Page at a Time
+  <color:keypress>Home/End</color>           Scroll to Top/Bottom of List
 
   <color:keypress>/ or I</color>             Inspect Selected Object
-  <color:keypress>` or J</color>             Travel to Selected Object
+  <color:keypress>J or ` or (</color>        Travel to Selected Object
   <color:keypress>S</color>                  Toggle Inclusion of Stairs
 
   <color:keypress>ESC or Q</color>           Quit this Command
@@ -17,80 +17,142 @@ This command displays all known objects on the current level. Objects are groupe
 
   <color:keypress>[a-z]</color>              Select next matching entry
 
-<style:note>Note: Since lowercase keystrokes now attempt to match the next entry, only uppercase alphabetic commands are available. For example, to inspect the current object, you now must press <color:keypress>I</color> rather than <color:keypress>i</color>.</style>
+<style:note>Note: Since lowercase keystrokes now attempt to match the next entry, only uppercase alphabetic commands are available. The exception is that for users of the roguelike keyset, the usual up/down keys <color:keypress>k</color> and <color:keypress>j</color> will scroll up and down, even at the cost of not matching an entry.</style>
 
 <style:note>Note: If <color:keyword>quick_messages</color> is enabled, then an unhandled keystroke will dismiss the object list.</style>
 
 <topic:Usage><style:heading>Usage</style>
 
-This command is useful once your character has the ability to detect objects, and is essential once your character gains the power of Clairvoyance (You should be so lucky!). Below, my fledgling Monk received a Claivoyance activation very early on. As you can see, this level has many objects on it, probably because there is a vault:
-<style:screenshot>
-There are 8 wanted objects:                       #<color:u>..</color>       # #     LEVEL <color:G>    33</color>
- <color:y>"</color> <color:o>an Amulet {unidentified}            </color> N 17 E 47 #<color:u>..</color> ##<color:u>'</color>## <color:U>+</color>##     EXP <color:G>    182k</color>
- <color:y>"</color> <color:o>an Amulet {unidentified}            </color> N 17 E 51 #<color:u>..</color> #<color:s>Z</color> <color:s>Z</color># ##  ##% AU  <color:G>    511k</color>
- ? a Scroll titled "ooder dokrog"       N 16 E 56 #<color:u>..</color> # <color:s>Z</color> # #   %<color:D>#</color># <color:d>  </color><color:U>}</color><color:g>==</color><color:y>"!</color><color:U>(</color><color:W>(</color><color:s>]</color><color:U>]</color><color:d> </color>
- <color:B>!</color> <color:B>4 Light Blue Potions                </color> N 35 E130 #<color:u>..</color><color:s>Z</color>#<color:s>ZZZ</color># #   <color:o>*</color>%% STR : <color:G>18/109</color>
- <color:u>!</color> <color:B>a Brown Speckled Potion             </color> N 18 E 54 #<color:s>Z</color>#####<color:s>Z</color># #    #<color:D>#</color> INT : <color:G>    15</color>
-                                                  #<color:u>.</color># # #<color:s>Z</color># #    %# WIS : <color:G>18/124</color>
-There are 79 other objects:                       #<color:u>.</color># ##### #       DEX : <color:G>18/163</color>
- <color:W>[</color> <color:s>Partial Plate Armour [22]           </color> N 16 E 62 <color:D>d</color><color:u>.</color>#   #   ###     CON : <color:G> 18/64</color>
- <color:D>[</color> <color:s>Splint Mail [19]                    </color> N 18 E 55 #<color:u>.</color># <color:s>o</color> #   #<color:D>#</color>#     CHR : <color:G>    18</color>
- <color:D>[</color> <color:s>Haramakido [17]                     </color> N 17 E 52 <color:u>..</color>#   #   ###     AC     <color:G>  126</color>
- <color:s>[</color> <color:s>Double Chain Mail [16]              </color> N 16 E 59 #<color:u>.</color>##<color:U>+</color>##<color:u>...</color>####    HP <color:y> 421</color>/<color:G> 471</color>
- <color:s>[</color> <color:s>Double Ring Mail [15]               </color> N 14 E 65 <color:U>+</color><color:u>...</color>@<color:u>.....</color>##<color:D>#</color>##   SP <color:y> 180</color>/<color:G> 190</color>
- <color:r>|</color> an Executioner's Sword (4d5)         N 20 E 62 ##<color:u>.</color>#<color:u>'</color>########<color:D>#</color>#
- <color:r>|</color> an Executioner's Sword (4d5)         N 18 E 49  <color:U>+</color><color:u>..</color>##   #<color:D>##</color>##### @[<color:y>*********</color>]
- ? 3 Scrolls of *Identify*              N 18 E 56  ######  ##<color:D>#</color># #<color:D>#</color>% <color:G>?</color>[<color:y>*********</color>]
- <color:s>[</color> <color:s>Ring Mail [12]                      </color> N 17 E 60  ####<color:D>#</color>#   ### ### <color:U>,</color>[*********]
- <color:s>[</color> <color:s>Ring Mail [12]                      </color> N 17 E 55  #<color:D>#</color>###### #<color:D>#</color>#
- <color:W>`</color> <color:s>a Silver Statue of a Sea troll      </color> N 11 E132 ####  #<color:D>#</color>#####
- ? a Scroll of Summon Pet               N 19 E 61 ##   ###<color:D>#</color>##<color:D>#</color>#
- <color:W>?</color> <color:W>a Book of Life Magic [High Mass]    </color> N 15 E 47 <color:D>#</color>#   #<color:D>#</color>######     <color:G>Fast (+3)</color>
- <color:o>`</color> <color:s>a Copper Statue of an Impact hound  </color> N  3 E134 ##   ###          <color:B>Study (11)</color>
- <color:o>`</color> <color:s>a Copper Statue of a Clay golem     </color> N  1 E132 #  ###### ###   #
- <color:o>`</color> <color:s>a Copper Statue of Nar, the Dwarf   </color> N 20 E 61 #  #<color:D>#</color>##<color:D>#</color># #<color:D>#</color>#   #
- <color:s>}</color> <color:u>a Light Crossbow (x4)               </color> N 18 E 60 #  ###### ###%##%
-   <color:B>[Press ESC to exit. Press ? for help]</color>          <color:G>ap</color>
+Once loot starts dropping everywhere, the object list is your best tool for seeing what you missed; and it also works well together with Object Detection and especially Clairvoyance. Since objects are sorted primarily by whether they are wanted by the Mogaminator, and secondarily by their estimated value, the most interesting objects are easy to spot even if the list is extremely long. This character has a pretty large pile of unidentified objects:
+<style:screenshot>                                                                                
+There are 42 wanted objects:                      #####<color:s>.....</color><color:W>|</color><color:u>]</color><color:s>.....</color> LEVEL <color:G>    50</color>
+ <color:r>!</color> <color:B>a Potion of Dexterity               </color> N  3 E 28 <color:s>...</color>##<color:s>............</color> EXP <color:G>********</color>
+ <color:R>!</color> <color:B>2 Potions of Intelligence           </color> S  1 E 47 <color:s>....</color>#<color:s>............</color> AU  <color:G>    214k</color>
+ <color:s>[</color> <color:s>Black Dragon Scale Mail             </color> N  0 E 41 <color:s>.</color><color:U>~</color><color:v>!</color><color:s>.</color><color:U>'</color>##<color:s>........</color>#<color:s>.</color> <color:W>||</color><color:s>}</color><color:U>~</color><color:g>==</color><color:y>"</color><color:d> </color><color:b>(</color><color:G>(</color><color:s>]</color><color:U>]</color>
+ <color:s>[</color> <color:s>Do-maru                             </color> N  5 E  9 <color:s>..</color><color:v>`</color><color:s>.</color><color:W>|</color>#<color:s>%</color>#<color:s>.......</color>#<color:s>%</color> STR : <color:G>18/182</color>
+ <color:s>[</color> <color:s>Bar Chain Mail                      </color> N  2 E 30 <color:s>.</color>#<color:s>.....</color><color:U>'</color><color:s>......</color>#<color:s>%%</color> INT : <color:G> 18/43</color>
+ <color:s>[</color> <color:s>Augmented Chain Mail                </color> N  0 E 28 <color:s>..</color>#<color:s>.</color>#<color:s>............</color> WIS : <color:G> 18/71</color>
+ <color:v>]</color> <color:U>a Jewel Encrusted Crown             </color> N  2 E 28 <color:s>.</color>###<color:s>.............</color> DEX : <color:G>18/***</color>
+ <color:s>]</color> <color:U>a Pair of Metal Shod Boots          </color> N 17 E  9 <color:s>.</color>###<color:s>.............</color> CON : <color:G>18/185</color>
+ <color:U>(</color> <color:s>a Leather Jacket                    </color> N  2 E 42 <color:s>$</color><color:G>$</color>#<color:s>%.%......%....</color> CHR : <color:G>    17</color>
+ <color:y>"</color> <color:o>an Amulet {unidentified}            </color> N  1 E 30 <color:B>-</color><color:W>|$</color>#<color:u>$</color><color:G>$</color><color:s>......</color>#<color:s>.</color><color:U>`</color><color:s>..</color> AC     <color:G>  163</color>
+ <color:y>]</color> <color:U>a Golden Crown                      </color> N  7 E 24 <color:o>*</color><color:v>]</color><color:U>)</color><color:r>$</color><color:s>/</color><color:g>(</color><color:s>......</color>#<color:G>$</color><color:s>.</color><color:U>(</color><color:s>.</color> HP <color:G> 904</color>/<color:G> 904</color>
+ <color:D>/</color> a Lochaber Axe                       S  1 E 40 #<color:r>|</color>#<color:y>"</color><color:B>{</color> <color:s>......%</color><color:g>=</color><color:s>]..</color>             
+ <color:r>|</color> an Executioner's Sword               N  1 E 28 <color:s>[</color><color:D>|</color>#<color:s>%</color>#<color:s>%......%</color><color:g>=</color><color:s>[</color><color:G>$</color><color:s>.</color>             
+ <color:r>[</color> <color:s>Rusty Chain Mail                    </color> N 23 E 11 <color:W>(</color><color:s>%</color>##  <color:s>....</color><color:U>)</color><color:s>.</color>#<color:D>/</color><color:s>]..</color>             
+ <color:B>)</color> <color:U>a Mithril Shield                    </color> S  2 E 46 <color:y>`</color><color:s>%</color> <color:s>%</color>#<color:s>.......</color>#<color:G>$</color><color:s>...</color>             
+ <color:B>)</color> <color:U>a Mithril Shield                    </color> N  0 E 26 <color:s>.</color>### <color:s>............</color>             
+ <color:s>]</color> <color:U>an Iron Crown                       </color> N  0 E 27 <color:s>.</color>###<color:s>%</color>#<color:s>...........</color>             
+ <color:G>(</color> <color:U>an Elven Cloak                      </color> N 45 E 23 <color:s>%.</color>## ###<color:s>%....</color>#<color:s>%%.</color>             
+ <color:g>=</color> <color:r>a Ring {unidentified}               </color> N  1 E 40 ###     #<color:s>....</color><color:o>*</color> <color:s>%^</color>             
+ <color:g>=</color> <color:r>a Ring {unidentified}               </color> N  3 E 29 #       <color:s>%</color>#<color:D>~</color><color:s>..%</color> <color:s>%</color># <color:y>Fast (+27)</color>  
+ <color:W>|</color> a Bastard Sword                      N 10 E 22 <color:s>%</color>        #<color:s>...</color>#  # <color:G>Full</color>        
+ <color:r>-</color> <color:v>a Rod                               </color> N 16 E 10          #<color:s>..</color><color:D>~</color>#  #             
+ <color:r>-</color> <color:v>a Rod                               </color> N  0 E 27          #<color:s>...</color>#  #             
+ <color:r>-</color> <color:v>a Rod                               </color> N  7 E 19          #####  <color:s>%</color>             
+   <color:B>[Press ESC to exit. Press ? for help]</color>          <color:G>p</color>                             
 </style>
-
-<topic:Travel><style:heading>Travel to Object</style>
-
-You may travel to the currently selected object in the object list by pressing <style:keypress>`</style>, which, incidentally, is the same key used to invoke the travel command from the top level. Be careful when traveling, however, as you may quickly get yourself into trouble (just like with running). For example, you might travel into a horde of demons that, because they are not in direct line of sight, do not disturb you, and therefore do not terminate the travel command. So while you, with telepathy no doubt, would have wisely fled as soon as they appeared, the travel command will continue until you are actually in line of sight, which might be too late to survive. So exercise caution when using this option, and, for the love of god, turn on the <color:keyword>check_abort</color> option (see <link:option.txt#check_abort>)!
-
-<topic:Travel><style:heading>Travel to Shop</style>
-
-On the surface, there are unlikely to be many interesting objects. But, there are definitely interesting shops! For easy traveling, you may use the <color:keyword>Object List</color> for surface navigation. For example,
-<style:screenshot>
-There are 10 interesting features:                ......<color:U>##</color><color:g>.....</color><color:G>#</color><color:g>...</color> LEVEL <color:G>    50</color>
- <color:U>1</color> <color:U>General Store                       </color> S  1 E 17 ......<color:U>##</color><color:g>.........</color> EXP <color:G>********</color>
- <color:s>2</color> <color:s>Armoury                             </color> N  6 E  4 ......<color:U>##</color><color:g>......</color><color:G>#</color><color:g>..</color> AU  <color:G>    100M</color>
- 3 Weapon Smiths                        N  6 E 12 <color:U>###</color>...<color:U>##</color><color:g>.</color><color:G>#</color><color:g>.....</color><color:G>#</color><color:g>.</color> <color:W>|</color><color:d>     </color><color:y>*</color><color:U>(</color><color:d>    </color>
- <color:g>4</color> <color:g>Temple                              </color> N  8 W  5 <color:U>##</color><color:B>+</color>...<color:U>##</color><color:g>....</color><color:G>#</color><color:g>....</color> STR!: <color:G> 18/90</color>
- <color:b>5</color> <color:b>Alchemy Shop                        </color> N  0 W  3 <color:U>###</color>...<color:U>##</color><color:g>.........</color> INT!: <color:G>18/140</color>
- <color:r>6</color> <color:r>Magic Shop                          </color> S  2 W  3 <color:U>###</color>...<color:U>##</color><color:g>.</color><color:G>#</color><color:g>.......</color> WIS!: <color:G>18/120</color>
- <color:D>7</color> <color:D>Black Market                        </color> S  1 E 22 <color:U>###</color>...<color:U>##</color><color:g>.....</color><color:G>#</color><color:g>...</color> DEX!: <color:G>18/150</color>
- <color:y>8</color> <color:y>Home                                </color> S  9 E 38 ......<color:U>##</color><color:g>........</color>. CON!: <color:G> 18/80</color>
- <color:o>9</color> <color:o>Bookstore                           </color> N  6 E 19 ......<color:U>##</color><color:g>.</color><color:G>#</color><color:g>......</color>. CHR!: <color:G>18/160</color>
- <color:v>0</color> <color:v>Museum                              </color> N 15 E  5 <color:U>##</color>....<color:U>##</color><color:g>...</color><color:G>#</color><color:g>....</color>. AC     <color:G>   14</color>
-   <color:B>[Press ESC to exit. Press ? for help]</color>          <color:U>##</color>....<color:U>##</color><color:g>....</color><color:G>#</color><color:g>...</color>. HP <color:G> 760</color>/<color:G> 760</color>
-<color:g>.........</color>.<color:g>.</color><color:U>##</color>.......<color:U>######</color><color:b>5</color>..@...<color:g>.</color><color:U>#</color><color:b>~</color><color:B>~</color><color:U>#</color><color:B>~</color><color:b>~</color><color:U>#</color><color:g>.</color>....<color:U>######</color>...<color:U>####</color><color:g>.....</color><color:U>##</color>. SP <color:G> 283</color>/<color:G> 283</color>
-..........<color:g>.</color><color:U>##</color>.......<color:U>#######</color>......<color:g>.</color><color:U>#</color><color:b>~</color><color:U>#</color><color:B>~</color><color:U>#</color><color:b>~</color><color:U>#</color><color:g>.</color>....<color:U>1####</color><color:D>7</color>...<color:U>###########</color>.
-<color:g>.........</color>.<color:g>.</color><color:U>##</color>.......<color:U>######</color><color:r>6</color>......<color:g>.</color><color:U>#</color><color:b>~</color><color:B>~</color><color:U>#</color><color:B>~</color><color:b>~</color><color:U>#</color><color:g>.</color>....<color:U>######</color>...<color:U>###########</color>. @[<color:G>*********</color>]
-<color:g>.........</color>.<color:g>.</color><color:U>##</color>.......<color:U>#######</color>......<color:g>.</color><color:U>##</color><color:b>~~~</color><color:U>##</color><color:g>.</color>....<color:U>######</color>...<color:U>####</color>........ <color:o>?</color>[<color:G>*********</color>]
-<color:g>......</color><color:G>#</color><color:g>..</color>.<color:U>###</color>.......<color:U>#######</color>.......<color:g>.</color><color:U>#####</color><color:g>.</color>.....<color:U>######</color>............... <color:U>,</color>[*******--]
-<color:g>.........</color>.<color:U>###</color>......................<color:g>.....</color>...........................
-<color:g>.....</color>..............................................................
-<color:g>..</color>....<color:g>....</color><color:U>###</color>......................................................
-...<color:g>.......</color><color:U>###</color>...................................................... <color:B>Study (33)</color>
-<color:g>...........</color><color:U>##</color>....<color:U>###</color><color:u>+</color><color:U>########</color>...........<color:U>##+##</color>........<color:U>######</color>........
-<color:g>...........</color><color:U>##</color>....<color:U>############</color>...........<color:U>#####</color>........<color:U>######</color>........
-<color:g>...........</color><color:U>##</color>....<color:U>###########+</color>.........<color:U>#########</color>......<color:U>+####</color><color:v>+</color>........
-<color:g>..</color><color:G>#</color><color:g>.</color><color:G>#</color><color:g>.</color><color:G>##</color><color:g>...</color><color:U>##</color>....<color:U>############</color>.........<color:U>#########</color>......<color:U>######</color>........
-Morivant
+Not to mention an even larger pile of already identified objects:
+<style:screenshot>                                                                                
+ <color:W>(</color> <color:U>a Fur Cloak                         </color> S  1 E 27 #####<color:s>.....</color><color:W>|</color><color:u>]</color><color:s>.....</color> LEVEL <color:G>    50</color>
+ <color:D>|</color> a Broken Dagger                      N  0 E 28 <color:s>...</color>##<color:s>............</color> EXP <color:G>********</color>
+ <color:s>]</color> <color:U>an Iron Crown                       </color> S  1 E 48 <color:s>....</color>#<color:s>............</color> AU  <color:G>    214k</color>
+ <color:g>(</color> <color:U>a Cloak                             </color> N  2 E 32 <color:s>.</color><color:U>~</color><color:v>!</color><color:s>.</color><color:U>'</color>##<color:s>........</color>#<color:s>.</color> <color:W>||</color><color:s>}</color><color:U>~</color><color:g>==</color><color:y>"</color><color:d> </color><color:b>(</color><color:G>(</color><color:s>]</color><color:U>]</color>
+ <color:g>(</color> <color:U>a Cloak                             </color> N  4 E 10 <color:s>..</color><color:v>`</color><color:s>.</color><color:W>|</color>#<color:s>%</color>#<color:s>.......</color>#<color:s>%</color> STR : <color:G>18/182</color>
+                                                  <color:s>.</color>#<color:s>.....</color><color:U>'</color><color:s>......</color>#<color:s>%%</color> INT : <color:G> 18/43</color>
+There are 378 other objects:                      <color:s>..</color>#<color:s>.</color>#<color:s>............</color> WIS : <color:G> 18/71</color>
+ <color:W>[</color> <color:s>Ribbed Plate Armour of the Olog-hai </color> N 18 E 71 <color:s>.</color>###<color:s>.............</color> DEX : <color:G>18/***</color>
+ <color:U>(</color> <color:s>Hard Studded Leather of Celestial Pr</color> N 11 E 49 <color:s>.</color>###<color:s>.............</color> CON : <color:G>18/185</color>
+ <color:y>(</color> <color:s>Padded Armour of Elvenkind [5,+19] (</color> N 11 E 52 <color:s>$</color><color:G>$</color>#<color:s>%.%......%....</color> CHR : <color:G>    17</color>
+ <color:g>=</color> <color:r>a Ring of Protection [+10] {SiWr?}  </color> N  0 E 40 <color:B>-</color><color:W>|$</color>#<color:u>$</color><color:G>$</color><color:s>......</color>#<color:s>.</color><color:U>`</color><color:s>..</color> AC     <color:G>  163</color>
+ ? <color:W>a Life Spellbook [Book of the Unicor</color> S  5 E 26 <color:o>*</color><color:v>]</color><color:U>)</color><color:r>$</color><color:s>/</color><color:g>(</color><color:s>......</color>#<color:G>$</color><color:s>.</color><color:U>(</color><color:s>.</color> HP <color:G> 904</color>/<color:G> 904</color>
+ <color:r>?</color> <color:r>a Daemon Spellbook [Demonthoughts]  </color> N  0 E 46 #<color:r>|</color>#<color:y>"</color><color:B>{</color> <color:s>......%</color><color:g>=</color><color:s>]..</color>             
+ <color:u>?</color> <color:u>a Thieves' Guide [Great Escapes]    </color> N 12 E 24 <color:s>[</color><color:D>|</color>#<color:s>%</color>#<color:s>%......%</color><color:g>=</color><color:s>[</color><color:G>$</color><color:s>.</color>             
+ <color:U>(</color> <color:s>Soft Leather Armour of Celestial Pro</color> N 11 E 53 <color:W>(</color><color:s>%</color>##  <color:s>....</color><color:U>)</color><color:s>.</color>#<color:D>/</color><color:s>]..</color>             
+ <color:s>/</color> a Lance of Sharpness (4d10) (+16,+7) S  6 E 12 <color:y>`</color><color:s>%</color> <color:s>%</color>#<color:s>.......</color>#<color:G>$</color><color:s>...</color>             
+ <color:U>(</color> <color:s>Hard Studded Leather of Elemental Pr</color> S  5 E 76 <color:s>.</color>### <color:s>............</color>             
+ <color:y>"</color> <color:o>an Amulet of Devotion (+2) {Wi?}    </color> S  5 E 12 <color:s>.</color>###<color:s>%</color>#<color:s>...........</color>             
+ <color:g>=</color> <color:r>a Ring of Speed (+4) {Sp}           </color> N 19 E 71 <color:s>%.</color>## ###<color:s>%....</color>#<color:s>%%.</color>             
+ <color:W>|</color> a Scimitar (Trump) (2d6) (+15,+7) (+ N  2 E  8 ###     #<color:s>....</color><color:o>*</color> <color:s>%^</color>             
+ <color:g>=</color> <color:r>a Ring of Wizardry {?}              </color> N  5 E 93 #       <color:s>%</color>#<color:D>~</color><color:s>..%</color> <color:s>%</color># <color:y>Fast (+27)</color>  
+ <color:B>-</color> <color:g>a Wand of Holding: Nexus Ball (2/5 c</color> N  4 E 94 <color:s>%</color>        #<color:s>...</color>#  # <color:G>Full</color>        
+ <color:g>=</color> <color:r>a Ring of Combat (+0,+11) (+1) {Cn} </color> N 10 E 54          #<color:s>..</color><color:D>~</color>#  #             
+ <color:B>-</color> <color:g>a Wand of Simplicity: Dragon's Frost</color> N  0 E  8          #<color:s>...</color>#  #             
+ <color:g>=</color> <color:r>a Ring (Elemental) {Ac?}            </color> N  6 E 19          #####  <color:s>%</color>             
+   <color:B>[Press ESC to exit. Press ? for help]</color>          <color:G>p</color>                             
 </style>
+Imagine if he had to double-check every one of those objects manually to make sure he wasn't missing anything!
 
-Note, you can quickly select an item in the object list by pressing the first significant letter in its description. For example, to select the <color:D>Black Market</color>, simply press <color:keypress>b</color>. For the <color:o>Bookstore</color>, you will need to press <color:keypress>b</color> a second time. Once you have made your selection, press <color:keypress>`</color> to travel to the desired location.
+<topic:Travel><style:heading>Travelling to Objects</style>
 
-<topic:Window><style:heading>Setting Up a Terminal Window</style>
+You may travel to the currently selected object in the object list by pressing <style:keypress>J</style> or <style:keypress>(</style>, the same keys used to resume an interrupted travel. (In the object list, both keys work equally regardless of your keyset.) Be careful when travelling across the level, though; you might travel into a horde of demons who only disturb you when it's too late. Travelling to remote targets is best used if you know the level is mostly empty; while it can be used in other situations, exercise caution and make sure you have <color:keyword>check_abort</color> (see <link:option.txt#check_abort>) on.
 
-You may also setup the Object List as a child terminal so that it is continuously displayed. For details of setting options, refer to <link:option.txt>. For details of setting window options, see <link:option.txt#Window>.
+<topic:TravelShop><style:heading>Travelling to Shops</style>
+
+On the surface, there are unlikely to be many interesting objects; but shops, quest entrances and dungeon entrances are another matter entirely! All of these features are also displayed by the object list:
+<style:screenshot>                                                                                
+There are 19 interesting features:                <color:G>:</color><color:g>.........</color><color:G>:#:</color><color:g>..</color><color:G>::</color> LEVEL <color:G>     1</color>
+ <color:y>></color> <color:y>Quest Entrance: The Thieves' Hideout</color> S  1 E 26 <color:g>.......</color><color:G>:</color><color:g>.</color><color:G>:</color><color:g>.....</color><color:G>:</color><color:g>.</color> EXP <color:G>      15</color>
+ <color:U>1</color> <color:U>General Store                       </color> S 12 W 29 <color:G>:</color><color:g>..</color><color:G>:</color><color:U>#</color><color:g>..</color><color:G>::</color><color:U>#</color><color:g>..</color><color:G>:#</color><color:g>::</color><color:G>:</color> AU  <color:G>     767</color>
+ <color:s>2</color> <color:s>Armoury                             </color> S  1 E 16 <color:U>#</color><color:g>:.</color><color:U>###</color><color:G>#</color><color:g>:</color><color:U>###</color><color:G>#</color><color:g>:</color><color:G>:</color><color:g>...</color> <color:W>|</color><color:d>       </color><color:U>(</color><color:d>   </color>
+ 3 Weapon Smiths                        S  4 E 27 <color:U>############</color><color:G>##</color><color:g>...</color> STR : <color:G>    16</color>
+ <color:g>4</color> <color:g>Temple                              </color> S  2 W 29 <color:U>#############</color><color:G>#</color><color:g>...</color> INT : <color:G>    18</color>
+ <color:b>5</color> <color:b>Alchemy Shop                        </color> S 16 W 25 <color:U>##</color><color:g>..</color><color:s>.</color><color:g>..</color><color:U>###</color><color:g>.</color><color:G>#</color><color:g>.....</color> WIS : <color:G>     9</color>
+ <color:r>6</color> <color:r>Magic Shop                          </color> S 16 W 15 <color:G>#</color><color:g>...</color><color:s>.</color><color:g>...</color><color:G>#</color><color:g>........</color> DEX : <color:G> 18/40</color>
+ <color:D>7</color> <color:D>Black Market                        </color> S 16 E 16 <color:s>.................</color> CON : <color:G>    17</color>
+ <color:y>8</color> <color:y>Home                                </color> S 17 E 11 <color:r>.................</color> CHR : <color:G>    12</color>
+ <color:o>9</color> <color:o>Bookstore                           </color> S 17 W 10 <color:b>~~~~~~~~~~~~~~~~~</color> AC     <color:G>    6</color>
+ <color:v>M</color> <color:v>Museum                              </color> S 19 W  2 <color:b>~~~~~~~~~~~~~~</color><color:U>###</color> HP <color:G>  37</color>/<color:G>  37</color>
+ <color:U>+</color> <color:U>The White Horse Inn                 </color> S  8 E 25 <color:U>#################</color> SP <color:G>  14</color>/<color:G>  14</color>
+ <color:U>+</color> <color:U>Count                               </color> N  4 W  2 <color:U>#################</color>             
+ <color:U>+</color> <color:U>Count                               </color> N  4 W  0 <color:s>...............</color><color:U>##</color>             
+ <color:U>+</color> <color:U>Count                               </color> N  4 W  1 <color:U>####</color><color:s>.</color><color:U>#########</color><color:s>.</color><color:U>##</color>             
+ <color:B>+</color> <color:B>Bounty Office                       </color> N  1 W 15 <color:U>####</color><color:s>.</color><color:U>#########</color><color:s>.</color><color:U>##</color>             
+ <color:v>></color> <color:v>entrance to dungeon                 </color> S 31 E 89 <color:U>####</color><color:s>.</color><color:U>####</color><color:y>></color><color:U>####</color><color:s>.</color><color:U>##</color>             
+ <color:v>></color> <color:v>entrance to dungeon                 </color> S  4 E 51 <color:s>...............</color><color:U>##</color>             
+ <color:G>0</color> <color:G>Mushroom Store                      </color> N  1 W 21 <color:s>..........</color><color:U>####</color><color:s>.</color><color:U>##</color>             
+                                                  <color:s>..........</color>3<color:U>###</color><color:s>.</color><color:U>##</color> <color:B>Study (1)</color>   
+   <color:B>[Press ESC to exit. Press ? for help]</color>          <color:s>..........</color><color:U>####</color><color:s>.</color><color:U>##</color>             
+<color:s>...........................</color>........<color:s>..............................</color><color:U>##</color>             
+<color:s>..........................</color>.........<color:s>................................</color>             
+<color:s>.........................</color>..........<color:s>....................</color><color:U>###+####</color><color:s>..</color><color:U>##</color>             
+Outpost                                                                         
+</style>
+Note that you can quickly select an item in the object list by pressing the first significant letter in its description. For example, to select the <color:D>Black Market</color>, simply press <color:keypress>b</color>. For the <color:o>Bookstore</color>, you will need to press <color:keypress>b</color> a second time. Once you have made your selection, press <color:keypress>J</color> to travel to the desired location.
+
+<topic:Stairs><style:heading>Travelling to Stairs</style>
+
+You can turn on the <color:keyword>list_stairs</color> option (<link:option.txt#list_stairs>) to include stairs in the object list; but you can also toggle stair visibility by pressing <color:keypress>S</color> within the object list itself. Deep in the dungeon, you often want to locate the nearest stairs, whether because you wish to descend deeper still or because you need to escape a dangerous level:
+<style:screenshot>                                                                                
+There is 1 interesting feature:                   <color:s>...</color>##<color:s>............</color> LEVEL <color:G>    50</color>
+ <color:U>></color> <color:U>shaft down                          </color> N 12 E 51 <color:s>....</color>#<color:s>............</color> EXP <color:G>********</color>
+                                                  <color:s>.</color><color:U>~</color><color:v>!</color><color:s>.</color><color:U>'</color>##<color:s>........</color>#<color:s>.</color> AU  <color:G>    214k</color>
+There are 42 wanted objects:                      <color:s>..</color><color:v>`</color><color:s>.</color><color:W>|</color>#<color:s>%</color>#<color:s>.......</color>#<color:s>%</color> <color:W>||</color><color:s>}</color><color:U>~</color><color:g>==</color><color:y>"</color><color:d> </color><color:b>(</color><color:G>(</color><color:s>]</color><color:U>]</color>
+ <color:r>!</color> <color:B>a Potion of Dexterity               </color> N  3 E 28 <color:s>.</color>#<color:s>.....</color><color:U>'</color><color:s>......</color>#<color:s>%%</color> STR : <color:G>18/182</color>
+ <color:R>!</color> <color:B>2 Potions of Intelligence           </color> S  1 E 47 <color:s>..</color>#<color:s>.</color>#<color:s>............</color> INT : <color:G> 18/43</color>
+ <color:s>[</color> <color:s>Black Dragon Scale Mail             </color> N  0 E 41 <color:s>.</color>###<color:s>.............</color> WIS : <color:G> 18/71</color>
+ <color:s>[</color> <color:s>Do-maru                             </color> N  5 E  9 <color:s>.</color>###<color:s>.............</color> DEX : <color:G>18/***</color>
+ <color:s>[</color> <color:s>Bar Chain Mail                      </color> N  2 E 30 <color:s>$</color><color:G>$</color>#<color:s>%.%......%....</color> CON : <color:G>18/185</color>
+ <color:s>[</color> <color:s>Augmented Chain Mail                </color> N  0 E 28 <color:B>-</color><color:W>|$</color>#<color:u>$</color><color:G>$</color><color:s>......</color>#<color:s>.</color><color:U>`</color><color:s>..</color> CHR : <color:G>    17</color>
+ <color:v>]</color> <color:U>a Jewel Encrusted Crown             </color> N  2 E 28 <color:o>*</color><color:v>]</color><color:U>)</color><color:r>$</color><color:s>/</color><color:g>(</color><color:s>......</color>#<color:G>$</color><color:s>.</color><color:U>(</color><color:s>.</color> AC     <color:G>  163</color>
+ <color:s>]</color> <color:U>a Pair of Metal Shod Boots          </color> N 17 E  9 #<color:r>|</color>#<color:y>"</color><color:B>{</color> <color:s>......%</color><color:g>=</color><color:s>]..</color> HP <color:G> 904</color>/<color:G> 904</color>
+ <color:U>(</color> <color:s>a Leather Jacket                    </color> N  2 E 42 <color:s>[</color><color:D>|</color>#<color:s>%</color>#<color:s>%......%</color><color:g>=</color><color:s>[</color><color:G>$</color><color:s>.</color>             
+ <color:y>"</color> <color:o>an Amulet {unidentified}            </color> N  1 E 30 <color:W>(</color><color:s>%</color>##  <color:s>....</color><color:U>)</color><color:s>.</color>#<color:D>/</color><color:s>]..</color>             
+ <color:y>]</color> <color:U>a Golden Crown                      </color> N  7 E 24 <color:y>`</color><color:s>%</color> <color:s>%</color>#<color:s>.......</color>#<color:G>$</color><color:s>...</color>             
+ <color:D>/</color> a Lochaber Axe                       S  1 E 40 <color:s>.</color>### <color:s>............</color>             
+ <color:r>|</color> an Executioner's Sword               N  1 E 28 <color:s>.</color>###<color:s>%</color>#<color:s>...........</color>             
+ <color:r>[</color> <color:s>Rusty Chain Mail                    </color> N 23 E 11 <color:s>%.</color>## ###<color:s>%....</color>#<color:s>%%.</color>             
+ <color:B>)</color> <color:U>a Mithril Shield                    </color> S  2 E 46 ###     #<color:s>....</color><color:o>*</color> <color:s>%^</color>             
+ <color:B>)</color> <color:U>a Mithril Shield                    </color> N  0 E 26 #       <color:s>%</color>#<color:D>~</color><color:s>..%</color> <color:s>%</color>#             
+ <color:s>]</color> <color:U>an Iron Crown                       </color> N  0 E 27 <color:s>%</color>        #<color:s>...</color>#  # <color:y>Fast (+27)</color>  
+ <color:G>(</color> <color:U>an Elven Cloak                      </color> N 45 E 23          #<color:s>..</color><color:D>~</color>#  # <color:G>Full</color>        
+ <color:g>=</color> <color:r>a Ring {unidentified}               </color> N  1 E 40          #<color:s>...</color>#  #             
+ <color:g>=</color> <color:r>a Ring {unidentified}               </color> N  3 E 29          #####  <color:s>%</color>             
+ <color:W>|</color> a Bastard Sword                      N 10 E 22                               
+   <color:B>[Press ESC to exit. Press ? for help]</color>          <color:G>p</color>
+</style>  
+This was probably a quest level if there's only one staircase! As above, you can press <color:keypress>J</color> or <color:keypress>(</color> to travel to the stairs through the object list.
+
+<topic:Window><style:heading>Subwindow</style>
+
+You may set up the Object List as a subwindow to have it continuously displayed; although additional functionality such as travelling to objects or inspecting objects will not be available through the subwindow, it is still a handy way to see what you're missing and where the stairs and entrances are. See <link:subwin.txt> for details on setting up subwindows.
