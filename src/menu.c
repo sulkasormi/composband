@@ -166,7 +166,7 @@ int menu_choose(menu_ptr menu)
 
     if (REPEAT_PULL(&choice))
     {
-        if (choice >= 0 && choice < menu->count)
+        if ((choice >= 0 && choice < menu->count) || (choice == -1))
             return choice;
     }
 
