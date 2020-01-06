@@ -1238,6 +1238,12 @@ void _freeze_body_part_spell(int cmd, variant *res)
     }
 }
 
+slot_t igor_find_art(int which)
+{
+    if (!_pack_initialized) return 0;
+    return inv_find_art(_igor_body, which);
+}
+
 static power_info _igor_powers[] = {
     { A_DEX, {  1,  0,  0, _dissect_corpse_spell}},
     { A_DEX, {  1,  0,  0, _replace_body_part_spell}},
