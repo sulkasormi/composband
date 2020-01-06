@@ -6825,13 +6825,12 @@ static bool run_test(void)
     return (FALSE);
 }
 
-
-
 /*
  * Take one step along the current "run" path
  */
 void run_step(int dir)
 {
+    bool ongelma = FALSE;
     /* Start running */
     if (dir)
     {
@@ -6867,6 +6866,21 @@ void run_step(int dir)
             /* Done */
             return;
         }
+        else if ((p_ptr->confused) && (randint0(4)))
+        {
+            int uus_dir = ddd[randint0(8)];
+            if (uus_dir != find_current)
+            {
+                find_current = uus_dir;
+                ongelma = TRUE;
+                if (see_wall(uus_dir, py, px))
+                {
+                    msg_print("You are confused.");
+                    disturb(0, 0);
+                    return;
+                }
+            }
+        }
     }
 
     /* Decrease the run counter */
@@ -6886,6 +6900,12 @@ void run_step(int dir)
 
 #endif /* ALLOW_EASY_DISARM -- TNB */
 
+    if (ongelma)
+    {
+        msg_print("You are confused.");
+        disturb(0, 0);
+        return;
+    }
     if (player_bold(p_ptr->run_py, p_ptr->run_px))
     {
         p_ptr->run_py = 0;
@@ -7036,7 +7056,13 @@ void travel_step(void)
     }
 
     command_dir = dir;
-    if (get_rep_dir(&dir, FALSE) == GET_DIR_RANDOM)
+    if ((p_ptr->confused) && (randint0(4))) /* paranoia - get_rep_dir() doesn't handle this situation well */
+    {
+        command_dir = ddd[randint0(8)];
+        dir = command_dir;
+        ongelma = TRUE;
+    }
+    else if (get_rep_dir(&dir, FALSE) == GET_DIR_RANDOM)
     {
         ongelma = TRUE;
     }
