@@ -347,6 +347,7 @@
 #define PET_RYOUTE              16
 #define PET_NO_BREEDING         17
 #define PET_HILITE              18
+#define PET_HILITE_LISTS        19
 
 /*
  * Follow distances
@@ -367,6 +368,7 @@
 #define PF_RYOUTE       0x0040
 #define PF_NO_BREEDING  0x0080
 #define PF_HILITE       0x0100
+#define PF_HILITE_LISTS 0x0200
 
 
 #define CAN_TWO_HANDS_WIELDING() (!p_ptr->riding || (p_ptr->pet_extra_flags & PF_RYOUTE))
