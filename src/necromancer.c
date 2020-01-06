@@ -33,7 +33,7 @@ static bool _necro_check_touch(void)
 
 static cptr _necro_info_damage(int dice, int sides, int base)
 {
-    if (equip_find_art(ART_HAND_OF_VECNA))
+    if ((equip_find_art(ART_HAND_OF_VECNA)) || ((prace_is_(RACE_IGOR)) && (igor_find_art(ART_HAND_OF_VECNA))))
     {
         dice *= 2;
         base *= 2;
@@ -43,7 +43,7 @@ static cptr _necro_info_damage(int dice, int sides, int base)
 
 static int _necro_damroll(int dice, int sides, int base)
 {
-    if (equip_find_art(ART_HAND_OF_VECNA))
+    if ((equip_find_art(ART_HAND_OF_VECNA)) || ((prace_is_(RACE_IGOR)) && (igor_find_art(ART_HAND_OF_VECNA))))
     {
         dice *= 2;
         base *= 2;
