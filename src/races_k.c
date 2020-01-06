@@ -35,9 +35,9 @@ race_t *klackon_get_race(void)
         me.name = "Klackon";
         me.desc = "Klackons are bizarre semi-intelligent ant-like insectoid creatures. "
                     "They make great fighters, but their mental abilities are severely limited. "
-                    "Obedient and well-ordered, they are resistant to confusion. They are also very "
+                    "Obedient and well-ordered, they are resistant to confusion. They are very "
                     "nimble, and become faster as they advance levels. They are also very acidic, "
-                    "inherently resisting acid, and capable of spitting acid at higher levels.";
+                    "inherently resist acid, and become capable of spitting it at higher levels.";
 
         me.stats[A_STR] =  2;
         me.stats[A_INT] = -1;
@@ -100,7 +100,7 @@ race_t *kobold_get_race(void)
         me.name = "Kobold";
         me.desc = "Kobolds are a weak goblin race. They love poisoned weapons, and can learn to throw "
                     "poisoned darts (of which they carry an unlimited supply). They are also inherently "
-                    "resistant to poison, although they are not one of the more powerful races.";
+                    "resistant to poison.";
 
         me.stats[A_STR] =  1;
         me.stats[A_INT] = -1;
@@ -162,13 +162,13 @@ race_t *kutar_get_race(void)
     if (!init)
     {
         me.name = "Kutar";
-        me.desc = "A Kutar is an expressionless animal-like living creature. The word 'kuta' means "
-                    "'absentmindedly' or 'vacantly'. Their absentmindedness hurts their searching and "
-                    "perception skills, but renders them resistant to being confused. Their unearthly "
-                    "calmness and serenity make them among the most stealthy of any race. Kutars, "
-                    "although expressionless, are beautiful and so have a high charisma. Members of "
-                    "this race can learn to expand their body horizontally. This increases armour class, "
-                    "but renders them vulnerable to magical attacks.";
+        me.desc = "A Kutar is not a dog, cat or bear. Despite their characteristic "
+                    "vacant expression, Kutars are beautiful and so have a high charisma. "
+                    "Their absent-mindedness hurts their searching and perception skills, "
+                    "but renders them resistant to being confused. Due to their unearthly "
+                    "calmness and serenity, Kutars are extremely stealthy. They learn the "
+                    "special ability to expand their body horizontally; this increases "
+                    "their armour class, but renders them vulnerable to curses.";
 
         me.stats[A_STR] =  0;
         me.stats[A_INT] = -1;
@@ -238,11 +238,10 @@ race_t *mindflayer_get_race(void)
     {
         me.name = "Mindflayer";
         me.desc = "Mindflayers are a secretive and mysterious ancient race. Their civilization may well "
-                    "be older than any other on our planet, and their intelligence and wisdom are "
-                    "naturally sustained, and are so great that they enable Mindflayers to become more "
-                    "powerful spellcasters than any other race, even if their physical attributes are "
-                    "a good deal less admirable. As they advance levels, they gain the powers of "
-                    "See Invisible and Telepathy.";
+                    "be older than any other; their intelligence and wisdom are naturally sustained, "
+                    "and so great as to make Mindflayers highly effective spellcasters, but their "
+                    "physical attributes are a good deal less admirable. As they gain levels, they "
+                    "learn to see invisible creatures, and eventually develop a telepathic sight.";
 
         me.stats[A_STR] = -3;
         me.stats[A_INT] =  4;
@@ -343,6 +342,71 @@ race_t *nibelung_get_race(void)
 }
 
 /****************************************************************
+ * Ogre
+ ****************************************************************/
+static power_info _ogre_powers[] =
+{
+    { A_INT, {25, 35, 70, explosive_rune_spell}},
+    { -1, {-1, -1, -1, NULL} }
+};
+static int _ogre_get_powers(spell_info* spells, int max)
+{
+    return get_powers_aux(spells, max, _ogre_powers);
+}
+static void _ogre_calc_bonuses(void)
+{
+    p_ptr->sustain_int = TRUE;
+}
+static void _ogre_get_flags(u32b flgs[OF_ARRAY_SIZE])
+{
+    add_flag(flgs, OF_SUST_INT);
+}
+race_t *ogre_get_race(void)
+{
+    static race_t me = {0};
+    static bool init = FALSE;
+
+    if (!init)
+    {
+        me.name = "Ogre";
+        me.desc = "Ogres are big and ugly, but possessed of a low cunning and great strength. "
+                    "They have all the necessary attributes to be warriors, yet are also "
+                    "surprisingly adept as mages; and at high level, all Ogres learn the Ogre "
+                    "Mage skill of setting trapped runes. Being simple-minded, Ogres have their "
+                    "intelligence sustained.";
+
+        me.stats[A_STR] =  3;
+        me.stats[A_INT] =  0;
+        me.stats[A_WIS] = -1;
+        me.stats[A_DEX] = -1;
+        me.stats[A_CON] =  3;
+        me.stats[A_CHR] =  0;
+
+        me.skills.dis = -3;
+        me.skills.dev = -3;
+        me.skills.sav = -3;
+        me.skills.stl = -2;
+        me.skills.srh = -1;
+        me.skills.fos =  5;
+        me.skills.thn = 20;
+        me.skills.thb =  -5;
+
+        me.life = 106;
+        me.base_hp = 23;
+        me.exp = 140;
+        me.infra = 0;
+        me.shop_adjust = 125;
+
+        me.calc_bonuses = _ogre_calc_bonuses;
+        me.get_powers = _ogre_get_powers;
+        me.get_flags = _ogre_get_flags;
+        init = TRUE;
+    }
+
+    return &me;
+}
+
+/****************************************************************
  * Shadow-Fairy
  ****************************************************************/
 static void _shadow_fairy_calc_bonuses(void)
@@ -364,13 +428,12 @@ race_t *shadow_fairy_get_race(void)
     if (!init)
     {
         me.name = "Shadow-Fairy";
-        me.desc = "Shadow Fairies are one of the several fairy races. They have wings, and can fly over "
-                    "traps that may open up beneath them. Shadow Fairies must beware of sunlight, as "
-                    "they are vulnerable to bright light. They are physically weak, but have advantages "
-                    "in using magic and are amazingly stealthy. Shadow Fairies have a wonderful advantage "
-                    "in that they never aggravate monsters (If their equipment normally aggravates monsters, "
-                    "they only suffer a penalty to stealth, but if they aggravate by their personality "
-                    "itself, the advantage will be lost).";
+        me.desc = "Shadow-fairies are one of the several fairy races. They have wings, and can fly over "
+                    "traps that may open up beneath them. Being creatures of darkness, shadow-fairies are "
+                    "vulnerable to bright light. They are physically weak, but naturally adept at using "
+                    "magic. Shadow-fairies are amazingly stealthy, and have a wonderful advantage in "
+                    "that they almost never aggravate monsters; aggravating equipment only gives them a slight "
+                    "penalty to stealth, but if they have an aggravating personality the advantage is lost.";
 
         me.stats[A_STR] = -2;
         me.stats[A_INT] =  2;
@@ -445,15 +508,13 @@ race_t *skeleton_get_race(void)
     if (!init)
     {
         me.name = "Skeleton";
-        me.desc = "There are two types of skeletons: the ordinary, warrior-like skeletons, and the "
-                    "spell-using skeletons, which are also called liches. As undead beings, skeletons "
-                    "need to worry very little about poison or attacks that can drain life. They do "
-                    "not really use eyes for perceiving things, and are thus not fooled by invisibility. "
-                    "Their bones are resistant to sharp shrapnel, and they will quickly become resistant "
-                    "to cold. Although the magical effects of these will affect the skeleton even "
-                    "without entering the skeleton's (non-existent) belly, the potion or food itself "
-                    "will fall through the skeleton's jaws, giving no nutritional benefit. They can "
-                    "absorb mana from staves and wands as their energy source.";
+        me.desc = "As undead beings, skeletons need worry very little about poison or attacks "
+                    "that can drain life. Skeletons do not really use eyes for perceiving things, "
+                    "and are thus not fooled by invisibility. Their bones are resistant to sharp shrapnel, "
+                    "and they will quickly become resistant to cold. Although the magical effects of "
+                    "potions and mushrooms will affect the skeleton even without entering its (non-existent) "
+                    "belly, the food itself will fall through the skeleton's jaws, giving no nutritional benefit; "
+                    "instead, skeletons feed themselves by absorbing the energy of magical devices.";
 
         me.stats[A_STR] =  0;
         me.stats[A_INT] =  1;
@@ -632,14 +693,14 @@ race_t *spectre_get_race(void)
     if (!init)
     {
         me.name = "Spectre";
-        me.desc = "Another powerful undead creature: the Spectre is a ghastly apparition, surrounded by "
-                    "an unearthly green glow. They exist only partially on our plane of existence: "
+        me.desc = "A powerful undead creature, the Spectre is a ghastly apparition, surrounded by "
+                    "an unearthly green glow. Spectres exist only partially on our plane of existence: "
                     "half-corporeal, they can pass through walls, although the density of the wall "
                     "will hurt them in the process of doing this. As undead, they have a firm hold "
-                    "on their life force, see invisible, and resist poison and cold. They also resist "
+                    "on their life force, can see invisible creatures, and resist poison, cold and "
                     "nether. Spectres make superb spellcasters, but their physical form is very weak. "
                     "They gain very little nutrition from the food of mortals, but can absorb mana "
-                    "from staves and wands as their energy source.";
+                    "from magical devices as their energy source.";
 
         me.stats[A_STR] = -5;
         me.stats[A_INT] =  4;
@@ -982,14 +1043,13 @@ race_t *vampire_get_race(void)
     if (!init)
     {
         me.name = "Vampire";
-        me.desc = "One of the mightier undead creatures, the Vampire is an awe-inspiring sight. Yet this "
+        me.desc = "One of the mightier undead creatures, the vampire is an awe-inspiring sight. Yet this "
                     "dread creature has a serious weakness: the bright rays of sun are its bane, and it "
                     "will need to flee the surface to the deep recesses of earth until the sun finally "
-                    "sets. Darkness, on the other hand, only makes the Vampire stronger. As undead, the "
-                    "Vampire has a firm hold on its life force, and resists nether attacks. The Vampire "
-                    "also resists cold and poison based attacks. It is, however, susceptible to its "
-                    "perpetual hunger for fresh blood, which can only be satiated by sucking the blood "
-                    "from a nearby monster.";
+                    "sets. Darkness, on the other hand, holds few terrors to a vampire. Being undead, "
+                    "vampires also resist nether, cold and poison and have a firm hold on their life force; "
+                    "but they are susceptible to a perpetual hunger for fresh blood, which can only be "
+                    "satiated by sucking the blood from a nearby monster.";
 
         me.stats[A_STR] =  3;
         me.stats[A_INT] =  3;
@@ -1112,8 +1172,8 @@ race_t *yeek_get_race(void)
         me.name = "Yeek";
         me.desc = "Yeeks are among the most pathetic creatures. Fortunately, their horrible screams "
                     "can scare away less confident foes, and their skin becomes more and more resistant "
-                    "to acid, as they gain experience. But having said that, even a mediocre monster "
-                    "can wipe the proverbial floor with an unwary Yeek.";
+                    "to acid as they gain experience. They are also fairly good at magic; but in combat, "
+                    "even a mediocre monster can wipe the proverbial floor with an unwary Yeek.";
 
         me.stats[A_STR] = -2;
         me.stats[A_INT] =  1;
@@ -1191,9 +1251,9 @@ race_t *zombie_get_race(void)
     {
         me.name = "Zombie";
         me.desc = "Zombies are undead horrors, resistant to life draining and the forces "
-            "of the netherworld. The grave is cold but this does not bother the undead and "
-            "poison scarcely affects the unliving. Zombies gain little nutrition from "
-            "ordinary food. Instead, they must absorb mana from magical devices to maintain "
+            "of the netherworld. The grave is cold, but this does not bother the undead, and "
+            "poison also scarcely affects the unliving. Zombies gain little nutrition from "
+            "ordinary food; instead, they absorb energy from magical devices to maintain "
             "their undead existence.";
 
         me.stats[A_STR] =  2;
