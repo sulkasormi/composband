@@ -2175,14 +2175,24 @@ void do_cmd_pet(void)
     {
         if (p_ptr->pet_extra_flags & PF_HILITE)
         {
-            power_desc[num] = "highlight pets (now On)";
+            power_desc[num] = "highlight pets on map (now On)";
         }
         else
         {
-            power_desc[num] = "highlight pets (now Off)";
+            power_desc[num] = "highlight pets on map (now Off)";
         }
         powers[num++] = PET_HILITE;
     }
+
+    if (p_ptr->pet_extra_flags & PF_HILITE_LISTS)
+    {
+        power_desc[num] = "highlight pets in lists (now On)";
+    }
+    else
+    {
+        power_desc[num] = "highlight pets in lists (now Off)";
+    }
+    powers[num++] = PET_HILITE_LISTS;
 
 #ifdef ALLOW_REPEAT
     if (!(repeat_pull(&i) && (i >= 0) && (i < num)))
@@ -2513,6 +2523,13 @@ void do_cmd_pet(void)
             if (p_ptr->pet_extra_flags & PF_HILITE) p_ptr->pet_extra_flags &= ~(PF_HILITE);
             else p_ptr->pet_extra_flags |= PF_HILITE;
             p_ptr->redraw |= PR_MAP;
+            break;
+        }
+        case PET_HILITE_LISTS:
+        {
+            if (p_ptr->pet_extra_flags & PF_HILITE_LISTS) p_ptr->pet_extra_flags &= ~(PF_HILITE_LISTS);
+            else p_ptr->pet_extra_flags |= PF_HILITE_LISTS;
+            p_ptr->window |= PW_MONSTER_LIST;
             break;
         }
     }
