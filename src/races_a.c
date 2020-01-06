@@ -33,10 +33,9 @@ race_t *amberite_get_race(void)
         me.name = "Amberite";
         me.desc = "The Amberites are a reputedly immortal race, who are endowed with numerous "
                     "advantages in addition to their longevity. They are very tough and their "
-                    "constitution cannot be reduced, and their ability to heal wounds far "
-                    "surpasses that of any other race. Having seen virtually everything, "
-                    "very little is new to them, and they gain levels much slower than the "
-                    "other races.";
+                    "constitution cannot be reduced, and their ability to recover from wounds "
+                    "surpasses most other races. Having seen virtually everything, very "
+                    "little is new to them, and so they gain levels relatively slowly.";
 
         me.stats[A_STR] =  1;
         me.stats[A_INT] =  2;
@@ -249,16 +248,16 @@ race_t *android_get_race(void)
     if (!init)
     {
         me.name = "Android";
-        me.desc = "An android is a artificial creation with a body of machinery. Over the millenia, artificial "
-                    "intelligence has improved to the point where androids are nearly as smart as humans, though "
-                    "perhaps not so wise. Of course, their mechanical body offers great physical advantages, far "
-                    "surpassing the powers of man. Androids don't acquire experience like other "
-                    "races, but rather gain in power as they attach new equipment to their frame. "
-                    "Rings, amulets, and lights do not influence growth. Androids are resistant to "
-                    "poison, can move freely, and are immune to life-draining attacks. Moreover, "
+        me.desc = "An android is an artificial creation with a body of machinery. Their intelligence "
+                    "almost matches that of organic races, though their wisdom is no better than that of "
+                    "Golems. Of course, their mechanical body offers great physical advantages, far "
+                    "surpassing the powers of man. Uniquely among all races, Androids do not acquire "
+                    "experience from killing monsters, but rather gain in power as they attach new "
+                    "equipment to their frame. Rings, amulets, and lights do not influence growth. "
+                    "Androids are resistant to poison and immune to life-draining attacks; moreover, "
                     "because of their hard metallic bodies, they get a bonus to AC. Androids have "
-                    "electronic circuits throughout their body and must beware of electric shocks. "
-                    "They gain very little nutrition from the food of mortals, but they can use flasks "
+                    "electronic circuits throughout their body, and so must beware of electric shocks. "
+                    "They gain very little nutrition from the food of mortals, but can use flasks "
                     "of oil as their energy source.";
 
         me.stats[A_STR] =  3;
@@ -319,7 +318,7 @@ race_t *archon_get_race(void)
     {
         me.name = "Archon";
         me.desc = "Archons are a higher class of angels. They are good at all skills, and are strong, "
-                    "wise, and are a favorite with any people. They are able to see the unseen, and "
+                    "wise, and a favorite with any people. They are able to see the unseen, and "
                     "their wings allow them to safely fly over traps and other dangerous places. However, "
                     "belonging to a higher plane as they do, the experiences of this world do not leave "
                     "a strong impression on them and they gain levels slowly.";
@@ -404,9 +403,9 @@ race_t *balrog_get_race(void)
     if (!init)
     {
         me.name = "Balrog";
-        me.desc = "Balrogs are a higher class of demons. They are strong, intelligent and tough. They do "
-                    "not believe in gods, and are not suitable for priest at all. Balrog are resistant to "
-                    "fire and nether, and have a firm hold on their life force. They also eventually learn "
+        me.desc = "Balrogs are a higher class of demons. They are strong, intelligent and tough, but "
+                    "lacking in wisdom and not suitable for priesthood. Balrogs are resistant to "
+                    "fire and nether, and have a firm hold on their life force; they also soon learn "
                     "to see invisible things. They are good at almost all skills except stealth. They gain "
                     "very little nutrition from the food of mortals, and need human corpses as sacrifices "
                     "to regain their vitality.";
@@ -490,10 +489,11 @@ race_t *barbarian_get_race(void)
     if (!init)
     {
         me.name = "Barbarian";
-        me.desc = "Barbarians are hardy men of the north. They are fierce in combat, and their wrath "
+        me.desc = "Barbarians are hardy men of the north; they are fierce in combat, and their wrath "
                     "is feared throughout the world. Combat is their life: they feel no fear, and they "
                     "learn to enter battle frenzy at will even sooner than half-trolls. Barbarians are, "
-                    "however, suspicious of magic, which makes magic devices fairly hard for them to use.";
+                    "however, suspicious of magic, which makes magic devices fairly hard for them to use. "
+                    "Barbarians gain a demigod talent at level 30.";
 
         me.stats[A_STR] =  3;
         me.stats[A_INT] = -2;
@@ -563,13 +563,14 @@ race_t *beastman_get_race(void)
     {
         me.name = "Beastman";
         me.desc = "This race is a blasphemous abomination produced by Chaos. It is not an independent "
-                    "race but rather a humanoid creature, most often a human, twisted by the Chaos, "
-                    "or a nightmarish crossbreed of a human and a beast. All Beastmen are accustomed "
+                    "race but rather a humanoid creature, most often a human, twisted by Chaos; or else "
+                    "a nightmarish crossbreed of a human and a beast. All Beastmen are accustomed "
                     "to Chaos so much that they are untroubled by confusion and sound, although raw "
-                    "logrus can still have effects on them. Beastmen revel in chaos, as it twists them "
+                    "Logrus can still hurt them. Beastmen revel in chaos, as it twists them "
                     "more and more. Beastmen are subject to mutations: when they have been created, "
-                    "they receive a random mutation. After that, every time they advance a level "
-                    "they have a small chance of gaining yet another mutation.";
+                    "they receive a random mutation, and have a small chance to gain more mutations "
+                    "every time they advance a level. Unlike normal races, Beastmen can have many "
+                    "mutations without ill effects on their regeneration.";
 
         me.stats[A_STR] =  2;
         me.stats[A_INT] = -2;
@@ -822,11 +823,10 @@ race_t *centaur_get_race(void)
         me.name = "Centaur";
         me.desc = "Centaurs are creatures with the head, arms and torso of a human combined with the "
                     "body and legs of a horse. As such, they are able to move more quickly as "
-                    "they gain experience and are capable of leaping great distances. They may "
-                    "attack monsters with their hooves in addition to any normal melee weapons. "
-                    "Centaurs are strong, agile, and wise, but not so smart. "
-                    "They are skilled in fighting and archery but are rather distrustful of magic. "
-                    "Finally, being at home in the forests of the world, Centaurs "
+                    "they gain experience and are capable of leaping great distances. Centaurs are "
+                    "skilled in fighting and archery and can attack monsters with their hooves in "
+                    "addition to normal melee weapons; but lacking normal feet, they cannot wear boots. "
+                    "Being at home in the forests of the world, Centaurs "
                     "are able to move quickly through foliage.";
 
         me.stats[A_STR] =  3;
@@ -962,11 +962,11 @@ race_t *dark_elf_get_race(void)
     if (!init)
     {
         me.name = "Dark-Elf";
-        me.desc = "Another dark, cave-dwelling race, likewise unhampered by darkness attacks, "
-                    "the Dark Elves have a long tradition and knowledge of magic. They have an "
-                    "inherent magic missile attack available to them at a low level. With their "
-                    "keen sight, they also learn to see invisible things as their relatives "
-                    "High-Elves do, but at a higher level.";
+        me.desc = "A cave-dwelling race unhampered by darkness attacks, dark-elves have more "
+                    "in common with Nibelungs than with other elves. They have a great capacity "
+                    "for magic and spellcasting, and learn the Magic Missile spell at a low level "
+                    "regardless of their class. With their keen sight, they soon acquire the "
+                    "ability to see invisible things.";
 
         me.stats[A_STR] = -1;
         me.stats[A_INT] =  3;
@@ -1429,8 +1429,8 @@ race_t *draconian_get_race(int psubrace)
     {
         me.name = "Draconian";
         me.desc = "Draconians are a humanoid race with dragon-like attributes. There are several "
-                    "subtypes of draconians with different resistances, breaths and attributes. "
-                    "For example, Red Draconians are resistant to fire which they may also breathe "
+                    "subtypes of draconians with different resistances, breaths and attributes; "
+                    "for example, Red Draconians are resistant to fire which they may also breathe "
                     "at will, while White Draconians breathe and resist cold instead. All draconians "
                     "levitate. In addition, when they mature enough, they may choose a special "
                     "draconian power.";
@@ -1479,8 +1479,8 @@ race_t *draconian_get_race(int psubrace)
         case DRACONIAN_RED:
             me.subname = "Red";
             me.subdesc = "Red Draconians have an affinity for fire, which they both breathe at will and resist. "
-                         "Together with their White kin, they are the strongest in combat of the draconians. "
-                         "But they are not so good with magic and their stealth is quite poor. Should they choose "
+                         "Together with their White kin, they are the strongest in combat of the draconians; "
+                         "but they are not so good with magic, and their stealth is quite poor. Should they choose "
                          "the power of Dragon Skin, they will gain a fiery aura as well. Should they choose the "
                          "power of Dragon Strike, their blows will burn their enemies.";
             me.stats[A_STR] += 2;
@@ -1495,8 +1495,8 @@ race_t *draconian_get_race(int psubrace)
         case DRACONIAN_WHITE:
             me.subname = "White";
             me.subdesc = "White Draconians have an affinity for frost, which they both breathe at will and resist. "
-                         "Together with their Red kin, they are the strongest in combat of the draconians. "
-                         "But they are not so good with magic and their stealth is quite poor. Should they choose "
+                         "Together with their Red kin, they are the strongest in combat of the draconians; "
+                         "but they are not so good with magic, and their stealth is quite poor. Should they choose "
                          "the power of Dragon Skin, they will gain an aura of cold as well. Should they choose the "
                          "power of Dragon Strike, their blows will freeze their enemies.";
             me.stats[A_STR] += 2;
@@ -1511,7 +1511,7 @@ race_t *draconian_get_race(int psubrace)
         case DRACONIAN_BLUE:
             me.subname = "Blue";
             me.subdesc = "Blue Draconians have an affinity for lightning, which they both breathe at will "
-                         "and resist. They are strong in combat but not so good with magic or stealth. "
+                         "and resist. They are strong in combat, but not so good with magic or stealth. "
                          "Should they choose the power of Dragon Skin, they will gain a shocking aura as well. "
                          "Should they choose the power of Dragon Strike, their blows will electrocute "
                          "their enemies.";
@@ -1525,7 +1525,7 @@ race_t *draconian_get_race(int psubrace)
         case DRACONIAN_BLACK:
             me.subname = "Black";
             me.subdesc = "Black Draconians have an affinity for acid, which they both breathe at will "
-                         "and resist. They are strong in combat but not so good with magic or stealth. "
+                         "and resist. They are strong in combat, but not so good with magic or stealth. "
                          "With the power of Dragon Strike, their blows will corrode their enemies.";
             me.stats[A_STR] += 1;
             me.skills.dev -= 2;
@@ -1556,8 +1556,8 @@ race_t *draconian_get_race(int psubrace)
             break;
         case DRACONIAN_CRYSTAL:
             me.subname = "Crystal";
-            me.subdesc = "Hard of skin, the Crystal Draconian is difficult to hit in melee. But their agility "
-                         "suffers and they are not the brightest of their kind. They resist shards, which they "
+            me.subdesc = "Hard of skin, the Crystal Draconian is difficult to hit in melee; but their agility "
+                         "suffers, and they are not the brightest of their kind. They resist shards, which they "
                          "may also breathe on command. With the power of Dragon Skin, they gain an aura of "
                          "shards as well. With the power of Dragon Strike, even their melee attacks will shred "
                          "their enemies.";
@@ -1573,9 +1573,9 @@ race_t *draconian_get_race(int psubrace)
         case DRACONIAN_GOLD:
             me.subname = "Gold";
             me.subdesc = "The wisest of their kind, Gold Draconians are resilient in the face of magical "
-                         "attacks. They are resistant to sound which they may also breathe at will, stunning "
-                         "their enemies. With the power of Dragon Strike, even their melee attacks will "
-                         "stun their enemies.";
+                         "attacks. They are resistant to sound, which they may also breathe at will, stunning "
+                         "their opponents. With the power of Dragon Strike, even their melee attacks will "
+                         "stun enemies.";
             me.stats[A_WIS] += 1;
             me.skills.dev += 3;
             me.skills.sav += 3;
@@ -1586,8 +1586,8 @@ race_t *draconian_get_race(int psubrace)
         case DRACONIAN_SHADOW:
             me.subname = "Shadow";
             me.subdesc = "Lithe, stealthy and nimble, the Shadow Draconian is seldom seen in this world. "
-                         "They are resistant to the forces of nether which they may also breathe. They are the "
-                         "weakest of the draconians, and the poorest in melee. But they are better than average "
+                         "They are resistant to the forces of nether, which they may also breathe. They are the "
+                         "weakest of the draconians, and the poorest in melee; but they are better than average "
                          "with magic. With the power of Dragon Strike, they may steal life from their enemies "
                          "in melee.";
             me.stats[A_STR] -= 1;
@@ -1649,9 +1649,10 @@ race_t *dunadan_get_race(void)
     {
         me.name = "Dunadan";
         me.desc = "Dunedain are a race of hardy men from the West. This elder race surpasses human "
-                    "abilities in every field, especially constitution. However, being men of the world, "
-                    "very little is new to them, and levels are very hard for them to gain. Their "
-                    "constitution cannot be reduced. ";
+                    "abilities in every field; however, being men of the world, "
+                    "very little is new to them, and levels are very hard for them to gain. Dunedain "
+                    "gain one demigod talent at level 30. Their constitution "
+                    "is exceptionally good and cannot be reduced.";
 
         me.stats[A_STR] =  1;
         me.stats[A_INT] =  2;
@@ -1715,11 +1716,10 @@ race_t *dwarf_get_race(void)
     if (!init)
     {
         me.name = "Dwarf";
-        me.desc = "Dwarves are the headstrong miners and fighters of legend. Dwarves tend to be stronger "
-                    "and tougher but slower and less intelligent than humans. Because they are so headstrong "
-                    "and are somewhat wise, they resist spells which are cast on them. They are very good "
-                    "at searching, perception, fighting, and bows. Dwarves have miserable stealth. They "
-                    "resist being blinded.";
+        me.desc = "Dwarves are the headstrong miners and fighters of legend. They tend to be strong and tough, "
+                    "but lack agility. Because they are so headstrong and also somewhat wise, dwarves are "
+                    "relatively resistant to evil curses cast on them. They are very good at fighting, searching "
+                    "and perception, and resist being blinded, but infamously have miserable stealth.";
 
         me.stats[A_STR] =  2;
         me.stats[A_INT] = -2;
@@ -1878,11 +1878,11 @@ race_t *ent_get_race(void)
     {
         me.name = "Ent";
         me.desc = "The Ents are a powerful race dating from the beginning of the world, oldest of all "
-                    "animals or plants who inhabit Arda. Spirits of the land, they were summoned to "
-                    "guard the forests of Middle-earth. Being much like trees they are very clumsy but "
-                    "strong, and very susceptible to fire. They gain very little nutrition from the food "
-                    "of mortals, but they can absorb water from potions as their nutrition. Finally, they "
-                    "can summon the trees of the forest to their side.";
+                    "animals or plants who inhabit Arda. Spirits of the land, they guard the forests "
+                    "of Middle-earth. Being much like trees, they are strong but very clumsy, and "
+                    "highly susceptible to fire. Ents gain nourishment from drinking water; "
+                    "the food of mortals is of little use to them. Ents have the special ability to "
+                    "summon the trees of the forest to their side.";
 
         me.skills.dis = -5;
         me.skills.dev =  1;
@@ -1910,6 +1910,7 @@ race_t *ent_get_race(void)
        Note, this prevents hackery in files.c for displaying racial stat bonuses correctly.
     */
     {
+        int amount = 0;
         me.stats[A_STR] =  2;
         me.stats[A_INT] =  0;
         me.stats[A_WIS] =  2;
@@ -1917,16 +1918,12 @@ race_t *ent_get_race(void)
         me.stats[A_CON] =  2;
         me.stats[A_CHR] =  0;
 
-        if (!spoiler_hack) /* Otherwise, I need to be careful when generating automatic spoiler files! */
-        {
-            int amount = 0;
-            if (p_ptr->lev >= 26) amount++;
-            if (p_ptr->lev >= 41) amount++;
-            if (p_ptr->lev >= 46) amount++;
-            me.stats[A_STR] += amount;
-            me.stats[A_DEX] -= amount;
-            me.stats[A_CON] += amount;
-        }
+        if (p_ptr->lev >= 26) amount++;
+        if (p_ptr->lev >= 41) amount++;
+        if (p_ptr->lev >= 46) amount++;
+        me.stats[A_STR] += amount;
+        me.stats[A_DEX] -= amount;
+        me.stats[A_CON] += amount;
     }
     return &me;
 }
@@ -1959,12 +1956,12 @@ race_t *gnome_get_race(void)
     if (!init)
     {
         me.name = "Gnome";
-        me.desc = "Gnomes are smaller than dwarves but larger than Halflings. They, like the hobbits, "
+        me.desc = "Gnomes are smaller than dwarves but larger than hobbits; and like hobbits, they "
                     "live in the earth in burrow-like homes. Gnomes make excellent mages, and have very "
-                    "good saving throws. They are good at searching, disarming, perception, and stealth. "
-                    "They have lower strength than humans so they are not very good at fighting with hand "
-                    "weapons. Gnomes have fair infra-vision, so they can detect warm-blooded creatures "
-                    "at a distance. Gnomes are intrinsically protected against paralysis.";
+                    "good saving throws. They are naturally skilled at most things, but not very strong "
+                    "or good at hand-to-hand fighting. Gnomes have fair infra-vision, allowing them to "
+                    "detect warm-blooded creatures at a distance. They are also intrinsically protected "
+                    "against paralysis.";
 
         me.stats[A_STR] = -1;
         me.stats[A_INT] =  2;
@@ -2051,7 +2048,7 @@ race_t *golem_get_race(void)
         me.desc = "A Golem is an artificial creature, built from a lifeless raw material like clay, "
                     "and awakened to life. They are nearly mindless, making them useless for "
                     "professions which rely on magic, but as warriors they are very tough. They "
-                    "are resistant to poison, they can see invisible things, and move freely. "
+                    "are resistant to poison and paralysis and can see invisible things. "
                     "At higher levels, they also become resistant to attacks which threaten to "
                     "drain away their life force. Golems gain very little nutrition from ordinary "
                     "food, but can absorb mana from staves and wands as their power source. Golems "
@@ -2122,9 +2119,9 @@ race_t *half_giant_get_race(void)
     if (!init)
     {
         me.name = "Half-Giant";
-		me.desc = "Half-Giants' limited intelligence makes it difficult for them to become full spellcasters, "
+		me.desc = "Half-giants' limited intelligence makes it difficult for them to become full spellcasters, "
 					"but with their huge strength they make excellent warriors. Their thick skin makes "
-					"them resistant to shards, and like Half-Trolls, they have their strength sustained.";
+					"them resistant to shards, and like half-trolls, they have their strength sustained.";
 
         me.stats[A_STR] =  4;
         me.stats[A_INT] = -2;
@@ -2151,71 +2148,6 @@ race_t *half_giant_get_race(void)
         me.calc_bonuses = _half_giant_calc_bonuses;
         me.get_powers = _half_giant_get_powers;
         me.get_flags = _half_giant_get_flags;
-        init = TRUE;
-    }
-
-    return &me;
-}
-
-/****************************************************************
- * Half-Ogre
- ****************************************************************/
-static power_info _half_ogre_powers[] =
-{
-    { A_INT, {25, 35, 70, explosive_rune_spell}},
-    { -1, {-1, -1, -1, NULL} }
-};
-static int _half_ogre_get_powers(spell_info* spells, int max)
-{
-    return get_powers_aux(spells, max, _half_ogre_powers);
-}
-static void _half_ogre_calc_bonuses(void)
-{
-    p_ptr->sustain_int = TRUE;
-}
-static void _half_ogre_get_flags(u32b flgs[OF_ARRAY_SIZE])
-{
-    add_flag(flgs, OF_SUST_INT);
-}
-race_t *half_ogre_get_race(void)
-{
-    static race_t me = {0};
-    static bool init = FALSE;
-
-    if (!init)
-    {
-        me.name = "Ogre";
-        me.desc = "Ogres are big and ugly but possessed of a low cunning and great strength. "
-                    "For warriors, they have all the necessary attributes, and they can even "
-                    "become wizards: after all, they are related to Ogre Magi, from whom they "
-                    "have learned the skill of setting trapped runes once their level is high "
-                    "enough. Being simple minded they have their intelligence sustained";
-
-        me.stats[A_STR] =  3;
-        me.stats[A_INT] =  0;
-        me.stats[A_WIS] = -1;
-        me.stats[A_DEX] = -1;
-        me.stats[A_CON] =  3;
-        me.stats[A_CHR] =  0;
-
-        me.skills.dis = -3;
-        me.skills.dev = -3;
-        me.skills.sav = -3;
-        me.skills.stl = -2;
-        me.skills.srh = -1;
-        me.skills.fos =  5;
-        me.skills.thn = 20;
-        me.skills.thb =  -5;
-
-        me.life = 106;
-        me.base_hp = 23;
-        me.exp = 140;
-        me.infra = 0;
-        me.shop_adjust = 125;
-
-        me.calc_bonuses = _half_ogre_calc_bonuses;
-        me.get_powers = _half_ogre_get_powers;
-        me.get_flags = _half_ogre_get_flags;
         init = TRUE;
     }
 
@@ -2261,11 +2193,10 @@ race_t *half_orc_get_race(void)
 		me.name = "Half-Orc";
 		me.desc = "Half-orcs make excellent warriors, but are terrible at magic. "
 			"They are as bad as dwarves at stealth, and horrible at searching, "
-			"disarming, and perception. Half-orcs are quite ugly, and tend to "
-			"pay more for goods in town. Because of their preference to living "
-			"underground to on the surface, half-orcs resist darkness attacks. "
-			"The human part of their heritage allows them to select a talent at "
-			"Level 30.";
+			"disarming, and perception. Being accustomed to living underground, "
+                        "half-orcs are resistant to darkness attacks. Half-orcs are quite ugly, "
+                        "and so tend to pay more for goods in town. The human part of their "
+			"heritage allows them to select a talent at level 30.";
 
 		me.stats[A_STR] = 2;
 		me.stats[A_INT] = -1;
@@ -2329,7 +2260,7 @@ race_t *half_titan_get_race(void)
         me.name = "Half-Titan";
         me.desc = "Half-mortal descendants of the mighty titans, these immensely powerful creatures "
                     "put almost any other race to shame. They may lack the fascinating special powers "
-                    "of certain other races, but their enhanced attributes more than make up for that. "
+                    "some other races have, but their enhanced attributes more than make up for that. "
                     "They learn to estimate the strengths of their foes, and their love for law and "
                     "order makes them resistant to the effects of Chaos.";
 
@@ -2394,11 +2325,11 @@ race_t *half_troll_get_race(void)
     if (!init)
     {
         me.name = "Half-Troll";
-        me.desc = "Half-Trolls are incredibly strong, and have more hit points than most other races. "
-                    "They are also very stupid and slow. They are bad at searching, disarming, perception, "
-                    "and stealth. They are so ugly that a Half-Orc grimaces in their presence. "
-                    "They also happen to be fun to run... Half-trolls always have their strength sustained. "
-                    "Half-Trolls regenerate wounds automatically.";
+        me.desc = "Half-trolls are incredibly strong, and have more hit points than most other races. "
+                    "They are very stupid, and bad at searching, disarming, perception, and stealth; "
+                    "but they make excellent fighters despite their poor agility. They are so ugly that a "
+                    "half-orc grimaces in their presence. They also happen to be fun to run... "
+                    "Half-trolls always have their strength sustained, and their regeneration is exceptionally fast.";
 
         me.stats[A_STR] =  4;
         me.stats[A_INT] = -4;
@@ -2456,8 +2387,8 @@ race_t *high_elf_get_race(void)
                     "They are masters of all skills, and are strong and intelligent, although "
                     "their wisdom is sometimes suspect. High-elves begin their lives able to "
                     "see the unseen, and resist light effects just like regular elves. However, "
-                    "there are few things that they have not seen already, and experience is "
-                    "very hard for them to gain.";
+                    "there are few things that they have not seen already, so new levels are "
+                    "quite hard for them to gain.";
 
         me.stats[A_STR] =  1;
         me.stats[A_INT] =  3;
@@ -2509,11 +2440,12 @@ race_t *hobbit_get_race(void)
     if (!init)
     {
         me.name = "Hobbit";
-        me.desc = "Hobbits, or Halflings, are very good at bows, throwing, and have good saving throws. "
-                    "They also are very good at searching, disarming, perception, and stealth; so they "
-                    "make excellent rogues, but prefer to be called burglars. They are much weaker than "
-                    "humans, and no good at melee fighting. Halflings have fair infravision, so they can "
-                    "detect warm creatures at a distance.";
+        me.desc = "Hobbits (or Halflings) have exceptional stealth and are very good at bows "
+                    "and throwing; indeed, they are generally well-suited for the adventuring life. "
+                    "Yet their small size is a handicap at times; they are not very good at melee "
+                    "fighting, and cannot suffer as many hard hits as larger races. Hobbits are "
+                    "known for their love of good cooking, and have an almost miraculous ability "
+                    "to find food in the dark depths of the dungeon.";
 
         me.stats[A_STR] = -2;
         me.stats[A_INT] =  1;
@@ -2577,12 +2509,10 @@ race_t *human_get_race(void)
     if (!init)
     {
         me.name = "Human";
-        me.desc = "The human is the base character. All other races are compared to them. "
-                    "Humans are average at everything and also tend to go up levels faster "
-                    "than most other races because of their shorter life spans. No racial "
-                    "adjustments or intrinsics occur to characters choosing human. However, "
-                    "humans may choose special talents at L20 & 40 that more than make up "
-                    "for their apparent mediocrity.";
+        me.desc = "Humans are average at everything, and tend to gain levels rapidly due "
+                    "to their short life spans. No racial adjustments or intrinsics occur "
+                    "to characters choosing human. However, humans may select special talents "
+                    "at levels 20 and 40 that more than make up for their apparent mediocrity.";
 
         me.stats[A_STR] =  0;
         me.stats[A_INT] =  0;
@@ -2647,7 +2577,7 @@ race_t *imp_get_race(void)
         me.desc = "A demon-creature from the nether-world, naturally resistant to fire attacks, "
                     "and capable of learning fire bolt and fire ball attacks. They are little "
                     "loved by other races, but can perform fairly well in most professions. "
-                    "As they advance levels, they gain the powers of See Invisible.";
+                    "As they advance levels, they gain the ability to perceive invisible creatures.";
 
         me.stats[A_STR] =  0;
         me.stats[A_INT] = -1;
