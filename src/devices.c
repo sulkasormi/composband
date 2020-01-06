@@ -6830,9 +6830,12 @@ cptr do_effect(effect_t *effect, int mode, int boost)
         }
         break;
     case EFFECT_HEAL_MONSTER:
+    {
+        int dd = _extra(effect, 10 + effect->power / 10);
         if (name) return "Heal Monster";
         if (desc) return "It heals a monster when you use it.";
-        if (value) return format("%d", 5);
+        if (info) return format("heal %dd10", dd);
+        if (value) return format("%d", dd / 2);
         if (cast)
         {
             bool old_target_pet = target_pet;
@@ -6843,10 +6846,11 @@ cptr do_effect(effect_t *effect, int mode, int boost)
                 return NULL;
             }
             target_pet = old_target_pet;
-            if (heal_monster(dir, _BOOST(damroll(10, 10))))
+            if (heal_monster(dir, _BOOST(damroll(dd, 10))))
                 device_noticed = TRUE;
         }
         break;
+    }
     case EFFECT_HASTE_MONSTER:
         if (name) return "Haste Monster";
         if (desc) return "It hastes a monster when you use it.";
