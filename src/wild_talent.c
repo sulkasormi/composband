@@ -177,7 +177,7 @@ static talent_t _talents[_MAX_TALENTS][_MAX_TALENTS_PER_GROUP] =
     /* CL27: Good Utility */
     {
         { A_DEX, "like a Rogue", {8, 12, 50, panic_hit_spell}},
-        { A_INT, "like a Half Ogre", {25, 35, 40, explosive_rune_spell}},
+        { A_INT, "like an Ogre", {25, 35, 40, explosive_rune_spell}},
         { A_CHR, "like a Wizard", {25, 20, 50, magic_mapping_spell}},
         { A_CHR, "like a Mage", {25, 40, 50, recharging_spell}},
         { A_INT, "like a Mutant", {10, 5, 50, alchemy_spell}},
