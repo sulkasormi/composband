@@ -340,8 +340,11 @@ Here is a list of available pet commands:
 <style:keyword>Name Pets</style>
   <indent>Specify a target pet and name it.</indent>
 
-<style:keyword>Highlight Pets</style>
+<style:keyword>Highlight Pets on Map</style>
   <indent>Toggles highlighting all pets in yellow.</indent>
+
+<style:keyword>Highlight Pets in Lists</style>
+  <indent>Toggles highlighting all pets in yellow on the monster list. Also highlights friendly monsters in green.</indent>
 
 <style:keyword>Use Both Hands for a Weapon</style>
 <style:keyword>Use One Hand to Control a Riding Pet</style>
