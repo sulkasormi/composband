@@ -5934,9 +5934,7 @@ void change_race(int new_race, cptr effect_msg)
     /* The experience level may be modified */
     check_experience();
 
-    if (p_ptr->prace == RACE_HUMAN || p_ptr->prace == RACE_DEMIGOD || p_ptr->prace == RACE_DRACONIAN ||
-        p_ptr->prace == RACE_BARBARIAN || p_ptr->prace == RACE_DUNADAN || p_ptr->prace == RACE_HALF_ORC ||
-        p_ptr->prace == RACE_EINHERI)
+    if (get_true_race()->flags & RACE_DEMI_TALENT)
     {
         race_t *race_ptr = get_true_race();
         if (race_ptr != NULL && race_ptr->gain_level != NULL)
