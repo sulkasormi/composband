@@ -739,6 +739,7 @@
 #define RACE_IS_MONSTER      0x0008
 #define RACE_IS_ILLITERATE   0x0010
 #define RACE_NO_POLY         0x0020
+#define RACE_DEMI_TALENT     0x0040
 
 /* Pseudo-ID: Sense1 is the traditional equipable item sensing.
  * Sense2 is jewelry, lights and magical devices (mage like sensing). */
