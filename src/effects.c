@@ -6015,8 +6015,8 @@ void do_poly_self(void)
             if (effect_msg[0])
             {
                 char tmp_msg[10];
-                sprintf(tmp_msg,"%s ",effect_msg);
-                sprintf(effect_msg,"deformed %s ",tmp_msg);
+                sprintf(tmp_msg,"%s",effect_msg);
+                sprintf(effect_msg,"deformed %s",tmp_msg);
 
             }
             else
