@@ -825,6 +825,7 @@ race_t *mon_vortex_get_race(void)
     me.stats[A_CON] =  1 + r/2;
     me.stats[A_CHR] =  0;
     me.life = 93 + r;
+    if (r == 4) me.flags |= RACE_DEMI_TALENT;
     me.equip_template = mon_get_equip_template();
 
     return &me;
