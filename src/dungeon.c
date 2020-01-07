@@ -4554,6 +4554,15 @@ static void process_player(void)
         }
     }
 
+    if (load) /* Mega-hack */
+    {
+        race_t *race_ptr = ((p_ptr->prace == RACE_DOPPELGANGER) ? get_race() : get_true_race());
+        if ((race_ptr != NULL) && (race_ptr->flags & RACE_DEMI_TALENT) && (race_ptr->gain_level != NULL))
+        {
+            race_ptr->gain_level(p_ptr->lev);
+        }
+    }
+
     load = FALSE;
 
     /*** Handle actual user input ***/
