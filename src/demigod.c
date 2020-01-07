@@ -489,6 +489,7 @@ race_t *demigod_get_race(int psubrace)
         me.calc_bonuses = NULL;
         me.get_powers = NULL;
         me.get_flags = NULL;
+        me.flags = RACE_DEMI_TALENT;
 
         me.subname = NULL;
         me.subdesc = NULL;
