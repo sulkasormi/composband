@@ -516,6 +516,7 @@ race_t *barbarian_get_race(void)
         me.exp = 135;
         me.infra = 0;
         me.shop_adjust = 120;
+        me.flags = RACE_DEMI_TALENT;
 
         me.calc_bonuses = _barbarian_calc_bonuses;
         me.get_powers = _barbarian_get_powers;
@@ -1437,6 +1438,7 @@ race_t *draconian_get_race(int psubrace)
 
         me.base_hp = 22;
 
+        me.flags = RACE_DEMI_TALENT;
         me.calc_bonuses = _draconian_calc_bonuses;
         me.get_powers = _draconian_get_powers;
         me.get_flags = _draconian_get_flags;
@@ -1676,10 +1678,11 @@ race_t *dunadan_get_race(void)
         me.infra = 0;
         me.shop_adjust = 100;
 
+        me.flags = RACE_DEMI_TALENT;
         me.calc_bonuses = _dunadan_calc_bonuses;
         me.get_flags = _dunadan_get_flags;
 
-		me.gain_level = _dunadan_gain_level;
+	me.gain_level = _dunadan_gain_level;
         init = TRUE;
     }
 
@@ -1831,7 +1834,7 @@ race_t *einheri_get_race(void)
         me.infra = 3;
         me.shop_adjust = 100;
 
-        me.flags = RACE_IS_NONLIVING | RACE_IS_UNDEAD;
+        me.flags = RACE_IS_NONLIVING | RACE_IS_UNDEAD | RACE_DEMI_TALENT;
         me.calc_bonuses = _einheri_calc_bonuses;
         me.get_powers = _einheri_get_powers;
         me.get_flags = _einheri_get_flags;
@@ -2220,6 +2223,7 @@ race_t *half_orc_get_race(void)
 		me.infra = 3;
 		me.shop_adjust = 120;
 
+                me.flags = RACE_DEMI_TALENT;
 		me.calc_bonuses = _half_orc_calc_bonuses;
 		me.get_flags = _half_orc_get_flags;
 
@@ -2536,6 +2540,7 @@ race_t *human_get_race(void)
         me.infra = 0;
         me.shop_adjust = 100;
 
+        me.flags = RACE_DEMI_TALENT;
         me.gain_level = _human_gain_level;
         init = TRUE;
     }
