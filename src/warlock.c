@@ -64,9 +64,9 @@ static int _blast_range(void)
     return rng;
 }
 
-static int _blast_dd(void)
+static int _blast_dd(int div)
 {
-    return 1 + (p_ptr->lev/5) + (p_ptr->lev * p_ptr->lev * 10/2500);
+    return 1 + (((p_ptr->lev * 20) + (p_ptr->lev * p_ptr->lev * 10 / 25) + (div / 2)) / div);
 }
 
 static int _blast_ds(void)
@@ -115,6 +115,13 @@ static int _blast_ds(void)
     return _table[p_ptr->stat_ind[A_CHR]];
 }
 
+static int _power_cost(int _base, int mod)
+{
+    int hinta = _base + _blast_dd(mod);
+    if (hinta > p_ptr->csp) hinta += (hinta - p_ptr->csp);
+    return hinta;
+}
+
 static void _basic_blast(int cmd, variant *res)
 {
     switch (cmd)
@@ -127,9 +134,12 @@ static void _basic_blast(int cmd, variant *res)
         break;
     case SPELL_INFO:
         if (p_ptr->to_d_spell)
-            var_set_string(res, format("%dd%d+%d (Rng %d)", _blast_dd(), _blast_ds(), p_ptr->to_d_spell, _blast_range()));
+            var_set_string(res, format("%dd%d+%d (Rng %d)", _blast_dd(100), _blast_ds(), p_ptr->to_d_spell, _blast_range()));
         else
-            var_set_string(res, format("%dd%d (Rng %d)", _blast_dd(), _blast_ds(), _blast_range()));
+            var_set_string(res, format("%dd%d (Rng %d)", _blast_dd(100), _blast_ds(), _blast_range()));
+        break;
+    case SPELL_COST_EXTRA:
+        var_set_int(res, _power_cost(1 + (p_ptr->lev / 27), 185));
         break;
     case SPELL_CAST:
     {
@@ -142,7 +152,46 @@ static void _basic_blast(int cmd, variant *res)
 
         fire_ball(GF_ELDRITCH,
                   dir,
-                  spell_power(damroll(_blast_dd(), _blast_ds()) + p_ptr->to_d_spell),
+                  spell_power(damroll(_blast_dd(100), _blast_ds()) + p_ptr->to_d_spell),
+                  0);
+
+        var_set_bool(res, TRUE);
+        break;
+    }
+    default:
+        default_spell(cmd, res);
+        break;
+    }
+}
+
+static void _easy_blast(int cmd, variant *res)
+{
+    switch (cmd)
+    {
+    case SPELL_NAME:
+        var_set_string(res, "Blast: Easy");
+        break;
+    case SPELL_DESC:
+        var_set_string(res, "Fires a slightly weakened Eldritch Blast without consuming mana.");
+        break;
+    case SPELL_INFO:
+        if (p_ptr->to_d_spell)
+            var_set_string(res, format("%dd%d+%d", _blast_dd(150), _blast_ds(), p_ptr->to_d_spell, _blast_range()));
+        else
+            var_set_string(res, format("%dd%d", _blast_dd(150), _blast_ds(), _blast_range()));
+        break;
+    case SPELL_CAST:
+    {
+        int dir = 0;
+
+        var_set_bool(res, FALSE);
+
+        project_length = _blast_range();
+        if (!get_fire_dir(&dir)) return;
+
+        fire_ball(GF_ELDRITCH,
+                  dir,
+                  spell_power(damroll(_blast_dd(150), _blast_ds()) + p_ptr->to_d_spell),
                   0);
 
         var_set_bool(res, TRUE);
@@ -165,7 +214,13 @@ static void _extended_blast(int cmd, variant *res)
         var_set_string(res, "Fires a slightly weakened Eldritch Blast with increased range.");
         break;
     case SPELL_INFO:
-        var_set_string(res, format("75%% Damage. +%d Range", 10*p_ptr->lev/50));
+        if (p_ptr->to_d_spell)
+            var_set_string(res, format("%dd%d+%d (Rng %d)", _blast_dd(100), _blast_ds() * 3 / 4, p_ptr->to_d_spell, _blast_range() + p_ptr->lev / 5));
+        else
+            var_set_string(res, format("%dd%d (Rng %d)", _blast_dd(100), _blast_ds() * 3 / 4, _blast_range() + p_ptr->lev / 5));
+        break;
+    case SPELL_COST_EXTRA:
+        var_set_int(res, _power_cost(1 + (p_ptr->lev / 27), 185));
         break;
     case SPELL_CAST:
     {
@@ -173,12 +228,12 @@ static void _extended_blast(int cmd, variant *res)
 
         var_set_bool(res, FALSE);
 
-        project_length = _blast_range() + 10 * p_ptr->lev/50;
+        project_length = _blast_range() + p_ptr->lev/5;
         if (!get_fire_dir(&dir)) return;
 
         fire_ball(GF_ELDRITCH,
                   dir,
-                  spell_power(damroll(_blast_dd(), _blast_ds())*3/4 + p_ptr->to_d_spell),
+                  spell_power(damroll(_blast_dd(100), _blast_ds() * 3 / 4) + p_ptr->to_d_spell),
                   0);
 
         var_set_bool(res, TRUE);
@@ -200,6 +255,9 @@ static void _spear_blast(int cmd, variant *res)
     case SPELL_DESC:
         var_set_string(res, "Fires an Eldritch Beam.");
         break;
+    case SPELL_COST_EXTRA:
+        var_set_int(res, _power_cost(2 + (p_ptr->lev / 18), 125));
+        break;
     case SPELL_CAST:
     {
         int dir = 0;
@@ -211,7 +269,7 @@ static void _spear_blast(int cmd, variant *res)
 
         fire_beam(GF_ELDRITCH,
                   dir,
-                  spell_power(damroll(_blast_dd(), _blast_ds()) + p_ptr->to_d_spell));
+                  spell_power(damroll(_blast_dd(100), _blast_ds()) + p_ptr->to_d_spell));
 
         var_set_bool(res, TRUE);
         break;
@@ -230,7 +288,10 @@ static void _burst_blast(int cmd, variant *res)
         var_set_string(res, "Blast: Burst");
         break;
     case SPELL_DESC:
-        var_set_string(res, "Fires an Eldritch Blast with increased radius.");
+        var_set_string(res, "Fires an Eldritch Ball with full damage within radius 2.");
+        break;
+    case SPELL_COST_EXTRA:
+        var_set_int(res, _power_cost(2 + (p_ptr->lev / 18), 125));
         break;
     case SPELL_CAST:
     {
@@ -244,7 +305,7 @@ static void _burst_blast(int cmd, variant *res)
         fire_ball_aux(
             GF_ELDRITCH,
             dir,
-            spell_power(damroll(_blast_dd(), _blast_ds()) + p_ptr->to_d_spell),
+            spell_power(damroll(_blast_dd(100), _blast_ds()) + p_ptr->to_d_spell),
             2,
             PROJECT_FULL_DAM
         );
@@ -268,6 +329,9 @@ static void _stunning_blast(int cmd, variant *res)
     case SPELL_DESC:
         var_set_string(res, "Augments your Eldritch Blast with stunning effects.");
         break;
+    case SPELL_COST_EXTRA:
+        var_set_int(res, _power_cost(2 + (p_ptr->lev / 18), 125));
+        break;
     case SPELL_CAST:
     {
         int dir = 0;
@@ -279,7 +343,7 @@ static void _stunning_blast(int cmd, variant *res)
 
         fire_ball(GF_ELDRITCH_STUN,
                   dir,
-                  spell_power(damroll(_blast_dd(), _blast_ds()) + p_ptr->to_d_spell),
+                  spell_power(damroll(_blast_dd(100), _blast_ds()) + p_ptr->to_d_spell),
                   0);
 
         var_set_bool(res, TRUE);
@@ -299,10 +363,16 @@ static void _empowered_blast(int cmd, variant *res)
         var_set_string(res, "Blast: Empowered");
         break;
     case SPELL_DESC:
-        var_set_string(res, "Fires a very powerful Eldritch Blast, but you can't use your powers again for a bit.");
+        var_set_string(res, "Fires a very powerful Eldritch Blast, at the cost of disabling spells next turn.");
         break;
     case SPELL_INFO:
-        var_set_string(res, "175% Damage");
+        if (p_ptr->to_d_spell)
+            var_set_string(res, format("%dd%d+%d", _blast_dd(57), _blast_ds(), p_ptr->to_d_spell));
+        else
+            var_set_string(res, format("%dd%d", _blast_dd(57), _blast_ds(), _blast_range));
+        break;
+    case SPELL_COST_EXTRA:
+        var_set_int(res, _power_cost(2 + (p_ptr->lev / 18), 125));
         break;
     case SPELL_CAST:
     {
@@ -315,7 +385,7 @@ static void _empowered_blast(int cmd, variant *res)
 
         fire_ball(GF_ELDRITCH,
                   dir,
-                  spell_power(damroll(_blast_dd(), _blast_ds())*7/4 + p_ptr->to_d_spell),
+                  spell_power(damroll(_blast_dd(57), _blast_ds()) + p_ptr->to_d_spell),
                   0);
         set_tim_no_spells(p_ptr->tim_no_spells + 1 + 1, FALSE);
         var_set_bool(res, TRUE);
@@ -405,6 +475,9 @@ static void _draining_blast(int cmd, variant *res)
     case SPELL_DESC:
         var_set_string(res, "Fires an Eldritch Blast which also does Drain Life.");
         break;
+    case SPELL_COST_EXTRA:
+        var_set_int(res, _power_cost(2 + (p_ptr->lev / 18), 125));
+        break;
     case SPELL_CAST:
     {
         int dir = 0;
@@ -416,7 +489,7 @@ static void _draining_blast(int cmd, variant *res)
 
         fire_ball(GF_ELDRITCH_DRAIN,
                   dir,
-                  spell_power(damroll(_blast_dd(), _blast_ds()) + p_ptr->to_d_spell),
+                  spell_power(damroll(_blast_dd(100), _blast_ds()) + p_ptr->to_d_spell),
                   0);
 
         var_set_bool(res, TRUE);
@@ -430,11 +503,11 @@ static void _draining_blast(int cmd, variant *res)
 
 static _pact_t _undead_pact = {
   "Undead",
-  "Undead are tough creatures, each having survived death at least once. Warlocks who make a pact "
+  "The undead are tough creatures, each having already survived death at least once. Warlocks who make a pact "
       "with Undead will find themselves gaining additional resistances such as cold, poison, darkness and "
-      "nether. In addition, they will be able to see their kind, which tend to be invisible, and gain "
-      "resistance to life draining forces. They will also gain access to undeadly powers, which typically "
-      "involve detection and control over the forces of the netherworld. In the end, this pact will allow "
+      "nether. In addition, they will be able to see invisible monsters and gain resistance to "
+      "life-draining forces. They will also gain access to undeadly powers, which typically "
+      "involve detection and control over the forces of the netherworld. Eventually, this pact will allow "
       "its practitioners to destroy monsters with a single word, and, perhaps, to even partially leave "
       "the world of the living altogether. Of course, allying with the undead substantially reduces the "
       "warlock's ability to fight these creatures.",
@@ -445,7 +518,7 @@ static _pact_t _undead_pact = {
   _undead_get_flags,
   NULL,
 /*  S   I   W   D   C   C */
-  {-1,  2, -3,  0,  2,  4},
+  {-1,  2, -3,  0,  2,  2},
 /* Dsrm Dvce Save Stlh Srch Prcp Thn Thb*/
   {  20,  40,  40,   4,  16,  20, 48, 35},
   {   8,  15,  12,   0,   0,   0, 13, 11},
@@ -529,10 +602,13 @@ static void _dragon_blast(int cmd, variant *res)
     case SPELL_DESC:
         var_set_string(res, "Breathes your eldritch blast at a chosen foe.");
         break;
+    case SPELL_COST_EXTRA:
+        var_set_int(res, _power_cost(1 + (p_ptr->lev / 27), 185));
+        break;
     case SPELL_CAST:
     {
         int dir = 0;
-        int dice = _blast_dd();
+        int dice = _blast_dd(100);
         int sides = _blast_ds();
 
         var_set_bool(res, FALSE);
@@ -1059,8 +1135,8 @@ static _pact_t _dragons_pact = {
   "of this pact gains impressive powers for mounted combat. Indeed, they are among the elite riders "
   "of the world, only slightly inferior to Cavalry and Beastmasters. But where they have a slight "
   "deficiency in skill (and perhaps in melee as well), they have a strong advantage in riding techniques "
-  "and magical enhancements. Dragonriders favor the lance above all other weapons and seek continuously "
-  "for the lengendary 'Dragonlance' which they view as their long lost birthright.",
+  "and magical enhancements. Dragonriders favor the lance above all other weapons, and seek continuously "
+  "the legendary 'Dragonlance' which they view as their long-lost birthright.",
   "", /* RF3_DRAGON suffices */
   _dragon_calc_bonuses,
   _dragon_calc_weapon_bonuses,
@@ -1068,7 +1144,7 @@ static _pact_t _dragons_pact = {
   _dragon_get_flags,
   _dragon_upkeep_song,
 /*  S   I   W   D   C   C */
-  { 2,  0,  0, -1,  1,  3},
+  { 2,  0,  0, -1,  1,  2},
 /* Dsrm Dvce Save Stlh Srch Prcp Thn Thb*/
   {  20,  25,  30,   1,  14,  12, 52, 35},
   {   7,  11,  10,   0,   0,   0, 14, 11},
@@ -1133,6 +1209,9 @@ static void _dispelling_blast(int cmd, variant *res)
     case SPELL_DESC:
         var_set_string(res, "Fires an Eldritch Blast which also does Dispel Magic.");
         break;
+    case SPELL_COST_EXTRA:
+        var_set_int(res, _power_cost(1 + (p_ptr->lev / 27), 185));
+        break;
     case SPELL_CAST:
     {
         int dir = 0;
@@ -1144,7 +1223,7 @@ static void _dispelling_blast(int cmd, variant *res)
 
         fire_ball(GF_ELDRITCH_DISPEL,
                   dir,
-                  spell_power(damroll(_blast_dd(), _blast_ds()) + p_ptr->to_d_spell),
+                  spell_power(damroll(_blast_dd(100), _blast_ds()) + p_ptr->to_d_spell),
                   0);
 
         var_set_bool(res, TRUE);
@@ -1160,8 +1239,8 @@ static _pact_t _angels_pact = {
   "Angels",
   "Angels are heavenly beings who use a variety of techniques to smite those they view as evil. "
     "Warlocks who make pacts with Angels will also find their saving throws significantly improved, "
-    "and (eventually) their body immune to bolt-like effects. Since Angels are strongly aligned with "
-    "the forces of good, making a pact with Angels will reduce damage done to all good monsters "
+    "and (eventually) their body almost immune to bolt-like effects. Since Angels are strongly aligned "
+    "with the forces of good, making a pact with Angels will reduce damage done to all good monsters "
     "by a substantial amount.",
   "A", /* + RF3_GOOD ... They are even allied with Fallen Angels! */
   _angel_calc_bonuses,
@@ -1236,25 +1315,34 @@ static void _vengeful_blast(int cmd, variant *res)
         var_set_string(res, "Blast: Vengeful");
         break;
     case SPELL_DESC:
-        var_set_string(res, "Fires an extremely deadly Eldritch Blast, but you also take damage.");
+        var_set_string(res, "Fires an extremely deadly Eldritch Blast, but you also take 100 damage.");
         break;
     case SPELL_INFO:
-        var_set_string(res, "200% Damage");
+        if (p_ptr->to_d_spell)
+            var_set_string(res, format("%dd%d+%d", _blast_dd(50), _blast_ds(), p_ptr->to_d_spell));
+        else
+            var_set_string(res, format("%dd%d", _blast_dd(50), _blast_ds(), _blast_range));
+        break;
+    case SPELL_COST_EXTRA:
+        var_set_int(res, _power_cost(1, 400));
         break;
     case SPELL_CAST:
     {
         int dir = 0;
-        int dam = damroll(_blast_dd(), _blast_ds());
-        dam *= 2;
+        int dam = damroll(_blast_dd(50), _blast_ds());
         dam = spell_power(dam + p_ptr->to_d_spell);
 
         var_set_bool(res, FALSE);
 
         project_length = _blast_range();
+        if (p_ptr->chp < 100)
+        {
+            if (!get_check("Really cast Vengeful Blast? ")) return;
+        }
         if (!get_fire_dir(&dir)) return;
 
         fire_ball(GF_ELDRITCH, dir, dam, 0);
-        take_hit(DAMAGE_USELIFE, 100, "vengeful blast");
+        take_hit(DAMAGE_USELIFE, 100, "a vengeful blast");
 
         var_set_bool(res, TRUE);
         break;
@@ -1267,11 +1355,11 @@ static void _vengeful_blast(int cmd, variant *res)
 
 static _pact_t _demons_pact = {
   "Demons",
-  "Demons are crafty creatures of the netherworld, using whatever means at their disposal to bring "
+  "Demons are crafty creatures of Hell, using whatever means at their disposal to bring "
     "down their enemies. Warlocks who make pacts with Demons will find their abilities to use "
-    "all magical devices improved, and gain the ability to Recharge these devices at will. "
-    "Eventually, Demon Warlocks attain the ability to crush walls beneath their footsteps. "
-    "Making a pact with Demons will reduce damage done to all demons by a substantial amount.",
+    "all magical devices improved, and learn the ability to Recharge these devices at will. "
+    "Eventually, Demon Warlocks attain the ability to crush walls beneath their footsteps, and "
+    "even gain immunity to fire. Making a pact with Demons will reduce damage done to all demons by a substantial amount.",
   "", /* RF3_DEMON is sufficient */
   _demon_calc_bonuses,
   NULL,
@@ -1279,7 +1367,7 @@ static _pact_t _demons_pact = {
   _demon_get_flags,
   NULL,
 /*  S   I   W   D   C   C */
-  { 3,  1,-10,  1,  1,  3},
+  { 3,  1,-10,  1,  1,  2},
 /* Dsrm Dvce Save Stlh Srch Prcp Thn Thb*/
   {  20,  40,  40,   0,  12,   2, 64, 35},
   {   7,  15,  12,   0,   0,   0, 18, 11},
@@ -1351,16 +1439,22 @@ static void _aether_blast(int cmd, variant *res)
         var_set_string(res, "Blast: Aether");
         break;
     case SPELL_DESC:
-        var_set_string(res, "You channel the aether to unleash a random number of random effects via your Eldritch Blast.");
+        var_set_string(res, "You channel the aether to unleash 2+1d5 random effects via your Eldritch Blast.");
         break;
     case SPELL_INFO:
-        var_set_string(res, "50% Damage");
+        if (p_ptr->to_d_spell)
+            var_set_string(res, format("%dd%d+%d", _blast_dd(242), _blast_ds(), p_ptr->to_d_spell));
+        else
+            var_set_string(res, format("%dd%d", _blast_dd(242), _blast_ds(), _blast_range));
+        break;
+    case SPELL_COST_EXTRA:
+        var_set_int(res, _power_cost(2 + (p_ptr->lev / 18), 100));
         break;
     case SPELL_CAST:
     {
         int dir = 0, i;
         int ct = rand_range(3, 7);
-        int dice = _blast_dd();
+        int dice = _blast_dd(242);
         int sides = _blast_ds();
         int effects[_AETHER_EFFECT_CT] =
                {GF_ACID,  GF_ELEC,   GF_FIRE,      GF_COLD,       GF_POIS,
@@ -1381,7 +1475,7 @@ static void _aether_blast(int cmd, variant *res)
             int idx = randint0(_AETHER_EFFECT_CT);
             int effect = effects[idx];
             int resist = resists[idx];
-            int dam = spell_power(damroll(dice, sides)/2 + p_ptr->to_d_spell);
+            int dam = spell_power(damroll(dice, sides) + p_ptr->to_d_spell);
 
             msg_format("You channel <color:%c>%s</color>.",
                 attr_to_attr_char(res_color(resist)),
@@ -1442,12 +1536,12 @@ static void _aether_shield_spell(int cmd, variant *res)
 
 static _pact_t _hounds_pact = {
   "Hounds",
-  "An alliance with hounds is one of the weaker pacts the warlock may make. Hounds are fast, stealthy "
-  "and nimble, and the warlock will gain these attributes as well, in addition to basic elemental "
-  "resistances. They also gain decent melee, but other skills, especially device skills, are somewhat "
-  "lacking. Of course, they may call on their kin for assistance, but this may not be enough against "
-  "the more difficult foes of the world. Still, hounds are very common and many consider them to be "
-  "annoying as well, so perhaps an alliance is in order?",
+  "An alliance with hounds is sneakily strong: hounds are fast, stealthy and nimble, "
+  "and the warlock will gain these attributes as well, in addition to basic elemental "
+  "resistances. They also gain decent melee, and the ability to channel the unpredictable "
+  "powers of the aether. Of course, Hound Warlocks may also call on their kin for assistance, "
+  "though this may not be enough against the more difficult foes of the world. Still, wouldn't "
+  "it be fun to have some of those annoying hounds on your side for a change?",
   "ZC",
   _hound_calc_bonuses,
   NULL,
@@ -1455,10 +1549,10 @@ static _pact_t _hounds_pact = {
   _hound_get_flags,
   NULL,
 /*  S   I   W   D   C   C */
-  { 0, -2, -2,  2,  2,  2},
+  { 0, -2, -2,  2,  2,  1},
 /* Dsrm Dvce Save Stlh Srch Prcp Thn Thb*/
-  {  20,  25,  31,   5,  20,  15, 56, 25},
-  {   7,  10,  10,   0,   0,   0, 20, 11},
+  {  20,  25,  31,   5,  20,  15, 52, 25},
+  {   7,  10,  10,   0,   0,   0, 16, 11},
 /*Life  BaseHP     Exp */
    102,     12,    110,
   {
@@ -1514,6 +1608,9 @@ static void _phase_blast(int cmd, variant *res)
     case SPELL_DESC:
         var_set_string(res, "Fire an Eldritch Blast and then jump to safety in a single move.");
         break;
+    case SPELL_COST_EXTRA:
+        var_set_int(res, _power_cost(1 + (p_ptr->lev / 27), 185));
+        break;
     case SPELL_CAST:
     {
         int dir = 0;
@@ -1525,7 +1622,7 @@ static void _phase_blast(int cmd, variant *res)
 
         fire_ball(GF_ELDRITCH,
                   dir,
-                  spell_power(damroll(_blast_dd(), _blast_ds()) + p_ptr->to_d_spell),
+                  spell_power(damroll(_blast_dd(100), _blast_ds()) + p_ptr->to_d_spell),
                   0);
 
         teleport_player(25, 0);
@@ -1657,8 +1754,8 @@ static _pact_t _spiders_pact = {
     "or so you assume since you very seldom see them. Moreover, many spiders are adept at "
     "the powers of teleportation, able to jump quickly from one location to another, which "
     "can be quite baffling to a would be predator. They are comfortable with both poison "
-    "and nexus. But, aside from all of this, they are a bit on the squishy side. That is, "
-    "if you can manage to catch one!",
+    "and nexus. They are a bit on the squishy side, though - that is, if you "
+    "manage to catch one!",
   "S",
   _spider_calc_bonuses,
   NULL,
@@ -1666,7 +1763,7 @@ static _pact_t _spiders_pact = {
   _spider_get_flags,
   NULL,
 /*  S   I   W   D   C   C */
-  {-1,  0, -2,  2,  0,  2},
+  {-1,  0, -2,  2,  0,  1},
 /* Dsrm Dvce Save Stlh Srch Prcp Thn Thb*/
   {  20,  37,  31,   7,  12,   2, 56, 60},
   {   7,  11,  10,   0,   0,   0, 12, 15},
@@ -1744,6 +1841,9 @@ static void _confusing_blast(int cmd, variant *res)
     case SPELL_DESC:
         var_set_string(res, "Fires an Eldritch Blast that also confuses your opponent.");
         break;
+    case SPELL_COST_EXTRA:
+        var_set_int(res, _power_cost(2 + (p_ptr->lev / 18), 125));
+        break;
     case SPELL_CAST:
     {
         int dir = 0;
@@ -1755,7 +1855,7 @@ static void _confusing_blast(int cmd, variant *res)
 
         fire_ball(GF_ELDRITCH_CONFUSE,
                   dir,
-                  spell_power(damroll(_blast_dd(), _blast_ds()) + p_ptr->to_d_spell),
+                  spell_power(damroll(_blast_dd(100), _blast_ds()) + p_ptr->to_d_spell),
                   0);
 
         var_set_bool(res, TRUE);
@@ -1794,11 +1894,11 @@ static _pact_t _giants_pact = {
   "Giants",
   "An alliance with giants and titans grants impressive physical strength and fortitude, "
     "but other stats will generally suffer. Later in life, you will gain giant-like resistances "
-    "including sound, shards and chaos. Your combat will be impressive, but, like giants, you "
+    "including sound, shards and chaos. Your combat will be impressive; and like giants, you "
     "will favor heavy weapons. Oh, and you won't mind tossing a boulder or two should the need "
-    "arise. Since this alliance offers so much in the way of physical advantages, it offers very "
-    "little in the way of magical abilities or skill. Warlocks with this alliance are the best "
-    "possible fighters being nearly indistiguishable in skill from Warriors!",
+    "arise! This alliance offers much in the way of physical advantages, but very "
+    "little in the way of magical abilities or skill. Warlocks with this alliance are "
+    "excellent fighters, being nearly indistiguishable in skill from Warriors!",
   "", /* RF3_GIANT will suffice */
   _giant_calc_bonuses,
   _giant_calc_weapon_bonuses,
@@ -1806,9 +1906,9 @@ static _pact_t _giants_pact = {
   _giant_get_flags,
   NULL,
 /*  S   I   W   D   C   C */
-  { 2, -4, -4, -3,  2,  2},
+  { 2, -4, -4, -3,  2,  0},
 /* Dsrm Dvce Save Stlh Srch Prcp Thn Thb*/
-  {  20,  20,  31,   0,  12,   2, 70, 30},
+  {  20,  18,  31,   0,  12,   2, 70, 30},
   {   7,   8,  10,   0,   0,   0, 30, 15},
 /*Life  BaseHP     Exp */
    112,     25,    140,
@@ -1851,16 +1951,17 @@ static _pact_ptr _get_pact(int which)
 /****************************************************************
  * Powers and Spells
  ****************************************************************/
-#define MAX_WARLOCK_BLASTS    7
+#define MAX_WARLOCK_BLASTS    8
 
 static spell_info _powers[MAX_WARLOCK_BLASTS] =
 {
     /*lvl cst fail spell */
     {  1,  0,  20, _basic_blast},
-    { 10,  0,  40, _extended_blast},
-    { 18,  0,  45, _spear_blast},
-    { 26,  0,  60, _burst_blast},
-    { 33,  0,  60, _stunning_blast},
+    {  9,  0,  40, _extended_blast},
+    { 17,  0,  45, _spear_blast},
+    { 22,  0,  25, _easy_blast},
+    { 27,  0,  60, _burst_blast},
+    { 32,  0,  60, _stunning_blast},
     { 37,  0,  70, NULL},
     { 42,  0,  75, _empowered_blast},
 };
@@ -2025,22 +2126,20 @@ class_t *warlock_get_class(int psubclass)
     {
         me.name = "Warlock";
         me.desc =
-        "A Warlock is a magical class but, unlike normal spellcasters, they derive their powers, "
-        "stats, skills and bonuses by making a pact with a given class of monsters. "
-        "This pact is irrevocable and is made "
-        "at the outset of the Warlock's career. Depending on the class of monsters with whom they "
-        "ally, the warlock will gain unique bonuses, abilities and magical powers. For example, "
+        "Warlocks are a magical class; they derive their spells and powers not from books, "
+        "but from an eldritch pact made with a given class of monsters. This pact is irrevocable "
+        "and is made at the outset of the Warlock's career. Depending on the class of monsters with whom "
+        "they ally, the warlock will gain unique bonuses, abilities and magical powers; for example, "
         "alliance with the forces of the netherworld grants resistances to poison and nether, enhanced "
-        "constitution and spells to control and conjure the unliving as well as spells to access "
+        "constitution and spells to control and conjure the unliving, as well as spells to access "
         "the damaging forces of the netherworld directly. Each such alliance has thematic bonuses "
-        "and powers, and you can read the details in the respective help sections. On final comment: "
-        "allying with a given class of monsters dramatically reduces the warlock's ability to fight "
-        "these foes. Instead, the warlock seeks cooperation with their brethren, or, perhaps, domination "
-        "over them. But direct assaults are rarely successful.\n \n"
-        "In addition to pact related spells, all warlocks gain access to the unique power of the "
-        "Eldritch Blast. Their primary spell stat is Charisma since they seek dominion and alliance "
-        "with their chosen kin, and these monsters tend to have a strong will of their own, resisting "
-        "the binding forces which the warlock imposes to gain both mastery and power.";
+        "and powers, and you can read the details in the respective help sections.\n\n"
+        "Allying with a given class of monsters dramatically reduces the warlock's ability to fight "
+        "these foes. Instead, the warlock seeks cooperation with their brethren, or perhaps domination "
+        "over them; direct assaults are rarely successful.\n \n"
+        "In addition to pact-related spells, all warlocks gain access to the unique power of the "
+        "Eldritch Blast. Their primary spell stat is Charisma, since they seek dominion and alliance "
+        "with their chosen kin, and these monsters tend to have a strong will of their own.";
 
         me.birth = _birth;
         me.caster_info = _caster_info;
