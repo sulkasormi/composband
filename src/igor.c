@@ -223,6 +223,10 @@ static bool _igor_prob(int _in, bool unique, int taito)
     prob = 4620 / _in;
     if (unique) prob += (prob / 6);
     if ((!lippu) && (taito > 40)) prob += (prob / (600 / taito));
+    if ((taito > 75) && (randint0(100) < taito - 75))
+    {
+        prob += (prob / ((unique ? 400 : 800) / taito));
+    }
     if (randint0(4620) < prob)
     {
         if (!unique) lippu = TRUE;
