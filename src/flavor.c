@@ -1856,6 +1856,8 @@ void object_desc(char *buf, object_type *o_ptr, u32b mode)
 
     /* Display the item like a weapon */
     if (o_ptr->to_h && o_ptr->to_d) show_weapon = TRUE;
+    else if (o_ptr->to_h > 0) show_weapon = TRUE;
+    else if (o_ptr->to_d < 0) show_weapon = TRUE;
 
     /* Display the item like armour */
     if (o_ptr->ac) show_armour = TRUE;
