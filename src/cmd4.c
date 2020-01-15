@@ -1383,7 +1383,7 @@ option_fields[OPT_NUM] =
     { '5', "Disturbance Options", 7 },
     { '6', "Auto-Destroyer Options", 8 },
 
-    { 'p', "Auto-picker/destroyer editor", 11 },
+    { 'p', "Mogaminator Preferences", 11 },
     { 'd', "Base Delay Factor", 12 },
     { 'h', "Hitpoint Warning", 13 },
     { 'm', "Mana Color Threshold", 14 },
