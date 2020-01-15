@@ -1101,6 +1101,7 @@ s32b armor_cost(object_type *o_ptr, int options)
     y = 0;
     if (have_flag(flgs, OF_SEARCH)) y += 200;
     if (have_flag(flgs, OF_INFRA)) y += 400;
+    if (have_flag(flgs, OF_TUNNEL)) y += 800;
 
     if (y != 0)
     {
