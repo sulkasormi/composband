@@ -572,11 +572,18 @@ static void _reroll_aux(object_type *o_ptr, int flags, int min)
     int attempts = 1 * 1000; /* param?  better gcc -O2 if more than 1k */
     int i, score, best_score = -1; /* scores are never negative */
     object_type forge, best = {0};
+    bool igor_hack = ((prace_is_(RACE_IGOR)) && (o_ptr->tval == TV_CORPSE));
 
     for (i = 0; i < attempts; i++)
     {
-        object_prep(&forge, o_ptr->k_idx);
-        apply_magic(&forge, dun_level, AM_NO_FIXED_ART | flags);
+        object_prep(&forge, igor_hack ? lookup_kind(TV_CORPSE, SV_CORPSE) : o_ptr->k_idx);
+        if (igor_hack)
+        {
+            forge.pval = o_ptr->pval;
+            if ((o_ptr->sval != SV_CORPSE) && (o_ptr->sval != SV_BODY_EARS)) forge.pval = o_ptr->xtra4;
+            igor_dissect_corpse(&forge);
+        }
+        else apply_magic(&forge, dun_level, AM_NO_FIXED_ART | flags);
         _obj_identify_fully(&forge);
 
         score = obj_value_real(&forge);
@@ -600,7 +607,7 @@ static void _reroll_aux(object_type *o_ptr, int flags, int min)
             best = forge;
         }
     }
-    assert(best.k_idx == o_ptr->k_idx);
+    if (!igor_hack) assert(best.k_idx == o_ptr->k_idx);
     best.number = o_ptr->number; /* ammo */
     object_origins(&best, ORIGIN_CHEAT);
     *o_ptr = best;
@@ -670,8 +677,15 @@ void wiz_create_objects(obj_create_f creator, u32b mode)
 static obj_ptr _reroll_obj = NULL;
 static bool _reroll_creator(obj_ptr obj, u32b mode)
 {
-    object_prep(obj, _reroll_obj->k_idx);
+    bool igor_hack = ((prace_is_(RACE_IGOR)) && (_reroll_obj->tval == TV_CORPSE));
+    object_prep(obj, igor_hack ? lookup_kind(TV_CORPSE, SV_CORPSE) : _reroll_obj->k_idx);
     object_origins(obj, ORIGIN_CHEAT);
+    if (igor_hack)
+    {
+        if ((_reroll_obj->sval == SV_CORPSE) || (_reroll_obj->sval == SV_BODY_EARS)) obj->pval = _reroll_obj->pval;
+        else obj->pval = _reroll_obj->xtra4;
+    }
+    if ((prace_is_(RACE_IGOR)) && (obj->tval == TV_CORPSE)) return igor_dissect_corpse(obj);
     return apply_magic(obj, dun_level, mode);
 }
 static void _reroll_stats_aux(object_type *o_ptr, int flags)
@@ -1229,6 +1243,7 @@ static bool _smith_p(object_type *o_ptr)
     if (object_is_wearable(o_ptr)) return TRUE;
     if (object_is_ammo(o_ptr)) return TRUE;
     if (object_is_device(o_ptr)) return TRUE;
+    if ((prace_is_(RACE_IGOR)) && (object_is_(o_ptr, TV_CORPSE, SV_CORPSE))) return TRUE;
     return FALSE;
 }
 
