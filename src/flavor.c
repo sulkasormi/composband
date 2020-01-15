@@ -1899,6 +1899,18 @@ void object_desc(char *buf, object_type *o_ptr, u32b mode)
         }
         /* All done */
         break;
+    case TV_CORPSE:
+    {
+        if ((!o_ptr->dd) || (!o_ptr->xtra4)) break;
+        /* Append a "damage" string */
+        t = object_desc_chr(t, ' ');
+        t = object_desc_chr(t, p1);
+        t = object_desc_num(t, o_ptr->dd);
+        t = object_desc_chr(t, 'd');
+        t = object_desc_num(t, o_ptr->ds);
+        t = object_desc_chr(t, p2);
+        break;
+    }
     /* Bows get a special "damage string" */
     case TV_BOW:
     {
