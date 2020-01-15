@@ -235,25 +235,34 @@ static bool _igor_prob(int _in, bool unique, int taito)
     return FALSE;
 }
 
-static bool _dissect_corpse(void)
+bool igor_dissect_corpse(object_type *w_ptr)
 {
     obj_prompt_t prompt = {0};
     bool _wanted = FALSE;
+    bool _wizard = FALSE;
     byte sopiva = 0, tyyppi = 0;
     monster_race *r_ptr;
     equip_template_ptr et_ptr;
     bool _okei[_IB_MAX_ACTIVE] = {0};
     int slot;
-    int taito = MIN(p_ptr->lev + 50, (p_ptr->stat_ind[A_DEX] + 2) * 5 / 2);
+    int taito = MIN(p_ptr->lev + 50, (p_ptr->stat_ind[A_DEX] + 3) * 5 / 2);
     bool unique, living;
 
-    prompt.prompt = "Dissect which corpse?";
-    prompt.error = "You have no corpses to dissect.";
-    prompt.filter = _object_is_corpse;
-    prompt.where[0] = INV_PACK;
-    prompt.where[1] = INV_FLOOR;
+    if (!w_ptr)
+    {
+        prompt.prompt = "Dissect which corpse?";
+        prompt.error = "You have no corpses to dissect.";
+        prompt.filter = _object_is_corpse;
+        prompt.where[0] = INV_PACK;
+        prompt.where[1] = INV_FLOOR;
 
-    obj_prompt(&prompt);
+        obj_prompt(&prompt);
+    }
+    else
+    {
+        prompt.obj = w_ptr;
+        _wizard = TRUE;
+    }
     if (!prompt.obj) return FALSE;
     r_ptr = &r_info[prompt.obj->pval];
     if ((!r_ptr) || (!r_ptr->name)) return FALSE; /* paranoia */
@@ -263,7 +272,7 @@ static bool _dissect_corpse(void)
     unique = (r_ptr->flags1 & RF1_UNIQUE) ? TRUE : FALSE;
     living = monster_living(r_ptr);
 
-    if ((_wanted) && (!unique))
+    if ((_wanted) && (!unique) && (!_wizard))
     {
         if (!get_check("Really dissect a wanted corpse? ")) return FALSE;
     }
@@ -300,6 +309,7 @@ static bool _dissect_corpse(void)
     {
         char o_name[MAX_NLEN];
         int _pval = prompt.obj->pval;
+        if (_wizard) return TRUE;
         object_desc(o_name, prompt.obj, OD_OMIT_PREFIX | OD_COLOR_CODED | OD_SINGULAR);
 
         if ((_wanted) && (!unique)) _wanted = FALSE;
@@ -314,16 +324,25 @@ static bool _dissect_corpse(void)
     {
         object_type *q_ptr, forge;
         int voima = r_ptr->level / 2 + 5;
-        int _my_pval = 0;
-        q_ptr = &forge;
+        int _my_pval = (_wizard ? prompt.obj->pval : 0);
+        if (_wizard) q_ptr = w_ptr;
+        else q_ptr = &forge;
 
         object_prep(q_ptr, lookup_kind(TV_CORPSE, _ibtosval(tyyppi)));
         q_ptr->xtra4 = prompt.obj->pval; /* Careful - the "pval" parameter might go to an actual pval! */
+        if (_wizard)
+        {
+            q_ptr->xtra4 = _my_pval;
+            _my_pval = 0;
+        }
+        q_ptr->xtra3 = 0;
         q_ptr->xtra5 = 0;
         q_ptr->pval = 0;
         q_ptr->to_h = 0;
         q_ptr->to_d = 0;
         q_ptr->to_a = 0;
+        q_ptr->dd = 0;
+        q_ptr->ds = 0;
         (void)_igor_prob(0, 0, 0);
 
         switch (tyyppi)
@@ -331,6 +350,39 @@ static bool _dissect_corpse(void)
             case _IB_HEAD:
             {
                 bool lippu = FALSE;
+                if ((r_ptr->name) && (!(r_ptr->flags1 & RF1_NEVER_BLOW)))
+                {
+                    int i, j, metodi, maksi = 0, _md = 0, _ms = 0;
+                    bool venom = FALSE;
+                    for (i = 0; i < MAX_MON_BLOWS; i++)
+                    {
+                        metodi = r_ptr->blows[i].method;
+                        if (!metodi) break;
+                        if (metodi != RBM_BITE) continue;
+                        {
+                            for (j = 0; j < MAX_MON_BLOW_EFFECTS; j++)
+                            {
+                                mon_effect_t e = r_ptr->blows[i].effects[j];
+                                if (!e.effect) break;
+                                if (e.effect > RBE_HURT) continue;
+                                if (e.effect == GF_POIS) venom = TRUE;
+                                if (((e.ds + 1) * e.dd) > maksi)
+                                {
+                                    maksi = MAX(maksi, (e.ds + 1) * e.dd);
+                                    _md = e.dd;
+                                    _ms = e.ds;
+                                }
+                            }
+                        }
+                    }
+                    q_ptr->xtra3 = 1;
+                    if (maksi >= 10)
+                    {
+                        q_ptr->dd = _md;
+                        q_ptr->ds = _ms;
+                        q_ptr->xtra3 = (venom ? 3 : 2);
+                    }
+                }
                 if ((one_in_(12)) && (randint0(600) < taito))
                 {
                     int _int = r_ptr->body.stats[A_INT];
@@ -441,9 +493,9 @@ static bool _dissect_corpse(void)
                     }
                     if (q_ptr->xtra5) lippu = TRUE;
                 }
-                if ((r_ptr->flags9 & RF9_POS_TELEPATHY) && (randint0(1500) < voima) && (_igor_prob(3, unique, taito)))
+                if ((r_ptr->flags9 & RF9_POS_TELEPATHY) && (randint0(500) < voima) && (_igor_prob(3, unique, taito)))
                 {
-                    if (randint0(600) < voima)
+                    if (randint0(500) < voima)
                     {
                         add_esp_strong(q_ptr);
                         if (!one_in_(3)) break;
@@ -621,6 +673,39 @@ static bool _dissect_corpse(void)
             }
             case _IB_HANDS:
             {
+                if ((r_ptr->name) && (!(r_ptr->flags1 & RF1_NEVER_BLOW)))
+                {
+                    int i, j, metodi, maksi = 0, _md = 0, _ms = 0;
+                    bool venom = FALSE;
+                    for (i = 0; i < MAX_MON_BLOWS; i++)
+                    {
+                        metodi = r_ptr->blows[i].method;
+                        if (!metodi) break;
+                        if (metodi != RBM_CLAW) continue;
+                        {
+                            for (j = 0; j < MAX_MON_BLOW_EFFECTS; j++)
+                            {
+                                mon_effect_t e = r_ptr->blows[i].effects[j];
+                                if (!e.effect) break;
+                                if (e.effect > RBE_HURT) continue;
+                                if (e.effect == GF_POIS) venom = TRUE;
+                                if (((e.ds + 1) * e.dd) > maksi)
+                                {
+                                    maksi = MAX(maksi, (e.ds + 1) * e.dd);
+                                    _md = e.dd;
+                                    _ms = e.ds;
+                                }
+                            }
+                        }
+                    }
+                    q_ptr->xtra3 = 1;
+                    if (maksi >= 6)
+                    {
+                        q_ptr->dd = _md;
+                        q_ptr->ds = _ms;
+                        q_ptr->xtra3 = (venom ? 3 : 2);
+                    }
+                }
                 if (_igor_prob(4, unique, taito))
                 {
                     int _dex = r_ptr->body.stats[A_DEX];
@@ -716,6 +801,17 @@ static bool _dissect_corpse(void)
                         q_ptr->to_d = merkki ? _my_pval : (0 - _my_pval);
                     }
                 }
+                if ((r_ptr->flags2 & RF2_KILL_WALL) && (_igor_prob(3, unique, taito)))
+                {
+                    _my_pval = m_bonus(7, MIN(taito * 2 / 3, voima));
+                    if (_my_pval > 3) _my_pval = trim(_my_pval, 3, 5, voima + 10);
+                    if (_my_pval > 0)
+                    {
+                        add_flag(q_ptr->flags, OF_TUNNEL);
+                        if (!q_ptr->pval) q_ptr->pval = _my_pval;
+                        else q_ptr->pval = MIN(q_ptr->pval, _my_pval);
+                    }
+                }
                 break;
             }
             case _IB_EARS: /* Ears were originally intended to exclusively be
@@ -808,6 +904,11 @@ static bool _dissect_corpse(void)
                 break;
             }
         }
+        if (_wizard)
+        {
+            obj_identify_fully(q_ptr);
+            return TRUE;
+        }
         prompt.obj->number--;
         obj_release(prompt.obj, 0);
         if ((_wanted) && (unique) && (tyyppi != _IB_HEAD) && (tyyppi != _IB_EARS)) _ears_of(q_ptr->xtra4);
@@ -817,6 +918,29 @@ static bool _dissect_corpse(void)
         p_ptr->window |= (PW_INVEN);
     }
     return TRUE;
+}
+
+s32b igor_cost(object_type *o_ptr, int options)
+{
+    s32b _cost = armor_cost(o_ptr, options);
+    if (o_ptr->dd)
+    {
+        int lisahinta = 70L * (o_ptr->ds + 1) * (o_ptr->dd);
+        if (o_ptr->xtra3 == 3) lisahinta += (lisahinta / 6);
+        _cost += (lisahinta + 800);
+    }
+    if ((o_ptr->xtra5) && (o_ptr->xtra4 > 0) && (o_ptr->xtra4 < max_r_idx))
+    {
+        monster_race *r_ptr = &r_info[o_ptr->xtra4];
+        int lisahinta = 0;
+        if ((r_ptr) && (r_ptr->name) && (r_ptr->level))
+        {
+            lisahinta = r_ptr->level * 25;
+            if (o_ptr->sval == SV_BODY_STOMACH) lisahinta *= 2;
+        }
+        _cost += lisahinta;
+    }
+    return _cost;
 }
 
 static void _birth(void)
@@ -886,14 +1010,16 @@ void _igor_calc_innate_attacks(void)
             _oldh = o_ptr->xtra4;
             _oldl = to_h;
             _exists = FALSE;
-            if ((r_ptr->name) && (!(r_ptr->flags1 & RF1_NEVER_BLOW)))
+            if ((r_ptr->name) && (!(r_ptr->flags1 & RF1_NEVER_BLOW))) /* Accommodate characters from old ugly code */
             {
-                int i, j, metodi, maksi = 0, _md = 0, _ms = 0;
-                bool venom = FALSE;
+                int i, j, metodi, _md = o_ptr->dd, _ms = o_ptr->ds, maksi = (_ms + 1) * _md;
+                bool venom = (o_ptr->xtra3 == 3);
+                bool valmis = ((maksi > 0) || (o_ptr->xtra3 > 1));
                 for (i = 0; i < MAX_MON_BLOWS; i++)
                 {
                     metodi = r_ptr->blows[i].method;
                     if (!metodi) break;
+                    if ((valmis) && (o_ptr->xtra3)) break;
                     if (metodi != RBM_BITE) continue;
                     {
                         for (j = 0; j < MAX_MON_BLOW_EFFECTS; j++)
@@ -902,9 +1028,10 @@ void _igor_calc_innate_attacks(void)
                             if (!e.effect) break;
                             if (e.effect > RBE_HURT) continue;
                             if (e.effect == GF_POIS) venom = TRUE;
-                            if (((e.dd + 1) * e.ds) > maksi)
+                            if (valmis) break;
+                            if (((e.ds + 1) * e.dd) > maksi)
                             {
-                                maksi = MAX(maksi, (e.dd + 1) * e.ds);
+                                maksi = MAX(maksi, (e.ds + 1) * e.dd);
                                 _md = e.dd;
                                 _ms = e.ds;
                             }
@@ -918,6 +1045,9 @@ void _igor_calc_innate_attacks(void)
                     _bite.ds = _ms;
                     _bite.to_d = 2;
                     _bite.to_h = to_h;
+                    o_ptr->dd = _md;
+                    o_ptr->ds = _ms;
+                    o_ptr->xtra3 = (venom ? 3 : 2);
 
                     _bite.weight = 60;
                     calc_innate_blows(&_bite, 100);
@@ -958,12 +1088,14 @@ void _igor_calc_innate_attacks(void)
             _exists = FALSE;
             if ((r_ptr->name) && (!(r_ptr->flags1 & RF1_NEVER_BLOW)))
             {
-                int i, j, metodi, maksi = 0, _md = 0, _ms = 0;
-                bool venom = FALSE;
+                int i, j, metodi, _md = o_ptr->dd, _ms = o_ptr->ds, maksi = (_ms + 1) * _md;
+                bool venom = (o_ptr->xtra3 == 3);
+                bool valmis = ((maksi > 0) || (o_ptr->xtra3 > 1));
                 for (i = 0; i < MAX_MON_BLOWS; i++)
                 {
                     metodi = r_ptr->blows[i].method;
                     if (!metodi) break;
+                    if ((valmis) && (o_ptr->xtra3)) break;
                     if (metodi != RBM_CLAW) continue;
                     {
                         for (j = 0; j < MAX_MON_BLOW_EFFECTS; j++)
@@ -972,22 +1104,26 @@ void _igor_calc_innate_attacks(void)
                             if (!e.effect) break;
                             if (e.effect > RBE_HURT) continue;
                             if (e.effect == GF_POIS) venom = TRUE;
-                            if (((e.dd + 1) * e.ds) > maksi)
+                            if (valmis) break;
+                            if (((e.ds + 1) * e.dd) > maksi)
                             {
-                                maksi = MAX(maksi, (e.dd + 1) * e.ds);
+                                maksi = MAX(maksi, (e.ds + 1) * e.dd);
                                 _md = e.dd;
                                 _ms = e.ds;
                             }
                         }
                     }
                 }
-                if (maksi >= 10)
+                if (maksi >= 6)
                 {
                     _exists = TRUE;
                     _claw.dd = _md;
                     _claw.ds = _ms;
                     _claw.to_d = 2;
                     _claw.to_h = to_h;
+                    o_ptr->dd = _md;
+                    o_ptr->ds = _ms;
+                    o_ptr->xtra3 = (venom ? 3 : 2);
 
                     _claw.weight = 60;
                     calc_innate_blows(&_claw, 100);
@@ -1180,7 +1316,7 @@ void _dissect_corpse_spell(int cmd, variant *res)
         var_set_string(res, "Cuts open a dead body, looking for a part worth salvaging. (Don't be too clumsy!)");
         break;
     case SPELL_CAST:
-        var_set_bool(res, _dissect_corpse());
+        var_set_bool(res, igor_dissect_corpse(NULL));
         break;
     default:
         default_spell(cmd, res);
