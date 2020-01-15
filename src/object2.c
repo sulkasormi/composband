@@ -1188,6 +1188,7 @@ s32b obj_value_real(object_type *o_ptr)
     if (o_ptr->tval == TV_LITE) return lite_cost(o_ptr, COST_REAL);
     if (o_ptr->tval == TV_QUIVER) return quiver_cost(o_ptr, COST_REAL);
     if (object_is_device(o_ptr)) return device_value(o_ptr, COST_REAL);
+    if ((o_ptr->tval == TV_CORPSE) && (o_ptr->sval >= SV_BODY_HEAD)) return igor_cost(o_ptr, COST_REAL);
 
     /* Hack -- "worthless" items */
     if (!k_info[o_ptr->k_idx].cost) return (0L);
