@@ -274,6 +274,7 @@ bool _hit_mon(py_throw_ptr context, int m_idx)
 
         /***** The Damage Calculation!!! *****/
         tdam = damroll(context->obj->dd + context->to_dd, context->obj->ds);
+        if (context->obj->tval == TV_CORPSE) tdam /= 10; /* Igor innate attack dice **/
         tdam = tot_dam_aux(context->obj, tdam, m_ptr, 0, 0, TRUE);
         if (have_flag(context->flags, OF_VORPAL) || have_flag(context->flags, OF_VORPAL2))
         {
