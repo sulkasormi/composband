@@ -402,6 +402,7 @@ static int _count_owners(_type_ptr type)
 static bool _will_buy(obj_ptr obj)
 {
     if (obj_value(obj) <= 0) return FALSE;
+    if (obj->tval == TV_CORPSE) return FALSE;
     return TRUE;
 }
 
