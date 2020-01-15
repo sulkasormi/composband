@@ -461,10 +461,11 @@ int obj_cmp(obj_ptr left, obj_ptr right)
     case TV_STATUE:
     case TV_CORPSE:
     case TV_CAPTURE:
+        if ((left->tval == TV_CORPSE) && (left->sval >= SV_BODY_HEAD)) break;
         if (r_info[left->pval].level < r_info[right->pval].level) return -1;
         if (r_info[left->pval].level > r_info[right->pval].level) return 1;
         if (left->pval < right->pval) return -1;
-        if (left->pval > right->pval) return -1;
+        if (left->pval > right->pval) return 1;
         break;
 
     case TV_SHOT:
