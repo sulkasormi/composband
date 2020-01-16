@@ -1660,7 +1660,7 @@ static cptr _do_scroll(int sval, int mode)
             }
 
             if (err) strcpy(Rumor, "Some rumors are wrong.");
-            msg_format("<color:B>There is message on the scroll. It says:</color> %s", Rumor);
+            msg_format("<color:B>There is a message on the scroll. It says:</color> %s", Rumor);
             msg_print("The scroll disappears in a puff of smoke!");
             device_noticed = TRUE;
         }
