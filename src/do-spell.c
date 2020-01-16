@@ -174,6 +174,15 @@ cptr info_weight(int weight)
     return format("max wgt %d", weight/10);
 }
 
+/*
+ * Generate distance info string such as "dist 100"
+ */
+
+cptr info_dist(int dist)
+{
+    return format("dist %d", dist);
+}
+
 
 /*
  * Prepare standard probability to become beam for fire_bolt_or_beam()
@@ -1753,7 +1762,7 @@ static cptr do_sorcery_spell(int spell, int mode)
         {
             int power = spell_power(plev * 2);
 
-            if (info) return info_power(power);
+            if (info) return info_dist(power);
 
             if (cast)
             {
@@ -3043,7 +3052,7 @@ static cptr do_chaos_spell(int spell, int mode)
         {
             int power = spell_power(plev*2);
 
-            if (info) return info_power(power);
+            if (info) return info_dist(power);
 
             if (cast)
             {
@@ -4211,7 +4220,7 @@ static cptr do_trump_spell(int spell, int mode)
         {
             int power = spell_power(plev*2);
 
-            if (info) return info_power(power);
+            if (info) return info_dist(power);
 
             if (cast)
             {
@@ -5202,7 +5211,7 @@ static cptr do_arcane_spell(int spell, int mode)
         {
             int power = spell_power(plev);
 
-            if (info) return info_power(power);
+            if (info) return info_dist(power);
 
             if (cast)
             {
@@ -6643,7 +6652,7 @@ static cptr do_crusade_spell(int spell, int mode)
         {
             int power = MAX_SIGHT * 5;
 
-            if (info) return info_power(power);
+            if (info) return info_dist(power);
 
             if (cast)
             {
