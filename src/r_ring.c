@@ -235,6 +235,8 @@ static bool _add_essence(int which, int amount)
     return FALSE;
 }
 
+static bool _is_ring_effect(int effect);
+
 static bool _absorb(object_type *o_ptr)
 {
     bool result = FALSE;
@@ -288,7 +290,7 @@ static bool _absorb(object_type *o_ptr)
     if (obj_has_effect(o_ptr))
     {
         effect_t e = obj_get_effect(o_ptr);
-        if (!_effects[e.type])
+        if ((!_effects[e.type]) && (_is_ring_effect(e.type)))
         {
             msg_format("You have gained the power of '%s'.", do_effect(&e, SPELL_NAME, 0));
         }
@@ -1130,6 +1132,13 @@ static vec_ptr _missing_effects(void)
             vec_add_int(v, i);
     }
     return v;
+}
+
+static bool _is_ring_effect(int effect)
+{
+    _spell_ptr l = _find_spell(effect);
+    if ((!l) || (l->effect == EFFECT_NONE)) return FALSE;
+    return TRUE;
 }
 
 /* Menu Code 1: Choose which group of magic to use */
