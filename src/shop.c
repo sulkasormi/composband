@@ -2081,7 +2081,7 @@ static void _maintain(shop_ptr shop)
         {
             int xp = shop->last_restock.exp;
             xp += MIN(MAX(xp / 20, 1000), 100000);
-            if ( !ironman_downward
+            if ( ((coffee_break) || (!ironman_downward))
               && p_ptr->max_plv <= shop->last_restock.level
               && p_ptr->max_exp <= xp
               && p_ptr->prace != RACE_ANDROID )
