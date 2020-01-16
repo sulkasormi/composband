@@ -2143,7 +2143,7 @@ bool symbol_genocide(int power, bool player_cast)
     /* Mega-Hack -- Get a monster symbol */
     while (!okay)
     {
-        if (!get_com("Choose a monster race (by symbol) to genocide: ", &typ, FALSE))
+        if (!get_com("Choose a monster species (by symbol; '?' for help) to genocide: ", &typ, FALSE))
             return FALSE;
         if (typ == 'n') /* naga hack */
         {
@@ -2153,6 +2153,13 @@ bool symbol_genocide(int power, bool player_cast)
         {
             if (msg_prompt("Really genocide Xorns? <color:y>[Y/N]</color>", "NY", PROMPT_DEFAULT) != 'Y') continue;
         }
+        else if (typ == '?')
+        {
+            screen_save();
+            doc_display_help("monster.txt#Genocide", NULL);
+            screen_load();
+            continue;
+        } 
         else if (!isalpha(typ))
         {
             if (msg_prompt("Confirm genocide? <color:y>[Y/N]</color>", "NY", PROMPT_DEFAULT) != 'Y') continue;
