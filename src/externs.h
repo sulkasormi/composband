@@ -978,6 +978,7 @@ extern cptr info_radius(int rad);
 extern cptr info_power(int power);
 extern cptr info_delay(int base, int sides);
 extern cptr info_weight(int weight);
+extern cptr info_dist(int dist);
 extern bool cast_summon_greater_demon(void);
 extern bool cast_wrath_of_the_god(int dam, int rad);
 bool trump_summoning(int num, bool pet, int y, int x, int lev, int type, u32b mode);
