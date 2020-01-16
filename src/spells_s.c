@@ -1504,7 +1504,7 @@ void teleport_other_spell(int cmd, variant *res)
         var_set_string(res, "Teleports all monsters on the line away unless resisted.");
         break;
     case SPELL_INFO:
-        var_set_string(res, format("dist %d", p_ptr->lev*2));
+        var_set_string(res, info_dist(spell_power(p_ptr->lev*2)));
         break;
     case SPELL_CAST:
     {
