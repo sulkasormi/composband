@@ -200,7 +200,7 @@ int device_calc_fail_rate(object_type *o_ptr)
     return fail;
 }
 
-/* Hack: When using an unkown rod we force the user to target. Also
+/* Hack: When using an unknown rod we force the user to target. Also
    Trap Location should not spoil with the view_unsafe_grids option. */
 bool device_known = FALSE;
 
@@ -209,7 +209,7 @@ bool device_known = FALSE;
  * but that is handled elsewhere. We deal solely with OFL_DEVICE_POWER. */
 bool device_lore = FALSE;
 
-/* Hack: When using an unkown device, was there an observable effect?
+/* Hack: When using an unknown device, was there an observable effect?
    If so, identify the device. */
 bool device_noticed = FALSE;
 
@@ -223,13 +223,14 @@ int  device_extra_power = 0;
 int  device_available_charges = 0; /* How many can we do? */
 int  device_used_charges = 0;      /* How many did we do? */
 static bool _use_charges = FALSE;
+static bool _multi_charge_lock = FALSE;
 
 static void _do_identify_aux(obj_ptr obj)
 {
     char name[MAX_NLEN];
     bool old_known;
 
-    if (_use_charges && device_used_charges >= device_available_charges) return;
+    if ((_use_charges) && (device_used_charges >= device_available_charges)) return;
 
     old_known = identify_item(obj);
     object_desc(name, obj, OD_COLOR_CODED);
@@ -264,10 +265,12 @@ void mass_identify(bool use_charges) /* shared with Sorcery spell */
     inv_ptr floor = inv_filter_floor(point(px, py), obj_exists);
 
     _use_charges = use_charges;
+    _multi_charge_lock = TRUE;
     pack_for_each_that(_do_identify_aux, obj_is_unknown);
     equip_for_each_that(_do_identify_aux, obj_is_unknown);
     quiver_for_each_that(_do_identify_aux, obj_is_unknown);
     inv_for_each_that(floor, _do_identify_aux, obj_is_unknown);
+    _multi_charge_lock = FALSE;
 
     inv_free(floor);
 }
@@ -1828,7 +1831,7 @@ cptr do_device(object_type *o_ptr, int mode, int boost)
     cptr result = NULL;
 
     device_noticed = FALSE;
-    device_used_charges = 0;
+    if (!_multi_charge_lock) device_used_charges = 0;
     device_lore = FALSE;
 
     if (o_ptr->activation.type)
@@ -1856,7 +1859,7 @@ cptr do_device(object_type *o_ptr, int mode, int boost)
     }
     device_known = FALSE;
     device_extra_power = 0;
-    device_available_charges = 0;
+    if (!_multi_charge_lock) device_available_charges = 0;
     return result;
 }
 
