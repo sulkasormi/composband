@@ -1,9 +1,16 @@
-?:[EQU $QUEST14 Taken InProgress]
+?:[AND [EQU $QUEST14 Taken InProgress] [LEQ $SPEED 1] ]
 D:Our scouts report a large number of Wargs in the dungeon.
 D:We don't know who set them on guard at 250 feet, but we
 D:think their task is to hinder resupply of our outposts
 D:in the dungeon. We offer you a small reward if you clear
 D:the path for the supplies.
+?:1
+
+?:[AND [EQU $QUEST14 Taken InProgress] [EQU $SPEED 2] ]
+D:The scouts of Outpost have reported a large number of Wargs
+D:in the dungeon. Their presence at 250 feet hinders resupply to
+D:our troops in the dungeon. Otick, the innkeeper, will offer you
+D:a small reward if you clear the path for our supplies.
 ?:1
 
 ?:[EQU $QUEST14 Completed]
@@ -91,5 +98,8 @@ R:OBJ(gauntlets)
 
 ?:[EQU $CLASS Mauler]
 R:OBJ(two-handed flail)
+
+?:[AND [EQU $SPEED 2] [NOT [EQU $CLASS Mauler Berserker Lawyer Ninja-Lawyer Ranger Scout Archaeologist]] [NOT [EQU $RACE Half-Giant]] ]
+R:OBJ(WAND_STONE_TO_MUD)
 
 # vim: filetype=q :
