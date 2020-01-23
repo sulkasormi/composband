@@ -170,6 +170,7 @@ char summon_kin_type;   /* Hack, by Julian Lighton: summon 'relatives' */
 s16b warning_hack_hp = 0;
 s16b shuffling_hack_hp = 0;
 byte poison_warning_hack = 0;
+bool spawn_hack = FALSE;
 
 int total_friends = 0;
 s32b friend_align = 0;
@@ -278,6 +279,7 @@ bool display_skill_num; /* Give skills numerically in char sheet */
 bool reforge_details; /* Show statistics before proceeding with reforge */
 bool auto_sticky_labels; /* Automatically make power labels sticky */
 bool show_power; /* Display device powers in inventory */
+bool show_rogue_keys; /* Display roguelike keys if possible */
 bool decimal_stats; /* Decimalized stat display */
 
 /*** Game-Play Options ***/
@@ -325,7 +327,7 @@ bool alert_poison;   /* Alert on high poisoning */
 
 /*** Birth Options ***/
 
-bool coffee_break;   /* Coffee-break mode */
+byte coffee_break;   /* Coffee-break mode */
 bool easy_id;        /* Easy Identify */
 bool easy_lore;      /* Easy Monster Lore */
 bool empty_lore;     /* Always start with empty item lore */
@@ -452,6 +454,10 @@ char player_name[32];
  */
 char player_base[32];
 
+/*
+ * Default pref file save name (except for the Mogaminator)
+ */
+char pref_save_base[32] = "";
 
 /*
  * Buffer to hold the current savefile name
