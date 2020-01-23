@@ -50,6 +50,7 @@ extern int py_birth(void);
                     static int _mon_spider_ui(void);
                     static int _mon_troll_ui(void);
                     static int _mon_orc_ui(void);
+        static int _speed_ui(void);
     static int _stats_ui(void);
 
 extern void py_birth_obj(object_type *o_ptr);
@@ -196,11 +197,195 @@ void py_birth_spellbooks(void)
         py_birth_obj_aux(TV_LIFE_BOOK + p_ptr->realm2 - 1, 0, 1);
 }
 
+/********************************************************************
+ * Roman numeral code
+ *******************************************************************/
+int _letter_roman_value(unsigned char mika)
+{
+    switch (mika)
+    {
+        case 'M': return 1000;
+        case 'D': return 500;
+        case 'C': return 100;
+        case 'L': return 50;
+        case 'X': return 10;
+        case 'V': return 5;
+        case 'I': return 1;
+        default: return 0;
+    }
+}
+
+int find_roman_numeral(char *nimi)
+{
+    int i, tyhja, pituus = strlen(nimi), uuspit, isoarvo = 0;
+    int arvot[22] = {0};
+
+    if (pituus <= 2) return 0;
+    if (strpos(" ", nimi) <= 1) return 0;
+
+    /* Scan for last space */
+    for (tyhja = pituus - 2; tyhja >= 1; tyhja--)
+    {
+        if (nimi[tyhja] == ' ') break;
+    }
+    if (!tyhja) return 0; /* paranoia */
+    uuspit = pituus - tyhja - 1;
+    if (uuspit > PY_NAME_LEN) return 0;
+
+    /* Check if name contains a Roman numeral */
+    for (i = 0; i < uuspit; i++)
+    {
+        int _valu = _letter_roman_value(nimi[i + tyhja + 1]);
+        if (!_valu) return 0;
+        else arvot[i] = _valu;
+        if ((i >= 2) && (_valu > arvot[i - 2])) return 0; /* Invalid numeral, e.g. LIM */
+    }
+
+    /* Calculate value of said numeral */
+    for (i = 0; i < uuspit; i++)
+    {
+        if ((i < uuspit - 1) && (arvot[i + 1] > arvot[i])) isoarvo -= arvot[i];
+        else isoarvo += arvot[i];
+    }
+    return MAX(0, isoarvo); /* paranoia */
+}
+
+#define _MAX_ROMAN_CAT 13
+typedef struct _roman_cat_s {
+   int val;
+   char lisays[3];
+} _roman_cat_t, *_roman_cat_ptr;
+
+static _roman_cat_t _roman_cats[_MAX_ROMAN_CAT] = {
+ { 1000, "M"},
+ { 900, "CM"},
+ { 500, "D"},
+ { 400, "CD"},
+ { 100, "C"},
+ { 90, "XC"},
+ { 50, "L"},
+ { 40, "XL"},
+ { 10, "X"},
+ { 9, "IX"},
+ { 5, "V"},
+ { 4, "IV"},
+ { 1, "I"}
+};
+
+bool num_to_roman(int _num, char *buf)
+{
+    int i, jaljella = _num, pituus = 0;
+    while (jaljella > 0)
+    {
+        for (i = 0; i < _MAX_ROMAN_CAT; i++)
+        {
+            if (jaljella >= _roman_cats[i].val) break;
+        }
+        if ((pituus + (i % 2)) >= PY_NAME_LEN) return FALSE;
+        if (!pituus) strcpy(buf, _roman_cats[i].lisays);
+        else strcat(buf, _roman_cats[i].lisays);
+        pituus += (1 + (i % 2));
+        jaljella -= _roman_cats[i].val;
+    }
+    return TRUE;
+}
+
+int find_arabic_numeral(char *nimi, int *paikka)
+{
+    s32b arvo = 0;
+    int i, j, pituus = 0;
+        
+    for (i = strlen(nimi) - 1; i > 0; i--)
+    {
+        if (isdigit(nimi[i]))
+        {
+            int lisa = nimi[i] - '0';
+            pituus++;
+            for (j = 1; j < pituus; j++)
+            {
+                lisa *= 10;
+            }
+            arvo += lisa;
+        }
+        else
+        {
+            if (!pituus) return 0; /* No numeral */
+            if (paikka != NULL) *paikka = i + 1;
+            return arvo;
+        }
+    }
+    return arvo;
+}
+
+void bump_numeral(char *nimi, int muutos)
+{
+    int _old_num = 0, _error = 0;
+    if ((!nimi) || (!strlen(nimi))) return;
+    if (!muutos) return; /* Nothing to do */
+    _old_num = find_roman_numeral(nimi);
+    while (_old_num > 0)
+    {
+        char luku[PY_NAME_LEN + 2] = "";
+        if (!num_to_roman(_old_num, luku)) break;
+        if (!clip_and_locate(luku, nimi)) break;
+        _error = 1;
+        if ((_old_num + muutos) <= 0) return;
+        if (!num_to_roman(_old_num + muutos, luku)) break;
+        if (strlen(nimi) + strlen(luku) >= PY_NAME_LEN) break;
+        strcat(nimi, " ");
+        strcat(nimi, luku);
+        return;
+    }
+    if (_old_num > 0) /* There was a Roman numeral but something went wrong */
+    {
+        char luku[PY_NAME_LEN + 2] = "";
+        if (!_error)
+        {
+            int tyhja = 0;
+            for (tyhja = strlen(nimi) - 2; tyhja >= 0; tyhja--)
+            {
+                if (nimi[tyhja] == ' ') break;
+            }
+            if (!tyhja) return; /* Something weird is happening */
+            if ((_old_num + muutos) <= 0) return;
+            nimi[tyhja + 1] = '\0';
+        }
+        else if ((_old_num + muutos) <= 0) return;
+        strcpy(luku, format("%d", _old_num + muutos));
+        if (strlen(nimi) + strlen(luku) > PY_NAME_LEN) return;
+        if ((_error) && (strlen(nimi) + strlen(luku) != PY_NAME_LEN) && (strlen(nimi) > 0) && (nimi[strlen(nimi) - 1] != ' ')) strcat(nimi, " ");
+        strcat(nimi, luku);
+        return;
+    }
+    else /* No Roman numeral - check for Arabic numeral */
+    {
+        char luku[PY_NAME_LEN + 2] = "";
+        int paikka = -1;
+        s32b arvo = find_arabic_numeral(nimi, &paikka);
+        if (arvo < 1) return;
+        if (paikka <= 0) return;
+        nimi[paikka] = '\0';
+        if ((arvo + muutos) < 1) return;
+        strcpy(luku, format("%d", arvo + muutos));
+        if (strlen(nimi) + strlen(luku) > PY_NAME_LEN) return;
+        strcat(nimi, luku);
+    }
+}
+
+bool name_is_numbered(char *nimi)
+{
+    if ((!nimi) || (strlen(nimi) < 2)) return FALSE;
+    if (find_roman_numeral(nimi)) return TRUE;
+    if (find_arabic_numeral(nimi, NULL)) return TRUE;
+    return FALSE;
+}
+
 /************************************************************************
  * Welcome to FrogComposband!
  ***********************************************************************/ 
 static void _set_mode(int mode);
 static bool _stats_changed = FALSE;
+static bool lukittu = FALSE;
 
 static int _welcome_ui(void)
 {
@@ -217,7 +402,7 @@ static int _welcome_ui(void)
 
         doc_insert(_doc,
             "Welcome to <color:keyword>FrogComposband</color>, a dungeon exploration "
-            "role playing game. Your goal is to defeat the dreaded <color:keyword>"
+            "role-playing game. Your goal is to defeat the dreaded <color:keyword>"
             "Serpent of Chaos</color>, but before you can face it, you must battle "
             "many foes. Your first step is to create a character for this quest. "
             "The following screens will guide you through this process so that you "
@@ -336,6 +521,7 @@ static void _set_mode(int mode)
             p_ptr->personality = PERS_ORDINARY;
             _stats_init();
         }
+        coffee_break = SPEED_COFFEE;
     }
     else if (mode == GAME_MODE_NORMAL)
     {
@@ -421,6 +607,8 @@ static int _beginner_classes[] = {
 
 static int _race_class_ui(void)
 {
+    if (!lukittu) bump_numeral(player_name, 1);
+    lukittu = TRUE;
     for (;;)
     {
         int cmd;
@@ -448,6 +636,7 @@ static int _race_class_ui(void)
             if (p_ptr->realm1)
                 doc_insert(cols[0], "  <color:y>m</color>) Change Magic\n");
         }
+        if (game_mode != GAME_MODE_BEGINNER) doc_insert(cols[0], "  <color:y>g</color>) Change Game Speed\n");
 
         doc_insert(cols[1], "<color:y>  *</color>) Random Name\n");
         doc_insert(cols[1], "<color:y>  ?</color>) Help\n");
@@ -512,6 +701,14 @@ static int _race_class_ui(void)
             break;
         case 'N':
             doc_display_help("birth.txt", "CharacterName");
+            break;
+        case 'g':
+            if (game_mode != GAME_MODE_BEGINNER)
+                _speed_ui();
+            break;
+        case 'G':
+            if (game_mode != GAME_MODE_BEGINNER)
+                doc_display_help("speed.txt", NULL);
             break;
         case 'r':
             if (game_mode == GAME_MODE_BEGINNER)
@@ -1586,6 +1783,55 @@ static int _patron_ui(void)
     }
 }
 
+cptr _game_speed_text[GAME_SPEED_MAX] = {
+ "Normal",
+ "Coffee-Break",
+ "Instant Coffee"
+};
+
+static int _speed_ui(void)
+{
+    for (;;)
+    {
+        int i, cmd;
+        doc_clear(_doc);
+        _race_class_top(_doc);
+
+        doc_insert(_doc, "<color:G>Choose Game Speed</color>\n");
+        for (i = 0; i < GAME_SPEED_MAX; i++)
+        {
+            doc_printf(_doc, "  <color:y>%c</color>) <color:%c>%s</color>\n", I2A(i), coffee_break == i ? 'B' : 'w', _game_speed_text[i]);
+        }
+
+        _sync_term(_doc);
+        cmd = _inkey();
+        if (cmd == '\t') _inc_rcp_state();
+        else if (cmd == '=') _birth_options();
+        else if (cmd == ESCAPE) return UI_CANCEL;
+        else if (isupper(cmd))
+        {
+            i = A2I(tolower(cmd));
+            if (0 <= i && i < GAME_SPEED_MAX)
+            {
+                char nimi[30];
+                strcpy(nimi, "speed.txt#");
+                strcat(nimi, _game_speed_text[i]);
+                do {} while (clip_and_locate(" ", nimi));
+                doc_display_help(nimi, NULL);
+            }
+        }
+        else
+        {
+            i = A2I(cmd);
+            if (0 <= i && i < GAME_SPEED_MAX)
+            {
+                coffee_break = i;
+                return UI_OK;
+            }
+        }
+    }
+}
+
 /************************************************************************
  * 2.3.2) Magic
  ***********************************************************************/ 
@@ -2608,7 +2854,11 @@ static void _race_class_header(doc_ptr doc)
 
 static void _name_line(doc_ptr doc)
 {
-    doc_printf(doc, "Name : <color:B>%s</color>\n", player_name);
+    int _attr = (coffee_break) ? TERM_VIOLET : TERM_VIOLET;
+    doc_printf(doc, "Name : <color:B>%-32s</color>", player_name);
+    if (coffee_break >= GAME_SPEED_MAX) coffee_break = 0; /* paranoia */
+    doc_printf(doc, "<color:o>Game Speed:</color> ");
+    doc_printf(doc, "<color:%c>%s</color>\n", attr_to_attr_char(_attr), _game_speed_text[coffee_break]);
 }
 
 static void _sex_line(doc_ptr doc)
@@ -3103,14 +3353,20 @@ static void _birth_finalize(void)
         effective_speed = TRUE;
         command_menu = TRUE;
         no_scrambling = TRUE;
+        show_rogue_keys = TRUE;
     }
 
     if (coffee_break)
     {
         no_wilderness = TRUE;
         ironman_downward = TRUE;
-//      reduce_uniques = TRUE;
-//      reduce_uniques_pct = 90;
+        if (coffee_break == SPEED_INSTA_COFFEE)
+        {
+            thrall_mode = FALSE;
+            reduce_uniques = TRUE;
+            reduce_uniques_pct = 60;
+            if (small_level_type != SMALL_LVL_INSTANT_COFFEE) small_level_type = SMALL_LVL_INSTANT_COFFEE_BIG;
+        }
     }
 
     /* Can't have people sneaking out of R'lyeh by way of nexus attack... */
