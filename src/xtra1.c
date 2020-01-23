@@ -2097,6 +2097,34 @@ static void prt_effects(void)
         sprintf(tmp, "Study (%d)", p_ptr->new_spells);
         c_put_str(TERM_L_BLUE, tmp, row++, col);
     }
+    if ((rogue_like_commands) && (show_rogue_keys) && (row < Term->hgt - 3))
+    {
+        if (row < Term->hgt - 5)
+        {
+            Term_erase(col, row++, r.cx);
+        }
+        c_put_str(TERM_YELLOW, "  y  k  u   ", row++, col);
+        c_put_str(TERM_YELLOW, "  h  5  l   ", row++, col);
+        c_put_str(TERM_YELLOW, "  b  j  n   ", row++, col);
+        p_ptr->redraw |= PR_ROGUE_KEYS;
+    }
+    else if (p_ptr->redraw & (PR_ROGUE_KEYS))
+    {
+        for (i = row + 1; i < Term->hgt - 1; i++)
+        {
+            Term_erase(col, i, r.cx);
+        }
+        if (!show_rogue_keys) p_ptr->redraw &= ~PR_ROGUE_KEYS;
+    }
+    if ((game_mode == GAME_MODE_BEGINNER) && (row < Term->hgt - 1))
+    {
+        if (row < Term->hgt - 2)
+        {
+            Term_erase(col, row++, r.cx);
+        }
+        c_put_str(TERM_ORANGE, "?", row, col);
+        c_put_str(TERM_L_GREEN, " for help  ", row++, col + 1);
+    }
 }
 
 /*****************************************************************************
@@ -5623,6 +5651,10 @@ void redraw_stuff(void)
     if (p_ptr->redraw & (PR_EFFECTS))
     {
         p_ptr->redraw &= ~PR_EFFECTS;
+        prt_effects();
+    }
+    else if (((bool)(p_ptr->redraw & (PR_ROGUE_KEYS))) != show_rogue_keys) /* Hack */
+    {
         prt_effects();
     }
 
