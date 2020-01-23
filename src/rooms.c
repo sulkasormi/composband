@@ -1791,6 +1791,9 @@ static void _apply_room_grid_mon(point_t p, room_grid_ptr grid, room_ptr room)
     if (room->flags & ROOM_THEME_FRIENDLY)
         mode |= PM_FORCE_FRIENDLY;
 
+    if (room->type == ROOM_QUEST)
+        mode |= PM_NATIVE;
+
     /* The NIGHT theme is designed for wilderness cemeteries and 
        such, which should be populated with foul undead, but only
        in the deep, dark hours of night! */
