@@ -1,0 +1,37 @@
+<style:title>Game Speed Modes</style>
+
+FrogComposband offers several different game-speed modes, depending on how long and complex you wish the game to be. <color:keyword>Normal mode</color> is the full FrogComposband experience; it gives access to a vast wilderness, and many towns, dungeons and side-quests not available in other modes. But if you want to play a shorter game, or are just getting started and don't want too many complications, there are two accelerated game modes available: the very fast <color:keyword>coffee-break mode</color>, and the ultra-fast <color:keyword>instant-coffee mode</color>.
+
+Your ultimate goals remain the same regardless of mode: kill the <color:keyword>Serpent of Chaos</color>, and before that, kill <color:keyword>Oberon</color> to gain access to the Serpent's lair. But what else you can expect to do, and how quickly you will reach the endgame, depends greatly on the game speed selected.
+
+<topic:Normal><style:heading>Normal (full game)</style>
+
+This is the traditional game speed, and the one that offers the most complete game. In a full game of FrogComposband, you will fight thousands of monsters, complete dozens of quests, explore more than 30 dungeons and eagerly inspect thousands of (potentially) magical objects. It is possible to play in Normal Mode with the special coffee-break town and no wilderness, but this is strongly not recommended.
+
+A complete game in normal-speed mode typically lasts between 15 and 150 hours. The speedrun record for a full-game win is 4 hours and 6 minutes.
+
+<topic:Coffee-Break><style:heading>Coffee-Break Mode (fast)</style>
+
+<color:U>Coffee-break mode</color> offers an accelerated game, with fewer quests, only one dungeon (Angband), one town (a special version of Outpost) and no wilderness. Every level you explore will be deeper than the one before; the only staircases are downshafts that take you down two levels at a time. You are allowed to return to the town by Word of Recall.
+
+Experience gain from killing monsters in the dungeon is much faster in coffee-break mode (experience gain outside the dungeon is not accelerated). The quality and quantity of monster item drops are also both increased; and most forms of proficiency gain are accelerated. In coffee-break mode, you get stronger faster, but also start running into dangerous monsters more rapidly.
+
+Coffee-break mode uses a special level-size generation algorithm; in general, levels tend to be very small in the early game and become larger as the endgame approaches.
+
+Selecting <color:keyword>Beginner Mode</color> automatically turns coffee-break mode on, but it is not necessarily easier than normal mode and not intended exclusively for new players.
+
+A complete game in coffee-break mode typically lasts between 5 and 50 hours.
+
+<topic:InstantCoffee><style:heading>Instant-Coffee Mode (ultra-fast)</style>
+
+<color:U>Instant-coffee mode</color> is a super-accelerated game. It resembles coffee-break mode, but is even more streamlined; dungeon levels with no quests are skipped completely (effectively leaving only 13 levels in the dungeon), the number of town quests is greatly reduced, experience gain is accelerated even further (including outside the dungeon), and loot quality is boosted even more than in coffee-break mode.
+
+A special feature of instant-coffee mode is that <color:B>Potions of Healing</color>, <color:B>Potions of *Healing*</color> and <color:B>Potions of Life</color> - key items in both normal and coffee-break play - never generate randomly. Instead, the ten random Angband level guardians drop set amounts of these potions for you; kill all ten (plus Oberon), and you will have 66 Potions of Healing and 8 Potions of *Healing*, hopefully enough for the end fight. A few additional potions can be acquired from quests or the Arena or by killing a god.
+
+Instant-coffee mode discourages grindy play; the more monsters you kill on a given level, the less accelerated your experience gain is and the fewer objects they drop. Monsters directly or indirectly summoned by the player drop nothing and give no experience.
+
+Instant-coffee mode drops you in the thick of the action extremely quickly. It is therefore not recommended for new players - unless you wish to be overwhelmed!
+
+<color:D>
+Original   : FrogComposband 7.1.liquorice
+</color>
