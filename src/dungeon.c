@@ -836,6 +836,17 @@ void fame_on_failure(void)
     p_ptr->fame -= dec;
 }
 
+void gain_fame(int amt)
+{
+    if (coffee_break == SPEED_INSTA_COFFEE)
+    {
+        amt *= 6;
+        amt += randint0(4);
+        amt /= 4;
+    }
+    p_ptr->fame += amt;
+}
+
 byte coffeebreak_recall_level(bool laskuri)
 {
     byte taso = (byte)max_dlv[DUNGEON_ANGBAND];
@@ -843,6 +854,14 @@ byte coffeebreak_recall_level(bool laskuri)
     {
         taso++;
         if (!level_is_questlike(DUNGEON_ANGBAND, taso)) taso++;
+        if (coffee_break == SPEED_INSTA_COFFEE)
+        {
+            while (!level_is_questlike(DUNGEON_ANGBAND, taso))
+            {
+                taso++;
+                if (taso >= 100) break;
+            }
+        }
     }
     else if ((taso == 99) && (!level_is_questlike(DUNGEON_ANGBAND, taso))) taso++;
     if ((p_ptr->total_winner) && (taso < d_info[DUNGEON_ANGBAND].maxdepth)) taso++;
@@ -2957,10 +2976,12 @@ static void process_world(void)
 
         if (one_in_(chance))
         {
+            spawn_hack = TRUE;
             if (p_ptr->action == ACTION_GLITTER && one_in_(3))
                 ring_summon_ring_bearer();
             else
                 alloc_monster(MAX_SIGHT + 5, 0);
+            spawn_hack = FALSE;
         }
     }
     /* It's too easy to get stuck playing a race that can't move! Sigh ... */
@@ -5234,8 +5255,31 @@ static void load_all_pref_files(void)
     /* Access the "character" pref file */
     sprintf(buf, "%s.prf", player_base);
 
-    /* Process that file */
-    process_pref_file(buf);
+    strcpy(pref_save_base, player_base);
+
+    /* Process that file, look for old files */
+    if ((process_pref_file(buf) < 0) && (name_is_numbered(player_name)))
+    {
+        char old_py_name[32];
+        strcpy(old_py_name, player_name);
+
+        while (1)
+        {
+            bump_numeral(player_name, -1);
+            if (!name_is_numbered(player_name)) break;
+            process_player_name(FALSE);
+
+            sprintf(buf, "%s.prf", player_base);
+
+            if (process_pref_file(buf) >= 0)
+            {
+                strcpy(pref_save_base, player_base);
+                break;
+            }
+        }
+        strcpy(player_name, old_py_name);
+        process_player_name(FALSE);
+    }
 
     /* Access the "realm 1" pref file */
     if (p_ptr->realm1 != REALM_NONE)
@@ -5257,7 +5301,7 @@ static void load_all_pref_files(void)
 
 
     /* Load an autopick preference file */
-    autopick_load_pref(FALSE);
+    autopick_load_pref(ALP_CHECK_NUMERALS);
 }
 
 
