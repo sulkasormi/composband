@@ -66,6 +66,14 @@ The very brief additional info does not tell us much; Magic Missile does 3d4 dam
 </style>
 Here I'm looking into the Flash of Light spell; the description makes it clear this is an illumination spell and not, say, a bolt of light.
 
+<topic:WhichSpell><style:heading>Which Spells Should I Study?</style>
+
+A few spellcasting classes, generally those associated with Wisdom or priesthood, have no direct control over which spells they gain; when they use the <color:keypress>G</color> Gain a Spell command, their gods select a new spell for them at random. Most classes, though, can choose a specific spell to study; as noted above, they can even study the same spell repeatedly!
+
+As a rule, you can <color:keyword>eventually</color> learn all spells in your realm or realms; the exceptions are if you swapped your secondary realm mid-game or if you studied a single spell more than once, and even then you can gain new spell slots with Scrolls of Spell. So the question is not so much "which spells should I study?" - you will study all or nearly all of them - as it is <color:y>which spell you should study right now</color>.
+
+Book spellcasters often have a hard time killing monsters in the early game, so it helps if your first spell is something <color:keyword>offensive</color> like Magic Missile. You can get a mage off the ground without offensive spells, but it takes care and patience! Once you have solid offensive options, utility spells like detection, escapes and buffs become more inviting.
+
 <topic:MagicRealms><style:heading>General Magic Realms</style>
 
 These magic realms are available as first and second realms to a wide variety of classes, though not necessarily to all book spellcasters.
