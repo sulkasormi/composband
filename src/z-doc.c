@@ -745,7 +745,8 @@ static void _doc_process_var(doc_ptr doc, cptr name)
     if (strcmp(name, "version") == 0)
     {
         string_ptr s = string_alloc_format("%d.%d.%s", VER_MAJOR, VER_MINOR, VER_PATCH);
-        if (coffee_break) string_append_s(s, "<color:U> (Coffee)</color>");
+        if (coffee_break == SPEED_COFFEE) string_append_s(s, "<color:U> (Coffee)</color>");
+        if (coffee_break == SPEED_INSTA_COFFEE) string_append_s(s, "<color:U> (Instant Coffee)</color>");
         if (thrall_mode) string_append_s(s, "<color:R> (Thrall)</color>");
         if (wacky_rooms) string_append_s(s, "<color:v> (Wacky)</color>");
         if (VERSION_IS_DEVELOPMENT)
