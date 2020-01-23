@@ -19,7 +19,7 @@
 #define VER_MAJOR 7
 #define VER_MINOR 1
 #define VER_PATCH "liquorice"
-#define VER_EXTRA 0
+#define VER_EXTRA 2
 #define VERSION_IS_DEVELOPMENT (TRUE)
 
 #define GAME_MODE_BEGINNER  0
@@ -27,6 +27,11 @@
 #define GAME_MODE_XXX       2
 #define GAME_MODE_MONSTER   3
 #define GAME_MODE_MAX       4
+
+#define SPEED_NORMAL        0
+#define SPEED_COFFEE        1
+#define SPEED_INSTA_COFFEE  2
+#define GAME_SPEED_MAX      3
 
 /*
  * Number of grids in each block (vertically)
@@ -2360,6 +2365,7 @@ enum {
 #define PR_WIPE             0x00010000     /* Hack -- Total Redraw */
 #define PR_MSG_LINE         0x00020000
 #define PR_POOL             0x00040000     /* Display Pool */
+#define PR_ROGUE_KEYS       0x00080000     /* Display Rogue Keys */
 
 /* xxx */
 /* xxx */
@@ -2406,6 +2412,7 @@ enum {
 #define PM_QUESTOR        0x00004000
 #define PM_NO_SUMMONERS   0x00008000
 #define PM_ALLOW_DEAD     0x00010000
+#define PM_NATIVE         0x00020000
 
 /* Bit flags for monster_desc() */
 #define MD_OBJECTIVE      0x00000001 /* Objective (or Reflexive) */
@@ -2733,6 +2740,8 @@ enum summon_specific_e {
 #define MFLAG2_MON_HIT_OKAY     0x00080000
 #define MFLAG2_WASPET           0x00100000   /* Monster is or was a pet */
 #define MFLAG2_DIRECT_PY_SUMMON 0x00200000   /* Monster was summoned by the player */
+#define MFLAG2_SPAWN            0x00400000   /* Monster was randomly spawned mid-level */
+#define MFLAG2_NATIVE           0x00800000   /* Monster is a quest native */
 
 /*
  * Object Flags (OF_*)
@@ -4397,6 +4406,7 @@ extern int PlayerUID;
 #define MON_SPECTATOR 488
 #define MON_BICLOPS       490
 #define MON_IVORY_MONK    492
+#define MON_CAVE_TROLL    496
 #define MON_ANTI_PALADIN 497
 #define MON_LOGRUS_MASTER    498
 #define MON_CHAOS_DRAKE           501
