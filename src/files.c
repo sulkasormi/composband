@@ -2739,8 +2739,11 @@ void process_player_name(bool sf)
     /* Load an autopick preference file */
     if (character_generated)
     {
-        if (!streq(old_player_base, player_base)) autopick_load_pref(FALSE);
+        if (!streq(old_player_base, player_base)) autopick_load_pref(0);
     }
+
+    /* Paranoia - create a default pref save base */
+    if (!strlen(pref_save_base)) strcpy(pref_save_base, player_base);
 }
 
 
