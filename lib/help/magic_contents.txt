@@ -7,6 +7,7 @@ Please choose one of the following help sections:
     <link:magic.txt#Spellbook> Spellbook Magic
     <link:magic.txt#Proficiency> Spell Proficiency
     <link:magic.txt#Book> What a Spellbook Looks Like
+    <link:magic.txt#WhichSpell> Which Spells Should I Study?
     <link:magic.txt#MagicRealms> General Magic Realms
     <link:magic.txt#OtherMagicRealms> Class-Specific Magic Realms
     <link:magic.txt#CastingSpells> On Casting Spells
