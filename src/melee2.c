@@ -4605,6 +4605,8 @@ void monster_gain_exp(int m_idx, int s_idx)
         int  div = 5;
         bool penalty = TRUE;
         int  exp;
+        int  mult = 1;
+        int  pmult = 1;
 
         if ( prace_is_(RACE_MON_QUYLTHULG)
           || (prace_is_(RACE_MON_RING) && p_ptr->riding == m_idx) )
@@ -4613,10 +4615,19 @@ void monster_gain_exp(int m_idx, int s_idx)
             penalty = FALSE;
         }
 
+        if ((coffee_break) && (p_ptr->lev < 50))
+        {
+            if (py_in_dungeon()) pmult = coffee_break + 1;
+            if ((prace_is_(RACE_MON_QUYLTHULG))
+              || (prace_is_(RACE_MON_RING) && p_ptr->riding == m_idx)) pmult += (py_in_dungeon() ? 2 : (coffee_break - 1));
+        }
+
         exp = new_exp / div;
-        gain_exp(exp);
+        gain_exp(exp * pmult);
+        p_ptr->pet_lv_kills++;
         if (penalty)
             new_exp -= exp;
+        if (pmult > 1) new_exp *= 2;
         if (new_exp < 0) new_exp = 0;
     }
 
