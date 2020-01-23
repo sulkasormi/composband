@@ -999,6 +999,10 @@ void leave_floor(void)
                 else
                     move_num = d_info[dungeon_type].mindepth;
             }
+            else if (coffee_break == SPEED_INSTA_COFFEE)
+            {
+                move_num = coffeebreak_recall_level(TRUE) - dun_level;
+            }
         }
         else if (change_floor_mode & CFM_UP)
         {
@@ -1436,6 +1440,10 @@ void change_floor(void)
     /* No dungeon feeling yet */
     p_ptr->feeling_turn = old_turn;
     p_ptr->feeling = 0;
+
+    /* No kills yet */
+    p_ptr->lv_kills = 0;
+    p_ptr->pet_lv_kills = 0;
 
     /* Clear all flags */
     change_floor_mode = 0L;
