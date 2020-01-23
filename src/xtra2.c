@@ -331,7 +331,7 @@ void check_experience(void)
         if (race_ptr->change_level)
             race_ptr->change_level(old_lev, p_ptr->lev);
 
-        autopick_load_pref(FALSE);
+        autopick_load_pref(0);
     }
 }
 
@@ -515,6 +515,9 @@ byte get_monster_drop_ct(monster_type *m_ptr)
     int number = 0;
     monster_race *r_ptr = &r_info[m_ptr->r_idx];
 
+    if ((coffee_break == SPEED_INSTA_COFFEE) && (m_ptr->mflag2 & MFLAG2_PLAYER_SUMMONED)) return 0;
+    if (is_pet(m_ptr) || p_ptr->inside_battle || p_ptr->inside_arena) return 0; /* Pets drop nothing */
+
     if ((r_ptr->flags1 & RF1_DROP_60) && (randint0(100) < 60)) number++;
     if ((r_ptr->flags1 & RF1_DROP_90) && ((r_ptr->flags1 & RF1_UNIQUE) || randint0(100) < 90)) number++;
     if  (r_ptr->flags1 & RF1_DROP_1D2) number += damroll(1, 2);
@@ -533,15 +536,26 @@ byte get_monster_drop_ct(monster_type *m_ptr)
 
     if ((number) && (coffee_break) && (py_in_dungeon()))
     {
+        int cap = (p_ptr->coffee_lv_revisits) ? 40 : MAX(40, 15 + (dun_level * 2 / 3));
+        int tapot = (p_ptr->lv_kills + p_ptr->pet_lv_kills);
         number *= 2;
         if (number > 7) number -= (number / 7);
         if (((dun_level >= 46) || (p_ptr->max_plv >= 38)) && (number > 5) && (!(r_ptr->flags1 & RF1_DROP_GREAT))
             && (!(r_ptr->flags1 & RF1_UNIQUE)) && (!(r_ptr->flags1 & RF1_ONLY_GOLD)) && (magik(MAX(10, (p_ptr->max_plv - 35) * 3)))) number -= 1;
+        if ((coffee_break == SPEED_INSTA_COFFEE) && ((tapot > cap) || (m_ptr->mflag2 & MFLAG2_SPAWN)))
+        {
+            int vahennys = ((number * tapot) / (tapot + 100));
+            if (randint0(tapot + 100) < ((number * tapot) % (tapot + 100))) vahennys++;
+//            msg_format("Tiputuksia: %d->%d", number, number - vahennys);
+            number = MAX(0, number - vahennys);
+            if (m_ptr->mflag2 & MFLAG2_SPAWN) /* Can random monsters even spawn in insta-coffee mode? Maybe in the town... */
+            {
+                number /= 2;
+            }
+        }
     }
 
-    if (is_pet(m_ptr) || p_ptr->inside_battle || p_ptr->inside_arena)
-        number = 0; /* Pets drop no stuff */
-    else if (m_ptr->mflag2 & MFLAG2_WASPET)
+    if (m_ptr->mflag2 & MFLAG2_WASPET)
     {
         number /= 8;
     }
@@ -553,7 +567,7 @@ byte get_monster_drop_ct(monster_type *m_ptr)
         if (r_ptr->flags1 & RF1_ONLY_GOLD)
             cap = 200; /* About 110k gp at DL21 */
         if (no_selling) cap /= 2; /* Gold drops are bigger with no_selling */
-        if (coffee_break) cap /= 2; /* More drops in coffee_break mode */
+        if (coffee_break) cap /= (coffee_break * 2); /* More drops in coffee_break mode */
         if (r_ptr->flags1 & RF1_NEVER_MOVE) cap /= 2;
         if (r_ptr->r_akills > cap)
             number = 0;
@@ -575,7 +589,7 @@ byte get_monster_drop_ct(monster_type *m_ptr)
                 max_kills = 100;
 
             if ((no_selling) && (r_ptr->flags1 & RF1_ONLY_GOLD)) max_kills /= 2;
-            if (coffee_break) max_kills /=2;
+            if (coffee_break) max_kills /= (coffee_break * 2);
 
             if (pr_ptr->r_skills > max_kills)
                 number = 0;
@@ -918,7 +932,7 @@ void monster_death(int m_idx, bool drop_item)
         else
         {
             msg_print("Victorious! You're on your way to becoming Champion.");
-            p_ptr->fame++;
+            gain_fame(1);
         }
 
         if (arena_info[p_ptr->arena_number].tval)
@@ -1518,6 +1532,22 @@ void monster_death(int m_idx, bool drop_item)
         break;
     }
 
+    if ((coffee_break == SPEED_INSTA_COFFEE) && (r_ptr->flags1 & RF1_UNIQUE) && (monster_pantheon(r_ptr)))
+    {
+        /* Get local object */
+        q_ptr = &forge;
+
+        object_prep(q_ptr, lookup_kind(TV_POTION, one_in_(7) ? SV_POTION_STAR_HEALING : SV_POTION_HEALING));
+
+        object_origins(q_ptr, ORIGIN_DROP);
+        q_ptr->origin_xtra = m_ptr->r_idx;
+
+        if (q_ptr->number > 3) q_ptr->number = 3;
+
+        /* Drop it in the dungeon */
+        (void)drop_near(q_ptr, -1, y, x);
+    }
+
     if (drop_chosen_item && (m_ptr->mflag2 & MFLAG2_DROP_MASK))
     {
         int k_idx;
@@ -2052,7 +2082,7 @@ void monster_death(int m_idx, bool drop_item)
         if (race_ptr->boss_r_idx && race_ptr->boss_r_idx == m_ptr->r_idx)
         {
             msg_print("Congratulations! You have killed the boss of your race!");
-            p_ptr->fame += 10;
+            gain_fame(10);
             chance = 100;
             p_ptr->update |= PU_BONUS; /* Player is now a "Hero" (cf IS_HERO()) */
             p_ptr->redraw |= PR_STATUS;
@@ -2087,7 +2117,7 @@ void monster_death(int m_idx, bool drop_item)
     }
 
     /* Re-roll drop count (leprechaun nerf) */
-    if ((r_ptr->r_akills > 40) || (r_ptr->flags1 & RF1_ONLY_GOLD)) m_ptr->drop_ct = MAX(m_ptr->stolen_ct, get_monster_drop_ct(m_ptr));
+    if ((r_ptr->r_akills > 40) || (r_ptr->flags1 & RF1_ONLY_GOLD) || (coffee_break == SPEED_INSTA_COFFEE)) m_ptr->drop_ct = MAX(m_ptr->stolen_ct, get_monster_drop_ct(m_ptr));
 
     /* Determine how much we can drop */
     number = m_ptr->drop_ct - m_ptr->stolen_ct;
@@ -2278,6 +2308,7 @@ static void get_exp_from_mon(int dam, monster_type *m_ptr, bool mon_dead)
 
     if (!m_ptr->r_idx) return;
     if (is_pet(m_ptr) || p_ptr->inside_battle || (m_ptr->mflag2 & MFLAG2_WASPET)) return;
+    if ((coffee_break == SPEED_INSTA_COFFEE) && (m_ptr->mflag2 & MFLAG2_PLAYER_SUMMONED)) return;
 
     /*
      * - Ratio of monster's level to player's level effects
@@ -2438,13 +2469,38 @@ static void get_exp_from_mon(int dam, monster_type *m_ptr, bool mon_dead)
         int coffee_mult = 2;
         if (p_ptr->lev < 50)
         {
-           coffee_mult = 3;
+//           coffee_mult = 3;
            if (!(r_ptr->flags2 & RF2_MULTIPLY)) coffee_mult = (((p_ptr->lev / 10) == 1) || ((p_ptr->lev >= 38))) ? 7 : 8;
            if (p_ptr->lev >= 42) coffee_mult = MIN(coffee_mult, 6);
            if (p_ptr->lev >= 47) coffee_mult = MIN(coffee_mult, 5);
         }
         s64b_mul(&new_exp, &new_exp_frac, 0, coffee_mult);
     }
+
+    if ((coffee_break == SPEED_INSTA_COFFEE))
+    {
+        int exp_div = 40;
+        int cap = 40;
+        int mult = ((p_ptr->lev / 14) == 2) ? 5 : 4;
+        int tapot = (p_ptr->lv_kills + p_ptr->pet_lv_kills);
+//        int mult = 4;
+        if (!py_in_dungeon()) mult = 7;
+        if (m_ptr->mflag2 & MFLAG2_NATIVE)
+        {
+            tapot = MIN(tapot, 60);
+        }
+        s64b_mul(&new_exp, &new_exp_frac, 0, mult);
+        s64b_div(&new_exp, &new_exp_frac, 0, (p_ptr->lev < 10) ? 4 : 3);
+        if ((tapot > cap) && (!(r_ptr->flags1 & RF1_UNIQUE)))
+        {
+            exp_div += (tapot / 4);
+            if (m_ptr->mflag2 & MFLAG2_SPAWN) exp_div += MAX(exp_div, 100);
+            s64b_mul(&new_exp, &new_exp_frac, 0, 40);
+            s64b_div(&new_exp, &new_exp_frac, 0, exp_div);
+        }
+    }
+
+    if ((new_exp > 0) && (mon_dead)) p_ptr->lv_kills++;
 
     /* Gain experience */
     gain_exp_64(new_exp, new_exp_frac);
@@ -2465,9 +2521,9 @@ void mon_check_kill_unique(int m_idx)
 
             if (one_in_(3) || r_ptr->level >= 80)
             {
-                p_ptr->fame++;
+                gain_fame(1);
                 if (r_ptr->level >= 90)
-                    p_ptr->fame++;
+                    gain_fame(1);
             }
 
             /* Mega-Hack -- Banor & Lupart */
@@ -2670,9 +2726,9 @@ bool mon_take_hit(int m_idx, int dam, int type, bool *fear, cptr note)
 
                 if (one_in_(3) || r_ptr->level >= 80)
                 {
-                    p_ptr->fame++;
+                    gain_fame(1);
                     if (r_ptr->level >= 90)
-                        p_ptr->fame++;
+                        gain_fame(1);
                 }
 
                 /* Mega-Hack -- Banor & Lupart */
