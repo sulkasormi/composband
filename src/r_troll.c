@@ -226,11 +226,11 @@ static void _gain_level(int new_level)
         || p_ptr->current_r_idx == MON_AKLASH )
       && new_level >= 30 )
     {
-        p_ptr->current_r_idx = MON_OLOG;
-        msg_print("You have evolved into an Olog.");
+        p_ptr->current_r_idx = MON_CAVE_TROLL;
+        msg_print("You have evolved into a Cave Troll.");
         p_ptr->redraw |= PR_MAP;
     }
-    if (p_ptr->current_r_idx == MON_OLOG && new_level >= 40)
+    if (((p_ptr->current_r_idx == MON_OLOG) || (p_ptr->current_r_idx == MON_CAVE_TROLL)) && (new_level >= 40))
     {
         switch (p_ptr->psubrace)
         {
@@ -294,6 +294,7 @@ static void _calc_bonuses(void)
         res_add(RES_ACID);
         break;
     case MON_OLOG:
+    case MON_CAVE_TROLL:
         res_add(RES_POIS);
         break;
     case MON_ETTIN:
@@ -358,6 +359,7 @@ static void _get_flags(u32b flgs[OF_ARRAY_SIZE])
         add_flag(flgs, OF_RES_ACID);
         break;
     case MON_OLOG:
+    case MON_CAVE_TROLL:
         add_flag(flgs, OF_RES_POIS);
         break;
     case MON_ETTIN:
