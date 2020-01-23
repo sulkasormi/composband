@@ -691,7 +691,8 @@ s16b get_obj_num(int level)
         k_ptr = &k_info[k_idx];
         if (k_ptr->tval == TV_FOOD && k_ptr->sval == SV_FOOD_AMBROSIA && dungeon_type != DUNGEON_OLYMPUS) continue;
 	if (easy_id && k_ptr->tval == TV_SCROLL && k_ptr->sval == SV_SCROLL_STAR_IDENTIFY) continue;
-        if (ironman_downward && k_ptr->tval == TV_SCROLL && k_ptr->sval == SV_SCROLL_RESET_RECALL) continue;
+                if (ironman_downward && k_ptr->tval == TV_SCROLL && k_ptr->sval == SV_SCROLL_RESET_RECALL) continue;
+        if ((coffee_break == SPEED_INSTA_COFFEE) && (k_ptr->tval == TV_POTION) && ((k_ptr->sval == SV_POTION_HEALING) || (k_ptr->sval == SV_POTION_STAR_HEALING) || (k_ptr->sval == SV_POTION_LIFE))) continue;
         /* Hack -- prevent embedded chests */
         if (opening_chest && (k_ptr->tval == TV_CHEST)) continue;
 
@@ -2091,8 +2092,8 @@ bool apply_magic(object_type *o_ptr, int lev, u32b mode)
     }
     if (coffee_break)
     {
-        f1 += 3;
-        f2 += 3;
+        f1 += (5 * coffee_break) - 2;
+        f2 += (5 * coffee_break) - 2;
     }
 
     f1 += virtue_current(VIRTUE_CHANCE) / 50;
@@ -3949,6 +3950,7 @@ bool make_gold(object_type *j_ptr, bool do_boost)
         au = au * kerroin / 100;
     }
     if (personality_is_(PERS_NOBLE)) au += (au / 4);
+    if (coffee_break == SPEED_INSTA_COFFEE) au += (au * 2 / 3);
     if (au > MAX_SHORT)
         au = MAX_SHORT - randint0(1000);
     j_ptr->pval = au;
