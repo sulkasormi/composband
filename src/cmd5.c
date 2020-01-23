@@ -371,7 +371,7 @@ static void change_realm2(int next_realm)
     handle_stuff();
 
     /* Load an autopick preference file */
-    autopick_load_pref(FALSE);
+    autopick_load_pref(0);
 }
 
 
