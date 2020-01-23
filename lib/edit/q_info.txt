@@ -448,4 +448,8 @@ W:heaven
 G:KILL(metatron)
 F:q_meta.txt
 
+N:98:30:The Angwilian Stables (Outpost)
+T:TOWN | GENERATE
+F:q_stable.txt
+
 # vim: filetype=qi :
