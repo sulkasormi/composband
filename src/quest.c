@@ -134,7 +134,7 @@ void quest_complete(quest_ptr q, point_t p)
     q->completed_turn = game_turn;
 
     virtue_add(VIRTUE_VALOUR, 2);
-    p_ptr->fame += randint1(2);
+    gain_fame(randint1(2));
     if (q->id == QUEST_OBERON || q->id == QUEST_SERPENT)
         p_ptr->fame += 50;
 
@@ -170,6 +170,7 @@ void quest_complete(quest_ptr q, point_t p)
     {
         int i, ct = (q->level/(coffee_break ? 13 : 25)) + 1;
         if ((q->level > 14) && (q->level < 25) && (one_in_(5))) ct++;
+        if (coffee_break == SPEED_INSTA_COFFEE) ct++;
         for (i = 0; i < ct; i++)
         {
             obj_t forge = {0};
@@ -178,6 +179,34 @@ void quest_complete(quest_ptr q, point_t p)
             else
                 msg_print("Software Bug ... you missed out on your reward!");
         }
+        if ((coffee_break == SPEED_INSTA_COFFEE) && (q->flags & QF_RANDOM))
+        {
+            int num = 0;
+            if (q->id == QUEST_OBERON) num = 11;
+            if ((num) || ((q->name) && (sscanf(q->name, "Random %d", &num) == 1)))
+            {
+                obj_t forge = {0};
+                object_prep(&forge, lookup_kind(TV_POTION, SV_POTION_HEALING));
+
+                object_origins(&forge, ORIGIN_ANGBAND_REWARD);
+
+                forge.number = num;
+
+                drop_near(&forge, -1, p.y, p.x);
+            }
+            if (num > 6)
+            {
+                obj_t forge = {0};
+                object_prep(&forge, lookup_kind(TV_POTION, SV_POTION_STAR_HEALING));
+
+                object_origins(&forge, ORIGIN_ANGBAND_REWARD);
+
+                forge.number = MAX(1, num - 8);
+
+                drop_near(&forge, -1, p.y, p.x);
+            }
+        }
+
         if (no_wilderness)
             gain_chosen_stat();
 
@@ -1079,6 +1108,8 @@ void quests_on_birth(void)
     quests_get(QUEST_SERPENT)->status = QS_TAKEN;
     r_info[MON_SERPENT].flagsx |= RFX_QUESTOR;
 
+    if (coffee_break == SPEED_INSTA_COFFEE) quests_get(QUEST_WARG)->status = QS_TAKEN;
+
     if (!no_wilderness)
     {
         quests_get(QUEST_METATRON)->status = QS_TAKEN;
@@ -1215,7 +1246,7 @@ void _dungeon_boss_death(mon_ptr mon)
         object_type forge, *q_ptr;
 
         gain_chosen_stat();
-        p_ptr->fame += randint1(3);
+        gain_fame(randint1(3));
 
         if (d_info[dungeon_type].final_artifact)
         {
