@@ -5187,6 +5187,13 @@ static cptr process_dungeon_file_expr(char **sp, char *fp)
                 v = tmp;
             }
 
+            /* Game speed */
+            else if (streq(b+1, "SPEED"))
+            {
+                sprintf(tmp, "%d", coffee_break);
+                v = tmp;
+            }
+
             else if (streq(b+1, "SPECIALITY"))
             {
                 if (p_ptr->pclass == CLASS_WEAPONMASTER)
