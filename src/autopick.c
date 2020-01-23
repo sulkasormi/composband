@@ -926,14 +926,18 @@ static cptr pickpref_filename(int filename_mode, char *other_base)
     }
 }
 
+static bool write_text_lines(cptr filename, cptr *lines_list);
+static cptr *read_text_lines(cptr filename);
+static void free_text_lines(cptr *lines_list);
 
 /*
  * Load an autopick preference file
  */
-void autopick_load_pref(bool disp_mes)
+void autopick_load_pref(byte mode)
 {
     char buf[80];
     errr err;
+    bool disp_mes = (mode & ALP_DISP_MES) ? TRUE : FALSE;
 
     /* Free old entries */
     init_autopick();
@@ -964,6 +968,45 @@ void autopick_load_pref(bool disp_mes)
             /* Success */
             msg_format("Loaded '%s'.", buf);
         }
+    }
+
+    /* Load old preferences after ordinal bump */
+    if ((err) && (mode & ALP_CHECK_NUMERALS) && (name_is_numbered(player_name)))
+    {
+        char old_py_name[32];
+        cptr *lines_list = NULL;
+        strcpy(old_py_name, player_name);
+
+        while (err != 0)
+        {
+            bump_numeral(player_name, -1);
+            if (!name_is_numbered(player_name)) break;
+            process_player_name(FALSE);
+
+            /* Try a filename with old player name */
+            my_strcpy(buf, pickpref_filename(PT_WITH_PNAME, NULL), sizeof(buf));
+
+            /* Load the file */
+            err = process_autopick_file(buf);
+            if (err == 0 && disp_mes)
+            {
+                /* Success */
+                msg_format("Loaded '%s'.", buf);
+            }
+            if (err == 0)
+            {
+                lines_list = read_text_lines(buf);
+                if (!lines_list) err = 1;
+            }
+        }
+        strcpy(player_name, old_py_name);
+        process_player_name(FALSE);
+        if ((!err) && (lines_list))
+        {
+            my_strcpy(buf, pickpref_filename(PT_WITH_PNAME, NULL), sizeof(buf));
+            (void)write_text_lines(buf, lines_list);
+        }
+        if (lines_list) free_text_lines(lines_list);
     }
 
     if (err && disp_mes)
