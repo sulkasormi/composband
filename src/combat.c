@@ -810,9 +810,9 @@ void display_weapon_info(doc_ptr doc, int hand)
         _display_weapon_slay(mult, SLAY_MULT_LIVING, force, num_blow, dd, ds, to_d, "Living", TERM_YELLOW, cols[0]);
 
     if (have_flag(flgs, OF_KILL_HUMAN))
-        _display_weapon_slay(mult, KILL_MULT_HUMAN, force, num_blow, dd, ds, to_d, "Human", TERM_YELLOW, cols[0]);
+        _display_weapon_slay(mult, KILL_MULT_HUMAN, force, num_blow, dd, ds, to_d, "Humans", TERM_YELLOW, cols[0]);
     else if (have_flag(flgs, OF_SLAY_HUMAN))
-        _display_weapon_slay(mult, SLAY_MULT_HUMAN, force, num_blow, dd, ds, to_d, "Human", TERM_YELLOW, cols[0]);
+        _display_weapon_slay(mult, SLAY_MULT_HUMAN, force, num_blow, dd, ds, to_d, "Humans", TERM_YELLOW, cols[0]);
 
     if (have_flag(flgs, OF_KILL_UNDEAD))
         _display_weapon_slay(mult, KILL_MULT_UNDEAD, force, num_blow, dd, ds, to_d, "Undead", TERM_YELLOW, cols[0]);
