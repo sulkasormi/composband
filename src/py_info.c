@@ -1291,9 +1291,15 @@ static void _build_uniques(doc_ptr doc)
         ct_uniques_dead = vec_length(v);
         if (ct_uniques_dead)
         {
-            doc_printf(doc, "You have defeated %d %s including %d unique monster%s in total. ",
+            doc_printf(doc, "You have defeated %d %s including %d unique monster%s in total",
                 ct, ct == 1 ? "enemy" : "enemies",
                 ct_uniques_dead, ct_uniques_dead == 1 ? "" : "s");
+
+            if ((coffee_break == SPEED_INSTA_COFFEE) && (p_ptr->lv_kills))
+            {
+                doc_printf(doc, " and %d monster%s on this level. ", p_ptr->lv_kills, p_ptr->lv_kills == 1 ? "" : "s");
+            }
+            else doc_printf(doc, ". ");
 
             if (ct_uniques_alive == 1)
                 doc_insert(doc, "There is 1 unique remaining.");
@@ -2457,6 +2463,12 @@ static cptr _game_mode_text[GAME_MODE_MAX] = {
     "XXX", 
     "<color:r>Monster</color>"
 };
+static cptr _game_speed_text[GAME_SPEED_MAX] = {
+    "Normal",
+    "<color:U>Coffeebreak</color>",
+    "<color:U>Instant Coffee</color>"
+};
+
 static void _build_options(doc_ptr doc)
 {
     doc_printf(doc, "<topic:Options>=================================== <color:keypress>O</color>ptions ===================================\n\n");
@@ -2465,7 +2477,7 @@ static void _build_options(doc_ptr doc)
         doc_printf(doc, " Game Mode:          %s\n", _game_mode_text[game_mode]);
 
     if (coffee_break)
-        doc_printf(doc, " Coffeebreak Mode:   On\n");
+        doc_printf(doc, " Game Speed:         %s\n", _game_speed_text[coffee_break]);
 
     if ((p_ptr->coffee_lv_revisits) || (coffee_break && p_ptr->total_winner))
     {
@@ -2620,7 +2632,7 @@ int oook_score(void)
 
 char *version_modifier(void)
 {
-    return format("%s%s%s", coffee_break ? " (coffee)" : "", thrall_mode ? " (thrall)" : "", wacky_rooms ? " (wacky)" : "");
+    return format("%s%s%s", coffee_break ? (coffee_break == SPEED_INSTA_COFFEE ? " (insta-coffee)" : " (coffee)") : "", thrall_mode ? " (thrall)" : "", wacky_rooms ? " (wacky)" : "");
 }
 
 static void _add_html_header(doc_ptr doc)
