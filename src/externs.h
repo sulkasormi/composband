@@ -188,6 +188,7 @@ extern s16b hack_m_idx_ii;
 extern s16b warning_hack_hp;
 extern s16b shuffling_hack_hp;
 extern byte poison_warning_hack;
+extern bool spawn_hack;
 extern s16b run_count;
 extern int hack_max_m_dam;
 extern int total_friends;
@@ -295,6 +296,7 @@ extern bool display_skill_num; /* Give skills numerically in char sheet */
 extern bool reforge_details; /* Show statistics before reforge */
 extern bool auto_sticky_labels; /* Automatically make power labels sticky */
 extern bool show_power; /* Display device powers in inventory */
+extern bool show_rogue_keys; /* Display roguelike keys if possible */
 extern bool decimal_stats;
 
 /*** Game-Play Options ***/
@@ -343,7 +345,7 @@ extern bool alert_poison;       /* Alert on poisoning */
 
 /*** Birth Options ***/
 
-extern bool coffee_break;   /* Coffeebreak mode */
+extern byte coffee_break;   /* Coffeebreak mode */
 extern bool easy_id;        /* Easy Identify */
 extern bool easy_lore;      /* Easy Monster Lore */
 extern bool empty_lore;     /* Always start with empty item lore */
@@ -429,6 +431,7 @@ extern int player_euid;
 extern int player_egid;
 extern char player_name[32];
 extern char player_base[32];
+extern char pref_save_base[32];
 extern char savefile[1024];
 extern char savefile_base[40];
 extern s16b lite_n;
@@ -654,7 +657,9 @@ extern s32b now_turn;
 extern bool use_menu;
 
 /* autopick.c */
-extern void autopick_load_pref(bool disp_mes);
+#define ALP_DISP_MES 0x01
+#define ALP_CHECK_NUMERALS 0x02
+extern void autopick_load_pref(byte mode);
 extern errr process_autopick_file_command(char *buf);
 #define AUTOPICK_COLOR_CODED 0x01
 extern string_ptr autopick_line_from_entry(autopick_type *entry, int options);
@@ -684,6 +689,11 @@ extern void py_birth_obj_aux(int tval, int sval, int qty);
 extern void py_birth_food(void);
 extern void py_birth_light(void);
 extern void py_birth_spellbooks(void);
+extern int find_roman_numeral(char *nimi);
+extern int find_arabic_numeral(char *nimi, int *paikka);
+extern bool num_to_roman(int _num, char *buf);
+extern void bump_numeral(char *nimi, int muutos);
+extern bool name_is_numbered(char *nimi);
 
 /* cave.c */
 extern int distance(int y1, int x1, int y2, int x2);
@@ -998,6 +1008,7 @@ extern s32b turn_real(s32b hoge);
 extern void prevent_turn_overflow(void);
 extern void process_world_aux_movement(void);  /* yuk!  refactor the recall code instead */
 extern void fame_on_failure(void);
+extern void gain_fame(int amt);
 extern byte coffeebreak_recall_level(bool laskuri);
 extern void recharged_notice(object_type *o_ptr, unsigned char neula);
 extern byte value_check_aux1(object_type *o_ptr); /* pseudo-id */
