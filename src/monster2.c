@@ -376,7 +376,7 @@ static void compact_monsters_aux(int i1, int i2)
 
             if (m2_ptr->parent_m_idx == i1)
             {
-                /* Don't call mon_set_parent() ... its the same parent! */
+                /* Don't call mon_set_parent() ... it's the same parent! */
                 m2_ptr->parent_m_idx = i2;
             }
         }
@@ -3485,6 +3485,8 @@ int place_monster_one(int who, int y, int x, int r_idx, int pack_idx, u32b mode)
     else if ((who > 0) && ((is_pet_idx(who)) || (is_friendly_idx(who)) || (m_list[who].mflag2 & MFLAG2_PLAYER_SUMMONED)))
         m_ptr->mflag2 |= MFLAG2_PLAYER_SUMMONED;
 
+    if (spawn_hack) m_ptr->mflag2 |= MFLAG2_SPAWN;
+
     /* Place the monster at the location */
     m_ptr->fy = y;
     m_ptr->fx = x;
@@ -3645,13 +3647,18 @@ int place_monster_one(int who, int y, int x, int r_idx, int pack_idx, u32b mode)
     m_ptr->mpower = 1000;
 
     /* Discourage level repetitions in coffee-break mode */
-    if ((coffee_break) && (m_ptr->r_idx == MON_SERPENT) && (p_ptr->coffee_lv_revisits))
+    if ((coffee_break) && ((m_ptr->r_idx == MON_SERPENT) || (coffee_break == SPEED_INSTA_COFFEE)) && (p_ptr->coffee_lv_revisits))
     {
         m_ptr->mpower += MIN(600, p_ptr->coffee_lv_revisits * 15);
         m_ptr->mspeed += MIN(30, p_ptr->coffee_lv_revisits / 2);
     }
 
     if (mode & PM_HASTE) (void)set_monster_fast(c_ptr->m_idx, 100);
+
+    if (mode & PM_NATIVE)
+    {
+        m_ptr->mflag2 |= MFLAG2_NATIVE;
+    }
 
     /* Give a random starting energy */
     if (!ironman_nightmare)
