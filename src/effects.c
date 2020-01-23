@@ -5948,7 +5948,7 @@ void change_race(int new_race, cptr effect_msg)
     handle_stuff();
 
     /* Load an autopick preference file */
-    if (old_race != p_ptr->prace) autopick_load_pref(FALSE);
+    if (old_race != p_ptr->prace) autopick_load_pref(0);
 
     /* Player's graphic tile may change */
     lite_spot(py, px);
