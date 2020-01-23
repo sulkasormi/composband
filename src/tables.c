@@ -2237,6 +2237,9 @@ option_type option_info[] =
     { &decimal_stats,               FALSE,  OPT_PAGE_TEXT, 2, 25,
     "decimal_stats",                "Display stats as decimals" },
 
+    { &show_rogue_keys,		    FALSE, OPT_PAGE_TEXT, 6, 3,
+    "show_rogue_keys",		    "Display roguelike movement keys as reminder" },
+
 //    { &display_percentages,         FALSE,  OPT_PAGE_TEXT, 1, 10,
 //    "display_percentages",          "Display percentages rather than status bars" },
 
@@ -2390,8 +2393,8 @@ option_type option_info[] =
 
     /*** Birth Options ***/
 
-	{ &coffee_break,		FALSE, OPT_PAGE_BIRTH, 6, 3,
-	"coffee_break",			"Coffee-break mode (accelerated game) (*)" },
+//	{ &coffee_break,		FALSE, OPT_PAGE_BIRTH, 6, 3,
+//	"coffee_break",			"Coffee-break mode (accelerated game) (*)" },
 
 	{ &easy_id,			FALSE, OPT_PAGE_BIRTH, 6, 31,
 	"easy_id",			"Easy Identify" },
