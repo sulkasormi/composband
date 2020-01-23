@@ -287,6 +287,18 @@ static void rd_options(savefile_ptr file)
         list_stairs = FALSE;
     }
 
+    /* Former slot of coffee_break mode option is now occupied by show_rogue_keys */
+    if (savefile_is_older_than(file, 7, 1, 2, 1))
+    {
+        if (show_rogue_keys)
+        {
+            coffee_break = SPEED_COFFEE;
+            previous_char.coffee_break = SPEED_COFFEE;
+            show_rogue_keys = (game_mode == GAME_MODE_BEGINNER);
+        }
+        else coffee_break = 0;
+    }
+
     /*** Window Options ***/
     for (n = 0; n < 8; n++) flag[n] = savefile_read_u32b(file);
     for (n = 0; n < 8; n++) mask[n] = savefile_read_u32b(file);
@@ -314,6 +326,7 @@ static void rd_quick_start(savefile_ptr file)
     int i;
 
     previous_char.game_mode = savefile_read_byte(file);
+    previous_char.coffee_break = (savefile_is_older_than(file, 7, 1, 2, 1)) ? 0 : savefile_read_byte(file);
     previous_char.psex = savefile_read_byte(file);
     previous_char.prace = savefile_read_byte(file);
     previous_char.psubrace = savefile_read_byte(file);
@@ -348,6 +361,7 @@ static void rd_extra(savefile_ptr file)
     rd_quick_start(file);
 
     game_mode = savefile_read_s32b(file);
+    if (!savefile_is_older_than(file, 7,1,2,1)) coffee_break = savefile_read_byte(file);
     if (savefile_is_older_than(file, 7,0,6,4)) game_pantheon = 0;
     else game_pantheon = savefile_read_byte(file);
 
@@ -690,6 +704,10 @@ static void rd_extra(savefile_ptr file)
     else p_ptr->upset_okay = savefile_read_byte(file) ? TRUE : FALSE;
     if (savefile_is_older_than(file, 7, 0, 9, 2)) p_ptr->py_summon_kills = 0;
     else p_ptr->py_summon_kills = savefile_read_byte(file);
+    if (savefile_is_older_than(file, 7, 1, 2, 1)) p_ptr->lv_kills = 0;
+    else p_ptr->lv_kills = savefile_read_s16b(file);
+    if (savefile_is_older_than(file, 7, 1, 2, 2)) p_ptr->pet_lv_kills = 0;
+    else p_ptr->pet_lv_kills = savefile_read_s16b(file);
     for (i = 0; i < 16; i++) (void)savefile_read_s32b(file);
     wipe_labels();
     if (!savefile_is_older_than(file, 7, 1, 0, 4))
