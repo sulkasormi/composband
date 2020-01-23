@@ -11,14 +11,14 @@ There are three main screens for the birth process. The first is a brief welcome
 <topic:Welcome><style:heading>The Welcome Screen</style>
 The first screen is the Welcome Screen. It simply introduces you to the game and allows you to choose one of several options that will control the birth process. It looks something like this:
 <style:screenshot>  <indent>
-Welcome to <color:R>FrogComposband</color>, a dungeon exploration role playing game.             
+Welcome to <color:R>FrogComposband</color>, a dungeon exploration role-playing game.
 Your goal is to defeat the dreaded <color:R>Serpent of Chaos</color>, but before you can         
 face it, you must battle many foes. Your first step is to create a              
 character for this quest. The following screens will guide you through          
 this process so that you may quickly begin playing. You can get general         
 help at any time by pressing <color:o>?</color>.                                                 
                                                                                 
-First, you must decide what type of game to play. <color:R>Beginner Mode</color> limits          
+First, you must decide what type of game to play. <color:R>Beginner Mode</color> limits
 the options available, simplifying things for new players.                      
                                                                                 
  <color:G>Choose the Type of Game to Play</color>                                                
@@ -45,8 +45,8 @@ Also on this screen may be an option to <color:keyword>Quick Start</color>. This
 <topic:RaceClass><style:heading>The Race/Class Screen</style>
 On this screen, you can change your race, your class and (unless you picked Beginner Mode) your personality. The screen will look something like the following:
 <style:screenshot>  <indent>
-Name : <color:B>Fatty Bolger</color>                                                             
-Sex  : <color:B>Male</color><color:d>                </color> STR  INT  WIS  DEX  CON  CHR  Life  BHP  Exp        
+Name : <color:B>Fatty Bolger</color>                    <color:o>Game Speed:</color> <color:v>Coffee-Break</color>
+Sex  : <color:B>Male</color><color:d>                </color> STR  INT  WIS  DEX  CON  CHR  Life  BHP  Exp
 Pers : <color:B>Ordinary</color><color:d>            </color> <color:G> +0</color><color:r>  </color><color:G> +0</color><color:r>  </color><color:G> +0</color><color:r>  </color><color:v> +0</color><color:r>  </color><color:G> +0</color><color:r>  </color><color:G> +0</color><color:r>  100%       100%</color>       
 Race : <color:B>Hobbit</color><color:d>              </color> <color:G> -2</color><color:r>  </color><color:G> +1</color><color:r>  </color><color:G> +1</color><color:r>  </color><color:v> +3</color><color:r>  </color><color:G> +2</color><color:r>  </color><color:G> +1</color><color:r>   92%  +14  120%</color>       
 Class: <color:B>Rogue</color><color:d>               </color> <color:G> +2</color><color:r>  </color><color:G> +1</color><color:r>  </color><color:G> -1</color><color:r>  </color><color:v> +3</color><color:r>  </color><color:G> +1</color><color:r>  </color><color:G> +1</color><color:r>  100%  +12  125%</color>       
@@ -58,6 +58,7 @@ Magic: <color:B>Burglary</color><color:d>           </color><color:R>== +0</colo
   <color:y>r</color>) Change Race<color:d>              </color> <color:y>TAB</color>) More Info                                   
   <color:y>c</color>) Change Class<color:d>             </color> <color:y>RET</color>) Next Screen                                 
   <color:y>m</color>) Change Magic<color:d>             </color> <color:y>ESC</color>) Prev Screen                                 
+  <color:y>g</color>) Change Game Speed<color:d>        </color>
 <color:d>                              </color>                                                  
 <color:G>Tip:</color> You can often get specific help by entering the uppercase letter           
      for a command. For example, type <color:o>R</color> on this screen to receive help          
@@ -76,7 +77,7 @@ Other fields in the table include:
 
 In addition to stats, your player also has skills (see <link:birth.txt#PrimarySkills> below). For example, your Melee skill determines your ability to hit monsters in hand to hand combat. Like stats, these skills are also affected by your birth options, and are displayed in the information table on this and the next screen; but, since your screen is only so wide, you'll need to use the <color:keypress>TAB</color> key:
 <style:screenshot>  <indent>
-Name : <color:B>Fatty Bolger</color>                                                             
+Name : <color:B>Fatty Bolger</color>                    <color:o>Game Speed:</color> <color:v>Coffee-Break</color>
 Sex  : <color:B>Male</color><color:d>                 </color> Disarming  Device     Save       Stealth
 Pers : <color:B>Ordinary</color><color:d>             </color> <color:R>Poor      </color> <color:R>Poor      </color> <color:R>Poor      </color> <color:R>Poor      </color>
 Race : <color:B>Hobbit</color><color:d>               </color> <color:G>Excellent </color> <color:y>Good      </color> <color:y>Good      </color> <color:y>Good      </color>
@@ -85,7 +86,7 @@ Magic: <color:B>Burglary</color><color:d>          </color> <color:R>==</color><
 </indent></style>
 And <color:keypress>TAB</color> again:
 <style:screenshot>  <indent>
-Name : <color:B>Fatty Bolger</color>
+Name : <color:B>Fatty Bolger</color>                    <color:o>Game Speed:</color> <color:v>Coffee-Break</color>
 Sex  : <color:B>Male</color><color:d>                 </color> Searching  Perception Melee      Archery
 Pers : <color:B>Ordinary</color><color:d>             </color> <color:R>Poor      </color> <color:R>Poor      </color> <color:R>Poor      </color> <color:R>Poor      </color>
 Race : <color:B>Hobbit</color><color:d>               </color> <color:g>Superb    </color> <color:b>Heroic    </color> <color:D>Very Bad  </color> <color:y>Good      </color>
@@ -96,7 +97,7 @@ Ah, we see that hobbits aren't so good at melee. However, the class choice of Ro
 
 Below the player fields and the information table is a list of commands that you may choose. These commands might bring up a menu of choices for you to select from, as, for example, the Change Race command:
 <style:screenshot>  <indent>
-Name : <color:B>Fatty Bolger</color>                                                             
+Name : <color:B>Fatty Bolger</color>                    <color:o>Game Speed:</color> <color:v>Coffee-Break</color>
 Sex  : <color:B>Male</color><color:d>                 </color> Searching  Perception Melee      Archery
 Pers : <color:B>Ordinary</color><color:d>             </color> <color:R>Poor      </color> <color:R>Poor      </color> <color:R>Poor      </color> <color:R>Poor      </color>
 Race : <color:B>Hobbit</color><color:d>               </color> <color:g>Superb    </color> <color:b>Heroic    </color> <color:D>Very Bad  </color> <color:y>Good      </color>
@@ -117,7 +118,7 @@ Magic: <color:B>Burglary</color><color:d>           </color><color:R>==</color><
 </indent></style>
 Aternatively, the command might take effect immediately, as with the Change Sex command. Or, if you use the Change Name command, you can edit your character's name directly in place:
 <style:screenshot>  <indent>
-Name : <color:y>Skinny Dipper</color>
+Name : <color:y>Skinny Dipper</color>                   <color:o>Game Speed:</color> <color:v>Coffee-Break</color>
 Sex  : <color:B>Male</color><color:d>                 </color> Searching  Perception Melee      Archery
 Pers : <color:B>Ordinary</color><color:d>             </color> <color:R>Poor      </color> <color:R>Poor      </color> <color:R>Poor      </color> <color:R>Poor      </color>
 Race : <color:B>Hobbit</color><color:d>               </color> <color:g>Superb    </color> <color:b>Heroic    </color> <color:D>Very Bad  </color> <color:y>Good      </color>
@@ -130,11 +131,14 @@ Magic: <color:B>Burglary</color><color:d>           </color><color:R>==</color><
   <color:y>r</color>) Change Race<color:d>              </color> <color:y>TAB</color>) More Info                                   
   <color:y>c</color>) Change Class<color:d>             </color> <color:y>RET</color>) Next Screen                                 
   <color:y>m</color>) Change Magic<color:d>             </color> <color:y>ESC</color>) Prev Screen                                 
+  <color:y>g</color>) Change Game Speed<color:d>        </color>
 <color:d>                              </color>                                                  
 <color:G>Tip:</color> You can often get specific help by entering the uppercase letter           
      for a command. For example, type <color:o>R</color> on this screen to receive help          
      on your currently selected race.                                           
 </indent></style>
+Changing the <color:keyword>game speed</color> does not affect your character directly; rather, it selects the type of game you wish to play. The options are <color:keyword>normal</color> (a full game with a wilderness), <color:keyword>coffee-break</color> (an accelerated game with no wilderness) and <color:keyword>instant-coffee</color> (an ultra-accelerated game). Game speed selection is not available in Beginner Mode, where the coffee-break setting is always used.
+
 When you are happy with your character choices, press <color:keypress>RET</color> to move on to the next screen. You can always <color:keypress>ESC</color> to back up and make changes, so experiment as much as you want.
 
 <topic:Stats><style:heading>The Stats Screen</style>
@@ -142,7 +146,7 @@ On this screen, you enter your starting stats. You do this by allocating points 
 
 Here is a sample screen:
 <style:screenshot>  <indent>
-Name : <color:B>Fatty Bolger</color>                                                             
+Name : <color:B>Fatty Bolger</color>                    <color:o>Game Speed:</color> <color:v>Coffee-Break</color>
 Sex  : <color:B>Male</color><color:d>                </color> STR  INT  WIS  DEX  CON  CHR  Life  BHP  Exp        
 Pers : <color:B>Ordinary</color><color:d>            </color> <color:G> +0</color><color:r>  </color><color:G> +0</color><color:r>  </color><color:G> +0</color><color:r>  </color><color:v> +0</color><color:r>  </color><color:G> +0</color><color:r>  </color><color:G> +0</color><color:r>  100%       100%</color>       
 Race : <color:B>Hobbit</color><color:d>              </color> <color:G> -2</color><color:r>  </color><color:G> +1</color><color:r>  </color><color:G> +1</color><color:r>  </color><color:v> +3</color><color:r>  </color><color:G> +2</color><color:r>  </color><color:G> +1</color><color:r>   92%  +14  120%</color>       
