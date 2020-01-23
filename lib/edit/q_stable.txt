@@ -1,0 +1,70 @@
+# The Angwilian Stables
+# New quest for FrogComposband 7.1.liquorice
+
+?:[EQU $QUEST98 Taken InProgress]
+D:Some time ago, a well-meaning chap from the elf-town of Angwil tried
+D:to open a livery stable here; but the beasts he offered for hire
+D:were completely untamed and too vile to be ridden, and his business
+D:failed miserably. The Angwilian left the town in humiliation;
+D:unfortunately, the beasts and the stables are still here, and
+D:the smell and reputation of the place are driving visitors away.
+D:We're not getting the steady inflow of new customers I need;
+D:and even the locals prefer to stay indoors where the stench is
+D:not as bad, making them harder to rob. I would appreciate it
+D:if you cleaned the old place up a bit.
+?:1
+
+?:[EQU $QUEST98 Completed]
+D:Thank you! I look forward to going out without a clothespin on my nose.
+?:1
+
+?:[EQU $QUEST98 Failed]
+D:Too bad. I guess there's nothing for it but to try to divert the river to
+D:wash the place out.
+?:1
+
+T:QUEST:NORMAL
+L:#:PERMANENT
+L:.:DIRT
+L:,:GRASS
+L:+:CLOSED_DOOR
+L:-:JAMMED_DOOR_7
+L:<:UP_STAIR
+L:h:MON(hrulga, NO_SLEEP)
+L:d:MON(fiendish donkey, NO_SLEEP)
+L:q:MON(disenchanter beast, NO_SLEEP)
+L:p:MON(pegasus, NO_SLEEP)
+L:u:MON(^unicorn$)
+# We definitely want "unicorn" to be its full name...
+L:~:OBJ(human skeleton)
+L:%:OBJ(elf skeleton)
+L:_:OBJ(STAFF_ENLIGHTENMENT, DEPTH+10)
+L:C:OBJ(capture ball)
+!:SCRAMBLE(d,h)
+M:###############################
+M:##......#~~............~C#....#
+M:##......#~...............#....#
+M:##..q...#.......d........#..p.#
+M:##......#................#....#
+M:##......#................#....#
+M:##......#................#....#
+M:##......#................#~..~#
+M:####++#########----########++##
+M:#..................,,,,,,,,,,,#
+M:#<.................,,,,,,,,,,,#
+M:#..................,,,,,,,,,,,#
+M:####++#########----########++##
+M:##......#................#~..~#
+M:##......#................#....#
+M:##......#................#....#
+M:##...q..#.......h........#..u.#
+M:##......#................#....#
+M:##......#~...............#....#
+M:##......#~~............%_#....#
+M:###############################
+R:OBJ(WAND_TELEPORT_AWAY)
+
+?:[EQU $CLASS Berserker]
+R:OBJ(potion of booze, NUMBER=10)
+
+# vim: filetype=q :
