@@ -1723,7 +1723,7 @@ void do_cmd_reload_autopick(void)
     if (!get_check("Reload auto-pick preference file? ")) return;
 
     /* Load the file with messages */
-    autopick_load_pref(TRUE);
+    autopick_load_pref(ALP_DISP_MES);
 }
 
 #ifdef ALLOW_MACROS
@@ -2001,11 +2001,10 @@ void do_cmd_macros(void)
         prt("(1) Load a user pref file", 4, 5);
 
 #ifdef ALLOW_MACROS
-        prt("(2) Append macros to a file", 5, 5);
+        prt("(2) Append macros and keymaps to a file", 5, 5);
         prt("(3) Query a macro", 6, 5);
         prt("(4) Create a macro", 7, 5);
         prt("(5) Remove a macro", 8, 5);
-        prt("(6) Append keymaps to a file", 9, 5);
         prt("(7) Query a keymap", 10, 5);
         prt("(8) Create a keymap", 11, 5);
         prt("(9) Remove a keymap", 12, 5);
@@ -2037,7 +2036,7 @@ void do_cmd_macros(void)
 
 
             /* Default filename */
-            sprintf(tmp, "%s.prf", player_base);
+            sprintf(tmp, "%s.prf", pref_save_base);
 
             /* Ask for a file */
             if (!askfor(tmp, 80)) continue;
@@ -2065,7 +2064,7 @@ void do_cmd_macros(void)
         else if (i == '2')
         {
             /* Prompt */
-            prt("Command: Append macros to a file", 16, 0);
+            prt("Command: Append macros and keymaps to a file", 16, 0);
 
 
             /* Prompt */
@@ -2073,16 +2072,17 @@ void do_cmd_macros(void)
 
 
             /* Default filename */
-            sprintf(tmp, "%s.prf", player_base);
+            sprintf(tmp, "%s.prf", pref_save_base);
 
             /* Ask for a file */
             if (!askfor(tmp, 80)) continue;
 
             /* Dump the macros */
             (void)macro_dump(tmp);
+            (void)keymap_dump(tmp);
 
             /* Prompt */
-            msg_print("Appended macros.");
+            msg_print("Appended macros and keymaps.");
 
         }
 
@@ -2192,31 +2192,6 @@ void do_cmd_macros(void)
 
             /* Prompt */
             msg_print("Removed a macro.");
-
-        }
-
-        /* Save keymaps */
-        else if (i == '6')
-        {
-            /* Prompt */
-            prt("Command: Append keymaps to a file", 16, 0);
-
-
-            /* Prompt */
-            prt("File: ", 18, 0);
-
-
-            /* Default filename */
-            sprintf(tmp, "%s.prf", player_base);
-
-            /* Ask for a file */
-            if (!askfor(tmp, 80)) continue;
-
-            /* Dump the macros */
-            (void)keymap_dump(tmp);
-
-            /* Prompt */
-            msg_print("Appended keymaps.");
 
         }
 
@@ -2485,7 +2460,7 @@ void do_cmd_visuals(void)
             prt("File: ", 17, 0);
 
             /* Default filename */
-            sprintf(tmp, "%s.prf", player_base);
+            sprintf(tmp, "%s.prf", pref_save_base);
 
             /* Query */
             if (!askfor(tmp, 70)) continue;
@@ -2510,7 +2485,7 @@ void do_cmd_visuals(void)
             prt("File: ", 17, 0);
 
             /* Default filename */
-            sprintf(tmp, "%s.prf", player_base);
+            sprintf(tmp, "%s.prf", pref_save_base);
 
             /* Get a filename */
             if (!askfor(tmp, 70)) continue;
@@ -2561,7 +2536,7 @@ void do_cmd_visuals(void)
             prt("File: ", 17, 0);
 
             /* Default filename */
-            sprintf(tmp, "%s.prf", player_base);
+            sprintf(tmp, "%s.prf", pref_save_base);
 
             /* Get a filename */
             if (!askfor(tmp, 70)) continue;
@@ -2630,7 +2605,7 @@ void do_cmd_visuals(void)
             prt("File: ", 17, 0);
 
             /* Default filename */
-            sprintf(tmp, "%s.prf", player_base);
+            sprintf(tmp, "%s.prf", pref_save_base);
 
             /* Get a filename */
             if (!askfor(tmp, 70)) continue;
@@ -3076,7 +3051,7 @@ void do_cmd_colors(void)
 
 
             /* Default file */
-            sprintf(tmp, "%s.prf", player_base);
+            sprintf(tmp, "%s.prf", pref_save_base);
 
             /* Query */
             if (!askfor(tmp, 70)) continue;
@@ -3107,7 +3082,7 @@ void do_cmd_colors(void)
 
 
             /* Default filename */
-            sprintf(tmp, "%s.prf", player_base);
+            sprintf(tmp, "%s.prf", pref_save_base);
 
             /* Get a filename */
             if (!askfor(tmp, 70)) continue;
