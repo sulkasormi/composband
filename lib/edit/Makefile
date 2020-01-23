@@ -76,6 +76,7 @@ CONFIG = a_info.txt \
 	q_sorcery.txt \
 	q_spawning_pits.txt \
 	q_spider.txt \
+	q_stable.txt \
 	q_staff.txt \
 	q_tengu_death_swords.txt \
 	q_thieves.txt \
@@ -104,6 +105,7 @@ CONFIG = a_info.txt \
 	t_pref.txt \
 	t_telmo.txt \
 	t_thalos.txt \
+	t_ulite.txt \
 	t_zul.txt \
 	v_info.txt \
 	vaults.txt \
