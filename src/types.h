@@ -1242,6 +1242,8 @@ struct player_type
     byte minislow;
     u16b mini_energy;
     byte py_summon_kills;
+    s16b lv_kills;
+    s16b pet_lv_kills;
 
     s16b energy_need;      /* Energy needed for next move */
 
@@ -1507,6 +1509,7 @@ typedef struct birther birther;
 struct birther
 {
     byte game_mode;
+    byte coffee_break;
     byte psex;         /* Sex index */
     byte prace;        /* Race index */
     byte psubrace;
