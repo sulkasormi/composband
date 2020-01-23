@@ -58,6 +58,7 @@ rings.txt \
 Runeknights.txt \
 Skillmasters.txt \
 small_lv.txt \
+speed.txt \
 start.txt \
 status_contents.txt \
 status.txt \
