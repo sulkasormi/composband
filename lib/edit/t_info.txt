@@ -1,7 +1,9 @@
 
-?:[AND [EQU $TOWN 1] [EQU $WILDERNESS NONE] ]
+?:[AND [EQU $TOWN 1] [EQU $SPEED 2] ]
+%:t_ulite.txt
+?:[AND [EQU $TOWN 1] [EQU $WILDERNESS NONE] [LEQ $SPEED 1] ]
 %:t_lite.txt
-?:[AND [EQU $TOWN 1] [EQU $WILDERNESS NORMAL] ]
+?:[AND [EQU $TOWN 1] [EQU $WILDERNESS NORMAL] [LEQ $SPEED 1] ]
 %:t_outp.txt
 ?:1
 
