@@ -5266,7 +5266,6 @@ static void load_all_pref_files(void)
         while (1)
         {
             bump_numeral(player_name, -1);
-            if (!name_is_numbered(player_name)) break;
             process_player_name(FALSE);
 
             sprintf(buf, "%s.prf", player_base);
@@ -5276,6 +5275,7 @@ static void load_all_pref_files(void)
                 strcpy(pref_save_base, player_base);
                 break;
             }
+            if (!name_is_numbered(player_name)) break;
         }
         strcpy(player_name, old_py_name);
         process_player_name(FALSE);
