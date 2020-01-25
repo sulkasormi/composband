@@ -282,8 +282,8 @@ bool num_to_roman(int _num, char *buf)
             if (jaljella >= _roman_cats[i].val) break;
         }
         if ((pituus + (i % 2)) >= PY_NAME_LEN) return FALSE;
-        if (!pituus) strcpy(buf, _roman_cats[i].lisays);
-        else strcat(buf, _roman_cats[i].lisays);
+        if (!pituus) strcpy(buf, " ");
+        strcat(buf, _roman_cats[i].lisays);
         pituus += (1 + (i % 2));
         jaljella -= _roman_cats[i].val;
     }
@@ -331,8 +331,7 @@ void bump_numeral(char *nimi, int muutos)
         _error = 1;
         if ((_old_num + muutos) <= 0) return;
         if (!num_to_roman(_old_num + muutos, luku)) break;
-        if (strlen(nimi) + strlen(luku) >= PY_NAME_LEN) break;
-        strcat(nimi, " ");
+        if (strlen(nimi) + strlen(luku) > PY_NAME_LEN) break;
         strcat(nimi, luku);
         return;
     }
