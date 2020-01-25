@@ -206,6 +206,8 @@ The advantage of inscribing items in this way is that they retain their label ev
 
 Inscriptions are added with the <color:keypress>Z</color>/<color:keypress>{</color> command, and can be used for many other purposes besides item labeling (see <link:objects.txt#Inscriptions> for more detail). The Mogaminator often automatically applies standard inscriptions to items; the three books of the above example were inscribed by the Mogaminator. Note that inscriptions are always based on the <color:keyword>underlying keyset</color>, which for the most part is the same as the original keyset; so if you want a staff to be labeled '<color:keypress>y</color>' in the "Use a Staff" prompt, you should inscribe it <color:keyword>@uy</color> rather than <color:keyword>@Zy</color> even if you use the roguelike keyset.
 
+<style:note>Note: Many object selection menus allow you to select items from any of several inventories, which you can toggle between by pressing <color:keypress>/</color>. In the <color:keypress>d</color>rop example above, the default inventory is your backpack, but you can use <color:keypress>/</color> to select an item from your equipment or quiver instead.</style>
+
 <color:D>
 Original   : Alexander Cutler and Andy Astrand
 Updated    : (2.7.6) by Russ Allbery (rra@cs.stanford.edu)
