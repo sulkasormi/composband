@@ -980,7 +980,6 @@ void autopick_load_pref(byte mode)
         while (err != 0)
         {
             bump_numeral(player_name, -1);
-            if (!name_is_numbered(player_name)) break;
             process_player_name(FALSE);
 
             /* Try a filename with old player name */
@@ -998,6 +997,7 @@ void autopick_load_pref(byte mode)
                 lines_list = read_text_lines(buf);
                 if (!lines_list) err = 1;
             }
+            if (!name_is_numbered(player_name)) break;
         }
         strcpy(player_name, old_py_name);
         process_player_name(FALSE);
