@@ -507,8 +507,8 @@ If you have pets, use this command to give orders or toggle pet options. See <li
   Interact with Macros        <color:keypress>@</color>
   Interact with Visuals       <color:keypress>%</color>
   Interact with Colors        <color:keypress>&</color>
-  Reload Auto-Picker Prefs    <color:keypress>$</color>
-  Edit Auto-Picker Prefs      <color:keypress>_</color>
+  Reload Mogaminator Prefs    <color:keypress>$</color>
+  Edit Mogaminator Prefs      <color:keypress>_</color>
 
 <color:U>Help Commands              Original        Roguelike</color>
   Help                        <color:keypress>?</color>
