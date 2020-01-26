@@ -2503,8 +2503,11 @@ static void get_exp_from_mon(int dam, monster_type *m_ptr, bool mon_dead)
             int _fake_hp = calc_xtra_hp_fake(33);
             exp_div = 44;
             mult = exp_div + ((200 - _fake_hp) / 5);
-            s64b_mul(&new_exp, &new_exp_frac, 0, mult);
-            s64b_div(&new_exp, &new_exp_frac, 0, exp_div);
+            if (mult != exp_div)
+            {
+                s64b_mul(&new_exp, &new_exp_frac, 0, mult);
+                s64b_div(&new_exp, &new_exp_frac, 0, exp_div);
+            }
         }
     }
 
