@@ -221,11 +221,11 @@ static s32b _brands_q(u32b flgs[OF_ARRAY_SIZE])
     cost += _check_brand_and_score(flgs, OF_SLAY_EVIL, 10000, &count);
     cost += _check_brand_and_score(flgs, OF_BRAND_POIS, 8500, &count);
     cost += _check_brand_and_score(flgs, OF_SLAY_LIVING, 8500, &count);
-    cost += _check_brand_and_score(flgs, OF_BRAND_ELEC, 7500, &count);
     cost += _check_brand_and_score(flgs, OF_SLAY_DEMON, 7500, &count);
     cost += _check_brand_and_score(flgs, OF_SLAY_UNDEAD, 7500, &count);
     cost += _check_brand_and_score(flgs, OF_SLAY_HUMAN, 7500, &count);
     cost += _check_brand_and_score(flgs, OF_BRAND_ACID, 7000, &count);
+    cost += _check_brand_and_score(flgs, OF_BRAND_ELEC, 7000, &count);
     cost += _check_brand_and_score(flgs, OF_KILL_ANIMAL, 6500, &count);
     cost += _check_brand_and_score(flgs, OF_SLAY_DRAGON, 6500, &count);
     cost += _check_brand_and_score(flgs, OF_BRAND_FIRE, 6000, &count);
@@ -1274,7 +1274,7 @@ s32b weapon_cost(object_type *o_ptr, int options)
 		else if (have_flag(flgs, OF_SLAY_GOOD)) s += _inc_slay(1.0 * 0.1, &ct);
 
         if (have_flag(flgs, OF_BRAND_ACID)) s += _inc_slay(1.5 * 0.15, &ct);
-        if (have_flag(flgs, OF_BRAND_ELEC)) s += _inc_slay(1.5 * 0.2, &ct);
+        if (have_flag(flgs, OF_BRAND_ELEC)) s += _inc_slay(1.5 * 0.15, &ct);
         if (have_flag(flgs, OF_BRAND_FIRE)) s += _inc_slay(1.5 * 0.1, &ct);
         if (have_flag(flgs, OF_BRAND_COLD)) s += _inc_slay(1.5 * 0.1, &ct);
         if (have_flag(flgs, OF_BRAND_DARK)) s += _inc_slay(3.0 * 0.1, &ct);
