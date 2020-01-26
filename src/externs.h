@@ -1769,6 +1769,7 @@ extern int  weight_limit(void);
 extern int  py_total_weight(void);
 extern void calc_bonuses(void);
 extern void calc_innate_blows(innate_attack_ptr a, int max);
+extern int  calc_xtra_hp_fake(int lev);
 extern void notice_stuff(void);
 extern void update_stuff(void);
 extern void redraw_stuff(void);
