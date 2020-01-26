@@ -3504,6 +3504,16 @@ static int _calc_xtra_hp(int amt)
     return py_prorata_level_aux(amt, w1, w2, w3);
 }
 
+int calc_xtra_hp_fake(int lev)
+{
+    int real_lev = p_ptr->lev;
+    int _hp;
+    p_ptr->lev = lev;
+    _hp = _calc_xtra_hp(304);
+    p_ptr->lev = real_lev;
+    return _hp;
+}
+
 /*
  * Calculate the players (maximal) hit points
  * Adjust current hitpoints if necessary
