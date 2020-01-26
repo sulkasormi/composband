@@ -2498,6 +2498,14 @@ static void get_exp_from_mon(int dam, monster_type *m_ptr, bool mon_dead)
             s64b_mul(&new_exp, &new_exp_frac, 0, 40);
             s64b_div(&new_exp, &new_exp_frac, 0, exp_div);
         }
+        else if ((tapot < 40) && (p_ptr->lev < 44)) /* Speed up mage-type XP gain to limit desire to grind */
+        {
+            int _fake_hp = calc_xtra_hp_fake(33);
+            exp_div = 44;
+            mult = exp_div + ((200 - _fake_hp) / 5);
+            s64b_mul(&new_exp, &new_exp_frac, 0, mult);
+            s64b_div(&new_exp, &new_exp_frac, 0, exp_div);
+        }
     }
 
     if ((new_exp > 0) && (mon_dead)) p_ptr->lv_kills++;
