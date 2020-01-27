@@ -150,7 +150,7 @@ void clear_mind_spell(int cmd, variant *res)
         var_set_string(res, "");
         break;
     case SPELL_SPOIL_DESC:
-        var_set_string(res, "Player regains 3 + L/20 sp. This won't work if the player has any pets.");
+        var_set_string(res, "Player regains 2+(L/30) SP. This won't work if the player has any pets.");
         break;
     case SPELL_CAST:
     {
@@ -170,10 +170,7 @@ void clear_mind_spell(int cmd, variant *res)
 
         msg_print("You feel your head clear a little.");
 
-        if (p_ptr->pclass == CLASS_PSION) /* Testing ... */
-            amt = 3 + p_ptr->lev/10;
-        else
-            amt = 3 + p_ptr->lev/20;
+        amt = 2 + p_ptr->lev/30;
 
         sp_player(amt);
         var_set_bool(res, TRUE);
