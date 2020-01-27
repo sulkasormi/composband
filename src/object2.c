@@ -3728,6 +3728,10 @@ static bool _make_object_aux(object_type *j_ptr, u32b mode)
     if (!apply_magic(j_ptr, object_level, mode))
         return FALSE;
 
+    /* Hack - check for unsuitable ego, e.g. gloves of protection on a mage */
+    if ((_drop_tailored) && (object_is_icky(j_ptr, TRUE)))
+        return FALSE;
+
     /* Note: It is important to do this *after* apply_magic rather than in, say,
        object_prep() since artifacts should never spawn multiple copies. Ego ammo
        should, but other egos (e.g. lights) should not. */
