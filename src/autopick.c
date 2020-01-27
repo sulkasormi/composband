@@ -567,12 +567,12 @@ static bool autopick_new_entry(autopick_type *entry, cptr str, bool allow_defaul
 }
 
 /* Check object's ickiness */
-static bool _object_is_icky(object_type *o_ptr)
+bool object_is_icky(object_type *o_ptr, bool assume_id)
 {
     if (!object_is_wearable(o_ptr)) return FALSE;
     else {
         class_t *class_ptr = get_class();
-        if ((o_ptr->tval == TV_GLOVES) && (class_ptr->caster_info) && ((obj_is_identified(o_ptr)) || (o_ptr->feeling == FEEL_AVERAGE) || (o_ptr->feeling == FEEL_GOOD)))
+        if ((o_ptr->tval == TV_GLOVES) && (class_ptr->caster_info) && ((assume_id) || (obj_is_identified(o_ptr)) || (o_ptr->feeling == FEEL_AVERAGE) || (o_ptr->feeling == FEEL_GOOD)))
         {
             if (get_caster_info()->options & CASTER_GLOVE_ENCUMBRANCE)
             {
@@ -778,7 +778,7 @@ static void autopick_entry_from_object(autopick_type *entry, object_type *o_ptr)
         name = FALSE;
     }
 
-    if (_object_is_icky(o_ptr)) ADD_FLG(FLG_ICKY);
+    if (object_is_icky(o_ptr, FALSE)) ADD_FLG(FLG_ICKY);
 
     if (o_ptr->tval >= TV_LIFE_BOOK && 0 == o_ptr->sval)
         ADD_FLG(FLG_FIRST);
@@ -1477,7 +1477,7 @@ static bool is_autopick_aux(object_type *o_ptr, autopick_type *entry, cptr o_nam
         return FALSE;
 
     /*** Icky items ***/
-    if (IS_FLG(FLG_ICKY) && !_object_is_icky(o_ptr))
+    if (IS_FLG(FLG_ICKY) && !object_is_icky(o_ptr, FALSE))
         return FALSE;
 
     /*** Artifact object ***/
