@@ -4605,7 +4605,6 @@ void monster_gain_exp(int m_idx, int s_idx)
         int  div = 5;
         bool penalty = TRUE;
         int  exp;
-        int  mult = 1;
         int  pmult = 1;
 
         if ( prace_is_(RACE_MON_QUYLTHULG)
