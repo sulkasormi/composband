@@ -668,6 +668,7 @@ extern void autopick_alter_obj(obj_ptr o_ptr, bool allow_destroy);
 extern void autopick_get_floor(bool allow_identified);
 extern bool autopick_autoregister(object_type *o_ptr);
 extern void do_cmd_edit_autopick(void);
+extern bool object_is_icky(object_type *o_ptr, bool assume_id);
 
 /* birth.c */
 extern cptr realm_jouhou[VALID_REALM];
