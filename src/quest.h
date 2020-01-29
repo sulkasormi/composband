@@ -89,6 +89,7 @@ extern void       quests_cleanup(void);
 
 extern quest_ptr  quests_get_current(void);
 extern int        quest_id_current(void);
+extern int        quest_get_rnd_num(int *num);
 extern quest_ptr  quests_get(int id);
 extern cptr       quests_get_name(int id);
 extern int        quests_get_level(int id);
