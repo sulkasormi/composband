@@ -1335,7 +1335,7 @@ arena_type arena_info[MAX_ARENA_MONS + 2] =
     { MON_SPIRIT_NAGA,   0,         0                             },
     { MON_BASILISK,      0,         0                             },
     { MON_MITHRIL_GOLEM, TV_WAND,   EFFECT_BALL_ACID              },
-    { MON_SHADOW_DRAKE,  0,         0                             },
+    { MON_SHADOW_DRAKE,  TV_WAND,   EFFECT_CONFUSE_MONSTER        },
     { MON_OGRE_SHAMAN,   TV_SCROLL, SV_SCROLL_ACQUIREMENT         },
     { MON_BICLOPS,       TV_POTION, SV_POTION_SELF_KNOWLEDGE      },
     { MON_ETHER_DRAKE,   TV_SCROLL, SV_SCROLL_RUNE_OF_PROTECTION  },
