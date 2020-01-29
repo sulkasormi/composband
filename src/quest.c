@@ -99,6 +99,22 @@ void quest_take(quest_ptr q)
     string_free(s);
 }
 
+int quest_get_rnd_num(int *num)
+{
+    quest_ptr q;
+    int tulos = 0;
+    if (!_current) return 0;
+    q = quests_get_current();
+    if ((!q) || (!q->name)) return 0;
+    if (!(q->flags & QF_RANDOM)) return 0;
+    if (sscanf(q->name, "Random %d", &tulos) == 1)
+    {
+        if (num != NULL) *num = tulos;
+        return tulos;
+    }
+    return 0;
+}
+
 void quest_complete(quest_ptr q, point_t p)
 {
     assert(q);
@@ -183,7 +199,7 @@ void quest_complete(quest_ptr q, point_t p)
         {
             int num = 0;
             if (q->id == QUEST_OBERON) num = 11;
-            if ((num) || ((q->name) && (sscanf(q->name, "Random %d", &num) == 1)))
+            if ((num) || (quest_get_rnd_num(&num)))
             {
                 obj_t forge = {0};
                 object_prep(&forge, lookup_kind(TV_POTION, SV_POTION_HEALING));
