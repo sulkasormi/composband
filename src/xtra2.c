@@ -2489,6 +2489,11 @@ static void get_exp_from_mon(int dam, monster_type *m_ptr, bool mon_dead)
         {
             tapot = MIN(tapot, 60);
         }
+        if ((dun_level >= 99) && (p_ptr->lev < 50)) mult = 6;
+        else if ((mult < 7) && (dun_level > 5) && (tapot <= cap) && (quest_get_rnd_num(NULL) * 4 > p_ptr->lev - 10))
+        { /* Player is really low-level for the current quest, help him along a bit */
+            mult++;
+        }
         s64b_mul(&new_exp, &new_exp_frac, 0, mult);
         s64b_div(&new_exp, &new_exp_frac, 0, (p_ptr->lev < 10) ? 4 : 3);
         if ((tapot > cap) && (!(r_ptr->flags1 & RF1_UNIQUE)))
