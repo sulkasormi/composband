@@ -3649,8 +3649,8 @@ int place_monster_one(int who, int y, int x, int r_idx, int pack_idx, u32b mode)
     /* Discourage level repetitions in coffee-break mode */
     if ((coffee_break) && ((m_ptr->r_idx == MON_SERPENT) || (coffee_break == SPEED_INSTA_COFFEE)) && (p_ptr->coffee_lv_revisits) && (is_hostile(m_ptr)))
     {
-        m_ptr->mpower += MIN(600, p_ptr->coffee_lv_revisits * 15);
-        m_ptr->mspeed += MIN(30, p_ptr->coffee_lv_revisits / 2);
+        m_ptr->mpower += MIN(600, p_ptr->coffee_lv_revisits * coffee_break * 15);
+        m_ptr->mspeed += MIN(30, p_ptr->coffee_lv_revisits * coffee_break / 2);
     }
 
     if (mode & PM_HASTE) (void)set_monster_fast(c_ptr->m_idx, 100);
