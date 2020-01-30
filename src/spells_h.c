@@ -567,7 +567,7 @@ void kutar_expand_spell(int cmd, variant *res)
         var_set_string(res, "Expand Horizontally");
         break;
     case SPELL_DESC:
-        var_set_string(res, "Expand like a cat, gaining +50 AC but becoming more susceptible to magical attacks.");
+        var_set_string(res, "Expand like a cat, temporarily giving +35 AC but a very poor saving throw.");
         break;
     case SPELL_CAST:
         set_tsubureru(randint1(20) + 30, FALSE);
