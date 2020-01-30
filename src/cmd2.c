@@ -3989,6 +3989,13 @@ static byte _travel_flow_bonus(feature_type *f_ptr)
         if (res_pct(RES_FIRE) <= 50) bonus *= 4;
         return bonus;
     }
+    else if (have_flag(f_ptr->flags, FF_ACID))
+    {
+        int bonus = (have_flag(f_ptr->flags, FF_DEEP)) ? 12 : 6;
+        if (p_ptr->levitation) bonus /= 2;
+        if (res_pct(RES_ACID) <= 50) bonus *= 4;
+        return bonus;
+    }
     else if ((!p_ptr->levitation) && (!p_ptr->can_swim) && (have_flag(f_ptr->flags, FF_WATER)) && (have_flag(f_ptr->flags, FF_DEEP)) && (!elemental_is_(ELEMENTAL_WATER)) && (py_total_weight() > weight_limit()))
     {
         return 4;
