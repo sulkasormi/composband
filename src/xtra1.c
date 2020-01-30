@@ -4118,7 +4118,7 @@ void calc_bonuses(void)
         p_ptr->dis_to_a += 100;
     }
     /* Temporary shield */
-    else if (p_ptr->tsubureru || IS_STONE_SKIN() || p_ptr->magicdef)
+    else if (IS_STONE_SKIN() || p_ptr->magicdef)
     {
         int bonus = 10 + 40*p_ptr->lev/50;
         if (!(p_ptr->special_defense & KATA_MUSOU))
@@ -4126,6 +4126,12 @@ void calc_bonuses(void)
             p_ptr->to_a += bonus;
             p_ptr->dis_to_a += bonus;
         }
+    }
+
+    if (p_ptr->tsubureru)
+    {
+        p_ptr->to_a += 35;
+        p_ptr->dis_to_a += 35;
     }
 
     if (IS_OPPOSE_ACID()) res_add(RES_ACID);
