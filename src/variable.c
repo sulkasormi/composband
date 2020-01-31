@@ -21,7 +21,7 @@ int game_mode = GAME_MODE_NORMAL;
  */
 cptr copyright[5] =
 {
-    "Copyright (c) 1989 James E. Wilson, Robert A. Keoneke",
+    "Copyright (c) 1989 James E. Wilson, Robert A. Koeneke",
     "",
     "This software may be copied and distributed for educational, research,",
     "and not for profit purposes provided that this copyright and statement",
@@ -275,6 +275,8 @@ bool show_discovery; /* Show time of discovery in object description */
 bool final_dump_origins; /* Show equipment origins in final dumps */
 bool always_dump_origins; /* Show equipment origins in all dumps */
 bool list_stairs;  /* Display stairs in object list */
+bool show_future_powers; /* Include future powers in lists */
+bool show_future_spells; /* Include future spells in lists */
 bool display_skill_num; /* Give skills numerically in char sheet */
 bool reforge_details; /* Show statistics before proceeding with reforge */
 bool auto_sticky_labels; /* Automatically make power labels sticky */
