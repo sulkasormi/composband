@@ -2702,7 +2702,7 @@ static int _get_spells_aux(spell_info* spells, int max)
         spell_info *base = &_specialities[p_ptr->psubclass].spells[i];
         if (base->level <= 0) break;
         if (ct >= max) break;
-        if (base->level <= p_ptr->lev)
+        if ((base->level <= p_ptr->lev) || (show_future_spells))
         {
             spell_info* current = &spells[ct++];
             current->fn = base->fn;
