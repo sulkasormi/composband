@@ -484,7 +484,7 @@ static void _nether_storm_spell(int cmd, variant *res)
 /****************************************************************
  * Spell Table and Exports
  ****************************************************************/
-#define MAX_POLI_SKILL 14
+#define MAX_POLI_SKILL 15
 
 static spell_info _spells[MAX_POLI_SKILL] =
 {
@@ -503,6 +503,7 @@ static spell_info _spells[MAX_POLI_SKILL] =
     {39,  39,   0, _filibuster_spell},
     {42,  42,  60, _create_chaos_spell},
     {45,  45,  60, _nether_storm_spell},
+    {-1,  -1,  -1, NULL}
 };
 
 static int _get_toggle(void)
