@@ -292,6 +292,8 @@ extern bool show_discovery; /* Show pickup time */
 extern bool final_dump_origins; /* Show equipment origins in final dumps */
 extern bool always_dump_origins; /* Show equipment origins in all dumps */
 extern bool list_stairs; /* Display stairs in the object list */
+extern bool show_future_powers; /* Include future powers in lists */
+extern bool show_future_spells; /* Include future spells in lists */
 extern bool display_skill_num; /* Give skills numerically in char sheet */
 extern bool reforge_details; /* Show statistics before reforge */
 extern bool auto_sticky_labels; /* Automatically make power labels sticky */
