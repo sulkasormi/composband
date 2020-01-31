@@ -3390,7 +3390,7 @@ int py_prorata_level_aux(int amt, int w1, int w2, int w3)
 
 /* Experimental: Adjust the non-linearity of extra hp distribution based on class.
    It's probably best to have all this in one place. See also the hp.ods design doc. */
-static int _calc_xtra_hp(int amt)
+static int _calc_xtra_hp_aux(int amt)
 {
     int w1 = 1, w2 = 1, w3 = 1;
     int class_idx = get_class_idx();
@@ -3509,9 +3509,20 @@ int calc_xtra_hp_fake(int lev)
     int real_lev = p_ptr->lev;
     int _hp;
     p_ptr->lev = lev;
-    _hp = _calc_xtra_hp(304);
+    _hp = _calc_xtra_hp_aux(304);
     p_ptr->lev = real_lev;
     return _hp;
+}
+
+static int _calc_xtra_hp(int amt)
+{
+    int tulos = _calc_xtra_hp_aux(amt);
+    if ((coffee_break == SPEED_INSTA_COFFEE) && (tulos < p_ptr->lev * amt / 50))
+    {
+        tulos -= (tulos / 3);
+        tulos += (p_ptr->lev * amt / 150);
+    }
+    return tulos;
 }
 
 /*
