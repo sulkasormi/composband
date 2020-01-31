@@ -692,24 +692,7 @@ static power_info _powers[] =
 
 static int _get_spells(spell_info* spells, int max)
 {
-    int i, ct = 0;
-
-    for (i = 0; i < MAX_POLI_SKILL; i++)
-    {
-        spell_info *base = &_spells[i];
-        if (ct >= max) break;
-        if (base->level <= p_ptr->lev)
-        {
-            spell_info* current = &spells[ct];
-            current->fn = base->fn;
-            current->level = base->level;
-            current->cost = base->cost;
-            current->fail = calculate_fail_rate(base->level, base->fail, p_ptr->stat_ind[A_CHR]);
-
-            ct++;
-        }
-    }
-    return ct;
+    return get_spells_aux(spells, MIN(max, MAX_POLI_SKILL), _spells);
 }
 
 static void _character_dump(doc_ptr doc)
