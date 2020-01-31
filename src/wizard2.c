@@ -1836,6 +1836,8 @@ void do_cmd_debug(void)
     {
         char tmp_val[80];
         long tmp_long;
+
+        sprintf(tmp_val, "%d", p_ptr->exp);
         /* Query */
         if (!get_string("Experience: ", tmp_val, 9)) break;
 
