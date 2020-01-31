@@ -505,9 +505,6 @@ static spell_info _spells[MAX_DUELIST_SPELLS] =
 
 static int _get_spells(spell_info* spells, int max)
 {
-    int i;
-    int ct = 0;
-    int stat_idx = p_ptr->stat_ind[A_DEX];
     cptr msg = duelist_equip_error();
 
     if (msg)
@@ -516,23 +513,7 @@ static int _get_spells(spell_info* spells, int max)
         return 0;
     }
     
-    /* Initialize a (copied) spell list with current casting costs and fail rates */
-    for (i = 0; i < MAX_DUELIST_SPELLS; i++)
-    {
-        spell_info *base = &_spells[i];
-        if (ct >= max) break;
-        if (base->level <= p_ptr->lev)
-        {
-            spell_info* current = &spells[ct];
-            current->fn = base->fn;
-            current->level = base->level;
-            current->cost = base->cost;
-
-            current->fail = calculate_fail_rate(base->level, base->fail, stat_idx);            
-            ct++;
-        }
-    }
-    return ct;
+    return get_spells_aux(spells, MIN(max, MAX_DUELIST_SPELLS), _spells);
 }
 
 static void _calc_bonuses(void)
