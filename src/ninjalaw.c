@@ -66,6 +66,7 @@ static power_info _powers[] =
     { -1, {-1, -1, -1, NULL}}
 };
 
+/* NOTE: We avoid using get_spells_aux() due to weird casting stat */
 static int _get_spells(spell_info* spells, int max)
 {
     int i, ct = 0;
@@ -74,7 +75,7 @@ static int _get_spells(spell_info* spells, int max)
     {
         spell_info *base = &_spells[i];
         if (ct >= max) break;
-        if (base->level <= p_ptr->lev)
+        if ((base->level <= p_ptr->lev) || (show_future_spells))
         {
             spell_info* current = &spells[ct];
             current->fn = base->fn;
