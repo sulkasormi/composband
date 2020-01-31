@@ -2082,6 +2082,7 @@ cptr window_flag_desc[32] =
 /*
  * Available Options
  *
+ * 0,* and 1,* space are now fully occupied
  */
 option_type option_info[] =
 {
@@ -2282,6 +2283,12 @@ option_type option_info[] =
 
     { &list_stairs,                  FALSE,  OPT_PAGE_TEXT, 1, 10,
     "list_stairs",                  "Display stairs in the object list" },
+
+    { &show_future_powers,           TRUE,  OPT_PAGE_TEXT, 1, 0,
+    "show_future_powers",           "Include known future race/class powers in lists" },
+
+    { &show_future_spells,           FALSE,  OPT_PAGE_TEXT, 2, 20,
+    "show_future_spells",           "Include known future class spells in lists" },
 
     { &display_skill_num,            FALSE,  OPT_PAGE_TEXT, 2, 22,
     "display_skill_num",            "Display skills as numbers in character sheet" },
