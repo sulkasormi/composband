@@ -488,7 +488,7 @@ void strafing_spell(int cmd, variant *res)
  * Spell Table
  ****************************************************************/
 
-#define MAX_DUELIST_SPELLS    8
+#define MAX_DUELIST_SPELLS    9
 
 static spell_info _spells[MAX_DUELIST_SPELLS] = 
 {
@@ -501,6 +501,7 @@ static spell_info _spells[MAX_DUELIST_SPELLS] =
     { 40,  60,  0, _isolation_spell },
     { 45,  60,  0, _darting_duel_spell },
     { 48,  80,  0, _phase_charge_spell },
+    {-1,  -1,  -1, NULL}
 }; 
 
 static int _get_spells(spell_info* spells, int max)
