@@ -1986,7 +1986,7 @@ static int _get_powers(spell_info* spells, int max)
     {
         spell_info *base = &_powers[i];
         if (ct >= max) break;
-        if (base->level <= p_ptr->lev)
+        if ((base->level <= p_ptr->lev) || (show_future_powers))
         {
             spell_info* current = &spells[ct];
             current->fn = base->fn;
@@ -2015,7 +2015,7 @@ static int _get_spells(spell_info* spells, int max)
         spell_info *base = &pact->spells[i];
         if (base->level <= 0) break;
         if (ct >= max) break;
-        if (base->level <= p_ptr->lev)
+        if ((base->level <= p_ptr->lev) || (show_future_spells))
         {
             spell_info* current = &spells[ct++];
             current->fn = base->fn;
