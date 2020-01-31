@@ -442,7 +442,7 @@ static void _list_spells(spell_info* spells, int ct, int max_cost, char *labels,
             if (col_height == ct) strcat(temp, "  ");
         }
 
-        if (col_height == ct)
+        if ((col_height == ct) && (spell->level <= p_ptr->lev))
             strcat(temp, format(" %s", var_get_string(&info)));
 
         if (spell->fail == 100)
@@ -499,8 +499,11 @@ static bool _describe_spell(spell_info *spell, int col_height)
             line++;
         }
 
-        (spell->fn)(SPELL_INFO, &info);
-        put_str(format("%^s", var_get_string(&info)), line, display.x + 2);
+        if (spell->level <= p_ptr->lev)
+        {
+            (spell->fn)(SPELL_INFO, &info);
+            put_str(format("%^s", var_get_string(&info)), line, display.x + 2);
+        }
         result = FALSE;
     }
     var_clear(&info);
@@ -1302,7 +1305,7 @@ int get_powers_aux(spell_info* spells, int max, power_info* table)
         if (ct >= max) break;
         if (!base->spell.fn) break;
 
-        if (base->spell.level <= p_ptr->lev)
+        if ((base->spell.level <= p_ptr->lev) || (show_future_powers))
         {
             spell_info* current = &spells[ct];
             current->fn = base->spell.fn;
@@ -1333,7 +1336,7 @@ int get_spells_aux(spell_info* spells, int max, spell_info* table)
         if (ct >= max) break;
         if (!base->fn) break;
 
-        if (base->level <= p_ptr->lev)
+        if ((base->level <= p_ptr->lev) || (show_future_spells))
         {
             spell_info* current = &spells[ct];
             current->fn = base->fn;
