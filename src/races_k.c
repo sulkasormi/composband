@@ -1033,7 +1033,7 @@ static void _vampire_get_flags(u32b flgs[OF_ARRAY_SIZE])
 }
 static void _vampire_birth(void)
 {
-    py_birth_obj_aux(TV_SCROLL, SV_SCROLL_DARKNESS, rand_range(2, 5));
+    if (p_ptr->pclass != CLASS_BERSERKER) py_birth_obj_aux(TV_SCROLL, SV_SCROLL_DARKNESS, rand_range(2, 5));
 }
 race_t *vampire_get_race(void)
 {
