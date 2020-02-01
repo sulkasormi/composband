@@ -859,6 +859,7 @@ static bool summon_ring_bearer = FALSE;
 static bool summon_summoner_okay = FALSE;
 static bool summon_friendly_unique_okay = FALSE;
 static bool summon_check_alignment = FALSE;
+static bool no_summon_mark_hack = FALSE;
 
 static bool summon_specific_aux(int r_idx)
 {
@@ -3477,7 +3478,7 @@ int place_monster_one(int who, int y, int x, int r_idx, int pack_idx, u32b mode)
 
     if (cloned)
         m_ptr->smart |= (1U << SM_CLONED);
-    if (who > 0)
+    if ((who > 0) && (!no_summon_mark_hack))
         m_ptr->smart |= (1U << SM_SUMMONED);
 
     if (who == SUMMON_WHO_PLAYER)
@@ -4093,8 +4094,12 @@ bool place_monster_aux(int who, int y, int x, int r_idx, u32b mode)
                 /* Handle failure */
                 if (!z) break;
 
+                no_summon_mark_hack = (who <= 0);
+
                 /* Place a single escort */
                 (void)place_monster_one(place_monster_m_idx, ny, nx, z, pack_idx, mode);
+
+                no_summon_mark_hack = FALSE;
             }
             pack_choose_ai(m_idx);
         }
