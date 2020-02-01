@@ -534,24 +534,33 @@ byte get_monster_drop_ct(monster_type *m_ptr)
         number = 2 + (number - 2) / 2;
     }
 
-    if ((number) && (coffee_break) && (py_in_dungeon()))
+    if ((number) && (coffee_break))
     {
-        int cap = (p_ptr->coffee_lv_revisits) ? 40 : MAX(40, 15 + (dun_level * 2 / 3));
-        int tapot = (p_ptr->lv_kills + p_ptr->pet_lv_kills);
-        number *= 2;
-        if (number > 7) number -= (number / 7);
-        if (((dun_level >= 46) || (p_ptr->max_plv >= 38)) && (number > 5) && (!(r_ptr->flags1 & RF1_DROP_GREAT))
-            && (!(r_ptr->flags1 & RF1_UNIQUE)) && (!(r_ptr->flags1 & RF1_ONLY_GOLD)) && (magik(MAX(10, (p_ptr->max_plv - 35) * 3)))) number -= 1;
-        if ((coffee_break == SPEED_INSTA_COFFEE) && ((tapot > cap) || (m_ptr->mflag2 & MFLAG2_SPAWN)))
+        if (py_in_dungeon() && (!(r_ptr->flags2 & RF2_MULTIPLY)))
         {
-            int vahennys = ((number * tapot) / (tapot + 100));
-            if (randint0(tapot + 100) < ((number * tapot) % (tapot + 100))) vahennys++;
-//            msg_format("Tiputuksia: %d->%d", number, number - vahennys);
-            number = MAX(0, number - vahennys);
-            if (m_ptr->mflag2 & MFLAG2_SPAWN) /* Can random monsters even spawn in insta-coffee mode? Maybe in the town... */
+            number *= 2;
+            if (number > 7) number -= (number / 7);
+            if (((dun_level >= 46) || (p_ptr->max_plv >= 38)) && (number > 5) && (!(r_ptr->flags1 & RF1_DROP_GREAT))
+                && (!(r_ptr->flags1 & RF1_UNIQUE)) && (!(r_ptr->flags1 & RF1_ONLY_GOLD)) && (magik(MAX(10, (p_ptr->max_plv - 35) * 3)))) number -= 1;
+        }
+        if (coffee_break == SPEED_INSTA_COFFEE)
+        {
+            int cap = (p_ptr->coffee_lv_revisits) ? 40 : MAX(40, 15 + (dun_level * 2 / 3));
+            int tapot = (p_ptr->lv_kills + p_ptr->pet_lv_kills);
+            bool _is_summon = (m_ptr->smart & (1U << SM_SUMMONED)) ? TRUE : FALSE;
+            if (((tapot > cap) || (m_ptr->mflag2 & MFLAG2_SPAWN)) && ((_is_summon) || (py_in_dungeon())))
             {
-                number /= 2;
+                int lisays = _is_summon ? MAX(50, 75 + cap - tapot) : MAX(125, 150 + cap - tapot);
+                int vahennys = ((number * tapot) / (tapot + lisays));
+                if (randint0(tapot + lisays) < ((number * tapot) % (tapot + lisays))) vahennys++;
+//                msg_format("Tiputuksia: %d->%d Monster %s", number, number - vahennys, _is_summon ? "summoned" : "not summoned");
+                number = MAX(0, number - vahennys);
+                if (m_ptr->mflag2 & MFLAG2_SPAWN) /* Can random monsters even spawn in insta-coffee mode? Maybe in the town... */
+                {
+                    number /= 2;
+                }
             }
+            else if ((py_in_dungeon()) && (!_is_summon) && (randint0(number) > 1)) number++;
         }
     }
 
@@ -2483,6 +2492,7 @@ static void get_exp_from_mon(int dam, monster_type *m_ptr, bool mon_dead)
         int cap = 40;
         int mult = ((p_ptr->lev / 14) == 2) ? 5 : 4;
         int tapot = (p_ptr->lv_kills + p_ptr->pet_lv_kills);
+        bool _is_summon = (m_ptr->smart & (1U << SM_SUMMONED)) ? TRUE : FALSE;
 //        int mult = 4;
         if (!py_in_dungeon()) mult = 7;
         if (m_ptr->mflag2 & MFLAG2_NATIVE)
@@ -2506,13 +2516,21 @@ static void get_exp_from_mon(int dam, monster_type *m_ptr, bool mon_dead)
         else if ((tapot < 40) && (p_ptr->lev < 44)) /* Speed up mage-type XP gain to limit desire to grind */
         {
             int _fake_hp = calc_xtra_hp_fake(33);
-            exp_div = 44;
-            mult = exp_div + ((200 - _fake_hp) / 5);
+            exp_div = 38;
+            mult = exp_div + 6 + ((200 - _fake_hp) / 5);
+            if ((_is_summon) || (!py_in_dungeon())) exp_div = 44;
             if (mult != exp_div)
             {
                 s64b_mul(&new_exp, &new_exp_frac, 0, mult);
                 s64b_div(&new_exp, &new_exp_frac, 0, exp_div);
             }
+        }
+        if ((tapot > MAX(cap, 19 + dun_level * 4 / 9)) && (_is_summon))
+        {
+            mult = (r_ptr->flags1 & RF1_UNIQUE) ? 30 : 10;
+            exp_div = mult + tapot - (MAX(cap, dun_level * 2 / 3));
+            s64b_mul(&new_exp, &new_exp_frac, 0, mult);
+            s64b_div(&new_exp, &new_exp_frac, 0, exp_div);
         }
     }
 
