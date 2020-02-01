@@ -76,6 +76,19 @@ rods:heroic speed#@zs!sdk
 wizardstaff
 ?:1
 
+?:[AND [EQU $SELLING Off] [EQU $CLASS Berserker]]
+!nameless shooters
+!scrolls
+!ammo
+!quiver
+?:1
+
+?:[AND [EQU $SELLING Off] [EQU $CLASS Berserker] [NOT [EQU $RACE Skeleton Golem Zombie Spectre]] ]
+!rods
+!wands
+!staves
+?:1
+
 ?unidentified rods
 ?unidentified staves
 ?unidentified wands
@@ -255,6 +268,10 @@ Iron Spike#@vz
 
 ?:[EQU $CLASS Tourist]
 ~photograph
+?:1
+
+?:[EQU $SELLING Off]
+!statue of
 ?:1
 
 ~special items
