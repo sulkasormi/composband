@@ -2082,6 +2082,7 @@ static void _decrement_counter(int which, cptr off)
         {
             p_ptr->magic_num2[which] = 0;
             msg_print(off);
+            if (disturb_state) disturb(0, 0);
             p_ptr->update |= PU_BONUS;
             p_ptr->redraw |= PR_STATUS;
         }
