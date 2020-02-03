@@ -26,11 +26,11 @@ A complete game in coffee-break mode typically lasts between 5 and 50 hours.
 
 <color:U>Instant-coffee mode</color> is a super-accelerated game. It resembles coffee-break mode, but is even more streamlined; dungeon levels with no quests are skipped completely (effectively leaving only 13 levels in the dungeon), the number of town quests is greatly reduced, experience gain is accelerated even further (including outside the dungeon), and loot quality is boosted even more than in coffee-break mode.
 
-A special feature of instant-coffee mode is that <color:B>Potions of Healing</color>, <color:B>Potions of *Healing*</color> and <color:B>Potions of Life</color> - key items in both normal and coffee-break play - never generate randomly. Instead, the ten random Angband level guardians drop set amounts of these potions for you; kill all ten (plus Oberon), and you will have 66 Potions of Healing and 8 Potions of *Healing*, hopefully enough for the end fight. A few additional potions can be acquired from quests or the Arena or by killing a god.
+A special feature of instant-coffee mode is that <color:B>Potions of Healing</color>, <color:B>Potions of *Healing*</color> and <color:B>Potions of Life</color> - key items in both normal and coffee-break play - never generate randomly. Instead, the ten random Angband level guardians drop set amounts of these potions for you; kill all ten (plus Oberon), and you will have 66 Potions of Healing and 7 Potions of *Healing*, hopefully enough for the end fight. A few additional potions can be acquired from quests or the Arena or by killing a god.
 
 Instant-coffee mode discourages grindy play; the more monsters you kill on a given level, the less accelerated your experience gain is and the fewer objects they drop. Monsters directly or indirectly summoned by the player drop nothing and give no experience.
 
-Instant-coffee mode drops you in the thick of the action extremely quickly. It is therefore not recommended for new players - unless you wish to be overwhelmed!
+Instant-coffee mode drops you in the thick of the action extremely quickly. It is therefore not recommended for new players - unless you wish to be overwhelmed! A complete game in insta-coffee mode typically lasts between 2 and 10 hours.
 
 <color:D>
 Original   : FrogComposband 7.1.liquorice
