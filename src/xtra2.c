@@ -2518,7 +2518,7 @@ static void get_exp_from_mon(int dam, monster_type *m_ptr, bool mon_dead)
             int _fake_hp = calc_xtra_hp_fake(33);
             exp_div = 38;
             mult = exp_div + 6 + ((200 - _fake_hp) / 5);
-            if ((_is_summon) || (!py_in_dungeon())) exp_div = 44;
+            if ((_is_summon) || ((!py_in_dungeon()) && (((p_ptr->lev + 10) / 20) != 1))) exp_div = 44;
             if (mult != exp_div)
             {
                 s64b_mul(&new_exp, &new_exp_frac, 0, mult);
