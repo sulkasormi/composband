@@ -6100,9 +6100,6 @@ enum
 
 #define MAX_POWER_LABEL 62 /* uppercase, lowercase, and numbers */
 
-#define PURPLE_QUEST 82
-#define SEWER_QUEST 2
-
 #define TROIKA_HIT 1
 #define TROIKA_KILL_WEAK 2
 #define TROIKA_KILL 3
