@@ -5224,9 +5224,10 @@ static void dungeon(bool load_game)
  * Modified by Arcum Dagsson to support
  * separate macro files for different realms.
  */
-static void load_all_pref_files(void)
+static void load_all_pref_files(bool new_game)
 {
     char buf[1024];
+    int alp_mode = ALP_CHECK_NUMERALS;
 
     /* Access the "user" pref file */
     sprintf(buf, "user.prf");
@@ -5262,6 +5263,7 @@ static void load_all_pref_files(void)
     {
         char old_py_name[32];
         strcpy(old_py_name, player_name);
+        temporary_name_hack = TRUE;
 
         while (1)
         {
@@ -5279,6 +5281,7 @@ static void load_all_pref_files(void)
         }
         strcpy(player_name, old_py_name);
         process_player_name(FALSE);
+        temporary_name_hack = FALSE;
     }
 
     /* Access the "realm 1" pref file */
@@ -5299,9 +5302,10 @@ static void load_all_pref_files(void)
         process_pref_file(buf);
     }
 
+    if (new_game) alp_mode |= ALP_NEW_GAME;
 
     /* Load an autopick preference file */
-    autopick_load_pref(ALP_CHECK_NUMERALS);
+    autopick_load_pref(alp_mode);
 }
 
 
@@ -5662,7 +5666,7 @@ void play_game(bool new_game)
     reset_visuals();
 
     /* Load the "pref" files */
-    load_all_pref_files();
+    load_all_pref_files(new_game);
 
     /* Turn on easy mimics */
     toggle_easy_mimics(easy_mimics);
