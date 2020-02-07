@@ -206,6 +206,7 @@ extern bool monsters_damaged_hack;
 extern bool shop_exit_hack;
 extern bool no_karrot_hack;
 extern bool allow_special3_hack;
+extern bool temporary_name_hack;
 extern byte troika_spell_hack;
 extern byte spell_problem;
 extern s16b vampirism_hack;
@@ -661,6 +662,7 @@ extern bool use_menu;
 /* autopick.c */
 #define ALP_DISP_MES 0x01
 #define ALP_CHECK_NUMERALS 0x02
+#define ALP_NEW_GAME 0x04
 extern void autopick_load_pref(byte mode);
 extern errr process_autopick_file_command(char *buf);
 #define AUTOPICK_COLOR_CODED 0x01
