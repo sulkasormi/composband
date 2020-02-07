@@ -117,8 +117,7 @@ int calc_exp_factor(void)
 
     if (coffee_break == SPEED_INSTA_COFFEE) /* Does not really lend itself to extreme XP mods - flatten the scale a bit */
     {
-        exp -= (exp / 5);
-        exp += 20;
+        exp = ((exp + 50) * 2 / 3);
     }
 
     return exp;
