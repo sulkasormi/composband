@@ -234,7 +234,7 @@ See <link:objects.txt#InscriptionAbbrev> for item attribute abbreviations.
 
 <color:keyword>pseudo-ID</color>: Pseudo-identify; the system for giving object feelings; the object feelings so given. "At level 20, the Mogaminator starts automatically destroying all weapons and shooters that pseudo-ID as {average}."
 
-<color:keyword>pval</color>: Plus value. An indicator of the size of any stat, skill and ability bonuses (or maluses) on an item; for example, an Iron Helm of Might that gives +3 to speed, strength, dexterity and constitution and -3 to intelligence has a pval of 3.
+<color:keyword>pval</color>: Bonus size value. An indicator of the size of any stat, skill and ability bonuses (or maluses) on an item; for example, an Iron Helm of Might that gives +3 to speed, strength, dexterity and constitution and -3 to intelligence has a pval of 3.
 
 <color:keyword>quest</color>: A mission within the game, with rewards for completion.  The game is won by completing the quest to kill the Serpent of Chaos. <color:o>Town quest</color>: any quest offered and rewarded by some building in a town, especially one where the quest level itself is also accessible from the town. <color:o>Angband quest</color>: any of the ten random level guardians who appear in the Angband dungeon.
 
