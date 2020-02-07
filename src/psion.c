@@ -1355,7 +1355,7 @@ static void _psionic_travel_spell(int power, int cmd, variant *res)
             var_set_string(res, info_range(15*(power - 3)));
         break;
     case SPELL_CAST:
-        var_set_bool(res, FALSE);
+        var_set_bool(res, TRUE);
 
         if (power == 1)
             teleport_player(10, 0L);
@@ -1364,9 +1364,8 @@ static void _psionic_travel_spell(int power, int cmd, variant *res)
         else if (power == 3)
             teleport_player(p_ptr->lev * 4, 0L);
         else
-            dimension_door(15*(power-3));
+            var_set_bool(res, dimension_door(15*(power-3)));
 
-        var_set_bool(res, TRUE);
         break;
     case SPELL_ENERGY:
         if (mut_present(MUT_ASTRAL_GUIDE))
