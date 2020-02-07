@@ -8,9 +8,11 @@
  * [4] Rewards now specified in q_*.txt file rather than town file */
 
 enum {
+    SEWER_QUEST = 2,
     QUEST_OBERON = 8,
     QUEST_SERPENT = 9,
     QUEST_WARG = 14,
+    PURPLE_QUEST = 82,
     QUEST_METATRON = 97
 };
 
