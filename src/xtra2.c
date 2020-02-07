@@ -1019,8 +1019,26 @@ void monster_death(int m_idx, bool drop_item)
     if (p_ptr->prace == RACE_MON_POSSESSOR && p_ptr->current_r_idx == MON_POSSESSOR_SOUL)
         corpse_chance = 2;
 
-    if ((prace_is_(RACE_IGOR)) && (r_ptr->flags2 & RF2_MULTIPLY))
-        corpse_chance = MAX(corpse_chance + 1, r_ptr->r_akills + 1);
+    if (prace_is_(RACE_IGOR))
+    {
+        if (coffee_break == SPEED_INSTA_COFFEE)
+        {
+            if ((!(r_ptr->flags1 & RF1_UNIQUE)) || (m_ptr->smart & (1U << SM_SUMMONED)))
+            {
+                int ylim = (p_ptr->lv_kills + p_ptr->pet_lv_kills) - MAX(40, 15 + dun_level / 2);
+                if (ylim > 0)
+                {
+                    corpse_chance += ylim;
+                    if ((m_ptr->smart & (1U << SM_SUMMONED)) && (!(r_ptr->flags1 & RF1_UNIQUE))) corpse_chance *= 3;
+                }
+            }
+            else if ((p_ptr->lv_kills + p_ptr->pet_lv_kills < 40) && (!(r_ptr->flags2 & RF2_MULTIPLY))) corpse_chance = 2;
+        }
+        if (r_ptr->flags2 & RF2_MULTIPLY)
+        {
+            corpse_chance = MAX(corpse_chance + 1, r_ptr->r_akills + 1);
+        }
+    }
 
     if ( (_mon_is_wanted(m_idx) || (one_in_(corpse_chance) && !do_vampire_servant))
       && (r_ptr->flags9 & (RF9_DROP_CORPSE | RF9_DROP_SKELETON))
