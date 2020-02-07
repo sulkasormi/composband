@@ -227,6 +227,10 @@ static bool _igor_prob(int _in, bool unique, int taito)
     {
         prob += (prob / ((unique ? 400 : 800) / taito));
     }
+    if (coffee_break == SPEED_INSTA_COFFEE)
+    {
+        prob += MIN(prob / 2, (4620 - prob) / 2);
+    }
     if (randint0(4620) < prob)
     {
         if (!unique) lippu = TRUE;
