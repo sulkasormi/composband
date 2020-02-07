@@ -20,7 +20,7 @@ N:1:5:The Thieves' Hideout (Outpost)
 T:TOWN | GENERATE
 F:q_thieves.txt
 
-# Hardcoded as quest 2 in defines.h
+# Hardcoded as quest 2 in quest.h
 N:2:15:The Sewer (Outpost)
 T:TOWN | GENERATE | SUBSTITUTE_87
 F:q_sewer.txt
@@ -262,7 +262,7 @@ G:KILL(magic mushroom, 5)
 F:q_mushrooms.txt
 
 N:64:50:The Renegade Sorcerer (Thalos)
-T:TOWN | GENERATE
+T:TOWN | GENERATE | DANGER_LEVEL_55
 G:KILL(old sorcerer)
 F:q_sorcerer.txt
 
@@ -375,7 +375,7 @@ G:KILL(lesser titan, 10)
 F:q_giantslayer.txt
 
 # Placeholder for all side quests from Karrot or the Troika
-# Hardcoded as quest 82 in defines.h
+# Hardcoded as quest 82 in quest.h
 
 N:82:0:Purple Quest
 T:PURPLE
