@@ -28,9 +28,9 @@ A complete game in coffee-break mode typically lasts between 5 and 50 hours.
 
 A special feature of instant-coffee mode is that <color:B>Potions of Healing</color>, <color:B>Potions of *Healing*</color> and <color:B>Potions of Life</color> - key items in both normal and coffee-break play - never generate randomly. Instead, the ten random Angband level guardians drop set amounts of these potions for you; kill all ten (plus Oberon), and you will have 66 Potions of Healing and 7 Potions of *Healing*, hopefully enough for the end fight. A few additional potions can be acquired from quests or the Arena or by killing a god.
 
-Instant-coffee mode discourages grindy play; the more monsters you kill on a given level, the less accelerated your experience gain is and the fewer objects they drop. Monsters directly or indirectly summoned by the player drop nothing and give no experience.
+Instant-coffee mode discourages grindy play; the more monsters you kill on a given level, the less accelerated your experience gain is and the fewer objects they drop. Monsters directly or indirectly summoned by the player drop nothing and give no experience, and any summoned monsters give reduced drops and experience once enough monsters have been killed on the level. The experience factor scale is flattened somewhat for instant-coffee play, making high experience factors less punishing.
 
-Instant-coffee mode drops you in the thick of the action extremely quickly. It is therefore not recommended for new players - unless you wish to be overwhelmed! A complete game in insta-coffee mode typically lasts between 2 and 10 hours.
+Instant-coffee mode drops you in the thick of the action extremely quickly. It is therefore not recommended for new players - unless you wish to be overwhelmed! A complete game in instant-coffee mode typically lasts between 2 and 15 hours.
 
 <color:D>
 Original   : FrogComposband 7.1.liquorice
