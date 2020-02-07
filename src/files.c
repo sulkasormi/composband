@@ -2737,7 +2737,7 @@ void process_player_name(bool sf)
     }
 
     /* Load an autopick preference file */
-    if (character_generated)
+    if ((character_generated) && (!temporary_name_hack))
     {
         if (!streq(old_player_base, player_base)) autopick_load_pref(0);
     }
