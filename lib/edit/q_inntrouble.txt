@@ -12,7 +12,7 @@ D:Here is a reward for your good work.
 
 # Description for quest failed
 ?:[EQU $QUEST50 Failed]
-Q:You have failed me, beware you do not do so again!
+D:You have failed me, beware you do not do so again!
 ?:1
 
 T:QUEST:NORMAL
