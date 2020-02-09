@@ -168,7 +168,7 @@ See <link:objects.txt#InscriptionAbbrev> for item attribute abbreviations.
 
 <color:keyword>level guardian</color>: A random quest monster in the Angband dungeon; in an extended sense, any monster tied to appearing at a particular depth in a particular dungeon, including Oberon, the Serpent of Chaos and sometimes dungeon bosses.
 
-<color:keyword>levitation</color>: The ability to float. Levitation gives access to dark pits and mountainous areas of the wilderness, allows you to avoid some traps, and reduces damage from standing in or over dangerous terrain. See <link:faq.txt#Levitation>.
+<color:keyword>levitation</color>: The ability to float. Levitation gives access to dark pits and mountainous areas of the wilderness, allows you to avoid some traps, eliminates movement speed penalties in wooded areas, and reduces damage from standing in or over dangerous terrain. See <link:faq.txt#Levitation>.
 
 <color:keyword>life points</color>: A measure of your attachment to life, displayed on a range of 0% to 99% if depleted. Losing life points reduces effective maximum HP; if life points drop below 0, the character will transform into an undead race, or die outright if this is not possible. See <link:faq.txt#LifePoints>.
 
