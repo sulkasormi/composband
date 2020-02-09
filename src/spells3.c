@@ -4041,7 +4041,7 @@ bool rustproof(void)
 }
 
 /*
- * Helper for Cursing Equipment (?Curse Armor and ?Curse Weapn)
+ * Helper for Cursing Equipment (?Curse Armor and ?Curse Weapon)
  * Also used when sacrificing a worn piece of equipment.
  */
 
@@ -4057,9 +4057,9 @@ void blast_object(object_type *o_ptr)
     o_ptr->name1 = 0;
     o_ptr->name2 = EGO_SPECIAL_BLASTED;
     o_ptr->name3 = 0;
-    o_ptr->to_a = 0;
-    o_ptr->to_h = 0;
-    o_ptr->to_d = 0;
+    o_ptr->to_a = MIN(o_ptr->to_a, 0);
+    o_ptr->to_h = MIN(o_ptr->to_h, 0);
+    o_ptr->to_d = MIN(o_ptr->to_d, 0);
     o_ptr->ac = 0;
     o_ptr->dd = 0;
     o_ptr->ds = 0;
@@ -4072,6 +4072,10 @@ void blast_object(object_type *o_ptr)
         o_ptr->to_h -= randint1(5) + randint1(5);
         o_ptr->to_d -= randint1(5) + randint1(5);
     }
+
+    if (o_ptr->to_a < -66) o_ptr->to_a = -66;
+    if (o_ptr->to_h < -66) o_ptr->to_h = -66;
+    if (o_ptr->to_d < -66) o_ptr->to_d = -66;
 
     for (i = 0; i < OF_ARRAY_SIZE; i++)
         o_ptr->flags[i] = 0;
