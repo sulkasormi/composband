@@ -279,7 +279,7 @@ If a weapon has multiple slays or brands that could apply to the same monster, o
 
 Potions of New Life also cure mutations among their other effects, and potions of Polymorph both give and cure mutations at random.
 
-Having too many mutations gives a penalty to regeneration; the more mutations you have, the worse the penalty. Beastmen are penalized less, and can have a large number of mutations before triggering the penalty at all. Permanent mutations (such as demigod powers or the White Aura from the Lucky personality) do not count towards this penalty.
+Having too many mutations gives a penalty to HP regeneration; the more mutations you have, the worse the penalty. Beastmen are penalized less, and can have a large number of mutations before triggering the penalty at all. Permanent mutations (such as demigod powers or the White Aura from the Lucky personality) do not count towards this penalty. Mana regeneration is not affected by mutations.
 
 
 <color:G>Q:</color> How important is Telepathy?
@@ -296,7 +296,7 @@ Reflection is very helpful (and remains useful throughout the game) but is never
 
 <topic:Levitation><color:G>Q:</color> What does Levitation do? How important is it?
 
-<color:R>A:</color> Levitation gives access to dark pits and mountainous wilderness, prevents overburdened characters from drowning in deep water, reduces damage from standing in (or over) deep lava or toxic waste, and allows you to harmlessly fly over some floor traps. It is a necessity for entering mountainous areas (and a practical necessity for entering deep seas on an overburdened character); it is very handy, but not strictly necessary, for navigating the Cloning Pits quest as well as dungeons with dark pits or deep water. In other situations Levitation is not very important; items that give levitation but are otherwise not that great can be left at home to be shuffled in when needed.
+<color:R>A:</color> Levitation gives access to dark pits and mountainous wilderness, prevents overburdened characters from drowning in deep water, reduces damage from standing in (or over) deep lava or toxic waste, eliminates movement speed penalties in wooded areas, and allows you to harmlessly fly over some types of floor traps. It is a necessity for entering mountainous areas (and a practical necessity for entering deep seas on an overburdened character); it is very handy, but not strictly necessary, for navigating the Cloning Pits quest as well as dungeons with dark pits or deep water. In other situations Levitation is not very important; items that give levitation but are otherwise not that great can be left at home to be shuffled in when needed.
 
 
 <color:G>Q:</color> What is Warning? Is it something I need... and what do the strange messages it's giving me mean?!
