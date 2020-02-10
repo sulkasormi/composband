@@ -817,6 +817,13 @@ void do_cmd_cast(void)
         return;
     }
 
+    if ((p_ptr->pclass == CLASS_BLOOD_MAGE) && ((get_race()->flags & RACE_IS_NONLIVING) || (p_ptr->no_cut)))
+    {
+        if (get_true_race()->flags & RACE_IS_NONLIVING) msg_print("You can no longer use blood magic!");
+        else msg_print("You cannot use blood magic while transformed into a nonliving creature.");
+        return;
+    }
+
 
     /* Require lite */
     if (p_ptr->blind || no_lite())
