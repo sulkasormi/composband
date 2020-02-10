@@ -2747,7 +2747,7 @@ static void _weird_bird_m(void)
         }
 
         mon_take_hit_mon(_current.mon2->id, dam, &fear,
-            extract_note_dies(real_r_ptr(_current.mon2)), _who());
+        extract_note_dies(real_r_ptr(_current.mon2)), _who());
     }
 }
 static void _weird(void)
