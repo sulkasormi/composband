@@ -3738,7 +3738,7 @@ static void _dispatch_command(int old_now_turn)
                             p_ptr->pclass == CLASS_TIME_LORD )
                 {
                     /* This is the preferred entrypoint for spells ...
-                        I'm still working on coverting everything else */
+                        I'm still working on converting everything else */
                     do_cmd_spell();
                 }
                 else
