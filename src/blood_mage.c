@@ -18,6 +18,12 @@ static void _blood_rite_spell(int cmd, variant *res)
             msg_print("The Blood Rite is already active.");
             return;
         }
+        if ((get_race()->flags & RACE_IS_NONLIVING) || (p_ptr->no_cut))
+        {
+            if (get_true_race()->flags & RACE_IS_NONLIVING) msg_print("You can no longer use blood magic!");
+            else msg_print("You cannot use blood magic while transformed into a nonliving creature.");
+            return;
+        }
         set_tim_blood_rite(10, FALSE);
         var_set_bool(res, TRUE);
         break;
