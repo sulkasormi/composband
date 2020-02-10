@@ -884,11 +884,14 @@ static void _cyber_get_flags(u32b flgs[OF_ARRAY_SIZE])
 static void _cyber_move_player(void)
 {
     /* Cyberdemons move erratically (cf get_rep_dir()) and make a lot of noise */
-    if (one_in_(66))
+    if ((one_in_(66)) &&
+        (!cave_have_flag_bold(py, px, FF_WATER)) &&
+        (!cave_have_flag_bold(py, px, FF_LAVA)) &&
+        (!cave_have_flag_bold(py, px, FF_ACID)))
     {
         int i;
 
-        cmsg_print(TERM_RED, "The dungeon trembles!");
+        cmsg_print(TERM_RED, py_in_dungeon() ? "The dungeon trembles!" : "The ground trembles!");
         if (disturb_minor)
             disturb(0, 0);
 
