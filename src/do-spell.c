@@ -8565,6 +8565,7 @@ static cptr do_hex_spell(int spell, int mode)
             bool flag = FALSE;
             int d = (p_ptr->max_exp - p_ptr->exp);
             int r = (p_ptr->exp / 20);
+            int l = (1000 - p_ptr->clp);
             int i;
 
             if (d > 0)
@@ -8577,6 +8578,11 @@ static cptr do_hex_spell(int spell, int mode)
                 /* Check the experience */
                 check_experience();
 
+                flag = TRUE;
+            }
+            if (l > 0)
+            {
+                lp_player(MIN(l, 15));
                 flag = TRUE;
             }
             for (i = A_STR; i < 6; i ++)
