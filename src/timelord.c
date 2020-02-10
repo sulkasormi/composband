@@ -136,6 +136,8 @@ void mon_change_race(mon_ptr mon, int new_r_idx, cptr verb)
 
     update_mon(mon->id, FALSE);
     lite_spot(mon->fy, mon->fx);
+
+    p_ptr->window |= (PW_MONSTER_LIST);
 }
 
 static bool _monster_save(monster_race* r_ptr, int power)
