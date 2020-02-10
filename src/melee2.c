@@ -472,9 +472,9 @@ void mon_take_hit_mon(int m_idx, int dam, bool *fear, cptr note, int who)
 
 #endif /* ALLOW_FEAR */
 
-    if ((dam > 0) && !is_pet(m_ptr) && !is_friendly(m_ptr) && (who != m_idx))
+    if ((dam > 0) && !is_pet(m_ptr) && !is_friendly(m_ptr) && (who != m_idx) && (m_ptr->cdis > 1))
     {
-        if (is_pet(&m_list[who]) && !player_bold(m_ptr->target_y, m_ptr->target_x))
+        if (!is_hostile(&m_list[who]) && !player_bold(m_ptr->target_y, m_ptr->target_x))
         {
             set_target(m_ptr, m_list[who].fy, m_list[who].fx);
         }
