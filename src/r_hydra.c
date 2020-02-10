@@ -315,8 +315,8 @@ race_t *mon_hydra_get_race(void)
 
     if (!init)
     {           /* dis, dev, sav, stl, srh, fos, thn, thb */
-    skills_t bs = { 25,  21,  35,   1,  10,   7,  61,  30};
-    skills_t xs = { 12,  10,  10,   0,   0,   0,  17,   7};
+    skills_t bs = { 25,  21,  35,   1,  10,   7,  58,  30};
+    skills_t xs = { 12,  10,  10,   0,   0,   0,  16,   7};
 
         me.skills = bs;
         me.extra_skills = xs;
