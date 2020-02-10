@@ -995,6 +995,13 @@ void do_cmd_spell(void)
         return;
     }
 
+    if ((p_ptr->pclass == CLASS_BLOOD_KNIGHT) && ((get_race()->flags & RACE_IS_NONLIVING) || (p_ptr->no_cut)))
+    {
+        if (get_true_race()->flags & RACE_IS_NONLIVING) msg_print("You can no longer use bloodcraft!");
+        else msg_print("You cannot use bloodcraft while transformed into a nonliving creature.");
+        return;
+    }
+
     hp_caster = ((caster->options & CASTER_USE_HP) || (p_ptr->pclass == CLASS_NINJA_LAWYER));
     if (poli) hp_caster = (politician_get_toggle() == POLLY_TOGGLE_HPCAST);
 
