@@ -4722,7 +4722,7 @@ bool gf_affect_m(int who, mon_ptr mon, int type, int dam, int flags)
              * but I never noticed this when I played one ... */
             set_target(mon, monster_target_y, monster_target_x);
         }
-        else if ((who > 0) && is_pet(caster_ptr) && !player_bold(mon->target_y, mon->target_x))
+        else if ((who > 0) && (!is_hostile(caster_ptr)) && (!player_bold(mon->target_y, mon->target_x)) && (mon->cdis > 1))
         {
             set_target(mon, caster_ptr->fy, caster_ptr->fx);
         }
