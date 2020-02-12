@@ -586,7 +586,7 @@ static void do_cmd_options_cheat(cptr info)
         if (ch < 256)
         {
             dir = get_keymap_dir(ch, FALSE);
-            if ((dir == 2) || (dir == 4) || (dir == 6) || (dir == 8))
+            if ((dir == 2) || (dir == 4) || (dir == 6) || (dir == 8) || (dir == 9) || (dir == 1))
                 ch = I2D(dir);
         }
 
@@ -938,7 +938,7 @@ void do_cmd_options_aux(int page, cptr info)
         if (ch < 256)
         {
             dir = get_keymap_dir(ch, FALSE);
-            if ((dir == 2) || (dir == 4) || (dir == 6) || (dir == 8))
+            if ((dir == 2) || (dir == 4) || (dir == 6) || (dir == 8) || (dir == 9) || (dir == 1))
                 ch = I2D(dir);
         }
 
@@ -7127,7 +7127,7 @@ static void do_cmd_knowledge_kubi(void)
 
         if (!listed)
         {
-            fprintf(fff,"\n%s\n", "There is no more wanted monster.");
+            fprintf(fff,"\n%s\n", "You have turned in all wanted monsters.");
         }
     }
 
@@ -7247,54 +7247,65 @@ static void do_cmd_knowledge_autopick(void)
     int k;
     doc_ptr doc = doc_alloc(80);
 
-    if (!max_autopick)
+    if (no_mogaminator)
     {
-        doc_insert(doc, "There are no preferences for automatic pickup/destruction.");
+        doc_insert(doc, "You have disabled the Mogaminator.\n");
+    }
+    else if (!max_autopick)
+    {
+        doc_insert(doc, "You have not yet activated the Mogaminator.\n");
+    }
+    else if (max_autopick == 1)
+    {
+        doc_insert(doc, "There is 1 registered line for automatic object management.\n");
     }
     else
     {
-        doc_printf(doc, "There are %d registered lines for automatic pickup/destruction.\n", max_autopick);
+        doc_printf(doc, "There are %d registered lines for automatic object management.\n", max_autopick);
     }
-    doc_insert(doc, "For help on the auto-picker, see <link:editor.txt>\n\n");
+    doc_insert(doc, "For help on the Mogaminator, see <link:editor.txt>.\n\n");
 
-    for (k = 0; k < max_autopick; k++)
+    if (!no_mogaminator)
     {
-        cptr tmp;
-        string_ptr line = 0;
-        char color = 'w';
-        byte act = autopick_list[k].action;
-        if (act & DONT_AUTOPICK)
+        for (k = 0; k < max_autopick; k++)
         {
-            tmp = "Leave";
-            color = 'U';
-        }
-        else if (act & DO_AUTODESTROY)
-        {
-            tmp = "Destroy";
-            color = 'r';
-        }
-        else if (act & DO_AUTOPICK)
-        {
-            tmp = "Pickup";
-            color = 'B';
-        }
-        else /* if (act & DO_QUERY_AUTOPICK) */ /* Obvious */
-        {
-            tmp = "Query";
-            color = 'y';
-        }
+            cptr tmp;
+            string_ptr line = 0;
+            char color = 'w';
+            byte act = autopick_list[k].action;
+            if (act & DONT_AUTOPICK)
+            {
+                tmp = "Leave";
+                color = 'U';
+            }
+            else if (act & DO_AUTODESTROY)
+            {
+                tmp = "Destroy";
+                color = 'r';
+            }
+            else if (act & DO_AUTOPICK)
+            {
+                tmp = "Pick Up";
+                color = 'B';
+            }
+            else /* if (act & DO_QUERY_AUTOPICK) */ /* Obvious */
+            {
+                tmp = "Query";
+                color = 'y';
+            }
 
-        if (act & DO_DISPLAY)
-            doc_printf(doc, "<color:%c>%-9.9s</color>", color, format("[%s]", tmp));
-        else
-            doc_printf(doc, "<color:%c>%-9.9s</color>", color, format("(%s)", tmp));
+            if (act & DO_DISPLAY)
+                doc_printf(doc, "<color:%c>%-9.9s</color>", color, format("[%s]", tmp));
+            else
+                doc_printf(doc, "<color:%c>%-9.9s</color>", color, format("(%s)", tmp));
 
-        line = autopick_line_from_entry(&autopick_list[k], AUTOPICK_COLOR_CODED);
-        doc_printf(doc, " <indent><style:indent>%s</style></indent>\n", string_buffer(line));
-        string_free(line);
+            line = autopick_line_from_entry(&autopick_list[k], AUTOPICK_COLOR_CODED);
+            doc_printf(doc, " <indent><style:indent>%s</style></indent>\n", string_buffer(line));
+            string_free(line);
+        }
     }
 
-    doc_display(doc, "Automatic Pickup and Destroy Preferences", 0);
+    doc_display(doc, "Mogaminator Preferences", 0);
     doc_free(doc);
 }
 
