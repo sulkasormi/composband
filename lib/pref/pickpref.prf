@@ -102,6 +102,10 @@ wizardstaff
 ?unidentified artifact items
 ?unidentified ego items
 
+?:[AND [EQU $SELLING Off] [EQU $CLASS Weaponmaster] ]
+!nameless icky weapons
+?:1
+
 #########################################
 # Armor
 #########################################
