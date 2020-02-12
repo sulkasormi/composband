@@ -383,7 +383,7 @@ bool name_is_numbered(char *nimi)
  * Welcome to FrogComposband!
  ***********************************************************************/ 
 static void _set_mode(int mode);
-static bool _stats_changed = FALSE;
+static s16b _stats_changed = -1;
 static bool lukittu = FALSE;
 
 static int _welcome_ui(void)
@@ -462,7 +462,7 @@ static int _welcome_ui(void)
                 p_ptr->stat_cur[i] = previous_char.stat_max[i];
                 p_ptr->stat_max[i] = previous_char.stat_max[i];
             }
-            _stats_changed = TRUE; /* block default stat allocation via _stats_init */
+            _stats_changed = p_ptr->pclass; /* block default stat allocation via _stats_init */
             if (_race_class_ui() == UI_OK)
                 return UI_OK;
         }
@@ -1765,7 +1765,7 @@ static int _patron_ui(void)
         else
         {
             if (cmd == '*') i = RANDOM_PATRON;
-            else if (cmd == '\r') i = (p_ptr->pclass == CLASS_DISCIPLE) ? DISCIPLE_YEQREZH : RANDOM_PATRON;
+            else if (cmd == '\r') i = (p_ptr->pclass == CLASS_DISCIPLE) ? DISCIPLE_YEQREZH : (((p_ptr->chaos_patron >= alku) && (p_ptr->chaos_patron < loppu)) ? p_ptr->chaos_patron : RANDOM_PATRON);
             else i = A2I(cmd) + alku;
             if ((alku <= i && i < loppu) || (i == RANDOM_PATRON))
             {
@@ -2364,7 +2364,7 @@ static int _stats_ui(void)
        If the user backs up and changes their class,
        pick new defaults (unless they manually made
        changes. */
-    if (!_stats_changed)
+    if ((_stats_changed == -1) || (_stats_changed != p_ptr->pclass))
         _stats_init();
 
     for (;;)
@@ -2764,7 +2764,7 @@ static void _stats_init(void)
         }
         }
     }
-    _stats_changed = FALSE;
+    _stats_changed = -1;
 }
 
 static void _stat_dec(int which)
@@ -2776,7 +2776,7 @@ static void _stat_dec(int which)
         val = 17;
     p_ptr->stat_cur[which] = val;
     p_ptr->stat_max[which] = val;
-    _stats_changed = TRUE;
+    _stats_changed = p_ptr->pclass;
 }
 
 static void _stat_inc(int which)
@@ -2788,7 +2788,7 @@ static void _stat_inc(int which)
         val = 8;
     p_ptr->stat_cur[which] = val;
     p_ptr->stat_max[which] = val;
-    _stats_changed = TRUE;
+    _stats_changed = p_ptr->pclass;
 }
 
 static int _stats_score(void)
@@ -3348,7 +3348,7 @@ static void _birth_finalize(void)
     /* Other Initialization */
     if (game_mode == GAME_MODE_BEGINNER)
     {
-        coffee_break = TRUE;
+        coffee_break = SPEED_COFFEE;
         effective_speed = TRUE;
         command_menu = TRUE;
         no_scrambling = TRUE;
@@ -3365,6 +3365,34 @@ static void _birth_finalize(void)
             reduce_uniques = TRUE;
             reduce_uniques_pct = 60;
             if (small_level_type != SMALL_LVL_INSTANT_COFFEE) small_level_type = SMALL_LVL_INSTANT_COFFEE_BIG;
+        }
+    }
+
+    /* Confirm unusual settings
+     * (players who play both coffee-break and normal games and start
+     * new games by loading old savefiles sometimes turn coffee-break off,
+     * but forget to turn no_wilderness and ironman_downward off) */
+    if ((!coffee_break) && (ironman_downward))
+    {
+        if (!get_check("Really play with ironman stairs? "))
+        {
+            ironman_downward = FALSE;
+        }
+    }
+    if ((!coffee_break) && (no_wilderness))
+    {
+        if (!get_check("Really play with no wilderness? "))
+        {
+            no_wilderness = FALSE;
+        }
+    }
+
+    if ((reduce_uniques) && (coffee_break != SPEED_INSTA_COFFEE) && (reduce_uniques_pct == 60))
+    {
+        if (!get_check("Really reduce number of uniques by 40%? "))
+        {
+            reduce_uniques = FALSE;
+            reduce_uniques_pct = 100;
         }
     }
 
