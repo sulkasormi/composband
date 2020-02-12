@@ -170,7 +170,13 @@ typedef struct {
     byte color;
     int  resist;
     cptr parse;
+    byte flags;
 } gf_info_t, *gf_info_ptr;
+
+#define GFF_ATTACK 0x01
+#define GFF_STATUS 0x02
+#define GFF_TERRAIN 0x04
+#define GFF_UTILITY 0x08
 
 extern gf_info_ptr gf_parse_name(cptr token);
 extern gf_info_ptr gf_lookup(int id);
