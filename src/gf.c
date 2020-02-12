@@ -4,158 +4,158 @@
 #include <assert.h>
 
 static gf_info_t _gf_tbl[GF_COUNT] = {
-    { GF_NONE, "None", TERM_L_DARK, RES_INVALID, "NONE"},
+    { GF_NONE, "None", TERM_L_DARK, RES_INVALID, "NONE", 0},
 
     /* Elemental Effects */
-    { GF_ACID, "Acid", TERM_GREEN, RES_ACID, "ACID" },
-    { GF_ELEC, "Lightning", TERM_BLUE, RES_ELEC, "ELEC" },
-    { GF_FIRE, "Fire", TERM_RED, RES_FIRE, "FIRE" },
-    { GF_COLD, "Frost", TERM_L_WHITE, RES_COLD, "COLD" },
-    { GF_POIS, "Poison", TERM_L_GREEN, RES_POIS, "POIS" },
-    { GF_LITE, "Light", TERM_YELLOW, RES_LITE, "LITE" },
-    { GF_DARK, "Darkness", TERM_L_DARK, RES_DARK, "DARK" },
-    { GF_CONFUSION, "Confusion", TERM_L_UMBER, RES_CONF, "CONFUSION" },
-    { GF_NETHER, "Nether", TERM_L_DARK, RES_NETHER, "NETHER" },
-    { GF_NEXUS, "Nexus", TERM_VIOLET, RES_NEXUS, "NEXUS" },
-    { GF_SOUND, "Sound", TERM_ORANGE, RES_SOUND, "SOUND" },
-    { GF_SHARDS, "Shards", TERM_L_UMBER, RES_SHARDS, "SHARDS" },
-    { GF_CHAOS, "Chaos", TERM_VIOLET, RES_CHAOS, "CHAOS" },
-    { GF_DISENCHANT, "Disenchantment", TERM_VIOLET, RES_DISEN, "DISENCHANT" },
-    { GF_TIME, "Time", TERM_L_BLUE, RES_TIME, "TIME" },
+    { GF_ACID, "Acid", TERM_GREEN, RES_ACID, "ACID", GFF_ATTACK },
+    { GF_ELEC, "Lightning", TERM_BLUE, RES_ELEC, "ELEC", GFF_ATTACK },
+    { GF_FIRE, "Fire", TERM_RED, RES_FIRE, "FIRE", GFF_ATTACK },
+    { GF_COLD, "Frost", TERM_L_WHITE, RES_COLD, "COLD", GFF_ATTACK },
+    { GF_POIS, "Poison", TERM_L_GREEN, RES_POIS, "POIS", GFF_ATTACK },
+    { GF_LITE, "Light", TERM_YELLOW, RES_LITE, "LITE", GFF_ATTACK },
+    { GF_DARK, "Darkness", TERM_L_DARK, RES_DARK, "DARK", GFF_ATTACK },
+    { GF_CONFUSION, "Confusion", TERM_L_UMBER, RES_CONF, "CONFUSION", GFF_ATTACK | GFF_STATUS },
+    { GF_NETHER, "Nether", TERM_L_DARK, RES_NETHER, "NETHER", GFF_ATTACK },
+    { GF_NEXUS, "Nexus", TERM_VIOLET, RES_NEXUS, "NEXUS", GFF_ATTACK },
+    { GF_SOUND, "Sound", TERM_ORANGE, RES_SOUND, "SOUND", GFF_ATTACK },
+    { GF_SHARDS, "Shards", TERM_L_UMBER, RES_SHARDS, "SHARDS", GFF_ATTACK },
+    { GF_CHAOS, "Chaos", TERM_VIOLET, RES_CHAOS, "CHAOS", GFF_ATTACK | GFF_STATUS },
+    { GF_DISENCHANT, "Disenchantment", TERM_VIOLET, RES_DISEN, "DISENCHANT", GFF_ATTACK },
+    { GF_TIME, "Time", TERM_L_BLUE, RES_TIME, "TIME", GFF_ATTACK | GFF_STATUS },
 
-    { GF_MANA, "Mana", TERM_L_BLUE, RES_INVALID, "MANA" },
-    { GF_GRAVITY, "Gravity", TERM_L_UMBER, RES_INVALID, "GRAVITY" },
-    { GF_INERT, "Inertia", TERM_L_UMBER, RES_INVALID, "INERTIA" },
-    { GF_PLASMA, "Plasma", TERM_L_RED, RES_INVALID, "PLASMA" },
-    { GF_FORCE, "Force", TERM_L_BLUE, RES_INVALID, "FORCE" },
-    { GF_NUKE, "Toxic Waste", TERM_L_GREEN, RES_POIS, "NUKE" },
-    { GF_DISINTEGRATE, "Disintegration", TERM_L_DARK, RES_INVALID, "DISINTEGRATE" },
-    { GF_STORM, "Storm Winds", TERM_BLUE, RES_INVALID, "STORM" },
-    { GF_HOLY_FIRE, "Holy Fire", TERM_YELLOW, RES_INVALID, "HOLY_FIRE" },
-    { GF_HELL_FIRE, "Hell Fire", TERM_L_DARK, RES_INVALID, "HELL_FIRE" },
-    { GF_ICE, "Ice", TERM_L_WHITE, RES_COLD, "ICE" },
-    { GF_WATER, "Water", TERM_L_BLUE, RES_INVALID, "WATER" },
-    { GF_ROCKET, "Rocket", TERM_RED, RES_SHARDS, "ROCKET" },
-    { GF_METEOR, "Meteor", TERM_RED, RES_INVALID, "METEOR" },
-    { GF_ROCK, "Rock", TERM_L_UMBER, RES_INVALID, "ROCK" },
-    { GF_ARROW, "Arrow", TERM_L_UMBER, RES_INVALID, "ARROW" },
-    { GF_MISSILE, "Missile", TERM_L_UMBER, RES_INVALID, "MISSILE" },
+    { GF_MANA, "Mana", TERM_L_BLUE, RES_INVALID, "MANA", GFF_ATTACK },
+    { GF_GRAVITY, "Gravity", TERM_L_UMBER, RES_INVALID, "GRAVITY", GFF_ATTACK | GFF_STATUS },
+    { GF_INERT, "Inertia", TERM_L_UMBER, RES_INVALID, "INERTIA", GFF_ATTACK | GFF_STATUS },
+    { GF_PLASMA, "Plasma", TERM_L_RED, RES_INVALID, "PLASMA", GFF_ATTACK | GFF_STATUS },
+    { GF_FORCE, "Force", TERM_L_BLUE, RES_INVALID, "FORCE", GFF_ATTACK | GFF_STATUS },
+    { GF_NUKE, "Toxic Waste", TERM_L_GREEN, RES_POIS, "NUKE", GFF_ATTACK },
+    { GF_DISINTEGRATE, "Disintegration", TERM_L_DARK, RES_INVALID, "DISINTEGRATE", GFF_ATTACK | GFF_TERRAIN },
+    { GF_STORM, "Storm Winds", TERM_BLUE, RES_INVALID, "STORM", GFF_ATTACK | GFF_STATUS },
+    { GF_HOLY_FIRE, "Holy Fire", TERM_YELLOW, RES_INVALID, "HOLY_FIRE", GFF_ATTACK },
+    { GF_HELL_FIRE, "Hell Fire", TERM_L_DARK, RES_INVALID, "HELL_FIRE", GFF_ATTACK },
+    { GF_ICE, "Ice", TERM_L_WHITE, RES_COLD, "ICE", GFF_ATTACK | GFF_STATUS },
+    { GF_WATER, "Water", TERM_L_BLUE, RES_INVALID, "WATER", GFF_ATTACK | GFF_STATUS },
+    { GF_ROCKET, "Rocket", TERM_RED, RES_SHARDS, "ROCKET", GFF_ATTACK },
+    { GF_METEOR, "Meteor", TERM_RED, RES_INVALID, "METEOR", GFF_ATTACK },
+    { GF_ROCK, "Rock", TERM_L_UMBER, RES_INVALID, "ROCK", GFF_ATTACK | GFF_STATUS },
+    { GF_ARROW, "Arrow", TERM_L_UMBER, RES_INVALID, "ARROW", GFF_ATTACK },
+    { GF_MISSILE, "Missile", TERM_L_UMBER, RES_INVALID, "MISSILE", GFF_ATTACK },
 
     /* Curses */
-    { GF_CAUSE_1, "Cause Light Wounds", TERM_RED, RES_INVALID, "CAUSE_1" },
-    { GF_CAUSE_2, "Cause Serious Wounds", TERM_RED, RES_INVALID, "CAUSE_2" },
-    { GF_CAUSE_3, "Cause Critical Wounds", TERM_RED, RES_INVALID, "CAUSE_3" },
-    { GF_CAUSE_4, "Cause Mortal Wounds", TERM_RED, RES_INVALID, "CAUSE_4" },
-    { GF_HAND_DOOM, "Hand of Doom", TERM_VIOLET, RES_INVALID, "HAND_DOOM" },
-    { GF_BLOOD_CURSE, "Blood Curse", TERM_VIOLET, RES_INVALID, "BLOOD_CURSE" },
+    { GF_CAUSE_1, "Cause Light Wounds", TERM_RED, RES_INVALID, "CAUSE_1", GFF_ATTACK },
+    { GF_CAUSE_2, "Cause Serious Wounds", TERM_RED, RES_INVALID, "CAUSE_2", GFF_ATTACK },
+    { GF_CAUSE_3, "Cause Critical Wounds", TERM_RED, RES_INVALID, "CAUSE_3", GFF_ATTACK },
+    { GF_CAUSE_4, "Cause Mortal Wounds", TERM_RED, RES_INVALID, "CAUSE_4", GFF_ATTACK },
+    { GF_HAND_DOOM, "Hand of Doom", TERM_VIOLET, RES_INVALID, "HAND_DOOM", GFF_ATTACK },
+    { GF_BLOOD_CURSE, "Blood Curse", TERM_VIOLET, RES_INVALID, "BLOOD_CURSE", 0 },
 
     /* Mental Attacks */
-    { GF_PSY_SPEAR, "Psycho-Spear", TERM_L_BLUE, RES_INVALID, "PSY_SPEAR" },
-    { GF_PSI, "Psionics", TERM_L_BLUE, RES_INVALID, "PSI" },
-    { GF_PSI_DRAIN, "Psionic Drain", TERM_L_BLUE, RES_INVALID, "PSI_DRAIN" },
-    { GF_PSI_EGO_WHIP, "Ego Whip", TERM_L_BLUE, RES_INVALID, "PSI_EGO_WHIP" },
-    { GF_PSI_BRAIN_SMASH, "Brain Smash", TERM_L_BLUE, RES_INVALID, "PSI_BRAIN_SMASH" },
-    { GF_PSI_STORM, "Psycho-Storm", TERM_L_BLUE, RES_INVALID, "PSI_STORM" },
-    { GF_TELEKINESIS, "Pulverise", TERM_L_BLUE, RES_INVALID, "TELEKINESIS" },
-    { GF_DOMINATION, "Domination", TERM_RED, RES_INVALID, "DOMINATION" },
-    { GF_SUBJUGATION, "Subjugation", TERM_RED, RES_INVALID, "SUBJUGATION" },
-    { GF_DRAIN_MANA, "Drain Mana", TERM_L_BLUE, RES_INVALID, "DRAIN_MANA" },
-    { GF_MIND_BLAST, "Mind Blast", TERM_L_BLUE, RES_INVALID, "MIND_BLAST" },
-    { GF_BRAIN_SMASH, "Brain Smash", TERM_L_BLUE, RES_INVALID, "BRAIN_SMASH" },
-    { GF_AMNESIA, "Amnesia", TERM_L_DARK, RES_INVALID, "AMNESIA" },
+    { GF_PSY_SPEAR, "Psycho-Spear", TERM_L_BLUE, RES_INVALID, "PSY_SPEAR", GFF_ATTACK },
+    { GF_PSI, "Psionics", TERM_L_BLUE, RES_INVALID, "PSI", GFF_ATTACK | GFF_STATUS },
+    { GF_PSI_DRAIN, "Psionic Drain", TERM_L_BLUE, RES_INVALID, "PSI_DRAIN", GFF_ATTACK | GFF_STATUS },
+    { GF_PSI_EGO_WHIP, "Ego Whip", TERM_L_BLUE, RES_INVALID, "PSI_EGO_WHIP", GFF_ATTACK | GFF_STATUS },
+    { GF_PSI_BRAIN_SMASH, "Brain Smash", TERM_L_BLUE, RES_INVALID, "PSI_BRAIN_SMASH", GFF_ATTACK | GFF_STATUS },
+    { GF_PSI_STORM, "Psycho-Storm", TERM_L_BLUE, RES_INVALID, "PSI_STORM", GFF_ATTACK | GFF_STATUS },
+    { GF_TELEKINESIS, "Pulverise", TERM_L_BLUE, RES_INVALID, "TELEKINESIS", GFF_ATTACK | GFF_STATUS },
+    { GF_DOMINATION, "Domination", TERM_RED, RES_INVALID, "DOMINATION", GFF_STATUS },
+    { GF_SUBJUGATION, "Subjugation", TERM_RED, RES_INVALID, "SUBJUGATION", GFF_STATUS },
+    { GF_DRAIN_MANA, "Drain Mana", TERM_L_BLUE, RES_INVALID, "DRAIN_MANA", GFF_STATUS },
+    { GF_MIND_BLAST, "Mind Blast", TERM_L_BLUE, RES_INVALID, "MIND_BLAST", GFF_ATTACK | GFF_STATUS },
+    { GF_BRAIN_SMASH, "Brain Smash", TERM_L_BLUE, RES_INVALID, "BRAIN_SMASH", GFF_ATTACK | GFF_STATUS },
+    { GF_AMNESIA, "Amnesia", TERM_L_DARK, RES_INVALID, "AMNESIA", GFF_STATUS },
 
     /* Status Effects */
-    { GF_BLIND, "Blind", TERM_L_DARK, RES_INVALID, "BLIND" },
-    { GF_OLD_CLONE, "Clone", TERM_RED, RES_INVALID, "OLD_CLONE" },
-    { GF_OLD_POLY, "Polymorph", TERM_RED, RES_INVALID, "OLD_POLY" },
-    { GF_OLD_HEAL, "Heal", TERM_WHITE, RES_INVALID, "OLD_HEAL" },
-    { GF_STAR_HEAL, "Heal", TERM_WHITE, RES_INVALID, "STAR_HEAL" },
-    { GF_OLD_SPEED, "Haste", TERM_L_RED, RES_INVALID, "OLD_SPEED" },
-    { GF_OLD_SLOW, "Slow", TERM_L_UMBER, RES_INVALID, "OLD_SLOW" },
-    { GF_OLD_CONF, "Confuse", TERM_L_UMBER, RES_INVALID, "OLD_CONF" },
-    { GF_OLD_SLEEP, "Sleep", TERM_BLUE, RES_INVALID, "OLD_SLEEP" },
-    { GF_OLD_DRAIN, "Drain", TERM_L_DARK, RES_INVALID, "OLD_DRAIN" },
-    { GF_STASIS, "Freeze", TERM_BLUE, RES_INVALID, "STASIS" },
-    { GF_STASIS_EVIL, "Freeze Evil", TERM_BLUE, RES_INVALID, "STASIS_EVIL" },
-    { GF_PARALYSIS, "Paralyze", TERM_VIOLET, RES_INVALID, "PARALYZE" },
-    { GF_STUN, "Stun", TERM_L_BLUE, RES_INVALID, "STUN" },
-    { GF_ELDRITCH, "Eldritch Horror", TERM_VIOLET, RES_INVALID, "ELDRITCH" },
-    { GF_ANTIMAGIC, "Anti-magic", TERM_RED, RES_INVALID, "ANTIMAGIC" },
-    { GF_CRUSADE, "Crusade", TERM_WHITE, RES_INVALID, "CRUSADE" },
-    { GF_UNHOLY_WORD, "Unholy Word", TERM_L_DARK, RES_INVALID, "UNHOLY_WORD" },
-    { GF_UNLIFE, "Unlife", TERM_L_DARK, RES_INVALID, "UNLIFE" },
+    { GF_BLIND, "Blind", TERM_L_DARK, RES_INVALID, "BLIND", GFF_STATUS },
+    { GF_OLD_CLONE, "Clone", TERM_RED, RES_INVALID, "OLD_CLONE", 0 },
+    { GF_OLD_POLY, "Polymorph", TERM_RED, RES_INVALID, "OLD_POLY", GFF_STATUS },
+    { GF_OLD_HEAL, "Heal", TERM_WHITE, RES_INVALID, "OLD_HEAL", GFF_STATUS },
+    { GF_STAR_HEAL, "Heal", TERM_WHITE, RES_INVALID, "STAR_HEAL", GFF_STATUS },
+    { GF_OLD_SPEED, "Haste", TERM_L_RED, RES_INVALID, "OLD_SPEED", GFF_STATUS },
+    { GF_OLD_SLOW, "Slow", TERM_L_UMBER, RES_INVALID, "OLD_SLOW", GFF_STATUS },
+    { GF_OLD_CONF, "Confuse", TERM_L_UMBER, RES_INVALID, "OLD_CONF", GFF_STATUS },
+    { GF_OLD_SLEEP, "Sleep", TERM_BLUE, RES_INVALID, "OLD_SLEEP", GFF_STATUS },
+    { GF_OLD_DRAIN, "Drain", TERM_L_DARK, RES_INVALID, "OLD_DRAIN", GFF_STATUS },
+    { GF_STASIS, "Freeze", TERM_BLUE, RES_INVALID, "STASIS", GFF_STATUS },
+    { GF_STASIS_EVIL, "Freeze Evil", TERM_BLUE, RES_INVALID, "STASIS_EVIL", GFF_STATUS },
+    { GF_PARALYSIS, "Paralyze", TERM_VIOLET, RES_INVALID, "PARALYZE", GFF_STATUS },
+    { GF_STUN, "Stun", TERM_L_BLUE, RES_INVALID, "STUN", GFF_STATUS },
+    { GF_ELDRITCH, "Eldritch Horror", TERM_VIOLET, RES_INVALID, "ELDRITCH", GFF_STATUS },
+    { GF_ANTIMAGIC, "Anti-magic", TERM_RED, RES_INVALID, "ANTIMAGIC", GFF_STATUS },
+    { GF_CRUSADE, "Crusade", TERM_WHITE, RES_INVALID, "CRUSADE", GFF_STATUS },
+    { GF_UNHOLY_WORD, "Unholy Word", TERM_L_DARK, RES_INVALID, "UNHOLY_WORD", GFF_STATUS },
+    { GF_UNLIFE, "Unlife", TERM_L_DARK, RES_INVALID, "UNLIFE", GFF_STATUS },
 
     /* Terrain Effects */
-    { GF_LITE_WEAK, "Light", TERM_YELLOW, RES_INVALID, "LITE_WEAK" },
-    { GF_DARK_WEAK, "Dark", TERM_L_DARK, RES_INVALID, "DARK_WEAK" },
-    { GF_KILL_WALL, "Stone to Mud", TERM_L_UMBER, RES_INVALID, "KILL_WALL" },
-    { GF_KILL_DOOR, "Door Destruction", TERM_RED, RES_INVALID, "KILL_DOOR" },
-    { GF_KILL_TRAP, "Trap Destruction", TERM_RED, RES_INVALID, "KILL_TRAP" },
-    { GF_REMOVE_OBSTACLE, "Remove Obstacle", TERM_RED, RES_INVALID, "REMOVE_OBSTACLE" },
-    { GF_MAKE_DOOR, "Door Creation", TERM_L_BLUE, RES_INVALID, "MAKE_DOOR" },
-    { GF_MAKE_TRAP, "Trap Creation", TERM_L_RED, RES_INVALID, "MAKE_TRAP" },
-    { GF_MAKE_TREE, "Forest Creation", TERM_L_GREEN, RES_INVALID, "MAKE_TREE" },
-    { GF_MAKE_GLYPH, "Glyph of Warding", TERM_L_BLUE, RES_INVALID, "MAKE_GLYPH" },
-    { GF_MAKE_WALL, "Wall Creation", TERM_SLATE, RES_INVALID, "MAKE_WALL" },
-    { GF_JAM_DOOR, "Wizard Lock", TERM_RED, RES_INVALID, "JAM_DOOR" },
-    { GF_WATER_FLOW, "Flow of Water", TERM_BLUE, RES_INVALID, "WATER_FLOW" },
-    { GF_WATER2, "Flow of Water", TERM_BLUE, RES_INVALID, "WATER2" },
-    { GF_LAVA_FLOW, "Flow of Lava", TERM_RED, RES_INVALID, "LAVA_FLOW" },
-    { GF_WEB, "Web Spinning", TERM_SLATE, RES_INVALID, "WEB" },
-    { GF_QUAKE, "Earthquake", TERM_L_UMBER, RES_INVALID, "QUAKE" },
+    { GF_LITE_WEAK, "Light", TERM_YELLOW, RES_INVALID, "LITE_WEAK", GFF_ATTACK | GFF_TERRAIN },
+    { GF_DARK_WEAK, "Dark", TERM_L_DARK, RES_INVALID, "DARK_WEAK", GFF_ATTACK | GFF_TERRAIN },
+    { GF_KILL_WALL, "Stone to Mud", TERM_L_UMBER, RES_INVALID, "KILL_WALL", GFF_ATTACK | GFF_TERRAIN },
+    { GF_KILL_DOOR, "Door Destruction", TERM_RED, RES_INVALID, "KILL_DOOR", GFF_TERRAIN },
+    { GF_KILL_TRAP, "Trap Destruction", TERM_RED, RES_INVALID, "KILL_TRAP", GFF_TERRAIN },
+    { GF_REMOVE_OBSTACLE, "Remove Obstacle", TERM_RED, RES_INVALID, "REMOVE_OBSTACLE", GFF_TERRAIN },
+    { GF_MAKE_DOOR, "Door Creation", TERM_L_BLUE, RES_INVALID, "MAKE_DOOR", GFF_TERRAIN },
+    { GF_MAKE_TRAP, "Trap Creation", TERM_L_RED, RES_INVALID, "MAKE_TRAP", GFF_TERRAIN },
+    { GF_MAKE_TREE, "Forest Creation", TERM_L_GREEN, RES_INVALID, "MAKE_TREE", GFF_TERRAIN },
+    { GF_MAKE_GLYPH, "Glyph of Warding", TERM_L_BLUE, RES_INVALID, "MAKE_GLYPH", GFF_TERRAIN },
+    { GF_MAKE_WALL, "Wall Creation", TERM_SLATE, RES_INVALID, "MAKE_WALL", GFF_TERRAIN },
+    { GF_JAM_DOOR, "Wizard Lock", TERM_RED, RES_INVALID, "JAM_DOOR", GFF_TERRAIN },
+    { GF_WATER_FLOW, "Flow of Water", TERM_BLUE, RES_INVALID, "WATER_FLOW", GFF_STATUS | GFF_TERRAIN },
+    { GF_WATER2, "Flow of Water", TERM_BLUE, RES_INVALID, "WATER2", GFF_STATUS | GFF_TERRAIN },
+    { GF_LAVA_FLOW, "Flow of Lava", TERM_RED, RES_INVALID, "LAVA_FLOW", GFF_TERRAIN },
+    { GF_WEB, "Web Spinning", TERM_SLATE, RES_INVALID, "WEB", GFF_TERRAIN },
+    { GF_QUAKE, "Earthquake", TERM_L_UMBER, RES_INVALID, "QUAKE", GFF_TERRAIN },
 
     /* Turning, Dispelling, Controlling, etc */
-    { GF_AWAY_UNDEAD, "Banish Undead", TERM_L_BLUE, RES_INVALID, "AWAY_UNDEAD" },
-    { GF_AWAY_EVIL, "Banish Evil", TERM_L_BLUE, RES_INVALID, "AWAY_EVIL" },
-    { GF_AWAY_ALL, "Banishment", TERM_L_BLUE, RES_INVALID, "AWAY_ALL" },
-    { GF_ISOLATION, "Isolation", TERM_L_BLUE, RES_INVALID, "ISOLATION" },
-    { GF_TURN_UNDEAD, "Turn Undead", TERM_RED, RES_INVALID, "TURN_UNDEAD" },
-    { GF_TURN_EVIL, "Turn Evil", TERM_RED, RES_INVALID, "TURN_EVIL" },
-    { GF_TURN_ALL, "Turn Monsters", TERM_RED, RES_INVALID, "TURN_ALL" },
-    { GF_DISP_UNDEAD, "Dispel Undead", TERM_L_RED, RES_INVALID, "DISP_UNDEAD" },
-    { GF_DISP_EVIL, "Dispel Evil", TERM_L_RED, RES_INVALID, "DISP_EVIL" },
-    { GF_DISP_GOOD, "Dispel Good", TERM_L_RED, RES_INVALID, "DISP_GOOD" },
-    { GF_DISP_DEMON, "Dispel Demon", TERM_L_RED, RES_INVALID, "DISP_DEMON" },
-    { GF_DISP_LIVING, "Dispel Living", TERM_L_RED, RES_INVALID, "DISP_LIVING" },
-    { GF_DISP_ALL, "Dispel Monsters", TERM_L_RED, RES_INVALID, "DISP_ALL" },
-    { GF_CONTROL_UNDEAD, "Enslave Undead", TERM_L_BLUE, RES_INVALID, "CONTROL_UNDEAD" },
-    { GF_CONTROL_DEMON, "Dominate Demon", TERM_L_BLUE, RES_INVALID, "CONTROL_DEMON" },
-    { GF_CONTROL_ANIMAL, "Charm Animal", TERM_L_BLUE, RES_INVALID, "CONTROL_ANIMAL" },
-    { GF_CONTROL_LIVING, "Charm Living", TERM_L_BLUE, RES_INVALID, "CONTROL_LIVING" },
-    { GF_CONTROL_PACT_MONSTER, "Control Pact Monster", TERM_L_BLUE, RES_INVALID, "CONTROL_PACT_MONSTER" },
-    { GF_CHARM, "Charm Monster", TERM_L_BLUE, RES_INVALID, "CHARM" },
-    { GF_CHARM_RING_BEARER, "Charm Ring Bearer", TERM_L_BLUE, RES_INVALID, "CHARM_RING_BEARER" },
-    { GF_CAPTURE, "Capture Monster", TERM_L_BLUE, RES_INVALID, "CAPTURE" },
-    { GF_ANIM_DEAD, "Raise Dead", TERM_L_DARK, RES_INVALID, "ANIM_DEAD" },
-    { GF_DEATH_RAY, "Death Ray", TERM_L_DARK, RES_INVALID, "DEATH_RAY" },
-    { GF_GENOCIDE, "Genocide", TERM_L_DARK, RES_INVALID, "GENOCIDE" },
+    { GF_AWAY_UNDEAD, "Banish Undead", TERM_L_BLUE, RES_INVALID, "AWAY_UNDEAD", GFF_STATUS },
+    { GF_AWAY_EVIL, "Banish Evil", TERM_L_BLUE, RES_INVALID, "AWAY_EVIL", GFF_STATUS },
+    { GF_AWAY_ALL, "Banishment", TERM_L_BLUE, RES_INVALID, "AWAY_ALL", GFF_STATUS },
+    { GF_ISOLATION, "Isolation", TERM_L_BLUE, RES_INVALID, "ISOLATION", GFF_STATUS },
+    { GF_TURN_UNDEAD, "Turn Undead", TERM_RED, RES_INVALID, "TURN_UNDEAD", GFF_STATUS },
+    { GF_TURN_EVIL, "Turn Evil", TERM_RED, RES_INVALID, "TURN_EVIL", GFF_STATUS },
+    { GF_TURN_ALL, "Turn Monsters", TERM_RED, RES_INVALID, "TURN_ALL", GFF_STATUS },
+    { GF_DISP_UNDEAD, "Dispel Undead", TERM_L_RED, RES_INVALID, "DISP_UNDEAD", GFF_ATTACK },
+    { GF_DISP_EVIL, "Dispel Evil", TERM_L_RED, RES_INVALID, "DISP_EVIL", GFF_ATTACK },
+    { GF_DISP_GOOD, "Dispel Good", TERM_L_RED, RES_INVALID, "DISP_GOOD", GFF_ATTACK },
+    { GF_DISP_DEMON, "Dispel Demon", TERM_L_RED, RES_INVALID, "DISP_DEMON", GFF_ATTACK },
+    { GF_DISP_LIVING, "Dispel Living", TERM_L_RED, RES_INVALID, "DISP_LIVING", GFF_ATTACK },
+    { GF_DISP_ALL, "Dispel Monsters", TERM_L_RED, RES_INVALID, "DISP_ALL", GFF_ATTACK },
+    { GF_CONTROL_UNDEAD, "Enslave Undead", TERM_L_BLUE, RES_INVALID, "CONTROL_UNDEAD", GFF_STATUS },
+    { GF_CONTROL_DEMON, "Dominate Demon", TERM_L_BLUE, RES_INVALID, "CONTROL_DEMON", GFF_STATUS },
+    { GF_CONTROL_ANIMAL, "Charm Animal", TERM_L_BLUE, RES_INVALID, "CONTROL_ANIMAL", GFF_STATUS },
+    { GF_CONTROL_LIVING, "Charm Living", TERM_L_BLUE, RES_INVALID, "CONTROL_LIVING", GFF_STATUS },
+    { GF_CONTROL_PACT_MONSTER, "Control Pact Monster", TERM_L_BLUE, RES_INVALID, "CONTROL_PACT_MONSTER", GFF_STATUS },
+    { GF_CHARM, "Charm Monster", TERM_L_BLUE, RES_INVALID, "CHARM", GFF_STATUS },
+    { GF_CHARM_RING_BEARER, "Charm Ring Bearer", TERM_L_BLUE, RES_INVALID, "CHARM_RING_BEARER", GFF_STATUS },
+    { GF_CAPTURE, "Capture Monster", TERM_L_BLUE, RES_INVALID, "CAPTURE", GFF_STATUS },
+    { GF_ANIM_DEAD, "Raise Dead", TERM_L_DARK, RES_INVALID, "ANIM_DEAD", GFF_STATUS },
+    { GF_DEATH_RAY, "Death Ray", TERM_L_DARK, RES_INVALID, "DEATH_RAY", GFF_STATUS },
+    { GF_GENOCIDE, "Genocide", TERM_L_DARK, RES_INVALID, "GENOCIDE", GFF_STATUS },
 
     /* Object Effects */
-    { GF_IDENTIFY, "Identify", TERM_L_BLUE, RES_INVALID, "IDENTIFY" },
+    { GF_IDENTIFY, "Identify", TERM_L_BLUE, RES_INVALID, "IDENTIFY", GFF_UTILITY },
 
     /* Class Specific */
-    { GF_PHOTO, "Photograph", TERM_YELLOW, RES_INVALID, "PHOTO" },
-    { GF_ATTACK, "Attack", TERM_RED, RES_INVALID, "ATTACK" },
-    { GF_ENGETSU, "Moon Dazzling", TERM_YELLOW, RES_INVALID, "ENGETSU" },
-    { GF_SEEKER, "Seeker Ray", TERM_YELLOW, RES_INVALID, "SEEKER" },
-    { GF_SUPER_RAY, "Super Ray", TERM_YELLOW, RES_INVALID, "SUPER_RAY" },
-    { GF_BLOOD, "Blood", TERM_RED, RES_INVALID, "BLOOD" },
-    { GF_ELDRITCH_STUN, "Eldritch Stun", TERM_L_BLUE, RES_INVALID, "ELDRITCH_STUN" },
-    { GF_ELDRITCH_DRAIN, "Eldritch Drain", TERM_L_DARK, RES_INVALID, "ELDRITCH_DRAIN" },
-    { GF_ELDRITCH_DISPEL, "Eldritch Dispel", TERM_L_RED, RES_INVALID, "ELDRITCH_DISPEL" },
-    { GF_ELDRITCH_CONFUSE, "Eldritch Confuse", TERM_L_UMBER, RES_INVALID, "ELDRITCH_CONFUSE" },
-    { GF_ELDRITCH_HOWL, "Eldritch Howl", TERM_L_DARK, RES_INVALID, "ELDRITCH_HOWL" },
-    { GF_ENTOMB, "Entomb", TERM_L_UMBER, RES_INVALID, "ENTOMB" },
-    { GF_MANA_CLASH, "Mana Clash", TERM_L_BLUE, RES_INVALID, "MANA_CLASH" },
-    { GF_PHARAOHS_CURSE, "Pharaoh's Curse", TERM_VIOLET, RES_INVALID, "PHARAOHS_CURSE" },
-    { GF_DRAINING_TOUCH, "Draining Touch", TERM_L_DARK, RES_INVALID, "DRAINING_TOUCH" },
-    { GF_DEATH_TOUCH, "Touch of Death", TERM_L_DARK, RES_INVALID, "DEATH_TOUCH" },
-    { GF_STEAL, "Steal", TERM_WHITE, RES_INVALID, "STEAL" },
+    { GF_PHOTO, "Photograph", TERM_YELLOW, RES_INVALID, "PHOTO", 0 },
+    { GF_ATTACK, "Attack", TERM_RED, RES_INVALID, "ATTACK", GFF_ATTACK },
+    { GF_ENGETSU, "Moon Dazzling", TERM_YELLOW, RES_INVALID, "ENGETSU", GFF_STATUS },
+    { GF_SEEKER, "Seeker Ray", TERM_YELLOW, RES_INVALID, "SEEKER", GFF_ATTACK },
+    { GF_SUPER_RAY, "Super Ray", TERM_YELLOW, RES_INVALID, "SUPER_RAY", GFF_ATTACK },
+    { GF_BLOOD, "Blood", TERM_RED, RES_INVALID, "BLOOD", GFF_ATTACK },
+    { GF_ELDRITCH_STUN, "Eldritch Stun", TERM_L_BLUE, RES_INVALID, "ELDRITCH_STUN", GFF_STATUS },
+    { GF_ELDRITCH_DRAIN, "Eldritch Drain", TERM_L_DARK, RES_INVALID, "ELDRITCH_DRAIN", GFF_STATUS },
+    { GF_ELDRITCH_DISPEL, "Eldritch Dispel", TERM_L_RED, RES_INVALID, "ELDRITCH_DISPEL", GFF_STATUS },
+    { GF_ELDRITCH_CONFUSE, "Eldritch Confuse", TERM_L_UMBER, RES_INVALID, "ELDRITCH_CONFUSE", GFF_STATUS },
+    { GF_ELDRITCH_HOWL, "Eldritch Howl", TERM_L_DARK, RES_INVALID, "ELDRITCH_HOWL", GFF_STATUS },
+    { GF_ENTOMB, "Entomb", TERM_L_UMBER, RES_INVALID, "ENTOMB", GFF_STATUS | GFF_TERRAIN },
+    { GF_MANA_CLASH, "Mana Clash", TERM_L_BLUE, RES_INVALID, "MANA_CLASH", GFF_ATTACK },
+    { GF_PHARAOHS_CURSE, "Pharaoh's Curse", TERM_VIOLET, RES_INVALID, "PHARAOHS_CURSE", GFF_ATTACK },
+    { GF_DRAINING_TOUCH, "Draining Touch", TERM_L_DARK, RES_INVALID, "DRAINING_TOUCH", GFF_ATTACK },
+    { GF_DEATH_TOUCH, "Touch of Death", TERM_L_DARK, RES_INVALID, "DEATH_TOUCH", GFF_STATUS },
+    { GF_STEAL, "Steal", TERM_WHITE, RES_INVALID, "STEAL", GFF_STATUS },
 
     /* New */
-    { GF_SLOW, "Slow", TERM_ORANGE, RES_INVALID, "SLOW" },
-    { GF_CHICKEN, "Chicken", TERM_YELLOW, RES_INVALID, "CHICKEN" },
-    { GF_BOMB, "Bomb", TERM_SLATE, RES_INVALID, "BOMB" },
+    { GF_SLOW, "Slow", TERM_ORANGE, RES_INVALID, "SLOW", GFF_STATUS },
+    { GF_CHICKEN, "Chicken", TERM_YELLOW, RES_INVALID, "CHICKEN", GFF_ATTACK | GFF_STATUS },
+    { GF_BOMB, "Bomb", TERM_SLATE, RES_INVALID, "BOMB", GFF_ATTACK | GFF_STATUS },
 };
 
 typedef struct {
@@ -1428,6 +1428,9 @@ bool gf_affect_m(int who, mon_ptr mon, int type, int dam, int flags)
 
     int caster_lev = (who > 0) ? r_info[caster_ptr->r_idx].level : spell_power(p_ptr->lev * 2);
 
+    byte old_ash = attack_spell_hack;
+    bool ash_changed = FALSE; /* Paranoia - try to handle potential loops */
+
     bool who_is_pet = FALSE;
     if (who > 0 && is_pet(&m_list[who]))
         who_is_pet = TRUE;
@@ -1485,6 +1488,12 @@ bool gf_affect_m(int who, mon_ptr mon, int type, int dam, int flags)
 
 
     if (p_ptr->riding && mon->id == p_ptr->riding) disturb(1, 0);
+
+    if ((who == GF_WHO_PLAYER) && (attack_spell_hack == ASH_UNASSESSED_1))
+    {
+        attack_spell_hack = ASH_USEFUL_ATTACK;
+        ash_changed = TRUE;
+    }
 
     /* Analyze the damage type */
     switch (type)
@@ -4462,6 +4471,24 @@ bool gf_affect_m(int who, mon_ptr mon, int type, int dam, int flags)
     {
         bool fear = FALSE;
 
+        /* Hack for device lore: Keep track of max damage experienced by any single
+         * monster for this effect. */
+        if (dam)
+        {
+            int lore_dam = MIN(dam, mon->hp);
+            hack_max_m_dam = MAX(hack_max_m_dam, lore_dam);
+            if (attack_spell_hack == ASH_UNASSESSED_2)
+            {
+                attack_spell_hack = ASH_USEFUL_ATTACK;
+                ash_changed = TRUE;
+            }
+        }
+
+        if ((ash_changed) && (attack_spell_hack != old_ash) && ((race->flags1 & RF1_NEVER_MOVE) || ((note) && (strpos("is immune", note)))))
+        { /* Useless after all */
+            attack_spell_hack = old_ash;
+        }
+
         /* Hacks  ... these effects probably belong in the gargantuan switch statement above ... sigh */
         /* Hack: The Draining Blast power gives hitpoints back. */
         if (type == GF_ELDRITCH_DRAIN && monster_living(race) && !no_harm)
@@ -4471,14 +4498,6 @@ bool gf_affect_m(int who, mon_ptr mon, int type, int dam, int flags)
                 heal = mon->hp;
             heal /= 2;
             hp_player(heal);
-        }
-
-        /* Hack for device lore: Keep track of max damage experienced by any single
-         * monster for this effect. */
-        if (dam)
-        {
-            int lore_dam = MIN(dam, mon->hp);
-            hack_max_m_dam = MAX(hack_max_m_dam, lore_dam);
         }
 
         /* Hurt the monster, check for fear and death
