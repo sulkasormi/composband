@@ -186,6 +186,7 @@ bool shop_exit_hack = FALSE;
 bool no_karrot_hack = FALSE;
 bool allow_special3_hack = FALSE;
 bool temporary_name_hack = FALSE;
+byte attack_spell_hack = ASH_USELESS_ATTACK;
 byte troika_spell_hack = 0;
 s16b vampirism_hack = 1000;
 byte spell_problem = 0;
