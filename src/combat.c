@@ -491,6 +491,14 @@ int calculate_base_blows(int hand, int str_idx, int dex_idx)
 
     if (p_ptr->pclass == CLASS_MAULER)
         result = 100 + (result - 100)*2/5;
+    else if (p_ptr->pclass == CLASS_WEAPONMASTER)
+    {
+        if ((weaponmaster_is_(WEAPONMASTER_POLEARMS)) ||
+            (weaponmaster_is_(WEAPONMASTER_STAVES)) ||
+            (weaponmaster_is_(WEAPONMASTER_CLUBS)) ||
+            (weaponmaster_is_(WEAPONMASTER_AXES)))
+        result = 100 + (result - 100)*4/5;
+    }
 
     if (result > info_ptr->blows_calc.max)
         result = info_ptr->blows_calc.max;
