@@ -1355,7 +1355,7 @@ static void _reaping_spell(int cmd, variant *res)
         var_set_string(res, "Reaping");
         break;
     case SPELL_DESC:
-        var_set_string(res, "A successful strike will damage all adjacent opponents granting you wraithform.");
+        var_set_string(res, "A whirlwind of death, striking all adjacent enemies with powerful vampiric blows. Each kill further increases the strength of subsequent strikes.");
         break;
     case SPELL_CAST:
         var_set_bool(res, _do_blow(WEAPONMASTER_REAPING));
@@ -2261,8 +2261,8 @@ static _speciality _specialities[_MAX_SPECIALITIES] = {
     /*  S   I   W   D   C   C */
       {+3, -2, -1, -2, +1,  0},
     /* Dsrm Dvce Save Stlh Srch Prcp Thn Thb*/
-      {  25,  20,  31,   1,  14,   2, 70, 25},
-      {   9,   7,  10,   0,   0,   0, 30, 11},
+      {  17,  17,  26,   1,  14,   2, 70, 25},
+      {   7,   7,   9,   0,   0,   0, 30, 11},
       { { TV_POLEARM, SV_HATCHET },
         { TV_POLEARM, SV_BATTLE_AXE },
         { TV_POLEARM, SV_BEAKED_AXE },
@@ -2291,8 +2291,8 @@ static _speciality _specialities[_MAX_SPECIALITIES] = {
     /*  S   I   W   D   C   C */
       { 0,  0,  0, +2, -1,  0},
     /* Dsrm Dvce Save Stlh Srch Prcp Thn Thb*/
-      {  30,  26,  29,   4,  23,  13, 48, 72},
-      {   8,   9,  10,   0,   0,   0, 13, 28},
+      {  23,  23,  29,   4,  23,  13, 48, 72},
+      {   8,   8,  10,   0,   0,   0, 13, 28},
       { { TV_BOW, SV_SHORT_BOW },
         { TV_BOW, SV_LONG_BOW },
         { TV_BOW, SV_NAMAKE_BOW },
@@ -2316,10 +2316,10 @@ static _speciality _specialities[_MAX_SPECIALITIES] = {
         "become more likely to score devastating, crushing blows against your hapless enemies.",
         _WEAPONMASTER_MELEE,
     /*  S   I   W   D   C   C */
-      {+2, -1, -1, -2, +1,  0},
+      {+2, -2, -1, -2, +1,  0},
     /* Dsrm Dvce Save Stlh Srch Prcp Thn Thb*/
-      {  25,  23,  35,   1,  14,   2, 65, 30},
-      {   9,   9,  12,   0,   0,   0, 20, 15},
+      {  18,  18,  26,   1,  14,   2, 60, 30},
+      {   7,   7,   9,   0,   0,   0, 20, 15},
         { { TV_HAFTED, SV_BALL_AND_CHAIN },
           { TV_HAFTED, SV_CLUB },
           { TV_HAFTED, SV_FLAIL },
@@ -2353,10 +2353,10 @@ static _speciality _specialities[_MAX_SPECIALITIES] = {
       "their opponents backwards!",
       _WEAPONMASTER_BOWS,
     /*  S   I   W   D   C   C */
-      {+1, -1, -1, +1, +1,  0},
+      {+1, -1, -2,  0, +1,  0},
     /* Dsrm Dvce Save Stlh Srch Prcp Thn Thb*/
-      {  30,  26,  29,   3,  18,  10, 48, 72},
-      {   8,   9,   9,   0,   0,   0, 13, 28},
+      {  24,  24,  26,   3,  18,  10, 48, 72},
+      {   8,   8,   8,   0,   0,   0, 13, 28},
       { { TV_BOW, SV_LIGHT_XBOW },
         { TV_BOW, SV_HEAVY_XBOW },
         { 0, 0 },
@@ -2374,7 +2374,7 @@ static _speciality _specialities[_MAX_SPECIALITIES] = {
       { TV_BOW, SV_LIGHT_XBOW },
     },
     { "Daggers",
-      "A knife in the back! This speciality favors dual wielding and rogue-like behavior. "
+      "A knife in the back! This speciality favors dual-wielding and rogue-type behavior. "
       "The daggermaster can even assume the posture of The Flying Dagger which greatly "
       "enhances their low level dagger toss capability. Indeed, their prowess with the "
       "dagger toss is legendary and appears almost magical! At high levels, you will also "
@@ -2385,8 +2385,8 @@ static _speciality _specialities[_MAX_SPECIALITIES] = {
     /*  S   I   W   D   C   C */
       { 0, +1,  0, +3, -1,  0},
     /* Dsrm Dvce Save Stlh Srch Prcp Thn Thb*/
-      {  30,  29,  31,   5,  30,  20, 60, 66},
-      {  12,   9,  10,   0,   0,   0, 18, 20},
+      {  30,  24,  31,   5,  30,  20, 60, 66},
+      {  12,   8,  10,   0,   0,   0, 18, 20},
       { { TV_SWORD, SV_BASILLARD },
         { TV_SWORD, SV_BROKEN_DAGGER },
         { TV_SWORD, SV_DAGGER },
@@ -2418,8 +2418,8 @@ static _speciality _specialities[_MAX_SPECIALITIES] = {
     /*  S   I   W   D   C   C */
       {+2, -1, -1,  0, +1,  0},
     /* Dsrm Dvce Save Stlh Srch Prcp Thn Thb*/
-      {  25,  23,  31,   1,  14,   2, 68, 25},
-      {  10,   7,  10,   0,   0,   0, 28, 11},
+      {  20,  19,  28,   1,  14,   2, 65, 25},
+      {   8,   7,  10,   0,   0,   0, 27, 11},
       {
         { TV_POLEARM, SV_AWL_PIKE },
         { TV_POLEARM, SV_BROAD_SPEAR },
@@ -2493,8 +2493,8 @@ static _speciality _specialities[_MAX_SPECIALITIES] = {
     /*  S   I   W   D   C   C */
       {-1, +1, +1, +3, -1,  0},
     /* Dsrm Dvce Save Stlh Srch Prcp Thn Thb*/
-      {  30,  28,  29,   4,  23,  13, 48, 72},
-      {   8,   9,  10,   0,   0,   0, 13, 28},
+      {  30,  24,  29,   4,  23,  13, 48, 72},
+      {   8,   8,  10,   0,   0,   0, 13, 28},
       { { TV_BOW, SV_SLING },
         { 0, 0 },
       },
@@ -2516,10 +2516,10 @@ static _speciality _specialities[_MAX_SPECIALITIES] = {
       "You may even eventually clone yourself at great cost.",
       _WEAPONMASTER_MELEE,
     /*  S   I   W   D   C   C */
-      { 0,  0,  0, +2, +1,  0},
+      { 0, -1,  0, +2, +1,  0},
     /* Dsrm Dvce Save Stlh Srch Prcp Thn Thb*/
-      {  25,  24,  31,   2,  14,   4, 63, 25},
-      {  10,   9,  10,   0,   0,   0, 26, 11},
+      {  24,  24,  31,   2,  14,   4, 60, 25},
+      {   8,   8,  10,   0,   0,   0, 24, 11},
       {
         { TV_HAFTED, SV_BO_STAFF },
         { TV_HAFTED, SV_JO_STAFF },
@@ -2545,8 +2545,8 @@ static _speciality _specialities[_MAX_SPECIALITIES] = {
     /*  S   I   W   D   C   C */
       {+1, -1, -1, +1, +1,  0},
     /* Dsrm Dvce Save Stlh Srch Prcp Thn Thb*/
-      {  25,  21,  31,   1,  14,   2, 70, 25},
-      {  11,   8,  10,   0,   0,   0, 29, 11},
+      {  20,  18,  29,   1,  14,   2, 67, 25},
+      {   8,   7,   9,   0,   0,   0, 27, 11},
       { { TV_SWORD, SV_BASTARD_SWORD } ,
         { TV_SWORD, SV_BROKEN_SWORD } ,
         { TV_SWORD, SV_BLADE_OF_CHAOS } ,
@@ -2596,7 +2596,7 @@ static _speciality _specialities[_MAX_SPECIALITIES] = {
     /*  S   I   W   D   C   C */
       {+2, -1, -1,  0, +1,  0},
     /* Dsrm Dvce Save Stlh Srch Prcp Thn Thb*/
-      {  25,  25,  33,   3,  14,   2, 60, 25},
+      {  25,  21,  33,   3,  14,   2, 60, 25},
       {   9,   8,  11,   0,   0,   0, 26, 11},
       {
         { TV_DIGGING, SV_SHOVEL},
@@ -3359,9 +3359,9 @@ static void _init_blows_calc(object_type *o_ptr, weapon_info_t *info_ptr)
                 break;
             case WEAPONMASTER_DAGGERS:
                 if (_get_toggle() == TOGGLE_FRENZY_STANCE)
-                    info_ptr->blows_calc.max = 600;
+                    info_ptr->blows_calc.max = 575;
                 else
-                    info_ptr->blows_calc.max = 500;
+                    info_ptr->blows_calc.max = 475;
                 break;
             case WEAPONMASTER_CLUBS:
                 info_ptr->blows_calc.max = 525;
@@ -3373,10 +3373,10 @@ static void _init_blows_calc(object_type *o_ptr, weapon_info_t *info_ptr)
                 info_ptr->blows_calc.max = 500;
                 break;
             case WEAPONMASTER_SWORDS:
-                info_ptr->blows_calc.max = 525;
+                info_ptr->blows_calc.max = 475;
                 break;
             case WEAPONMASTER_DIGGERS:
-                info_ptr->blows_calc.max = 550;
+                info_ptr->blows_calc.max = 540;
                 break;
             }
         }
@@ -3389,6 +3389,8 @@ static void _calc_weapon_bonuses(object_type *o_ptr, weapon_info_t *info_ptr)
     int spec1 = _check_speciality_aux(o_ptr);
 
     _init_blows_calc(o_ptr, info_ptr);
+
+    if (!spec1) info_ptr->icky_wield = TRUE;
 
     /* (+L/5, +L/5) for all weaponmasters replacing 'Signature Weapon' */
     if (spec1 && p_ptr->speciality_equip)
@@ -3735,12 +3737,17 @@ static void _character_dump(doc_ptr doc)
         if (p_ptr->lev >= 40)
             doc_printf(doc, "  * You gain crushing blows when wielding a club.\n");
     }
+    else if (p_ptr->psubclass == WEAPONMASTER_CROSSBOWS)
+    {
+        if (p_ptr->lev >= 45)
+            doc_printf(doc, "  * <indent>You deal extra damage to already wounded monsters when shooting with a crossbow.</indent>\n");
+    }
     else if (p_ptr->psubclass == WEAPONMASTER_DAGGERS)
     {
         doc_printf(doc, "  * You pay reduced energy costs when equipping a dagger.\n");
         doc_printf(doc, "  * You dual wield very effectively with daggers.\n");
         if (p_ptr->lev >= 25)
-            doc_printf(doc, "  * You gain a bonus to AC when wielding dual wielding daggers.\n");
+            doc_printf(doc, "  * You gain a bonus to AC when dual-wielding daggers.\n");
         if (p_ptr->lev >= 12)
             doc_printf(doc, "  * You gain a bonus to stealth when wielding a dagger.\n");
         if (p_ptr->lev >= 30)
@@ -3757,9 +3764,9 @@ static void _character_dump(doc_ptr doc)
     }
     else if (p_ptr->psubclass == WEAPONMASTER_POLEARMS)
     {
-        doc_printf(doc, "  * You occasionally get a free round of attacks after moving when wielding a polearm.\n");
+        doc_printf(doc, "  * <indent>You occasionally get a free round of attacks after moving when wielding a polearm.</indent>\n");
         if (p_ptr->lev >= 20)
-            doc_printf(doc, "  * You automatically attack any enemy that steps next to you when wielding a polearm.\n");
+            doc_printf(doc, "  * <indent>You automatically attack any enemy that steps next to you when wielding a polearm.</indent>\n");
         if (p_ptr->lev >= 45)
             doc_printf(doc, "  * You occasionally strike all adjacent foes when wielding a polearm.\n");
 
@@ -3797,7 +3804,7 @@ static void _character_dump(doc_ptr doc)
         doc_printf(doc, "  * <indent>You gain a bonus to AC until your next turn after any successful hit when wielding a staff.</indent>\n");
         doc_printf(doc, "  * You suffer a penalty to speed when wielding a shield.\n");
         if (p_ptr->lev >= 5)
-            doc_printf(doc, "  * You gain a bonus AC after moving until your next turn when wielding a staff.\n");
+            doc_printf(doc, "  * <indent>You gain a bonus to AC after moving until your next turn when wielding a staff.</indent>\n");
         if (p_ptr->lev >= 10)
             doc_printf(doc, "  * You retaliate when struck when wielding a staff.\n");
         if (p_ptr->lev >= 20)
@@ -3836,13 +3843,13 @@ class_t *weaponmaster_get_class(int subclass)
     if (!init)
     {
         me.name = "Weaponmaster";
-        me.desc = "The weaponmaster is great with a single class of weapons. "
-                  "The character gets combat bonuses and special powers "
-                  "depending on the type of specialization. Alas, the "
-                  "weaponmaster is truly lousy when using any weapon "
-                  "outside their chosen specialty so focus is key.";
+        me.desc = "A Weaponmaster is exceptionally good with a single class of weapons, "
+                  "obtaining special combat bonuses and powers which depend on their chosen "
+                  "speciality. Focus is the key to success; weaponmasters are truly lousy "
+                  "with off-speciality weapons, but few can match the prowess they gain "
+                  "with something more suitable in their hands.";
 
-        me.life = 107;
+        me.life = 105;
         me.base_hp = 12;
         me.exp = 135;
         me.pets = 40;
@@ -3864,12 +3871,12 @@ class_t *weaponmaster_get_class(int subclass)
         init = TRUE;
     }
     {
-        me.stats[A_STR] =  1;
+        me.stats[A_STR] =  0;
         me.stats[A_INT] = -1;
         me.stats[A_WIS] = -1;
-        me.stats[A_DEX] =  1;
-        me.stats[A_CON] =  1;
-        me.stats[A_CHR] =  1;
+        me.stats[A_DEX] =  0;
+        me.stats[A_CON] =  0;
+        me.stats[A_CHR] =  0;
     }
     if (0 <= subclass && subclass < WEAPONMASTER_MAX)
     {
@@ -3884,7 +3891,7 @@ class_t *weaponmaster_get_class(int subclass)
 
         me.subname = ptr->name;
         me.subdesc = ptr->help;
-        if (ptr->kind == _WEAPONMASTER_BOWS) me.life = 104;
+        me.life = ((ptr->kind == _WEAPONMASTER_BOWS) ? 102 : 105);
     }
     else
     {
