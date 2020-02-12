@@ -207,6 +207,17 @@ extern bool shop_exit_hack;
 extern bool no_karrot_hack;
 extern bool allow_special3_hack;
 extern bool temporary_name_hack;
+extern byte attack_spell_hack;
+enum
+{
+    ASH_NONE = 0,
+    ASH_UNKNOWN,
+    ASH_NOT_ATTACK,
+    ASH_USEFUL_ATTACK,
+    ASH_UNASSESSED_1,
+    ASH_UNASSESSED_2,
+    ASH_USELESS_ATTACK
+};
 extern byte troika_spell_hack;
 extern byte spell_problem;
 extern s16b vampirism_hack;
@@ -1017,6 +1028,7 @@ extern void gain_fame(int amt);
 extern byte coffeebreak_recall_level(bool laskuri);
 extern void recharged_notice(object_type *o_ptr, unsigned char neula);
 extern byte value_check_aux1(object_type *o_ptr); /* pseudo-id */
+extern void load_user_pref_files(void);
 
 /* files.c */
 extern bool check_score(void);
