@@ -5217,17 +5217,9 @@ static void dungeon(bool load_game)
     write_level = TRUE;
 }
 
-
-/*
- * Load some "user pref files"
- *
- * Modified by Arcum Dagsson to support
- * separate macro files for different realms.
- */
-static void load_all_pref_files(bool new_game)
+void load_user_pref_files(void)
 {
     char buf[1024];
-    int alp_mode = ALP_CHECK_NUMERALS;
 
     /* Access the "user" pref file */
     sprintf(buf, "user.prf");
@@ -5240,6 +5232,21 @@ static void load_all_pref_files(bool new_game)
 
     /* Process that file */
     process_pref_file(buf);
+}
+
+/*
+ * Load some "user pref files"
+ *
+ * Modified by Arcum Dagsson to support
+ * separate macro files for different realms.
+ */
+static void load_all_pref_files(bool new_game)
+{
+    char buf[1024];
+    int alp_mode = ALP_CHECK_NUMERALS;
+
+    /* Load user pref files */
+    load_user_pref_files();
 
     /* Access the "race" pref file */
     sprintf(buf, "%s.prf", get_true_race()->name);
@@ -5525,20 +5532,6 @@ void play_game(bool new_game)
 
         /* Initialize object array */
         wipe_o_list();
-
-        /* Confirm unusual settings
-         * (players who play both coffee-break and normal games and start
-         * new games by loading old savefiles sometimes turn coffee-break off,
-         * but forget to turn no_wilderness and ironman_downward off) */
-        if ((!coffee_break) && (ironman_downward))
-        {
-            bool okei = get_check("Really play with ironman stairs? ");
-            if (!okei)
-            {
-                ironman_downward = FALSE;
-                if ((no_wilderness) && (!get_check("Really play with no wilderness? "))) no_wilderness = FALSE;
-            }
-        }
 
         /* After the last opportunity to modify birth options... */
         birth_location();
