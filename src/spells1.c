@@ -2767,8 +2767,19 @@ bool project(int who, int rad, int y, int x, int dam, int typ, int flg)
     /* Hack -- Handle stuff */
     handle_stuff();
 
-    /* Giga-Hack SEEKER & SUPER_RAY */
+    /* Hack -- Track spell type */
+    while ((who == PROJECT_WHO_PLAYER) && (typ > GF_NONE) && (attack_spell_hack == ASH_UNKNOWN))
+    {
+        gf_info_ptr _tyyppi = gf_lookup(typ);
+        if ((!_tyyppi) || (!_tyyppi->name)) break;
+        if (!(_tyyppi->flags & (GFF_ATTACK | GFF_STATUS))) attack_spell_hack = ASH_NOT_ATTACK;
+        else if (_tyyppi->flags & (GFF_TERRAIN | GFF_UTILITY)) attack_spell_hack = ASH_NOT_ATTACK;
+        else if (_tyyppi->flags & GFF_STATUS) attack_spell_hack = ASH_UNASSESSED_1;
+        else attack_spell_hack = ASH_UNASSESSED_2;
+        break;
+    }
 
+    /* Giga-Hack SEEKER & SUPER_RAY */
     if( typ == GF_SEEKER )
     {
         int j;
