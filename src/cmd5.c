@@ -1031,6 +1031,7 @@ void do_cmd_cast(void)
     /* Process spell */
     else
     {
+        attack_spell_hack = ASH_UNKNOWN;
         /* Canceled spells cost neither a turn nor mana */
         if (!do_spell(use_realm, spell, SPELL_CAST))
         {
@@ -1039,6 +1040,7 @@ void do_cmd_cast(void)
                 p_ptr->csp += take_mana;
             energy_use = 0;
             p_ptr->redraw |= PR_MANA;
+            attack_spell_hack = ASH_USELESS_ATTACK;
             return;
         }
 
@@ -1126,7 +1128,18 @@ void do_cmd_cast(void)
 
         virtue_on_cast_spell(use_realm, need_mana, chance);
 
-        if (mp_ptr->spell_xtra & MAGIC_GAIN_EXP)
+        switch (attack_spell_hack)
+        {
+            case ASH_NONE:
+            case ASH_UNKNOWN: attack_spell_hack = ASH_NOT_ATTACK; break;
+            case ASH_NOT_ATTACK: break;
+            case ASH_USEFUL_ATTACK: break;
+            case ASH_UNASSESSED_1:
+            case ASH_UNASSESSED_2: attack_spell_hack = ASH_USELESS_ATTACK; break;
+            default: break;
+        }
+
+        if ((mp_ptr->spell_xtra & MAGIC_GAIN_EXP) && (attack_spell_hack != ASH_USELESS_ATTACK))
         {
             int  index = (increment ? 32 : 0)+spell;
             s16b cur_exp = p_ptr->spell_exp[index];
@@ -1174,6 +1187,11 @@ void do_cmd_cast(void)
                         "(Current: <color:R>%d</color>).</color> <color:D>%d</color>",
                         vaikeustaso, dlvl, max_exp, cur_exp, ratio);
                 }
+                if (exp_gain)
+                {
+                    if (attack_spell_hack == ASH_NOT_ATTACK) exp_gain += ((coffee_break > 0) ? (exp_gain / 2) : (exp_gain * 2));
+                    if ((cur_exp + exp_gain) > max_exp) exp_gain = MAX(0, max_exp - cur_exp);
+                }
             }
 
             if (exp_gain)
@@ -1206,6 +1224,7 @@ void do_cmd_cast(void)
                 }
             }
         }
+        attack_spell_hack = ASH_USELESS_ATTACK;
     }
 
     /* In general, we already charged the players sp. However, in the event the
