@@ -5316,7 +5316,11 @@ void calc_bonuses(void)
 
         if (p_ptr->old_icky_wield[i] != p_ptr->weapon_info[i].icky_wield)
         {
-            if (p_ptr->weapon_info[i].icky_wield)
+            if (p_ptr->pclass == CLASS_WEAPONMASTER) /* Special messages elsewhere */
+            {
+                icky_lock = TRUE;
+            }
+            else if (p_ptr->weapon_info[i].icky_wield)
             {
                 if (!icky_lock) msg_print("You do not feel comfortable with your weapon.");
                 icky_lock = TRUE;
