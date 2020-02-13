@@ -4503,6 +4503,7 @@ extern int PlayerUID;
 #define MON_ETHEREAL_DRAGON     676
 #define MON_QUAKER              679
 #define MON_LLOIGOR             682
+#define MON_UTGARD_LOKE         683
 #define MON_SHOGGOTH            685
 #define MON_ARIEL               687
 #define MON_ELEVEN_HEADED_HYDRA 688
