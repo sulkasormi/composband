@@ -207,6 +207,7 @@ extern bool shop_exit_hack;
 extern bool no_karrot_hack;
 extern bool allow_special3_hack;
 extern bool temporary_name_hack;
+extern bool online_macro_hack;
 extern byte attack_spell_hack;
 enum
 {
