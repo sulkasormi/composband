@@ -4232,7 +4232,9 @@ static void process_command(void)
         break;
     default:
         pack_lock();
+        online_macro_hack = TRUE;
         _dispatch_command(old_now_turn);
+        online_macro_hack = FALSE;
         pack_unlock();
     }
 
