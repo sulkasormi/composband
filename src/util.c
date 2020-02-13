@@ -3651,9 +3651,10 @@ void request_command(int shopping)
             /* Reset */
             command_arg = 0;
 
+            online_macro_hack = TRUE;
+
             /* Begin the input */
             prt("Count: ", 0, 0);
-
 
             /* Get a command count */
             while (1)
@@ -3700,6 +3701,7 @@ void request_command(int shopping)
                 /* Exit on "unusable" input */
                 else
                 {
+                    online_macro_hack = FALSE;
                     break;
                 }
             }
