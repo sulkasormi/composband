@@ -4204,6 +4204,8 @@ static void process_command(void)
     if (p_ptr->pclass == CLASS_SNIPER && p_ptr->concent)
         reset_concent = TRUE;
 
+    online_macro_hack = TRUE;
+
     switch (command_cmd)
     {
     case SPECIAL_KEY_STORE:
@@ -4232,11 +4234,11 @@ static void process_command(void)
         break;
     default:
         pack_lock();
-        online_macro_hack = TRUE;
         _dispatch_command(old_now_turn);
-        online_macro_hack = FALSE;
         pack_unlock();
     }
+
+    online_macro_hack = FALSE;
 
     if (!energy_use)
         now_turn = old_now_turn;
