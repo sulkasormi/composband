@@ -2039,7 +2039,11 @@ static char inkey_aux(void)
     {
         /* Mega-Hack - allow numlockless players to play on angband.live */
         char my_key = act[--n];
-        if ((online_macros) && (my_key == '.')) my_key = ';';
+        if ((online_macros) && (my_key == '.'))
+        {
+            my_key = ';';
+            if (online_macro_hack) return (0); /* skip key entirely */
+        }
         
         /* Push the key, notice over-flow */
         if (Term_key_push(my_key)) return (0);
