@@ -958,6 +958,7 @@ static void _get_questor(quest_ptr q)
             if (force_unique && !(r_ptr->flags1 & RF1_UNIQUE)) continue;
         }
 
+        if (r_idx == MON_UTGARD_LOKE) continue; /* Hack - avoid use of the NO_QUEST flag to allow summons */
         if (r_ptr->flagsx & RFX_QUESTOR) continue;
         if (r_ptr->flags1 & RF1_NO_QUEST) continue;
         if (r_ptr->rarity > 100) continue;
