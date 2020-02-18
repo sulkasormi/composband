@@ -1270,25 +1270,25 @@ class_t *samurai_get_class(void)
 
 
         me.name = "Samurai";
-        me.desc = "Samurai, masters of the art of the blade, are the next strongest "
-                    "fighters after Warriors, and can use various special combat "
-                    "techniques. Samurai are not good at most other skills, and many "
-                    "magical devices may be too difficult for them to use. Wisdom "
-                    "determines a Samurai's ability to use the special combat "
-                    "techniques available to him.\n \n"
+        me.desc = "Samurai, masters of the art of the blade, are among the strongest "
+                    "fighters and can use various special combat techniques. "
+                    "Samurai are not good at most non-combat skills, and many "
+                    "magical devices in particular may be too difficult for them to use. "
+                    "Wisdom determines a Samurai's ability to use the special combat "
+                    "techniques available.\n \n"
                     "Samurai use the art of the blade called Kendo (or Bugei). Books "
-                    "of Kendo are similar to spellbooks, but Samurai don't need to "
-                    "carry them around; the books are needed only when they study new "
-                    "combat techniques. Samurai need a weapon wielded to use the "
-                    "techniques of Kendo, and most techniques will add powerful special "
-                    "properties to their blows; such as flaming, poisoning, vampiric, "
-                    "etc... Their maximum spellpoints don't depend on their level but "
-                    "solely on wisdom, and they can use the class power 'Concentration' "
-                    "to temporarily increase SP beyond its usual maximum value. They "
-                    "have one more class power - 'Assume a Posture'. They can choose "
-                    "different forms of posture in different situations.";
+                    "of Kendo are similar to spellbooks, but do not need to be carried "
+                    "around; they are only required for studying new combat techniques. "
+                    "Samurai need to wield a weapon to use Kendo, and many of their techniques will "
+                    "add special properties to their blows; these are often slays or brands such as "
+                    "flaming or poisoning, but can be much more powerful than a normal brand. "
+                    "The mana pool of a Samurai does not depend on their level but "
+                    "solely on wisdom; and they can use the class power 'Concentration' "
+                    "to temporarily increase their mana beyond its usual maximum value. The other "
+                    "Samurai class power, 'Assume a Posture', allows them to choose "
+                    "different postures depending on the needs of a situation.";
 
-        me.stats[A_STR] =  3;
+        me.stats[A_STR] =  2;
         me.stats[A_INT] = -2;
         me.stats[A_WIS] =  1;
         me.stats[A_DEX] =  2;
@@ -1296,7 +1296,7 @@ class_t *samurai_get_class(void)
         me.stats[A_CHR] =  1;
         me.base_skills = bs;
         me.extra_skills = xs;
-        me.life = 109;
+        me.life = 107;
         me.base_hp = 12;
         me.exp = 130;
         me.pets = 40;
