@@ -334,7 +334,10 @@ static void _display_resists(monster_race *r_ptr, doc_ptr doc)
     {
         int which = flags[i];
         if (which >= 0 && (r_ptr->flagsr & which))
+        {
+            if ((flags[i] == RFR_RES_NETH) && (r_ptr->flags3 & RF3_UNDEAD)) continue; /* Hack - undead are immune to nether */
             vec_add(v, _get_res_name(i));
+        }
     }
     if ((r_ptr->flagsr & RFR_RES_TELE) && !(r_ptr->flags1 & RF1_UNIQUE) && !(r_ptr->flagsr & RFR_RES_ALL))
         vec_add(v, string_copy_s("<color:o>Teleportation</color>"));
@@ -371,6 +374,8 @@ static void _display_resists(monster_race *r_ptr, doc_ptr doc)
         vec_add(v, _get_res_name(RES_COLD));
     if (r_ptr->flagsr & RFR_IM_POIS)
         vec_add(v, _get_res_name(RES_POIS));
+    if (r_ptr->flags3 & RF3_UNDEAD)
+        vec_add(v, _get_res_name(RES_NETHER));
     if (r_ptr->flags3 & RF3_NO_FEAR)
         vec_add(v, string_copy_s("<color:s>Fear</color>"));
     if (r_ptr->flags3 & RF3_NO_STUN)
