@@ -94,7 +94,7 @@ You'll notice that selecting an object in this case did not dismiss the dialog. 
 <color:G>Display Options</color>
 <color:keypress>^W</color>        Toggle Weights (see <link:option.txt#show_weights>)
 <color:keypress>^G</color>        Toggle Graphics (see <link:option.txt#show_item_graph>)
-<color:keypress>^L</color>        Toggle Labels (see <link:option.txt#show_labels>)
+<color:keypress>^D</color>        Toggle Slot Descriptions (see <link:option.txt#describe_slots>)
 <color:keypress>@</color>         Toggle Inscription Label Overrides (Default On)
 
 </indent>
