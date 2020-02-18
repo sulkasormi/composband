@@ -377,7 +377,7 @@ static void _obj_absorption_spell(int cmd, variant *res)
         var_set_string(res, "_obj_absorption");
         break;
     case SPELL_DESC:
-        var_set_string(res, "Places a Rune of Absorption on chosen melee weapon, body armor or shield. This rune grants a special magical defense that absorbs damage from all monster spells restoring your mana in the process.");
+        var_set_string(res, "Places a Rune of Absorption on chosen melee weapon, body armor or shield. This rune grants a special magical defense that absorbs damage from all monster spells, restoring your mana in the process.");
         break;
     case SPELL_CAST:
     {
@@ -414,7 +414,7 @@ static void _obj_protection_spell(int cmd, variant *res)
         var_set_string(res, "_obj_protection");
         break;
     case SPELL_DESC:
-        var_set_string(res, "Places a Rune of Protection on chosen armor making it immune to acid while slightly enhancing its protective capabilities.");
+        var_set_string(res, "Places a Rune of Protection on chosen armor, making it immune to acid while slightly enhancing its protective capabilities.");
         break;
     case SPELL_CAST:
     {
@@ -454,7 +454,7 @@ static void _obj_regeneration_spell(int cmd, variant *res)
         var_set_string(res, "_obj_regeneration");
         break;
     case SPELL_DESC:
-        var_set_string(res, "Places a Rune of Regeneration on chosen item granting powers of regeneration.");
+        var_set_string(res, "Places a Rune of Regeneration on chosen item, granting powers of regeneration.");
         break;
     case SPELL_CAST:
     {
@@ -498,7 +498,7 @@ static void _obj_fire_spell(int cmd, variant *res)
         var_set_string(res, "_obj_fire");
         break;
     case SPELL_DESC:
-        var_set_string(res, "Places a Rune of Fire on chosen item granting special fire based powers.");
+        var_set_string(res, "Places a Rune of Fire on chosen item, granting special fire-based powers.");
         break;
     case SPELL_CAST:
     {
@@ -536,7 +536,7 @@ static void _obj_air_spell(int cmd, variant *res)
         var_set_string(res, "_obj_air");
         break;
     case SPELL_DESC:
-        var_set_string(res, "Places a Rune of Air on chosen item granting special wind based powers.");
+        var_set_string(res, "Places a Rune of Air on chosen item, granting special wind-based powers.");
         break;
     case SPELL_CAST:
     {
@@ -576,7 +576,7 @@ static void _obj_water_spell(int cmd, variant *res)
         var_set_string(res, "_obj_water");
         break;
     case SPELL_DESC:
-        var_set_string(res, "Places a Rune of Water on chosen item granting special acid based powers.");
+        var_set_string(res, "Places a Rune of Water on chosen item, granting special acid-based powers.");
         break;
     case SPELL_CAST:
     {
@@ -613,7 +613,7 @@ static void _obj_light_spell(int cmd, variant *res)
         var_set_string(res, "_obj_light");
         break;
     case SPELL_DESC:
-        var_set_string(res, "Places a Rune of Light on chosen item granting special light based powers.");
+        var_set_string(res, "Places a Rune of Light on chosen item, granting special light-based powers.");
         break;
     case SPELL_CAST:
     {
@@ -652,7 +652,7 @@ static void _obj_shadow_spell(int cmd, variant *res)
         var_set_string(res, "_obj_shadow");
         break;
     case SPELL_DESC:
-        var_set_string(res, "Places a Rune of Shadow on chosen item granting special darkness based powers.");
+        var_set_string(res, "Places a Rune of Shadow on chosen item, granting special darkness-based powers.");
         break;
     case SPELL_CAST:
     {
@@ -691,7 +691,7 @@ static void _obj_earth_spell(int cmd, variant *res)
         var_set_string(res, "_obj_earth");
         break;
     case SPELL_DESC:
-        var_set_string(res, "Places a Rune of Earth on chosen item granting special shard based powers.");
+        var_set_string(res, "Places a Rune of Earth on chosen item, granting special shard-based powers.");
         break;
     case SPELL_CAST:
     {
@@ -728,7 +728,7 @@ static void _obj_understanding_spell(int cmd, variant *res)
         var_set_string(res, "_obj_understanding");
         break;
     case SPELL_DESC:
-        var_set_string(res, "Places a Rune of Understanding on chosen item granting special knowledge based powers.");
+        var_set_string(res, "Places a Rune of Understanding on chosen item, granting special knowledge-based powers.");
         break;
     case SPELL_CAST:
     {
@@ -794,7 +794,7 @@ static void _obj_haste_spell(int cmd, variant *res)
         var_set_string(res, "_obj_haste");
         break;
     case SPELL_DESC:
-        var_set_string(res, "Places a Rune of Haste on chosen item granting special speed based powers.");
+        var_set_string(res, "Places a Rune of Haste on chosen item, granting special speed-based powers.");
         break;
     case SPELL_CAST:
     {
@@ -831,7 +831,7 @@ static void _obj_seeing_spell(int cmd, variant *res)
         var_set_string(res, "_obj_seeing");
         break;
     case SPELL_DESC:
-        var_set_string(res, "Places a Rune of Seeing on chosen item granting powers of sight.");
+        var_set_string(res, "Places a Rune of Seeing on chosen item, granting powers of sight.");
         break;
     case SPELL_CAST:
     {
@@ -899,7 +899,7 @@ static void _obj_life_spell(int cmd, variant *res)
         var_set_string(res, "_obj_life");
         break;
     case SPELL_DESC:
-        var_set_string(res, "Places a Rune of Life on chosen item protecting your living essence.");
+        var_set_string(res, "Places a Rune of Life on chosen item, protecting your living essence.");
         break;
     case SPELL_CAST:
     {
@@ -938,7 +938,7 @@ static void _obj_stability_spell(int cmd, variant *res)
         var_set_string(res, "_obj_stability");
         break;
     case SPELL_DESC:
-        var_set_string(res, "Places a Rune of Stability on chosen item protecting you from the vicissitudes of the world around you.");
+        var_set_string(res, "Places a Rune of Stability on chosen item, protecting you from the vicissitudes of the world around you.");
         break;
     case SPELL_CAST:
     {
@@ -966,7 +966,7 @@ static void _obj_reflection_spell(int cmd, variant *res)
         var_set_string(res, "_obj_reflection");
         break;
     case SPELL_DESC:
-        var_set_string(res, "Places a Rune of Reflection on your shield. Your shield gains the Reflection property.");
+        var_set_string(res, "Places a Rune of Reflection on your shield.");
         break;
     case SPELL_CAST:
     {
@@ -1005,7 +1005,7 @@ static void _obj_death_spell(int cmd, variant *res)
         var_set_string(res, "_obj_death");
         break;
     case SPELL_DESC:
-        var_set_string(res, "Places a Rune of Death on chosen item granting powers of the nether world.");
+        var_set_string(res, "Places a Rune of Death on chosen item, granting powers of the nether world.");
         break;
     case SPELL_CAST:
     {
@@ -1042,7 +1042,7 @@ static void _obj_mind_spell(int cmd, variant *res)
         var_set_string(res, "_obj_mind");
         break;
     case SPELL_DESC:
-        var_set_string(res, "Places a Rune of Mind on chosen item granting powers of thought and awareness.");
+        var_set_string(res, "Places a Rune of Mind on chosen item, granting powers of thought and awareness.");
         break;
     case SPELL_CAST:
     {
@@ -1079,7 +1079,7 @@ static void _obj_might_spell(int cmd, variant *res)
         var_set_string(res, "_obj_might");
         break;
     case SPELL_DESC:
-        var_set_string(res, "Places a Rune of Might on chosen item granting powers of strength and fortitude.");
+        var_set_string(res, "Places a Rune of Might on chosen item, granting powers of strength and fortitude.");
         break;
     case SPELL_CAST:
     {
@@ -1116,7 +1116,7 @@ static void _obj_destruction_spell(int cmd, variant *res)
         var_set_string(res, "_obj_destruction");
         break;
     case SPELL_DESC:
-        var_set_string(res, "Places a Rune of Destruction on chosen item granting great combat powers.");
+        var_set_string(res, "Places a Rune of Destruction on chosen item, granting great combat powers.");
         break;
     case SPELL_CAST:
     {
@@ -1144,7 +1144,7 @@ static void _obj_good_fortune_spell(int cmd, variant *res)
         var_set_string(res, "_obj_luck");
         break;
     case SPELL_DESC:
-        var_set_string(res, "Creates a standalone rune. As long as you have this rune in your inventory you will experience better luck during your adventures.");
+        var_set_string(res, "Creates a standalone rune. As long as you have this rune in your inventory, you will experience better luck during your adventures.");
         break;
     case SPELL_CAST:
     {
@@ -1184,7 +1184,7 @@ static void _obj_immortality_spell(int cmd, variant *res)
         var_set_string(res, "_obj_immortality");
         break;
     case SPELL_DESC:
-        var_set_string(res, "Places a Rune of Immortality on chosen item granting power over time itself.");
+        var_set_string(res, "Places a Rune of Immortality on chosen item, granting power over time itself.");
         break;
     case SPELL_CAST:
     {
@@ -1595,7 +1595,7 @@ void _feat_protection_spell(int cmd, variant *res)
         var_set_string(res, "_feat_protection");
         break;
     case SPELL_DESC:
-        var_set_string(res, "By placing a Rune of Protection at your current location you may block the passage of all save the mightiest of enemies.");
+        var_set_string(res, "By placing a Rune of Protection at your current location, you may block the passage of all save the mightiest of enemies.");
         break;
     default:
         glyph_of_warding_spell(cmd, res);
@@ -1808,7 +1808,7 @@ typedef struct {
 static _spell_group _spell_groups[_MAX_SPELL_GROUPS] = {
     { "Runes of Creation",
       "Augment your equipment by attaching runes of various powers. Also, you may create "
-      "certain stand alone runes that grant powers by virtue of being present in your "
+      "certain stand-alone runes that grant powers by virtue of being present in your "
       "inventory. Be sure to always keep Absorption handy, for it is your only means "
       "of regaining spell points!",
       TERM_L_BLUE,
@@ -1847,7 +1847,7 @@ static _spell_group _spell_groups[_MAX_SPELL_GROUPS] = {
       }
     },
     { "Runes of Enhancement",
-      "Place runes on yourself for temporary or one time effects.",
+      "Place runes on yourself for temporary or one-time effects.",
       TERM_L_GREEN, {
         { 10,   5, 20, _self_darkness_spell },
         { 20,   9, 30, _self_seeing_spell },
@@ -2041,28 +2041,29 @@ class_t *rune_knight_get_class(void)
 
         me.name = "Rune-Knight";
         me.desc = 
-            "The <color:keyword>Rune Knight</color> is a mythical warrior who is "
+            "The Rune-Knight is a mythical warrior, "
             "dedicated to the discovery of ancient runes that hold immense power. They "
             "may fix mystical runes of various types to their equipment in order to "
-            "gain permanent bonuses, even on artifacts! Alternatively, they may "
-            "conjure a temporary rune which, when placed on their weapon, allows "
-            "them to attack with enhanced effects. They may also place temporary "
-            "runes directly on their person for one time or temporary bonuses. "
-            "Finally, they may even alter their surroundings with various runes of "
+            "gain permanent bonuses; even artifacts can be improved this way! "
+            "Alternatively, they may conjure a temporary rune which allows "
+            "them to attack with enhanced effects, or place one directly on "
+            "their person for a one-time or temporary bonus. "
+            "Finally, they may alter their surroundings with various runes of "
             "change.\n \n"
             "All runes (except <color:B>{Absorption}</color>) require mana for "
-            "creation. However, unlike ordinary spell casters, the Rune Knight "
-            "does not regenerate mana on their own. Rather, they must siphon mana "
-            "from magical or elemental attacks directed against them, and doing "
-            "so requires a special rune of <color:B>{Absorption}</color>. This "
-            "rune should be worn at all times (or at least kept handy).\n \n"
-            "The Rune Knight does not play like an ordinary spell caster. Rather, "
-            "think of them as a cross between a a warrior and a weaponsmith that "
-            "can, on occasion, cast a useful spell. If you have mana available, "
-            "then consider using spells. Otherwise, play as a warrior and wait to "
-            "absorb mana. This can take time, depending on the foes you face, "
-            "but the Rune Knight's honor should prevent them from seeking out weak, "
-            "defensless spell casters.";
+            "creation; however, unlike ordinary spellcasters, Rune-Knights do not "
+            "regenerate mana on their own. Rather, they must siphon mana from "
+            "magical or elemental attacks directed against them, and doing so "
+            "requires the special rune of <color:B>{Absorption}</color>. This "
+            "rune should be worn at all times, or at least kept handy.\n \n"
+            "Despite having mana, the Rune-Knight does not play like an ordinary "
+            "spellcaster; they are more like a weaponsmith but can, on occasion, "
+            "cast useful spells. If you have mana available, consider using these "
+            "spells; otherwise, play as a warrior and wait to absorb mana. This "
+            "can take time, depending on the foes you face, but the Rune-Knight's "
+            "honor should prevent them from seeking out weak, defenseless spellcasters; "
+            "being one of the strongest classes, Rune-Knights have no need to "
+            "resort to exploits...";
 
         me.stats[A_STR] =  2;
         me.stats[A_INT] =  1;
