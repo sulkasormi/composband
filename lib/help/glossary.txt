@@ -10,7 +10,7 @@ See <link:objects.txt#InscriptionAbbrev> for item attribute abbreviations.
 
 <color:keyword>ambush</color>: A random situation that forces you to leave the global map. Ambushes often surround you with a large number of hostile monsters.
 
-<color:keyword>Arena</color>: 1) A level 50 to 80 dungeon with the Metal Babble as its bottom guardian, characterized by its distinctive winding corridors and bubble rooms each containing a single high-level monster. 2) A special building, found in Thalos and Lite-Town, where you can fight one monster at a time until you lose. 3) Monster arena; a building where you can bet on cloned monsters fighting each other.
+<color:keyword>Arena</color>: 1) A level 50 to 80 dungeon with the Metal Babble as its bottom guardian, characterized by its distinctive winding corridors and bubble rooms each containing a single high-level monster. 2) A special building, found in Thalos and Lite-Town, where you can fight one monster at a time until you lose. 3) Monster arena; a building where you can bet on cloned monsters fighting each other. 4) Arena level; a description of a dungeon level where rooms are connected by open space.
 
 <color:keyword>artifact</color>: A special item that can only be found once in a game. Includes both <color:o>standard artifacts</color>, which remain the same or almost the same from game to game, and <color:o>random artifacts</color>, which are unpredictable.
 
@@ -39,6 +39,8 @@ See <link:objects.txt#InscriptionAbbrev> for item attribute abbreviations.
 <color:keyword>bottom guardian</color>: Also: <color:keyword>final guardian</color>, <color:keyword>dungeon guardian</color>, <color:keyword>dungeon keeper</color>, <color:keyword>dungeon boss</color>. A strong unique monster found at the bottom of a particular dungeon. All fixed dungeons except the Anti-magic cave and Anti-melee cave have a bottom guardian. Killing bottom guardians gives a free stat-up, often also a fixed item. Compare entrance guardian.
 
 <color:keyword>brand</color>: An elemental multiplier to weapon damage dice, applied only when the monster attacked does not resist that element. Essentially the same as a slay, just based on an element rather than monster type. Compare slay.
+
+<color:keyword>building</color>: 1) A place in a town where quests or services are offered; a special building. 2) Any town structure, including shops, museums, quest structures and the player's home.
 
 <color:keyword>burden</color>: The total weight of all equipment, projectiles and inventory items carried. <color:o>Overburdening</color>: the condition of carrying more items than your strength comfortably allows, slowing you down and causing you to take damage from drowning if you enter deep water without Levitation.
 
@@ -273,6 +275,8 @@ See <link:objects.txt#InscriptionAbbrev> for item attribute abbreviations.
 <color:keyword>searching</color>: 1) Searching skill; the skill that determines your ability to locate traps and secret doors. 2) The act of searching for traps and secret doors, using the 's' command. <color:o>Searching mode</color>: a mode toggled with the 'S'/'#' command, causes you to automatically search every other turn. 3) Searching within help files with the '/' and '\' commands.
 
 <color:keyword>shaft</color>: A connection between two dungeon levels or between a dungeon level and the surface. Differs from stairs in that most shafts skip a depth; downstairs on DL 8 will always lead to DL 9, while a shaft down will lead to DL 10 unless there is a quest on level 9.
+
+<color:keyword>shop</color>: Also <color:keyword>store</color>; a building where thematic objects can be bought and sold. Compare <color:keyword>building</color>.
 
 <color:keyword>shuffle</color>: 1) Shop shuffle; paying a shopkeeper to restock the store with new items. 2) Equipment shuffle; updating multiple pieces of equipment at once. 3) The Shuffle spell, a spell in the Trump realm with highly unpredictable effects.
 
