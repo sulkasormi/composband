@@ -596,7 +596,7 @@ cptr inv_name(inv_ptr inv)
 
 /* Menus and Display
  * It turns out to be more convenient for inv_display() to know
- * about special equipment handling (cf show_labels and two-handed
+ * about special equipment handling (cf describe_slots and two-handed
  * wielding). */
 void inv_display(inv_ptr inv, slot_t start, slot_t stop, obj_p p, doc_ptr doc, int flags)
 {
@@ -634,7 +634,7 @@ void inv_display(inv_ptr inv, slot_t start, slot_t stop, obj_p p, doc_ptr doc, i
             doc_insert(doc, " ");
             if (show_item_graph)
                 doc_insert(doc, "  ");
-            if (inv->type == INV_EQUIP && show_labels)
+            if (inv->type == INV_EQUIP && describe_slots)
                 doc_printf(doc, "%-10.10s: ", equip_describe_slot(slot));
             /*doc_insert(doc, "<color:D>Empty</color>\n");*/
             doc_newline(doc);
@@ -662,7 +662,7 @@ void inv_display(inv_ptr inv, slot_t start, slot_t stop, obj_p p, doc_ptr doc, i
                 doc_insert_char(doc, object_attr(obj), object_char(obj));
                 doc_insert(doc, " ");
             }
-            if (inv->type == INV_EQUIP && show_labels)
+            if (inv->type == INV_EQUIP && describe_slots)
                 doc_printf(doc, "%-10.10s: ", equip_describe_slot(slot));
             if (xtra)
             {
