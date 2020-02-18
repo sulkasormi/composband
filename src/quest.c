@@ -244,7 +244,7 @@ void quest_complete(quest_ptr q, point_t p)
         }
 
         /* Total winner */
-        p_ptr->total_winner = TRUE;
+        if (!p_ptr->noscore) p_ptr->total_winner = TRUE;
 
         /* Redraw the "title" */
         if ((p_ptr->pclass == CLASS_CHAOS_WARRIOR) || mut_present(MUT_CHAOS_GIFT))
