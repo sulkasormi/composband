@@ -732,11 +732,11 @@ After you have been on a new level for a considerable length of time, you receiv
 
 The speed at which you receive level feelings is influenced by your Wisdom, so if your big, stupid warrior seems to wait forever for level feeling, check out his Wisdom and maybe start with a better one next time. See <link:dungeon.txt#Feelings> for more about level feelings.
 </indent>
-  <indent><color:B>On the Monster Memory</color>
+  <indent><color:B>On Monster Knowledge</color>
 
-In many other games, you are required to take notes on monster's weaknesses, strengths, spells, etc. However, we are not so cruel as that, and will automatically take notes for you with the handy Monster Memory. Every time you find out something new about a monster, like that it can breathe fire, this is added to your knowledge of the monster. There are several ways to look over this knowledge; you can type <color:keypress>'/'</color>, then the symbol of the monster (you may have to scroll through other monster memories to get to the one you're looking for); you can use the <color:keypress>'~'</color> knowledge menu; or you can use the look (<color:keypress>'*'</color>) and recall (<color:keypress>'r'</color>) commands if the monster you are interested in is in view.
+In many other games, you are required to take notes on the weaknesses, strengths, spells, etc. of a given monster; but FrogComposband takes these notes for you automatically. Every time you find out something new about a monster (like that it can breathe fire), this is added to your knowledge of the monster. There are several ways to look over this knowledge; you can type <color:keypress>'/'</color>, then the symbol of the monster (you may have to scroll through other monster memories to get to the one you're looking for); you can use the <color:keypress>'~'</color> knowledge menu; or you can use the look (<color:keypress>'*'</color>) and recall (<color:keypress>'r'</color>) commands if the monster you are interested in is in view.
 
-In the unpleasant event of your character's death, you can create a new character using your old character's file (instead of simply creating a new character, open the dead character's savefile, and the Creating a Character section will come up). This new character will have all of the old one's monster memories, and some special text for the monster that killed him.
+In the unpleasant event of your character's death, you can create a new character using your old character's file (instead of simply creating a new character, open the dead character's savefile, and the Creating a Character section will come up). This new character will retain the monster lore of the old one.
 </indent>
   <indent><color:B>On Death</color>
 
