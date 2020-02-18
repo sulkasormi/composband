@@ -2043,11 +2043,11 @@ cptr window_flag_desc[32] =
     "Display monster list",
     "Display messages",
 
-    "Display overhead view (*SLOW*)",
+    "Display overhead view",
 
     "Display monster recall",
 
-    "Display object recall",
+    "Display spell recall",
 
     "Display dungeon view",
 
@@ -2131,30 +2131,30 @@ option_type option_info[] =
     "easy_disarm",                  "Automatically disarm traps" },
 #endif /* ALLOW_EASY_DISARM */
 
-    { &auto_get_ammo,               FALSE, OPT_PAGE_INPUT, 6, 5,
-    "auto_get_ammo",                "Automatically get nearby ammo with get cmd" },
-
-    { &auto_get_objects,            FALSE, OPT_PAGE_INPUT, 6, 7,
-    "auto_get_objects",             "Automatically get autopick objects with get cmd" },
-
     { &auto_detect_traps,           FALSE, OPT_PAGE_INPUT, 6, 9,
     "auto_detect_traps",            "Automatically detect traps while running" },
 
     { &auto_map_area,               FALSE, OPT_PAGE_INPUT, 6, 10,
     "auto_map_area",                "Automatically map area while running" },
 
+    { &auto_get_ammo,               FALSE, OPT_PAGE_INPUT, 6, 5,
+    "auto_get_ammo",                "Ctrl-G automatically gets nearby ammo" },
+
+    { &auto_get_objects,            FALSE, OPT_PAGE_INPUT, 6, 7,
+    "auto_get_objects",             "Ctrl-G automatically gets nearby wanted objects" },
+
     { &numpad_as_cursorkey,         TRUE, OPT_PAGE_INPUT, 2, 31,
     "numpad_as_cursorkey",          "Use numpad keys as cursor keys in editor mode" },
 
     { &use_pack_slots,              TRUE,  OPT_PAGE_INPUT, 0, 3,
-    "use_pack_slots",               "Use/Display slots in your inventory" },
+    "use_pack_slots",               "Retain backpack slot labels in other inventories" },
     /*** Map Screen Options ***/
 
     { &center_player,               FALSE, OPT_PAGE_MAPSCREEN, 5, 11,
-    "center_player",                "Center map while walking (*slow*)" },
+    "center_player",                "Center map on player while walking"},
 
     { &center_running,              TRUE,  OPT_PAGE_MAPSCREEN, 5, 12,
-    "center_running",               "Centering even while running" },
+    "center_running",               "Center map even while running" },
 
     { &view_yellow_lite,            TRUE,  OPT_PAGE_MAPSCREEN, 1, 28,
     "view_yellow_lite",             "Use special colors for torch-lit grids" },
@@ -2178,13 +2178,13 @@ option_type option_info[] =
     "view_unsafe_grids",            "Map marked by detect traps" },
 
     { &fresh_before,                TRUE,  OPT_PAGE_MAPSCREEN, 1, 23,
-    "fresh_before",                 "Flush output while continuous command" },
+    "fresh_before",                 "Fresh screen before automated input" },
 
     { &fresh_after,                 FALSE, OPT_PAGE_MAPSCREEN, 1, 24,
-    "fresh_after",                  "Flush output after monster's move" },
+    "fresh_after",                  "Fresh screen after processing monsters" },
 
     { &fresh_message,               FALSE, OPT_PAGE_MAPSCREEN, 1, 25,
-    "fresh_message",                "Flush output after every message" },
+    "fresh_message",                "Fresh screen after every message" },
 
     { &hilite_player,               FALSE, OPT_PAGE_MAPSCREEN, 1, 27,
     "hilite_player",                "Hilite the player with the cursor" },
@@ -2201,7 +2201,7 @@ option_type option_info[] =
     "plain_descriptions",           "Plain object descriptions" },
 
     { &always_show_list,            TRUE,  OPT_PAGE_TEXT, 4, 0,
-    "always_show_list",             "Always show list when choosing items" },
+    "always_show_list",             "Always show list when choosing spells" },
 
     { &depth_in_feet,               FALSE, OPT_PAGE_TEXT, 0, 7,
     "depth_in_feet",                "Show dungeon level in feet" },
@@ -2209,8 +2209,8 @@ option_type option_info[] =
     { &effective_speed,             FALSE, OPT_PAGE_TEXT, 0, 29,
     "effective_speed",              "Show speeds as energy multipliers" },
 
-    { &show_labels,                 TRUE,  OPT_PAGE_TEXT, 0, 10,
-    "show_labels",                  "Show labels in object listings" },
+    { &describe_slots,              TRUE,  OPT_PAGE_TEXT, 0, 10,
+    "describe_slots",               "Show equipment slot descriptions" },
 
     { &show_weights,                TRUE,  OPT_PAGE_TEXT, 0, 11,
     "show_weights",                 "Show weights in object listings" },
@@ -2249,10 +2249,10 @@ option_type option_info[] =
     "compress_savefile",            "Compress messages in savefiles" },
 
     { &abbrev_extra,                FALSE, OPT_PAGE_TEXT, 2, 10,
-    "abbrev_extra",                 "Describe obj's extra resistances by abbreviation" },
+    "abbrev_extra",                 "Describe extra object attributes by abbreviation" },
 
     { &abbrev_all,                  FALSE, OPT_PAGE_TEXT, 2, 11,
-    "abbrev_all",                   "Describe obj's all resistances by abbreviation" },
+    "abbrev_all",                   "Describe all object attributes by abbreviation" },
 
     { &exp_need,                    FALSE, OPT_PAGE_TEXT, 2, 12,
     "exp_need",                     "Show the experience needed for next level" },
@@ -2309,13 +2309,13 @@ option_type option_info[] =
     "stack_force_costs",            "Merge discounts when stacking" },
 
     { &expand_list,                 TRUE,  OPT_PAGE_GAMEPLAY, 1, 5,
-    "expand_list",                  "Expand the power of the list commands" },
+    "expand_list",                  "Allow query option lists to loop to beginning" },
 
     { &empty_levels,                TRUE,  OPT_PAGE_GAMEPLAY, 0, 31,
     "empty_levels",                 "Allow empty 'arena' levels" },
 
     { &bound_walls_perm,            FALSE, OPT_PAGE_GAMEPLAY, 2, 1,
-    "bound_walls_perm",             "Boundary walls become 'permanent wall'" },
+    "bound_walls_perm",             "Display dungeon boundaries as permanent walls" },
 
     { &last_words,                  TRUE,  OPT_PAGE_GAMEPLAY, 0, 28,
     "last_words",                   "Leave last words when your character dies" },
@@ -2343,7 +2343,7 @@ option_type option_info[] =
     "travel_ignore_items",          "Ignore identified items while travelling" },
 
     { &check_abort,                 TRUE,  OPT_PAGE_DISTURBANCE, 1, 18,
-    "check_abort",                  "Check for user abort while continuous command" },
+    "check_abort",                  "Check for user abort of automated input" },
 
     { &flush_failure,               TRUE,  OPT_PAGE_DISTURBANCE, 1, 20,
     "flush_failure",                "Flush input on various failures" },
@@ -2379,13 +2379,13 @@ option_type option_info[] =
     "town_no_disturb",              "Never disturb when a town monster moves" },
 
     { &ring_bell,                   FALSE, OPT_PAGE_DISTURBANCE, 0, 14,
-    "ring_bell",                    "Audible bell (on errors, etc)" },
+    "ring_bell",                    "Audible bell (on errors, etc.)" },
 
     { &disturb_trap_detect,         TRUE,  OPT_PAGE_DISTURBANCE, 0, 27,
-    "disturb_trap_detect",          "Disturb when leaving trap detected area" },
+    "disturb_trap_detect",          "Disturb when leaving trap-detected area" },
 
     { &alert_trap_detect,           FALSE, OPT_PAGE_DISTURBANCE, 0, 25,
-    "alert_trap_detect",            "Alert when leaving trap detected area" },
+    "alert_trap_detect",            "Alert when leaving trap-detected area" },
 
     { &alert_device_gone,           TRUE,  OPT_PAGE_DISTURBANCE, 0, 13,
     "alert_device_gone",            "Alert when carried device is destroyed or stolen" },
