@@ -10,26 +10,23 @@ Various concepts are mentioned in the descriptions below, including <color:keywo
 
 <topic:Birth><style:heading>Birth options</style>
 
-The birth options can only be accessed while creating a new character (press <color:keypress>=</color> while creating the character). There is no way to turn them off after the creation is finished!
+The birth options can only be accessed while creating a new character (press <color:keypress>=</color> during character creation). There is no way to turn them off (or on) after the game has started!
   <indent>
-
-<topic:coffee_break><color:U>Coffee-break mode (accelerated game)</color> <color:D>(coffee_break)</color>
-Coffee-break mode is a shorter and more compact version of the game. The player gains experience much faster and finds more and better objects in the dungeon, as well as more money; most forms of proficiency gain are also accelerated. <color:U>Coffee-break mode</color> uses a single town with no wilderness; forced descent is turned on (but recalling back to the town is allowed), and all stairs in the dungeon are two-level shafts. Small levels generate more often in the early part of the game but become rarer (and less small) towards the endgame. Unlike ironman-downward mode (see <link:option.txt#ironman_downward>), the player is allowed to skip dungeon quests by recalling, although doing so incurs a large fame penalty.
 
 <topic:easy_id><color:U>Easy Identify</color> <color:D>(easy_id)</color>
 With this option enabled, all objects are automatically fully identified on walkover, and items, spells and town services of Identify/*Identify* become unnecessary.
 
 <topic:easy_lore><color:U>Easy Lore</color> <color:D>(easy_lore)</color>
-With this option enabled, the player will be born with complete knowledge of monster lore, including the various attacks and nasty surprises that many monsters usually offer to the uninitiated. This is a bit of a spoiler option, but is available for those who don't enjoy learning each of the many monsters present in the game. <color:U>Easy Lore</color> also renders a few aspects of the game non-functional or pointless, including the ability to <color:keyword>Probe</color> monsters to learn about them as you encounter them, and the town <color:keyword>Beastmaster Lore</color> service to learn about monsters before you see them (for a price, of course).
+With this option enabled, the player will be born with complete knowledge of monster lore, including the various attacks and nasty surprises that many monsters usually offer to the uninitiated. This is a bit of a spoiler option, but is available for those who don't enjoy learning each of the many monsters present in the game. <color:U>Easy Lore</color> also renders a few aspects of the game non-functional or pointless, including the ability to <color:keyword>Probe</color> monsters to learn about them as you encounter them, and the <color:keyword>Research Monster</color> town service to learn about monsters before you see them (for a price, of course).
 
 <topic:easy_damage><color:U>Easy monster health and damage information</color> <color:D>(easy_damage)</color>
 Also known as "Fnord-mode", this option allows the player to see the exact damage delivered by each attack, and to receive additional information about monster health and debuffs through a percentage display. Player health bars are also converted to use percentages. This is a very powerful easy-mode, and using it gives a score penalty.
 
 <topic:allow_spoilers><color:U>Allow spoilers</color> <color:D>(allow_spoilers)</color>
-Enabling this option allows the player to view some spoiler files in-game using the ^Z command. (This option should never be used on the angband.live online server for technical reasons.)
+Enabling this option allows the player to view some spoiler files in-game using the ^Z command.
 
 <topic:power_tele><color:U>Use enhanced telepathy</color> <color:D>(power_tele)</color>
-With this option enabled, the player can see the race of a telepathically detected monster (i.e. telepathically seen monsters are treated identically to monsters seen through any other means). With this option off ("fuzzy telepathy"), only the monster's "species" (default display character) is shown, but its color and race are hidden.
+With this option off ("fuzzy telepathy"), telepathy only reveals the "species" (default display character) of a monster; its color and race are hidden. Turning on this option allows the player to see the color and race of telepathically detected monsters the same way as with normal sight.
 
 <topic:easy_thalos><color:U>Allow easy teleportation to Thalos</color> <color:D>(easy_thalos)</color>
 If this option is on, inns will start offering teleportation to the town of <color:keyword>Thalos</color> as soon as at least one out of Anambar, Angwil, Morivant or Telmora has been visited by the player. Since Thalos is located on an island, travelling there by foot is very dangerous for a low-level character, especially at night. This option makes it possible to reach Thalos safely earlier in the game.
@@ -38,28 +35,28 @@ If this option is on, inns will start offering teleportation to the town of <col
 This option removes amnesia attacks from the game, and allows the player to map the normally unmappable <color:keyword>Labyrinth</color> dungeon in the same way as all other dungeons. (Turning this option on does not necessarily make the game easier, since monsters who might normally use the annoying but ultimately harmless Amnesia spell will instead select one of their other, more dangerous spell options.)
 
 <topic:empty_lore><color:U>Always forget item lore between games</color> <color:D>(empty_lore)</color>
-With this option off, a new game started by opening a dead character's savefile inherits the dead character's ability to recognize attributes on excellent items and artifacts. Turning this option on empties this item lore. This option has no effect if the game is not started by opening a dead character's savefile, since the character then starts with no item lore anyway.
+With this option off, a new game started by opening a dead character's savefile inherits the dead character's ability to recognize attributes on excellent items and artifacts. Turning this option on empties this item lore, allowing savefile re-use without meta-progression.
 
 <topic:smart_learn><color:U>Monsters learn from their mistakes</color> <color:D>(smart_learn)</color>
-Allow monsters to learn what spell attacks you are resistant to, and to use this information to choose the best attacks.
+Allow monsters to learn which spell attacks you are resistant to, and to use this information to choose the best spells.
 
 <topic:smart_cheat><color:U>Monsters exploit player's weaknesses</color> <color:D>(smart_cheat)</color>
-Allow monsters to know what spell attacks you are resistant to, and to use this information to choose the best attacks. Combine this with Easy Lore to regain lost honour.
+Allow monsters to know which spell attacks you are resistant to, and to use this information to choose the best spells; essentially, this option gives Easy Lore to the monsters.
 
 <topic:no_wilderness><color:U>Play without a wilderness</color> <color:D>(no_wilderness)</color>
-This option disables the wilderness, forcing you to play with a single special town level. As a result, the only dungeon that will be available is the <color:keyword>Pits of Angband</color>. However, the town is relatively well serviced and many of the various fixed quests will be available for your pleasure (see <link:town.txt#NoWilderness>).
+This option disables the wilderness, forcing you to play with a single special town level. The only dungeon available will be <color:keyword>Angband</color>. Turning this option on manually is <color:v>not recommended</color>; it is intended to be used together with the Coffee-Break and Instant-Coffee game speed settings, which activate it automatically.
 
 <topic:ironman_shops><color:U>Stores are permanently closed</color> <color:D>(ironman_shops)</color>
-This option closes all shops. Try to survive in the deeps of the dungeon without supplies from town. Your Home still functions normally, and various town services are still available.
+This option closes all shops, forcing you to survive off what you find in the dungeon. Your home will still function normally, and additional town services remain available.
 
 <topic:ironman_downward><color:U>Disable recall and use of up stairs</color> <color:D>(ironman_downward)</color>
-You are not allowed to climb upwards, or recall to town. All stairs are downstairs and every time you teleport level, you'll teleport to a deeper level.
+With this option on, you are not allowed to climb upwards or (at Normal game speed) recall home. All stairs are downstairs, and every level-teleport will take you to a deeper level. (Coffee-Break Mode and Instant-Coffee Mode activate this option automatically, but do allow you to recall home.)
 
 <topic:ironman_empty_levels><color:U>Always create empty 'arena' levels</color> <color:D>(ironman_empty_levels)</color>
-If this option is enabled, then every level will be empty 'arena' level. See the "Allow empty 'arena' levels" option below.
+If this option is enabled, every dungeon level will be an open 'arena' level; these levels will be almost completely empty, apart from monsters and the occasional room. See the <color:keyword>empty_levels</color> option below.
 
 <topic:ironman_nightmare><color:U>Nightmare mode(it isn't even remotely fair!)</color> <color:D>(ironman_nightmare)</color>
-If this option is enabled, all monsters become unusually powerful, and fast. And there will be various unbelievable things happening in various situations. Furthermore, at 12:00 every night, you will have a real nightmare. You need to be crazy to turn this option on!
+If this option is enabled, all monsters become unusually powerful and fast. And there will be various unbelievable things happening in various situations. Furthermore, at 12:00 every night, you will have a real nightmare. You need to be crazy to turn this option on!
 
 <topic:thrall_mode><color:U>Thrall mode (start in extreme danger)</color> <color:D>(thrall_mode)</color>
 With this option enabled, you start the game on level 90 of R'lyeh (or level 90 of Angband in no-wilderness mode) as a runaway slave of the dungeon's demonic masters. With extreme care, you have managed to steal a few useful items that might help you in your escape. But now you've been noticed, everyone's on alert, and it is up to you to die, escape - or fight your way through...
@@ -68,7 +65,7 @@ With this option enabled, you start the game on level 90 of R'lyeh (or level 90 
 If this option is enabled, every room becomes a vault (except in a few dungeons with special generation rules), vaults are allowed to generate extremely out-of-depth monsters and floor items, and extremely small levels are made slightly larger (to accommodate the vaults). This option is purposely game-unbalancing, and is intended for experienced players who have found they actually like the game unbalanced now and then.
 
 <topic:melee_challenge><color:U>Monsters can only be damaged in melee</color> <color:D>(melee_challenge)</color>
-With this option on, hostile monsters will be protected from any damage except player melee damage and auras. Status effects and genocide will apply normally. Monster infighting is limited since monsters cannot damage each other.
+With this option on, hostile monsters will be protected from any damage except player melee damage and auras. Status effects and genocide will apply normally. Monster infighting is limited, since monsters cannot damage each other.
 
 <topic:no_melee_challenge><color:U>Monsters cannot be damaged in melee</color> <color:D>(no_melee_challenge)</color>
 With this option on, player melee is disabled; weapons can still be wielded, but not used to attack a monster. This option has no effect on monster infighting, including melee between two monsters. (Turning on both Melee Challenge and No-Melee Challenge is probably not recommended...)
@@ -80,10 +77,28 @@ Turns on the virtue system. Virtues can help or hinder the player; among other t
 With this option on, the reward for turning in a wanted corpse depends on the unique's position on the list of all wanted uniques (deeper uniques give better rewards); with the option off, the rewards depend on the total number of wanted uniques turned in. Turning the option off is not recommended if the <color:keyword>reduce_uniques</color> option is on, since the best rewards would then be completely inaccessible.
 
 <topic:preserve_mode><color:U>Preserve artifacts</color> <color:D>(preserve_mode)</color>
-In non-preserve mode, once a fixed artifact is generated (either on the dungeon floor or in a monster drop), it will never be generated again during that game. This means that if you miss the artifact by leaving the level before you pick it up it is gone forever. On the other hand, in preserve mode this behavior is only exhibited once you have identified the artifact; it is therefore safer to leave a level before it is completely explored, as any undiscovered fixed artifact can be regenerated on a subsequent level.
+With this option off, once a standard artifact is generated (either on the dungeon floor or in a monster drop), it will never be generated again during that game; if you miss the artifact, it is gone forever. With the option on, undiscovered standard artifacts can generate again on subsequent levels; this makes it safer to leave a level before it has been completely explored. (Standard artifacts that have been discovered and left behind will never generate again, regardless of whether this option is off or on.)
+
+<topic:allow_friendly_monster><color:U>Allow friendly monsters</color> <color:D>(allow_friendly_monster)</color>
+This option allows some monsters to generate as friendly. A few monster races are friendly by default; turning virtues on allows additional monsters of specific types to spawn friendly if the player's virtues are appropriately aligned with their type.
+
+<topic:allow_hostile_monster><color:U>Allow monsters hostile to each other</color> <color:D>(allow_hostile_monster)</color>
+If this option is on, monster infighting is disallowed except when one of the monsters is a pet or friendly monster. With the option on, infighting can also occur between hostile (or friendly) monsters of opposite alignments.
+
+<topic:allow_pets><color:U>Allow player to summon/charm monsters</color> <color:D>(allow_pets)</color>
+This option allows the player to summon pets or turn hostile monsters into pets (see <link:monster.txt#Pets>). Turning this option off is generally not recommended, and would make pet-based characters like Quylthulgs, Beastmasters and Cavalry essentially unplayable.
 
 <topic:quest_unique><color:U>Random quests for unique monsters only</color> <color:D>(quest_unique)</color>
 With this option turned on, the ten <color:keyword>random quests</color> in the Pits of Angband will all require you to kill a unique monster. With the option off, some of them (especially the early ones) may feature groups of non-unique monsters instead, similarly to the fixed Warg Quest.
+
+<topic:random_artifacts><color:U>Randomize standard artifacts</color> <color:D>(random_artifacts)</color>
+If this option is turned on, some percentage of standard artifacts will be replaced wtih random ones. A small number of standard artifacts (such as the Rings of Power) are fixed and cannot be substituted. Note that additional random artifacts, which complement rather than replace the standard set, can generate whether this option is on or not.
+
+<topic:no_artifacts><color:U>Never create artifacts</color> <color:D>(no_artifacts)</color>
+If this option is turned on, no artifacts will ever generate. This makes the game much more difficult.
+
+<topic:no_egos><color:U>Never create non-jewelry ego items</color> <color:D>(no_egos)</color>
+Turning this option on prevents non-jewelry ego items from generating randomly. This makes the game much more difficult, although ego items specified in quests can still generate.
 
 <topic:no_selling><color:U>Disable selling but increase gold drops</color> <color:D>(no_selling)</color>
 With this option on, the player cannot sell items for money (only give them for free), and turning items into gold through Alchemy is less effective; but gold drops in quests and dungeons are increased to compensate. (Gold drops in the wilderness are not affected.)
@@ -110,7 +125,7 @@ If this option is turned on, levels with a very high (6-to-1 or higher) width-to
 Turning on this option disables the "Chris effect" (a nexus attack effect that teleports the player to another dungeon, potentially one that's highly dangerous and was never previously visited by the player). As a substitute for the Chris effect, the player's stats will be scrambled; or if stat scrambling is also disabled, the Baby Foul Curse (a less deadly version of the infamous Ancient Foul Curse) will trigger. This option has no effect (or, rather, is effectively always on) in no-wilderness mode, since no-wilderness mode only has the one dungeon.
 
 <topic:no_scrambling><color:U>Disallow stat scrambling from monster attacks</color> <color:D>(no_scrambling)</color>
-Selecting this option disables <color:keyword>stat scrambling</color>, an effect that permanently switches two of the player's six stats (as well as their respective stat caps). Stat scrambling can potentially set the player back a long way if a high key stat is swapped with a low, less important stat. Attacks (and other effects) that would normally trigger a scramble will instead trigger the Baby Foul Curse, which is more dangerous in the short-term but doesn't have the same long-term effects.
+Selecting this option disables <color:keyword>stat scrambling</color>, an effect that permanently switches two of the player's six stats. Stat scrambling can potentially set the player back a long way if a high key stat is swapped with a low, less important stat. Attacks (and other effects) that would normally trigger a scramble will instead trigger the Baby Foul Curse, which is more dangerous in the short-term but doesn't have the same long-term effects.
 
 <topic:comp_mode><color:U>Disallow permanent changes to player race</color> <color:D>(comp_mode)</color>
 Disables all effects (except for monster evolution) that might permanently change the player's race during the game. This option is intended for use in competitions, and to ensure challenging builds remain challenging. (It can also be used to ensure an easy build remains easy, but who'd do that?!)
@@ -119,56 +134,59 @@ Disables all effects (except for monster evolution) that might permanently chang
 <topic:Input><style:heading>Input Options</style>
   <indent>
 <topic:rogue_like_commands><color:U>Rogue-like commands</color> <color:D>(rogue_like_commands)</color>
-Selects the <color:keyword>roguelike</color> command set which is an alternative way of mapping keystrokes to underlying game commands. (see <link:command.txt#RogueKeyset> for info).
+Activates the <color:keyword>roguelike</color> keyset, an alternative way of mapping keystrokes to underlying game commands. The roguelike keyset is recommended for players who lack a numpad on their keyboard (see <link:command.txt#RogueKeyset> for more information).
 
 <topic:always_pickup><color:U>Pick things up by default</color> <color:D>(always_pickup)</color>
-Tells the game that walking onto an item should attempt to pick it up. Otherwise, you must use the <color:keypress>g</color> command, or the <color:keypress>-</color> command while walking. Combined with <color:keyword>carry_query_flag</color>, allows you to selectively pick up all items which you step on. This option disables the autodestroyer functions of the Mogaminator, so it's often used together with <color:keyword>destroy_items</color> for the easy auto-destroyer.
+Tells the game that walking onto an item should attempt to pick it up. Otherwise, manually picking up an item requires you to use the <color:keypress>g</color> command, or the <color:keypress>-</color> command while walking. Combined with <color:keyword>carry_query_flag</color>, allows you to selectively pick up all items which you step on. This option disables the autodestroyer functions of the Mogaminator, so it's often used together with <color:keyword>destroy_items</color> for the easy auto-destroyer, as well as <color:keyword>leave_mogaminator</color> if picking up absolutely everything starts feeling like overkill.
+
+<topic:online_macros><color:U>Substitute Walk for Run in macros</color> <color:D>(online_macros)</color>
+If this option is turned on, all running macros will be interpreted as either walking macros or direction macros, depending on what is appropriate. This option compensates for the unusual default preferences of angband.live, and is unnecessary in offline play. (Turning Numlock off is another way to solve the problem on angband.live; it is generally the preferable solution, but may sometimes be inapplicable or introduce additional complications.)
 
 <topic:quick_messages><color:U>Activate quick messages</color> <color:D>(quick_messages)</color>
-Allows the use of any keypress as a response to the <color:B>-more-</color> prompt (useful for monster farming). Allows most keys to mean "no" to any "(y/n)" prompt.
+Allows the use of any keypress as a response to the <color:B>-more-</color> prompt, and allows most keys to mean "no" in any "(y/n)" prompt.
 
 <topic:command_menu><color:U>Enable command selection menu</color> <color:D>(command_menu)</color>
-The command selection menu is a helpful tool for beginning players. By pressing <color:keypress>ENTER</color>, this option displays a menu of all available commands, which the user may drill into with the arrow keys. This makes it easier to discover the keypress required to do a specific action:
+The command selection menu is a helpful tool for beginning players (Beginner Mode activates it automatically). If this option is on, pressing <color:keypress>ENTER</color> during the game displays a menu of available commands, which the user may drill into with the arrow keys. This allows discovering and learning the keypresses for specific actions without constant reference to the in-game help:
 <style:screenshot>
   +----------------------------------------------------+
   |   Magic/Special         > Action                   |
   |   Item+----------------------------------------------------+
   |   Equi| > Rest(R)                 Disarm a trap(D)         |
   |   Info|   Search(s)               Look(l/x)                |
-  |   Othe|   Target(*)               Dig(T/^t)                |
+  |   Save|   Target(*)               Dig(T/^t)                |
   +-------|   Enter global map(<)     Go down stairs(>)        |
           |   Command pets(p)         Search mode ON/OFF(S/#)  |
           +----------------------------------------------------+
 </style>
 
 <topic:use_old_target><color:U>Use old target by default</color> <color:D>(use_old_target)</color>
-This option forces all commands which normally ask for a <color:keyword>direction</color> to use the current <color:keyword>target</color> if there is one. Use of this option can be dangerous if you target locations on the ground, unless you clear them when done. Actually, position targets now automatically clear when they are no longer valid (e.g. after a teleport). Pay attention to the character info section of your screen as it always shows your current target, whether monster or location.
+This option forces all commands which normally ask for a target or direction to re-use the latest target, provided that one exists and remains acceptable for the purpose. This option is often used together with <color:keyword>auto_target</color> (see below).
 
 <topic:auto_target><color:U>Automatically target nearest monster</color> <color:D>(auto_target)</color>
-With this option enabled, every offensive spell you cast or device you use will automatically target the closest monster if there is not already a valid target selected. If you use this option, then it is highly recommended that you also enable the <color:keyword>use_old_target</color> option. That way, if you are in a situation where the automatic targeting is not what you want, you can just select a target up front before casting your spell.
+With this option enabled, all targeting prompts will automatically target the closest monster. This option is best used together with the <color:keyword>use_old_target</color> option; a valid old target will take priority over automatic targeting, so in situations where the nearest monster is not your desired target, you can simply specify another target up front.
 
 <topic:always_repeat><color:U>Repeat obvious commands</color> <color:D>(always_repeat)</color>
-Tells the game that when you attempt to <color:keyword>open</color> a door or chest, <color:keyword>bash</color> a door, <color:keyword>tunnel</color> through walls, or <color:keyword>disarm</color> traps or chests, that you wish to repeat the command 99 times (see <link:command.txt#CommandCounts>).
+Tells the game that when you attempt to <color:keyword>open</color> a door or chest, <color:keyword>bash</color> a door, <color:keyword>tunnel</color> through walls, or <color:keyword>disarm</color> traps or chests, that you wish to repeat the command 99 times (see <link:command.txt#CommandCounts>). Turning this option off is not recommended, and would make the game very tedious without providing any real advantages.
 
 <topic:confirm_destroy><color:U>Prompt for destruction of known worthless items</color> <color:D>(confirm_destroy)</color>
-Normally, no confirmation will be asked if you attempt to destroy an object which you know to be worthless. If this option is set, the Destroy command always asks for confirmation.
+If this option is off, no confirmation will be asked if you attempt to destroy an object which you know to be worthless. If this option is on, the Destroy command always asks for confirmation.
 
 <topic:confirm_wear><color:U>Confirm to wear/wield known cursed items</color> <color:D>(confirm_wear)</color>
-Some players may occasionally, due to a typing mistake, find themselves wearing an item which they knew was cursed. If this option is set, you should be safe from such typing mistakes: you will be prompted if you attempt to wear or wield an item if your character knows it is cursed.
+This option prompts you if you attempt to wear or wield an item known to be cursed, to make sure you are equipping it intentionally.
 
 <topic:target_pet><color:U>Allow targetting pets</color> <color:D>(target_pet)</color>
-Normally, the program doesn't automatically choose pets as target in the targeting mode of attack spells. If this option is set, the program always chooses every monster in sight as target.
+If this option is off, monster-targetting prompts will not offer pets as target options (a pet can still be targeted if necessary, by switching into free-targetting mode). If this option is on, all monsters including pets will be offered as target options.
 
 <topic:easy_open><color:U>Automatically open doors</color> <color:D>(easy_open)</color>
-Makes it easy for your character to open a door: simply by walking into it! Also the open command will automatically select one direction if only one door is near you.
+Makes it easy for your character to open a door: simply by walking into it! Also, the <color:keyword>open</color> command will automatically select the direction if only one door is near you.
 
 <topic:easy_disarm><color:U>Automatically disarm traps</color> <color:D>(easy_disarm)</color>
-Makes it easy for your character disarms a trap: simply by walking into it! Also the disarm command will automatically select one direction if only one known trap is near you.
+Makes it easy for your character to disarm a known trap: simply by walking into it! Also, the <color:keyword>disarm</color> command will automatically select the direction if only one known trap is near you.
 
-<topic:auto_get_ammo><color:U>Automatically get nearby ammo</color> <color:D>(auto_get_ammo)</color>
-This option instructs the Auto-Get Objects command (<color:keypress>^G</color>) to automatically travel to nearby, visible ammo which is inscribed with <color:keypress>=g</color> (i.e., ammo which you have instructed the autopicker to automatically pickup). This enhancement is useful for archer builds after all nearby monsters have been slain. You might consider using the stronger <color:keyword>auto_get_objects</color> option instead.
+<topic:auto_get_ammo><color:U>Ctrl-G automatically gets nearby ammo</color> <color:D>(auto_get_ammo)</color>
+This option instructs the <color:keyword>auto-get</color> command (<color:keypress>^G</color>) to automatically travel to and pick up any nearby, visible ammo inscribed with <color:keypress>=g</color>. This option is most often used by archery characters, who regularly have to pick up many projectiles after a fight. Compare <color:keyword>auto_get_objects</color> below.
 
-<topic:auto_get_objects><color:U>Automatically get nearby objects</color> <color:D>(auto_get_objects)</color>
+<topic:auto_get_objects><color:U>Ctrl-G automatically gets nearby wanted objects</color> <color:D>(auto_get_objects)</color>
 This option instructs the Auto-Get Objects command (<color:keypress>^G</color>) to automatically travel to nearby visible objects which you have registered to either pickup or destroy. This option subsumes (and extends) the <color:keyword>auto_get_ammo</color> option since ammo inscribed with <color:keypress>=g</color> is certainly registered for auto-pickup.
 
 <topic:auto_detect_traps><color:U>Automatically detect traps while running</color> <color:D>(auto_detect_traps)</color>
@@ -178,86 +196,90 @@ With this option enabled, the game will attempt to automatically detect traps wh
 With this option enabled, the game will attempt to automatically map your surroundings whenever you run outside a previously mapped zone. Unlike <color:keyword>auto_detect_traps</color>, there is no visual indication of regions that are flagged as mapped versus those that are not. When you invoke magic mapping, the game maps your surroundings, and it also sets a flag on each tile in the area of effect. When your player runs from a tile so flagged onto one not so flagged, then the game attempts to automatically map for you by locating an appropriate scroll or device and using it for you. Both this option and <color:keyword>auto_detect_traps</color> work best if you always run when travelling about. When you enter a new level, manually detect traps and map your surroundings. If you always run when travelling, the game will automatically take care of the detection tedium for the rest of the level.
 
 <topic:numpad_as_cursorkey><color:U>Use numpad keys as cursor keys in editor mode</color> <color:D>(numpad_as_cursorkey)</color>
-This option makes numpad keys work as cursor movement keys while text editing mode. Which include auto-picker editor, inputing an inscription, a macro action, and etc.
+If this option is on, numpad keys are interpreted as cursor-movement keys rather than numbers while editing any text (such as Mogaminator preferences or a macro action). If this option is off, numpad keys are interpreted as adding numbers to the text.
 
-<topic:use_pack_slots><color:U>Use and Display Inventory Slots</color> <color:D>(use_pack_slots)</color>
-With this option, the object prompt will use and display the current inventory slot for objects in question. For example, if your food happens to currently be in slot h), the the <color:keypress>E</color>at command will require you to press <color:keypress>h</color> to use this item. Without this option, each object prompt will begin labels at a). Some players prefer to keep the inventory slot, even though it constantly shifts as you add and remove new objects to your pack. Other players prefer to have commands use the same labels for the same objects upon successive calls (For example, pick up a spellbook and your food is now in the i) slot. This may puzzle you, since the last time you were hungry you pressed <color:keypress>Eh</color>, but now you need to press <color:keypress>Ei</color>. With this option turned off, eating rations of food will always be <color:keypress>Ea</color> ... at least until you pick up some mushrooms! However, if you do, then your eye will quickly perceive the presence of two items in the object prompt next time you <color:keypress>E</color>at).
+<topic:use_pack_slots><color:U>Retain backpack slot labels in other inventories</color> <color:D>(use_pack_slots)</color>
+If this option is on, inventory items will have the same default label keys in all object prompts; for example, if a scroll is the ninth item in your backpack and accordingly labeled <color:B>i)</color> for the Show Inventory command, then it will also be labeled <color:B>i)</color> for the Read Scroll command, even if you have no other scrolls. If this option is off, each object prompt recomputes the labels, counting the relevant items only; the example scroll would still be <color:B>i)</color> for Show Inventory, but <color:B>a)</color> in the Read Scroll prompt. Having the option off reduces the risk of objects unexpectedly changing labels between successive calls to a command; the scroll could only be bumped to <color:B>b)</color> by the addition of another scroll, the appearance (or disappearance) of a potion or spellbook would have no effect on its label. (Either way, the only fully reliable way to ensure items retain their expected slots is to inscribe them accordingly; see <link:objects.txt#Inscriptions> for help.)
 </indent>
 <topic:MapScreen><style:heading>Map & Screen Options</style>
   <indent>
-<topic:center_player><color:U>Center map while walking</color> <color:D>(center_player)</color>
-With this option enabled, the map window automatically recenters on the player as you walk. I find this rather disturbing, but it helps if you are on a small monitor and worried about off-screen monsters.
+<topic:center_player><color:U>Center map on player while walking</color> <color:D>(center_player)</color>
+With this option enabled, the map window automatically recenters on you as you walk. Whether this is a good thing divides players; some find it extremely disorienting, while others consider it natural. Turning this option on can make the game noticeably slow on older machines, but most modern computers are sufficiently fast for this to not be an issue.
 
-<topic:center_running><color:U>Centering even while running</color> <color:D>(center_running)</color>
-Normally, the map does not center on the player if the player moves with the "run" command, only when the running finishes. If this option is set, the map always centers on the player.
+<topic:center_running><color:U>Center map even while running</color> <color:D>(center_running)</color>
+If this option is off, the game waits until the player is finished running or travelling before it recenters the map. If this option is on, the map always centers on the player after every step. This option has no effect if the <color:keyword>center_player</color> option is not on.
 
 <topic:view_yellow_lite><color:U>Use special colors for torch-lit grids</color> <color:D>(view_yellow_lite)</color>
-This option causes special colors to be used for "torch-lit" grids in certain situations (see the entries for"view_granite_lite" and "view_special_lite"). Turning this option off will slightly improve game speed.
+If this option is enabled, visible floor or wall grids illuminated by a torch or other moving light source will be drawn in <color:y>yellow</color>. Keeping this option turned off may slightly improve game speed. This option has no effect if both <color:keyword>view_granite_lite</color> and <color:keyword>view_special_lite</color> are off.
 
 <topic:view_bright_lite><color:U>Use special colors for 'viewable' grids</color> <color:D>(view_bright_lite)</color>
-This option causes special colors to be used for non "viewable" grids in certain situations (see "view_granite_lite" and "view_special_lite"). When this option is set, floor grids which are normally drawn in "white" but which are not currently "viewable" by the player are instead drawn in "dark gray". This makes the "viewable" grids to appear "brighter" than the others, allowing the player to easily determine which floor grids are in "line of sight". Turning this option off will probably increase the speed of the game.
+If this option is enabled, known floor or wall grids not currently in line of sight will be drawn in <color:s>dark gray</color>, allowing the player to easily tell which parts of a room or corridor are in line of sight. Turning this option off may slightly improve game speed. This option has no effect if both <color:keyword>view_granite_lite</color> and <color:keyword>view_special_lite</color> are off.
 
 <topic:view_granite_lite><color:U>Use special colors for wall grids</color> <color:D>(view_granite_lite)</color>
-This option activates a special color scheme for all "wall" grids which are normally drawn in "white" (as walls and rubble normally are). When the player is blind, we use "dark gray", else if the grid is torch-lit, we use "yellow" (or "white") depending on the "view_yellow_lite" option, else if the "view_bright_lite" option is set, and the grid is not in line of sight, or the grid is dark, or the grid is only "partially" lit, then we use "gray", otherwise we use the normal "white". Turning this option off will probably increase the speed of the game. This option may not work well if the attr/char codes for walls/veins have been changed.
+If this option is enabled, the <color:keyword>view_yellow_lite</color> and <color:keyword>view_bright_lite</color> options are applied to wall grids; in addition, special dark coloring is used for wall grids if the player is blinded. Keeping this option turned off may slightly improve game speed. This option may produce unexpected results if wall visuals have been modified by the player.
 
 <topic:view_special_lite><color:U>Use special colors for floor grids</color> <color:D>(view_special_lite)</color>
-This option activates a special color scheme for all "floor" grids which are normally drawn in "white" (as they normally are). When the player is blind, we use "dark gray", else if the grid is torch-lit, we use "yellow" (or "white") depending on the "view_yellow_lite" option, else if the grid is "dark", we use "dark gray", else if the "view_bright_lite" option is set, and the grid is not in line of sight, we use "gray", otherwise we use the normal "white". Turning this option off will probably increase the speed of the game. This option may not work well if the attr/char codes for walls/veins have been changed
+If this option is enabled, the <color:keyword>view_yellow_lite</color> and <color:keyword>view_bright_lite</color> options are applied to open floor grids; in addition, special dark coloring is used for floor grids if the player is blinded. Turning this option off may slightly improve game speed. This option may produce unexpected results if floor visuals have been modified by the player.
 
 <topic:view_perma_grids><color:U>Map remembers all perma-lit grids</color> <color:D>(view_perma_grids)</color>
-Memorize all perma-lit floor grids which are seen by the player. This option allows you to keep track of which explored floor grids were perma-lit, but does not distinguish between dark floor grids, unexplored floor grids, and unknown grids. Turning off this option allows the player to always know which lit floor grids are in line of sight, but this is better accomplished by the "view_bright_lite" option. Note that any non-floor grids which is seen by the player are always memorized, and "object" which is seen by the player is memorized independently from the memorization of the grid itself.
+Memorizes all permanently lit floor grids seen by the player. This option allows you to keep track of which explored floor grids were permanently lit, but does not distinguish between dark floor grids, unexplored floor grids, and unknown grids. Turning off this option allows the player to always know which lit floor grids are in line of sight, but this is better accomplished by the "view_bright_lite" option. Note that non-floor grids seen by the player are always memorized, regardless of this setting.
 
 <topic:view_torch_grids><color:U>Map remembers all torch-lit grids</color> <color:D>(view_torch_grids)</color>
-Memorize all (torch-lit) floor grids which are seen by the player. This option not only allows you to keep track of which floor grids have been explored, but also which ones are "dark", because the use of this option activates a special "color scheme" for the display of floor grids, in which "dark" grids are drawn in "dark gray","lit" grids are drawn in "white", and (if the "view_bright_lite" option is set) "lit" grids which are also in line of sight are drawn in "orange". Note that grids which are currently "torch-lit" are considered to be "lit", and are thus drawn in "white", unless the "view_yellow_lite" option is set, in which case they are drawn in "yellow".
+Memorizes all floor grids seen by the player. This option allows you to keep track of which floor grids have been explored.
 
 <topic:view_unsafe_grids><color:U>Map marked by detect traps</color> <color:D>(view_unsafe_grids)</color>
-Unknown grids that have not been traversed previously, or had a detect trap spell cast on them are marked with a grey 'x'. This allows you to determine where in the dungeon you have cast detect traps, but does not ensure that grids not marked with a grey 'x' are trap free. This option has no effect on surface grids, but outdoor locations cannot be trapped.
+If this option is on, all unmapped grids in areas where trap detection spells have not been used will be marked <color:s>x</color>, providing a visual indication of whether Detect Traps has been used in an area. If this option is off, a green <color:G>DTrap</color> status indicator is used instead for the same purpose. (Note that it is possible for undetected traps to exist in detected areas, as traps can be created post-detection by monster spells or by triggering another trap.)
 
-<topic:fresh_before><color:U>Flush output while continuous command</color> <color:D>(fresh_before)</color>
-This option forces the game to flush all output before every command. This will give you maximal information, but may slow down the game somewhat. Note that this option is only useful when using macros, resting, running, or repeating commands, since the output is always flushed when the game is waiting for a keypress from the user.
+<topic:fresh_before><color:U>Fresh screen before automated input</color> <color:D>(fresh_before)</color>
+This option forces the game to fresh the screen before every new command. This will give you maximal information, but may slow down the game somewhat. Note that this option is only useful when using macros, resting, running/travelling, or repeating commands, since output is always flushed when the game is waiting for a keypress from the user.
 
-<topic:fresh_after><color:U>Flush output after monster's move</color> <color:D>(fresh_after)</color>
-This option forces the game to flush all output after not only every player command, but also after every round of processing monsters and objects, which will give you maximal information, but may slow down the game a lot, especially on slower machines, and on faster machines you normally do not have a chance to see the results anyway.
+<topic:fresh_after><color:U>Fresh screen after processing monsters</color> <color:D>(fresh_after)</color>
+This option forces the game to fresh the screen after not only every player command, but also after every round of processing monsters or objects. This will give you maximal information, but may slow down the game somewhat, especially on slower machines; on faster machines this option usually makes little difference either way.
 
-<topic:fresh_message><color:U>Flush output after every message</color> <color:D>(fresh_message)</color>
-This option forces the game to flush all output after every message displayed by the game. This will give you maximal information, but may slow down the game somewhat.
+<topic:fresh_message><color:U>Fresh screen after every message</color> <color:D>(fresh_message)</color>
+This option forces the game to fresh the screen after every message displayed by the game. This will give you maximal information, but may slow down the game somewhat.
 
 <topic:hilite_player><color:U>Hilite the player with the cursor</color> <color:D>(hilite_player)</color>
-Place the visible cursor on the player. This looks fine on some Unix machines, but horrible on most graphics machines. Note that only some machines are able to *not* show the cursor, but on those machines, hiding the cursor often speeds up the game and looks better.
+Places the visible cursor on the player. Note that only some machines are able to *not* show the cursor; but on those machines, hiding the cursor often speeds up the game and looks less ugly.
 
 <topic:display_path><color:U>Display actual path before shooting</color> <color:D>(display_path)</color>
-When this option is set, the targeting mode will show path from you to current target point continuously.
+If this option is enabled, targeting mode will continuously show the projection path from you to the target point.
+
+<topic:square_delays><color:U>Use square-based delay factors</color> <color:D>(square_delays)</color>
+If this option is on, animation delays will be calculated by squaring rather than cubing the base delay factor. This permits greater fine-tuning of very short delays, at the cost of not allowing a longer delay.
+
 </indent>
 <topic:TextDisplay><style:heading>Text Display Options</style>
   <indent>
 <topic:plain_descriptions><color:U>Plain object descriptions</color> <color:D>(plain_descriptions)</color>
-This option disables "full" names for identified 'flavored' objects, in other words, if this option is not in use, an identified Potion of Speed could be listed (for example) as a Blue Potion of Speed. If you prefer simpler, less verbose descriptions, set this option.
+If this option is on, object flavors are included in descriptions only if the flavor remains unidentified; a Blue Potion, for example, might be shown simply as a Potion of Speed after identification. If this option is not on, flavors are always listed, and the identified potion would be a Blue Potion of Speed.
 
-<topic:always_show_list><color:U>Always show list when choosing items</color> <color:D>(always_show_list)</color>
-When this option is set, all commands which lets you to choose an item from inventory or equipment list will automatically show list when activated.
+<topic:always_show_list><color:U>Always show list when choosing spells</color> <color:D>(always_show_list)</color>
+No one actually wants this option off, so there is no need for any details about what it does.
 
 <topic:depth_in_feet><color:U>Show dungeon level in feet</color> <color:D>(depth_in_feet)</color>
-Display the dungeon depth in "feet" instead of as an actual level. This also affects the monster memory display.
+Displays the current depth in feet instead of levels; 50 feet corresponds to one level.
 
 <topic:effective_speed><color:U>Show speeds as energy multipliers</color> <color:D>(effective_speed)</color>
-Display player and monster speeds as energy multipliers. This style is somewhat ugly, but helps players understand what a given speed actually means in terms of energy.
+Displays player and monster speeds as energy multipliers; this style is somewhat ugly, but helps players understand what a given speed actually means in terms of energy. This option is turned on by default in Beginner Mode.
 
-<topic:show_labels><color:U>Show labels in object listings</color> <color:D>(show_labels)</color>
-Display the labels for objects in the equipment list, and in any special window which is displaying the equipment. These labels indicate what the player is using the object for, such as "wielding" or "wearing" (in a given location). After you have played for a while, this information is no longer useful, and can be annoying.
+<topic:describe_slots><color:U>Show equipment slot descriptions</color> <color:D>(describe_slots)</color>
+Displays descriptions of the slots equipment objects are worn in, such as "right hand", "left ring", "neck" or "feet".
 
 <topic:show_weights><color:U>Show weights in object listings</color> <color:D>(show_weights)</color>
-Display the weights of objects in the inventory and equipment lists, and in stores, and in any special window which is displaying any of these lists.
+Displays the weights of objects in all object inventories, including any subwindow displaying an inventory.
 
 <topic:show_discounts><color:U>Show discounts in object listings</color> <color:D>(show_discounts)</color>
-Display the discount of the object, if any, as part of its inscription. Disabling this option won't remove the object's discount; it will just no longer be displayed to the player.
+Displays the discount of the object, if any, as part of its inscription. Disabling this option won't remove the object's discount; it will just no longer be displayed to the player.
 
 <topic:show_power><color:U>Show device power in object listings (if known)</color> <color:D>(show_power)</color>
 Displays details about an object's power (like <color:g>dam 158</color> or <color:U>heal 250</color>) in inventories, allowing you to compare items at a glance.
 
 <topic:show_item_graph><color:U>Show item graphics in object listings</color> <color:D>(show_item_graph)</color>
-Displays small icons of the items in your inventory list, equipment list and stores.
+Displays graphical representations of items (<color:B>/</color>, <color:g>(</color>, etc.) in inventories.
 
 <topic:equippy_chars><color:U>Display 'equippy' chars</color> <color:D>(equippy_chars)</color>
-This option will show you a graphical representation of your worn equipment on the main screen. The 'equippy' chars will use the standard symbols of the respective items.
+Displays graphical representations of your equipment (<color:B>/</color>, <color:g>(</color>, etc.) in the main screen sidebar.
 
 <topic:display_hp_bar><color:U>Display player hp bar</color> <color:D>(display_hp_bar)</color>
 This option will display a status bar on the main screen that details your current health. For example:
@@ -272,31 +294,31 @@ This option will display a status bar on the main screen that details your curre
   <color:U>,</color>[<color:R>**</color>-------]
 
 <topic:decimal_stats><color:U>Display stats as decimals</color> <color:D>(decimal_stats)</color>
-This option will display stats above 18 as decimals (for example, <color:G>39.7</color> instead of <color:G>18/217</color>).
+Displays stats above 18 as decimals (for example, <color:G>39.7</color> instead of <color:G>18/217</color>). New players sometimes find this format more intuitive.
+
+<topic:show_rogue_keys><color:U>Display roguelike movement keys as reminder</color> <color:D>(show_rogue_keys)</color>
+Displays the movement keys of the roguelike keyset in the main screen sidebar, provided that there is enough room for them to be displayed and that the roguelike keyset is on. This option is intended for very new players, or at least players new to the roguelike keyset, and is on by default in Beginner Mode.
 
 <topic:compress_savefile><color:U>Compress messages in savefiles</color> <color:D>(compress_savefile)</color>
-Compress the savefile, by only saving the most recent "messages" that the player has received. This can cut the size of the savefile by a drastic amount, but will result in the loss of message information.
+Compress the savefile, by only saving the most recent messages received by the player. This can cut the size of the savefile by a drastic amount, but will result in the loss of message information.
 
-<topic:abbrev_extra><color:U>Describe obj's extra resistances by abbreviation</color> <color:D>(abbrev_extra)</color>
-When an *identified* equipment is displayed, an abbreviation string for the object's extra resistances and extra abilities are added as fake inscriptions of the object.
+<topic:abbrev_extra><color:U>Describe extra object attributes by abbreviation</color> <color:D>(abbrev_extra)</color>
+If this option is on, any extra resistances and other special attributes on an object will be added to its description as a fake inscription. "Extra attributes" are ones the object is not guaranteed to have from its kind or ego type; for example, Boots of Levitation might have an extra resistance to Shards, but the levitation itself would not be an extra attribute since all Boots of Levitation have it. See <link:objects.txt#InscriptionAbbrev> for a list of abbreviations.
 
-A word "EXTRA" means that the ability must not be obvious from the objects name. For example, a pair of boots of Levitation sometimes has EXTRA shard resistance. But fire resistance of an armor of Resist Fire is not an EXTRA resistance.
-
-The list of abbreviations for each resistances and abilities are described in <link:objects.txt#InscriptionAbbrev>.
-
-<topic:abbrev_all><color:U>Describe obj's all resistances by abbreviation</color> <color:D>(abbrev_all)</color>
-When an *identified* equipment is displayed, an abbreviation string for all the object's resistances and abilities are added as fake inscriptions of the object.
-
-The list of abbreviations for each resistances and abilities are described in <link:objects.txt#InscriptionAbbrev>.
+<topic:abbrev_all><color:U>Describe all object attributes by abbreviation</color> <color:D>(abbrev_all)</color>
+If this option is on, all attributes on an object will be added to its description as a fake inscription. See <link:objects.txt#InscriptionAbbrev> for a list of abbreviations.
 
 <topic:exp_need><color:U>Show the experience needed for the next level</color> <color:D>(exp_need)</color>
-Setting this option to yes alters the display of experience on the left of the main screen to the experience needed to reach the next character level, instead of the character's current total experience.
+If this option is on, the experience display in the main screen sidebar displays the experience needed to reach the next character level. If this option is off, the character's current total experience is displayed instead.
 
 <topic:ignore_unview><color:U>Ignore actions of out of sight monsters</color> <color:D>(ignore_unview)</color>
-With this option, you won't receive messages when out of sight monsters fight one another. This is useful if you are playing with lots of pets and don't wish to read a blow by blow account of the battle raging around you.
+If this option is on, you will not receive messages when out-of-sight monsters fight one another.
+
+<topic:display_distance><color:U>Display distance in monster list</color> <color:D>(display_distance)</color>
+If this option is on, the distance between a player and a monster will be displayed when the monster is targeted; for example, "Rng 4" for a monster 4 squares away. The distance will also be displayed in the monster list if only one monster of that race is visible; with the option off, the list instead displays the monster's coordinates relative to the player.
 
 <topic:display_race><color:U>Player character depends on their race</color> <color:D>(display_race)</color>
-With this option a player who plays as a Quylthulg, for example, will be represented by a Q. If the option is turned off the player will always be @. 
+If this option is on, the player's representation on the map depends on their monster race; a player Quylthulg, for example, would be represented by a <color:W>Q</color>. If the option is off, the player will always be @ even in Monster Mode.
 
 <topic:show_origins><color:U>Show object origins on examination</color> <color:D>(show_origins)</color>
 With this option selected, the origins of an object (where you found it, and who or what you got it from) are displayed when the object is examined.
@@ -305,7 +327,7 @@ With this option selected, the origins of an object (where you found it, and who
 With this option enabled, the date of object discovery and the player's character level at time of discovery are added to the object's origins. (Also, with this option off, if a pile of objects with different origins is formed, all information about the origins is lost. With this option on, the details of the first object to be discovered are applied to the whole pile instead.)
 
 <topic:final_dump_origins><color:U>Show origins in final character dumps</color> <color:D>(final_dump_origins)</color>
-If this option is on, the origins of the player's equipment are included in character dumps if the character is either dead or a winner, but omitted otherwise. (Whether discovery details are included with the origins depends on whether show_discovery is on or not.)
+If this option is on, the origins of the player's equipment are included in character dumps if the character is either dead or a winner, but omitted otherwise. (Whether discovery details are included with the origins depends on whether <color:keyword>show_discovery</color> is on or not.)
 
 <topic:always_dump_origins><color:U>Show origins in all character dumps</color> <color:D>(always_dump_origins)</color>
 If this option is on, the origins of the player's equipment are always included in character dumps.
@@ -314,7 +336,13 @@ If this option is on, the origins of the player's equipment are always included 
 If this option is enabled, monsters that are easily mistaken for non-monsters (like mimics, cloakers, death swords and wall monsters) will be displayed with the 'x' glyph instead of their native glyph. (A few thing-like monsters do still retain their original glyphs; these include death scythes, mushrooms and creeping coins.)
 
 <topic:list_stairs><color:U>Display stairs in the object list</color> <color:D>(list_stairs)</color>
-If this option is enabled, the list of visible objects (accessible in-game by pressing O) will include stairs in its Interesting Features section. (The inclusion of stairs in the object list can be toggled in the list itself by pressing S, but this option determines whether stairs are shown by default.)
+If this option is enabled, the list of visible objects (accessible in-game by pressing <color:keypress>O</color> or <color:keypress>]</color>) will include stairs in its Interesting Features section. (The inclusion of stairs in the object list can be toggled in the list itself by pressing <color:keypress>S</color>, but this option determines whether stairs are shown by default.)
+
+<topic:show_future_powers><color:U>Include known future race/class powers in lists</color> <color:D>(show_future_powers)</color>
+If this option is on, the <color:keypress>U</color> bonus-power command (<color:keypress>O</color> in the roguelike keyset) will include known future powers in the list, and gray them out. Known future powers are ones the player will gain access to at higher levels, but is currently too low-level to use. Powers that require evolution, mutations or other special developments besides level gain will not be included.
+
+<topic:show_future_spells><color:U>Include known future class spells in lists</color> <color:D>(show_future_spells)</color>
+If this option is on, the <color:keypress>m</color> magic/mental-power command will include known future class spells in the list, and gray them out. Known future spells are ones the player will gain access to at higher levels, but is currently too low-level to use. This option has no effect on book spellcasters; book spell menus always include high-level spells.
 
 <topic:display_skill_num><color:U>Display skills as numbers in the character sheet</color> <color:D>(display_skill_num)</color>
 If this option is on, the character sheet displays the player's skills numerically in addition to the usual verbal description; <color:g>Superb</color> may become <color:g>Superb</color> (82), for example. This format is familiar to players of Composband, where the numerical display is always on.
@@ -323,51 +351,54 @@ If this option is on, the character sheet displays the player's skills numerical
 This option shows statistics about how good a reforge result is likely to be (and why), gives warnings in case of reforges that look particularly misguided, and allows you to cancel the reforge if the statistics are not to your liking.
 
 <topic:auto_sticky_labels><color:U>Automatically make all power labels sticky</color> <color:D>(auto_sticky_labels)</color>
-With this option on, all powers used through the 'U' key ('O' in the roguelike keyset) will be assigned a permanent and unchanging letter slot, allowing reliable macros and keymaps (and finger memory).
+With this option on, all powers used through the <color:keypress>U</color> key (<color:keypress>O</color> in the roguelike keyset) will be assigned a permanent and unchanging letter slot, allowing reliable macros, keymaps and finger memory.
 
 </indent>
 <topic:GamePlay><style:heading>Game Play Options</style>
   <indent>
 <topic:stack_force_notes><color:U>Merge inscriptions when stacking</color> <color:D>(stack_force_notes)</color>
-Force otherwise identical objects to merge, even if one has an empty inscription and the other does not. The resulting stack keeps the non-empty inscription.
+Forces otherwise identical objects to merge, even if one has an empty inscription and the other does not. The resulting stack keeps the non-empty inscription.
 
 <topic:stack_force_costs><color:U>Merge discounts when stacking</color> <color:D>(stack_force_costs)</color>
-Force otherwise identical objects to merge, even if they have different discounts. The resulting stack keeps the largest discount. This option may cause you to lose "value", but will give you optimal pack usage.
+Forces otherwise identical objects to merge, even if they have different discounts. The resulting stack keeps the largest discount. This option may cause you to lose "value", but will give you optimal pack usage.
 
-<topic:expand_list><color:U>Expand the power of the list commands</color> <color:D>(expand_list)</color>
+<topic:expand_list><color:U>Allow query option lists to loop to beginning</color> <color:D>(expand_list)</color>
+If this option is turned on, several interfaces that allow cycling between possibilities (the looking/targeting interface, the identify symbol interface, and the monster-research interface) will wrap back to the initial option after reaching the end. If this option is off, these prompts will close after the end is reached.
+
 Expand the "listing" commands so that they "wrap" at the "edges" of the appropriate list. This allows the "look" and "target" commands to "cycle" through all appropriate grids forever, and the "identify symbol" to browse through all of the monsters of a given type.
 
 <topic:empty_levels><color:U>Allow empty 'arena' levels</color> <color:D>(empty_levels)</color>
-Normal dungeon levels consist mostly of rock. If this option is in use, levels which have empty floor instead of solid rock may also be created (somewhat reminiscent of Nethack's "big-room" levels). These levels can be extremely deadly, especially with breathing monsters (since there are few obstructions to shield). Arena levels may have vaults, nests and pits in them like normal levels. Some arena levels are dark when they are created, but most are lit.
+Normal dungeon levels consist mostly of rock; if this option is on, empty 'arena' levels are sometimes generated which substitute empty floor for the rock. These levels can be highly deadly due to the dearth of hiding places and the open lines of sight, although rooms, vaults and pits will still be surrounded by walls. Compare <color:keyword>ironman_empty_levels</color>, which generates all levels as arena levels.
 
-<topic:bound_walls_perm><color:U>Boundary walls become 'permanent wall'</color> <color:D>(bound_walls_perm)</color>
-If this option is set, boundaries of dungeon floors will explicitly look like permanent walls. If unset, those will look like normal walls, but still behave as permanent walls.
+<topic:bound_walls_perm><color:U>Display dungeon boundaries as permanent walls</color> <color:D>(bound_walls_perm)</color>
+If this option is set, boundaries of dungeon floors will explicitly look like permanent walls. If the option is not set, boundary walls will look like regular walls, but still behave as permanent walls.
 
 <topic:last_words><color:U>Leave last words when your character dies</color> <color:D>(last_words)</color>
-Display a random line from the "death.txt" file when your character dies and then allow you to rewrite these last words. If this option is not selected, the "You die." message is displayed instead.
+Allows you to speak a few last words when your character dies. If this option is not on, a simple "You die" message is displayed instead.
 
 <topic:allow_debug_opts><color:U>Allow use of debug/cheat options</color> <color:D>(allow_debug_opts)</color>
-Since use of debug command(^A), wizard mode(^W), and Cheating options ('C' in options panel) mark the player as "Cheater" who can't register their score, these debug/cheat options are forbidden by default. The allow_debug_opts option removes these restrictions, and allow the player to become "Cheater". But perhaps you just want to test?
+Enables use of the debug command (<color:keypress>^A</color>), wizard mode (<color:keypress>^W</color>) and cheat options (<color:keypress>C</color> in the main options menu). Using any of these irrevocably marks the character as a cheater; having the option off ensures they cannot be triggered accidentally.
+
 </indent>
 <topic:Disturbance><style:heading>Disturbance Options</style>
   <indent>
 <topic:find_ignore_stairs><color:U>Run past stairs</color> <color:D>(find_ignore_stairs)</color>
-Ignore stairs when running.
+Toggles whether stairs are ignored while running.
 
 <topic:find_ignore_doors><color:U>Run through open doors</color> <color:D>(find_ignore_doors)</color>
-Ignore open doors when running.
+Toggles whether open doors are ignored while running.
 
 <topic:find_ignore_veins><color:U>Run past buried treasure</color> <color:D>(find_ignore_veins)</color>
-Ignore treasure veins when running.
+Toggles whether treasure veins are ignored while running.
 
 <topic:find_cut><color:U>Run past known corners</color> <color:D>(find_cut)</color>
-Cut sharply around known corners when running. This will result in faster running, but may cause you to run into a lurking monster.
+If this option is on, the player cuts sharply around known corners while running. This will result in faster running, but increases the chance of blundering into a lurking monster.
 
 <topic:travel_ignore_items><color:U>Ignore identified items while travelling</color> <color:D>(travel_ignore_items)</color>
 With this option on, all identified items (except some extremely valuable objects, and objects that add to a stack of already carried items) are ignored by the Mogaminator while travelling. With the option off, the Mogaminator may try to pick up already identified items walked over during the travel, which is sometimes good but often disturbs the travel annoyingly.
 
-<topic:check_abort><color:U>Check for user abort while continuous command</color> <color:D>(check_abort)</color>
-Turning this option off will avoid checking to see if the user has pressed a key during resting or running or repeated commands. This not only makes the game much more efficient (on many systems), but also allows the use of certain obscure macro sequences, such as turning this option off, resting until done, turning this option on, and casting a spell. Resting for long periods of time with this option turned off is dangerous since the resting may not stop until the user takes damage from starvation.
+<topic:check_abort><color:U>Check for user abort of automated input</color> <color:D>(check_abort)</color>
+If this option is turned off, automatically handled commands such as resting, running, travelling or repeated commands cannot be cancelled or disturbed by the user. This is somewhat dangerous, but makes the game more efficient on some systems.
 
 <topic:flush_failure><color:U>Flush input on various failures</color> <color:D>(flush_failure)</color>
 This option forces the game to flush all pending input whenever various "failures" occur, such as failure to cast a spell, failure to use a wand, etc. This is very useful if you use macros which include "directional" components with commands that can fail, since it will prevent you from walking towards monsters when your spells fail.
@@ -376,40 +407,40 @@ This option forces the game to flush all pending input whenever various "failure
 This option forces a <color:B>-more-</color> prompt whenever an attempt to use a device or cast a spell fails. This is useful if the player is in the habit of pressing keys (e.g. to target the device) on the assumption the device won't fail, which if unchecked can result in a potentially costly lost turn when the device does fail.
 
 <topic:flush_disturb><color:U>Flush input whenever disturbed</color> <color:D>(flush_disturb)</color>
-This option forces the game to flush all pending input whenever the character is "disturbed". This is useful if you use macros which take time, since it will prevent you from continuing your macro while being attacked by a monster.
+This option forces the game to flush all pending input whenever the character is disturbed. This is useful if you use macros which take time, since it will prevent you from continuing your macro while being attacked by a monster.
 
 <topic:disturb_move><color:U>Disturb whenever any monster moves</color> <color:D>(disturb_move)</color>
-Disturb the player when any monster moves, appears, or disappears. This includes monsters which are only visible due to telepathy, so you should probably turn this option off if you want to "rest" near such monsters.
+Disturbs the player when any visible monster moves, appears, or disappears. This includes monsters visible through telepathy, which is sometimes inconvenient if you wish to rest near such monsters.
 
 <topic:disturb_high><color:U>Disturb whenever high-level monster moves</color> <color:D>(disturb_high)</color>
-Disturb the player when any monster whose level is higher than the player moves, appears, or disappears. This includes monsters which are only visible due to telepathy.
+Disturbs the player when any monster whose native level is higher than the player's character level moves, appears, or disappears. This includes monsters visible through telepathy.
 
 <topic:disturb_near><color:U>Disturb whenever viewable monster moves</color> <color:D>(disturb_near)</color>
-Disturb the player when any viewable monster moves, whenever any monster becomes viewable for the first time, and also whenever any viewable monster becomes no longer viewable. This option ignores the existence of "telepathy" for the purpose of determining whether a monster is "viewable". See also the "view_reduce_view" option.
+Disturbs the player when any monster in line of sight moves, and when any monster moves into or out of line of sight.
 
 <topic:disturb_pets><color:U>Disturb when visible pets move</color> <color:D>(disturb_pets)</color>
-The player may wish that some of the disturbance options do not apply to pets: for example, it can be annoying if your rest is always disturbed by a pet dog who pops in every now and then. By default, pets do not disturb you even if full monster disturbance options are set. If you want your pets to disturb you like normal monsters, set this option.
+If this option is on, the same disturbance rules are applied to all monsters, regardless of whether they are friendly or hostile. If this option is not on, moves by pets or friendly monsters never disturb.
 
 <topic:disturb_panel><color:U>Disturb whenever map panel changes</color> <color:D>(disturb_panel)</color>
-This option causes you to be disturbed by the map scrolling, as it does automatically when you get close to the edge of the screen.
+This option causes you to be disturbed by the map scrolling, as happens when you get close to the edge of the screen.
 
 <topic:disturb_state><color:U>Disturb whenever player state changes</color> <color:D>(disturb_state)</color>
-This option causes you to be disturbed whenever the player state changes, including changes in hunger, resistance, confusion, etc.
+This option causes you to be disturbed whenever the player state changes, including changes to hunger level, temporary buffs or status effects running out, etc.
 
 <topic:disturb_minor><color:U>Disturb whenever boring things happen</color> <color:D>(disturb_minor)</color>
-This option causes you to be disturbed by various boring things, including monsters bashing down doors, inventory feelings, and beginning to run out of fuel.
+This option causes you to be disturbed by various minor things, including monsters bashing down doors, new inventory object feelings, and beginning to run out of fuel.
 
 <topic:town_no_disturb><color:U>Never disturb when a town monster moves</color> <color:D>(town_no_disturb)</color>
-With this option on, non-attacking moves by monsters native to towns (mercenaries, drunks, street urchins etc.) will never disturb you.
+If this option is on, non-attacking moves by monsters native to towns (such as mercenaries, drunks or street urchins) will never disturb you.
 
-<topic:ring_bell><color:U>Audible bell (on errors, etc)</color> <color:D>(ring_bell)</color>
-Attempt to make a bell noise when various errors occur.
+<topic:ring_bell><color:U>Audible bell (on errors, etc.)</color> <color:D>(ring_bell)</color>
+Attempts to make a bell noise when various errors occur. The bell may not work on some systems.
 
-<topic:disturb_trap_detect><color:U>Disturb when leaving trap detected area</color> <color:D>(disturb_trap_detect)</color>
-This option causes you to be disturbed when the player is running out of trap-detected area.
+<topic:disturb_trap_detect><color:U>Disturb when leaving trap-detected area</color> <color:D>(disturb_trap_detect)</color>
+This option causes you to be disturbed when you move out of a trap-detected area.
 
-<topic:alert_trap_detect><color:U>Alert when leaving trap detected area</color> <color:D>(alert_trap_detect)</color>
-This option alerts you with a message when the player is moving out of the trap-detected area.
+<topic:alert_trap_detect><color:U>Alert when leaving trap-detected area</color> <color:D>(alert_trap_detect)</color>
+This option alerts you with a message when you move out of a trap-detected area.
 
 <topic:alert_device_gone><color:U>Alert when carried device is destroyed or stolen</color> <color:D>(alert_device_gone)</color>
 This option forces a <color:B>-more-</color> prompt whenever any wand, rod or staff in your inventory is destroyed or stolen.
@@ -427,34 +458,33 @@ This option alerts you with a message before your move if your poison counter ex
 <topic:AutoDestroyer><style:heading>Easy Auto-Destroyer Options</style>
   <indent>
 <topic:destroy_items><color:U>Use easy auto-destroyer</color> <color:D>(destroy_items)</color>
-This option turns the Easy Destroyer on and off. If enabled, the Easy Destroyer will destroy all objects unless the object is protected by one or more of the leave_* options discussed below.
+This option turns the Easy Destroyer on and off. If enabled, the Easy Destroyer will destroy all objects unless the object is protected by one or more of the <color:keyword>leave_*</color> options discussed below.
 
-<style:note>Note: The <color:keyword>Easy Auto-Destroyer</color> is a simpler to use version of the full featured <color:keyword>Mogaminator</color> discussed in <link:editor.txt>. It is designed for those who feel the full version is too complicated to use. However, you really should only use one or the other. So if you are using the full version, then you should not also enable the easy version, unless you have turned on the <color:keyword>always_pickup</color> option.</style>
+<style:note>Note: The <color:keyword>Easy Auto-Destroyer</color> is a simpler version of the full-featured <color:keyword>Mogaminator</color> discussed at <link:editor.txt>. It is designed for those who feel the full version is too complicated to use. However, you really should only use one or the other; if you are using the Mogaminator, then you should not also enable the Easy Destroyer, <color:B>unless</color> you have turned the <color:keyword>always_pickup</color> option on.</style>
 
 <topic:destroy_feeling><color:U>Apply auto-destroy on sensing an item</color> <color:D>(destroy_feeling)</color>
-If this option is turned on, both the Mogaminator and the Easy Destroyer will take actions whenever the player senses the quality of an object (i.e., whenever pseudo-id kicks in).
+If this option is turned on, both the Mogaminator and the Easy Destroyer will take actions whenever the player senses the quality of an object (i.e., whenever pseudo-ID kicks in).
 
 <topic:destroy_identify><color:U>Apply auto-destroy on identifying an item</color> <color:D>(destroy_identify)</color>
-If this option is turned on, both the Mogaminator and the Easy Destroyer will take actions whenever the player identifies an object, whether with a spell or with a magical device (but, alas, not via a town service).
+If this option is turned on, both the Mogaminator and the Easy Destroyer will take actions whenever the player identifies an object with a spell or magical device. Identifying objects with a town service does not trigger auto-destruction.
 
 <topic:destroy_debug><color:U>List the rule used when applying the Mogaminator</color> <color:D>(destroy_debug)</color>
-This is a debugging option when using the full-featured Mogaminator. Enabling this option results in the reporting of the rule used whenever an action is taken, such as pickup, auto-identify or destroy. The rule in question will appear in the message line. For example:<style:screenshot>
+This is a debugging option for the Mogaminator. If this option is enabled, the rule applied when the Mogaminator does something is reported in a message; for example:<style:screenshot>
   <indent>You have 26 charges remaining. <color:B>(AutoID</color><color:B>:</color>~?<color:G>unidentified </color><color:R>rods</color><color:B>)</color> You see <color:v>a </color>
 <color:v>Rod: </color><color:W>Frost Ball</color><color:v> (</color><color:y>1/3 charges</color><color:v>)</color>. <color:B>(Destroy:</color>(!<color:R>rods</color>:frost ball$<color:B>)</color>
 Auto-destroying.</indent>
 </style>
-In addition, the matching rule will be displayed when inspecting objects. For example:<style:screenshot>
-  <indent><color:o>an Amulet (Defender) [+12]</color>
-  Resist <color:g>Acid</color>, <color:b>Electricity</color>, <color:r>Fire</color>, <color:W>Cold</color>, <color:G>Poison</color>
-  <color:R>Free Action</color>; <color:B>See Invisible</color>; <color:B>Levitation</color>
-  <color:B>It cannot be harmed by the elements.</color>
-  <color:r>Autopick:</color> ~<color:G>*identified* </color><color:R>amulets</color><color:o> more value than 10000</color></indent>
-</style>
+In addition, the matching rule will be displayed when an object is inspected, for example:<style:screenshot>
+  <indent><color:s>a Law Book [Attractions of Law]</color>                               3.0 lbs 
+  You can't remember ever not having it.
+  <color:B>Score:</color> <color:D>100</color>                                            
+  <color:r>Autopick:</color> ~<color:G>first realm's first </color><color:R>spellbooks</color><color:U>#@ma!k</color>                                         </indent></style>
+
 <topic:no_mogaminator><color:U>Never apply the Mogaminator</color> <color:D>(no_mogaminator)</color>
 This option deactivates the Mogaminator. (It is redundant if the Mogaminator was never activated in the first place.)
 
 <topic:leave_mogaminator><color:U>Leave items the Mogaminator wants to destroy</color> <color:D>(leave_mogaminator)</color>
-With this option on, the Mogaminator never destroys items (the easy auto-destroyer can still destroy items), but items the Mogaminator wants to destroy are not automatically picked up on walkover even with the <color:keyword>always_pickup</color> option on.
+With this option on, the Mogaminator never destroys items (the easy auto-destroyer can still destroy items), but items the Mogaminator wants to destroy are not automatically picked up on walkover even with the <color:keyword>always_pickup</color> option on. 
 
 <topic:delay_autopick><color:U>Allow manual pickup before applying auto-pickup</color> <color:D>(delay_autopick)</color>
 With this option on, any command that allows you to pick up items manually will give the manual pickup priority over auto-pickup. (With the option off, this only happens if you are picking up items from the square you were already on.)
@@ -466,62 +496,62 @@ This option protects known objects that can be sold in stores from auto-destruct
 This option protects all weapons and armour from auto-destruction by the Easy Destroyer.
 
 <topic:leave_chest><color:U>Auto-destroyer leaves closed chests</color> <color:D>(leave_chest)</color>
-This option protects all chests which are not yet opened from auto-destruction by the Easy Destroyer.
+This option protects all chests which have not yet been opened from auto-destruction by the Easy Destroyer.
 
 <topic:leave_wanted><color:U>Auto-destroyer leaves wanted corpses</color> <color:D>(leave_wanted)</color>
-This option protects corpses of monsters wanted at the Hunter's office from auto-destruction by the Easy Destroyer.
+This option protects corpses of monsters wanted at a bounty office from auto-destruction by the Easy Destroyer.
 
 <topic:leave_corpse><color:U>Auto-destroyer leaves corpses and skeletons</color> <color:D>(leave_corpse)</color>
 This option protects all corpses and skeletons from auto-destruction by the Easy Destroyer.
 
 <topic:leave_junk><color:U>Auto-destroyer leaves junk</color> <color:D>(leave_junk)</color>
-This option protects all 'junk', such as Shards of Pottery or Broken Stick, from auto-destruction by the Easy Destroyer. This is especially helpful for Archers.
+This option protects all junk items, such as Broken Sticks or Shards of Pottery, from auto-destruction by the Easy Destroyer. This can be helpful on a class like Archer, although the <color:keyword>leave_special</color> option also covers such special cases.
 
 <topic:leave_special><color:U>Auto-destroyer leaves items your race/class needs</color> <color:D>(leave_special)</color>
-This option protects specific items which are normally worthless, but very important for specific classes or races. These include bones for Archers, ego light sources of darkness for Ninja, Wands of Heal Monster for BeastMaster and Cavalry, and humanoid corpses for Balrogs, etc...
+This option protects specific items which are normally worthless, but very important for specific classes or races. These include bones for Archers, ego light sources of darkness for Ninjas, Wands of Heal Monster for Beastmasters and Cavalry, humanoid corpses for Balrogs, and other items with similar niche uses.
 </indent>
 <topic:BaseDelay><style:heading>Base Delay Factor</style>
 
-The <color:keyword>delay_factor</color> value, if non-zero, is used to slow down the game, which is useful to allow you to observe the animations of bolt, beam, and ball attacks. The actual delay is equal to delay_factor cubed, in milliseconds.
+The <color:keyword>delay_factor</color> value, if non-zero, is used to slow down the game, which is useful to allow you to observe the animations of bolt, beam, and ball attacks. The actual delay is equal to the delay factor cubed, in milliseconds, unless the <color:keyword>square_delays</color> option has been turned on.
 
 <topic:Hitpoint><style:heading>Hitpoint Warning</style>
 
-The <color:keyword>hitpoint_warn</color> value, if non-zero, is the percentage of maximal hitpoints at which the player is warned that he may die. It is also used as the cut-off for using red to display both hitpoints and mana.
+The <color:keyword>hitpoint_warn</color> value, if non-zero, is the percentage of maximal HP at which the player receives a low hitpoint warning. It is also used as the cut-off for displaying both hitpoints and mana in <color:r>red</color>.
 
 <topic:Autosave><style:heading>Autosave Options</style>
 
-Ideally, the game should be so stable that these options are not needed at all. However, even if the game were 100% reliable (which it, to be frank, probably is not), the user might forget to save and his hardware could fail him. For all of these reasons, you may want to use these options:
+These settings determine when the game is automatically saved. An automatic save can help salvage progress in case of a power outage or other catastrophic crash:
   <indent>
 <topic:autosave_l><color:U>Autosave when entering new levels</color> <color:D>(autosave_l)</color>
 If this option is set, the program will attempt to save your character every time before creating a new dungeon level.
 
 <topic:autosave_t><color:U>Timed autosave</color> <color:D>(autosave_t)</color>
-If this option is set, the program will attempt to save your character every n game turns, where n is the "frequency". To set the frequency press <color:keypress>F</color>. It will increase the frequency to the next category (and from 25000 to 0), the categories being every 50, 100, 250, 500, 1000, 2500, 5000, 10000 and 25000 turns. Note that the frequency must be higher than 0 and the "Timed autosave" set to "yes" for timed autosaves to take place.
+If this option is set, the program will attempt to save your character every <color:B>n</color> game turns, where <color:B>n</color> is the "frequency". To modify the frequency, press <color:keypress>F</color>; this will increase the frequency to the next category (and from 25000 to 0), the categories being every 50, 100, 250, 500, 1000, 2500, 5000, 10000 and 25000 turns. Note that the frequency must be higher than 0, and "Timed autosave" set to "yes", for timed autosaves to take place.
 </indent>
 <topic:Window><style:heading>Window Flags</style>
 
-These options select what kind of information is displayed in which window. Some platforms support "sub-windows", which are windows which can be used to display useful information generally available through other means. The best thing about these windows is that they are updated automatically (usually) to reflect the current state of the world. The "window options" can be used to specify what should be displayed in each window. The possible choices should be pretty obvious.
+Some platforms support <color:keyword>subwindows</color>, which are additional, automatically updating terminals used to keep useful information on permanent display (see <link:subwin.txt> for more information). These window flags can be used to specify what information each subwindow displays; the possible choices should be fairly obvious.
   <indent>
 <color:U>Display inven/equip</color>
-Display the player inventory (and sometimes the equipment). Note that you can toggle between Inventory and Equipment by pressing <color:keypress>^I</color>.
+Displays the player inventory (and sometimes the equipment). Note that you can toggle between Inventory and Equipment by pressing <color:keypress>^I</color>.
 
 <color:U>Display equip/inven</color>
-Display the player equipment (and sometimes the inventory). Note that you can toggle between Inventory and Equipment by pressing <color:keypress>^I</color>.
+Displays the player equipment (and sometimes the inventory). Note that you can toggle between Inventory and Equipment by pressing <color:keypress>^I</color>.
 
 <color:U>Display Object List</color>
-This option displays the results of the <color:keyword>Object List</color> command (<color:keypress>]</color>). For example:
+This option displays the results of the <color:keyword>Object List</color> command (<color:keypress>O</color>/<color:keypress>]</color>); for example:
 <style:screenshot>
   There is 1 wanted object:
    <color:D>!</color> <color:B>a Potion of Resistance              </color> S 17 E 29
 
   There are 4 other objects:
-   <color:W>|</color> a Two-Handed Sword (3d6)             S 18 E 30
-   <color:D>\</color> a Lead-Filled Mace (3d4)             S 18 E 28
-   <color:s>]</color> <color:U>a Pair of Metal Shod Boots [6]      </color> S 18 E 29
-   <color:s>/</color> an Awl-Pike (1d8)                    S 19 E 29
+   <color:W>|</color> a Two-Handed Sword                   S 18 E 30
+   <color:D>\</color> a Lead-Filled Mace                   S 18 E 28
+   <color:s>]</color> <color:U>a Pair of Metal Shod Boots          </color> S 18 E 29
+   <color:s>/</color> an Awl-Pike                          S 19 E 29
 </style>
 <color:U>Display Monster List</color>
-This option displays the results of the <color:keyword>Monster List</color> command (<color:keypress>[</color>). For example:
+This option displays the results of the <color:keyword>Monster List</color> command (<color:keypress>Y</color>/<color:keypress>[</color>); for example:
 <style:screenshot>
   You are aware of 4 monsters, 4 are awake:
    <color:o>t</color> Aimless looking merchant (2 awake)
@@ -529,30 +559,24 @@ This option displays the results of the <color:keyword>Monster List</color> comm
    <color:y>t</color> Singing, happy drunk                 S 22 E 72
 </style>
 <color:U>Display messages</color>
-Display the most recently generated messages (cf The <color:keypress>^P</color> command).
+Displays the most recent messages (compare the <color:keypress>^P</color> command).
 
 <color:U>Display overhead view</color>
-Display an overhead view of the entire dungeon. This is very slow and gives the same results as the <color:keypress>M</color> command.
+Displays an overhead view of the entire dungeon; this can be somewhat slow on older machines, and gives the same results as the <color:keypress>M</color> command.
 
 <color:U>Display monster recall</color>
-Display a description of the most monster which has been most recently attacked, targeted, or examined in some way.
+Displays a description of the monster most recently attacked, targeted, or examined in some way.
 
-<color:U>Display object recall</color>
-Display a description of the most recently selected object. Currently this only affects spellbooks and prayerbooks. This window flag may be usefully combined with others, such as "monster recall".
+<color:U>Display spell recall</color>
+Displays the contents of the spellbook most recently used or browsed. This window flag may be usefully combined with others, such as monster recall.
 
 <color:U>Display dungeon view</color>
-Display a copy of dungeon map.
+Displays a copy of the map.
 
-<color:U>Display borg messages</color>
-This window flag is currently used only by the Borg which is not currently supported in this variant.
-
-<color:U>Display borg status</color>
-This window flag is currently used only by the Borg which is not currently supported in this variant.
-</indent>
 <topic:Cheating><style:heading>Cheating Options</style>
 
-Using the cheating options marks your character as "Cheater" and you won't get into the high-score list. Turning off the cheating options later does NOT allow your character to get a highscore entry, so think twice before using any cheat.
-  <indent>
+Using the cheating options permanently marks your character as a cheater; cheaters cannot score a real win, and will not get an entry on the high-score list, even if they turn the cheating options off later.
+
 <topic:cheat_peek><color:U>Peek into object creation</color> <color:D>(cheat_peek)</color>
 Cheaters never win. But they can peek at object creation.
 
@@ -569,7 +593,7 @@ Cheaters never win. But they can see debugging messages.
 Cheaters never win. But they can cheat death.
 
 <topic:cheat_save><color:U>Ask for saving death</color> <color:D>(cheat_save)</color>
-Cheaters never win. But they can choose whether they save dead character data or not when they die.
+Cheaters never win. But they can choose whether to save the character's data when they die.
 </indent>
 <color:D>
 Original   : Ben Harrison
