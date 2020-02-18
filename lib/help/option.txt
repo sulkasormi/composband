@@ -23,7 +23,7 @@ With this option enabled, the player will be born with complete knowledge of mon
 Also known as "Fnord-mode", this option allows the player to see the exact damage delivered by each attack, and to receive additional information about monster health and debuffs through a percentage display. Player health bars are also converted to use percentages. This is a very powerful easy-mode, and using it gives a score penalty.
 
 <topic:allow_spoilers><color:U>Allow spoilers</color> <color:D>(allow_spoilers)</color>
-Enabling this option allows the player to view some spoiler files in-game using the ^Z command.
+Enabling this option allows the player to view some spoiler files in-game with the <color:keypress>^Z</color> command.
 
 <topic:power_tele><color:U>Use enhanced telepathy</color> <color:D>(power_tele)</color>
 With this option off ("fuzzy telepathy"), telepathy only reveals the "species" (default display character) of a monster; its color and race are hidden. Turning on this option allows the player to see the color and race of telepathically detected monsters the same way as with normal sight.
