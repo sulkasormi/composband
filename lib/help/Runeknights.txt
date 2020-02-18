@@ -1,10 +1,12 @@
-<style:title>Rune Knights</style>
+<style:title>Rune-Knights</style>
 
-A large part of playing the Rune Knight involves the attachment of mystical runes of power to various objects in your equipment. Each type of rune grants abilities consistent with the rune's source, but the actual abilities granted will vary depending on the type of object to which it is affixed. For example, runes are generally more powerful when attached to your body armor then when attached to helmets, gloves or shields. Since attaching runes generally consumes all of your mana, and since the rune knight does not regenerate mana normally, you may find a process of experimentation to learn the various combinations frustrating. In this case, continue reading this helpfile. It is a bit of a <color:v>spoiler</color>, so you may decide to <color:v>stop reading now</color>. Personally, I would play with this information handy, but the choice is yours.
+A large part of playing as a Rune-Knight involves the attachment of mystical runes of power to various pieces of equipment. Each type of rune grants some special thematic abilities; these abilities will vary slightly depending on the type of object to which the rune is affixed. Generally, runes are more powerful when attached to body armor than when attached to helmets, gloves or shields. Since attaching a rune generally consumes all of your mana and rune-knights do not regenerate mana normally, trying to figure things out by trial and error would be time-consuming and lead to suboptimal rune placement. Note that you can only attach a single rune to any given object, and cannot remove or change that rune once it has been added, although nothing prevents you from adding the same rune to multiple objects.
 
-<topic:RunesByType><style:heading>Runes by Type</style>
+The rune cheat-sheet below is a bit of a spoiler, but most players are happy to play with this information handy.
 
-In this section, each rune is displayed along with each type of object to which it may be affixed. Thus, you may see what each rune does at a glance, and decide where to use it best.
+<topic:RunesByType><style:heading>Equipment/Inventory Runes by Type</style>
+
+In this section, each rune is displayed along with each type of object to which it may be affixed; thus, you may see what each rune does at a glance, and decide where to use it best.
 
 <color:B>Absorption</color>
 <color:R>Melee Weapons</color> <color:G>L1</color>  Magic Resistance; Mana Absorption
@@ -28,10 +30,11 @@ In this section, each rune is displayed along with each type of object to which 
 <color:R>Shields</color>       <color:G>L9</color>  Resist Fire
 <color:R>Body Armor</color>    <color:G>L9</color>  Resist Fire; Fiery Aura
 <color:R>Cloaks</color>        <color:G>L9</color>  Fiery Aura
+<color:R>Lights</color>        <color:G>L9</color>  Fiery Aura
 <color:R>Gloves</color>        <color:G>L45</color> Flame Tongue
 
 <color:B>Air</color>
-<color:R>Melee Weapons</color> <color:G>L40</color> +.75 Attacks
+<color:R>Melee Weapons</color> <color:G>L40</color> +0.75 Attacks
 <color:R>Cloaks</color>        <color:G>L11</color> Levitation
 <color:R>Boots</color>         <color:G>L11</color> Levitation
 
@@ -48,9 +51,9 @@ In this section, each rune is displayed along with each type of object to which 
 
 <color:B>Shadow</color>
 <color:R>Shields</color>       <color:G>L17</color> Resist Darkness
-<color:R>Body Armor</color>    <color:G>L17</color> Resist Darkness; Stealth
+<color:R>Body Armor</color>    <color:G>L17</color> Resist Darkness; +5L/50 Stealth
 <color:R>Helmets</color>       <color:G>L17</color> Resist Darkness
-<color:R>Cloaks</color>        <color:G>L17</color> Stealth
+<color:R>Cloaks</color>        <color:G>L17</color> +5L/50 Stealth
 
 <color:B>Earth</color>
 <color:R>Melee Weapons</color> <color:G>L35</color> Vorpal
@@ -62,8 +65,8 @@ In this section, each rune is displayed along with each type of object to which 
 <color:R>Helmets</color>       <color:G>L21</color> +2 INT; Easy Identify
 <color:R>Lights</color>        <color:G>L21</color> +1 INT
 
-<color:B>Elemental Protection</color>
-If this rune is carried in your pack then your gear receives increased protection against accidental destruction by elemental attacks.
+<color:B>Preservation</color>
+If this rune is carried in your pack, the chance of items in your pack being destroyed by elemental attacks is cut to half.
 
 <color:B>Haste</color>
 <color:R>Gloves</color>        <color:G>L25</color> +2 DEX
@@ -106,7 +109,7 @@ If this rune is carried in your pack then your gear receives increased protectio
 <color:R>Gloves</color>        <color:G>L41</color> Slaying
 
 <color:B>Good Fortune</color>
-If this rune is carried in your pack then you will be blessed with good luck. This grants increased odds of finding excellent and special items.
+If this rune is carried in your pack, you will be blessed with good luck. This grants increased odds of finding excellent and special items. The good-luck effect is similar to the White Aura mutation and the Lucky personality, and does not stack with them.
 
 <color:B>Immortality</color>
 <color:R>Shields</color>       <color:G>L45</color> Resist Time
@@ -124,7 +127,7 @@ In this section, the various runes are grouped according to equipment slot. This
 <color:B>Water</color>         <color:G>L13</color> Acid Brand
 <color:B>Earth</color>         <color:G>L35</color> Vorpal
 <color:B>Death</color>         <color:G>L35</color> Vampiric
-<color:B>Air</color>           <color:G>L40</color> +.75 Attacks
+<color:B>Air</color>           <color:G>L40</color> +0.75 Attacks
 <color:B>Destruction</color>   <color:G>L41</color> +2 Damage Dice
 
 <color:R>Shields</color>
