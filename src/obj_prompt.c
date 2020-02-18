@@ -459,8 +459,8 @@ static int _basic_cmd(obj_prompt_context_ptr context, int cmd)
     case KTRL('G'):
         show_item_graph = !show_item_graph;
         return OP_CMD_HANDLED;
-    case KTRL('L'):
-        show_labels = !show_labels;
+    case KTRL('D'):
+        describe_slots = !describe_slots;
         return OP_CMD_HANDLED;
     case SKEY_PGDOWN: case '3': case ' ': {
         obj_prompt_tab_ptr tab = vec_get(context->tabs, context->tab);
