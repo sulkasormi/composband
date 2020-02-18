@@ -608,21 +608,20 @@ class_t *duelist_get_class(void)
 
         me.name = "Duelist";
         me.desc = "The duelist is the ultimate one-on-one fighter, but finds himself at a severe "
-                  "disadvantage when facing numerous strong foes. When facing an enemy, the duelist "
-                  "first issues a challenge, marking that foe for a one on one duel. Of course, this "
-                  "wakes the monster up (There is no honor in dueling a sleeping enemy). And while "
-                  "the duelist will honor the fight as a one on one affair, many monsters have no "
-                  "such scruples.\n \n"
-                  "Against a challenged foe, the duelist is very strong gaining a bonus to saving "
+                  "disadvantage when facing numerous strong foes at once. To start a duel, the duelist "
+                  "first issues a challenge to his intended foe; of course, this will wake the monster "
+                  "up, as there is no honor in dueling a sleeping enemy! And while the duelist will "
+                  "honor the fight as a one-on-one affair, many monsters have no such scruples.\n \n"
+                  "Against a challenged foe the duelist is extremely strong, gaining bonuses to saving "
                   "throws, armor class, damage reduction and combat prowess. On the other hand, due "
                   "to the single-mindedness of their focus, the duelist is quite vulnerable to unchallenged "
-                  "opponents. Most of the techniques of this class aim at enforcing the sanctity of the "
+                  "opponents. Most of the special techniques of this class aim at enforcing the sanctity of the "
                   "duel.\n \n"
                   "The duelist only ever gains a single attack in combat, but they make the most of this "
                   "blow by gaining enhanced effects as they gain experience. Able to wound, stun, and even "
-                  "hamstring their foes, the prowess of the duelist in a one on one encounter is legendary!\n \n"
-                  "Duelists favor light armors and cannot equip a shield. They gain no extra bonus when "
-                  "wielding a weapon with both hands. For their techniques the duelist relies on dexterity.";
+                  "hamstring their foes, the prowess of the duelist in a one-on-one encounter is legendary!\n \n"
+                  "Duelists favor light armors and weapons, and cannot equip a shield. They gain no extra bonus for "
+                  "wielding a weapon with both hands. For their techniques, the duelist relies on Dexterity.";
         me.stats[A_STR] =  2;
         me.stats[A_INT] =  1;
         me.stats[A_WIS] = -2;
