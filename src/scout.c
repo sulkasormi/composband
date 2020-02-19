@@ -564,11 +564,12 @@ class_t *scout_get_class(void)
 
         me.name = "Scout";
         me.desc = "The scout is the vanguard of any attack, and excels at stealth and observation "
-                    "skills. The scout is not the best at one-on-one combat, but is unparalleled at "
-                    "ambush techniques to destroy groups of weak sentries. The scout is lightly "
-                    "armored, and heavy armors disrupt their abilities. Furthermore, the scout "
-                    "can only effectively dodge in open areas, being confined severely hampers "
-                    "the scout's defensive abilities.";
+                    "skills. Scouts are not the best at one-on-one combat, but are unparalleled at "
+                    "ambush techniques for destroying groups of weak sentries. Scouts are lightly "
+                    "armored, and heavy armor disrupts their abilities. Unlike most characters, "
+                    "scouts are not at home in cramped corridors; in open areas they can "
+                    "dodge attacks effectively, but being confined severely hampers their "
+                    "defensive abilities.";
 
         me.stats[A_STR] =  1;
         me.stats[A_INT] = -1;
