@@ -91,14 +91,14 @@ class_t *sorcerer_get_class(void)
     skills_t xs = {  7,  18,  13,   0,   0,   0,   0,   0};
 
         me.name = "Sorcerer";
-        me.desc = "Sorcerers are the all-around best magicians, being able to cast "
-                    "any spell from most magic realms without having to learn it. On "
-                    "the downside, they are the worst fighters in the dungeon, being "
-                    "unable to use any weapon but a Wizardstaff.\n \n"
-                    "Sorcerers can cast any spell from any spellbooks of all magic "
-                    "realms with 'Master' proficiency level without having to learn it. "
-                    "They have a class power - 'Eat Magic' - which absorbs mana from "
-                    "wands, staves or rods.";
+        me.desc = "Sorcerers are the all-around best magicians, being able to master "
+                    "all spells from almost any magic realm without needing to study them or "
+                    "gain proficiency with them. On the downside, they have by far the "
+                    "fewest hit points of any class; they are also the worst fighters in the "
+                    "dungeon, being unable to use any weapon but a Wizardstaff.\n \n"
+                    "Sorcerers have a class power - 'Eat Magic' - which absorbs mana from "
+                    "wands, staves or rods. Unlike other mages, they rely on Charisma as "
+                    "their spell stat.";
 
         me.stats[A_STR] = -5;
         me.stats[A_INT] =  0;
