@@ -663,21 +663,20 @@ class_t *gray_mage_get_class(int psubclass)
     skills_t xs = {  7,  15,  11,   0,   0,   0,   6,   7};
 
         me.name = "Gray-Mage";
-        me.desc = "The Gray-Mage casts spells from memory, rather than from a "
-                    "book.  Indeed, the spell book is only required for the initial learning process. "
-                    "However, only a small number of spells may be learned at "
-                    "any given time, and while the Gray-Mage may replace old spells "
-                    "with new ones, they can only learn a fixed number of total spells "
-                    "(based upon Intelligence and Experience).\n \n"
-                    "The Gray-Mage does not choose spell realms the way an ordinary "
-                    "spell caster would. Instead, they choose a general bias towards "
-                    "one of Good, Neutral or Evil magic. So while all Gray-Mages may "
-                    "learn spells from the Arcane, Armageddon, Chaos, Craft, Sorcery and "
-                    "Trump realms, only a Good Bias allows access to Life and Crusade magic; "
-                    "only a Neutral Bias allows access to Nature magic; and only an Evil Bias "
-                    "allows access to Death and Daemon magic. Still, it is obvious that "
-                    "the Gray Mage will have an extremely large pool of spells from which "
-                    "to choose. Like the Mage, Intelligence is the key stat.";
+        me.desc = "The Gray-Mage casts spells from memory rather than books; a "
+                    "spellbook is only required for the initial learning process. "
+                    "However, only ten spells may be memorized at any given time; and "
+                    "while a Gray-Mage may replace old spells with new ones, the total "
+                    "number of spells they can study is limited.\n\n"
+                    "Gray-Mages do not choose specific realms like book spellcasters; "
+                    "instead, they choose a general bias towards either Good, Neutral "
+                    "or Evil magic. So while all Gray-Mages may learn spells from the Arcane, "
+                    "Armageddon, Chaos, Craft, Sorcery and Trump realms, only a Good Bias allows "
+                    "access to Life and Crusade magic; only a Neutral Bias allows access to Nature "
+                    "magic; and only an Evil Bias allows access to Death and Daemon magic. At any one "
+                    "time, a Gray-Mage has relatively few spells directly at their disposal; but their ability "
+                    "to pick the best spells from an extremely large pool more than compensates for this. "
+                    "As with most mages, the key stat is Intelligence.";
 
         me.stats[A_STR] = -4;
         me.stats[A_INT] =  3;
