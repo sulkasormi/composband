@@ -54,18 +54,15 @@ class_t *yellow_mage_get_class(void)
     skills_t xs = {  7,  15,  11,   0,   0,   0,   6,   7};
 
         me.name = "Yellow-Mage";
-        me.desc = "A Yellow Mage is a type of Mage who focuses on rapid spell casting. "
-                    "Much as the Warrior gets multiple attacks per round, the Yellow Mage "
-                    "may cast multiple spells per round. Their spell speed increases with "
-                    "level. In addition, they may also cast low level spells more quickly "
-                    "as they gain in experience (For example, a CL50 Yellow Mage casting a "
-                    "L35 spell only requires 85% of the normal time, and this bonus applies "
-                    "before their spells per round bonus).\n \n"
-                    "In all other respects, the Yellow Mage is similar to the Mage. They "
-                    "may learn spells from two spell realms and use Intelligence as their "
-                    "primary spell statistic. However, due to their focus upon hasty "
-                    "casting, they are unable to learn the mightiest of spells in most realms, "
-                    "especially as regards powerful offensive spells like Mana Storm.";
+        me.desc = "A Yellow-Mage is a type of Mage who focuses on rapid spell casting. "
+                    "The casting speed of Yellow-Mages improves with experience; low-level spells "
+                    "are particularly quick to use, and can eventually be cast as many as five "
+                    "times in one round! But even a level 50 spell requires less than half a "
+                    "turn for an accomplished Yellow-Mage.\n\n"
+                    "In most other respects, a Yellow-Mage is similar to a Mage; they use Intelligence "
+                    "as their primary spell stat, and may learn spells from two spell realms of their choice. " 
+                    "However, due to their focus on hasty casting, some of the deepest "
+                    "and most powerful magic will remain forever beyond their grasp.";
 
         me.stats[A_STR] = -4;
         me.stats[A_INT] =  3;
