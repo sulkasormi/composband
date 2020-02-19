@@ -559,17 +559,17 @@ class_t *mystic_get_class(void)
     skills_t xs = { 15,  10,  10,   0,   0,   0,  18,  18};
 
         me.name = "Mystic";
-        me.desc = "Mystics are masters of bare handed fighting, like Monks. However, they "
-                  "do not learn normal spells. Instead, they gain mystical powers with experience, "
+        me.desc = "Mystics are masters of bare-handed fighting, like Monks. Unlike Monks, though, they "
+                  "do not learn normal spells; instead, they gain mystical powers with experience, "
                   "and these powers directly influence their martial arts. In this respect, "
-                  "Mystics are similar to the Samurai. Indeed, they even concentrate to boost "
-                  "their mana like the Samurai. Mystics eschew weapons of any kind and require "
-                  "the lightest of armors in order to practice their martial arts. The number "
-                  "of attacks are influenced by dexterity and experience level while the mystic's "
-                  "mana and fail rates are influenced by charisma. Mystics are in tune with the "
-                  "natural forces around them and may even call on aid when necessary. It has "
-                  "been whispered that mystics have even discovered how to kill an opponent with "
-                  "a single touch, though they do not share this knowledge with novices.";
+                  "Mystics are somewhat similar to Samurai; indeed, they even concentrate to boost "
+                  "their mana like the Samurai. Mystics eschew weapons of any kind, and require "
+                  "the lightest of armors in order to practice their martial arts. As with other "
+                  "martial artists, their attack speed depends on their level and Dexterity; their "
+                  "mana and fail rates, though, are influenced by Charisma. Mystics are in tune with "
+                  "the natural forces around them, and may even summon animals to their aid when "
+                  "necessary. It is whispered that mystics have discovered a way to kill an opponent "
+                  "with a single touch; but they do not share this knowledge with novices.";
 
         me.stats[A_STR] =  2;
         me.stats[A_INT] = -1;
