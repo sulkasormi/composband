@@ -181,19 +181,16 @@ class_t *blue_mage_get_class(void)
     skills_t xs = {  7,  15,  11,   0,   0,   0,   6,   7};
 
         me.name = "Blue-Mage";
-        me.desc = "A Blue-Mage is a spell caster that must live by his wits, as he "
-                    "cannot hope to simply hack his way through the dungeon like a "
-                    "warrior. A major difference between the Mage and the Blue-Mage is "
-                    "the method of learning spells: Blue-Mages may learn spells from "
-                    "monsters. A Blue-Mage's prime statistic is Intelligence as this "
-                    "determines his spell casting ability.\n \n"
-                    "A Blue-Mage can learn and cast monster ranged attacks, spells, or "
-                    "summons as their own spells; this technique is called Blue magic. "
-                    "Blue-Mages remember their spells permanently, but they must get "
-                    "hit by a monster's spell while their class power "
-                    "'Learning' is active to learn spells. Because of this requirement "
-                    "requirement, they do not learn spells like Haste or Healing that "
-                    "affect the monster itself.";
+        me.desc = "Blue-Mages, like all mages, rely on magic rather than muscle; "
+                    "but they are unique in the way they gain new spells, as they "
+                    "learn from monsters rather than books. Blue-Mages' primary "
+                    "spellcasting stat is Intelligence.\n \n"
+                    "A Blue-Mage can learn and cast monster spells, summons, and even "
+                    "ranged attacks as their own spells; this technique is called Blue magic. "
+                    "Blue-Mages remember their spells permanently, but to learn a spell they "
+                    "must be directly hit by it while their 'Learning' class power is "
+                    "active. Because of this requirement, Blue-Mages never learn spells like "
+                    "Haste or Healing that affect the monster itself.";
 
         me.stats[A_STR] = -4;
         me.stats[A_INT] =  4;
