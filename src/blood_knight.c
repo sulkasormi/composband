@@ -540,6 +540,7 @@ class_t *blood_knight_get_class(void)
                   "brink of death they are the strongest fighters imaginable, and stories of their "
                   "legendary feats abound; but with great power comes great risk of death, "
                   "and you don't recall ever meeting one of these heroes of legend in person!\n \n"
+                  "Blood-Knights, like Blood-Mages, receive reduced benefits from healing magic. "
                   "Since a Blood-Knight relies on their own blood for their power, this class is restricted "
                   "to certain races; no non-living race may walk the red path.";
 
