@@ -114,24 +114,24 @@ class_t *priest_get_class(void)
         me.name = "Priest";
         me.desc = "A Priest is a character devoted to serving a higher power. They "
                     "explore the dungeon in the service of their God. They are fairly "
-                    "familiar with magical devices which they believe act as foci for divine "
+                    "familiar with magical devices, which they believe act as foci for divine "
                     "intervention in the natural order of things.\n \n"
                     "There are two types of priests: Good and Evil. If the priest chooses Life "
-                    "or Crusade as their first realm, then they will follow the path of good. "
-                    "As such, they may not choose an evil realm for their second realm. Also, good "
-                    "priests abhor bloodshed, and therefore are not comfortable with edged weapons. "
-                    "Wielding one will disrupt their ability to concentrate during prayers. "
-                    "Should a priest choose Death or Daemon as their first realm, however, then "
-                    "they will serve an evil god. As such, they actually enjoy shedding blood, and "
-                    "suffer no such weapon restriction. Of course, evil priests abhor good things, "
+                    "or Crusade as their first realm, they will follow the path of good; "
+                    "as such, they may not choose an evil realm for their second realm. Good "
+                    "priests abhor bloodshed, and therefore are not comfortable with edged weapons, "
+                    "although they eventually learn to bless such weapons and then use them without disrupting their prayers. "
+                    "Should a priest choose Death or Daemon as their first realm, however, "
+                    "they will serve an evil god; evil priests actually enjoy shedding blood, and "
+                    "suffer no such weapon restrictions. Of course, evil priests abhor good things, "
                     "and are unable to choose Life or Crusade for their second realm.\n \n"
                     "Good priests have a strong affinity for Life prayers, and learn them very well, even better "
-                    "than a High Mage. Conversely, evil priests favor prayers of Death, and receive "
-                    "strong bonuses when choosing this foul realm. Otherwise, priests learn spells less "
-                    "efficiently than a Mage would. Also, they may not choose which spell to learn, but "
-                    "are granted new prayers by the whim of their deity, presumably in order to serve "
-                    "some greater divine plan of which the priest is not fully cognizant. The priest's "
-                    "primary prayer stat is Wisdom.";
+                    "than a High-Mage. Conversely, evil priests favor prayers of Death, and receive "
+                    "strong bonuses when choosing this foul realm. Otherwise, priests learn magic less "
+                    "efficiently than a Mage would; but their greater stamina and combat skills compensate for this. "
+                    "Priests, unlike Mages, cannot choose to study specific spells; rather, they "
+                    "are granted new prayers by the whim of their deity, presumably in accordance with "
+                    "some greater divine plan. The primary stat for a priest is Wisdom.";
 
         me.stats[A_STR] = -1;
         me.stats[A_INT] = -3;
