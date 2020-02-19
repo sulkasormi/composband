@@ -505,22 +505,21 @@ class_t *devicemaster_get_class(int psubclass)
         me.name = "Devicemaster";
         me.desc = 
             "Devicemasters are excellent with magical devices, but poor in most other skills. "
-            "They may shoot or use melee in a pinch, but this will never be their forte. Instead, "
-            "they must rely on their arsenal of magical devices in order to survive.\n \n"
-            "The Devicemaster chooses to specialize in a particular class of devices and they "
-            "gain extra bonuses when using devices from their speciality. These bonuses include "
-            "increased damage, increased speed of activation, extra resistance to charge draining, "
-            "and even the ability to occasionally power these devices without consuming charges. "
-            "Each of these abilities becomes greater with experience. In addition, they gain enhanced "
-            "device skill with speciality devices.\n \n"
-            "Devicemasters have a few magical abilities to enhance their utility with devices. As expected, "
-            "they gain a powerful talent of Recharging very early on. Also, they may detect magical devices "
-            "from a distance. At higher levels, they gain the powerful ability to move effects from "
-            "one device to another (wand/rod/staff) or to move essence from one potion/scroll to a "
-            "lower level potion/scroll. As a final ability, "
-            "the Devicemaster may use multiple charges at once from a given device in an act of "
-            "desperation. This greatly increases the power of the effect, but may destroy the device "
-            "in the process.";
+            "They may shoot or use melee in a pinch, but this will never be their forte; instead, "
+            "they conquer through their arsenal of magical devices.\n \n"
+            "Each Devicemaster chooses to specialize in a particular class of devices, and will "
+            "gain extra bonuses for speciality items. These bonuses include increased "
+            "damage, increased speed of activation, extra resistance to charge draining, "
+            "and even the ability to occasionally power these devices without consuming charges; "
+            "each of these abilities becomes stronger with experience. In addition, speciality devices "
+            "are easier to use, although all Devicemasters are also good with devices of other types.\n \n"
+            "Devicemasters have several useful device-related powers; they may detect magical devices from "
+            "a distance, and gain the powerful talent of Recharging very early on. "
+            "At higher levels, they gain the ability to move effects from "
+            "one device to another, or to move magical essences from one item to another if they specialize "
+            "in Potions or Scrolls. In times of desperate need, the Devicemaster may drain a speciality item "
+            "of multiple charges at once; this greatly increases the power of the "
+            "effect, but may destroy the device in the process.";
     
         me.stats[A_STR] = -1;
         me.stats[A_INT] =  2;
