@@ -728,30 +728,30 @@ class_t *chaos_warrior_get_class(void)
     skills_t xs = {  7,  11,  10,   0,   0,   0,  20,  17};
 
         me.name = "Chaos-Warrior";
-        me.desc = "Chaos Warriors are the feared servants of the terrible Demon Lords "
-                    "of Chaos. Every Chaos Warrior has a Patron Demon and, when "
-                    "gaining a level, may receive a reward from his Patron. He might "
-                    "be healed or polymorphed, his stats could be increased, or he "
-                    "might be rewarded with an awesome weapon. On the other hand, the "
-                    "Patrons might surround him with monsters, drain his stats or wreck "
-                    "his equipment or they might simply ignore him. The Demon Lords of "
-                    "Chaos are chaotic and unpredictable indeed. The exact type of "
-                    "reward depends on both the Patron Demon (different Demons give "
-                    "different rewards) and chance.\n \n"
-                    "Chaos Warriors can select a realm from Chaos and Daemon. They are "
-                    "not interested in any other form of magic. They can learn every "
-                    "spell. They have a class power - 'Confusing Light' - which stuns, "
-                    "confuses, and scares all monsters in sight.";
+        me.desc = "Chaos-Warriors are the feared servants of the terrible Demon Lords "
+                    "of Chaos. Every Chaos-Warrior has a patron demon, who may give him "
+                    "a reward on level-up; the Chaos-Warrior may be healed or polymorphed, "
+                    "have his stats increased, or be rewarded with an awesome weapon. "
+                    "On the other hand, though, he might be severely punished or simply ignored by "
+                    "the patron; the Demon Lords of Chaos are unpredictable indeed, although "
+                    "rewards are thankfully more common than punishments. The exact reward "
+                    "will not depend on anything the player does, and is up entirely to "
+                    "random chance and the patron; each patron gives out different rewards "
+                    "and punishments.\n \n"
+                    "Chaos-Warriors select one spell realm, either Chaos or Daemon; they have "
+                    "no interest in other forms of magic. They can learn every spell in "
+                    "their chosen realm. At level 40 they gain the powerful ability to emit "
+                    "confusing lights, with the potential to stun, scare and confuse every creature in sight.";
 
         me.stats[A_STR] =  2;
         me.stats[A_INT] =  1;
         me.stats[A_WIS] = -1;
         me.stats[A_DEX] =  0;
-        me.stats[A_CON] =  2;
+        me.stats[A_CON] =  1;
         me.stats[A_CHR] =  1;
         me.base_skills = bs;
         me.extra_skills = xs;
-        me.life = 111;
+        me.life = 109;
         me.base_hp = 12;
         me.exp = 125;
         me.pets = 40;
