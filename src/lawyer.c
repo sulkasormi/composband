@@ -667,7 +667,7 @@ class_t *lawyer_get_class(void)
                   " avoid dangerous fights, to acquire knowledge about the world around"
                   " him, and to make friends and influence people. As he relies on his"
                   " familiarity with Law and with tricks and approaches that have"
-                  " worked in the past, the lawyer uses WIS as his spellcasting stat.";
+                  " worked in the past, the lawyer uses Wisdom as his spellcasting stat.";
 
         me.stats[A_STR] = -3;
         me.stats[A_INT] =  2;
