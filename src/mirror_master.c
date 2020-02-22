@@ -145,10 +145,10 @@ static void _drip_of_light_spell(int cmd, variant *res)
         var_set_string(res, "Drip of Light");
         break;
     case SPELL_DESC:
-        if (beam)
-            var_set_string(res, "Fires a beam of light");
+        if (p_ptr->lev >= 10)
+            var_set_string(res, "Fires a beam of light or a bolt of light, depending on whether you are standing on a mirror.");
         else
-            var_set_string(res, "Fires a bolt of light");
+            var_set_string(res, "Fires a bolt of light.");
         break;
     case SPELL_INFO:
         var_set_string(res, info_damage(spell_power(dd), ds, spell_power(p_ptr->to_d_spell)));
@@ -848,22 +848,19 @@ class_t *mirror_master_get_class(void)
     skills_t xs = { 10,  11,  12,   0,   0,   0,   6,  10 };
 
         me.name = "Mirror-Master";
-        me.desc = "Mirror-Masters are spell casters; like other mages, they must live "
-                    "by their wits. They can create magical mirrors, and employ them "
-                    "in the casting of Mirror-Magic spells. Intelligence determines a "
-                    "Mirror-Master's spell casting ability.\n \n"
-                    "Mirror-Masters gain more spells and each spell becomes more "
-                    "powerful as they gain levels. They can use their spells even when "
-                    "blinded. For Mirror-Masters, the arrangement of mirrors is very "
-                    "important: Some attack spells reflect from mirrors, and some other "
-                    "spells are effective only against monsters standing on a mirror. "
-                    "A Mirror-Master standing on a mirror has greater ability and, for "
-                    "example, can perform quick teleports. The maximum number of "
-                    "magical Mirrors which can be controlled simultaneously depends on "
-                    "the level, and breaking unnecessary mirrors is important work for "
-                    "them. They have two class powers - 'Break Mirrors', which breaks "
-                    "all mirrors in current dungeon level and 'Mirror Concentration', "
-                    "which allows them to rapidly regenerate their mana on a mirror.";
+        me.desc = "Mirror-Masters are spellcasters; like mages, they must live "
+                    "by their wits. They can create magical mirrors, which they use to "
+                    "support their special Mirror-Magic spells. Intelligence determines a "
+                    "Mirror-Master's spellcasting ability.\n \n"
+                    "Mirror-Masters gain more spells with experience, and their spells also "
+                    "become more powerful over time. Much of their magic relies on the "
+                    "careful placement of mirrors, which can be used for both offense "
+                    "and defense. Mirror-Masters' abilities are also enhanced by standing on a mirror; "
+                    "for example, they can perform quick teleports from there or rapidly regenerate their mana. "
+                    "Nevertheless, not all Mirror-Magic requires a physical mirror; many effects "
+                    "rely simply on light or mirror-shards, or on uncertainty, reflection and illusion. "
+                    "The maximum number of Mirrors which can be controlled simultaneously depends "
+                    "on the player's level; sometimes, unnecessary mirrors may need to be broken.";
 
         me.stats[A_STR] = -2;
         me.stats[A_INT] =  3;
