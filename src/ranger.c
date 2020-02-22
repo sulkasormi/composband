@@ -65,20 +65,24 @@ class_t *ranger_get_class(void)
     skills_t xs = {  8,  11,  10,   0,   0,   0,  18,  16};
 
         me.name = "Ranger";
-        me.desc = "A Ranger is a combination of a warrior and a mage who has "
-                    "developed a special affinity for the natural world around him. He "
-                    "is a good fighter and also excellent with a bow. A ranger has "
-                    "good stealth, perception, searching and magical resistance. Also, "
-                    "rangers are familiar with magical devices and use them well. "
-                    "Wisdom determines a Ranger's spell casting ability.\n \n"
-                    "All rangers are trained in Nature magic, and all of these spells are "
-                    "available to them. They even learn these spells almost as fast as "
-                    "mages. They can also select a secondary realm (from Sorcery, "
-                    "Chaos, Death, Trump, Arcane, and Daemon), but they are slow "
+        me.desc = "A Ranger is a seasoned wanderer from the plains or woods, attuned "
+                    "to the natural world. Rangers have few weak points; like mages they "
+                    "are excellent with magic devices, yet they are also fairly good "
+                    "at using bows and melee weapons. Their stealth, searching and "
+                    "perception have been sharpened by their time in the wilderness, "
+                    "and their alliance with the spirits of nature even gives them a "
+                    "good saving throw.\n \n"
+                    "All rangers are trained in Nature magic, and all Nature spells are "
+                    "available to them; they even learn these spells almost as fast as "
+                    "mages. They can also select a secondary realm (Sorcery, "
+                    "Chaos, Death, Trump, Arcane, and Daemon); but they are slow "
                     "learners here, and may find themselves unable to learn some of the "
-                    "highest level spells. They have a class power - 'Probe Monster' - "
-                    "which allows them to know a monster's HP, speed, and experience "
-                    "required to evolve.";
+                    "highest level spells. Another downside is that rangers, like the "
+                    "priestly classes, lack the ability to choose their own spells; "
+                    "they will learn whatever the capricious nature gods choose to teach them.\n\n"
+                    "Rangers have a class power, 'Probe Monster', "
+                    "which allows them to assess the strengths and weaknesses of the "
+                    "monsters they meet. The magical powers of a ranger depend on Wisdom.";
 
         me.stats[A_STR] =  2;
         me.stats[A_INT] =  0;
