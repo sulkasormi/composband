@@ -55,18 +55,13 @@ class_t *warrior_mage_get_class(void)
 
         me.name = "Warrior-Mage";
         me.desc = "A Warrior-Mage is precisely what the name suggests: a cross "
-                    "between the warrior and mage classes. While their brothers, the "
-                    "rangers, specialize in Nature magic and survival skills, true "
-                    "Warrior-Mages attempt to reach the best of both worlds. As "
-                    "warriors they are much superior to the usual Mage class. "
-                    "Intelligence determines a Warrior-Mage's spell casting ability.\n \n"
-                    "Warrior-mages begin the game with Arcane magic, and they can "
-                    "freely select another realm of magic. Although they do not gain "
+                    "between a warrior and a mage. To support their good-for-mages combat "
+                    "abilities, Warrior-Mages begin the game with Arcane magic and can "
+                    "freely select another spell realm. Although they do not gain "
                     "new spells as fast as regular mages, they will eventually learn "
                     "every spell in both realms, thus making them a very competitive "
-                    "choice for players who appreciate Arcane magic. They have two "
-                    "class powers - 'Convert HP to SP' and 'Convert SP to HP' - which "
-                    "allow them to heal HP using mana or gain mana using HP.";
+                    "choice for those who appreciate Arcane spells. Their class powers "
+                    "allow them to convert either HP to mana, or mana to HP, as needed.";
 
         me.stats[A_STR] =  2;
         me.stats[A_INT] =  2;
