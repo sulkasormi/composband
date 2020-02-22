@@ -134,14 +134,11 @@ class_t *cavalry_get_class(void)
     skills_t xs = { 10,   7,  10,   0,   0,   0,  22,  26};
 
         me.name = "Cavalry";
-        me.desc = "Cavalry ride on horses into battle. Although they cannot cast "
-                    "spells, they are proud of their overwhelming offensive strength on "
-                    "horseback. They are good at shooting. At high levels, they learn "
-                    "to forcibly saddle and tame wild monsters. Since they take pride "
-                    "in the body and the soul, they don't use magical devices well.\n \n"
-                    "Like Warriors and Archers, the cavalry don't use magic. Since "
-                    "they are very good at riding, they have a class power - 'Rodeo' - "
-                    "which allows them to forcibly saddle and tame wild monsters.";
+        me.desc = "Cavalry are masters of horsemanship and enjoy riding to battle. Being good at "
+                    "both melee and archery, they take pride in their overwhelming offensive strength "
+                    "on horseback; but spellcasting is a closed book to them, and magical devices "
+                    "difficult to use. High-level Cavalry learn to forcibly saddle and "
+                    "tame wild monsters with their 'Rodeo' class power.";
 
         me.stats[A_STR] =  2;
         me.stats[A_INT] = -2;
