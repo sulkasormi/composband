@@ -154,9 +154,9 @@ class_t *tourist_get_class(void)
 
         me.name = "Tourist";
         me.desc = "Tourists have visited this world for the purpose of sightseeing. "
-                    "Their fighting skills are bad and they cannot cast powerful "
+                    "Their fighting skills are bad, and they cannot cast powerful "
                     "spells. They are the most difficult class to win the game with. "
-                    "Intelligence determines a tourist's spell casting ability.\n \n"
+                    "Intelligence determines a tourist's spellcasting ability.\n \n"
                     "Tourists are always seeing more of the world to add to their stock "
                     "of information; no other class can compete with their "
                     "identification skills. They have two class powers - 'Take a "
