@@ -296,7 +296,7 @@ Reflection is very helpful (and remains useful throughout the game) but is never
 
 <topic:Levitation><color:G>Q:</color> What does Levitation do? How important is it?
 
-<color:R>A:</color> Levitation gives access to dark pits and mountainous wilderness, prevents overburdened characters from drowning in deep water, reduces damage from standing in (or over) deep lava or toxic waste, eliminates movement speed penalties in wooded areas, and allows you to harmlessly fly over some types of floor traps. It is a necessity for entering mountainous areas (and a practical necessity for entering deep seas on an overburdened character); it is very handy, but not strictly necessary, for navigating the Cloning Pits quest as well as dungeons with dark pits or deep water. In other situations Levitation is not very important; items that give levitation but are otherwise not that great can be left at home to be shuffled in when needed.
+<color:R>A:</color> Levitation gives access to dark pits and mountainous wilderness, prevents overburdened characters from drowning in deep water, reduces damage from standing in (or over) deep lava or toxic waste, reduces damage from gravity, helps against the side-effects of gravity and storm winds, eliminates movement speed penalties in wooded areas, and allows you to harmlessly fly over some types of floor traps. It is a necessity for entering mountainous areas (and a practical necessity for entering deep seas on an overburdened character); it is very handy, but not strictly necessary, for navigating the Cloning Pits quest as well as dungeons with dark pits or deep water. In other situations it is not very important; items that give levitation but are otherwise not that great can be left at home to be shuffled in when needed.
 
 
 <color:G>Q:</color> What is Warning? Is it something I need... and what do the strange messages it's giving me mean?!
@@ -315,7 +315,7 @@ In some very unusual cases your resistance may not be checked at all, or a speci
 
 <topic:ExoticElements><color:G>Q:</color> Can I ever resist exotic attacks/elements like Water, Ice, Gravity, Rockets or Toxic Waste that aren't listed on my character sheet?
 
-<color:R>A:</color> In most cases, you cannot resist the raw damage from such exotic elements. (There are a few exceptions - Toxic Waste can be resisted through poison resistance; Rockets have shard-based damage; and Bombs are combined sound and shards and can be resisted accordingly.)
+<color:R>A:</color> In most cases, you cannot resist the raw damage from such exotic elements. (There are a few exceptions - Toxic Waste can be resisted through poison resistance; Rockets have shard-based damage; Levitation effectively provides resistance to Gravity; and Bombs are combined sound and shards and can be resisted accordingly.)
 
 However, many side-effects of exotic elements can be blocked or mitigated by resisting appropriate normal elements. For example, Shard resistance works against the cuts from Ice and Rocks, Sound resistance works against most elemental stunning effects as well as potion destruction from Water, and Cold resistance works against potion destruction from Ice.
 
