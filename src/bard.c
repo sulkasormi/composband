@@ -187,16 +187,13 @@ class_t *bard_get_class(void)
     skills_t xs = {  8,  13,  11,   0,   0,   0,  10,   8};
 
         me.name = "Bard";
-        me.desc = "Bards are something like traditional musicians. Their magical "
-                    "attacks are sound-based, and last as long as the Bard has mana. "
-                    "Although a bard cannot sing two or more songs at the same time, he "
-                    "or she does have the advantage that many songs affect all areas in "
-                    "sight. A bard's prime statistic is charisma.\n \n"
-                    "The songs are found in four songbooks, of which two are sold in "
-                    "town. There is a special feature of music; many songs continue to "
-                    "be sung until either the Bard chooses to stop, or he runs out of "
-                    "the energy required to sing that type of song. Bards have a class "
-                    "power - 'Stop Singing'.";
+        me.desc = "Bards are traditional musicians, and songs and sound are the "
+                    "foundation of their magic. Four songbooks are available to a Bard, "
+                    "two of them sold in towns. Some songs are over in a quick yelp, "
+                    "consuming no more time than a magic spell would; but most continue to be "
+                    "sung, with continuing effects, until the bard either chooses to stop or "
+                    "runs out of mental energy. A bard can only ever sing one tune at "
+                    "a time. The primary spell stat of a bard is Charisma.";
 
         me.stats[A_STR] = -2;
         me.stats[A_INT] =  1;
