@@ -2237,16 +2237,17 @@ class_t *psion_get_class(void)
     skills_t xs = {  7,  11,  12,   0,   0,   0,  13,  11};
 
         me.name = "Psion";
-        me.desc = "The Psion is like a Mindcrafter, and uses innate mental powers. "
-                    "Unlike the Mindcrafter, however, Psions have the freedom to learn "
-                    "powers that enforce their own styles. They learn very few powers, "
-                    "but they can scale their powers to determine the SP cost and the "
-                    "powers' potency. Psionic powers require great concentration, however, "
-                    "and psions do not have the mind to spare to care for others. "
-                    "The Psion gains powers at the following levels: 1, 10, 15, 20, 30, 35, 40 and 50. "
-                    "The Psion uses Intelligence, Wisdom or Charisma as their primary "
-                    "spell stat, which ever is currently highest. In this respect, Psions "
-                    "are truly unique!";
+        me.desc = "Psions, like Mindcrafters, rely on their innate mental powers; indeed, some of these "
+                    "powers resemble those of Mindcrafters. Unlike Mindcrafters, though, Psions can "
+                    "select which powers they wish to learn; together with their natural aptitude "
+                    "in a fairly broad range of skills, this makes Psions one of the most versatile "
+                    "classes. Most psionic powers are extremely strong, but the number of powers a "
+                    "Psion can learn is very limited: one each at levels 1, 10, 15, 20, 30, 35, 40 and 50.\n\n"
+                    "The potency of psionic powers can be scaled up or down as needed, within limits; "
+                    "the more mana is spent, the more powerful the effect. All psionic powers require "
+                    "great concentration, leaving the Psion little time for pets. "
+                    "Psions do not have one fixed spell stat; they can use either Intelligence, Wisdom "
+                    "or Charisma, whichever is the highest. In this respect they are truly unique!";
 
         me.stats[A_STR] = -1;
         me.stats[A_INT] =  2;
