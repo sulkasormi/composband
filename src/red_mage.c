@@ -79,22 +79,15 @@ class_t *red_mage_get_class(void)
     skills_t xs = {  7,  11,  11,   0,   0,   0,  18,  11};
 
         me.name = "Red-Mage";
-        me.desc = "Red Mages are similar to Warrior-Mage; they are decent fighters "
-                    "and spellcasters. Red-Mages can use almost all spells from lower "
-                    "rank spellbooks of all realms, but they cannot cast spells from "
-                    "higher rank spellbooks, and they are extremely slow learners in "
-                    "them. They are not bad at using magical devices and magic "
-                    "resistance, but are bad at other skills. A red-mage's prime "
-                    "statistic is intelligence.\n \n"
-                    "Red-Mages can use almost all spells from lower rank spellbooks of "
-                    "all realms: first and second spellbooks of all realms and third "
-                    "and fourth Arcane spellbooks, without having to learn it, but they "
-                    "cannot cast spells from higher rank spellbooks; third and fourth "
-                    "spellbooks for all realms other than Arcane. Since they use all "
-                    "realms at once, they have large penalties in the mana costs, "
-                    "minimum levels, and failure rates of spells. They have a class "
-                    "power - 'Double Magic' - which allows them to cast two spells at "
-                    "once.";
+        me.desc = "Red-Mages make better fighters than most mages, and are also "
+                    "versatile spellcasters who can use many realms without needing "
+                    "to specialize in only one or two. The downside of this wide scope is "
+                    "that Red-Mages' magic is fairly shallow; they have high fail rates, "
+                    "minimum levels and mana costs, and are limited to the first two "
+                    "spellbooks in each realm except for Arcane.\n\n"
+                    "Red-Mages have a class power, 'Double Magic', which allows them to "
+                    "cast two spells at once. As with regular mages, their spellcasting stat "
+                    "is Intelligence.";
 
         me.stats[A_STR] =  2;
         me.stats[A_INT] =  2;
