@@ -52,7 +52,7 @@ ANGFILES = \
     r_hound.o r_hydra.o r_jelly.o r_leprec.o r_lich.o r_mimic.o \
 	r_orc.o r_poss.o r_pump.o r_quyl.o r_rag.o r_spider.o \
     r_ring.o r_sword.o r_troll.o r_vamp.o r_vortex.o \
-    r_xorn.o racial.o rage-mage.o randname.o ranger.o rect.o red_mage.o \
+    r_xorn.o racial.o ragemage.o randname.o ranger.o rect.o red_mage.o \
     resist.o rogue.o rooms.o rune_knight.o samurai.o save.o savefile.o scores.o scout.o shop.o skillmaster.o \
     skills.o sniper.o sorcerer.o spells.o spells1.o spells2.o spells3.o spells_a.o \
     spells_c.o spells_h.o spells_m.o spells_s.o spoilers.o str-map.o streams.o \
