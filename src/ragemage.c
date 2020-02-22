@@ -1245,22 +1245,22 @@ class_t *rage_mage_get_class(void)
     skills_t xs = {  7,   8,  15,   0,   0,   0,  15,  15 };
 
         me.name = "Rage-Mage";
-        me.desc = "The Rage Mage is part of a secret sect descending from the Barbarians "
-                    "in response to their natural foes, the mages. As time passed, other "
-                    "races have also begun to learn their arts. The powers of the Rage Mage "
-                    "are spells learned from books, but they don't work the way normal spells do. "
-                    "First of all, the Rage Mage must perform a special Ritual of Anger to "
-                    "learn a spell, and this ritual destroys the spell book in the process. As a "
-                    "result, it may take a long time for the Rage Mage to learn all of their "
-                    "high level powers. Once learned, the Rage Mage no longers requires the spell "
-                    "book in order to perform the power.\n \n"
-                    "Another unique aspect of the Rage Mage concerns their Mana pool. Unlike "
-                    "normal spellcasters, the Rage Mage's mana does not regenerate on its own. "
-                    "In fact, their mana actually decreases rapidly each turn, meaning that they "
-                    "had better use their powers quickly while they still can. The Rage Mage gains "
-                    "mana whenever he is the target of a magical spell. Indeed, magic makes the "
-                    "Rage Mage very angry! The Rage Mage can also fuel their mana by hurting "
-                    "those around them. This can be quite effective in crowded situations.";
+        me.desc = "Rage-Mages are part of a secret sect, originally founded by Barbarians in "
+                    "response to their natural foes, the mages. With the passing of time, other "
+                    "races have also begun to study these arts.\n\n"
+                    "Rage techniques are learned from books, but differ from normal spells in many ways. "
+                    "First of all, the Rage-Mage must perform a special Ritual of Anger to "
+                    "learn a power, and this ritual destroys the book; as a result, it may take "
+                    "a long time for the Rage-Mage to learn all of their high-level powers. "
+                    "Books are required only for learning; the powers, once learned, can be "
+                    "used without them.\n\n"
+                    "Another unique aspect of Rage-Mages concerns their mana pool. Rage-Mage "
+                    "mana, unlike that of normal spellcasters, does not regenerate on its own; "
+                    "in fact, it actually decreases rapidly each turn, meaning Rage-Mages had "
+                    "better use their powers quickly while they still can. A Rage-Mage gains "
+                    "mana whenever he is the target of a magical spell; indeed, magic makes a "
+                    "Rage-Mage very angry! Rage-Mages can also fuel their mana by hurting "
+                    "those around them, which can be quite effective in crowded situations.";
         me.stats[A_STR] =  3;
         me.stats[A_INT] = -2;
         me.stats[A_WIS] = -2;
