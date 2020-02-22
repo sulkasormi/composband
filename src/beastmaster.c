@@ -56,19 +56,11 @@ class_t *beastmaster_get_class(void)
     skills_t xs = {  7,  10,  10,   0,   0,   0,  14,  25};
 
         me.name = "Beastmaster";
-        me.desc = "Beastmasters are in tune with the minds of the creatures of the "
-                    "world. They are very good at riding, and have enough "
-                    "fighting ability. They use monsters which have been summoned or dominated "
-                    "as their hands and feet. Beastmasters can cast trump magic, "
-                    "and are very good at summoning spells, but they can not summon "
-                    "non-living creatures. Charisma determines a Beastmaster's spell "
-                    "casting ability.\n \n"
-                    "Beastmasters use Trump magic to make good use of their monster "
-                    "domination and riding abilities. They are very good at summoning "
-                    "living creatures, and they learn summoning spells quicker than "
-                    "Mages. However, they cannot summon non-living creatures. They "
-                    "have two class powers - 'Dominate a Living Thing' and 'Dominate "
-                    "Living Things'.";
+        me.desc = "Beastmasters see the fierce creatures of the world as opportunities rather than threats, and their "
+                    "riding skills are almost unparalleled. Between their class powers and access to Trump magic, "
+                    "they have many ways to summon or charm living creatures to serve as "
+                    "their hands and feet. Beastmasters are some of the best shooters outside archery specialists, and their "
+                    "melee skills are good enough to get by on. Charisma determines the spellcasting prowess of a Beastmaster.";
 
         me.stats[A_STR] =  1;
         me.stats[A_INT] = -1;
