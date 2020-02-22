@@ -640,16 +640,16 @@ class_t *wild_talent_get_class(void)
     skills_t xs = {  8,  11,  10,   0,   0,   0,  18,  18 };
 
         me.name = "Wild-Talent";
-        me.desc = "The Wild-Talent gains random talents and abilities as they "
+        me.desc = "Wild-Talents gain random talents and abilities as they "
                   "level up. They are good fighters, and decent with magical devices, "
                   "but their true forte is their vast array of potential random "
                   "powers. Except you never know what those might be!\n \n"
                   "Wild-Talents do not have a spell stat. Instead, each ability that "
-                  "they gain requires its own individual stat for purposes of fail "
-                  "rate calculation. For example, Tossing a Boulder requires Strength "
+                  "they gain requires its own individual stat for the purposes of fail rate "
+                  "calculation; for example, Tossing a Boulder requires Strength, "
                   "while Magic Missile requires Intelligence. Each spell requires mana "
                   "to cast, but the amount of mana available is not influenced by any "
-                  "particular stat and is simply determined by experience.";
+                  "particular stat and is determined simply by experience.";
         
         me.stats[A_STR] = -1;
         me.stats[A_INT] =  1;
