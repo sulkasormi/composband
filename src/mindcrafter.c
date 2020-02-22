@@ -684,18 +684,18 @@ class_t *mindcrafter_get_class(void)
     skills_t xs = { 10,  11,  10,   0,   0,   0,  12,  17 };
 
         me.name = "Mindcrafter";
-        me.desc = "The Mindcrafter is a unique class that uses the powers of the mind "
-                    "instead of magic. These powers are unique to Mindcrafters, and "
-                    "vary from simple extrasensory powers to mental domination of "
-                    "others. Since these powers are developed by the practice of "
-                    "certain disciplines, a Mindcrafter requires no spellbooks to use "
-                    "them. The available powers are simply determined by the "
-                    "character's level. Wisdom determines a Mindcrafter's ability to "
+        me.desc = "Mindcrafters rely not on book magic, but on the powers of the mind. "
+                    "These mind powers are specific to this class, and range "
+                    "from extrasensory perception to psychic attacks and the mental domination "
+                    "of others. Most mind powers become accessible fairly early, but gain in "
+                    "strength with more experience. Wisdom determines a Mindcrafter's ability to "
                     "use mind powers.\n \n"
-                    "Mindcrafters gain new mindcrafting powers and their existing ones "
-                    "become stronger as they gain levels. They can use their power "
-                    "even when blinded. They have a class power - 'Clear Mind' - which "
-                    "allows them to rapidly regenerate their mana.";
+                    "Mindcrafters' combat skills are reasonably good but far from outstanding; "
+                    "a combination of physical and mental attacks often works better "
+                    "for them than either one alone. A seasoned mindcrafter is very hard to "
+                    "confuse, and can effortlessly detect the minds of others. Mindcrafters "
+                    "have a class power, 'Clear Mind', which allows them to rapidly regenerate "
+                    "mana."; 
         me.stats[A_STR] = -1;
         me.stats[A_INT] =  0;
         me.stats[A_WIS] =  3;
