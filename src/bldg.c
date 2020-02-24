@@ -4012,6 +4012,7 @@ static void bldg_process_command(building_type *bldg, int i)
             if (quests_get(QUEST_OBERON)->status != QS_FINISHED) max_depth = 98;
             else if(quests_get(QUEST_SERPENT)->status != QS_FINISHED) max_depth = 99;
         }
+        else if ((select_dungeon == DUNGEON_HEAVEN) && (quests_get(QUEST_METATRON)->status != QS_FINISHED)) max_depth = 585;
 
         amt = get_quantity(format("Teleport to which level of %s? ", d_name + d_info[select_dungeon].name), max_depth);
         if (amt > 0)
