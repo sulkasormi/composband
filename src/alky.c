@@ -1183,8 +1183,8 @@ class_t *alchemist_get_class(void)
 	if (!init)
 	{           
 		/* dis, dev, sav, stl, srh, fos, thn, thb */
-		skills_t bs = { 30, 30, 34, 6, 50, 24, 52, 52 };
-		skills_t xs = { 15, 9, 10, 0, 0, 0, 17, 17 };
+		skills_t bs = { 30, 30, 34, 3, 50, 24, 52, 52 };
+		skills_t xs = { 15,  9, 10, 0,  0,  0, 17, 17 };
 
 		me.name = "Alchemist";
 		me.desc = "Alchemists are masters of tinctures, concoctions and "
