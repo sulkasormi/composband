@@ -165,10 +165,10 @@ static personality_ptr _get_combat_personality(void)
     if (!init)
     {
         me.name = "Combat";
-        me.desc = "The Combat personality favors melee and shooting at the expense "
-                    "of other skills such as disarming, devices, and saving throws. "
-                    "Strength and agility are enhanced, but intelligence and wisdom "
-                    "are decreased.";
+        me.desc = "Combative adventurers favor melee and shooting at the expense "
+                    "of other skills such as disarming, device-skill, or saving throw; "
+                    "yet this personality has more subtlety to it than the raw, untempered "
+                    "muscle of Mighty.";
 
         me.stats[A_STR] =  1;
         me.stats[A_INT] = -1;
@@ -265,9 +265,8 @@ static personality_ptr _get_fearless_personality(void)
     if (!init)
     {
         me.name = "Fearless";
-        me.desc = "Fearless raises your melee skills and force of personality. "
-                    "Stats such as magic defense and constitution are reduced. "
-                    "Also it has a direct bad influence on your hit-points.";
+        me.desc = "Being Fearless raises your melee skills and force of personality, besides helping you "
+                    "resist fear; but your constitution and hit points are negatively affected.";
 
         me.stats[A_STR] =  1;
         me.stats[A_INT] =  0;
@@ -380,7 +379,7 @@ static personality_ptr _get_hasty_personality(void)
     {
         me.name = "Hasty";
         me.desc = "A Hasty person endeavors to do all things quickly. Speed, "
-                    "rather than skill and patience, are paramount, and the Hasty "
+                    "rather than skill or care, is paramount, and the Hasty "
                     "adventurer moves quickly through the dungeon, bungling much.";
 
         me.stats[A_STR] =  0;
@@ -430,7 +429,8 @@ static personality_ptr _get_lazy_personality(void)
     {
         me.name = "Lazy";
         me.desc = "A Lazy person has no good stats and can do no action well. "
-                    "Also it has a direct bad influence on your spell fail rate.";
+                    "All fail rates are negatively impacted. Yet some whisper "
+                    "that the less hard you work, the greater the reward...";
 
         me.stats[A_STR] = -2;
         me.stats[A_INT] = -2;
@@ -476,7 +476,7 @@ static personality_ptr _get_lucky_personality(void)
     if (!init)
     {
         me.name = "Lucky";
-        me.desc = "A Lucky person has poor stats but, surprisingly, can do all "
+        me.desc = "A Lucky adventurer has poor stats but, surprisingly, can do all "
                     "things well. For some reason, good things seem to happen "
                     "more often to lucky players.";
 
@@ -521,10 +521,9 @@ static personality_ptr _get_mighty_personality(void)
     if (!init)
     {
         me.name = "Mighty";
-        me.desc = "Mighty raises your physical stats and skills, but reduces stats "
-                    "and skills which influence magic. It makes your stats suitable "
-                    "for a warrior. Also it directly influences your hit-points "
-                    "and spell fail rate.";
+        me.desc = "Mighty raises your physical stats, skills and stamina, but reduces "
+                    "your magical abilities and gives a slight penalty to your spell "
+                    "fail rates. It is the most warrior-like personality.";
 
         me.stats[A_STR] =  2;
         me.stats[A_INT] = -2;
@@ -644,7 +643,7 @@ static personality_ptr _get_mundane_personality(void)
         me.desc = "Mundane adventurers have few talents to speak of, and "
                     "are incapable of using spells and not very good with "
                     "magical devices; but their anti-magic allows them to "
-                    "resist the effects of many dangerous magical attacks.";
+                    "resist the effects of many dangerous curses.";
 
         me.stats[A_STR] = -1;
         me.stats[A_INT] = -1;
@@ -678,8 +677,8 @@ static personality_ptr _get_nimble_personality(void)
     if (!init)
     {
         me.name = "Nimble";
-        me.desc = "Nimble renders you highly skilled comparatively well, but "
-                    "reduces your physical ability.";
+        me.desc = "Nimbleness is good for your skills and allows you to move less noisily; but your "
+                    "raw strength is somewhat lacking, and you cannot survive quite as many hits.";
 
         me.stats[A_STR] = -1;
         me.stats[A_INT] =  1;
@@ -789,10 +788,9 @@ static personality_ptr _get_patient_personality(void)
     if (!init)
     {
         me.name = "Patient";
-        me.desc = "A Patient person does things carefully. Patient people have "
-                    "high constitution, and high resilience, but poor abilities "
-                    "in most other skills. Also it directly influences your "
-                    "life rating.";
+        me.desc = "A Patient adventurer does everything with great care, but not always "
+                    "with great expertise. Patient characters have high constitution and "
+                    "resilience but fairly mediocre skills, and get a slight penalty to spell fail rates.";
 
         me.stats[A_STR] = -1;
         me.stats[A_INT] = -1;
@@ -832,7 +830,7 @@ static personality_ptr _get_pious_personality(void)
     {
         me.name = "Pious";
         me.desc = "Pious deepens your faith in your God. It makes your physical "
-                    "ability average, and your stats suitable for priest.";
+                    "ability average, and your stats suitable for a priest.";
 
         me.stats[A_STR] =  0;
         me.stats[A_INT] = -1;
@@ -891,8 +889,8 @@ static personality_ptr _get_sexy_personality(void)
     if (!init)
     {
         me.name = "Sexy";
-        me.desc = "Sexy increases all of your stats and skills, but your haughty "
-                    "attitude will aggravate all monsters.";
+        me.desc = "Sexy adventurers have excellent stats and skills, but their haughty "
+                    "attitude aggravates all monsters.";
 
         me.stats[A_STR] = 1;
         me.stats[A_INT] = 1;
@@ -937,9 +935,10 @@ static personality_ptr _get_shrewd_personality(void)
     if (!init)
     {
         me.name = "Shrewd";
-        me.desc = "Shrewd reduces your physical stats, and raises your intelligence "
-                    "and magical skills. It makes your stats suitable for a mage. "
-                    "Also it directly influences your hit-points and spell fail rate.";
+        me.desc = "Being Shrewd does not give you an impressive physique, but good device handling "
+                    "embiggens the smallest man; this is the stereotypical Mage personality, "
+                    "yet can also help a warrior complement his weaknesses. "
+                    "Shrewdness has a direct positive influence on spell fail rates.";
 
         me.stats[A_STR] = -2;
         me.stats[A_INT] =  2;
@@ -1376,7 +1375,7 @@ static personality_ptr _get_unlucky_personality(void)
         me.desc = "An Unlucky adventurer looks impressive on paper and "
                     "should, by rights, have an easy time - but somehow "
                     "their fights don't go quite so smoothly, and the items "
-                    "they most need never seem to drop...";
+                    "they most need never seem to drop.";
 
         me.stats[A_STR] = 2;
         me.stats[A_INT] = 2;
