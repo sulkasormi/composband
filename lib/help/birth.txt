@@ -78,31 +78,31 @@ Other fields in the table include:
 In addition to stats, your player also has skills (see <link:birth.txt#PrimarySkills> below). For example, your Melee skill determines your ability to hit monsters in hand to hand combat. Like stats, these skills are also affected by your birth options, and are displayed in the information table on this and the next screen; but, since your screen is only so wide, you'll need to use the <color:keypress>TAB</color> key:
 <style:screenshot>  <indent>
 Name : <color:B>Fatty Bolger</color>                    <color:o>Game Speed:</color> <color:v>Coffee-Break</color>
-Sex  : <color:B>Male</color><color:d>                 </color> Disarming  Device     Save       Stealth
-Pers : <color:B>Ordinary</color><color:d>             </color> <color:R>Poor      </color> <color:R>Poor      </color> <color:R>Poor      </color> <color:R>Poor      </color>
-Race : <color:B>Hobbit</color><color:d>               </color> <color:G>Excellent </color> <color:y>Good      </color> <color:y>Good      </color> <color:y>Good      </color>
-Class: <color:B>Rogue</color><color:d>                </color> <color:G>Excellent </color> <color:y>Good      </color> <color:o>Fair      </color> <color:y>Good      </color>
-Magic: <color:B>Burglary</color><color:d>          </color> <color:R>==</color><color:g> Superb    </color> <color:G>Excellent </color> <color:y>Good      </color> <color:g>Superb    </color>
+Sex  : <color:B>Male</color><color:d>              </color>    Disarming  Device     Save       Stealth                                                          
+Pers : <color:B>Ordinary</color><color:d>          </color>    <color:o>Fair      </color> <color:o>Fair      </color> <color:o>Fair      </color> <color:o>Fair      </color>                                                       
+Race : <color:B>Hobbit</color><color:d>            </color>    <color:g>Superb    </color> <color:y>Very Good </color> <color:y>Good      </color> <color:g>Superb    </color>                                                       
+Class: <color:B>Rogue</color><color:d>             </color>    <color:G>Excellent </color> <color:G>Excellent </color> <color:o>Fair      </color> <color:y>Very Good </color>                                                       
+Magic: <color:B>Burglary</color><color:d>          </color> <color:R>== </color><color:g>Superb    </color> <color:g>Superb    </color> <color:y>Good      </color> <color:b>Heroic    </color>                                                       
 </indent></style>
 And <color:keypress>TAB</color> again:
 <style:screenshot>  <indent>
 Name : <color:B>Fatty Bolger</color>                    <color:o>Game Speed:</color> <color:v>Coffee-Break</color>
-Sex  : <color:B>Male</color><color:d>                 </color> Searching  Perception Melee      Archery
-Pers : <color:B>Ordinary</color><color:d>             </color> <color:R>Poor      </color> <color:R>Poor      </color> <color:R>Poor      </color> <color:R>Poor      </color>
-Race : <color:B>Hobbit</color><color:d>               </color> <color:g>Superb    </color> <color:b>Heroic    </color> <color:D>Very Bad  </color> <color:y>Good      </color>
-Class: <color:B>Rogue</color><color:d>                </color> <color:o>Fair      </color> <color:o>Fair      </color> <color:y>Good      </color> <color:o>Fair      </color>
-Magic: <color:B>Burglary</color><color:d>           </color><color:R>==</color><color:y> Good      </color> <color:y>Good      </color> <color:y>Good      </color> <color:y>Good      </color>
+Sex  : <color:B>Male</color><color:d>              </color>    Searching  Perception Melee      Archery                                                          
+Pers : <color:B>Ordinary</color><color:d>          </color>    <color:o>Fair      </color> <color:o>Fair      </color> <color:o>Fair      </color> <color:o>Fair      </color>                                                       
+Race : <color:B>Hobbit</color><color:d>            </color>    <color:b>Heroic    </color> <color:g>Superb    </color> <color:r>Bad       </color> <color:y>Very Good </color>                                                       
+Class: <color:B>Rogue</color><color:d>             </color>    <color:o>Fair      </color> <color:o>Fair      </color> <color:G>Excellent </color> <color:y>Very Good </color>                                                       
+Magic: <color:B>Burglary</color><color:d>          </color> <color:R>== </color><color:y>Good      </color> <color:y>Good      </color> <color:y>Very Good </color> <color:G>Excellent </color>                                                       
 </indent></style>
-Ah, we see that hobbits aren't so good at melee. However, the class choice of Rogue more than makes up for this, and we can tell from the summary line that this character's melee skill will be fairly good. It is a general rule that class influences skills more than race and personality do, especially later in the game (as you gain levels, you also gain skill bonuses, but only through your class). The main exception to this rule is Stealth, where the bonuses tend to be zero.
+Ah, we see that hobbits aren't so good at melee. However, the class choice of Rogue more than makes up for this, and we can tell from the summary line that this character's melee skill will be pretty good. It is a general rule that class influences skills more than race and personality do, especially later in the game (as you gain levels, you also gain skill bonuses, but mostly through your class). The main exception to this rule is Stealth, where the bonuses tend to be zero.
 
 Below the player fields and the information table is a list of commands that you may choose. These commands might bring up a menu of choices for you to select from, as, for example, the Change Race command:
 <style:screenshot>  <indent>
 Name : <color:B>Fatty Bolger</color>                    <color:o>Game Speed:</color> <color:v>Coffee-Break</color>
-Sex  : <color:B>Male</color><color:d>                 </color> Searching  Perception Melee      Archery
-Pers : <color:B>Ordinary</color><color:d>             </color> <color:R>Poor      </color> <color:R>Poor      </color> <color:R>Poor      </color> <color:R>Poor      </color>
-Race : <color:B>Hobbit</color><color:d>               </color> <color:g>Superb    </color> <color:b>Heroic    </color> <color:D>Very Bad  </color> <color:y>Good      </color>
-Class: <color:B>Rogue</color><color:d>                </color> <color:o>Fair      </color> <color:o>Fair      </color> <color:y>Good      </color> <color:o>Fair      </color>
-Magic: <color:B>Burglary</color><color:d>           </color><color:R>==</color><color:y> Good      </color> <color:y>Good      </color> <color:y>Good      </color> <color:y>Good      </color>
+Sex  : <color:B>Male</color><color:d>              </color>    Searching  Perception Melee      Archery                                                          
+Pers : <color:B>Ordinary</color><color:d>          </color>    <color:o>Fair      </color> <color:o>Fair      </color> <color:o>Fair      </color> <color:o>Fair      </color>                                                       
+Race : <color:B>Hobbit</color><color:d>            </color>    <color:b>Heroic    </color> <color:g>Superb    </color> <color:r>Bad       </color> <color:y>Very Good </color>                                                       
+Class: <color:B>Rogue</color><color:d>             </color>    <color:o>Fair      </color> <color:o>Fair      </color> <color:G>Excellent </color> <color:y>Very Good </color>                                                       
+Magic: <color:B>Burglary</color><color:d>          </color> <color:R>== </color><color:y>Good      </color> <color:y>Good      </color> <color:y>Very Good </color> <color:G>Excellent </color>                                                       
 <color:d>                           </color>                                                     
 <color:G>Choose a Type of Race to Play</color>                                                   
   <color:y>a</color>) Human                                                                      
@@ -119,11 +119,11 @@ Magic: <color:B>Burglary</color><color:d>           </color><color:R>==</color><
 Aternatively, the command might take effect immediately, as with the Change Sex command. Or, if you use the Change Name command, you can edit your character's name directly in place:
 <style:screenshot>  <indent>
 Name : <color:y>Skinny Dipper</color>                   <color:o>Game Speed:</color> <color:v>Coffee-Break</color>
-Sex  : <color:B>Male</color><color:d>                 </color> Searching  Perception Melee      Archery
-Pers : <color:B>Ordinary</color><color:d>             </color> <color:R>Poor      </color> <color:R>Poor      </color> <color:R>Poor      </color> <color:R>Poor      </color>
-Race : <color:B>Hobbit</color><color:d>               </color> <color:g>Superb    </color> <color:b>Heroic    </color> <color:D>Very Bad  </color> <color:y>Good      </color>
-Class: <color:B>Rogue</color><color:d>                </color> <color:o>Fair      </color> <color:o>Fair      </color> <color:y>Good      </color> <color:o>Fair      </color>
-Magic: <color:B>Burglary</color><color:d>           </color><color:R>==</color><color:y> Good      </color> <color:y>Good      </color> <color:y>Good      </color> <color:y>Good      </color>
+Sex  : <color:B>Male</color><color:d>              </color>    Searching  Perception Melee      Archery                                                          
+Pers : <color:B>Ordinary</color><color:d>          </color>    <color:o>Fair      </color> <color:o>Fair      </color> <color:o>Fair      </color> <color:o>Fair      </color>                                                       
+Race : <color:B>Hobbit</color><color:d>            </color>    <color:b>Heroic    </color> <color:g>Superb    </color> <color:r>Bad       </color> <color:y>Very Good </color>                                                       
+Class: <color:B>Rogue</color><color:d>             </color>    <color:o>Fair      </color> <color:o>Fair      </color> <color:G>Excellent </color> <color:y>Very Good </color>                                                       
+Magic: <color:B>Burglary</color><color:d>          </color> <color:R>== </color><color:y>Good      </color> <color:y>Good      </color> <color:y>Very Good </color> <color:G>Excellent </color>                                                       
 <color:d>                           </color>                                                     
   <color:y>n</color>) Change Name<color:d>              </color> <color:y>  *</color>) Random Name                                 
   <color:y>s</color>) Change Sex<color:d>               </color> <color:y>  ?</color>) Help                                        
