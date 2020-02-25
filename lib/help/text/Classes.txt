@@ -1,36 +1,28 @@
 The Classes
 
 No decision is so important as which class to play. Below, the many 
-available classes are loosely grouped by their principle playstyle: 
-Melee, Archery, Martial Arts, Magic, Devices, etc. The hybrid classes 
-generally combine melee with a bit of magic and are a good option for a 
-balanced playstyle. In this document, the primary spell stat for each 
-class is highlighted.
+available classes are loosely grouped by their principal strength or 
+playstyle: Melee, Archery, Martial Arts, Magic, Devices, Hybrid, etc. 
+The primary spell stat for each class is highlighted.
 
-For details on the Primary Statistics, see [a]. For information about 
-the various Skills, see [b]. The skill descriptions in this document 
-are for comparison purposes only. For example, your fledgling berserker 
-will not be born with Legendary[32] melee skill. In general, skills are 
-influenced by level, race, class, stats and equipment. To compare the 
-various classes at a glance, you might want to take a look at [c] the 
-class tables below.
+For details on the Stats, see [a]. For information about the Skills, 
+see [b]. The skill descriptions in this document are for comparison 
+purposes only; for example, your fledgling berserker will not really be 
+born with Amber[25] melee skill. In general, skills are influenced by 
+level, race, class, stats and equipment. See the tables at the bottom 
+of this file ([c]) to compare the various classes' stat and skill 
+boosts at a glance.
 
 Melee
   Berserker
   A Berserker is a fearful fighter indeed, immune to fear and 
   paralysis. At high levels, Berserkers can reflect bolt spells with 
-  their tough flesh. Furthermore, they can fight without weapons, can 
-  remove cursed equipment by force, and can even use their special 
-  combat techniques when surrounded by an anti-magic barrier. 
-  Berserkers, however, cannot use any magical devices or read any 
-  scrolls, and are hopeless at all non-combat skills. Since Berserker 
-  Spectres are quite easy to *win* with, their scores are lowered.
-   
-  Berserkers use a unique system of techniques called 'Rage'. They gain 
-  more techniques as they gain levels. They use no magic: indeed, they 
-  cannot use any magic devices or activate any artifacts, and cannot 
-  read scrolls. To offset these great disadvantages, Berserkers are 
-  allowed to have an important class power - 'Recall'.
+  their tough flesh. Furthermore, they can remove cursed equipment by 
+  force, and their special combat techniques are not affected by 
+  anti-magic barriers. Berserkers cannot, however, use any magical 
+  devices or read any scrolls, and are hopeless at all non-combat 
+  skills. To offset these great disadvantages, they gain an important 
+  class power - 'Recall' - very early.
   
     Stats                   Skills
     Strength      +8        Disarming   Very Bad     
@@ -39,163 +31,164 @@ Melee
     Dexterity     +4        Stealth     Very Bad     
     Constitution  +4        Searching   Very Bad     
     Charisma      +4        Perception  Very Bad     
-    Life Rating  200%       Melee       Amber[20]    
-    Base HP       22        Bows        Very Bad     
+    Life Rating  200%       Melee       Amber[25]    
+    Base HP       22        Archery     Very Bad     
     Experience   160%
     
   Blood-Knight
-  A Blood-Knight is a fighter who has delved into the dark arts and can 
-  perform a limited number of offensive effects using his own health. 
-  In addition to the HP cost, using an ability also causes 
-  bleeding/wounds, with an amount proportional to the cost of the 
-  ability. Their primary stat for abilities is Con.
+  Blood-Knights are fighters who have delved into the dark arts and can 
+  perform some special offensive effects using their own health. In 
+  addition to the HP cost, using such an ability causes bleeding, with 
+  an amount proportional to the cost of the ability. These special 
+  abilities rely on Constitution.
    
-  Blood-Knights are strong in melee, but are very unusual in the fact 
-  that the more wounded they are, the stronger they become. When 
-  damaged, they gain additional melee attacks and damage, and moreso 
-  the more wounded and cut they become. Indeed, when on the brink of 
-  death they are the strongest fighters imaginable, and stories of 
-  their legendary feats abound. Of course, with great power comes great 
-  risk of death, and you don't recall ever meeting one of these heroes 
-  of legend in person!
+  Blood-Knights are very unusual in that cuts and low health make them 
+  more powerful; at full health their melee is nothing special, but the 
+  more damaged and wounded they are, the faster and deadlier their 
+  attacks become. On the brink of death they are the strongest fighters 
+  imaginable, and stories of their legendary feats abound; but with 
+  great power comes great risk of death, and you don't recall ever 
+  meeting one of these heroes of legend in person!
    
-  Since the Blood-Knight relies on their own blood for their power, 
-  they are restricted to only certain races. No non-living race may 
-  walk the red path.
+  Blood-Knights, like Blood-Mages, receive reduced benefits from 
+  healing magic. Since a Blood-Knight relies on their own blood for 
+  their power, this class is restricted to certain races; no non-living 
+  race may walk the red path.
   
     Stats                   Skills
     Strength      +2        Disarming   Good         
     Intelligence  -2        Device      Bad          
     Wisdom        -2        Save        Fair         
-    Dexterity     +0        Stealth     Fair         
+    Dexterity     +0        Stealth     Poor         
     Constitution  +3        Searching   Poor         
     Charisma      +2        Perception  Bad          
     Life Rating  120%       Melee       Superb       
-    Base HP       20        Bows        Poor         
+    Base HP       20        Archery     Fair         
     Experience   150%
     
   Duelist
   The duelist is the ultimate one-on-one fighter, but finds himself at 
-  a severe disadvantage when facing numerous strong foes. When facing 
-  an enemy, the duelist first issues a challenge, marking that foe for 
-  a one on one duel. Of course, this wakes the monster up (There is no 
-  honor in dueling a sleeping enemy). And while the duelist will honor 
-  the fight as a one on one affair, many monsters have no such 
-  scruples.
+  a severe disadvantage when facing numerous strong foes at once. To 
+  start a duel, the duelist first issues a challenge to his intended 
+  foe; of course, this will wake the monster up, as there is no honor 
+  in dueling a sleeping enemy! And while the duelist will honor the 
+  fight as a one-on-one affair, many monsters have no such scruples.
    
-  Against a challenged foe, the duelist is very strong gaining a bonus 
-  to saving throws, armor class, damage reduction and combat prowess. 
-  On the other hand, due to the single-mindedness of their focus, the 
-  duelist is quite vulnerable to unchallenged opponents. Most of the 
-  techniques of this class aim at enforcing the sanctity of the duel.
+  Against a challenged foe the duelist is extremely strong, gaining 
+  bonuses to saving throws, armor class, damage reduction and combat 
+  prowess. On the other hand, due to the single-mindedness of their 
+  focus, the duelist is quite vulnerable to unchallenged opponents. 
+  Most of the special techniques of this class aim at enforcing the 
+  sanctity of the duel.
    
   The duelist only ever gains a single attack in combat, but they make 
   the most of this blow by gaining enhanced effects as they gain 
   experience. Able to wound, stun, and even hamstring their foes, the 
-  prowess of the duelist in a one on one encounter is legendary!
+  prowess of the duelist in a one-on-one encounter is legendary!
    
-  Duelists favor light armors and cannot equip a shield. They gain no 
-  extra bonus when wielding a weapon with both hands. For their 
-  techniques the duelist relies on dexterity.
+  Duelists favor light armors and weapons, and cannot equip a shield. 
+  They gain no extra bonus for wielding a weapon with both hands. For 
+  their techniques, the duelist relies on Dexterity.
   
     Stats                   Skills
-    Strength      +2        Disarming   Good         
+    Strength      +2        Disarming   Fair         
     Intelligence  +1        Device      Fair         
     Wisdom        -2        Save        Bad          
-    Dexterity     +2        Stealth     Good         
-    Constitution  -3        Searching   Fair         
+    Dexterity     +2        Stealth     Fair         
+    Constitution  -3        Searching   Poor         
     Charisma      +2        Perception  Poor         
     Life Rating  100%       Melee       Fair         
-    Base HP        4        Bows        Very Bad     
+    Base HP        4        Archery     Very Bad     
     Experience   150%
     
   Mauler
   The Mauler favors extremely heavy weapons, and possesses powerful 
   abilities whose effectiveness depends on the weight of the weapon. 
   While they only gain a limited number of blows which can never be 
-  magically increased, they are capable of hitting opponents very hard 
-  to make the most of each strike. The Mauler is required to use both 
-  hands on a single weapon when wielding if they wish their talents to 
-  function properly.
+  magically increased, they are capable of hitting opponents 
+  exceptionally hard to make the most of each strike. Maulers must 
+  wield a single weapon with two hands for their talents to function 
+  properly.
   
     Stats                   Skills
     Strength      +5        Disarming   Good         
     Intelligence  -2        Device      Fair         
-    Wisdom        -2        Save        Very Good    
-    Dexterity     -1        Stealth     Poor         
+    Wisdom        -2        Save        Good         
+    Dexterity     -1        Stealth     Bad          
     Constitution  +3        Searching   Poor         
     Charisma      +2        Perception  Bad          
-    Life Rating  110%       Melee       Superb       
-    Base HP       18        Bows        Very Bad     
+    Life Rating  110%       Melee       Heroic       
+    Base HP       18        Archery     Very Bad     
     Experience   120%
     
   Rune-Knight
-  The Rune Knight is a mythical warrior who is dedicated to the 
-  discovery of ancient runes that hold immense power. They may fix 
-  mystical runes of various types to their equipment in order to gain 
-  permanent bonuses, even on artifacts! Alternatively, they may conjure 
-  a temporary rune which, when placed on their weapon, allows them to 
-  attack with enhanced effects. They may also place temporary runes 
-  directly on their person for one time or temporary bonuses. Finally, 
-  they may even alter their surroundings with various runes of change.
+  The Rune-Knight is a mythical warrior, dedicated to the discovery of 
+  ancient runes that hold immense power. They may fix mystical runes of 
+  various types to their equipment in order to gain permanent bonuses; 
+  even artifacts can be improved this way! Alternatively, they may 
+  conjure a temporary rune which allows them to attack with enhanced 
+  effects, or place one directly on their person for a one-time or 
+  temporary bonus. Finally, they may alter their surroundings with 
+  various runes of change.
    
-  All runes (except {Absorption}) require mana for creation. However, 
-  unlike ordinary spell casters, the Rune Knight does not regenerate 
-  mana on their own. Rather, they must siphon mana from magical or 
-  elemental attacks directed against them, and doing so requires a 
-  special rune of {Absorption}. This rune should be worn at all times 
-  (or at least kept handy).
+  All runes (except {Absorption}) require mana for creation; however, 
+  unlike ordinary spellcasters, Rune-Knights do not regenerate mana on 
+  their own. Rather, they must siphon mana from magical or elemental 
+  attacks directed against them, and doing so requires the special rune 
+  of {Absorption}. This rune should be worn at all times, or at least 
+  kept handy.
    
-  The Rune Knight does not play like an ordinary spell caster. Rather, 
-  think of them as a cross between a a warrior and a weaponsmith that 
-  can, on occasion, cast a useful spell. If you have mana available, 
-  then consider using spells. Otherwise, play as a warrior and wait to 
-  absorb mana. This can take time, depending on the foes you face, but 
-  the Rune Knight's honor should prevent them from seeking out weak, 
-  defensless spell casters.
+  Despite having mana, the Rune-Knight does not play like an ordinary 
+  spellcaster; they are more like a weaponsmith but can, on occasion, 
+  cast useful spells. If you have mana available, consider using these 
+  spells; otherwise, play as a warrior and wait to absorb mana. This 
+  can take time, depending on the foes you face, but the Rune-Knight's 
+  honor should prevent them from seeking out weak, defenseless 
+  spellcasters; being one of the strongest classes, Rune-Knights have 
+  no need to resort to exploits...
   
   See [d] for more details on rune knights.
   
     Stats                   Skills
     Strength      +2        Disarming   Fair         
-    Intelligence  +1        Device      Good         
+    Intelligence  +1        Device      Fair         
     Wisdom        -1        Save        Fair         
-    Dexterity     +1        Stealth     Fair         
-    Constitution  +0        Searching   Fair         
+    Dexterity     +1        Stealth     Poor         
+    Constitution  +0        Searching   Poor         
     Charisma      +1        Perception  Poor         
-    Life Rating  102%       Melee       Fair         
-    Base HP        6        Bows        Poor         
+    Life Rating  101%       Melee       Fair         
+    Base HP        7        Archery     Poor         
     Experience   150%
     
   Samurai
-  Samurai, masters of the art of the blade, are the next strongest 
-  fighters after Warriors, and can use various special combat 
-  techniques. Samurai are not good at most other skills, and many 
-  magical devices may be too difficult for them to use. Wisdom 
-  determines a Samurai's ability to use the special combat techniques 
-  available to him.
+  Samurai, masters of the art of the blade, are among the strongest 
+  fighters and can use various special combat techniques. Samurai are 
+  not good at most non-combat skills, and many magical devices in 
+  particular may be too difficult for them to use. Wisdom determines a 
+  Samurai's ability to use the special combat techniques available.
    
   Samurai use the art of the blade called Kendo (or Bugei). Books of 
-  Kendo are similar to spellbooks, but Samurai don't need to carry them 
-  around; the books are needed only when they study new combat 
-  techniques. Samurai need a weapon wielded to use the techniques of 
-  Kendo, and most techniques will add powerful special properties to 
-  their blows; such as flaming, poisoning, vampiric, etc... Their 
-  maximum spellpoints don't depend on their level but solely on wisdom, 
-  and they can use the class power 'Concentration' to temporarily 
-  increase SP beyond its usual maximum value. They have one more class 
-  power - 'Assume a Posture'. They can choose different forms of 
-  posture in different situations.
+  Kendo are similar to spellbooks, but do not need to be carried 
+  around; they are only required for studying new combat techniques. 
+  Samurai need to wield a weapon to use Kendo, and many of their 
+  techniques will add special properties to their blows; these are 
+  often slays or brands such as flaming or poisoning, but can be much 
+  more powerful than a normal brand. The mana pool of a Samurai does 
+  not depend on their level but solely on wisdom; and they can use the 
+  class power 'Concentration' to temporarily increase their mana beyond 
+  its usual maximum value. The other Samurai class power, 'Assume a 
+  Posture', allows them to choose different postures depending on the 
+  needs of a situation.
   
     Stats                   Skills
-    Strength      +3        Disarming   Good         
+    Strength      +2        Disarming   Good         
     Intelligence  -2        Device      Bad          
     Wisdom        +1        Save        Fair         
-    Dexterity     +2        Stealth     Fair         
+    Dexterity     +2        Stealth     Poor         
     Constitution  +1        Searching   Poor         
     Charisma      +1        Perception  Bad          
-    Life Rating  109%       Melee       Superb       
-    Base HP       12        Bows        Good         
+    Life Rating  107%       Melee       Superb       
+    Base HP       12        Archery     Very Good    
     Experience   130%
     
   Warrior
@@ -212,31 +205,32 @@ Melee
     Stats                   Skills
     Strength      +4        Disarming   Good         
     Intelligence  -2        Device      Bad          
-    Wisdom        -2        Save        Fair         
-    Dexterity     +2        Stealth     Fair         
+    Wisdom        -2        Save        Poor         
+    Dexterity     +2        Stealth     Poor         
     Constitution  +2        Searching   Poor         
     Charisma      +1        Perception  Bad          
-    Life Rating  115%       Melee       Superb       
-    Base HP       18        Bows        Superb       
+    Life Rating  115%       Melee       Heroic       
+    Base HP       18        Archery     Heroic       
     Experience   100%
     
   Weaponmaster
-  The weaponmaster is great with a single class of weapons. The 
-  character gets combat bonuses and special powers depending on the 
-  type of specialization. Alas, the weaponmaster is truly lousy when 
-  using any weapon outside their chosen specialty so focus is key.
+  A Weaponmaster is exceptionally good with a single class of weapons, 
+  obtaining special combat bonuses and powers which depend on their 
+  chosen speciality. Focus is the key to success; weaponmasters are 
+  truly lousy with off-speciality weapons, but few can match the 
+  prowess they gain with something more suitable in their hands.
   
   See [e] for more details on weaponmasters.
   
     Stats                   Skills
-    Strength      +4        Disarming   Fair         
+    Strength      +3        Disarming   Poor         
     Intelligence  -3        Device      Bad          
-    Wisdom        -2        Save        Fair         
-    Dexterity     -1        Stealth     Fair         
-    Constitution  +2        Searching   Poor         
-    Charisma      +1        Perception  Bad          
-    Life Rating  107%       Melee       Superb       
-    Base HP       12        Bows        Bad          
+    Wisdom        -2        Save        Bad          
+    Dexterity     -2        Stealth     Poor         
+    Constitution  +1        Searching   Poor         
+    Charisma      +0        Perception  Bad          
+    Life Rating  105%       Melee       Heroic       
+    Base HP       12        Archery     Poor         
     Experience   135%
     
   Weaponsmith
@@ -255,14 +249,14 @@ Melee
   commands.
   
     Stats                   Skills
-    Strength      +3        Disarming   Good         
-    Intelligence  -1        Device      Fair         
+    Strength      +3        Disarming   Fair         
+    Intelligence  -1        Device      Poor         
     Wisdom        -1        Save        Bad          
-    Dexterity     +1        Stealth     Fair         
+    Dexterity     +1        Stealth     Poor         
     Constitution  +0        Searching   Poor         
     Charisma      -1        Perception  Bad          
-    Life Rating  106%       Melee       Excellent    
-    Base HP       12        Bows        Fair         
+    Life Rating  106%       Melee       Very Good    
+    Base HP       12        Archery     Good         
     Experience   130%
     
   
@@ -274,18 +268,18 @@ Archery
   dungeon. An archer is better than a warrior at stealth, perception, 
   searching and magical devices.
    
-  Archers have a class power - 'Create Ammo' - which creates stones or 
-  shots from pile of rubble, and arrows and crossbow bolts from bones.
+  Archers have a class power - 'Create Ammo' - which creates pebbles or 
+  shots from rubble, and arrows and crossbow bolts from bones.
   
     Stats                   Skills
-    Strength      +2        Disarming   Excellent    
+    Strength      +2        Disarming   Very Good    
     Intelligence  -1        Device      Fair         
     Wisdom        -1        Save        Fair         
-    Dexterity     +2        Stealth     Very Good    
+    Dexterity     +2        Stealth     Good         
     Constitution  +1        Searching   Fair         
     Charisma      +0        Perception  Poor         
-    Life Rating  111%       Melee       Very Good    
-    Base HP       12        Bows        Heroic       
+    Life Rating  111%       Melee       Good         
+    Base HP       12        Archery     Amber[12]    
     Experience   110%
     
   Sniper
@@ -305,276 +299,291 @@ Archery
     Strength      +2        Disarming   Good         
     Intelligence  -1        Device      Fair         
     Wisdom        -1        Save        Poor         
-    Dexterity     +2        Stealth     Excellent    
-    Constitution  +1        Searching   Good         
-    Charisma      +0        Perception  Fair         
+    Dexterity     +2        Stealth     Very Good    
+    Constitution  +1        Searching   Fair         
+    Charisma      +0        Perception  Poor         
     Life Rating  100%       Melee       Poor         
-    Base HP        4        Bows        Superb       
+    Base HP        4        Archery     Heroic       
     Experience   110%
     
   
 Martial Arts
   Force-Trainer
-  A ForceTrainer is a master of the spiritual Force. They prefer 
+  A Force-Trainer is a master of the spiritual Force. They prefer 
   fighting with neither weapon nor armor. They are not as good fighters 
   as are Monks, but they can use both magic and the spiritual Force. 
   Wielding weapons or wearing heavy armor disturbs use of the Force. 
-  Wisdom is a ForceTrainer's primary stat.
+  Wisdom is a Force-Trainer's primary stat.
    
-  ForceTrainers use both spellbook magic and the special spiritual 
+  Force-Trainers use both spellbook magic and the special spiritual 
   power called the Force. They can select a realm from Life, Nature, 
   Craft, Death, and Crusade. To use The Force, you select it just as if 
-  it were spellbook 'w'; which means you need to press 'm' and then 'w' 
+  it were spellbook 'F'; which means you need to press 'm' and then 'F' 
   to select the Force. The most important spell of the Force is 
-  'Improve Force'; each time a ForceTrainer activates it, their Force 
+  'Improve Force'; each time a Force-Trainer activates it, their Force 
   power becomes more powerful, and their attack power in bare-handed 
   melee fighting is increased temporarily. The strengthened Force can 
-  be released at one stroke when a ForceTrainer activates some other 
+  be released at one stroke when a Force-Trainer activates some other 
   Force spell, typically an attack spell. They have a class power - 
   'Clear Mind' - which allows them to rapidly regenerate their mana.
   
     Stats                   Skills
-    Strength      +0        Disarming   Good         
+    Strength      +0        Disarming   Fair         
     Intelligence  -1        Device      Very Good    
     Wisdom        +3        Save        Good         
-    Dexterity     +2        Stealth     Very Good    
-    Constitution  +1        Searching   Good         
+    Dexterity     +2        Stealth     Good         
+    Constitution  +1        Searching   Fair         
     Charisma      +0        Perception  Fair         
     Life Rating  100%       Melee       Fair         
-    Base HP        4        Bows        Fair         
+    Base HP        4        Archery     Good         
     Experience   135%
     
   Monk
-  The Monk character class is very different from all other classes. 
-  Their training in martial arts makes them much more powerful with no 
-  armor or weapons. To gain the resistances necessary for survival a 
-  monk may need to wear some kind of armor, but if the armor he wears 
-  is too heavy, it will severely disturb his martial arts maneuvers. As 
-  the monk advances levels, new, powerful forms of attack become 
-  available. Their defensive capabilities increase likewise, but if 
-  armour is being worn, this effect decreases. Wisdom determines a 
-  Monk's spell casting ability.
-   
-  The different sects of monks are devoted to different areas of magic. 
-  They select a realm from Life, Nature, Craft, Trump and Death. They 
-  will eventually learn all prayers in the discipline of their choice. 
-  They have two class powers - 'Assume a Posture' and 'Double Attack'. 
-  They can choose different forms of postures in different situations, 
-  and use powerful combinations of attacks for the finishing blow.
+  Monks are very different from most other classes in that they prefer 
+  to fight unarmed; while they can use a few select weapons reasonably 
+  well, their training in martial arts makes them more powerful with no 
+  weapons. Monks also gain bonuses from empty armor slots; to gain the 
+  resistances necessary for survival, some kind of armor will still be 
+  eventually needed, but if the armor is too heavy it will severely 
+  disturb the Monk's martial arts maneuvers. As the Monk gains levels, 
+  more powerful forms of unarmed attack will become available, and the 
+  defensive bonuses for having empty armor slots likewise increase.
+  
+  The various sects of monks are devoted to different areas of magic; 
+  they select one realm from Life, Nature, Craft, Trump and Death. 
+  Monks will eventually learn all prayers in the discipline of their 
+  choice. Wisdom determines their spellcasting ability.
+  
+  Monks have two class powers, 'Assume a Posture' and 'Double Attack'; 
+  they can choose different postures for different situations, and use 
+  powerful combinations of attacks for the finishing blow.
   
     Stats                   Skills
-    Strength      +2        Disarming   Superb       
+    Strength      +1        Disarming   Excellent    
     Intelligence  -1        Device      Good         
     Wisdom        +1        Save        Fair         
-    Dexterity     +3        Stealth     Excellent    
-    Constitution  +2        Searching   Good         
+    Dexterity     +3        Stealth     Very Good    
+    Constitution  +2        Searching   Fair         
     Charisma      +1        Perception  Fair         
-    Life Rating  102%       Melee       Excellent    
-    Base HP       12        Bows        Excellent    
+    Life Rating  102%       Melee       Very Good    
+    Base HP       12        Archery     Excellent    
     Experience   130%
     
   Mystic
-  Mystics are masters of bare handed fighting, like Monks. However, 
-  they do not learn normal spells. Instead, they gain mystical powers 
-  with experience, and these powers directly influence their martial 
-  arts. In this respect, Mystics are similar to the Samurai. Indeed, 
-  they even concentrate to boost their mana like the Samurai. Mystics 
-  eschew weapons of any kind and require the lightest of armors in 
-  order to practice their martial arts. The number of attacks are 
-  influenced by dexterity and experience level while the mystic's mana 
-  and fail rates are influenced by charisma. Mystics are in tune with 
-  the natural forces around them and may even call on aid when 
-  necessary. It has been whispered that mystics have even discovered 
-  how to kill an opponent with a single touch, though they do not share 
-  this knowledge with novices.
+  Mystics are masters of bare-handed fighting, like Monks. Unlike 
+  Monks, though, they do not learn normal spells; instead, they gain 
+  mystical powers with experience, and these powers directly influence 
+  their martial arts. In this respect, Mystics are somewhat similar to 
+  Samurai; indeed, they even concentrate to boost their mana like the 
+  Samurai. Mystics eschew weapons of any kind, and require the lightest 
+  of armors in order to practice their martial arts. As with other 
+  martial artists, their attack speed depends on their level and 
+  Dexterity; their mana and fail rates, though, are influenced by 
+  Charisma. Mystics are in tune with the natural forces around them, 
+  and may even summon animals to their aid when necessary. It is 
+  whispered that mystics have discovered a way to kill an opponent with 
+  a single touch; but they do not share this knowledge with novices.
   
     Stats                   Skills
-    Strength      +2        Disarming   Superb       
-    Intelligence  -1        Device      Very Good    
+    Strength      +2        Disarming   Excellent    
+    Intelligence  -1        Device      Good         
     Wisdom        -2        Save        Fair         
-    Dexterity     +3        Stealth     Excellent    
-    Constitution  +1        Searching   Good         
+    Dexterity     +3        Stealth     Very Good    
+    Constitution  +1        Searching   Fair         
     Charisma      +2        Perception  Fair         
-    Life Rating  100%       Melee       Excellent    
-    Base HP        4        Bows        Excellent    
+    Life Rating  100%       Melee       Very Good    
+    Base HP        4        Archery     Excellent    
     Experience   130%
     
   
 Magic
   Blood-Mage
-  A Blood Mage is similar to a normal mage in his selection and variety 
-  of spells, but differs in that he has no separate mana pool. Instead, 
-  all his spells are powered by his health. Moreover, due to the Blood 
-  Mage's abnormal constitution, all healing is much less effective than 
-  normal. In fact, the Blood Mage completely eschews all healing magic 
-  as this disrupts the flow of blood that is the essence of their 
-  power. They completely shun the realm of Life as anathema to all that 
-  is sacred.
+  A Blood-Mage is similar to a normal mage in his selection and variety 
+  of spells, but differs in that he has no separate mana pool; instead, 
+  spells are powered by hit points. Moreover, due to the Blood-Mage's 
+  abnormal constitution, all healing is much less effective than 
+  normal; indeed, Blood-Mages completely eschew healing spells to not 
+  disrupt the flow of blood that is the essence of their power. They 
+  shun the realm of Life as anathema to all they hold sacred.
   
     Stats                   Skills
     Strength      -4        Disarming   Fair         
     Intelligence  +3        Device      Superb       
     Wisdom        -2        Save        Good         
-    Dexterity     +1        Stealth     Good         
+    Dexterity     +1        Stealth     Fair         
     Constitution  +2        Searching   Poor         
-    Charisma      -2        Perception  Fair         
-    Life Rating  108%       Melee       Very Bad     
-    Base HP       10        Bows        Very Bad     
+    Charisma      -2        Perception  Poor         
+    Life Rating  108%       Melee       Bad          
+    Base HP       10        Archery     Bad          
     Experience   135%
     
-  Gray-Mage
-  The Gray-Mage casts spells from memory, rather than from a book.  
-  Indeed, the spell book is only required for the initial learning 
-  process. However, only a small number of spells may be learned at any 
-  given time, and while the Gray-Mage may replace old spells with new 
-  ones, they can only learn a fixed number of total spells (based upon 
-  Intelligence and Experience).
+  Blue-Mage
+  Blue-Mages, like all mages, rely on magic rather than muscle; but 
+  they are unique in the way they gain new spells, as they learn from 
+  monsters rather than books. Blue-Mages' primary spellcasting stat is 
+  Intelligence.
    
-  The Gray-Mage does not choose spell realms the way an ordinary spell 
-  caster would. Instead, they choose a general bias towards one of 
-  Good, Neutral or Evil magic. So while all Gray-Mages may learn spells 
-  from the Arcane, Armageddon, Chaos, Craft, Sorcery and Trump realms, 
-  only a Good Bias allows access to Life and Crusade magic; only a 
-  Neutral Bias allows access to Nature magic; and only an Evil Bias 
-  allows access to Death and Daemon magic. Still, it is obvious that 
-  the Gray Mage will have an extremely large pool of spells from which 
-  to choose. Like the Mage, Intelligence is the key stat.
+  A Blue-Mage can learn and cast monster spells, summons, and even 
+  ranged attacks as their own spells; this technique is called Blue 
+  magic. Blue-Mages remember their spells permanently, but to learn a 
+  spell they must be directly hit by it while their 'Learning' class 
+  power is active. Because of this requirement, Blue-Mages never learn 
+  spells like Haste or Healing that affect the monster itself.
+  
+    Stats                   Skills
+    Strength      -4        Disarming   Fair         
+    Intelligence  +4        Device      Superb       
+    Wisdom        -1        Save        Good         
+    Dexterity     +1        Stealth     Fair         
+    Constitution  -2        Searching   Poor         
+    Charisma      -2        Perception  Poor         
+    Life Rating   98%       Melee       Bad          
+    Base HP        4        Archery     Bad          
+    Experience   130%
+    
+  Gray-Mage
+  The Gray-Mage casts spells from memory rather than books; a spellbook 
+  is only required for the initial learning process. However, only ten 
+  spells may be memorized at any given time; and while a Gray-Mage may 
+  replace old spells with new ones, the total number of spells they can 
+  study is limited.
+  
+  Gray-Mages do not choose specific realms like book spellcasters; 
+  instead, they choose a general bias towards either Good, Neutral or 
+  Evil magic. So while all Gray-Mages may learn spells from the Arcane, 
+  Armageddon, Chaos, Craft, Sorcery and Trump realms, only a Good Bias 
+  allows access to Life and Crusade magic; only a Neutral Bias allows 
+  access to Nature magic; and only an Evil Bias allows access to Death 
+  and Daemon magic. At any one time, a Gray-Mage has relatively few 
+  spells directly at their disposal; but their ability to pick the best 
+  spells from an extremely large pool more than compensates for this. 
+  As with most mages, the key stat is Intelligence.
   
     Stats                   Skills
     Strength      -4        Disarming   Fair         
     Intelligence  +3        Device      Superb       
     Wisdom        +0        Save        Good         
-    Dexterity     +1        Stealth     Good         
+    Dexterity     +1        Stealth     Fair         
     Constitution  -2        Searching   Poor         
-    Charisma      -2        Perception  Fair         
-    Life Rating   95%       Melee       Very Bad     
-    Base HP        0        Bows        Very Bad     
+    Charisma      -2        Perception  Poor         
+    Life Rating   95%       Melee       Bad          
+    Base HP        0        Archery     Bad          
     Experience   130%
     
   High-Mage
-  High-mages are mages who specialize in one particular field of magic 
-  and learn it very well - much better than the ordinary mage. A high 
-  mage's prime statistic is intelligence as this determines his spell 
-  casting ability.
-   
-  For the price of giving up a second realm of magic, High-mages gain 
+  High-Mages are mages who specialize in one particular field of magic 
+  and learn it very well - much better than an ordinary mage.
+  
+  For the price of giving up a second realm of magic, High-Mages gain 
   substantial benefits in the mana costs, power, minimum levels, and 
-  failure rates of the spells in their speciality realm. They have a 
-  class power - 'Eat Magic' - which absorbs mana from wands, staves, or 
-  rods.
-   
-  And then, only High-Mages are able to cast Hex spells.
+  failure rates of the spells in their speciality realm. They are also 
+  the only class able to cast Hex spells. High-Mages have a class power 
+  - 'Eat Magic' - which absorbs mana from wands, staves, or rods; 
+  although this power is not available to those who choose the Hex 
+  realm. Their primary spellcasting stat is Intelligence.
   
     Stats                   Skills
     Strength      -4        Disarming   Fair         
     Intelligence  +4        Device      Superb       
     Wisdom        +0        Save        Good         
-    Dexterity     +0        Stealth     Good         
+    Dexterity     +0        Stealth     Fair         
     Constitution  -2        Searching   Poor         
-    Charisma      -2        Perception  Fair         
-    Life Rating   94%       Melee       Very Bad     
-    Base HP        0        Bows        Very Bad     
+    Charisma      -2        Perception  Poor         
+    Life Rating   94%       Melee       Bad          
+    Base HP        0        Archery     Bad          
     Experience   130%
     
   Mage
-  A Mage is a spell caster that must live by his wits as he cannot hope 
-  to simply hack his way through the dungeon like a warrior. In 
-  addition to his spellbooks, a Mage should carry a range of magical 
-  devices to help him in his endeavors which he can master far more 
-  easily than anyone else. A Mage's prime statistic is Intelligence as 
-  this determines his spell casting ability.
-   
-  Mages have the least restrictions in choosing and learning spells. 
-  They can freely choose any two realms when a character is created. 
-  Their natural inclination makes Life magic fairly hard to learn. 
-  Otherwise, a mage tends to learn and cast all the spells in his or 
-  her realms better than any other character. The ability to choose 
-  second realm of magic has a special meaning: Only the second realm 
-  can be changed in the middle of the game. You can change second realm 
-  by studying ('G') from a spellbook of new realm. They have a class 
-  power - 'Eat Magic' - which absorbs mana from wands, staves or rods.
+  A Mage is a spellcaster who must live by his wits, as he cannot hope 
+  to simply hack his way through the dungeon like a warrior. A Mage 
+  always carries his spellbooks with him, but also relies on magical 
+  devices, which he can master easily. The primary spellcasting 
+  statistic of a Mage is Intelligence.
+  
+  Mages have few restrictions in choosing and learning spells; they can 
+  freely choose any two realms when a character is created, although 
+  their natural inclinations make Life magic fairly hard to learn. See 
+  [f] for more information on magic, realms and book spellcasting.
   
     Stats                   Skills
     Strength      -4        Disarming   Fair         
     Intelligence  +3        Device      Superb       
     Wisdom        +0        Save        Good         
-    Dexterity     +1        Stealth     Good         
+    Dexterity     +1        Stealth     Fair         
     Constitution  -2        Searching   Poor         
-    Charisma      -2        Perception  Fair         
-    Life Rating   95%       Melee       Very Bad     
-    Base HP        0        Bows        Very Bad     
+    Charisma      -2        Perception  Poor         
+    Life Rating   95%       Melee       Bad          
+    Base HP        0        Archery     Bad          
     Experience   130%
     
   Necromancer
   A Necromancer attempts to gain both power and knowledge through 
-  communion with the dead. They use powerful necromancy magic to summon 
-  aid from the dead, whether directly in terms of undead servitude, or 
-  indirectly through other-worldly knowledge. Necromancy also offers 
-  myriad foul offensive spells, but all of these require the 
-  Necromancer to physically touch his foe. To do so, the Necromancer 
-  may wield neither weapon, nor gloves. But a powerful necromancer is 
-  truly awe inspiring, and may even kill foes with a single deadly 
-  touch! In addition, they forever hunt for the legendary Eye and Hand 
-  of Vecna in order to complete their power.
+  communion with the dead. They rely on the special realm of Necromancy 
+  to summon aid from the dead, whether directly in terms of undead 
+  servitude, or indirectly through otherworldly knowledge. Necromancy 
+  also offers many foul offensive spells; but all of these require 
+  direct physical contact, and so need an empty, gloveless hand to 
+  work. Yet this handicap is a cheap price to pay for the ability to 
+  kill a foe with one deadly touch!
+  
+  Necromancers forever hunt for the legendary Eye and Hand of Vecna to 
+  complete their power.
   
     Stats                   Skills
     Strength      -2        Disarming   Fair         
     Intelligence  +3        Device      Superb       
     Wisdom        -4        Save        Good         
-    Dexterity     +1        Stealth     Very Good    
+    Dexterity     +1        Stealth     Good         
     Constitution  -1        Searching   Poor         
-    Charisma      -2        Perception  Fair         
-    Life Rating   95%       Melee       Very Bad     
-    Base HP        2        Bows        Very Bad     
+    Charisma      -2        Perception  Poor         
+    Life Rating   95%       Melee       Bad          
+    Base HP        2        Archery     Bad          
     Experience   125%
     
   Sorcerer
-  Sorcerers are the all-around best magicians, being able to cast any 
-  spell from most magic realms without having to learn it. On the 
-  downside, they are the worst fighters in the dungeon, being unable to 
-  use any weapon but a Wizardstaff.
+  Sorcerers are the all-around best magicians, being able to master all 
+  spells from almost any magic realm without needing to study them or 
+  gain proficiency with them. On the downside, they have by far the 
+  fewest hit points of any class; they are also the worst fighters in 
+  the dungeon, being unable to use any weapon but a Wizardstaff.
    
-  Sorcerers can cast any spell from any spellbooks of all magic realms 
-  with 'Master' proficiency level without having to learn it. They have 
-  a class power - 'Eat Magic' - which absorbs mana from wands, staves 
-  or rods.
+  Sorcerers have a class power - 'Eat Magic' - which absorbs mana from 
+  wands, staves or rods. Unlike other mages, they rely on Charisma as 
+  their spell stat.
   
     Stats                   Skills
     Strength      -5        Disarming   Fair         
-    Intelligence  +0        Device      Heroic       
+    Intelligence  +0        Device      Amber[2]     
     Wisdom        -2        Save        Heroic       
-    Dexterity     +2        Stealth     Fair         
+    Dexterity     +2        Stealth     Poor         
     Constitution  +0        Searching   Poor         
-    Charisma      +6        Perception  Fair         
+    Charisma      +6        Perception  Poor         
     Life Rating   65%       Melee       Very Bad     
-    Base HP        0        Bows        Very Bad     
+    Base HP        0        Archery     Very Bad     
     Experience   160%
     
   Yellow-Mage
-  A Yellow Mage is a type of Mage who focuses on rapid spell casting. 
-  Much as the Warrior gets multiple attacks per round, the Yellow Mage 
-  may cast multiple spells per round. Their spell speed increases with 
-  level. In addition, they may also cast low level spells more quickly 
-  as they gain in experience (For example, a CL50 Yellow Mage casting a 
-  L35 spell only requires 85% of the normal time, and this bonus 
-  applies before their spells per round bonus).
-   
-  In all other respects, the Yellow Mage is similar to the Mage. They 
-  may learn spells from two spell realms and use Intelligence as their 
-  primary spell statistic. However, due to their focus upon hasty 
-  casting, they are unable to learn the mightiest of spells in most 
-  realms, especially as regards powerful offensive spells like Mana 
-  Storm.
+  A Yellow-Mage is a type of Mage who focuses on rapid spell casting. 
+  The casting speed of Yellow-Mages improves with experience; low-level 
+  spells are particularly quick to use, and can eventually be cast as 
+  many as five times in one round! But even a level 50 spell requires 
+  less than half a turn for an accomplished Yellow-Mage.
+  
+  In most other respects, a Yellow-Mage is similar to a Mage; they use 
+  Intelligence as their primary spell stat, and may learn spells from 
+  two spell realms of their choice. However, due to their focus on 
+  hasty casting, some of the deepest and most powerful magic will 
+  remain forever beyond their grasp.
   
     Stats                   Skills
     Strength      -4        Disarming   Fair         
     Intelligence  +3        Device      Superb       
     Wisdom        +0        Save        Good         
-    Dexterity     +1        Stealth     Good         
+    Dexterity     +1        Stealth     Fair         
     Constitution  -2        Searching   Poor         
-    Charisma      -2        Perception  Fair         
-    Life Rating   95%       Melee       Very Bad     
-    Base HP        0        Bows        Very Bad     
+    Charisma      -2        Perception  Poor         
+    Life Rating   95%       Melee       Bad          
+    Base HP        0        Archery     Bad          
     Experience   130%
     
   
@@ -591,49 +600,49 @@ Devices
   
   
     Stats                   Skills
-    Strength      +0        Disarming   Excellent    
+    Strength      +0        Disarming   Very Good    
     Intelligence  +2        Device      Fair         
     Wisdom        -1        Save        Fair         
-    Dexterity     +2        Stealth     Excellent    
-    Constitution  +0        Searching   Excellent    
+    Dexterity     +2        Stealth     Fair         
+    Constitution  +0        Searching   Very Good    
     Charisma      -2        Perception  Fair         
     Life Rating  101%       Melee       Good         
-    Base HP       12        Bows        Very Good    
+    Base HP       12        Archery     Excellent    
     Experience   135%
     
   Devicemaster
   Devicemasters are excellent with magical devices, but poor in most 
   other skills. They may shoot or use melee in a pinch, but this will 
-  never be their forte. Instead, they must rely on their arsenal of 
-  magical devices in order to survive.
+  never be their forte; instead, they conquer through their arsenal of 
+  magical devices.
    
-  The Devicemaster chooses to specialize in a particular class of 
-  devices and they gain extra bonuses when using devices from their 
-  speciality. These bonuses include increased damage, increased speed 
-  of activation, extra resistance to charge draining, and even the 
-  ability to occasionally power these devices without consuming 
-  charges. Each of these abilities becomes greater with experience. In 
-  addition, they gain enhanced device skill with speciality devices.
+  Each Devicemaster chooses to specialize in a particular class of 
+  devices, and will gain extra bonuses for speciality items. These 
+  bonuses include increased damage, increased speed of activation, 
+  extra resistance to charge draining, and even the ability to 
+  occasionally power these devices without consuming charges; each of 
+  these abilities becomes stronger with experience. In addition, 
+  speciality devices are easier to use, although all Devicemasters are 
+  also good with devices of other types.
    
-  Devicemasters have a few magical abilities to enhance their utility 
-  with devices. As expected, they gain a powerful talent of Recharging 
-  very early on. Also, they may detect magical devices from a distance. 
-  At higher levels, they gain the powerful ability to move effects from 
-  one device to another (wand/rod/staff) or to move essence from one 
-  potion/scroll to a lower level potion/scroll. As a final ability, the 
-  Devicemaster may use multiple charges at once from a given device in 
-  an act of desperation. This greatly increases the power of the 
-  effect, but may destroy the device in the process.
+  Devicemasters have several useful device-related powers; they may 
+  detect magical devices from a distance, and gain the powerful talent 
+  of Recharging very early on. At higher levels, they gain the ability 
+  to move effects from one device to another, or to move magical 
+  essences from one item to another if they specialize in Potions or 
+  Scrolls. In times of desperate need, the Devicemaster may drain a 
+  speciality item of multiple charges at once; this greatly increases 
+  the power of the effect, but may destroy the device in the process.
   
     Stats                   Skills
     Strength      -1        Disarming   Poor         
     Intelligence  +2        Device      Superb       
     Wisdom        +1        Save        Fair         
-    Dexterity     +2        Stealth     Fair         
-    Constitution  -2        Searching   Fair         
+    Dexterity     +2        Stealth     Poor         
+    Constitution  -2        Searching   Poor         
     Charisma      -2        Perception  Poor         
     Life Rating  101%       Melee       Fair         
-    Base HP        6        Bows        Poor         
+    Base HP        6        Archery     Poor         
     Experience   130%
     
   Magic-Eater
@@ -642,24 +651,22 @@ Devices
   charges are available. In effect, it is as if the Magic-Eater had 
   extra inventory slots for devices. However, absorbed magic can not be 
   drained the way normal devices can, nor can these objects be 
-  destroyed. There are fixed number of slots for each kind of device, 
+  destroyed. The number of slots for each kind of device is limited, 
   and the Magic-Eater will need to choose which object to replace once 
-  the slots are all used. Absorbed magic can not be recharged the way 
-  normal devices can. Instead, the Magic-Eater must rest to regain 
-  charges the way a normal spellcaster must rest to regain mana. 
-  Similarly, the Magic-Eater may quaff a potion to restore mana to 
-  speed this process, though this will not necessarily restore all of 
-  their absorbed magic.
+  the slots are all used. Absorbed magic cannot be recharged through 
+  scrolls, spells, potions or activations; the Magic-Eater must rest to 
+  regain charges. The rate at which absorbed devices recharge is 
+  affected by Regeneration.
   
     Stats                   Skills
     Strength      -1        Disarming   Poor         
-    Intelligence  +2        Device      Superb       
+    Intelligence  +2        Device      Heroic       
     Wisdom        +1        Save        Fair         
-    Dexterity     +2        Stealth     Fair         
-    Constitution  -2        Searching   Fair         
+    Dexterity     +2        Stealth     Poor         
+    Constitution  -2        Searching   Poor         
     Charisma      -2        Perception  Poor         
     Life Rating  103%       Melee       Fair         
-    Base HP        6        Bows        Poor         
+    Base HP        6        Archery     Poor         
     Experience   130%
     
   
@@ -667,38 +674,40 @@ Prayer
   Priest
   A Priest is a character devoted to serving a higher power. They 
   explore the dungeon in the service of their God. They are fairly 
-  familiar with magical devices which they believe act as foci for 
+  familiar with magical devices, which they believe act as foci for 
   divine intervention in the natural order of things.
    
   There are two types of priests: Good and Evil. If the priest chooses 
-  Life or Crusade as their first realm, then they will follow the path 
-  of good. As such, they may not choose an evil realm for their second 
-  realm. Also, good priests abhor bloodshed, and therefore are not 
-  comfortable with edged weapons. Wielding one will disrupt their 
-  ability to concentrate during prayers. Should a priest choose Death 
-  or Daemon as their first realm, however, then they will serve an evil 
-  god. As such, they actually enjoy shedding blood, and suffer no such 
-  weapon restriction. Of course, evil priests abhor good things, and 
-  are unable to choose Life or Crusade for their second realm.
+  Life or Crusade as their first realm, they will follow the path of 
+  good; as such, they may not choose an evil realm for their second 
+  realm. Good priests abhor bloodshed, and therefore are not 
+  comfortable with edged weapons, although they eventually learn to 
+  bless such weapons and then use them without disrupting their 
+  prayers. Should a priest choose Death or Daemon as their first realm, 
+  however, they will serve an evil god; evil priests actually enjoy 
+  shedding blood, and suffer no such weapon restrictions. Of course, 
+  evil priests abhor good things, and are unable to choose Life or 
+  Crusade for their second realm.
    
   Good priests have a strong affinity for Life prayers, and learn them 
-  very well, even better than a High Mage. Conversely, evil priests 
+  very well, even better than a High-Mage. Conversely, evil priests 
   favor prayers of Death, and receive strong bonuses when choosing this 
-  foul realm. Otherwise, priests learn spells less efficiently than a 
-  Mage would. Also, they may not choose which spell to learn, but are 
-  granted new prayers by the whim of their deity, presumably in order 
-  to serve some greater divine plan of which the priest is not fully 
-  cognizant. The priest's primary prayer stat is Wisdom.
+  foul realm. Otherwise, priests learn magic less efficiently than a 
+  Mage would; but their greater stamina and combat skills compensate 
+  for this. Priests, unlike Mages, cannot choose to study specific 
+  spells; rather, they are granted new prayers by the whim of their 
+  deity, presumably in accordance with some greater divine plan. The 
+  primary stat for a priest is Wisdom.
   
     Stats                   Skills
     Strength      -1        Disarming   Poor         
     Intelligence  -3        Device      Good         
-    Wisdom        +3        Save        Excellent    
-    Dexterity     -1        Stealth     Fair         
+    Wisdom        +3        Save        Very Good    
+    Dexterity     -1        Stealth     Poor         
     Constitution  +0        Searching   Poor         
     Charisma      +2        Perception  Bad          
     Life Rating  100%       Melee       Fair         
-    Base HP        4        Bows        Poor         
+    Base HP        4        Archery     Poor         
     Experience   120%
     
   
@@ -719,95 +728,122 @@ Stealth
   - 'Quick Walk' - which makes their walking speed extremely fast.
   
     Stats                   Skills
-    Strength      +0        Disarming   Superb       
+    Strength      +0        Disarming   Excellent    
     Intelligence  -1        Device      Fair         
     Wisdom        -1        Save        Fair         
     Dexterity     +3        Stealth     Superb       
-    Constitution  +2        Searching   Excellent    
-    Charisma      +2        Perception  Good         
+    Constitution  +2        Searching   Very Good    
+    Charisma      +2        Perception  Fair         
     Life Rating  100%       Melee       Superb       
-    Base HP        4        Bows        Poor         
+    Base HP        4        Archery     Poor         
     Experience   120%
     
   Rogue
-  A Rogue is a character that prefers to live by his cunning, but is 
-  capable of fighting his way out of a tight spot. Rogues are good at 
-  locating hidden traps and doors and are masters of disarming traps 
-  and picking locks. A rogue has a high stealth allowing him to sneak 
-  around many creatures without having to fight, or to get in a telling 
-  first blow. A rogue may also backstab a fleeing monster. Rogues also 
-  gain shooting bonuses when using a sling.
+  A Rogue is a character who prefers to live by their cunning, yet is 
+  capable of fighting their way out of a tight spot when necessary. 
+  Rogues are good at locating secret doors and hidden traps, and are 
+  masters of trap-disarming and lockpicking. Their exceptional stealth 
+  allows rogues to sneak around sleeping creatures without having to 
+  fight; they can also backstab a fleeing monster or surprise an enemy 
+  with a telling first blow. Rogues are fairly good at ranged combat, 
+  and receive special bonuses when shooting with a sling.
    
   Rogues can select one realm - Sorcery, Death, Trump, Arcane, Craft, 
-  Law,or Burglary. Except for this last realm, rogues have certain 
+  Law, or Burglary. Except for this last realm, rogues have certain 
   limitations on which spells they can learn, and they do not learn new 
-  spells very quickly. The Burglary Realm however is unique to the 
-  rogue and offers spells for setting traps, picking pockets, 
-  negotiating with other thieves, and escaping from a tight spot. 
-  Burglary rogues are agents of the Black Market and receive favorable 
-  pricing from that shop. A Burglary rogue uses DEX as their 
-  spellcasting stat, and may learn spells beginning at level 1. For 
-  other realms, however, the rogue uses INT as the spellcasting stat, 
-  and won't be able to learn spells until level 5.
+  spells very quickly. The Burglary realm is unique to the rogue, and 
+  the speciality of the class; it offers spells for setting traps, 
+  picking pockets, negotiating with other thieves, and escaping from a 
+  tight spot. Burglary rogues are agents of the Black Market and 
+  receive favorable pricing from that shop. Burglary rogues use 
+  Dexterity as their spellcasting stat, and can use this special art 
+  from the beginning of their adventures; rogues of other realms, 
+  however, rely on Intelligence and cannot learn magic spells before 
+  they reach level 5.
   
     Stats                   Skills
-    Strength      +2        Disarming   Superb       
+    Strength      +1        Disarming   Excellent    
     Intelligence  +1        Device      Excellent    
     Wisdom        -1        Save        Fair         
-    Dexterity     +3        Stealth     Excellent    
-    Constitution  +1        Searching   Good         
+    Dexterity     +3        Stealth     Very Good    
+    Constitution  +0        Searching   Fair         
     Charisma      +1        Perception  Fair         
     Life Rating  100%       Melee       Excellent    
-    Base HP       12        Bows        Good         
+    Base HP       12        Archery     Very Good    
     Experience   125%
     
   Scout
   The scout is the vanguard of any attack, and excels at stealth and 
-  observation skills. The scout is not the best at one-on-one combat, 
-  but is unparalleled at ambush techniques to destroy groups of weak 
-  sentries. The scout is lightly armored, and heavy armors disrupt 
-  their abilities. Furthermore, the scout can only effectively dodge in 
-  open areas, being confined severely hampers the scout's defensive 
-  abilities.
+  observation skills. Scouts are not the best at one-on-one combat, but 
+  are unparalleled at ambush techniques for destroying groups of weak 
+  sentries. Scouts are lightly armored, and heavy armor disrupts their 
+  abilities. Unlike most characters, scouts are not at home in cramped 
+  corridors; in open areas they can dodge attacks effectively, but 
+  being confined severely hampers their defensive abilities.
   
     Stats                   Skills
-    Strength      +1        Disarming   Excellent    
+    Strength      +1        Disarming   Very Good    
     Intelligence  -1        Device      Very Good    
     Wisdom        +2        Save        Fair         
     Dexterity     +3        Stealth     Excellent    
-    Constitution  +0        Searching   Excellent    
+    Constitution  +0        Searching   Very Good    
     Charisma      +0        Perception  Fair         
     Life Rating  104%       Melee       Very Good    
-    Base HP        8        Bows        Superb       
+    Base HP        8        Archery     Heroic       
     Experience   130%
     
   
 Hybrid
   Chaos-Warrior
-  Chaos Warriors are the feared servants of the terrible Demon Lords of 
-  Chaos. Every Chaos Warrior has a Patron Demon and, when gaining a 
-  level, may receive a reward from his Patron. He might be healed or 
-  polymorphed, his stats could be increased, or he might be rewarded 
-  with an awesome weapon. On the other hand, the Patrons might surround 
-  him with monsters, drain his stats or wreck his equipment or they 
-  might simply ignore him. The Demon Lords of Chaos are chaotic and 
-  unpredictable indeed. The exact type of reward depends on both the 
-  Patron Demon (different Demons give different rewards) and chance.
+  Chaos-Warriors are the feared servants of the terrible Demon Lords of 
+  Chaos. Every Chaos-Warrior has a patron demon, who may give him a 
+  reward on level-up; the Chaos-Warrior may be healed or polymorphed, 
+  have his stats increased, or be rewarded with an awesome weapon. On 
+  the other hand, though, he might be severely punished or simply 
+  ignored by the patron; the Demon Lords of Chaos are unpredictable 
+  indeed, although rewards are thankfully more common than punishments. 
+  The exact reward will not depend on anything the player does, and is 
+  up entirely to random chance and the patron; each patron gives out 
+  different rewards and punishments.
    
-  Chaos Warriors can select a realm from Chaos and Daemon. They are not 
-  interested in any other form of magic. They can learn every spell. 
-  They have a class power - 'Confusing Light' - which stuns, confuses, 
-  and scares all monsters in sight.
+  Chaos-Warriors select one spell realm, either Chaos or Daemon; they 
+  have no interest in other forms of magic. They can learn every spell 
+  in their chosen realm. At level 40 they gain the powerful ability to 
+  emit confusing lights, with the potential to stun, scare and confuse 
+  every creature in sight.
   
     Stats                   Skills
-    Strength      +2        Disarming   Bad          
+    Strength      +2        Disarming   Poor         
     Intelligence  +1        Device      Good         
     Wisdom        -1        Save        Fair         
-    Dexterity     +0        Stealth     Fair         
-    Constitution  +2        Searching   Poor         
+    Dexterity     +0        Stealth     Poor         
+    Constitution  +1        Searching   Poor         
     Charisma      +1        Perception  Poor         
-    Life Rating  111%       Melee       Excellent    
-    Base HP       12        Bows        Good         
+    Life Rating  109%       Melee       Excellent    
+    Base HP       12        Archery     Good         
+    Experience   125%
+    
+  Disciple
+  Trusted followers of mysterious ancient spirits known as the 
+  'Purples', the Disciples roam the world running errands for their 
+  masters, learning mighty spells and receiving rare items as rewards 
+  for their work. There are three main flavors of Purple Disciples - 
+  disciples of Karrot, disciples of Yeqrezh, and disciples of a group 
+  of Purples known as the Troika. Each of the Purples expects different 
+  things of their Disciples, and each helps them achieve their ends in 
+  very different ways.
+  
+  See [g] for more details on disciples.
+  
+    Stats                   Skills
+    Strength      -1        Disarming   Fair         
+    Intelligence  +1        Device      Excellent    
+    Wisdom        -1        Save        Good         
+    Dexterity     +0        Stealth     Fair         
+    Constitution  -1        Searching   Fair         
+    Charisma      +1        Perception  Poor         
+    Life Rating   95%       Melee       Good         
+    Base HP       14        Archery     Good         
     Experience   125%
     
   Ninja-Lawyer
@@ -820,321 +856,307 @@ Hybrid
   ninjutsu.
   
     Stats                   Skills
-    Strength      -1        Disarming   Superb       
+    Strength      -1        Disarming   Excellent    
     Intelligence  +0        Device      Good         
     Wisdom        +0        Save        Fair         
     Dexterity     +2        Stealth     Superb       
-    Constitution  +0        Searching   Excellent    
+    Constitution  +0        Searching   Good         
     Charisma      +2        Perception  Fair         
     Life Rating   99%       Melee       Excellent    
-    Base HP        8        Bows        Poor         
+    Base HP        8        Archery     Poor         
     Experience   115%
     
   Paladin
-  A Paladin is a combination of a warrior and a priest. Paladins are 
-  very good fighters, but not very good at missile weapons. A paladin 
-  lacks much in the way of abilities. He is poor at stealth, 
-  perception, searching, and magical devices but has a decent saving 
-  throw due to his divine alliance. Wisdom determines a Paladin's 
-  success at praying to his deity.
+  A Paladin is a combination of a warrior and a priest. Paladins excel 
+  as melee fighters, but are only middling in ranged combat; their 
+  stealth, perception, and device skill are likewise mediocre, though 
+  their divine alliance gives them a decent saving throw. Wisdom 
+  determines a Paladin's success at praying to his deity.
    
   Paladins can select a realm from Life, Crusade, Daemon and Death. 
   Like priests, they cannot select which prayers to learn, but are 
   rewarded with new prayers by their deities. They can learn all 
   spells, but not as fast as priests. They detest paganism so strongly 
-  that they will even gain experience for destroying high-level pagan 
+  that they even gain experience for destroying high-level pagan 
   spellbooks: 'pagan' means Life or Crusade spellbooks for a 
-  Death/Daemon Paladin and all spellbooks other than Life or Crusade 
-  for a Life/Crusade Paladin. Depending on their realm, they have a 
-  class power - 'Holy Lance' or 'Hell Lance'.
+  Death/Daemon Paladin, and all spellbooks other than Life or Crusade 
+  for a Life/Crusade Paladin. Paladins receive one class power, 'Holy 
+  Lance' or 'Hell Lance', depending on the alignment of their realm.
   
     Stats                   Skills
-    Strength      +3        Disarming   Bad          
+    Strength      +2        Disarming   Poor         
     Intelligence  -3        Device      Fair         
     Wisdom        +1        Save        Fair         
-    Dexterity     +0        Stealth     Fair         
+    Dexterity     +0        Stealth     Poor         
     Constitution  +2        Searching   Poor         
     Charisma      +2        Perception  Bad          
     Life Rating  111%       Melee       Excellent    
-    Base HP       12        Bows        Good         
+    Base HP       12        Archery     Very Good    
     Experience   135%
     
   Ranger
-  A Ranger is a combination of a warrior and a mage who has developed a 
-  special affinity for the natural world around him. He is a good 
-  fighter and also excellent with a bow. A ranger has good stealth, 
-  perception, searching and magical resistance. Also, rangers are 
-  familiar with magical devices and use them well. Wisdom determines a 
-  Ranger's spell casting ability.
+  A Ranger is a seasoned wanderer from the plains or woods, attuned to 
+  the natural world. Rangers have few weak points; like mages they are 
+  excellent with magic devices, yet they are also fairly good at using 
+  bows and melee weapons. Their stealth, searching and perception have 
+  been sharpened by their time in the wilderness, and their alliance 
+  with the spirits of nature even gives them a good saving throw.
    
-  All rangers are trained in Nature magic, and all of these spells are 
-  available to them. They even learn these spells almost as fast as 
-  mages. They can also select a secondary realm (from Sorcery, Chaos, 
-  Death, Trump, Arcane, and Daemon), but they are slow learners here, 
-  and may find themselves unable to learn some of the highest level 
-  spells. They have a class power - 'Probe Monster' - which allows them 
-  to know a monster's HP, speed, and experience required to evolve.
+  All rangers are trained in Nature magic, and all Nature spells are 
+  available to them; they even learn these spells almost as fast as 
+  mages. They can also select a secondary realm (Sorcery, Chaos, Death, 
+  Trump, Arcane, and Daemon); but they are slow learners here, and may 
+  find themselves unable to learn some of the highest level spells. 
+  Another downside is that rangers, like the priestly classes, lack the 
+  ability to choose their own spells; they will learn whatever the 
+  capricious nature gods choose to teach them.
+  
+  Rangers have a class power, 'Probe Monster', which allows them to 
+  assess the strengths and weaknesses of the monsters they meet. The 
+  magical powers of a ranger depend on Wisdom.
   
     Stats                   Skills
     Strength      +2        Disarming   Fair         
     Intelligence  +0        Device      Excellent    
     Wisdom        +2        Save        Fair         
-    Dexterity     +1        Stealth     Good         
+    Dexterity     +1        Stealth     Fair         
     Constitution  +1        Searching   Fair         
     Charisma      +0        Perception  Poor         
-    Life Rating  106%       Melee       Very Good    
-    Base HP        8        Bows        Good         
+    Life Rating  106%       Melee       Good         
+    Base HP        8        Archery     Very Good    
     Experience   140%
     
   Red-Mage
-  Red Mages are similar to Warrior-Mage; they are decent fighters and 
-  spellcasters. Red-Mages can use almost all spells from lower rank 
-  spellbooks of all realms, but they cannot cast spells from higher 
-  rank spellbooks, and they are extremely slow learners in them. They 
-  are not bad at using magical devices and magic resistance, but are 
-  bad at other skills. A red-mage's prime statistic is intelligence.
-   
-  Red-Mages can use almost all spells from lower rank spellbooks of all 
-  realms: first and second spellbooks of all realms and third and 
-  fourth Arcane spellbooks, without having to learn it, but they cannot 
-  cast spells from higher rank spellbooks; third and fourth spellbooks 
-  for all realms other than Arcane. Since they use all realms at once, 
-  they have large penalties in the mana costs, minimum levels, and 
-  failure rates of spells. They have a class power - 'Double Magic' - 
-  which allows them to cast two spells at once.
+  Red-Mages make better fighters than most mages, and are also 
+  versatile spellcasters who can use many realms without needing to 
+  specialize in only one or two. The downside of this wide scope is 
+  that Red-Mages' magic is fairly shallow; they have high fail rates, 
+  minimum levels and mana costs, and are limited to the first two 
+  spellbooks in each realm except for Arcane.
+  
+  Red-Mages have a class power, 'Double Magic', which allows them to 
+  cast two spells at once. As with regular mages, their spellcasting 
+  stat is Intelligence.
   
     Stats                   Skills
-    Strength      +2        Disarming   Bad          
+    Strength      +2        Disarming   Poor         
     Intelligence  +2        Device      Very Good    
     Wisdom        -1        Save        Fair         
-    Dexterity     +1        Stealth     Fair         
+    Dexterity     +1        Stealth     Poor         
     Constitution  +0        Searching   Poor         
     Charisma      -1        Perception  Bad          
-    Life Rating  106%       Melee       Very Good    
-    Base HP        8        Bows        Bad          
+    Life Rating  106%       Melee       Good         
+    Base HP        8        Archery     Poor         
     Experience   140%
     
   Warrior-Mage
-  A Warrior-Mage is precisely what the name suggests: a cross between 
-  the warrior and mage classes. While their brothers, the rangers, 
-  specialize in Nature magic and survival skills, true Warrior-Mages 
-  attempt to reach the best of both worlds. As warriors they are much 
-  superior to the usual Mage class. Intelligence determines a 
-  Warrior-Mage's spell casting ability.
-   
-  Warrior-mages begin the game with Arcane magic, and they can freely 
-  select another realm of magic. Although they do not gain new spells 
-  as fast as regular mages, they will eventually learn every spell in 
-  both realms, thus making them a very competitive choice for players 
-  who appreciate Arcane magic. They have two class powers - 'Convert HP 
-  to SP' and 'Convert SP to HP' - which allow them to heal HP using 
-  mana or gain mana using HP.
+  A Warrior-Mage is precisely what the name suggests: a cross between a 
+  warrior and a mage. To support their good-for-mages combat abilities, 
+  Warrior-Mages begin the game with Arcane magic and can freely select 
+  another spell realm. Although they do not gain new spells as fast as 
+  regular mages, they will eventually learn every spell in both realms, 
+  thus making them a very competitive choice for those who appreciate 
+  Arcane spells. Their class powers allow them to convert either HP to 
+  mana, or mana to HP, as needed.
   
     Stats                   Skills
     Strength      +2        Disarming   Fair         
     Intelligence  +2        Device      Excellent    
     Wisdom        +0        Save        Fair         
-    Dexterity     +1        Stealth     Fair         
-    Constitution  +0        Searching   Fair         
+    Dexterity     +1        Stealth     Poor         
+    Constitution  +0        Searching   Poor         
     Charisma      +1        Perception  Poor         
-    Life Rating  106%       Melee       Very Good    
-    Base HP        8        Bows        Good         
+    Life Rating  106%       Melee       Good         
+    Base HP        8        Archery     Good         
     Experience   140%
     
   
 Riding
   Beastmaster
-  Beastmasters are in tune with the minds of the creatures of the 
-  world. They are very good at riding, and have enough fighting 
-  ability. They use monsters which have been summoned or dominated as 
-  their hands and feet. Beastmasters can cast trump magic, and are very 
-  good at summoning spells, but they can not summon non-living 
-  creatures. Charisma determines a Beastmaster's spell casting ability.
-   
-  Beastmasters use Trump magic to make good use of their monster 
-  domination and riding abilities. They are very good at summoning 
-  living creatures, and they learn summoning spells quicker than Mages. 
-  However, they cannot summon non-living creatures. They have two class 
-  powers - 'Dominate a Living Thing' and 'Dominate Living Things'.
+  Beastmasters see the fierce creatures of the world as opportunities 
+  rather than threats, and their riding skills are almost unparalleled. 
+  Between their class powers and access to Trump magic, they have many 
+  ways to summon or charm living creatures to serve as their hands and 
+  feet. Beastmasters are some of the best shooters outside archery 
+  specialists, and their melee skills are good enough to get by on. 
+  Charisma determines the spellcasting prowess of a Beastmaster.
   
     Stats                   Skills
-    Strength      +1        Disarming   Bad          
+    Strength      +1        Disarming   Poor         
     Intelligence  -1        Device      Fair         
     Wisdom        -1        Save        Fair         
-    Dexterity     +1        Stealth     Fair         
-    Constitution  +0        Searching   Fair         
+    Dexterity     +1        Stealth     Poor         
+    Constitution  +0        Searching   Poor         
     Charisma      +2        Perception  Poor         
     Life Rating  103%       Melee       Fair         
-    Base HP        6        Bows        Superb       
+    Base HP        6        Archery     Heroic       
     Experience   120%
     
   Cavalry
-  Cavalry ride on horses into battle. Although they cannot cast spells, 
-  they are proud of their overwhelming offensive strength on horseback. 
-  They are good at shooting. At high levels, they learn to forcibly 
-  saddle and tame wild monsters. Since they take pride in the body and 
-  the soul, they don't use magical devices well.
-   
-  Like Warriors and Archers, the cavalry don't use magic. Since they 
-  are very good at riding, they have a class power - 'Rodeo' - which 
-  allows them to forcibly saddle and tame wild monsters.
+  Cavalry are masters of horsemanship and enjoy riding to battle. Being 
+  good at both melee and archery, they take pride in their overwhelming 
+  offensive strength on horseback; but spellcasting is a closed book to 
+  them, and magical devices difficult to use. High-level Cavalry learn 
+  to forcibly saddle and tame wild monsters with their 'Rodeo' class 
+  power.
   
     Stats                   Skills
     Strength      +2        Disarming   Fair         
     Intelligence  -2        Device      Bad          
     Wisdom        -2        Save        Fair         
-    Dexterity     +2        Stealth     Fair         
+    Dexterity     +2        Stealth     Poor         
     Constitution  +2        Searching   Poor         
     Charisma      +1        Perception  Bad          
     Life Rating  111%       Melee       Excellent    
-    Base HP       10        Bows        Superb       
+    Base HP       10        Archery     Heroic       
     Experience   120%
     
   
 Mind
   Mindcrafter
-  The Mindcrafter is a unique class that uses the powers of the mind 
-  instead of magic. These powers are unique to Mindcrafters, and vary 
-  from simple extrasensory powers to mental domination of others. Since 
-  these powers are developed by the practice of certain disciplines, a 
-  Mindcrafter requires no spellbooks to use them. The available powers 
-  are simply determined by the character's level. Wisdom determines a 
-  Mindcrafter's ability to use mind powers.
+  Mindcrafters rely not on book magic, but on the powers of the mind. 
+  These mind powers are specific to this class, and range from 
+  extrasensory perception to psychic attacks and the mental domination 
+  of others. Most mind powers become accessible fairly early, but gain 
+  in strength with more experience. Wisdom determines a Mindcrafter's 
+  ability to use mind powers.
    
-  Mindcrafters gain new mindcrafting powers and their existing ones 
-  become stronger as they gain levels. They can use their power even 
-  when blinded. They have a class power - 'Clear Mind' - which allows 
-  them to rapidly regenerate their mana.
+  Mindcrafters' combat skills are reasonably good but far from 
+  outstanding; a combination of physical and mental attacks often works 
+  better for them than either one alone. A seasoned mindcrafter is very 
+  hard to confuse, and can effortlessly detect the minds of others. 
+  Mindcrafters have a class power, 'Clear Mind', which allows them to 
+  rapidly regenerate mana.
   
     Stats                   Skills
-    Strength      -1        Disarming   Good         
+    Strength      -1        Disarming   Fair         
     Intelligence  +0        Device      Very Good    
     Wisdom        +3        Save        Fair         
-    Dexterity     -1        Stealth     Good         
-    Constitution  -1        Searching   Fair         
+    Dexterity     -1        Stealth     Fair         
+    Constitution  -1        Searching   Poor         
     Charisma      +2        Perception  Poor         
     Life Rating   99%       Melee       Fair         
-    Base HP        4        Bows        Good         
+    Base HP        4        Archery     Good         
     Experience   125%
     
   Mirror-Master
-  Mirror-Masters are spell casters; like other mages, they must live by 
-  their wits. They can create magical mirrors, and employ them in the 
-  casting of Mirror-Magic spells. Intelligence determines a 
-  Mirror-Master's spell casting ability.
+  Mirror-Masters are spellcasters; like mages, they must live by their 
+  wits. They can create magical mirrors, which they use to support 
+  their special Mirror-Magic spells. Intelligence determines a 
+  Mirror-Master's spellcasting ability.
    
-  Mirror-Masters gain more spells and each spell becomes more powerful 
-  as they gain levels. They can use their spells even when blinded. For 
-  Mirror-Masters, the arrangement of mirrors is very important: Some 
-  attack spells reflect from mirrors, and some other spells are 
-  effective only against monsters standing on a mirror. A Mirror-Master 
-  standing on a mirror has greater ability and, for example, can 
-  perform quick teleports. The maximum number of magical Mirrors which 
-  can be controlled simultaneously depends on the level, and breaking 
-  unnecessary mirrors is important work for them. They have two class 
-  powers - 'Break Mirrors', which breaks all mirrors in current dungeon 
-  level and 'Mirror Concentration', which allows them to rapidly 
-  regenerate their mana on a mirror.
+  Mirror-Masters gain more spells with experience, and their spells 
+  also become more powerful over time. Much of their magic relies on 
+  the careful placement of mirrors, which can be used for both offense 
+  and defense. Mirror-Masters' abilities are also enhanced by standing 
+  on a mirror; for example, they can perform quick teleports from there 
+  or rapidly regenerate their mana. Nevertheless, not all Mirror-Magic 
+  requires a physical mirror; many effects rely simply on light or 
+  mirror-shards, or on uncertainty, reflection and illusion. The 
+  maximum number of Mirrors which can be controlled simultaneously 
+  depends on the player's level; sometimes, unnecessary mirrors may 
+  need to be broken.
   
     Stats                   Skills
-    Strength      -2        Disarming   Good         
+    Strength      -2        Disarming   Fair         
     Intelligence  +3        Device      Very Good    
-    Wisdom        +1        Save        Excellent    
-    Dexterity     -1        Stealth     Good         
+    Wisdom        +1        Save        Very Good    
+    Dexterity     -1        Stealth     Fair         
     Constitution  -2        Searching   Poor         
     Charisma      -2        Perception  Poor         
-    Life Rating  100%       Melee       Very Bad     
-    Base HP        4        Bows        Bad          
+    Life Rating  100%       Melee       Bad          
+    Base HP        4        Archery     Poor         
     Experience   130%
     
   Psion
-  The Psion is like a Mindcrafter, and uses innate mental powers. 
-  Unlike the Mindcrafter, however, Psions have the freedom to learn 
-  powers that enforce their own styles. They learn very few powers, but 
-  they can scale their powers to determine the SP cost and the powers' 
-  potency. Psionic powers require great concentration, however, and 
-  psions do not have the mind to spare to care for others. The Psion 
-  gains powers at the following levels: 1, 10, 15, 20, 30, 35, 40 and 
-  50. The Psion uses Intelligence, Wisdom or Charisma as their primary 
-  spell stat, which ever is currently highest. In this respect, Psions 
-  are truly unique!
+  Psions, like Mindcrafters, rely on their innate mental powers; 
+  indeed, some of these powers resemble those of Mindcrafters. Unlike 
+  Mindcrafters, though, Psions can select which powers they wish to 
+  learn; together with their natural aptitude in a fairly broad range 
+  of skills, this makes Psions one of the most versatile classes. Most 
+  psionic powers are extremely strong, but the number of powers a Psion 
+  can learn is very limited: one each at levels 1, 10, 15, 20, 30, 35, 
+  40 and 50.
+  
+  The potency of psionic powers can be scaled up or down as needed, 
+  within limits; the more mana is spent, the more powerful the effect. 
+  All psionic powers require great concentration, leaving the Psion 
+  little time for pets. Psions do not have one fixed spell stat; they 
+  can use either Intelligence, Wisdom or Charisma, whichever is the 
+  highest. In this respect they are truly unique!
   
     Stats                   Skills
     Strength      -1        Disarming   Poor         
     Intelligence  +2        Device      Very Good    
-    Wisdom        +2        Save        Excellent    
-    Dexterity     -1        Stealth     Fair         
+    Wisdom        +2        Save        Very Good    
+    Dexterity     -1        Stealth     Poor         
     Constitution  -1        Searching   Poor         
     Charisma      +2        Perception  Bad          
     Life Rating   96%       Melee       Fair         
-    Base HP        4        Bows        Poor         
+    Base HP        4        Archery     Poor         
     Experience   150%
     
   Time-Lord
   Time-Lords are masters of temporal magic, altering the flow of time 
-  to their advantage. They don't learn spells from books, but rather 
-  gain new powers as they grow more experienced. They are the only 
-  class that can affect monsters with time based attacks. Not only do 
-  these damage their foes, but they also inflict a wide variety of 
-  possible effects, from slowing to amnesia, from evolution to 
-  devolution, from weakening to stasis. In addition to temporal 
-  attacks, the Time-Lord gains great powers of speed, and they grow 
-  faster with experience. It is said that masters of time can even see 
-  the future, avoiding attacks that would otherwise prove fatal! Also, 
-  legend has it that the greatest Time-Lords are able to take multiple 
-  actions in a single turn.
+  to their advantage. They gain new powers as their experience grows, 
+  and are unique in their ability to use time-based spells against 
+  monsters. Not only do these attacks damage a foe, they also inflict a 
+  wide variety of possible effects, from slowing to amnesia, from 
+  evolution to devolution, from weakening to stasis. In addition to 
+  temporal attacks, Time-Lords gain great powers of speed, and become 
+  naturally faster with experience. Legend has it that masters of time 
+  can even see into the future, avoiding attacks that would otherwise 
+  prove fatal!
    
-  Time-Lords are mediocre fighters and not good at archery at all. They 
-  are OK with magical devices, but nowhere near as proficient as are 
-  mages. They have midling stealth. At high levels, they become 
-  resistant to time. The Time-Lord's primary magic stat is Wisdom.
+  Time-Lords are fairly proficient with magical devices, but are 
+  mediocre fighters and not good at archery at all. At high levels, 
+  they become resistant to time. Time-Lords' primary stat is Wisdom.
   
     Stats                   Skills
     Strength      -1        Disarming   Poor         
     Intelligence  +0        Device      Very Good    
     Wisdom        +3        Save        Fair         
-    Dexterity     -1        Stealth     Fair         
+    Dexterity     -1        Stealth     Poor         
     Constitution  -1        Searching   Poor         
     Charisma      +0        Perception  Bad          
     Life Rating   96%       Melee       Fair         
-    Base HP        0        Bows        Poor         
+    Base HP        0        Archery     Poor         
     Experience   125%
     
   Warlock
-  A Warlock is a magical class but, unlike normal spellcasters, they 
-  derive their powers, stats, skills and bonuses by making a pact with 
-  a given class of monsters. This pact is irrevocable and is made at 
-  the outset of the Warlock's career. Depending on the class of 
-  monsters with whom they ally, the warlock will gain unique bonuses, 
-  abilities and magical powers. For example, alliance with the forces 
-  of the netherworld grants resistances to poison and nether, enhanced 
-  constitution and spells to control and conjure the unliving as well 
-  as spells to access the damaging forces of the netherworld directly. 
-  Each such alliance has thematic bonuses and powers, and you can read 
-  the details in the respective help sections. On final comment: 
-  allying with a given class of monsters dramatically reduces the 
-  warlock's ability to fight these foes. Instead, the warlock seeks 
-  cooperation with their brethren, or, perhaps, domination over them. 
-  But direct assaults are rarely successful.
-   
-  In addition to pact related spells, all warlocks gain access to the 
-  unique power of the Eldritch Blast. Their primary spell stat is 
-  Charisma since they seek dominion and alliance with their chosen kin, 
-  and these monsters tend to have a strong will of their own, resisting 
-  the binding forces which the warlock imposes to gain both mastery and 
-  power.
+  Warlocks are a magical class; they derive their spells and powers not 
+  from books, but from an eldritch pact made with a given class of 
+  monsters. This pact is irrevocable and is made at the outset of the 
+  Warlock's career. Depending on the class of monsters with whom they 
+  ally, the warlock will gain unique bonuses, abilities and magical 
+  powers; for example, alliance with the forces of the netherworld 
+  grants resistances to poison and nether, enhanced constitution and 
+  spells to control and conjure the unliving, as well as spells to 
+  access the damaging forces of the netherworld directly. Each such 
+  alliance has thematic bonuses and powers, and you can read the 
+  details in the respective help sections.
   
-  See [f] for more details on warlock pacts.
+  Allying with a given class of monsters dramatically reduces the 
+  warlock's ability to fight these foes. Instead, the warlock seeks 
+  cooperation with their brethren, or perhaps domination over them; 
+  direct assaults are rarely successful.
+   
+  In addition to pact-related spells, all warlocks gain access to the 
+  unique power of the Eldritch Blast. Their primary spell stat is 
+  Charisma, since they seek dominion and alliance with their chosen 
+  kin, and these monsters tend to have a strong will of their own.
+  
+  See [h] for more details on warlock pacts.
   
     Stats                   Skills
     Strength      -1        Disarming   Poor         
     Intelligence  +2        Device      Superb       
-    Wisdom        -3        Save        Excellent    
-    Dexterity     +0        Stealth     Very Good    
+    Wisdom        -3        Save        Very Good    
+    Dexterity     +0        Stealth     Good         
     Constitution  +2        Searching   Poor         
-    Charisma      +4        Perception  Fair         
+    Charisma      +2        Perception  Poor         
     Life Rating  107%       Melee       Fair         
-    Base HP       15        Bows        Poor         
+    Base HP       15        Archery     Poor         
     Experience   135%
     
   
@@ -1149,28 +1171,24 @@ Other
   enhanced by Wisdom.
   
     Stats                   Skills
-    Strength      -1        Disarming   Superb       
+    Strength      -1        Disarming   Excellent    
     Intelligence  +1        Device      Excellent    
     Wisdom        +2        Save        Fair         
-    Dexterity     +1        Stealth     Very Good    
-    Constitution  -1        Searching   Excellent    
-    Charisma      +0        Perception  Good         
-    Life Rating  106%       Melee       Very Good    
-    Base HP        8        Bows        Poor         
+    Dexterity     +1        Stealth     Good         
+    Constitution  -1        Searching   Very Good    
+    Charisma      +0        Perception  Fair         
+    Life Rating  106%       Melee       Good         
+    Base HP        8        Archery     Poor         
     Experience   120%
     
   Bard
-  Bards are something like traditional musicians. Their magical attacks 
-  are sound-based, and last as long as the Bard has mana. Although a 
-  bard cannot sing two or more songs at the same time, he or she does 
-  have the advantage that many songs affect all areas in sight. A 
-  bard's prime statistic is charisma.
-   
-  The songs are found in four songbooks, of which two are sold in town. 
-  There is a special feature of music; many songs continue to be sung 
-  until either the Bard chooses to stop, or he runs out of the energy 
-  required to sing that type of song. Bards have a class power - 'Stop 
-  Singing'.
+  Bards are traditional musicians, and songs and sound are the 
+  foundation of their magic. Four songbooks are available to a Bard, 
+  two of them sold in towns. Some songs are over in a quick yelp, 
+  consuming no more time than a magic spell would; but most continue to 
+  be sung, with continuing effects, until the bard either chooses to 
+  stop or runs out of mental energy. A bard can only ever sing one tune 
+  at a time. The primary spell stat of a bard is Charisma.
   
     Stats                   Skills
     Strength      -2        Disarming   Poor         
@@ -1178,9 +1196,9 @@ Other
     Wisdom        +2        Save        Fair         
     Dexterity     -1        Stealth     Very Bad     
     Constitution  -2        Searching   Poor         
-    Charisma      +4        Perception  Fair         
-    Life Rating  100%       Melee       Bad          
-    Base HP        4        Bows        Bad          
+    Charisma      +4        Perception  Poor         
+    Life Rating  100%       Melee       Poor         
+    Base HP        4        Archery     Bad          
     Experience   140%
     
   Lawyer
@@ -1190,17 +1208,17 @@ Other
   avoid dangerous fights, to acquire knowledge about the world around 
   him, and to make friends and influence people. As he relies on his 
   familiarity with Law and with tricks and approaches that have worked 
-  in the past, the lawyer uses WIS as his spellcasting stat.
+  in the past, the lawyer uses Wisdom as his spellcasting stat.
   
     Stats                   Skills
-    Strength      -3        Disarming   Superb       
+    Strength      -3        Disarming   Excellent    
     Intelligence  +2        Device      Very Good    
     Wisdom        +0        Save        Good         
-    Dexterity     +0        Stealth     Good         
-    Constitution  -1        Searching   Excellent    
-    Charisma      +1        Perception  Good         
+    Dexterity     +0        Stealth     Fair         
+    Constitution  -1        Searching   Good         
+    Charisma      +1        Perception  Fair         
     Life Rating  102%       Melee       Good         
-    Base HP       12        Bows        Fair         
+    Base HP       12        Archery     Fair         
     Experience   115%
     
   Politician
@@ -1214,84 +1232,84 @@ Other
   levels. Charisma is a key stat for Politicians.
   
     Stats                   Skills
-    Strength      -2        Disarming   Superb       
-    Intelligence  +1        Device      Fair         
+    Strength      -2        Disarming   Excellent    
+    Intelligence  +1        Device      Poor         
     Wisdom        +0        Save        Good         
-    Dexterity     -2        Stealth     Superb       
-    Constitution  +0        Searching   Excellent    
+    Dexterity     -2        Stealth     Excellent    
+    Constitution  +0        Searching   Good         
     Charisma      +2        Perception  Fair         
-    Life Rating  100%       Melee       Very Bad     
-    Base HP        9        Bows        Bad          
+    Life Rating  100%       Melee       Bad          
+    Base HP        9        Archery     Bad          
     Experience   130%
     
   Rage-Mage
-  The Rage Mage is part of a secret sect descending from the Barbarians 
-  in response to their natural foes, the mages. As time passed, other 
-  races have also begun to learn their arts. The powers of the Rage 
-  Mage are spells learned from books, but they don't work the way 
-  normal spells do. First of all, the Rage Mage must perform a special 
-  Ritual of Anger to learn a spell, and this ritual destroys the spell 
-  book in the process. As a result, it may take a long time for the 
-  Rage Mage to learn all of their high level powers. Once learned, the 
-  Rage Mage no longers requires the spell book in order to perform the 
-  power.
-   
-  Another unique aspect of the Rage Mage concerns their Mana pool. 
-  Unlike normal spellcasters, the Rage Mage's mana does not regenerate 
-  on its own. In fact, their mana actually decreases rapidly each turn, 
-  meaning that they had better use their powers quickly while they 
-  still can. The Rage Mage gains mana whenever he is the target of a 
-  magical spell. Indeed, magic makes the Rage Mage very angry! The Rage 
-  Mage can also fuel their mana by hurting those around them. This can 
-  be quite effective in crowded situations.
+  Rage-Mages are part of a secret sect, originally founded by 
+  Barbarians in response to their natural foes, the mages. With the 
+  passing of time, other races have also begun to study these arts.
+  
+  Rage techniques are learned from books, but differ from normal spells 
+  in many ways. First of all, the Rage-Mage must perform a special 
+  Ritual of Anger to learn a power, and this ritual destroys the book; 
+  as a result, it may take a long time for the Rage-Mage to learn all 
+  of their high-level powers. Books are required only for learning; the 
+  powers, once learned, can be used without them.
+  
+  Another unique aspect of Rage-Mages concerns their mana pool. 
+  Rage-Mage mana, unlike that of normal spellcasters, does not 
+  regenerate on its own; in fact, it actually decreases rapidly each 
+  turn, meaning Rage-Mages had better use their powers quickly while 
+  they still can. A Rage-Mage gains mana whenever he is the target of a 
+  magical spell; indeed, magic makes a Rage-Mage very angry! Rage-Mages 
+  can also fuel their mana by hurting those around them, which can be 
+  quite effective in crowded situations.
   
     Stats                   Skills
-    Strength      +3        Disarming   Bad          
+    Strength      +3        Disarming   Poor         
     Intelligence  -2        Device      Bad          
     Wisdom        -2        Save        Superb       
-    Dexterity     -2        Stealth     Bad          
+    Dexterity     -2        Stealth     Very Bad     
     Constitution  +2        Searching   Poor         
     Charisma      +1        Perception  Bad          
-    Life Rating  106%       Melee       Fair         
-    Base HP        6        Bows        Fair         
+    Life Rating  106%       Melee       Good         
+    Base HP        6        Archery     Fair         
     Experience   150%
     
   Skillmaster
   The Skillmaster is not your ordinary class. Instead, you may design 
-  your own class, on the fly, using a point based skill system. Upon 
-  birth, you will get 5 points to spend and you should use these wisely 
-  to set the basic direction of your class. Upon gaining every fifth 
-  level, you will receive an additional point to spend, for fifteen 
-  points overall. You may use these points to learn melee or to gain 
-  access to spell realms. You can improve your speed or your stealth. 
-  Or you may gain increased magic device skills. In addition, you may 
-  learn riding skills, dual wielding or even martial arts. You will 
-  have a lot of flexibility in how you choose to play this class.
-   
+  your own class, on the fly, using a point-based skill system. Upon 
+  birth, you will get 5 points to spend; use them wisely to set the 
+  basic direction of your class. Every fifth character level, you will 
+  receive an additional point to spend, for fifteen points overall. You 
+  may use these points to learn melee, to master a spell realm, to 
+  improve your speed or stealth, to increase your magic device skills, 
+  to gain special techniques, to learn riding, dual-wielding or martial 
+  arts... no other class, even Psion or Yeqrezh Disciple, offers as 
+  much flexibility.
+  
   Most skills allow the investment of multiple points for increased 
   proficiency, but some are abilities that you may buy with a single 
-  point (e.g. Luck). This class is not recommended for beginning or 
-  immediate players. You only have a limited amount of points to spend, 
-  and your choices are irreversible.
+  point (e.g. Luck). This class is not recommended for beginning 
+  players, despite being quite strong; you only have a limited amount 
+  of points to spend, and your choices are irreversible.
   
-  See [g] for more details on skillmasters.
+  See [i] for more details on skillmasters.
   
     Stats                   Skills
     Strength      +0        Disarming   Very Bad     
     Intelligence  +0        Device      Very Bad     
     Wisdom        +0        Save        Very Bad     
-    Dexterity     +0        Stealth     Poor         
+    Dexterity     +0        Stealth     Bad          
     Constitution  +0        Searching   Bad          
     Charisma      +0        Perception  Bad          
     Life Rating  100%       Melee       Very Bad     
-    Base HP       10        Bows        Very Bad     
+    Base HP       10        Archery     Very Bad     
     Experience   130%
     
   Tourist
   Tourists have visited this world for the purpose of sightseeing. 
-  Their fighting skills are bad and they cannot cast powerful spells. 
+  Their fighting skills are bad, and they cannot cast powerful spells. 
   They are the most difficult class to win the game with. Intelligence 
-  determines a tourist's spell casting ability.
+  determines a tourist's spellcasting ability.
    
   Tourists are always seeing more of the world to add to their stock of 
   information; no other class can compete with their identification 
@@ -1302,36 +1320,36 @@ Other
     Stats                   Skills
     Strength      -2        Disarming   Bad          
     Intelligence  -1        Device      Very Bad     
-    Wisdom        -1        Save        Bad          
-    Dexterity     -1        Stealth     Fair         
+    Wisdom        -1        Save        Poor         
+    Dexterity     -1        Stealth     Poor         
     Constitution  -2        Searching   Poor         
     Charisma      -3        Perception  Bad          
     Life Rating   94%       Melee       Fair         
-    Base HP        0        Bows        Bad          
+    Base HP        0        Archery     Bad          
     Experience    70%
     
   Wild-Talent
-  The Wild-Talent gains random talents and abilities as they level up. 
-  They are good fighters, and decent with magical devices, but their 
-  true forte is their vast array of potential random powers. Except you 
+  Wild-Talents gain random talents and abilities as they level up. They 
+  are good fighters, and decent with magical devices, but their true 
+  forte is their vast array of potential random powers. Except you 
   never know what those might be!
    
   Wild-Talents do not have a spell stat. Instead, each ability that 
-  they gain requires its own individual stat for purposes of fail rate 
-  calculation. For example, Tossing a Boulder requires Strength while 
-  Magic Missile requires Intelligence. Each spell requires mana to 
-  cast, but the amount of mana available is not influenced by any 
-  particular stat and is simply determined by experience.
+  they gain requires its own individual stat for the purposes of fail 
+  rate calculation; for example, Tossing a Boulder requires Strength, 
+  while Magic Missile requires Intelligence. Each spell requires mana 
+  to cast, but the amount of mana available is not influenced by any 
+  particular stat and is determined simply by experience.
   
     Stats                   Skills
     Strength      -1        Disarming   Fair         
     Intelligence  +1        Device      Good         
-    Wisdom        +1        Save        Fair         
-    Dexterity     +1        Stealth     Fair         
+    Wisdom        +1        Save        Poor         
+    Dexterity     +1        Stealth     Poor         
     Constitution  -2        Searching   Fair         
     Charisma      +1        Perception  Poor         
-    Life Rating  100%       Melee       Very Good    
-    Base HP        4        Bows        Very Good    
+    Life Rating  100%       Melee       Good         
+    Base HP        4        Archery     Excellent    
     Experience   110%
     
   
@@ -1342,17 +1360,18 @@ Berserker      +8  -20  -20   +4   +4   +4  200%  +22  160%
 Blood-Knight   +2   -2   -2   +0   +3   +2  120%  +20  150%
 Duelist        +2   +1   -2   +2   -3   +2  100%   +4  150%
 Mauler         +5   -2   -2   -1   +3   +2  110%  +18  120%
-Rune-Knight    +2   +1   -1   +1   +0   +1  102%   +6  150%
-Samurai        +3   -2   +1   +2   +1   +1  109%  +12  130%
+Rune-Knight    +2   +1   -1   +1   +0   +1  101%   +7  150%
+Samurai        +2   -2   +1   +2   +1   +1  107%  +12  130%
 Warrior        +4   -2   -2   +2   +2   +1  115%  +18  100%
-Weaponmaster   +4   -3   -2   -1   +2   +1  107%  +12  135%
+Weaponmaster   +3   -3   -2   -2   +1   +0  105%  +12  135%
 Weaponsmith    +3   -1   -1   +1   +0   -1  106%  +12  130%
 Archer         +2   -1   -1   +2   +1   +0  111%  +12  110%
 Sniper         +2   -1   -1   +2   +1   +0  100%   +4  110%
 Force-Trainer  +0   -1   +3   +2   +1   +0  100%   +4  135%
-Monk           +2   -1   +1   +3   +2   +1  102%  +12  130%
+Monk           +1   -1   +1   +3   +2   +1  102%  +12  130%
 Mystic         +2   -1   -2   +3   +1   +2  100%   +4  130%
 Blood-Mage     -4   +3   -2   +1   +2   -2  108%  +10  135%
+Blue-Mage      -4   +4   -1   +1   -2   -2   98%   +4  130%
 Gray-Mage      -4   +3   +0   +1   -2   -2   95%   +0  130%
 High-Mage      -4   +4   +0   +0   -2   -2   94%   +0  130%
 Mage           -4   +3   +0   +1   -2   -2   95%   +0  130%
@@ -1364,11 +1383,12 @@ Devicemaster   -1   +2   +1   +2   -2   -2  101%   +6  130%
 Magic-Eater    -1   +2   +1   +2   -2   -2  103%   +6  130%
 Priest         -1   -3   +3   -1   +0   +2  100%   +4  120%
 Ninja          +0   -1   -1   +3   +2   +2  100%   +4  120%
-Rogue          +2   +1   -1   +3   +1   +1  100%  +12  125%
+Rogue          +1   +1   -1   +3   +0   +1  100%  +12  125%
 Scout          +1   -1   +2   +3   +0   +0  104%   +8  130%
-Chaos-Warrior  +2   +1   -1   +0   +2   +1  111%  +12  125%
+Chaos-Warrior  +2   +1   -1   +0   +1   +1  109%  +12  125%
+Disciple       -1   +1   -1   +0   -1   +1   95%  +14  125%
 Ninja-Lawyer   -1   +0   +0   +2   +0   +2   99%   +8  115%
-Paladin        +3   -3   +1   +0   +2   +2  111%  +12  135%
+Paladin        +2   -3   +1   +0   +2   +2  111%  +12  135%
 Ranger         +2   +0   +2   +1   +1   +0  106%   +8  140%
 Red-Mage       +2   +2   -1   +1   +0   -1  106%   +8  140%
 Warrior-Mage   +2   +2   +0   +1   +0   +1  106%   +8  140%
@@ -1378,7 +1398,7 @@ Mindcrafter    -1   +0   +3   -1   -1   +2   99%   +4  125%
 Mirror-Master  -2   +3   +1   -1   -2   -2  100%   +4  130%
 Psion          -1   +2   +2   -1   -1   +2   96%   +4  150%
 Time-Lord      -1   +0   +3   -1   -1   +0   96%   +0  125%
-Warlock        -1   +2   -3   +0   +2   +4  107%  +15  135%
+Warlock        -1   +2   -3   +0   +2   +2  107%  +15  135%
 Archaeologist  -1   +1   +2   +1   -1   +0  106%   +8  120%
 Bard           -2   +1   +2   -1   -2   +4  100%   +4  140%
 Lawyer         -3   +2   +0   +0   -1   +1  102%  +12  115%
@@ -1393,111 +1413,115 @@ Table 2 - Class Skill Bonus Table I
 
               Disarming     Device        Save          Stealth      
 Berserker     Very Bad      Very Bad      Very Bad      Very Bad     
-Blood-Knight  Good          Bad           Fair          Fair         
-Duelist       Good          Fair          Bad           Good         
-Mauler        Good          Fair          Very Good     Poor         
-Rune-Knight   Fair          Good          Fair          Fair         
-Samurai       Good          Bad           Fair          Fair         
-Warrior       Good          Bad           Fair          Fair         
-Weaponmaster  Fair          Bad           Fair          Fair         
-Weaponsmith   Good          Fair          Bad           Fair         
-Archer        Excellent     Fair          Fair          Very Good    
-Sniper        Good          Fair          Poor          Excellent    
-Force-Trainer Good          Very Good     Good          Very Good    
-Monk          Superb        Good          Fair          Excellent    
-Mystic        Superb        Very Good     Fair          Excellent    
-Blood-Mage    Fair          Superb        Good          Good         
-Gray-Mage     Fair          Superb        Good          Good         
-High-Mage     Fair          Superb        Good          Good         
-Mage          Fair          Superb        Good          Good         
-Necromancer   Fair          Superb        Good          Very Good    
-Sorcerer      Fair          Heroic        Heroic        Fair         
-Yellow-Mage   Fair          Superb        Good          Good         
-Alchemist     Excellent     Fair          Fair          Excellent    
-Devicemaster  Poor          Superb        Fair          Fair         
-Magic-Eater   Poor          Superb        Fair          Fair         
-Priest        Poor          Good          Excellent     Fair         
-Ninja         Superb        Fair          Fair          Superb       
-Rogue         Superb        Excellent     Fair          Excellent    
-Scout         Excellent     Very Good     Fair          Excellent    
-Chaos-Warrior Bad           Good          Fair          Fair         
-Ninja-Lawyer  Superb        Good          Fair          Superb       
-Paladin       Bad           Fair          Fair          Fair         
-Ranger        Fair          Excellent     Fair          Good         
-Red-Mage      Bad           Very Good     Fair          Fair         
-Warrior-Mage  Fair          Excellent     Fair          Fair         
-Beastmaster   Bad           Fair          Fair          Fair         
-Cavalry       Fair          Bad           Fair          Fair         
-Mindcrafter   Good          Very Good     Fair          Good         
-Mirror-Master Good          Very Good     Excellent     Good         
-Psion         Poor          Very Good     Excellent     Fair         
-Time-Lord     Poor          Very Good     Fair          Fair         
-Warlock       Poor          Superb        Excellent     Very Good    
-Archaeologist Superb        Excellent     Fair          Very Good    
+Blood-Knight  Good          Bad           Fair          Poor         
+Duelist       Fair          Fair          Bad           Fair         
+Mauler        Good          Fair          Good          Bad          
+Rune-Knight   Fair          Fair          Fair          Poor         
+Samurai       Good          Bad           Fair          Poor         
+Warrior       Good          Bad           Poor          Poor         
+Weaponmaster  Poor          Bad           Bad           Poor         
+Weaponsmith   Fair          Poor          Bad           Poor         
+Archer        Very Good     Fair          Fair          Good         
+Sniper        Good          Fair          Poor          Very Good    
+Force-Trainer Fair          Very Good     Good          Good         
+Monk          Excellent     Good          Fair          Very Good    
+Mystic        Excellent     Good          Fair          Very Good    
+Blood-Mage    Fair          Superb        Good          Fair         
+Blue-Mage     Fair          Superb        Good          Fair         
+Gray-Mage     Fair          Superb        Good          Fair         
+High-Mage     Fair          Superb        Good          Fair         
+Mage          Fair          Superb        Good          Fair         
+Necromancer   Fair          Superb        Good          Good         
+Sorcerer      Fair          Amber[2]      Heroic        Poor         
+Yellow-Mage   Fair          Superb        Good          Fair         
+Alchemist     Very Good     Fair          Fair          Fair         
+Devicemaster  Poor          Superb        Fair          Poor         
+Magic-Eater   Poor          Heroic        Fair          Poor         
+Priest        Poor          Good          Very Good     Poor         
+Ninja         Excellent     Fair          Fair          Superb       
+Rogue         Excellent     Excellent     Fair          Very Good    
+Scout         Very Good     Very Good     Fair          Excellent    
+Chaos-Warrior Poor          Good          Fair          Poor         
+Disciple      Fair          Excellent     Good          Fair         
+Ninja-Lawyer  Excellent     Good          Fair          Superb       
+Paladin       Poor          Fair          Fair          Poor         
+Ranger        Fair          Excellent     Fair          Fair         
+Red-Mage      Poor          Very Good     Fair          Poor         
+Warrior-Mage  Fair          Excellent     Fair          Poor         
+Beastmaster   Poor          Fair          Fair          Poor         
+Cavalry       Fair          Bad           Fair          Poor         
+Mindcrafter   Fair          Very Good     Fair          Fair         
+Mirror-Master Fair          Very Good     Very Good     Fair         
+Psion         Poor          Very Good     Very Good     Poor         
+Time-Lord     Poor          Very Good     Fair          Poor         
+Warlock       Poor          Superb        Very Good     Good         
+Archaeologist Excellent     Excellent     Fair          Good         
 Bard          Poor          Excellent     Fair          Very Bad     
-Lawyer        Superb        Very Good     Good          Good         
-Politician    Superb        Fair          Good          Superb       
-Rage-Mage     Bad           Bad           Superb        Bad          
-Skillmaster   Very Bad      Very Bad      Very Bad      Poor         
-Tourist       Bad           Very Bad      Bad           Fair         
-Wild-Talent   Fair          Good          Fair          Fair         
+Lawyer        Excellent     Very Good     Good          Fair         
+Politician    Excellent     Poor          Good          Excellent    
+Rage-Mage     Poor          Bad           Superb        Very Bad     
+Skillmaster   Very Bad      Very Bad      Very Bad      Bad          
+Tourist       Bad           Very Bad      Poor          Poor         
+Wild-Talent   Fair          Good          Poor          Poor         
 
 
 Table 3 - Class Skill Bonus Table II
 
-              Searching     Perception    Melee         Bows         
-Berserker     Very Bad      Very Bad      Amber[20]     Very Bad     
-Blood-Knight  Poor          Bad           Superb        Poor         
-Duelist       Fair          Poor          Fair          Very Bad     
-Mauler        Poor          Bad           Superb        Very Bad     
-Rune-Knight   Fair          Poor          Fair          Poor         
-Samurai       Poor          Bad           Superb        Good         
-Warrior       Poor          Bad           Superb        Superb       
-Weaponmaster  Poor          Bad           Superb        Bad          
-Weaponsmith   Poor          Bad           Excellent     Fair         
-Archer        Fair          Poor          Very Good     Heroic       
-Sniper        Good          Fair          Poor          Superb       
-Force-Trainer Good          Fair          Fair          Fair         
-Monk          Good          Fair          Excellent     Excellent    
-Mystic        Good          Fair          Excellent     Excellent    
-Blood-Mage    Poor          Fair          Very Bad      Very Bad     
-Gray-Mage     Poor          Fair          Very Bad      Very Bad     
-High-Mage     Poor          Fair          Very Bad      Very Bad     
-Mage          Poor          Fair          Very Bad      Very Bad     
-Necromancer   Poor          Fair          Very Bad      Very Bad     
-Sorcerer      Poor          Fair          Very Bad      Very Bad     
-Yellow-Mage   Poor          Fair          Very Bad      Very Bad     
-Alchemist     Excellent     Fair          Good          Very Good    
-Devicemaster  Fair          Poor          Fair          Poor         
-Magic-Eater   Fair          Poor          Fair          Poor         
+              Searching     Perception    Melee         Archery      
+Berserker     Very Bad      Very Bad      Amber[25]     Very Bad     
+Blood-Knight  Poor          Bad           Superb        Fair         
+Duelist       Poor          Poor          Fair          Very Bad     
+Mauler        Poor          Bad           Heroic        Very Bad     
+Rune-Knight   Poor          Poor          Fair          Poor         
+Samurai       Poor          Bad           Superb        Very Good    
+Warrior       Poor          Bad           Heroic        Heroic       
+Weaponmaster  Poor          Bad           Heroic        Poor         
+Weaponsmith   Poor          Bad           Very Good     Good         
+Archer        Fair          Poor          Good          Amber[12]    
+Sniper        Fair          Poor          Poor          Heroic       
+Force-Trainer Fair          Fair          Fair          Good         
+Monk          Fair          Fair          Very Good     Excellent    
+Mystic        Fair          Fair          Very Good     Excellent    
+Blood-Mage    Poor          Poor          Bad           Bad          
+Blue-Mage     Poor          Poor          Bad           Bad          
+Gray-Mage     Poor          Poor          Bad           Bad          
+High-Mage     Poor          Poor          Bad           Bad          
+Mage          Poor          Poor          Bad           Bad          
+Necromancer   Poor          Poor          Bad           Bad          
+Sorcerer      Poor          Poor          Very Bad      Very Bad     
+Yellow-Mage   Poor          Poor          Bad           Bad          
+Alchemist     Very Good     Fair          Good          Excellent    
+Devicemaster  Poor          Poor          Fair          Poor         
+Magic-Eater   Poor          Poor          Fair          Poor         
 Priest        Poor          Bad           Fair          Poor         
-Ninja         Excellent     Good          Superb        Poor         
-Rogue         Good          Fair          Excellent     Good         
-Scout         Excellent     Fair          Very Good     Superb       
+Ninja         Very Good     Fair          Superb        Poor         
+Rogue         Fair          Fair          Excellent     Very Good    
+Scout         Very Good     Fair          Very Good     Heroic       
 Chaos-Warrior Poor          Poor          Excellent     Good         
-Ninja-Lawyer  Excellent     Fair          Excellent     Poor         
-Paladin       Poor          Bad           Excellent     Good         
-Ranger        Fair          Poor          Very Good     Good         
-Red-Mage      Poor          Bad           Very Good     Bad          
-Warrior-Mage  Fair          Poor          Very Good     Good         
-Beastmaster   Fair          Poor          Fair          Superb       
-Cavalry       Poor          Bad           Excellent     Superb       
-Mindcrafter   Fair          Poor          Fair          Good         
-Mirror-Master Poor          Poor          Very Bad      Bad          
+Disciple      Fair          Poor          Good          Good         
+Ninja-Lawyer  Good          Fair          Excellent     Poor         
+Paladin       Poor          Bad           Excellent     Very Good    
+Ranger        Fair          Poor          Good          Very Good    
+Red-Mage      Poor          Bad           Good          Poor         
+Warrior-Mage  Poor          Poor          Good          Good         
+Beastmaster   Poor          Poor          Fair          Heroic       
+Cavalry       Poor          Bad           Excellent     Heroic       
+Mindcrafter   Poor          Poor          Fair          Good         
+Mirror-Master Poor          Poor          Bad           Poor         
 Psion         Poor          Bad           Fair          Poor         
 Time-Lord     Poor          Bad           Fair          Poor         
-Warlock       Poor          Fair          Fair          Poor         
-Archaeologist Excellent     Good          Very Good     Poor         
-Bard          Poor          Fair          Bad           Bad          
-Lawyer        Excellent     Good          Good          Fair         
-Politician    Excellent     Fair          Very Bad      Bad          
-Rage-Mage     Poor          Bad           Fair          Fair         
+Warlock       Poor          Poor          Fair          Poor         
+Archaeologist Very Good     Fair          Good          Poor         
+Bard          Poor          Poor          Poor          Bad          
+Lawyer        Good          Fair          Good          Fair         
+Politician    Good          Fair          Bad           Bad          
+Rage-Mage     Poor          Bad           Good          Fair         
 Skillmaster   Bad           Bad           Very Bad      Very Bad     
 Tourist       Poor          Bad           Fair          Bad          
-Wild-Talent   Fair          Poor          Very Good     Very Good    
+Wild-Talent   Fair          Poor          Good          Excellent    
 
 
 
 
-Automatically generated for FrogComposband 7.0.cloudberry.
+Automatically generated for FrogComposband 7.1.liquorice.
 
