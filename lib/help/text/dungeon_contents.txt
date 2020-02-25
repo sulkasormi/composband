@@ -1,15 +1,20 @@
-The Town and Dungeon
+The Dungeons
 
-Please choose one of the following online help files:
+Please choose one of the following sections in the help file:
 
-    [a] Town and Dungeon
+    [a] The Dungeons
     [b] Symbols on Your Map
     [c] Within the Dungeon
     [d] Objects in the Dungeon
     [e] Mining
-    [f] Staircases, Doors, Passages & Rooms
-    [g] Level Feelings
-    [h] Random Quests
+    [f] Staircases
+    [g] Secret Doors
+    [h] Floor Traps
+    [i] Level Feelings
+    [j] Random Quests
+    [k] Fixed Quests
+    [l] Conquering Dungeons
+    [m] List of Dungeons
 
     (?) Help System Commands
 
