@@ -703,21 +703,20 @@ race_t *mon_hound_get_race(void)
         me.extra_skills = xs;
 
         me.name = "Hound";
-        me.desc = "While Hounds typically hunt in packs, you have chosen to go it alone. "
-                    "You will begin life in the weak form of a Clear Hound. As you mature "
+        me.desc = "While Zephyr Hounds typically hunt in packs, you have chosen to go it alone. "
+                    "You will begin life in the weak form of a Clear Hound. As you mature, "
                     "you will take a number of evolutionary steps. At each such step, the "
-                    "form you evolve into will be randomly determined. But each tier offers "
-                    "more powerful choices than the last and who knows? You may even evolve "
+                    "form you evolve into will be randomly determined; but each tier offers "
+                    "more powerful choices than the last. Who knows - you may even evolve "
                     "into an Aether Hound some day.\n \n"
-                    "Hounds are monsters so cannot choose a normal class. They are not magical "
-                    "so cannot cast spells. However, they are fantastic hunters so learn a "
-                    "small number of abilities to aid in this endeavor. And of course, you "
-                    "are probably aware that hounds love to breathe!\n \n"
-                    "The body of the Hound is canine, so they cannot wield weapons. Instead, "
-                    "they attack with their vicious bite and razor sharp claws. They are not "
-                    "so powerful in melee as are dragons, but they are not that bad either. "
+                    "Hounds are not magical, and so cannot cast spells; however, they are "
+                    "fantastic hunters, and learn a number of special abilities that will aid them "
+                    "in this endeavour. And as you probably know all too well, hounds love to breathe!\n \n"
+                    "Due to their canine bodies, Hounds cannot wield weapons; instead, they "
+                    "attack with their vicious bite and razor-sharp claws. While their melee is "
+                    "not as powerful as that of dragons, it usually gets the job done. "
                     "Hounds can wear four rings on their front paws, a pair of boots on their "
-                    "hind legs, an amulet around their neck and even a cloak and a suit of "
+                    "hind legs, an amulet around their neck, and even a cloak and a suit of "
                     "body armor.";
 
 
