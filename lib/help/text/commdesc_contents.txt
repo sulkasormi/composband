@@ -1,6 +1,6 @@
 Command Descriptions
 
-Please choose one of the following online help files:
+Please choose one of the following help sections:
 
     [a] Command Descriptions
     [b] Inventory Commands
@@ -9,17 +9,16 @@ Please choose one of the following online help files:
     [e] Searching Commands
     [f] Alter Commands
     [g] Spell and Prayer Commands
-    [h] Object Manipulation Commands
-    [i] Magical Item Commands
-    [j] Throwing and Missile Weapons
-    [k] Looking Commands
-    [l] Message Commands
-    [m] Game Status Commands
-    [n] Saving and Exiting Commands
-    [o] User Preference Commands
-    [p] Help Commands
-    [q] Extra Commands
-    [r] Summary
+    [h] Object Use Commands
+    [i] Ranged Combat Commands
+    [j] Looking Commands
+    [k] Message Commands
+    [l] Game Status Commands
+    [m] Saving and Exiting Commands
+    [n] User Preference Commands
+    [o] Help Commands
+    [p] Extra Commands
+    [q] Summary
 
     (?) Help System Commands
 
