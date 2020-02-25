@@ -1,6 +1,6 @@
 Shopping
 
-Press [a] for the Quick Reference.
+Press [a] for the Quick Reference and [b] for details on shopping.
 
 Each town on the surface contains numerous shops where you may purchase 
 supplies or sell unwanted objects. Each shop specializes in a certain 
@@ -14,36 +14,36 @@ Your First Shopping Spree
 
 When you enter a shop, you will see a screen describing the shop's 
 owner and the items available for purchase:
-
-    Selaxis (Zombie)                                            Armory (10000)  
+ 
+     Vengella the Cruel (Half-Troll)                            Armory (15000)  
                                                                                 
-    Item Description                                               Weight  Price
- a) Metal Scale Mail (-2) [13,+2]                                25.0 lbs   1860
- b) a Robe [2,+4]                                                 2.0 lbs    592
- c) 2 Soft Studded Leathers [5,+0]                                9.0 lbs    131
- d) Hard Leather Armour (-1) [6,+0]                              10.0 lbs    111
- e) Hard Studded Leather (-1) [7,+0]                             11.0 lbs    243
- f) 2 Rhino Hide Armours (-1) [8,+0]                             11.0 lbs    420
- g) Leather Scale Mail (-1) [11,+2]                              14.0 lbs   1410
- h) Leather Scale Mail (-1) [11,+1]                              14.0 lbs   1270
- i) 5 Leather Scale Mails (-1) [11,+0]                           14.0 lbs   1160
- j) a Leather Jacket of Elemental Protection (-1) [12,+10] {El   13.0 lbs   8730
- k) a Small Metal Shield [5,+2]                                   6.5 lbs    381
- l) a Small Metal Shield [5,+0]                                   6.5 lbs    131
-(Page 1 of 2)                                                                   
-Gold Remaining: 1.41k                                                           
+     Item Description                                              Weight  Price
+  a) ( Soft Leather Armour of Protection [4,+16]                  8.0 lbs  10400
+  b) ( Cord Armour [6,+4]                                         8.0 lbs   1010
+  c) ( Cord Armour [6,+0]                                         8.0 lbs    272
+  d) ( Leather Scale Mail (-1) [11,+0]                           14.0 lbs   1540
+  e) ( a Leather Jacket (-1) [12,+0]                             13.0 lbs   1870
+  f) ] a Hard Leather Cap [2,+3]                                  1.5 lbs    546
+  g) ] a Metal Cap [3,+0]                                         2.0 lbs     35
+  h) ] a Set of Studded Leather Gloves (+1) [1,+0]                0.5 lbs   1010
+  i) ] a Set of Studded Leather Gloves (+1) [1,+0] {25% off}      0.5 lbs    758
+  j) ] a Pair of Soft Leather Boots [2,+0]                        2.0 lbs     10
+  k) ] a Pair of Hard Leather Boots [3,+0]                        4.0 lbs     35
+  l) ] a Pair of Metal Shod Boots (+2) [4,+0]                     8.0 lbs   2220
                                                                                 
-b to buy. s to sell. x to begin examining items.                                
-B to buyout inventory.                                                          
-Esc to exit. ? for help.                                                        
-
+ Gold Remaining: 1.94k                                                          
+                                                                                
+ b to buy. s to sell. x to begin examining items.                               
+ B to buyout inventory. S to shuffle stock. R to reserve an item.               
+ Esc to exit. ? for help.                                                       
+ 
 A quick list of available commands is displayed on the bottom of the 
 screen. Simply choose the appropriate command and follow the 
-instructions. Use Page Up and Page Down to navigate long lists of shop 
-objects.
+instructions. Use Page Up and Page Down if the shop inventory extends 
+to multiple pages.
 
 Every store owner has access to limited funds, and will only pay so 
-much for items that you sell. This amount is listed next to the store 
+much for items that you sell; this amount is listed next to the store 
 type on the top of the display.
 
 Quick Reference
@@ -51,22 +51,22 @@ Quick Reference
   p b g     Purchase an item from the shop
   s d       Sell an item to the shop
   x         Examine an item in the shop
-  B         Buyout the entire shop inventory
-  S         Shuffle the stock inventory (restricted)
-  R         Reserve a shop item for future purchase (restricted)
+  B         Buy out the entire shop inventory
+  S         Pay to have shop inventory shuffled
+  R         Reserve a shop item for future purchase
   q Esc     Leave the shop
   
   Extra Commands
   w         Wear an item
   t T       Take off an item
   k ^D      Destroy items in your pack
-  e         Display Equipment
-  i         Display Inventory
+  e         Display equipment
+  i         Display inventory
   I         Inspect objects in your pack
-  Tab       Toggle Inventory/Equipment Windows
+  Tab       Toggle inventory/equipment subwindows
   {         Inscribe objects in your pack
-  }         Un-inscribe objects in your pack
-  C         Display Character Sheet
+  }         Uninscribe objects in your pack
+  C         Display character sheet
   
     Note: These Extra Commands are simply normal game 
     commands made available for your convenience so you 
@@ -75,14 +75,14 @@ Quick Reference
     keymaps you may have defined will not apply.
   
   Navigation
-  Page Up   Scroll Through Long Object Lists
+  Page Up   Scroll through long object lists
   Page Down
   Space     Same as Page Up
   -         Same as Page Down
   
   Display Options
-  ^W        Toggle Weights (see [b])
-  ^G        Toggle Graphics (see [c])
+  ^W        Toggle weights (see [c])
+  ^G        Toggle graphics (see [d])
   
 
 
