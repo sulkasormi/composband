@@ -9,25 +9,25 @@ Fathered by a minor god, you gain no starting powers.
 Strength      +1        Disarming   <color:o>Fair         </color>
 Intelligence  +1        Device      <color:o>Fair         </color>
 Wisdom        +1        Save        <color:o>Fair         </color>
-Dexterity     +1        Stealth     <color:r>Bad          </color>
-Constitution  +1        Searching   <color:r>Bad          </color>
-Charisma      +1        Perception  <color:G>Excellent    </color>
-Life Rating  100%       Melee       <color:G>Excellent    </color>
-Base HP       20        Bows        <color:y>Very Good    </color>
+Dexterity     +1        Stealth     <color:R>Poor         </color>
+Constitution  +1        Searching   <color:o>Fair         </color>
+Charisma      +1        Perception  <color:R>Poor         </color>
+Life Rating  100%       Melee       <color:y>Very Good    </color>
+Base HP       20        Archery     <color:y>Good         </color>
 Experience   180%       Infravision 0'
 </style></indent>
 <topic:Zeus><color:o>Zeus</color>
 Zeus, King of the gods and ruler of Mount Olympus, is god of the Sky and Thunder, and nominal husband of Hera. You inherit increased stature and your divine birth will be marked by your aura of electricity. You also resist lightning.
 
   <indent><style:table><color:G>Stats                   Skills</color>
-Strength      +2        Disarming   <color:o>Fair         </color>
+Strength      +2        Disarming   <color:y>Good         </color>
 Intelligence  +2        Device      <color:y>Good         </color>
 Wisdom        +2        Save        <color:y>Good         </color>
-Dexterity     +2        Stealth     <color:r>Bad          </color>
-Constitution  +2        Searching   <color:r>Bad          </color>
-Charisma      +2        Perception  <color:G>Excellent    </color>
+Dexterity     +2        Stealth     <color:R>Poor         </color>
+Constitution  +2        Searching   <color:o>Fair         </color>
+Charisma      +2        Perception  <color:R>Poor         </color>
 Life Rating  100%       Melee       <color:g>Superb       </color>
-Base HP       20        Bows        <color:G>Excellent    </color>
+Base HP       20        Archery     <color:y>Good         </color>
 Experience   250%       Infravision 0'
 </style></indent>
 <topic:Poseidon><color:o>Poseidon</color>
@@ -37,11 +37,11 @@ Poseidon, Brother of Zeus, is Lord of the Seas and Storm. You inherit elemental 
 Strength      +2        Disarming   <color:o>Fair         </color>
 Intelligence  +1        Device      <color:o>Fair         </color>
 Wisdom        +1        Save        <color:o>Fair         </color>
-Dexterity     +2        Stealth     <color:r>Bad          </color>
-Constitution  +1        Searching   <color:r>Bad          </color>
-Charisma      +1        Perception  <color:G>Excellent    </color>
-Life Rating  100%       Melee       <color:g>Superb       </color>
-Base HP       20        Bows        <color:y>Very Good    </color>
+Dexterity     +2        Stealth     <color:R>Poor         </color>
+Constitution  +1        Searching   <color:o>Fair         </color>
+Charisma      +1        Perception  <color:R>Poor         </color>
+Life Rating  100%       Melee       <color:G>Excellent    </color>
+Base HP       20        Archery     <color:y>Good         </color>
 Experience   240%       Infravision 0'
 </style></indent>
 <topic:Hades><color:o>Hades</color>
@@ -50,12 +50,12 @@ Hades is Ruler of the Underworld. You gain resistance to nether forces, increase
   <indent><style:table><color:G>Stats                   Skills</color>
 Strength      +1        Disarming   <color:o>Fair         </color>
 Intelligence  +1        Device      <color:o>Fair         </color>
-Wisdom        +1        Save        <color:G>Excellent    </color>
-Dexterity     +1        Stealth     <color:R>Poor         </color>
-Constitution  +3        Searching   <color:r>Bad          </color>
-Charisma      +1        Perception  <color:G>Excellent    </color>
-Life Rating  107%       Melee       <color:g>Superb       </color>
-Base HP       20        Bows        <color:y>Very Good    </color>
+Wisdom        +1        Save        <color:y>Good         </color>
+Dexterity     +1        Stealth     <color:o>Fair         </color>
+Constitution  +3        Searching   <color:o>Fair         </color>
+Charisma      +1        Perception  <color:R>Poor         </color>
+Life Rating  107%       Melee       <color:G>Excellent    </color>
+Base HP       20        Archery     <color:y>Good         </color>
 Experience   240%       Infravision 0'
 </style></indent>
 <topic:Athena><color:o>Athena</color>
@@ -63,13 +63,13 @@ Athena is the great goddess of wisdom and the protector of Athens. She was born 
 
   <indent><style:table><color:G>Stats                   Skills</color>
 Strength      +1        Disarming   <color:o>Fair         </color>
-Intelligence  +3        Device      <color:G>Excellent    </color>
+Intelligence  +3        Device      <color:y>Very Good    </color>
 Wisdom        +1        Save        <color:o>Fair         </color>
-Dexterity     +1        Stealth     <color:r>Bad          </color>
-Constitution  +1        Searching   <color:r>Bad          </color>
-Charisma      +1        Perception  <color:G>Excellent    </color>
-Life Rating  100%       Melee       <color:G>Excellent    </color>
-Base HP       20        Bows        <color:y>Very Good    </color>
+Dexterity     +1        Stealth     <color:R>Poor         </color>
+Constitution  +1        Searching   <color:o>Fair         </color>
+Charisma      +1        Perception  <color:R>Poor         </color>
+Life Rating  100%       Melee       <color:y>Very Good    </color>
+Base HP       20        Archery     <color:y>Good         </color>
 Experience   240%       Infravision 0'
 </style></indent>
 <topic:Ares><color:o>Ares</color>
@@ -77,13 +77,13 @@ Ares is the bold son of Zeus and Hera, whose very name is feared and respected b
 
   <indent><style:table><color:G>Stats                   Skills</color>
 Strength      +3        Disarming   <color:o>Fair         </color>
-Intelligence  +1        Device      <color:R>Poor         </color>
-Wisdom        +1        Save        <color:r>Bad          </color>
+Intelligence  +1        Device      <color:o>Fair         </color>
+Wisdom        +1        Save        <color:R>Poor         </color>
 Dexterity     +1        Stealth     <color:r>Bad          </color>
-Constitution  +1        Searching   <color:r>Bad          </color>
-Charisma      +1        Perception  <color:G>Excellent    </color>
-Life Rating  100%       Melee       <color:b>Heroic       </color>
-Base HP       20        Bows        <color:y>Very Good    </color>
+Constitution  +1        Searching   <color:o>Fair         </color>
+Charisma      +1        Perception  <color:R>Poor         </color>
+Life Rating  100%       Melee       <color:g>Superb       </color>
+Base HP       20        Archery     <color:y>Good         </color>
 Experience   240%       Infravision 0'
 </style></indent>
 <topic:Hermes><color:o>Hermes</color>
@@ -93,11 +93,11 @@ Hermes, the Messenger, is the extremely cunning diplomat used by the Olympians t
 Strength      +1        Disarming   <color:G>Excellent    </color>
 Intelligence  +1        Device      <color:o>Fair         </color>
 Wisdom        +1        Save        <color:o>Fair         </color>
-Dexterity     +1        Stealth     <color:o>Fair         </color>
-Constitution  +1        Searching   <color:y>Good         </color>
-Charisma      +1        Perception  <color:g>Superb       </color>
-Life Rating  100%       Melee       <color:G>Excellent    </color>
-Base HP       20        Bows        <color:y>Very Good    </color>
+Dexterity     +1        Stealth     <color:y>Good         </color>
+Constitution  +1        Searching   <color:G>Excellent    </color>
+Charisma      +1        Perception  <color:y>Very Good    </color>
+Life Rating  100%       Melee       <color:y>Very Good    </color>
+Base HP       20        Archery     <color:y>Good         </color>
 Experience   240%       Infravision 0'
 </style></indent>
 <topic:Apollo><color:o>Apollo</color>
@@ -105,13 +105,13 @@ Apollo has been variously recognized as a god of light and the sun, truth and pr
 
   <indent><style:table><color:G>Stats                   Skills</color>
 Strength      +1        Disarming   <color:o>Fair         </color>
-Intelligence  +1        Device      <color:o>Fair         </color>
+Intelligence  +1        Device      <color:y>Good         </color>
 Wisdom        +1        Save        <color:o>Fair         </color>
-Dexterity     +1        Stealth     <color:r>Bad          </color>
-Constitution  +1        Searching   <color:r>Bad          </color>
-Charisma      +1        Perception  <color:G>Excellent    </color>
-Life Rating  100%       Melee       <color:G>Excellent    </color>
-Base HP       20        Bows        <color:y>Very Good    </color>
+Dexterity     +1        Stealth     <color:R>Poor         </color>
+Constitution  +1        Searching   <color:o>Fair         </color>
+Charisma      +1        Perception  <color:R>Poor         </color>
+Life Rating  100%       Melee       <color:y>Very Good    </color>
+Base HP       20        Archery     <color:y>Good         </color>
 Experience   230%       Infravision 0'
 </style></indent>
 <topic:Artemis><color:o>Artemis</color>
@@ -121,11 +121,11 @@ Artemis was often described as the daughter of Zeus and Leto, and the twin siste
 Strength      +1        Disarming   <color:o>Fair         </color>
 Intelligence  +1        Device      <color:o>Fair         </color>
 Wisdom        +1        Save        <color:o>Fair         </color>
-Dexterity     +3        Stealth     <color:r>Bad          </color>
-Constitution  +1        Searching   <color:r>Bad          </color>
-Charisma      +1        Perception  <color:G>Excellent    </color>
-Life Rating  100%       Melee       <color:G>Excellent    </color>
-Base HP       20        Bows        <color:g>Superb       </color>
+Dexterity     +3        Stealth     <color:R>Poor         </color>
+Constitution  +1        Searching   <color:o>Fair         </color>
+Charisma      +1        Perception  <color:R>Poor         </color>
+Life Rating  100%       Melee       <color:y>Very Good    </color>
+Base HP       20        Archery     <color:G>Excellent    </color>
 Experience   230%       Infravision 0'
 </style></indent>
 <topic:Hephaestus><color:o>Hephaestus</color>
@@ -135,11 +135,11 @@ Hephaestus was the god of technology, blacksmiths, craftsmen, artisans, sculptor
 Strength      +1        Disarming   <color:o>Fair         </color>
 Intelligence  +1        Device      <color:o>Fair         </color>
 Wisdom        +1        Save        <color:o>Fair         </color>
-Dexterity     +1        Stealth     <color:r>Bad          </color>
-Constitution  +1        Searching   <color:r>Bad          </color>
-Charisma      +1        Perception  <color:G>Excellent    </color>
+Dexterity     +1        Stealth     <color:R>Poor         </color>
+Constitution  +1        Searching   <color:o>Fair         </color>
+Charisma      +1        Perception  <color:R>Poor         </color>
 Life Rating  100%       Melee       <color:g>Superb       </color>
-Base HP       20        Bows        <color:y>Very Good    </color>
+Base HP       20        Archery     <color:y>Good         </color>
 Experience   230%       Infravision 0'
 </style></indent>
 <topic:Hera><color:o>Hera</color>
@@ -149,11 +149,11 @@ Hera was the wife and one of three sisters of Zeus. Her chief function was as th
 Strength      +1        Disarming   <color:o>Fair         </color>
 Intelligence  +1        Device      <color:y>Good         </color>
 Wisdom        +3        Save        <color:y>Good         </color>
-Dexterity     +1        Stealth     <color:r>Bad          </color>
-Constitution  +1        Searching   <color:r>Bad          </color>
-Charisma      +1        Perception  <color:G>Excellent    </color>
-Life Rating  100%       Melee       <color:G>Excellent    </color>
-Base HP       20        Bows        <color:y>Very Good    </color>
+Dexterity     +1        Stealth     <color:R>Poor         </color>
+Constitution  +1        Searching   <color:o>Fair         </color>
+Charisma      +1        Perception  <color:R>Poor         </color>
+Life Rating  100%       Melee       <color:y>Very Good    </color>
+Base HP       20        Archery     <color:y>Good         </color>
 Experience   220%       Infravision 0'
 </style></indent>
 <topic:Demeter><color:o>Demeter</color>
@@ -163,11 +163,11 @@ Demeter is the goddess of the harvest, who presided over grains, the fertility o
 Strength      +1        Disarming   <color:o>Fair         </color>
 Intelligence  +1        Device      <color:o>Fair         </color>
 Wisdom        +1        Save        <color:y>Good         </color>
-Dexterity     +1        Stealth     <color:r>Bad          </color>
-Constitution  +1        Searching   <color:r>Bad          </color>
-Charisma      +1        Perception  <color:G>Excellent    </color>
-Life Rating  100%       Melee       <color:G>Excellent    </color>
-Base HP       20        Bows        <color:y>Very Good    </color>
+Dexterity     +1        Stealth     <color:R>Poor         </color>
+Constitution  +1        Searching   <color:o>Fair         </color>
+Charisma      +1        Perception  <color:R>Poor         </color>
+Life Rating  100%       Melee       <color:y>Very Good    </color>
+Base HP       20        Archery     <color:y>Good         </color>
 Experience   220%       Infravision 0'
 </style></indent>
 <topic:Aphrodite><color:o>Aphrodite</color>
@@ -177,11 +177,11 @@ Aphrodite is the Greek goddess of love, beauty, pleasure, and procreation. You i
 Strength      +1        Disarming   <color:o>Fair         </color>
 Intelligence  +1        Device      <color:o>Fair         </color>
 Wisdom        +1        Save        <color:o>Fair         </color>
-Dexterity     +1        Stealth     <color:r>Bad          </color>
-Constitution  +1        Searching   <color:r>Bad          </color>
-Charisma      +3        Perception  <color:G>Excellent    </color>
-Life Rating  100%       Melee       <color:G>Excellent    </color>
-Base HP       20        Bows        <color:y>Very Good    </color>
+Dexterity     +1        Stealth     <color:R>Poor         </color>
+Constitution  +1        Searching   <color:o>Fair         </color>
+Charisma      +3        Perception  <color:R>Poor         </color>
+Life Rating  100%       Melee       <color:y>Very Good    </color>
+Base HP       20        Archery     <color:y>Good         </color>
 Experience   220%       Infravision 0'
 </style></indent>
 <topic:Tables><style:heading>Table 1 - Demigod Statistic Bonus Table</style>
@@ -205,37 +205,37 @@ Aphrodite       +1   +1   +1   +1   +1   +3  100%  220%   70%
 <topic:Skills1><style:heading>Table 2 - Demigod Skill Bonus Table I</style>
 <style:table>
              <color:w>Disarming     Device        Save          Stealth      </color>
-Minor-God    <color:o>Fair         </color> <color:o>Fair         </color> <color:o>Fair         </color> <color:r>Bad          </color>
-Zeus         <color:o>Fair         </color> <color:y>Good         </color> <color:y>Good         </color> <color:r>Bad          </color>
-Poseidon     <color:o>Fair         </color> <color:o>Fair         </color> <color:o>Fair         </color> <color:r>Bad          </color>
-Hades        <color:o>Fair         </color> <color:o>Fair         </color> <color:G>Excellent    </color> <color:R>Poor         </color>
-Athena       <color:o>Fair         </color> <color:G>Excellent    </color> <color:o>Fair         </color> <color:r>Bad          </color>
-Ares         <color:o>Fair         </color> <color:R>Poor         </color> <color:r>Bad          </color> <color:r>Bad          </color>
-Hermes       <color:G>Excellent    </color> <color:o>Fair         </color> <color:o>Fair         </color> <color:o>Fair         </color>
-Apollo       <color:o>Fair         </color> <color:o>Fair         </color> <color:o>Fair         </color> <color:r>Bad          </color>
-Artemis      <color:o>Fair         </color> <color:o>Fair         </color> <color:o>Fair         </color> <color:r>Bad          </color>
-Hephaestus   <color:o>Fair         </color> <color:o>Fair         </color> <color:o>Fair         </color> <color:r>Bad          </color>
-Hera         <color:o>Fair         </color> <color:y>Good         </color> <color:y>Good         </color> <color:r>Bad          </color>
-Demeter      <color:o>Fair         </color> <color:o>Fair         </color> <color:y>Good         </color> <color:r>Bad          </color>
-Aphrodite    <color:o>Fair         </color> <color:o>Fair         </color> <color:o>Fair         </color> <color:r>Bad          </color>
+Minor-God    <color:o>Fair         </color> <color:o>Fair         </color> <color:o>Fair         </color> <color:R>Poor         </color>
+Zeus         <color:y>Good         </color> <color:y>Good         </color> <color:y>Good         </color> <color:R>Poor         </color>
+Poseidon     <color:o>Fair         </color> <color:o>Fair         </color> <color:o>Fair         </color> <color:R>Poor         </color>
+Hades        <color:o>Fair         </color> <color:o>Fair         </color> <color:y>Good         </color> <color:o>Fair         </color>
+Athena       <color:o>Fair         </color> <color:y>Very Good    </color> <color:o>Fair         </color> <color:R>Poor         </color>
+Ares         <color:o>Fair         </color> <color:o>Fair         </color> <color:R>Poor         </color> <color:r>Bad          </color>
+Hermes       <color:G>Excellent    </color> <color:o>Fair         </color> <color:o>Fair         </color> <color:y>Good         </color>
+Apollo       <color:o>Fair         </color> <color:y>Good         </color> <color:o>Fair         </color> <color:R>Poor         </color>
+Artemis      <color:o>Fair         </color> <color:o>Fair         </color> <color:o>Fair         </color> <color:R>Poor         </color>
+Hephaestus   <color:o>Fair         </color> <color:o>Fair         </color> <color:o>Fair         </color> <color:R>Poor         </color>
+Hera         <color:o>Fair         </color> <color:y>Good         </color> <color:y>Good         </color> <color:R>Poor         </color>
+Demeter      <color:o>Fair         </color> <color:o>Fair         </color> <color:y>Good         </color> <color:R>Poor         </color>
+Aphrodite    <color:o>Fair         </color> <color:o>Fair         </color> <color:o>Fair         </color> <color:R>Poor         </color>
 
 </style>
 <topic:Skills2><style:heading>Table 3 - Demigod Skill Bonus Table II</style>
 <style:table>
-             <color:w>Searching     Perception    Melee         Bows          Infra</color>
-Minor-God    <color:r>Bad          </color> <color:G>Excellent    </color> <color:G>Excellent    </color> <color:y>Very Good    </color>    0'
-Zeus         <color:r>Bad          </color> <color:G>Excellent    </color> <color:g>Superb       </color> <color:G>Excellent    </color>    0'
-Poseidon     <color:r>Bad          </color> <color:G>Excellent    </color> <color:g>Superb       </color> <color:y>Very Good    </color>    0'
-Hades        <color:r>Bad          </color> <color:G>Excellent    </color> <color:g>Superb       </color> <color:y>Very Good    </color>    0'
-Athena       <color:r>Bad          </color> <color:G>Excellent    </color> <color:G>Excellent    </color> <color:y>Very Good    </color>    0'
-Ares         <color:r>Bad          </color> <color:G>Excellent    </color> <color:b>Heroic       </color> <color:y>Very Good    </color>    0'
-Hermes       <color:y>Good         </color> <color:g>Superb       </color> <color:G>Excellent    </color> <color:y>Very Good    </color>    0'
-Apollo       <color:r>Bad          </color> <color:G>Excellent    </color> <color:G>Excellent    </color> <color:y>Very Good    </color>    0'
-Artemis      <color:r>Bad          </color> <color:G>Excellent    </color> <color:G>Excellent    </color> <color:g>Superb       </color>    0'
-Hephaestus   <color:r>Bad          </color> <color:G>Excellent    </color> <color:g>Superb       </color> <color:y>Very Good    </color>    0'
-Hera         <color:r>Bad          </color> <color:G>Excellent    </color> <color:G>Excellent    </color> <color:y>Very Good    </color>    0'
-Demeter      <color:r>Bad          </color> <color:G>Excellent    </color> <color:G>Excellent    </color> <color:y>Very Good    </color>    0'
-Aphrodite    <color:r>Bad          </color> <color:G>Excellent    </color> <color:G>Excellent    </color> <color:y>Very Good    </color>    0'
+             <color:w>Searching     Perception    Melee         Archery       Infra</color>
+Minor-God    <color:o>Fair         </color> <color:R>Poor         </color> <color:y>Very Good    </color> <color:y>Good         </color>    0'
+Zeus         <color:o>Fair         </color> <color:R>Poor         </color> <color:g>Superb       </color> <color:y>Good         </color>    0'
+Poseidon     <color:o>Fair         </color> <color:R>Poor         </color> <color:G>Excellent    </color> <color:y>Good         </color>    0'
+Hades        <color:o>Fair         </color> <color:R>Poor         </color> <color:G>Excellent    </color> <color:y>Good         </color>    0'
+Athena       <color:o>Fair         </color> <color:R>Poor         </color> <color:y>Very Good    </color> <color:y>Good         </color>    0'
+Ares         <color:o>Fair         </color> <color:R>Poor         </color> <color:g>Superb       </color> <color:y>Good         </color>    0'
+Hermes       <color:G>Excellent    </color> <color:y>Very Good    </color> <color:y>Very Good    </color> <color:y>Good         </color>    0'
+Apollo       <color:o>Fair         </color> <color:R>Poor         </color> <color:y>Very Good    </color> <color:y>Good         </color>    0'
+Artemis      <color:o>Fair         </color> <color:R>Poor         </color> <color:y>Very Good    </color> <color:G>Excellent    </color>    0'
+Hephaestus   <color:o>Fair         </color> <color:R>Poor         </color> <color:g>Superb       </color> <color:y>Good         </color>    0'
+Hera         <color:o>Fair         </color> <color:R>Poor         </color> <color:y>Very Good    </color> <color:y>Good         </color>    0'
+Demeter      <color:o>Fair         </color> <color:R>Poor         </color> <color:y>Very Good    </color> <color:y>Good         </color>    0'
+Aphrodite    <color:o>Fair         </color> <color:R>Poor         </color> <color:y>Very Good    </color> <color:y>Good         </color>    0'
 
 </style>
 <topic:Powers><style:heading>Table 4 - Demigod Special Powers</style>
@@ -276,7 +276,7 @@ Your spells will grow more powerful (+15% spellpower), at the cost of a slight p
 Walking costs 40% less energy.</indent>
 
   <indent><color:G>Infernal Deal</color>
-You will regain 10 HP and 5 SP whenever a nearby enemy monster is slain.</indent>
+You will regain HP whenever a nearby enemy monster is slain, the amount equalling two-thirds of the monster's native level.</indent>
 
   <indent><color:G>Inspired Smithing</color>
 You will receive better results from item reforging (10% average value improvement).</indent>
@@ -302,6 +302,9 @@ Gives a 20% bonus to all healing effects.</indent>
   <indent><color:G>Speed Reader</color>
 Allows you to read scrolls twice as fast.</indent>
 
+  <indent><color:G>Strong Mind</color>
+Makes you immune to mana draining.</indent>
+
   <indent><color:G>Subtle Casting</color>
 Damaging a monster with distance magic no longer provokes a retaliation.</indent>
 
@@ -315,7 +318,7 @@ Gives +20 to armor class.</indent>
 Gives a bonus to hit points (+1 HP per character level).</indent>
 
   <indent><color:G>Weapon Versatility</color>
-Allows you to reach full proficiency with any weapon.</indent>
+Allows you to reach full proficiency with any weapon (but does not make icky weapons non-icky).</indent>
 
   <indent><color:G>Weird Mind</color>
 Protects your mind from hallucination and Eldritch Horrors.</indent>
@@ -324,4 +327,4 @@ Protects your mind from hallucination and Eldritch Horrors.</indent>
 
 
 
-<color:s>Automatically generated for FrogComposband 7.0.nougat.</color>
+<color:s>Automatically generated for FrogComposband 7.1.liquorice.</color>
