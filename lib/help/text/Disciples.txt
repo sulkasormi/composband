@@ -1,0 +1,237 @@
+Disciples
+
+Trusted followers of mysterious ancient spirits known as the 'Purples', 
+the Disciples roam the world running errands for their masters, 
+learning mighty spells and receiving rare items as rewards for their 
+work. There are three main flavors of Purple Disciples - disciples of 
+Karrot, disciples of Yeqrezh, and disciples of a group of Purples known 
+as the Troika. Each of the Purples expects different things of their 
+Disciples, and each helps them achieve their ends in very different 
+ways.
+
+Karrot
+Karrot is a proud and ambitious Purple, convinced that it is his 
+destiny to one day rule the universe; but rather than getting 
+personally involved, he has assigned to his Disciples the task of 
+eliminating any potential rivals (like the Serpent of Chaos). Being so 
+sure of his greatness, Karrot sees little reason to vary his habits and 
+is the only one of the Purples to predictably teach all of his 
+Disciples the same spells. Karrot occasionally assigns side-quests to 
+his Disciples, with the dual aim of testing their mettle and removing 
+lesser threats to his supremacy. These side-quests only appear on 
+fairly challenging levels; they can be avoided by sticking to safer 
+areas, but this will not make Karrot happy...
+
+Karrot considers many artifacts to be his rightful personal property, 
+and will claim them immediately if you should find them. He will, 
+however, give you another artifact as a reward for your discovery. 
+These replacement artifacts tend to start out as fairly weak, but 
+eventually become very strong as you gain Karrot's respect by leveling 
+up and by successfully completing side-quests. If you're really lucky 
+and do a particularly good job, you might even receive the ultimate 
+gift - Urog, Karrot's legendary blade of shadows!
+
+Disciples of Karrot tend to play as fighter-mages, relying on melee, 
+spells and devices alike. They are unique among Disciples in not having 
+a mana pool; casting a spell takes a toll on their hit points instead. 
+They are also the only Disciples to have a charming spell - but the 
+greatest of Karrot's followers are rumoured to eventually learn even 
+rarer abilities...
+Karrot's disciples depend on Intelligence to make their spells work.
+
+  Stats                   Skills
+  Strength      -1        Disarming   Fair         
+  Intelligence  +1        Device      Excellent    
+  Wisdom        -1        Save        Good         
+  Dexterity     +0        Stealth     Fair         
+  Constitution  -1        Searching   Fair         
+  Charisma      +1        Perception  Poor         
+  Life Rating   95%       Melee       Good         
+  Base HP       14        Archery     Good         
+  Experience   125%
+  
+Yeqrezh
+Yeqrezh is the friendliest of the Purples, supportive of his Disciples 
+and willing to let them find their own way. Disciples of Yeqrezh will 
+learn 20 spells over the course of the game - one every two character 
+levels, apart from levels 10, 20, 30, 40 and 50; seventeen of these 
+spells are offered by Yeqrezh, while the other three (at levels 16, 32 
+and 48) are chosen by you. Every ten levels, Yeqrezh offers direct help 
+to his Disciples; depending on your choice, he can give you rare items 
+or a permanent mental or physical ability, or share some of his life 
+experience with you. Some of these abilities can be improved 
+repeatedly, allowing you to accumulate exceptional mastery.
+
+Disciples of Yeqrezh gain many practical tools as well as solid 
+offensive options, and a useful item as a gift from their patron every 
+odd-numbered character level. They are the most mage-like of all 
+Disciples, and lack of hit points is their only true weakness. 
+Nevertheless, they are extremely versatile, and can also win through 
+melee, archery or even sneaking about silently collecting loot.
+
+Yeqrezh is the recommended patron for new (or highly cautious) players, 
+as he is the only Purple not to actively incentivize a demanding, 
+push-the-envelope approach. Yeqrezh's disciples, like Karrot's, rely on 
+Intelligence to power their spells.
+
+  Stats                   Skills
+  Strength      +0        Disarming   Fair         
+  Intelligence  +1        Device      Fair         
+  Wisdom        +1        Save        Fair         
+  Dexterity     +0        Stealth     Fair         
+  Constitution  -3        Searching   Poor         
+  Charisma      +0        Perception  Poor         
+  Life Rating   90%       Melee       Good         
+  Base HP       12        Archery     Excellent    
+  Experience   115%
+  
+Troika
+The Troika is a group of three closely related Purples working together 
+- Guntujant, Uxip and Sohoglyth. Guntujant is a capricious Purple who 
+follows the careers of his servants very closely, and rewards and 
+punishes them seemingly at random; the powers gained by his followers 
+are unpredictable, but generally quite strong. Uxip delights in combat, 
+and grants Troika disciples their prodigious endurance and skill with 
+two-handed weapons; however, a number of common items are an 
+abomination unto Uxip, and cannot be used by followers of the Troika. 
+Sohoglyth is a mysterious spirit, but a profoundly powerful one. She 
+occasionally sets bonus quests for Troika disciples; if enough of the 
+quests are completed with no failures, she will reward the questor with 
+the power of telepathy, remote object quality sensing, or even walking 
+through walls.
+
+Troika Disciples are in general very strong, especially in combat but 
+also sorcery, yet the limitations placed upon them by Uxip and 
+Guntujant also make them in some ways vulnerable. In particular, they 
+frequently suffer random punishments, risk being punished if they 
+teleport from a fight while not at low health, cannot wear a shield or 
+cure poison with mushrooms, and must earn the right to use a rod of 
+Detection. The spells of Troika disciples are unique in that they are 
+not learned at any particular character level; instead, Guntujant and 
+Uxip will teach them as a reward for killing dangerous enemies, 
+especially uniques. Strength determines the spellcasting ability of a 
+Troika disciple.
+
+  Stats                   Skills
+  Strength      +1        Disarming   Good         
+  Intelligence  +0        Device      Bad          
+  Wisdom        -1        Save        Bad          
+  Dexterity     +1        Stealth     Fair         
+  Constitution  +2        Searching   Poor         
+  Charisma      +0        Perception  Poor         
+  Life Rating  108%       Melee       Excellent    
+  Base HP       23        Archery     Good         
+  Experience   150%
+  
+TIP: The special random quests for Karrot and Troika disciples can only 
+appear if you are sufficiently deep for the quest to be challenging. 
+Pressing CTRL+F reveals your patron's opinion of your current depth. 
+The Purples also like you to visit many different dungeons; do not 
+expect a large number of assignments in a single dungeon, unless you 
+are playing with no wilderness.
+
+Table 1 - Disciple Statistic Bonus Table
+
+                  STR  INT  WIS  DEX  CON  CHR  Life  BHP  Exp
+Karrot             -1   +1   -1   +0   -1   +1   95%  +14  125%
+Yeqrezh            +0   +1   +1   +0   -3   +0   90%  +12  115%
+Troika             +1   +0   -1   +1   +2   +0  108%  +23  150%
+
+
+Table 2 - Disciple Skill Bonus Table I
+
+                  Disarming     Device        Save          Stealth      
+Karrot            Fair          Excellent     Good          Fair         
+Yeqrezh           Fair          Fair          Fair          Fair         
+Troika            Good          Bad           Bad           Fair         
+
+
+Table 3 - Disciple Skill Bonus Table II
+
+                  Searching     Perception    Melee         Archery      
+Karrot            Fair          Poor          Good          Good         
+Yeqrezh           Poor          Poor          Good          Excellent    
+Troika            Poor          Poor          Excellent     Good         
+
+
+Table 4 - Yeqrezh Talents
+
+Disciples of Yeqrezh can choose five special gifts, one every ten 
+levels. These gifts can take the form of new abilities, physical 
+powers, or rare items; some can be chosen repeatedly, while others can 
+only be picked once. Once you have selected a gift, you can never go 
+back on your decision, so you might want to study this list to decide 
+which gifts to choose for your character.
+
+  Purple Muscles
+  Gives +2 STR and +2 DEX.
+
+  Purple Vitality
+  All healing effects will give 10% more HP than normally.
+
+  Purple Speed
+  Gives +1 speed.
+
+  Purple Deadliness
+  Gives +8 melee to-dam (not applied to innate attacks).
+
+  Purple Stealth
+  Gives +4 stealth.
+
+  Purple Protection
+  Gives +15 AC.
+
+  Device Mastery
+  Gives device skills equal to +1 Md.
+
+  Rapid Shooting
+  Gives a shooting speed increase equal to +1 Xs.
+
+  Power Sorcery
+  Increases your spellpower by +15%, but decreases your life rating by 
+  3 points.
+
+  Nervous Casting
+  Increases your spellpower by +15%, but makes you vulnerable to fear.
+
+  Easy Casting
+  Lowers spell fail rates by 4 percentage points.
+
+  Quick Spelling
+  Casting a spell will only consume 93% of the usual time.
+
+  Speedy Recovery
+  Gives +100% regeneration.
+
+  Lottery Tickets
+  You will receive three scrolls of *Acquirement* from Yeqrezh.
+
+  Notes of Death
+  You will receive five scrolls of Mass Genocide from Yeqrezh.
+
+  Essence of Life
+  You will receive three potions of Life from Yeqrezh.
+
+  Yeqrezh's Memories
+  Immediately gives another 5 character levels.
+
+  Strange Mind
+  Protects your mind from hallucination and Eldritch Horrors.
+
+  Strong Mind
+  Makes you immune to mana draining.
+
+  Object Lessons
+  Allows you to sense the quality of distant objects and automatically 
+  identify all objects you walk over.
+
+  Trump Shuffling
+  Gives you access to the Shuffle spell, and automatically gives Self 
+  Knowledge if the Judgement card is drawn.
+
+
+
+
+
+Automatically generated for FrogComposband 7.1.liquorice.
+

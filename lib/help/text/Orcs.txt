@@ -18,14 +18,14 @@ develop into Uruk-hai or even mighty warlords, capable of summoning and
 controlling armies of lesser orcs.
 
   Stats                   Skills
-  Strength      +2        Disarming   Good         
-  Intelligence  -1        Device      Very Bad     
-  Wisdom        -5        Save        Fair         
-  Dexterity     +0        Stealth     Fair         
-  Constitution  +3        Searching   Poor         
+  Strength      -1        Disarming   Fair         
+  Intelligence  -4        Device      Very Bad     
+  Wisdom        -5        Save        Poor         
+  Dexterity     +0        Stealth     Poor         
+  Constitution  +0        Searching   Poor         
   Charisma      -5        Perception  Bad          
   Life Rating   99%       Melee       Excellent    
-  Base HP       30        Bows        Excellent    
+  Base HP       30        Archery     Excellent    
   Experience   100%       Infravision 30'
   
 Orc shaman
@@ -37,38 +37,38 @@ magic devices as their fighter kin, but like all orcs they tend to have
 trouble when the going really gets tough.
 
   Stats                   Skills
-  Strength      +0        Disarming   Good         
-  Intelligence  +0        Device      Poor         
+  Strength      -1        Disarming   Fair         
+  Intelligence  -1        Device      Poor         
   Wisdom        -5        Save        Fair         
-  Dexterity     -1        Stealth     Fair         
+  Dexterity     -1        Stealth     Poor         
   Constitution  -1        Searching   Fair         
   Charisma      -5        Perception  Poor         
   Life Rating   92%       Melee       Good         
-  Base HP       28        Bows        Good         
+  Base HP       28        Archery     Good         
   Experience   100%       Infravision 30'
   
 Table 1 - Orc Statistic Bonus Table
 
                   STR  INT  WIS  DEX  CON  CHR  Life  BHP  Exp  Shop
-Orc fighter        +2   -1   -5   +0   +3   -5   99%  +30  100%  140%
-Orc shaman         +0   +0   -5   -1   -1   -5   92%  +28  100%  140%
+Orc fighter        -1   -4   -5   +0   +0   -5   99%  +30  100%  140%
+Orc shaman         -1   -1   -5   -1   -1   -5   92%  +28  100%  140%
 
 
 Table 2 - Orc Skill Bonus Table I
 
                   Disarming     Device        Save          Stealth      
-Orc fighter       Good          Very Bad      Fair          Fair         
-Orc shaman        Good          Poor          Fair          Fair         
+Orc fighter       Fair          Very Bad      Poor          Poor         
+Orc shaman        Fair          Poor          Fair          Poor         
 
 
 Table 3 - Orc Skill Bonus Table II
 
-                  Searching     Perception    Melee         Bows          Infra
+                  Searching     Perception    Melee         Archery       Infra
 Orc fighter       Poor          Bad           Excellent     Excellent       30'
 Orc shaman        Fair          Poor          Good          Good            30'
 
 
 
 
-Automatically generated for FrogComposband 7.0.cloudberry.
+Automatically generated for FrogComposband 7.1.liquorice.
 
