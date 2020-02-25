@@ -1060,22 +1060,19 @@ race_t *mon_mimic_get_race(void)
     if (!init)
     {
         me.name = "Mimic";
-        me.desc = "Mimics are similar to possessors but instead of controlling the corpses of the "
+        me.desc = "Mimics are similar to Possessors; but instead of controlling the corpses of the "
                     "vanquished, the mimic imitates those about them. This allows the mimic to assume "
-                    "the forms of foes they have yet to conquer and is quite useful. However, there is "
-                    "a small catch: The mimic can only copy what they see! This limitation forces the "
-                    "mimic to change forms much more often than the possessor would as knowledge of their "
+                    "the forms of foes they have yet to conquer, which is quite useful. However, there is "
+                    "a small catch: mimics can only copy what they see! This limitation forces a "
+                    "mimic to change forms much more often than a possessor would, as knowledge of their "
                     "current body rapidly fades when the original is no longer about. Occasionally, the "
                     "mimic is able to memorize a particular form well enough to use it again without the "
                     "original body to imitate, though this does not happen very often and the mimic can "
                     "only memorize a small number of forms. To have a chance of this, the mimic must be "
                     "in the desired form when slaying the original.\n \n"
-                    "Mimics are monsters and do not choose a normal class. Their stats, skills, resistances "
-                    "and spells are determined by the form they assume. Their current body also "
-                    "determines their spell stat (e.g. a novice priest uses wisdom, a novice mage uses intelligence). "
-                    "Their current body may offer innate powers (e.g. breath weapons or rockets) in addition to or in lieu "
-                    "of magical powers (e.g. mana storms and frost bolts). Be sure to check both the racial power "
-                    "command ('U') and the magic command ('m') after assuming a new body.";
+                    "The stats, skills, spells, resistances and innate powers of a mimic are determined by the form they assume; "
+                    "be sure to check both the racial power command (<color:keypress>U</color>/<color:keypress>O</color>) and the magic command (<color:keypress>m</color>) after assuming a new body. "
+                    "The current form also determines the spell stat; for example, a novice priest mimic uses wisdom, while a novice mage mimic relies on intelligence.";
 
         me.exp = 250;
         me.shop_adjust = 110; /* Really should depend on current form */
