@@ -1,9 +1,10 @@
 Weaponmasters
 
-The weaponmaster is great with a single class of weapons. The character 
-gets combat bonuses and special powers depending on the type of 
-specialization. Alas, the weaponmaster is truly lousy when using any 
-weapon outside their chosen specialty so focus is key.
+A Weaponmaster is exceptionally good with a single class of weapons, 
+obtaining special combat bonuses and powers which depend on their 
+chosen speciality. Focus is the key to success; weaponmasters are truly 
+lousy with off-speciality weapons, but few can match the prowess they 
+gain with something more suitable in their hands.
 
 Axes
 The mighty axe! Your blows will cleave with damage unsurpassed. 
@@ -12,14 +13,14 @@ your axe is wielded with two hands. However, this speciality offers
 little in the way of utility. Kill quickly as your life depends on it!
 
   Stats                   Skills
-  Strength      +4        Disarming   Fair         
+  Strength      +3        Disarming   Poor         
   Intelligence  -3        Device      Bad          
-  Wisdom        -2        Save        Fair         
-  Dexterity     -1        Stealth     Fair         
-  Constitution  +2        Searching   Poor         
-  Charisma      +1        Perception  Bad          
-  Life Rating  107%       Melee       Superb       
-  Base HP       12        Bows        Bad          
+  Wisdom        -2        Save        Bad          
+  Dexterity     -2        Stealth     Poor         
+  Constitution  +1        Searching   Poor         
+  Charisma      +0        Perception  Bad          
+  Life Rating  105%       Melee       Heroic       
+  Base HP       12        Archery     Poor         
   Experience   135%
   
 Bows
@@ -31,14 +32,14 @@ missile prowess will be quite formidable, though your melee will be
 somewhat lacking.
 
   Stats                   Skills
-  Strength      +1        Disarming   Fair         
-  Intelligence  -1        Device      Good         
+  Strength      +0        Disarming   Poor         
+  Intelligence  -1        Device      Poor         
   Wisdom        -1        Save        Poor         
-  Dexterity     +3        Stealth     Very Good    
-  Constitution  +0        Searching   Fair         
-  Charisma      +1        Perception  Poor         
-  Life Rating  107%       Melee       Fair         
-  Base HP       12        Bows        Superb       
+  Dexterity     +2        Stealth     Good         
+  Constitution  -1        Searching   Poor         
+  Charisma      +0        Perception  Poor         
+  Life Rating  102%       Melee       Fair         
+  Base HP       12        Archery     Heroic       
   Experience   135%
   
 Clubs
@@ -49,14 +50,14 @@ high levels, your weapons will become more likely to score devastating,
 crushing blows against your hapless enemies.
 
   Stats                   Skills
-  Strength      +3        Disarming   Fair         
-  Intelligence  -2        Device      Fair         
-  Wisdom        -2        Save        Very Good    
-  Dexterity     -1        Stealth     Fair         
-  Constitution  +2        Searching   Poor         
-  Charisma      +1        Perception  Bad          
-  Life Rating  107%       Melee       Excellent    
-  Base HP       12        Bows        Fair         
+  Strength      +2        Disarming   Poor         
+  Intelligence  -3        Device      Bad          
+  Wisdom        -2        Save        Bad          
+  Dexterity     -2        Stealth     Poor         
+  Constitution  +1        Searching   Poor         
+  Charisma      +0        Perception  Bad          
+  Life Rating  105%       Melee       Excellent    
+  Base HP       12        Archery     Fair         
   Experience   135%
   
 Crossbows
@@ -65,19 +66,19 @@ may explode powerfully damaging nearby monsters. Also, they may shoot
 so hard as to knock their opponents backwards!
 
   Stats                   Skills
-  Strength      +2        Disarming   Fair         
-  Intelligence  -2        Device      Fair         
-  Wisdom        -2        Save        Bad          
-  Dexterity     +2        Stealth     Good         
-  Constitution  +2        Searching   Fair         
-  Charisma      +1        Perception  Bad          
-  Life Rating  107%       Melee       Fair         
-  Base HP       12        Bows        Superb       
+  Strength      +1        Disarming   Poor         
+  Intelligence  -2        Device      Poor         
+  Wisdom        -3        Save        Bad          
+  Dexterity     +0        Stealth     Fair         
+  Constitution  +1        Searching   Poor         
+  Charisma      +0        Perception  Bad          
+  Life Rating  102%       Melee       Fair         
+  Base HP       12        Archery     Heroic       
   Experience   135%
   
 Daggers
-A knife in the back! This speciality favors dual wielding and 
-rogue-like behavior. The daggermaster can even assume the posture of 
+A knife in the back! This speciality favors dual-wielding and 
+rogue-type behavior. The daggermaster can even assume the posture of 
 The Flying Dagger which greatly enhances their low level dagger toss 
 capability. Indeed, their prowess with the dagger toss is legendary and 
 appears almost magical! At high levels, you will also gain formidable 
@@ -86,14 +87,14 @@ strong short ranged teleport techniques that synergize well with their
 toss abilities.
 
   Stats                   Skills
-  Strength      +1        Disarming   Very Good    
-  Intelligence  +0        Device      Good         
-  Wisdom        -1        Save        Fair         
-  Dexterity     +4        Stealth     Excellent    
-  Constitution  +0        Searching   Good         
-  Charisma      +1        Perception  Fair         
-  Life Rating  107%       Melee       Very Good    
-  Base HP       12        Bows        Excellent    
+  Strength      +0        Disarming   Good         
+  Intelligence  +0        Device      Poor         
+  Wisdom        -1        Save        Poor         
+  Dexterity     +3        Stealth     Very Good    
+  Constitution  -1        Searching   Fair         
+  Charisma      +0        Perception  Poor         
+  Life Rating  105%       Melee       Very Good    
+  Base HP       12        Archery     Superb       
   Experience   135%
   
 Polearms
@@ -102,14 +103,14 @@ You will swing your weapon wide often affecting multiple surrounding
 opponents.
 
   Stats                   Skills
-  Strength      +3        Disarming   Fair         
-  Intelligence  -2        Device      Poor         
-  Wisdom        -2        Save        Fair         
-  Dexterity     +1        Stealth     Fair         
-  Constitution  +2        Searching   Poor         
-  Charisma      +1        Perception  Bad          
-  Life Rating  107%       Melee       Superb       
-  Base HP       12        Bows        Bad          
+  Strength      +2        Disarming   Poor         
+  Intelligence  -2        Device      Bad          
+  Wisdom        -2        Save        Poor         
+  Dexterity     +0        Stealth     Poor         
+  Constitution  +1        Searching   Poor         
+  Charisma      +0        Perception  Bad          
+  Life Rating  105%       Melee       Superb       
+  Base HP       12        Archery     Poor         
   Experience   135%
   
 Shields
@@ -120,14 +121,14 @@ form of combat is known as Shield Bashing and is unique to this
 speciality.
 
   Stats                   Skills
-  Strength      +3        Disarming   Fair         
+  Strength      +2        Disarming   Fair         
   Intelligence  -1        Device      Poor         
-  Wisdom        +0        Save        Excellent    
-  Dexterity     +1        Stealth     Fair         
-  Constitution  +3        Searching   Poor         
-  Charisma      +1        Perception  Bad          
-  Life Rating  107%       Melee       Excellent    
-  Base HP       12        Bows        Bad          
+  Wisdom        +0        Save        Very Good    
+  Dexterity     +0        Stealth     Poor         
+  Constitution  +2        Searching   Poor         
+  Charisma      +0        Perception  Bad          
+  Life Rating  105%       Melee       Excellent    
+  Base HP       12        Archery     Poor         
   Experience   135%
   
 Slings
@@ -137,14 +138,14 @@ multiple hits. As with other archery specializations, your ammo will
 break less often.
 
   Stats                   Skills
-  Strength      +0        Disarming   Fair         
-  Intelligence  +0        Device      Good         
+  Strength      -1        Disarming   Fair         
+  Intelligence  +0        Device      Poor         
   Wisdom        +0        Save        Poor         
-  Dexterity     +4        Stealth     Very Good    
-  Constitution  +0        Searching   Fair         
-  Charisma      +1        Perception  Poor         
-  Life Rating  107%       Melee       Fair         
-  Base HP       12        Bows        Superb       
+  Dexterity     +3        Stealth     Good         
+  Constitution  -1        Searching   Poor         
+  Charisma      +0        Perception  Poor         
+  Life Rating  102%       Melee       Fair         
+  Base HP       12        Archery     Heroic       
   Experience   135%
   
 Staves
@@ -155,14 +156,14 @@ effects, attacking them with your boots! You may even eventually clone
 yourself at great cost.
 
   Stats                   Skills
-  Strength      +1        Disarming   Fair         
-  Intelligence  -1        Device      Fair         
-  Wisdom        -1        Save        Fair         
-  Dexterity     +3        Stealth     Fair         
-  Constitution  +2        Searching   Poor         
-  Charisma      +1        Perception  Bad          
-  Life Rating  107%       Melee       Superb       
-  Base HP       12        Bows        Bad          
+  Strength      +0        Disarming   Poor         
+  Intelligence  -2        Device      Poor         
+  Wisdom        -1        Save        Poor         
+  Dexterity     +2        Stealth     Poor         
+  Constitution  +1        Searching   Poor         
+  Charisma      +0        Perception  Bad          
+  Life Rating  105%       Melee       Excellent    
+  Base HP       12        Archery     Poor         
   Experience   135%
   
 Swords
@@ -170,14 +171,14 @@ You will become a true swordmaster! Mastery of the blade will augment
 your weapon with elemental, vorpal or vampiric powers.
 
   Stats                   Skills
-  Strength      +2        Disarming   Good         
-  Intelligence  -2        Device      Fair         
-  Wisdom        -2        Save        Fair         
-  Dexterity     +2        Stealth     Fair         
-  Constitution  +2        Searching   Poor         
-  Charisma      +1        Perception  Bad          
-  Life Rating  107%       Melee       Superb       
-  Base HP       12        Bows        Bad          
+  Strength      +1        Disarming   Poor         
+  Intelligence  -2        Device      Bad          
+  Wisdom        -2        Save        Poor         
+  Dexterity     +1        Stealth     Poor         
+  Constitution  +1        Searching   Poor         
+  Charisma      +0        Perception  Bad          
+  Life Rating  105%       Melee       Superb       
+  Base HP       12        Archery     Poor         
   Experience   135%
   
 Diggers
@@ -189,65 +190,65 @@ as increased strength, constitution, or even speed! So keep your eye
 open for those +8 diggers!
 
   Stats                   Skills
-  Strength      +3        Disarming   Fair         
-  Intelligence  -2        Device      Fair         
+  Strength      +2        Disarming   Fair         
+  Intelligence  -2        Device      Poor         
   Wisdom        -2        Save        Fair         
-  Dexterity     +1        Stealth     Good         
-  Constitution  +2        Searching   Poor         
-  Charisma      +1        Perception  Bad          
-  Life Rating  107%       Melee       Superb       
-  Base HP       12        Bows        Bad          
+  Dexterity     +0        Stealth     Fair         
+  Constitution  +1        Searching   Poor         
+  Charisma      +0        Perception  Bad          
+  Life Rating  105%       Melee       Superb       
+  Base HP       12        Archery     Poor         
   Experience   135%
   
 Table 1 - Weaponmaster Statistic Bonus Table
 
                   STR  INT  WIS  DEX  CON  CHR  Life  BHP  Exp
-Axes               +4   -3   -2   -1   +2   +1  107%  +12  135%
-Bows               +1   -1   -1   +3   +0   +1  107%  +12  135%
-Clubs              +3   -2   -2   -1   +2   +1  107%  +12  135%
-Crossbows          +2   -2   -2   +2   +2   +1  107%  +12  135%
-Daggers            +1   +0   -1   +4   +0   +1  107%  +12  135%
-Polearms           +3   -2   -2   +1   +2   +1  107%  +12  135%
-Shields            +3   -1   +0   +1   +3   +1  107%  +12  135%
-Slings             +0   +0   +0   +4   +0   +1  107%  +12  135%
-Staves             +1   -1   -1   +3   +2   +1  107%  +12  135%
-Swords             +2   -2   -2   +2   +2   +1  107%  +12  135%
-Diggers            +3   -2   -2   +1   +2   +1  107%  +12  135%
+Axes               +3   -3   -2   -2   +1   +0  105%  +12  135%
+Bows               +0   -1   -1   +2   -1   +0  102%  +12  135%
+Clubs              +2   -3   -2   -2   +1   +0  105%  +12  135%
+Crossbows          +1   -2   -3   +0   +1   +0  102%  +12  135%
+Daggers            +0   +0   -1   +3   -1   +0  105%  +12  135%
+Polearms           +2   -2   -2   +0   +1   +0  105%  +12  135%
+Shields            +2   -1   +0   +0   +2   +0  105%  +12  135%
+Slings             -1   +0   +0   +3   -1   +0  102%  +12  135%
+Staves             +0   -2   -1   +2   +1   +0  105%  +12  135%
+Swords             +1   -2   -2   +1   +1   +0  105%  +12  135%
+Diggers            +2   -2   -2   +0   +1   +0  105%  +12  135%
 
 
 Table 2 - Weaponmaster Skill Bonus Table I
 
                   Disarming     Device        Save          Stealth      
-Axes              Fair          Bad           Fair          Fair         
-Bows              Fair          Good          Poor          Very Good    
-Clubs             Fair          Fair          Very Good     Fair         
-Crossbows         Fair          Fair          Bad           Good         
-Daggers           Very Good     Good          Fair          Excellent    
-Polearms          Fair          Poor          Fair          Fair         
-Shields           Fair          Poor          Excellent     Fair         
-Slings            Fair          Good          Poor          Very Good    
-Staves            Fair          Fair          Fair          Fair         
-Swords            Good          Fair          Fair          Fair         
-Diggers           Fair          Fair          Fair          Good         
+Axes              Poor          Bad           Bad           Poor         
+Bows              Poor          Poor          Poor          Good         
+Clubs             Poor          Bad           Bad           Poor         
+Crossbows         Poor          Poor          Bad           Fair         
+Daggers           Good          Poor          Poor          Very Good    
+Polearms          Poor          Bad           Poor          Poor         
+Shields           Fair          Poor          Very Good     Poor         
+Slings            Fair          Poor          Poor          Good         
+Staves            Poor          Poor          Poor          Poor         
+Swords            Poor          Bad           Poor          Poor         
+Diggers           Fair          Poor          Fair          Fair         
 
 
 Table 3 - Weaponmaster Skill Bonus Table II
 
-                  Searching     Perception    Melee         Bows         
-Axes              Poor          Bad           Superb        Bad          
-Bows              Fair          Poor          Fair          Superb       
+                  Searching     Perception    Melee         Archery      
+Axes              Poor          Bad           Heroic        Poor         
+Bows              Poor          Poor          Fair          Heroic       
 Clubs             Poor          Bad           Excellent     Fair         
-Crossbows         Fair          Bad           Fair          Superb       
-Daggers           Good          Fair          Very Good     Excellent    
-Polearms          Poor          Bad           Superb        Bad          
-Shields           Poor          Bad           Excellent     Bad          
-Slings            Fair          Poor          Fair          Superb       
-Staves            Poor          Bad           Superb        Bad          
-Swords            Poor          Bad           Superb        Bad          
-Diggers           Poor          Bad           Superb        Bad          
+Crossbows         Poor          Bad           Fair          Heroic       
+Daggers           Fair          Poor          Very Good     Superb       
+Polearms          Poor          Bad           Superb        Poor         
+Shields           Poor          Bad           Excellent     Poor         
+Slings            Poor          Poor          Fair          Heroic       
+Staves            Poor          Bad           Excellent     Poor         
+Swords            Poor          Bad           Superb        Poor         
+Diggers           Poor          Bad           Superb        Poor         
 
 
 
 
-Automatically generated for FrogComposband 7.0.cloudberry.
+Automatically generated for FrogComposband 7.1.liquorice.
 
