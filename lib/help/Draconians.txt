@@ -1,131 +1,131 @@
 <style:title>Draconians</style>
 
-Draconians are a humanoid race with dragon-like attributes. There are several subtypes of draconians with different resistances, breaths and attributes. For example, Red Draconians are resistant to fire which they may also breathe at will, while White Draconians breathe and resist cold instead. All draconians levitate. In addition, when they mature enough, they may choose a special draconian power.
+Draconians are a humanoid race with dragon-like attributes. There are several subtypes of draconians with different resistances, breaths and attributes; for example, Red Draconians are resistant to fire which they may also breathe at will, while White Draconians breathe and resist cold instead. All draconians levitate. In addition, when they mature enough, they may choose a special draconian power.
 
 <topic:Red><color:o>Red</color>
-Red Draconians have an affinity for fire, which they both breathe at will and resist. Together with their White kin, they are the strongest in combat of the draconians. But they are not so good with magic and their stealth is quite poor. Should they choose the power of Dragon Skin, they will gain a fiery aura as well. Should they choose the power of Dragon Strike, their blows will burn their enemies.
+Red Draconians have an affinity for fire, which they both breathe at will and resist. Together with their White kin, they are the strongest in combat of the draconians; but they are not so good with magic, and their stealth is quite poor. Should they choose the power of Dragon Skin, they will gain a fiery aura as well. Should they choose the power of Dragon Strike, their blows will burn their enemies.
 
   <indent><style:table><color:G>Stats                   Skills</color>
-Strength      +3        Disarming   <color:r>Bad          </color>
-Intelligence  +0        Device      <color:r>Bad          </color>
+Strength      +3        Disarming   <color:R>Poor         </color>
+Intelligence  +0        Device      <color:R>Poor         </color>
 Wisdom        +0        Save        <color:o>Fair         </color>
-Dexterity     +1        Stealth     <color:r>Bad          </color>
-Constitution  +2        Searching   <color:r>Bad          </color>
-Charisma      +2        Perception  <color:g>Superb       </color>
-Life Rating  104%       Melee       <color:g>Superb       </color>
-Base HP       22        Bows        <color:y>Good         </color>
+Dexterity     +1        Stealth     <color:R>Poor         </color>
+Constitution  +2        Searching   <color:o>Fair         </color>
+Charisma      +2        Perception  <color:y>Good         </color>
+Life Rating  104%       Melee       <color:G>Excellent    </color>
+Base HP       22        Archery     <color:o>Fair         </color>
 Experience   190%       Infravision 20'
 </style></indent>
 <topic:White><color:o>White</color>
-White Draconians have an affinity for frost, which they both breathe at will and resist. Together with their Red kin, they are the strongest in combat of the draconians. But they are not so good with magic and their stealth is quite poor. Should they choose the power of Dragon Skin, they will gain an aura of cold as well. Should they choose the power of Dragon Strike, their blows will freeze their enemies.
+White Draconians have an affinity for frost, which they both breathe at will and resist. Together with their Red kin, they are the strongest in combat of the draconians; but they are not so good with magic, and their stealth is quite poor. Should they choose the power of Dragon Skin, they will gain an aura of cold as well. Should they choose the power of Dragon Strike, their blows will freeze their enemies.
 
   <indent><style:table><color:G>Stats                   Skills</color>
-Strength      +3        Disarming   <color:r>Bad          </color>
-Intelligence  +0        Device      <color:r>Bad          </color>
+Strength      +3        Disarming   <color:R>Poor         </color>
+Intelligence  +0        Device      <color:R>Poor         </color>
 Wisdom        +0        Save        <color:o>Fair         </color>
-Dexterity     +1        Stealth     <color:r>Bad          </color>
-Constitution  +2        Searching   <color:r>Bad          </color>
-Charisma      +2        Perception  <color:g>Superb       </color>
-Life Rating  104%       Melee       <color:g>Superb       </color>
-Base HP       22        Bows        <color:y>Good         </color>
+Dexterity     +1        Stealth     <color:R>Poor         </color>
+Constitution  +2        Searching   <color:o>Fair         </color>
+Charisma      +2        Perception  <color:y>Good         </color>
+Life Rating  104%       Melee       <color:G>Excellent    </color>
+Base HP       22        Archery     <color:o>Fair         </color>
 Experience   190%       Infravision 20'
 </style></indent>
 <topic:Blue><color:o>Blue</color>
-Blue Draconians have an affinity for lightning, which they both breathe at will and resist. They are strong in combat but not so good with magic or stealth. Should they choose the power of Dragon Skin, they will gain a shocking aura as well. Should they choose the power of Dragon Strike, their blows will electrocute their enemies.
+Blue Draconians have an affinity for lightning, which they both breathe at will and resist. They are strong in combat, but not so good with magic or stealth. Should they choose the power of Dragon Skin, they will gain a shocking aura as well. Should they choose the power of Dragon Strike, their blows will electrocute their enemies.
 
   <indent><style:table><color:G>Stats                   Skills</color>
-Strength      +2        Disarming   <color:r>Bad          </color>
+Strength      +2        Disarming   <color:R>Poor         </color>
 Intelligence  +1        Device      <color:R>Poor         </color>
 Wisdom        +1        Save        <color:o>Fair         </color>
-Dexterity     +1        Stealth     <color:R>Poor         </color>
-Constitution  +2        Searching   <color:r>Bad          </color>
-Charisma      +2        Perception  <color:g>Superb       </color>
+Dexterity     +1        Stealth     <color:o>Fair         </color>
+Constitution  +2        Searching   <color:o>Fair         </color>
+Charisma      +2        Perception  <color:y>Good         </color>
 Life Rating  103%       Melee       <color:G>Excellent    </color>
-Base HP       22        Bows        <color:y>Good         </color>
+Base HP       22        Archery     <color:o>Fair         </color>
 Experience   190%       Infravision 20'
 </style></indent>
 <topic:Black><color:o>Black</color>
-Black Draconians have an affinity for acid, which they both breathe at will and resist. They are strong in combat but not so good with magic or stealth. With the power of Dragon Strike, their blows will corrode their enemies.
+Black Draconians have an affinity for acid, which they both breathe at will and resist. They are strong in combat, but not so good with magic or stealth. With the power of Dragon Strike, their blows will corrode their enemies.
 
   <indent><style:table><color:G>Stats                   Skills</color>
-Strength      +2        Disarming   <color:r>Bad          </color>
+Strength      +2        Disarming   <color:R>Poor         </color>
 Intelligence  +1        Device      <color:R>Poor         </color>
 Wisdom        +1        Save        <color:o>Fair         </color>
-Dexterity     +1        Stealth     <color:R>Poor         </color>
-Constitution  +2        Searching   <color:r>Bad          </color>
-Charisma      +2        Perception  <color:g>Superb       </color>
-Life Rating  103%       Melee       <color:g>Superb       </color>
-Base HP       22        Bows        <color:y>Good         </color>
+Dexterity     +1        Stealth     <color:o>Fair         </color>
+Constitution  +2        Searching   <color:o>Fair         </color>
+Charisma      +2        Perception  <color:y>Good         </color>
+Life Rating  103%       Melee       <color:G>Excellent    </color>
+Base HP       22        Archery     <color:o>Fair         </color>
 Experience   190%       Infravision 20'
 </style></indent>
 <topic:Green><color:o>Green</color>
 Green Draconians have an affinity for poison, which they both breathe at will and resist. They are average in all respects among the draconians. With the power of Dragon Strike, their blows will poison their enemies.
 
   <indent><style:table><color:G>Stats                   Skills</color>
-Strength      +1        Disarming   <color:r>Bad          </color>
+Strength      +1        Disarming   <color:R>Poor         </color>
 Intelligence  +1        Device      <color:o>Fair         </color>
 Wisdom        +1        Save        <color:o>Fair         </color>
-Dexterity     +1        Stealth     <color:o>Fair         </color>
-Constitution  +2        Searching   <color:r>Bad          </color>
-Charisma      +2        Perception  <color:g>Superb       </color>
+Dexterity     +1        Stealth     <color:y>Good         </color>
+Constitution  +2        Searching   <color:o>Fair         </color>
+Charisma      +2        Perception  <color:y>Good         </color>
 Life Rating  101%       Melee       <color:y>Good         </color>
-Base HP       22        Bows        <color:y>Good         </color>
+Base HP       22        Archery     <color:o>Fair         </color>
 Experience   205%       Infravision 20'
 </style></indent>
 <topic:Bronze><color:o>Bronze</color>
 Bronze Draconians are the most intelligent of their kind, and the best with magic as well. They are seldom confused, though the same may not be said of their enemies. With the power of Dragon Strike, even the melee attacks of the Bronze Draconian will baffle their enemies.
 
   <indent><style:table><color:G>Stats                   Skills</color>
-Strength      +1        Disarming   <color:r>Bad          </color>
+Strength      +1        Disarming   <color:R>Poor         </color>
 Intelligence  +2        Device      <color:y>Good         </color>
 Wisdom        +1        Save        <color:o>Fair         </color>
-Dexterity     +1        Stealth     <color:o>Fair         </color>
-Constitution  +2        Searching   <color:r>Bad          </color>
-Charisma      +2        Perception  <color:g>Superb       </color>
-Life Rating  101%       Melee       <color:o>Fair         </color>
-Base HP       22        Bows        <color:y>Good         </color>
+Dexterity     +1        Stealth     <color:y>Good         </color>
+Constitution  +2        Searching   <color:o>Fair         </color>
+Charisma      +2        Perception  <color:y>Good         </color>
+Life Rating  101%       Melee       <color:y>Good         </color>
+Base HP       22        Archery     <color:o>Fair         </color>
 Experience   215%       Infravision 20'
 </style></indent>
 <topic:Crystal><color:o>Crystal</color>
-Hard of skin, the Crystal Draconian is difficult to hit in melee. But their agility suffers and they are not the brightest of their kind. They resist shards, which they may also breathe on command. With the power of Dragon Skin, they gain an aura of shards as well. With the power of Dragon Strike, even their melee attacks will shred their enemies.
+Hard of skin, the Crystal Draconian is difficult to hit in melee; but their agility suffers, and they are not the brightest of their kind. They resist shards, which they may also breathe on command. With the power of Dragon Skin, they gain an aura of shards as well. With the power of Dragon Strike, even their melee attacks will shred their enemies.
 
   <indent><style:table><color:G>Stats                   Skills</color>
-Strength      +1        Disarming   <color:r>Bad          </color>
-Intelligence  -1        Device      <color:r>Bad          </color>
+Strength      +1        Disarming   <color:R>Poor         </color>
+Intelligence  -1        Device      <color:R>Poor         </color>
 Wisdom        +1        Save        <color:o>Fair         </color>
-Dexterity     +0        Stealth     <color:R>Poor         </color>
-Constitution  +3        Searching   <color:r>Bad          </color>
-Charisma      +2        Perception  <color:g>Superb       </color>
+Dexterity     +0        Stealth     <color:o>Fair         </color>
+Constitution  +3        Searching   <color:o>Fair         </color>
+Charisma      +2        Perception  <color:y>Good         </color>
 Life Rating  103%       Melee       <color:G>Excellent    </color>
-Base HP       22        Bows        <color:y>Good         </color>
+Base HP       22        Archery     <color:o>Fair         </color>
 Experience   250%       Infravision 20'
 </style></indent>
 <topic:Gold><color:o>Gold</color>
-The wisest of their kind, Gold Draconians are resilient in the face of magical attacks. They are resistant to sound which they may also breathe at will, stunning their enemies. With the power of Dragon Strike, even their melee attacks will stun their enemies.
+The wisest of their kind, Gold Draconians are resilient in the face of magical attacks. They are resistant to sound, which they may also breathe at will, stunning their opponents. With the power of Dragon Strike, even their melee attacks will stun enemies.
 
   <indent><style:table><color:G>Stats                   Skills</color>
-Strength      +1        Disarming   <color:r>Bad          </color>
-Intelligence  +1        Device      <color:o>Fair         </color>
-Wisdom        +2        Save        <color:y>Good         </color>
-Dexterity     +1        Stealth     <color:o>Fair         </color>
-Constitution  +2        Searching   <color:r>Bad          </color>
-Charisma      +2        Perception  <color:g>Superb       </color>
+Strength      +1        Disarming   <color:R>Poor         </color>
+Intelligence  +1        Device      <color:y>Good         </color>
+Wisdom        +2        Save        <color:o>Fair         </color>
+Dexterity     +1        Stealth     <color:y>Good         </color>
+Constitution  +2        Searching   <color:o>Fair         </color>
+Charisma      +2        Perception  <color:y>Good         </color>
 Life Rating  102%       Melee       <color:y>Good         </color>
-Base HP       22        Bows        <color:y>Good         </color>
+Base HP       22        Archery     <color:o>Fair         </color>
 Experience   220%       Infravision 20'
 </style></indent>
 <topic:Shadow><color:o>Shadow</color>
-Lithe, stealthy and nimble, the Shadow Draconian is seldom seen in this world. They are resistant to the forces of nether which they may also breathe. They are the weakest of the draconians, and the poorest in melee. But they are better than average with magic. With the power of Dragon Strike, they may steal life from their enemies in melee.
+Lithe, stealthy and nimble, the Shadow Draconian is seldom seen in this world. They are resistant to the forces of nether, which they may also breathe. They are the weakest of the draconians, and the poorest in melee; but they are better than average with magic. With the power of Dragon Strike, they may steal life from their enemies in melee.
 
   <indent><style:table><color:G>Stats                   Skills</color>
-Strength      +0        Disarming   <color:r>Bad          </color>
+Strength      +0        Disarming   <color:R>Poor         </color>
 Intelligence  +1        Device      <color:o>Fair         </color>
 Wisdom        +1        Save        <color:o>Fair         </color>
-Dexterity     +3        Stealth     <color:y>Very Good    </color>
-Constitution  +2        Searching   <color:r>Bad          </color>
-Charisma      +2        Perception  <color:g>Superb       </color>
-Life Rating  100%       Melee       <color:R>Poor         </color>
-Base HP       22        Bows        <color:y>Good         </color>
+Dexterity     +3        Stealth     <color:G>Excellent    </color>
+Constitution  +2        Searching   <color:o>Fair         </color>
+Charisma      +2        Perception  <color:y>Good         </color>
+Life Rating  100%       Melee       <color:o>Fair         </color>
+Base HP       22        Archery     <color:o>Fair         </color>
 Experience   225%       Infravision 40'
 </style></indent>
 <topic:Tables><style:heading>Table 1 - Draconian Statistic Bonus Table</style>
@@ -145,29 +145,29 @@ Shadow          +0   +1   +1   +3   +2   +2  100%  225%  105%
 <topic:Skills1><style:heading>Table 2 - Draconian Skill Bonus Table I</style>
 <style:table>
              <color:w>Disarming     Device        Save          Stealth      </color>
-Red          <color:r>Bad          </color> <color:r>Bad          </color> <color:o>Fair         </color> <color:r>Bad          </color>
-White        <color:r>Bad          </color> <color:r>Bad          </color> <color:o>Fair         </color> <color:r>Bad          </color>
-Blue         <color:r>Bad          </color> <color:R>Poor         </color> <color:o>Fair         </color> <color:R>Poor         </color>
-Black        <color:r>Bad          </color> <color:R>Poor         </color> <color:o>Fair         </color> <color:R>Poor         </color>
-Green        <color:r>Bad          </color> <color:o>Fair         </color> <color:o>Fair         </color> <color:o>Fair         </color>
-Bronze       <color:r>Bad          </color> <color:y>Good         </color> <color:o>Fair         </color> <color:o>Fair         </color>
-Crystal      <color:r>Bad          </color> <color:r>Bad          </color> <color:o>Fair         </color> <color:R>Poor         </color>
-Gold         <color:r>Bad          </color> <color:o>Fair         </color> <color:y>Good         </color> <color:o>Fair         </color>
-Shadow       <color:r>Bad          </color> <color:o>Fair         </color> <color:o>Fair         </color> <color:y>Very Good    </color>
+Red          <color:R>Poor         </color> <color:R>Poor         </color> <color:o>Fair         </color> <color:R>Poor         </color>
+White        <color:R>Poor         </color> <color:R>Poor         </color> <color:o>Fair         </color> <color:R>Poor         </color>
+Blue         <color:R>Poor         </color> <color:R>Poor         </color> <color:o>Fair         </color> <color:o>Fair         </color>
+Black        <color:R>Poor         </color> <color:R>Poor         </color> <color:o>Fair         </color> <color:o>Fair         </color>
+Green        <color:R>Poor         </color> <color:o>Fair         </color> <color:o>Fair         </color> <color:y>Good         </color>
+Bronze       <color:R>Poor         </color> <color:y>Good         </color> <color:o>Fair         </color> <color:y>Good         </color>
+Crystal      <color:R>Poor         </color> <color:R>Poor         </color> <color:o>Fair         </color> <color:o>Fair         </color>
+Gold         <color:R>Poor         </color> <color:y>Good         </color> <color:o>Fair         </color> <color:y>Good         </color>
+Shadow       <color:R>Poor         </color> <color:o>Fair         </color> <color:o>Fair         </color> <color:G>Excellent    </color>
 
 </style>
 <topic:Skills2><style:heading>Table 3 - Draconian Skill Bonus Table II</style>
 <style:table>
-             <color:w>Searching     Perception    Melee         Bows          Infra</color>
-Red          <color:r>Bad          </color> <color:g>Superb       </color> <color:g>Superb       </color> <color:y>Good         </color>   20'
-White        <color:r>Bad          </color> <color:g>Superb       </color> <color:g>Superb       </color> <color:y>Good         </color>   20'
-Blue         <color:r>Bad          </color> <color:g>Superb       </color> <color:G>Excellent    </color> <color:y>Good         </color>   20'
-Black        <color:r>Bad          </color> <color:g>Superb       </color> <color:g>Superb       </color> <color:y>Good         </color>   20'
-Green        <color:r>Bad          </color> <color:g>Superb       </color> <color:y>Good         </color> <color:y>Good         </color>   20'
-Bronze       <color:r>Bad          </color> <color:g>Superb       </color> <color:o>Fair         </color> <color:y>Good         </color>   20'
-Crystal      <color:r>Bad          </color> <color:g>Superb       </color> <color:G>Excellent    </color> <color:y>Good         </color>   20'
-Gold         <color:r>Bad          </color> <color:g>Superb       </color> <color:y>Good         </color> <color:y>Good         </color>   20'
-Shadow       <color:r>Bad          </color> <color:g>Superb       </color> <color:R>Poor         </color> <color:y>Good         </color>   40'
+             <color:w>Searching     Perception    Melee         Archery       Infra</color>
+Red          <color:o>Fair         </color> <color:y>Good         </color> <color:G>Excellent    </color> <color:o>Fair         </color>   20'
+White        <color:o>Fair         </color> <color:y>Good         </color> <color:G>Excellent    </color> <color:o>Fair         </color>   20'
+Blue         <color:o>Fair         </color> <color:y>Good         </color> <color:G>Excellent    </color> <color:o>Fair         </color>   20'
+Black        <color:o>Fair         </color> <color:y>Good         </color> <color:G>Excellent    </color> <color:o>Fair         </color>   20'
+Green        <color:o>Fair         </color> <color:y>Good         </color> <color:y>Good         </color> <color:o>Fair         </color>   20'
+Bronze       <color:o>Fair         </color> <color:y>Good         </color> <color:y>Good         </color> <color:o>Fair         </color>   20'
+Crystal      <color:o>Fair         </color> <color:y>Good         </color> <color:G>Excellent    </color> <color:o>Fair         </color>   20'
+Gold         <color:o>Fair         </color> <color:y>Good         </color> <color:y>Good         </color> <color:o>Fair         </color>   20'
+Shadow       <color:o>Fair         </color> <color:y>Good         </color> <color:o>Fair         </color> <color:o>Fair         </color>   40'
 
 </style>
 <topic:Powers><style:heading>Table 4 - Draconian Special Powers</style>
@@ -205,4 +205,4 @@ You will be able to summon aid from dragons.</indent>
 
 
 
-<color:s>Automatically generated for FrogComposband 7.0.cloudberry.</color>
+<color:s>Automatically generated for FrogComposband 7.1.liquorice.</color>
