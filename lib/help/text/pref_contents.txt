@@ -1,6 +1,6 @@
 User Preference Files
 
-Please choose one of the following online help files:
+Please choose one of the following help sections:
 
     [a] User Preferences
     [b] Preference Files
