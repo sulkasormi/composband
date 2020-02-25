@@ -9,9 +9,10 @@ Please choose one of the following sections:
     [e] Tidbits
     [f] On Weapons and Multiple Blows
     [g] On Armor and Resistance
-    [h] On Important Magical Items
-    [i] On Weapons, Armor and Slays
-    [j] On Dungeon Exploration
+    [h] On Skills
+    [i] On Important Magical Items
+    [j] On Weapons, Armor and Slays
+    [k] On Dungeon Exploration
 
     (?) Help System Commands
 
