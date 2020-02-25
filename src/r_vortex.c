@@ -779,23 +779,24 @@ race_t *mon_vortex_get_race(void)
         me.extra_skills = xs;
 
         me.name = "Vortex";
-        me.desc = "Vortices are mindless whirlwinds of elemental forces randomly "
-                    "moving about the dungeon in search of prey. They are seldom confused "
-                    "and never blinded since they lack vision in the normal sense. Indeed, they "
-                    "seem to be aware of their surroundings even without eyes and need not wear a "
-                    "light source. They can be neither stunned, nor cut, and their mindless "
-                    "nature renders them immune to fear. But, alas, they are hopeless with "
-                    "magical devices, are rather weak in melee, and, while they may breathe "
-                    "almost effortlessly, their breath attacks are rather weak.\n \n"
-                    "Vortices do not have normal bodies. Rather they are simply a rapidly "
-                    "spinning elemental mass, and as such, they may incorporate objects "
-                    "into their rotating essence, gaining bonuses and protection in the process. "
+        me.desc = "Vortices are mindless whirlwinds of elemental forces twirling their way "
+                    "through the dungeon in search of prey. They are seldom confused "
+                    "and never blinded since they lack vision in the normal sense; indeed, they "
+                    "seem to be aware of their surroundings even without eyes, and need not wear a "
+                    "light source. They can be neither stunned nor cut, and their mindless "
+                    "nature renders them immune to fear. But, alas! they are hopeless with "
+                    "magical devices and somewhat weak in melee; and while they may breathe "
+                    "almost effortlessly, their breath attacks are not particularly strong.\n \n"
+                    "Vortices do not have normal bodies; rather, they are simply a rapidly "
+                    "spinning elemental mass. As such, they may incorporate objects into their "
+                    "rotating essence, gaining bonuses and protection in the process. "
                     "The number of objects they may use increases with level, and there are no "
                     "restrictions on the types of equipment they may 'wield' in each slot. "
-                    "While they may 'wield' weapons this way, they cannot attack with them. "
-                    "Instead, the vortex may engulf nearby monsters with their elemental essence.\n \n"
+                    "While they may equip weapons this way, they cannot attack with them; "
+                    "instead, the vortex may engulf nearby monsters with their elemental essence.\n \n"
                     "Vortices evolve randomly, though all seem to end up with the evolutionary "
-                    "perfection of the Aether vortex.";
+                    "perfection of the Aether vortex. At level 50 they gain a special talent "
+                    "to augment their power.";
 
         me.infra = 0;
         me.exp = 125;
