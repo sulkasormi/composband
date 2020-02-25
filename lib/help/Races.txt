@@ -1,35 +1,35 @@
 <style:title>The Races</style>
-There are many races in the world, each, for the most part, with both strengths and weaknesses. Humans are the base race, and serve as the benchmark of comparison for all the others. In general, the stronger a race is relative to humans, the higher the <color:keyword>Experience Penalty</color> and the longer it will take to gain levels.
+There are many races in the world, each, for the most part, with both strengths and weaknesses. In general, the stronger a race is, the higher its <color:keyword>Experience Penalty</color> and the longer it will take to gain levels.
 
-For details on the <color:keyword>Primary Statistics</color>, see <link:birth.txt#PrimaryStats>. For information about the various <color:keyword>Skills</color>, see <link:birth.txt#PrimarySkills>. The skill descriptions in this document are for comparison purposes only. For example, your fledgling high-elf will not be born with <color:v>Legendary[2]</color> device skill. In general, skills are influenced by level, race, class, stats and equipment. To compare the various races, you might want to take a look at <link:Races.txt#Tables> the race tables below.
+For details on the <color:keyword>Stats</color>, see <link:birth.txt#PrimaryStats>. For information about the <color:keyword>Skills</color>, see <link:birth.txt#PrimarySkills>. The skill descriptions in this document are <color:v>for comparison purposes only</color>; they will tell you how good a race is compared to other races, but should not be taken as a literal indicator of the skill level your fledgling character will be born with. In general, skills are influenced by level, race, class, stats and equipment. See the race tables <link:Races.txt#Tables> below for a quick comparison of the various races.
 
 <style:heading>Humans</style>
   <indent><topic:Amberite><color:o>Amberite</color>
-The Amberites are a reputedly immortal race, who are endowed with numerous advantages in addition to their longevity. They are very tough and their constitution cannot be reduced, and their ability to heal wounds far surpasses that of any other race. Having seen virtually everything, very little is new to them, and they gain levels much slower than the other races.
+The Amberites are a reputedly immortal race, who are endowed with numerous advantages in addition to their longevity. They are very tough and their constitution cannot be reduced, and their ability to recover from wounds surpasses most other races. Having seen virtually everything, very little is new to them, and so they gain levels relatively slowly.
 
   <indent><style:table><color:G>Stats                   Skills</color>
-Strength      +1        Disarming   <color:o>Fair         </color>
+Strength      +1        Disarming   <color:y>Good         </color>
 Intelligence  +2        Device      <color:o>Fair         </color>
 Wisdom        +2        Save        <color:o>Fair         </color>
-Dexterity     +2        Stealth     <color:o>Fair         </color>
-Constitution  +3        Searching   <color:o>Fair         </color>
-Charisma      +0        Perception  <color:g>Superb       </color>
-Life Rating  100%       Melee       <color:g>Superb       </color>
-Base HP       20        Bows        <color:G>Excellent    </color>
+Dexterity     +2        Stealth     <color:y>Good         </color>
+Constitution  +3        Searching   <color:y>Good         </color>
+Charisma      +0        Perception  <color:G>Excellent    </color>
+Life Rating  100%       Melee       <color:G>Excellent    </color>
+Base HP       20        Archery     <color:y>Good         </color>
 Experience   190%       Infravision 0'
 </style></indent>
 <topic:Barbarian><color:o>Barbarian</color>
-Barbarians are hardy men of the north. They are fierce in combat, and their wrath is feared throughout the world. Combat is their life: they feel no fear, and they learn to enter battle frenzy at will even sooner than half-trolls. Barbarians are, however, suspicious of magic, which makes magic devices fairly hard for them to use.
+Barbarians are hardy men of the north; they are fierce in combat, and their wrath is feared throughout the world. Combat is their life: they feel no fear, and they learn to enter battle frenzy at will even sooner than half-trolls. Barbarians are, however, suspicious of magic, which makes magic devices fairly hard for them to use. Barbarians gain a demigod talent at level 30.
 
   <indent><style:table><color:G>Stats                   Skills</color>
-Strength      +3        Disarming   <color:r>Bad          </color>
-Intelligence  -2        Device      <color:D>Very Bad     </color>
+Strength      +3        Disarming   <color:R>Poor         </color>
+Intelligence  -2        Device      <color:r>Bad          </color>
 Wisdom        -1        Save        <color:o>Fair         </color>
-Dexterity     +1        Stealth     <color:r>Bad          </color>
-Constitution  +2        Searching   <color:r>Bad          </color>
-Charisma      +2        Perception  <color:G>Excellent    </color>
+Dexterity     +1        Stealth     <color:R>Poor         </color>
+Constitution  +2        Searching   <color:o>Fair         </color>
+Charisma      +2        Perception  <color:R>Poor         </color>
 Life Rating  103%       Melee       <color:G>Excellent    </color>
-Base HP       22        Bows        <color:G>Excellent    </color>
+Base HP       22        Archery     <color:y>Good         </color>
 Experience   135%       Infravision 0'
 </style></indent>
 <topic:Demigod><color:o>Demigod</color>
@@ -41,157 +41,185 @@ See <link:Demigods.txt> for more details on demigod parentage.
 Strength      +1        Disarming   <color:o>Fair         </color>
 Intelligence  +1        Device      <color:o>Fair         </color>
 Wisdom        +1        Save        <color:o>Fair         </color>
-Dexterity     +1        Stealth     <color:r>Bad          </color>
-Constitution  +1        Searching   <color:r>Bad          </color>
-Charisma      +1        Perception  <color:G>Excellent    </color>
-Life Rating  100%       Melee       <color:G>Excellent    </color>
-Base HP       20        Bows        <color:y>Very Good    </color>
+Dexterity     +1        Stealth     <color:R>Poor         </color>
+Constitution  +1        Searching   <color:o>Fair         </color>
+Charisma      +1        Perception  <color:R>Poor         </color>
+Life Rating  100%       Melee       <color:y>Very Good    </color>
+Base HP       20        Archery     <color:y>Good         </color>
 Experience   180%       Infravision 0'
 </style></indent>
 <topic:Dunadan><color:o>Dunadan</color>
-Dunedain are a race of hardy men from the West. This elder race surpasses human abilities in every field, especially constitution. However, being men of the world, very little is new to them, and levels are very hard for them to gain. Their constitution cannot be reduced. 
+Dunedain are a race of hardy men from the West. This elder race surpasses human abilities in every field; however, being men of the world, very little is new to them, and levels are very hard for them to gain. Dunedain gain one demigod talent at level 30. Their constitution is exceptionally good and cannot be reduced.
 
   <indent><style:table><color:G>Stats                   Skills</color>
-Strength      +1        Disarming   <color:o>Fair         </color>
+Strength      +1        Disarming   <color:y>Good         </color>
 Intelligence  +2        Device      <color:o>Fair         </color>
 Wisdom        +2        Save        <color:o>Fair         </color>
-Dexterity     +2        Stealth     <color:o>Fair         </color>
-Constitution  +3        Searching   <color:o>Fair         </color>
-Charisma      +0        Perception  <color:g>Superb       </color>
-Life Rating  100%       Melee       <color:g>Superb       </color>
-Base HP       20        Bows        <color:G>Excellent    </color>
+Dexterity     +2        Stealth     <color:y>Good         </color>
+Constitution  +3        Searching   <color:y>Good         </color>
+Charisma      +0        Perception  <color:G>Excellent    </color>
+Life Rating  100%       Melee       <color:G>Excellent    </color>
+Base HP       20        Archery     <color:y>Good         </color>
 Experience   160%       Infravision 0'
 </style></indent>
 <topic:Human><color:o>Human</color>
-The human is the base character. All other races are compared to them. Humans are average at everything and also tend to go up levels faster than most other races because of their shorter life spans. No racial adjustments or intrinsics occur to characters choosing human. However, humans may choose special talents at L20 & 40 that more than make up for their overall mediocrity.
+Humans are average at everything, and tend to gain levels rapidly due to their short life spans. No racial adjustments or intrinsics occur to characters choosing human. However, humans may select special talents at levels 20 and 40 that more than make up for their apparent mediocrity.
 
   <indent><style:table><color:G>Stats                   Skills</color>
-Strength      +0        Disarming   <color:R>Poor         </color>
-Intelligence  +0        Device      <color:R>Poor         </color>
-Wisdom        +0        Save        <color:R>Poor         </color>
-Dexterity     +0        Stealth     <color:R>Poor         </color>
-Constitution  +0        Searching   <color:r>Bad          </color>
-Charisma      +0        Perception  <color:g>Superb       </color>
-Life Rating  100%       Melee       <color:R>Poor         </color>
-Base HP       20        Bows        <color:o>Fair         </color>
+Strength      +0        Disarming   <color:o>Fair         </color>
+Intelligence  +0        Device      <color:o>Fair         </color>
+Wisdom        +0        Save        <color:o>Fair         </color>
+Dexterity     +0        Stealth     <color:o>Fair         </color>
+Constitution  +0        Searching   <color:o>Fair         </color>
+Charisma      +0        Perception  <color:y>Good         </color>
+Life Rating  100%       Melee       <color:o>Fair         </color>
+Base HP       20        Archery     <color:o>Fair         </color>
 Experience   100%       Infravision 0'
+</style></indent>
+<topic:Igor><color:o>Igor</color>
+The epitome of a self-made man, an Igor is generally easily recognizable by the ring of stitches around his neck, the tendency to limp with perfectly healthy legs, and the mysterious ability to appear suddenly and then disappear when the mob comes looking. An Igor is at home with lightning, and always carries a bag full of ice in case he should find something that needs to be kept cold.
+
+  <indent><style:table><color:G>Stats                   Skills</color>
+Strength      -3        Disarming   <color:o>Fair         </color>
+Intelligence  +0        Device      <color:o>Fair         </color>
+Wisdom        -1        Save        <color:o>Fair         </color>
+Dexterity     -1        Stealth     <color:o>Fair         </color>
+Constitution  -1        Searching   <color:o>Fair         </color>
+Charisma      -1        Perception  <color:y>Good         </color>
+Life Rating   97%       Melee       <color:D>Very Bad     </color>
+Base HP       15        Archery     <color:r>Bad          </color>
+Experience   145%       Infravision 0'
 </style></indent>
 </indent>
 <style:heading>Elves</style>
   <indent><topic:Dark-Elf><color:o>Dark-Elf</color>
-Another dark, cave-dwelling race, likewise unhampered by darkness attacks, the Dark Elves have a long tradition and knowledge of magic. They have an inherent magic missile attack available to them at a low level. With their keen sight, they also learn to see invisible things as their relatives High-Elves do, but at a higher level.
+A cave-dwelling race unhampered by darkness attacks, dark-elves have more in common with Nibelungs than with other elves. They have a great capacity for magic and spellcasting, and learn the Magic Missile spell at a low level regardless of their class. With their keen sight, they soon acquire the ability to see invisible things.
 
   <indent><style:table><color:G>Stats                   Skills</color>
 Strength      -1        Disarming   <color:y>Good         </color>
-Intelligence  +3        Device      <color:y>Very Good    </color>
-Wisdom        +2        Save        <color:G>Excellent    </color>
-Dexterity     +2        Stealth     <color:y>Good         </color>
-Constitution  -2        Searching   <color:G>Excellent    </color>
-Charisma      +3        Perception  <color:g>Superb       </color>
-Life Rating   97%       Melee       <color:r>Bad          </color>
-Base HP       18        Bows        <color:G>Excellent    </color>
+Intelligence  +3        Device      <color:y>Good         </color>
+Wisdom        +2        Save        <color:y>Very Good    </color>
+Dexterity     +2        Stealth     <color:G>Excellent    </color>
+Constitution  -2        Searching   <color:g>Superb       </color>
+Charisma      +3        Perception  <color:y>Very Good    </color>
+Life Rating   97%       Melee       <color:R>Poor         </color>
+Base HP       18        Archery     <color:y>Good         </color>
 Experience   155%       Infravision 50'
 </style></indent>
 <topic:High-Elf><color:o>High-Elf</color>
-High-elves are a race of immortal beings dating from the beginning of time. They are masters of all skills, and are strong and intelligent, although their wisdom is sometimes suspect. High-elves begin their lives able to see the unseen, and resist light effects just like regular elves. However, there are few things that they have not seen already, and experience is very hard for them to gain.
+High-elves are a race of immortal beings dating from the beginning of time. They are masters of all skills, and are strong and intelligent, although their wisdom is sometimes suspect. High-elves begin their lives able to see the unseen, and resist light effects just like regular elves. However, there are few things that they have not seen already, so new levels are quite hard for them to gain.
 
   <indent><style:table><color:G>Stats                   Skills</color>
-Strength      +1        Disarming   <color:o>Fair         </color>
-Intelligence  +3        Device      <color:G>Excellent    </color>
-Wisdom        -1        Save        <color:G>Excellent    </color>
-Dexterity     +3        Stealth     <color:y>Very Good    </color>
-Constitution  +1        Searching   <color:o>Fair         </color>
-Charisma      +1        Perception  <color:b>Heroic       </color>
-Life Rating   99%       Melee       <color:G>Excellent    </color>
-Base HP       19        Bows        <color:g>Superb       </color>
+Strength      +1        Disarming   <color:y>Good         </color>
+Intelligence  +3        Device      <color:y>Very Good    </color>
+Wisdom        -1        Save        <color:y>Very Good    </color>
+Dexterity     +3        Stealth     <color:G>Excellent    </color>
+Constitution  +1        Searching   <color:y>Good         </color>
+Charisma      +1        Perception  <color:G>Excellent    </color>
+Life Rating   99%       Melee       <color:y>Very Good    </color>
+Base HP       19        Archery     <color:G>Excellent    </color>
 Experience   190%       Infravision 40'
+</style></indent>
+<topic:Tomte><color:o>Tomte</color>
+Smaller and of lighter build than regular elves, Tomtes are nimble, intelligent, extremely stealthy and at home with magical devices, but their size handicaps them in physical combat. They greatly prefer light headwear, and cannot think clearly with a heavy helmet squeezing their brains. Tomtes have the ability to assess monsters and items at a glance (they gain auto-identify at level 40); and being accustomed to long winters, they are not much bothered by cold.
+
+  <indent><style:table><color:G>Stats                   Skills</color>
+Strength      -4        Disarming   <color:G>Excellent    </color>
+Intelligence  +2        Device      <color:g>Superb       </color>
+Wisdom        +2        Save        <color:o>Fair         </color>
+Dexterity     +3        Stealth     <color:g>Superb       </color>
+Constitution  -3        Searching   <color:b>Heroic       </color>
+Charisma      +0        Perception  <color:y>Good         </color>
+Life Rating   94%       Melee       <color:o>Fair         </color>
+Base HP       13        Archery     <color:R>Poor         </color>
+Experience   150%       Infravision 40'
 </style></indent>
 <topic:Wood-Elf><color:o>Wood-Elf</color>
 Wood-Elves are the most common of elves. They prefer the seclusion of thick forests and are unhampered when moving through dense foliage. Their skills with tracking and bow are unsurpassed, and as they advance they gain the power of Nature Awareness.
 
   <indent><style:table><color:G>Stats                   Skills</color>
 Strength      -1        Disarming   <color:y>Good         </color>
-Intelligence  +1        Device      <color:o>Fair         </color>
+Intelligence  +1        Device      <color:y>Good         </color>
 Wisdom        +2        Save        <color:o>Fair         </color>
-Dexterity     +1        Stealth     <color:y>Good         </color>
-Constitution  -1        Searching   <color:G>Excellent    </color>
-Charisma      +1        Perception  <color:g>Superb       </color>
-Life Rating   97%       Melee       <color:r>Bad          </color>
-Base HP       16        Bows        <color:g>Superb       </color>
+Dexterity     +1        Stealth     <color:G>Excellent    </color>
+Constitution  -1        Searching   <color:g>Superb       </color>
+Charisma      +1        Perception  <color:y>Very Good    </color>
+Life Rating   97%       Melee       <color:R>Poor         </color>
+Base HP       16        Archery     <color:G>Excellent    </color>
 Experience   125%       Infravision 30'
 </style></indent>
 </indent>
 <style:heading>Hobbits/Dwarves</style>
   <indent><topic:Dwarf><color:o>Dwarf</color>
-Dwarves are the headstrong miners and fighters of legend. Dwarves tend to be stronger and tougher but slower and less intelligent than humans. Because they are so headstrong and are somewhat wise, they resist spells which are cast on them. They are very good at searching, perception, fighting, and bows. Dwarves have miserable stealth. They resist being blinded.
+Dwarves are the headstrong miners and fighters of legend. They tend to be strong and tough, but lack agility. Because they are so headstrong and also somewhat wise, dwarves are relatively resistant to evil curses cast on them. They are very good at fighting, searching and perception, and resist being blinded, but infamously have miserable stealth.
 
   <indent><style:table><color:G>Stats                   Skills</color>
 Strength      +2        Disarming   <color:o>Fair         </color>
 Intelligence  -2        Device      <color:y>Good         </color>
 Wisdom        +2        Save        <color:y>Good         </color>
-Dexterity     -2        Stealth     <color:r>Bad          </color>
-Constitution  +2        Searching   <color:G>Excellent    </color>
-Charisma      +1        Perception  <color:g>Superb       </color>
-Life Rating  103%       Melee       <color:g>Superb       </color>
-Base HP       22        Bows        <color:o>Fair         </color>
+Dexterity     -2        Stealth     <color:R>Poor         </color>
+Constitution  +2        Searching   <color:g>Superb       </color>
+Charisma      +1        Perception  <color:y>Good         </color>
+Life Rating  103%       Melee       <color:G>Excellent    </color>
+Base HP       22        Archery     <color:o>Fair         </color>
 Experience   135%       Infravision 50'
 </style></indent>
 <topic:Gnome><color:o>Gnome</color>
-Gnomes are smaller than dwarves but larger than Halflings. They, like the hobbits, live in the earth in burrow-like homes. Gnomes make excellent mages, and have very good saving throws. They are good at searching, disarming, perception, and stealth. They have lower strength than humans so they are not very good at fighting with hand weapons. Gnomes have fair infra-vision, so they can detect warm-blooded creatures at a distance. Gnomes are intrinsically protected against paralysis.
+Gnomes are smaller than dwarves but larger than hobbits; and like hobbits, they live in the earth in burrow-like homes. Gnomes make excellent mages, and have very good saving throws. They are naturally skilled at most things, but not very strong or good at hand-to-hand fighting. Gnomes have fair infra-vision, allowing them to detect warm-blooded creatures at a distance. They are also intrinsically protected against paralysis.
 
   <indent><style:table><color:G>Stats                   Skills</color>
 Strength      -1        Disarming   <color:G>Excellent    </color>
 Intelligence  +2        Device      <color:y>Good         </color>
-Wisdom        -1        Save        <color:y>Very Good    </color>
-Dexterity     +2        Stealth     <color:y>Good         </color>
-Constitution  +1        Searching   <color:y>Very Good    </color>
-Charisma      -1        Perception  <color:g>Superb       </color>
-Life Rating   95%       Melee       <color:D>Very Bad     </color>
-Base HP       16        Bows        <color:G>Excellent    </color>
+Wisdom        -1        Save        <color:y>Good         </color>
+Dexterity     +2        Stealth     <color:G>Excellent    </color>
+Constitution  +1        Searching   <color:G>Excellent    </color>
+Charisma      -1        Perception  <color:G>Excellent    </color>
+Life Rating   95%       Melee       <color:R>Poor         </color>
+Base HP       16        Archery     <color:y>Good         </color>
 Experience   115%       Infravision 40'
 </style></indent>
 <topic:Hobbit><color:o>Hobbit</color>
-Hobbits, or Halflings, are very good at bows, throwing, and have good saving throws. They also are very good at searching, disarming, perception, and stealth; so they make excellent rogues, but prefer to be called burglars. They are much weaker than humans, and no good at melee fighting. Halflings have fair infravision, so they can detect warm creatures at a distance.
+Hobbits (or Halflings) have exceptional stealth and are very good at bows and throwing; indeed, they are generally well-suited for the adventuring life. Yet their small size is a handicap at times; they are not very good at melee fighting, and cannot suffer as many hard hits as larger races. Hobbits are known for their love of good cooking, and have an almost miraculous ability to find food in the dark depths of the dungeon.
 
   <indent><style:table><color:G>Stats                   Skills</color>
 Strength      -2        Disarming   <color:g>Superb       </color>
 Intelligence  +1        Device      <color:y>Very Good    </color>
-Wisdom        +1        Save        <color:G>Excellent    </color>
-Dexterity     +3        Stealth     <color:G>Excellent    </color>
-Constitution  +2        Searching   <color:g>Superb       </color>
-Charisma      +1        Perception  <color:b>Heroic       </color>
-Life Rating   92%       Melee       <color:D>Very Bad     </color>
-Base HP       14        Bows        <color:g>Superb       </color>
+Wisdom        +1        Save        <color:y>Good         </color>
+Dexterity     +3        Stealth     <color:g>Superb       </color>
+Constitution  +2        Searching   <color:b>Heroic       </color>
+Charisma      +1        Perception  <color:g>Superb       </color>
+Life Rating   92%       Melee       <color:r>Bad          </color>
+Base HP       14        Archery     <color:y>Very Good    </color>
 Experience   120%       Infravision 40'
 </style></indent>
 <topic:Nibelung><color:o>Nibelung</color>
 The hated and persecuted race of nocturnal dwarves, these cave-dwellers are not much bothered by darkness. Their natural inclination to magical items has made them resistant to effects which could disenchant magical energy.
 
   <indent><style:table><color:G>Stats                   Skills</color>
-Strength      +1        Disarming   <color:o>Fair         </color>
-Intelligence  -1        Device      <color:o>Fair         </color>
-Wisdom        +2        Save        <color:y>Good         </color>
-Dexterity     +0        Stealth     <color:o>Fair         </color>
-Constitution  +2        Searching   <color:y>Good         </color>
-Charisma      -2        Perception  <color:g>Superb       </color>
-Life Rating  103%       Melee       <color:G>Excellent    </color>
-Base HP       22        Bows        <color:o>Fair         </color>
-Experience   165%       Infravision 50'
+Strength      +0        Disarming   <color:o>Fair         </color>
+Intelligence  +1        Device      <color:o>Fair         </color>
+Wisdom        +0        Save        <color:y>Good         </color>
+Dexterity     +1        Stealth     <color:y>Good         </color>
+Constitution  +1        Searching   <color:G>Excellent    </color>
+Charisma      -2        Perception  <color:y>Good         </color>
+Life Rating  101%       Melee       <color:y>Very Good    </color>
+Base HP       21        Archery     <color:o>Fair         </color>
+Experience   150%       Infravision 50'
 </style></indent>
 </indent>
 <style:heading>Fairies</style>
   <indent><topic:Shadow-Fairy><color:o>Shadow-Fairy</color>
-Shadow Fairies are one of the several fairy races. They have wings, and can fly over traps that may open up beneath them. Shadow Fairies must beware of sunlight, as they are vulnerable to bright light. They are physically weak, but have advantages in using magic and are amazingly stealthy. Shadow Fairies have a wonderful advantage in that they never aggravate monsters (If their equipment normally aggravates monsters, they only suffer a penalty to stealth, but if they aggravate by their personality itself, the advantage will be lost).
+Shadow-fairies are one of the several fairy races. They have wings, and can fly over traps that may open up beneath them. Being creatures of darkness, shadow-fairies are vulnerable to bright light. They are physically weak, but naturally adept at using magic. Shadow-fairies are amazingly stealthy, and have a wonderful advantage in that they almost never aggravate monsters; aggravating equipment only gives them a slight penalty to stealth, but if they have an aggravating personality the advantage is lost.
 
   <indent><style:table><color:G>Stats                   Skills</color>
-Strength      -2        Disarming   <color:y>Very Good    </color>
+Strength      -2        Disarming   <color:y>Good         </color>
 Intelligence  +2        Device      <color:y>Good         </color>
-Wisdom        +2        Save        <color:R>Poor         </color>
-Dexterity     +1        Stealth     <color:G>Excellent    </color>
-Constitution  -1        Searching   <color:g>Superb       </color>
-Charisma      -3        Perception  <color:b>Heroic       </color>
-Life Rating   91%       Melee       <color:D>Very Bad     </color>
-Base HP       13        Bows        <color:o>Fair         </color>
+Wisdom        +2        Save        <color:o>Fair         </color>
+Dexterity     +1        Stealth     <color:g>Superb       </color>
+Constitution  -1        Searching   <color:b>Heroic       </color>
+Charisma      -3        Perception  <color:g>Superb       </color>
+Life Rating   91%       Melee       <color:r>Bad          </color>
+Base HP       13        Archery     <color:o>Fair         </color>
 Experience   140%       Infravision 40'
 </style></indent>
 <topic:Sprite><color:o>Sprite</color>
@@ -201,55 +229,55 @@ One of the several fairy races, Sprites are very small. They have tiny wings and
 Strength      -4        Disarming   <color:G>Excellent    </color>
 Intelligence  +3        Device      <color:y>Good         </color>
 Wisdom        +3        Save        <color:y>Good         </color>
-Dexterity     +3        Stealth     <color:y>Very Good    </color>
-Constitution  -2        Searching   <color:g>Superb       </color>
-Charisma      -2        Perception  <color:g>Superb       </color>
-Life Rating   92%       Melee       <color:D>Very Bad     </color>
-Base HP       14        Bows        <color:o>Fair         </color>
+Dexterity     +3        Stealth     <color:G>Excellent    </color>
+Constitution  -2        Searching   <color:b>Heroic       </color>
+Charisma      -2        Perception  <color:y>Good         </color>
+Life Rating   92%       Melee       <color:r>Bad          </color>
+Base HP       14        Archery     <color:o>Fair         </color>
 Experience   135%       Infravision 40'
 </style></indent>
 </indent>
 <style:heading>Angels/Demons</style>
   <indent><topic:Archon><color:o>Archon</color>
-Archons are a higher class of angels. They are good at all skills, and are strong, wise, and are a favorite with any people. They are able to see the unseen, and their wings allow them to safely fly over traps and other dangerous places. However, belonging to a higher plane as they do, the experiences of this world do not leave a strong impression on them and they gain levels slowly.
+Archons are a higher class of angels. They are good at all skills, and are strong, wise, and a favorite with any people. They are able to see the unseen, and their wings allow them to safely fly over traps and other dangerous places. However, belonging to a higher plane as they do, the experiences of this world do not leave a strong impression on them and they gain levels slowly.
 
   <indent><style:table><color:G>Stats                   Skills</color>
-Strength      +2        Disarming   <color:R>Poor         </color>
+Strength      +2        Disarming   <color:o>Fair         </color>
 Intelligence  +0        Device      <color:y>Very Good    </color>
-Wisdom        +4        Save        <color:y>Very Good    </color>
-Dexterity     +1        Stealth     <color:o>Fair         </color>
-Constitution  +2        Searching   <color:R>Poor         </color>
-Charisma      +3        Perception  <color:g>Superb       </color>
-Life Rating  103%       Melee       <color:G>Excellent    </color>
-Base HP       22        Bows        <color:G>Excellent    </color>
+Wisdom        +4        Save        <color:y>Good         </color>
+Dexterity     +1        Stealth     <color:y>Good         </color>
+Constitution  +2        Searching   <color:y>Good         </color>
+Charisma      +3        Perception  <color:y>Good         </color>
+Life Rating  103%       Melee       <color:y>Very Good    </color>
+Base HP       22        Archery     <color:y>Good         </color>
 Experience   200%       Infravision 30'
 </style></indent>
 <topic:Balrog><color:o>Balrog</color>
-Balrogs are a higher class of demons. They are strong, intelligent and tough. They do not believe in gods, and are not suitable for priest at all. Balrog are resistant to fire and nether, and have a firm hold on their life force. They also eventually learn to see invisible things. They are good at almost all skills except stealth. They gain very little nutrition from the food of mortals, and need human corpses as sacrifices to regain their vitality.
+Balrogs are a higher class of demons. They are strong, intelligent and tough, but lacking in wisdom and not suitable for priesthood. Balrogs are resistant to fire and nether, and have a firm hold on their life force; they also soon learn to see invisible things. They are good at almost all skills except stealth. They gain very little nutrition from the food of mortals, and need human corpses as sacrifices to regain their vitality.
 
   <indent><style:table><color:G>Stats                   Skills</color>
-Strength      +4        Disarming   <color:r>Bad          </color>
+Strength      +4        Disarming   <color:R>Poor         </color>
 Intelligence  +2        Device      <color:y>Very Good    </color>
-Wisdom       -10        Save        <color:g>Superb       </color>
+Wisdom       -10        Save        <color:G>Excellent    </color>
 Dexterity     +2        Stealth     <color:r>Bad          </color>
-Constitution  +3        Searching   <color:r>Bad          </color>
-Charisma      +2        Perception  <color:G>Excellent    </color>
+Constitution  +3        Searching   <color:o>Fair         </color>
+Charisma      +2        Perception  <color:o>Fair         </color>
 Life Rating  106%       Melee       <color:g>Superb       </color>
-Base HP       24        Bows        <color:o>Fair         </color>
+Base HP       24        Archery     <color:o>Fair         </color>
 Experience   180%       Infravision 50'
 </style></indent>
 <topic:Imp><color:o>Imp</color>
-A demon-creature from the nether-world, naturally resistant to fire attacks, and capable of learning fire bolt and fire ball attacks. They are little loved by other races, but can perform fairly well in most professions. As they advance levels, they gain the powers of See Invisible.
+A demon-creature from the nether-world, naturally resistant to fire attacks, and capable of learning fire bolt and fire ball attacks. They are little loved by other races, but can perform fairly well in most professions. As they advance levels, they gain the ability to perceive invisible creatures.
 
   <indent><style:table><color:G>Stats                   Skills</color>
-Strength      +0        Disarming   <color:r>Bad          </color>
+Strength      +0        Disarming   <color:R>Poor         </color>
 Intelligence  -1        Device      <color:o>Fair         </color>
 Wisdom        -1        Save        <color:R>Poor         </color>
-Dexterity     +1        Stealth     <color:o>Fair         </color>
-Constitution  +2        Searching   <color:D>Very Bad     </color>
-Charisma      -1        Perception  <color:g>Superb       </color>
+Dexterity     +1        Stealth     <color:y>Good         </color>
+Constitution  +2        Searching   <color:R>Poor         </color>
+Charisma      -1        Perception  <color:y>Good         </color>
 Life Rating   99%       Melee       <color:y>Good         </color>
-Base HP       19        Bows        <color:o>Fair         </color>
+Base HP       19        Archery     <color:o>Fair         </color>
 Experience    90%       Infravision 30'
 </style></indent>
 </indent>
@@ -258,113 +286,159 @@ Experience    90%       Infravision 30'
 With but one eye, a Cyclops can see more than many with two eyes. They are headstrong, and loud noises bother them very little. They are not quite qualified for the magic using professions, but as a certain Mr. Ulysses can testify, their accuracy with thrown rocks can be deadly!
 
   <indent><style:table><color:G>Stats                   Skills</color>
-Strength      +4        Disarming   <color:r>Bad          </color>
-Intelligence  -3        Device      <color:r>Bad          </color>
-Wisdom        -2        Save        <color:r>Bad          </color>
+Strength      +4        Disarming   <color:R>Poor         </color>
+Intelligence  -3        Device      <color:R>Poor         </color>
+Wisdom        -2        Save        <color:R>Poor         </color>
 Dexterity     -3        Stealth     <color:r>Bad          </color>
-Constitution  +4        Searching   <color:D>Very Bad     </color>
-Charisma      -1        Perception  <color:y>Good         </color>
+Constitution  +4        Searching   <color:R>Poor         </color>
+Charisma      -1        Perception  <color:r>Bad          </color>
 Life Rating  108%       Melee       <color:g>Superb       </color>
-Base HP       24        Bows        <color:g>Superb       </color>
+Base HP       24        Archery     <color:y>Very Good    </color>
 Experience   155%       Infravision 10'
 </style></indent>
 <topic:Half-Giant><color:o>Half-Giant</color>
-Half-Giants' limited intelligence makes it difficult for them to become full spellcasters, but with their huge strength they make excellent warriors. Their thick skin makes them resistant to shards, and like Half-Trolls, they have their strength sustained.
+Half-giants' limited intelligence makes it difficult for them to become full spellcasters, but with their huge strength they make excellent warriors. Their thick skin makes them resistant to shards, and like half-trolls, they have their strength sustained.
 
   <indent><style:table><color:G>Stats                   Skills</color>
-Strength      +4        Disarming   <color:D>Very Bad     </color>
+Strength      +4        Disarming   <color:r>Bad          </color>
 Intelligence  -2        Device      <color:r>Bad          </color>
-Wisdom        -2        Save        <color:r>Bad          </color>
+Wisdom        -2        Save        <color:R>Poor         </color>
 Dexterity     -2        Stealth     <color:r>Bad          </color>
-Constitution  +3        Searching   <color:D>Very Bad     </color>
-Charisma      +0        Perception  <color:y>Good         </color>
-Life Rating  108%       Melee       <color:b>Heroic       </color>
-Base HP       26        Bows        <color:o>Fair         </color>
+Constitution  +3        Searching   <color:R>Poor         </color>
+Charisma      +0        Perception  <color:r>Bad          </color>
+Life Rating  108%       Melee       <color:g>Superb       </color>
+Base HP       26        Archery     <color:o>Fair         </color>
 Experience   150%       Infravision 30'
 </style></indent>
-<topic:Ogre><color:o>Ogre</color>
-Ogres are big and ugly but possessed of a low cunning and great strength. For warriors, they have all the necessary attributes, and they can even become wizards: after all, they are related to Ogre Magi, from whom they have learned the skill of setting trapped runes once their level is high enough. Being simple minded they have their intelligence sustained
-
-  <indent><style:table><color:G>Stats                   Skills</color>
-Strength      +3        Disarming   <color:r>Bad          </color>
-Intelligence  +0        Device      <color:r>Bad          </color>
-Wisdom        -1        Save        <color:r>Bad          </color>
-Dexterity     -1        Stealth     <color:r>Bad          </color>
-Constitution  +3        Searching   <color:D>Very Bad     </color>
-Charisma      +0        Perception  <color:y>Good         </color>
-Life Rating  106%       Melee       <color:g>Superb       </color>
-Base HP       23        Bows        <color:R>Poor         </color>
-Experience   140%       Infravision 0'
-</style></indent>
 <topic:Half-Orc><color:o>Half-Orc</color>
-Half-orcs make excellent warriors, but are terrible at magic. They are as bad as dwarves at stealth, and horrible at searching, disarming, and perception. Half-orcs are quite ugly, and tend to pay more for goods in town. Because of their preference to living underground to on the surface, half-orcs resist darkness attacks. The human part of their heritage allows them to select a talent at Level 30.
+Half-orcs make excellent warriors, but are terrible at magic. They are as bad as dwarves at stealth, and horrible at searching, disarming, and perception. Being accustomed to living underground, half-orcs are resistant to darkness attacks. Half-orcs are quite ugly, and so tend to pay more for goods in town. The human part of their heritage allows them to select a talent at level 30.
 
   <indent><style:table><color:G>Stats                   Skills</color>
-Strength      +2        Disarming   <color:r>Bad          </color>
-Intelligence  -1        Device      <color:r>Bad          </color>
+Strength      +2        Disarming   <color:R>Poor         </color>
+Intelligence  -1        Device      <color:R>Poor         </color>
 Wisdom        +0        Save        <color:R>Poor         </color>
 Dexterity     +0        Stealth     <color:r>Bad          </color>
-Constitution  +1        Searching   <color:D>Very Bad     </color>
-Charisma      -1        Perception  <color:y>Good         </color>
+Constitution  +1        Searching   <color:R>Poor         </color>
+Charisma      -1        Perception  <color:r>Bad          </color>
 Life Rating  103%       Melee       <color:g>Superb       </color>
-Base HP       20        Bows        <color:R>Poor         </color>
+Base HP       20        Archery     <color:R>Poor         </color>
 Experience   110%       Infravision 30'
 </style></indent>
 <topic:Half-Titan><color:o>Half-Titan</color>
-Half-mortal descendants of the mighty titans, these immensely powerful creatures put almost any other race to shame. They may lack the fascinating special powers of certain other races, but their enhanced attributes more than make up for that. They learn to estimate the strengths of their foes, and their love for law and order makes them resistant to the effects of Chaos.
+Half-mortal descendants of the mighty titans, these immensely powerful creatures put almost any other race to shame. They may lack the fascinating special powers some other races have, but their enhanced attributes more than make up for that. They learn to estimate the strengths of their foes, and their love for law and order makes them resistant to the effects of Chaos.
 
   <indent><style:table><color:G>Stats                   Skills</color>
 Strength      +5        Disarming   <color:r>Bad          </color>
 Intelligence  +1        Device      <color:o>Fair         </color>
 Wisdom        +2        Save        <color:o>Fair         </color>
 Dexterity     -2        Stealth     <color:r>Bad          </color>
-Constitution  +3        Searching   <color:r>Bad          </color>
-Charisma      +3        Perception  <color:G>Excellent    </color>
-Life Rating  110%       Melee       <color:b>Heroic       </color>
-Base HP       28        Bows        <color:o>Fair         </color>
+Constitution  +3        Searching   <color:o>Fair         </color>
+Charisma      +3        Perception  <color:o>Fair         </color>
+Life Rating  110%       Melee       <color:g>Superb       </color>
+Base HP       28        Archery     <color:o>Fair         </color>
 Experience   200%       Infravision 0'
 </style></indent>
 <topic:Half-Troll><color:o>Half-Troll</color>
-Half-Trolls are incredibly strong, and have more hit points than most other races. They are also very stupid and slow. They are bad at searching, disarming, perception, and stealth. They are so ugly that a Half-Orc grimaces in their presence. They also happen to be fun to run... Half-trolls always have their strength sustained. Half-Trolls regenerate wounds automatically.
+Half-trolls are incredibly strong, and have more hit points than most other races. They are very stupid, and bad at searching, disarming, perception, and stealth; but they make excellent fighters despite their poor agility. They are so ugly that a half-orc grimaces in their presence. They also happen to be fun to run... Half-trolls always have their strength sustained, and their regeneration is exceptionally fast.
 
   <indent><style:table><color:G>Stats                   Skills</color>
 Strength      +4        Disarming   <color:r>Bad          </color>
-Intelligence  -4        Device      <color:D>Very Bad     </color>
-Wisdom        -1        Save        <color:r>Bad          </color>
+Intelligence  -4        Device      <color:r>Bad          </color>
+Wisdom        -1        Save        <color:R>Poor         </color>
 Dexterity     -3        Stealth     <color:r>Bad          </color>
-Constitution  +3        Searching   <color:D>Very Bad     </color>
-Charisma      -2        Perception  <color:y>Good         </color>
+Constitution  +3        Searching   <color:R>Poor         </color>
+Charisma      -2        Perception  <color:r>Bad          </color>
 Life Rating  107%       Melee       <color:g>Superb       </color>
-Base HP       25        Bows        <color:r>Bad          </color>
+Base HP       25        Archery     <color:R>Poor         </color>
 Experience   150%       Infravision 30'
 </style></indent>
 <topic:Kobold><color:o>Kobold</color>
-Kobolds are a weak goblin race. They love poisoned weapons, and can learn to throw poisoned darts (of which they carry an unlimited supply). They are also inherently resistant to poison, although they are not one of the more powerful races.
+Kobolds are a weak goblin race. They love poisoned weapons, and can learn to throw poisoned darts (of which they carry an unlimited supply). They are also inherently resistant to poison.
 
   <indent><style:table><color:G>Stats                   Skills</color>
-Strength      +1        Disarming   <color:r>Bad          </color>
-Intelligence  -1        Device      <color:r>Bad          </color>
+Strength      +1        Disarming   <color:R>Poor         </color>
+Intelligence  -1        Device      <color:R>Poor         </color>
 Wisdom        +0        Save        <color:R>Poor         </color>
-Dexterity     +1        Stealth     <color:r>Bad          </color>
-Constitution  +0        Searching   <color:r>Bad          </color>
-Charisma      -2        Perception  <color:G>Excellent    </color>
-Life Rating   98%       Melee       <color:G>Excellent    </color>
-Base HP       19        Bows        <color:y>Very Good    </color>
+Dexterity     +1        Stealth     <color:R>Poor         </color>
+Constitution  +0        Searching   <color:o>Fair         </color>
+Charisma      -2        Perception  <color:o>Fair         </color>
+Life Rating   98%       Melee       <color:y>Very Good    </color>
+Base HP       19        Archery     <color:y>Good         </color>
 Experience    90%       Infravision 30'
+</style></indent>
+<topic:Ogre><color:o>Ogre</color>
+Ogres are big and ugly, but possessed of a low cunning and great strength. They have all the necessary attributes to be warriors, yet are also surprisingly adept as mages; and at high level, all Ogres learn the Ogre Mage skill of setting trapped runes. Being simple-minded, Ogres have their intelligence sustained.
+
+  <indent><style:table><color:G>Stats                   Skills</color>
+Strength      +3        Disarming   <color:R>Poor         </color>
+Intelligence  +0        Device      <color:R>Poor         </color>
+Wisdom        -1        Save        <color:R>Poor         </color>
+Dexterity     -1        Stealth     <color:r>Bad          </color>
+Constitution  +3        Searching   <color:R>Poor         </color>
+Charisma      +0        Perception  <color:r>Bad          </color>
+Life Rating  106%       Melee       <color:g>Superb       </color>
+Base HP       23        Archery     <color:R>Poor         </color>
+Experience   140%       Infravision 0'
 </style></indent>
 <topic:Snotling><color:o>Snotling</color>
 Snotlings are greenskins, and are cousins of Goblins and Orcs, smaller than the former and dumber than the latter, often used by them as cannon fodder, food or even cannon missiles. They are on the lowest rung of greenskin society and are bullied by all. Snotlings often wield mushrooms or sticks into battle.
 
   <indent><style:table><color:G>Stats                   Skills</color>
-Strength      -2        Disarming   <color:r>Bad          </color>
-Intelligence  -2        Device      <color:r>Bad          </color>
-Wisdom        -2        Save        <color:r>Bad          </color>
-Dexterity     -2        Stealth     <color:o>Fair         </color>
-Constitution  -2        Searching   <color:r>Bad          </color>
-Charisma      -5        Perception  <color:G>Excellent    </color>
-Life Rating   85%       Melee       <color:D>Very Bad     </color>
-Base HP       10        Bows        <color:R>Poor         </color>
+Strength      -2        Disarming   <color:R>Poor         </color>
+Intelligence  -2        Device      <color:R>Poor         </color>
+Wisdom        -2        Save        <color:R>Poor         </color>
+Dexterity     -2        Stealth     <color:y>Good         </color>
+Constitution  -2        Searching   <color:o>Fair         </color>
+Charisma      -5        Perception  <color:R>Poor         </color>
+Life Rating   85%       Melee       <color:r>Bad          </color>
+Base HP       10        Archery     <color:R>Poor         </color>
 Experience    45%       Infravision 20'
+</style></indent>
+</indent>
+<style:heading>Shapeshifters</style>
+  <indent><topic:Beorning><color:o>Beorning</color>
+Beornings are a hardy, northern race of men, renowned for their ability to assume the shape of a bear. Bear-formed Beornings greatly resemble Berserkers: they are extremely strong in melee and very hard to kill, but incapable of reading scrolls, casting spells or using magical devices. Man-shaped Beornings are still stronger in combat than a regular human, but somewhat lacking in magical skills.
+
+The equipment slots available to a Beorning depend on their shape, and like Werewolves, they carry a special satchel for keeping the items not needed in their current shape.
+
+  <indent><style:table><color:G>Stats                   Skills</color>
+Strength      +1        Disarming   <color:o>Fair         </color>
+Intelligence  +0        Device      <color:r>Bad          </color>
+Wisdom        +0        Save        <color:o>Fair         </color>
+Dexterity     -1        Stealth     <color:R>Poor         </color>
+Constitution  +1        Searching   <color:o>Fair         </color>
+Charisma      -1        Perception  <color:y>Good         </color>
+Life Rating  104%       Melee       <color:y>Very Good    </color>
+Base HP       27        Archery     <color:R>Poor         </color>
+Experience   140%       Infravision 50'
+</style></indent>
+<topic:Doppelganger><color:o>Doppelganger</color>
+Doppelgangers are truly pathetic creatures. While nobody has actually ever seen their true form, they are rumored to be small, plain, pathetic creatures. Their one saving grace is the ability to mimic other races.
+
+  <indent><style:table><color:G>Stats                   Skills</color>
+Strength      -3        Disarming   <color:D>Very Bad     </color>
+Intelligence  -3        Device      <color:D>Very Bad     </color>
+Wisdom        -3        Save        <color:D>Very Bad     </color>
+Dexterity     -3        Stealth     <color:g>Superb       </color>
+Constitution  -3        Searching   <color:D>Very Bad     </color>
+Charisma      -3        Perception  <color:y>Good         </color>
+Life Rating   85%       Melee       <color:D>Very Bad     </color>
+Base HP       12        Archery     <color:D>Very Bad     </color>
+Experience   150%       Infravision 0'
+</style></indent>
+<topic:Werewolf><color:o>Werewolf</color>
+Werewolves are fearsome hunters who can assume either human or wolf shape. They are exceptionally durable in both forms, and have great powers of regeneration, though they are infamously vulnerable to fire and silver, and are not particularly good at using magical spells or devices in either shape. While in wolf form, werewolves wield no weapons; instead, they attack with their teeth and claws. As werewolves wear different equipment in human form and wolf form, they use one inventory slot for a special satchel in which they keep the items not needed in their current shape.
+
+  <indent><style:table><color:G>Stats                   Skills</color>
+Strength      +1        Disarming   <color:o>Fair         </color>
+Intelligence  +0        Device      <color:r>Bad          </color>
+Wisdom        +0        Save        <color:o>Fair         </color>
+Dexterity     +0        Stealth     <color:y>Good         </color>
+Constitution  +1        Searching   <color:G>Excellent    </color>
+Charisma      +0        Perception  <color:y>Good         </color>
+Life Rating  103%       Melee       <color:o>Fair         </color>
+Base HP       27        Archery     <color:o>Fair         </color>
+Experience   140%       Infravision 50'
 </style></indent>
 </indent>
 <style:heading>The Undead</style>
@@ -374,98 +448,98 @@ Dead heroes returning to the mortal world for one last fight, Einherjar are high
   <indent><style:table><color:G>Stats                   Skills</color>
 Strength      +2        Disarming   <color:y>Good         </color>
 Intelligence  +0        Device      <color:o>Fair         </color>
-Wisdom        +0        Save        <color:y>Very Good    </color>
-Dexterity     +2        Stealth     <color:r>Bad          </color>
-Constitution  +1        Searching   <color:G>Excellent    </color>
-Charisma      +1        Perception  <color:g>Superb       </color>
+Wisdom        +0        Save        <color:y>Good         </color>
+Dexterity     +2        Stealth     <color:R>Poor         </color>
+Constitution  +1        Searching   <color:g>Superb       </color>
+Charisma      +1        Perception  <color:y>Good         </color>
 Life Rating  113%       Melee       <color:g>Superb       </color>
-Base HP       44        Bows        <color:G>Excellent    </color>
+Base HP       44        Archery     <color:y>Good         </color>
 Experience   160%       Infravision 30'
 </style></indent>
 <topic:Skeleton><color:o>Skeleton</color>
-There are two types of skeletons: the ordinary, warrior-like skeletons, and the spell-using skeletons, which are also called liches. As undead beings, skeletons need to worry very little about poison or attacks that can drain life. They do not really use eyes for perceiving things, and are thus not fooled by invisibility. Their bones are resistant to sharp shrapnel, and they will quickly become resistant to cold. Although the magical effects of these will affect the skeleton even without entering the skeleton's (non-existent) belly, the potion or food itself will fall through the skeleton's jaws, giving no nutritional benefit. They can absorb mana from staves and wands as their energy source.
+As undead beings, skeletons need worry very little about poison or attacks that can drain life. Skeletons do not really use eyes for perceiving things, and are thus not fooled by invisibility. Their bones are resistant to sharp shrapnel, and they will quickly become resistant to cold. Although the magical effects of potions and mushrooms will affect the skeleton even without entering its (non-existent) belly, the food itself will fall through the skeleton's jaws, giving no nutritional benefit; instead, skeletons feed themselves by absorbing the energy of magical devices.
 
   <indent><style:table><color:G>Stats                   Skills</color>
 Strength      +0        Disarming   <color:r>Bad          </color>
-Intelligence  +1        Device      <color:R>Poor         </color>
+Intelligence  +1        Device      <color:o>Fair         </color>
 Wisdom        -2        Save        <color:o>Fair         </color>
-Dexterity     +0        Stealth     <color:r>Bad          </color>
-Constitution  +1        Searching   <color:D>Very Bad     </color>
-Charisma      +1        Perception  <color:G>Excellent    </color>
-Life Rating  100%       Melee       <color:G>Excellent    </color>
-Base HP       21        Bows        <color:o>Fair         </color>
+Dexterity     +0        Stealth     <color:R>Poor         </color>
+Constitution  +1        Searching   <color:R>Poor         </color>
+Charisma      +1        Perception  <color:o>Fair         </color>
+Life Rating  100%       Melee       <color:y>Very Good    </color>
+Base HP       21        Archery     <color:o>Fair         </color>
 Experience   115%       Infravision 20'
 </style></indent>
 <topic:Spectre><color:o>Spectre</color>
-Another powerful undead creature: the Spectre is a ghastly apparition, surrounded by an unearthly green glow. They exist only partially on our plane of existence: half-corporeal, they can pass through walls, although the density of the wall will hurt them in the process of doing this. As undead, they have a firm hold on their life force, see invisible, and resist poison and cold. They also resist nether. Spectres make superb spellcasters, but their physical form is very weak. They gain very little nutrition from the food of mortals, but can absorb mana from staves and wands as their energy source.
+A powerful undead creature, the Spectre is a ghastly apparition, surrounded by an unearthly green glow. Spectres exist only partially on our plane of existence: half-corporeal, they can pass through walls, although the density of the wall will hurt them in the process of doing this. As undead, they have a firm hold on their life force, can see invisible creatures, and resist poison, cold and nether. Spectres make superb spellcasters, but their physical form is very weak. They gain very little nutrition from the food of mortals, but can absorb mana from magical devices as their energy source.
 
   <indent><style:table><color:G>Stats                   Skills</color>
 Strength      -5        Disarming   <color:G>Excellent    </color>
 Intelligence  +4        Device      <color:G>Excellent    </color>
-Wisdom        +2        Save        <color:G>Excellent    </color>
-Dexterity     +2        Stealth     <color:G>Excellent    </color>
-Constitution  -2        Searching   <color:y>Good         </color>
-Charisma      -3        Perception  <color:b>Heroic       </color>
-Life Rating   90%       Melee       <color:D>Very Bad     </color>
-Base HP       13        Bows        <color:R>Poor         </color>
+Wisdom        +2        Save        <color:y>Very Good    </color>
+Dexterity     +2        Stealth     <color:g>Superb       </color>
+Constitution  -2        Searching   <color:G>Excellent    </color>
+Charisma      -3        Perception  <color:G>Excellent    </color>
+Life Rating   90%       Melee       <color:r>Bad          </color>
+Base HP       13        Archery     <color:R>Poor         </color>
 Experience   250%       Infravision 50'
 </style></indent>
 <topic:Vampire><color:o>Vampire</color>
-One of the mightier undead creatures, the Vampire is an awe-inspiring sight. Yet this dread creature has a serious weakness: the bright rays of sun are its bane, and it will need to flee the surface to the deep recesses of earth until the sun finally sets. Darkness, on the other hand, only makes the Vampire stronger. As undead, the Vampire has a firm hold on its life force, and resists nether attacks. The Vampire also resists cold and poison based attacks. It is, however, susceptible to its perpetual hunger for fresh blood, which can only be satiated by sucking the blood from a nearby monster.
+One of the mightier undead creatures, the vampire is an awe-inspiring sight. Yet this dread creature has a serious weakness: the bright rays of sun are its bane, and it will need to flee the surface to the deep recesses of earth until the sun finally sets. Darkness, on the other hand, holds few terrors to a vampire. Being undead, vampires also resist nether, cold and poison and have a firm hold on their life force; but they are susceptible to a perpetual hunger for fresh blood, which can only be satiated by sucking the blood from a nearby monster.
 
   <indent><style:table><color:G>Stats                   Skills</color>
-Strength      +3        Disarming   <color:o>Fair         </color>
+Strength      +3        Disarming   <color:y>Good         </color>
 Intelligence  +3        Device      <color:y>Good         </color>
 Wisdom        -1        Save        <color:y>Good         </color>
-Dexterity     -1        Stealth     <color:y>Very Good    </color>
-Constitution  +1        Searching   <color:r>Bad          </color>
-Charisma      +2        Perception  <color:G>Excellent    </color>
+Dexterity     -1        Stealth     <color:G>Excellent    </color>
+Constitution  +1        Searching   <color:o>Fair         </color>
+Charisma      +2        Perception  <color:o>Fair         </color>
 Life Rating  102%       Melee       <color:y>Good         </color>
-Base HP       22        Bows        <color:o>Fair         </color>
+Base HP       22        Archery     <color:o>Fair         </color>
 Experience   200%       Infravision 50'
 </style></indent>
 <topic:Zombie><color:o>Zombie</color>
-Zombies are undead horrors, resistant to life draining and the forces of the netherworld. The grave is cold but this does not bother the undead and poison scarcely affects the unliving. Zombies gain little nutrition from ordinary food. Instead, they must absorb mana from magical devices to maintain their undead existence.
+Zombies are undead horrors, resistant to life draining and the forces of the netherworld. The grave is cold, but this does not bother the undead, and poison also scarcely affects the unliving. Zombies gain little nutrition from ordinary food; instead, they absorb energy from magical devices to maintain their undead existence.
 
   <indent><style:table><color:G>Stats                   Skills</color>
 Strength      +2        Disarming   <color:r>Bad          </color>
 Intelligence  -6        Device      <color:r>Bad          </color>
-Wisdom        -6        Save        <color:y>Good         </color>
-Dexterity     +1        Stealth     <color:r>Bad          </color>
-Constitution  +4        Searching   <color:D>Very Bad     </color>
-Charisma      -3        Perception  <color:y>Good         </color>
-Life Rating  108%       Melee       <color:g>Superb       </color>
-Base HP       24        Bows        <color:o>Fair         </color>
+Wisdom        -6        Save        <color:o>Fair         </color>
+Dexterity     +1        Stealth     <color:R>Poor         </color>
+Constitution  +4        Searching   <color:R>Poor         </color>
+Charisma      -3        Perception  <color:r>Bad          </color>
+Life Rating  108%       Melee       <color:G>Excellent    </color>
+Base HP       24        Archery     <color:o>Fair         </color>
 Experience   180%       Infravision 20'
 </style></indent>
 </indent>
 <style:heading>Other Races</style>
   <indent><topic:Android><color:o>Android</color>
-An android is a artificial creation with a body of machinery. Over the millenia, artificial intelligence has improved to the point where androids are nearly as smart as humans, though perhaps not so wise. Of course, their mechanical body offers great physical advantages, far surpassing the powers of man. Androids don't acquire experience like other races, but rather gain in power as they attach new equipment to their frame. Rings, amulets, and lights do not influence growth. Androids are resistant to poison, can move freely, and are immune to life-draining attacks. Moreover, because of their hard metallic bodies, they get a bonus to AC. Androids have electronic circuits throughout their body and must beware of electric shocks. They gain very little nutrition from the food of mortals, but they can use flasks of oil as their energy source.
+An android is an artificial creation with a body of machinery. Their intelligence almost matches that of organic races, though their wisdom is no better than that of Golems. Of course, their mechanical body offers great physical advantages, far surpassing the powers of man. Uniquely among all races, Androids do not acquire experience from killing monsters, but rather gain in power as they attach new equipment to their frame. Rings, amulets, and lights do not influence growth. Androids are resistant to poison and immune to life-draining attacks; moreover, because of their hard metallic bodies, they get a bonus to AC. Androids have electronic circuits throughout their body, and so must beware of electric shocks. They gain very little nutrition from the food of mortals, but can use flasks of oil as their energy source.
 
   <indent><style:table><color:G>Stats                   Skills</color>
-Strength      +3        Disarming   <color:R>Poor         </color>
-Intelligence  -1        Device      <color:r>Bad          </color>
-Wisdom        -5        Save        <color:R>Poor         </color>
+Strength      +3        Disarming   <color:o>Fair         </color>
+Intelligence  -1        Device      <color:R>Poor         </color>
+Wisdom        -5        Save        <color:o>Fair         </color>
 Dexterity     +1        Stealth     <color:r>Bad          </color>
-Constitution  +3        Searching   <color:o>Fair         </color>
-Charisma      +0        Perception  <color:b>Heroic       </color>
+Constitution  +3        Searching   <color:y>Good         </color>
+Charisma      +0        Perception  <color:G>Excellent    </color>
 Life Rating  108%       Melee       <color:g>Superb       </color>
-Base HP       26        Bows        <color:G>Excellent    </color>
+Base HP       26        Archery     <color:y>Good         </color>
 Experience   200%       Infravision 0'
 </style></indent>
 <topic:Beastman><color:o>Beastman</color>
-This race is a blasphemous abomination produced by Chaos. It is not an independent race but rather a humanoid creature, most often a human, twisted by the Chaos, or a nightmarish crossbreed of a human and a beast. All Beastmen are accustomed to Chaos so much that they are untroubled by confusion and sound, although raw logrus can still have effects on them. Beastmen revel in chaos, as it twists them more and more. Beastmen are subject to mutations: when they have been created, they receive a random mutation. After that, every time they advance a level they have a small chance of gaining yet another mutation.
+This race is a blasphemous abomination produced by Chaos. It is not an independent race but rather a humanoid creature, most often a human, twisted by Chaos; or else a nightmarish crossbreed of a human and a beast. All Beastmen are accustomed to Chaos so much that they are untroubled by confusion and sound, although raw Logrus can still hurt them. Beastmen revel in chaos, as it twists them more and more. Beastmen are subject to mutations: when they have been created, they receive a random mutation, and have a small chance to gain more mutations every time they advance a level. Unlike normal races, Beastmen can have many mutations without ill effects on their regeneration.
 
   <indent><style:table><color:G>Stats                   Skills</color>
 Strength      +2        Disarming   <color:r>Bad          </color>
 Intelligence  -2        Device      <color:R>Poor         </color>
 Wisdom        -1        Save        <color:R>Poor         </color>
-Dexterity     -1        Stealth     <color:r>Bad          </color>
-Constitution  +2        Searching   <color:D>Very Bad     </color>
-Charisma      +1        Perception  <color:y>Good         </color>
+Dexterity     -1        Stealth     <color:R>Poor         </color>
+Constitution  +2        Searching   <color:R>Poor         </color>
+Charisma      +1        Perception  <color:r>Bad          </color>
 Life Rating  102%       Melee       <color:G>Excellent    </color>
-Base HP       22        Bows        <color:y>Very Good    </color>
+Base HP       22        Archery     <color:y>Good         </color>
 Experience   150%       Infravision 0'
 </style></indent>
 <topic:Boit><color:o>Boit</color>
@@ -475,125 +549,111 @@ Boits are small bipedal creatures covered in yellow, lilac, brown or green fur, 
 Strength      -1        Disarming   <color:o>Fair         </color>
 Intelligence  -2        Device      <color:r>Bad          </color>
 Wisdom        -2        Save        <color:R>Poor         </color>
-Dexterity     -2        Stealth     <color:R>Poor         </color>
-Constitution  +0        Searching   <color:r>Bad          </color>
-Charisma      -2        Perception  <color:g>Superb       </color>
-Life Rating   95%       Melee       <color:D>Very Bad     </color>
-Base HP       15        Bows        <color:r>Bad          </color>
+Dexterity     -2        Stealth     <color:o>Fair         </color>
+Constitution  +0        Searching   <color:o>Fair         </color>
+Charisma      -2        Perception  <color:y>Good         </color>
+Life Rating   95%       Melee       <color:R>Poor         </color>
+Base HP       15        Archery     <color:R>Poor         </color>
 Experience    80%       Infravision 10'
 </style></indent>
 <topic:Centaur><color:o>Centaur</color>
-Centaurs are creatures with the head, arms and torso of a human combined with the body and legs of a horse. As such, they are able to move more quickly as they gain experience and are capable of leaping great distances. They may attack monsters with their hooves in addition to any normal melee weapons. Centaurs are strong, agile, and wise, but not so smart. They are skilled in fighting and archery but are rather distrustful of magic. Finally, being at home in the forests of the world, Centaurs are able to move quickly through foliage.
+Centaurs are creatures with the head, arms and torso of a human combined with the body and legs of a horse. As such, they are able to move more quickly as they gain experience and are capable of leaping great distances. Centaurs are skilled in fighting and archery and can attack monsters with their hooves in addition to normal melee weapons; but lacking normal feet, they cannot wear boots. Being at home in the forests of the world, Centaurs are able to move quickly through foliage.
 
   <indent><style:table><color:G>Stats                   Skills</color>
-Strength      +3        Disarming   <color:R>Poor         </color>
-Intelligence  -2        Device      <color:r>Bad          </color>
+Strength      +3        Disarming   <color:o>Fair         </color>
+Intelligence  -2        Device      <color:R>Poor         </color>
 Wisdom        +1        Save        <color:o>Fair         </color>
-Dexterity     +2        Stealth     <color:o>Fair         </color>
-Constitution  +1        Searching   <color:o>Fair         </color>
-Charisma      +0        Perception  <color:y>Good         </color>
-Life Rating  103%       Melee       <color:G>Excellent    </color>
-Base HP       22        Bows        <color:G>Excellent    </color>
+Dexterity     +2        Stealth     <color:y>Good         </color>
+Constitution  +1        Searching   <color:y>Good         </color>
+Charisma      +0        Perception  <color:r>Bad          </color>
+Life Rating  103%       Melee       <color:y>Very Good    </color>
+Base HP       22        Archery     <color:y>Good         </color>
 Experience   190%       Infravision 0'
 </style></indent>
 <topic:Draconian><color:o>Draconian</color>
-Draconians are a humanoid race with dragon-like attributes. There are several subtypes of draconians with different resistances, breaths and attributes. For example, Red Draconians are resistant to fire which they may also breathe at will, while White Draconians breathe and resist cold instead. All draconians levitate. In addition, when they mature enough, they may choose a special draconian power.
+Draconians are a humanoid race with dragon-like attributes. There are several subtypes of draconians with different resistances, breaths and attributes; for example, Red Draconians are resistant to fire which they may also breathe at will, while White Draconians breathe and resist cold instead. All draconians levitate. In addition, when they mature enough, they may choose a special draconian power.
 
 See <link:Draconians.txt> for more details on draconians.
 
   <indent><style:table><color:G>Stats                   Skills</color>
-Strength      +3        Disarming   <color:r>Bad          </color>
-Intelligence  +0        Device      <color:r>Bad          </color>
+Strength      +3        Disarming   <color:R>Poor         </color>
+Intelligence  +0        Device      <color:R>Poor         </color>
 Wisdom        +0        Save        <color:o>Fair         </color>
-Dexterity     +1        Stealth     <color:r>Bad          </color>
-Constitution  +2        Searching   <color:r>Bad          </color>
-Charisma      +2        Perception  <color:g>Superb       </color>
-Life Rating  104%       Melee       <color:g>Superb       </color>
-Base HP       22        Bows        <color:y>Good         </color>
+Dexterity     +1        Stealth     <color:R>Poor         </color>
+Constitution  +2        Searching   <color:o>Fair         </color>
+Charisma      +2        Perception  <color:y>Good         </color>
+Life Rating  104%       Melee       <color:G>Excellent    </color>
+Base HP       22        Archery     <color:o>Fair         </color>
 Experience   190%       Infravision 20'
 </style></indent>
-<topic:Doppelganger><color:o>Doppelganger</color>
-Doppelgangers a truly pathetic creatures. While nobody has actually ever seen their true form, they are rumored to be small, plain, pathetic creatures. Their one saving grace is the ability to mimic other races.
-
-  <indent><style:table><color:G>Stats                   Skills</color>
-Strength      -3        Disarming   <color:D>Very Bad     </color>
-Intelligence  -3        Device      <color:D>Very Bad     </color>
-Wisdom        -3        Save        <color:D>Very Bad     </color>
-Dexterity     -3        Stealth     <color:G>Excellent    </color>
-Constitution  -3        Searching   <color:D>Very Bad     </color>
-Charisma      -3        Perception  <color:g>Superb       </color>
-Life Rating   85%       Melee       <color:D>Very Bad     </color>
-Base HP       12        Bows        <color:D>Very Bad     </color>
-Experience   150%       Infravision 0'
-</style></indent>
 <topic:Ent><color:o>Ent</color>
-The Ents are a powerful race dating from the beginning of the world, oldest of all animals or plants who inhabit Arda. Spirits of the land, they were summoned to guard the forests of Middle-earth. Being much like trees they are very clumsy but strong, and very susceptible to fire. They gain very little nutrition from the food of mortals, but they can absorb water from potions as their nutrition. Finally, they can summon the trees of the forest to their side.
+The Ents are a powerful race dating from the beginning of the world, oldest of all animals or plants who inhabit Arda. Spirits of the land, they guard the forests of Middle-earth. Being much like trees, they are strong but very clumsy, and highly susceptible to fire. Ents gain nourishment from drinking water; the food of mortals is of little use to them. Ents have the special ability to summon the trees of the forest to their side.
 
   <indent><style:table><color:G>Stats                   Skills</color>
-Strength      +2        Disarming   <color:r>Bad          </color>
+Strength      +3        Disarming   <color:r>Bad          </color>
 Intelligence  +0        Device      <color:o>Fair         </color>
-Wisdom        +2        Save        <color:y>Good         </color>
-Dexterity     -3        Stealth     <color:r>Bad          </color>
-Constitution  +2        Searching   <color:r>Bad          </color>
-Charisma      +0        Perception  <color:g>Superb       </color>
-Life Rating  105%       Melee       <color:g>Superb       </color>
-Base HP       25        Bows        <color:o>Fair         </color>
+Wisdom        +2        Save        <color:o>Fair         </color>
+Dexterity     -4        Stealth     <color:R>Poor         </color>
+Constitution  +3        Searching   <color:o>Fair         </color>
+Charisma      +0        Perception  <color:o>Fair         </color>
+Life Rating  105%       Melee       <color:G>Excellent    </color>
+Base HP       25        Archery     <color:o>Fair         </color>
 Experience   135%       Infravision 0'
 </style></indent>
 <topic:Golem><color:o>Golem</color>
-A Golem is an artificial creature, built from a lifeless raw material like clay, and awakened to life. They are nearly mindless, making them useless for professions which rely on magic, but as warriors they are very tough. They are resistant to poison, they can see invisible things, and move freely. At higher levels, they also become resistant to attacks which threaten to drain away their life force. Golems gain very little nutrition from ordinary food, but can absorb mana from staves and wands as their power source. Golems also gain a natural armor class bonus from their tough body. Golems become slower with age.
+A Golem is an artificial creature, built from a lifeless raw material like clay, and awakened to life. They are nearly mindless, making them useless for professions which rely on magic, but as warriors they are very tough. They are resistant to poison and paralysis and can see invisible things. At higher levels, they also become resistant to attacks which threaten to drain away their life force. Golems gain very little nutrition from ordinary food, but can absorb mana from staves and wands as their power source. Golems also gain a natural armor class bonus from their tough body. Golems become slower with age.
 
   <indent><style:table><color:G>Stats                   Skills</color>
 Strength      +4        Disarming   <color:r>Bad          </color>
 Intelligence  -5        Device      <color:r>Bad          </color>
 Wisdom        -5        Save        <color:y>Good         </color>
-Dexterity     -2        Stealth     <color:r>Bad          </color>
-Constitution  +4        Searching   <color:D>Very Bad     </color>
-Charisma      +0        Perception  <color:G>Excellent    </color>
+Dexterity     -2        Stealth     <color:R>Poor         </color>
+Constitution  +4        Searching   <color:R>Poor         </color>
+Charisma      +0        Perception  <color:o>Fair         </color>
 Life Rating  105%       Melee       <color:g>Superb       </color>
-Base HP       23        Bows        <color:o>Fair         </color>
+Base HP       23        Archery     <color:o>Fair         </color>
 Experience   185%       Infravision 40'
 </style></indent>
 <topic:Klackon><color:o>Klackon</color>
-Klackons are bizarre semi-intelligent ant-like insectoid creatures. They make great fighters, but their mental abilities are severely limited. Obedient and well-ordered, they are resistant to confusion. They are also very nimble, and become faster as they advance levels. They are also very acidic, inherently resisting acid, and capable of spitting acid at higher levels.
+Klackons are bizarre semi-intelligent ant-like insectoid creatures. They make great fighters, but their mental abilities are severely limited. Obedient and well-ordered, they are resistant to confusion. They are very nimble, and become faster as they advance levels. They are also very acidic, inherently resist acid, and become capable of spitting it at higher levels.
 
   <indent><style:table><color:G>Stats                   Skills</color>
 Strength      +2        Disarming   <color:G>Excellent    </color>
-Intelligence  -1        Device      <color:r>Bad          </color>
+Intelligence  -1        Device      <color:R>Poor         </color>
 Wisdom        -1        Save        <color:o>Fair         </color>
-Dexterity     +1        Stealth     <color:R>Poor         </color>
-Constitution  +2        Searching   <color:D>Very Bad     </color>
-Charisma      +1        Perception  <color:g>Superb       </color>
+Dexterity     +1        Stealth     <color:o>Fair         </color>
+Constitution  +2        Searching   <color:R>Poor         </color>
+Charisma      +1        Perception  <color:y>Good         </color>
 Life Rating  105%       Melee       <color:y>Good         </color>
-Base HP       23        Bows        <color:y>Very Good    </color>
+Base HP       23        Archery     <color:y>Good         </color>
 Experience   170%       Infravision 20'
 </style></indent>
 <topic:Kutar><color:o>Kutar</color>
-A Kutar is an expressionless animal-like living creature. The word 'kuta' means 'absentmindedly' or 'vacantly'. Their absentmindedness hurts their searching and perception skills, but renders them resistant to being confused. Their unearthly calmness and serenity make them among the most stealthy of any race. Kutars, although expressionless, are beautiful and so have a high charisma. Members of this race can learn to expand their body horizontally. This increases armour class, but renders them vulnerable to magical attacks.
+A Kutar is not a dog, cat or bear. Despite their characteristic vacant expression, Kutars are beautiful and so have a high charisma. Their absent-mindedness hurts their searching and perception skills, but renders them resistant to being confused. Due to their unearthly calmness and serenity, Kutars are extremely stealthy. They learn the special ability to expand their body horizontally; this increases their armour class, but renders them vulnerable to curses.
 
   <indent><style:table><color:G>Stats                   Skills</color>
-Strength      +0        Disarming   <color:r>Bad          </color>
+Strength      +0        Disarming   <color:R>Poor         </color>
 Intelligence  -1        Device      <color:o>Fair         </color>
-Wisdom        -1        Save        <color:y>Good         </color>
-Dexterity     +1        Stealth     <color:G>Excellent    </color>
-Constitution  +2        Searching   <color:D>Very Bad     </color>
-Charisma      +2        Perception  <color:y>Very Good    </color>
-Life Rating  102%       Melee       <color:R>Poor         </color>
-Base HP       21        Bows        <color:o>Fair         </color>
+Wisdom        -1        Save        <color:o>Fair         </color>
+Dexterity     +1        Stealth     <color:g>Superb       </color>
+Constitution  +2        Searching   <color:R>Poor         </color>
+Charisma      +2        Perception  <color:R>Poor         </color>
+Life Rating  102%       Melee       <color:o>Fair         </color>
+Base HP       21        Archery     <color:o>Fair         </color>
 Experience   175%       Infravision 0'
 </style></indent>
 <topic:Mindflayer><color:o>Mindflayer</color>
-Mindflayers are a secretive and mysterious ancient race. Their civilization may well be older than any other on our planet, and their intelligence and wisdom are naturally sustained, and are so great that they enable Mindflayers to become more powerful spellcasters than any other race, even if their physical attributes are a good deal less admirable. As they advance levels, they gain the powers of See Invisible and Telepathy.
+Mindflayers are a secretive and mysterious ancient race. Their civilization may well be older than any other; their intelligence and wisdom are naturally sustained, and so great as to make Mindflayers highly effective spellcasters, but their physical attributes are a good deal less admirable. As they gain levels, they learn to see invisible creatures, and eventually develop a telepathic sight.
 
   <indent><style:table><color:G>Stats                   Skills</color>
 Strength      -3        Disarming   <color:G>Excellent    </color>
 Intelligence  +4        Device      <color:G>Excellent    </color>
-Wisdom        +4        Save        <color:G>Excellent    </color>
-Dexterity     +0        Stealth     <color:o>Fair         </color>
-Constitution  -2        Searching   <color:y>Good         </color>
-Charisma      -1        Perception  <color:g>Superb       </color>
-Life Rating   97%       Melee       <color:D>Very Bad     </color>
-Base HP       18        Bows        <color:R>Poor         </color>
+Wisdom        +4        Save        <color:y>Good         </color>
+Dexterity     +0        Stealth     <color:y>Good         </color>
+Constitution  -2        Searching   <color:G>Excellent    </color>
+Charisma      -1        Perception  <color:y>Very Good    </color>
+Life Rating   97%       Melee       <color:r>Bad          </color>
+Base HP       18        Archery     <color:R>Poor         </color>
 Experience   150%       Infravision 40'
 </style></indent>
 <topic:Tonberry><color:o>Tonberry</color>
@@ -601,41 +661,27 @@ Tonberries are lizard-like creatures who possess enormous strength and have a pr
 
   <indent><style:table><color:G>Stats                   Skills</color>
 Strength      +4        Disarming   <color:r>Bad          </color>
-Intelligence  +0        Device      <color:r>Bad          </color>
+Intelligence  +0        Device      <color:R>Poor         </color>
 Wisdom        -2        Save        <color:o>Fair         </color>
-Dexterity     -4        Stealth     <color:o>Fair         </color>
-Constitution  +5        Searching   <color:D>Very Bad     </color>
-Charisma      +0        Perception  <color:y>Good         </color>
+Dexterity     -4        Stealth     <color:y>Good         </color>
+Constitution  +5        Searching   <color:R>Poor         </color>
+Charisma      +0        Perception  <color:r>Bad          </color>
 Life Rating  108%       Melee       <color:g>Superb       </color>
-Base HP       26        Bows        <color:r>Bad          </color>
+Base HP       26        Archery     <color:R>Poor         </color>
 Experience   175%       Infravision 20'
 </style></indent>
-<topic:Werewolf><color:o>Werewolf</color>
-Werewolves are fearsome hunters who can assume either human or wolf shape. They are exceptionally durable in both forms, and have great powers of regeneration, though they are infamously vulnerable to fire and silver, and are not particularly good at using magical spells or devices in either shape. While in wolf form, werewolves wield no weapons; instead, they attack with their teeth and claws. As werewolves wear different equipment in human form and wolf form, they use one inventory slot for a special satchel in which they keep the items not needed in their current shape.
-
-  <indent><style:table><color:G>Stats                   Skills</color>
-Strength      +1        Disarming   <color:R>Poor         </color>
-Intelligence  +0        Device      <color:D>Very Bad     </color>
-Wisdom        +0        Save        <color:o>Fair         </color>
-Dexterity     +0        Stealth     <color:o>Fair         </color>
-Constitution  +1        Searching   <color:y>Good         </color>
-Charisma      +0        Perception  <color:g>Superb       </color>
-Life Rating  103%       Melee       <color:o>Fair         </color>
-Base HP       27        Bows        <color:o>Fair         </color>
-Experience   140%       Infravision 50'
-</style></indent>
 <topic:Yeek><color:o>Yeek</color>
-Yeeks are among the most pathetic creatures. Fortunately, their horrible screams can scare away less confident foes, and their skin becomes more and more resistant to acid, as they gain experience. But having said that, even a mediocre monster can wipe the proverbial floor with an unwary Yeek.
+Yeeks are among the most pathetic creatures. Fortunately, their horrible screams can scare away less confident foes, and their skin becomes more and more resistant to acid as they gain experience. They are also fairly good at magic; but in combat, even a mediocre monster can wipe the proverbial floor with an unwary Yeek.
 
   <indent><style:table><color:G>Stats                   Skills</color>
 Strength      -2        Disarming   <color:o>Fair         </color>
 Intelligence  +1        Device      <color:o>Fair         </color>
 Wisdom        -2        Save        <color:y>Good         </color>
-Dexterity     +1        Stealth     <color:y>Good         </color>
-Constitution  -2        Searching   <color:y>Good         </color>
-Charisma      -4        Perception  <color:b>Heroic       </color>
-Life Rating   92%       Melee       <color:r>Bad          </color>
-Base HP       14        Bows        <color:o>Fair         </color>
+Dexterity     +1        Stealth     <color:G>Excellent    </color>
+Constitution  -2        Searching   <color:G>Excellent    </color>
+Charisma      -4        Perception  <color:g>Superb       </color>
+Life Rating   92%       Melee       <color:R>Poor         </color>
+Base HP       14        Archery     <color:o>Fair         </color>
 Experience    70%       Infravision 20'
 </style></indent>
 </indent>
@@ -647,13 +693,15 @@ Barbarian     +3   -2   -1   +1   +2   +2  103%  +22  135%  120%
 Demigod       +1   +1   +1   +1   +1   +1  100%  +20  180%  100%
 Dunadan       +1   +2   +2   +2   +3   +0  100%  +20  160%  100%
 Human         +0   +0   +0   +0   +0   +0  100%  +20  100%  100%
+Igor          -3   +0   -1   -1   -1   -1   97%  +15  145%  110%
 Dark-Elf      -1   +3   +2   +2   -2   +3   97%  +18  155%  120%
 High-Elf      +1   +3   -1   +3   +1   +1   99%  +19  190%   90%
+Tomte         -4   +2   +2   +3   -3   +0   94%  +13  150%  100%
 Wood-Elf      -1   +1   +2   +1   -1   +1   97%  +16  125%   95%
 Dwarf         +2   -2   +2   -2   +2   +1  103%  +22  135%  115%
 Gnome         -1   +2   -1   +2   +1   -1   95%  +16  115%  115%
 Hobbit        -2   +1   +1   +3   +2   +1   92%  +14  120%  100%
-Nibelung      +1   -1   +2   +0   +2   -2  103%  +22  165%  115%
+Nibelung      +0   +1   +0   +1   +1   -2  101%  +21  150%  115%
 Shadow-Fairy  -2   +2   +2   +1   -1   -3   91%  +13  140%  110%
 Sprite        -4   +3   +3   +3   -2   -2   92%  +14  135%   90%
 Archon        +2   +0   +4   +1   +2   +3  103%  +22  200%   90%
@@ -661,12 +709,15 @@ Balrog        +4   +2  -10   +2   +3   +2  106%  +24  180%  140%
 Imp           +0   -1   -1   +1   +2   -1   99%  +19   90%  120%
 Cyclops       +4   -3   -2   -3   +4   -1  108%  +24  155%  135%
 Half-Giant    +4   -2   -2   -2   +3   +0  108%  +26  150%  125%
-Ogre          +3   +0   -1   -1   +3   +0  106%  +23  140%  125%
 Half-Orc      +2   -1   +0   +0   +1   -1  103%  +20  110%  120%
 Half-Titan    +5   +1   +2   -2   +3   +3  110%  +28  200%   90%
 Half-Troll    +4   -4   -1   -3   +3   -2  107%  +25  150%  135%
 Kobold        +1   -1   +0   +1   +0   -2   98%  +19   90%  120%
+Ogre          +3   +0   -1   -1   +3   +0  106%  +23  140%  125%
 Snotling      -2   -2   -2   -2   -2   -5   85%  +10   45%  125%
+Beorning      +1   +0   +0   -1   +1   -1  104%  +27  140%  105%
+Doppelganger  -3   -3   -3   -3   -3   -3   85%  +12  150%  150%
+Werewolf      +1   +0   +0   +0   +1   +0  103%  +27  140%  100%
 Einheri       +2   +0   +0   +2   +1   +1  113%  +44  160%  100%
 Skeleton      +0   +1   -2   +0   +1   +1  100%  +21  115%  125%
 Spectre       -5   +4   +2   +2   -2   -3   90%  +13  250%  135%
@@ -677,115 +728,119 @@ Beastman      +2   -2   -1   -1   +2   +1  102%  +22  150%  130%
 Boit          -1   -2   -2   -2   +0   -2   95%  +15   80%  105%
 Centaur       +3   -2   +1   +2   +1   +0  103%  +22  190%   95%
 Draconian     +3   +0   +0   +1   +2   +2  104%  +22  190%  115%
-Doppelganger  -3   -3   -3   -3   -3   -3   85%  +12  150%  150%
-Ent           +2   +0   +2   -3   +2   +0  105%  +25  135%   95%
+Ent           +3   +0   +2   -4   +3   +0  105%  +25  135%   95%
 Golem         +4   -5   -5   -2   +4   +0  105%  +23  185%  120%
 Klackon       +2   -1   -1   +1   +2   +1  105%  +23  170%  115%
 Kutar         +0   -1   -1   +1   +2   +2  102%  +21  175%   95%
 Mindflayer    -3   +4   +4   +0   -2   -1   97%  +18  150%  115%
 Tonberry      +4   +0   -2   -4   +5   +0  108%  +26  175%  115%
-Werewolf      +1   +0   +0   +0   +1   +0  103%  +27  140%  100%
 Yeek          -2   +1   -2   +1   -2   -4   92%  +14   70%  105%
 
 </style>
 <topic:Skills1><style:heading>Table 2 - Race Skill Bonus Table I</style>
 <style:table>
              <color:w>Disarming     Device        Save          Stealth      </color>
-Amberite     <color:o>Fair         </color> <color:o>Fair         </color> <color:o>Fair         </color> <color:o>Fair         </color>
-Barbarian    <color:r>Bad          </color> <color:D>Very Bad     </color> <color:o>Fair         </color> <color:r>Bad          </color>
-Demigod      <color:o>Fair         </color> <color:o>Fair         </color> <color:o>Fair         </color> <color:r>Bad          </color>
-Dunadan      <color:o>Fair         </color> <color:o>Fair         </color> <color:o>Fair         </color> <color:o>Fair         </color>
-Human        <color:R>Poor         </color> <color:R>Poor         </color> <color:R>Poor         </color> <color:R>Poor         </color>
-Dark-Elf     <color:y>Good         </color> <color:y>Very Good    </color> <color:G>Excellent    </color> <color:y>Good         </color>
-High-Elf     <color:o>Fair         </color> <color:G>Excellent    </color> <color:G>Excellent    </color> <color:y>Very Good    </color>
-Wood-Elf     <color:y>Good         </color> <color:o>Fair         </color> <color:o>Fair         </color> <color:y>Good         </color>
-Dwarf        <color:o>Fair         </color> <color:y>Good         </color> <color:y>Good         </color> <color:r>Bad          </color>
-Gnome        <color:G>Excellent    </color> <color:y>Good         </color> <color:y>Very Good    </color> <color:y>Good         </color>
-Hobbit       <color:g>Superb       </color> <color:y>Very Good    </color> <color:G>Excellent    </color> <color:G>Excellent    </color>
-Nibelung     <color:o>Fair         </color> <color:o>Fair         </color> <color:y>Good         </color> <color:o>Fair         </color>
-Shadow-Fairy <color:y>Very Good    </color> <color:y>Good         </color> <color:R>Poor         </color> <color:G>Excellent    </color>
-Sprite       <color:G>Excellent    </color> <color:y>Good         </color> <color:y>Good         </color> <color:y>Very Good    </color>
-Archon       <color:R>Poor         </color> <color:y>Very Good    </color> <color:y>Very Good    </color> <color:o>Fair         </color>
-Balrog       <color:r>Bad          </color> <color:y>Very Good    </color> <color:g>Superb       </color> <color:r>Bad          </color>
-Imp          <color:r>Bad          </color> <color:o>Fair         </color> <color:R>Poor         </color> <color:o>Fair         </color>
-Cyclops      <color:r>Bad          </color> <color:r>Bad          </color> <color:r>Bad          </color> <color:r>Bad          </color>
-Half-Giant   <color:D>Very Bad     </color> <color:r>Bad          </color> <color:r>Bad          </color> <color:r>Bad          </color>
-Ogre         <color:r>Bad          </color> <color:r>Bad          </color> <color:r>Bad          </color> <color:r>Bad          </color>
-Half-Orc     <color:r>Bad          </color> <color:r>Bad          </color> <color:R>Poor         </color> <color:r>Bad          </color>
+Amberite     <color:y>Good         </color> <color:o>Fair         </color> <color:o>Fair         </color> <color:y>Good         </color>
+Barbarian    <color:R>Poor         </color> <color:r>Bad          </color> <color:o>Fair         </color> <color:R>Poor         </color>
+Demigod      <color:o>Fair         </color> <color:o>Fair         </color> <color:o>Fair         </color> <color:R>Poor         </color>
+Dunadan      <color:y>Good         </color> <color:o>Fair         </color> <color:o>Fair         </color> <color:y>Good         </color>
+Human        <color:o>Fair         </color> <color:o>Fair         </color> <color:o>Fair         </color> <color:o>Fair         </color>
+Igor         <color:o>Fair         </color> <color:o>Fair         </color> <color:o>Fair         </color> <color:o>Fair         </color>
+Dark-Elf     <color:y>Good         </color> <color:y>Good         </color> <color:y>Very Good    </color> <color:G>Excellent    </color>
+High-Elf     <color:y>Good         </color> <color:y>Very Good    </color> <color:y>Very Good    </color> <color:G>Excellent    </color>
+Tomte        <color:G>Excellent    </color> <color:g>Superb       </color> <color:o>Fair         </color> <color:g>Superb       </color>
+Wood-Elf     <color:y>Good         </color> <color:y>Good         </color> <color:o>Fair         </color> <color:G>Excellent    </color>
+Dwarf        <color:o>Fair         </color> <color:y>Good         </color> <color:y>Good         </color> <color:R>Poor         </color>
+Gnome        <color:G>Excellent    </color> <color:y>Good         </color> <color:y>Good         </color> <color:G>Excellent    </color>
+Hobbit       <color:g>Superb       </color> <color:y>Very Good    </color> <color:y>Good         </color> <color:g>Superb       </color>
+Nibelung     <color:o>Fair         </color> <color:o>Fair         </color> <color:y>Good         </color> <color:y>Good         </color>
+Shadow-Fairy <color:y>Good         </color> <color:y>Good         </color> <color:o>Fair         </color> <color:g>Superb       </color>
+Sprite       <color:G>Excellent    </color> <color:y>Good         </color> <color:y>Good         </color> <color:G>Excellent    </color>
+Archon       <color:o>Fair         </color> <color:y>Very Good    </color> <color:y>Good         </color> <color:y>Good         </color>
+Balrog       <color:R>Poor         </color> <color:y>Very Good    </color> <color:G>Excellent    </color> <color:r>Bad          </color>
+Imp          <color:R>Poor         </color> <color:o>Fair         </color> <color:R>Poor         </color> <color:y>Good         </color>
+Cyclops      <color:R>Poor         </color> <color:R>Poor         </color> <color:R>Poor         </color> <color:r>Bad          </color>
+Half-Giant   <color:r>Bad          </color> <color:r>Bad          </color> <color:R>Poor         </color> <color:r>Bad          </color>
+Half-Orc     <color:R>Poor         </color> <color:R>Poor         </color> <color:R>Poor         </color> <color:r>Bad          </color>
 Half-Titan   <color:r>Bad          </color> <color:o>Fair         </color> <color:o>Fair         </color> <color:r>Bad          </color>
-Half-Troll   <color:r>Bad          </color> <color:D>Very Bad     </color> <color:r>Bad          </color> <color:r>Bad          </color>
-Kobold       <color:r>Bad          </color> <color:r>Bad          </color> <color:R>Poor         </color> <color:r>Bad          </color>
-Snotling     <color:r>Bad          </color> <color:r>Bad          </color> <color:r>Bad          </color> <color:o>Fair         </color>
-Einheri      <color:y>Good         </color> <color:o>Fair         </color> <color:y>Very Good    </color> <color:r>Bad          </color>
-Skeleton     <color:r>Bad          </color> <color:R>Poor         </color> <color:o>Fair         </color> <color:r>Bad          </color>
-Spectre      <color:G>Excellent    </color> <color:G>Excellent    </color> <color:G>Excellent    </color> <color:G>Excellent    </color>
-Vampire      <color:o>Fair         </color> <color:y>Good         </color> <color:y>Good         </color> <color:y>Very Good    </color>
-Zombie       <color:r>Bad          </color> <color:r>Bad          </color> <color:y>Good         </color> <color:r>Bad          </color>
-Android      <color:R>Poor         </color> <color:r>Bad          </color> <color:R>Poor         </color> <color:r>Bad          </color>
-Beastman     <color:r>Bad          </color> <color:R>Poor         </color> <color:R>Poor         </color> <color:r>Bad          </color>
-Boit         <color:o>Fair         </color> <color:r>Bad          </color> <color:R>Poor         </color> <color:R>Poor         </color>
-Centaur      <color:R>Poor         </color> <color:r>Bad          </color> <color:o>Fair         </color> <color:o>Fair         </color>
-Draconian    <color:r>Bad          </color> <color:r>Bad          </color> <color:o>Fair         </color> <color:r>Bad          </color>
-Doppelganger <color:D>Very Bad     </color> <color:D>Very Bad     </color> <color:D>Very Bad     </color> <color:G>Excellent    </color>
-Ent          <color:r>Bad          </color> <color:o>Fair         </color> <color:y>Good         </color> <color:r>Bad          </color>
-Golem        <color:r>Bad          </color> <color:r>Bad          </color> <color:y>Good         </color> <color:r>Bad          </color>
-Klackon      <color:G>Excellent    </color> <color:r>Bad          </color> <color:o>Fair         </color> <color:R>Poor         </color>
-Kutar        <color:r>Bad          </color> <color:o>Fair         </color> <color:y>Good         </color> <color:G>Excellent    </color>
-Mindflayer   <color:G>Excellent    </color> <color:G>Excellent    </color> <color:G>Excellent    </color> <color:o>Fair         </color>
-Tonberry     <color:r>Bad          </color> <color:r>Bad          </color> <color:o>Fair         </color> <color:o>Fair         </color>
-Werewolf     <color:R>Poor         </color> <color:D>Very Bad     </color> <color:o>Fair         </color> <color:o>Fair         </color>
-Yeek         <color:o>Fair         </color> <color:o>Fair         </color> <color:y>Good         </color> <color:y>Good         </color>
+Half-Troll   <color:r>Bad          </color> <color:r>Bad          </color> <color:R>Poor         </color> <color:r>Bad          </color>
+Kobold       <color:R>Poor         </color> <color:R>Poor         </color> <color:R>Poor         </color> <color:R>Poor         </color>
+Ogre         <color:R>Poor         </color> <color:R>Poor         </color> <color:R>Poor         </color> <color:r>Bad          </color>
+Snotling     <color:R>Poor         </color> <color:R>Poor         </color> <color:R>Poor         </color> <color:y>Good         </color>
+Beorning     <color:o>Fair         </color> <color:r>Bad          </color> <color:o>Fair         </color> <color:R>Poor         </color>
+Doppelganger <color:D>Very Bad     </color> <color:D>Very Bad     </color> <color:D>Very Bad     </color> <color:g>Superb       </color>
+Werewolf     <color:o>Fair         </color> <color:r>Bad          </color> <color:o>Fair         </color> <color:y>Good         </color>
+Einheri      <color:y>Good         </color> <color:o>Fair         </color> <color:y>Good         </color> <color:R>Poor         </color>
+Skeleton     <color:r>Bad          </color> <color:o>Fair         </color> <color:o>Fair         </color> <color:R>Poor         </color>
+Spectre      <color:G>Excellent    </color> <color:G>Excellent    </color> <color:y>Very Good    </color> <color:g>Superb       </color>
+Vampire      <color:y>Good         </color> <color:y>Good         </color> <color:y>Good         </color> <color:G>Excellent    </color>
+Zombie       <color:r>Bad          </color> <color:r>Bad          </color> <color:o>Fair         </color> <color:R>Poor         </color>
+Android      <color:o>Fair         </color> <color:R>Poor         </color> <color:o>Fair         </color> <color:r>Bad          </color>
+Beastman     <color:r>Bad          </color> <color:R>Poor         </color> <color:R>Poor         </color> <color:R>Poor         </color>
+Boit         <color:o>Fair         </color> <color:r>Bad          </color> <color:R>Poor         </color> <color:o>Fair         </color>
+Centaur      <color:o>Fair         </color> <color:R>Poor         </color> <color:o>Fair         </color> <color:y>Good         </color>
+Draconian    <color:R>Poor         </color> <color:R>Poor         </color> <color:o>Fair         </color> <color:R>Poor         </color>
+Ent          <color:r>Bad          </color> <color:o>Fair         </color> <color:o>Fair         </color> <color:R>Poor         </color>
+Golem        <color:r>Bad          </color> <color:r>Bad          </color> <color:y>Good         </color> <color:R>Poor         </color>
+Klackon      <color:G>Excellent    </color> <color:R>Poor         </color> <color:o>Fair         </color> <color:o>Fair         </color>
+Kutar        <color:R>Poor         </color> <color:o>Fair         </color> <color:o>Fair         </color> <color:g>Superb       </color>
+Mindflayer   <color:G>Excellent    </color> <color:G>Excellent    </color> <color:y>Good         </color> <color:y>Good         </color>
+Tonberry     <color:r>Bad          </color> <color:R>Poor         </color> <color:o>Fair         </color> <color:y>Good         </color>
+Yeek         <color:o>Fair         </color> <color:o>Fair         </color> <color:y>Good         </color> <color:G>Excellent    </color>
 
 </style>
 <topic:Skills2><style:heading>Table 3 - Race Skill Bonus Table II</style>
 <style:table>
-             <color:w>Searching     Perception    Melee         Bows          Infra</color>
-Amberite     <color:o>Fair         </color> <color:g>Superb       </color> <color:g>Superb       </color> <color:G>Excellent    </color>    0'
-Barbarian    <color:r>Bad          </color> <color:G>Excellent    </color> <color:G>Excellent    </color> <color:G>Excellent    </color>    0'
-Demigod      <color:r>Bad          </color> <color:G>Excellent    </color> <color:G>Excellent    </color> <color:y>Very Good    </color>    0'
-Dunadan      <color:o>Fair         </color> <color:g>Superb       </color> <color:g>Superb       </color> <color:G>Excellent    </color>    0'
-Human        <color:r>Bad          </color> <color:g>Superb       </color> <color:R>Poor         </color> <color:o>Fair         </color>    0'
-Dark-Elf     <color:G>Excellent    </color> <color:g>Superb       </color> <color:r>Bad          </color> <color:G>Excellent    </color>   50'
-High-Elf     <color:o>Fair         </color> <color:b>Heroic       </color> <color:G>Excellent    </color> <color:g>Superb       </color>   40'
-Wood-Elf     <color:G>Excellent    </color> <color:g>Superb       </color> <color:r>Bad          </color> <color:g>Superb       </color>   30'
-Dwarf        <color:G>Excellent    </color> <color:g>Superb       </color> <color:g>Superb       </color> <color:o>Fair         </color>   50'
-Gnome        <color:y>Very Good    </color> <color:g>Superb       </color> <color:D>Very Bad     </color> <color:G>Excellent    </color>   40'
-Hobbit       <color:g>Superb       </color> <color:b>Heroic       </color> <color:D>Very Bad     </color> <color:g>Superb       </color>   40'
-Nibelung     <color:y>Good         </color> <color:g>Superb       </color> <color:G>Excellent    </color> <color:o>Fair         </color>   50'
-Shadow-Fairy <color:g>Superb       </color> <color:b>Heroic       </color> <color:D>Very Bad     </color> <color:o>Fair         </color>   40'
-Sprite       <color:g>Superb       </color> <color:g>Superb       </color> <color:D>Very Bad     </color> <color:o>Fair         </color>   40'
-Archon       <color:R>Poor         </color> <color:g>Superb       </color> <color:G>Excellent    </color> <color:G>Excellent    </color>   30'
-Balrog       <color:r>Bad          </color> <color:G>Excellent    </color> <color:g>Superb       </color> <color:o>Fair         </color>   50'
-Imp          <color:D>Very Bad     </color> <color:g>Superb       </color> <color:y>Good         </color> <color:o>Fair         </color>   30'
-Cyclops      <color:D>Very Bad     </color> <color:y>Good         </color> <color:g>Superb       </color> <color:g>Superb       </color>   10'
-Half-Giant   <color:D>Very Bad     </color> <color:y>Good         </color> <color:b>Heroic       </color> <color:o>Fair         </color>   30'
-Ogre         <color:D>Very Bad     </color> <color:y>Good         </color> <color:g>Superb       </color> <color:R>Poor         </color>    0'
-Half-Orc     <color:D>Very Bad     </color> <color:y>Good         </color> <color:g>Superb       </color> <color:R>Poor         </color>   30'
-Half-Titan   <color:r>Bad          </color> <color:G>Excellent    </color> <color:b>Heroic       </color> <color:o>Fair         </color>    0'
-Half-Troll   <color:D>Very Bad     </color> <color:y>Good         </color> <color:g>Superb       </color> <color:r>Bad          </color>   30'
-Kobold       <color:r>Bad          </color> <color:G>Excellent    </color> <color:G>Excellent    </color> <color:y>Very Good    </color>   30'
-Snotling     <color:r>Bad          </color> <color:G>Excellent    </color> <color:D>Very Bad     </color> <color:R>Poor         </color>   20'
-Einheri      <color:G>Excellent    </color> <color:g>Superb       </color> <color:g>Superb       </color> <color:G>Excellent    </color>   30'
-Skeleton     <color:D>Very Bad     </color> <color:G>Excellent    </color> <color:G>Excellent    </color> <color:o>Fair         </color>   20'
-Spectre      <color:y>Good         </color> <color:b>Heroic       </color> <color:D>Very Bad     </color> <color:R>Poor         </color>   50'
-Vampire      <color:r>Bad          </color> <color:G>Excellent    </color> <color:y>Good         </color> <color:o>Fair         </color>   50'
-Zombie       <color:D>Very Bad     </color> <color:y>Good         </color> <color:g>Superb       </color> <color:o>Fair         </color>   20'
-Android      <color:o>Fair         </color> <color:b>Heroic       </color> <color:g>Superb       </color> <color:G>Excellent    </color>    0'
-Beastman     <color:D>Very Bad     </color> <color:y>Good         </color> <color:G>Excellent    </color> <color:y>Very Good    </color>    0'
-Boit         <color:r>Bad          </color> <color:g>Superb       </color> <color:D>Very Bad     </color> <color:r>Bad          </color>   10'
-Centaur      <color:o>Fair         </color> <color:y>Good         </color> <color:G>Excellent    </color> <color:G>Excellent    </color>    0'
-Draconian    <color:r>Bad          </color> <color:g>Superb       </color> <color:g>Superb       </color> <color:y>Good         </color>   20'
-Doppelganger <color:D>Very Bad     </color> <color:g>Superb       </color> <color:D>Very Bad     </color> <color:D>Very Bad     </color>    0'
-Ent          <color:r>Bad          </color> <color:g>Superb       </color> <color:g>Superb       </color> <color:o>Fair         </color>    0'
-Golem        <color:D>Very Bad     </color> <color:G>Excellent    </color> <color:g>Superb       </color> <color:o>Fair         </color>   40'
-Klackon      <color:D>Very Bad     </color> <color:g>Superb       </color> <color:y>Good         </color> <color:y>Very Good    </color>   20'
-Kutar        <color:D>Very Bad     </color> <color:y>Very Good    </color> <color:R>Poor         </color> <color:o>Fair         </color>    0'
-Mindflayer   <color:y>Good         </color> <color:g>Superb       </color> <color:D>Very Bad     </color> <color:R>Poor         </color>   40'
-Tonberry     <color:D>Very Bad     </color> <color:y>Good         </color> <color:g>Superb       </color> <color:r>Bad          </color>   20'
-Werewolf     <color:y>Good         </color> <color:g>Superb       </color> <color:o>Fair         </color> <color:o>Fair         </color>   50'
-Yeek         <color:y>Good         </color> <color:b>Heroic       </color> <color:r>Bad          </color> <color:o>Fair         </color>   20'
+             <color:w>Searching     Perception    Melee         Archery       Infra</color>
+Amberite     <color:y>Good         </color> <color:G>Excellent    </color> <color:G>Excellent    </color> <color:y>Good         </color>    0'
+Barbarian    <color:o>Fair         </color> <color:R>Poor         </color> <color:G>Excellent    </color> <color:y>Good         </color>    0'
+Demigod      <color:o>Fair         </color> <color:R>Poor         </color> <color:y>Very Good    </color> <color:y>Good         </color>    0'
+Dunadan      <color:y>Good         </color> <color:G>Excellent    </color> <color:G>Excellent    </color> <color:y>Good         </color>    0'
+Human        <color:o>Fair         </color> <color:y>Good         </color> <color:o>Fair         </color> <color:o>Fair         </color>    0'
+Igor         <color:o>Fair         </color> <color:y>Good         </color> <color:D>Very Bad     </color> <color:r>Bad          </color>    0'
+Dark-Elf     <color:g>Superb       </color> <color:y>Very Good    </color> <color:R>Poor         </color> <color:y>Good         </color>   50'
+High-Elf     <color:y>Good         </color> <color:G>Excellent    </color> <color:y>Very Good    </color> <color:G>Excellent    </color>   40'
+Tomte        <color:b>Heroic       </color> <color:y>Good         </color> <color:o>Fair         </color> <color:R>Poor         </color>   40'
+Wood-Elf     <color:g>Superb       </color> <color:y>Very Good    </color> <color:R>Poor         </color> <color:G>Excellent    </color>   30'
+Dwarf        <color:g>Superb       </color> <color:y>Good         </color> <color:G>Excellent    </color> <color:o>Fair         </color>   50'
+Gnome        <color:G>Excellent    </color> <color:G>Excellent    </color> <color:R>Poor         </color> <color:y>Good         </color>   40'
+Hobbit       <color:b>Heroic       </color> <color:g>Superb       </color> <color:r>Bad          </color> <color:y>Very Good    </color>   40'
+Nibelung     <color:G>Excellent    </color> <color:y>Good         </color> <color:y>Very Good    </color> <color:o>Fair         </color>   50'
+Shadow-Fairy <color:b>Heroic       </color> <color:g>Superb       </color> <color:r>Bad          </color> <color:o>Fair         </color>   40'
+Sprite       <color:b>Heroic       </color> <color:y>Good         </color> <color:r>Bad          </color> <color:o>Fair         </color>   40'
+Archon       <color:y>Good         </color> <color:y>Good         </color> <color:y>Very Good    </color> <color:y>Good         </color>   30'
+Balrog       <color:o>Fair         </color> <color:o>Fair         </color> <color:g>Superb       </color> <color:o>Fair         </color>   50'
+Imp          <color:R>Poor         </color> <color:y>Good         </color> <color:y>Good         </color> <color:o>Fair         </color>   30'
+Cyclops      <color:R>Poor         </color> <color:r>Bad          </color> <color:g>Superb       </color> <color:y>Very Good    </color>   10'
+Half-Giant   <color:R>Poor         </color> <color:r>Bad          </color> <color:g>Superb       </color> <color:o>Fair         </color>   30'
+Half-Orc     <color:R>Poor         </color> <color:r>Bad          </color> <color:g>Superb       </color> <color:R>Poor         </color>   30'
+Half-Titan   <color:o>Fair         </color> <color:o>Fair         </color> <color:g>Superb       </color> <color:o>Fair         </color>    0'
+Half-Troll   <color:R>Poor         </color> <color:r>Bad          </color> <color:g>Superb       </color> <color:R>Poor         </color>   30'
+Kobold       <color:o>Fair         </color> <color:o>Fair         </color> <color:y>Very Good    </color> <color:y>Good         </color>   30'
+Ogre         <color:R>Poor         </color> <color:r>Bad          </color> <color:g>Superb       </color> <color:R>Poor         </color>    0'
+Snotling     <color:o>Fair         </color> <color:R>Poor         </color> <color:r>Bad          </color> <color:R>Poor         </color>   20'
+Beorning     <color:o>Fair         </color> <color:y>Good         </color> <color:y>Very Good    </color> <color:R>Poor         </color>   50'
+Doppelganger <color:D>Very Bad     </color> <color:y>Good         </color> <color:D>Very Bad     </color> <color:D>Very Bad     </color>    0'
+Werewolf     <color:G>Excellent    </color> <color:y>Good         </color> <color:o>Fair         </color> <color:o>Fair         </color>   50'
+Einheri      <color:g>Superb       </color> <color:y>Good         </color> <color:g>Superb       </color> <color:y>Good         </color>   30'
+Skeleton     <color:R>Poor         </color> <color:o>Fair         </color> <color:y>Very Good    </color> <color:o>Fair         </color>   20'
+Spectre      <color:G>Excellent    </color> <color:G>Excellent    </color> <color:r>Bad          </color> <color:R>Poor         </color>   50'
+Vampire      <color:o>Fair         </color> <color:o>Fair         </color> <color:y>Good         </color> <color:o>Fair         </color>   50'
+Zombie       <color:R>Poor         </color> <color:r>Bad          </color> <color:G>Excellent    </color> <color:o>Fair         </color>   20'
+Android      <color:y>Good         </color> <color:G>Excellent    </color> <color:g>Superb       </color> <color:y>Good         </color>    0'
+Beastman     <color:R>Poor         </color> <color:r>Bad          </color> <color:G>Excellent    </color> <color:y>Good         </color>    0'
+Boit         <color:o>Fair         </color> <color:y>Good         </color> <color:R>Poor         </color> <color:R>Poor         </color>   10'
+Centaur      <color:y>Good         </color> <color:r>Bad          </color> <color:y>Very Good    </color> <color:y>Good         </color>    0'
+Draconian    <color:o>Fair         </color> <color:y>Good         </color> <color:G>Excellent    </color> <color:o>Fair         </color>   20'
+Ent          <color:o>Fair         </color> <color:o>Fair         </color> <color:G>Excellent    </color> <color:o>Fair         </color>    0'
+Golem        <color:R>Poor         </color> <color:o>Fair         </color> <color:g>Superb       </color> <color:o>Fair         </color>   40'
+Klackon      <color:R>Poor         </color> <color:y>Good         </color> <color:y>Good         </color> <color:y>Good         </color>   20'
+Kutar        <color:R>Poor         </color> <color:R>Poor         </color> <color:o>Fair         </color> <color:o>Fair         </color>    0'
+Mindflayer   <color:G>Excellent    </color> <color:y>Very Good    </color> <color:r>Bad          </color> <color:R>Poor         </color>   40'
+Tonberry     <color:R>Poor         </color> <color:r>Bad          </color> <color:g>Superb       </color> <color:R>Poor         </color>   20'
+Yeek         <color:G>Excellent    </color> <color:g>Superb       </color> <color:R>Poor         </color> <color:o>Fair         </color>   20'
 
 </style>
 
 
-<color:s>Automatically generated for FrogComposband 7.0.cloudberry.</color>
+<color:s>Automatically generated for FrogComposband 7.1.liquorice.</color>
