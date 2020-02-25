@@ -3,52 +3,62 @@ Commands
 Commands are entered using the keyboard by pressing a single key that 
 is mapped to an underlying command interpreted by the game. This 
 mapping of keystrokes to game commands proceeds by using one of two 
-standard keysets: the Original Keyset and the Roguelike Keyset. If you 
-are playing for the first time, I recommend using the Original Keyset 
-since it is the default and is also the most intuitive (for example, 
-you move with the arrow keys). But there are also some crazy folks that 
-prefer a different approach ... Just kidding. The Roguelike keyset 
-might be more ergonomic since movement is controlled with normal 
-alphabetic keys, but, personally, I could never train myself to switch.
+standard keysets: the Original Keyset and the Roguelike Keyset. The 
+Original Keyset, which is the default, is generally recommended to new 
+players since it is more intuitive (for example, you move with the 
+numpad keys). However, many strong players use the Roguelike keyset, 
+and it is likely your best option if you lack a numpad on your keyboard 
+(trying to just substitute the arrow keys for the numpad stops being a 
+great idea when you have to move diagonally). You can toggle the 
+keysets through the = options menu.
 
-Once you've chosen a game command, you may be prompted for arguments or 
-additional information. For example, if you get hungry and decide to 
-eat some food ('E' in the Original Keyset), the game will give you a 
-list of choices (which might include rations of food, or various 
-mushrooms ... whatever relevant objects you have in your pack). You can 
-cancel the command with the ESC key.
-
-This file contains the command mappings for the two keysets listed 
-above. For an overview of the various commands, see [a]. Also, for 
-beginners, there is a unified command menu that is very easy to use, 
-and you can navigate the various commands with the cursor keys, ENTER 
-and ESC. Each command lists the keystroke for the command, so you can 
-explore and learn as you go. Simply press ENTER to get started (You may 
-enable/disable this feature with the 'command_menu' option. For more on 
-setting options, see [b]).
+This file contains the command mappings for the two keysets mentioned 
+above. For a detailed overview of the various commands, see [a]. Also, 
+for beginners, pressing ENTER opens a unified command menu that lists 
+all commands and the corresponding keystrokes; this menu is intended 
+for learning the commands on the go, and is much clumsier than just 
+remembering the right key, so you want to grow out of it as soon as 
+possible. (You may enable/disable the menu with the 'command_menu' 
+input option; see [b] for more on setting options.)
 
 Don't be overwhelmed by the sheer number of commands. Many are not 
-often used or required, and I've tried to highlight the most common 
-commands below. You should try to memorize those, but this is easy as 
-most commands use a mnemonic just like the Eat command discussed above. 
-By the way, the caret (^) character in the tables below indicates 
-pressing the CTRL key.
+often used or required, and I have tried to highlight the most common 
+commands below in yellow. You should try to memorize those; note that 
+many commands use a mnemonic just like the Eat command discussed above. 
+The caret (^) in the tables below indicates pressing the CTRL key (so 
+^S means Ctrl-S), though it is also possible to treat these commands as 
+literal two-key sequences beginning with the ^ key.
+
+Once you have chosen a game command, you may be prompted for additional 
+input; for example, if you get hungry and decide to eat some food 
+(eating is E in both keysets), the game will give you a list of choices 
+(which might include rations of food, various mushrooms, and whatever 
+other edibles you happen to have in your pack). You can cancel the 
+command with the ESC key at this point.
+
+Note in particular the multi-purpose + command; often, if you forget 
+what the regular command for interacting with something in an adjacent 
+square is, you can just substitute + instead. You can tunnel with +, 
+open doors with +, disarm traps with +, even fight a monster with +... 
+and the list continues.
+
+Press ? for commands to use in the help interface itself.
 
 Original Keyset
 
        Movement
        7  8  9
-       4     6
+       4  5  6
        1  2  3
 
-   a  Aim a wand                           A  Activate an equipment
+   a  Aim a wand                           A  Activate equipment
    b  Browse magic list                    B  Bash a door
    c  Close a door                         C  Character description
    d  Drop an item                         D  Disarm a trap
    e  Equipment list                       E  Eat some food
    f  Fire an arrow etc.                   F  Fuel your lantern/torch
-   g  Get Objects                          G  Gain new spells/prayers
-   h  (unused)                             H  (unused)
+   g  Pick up objects (Get)                G  Gain new spells/prayers
+   h  (unused)                             H  Travel to interesting item
    i  Inventory list                       I  Inspect an item
    j  Jam a door                           J  Resume travelling
    k  Destroy an item                      K  (unused)
@@ -61,40 +71,40 @@ Original Keyset
    r  Read a scroll                        R  Rest for a period
    s  Search for traps/doors               S  Toggle search mode
    t  Take off equipment                   T  Dig a tunnel
-   u  Use a staff                          U  Use Racial Power
+   u  Use a staff                          U  Use racial/bonus power
    v  Throw an item                        V  Version info
-   w  Wear/wield equipment                 W  (unused)
+   w  Wear/wield equipment                 W  Switch ring fingers
    x  (unused)                             X  (unused)
    y  (unused)                             Y  Display monster list
    z  Zap a rod                            Z  Inscribe an object
    !  Enter a user pref command           ^A  (special - wizard command)
    @  Interact with macros                ^B  (unused)
    #  (unused)                            ^C  (special - break)
-   $  Reload Auto-picker pref             ^D  (unused)
+   $  Reload Mogaminator prefs            ^D  (unused)
    %  Interact with visuals               ^E  Interact with macros
    ^  (special - control key)             ^F  Repeat level feeling
    &  Interact with colors                ^G  Auto-Get nearby objects
    *  Target monster or location          ^H  (unused)
-   (  (unused)                            ^I  Toggle Choice Window
+   (  (unused)                            ^I  Toggle choice window
    )  Create screen dump                  ^J  (special - linefeed)
    {  Inscribe an object                  ^K  (unused)
    }  Uninscribe an object                ^L  (unused)
    [  Display monster list                ^M  (special - return)
    ]  Display object list                 ^N  (unused)
    -  Walk (flip pickup)                  ^O  Display object list
-   _  Edit auto-picker/destroyer pref     ^P  Show previous messages
-   +  Alter grid                          ^Q  Display quest info
+   _  Edit/activate Mogaminator prefs     ^P  Show previous messages
+   +  Alter adjacent grid                 ^Q  Display quest info
    =  Set options                         ^R  Redraw the screen
-   ;  Walk (with pickup)                  ^S  Save and don't quit
+   ;  Walk                                ^S  Save and don't quit
    :  Take notes                          ^T  Display game time
-   '  Playback Recorded Command           ^U  (unused)
-   "  Record Command                      ^V  Recenter Viewport
-   ,  Stay still (with pickup)            ^W  (special - wizard mode)
-   <  Go up staircase (Enter global map)  ^X  Save and quit
+   '  Playback recorded command           ^U  (unused)
+   "  Record command                      ^V  Recenter Viewport
+   ,  Stay still                          ^W  (special - wizard mode)
+   <  Go up staircase/Toggle global map   ^X  Save and quit
    .  Run                                 ^Y  (special - wizard mode)
-   >  Go down staircase(Enter normal map) ^Z  (special - borg command)
+   >  Go down staircase/Enter normal map  ^Z  (special - borg command)
    \  (special - bypass keymap)            |  (unused)
-   `  Travel to Location (Beta)            ~  Knowledge Menu
+   `  Travel to location                   ~  Knowledge menu
    /  Identify symbol                      ?  Help
 
 
@@ -102,176 +112,182 @@ Roguelike Keyset
 
        Movement
        y  k  u
-       h     l
+       h  .  l
        b  j  n
 
-   a  Zap a rod (Activate)                 A  Activate an artifact
+   a  Zap a rod (Activate)                 A  Activate equipment
    b  (walk - south west)                  B  (run - south west)
    c  Close a door                         C  Character description
    d  Drop an item                         D  Disarm a trap or chest
    e  Equipment list                       E  Eat some food
-   f  Bash a door (force)                  F  Fuel your lantern/torch
-   g  Get Objects                          G  Gain new spells/prayers
+   f  Bash a door (Force)                  F  Fuel your lantern/torch
+   g  Pick up objects (Get)                G  Gain new spells/prayers
    h  (walk - west)                        H  (run - west)
    i  Inventory list                       I  Inspect an item
    j  (walk - south)                       J  (run - south)
    k  (walk - north)                       K  (run - north)
    l  (walk - east)                        L  (run - east)
-   m  Spell casting / mental power         M  Full dungeon map
+   m  Cast a spell / use mental power      M  Full dungeon map
    n  (walk - south east)                  N  (run - south east)
-   o  Open a door or chest                 O  Use Racial Power
-   p  Command your pets                    P  Browse magic list
+   o  Open a door or chest                 O  Use racial/bonus power
+   p  Command your pets                    P  Browse magic list (Peruse)
    q  Quaff a potion                       Q  Quit (commit suicide)
    r  Read a scroll                        R  Rest for a period
    s  Search for traps/doors               S  Jam a door (Spike)
-   t  Fire an arrow, etc                   T  Take off equipment
+   t  Fire an arrow etc.                   T  Take off equipment
    u  (walk - north east)                  U  (run - north east)
    v  Throw an item                        V  Version info
    w  Wear/wield equipment                 W  Locate player on map
-   x  Look around                          X  Repeat Last Command
+   x  Look around                          X  Repeat last command
    y  (walk - north west)                  Y  (run - north west)
    z  Aim a wand (Zap)                     Z  Use a staff (Zap)
    !  Enter a user pref command           ^A  (special - wizard command)
    @  Interact with macros                ^B  (tunnel - south west)
    #  Toggle search mode                  ^C  (special - break)
-   $  Reload Auto-picker pref             ^D  Destroy item
-   %  Interact with visuals               ^E  (unused)
+   $  Reload Mogaminator prefs            ^D  Destroy item
+   %  Interact with visuals               ^E  Travel to interesting item
    ^  (special - control key)             ^F  Repeat level feeling
    &  Interact with colors                ^G  Auto-Get nearby objects
    *  Target monster or location          ^H  (tunnel - west)
-   (  Resume travelling                   ^I  Toggle Choice Window
+   (  Resume travelling                   ^I  Toggle choice window
    )  Create screen dump                  ^J  (tunnel - south)
    {  Inscribe an object                  ^K  (tunnel - north)
    }  Uninscribe an object                ^L  (tunnel - east)
    [  Display monster list                ^M  (tunnel - south)
    ]  Display object list                 ^N  (tunnel - south east)
    -  Walk (flip pickup)                  ^O  (unused)
-   _  Edit auto-picker/destroyer pref     ^P  Show previous messages
-   +  Alter grid                          ^Q  Display quest info
+   _  Edit/activate Mogaminator prefs     ^P  Show previous messages
+   +  Alter adjacent grid                 ^Q  Display quest info
    =  Set options                         ^R  Redraw the screen
-   ;  Walk (with pickup)                  ^S  Save and don't quit
+   ;  Walk                                ^S  Save and don't quit
    :  Take notes                          ^T  Dig a Tunnel
-   '  Playback Recorded Command           ^U  (tunnel - north east)
-   "  Record Command                      ^V  Recenter Viewport
+   '  Playback recorded command           ^U  (tunnel - north east)
+   "  Record command                      ^V  Recenter Viewport
    ,  Run                                 ^W  (special - wizard mode)
-   <  Go up staircase (Enter global map)  ^X  Save and quit
-   .  Stay still (with pickup)            ^Y  (tunnel - north west)
-   >  Go down staircase(Enter normal map) ^Z  (unused)
+   <  Go up staircase/Toggle global map   ^X  Save and quit
+   .  Stay still                          ^Y  (tunnel - north west)
+   >  Go down staircase/Enter normal map  ^Z  (unused)
    \  (special - bypass keymap)            |  (unused)
-   `  Travel to Location (Beta)            ~  Knowledge Menu
+   `  Travel to location                   ~  Knowledge menu
    /  Identify symbol                      ?  Help
 
 
 Command Counts
 
 Some commands can be executed a fixed number of times by preceding them 
-with a count. Counted commands will execute until the count expires, 
-until you type any character, or until something significant happens, 
-such as being attacked. Thus, a counted command doesn't work to attack 
-another creature. While the command is being repeated, the number of 
-times left to be repeated will flash by on the line at the left of the 
-screen. To give a count to a command, type 0, the repeat count, and 
+with a count. Counted commands will repeat until the count expires or 
+until the repetition is disturbed. A successful use of the command 
+(e.g. successful tunnelling) disturbs the repetition, as does any 
+attack from a monster, or any new command from the player.
+
+The always_repeat option, which is on by default, automatically gives 
+commonly repeated commands (open, disarm, tunnel, bash, etc.) a repeat 
+count of 99. This means you usually don't need to specify repeat counts 
+manually; but you can do so by typing 0, then the repeat count, and 
 then the command.
-
-Counted commands are very useful for searching or tunneling, as they 
-automatically terminate on success, or if you are attacked. You may 
-also terminate any counted command (or resting or running), by typing 
-any character. This character is ignored, but it is safest to use a 
-SPACE or ESCAPE which are always ignored as commands in case you type 
-the command just after the count expires.
-
-You can tell the game to automatically use a repeat count of 99 with 
-commands you normally want to repeat (open, disarm, tunnel, bash, 
-alter, etc) by setting the "always_repeat" option. For more information 
-on setting options, see [c].
 
 Command Arguments
 
-Some commands will prompt for extra information, such as a direction, 
-an inventory or equipment item, a spell, a textual inscription, the 
-symbol of a monster race, a sub-command, a verification, an amount of 
-time, a quantity, a file name, or various other things. Normally you 
-can hit return to choose the "default" response, or escape to cancel 
-the command entirely.
+As already seen in the Eat example, some commands will prompt for extra 
+information; depending on the command, this could be a direction, an 
+inventory or equipment item, a spell, the symbol of a monster race, a 
+sub-command, a verification, a count, a quantity, text, or various 
+other things. Often, you can hit ENTER to choose the "default" response 
+and ESC to cancel the command entirely.
 
-Some commands will prompt for a direction. You may enter a "compass" 
-direction using any of the "direction keys" shown above. Sometimes, you 
-may specify that you wish to use the current "target", by pressing "t" 
-or "5", or that you wish to select a new target, by pressing "*".
+Commands which prompt for a direction always accept compass directions, 
+which you can enter using the direction keys shown above. Commands with 
+the potential to affect distant squares or monsters usually also accept 
+targets, which you can set (either beforehand or when prompted) with 
+the * key. If you had previously specified a target, pressing 5 repeats 
+the old target; or if you turned on the use_old_target option, the old 
+target is repeated automatically. Some players really like 
+use_old_target, others dislike it equally much; see [c] for more 
+details on selecting a target.
 
-Selecting and Inscribing Objects
+Item Labels
 
-The user interface for selecting objects has been changed (for version 
-6.0.0). Please see [d] for a basic introduction. This section will 
-describe using custom inscriptions to override the default object 
-labels when prompted for an object. As such, it is a rather advanced 
-topic.
+Many commands prompt for an item. These commands always display a list 
+of all applicable items, where each item has a distinct single-key 
+label; you then select the right item by pressing the label key.
 
-By default, the list of object choices are labelled with letters. For 
-equipment choices, the letters correspond to the slots of your current 
-body type (e.g. a for your right hand, etc.). These choices, since they 
-are bound to slots rather than objects, never change. Though if you 
-switch body types (Possessor) or play in monster mode (e.g. Dragon) 
-then the available slots will be different, so the label corresponding 
-to a slot will change. By contrast, inventory choices (pack and quiver) 
-are not bound to slots. Rather, the labelling will begin at 'a' every 
-time. Since the object list is filtered for relevant objects, this 
-means that your choices will always begin with 'a'. This is a good 
-thing since it makes the labels more stable in response to pack 
-reordering. For example, to eat food, you probably just need to Ea. In 
-the old days, it might have been Ee if you were a spellcaster ... until 
-you picked up a new spellbook and the food label switched to f. (Of 
-course, if you pick up a new food type that sorts before rations of 
-food (e.g., a Mushroom of Disease), then the label for food will shift 
-from a to b, but this change is easily detected since the object list 
-now contains two choices.)
+Item labels usually run from 'a' for the first applicable item to 'z' 
+for the 26th item, and are not necessarily the same in every menu. In 
+the example below, the drop command simply offers every item in the 
+inventory as a possibility, so Scrolls of Genocide are labeled 'l':
 
-You may override the default labelling using custom inscriptions. 
-First, you can inscribe @1 on an object and it will always be labelled 
-with 1 no matter which command you are currently using. Of course, you 
-can change 1 to any other number and it will work. But this form of 
-inscription requires you to use a number for the label override rather 
-than a letter. Second, you can inscribe @Ea on your food to always have 
-it labelled with a when using the Eat command (E). The format for this 
-type of inscription override is @CommandLetterLabel where the 
-CommandLetter is the built-in letter for the command (see [e]). Label 
-can be any letter or number.
+Inventory | Equipment | Quiver                                                  
+ a) ? a Law Book [Obstacle Coursebook] {25% off, @mb!k}      3.0 lb LEVEL     50
+ b) ? a Law Book [Building Alternative Realities] {@mc!sd    3.0 lb EXP ********
+ c) ? a Law Book [Acquiris Quodcumque Rapis] {@md!sdk}       3.0 lb AU      462k
+ d) , 23 Mushrooms of Restoring {!E}                         2.3 lb |)}~=="~((]]
+ e) ! 15 Potions of Speed {25% off, !kq}                     6.0 lb STR!: 18/160
+ f) ! 15 Potions of Heroism                                  6.0 lb INT!: 18/160
+ g) ! 41 Potions of Healing {!kq}                           16.4 lb WIS!: 18/160
+ h) ! 8 Potions of *Healing* {!kq}                           3.2 lb DEX : 18/***
+ i) ! 5 Potions of Life {!kq}                                2.0 lb CON : 18/217
+ j) ! 18 Potions of Restore Mana {!kq}                       7.2 lb CHR!: 18/150
+ k) ? 12 Scrolls of Destruction {@r7!*}                      6.0 lb AC       156
+ l) ? 9 Scrolls of Genocide {!*}                             4.5 lb HP  950/ 951
+ m) ? 8 Scrolls of Mass Genocide {!*}                        4.0 lb SP  141/ 402
+ n) - a Rod: Clairvoyance (2/2 charges) {47%}                1.5 lb             
+ o) - a Rod: Detection (7/7 charges) {1%, @zb!sdk}           1.5 lb             
+ p) - a Rod: Recall (5/5 charges) {1%, @zc!sdk}              1.5 lb             
+ q) - a Wand of Resistance: Teleport Other (29/29 charges    0.2 lb             
+ r) - a Wand of Regeneration: Annihilation (8/8 charges)     0.2 lb             
+ s) - a Wand of Regeneration: Tsunami (14/14 charges) (+5    0.2 lb             
+ t) _ a Staff: Teleport (17/28 charges) {1%, @ua!sdk}        5.0 lb             
+ u) _ a Staff: Destruction (2/8 charges) {1%, @ud!sdk}       5.0 lb Fast (+33)  
+ v) _ a Staff of Resistance: Telepathy (3/9 charges) {1%,    5.0 lb Cursed      
+ w) _ a Staff: Cure Wounds (8/18 charges) {1%, @uu!sdk}      5.0 lb Study (4)   
+ x) _ a Staff of Holding: Confusing Lights (7/7 charges)     5.0 lb             
+ y) [ Metal Scale Mail {special}                            25.0 lb             
+ z) ( Soft Leather Armour {excellent}                        8.0 lb             
+                                                           129.7 lb             
+Drop which item?                                                                
+Angband: L100                           Telepa DTrap
 
-Note that any object containing "!x" in its inscription, where "x" is 
-the current "game command" will induce a verification prompt whenever 
-that object is selected. Thus, inscribing, say, "!f!k!d" on an object 
-will greatly reduce the odds of you losing it by accident, and 
-inscribing "!*" on an object will allow you to be very paranoid about 
-the object. You can even repeat the inscription to invoke multiple 
-verifications if you are truly paranoid. For example, having found, 
-say, a potion of death, you might inscribe "!q!q!q!q" just to be 
-absolutely, positively certain you don't accidently quaff the potion. 
-And if you do, then your fingers are even fatter than mine! (Note: You 
-can now use !sdk instead of !s!d!k ... Both forms mean the same thing.)
 
-While we are talking about inscriptions, there are certain object 
-effects that can be annoying. For example, (and I hope this doesn't 
-spoil the game for you) there are objects which randomly teleport the 
-player away. This can be useful if you are out of other means of 
-teleportation, but most of the time it is just plain annoying. You are 
-prompted for the teleport, of course, but having prompts come up 
-randomly is disturbing, and you often plow through the prompt anyway 
-since you were in the middle of doing something else. In this case, you 
-may inscribe "." on the object to eliminate the random teleportation.
+But if instead of the drop command we use the read command, Scrolls of 
+Genocide become 'b' since only scrolls are now offered as options:
 
-Here is a summary of the effects of various example object 
-inscriptions:
+Inventory                                                     Fail              
+ 7) ? 12 Scrolls of Destruction {@r7!*}                        2.8%
+ b) ? 9 Scrolls of Genocide {!*}                               2.8%
+ c) ? 8 Scrolls of Mass Genocide {!*}                          3.3%
 
-  Inscription Effect
-  =========== =====================================================
-      @1      Select this object whenever '1' is pressed in any cmd
-     @wa      Select this object whenever 'a' is pressed after 'w'
-      !*      Verify using this object for all commands
-      !q      Verify using this object for the 'q' command.
-      !!      Notify when the item is fully recharged
-      =g      Always pickup (get) this objects. Useful for ammo.
-       .      Suppress prompt for random teleportation
-       $      Suppress prompt for warning
+Read which scroll? 
+
+
+You might notice something odd, though: while Scrolls of Genocide are 
+expectedly labeled 'b' as the second item listed and Scrolls of Mass 
+Genocide are 'c' as the third item, Scrolls of Destruction are not 
+labeled 'a' but rather '7'. This is because the Scrolls of Destruction 
+have been inscribed with the inscription @r7, which simply tells the 
+game to label them '7' in the 'r' Read a Scroll menu.
+
+The advantage of inscribing items in this way is that they retain their 
+label even when items are added to or removed from the list. Note, for 
+instance, that three books in the example inventory are inscribed @mb 
+through @md; this allows them to keep their usual, "expected" labels in 
+the m spellcasting menu even though the first book, book 'a', is 
+missing.
+
+Inscriptions are added with the Z/{ command, and can be used for many 
+other purposes besides item labeling (see [d] for more detail). The 
+Mogaminator often automatically applies standard inscriptions to items; 
+the three books of the above example were inscribed by the Mogaminator. 
+Note that inscriptions are always based on the underlying keyset, which 
+for the most part is the same as the original keyset; so if you want a 
+staff to be labeled 'y' in the "Use a Staff" prompt, you should 
+inscribe it @uy rather than @Zy even if you use the roguelike keyset.
+
+    Note: Many object selection menus allow you to select 
+    items from any of several inventories, which you can 
+    toggle between by pressing /. In the drop example 
+    above, the default inventory is your backpack, but you 
+    can use / to select an item from your equipment or 
+    quiver instead.
 
 
 Original   : Alexander Cutler and Andy Astrand
@@ -281,6 +297,7 @@ Updated    : Zangband 2.2.0 through 2.2.6c by Robert Ruehlmann
 Updated    : Zangband DevTeam
 Updated    : Hengband 1.0.11
 Updated    : PosChengband 6.0.0
+Updated    : FrogComposband 7.1.liquorice
 
 
 
