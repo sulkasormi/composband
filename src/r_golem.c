@@ -3,19 +3,17 @@
 static cptr _desc = 
     "Golems are creatures animated by powerful magics: living stone conjured "
     "to serve their creators. But you have broken loose and are running amok!\n \n"
-    "Golems are very slow when it comes to moving about, but this slowness does not "
-    "affect their non-movement actions. Except for melee, where they are limited "
-    "to just a single (but mighty) blow. They fight best with their powerful fists. "
-    "Golems have a very high armor class, possess good resistances and saving throws, "
-    "and are very strong in melee. They are also resistant to magic, and become "
-    "more resistant as they evolve. This resistance is quite powerful, reducing the "
-    "damage taken from all magical attacks.\n \n"
+    "Golems are very slow when it comes to moving about; their non-movement actions "
+    "also tend to be slow, but not to the same extent. They excel in melee despite being limited to a "
+    "single (but mighty) blow; they can equip a weapon, but fight much better with their powerful fists. "
+    "Golems have a very high armor class and possess good resistances; they are also resistant to magic, and become "
+    "more resistant as they evolve, reducing the damage taken from all magical attacks.\n \n"
     "There are several varieties of golem, all sharing a common evolutionary "
     "heritage. First there is the mighty Colossus, the biggest (and slowest) of their "
     "kind. Next is the Sky Golem, a creature of powerful magic, resistant to the "
     "ravages of time. Finally, there is the Spellwarp Automaton, a creature of "
-    "utter destruction, almost completely immune to magic. This last form takes "
-    "nearly forever to build, unfortunately.";
+    "utter destruction, almost completely immune to magic; unfortunately, this last form "
+    "takes nearly forever to build.";
 
 static cptr _mon_name(int r_idx)
 {
