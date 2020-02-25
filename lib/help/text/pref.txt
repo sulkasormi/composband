@@ -12,18 +12,17 @@ brighter, darker, or even completely different), or set options
 Preference Files
 
 There are two types of preference files: system preferences and user 
-preferences. The former represent the default display and input options 
-while the latter are optional customizations that you may add to 
-override the default settings. System preference files, such as 
+preferences. The former represent the default display and input 
+options, while the latter are optional customizations that you may add 
+to override the default settings. System preference files, such as 
 pref.prf, are usually stored in /lib/pref relative to the installation 
 (e.g., on Windows, if you installed in C:\games\FrogComposband then the 
 system pref files may be found in C:\games\FrogComposband\lib\pref). 
 User preference files, on the other hand, are stored in the user 
 directory, which is /lib/user on Windows, relative to the install 
-location, and perhaps (though this is customizable), 
-~/.angband/FrogComposband on Linux. In general, the location of user 
-files is platform dependent, and can vary depending on how you 
-configure and install the game.
+location, and perhaps (this is customizable) ~/.angband/FrogComposband 
+on Linux. In general, the location of user files is platform-dependent, 
+and can vary depending on how you configure and install the game.
 
 During initialization, the system preference file pref.prf is loaded, 
 and this file directs the loading of other preference files, such as 
@@ -41,35 +40,33 @@ tries to load the following user preference files:
   $RACE.prf
   $CLASS.prf
   $PLAYER.prf
-Here, $SYS is the 3 character system code for you platform, such as win 
-for the Windows port, or gcu for the Curses port. $RACE is your current 
-character's race, $CLASS the class name, and $PLAYER the character's 
-actual name, unless it contains illegal characters for your file system 
-(e.g, naming your player Mr. *WONDER* is probably a bad idea). User 
-preference files are loaded last so that you may override system 
-preferences with your own settings. We'll discuss some examples below.
+Here, $SYS is the 3-character system code for your platform, such as 
+win for the Windows port or gcu for the Curses port. $RACE is your 
+current character's race, $CLASS the class name, and $PLAYER the 
+character's actual name, unless it contains illegal characters for your 
+file system (e.g, naming your player Mr. *WONDER* is probably a bad 
+idea). User preference files are loaded last so that you may override 
+system preferences with your own settings. We'll discuss some examples 
+below.
 
 Preference files consist of a list of commands which are parsed to 
 configure various options. These are discussed next.
 
 Preference Commands
 
-There are many commands for setting preferences. I'd rather not 
-document them all, since, hopefully, you would never need to use them 
-directly. Just keep in mind that the game has its own syntax for 
-processing pref files, and, should you ever be curious or inclined to 
-investigate, you can learn them by browsing existing pref files or 
-looking at the source code. I'll give one example in the next section, 
-and then we will discuss setting up preferences using the user 
-interface commands which are designed to hide the details of the syntax 
-from you.
+There are many commands for setting preferences. The syntax is 
+complicated, but mostly, you can use the user interface commands %, & 
+and @ to do things easily and leave syntax worries to the game itself. 
+I'll give one example of the syntax in the next section, and then we 
+will discuss setting up preferences using the user interface commands 
+which are designed to hide the details of the syntax from you.
 
 An Example
 
-In this example, fire up the game in ASCII display and load your 
-character. My character is imaginatively named Test, so when I refer to 
-Test.prf later on, you'll know to mentally change that filename to 
-whatever your character happens to be named.
+In this example, fire up the game and load your character. My character 
+is imaginatively named Test, so when I refer to Test.prf later on, 
+you'll know to mentally change that filename to whatever your character 
+happens to be named.
 
 For this example, we will be directly entering a single user preference 
 command. To do this, we use the special Enter a user pref command 
@@ -79,18 +76,17 @@ numeric code for various values. It is an advanced command, and
 normally you will want to use one of the friendlier in-game commands 
 (for visuals, in this case) instead.
 
-I find @ so boring to look at. Let's use @ instead! To make this 
+Suppose you find @ boring to look at. Let's use @ instead! To make this 
 change, type ! then enter R:0:11:@. The R preference command is used to 
 set display values for monster races (which, as you may know, are 
-defined in /lib/edit/r_info.txt). The game uses the special 0'th entry 
+defined in /lib/edit/r_info.txt). The game uses the special 0th entry 
 in the monster race table as the display options for the player. That 
 we entered R:0 says we wish to override this value. The next field is 
-the attribute to use. Since we are in ASCII text mode, we need to enter 
-a value of 0 to 15 for one of the available 16 colors. I picked 11 for 
-yellow. Finally, we keep the @ for the character for this monster race. 
-After entering this command, you'll notice the player is still a plain 
-old @. Type ^R to force a redraw, and now you should be proudly 
-displayed as @.
+the attribute to use. We need to enter a value of 0 to 15 for one of 
+the 16 available colors; I picked 11 for yellow. Finally, we keep the @ 
+as the character for this monster race. After entering this command, 
+you'll notice the player is still a plain old @; type ^R to force a 
+redraw, and now you should be proudly displayed as @.
 
 If we were to restart the game at this point, our change would be lost. 
 We'll discuss the Interact with Visuals command in just a moment, but 
@@ -103,182 +99,120 @@ initialization. Keeping this value ensures our changes get
 automatically used the next time we play this character! So press ENTER 
 to actually dump your preferences.
 
-Go ahead and restart the game in ASCII mode to confirm the change 
-persists. Now, restart the game in graphics mode and what do you see? 
-For me, on Linux, I get graphics for objects and terrain features, but 
-all of the monsters are displayed in ASCII. (On Windows, you might need 
-to restart, turn on graphics, and then restart again ... I can't 
-confirm this just now). That's because the we dumped the monster 
-visuals while in text mode, and the game didn't just dump the one entry 
-we changed: It dumped them all! Let's go ahead and call this a feature: 
-If you ever wanted to play in a mixed-mode with graphical terrain but 
-craved the nostalgia of ASCII monsters, well, there you go! You can do 
-this.
-
 One final comment: You may edit the Test.prf file you dumped directly, 
 or you may delete it. Since this was an example, you probably just want 
 to delete it, but you should know that the game stores all user 
 preferences for your current character here (by default), and this 
-includes any macros you might have defined. You can also get rid of the 
-ASCII monsters (assuming you want to play in graphics mode) by choosing 
-% and then choosing the option to Reset Visuals, followed by re-dumping 
-monster visual settings in you $NAME.prf file. That's fine too, and 
-we'll discuss interacting with visuals through the user-interface in 
-detail in the next section.
+includes any macros you might have defined.
 
 Interacting with Visuals (%)
 
 Now, you may have found the need to type in a cryptic instruction like 
-R:0:11:@ rather disgusting. If so, you can relax: There is an easier 
-way. Let us repeat the change from the previous section using the user 
-interface command to interact with visuals. Press % and then choose the 
-menu option for changing a monster attribute in visual mode (currently, 
-this is 7 and, for the purposes of the present discussion, your player 
-is a monster!). What do you see?
+R:0:11:@ rather disgusting. If so, you can relax: there is an easier 
+way. Let us repeat the change from the previous section using the 
+Interact with Visuals user interface. Press % and then choose one of 
+the menu options for changing monster attributes, either 4 for numeric 
+mode or 7 for visual mode. Actually, let's combine the two: press 4 
+first, and then v to switch to visual mode! (The player, not being a 
+normal monster, can only be accessed in visual mode this way.)
 
-Visuals - Monsters
-
-Group                  Name                                   Idx   Sym
-================================================================================
-Uniques              | a Plain Gold Ring                      864     =
-Ridable monsters     | Morgoth, Lord of Darkness              861     P
-Wanted monsters      | The Serpent of Chaos                   862     J
-Amberite             | The Unicorn of Order                   859     q
-Olympian             | Oberon, King of Amber                  860     p
-Ant                  | Sauron, the Sorcerer                   858     p
-Bat                  | Great Cthulhu                          857     U
-Centipede            | Gothmog, the High Captain of Balrogs   856     U
-Dragon               | Cerberus, Guardian of Hades            853     C
-...
-<dir>, 'v' for visuals, 'c' to copy, '=' for more info, ESC
-
-Well, I guess this is one way to see all the uniques in the game! I'll 
-assume if you are brave enough to be reading this topic than you are 
-already an advanced player and know the uniques. Anyway, the left area 
-of the display gives various monster groups, and the right shows how 
-the monsters in the current group look. Go ahead and move down the list 
-of groups, all the way to the very last one. Once you select the group 
-called Player, hit the right arrow to move into the list of "monsters" 
-for this group, and select the one also called Player. That is you! 
-Your screen should look something like:
-
-Visuals - Monsters
-
-Group                  Name                                   Idx   Sym
-==============================================================================
-Zombie/Mummy         | Mimic                                  1131    @
-Angel                | Player                                 0       @
-Bird                 |
-...
-Mushroom patch       |
-Ball                 |
-Player               |
-
-<dir>, 'v' for visuals, 'c' to copy, '=' for more info, ESC
-
-Now, let's follow the instructions on the bottom of the screen and 
-press v to change the visuals for the currently selected monster:
-
-Visuals - Monsters
-
-Group                  Name                                   Idx   Sym
-==============================================================================
-Zombie/Mummy         | Player                           0b/40 0       @
-Angel                | 6789:;<=>?@ABCDEFGHIJKLMNOPQRSTUVWXYZ[\]^_`abcdefghijklmn
-Bird                 | 6789:;<=>?@ABCDEFGHIJKLMNOPQRSTUVWXYZ[\]^_`abcdefghijklmn
-Canine               | 6789:;<=>?@ABCDEFGHIJKLMNOPQRSTUVWXYZ[\]^_`abcdefghijklmn
-Elemental            | 6789:;<=>?@ABCDEFGHIJKLMNOPQRSTUVWXYZ[\]^_`abcdefghijklmn
-Dragon Fly           | 6789:;<=>?@ABCDEFGHIJKLMNOPQRSTUVWXYZ[\]^_`abcdefghijklmn
-Ghost                | 6789:;<=>?@ABCDEFGHIJKLMNOPQRSTUVWXYZ[\]^_`abcdefghijklmn
-Hybrid               | 6789:;<=>?@ABCDEFGHIJKLMNOPQRSTUVWXYZ[\]^_`abcdefghijklmn
-Insect               | 6789:;<=>?@ABCDEFGHIJKLMNOPQRSTUVWXYZ[\]^_`abcdefghijklmn
-Snake                | 6789:;<=>?@ABCDEFGHIJKLMNOPQRSTUVWXYZ[\]^_`abcdefghijklmn
-Killer Beetle        | 6789:;<=>?@ABCDEFGHIJKLMNOPQRSTUVWXYZ[\]^_`abcdefghijklmn
-Lich                 | 6789:;<=>?@ABCDEFGHIJKLMNOPQRSTUVWXYZ[\]^_`abcdefghijklmn
-Multi-Headed Reptile | 6789:;<=>?@ABCDEFGHIJKLMNOPQRSTUVWXYZ[\]^_`abcdefghijklmn
-Mystery Living       | 6789:;<=>?@ABCDEFGHIJKLMNOPQRSTUVWXYZ[\]^_`abcdefghijklmn
-Ogre                 | 6789:;<=>?@ABCDEFGHIJKLMNOPQRSTUVWXYZ[\]^_`abcdefghijklmn
-Giant Humanoid       | 6789:;<=>?@ABCDEFGHIJKLMNOPQRSTUVWXYZ[\]^_`abcdefghijklmn
-Quylthulg            | 6789:;<=>?@ABCDEFGHIJKLMNOPQRSTUVWXYZ[\]^_`abcdefghijklmn
-Reptile/Amphibian    | 6789:;<=>?@ABCDEFGHIJKLMNOPQRSTUVWXYZ[\]^_`abcdefghijklmn
-Spider/Scorpion/Tick | 6789:;<=>?@ABCDEFGHIJKLMNOPQRSTUVWXYZ[\]^_`abcdefghijklmn
-Troll                | 6789:;<=>?@ABCDEFGHIJKLMNOPQRSTUVWXYZ[\]^_`abcdefghijklmn
-Vampire              | 6789:;<=>?@ABCDEFGHIJKLMNOPQRSTUVWXYZ[\]^_`abcdefghijklmn
-Wight/Wraith/etc     | 6789:;<=>?@ABCDEFGHIJKLMNOPQRSTUVWXYZ[\]^_`abcdefghijklmn
-Xorn/Xaren/etc       | 6789:;<=>?@ABCDEFGHIJKLMNOPQRSTUVWXYZ[\]^_`abcdefghijklmn
-Yeti                 | 6789:;<=>?@ABCDEFGHIJKLMNOPQRSTUVWXYZ[\]^_`abcdefghijklmn
-Zephyr Hound         | 6789:;<=>?@ABCDEFGHIJKLMNOPQRSTUVWXYZ[\]^_`abcdefghijklmn
-Mimic                | 6789:;<=>?@ABCDEFGHIJKLMNOPQRSTUVWXYZ[\]^_`abcdefghijklmn
-Wall/Plant/Gas       | 6789:;<=>?@ABCDEFGHIJKLMNOPQRSTUVWXYZ[\]^_`abcdefghijklmn
-Mushroom patch       | 6789:;<=>?@ABCDEFGHIJKLMNOPQRSTUVWXYZ[\]^_`abcdefghijklmn
-Ball                 | 6789:;<=>?@ABCDEFGHIJKLMNOPQRSTUVWXYZ[\]^_`abcdefghijklmn
-Player               | 6789:;<=>?@ABCDEFGHIJKLMNOPQRSTUVWXYZ[\]^_`abcdefghijklmn
-
+Visuals - Monsters                                                              
+                                                                                
+   Name                                                       Idx   Sym         
+==============================================================================  
+   Player                                               01/40 0       @         
+   6789:;<=>?@ABCDEFGHIJKLMNOPQRSTUVWXYZ[\]^_`abcdefghijklmnopqrstuvwxyz{|}~#   
+   6789:;<=>?@ABCDEFGHIJKLMNOPQRSTUVWXYZ[\]^_`abcdefghijklmnopqrstuvwxyz{|}~#   
+   6789:;<=>?@ABCDEFGHIJKLMNOPQRSTUVWXYZ[\]^_`abcdefghijklmnopqrstuvwxyz{|}~#   
+   6789:;<=>?@ABCDEFGHIJKLMNOPQRSTUVWXYZ[\]^_`abcdefghijklmnopqrstuvwxyz{|}~#   
+   6789:;<=>?@ABCDEFGHIJKLMNOPQRSTUVWXYZ[\]^_`abcdefghijklmnopqrstuvwxyz{|}~#   
+   6789:;<=>?@ABCDEFGHIJKLMNOPQRSTUVWXYZ[\]^_`abcdefghijklmnopqrstuvwxyz{|}~#   
+   6789:;<=>?@ABCDEFGHIJKLMNOPQRSTUVWXYZ[\]^_`abcdefghijklmnopqrstuvwxyz{|}~#   
+   6789:;<=>?@ABCDEFGHIJKLMNOPQRSTUVWXYZ[\]^_`abcdefghijklmnopqrstuvwxyz{|}~#   
+   6789:;<=>?@ABCDEFGHIJKLMNOPQRSTUVWXYZ[\]^_`abcdefghijklmnopqrstuvwxyz{|}~#   
+   6789:;<=>?@ABCDEFGHIJKLMNOPQRSTUVWXYZ[\]^_`abcdefghijklmnopqrstuvwxyz{|}~#   
+   6789:;<=>?@ABCDEFGHIJKLMNOPQRSTUVWXYZ[\]^_`abcdefghijklmnopqrstuvwxyz{|}~#   
+   6789:;<=>?@ABCDEFGHIJKLMNOPQRSTUVWXYZ[\]^_`abcdefghijklmnopqrstuvwxyz{|}~#   
+   6789:;<=>?@ABCDEFGHIJKLMNOPQRSTUVWXYZ[\]^_`abcdefghijklmnopqrstuvwxyz{|}~#   
+   6789:;<=>?@ABCDEFGHIJKLMNOPQRSTUVWXYZ[\]^_`abcdefghijklmnopqrstuvwxyz{|}~#   
+   6789:;<=>?@ABCDEFGHIJKLMNOPQRSTUVWXYZ[\]^_`abcdefghijklmnopqrstuvwxyz{|}~#   
+   6789:;<=>?@ABCDEFGHIJKLMNOPQRSTUVWXYZ[\]^_`abcdefghijklmnopqrstuvwxyz{|}~#   
+                                                                                
 <dir>, ENTER to accept, 'c' to copy, ESC
 
-You cannot tell from the screenshot, but I moved the cursor down to the 
-yellow @, since this is the display we setup manually in the last 
-section. If you look at the top line, you see 0b/40 which is 
-hexadecimal for 11 (which is yellow) and the ascii character code for 
-@. Go ahead and choose ENTER to accept the change.
+Now use the arrow keys to select your favorite visual (in this case, 
+the yellow @):
 
-All of this accomplished the same change as ! followed by R:0:11:@ 
-which we did in the last section. It's quite a bit more work, but you 
-can see what your change will be as you make it, so it is easier to do 
-things correctly. If you repeat this in graphics mode, you'll find that 
-it is actually much more convenient to use the user interface to setup 
-and change visuals.
+Visuals - Monsters                                                              
+                                                                                
+   Name                                                       Idx   Sym         
+==============================================================================  
+   Player                                               0b/40 0       @         
+   6789:;<=>?@ABCDEFGHIJKLMNOPQRSTUVWXYZ[\]^_`abcdefghijklmnopqrstuvwxyz{|}~#   
+   6789:;<=>?@ABCDEFGHIJKLMNOPQRSTUVWXYZ[\]^_`abcdefghijklmnopqrstuvwxyz{|}~#   
+   6789:;<=>?@ABCDEFGHIJKLMNOPQRSTUVWXYZ[\]^_`abcdefghijklmnopqrstuvwxyz{|}~#   
+   6789:;<=>?@ABCDEFGHIJKLMNOPQRSTUVWXYZ[\]^_`abcdefghijklmnopqrstuvwxyz{|}~#   
+   6789:;<=>?@ABCDEFGHIJKLMNOPQRSTUVWXYZ[\]^_`abcdefghijklmnopqrstuvwxyz{|}~#   
+   6789:;<=>?@ABCDEFGHIJKLMNOPQRSTUVWXYZ[\]^_`abcdefghijklmnopqrstuvwxyz{|}~#   
+   6789:;<=>?@ABCDEFGHIJKLMNOPQRSTUVWXYZ[\]^_`abcdefghijklmnopqrstuvwxyz{|}~#   
+   6789:;<=>?@ABCDEFGHIJKLMNOPQRSTUVWXYZ[\]^_`abcdefghijklmnopqrstuvwxyz{|}~#   
+   6789:;<=>?@ABCDEFGHIJKLMNOPQRSTUVWXYZ[\]^_`abcdefghijklmnopqrstuvwxyz{|}~#   
+   6789:;<=>?@ABCDEFGHIJKLMNOPQRSTUVWXYZ[\]^_`abcdefghijklmnopqrstuvwxyz{|}~#   
+   6789:;<=>?@ABCDEFGHIJKLMNOPQRSTUVWXYZ[\]^_`abcdefghijklmnopqrstuvwxyz{|}~#   
+   6789:;<=>?@ABCDEFGHIJKLMNOPQRSTUVWXYZ[\]^_`abcdefghijklmnopqrstuvwxyz{|}~#   
+   6789:;<=>?@ABCDEFGHIJKLMNOPQRSTUVWXYZ[\]^_`abcdefghijklmnopqrstuvwxyz{|}~#   
+   6789:;<=>?@ABCDEFGHIJKLMNOPQRSTUVWXYZ[\]^_`abcdefghijklmnopqrstuvwxyz{|}~#   
+   6789:;<=>?@ABCDEFGHIJKLMNOPQRSTUVWXYZ[\]^_`abcdefghijklmnopqrstuvwxyz{|}~#   
+   6789:;<=>?@ABCDEFGHIJKLMNOPQRSTUVWXYZ[\]^_`abcdefghijklmnopqrstuvwxyz{|}~#   
+                                                                                
+<dir>, ENTER to accept, 'c' to copy, ESC
 
-When you want to keep your changes, you use the option to dump monster 
+Go ahead and press ENTER to accept the change.
+
+This accomplished the same change as ! followed by R:0:11:@ which we 
+did in the last section. It's a bit more work, but you don't need to 
+remember any syntax or ASCII key codes or color numbers.
+
+When you want to keep your changes, use option 1 to dump monster 
 visuals, just like before. I'll let you work through the other visual 
-options, both in text mode and in graphics mode, since the process to 
-make changes is the same. You can configure not just monster visuals, 
-but objects and terrain features as well. Be sure to dump your changes 
-so they are remembered for this character.
+options; you can configure not just monster visuals, but objects and 
+terrain features as well. Be sure to dump your changes so they are 
+remembered for this character.
 
 Interacting with Colors (&)
 
 This option allows you to configure the basic colors used by the game. 
-However, this option will not work on all systems. For example, the 
-Curses port uses the console's current profile rather than the in-game 
-color table, so setting colors through the game will not work (Instead, 
-edit the current profile for your console, or switch to a different 
-profile). Furthermore, while the UI is pretty easy to figure out, it is 
-rather painful to use in practice since there are commands to increase 
-or decrease the respective r, g and b values of the current color table 
-entry. But there is no option to just type in a desired value. Here, I 
-recommend you use the option to dump colors to your $NAME.prf file, and 
-then close the game and manually edit the rgb values in your favorite 
-text editor, using whatever visual color tools your are available on 
-your operating system. At some point, we should really fix up this 
-command to be more friendly!
+This can be a bit of work: while the UI is easy to figure out (use the 
+R, G and B keys to adjust the RGB value), each keypress only increases 
+or decreases the value by 1, so reaching the value you would like can 
+take a while. Here too, remember to dump your changes!
+
+Modifying colors may not work on some platforms.
 
 Interacting with Options (=)
 
 The various game options are documented elsewhere (see [a]). Here, I'll 
 just mention that there exist two preference commands for turning 
-options on and off. You may use Y:option_name to turn an option on and 
-X:option_name to turn it off (Use the ! option, or embed this 
-preference command inside a macro as discussed below). Obviously, 
-replace option_name with the exact name for the option you wish to 
-configure. The list of internal option names is documented in the 
-previous link.
+options on and off: you may use Y:option_name to turn an option on, and 
+X:option_name to turn it off (use ! for this). Obviously, replace 
+option_name with the exact name for the option you wish to configure. 
+The list of internal option names is documented in the previous link.
 
     Note: You cannot alter cheating options with the user 
     pref commands X or Y. Nor can you configure these 
     options in the pref-opt.prf system preference file. To 
-    cheat, you need to to enable the allow_debug_opts and 
-    then set the option through the user interface. This 
-    will mark your character as a cheater, though!
+    cheat, you need to enable the allow_debug_opts and then 
+    set the option through the user interface. This will 
+    mark your character as a cheater, though!
 
 Interacting with Macros (@)
 
 The "Interact with macros" command allows you to define or remove 
-"macros", which are mappings from a single logical keypress to a 
-sequence of keypresses, allowing you to use special keys on the 
-keyboard, such as function keys or keypad keys, possibly in conjunction 
-with modifier keys, to "automate" repetitive multi-keypress commands 
-that you use a lot.
+macros, which are mappings from a single logical keypress to a sequence 
+of keypresses, allowing you to use special keys on the keyboard, such 
+as function keys or keypad keys, possibly in conjunction with modifier 
+keys, to "automate" repetitive multi-keypress commands that you use a 
+lot.
 
 Since macros represent keypress sequences, and not all keypresses have 
 a printable representation, macro triggers and actions must often be 
@@ -313,7 +247,9 @@ Macros can be specified in user pref files as a pair of lines, one of
 the form "A:<str>", which defines the encoded macro action, and one of 
 the form "P:<str>", which defines the encoded macro trigger.
 
-The "Interact with macros" command also allows you to define "keymaps", 
+Keymaps
+
+The "Interact with macros" command also allows you to define keymaps, 
 which are vaguely related to macros. A keymap maps a single keypress to 
 a series of keypresses, which bypass both other keymaps and any macros. 
 FrogComposband uses keymaps to map the original and the roguelike 
@@ -325,47 +261,57 @@ underlying keyset, except that "numbers" are mapped to ";" plus a
 direction, "5" is mapped to ",", and a few control-keys are mapped to 
 various things. See "command.txt" for the full set of underlying 
 commands. Some uses for keymaps include the ability to "disable" a 
-command by mapping it to "\x00".
+command by mapping it to "\x00". Keymaps are safer than macros in that 
+macros should always use a special key as the trigger; using a regular 
+key as a macro trigger will interfere with that key's normal 
+functionality, but using regular keys as keymap triggers is okay as 
+long as the key does not overwrite commands.
 
 Keymaps can be specified in user pref files as pairs of lines of the 
 form "A:<str>" "C:<T>:<key>", where <str> is the encoded keymap action, 
 <T> is the keyset (0 for original and 1 for roguelike), <key> is the 
 encoded trigger key.
 
-Some Macro Examples
+Some Macro and Keymap Examples
 
 You may now forget about keymaps and pretend that macros are things 
 that allow you, the user, to bind a sequence of commands to a single 
-keystroke. Here are some of my personal examples:
+keystroke. Here are a few examples:
 
 Example #1: Archery
-Inscribe @f1=g on your primary ammo, and then add the macro sequence 
-*tf1 to your favorite key (I like to use -). This will automatically 
-target the nearest opponent and fire the inscribed ammo. The =g part of 
-the inscription allows you to automatically pick up any unbroken 
-projectiles once the battle is over. (This assumes that use_old_target 
-is turned on, which it is by default. Otherwise, you'll need to work 
-out for yourself the altered macro action).
+Inscribe @f1=g on your primary ammo, then map the sequence f1*5 or *5f1 
+to your favorite macro key. This will automatically target the nearest 
+opponent and fire the inscribed ammo; and the =g part of the 
+inscription allows you to automatically pick up the ammo once the 
+battle is over. (Use f1*5 if the use_old_target option is off, as it is 
+by default, and *5f1 if you have switched that option on.)
 
 Example #2: Resting
-Add the macro sequence R&\r to a convenient key (I use F1 for this). 
-Normally, resting requires 3 keystrokes and it is frustrating when your 
-resting gets constantly interrupted. Pressing F1 reduces this annoyance 
-by a factor of 3.
+Add the macro sequence R&\r to a convenient key, say F1. Normally, 
+resting requires 2 keystrokes (R and Enter), which some players find 
+frustrating when their resting gets constantly interrupted.
 
-Example #3: Tunneling
-Inscribe your wand of stone to mud with @am and then bind the macro 
-sequence *\eam to your favorite key. Perhaps the only disadvantage of 
-the use_old_target option occurs when you are done fighting, and want 
-to something else like clear away some rubble. This macro first 
-dismisses the old target with *\e and then aims your inscribed wand of 
-stone to mud. You will be prompted for the desired direction.
+Example #3: Illumination
+Inscribe your Staff of Illumination with @ug, then map the sequence ug 
+to your favorite key, say F6. When you find a Rod of Illumination, just 
+change the macro action to za and you can keep lighting up rooms with 
+the same key.
 
 Example #4: Mass Identify
-Inscribe @ui on your staff of identify (The one with 50+ charges) and 
+Inscribe @ui on your Staff of Identify (the one with 50+ charges) and 
 then bind ui* to your favorite knowledge key. Use this macro once your 
-pack has filled up with unknown, but pseudo-identified objects.
+pack has filled up with unknown objects.
 
+Example #5: Spells
+Suppose your favorite attack spell is spell e in a book you have 
+inscribed with @mf. Let's use y as our trigger key here; for this 
+trigger key we'll want a keymap rather than a macro, otherwise we'll 
+interfere with the normal functionality of the y key! Create a keymap 
+for y with mfe as the action; mfe*5 or *5mfe if you want to go a step 
+further and automatically target the nearest monster. See [b] for more 
+spell examples.
+
+    Remember to append your macros and keymaps to a file.
 
 Original   : Alexander Cutler and Andy Astrand
 Updated    : (2.7.6) by Russ Allbery (rra@cs.stanford.edu)
@@ -374,5 +320,6 @@ Updated    : Zangband 2.2.0 through 2.2.6c by Robert Ruehlmann
 Updated    : Zangband DevTeam
 Updated    : Hengband 1.7.0
 Updated    : PosChengband 4.0.0
+Updated    : FrogComposband 7.1.liquorice
 
 
