@@ -1,0 +1,20 @@
+Painful Status Effects
+
+Please choose one of the following help sections:
+
+    [a] Overview of Painful Status Effects
+    [b] Confusion
+    [c] Paralysis
+    [d] Stunning
+    [e] Fear
+    [f] Blindness
+    [g] Slowness
+    [h] Cuts/Wounds
+    [i] Poisoning
+    [j] Unwellness
+    [k] Hallucination
+    [l] Polymorph
+    [m] Resisting Status Effects
+
+    (?) Help System Commands
+

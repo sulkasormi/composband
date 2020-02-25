@@ -1,0 +1,91 @@
+Subwindows
+
+In addition to the main game display terminal, which is always visible 
+(and can show anything from dungeon maps to helpfiles), the game allows 
+you to use up to seven subwindows; these are optional, additional 
+display terminals used to keep important information permanently on the 
+screen. Subwindows are numbered Term-1 through Term-7 (the main display 
+is Term-0).
+
+Why Subwindows Are Good
+
+The most commonly used subwindows are monster list, object list, pack 
+inventory and recent messages. The monster list, in particular, is very 
+convenient - a common cause of death is not realizing that there was a 
+dangerous monster nearby, and this is much less likely to happen with a 
+monster list subwindow there to alert you.
+
+The object list is likewise handy: it allows you to see at a glance if 
+you're missing anything on the level, especially since the most 
+valuable objects (and/or those wanted by the Mogaminator) will be 
+displayed near the top. An object list subwindow will also help you 
+quickly locate quest or dungeon entrances in towns and the wilderness.
+
+Why Subwindows Are Bad
+
+Space occupied by subwindows is space not occupied by the main display; 
+subwindows force you to make compromises with either the number of rows 
+and columns in the main display, the font size of the main display, or 
+both. If you have bad eyesight or a smallish monitor, I recommend 
+maximizing the font size by using no subwindows.
+
+Having no subwindows also allows you to keep an iron focus on the main 
+display, without the need to glance to the sides so often. Subwindows 
+do provide useful information, but that information is also available 
+through normal commands - i for the inventory, Y/[ for the monster 
+list, O/] for the object list, ^P for recent messages - and these 
+commands provide additional functionality (inspect item, travel to 
+item, search for a message, etc.) not offered by subwindows.
+
+Setting up subwindows on angband.live
+
+Set the four values on the angband.live play page - subwindow right 
+cols, subwindow right split, subwindow top rows and subwindow bottom 
+rows - to your favorite settings. The standard example values are 
+40/25/0/5 respectively. Start your character, then type =W during play 
+to determine what each of the subwindows should display.
+
+If the game crashes on start, you may have specified subwindows that 
+occupy too much space; try lower values or a smaller font size. Note 
+also that either "subwindow top rows" or "subwindow bottom rows" should 
+be zero.
+
+To play on angband.live with no subwindows, simply keep all four values 
+at zero.
+
+Setting up subwindows in offline play (Windows)
+
+Select Window from the toolbar at the top and choose the Visibility 
+option to toggle each of the seven subwindows on or off. Use the mouse 
+to drag the newly activated subwindows to your favorite locations. Type 
+=W during play to tell the game what each subwindow should display.
+
+Setting up subwindows in offline play (Linux with curses)
+
+Use the command line to specify subwindow size and placement as you 
+launch the game. Here are a few examples:
+
+$ ./frogcomposband -mgcu -uCrusher -- -right 57x26,*
+
+This specifies a subwindow strip to the right of the main display that 
+is 57 columns wide; this strip will contain two subwindows, one that is 
+26 rows high and one that fills whatever space still remains.
+
+$ ./frogcomposband -mgcu -uCrusher -- -right 57x26,* -bottom *x10
+
+Specifies the same two subwindows as before plus a third subwindow 
+(Term-3) below the main display, occupying 10 rows and (TOTAL-57) 
+columns.
+
+$ ./frogcomposband -mgcu -uCrusher -- -bottom *x10 -right 57x26,*
+
+Same as above, except that the subwindow at the bottom is now Term-1 
+and gets to occupy every column.
+
+Type =W during play to determine what each subwindow displays.
+
+
+--
+Original   : FrogComposband 7.1.liquorice
+
+
