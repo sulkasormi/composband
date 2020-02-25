@@ -3,72 +3,79 @@ Home, Sweet Home
 Press [a] for the Quick Reference.
 
 Your home is a special building found in all the normal towns on the 
-surface (Outpost, Morivant, Telmora and Angwil). In your home, you may 
-stash goodies for future use. There are currently no limits on the 
-amount of objects you may store in your home, but if your house gets 
-too cluttered, then you may find it rather annoying to find what you 
-are looking for. So be sure to tidy up from time to time. Your home 
-inventory is actually only a single inventory. So while there are four 
-houses belonging to you, the contents of each is actually the same 
-(This unrealistic behavior is for smoother gameplay).
+surface (Outpost, Morivant, Anambar, Thalos, Telmora and Angwil). In 
+your home, you may stash goodies for future use; there are no limits on 
+the amount of objects you may store in your home, but if your house 
+gets too cluttered, finding the item you are looking for can be a 
+chore. Somehow, magically, all of your homes share the same inventory.
 
 Using Your Home
 
-When you first enter your home, you will see an empty inventory. To add 
-items to your home, simply drop them using the d command and select the 
-item you wish to drop. Similarly, to get items from your home, you use 
-the g command and then enter the label of the item you want. After a 
-bit of game play, your home might look like so:
+When you first enter your home, you will see an empty inventory. To 
+leave items at your home, simply drop them using the d command and 
+select the item you wish to drop. Similarly, to get items from your 
+home, use the g command and then enter the label of the item you want. 
+After a bit of play, your home might look like this:
 
                                    Home                                         
                                                                                 
     Item Description                                               Weight  Score
- a) 2 Soft Studded Leathers [5,+4]                                9.0 lbs    514
- b) Rhino Hide Armour (-1) [8,+1]                                11.0 lbs    384
- c) Cord Armour [6,+2]                                            8.0 lbs    342
- d) a Dagger (1d4) (+0,+0)                                        1.2 lbs      3
- e) a Main Gauche (1d5) (+1,+5)                                   3.0 lbs    628
- f) a Rapier (1d6) (+4,+5)                                        4.0 lbs    876
- g) a Rapier (1d6) (+0,+0)                                        4.0 lbs     21
- h) a Cutlass (1d7) (+0,+0)                                      11.0 lbs    133
- i) a Khopesh (2d4) (+3,+5)                                      13.0 lbs    983
- j) 2 Tulwars (2d4) (+0,+0)                                      10.0 lbs    135
- k) a Broad Sword (2d5) (+0,+0)                                  15.0 lbs    186
- l) a Long Sword (2d5) (+0,+0)                                   13.0 lbs    171
- m) an Awl-Pike (1d8) (+0,+0)                                    16.0 lbs    175
- n) a Trident (1d8) (+0,+0)                                       7.0 lbs     81
-(Page 3 of 4)                                                                   
-g to get an item. d to drop an item. x to begin examining items.                
-r to begin removing (destroying) items.                                         
-Esc to exit. ? for help.                                                        
+ a) { 23 Arrows of Slaying (3d4) (+7,+7) {/pLv}                   0.2 lbs    137
+ b) { 16 Arrows of Slaying (3d4) (+6,+8) {/pZA}                   0.2 lbs    102
+ c) { 9 Sheaf Arrows (4d4) (+4,+2)                                0.4 lbs     28
+ d) { 30 Sheaf Arrows (4d4) (+5,+4)                               0.4 lbs     45
+ e) { 26 Sheaf Arrows (Elemental) (4d4) (+6,+6) {|P}              0.4 lbs     77
+ f) { 31 Sheaf Arrows of Returning (4d4) (+8,+7)                  0.4 lbs    231
+ g) { 23 Sheaf Arrows of Endurance (4d4) (+8,+10)                 0.4 lbs    317
+ h) { 25 Sheaf Arrows of Exploding (4d4) (+9,+9)                  0.4 lbs    157
+ i) { 6 Sheaf Arrows of Endurance (4d4) (+10,+9)                  0.4 lbs    310
+ j) { 18 Mithril Arrows of Slaying (5d4) (+6,+8) {/L}             0.4 lbs    139
+ k) { 23 Mithril Arrows of Slaying (5d4) (+6,+10) {/*A}           0.4 lbs    369
+ l) { 21 Mithril Arrows of Endurance (5d4) (+9,+7)                0.4 lbs    299
+ m) { 35 Mithril Arrows (Elemental) (5d4) (+9,+9) {|ECoP}         0.4 lbs    225
+ n) { 19 Seeker Arrows of Returning (6d4) (+4,+9)                 0.2 lbs    284
+ o) { 15 Seeker Arrows of Slaying (6d4) (+9,+8) {/ULv}            0.2 lbs    399
+ p) { 22 Seeker Arrows of Returning (6d4) (+11,+9)                0.2 lbs    308
+ q) { The Black Arrow of Bard (8d4) (+30,+19) {/XD}               0.2 lbs   1660
+ r) { 30 Rounded Pebbles (2d3) (+0,+0)                            0.4 lbs      1
+ s) { 24 Rounded Pebbles (2d3) (+5,+4)                            0.4 lbs     32
+ t) { 26 Rounded Pebbles (Elemental) (2d3) (+7,+6) {|F}           0.4 lbs     54
+ (Page 33 of 35)                                                                
+ g to get an item. d to drop an item. x to begin examining items.               
+ r to begin removing (destroying) items.                                        
+ Esc to exit. ? for help.                                                       
 
-Once there are more objects then can be displayed on your screen, the 
+Once there are more objects than can be displayed on your screen, the 
 inventory will be listed in pages. Use the Page Up and Page Down keys 
 to navigate.
 
-If your home is too cluttered, then you will probably want to clean up 
-a bit. Now, you can certainly get items into your pack, walk outside, 
-and drop them on the town commons. This is littering. It is also a bit 
-of work. Sure, the townsfolk are poor and will eventually scavenge 
-through your trash (once you leave, of course), but there is a better 
-way to clean up, provided you realize that using this feature 
-permanently destroys the indicated objects. This feature is the r 
-command to remove items (permanently) from your home. Follow the 
-prompts. You will be asked to confirm each removal (deletion) and you 
-may not specify a quantity. Upon removal, you are prompted for another 
-selection since it is likely you have more than one junk object in your 
-home (If you are like me, you have much more than that!). Press Esc 
-when you are done.
+If you find your home too cluttered, you may want to clean up a bit. 
+The simple solution is to get items into your pack, walk outside, and 
+drop them on the town commons; but this is littering, and also a bit of 
+work. There's an alternative way to clean up, with the r command; be 
+careful, though, since using it permanently destroys the selected 
+items, you are not allowed to specify a quantity, and you will stay in 
+item-removal mode until you press ESC. 
+
+Note that you can view your home inventory not just at your home, but 
+also through your Character Sheet (C); although you cannot select (or 
+inspect) individual items this way, it is often the fastest and most 
+convenient way to locate useful items hidden in pages of trash, 
+especially if you are shuffling your equipment. This reduces the need 
+to clean up.
 
 The Museum
 
-The Museum is another building present in each town that behaves very 
-much like your home. All four museum buildings share a common inventory 
-just like all four of your homes. However, the museum accepts donations 
-(d) but all donations are final: You are not allowed to take back your 
-gifts! If the museum gets too cluttered for your tastes, you may tidy 
-up with the r command. This permanently removes the selected object 
-from the museum and this action can not be reversed.
+The Museum behaves very much like your home, except that you cannot 
+take items from the Museum: all donations to the Museum are final. The 
+Museum is exclusively for keepsakes - which some players seem to have 
+awfully many of!
+
+Another difference between the Museum and your home is that items given 
+to the Museum are automatically *Identified*, as with shops; but there 
+is no advantage to *identifying* items through the Museum compared to 
+doing so through a shop, where you get paid for the item and can 
+potentially buy it back.
 
 Quick Reference
   Basic Commands
@@ -82,29 +89,29 @@ Quick Reference
   w         Wear an item
   t T       Take off an item
   k ^D      Destroy items in your pack
-  e         Display Equipment
-  i         Display Inventory
+  e         Display equipment
+  i         Display inventory
   I         Inspect objects in your pack
-  Tab       Toggle Inventory/Equipment Windows
+  Tab       Toggle inventory/equipment subwindows
   {         Inscribe objects in your pack
-  }         Un-inscribe objects in your pack
-  C         Display Character Sheet
+  }         Uninscribe objects in your pack
+  C         Display character sheet
   
     Note: These Extra Commands are simply normal game 
     commands made available for your convenience so you 
     need not leave your home to use them. However, the 
-    keybindings for these commands are hard-coded so any 
+    keybindings for these commands are hard-coded, so any 
     keymaps you may have defined will not apply.
   
   Navigation
-  Page Up   Scroll Through Long Object Lists
+  Page Up   Scroll through long object lists
   Page Down
   Space     Same as Page Up
   -         Same as Page Down
   
   Display Options
-  ^W        Toggle Weights (see [b])
-  ^G        Toggle Graphics (see [c])
+  ^W        Toggle weights (see [b])
+  ^G        Toggle graphics (see [c])
   
 
 
