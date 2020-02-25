@@ -11,14 +11,14 @@ Disciples of Karrot tend to play as fighter-mages, relying on melee, spells and 
 Karrot's disciples depend on Intelligence to make their spells work.
 
   <indent><style:table><color:G>Stats                   Skills</color>
-Strength     <color:w> -1</color>        Disarming   <color:R>Poor         </color>
-Intelligence <color:v> +1</color>        Device      <color:y>Good         </color>
-Wisdom       <color:w> -1</color>        Save        <color:o>Fair         </color>
+Strength     <color:w> -1</color>        Disarming   <color:o>Fair         </color>
+Intelligence <color:v> +1</color>        Device      <color:G>Excellent    </color>
+Wisdom       <color:w> -1</color>        Save        <color:y>Good         </color>
 Dexterity    <color:w> +0</color>        Stealth     <color:o>Fair         </color>
 Constitution <color:w> -1</color>        Searching   <color:o>Fair         </color>
 Charisma     <color:w> +1</color>        Perception  <color:R>Poor         </color>
-Life Rating   95%       Melee       <color:o>Fair         </color>
-Base HP       14        Bows        <color:o>Fair         </color>
+Life Rating   95%       Melee       <color:y>Good         </color>
+Base HP       14        Archery     <color:y>Good         </color>
 Experience   125%
 </style></indent>
 <topic:Yeqrezh><color:o>Yeqrezh</color>
@@ -26,17 +26,17 @@ Yeqrezh is the friendliest of the Purples, supportive of his Disciples and willi
 
 Disciples of Yeqrezh gain many practical tools as well as solid offensive options, and a useful item as a gift from their patron every odd-numbered character level. They are the most mage-like of all Disciples, and lack of hit points is their only true weakness. Nevertheless, they are extremely versatile, and can also win through melee, archery or even sneaking about silently collecting loot.
 
-Yeqrezh is the recommended patron for new (or highly cautious) players, as he is the only Purple not to actively incentivize a demanding, push-the-envelope style of play. Yeqrezh's disciples, like Karrot's, rely on Intelligence to power their spells.
+Yeqrezh is the recommended patron for new (or highly cautious) players, as he is the only Purple not to actively incentivize a demanding, push-the-envelope approach. Yeqrezh's disciples, like Karrot's, rely on Intelligence to power their spells.
 
   <indent><style:table><color:G>Stats                   Skills</color>
-Strength     <color:w> +0</color>        Disarming   <color:R>Poor         </color>
+Strength     <color:w> +0</color>        Disarming   <color:o>Fair         </color>
 Intelligence <color:v> +1</color>        Device      <color:o>Fair         </color>
-Wisdom       <color:w> +1</color>        Save        <color:R>Poor         </color>
+Wisdom       <color:w> +1</color>        Save        <color:o>Fair         </color>
 Dexterity    <color:w> +0</color>        Stealth     <color:o>Fair         </color>
 Constitution <color:w> -3</color>        Searching   <color:R>Poor         </color>
 Charisma     <color:w> +0</color>        Perception  <color:R>Poor         </color>
 Life Rating   90%       Melee       <color:y>Good         </color>
-Base HP       12        Bows        <color:y>Good         </color>
+Base HP       12        Archery     <color:G>Excellent    </color>
 Experience   115%
 </style></indent>
 <topic:Troika><color:o>Troika</color>
@@ -51,32 +51,34 @@ Wisdom       <color:w> -1</color>        Save        <color:r>Bad          </col
 Dexterity    <color:w> +1</color>        Stealth     <color:o>Fair         </color>
 Constitution <color:w> +2</color>        Searching   <color:R>Poor         </color>
 Charisma     <color:w> +0</color>        Perception  <color:R>Poor         </color>
-Life Rating  108%       Melee       <color:y>Good         </color>
-Base HP       23        Bows        <color:o>Fair         </color>
-Experience   140%
+Life Rating  108%       Melee       <color:G>Excellent    </color>
+Base HP       23        Archery     <color:y>Good         </color>
+Experience   150%
 </style></indent>
+<color:B>TIP</color>: The special random quests for Karrot and Troika disciples can only appear if you are sufficiently deep for the quest to be challenging. Pressing <color:y>CTRL+F</color> reveals your patron's opinion of your current depth. The Purples also like you to visit many different dungeons; do not expect a large number of assignments in a single dungeon, unless you are playing with no wilderness.
+
 <topic:Tables><style:heading>Table 1 - Disciple Statistic Bonus Table</style>
 <style:table>
 <color:G>                 </color> <color:G>STR  INT  WIS  DEX  CON  CHR  Life  BHP  Exp</color>
 Karrot             -1   +1   -1   +0   -1   +1   95%  +14  125%
 Yeqrezh            +0   +1   +1   +0   -3   +0   90%  +12  115%
-Troika             +1   +0   -1   +1   +2   +0  108%  +23  140%
+Troika             +1   +0   -1   +1   +2   +0  108%  +23  150%
 
 </style>
 <topic:Skills1><style:heading>Table 2 - Disciple Skill Bonus Table I</style>
 <style:table>
                   <color:w>Disarming     Device        Save          Stealth      </color>
-Karrot            <color:R>Poor         </color> <color:y>Good         </color> <color:o>Fair         </color> <color:o>Fair         </color>
-Yeqrezh           <color:R>Poor         </color> <color:o>Fair         </color> <color:R>Poor         </color> <color:o>Fair         </color>
+Karrot            <color:o>Fair         </color> <color:G>Excellent    </color> <color:y>Good         </color> <color:o>Fair         </color>
+Yeqrezh           <color:o>Fair         </color> <color:o>Fair         </color> <color:o>Fair         </color> <color:o>Fair         </color>
 Troika            <color:y>Good         </color> <color:r>Bad          </color> <color:r>Bad          </color> <color:o>Fair         </color>
 
 </style>
 <topic:Skills2><style:heading>Table 3 - Disciple Skill Bonus Table II</style>
 <style:table>
-                  <color:w>Searching     Perception    Melee         Bows         </color>
-Karrot            <color:o>Fair         </color> <color:R>Poor         </color> <color:o>Fair         </color> <color:o>Fair         </color>
-Yeqrezh           <color:R>Poor         </color> <color:R>Poor         </color> <color:y>Good         </color> <color:y>Good         </color>
-Troika            <color:R>Poor         </color> <color:R>Poor         </color> <color:y>Good         </color> <color:o>Fair         </color>
+                  <color:w>Searching     Perception    Melee         Archery      </color>
+Karrot            <color:o>Fair         </color> <color:R>Poor         </color> <color:y>Good         </color> <color:y>Good         </color>
+Yeqrezh           <color:R>Poor         </color> <color:R>Poor         </color> <color:y>Good         </color> <color:G>Excellent    </color>
+Troika            <color:R>Poor         </color> <color:R>Poor         </color> <color:G>Excellent    </color> <color:y>Good         </color>
 
 </style>
 <topic:Powers><style:heading>Table 4 - Yeqrezh Talents</style>
@@ -150,4 +152,4 @@ Gives you access to the Shuffle spell, and automatically gives Self Knowledge if
 </style>
 
 
-<color:s>Automatically generated for FrogComposband 7.1.toffee.</color>
+<color:s>Automatically generated for FrogComposband 7.1.liquorice.</color>
