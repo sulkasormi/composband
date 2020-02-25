@@ -1,16 +1,17 @@
 Creating a Character
 
-Please choose one of the following online help files:
+Please choose one of the following help sections:
 
     [a] Creating a Character
     [b] The Welcome Screen
     [c] The Race/Class Screen
     [d] The Stats Screen
-    [e] Primary Statistics
-    [f] Primary Skills
-    [g] Proficiency Levels
-    [h] Birth Options
-    [i] Reference
+    [e] Character Attributes
+    [f] Statistics
+    [g] Skills
+    [h] Additional Abilities
+    [i] Birth Options
+    [j] Reference
 
     (?) Help System Commands
 
