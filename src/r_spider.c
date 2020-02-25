@@ -11,18 +11,15 @@
 static cptr _desc = 
     "Spiders are stealthy monsters that prefer to wait for their prey. "
     "They have poisonous attacks and can weave sticky webs to entangle "
-    "their enemies. They have 8 legs, 4 of which may wear rings and the "
-    "remaining may equip 2 pairs of boots. They are unable to wield "
-    "weapons or bows, but may wear a helmet, an amulet, a cloak and "
-    "even a suit of body armor (after slight adjustments, of course). "
-    "They cannot wield a light source, but this is not an issue as spiders "
-    "have grown accustomed to the dark.\n \n"
-    "There are two paths of evolution for the spider: The Phase Spider and "
-    "The Aranea. The former is somewhat weaker than the latter in "
-    "fortitude, stats and melee, but this is compensated "
-    "by the Phase Spider's amazing powers of teleportation. However, the "
-    "Elder Aranea's poison touch is more powerful than that of the Phase "
-    "Spider and often paralyzes its opponents.\n \n"
+    "their enemies. They have eight legs, enough for four rings and "
+    "two pairs of boots; they may also wear a helmet, an amulet, a cloak and "
+    "even a suit of body armor (after slight adjustments, of course), but "
+    "cannot wield a weapon or a bow. They also cannot equip light sources, "
+    "but this is not an issue, as spiders are accustomed to the dark.\n \n"
+    "There are two paths of evolution for the spider: the Phase Spider and "
+    "the Aranea. Araneas have greater fortitude and better stats, as well as "
+    "powerful melee capable of paralyzing an opponent; but Phase Spiders "
+    "compensate for their relative fragility with unsurpassed powers of teleportation.\n \n"
     "All spiders begin in the very weak form of the Cave Spider. Lacking "
     "any special talents, the cave spider must play carefully if it is to "
     "survive.";
@@ -609,7 +606,7 @@ static void _birth(void)
 
 static name_desc_t _info[SPIDER_MAX] = {
     { "Phase Spider", "Phase Spiders have unsurpassed powers of teleportation and average offense." },
-    { "Aranea", "Aranea are stronger in melee than Phase Spiders but lack special powers except for their Spider Web." },
+    { "Aranea", "Aranea are stronger in melee than Phase Spiders, but lack special powers except for their Spider Web." },
 };
 
 race_t *mon_spider_get_race(int psubrace)
