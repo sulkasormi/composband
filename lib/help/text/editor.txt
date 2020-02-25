@@ -1,371 +1,247 @@
 The Mogaminator
 
-The Mogaminator is a rule based system for managing objects 
-automatically. With this system, you can decide which objects to 
-pickup, which to destroy, which to automatically identify, and which to 
-display in the special full screen map. You can automatically inscribe 
-certain objects to suit your tastes (for example, spellbooks or magical 
-devices) and even enter conditional statements to handle the 
-preferences of different classes.
+The Mogaminator is a rules-based system for automatic object handling, 
+which you can activate or modify with the _ command. With this system, 
+you can decide which objects to pick up, which to destroy, which to 
+automatically identify, and which to display as wanted in the object 
+list. You can automatically inscribe objects to suit your tastes, and 
+even enter conditional statements to handle the preferences of 
+different races and classes. Or you can just keep the default 
+Mogaminator rules, which already do all of the above!
 
 This document describes this system in tutorial fashion, assuming you 
 know nothing about it. Detailed reference material will appear towards 
 the bottom of this document (see [a] if you really cannot wait!).
 
-    This system is named after its original author. I got 
-    rather tired of calling it the Automatic Pickup and 
-    Destruction Preferences, which is not only a lot to 
-    type, but sounds rather stuffy and boring as well. 
-    Also, it was sometimes called The Auto-Destroyer, but, 
-    as you are about to learn, automatic destruction is 
-    only part of the story.
+The system is named after its original author, Hengband developer 
+Mogami.
 
 Review of Object Knowledge
-There is no doubt about it: The game generates lots and lots of 
-objects. Some are valuable and some are not. And what you consider 
-worthy will even change based on your character's class and progress. 
-Dealing with objects, especially later in the game, can become a bit of 
-a nuisance. Fortunately, there are ways to handle the mountains of 
-stuff that your character is likely to encounter.
+There is no doubt about it: the game generates lots and lots of 
+objects. Some are valuable, some are not, and some are only valuable in 
+specific situations... The Mogaminator will help you untangle that 
+mountain of loot.
 
-First, let's do a quick review. When you find an object, it will 
-generally be unidentified. You might know the basic kind of object it 
-is (e.g. a sword), and perhaps its damage dice (if it is a weapon) or 
-its base AC (if it is armor), but not much else. Carry the object 
-around a bit in your pack, and you might eventually get a sense of the 
-quality of the object: whether it is good, or excellent or even 
-special, or just average or perhaps even terrible. Details depend on 
-your class and this is called pseudo-id. See [b] for more information. 
-If you are impatient, you can identify the object right away, provided 
-you have a means to do so (spell, scroll or magical device). 
-Identification tells you a little more about the object, including its 
-obvious magical bonuses and its ego type or artifact name, should you 
-be so lucky to find an excellent or special item. But Identify 
-generally won't tell you everything about the object. You might need to 
-*Identify* it as well to learn about all its attributes.
+First, a really quick review of what is explained in detail at [b]. 
+When you find an object, it will generally be unidentified, but you 
+might have (or soon receive) a rough sense of the object's quality, 
+called object feeling or pseudo-ID. If the object looks promising, you 
+probably want to identify it to reveal the basics and maybe *Identify* 
+it to reveal special properties.
 
-To recap: your knowledge of an object is in one of the following 
-states:
-  [1] Unknown
-  [2] Pseudo-Identified
+So your knowledge of an object is in one of the following states:
+  [1] Unsensed
+  [2] Sensed (pseudo-identified)
   [3] Identified
-  [4] *Identified
+  [4] *Identified*
 
-Since Identify and *Identify* are scarce resources, you will need to 
-excercise some restraint when using them. Actually, Identify is rather 
-common and it is only *Identify* you really need to worry about, at 
-least once you reach the middle part of the game.
-
-For mushrooms, potions and scrolls, things are a little different. 
-These objects come in flavors, and once you have learned the flavor, 
+For mushrooms, potions and scrolls, things are a little different; 
+these objects come in flavors, and once you have learned the flavor, 
 you will immediately recognize all future instances of that object. 
 Indeed, all instances of the object are exactly alike, so the 
 identification game is simply to discover and know the first instance 
-of the object, and then decide, via your pickup and destroy 
-preferences, what to do with future instances of this type of object. 
-For these objects, Identify usually suffices.
-
-For excellent objects, you also need to learn about the ego type 
-itself. For example, the first time you encounter a (Pattern) weapon, 
-your character will have no knowledge of its basic attributes. Once you 
-*Identify* an instance of this ego, you become aware of future 
-instances of this ego, just like with flavors of potions and scrolls. 
-This will allow you to cut back on your use of *Identify*, but realize 
-that many ego types also have some random bonuses in addition to their 
-fixed attributes. When you learn an ego type, it is only the fixed 
-attributes that you become aware of.
+of the object, and then decide, via your pick-up and destroy 
+preferences, what to do with future instances of this type of object.
 
 Managing Objects
 
-So, how do you manage this? Well, you can certainly manage things 
-manually, dealing with each object in isolation as you encounter it. 
-For the early game, this is doable. But the first time you Ctrl+Arrow 
-through a horde orcs or trolls, you will find this approach tedious. At 
-this point, I recommend you bite the bullet and enable The Mogaminator. 
-It is worth learning about if you plan on playing this variant for any 
-length of time. There is also an Easy Destroyer approach to managing 
-objects, but I'd prefer you not use it. The choice is yours, though, 
-but one caution: Decide which system you are going to use and only use 
-that system. In other words, if you turn The Mogaminator on, then turn 
-off the Easy Destroyer, and vice versa. If you leave both systems on, 
-then there are precedence issues (one system might destroy what is 
-marked as desirable via the other system) and it can be hard to track 
-down why some undesirable event is happening.
+There are three ways to manage objects: manually, by using the Easy 
+Destroyer ([c] below), and by using the Mogaminator. The Mogaminator is 
+much more powerful than the Easy Destroyer, which simply destroys 
+items, usually junk. The Mogaminator and the Easy Destroyer should only 
+be used side-by-side if you have turned the always_pickup option on.
 
-What is The Mogaminator? Basically, it is a rule based system for 
+What is the Mogaminator? Basically, it is a rules-based system for 
 taking a given action each time you encounter a certain type of object. 
-The default action is pickup, and this action is used whenever you fail 
-to specify an alternative action. But you will also want to learn about 
-destroying objects too, since much of what you find will be junk. Let's 
-discuss the basics.
+The default action is pick up, and this action is used whenever you 
+fail to specify an alternative action; but the Mogaminator can also 
+destroy junk for you and identify and inscribe objects automatically. 
+Let's discuss the basics.
 
 Basic Usage
 
-In this section, I'll describe using The Mogaminator without knowing 
-anything at all about it. So, I am assuming you are a new player. 
-Please don't take offense :)
+The Mogaminator is activated by pressing _, which also brings up an 
+in-game editor where you can manage your preferences. It might look 
+like this:
+ 
+ (^Q:Quit, ^W:Save&Quit, ESC:Menu, Other:Input text)         (0,0)              
+ #########################################                                      
+ # Consumables                                                                  
+ #########################################                                      
+ mushroom of restoring#!E                                                       
+ ~mushroom of hallucination                                                     
+                                                                                
+ ?:[EQU $RACE Snotling Doppelganger]                                            
+ ~mushroom                                                                      
+ ?:1                                                                            
+                                                                                
+ ?:[LEQ $LEVEL 35]                                                              
+ potions:resist heat and cold#!kq                                               
+ ?:1                                                                            
+ potions:resistance#!kq                                                         
+ potions:stone skin#!k                                                          
+ potions:heroism                                                                
+ potions:speed#!kq                                                              
+ potions:giant strength#!k                                                      
+                                                                                
+ potions:enlightenment                                                          
+                                                                                
+ potions:of strength#!k                                                         
+ -------------------------------------------------------------------------------
+ This line is a comment.                                                        
+ 
+If you are new, you probably want to run from this complexity as fast 
+as you can. Notice the top line of the screen where it tells you how to 
+get out: ^Q (and you can also exit through the ESC menu). The desire to 
+exit immediately is understandable, and in fact not a problem: simply 
+pressing _ turned the Mogaminator on and initialized it with default 
+preferences, so it should do a good job without any further messing. 
+(If you are very lazy, you can stop reading here and just happily play 
+away with the default preferences for the rest of the game!)
 
-You turn on this system by pressing _, which also brings up an in-game 
-editor where you can manage your preferences. It might look something 
-like:
+So What Happened?
 
-(^Q:Quit, ^W:Save&Quit, ESC:Menu, Other:Input text)         (0,10)
-#***
-#***  You have activated the Auto-Picker Editor for the first time.
-#***  Since user pref file for autopick is not yet created,
-#***  the default setting is loaded from lib/pref/pickpref.prf .
-#***
+With the Mogaminator now on, you will find much of the junk you 
+encounter being destroyed. For example, all those corpses and skeletons 
+you leave behind as you hack and slash your way through the dungeon... 
+except for wanted corpses, which are getting automatically picked up!
 
-
-#########################################
-# Consumables
-#########################################
-mushroom of restoring#!E
-
-potions:resist#!k!q
-potions:resistance#!k!q
-potions:stone skin#!k
-potions:heroism
-potions:speed#!k!q
-potions:giant strength#!k
-
-potions:enlightenment
-
-potions:of strength#!k
---------------------------------------------------------------------------------
-Pickup and inscribe "!E" on all items which have "mushroom of restoring" as part
-of its name.  Display these items when you press the M key in the full 'M'ap.
-
-
-Since you are new, you probably want to run from this complexity as 
-fast as you can. Notice the top line of the screen where it tells you 
-how to get out: ^Q. That's fine and we'll discuss this file in detail, 
-including its format and what each line means later on below. The 
-important thing is that the first time you press _ turns this system 
-on, and initializes it with some pretty nice default preferences.
-
-Now, you will find much of the junk you encounter being destroyed. For 
-example, all those corpses and skeletons that you are leaving behind as 
-you hack and slash your way through the dungeon. That in itself is 
-rather nice. But, you will still run into objects you consider useless. 
-For example, suppose you took that all important first step on the road 
-to slaying Morgoth, and bought a lantern at the General Store. Now, you 
-don't really care about torches anymore. Use the k command (or ^D for 
-the Roguelike keyset) and you get a prompt like:
+That's a good start; but you might still run into objects you consider 
+useless. For example, suppose you bought a lantern at the General 
+Store; now you don't really care about torches anymore. Use the k 
+command (or ^D for the Roguelike keyset) and you get a prompt like:
   Really destroy Wooden Torches {unidentified}? [y/n/Auto]
 
-Notice the Auto option. Choose that and you get a message that the 
+Notice the Auto option. Choose that, and you get a message that the 
 object is destroyed, but the fact that you don't like torches is 
 remembered by the system. The next time your character moves on top of 
-one, it will automatically be destroyed.
+one, it will be destroyed automatically.
 
-And that is basically it. Keep registering stuff for automatic 
-destruction as you encounter it, and you'll find objects becoming much 
-easier to manage.
+That's one simple way to use the Mogaminator: keep registering stuff 
+for automatic destruction as you encounter it, and the loot mountain 
+becomes easier to manage; but as we'll see later, auto-pickup is even 
+better than auto-destruction.
 
-Correcting Mistakes
+Oops, I'm Auto-Destroying Rings of Speed
 
-"Awesome! But what if I make a mistake and auto-register rings of 
-speed?" Well, don't panic. You can easily fix things up, but doing so 
+Ouch! Well, don't panic. You can fix the problem easily; but doing so 
 will require you to go back to the preference file editor. Press _ and 
 then press END to move to the end of the document. This is where the 
-game keeps track of any objects that you automatically register for 
-destruction during the Destroy Object command. Your screen might look 
-something like:
-
-(^Q:Quit, ^W:Save&Quit, ESC:Menu, Other:Input text)         (0,199)
-?:[GEQ $LEVEL 35]
-!nameless common armors
-
-?:[GEQ $LEVEL 30]
-!nameless common weapons
-
-?:[GEQ $LEVEL 20]
-!average common weapons
-!average common armors
-?:1
-
-?:[LEQ $LEVEL 34]
-#(unidentified armors
-#(unidentified weapons
-?:1
-
-~special items
-!worthless items
-#!unusable items
-?:$AUTOREGISTER
-# *Waring!* The lines below will be deleated later.
-# Keep it by cut & paste if you need these lines for future characters.
-(!unidentified lights:^wooden torch$
-
---------------------------------------------------------------------------------
-Destroy unidentified light sources whose name is beginning with "wooden torch$".
-Not displayed in the full map.  This line will be delete later.
-
-
+game keeps track of any objects that you automatically registered for 
+destruction. Your screen might look something like:
+ 
+ (^Q:Quit, ^W:Save&Quit, ESC:Menu, Other:Input text)       * (0,268)            
+                                                                                
+ ?:[EQU $CLASS Tourist]                                                         
+ ~photograph                                                                    
+ ?:1                                                                            
+                                                                                
+ ~special items                                                                 
+ !worthless items                                                               
+ #!unusable items                                                               
+ ?:$AUTOREGISTER                                                                
+ # *Warning!* The lines below will be deleted later.                            
+ # Keep them by cut & paste if you need them for future characters.             
+ (!nameless lights:^wooden torch$                                               
+ -------------------------------------------------------------------------------
+ Destroy all light sources whose name begins with "wooden torch$", and which ar 
+ neither ego-item nor artifact. Do not display as wanted.  This line will be    
+ deleted later.
+ 
 You cannot tell from the picture above, but I placed the cursor on the 
-very last line of the file. In my case, this is the line from when I 
-auto-registered torches for destruction. Notice that at the very bottom 
-of the screen, the game tells you exactly what each line means, and 
-what will happen for the given rule. If you are curious, you can move 
-the cursor around the default preference file and actually learn quite 
-a bit about how the system works. For now, though, if you wish to undo 
-any rules that you automatically added, simply delete the corresponding 
-line from this file and then exit with the ^W option to save and apply 
-your changes.
+very last line of the file; in my case, the line from when I registered 
+torches for destruction. Notice that at the very bottom of the screen, 
+the game tells you exactly what the given rule means; if you are 
+curious, you can move the cursor around the default preference file and 
+actually learn quite a bit about how the system works. If you wish to 
+simply remove this (or any other) rule, just delete the corresponding 
+line and then exit with ^W to save and apply your changes.
 
 What About Stuff I Want?
 
-That's correct: What you don't want is only half the story. Some 
-objects you really, really want, such as stat potions and 5d5 long 
-swords. Wouldn't it be nice if the game automatically picked these 
-objects up for you whenever you encountered them? Or, even better, what 
-if the game showed them to you in the Object List command and the Full 
-Map Display? Then, assuming your detection was good, you could quickly 
-see what worthy objects might be laying about on the current level.
+What you don't want is only half the story; some objects you really 
+like. The two work nicely together, since interesting objects will 
+appear at the top of the ] object list. This allows you to easily track 
+the interesting stuff even if the junk has not been destroyed!
 
-Well, you can do all these things. At the moment, we still don't know 
-anything about what those lines in the editor mean, but we have a vague 
-notion that each line represents a single rule somehow. We also know 
-that the auto-destroy lines from the Destroy Object command are being 
-added to the bottom and are being displayed in a funny color. 
-Generally, those lines are hands off: The game manages them for you, 
-though, as we just saw above, it's fine to go ahead and delete them if 
-you made a mistake with the auto-register option. And, we saw that the 
-game comes with lots of rules already set up for you. You can ignore 
-those for the time being, though you can also learn a bit by moving the 
-cursor around in the default file and reading the detailed explanation 
-at the bottom.
+Suppose you want potions of Cure Critical Wounds (this is a random but 
+reasonable example of an item not set to be picked up by default). 
+Wouldn't it be nice if these potions were automatically picked up, as 
+well as displayed near the top of the object list? This is accomplished 
+by adding the following line to the top of the preferences file:
+ 
+ (^Q:Quit, ^W:Save&Quit, ESC:Menu, Other:Input text)       * (0,0)              
+ cure critical wounds
+ #########################################                                      
+ # Consumables                                                                  
+ #########################################                                      
+ mushroom of restoring#!E                                                       
+ ~mushroom of hallucination                                                     
+                                                                                
+ ?:[EQU $RACE Snotling Doppelganger]                                            
+ ~mushroom                                                                      
+ ?:1                                                                            
+ -------------------------------------------------------------------------------
+ Pick up all items which have "cure critical wounds" as part of their name.
+ Display these items as wanted in object list.
+ 
+I colored the new line yellow in the screenshot to make it stand out. 
+Pay attention to the bottom of the screen: does it sound like it will 
+work? The reason I had to put the new line at the top is that rules are 
+processed in order of priority from top to bottom; so if I placed the 
+new rule at the bottom, it might have been overridden by an earlier 
+rule.
 
-This is great, but let's say you really want a particular object. 
-Suppose you want potions of Cure Critical Wounds (I'm trying to think 
-of an example that isn't set in the default preferences). It's early in 
-the game, and you find yourself getting hurt quite often. Wouldn't it 
-be nice to be able to automatically display these potions? Well, you 
-can easily do so by adding the following line to the top of the file:
+Now, let's press ] to activate the Object List - is there anything on 
+this level that I want?
 
-(^Q:Quit, ^W:Save&Quit, ESC:Menu, Other:Input text)       * (0,5)-(20,5)
-#***
-#***  You have activated the Auto-Picker Editor for the first time.
-#***  Since user pref file for autopick is not yet created,
-#***  the default setting is loaded from lib/pref/pickpref.prf .
-#***
-Cure Critical Wounds
-
-#########################################
-# Consumables
-#########################################
-mushroom of restoring#!E
-
-potions:resist#!k!q
-potions:resistance#!k!q
-potions:stone skin#!k
-potions:heroism
-potions:speed#!k!q
-potions:giant strength#!k
-
-potions:enlightenment
-
-potions:of strength#!k
---------------------------------------------------------------------------------
-Pickup all items which have "cure critical wounds" as part of its name.  Display
-these items when you press the M key in the full 'M'ap.
-
-I colored the new line in yellow so you could see what I changed. Pay 
-attention to the bottom of the screen: Does it sound like it will work?
-
-            +------------------------------------------------------------------+
-            |##################################################################|
-            |##################################################################|
-            |##################################################################|
-            |##################################################################|
-            |##################################################################|
-            |##################################################################|
-            |##################################################################|
-            |###########################.###.##.#####.#########################|
-            |#######################..#...#.........#.#..######################|
-            |#####################........................#####################|
-            |###################..#######################.#####################|
-            |#############.:.##.#.##+..................+##..###################|
-            |#############:::#.#..###..#0##+###+###+#..###...##################|
-            |##############.##....#+.###################+#..###################|
-            |###################..#..+##9##3###6###4#+#.##..###################|
-            |#################.#..#.....................##..###################|
-Potions of C|###################..#..!.......>..........##..###################|
-            |##################...#.....................##...##################|
-            |##################...#..1##7##2###5###8#+#.##...##################|
-            |#################.#..#+####+##+###+########+#..###################|
-            |#################.#..###..................+##.####################|
-            |##################...########################..###################|
-            |##################....######################.#####################|
-            |######################..#.................#..#####################|
-            |#######################...#####.##.#..###..#######################|
-            |##################################################################|
-            |##################################################################|
-            |##################################################################|
-            |##################################################################|
-            |##################################################################|
-            |##################################################################|
-            |##################################################################|
-            |##################################################################|
-            |                                                                  |
-            |                                                                  |
-            |                                                                  |
-  Hit M, N(for ~), K(for !), or D(same as M+N) to display auto-picker items.---+
-
-Here, you can see there is some sort of wanted potion in the Full 
-Screen Map (M), though, unfortunately, you can tell what. Let's try the 
-Object List (]) instead:
-
-There are 7 wanted objects:                       ################# LEVEL      1
- ! 7 Potions of Cure Critical Wounds    S  1 E  1 ##..########.#### EXP       10
-                                                  .........#.....#. AU       462
-   [Press ESC to exit. Press ? for help]          ................. | }    [    
+There are 4 wanted objects:                                         LEVEL      1
+ ! 4 Potions of Cure Critical Wounds    S  4 E 16                   EXP        3
+                                                                    AU       747
+There are 4 other objects:                                          |      !(   
+ ~ 4 Wooden Torches {unidentified}      N  3 E 17                   STR :     16
+   [Press ESC to exit. Press ? for help]                            INT :     18
+>.....#+#.%%                                                        WIS :      9
+%%%%.%%.#.%                         ##..                            DEX :  18/40
+   %'%....#                        #%....                           CON :     17
+  %%......%                       %%.~..%                           CHR :     12
+ #%......+%         %%%          %#....%%..                         AC         6
+%#........%%%%%%%%%#%.%%        ##..........                        HP   37/  37
+%.........'.'.......@..#%      #%..........#                        SP   14/  14
+%%%......%%%%%%%%%%%#*'.###%% #%....##....*                                     
+..'.......#       %.......%..#%....%%....#%                                     
+%%##......%       %........%%%....##....##                                      
+   %.....%#       %.......'......#%.!..%%                                       
+   %.#...%        #.......#%%###########                                        
+   %%%%#%%        #.......#                                                     
 
 Bingo! You can even automatically travel to those delicious potions by 
-pressing ` inside the Object List. What could be easier? With features 
-like these, why isn't The Serpent of Chaos dead already?
+pressing J inside the Object List. What could be easier?
 
-To recap, adding the line "Cure Critical Wounds" means to automatically 
-pick up any object having "Cure Critical Wounds" as part of its name. 
-You don't have to type so much: "Crit" might work just as well. But the 
-less you type, the more likely it is that your new rule will match 
-other objects. For example, "Cure" would match potions of Cure Light 
-Wounds, Cure Serious Wounds and Cure Critical Wounds. It might also 
-pick up some magical devices that have some sort of Cure effect. 
-Sometimes this is OK and even desirable. Other times, it behooves you 
-to type more.
+To recap, adding the line "cure critical wounds" tells the Mogaminator 
+to pick up any object that has "cure critical wounds" as part of its 
+name. You don't have to type so much - "crit" might work just as well - 
+but the less you type, the more likely it is that your new rule will 
+also match other objects. For example, "cure" would match potions of 
+Cure Light Wounds, Cure Serious Wounds and Cure Critical Wounds, and 
+even Staves of Cure Wounds. Sometimes this is OK, but at other times, 
+it is better to type more.
 
 Introduction to Rules and Events
 
-Let's begin to learn what is going on. Basically, the preference file 
-is an ordered list of rules. Whenever a certain event happens, such as 
-moving on top of an object, the rules are scanned, in order, and the 
-first one that matches, if any, is applied. Every rule has an action 
-associate with it that determines what to do whenever this rule 
-matches.
+So how does all this work? Basically, the preference file is an ordered 
+list of rules. Whenever a certain event happens (such as moving on top 
+of an object), the rules are scanned from top to bottom, and the first 
+one that matches (if any) is applied. Every rule has an action 
+associated with it that determines what to do if the rule applies.
 
-It is very important to keep in mind that order matters, and that it is 
-the first matching rule that gets used. Often times, you might add a 
-line to do something really important, but place it too low in the file 
-so that it never gets used in practice. The default preference file is 
-very careful about the ordering of the rules it adds. With time and 
-practice, you will be too! If you are adding a rule to automatically 
-pickup a new kind of object, like we did with "Cure Critical Wounds" in 
-the previous section, simply add it to the very top of the file. With 
-that approach, you generally won't go wrong.
+Each rule is a single line in the file; but not every line is a rule. 
+Some lines are blank, some are comments, and some are conditionals that 
+tell the game when to ignore rules.
 
-The second point was that each rule is a single line in the file. You 
-probably noticed that not every line in the file corresponds to a rule, 
-though. There are comments and blank lines, for example. There are also 
-conditional tests, but we won't discuss those just now. Comments begin 
-with a # key and are ignored by the system. They are displayed in 
-green. The syntax of a rule is discussed in the next section.
-
-The final point was the notion of an event, or a point in time when the 
-game will attempt to apply a rule. In general, this happens whenever 
-(1) the player moves on top of an object, (2) gets a pseudo-id for an 
-object (see [c]) and (3) identifies an object (see [d]).
+Objects are tested against rules whenever a specific event happens; 
+generally when the player (1) moves on top of an object, (2) gets a new 
+object feeling (see [d]) or (3) identifies an object (see [e]).
 
 Rules
 
@@ -380,67 +256,53 @@ discuss each of these in turn.
   alternatives?
   
   !  Destroy
-  ;  Prompt to Pickup
-  ~  Leave on the Floor
+  ;  Prompt to pick up
+  ~  Leave on the floor
   
-  These are the primary actions. Pickup is assumed if you fail to type 
-  !,; or ~.
+  These are the primary actions. Pick-up is assumed if the rule does 
+  not begin with !, ; or ~.
   
-  In addition there are the following command letters that augment the 
-  primary action.
+  In addition, there are the following action letters that augment the 
+  primary action:
   
-  (  Don't display this item in the Full Map
-  ?  Automatically Identify this item
+  (  Don't display this item on the M map
+  ?  Automatically identify this item
   
-  The first one is not commonly used. Later in the game, your character 
-  might have the power to map the entire level at once. If there is a 
-  vault on the level, then many, many objects may match your pickup 
-  rules. Were they all to be displayed in the Full Map view, there 
-  would not be room to see them all, which can be annoying when that 
-  5d5 long sword is not displayed but the potion of curing is. You'd 
-  really, really prefer to hear about that sword! With the ( option, 
-  you will still automatically pickup the matching object, it's just 
-  that you won't get a text indicator in the Full Map screen. (But you 
-  should probably use the Object List command too, since it shows all 
-  matching objects in a scrollable list, sorted by object value).
+  The first of these is not commonly used, since the M map item display 
+  has been completely obsoleted by improvements to the object list. The 
+  second option (?) is very useful, though, since it automatically 
+  identifies the matching object. This is a great time-saver, but 
+  requires you to carry Scrolls or Staves of Identify.
   
-  The second additional option (viz., ?) is very useful, since it 
-  automatically identifies the matching object. This is a *HUGE* 
-  timesaver ... when it works! But to work, you need to have either 
-  scrolls or a device with the identify power. Spell casters are 
-  currently out of luck :(
-  
-  All of the action command letters must be specified first in the line 
-  for the rule, with one exception. The # letter indicates that you 
-  wish to automatically inscribe matching objects, and it must occur at 
-  the end of the rule, followed by the text to use for the actual 
-  inscription. For example, #@ad!s!d!k at the end of a rule will 
-  automatically inscribe @ad!s!d!k to any object matching the rule. If 
-  you don't know what this inscription means, it is not really 
-  important. You can see [e] for information about inscriptions.
+  All of the action letters must be specified first in the line for the 
+  rule, with one exception. The # letter indicates that you wish to 
+  automatically inscribe matching objects, and it must occur at the end 
+  of the rule, followed only by the inscription text itself. For 
+  example, #@ad!sdk at the end of a rule will automatically inscribe 
+  @ad!sdk to any object matching the rule. (See [f] for an explanation 
+  of this inscription!)
   
   Matching
-  Matching is the most important part of a rule. We saw above that 
-  matching is by string comparison with the object name, but you can be 
-  more specific than that if you want. To do so, use the following 
-  keywords to construct a predicate used to test objects. The keyword 
-  portion of the match consists of zero or more adjectives modifying a 
-  noun that indicates the broad class of objects which should be 
-  considered. In addition, you can specify a free form text comparison 
-  string by adjoining : followed by text to search for. We'll put all 
-  of this together in the examples section below.
+  We saw above that matching is by string comparison with the object 
+  name, but you can be more specific than that if you want. To do so, 
+  use the following keywords to construct a predicate used to test 
+  objects. The keyword portion of the match consists of zero or more 
+  adjectives modifying a noun that indicates the broad class of objects 
+  which should be considered. In addition, you can specify a free form 
+  text comparison string by adjoining : followed by text to search for. 
+  We'll put all of this together in the examples section below.
   
   Let's do nouns first. A complete list is presented at the end of this 
   document, but some common nouns to get us started include:
   
   Items     Applies to everything. This is useful for very general 
-            rules, such as ~?Unidentified Items to automatically 
+            rules, such as ~?unidentified items to automatically 
             identify, but leave on the ground, everything not yet 
-            identified.
-  Weapons   Applies to all melees weapons, but not to missile weapons.
+            identified; or even items to pick everything up!
+  Weapons   Applies to all melee weapons, but not to ranged weapons.
   Shooters  Applies to all missile weapons, including bows, slings and 
             crossbows.
-  Armors    Applies to all forms of armor, including shields, helms, 
+  Armors    Applies to all forms of armor, including shields, helms and 
             cloaks as well as body armor.
   Wands     Applies to magical devices that are wands
   Staves    Applies to magical devices that are staves
@@ -449,92 +311,64 @@ discuss each of these in turn.
   Scrolls   Applies to scrolls
   
   If you are using keywords to build a match predicate, then you must 
-  specify exactly one noun. But you may use as many adjectives as you 
-  like. The complete list of adjectives is given in the reference 
-  section of this document, but here are some of the more common ones:
+  specify exactly one noun, but may use as many adjectives as you like. 
+  The complete list of adjectives is given below at [g], but here are 
+  some of the more common ones:
   
-  Unaware      Applies to objects that the player is unaware of. In 
-               practice, this currently only includes mushrooms, 
-               potions and scrolls that the player has not yet 
-               encountered.
-  Unidentified Applies to objects that have not yet been identified.
+  Unaware      Applies to objects whose flavor has not yet been 
+               identified.
+  Unidentified Applies to any objects that have not yet been 
+               identified.
+  Unsensed     Applies to objects that have not been identified or 
+               pseudo-identified.
   Ego          Applies to all excellent objects.
-  Dice Boosted When used with Weapons or Shooters, this adjective 
-               indicates that the object has higher damage dice than 
-               usual. Archers in particular should be on the lookout 
-               for Dice Boosted Shooters!
-  Wanted       Combine with Corpses or Skeletons to indicated that the 
-               corpse or skeleton belongs to a wanted monster. These 
-               may be turned in at the Hunter's Office for a prize.
+  Nameless     Applies to all non-ego, non-artifact objects.
+  Wanted       Applies to corpses and skeletons of wanted monsters. 
+               These may be turned in at the Hunter's Office for a 
+               prize.
   
-  As an example of using multiple adjectives, the phrase unidentified 
+  As an example of using multiple adjectives, the phrase ?unidentified 
   ego weapons applies to, well, all melee weapons that are both 
-  excellent and not yet identified. Of course this means that you must 
-  have gotten a pseudo-id on the object in order to be aware that the 
-  object is excellent, since it is not yet identified. Still, this is a 
-  very useful phrase when combined with the ? command letter!
+  excellent and not yet identified. Of course this means you must have 
+  pseudo-identified the object to know that it is an ego.
   
   Finally, use a search string to further refine the match. If you 
   don't use any adjective or noun keywords, then the entire text of 
-  your rule (starting after any command letters, and including all text 
+  your rule (starting after any action letters, and including all text 
   up to the # inscription character) is used as the search string. If 
-  you are using keywords, then you will need to mark the end of the 
-  keyword section with the : separator letter. Examples are discussed 
-  below.
+  you are using keywords, mark the end of the keyword section with the 
+  : separator. Examples are discussed below.
   
   Examples
   
-  There will be a quiz on this later, so make sure you understand the 
-  following examples!
-  
   !potions:apple juice
-    Destroy potions of apple juice (Who would want those?). It uses the 
-    ! command letter for destruction, the potions keyword to apply to 
-    an entire class of objects, the : separator key, and an arbitrary 
-    text field to use for a string match against the object name.
+    Destroy potions of apple juice (as refreshing as they might be!). 
+    It uses the ! action letter for destruction, the potions keyword to 
+    apply to an entire class of objects, the : separator key, and a 
+    text field for string matching against the object name.
   
   ?unaware items
-    Pickup and automatically identify unaware items (e.g. a potion 
-    you've never seen before). Note that the pickup action is implied 
-    since none of the other primary actions are indicated, and even 
-    though there is a secondary action (to auto-id). This command uses 
-    the adjective unaware to modify the noun items. You could narrow 
-    down the applicability of this rule by using a more specific noun, 
-    such as rings or potions.
+    Pick up and automatically identify unidentified flavored items 
+    (e.g. a potion you've never seen before). Note that the pickup 
+    action is implied since none of the other primary actions are 
+    indicated, and even though there is a secondary action (to 
+    auto-id). This command uses the adjective unaware to modify the 
+    noun items. You could narrow down the applicability of this rule by 
+    using a more specific noun, such as scrolls or potions.
   
-  wanted corpses#Wanted!k!k!k
-    Pickup wanted corpses. These are corpses that you may turn in at 
-    the Hunter's Office for a prize. Automatically inscribe these 
-    objects with Wanted!k!k!k. If you don't know what !k means, see [f] 
-    (OK, it means to prompt the user when using the k command to 
-    destroy objects. So, if you are paranoid and don't want to destroy 
-    something by mistake, you inscribe !k on it. In this case, whoever 
-    wrote this rule was really paranoid, since you will be prompted 
-    three times to confirm destruction!).
+  wanted corpses#Wanted!kkk
+    Pick up wanted corpses, and automatically inscribe them with 
+    Wanted!kkk. This inscription may make it sound like the monster was 
+    wanted for racism, but it simply means you get prompted repeatedly 
+    if you accidentally try to destroy the corpse. (See [h] for more on 
+    how inscriptions work.)
   
-  potions:resistance#!k!q
-    Pickup all potions whose name contains the word "resistance". 
-    Automatically inscribe !k!q on these objects. In effect, this rule 
-    matches potions of resistance, but rather than using a string match 
-    of "potion of resistance" on all items, it uses a string match of 
-    "resistance" only on potions. Either approach would work equally 
-    well in this instance, but sometimes it is better to use the 
-    appropriate noun for the match, especially if you are dealing with 
-    objects that might come as ego items, as the next example 
-    indicates. Also, if you string match using "potions of resistance" 
-    by mistake, your rule will not work. Why it fails is left as an 
-    exercise for the reader!
-  
-  ?staves:destruction#@ud!s!d!k
-    Pickup and automatically identify all staves whose name contains 
-    the word "destruction". Inscribe these objects with @ud!s!d!k as 
-    well. Note that using the noun staves with a string match on 
-    "destruction" works more reliably then a string match on "staff: 
-    destruction". Why this is the case will become apparent the first 
-    time you find a "staff of power: destruction".
+  ?staves:destruction#@ud!sdk
+    Pick up and automatically identify all staves whose name contains 
+    the string "destruction". Inscribe these objects with @ud!sdk.
   
 
-Scenarios
+Example Scenarios
 
 After that last section, you should have complete mastery over 
 individual rules. Now, it is time to step up one level and apply 
@@ -545,52 +379,47 @@ multiple rules to accomplish common tasks. Ready?
   In this scenario, you would like to handle the stream of objects in 
   the most efficient way possible. Let's begin with the following 
   rules:
-    (unidentified armors
-    (unidentified weapons
+    unsensed armors
+    unsensed weapons
   
-  These rules say to pickup all armor and weapons not yet identified. 
-  That leaves out many types of objects, like potions and scrolls, but 
-  this scenario is just focusing on objects for which you might receive 
-  a pseudo-id. We use the ( command letter to prevent the Full Map 
-  Screen from filling up with stuff not yet known to be desirable. But 
-  the auto-pickup is very nice, since items need to be in your pack for 
-  pseudo-id to kick in (until CL35, at least).
+  These rules say to pick up all armor and weapons not yet sensed or 
+  identified. That leaves out many types of objects, like potions and 
+  scrolls, but at least weapons and armors are objects that can be 
+  sensed. Since objects need to be in your pack to be sensed (we know 
+  immediate floor-pseudo-ID didn't kick in because the objects matched 
+  the unsensed adjective!), it is convenient to pick them up.
   
-  Now, lets add the following rules:
+  Now, let's add the following rules:
     !average common weapons
     !average common armors
   
-  In practice, we wouldn't want these right away since they say to 
-  destroy common stuff. You can handle that with conditionals, which I 
-  haven't discussed yet. For the moment, assume your character is 
-  advanced enough to not want to keep average equipment. These rules 
-  will fire once pseudo-id kicks in, destroying junk. (Of course, junk 
-  is relative, and you may want to keep some stuff). The common 
-  adjective prevents these rules from applying to rare average items, 
-  like dragon scale mail, or blades of chaos.
+  You might not actually want this; but for now, assume your character 
+  is advanced enough to view average common equipment as junk. These 
+  rules will fire once pseudo-ID kicks in, destroying weapons and armor 
+  that pseudo-ID as average. The common adjective prevents these rules 
+  from applying to rare average items, like dragon scale mail or blades 
+  of chaos.
   
   So, now our character is merrily picking up all equipment and then 
   auto-destroying the average stuff once pseudo-id kicks in. Can we do 
   more? Well, try adding:
     ?unidentified ego items
   
-  Now, the egos are automatically being identified on pseudo-id as 
-  well. Pretty sweet! Finally, eventually you will learn that some ego 
-  types are junk, and perhaps would have auto registered some lines 
-  like:
+  Now, the egos are automatically being identified on pseudo-ID as 
+  well. Pretty sweet! But maybe you get tired of some ego types after a 
+  while, and want them registered for destruction:
   
-    (!common ego cloaks:of protection
-    (!common ego weapons:of *slay* orc
-    etc.
+    !common ego cloaks:of protection
+    !common ego weapons:of sharpness
   
-  So that even the junk excellent items are being toasted for you, 
-  automatically, with nary a keystroke on your part. But, sometimes 
-  egos become dice boosted, and the *slay* orc weapon might mean 
-  something to you if it is really powerful. You can protect it with
+  Now even boring excellent items are being toasted for you, 
+  automatically, with nary a keystroke on your part; but, sometimes 
+  swords of sharpness become dice-boosted, and might not be so boring 
+  after all. You can protect them with
     dice boosted weapons
   or perhaps even
     weapons more dice than 30
-  but that last one is an advanced maneuver.
+  though that last one is an advanced maneuver.
   
   In summary, the complete order of your rules might be:
     weapons more dice than 30
@@ -599,31 +428,27 @@ multiple rules to accomplish common tasks. Ready?
     !average common weapons
     !average common armors
   
-    (unidentified armors
-    (unidentified weapons
+    unidentified armors
+    unidentified weapons
   
-    (!common ego cloaks:of protection
-    (!common ego weapons:of *slay* orc
+    !common ego cloaks:of protection
+    !common ego weapons:of sharpness
   
   New armors and weapons come down and hit rule 5 or 6 when your 
   character steps on them, so they get placed into your pack 
-  automatically (Remember, matching is based on your current knowledge 
-  of the object, not what it truly is. So, when you find, say, a dagger 
-  (+0, +0), it is not immediately destroyed since it is unidentified 
-  and not yet pseudo-identified: You don't yet know it is average!). 
-  Eventually, pseudo-id will kick in revealing the object as average, 
-  in which case it is destroyed by rule 3 or rule 4, or as excellent, 
-  in which case it is processed by rule 2 which auto-identifies the ego 
-  item and rescans the rules. If it is a cloak of protection, it is 
-  destroyed by rule 7, while if it is a weapon of *slay* orc, it is 
-  destroyed by rule 8. Unless it happened to be hugely dice boosted, in 
-  which case it got protected by rule 1 (remember, rules are processed 
-  in order). Easy, right? What happens to weapons/armors that pseudo-id 
-  as {Good}? Or {Special}?
+  automatically. Eventually pseudo-ID will kick in, revealing the 
+  object as average, in which case it is destroyed by rule 3 or rule 4, 
+  or as excellent, in which case it is processed by rule 2 which 
+  auto-identifies the ego item and rescans the rules. If it is a cloak 
+  of protection, it is destroyed by rule 7, while if it is a weapon of 
+  sharpness, it is destroyed by rule 8 - unless it happened to be 
+  hugely dice boosted, in which case it is protected by top-priority 
+  rule 1. Easy, right? Now you only have {bad} and {good} and {special} 
+  equipment to worry about...
   
   Scenario #2: Flavored Objects
   This one is easier, and I'll give the full set of rules first:
-    potions:healing#!k!q
+    potions:healing#!kq
     potions:of strength#!k
     potions:of intelligence#!k
     potions:of wisdom#!k
@@ -651,22 +476,21 @@ multiple rules to accomplish common tasks. Ready?
   are placed in your file automatically each time you press A while 
   destroying an object) and rules for collecting and unaware items in 
   the middle. Unaware items get automatically identified, at which 
-  point one of the pickup or destroy rules might get a chance to act. 
-  If this was a new flavor you find useless, destroy it and 
-  autoregister it for destruction so you never see it again. As for the 
-  collecting rules, those fire if you have another object of the same 
-  flavor in your pack. Perhaps you are carrying potions of cure 
-  critical wounds but don't have a rule specifically for this flavor. 
-  In this case, the collecting rule will pickup these objects for you.
+  point one of the pick-up or destroy rules might get a chance to act. 
+  As for the collecting rules, those fire if you have another object of 
+  the same flavor in your pack. Perhaps you are carrying potions of 
+  Cure Critical Wounds, but don't have a rule specifically for this 
+  flavor; in this case, the collecting rule will pick up other potions 
+  of Cure Critical Wounds for you.
   
   Scenario #3: Spellbooks
   OK, this is the last one. See if you can figure this one out first:
-    first realm's fourth spellbooks#@md!s!d!k
-    first realm's third spellbooks#@mc!k
+    first realm's fourth spellbooks#@md!sdk
+    first realm's third spellbooks#@mc!sdk
     ~first realm's second spellbooks#@mb!k
     ~first realm's first spellbooks#@ma!k
-    second realm's fourth spellbooks#@mh!s!d!k
-    second realm's third spellbooks#@mg!k
+    second realm's fourth spellbooks#@mh!sdk
+    second realm's third spellbooks#@mg!sdk
     ~second realm's second spellbooks#@mf!k
     ~second realm's first spellbooks#@me!k
     !first spellbooks
@@ -676,308 +500,256 @@ multiple rules to accomplish common tasks. Ready?
     third spellbooks
     fourth spellbooks
   Did you figure it out? This scenario picks up high level spellbooks 
-  from your player's realms of magics, leaves low level spellbooks from 
-  your player's realms of magics, destroys all other low level 
-  spellbooks, destroys all arcane magic spellbooks, but picks up high 
-  level spellbooks from other realms (presumably to sell for gold). 
-  Spellbooks from the player's realms are auto-inscribed to make 
-  casting a spell from the appropriate book consistently use the same 
-  letter to choose that book. Here, as elsewhere, order is very 
-  important. Rules for the player's spell realms must come before the 
-  general rules to destroy low level spellbooks. There is also an 
-  unreadable adjective that would have made processing safer, and less 
-  order dependant.
+  from your character's magic realms, leaves low level spellbooks from 
+  your realms, destroys all other low level spellbooks, destroys all 
+  arcane magic spellbooks, but picks up high level spellbooks from 
+  other realms (presumably to sell for gold). Spellbooks from your 
+  realms are auto-inscribed to keep book labels consistent. Here, as 
+  elsewhere, order is very important: rules for the character's spell 
+  realms must come before the general rules to destroy low level 
+  spellbooks. (There is an unreadable adjective that would have made 
+  processing safer and less order-dependent here.)
   
 Which Rule is Being Used?
 
 If you are ever unsure about which rule is being applied in a given 
-situation, turn on the destroy_debug option (see [g]). With this option 
+situation, turn on the destroy_debug option (see [i]). With this option 
 you can use the Inspect command for more information. For example:
 
   a Thieves' Guide [Burglar's Handbook]
 
     Autopick: (!unreadable first spellbooks
 
-  6 Potions of Resist Cold
-    You get temporary resistance to cold when you quaff it. This
-    resistance is cumulative with equipment.
-
-    Autopick: potions:resist#!k!q
-
-In the first case, this is a line automatically added when I destroyed 
-an unreadable spellbook using the k command. In the second case, this 
-is a line that comes as a default setting. I may or may not like this 
-behavior, and if I don't, now I know which line to change!
+I may or may not like this behavior, and if I don't, now I know which 
+line to change!
 
 In addition, with debugging turned on, the rules used are printed in 
 the message log as actions are taken, so you can see exactly why 
 objects are being destroyed, picked up, left on the ground or 
 auto-identified. For example:
 
-
   You have 26 charges remaining. (AutoID:~?unidentified rods) You see a 
   Rod: Frost Ball (1/3 charges). (Destroy:(!rods:frost ball$)
   Auto-destroying.
 
-Also, you might want to check out the ~_ Knowledge Option. Like the 
-editor, it displays the rules for you in the order they are processed. 
-But it only displays the rules that are currently active, which can be 
-a useful thing to see if you add a lot of conditional rules.
+Since this is message spam, you probably don't want to leave the 
+destroy_debug option permanently on.
 
-Conditional Rules
+Conditionals
 
-This is an advanced topic. If you play a lot, then you probably play 
-many different types of characters. You probably have rules for objects 
-that you would like to share across all of your characters. While other 
-characters, depending on their class, might have special needs. 
-Finally, you might have some rules that you use early in the game, and 
-others that you would like to turn on towards the end of the game. You 
-can accomplish all of this using conditional statements to guard your 
-individual rule definitions. The conditions are evaluated each time 
-your preference file is loaded to determine which rules to apply. Oh, 
-and don't worry, the game automatically reloads the file for you each 
-time your player gains an experience level, so your conditions get 
-checked automatically without any intervention on your part.
+This is an advanced topic, but the underlying principles are simple. 
+What you consider useful or junk may depend on your race, class, 
+character level or other similar details; and conditionals help you 
+apply rules only when they are appropriate. Each conditional statement 
+evaluates as either TRUE (1) or FALSE (0); if a conditional that 
+evaluates as FALSE is encountered, all rules that follow it are ignored 
+until the next TRUE conditional is reached.
 
-Imagine scanning the entire preference file from top to bottom, 
-building a list of all the player's rules. Imagine now that there 
-exists a switch that can be turned on and off. If the switch is on, 
-then every rule line you read gets added to the list of current rules. 
-If the switch is off, then every rule line you read gets skipped. 
-Finally, imagine there are lines in the file that can turn this switch 
-on and off. If you can imagine all of that, then, aside from the fact 
-you are probably a computer programmer, you can understand how 
-conditional rules work.
-
-The rule lines have already been discussed, and you are surely a master 
-of them by now. So we really only need to consider those lines that can 
-flip our global switch. These are called Conditional Lines and they 
-always begin with the characters ?: followed by a (rather cryptic 
-looking) expression.
+Conditional lines always begin with the characters ?:, followed by a 
+(rather cryptic looking) expression that the game will evaluate.
 
 Let's look at an example. Remember Scenario #1 above when we added 
-lines to destroy average equipment? Well, in practice, you would 
-probably want those rules to not be used in the early game. Perhaps 
-once your character reaches a certain level, you would want to add 
-them. Well, try the following instead:
-
+lines to destroy average equipment? I said you might not actually want 
+them, unless your character was advanced enough. Suppose you consider 
+level 20 advanced enough?
   ?:[GEQ $LEVEL 20]
   !average common weapons
   !average common armors
   ?:1
 
 Notice there are two lines colored in violet, each beginning with ?:. 
-These are the Conditional Lines. The first one executes a funny looking 
-expression while the second one is much simpler, albeit just as hard to 
-fathom. In programming, one typically uses numbers to represent 
-everything, and this case is no different. We represent the state of 
-our global switch as a number. When it is 0, the switch is off. When it 
-is nonzero, the switch is on. So the first conditional might or might 
-not flip the switch. It depends on the value of $LEVEL (which you 
-probably guessed is the player's current experience level) and whether 
-or not it is >= 20. GEQ stands for greater than or equal to, and 20 is 
-just a number. And the expression is presented in a funny order as [GEQ 
-$LEVEL 20] rather than $LEVEL GEQ 20 (or even $LEVEL >= 20). You might 
-not find this odd, but if that is the case, then you probably (like me) 
-enjoy programming in LISP or Scheme. In these languages, functions are 
-always expressed as (f x y z) to evaluate the function f with the 
-arguments x, y and z. And >= is a function just like any other (it 
-returns a number which we think of as a boolean value, being either 
-non-zero for TRUE, or zero for FALSE). You can also nest calls. Perhaps 
-x must be computed as (g u v) which calls function g with arguments u 
-and v. Then, instead of (f x y z) you write (f (g u v) y z). Got it?
+These are the conditionals; the first includes a funny-looking 
+expression while the second one is much simpler, just ?:1.
 
-Now make those parentheses square as [f [g u v] y z], tag variables 
-with a leading $ so our parser can figure things out, rename operators 
-with three letter abbreviations, "turn up the volume" making everything 
-uppercase, and you will finally understand [GEQ $LEVEL 20].
+The first conditional might or might not evaluate as TRUE; it depends 
+on the value of $LEVEL (which you probably guessed is your current 
+character level) and whether or not it is >= 20. GEQ stands for greater 
+than or equal to, and 20 is just a number. The order ([GEQ $LEVEL 20] 
+instead of, say, $LEVEL GEQ 20 or even $LEVEL >= 20) is because GEQ is 
+this expression's function, and $LEVEL and 20 are arguments for it.
 
-In contrast, ?:1 is easy. Like any good Scheme wannabe, literal values 
-are self evaluating. Which is just a fancy way of saying that the value 
-of 1 is itself, viz. 1. No confusion. And 1 means true, which means 
-turn the switch back on in case the first Conditional Line turned it 
-off. And in case it isn't obvious, the switch is always turned on 
-before starting the scan, so you don't need a ?:1 at the top of the 
-file.
+In contrast, ?:1 is easy. It evaluates as... well, 1! And as we already 
+noted, 1 means TRUE; so ?:1 flips the "ignore rules" switch back off, 
+and effectively marks the end of the area to which the previous 
+conditional applies.
 
-Here's another, more complicated example:
+Here's another example:
   ?:[OR [EQU $CLASS Mage High-Mage Sorcerer] [EQU $RACE Beholder Lich] ]
   wizardstaff
   ?:1
-That's a complicated expression to determine who wants to gather a 
-wizardstaff, but I'm willing to bet you can figure it out without 
-waiting for my explanation. In words, if the player's class is either a 
-Mage, High-Mage or a Sorcerer; or if the player's race is either a 
-Beholder or a Lich, then the player wants a wizardstaff (rather badly, 
-actually). So we really have the expression (or a b) where a and b are 
-computed values using subexpressions to test the player's class or race 
-(and you should try playing a Beholder sometime; they are quite fun!).
 
-So, we have expressions composed of functions, variables, literals and 
-parentheses. What are the functions and variables we can use?
+That's a more complicated expression, but you can probably figure it 
+out: it's TRUE if your class is either a Mage, High-Mage or a Sorcerer; 
+or if your race is either a Beholder or a Lich.
 
-Function  Explanation
-  IOR     Inclusive Or: [IOR a b c ...] is TRUE if the value of any 
-          subexpression a, b, c, ... is TRUE.
-  OR      Same as IOR. One day I was puzzled why my [OR ...] expression 
-          wasn't working. Also, if you are going to have IOR, it 
-          suggests you will have XOR (Exclusive Or) as well, and we 
-          don't!
-  AND     Logical And: [AND a b c ...] is TRUE if the value of all 
-          subexpressions a, b, c, ... are TRUE.
-  NOT     [NOT a] is TRUE if a is FALSE, and vice versa. Use this when 
-          you want to take an action when something is not true.
-  EQU     [EQU v a b c ...] is TRUE when the value of v is one of the 
-          values a, b, c, ... Comparison is by string. Typically, you 
-          use this with v being a built-in variable expression, like 
-          $CLASS (see below) and the remaining arguments to EQU being 
-          strings to test, like Warrior or Rogue. Note that string 
-          literals are not quoted and therefore may not contain spaces.
-  LEQ     [LEQ v a] is TRUE when the integer value of v is less than or 
-          equal to the integer value of a. Note that while EQU treats 
-          its arguments as strings, LEQ treats them as numbers.
-  GEQ     [GEQ v a] is TRUE when the integer value of v is greater than 
-          or equal to the integer value of a. Note that while EQU 
-          treats its arguments as strings, GEQ treats them as numbers. 
-          For example, use [GEQ $LEVEL 20] to test if the player's 
-          current level is greater than, or equal to 20.
+So, we have expressions composed of functions (like GEQ and OR), 
+variables (like $RACE and $LEVEL), literals (like Mage and Sorcerer) 
+and brackets. What are the functions and variables we can use?
 
-Variable  Explanation
-$RACE     Returns the name of the player's race. For example, Snotling 
-          or High-Elf.
-$CLASS    Returns the name of the player's class. For example, 
-          Warrior-Mage or Mindcrafter. Note, if you are playing in 
-          Monster mode, then this variable always returns Monster, 
-          while $RACE returns the actual monster race you are playing, 
-          such as Lich or Dragon.
-$REALM1   Returns the name of the player's first realm, if any. For 
-          example, Chaos or Sorcery. If the player does not have a 
-          first realm, then this variable returns none.
-$REALM2   Returns the name of the player's second realm, if any. For 
-          example, Life or Death. If the player does not have a second 
-          realm, then this variable returns none.
-$LEVEL    Returns the player's current level. Typically, you combine 
-          this with GEQ or LEQ to test the level against a threshold, 
-          such as [LEQ $LEVEL 34].
-$MONEY    Returns the amount of gold the player has. Like $LEVEL, use 
-          this with GEQ or LEQ to test whether your player is rich or 
-          poor.
+Function    Explanation
+  IOR       Inclusive Or: [IOR a b c ...] is TRUE if the value of any 
+            subexpression a, b, c, ... is TRUE.
+  OR        Same as IOR. (If you are a programmer or a mathematician 
+            you might expect there to be a XOR function, but there 
+            isn't!)
+  AND       Logical And: [AND a b c ...] is TRUE if the values of all 
+            subexpressions a, b, c, ... are TRUE.
+  NOT       [NOT a] is TRUE if a is FALSE, and vice versa. Use this 
+            when you want to take an action when something is not true.
+  EQU       [EQU v a b c ...] is TRUE when the value of v is one of the 
+            values a, b, c, ... Comparison is by string. Typically, you 
+            use this with v being a built-in variable expression like 
+            $CLASS (see below), and the remaining arguments being 
+            strings to test like Mage or Sorcerer. Note that string 
+            literals are not quoted and therefore may not contain 
+            spaces. Hyphenate names with spaces (Filthy-Rag instead of 
+            Filthy Rag) if necessary.
+  LEQ       [LEQ v a] is TRUE when the integer value of v is less than 
+            or equal to the integer value of a. Note that while EQU 
+            treats its arguments as strings, LEQ treats them as 
+            numbers.
+  GEQ       [GEQ v a] is TRUE when the integer value of v is greater 
+            than or equal to the integer value of a. Note that while 
+            EQU treats its arguments as strings, GEQ treats them as 
+            numbers.
 
-As mentioned before, all variables begin with a $ character to 
-distinguish them from string literals.
+Variable    Explanation
+$RACE       Returns the name of your race; for example, Snotling or 
+            High-Elf.
+$CLASS      Returns the name of your class; for example, Warrior-Mage 
+            or Mindcrafter. Note that if you are playing in Monster 
+            mode, then this variable always returns Monster, while 
+            $RACE returns the actual monster race you are playing, such 
+            as Lich or Dragon.
+$SUBCLASS   Returns the name of your subclass, if any. This could be, 
+            say, Yeqrezh on a Disciple or Evil Bias on a Gray-Mage.
+$SPECIALITY Returns the name of your speciality, for example Axes on a 
+            Weaponmaster or Potions on a Devicemaster. Returns none for 
+            all classes except those two.
+$REALM1     Returns the name of your first realm, if any; for example, 
+            Chaos or Sorcery. If the player does not have a first 
+            realm, then this variable returns none.
+$REALM2     Returns the name of your second realm, if any; for example, 
+            Life or Death. If the player does not have a second realm, 
+            then this variable returns none.
+$LEVEL      Returns your current level. Typically, you combine this 
+            with GEQ or LEQ to test the level against a threshold, such 
+            as [LEQ $LEVEL 34].
+$SELLING    Returns Off if you have turned the no_selling option on, 
+            and On otherwise.
+$MONEY      Returns the amount of gold the player has. Like $LEVEL, use 
+            this with GEQ or LEQ to test whether your player is rich or 
+            poor.
 
-Literal   Explanation
-Number    Numbers are written like 105 or 32.
-String    Strings are written like High-Mage or Beholder. Note that 
-          string literals are not quoted and therefore may not contain 
-          spaces.
+All variables begin with a $ character to distinguish them from string 
+literals.
+
+Literal     Explanation
+Number      Numbers are written like 105 or 32.
+String      Strings are written like High-Mage or Beholder, and may not 
+            contain spaces.
 
 Using the Editor
 
-We've gotten this far, and I bet you've been using the built in 
-preference editor just fine. It is pretty easy to use, and you can 
-probably figure it out on your own. Like any text editor you have used, 
-you move the cursor about with the arrow keys and then type when you 
-have located the correct position. Navigation keys like HOME and END 
-might not be standard, since they take you to the top or bottom of the 
-document, rather than the beginning or end of the current line, but 
-you'll get used to the various quirks.
+The editor should not be too hard to use, and you can probably figure 
+things out on your own. Like any text editor, you move the cursor about 
+with the arrow keys and then type when you have located the correct 
+position. Advanced things (and easy things that slip your mind) can be 
+done through the ESC menu:
+ 
+ (a-j) Command:                                                                 
+ #####+---------------------------+#######                                      
+ # Con| a) Help                   |                                             
+ #####| b) Quit without save   ^Q |#######                                      
+ mushr| c) Sa+----------------------------------+                               
+ ~mush| d) Re| a) Left     (Left Arrow key)  ^B |                               
+      | e) Lo| b) Down     (Down Arrow key)  ^N |                               
+ ?:[EQ| f) Ed| c) Up       (Up Arrow key)    ^P |                               
+ ~mush| g) Se| d) Right    (Right Arrow key) ^F |                               
+ ?:1  | h) Mo| e) Beginning of line          ^A |                               
+      | i) In| f) End of line                ^E |                               
+ ?:[LE| j) Ad| g) Page up  (PageUp key)      ^O |                               
+ potio| k) Ad| h) Page down(PageDown key)    ^L |                               
+ ?:1  | l) Ke| i) Top      (Home key)        ^T |                               
+ potio| m) Co| j) Bottom   (End key)         ^U |                               
+ potio+------+----------------------------------+                               
+ potions:heroism                                                                
+ potions:speed#!kq                                                              
+ potions:giant strength#!k                                                      
+                                                                                
+ potions:enlightenment                                                          
+                                                                                
+ potions:of strength#!k                                                         
+ -------------------------------------------------------------------------------
+ This line is a comment.                                                        
+ 
+Here, you can clearly see what commands to use to move the cursor 
+about, as well as backup keys in case normal keys like arrows somehow 
+fail.
 
-I really don't feel a need to document the editor at all, since it has 
-a complete menu structure which you can browse and learn all the 
-commands. Simply press ESC to get started and then follow the various 
-options. For example:
+Note that the editor automatically colors each rule line according to 
+the syntax of the expression. Sometimes the text displayed is not 
+exactly the same as the rule you actually typed in (adjectives might be 
+shuffled, for instance); but the meaning will be the same. To avoid 
+confusion, the line your cursor is on is never syntax-colored and 
+always displays exactly what you typed.
 
-(a-j) Command:
-#*** +---------------------------+
-#*** | a) Help                   |Picker Editor for the first time.
-#*** | b) Quit without save   ^Q |opick is not yet created,
-#*** | c) Sa+----------------------------------+f/pickpref.prf .
-#*** | d) Re| a) Left     (Left Arrow key)  ^B |
-     | e) Ed| b) Down     (Down Arrow key)  ^N |
-#####| f) Se| c) Up       (Up Arrow key)    ^P |
-# Con| g) Mo| d) Right    (Right Arrow key) ^F |
-#####| h) In| e) Beggining of line          ^A |
-mushr| i) Ad| f) End of line                ^E |
-     | j) Ad| g) Page up  (PageUp key)      ^O |
-potio| k) Ke| h) Page down(PageDown key)    ^L |
-potio| l) Co| i) Top      (Home key)        ^T |
-potio+------| j) Bottom   (End key)         ^U |
-potions:hero+----------------------------------+
-potions:speed#!k!q
-potions:giant strength#!k
+The Easy Destroyer
 
-potions:enlightenment
+If, after reading all of the above, you decide that the Mogaminator is 
+too much for you to handle, you may instead use a simpler system to 
+manage objects: the Easy Destroyer. This system is configured via 
+options (see [j]); the option destroy_items turns the Easy Destroyer on 
+and off. Using the Mogaminator and the Easy Destroyer side-by-side is 
+recommended if and only if you have the always_pickup option on.
 
-potions:of strength#!k
-potions:of intelligence#!k
---------------------------------------------------------------------------------
-This line is a comment.
-
-Here, you can clearly see what commands to use to move the cursor about 
-(And if you are running on the Curses platform, you'll notice that 
-arrow keys don't work so you'll need to learn the control key 
-alternatives).
-
-One comment I will make on the editor is that it colors each rule line 
-according to the syntax of the expression. I personally find this 
-rather useful. However, sometimes the text displayed is not the same as 
-the rule you actually typed in, even though the meaning is the same. 
-For example, if you use multiple adjectives, then they might get 
-reordered when they are drawn with syntax coloring. In order to avoid 
-confusion, the current line (viz. the line under the cursor) is never 
-syntax colored and always displays exactly what you typed.
+If you have turned on the Mogaminator but don't like what it's doing, 
+you can use the no_mogaminator option to turn it off, or the 
+leave_mogaminator option to limit object destruction to complete junk 
+only. Using always_pickup also disables item destruction by the 
+Mogaminator while still allowing the Easy Destroyer.
 
 Reference Tables
 
-This section will give all the nitty gritty syntax details for The 
+This section will give all the nitty-gritty syntax details for the 
 Mogaminator. But first, where are those preference files located 
 anyway? The default preferences are initialized from 
-lib/pref/pickpref.prf which is located in your game's directory 
-structure. If you don't like the defaults that I have provided and 
-would like to use your own, then this is the file to edit. Once you 
-enable the system, your preferences are stored in a separate file in a 
-system dependant location. On Windows, they will be stored in 
-lib/user/pickpref-NAME.prf inside the game's directory structure, while 
-on Linux, they can be found in 
+lib/pref/pickpref.prf; so if you want to edit the default preferences 
+for all characters, this is the file to edit. Once you activate the 
+Mogaminator, your preferences are stored in a separate file in a 
+system-dependent location. On Windows, they will be stored at 
+lib/user/pickpref-NAME.prf, while on Linux they might be moved to 
 ~/.angband/FrogComposband/pickpref-NAME.prf (outside the game's 
 directory structure). Here, NAME is replaced with your player's current 
-name. So if you want to edit your preferences using some other text 
-editor, this is the file you need to change. If you do edit preferences 
-outside of the game while you are playing, then be sure to use the $ 
-command to force the game to reload the preference file.
+name. So if you want to edit your character's preferences using an 
+outside text editor, this is the file you need to change. It's usually 
+simpler to just use the in-game editor; but if you do edit preferences 
+outside the game while you are playing, be sure to use the $ command to 
+force the game to reload the preference file.
 
-OK, so I promised you reference tables. I'm a man of my word, so here 
-they are. Enjoy!
+The promised reference tables follow below... enjoy!
 
 Table I: Line Types in the Editor
   Type        Explanation
-  Comment     These lines begin with a # and are ignored by the system. 
-              Feel free to add them whenever you want to document what 
-              you are trying to do so that you can better understand 
-              the file in the future. I like to add comments to 
-              visually break the file up into different sections, such 
-              as Consumables, Weapons, Armor and Devices.
+  Comment     These lines begin with a # and are ignored by the system.
   
   Conditional These lines flip the global processing switch ON and OFF. 
               If the expression evaluates to TRUE, then the switch is 
               turned ON and any subsequent rules will be included. If 
               the expression evaluates to FALSE, the switch is turned 
-              OFF and any subsequent rules will be ignored. Use 
-              Conditional Lines so that your rule base adapts to the 
-              variety of classes and situations that you encounter. If 
-              this is gibberish to you, then you probably skipped the 
-              section [h] above!
+              OFF and any subsequent rules will be ignored until the 
+              next TRUE conditional is reached. See [k] above for 
+              details.
   
   Rule        Every other line, unless it is blank, is a rule. The 
               syntax of a rule is described in the following 5 tables.
   
 Table II: Rules: Syntax
   Rules have one of the following two syntactic forms:
-  [Commands] Adjective* Noun Special-Clause* [:Search-String] 
+  [Actions] Adjectives* Noun Special-Clauses* [:Search-String] 
     [#Inscription-String]
   
-  [Commands] Search-String [#Inscription-String]
+  [Actions] Search-String [#Inscription-String]
   
   Square brackets denote optional syntactic elements. * is the 
   Kleene-Star and indicates that 0 or more of the preceding syntactic 
@@ -985,497 +757,321 @@ Table II: Rules: Syntax
   line in your preference file.
   
   Syntactic Element  Explanation
-  Commands           These are actions to take whenever this rule 
-                     matches. They are built up with command leters as 
-                     described in the next table. If this element is 
-                     omitted, then this rule will pickup any matching 
-                     objects.
+  Actions            The "what to do if this rule matches" part. Uses 
+                     one or more of the action letters described in the 
+                     next table. If this element is omitted, the action 
+                     defaults to pick up.
   
-  Adjective          These modify Nouns, further narrowing down the set 
-                     of objects that will match this rule.
+  Adjectives         These modify nouns, further narrowing down the set 
+                     of objects that will match the rule.
   
   Noun               A single noun is always specified for the first 
                      syntactic form and indicates the broad class of 
                      objects to which this rule shall apply.
   
-  Special-Clause     These consist of further rule match refinements 
-                     and are discussed below. They are like adjectives 
-                     in that they modify nouns, but they also involve 
-                     some sort of numerical comparison of an object 
-                     attribute, and therefore require special syntax. 
-                     They also always follow the Noun while Adjectives 
-                     precede the Noun.
+  Special Clauses    Further refinements, discussed below ([l]). They 
+                     resemble adjectives in that they modify nouns, but 
+                     unlike adjectives they involve numerical 
+                     comparison of object attributes. They also always 
+                     follow the noun, while adjectives precede the 
+                     noun.
   
-  Search-String      This is a free form text value to compare against 
+  Search String      This is a free-form text value to compare against 
                      the object's name. Comparison is by string and is 
-                     case-insensitive. In addition, you may use the ^ 
-                     special character at the beginning of a 
-                     Search-String to force your match to the beginning 
-                     of an object name, and the $ special character at 
-                     the end of a Search-String to force your match to 
-                     the end of the object name. For example, ^Foo will 
-                     only match objects whose names begin with Foo, and 
-                     will skip other objects that might have Foo 
-                     somewhere in the name, but not at the beginning. 
-                     Similarly, Bar$ only matches objects whose name 
-                     ends with Bar and skips any that might have Bar 
-                     someplace in the middle of its name. Finally note 
-                     that an object's name is always in the singular. 
-                     So, for example, Seeker Bolt would work for a 
-                     string match, but Seeker Bolts would always fail.
+                     case-insensitive. Two special characters, ^ and $, 
+                     indicate the matching string must be at the 
+                     beginning or end (respectively) of the object's 
+                     name; for example, ^foo will only match objects 
+                     whose names begin with foo, so foobar matches it 
+                     but barfoo does not. Similarly, bar$ only matches 
+                     objects whose name ends with bar. Finally, note 
+                     that object names are always in the singular; so, 
+                     for example, Seeker Bolt would work for a string 
+                     match, but Seeker Bolts would always fail.
   
-  Inscription-String This is a free form text value that will be 
+  Inscription String This is a free-form text value that will be 
                      automatically inscribed on any object matching 
                      this rule.
   
-  If you didn't understand some of that, you should probably review the 
-  tutorial sections above, starting with [i]. The examples section 
-  above, in particular, is probably the best way to learn what is going 
-  on.
+  If this seems complicated, study the default preferences and you will 
+  soon figure things out.
   
-Table III: Rules: Command Letters
+Table III: Rules: Action Letters
   Letter  Type       Explanation
     !     Primary    Destroy
-    ;     Primary    Prompt to Pickup
-    ~     Primary    Leave on the Floor
-          Primary    Pickup is assumed if you fail to provide an 
-                     alternative primary command letter. There is no 
-                     command letter for this action, it is simply the 
-                     default action to take unless overridden.
-    (     Secondary  Don't display this item in the Full Map Screen.
-    ?     Secondary  Automatically Identify this item. This requires 
-                     you to carry scrolls or magical devices with the 
-                     Identify power. It does not currently work for 
-                     spellcasters.
+    ;     Primary    Prompt to pick up
+    ~     Primary    Leave on the floor
+          Primary    Pick up - assumed if you fail to provide an 
+                     alternative primary action letter. There is no 
+                     specific action letter for this action, it is 
+                     simply assumed unless overridden.
+    (     Secondary  Hide in M map
+    ?     Secondary  Automatically identify this item, provided you 
+                     have scrolls or staves of Identify.
     #     Terminal   Auto-inscribe matching objects with whatever text 
                      follows this key. Note that Primary and Secondary 
-                     command letters must be placed at the beginning of 
-                     a rule line, while Terminal command letters must 
-                     be placed at the end of a rule line.
+                     action letters must be placed at the beginning of 
+                     a rule line, while Terminal action letters must be 
+                     placed at the end of a rule line.
   
-  Every rule must have one Primary action. It can have 0 or more 
-  secondary actions, and the sole Terminal action is also optional.
+  Every rule must have one Primary action (which is assumed to be Pick 
+  Up if nothing else is specified). It can have 0 or more secondary 
+  actions, and the sole Terminal action is also optional.
   
 Table IV: Rules: Nouns
   Noun       Explanation
   Items      Applies to everything. This is useful for very general 
-             rules, such as ~?Unidentified Items to automatically 
+             rules, such as ~?unidentified items to automatically 
              identify, but leave on the ground, everything not yet 
-             identified.
+             identified; or even items to pick everything up! The noun 
+             items is implicitly assumed if no other noun is specified.
   
-  Weapons    Applies to all melees weapons, but not to missile weapons. 
-             If you are a veteran player, then read that description 
-             again. This noun used to include shooters, but I just 
-             recently changed the semantics to accomodate archers who 
-             are very interested in Dice Boosted Shooters but could 
-             usually care less about Dice Boosted Weapons. Also, monks 
-             may want to !Weapons since they usually fight bare-handed, 
-             and having this rule also destroy shooters is quite 
-             annoying.
+  Weapons    Applies to all melee weapons (including diggers), but not 
+             to missile weapons.
   
   Favorite Weapons
-             Applies to all weapons, including shooters, that are 
-             desired by your class. For example, Weaponmasters 
-             specialize in a given class of weapons, such as Axes or 
-             Crossbows. Whatever their speciality, this "noun" will 
-             apply to these preferred items. Calling this "keyword" a 
-             noun is a bit of a misnomer, but it will help you to think 
-             of Favorite Weapons as a single word that is a Noun, since 
-             the code treats it that way! For example, saying Ego 
-             Favorite Weapons is syntactically correct, while Favorite 
-             Ego Weapons is not. (There is no adjective called 
-             Favorite).
+             Applies to all weapons, including shooters, that your 
+             class likes. For example, Weaponmasters specialize in a 
+             given type of weapons, such as Axes or Crossbows; whatever 
+             their speciality is, this "noun" will apply to these 
+             preferred items. Note that the game considers favorite 
+             weapons a noun, not an adjective followed by a noun.
   
   Hafted Weapons
              Applies to all hafted weapons like Maces, Flails and War 
-             Hammers. These weapons are preferred by Priests who 
-             disdain other kinds of weapons, such as Swords or 
-             Polearms. Like the Favorite Weapons "noun" above, it helps 
-             to think of Hafted Weapons as a single word that is a 
-             Noun, since the code treats it that way (There is no 
-             adjective Hafted). If you are a priest interested in 
-             excellent and artifact hafted weapons, you need to say Ego 
-             Hafted Weapons or Artifact Hafted Weapons to get the job 
-             done.
+             Hammers; these weapons are preferred by Priests. Like the 
+             Favorite Weapons "noun" above, the Mogaminator views this 
+             as a single noun, not an adjective followed by a noun.
   
-  Diggers    Applies to all digging implements, such as shovels and 
-             picks. Digging is fun, but eventually you will probably 
-             want to destroy these objects. Perhaps, you would like the 
-             rule ~Dice Boosted Diggers:Mattock followed by the rule 
-             !Diggers?
+  Diggers    Applies to all digging implements, such as shovels, 
+             mattocks and picks.
   
-  Shooters   Applies to all missile weapons, including bows, slings and 
-             crossbows. It also includes harps and guns. If you are a 
-             Bard, then you might consider Shooters:Harp as a pickup 
-             preference, while if you are ignoring archery altogether, 
-             try Shooters:Gun instead since the guns are quite useful 
-             for resistances and boosting stats.
+  Shooters   Applies to anything that goes in the shooter shot, 
+             including slings, bows, crossbows, harps and guns.
   
   Ammo       Applies to all ammunition for missile weapons: arrows, 
-             shots and bolts. Consider using Ammo:Seeker or 
-             Ammo:Mithril or Ammo:Steel to pick out desirable ammo.
+             pebbles, shots and bolts.
   
-  Armors     Applies to all forms of armor, including shields, helms, 
-             cloaks as well as body armor. You can narrow down the 
-             range of armor objects by using a more specific noun from 
-             the following list:
-             Suits   Applies to body armor
-             Shields Applies to shields
-             Cloaks  Applies to cloaks
-             Helms   Applies to helmets and crowns
-             Gloves  Applies to gloves
-             Boots   Applies to boots
-             Consider using Armors:Dragon to pickup all the various 
-             forms of dragon armor, including dragon boots, gloves, 
-             helmets and wings. If you are playing a class with armor 
-             weight restrictions, check out the More Weight Than NN 
-             special clause below.
+  Armors     Applies to all forms of armor (for more specific nouns, 
+             see below):
+  Suits      Applies to body armor.
+  Shields    Applies to shields.
+  Cloaks     Applies to cloaks.
+  Helms      Applies to helmets and crowns.
+  Gloves     Applies to gloves.
+  Boots      Applies to boots.
   
-  Wands      Applies to magical devices that are wands. Use 
-             Wands:Rockets to get all wands, including ego and artifact 
-             wands, that can fire rockets (Trust me: You want them!). 
-             Note: We no longer have a noun Magical Devices.
+  Wands      Applies to wands.
   
-  Staves     Applies to magical devices that are staves. For example, 
-             try Staves:Healing or Staves:Speed.
+  Staves     Applies to staves (the magical device kind, not the 
+             quarterstaff kind!). For example, try staves:healing or 
+             staves:speed.
   
-  Rods       Applies to magical devices that are rods.
+  Rods       Applies to rods.
   
-  Potions    Applies to potions. There are many useful potions. If you 
-             are trying to get stat potions, you might consider 
-             Potions:of Strength rather than just Potions:Strength, 
-             since the latter will also match potions of restore 
-             strength.
+  Potions    Applies to potions. (Watch out - many potion names, like 
+             Potion of Strength and Potion of Restore Strength, 
+             partially match each other.)
   
-  Scrolls    Applies to scrolls
+  Scrolls    Applies to scrolls.
   
-  Rings      Applies to jewelry that are rings. Since rings are so 
-             useful, I like the rule ?Unidentified Rings for all of my 
-             characters.
+  Rings      Applies to rings.
   
-  Amulets    Applies to jewelry that are amulets. Like rings, I prefer 
-             to keep the rule ?Unidentified Amulets for all of my 
-             characters.
+  Amulets    Applies to amulets.
   
-  Lights     These are torches, lanterns and feanorian lamps, as well 
-             as the various artifact light sources. If you are looking 
-             for the Jewel of Judgment, try using Lights:Jewel.
+  Lights     Applies to anything that goes in the light source slot.
   
-  Spellbooks These are all the spellbooks, for all of the various 
-             magical realms. If you are a spellcaster, you will 
-             invariably want to make use of the numerous spellbook 
-             specific adjectives described in the next table.
+  Spellbooks Applies to all spellbooks. If you are a non-caster (and 
+             non-seller) you can specify !spellbooks with impunity, but 
+             as a book caster you probably want to combine this with 
+             adjectives.
   
-  Junk       Need I say more? You probably just need !Junk in your pref 
-             file, though some junk might be useful for some players.
+  Junk       Applies to complete junk like broken sticks. Also covers 
+             statues (which are potentially sellable); use !worthless 
+             junk to exclude them.
   
-  Corpses    Corpses actually can be useful. For one thing, every 
-             player can turn in Wanted Corpses at the Hunter's Office 
-             for prizes. And then there are possessors, a monster race 
-             that can actually possess the corpse of a slain foe and 
-             gain the powers of that monster type. They will want to 
-             make use of rules like ~Corpses More Level Than 20 which 
-             uses a special form described below. Of course, they will 
-             tweak the level threshold of corpses they wish to keep as 
-             the game progresses, and they also need to be careful to 
-             keep rather than pickup these desirable objects: Corpses 
-             can be very heavy! Note that Skeletons no longer count as 
-             corpses, mainly because Possessors cannot possess 
-             skeletons so they require a more specific keyword. If you 
-             are a hungry demon, you might consider Human Corpses.
+  Corpses    Applies to corpses, which are potentially useful; 
+             Possessors can possess them, Igors cut them apart, some 
+             demons eat humanoid corpses, and wanted corpses can be 
+             turned in at the Bounty Office.
   
-  Skeletons  Like corpses, you may turn in Wanted Skeletons at the 
-             Hunter's Office. Archers may also use skeletons to make 
-             arrows and bolts, so this class of objects is not as 
-             useless as you might have thought.
+  Skeletons  Like corpses, you may turn in wanted skeletons at the 
+             Bounty Office. Archers may also use skeletons to make 
+             arrows and bolts.
   
   If you are using keywords to build a match predicate, then you must 
-  specify exactly one noun. But you may use as many adjectives as you 
-  like.
+  specify exactly one noun, but may use as many adjectives as you like.
   
 Table V: Rules: Adjectives
-  There are many adjectives, and perhaps it might be useful to group 
-  them by kind?
-  
-  Object Knowledge
-  Unsensed     Applies to objects that have not yet been identified nor 
-               even pseudo-identified. In this sense, it is more 
-               inclusive then the Unidentified adjective. Use a rule 
-               like (Unsensed Weapons to (i) automatically pickup newly 
-               dropped weapons so that you can pseudo-id them in your 
-               pack in the early to mid game; and (ii) automatically 
-               travel to newly dropped weapons in the remainder of the 
-               game using the newly enhanced get objects command (Turn 
-               on auto_get_objects).  If destroy_feeling is turned on, 
-               the set of rules will be rescanned once the given item 
-               is sensed, either in your pack at some future time 
-               (prior to CL35) or by stepping on the same square as the 
-               object (once you reach CL35).  If destroy_identify is 
-               turned on, the set of rules will be rescanned once you 
-               identify the object.
-  
-  Unidentified Applies to objects that have not yet been identified and 
-               is a very useful adjective. For example, ?Unidentified 
-               Items has to be my favorite rule of all time!
-  
-  Identified   Applies all objects that have been identified. You might 
-               use this with a rule like !Identified Weapons, preceded 
-               by rules to protect weapons you actually care about, 
-               like dice boosted ego items, for example. But I think it 
-               is almost always preferable to use a !Nameless Common 
-               Weapons rule instead, since it is much safer (e.g. It 
-               won't destroy rare objects like Blades of Chaos and 
-               won't destroy egos either).
-  
-  *Identified* Applies to fully identified objects, and is rarely 
-               needed. Perhaps you might consider a block of rules 
-               like:
-               ~*identified* rings more value than 5000
-               ~*identified* amulets more value than 5000
-               ~?unidentified rings
-               ~?unidentified amulets
-               !identified rings
-               !identified amulets
-               But this requires you to have a good sense of the value 
-               threshold for jewelry you might want. Also note that 
-               this rule set is safe because, in the current version, 
-               identifying jewelry also *identifies* it. Do not try 
-               this pattern with other types of objects!
-  
-  Unaware      Applies to objects that the player is unaware of. In 
-               practice, this currently only includes mushrooms, 
-               potions and scrolls that the player has not yet 
-               encountered. A rule like ?Unaware Items will help you 
-               learn all those flavors in the early game.
-  
-  Object Quality
-  Average      Just like the name says, this adjective matches average 
-               items. These are items that lack any form of magical 
-               bonus or enhancment. This adjective is best combined 
-               with the ! command letter at a very early point in the 
-               game :)
-  
-  Good         Good items have a magical bonus of some kind, either a 
-               combat bonus to hit or damage for weapons and shooters, 
-               or an armor class bonus for armors. You might want to 
-               hang on to these objects a bit longer since they can be 
-               sold for gold in the town, but even here, you will want 
-               to destroy them eventually. I usually use the rule 
-               !Nameless Common Weapons rather than the Good adjective, 
-               since Nameless will include average items as well, while 
-               the Common adjective protects objects that are rare and 
-               might still be useful, even if they are only Average or 
-               Good (e.g. Dragon Scale Mail).
-  
-  Ego          Applies to all excellent objects. See [j] for more 
-               information.
-  
-  Artifact     Artifacts are special items and are unique. Think of 
-               them as super-ego objects that you can only find one of 
-               in each game you play. I almost never use this 
-               adjective, though, since you cannot destroy artifacts 
-               anyway. Perhaps you might like to auto-identify them, 
-               though, and a rule like ?Artifact Items would accomplish 
-               this.
-  
-  Cursed       Cursed items aren't necessarily all bad. Still, you 
-               might want rules to handle these objects, for example, 
-               to destroy them. Also note that objects can be Cursed 
-               Ego Items or even Cursed Artifact Items, so perhaps the 
-               rule you are looking for is !Cursed Nameless Common 
-               Items.
-  
-  Nameless     Nameless applies to any object that is neither an 
-               artifact nor an ego item. This adjective is commonly 
-               used to destroy stuff that you know won't be 
-               particularly good, usually as a rule of the form 
-               !Nameless Common Items.
-  
-  Rare         Rare items are special objects that don't show up often, 
-               and might still be desirable even if they are Nameless. 
-               For example, and hopefully this won't spoil too much, 
-               weapons like Blades of Chaos and armors like Dragon 
-               Scale Mail are considered Rare.
-  
-  Common       Common includes any object that is not Rare. So, a Long 
-               Sword is common, but a Blade of Chaos is not. Metal 
-               Scale Mail is common, but White Dragon Scale Mail is 
-               not.
-  
-  Worthless    Any object whose value is 0 is considered Worthless. 
-               This doesn't necessarily mean you want to destroy it, 
-               though. For example, Corpses are worthless, but you 
-               still want some of them. In general, you will want rules 
-               to protect the worthless items you might want, and then, 
-               at the very bottom of your preference file, you add a 
-               rule !Worthless Items.
-  
-  Object Attributes
-  Dice Boosted When used with Weapons or Shooters, this adjective 
-               indicates that the object has higher damage dice than 
-               usual. Archers in particular should be on the lookout 
-               for Dice Boosted Shooters!
-  
-  See the Special Clauses below for more information about matching on 
-  an object's attributes.
-  
-  Spellbook Adjectives
-  Unreadable     This will match spellbooks that you cannot use, either 
-                 because you are playing a non-magical class, or 
-                 because you did not choose to learn that particular 
-                 magical realm at birth. The most common use for this 
-                 adjective is for destruction purposes, as in 
-                 !Unreadable Spellbooks.
-  
-  First Realm's  This refers to your primary magical realm. For many 
-                 players, this is their only magic realm. For example, 
-                 if you are playing a High-Mage, Paladin, Monk, Rogue 
-                 or Chaos-Warrior, then you can pick a single realm of 
-                 magic at birth.
-  
-  Second Realm's This refers to your secondary magical realm. If you 
-                 are playing a Mage, Priest or Ranger, then you can 
-                 pick two realms of magic at birth. The most common 
-                 reason to distinguish between your first and second 
-                 realms of magic has to do with inscriptions. 
-                 Typically, players inscribe @ma through @md, in order, 
-                 on their first realm's spellbooks, and use @me through 
-                 @mh, in order, on their second realm's spellbooks. Or 
-                 you might use @m1 through @m8 if you prefer.
-  
-  First
-  Second
-  Third
-  Fourth         Each realm of magic has four possible spellbooks. 
-                 These adjectives refer to each of these possibilities. 
-                 For every school except Arcane, only the first and 
-                 second spellbooks are available in town, while the 
-                 third and fourth spellbooks must be found in the 
-                 dungeon. They can be quite rare, and are also valuable 
-                 objects, so one typically wants to distinguish between 
-                 first and second spellbooks on the one hand, and third 
-                 and fourth on the other. Also, combine these 
-                 adjectives with the First Realm's and Second Realm's 
-                 adjectives discussed above in order to get your 
-                 inscriptions setup properly (see Scenario #3 above).
-  
-  Corpse Adjectives
-  Wanted       Combine with Corpses or Skeletons to indicate that the 
-               corpse or skeleton belongs to a wanted monster. These 
-               may be turned in at the Hunter's Office for a prize.
-  
-  Unique       Combine with Corpses or Skeletons to indicate that the 
-               corpse or skeleton belongs to a unique monster. Not all 
-               unique monsters are Wanted, so many players would 
-               consider them to be junk (They are destroyed by the 
-               default rule !Worthless Items). However, other players 
-               enjoy collecting the corpses of unique monsters, and 
-               placing them on display at the museum. For these 
-               (strange?) folks, adding a rule like ~Unique Corpses 
-               before the !Worthless Items will protect them from 
-               default destruction.
-  
-  Human        And then there are those character's that require the 
-               corpses of humans for either food, or as part of a 
-               ritual to summon a powerful demonic ally. For these 
-               situations, add a rule like ~Human Corpses to your 
-               preferences, though ~Special Items also works.
-  
-  Miscellaneous
-  Collecting   Collecting Items are stackable objects that you happen 
-               to currently be carrying in your pack. Use this broad 
-               adjective when you don't feel like adding a more 
-               specific rule. For example, you might currently be 
-               carrying Potions of Cure Serious Wounds, and would like 
-               to collect those if you happen to find them. But since 
-               these objects are only useful for a very small portion 
-               of the game, you don't want to use a conditional rule to 
-               handle this.
-  
-  Special      Special Items are objects your race or class needs; 
-               objects that are usually considered junk by default. For 
-               example, some players cannot eat normal food, but must 
-               consume the corpses of humans (Yuk!). Other players use 
-               corpses for various spells, and need to keep them 
-               around. Archers use skeletons to make their own ammo. 
-               And classes that ride pets into battle actually enjoy 
-               using devices that haste monsters. All of these special 
-               scenarios are handled with this adjective.
-  
-  Unusable     This adjective applies to wearable items that your 
-               current character is unable to wear. Doe this sound 
-               strange? It is, but remember that you have the option to 
-               play the game as a Monster, and monsters often have 
-               unusual body types. For example, a Dragon can wear 
-               rings, amulets, lights, cloaks and helmets, but nothing 
-               else. So weapons, shooters, body armor, shields, gloves, 
-               and boots are all considered Unusable. Adding a rule 
-               like !Unusable Items makes the game much more pleasant, 
-               at least once the player is past the point of worrying 
-               too much about gold. (They could also use a rule like 
-               !Unusable Nameless Items if they wanted to keep egos for 
-               resale purposes).
-  
+  Because there are so many adjectives, they are grouped here by kind.
+
+Object Knowledge
+Unsensed     Applies to objects that have not yet been identified or 
+             pseudo-identified.
+
+Unidentified Applies to objects that have not yet been identified (e.g. 
+             ?unidentified items to auto-identify everything).
+
+Unaware      Applies to objects whose flavor has not yet been 
+             identified.
+
+Identified   Applies all objects that have been identified.
+
+*Identified* Applies to fully identified objects, and is rarely needed.
+
+Object Quality
+Average      Applies to all average items. Some players like to combine 
+             this with the ! action letter quite early; but that can be 
+             inconvenient if you are looking for a reforge base item.
+
+Good         Applies to all good items.
+
+Ego          Applies to all excellent objects. See [m] for more 
+             information.
+
+Artifact     Applies to all artifacts. See [n] for more information.
+
+Cursed       Applies to all cursed items. Use sparingly; cursed items 
+             can be good, and !worthless items catches the real junk.
+
+Nameless     Applies to all objects that are neither artifacts nor ego 
+             items.
+
+Rare         Applies to all objects in a specific, hardcoded list of 
+             object types; for example, Blades of Chaos and Maces of 
+             Disruption are rare, as are all dragon armor pieces 
+             including dragon scale mail.
+
+Common       Applies to all objects that are not rare; so a Long Sword 
+             is common, but a Blade of Chaos is not.
+
+Worthless    Any object whose value is 0 is considered worthless. Watch 
+             out a bit, though: for example, corpses are "worthless", 
+             but you still want to keep some of them. The default 
+             preferences have !worthless items at the very bottom, 
+             below rules that protect useful worthless things.
+
+Icky         Icky items are items unsuitable for your class; they may 
+             be an Icky Wield or cause other class-specific penalties.
+
+Object Attributes
+Dice Boosted When used with weapons or shooters, this adjective 
+             indicates that the object's damage dice or damage 
+             multiplier are higher than usual for the object kind.
+
+See the Special Clauses below for more information about matching on an 
+object's attributes.
+
+Spellbook Adjectives
+Unreadable     This will match spellbooks that you cannot use, either 
+               because you are playing a class that does not have 
+               realms or because the book does not belong to a realm 
+               you selected.
+
+First Realm's  Applies to books from your primary magic realm, if any.
+
+Second Realm's Applies to books from your secondary magic realm, if 
+               any.
+
+First
+Second
+Third
+Fourth         Each realm of magic has four spellbooks; these 
+               adjectives refer to each of these books by number. 
+               Usually, the first and second books are cheap, while the 
+               third and fourth are valuable.
+
+Corpse Adjectives
+Wanted       Combine with corpses or skeletons to indicate the remains 
+             of a wanted monster.
+
+Unique       Combine with corpses or skeletons to indicate the remains 
+             of a unique monster. (Maybe you're a collector?)
+
+Human        Some characters use humanoid corpses either as food, or as 
+             part of a ritual to summon a powerful demonic ally. For 
+             these situations, add a rule like ~human corpses to your 
+             preferences, though ~special items will also work.
+
+Miscellaneous
+Collecting   Collecting items matches stackable objects identical with 
+             objects already in your pack.
+
+Special      Special items are objects your race or class needs; 
+             objects that are usually considered junk by default. For 
+             example, some characters receive scant sustenance from 
+             normal food and must consume humanoid corpses (yum!). 
+             Daemon casters use corpses for various spells. Archers use 
+             skeletons to make their own ammo. Beastmasters and Cavalry 
+             actually enjoy wands of Haste Monster. Such special 
+             scenarios are handled with this adjective. Note that this 
+             is a meaning completely distinct from the object feeling 
+             {special}, which refers to artifacts.
+
+Unusable     Applies to wearable items you currently have no equipment 
+             slots for. Especially handy in Monster Mode - still, use 
+             with some care in case you acquire new slots over time...
+
 Table VI: Rules: Special Clauses
-  In the following clauses, N refers to a numerical digit, 0 through 9. 
-  The sequence NN means you may type one or two digits, and can 
-  therefore enter any number between 0 and 99.  The sequence NNNNNN 
-  means you may type from one to six digits, and can therefore enter 
-  any number between 0 and 999999. If you enter too many digits, then 
-  the parser will not recognize your special clause, and you will get 
-  unsatisfactory results from your rule.
+  In the following clauses, N refers to a digit (0-9); the sequence NN 
+  means you may type one or two digits, and can therefore enter any 
+  number between 0 and 99. Analogously, NNNNNN allows numbers between 0 
+  and 999999. If you enter too many digits, the parser will not 
+  recognize your special clause, and you will get unsatisfactory 
+  results from your rule.
   
   Special Clause          Explanation
-  More Dice Than NN       This clause applies to Weapons only, and is 
+  More Dice Than NN       This clause applies to weapons only, and is 
                           true whenever the maximum possible damage 
                           exceeds the number you enter. For example a 
-                          (2d5) weapon will match More Dice Than 9 but 
-                          will fail to match More Dice Than 10.
+                          (2d5) weapon will match more dice than 9 but 
+                          will fail to match more dice than 10.
   
-  More Bonus Than NN      An object's bonus is the largest of its pval, 
-                          its bonus to hit, to damage and to armor 
-                          class. Confused? Well, the rule Rings More 
-                          Bonus Than 9:Speed will pickup rings of speed 
-                          (+10) or better, but will not match other 
-                          rings of speed. Another (sarcastic) example: 
-                          Suits More Bonus Than 19:Power Dragon says 
-                          that you would like Power Dragon Scale Mail, 
-                          but only if its bonus to armor class is +20 
-                          or better!
+  More Bonus Than NN      An object's bonus is here the largest of its 
+                          pval, to-hit, to-dam and to-AC. For example, 
+                          rings more bonus than 9:speed will pick up 
+                          rings of speed (+10) or better, but will not 
+                          match other rings of speed; and suits more 
+                          bonus than 19:power dragon says that you 
+                          would quite like a Power Dragon Scale Mail, 
+                          but only if its to-AC bonus is +20 or better!
   
-  More Level Than NN      This clause is intended to be used on Corpses 
+  More Level Than NN      This clause is intended to be used on corpses 
                           so that Possessors can manage the mountains 
                           of dead bodies they create. You can also use 
                           it with other objects, in which case it 
                           corresponds to the level of the object, or 
-                          its ego type. For devices, it matches against 
-                          the power level of the device.
+                          its ego type. For devices, it matches the 
+                          power level of the device.
+  
+  More Charges Than NN    Intended for magical devices; maybe you 
+                          already have a Staff of Cure Wounds with 20 
+                          charges and consider anything smaller than 
+                          that to be junk.
   
   More Weight Than NN     Some classes have weight restrictions on 
                           armor, like Monks, Scouts and Ninjas. Other 
                           classes, like Maulers, prefer very heavy 
                           weapons. This clause matches against the 
-                          weight of the object, in pounds. So Weapons 
-                          More Weight Than 39 will match weapons at 
-                          least 39.1 lbs in weight (In practice, this 
-                          means at least 40.0 lbs in weight).
+                          weight of the object, in pounds; so weapons 
+                          more weight than 39 will match weapons 
+                          weighing at least 39.1 lbs.
   
-  More Value Than NNNNNN This clause matches against the known value of 
-                         the object. Use it with care, since unknown, 
-                         or even un-*identified* objects may have 
-                         disturbingly low known values.
+  More Value Than NNNNNN  This clause matches against the known value 
+                          of the object. Use with care, since unknown 
+                          or even un-*identified* objects may have 
+                          "known" values lower than the actual value.
   
-Table VII: Conditional Lines: Syntax
-  Conditional Lines have the following syntactic form:
+Table VII: Conditionals: Syntax
+  Conditional statements have the following syntactic form:
   
   ?:Expression
   
-  Conditional Expressions use the following (partial) grammar:
+  Conditional expressions use the following (partial) grammar:
   
   Expression := Literal | Variable | [Function Expression*]
   Function   := IOR | OR | AND | NOT | EQU | LEQ | GEQ
-  Variable   := $RACE | $CLASS | $REALM1 | $REALM2 | $LEVEL | $MONEY | 
-                  ...
+  Variable   := $RACE | $CLASS | $REALM1 | $LEVEL | $MONEY | ...
   Literal    := 23 | 52 | Rage-Mage | High-Elf | ... 
   
   Note that unlike above, square brackets are part of the syntax of 
@@ -1486,86 +1082,78 @@ Table VII: Conditional Lines: Syntax
   When the expression on a conditional line evaluates to FALSE or 0, 
   then any subsequent rules will be ignored. When the expression 
   evaluates to TRUE or non-zero, then any subsequent rules will be 
-  applied.
+  applied. See [o] above for details.
   
-  If none of this makes sense, see [k] above.
+Table VIII: Conditionals: Functions
+  Function    Explanation
+    IOR       Inclusive Or: [IOR a b c ...] is TRUE if the value of any 
+              subexpression a, b, c, ... is TRUE.
+    OR        Same as IOR.
+    AND       Logical And: [AND a b c ...] is TRUE if the values of all 
+              subexpressions a, b, c, ... are TRUE.
+    NOT       [NOT a] is TRUE if a is FALSE, and vice versa. Use this 
+              when you want to take an action when something is not 
+              true.
+    EQU       [EQU v a b c ...] is TRUE when the value of v is one of 
+              the values a, b, c, ... Comparison is by string. 
+              Typically, you use this with v being a built-in variable 
+              expression like $CLASS (see below), and the remaining 
+              arguments being strings to test like Mage or Sorcerer. 
+              Note that string literals are not quoted and therefore 
+              may not contain spaces.
+    LEQ       [LEQ v a] is TRUE when the integer value of v is less 
+              than or equal to the integer value of a. Note that while 
+              EQU treats its arguments as strings, LEQ treats them as 
+              numbers.
+    GEQ       [GEQ v a] is TRUE when the integer value of v is greater 
+              than or equal to the integer value of a. Note that while 
+              EQU treats its arguments as strings, GEQ treats them as 
+              numbers.
   
-Table VIII: Conditional Lines: Functions
-  Function  Explanation
-    IOR     Inclusive Or: [IOR a b c ...] is TRUE if the value of any 
-            subexpression a, b, c, ... is TRUE.
-    OR      Same as IOR. One day I was puzzled why my [OR ...] 
-            expression wasn't working. Also, if you are going to have 
-            IOR, it suggests you will have XOR (Exclusive Or) as well, 
-            and we don't!
-    AND     Logical And: [AND a b c ...] is TRUE if the value of all 
-            subexpressions a, b, c, ... are TRUE.
-    NOT     [NOT a] is TRUE if a is FALSE, and vice versa. Use this 
-            when you want to take an action when something is not true.
-    EQU     [EQU v a b c ...] is TRUE when the value of v is one of the 
-            values a, b, c, ... Comparison is by string. Typically, you 
-            use this with v being a built-in variable expression, like 
-            $CLASS (see below) and the remaining arguments to EQU being 
-            strings to test, like Warrior or Rogue. Note that string 
-            literals are not quoted and therefore may not contain 
-            spaces.
-    LEQ     [LEQ v a] is TRUE when the integer value of v is less than 
-            or equal to the integer value of a. Note that while EQU 
-            treats its arguments as strings, LEQ treats them as 
-            numbers.
-    GEQ     [GEQ v a] is TRUE when the integer value of v is greater 
-            than or equal to the integer value of a. Note that while 
-            EQU treats its arguments as strings, GEQ treats them as 
-            numbers. For example, use [GEQ $LEVEL 20] to test if the 
-            player's current level is greater than, or equal to 20.
+Table IX: Conditionals: Variables
+  Variable    Explanation
+  $RACE       Returns the name of your race; for example, Snotling or 
+              High-Elf.
+  $CLASS      Returns the name of your class; for example, Warrior-Mage 
+              or Mindcrafter. Note that if you are playing in Monster 
+              mode, then this variable always returns Monster, while 
+              $RACE returns the actual monster race you are playing, 
+              such as Lich or Dragon.
+  $SUBCLASS   Returns the name of your subclass, if any. This could be, 
+              say, Yeqrezh on a Disciple or Evil Bias on a Gray-Mage.
+  $SPECIALITY Returns the name of your speciality, for example Axes on 
+              a Weaponmaster or Potions on a Devicemaster. Returns none 
+              for all classes except those two.
+  $REALM1     Returns the name of your first realm, if any; for 
+              example, Chaos or Sorcery. If the player does not have a 
+              first realm, then this variable returns none.
+  $REALM2     Returns the name of your second realm, if any; for 
+              example, Life or Death. If the player does not have a 
+              second realm, then this variable returns none.
+  $LEVEL      Returns your current level. Typically, you combine this 
+              with GEQ or LEQ to test the level against a threshold, 
+              such as [LEQ $LEVEL 34].
+  $SELLING    Returns Off if you have turned the no_selling option on, 
+              and On otherwise.
+  $MONEY      Returns the amount of gold the player has. Like $LEVEL, 
+              use this with GEQ or LEQ to test whether your player is 
+              rich or poor.
   
-Table IX: Conditional Lines: Variables
-  Variable  Explanation
-  $RACE     Returns the name of the player's race. For example, 
-            Snotling or High-Elf.
-  $CLASS    Returns the name of the player's class. For example, 
-            Warrior-Mage or Mindcrafter. Note, if you are playing in 
-            Monster mode, then this variable always returns Monster, 
-            while $RACE returns the actual monster race you are 
-            playing, such as Lich or Dragon.
-  $REALM1   Returns the name of the player's first realm, if any. For 
-            example, Chaos or Sorcery. If the player does not have a 
-            first realm, then this variable returns none.
-  $REALM2   Returns the name of the player's second realm, if any. For 
-            example, Life or Death. If the player does not have a 
-            second realm, then this variable returns none.
-  $LEVEL    Returns the player's current level. Typically, you combine 
-            this with GEQ or LEQ to test the level against a threshold, 
-            such as [LEQ $LEVEL 34].
-  $MONEY    Returns the amount of gold the player has. Like $LEVEL, use 
-            this with GEQ or LEQ to test whether your player is rich or 
-            poor.
+  All variables begin with a $ character to distinguish them from 
+  string literals. Note that some variables allowed by edit files are 
+  not allowed here, and some variables that are allowed here (like $SYS 
+  and $KEYBOARD) are unlikely to apply and so not documented.
   
-  As mentioned before, all variables begin with a $ character to 
-  distinguish them from string literals. Also, note there are other 
-  variables like $SYS and $KEYBOARD which I haven't documented.
+Table X: Conditionals: Literals
+  Literal     Explanation
+  Number      Numbers are written like 105 or 32.
+  String      Strings are written like High-Mage or Beholder. Note that 
+              string literals are not quoted and therefore may not 
+              contain spaces; hyphenate if necessary (Filthy-Rag for 
+              the Filthy Rag race).
   
-Table X: Conditional Lines: Literals
-  Literal   Explanation
-  Number    Numbers are written like 105 or 32.
-  String    Strings are written like High-Mage or Beholder. Note that 
-            string literals are not quoted and therefore may not 
-            contain spaces.
-  
-
-The Easy Destroyer
-
-If, after reading all of the above, you decide that The Mogaminator is 
-too much for you to handle, you may, instead, use a simpler system to 
-manage objects: The Easy Destroyer. I don't recommend this, but the 
-choice is yours. This system is configured via options (see [l]). The 
-option destroy_items turns The Easy Destroyer on and off. If you are 
-using The Mogaminator, be sure to turn off The Easy Destroyer, and vice 
-versa. (BTW, you "turn off" The Mogaminator but closing the game and 
-deleting the pickpref-NAME.prf file whose location was indicated in the 
-reference section).
-
-
+--
 Original   : PosChengband 4.0.0
+Updated    : FrogComposband 7.1.liquorice
 
 
