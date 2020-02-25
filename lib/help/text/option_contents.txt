@@ -1,6 +1,6 @@
 Options
 
-Please choose one of the following online help files:
+Please choose one of the following help sections:
 
     [a] Options
     [b] Birth/Start-Up Options
@@ -9,7 +9,7 @@ Please choose one of the following online help files:
     [e] Text Display Options
     [f] Game Play Options
     [g] Disturbance Options
-    [h] Easy Auto-Destroyer Options
+    [h] Auto-Destroyer Options
     [i] Base Delay Factor
     [j] Hitpoint Warning
     [k] Autosave Options
