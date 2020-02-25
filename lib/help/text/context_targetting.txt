@@ -1,0 +1,99 @@
+Targetting
+
+The targetting prompt offers many options, and two different modes: 
+monster-targetting mode and free-targetting mode. If there are hostile 
+monsters in line of sight, targetting begins in monster-targetting 
+mode; the first target offered will be the nearest such monster, with 
+other hostile monsters in line of sight as alternative targets. Use 
+direction keys to cycle between monsters; + and - also work, but are 
+less intuitive. Turn on the target_pet option ([a]) if you want this 
+mode to allow non-hostile monsters as targets.
+
+If you wish to target (or inspect) a square with no monster on it, 
+press p or o, switching to free-targetting mode where direction keys 
+simply move the cursor. (This mode is automatically entered if no 
+hostile monsters are in line of sight.) o and p are identical except in 
+one respect: pressing p (which stands for player) moves the cursor to 
+your own location, while pressing o (which stands for offset) does not. 
+
+At any time, press 5, t or . to accept the current target (and exit 
+targetting mode), q or ESC to exit targetting mode without selecting a 
+target, r to recall lore about a monster on the target square, x to see 
+all items on the target square (including stolen or picked-up items 
+carried by monsters, but excluding normal monster item drops), and ( to 
+select a square as a travel target. In the original keyset, J and j 
+also work as travel keys and are equivalent with (.
+
+Users of the roguelike keyset have a bonus option in free-targetting 
+mode: they can press Shift+DIR to move the cursor many squares at a 
+time.
+
+Precision Targetting
+
+When you cast a spell or fire a missile at a target location, the path 
+chosen is the direct path towards that location, which may or may not 
+be the path you want. Sometimes, by clever choice of a side location as 
+your target, you may be able to aim at squares not directly in line of 
+sight:
+  
+  Position: an unknown grid [q,t,p,m,x,j,+,-,?,<dir>]                           
+        ##........#.... #%%####
+        #........\......      #
+        %.......}{\@....      #
+      %#%..........*....      #
+     ##    ........*...   ... #
+     #       ......*...   .d. #
+     #        ..(.#*.     .#####
+     #          .##*       T   #
+     #    ^   #####*           ##########                                       
+     ##       #   #*           '
+     #        #  ##*         ############                                       
+     #        #  #*        ###
+     #        # ##*       ##                                                    
+     ##       # # *        #                                                    
+      #       # ##*        #                                                    
+      #########  #*#########
+  
+Notice that bright-red *? There's a dragon on that square I cannot 
+target directly; but I managed to include that square in my spell's 
+path by using p to target a location on the southern edge of the map.
+
+Note that bolt spells always stop at the first monster in the spell's 
+path, but beam and breath spells affect all squares in their paths, and 
+ball spells can reach the target square by flying over monsters' heads 
+if necessary.
+
+Location Targets vs Monster Targets
+
+When selecting a target, you may target either a monster or a location. 
+This is an important difference: if you target a monster, the target 
+will move when the monster moves; but if you target a location, the 
+target remains stationary, even if the location had a monster in it. 
+
+If you bypass targetting mode you can also target a compass direction, 
+which for this purpose is always equivalent to targetting a location, 
+even if there was an obvious monster in the direction indicated. So 
+watch out if there's a monster due west of you, you fire west and then 
+spam n (or X in the roguelike keyset) to repeat: this will work 
+beautifully as long as the monster remains due west, but as soon as it 
+moves north or south you will need to retarget, something you would not 
+have needed to do had you selected the monster as your target.
+
+Quick Summary
+
+  5 t .        Select new target and exit targetting mode
+  ESC q        Exit targetting mode with no target selected    
+  DIR          Move to square or monster in direction indicated
+  +            Move to more distant monster
+  -            Move to less distant monster
+  ( j J        Select travel target (exit and travel if not aiming)
+
+  m            Enter monster-targetting mode
+  p            Enter free-targetting mode (move cursor to player)
+  o            Enter free-targetting mode (keep cursor location)
+
+  r            Recall monster lore     
+  x            Cycle between items on target square
+
+  ?            Display this help topic
+
