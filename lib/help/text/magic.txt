@@ -3,104 +3,199 @@ The Magic System
 Just beneath the surface of the commonplace and mundane lurks the 
 unpredictable and magical. Some may access these forces, gaining great 
 powers in the process. Others eschew the unexplained and unexplainable. 
-Whether your player may use magic is up to you, and depends upon which 
-class you choose to play. Hack and slash with the warrior, and magic 
-may forever remain a mystery to you. Choose the life of a Mage, and who 
-knows: You might eventually control the universe itself.
+Whether you use magic is up to you, and depends upon which class you 
+choose to play. Hack and slash with the warrior, and magic will forever 
+remain a mystery to you; choose the life of a Mage, and the eternal 
+secrets of the universe may be revealed to you.
 
-Magic is available in many forms. Often, a given spell or effect is 
-available for a single use inside a potion you may quaff, or a scroll 
-you may read. These forms of magic are discussed elsewhere, and anybody 
-may use them. (Scrolls require correct pronunciation and intonation to 
-invoke the effect, so the unmagical may struggle here as well). In 
-addition, a given spell may be placed inside a wand, staff or rod for 
-repeated use. Again, these spells are available to all, but require 
-skill and magical understanding to use correctly. Finally, there are 
-those that access the forces of magic directly, casting spells to slay 
-and spells to heal. Spells to learn and spells to travel. Spells to 
-beguile and spells to banish. And it is here, into the realm of the 
-spellcaster, that we now shall journey.
+Magic is available in many forms. Magical potions can be used by any 
+characters, even the illiterate and uncivilized Berserkers. Magical 
+scrolls, wands, rods and staves are available to all classes except 
+Berserker, but require some skill to use correctly; these forms of 
+magic are discussed elsewhere and not covered here in detail. Finally, 
+there are the select few who access the forces of magic directly, 
+casting spells to slay and spells to heal; spells to learn and spells 
+to travel; spells to beguile and spells to banish; it is here, into the 
+realm of the spellcaster, that we now shall journey.
 
-There are two main kinds of spellcasters: Those that use ancient books 
-of erudition to access the magical, and those that gain powers 
-directly, through mental focus and concentration. The former must find 
-(or purchase) the requisite books to learn while the latter tend to 
-gain powers automatically as they grow in experience and understanding. 
-The former must read their spells from books, and to do this, they must 
-be able to see. The latter can invoke their magic in the dark or while 
-blind. But both require a clear mind and a full concentration to access 
-the magical.
+Spellcaster Types
 
-Spellcasters that use spellbooks are the more common and include the 
-Mage, High-Mage, Priest and Sorcerer. In addition, most of the hybrid 
-classes use books as well, including the Ranger and the Paladin among 
-others. There are many, many classes in the game, and I won't list them 
-all here. But if your class uses spellbooks, then they use one or more 
-Magic Realms which must be chosen during birth and are discussed in 
-detail below.
+There are two main kinds of spellcaster: those who use ancient books of 
+erudition to access the magical, and those who gain powers or abilities 
+directly through their mental focus. In addition, there are special 
+techniques, which may not be traditional magic but obey most of the 
+same rules as magic does; these may effectively fall into either of the 
+first two categories. Racial powers and other similar abilities are 
+granted by race, class or mutations rather than magical ability, and 
+work in somewhat different ways.
 
-Spellcasters that gain powers directly include the Mindcrafter, the 
-Mirrormaster and the Timelord, among others. Unlike the book-based 
-casters, these classes do not choose a magic realm. They simply learn 
-spells as they gain experience.
+Book spellcasters are the traditional magic-user classes; they must 
+find (or purchase) appropriate spellbooks to learn from, and read from 
+those books as they cast spells, requiring clear eyes and light to see 
+with. Non-book spellcasters gain their powers automatically as they 
+grow in experience and understanding, and can sometimes invoke their 
+magic in the dark or while blind. A small number of classes, including 
+Force-Trainers and Ninja-Lawyers, can use both book and non-book magic.
 
-There is also at least one class that is a hybrid of the two systems: 
-The Forcetrainer. This class may learn a single chosen spell realm, but 
-also has access to class specific spells of the force.
+All spellcasters require a clear, unconfused mind, as well as a 
+functional m key, to access the magical. Nearly all spellcasters also 
+need spell points (SP, mana) to cast spells; mana measures the 
+spellcaster's concentration and magical energy, and without it spells 
+will fail. Some casters may be able to substitute hit points for mana 
+(this is more commonly the case for racial powers than normal magic); 
+and some spells may come to the caster so easily they require no mana 
+at all. All spellcasters have a primary stat or spellcasting stat; 
+their ability to cast spells, as well as the size of their mana pool, 
+depends on this stat. Anti-magic always prevents magic of this type, 
+though it may not affect some special techniques that are otherwise 
+indistinguishable from magic.
 
-Finally, there are non-magical classes that learn techniques and 
-function like spellcasters that use magic directly. These include the 
-Ninja, the Weaponmaster and the Mauler, among others. While their 
-powers are not necessarily magical, many of the rules of spellcasters 
-apply to them as well (e.g., casting costs, fail rates, etc.).
+Racial powers (and other similar powers) are used with the U key (O in 
+the roguelike keyset). Racial powers also require mana, but not 
+absolutely; it is common to substitute HP. Racial powers, like spells, 
+depend on a spellcasting stat; but while all spells rely on the same 
+casting stat, each racial power has its own stat. Racial powers are not 
+affected by anti-magic.
+
+The bulk of this document is about book spellcasting, and the various 
+magic realms available to book casters.
 
 Spellbook Magic
 
-There are many realms of magic and each is discussed below. In 
-addition, each class uses a single primary statistic to determine their 
-ability to cast spells effectively. This is the spell stat and should 
-be made clear to you during the birth process. This is the stat you 
-will want to maximize if you are to survive and thrive in the world of 
-magic. It determines how many spells you may learn as well as how 
-easily you may cast them without failing. It also determines how many 
-spells you may invoke before you need to rest and recover your mental 
-energies (i.e., spell points or mana).
+All spellbooks belong to one of the many magic realms in the game. Most 
+book spellcasters are limited to one or two realms, chosen from a wider 
+list of options during character creation; which realms are open for 
+selection depends on your class. Each realm contains exactly four 
+books, and each book contains eight spells, though some of these spells 
+may be unavailable to you even if you specialize in the right realm. A 
+few classes, such as Sorcerers, follow special rules and are not 
+limited to two realms.
 
-Some casters can choose two spell realms (e.g. the Mage and the Priest) 
-and some only one. If you can choose a second realm, note that you 
-won't be as proficient with its spells as you are in your first, or 
-primary realm. You will have increased fail rates for one thing. 
-However, players with a secondary realm gain the strong advantage of 
-being able to change that realm during the game. To do so, simply Gain 
-a spell from a book of the realm you wish to switch to. You will forget 
-any spells you learned in the old realm, and you can only learn a fixed 
-(though large) number of spells during the game, so use this power 
-sparingly and wisely.
+Classes with two realms have a primary realm and a secondary realm. The 
+primary realm is the one you are truly proficient in; your fail rates 
+are higher in the secondary realm, and you will never be able to fully 
+master its spells. The secondary realm does have one advantage: unlike 
+the primary realm, it can be changed during the game. To achieve this, 
+simply Gain a spell from a book of the realm you wish to switch to. 
+However, you will forget any spells you learned in the old realm, and 
+the number of total spells you can learn during the game is limited; so 
+use this power wisely and sparingly.
 
-Which realms you may learn is determined by class and presented to you 
-during birth. For example, Priests must choose their first realm as 
-either good (Life or Crusade) or evil (Death or Daemon), and this 
-choice will limit the realms they may access for their secondary realm 
-(e.g., You can't choose Life and then Death). All of this will be made 
-clear during player birth.
+Most realms have two cheap town books that can be regularly found in 
+shops, and two rare and valuable dungeon books that cannot be acquired 
+so easily. It is rumoured that the witches of Witch Wood have a nice 
+collection of dungeon books...
 
-Finally, there are some classes with special rules. For example, the 
-Sorcerer may cast spells from all of the magic realms provided they 
-have the requisite book. They don't choose realms at birth and don't 
-even need to learn spells to cast them! Another exception is the Red 
-Mage who can cast spells from all realms, but only from the lower books 
-of each realm. The class specific details should be discussed in the 
-help file for each class.
+Spell Proficiency
 
-General Realms of Spellbook Magic
+The more experience you have with a particular book spell, the lower 
+your fail rates and mana cost for that spell. This is called spell 
+proficiency, and is indicated by the rough labels Unskilled, Beginner, 
+Skilled, Expert and Master. Every time you use a spell, you gain some 
+proficiency with that spell, although serious experience can only be 
+gained deep in the dungeon; casting a spell over and over again in the 
+safety of a town will not help you much.
+
+Most (though not all) classes also have an alternative way to gain 
+proficiency: by studying the same spell a second (or third) time with 
+the G command. This will take you (at a minimum) to the next labeled 
+level of proficiency, and retain some of whatever progress you had 
+already made towards the next level; but it also consumes one of your 
+allocated opportunities to learn a spell, and means another spell might 
+remain unstudied forever unless you find a Scroll of Spell.
+
+In general, all players start with Unskilled proficiency with every 
+spell, can Master all spells in their first realm, and can reach Expert 
+level in all spells in their second realm if they have one. Sorcerers 
+and Red-Mages, who are not limited to two realms, follow special rules 
+regarding proficiency; Sorcerers automatically Master all spells they 
+have access to, while Red-Mages are Skilled in all of their spells. The 
+proficiency of Skillmasters is also special, and determined solely by 
+how many skill points they have invested in the realm. These three 
+classes gain no proficiency from using a spell.
+
+What a Spellbook Looks Like
+
+This is what a young character might see on pressing m and selecting a 
+spellbook:
+
+(Spells a-h, *=List, ESC=exit) Cast which spell?                                
+     Name                    Profic Lvl  SP Fail Desc
+  a) Magic Missile             [Be]   1   2   5% dam 3d4
+  b) Trap / Door Destruction   [Un]   1   4   9% unknown
+  c) Flash of Light            [Un]   2   4  15% untried
+  d) Touch of Confusion        [Un]   5   8  49%
+  e) Mana Burst                [Un]   9  10  91% unknown
+  f) Fire Bolt                 [Un]  13  15  95% unknown
+  g) Fist of Force             [Un]  14  15  95% unknown
+  h) Teleport Self             [Un]  15  15  95% unknown
+
+Indicated for each spell are the spell's label (the key for that 
+spell), the spell's name, your proficiency, the character level at 
+which the spell can first be learned, mana cost, fail rate and some 
+additional information. The spell Flash of Light is shown in green 
+because the character has studied it but not yet attempted to cast it; 
+Magic Missile and Touch of Confusion are shown in white because they 
+have been both studied and successfully cast, while the other spells 
+are all light blue to indicate they have not been studied yet. Magic 
+Missile is already up to [Be]ginner proficiency, while the other seven 
+spells are still [Un]skilled.
+
+The very brief additional info does not tell us much; Magic Missile 
+does 3d4 damage, and is presumably a magical missile, but the other 
+spells are not as self-explanatory. Instead of m, we can use the b 
+Browse command (P for Peruse in the roguelike keyset) to learn more:
+
+(Spells a-h, *=List, ESC=exit) Browse which spell?
+     Name                    Profic Lvl  SP Fail Desc
+  a) Magic Missile             [Be]   1   2   5% dam 3d4
+  b) Trap / Door Destruction   [Un]   1   4   9% unknown
+  c) Flash of Light            [Un]   2   4  15% untried
+  d) Touch of Confusion        [Un]   5   8  49%
+  e) Mana Burst                [Un]   9  10  91% unknown
+  f) Fire Bolt                 [Un]  13  15  95% unknown
+  g) Fist of Force             [Un]  14  15  95% unknown
+  h) Teleport Self             [Un]  15  15  95% unknown
+
+  Lights up nearby area and the inside of a room permanently.
+
+Here I'm looking into the Flash of Light spell; the description makes 
+it clear this is an illumination spell and not, say, a bolt of light.
+
+Which Spells Should I Study?
+
+A few spellcasting classes, generally those associated with Wisdom or 
+priesthood, have no direct control over which spells they gain; when 
+they use the G Gain a Spell command, their gods select a new spell for 
+them at random. Most classes, though, can choose a specific spell to 
+study; as noted above, they can even study the same spell repeatedly!
+
+As a rule, you can eventually learn all spells in your realm or realms; 
+the exceptions are if you swapped your secondary realm mid-game or if 
+you studied a single spell more than once, and even then you can gain 
+new spell slots with Scrolls of Spell. So the question is not so much 
+"which spells should I study?" - you will study all or nearly all of 
+them - as it is which spell you should study right now.
+
+Book spellcasters often have a hard time killing monsters in the early 
+game, so it helps if your first spell is something offensive like Magic 
+Missile. You can get a mage off the ground without offensive spells, 
+but it takes care and patience! Once you have solid offensive options, 
+utility spells like detection, escapes and buffs become more inviting.
+
+General Magic Realms
+
+These magic realms are available as first and second realms to a wide 
+variety of classes, though not necessarily to all book spellcasters.
 
 Life
   Life magic is very good for healing; it relies mostly on healing, 
   protection and detection spells. This realm has no direct damage 
   spells, at least against the living. It said that some high level 
-  spell of life magic can disintegrate Undead monsters into ash. The 
-  fail rate of Life spells goes up if the caster's alignment tends 
-  towards evil.
+  spell of life magic can disintegrate Undead monsters into ash. Life 
+  is considered a "good" realm; if virtues are on, the fail rate of 
+  Life spells goes up if the caster's alignment tends towards evil, and 
+  down if the caster is aligned with the forces of good.
 
 Sorcery
   Sorcery is a utility realm, including enchantment and general spells. 
@@ -129,10 +224,10 @@ Chaos
   terrible weapons of destruction imaginable. From Magic Missile and 
   Fire Bolt to the medium level Fire Ball and Doom Bolt, and finally to 
   the awesome spells of Invoke Logrus, Mana Storm and Call the Void, 
-  Chaos offers an unsurpassable arsenal of attack spells. Chaos is one 
-  of the two realms which provides the Destruction spell. The caster 
-  can also call on the primal forces of Chaos to induce mutations in 
-  his/her opponents and even him/herself, but otherwise, Chaos has no 
+  Chaos offers an almost unsurpassable arsenal of attack spells. Chaos 
+  is one of two realms to provide the Destruction spell. The caster can 
+  also call on the primal forces of Chaos to induce mutations in 
+  enemies and even themselves; but apart from this, Chaos has no 
   protective spells. Beware! Chaos spells are known to backfire easily 
   and produce undesired effects.
 
@@ -145,41 +240,34 @@ Death
   wizard find the legendary tome Necronomicon, he can expect to gain 
   very great powers indeed, but at a cost: few that have studied that 
   accursed tome have retained their sanity. Since this is an evil 
-  realm, the fail rates of Death spells go up for casters aligned to 
-  good.
+  realm, the fail rates of Death spells go up for good-aligned casters 
+  if virtues are turned on.
 
 Trump
-  Trump magic seems an independent source of power, although its 
-  supposed association with Chaos magic has been mentioned in several 
-  places. Although it lacks the unpredictable chaotic side-effects of 
-  Chaos magic, it has a few spells whose exact effects seem more or 
-  less random. One such spell is Shuffle: the Trump spellbooks actually 
-  consist of decks of trumps, and the Shuffle spell allows the caster 
-  to shuffle the deck and pick one card at random. The effect depends 
-  on the card picked, and is not always pleasant. In the Amber 
-  universe, the Trump gateways are also a major method of 
-  transportation: Trump magic has an admirable selection of 
-  teleportation spells. Since the Trump gateways can also be used to 
-  summon other creatures, Trump magic has an equally impressive 
-  selection of summoning spells. However, not all monsters appreciate 
-  being drawn to another place by a Trump user. The only summoned 
-  creatures whose loyalty is guaranteed are the Phantasmal Servants, 
-  who lack a will of their own (but can develop one, if you treat them 
-  badly).
+  Trump magic seems an independent source of power, even if supposedly 
+  associated with Chaos. Although it lacks the unpredictable chaotic 
+  side-effects of Chaos magic, it has a few spells whose exact effects 
+  seem more or less random. One such spell is Shuffle: the Trump 
+  spellbooks actually consist of decks of trumps, and the Shuffle spell 
+  allows the caster to shuffle the deck and pick one card at random. 
+  The effect depends on the card picked, and is not always pleasant. 
+  The Trump gateways are a major method of transportation, and the 
+  realm has an admirable selection of teleportation spells. Trump magic 
+  has no equal when it comes to summoning creatures; but not all 
+  monsters appreciate being drawn to another place by the Trump user. 
+  The only summoned creatures whose loyalty is fully guaranteed are the 
+  Phantasmal Servants, who lack a will of their own... but might 
+  develop one if you treat them badly.
 
 Arcane
-  Even more than Sorcery, Arcane magic is a general purpose realm of 
-  magic. It attempts to encompass all 'useful' spells from all realms, 
-  and almost succeeds, with the probable exception of *Identify*. This 
-  is the downside of Arcane magic: while Arcane does have all the 
-  necessary 'tool' spells for a dungeon delver, it has no 
-  ultra-powerful high level spells. As a consequence, all Arcane 
-  spellbooks can be bought in town. It should also be noted that the 
-  'specialized' realms (i.e. other than Arcane) usually offer the same 
-  spell at a lower level and cost. Arcane magic is therefore not 
-  usually recommended as one's only realm of magic, but it should be a 
-  very nice addition to fill up the gaps in the selection of utility 
-  spells in another realm.
+  Arcane, even more than Sorcery, is a general-purpose realm; it 
+  attempts to offer all the utility spells of other realms, as well as 
+  a few of its own. The downside of Arcane is that it is somewhat 
+  lacking in really powerful spells, and many of its spells are more 
+  expensive than their cousins in other realms. Arcane is the only 
+  realm with no dungeon spellbooks; all four Arcane books can be bought 
+  in town. Arcane offers good support to other realms, but characters 
+  with just one realm may find it too limited.
 
 Craft
   As the realm of enchantment, Craft magic offers spells to enhance the 
@@ -198,28 +286,27 @@ Daemon
   Fire or Nether. There are a few detection spells which provide a map 
   of the nearby area or temporary telepathy. Daemon magic also provides 
   temporary transformation spells which allow caster to become a Demon 
-  or even a mighty Demon Lord. The fail rate of Daemon spells goes up 
-  for casters aligned towards good.
+  or even a mighty Demon Lord. Daemon is an evil realm; if virtues are 
+  on, the fail rates of Daemon spells go up for casters aligned towards 
+  good.
 
 Crusade
-  Crusade is a realm of 'Justice'; It does have many attack spells 
-  which are mostly used for harming and banishing foul minions of evil, 
-  and these spells are not so effective for good monsters. The fail 
-  rate of Crusade spells goes up if the caster's alignment tends 
-  towards evil.
+  Crusade is the ultimate "good" realm; it has some attack spells, but 
+  they are mostly used for harming and banishing foul minions of evil, 
+  and are not very effective against a good monster. If virtues are on, 
+  the fail rates of Crusade spells go up for casters aligned with evil.
 
 Armageddon
   Death. Destruction. Slaughter. This realm knows nothing else and 
   every spell is a direct offensive spell. From elemental attacks to 
-  mighty breath attacks, this realm offers the ultimate in destructive 
-  prowess. But it might be better to seek a more balanced approach, and 
-  even Chaos magic offers some utility spells to complement the mighty 
-  offense. Still, if you want the ultimate in destruction, then look no 
-  further.
+  mighty breath attacks, Armageddon is unparalleled in raw damage. It 
+  might be better to seek a more balanced approach, and even Chaos 
+  magic offers some utility spells to complement the offense; still, if 
+  you want the ultimate in destruction, look no further.
 
-Class Specific Realms of Spellbook Magic
+Class-Specific Magic Realms
 
-In addition to the realms listed above, there are a few class specific 
+In addition to the realms listed above, there are a few class-specific 
 spell realms. These realms also use books to gain access to magic but 
 might behave slightly differently than normal spellbook realms.
 
@@ -238,20 +325,21 @@ Music
   a single spell may be sung at a time, and the effects of the various 
   spells endure (and perhaps grow stronger) so long as the song is 
   continued. Reading a scroll, or quaffing a potion, interrupts the 
-  current song, discontinuing its effects. It is said that certain 
-  harps may enhance this form of magic.
+  current song, discontinuing its effects. Certain harps may enhance 
+  this form of magic.
 
 Hex
-  Unique to the High-Mage, Hex magic thrives on curses. Most of its 
-  spells are cast continually, like the musical songs of the bard, but 
-  they are chanted rather than sung. And multiple chants may be woven 
+  Unique to the High-Mage, Hex magic thrives on curses; truly, the four 
+  Hex spellbooks are full of language not fit for printing. Most Hex 
+  spells are cast continually, like the musical songs of the bard; but 
+  they are chanted rather than sung, and multiple chants may be woven 
   at once, inter-weaving verse upon verse, and hex upon hex, allowing 
-  the caster to get a few effects going at a time. But the number of 
-  concurrent spells is strictly limited, increasing slowly with level. 
-  And while their chants are interrupted by reading a scroll, I've 
-  heard tell of Hex casters inhaling potions through their nose without 
-  interrupting their foul chants in the least. But I find this rather 
-  hard to believe and rather funny besides.
+  the caster to get more than one effect going at a time. However, the 
+  number of concurrent spells is strictly limited, increasing only 
+  slowly with level. While reading a scroll interrupts all of Hex 
+  casters' foul chants, I've heard tell of Hex mages inhaling potions 
+  through their nose without the least pause in the spell; but I find 
+  this rather hard to believe, and quite silly besides.
 
 Burglary
   This is the preferred realm of the Rogue, and unique to that class. 
@@ -264,18 +352,17 @@ Burglary
   map out their escape route in advance. They can make haste to escape 
   a tricky situation. They may examine the proceeds of their thievery 
   (their loot) and consequently have a very good idea of the quality of 
-  the treasures they ... ahem ... find. They are also well known to the 
-  Black Markets of the world, and treated well as the principle source 
-  of new inventory, but that is hardly a magical fact, so really 
-  shouldn't even be mentioned here.
+  the treasures they... ahem... find. Burglary rogues are well known to 
+  the Black Markets of the world, and treated well as the principal 
+  source of new inventory; but that is hardly a magical fact, or is it?
 
 Necromancy
-  Unique to the Necromancer, this is the foul realm of undeath allowing 
-  the caster to communicate with, and ultimately control, the deceased. 
-  And the dead have lots to offer, including knowledge of this world 
-  and the objects it contains. As servants, they are hard to kill, 
-  being dead already! In addition, this realm offers something quite 
-  unique: The ability to touch their foes with deadly (undeadly) 
+  Exclusive to the Necromancer, this is the foul realm of undeath 
+  allowing the caster to communicate with, and ultimately control, the 
+  deceased. And the dead have lots to offer, including knowledge of 
+  this world and the objects it contains. As servants, they are hard to 
+  kill, being dead already! In addition, this realm offers something 
+  quite unique: the ability to touch foes with deadly (undeadly) 
   powers. At first, the touch of the necromancer is weak, being cold, 
   or dark, or poisonous, but eventually the touch grows stronger, 
   stealing life little by little, and perhaps, maybe, eventually all at 
@@ -283,21 +370,20 @@ Necromancy
   necromantic secrets are with us no more?
 
 Rage
-  More technique than magic, this realm is unique to the Rage-Mage: 
-  Sworn enemies of all that is magical. Talents are learned from books, 
-  to be sure, but the ritual of gaining spells involves the destruction 
-  of the book in the process, meaning the Rage-Mage can only learn one 
-  spell from each book they find. And once learned, the book is no 
-  longer required to cast the technique, which is perhaps fortunate. 
-  This realm offers various combat techniques as well as talents to 
-  shout down magical enemies. But it is not really magic after all, so 
-  really should be discussed elsewhere.
+  A special technique rather than magic, this realm is unique to the 
+  Rage-Mages, sworn enemies of all things magical. Talents are learned 
+  from books, to be sure, but the ritual of gaining spells involves the 
+  destruction of the book in the process, meaning the Rage-Mage can 
+  only learn one spell from each book they find. And once learned, the 
+  book is no longer required to cast the technique, which is perhaps 
+  fortunate. This realm offers various combat techniques, as well as 
+  the talent to simply shout down magical enemies.
 
 Kendo
-  Another technique realm, Kendo is unqiue to the Samurai, offering 
-  powerful talents to directly enhance the effectiveness of 
-  hand-to-hand melee. Talents are learned from books, but, once 
-  learned, may be freely used without further reference to the book.
+  Another technique realm, Kendo is unique to the Samurai, offering 
+  powerful talents to directly enhance the effectiveness of melee. 
+  Talents are learned from books, but, once learned, may be freely used 
+  without further reference to the book.
 
 On Casting Spells
 
@@ -307,34 +393,25 @@ on what may be happening.
 
 Armor and Spell Casting
   Most spellcasting classes are penalized for wielding armor and 
-  weapons above a certain total combined weight. The Mage is most 
-  sensitive to encumbrance since the weight calculation also includes 
-  the full weight of their melee weapon. Paladins, on the other hand, 
-  can "armor up" since their encumbrance calculation all but ignores 
-  the weight of their melee weapon. Typically, the more reliant on 
-  spells/prayers your class is deemed to be, the lower your weight 
-  allowance. If you exceed your weight limit, your mana will drop. This 
-  penalty is fairly stiff for low level characters but can generally be 
-  ignored by high level ones ... Unless your end game priest attempts 
-  to weild a 40lb Mace of Disruption!
+  weapons above a certain total combined weight, though the size of the 
+  penalty, the maximum weight allowed and the extent to which weapons 
+  count towards that maximum vary widely from class to class. Exceeding 
+  the weight limit reduces your maximum SP; you are warned when this 
+  happens.
 
-Mage-Types and Gloves
-  Spellcasters who cast spells from spellbooks using INT as the stat 
-  determining their spellcasting ability will usually be penalized 
-  heavily for wielding armor on their hands. The exception to this is 
-  that wielding gloves, gauntlets or cesti which boost DEX or which 
-  grant Free Action will result in no penalty. The rationale behind 
-  this is that the hands are needed to perform intricate gestures that 
-  accompany the casting of the spell and anything encumbering the hands 
-  would interfere with this. The priest-type classes (priest, paladin 
-  and monk) do not have the same restrictions as they are viewed as 
-  invoking the power of their deity directly through prayer.
+Glove Encumbrance
+  Many spellcasters, in particular mages, need their fingers free for 
+  the intricate gestures that accompany a spell and are therefore 
+  heavily penalized for wearing gloves on their hands. Items that grant 
+  Free Action, Dexterity or Magic Device Skill are an exception to this 
+  and can be worn normally; and not all magical or book-using classes 
+  are limited in this way.
 
 Spell Durations
   Some spells such as Haste-Self or Resistance grant an effect which 
   wears off after a certain period of time. With very few exceptions, 
   multiple castings of such spells are not cumulative in terms of the 
-  duration of the spell. In other words, casting a spell which has a 
+  duration of the spell; in other words, casting a spell which has a 
   duration of 20 turns three times will not result in a duration of 60 
   turns. Typically, subsequent castings will add only a small amount to 
   the total duration.
@@ -342,36 +419,108 @@ Spell Durations
 Spell Types
 
 Bolts and Beams
-  A bolt spell is aimed in a direction or at a target but will hit the 
-  first monster or obstruction in its targeted direction. This may or 
-  may not be the intended target. Occasionally, you may note that your 
-  bolt spell hits multiple targets along the line of fire. This is 
-  because some bolt spells are granted a chance of 'beaming' which may 
-  be either fixed or level-dependent. A beam will hit every target 
-  within range along a 'straight' line in the direction in which it was 
-  aimed.
+  Bolt and beam spells are aimed in a direction or at a target. A bolt 
+  spell will hit the first monster or obstruction in its targeted 
+  direction, which may or may not have been the intended target. A beam 
+  spell, on the other hand, will hit every target within range in the 
+  direction of fire until it hits a wall or other obstacle. Monsters 
+  with Reflection have a 75% chance to reflect bolts, but beams are not 
+  affected. Beams, unlike bolts, can damage objects. Many bolt spells 
+  have a random chance to generate beams.
 
 Balls
-  There are two things to remember about ball spells. Firstly, unlike 
-  bolt spells, they will always hit the specified target as opposed to 
-  the first one in the direction you are aiming. Secondly, they have a 
-  radius (which varies from spell to spell). A radius value of one or 
-  more will result in the spell affecting monsters (and possibly 
-  objects, etc) around the target in addition to the target itself. 
-  When ball spells are directed at monsters in walls, the ball will 
-  blow up at the front of the wall, and the monster will take only half 
-  damage.
+  Ball spells differ from bolts in several ways: they always hit the 
+  intended target (if it was a valid target in line of sight); they 
+  have a radius (which varies from spell to spell); and they cannot be 
+  reflected. A radius value of one or more will result in the spell 
+  affecting the area around the target square in addition to the target 
+  itself; this can affect additional monsters, objects or terrain, 
+  though only the target square suffers full damage. When ball spells 
+  are directed at monsters in walls, the ball will blow up in front of 
+  the wall, reducing the damage taken by the monster to half since it 
+  is not at the epicenter. Almost all ball spells can be aimed, though 
+  a few are always centered on the player (the player does not take any 
+  damage in this case).
 
 Line-of-Sight
   Line-of-sight spells affect all monsters that that are currently in 
-  sight of your character. This includes monsters that may not 
-  currently be visible due to darkness but would be if it was light.
+  your character's line of sight, including invisible and otherwise 
+  unseen monsters. Line-of-sight spells cannot, and need not, be aimed.
 
 Area
   Area spells affect an area around the player. The size of the area 
-  can vary considerably. For example, Light Area lights a single room 
-  while Detect Traps and Mass Genocide affects within a circle of a 
-  specific radius and normal Genocide affects the entire level.
+  can vary considerably; for example, Light Area illuminates a single 
+  room, while Detect Traps and Mass Genocide affect all squares within 
+  a specific radius (regardless of line of sight), and normal Genocide 
+  affects the entire level. Area spells cannot be aimed.
+
+Other
+  Many spells, like Identify or Teleport Self, are not directed outside 
+  and affect the player or objects carried by the player. Buff spells 
+  provide temporary benefits such as haste or elemental resistance, and 
+  almost always have a duration. Healing spells cure status effects and 
+  give back lost hit points. Play the game and find out what else there 
+  is!
+
+Using Macros to Cast Spells
+
+Macros and keymaps are a somewhat advanced topic; it is by no means 
+necessary to ever use a macro during a game, so you can skip this 
+section if you wish. The basics behind macros, though, are not that 
+hard to grasp.
+
+Casting a book spell requires a minimum of three keypresses - one to 
+select the spell command, one to select the right book and one to 
+select the right spell. Three keypresses is not that much, but over the 
+course of a long game you might cast some spells 1000 times or even 
+more, so it adds up! This is the main reason single-key macros or 
+keymaps for common spells are often convenient.
+
+Going back to our earlier example book:
+
+(Spells a-h, *=List, ESC=exit) Cast which spell?                                
+     Name                    Profic Lvl  SP Fail Desc
+  a) Magic Missile             [Be]   1   2   5% dam 3d4
+  b) Trap / Door Destruction   [Un]   1   4   9% unknown
+  c) Flash of Light            [Un]   2   4  15% untried
+  d) Touch of Confusion        [Un]   5   8  49%
+  e) Mana Burst                [Un]   9  10  91% unknown
+  f) Fire Bolt                 [Un]  13  15  95% unknown
+  g) Fist of Force             [Un]  14  15  95% unknown
+  h) Teleport Self             [Un]  15  15  95% unknown
+
+Suppose this is book a, and furthermore that I have inscribed the book 
+as @ma to make sure it will always be book a and not suddenly change 
+slots (see [a] for more details on inscriptions). This means I'll be 
+typing mac to cast the Flash of Light illumination spell, something I 
+will likely do several hundred times in a game if I don't die early.
+
+Using the @ command, I can create a new macro with the F6 key as the 
+trigger and mac as the action. (Keymaps are generally preferable to 
+macros; but the F6 key is only acceptable as a macro trigger, not a 
+keymap trigger, so if that's what I wish to use it has to be a macro.)
+I can now use the F6 key to illuminate rooms with a single keypress... 
+and the next time I play a different character with a different 
+illumination spell, I can map F6 to the new spell and keep using the 
+same key instead of having to memorize a new sequence.
+
+    Always append your macros and keymaps to a file. 
+    Otherwise, they will be lost when you exit the game.
+
+Now suppose I want to have a macro for Magic Missile as well. I could 
+simply map F1 to the sequence maa (indeed, this is what I personally 
+would do); but some players like to go further and map it to maa*5, so 
+the macro automatically selects a target as well. This has the downside 
+that you might not get the target you would like best; but if you are 
+just spamming magic missiles into a crowd of weak enemies, that will 
+probably not matter so much.
+
+Note that an maa*5 macro only saves two keypresses per enemy over an 
+maa macro, even if the spell is used more than once; and the maa macro 
+itself only saves two keypresses per enemy compared to just pressing 
+every key in the sequence m-a-a-*-5. This is because after the first 
+cast, the single-key n command (X in the roguelike keyset) can be used 
+to repeat both the spell and the targetting.
 
 
 Original   : (??)
@@ -379,5 +528,6 @@ Updated    : (??)
 Updated    : Zangband DevTeam
 Updated    : Hengband 1.7.2
 Updated    : PosChengband 7.0.0
-</color:
+Updated    : FrogComposband 7.1.liquorice
+
 
