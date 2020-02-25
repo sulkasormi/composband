@@ -1,293 +1,216 @@
-The Town and Wilderness
+The Towns and Wilderness
 
 After you have created your character, you will begin your adventure in 
-the town called Outpost. Symbols appearing on your screen will 
-represent the walls, floor, objects, features, and creatures lurking 
-about. In order to direct your character through his adventure, you 
-will enter single character commands (see [a]).
+a town called Outpost. If you are playing in Beginner Mode, or another 
+mode that switches off the wilderness, this is the only town in the 
+game; if not, you will find many other towns in the wide world.
 
-    The Global Map: Press the < to enter the global map for 
-    wilderness travel.
-  
-Since this world is very large, it is convenient to go into global map 
-mode by pressing the < key, and then return to local map mode by > key 
-when you are at the destination.  When in the wilderness, stay in safe 
-grids such as roads or plains; seas and lava fields are best avoided 
-for a while.
-
-Many towns and dungeons await you; good ones to explore early on 
-include the orc caves and the Labyrinth.  To the northeast of the town 
-of Morivant, near the center of the map, is the dread dungeon of 
-Angband.  It is home to the Serpent of Chaos, whom you must kill in 
-order to win the game.
+Symbols appearing on your screen represent the buildings, streets, shop 
+entrances, terrain, and townspeople. In order to direct your character 
+through his adventure, you will enter single-character commands (see 
+[a]).
 
 Town and Wilderness Symbols
 
-Symbols on your map can be broken down into three categories: terrain 
-features such as walls, floor and doors, and trees, water and lava; 
-objects which can be picked up such as treasure, weapons, magical 
-devices, etc; and creatures which may or may not move about, but are 
-mostly harmful to your character's well being. Symbols specific to the 
-town and wilderness are shown below. Note that many creatures and 
-objects from the dungeon may also appear in town and you should also 
-review the comprehensive listing of all the various symbols which can 
-be found in the dungeon section (see [b]).
+The symbols on your map can be broken down into three broad categories: 
+terrain features; objects which can be picked up; and creatures both 
+friendly and hostile. Listed below are some of the terrain symbols you 
+are likely to see often in the town and the wilderness:
 
 
-  Terrain                       Shops
+  Town and Wilderness Terrain   Shops and Buildings
   ----------------------        -------------------------------
-  #   A Tree                    1   Entrance to General Store
-  ~   Shallow Water             2   Entrance to Armory
-  ~   Deep Water                3   Entrance to Weapon Smith
-  ~   Shallow Lava              4   Entrance to Temple
-  ~   Deep Lava                 5   Entrance to Alchemy Shop
-  #   Mountains                 6   Entrance to Magic Shop
-  .   Floor / Road              7   Entrance to the Black Market
-  .   Dirt                      8   Entrance to your Home
-  .   Grass                     9   Entrance to Bookstore
-  >   Dungeon Entrance          M   Entrance to the Museum
-  >   Quest Entrance
-     Quest Exit
+  #   Tree/wooded area          #   Building wall
+  .   Patch of grass            1   Entrance to General Store
+  :   Flower                    2   Entrance to Armoury
+  :   Brake                     3   Entrance to Weapon Shop
+  .   Swamp                     4   Entrance to Temple Shop
+  ~   Shallow water             5   Entrance to Alchemy Shop
+  ~   Deep water                6   Entrance to Magic Shop
+  ~   Shallow lava              7   Entrance to Black Market
+  ~   Deep lava                 8   Entrance to your home
+  #   Dark pit                  9   Entrance to Book Store
+  #   Mountains                 0   Entrance to Shroomery
+  .   Floor/road                "   Entrance to Jewelry Store
+  .   Dirt                      M   Entrance to Museum
+  .   Grass                     +   Entrance to non-shop building
+  >   Dungeon entrance          +   Entrance to non-shop building
+  >   Quest entrance
 
-Note that trees, water (deep and shallow) and lava (deep and shallow) 
-may also appear in the dungeon.
 
-The Town Level
+What to Expect in a Town
 
-LEVEL      1 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~.............#################
-EXP       11 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~####~.........#####################
-AU       161 ###################################~.......#######################
-\     ~((    ###################################~.....#########################
-STR :     15 ................................###~.....#########################
-INT :     13 ######................######....##~~.....#########################
-WIS :  18/10 ######................######....##~~......########################
-DEX :     16 ######................######....##~~.....#########################
-CON :     18 ######..........................##~~.....#########################
-CHR :     12 ................................##~~.....#########################
-AC         6 ................................##~~.....#########################
-HP   42/  42 ..#########.....#########.......##~~.....#########################
-SP   11/  12 ..#########.....#########.......##~~......########################
-             ..#########.....####1####......####~.......########>##############
-             ..####2####....................####~........######...#####........
-             ..................................@........................#######
-             ...............................####~........######################
-             ...............................####~.......#######################
-             ................................##~~.....#########################
-             ...............#####+######.....##~~....##########################
-             ...####6####...############.....##~~....##########################
-             ...#########...############.....##~~....##########################
-             ...#########...############.....##~~....##########################
-             ...#########....................##~~....##########################
-             ...#########....................##~~....##########################
-                                                                        Outpost
+The exact appearance of Outpost depends on whether you are playing with 
+the wilderness on or off, but the basics are the same either way: you 
+will find a number of shops where items can be bought and sold, plus a 
+handful of other buildings where items are not on display but services 
+or interesting quests might be offered instead. As a general rule, the 
+symbols for shop entrances are usually numerical (such as 5 for the 
+Alchemy Shop), while buildings that offer services or quests are 
+denoted with the character + in various colors. Outside these rules are 
+your home 8 and the museum M, which are not shops but also do not offer 
+quests or services.
 
-The town level is where you will begin your adventure. The first time 
-you are in town it will be daytime (unless you are playing an undead 
-race who start at night), but note that the sun rises and falls as time 
-passes and if you enter the town at night, the town will be dark. 
-Fortunately, the various shops and the other special buildings are open 
-on a 24-hour basis.
+A glimpse of Outpost as it appears with the wilderness on can be seen 
+below:
 
-The world includes multiple towns separated by a wilderness and many 
-dungeons as well. Be sure to check the various buildings in each town 
-to see what services are available. Some buildings will offer you 
-quests to complete, and reward you (lavishly?) upon success (see [c] 
-below).
+#~~.#############.~~~~~~~~~~~~~~~~~~~~~~~~####~.....:......::.:...# LEVEL      1
+#~~######+++######~~##########################~......:##:##:....... EXP       16
+#~~#####.....#####~~##########################~........####......#: AU       595
+#~~~~~.........~~~~~##.....................###~............##::.... |       (   
+##~~~~~~~...~~~~~~~~##.#########.#########.##~~......::....::#::#.. STR :     16
+#########...##########.#########.#########.##~~.....#::.::##:#:.::: INT :     14
+#########...#########..####2####.#########.##~~........::##:::.:.:. WIS :      8
+......###...###............................##~~.....:..::..::.::.#. DEX :  18/50
+......................................####.##~~......#.::::::##:#.: CON :     17
+......................................3###.###~.......:#:::.:#>##:: CHR :     12
+......................................####.###~................#... AC        15
+...........................................###~.................... HP   37/  37
+...................................@...............................             
+.................................###+####..###~.......#..##.#.#....             
+.................................########..###~.......:.#.....::.:#             
+.................................########..##~~..................#.             
+....................................#####..##~~.......#............             
+....................................#####..##~~..........:.:......:             
+..................................#######..##~~............#.##..:.             
+..........................#####...#######..##~~......:.....::##.::#             
+...........................####............##~~............#::#....             
+##.........................7###...#######..##~~.....#......#...:##:             
+#9................####8....####...#######..##~~............:.::....             
+##......#.#.......#####...#####...#######..##~~......:#............             
+.......##M##...............................##~~...........###:#....             
+Outpost
 
-While most people welcome this large world, it is not for everyone and 
-consequently, there exists an option to disable the wilderness. In this 
-case, you will begin life in a special town and there will only be a 
-single dungeon entrance to the Pits of Angband.  You can set this 
-option during character generation (see [d]).
 
-Your choice of town is fixed for the duration of your character's life 
-and will be the new default for future characters created with that 
-savefile. This of course may be changed by pressing = during the 
-creation of your next character.
+The > to the east is a dungeon entrance, and is actually where you 
+start the game, but it is not a good idea to enter the dungeon 
+immediately! Do some shopping first, maybe even complete a couple of 
+town quests. The @ symbol marks the player's location; and directly to 
+the player's southeast is the entrance to the White Horse Inn, one of 
+two buildings in this wilderness-on version of Outpost to offer quests. 
+The other one is also visible here - that large multi-entrance building 
+to the northwest, which is the castle of Uldrik, the Count of Outpost. 
+Visit these two buildings, press q to request your first quests, and 
+decide if you're brave enough to take them on immediately.
 
-The Wilderness Option
+A few of the town's shops are also visible here, as well as your home 
+8. Additional shops not visible in this shot can be found to the west, 
+including the General Store, the Temple Shop and the Alchemy Shop. 
+These are three shops you should visit at the beginning of every new 
+game, as they sell very useful items you will need on your adventures.
 
-You are in Outpost [q,p,o,+,-,?,<dir>] L0
-LEVEL      1 #~~~~~~~~~~~~~~~~~~~~.....###..............................~~#####
-EXP       11 #~~~~~~~~~~~~~~~~~~~~....#####...................###.......~######
-AU       161 #~~~~~~~~~~~~~~~~~~~~.....#####...................###......~~#####
-\     ~((    #~~~~~~~~~~~~~~~~~~~~......####..................#.#........~~~>##
-STR :     15 #~~~~~~~~~~~~~~~~~~~~....#####>................>..............#~~#
-INT :     13 #~~~...~~~~~~~~~~......####...................................####
-WIS :  18/10 #~~............~~...~....................................~~....###
-DEX :     16 #~...@.............~~..................................~~~~...####
-CON :     18 #~................~~~~.......~~~......................~~~~~.....##
-CHR :     12 #~...>......##....~~~~~~~~~~~~~~~..............*.....~~~~~........
-AC         6 #~.........####.#..~~~~~~.....~~~~~~~~~~~.~~~......~~.......#.....
-HP   42/  42 #~........##~~##....~~~~........~~~~~~~~..~~~~~.........#######...
-SP   10/  12 #~~........~~>##....~~~...#......~~~~........~~~~~~############>#.
-             #~~~.......~~~##.#..~~..###.......~~...........~~~~~##############
-             #~~~~~.......##.#.~~~..###..............####....~~################
-             #~~~~###....##.#..~~~...............#########...~#################
-             #~~~###..#......#..~~..........>....#########..~~#################
-             #~~####.###..#.....~~...............######>####.~#################
-             #~#####>#~~...#.....~.................#########.~~###############~
-             #~~####~~~~~........~~~.......~~~~~~...#######..~~~###############
-             #~~###~~~~~~......~~~~~~....~~~~~~~~~~~~.........~~~##############
-             #~~###~~~~~~......~~~~~~~~~~~~~~~~~~~~~~~~~~~..~~~~~~~~#########~~
-             #~######~~~.....~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-             #~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-             ##################################################################
-                                                                        Surface
-
-The wilderness consists of a 97x62 tile world. Each tile is the size of 
-a standard dungeon level and contains themed wilderness terrain 
-(mountainous areas, oceans, plains, etc). There are several towns 
-located in various parts of the world and each town is situated in its 
-own wilderness square. In addition, there are numerous (too many?) 
-dungeon entrances in the wilderness. Again, each is located on its own 
-wilderness square.
-
-The wilderness is not uninhabited and can be dangerous for the unwary. 
-As a general rule, the further your character gets from civilization 
-the more cautious he or she should be. When traveling between towns, 
-try to stay on the roads. These are by no means safe, but they are 
-safer than wandering off the beaten path. In addition, traveling is 
-safer during the daytime.
-
-Since this world is very large, it is convenient to go into global map 
-mode by pressing the < key, and then return to local map mode by 
-pressing the > key when you are at the destination. In the global map, 
-however, you might suddenly get ambushed by monsters. In such a 
-situation, you cannot simply run away using the < key but you might try 
-escaping with a scroll of teleport.
-
-Each of the towns contains the standard ten shops where you can 
-purchase your supplies for your trips into the dungeon and sell the 
-items you have collected. There are also special buildings offering 
-services for a fee. The services available and the prices charged may 
-vary from town to town so it can be worth hunting around for the best 
-prices.
-
-The No Wilderness Option
-
-LEVEL      1 #############################.################################....
-EXP       22 #############################.#################################...
-AU       341 ##.......................................................#######..
-|            #+.......................................................+######..
-STR :  18/20 ##.......................................................#######..
-INT :     18 #.........###0###..####+####...####+####..###+###.........######..
-WIS :      9 ...#####..#######..#########...#########..#######..#####...#+###..
-DEX :  18/50 ...#####..#######..#########...#########..#######..#####......##..
-CON :     11 ...##+##..###9###..####3####...####6####..###4###..##+##......##..
-CHR :     14 ..............................................................##..
-AC         3 ..............................................................##..
-HP   43/  43 ..............................................................##..
-             .............................>...@................................
-             ..............................................................##..
-             ..............................................................##..
-             ..............................................................##..
-             ...##1##..###7###..####2####...####5####..###8###..##+##......##..
-             ...#####..#######..#########...#########..#######..#####......##..
-             ...#####..#######..#########...#########..#######..#####...#+###..
-             #.........###+###..####+####...####+####..#######.........######..
-             ##.......................................................#######..
-             ##.......................................................+######..
-             ##.......................................................#######..
-             #############################.#################################...
-             #############################.################################....
-                                                                           Town
-
-The No Wilderness option creates a 1x1 wilderness square containing a 
-single town. This town contains the ten standard shops, the special 
-buildings and access to a limited wilderness. Some fixed quests are 
-also available. This option is intended to be used by players who want 
-to take advantage of the special buildings and fixed quests but don't 
-want the large wilderness and by players who need a smaller wilderness 
-for computer efficiency reasons.
+The first time you are in town it will be daytime (unless you are 
+playing an undead race who starts at night), but note that the sun 
+rises and falls as time passes; if you enter the town at night, the 
+town will be dark. Fortunately for you, the various shops and the other 
+special buildings are open on a 24-hour basis.
 
 Townspeople
 
-The town contains many different kinds of people. There are the street 
-urchins, young children who will mob an adventurer for money, and seem 
-to come out of the woodwork when excited. Blubbering idiots are a 
-constant annoyance, but not harmful. Public drunks wander about the 
-town singing, and are of no threat to anyone. Sneaky rogues who work 
-for the black market are always greedily eyeing your backpack for 
-potential new 'purchases'... And finally, what town would be complete 
-without a swarm of half drunk warriors, who take offense or become 
-annoyed just for the fun of it.
+The shopkeepers are not the town's only inhabitants - you will likely 
+also see some people on the streets. There are the street urchins, 
+young children who will mob an adventurer for money, and seem to come 
+out of the woodwork when excited. Blubbering idiots are a constant 
+annoyance, but not harmful. Public drunks wander about the town 
+singing, and are of no threat to anyone. Sneaky rogues who work for the 
+black market are always greedily eyeing your backpack for potential new 
+'purchases'... And what town would be complete without a swarm of half 
+drunk warriors, who take offense or become annoyed just for the fun of 
+it? Finally, stories told in hushed tones on dark nights speak of the 
+mythical Nick, the butcher; although whether he really is a 
+bloodthirsty destroyer of worlds remains for you to determine.
 
-Most of the townspeople should be avoided by the largest possible 
-distance when you wander from store to store. Fights will break out, 
-though, so be prepared. Since your character grew up in this world of 
-intrigue, no experience is awarded for killing the town inhabitants, 
-though you may acquire treasure.
+These townspeople are in fact some of the first monsters you will meet 
+during your adventure, and some of them should be avoided by the 
+largest possible distance as you wander from store to store. Fights 
+will break out, though, so be prepared. Since your character grew up in 
+this world of intrigue, no experience is awarded for killing the town 
+inhabitants, though you may acquire treasure.
 
-One word of warning however: occasionally a creature who normally would 
-inhabit only the wilderness and dungeons may wander into the town. 
-These should generally be handled with much more caution than the 
-ordinary townspeople.
+One word of warning: occasionally a creature who normally would inhabit 
+only the wilderness and dungeons may wander into the town. These should 
+generally be handled with much more caution than ordinary townspeople. 
+But they do give experience, so there's that!
 
 Shopping in Town
 
-Your character will begin his adventure with some basic supplies, and 
-some extra gold with which to purchase more supplies at the town 
-stores. You may enter any open store and barter with the owner for 
-items you can afford by simply moving onto the entrance, which is 
-represented by a number from 1 to 9.
-
-Shopping has been re-written for version 6.0.0. Please see [e] for up 
-to date help about shopping commands.
+Your character will begin his adventure with a few basic items, plus 
+some gold with which to purchase additional supplies. Just pick the 
+store you wish to visit and walk over to the entrance, and you can shop 
+to your heart's content (or until you run out of money, whichever comes 
+first). See [b] for the shopping interface help.
 
 Stores do not always have everything in stock. As the game progresses, 
-they may get new items so check from time to time. Also, if you sell 
-them an item, it may get sold to a customer while you are adventuring, 
-so don't always expect to be able to get back everything you have sold.
+stores acquire new items, so check again from time to time to see if 
+they've got something new you might like. But the opposite also happens 
+- items get sold to other customers, often just when you had finally 
+acquired enough money to buy them with. To prevent this from happening, 
+you can reserve an item you have your eyes on but can't quite afford; 
+but reserving is itself quite expensive, so be sure you really do want 
+that item.
 
 Note that new store inventory will not be added while you are in town, 
-even if you save the game and return (However, items you just sold may 
-be resold at any time. In fact, there seems to be an insatiable demand 
-for quality items, and they can get resold rather quickly!). You must 
-spend time in the dungeon if you wish the store owner to clear out his 
-stock and acquire new items. If you have a lot of spare gold, you can 
-purchase every item in a store, which will induce the store owner to 
-bring out new stock, and perhaps even retire.
+even if you save the game and return. You must spend time in the 
+dungeon and do some adventuring if you wish the store owner to clear 
+out his stock and acquire new items. If you have a lot of spare gold, 
+you can either pay the shopkeeper to restock (this is called shop 
+shuffling) or simply buy out the store's entire inventory; a buyout 
+will induce the store owner to bring out new stock, though occasionally 
+he might just retire on your money and sell the shop to a new owner.
 
 Store owners will not buy harmful or useless items. If an object is 
-unidentified, they will pay you some base price for it. Once they have 
-bought it they will immediately identify the object. If it is a good 
-object, they will add it to their inventory. If it was a bad bargain, 
-they simply throw the item away. In any case, you may receive some 
-knowledge of the item if another is encountered.
+unidentified, they will pay you some base price for it. Having bought 
+an object, they will immediately fully identify it. If it is a good 
+object, they will add it to their inventory; if it was a bad bargain, 
+they simply throw the item away. In either case, you will receive some 
+knowledge of the item that will help you identify similar objects in 
+the future. That's cold comfort if it turns out you sold a great item 
+for a pittance, but does mean the benefits of selling are not purely 
+monetary. Players who turn on the no selling birth option ([c]) 
+sometimes "sell" an item for nothing just to have it fully identified.
 
 Object Pricing
 
-Each store owner has three primary attributes: the maximum amount they 
-will pay for an object, their race and how greedy they are. Each of 
-these affects how much a store owner will charge for an object and how 
-much they are prepared to pay for something. Only the first two 
-attributes can be known by the player. The final factors affecting 
-pricing are the race, charisma and notoriety of the player.
+Each object has a nominal base value, sometimes called the item score, 
+which is computed based on the quality of the object. Item score is the 
+most important factor in determining the price for which the object can 
+be bought and sold. Inspecting an inventory item (or examining a shop 
+item) will display its score, though if the item has not yet been fully 
+identified, the score shown may be an inaccurate estimate.
 
-Each object has a base value which is computed based on the quality of 
-the object. This base value is modified depending on the store owner's 
-greed (greedy store owners charge more and will pay less), your 
-charisma (charismatic players pay less and can charge more) and whether 
-or not the shopkeeper is friendly to your race (Shopkeepers are quite 
-distressed whenever a Balrog enters their shop!). Also, famous players 
-are treated favorably in the towns, but new adventurers are a dime a 
-dozen and make ready marks for greedy store owners. Frankly, the 
-shopkeepers have had enough of pretentious, know-it-all, upstarts who 
-think they can just buy a lantern and go kill Morgoth. Pshaw!
+You cannot just buy and sell items for this nominal value, though; 
+shopkeepers will charge you extra when you buy, and pay you less when 
+you sell. How bad this effect is depends on several factors: your 
+charisma, fame, and race, and the shopkeeper's race and greediness. 
+Each shopkeeper also has an individual selling cap: the maximum amount 
+they will ever pay for a single item.
 
-Finally, when selling objects, the cap on the store owner's purse is 
-applied so that even a favored race with a high charisma can not sell 
-an item for more than that amount. This cap applies only to single 
-items so it is possible to sell a stack of similar items for more than 
-the cap on the store owner's purse.
+Shopkeepers like charismatic players, and will pay them more and charge 
+them less. Famous players are also treated favorably in the towns; but 
+new adventurers are a dime a dozen, and make ready marks for store 
+owners. The average shopkeeper has little respect for pretentious, 
+know-it-all upstarts who think they can just buy a lantern and go kill 
+Morgoth. Pshaw!
+
+Your race, and the shopkeeper's race, also affect pricing. Your race 
+can make shopkeepers less friendly, even if you have high charisma 
+(shopkeepers are quite distressed whenever a Balrog enters their 
+shop!), and can affect pricing significantly. The shopkeeper's race is 
+not as important, but it helps a bit if you and the shopkeeper belong 
+to the same race.
+
+The final factor affecting pricing is the shopkeeper's greediness, 
+which is not explicitly displayed but can be inferred from the results. 
+Black Market operators are all extremely greedy and tend to set 
+extortionate prices.
 
 List of Shops
 
   The General Store (1)
   The General Store sells foods, drinks, some clothing, torches, lamps, 
-  oil, shovels, picks, and spikes. All of these items and some others 
-  can be sold back to the General store for money.
+  oil, shovels, picks, capture balls, and iron spikes. All of these 
+  items and some others can be sold back to the General store for 
+  money.
 
   The Armory (2)
   The Armory is where the town's armor is fashioned. All sorts of 
@@ -298,17 +221,17 @@ List of Shops
   Hand and missile weapons may be purchased and sold here, along with 
   arrows, bolts, and shots.
 
-  The Temple (4)
-  The Temple deals in healing and restoration potions, as well as bless 
-  scrolls, word of recall scrolls, some approved priestly weapons, as 
-  well as books of Life magic for priests and paladins.
+  The Temple Shop (4)
+  The Temple Shop deals in healing and restoration potions, as well as 
+  bless scrolls, word of recall scrolls, some approved priestly 
+  weapons, as well as books of Life magic for priests and paladins.
 
-  The Alchemy shop (5)
+  The Alchemy Shop (5)
   The Alchemy Shop deals in all types of potions and scrolls.
 
-  The Magic User's Shop (6)
-  The Magic User's Shop deals in all sorts of rings, wands, amulets, 
-  and staves, as well as some magic books.
+  The Magic Shop (6)
+  The Magic Shop deals in all sorts of rings, wands, amulets, and 
+  staves, as well as some magic books.
 
   The Black Market (7)
   The Black Market will sell and buy anything at extortionate prices. 
@@ -317,7 +240,7 @@ List of Shops
 
   Your Home (8)
   This is your house where you can store objects that you cannot carry 
-  on your travels, or will need at a later date. See [f] for more 
+  on your travels, or will need at a later date. See [d] for more 
   information.
 
   The Bookstore (9)
@@ -329,112 +252,491 @@ List of Shops
   always-handy Cure Poison, Cure Confusion and Fast Recovery.
 
   The Museum (M)
-  This is a place where you can donate any item to display. Use it when 
-  you find interesting but needless items and you want to leave it in 
-  memory. See [g] for more information.
+  This is a place where you can donate objects, which will then be put 
+  on permanent display. There is no gameplay advantage to using the 
+  Museum; it is simply for storing memories. See [e] for more 
+  information.
 
 Special Buildings
 
-In addition to the shops, the town will have special buildings with 
-custom services. The buildings vary from town to town significantly 
-both in terms of their name and the services they offer. Each town 
-contains an Inn where the player may obtain food (assuming food does 
-them any good) and rest for the night. Each town also contains a 
-building which houses the local ruler.
+In addition to the shops, all towns have some special buildings with 
+custom services. The buildings vary from town to town significantly, 
+both in terms of their name and the services that they offer, but a few 
+of the most common or important ones are listed below:
 
-In addition to the inn and the ruler's house or castle, other buildings 
-might include libraries where you can research objects and monsters, 
-guilds for the various classes and magic realms, gambling dens and 
-casinos, temples, healers and more. Note that some buildings such as 
-guilds may offer preferential prices to members of their guild or offer 
-services which are only available to their guild. Some building owners 
-may offer preferential treatment to their own race or to a group of 
-races.
+  Inns (+)
+  
+  Inns are places where the player may obtain food, rest for the night, 
+  relax and listen to the latest rumours, and (within limitations - see 
+  [f] below) teleport to other inns. The inns in Outpost and Lite-Town 
+  offer quests. Almost all towns have an inn.
+  
+  Castles (+)
+  
+  Nearly all towns have a building, usually a large and conspicuous 
+  one, where the local ruler can be found. All rulers have some quests 
+  for you to complete; Uldrik, the Count of Outpost, is also willing to 
+  identify your items (for a reasonable fee, of course).
+  
+  Libraries (+)
+  
+  Librarians are experts in all kinds of lore, and will identify or 
+  *Identify* your items in return for payment. The library in Lite-Town 
+  also researches monsters, a function more commonly left for the local 
+  Beastmaster.
+  
+  Temples (+)
+  
+  Many towns have a holy temple, usually connected to or in the 
+  immediate vicinity of the Temple Shop. Temples provide healing and 
+  restoration (as long as you pay offerings).
+  
+  Arena (+)
+  
+  There is only one Arena in the game (in either Thalos or Lite-Town). 
+  The Arena is a special building where you may fight a single monster 
+  at a time, for the entertainment of the townsfolk. During these 
+  fights, you cannot use magical devices, read scrolls, quaff potions, 
+  activate equipment or (usually) summon help. Winning an Arena fight 
+  increases your fame (some enemies also drop fixed valuable items); 
+  but losing a fight severely damages your fame and results in a ban 
+  from further Arena fights. You cannot physically die in the Arena; 
+  you will exit at 0 HP, with cuts and poisoning healed. Do be careful 
+  not to die just outside the Arena, though...
+  
+  Gambling Dens (+)
+  
+  Casinos that may offer varied entertainment such as card games or 
+  even betting on fights between monsters.
+  
+  Fighters' Halls (+)
+  
+  These buildings usually house a weaponsmith who is willing to enchant 
+  your equipment for you... though how much work he's willing to put in 
+  depends on your class and character level, and of course on how much 
+  you pay. Some Fighters' Halls might also offer quests or reforging 
+  (see [g]).
 
-Here is a sample from a local Casino which always seems glad to take my 
-gold:
+This list is far from exhaustive; there are many other buildings 
+besides, with many services and quests on offer. Explore and find out!
 
- Materim (Human)                              Casino
+Town Quests
 
-  Dice Slots
-
-  /--------------------------\
-      ####.    /\       ####.
-     #    #    ##      #    #
-    #     #    ##     #     #
-   #      #    ##    #      #
-   #      #    ##    #      #
-   #     #     ##    #     # 
-   #    #    ######  #    #  
-   .####       ##    .####   
-    Lemon    Sword    Lemon          You Lost
-  \--------------------------/
-                                     Again(Y/N)?
-
-  Gold before game:    122651
-  Current Wager:            1
-  Current Gold:        122650
-
-
-Fixed Quests
-
-At least one building in each town will offer the player the 
+At least one building in each town will offer your character the 
 opportunity to undertake a quest. Such quests typically fall under the 
-following categories: kill a certain number of a certain type of 
-monster (for example kill 10 orcs), kill all the monsters in the quest 
-level, retrieve a certain object, and escape from the quest level. For 
-example:
-
- Denegor (Human)                              Castle
-
-Quest Information (Danger level: 15)
-
-The Sewer
-The sewer underneath the city has been acting strange
-lately. There are rumors of monsters living beneath our
-fair city. I need you to exterminate the vermin and
-bring the sewer back to its normal, if dirty, self.
-
-
-
-
-
-
-
- q) Request quest
-
-
-
- ESC) Exit building                                  Gold Remaining:  123k
+following categories: kill all monsters on the quest level (assume this 
+to be the case if nothing else is stated), kill one or more monsters of 
+a certain type (for example, kill Old Man Willow or kill 8 Wargs), or 
+retrieve a certain object and escape from the quest level. Completing 
+town quests is a key part of the game; you may eventually spend almost 
+as much time in town quests as you do in dungeons.
 
 When you request a quest, you will be given a brief description of the 
-quest and your objective and also an indication of its danger level (a 
-number which represents the dungeon level equivalence of the quest). 
-Note that the danger indication can be somewhat misleading since the 
-fixed nature of the quests allows you to apply tactics learned through 
-several attempts to the same situation often making successive attempts 
-easier. It also allows the quest designers to set up some particularly 
-nasty ambushes!
+quest and your objective, as well as an indication of its danger level. 
+For example, here we have just pressed q to request a quest from the 
+Sultan of Thalos:
 
-Once you have accepted a quest an quest entrance will appear and you 
-may enter the quest level. Note that you do not have to enter the quest 
-at that time and can delay entering until much later in the game should 
-you wish. Many of the quests only allow you to attempt them once per 
-game and you should therefore not enter them until you are confident in 
-your ability to succeed.
 
-Whether you complete a quest or fail it, be sure to return to the 
-person who assigned the quest and report. If you were successful you 
-may receive a reward which will be waiting for you outside the building 
-when you leave. However the rewards may take other forms. If you 
-failed, you will receive a damning review of your performance. Note 
-that you may not request another quest from that person until you have 
-collected your reward or reported your failure. And if you do fail, the 
-quest granter might not be willing to trust you in the future, so you 
-will need to look elsewhere for fame and glory (and loot).
+ Sultan Idris (Human)                              Palace
 
-    Note: You can not use Genocide, Mass Genocide, 
-    Destruction or Teleport Level inside a quest.
+The Old Watchtower (Thalos) (Level 32): Unfortunately, the citizens of          
+Thalos are still not safe. A young boy disappeared last week while out          
+on a walk; we found his corpse in the forest a few days later, lifeless         
+and sucked dry of blood. The city's lawyers, afraid of being blamed by          
+the public, are pressuring me to drive out the vampires who have taken          
+over the old watchtower near the shore. Please help me eliminate the            
+vampires, you will be well rewarded.                                            
+                                                                                
+ q) Request quest                                                               
+                                                                                
+ ESC) Exit building                                  Gold Remaining: 27.8k
+
+
+Most town quests take place on special town quest levels, which can be 
+accessed from the town or its immediate vicinity. Quest entrances are 
+indicated on the map with the symbol >, and will appear at the top of 
+the ] object list, making them easy to spot. You do not have to take 
+them immediately; feel free to delay the quest until you are confident 
+in your ability to succeed. Press Ctrl-Q every once in a while to check 
+your quest history, which includes an ordered list of uncompleted 
+quests; this will make sure you won't forget to complete them.
+
+Rarely, you will be assigned a dungeon quest; instead of a special 
+quest level, these quests occur on normal dungeon levels. See [h] for 
+more information on dungeon quests.
+
+Having completed a quest (of either type), return to the person who 
+assigned you the quest and press q again; you will get warm thanks and 
+(usually) a nice reward for your good work. You can also then request a 
+new quest! But if you leave a quest level before completing the quest, 
+you have irreparably failed it; your fame is reduced, and you miss out 
+on the reward.
+
+Quest lines are semi-fixed; you will mostly receive the same quests 
+from the same buildings in every game, but there is some randomness in 
+the list of quests. The special town quest levels' layouts are likewise 
+semi-fixed; the terrain is usually the same or mostly the same every 
+game, the objects are usually different or mostly different, and the 
+monsters may or may not be the same depending on the quest. Finally, 
+the rewards are semi-fixed; some are more random than others, and many 
+(though not all) are tailored to the specific needs of your race and 
+class. Having seen a quest before is a large practical advantage, but 
+do not assume everything will be exactly the same.
+
+    Note: Town quest levels obey a few special rules. In 
+    particular, you cannot use Genocide, Mass Genocide, 
+    Annihilation, Destruction, Earthquake or Teleport Level 
+    inside a quest.
+
+You should also not assume that you can teleport everywhere within a 
+quest level; usually you can, but some quests have secure areas with 
+invisible anti-teleportation fields. You can teleport out of these 
+areas, but not in.
+
+The Wilderness Option
+
+Outside the (relative) safety of Outpost lies a large and diverse 
+wilderness, where many towns and dungeons await you. Unfortunately, it 
+is also home to many dangerous creatures, and the distance between 
+where you are and where you want to go is often vast. It is therefore a 
+good idea to use the scaled global map (also known as the overworld) 
+for travelling in the wilderness.
+
+    The Global Map: Press < to enter the global map for 
+    wilderness travel, and > to return to the normal map 
+    once you have reached your destination.
+
+You are in Outpost [q,p,o,x,j,+,-,?,<dir>] L0
+     #~~~~~~~~~~~~~~~~~~~~.......#........>...................>.#~# LEVEL      1
+     #~~~~~~~~~~~~~~~~~~~~.......#..............................~~# EXP       16
+     #~~~~~~~~~~~~~~~~~~~~....#...#...................###.......~## AU       595
+     #~~~~~~~~~~~~~~~~~~~~.....#..##...................###......~~# |       (   
+     #~~~~~~~~~~~~~~~~~~~~......####..................#.#........~~ STR :     16
+     #~~~~~~~~~~~~~~~~~~~~....#####>................>.............. INT :     14
+     #~~~...~~~~~~~~~~......####................................... WIS :      8
+     #~~............~~...~....................................~~... DEX :  18/50
+     #~...>.............~~..................................~~~~... CON :     17
+     #~................~~~~.......~~~......................~~~~~... CHR :     12
+     #~..........##....~~~~~~~~~~~~~~~..............*.....~~~~~.... AC        15
+     #~.........####.#..~~~~~~.....~~~~~~~~~~~.~~~......~~.......#. HP   37/  37
+     #~........##~~##....~~~~....@...~~~~~~~~..~~~~~.........######             
+     #~~........~~>##....~~~...#......~~~~........~~>~~~###########             
+     #~~~.......~~~##.#..~~..###.......~~...........~~~~~##########             
+     #~~~~~.......##.#.~~~..###..............####....~~############             
+     #~~~~###....##.#..~~~...............#########...~#############             
+     #~~~###..#......#..~~...............#########..~~#############             
+     #~~####.###..#.....~~...............######>####.~#############             
+     #~#####>#~~...#.....~.................#########.~~############             
+     #~~####~~~~~........~~~.......~~~~~~...#######..~~~###########             
+     #~~###~~~~~~......~~~~~~....~~~~~~~~~~~~.........~~~##########             
+     #~~###~~~~~~......~~~~~~~~~~~~~~~~~~~~~~~~~~~..~~~~~~~~#######             
+     #~######~~~.....~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~             
+     #~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~             
+Surface
+
+As displayed on the global map, the wilderness consists of a 97x62 tile 
+world; each tile corresponds to an area the size of a max-sized dungeon 
+level on the regular map, and contains themed terrain such as forests, 
+mountains or plains. A number of towns exist in various parts of the 
+world, each situated on their own wilderness tile. Two of these towns 
+are visible in the screenshot above: Outpost, where you start (actually 
+that one's hidden by the @, which is us!) and Morivant, represented by 
+the * to the east. Many (too many?) dungeon entrances can also be seen, 
+each represented by the familiar > symbol. In the top-right corner of 
+the screenshot, northeast of Morivant, you can just see the dread 
+dungeon of Angband; it is home to the Serpent of Chaos, whom you must 
+kill in order to win the game.
+
+Travelling through the overworld is both faster and safer than using 
+the normal map, but the wilderness is still inhabited and dangerous 
+monsters still lurk in wait. The unwary adventurer might suddenly walk 
+into an ambush, and be forced back onto the normal map; in such a 
+situation, you cannot simply run away by using the < key again, but 
+might try escaping with a scroll of Teleport.
+
+There are several ways to improve your odds against being ambushed. Try 
+to stay on the roads as much as possible; they are not completely safe, 
+but far less dangerous than travelling off the beaten path, and if you 
+do get ambushed there the surroundings will likely not be as deadly. 
+Stealthy characters (and very powerful characters) are less likely to 
+be ambushed. In addition, travelling is safer during the daytime.
+
+You can use the l look command to see the danger level of a wilderness 
+tile. As the L0 on the screenshot above shows, Outpost is located on a 
+level 0 tile! Some types of terrain, like lava fields or deep oceans, 
+are almost invariably very dangerous and best avoided until your 
+character is a bit stronger.
+
+Discovering and Entering Dungeons
+
+A few of the dungeons are easy to find and enter - they are accessible 
+from towns. You even start the game on the entrance to one such 
+dungeon, Warrens. These town dungeons are also some of the least 
+dangerous dungeons, which makes sense - who would build a town or live 
+there if the entrance to Hell was next door? Okay, so that's not too 
+bad a description of the no-wilderness town...
+
+The vast majority of dungeons, though, can only be reached through the 
+wilderness. It is best to travel there through the global map; but 
+dungeons cannot be actually entered from the global map, only from the 
+regular map, so you'll have to switch back as you reach the right tile. 
+As you do this, a problem sometimes becomes apparent: because one tile 
+on the scaled global map corresponds to a fairly large area on the 
+normal map, there is no guarantee you will find yourself immediately 
+next to the actual entrance. The entrance might be some way away, maybe 
+even out of sight (in such a situation the game will helpfully tell you 
+which direction the entrance is in). Take the direction indicated, and 
+use the ] object/feature list command regularly; it will often spot the 
+entrance before its actual appearance on the screen.
+
+There is another obstacle you may encounter before reaching the 
+dungeon. Many dungeons have an entrance guardian - a monster sitting on 
+top of the entrance who will refuse to budge until you have killed it. 
+Entrance guardians are also immune to being teleported, so that is not 
+an easy way out! Sometimes it is possible to dodge an entrance guardian 
+and reach the stairs despite its watchful eye, but most of the time you 
+will have to kill it. In general, low-level dungeons have no entrance 
+guardians while high-level dungeons do have one; some of them, like the 
+Ethereal Dragon on the Crystal Castle entrance, can be very dangerous.
+
+Occasionally, you will find dungeon entrances in places where you did 
+not expect any. These are random one-level dungeons - they are often 
+dangerous, but can have exceptional items within. Random dungeons 
+sometimes generate quite close to regular dungeons; especially in the 
+deep oceans, where random dungeons are fairly common, you might have to 
+double-check that the entrance you found is actually the one you were 
+looking for. (You can use the look command or the * targetting command 
+for this.)
+
+Having finally reached the entrance - hopefully the right one - just 
+press > and you're inside. After that, you'll never have to take this 
+particular wilderness trip again: you have automatically established a 
+recall point in the dungeon, and can return there by Word of Recall any 
+time you wish.
+
+See [i] for what to expect in the dungeon.
+
+Which Dungeons Should I Visit?
+
+There are three main reasons you might wish to visit a dungeon - to 
+complete a quest there, to kill the final guardian (or boss) who 
+inhabits the last level of the dungeon, or simply to gather some 
+experience and loot. The last of these can of course be done in any 
+dungeon, but sometimes you might feel a particular dungeon is just 
+really comfortable for your character and playstyle.
+
+The first time you play, you won't really know who the bosses are (or 
+which depths they inhabit), and you probably haven't received many 
+dungeon quests yet, maybe just the very early Pest Control quest (see 
+[j]). So it is a sensible idea to just do the town dungeons first, and 
+then peek into the others in order of the depth they start at, since 
+that's what looking at a dungeon reveals. For example, after completing 
+Warrens, Hideout and the Icky Cave (and a few town quests), you might 
+wish to enter the Tidal Cave, Orc Cave, Labyrinth and Camelot next.
+
+The Angband dungeon is a bit special in that it starts at a very low 
+level - level 1 - but the boss (that would be the Serpent of Chaos!) - 
+is all the way down on level 100. Also, Angband uniquely has a number 
+of random quests strewn throughout, often with good rewards for 
+completion. This makes it hard to know when you should enter Angband. 
+Some players go there very early for the quests; others may postpone it 
+for a long time, or even use magical methods to skip most of the 
+dungeon altogether.
+
+Once you have done enough descending into a dungeon, you might be 
+informed you have located the dungeon's boss:
+
+    You enter a maze of down staircases. Mughash the Kobold Lord lives 
+    on this level as the keeper of Warrens.
+
+Killing bosses is fun (and rewarding), but it can also be dangerous, 
+especially when you are playing for the first time and don't really 
+know what the bosses do. To improve your knowledge, you can pay your 
+local Beastmaster (most but not all towns have one) to research the 
+boss for you; this will reveal you everything about them, and allows 
+you to prepare and make an informed decision as to whether you are 
+ready to take them on. Pay particular attention to whether the boss 
+resists confusion - some bosses are seemingly very tough for their 
+depth, but if they do not resist confusion, that's an opening for you. 
+Though some of the higher-level bosses (like Utgard-Loke) seem to shake 
+confusion off suspiciously quickly...
+
+Sometimes you can just jump from dungeon to dungeon, killing the bottom 
+guardians and leaving a trail of universal destruction in your wake. At 
+other times you may have to prepare a bit, in town quests or on the 
+lower levels of dungeons. In the early mid-game, this might happen in 
+Lonely Mountain - players often find it a good dungeon to set up camp 
+in for a while, since the terrain is usually relatively favorable and 
+the presence of many dragons means that treasures are also abundant. 
+Note though that the Lonely Mountain is, well, a mountain, and very 
+difficult to enter for the first time unless you have levitation.
+
+The big takeaway here should be that there is no single right order to 
+do the dungeons in. Some people like to dive into very deep dungeons 
+really early, and the entrance guardians be damned! Experiment a bit; 
+find out what works for you, which bosses you find easy to handle, and 
+which dungeons you really like. Sometimes you will be completing a 
+whole dungeon in one go; at other times you may be hopping between 
+several dungeons you're halfway into, or repeatedly recalling in and 
+out of a single dungeon with no intention of fighting the boss.
+
+See [k] for a list of dungeons.
+
+Travelling Between Towns
+
+A network of roads connects most of the towns, providing the best and 
+simplest way to reach them (at least for the first time). Again, use 
+the global map. Stick to the roads as much as you can; sometimes it is 
+tempting to take a shortcut through the wild, but this increases the 
+chance of a dangerous ambush.
+
+As with dungeons, you only need to really take these wilderness trips 
+once. A teleportation grid connects the inns of the towns, and you can 
+use it (for a reasonable fee) to jump from town to town. The tavern 
+keepers, being businessmen, want your money... but they also want their 
+customers alive, and won't send you into another town without knowing 
+you can handle the new environment. But once you have proved this by 
+reaching the town on foot, you can return there by teleport at any 
+time. There is one exception to this rule: the town of Thalos lies in 
+the middle of a dangerous ocean, and the innkeepers have no wish to 
+lose a customer by sending them there on foot. So, you are allowed to 
+teleport there as soon as you have reached any town besides Outpost. 
+(It is rumoured that one of the towns may have been cut off from the 
+teleportation grid by strange disturbances in the space-time 
+continuum... Perhaps you can do something about that?)
+
+Once you have enough money to afford it comfortably, you will find 
+yourself teleporting between the towns regularly. All have quests to 
+complete, and shops to visit - and somehow, your home has its full 
+inventory in every town, so that's handy!
+
+The No Wilderness Option
+
+Diverse dungeons are fun, multiple towns are fun, and the wilderness is 
+fun; but sometimes you might want to just forget about them all and 
+select the No Wilderness option. Maybe you are new to FrogComposband, 
+and want to learn the basics in a simplified version of the game before 
+moving on to the full version. (Beginner Mode automatically turns on 
+coffee-break mode, which turns off the wilderness - though sometimes, 
+enthusiastic new players jump straight to the Normal Mode!) Or maybe 
+you are a long-term player who has already been everywhere, seen 
+everything, and wants a quicker and more streamlined game experience 
+for a change. Maybe you just really like coffee-break mode.
+
+In no-wilderness play, there is only one town: Outpost. The 
+no-wilderness version of Outpost is somewhat different from the 
+wilderness Outpost and is sometimes referred to as lite-town, although 
+it actually has a lot more stuff in it than the regular version does. 
+With wilderness on, Outpost is a very basic and simple town; it has the 
+shops, the inn, the castle, but to find exciting special buildings you 
+have to travel elsewhere. This is not the case with Lite-Town - there 
+is no elsewhere to travel, so all the special buildings important to 
+the game (and a few that are not so important) can be found in the 
+single town. The number of quests available in Lite-Town is also much 
+higher than in regular Outpost, though also much lower than in all the 
+wilderness towns combined.
+
+Here's a glimpse of this alternative Outpost - the Count's castle, the 
+inn and most of the other buildings are in the same locations, but 
+there are many additional buildings, and the dungeon entrance is within 
+the walls.
+
+
+~~~~~~~~~~~~~~~~~~~~~~~~####.......####~~.......................... LEVEL      1
+######################~~###############~~~~~~~~~~~~~~~~~~~~~~~~~~~~ EXP       15
+######################~~.#############.~~~~~~~~~~~~~~~~~~~~~~~~#### AU       819
+#...#..##...........##~~######+++######~~########################## |       (   
+#..#.#..#.##.######.##~~#####.....#####~~########################## STR :     16
+.#.#....#.##.######.##~~~~~.........~~~~~##.....................### INT :     18
+..###.#.#.#+....#+#.###~~~~~~~...~~~~~~~~##.#########.#########.##~ WIS :      9
+.#####..#.##........##########...##########.#########.#########.##~ DEX :  18/40
+.#####.##............#########...#########..####2####.#########.##~ CON :     17
+###4###.#....###...........###...###............................##~ CHR :     12
+#+#.#+#.#...#####..................................######..####.##~ AC         6
+........#...#####..................................###8##..3###.### HP   37/  37
+###.#####....#+#.................@.....................##..####.### SP   14/  14
+................................................................###             
+...................................................................             
+.............................##6##........##++####....###+####..###             
+..........###...............#######......##########...########..###             
+.........####>..............#######.....###....#####..########..##~             
+####....#######.............#######.....+#......##+......#####..##~             
+###1....#######..............#####......+#......##+......#####..##~             
+####.....#####..............#######.....###....#####...#######..##~ Study (1)   
+####......###...............+#####+......##########....#######..##~             
+............................#######.......##++####..............##~             
+####..##5##..#####+#####............................##.##7####..##~             
+####.#######.##########9...............##0##.###.#####.#######..##~             
+Outpost
+
+Coffee-Break Mode
+
+Coffee-break mode is a birth option you can select from the = options 
+menu during character creation. Selecting Beginner Mode at the intro 
+screen automatically turns coffee-break mode on, but coffee-break mode 
+is also available in Normal Mode and in Monster Mode.
+
+Coffee-break mode greatly accelerates experience gain in the dungeon 
+(only the dungeon!), increases monster drops, improves their quality, 
+and speeds up a number of less obvious game mechanics such as reforging 
+and most forms of proficiency gain. Coffee-break mode also makes the 
+game faster in other ways - it reduces early-game level size, turns all 
+staircases into shafts, and disables all upstairs altogether. The only 
+way you can go is down, and you will find yourself in the thick of the 
+action very quickly! Coffee-break mode (unlike other forms of 
+forced-descent play) does allow you to recall back to town, to shop and 
+to complete town quests; you are also allowed to fail dungeon quests, 
+although this causes you to permanently lose the special accelerated 
+reforging bonus.
+
+It is not possible to use coffee-break mode with the wilderness on. It 
+is possible to play with both the wilderness and coffee-break mode off, 
+but this is not recommended.
+
+How to Cope in Coffee-Break Mode
+
+Although coffee-break mode is turned on for beginners, it does not 
+necessarily make the game easy. Sure, your character will gain in power 
+very fast - but you also run into nasty enemies very fast! It is 
+therefore best to have a plan.
+
+One town quest is available to coffee-break players that many 
+characters can complete before entering the dungeon - the Thieves' 
+Hideout quest, offered by Count Uldrik. Completing this quest nets you 
+several character levels, a reward from the Count, and a fair bit of 
+money; you can now purchase better supplies, as well as request your 
+next quest: Pest Control (the Warg Quest). This quest is in the 
+dungeon, so you cannot delay going there any further - but killing the 
+Wargs will give you quite a lot of experience, radically improving your 
+chances when you meet the first random questor.
+
+Random Questors
+
+Random level guardians are both the greatest peril, and the greatest 
+opportunity, that you will face early in a coffee-break game. Killing a 
+random questor gives you a free stat-up, bonus exceptional items 
+(beyond what they'd drop anyway!), and the warm feeling of making 
+tangible progress.
+
+On the other hand... the random level guardians are all out-of-depth 
+uniques, and even with your accelerated power gain it is far from a 
+given that you can kill them. Occasionally, you get very unlucky and 
+the game hits you with a guardian who is simply way too tough for you. 
+Players have often pulled off miraculous kills in these situations - 
+desperation can come up with a strategy where a calmer mind would give 
+up. But sometimes it is better to just accept your unfortunate fate and 
+purposely fail the quest before you die or burn all your supplies in a 
+futile attempt at completion. The penalties for failing a quest are 
+rough (you can probably already forget your dream of reforging Ringil 
+onto a ring); but at least you are alive.
+
+Because you never know when you might meet a tough guardian, and cannot 
+just recall home to get your supplies like you could in a wilderness 
+game, it is best to be always prepared. Nothing is more annoying than 
+making a heroic attempt at killing the guardian and narrowly failing 
+because you had left one potion too many at home.
+
+See [l] for the basics of how a random dungeon quest works.
 
 
 Original   : (??)
@@ -443,6 +745,7 @@ Updated    : Zangband DevTeam
 Updated    : Hengband 1.0.11
 Updated    : PosChengband 4.0.0
 Updated    : FrogComposband 7.0.nougat
+Updated    : FrogComposband 7.1.liquorice
 
 
 
