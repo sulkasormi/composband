@@ -1,14 +1,13 @@
 #include "angband.h"
 
 static cptr _desc =
-    "Demons are powerful servants of evil and come in many forms. Being monsters, they "
-    "may not choose a normal class. Instead, they rely on their devilish powers or their "
-    "brutish strength to survive.\n \n"
-    "The various demonic races include the Balrog, powerful demons of fire; the Servants "
+    "Demons are powerful servants of evil and come in many forms. They rely on their "
+    "devilish powers or their brutish strength to survive.\n \n"
+    "The various demonic races include the Balrogs, powerful demons of fire; the Servants "
     "of Khorne, mighty warriors of destruction; the Tanar'ri, weaker demons whose ultimate "
     "form has three sets of arms, but prefers to fight naked; and Cyberdemons, whose firepower "
     "is unsurpassable.\n \n"
-    "All demon races cannot eat normal food, but must feast upon the remains of their human "
+    "Demons cannot eat normal food, but must feast upon the remains of their human "
     "enemies. They are unaffected by the Eldritch Horror.";
 
 static caster_info * _caster_info(void)
@@ -743,7 +742,7 @@ static race_t *_balrog_get_race_t(void)
 
 
         me.subdesc = "Balrogs are demons of shadow and flame. Their evil knows no bounds. Their spells are "
-        "the most powerful of all demonkind and at very high levels they may even call forth "
+        "the most powerful of all demonkind, and at very high levels they may even call forth "
         "fires directly from hell.";
 
         me.skills = bs;
@@ -919,7 +918,10 @@ static race_t *_cyber_get_race_t(void)
         me.subname = "Cyberdemon";
         me.subdesc = "Cyberdemons are giant humanoid forms, half demon and half machine. They are a bit "
         "slow and move erratically, but their immense bodies and unsurpassable firepower "
-        "more than make up for this. The walls of the dungeon reverberate with their heavy steps!";
+        "more than make up for this. The walls of the dungeon reverberate with their heavy steps!\n\n"
+        "Cyberdemons are one of the very few monster races not to undergo evolution, and so almost all "
+        "their might is available from the beginning, although they do gain even more "
+        "strength later on and their offense becomes stronger with experience.";
         me.skills = bs;
         me.extra_skills = xs;
 
