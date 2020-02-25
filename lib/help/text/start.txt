@@ -3,24 +3,28 @@ Welcome to the Online Help System
     Getting Started:
     [a] General Information
     [b] Creating a Character    
-    [c] Frequently Asked Questions
-    [d] Common Mistakes to Avoid
+    [c] Commands
+    [d] Frequently Asked Questions
+    [e] Common Mistakes to Avoid
 
     Core Concepts:
-    [e] Races, Classes and Personalities
-    [f] The Town and Wilderness
-    [g] The Dungeon
-    [h] Objects
-    [i] Monsters and Pets
-    [j] Attacking and Weapons
-    [k] Defending and Armor
-    [l] Magic Realms
-    [m] Commands
+    [f] Races, Classes and Personalities
+    [g] The Towns and Wilderness
+    [h] The Dungeons
+    [i] Objects
+    [j] Monsters and Pets
+    [k] Attacking and Weapons
+    [l] Defending and Armor
+    [m] Spellcasting
+    [n] Status Effects
+    [o] Glossary/List of Concepts
 
     Advanced Topics:
-    [n] Options
-    [o] User Preference Files
-    [p] The Mogaminator
+    [p] Options
+    [q] User Preference Files
+    [r] The Proficiency System
+    [s] The Mogaminator
+    [t] Subwindows
 
     (?) Help System Commands
 
