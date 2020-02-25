@@ -1,24 +1,33 @@
 The Mogaminator
 
-Please choose one of the following online help files:
-
-    [a] The Mogaminator
+Please choose a help section.
 
   The following topics are in tutorial format:
+    [a] Introduction
     [b] Review of Object Knowledge
     [c] Managing Objects
     [d] Basic Usage
-    [e] Correcting Mistakes
+    [e] Oops, I'm Auto-Destroying Rings of Speed
     [f] What About Stuff I Want?
     [g] Introduction to Rules and Events
     [h] Rules
-    [i] Scenarios
-    [j] Conditional Rules
+    [i] Example Scenarios
+    [j] Conditionals
     [k] Using the Editor
+    [l] The Easy Destroyer
 
-  The following topics are boring reference material:
-    [l] Reference Tables
-    [m] The Easy Destroyer
+  The following topics are reference material:
+    [m] Reference Tables
+    [n] Line Types in the Editor
+    [o] Rules: Syntax
+    [p] Rules: Action Letters
+    [q] Rules: Index of Nouns
+    [r] Rules: Index of Adjectives
+    [s] Rules: Special Clauses
+    [t] Conditionals: Syntax
+    [u] Conditionals: Functions
+    [v] Conditionals: Variables
+    [w] Conditionals: Literals
 
     (?) Help System Commands
 
