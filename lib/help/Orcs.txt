@@ -6,51 +6,51 @@ Orcs are Morgoth's creation and the backbone of his armies. They are accustomed 
 The most common and familiar type of orc, fighter orcs are feared around the world for their strength, endurance, brutality and low cunning. They start their careers as a lowly Snaga, but will eventually develop into Uruk-hai or even mighty warlords, capable of summoning and controlling armies of lesser orcs.
 
   <indent><style:table><color:G>Stats                   Skills</color>
-Strength     <color:w> +2</color>        Disarming   <color:y>Good         </color>
-Intelligence <color:w> -1</color>        Device      <color:D>Very Bad     </color>
-Wisdom       <color:w> -5</color>        Save        <color:o>Fair         </color>
-Dexterity    <color:w> +0</color>        Stealth     <color:o>Fair         </color>
-Constitution <color:w> +3</color>        Searching   <color:R>Poor         </color>
+Strength     <color:w> -1</color>        Disarming   <color:o>Fair         </color>
+Intelligence <color:w> -4</color>        Device      <color:D>Very Bad     </color>
+Wisdom       <color:w> -5</color>        Save        <color:R>Poor         </color>
+Dexterity    <color:w> +0</color>        Stealth     <color:R>Poor         </color>
+Constitution <color:w> +0</color>        Searching   <color:R>Poor         </color>
 Charisma     <color:w> -5</color>        Perception  <color:r>Bad          </color>
 Life Rating   99%       Melee       <color:G>Excellent    </color>
-Base HP       30        Bows        <color:G>Excellent    </color>
+Base HP       30        Archery     <color:G>Excellent    </color>
 Experience   100%       Infravision 30'
 </style></indent>
 <topic:Orc shaman><color:o>Orc shaman</color>
 Orc shamans and warlocks are more cunning than the average orc and have learned rudimentary magic from their black masters. They can detect threats, blink out of dangerous situations and easily dispatch weak enemies with their offensive spells, and are not quite as hopeless with magic devices as their fighter kin, but like all orcs they tend to have trouble when the going really gets tough.
 
   <indent><style:table><color:G>Stats                   Skills</color>
-Strength     <color:w> +0</color>        Disarming   <color:y>Good         </color>
-Intelligence <color:v> +0</color>        Device      <color:R>Poor         </color>
+Strength     <color:w> -1</color>        Disarming   <color:o>Fair         </color>
+Intelligence <color:v> -1</color>        Device      <color:R>Poor         </color>
 Wisdom       <color:w> -5</color>        Save        <color:o>Fair         </color>
-Dexterity    <color:w> -1</color>        Stealth     <color:o>Fair         </color>
+Dexterity    <color:w> -1</color>        Stealth     <color:R>Poor         </color>
 Constitution <color:w> -1</color>        Searching   <color:o>Fair         </color>
 Charisma     <color:w> -5</color>        Perception  <color:R>Poor         </color>
 Life Rating   92%       Melee       <color:y>Good         </color>
-Base HP       28        Bows        <color:y>Good         </color>
+Base HP       28        Archery     <color:y>Good         </color>
 Experience   100%       Infravision 30'
 </style></indent>
 <topic:Tables><style:heading>Table 1 - Orc Statistic Bonus Table</style>
 <style:table>
 <color:G>                 </color> <color:G>STR  INT  WIS  DEX  CON  CHR  Life  BHP  Exp  Shop</color>
-Orc fighter        +2   -1   -5   +0   +3   -5   99%  +30  100%  140%
-Orc shaman         +0   +0   -5   -1   -1   -5   92%  +28  100%  140%
+Orc fighter        -1   -4   -5   +0   +0   -5   99%  +30  100%  140%
+Orc shaman         -1   -1   -5   -1   -1   -5   92%  +28  100%  140%
 
 </style>
 <topic:Skills1><style:heading>Table 2 - Orc Skill Bonus Table I</style>
 <style:table>
                   <color:w>Disarming     Device        Save          Stealth      </color>
-Orc fighter       <color:y>Good         </color> <color:D>Very Bad     </color> <color:o>Fair         </color> <color:o>Fair         </color>
-Orc shaman        <color:y>Good         </color> <color:R>Poor         </color> <color:o>Fair         </color> <color:o>Fair         </color>
+Orc fighter       <color:o>Fair         </color> <color:D>Very Bad     </color> <color:R>Poor         </color> <color:R>Poor         </color>
+Orc shaman        <color:o>Fair         </color> <color:R>Poor         </color> <color:o>Fair         </color> <color:R>Poor         </color>
 
 </style>
 <topic:Skills2><style:heading>Table 3 - Orc Skill Bonus Table II</style>
 <style:table>
-                  <color:w>Searching     Perception    Melee         Bows          Infra</color>
+                  <color:w>Searching     Perception    Melee         Archery       Infra</color>
 Orc fighter       <color:R>Poor         </color> <color:r>Bad          </color> <color:G>Excellent    </color> <color:G>Excellent    </color>   30'
 Orc shaman        <color:o>Fair         </color> <color:R>Poor         </color> <color:y>Good         </color> <color:y>Good         </color>   30'
 
 </style>
 
 
-<color:s>Automatically generated for FrogComposband 7.0.cloudberry.</color>
+<color:s>Automatically generated for FrogComposband 7.1.liquorice.</color>
