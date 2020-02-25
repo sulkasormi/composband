@@ -1,19 +1,19 @@
 <style:title>Dragon Realms</style>
 
-Dragons are magical creatures and may choose to learn a particular branch of dragon magic. Unlike normal spell casters, dragons do not need spell books to cast or learn powers. Instead, they simply gain spells as they mature. Each realm of dragon magic has a direct impact on the player's stats and skills, and each realm also requires a different stat for casting purposes.
+Dragons are magical creatures and may choose to learn a particular branch of dragon magic. Dragons do not need spellbooks to cast spells or learn powers; instead, they simply gain spells as they mature. Each realm of dragon magic has a direct impact on the player's stats and skills, and each realm also requires a different stat for casting purposes.
 
 <topic:Lore><color:o>Lore</color>
-Dragons specializing in lore are seekers of knowledge. They are the most intelligent of dragonkind and use their vast intellects to drive their magic. Armed with a vast array of detection and knowledge spells, dragons of lore seek power through knowledge. They eventually gain powers of telepathy and automatic object identification. Lore dragons are quick learners and gain maturity much more rapidly than the rest of their kind.
+Dragons specializing in lore are seekers of knowledge. They are the most intelligent of dragonkind, and it is intellect that drives their magic. Armed with a vast array of detection and knowledge spells, dragons of lore seek power through knowledge. They eventually gain powers of telepathy and automatic object identification. Lore dragons are quick learners, and gain maturity much more rapidly than the rest of their kind.
 
   <indent><style:table><color:G>Stats                   Skills</color>
-Strength     <color:w> -1</color>        Disarming   <color:y>Very Good    </color>
-Intelligence <color:v> +3</color>        Device      <color:g>Superb       </color>
-Wisdom       <color:w> +0</color>        Save        <color:G>Excellent    </color>
+Strength     <color:w> -1</color>        Disarming   <color:o>Fair         </color>
+Intelligence <color:v> +3</color>        Device      <color:y>Very Good    </color>
+Wisdom       <color:w> +0</color>        Save        <color:o>Fair         </color>
 Dexterity    <color:w> -1</color>        Stealth     <color:o>Fair         </color>
-Constitution <color:w> -1</color>        Searching   <color:y>Good         </color>
-Charisma     <color:w> +0</color>        Perception  <color:y>Good         </color>
-Life Rating  100%       Melee       <color:r>Bad          </color>
-Experience    80%       Bows        <color:y>Good         </color>
+Constitution <color:w> -1</color>        Searching   <color:G>Excellent    </color>
+Charisma     <color:w> +0</color>        Perception  <color:G>Excellent    </color>
+Life Rating  100%       Melee       <color:R>Poor         </color>
+Experience    80%       Archery     <color:o>Fair         </color>
 Attack       100%
 Breath       100%
 </style></indent>
@@ -21,89 +21,89 @@ Breath       100%
 Dragon breath is the stuff of legends, and this realm seeks to enhance this most powerful attribute of dragonkind. With this speciality, you will be able to shape and control your breaths to maximize deadliness for a given situation. In addition, dragons of this realm may choose their breath types if applicable, and breathing becomes less costly as they mature. This focus requires great fortitude to master and somewhat diminishes the dragon's defenses and melee.
 
   <indent><style:table><color:G>Stats                   Skills</color>
-Strength     <color:w> +0</color>        Disarming   <color:y>Good         </color>
-Intelligence <color:w> -1</color>        Device      <color:y>Good         </color>
-Wisdom       <color:w> -1</color>        Save        <color:G>Excellent    </color>
-Dexterity    <color:w> +0</color>        Stealth     <color:o>Fair         </color>
-Constitution <color:v> +3</color>        Searching   <color:r>Bad          </color>
-Charisma     <color:w> +1</color>        Perception  <color:r>Bad          </color>
-Life Rating  103%       Melee       <color:y>Good         </color>
-Experience   105%       Bows        <color:y>Good         </color>
+Strength     <color:w> +0</color>        Disarming   <color:o>Fair         </color>
+Intelligence <color:w> -1</color>        Device      <color:o>Fair         </color>
+Wisdom       <color:w> -1</color>        Save        <color:o>Fair         </color>
+Dexterity    <color:w> +0</color>        Stealth     <color:R>Poor         </color>
+Constitution <color:v> +3</color>        Searching   <color:o>Fair         </color>
+Charisma     <color:w> +1</color>        Perception  <color:o>Fair         </color>
+Life Rating  103%       Melee       <color:o>Fair         </color>
+Experience   105%       Archery     <color:o>Fair         </color>
 Attack        90%
 Breath       115%
 </style></indent>
 <topic:Attack><color:o>Attack</color>
-Attack dragons seek melee supremacy above all else. This realm offers powerful attack spells to support a race that is already among the melee elite, and the result can be truly awe-inspiring. With this realm, the dragon may rend their opponents with extra sharp claws, may snatch an adjacent opponent in their powerful jaws and then toss them about like a rag doll, and may even augment their bite attacks with their breath element! Truly, a rampaging dragon is an awe inspiring sight, one that is seldom witnessed (or perhaps seldom survived?). This focus values strength above all else.
+Attack dragons seek melee supremacy above all else. This realm offers powerful attack spells to support a race that is already among the melee elite, and the result tends to be devastation and death. With this realm, the dragon may rend their opponents with extra sharp claws, may snatch an adjacent opponent in their powerful jaws and then toss them about like a rag doll, and may even augment their bite attacks with their breath element! A rampaging dragon is a truly awe-inspiring sight, one that is seldom witnessed, or perhaps just seldom survived. This focus values strength above all else.
 
   <indent><style:table><color:G>Stats                   Skills</color>
-Strength     <color:v> +3</color>        Disarming   <color:R>Poor         </color>
+Strength     <color:v> +3</color>        Disarming   <color:r>Bad          </color>
 Intelligence <color:w> -2</color>        Device      <color:r>Bad          </color>
 Wisdom       <color:w> -2</color>        Save        <color:R>Poor         </color>
-Dexterity    <color:w> +1</color>        Stealth     <color:o>Fair         </color>
-Constitution <color:w> -1</color>        Searching   <color:D>Very Bad     </color>
-Charisma     <color:w> +0</color>        Perception  <color:D>Very Bad     </color>
-Life Rating   97%       Melee       <color:g>Superb       </color>
-Experience   105%       Bows        <color:y>Good         </color>
+Dexterity    <color:w> +1</color>        Stealth     <color:R>Poor         </color>
+Constitution <color:w> -1</color>        Searching   <color:R>Poor         </color>
+Charisma     <color:w> +0</color>        Perception  <color:R>Poor         </color>
+Life Rating   97%       Melee       <color:G>Excellent    </color>
+Experience   105%       Archery     <color:o>Fair         </color>
 Attack       115%
 Breath        80%
 </style></indent>
 <topic:Craft><color:o>Craft</color>
-The most powerful magical items have long been believed forged by dragonflame. The craft dragon gains powers of enchantment and may even reforge artifacts into the objects of their choosing! Otherwise, craft dragons are not particularly powerful as they trade melee and breath prowess for magical understanding. This focus requires great wisdom to master.
+The most powerful magical items have long been believed forged by dragonflame. The craft dragon gains powers of enchantment, and may even reforge artifacts into the objects of their choosing! Otherwise, craft dragons are not particularly powerful, as they trade melee and breath prowess for magical understanding. This focus requires great wisdom.
 
   <indent><style:table><color:G>Stats                   Skills</color>
-Strength     <color:w> -1</color>        Disarming   <color:y>Very Good    </color>
-Intelligence <color:w> -1</color>        Device      <color:v>Amber[7]     </color>
-Wisdom       <color:v> +3</color>        Save        <color:G>Excellent    </color>
+Strength     <color:w> -1</color>        Disarming   <color:o>Fair         </color>
+Intelligence <color:w> -1</color>        Device      <color:g>Superb       </color>
+Wisdom       <color:v> +3</color>        Save        <color:o>Fair         </color>
 Dexterity    <color:w> -1</color>        Stealth     <color:o>Fair         </color>
-Constitution <color:w> -1</color>        Searching   <color:r>Bad          </color>
-Charisma     <color:w> -1</color>        Perception  <color:r>Bad          </color>
+Constitution <color:w> -1</color>        Searching   <color:o>Fair         </color>
+Charisma     <color:w> -1</color>        Perception  <color:o>Fair         </color>
 Life Rating  100%       Melee       <color:R>Poor         </color>
-Experience    95%       Bows        <color:y>Good         </color>
+Experience    95%       Archery     <color:o>Fair         </color>
 Attack       100%
 Breath       100%
 </style></indent>
 <topic:Armor><color:o>Armor</color>
-Dragon scales have thwarted many a would be dragonslayer. Naturally tough and resistant, the dragon's armor is even further enhanced by this realm. This specialization gives enhanced armor class, reflection, resistance to cuts and stunning, resistance to poison and life draining, and sustaining of several key stats, albeit not all at once. With all of these extra innate bonuses, the magic spells of this realm are few in number but serve to offer temporary defensive augmentations. Unlike their kin, dragons of this order prize agility above all else.
+Dragon scales have thwarted many a would-be dragonslayer. Naturally tough and resistant, the dragon's armor is even further enhanced by this realm. This specialization gives enhanced armor class, reflection, resistance to cuts and stunning, resistance to poison and life draining, and sustaining of several key stats, albeit not all at once. With all of these extra innate bonuses, the magic spells of this realm are few in number but serve to offer temporary defensive augmentations. Unlike their kin, dragons of this order prize agility above all else.
 
   <indent><style:table><color:G>Stats                   Skills</color>
-Strength     <color:w> -1</color>        Disarming   <color:o>Fair         </color>
+Strength     <color:w> -1</color>        Disarming   <color:R>Poor         </color>
 Intelligence <color:w> -1</color>        Device      <color:R>Poor         </color>
-Wisdom       <color:w> -1</color>        Save        <color:g>Superb       </color>
+Wisdom       <color:w> -1</color>        Save        <color:y>Good         </color>
 Dexterity    <color:v> +3</color>        Stealth     <color:y>Good         </color>
-Constitution <color:w> +1</color>        Searching   <color:r>Bad          </color>
-Charisma     <color:w> +1</color>        Perception  <color:r>Bad          </color>
+Constitution <color:w> +1</color>        Searching   <color:o>Fair         </color>
+Charisma     <color:w> +1</color>        Perception  <color:o>Fair         </color>
 Life Rating  102%       Melee       <color:r>Bad          </color>
-Experience   105%       Bows        <color:y>Good         </color>
+Experience   105%       Archery     <color:o>Fair         </color>
 Attack        90%
 Breath        90%
 </style></indent>
 <topic:Domination><color:o>Domination</color>
-All dragons have a formidable presence and make fearsome opponents. But Domination dragons are truly a breed apart seeking to bend and control the will of all they meet. Convinced of their right to rule, these dragons may subjugate the weak, terrify the uncertain, and stun the unwary with their awesome presence. They are the best dragons at controlling minions and can summon mighty aid. Enemy monsters summoned to battle may switch sides when they notice whom they have been commanded to fight. And in the end, the dragon of domination may sever all oaths of allegiance, returning enemy summons to where they came. Needless to say, dragons of this order value force of will above all else.
+All dragons have a formidable presence and make fearsome opponents; but Domination dragons are truly a breed apart, seeking to bend and control the will of all they meet. Convinced of their right to rule, these dragons may subjugate the weak, terrify the uncertain, and stun the unwary with their awesome presence. They are the best dragons at controlling minions, and can summon mighty aid. Initially hostile monsters summoned to battle may switch sides when they notice whom they have been commanded to fight; and in the end, the dragon of domination may sever all oaths of allegiance, returning enemy summons to where they came from. Needless to say, dragons of this order value force of will above all else.
 
   <indent><style:table><color:G>Stats                   Skills</color>
-Strength     <color:w> -1</color>        Disarming   <color:o>Fair         </color>
+Strength     <color:w> -1</color>        Disarming   <color:R>Poor         </color>
 Intelligence <color:w> -1</color>        Device      <color:R>Poor         </color>
-Wisdom       <color:w> -1</color>        Save        <color:o>Fair         </color>
+Wisdom       <color:w> -1</color>        Save        <color:R>Poor         </color>
 Dexterity    <color:w> -1</color>        Stealth     <color:o>Fair         </color>
-Constitution <color:w> -1</color>        Searching   <color:r>Bad          </color>
-Charisma     <color:v> +3</color>        Perception  <color:r>Bad          </color>
-Life Rating   95%       Melee       <color:r>Bad          </color>
-Experience   105%       Bows        <color:y>Good         </color>
+Constitution <color:w> -1</color>        Searching   <color:o>Fair         </color>
+Charisma     <color:v> +3</color>        Perception  <color:o>Fair         </color>
+Life Rating   95%       Melee       <color:R>Poor         </color>
+Experience   105%       Archery     <color:o>Fair         </color>
 Attack        95%
 Breath        90%
 </style></indent>
 <topic:Crusade><color:o>Crusade</color>
-Crusade dragons are on a mission to destroy the forces of evil. As such, this realm is only available to Gold Dragons and Law Dragons. Being of a single focus, the Crusade dragon is not as powerful in melee or breaths as other dragons, but their spells more than make up for this deficit. At least against evil opponents. For one thing, Crusade dragons can breathe holy elements not normally accessible. At the sight of evil, they become enraged and may haste for battle. They can even heal a bit and ultimately they may smite the forces of evil with holy power, both in melee and in breath. Strong in personality, dragons of this order may summon like minded kin for the final battles.
+Crusade dragons are on a mission to destroy the forces of evil. As such, this realm is only available to Gold Dragons and Law Dragons. Being of a single focus, the Crusade dragon is not as powerful in melee or breaths as other dragons, but their spells more than make up for this deficit, at least against evil opponents. Crusade dragons can breathe holy elements not normally accessible. At the sight of evil, they become enraged and may haste for battle. They can even heal a bit; and ultimately they may smite the forces of evil with holy power, both in melee and in breath. Strong in personality, dragons of this order may summon like-minded kin for the final battles.
 
   <indent><style:table><color:G>Stats                   Skills</color>
-Strength     <color:w> +1</color>        Disarming   <color:R>Poor         </color>
-Intelligence <color:w> -1</color>        Device      <color:y>Good         </color>
-Wisdom       <color:w> -1</color>        Save        <color:o>Fair         </color>
+Strength     <color:w> +1</color>        Disarming   <color:r>Bad          </color>
+Intelligence <color:w> -1</color>        Device      <color:o>Fair         </color>
+Wisdom       <color:w> -1</color>        Save        <color:R>Poor         </color>
 Dexterity    <color:w> +1</color>        Stealth     <color:o>Fair         </color>
-Constitution <color:w> -1</color>        Searching   <color:D>Very Bad     </color>
-Charisma     <color:v> +2</color>        Perception  <color:D>Very Bad     </color>
-Life Rating   95%       Melee       <color:G>Excellent    </color>
-Experience   107%       Bows        <color:y>Good         </color>
+Constitution <color:w> -1</color>        Searching   <color:R>Poor         </color>
+Charisma     <color:v> +2</color>        Perception  <color:R>Poor         </color>
+Life Rating   95%       Melee       <color:y>Good         </color>
+Experience   107%       Archery     <color:o>Fair         </color>
 Attack        90%
 Breath        90%
 </style></indent>
@@ -111,14 +111,14 @@ Breath        90%
 Death dragons are enemies of life itself, seeking to destroy all living creatures. With this realm, the dragon may bend their breath weapon to suit their necromantic desires, eventually breathing mastery over both death and life. At high levels, the death dragon's melee attacks gain a powerful draining effect against living creatures. This focus values strength above all else. This foul realm is only available to Shadow and Chaos dragons.
 
   <indent><style:table><color:G>Stats                   Skills</color>
-Strength     <color:v> +2</color>        Disarming   <color:R>Poor         </color>
+Strength     <color:v> +2</color>        Disarming   <color:r>Bad          </color>
 Intelligence <color:w> -2</color>        Device      <color:R>Poor         </color>
 Wisdom       <color:w> -2</color>        Save        <color:R>Poor         </color>
-Dexterity    <color:w> +0</color>        Stealth     <color:y>Very Good    </color>
-Constitution <color:w> -2</color>        Searching   <color:D>Very Bad     </color>
-Charisma     <color:w> +1</color>        Perception  <color:D>Very Bad     </color>
-Life Rating   95%       Melee       <color:G>Excellent    </color>
-Experience   105%       Bows        <color:y>Good         </color>
+Dexterity    <color:w> +0</color>        Stealth     <color:y>Good         </color>
+Constitution <color:w> -2</color>        Searching   <color:R>Poor         </color>
+Charisma     <color:w> +1</color>        Perception  <color:R>Poor         </color>
+Life Rating   95%       Melee       <color:y>Good         </color>
+Experience   105%       Archery     <color:o>Fair         </color>
 Attack        90%
 Breath        90%
 </style></indent>
@@ -138,29 +138,29 @@ Death         <color:v>  +2 </color>  -2   -2   +0   -2   +1   95%  105%    90% 
 <topic:Skills1><style:heading>Table 2 - Dragon Realm Skill Bonus Table I</style>
 <style:table>
                <color:w>Disarming     Device        Save          Stealth      </color>
-Lore           <color:y>Very Good    </color> <color:g>Superb       </color> <color:G>Excellent    </color> <color:o>Fair         </color>
-Breath         <color:y>Good         </color> <color:y>Good         </color> <color:G>Excellent    </color> <color:o>Fair         </color>
-Attack         <color:R>Poor         </color> <color:r>Bad          </color> <color:R>Poor         </color> <color:o>Fair         </color>
-Craft          <color:y>Very Good    </color> <color:v>Amber[7]     </color> <color:G>Excellent    </color> <color:o>Fair         </color>
-Armor          <color:o>Fair         </color> <color:R>Poor         </color> <color:g>Superb       </color> <color:y>Good         </color>
-Domination     <color:o>Fair         </color> <color:R>Poor         </color> <color:o>Fair         </color> <color:o>Fair         </color>
-Crusade        <color:R>Poor         </color> <color:y>Good         </color> <color:o>Fair         </color> <color:o>Fair         </color>
-Death          <color:R>Poor         </color> <color:R>Poor         </color> <color:R>Poor         </color> <color:y>Very Good    </color>
+Lore           <color:o>Fair         </color> <color:y>Very Good    </color> <color:o>Fair         </color> <color:o>Fair         </color>
+Breath         <color:o>Fair         </color> <color:o>Fair         </color> <color:o>Fair         </color> <color:R>Poor         </color>
+Attack         <color:r>Bad          </color> <color:r>Bad          </color> <color:R>Poor         </color> <color:R>Poor         </color>
+Craft          <color:o>Fair         </color> <color:g>Superb       </color> <color:o>Fair         </color> <color:o>Fair         </color>
+Armor          <color:R>Poor         </color> <color:R>Poor         </color> <color:y>Good         </color> <color:y>Good         </color>
+Domination     <color:R>Poor         </color> <color:R>Poor         </color> <color:R>Poor         </color> <color:o>Fair         </color>
+Crusade        <color:r>Bad          </color> <color:o>Fair         </color> <color:R>Poor         </color> <color:o>Fair         </color>
+Death          <color:r>Bad          </color> <color:R>Poor         </color> <color:R>Poor         </color> <color:y>Good         </color>
 
 </style>
 <topic:Skills2><style:heading>Table 3 - Dragon Realm Skill Bonus Table II</style>
 <style:table>
-               <color:w>Searching     Perception    Melee         Bows         </color>
-Lore           <color:y>Good         </color> <color:y>Good         </color> <color:r>Bad          </color> <color:y>Good         </color>
-Breath         <color:r>Bad          </color> <color:r>Bad          </color> <color:y>Good         </color> <color:y>Good         </color>
-Attack         <color:D>Very Bad     </color> <color:D>Very Bad     </color> <color:g>Superb       </color> <color:y>Good         </color>
-Craft          <color:r>Bad          </color> <color:r>Bad          </color> <color:R>Poor         </color> <color:y>Good         </color>
-Armor          <color:r>Bad          </color> <color:r>Bad          </color> <color:r>Bad          </color> <color:y>Good         </color>
-Domination     <color:r>Bad          </color> <color:r>Bad          </color> <color:r>Bad          </color> <color:y>Good         </color>
-Crusade        <color:D>Very Bad     </color> <color:D>Very Bad     </color> <color:G>Excellent    </color> <color:y>Good         </color>
-Death          <color:D>Very Bad     </color> <color:D>Very Bad     </color> <color:G>Excellent    </color> <color:y>Good         </color>
+               <color:w>Searching     Perception    Melee         Archery      </color>
+Lore           <color:G>Excellent    </color> <color:G>Excellent    </color> <color:R>Poor         </color> <color:o>Fair         </color>
+Breath         <color:o>Fair         </color> <color:o>Fair         </color> <color:o>Fair         </color> <color:o>Fair         </color>
+Attack         <color:R>Poor         </color> <color:R>Poor         </color> <color:G>Excellent    </color> <color:o>Fair         </color>
+Craft          <color:o>Fair         </color> <color:o>Fair         </color> <color:R>Poor         </color> <color:o>Fair         </color>
+Armor          <color:o>Fair         </color> <color:o>Fair         </color> <color:r>Bad          </color> <color:o>Fair         </color>
+Domination     <color:o>Fair         </color> <color:o>Fair         </color> <color:R>Poor         </color> <color:o>Fair         </color>
+Crusade        <color:R>Poor         </color> <color:R>Poor         </color> <color:y>Good         </color> <color:o>Fair         </color>
+Death          <color:R>Poor         </color> <color:R>Poor         </color> <color:y>Good         </color> <color:o>Fair         </color>
 
 </style>
 
 
-<color:s>Automatically generated for FrogComposband 7.0.strawberry.</color>
+<color:s>Automatically generated for FrogComposband 7.1.liquorice.</color>
