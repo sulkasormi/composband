@@ -539,7 +539,9 @@ void possessor_cast(void)
     }
     if (pelko()) return;
     if (mon_spell_cast_possessor(race))
+    {
         energy_use = 100;
+    }
 }
 
 /**********************************************************************
@@ -1234,18 +1236,16 @@ race_t *mon_possessor_get_race(void)
                     "are capable of possessing the corpses of monsters they have slain, and gain powers and "
                     "abilities based on their current body. As such, they can become quite powerful indeed! "
                     "Unfortunately, not every type of monster will drop a corpse, and getting suitable corspes "
-                    "to inhabit can be difficult. If the possessor ever leaves their current body then all of "
-                    "their equipment will be removed (except a "
-                    "light source) and they will temporarily be in their native, vulnerable state. Finally, "
-                    "leaving their current body will destroy that corpse most of the time, so the possessor "
-                    "should only do so if they have a better corpse on hand (and also only if there are no "
-                    "monsters nearby!).\n \n"
-                    "Possessors are monsters and do not choose a normal class. Their stats, skills, resistances "
-                    "and spells are completely determined by the body they inhabit. Their current body also "
-                    "determines their spell stat (e.g. a novice priest uses wisdom, a novice mage uses intelligence). "
-                    "Their current body may offer innate powers (e.g. breath weapons or rockets) in addition to or in lieu "
-                    "of magical powers (e.g. mana storms and frost bolts). Be sure to check both the racial power "
-                    "command ('U') and the magic command ('m') after possessing a new body.";
+                    "to inhabit can be difficult. If the possessor ever leaves their current body, all of "
+                    "their equipment will be removed (except a light source) and they will temporarily return "
+                    "to their native, vulnerable state. Finally, leaving their current body will destroy that "
+                    "corpse most of the time, so the possessor should only do so if they have a better corpse "
+                    "on hand (and also only if there are no monsters nearby!). Possessors normally have full "
+                    "control of the body they inhabit; but at very low health this control becomes hard to "
+                    "maintain, and a possessor who suffers serious damage has a small chance of being ejected from the body.\n \n"
+                    "The stats, skills, spells, resistances and innate powers of a possessor are determined by the body they inhabit; "
+                    "be sure to check both the racial power command (<color:keypress>U</color>/<color:keypress>O</color>) and the magic command (<color:keypress>m</color>) after possessing a new body. "
+                    "The current body also determines the spell stat; for example, a novice priest possessor uses wisdom, while a novice mage possessor relies on intelligence.";
 
         me.exp = 250;
         me.shop_adjust = 110; /* Really should depend on current form */
