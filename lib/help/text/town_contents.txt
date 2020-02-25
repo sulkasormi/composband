@@ -1,18 +1,22 @@
-The Town and Wilderness
+The Towns and Wilderness
 
-Please choose one of the following online help files:
+Please choose one of the following help sections:
 
-    [a] The Town and Wilderness
+    [a] The Towns and Wilderness
     [b] Town and Wilderness Symbols
-    [c] The Town Level
-    [d] The Wilderness Option
-    [e] The No Wilderness Option
-    [f] Townspeople
-    [g] Shopping in Town
-    [h] Object Pricing
-    [i] List of Shops
-    [j] Special Buildings
-    [k] Fixed Quests
+    [c] What to Expect in a Town
+    [d] Townspeople
+    [e] Shopping in the Town
+    [f] Object Pricing
+    [g] List of Shops
+    [h] Special Buildings
+    [i] Town Quests
+    [j] The Wilderness Option
+    [k] Discovering and Entering Dungeons
+    [l] Which Dungeons Should I Visit?
+    [m] Travelling Between Towns
+    [n] The No Wilderness Option
+    [o] Coffee-Break Mode
 
     (?) Help System Commands
 
