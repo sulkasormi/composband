@@ -72,6 +72,12 @@ your system early!)
 Do not fight monsters in melee if they have highly dangerous (or 
 annoying) melee attacks but no way to hurt you from range.
 
+Try to reach new towns and dungeons in the safest way possible - stick 
+to roads, minimize the time spent in dangerous areas, and travel 
+through the overworld rather than the raw wilderness. Not only are you 
+less likely to get lost on the overworld map, but travelling there is 
+safer too - though you should still prepare for ambushes!
+
 
 Middle-Game Mistakes and Needs
 
@@ -105,6 +111,16 @@ Store most of your Potions of Healing and Potions of *Healing* at home
 do carry at least *some* Potions of Healing for emergencies; and in the 
 late game, start carrying one or more Potions of *Healing* too.
 
+Do not invest all your stat-ups in a single stat. No character lives 
+entirely off one stat - melee characters need Strength, Dexterity and 
+Constitution; pure spellcasters are very reliant on their casting stat, 
+but will still want some Strength for carrying items and Constitution 
+for staying alive, even if they do no melee at all. Investing several 
+consecutive stat-ups in a single key stat is not necessarily a bad 
+idea, but as the stat cap (somewhere between 18/70 and 18/130) is 
+approached, the returns diminish rapidly. The best returns are offered 
+when a stat's base value is close to 18.
+
 Do not completely neglect items useful in niche situations, especially 
 if you know where those situations will happen. You might not carry 
 Potions of Resist Heat and Cold all the time, but it's still a good 
@@ -123,6 +139,10 @@ Prefer loot you might one day wear (or otherwise use) to loot that's
 only good for selling, even if the latter has a higher nominal value. 
 Do not ignore items that meet your needs, even if their nominal value 
 is low.
+
+Remember that the melee bonuses on a Ring of Combat only apply to the 
+hand you're wearing it on; if you have no weapon in that hand, the 
+bonuses are lost.
 
 Always keep backups at home for key devices that might get destroyed.
 
