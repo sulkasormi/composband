@@ -159,7 +159,7 @@ Several additional quests also appear in the dungeon that are always at the same
 
 Other such quests are received from towns; although town buildings generally offer town quests, occasionally you will get a dungeon quest instead. One such quest you should know about is <color:y>Pest Control</color>, also known as the <color:y>Warg Quest</color> - a quest to kill eight Wargs on level 5 of Warrens, or on level 5 of Angband if the wilderness is off (as is the case in Beginner Mode). Killing eight Wargs will give you quite a lot of experience, so completing this quest really speeds up the early game! Note, though, that you must request and complete the Thieves' Hideout town quest in Outpost before you can receive the Warg Quest.
 
-Fixed dungeon quests obey the same rules as the random ones, except that for fixed quests received from a town the reward will be given to you by the quest-giver instead of being dropped by a monster. Also, you cannot abandon the quests to kill the Serpent of Chaos or Oberon; you can leave the quest levels, but not fail deliberately.
+Fixed dungeon quests obey the same rules as the random ones, except that for fixed quests received from a town the reward will be given to you by the quest-giver instead of being dropped by a monster; also, leaving the level of a fixed quest received from a town will fail the quest. The quests to kill the Serpent of Chaos and Oberon cannot be failed; you can leave them as many times as you wish, although in coffee-break mode (and especially instant-coffee mode) this is unwise and aventually makes them harder to complete.
 
 <topic:Conquering><style:heading>Conquering Dungeons</style>
 
