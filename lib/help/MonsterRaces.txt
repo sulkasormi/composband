@@ -1,14 +1,14 @@
 <style:title>Monster Races</style>
 
-So, you have decided to play as a monster. There are many options to choose from and the various types of monsters are loosely grouped by type below: Animals, Dragons, Demons, etc.
+So, you feel ready to play as a monster? There are many monster races and subraces to choose from, and the various races are loosely grouped by type below: Animals, Dragons, Demons, and so forth.
 
-As a monster, you won't be able to choose a class the way normal players do. Rather, most monster types gain abilities and powers as they gain experience. For example, dragons can breathe fire as well as access magical abilities. So you will want to check out both the magic command (<color:keypress>m</color>) as well as the racial power command (<color:keypress>U</color> or <color:keypress>O</color>) to see what powers are available as you play.
+As a monster, <color:v>you will not be able to choose a normal class;</color> your race will essentially be your class as well. Monsters do not use book spells, but many of them are magical in other ways; for example, fire dragons can breathe fire and may gain access to a range of non-book spells. Most monster types gain new spells, powers or abilities with experience; check out both the magic command (<color:keypress>m</color>) and the racial power command (<color:keypress>U</color>/<color:keypress>O</color>) to see what powers are available to you as you play.
 
-In addition, most monsters have custom body types, and this will severely constrain the amount and kind of equipment you may wear. For example, a beholder cannot wear armor or wield a sword ... That would be an odd sight indeed! Instead, they may wear rings on their numerous eyestalks. Details of this kind should be described below.
+Most monster races have custom body types, which may severely constrain the amount and kind of equipment you may wear. For example, a <color:keyword>Beholder</color> cannot wear armor or wield a sword... that would be an odd sight indeed! But to make up for this, they can wear up to eight rings on their eyestalks. Generally, details of this kind are described below.
 
-Finally, all monsters evolve. When they gain enough experience, they will assume a more powerful form. To continue with our example of dragons, you might evolve from Baby to Young to Mature and finally Ancient forms, becoming vastly more powerful in the process. The stats and skills listed in this document only apply to the starting form, which is usually very weak.
+Finally, all monsters <color:keyword>evolve</color>. When they gain enough experience, they will assume a more powerful form. To continue with our example of dragons, you might evolve from Baby to Young to Mature to Ancient and finally to a Great Wyrm, becoming vastly more powerful in the process. The stats and skills listed below assume a level 35 character.
 
-For details on the <color:keyword>Primary Statistics</color>, see <link:birth.txt#PrimaryStats>. For information about the various <color:keyword>Skills</color>, see <link:birth.txt#PrimarySkills>. To compare the various races at a glance, you might want to take a look at <link:MonsterRaces.txt#Tables> the race tables below.
+For details on the <color:keyword>Stats</color>, see <link:birth.txt#PrimaryStats>. For information about the <color:keyword>Skills</color>, see <link:birth.txt#PrimarySkills>. To compare the various races at a glance, take a look at the race tables below (<link:MonsterRaces.txt#Tables>).
 
 <style:heading>Animal</style>
   <indent><topic:Centipede><color:o>Centipede</color>
@@ -20,91 +20,89 @@ As a centipede, your main survival attribute will be the many pairs of boots you
 Strength     <color:w> +0</color>        Disarming   <color:y>Good         </color>
 Intelligence <color:w> -3</color>        Device      <color:o>Fair         </color>
 Wisdom       <color:w> -3</color>        Save        <color:o>Fair         </color>
-Dexterity    <color:w> +0</color>        Stealth     <color:G>Excellent    </color>
+Dexterity    <color:w> +0</color>        Stealth     <color:y>Very Good    </color>
 Constitution <color:w> +0</color>        Searching   <color:r>Bad          </color>
 Charisma     <color:w> -3</color>        Perception  <color:r>Bad          </color>
-Life Rating   90%       Melee       <color:o>Fair         </color>
-Base HP       15        Bows        <color:D>Very Bad     </color>
+Life Rating   90%       Melee       <color:y>Good         </color>
+Base HP       15        Archery     <color:D>Very Bad     </color>
 Experience   100%       Infravision 50'
 </style></indent>
 <topic:Hound><color:o>Hound</color>
-While Hounds typically hunt in packs, you have chosen to go it alone. You will begin life in the weak form of a Clear Hound. As you mature you will take a number of evolutionary steps. At each such step, the form you evolve into will be randomly determined. But each tier offers more powerful choices than the last and who knows? You may even evolve into an Aether Hound some day.
+While Zephyr Hounds typically hunt in packs, you have chosen to go it alone. You will begin life in the weak form of a Clear Hound. As you mature, you will take a number of evolutionary steps. At each such step, the form you evolve into will be randomly determined; but each tier offers more powerful choices than the last. Who knows - you may even evolve into an Aether Hound some day.
  
-Hounds are monsters so cannot choose a normal class. They are not magical so cannot cast spells. However, they are fantastic hunters so learn a small number of abilities to aid in this endeavor. And of course, you are probably aware that hounds love to breathe!
+Hounds are not magical, and so cannot cast spells; however, they are fantastic hunters, and learn a number of special abilities that will aid them in this endeavour. And as you probably know all too well, hounds love to breathe!
  
-The body of the Hound is canine, so they cannot wield weapons. Instead, they attack with their vicious bite and razor sharp claws. They are not so powerful in melee as are dragons, but they are not that bad either. Hounds can wear four rings on their front paws, a pair of boots on their hind legs, an amulet around their neck and even a cloak and a suit of body armor.
+Due to their canine bodies, Hounds cannot wield weapons; instead, they attack with their vicious bite and razor-sharp claws. While their melee is not as powerful as that of dragons, it usually gets the job done. Hounds can wear four rings on their front paws, a pair of boots on their hind legs, an amulet around their neck, and even a cloak and a suit of body armor.
 
   <indent><style:table><color:G>Stats                   Skills</color>
-Strength     <color:w> +3</color>        Disarming   <color:o>Fair         </color>
+Strength     <color:w> +3</color>        Disarming   <color:R>Poor         </color>
 Intelligence <color:w> -3</color>        Device      <color:r>Bad          </color>
-Wisdom       <color:w> -5</color>        Save        <color:o>Fair         </color>
+Wisdom       <color:w> -5</color>        Save        <color:R>Poor         </color>
 Dexterity    <color:w> +4</color>        Stealth     <color:g>Superb       </color>
-Constitution <color:w> +3</color>        Searching   <color:o>Fair         </color>
+Constitution <color:w> +3</color>        Searching   <color:R>Poor         </color>
 Charisma     <color:w> +1</color>        Perception  <color:R>Poor         </color>
-Life Rating  100%       Melee       <color:G>Excellent    </color>
-Base HP       22        Bows        <color:r>Bad          </color>
+Life Rating  100%       Melee       <color:y>Very Good    </color>
+Base HP       22        Archery     <color:r>Bad          </color>
 Experience   150%       Infravision 50'
 </style></indent>
 <topic:Hydra><color:o>Hydra</color>
-Hydras are monsters with multiple heads. As they evolve, they grow additional heads granting the potential for extra attacks as well as the ability to wear more equipment (helmets and amulets). While not every head may wear a helmet and an amulet (This would be too powerful), each head is capable of attacking. So the 11-headed hydra can attack up to 11 times per round, provided it has enough strength and dexterity to command such a fearsome arsenal.
+Hydras are monsters with multiple heads. As they evolve, they grow additional heads, giving them extra attacks as well as the ability to wear more equipment (helmets and amulets). While not every head may wear a helmet and an amulet (imagine how powerful that would be!), each head is capable of attacking; so an 11-headed hydra can attack up to 11 times per round, provided it has enough strength and dexterity to command such a fearsome arsenal.
  
-Hydras are monsters so do not choose a normal class. Instead, they play much like warriors with a few limited abilities. All hydras regenerate quickly and 5 and 7-headed hydras resist poison and gain a few poison based attacks. 9 and 11-headed hydras are creatures of flame: Their attacks burn and they are capable of breathing fire among other flame based attacks. They resist fire as well.
+Hydras are not very magical, and so play much like warriors but with a few extra abilities. Five- and seven-headed hydras resist poison and gain a few poison-based attacks. Nine- and eleven-headed hydras are creatures of flame: they resist fire, their attacks burn, and they are capable of breathing fire among other flame-based attacks. All hydras regenerate extremely rapidly.
 
   <indent><style:table><color:G>Stats                   Skills</color>
 Strength     <color:w> +3</color>        Disarming   <color:y>Good         </color>
-Intelligence <color:w> -2</color>        Device      <color:o>Fair         </color>
+Intelligence <color:w> -2</color>        Device      <color:R>Poor         </color>
 Wisdom       <color:w> -2</color>        Save        <color:o>Fair         </color>
-Dexterity    <color:w> +2</color>        Stealth     <color:o>Fair         </color>
+Dexterity    <color:w> +2</color>        Stealth     <color:R>Poor         </color>
 Constitution <color:w> +3</color>        Searching   <color:r>Bad          </color>
 Charisma     <color:w> +0</color>        Perception  <color:r>Bad          </color>
-Life Rating  109%       Melee       <color:g>Superb       </color>
-Base HP       45        Bows        <color:r>Bad          </color>
+Life Rating  108%       Melee       <color:y>Good         </color>
+Base HP       45        Archery     <color:r>Bad          </color>
 Experience   130%       Infravision 50'
 </style></indent>
 <topic:Spider><color:o>Spider</color>
-Spiders are stealthy monsters that prefer to wait for their prey. They have poisonous attacks and can weave sticky webs to entangle their enemies. They have 8 legs, 4 of which may wear rings and the remaining may equip 2 pairs of boots. They are unable to wield weapons or bows, but may wear a helmet, an amulet, a cloak and even a suit of body armor (after slight adjustments, of course). They cannot wield a light source, but this is not an issue as spiders have grown accustomed to the dark.
+Spiders are stealthy monsters that prefer to wait for their prey. They have poisonous attacks and can weave sticky webs to entangle their enemies. They have eight legs, enough for four rings and two pairs of boots; they may also wear a helmet, an amulet, a cloak and even a suit of body armor (after slight adjustments, of course), but cannot wield a weapon or a bow. They also cannot equip light sources, but this is not an issue, as spiders are accustomed to the dark.
  
-There are two paths of evolution for the spider: The Phase Spider and The Aranea. The former is somewhat weaker than the latter in fortitude, stats and melee, but this is compensated by the Phase Spider's amazing powers of teleportation. However, the Elder Aranea's poison touch is more powerful than that of the Phase Spider and often paralyzes its opponents.
+There are two paths of evolution for the spider: the Phase Spider and the Aranea. Araneas have greater fortitude and better stats, as well as powerful melee capable of paralyzing an opponent; but Phase Spiders compensate for their relative fragility with unsurpassed powers of teleportation.
  
 All spiders begin in the very weak form of the Cave Spider. Lacking any special talents, the cave spider must play carefully if it is to survive.
 
   <indent><style:table><color:G>Stats                   Skills</color>
-Strength     <color:w> -2</color>        Disarming   <color:o>Fair         </color>
-Intelligence <color:w> -1</color>        Device      <color:g>Superb       </color>
-Wisdom       <color:w> -1</color>        Save        <color:o>Fair         </color>
-Dexterity    <color:w> +2</color>        Stealth     <color:G>Excellent    </color>
-Constitution <color:w> -2</color>        Searching   <color:o>Fair         </color>
-Charisma     <color:w> -3</color>        Perception  <color:R>Poor         </color>
-Life Rating   70%       Melee       <color:y>Very Good    </color>
-Base HP       25        Bows        <color:r>Bad          </color>
+Strength     <color:w> +1</color>        Disarming   <color:R>Poor         </color>
+Intelligence <color:w> +0</color>        Device      <color:y>Good         </color>
+Wisdom       <color:w> -5</color>        Save        <color:o>Fair         </color>
+Dexterity    <color:w> +0</color>        Stealth     <color:G>Excellent    </color>
+Constitution <color:w> +2</color>        Searching   <color:R>Poor         </color>
+Charisma     <color:w> +0</color>        Perception  <color:R>Poor         </color>
+Life Rating  100%       Melee       <color:G>Excellent    </color>
+Base HP       25        Archery     <color:r>Bad          </color>
 Experience   200%       Infravision 50'
 </style></indent>
 </indent>
 <style:heading>Angel/Demon</style>
   <indent><topic:Angel><color:o>Angel</color>
-Angels are heavenly beings on a holy mission. They are winged creatures able to fly over chasms and pits. They also become resistant to the elements as they mature and are not fooled by invisibility. Their stats are truly awe-inspiring making them one of the most powerful monster races.
+Angels are heavenly beings on a holy mission. Their wings allow them to fly over chasms and pits. They are rarely fooled by invisibility, and become resistant to the elements as they mature. Their stats are truly awe-inspiring, and their divine magic extremely strong, offering good offense combined with detection, healing, melee enhancement and utility. Angels are one of the most powerful races, but they also gain levels extremely slowly.
  
-Angels are monsters so cannot choose a normal class. Instead, they rely on their divine powers which function like spells but need not be learned or cast from books. These powers can be used while blinded, but not while confused and they are also blocked by Anti-magic. The divine powers of the angel are quite powerful offering good offense combined with detection, healing and melee enhancement. Wisdom is the primary spell stat.
- 
-Angels use the same equipment slots as normal player races and have no innate attacks.
+Angels have a humanoid body type; they use the same equipment slots as most normal player races, and have no innate melee attacks. Wisdom is their primary spell stat.
 
   <indent><style:table><color:G>Stats                   Skills</color>
 Strength     <color:w> +2</color>        Disarming   <color:R>Poor         </color>
 Intelligence <color:w> +2</color>        Device      <color:G>Excellent    </color>
 Wisdom       <color:v> +5</color>        Save        <color:g>Superb       </color>
-Dexterity    <color:w> +2</color>        Stealth     <color:y>Good         </color>
-Constitution <color:w> +2</color>        Searching   <color:o>Fair         </color>
+Dexterity    <color:w> +2</color>        Stealth     <color:o>Fair         </color>
+Constitution <color:w> +2</color>        Searching   <color:R>Poor         </color>
 Charisma     <color:w> +4</color>        Perception  <color:R>Poor         </color>
 Life Rating   99%       Melee       <color:y>Good         </color>
-Base HP       26        Bows        <color:o>Fair         </color>
+Base HP       26        Archery     <color:o>Fair         </color>
 Experience   325%       Infravision 30'
 </style></indent>
 <topic:Demon><color:o>Demon</color>
-Demons are powerful servants of evil and come in many forms. Being monsters, they may not choose a normal class. Instead, they rely on their devilish powers or their brutish strength to survive.
+Demons are powerful servants of evil and come in many forms. They rely on their devilish powers or their brutish strength to survive.
  
-The various demonic races include the Balrog, powerful demons of fire; the Servants of Khorne, mighty warriors of destruction; the Tanar'ri, weaker demons whose ultimate form has three sets of arms, but prefers to fight naked; and Cyberdemons, whose firepower is unsurpassable.
+The various demonic races include the Balrogs, powerful demons of fire; the Servants of Khorne, mighty warriors of destruction; the Tanar'ri, weaker demons whose ultimate form has three sets of arms, but prefers to fight naked; and Cyberdemons, whose firepower is unsurpassable.
  
-All demon races cannot eat normal food, but must feast upon the remains of their human enemies. They are unaffected by the Eldritch Horror.
+Demons cannot eat normal food, but must feast upon the remains of their human enemies. They are unaffected by the Eldritch Horror.
 
 See <link:Demons.txt> for more details on demons.
 
@@ -113,31 +111,31 @@ See <link:Demons.txt> for more details on demons.
   <indent><topic:Beholder><color:o>Beholder</color>
 Beholders are floating orbs of flesh with a single central eye surrounded by numerous smaller eyestalks. They attack with their gaze which often confuses or even paralyzes their foes. They are unable to wield normal weapons or armor, but may equip a single ring on each of their eyestalks, and the number of eyestalks increases as the beholder evolves.
  
-Beholders are monsters so cannot choose a normal class. Instead, they gain powers as they evolve, including some limited offensive capabilities. But the beholders primary offense will always be their powerful gaze. Intelligence is the primary spell stat and beholders are quite intelligent indeed. Their searching and perception are legendary and they are quite capable with magical devices. However, they are not very strong and won't be able to stand long against multiple foes.
+Beholders gain powers as they evolve, including some strong offensive spells; but their primary offense will always be their powerful gaze. Intelligence is their spell stat, and beholders are quite intelligent indeed. Their searching and perception are legendary, and they are quite capable with magical devices. However, they are not very strong and must be careful when surrounded by foes.
  
-The attack of the beholder is unique. Since their gaze is not a normal physical attack, they receive no benefit to melee from their Strength and Dexterity. Also, the number of attacks is determined by level rather than the normal way: in this respect, they resemble monks. Finally, the beholder need not be next to their foes in order to attack with melee. They may gaze at distant monsters, though the range of their gaze is somewhat restricted.
+The attack of the beholder is unique. Since their gaze is not a normal physical attack, they receive no benefit to melee from their Strength and Dexterity. Also, the number of attacks is determined by level rather than the normal way: in this respect, they resemble monks. Finally, the beholder need not be next to their foes in order to attack with melee; they may gaze at distant monsters, though the range of their gaze is somewhat restricted, and prolonged long-distant gazing will tire them out.
 
   <indent><style:table><color:G>Stats                   Skills</color>
-Strength     <color:w> -3</color>        Disarming   <color:y>Good         </color>
-Intelligence <color:v> +7</color>        Device      <color:b>Heroic       </color>
+Strength     <color:w> -3</color>        Disarming   <color:o>Fair         </color>
+Intelligence <color:v> +7</color>        Device      <color:v>Amber[10]    </color>
 Wisdom       <color:w> +0</color>        Save        <color:g>Superb       </color>
 Dexterity    <color:w> +2</color>        Stealth     <color:b>Heroic       </color>
-Constitution <color:w> +0</color>        Searching   <color:v>Amber[7]     </color>
-Charisma     <color:w> +1</color>        Perception  <color:v>Amber[7]     </color>
+Constitution <color:w> +0</color>        Searching   <color:b>Heroic       </color>
+Charisma     <color:w> +1</color>        Perception  <color:b>Heroic       </color>
 Life Rating  100%       Melee       <color:o>Fair         </color>
-Base HP       20        Bows        <color:D>Very Bad     </color>
+Base HP       20        Archery     <color:r>Bad          </color>
 Experience   200%       Infravision 80'
 </style></indent>
 </indent>
 <style:heading>Dragon</style>
   <indent><topic:Dragon><color:o>Dragon</color>
-Dragons are powerful winged serpents. They are the strongest fighters with razor sharp claws and a bone crushing bite. Each dragon has a unique type of breath that becomes more deadly as the dragon grows and matures.
+Dragons are powerful winged serpents. They are strong in combat, with razor-sharp claws and a bone-crushing bite; but even more legendary is their breath, which grows ever more deadly as the dragon matures.
  
-Due to their non-humanoid bodies, dragons are unable to wear armor, gloves or boots. However, being creatures of magic, they are able to wear 6 rings. They can also wear a helmet, a light source, a cloak and an amulet. Because of these equipment restrictions, dragons may have a difficult time covering all resistances despite the fact that each dragon has one or more innate resistances (or even immunities).
+Due to their non-humanoid bodies, dragons are unable to wear armor, gloves or boots; however, being creatures of magic, they may equip up to six rings. They can also wear a helmet, a light source, a cloak and an amulet. Because of these equipment restrictions, dragons may have a difficult time covering all resistances; but each dragon has at least one innate resistance, maybe even an immunity.
  
-Dragons begin life in a weak form, being very young. As their bodies mature, their scales grow tough and their claws sharp. Their breath grows more deadly and they frequently gain additional magical powers and resistances. All dragons can fly, but younger dragons are not so quick as their elders.
+Dragons begin life in a weak form, being very young. As their bodies mature, their scales grow tough and their claws sharp. Their breaths become stronger and stronger, and they frequently gain additional magical powers and resistances. All dragons can fly, but younger dragons are not so quick as their elders.
  
-Dragons are magical creatures, and each dragon may choose to specialize in a specific type of magic. This magic does not require books to learn and also has a direct influence on the dragon's stats and skills.
+With the exception of Steel Dragons, who are far less intelligent than their kin and rely on brute force only, each dragon may choose to specialize in a specific type of magic. These special dragon-magic realms do not require books to learn. The selection of a realm has a direct influence on the stats and skills of the dragon.
 
 See <link:Dragons.txt> for more details on dragons.
 See <link:DragonRealms.txt> for more details on dragon realms.
@@ -146,53 +144,53 @@ See <link:DragonRealms.txt> for more details on dragon realms.
 Strength     <color:w> +4</color>        Disarming   <color:o>Fair         </color>
 Intelligence <color:w> +2</color>        Device      <color:y>Good         </color>
 Wisdom       <color:w> +1</color>        Save        <color:o>Fair         </color>
-Dexterity    <color:w> +1</color>        Stealth     <color:o>Fair         </color>
+Dexterity    <color:w> +1</color>        Stealth     <color:R>Poor         </color>
 Constitution <color:w> +3</color>        Searching   <color:o>Fair         </color>
 Charisma     <color:w> +2</color>        Perception  <color:o>Fair         </color>
 Life Rating  115%       Melee       <color:G>Excellent    </color>
-Base HP       40        Bows        <color:r>Bad          </color>
+Base HP       40        Archery     <color:r>Bad          </color>
 Experience   250%       Infravision 50'
 </style></indent>
 </indent>
 <style:heading>Elemental/Vortex</style>
   <indent><topic:Elemental><color:o>Elemental</color>
-Elementals are mindless creatures animated from a single elemental form. As a species, elementals can never be confused or cut, and they are immune to the eldritch horror (being virtually mindless). They rarely feel fear and are resistant to poison. In addition, they gain specific powers and abilities depending on their form.
+Elementals are mindless creatures animated from a single elemental form. As a species, elementals can never be cut, and being virtually mindless they are immune to sanity blasting. They rarely feel fear, and are resistant to confusion and poison. In addition, they gain specific powers and abilities depending on their form.
  
-For example, Earth Elementals are slow but gain bonuses to AC due to their tough skins. They are resistant to shards and may even turn their skins to stone. At home in elemental earth, they may travel freely through rocky confines. However, being made of earth, their potions frequently turn to mud!
+Earth Elementals are slow, but gain AC bonuses due to their tough bodies. They are resistant to shards, and may even turn their skins to stone. At home in elemental earth, they may travel freely through rocky confines. Unfortunately, as they are made of earth, their magic potions frequently turn to mud!
  
-Air Elementals are shockingly fast, but perhaps that is just the crackle of their electrified bodies? They may hurl bolts and balls electricity at their enemies and may even imbue their weapons with deadly lightning. However, being surrounded by lightning, rings, amulets, wands and rods are quickly destroyed!
+Air Elementals are shockingly fast, but perhaps that is just the crackle of their electrified bodies? They may hurl bolts and balls of electricity at their enemies, and may even imbue their weapons with deadly lightning. However, being surrounded by lightning, rings, amulets, wands and rods are quickly destroyed!
  
-Fire Elementals are somewhat fast (They definitely run circles around their earthen brethren) and are cloaked in fire. Of course, they may attack with hell's fury but need to be on the lookout for cold wielding foes. However, being surrounded by fire, scrolls and staves are rapidly burned to ash!
+Fire Elementals are somewhat fast (enough to run circles around their earthen brethren) and are cloaked in flames. They may attack with hell's fury, but need to be on the lookout for cold-wielding foes. Being surrounded by fire, they rapidly burn scrolls and staves to ash!
  
-Finally, there are the Water Elementals, creatures able to conjure deadly water bolts. They are immune to stunning. Their attacks can be quite corrosive, but, alas, sometimes their armor corrodes as well! They also have a unique energy system based on the speed of their internal water flow; fighting and the use of elemental powers excite them and turn them into a raging torrent, while resting or aimlessly splashing about slows them down again. High flow rates make water elementals stronger, but their armor sometimes gets caught in the flow and slips off!
+Finally, there are the Water Elementals, creatures able to conjure deadly water bolts. They are immune to stunning. Their attacks can be quite corrosive; but alas, sometimes their own armor corrodes as well. Water Elementals also have a unique energy system based on the speed of their internal water flow; fighting and the use of elemental powers excite them and turn them into a raging torrent, while resting or aimlessly splashing about slows them down again. High flow rates make water elementals stronger, but their armor sometimes gets caught in the flow and slips off!
 
   <indent><style:table><color:G>Stats                   Skills</color>
 Strength     <color:w> +5</color>        Disarming   <color:o>Fair         </color>
 Intelligence <color:w> -5</color>        Device      <color:r>Bad          </color>
-Wisdom       <color:w> -5</color>        Save        <color:G>Excellent    </color>
-Dexterity    <color:w> -4</color>        Stealth     <color:G>Excellent    </color>
+Wisdom       <color:w> -5</color>        Save        <color:y>Very Good    </color>
+Dexterity    <color:w> -4</color>        Stealth     <color:y>Very Good    </color>
 Constitution <color:w> +6</color>        Searching   <color:o>Fair         </color>
 Charisma     <color:w> +0</color>        Perception  <color:R>Poor         </color>
-Life Rating  120%       Melee       <color:g>Superb       </color>
-Base HP       30        Bows        <color:r>Bad          </color>
+Life Rating  120%       Melee       <color:b>Heroic       </color>
+Base HP       30        Archery     <color:r>Bad          </color>
 Experience   170%       Infravision 50'
 </style></indent>
 <topic:Vortex><color:o>Vortex</color>
-Vortices are mindless whirlwinds of elemental forces randomly moving about the dungeon in search of prey. They are seldom confused and never blinded since they lack vision in the normal sense. Indeed, they seem to be aware of their surroundings even without eyes and need not wear a light source. They can be neither stunned, nor cut, and their mindless nature renders them immune to fear. But, alas, they are hopeless with magical devices, are rather weak in melee, and, while they may breathe almost effortlessly, their breath attacks are rather weak.
+Vortices are mindless whirlwinds of elemental forces twirling their way through the dungeon in search of prey. They are seldom confused and never blinded since they lack vision in the normal sense; indeed, they seem to be aware of their surroundings even without eyes, and need not wear a light source. They can be neither stunned nor cut, and their mindless nature renders them immune to fear. But, alas! they are hopeless with magical devices and somewhat weak in melee; and while they may breathe almost effortlessly, their breath attacks are not particularly strong.
  
-Vortices do not have normal bodies. Rather they are simply a rapidly spinning elemental mass, and as such, they may incorporate objects into their rotating essence, gaining bonuses and protection in the process. The number of objects they may use increases with level, and there are no restrictions on the types of equipment they may 'wield' in each slot. While they may 'wield' weapons this way, they cannot attack with them. Instead, the vortex may engulf nearby monsters with their elemental essence.
+Vortices do not have normal bodies; rather, they are simply a rapidly spinning elemental mass. As such, they may incorporate objects into their rotating essence, gaining bonuses and protection in the process. The number of objects they may use increases with level, and there are no restrictions on the types of equipment they may 'wield' in each slot. While they may equip weapons this way, they cannot attack with them; instead, the vortex may engulf nearby monsters with their elemental essence.
  
-Vortices evolve randomly, though all seem to end up with the evolutionary perfection of the Aether vortex.
+Vortices evolve randomly, though all seem to end up with the evolutionary perfection of the Aether vortex. At level 50 they gain a special talent to augment their power.
 
   <indent><style:table><color:G>Stats                   Skills</color>
-Strength     <color:w> +0</color>        Disarming   <color:o>Fair         </color>
+Strength     <color:w> +2</color>        Disarming   <color:R>Poor         </color>
 Intelligence <color:w> -5</color>        Device      <color:r>Bad          </color>
 Wisdom       <color:w> -5</color>        Save        <color:g>Superb       </color>
-Dexterity    <color:w> +2</color>        Stealth     <color:y>Very Good    </color>
-Constitution <color:w> +1</color>        Searching   <color:r>Bad          </color>
+Dexterity    <color:w> +4</color>        Stealth     <color:y>Good         </color>
+Constitution <color:w> +2</color>        Searching   <color:r>Bad          </color>
 Charisma     <color:w> +0</color>        Perception  <color:r>Bad          </color>
-Life Rating  102%       Melee       <color:g>Superb       </color>
-Base HP       25        Bows        <color:D>Very Bad     </color>
+Life Rating   95%       Melee       <color:G>Excellent    </color>
+Base HP       25        Archery     <color:D>Very Bad     </color>
 Experience   125%       Infravision 0'
 </style></indent>
 </indent>
@@ -200,41 +198,41 @@ Experience   125%       Infravision 0'
   <indent><topic:Golem><color:o>Golem</color>
 Golems are creatures animated by powerful magics: living stone conjured to serve their creators. But you have broken loose and are running amok!
  
-Golems are very slow when it comes to moving about, but this slowness does not affect their non-movement actions. Except for melee, where they are limited to just a single (but mighty) blow. They fight best with their powerful fists. Golems have a very high armor class, possess good resistances and saving throws, and are very strong in melee. They are also resistant to magic, and become more resistant as they evolve. This resistance is quite powerful, reducing the damage taken from all magical attacks.
+Golems are very slow when it comes to moving about; their non-movement actions also tend to be slow, but not to the same extent. They excel in melee despite being limited to a single (but mighty) blow; they can equip a weapon, but fight much better with their powerful fists. Golems have a very high armor class and possess good resistances; they are also resistant to magic, and become more resistant as they evolve, reducing the damage taken from all magical attacks.
  
-There are several varieties of golem, all sharing a common evolutionary heritage. First there is the mighty Colossus, the biggest (and slowest) of their kind. Next is the Sky Golem, a creature of powerful magic, resistant to the ravages of time. Finally, there is the Spellwarp Automaton, a creature of utter destruction, almost completely immune to magic. This last form takes nearly forever to build, unfortunately.
+There are several varieties of golem, all sharing a common evolutionary heritage. First there is the mighty Colossus, the biggest (and slowest) of their kind. Next is the Sky Golem, a creature of powerful magic, resistant to the ravages of time. Finally, there is the Spellwarp Automaton, a creature of utter destruction, almost completely immune to magic; unfortunately, this last form takes nearly forever to build.
 
   <indent><style:table><color:G>Stats                   Skills</color>
 Strength     <color:w> +4</color>        Disarming   <color:o>Fair         </color>
 Intelligence <color:w> -4</color>        Device      <color:r>Bad          </color>
 Wisdom       <color:w> -4</color>        Save        <color:g>Superb       </color>
-Dexterity    <color:w> -3</color>        Stealth     <color:R>Poor         </color>
+Dexterity    <color:w> -3</color>        Stealth     <color:r>Bad          </color>
 Constitution <color:w> +4</color>        Searching   <color:r>Bad          </color>
 Charisma     <color:w> +2</color>        Perception  <color:r>Bad          </color>
-Life Rating  108%       Melee       <color:g>Superb       </color>
-Base HP       50        Bows        <color:r>Bad          </color>
+Life Rating  108%       Melee       <color:b>Heroic       </color>
+Base HP       50        Archery     <color:R>Poor         </color>
 Experience   200%       Infravision 50'
 </style></indent>
 </indent>
 <style:heading>Jelly</style>
   <indent><topic:Jelly><color:o>Jelly</color>
-Jellies are acidic creatures, quietly patrolling their surroundings in search of objects to absorb. They are quite stealthy for most of their lives. They don't wear equipment on their bodies the way normal races do. Instead, they are capable of absorbing objects into their gelatinous frames. In fact, each equipment slot (except their pseudopod) is capable of holding any type of equipment whatsoever, and the number of slots increases with experience. For attacking, jellies are capable of forming a single pseudopod which they may either use for grasping a normal melee weapon, or leave empty to use their innate acid based attacks.
+Jellies are acidic creatures, quietly patrolling their surroundings in search of objects to absorb. They are quite stealthy for most of their lives. They don't wear equipment on their bodies the way normal races do; instead, they are capable of absorbing objects into their gelatinous frames. In fact, each of their equipment slots (except their pseudopod) is capable of holding any type of equipment whatsoever, and the number of slots increases with experience. For attacking, jellies are capable of forming a single pseudopod which they may either use for grasping a normal melee weapon, or leave empty to use their innate acid-based attacks.
  
-Jellies are monsters and cannot pick a normal player class. Rather than relying on sight, jellies use a little understood sense of their surroundings which allows them to see in the dark with neither light nor infravision. So while jellies can equip a torch or lantern, there is little reason for them to do so.
+Rather than relying on sight, jellies use a little-understood sense of their surroundings which allows them to see in the dark with neither light nor infravision. So while jellies can equip a torch or lantern, there is little reason for them to do so.
  
-Jellies feed off the objects they find gaining nutrition in proportion to the weight of the object absorbed. They can eat rations of food if desired, but these are so light as to offer very little nutritional value. Jellies prefer to eat heavy armors and weapons. For convenience, destroying an object ('k' or the autodestroyer) automatically eats the object, and jellies never become bloated, their appetite being insatiable.
+Jellies feed off the objects they find, gaining nutrition in proportion to the weight of the object absorbed. They can eat rations of food if desired, but these are so light as to offer very little nutritional value. Jellies prefer to eat heavy armors and weapons. For convenience, destroyed objects are automatically eaten; and jellies never become bloated, their appetite being insatiable.
  
-Like all monster races, jellies begin as a weak monster of their race and evolve to better forms as they gain experience. Jellies begin life as a small puddle of black ooze with very little carrying capacity for equipment. However, they quickly evolve into a Gelatinous Cube and then into an Acidic Cytoplasm. Jellies take one additional powerful evolutionary step late in life.
+Jellies begin life as a small puddle of black ooze, with very little carrying capacity for equipment. However, they quickly evolve into a Gelatinous Cube and then into an Acidic Cytoplasm. Jellies take one additional, powerful evolutionary step late in life.
 
   <indent><style:table><color:G>Stats                   Skills</color>
-Strength     <color:w> +1</color>        Disarming   <color:y>Good         </color>
-Intelligence <color:w> -5</color>        Device      <color:r>Bad          </color>
-Wisdom       <color:w> -5</color>        Save        <color:y>Good         </color>
-Dexterity    <color:w> +1</color>        Stealth     <color:g>Superb       </color>
-Constitution <color:w> +1</color>        Searching   <color:R>Poor         </color>
-Charisma     <color:w> -2</color>        Perception  <color:r>Bad          </color>
-Life Rating   90%       Melee       <color:g>Superb       </color>
-Base HP       40        Bows        <color:r>Bad          </color>
+Strength     <color:w> +3</color>        Disarming   <color:y>Good         </color>
+Intelligence <color:w> -7</color>        Device      <color:r>Bad          </color>
+Wisdom       <color:w> -7</color>        Save        <color:y>Good         </color>
+Dexterity    <color:w> +2</color>        Stealth     <color:g>Superb       </color>
+Constitution <color:w> +3</color>        Searching   <color:R>Poor         </color>
+Charisma     <color:w> -1</color>        Perception  <color:r>Bad          </color>
+Life Rating   99%       Melee       <color:b>Heroic       </color>
+Base HP       40        Archery     <color:r>Bad          </color>
 Experience   150%       Infravision 0'
 </style></indent>
 <topic:Quylthulg><color:o>Quylthulg</color>
@@ -242,105 +240,103 @@ Quylthulgs are disgusting, quivering mounds of pulsating flesh, scarcely able to
 
   <indent><style:table><color:G>Stats                   Skills</color>
 Strength     <color:w> -3</color>        Disarming   <color:o>Fair         </color>
-Intelligence <color:w> -3</color>        Device      <color:g>Superb       </color>
-Wisdom       <color:w> -3</color>        Save        <color:G>Excellent    </color>
+Intelligence <color:w> -3</color>        Device      <color:b>Heroic       </color>
+Wisdom       <color:w> -3</color>        Save        <color:y>Very Good    </color>
 Dexterity    <color:w> -3</color>        Stealth     <color:g>Superb       </color>
-Constitution <color:w> -3</color>        Searching   <color:o>Fair         </color>
-Charisma     <color:v> +8</color>        Perception  <color:y>Good         </color>
+Constitution <color:w> -3</color>        Searching   <color:R>Poor         </color>
+Charisma     <color:v> +8</color>        Perception  <color:o>Fair         </color>
 Life Rating   95%       Melee       <color:D>Very Bad     </color>
-Base HP        0        Bows        <color:D>Very Bad     </color>
+Base HP        0        Archery     <color:D>Very Bad     </color>
 Experience   150%       Infravision 50'
 </style></indent>
 </indent>
 <style:heading>Leprechaun</style>
   <indent><topic:Leprechaun><color:o>Leprechaun</color>
-Leprechauns are small, mischevous creatures, always scheming for gold. They are weak, but quick and stealthy. For combat, they prefer not to use weapons at all. Rather, by keeping at least one hand free, they may pilfer objects or gold from their foes and flee to safety, all in a single action. However, they are capable of fighting with normal weapons should the need arise, but one seldom hears of leprechauns inspiring fear in combat!
+Leprechauns are small, mischievous creatures, always scheming for gold. They are weak, but quick and stealthy. For combat, they prefer not to use weapons at all; rather, by keeping their weapon hand free, they may pilfer objects or gold from their foes and flee to safety, all in a single action. They are capable of fighting with normal weapons should the need arise, but one seldom hears of leprechauns inspiring fear in combat!
  
-Leprechauns value riches above all else and even begin the game with their legendary pot of gold. Leprechauns also have the luck of the Irish, and good drops are more common for them. For magic, the leprechaun has a few talents and even a bit of cursing offense (Malicious and Death Leprechauns are vile, evil creatures, after all). They are masters of teleportation and detection. And while one never fears their combat (though one despises their thievery, of course), they are great masters of bow and device alike. At high levels, they move with incredible speed and seem to be in multiple places at once. Dexterity determines the leprechaun's skill with their magic.
+Leprechauns value riches above all else, and even begin the game with their legendary pot of gold. Leprechauns also have the luck of the Irish, and good drops are more common for them. For magic, the leprechaun has a few talents, even including some curses for offense; Malicious Leprechauns and Death Leprechauns are vile, evil creatures, after all. They are masters of teleportation and detection; and while their melee skills do not inspire much fear (except of poverty), they are great masters of bow and device alike. At high levels, they move with incredible speed and seem to be in multiple places at once. Dexterity determines the leprechaun's skill with their magic.
  
-The leprechaun uses gold for spell casting the way other players use mana. Gold is also used to pay for recharging devices or to power mana branded weapons. In addition, increasing the amount of gold on hand increases the power of the leprechaun, granting extra blows per round, extra shots per round, increased AC, life rating and even increasing their power with magical devices. To succeed in life, greed is obviously the primary virtue of the leprechaun!
+A leprechaun uses gold for spellcasting the way most characters use mana. Gold is also used to pay for recharging devices or to power mana branded weapons. In addition, increasing the amount of gold on hand increases the power of the leprechaun, granting extra blows per round, extra shots per round, and increased AC and life rating; sufficient gold even increases the power of magical devices. Needless to say, greed is good when you're a leprechaun!
 
   <indent><style:table><color:G>Stats                   Skills</color>
-Strength     <color:w> -6</color>        Disarming   <color:y>Very Good    </color>
-Intelligence <color:w> +1</color>        Device      <color:b>Heroic       </color>
+Strength     <color:w> -6</color>        Disarming   <color:y>Good         </color>
+Intelligence <color:w> +1</color>        Device      <color:v>Amber[2]     </color>
 Wisdom       <color:w> +1</color>        Save        <color:y>Good         </color>
-Dexterity    <color:v> +7</color>        Stealth     <color:b>Heroic       </color>
+Dexterity    <color:v> +7</color>        Stealth     <color:v>Amber[10]    </color>
 Constitution <color:w> -2</color>        Searching   <color:o>Fair         </color>
 Charisma     <color:w> -2</color>        Perception  <color:R>Poor         </color>
 Life Rating   80%       Melee       <color:o>Fair         </color>
-Base HP       15        Bows        <color:o>Fair         </color>
+Base HP       15        Archery     <color:o>Fair         </color>
 Experience   150%       Infravision 50'
 </style></indent>
 </indent>
 <style:heading>Mimic/Possessor</style>
   <indent><topic:Death-Sword><color:o>Death-Sword</color>
-Death Swords are mighty weapons animated by magical means. As such, they are unable to use equipment the way other players can. Instead, they simply are a weapon of their current form. But never fear, Death Swords have the power to absorb magical essences from the weapons they find, gaining power in the process.
+Death-Swords are mighty weapons animated by magical means. As such, they are unable to use equipment the way other players can; instead, they simply are a weapon of their current form. But never fear: Death Swords have the power to absorb magical essences from the weapons they find, gaining power in the process.
 
   <indent><style:table><color:G>Stats                   Skills</color>
 Strength     <color:w> +4</color>        Disarming   <color:y>Good         </color>
 Intelligence <color:w> -5</color>        Device      <color:o>Fair         </color>
-Wisdom       <color:w> -5</color>        Save        <color:G>Excellent    </color>
-Dexterity    <color:w> +1</color>        Stealth     <color:y>Very Good    </color>
+Wisdom       <color:w> -5</color>        Save        <color:y>Very Good    </color>
+Dexterity    <color:w> +1</color>        Stealth     <color:y>Good         </color>
 Constitution <color:w> +4</color>        Searching   <color:R>Poor         </color>
 Charisma     <color:w> +0</color>        Perception  <color:r>Bad          </color>
-Life Rating  100%       Melee       <color:G>Excellent    </color>
-Base HP       30        Bows        <color:D>Very Bad     </color>
+Life Rating  100%       Melee       <color:y>Very Good    </color>
+Base HP       30        Archery     <color:r>Bad          </color>
 Experience   150%       Infravision 30'
 </style></indent>
 <topic:Filthy Rag><color:o>Filthy Rag</color>
 A pile of dirty, old, timeworn clothing, brought to life and sentience by magic (or perhaps just by accumulating enough micro-organisms) and filled with a strong desire to get back at all those clean, polished, fashionable plate mails. Something, likely a thick layer of grime, has permanently attached an old pair of boots and two plain leather gloves to the original rag, allowing it to walk about and punch enemies. If you think the thing looks ugly now, just wait until it's found some other protective armour and has had the time to take it apart and absorb its magical qualities...
 
   <indent><style:table><color:G>Stats                   Skills</color>
-Strength     <color:w> -2</color>        Disarming   <color:y>Good         </color>
-Intelligence <color:w> -2</color>        Device      <color:r>Bad          </color>
-Wisdom       <color:w> -2</color>        Save        <color:G>Excellent    </color>
-Dexterity    <color:w> -2</color>        Stealth     <color:y>Very Good    </color>
+Strength     <color:w> -1</color>        Disarming   <color:y>Good         </color>
+Intelligence <color:w> -1</color>        Device      <color:R>Poor         </color>
+Wisdom       <color:w> -1</color>        Save        <color:y>Very Good    </color>
+Dexterity    <color:w> -1</color>        Stealth     <color:y>Good         </color>
 Constitution <color:w> -2</color>        Searching   <color:R>Poor         </color>
 Charisma     <color:w> -4</color>        Perception  <color:r>Bad          </color>
 Life Rating   98%       Melee       <color:y>Good         </color>
-Base HP       20        Bows        <color:D>Very Bad     </color>
+Base HP       20        Archery     <color:r>Bad          </color>
 Experience   110%       Infravision 20'
 </style></indent>
 <topic:Mimic><color:o>Mimic</color>
-Mimics are similar to possessors but instead of controlling the corpses of the vanquished, the mimic imitates those about them. This allows the mimic to assume the forms of foes they have yet to conquer and is quite useful. However, there is a small catch: The mimic can only copy what they see! This limitation forces the mimic to change forms much more often than the possessor would as knowledge of their current body rapidly fades when the original is no longer about. Occasionally, the mimic is able to memorize a particular form well enough to use it again without the original body to imitate, though this does not happen very often and the mimic can only memorize a small number of forms. To have a chance of this, the mimic must be in the desired form when slaying the original.
+Mimics are similar to Possessors; but instead of controlling the corpses of the vanquished, the mimic imitates those about them. This allows the mimic to assume the forms of foes they have yet to conquer, which is quite useful. However, there is a small catch: mimics can only copy what they see! This limitation forces a mimic to change forms much more often than a possessor would, as knowledge of their current body rapidly fades when the original is no longer about. Occasionally, the mimic is able to memorize a particular form well enough to use it again without the original body to imitate, though this does not happen very often and the mimic can only memorize a small number of forms. To have a chance of this, the mimic must be in the desired form when slaying the original.
  
-Mimics are monsters and do not choose a normal class. Their stats, skills, resistances and spells are determined by the form they assume. Their current body also determines their spell stat (e.g. a novice priest uses wisdom, a novice mage uses intelligence). Their current body may offer innate powers (e.g. breath weapons or rockets) in addition to or in lieu of magical powers (e.g. mana storms and frost bolts). Be sure to check both the racial power command ('U') and the magic command ('m') after assuming a new body.
+The stats, skills, spells, resistances and innate powers of a mimic are determined by the form they assume; be sure to check both the racial power command (<color:keypress>U</color>/<color:keypress>O</color>) and the magic command (<color:keypress>m</color>) after assuming a new body. The current form also determines the spell stat; for example, a novice priest mimic uses wisdom, while a novice mage mimic relies on intelligence.
 
   <indent><style:table><color:G>Stats                   Skills</color>
 Strength     <color:w> +0</color>        Disarming   <color:R>Poor         </color>
 Intelligence <color:w> +1</color>        Device      <color:y>Good         </color>
 Wisdom       <color:w> -1</color>        Save        <color:o>Fair         </color>
-Dexterity    <color:w> +2</color>        Stealth     <color:o>Fair         </color>
-Constitution <color:w> +0</color>        Searching   <color:o>Fair         </color>
+Dexterity    <color:w> +2</color>        Stealth     <color:R>Poor         </color>
+Constitution <color:w> +0</color>        Searching   <color:R>Poor         </color>
 Charisma     <color:w> -1</color>        Perception  <color:R>Poor         </color>
 Life Rating  108%       Melee       <color:y>Very Good    </color>
-Base HP       15        Bows        <color:G>Excellent    </color>
+Base HP       15        Archery     <color:G>Excellent    </color>
 Experience   250%       Infravision 0'
 </style></indent>
 <topic:Possessor><color:o>Possessor</color>
-The Possessor is an odd creature, completely harmless in its natural form. However, they are capable of possessing the corpses of monsters they have slain, and gain powers and abilities based on their current body. As such, they can become quite powerful indeed! Unfortunately, not every type of monster will drop a corpse, and getting suitable corspes to inhabit can be difficult. If the possessor ever leaves their current body then all of their equipment will be removed (except a light source) and they will temporarily be in their native, vulnerable state. Finally, leaving their current body will destroy that corpse most of the time, so the possessor should only do so if they have a better corpse on hand (and also only if there are no monsters nearby!).
+The Possessor is an odd creature, completely harmless in its natural form. However, they are capable of possessing the corpses of monsters they have slain, and gain powers and abilities based on their current body. As such, they can become quite powerful indeed! Unfortunately, not every type of monster will drop a corpse, and getting suitable corspes to inhabit can be difficult. If the possessor ever leaves their current body, all of their equipment will be removed (except a light source) and they will temporarily return to their native, vulnerable state. Finally, leaving their current body will destroy that corpse most of the time, so the possessor should only do so if they have a better corpse on hand (and also only if there are no monsters nearby!). Possessors normally have full control of the body they inhabit; but at very low health this control becomes hard to maintain, and a possessor who suffers serious damage has a small chance of being ejected from the body.
  
-Possessors are monsters and do not choose a normal class. Their stats, skills, resistances and spells are completely determined by the body they inhabit. Their current body also determines their spell stat (e.g. a novice priest uses wisdom, a novice mage uses intelligence). Their current body may offer innate powers (e.g. breath weapons or rockets) in addition to or in lieu of magical powers (e.g. mana storms and frost bolts). Be sure to check both the racial power command ('U') and the magic command ('m') after possessing a new body.
+The stats, skills, spells, resistances and innate powers of a possessor are determined by the body they inhabit; be sure to check both the racial power command (<color:keypress>U</color>/<color:keypress>O</color>) and the magic command (<color:keypress>m</color>) after possessing a new body. The current body also determines the spell stat; for example, a novice priest possessor uses wisdom, while a novice mage possessor relies on intelligence.
 
   <indent><style:table><color:G>Stats                   Skills</color>
-Strength     <color:w> -3</color>        Disarming   <color:r>Bad          </color>
+Strength     <color:w> -4</color>        Disarming   <color:r>Bad          </color>
 Intelligence <color:w> +0</color>        Device      <color:r>Bad          </color>
 Wisdom       <color:w> -3</color>        Save        <color:R>Poor         </color>
-Dexterity    <color:w> +0</color>        Stealth     <color:g>Superb       </color>
-Constitution <color:w> -3</color>        Searching   <color:R>Poor         </color>
+Dexterity    <color:w> +0</color>        Stealth     <color:b>Heroic       </color>
+Constitution <color:w> -4</color>        Searching   <color:R>Poor         </color>
 Charisma     <color:w> -7</color>        Perception  <color:R>Poor         </color>
-Life Rating   60%       Melee       <color:o>Fair         </color>
-Base HP       15        Bows        <color:r>Bad          </color>
+Life Rating   60%       Melee       <color:R>Poor         </color>
+Base HP       15        Archery     <color:r>Bad          </color>
 Experience   250%       Infravision 70'
 </style></indent>
 <topic:Ring><color:o>Ring</color>
 Rings are sentient creatures animated by magical means.
  
-Rings cannot wear normal equipment. Rather, they simply are a ring, magically enchanted. They gain resistances, attributes and spells by absorbing the magic from jewelry they find (rings or amulets).
+Rings cannot wear normal equipment; rather, they simply are a ring, magically enchanted. Rings have a small arsenal of innate powers. Since the ring is unable to move on its own, it will need to lure a nearby monster into wearing it. Magic rings tend to corrupt their owners, and over time, the ring-bearer will find that his will is not his own!
  
-Rings also have a small arsenal of innate spells. Since the ring is unable to move on its own it will need to lure a nearby monster into wearing it. Magic rings tend to corrupt their owners, and over time, the ring-bearer will find that his will is not his own!
- 
-Rings have no physical attacks. Instead, they may blast enemies with mighty spells (once learned, of course). Or, they may simply lie back and let their current bearer do the fighting for them.
+Rings can absorb magic from the jewelry (rings or amulets) that they find, and gain resistances, attributes and additional spells this way. Rings have no physical attacks; instead, they may blast enemies with mighty spells (once absorbed, of course), or they may simply lie back and let their current bearer do the fighting for them.
 
 See <link:rings.txt> for more details on rings.
 
@@ -348,31 +344,29 @@ See <link:rings.txt> for more details on rings.
 Strength     <color:w> -3</color>        Disarming   <color:o>Fair         </color>
 Intelligence <color:v> +4</color>        Device      <color:g>Superb       </color>
 Wisdom       <color:w> +1</color>        Save        <color:y>Good         </color>
-Dexterity    <color:w> +0</color>        Stealth     <color:G>Excellent    </color>
+Dexterity    <color:w> +0</color>        Stealth     <color:y>Very Good    </color>
 Constitution <color:w> -1</color>        Searching   <color:R>Poor         </color>
-Charisma     <color:w> +3</color>        Perception  <color:o>Fair         </color>
-Life Rating   85%       Melee       <color:D>Very Bad     </color>
-Base HP       10        Bows        <color:D>Very Bad     </color>
+Charisma     <color:w> +3</color>        Perception  <color:R>Poor         </color>
+Life Rating   85%       Melee       <color:r>Bad          </color>
+Base HP       10        Archery     <color:r>Bad          </color>
 Experience   150%       Infravision 50'
 </style></indent>
 </indent>
 <style:heading>Orc/Troll/Giant</style>
   <indent><topic:Giant><color:o>Giant</color>
-Giants are humanoids of immense stature. There are several types of giants. Fire, Frost and Storm giants are elemental giants and gain extra resistance, elementals slays and even elemental attacks of their respective element. Titans are powerful immortal beings of legend. Their attacks often confuse their foes and they rarely fight alone.
+Giants are humanoids of immense stature. There are several types of giants. Fire, Frost and Storm giants are elemental giants, and gain elemental resistances, slays and even attacks appropriate for their type. Titans are powerful immortal beings of legend; their attacks often confuse their foes, and they rarely fight alone. Finally, there are the mighty Hrus; they are so strong they can eventually crush the walls in their path, but their magical powers are fairly limited.
  
-Giants are monsters so cannot choose a normal class. Instead, they must rely on their superior physical stature to pummel their opponents with mighty blows. Against a distant foe, giants are capable of hurling large boulders with devastating effect.
- 
-Giants use the same equipment slots as normal player races and have no innate attacks.
+Giants rely on their superior physical stature to pummel their opponents with mighty blows. Against a distant foe, giants are capable of hurling large boulders with devastating effect. Giants use the same equipment slots as most normal player races, and have no innate attacks.
 
   <indent><style:table><color:G>Stats                   Skills</color>
 Strength     <color:w> +8</color>        Disarming   <color:o>Fair         </color>
 Intelligence <color:w> -3</color>        Device      <color:r>Bad          </color>
-Wisdom       <color:w> -3</color>        Save        <color:o>Fair         </color>
-Dexterity    <color:w> -2</color>        Stealth     <color:R>Poor         </color>
+Wisdom       <color:w> -3</color>        Save        <color:R>Poor         </color>
+Dexterity    <color:w> -2</color>        Stealth     <color:r>Bad          </color>
 Constitution <color:w> +5</color>        Searching   <color:R>Poor         </color>
 Charisma     <color:w> +1</color>        Perception  <color:r>Bad          </color>
 Life Rating  117%       Melee       <color:b>Heroic       </color>
-Base HP       46        Bows        <color:o>Fair         </color>
+Base HP       46        Archery     <color:o>Fair         </color>
 Experience   200%       Infravision 50'
 </style></indent>
 <topic:Orc><color:o>Orc</color>
@@ -381,82 +375,96 @@ Orcs are Morgoth's creation and the backbone of his armies. They are accustomed 
 See <link:Orcs.txt> for more details on orcs.
 
   <indent><style:table><color:G>Stats                   Skills</color>
-Strength     <color:w> +2</color>        Disarming   <color:y>Good         </color>
-Intelligence <color:w> -1</color>        Device      <color:D>Very Bad     </color>
-Wisdom       <color:w> -5</color>        Save        <color:o>Fair         </color>
-Dexterity    <color:w> +0</color>        Stealth     <color:o>Fair         </color>
-Constitution <color:w> +3</color>        Searching   <color:R>Poor         </color>
+Strength     <color:w> -1</color>        Disarming   <color:o>Fair         </color>
+Intelligence <color:w> -4</color>        Device      <color:D>Very Bad     </color>
+Wisdom       <color:w> -5</color>        Save        <color:R>Poor         </color>
+Dexterity    <color:w> +0</color>        Stealth     <color:R>Poor         </color>
+Constitution <color:w> +0</color>        Searching   <color:R>Poor         </color>
 Charisma     <color:w> -5</color>        Perception  <color:r>Bad          </color>
 Life Rating   99%       Melee       <color:G>Excellent    </color>
-Base HP       30        Bows        <color:G>Excellent    </color>
+Base HP       30        Archery     <color:G>Excellent    </color>
 Experience   100%       Infravision 30'
 </style></indent>
 <topic:Troll><color:o>Troll</color>
-Trolls are disgusting creatures: Big, strong and stupid. They make excellent warriors but are hopeless with magical devices. Trolls have incredible powers of regeneration.
+Trolls are disgusting creatures: big, strong and stupid. They make excellent warriors, but are hopeless with magical devices. Trolls have incredible powers of regeneration.
 
   <indent><style:table><color:G>Stats                   Skills</color>
 Strength     <color:w> +5</color>        Disarming   <color:R>Poor         </color>
 Intelligence <color:w> -5</color>        Device      <color:r>Bad          </color>
-Wisdom       <color:w> -5</color>        Save        <color:o>Fair         </color>
-Dexterity    <color:w> -1</color>        Stealth     <color:o>Fair         </color>
+Wisdom       <color:w> -5</color>        Save        <color:R>Poor         </color>
+Dexterity    <color:w> -1</color>        Stealth     <color:R>Poor         </color>
 Constitution <color:w> +5</color>        Searching   <color:R>Poor         </color>
 Charisma     <color:w> +0</color>        Perception  <color:r>Bad          </color>
 Life Rating  112%       Melee       <color:g>Superb       </color>
-Base HP       50        Bows        <color:r>Bad          </color>
+Base HP       50        Archery     <color:R>Poor         </color>
 Experience   150%       Infravision 50'
 </style></indent>
 </indent>
 <style:heading>Undead</style>
   <indent><topic:Lich><color:o>Lich</color>
-Liches are the undead forms of former sorcerers. Their magic is strong but their fighting is weak. As undead, they quickly gain resistance to cold, poison and nether, and these resistances increase as the lich evolves.
+Liches are the undead forms of former sorcerers. Their magic is strong, but their fighting skills weak. As undead, they quickly gain resistance to cold, poison and nether, and these resistances increase as the lich evolves.
  
-Liches are monsters and cannot choose a normal class. Instead, they are born with magical powers and gain additional powers as they advance. Of all the monster races, none can surpass the firepower of an Archlich, but managing to evolve that far can be a challenge. Intelligence is the primary spell stat.
+Liches are born with magical powers, and gain additional powers as they advance; of all the monster races, none can surpass the firepower of an Archlich, but managing to evolve that far can be a challenge. Intelligence is the primary spell stat.
  
-Liches are humanoid so use the standard set of equipment items. Should they forgo the use of a normal weapon, they may touch their opponents for various powerful effects. However, melee is not the strong suit of the Lich and even their deadly touch is often not enough.
+Liches are humanoid, and so use the standard set of equipment items; but should they forgo the use of a normal weapon, they may touch their opponents for various powerful effects. Even with this deadly touch, though, melee will never be their strong suit.
 
   <indent><style:table><color:G>Stats                   Skills</color>
 Strength     <color:w> -3</color>        Disarming   <color:o>Fair         </color>
-Intelligence <color:v> +4</color>        Device      <color:g>Superb       </color>
-Wisdom       <color:w> -4</color>        Save        <color:y>Very Good    </color>
+Intelligence <color:v> +4</color>        Device      <color:b>Heroic       </color>
+Wisdom       <color:w> -4</color>        Save        <color:y>Good         </color>
 Dexterity    <color:w> +2</color>        Stealth     <color:g>Superb       </color>
-Constitution <color:w> -1</color>        Searching   <color:o>Fair         </color>
-Charisma     <color:w> +1</color>        Perception  <color:y>Good         </color>
-Life Rating   98%       Melee       <color:D>Very Bad     </color>
-Base HP       20        Bows        <color:D>Very Bad     </color>
+Constitution <color:w> -1</color>        Searching   <color:R>Poor         </color>
+Charisma     <color:w> +1</color>        Perception  <color:o>Fair         </color>
+Life Rating   98%       Melee       <color:r>Bad          </color>
+Base HP       20        Archery     <color:r>Bad          </color>
 Experience   275%       Infravision 50'
 </style></indent>
 <topic:Vampire><color:o>Vampire</color>
-One of the mightier undead creatures, the Vampire is an awe-inspiring sight. Yet this dread creature has a serious weakness: the bright rays of sun are its bane, and it will need to flee the surface to the deep recesses of earth until the sun finally sets. Darkness, on the other hand, (eventually) only makes the Vampire stronger. As undead, the Vampire has a firm hold on its life force, and resists nether attacks. The Vampire also resists cold and poison based attacks. It is, however, susceptible to its perpetual hunger for fresh blood, which can only be satiated by sucking the blood from a nearby monster.
+One of the mightier undead creatures, the Vampire is an awe-inspiring sight. Yet this dread creature has a serious weakness: the bright rays of sun are its bane, and it will need to flee the surface to the deep recesses of earth until the sun finally sets. Being undead, Vampires resist nether and have a firm hold on their life force; vampires also resists cold and poison, and darkness only makes them feel at home. Vampires are, however, susceptible to their perpetual hunger for fresh blood, which can only be satiated by sucking blood from a nearby monster.
  
-The Vampire is a monster race and cannot choose a normal class. Instead, the vampire gains access to various dark powers as they evolve. Of course, they gain a vampiric bite at a very early stage, as they must use this power to feed on the living. Killing humans with this power also is a means of perpetuating the vampire species, and many are the servants of true prince of darkness! Vampires are also rumored to have limited shapeshifting abilities and a powerful, hypnotic gaze.
+Vampires gain access to various dark powers as they evolve. Of course, they gain a vampiric bite at a very early stage, as they must use this power to feed on the living. Killing humans with this power is also a means of perpetuating the vampire species, and many are the servants of true prince of darkness! Vampires are rumored to have limited shapeshifting abilities and a powerful, hypnotic gaze.
 
   <indent><style:table><color:G>Stats                   Skills</color>
 Strength     <color:w> +4</color>        Disarming   <color:R>Poor         </color>
 Intelligence <color:w> +1</color>        Device      <color:G>Excellent    </color>
 Wisdom       <color:w> -3</color>        Save        <color:o>Fair         </color>
-Dexterity    <color:w> +2</color>        Stealth     <color:g>Superb       </color>
-Constitution <color:w> -2</color>        Searching   <color:y>Good         </color>
+Dexterity    <color:w> +2</color>        Stealth     <color:b>Heroic       </color>
+Constitution <color:w> -2</color>        Searching   <color:o>Fair         </color>
 Charisma     <color:v> +4</color>        Perception  <color:o>Fair         </color>
 Life Rating   96%       Melee       <color:G>Excellent    </color>
-Base HP       20        Bows        <color:R>Poor         </color>
+Base HP       20        Archery     <color:R>Poor         </color>
 Experience   250%       Infravision 50'
 </style></indent>
 </indent>
-<style:heading>Xorn</style>
-  <indent><topic:Xorn><color:o>Xorn</color>
-Xorn are huge creatures of the element earth. They begin life as an Umber Hulk which is a bizarre creature with glaring eyes capable of confusing their foes, and large mandibles capable of slicing through rock. At this stage in their evolution, their body is vaguely humanoid allowing them to wear a helmet, an amulet, a cloak and even a pair of boots. However, once the Umber Hulk evolves it can no longer wear these items. Instead, it can use its four massive arms for weapons, shields, rings and gloves. At this stage, the Xorn can pass effortlessly through rock.
+<style:heading>Other</style>
+  <indent><topic:Pumpkin><color:o>Pumpkin</color>
+The creations of some differently normal scientist who thought sentient blood-thirsty pumpkins would be a great idea, these creatures begin their lives as pumpkin-headed humanoids; over time, however, the pumpkin bloats and crushes the frail stick body underneath, leaving just a massive rolling fruit and an unquenchable desire to kill. Death pumpkins lack most normal equipment slots, but make up for it by the many lights they can store within their body. Also, the bites of the deadliest pumpkins are said to be vampiric...
+
+  <indent><style:table><color:G>Stats                   Skills</color>
+Strength     <color:w> +1</color>        Disarming   <color:r>Bad          </color>
+Intelligence <color:w> -2</color>        Device      <color:R>Poor         </color>
+Wisdom       <color:w> -2</color>        Save        <color:y>Good         </color>
+Dexterity    <color:w> +0</color>        Stealth     <color:R>Poor         </color>
+Constitution <color:w> +1</color>        Searching   <color:R>Poor         </color>
+Charisma     <color:w> -2</color>        Perception  <color:r>Bad          </color>
+Life Rating  102%       Melee       <color:g>Superb       </color>
+Base HP       15        Archery     <color:R>Poor         </color>
+Experience   115%       Infravision 20'
+</style></indent>
+<topic:Xorn><color:o>Xorn</color>
+Xorns are massive creatures of earth. They begin life as an Umber Hulk, a bizarre creature with large mandibles capable of slicing through rock and glaring eyes capable of confusing foes. At this stage in their evolution their body is vaguely humanoid, allowing them to wear a helmet, an amulet, a cloak and even a pair of boots; once the Umber Hulk evolves further, however, it can no longer wear these items. Instead, a grown Xorn can use its four massive arms for weapons, shields, rings and gloves; mature Xorns can also pass effortlessly through rock.
  
-Xorns are monsters so cannot choose a normal class. They have no active powers but instead rely on their ability to hide in rocks combined with their ability to attack with up to four weapons. They play like warriors and are strong as such.
+Xorns have no active magical powers, but instead rely on their ability to hide in rocks and the advantage that their extra arms provide them in melee. Xorns, like most warrior characters, are very effective at killing monsters but have problems with advanced magic devices.
 
   <indent><style:table><color:G>Stats                   Skills</color>
 Strength     <color:w> +4</color>        Disarming   <color:y>Good         </color>
 Intelligence <color:w> -4</color>        Device      <color:r>Bad          </color>
-Wisdom       <color:w> -2</color>        Save        <color:o>Fair         </color>
-Dexterity    <color:w> -1</color>        Stealth     <color:o>Fair         </color>
-Constitution <color:w> +3</color>        Searching   <color:R>Poor         </color>
+Wisdom       <color:w> -2</color>        Save        <color:R>Poor         </color>
+Dexterity    <color:w> -1</color>        Stealth     <color:R>Poor         </color>
+Constitution <color:w> +2</color>        Searching   <color:R>Poor         </color>
 Charisma     <color:w> -1</color>        Perception  <color:r>Bad          </color>
-Life Rating  108%       Melee       <color:G>Excellent    </color>
-Base HP       30        Bows        <color:r>Bad          </color>
+Life Rating  104%       Melee       <color:y>Very Good    </color>
+Base HP       25        Archery     <color:r>Bad          </color>
 Experience   150%       Infravision 50'
 </style></indent>
 </indent>
@@ -465,88 +473,91 @@ Experience   150%       Infravision 50'
 <color:G>            </color> <color:G>STR  INT  WIS  DEX  CON  CHR  Life  BHP  Exp  Shop</color>
 Centipede     +0   -3   -3   +0   +0   -3   90%  +15  100%  120%
 Hound         +3   -3   -5   +4   +3   +1  100%  +22  150%  110%
-Hydra         +3   -2   -2   +2   +3   +0  109%  +45  130%  130%
-Spider        -2   -1   -1   +2   -2   -3   70%  +25  200%  115%
+Hydra         +3   -2   -2   +2   +3   +0  108%  +45  130%  130%
+Spider        +1   +0   -5   +0   +2   +0  100%  +25  200%  115%
 Angel         +2   +2   +5   +2   +2   +4   99%  +26  325%   90%
 Beholder      -3   +7   +0   +2   +0   +1  100%  +20  200%  140%
 Dragon        +4   +2   +1   +1   +3   +2  115%  +40  250%  130%
 Elemental     +5   -5   -5   -4   +6   +0  120%  +30  170%  120%
-Vortex        +0   -5   -5   +2   +1   +0  102%  +25  125%  120%
+Vortex        +2   -5   -5   +4   +2   +0   95%  +25  125%  120%
 Golem         +4   -4   -4   -3   +4   +2  108%  +50  200%  130%
-Jelly         +1   -5   -5   +1   +1   -2   90%  +40  150%  125%
+Jelly         +3   -7   -7   +2   +3   -1   99%  +40  150%  125%
 Quylthulg     -3   -3   -3   -3   -3   +8   95%   +0  150%  120%
 Leprechaun    -6   +1   +1   +7   -2   -2   80%  +15  150%   85%
 Death-Sword   +4   -5   -5   +1   +4   +0  100%  +30  150%  110%
-Filthy Rag    -2   -2   -2   -2   -2   -4   98%  +20  110%  120%
+Filthy Rag    -1   -1   -1   -1   -2   -4   98%  +20  110%  120%
 Mimic         +0   +1   -1   +2   +0   -1  108%  +15  250%  110%
-Possessor     -3   +0   -3   +0   -3   -7   60%  +15  250%  110%
+Possessor     -4   +0   -3   +0   -4   -7   60%  +15  250%  110%
 Ring          -3   +4   +1   +0   -1   +3   85%  +10  150%  110%
 Giant         +8   -3   -3   -2   +5   +1  117%  +46  200%  130%
-Orc           +2   -1   -5   +0   +3   -5   99%  +30  100%  140%
+Orc           -1   -4   -5   +0   +0   -5   99%  +30  100%  140%
 Troll         +5   -5   -5   -1   +5   +0  112%  +50  150%  135%
 Lich          -3   +4   -4   +2   -1   +1   98%  +20  275%  135%
 Vampire       +4   +1   -3   +2   -2   +4   96%  +20  250%  130%
-Xorn          +4   -4   -2   -1   +3   -1  108%  +30  150%  120%
+Pumpkin       +1   -2   -2   +0   +1   -2  102%  +15  115%  110%
+Xorn          +4   -4   -2   -1   +2   -1  104%  +25  150%  120%
 
 </style>
 <topic:Skills1><style:heading>Table 2 - Race Skill Bonus Table I</style>
 <style:table>
              <color:w>Disarming     Device        Save          Stealth      </color>
-Centipede    <color:y>Good         </color> <color:o>Fair         </color> <color:o>Fair         </color> <color:G>Excellent    </color>
-Hound        <color:o>Fair         </color> <color:r>Bad          </color> <color:o>Fair         </color> <color:g>Superb       </color>
-Hydra        <color:y>Good         </color> <color:o>Fair         </color> <color:o>Fair         </color> <color:o>Fair         </color>
-Spider       <color:o>Fair         </color> <color:g>Superb       </color> <color:o>Fair         </color> <color:G>Excellent    </color>
-Angel        <color:R>Poor         </color> <color:G>Excellent    </color> <color:g>Superb       </color> <color:y>Good         </color>
-Beholder     <color:y>Good         </color> <color:b>Heroic       </color> <color:g>Superb       </color> <color:b>Heroic       </color>
-Dragon       <color:o>Fair         </color> <color:y>Good         </color> <color:o>Fair         </color> <color:o>Fair         </color>
-Elemental    <color:o>Fair         </color> <color:r>Bad          </color> <color:G>Excellent    </color> <color:G>Excellent    </color>
-Vortex       <color:o>Fair         </color> <color:r>Bad          </color> <color:g>Superb       </color> <color:y>Very Good    </color>
-Golem        <color:o>Fair         </color> <color:r>Bad          </color> <color:g>Superb       </color> <color:R>Poor         </color>
+Centipede    <color:y>Good         </color> <color:o>Fair         </color> <color:o>Fair         </color> <color:y>Very Good    </color>
+Hound        <color:R>Poor         </color> <color:r>Bad          </color> <color:R>Poor         </color> <color:g>Superb       </color>
+Hydra        <color:y>Good         </color> <color:R>Poor         </color> <color:o>Fair         </color> <color:R>Poor         </color>
+Spider       <color:R>Poor         </color> <color:y>Good         </color> <color:o>Fair         </color> <color:G>Excellent    </color>
+Angel        <color:R>Poor         </color> <color:G>Excellent    </color> <color:g>Superb       </color> <color:o>Fair         </color>
+Beholder     <color:o>Fair         </color> <color:v>Amber[10]    </color> <color:g>Superb       </color> <color:b>Heroic       </color>
+Dragon       <color:o>Fair         </color> <color:y>Good         </color> <color:o>Fair         </color> <color:R>Poor         </color>
+Elemental    <color:o>Fair         </color> <color:r>Bad          </color> <color:y>Very Good    </color> <color:y>Very Good    </color>
+Vortex       <color:R>Poor         </color> <color:r>Bad          </color> <color:g>Superb       </color> <color:y>Good         </color>
+Golem        <color:o>Fair         </color> <color:r>Bad          </color> <color:g>Superb       </color> <color:r>Bad          </color>
 Jelly        <color:y>Good         </color> <color:r>Bad          </color> <color:y>Good         </color> <color:g>Superb       </color>
-Quylthulg    <color:o>Fair         </color> <color:g>Superb       </color> <color:G>Excellent    </color> <color:g>Superb       </color>
-Leprechaun   <color:y>Very Good    </color> <color:b>Heroic       </color> <color:y>Good         </color> <color:b>Heroic       </color>
-Death-Sword  <color:y>Good         </color> <color:o>Fair         </color> <color:G>Excellent    </color> <color:y>Very Good    </color>
-Filthy Rag   <color:y>Good         </color> <color:r>Bad          </color> <color:G>Excellent    </color> <color:y>Very Good    </color>
-Mimic        <color:R>Poor         </color> <color:y>Good         </color> <color:o>Fair         </color> <color:o>Fair         </color>
-Possessor    <color:r>Bad          </color> <color:r>Bad          </color> <color:R>Poor         </color> <color:g>Superb       </color>
-Ring         <color:o>Fair         </color> <color:g>Superb       </color> <color:y>Good         </color> <color:G>Excellent    </color>
-Giant        <color:o>Fair         </color> <color:r>Bad          </color> <color:o>Fair         </color> <color:R>Poor         </color>
-Orc          <color:y>Good         </color> <color:D>Very Bad     </color> <color:o>Fair         </color> <color:o>Fair         </color>
-Troll        <color:R>Poor         </color> <color:r>Bad          </color> <color:o>Fair         </color> <color:o>Fair         </color>
-Lich         <color:o>Fair         </color> <color:g>Superb       </color> <color:y>Very Good    </color> <color:g>Superb       </color>
-Vampire      <color:R>Poor         </color> <color:G>Excellent    </color> <color:o>Fair         </color> <color:g>Superb       </color>
-Xorn         <color:y>Good         </color> <color:r>Bad          </color> <color:o>Fair         </color> <color:o>Fair         </color>
+Quylthulg    <color:o>Fair         </color> <color:b>Heroic       </color> <color:y>Very Good    </color> <color:g>Superb       </color>
+Leprechaun   <color:y>Good         </color> <color:v>Amber[2]     </color> <color:y>Good         </color> <color:v>Amber[10]    </color>
+Death-Sword  <color:y>Good         </color> <color:o>Fair         </color> <color:y>Very Good    </color> <color:y>Good         </color>
+Filthy Rag   <color:y>Good         </color> <color:R>Poor         </color> <color:y>Very Good    </color> <color:y>Good         </color>
+Mimic        <color:R>Poor         </color> <color:y>Good         </color> <color:o>Fair         </color> <color:R>Poor         </color>
+Possessor    <color:r>Bad          </color> <color:r>Bad          </color> <color:R>Poor         </color> <color:b>Heroic       </color>
+Ring         <color:o>Fair         </color> <color:g>Superb       </color> <color:y>Good         </color> <color:y>Very Good    </color>
+Giant        <color:o>Fair         </color> <color:r>Bad          </color> <color:R>Poor         </color> <color:r>Bad          </color>
+Orc          <color:o>Fair         </color> <color:D>Very Bad     </color> <color:R>Poor         </color> <color:R>Poor         </color>
+Troll        <color:R>Poor         </color> <color:r>Bad          </color> <color:R>Poor         </color> <color:R>Poor         </color>
+Lich         <color:o>Fair         </color> <color:b>Heroic       </color> <color:y>Good         </color> <color:g>Superb       </color>
+Vampire      <color:R>Poor         </color> <color:G>Excellent    </color> <color:o>Fair         </color> <color:b>Heroic       </color>
+Pumpkin      <color:r>Bad          </color> <color:R>Poor         </color> <color:y>Good         </color> <color:R>Poor         </color>
+Xorn         <color:y>Good         </color> <color:r>Bad          </color> <color:R>Poor         </color> <color:R>Poor         </color>
 
 </style>
 <topic:Skills2><style:heading>Table 3 - Race Skill Bonus Table II</style>
 <style:table>
-             <color:w>Searching     Perception    Melee         Bows          Infra</color>
-Centipede    <color:r>Bad          </color> <color:r>Bad          </color> <color:o>Fair         </color> <color:D>Very Bad     </color>   50'
-Hound        <color:o>Fair         </color> <color:R>Poor         </color> <color:G>Excellent    </color> <color:r>Bad          </color>   50'
-Hydra        <color:r>Bad          </color> <color:r>Bad          </color> <color:g>Superb       </color> <color:r>Bad          </color>   50'
-Spider       <color:o>Fair         </color> <color:R>Poor         </color> <color:y>Very Good    </color> <color:r>Bad          </color>   50'
-Angel        <color:o>Fair         </color> <color:R>Poor         </color> <color:y>Good         </color> <color:o>Fair         </color>   30'
-Beholder     <color:v>Amber[7]     </color> <color:v>Amber[7]     </color> <color:o>Fair         </color> <color:D>Very Bad     </color>   80'
+             <color:w>Searching     Perception    Melee         Archery       Infra</color>
+Centipede    <color:r>Bad          </color> <color:r>Bad          </color> <color:y>Good         </color> <color:D>Very Bad     </color>   50'
+Hound        <color:R>Poor         </color> <color:R>Poor         </color> <color:y>Very Good    </color> <color:r>Bad          </color>   50'
+Hydra        <color:r>Bad          </color> <color:r>Bad          </color> <color:y>Good         </color> <color:r>Bad          </color>   50'
+Spider       <color:R>Poor         </color> <color:R>Poor         </color> <color:G>Excellent    </color> <color:r>Bad          </color>   50'
+Angel        <color:R>Poor         </color> <color:R>Poor         </color> <color:y>Good         </color> <color:o>Fair         </color>   30'
+Beholder     <color:b>Heroic       </color> <color:b>Heroic       </color> <color:o>Fair         </color> <color:r>Bad          </color>   80'
 Dragon       <color:o>Fair         </color> <color:o>Fair         </color> <color:G>Excellent    </color> <color:r>Bad          </color>   50'
-Elemental    <color:o>Fair         </color> <color:R>Poor         </color> <color:g>Superb       </color> <color:r>Bad          </color>   50'
-Vortex       <color:r>Bad          </color> <color:r>Bad          </color> <color:g>Superb       </color> <color:D>Very Bad     </color>    0'
-Golem        <color:r>Bad          </color> <color:r>Bad          </color> <color:g>Superb       </color> <color:r>Bad          </color>   50'
-Jelly        <color:R>Poor         </color> <color:r>Bad          </color> <color:g>Superb       </color> <color:r>Bad          </color>    0'
-Quylthulg    <color:o>Fair         </color> <color:y>Good         </color> <color:D>Very Bad     </color> <color:D>Very Bad     </color>   50'
+Elemental    <color:o>Fair         </color> <color:R>Poor         </color> <color:b>Heroic       </color> <color:r>Bad          </color>   50'
+Vortex       <color:r>Bad          </color> <color:r>Bad          </color> <color:G>Excellent    </color> <color:D>Very Bad     </color>    0'
+Golem        <color:r>Bad          </color> <color:r>Bad          </color> <color:b>Heroic       </color> <color:R>Poor         </color>   50'
+Jelly        <color:R>Poor         </color> <color:r>Bad          </color> <color:b>Heroic       </color> <color:r>Bad          </color>    0'
+Quylthulg    <color:R>Poor         </color> <color:o>Fair         </color> <color:D>Very Bad     </color> <color:D>Very Bad     </color>   50'
 Leprechaun   <color:o>Fair         </color> <color:R>Poor         </color> <color:o>Fair         </color> <color:o>Fair         </color>   50'
-Death-Sword  <color:R>Poor         </color> <color:r>Bad          </color> <color:G>Excellent    </color> <color:D>Very Bad     </color>   30'
-Filthy Rag   <color:R>Poor         </color> <color:r>Bad          </color> <color:y>Good         </color> <color:D>Very Bad     </color>   20'
-Mimic        <color:o>Fair         </color> <color:R>Poor         </color> <color:y>Very Good    </color> <color:G>Excellent    </color>    0'
-Possessor    <color:R>Poor         </color> <color:R>Poor         </color> <color:o>Fair         </color> <color:r>Bad          </color>   70'
-Ring         <color:R>Poor         </color> <color:o>Fair         </color> <color:D>Very Bad     </color> <color:D>Very Bad     </color>   50'
+Death-Sword  <color:R>Poor         </color> <color:r>Bad          </color> <color:y>Very Good    </color> <color:r>Bad          </color>   30'
+Filthy Rag   <color:R>Poor         </color> <color:r>Bad          </color> <color:y>Good         </color> <color:r>Bad          </color>   20'
+Mimic        <color:R>Poor         </color> <color:R>Poor         </color> <color:y>Very Good    </color> <color:G>Excellent    </color>    0'
+Possessor    <color:R>Poor         </color> <color:R>Poor         </color> <color:R>Poor         </color> <color:r>Bad          </color>   70'
+Ring         <color:R>Poor         </color> <color:R>Poor         </color> <color:r>Bad          </color> <color:r>Bad          </color>   50'
 Giant        <color:R>Poor         </color> <color:r>Bad          </color> <color:b>Heroic       </color> <color:o>Fair         </color>   50'
 Orc          <color:R>Poor         </color> <color:r>Bad          </color> <color:G>Excellent    </color> <color:G>Excellent    </color>   30'
-Troll        <color:R>Poor         </color> <color:r>Bad          </color> <color:g>Superb       </color> <color:r>Bad          </color>   50'
-Lich         <color:o>Fair         </color> <color:y>Good         </color> <color:D>Very Bad     </color> <color:D>Very Bad     </color>   50'
-Vampire      <color:y>Good         </color> <color:o>Fair         </color> <color:G>Excellent    </color> <color:R>Poor         </color>   50'
-Xorn         <color:R>Poor         </color> <color:r>Bad          </color> <color:G>Excellent    </color> <color:r>Bad          </color>   50'
+Troll        <color:R>Poor         </color> <color:r>Bad          </color> <color:g>Superb       </color> <color:R>Poor         </color>   50'
+Lich         <color:R>Poor         </color> <color:o>Fair         </color> <color:r>Bad          </color> <color:r>Bad          </color>   50'
+Vampire      <color:o>Fair         </color> <color:o>Fair         </color> <color:G>Excellent    </color> <color:R>Poor         </color>   50'
+Pumpkin      <color:R>Poor         </color> <color:r>Bad          </color> <color:g>Superb       </color> <color:R>Poor         </color>   20'
+Xorn         <color:R>Poor         </color> <color:r>Bad          </color> <color:y>Very Good    </color> <color:r>Bad          </color>   50'
 
 </style>
 
 
-<color:s>Automatically generated for FrogComposband 7.0.cloudberry.</color>
+<color:s>Automatically generated for FrogComposband 7.1.liquorice.</color>
