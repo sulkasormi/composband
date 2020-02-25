@@ -1,143 +1,145 @@
 <style:title>Warlocks</style>
 
-A Warlock is a magical class but, unlike normal spellcasters, they derive their powers, stats, skills and bonuses by making a pact with a given class of monsters. This pact is irrevocable and is made at the outset of the Warlock's career. Depending on the class of monsters with whom they ally, the warlock will gain unique bonuses, abilities and magical powers. For example, alliance with the forces of the netherworld grants resistances to poison and nether, enhanced constitution and spells to control and conjure the unliving as well as spells to access the damaging forces of the netherworld directly. Each such alliance has thematic bonuses and powers, and you can read the details in the respective help sections. On final comment: allying with a given class of monsters dramatically reduces the warlock's ability to fight these foes. Instead, the warlock seeks cooperation with their brethren, or, perhaps, domination over them. But direct assaults are rarely successful.
+Warlocks are a magical class; they derive their spells and powers not from books, but from an eldritch pact made with a given class of monsters. This pact is irrevocable and is made at the outset of the Warlock's career. Depending on the class of monsters with whom they ally, the warlock will gain unique bonuses, abilities and magical powers; for example, alliance with the forces of the netherworld grants resistances to poison and nether, enhanced constitution and spells to control and conjure the unliving, as well as spells to access the damaging forces of the netherworld directly. Each such alliance has thematic bonuses and powers, and you can read the details in the respective help sections.
+
+Allying with a given class of monsters dramatically reduces the warlock's ability to fight these foes. Instead, the warlock seeks cooperation with their brethren, or perhaps domination over them; direct assaults are rarely successful.
  
-In addition to pact related spells, all warlocks gain access to the unique power of the Eldritch Blast. Their primary spell stat is Charisma since they seek dominion and alliance with their chosen kin, and these monsters tend to have a strong will of their own, resisting the binding forces which the warlock imposes to gain both mastery and power.
+In addition to pact-related spells, all warlocks gain access to the unique power of the Eldritch Blast. Their primary spell stat is Charisma, since they seek dominion and alliance with their chosen kin, and these monsters tend to have a strong will of their own.
 
 <topic:Undead><color:o>Undead</color>
-Undead are tough creatures, each having survived death at least once. Warlocks who make a pact with Undead will find themselves gaining additional resistances such as cold, poison, darkness and nether. In addition, they will be able to see their kind, which tend to be invisible, and gain resistance to life draining forces. They will also gain access to undeadly powers, which typically involve detection and control over the forces of the netherworld. In the end, this pact will allow its practitioners to destroy monsters with a single word, and, perhaps, to even partially leave the world of the living altogether. Of course, allying with the undead substantially reduces the warlock's ability to fight these creatures.
+The undead are tough creatures, each having already survived death at least once. Warlocks who make a pact with Undead will find themselves gaining additional resistances such as cold, poison, darkness and nether. In addition, they will be able to see invisible monsters and gain resistance to life-draining forces. They will also gain access to undeadly powers, which typically involve detection and control over the forces of the netherworld. Eventually, this pact will allow its practitioners to destroy monsters with a single word, and, perhaps, to even partially leave the world of the living altogether. Of course, allying with the undead substantially reduces the warlock's ability to fight these creatures.
 
   <indent><style:table><color:G>Stats                   Skills</color>
 Strength     <color:w> -1</color>        Disarming   <color:R>Poor         </color>
 Intelligence <color:w> +2</color>        Device      <color:g>Superb       </color>
-Wisdom       <color:w> -3</color>        Save        <color:G>Excellent    </color>
-Dexterity    <color:w> +0</color>        Stealth     <color:y>Very Good    </color>
+Wisdom       <color:w> -3</color>        Save        <color:y>Very Good    </color>
+Dexterity    <color:w> +0</color>        Stealth     <color:y>Good         </color>
 Constitution <color:w> +2</color>        Searching   <color:R>Poor         </color>
-Charisma     <color:v> +4</color>        Perception  <color:o>Fair         </color>
+Charisma     <color:v> +2</color>        Perception  <color:R>Poor         </color>
 Life Rating  107%       Melee       <color:o>Fair         </color>
-Base HP       15        Bows        <color:R>Poor         </color>
+Base HP       15        Archery     <color:R>Poor         </color>
 Experience   135%
 </style></indent>
 <topic:Dragons><color:o>Dragons</color>
-The bond between a Dragonrider and a Dragon is one of the strongest and most enduring ties seen the world over. Each draws strength, power, and encouragement from the other, and together they make a formidable foe. An alliance with Dragonkind enables this bond to form, and the Warlock of this pact gains impressive powers for mounted combat. Indeed, they are among the elite riders of the world, only slightly inferior to Cavalry and Beastmasters. But where they have a slight deficiency in skill (and perhaps in melee as well), they have a strong advantage in riding techniques and magical enhancements. Dragonriders favor the lance above all other weapons and seek continuously for the lengendary 'Dragonlance' which they view as their long lost birthright.
+The bond between a Dragonrider and a Dragon is one of the strongest and most enduring ties seen the world over. Each draws strength, power, and encouragement from the other, and together they make a formidable foe. An alliance with Dragonkind enables this bond to form, and the Warlock of this pact gains impressive powers for mounted combat. Indeed, they are among the elite riders of the world, only slightly inferior to Cavalry and Beastmasters. But where they have a slight deficiency in skill (and perhaps in melee as well), they have a strong advantage in riding techniques and magical enhancements. Dragonriders favor the lance above all other weapons, and seek continuously the legendary 'Dragonlance' which they view as their long-lost birthright.
 
   <indent><style:table><color:G>Stats                   Skills</color>
-Strength     <color:w> +2</color>        Disarming   <color:r>Bad          </color>
+Strength     <color:w> +2</color>        Disarming   <color:R>Poor         </color>
 Intelligence <color:w> +0</color>        Device      <color:y>Good         </color>
-Wisdom       <color:w> +0</color>        Save        <color:o>Fair         </color>
-Dexterity    <color:w> -1</color>        Stealth     <color:o>Fair         </color>
+Wisdom       <color:w> +0</color>        Save        <color:R>Poor         </color>
+Dexterity    <color:w> -1</color>        Stealth     <color:R>Poor         </color>
 Constitution <color:w> +1</color>        Searching   <color:R>Poor         </color>
-Charisma     <color:v> +3</color>        Perception  <color:R>Poor         </color>
+Charisma     <color:v> +2</color>        Perception  <color:R>Poor         </color>
 Life Rating  102%       Melee       <color:o>Fair         </color>
-Base HP       10        Bows        <color:R>Poor         </color>
+Base HP       10        Archery     <color:R>Poor         </color>
 Experience   130%
 </style></indent>
 <topic:Angels><color:o>Angels</color>
-Angels are heavenly beings who use a variety of techniques to smite those they view as evil. Warlocks who make pacts with Angels will also find their saving throws significantly improved, and (eventually) their body immune to bolt-like effects. Since Angels are strongly aligned with the forces of good, making a pact with Angels will reduce damage done to all good monsters by a substantial amount.
+Angels are heavenly beings who use a variety of techniques to smite those they view as evil. Warlocks who make pacts with Angels will also find their saving throws significantly improved, and (eventually) their body almost immune to bolt-like effects. Since Angels are strongly aligned with the forces of good, making a pact with Angels will reduce damage done to all good monsters by a substantial amount.
 
   <indent><style:table><color:G>Stats                   Skills</color>
-Strength     <color:w> +1</color>        Disarming   <color:r>Bad          </color>
+Strength     <color:w> +1</color>        Disarming   <color:R>Poor         </color>
 Intelligence <color:w> +1</color>        Device      <color:y>Very Good    </color>
 Wisdom       <color:w> +2</color>        Save        <color:g>Superb       </color>
-Dexterity    <color:w> +1</color>        Stealth     <color:o>Fair         </color>
-Constitution <color:w> +1</color>        Searching   <color:R>Poor         </color>
-Charisma     <color:v> +3</color>        Perception  <color:r>Bad          </color>
-Life Rating   98%       Melee       <color:o>Fair         </color>
-Base HP        4        Bows        <color:R>Poor         </color>
-Experience   150%
-</style></indent>
-<topic:Demons><color:o>Demons</color>
-Demons are crafty creatures of the netherworld, using whatever means at their disposal to bring down their enemies. Warlocks who make pacts with Demons will find their abilities to use all magical devices improved, and gain the ability to Recharge these devices at will. Eventually, Demon Warlocks attain the ability to crush walls beneath their footsteps. Making a pact with Demons will reduce damage done to all demons by a substantial amount.
-
-  <indent><style:table><color:G>Stats                   Skills</color>
-Strength     <color:w> +3</color>        Disarming   <color:r>Bad          </color>
-Intelligence <color:w> +1</color>        Device      <color:g>Superb       </color>
-Wisdom       <color:w>-10</color>        Save        <color:G>Excellent    </color>
 Dexterity    <color:w> +1</color>        Stealth     <color:R>Poor         </color>
 Constitution <color:w> +1</color>        Searching   <color:R>Poor         </color>
 Charisma     <color:v> +3</color>        Perception  <color:r>Bad          </color>
-Life Rating  100%       Melee       <color:G>Excellent    </color>
-Base HP       15        Bows        <color:R>Poor         </color>
+Life Rating   98%       Melee       <color:o>Fair         </color>
+Base HP        4        Archery     <color:R>Poor         </color>
+Experience   150%
+</style></indent>
+<topic:Demons><color:o>Demons</color>
+Demons are crafty creatures of Hell, using whatever means at their disposal to bring down their enemies. Warlocks who make pacts with Demons will find their abilities to use all magical devices improved, and learn the ability to Recharge these devices at will. Eventually, Demon Warlocks attain the ability to crush walls beneath their footsteps, and even gain immunity to fire. Making a pact with Demons will reduce damage done to all demons by a substantial amount.
+
+  <indent><style:table><color:G>Stats                   Skills</color>
+Strength     <color:w> +3</color>        Disarming   <color:R>Poor         </color>
+Intelligence <color:w> +1</color>        Device      <color:g>Superb       </color>
+Wisdom       <color:w>-10</color>        Save        <color:y>Very Good    </color>
+Dexterity    <color:w> +1</color>        Stealth     <color:r>Bad          </color>
+Constitution <color:w> +1</color>        Searching   <color:R>Poor         </color>
+Charisma     <color:v> +2</color>        Perception  <color:r>Bad          </color>
+Life Rating  100%       Melee       <color:y>Very Good    </color>
+Base HP       15        Archery     <color:R>Poor         </color>
 Experience   150%
 </style></indent>
 <topic:Hounds><color:o>Hounds</color>
-An alliance with hounds is one of the weaker pacts the warlock may make. Hounds are fast, stealthy and nimble, and the warlock will gain these attributes as well, in addition to basic elemental resistances. They also gain decent melee, but other skills, especially device skills, are somewhat lacking. Of course, they may call on their kin for assistance, but this may not be enough against the more difficult foes of the world. Still, hounds are very common and many consider them to be annoying as well, so perhaps an alliance is in order?
+An alliance with hounds is sneakily strong: hounds are fast, stealthy and nimble, and the warlock will gain these attributes as well, in addition to basic elemental resistances. They also gain decent melee, and the ability to channel the unpredictable powers of the aether. Of course, Hound Warlocks may also call on their kin for assistance, though this may not be enough against the more difficult foes of the world. Still, wouldn't it be fun to have some of those annoying hounds on your side for a change?
 
   <indent><style:table><color:G>Stats                   Skills</color>
-Strength     <color:w> +0</color>        Disarming   <color:r>Bad          </color>
+Strength     <color:w> +0</color>        Disarming   <color:R>Poor         </color>
 Intelligence <color:w> -2</color>        Device      <color:o>Fair         </color>
-Wisdom       <color:w> -2</color>        Save        <color:o>Fair         </color>
-Dexterity    <color:w> +2</color>        Stealth     <color:G>Excellent    </color>
-Constitution <color:w> +2</color>        Searching   <color:o>Fair         </color>
-Charisma     <color:v> +2</color>        Perception  <color:R>Poor         </color>
-Life Rating  102%       Melee       <color:G>Excellent    </color>
-Base HP       12        Bows        <color:r>Bad          </color>
+Wisdom       <color:w> -2</color>        Save        <color:R>Poor         </color>
+Dexterity    <color:w> +2</color>        Stealth     <color:y>Very Good    </color>
+Constitution <color:w> +2</color>        Searching   <color:R>Poor         </color>
+Charisma     <color:v> +1</color>        Perception  <color:R>Poor         </color>
+Life Rating  102%       Melee       <color:y>Good         </color>
+Base HP       12        Archery     <color:R>Poor         </color>
 Experience   110%
 </style></indent>
 <topic:Spiders><color:o>Spiders</color>
-Of all the icky, crawling things in the world, you have chosen to make an alliance with spiders? Sure, they are stealthy, and fast, and very adept at hiding. Able to extrude a fine sticky substance to ensnare the unwary, the spider lurks nearby, or so you assume since you very seldom see them. Moreover, many spiders are adept at the powers of teleportation, able to jump quickly from one location to another, which can be quite baffling to a would be predator. They are comfortable with both poison and nexus. But, aside from all of this, they are a bit on the squishy side. That is, if you can manage to catch one!
+Of all the icky, crawling things in the world, you have chosen to make an alliance with spiders? Sure, they are stealthy, and fast, and very adept at hiding. Able to extrude a fine sticky substance to ensnare the unwary, the spider lurks nearby, or so you assume since you very seldom see them. Moreover, many spiders are adept at the powers of teleportation, able to jump quickly from one location to another, which can be quite baffling to a would be predator. They are comfortable with both poison and nexus. They are a bit on the squishy side, though - that is, if you manage to catch one!
 
   <indent><style:table><color:G>Stats                   Skills</color>
-Strength     <color:w> -1</color>        Disarming   <color:r>Bad          </color>
+Strength     <color:w> -1</color>        Disarming   <color:R>Poor         </color>
 Intelligence <color:w> +0</color>        Device      <color:G>Excellent    </color>
-Wisdom       <color:w> -2</color>        Save        <color:o>Fair         </color>
+Wisdom       <color:w> -2</color>        Save        <color:R>Poor         </color>
 Dexterity    <color:w> +2</color>        Stealth     <color:g>Superb       </color>
 Constitution <color:w> +0</color>        Searching   <color:R>Poor         </color>
-Charisma     <color:v> +2</color>        Perception  <color:r>Bad          </color>
+Charisma     <color:v> +1</color>        Perception  <color:r>Bad          </color>
 Life Rating   97%       Melee       <color:o>Fair         </color>
-Base HP        1        Bows        <color:y>Very Good    </color>
+Base HP        1        Archery     <color:G>Excellent    </color>
 Experience   120%
 </style></indent>
 <topic:Giants><color:o>Giants</color>
-An alliance with giants and titans grants impressive physical strength and fortitude, but other stats will generally suffer. Later in life, you will gain giant-like resistances including sound, shards and chaos. Your combat will be impressive, but, like giants, you will favor heavy weapons. Oh, and you won't mind tossing a boulder or two should the need arise. Since this alliance offers so much in the way of physical advantages, it offers very little in the way of magical abilities or skill. Warlocks with this alliance are the best possible fighters being nearly indistiguishable in skill from Warriors!
+An alliance with giants and titans grants impressive physical strength and fortitude, but other stats will generally suffer. Later in life, you will gain giant-like resistances including sound, shards and chaos. Your combat will be impressive; and like giants, you will favor heavy weapons. Oh, and you won't mind tossing a boulder or two should the need arise! This alliance offers much in the way of physical advantages, but very little in the way of magical abilities or skill. Warlocks with this alliance are excellent fighters, being nearly indistiguishable in skill from Warriors!
 
   <indent><style:table><color:G>Stats                   Skills</color>
-Strength     <color:w> +2</color>        Disarming   <color:r>Bad          </color>
+Strength     <color:w> +2</color>        Disarming   <color:R>Poor         </color>
 Intelligence <color:w> -4</color>        Device      <color:r>Bad          </color>
-Wisdom       <color:w> -4</color>        Save        <color:o>Fair         </color>
-Dexterity    <color:w> -3</color>        Stealth     <color:R>Poor         </color>
+Wisdom       <color:w> -4</color>        Save        <color:R>Poor         </color>
+Dexterity    <color:w> -3</color>        Stealth     <color:r>Bad          </color>
 Constitution <color:w> +2</color>        Searching   <color:R>Poor         </color>
-Charisma     <color:v> +2</color>        Perception  <color:r>Bad          </color>
-Life Rating  112%       Melee       <color:g>Superb       </color>
-Base HP       25        Bows        <color:o>Fair         </color>
+Charisma     <color:v> +0</color>        Perception  <color:r>Bad          </color>
+Life Rating  112%       Melee       <color:b>Heroic       </color>
+Base HP       25        Archery     <color:o>Fair         </color>
 Experience   140%
 </style></indent>
 <topic:Tables><style:heading>Table 1 - Warlock Statistic Bonus Table</style>
 <style:table>
 <color:G>                 </color> <color:G>STR  INT  WIS  DEX  CON  CHR  Life  BHP  Exp</color>
-Undead             -1   +2   -3   +0   +2   +4  107%  +15  135%
-Dragons            +2   +0   +0   -1   +1   +3  102%  +10  130%
+Undead             -1   +2   -3   +0   +2   +2  107%  +15  135%
+Dragons            +2   +0   +0   -1   +1   +2  102%  +10  130%
 Angels             +1   +1   +2   +1   +1   +3   98%   +4  150%
-Demons             +3   +1  -10   +1   +1   +3  100%  +15  150%
-Hounds             +0   -2   -2   +2   +2   +2  102%  +12  110%
-Spiders            -1   +0   -2   +2   +0   +2   97%   +1  120%
-Giants             +2   -4   -4   -3   +2   +2  112%  +25  140%
+Demons             +3   +1  -10   +1   +1   +2  100%  +15  150%
+Hounds             +0   -2   -2   +2   +2   +1  102%  +12  110%
+Spiders            -1   +0   -2   +2   +0   +1   97%   +1  120%
+Giants             +2   -4   -4   -3   +2   +0  112%  +25  140%
 
 </style>
 <topic:Skills1><style:heading>Table 2 - Warlock Skill Bonus Table I</style>
 <style:table>
                   <color:w>Disarming     Device        Save          Stealth      </color>
-Undead            <color:R>Poor         </color> <color:g>Superb       </color> <color:G>Excellent    </color> <color:y>Very Good    </color>
-Dragons           <color:r>Bad          </color> <color:y>Good         </color> <color:o>Fair         </color> <color:o>Fair         </color>
-Angels            <color:r>Bad          </color> <color:y>Very Good    </color> <color:g>Superb       </color> <color:o>Fair         </color>
-Demons            <color:r>Bad          </color> <color:g>Superb       </color> <color:G>Excellent    </color> <color:R>Poor         </color>
-Hounds            <color:r>Bad          </color> <color:o>Fair         </color> <color:o>Fair         </color> <color:G>Excellent    </color>
-Spiders           <color:r>Bad          </color> <color:G>Excellent    </color> <color:o>Fair         </color> <color:g>Superb       </color>
-Giants            <color:r>Bad          </color> <color:r>Bad          </color> <color:o>Fair         </color> <color:R>Poor         </color>
+Undead            <color:R>Poor         </color> <color:g>Superb       </color> <color:y>Very Good    </color> <color:y>Good         </color>
+Dragons           <color:R>Poor         </color> <color:y>Good         </color> <color:R>Poor         </color> <color:R>Poor         </color>
+Angels            <color:R>Poor         </color> <color:y>Very Good    </color> <color:g>Superb       </color> <color:R>Poor         </color>
+Demons            <color:R>Poor         </color> <color:g>Superb       </color> <color:y>Very Good    </color> <color:r>Bad          </color>
+Hounds            <color:R>Poor         </color> <color:o>Fair         </color> <color:R>Poor         </color> <color:y>Very Good    </color>
+Spiders           <color:R>Poor         </color> <color:G>Excellent    </color> <color:R>Poor         </color> <color:g>Superb       </color>
+Giants            <color:R>Poor         </color> <color:r>Bad          </color> <color:R>Poor         </color> <color:r>Bad          </color>
 
 </style>
 <topic:Skills2><style:heading>Table 3 - Warlock Skill Bonus Table II</style>
 <style:table>
-                  <color:w>Searching     Perception    Melee         Bows         </color>
-Undead            <color:R>Poor         </color> <color:o>Fair         </color> <color:o>Fair         </color> <color:R>Poor         </color>
+                  <color:w>Searching     Perception    Melee         Archery      </color>
+Undead            <color:R>Poor         </color> <color:R>Poor         </color> <color:o>Fair         </color> <color:R>Poor         </color>
 Dragons           <color:R>Poor         </color> <color:R>Poor         </color> <color:o>Fair         </color> <color:R>Poor         </color>
 Angels            <color:R>Poor         </color> <color:r>Bad          </color> <color:o>Fair         </color> <color:R>Poor         </color>
-Demons            <color:R>Poor         </color> <color:r>Bad          </color> <color:G>Excellent    </color> <color:R>Poor         </color>
-Hounds            <color:o>Fair         </color> <color:R>Poor         </color> <color:G>Excellent    </color> <color:r>Bad          </color>
-Spiders           <color:R>Poor         </color> <color:r>Bad          </color> <color:o>Fair         </color> <color:y>Very Good    </color>
-Giants            <color:R>Poor         </color> <color:r>Bad          </color> <color:g>Superb       </color> <color:o>Fair         </color>
+Demons            <color:R>Poor         </color> <color:r>Bad          </color> <color:y>Very Good    </color> <color:R>Poor         </color>
+Hounds            <color:R>Poor         </color> <color:R>Poor         </color> <color:y>Good         </color> <color:R>Poor         </color>
+Spiders           <color:R>Poor         </color> <color:r>Bad          </color> <color:o>Fair         </color> <color:G>Excellent    </color>
+Giants            <color:R>Poor         </color> <color:r>Bad          </color> <color:b>Heroic       </color> <color:o>Fair         </color>
 
 </style>
 
 
-<color:s>Automatically generated for FrogComposband 7.0.strawberry.</color>
+<color:s>Automatically generated for FrogComposband 7.1.liquorice.</color>
