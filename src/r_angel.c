@@ -1,17 +1,14 @@
 #include "angband.h"
 
 static cptr _desc =
-    "Angels are heavenly beings on a holy mission. They are winged creatures able "
-    "to fly over chasms and pits. They also become resistant to the elements as they "
-    "mature and are not fooled by invisibility. Their stats are truly awe-inspiring "
-    "making them one of the most powerful monster races.\n \n"
-    "Angels are monsters so cannot choose a normal class. Instead, they rely on their "
-    "divine powers which function like spells but need not be learned or cast from books. "
-    "These powers can be used while blinded, but not while confused and they are also "
-    "blocked by Anti-magic. The divine powers of the angel are quite powerful offering good "
-    "offense combined with detection, healing and melee enhancement. Wisdom is the "
-    "primary spell stat.\n \n"
-    "Angels use the same equipment slots as normal player races and have no innate attacks.";
+    "Angels are heavenly beings on a holy mission. Their wings allow them to "
+    "fly over chasms and pits. They are rarely fooled by invisibility, and "
+    "become resistant to the elements as they mature. Their stats are truly awe-inspiring, "
+    "and their divine magic extremely strong, offering good offense combined with detection, "
+    "healing, melee enhancement and utility. Angels are one of the most powerful "
+    "races, but they also gain levels extremely slowly.\n \n"
+    "Angels have a humanoid body type; they use the same equipment slots as most normal "
+    "player races, and have no innate melee attacks. Wisdom is their primary spell stat.";
 
 static void _birth(void)
 {
