@@ -1,13 +1,18 @@
-The Magic System
+Spellcasting
 
-Please choose one of the following online help files:
+Please choose one of the following help sections:
 
     [a] The Magic System
-    [b] Spellbook Magic
-    [c] General Realms of Spellbook Magic
-    [d] Class Specific Realms of Spellbook Magic
-    [e] On Casting Spells
-    [f] Spell Types
+    [b] Spellcaster Types
+    [c] Spellbook Magic
+    [d] Spell Proficiency
+    [e] What a Spellbook Looks Like
+    [f] Which Spells Should I Study?
+    [g] General Magic Realms
+    [h] Class-Specific Magic Realms
+    [i] On Casting Spells
+    [j] Spell Types
+    [k] Using Macros to Cast Spells
 
     (?) Help System Commands
 
