@@ -366,7 +366,7 @@ the tombstone; this has been fixed
 * Level feelings did not work properly with munchkin pseudo-ID; this 
 has been fixed
 
-* Fixed an old PosChengband bug that allowed non-Burglary realms to 
+* Fixed an old PosChengband bug that allowed non-Burglary rogues to 
 learn the Burglary realm during the game (thanks to Tiltorax for 
 reporting)
 
