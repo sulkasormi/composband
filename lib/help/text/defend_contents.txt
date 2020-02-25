@@ -1,15 +1,15 @@
 Defending and Armor
 
-Please choose one of the following online help files:
+Please choose one of the following help sections:
 
     [a] Defending and Armor
     [b] Armor Class
     [c] Resisting Magical Attacks
     [d] Ego Armor and Artifacts
-    [e] The Resistances
-    [f] Unresistable Attacks
-    [g] Immunities
-    [h] Miscellaneous Resists
+    [e] List of Resistances
+    [f] Immunities
+    [g] Other Protection
+    [h] The Power of Monster Attacks
     [i] Recovering from Attacks
 
     (?) Help System Commands
