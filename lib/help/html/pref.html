@@ -15,18 +15,17 @@ brighter, darker, or even completely different), or set options
 <a name="Files"></a></font><font color="#c00000">Preference Files
 
 </font><font color="#ffffff">There are two types of preference files: system preferences and user 
-preferences. The former represent the default display and input options 
-while the latter are optional customizations that you may add to 
-override the default settings. System preference files, such as 
+preferences. The former represent the default display and input 
+options, while the latter are optional customizations that you may add 
+to override the default settings. System preference files, such as 
 pref.prf, are usually stored in /lib/pref relative to the installation 
 (e.g., on Windows, if you installed in C:\games\FrogComposband then the 
 system pref files may be found in C:\games\FrogComposband\lib\pref). 
 User preference files, on the other hand, are stored in the user 
 directory, which is /lib/user on Windows, relative to the install 
-location, and perhaps (though this is customizable), 
-~/.angband/FrogComposband on Linux. In general, the location of user 
-files is platform dependent, and can vary depending on how you 
-configure and install the game.
+location, and perhaps (this is customizable) ~/.angband/FrogComposband 
+on Linux. In general, the location of user files is platform-dependent, 
+and can vary depending on how you configure and install the game.
 
 During initialization, the system preference file pref.prf is loaded, 
 and this file directs the loading of other preference files, such as 
@@ -44,35 +43,33 @@ tries to load the following user preference files:
   $RACE.prf
   $CLASS.prf
   $PLAYER.prf
-</font><font color="#ffffff">Here, $SYS is the 3 character system code for you platform, such as win 
-for the Windows port, or gcu for the Curses port. $RACE is your current 
-character's race, $CLASS the class name, and $PLAYER the character's 
-actual name, unless it contains illegal characters for your file system 
-(e.g, naming your player </font><font color="#ff8000">Mr. *WONDER* </font><font color="#ffffff">is probably a bad idea). User 
-preference files are loaded last so that you may override system 
-preferences with your own settings. We'll discuss some examples below.
+</font><font color="#ffffff">Here, $SYS is the 3-character system code for your platform, such as 
+</font><font color="#ff0000">win </font><font color="#ffffff">for the Windows port or </font><font color="#ff0000">gcu </font><font color="#ffffff">for the Curses port. $RACE is your 
+current character's race, $CLASS the class name, and $PLAYER the 
+character's actual name, unless it contains illegal characters for your 
+file system (e.g, naming your player </font><font color="#ff8000">Mr. *WONDER* </font><font color="#ffffff">is probably a bad 
+idea). User preference files are loaded last so that you may override 
+system preferences with your own settings. We'll discuss some examples 
+below.
 
 Preference files consist of a list of commands which are parsed to 
 configure various options. These are discussed next.
 
 <a name="Commands"></a></font><font color="#c00000">Preference Commands
 
-</font><font color="#ffffff">There are many commands for setting preferences. I'd rather not 
-document them all, since, hopefully, you would never need to use them 
-directly. Just keep in mind that the game has its own syntax for 
-processing pref files, and, should you ever be curious or inclined to 
-investigate, you can learn them by browsing existing pref files or 
-looking at the source code. I'll give one example in the next section, 
-and then we will discuss setting up preferences using the user 
-interface commands which are designed to hide the details of the syntax 
-from you.
+</font><font color="#ffffff">There are many commands for setting preferences. The syntax is 
+complicated, but mostly, you can use the user interface commands </font><font color="#ff8000">%</font><font color="#ffffff">, </font><font color="#ff8000">&amp; 
+</font><font color="#ffffff">and </font><font color="#ff8000">@ </font><font color="#ffffff">to do things easily and leave syntax worries to the game itself. 
+I'll give one example of the syntax in the next section, and then we 
+will discuss setting up preferences using the user interface commands 
+which are designed to hide the details of the syntax from you.
 
 <a name="Example"></a></font><font color="#c00000">An Example
 
-</font><font color="#ffffff">In this example, fire up the game in ASCII display and load your 
-character. My character is imaginatively named </font><font color="#ff0000">Test</font><font color="#ffffff">, so when I refer to 
-Test.prf later on, you'll know to mentally change that filename to 
-whatever your character happens to be named.
+</font><font color="#ffffff">In this example, fire up the game and load your character. My character 
+is imaginatively named </font><font color="#ff0000">Test</font><font color="#ffffff">, so when I refer to Test.prf later on, 
+you'll know to mentally change that filename to whatever your character 
+happens to be named.
 
 For this example, we will be directly entering a single user preference 
 command. To do this, we use the special </font><font color="#ff0000">Enter a user pref command 
@@ -82,18 +79,17 @@ numeric code for various values. It is an advanced command, and
 normally you will want to use one of the friendlier in-game commands 
 (for visuals, in this case) instead.
 
-I find @ so boring to look at. Let's use </font><font color="#ffff00">@ </font><font color="#ffffff">instead! To make this 
+Suppose you find @ boring to look at. Let's use </font><font color="#ffff00">@ </font><font color="#ffffff">instead! To make this 
 change, type </font><font color="#ff8000">! </font><font color="#ffffff">then enter </font><font color="#ff8000">R:0:11:@</font><font color="#ffffff">. The </font><font color="#ff8000">R </font><font color="#ffffff">preference command is used to 
 set display values for monster races (which, as you may know, are 
-defined in /lib/edit/r_info.txt). The game uses the special 0'th entry 
+defined in /lib/edit/r_info.txt). The game uses the special 0th entry 
 in the monster race table as the display options for the player. That 
 we entered </font><font color="#ff8000">R:0 </font><font color="#ffffff">says we wish to override this value. The next field is 
-the attribute to use. Since we are in ASCII text mode, we need to enter 
-a value of 0 to 15 for one of the available 16 colors. I picked 11 for 
-yellow. Finally, we keep the @ for the character for this monster race. 
-After entering this command, you'll notice the player is still a plain 
-old @. Type </font><font color="#ff8000">^R </font><font color="#ffffff">to force a redraw, and now you should be proudly 
-displayed as </font><font color="#ffff00">@</font><font color="#ffffff">.
+the attribute to use. We need to enter a value of 0 to 15 for one of 
+the 16 available colors; I picked 11 for yellow. Finally, we keep the @ 
+as the character for this monster race. After entering this command, 
+you'll notice the player is still a plain old @; type </font><font color="#ff8000">^R </font><font color="#ffffff">to force a 
+redraw, and now you should be proudly displayed as </font><font color="#ffff00">@</font><font color="#ffffff">.
 
 If we were to restart the game at this point, our change would be lost. 
 We'll discuss the </font><font color="#ff0000">Interact with Visuals </font><font color="#ffffff">command in just a moment, but 
@@ -106,182 +102,120 @@ initialization. Keeping this value ensures our changes get
 automatically used the next time we play this character! So press </font><font color="#ff8000">ENTER 
 </font><font color="#ffffff">to actually dump your preferences.
 
-Go ahead and restart the game in ASCII mode to confirm the change 
-persists. Now, restart the game in graphics mode and what do you see? 
-For me, on Linux, I get graphics for objects and terrain features, but 
-all of the monsters are displayed in ASCII. (On Windows, you might need 
-to restart, turn on graphics, and then restart again ... I can't 
-confirm this just now). That's because the we dumped the monster 
-visuals while in text mode, and the game didn't just dump the one entry 
-we changed: It dumped them all! Let's go ahead and call this a feature: 
-If you ever wanted to play in a mixed-mode with graphical terrain but 
-craved the nostalgia of ASCII monsters, well, there you go! You can do 
-this.
-
 One final comment: You may edit the Test.prf file you dumped directly, 
 or you may delete it. Since this was an example, you probably just want 
 to delete it, but you should know that the game stores all user 
 preferences for your current character here (by default), and this 
-includes any macros you might have defined. You can also get rid of the 
-ASCII monsters (assuming you want to play in graphics mode) by choosing 
-</font><font color="#ff8000">% </font><font color="#ffffff">and then choosing the option to </font><font color="#ff0000">Reset Visuals</font><font color="#ffffff">, followed by re-dumping 
-monster visual settings in you $NAME.prf file. That's fine too, and 
-we'll discuss interacting with visuals through the user-interface in 
-detail in the next section.
+includes any macros you might have defined.
 
 <a name="Visuals"></a></font><font color="#c00000">Interacting with Visuals (</font><font color="#ff8000">%</font><font color="#c00000">)
 
 </font><font color="#ffffff">Now, you may have found the need to type in a cryptic instruction like 
-</font><font color="#ff8000">R:0:11:@ </font><font color="#ffffff">rather disgusting. If so, you can relax: There is an easier 
-way. Let us repeat the change from the previous section using the user 
-interface command to interact with visuals. Press </font><font color="#ff8000">% </font><font color="#ffffff">and then choose the 
-menu option for changing a monster attribute in visual mode (currently, 
-this is </font><font color="#ff8000">7 </font><font color="#ffffff">and, for the purposes of the present discussion, your player 
-is a monster!). What do you see?
+</font><font color="#ff8000">R:0:11:@ </font><font color="#ffffff">rather disgusting. If so, you can relax: there is an easier 
+way. Let us repeat the change from the previous section using the 
+Interact with Visuals user interface. Press </font><font color="#ff8000">% </font><font color="#ffffff">and then choose one of 
+the menu options for changing monster attributes, either </font><font color="#ff8000">4 </font><font color="#ffffff">for numeric 
+mode or </font><font color="#ff8000">7 </font><font color="#ffffff">for visual mode. Actually, let's combine the two: press </font><font color="#ff8000">4 
+</font><font color="#ffffff">first, and then </font><font color="#ff8000">v </font><font color="#ffffff">to switch to visual mode! (The player, not being a 
+normal monster, can only be accessed in visual mode this way.)
 
-Visuals - Monsters
-
-Group                  Name                                   Idx   Sym
-================================================================================
-</font><font color="#00ffff">Uniques              </font><font color="#ffffff">| </font><font color="#00ffff">a Plain Gold Ring                      864     </font><font color="#ffff00">=
-</font><font color="#ffffff">Ridable monsters     | Morgoth, Lord of Darkness              861     </font><font color="#707070">P
-</font><font color="#ffffff">Wanted monsters      | The Serpent of Chaos                   862     </font><font color="#707070">J
-</font><font color="#ffffff">Amberite             | The Unicorn of Order                   859     q
-Olympian             | Oberon, King of Amber                  860     </font><font color="#ff00ff">p
-</font><font color="#ffffff">Ant                  | Sauron, the Sorcerer                   858     </font><font color="#ff8000">p
-</font><font color="#ffffff">Bat                  | Great Cthulhu                          857     </font><font color="#008040">U
-</font><font color="#ffffff">Centipede            | Gothmog, the High Captain of Balrogs   856     </font><font color="#ff0000">U
-</font><font color="#ffffff">Dragon               | Cerberus, Guardian of Hades            853     </font><font color="#c00000">C
-</font><font color="#ffffff">...
-&lt;dir&gt;, 'v' for visuals, 'c' to copy, '=' for more info, ESC
-
-Well, I guess this is one way to see all the uniques in the game! I'll 
-assume if you are brave enough to be reading this topic than you are 
-already an advanced player and know the uniques. Anyway, the left area 
-of the display gives various monster groups, and the right shows how 
-the monsters in the current group look. Go ahead and move down the list 
-of groups, all the way to the very last one. Once you select the group 
-called Player, hit the right arrow to move into the list of "monsters" 
-for this group, and select the one also called Player. That is you! 
-Your screen should look something like:
-
-Visuals - Monsters
-
-Group                  Name                                   Idx   Sym
-==============================================================================
-Zombie/Mummy         | Mimic                                  1131    @
-Angel                | </font><font color="#00ffff">Player                                 0       </font><font color="#ffffff">@
-Bird                 |
-...
-Mushroom patch       |
-Ball                 |
-</font><font color="#00ffff">Player               </font><font color="#ffffff">|
-
-&lt;dir&gt;, 'v' for visuals, 'c' to copy, '=' for more info, ESC
-
-Now, let's follow the instructions on the bottom of the screen and 
-press </font><font color="#ff8000">v </font><font color="#ffffff">to change the visuals for the currently selected monster:
-
-Visuals - Monsters
-
-Group                  Name                                   Idx   Sym
-==============================================================================
-Zombie/Mummy         | </font><font color="#00ffff">Player                           0b/40 0       </font><font color="#ffff00">@
-</font><font color="#ffffff">Angel                | </font><font color="#000000">6789:;&lt;=&gt;?@ABCDEFGHIJKLMNOPQRSTUVWXYZ[\]^_`abcdefghijklmn
-</font><font color="#ffffff">Bird                 | 6789:;&lt;=&gt;?@ABCDEFGHIJKLMNOPQRSTUVWXYZ[\]^_`abcdefghijklmn
-Canine               | </font><font color="#909090">6789:;&lt;=&gt;?@ABCDEFGHIJKLMNOPQRSTUVWXYZ[\]^_`abcdefghijklmn
-</font><font color="#ffffff">Elemental            | </font><font color="#ff8000">6789:;&lt;=&gt;?@ABCDEFGHIJKLMNOPQRSTUVWXYZ[\]^_`abcdefghijklmn
-</font><font color="#ffffff">Dragon Fly           | </font><font color="#c00000">6789:;&lt;=&gt;?@ABCDEFGHIJKLMNOPQRSTUVWXYZ[\]^_`abcdefghijklmn
-</font><font color="#ffffff">Ghost                | </font><font color="#008040">6789:;&lt;=&gt;?@ABCDEFGHIJKLMNOPQRSTUVWXYZ[\]^_`abcdefghijklmn
-</font><font color="#ffffff">Hybrid               | </font><font color="#0000ff">6789:;&lt;=&gt;?@ABCDEFGHIJKLMNOPQRSTUVWXYZ[\]^_`abcdefghijklmn
-</font><font color="#ffffff">Insect               | </font><font color="#a05010">6789:;&lt;=&gt;?@ABCDEFGHIJKLMNOPQRSTUVWXYZ[\]^_`abcdefghijklmn
-</font><font color="#ffffff">Snake                | </font><font color="#707070">6789:;&lt;=&gt;?@ABCDEFGHIJKLMNOPQRSTUVWXYZ[\]^_`abcdefghijklmn
-</font><font color="#ffffff">Killer Beetle        | </font><font color="#d0d0d0">6789:;&lt;=&gt;?@ABCDEFGHIJKLMNOPQRSTUVWXYZ[\]^_`abcdefghijklmn
-</font><font color="#ffffff">Lich                 | </font><font color="#ff00ff">6789:;&lt;=&gt;?@ABCDEFGHIJKLMNOPQRSTUVWXYZ[\]^_`abcdefghijklmn
-</font><font color="#ffffff">Multi-Headed Reptile | </font><font color="#ffff00">6789:;&lt;=&gt;?@ABCDEFGHIJKLMNOPQRSTUVWXYZ[\]^_`abcdefghijklmn
-</font><font color="#ffffff">Mystery Living       | </font><font color="#ff0000">6789:;&lt;=&gt;?@ABCDEFGHIJKLMNOPQRSTUVWXYZ[\]^_`abcdefghijklmn
-</font><font color="#ffffff">Ogre                 | </font><font color="#00ff00">6789:;&lt;=&gt;?@ABCDEFGHIJKLMNOPQRSTUVWXYZ[\]^_`abcdefghijklmn
-</font><font color="#ffffff">Giant Humanoid       | </font><font color="#00ffff">6789:;&lt;=&gt;?@ABCDEFGHIJKLMNOPQRSTUVWXYZ[\]^_`abcdefghijklmn
-</font><font color="#ffffff">Quylthulg            | </font><font color="#c08040">6789:;&lt;=&gt;?@ABCDEFGHIJKLMNOPQRSTUVWXYZ[\]^_`abcdefghijklmn
-</font><font color="#ffffff">Reptile/Amphibian    | </font><font color="#000000">6789:;&lt;=&gt;?@ABCDEFGHIJKLMNOPQRSTUVWXYZ[\]^_`abcdefghijklmn
-</font><font color="#ffffff">Spider/Scorpion/Tick | 6789:;&lt;=&gt;?@ABCDEFGHIJKLMNOPQRSTUVWXYZ[\]^_`abcdefghijklmn
-Troll                | </font><font color="#909090">6789:;&lt;=&gt;?@ABCDEFGHIJKLMNOPQRSTUVWXYZ[\]^_`abcdefghijklmn
-</font><font color="#ffffff">Vampire              | </font><font color="#ff8000">6789:;&lt;=&gt;?@ABCDEFGHIJKLMNOPQRSTUVWXYZ[\]^_`abcdefghijklmn
-</font><font color="#ffffff">Wight/Wraith/etc     | </font><font color="#c00000">6789:;&lt;=&gt;?@ABCDEFGHIJKLMNOPQRSTUVWXYZ[\]^_`abcdefghijklmn
-</font><font color="#ffffff">Xorn/Xaren/etc       | </font><font color="#008040">6789:;&lt;=&gt;?@ABCDEFGHIJKLMNOPQRSTUVWXYZ[\]^_`abcdefghijklmn
-</font><font color="#ffffff">Yeti                 | </font><font color="#0000ff">6789:;&lt;=&gt;?@ABCDEFGHIJKLMNOPQRSTUVWXYZ[\]^_`abcdefghijklmn
-</font><font color="#ffffff">Zephyr Hound         | </font><font color="#a05010">6789:;&lt;=&gt;?@ABCDEFGHIJKLMNOPQRSTUVWXYZ[\]^_`abcdefghijklmn
-</font><font color="#ffffff">Mimic                | </font><font color="#707070">6789:;&lt;=&gt;?@ABCDEFGHIJKLMNOPQRSTUVWXYZ[\]^_`abcdefghijklmn
-</font><font color="#ffffff">Wall/Plant/Gas       | </font><font color="#d0d0d0">6789:;&lt;=&gt;?@ABCDEFGHIJKLMNOPQRSTUVWXYZ[\]^_`abcdefghijklmn
-</font><font color="#ffffff">Mushroom patch       | </font><font color="#ff00ff">6789:;&lt;=&gt;?@ABCDEFGHIJKLMNOPQRSTUVWXYZ[\]^_`abcdefghijklmn
-</font><font color="#ffffff">Ball                 | </font><font color="#ffff00">6789:;&lt;=&gt;?@ABCDEFGHIJKLMNOPQRSTUVWXYZ[\]^_`abcdefghijklmn
-</font><font color="#00ffff">Player               </font><font color="#ffffff">| </font><font color="#ff0000">6789:;&lt;=&gt;?@ABCDEFGHIJKLMNOPQRSTUVWXYZ[\]^_`abcdefghijklmn
-
+Visuals - Monsters                                                              
+                                                                                
+   Name                                                       Idx   Sym         
+==============================================================================  
+   </font><font color="#00ffff">Player                                               01/40 0       </font><font color="#ffffff">@         
+   </font><font color="#000000">6789:;&lt;=&gt;?@ABCDEFGHIJKLMNOPQRSTUVWXYZ[\]^_`abcdefghijklmnopqrstuvwxyz{|}~#   
+   </font><font color="#ffffff">6789:;&lt;=&gt;?@ABCDEFGHIJKLMNOPQRSTUVWXYZ[\]^_`abcdefghijklmnopqrstuvwxyz{|}~#   
+   </font><font color="#808080">6789:;&lt;=&gt;?@ABCDEFGHIJKLMNOPQRSTUVWXYZ[\]^_`abcdefghijklmnopqrstuvwxyz{|}~#   
+   </font><font color="#ff8000">6789:;&lt;=&gt;?@ABCDEFGHIJKLMNOPQRSTUVWXYZ[\]^_`abcdefghijklmnopqrstuvwxyz{|}~#   
+   </font><font color="#c00000">6789:;&lt;=&gt;?@ABCDEFGHIJKLMNOPQRSTUVWXYZ[\]^_`abcdefghijklmnopqrstuvwxyz{|}~#   
+   </font><font color="#008040">6789:;&lt;=&gt;?@ABCDEFGHIJKLMNOPQRSTUVWXYZ[\]^_`abcdefghijklmnopqrstuvwxyz{|}~#   
+   </font><font color="#0000ff">6789:;&lt;=&gt;?@ABCDEFGHIJKLMNOPQRSTUVWXYZ[\]^_`abcdefghijklmnopqrstuvwxyz{|}~#   
+   </font><font color="#804000">6789:;&lt;=&gt;?@ABCDEFGHIJKLMNOPQRSTUVWXYZ[\]^_`abcdefghijklmnopqrstuvwxyz{|}~#   
+   </font><font color="#404040">6789:;&lt;=&gt;?@ABCDEFGHIJKLMNOPQRSTUVWXYZ[\]^_`abcdefghijklmnopqrstuvwxyz{|}~#   
+   </font><font color="#c0c0c0">6789:;&lt;=&gt;?@ABCDEFGHIJKLMNOPQRSTUVWXYZ[\]^_`abcdefghijklmnopqrstuvwxyz{|}~#   
+   </font><font color="#ff00ff">6789:;&lt;=&gt;?@ABCDEFGHIJKLMNOPQRSTUVWXYZ[\]^_`abcdefghijklmnopqrstuvwxyz{|}~#   
+   </font><font color="#ffff00">6789:;&lt;=&gt;?@ABCDEFGHIJKLMNOPQRSTUVWXYZ[\]^_`abcdefghijklmnopqrstuvwxyz{|}~#   
+   </font><font color="#ff0000">6789:;&lt;=&gt;?@ABCDEFGHIJKLMNOPQRSTUVWXYZ[\]^_`abcdefghijklmnopqrstuvwxyz{|}~#   
+   </font><font color="#00ff00">6789:;&lt;=&gt;?@ABCDEFGHIJKLMNOPQRSTUVWXYZ[\]^_`abcdefghijklmnopqrstuvwxyz{|}~#   
+   </font><font color="#00ffff">6789:;&lt;=&gt;?@ABCDEFGHIJKLMNOPQRSTUVWXYZ[\]^_`abcdefghijklmnopqrstuvwxyz{|}~#   
+   </font><font color="#c08040">6789:;&lt;=&gt;?@ABCDEFGHIJKLMNOPQRSTUVWXYZ[\]^_`abcdefghijklmnopqrstuvwxyz{|}~#   
+                                                                                
 </font><font color="#ffffff">&lt;dir&gt;, ENTER to accept, 'c' to copy, ESC
 
-You cannot tell from the screenshot, but I moved the cursor down to the 
-yellow @, since this is the display we setup manually in the last 
-section. If you look at the top line, you see </font><font color="#00ffff">0b/40 </font><font color="#ffffff">which is 
-hexadecimal for 11 (which is yellow) and the ascii character code for 
-@. Go ahead and choose </font><font color="#ff8000">ENTER </font><font color="#ffffff">to accept the change.
+Now use the arrow keys to select your favorite visual (in this case, 
+the yellow @):
 
-All of this accomplished the same change as </font><font color="#ff8000">! </font><font color="#ffffff">followed by </font><font color="#ff8000">R:0:11:@ 
-</font><font color="#ffffff">which we did in the last section. It's quite a bit more work, but you 
-can see what your change will be as you make it, so it is easier to do 
-things correctly. If you repeat this in graphics mode, you'll find that 
-it is actually much more convenient to use the user interface to setup 
-and change visuals.
+Visuals - Monsters                                                              
+                                                                                
+   Name                                                       Idx   Sym         
+==============================================================================  
+   </font><font color="#00ffff">Player                                               0b/40 0       </font><font color="#ffff00">@         
+   </font><font color="#000000">6789:;&lt;=&gt;?@ABCDEFGHIJKLMNOPQRSTUVWXYZ[\]^_`abcdefghijklmnopqrstuvwxyz{|}~#   
+   </font><font color="#ffffff">6789:;&lt;=&gt;?@ABCDEFGHIJKLMNOPQRSTUVWXYZ[\]^_`abcdefghijklmnopqrstuvwxyz{|}~#   
+   </font><font color="#808080">6789:;&lt;=&gt;?@ABCDEFGHIJKLMNOPQRSTUVWXYZ[\]^_`abcdefghijklmnopqrstuvwxyz{|}~#   
+   </font><font color="#ff8000">6789:;&lt;=&gt;?@ABCDEFGHIJKLMNOPQRSTUVWXYZ[\]^_`abcdefghijklmnopqrstuvwxyz{|}~#   
+   </font><font color="#c00000">6789:;&lt;=&gt;?@ABCDEFGHIJKLMNOPQRSTUVWXYZ[\]^_`abcdefghijklmnopqrstuvwxyz{|}~#   
+   </font><font color="#008040">6789:;&lt;=&gt;?@ABCDEFGHIJKLMNOPQRSTUVWXYZ[\]^_`abcdefghijklmnopqrstuvwxyz{|}~#   
+   </font><font color="#0000ff">6789:;&lt;=&gt;?@ABCDEFGHIJKLMNOPQRSTUVWXYZ[\]^_`abcdefghijklmnopqrstuvwxyz{|}~#   
+   </font><font color="#804000">6789:;&lt;=&gt;?@ABCDEFGHIJKLMNOPQRSTUVWXYZ[\]^_`abcdefghijklmnopqrstuvwxyz{|}~#   
+   </font><font color="#404040">6789:;&lt;=&gt;?@ABCDEFGHIJKLMNOPQRSTUVWXYZ[\]^_`abcdefghijklmnopqrstuvwxyz{|}~#   
+   </font><font color="#c0c0c0">6789:;&lt;=&gt;?@ABCDEFGHIJKLMNOPQRSTUVWXYZ[\]^_`abcdefghijklmnopqrstuvwxyz{|}~#   
+   </font><font color="#ff00ff">6789:;&lt;=&gt;?@ABCDEFGHIJKLMNOPQRSTUVWXYZ[\]^_`abcdefghijklmnopqrstuvwxyz{|}~#   
+   </font><font color="#ffff00">6789:;&lt;=&gt;?@ABCDEFGHIJKLMNOPQRSTUVWXYZ[\]^_`abcdefghijklmnopqrstuvwxyz{|}~#   
+   </font><font color="#ff0000">6789:;&lt;=&gt;?@ABCDEFGHIJKLMNOPQRSTUVWXYZ[\]^_`abcdefghijklmnopqrstuvwxyz{|}~#   
+   </font><font color="#00ff00">6789:;&lt;=&gt;?@ABCDEFGHIJKLMNOPQRSTUVWXYZ[\]^_`abcdefghijklmnopqrstuvwxyz{|}~#   
+   </font><font color="#00ffff">6789:;&lt;=&gt;?@ABCDEFGHIJKLMNOPQRSTUVWXYZ[\]^_`abcdefghijklmnopqrstuvwxyz{|}~#   
+   </font><font color="#c08040">6789:;&lt;=&gt;?@ABCDEFGHIJKLMNOPQRSTUVWXYZ[\]^_`abcdefghijklmnopqrstuvwxyz{|}~#   
+                                                                                
+</font><font color="#ffffff">&lt;dir&gt;, ENTER to accept, 'c' to copy, ESC
 
-When you want to keep your changes, you use the option to dump monster 
+Go ahead and press </font><font color="#ff8000">ENTER </font><font color="#ffffff">to accept the change.
+
+This accomplished the same change as </font><font color="#ff8000">! </font><font color="#ffffff">followed by </font><font color="#ff8000">R:0:11:@ </font><font color="#ffffff">which we 
+did in the last section. It's a bit more work, but you don't need to 
+remember any syntax or ASCII key codes or color numbers.
+
+When you want to keep your changes, use option </font><font color="#ff8000">1 </font><font color="#ffffff">to dump monster 
 visuals, just like before. I'll let you work through the other visual 
-options, both in text mode and in graphics mode, since the process to 
-make changes is the same. You can configure not just monster visuals, 
-but objects and terrain features as well. Be sure to dump your changes 
-so they are remembered for this character.
+options; you can configure not just monster visuals, but objects and 
+terrain features as well. </font><font color="#00ff00">Be sure to dump your changes so they are 
+remembered for this character.
 
 <a name="Colors"></a></font><font color="#c00000">Interacting with Colors (</font><font color="#ff8000">&amp;</font><font color="#c00000">)
 
 </font><font color="#ffffff">This option allows you to configure the basic colors used by the game. 
-However, this option will not work on all systems. For example, the 
-Curses port uses the console's current profile rather than the in-game 
-color table, so setting colors through the game will not work (Instead, 
-edit the current profile for your console, or switch to a different 
-profile). Furthermore, while the UI is pretty easy to figure out, it is 
-rather painful to use in practice since there are commands to increase 
-or decrease the respective r, g and b values of the current color table 
-entry. But there is no option to just type in a desired value. Here, I 
-recommend you use the option to dump colors to your $NAME.prf file, and 
-then close the game and manually edit the rgb values in your favorite 
-text editor, using whatever visual color tools your are available on 
-your operating system. At some point, we should really fix up this 
-command to be more friendly!
+This can be a bit of work: while the UI is easy to figure out (use the 
+</font><font color="#ff8000">R</font><font color="#ffffff">, </font><font color="#ff8000">G </font><font color="#ffffff">and </font><font color="#ff8000">B </font><font color="#ffffff">keys to adjust the RGB value), each keypress only increases 
+or decreases the value by 1, so reaching the value you would like can 
+take a while. Here too, </font><font color="#00ff00">remember to dump your changes</font><font color="#ffffff">!
+
+Modifying colors may not work on some platforms.
 
 <a name="Options"></a></font><font color="#c00000">Interacting with Options (</font><font color="#ff8000">=</font><font color="#c00000">)
 
 </font><font color="#ffffff">The various game options are documented elsewhere (see <a href="option.html"></font><font color="#00ff00">[a]</a></font><font color="#ffffff">). Here, I'll 
 just mention that there exist two preference commands for turning 
-options on and off. You may use </font><font color="#ff8000">Y:option_name </font><font color="#ffffff">to turn an option on and 
-</font><font color="#ff8000">X:option_name </font><font color="#ffffff">to turn it off (Use the </font><font color="#ff8000">! </font><font color="#ffffff">option, or embed this 
-preference command inside a macro as discussed below). Obviously, 
-replace option_name with the exact name for the option you wish to 
-configure. The list of internal option names is documented in the 
-previous link.
+options on and off: you may use </font><font color="#ff8000">Y:option_name </font><font color="#ffffff">to turn an option on, and 
+</font><font color="#ff8000">X:option_name </font><font color="#ffffff">to turn it off (use </font><font color="#ff8000">! </font><font color="#ffffff">for this). Obviously, replace 
+option_name with the exact name for the option you wish to configure. 
+The list of internal option names is documented in the previous link.
 
     </font><font color="#00ff00">Note: </font><font color="#ffffff">You cannot alter cheating options with the user 
     pref commands X or Y. Nor can you configure these 
     options in the </font><font color="#ff0000">pref-opt.prf </font><font color="#ffffff">system preference file. To 
-    cheat, you need to to enable the </font><font color="#ff0000">allow_debug_opts </font><font color="#ffffff">and 
-    then set the option through the user interface. This 
-    will mark your character as a cheater, though!
+    cheat, you need to enable the </font><font color="#ff0000">allow_debug_opts </font><font color="#ffffff">and then 
+    set the option through the user interface. This will 
+    mark your character as a cheater, though!
 
 <a name="Macros"></a></font><font color="#c00000">Interacting with Macros (</font><font color="#ff8000">@</font><font color="#c00000">)
 
 </font><font color="#ffffff">The "Interact with macros" command allows you to define or remove 
-"macros", which are mappings from a single logical keypress to a 
-sequence of keypresses, allowing you to use special keys on the 
-keyboard, such as function keys or keypad keys, possibly in conjunction 
-with modifier keys, to "automate" repetitive multi-keypress commands 
-that you use a lot.
+</font><font color="#ff0000">macros</font><font color="#ffffff">, which are mappings from a single logical keypress to a sequence 
+of keypresses, allowing you to use special keys on the keyboard, such 
+as function keys or keypad keys, possibly in conjunction with modifier 
+keys, to "automate" repetitive multi-keypress commands that you use a 
+lot.
 
 Since macros represent keypress sequences, and not all keypresses have 
 a printable representation, macro triggers and actions must often be 
@@ -316,7 +250,9 @@ Macros can be specified in user pref files as a pair of lines, one of
 the form "A:&lt;str&gt;", which defines the encoded macro action, and one of 
 the form "P:&lt;str&gt;", which defines the encoded macro trigger.
 
-The "Interact with macros" command also allows you to define "keymaps", 
+<a name="Keymaps"></a></font><font color="#c08040">Keymaps
+
+</font><font color="#ffffff">The "Interact with macros" command also allows you to define </font><font color="#ff0000">keymaps</font><font color="#ffffff">, 
 which are vaguely related to macros. A keymap maps a single keypress to 
 a series of keypresses, which bypass both other keymaps and any macros. 
 FrogComposband uses keymaps to map the original and the roguelike 
@@ -328,55 +264,66 @@ underlying keyset, except that "numbers" are mapped to ";" plus a
 direction, "5" is mapped to ",", and a few control-keys are mapped to 
 various things. See "command.txt" for the full set of underlying 
 commands. Some uses for keymaps include the ability to "disable" a 
-command by mapping it to "\x00".
+command by mapping it to "\x00". Keymaps are safer than macros in that 
+</font><font color="#00ff00">macros should always use a special key as the trigger</font><font color="#ffffff">; using a regular 
+key as a macro trigger will interfere with that key's normal 
+functionality, but using regular keys as keymap triggers is okay as 
+long as the key does not overwrite commands.
 
 Keymaps can be specified in user pref files as pairs of lines of the 
 form "A:&lt;str&gt;" "C:&lt;T&gt;:&lt;key&gt;", where &lt;str&gt; is the encoded keymap action, 
 &lt;T&gt; is the keyset (0 for original and 1 for roguelike), &lt;key&gt; is the 
 encoded trigger key.
 
-<a name="MacroSamples"></a></font><font color="#c00000">Some Macro Examples
+<a name="MacroSamples"></a></font><font color="#c00000">Some Macro and Keymap Examples
 
 </font><font color="#ffffff">You may now forget about keymaps and pretend that macros are things 
 that allow you, the user, to bind a sequence of commands to a single 
-keystroke. Here are some of my personal examples:
+keystroke. Here are a few examples:
 
 </font><font color="#00ff00">Example #1: Archery
-</font><font color="#ffffff">Inscribe @f1=g on your primary ammo, and then add the macro sequence 
-*tf1 to your favorite key (I like to use -). This will automatically 
-target the nearest opponent and fire the inscribed ammo. The =g part of 
-the inscription allows you to automatically pick up any unbroken 
-projectiles once the battle is over. (This assumes that use_old_target 
-is turned on, which it is by default. Otherwise, you'll need to work 
-out for yourself the altered macro action).
+</font><font color="#ffffff">Inscribe </font><font color="#ff00ff">@f1=g </font><font color="#ffffff">on your primary ammo, then map the sequence </font><font color="#ff8000">f1*5 </font><font color="#ffffff">or </font><font color="#ff8000">*5f1 
+</font><font color="#ffffff">to your favorite macro key. This will automatically target the nearest 
+opponent and fire the inscribed ammo; and the =g part of the 
+inscription allows you to automatically pick up the ammo once the 
+battle is over. (Use </font><font color="#ff8000">f1*5 </font><font color="#ffffff">if the </font><font color="#ff0000">use_old_target </font><font color="#ffffff">option is off, as it is 
+by default, and </font><font color="#ff8000">*5f1 </font><font color="#ffffff">if you have switched that option on.)
 
 </font><font color="#00ff00">Example #2: Resting
-</font><font color="#ffffff">Add the macro sequence R&amp;\r to a convenient key (I use F1 for this). 
-Normally, resting requires 3 keystrokes and it is frustrating when your 
-resting gets constantly interrupted. Pressing F1 reduces this annoyance 
-by a factor of 3.
+</font><font color="#ffffff">Add the macro sequence R&amp;\r to a convenient key, say F1. Normally, 
+resting requires 2 keystrokes (</font><font color="#ff8000">R </font><font color="#ffffff">and </font><font color="#ff8000">Enter</font><font color="#ffffff">), which some players find 
+frustrating when their resting gets constantly interrupted.
 
-</font><font color="#00ff00">Example #3: Tunneling
-</font><font color="#ffffff">Inscribe your wand of stone to mud with @am and then bind the macro 
-sequence *\eam to your favorite key. Perhaps the only disadvantage of 
-the use_old_target option occurs when you are done fighting, and want 
-to something else like clear away some rubble. This macro first 
-dismisses the old target with *\e and then aims your inscribed wand of 
-stone to mud. You will be prompted for the desired direction.
+</font><font color="#00ff00">Example #3: Illumination
+</font><font color="#ffffff">Inscribe your Staff of Illumination with </font><font color="#ff00ff">@ug</font><font color="#ffffff">, then map the sequence </font><font color="#ff8000">ug 
+</font><font color="#ffffff">to your favorite key, say F6. When you find a Rod of Illumination, just 
+change the macro action to </font><font color="#ff8000">za </font><font color="#ffffff">and you can keep lighting up rooms with 
+the same key.
 
 </font><font color="#00ff00">Example #4: Mass Identify
-</font><font color="#ffffff">Inscribe @ui on your staff of identify (The one with 50+ charges) and 
+</font><font color="#ffffff">Inscribe </font><font color="#ff00ff">@ui </font><font color="#ffffff">on your Staff of Identify (the one with 50+ charges) and 
 then bind ui* to your favorite knowledge key. Use this macro once your 
-pack has filled up with unknown, but pseudo-identified objects.
+pack has filled up with unknown objects.
 
+</font><font color="#00ff00">Example #5: Spells
+</font><font color="#ffffff">Suppose your favorite attack spell is spell </font><font color="#ff8000">e </font><font color="#ffffff">in a book you have 
+inscribed with </font><font color="#ff00ff">@mf</font><font color="#ffffff">. Let's use </font><font color="#ff8000">y </font><font color="#ffffff">as our trigger key here; for this 
+trigger key we'll want a keymap rather than a macro, otherwise we'll 
+interfere with the normal functionality of the </font><font color="#ff8000">y </font><font color="#ffffff">key! Create a keymap 
+for </font><font color="#ff8000">y </font><font color="#ffffff">with </font><font color="#ff8000">mfe </font><font color="#ffffff">as the action; </font><font color="#ff8000">mfe*5 </font><font color="#ffffff">or </font><font color="#ff8000">*5mfe </font><font color="#ffffff">if you want to go a step 
+further and automatically target the nearest monster. See <a href="magic.html#Macros"></font><font color="#00ff00">[b]</a> </font><font color="#ffffff">for more 
+spell examples.
 
-</font><font color="#707070">Original   : Alexander Cutler and Andy Astrand
+    </font><font color="#00ff00">Remember to append your macros and keymaps to a file.
+
+</font><font color="#404040">Original   : Alexander Cutler and Andy Astrand
 Updated    : (2.7.6) by Russ Allbery (rra@cs.stanford.edu)
 Updated    : (2.7.9) by Ben Harrison (benh@phial.com)
 Updated    : Zangband 2.2.0 through 2.2.6c by Robert Ruehlmann
 Updated    : Zangband DevTeam
 Updated    : Hengband 1.7.0
 Updated    : PosChengband 4.0.0
+Updated    : FrogComposband 7.1.liquorice
 
 
 </font></pre></body></html>

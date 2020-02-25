@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html>
+<body text="#ffffff" bgcolor="#000000"><pre>
+<font color="#00ffff">Level Size Options
+
+</font><font color="#ffffff">The size of FrogComposband levels varies from dungeon to dungeon, and 
+from depth to depth, but the same basic system applies: the width of a 
+level is always a multiple of 66 grids (no greater than 198), and the 
+height of a level is always a multiple of 22 grids (no greater than 
+66). Some dungeons are flagged </font><font color="#ff0000">big</font><font color="#ffffff">, meaning they normally always 
+generate the largest possible levels (198x66), while Labyrinth, Warrens 
+and Mine are marked </font><font color="#ff0000">smallest</font><font color="#ffffff">, meaning they always generate the smallest 
+possible levels (66x22). Some dungeons (notably the main dungeon, 
+Angband) obey </font><font color="#ff0000">coffee-break </font><font color="#ffffff">level generation, which means the average 
+size of levels increases with depth; small levels are very frequently 
+created, but by the time the player reaches the deep dungeons, these 
+"small" levels start approaching big levels in size and are typically 
+198x44 or 132x66. The remaining dungeons follow </font><font color="#ff0000">standard generation</font><font color="#ffffff">, 
+which means there is a 1 in 5 chance of generating a smallish level 
+(very small levels are excluded) and a 4 in 5 chance of generating a 
+big 198x66 level.
+
+Modifying the </font><font color="#c00000">level size </font><font color="#ffffff">birth option allows you to choose from 10 
+slightly different methods to generate level sizes, in addition to the 
+normal method which follows the outline above. For clarity, this 
+explanation uses </font><font color="#00ff00">1x1 </font><font color="#ffffff">to refer to a 66x22 block; so </font><font color="#00ff00">2x3</font><font color="#ffffff">, for example, 
+means a level 132 squares wide and 66 squares high.  All options treat 
+1x2 and 2x1 (or 2x3 and 3x2, etc.) equivalently, although the levels 
+generated have different actual proportions (66x44/132x22). </font><font color="#ff8000">Apart from 
+the "Huge" option, none of these options have any effect in the three 
+"smallest" dungeons (which will always generate tiny levels) or in the 
+Arena dungeon, which always generates huge levels. </font><font color="#00ffff">These options will 
+have an effect in "big" dungeons other than Arena if and only if the 
+</font><font color="#c00000">no_big_dungeons </font><font color="#00ffff">option is enabled.
+
+</font><font color="#c00000">Huge
+   </font><font color="#ffffff">This setting forces big 3x3 levels in all dungeons, even those that 
+   would normally generate 1x1 levels.
+
+</font><font color="#c00000">Huge (respect tiny)
+   </font><font color="#ffffff">This setting allows dungeons marked </font><font color="#c00000">smallest </font><font color="#ffffff">to generate 1x1 levels 
+   as normally, but forces all other levels to be 3x3.
+
+</font><font color="#c00000">Normal
+   </font><font color="#ffffff">The default setting, detailed above.
+
+</font><font color="#c00000">Coffee-break level generation (allow big)
+   </font><font color="#ffffff">With this setting on, dungeons that would normally follow standard 
+   generation or would always generate big levels will instead follow 
+   the coffee-break algorithm. Big levels will still be sometimes 
+   created, since coffee-break level generation allows occasional big 
+   levels, especially in the deep dungeon.
+
+</font><font color="#c00000">Coffee-break level generation (never big)
+   </font><font color="#ffffff">This setting is the same as above, except that big levels are never 
+   generated.
+
+</font><font color="#c00000">Medium
+   </font><font color="#ffffff">With this setting on, all levels will take sizes between 1x2 and 
+   2x3. A minimum size of 2x2 is applied in "big" dungeons. Depth has 
+   no effect on level size.
+
+</font><font color="#c00000">Instant-coffee level generation (allow big)
+   </font><font color="#ffffff">This setting determines level size based almost solely on depth, 
+   generating tiny 1x1 levels in the early game and big 3x3 levels in 
+   the late game. There is some randomness in level sizes, but less 
+   than with most other settings. Calculation depth is boosted slightly 
+   in big dungeons.
+
+</font><font color="#c00000">Instant-coffee level generation (never big)
+   </font><font color="#ffffff">This setting is similar to above, but level sizes are slightly 
+   smaller and max out at 2x3 instead of 3x3.
+
+</font><font color="#c00000">Small (classic)
+   </font><font color="#ffffff">With this setting on, all levels will take sizes between 1x1 and 
+   2x2/1x3, except in big dungeons where they're 2x2 or 2x3. (With 
+   small levels in big dungeons not enabled, this is the "classic" 
+   small-levels option from old versions of PosChengband.)
+
+</font><font color="#c00000">Small (coffee-style)
+   </font><font color="#ffffff">This setting also generates level sizes between 1x1 and 2x2/1x3, but 
+   instead of being completely random, level sizes are likely to fall 
+   at the smaller end of that range at low depths, and the larger end 
+   at high depths or in big dungeons.
+
+</font><font color="#c00000">Very small
+   </font><font color="#ffffff">This setting mostly generates 1x2 levels, but allows 1x1 (except in 
+   big dungeons) and occasionally allows 2x2/1x3 (especially in big 
+   dungeons).
+
+</font><font color="#c00000">Extremely small
+   </font><font color="#ffffff">This setting generates 1x2 levels in big dungeons, and either 1x2 or 
+   1x1 in all other dungeons.
+
+</font><font color="#c00000">Tiny
+   </font><font color="#ffffff">So you really like tiny levels! With this setting on, every level, 
+   even in "big" dungeons, is guaranteed to be 1x1.
+
+
+</font><font color="#404040">Updated    : FrogComposband 7.1.chocolate
+
+
+</font></pre></body></html>

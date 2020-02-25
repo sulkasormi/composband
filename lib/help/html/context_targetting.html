@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html>
+<body text="#ffffff" bgcolor="#000000"><pre>
+<font color="#00ffff">Targetting
+
+</font><font color="#ffffff">The targetting prompt offers many options, and two different modes: 
+</font><font color="#ff0000">monster-targetting mode </font><font color="#ffffff">and </font><font color="#ff0000">free-targetting mode</font><font color="#ffffff">. If there are hostile 
+monsters in line of sight, targetting begins in monster-targetting 
+mode; the first target offered will be the nearest such monster, with 
+other hostile monsters in line of sight as alternative targets. Use 
+direction keys to cycle between monsters; </font><font color="#ff8000">+ </font><font color="#ffffff">and </font><font color="#ff8000">- </font><font color="#ffffff">also work, but are 
+less intuitive. Turn on the </font><font color="#ff0000">target_pet </font><font color="#ffffff">option (<a href="option.html#target_pet"></font><font color="#00ff00">[a]</a></font><font color="#ffffff">) if you want this 
+mode to allow non-hostile monsters as targets.
+
+If you wish to target (or inspect) a square with no monster on it, 
+press </font><font color="#ff8000">p </font><font color="#ffffff">or </font><font color="#ff8000">o</font><font color="#ffffff">, switching to free-targetting mode where direction keys 
+simply move the cursor. (This mode is automatically entered if no 
+hostile monsters are in line of sight.) </font><font color="#ff8000">o </font><font color="#ffffff">and </font><font color="#ff8000">p </font><font color="#ffffff">are identical except in 
+one respect: pressing </font><font color="#ff8000">p </font><font color="#ffffff">(which stands for </font><font color="#ff0000">player</font><font color="#ffffff">) moves the cursor to 
+your own location, while pressing </font><font color="#ff8000">o </font><font color="#ffffff">(which stands for </font><font color="#ff0000">offset</font><font color="#ffffff">) does not. 
+
+At any time, press </font><font color="#ff8000">5</font><font color="#ffffff">, </font><font color="#ff8000">t </font><font color="#ffffff">or </font><font color="#ff8000">. </font><font color="#ffffff">to accept the current target (and exit 
+targetting mode), </font><font color="#ff8000">q </font><font color="#ffffff">or </font><font color="#ff8000">ESC </font><font color="#ffffff">to exit targetting mode without selecting a 
+target, </font><font color="#ff8000">r </font><font color="#ffffff">to recall lore about a monster on the target square, </font><font color="#ff8000">x </font><font color="#ffffff">to see 
+all items on the target square (including stolen or picked-up items 
+carried by monsters, but excluding normal monster item drops), and </font><font color="#ff8000">( </font><font color="#ffffff">to 
+select a square as a travel target. In the original keyset, </font><font color="#ff8000">J </font><font color="#ffffff">and </font><font color="#ff8000">j 
+</font><font color="#ffffff">also work as travel keys and are equivalent with </font><font color="#ff8000">(</font><font color="#ffffff">.
+
+Users of the roguelike keyset have a bonus option in free-targetting 
+mode: they can press </font><font color="#ff8000">Shift+DIR </font><font color="#ffffff">to move the cursor many squares at a 
+time.
+
+<a name="Precision"></a></font><font color="#c00000">Precision Targetting
+
+</font><font color="#ffffff">When you cast a spell or fire a missile at a target location, the path 
+chosen is the </font><font color="#ff0000">direct </font><font color="#ffffff">path towards that location, which may or may not 
+be the path you want. Sometimes, by clever choice of a side location as 
+your target, you may be able to aim at squares not directly in line of 
+sight:
+  
+  Position: an unknown grid [q,t,p,m,x,j,+,-,?,&lt;dir&gt;]                           
+        ##........#.... #%%####
+        #........</font><font color="#c08040">\</font><font color="#ffffff">......      #
+        %.......</font><font color="#c08040">}</font><font color="#ffffff">{</font><font color="#804000">\</font><font color="#ffffff">@....      #
+      %#%..........</font><font color="#808080">*</font><font color="#ffffff">....      #
+     ##    ........</font><font color="#808080">*</font><font color="#ffffff">...   ... #
+     #       ......</font><font color="#808080">*</font><font color="#ffffff">...   .</font><font color="#00ff00">d</font><font color="#ffffff">. #
+     #        ..</font><font color="#c0c0c0">(</font><font color="#ffffff">.#</font><font color="#808080">*</font><font color="#ffffff">.     .#####
+     #          .##</font><font color="#808080">*       </font><font color="#ffff00">T   </font><font color="#ffffff">#
+     #    </font><font color="#008040">^   </font><font color="#ffffff">#####</font><font color="#808080">*           </font><font color="#ffffff">##########                                       
+     ##       #   #</font><font color="#808080">*           </font><font color="#c08040">'
+     </font><font color="#ffffff">#        #  ##</font><font color="#808080">*         </font><font color="#ffffff">############                                       
+     #        #  #</font><font color="#ff0000">*        </font><font color="#ffffff">###
+     #        # ##</font><font color="#808080">*       </font><font color="#ffffff">##                                                    
+     ##       # # </font><font color="#808080">*        </font><font color="#ffffff">#                                                    
+      #       # ##</font><font color="#808080">*        </font><font color="#ffffff">#                                                    
+      #########  #</font><font color="#808080">*</font><font color="#ffffff">#########
+  
+Notice that bright-red </font><font color="#ff0000">*</font><font color="#ffffff">? There's a dragon on that square I cannot 
+target directly; but I managed to include that square in my spell's 
+path by using </font><font color="#ff8000">p </font><font color="#ffffff">to target a location on the southern edge of the map.
+
+Note that bolt spells always stop at the first monster in the spell's 
+path, but beam and breath spells affect all squares in their paths, and 
+ball spells can reach the target square by flying over monsters' heads 
+if necessary.
+
+<a name="TargetTypes"></a></font><font color="#c00000">Location Targets vs Monster Targets
+
+</font><font color="#ffffff">When selecting a target, you may target either a </font><font color="#ff0000">monster </font><font color="#ffffff">or a </font><font color="#ff0000">location</font><font color="#ffffff">. 
+This is an important difference: if you target a monster, the target 
+will move when the monster moves; but if you target a location, the 
+target remains stationary, even if the location had a monster in it. 
+
+If you bypass targetting mode you can also target a </font><font color="#ff0000">compass direction</font><font color="#ffffff">, 
+which for this purpose is always equivalent to targetting a </font><font color="#ff0000">location</font><font color="#ffffff">, 
+even if there was an obvious monster in the direction indicated. So 
+watch out if there's a monster due west of you, you fire west and then 
+spam </font><font color="#ff8000">n </font><font color="#ffffff">(or </font><font color="#ff8000">X </font><font color="#ffffff">in the roguelike keyset) to repeat: this will work 
+beautifully as long as the monster remains due west, but as soon as it 
+moves north or south you will need to retarget, something you would not 
+have needed to do had you selected the monster as your target.
+
+<a name="Summary"></a></font><font color="#c00000">Quick Summary
+
+  </font><font color="#ff8000">5 t .        </font><font color="#ffffff">Select new target and exit targetting mode
+  </font><font color="#ff8000">ESC q        </font><font color="#ffffff">Exit targetting mode with no target selected    
+  </font><font color="#ff8000">DIR          </font><font color="#ffffff">Move to square or monster in direction indicated
+  </font><font color="#ff8000">+            </font><font color="#ffffff">Move to more distant monster
+  </font><font color="#ff8000">-            </font><font color="#ffffff">Move to less distant monster
+  </font><font color="#ff8000">( j J        </font><font color="#ffffff">Select travel target (exit and travel if not aiming)
+
+  </font><font color="#ff8000">m            </font><font color="#ffffff">Enter monster-targetting mode
+  </font><font color="#ff8000">p            </font><font color="#ffffff">Enter free-targetting mode (move cursor to player)
+  </font><font color="#ff8000">o            </font><font color="#ffffff">Enter free-targetting mode (keep cursor location)
+
+  </font><font color="#ff8000">r            </font><font color="#ffffff">Recall monster lore     
+  </font><font color="#ff8000">x            </font><font color="#ffffff">Cycle between items on target square
+
+  </font><font color="#ff8000">?            </font><font color="#ffffff">Display this help topic
+
+</font></pre></body></html>

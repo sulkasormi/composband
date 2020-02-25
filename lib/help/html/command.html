@@ -6,284 +6,301 @@
 </font><font color="#ffffff">Commands are entered using the keyboard by pressing a single key that 
 is mapped to an underlying command interpreted by the game. This 
 mapping of keystrokes to game commands proceeds by using one of two 
-standard keysets: the Original Keyset and the Roguelike Keyset. If you 
-are playing for the first time, I recommend using the Original Keyset 
-since it is the default and is also the most intuitive (for example, 
-you move with the arrow keys). But there are also some crazy folks that 
-prefer a different approach ... Just kidding. The Roguelike keyset 
-might be more ergonomic since movement is controlled with normal 
-alphabetic keys, but, personally, I could never train myself to switch.
+standard keysets: the </font><font color="#ff0000">Original Keyset </font><font color="#ffffff">and the </font><font color="#ff0000">Roguelike Keyset</font><font color="#ffffff">. The 
+Original Keyset, which is the default, is generally recommended to new 
+players since it is more intuitive (for example, you move with the 
+numpad keys). However, many strong players use the Roguelike keyset, 
+and it is likely your best option if you lack a numpad on your keyboard 
+(trying to just substitute the arrow keys for the numpad stops being a 
+great idea when you have to move diagonally). You can toggle the 
+keysets through the </font><font color="#ff8000">= </font><font color="#ffffff">options menu.
 
-Once you've chosen a game command, you may be prompted for arguments or 
-additional information. For example, if you get hungry and decide to 
-eat some food ('E' in the Original Keyset), the game will give you a 
-list of choices (which might include rations of food, or various 
-mushrooms ... whatever relevant objects you have in your pack). You can 
-cancel the command with the ESC key.
-
-This file contains the command mappings for the two keysets listed 
-above. For an overview of the various commands, see <a href="commdesc.html"></font><font color="#00ff00">[a]</a></font><font color="#ffffff">. Also, for 
-beginners, there is a unified command menu that is very easy to use, 
-and you can navigate the various commands with the cursor keys, ENTER 
-and ESC. Each command lists the keystroke for the command, so you can 
-explore and learn as you go. Simply press ENTER to get started (You may 
-enable/disable this feature with the 'command_menu' option. For more on 
-setting options, see <a href="option.html"></font><font color="#00ff00">[b]</a></font><font color="#ffffff">).
+This file contains the command mappings for the two keysets mentioned 
+above. For a detailed overview of the various commands, see <a href="commdesc.html"></font><font color="#00ff00">[a]</a></font><font color="#ffffff">. Also, 
+for beginners, pressing </font><font color="#ff8000">ENTER </font><font color="#ffffff">opens a unified command menu that lists 
+all commands and the corresponding keystrokes; this menu is intended 
+for learning the commands on the go, and is much clumsier than just 
+remembering the right key, so you want to grow out of it as soon as 
+possible. (You may enable/disable the menu with the 'command_menu' 
+input option; see <a href="option.html"></font><font color="#00ff00">[b]</a> </font><font color="#ffffff">for more on setting options.)
 
 Don't be overwhelmed by the sheer number of commands. Many are not 
-often used or required, and I've tried to highlight the most common 
-commands below. You should try to memorize those, but this is easy as 
-most commands use a mnemonic just like the Eat command discussed above. 
-By the way, the caret (^) character in the tables below indicates 
-pressing the CTRL key.
+often used or required, and I have tried to highlight the most common 
+commands below in </font><font color="#ffff00">yellow</font><font color="#ffffff">. You should try to memorize those; note that 
+many commands use a mnemonic just like the </font><font color="#ff8000">E</font><font color="#ffffff">at command discussed above. 
+The caret (^) in the tables below indicates pressing the </font><font color="#ff8000">CTRL </font><font color="#ffffff">key (so 
+</font><font color="#ff8000">^S </font><font color="#ffffff">means </font><font color="#ff8000">Ctrl-S</font><font color="#ffffff">), though it is also possible to treat these commands as 
+literal two-key sequences beginning with the ^ key.
+
+Once you have chosen a game command, you may be prompted for additional 
+input; for example, if you get hungry and decide to eat some food 
+(eating is </font><font color="#ff8000">E </font><font color="#ffffff">in both keysets), the game will give you a list of choices 
+(which might include rations of food, various mushrooms, and whatever 
+other edibles you happen to have in your pack). You can cancel the 
+command with the ESC key at this point.
+
+Note in particular the multi-purpose </font><font color="#ff8000">+ </font><font color="#ffffff">command; often, if you forget 
+what the regular command for interacting with something in an adjacent 
+square is, you can just substitute </font><font color="#ff8000">+ </font><font color="#ffffff">instead. You can tunnel with </font><font color="#ff8000">+</font><font color="#ffffff">, 
+open doors with </font><font color="#ff8000">+</font><font color="#ffffff">, disarm traps with </font><font color="#ff8000">+</font><font color="#ffffff">, even fight a monster with </font><font color="#ff8000">+</font><font color="#ffffff">... 
+and the list continues.
+
+Press </font><font color="#ff8000">? </font><font color="#ffffff">for commands to use in the help interface itself.
 
 <a name="OriginalKeyset"></a></font><font color="#c00000">Original Keyset
 
        </font><font color="#ffffff">Movement
        </font><font color="#ffff00">7  8  9
-       4     6
+       4  5  6
        1  2  3
 
-   a  </font><font color="#ffffff">Aim a wand                           A  Activate an equipment
+   a  Aim a wand                           </font><font color="#ffffff">A  Activate equipment
    b  Browse magic list                    B  Bash a door
-   </font><font color="#ffff00">c  </font><font color="#ffffff">Close a door                         </font><font color="#ffff00">C  </font><font color="#ffffff">Character description
-   d  Drop an item                         </font><font color="#ffff00">D  </font><font color="#ffffff">Disarm a trap
-   </font><font color="#ffff00">e  </font><font color="#ffffff">Equipment list                       </font><font color="#ffff00">E  </font><font color="#ffffff">Eat some food
-   </font><font color="#ffff00">f  </font><font color="#ffffff">Fire an arrow etc.                   </font><font color="#ffff00">F  </font><font color="#ffffff">Fuel your lantern/torch
-   g  Get Objects                          </font><font color="#ffff00">G  </font><font color="#ffffff">Gain new spells/prayers
-   </font><font color="#707070">h  (unused)                             H  (unused)
-   </font><font color="#ffff00">i  </font><font color="#ffffff">Inventory list                       I  Inspect an item
-   j  Jam a door                           J  Resume travelling
-   k  Destroy an item                      </font><font color="#707070">K  (unused)
-   </font><font color="#ffff00">l  </font><font color="#ffffff">Look around                          L  Locate player on map
-   </font><font color="#ffff00">m  </font><font color="#ffffff">Cast a spell / use mental power      </font><font color="#ffff00">M  </font><font color="#ffffff">Full dungeon map
-   n  Repeat last command                  </font><font color="#707070">N  (unused)
-   </font><font color="#ffff00">o  </font><font color="#ffffff">Open a door or chest                 O  Display object list
-   p  Command your pets                    </font><font color="#707070">P  (unused)
-   </font><font color="#ffff00">q  </font><font color="#ffffff">Quaff a potion                       Q  Quit (commit suicide)
-   </font><font color="#ffff00">r  </font><font color="#ffffff">Read a scroll                        </font><font color="#ffff00">R  </font><font color="#ffffff">Rest for a period
-   </font><font color="#ffff00">s  </font><font color="#ffffff">Search for traps/doors               S  Toggle search mode
-   </font><font color="#ffff00">t  </font><font color="#ffffff">Take off equipment                   T  Dig a tunnel
-   </font><font color="#ffff00">u  </font><font color="#ffffff">Use a staff                          U  Use Racial Power
-   v  Throw an item                        V  Version info
-   </font><font color="#ffff00">w  </font><font color="#ffffff">Wear/wield equipment                 </font><font color="#707070">W  (unused)
-   x  (unused)                             X  (unused)
-   y  (unused)                             </font><font color="#ffffff">Y  Display monster list
-   </font><font color="#ffff00">z  </font><font color="#ffffff">Zap a rod                            Z  Inscribe an object
+   c  Close a door                         </font><font color="#ffff00">C  Character description
+   </font><font color="#ffffff">d  Drop an item                         </font><font color="#ffff00">D  Disarm a trap
+   e  Equipment list                       E  Eat some food
+   f  Fire an arrow etc.                   F  Fuel your lantern/torch
+   g  Pick up objects (Get)                G  Gain new spells/prayers
+   </font><font color="#404040">h  (unused)                             </font><font color="#ffffff">H  Travel to interesting item
+   </font><font color="#ffff00">i  Inventory list                       I  Inspect an item
+   </font><font color="#ffffff">j  Jam a door                           J  Resume travelling
+   k  Destroy an item                      </font><font color="#404040">K  (unused)
+   </font><font color="#ffff00">l  Look around                          </font><font color="#ffffff">L  Locate player on map
+   </font><font color="#ffff00">m  Cast a spell / use mental power      </font><font color="#ffffff">M  Full dungeon map
+   </font><font color="#ffff00">n  Repeat last command                  </font><font color="#404040">N  (unused)
+   </font><font color="#ffff00">o  Open a door or chest                 O  Display object list
+   </font><font color="#ffffff">p  Command your pets                    </font><font color="#404040">P  (unused)
+   </font><font color="#ffff00">q  Quaff a potion                       </font><font color="#ffffff">Q  Quit (commit suicide)
+   </font><font color="#ffff00">r  Read a scroll                        R  Rest for a period
+   s  Search for traps/doors               </font><font color="#ffffff">S  Toggle search mode
+   t  Take off equipment                   T  Dig a tunnel
+   </font><font color="#ffff00">u  Use a staff                          U  Use racial/bonus power
+   </font><font color="#ffffff">v  Throw an item                        V  Version info
+   </font><font color="#ffff00">w  Wear/wield equipment                 </font><font color="#ffffff">W  Switch ring fingers
+   </font><font color="#404040">x  (unused)                             X  (unused)
+   y  (unused)                             </font><font color="#ffff00">Y  Display monster list
+   z  Zap a rod                            </font><font color="#ffffff">Z  Inscribe an object
    !  Enter a user pref command           ^A  (special - wizard command)
-   @  Interact with macros                </font><font color="#707070">^B  (unused)
+   @  Interact with macros                </font><font color="#404040">^B  (unused)
    #  (unused)                            </font><font color="#ffffff">^C  (special - break)
-   $  Reload Auto-picker pref             </font><font color="#707070">^D  (unused)
+   $  Reload Mogaminator prefs            </font><font color="#404040">^D  (unused)
    </font><font color="#ffffff">%  Interact with visuals               ^E  Interact with macros
    ^  (special - control key)             ^F  Repeat level feeling
    &amp;  Interact with colors                ^G  Auto-Get nearby objects
-   </font><font color="#ffff00">*  </font><font color="#ffffff">Target monster or location          </font><font color="#707070">^H  (unused)
-   (  (unused)                            </font><font color="#ffffff">^I  Toggle Choice Window
+   </font><font color="#ffff00">*  Target monster or location          </font><font color="#404040">^H  (unused)
+   (  (unused)                            </font><font color="#ffffff">^I  Toggle choice window
    )  Create screen dump                  ^J  (special - linefeed)
-   {  Inscribe an object                  </font><font color="#707070">^K  (unused)
-   </font><font color="#ffffff">}  Uninscribe an object                </font><font color="#707070">^L  (unused)
+   {  Inscribe an object                  </font><font color="#404040">^K  (unused)
+   </font><font color="#ffffff">}  Uninscribe an object                </font><font color="#404040">^L  (unused)
    </font><font color="#ffffff">[  Display monster list                ^M  (special - return)
-   ]  Display object list                 </font><font color="#707070">^N  (unused)
+   ]  Display object list                 </font><font color="#404040">^N  (unused)
    </font><font color="#ffffff">-  Walk (flip pickup)                  ^O  Display object list
-   _  Edit auto-picker/destroyer pref     ^P  Show previous messages
-   +  Alter grid                          ^Q  Display quest info
-   =  Set options                         ^R  Redraw the screen
-   ;  Walk (with pickup)                  ^S  Save and don't quit
+   _  Edit/activate Mogaminator prefs     ^P  Show previous messages
+   </font><font color="#ffff00">+  Alter adjacent grid                 ^Q  Display quest info
+   </font><font color="#ffffff">=  Set options                         ^R  Redraw the screen
+   ;  Walk                                ^S  Save and don't quit
    :  Take notes                          ^T  Display game time
-   '  Playback Recorded Command           </font><font color="#707070">^U  (unused)
-   </font><font color="#ffffff">"  Record Command                      ^V  Recenter Viewport
-   ,  Stay still (with pickup)            ^W  (special - wizard mode)
-   </font><font color="#ffff00">&lt;  </font><font color="#ffffff">Go up staircase (Enter global map)  </font><font color="#ffff00">^X  </font><font color="#ffffff">Save and quit
-   .  Run                                 ^Y  (special - wizard mode)
-   </font><font color="#ffff00">&gt;  </font><font color="#ffffff">Go down staircase(Enter normal map) ^Z  (special - borg command)
-   \  (special - bypass keymap)            </font><font color="#707070">|  (unused)
-   </font><font color="#ffffff">`  Travel to Location (Beta)            ~  Knowledge Menu
-   /  Identify symbol                      </font><font color="#ffff00">?  </font><font color="#ffffff">Help
+   '  Playback recorded command           </font><font color="#404040">^U  (unused)
+   </font><font color="#ffffff">"  Record command                      ^V  Recenter Viewport
+   ,  Stay still                          ^W  (special - wizard mode)
+   </font><font color="#ffff00">&lt;  Go up staircase/Toggle global map   ^X  Save and quit
+   .  Run                                 </font><font color="#ffffff">^Y  (special - wizard mode)
+   </font><font color="#ffff00">&gt;  Go down staircase/Enter normal map  </font><font color="#ffffff">^Z  (special - borg command)
+   \  (special - bypass keymap)            </font><font color="#404040">|  (unused)
+   </font><font color="#ffffff">`  Travel to location                   ~  Knowledge menu
+   /  Identify symbol                      </font><font color="#ffff00">?  Help
 
 
 <a name="RogueKeyset"></a></font><font color="#c00000">Roguelike Keyset
 
        </font><font color="#ffffff">Movement
        </font><font color="#ffff00">y  k  u
-       h     l
+       h  .  l
        b  j  n
 
-   a  </font><font color="#ffffff">Zap a rod (Activate)                 A  Activate an artifact
+   a  Zap a rod (Activate)                 </font><font color="#ffffff">A  Activate equipment
    b  (walk - south west)                  B  (run - south west)
-   </font><font color="#ffff00">c  </font><font color="#ffffff">Close a door                         </font><font color="#ffff00">C  </font><font color="#ffffff">Character description
-   d  Drop an item                         </font><font color="#ffff00">D  </font><font color="#ffffff">Disarm a trap or chest
-   </font><font color="#ffff00">e  </font><font color="#ffffff">Equipment list                       </font><font color="#ffff00">E  </font><font color="#ffffff">Eat some food
-   f  Bash a door (force)                  </font><font color="#ffff00">F  </font><font color="#ffffff">Fuel your lantern/torch
-   g  Get Objects                          </font><font color="#ffff00">G  </font><font color="#ffffff">Gain new spells/prayers
-   h  (walk - west)                        H  (run - west)
-   </font><font color="#ffff00">i  </font><font color="#ffffff">Inventory list                       I  Inspect an item
-   j  (walk - south)                       J  (run - south)
+   c  Close a door                         </font><font color="#ffff00">C  Character description
+   </font><font color="#ffffff">d  Drop an item                         </font><font color="#ffff00">D  Disarm a trap or chest
+   e  Equipment list                       E  Eat some food
+   </font><font color="#ffffff">f  Bash a door (Force)                  </font><font color="#ffff00">F  Fuel your lantern/torch
+   g  Pick up objects (Get)                G  Gain new spells/prayers
+   </font><font color="#ffffff">h  (walk - west)                        H  (run - west)
+   </font><font color="#ffff00">i  Inventory list                       I  Inspect an item
+   </font><font color="#ffffff">j  (walk - south)                       J  (run - south)
    k  (walk - north)                       K  (run - north)
    l  (walk - east)                        L  (run - east)
-   m  Spell casting / mental power         </font><font color="#ffff00">M  </font><font color="#ffffff">Full dungeon map
+   </font><font color="#ffff00">m  Cast a spell / use mental power      </font><font color="#ffffff">M  Full dungeon map
    n  (walk - south east)                  N  (run - south east)
-   o  Open a door or chest                 </font><font color="#ffff00">O  </font><font color="#ffffff">Use Racial Power
-   p  Command your pets                    P  Browse magic list
-   </font><font color="#ffff00">q  </font><font color="#ffffff">Quaff a potion                       Q  Quit (commit suicide)
-   </font><font color="#ffff00">r  </font><font color="#ffffff">Read a scroll                        </font><font color="#ffff00">R  </font><font color="#ffffff">Rest for a period
-   s  Search for traps/doors               S  Jam a door (Spike)
-   </font><font color="#ffff00">t  </font><font color="#ffffff">Fire an arrow, etc                   T  Take off equipment
+   </font><font color="#ffff00">o  Open a door or chest                 O  Use racial/bonus power
+   </font><font color="#ffffff">p  Command your pets                    P  Browse magic list (Peruse)
+   </font><font color="#ffff00">q  Quaff a potion                       </font><font color="#ffffff">Q  Quit (commit suicide)
+   </font><font color="#ffff00">r  Read a scroll                        R  Rest for a period
+   </font><font color="#ffffff">s  Search for traps/doors               S  Jam a door (Spike)
+   </font><font color="#ffff00">t  Fire an arrow etc.                   </font><font color="#ffffff">T  Take off equipment
    u  (walk - north east)                  U  (run - north east)
    v  Throw an item                        V  Version info
-   </font><font color="#ffff00">w  </font><font color="#ffffff">Wear/wield equipment                 W  Locate player on map
-   </font><font color="#ffff00">x  </font><font color="#ffffff">Look around                          X  Repeat Last Command
-   y  (walk - north west)                  Y  (run - north west)
-   </font><font color="#ffff00">z  </font><font color="#ffffff">Aim a wand (Zap)                     Z  Use a staff (Zap)
-   !  Enter a user pref command           ^A  (special - wizard command)
+   </font><font color="#ffff00">w  Wear/wield equipment                 </font><font color="#ffffff">W  Locate player on map
+   </font><font color="#ffff00">x  Look around                          X  Repeat last command
+   </font><font color="#ffffff">y  (walk - north west)                  Y  (run - north west)
+   </font><font color="#ffff00">z  Aim a wand (Zap)                     Z  Use a staff (Zap)
+   </font><font color="#ffffff">!  Enter a user pref command           ^A  (special - wizard command)
    @  Interact with macros                ^B  (tunnel - south west)
    #  Toggle search mode                  ^C  (special - break)
-   $  Reload Auto-picker pref             ^D  Destroy item
-   %  Interact with visuals               </font><font color="#707070">^E  (unused)
-   </font><font color="#ffffff">^  (special - control key)             ^F  Repeat level feeling
+   $  Reload Mogaminator prefs            ^D  Destroy item
+   %  Interact with visuals               ^E  Travel to interesting item
+   ^  (special - control key)             ^F  Repeat level feeling
    &amp;  Interact with colors                ^G  Auto-Get nearby objects
-   </font><font color="#ffff00">*  </font><font color="#ffffff">Target monster or location          ^H  (tunnel - west)
-   (  Resume travelling                   ^I  Toggle Choice Window
+   </font><font color="#ffff00">*  Target monster or location          </font><font color="#ffffff">^H  (tunnel - west)
+   (  Resume travelling                   ^I  Toggle choice window
    )  Create screen dump                  ^J  (tunnel - south)
    {  Inscribe an object                  ^K  (tunnel - north)
    }  Uninscribe an object                ^L  (tunnel - east)
-   [  Display monster list                ^M  (tunnel - south)
-   ]  Display object list                 ^N  (tunnel - south east)
-   -  Walk (flip pickup)                  </font><font color="#707070">^O  (unused)
-   </font><font color="#ffffff">_  Edit auto-picker/destroyer pref     ^P  Show previous messages
-   +  Alter grid                          ^Q  Display quest info
-   =  Set options                         ^R  Redraw the screen
-   ;  Walk (with pickup)                  ^S  Save and don't quit
+   </font><font color="#ffff00">[  Display monster list                </font><font color="#ffffff">^M  (tunnel - south)
+   </font><font color="#ffff00">]  Display object list                 </font><font color="#ffffff">^N  (tunnel - south east)
+   -  Walk (flip pickup)                  </font><font color="#404040">^O  (unused)
+   </font><font color="#ffffff">_  Edit/activate Mogaminator prefs     ^P  Show previous messages
+   </font><font color="#ffff00">+  Alter adjacent grid                 ^Q  Display quest info
+   </font><font color="#ffffff">=  Set options                         ^R  Redraw the screen
+   ;  Walk                                ^S  Save and don't quit
    :  Take notes                          ^T  Dig a Tunnel
-   '  Playback Recorded Command           ^U  (tunnel - north east)
-   "  Record Command                      ^V  Recenter Viewport
+   '  Playback recorded command           ^U  (tunnel - north east)
+   "  Record command                      ^V  Recenter Viewport
    ,  Run                                 ^W  (special - wizard mode)
-   </font><font color="#ffff00">&lt;  </font><font color="#ffffff">Go up staircase (Enter global map)  </font><font color="#ffff00">^X  </font><font color="#ffffff">Save and quit
-   .  Stay still (with pickup)            ^Y  (tunnel - north west)
-   </font><font color="#ffff00">&gt;  </font><font color="#ffffff">Go down staircase(Enter normal map) </font><font color="#707070">^Z  (unused)
-   </font><font color="#ffffff">\  (special - bypass keymap)            </font><font color="#707070">|  (unused)
-   </font><font color="#ffffff">`  Travel to Location (Beta)            ~  Knowledge Menu
-   /  Identify symbol                      </font><font color="#ffff00">?  </font><font color="#ffffff">Help
+   </font><font color="#ffff00">&lt;  Go up staircase/Toggle global map   ^X  Save and quit
+   </font><font color="#ffffff">.  Stay still                          ^Y  (tunnel - north west)
+   </font><font color="#ffff00">&gt;  Go down staircase/Enter normal map  </font><font color="#404040">^Z  (unused)
+   </font><font color="#ffffff">\  (special - bypass keymap)            </font><font color="#404040">|  (unused)
+   </font><font color="#ffffff">`  Travel to location                   ~  Knowledge menu
+   /  Identify symbol                      </font><font color="#ffff00">?  Help
 
 
 <a name="CommandCounts"></a></font><font color="#c00000">Command Counts
 
 </font><font color="#ffffff">Some commands can be executed a fixed number of times by preceding them 
-with a count. Counted commands will execute until the count expires, 
-until you type any character, or until something significant happens, 
-such as being attacked. Thus, a counted command doesn't work to attack 
-another creature. While the command is being repeated, the number of 
-times left to be repeated will flash by on the line at the left of the 
-screen. </font><font color="#ffff00">To give a count to a command, type 0, the repeat count, and 
+with a count. Counted commands will repeat until the count expires or 
+until the repetition is disturbed. A successful use of the command 
+(e.g. successful tunnelling) disturbs the repetition, as does any 
+attack from a monster, or any new command from the player.
+
+The </font><font color="#ff0000">always_repeat </font><font color="#ffffff">option, which is on by default, automatically gives 
+commonly repeated commands (open, disarm, tunnel, bash, etc.) a repeat 
+count of 99. This means you usually don't need to specify repeat counts 
+manually; but you can do so by typing </font><font color="#ff8000">0</font><font color="#ffffff">, then the repeat count, and 
 then the command.
-
-</font><font color="#ffffff">Counted commands are very useful for searching or tunneling, as they 
-automatically terminate on success, or if you are attacked. You may 
-also terminate any counted command (or resting or running), by typing 
-any character. This character is ignored, but it is safest to use a 
-SPACE or ESCAPE which are always ignored as commands in case you type 
-the command just after the count expires.
-
-You can tell the game to automatically use a repeat count of 99 with 
-commands you normally want to repeat (open, disarm, tunnel, bash, 
-alter, etc) by setting the "always_repeat" option. For more information 
-on setting options, see <a href="option.html"></font><font color="#00ff00">[c]</a></font><font color="#ffffff">.
 
 <a name="CommandArguments"></a></font><font color="#c00000">Command Arguments
 
-</font><font color="#ffffff">Some commands will prompt for extra information, such as a direction, 
-an inventory or equipment item, a spell, a textual inscription, the 
-symbol of a monster race, a sub-command, a verification, an amount of 
-time, a quantity, a file name, or various other things. Normally you 
-can hit return to choose the "default" response, or escape to cancel 
-the command entirely.
+</font><font color="#ffffff">As already seen in the </font><font color="#ff8000">E</font><font color="#ffffff">at example, some commands will prompt for extra 
+information; depending on the command, this could be a direction, an 
+inventory or equipment item, a spell, the symbol of a monster race, a 
+sub-command, a verification, a count, a quantity, text, or various 
+other things. Often, you can hit </font><font color="#ff8000">ENTER </font><font color="#ffffff">to choose the "default" response 
+and </font><font color="#ff8000">ESC </font><font color="#ffffff">to cancel the command entirely.
 
-Some commands will prompt for a direction. You may enter a "compass" 
-direction using any of the "direction keys" shown above. Sometimes, you 
-may specify that you wish to use the current "target", by pressing "t" 
-or "5", or that you wish to select a new target, by pressing "*".
+Commands which prompt for a direction always accept </font><font color="#ff0000">compass directions</font><font color="#ffffff">, 
+which you can enter using the direction keys shown above. Commands with 
+the potential to affect distant squares or monsters usually also accept 
+</font><font color="#ff0000">targets</font><font color="#ffffff">, which you can set (either beforehand or when prompted) with 
+the </font><font color="#ff8000">* </font><font color="#ffffff">key. If you had previously specified a target, pressing </font><font color="#ff8000">5 </font><font color="#ffffff">repeats 
+the old target; or if you turned on the </font><font color="#ff0000">use_old_target </font><font color="#ffffff">option, the old 
+target is repeated automatically. Some players really like 
+</font><font color="#ff0000">use_old_target</font><font color="#ffffff">, others dislike it equally much; see <a href="commdesc.html#Targetting"></font><font color="#00ff00">[c]</a> </font><font color="#ffffff">for more 
+details on selecting a target.
 
-<a name="SelectingObjects"></a></font><font color="#c00000">Selecting and Inscribing Objects
+<a name="SelectingObjects"></a></font><font color="#c00000">Item Labels
 
-</font><font color="#ffffff">The user interface for selecting objects has been changed (for version 
-6.0.0). Please see <a href="context_obj_prompt.html"></font><font color="#00ff00">[d]</a> </font><font color="#ffffff">for a basic introduction. This section will 
-describe using custom inscriptions to override the default object 
-labels when prompted for an object. As such, it is a rather advanced 
-topic.
+</font><font color="#ffffff">Many commands prompt for an item. These commands always display a list 
+of all applicable items, where each item has a distinct single-key 
+</font><font color="#ff0000">label</font><font color="#ffffff">; you then select the right item by pressing the label key.
 
-By default, the list of object choices are labelled with letters. For 
-equipment choices, the letters correspond to the slots of your current 
-body type (e.g. </font><font color="#ff8000">a </font><font color="#ffffff">for your right hand, etc.). These choices, since they 
-are bound to slots rather than objects, never change. Though if you 
-switch body types (Possessor) or play in monster mode (e.g. Dragon) 
-then the available slots will be different, so the label corresponding 
-to a slot will change. By contrast, inventory choices (pack and quiver) 
-are not bound to slots. Rather, the labelling will begin at 'a' every 
-time. Since the object list is filtered for relevant objects, this 
-means that your choices will always begin with 'a'. This is a good 
-thing since it makes the labels more stable in response to pack 
-reordering. For example, to eat food, you probably just need to </font><font color="#ff8000">Ea</font><font color="#ffffff">. In 
-the old days, it might have been </font><font color="#ff8000">Ee </font><font color="#ffffff">if you were a spellcaster ... until 
-you picked up a new spellbook and the food label switched to </font><font color="#ff8000">f</font><font color="#ffffff">. (Of 
-course, if you pick up a new food type that sorts before rations of 
-food (e.g., a Mushroom of Disease), then the label for food will shift 
-from </font><font color="#ff8000">a </font><font color="#ffffff">to </font><font color="#ff8000">b</font><font color="#ffffff">, but this change is easily detected since the object list 
-now contains two choices.)
+Item labels usually run from 'a' for the first applicable item to 'z' 
+for the 26th item, and are not necessarily the same in every menu. In 
+the example below, the </font><font color="#ff8000">d</font><font color="#ffffff">rop command simply offers every item in the 
+inventory as a possibility, so Scrolls of Genocide are labeled '</font><font color="#ff8000">l</font><font color="#ffffff">':
 
-You may override the default labelling using custom inscriptions. 
-First, you can inscribe </font><font color="#ff8000">@1 </font><font color="#ffffff">on an object and it will always be labelled 
-with </font><font color="#ff8000">1 </font><font color="#ffffff">no matter which command you are currently using. Of course, you 
-can change 1 to any other number and it will work. But this form of 
-inscription requires you to use a number for the label override rather 
-than a letter. Second, you can inscribe </font><font color="#ff8000">@Ea </font><font color="#ffffff">on your food to always have 
-it labelled with </font><font color="#ff8000">a </font><font color="#ffffff">when using the Eat command (</font><font color="#ff8000">E</font><font color="#ffffff">). The format for this 
-type of inscription override is @</font><font color="#00ff00">CommandLetter</font><font color="#ff0000">Label </font><font color="#ffffff">where the 
-CommandLetter is the built-in letter for the command (see <a href="commdesc.html"></font><font color="#00ff00">[e]</a></font><font color="#ffffff">). Label 
-can be any letter or number.
-
-Note that any object containing "!x" in its inscription, where "x" is 
-the current "game command" will induce a verification prompt whenever 
-that object is selected. Thus, inscribing, say, "!f!k!d" on an object 
-will greatly reduce the odds of you losing it by accident, and 
-inscribing "!*" on an object will allow you to be very paranoid about 
-the object. You can even repeat the inscription to invoke multiple 
-verifications if you are truly paranoid. For example, having found, 
-say, a potion of death, you might inscribe "!q!q!q!q" just to be 
-absolutely, positively certain you don't accidently quaff the potion. 
-And if you do, then your fingers are even fatter than mine! (Note: You 
-can now use </font><font color="#ff8000">!sdk </font><font color="#ffffff">instead of </font><font color="#ff8000">!s!d!k </font><font color="#ffffff">... Both forms mean the same thing.)
-
-While we are talking about inscriptions, there are certain object 
-effects that can be annoying. For example, (and I hope this doesn't 
-spoil the game for you) there are objects which randomly teleport the 
-player away. This can be useful if you are out of other means of 
-teleportation, but most of the time it is just plain annoying. You are 
-prompted for the teleport, of course, but having prompts come up 
-randomly is disturbing, and you often plow through the prompt anyway 
-since you were in the middle of doing something else. In this case, you 
-may inscribe "." on the object to eliminate the random teleportation.
-
-Here is a summary of the effects of various example object 
-inscriptions:
-
-  </font><font color="#c08040">Inscription Effect
-  =========== =====================================================
-      </font><font color="#ffffff">@1      Select this object whenever '1' is pressed in any cmd
-     @wa      Select this object whenever 'a' is pressed after 'w'
-      !*      Verify using this object for all commands
-      !q      Verify using this object for the 'q' command.
-      !!      Notify when the item is fully recharged
-      =g      Always pickup (get) this objects. Useful for ammo.
-       .      Suppress prompt for random teleportation
-       $      Suppress prompt for warning
+</font><font color="#00ff00">Inventory </font><font color="#0000ff">| </font><font color="#404040">Equipment </font><font color="#0000ff">| </font><font color="#404040">Quiver                                                  
+ </font><font color="#ffffff">a) </font><font color="#008040">? </font><font color="#808080">a Law Book [Obstacle Coursebook] {25% off, @mb!k}      </font><font color="#ffffff">3.0 lb LEVEL     </font><font color="#00ff00">50
+ </font><font color="#ffffff">b) </font><font color="#0000ff">? </font><font color="#808080">a Law Book [Building Alternative Realities] {@mc!sd    </font><font color="#ffffff">3.0 lb EXP </font><font color="#00ff00">********
+ </font><font color="#ffffff">c) </font><font color="#0000ff">? </font><font color="#808080">a Law Book [Acquiris Quodcumque Rapis] {@md!sdk}       </font><font color="#ffffff">3.0 lb AU      </font><font color="#00ff00">462k
+ </font><font color="#ffffff">d) </font><font color="#008040">, </font><font color="#c08040">23 Mushrooms of Restoring {!E}                         </font><font color="#ffffff">2.3 lb </font><font color="#c0c0c0">|</font><font color="#c08040">)}~</font><font color="#008040">==</font><font color="#ffff00">"</font><font color="#ff8000">~</font><font color="#c08040">(</font><font color="#008040">(</font><font color="#ffff00">]</font><font color="#c08040">]
+ </font><font color="#ffffff">e) </font><font color="#ff00ff">! </font><font color="#00ffff">15 Potions of Speed {25% off, !kq}                     </font><font color="#ffffff">6.0 lb STR!: </font><font color="#00ff00">18/160
+ </font><font color="#ffffff">f) </font><font color="#c00000">! </font><font color="#00ffff">15 Potions of Heroism                                  </font><font color="#ffffff">6.0 lb INT!: </font><font color="#00ff00">18/160
+ </font><font color="#ffffff">g) </font><font color="#808080">! </font><font color="#00ffff">41 Potions of Healing {!kq}                           </font><font color="#ffffff">16.4 lb WIS!: </font><font color="#00ff00">18/160
+ </font><font color="#ffffff">h) ! </font><font color="#00ffff">8 Potions of *Healing* {!kq}                           </font><font color="#ffffff">3.2 lb DEX : </font><font color="#00ff00">18/***
+ </font><font color="#ffffff">i) ! </font><font color="#00ffff">5 Potions of Life {!kq}                                </font><font color="#ffffff">2.0 lb CON : </font><font color="#00ff00">18/217
+ </font><font color="#ffffff">j) </font><font color="#0000ff">! </font><font color="#00ffff">18 Potions of Restore Mana {!kq}                       </font><font color="#ffffff">7.2 lb CHR!: </font><font color="#00ff00">18/150
+ </font><font color="#ffffff">k) ? 12 Scrolls of Destruction {@r7!*}                      6.0 lb AC       </font><font color="#00ff00">156
+ </font><font color="#ffffff">l) ? 9 Scrolls of Genocide {!*}                             4.5 lb HP  </font><font color="#ffff00">950</font><font color="#ffffff">/ </font><font color="#00ff00">951
+ </font><font color="#ffffff">m) ? 8 Scrolls of Mass Genocide {!*}                        4.0 lb SP  </font><font color="#ffff00">141</font><font color="#ffffff">/ </font><font color="#00ff00">402
+ </font><font color="#ffffff">n) </font><font color="#c00000">- </font><font color="#ff00ff">a Rod: </font><font color="#ff8000">Clairvoyance </font><font color="#ff00ff">(2/2 charges) {47%}                </font><font color="#ffffff">1.5 lb             
+ o) </font><font color="#c00000">- </font><font color="#ff00ff">a Rod: </font><font color="#ff8000">Detection </font><font color="#ff00ff">(7/7 charges) {1%, @zb!sdk}           </font><font color="#ffffff">1.5 lb             
+ p) </font><font color="#c00000">- </font><font color="#ff00ff">a Rod: </font><font color="#00ffff">Recall </font><font color="#ff00ff">(5/5 charges) {1%, @zc!sdk}              </font><font color="#ffffff">1.5 lb             
+ q) </font><font color="#00ffff">- </font><font color="#008040">a Wand of Resistance: </font><font color="#ffffff">Teleport Other </font><font color="#008040">(29/29 charges    </font><font color="#ffffff">0.2 lb             
+ r) </font><font color="#00ffff">- </font><font color="#008040">a Wand of Regeneration: </font><font color="#404040">Annihilation </font><font color="#008040">(8/8 charges)     </font><font color="#ffffff">0.2 lb             
+ s) </font><font color="#00ffff">- </font><font color="#008040">a Wand of Regeneration: </font><font color="#ffffff">Tsunami </font><font color="#008040">(14/14 charges) (+5    </font><font color="#ffffff">0.2 lb             
+ t) </font><font color="#c08040">_ a Staff: </font><font color="#ffffff">Teleport </font><font color="#c08040">(</font><font color="#ffff00">17/28 charges</font><font color="#c08040">) {1%, @ua!sdk}        </font><font color="#ffffff">5.0 lb             
+ u) </font><font color="#c08040">_ a Staff: </font><font color="#c00000">Destruction </font><font color="#c08040">(</font><font color="#ffff00">2/8 charges</font><font color="#c08040">) {1%, @ud!sdk}       </font><font color="#ffffff">5.0 lb </font><font color="#00ff00">Fast (+33)  
+ </font><font color="#ffffff">v) </font><font color="#c08040">_ a Staff of Resistance: </font><font color="#00ffff">Telepathy </font><font color="#c08040">(</font><font color="#ffff00">3/9 charges</font><font color="#c08040">) {1%,    </font><font color="#ffffff">5.0 lb </font><font color="#404040">Cursed      
+ </font><font color="#ffffff">w) </font><font color="#c08040">_ a Staff: </font><font color="#ffff00">Cure Wounds </font><font color="#c08040">(</font><font color="#ffff00">8/18 charges</font><font color="#c08040">) {1%, @uu!sdk}      </font><font color="#ffffff">5.0 lb </font><font color="#00ffff">Study (4)   
+ </font><font color="#ffffff">x) </font><font color="#c08040">_ a Staff of Holding: </font><font color="#ff0000">Confusing Lights </font><font color="#c08040">(7/7 charges)     </font><font color="#ffffff">5.0 lb             
+ y) </font><font color="#808080">[ Metal Scale Mail {special}                            </font><font color="#ffffff">25.0 lb             
+ z) </font><font color="#c08040">( </font><font color="#808080">Soft Leather Armour {excellent}                        </font><font color="#ffffff">8.0 lb             
+                                                           </font><font color="#ff0000">129.7 lb             
+</font><font color="#ffff00">Drop which item?                                                                
+</font><font color="#ff8000">Angband: L100                           Telepa </font><font color="#00ff00">DTrap
 
 
-</font><font color="#707070">Original   : Alexander Cutler and Andy Astrand
+</font><font color="#ffffff">But if instead of the </font><font color="#ff8000">d</font><font color="#ffffff">rop command we use the </font><font color="#ff8000">r</font><font color="#ffffff">ead command, Scrolls of 
+Genocide become '</font><font color="#ff8000">b</font><font color="#ffffff">' since only scrolls are now offered as options:
+
+</font><font color="#00ff00">Inventory                                                     </font><font color="#c00000">Fail              
+ </font><font color="#ffffff">7) ? 12 Scrolls of Destruction {@r7!*}                        2.8%
+ b) ? 9 Scrolls of Genocide {!*}                               2.8%
+ c) ? 8 Scrolls of Mass Genocide {!*}                          3.3%
+
+</font><font color="#ffff00">Read which scroll? 
+
+
+</font><font color="#ffffff">You might notice something odd, though: while Scrolls of Genocide are 
+expectedly labeled 'b' as the second item listed and Scrolls of Mass 
+Genocide are 'c' as the third item, Scrolls of Destruction are not 
+labeled 'a' but rather '</font><font color="#ff8000">7</font><font color="#ffffff">'. This is because the Scrolls of Destruction 
+have been </font><font color="#ff0000">inscribed </font><font color="#ffffff">with the inscription </font><font color="#ff0000">@r7</font><font color="#ffffff">, which simply tells the 
+game to label them '7' in the 'r' Read a Scroll menu.
+
+The advantage of inscribing items in this way is that they retain their 
+label even when items are added to or removed from the list. Note, for 
+instance, that three books in the example inventory are inscribed </font><font color="#ff0000">@mb 
+</font><font color="#ffffff">through </font><font color="#ff0000">@md</font><font color="#ffffff">; this allows them to keep their usual, "expected" labels in 
+the </font><font color="#ff8000">m </font><font color="#ffffff">spellcasting menu even though the first book, book '</font><font color="#ff8000">a</font><font color="#ffffff">', is 
+missing.
+
+Inscriptions are added with the </font><font color="#ff8000">Z</font><font color="#ffffff">/</font><font color="#ff8000">{ </font><font color="#ffffff">command, and can be used for many 
+other purposes besides item labeling (see <a href="objects.html#Inscriptions"></font><font color="#00ff00">[d]</a> </font><font color="#ffffff">for more detail). The 
+Mogaminator often automatically applies standard inscriptions to items; 
+the three books of the above example were inscribed by the Mogaminator. 
+Note that inscriptions are always based on the </font><font color="#ff0000">underlying keyset</font><font color="#ffffff">, which 
+for the most part is the same as the original keyset; so if you want a 
+staff to be labeled '</font><font color="#ff8000">y</font><font color="#ffffff">' in the "Use a Staff" prompt, you should 
+inscribe it </font><font color="#ff0000">@uy </font><font color="#ffffff">rather than </font><font color="#ff0000">@Zy </font><font color="#ffffff">even if you use the roguelike keyset.
+
+    </font><font color="#00ff00">Note: Many object selection menus allow you to select 
+    items from any of several inventories, which you can 
+    toggle between by pressing </font><font color="#ff8000">/</font><font color="#00ff00">. In the </font><font color="#ff8000">d</font><font color="#00ff00">rop example 
+    above, the default inventory is your backpack, but you 
+    can use </font><font color="#ff8000">/ </font><font color="#00ff00">to select an item from your equipment or 
+    quiver instead.
+
+
+</font><font color="#404040">Original   : Alexander Cutler and Andy Astrand
 Updated    : (2.7.6) by Russ Allbery (rra@cs.stanford.edu)
 Updated    : (2.7.9) by Ben Harrison (benh@phial.com)
 Updated    : Zangband 2.2.0 through 2.2.6c by Robert Ruehlmann
 Updated    : Zangband DevTeam
 Updated    : Hengband 1.0.11
 Updated    : PosChengband 6.0.0
+Updated    : FrogComposband 7.1.liquorice
 
 
 

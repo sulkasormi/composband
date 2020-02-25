@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html>
+<body text="#ffffff" bgcolor="#000000"><pre>
+<font color="#00ffff">Subwindows
+
+</font><font color="#ffffff">In addition to the main game display terminal, which is always visible 
+(and can show anything from dungeon maps to helpfiles), the game allows 
+you to use up to seven </font><font color="#ff0000">subwindows</font><font color="#ffffff">; these are optional, additional 
+display terminals used to keep important information permanently on the 
+screen. Subwindows are numbered </font><font color="#ff0000">Term-1 </font><font color="#ffffff">through </font><font color="#ff0000">Term-7 </font><font color="#ffffff">(the main display 
+is Term-0).
+
+<a name="WhyGood"></a></font><font color="#c08040">Why Subwindows Are Good
+
+</font><font color="#ffffff">The most commonly used subwindows are </font><font color="#ff0000">monster list</font><font color="#ffffff">, </font><font color="#ff0000">object list</font><font color="#ffffff">, </font><font color="#ff0000">pack 
+inventory </font><font color="#ffffff">and </font><font color="#ff0000">recent messages</font><font color="#ffffff">. The monster list, in particular, is very 
+convenient - a common cause of death is not realizing that there was a 
+dangerous monster nearby, and this is much less likely to happen with a 
+monster list subwindow there to alert you.
+
+The object list is likewise handy: it allows you to see at a glance if 
+you're missing anything on the level, especially since the most 
+valuable objects (and/or those wanted by the Mogaminator) will be 
+displayed near the top. An object list subwindow will also help you 
+quickly locate quest or dungeon entrances in towns and the wilderness.
+
+<a name="WhyBad"></a></font><font color="#c08040">Why Subwindows Are Bad
+
+</font><font color="#ffffff">Space occupied by subwindows is space not occupied by the main display; 
+subwindows force you to make compromises with either the number of </font><font color="#ff0000">rows 
+</font><font color="#ffffff">and </font><font color="#ff0000">columns </font><font color="#ffffff">in the main display, the </font><font color="#ff0000">font size </font><font color="#ffffff">of the main display, or 
+both. If you have bad eyesight or a smallish monitor, I recommend 
+maximizing the font size by using no subwindows.
+
+Having no subwindows also allows you to keep an iron focus on the main 
+display, without the need to glance to the sides so often. Subwindows 
+do provide useful information, but that information is also available 
+through normal commands - </font><font color="#ff8000">i </font><font color="#ffffff">for the inventory, </font><font color="#ff8000">Y</font><font color="#ffffff">/</font><font color="#ff8000">[ </font><font color="#ffffff">for the monster 
+list, </font><font color="#ff8000">O</font><font color="#ffffff">/</font><font color="#ff8000">] </font><font color="#ffffff">for the object list, </font><font color="#ff8000">^P </font><font color="#ffffff">for recent messages - and these 
+commands provide additional functionality (inspect item, travel to 
+item, search for a message, etc.) not offered by subwindows.
+
+<a name="AngbandLive"></a></font><font color="#c08040">Setting up subwindows on angband.live
+
+</font><font color="#ffffff">Set the four values on the angband.live play page - </font><font color="#ff0000">subwindow right 
+cols</font><font color="#ffffff">, </font><font color="#ff0000">subwindow right split</font><font color="#ffffff">, </font><font color="#ff0000">subwindow top rows </font><font color="#ffffff">and </font><font color="#ff0000">subwindow bottom 
+rows </font><font color="#ffffff">- to your favorite settings. The standard example values are 
+40/25/0/5 respectively. Start your character, then type </font><font color="#ff8000">=W </font><font color="#ffffff">during play 
+to determine what each of the subwindows should display.
+
+If the game crashes on start, you may have specified subwindows that 
+occupy too much space; try lower values or a smaller font size. Note 
+also that either "subwindow top rows" or "subwindow bottom rows" should 
+be zero.
+
+To play on angband.live with no subwindows, simply keep all four values 
+at zero.
+
+<a name="Windows"></a></font><font color="#c08040">Setting up subwindows in offline play (Windows)
+
+</font><font color="#ffffff">Select </font><font color="#ff0000">Window </font><font color="#ffffff">from the toolbar at the top and choose the </font><font color="#ff0000">Visibility 
+</font><font color="#ffffff">option to toggle each of the seven subwindows on or off. Use the mouse 
+to drag the newly activated subwindows to your favorite locations. Type 
+</font><font color="#ff8000">=W </font><font color="#ffffff">during play to tell the game what each subwindow should display.
+
+<a name="Linux"></a></font><font color="#c08040">Setting up subwindows in offline play (Linux with curses)
+
+</font><font color="#ffffff">Use the command line to specify subwindow size and placement as you 
+launch the game. Here are a few examples:
+
+</font><font color="#ffff00">$ ./frogcomposband -mgcu -uCrusher -- -right 57x26,*
+
+</font><font color="#ffffff">This specifies a subwindow strip to the right of the main display that 
+is 57 columns wide; this strip will contain two subwindows, one that is 
+26 rows high and one that fills whatever space still remains.
+
+</font><font color="#ffff00">$ ./frogcomposband -mgcu -uCrusher -- -right 57x26,* -bottom *x10
+
+</font><font color="#ffffff">Specifies the same two subwindows as before plus a third subwindow 
+(Term-3) below the main display, occupying 10 rows and (TOTAL-57) 
+columns.
+
+</font><font color="#ffff00">$ ./frogcomposband -mgcu -uCrusher -- -bottom *x10 -right 57x26,*
+
+</font><font color="#ffffff">Same as above, except that the subwindow at the bottom is now Term-1 
+and gets to occupy every column.
+
+Type </font><font color="#ff8000">=W </font><font color="#ffffff">during play to determine what each subwindow displays.
+
+
+</font><font color="#404040">--
+Original   : FrogComposband 7.1.liquorice
+
+
+</font></pre></body></html>
