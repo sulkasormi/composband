@@ -3,22 +3,23 @@
 #include <assert.h>
 
 static cptr _desc = 
-    "Dragons are powerful winged serpents. They are the strongest fighters "
-    "with razor sharp claws and a bone crushing bite. Each dragon has a unique "
-    "type of breath that becomes more deadly as the dragon grows and matures.\n \n"
+    "Dragons are powerful winged serpents. They are strong in combat, "
+    "with razor-sharp claws and a bone-crushing bite; but even more legendary "
+    "is their breath, which grows ever more deadly as the dragon matures.\n \n"
     "Due to their non-humanoid bodies, dragons are unable to wear armor, gloves "
-    "or boots. However, being creatures of magic, they are able to wear 6 rings. "
+    "or boots; however, being creatures of magic, they may equip up to six rings. "
     "They can also wear a helmet, a light source, a cloak and an amulet. Because "
     "of these equipment restrictions, dragons may have a difficult time covering "
-    "all resistances despite the fact that each dragon has one or more innate "
-    "resistances (or even immunities).\n \n"
+    "all resistances; but each dragon has at least one innate resistance, maybe "
+    "even an immunity.\n \n"
     "Dragons begin life in a weak form, being very young. As their bodies mature, "
-    "their scales grow tough and their claws sharp. Their breath grows more "
-    "deadly and they frequently gain additional magical powers and resistances. "
+    "their scales grow tough and their claws sharp. Their breaths become stronger and "
+    "stronger, and they frequently gain additional magical powers and resistances. "
     "All dragons can fly, but younger dragons are not so quick as their elders.\n \n"
-    "Dragons are magical creatures, and each dragon may choose to specialize in a "
-    "specific type of magic. This magic does not require books to learn and also "
-    "has a direct influence on the dragon's stats and skills.";
+    "With the exception of Steel Dragons, who are far less intelligent than their kin "
+    "and rely on brute force only, each dragon may choose to specialize in a "
+    "specific type of magic. These special dragon-magic realms do not require books "
+    "to learn. The selection of a realm has a direct influence on the stats and skills of the dragon.";
 
 static dragon_realm_ptr _get_realm(void);
 
@@ -416,10 +417,10 @@ static dragon_realm_t _realms[DRAGON_REALM_MAX] = {
 
     { DRAGON_REALM_LORE, "Lore", 
         "Dragons specializing in lore are seekers of knowledge. They are the most "
-        "intelligent of dragonkind and use their vast intellects to drive their magic. "
+        "intelligent of dragonkind, and it is intellect that drives their magic. "
         "Armed with a vast array of detection and knowledge spells, dragons of lore "
         "seek power through knowledge. They eventually gain powers of telepathy and "
-        "automatic object identification. Lore dragons are quick learners and gain "
+        "automatic object identification. Lore dragons are quick learners, and gain "
         "maturity much more rapidly than the rest of their kind.",
     /*  S   I   W   D   C   C    Dsrm Dvce Save Stlh Srch Prcp Thn Thb  Life  Exp Attack Breath*/
       {-1, +3,  0, -1, -1,  0}, {   3,   8,   2,   0,   5,   5, -8,  0}, 100,  80,   100,   100, A_INT},
@@ -436,26 +437,25 @@ static dragon_realm_t _realms[DRAGON_REALM_MAX] = {
 
     { DRAGON_REALM_ATTACK, "Attack", 
         "Attack dragons seek melee supremacy above all else. This realm offers powerful attack "
-        "spells to support a race that is already among the melee elite, and the result can "
-        "be truly awe-inspiring. With this realm, the dragon may rend their opponents with "
+        "spells to support a race that is already among the melee elite, and the result tends to be "
+        "devastation and death. With this realm, the dragon may rend their opponents with "
         "extra sharp claws, may snatch an adjacent opponent in their powerful jaws and then "
         "toss them about like a rag doll, and may even augment their bite attacks with their "
-        "breath element! Truly, a rampaging dragon is an awe inspiring sight, one that is "
-        "seldom witnessed (or perhaps seldom survived?). This focus values strength above all else.",
+        "breath element! A rampaging dragon is a truly awe-inspiring sight, one that is "
+        "seldom witnessed, or perhaps just seldom survived. This focus values strength above all else.",
     /*  S   I   W   D   C   C    Dsrm Dvce Save Stlh Srch Prcp Thn Thb  Life  Exp Attack Breath*/
       {+3, -2, -2, +1, -1,  0}, {  -5,  -5,  -3,  -1,  -2,  -2, 15,  0},  97, 105,   115,    80, A_STR},
 
     { DRAGON_REALM_CRAFT, "Craft", 
         "The most powerful magical items have long been believed forged by dragonflame. The "
-        "craft dragon gains powers of enchantment and may even reforge artifacts into the objects "
-        "of their choosing! Otherwise, craft dragons are not particularly powerful as they trade "
-        "melee and breath prowess for magical understanding. This focus requires great wisdom to "
-        "master.",
+        "craft dragon gains powers of enchantment, and may even reforge artifacts into the objects "
+        "of their choosing! Otherwise, craft dragons are not particularly powerful, as they trade "
+        "melee and breath prowess for magical understanding. This focus requires great wisdom.",
     /*  S   I   W   D   C   C    Dsrm Dvce Save Stlh Srch Prcp Thn Thb  Life  Exp Attack Breath*/
       {-1, -1, +3, -1, -1, -1}, {   3,  15,   3,   0,   0,   0, -5,  0}, 100,  95,   100,   100, A_WIS},
 
     { DRAGON_REALM_ARMOR, "Armor", 
-        "Dragon scales have thwarted many a would be dragonslayer. Naturally tough and resistant, "
+        "Dragon scales have thwarted many a would-be dragonslayer. Naturally tough and resistant, "
         "the dragon's armor is even further enhanced by this realm. This specialization gives enhanced "
         "armor class, reflection, resistance to cuts and stunning, resistance to poison "
         "and life draining, and sustaining of several key stats, albeit not all at once. With all "
@@ -466,13 +466,13 @@ static dragon_realm_t _realms[DRAGON_REALM_MAX] = {
       {-1, -1, -1, +3, +1, +1}, {  -2,  -3,   7,   1,   0,   0,-10,  0}, 102, 105,    90,    90, A_DEX},
 
     { DRAGON_REALM_DOMINATION, "Domination", 
-        "All dragons have a formidable presence and make fearsome opponents. But Domination dragons "
-        "are truly a breed apart seeking to bend and control the will of all they meet. Convinced "
+        "All dragons have a formidable presence and make fearsome opponents; but Domination dragons "
+        "are truly a breed apart, seeking to bend and control the will of all they meet. Convinced "
         "of their right to rule, these dragons may subjugate the weak, terrify the uncertain, "
         "and stun the unwary with their awesome presence. They are the best dragons at controlling "
-        "minions and can summon mighty aid. Enemy monsters summoned to battle may switch sides "
-        "when they notice whom they have been commanded to fight. And in the end, the dragon of "
-        "domination may sever all oaths of allegiance, returning enemy summons to where they came. "
+        "minions, and can summon mighty aid. Initially hostile monsters summoned to battle may switch sides "
+        "when they notice whom they have been commanded to fight; and in the end, the dragon of "
+        "domination may sever all oaths of allegiance, returning enemy summons to where they came from. "
         "Needless to say, dragons of this order value force of will above all else.",
     /*  S   I   W   D   C   C    Dsrm Dvce Save Stlh Srch Prcp Thn Thb  Life  Exp Attack Breath*/
       {-1, -1, -1, -1, -1, +3}, {  -2,  -3,  -2,   0,   0,   0, -7,  0},  95, 105,    95,    90, A_CHR},
@@ -481,11 +481,11 @@ static dragon_realm_t _realms[DRAGON_REALM_MAX] = {
         "Crusade dragons are on a mission to destroy the forces of evil. As such, this realm is only "
         "available to Gold Dragons and Law Dragons. Being of a single focus, the Crusade dragon is not "
         "as powerful in melee or breaths as other dragons, but their spells more than make up for this "
-        "deficit. At least against evil opponents. For one thing, Crusade dragons can breathe holy "
-        "elements not normally accessible. At the sight of evil, they become enraged and may haste "
-        "for battle. They can even heal a bit and ultimately they may smite the forces of evil with "
+        "deficit, at least against evil opponents. Crusade dragons can breathe holy elements "
+        "not normally accessible. At the sight of evil, they become enraged and may haste "
+        "for battle. They can even heal a bit; and ultimately they may smite the forces of evil with "
         "holy power, both in melee and in breath. Strong in personality, dragons of this order "
-        "may summon like minded kin for the final battles.",
+        "may summon like-minded kin for the final battles.",
     /*  S   I   W   D   C   C    Dsrm Dvce Save Stlh Srch Prcp Thn Thb  Life  Exp Attack Breath*/
       {+1, -1, -1, +1, -1, +2}, {  -5,   0,  -2,   0,  -2,  -2,  7,  0},  95, 107,    90,    90, A_CHR},
 
@@ -2216,37 +2216,38 @@ static _elemental_info_t _elemental_info[5] = { /* relies on #define DRAGON_RED 
     { {167, 563, 589, 644, 756},
       {"Baby Red Dragon", "Young Red Dragon", "Mature Red Dragon", "Ancient Red Dragon", "Great Hell Wyrm"},
       RES_FIRE, "Red Dragon",
-        "Red Dragons are elemental dragons of fire and are the second strongest fighters among "
+        "Red Dragons are elemental dragons of fire, and the second-strongest fighters among "
         "dragons. Their fiery breaths are the stuff of legends with damage unsurpassed. Even their "
-        "bites are likely to burn their opponents rendering their melee damage quite impressive. "
+        "bites are likely to burn their opponents, further enhancing their deadliness in melee. "
         "As the Red Dragon matures, it becomes more and more resistant to fire, eventually gaining "
         "total immunity." },
     { {164, 460, 549, 617, 741},
       {"Baby White Dragon", "Young White Dragon", "Mature White Dragon", "Ancient White Dragon", "Great Ice Wyrm"},
       RES_COLD, "White Dragon",
-        "White Dragons are to cold what Red Dragons are to fire. Their melee is truly awe-inspiring "
-        "and their icy breath can be felt even in their bite. Like Red Dragons, White Dragons "
-        "have the most deadly breath possible among dragonkind and they too become more and more "
-        "resistant to cold as they mature." },
+        "White Dragons are to cold what Red Dragons are to fire. Their melee is awe-inspiring, "
+        "and their icy breath can be felt even in their bite. Together with Red Dragons, they "
+        "have the deadliest breaths among dragonkind; and they become more and more "
+        "resistant to cold as they mature, eventually attaining immunity." },
     { {163, 459, 560, 601, 728},
       {"Baby Blue Dragon", "Young Blue Dragon", "Mature Blue Dragon", "Ancient Blue Dragon", "Great Storm Wyrm"},
       RES_ELEC, "Blue Dragon",
-        "Blue Dragons are elemental dragons of lightning. Their melee and breaths are not so "
-        "strong as their Red and White brethren, but lightning is a bit more useful than fire or "
-        "cold. Their bites eventually shock their foes. Blue Dragons become more and more resistant "
-        "to lightning as they mature." },
+        "Blue Dragons are elemental dragons of lightning. Their breaths are as "
+        "strong as those of their Red and White brethren, their melee somewhat weaker but still mighty, "
+        "and their bites eventually shock their foes. Blue Dragons become more and more "
+        "resistant to lightning as they mature, eventually gaining total immunity." },
     { {166, 546, 592, 624, 1066},
       {"Baby Black Dragon", "Young Black Dragon", "Mature Black Dragon", "Ancient Black Dragon", "Great Bile Wyrm"},
       RES_ACID, "Black Dragon",
-        "Black Dragons are to acid what Blue Dragons are to lightning. Like the Blue Dragon, their "
-        "breaths and melee fall short of their Red and White brethren. As they mature, their bites "
-        "corrode their enemies and the Black Dragon also becomes more and more resistant to acid." },
+        "Black Dragons are to acid what Blue Dragons are to lightning. Their breaths are as strong "
+        "as those of their Red, White and Blue kin; and fewer monsters resist acid, giving them an extra "
+        "opening. As the Black Dragon matures, its bites become corrosive, and it grows more resistant to acid "
+        "until it reaches immunity." },
     { {165, 461, 561, 618, 890},
       {"Baby Green Dragon", "Young Green Dragon", "Mature Green Dragon", "Ancient Green Dragon", "Great Venom Wyrm"},
       RES_POIS, "Green Dragon",
-        "Green Dragons are elemental dragons of poison. They are not so strong as Red or White dragons, "
-        "but are still fearsome opponents. As they mature, their bites poison their enemies. Also, "
-        "Green Dragons become more and more resistant to poison." },
+        "Green Dragons are elemental dragons of venom. They are not quite as strong as Red or White dragons, "
+        "but are still fearsome opponents. As they mature, their bites poison their enemies. "
+        "Green Dragons become more and more resistant to poison over time, eventually achieving immunity." },
 };
 
 static void _elemental_calc_bonuses(void) {
@@ -2467,11 +2468,11 @@ static race_t *_nether_get_race_t(void)
     skills_t bs = { 28,  35,  38,   4,  25,  26,  50,  30};
     skills_t xs = {  8,  10,  11,   0,   0,   0,  15,   7};
 
-        me.subdesc = "Shadow Drakes are bit more stealthy than your average dragon. They are creatures of nether "
-            "and eventually evolve into Death Drakes. Their melee is the weakest among dragonkind and "
-            "their breaths also are lacking, but they still make fearsome opponents. As they advance, "
-            "these dragons eventually gain the ability to pass through walls and also become more and "
-            "more resistant to nether.";
+        me.subdesc = "Shadow Drakes are among the stealthiest of dragons. They are creatures of nether, "
+            "and eventually evolve into Death Drakes and Spectral Wyrms. Their melee is the weakest among dragonkind and "
+            "their breaths are also somewhat lacking, but they still make fearsome opponents. As they advance, "
+            "these dragons gain the ability to pass through walls, and acquire several resistances including "
+            "immunity to nether.";
 
         me.skills = bs;
         me.extra_skills = xs;
@@ -2565,11 +2566,10 @@ static race_t *_law_get_race_t(void)
     skills_t xs = {  8,  11,  11,   0,   0,   0,  15,   7};
 
         me.subdesc = "Law Drakes are powerful dragons of order. They can breathe sound or shards and eventually "
-                    "evolve into Great Wyrms of Law, though not so quickly as you might hope. Their breaths "
-                    "are much weaker than those of the elemental dragons but very few monsters resist sound "
-                    "or shards. Their melee is among the weakest of all dragonkind but they still fight rather "
-                    "well ... What dragon doesn't?";
-
+                    "evolve into Great Wyrms of Law, though not as quickly as you might hope. Their breaths "
+                    "are much weaker than those of the elemental dragons, but far fewer monsters resist sound "
+                    "or shards. Their melee is also on the weak side by dragon standards, but most lesser creatures "
+                    "would be quite happy with it!";
         me.skills = bs;
         me.extra_skills = xs;
 
@@ -2663,10 +2663,10 @@ static race_t *_chaos_get_race_t(void)
     skills_t xs = {  8,  11,  11,   0,   0,   0,  15,   7};
 
         me.subdesc = "Chaos Drakes are powerful dragons of chaos. They can breathe chaos or disenchantment and eventually "
-        "evolve into Great Wyrms of Chaos, though not so quickly as you might hope. Their breaths "
-        "are much weaker than those of the elemental dragons but fewer monsters resist chaos "
-        "or disenchantment. Their melee is among the weakest of all dragonkind but they still fight rather "
-        "well ... What dragon doesn't?";
+        "evolve into Great Wyrms of Chaos, though not as quickly as you might hope. Their breaths "
+        "are much weaker than those of the elemental dragons, but far fewer monsters resist chaos "
+        "or disenchantment; and though their melee is weak for a dragon, by more typical standards "
+        "they fight quite well.";
 
         me.skills = bs;
         me.extra_skills = xs;
@@ -2760,10 +2760,8 @@ static race_t *_balance_get_race_t(void)
     skills_t xs = {  8,  10,  10,   0,   0,   0,  15,   7};
 
         me.subdesc = "Balance Drakes are a blend of Chaos and Law Drakes. They can breathe sound, shards, "
-        "chaos or disenchantment and eventually evolve into Great Wyrms of Balance, though not "
-        "so quickly as you might hope. Their breaths are much weaker than those of the elemental "
-        "dragons and they are weaker than either of Chaos or Law Drakes, though not by much.";
-
+        "chaos or disenchantment and eventually evolve into Great Wyrms of Balance. "
+        "Their breaths and attacks are weaker than those of Chaos and Law Drakes, but not by much.";
 
         me.skills = bs;
         me.extra_skills = xs;
@@ -2868,11 +2866,11 @@ static race_t *_ethereal_get_race_t(void)
     skills_t xs = {  8,  10,  11,   0,   0,   0,  15,   7};
 
         me.subdesc =
-        "Ethereal Drakes are dragons of light and darkness. They actually begin life as Pseudo "
-        "Dragons but quickly evolve into Ethereal Drakes and then Ethereal Dragons. As they "
+        "Ethereal Drakes are dragons of light and darkness. They begin life as modest Pseudo "
+        "Dragons, but quickly evolve into Ethereal Drakes and then Ethereal Dragons. As they "
         "mature, they gain the ability to pass through walls and become more and more resistant "
         "to light, darkness and confusion. They are fairly weak fighters and have the weakest "
-        "breaths in all of dragonkind (except for Steel Dragons which cannot breathe at all).";
+        "breaths in all of dragonkind, except for Steel Dragons which cannot breathe at all.";
 
         me.skills = bs;
         me.extra_skills = xs;
@@ -2980,8 +2978,8 @@ static race_t *_crystal_get_race_t(void)
     skills_t xs = {  8,   7,  12,   0,   0,   0,  22,   7};
 
         me.subdesc =
-        "Crystal Drakes are dragons of a strange crystalline form. They breathe shards and melee "
-        "powerfully with razor sharp claws and teeth. At high levels, they gain the power of "
+        "Crystal Drakes are dragons of a strange crystalline form. They breathe shards and fight "
+        "powerfully with their razor-sharp claws and teeth. At high levels, they gain the power of "
         "reflection.";
 
         me.skills = bs;
@@ -3082,8 +3080,8 @@ static race_t *_bronze_get_race_t(void)
     skills_t xs = {  8,  10,  11,   0,   0,   0,  15,   7};
 
         me.subdesc =
-        "Bronze Dragons are wyrms of confusion. While they are not quite as strong as most other "
-        "dragons, they eventually confuse monsters with their bite attack. Also, they become "
+        "Bronze Dragons are wyrms of perplexity. While they are not quite as strong as most other "
+        "dragons, they eventually confuse monsters with their bite attack; also, they become "
         "more and more resistant to confusion as they mature.";
 
         me.skills = bs;
@@ -3186,7 +3184,7 @@ static race_t *_gold_get_race_t(void)
 
         me.subdesc =
         "Gold Dragons are wyrms of sound. While they are not quite as strong as most other "
-        "dragons, they are able to breathe sound on command, stunning their foes. Also, they become "
+        "dragons, they are able to breathe sound on command, stunning their foes; also, they become "
         "more and more resistant to sound as they mature.";
 
         me.skills = bs;
@@ -3300,9 +3298,9 @@ static race_t *_steel_get_race_t(void)
         "from stone into steel. Needless to say, their armor class is phenomenal, but their "
         "dexterity actually decreases with maturity. Steel dragons begin life being susceptible "
         "to cold damage, though they will eventually outgrow this vulnerability. They are not "
-        "as fast as other dragons and they have no powers whatsoever, not even the ubiquitous "
+        "as fast as other dragons and have no powers whatsoever, not even the ubiquitous "
         "dragon breath! But their fighting is impossibly strong, putting all the other dragons "
-        "to complete and utter shame. They also have the most hitpoints of all dragons.";
+        "to complete and utter shame. They also have extremely high hitpoints.";
 
         me.skills = bs;
         me.extra_skills = xs;
