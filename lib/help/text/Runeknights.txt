@@ -1,22 +1,25 @@
-Rune Knights
+Rune-Knights
 
-A large part of playing the Rune Knight involves the attachment of 
-mystical runes of power to various objects in your equipment. Each type 
-of rune grants abilities consistent with the rune's source, but the 
-actual abilities granted will vary depending on the type of object to 
-which it is affixed. For example, runes are generally more powerful 
-when attached to your body armor then when attached to helmets, gloves 
-or shields. Since attaching runes generally consumes all of your mana, 
-and since the rune knight does not regenerate mana normally, you may 
-find a process of experimentation to learn the various combinations 
-frustrating. In this case, continue reading this helpfile. It is a bit 
-of a spoiler, so you may decide to stop reading now. Personally, I 
-would play with this information handy, but the choice is yours.
+A large part of playing as a Rune-Knight involves the attachment of 
+mystical runes of power to various pieces of equipment. Each type of 
+rune grants some special thematic abilities; these abilities will vary 
+slightly depending on the type of object to which the rune is affixed. 
+Generally, runes are more powerful when attached to body armor than 
+when attached to helmets, gloves or shields. Since attaching a rune 
+generally consumes all of your mana and rune-knights do not regenerate 
+mana normally, trying to figure things out by trial and error would be 
+time-consuming and lead to suboptimal rune placement. Note that you can 
+only attach a single rune to any given object, and cannot remove or 
+change that rune once it has been added, although nothing prevents you 
+from adding the same rune to multiple objects.
 
-Runes by Type
+The rune cheat-sheet below is a bit of a spoiler, but most players are 
+happy to play with this information handy.
+
+Equipment/Inventory Runes by Type
 
 In this section, each rune is displayed along with each type of object 
-to which it may be affixed. Thus, you may see what each rune does at a 
+to which it may be affixed; thus, you may see what each rune does at a 
 glance, and decide where to use it best.
 
 Absorption
@@ -41,10 +44,11 @@ Melee Weapons L9  Flame Tongue
 Shields       L9  Resist Fire
 Body Armor    L9  Resist Fire; Fiery Aura
 Cloaks        L9  Fiery Aura
+Lights        L9  Fiery Aura
 Gloves        L45 Flame Tongue
 
 Air
-Melee Weapons L40 +.75 Attacks
+Melee Weapons L40 +0.75 Attacks
 Cloaks        L11 Levitation
 Boots         L11 Levitation
 
@@ -61,9 +65,9 @@ Lights        L15 Resist Light
 
 Shadow
 Shields       L17 Resist Darkness
-Body Armor    L17 Resist Darkness; Stealth
+Body Armor    L17 Resist Darkness; +5L/50 Stealth
 Helmets       L17 Resist Darkness
-Cloaks        L17 Stealth
+Cloaks        L17 +5L/50 Stealth
 
 Earth
 Melee Weapons L35 Vorpal
@@ -75,9 +79,9 @@ Understanding
 Helmets       L21 +2 INT; Easy Identify
 Lights        L21 +1 INT
 
-Elemental Protection
-If this rune is carried in your pack then your gear receives increased 
-protection against accidental destruction by elemental attacks.
+Preservation
+If this rune is carried in your pack, the chance of items in your pack 
+being destroyed by elemental attacks is cut to half.
 
 Haste
 Gloves        L25 +2 DEX
@@ -120,9 +124,10 @@ Melee Weapons L41 +2 Damage Dice
 Gloves        L41 Slaying
 
 Good Fortune
-If this rune is carried in your pack then you will be blessed with good 
+If this rune is carried in your pack, you will be blessed with good 
 luck. This grants increased odds of finding excellent and special 
-items.
+items. The good-luck effect is similar to the White Aura mutation and 
+the Lucky personality, and does not stack with them.
 
 Immortality
 Shields       L45 Resist Time
@@ -143,7 +148,7 @@ Fire          L9  Flame Tongue
 Water         L13 Acid Brand
 Earth         L35 Vorpal
 Death         L35 Vampiric
-Air           L40 +.75 Attacks
+Air           L40 +0.75 Attacks
 Destruction   L41 +2 Damage Dice
 
 Shields
