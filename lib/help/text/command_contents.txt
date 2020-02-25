@@ -6,8 +6,9 @@ Please choose one of the following online help files:
     [b] Original Keyset
     [c] Roguelike Keyset
     [d] Command Counts
-    [e] Selecting Objects
-    [f] Command Descriptions
+    [e] Command Arguments
+    [f] Item Labels
+    [g] Command Descriptions
 
     (?) Help System Commands
 
