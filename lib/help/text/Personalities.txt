@@ -1,166 +1,168 @@
 The Personalities
 
 Your personality is the way you see and act in the world, and has a 
-small but significant effect on your stats and skills. In general you 
+small but significant effect on your stats and skills. In general, you 
 should pick a personality that complements the strengths and weaknesses 
-inherent in your race and class. Your choice of personality is the 
-least important decision you make when creating your character (after 
-gender).
+inherent in your race and class. Most personalities only make a minor 
+difference, but a few can change the game dramatically.
 
-For details on the Primary Statistics, see [a]. For information about 
-the various Skills, see [b]. The skill descriptions in this document 
-are for comparison purposes only. For example, your fledgling munchkin 
-will not be born with Legendary[20] melee skill. In general, skills are 
-also influenced by level, race, class, stats and equipment. To compare 
-the various personalities, you might want to take a look at [c] the 
-personality tables below.
+For details on the Stats, see [a]. For information about the Skills, 
+see [b]. The skill descriptions in this document are for comparison 
+purposes only; for example, your fledgling munchkin will not be born 
+with Amber[25] melee skill. In general, skills are also influenced by 
+level, race, class, stats and equipment. To compare the stat and skill 
+boosts of each personality, take a look at the [c] personality tables 
+below.
 
 Ordinary
 An ordinary person is average in every respect, gaining neither skills, 
 talents nor stat adjustments.
 
   Stats                   Skills
-  Strength      +0        Disarming   Poor         
-  Intelligence  +0        Device      Poor         
-  Wisdom        +0        Save        Poor         
-  Dexterity     +0        Stealth     Poor         
+  Strength      +0        Disarming   Fair         
+  Intelligence  +0        Device      Fair         
+  Wisdom        +0        Save        Fair         
+  Dexterity     +0        Stealth     Fair         
   Constitution  +0        Searching   Fair         
   Charisma      +0        Perception  Fair         
-  Life Rating  100%       Melee       Poor         
-  Experience   100%       Bows        Fair         
+  Life Rating  100%       Melee       Fair         
+  Experience   100%       Archery     Fair         
   
 Mighty
-Mighty raises your physical stats and skills, but reduces stats and 
-skills which influence magic. It makes your stats suitable for a 
-warrior. Also it directly influences your hit-points and spell fail 
-rate.
+Mighty raises your physical stats, skills and stamina, but reduces your 
+magical abilities and gives a slight penalty to your spell fail rates. 
+It is the most warrior-like personality.
 
   Stats                   Skills
-  Strength      +2        Disarming   Very Bad     
-  Intelligence  -2        Device      Very Bad     
-  Wisdom        -2        Save        Very Bad     
-  Dexterity     +0        Stealth     Bad          
+  Strength      +2        Disarming   Bad          
+  Intelligence  -2        Device      Bad          
+  Wisdom        -2        Save        Poor         
+  Dexterity     +0        Stealth     Poor         
   Constitution  +1        Searching   Bad          
   Charisma      +1        Perception  Bad          
-  Life Rating  102%       Melee       Heroic       
-  Experience   100%       Bows        Fair         
+  Life Rating  102%       Melee       Superb       
+  Experience   100%       Archery     Fair         
   
 Shrewd
-Shrewd reduces your physical stats, and raises your intelligence and 
-magical skills. It makes your stats suitable for a mage. Also it 
-directly influences your hit-points and spell fail rate.
+Being Shrewd does not give you an impressive physique, but good device 
+handling embiggens the smallest man; this is the stereotypical Mage 
+personality, yet can also help a warrior complement his weaknesses. 
+Shrewdness has a direct positive influence on spell fail rates.
 
   Stats                   Skills
   Strength      -2        Disarming   Good         
-  Intelligence  +2        Device      Superb       
+  Intelligence  +2        Device      Excellent    
   Wisdom        +0        Save        Fair         
-  Dexterity     +1        Stealth     Poor         
+  Dexterity     +1        Stealth     Fair         
   Constitution  -1        Searching   Bad          
-  Charisma      -1        Perception  Excellent    
-  Life Rating   97%       Melee       Very Bad     
-  Experience   100%       Bows        Bad          
+  Charisma      -1        Perception  Superb       
+  Life Rating   97%       Melee       Bad          
+  Experience   100%       Archery     Poor         
   
 Pious
 Pious deepens your faith in your God. It makes your physical ability 
-average, and your stats suitable for priest.
+average, and your stats suitable for a priest.
 
   Stats                   Skills
-  Strength      +0        Disarming   Very Bad     
+  Strength      +0        Disarming   Bad          
   Intelligence  -1        Device      Fair         
-  Wisdom        +2        Save        Very Good    
-  Dexterity     -1        Stealth     Bad          
-  Constitution  +0        Searching   Very Good    
+  Wisdom        +2        Save        Good         
+  Dexterity     -1        Stealth     Poor         
+  Constitution  +0        Searching   Excellent    
   Charisma      +0        Perception  Bad          
-  Life Rating  100%       Melee       Very Bad     
-  Experience   100%       Bows        Bad          
+  Life Rating  100%       Melee       Poor         
+  Experience   100%       Archery     Poor         
   
 Nimble
-Nimble renders you highly skilled comparatively well, but reduces your 
-physical ability.
+Nimbleness is good for your skills and allows you to move less noisily; 
+but your raw strength is somewhat lacking, and you cannot survive quite 
+as many hits.
 
   Stats                   Skills
-  Strength      -1        Disarming   Superb       
+  Strength      -1        Disarming   Excellent    
   Intelligence  +1        Device      Fair         
-  Wisdom        -1        Save        Bad          
-  Dexterity     +2        Stealth     Fair         
-  Constitution  -1        Searching   Excellent    
-  Charisma      +0        Perception  Excellent    
-  Life Rating   99%       Melee       Poor         
-  Experience   100%       Bows        Superb       
+  Wisdom        -1        Save        Poor         
+  Dexterity     +2        Stealth     Good         
+  Constitution  -1        Searching   Superb       
+  Charisma      +0        Perception  Superb       
+  Life Rating   99%       Melee       Fair         
+  Experience   100%       Archery     Very Good    
   
 Fearless
-Fearless raises your melee skills and force of personality. Stats such 
-as magic defense and constitution are reduced. Also it has a direct bad 
-influence on your hit-points.
-
-  Stats                   Skills
-  Strength      +1        Disarming   Very Bad     
-  Intelligence  +0        Device      Fair         
-  Wisdom        +0        Save        Bad          
-  Dexterity     -1        Stealth     Poor         
-  Constitution  -1        Searching   Good         
-  Charisma      +1        Perception  Bad          
-  Life Rating   98%       Melee       Excellent    
-  Experience   100%       Bows        Fair         
-  
-Combat
-The Combat personality favors melee and shooting at the expense of 
-other skills such as disarming, devices, and saving throws. Strength 
-and agility are enhanced, but intelligence and wisdom are decreased.
+Being Fearless raises your melee skills and force of personality, 
+besides helping you resist fear; but your constitution and hit points 
+are negatively affected.
 
   Stats                   Skills
   Strength      +1        Disarming   Bad          
-  Intelligence  -1        Device      Bad          
-  Wisdom        -1        Save        Very Bad     
-  Dexterity     +1        Stealth     Poor         
+  Intelligence  +0        Device      Fair         
+  Wisdom        +0        Save        Poor         
+  Dexterity     -1        Stealth     Fair         
+  Constitution  -1        Searching   Good         
+  Charisma      +1        Perception  Bad          
+  Life Rating   98%       Melee       Good         
+  Experience   100%       Archery     Fair         
+  
+Combat
+Combative adventurers favor melee and shooting at the expense of other 
+skills such as disarming, device-skill, or saving throw; yet this 
+personality has more subtlety to it than the raw, untempered muscle of 
+Mighty.
+
+  Stats                   Skills
+  Strength      +1        Disarming   Poor         
+  Intelligence  -1        Device      Poor         
+  Wisdom        -1        Save        Poor         
+  Dexterity     +1        Stealth     Fair         
   Constitution  +0        Searching   Poor         
   Charisma      +0        Perception  Good         
-  Life Rating  100%       Melee       Excellent    
-  Experience   100%       Bows        Excellent    
+  Life Rating  100%       Melee       Good         
+  Experience   100%       Archery     Good         
   
 Sexy
-Sexy increases all of your stats and skills, but your haughty attitude 
-will aggravate all monsters.
+Sexy adventurers have excellent stats and skills, but their haughty 
+attitude aggravates all monsters.
 
   Stats                   Skills
   Strength      +1        Disarming   Superb       
-  Intelligence  +1        Device      Excellent    
-  Wisdom        +1        Save        Good         
-  Dexterity     +1        Stealth     Poor         
+  Intelligence  +1        Device      Very Good    
+  Wisdom        +1        Save        Fair         
+  Dexterity     +1        Stealth     Fair         
   Constitution  +1        Searching   Excellent    
   Charisma      +1        Perception  Good         
-  Life Rating  100%       Melee       Superb       
-  Experience   100%       Bows        Superb       
+  Life Rating  100%       Melee       Excellent    
+  Experience   100%       Archery     Very Good    
   
 Lucky
-A Lucky person has poor stats but, surprisingly, can do all things 
+A Lucky adventurer has poor stats but, surprisingly, can do all things 
 well. For some reason, good things seem to happen more often to lucky 
 players.
 
   Stats                   Skills
   Strength      -2        Disarming   Superb       
   Intelligence  -2        Device      Excellent    
-  Wisdom        -2        Save        Good         
-  Dexterity     -2        Stealth     Fair         
-  Constitution  -2        Searching   Superb       
-  Charisma      -2        Perception  Superb       
-  Life Rating   98%       Melee       Heroic       
-  Experience   100%       Bows        Superb       
+  Wisdom        -2        Save        Fair         
+  Dexterity     -2        Stealth     Excellent    
+  Constitution  -2        Searching   Amber[10]    
+  Charisma      -2        Perception  Heroic       
+  Life Rating   98%       Melee       Superb       
+  Experience   100%       Archery     Excellent    
   
 Patient
-A Patient person does things carefully. Patient people have high 
-constitution, and high resilience, but poor abilities in most other 
-skills. Also it directly influences your life rating.
+A Patient adventurer does everything with great care, but not always 
+with great expertise. Patient characters have high constitution and 
+resilience but fairly mediocre skills, and get a slight penalty to 
+spell fail rates.
 
   Stats                   Skills
-  Strength      -1        Disarming   Very Bad     
-  Intelligence  -1        Device      Bad          
-  Wisdom        +1        Save        Good         
-  Dexterity     -2        Stealth     Fair         
+  Strength      -1        Disarming   Bad          
+  Intelligence  -1        Device      Poor         
+  Wisdom        +1        Save        Fair         
+  Dexterity     -2        Stealth     Good         
   Constitution  +2        Searching   Fair         
-  Charisma      +0        Perception  Bad          
-  Life Rating  102%       Melee       Very Bad     
-  Experience   100%       Bows        Bad          
+  Charisma      +0        Perception  Very Bad     
+  Life Rating  102%       Melee       Bad          
+  Experience   100%       Archery     Poor         
   
 Craven
 A Craven person is a coward, preferring to avoid a fight at any cost. 
@@ -169,58 +171,59 @@ impressive, and they can move fast when not fighting; but their stats
 and other skills are somewhat wanting.
 
   Stats                   Skills
-  Strength      -1        Disarming   Excellent    
-  Intelligence  +1        Device      Excellent    
-  Wisdom        +1        Save        Bad          
-  Dexterity     -1        Stealth     Good         
+  Strength      -1        Disarming   Very Good    
+  Intelligence  +1        Device      Very Good    
+  Wisdom        +1        Save        Poor         
+  Dexterity     -1        Stealth     Superb       
   Constitution  -1        Searching   Fair         
   Charisma      -2        Perception  Fair         
   Life Rating   99%       Melee       Very Bad     
-  Experience   100%       Bows        Superb       
+  Experience   100%       Archery     Very Good    
   
 Hasty
 A Hasty person endeavors to do all things quickly. Speed, rather than 
-skill and patience, are paramount, and the Hasty adventurer moves 
-quickly through the dungeon, bungling much.
+skill or care, is paramount, and the Hasty adventurer moves quickly 
+through the dungeon, bungling much.
 
   Stats                   Skills
-  Strength      +0        Disarming   Very Bad     
-  Intelligence  -1        Device      Very Bad     
-  Wisdom        -2        Save        Very Bad     
-  Dexterity     +2        Stealth     Bad          
+  Strength      +0        Disarming   Bad          
+  Intelligence  -1        Device      Bad          
+  Wisdom        -2        Save        Poor         
+  Dexterity     +2        Stealth     Poor         
   Constitution  -1        Searching   Very Bad     
   Charisma      +0        Perception  Bad          
-  Life Rating  100%       Melee       Very Bad     
-  Experience   100%       Bows        Bad          
+  Life Rating  100%       Melee       Poor         
+  Experience   100%       Archery     Poor         
   
 Lazy
-A Lazy person has no good stats and can do no action well. Also it has 
-a direct bad influence on your spell fail rate.
+A Lazy person has no good stats and can do no action well. All fail 
+rates are negatively impacted. Yet some whisper that the less hard you 
+work, the greater the reward...
 
   Stats                   Skills
-  Strength      -2        Disarming   Very Bad     
-  Intelligence  -2        Device      Very Bad     
-  Wisdom        -2        Save        Very Bad     
-  Dexterity     -2        Stealth     Bad          
+  Strength      -2        Disarming   Bad          
+  Intelligence  -2        Device      Bad          
+  Wisdom        -2        Save        Poor         
+  Dexterity     -2        Stealth     Poor         
   Constitution  -2        Searching   Very Bad     
   Charisma      -2        Perception  Bad          
-  Life Rating   95%       Melee       Very Bad     
-  Experience   100%       Bows        Very Bad     
+  Life Rating   95%       Melee       Bad          
+  Experience   100%       Archery     Poor         
   
 Unlucky
 An Unlucky adventurer looks impressive on paper and should, by rights, 
 have an easy time - but somehow their fights don't go quite so 
-smoothly, and the items they most need never seem to drop...
+smoothly, and the items they most need never seem to drop.
 
   Stats                   Skills
-  Strength      +2        Disarming   Very Bad     
+  Strength      +2        Disarming   Bad          
   Intelligence  +2        Device      Good         
   Wisdom        +2        Save        Very Bad     
-  Dexterity     +2        Stealth     Poor         
+  Dexterity     +2        Stealth     Fair         
   Constitution  +2        Searching   Fair         
   Charisma      +2        Perception  Excellent    
-  Life Rating  104%       Melee       Bad          
-  Experience   100%       Bows        Poor         
+  Life Rating  104%       Melee       Fair         
+  Experience   100%       Archery     Fair         
   
 Chaotic
 Chaotic adventurers are servants of the Demon Lords of Chaos, and often 
@@ -229,30 +232,29 @@ level. Their strengths and weaknesses are unpredictable; even their
 stat bonuses are subject to change.
 
   Stats                   Skills
-  Strength      +0        Disarming   Poor         
-  Intelligence  +0        Device      Poor         
-  Wisdom        +0        Save        Poor         
-  Dexterity     +0        Stealth     Poor         
+  Strength      +0        Disarming   Fair         
+  Intelligence  +0        Device      Fair         
+  Wisdom        +0        Save        Fair         
+  Dexterity     +0        Stealth     Fair         
   Constitution  +0        Searching   Fair         
   Charisma      +0        Perception  Fair         
-  Life Rating   99%       Melee       Poor         
-  Experience   100%       Bows        Fair         
+  Life Rating   99%       Melee       Fair         
+  Experience   100%       Archery     Fair         
   
 Mundane
 Mundane adventurers have few talents to speak of, and are incapable of 
 using spells and not very good with magical devices; but their 
-anti-magic allows them to resist the effects of many dangerous magical 
-attacks.
+anti-magic allows them to resist the effects of many dangerous curses.
 
   Stats                   Skills
-  Strength      -1        Disarming   Poor         
-  Intelligence  -1        Device      Very Bad     
-  Wisdom        -1        Save        Superb       
-  Dexterity     -1        Stealth     Poor         
+  Strength      -1        Disarming   Fair         
+  Intelligence  -1        Device      Bad          
+  Wisdom        -1        Save        Excellent    
+  Dexterity     -1        Stealth     Fair         
   Constitution  -1        Searching   Fair         
   Charisma      -1        Perception  Fair         
-  Life Rating   97%       Melee       Poor         
-  Experience   100%       Bows        Fair         
+  Life Rating   97%       Melee       Fair         
+  Experience   100%       Archery     Fair         
   
 Munchkin
 The Munchkin personality is for players who love being overpowered. It 
@@ -261,13 +263,85 @@ the game easily, but gain no honor in doing so.
 
   Stats                   Skills
   Strength      +3        Disarming   Superb       
-  Intelligence  +3        Device      Amber[12]    
-  Wisdom        +3        Save        Heroic       
-  Dexterity     +3        Stealth     Excellent    
-  Constitution  +3        Searching   Amber[15]    
-  Charisma      +3        Perception  Amber[15]    
-  Life Rating  150%       Melee       Amber[62]    
-  Experience    50%       Bows        Amber[27]    
+  Intelligence  +3        Device      Amber[10]    
+  Wisdom        +3        Save        Superb       
+  Dexterity     +3        Stealth     Heroic       
+  Constitution  +3        Searching   Amber[52]    
+  Charisma      +3        Perception  Amber[52]    
+  Life Rating  150%       Melee       Amber[25]    
+  Experience    50%       Archery     Amber[2]     
+  
+Fragile
+As a Fragile adventurer, you lack both self-confidence and physical 
+toughness. Due to your incredibly low stamina, you are quickly 
+exhausted by melee, or ranged combat, or magical combat, or any other 
+strenuous activity. (Maybe you should just stay at home, quietly 
+reading some book that isn't too heavy.)
+
+  Stats                   Skills
+  Strength      -3        Disarming   Fair         
+  Intelligence  +0        Device      Fair         
+  Wisdom        +1        Save        Poor         
+  Dexterity     -1        Stealth     Poor         
+  Constitution  -3        Searching   Good         
+  Charisma      -2        Perception  Good         
+  Life Rating   91%       Melee       Poor         
+  Experience   100%       Archery     Poor         
+  
+Sneaky
+Sneaky adventurers are stealthy and at home with light stabbing 
+weapons; but face-to-face combat with heavier weapons plays against 
+their strengths.
+
+  Stats                   Skills
+  Strength      -3        Disarming   Very Good    
+  Intelligence  +1        Device      Fair         
+  Wisdom        +1        Save        Fair         
+  Dexterity     +2        Stealth     Superb       
+  Constitution  -1        Searching   Excellent    
+  Charisma      +1        Perception  Fair         
+  Life Rating   97%       Melee       Fair         
+  Experience   100%       Archery     Fair         
+  
+Noble
+As a Noble person, you have the benefits of an upper-class upbringing 
+(at least, you consider them benefits). You start with extra money, and 
+seem to have a relatively easy time acquiring even more money; but 
+whether other aspects of the adventuring life will come to you as 
+naturally remains to be seen.
+
+  Stats                   Skills
+  Strength      +0        Disarming   Poor         
+  Intelligence  +0        Device      Fair         
+  Wisdom        +0        Save        Fair         
+  Dexterity     -2        Stealth     Fair         
+  Constitution  -1        Searching   Fair         
+  Charisma      +2        Perception  Fair         
+  Life Rating   99%       Melee       Good         
+  Experience   110%       Archery     Poor         
+  
+Split
+You have multiple personalities, and inherit the upsides and downsides 
+of each. At all times, one of your personalities is dominant, and you 
+receive the full effects of that personality; the remaining 
+personalities are either partially suppressed or fully suppressed. A 
+partially suppressed personality gives reduced stat and skill bonuses, 
+and some other effects (like the walking speed bonus of Craven or the 
+aggravation from Sexy) will be absent entirely, but other parts of the 
+personality apply normally. A fully dormant personality has no effect 
+on you at the moment, but may resurface later! Level gains, and the 
+trauma of taking heavy damage, can cause previously suppressed 
+personalities to become dominant and vice versa.
+
+  Stats                   Skills
+  Strength      +0        Disarming   Fair         
+  Intelligence  +0        Device      Fair         
+  Wisdom        +0        Save        Fair         
+  Dexterity     +0        Stealth     Fair         
+  Constitution  +0        Searching   Fair         
+  Charisma      +0        Perception  Fair         
+  Life Rating  100%       Melee       Fair         
+  Experience   100%       Archery     Fair         
   
 Table 1 - Personality Statistic Bonus Table
 
@@ -289,53 +363,65 @@ Unlucky         +2   +2   +2   +2   +2   +2  104%  100%
 Chaotic         +0   +0   +0   +0   +0   +0   99%  100%
 Mundane         -1   -1   -1   -1   -1   -1   97%  100%
 Munchkin        +3   +3   +3   +3   +3   +3  150%   50%
+Fragile         -3   +0   +1   -1   -3   -2   91%  100%
+Sneaky          -3   +1   +1   +2   -1   +1   97%  100%
+Noble           +0   +0   +0   -2   -1   +2   99%  110%
+Split           +0   +0   +0   +0   +0   +0  100%  100%
 
 
 Table 2 - Personality Skill Bonus Table I
 
              Disarming     Device        Save          Stealth      
-Ordinary     Poor          Poor          Poor          Poor         
-Mighty       Very Bad      Very Bad      Very Bad      Bad          
-Shrewd       Good          Superb        Fair          Poor         
-Pious        Very Bad      Fair          Very Good     Bad          
-Nimble       Superb        Fair          Bad           Fair         
-Fearless     Very Bad      Fair          Bad           Poor         
-Combat       Bad           Bad           Very Bad      Poor         
-Sexy         Superb        Excellent     Good          Poor         
-Lucky        Superb        Excellent     Good          Fair         
-Patient      Very Bad      Bad           Good          Fair         
-Craven       Excellent     Excellent     Bad           Good         
-Hasty        Very Bad      Very Bad      Very Bad      Bad          
-Lazy         Very Bad      Very Bad      Very Bad      Bad          
-Unlucky      Very Bad      Good          Very Bad      Poor         
-Chaotic      Poor          Poor          Poor          Poor         
-Mundane      Poor          Very Bad      Superb        Poor         
-Munchkin     Superb        Amber[12]     Heroic        Excellent    
+Ordinary     Fair          Fair          Fair          Fair         
+Mighty       Bad           Bad           Poor          Poor         
+Shrewd       Good          Excellent     Fair          Fair         
+Pious        Bad           Fair          Good          Poor         
+Nimble       Excellent     Fair          Poor          Good         
+Fearless     Bad           Fair          Poor          Fair         
+Combat       Poor          Poor          Poor          Fair         
+Sexy         Superb        Very Good     Fair          Fair         
+Lucky        Superb        Excellent     Fair          Excellent    
+Patient      Bad           Poor          Fair          Good         
+Craven       Very Good     Very Good     Poor          Superb       
+Hasty        Bad           Bad           Poor          Poor         
+Lazy         Bad           Bad           Poor          Poor         
+Unlucky      Bad           Good          Very Bad      Fair         
+Chaotic      Fair          Fair          Fair          Fair         
+Mundane      Fair          Bad           Excellent     Fair         
+Munchkin     Superb        Amber[10]     Superb        Heroic       
+Fragile      Fair          Fair          Poor          Poor         
+Sneaky       Very Good     Fair          Fair          Superb       
+Noble        Poor          Fair          Fair          Fair         
+Split        Fair          Fair          Fair          Fair         
 
 
 Table 3 - Personality Skill Bonus Table II
 
-             Searching     Perception    Melee         Bows         
-Ordinary     Fair          Fair          Poor          Fair         
-Mighty       Bad           Bad           Heroic        Fair         
-Shrewd       Bad           Excellent     Very Bad      Bad          
-Pious        Very Good     Bad           Very Bad      Bad          
-Nimble       Excellent     Excellent     Poor          Superb       
-Fearless     Good          Bad           Excellent     Fair         
-Combat       Poor          Good          Excellent     Excellent    
-Sexy         Excellent     Good          Superb        Superb       
-Lucky        Superb        Superb        Heroic        Superb       
-Patient      Fair          Bad           Very Bad      Bad          
-Craven       Fair          Fair          Very Bad      Superb       
-Hasty        Very Bad      Bad           Very Bad      Bad          
-Lazy         Very Bad      Bad           Very Bad      Very Bad     
-Unlucky      Fair          Excellent     Bad           Poor         
-Chaotic      Fair          Fair          Poor          Fair         
-Mundane      Fair          Fair          Poor          Fair         
-Munchkin     Amber[15]     Amber[15]     Amber[62]     Amber[27]    
+             Searching     Perception    Melee         Archery      
+Ordinary     Fair          Fair          Fair          Fair         
+Mighty       Bad           Bad           Superb        Fair         
+Shrewd       Bad           Superb        Bad           Poor         
+Pious        Excellent     Bad           Poor          Poor         
+Nimble       Superb        Superb        Fair          Very Good    
+Fearless     Good          Bad           Good          Fair         
+Combat       Poor          Good          Good          Good         
+Sexy         Excellent     Good          Excellent     Very Good    
+Lucky        Amber[10]     Heroic        Superb        Excellent    
+Patient      Fair          Very Bad      Bad           Poor         
+Craven       Fair          Fair          Very Bad      Very Good    
+Hasty        Very Bad      Bad           Poor          Poor         
+Lazy         Very Bad      Bad           Bad           Poor         
+Unlucky      Fair          Excellent     Fair          Fair         
+Chaotic      Fair          Fair          Fair          Fair         
+Mundane      Fair          Fair          Fair          Fair         
+Munchkin     Amber[52]     Amber[52]     Amber[25]     Amber[2]     
+Fragile      Good          Good          Poor          Poor         
+Sneaky       Excellent     Fair          Fair          Fair         
+Noble        Fair          Fair          Good          Poor         
+Split        Fair          Fair          Fair          Fair         
 
 
 
 
-Automatically generated for FrogComposband 7.0.cloudberry.
+Automatically generated for FrogComposband 7.1.liquorice.
 
