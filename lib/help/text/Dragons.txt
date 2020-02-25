@@ -1,34 +1,35 @@
 Dragons
 
-Dragons are powerful winged serpents. They are the strongest fighters 
-with razor sharp claws and a bone crushing bite. Each dragon has a 
-unique type of breath that becomes more deadly as the dragon grows and 
-matures.
+Dragons are powerful winged serpents. They are strong in combat, with 
+razor-sharp claws and a bone-crushing bite; but even more legendary is 
+their breath, which grows ever more deadly as the dragon matures.
  
 Due to their non-humanoid bodies, dragons are unable to wear armor, 
-gloves or boots. However, being creatures of magic, they are able to 
-wear 6 rings. They can also wear a helmet, a light source, a cloak and 
+gloves or boots; however, being creatures of magic, they may equip up 
+to six rings. They can also wear a helmet, a light source, a cloak and 
 an amulet. Because of these equipment restrictions, dragons may have a 
-difficult time covering all resistances despite the fact that each 
-dragon has one or more innate resistances (or even immunities).
+difficult time covering all resistances; but each dragon has at least 
+one innate resistance, maybe even an immunity.
  
 Dragons begin life in a weak form, being very young. As their bodies 
-mature, their scales grow tough and their claws sharp. Their breath 
-grows more deadly and they frequently gain additional magical powers 
-and resistances. All dragons can fly, but younger dragons are not so 
-quick as their elders.
+mature, their scales grow tough and their claws sharp. Their breaths 
+become stronger and stronger, and they frequently gain additional 
+magical powers and resistances. All dragons can fly, but younger 
+dragons are not so quick as their elders.
  
-Dragons are magical creatures, and each dragon may choose to specialize 
-in a specific type of magic. This magic does not require books to learn 
-and also has a direct influence on the dragon's stats and skills.
+With the exception of Steel Dragons, who are far less intelligent than 
+their kin and rely on brute force only, each dragon may choose to 
+specialize in a specific type of magic. These special dragon-magic 
+realms do not require books to learn. The selection of a realm has a 
+direct influence on the stats and skills of the dragon.
 
 For more information on Dragon Realms, see [a].
 
 Red Dragon
-Red Dragons are elemental dragons of fire and are the second strongest 
+Red Dragons are elemental dragons of fire, and the second-strongest 
 fighters among dragons. Their fiery breaths are the stuff of legends 
 with damage unsurpassed. Even their bites are likely to burn their 
-opponents rendering their melee damage quite impressive. As the Red 
+opponents, further enhancing their deadliness in melee. As the Red 
 Dragon matures, it becomes more and more resistant to fire, eventually 
 gaining total immunity.
 
@@ -36,216 +37,200 @@ gaining total immunity.
   Strength      +4        Disarming   Fair         
   Intelligence  +2        Device      Good         
   Wisdom        +1        Save        Fair         
-  Dexterity     +1        Stealth     Fair         
+  Dexterity     +1        Stealth     Poor         
   Constitution  +3        Searching   Fair         
   Charisma      +2        Perception  Fair         
   Life Rating  115%       Melee       Excellent    
-  Base HP       40        Bows        Bad          
+  Base HP       40        Archery     Bad          
   Experience   250%       Infravision 50'
   
 White Dragon
 White Dragons are to cold what Red Dragons are to fire. Their melee is 
-truly awe-inspiring and their icy breath can be felt even in their 
-bite. Like Red Dragons, White Dragons have the most deadly breath 
-possible among dragonkind and they too become more and more resistant 
-to cold as they mature.
+awe-inspiring, and their icy breath can be felt even in their bite. 
+Together with Red Dragons, they have the deadliest breaths among 
+dragonkind; and they become more and more resistant to cold as they 
+mature, eventually attaining immunity.
 
   Stats                   Skills
   Strength      +4        Disarming   Fair         
   Intelligence  +2        Device      Good         
   Wisdom        +1        Save        Fair         
-  Dexterity     +1        Stealth     Fair         
+  Dexterity     +1        Stealth     Poor         
   Constitution  +3        Searching   Fair         
   Charisma      +2        Perception  Fair         
   Life Rating  115%       Melee       Excellent    
-  Base HP       40        Bows        Bad          
+  Base HP       40        Archery     Bad          
   Experience   250%       Infravision 50'
   
 Blue Dragon
-Blue Dragons are elemental dragons of lightning. Their melee and 
-breaths are not so strong as their Red and White brethren, but 
-lightning is a bit more useful than fire or cold. Their bites 
-eventually shock their foes. Blue Dragons become more and more 
-resistant to lightning as they mature.
+Blue Dragons are elemental dragons of lightning. Their breaths are as 
+strong as those of their Red and White brethren, their melee somewhat 
+weaker but still mighty, and their bites eventually shock their foes. 
+Blue Dragons become more and more resistant to lightning as they 
+mature, eventually gaining total immunity.
 
   Stats                   Skills
   Strength      +4        Disarming   Fair         
   Intelligence  +2        Device      Good         
   Wisdom        +1        Save        Fair         
-  Dexterity     +1        Stealth     Fair         
+  Dexterity     +1        Stealth     Poor         
   Constitution  +3        Searching   Fair         
   Charisma      +2        Perception  Fair         
   Life Rating  115%       Melee       Excellent    
-  Base HP       40        Bows        Bad          
+  Base HP       40        Archery     Bad          
   Experience   250%       Infravision 50'
   
 Black Dragon
-Black Dragons are to acid what Blue Dragons are to lightning. Like the 
-Blue Dragon, their breaths and melee fall short of their Red and White 
-brethren. As they mature, their bites corrode their enemies and the 
-Black Dragon also becomes more and more resistant to acid.
+Black Dragons are to acid what Blue Dragons are to lightning. Their 
+breaths are as strong as those of their Red, White and Blue kin; and 
+fewer monsters resist acid, giving them an extra opening. As the Black 
+Dragon matures, its bites become corrosive, and it grows more resistant 
+to acid until it reaches immunity.
 
   Stats                   Skills
   Strength      +4        Disarming   Fair         
   Intelligence  +2        Device      Good         
   Wisdom        +1        Save        Fair         
-  Dexterity     +1        Stealth     Fair         
+  Dexterity     +1        Stealth     Poor         
   Constitution  +3        Searching   Fair         
   Charisma      +2        Perception  Fair         
   Life Rating  115%       Melee       Excellent    
-  Base HP       40        Bows        Bad          
+  Base HP       40        Archery     Bad          
   Experience   250%       Infravision 50'
   
 Green Dragon
-Green Dragons are elemental dragons of poison. They are not so strong 
-as Red or White dragons, but are still fearsome opponents. As they 
-mature, their bites poison their enemies. Also, Green Dragons become 
-more and more resistant to poison.
+Green Dragons are elemental dragons of venom. They are not quite as 
+strong as Red or White dragons, but are still fearsome opponents. As 
+they mature, their bites poison their enemies. Green Dragons become 
+more and more resistant to poison over time, eventually achieving 
+immunity.
 
   Stats                   Skills
   Strength      +4        Disarming   Fair         
   Intelligence  +2        Device      Good         
   Wisdom        +1        Save        Fair         
-  Dexterity     +1        Stealth     Fair         
+  Dexterity     +1        Stealth     Poor         
   Constitution  +3        Searching   Fair         
   Charisma      +2        Perception  Fair         
   Life Rating  115%       Melee       Excellent    
-  Base HP       40        Bows        Bad          
+  Base HP       40        Archery     Bad          
   Experience   250%       Infravision 50'
   
 Shadow Drake
-Shadow Drakes are bit more stealthy than your average dragon. They are 
-creatures of nether and eventually evolve into Death Drakes. Their 
-melee is the weakest among dragonkind and their breaths also are 
-lacking, but they still make fearsome opponents. As they advance, these 
-dragons eventually gain the ability to pass through walls and also 
-become more and more resistant to nether.
+Shadow Drakes are among the stealthiest of dragons. They are creatures 
+of nether, and eventually evolve into Death Drakes and Spectral Wyrms. 
+Their melee is the weakest among dragonkind and their breaths are also 
+somewhat lacking, but they still make fearsome opponents. As they 
+advance, these dragons gain the ability to pass through walls, and 
+acquire several resistances including immunity to nether.
 
   Stats                   Skills
   Strength      +2        Disarming   Fair         
   Intelligence  +1        Device      Good         
   Wisdom        -1        Save        Good         
-  Dexterity     -1        Stealth     Very Good    
+  Dexterity     -1        Stealth     Good         
   Constitution  +0        Searching   Fair         
   Charisma      +2        Perception  Fair         
-  Life Rating   95%       Melee       Fair         
-  Base HP       40        Bows        Bad          
+  Life Rating   95%       Melee       Good         
+  Base HP       40        Archery     Bad          
   Experience   300%       Infravision 50'
   
 Law Drake
 Law Drakes are powerful dragons of order. They can breathe sound or 
-shards and eventually evolve into Great Wyrms of Law, though not so 
+shards and eventually evolve into Great Wyrms of Law, though not as 
 quickly as you might hope. Their breaths are much weaker than those of 
-the elemental dragons but very few monsters resist sound or shards. 
-Their melee is among the weakest of all dragonkind but they still fight 
-rather well ... What dragon doesn't?
+the elemental dragons, but far fewer monsters resist sound or shards. 
+Their melee is also on the weak side by dragon standards, but most 
+lesser creatures would be quite happy with it!
 
   Stats                   Skills
   Strength      +0        Disarming   Fair         
   Intelligence  -1        Device      Excellent    
-  Wisdom        -2        Save        Very Good    
-  Dexterity     -2        Stealth     Fair         
+  Wisdom        -2        Save        Good         
+  Dexterity     -2        Stealth     Poor         
   Constitution  -1        Searching   Fair         
   Charisma      -1        Perception  Fair         
   Life Rating  100%       Melee       Good         
-  Base HP       40        Bows        Bad          
+  Base HP       40        Archery     Bad          
   Experience   280%       Infravision 50'
   
 Chaos Drake
 Chaos Drakes are powerful dragons of chaos. They can breathe chaos or 
 disenchantment and eventually evolve into Great Wyrms of Chaos, though 
-not so quickly as you might hope. Their breaths are much weaker than 
-those of the elemental dragons but fewer monsters resist chaos or 
-disenchantment. Their melee is among the weakest of all dragonkind but 
-they still fight rather well ... What dragon doesn't?
+not as quickly as you might hope. Their breaths are much weaker than 
+those of the elemental dragons, but far fewer monsters resist chaos or 
+disenchantment; and though their melee is weak for a dragon, by more 
+typical standards they fight quite well.
 
   Stats                   Skills
   Strength      +0        Disarming   Fair         
   Intelligence  -1        Device      Excellent    
-  Wisdom        -2        Save        Very Good    
-  Dexterity     -2        Stealth     Fair         
+  Wisdom        -2        Save        Good         
+  Dexterity     -2        Stealth     Poor         
   Constitution  -1        Searching   Fair         
   Charisma      -1        Perception  Fair         
   Life Rating  100%       Melee       Good         
-  Base HP       40        Bows        Bad          
+  Base HP       40        Archery     Bad          
   Experience   280%       Infravision 50'
   
 Balance Drake
 Balance Drakes are a blend of Chaos and Law Drakes. They can breathe 
 sound, shards, chaos or disenchantment and eventually evolve into Great 
-Wyrms of Balance, though not so quickly as you might hope. Their 
-breaths are much weaker than those of the elemental dragons and they 
-are weaker than either of Chaos or Law Drakes, though not by much.
+Wyrms of Balance. Their breaths and attacks are weaker than those of 
+Chaos and Law Drakes, but not by much.
 
   Stats                   Skills
   Strength      +0        Disarming   Fair         
   Intelligence  -1        Device      Good         
   Wisdom        -2        Save        Fair         
-  Dexterity     -2        Stealth     Fair         
+  Dexterity     -2        Stealth     Poor         
   Constitution  -1        Searching   Fair         
   Charisma      -1        Perception  Fair         
-  Life Rating   95%       Melee       Fair         
-  Base HP       40        Bows        Bad          
+  Life Rating   95%       Melee       Good         
+  Base HP       40        Archery     Bad          
   Experience   300%       Infravision 50'
   
 Ethereal Drake
-Ethereal Drakes are dragons of light and darkness. They actually begin 
-life as Pseudo Dragons but quickly evolve into Ethereal Drakes and then 
+Ethereal Drakes are dragons of light and darkness. They begin life as 
+modest Pseudo Dragons, but quickly evolve into Ethereal Drakes and then 
 Ethereal Dragons. As they mature, they gain the ability to pass through 
 walls and become more and more resistant to light, darkness and 
 confusion. They are fairly weak fighters and have the weakest breaths 
-in all of dragonkind (except for Steel Dragons which cannot breathe at 
-all).
+in all of dragonkind, except for Steel Dragons which cannot breathe at 
+all.
 
   Stats                   Skills
   Strength      +2        Disarming   Fair         
   Intelligence  +1        Device      Good         
   Wisdom        -1        Save        Good         
-  Dexterity     +0        Stealth     Very Good    
+  Dexterity     +0        Stealth     Good         
   Constitution  +1        Searching   Fair         
   Charisma      +1        Perception  Fair         
-  Life Rating  102%       Melee       Fair         
-  Base HP       40        Bows        Bad          
+  Life Rating  102%       Melee       Good         
+  Base HP       40        Archery     Bad          
   Experience   250%       Infravision 50'
   
 Crystal Drake
 Crystal Drakes are dragons of a strange crystalline form. They breathe 
-shards and melee powerfully with razor sharp claws and teeth. At high 
-levels, they gain the power of reflection.
+shards and fight powerfully with their razor-sharp claws and teeth. At 
+high levels, they gain the power of reflection.
 
   Stats                   Skills
   Strength      +1        Disarming   Fair         
   Intelligence  -1        Device      Fair         
-  Wisdom        -2        Save        Excellent    
-  Dexterity     +0        Stealth     Fair         
+  Wisdom        -2        Save        Very Good    
+  Dexterity     +0        Stealth     Poor         
   Constitution  +0        Searching   Fair         
   Charisma      +0        Perception  Fair         
-  Life Rating  100%       Melee       Superb       
-  Base HP       40        Bows        Bad          
+  Life Rating  100%       Melee       Excellent    
+  Base HP       40        Archery     Bad          
   Experience   275%       Infravision 50'
   
 Bronze Dragon
-Bronze Dragons are wyrms of confusion. While they are not quite as 
+Bronze Dragons are wyrms of perplexity. While they are not quite as 
 strong as most other dragons, they eventually confuse monsters with 
-their bite attack. Also, they become more and more resistant to 
+their bite attack; also, they become more and more resistant to 
 confusion as they mature.
-
-  Stats                   Skills
-  Strength      +4        Disarming   Fair         
-  Intelligence  +3        Device      Good         
-  Wisdom        +0        Save        Good         
-  Dexterity     +2        Stealth     Good         
-  Constitution  +3        Searching   Fair         
-  Charisma      +3        Perception  Fair         
-  Life Rating  110%       Melee       Good         
-  Base HP       40        Bows        Bad          
-  Experience   250%       Infravision 50'
-  
-Gold Dragon
-Gold Dragons are wyrms of sound. While they are not quite as strong as 
-most other dragons, they are able to breathe sound on command, stunning 
-their foes. Also, they become more and more resistant to sound as they 
-mature.
 
   Stats                   Skills
   Strength      +4        Disarming   Fair         
@@ -254,8 +239,25 @@ mature.
   Dexterity     +2        Stealth     Fair         
   Constitution  +3        Searching   Fair         
   Charisma      +3        Perception  Fair         
-  Life Rating  110%       Melee       Excellent    
-  Base HP       40        Bows        Bad          
+  Life Rating  110%       Melee       Good         
+  Base HP       40        Archery     Bad          
+  Experience   250%       Infravision 50'
+  
+Gold Dragon
+Gold Dragons are wyrms of sound. While they are not quite as strong as 
+most other dragons, they are able to breathe sound on command, stunning 
+their foes; also, they become more and more resistant to sound as they 
+mature.
+
+  Stats                   Skills
+  Strength      +4        Disarming   Fair         
+  Intelligence  +3        Device      Good         
+  Wisdom        +0        Save        Good         
+  Dexterity     +2        Stealth     Poor         
+  Constitution  +3        Searching   Fair         
+  Charisma      +3        Perception  Fair         
+  Life Rating  110%       Melee       Very Good    
+  Base HP       40        Archery     Bad          
   Experience   250%       Infravision 50'
   
 Steel Dragon
@@ -264,20 +266,20 @@ their form hardens from stone into steel. Needless to say, their armor
 class is phenomenal, but their dexterity actually decreases with 
 maturity. Steel dragons begin life being susceptible to cold damage, 
 though they will eventually outgrow this vulnerability. They are not as 
-fast as other dragons and they have no powers whatsoever, not even the 
+fast as other dragons and have no powers whatsoever, not even the 
 ubiquitous dragon breath! But their fighting is impossibly strong, 
 putting all the other dragons to complete and utter shame. They also 
-have the most hitpoints of all dragons.
+have extremely high hitpoints.
 
   Stats                   Skills
   Strength      +8        Disarming   Fair         
   Intelligence  -6        Device      Bad          
   Wisdom        -6        Save        Superb       
-  Dexterity     -3        Stealth     Poor         
+  Dexterity     -3        Stealth     Bad          
   Constitution  +7        Searching   Bad          
   Charisma      +3        Perception  Bad          
   Life Rating  137%       Melee       Superb       
-  Base HP       40        Bows        Bad          
+  Base HP       40        Archery     Bad          
   Experience   250%       Infravision 50'
   
 Table 1 - Dragon Statistic Bonus Table
@@ -302,42 +304,42 @@ Steel Dragon       +8   -6   -6   -3   +7   +3  137%  +40  250%  130%
 Table 2 - Dragon Skill Bonus Table I
 
                   Disarming     Device        Save          Stealth      
-Red Dragon        Fair          Good          Fair          Fair         
-White Dragon      Fair          Good          Fair          Fair         
-Blue Dragon       Fair          Good          Fair          Fair         
-Black Dragon      Fair          Good          Fair          Fair         
-Green Dragon      Fair          Good          Fair          Fair         
-Shadow Drake      Fair          Good          Good          Very Good    
-Law Drake         Fair          Excellent     Very Good     Fair         
-Chaos Drake       Fair          Excellent     Very Good     Fair         
-Balance Drake     Fair          Good          Fair          Fair         
-Ethereal Drake    Fair          Good          Good          Very Good    
-Crystal Drake     Fair          Fair          Excellent     Fair         
-Bronze Dragon     Fair          Good          Good          Good         
-Gold Dragon       Fair          Good          Good          Fair         
-Steel Dragon      Fair          Bad           Superb        Poor         
+Red Dragon        Fair          Good          Fair          Poor         
+White Dragon      Fair          Good          Fair          Poor         
+Blue Dragon       Fair          Good          Fair          Poor         
+Black Dragon      Fair          Good          Fair          Poor         
+Green Dragon      Fair          Good          Fair          Poor         
+Shadow Drake      Fair          Good          Good          Good         
+Law Drake         Fair          Excellent     Good          Poor         
+Chaos Drake       Fair          Excellent     Good          Poor         
+Balance Drake     Fair          Good          Fair          Poor         
+Ethereal Drake    Fair          Good          Good          Good         
+Crystal Drake     Fair          Fair          Very Good     Poor         
+Bronze Dragon     Fair          Good          Good          Fair         
+Gold Dragon       Fair          Good          Good          Poor         
+Steel Dragon      Fair          Bad           Superb        Bad          
 
 
 Table 3 - Dragon Skill Bonus Table II
 
-                  Searching     Perception    Melee         Bows          Infra
+                  Searching     Perception    Melee         Archery       Infra
 Red Dragon        Fair          Fair          Excellent     Bad             50'
 White Dragon      Fair          Fair          Excellent     Bad             50'
 Blue Dragon       Fair          Fair          Excellent     Bad             50'
 Black Dragon      Fair          Fair          Excellent     Bad             50'
 Green Dragon      Fair          Fair          Excellent     Bad             50'
-Shadow Drake      Fair          Fair          Fair          Bad             50'
+Shadow Drake      Fair          Fair          Good          Bad             50'
 Law Drake         Fair          Fair          Good          Bad             50'
 Chaos Drake       Fair          Fair          Good          Bad             50'
-Balance Drake     Fair          Fair          Fair          Bad             50'
-Ethereal Drake    Fair          Fair          Fair          Bad             50'
-Crystal Drake     Fair          Fair          Superb        Bad             50'
+Balance Drake     Fair          Fair          Good          Bad             50'
+Ethereal Drake    Fair          Fair          Good          Bad             50'
+Crystal Drake     Fair          Fair          Excellent     Bad             50'
 Bronze Dragon     Fair          Fair          Good          Bad             50'
-Gold Dragon       Fair          Fair          Excellent     Bad             50'
+Gold Dragon       Fair          Fair          Very Good     Bad             50'
 Steel Dragon      Bad           Bad           Superb        Bad             50'
 
 
 
 
-Automatically generated for FrogComposband 7.0.cloudberry.
+Automatically generated for FrogComposband 7.1.liquorice.
 
