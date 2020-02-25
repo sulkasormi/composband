@@ -8,25 +8,24 @@
 static cptr _desc =
     "Leprechauns are small, mischievous creatures, always scheming for gold. "
     "They are weak, but quick and stealthy. For combat, they prefer not to use "
-    "weapons at all. Rather, by keeping their weapon hand free, they may pilfer "
-    "objects or gold from their foes and flee to safety, all in a single action. However, "
-    "they are capable of fighting with normal weapons should the need arise, but "
+    "weapons at all; rather, by keeping their weapon hand free, they may pilfer "
+    "objects or gold from their foes and flee to safety, all in a single action. "
+    "They are capable of fighting with normal weapons should the need arise, but "
     "one seldom hears of leprechauns inspiring fear in combat!\n \n"
-    "Leprechauns value riches above all else and even begin the game with their "
+    "Leprechauns value riches above all else, and even begin the game with their "
     "legendary pot of gold. Leprechauns also have the luck of the Irish, and good "
-    "drops are more common for them. For magic, the leprechaun has a few talents "
-    "and even a bit of cursing offense (Malicious and Death Leprechauns are vile, "
-    "evil creatures, after all). They are masters of teleportation and detection. And while "
-    "one never fears their combat (though one despises their thievery, of course), they "
+    "drops are more common for them. For magic, the leprechaun has a few talents, "
+    "even including some curses for offense; Malicious Leprechauns and Death Leprechauns are vile, "
+    "evil creatures, after all. They are masters of teleportation and detection; and while "
+    "their melee skills do not inspire much fear (except of poverty), they "
     "are great masters of bow and device alike. At high levels, they move with incredible "
     "speed and seem to be in multiple places at once. Dexterity determines the leprechaun's "
     "skill with their magic.\n \n"
-    "The leprechaun uses gold for spell casting the way other players use mana. Gold is "
+    "A leprechaun uses gold for spellcasting the way most characters use mana. Gold is "
     "also used to pay for recharging devices or to power mana branded weapons. In addition, "
     "increasing the amount of gold on hand increases the power of the leprechaun, granting "
-    "extra blows per round, extra shots per round, increased AC, life rating and even "
-    "increasing their power with magical devices. To succeed in life, greed is obviously "
-    "the primary virtue of the leprechaun!";
+    "extra blows per round, extra shots per round, and increased AC and life rating; sufficient gold even "
+    "increases the power of magical devices. Needless to say, greed is good when you're a leprechaun!";
 
 static void _birth(void)
 {
@@ -226,11 +225,11 @@ static void _calc_bonuses(void)
     p_ptr->to_a += ac;
     p_ptr->dis_to_a += ac;
 
-    if (p_ptr->au >= 10 * 1000 * 1000)
+    if (p_ptr->au >= 10000000L)
     {
         p_ptr->device_power += 2;
     }
-    else if (p_ptr->au >= 5 * 1000 * 1000)
+    else if (p_ptr->au >= 5000000L)
     {
         p_ptr->device_power += 1;
     }
