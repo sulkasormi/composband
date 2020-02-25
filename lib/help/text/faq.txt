@@ -56,14 +56,14 @@ mode.
 Q: What is "coffee-break mode"? How does it differ from normal play?
 
 A: Coffee-break mode is a quicker, simpler and more streamlined version 
-of the game. There is no wilderness, only one town (the "Light Town" 
+of the game. There is no wilderness, only one town (the "Lite-Town" 
 version of Outpost) and only one dungeon (Angband). Experience gain 
 (and many forms of proficiency gain) are greatly accelerated, monster 
 drops are improved, and the player receives bonus fame for reforging 
 purposes. All stairs in the dungeon are two-level shafts, and forced 
 descent is turned on. Small levels generate more often in the early 
 part of the game, but become rarer (and less small) towards the 
-endgame. Unlike normal forced-descent play, the player is allowed to 
+endgame. Unlike other forced-descent play, the player is allowed to 
 recall back to town, as well as to skip random dungeon quests by 
 recalling (although recalling out of a quest incurs a large fame 
 penalty).
@@ -93,6 +93,25 @@ In normal play every down staircase is matched by an up staircase, so
 you can simply walk back, though recalling is still usually faster.
 
 
+Q: How do I search for things in the help system (or on my character 
+sheet, or in my Recent Messages)?
+
+A: First, locate the right document. Then press '/' if you want to 
+search forward in the document, and '\' if you want to search backward; 
+after this, type the search term and press ENTER. Note that searches 
+are case-sensitive. To search for the next occurrence of the same term, 
+simply press '/' (or '\') again and then ENTER; the search term does 
+not need to be typed in again.
+
+A successful search moves you to the part of the document where the 
+search term appears, and highlights the term in yellow. If this does 
+not happen, the term you searched for does not appear in the document, 
+at least not in that direction. (If your search term was very long, you 
+can try a shorter search term and see if it makes any difference.)
+
+Press '?' for other commands that can be used within the help system.
+
+
 Q: I keep dying! What am I doing wrong?
 
 A: Don't worry - this is an expected part of the development curve for 
@@ -106,9 +125,9 @@ you will fail at the wrong time eventually. Try to avoid situations
 where you are one fail away from death.
    
 At the same time, it is much better to have an item that saves you 97% 
-of the time than to not have that item! In particular, Staffs of 
+of the time than to not have that item! In particular, Staves of 
 Teleport are a key helper that will often get you out of a tough spot; 
-unlike scrolls of teleportation, staffs can be used while confused, 
+unlike scrolls of teleportation, staves can be used while confused, 
 which is often critical in the early midgame before the player acquires 
 resistance to confusion.
 
@@ -140,6 +159,12 @@ At the opposite end, yeek tourists and snotling tourists are extremely
 weak combinations, used by players looking for the ultimate challenge.
 
 
+Q: How do I put arrows (or other projectiles) in my quiver?
+
+A: First press 'w' (the "wear"/"wield" command) to equip the quiver, 
+then press 'w' again to put the arrows in the quiver.
+
+
 Q: The game is offering me a stat-up. What should I invest in?
 
 A: Choose a statistic your character needs; for example, on a melee 
@@ -155,9 +180,18 @@ Q: The game is offering me a demigod power. Which one should I pick?
 
 A: It depends on what your character needs; take your time to read the 
 descriptions of all the powers to see which one suits you best. 
-Generally, though, Unyielding and Fleet of Foot are both very strong 
-options and are good "default" picks if you don't feel comfortable 
-selecting something more exotic.
+Generally, though, Evasion, Unyielding and Fleet of Foot are all very 
+strong options and are good "default" picks if you don't feel 
+comfortable selecting something more exotic.
+
+
+Q: My nice sword is described as (2d6) (+10,+15) [+5] (+4) - what are 
+all those weird numbers?
+
+A: In this particular example, 2d6 are your damage dice (you roll two 
+6-sided dice), +10 is a bonus to accuracy, +15 is a bonus to damage, 
+[+5] is a bonus to armor class and (+4) indicates the size of various 
+other bonuses. See [a] and [b] for more generic answers.
 
 
 Q: I have found lots of cool items, but the monsters I meet keep 
@@ -184,12 +218,12 @@ cannot be harmed by acid.
 
 Q: I got bored in Outpost so I headed into the wilderness... and I'm 
 still there searching endlessly down one road after another looking for 
-a town.  Where are other towns and dungeons?
+a town. Where are other towns and dungeons?
 
 A: You need to use the global wilderness map (press the < key on the 
-ground level).  This gives you a scaled map of the world (often called 
+ground level). This gives you a scaled map of the world (often called 
 the "overworld map"), where you can travel to other towns and dungeons 
-more easily.  It is possible to reach any location in the game without 
+more easily. It is possible to reach any location in the game without 
 using the overworld map (most roads do lead somewhere); but such an 
 approach will take you much longer and also entail more risk, since 
 monsters won't attack you as often if you travel through the overworld 
@@ -226,49 +260,87 @@ map I can't see a dungeon entrance anywhere. What's wrong?
 
 A: Dungeon entrances in the wilderness can sometimes be tricky to 
 locate because one square on the overworld map corresponds to a fairly 
-large area on the normal map. First, press ] or Ctrl+O (the object list 
-commands) to confirm there is indeed no entrance in sight. If the lack 
-of an entrance is confirmed by the object list, explore the nearby area 
-until you find the dungeon; most commonly you'll have to travel further 
-in the same direction you last moved in on the overworld map. If you 
+large area on the normal map. If you exit the overworld map in the 
+right square but the entrance is still far enough away to be out of 
+sight, the game will tell you which direction it's in (e.g. "The 
+Angband entrance doesn't appear to be within sight. Perhaps it's a bit 
+further to the east?"). If no such hint appears, the entrance is within 
+sight, you've just missed it; press ] or O (the object list commands) 
+to see where it is. If such a hint does appear, explore the nearby area 
+in the direction indicated, pressing ] or O occasionally to make sure 
+you don't miss the entrance. If you feel you've walked a long way and 
 still can't find the entrance, check the overworld map to confirm you 
 haven't moved out of the right area, and then try again.
 
 
 Q: I want to play as an Android, Balrog, Golem, Skeleton, Zombie, 
-Spectre, or Ent.  But I can't find any scrolls of satisfy hunger. And 
-Berserkers no longer have racial ability of satisfy hunger. How do I 
-avoid starvation?
+Spectre, or Ent. But normal food doesn't seem to work for me, and there 
+are no reliable sources of Satisfy Hunger. How do I avoid starvation?
 
-A: Scrolls of Satisfy Hunger and the Berserker ability of Satisfy 
-Hunger are obsoleted, and races which previously relied on Satisfy 
-Hunger have new sources of nutrition now. Androids can quaff oil.  
-Balrogs can sacrifice human corpses using the 'E'at command.  Golems, 
-Skeletons, Zombies, and Spectres can absorb mana from staves and wands 
-using the 'E'at command.  Ents can gain enough nutrition from potions.
+A: These races have special sources of nutrition. Androids can quaff 
+oil; Balrogs can eat human corpses; Golems, Skeletons, Zombies, and 
+Spectres can absorb mana from staves and wands using the 'E'at command; 
+Ents can gain enough nutrition from potions. (Note that many of these 
+races do also get some sustenance from normal food, just not very 
+much.)
 
 
-Q: I'm playing as a berserker, and cannot read scrolls.  How do I 
-remove a curse?
+Q: I'm playing as a berserker, and cannot read scrolls. How do I remove 
+a curse?
 
-A: You can simply 't'ake off the cursed equipment.  Since cursed items 
+A: You can simply 't'ake off the cursed equipment. Since cursed items 
 will attempt to stick, you may need to try the 't'ake off command more 
 than once.
 
 
-Q: I know Berserkers cannot use scrolls, and rods.  How do I recall 
-from dungeon?  Maybe I need to travel completely on foot!?
+Q: Berserkers cannot use scrolls or rods. How do I get out of the 
+dungeon on a Berserker?
 
-A: Berserkers gain the class power 'Recall' at level 10.  Press 'U' 
+A: Berserkers gain the class power 'Recall' at level 10. Press 'U' 
 (original keyset) or 'O' (Roguelike keyset) to use class powers.
+
+
+Q: What are the main advantages and disadvantages of the various types 
+of magical item (potions, scrolls, rods, wands and staves) compared to 
+each other?
+
+A: Scrolls are relatively plentiful, bypass fear checks, and cannot be 
+drained by charge-drainers like rods, wands and staves; but they're 
+vulnerable to destruction from fire and acid, are consumed on use, 
+cannot be used while blind or confused, and have a slightly higher 
+minimum fail rate. An individual scroll doesn't weigh much, but a large 
+pile of scrolls will be heavier than a single rod or staff with the 
+same purpose would.
+
+Rods have few charges, and many of the best rods have high fail rates, 
+but they are indestructible and recharge faster than wands and staves 
+do. Rods are also somewhat less susceptible to charge-draining than 
+staves and wands.
+
+Staves and wands are fairly similar to each other in principle - both 
+have more charges than rods, but don't recharge as fast. Direct 
+comparison between a staff and a wand is seldom necessary, as they have 
+different effects with different purposes. (As a general rule, wands 
+have effects aimed at a particular target, staves have effects that do 
+not need to be aimed, and rods may have either type of effect.) Wands 
+can be destroyed by electricity and chaos, while staves can be 
+destroyed by acid, fire, toxic waste or chaos. Staves are the device 
+most likely to be used while confused or blind, although rods and wands 
+can also be used this way if needed.
+
+Potions are the only magical item that can always be used with no 
+possibility of failing, making them highly valuable in emergencies. But 
+a potion is easily destroyed as three separate resists - cold, sound 
+and shards - must be covered to keep it safe from all elements; and 
+your supply of really good potions, once lost, is not easy to 
+replenish.
 
 
 Q: Why do Ninjas start the game with Iron Spikes?
 
 A: Ninjas (and Ninja-Lawyers) can use Iron Spikes as shuriken; use the 
-'v' command to throw a spike. (Other classes can also use spikes as 
-throwing weapons, but will only do marginal damage; they are much more 
-useful for a ninja.)
+'v' command to throw a spike. (Other classes can technically also use 
+spikes as throwing weapons, but will only do marginal damage.)
 
 
 Q: I'm at normal speed (+0). But normal speed monsters sometimes 
@@ -282,8 +354,11 @@ same speed as you will only get one move in, but always prepare for the
 possibility that they might get two moves! Don't fight when your HP is 
 low unless you have a death wish.
 
-Also, monsters don't always move at their listed speed; watch out for 
-hasted monsters.
+Also, monsters don't always move at their listed speed; watch out in 
+particular for hasted monsters, who receive a temporary +10 speed 
+bonus. Non-unique monsters are born with somewhat random speeds, and 
+might be faster or slower than the average monster of their race. 
+(Probing such a monster will reveal its individual speed.)
 
 
 Q: How important is my speed, anyway?
@@ -294,8 +369,8 @@ speed does everything twice as fast as a character with +0 speed. If
 you survive to the late game, however, you may eventually start hitting 
 diminishing returns for speed; the difference between +30 speed and +40 
 speed is only ten percent. Potions of Speed, and in the late game 
-Staves of Speed, are extremely useful items you should ideally always 
-have.
+Staves of Speed and Rods of Heroic Speed, are extremely useful items 
+you should ideally always have.
 
 
 Q: I've reached the town of Anambar, and can't find a home there. Do I 
@@ -368,24 +443,69 @@ invisible creatures, you may need either Telepathy or an item that
 improves your Searching skill.
 
 
-Q: I tried to dual wield two weapons.  But I couldn't hit anything!
+Q: Do I need to use the Mogaminator?
 
-A: You need to practice your dual wielding skill (proficiency level) 
-and your weapon skills.  Hitting high level monsters many times will 
-improve your skills.  Note that the information command '~' reveals 
-your proficiency levels.  Some classes are very bad at dual-wielding, 
-while others are much more adept at it or can become so with enough 
-training. If you try to dual-wield on a sniper and it doesn't work out, 
-don't let that discourage you from dual-wielding on a ninja.
+A: There is no need to use the Mogaminator, although most players 
+eventually do. If it feels too complicated to begin with, start with 
+the easy auto-destroyer and move to the Mogaminator once you have the 
+rest of the game figured out. If you don't like the Mogaminator 
+destroying so many items, you can turn on the always_pickup input 
+option or the leave_mogaminator auto-destroyer option.
+
+
+Q: I tried to dual wield two weapons. But I couldn't hit anything!
+
+A: You need to practice your dual-wielding skill (proficiency level) 
+and your weapon skills. Hitting high level monsters many times will 
+improve your skills. Note that the information command '~' reveals your 
+proficiency levels. Some classes are very bad at dual-wielding, while 
+others are much more adept at it or can become so with enough training. 
+If you try to dual-wield on a sniper and it doesn't work out, don't let 
+that discourage you from dual-wielding on a ninja.
+
+Wearing gloves of Genji or gaining the Ambidexterity demigod talent 
+will give you bonuses to dual-wielding (though these bonuses will not 
+stack with each other). Mariliths and Dagger-speciality Weaponmasters 
+also receive a dual-wielding bonus.
+
+Dual-wielding works best with relatively light weapons. Even fully 
+proficient dual-wielders will struggle to hit high-AC monsters with a 
+heavy weapon such as a Lance. Of course, even if a weapon's damage 
+output is limited, it could still be worth wielding for the resists and 
+bonuses on it!
+
+
+Q: What about wielding one weapon with both hands? Is that a good idea?
+
+A: From a purely melee-damage point of view, it is usually your best 
+option: wielding a single weapon with both hands improves your damage 
+and accuracy, and unless your blows per round are maxed out anyway you 
+will also receive more blows. The downside is that you effectively have 
+one fewer equipment slot, and miss out on the AC, stat bonuses, resists 
+etc. that a shield or second weapon in that slot would give. Whether 
+this is a good trade depends on your character, how much you gain, and 
+how much you give up. A fairly typical approach is to wield your weapon 
+with both hands until you find a good shield somewhere in the dungeon, 
+and then stop.
+
+Many light weapons (specifically, those that weigh less than 10 pounds 
+and are not polearms) cannot be wielded two-handed, and should always 
+be used together with either a shield or a second weapon. On the other 
+hand, very heavy weapons (compared to your strength) can only be 
+wielded properly with two hands.
+
+Wearing Gloves of the Giant will give you more blows with a two-handed 
+weapon, though if your blows per round are maxed out in any case this 
+bonus has no effect.
 
 
 Q: How do skills (proficiency levels) work?
 
 A: Weapon proficiency levels and dual wielding proficiency levels 
-increase your to-hit bonus.  Spell proficiency levels decrease fail 
-rate and mana consumption rate of spells.  Riding proficiency level 
-gives you more speed when you are riding on a high speed monster, and 
-decreases risk of falling from your mount.
+increase your to-hit bonus. Spell proficiency levels decrease fail rate 
+and mana consumption rate of spells. Riding proficiency level gives you 
+more speed when you are riding on a high speed monster, and decreases 
+risk of falling from your mount.
 
 
 Q: How do I increase my proficiency level?
@@ -419,8 +539,8 @@ determine how good a weapon is - it's no use having a weapon that
 technically does lots of damage if you can't hit anything with it! Also 
 remember, though, that your to-hit percentages will improve rapidly as 
 your proficiency with a weapon increases. Don't worry too much about 
-starting with a -20 proficiency - unless that's your proficiency cap 
-for the weapon, or if the weapon is an icky wield.
+starting with an Unskilled proficiency - unless that's your proficiency 
+cap for the weapon, or if the weapon is an icky wield.
 
 As you start finding {excellent} weapons and artifacts, you may well 
 want to wield a particular weapon for the resists, bonuses or abilities 
@@ -437,6 +557,14 @@ general rule you should always assume that an icky weapon will be worse
 than a non-icky one, at least from a melee perspective. In the specific 
 case of Priests, however, the melee penalty is relatively small and the 
 main drawback of an icky weapon is its effect on prayer fail rates.
+
+
+Q: What exactly does the "Weapon Versatility" demigod talent do? Does 
+it allow me to use icky weapons?
+
+A: It allows you to reach Master proficiency with all weapons, 
+including icky ones. However, the icky weapons will still be considered 
+icky and incur the same icky-wield penalties.
 
 
 Q: Some weapons have slays (like Slay Orc) or brands (like Viper's 
@@ -477,11 +605,11 @@ A: Equip it and activate ('A') to a dying monster.
 
 
 Q: I cannot hold a weapon and a shield without losing control of my 
-horse.  My horse runs aimlessly!
+horse. My horse runs aimlessly!
 
 A: You cannot directly control your mount unless you use one hand to 
-control your mount.  But you can command your mount.  Just use 'p' 
-command, and give your mount a target.  The horse which was given a 
+control your mount. But you can command your mount. Just use 'p' 
+command, and give your mount a target. The horse which was given a 
 target will no longer run around aimlessly.
 
 
@@ -495,6 +623,13 @@ a good mutation, with the bad one staying in place...
 
 Potions of New Life also cure mutations among their other effects, and 
 potions of Polymorph both give and cure mutations at random.
+
+Having too many mutations gives a penalty to HP regeneration; the more 
+mutations you have, the worse the penalty. Beastmen are penalized less, 
+and can have a large number of mutations before triggering the penalty 
+at all. Permanent mutations (such as demigod powers or the White Aura 
+from the Lucky personality) do not count towards this penalty. Mana 
+regeneration is not affected by mutations.
 
 
 Q: How important is Telepathy?
@@ -528,18 +663,104 @@ is never really absolutely needed. Early on, it's particularly useful
 in the Camelot dungeon, which has many dangerous bolt casters.
 
 
+Q: What does Levitation do? How important is it?
+
+A: Levitation gives access to dark pits and mountainous wilderness, 
+prevents overburdened characters from drowning in deep water, reduces 
+damage from standing in (or over) deep lava or toxic waste, reduces 
+damage from gravity, helps against the side-effects of gravity and 
+storm winds, eliminates movement speed penalties in wooded areas, and 
+allows you to harmlessly fly over some types of floor traps. It is a 
+necessity for entering mountainous areas (and a practical necessity for 
+entering deep seas on an overburdened character); it is very handy, but 
+not strictly necessary, for navigating the Cloning Pits quest as well 
+as dungeons with dark pits or deep water. In other situations it is not 
+very important; items that give levitation but are otherwise not that 
+great can be left at home to be shuffled in when needed.
+
+
+Q: What is Warning? Is it something I need... and what do the strange 
+messages it's giving me mean?!
+
+A: Warning has two purposes. Firstly, it alerts you when you are about 
+to walk into an undetected trap, giving you the chance to avoid that 
+trap. Secondly, it alerts you when a new unique appears on the current 
+level, having either generated randomly or been summoned. This alert 
+takes the form "The warning-giving item glows pink!", where the color 
+provides you some rough information about how dangerous the unique is. 
+White and pink aren't much to worry about; but if the item glows red, 
+purple or (worst of all) black, it's best to pay attention.
+
+Warning is convenient, especially if you don't detect traps regularly, 
+but it is not at all something that any character needs.
+
+
+Q: Some elements don't just deal damage, but also cause status effects 
+like confusion or blindness. How much resistance do I need to be safe 
+from status effects?
+
+A: Most status effects compare your resistance to a 33-sided die (or a 
+55-sided die in the case of base elements). Accordingly, 30% confusion 
+resistance gives you a 30 in 33 (about 91%) chance of resisting that 
+status effect, and 40% confusion resistance will provide immunity.
+
+In some very unusual cases your resistance may not be checked at all, 
+or a special calculation may be used. (For example, a backfiring Invoke 
+Spirits spell can completely bypass your confusion resistance.)
+
+
+Q: Can I ever resist exotic attacks/elements like Water, Ice, Gravity, 
+Rockets or Toxic Waste that aren't listed on my character sheet?
+
+A: In most cases, you cannot resist the raw damage from such exotic 
+elements. (There are a few exceptions - Toxic Waste can be resisted 
+through poison resistance; Rockets have shard-based damage; Levitation 
+effectively provides resistance to Gravity; and Bombs are combined 
+sound and shards and can be resisted accordingly.)
+
+However, many side-effects of exotic elements can be blocked or 
+mitigated by resisting appropriate normal elements. For example, Shard 
+resistance works against the cuts from Ice and Rocks, Sound resistance 
+works against most elemental stunning effects as well as potion 
+destruction from Water, and Cold resistance works against potion 
+destruction from Ice.
+
+
+Q: My scrolls of Enchant Armor and Enchant Weapon keep failing! What's 
+wrong?
+
+A: Scrolls of Enchant Armor and Enchant Weapon can only enchant items 
+up to +15. (Unlike item-enchantment spells and the town service, this 
+limit is fixed and independent of your character level.) The closer you 
+get to +15, the less likely it is that the scroll will work; in 
+practice you can view +10 or +11 as a soft limit, due to how difficult 
+enchanting items beyond that is. Trying to enchant an artifact or a 
+pile of multiple items raises the failure probability even higher.
+
+
+Q: Staves of Destruction are supposed to be great, yet mine doesn't 
+seem to do anything when I use it! What's wrong?
+
+A: A number of items and spells do nothing when used on a town quest 
+level (any quest level not located inside a dungeon). In addition to 
+Destruction, this includes all Genocide, Mass Genocide and Annihilation 
+effects, as well as Teleport Level.
+
+Destruction also does not work in the wilderness or in the Witch Wood. 
+This is because outdoors there's no ceiling to bring down!
+
+
 Q: What do monsters' vampiric attacks do?
 
-A: They drain life from you, thereby healing the monster, increasing 
-its maximum HP and consuming your life points.
+A: They drain life from you, thereby healing the monster and consuming 
+your life points.
 
 
 Q: Are Unlife attacks the same as vampiric attacks?
 
 A: Unlife attacks are very similar to vampiric attacks, but instead of 
-healing the monster or increasing its maximum HP they make the monster 
-more powerful. A powerful monster has a higher AC, hits harder and 
-casts more dangerous spells, but its maximum HP is not increased.
+healing the monster they make the monster more powerful. A powerful 
+monster has a higher AC, hits harder and casts more dangerous spells.
 
 
 Q: What do the player's vampiric attacks do?
@@ -568,8 +789,8 @@ Since life points only account for half of your max HP, your max HP
 will never hit zero; accordingly, it is possible to run out of life 
 points without being killed outright. If this happens, you will be 
 permanently transformed into an undead - either a skeleton, a vampire, 
-a zombie or a spectre - and regain full life points (or "unlife 
-points") since the undead are immune to loss of life.
+a zombie, an einheri or a spectre - and regain full life points (or 
+"unlife points") since the undead are immune to loss of life.
 
 
 Q: My current HP is lower than my max HP - but it's still shown in 
@@ -585,7 +806,97 @@ Q: How can I regain my lost life points?
 A: Life points can be regained either through any type of vampiric 
 attack, or by using a potion, device or activation. Potions of Restore 
 Life Levels are a common way to regain life points, though they only 
-restore up to 15 percentage points at a time.
+restore up to 15 percentage points at a time. The Restoration service, 
+available in most towns, also restores life points.
+
+
+Q: I also have a "life rating", unrelated to my life points. Actually, 
+I seem to have several life ratings! Just how is my max HP calculated?
+
+A: Every character has a random "life rating" between 87% and 117%. 
+This rating (the life rating proper) corresponds to the overall result 
+of 49 randomly rolled HP gains (one for every character level after the 
+first); the HP gains (and thus, your life rating) can be re-rolled 
+during the game in several ways, most commonly by drinking a Potion of 
+New Life. You are born with no knowledge of how good your life rating 
+is, but drinking a Potion of Self Knowledge (or *Enlightenment*) will 
+enlighten you. This is the only life rating you can affect in any way 
+during play, and is the one displayed on your character sheet, if 
+known.
+
+The random life rating only accounts for about half of the HP you get 
+per level; the other half is non-random. The non-random gains always 
+total exactly 300 points, but how that total is distributed across the 
+49 level-ups depends on your class. In general, the distribution is 
+very late-game-heavy on mage-type classes (who will struggle with HP 
+for much of the early game as a result, even if they have a good life 
+rating and high CON), while fighter classes like warriors get a more 
+even distribution.
+
+These two main contributions to your max HP are added together and 
+multiplied by four non-random modifiers; the first three are the life 
+rating multipliers of your race, your class and your personality. 
+(These are prominently displayed at character generation, and new 
+players are frequently confused by their relationship to the randomly 
+generated life rating proper.) The fourth multiplier is based on your 
+CON and any +Life or -Life items equipped.
+
+Finally, after the multipliers, some lump sums are added (your class 
+base HP, race base HP, and any HP from active buffs like heroism); and 
+your effective maximum HP is adjusted to account for any reduction in 
+your life points. It's a complicated system, but during the game you 
+only need to worry about your random life rating and your CON!
+
+
+Q: When should I reroll my life rating with a Potion of New Life?
+
+A: In general, you should never reroll unless you know what your life 
+rating is, or have a very good reason to suspect that it's atrociously 
+low. The average life rating is 102% (not 100%), so that's the 
+theoretical break-even point for a single Potion of New Life; but in 
+practice, if you're already doing well, the risks of rolling a really 
+bad life may outweigh the potential benefits of rolling a great one. So 
+unless your life rating is really bad, it's worth having one or more 
+backup potions in case the first New Life just makes things worse. The 
+larger your backup pile, the further you can push the envelope - but 
+there's always the risk of a long streak of unlucky lives...
+
+Potions of New Life also remove all your mutations, and reroll all your 
+internal stat caps. If you are very happy with either your mutations or 
+your stat caps, that should make you more reluctant to drink a potion 
+of New Life; though in general, your life rating is more important than 
+your stat caps. Note that if you have already maxed out your stats, 
+some of them are likely to be reduced by a Potion of New Life as new, 
+potentially lower internal stat caps are applied.
+
+
+Q: I drank a potion of New Life and my max HP went down, yet Self 
+Knowledge says my life rating is higher than before! What gives?
+
+A: Since your life rating is based on 49 random rolls, one for each 
+character level, the life with the better end result at CL 50 is not 
+necessarily better all the way through. Your old life might have had 
+high rolls early on and lower rolls for the late levels, and your new 
+life might be the opposite.
+
+The other possible explanation is that you rolled a lower CON stat cap 
+and your constitution decreased as a result.
+
+
+Q: How do internal stat caps (for STR, INT, WIS etc.) work?
+
+A: They are randomly generated, no lower than 18/70 and no higher than 
+18/130; the average across the six stats is always 18/100, but it's 
+much more fun to have high caps in your key stats and low caps in stats 
+you don't really need than the opposite! The stat caps determine how 
+high the stat can go before modifiers from race, class, personality, 
+equipment, mutations etc. are applied.
+
+The stat caps are much lower than the highest value a statistic can 
+take after modifiers: 18/220, displayed as 18/***. By the endgame you 
+will likely be getting large bonuses from your equipment; an extremely 
+powerful character might even have all six stats maxed out at 18/220, 
+regardless of the caps.
 
 
 Q: There's a building in Morivant that offers artifact reforging. What 
@@ -630,7 +941,8 @@ terms; this way, less power is lost to a slot downgrade. (For example,
 if you want a lamp, and you have artifact gloves with a 40K score and 
 artifact armor with a 70K score, use the gloves; the two items will 
 produce similar lamps, but the armor will produce a much better armor 
-or weapon since none of its power is lost to a slot downgrade.)
+or weapon since none of its power is lost to a slot downgrade. It is 
+also much cheaper to use the gloves.)
 
 If possible, use a destination item that's already good in some useful 
 way - for example, dragon wings that already have resistances you'd 
@@ -638,7 +950,9 @@ like, or a diamond edge with sharpness and high base damage - but not
 one that's already good in some way you don't need, since that would be 
 lost value. Don't use a destination item that's too powerful compared 
 to the source item, since the reforge would be left without much room 
-for improvements.
+for improvements. (If you're fortunate enough to have a Scroll of 
+Artifact Creation or a Scroll of Crafting, consider using one of those 
+on the already-powerful item instead.)
 
 Reforge from strong slots to strong slots, weak slots to weak slots, 
 and - if necessary - strong slots to weak slots; but never reforge from 
@@ -682,6 +996,20 @@ their special abilities to "enchant" a poison needle, but this has no
 actual effect on the needle's performance.) Poison needles have a 100% 
 hit chance, unless the player is dual-wielding, in which case they have 
 a 50% hit chance.
+
+
+Q: Are Sexy Swimsuits just a useless joke item, or can they be actually 
+good?
+
+A: Sexy Swimsuits generate with special bonuses for characters with the 
+Sexy personality, as well as Aphrodite demigods. In addition, wearing a 
+Sexy Swimsuit makes Politicians' charming spells work better.
+
+Other characters do not receive any special benefits from swimsuits, 
+but may still want to hold onto them as reforge targets should they 
+find any. Reforging a high-value artifact onto a Sexy Swimsuit can 
+produce exceptionally good results because the aggravation on the 
+swimsuit keeps its nominal value down.
 
 
 Q: How do I create a character dump?
@@ -768,13 +1096,13 @@ Q: Who wrote Hengband?
 A: Hengband is mainly based on ZAngband 2.2.8 Japanese version. 
 ZAngband 2.2.8 Japanese version was developed by Mitsuhiro Itakura, 
 based on both ZAngband 2.2.8 and Angband 2.8.3 Japanese version, and 
-has some original features, for example, Auto-picker, in addition to 
+has some original features, for example the auto-picker, in addition to 
 simple translation.
 
-Hengband also includes codes from many other variants including ToME, 
-OAngband, etc.  Mr.Hoge wrote the first original part of Hengband.  And 
-currently, it is maintained by Hengband Development Team including 
-Mr.Hoge, Habu, Henkma, iks, Kuwa, Mogami and nsk.
+Hengband also includes codes from many other variants, such as ToME and 
+OAngband. Mr.Hoge wrote the first original part of Hengband. It was 
+maintained by the Hengband Development Team including Mr.Hoge, Habu, 
+Henkma, iks, Kuwa, Mogami and nsk.
 
 
 Q: So is that why there is so much Japanese content in this game?
@@ -797,5 +1125,8 @@ Updated    : PosChengband 1.0.0
 Updated    : FrogComposband 7.0.strawberry
 Updated    : FrogComposband 7.0.peppermint
 Updated    : FrogComposband 7.0.nougat
+Updated    : FrogComposband 7.1.toffee
+Updated    : FrogComposband 7.1.chocolate
+Updated    : FrogComposband 7.1.liquorice
 
 
