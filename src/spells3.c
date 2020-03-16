@@ -758,6 +758,7 @@ void teleport_level(int m_idx)
             }
 
             /* Leaving */
+            quests_on_leave();
             p_ptr->leaving = TRUE;
             p_ptr->leaving_method = LEAVING_TELEPORT_LEVEL;
         }
@@ -810,6 +811,7 @@ void teleport_level(int m_idx)
             prepare_change_floor_mode(CFM_SAVE_FLOORS | CFM_DOWN | CFM_RAND_PLACE | CFM_RAND_CONNECT);
 
             /* Leaving */
+            quests_on_leave();
             p_ptr->leaving = TRUE;
             p_ptr->leaving_method = LEAVING_TELEPORT_LEVEL;
         }
