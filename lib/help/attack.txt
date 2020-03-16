@@ -65,7 +65,7 @@ Archery slays and brands work in a slightly different way: they multiply both th
 
 A few classes, such as Samurai and Sword-speciality Weaponmasters, have access to special brands available only to them. These may be very strong (the special Samurai version of the <color:b>lightning brand</color> has a higher multiplier than any normal brand or slay), and sometimes combine with normal brands: also having a regular Lightning Brand makes the Samurai brand stronger still.
 
-Off-weapon slays and brands are never applied to innate attacks or unarmed combat.
+Off-weapon slays and brands are never applied to innate attacks or unarmed combat, except for six specific brands (Acid, Electricity, Fire, Cold, Poison and Mana) which are special-cased for martial arts.
 
 <topic:Choices><style:heading>Choosing the Right Weapon</style>
 
