@@ -3322,15 +3322,16 @@ static bool enchant_item(obj_p filter, int cost, int to_hit, int to_dam, int to_
 
                 unit_cost_add *= m;
                 unit_cost_sum += unit_cost_add;
-                unit_cost = unit_cost_sum;
 
-                unit_cost = town_service_price(unit_cost);
+                unit_cost = town_service_price(unit_cost_sum);
 
                 if (unit_cost < min_cost)
                     unit_cost = min_cost;
 
                 if (is_guild)
                     unit_cost = (unit_cost + 1)/2;
+
+                unit_cost = unit_cost * copy.number;
 
                 if (unit_cost >= 10000)
                     choices[i].cost = big_num_round(unit_cost, 3);
