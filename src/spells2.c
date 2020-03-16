@@ -257,7 +257,7 @@ void self_knowledge(void)
     }
     if (p_ptr->cursed & OFC_DRAIN_MANA)
     {
-        info[i++] = "You brain is drained.";
+        info[i++] = "Your brain is drained.";
 
     }
     if (IS_BLESSED())
