@@ -145,6 +145,9 @@ Inscribe <color:v>@ui</color> on your Staff of Identify (the one with 50+ charge
 <color:G>Example #5: Spells</color>
 Suppose your favorite attack spell is spell <color:keypress>e</color> in a book you have inscribed with <color:v>@mf</color>. Let's use <color:keypress>y</color> as our trigger key here; for this trigger key we'll want a keymap rather than a macro, otherwise we'll interfere with the normal functionality of the <color:keypress>y</color> key! Create a keymap for <color:keypress>y</color> with <color:keypress>mfe</color> as the action; <color:keypress>mfe*5</color> or <color:keypress>*5mfe</color> if you want to go a step further and automatically target the nearest monster. See <link:magic.txt#Macros> for more spell examples.
 
+<color:G>Example #6: Screenshots</color>
+The screenshot key <color:keypress>)</color> is somewhat limited in that it only works in specific situations and can blank potentially interesting material like messages. The special key <color:keypress>x1d</color> (keycode 29) will take a screenshot at any time without such downsides, but many keyboards or platforms offer no way to actually trigger keycode 29. Add the macro sequence \x1d to your favorite key, say F11, and use it to take a screenshot whenever you want! (Note that this must be a macro, not a keymap.)
+
 <style:note>Remember to append your macros and keymaps to a file.</style>
 <color:D>
 Original   : Alexander Cutler and Andy Astrand
