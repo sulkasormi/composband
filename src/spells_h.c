@@ -182,7 +182,7 @@ void healing_I_spell(int cmd, variant *res)
         var_set_string(res, "Powerful healing magic:  heals hitpoints, cuts and stun.");
         break;
     case SPELL_INFO:
-        var_set_string(res, format("Heals %d", spell_power(300)));
+        var_set_string(res, info_heal(spell_power(300)));
         break;
     case SPELL_CAST:
         hp_player(spell_power(300));
@@ -207,7 +207,7 @@ void healing_II_spell(int cmd, variant *res)
         var_set_string(res, "Powerful healing magic:  heals hitpoints, cuts and stun.");
         break;
     case SPELL_INFO:
-        var_set_string(res, format("Heals %d", spell_power(500)));
+        var_set_string(res, info_heal(0, 0, spell_power(500)));
         break;
     case SPELL_CAST:
         hp_player(spell_power(500));
