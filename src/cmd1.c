@@ -5996,7 +5996,7 @@ void move_player(int dir, bool do_pickup, bool break_trap)
             {
                 msg_print("You cannot go any more.");
 
-                if (!(p_ptr->confused || p_ptr->stun || p_ptr->image))
+                if (!(p_ptr->confused || p_ptr->image))
                 {
                     if (!shadow_strike)
                         energy_use = 0;
@@ -6044,10 +6044,10 @@ void move_player(int dir, bool do_pickup, bool break_trap)
 
                 /*
                  * Well, it makes sense that you lose time bumping into
-                 * a wall _if_ you are confused, stunned or blind; but
+                 * a wall _if_ you are confused or blind; but
                  * typing mistakes should not cost you a turn...
                  */
-                if (!(p_ptr->confused || p_ptr->stun || p_ptr->image))
+                if (!(p_ptr->confused || p_ptr->image))
                 {
                     if (!shadow_strike)
                         energy_use = 0;
@@ -6074,7 +6074,7 @@ void move_player(int dir, bool do_pickup, bool break_trap)
     /* Normal movement */
     if (oktomove && !pattern_seq(py, px, y, x))
     {
-        if (!(p_ptr->confused || p_ptr->stun || p_ptr->image))
+        if (!(p_ptr->confused || p_ptr->image))
         {
             if (!shadow_strike)
                 energy_use = 0;
