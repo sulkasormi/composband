@@ -20,7 +20,7 @@
 #define VER_MINOR 1
 #define VER_PATCH "liquorice"
 #define VER_EXTRA 2
-#define VERSION_IS_DEVELOPMENT (FALSE)
+#define VERSION_IS_DEVELOPMENT (TRUE)
 
 #define GAME_MODE_BEGINNER  0
 #define GAME_MODE_NORMAL    1
