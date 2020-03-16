@@ -1742,9 +1742,9 @@ void vampirism_spell(int cmd, variant *res)
         break;
     case SPELL_CAST:
         var_set_bool(res, FALSE);
-        if (d_info[dungeon_type].flags1 & DF1_NO_MELEE)
+        if ((d_info[dungeon_type].flags1 & DF1_NO_MELEE) || (no_melee_challenge))
         {
-            msg_print("Something prevent you from attacking.");
+            msg_print("Something prevents you from attacking.");
             return;
         }
         else
