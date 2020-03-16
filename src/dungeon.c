@@ -3642,7 +3642,7 @@ static void _dispatch_command(int old_now_turn)
                 flush();
                 /*energy_use = 100;*/
             }
-            else if ((beorning_is_(BEORNING_FORM_BEAR)) && (p_ptr->pclass != CLASS_DUELIST))
+            else if ((beorning_is_(BEORNING_FORM_BEAR)) && (p_ptr->pclass != CLASS_DUELIST) && (p_ptr->pclass != CLASS_RAGE_MAGE))
             {
                 msg_print("You cannot use magic in bear shape!");
                 flush();
