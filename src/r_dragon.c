@@ -1473,7 +1473,7 @@ static void _healing_spell(int cmd, variant *res)
         var_set_string(res, "Powerful healing magic:  heals hitpoints, cuts and stun.");
         break;
     case SPELL_INFO:
-        var_set_string(res, format("Heals %d", 200));
+        var_set_string(res, info_heal(0, 0, 200));
         break;
     case SPELL_CAST:
         hp_player(200);
