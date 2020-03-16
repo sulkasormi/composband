@@ -3381,9 +3381,18 @@ static void _birth_finalize(void)
     }
     if ((!coffee_break) && (no_wilderness))
     {
-        if (!get_check("Really play with no wilderness? "))
+        if (!get_check("Really play with no wilderness? (This option and Normal game speed are not intended to be used together.) "))
         {
             no_wilderness = FALSE;
+        }
+        else
+        {
+            Term_clear();
+            if (msg_prompt("The No Wilderness option is intended for coffee-break mode <color:v>only</color><color:w>. Normal game speed is balanced entirely around the presence of a</color> <color:G>wilderness</color> <color:w>and the</color> <color:B>many towns</color> and <color:B>dungeons</color> that come with it, while the no-wilderness option is balanced around the</color> <color:U>coffee-break</color> <color:w>and</color> <color:U>instant-coffee</color> <color:w>modes. Trying to combine Normal speed with the lack of a wilderness will make the game very <color:r>tedious</color> and <color:r>repetitive</color>, and you will miss out on much of what should make FrogComposband unique, enjoyable and engaging.\n\n</color><color:v>REALLY</color> <color:w>play with no wilderness?</color> <color:y>[y/n]</color>", "ny", PROMPT_DEFAULT) != 'y')
+//        else if (!get_check("REALLY? (The no-wilderness option is intended for coffee-break mode only.)"))
+            {
+                no_wilderness = FALSE;
+            }
         }
     }
 
