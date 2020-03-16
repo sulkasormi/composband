@@ -1489,7 +1489,7 @@ bool gf_affect_m(int who, mon_ptr mon, int type, int dam, int flags)
 
     if (p_ptr->riding && mon->id == p_ptr->riding) disturb(1, 0);
 
-    if ((who == GF_WHO_PLAYER) && (attack_spell_hack == ASH_UNASSESSED_1))
+    if ((who == GF_WHO_PLAYER) && (attack_spell_hack == ASH_UNASSESSED_1) && (is_hostile(mon)))
     {
         attack_spell_hack = ASH_USEFUL_ATTACK;
         ash_changed = TRUE;
@@ -4484,7 +4484,7 @@ bool gf_affect_m(int who, mon_ptr mon, int type, int dam, int flags)
             }
         }
 
-        if ((ash_changed) && (attack_spell_hack != old_ash) && ((race->flags1 & RF1_NEVER_MOVE) || ((note) && (strpos("is immune", note)))))
+        if ((ash_changed) && (attack_spell_hack != old_ash) && ((race->flags1 & RF1_NEVER_MOVE) || (!is_hostile(mon)) || ((note) && (strpos("is immune", note)))))
         { /* Useless after all */
             attack_spell_hack = old_ash;
         }
