@@ -341,6 +341,11 @@ void awesome_blow_spell(int cmd, variant *res)
         int y, x, dir;
         var_set_bool(res, FALSE);
 
+        if (!equip_find_first(object_is_melee_weapon))
+        {
+            msg_print("You need to wield a weapon!");
+            return;
+        }
         if (!get_rep_dir2(&dir)) return;
         if (dir == 5) return;
 
