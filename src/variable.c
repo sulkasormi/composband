@@ -187,6 +187,7 @@ bool no_karrot_hack = FALSE;
 bool allow_special3_hack = FALSE;
 bool temporary_name_hack = FALSE;
 bool online_macro_hack = FALSE;
+bool recall_stairs_hack = FALSE;
 byte attack_spell_hack = ASH_USELESS_ATTACK;
 byte troika_spell_hack = 0;
 s16b vampirism_hack = 1000;
