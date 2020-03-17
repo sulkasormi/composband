@@ -2390,6 +2390,8 @@ static void process_world_aux_recharge(void)
  */
 void process_world_aux_movement(void)
 {
+    recall_stairs_hack = FALSE;
+
     /* Delayed Word-of-Recall */
     if (p_ptr->word_recall)
     {
@@ -2409,6 +2411,8 @@ void process_world_aux_movement(void)
         /* Activate the recall */
         if (!p_ptr->word_recall)
         {
+            recall_stairs_hack = TRUE;
+
             /* Disturbing! */
             disturb(0, 0);
 
@@ -4832,6 +4836,12 @@ static void process_player(void)
                     c_put_str(TERM_WHITE, format("E:%3d/%3d", amt, energy_use), r.y + r.cy - 2, r.x);
                 }
                 p_ptr->energy_need += amt;
+            }
+
+            if ((p_ptr->wizard) && (p_ptr->word_recall))
+            {
+                rect_t r = ui_char_info_rect();
+                c_put_str(TERM_WHITE, format("R:%3d", p_ptr->word_recall - 1), r.y + r.cy - 3, r.x);
             }
 
             /* Hack -- constant hallucination */
