@@ -926,6 +926,12 @@ void leave_floor(void)
     /* New floor is not yet prepared */
     new_floor_id = 0;
 
+    /* Hack - fix bug with recalling and taking stairs at the same time */
+    if (recall_stairs_hack)
+    {
+        change_floor_mode = (dun_level ? CFM_FIRST_FLOOR : 0);
+    }
+
     /* Temporary get a floor_id (for Arena) */
     if (!p_ptr->floor_id &&
         (change_floor_mode & CFM_SAVE_FLOORS) &&
