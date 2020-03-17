@@ -2960,7 +2960,7 @@ static cptr do_chaos_spell(int spell, int mode)
 
     case 9:
         if (name) return "Chaos Bolt";
-        if (desc) return "Fires a bolt or ball of chaos.";
+        if (desc) return "Fires a bolt or beam of chaos.";
 
         {
             int dice = 10 + (plev - 5) / 4;
