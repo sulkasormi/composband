@@ -192,7 +192,7 @@ static _type_t _types[] =
          { 16, "Eridish",                  15000, 110, RACE_HALF_TROLL },
          { 17, "Vrudush the Shaman",       25000, 107, RACE_OGRE },
          { 18, "Haob the Berserker",       30000, 109, RACE_BARBARIAN },
-         { 19, "Proogdish the Youthfull",  10000, 109, RACE_OGRE },
+         { 19, "Proogdish the Youthful",   10000, 109, RACE_OGRE },
          { 20, "Lumwise the Mad",          15000, 110, RACE_YEEK },
          { 21, "Muirt the Virtuous",       25000, 107, RACE_KOBOLD },
          { 22, "Dardobard the Weak",       30000, 109, RACE_SPECTRE },
