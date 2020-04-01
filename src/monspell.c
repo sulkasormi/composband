@@ -1745,32 +1745,38 @@ static bool _curse_save(void)
     int odds = _curse_save_odds();
     return randint0(100) < odds;
 }
-static bool _m_resist_tele(mon_ptr mon, cptr name)
+bool mon_save_tele_to(mon_ptr mon, cptr name, bool assume_sight)
 {
     mon_race_ptr race = &r_info[mon->r_idx];
     if (race->flagsr & RFR_RES_TELE)
     {
         if ((race->flags1 & RF1_UNIQUE) || (race->flagsr & RFR_RES_ALL))
         {
-            if (mon_show_msg(mon))
+            if ((assume_sight) || (mon_show_msg(mon)))
             {
                 mon_lore_r(mon, RFR_RES_TELE);
-                msg_format("%s is unaffected!", name);
+                msg_format("%^s is unaffected!", name);
             }
             return TRUE;
         }
         else if (race->level > randint1(100))
         {
-            if (mon_show_msg(mon))
+            if ((assume_sight) || (mon_show_msg(mon)))
             {
                 mon_lore_r(mon, RFR_RES_TELE);
-                msg_format("%s resists!", name);
+                msg_format("%^s resists!", name);
             }
             return TRUE;
         }
     }
     return FALSE;
 }
+
+static bool _m_resist_tele(mon_ptr mon, cptr name)
+{
+    return mon_save_tele_to(mon, name, FALSE);
+}
+
 static void _annoy_m(void)
 {
     switch (_current.spell->id.effect)
