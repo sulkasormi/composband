@@ -1635,6 +1635,8 @@ static void prt_depth(void)
             sprintf(buf, "%s", "Monster Arena");
         else if (p_ptr->town_num)
             sprintf(buf, "%s", town_name(p_ptr->town_num));
+        else if (wilderness[p_ptr->wilderness_y][p_ptr->wilderness_x].entrance)
+            sprintf(buf, "Wilderness (%s): L%d", d_name+d_info[wilderness[p_ptr->wilderness_y][p_ptr->wilderness_x].entrance].name, base_level);
         else
             sprintf(buf, "Wilderness: L%d", base_level);
     }
