@@ -1059,7 +1059,7 @@ static void _pets_breathe_spell(int cmd, variant *res)
         var_set_string(res, "Dragons' Fury");
         break;
     case SPELL_DESC:
-        var_set_string(res, "Guide all of your pet dragon's to breathe at a chosen target.");
+        var_set_string(res, "Guide all of your pet dragons to breathe at a chosen target.");
         break;
     case SPELL_CAST:
     {
