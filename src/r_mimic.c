@@ -814,7 +814,7 @@ static void _dismiss_pets(void)
         {
             char name[MAX_NLEN];
             monster_desc(name, mon, MD_ASSUME_VISIBLE);
-            msg_format("%s disappears.", name);
+            msg_format("%^s disappears.", name);
             delete_monster_idx(i);
             ct++;
         }
