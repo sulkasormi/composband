@@ -553,13 +553,13 @@ cptr do_law_spell(int spell, int mode)
                 if (r_ptr->flagsr & RFR_RES_ALL)
                 {
                     mon_lore_r(m_ptr, RFR_RES_TELE);
-                    msg_format("%s is unaffected!", m_name);
+                    msg_format("%^s is unaffected!", m_name);
                     break;
                 }
                 else if (r_ptr->level > (p_ptr->pclass == CLASS_LAWYER ? randint1(100) + plev : randint1(100)))
                 {
                     mon_lore_r(m_ptr, RFR_RES_TELE);
-                    msg_format("%s resists!", m_name);
+                    msg_format("%^s resists!", m_name);
                     break;
                 }
             }
