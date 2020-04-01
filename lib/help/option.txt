@@ -92,7 +92,7 @@ This option allows the player to summon pets or turn hostile monsters into pets 
 With this option turned on, the ten <color:keyword>random quests</color> in the Pits of Angband will all require you to kill a unique monster. With the option off, some of them (especially the early ones) may feature groups of non-unique monsters instead, similarly to the fixed Warg Quest.
 
 <topic:random_artifacts><color:U>Randomize standard artifacts</color> <color:D>(random_artifacts)</color>
-If this option is turned on, some percentage of standard artifacts will be replaced wtih random ones. A small number of standard artifacts (such as the Rings of Power) are fixed and cannot be substituted. Note that additional random artifacts, which complement rather than replace the standard set, can generate whether this option is on or not.
+If this option is turned on, some percentage of standard artifacts will be replaced with random ones. A small number of standard artifacts (such as the Rings of Power) are fixed and cannot be substituted. Note that additional random artifacts, which complement rather than replace the standard set, can generate whether this option is on or not.
 
 <topic:no_artifacts><color:U>Never create artifacts</color> <color:D>(no_artifacts)</color>
 If this option is turned on, no artifacts will ever generate. This makes the game much more difficult.
