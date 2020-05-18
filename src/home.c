@@ -206,6 +206,15 @@ static void _ui(_ui_context_ptr context)
                 if (context->top > context->page_size)
                     context->top -= context->page_size;
                 break;
+            case SKEY_BOTTOM: case '1':
+                 while (context->top + context->page_size - 1 < max)
+                 {
+                    context->top += context->page_size;
+                 }
+                 break;
+            case SKEY_TOP: case '7':
+                 context->top = 1;
+                 break;
             default:
                 if (cmd < 256 && isprint(cmd))
                 {
