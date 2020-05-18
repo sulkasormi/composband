@@ -8,7 +8,7 @@
 # says line 2
 # says line 3
 #
-# Empty line is separater of blocks.
+# Empty line is separator of blocks.
 #
 # The number after the N: is the "monster index number" obtained from
 # r_info.txt.  The text field after that number isn't actually used--it's
@@ -539,19 +539,19 @@ says, 'My Psycho Power knows no limits!'
 N:1029:Baby satan
 magically summons Cyberdemons!
 magically summons special opponents!
-invokes a mana storm.
-invokes a darkness storm.
-invokes a starburst.
+invokes a Mana Storm.
+invokes a Darkness Storm.
+invokes a Starburst.
 throws a Psycho-Spear.
-invokes the Hand of Doom!
+invokes the Hand of Doom! You resist the effects!
 casts a Globe of Invulnerability.
 magically summons Lords of Amber!
 yells 'The World!' Time has stopped!
 casts Anti-Magic. You feel your spells are blocked!
 throws a large rock.
 invokes a stasis field.
-casts polymorph other ... You turn into a giant toad!
-says, 'I'm BABY SATAN'
+casts Polymorph Other... You turn into a giant toad!
+says, 'I'm BABY SATAN!'
 
 N:1063:lousy, the King of louses
 says, 'You, transform a louse!'
@@ -630,6 +630,20 @@ says, 'Never trust a dog with orange eyebrows.'
 says, 'Where's my eye of newt?'
 says, 'Hubble dubble toil and trouble.'
 says, 'Fire burn and cauldron bubble.'
+
+N:1304:Spulga, the Troll Priestess
+says, 'Every troll priest and ogre shaman there is, I taught them all they know; but I know more.'
+yells, 'This cave is ours! It shall always be ours!'
+says, 'Do you know what trolls were like before I took charge? They were a byword for stupidity, for ugliness, for mindless and uncaring brutality - didn't even have a cave to live in!'
+asks, 'Do they hate you the way they hate me, just because I've achieved more than they ever will? Do you have to put up with the same jealousy?'
+says, 'I don't have as many friends as I deserve - there is so much prejudice, so much contempt, just because I'm so successful and because I'm a troll.'
+
+N:1305:Pryftidustulyx, the Communist Dragon
+says, 'A working-class hero is something to be... eating the rich and the privileged, and taking all their treasures.'
+says, 'Want a smoke?'
+says, 'From each according to his abilities, to each according to his needs; it is hardly my fault that I have greater needs than most.'
+says, 'You are horrified at our intending to do away with private loot; but the common workers of the towns already have none.'
+says, 'Our aims can be attained only by the forcible overthrow of all existing social conditions. Let the Serpent tremble at a Communistic revolution.'
 
 # these were mostly adapted from Hamsty's lines in Frogspawn
 N:*:Default lines
