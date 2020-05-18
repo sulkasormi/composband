@@ -111,13 +111,10 @@ void spider_web_spell(int cmd, variant *res)
 }
 
 /* Cave Spider */
-static power_info _cave_spider_powers[] = {
+static power_info _cave_spider_get_powers[] = {
     { A_DEX, {  1,  1, 30, _detect_prey_spell } },
     {    -1, { -1, -1, -1, NULL } }
 };
-static int _cave_spider_get_powers(spell_info* spells, int max) {
-    return get_powers_aux(spells, max, _cave_spider_powers);
-}
 static void _cave_spider_calc_innate_attacks(void)
 {
     innate_attack_t    a = {0};
@@ -144,6 +141,7 @@ static void _cave_spider_get_flags(u32b flgs[OF_ARRAY_SIZE])
     add_flag(flgs, OF_RES_POIS);
     add_flag(flgs, OF_RES_DARK);
     add_flag(flgs, OF_VULN_LITE);
+    add_flag(flgs, OF_NIGHT_VISION);
 }
 race_t *_cave_spider_get_race_t(void)
 {
@@ -204,6 +202,7 @@ static void _giant_spider_calc_bonuses(void)
 static void _giant_spider_get_flags(u32b flgs[OF_ARRAY_SIZE])
 {
     add_flag(flgs, OF_RES_POIS);
+    add_flag(flgs, OF_NIGHT_VISION);
 }
 race_t *_giant_spider_get_race_t(void)
 {
@@ -264,7 +263,7 @@ static void _phase_shield_spell(int cmd, variant *res)
     }
 }
 
-static power_info _phase_spider_powers[] = {
+static power_info _phase_spider_get_powers[] = {
     { A_DEX, {  1,  1, 30, _detect_prey_spell } },
     { A_DEX, {  5,  1, 30, phase_door_spell } },
     { A_DEX, { 10,  5, 30, teleport_spell } },
@@ -276,9 +275,6 @@ static power_info _phase_spider_powers[] = {
     { A_DEX, { 50, 30, 60, dimension_door_spell } },
     {    -1, { -1, -1, -1, NULL } }
 };
-static int _phase_spider_get_powers(spell_info* spells, int max) {
-    return get_powers_aux(spells, max, _phase_spider_powers);
-}
 static void _phase_spider_calc_innate_attacks(void)
 {
     innate_attack_t    a = {0};
@@ -319,6 +315,7 @@ static void _phase_spider_get_flags(u32b flgs[OF_ARRAY_SIZE])
     add_flag(flgs, OF_RES_NEXUS);
     add_flag(flgs, OF_RES_CONF);
     add_flag(flgs, OF_FREE_ACT);
+    add_flag(flgs, OF_NIGHT_VISION);
 
     if (p_ptr->lev >= 50)
         add_flag(flgs, OF_IM_POIS);
@@ -359,14 +356,11 @@ race_t *_phase_spider_get_race_t(void)
 }
 
 /* Aranea */
-static power_info _aranea_powers[] = {
+static power_info _aranea_get_powers[] = {
     { A_DEX, {  1,  1, 30, _detect_prey_spell } },
     { A_DEX, { 12, 10, 60, spider_web_spell } },
     {    -1, { -1, -1, -1, NULL } }
 };
-static int _aranea_get_powers(spell_info* spells, int max) {
-    return get_powers_aux(spells, max, _aranea_powers);
-}
 static void _aranea_calc_innate_attacks(void)
 {
     innate_attack_t    a = {0};
@@ -410,6 +404,7 @@ static void _aranea_get_flags(u32b flgs[OF_ARRAY_SIZE])
     add_flag(flgs, OF_RES_CONF);
     add_flag(flgs, OF_RES_FEAR);
     add_flag(flgs, OF_FREE_ACT);
+    add_flag(flgs, OF_NIGHT_VISION);
 
     if (p_ptr->lev >= 50)
         add_flag(flgs, OF_IM_POIS);
@@ -508,6 +503,7 @@ static void _elder_aranea_get_flags(u32b flgs[OF_ARRAY_SIZE])
     add_flag(flgs, OF_FREE_ACT);
     add_flag(flgs, OF_SEE_INVIS);
     add_flag(flgs, OF_REGEN);
+    add_flag(flgs, OF_NIGHT_VISION);
 
     if (p_ptr->lev >= 50)
         add_flag(flgs, OF_IM_POIS);
@@ -605,8 +601,7 @@ static void _birth(void)
 }
 
 static name_desc_t _info[SPIDER_MAX] = {
-    { "Phase Spider", "Phase Spiders have unsurpassed powers of teleportation and average offense." },
-    { "Aranea", "Aranea are stronger in melee than Phase Spiders, but lack special powers except for their Spider Web." },
+    { "Phase Spider", "Phase Spiders have unsurpassed powers of teleportation and average offense." },    { "Aranea", "Aranea are stronger in melee than Phase Spiders, but lack special powers except for their Spider Web." },
 };
 
 race_t *mon_spider_get_race(int psubrace)
