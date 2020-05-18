@@ -2079,7 +2079,7 @@ static int _troika_get_spells_learned(spell_info* spells, int alku, int kumpi)
             dest = &spells[alku + (ct++)];
             dest->level = _my_spell_taso[kumpi][i];
             dest->cost = src->cost;
-            dest->fail = calculate_fail_rate(dest->level, src->fail, p_ptr->stat_ind[A_STR]);
+            dest->fail = src->fail;
             dest->fn = src->fn;
         }
     }
@@ -2237,23 +2237,20 @@ static void _troika_save(savefile_ptr file)
     }
 }
 
-static int _get_spells(spell_info* spells, int max)
+static spell_info *_get_spells(void)
 {
+    static spell_info spells[MAX_SPELLS];
     int laskuri = _troika_get_spells_learned(spells, 0, 0);
     troika_spell_hack = laskuri;
     laskuri += _troika_get_spells_learned(spells, laskuri, 1);
-    return laskuri;
+    spells[laskuri].fn = NULL;
+    return spells;
 }
 
 static void _troika_dump(doc_ptr doc)
 {
     _dump_quests(doc);
-    {
-        spell_info spells[MAX_SPELLS];
-        int        ct = _get_spells(spells, MAX_SPELLS);
-
-        py_display_spells(doc, spells, ct);
-    }
+    py_dump_spells(doc);
 }
 
 bool troika_dispel_timeouts(void)
@@ -2413,7 +2410,7 @@ class_t *troika_get_class(void)
         me.caster_info = _caster_info;
         me.gain_level = _gain_level;
         me.character_dump = _troika_dump;
-        me.get_spells = _get_spells;
+        me.get_spells_fn = _get_spells;
         me.load_player = _troika_load;
         me.save_player = _troika_save;
         init = TRUE;
