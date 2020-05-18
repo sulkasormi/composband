@@ -66,7 +66,7 @@ Fear does not affect spell or device fail rates directly, but in practice does d
 </indent>
 Fear resistance works very differently from all other resistances, being more similar to See Invisible. Each level of fear resistance gives an additional roll to survive a fear check; the probability of any single roll being successful depends on your level, your charisma, and (depending on the situation) other factors such as the monster you are fighting, the dangerousness of the level and how afraid you already were. The level of Craven characters is discounted somewhat for this calculation, and Craven characters also start with vulnerability to fear, giving them one fewer roll.
 
-Fear resistance is not absolutely needed, but is generally a good idea, especially in the midgame and late game. Most, though not all, monsters can feel fear. Frightened monsters will try to run away from you, and (like you) can miss turns in cases of extreme fear. Frightened monsters remain capable of casting spells. Frightened monsters are indicated by the <color:v>violet</color> coloring of their health bars (e.g. <color:U>f</color>[<color:v>*********</color>]). Fear has the lowest priority of any health bar color.
+Fear resistance is not absolutely needed, but is generally a good idea, especially in the midgame and late game. Most, though not all, monsters can feel fear. Frightened monsters will try to run away from you, and (like you) can miss turns in cases of extreme fear. Frightened monsters remain capable of casting spells. Frightened monsters are indicated by the <color:v>violet</color> coloring of their health bars (e.g. <color:U>f</color>[<color:v>*********</color>]). Fear has the second-lowest priority of any health bar color.
 
 
 <topic:Blindness><style:heading>Blindness</style>
@@ -84,7 +84,7 @@ Temporary slowness can be caused by traps, monster spells, monster melee, or ele
 
 <color:B>Potions of Vigor</color> cure both types of slowness (as well as stunning), but have no other use and are therefore generally only carried when slowing attacks are specifically expected.
 
-Most monsters can be slowed, but uniques are immune. Slowness is not indicated by a monster's health bar.
+Most monsters can be slowed, but uniques are immune. Slowed monsters are indicated by the <color:D>dark gray</color> coloring of their health bars (e.g. <color:U>f</color>[<color:D>*********</color>]). Slowness has the lowest priority of any health bar color.
 
 Temporary haste is the opposite of slowness: a bonus of +10 to speed. <color:B>Potions of Speed</color> do not cure slowness, but cancel out its effect by providing temporary haste.
 
