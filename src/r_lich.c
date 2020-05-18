@@ -95,7 +95,7 @@ static void _mana_storm_spell(int cmd, variant *res)
 /**********************************************************************
  * Archlich (Lich -> Master Lich -> Demilich -> Archlich)
  **********************************************************************/
-static spell_info _spells[] = {
+static spell_info _get_spells[] = {
     {  1,  1, 20, magic_missile_spell},
     {  3,  2, 25, phase_door_spell},
     {  5,  3, 30, scare_spell},
@@ -118,22 +118,12 @@ static spell_info _spells[] = {
     { 50, 50, 68, _mana_storm_spell},
     { -1, -1, -1, NULL}
 };
-static int _get_spells(spell_info* spells, int max) {
-    return get_spells_aux(spells, max, _spells);
-}
 
-static int _get_powers(spell_info* spells, int max)
+static power_info _get_powers[] =
 {
-    int ct = 0;
-
-    spell_info* spell = &spells[ct++];
-    spell->level = 25;
-    spell->cost = 1;
-    spell->fail = calculate_fail_rate(spell->level, 90, p_ptr->stat_ind[A_INT]);
-    spell->fn = eat_magic_spell;
-
-    return ct;
-}
+    { A_INT, { 25, 1, 90, eat_magic_spell}},
+    { -1, {-1, -1, -1, NULL}}
+};
 
 static void _calc_bonuses(void) {
     if (p_ptr->lev < 25)
