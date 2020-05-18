@@ -1957,9 +1957,7 @@ void nausea_mut(int cmd, variant *res)
 
             set_food(PY_FOOD_WEAK);
 
-            if (music_singing_any()) bard_stop_singing();
-            if (hex_spelling_any()) stop_hex_spell_all();
-            warlock_stop_singing();
+            stop_mouth();
         }
         break;
     default:
