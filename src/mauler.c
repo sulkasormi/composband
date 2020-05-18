@@ -222,14 +222,7 @@ static void _critical_blow_spell(int cmd, variant *res)
         break;
     case SPELL_ON_BROWSE:
     {
-        bool screen_hack = screen_is_saved();
-        if (screen_hack) screen_load();
-
-        display_weapon_mode = MAULER_CRITICAL_BLOW;
-        do_cmd_knowledge_weapon();
-        display_weapon_mode = 0;
-
-        if (screen_hack) screen_save();
+        display_weapon_info_aux(MAULER_CRITICAL_BLOW);
         var_set_bool(res, TRUE);
         break;
     }
@@ -254,14 +247,7 @@ static void _crushing_blow_spell(int cmd, variant *res)
         break;
     case SPELL_ON_BROWSE:
     {
-        bool screen_hack = screen_is_saved();
-        if (screen_hack) screen_load();
-
-        display_weapon_mode = MAULER_CRUSHING_BLOW;
-        do_cmd_knowledge_weapon();
-        display_weapon_mode = 0;
-
-        if (screen_hack) screen_save();
+        display_weapon_info_aux(MAULER_CRUSHING_BLOW);
         var_set_bool(res, TRUE);
         break;
     }
@@ -348,14 +334,7 @@ static void _knockback_spell(int cmd, variant *res)
         break;
     case SPELL_ON_BROWSE:
     {
-        bool screen_hack = screen_is_saved();
-        if (screen_hack) screen_load();
-
-        display_weapon_mode = MAULER_KNOCKBACK;
-        do_cmd_knowledge_weapon();
-        display_weapon_mode = 0;
-
-        if (screen_hack) screen_save();
+        display_weapon_info_aux(MAULER_KNOCKBACK);
         var_set_bool(res, TRUE);
         break;
     }
@@ -461,9 +440,16 @@ static void _smash_wall_spell(int cmd, variant *res)
             cave_alter_feat(y, x, FF_HURT_ROCK);
             p_ptr->update |= PU_FLOW;
         }
+        else if ((cave_have_flag_bold(y, x, FF_TUNNEL)) && (cave_have_flag_bold(y, x, FF_HURT_FIRE)))
+        {
+            cave_alter_feat(y, x, FF_HURT_FIRE);
+            p_ptr->update |= PU_FLOW;
+        }
         else if (cave_have_flag_bold(y, x, FF_TREE))
         {
-            cave_set_feat(y, x, one_in_(3) ? feat_brake : feat_grass);
+            if (cave_have_flag_bold(y, x, FF_SNOW))
+                cave_set_feat(y, x, feat_snow_floor);
+            else cave_set_feat(y, x, one_in_(3) ? feat_brake : feat_grass);
         }
         else
         {
@@ -510,14 +496,7 @@ void stunning_blow_spell(int cmd, variant *res)
         break;
     case SPELL_ON_BROWSE:
     {
-        bool screen_hack = screen_is_saved();
-        if (screen_hack) screen_load();
-
-        display_weapon_mode = MAULER_STUNNING_BLOW;
-        do_cmd_knowledge_weapon();
-        display_weapon_mode = 0;
-
-        if (screen_hack) screen_save();
+        display_weapon_info_aux(MAULER_STUNNING_BLOW);
         var_set_bool(res, TRUE);
         break;
     }
@@ -566,22 +545,15 @@ static spell_info _spells[] =
     { -1, -1, -1, NULL}
 };
 
-static int _get_spells(spell_info* spells, int max)
+static spell_info *_get_spells(void)
 {
-    int ct;
-
     if (!_weapon_check())
     {
         msg_print("Rargh! You need to wield a single weapon with both hands to properly maul stuff!");
-        return 0;
+        return NULL;
     }
 
-    ct = get_spells_aux(spells, max, _spells);
-    
-    if (ct == 0)
-        msg_print("Rargh! Go maul something for more experience!");
-
-    return ct;
+    return _spells;
 }
 
 static void _calc_bonuses(void)
@@ -684,10 +656,7 @@ static void _character_dump(doc_ptr doc)
 {
     if (_weapon_check() && p_ptr->lev >= 5)
     {
-        spell_info spells[MAX_SPELLS];
-        int        ct = _get_spells(spells, MAX_SPELLS);
-
-        py_display_spells(doc, spells, ct);
+        py_dump_spells(doc);
     }
 }
 
@@ -736,7 +705,7 @@ class_t *mauler_get_class(void)
         me.calc_bonuses = _calc_bonuses;
         me.calc_weapon_bonuses = _calc_weapon_bonuses;
         me.caster_info = _caster_info;
-        me.get_spells = _get_spells;
+        me.get_spells_fn = _get_spells;
         me.character_dump = _character_dump;
         init = TRUE;
     }
