@@ -9,7 +9,7 @@ D:the Sultan is growing concerned. Go kill him, I'll give you credit.
 ?:1
 
 ?:[EQU $QUEST64 Completed]
-D:Well done on the special examination. Here is your Magister's crown.
+D:Well done on the special examination. Here is your wizard's hat.
 ?:1
 
 ?:[EQU $QUEST64 Failed]
@@ -50,6 +50,6 @@ M:#.....cdabcdabcdabc.....#
 M:####.................####
 M:#<...................+$$#
 M:#########################
-R:OBJ(jewel encrusted crown, DEPTH+25):EGO(magi)
+R:OBJ(pointy hat, DEPTH+25):EGO(magi)
 
 # vim: filetype=q :
