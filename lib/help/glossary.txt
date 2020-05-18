@@ -28,6 +28,8 @@ See <link:objects.txt#InscriptionAbbrev> for item attribute abbreviations.
 
 <color:keyword>beam</color>: An effect that affects all squares and monsters in its path, does not stop at the first monster it hits, and cannot be reflected. Compare bolt, ball.
 
+<color:keyword>berserk strength</color>: Also <color:keyword>berserk rage</color>, <color:keyword>super-heroism</color>; a mixed-blessing effect. Gives +30 max-HP, a melee to-hit bonus (usually +24 to-hit), level-dependent melee damage bonuses (up to +13 to-dam at CL 50), and complete immunity to fear; but also reduces all non-melee skills, gives a small AC penalty, prevents the player from casting book spells, and blocks most other spell-like abilities. Permanent for Berserkers and bear-formed Beornings, otherwise temporary. Most magical healing or curing effects remove Berserk Strength. Compare <color:keyword>heroism</color>.
+
 <color:keyword>blessed</color>: 1) An item attribute; makes the item somewhat resistant to being cursed, and allows priests to use it with no penalties if it is a weapon. 2) Blessing: a spell and scroll effect, temporarily increases the player's AC and to-hit.
 
 <color:keyword>blink</color>: Short-range teleport; Phase Door.
@@ -60,7 +62,7 @@ See <link:objects.txt#InscriptionAbbrev> for item attribute abbreviations.
 
 <color:keyword>confusion</color>: 1) A status effect, affects both players and monsters. See <link:status.txt#Confusion>. 2) An element, causes the status effect if not resisted.
 
-<color:keyword>curse</color>: 1) Item curse; a negative, usually removable object attribute that prevents you from unequipping that object while it remains cursed. 2) A monster or player-monster spell attack, particularly one that offers a saving throw and deals non-elemental damage; one of Cause Light Wounds, Cause Serious Wounds, Cause Critical Wounds, Cause Mortal Wounds or Hand of Doom. 3) One of a number of special effects with similarity to item curses, such as the Amberite blood curse.
+<color:keyword>curse</color>: 1) Item curse; a negative, usually removable object attribute that prevents you from unequipping that object while it remains cursed. 2) A monster or player-monster spell attack, particularly one that offers a saving throw, deals non-elemental damage and may cause item curses; one of Wounding Curse, Evil Curse, Mighty Curse, Death Curse or Hand of Doom. 3) One of a number of special effects with similarity to item curses, such as the Amberite blood curse.
 
 <color:keyword>dazed</color>: Stunned; afflicted with the Stun status effect.
 
@@ -136,6 +138,8 @@ See <link:objects.txt#InscriptionAbbrev> for item attribute abbreviations.
 
 <color:keyword>heavy curse</color>: An item curse that cannot be removed with normal Remove Curse, but can be removed with a Scroll of *Remove Curse*.
 
+<color:keyword>heroism</color>: A positive effect, gives +10 max-HP, +12 to-hit (both melee and ranged), and one level of resistance to fear. Usually temporary, but can be permanently gained by player-monsters by killing their racial boss.
+
 <color:keyword>high resist</color>: A resistance to an element other than the base elements and poison.
 
 <color:keyword>hostile monster</color>: Any monster who is neither friendly nor a pet. The vast majority of monsters encountered will be hostile.
@@ -170,7 +174,7 @@ See <link:objects.txt#InscriptionAbbrev> for item attribute abbreviations.
 
 <color:keyword>level guardian</color>: A random quest monster in the Angband dungeon; in an extended sense, any monster tied to appearing at a particular depth in a particular dungeon, including Oberon, the Serpent of Chaos and sometimes dungeon bosses.
 
-<color:keyword>levitation</color>: The ability to float. Levitation gives access to dark pits and mountainous areas of the wilderness, allows you to avoid some traps, eliminates movement speed penalties in wooded areas, and reduces damage from standing in or over dangerous terrain. See <link:faq.txt#Levitation>.
+<color:keyword>levitation</color>: The ability to float. Levitation gives access to dark pits and mountainous areas of the wilderness, allows you to avoid some traps, eliminates movement speed penalties in wooded and snowy areas, and reduces damage from standing in or over dangerous terrain. See <link:faq.txt#Levitation>.
 
 <color:keyword>life points</color>: A measure of your attachment to life, displayed on a range of 0% to 99% if depleted. Losing life points reduces effective maximum HP; if life points drop below 0, the character will transform into an undead race, or die outright if this is not possible. See <link:faq.txt#LifePoints>.
 
@@ -210,6 +214,8 @@ See <link:objects.txt#InscriptionAbbrev> for item attribute abbreviations.
 
 <color:keyword>nexus</color>: An element, seldom deadly but often highly annoying due to its side effects.
 
+<color:keyword>nice</color>: A monster status; nice monsters will not use breath or spell attacks, and damage from exceptionally powerful melee hits is reduced. Nice monsters also never resist destruction. Nearly all high-level monsters are initially nice when summoned; the main exceptions are the Olympian gods and playing in Nightmare Mode. Niceness stops when the player has had a chance to react to the monster's presence.
+
 <color:keyword>non-ego</color>: An item that is neither ego nor an artifact; a nameless item. "Reforging, Crafting and Artifact Creation only work on non-ego items."
 
 <color:keyword>object list</color>: A list of all known objects on the current dungeon level, accessible as a subwindow or through the ']' and 'O' commands. Can be used for travelling and to display additional features such as stairs.
@@ -219,6 +225,8 @@ See <link:objects.txt#InscriptionAbbrev> for item attribute abbreviations.
 <color:keyword>overworld map</color>: See <color:keyword>global map</color>.
 
 <color:keyword>pack</color>: 1) The player's backpack; the inventory. 2) A group of similar monsters acting together.
+
+<color:keyword>parent monster</color>: A monster's parent is either the monster who summoned it, or the monster whose escort it belongs to. Not all monsters have a parent. Monsters with living parents feel some loyalty to the parent, and therefore make poor pets and unreliable mounts. Pets summoned by other pets often leave the level if their parent dies or disappears.
 
 <color:keyword>permanent curse</color>: An item curse that can only be removed with Mundanity. Other curses on an item with a permanent curse may still be removable.
 
@@ -431,7 +439,7 @@ The following terms are either slang, informal expressions or terms used in the 
 
 <color:keyword>tag</color>: To very briefly visit a dungeon for the sole purpose of establishing a recall point there.
 
-<color:keyword>telefail</color>: Failure to use a Scroll of Teleportation, Staff of Teleport or some other means of teleport self. A common cause of player death.
+<color:keyword>telefail</color>: A failed attempt to use a Scroll of Teleportation, Staff of Teleport or some other means of teleport self. A common cause of player death.
 
 <color:keyword>TO</color>: Teleport Other. "TO the summons and easily kill Glaurung."
 
@@ -445,4 +453,5 @@ The following terms are either slang, informal expressions or terms used in the 
 
 <color:D>
 Original   : FrogComposband 7.1.liquorice
+Updated    : FrogComposband 7.1.salmiak
 </color>
