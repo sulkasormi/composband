@@ -4,20 +4,98 @@
 
 #include "angband.h"
 
+static byte notional_stat_ind[PY_MAX_LEVEL] =
+{ 14, 14, 14, 14, 14, 15, 15, 15, 15, 15,
+  16, 16, 16, 16, 16, 17, 17, 17, 18, 18,
+  19, 19, 19, 20, 20, 20, 21, 22, 23, 24,
+  25, 26, 27, 28, 29, 30, 31, 32, 33, 33,
+  34, 34, 35, 35, 36, 36, 37, 37, 37, 37};
+
+int _notional_mana(void) /* Don't reward low INT by making full mana gain easier */
+{
+    return spell_cap(calc_mana_aux(notional_stat_ind[p_ptr->lev], A_INT, p_ptr->lev));
+}
+
 /****************************************************************
  * Public Helpers
  ****************************************************************/
 int rune_knight_absorption(int m_idx, int type, int dam)
 {
     int drain = 0;
+    s32b hat;
+    s32b pow;
+    int msp;
+    int wdam;
+    s32b csp;
+    static s32b last_py_turn = 0;
+    static s16b py_turn_dam = 0;
+    bool is_guardian = FALSE;
 
     if (p_ptr->pclass != CLASS_RUNE_KNIGHT) return dam;
     if (!p_ptr->magic_resistance) return dam;
     if (type == GF_ARROW || type == GF_ROCK) return dam;
+    if (!p_ptr->msp) return dam;
 
-    drain = dam * p_ptr->magic_resistance / 100;
-    /* XXX Decline mana gain if player is scumming weak casters? */
-    sp_player(MAX(drain, 2 + p_ptr->lev/10));
+    msp = _notional_mana();
+//    msg_format("Notional mana: %d", msp);
+    if (!msp) return dam; /* This should never happen... */
+    csp = (s32b)p_ptr->csp * msp / p_ptr->msp;
+//    msg_format("Notional SP: %d", csp);
+
+    if (m_idx > 0)
+    {
+        monster_type *m_ptr = &m_list[m_idx];
+        if ((m_ptr->r_idx) && (m_ptr->smart & (1U << SM_GUARDIAN)))
+        {
+            is_guardian = TRUE;
+        }
+    }
+
+    /* Don't shrug off being triple-blasted by arch-viles or gravity hounds
+     * even if each individual attack does low damage */
+    if (player_turn != last_py_turn)
+    {
+        last_py_turn = player_turn;
+        py_turn_dam = is_guardian ? 0 : dam;
+    }
+    else
+    {
+        if ((!is_guardian) && (dam > p_ptr->mhp / 40)) py_turn_dam += dam;
+//        msg_format("Py-turn-dam: %d", py_turn_dam);
+    }
+
+    wdam = MAX(dam, py_turn_dam);
+
+    drain = dam * (p_ptr->magic_resistance + 5) / 100;
+    hat = ((wdam * 3 / 2) + 50 + MAX(80, MIN(msp, wdam * 6))) / 2;
+    if ((hat < msp / 2) && (dam > p_ptr->mhp / 30))
+    {
+        s32b testhat = msp / 2;
+        if (dam < (p_ptr->mhp / 10))
+        {
+            testhat -= testhat * ((p_ptr->mhp / 2) - (dam * 5)) / p_ptr->mhp;
+        }
+        hat = MAX(testhat, hat);
+    }
+    if ((is_guardian) && (hat > (msp * 3 / 4))) /* Limit scumming entrance guardians */
+    {
+        hat = msp * 3 / 4;
+    }
+//    msg_format("Hat: %d", hat);
+    hat -= csp;
+    if (hat > 0)
+    {
+        int divisor = MIN(20, MAX(5, p_ptr->lev / 2));
+        pow = drain + 4; /* Slow SP gain is very tedious */
+        if (csp + divisor <= msp / 2)
+        {
+            pow += (msp / 2 - csp) / divisor;
+        }
+        if (pow > hat) pow = hat;
+        /* Adjust by ratio of real mana and notional mana */
+        if (msp != p_ptr->msp) pow = ((pow * p_ptr->msp) + msp / 2) / msp;
+        sp_player(pow);
+    }
 
     return dam - drain;
 }
@@ -1318,12 +1396,8 @@ void _self_protection_spell(int cmd, variant *res)
     case SPELL_INFO:
         var_set_string(res, info_duration(_DURATION, _DURATION));
         break;
-    case SPELL_CAST:
-        set_oppose_acid(randint1(_DURATION) + _DURATION, FALSE);
-        set_oppose_elec(randint1(_DURATION) + _DURATION, FALSE);
-        set_oppose_fire(randint1(_DURATION) + _DURATION, FALSE);
-        set_oppose_cold(randint1(_DURATION) + _DURATION, FALSE);
-        set_oppose_pois(randint1(_DURATION) + _DURATION, FALSE);
+    case SPELL_CAST:         
+        set_oppose_base(randint1(_DURATION) + _DURATION, FALSE);
         var_set_bool(res, TRUE);
         break;
     default:
@@ -1897,21 +1971,19 @@ static int _get_spells_imp(spell_info* spells, int max, _spell_group *spell_grou
 {
     int i;
     int ct = 0;
-    int stat_idx = p_ptr->stat_ind[A_INT];
     
     for (i = 0; ; i++)
     {
         spell_info *base = &spell_group->spells[i];
         if (base->level < 0) break;
         if (ct >= max) break;
-        if (base->level <= p_ptr->lev)
+        if ((base->level <= p_ptr->lev) || (show_future_spells))
         {
             spell_info* current = &spells[ct];
             current->fn = base->fn;
             current->level = base->level;
             current->cost = base->cost;
-
-            current->fail = calculate_fail_rate(base->level, base->fail, stat_idx);            
+            current->fail = base->fail;
             ct++;
         }
     }
@@ -1926,11 +1998,14 @@ static void _character_dump(doc_ptr doc)
     {
         _spell_group_ptr group = &_spell_groups[i];
         spell_info       spells[_MAX_SPELLS_PER_GROUP];
+        power_info       powers[_MAX_SPELLS_PER_GROUP];
         int              ct = _get_spells_imp(spells, _MAX_SPELLS_PER_GROUP, group); 
 
         if (!ct) continue;
+        spells[ct].fn = NULL; /* Careful... */
+        ct = get_spells_aux(powers, _MAX_SPELLS_PER_GROUP, spells, TRUE);
         doc_printf(doc, "<color:%c>%s</color>\n", attr_to_attr_char(group->color), group->name);
-        py_display_spells_aux(doc, spells, ct);
+        py_display_spells_aux(doc, powers, ct);
     }
 }
 
@@ -1952,19 +2027,25 @@ static void _spell_menu_fn(int cmd, int which, vptr cookie, variant *res)
     }
 }
 
-static int _get_spells(spell_info* spells, int max)
+static spell_info *_get_spells(void)
 {
     int idx = -1;
     int ct = 0;
+    int max = MAX_SPELLS;
     menu_t menu = { "Use which group of spells?", "Browse which group of spells?", NULL,
                     _spell_menu_fn, _spell_groups, _MAX_SPELL_GROUPS, 0};
+    static spell_info spells[MAX_SPELLS];
 
     idx = menu_choose(&menu);
     if (idx < 0) return 0;
     ct = _get_spells_imp(spells, max, &_spell_groups[idx]);
     if (ct == 0)
+    {
         msg_print("You don't know any of those spells yet!");
-    return ct;
+        return NULL;
+    }
+    spells[ct].fn = NULL;
+    return spells;
 }
 
 static void _calc_bonuses(void)
@@ -2036,8 +2117,8 @@ class_t *rune_knight_get_class(void)
 
     if (!init)
     {           /* dis, dev, sav, stl, srh, fos, thn, thb */
-    skills_t bs = { 30,  25,  36,   2,  18,  16,  50,  35};
-    skills_t xs = {  7,   9,  10,   0,   0,   0,  14,  11};
+    skills_t bs = { 30,  23,  36,   2,  18,  16,  48,  35};
+    skills_t xs = {  7,   9,   9,   0,   0,   0,  14,  11};
 
         me.name = "Rune-Knight";
         me.desc = 
@@ -2062,10 +2143,9 @@ class_t *rune_knight_get_class(void)
             "spells; otherwise, play as a warrior and wait to absorb mana. This "
             "can take time, depending on the foes you face, but the Rune-Knight's "
             "honor should prevent them from seeking out weak, defenseless spellcasters; "
-            "being one of the strongest classes, Rune-Knights have no need to "
-            "resort to exploits...";
+            "and in any case, weak attacks can only take your mana so high.";
 
-        me.stats[A_STR] =  2;
+        me.stats[A_STR] =  0;
         me.stats[A_INT] =  1;
         me.stats[A_WIS] = -1;
         me.stats[A_DEX] =  1;
@@ -2082,7 +2162,7 @@ class_t *rune_knight_get_class(void)
         me.birth = _birth;
         me.calc_bonuses = _calc_bonuses;
         me.caster_info = _caster_info;
-        me.get_spells = _get_spells;
+        me.get_spells_fn = _get_spells;
         me.destroy_object = _destroy_object;
         me.character_dump = _character_dump;
         init = TRUE;
