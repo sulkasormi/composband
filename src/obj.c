@@ -301,7 +301,7 @@ bool obj_can_shoot(obj_ptr obj)
 {
     if (!obj_is_ammo(obj)) return FALSE;
     if (!equip_find_obj(TV_BOW, SV_ANY)) return FALSE;
-    return obj->tval == p_ptr->shooter_info.tval_ammo;
+    return (object_is_suitable_ammo(obj));
 }
 
 bool obj_is_blessed(obj_ptr obj)
@@ -380,13 +380,19 @@ bool obj_is_crossbow(obj_ptr obj)
 bool obj_is_harp(obj_ptr obj)
 {
     if (!obj_is_shooter(obj)) return FALSE;
-    if (obj->sval != SV_HARP) return FALSE;
+    if (obj->sval != SV_HARP && obj->sval != SV_FLUTE) return FALSE;
     return TRUE;
 }
 bool obj_is_gun(obj_ptr obj)
 {
     if (!obj_is_shooter(obj)) return FALSE;
     if (obj->sval != SV_CRIMSON && obj->sval != SV_RAILGUN) return FALSE;
+    return TRUE;
+}
+bool obj_is_fake_bow(obj_ptr obj)
+{
+    if (!obj_is_shooter(obj)) return FALSE;
+    if (obj->sval != SV_HARP && obj->sval != SV_FLUTE && obj->sval != SV_CRIMSON && obj->sval != SV_RAILGUN) return FALSE;
     return TRUE;
 }
 /************************************************************************
@@ -602,8 +608,6 @@ bool obj_can_combine(obj_ptr dest, obj_ptr obj, int loc)
         return FALSE;
 
     case TV_STATUE:
-        if (dest->sval != SV_PHOTO) break;
-        /* Fall Thru for monster check (Q: Why don't statues with same monster combine?) */
     case TV_FIGURINE:
     case TV_CORPSE:
         if (dest->pval != obj->pval) return FALSE;
@@ -1034,7 +1038,7 @@ static void _drop(obj_ptr obj)
 {
     char name[MAX_NLEN];
     object_desc(name, obj, OD_COLOR_CODED);
-    msg_format("You drop %s.", name);
+    if (!silent_drop_hack) msg_format("You drop %s.", name);
     drop_near(obj, 0, py, px);
     p_ptr->update |= PU_BONUS; /* Weight changed */
     if (obj->loc.where == INV_PACK)
@@ -1072,6 +1076,14 @@ void obj_drop(obj_ptr obj, int amt)
     else
     {
         obj->marked &= ~OM_WORN;
+        if (obj->name1) /* Track location of fixed artifacts */
+        {
+            a_info[obj->name1].floor_id = p_ptr->floor_id;
+        }
+        else if (obj->name3)
+        {
+            a_info[obj->name3].floor_id = p_ptr->floor_id;
+        }
         _drop(obj);
         obj->number = 0;
         obj_release(obj, OBJ_RELEASE_QUIET);
