@@ -678,7 +678,7 @@ static void _remove_obstacles_spell(int cmd, variant *res)
  * Spell Table and Exports
  ****************************************************************/
 
-static spell_info _spells[] =
+static spell_info _get_spells[] =
 {
     /*lvl cst fail spell */
     {  1,   3, 10, _extended_whip_spell },
@@ -699,12 +699,6 @@ static spell_info _spells[] =
     { 45,  50, 75, _pharaohs_curse_spell }, /* No wizardstaff. No spell skills! So, 3% best possible fail.*/
     { -1,  -1, -1, NULL }
 };
-
-
-static int _get_spells(spell_info* spells, int max)
-{
-    return get_spells_aux(spells, max, _spells);
-}
 
 static bool _is_favored_weapon(object_type *o_ptr)
 {
@@ -774,14 +768,6 @@ static caster_info * _caster_info(void)
         init = TRUE;
     }
     return &me;
-}
-
-static void _character_dump(doc_ptr doc)
-{
-    spell_info spells[MAX_SPELLS];
-    int        ct = _get_spells(spells, MAX_SPELLS);
-
-    py_display_spells(doc, spells, ct);
 }
 
 static void _birth(void)
@@ -854,7 +840,7 @@ class_t *archaeologist_get_class(void)
         me.process_player = _process_player;
         me.caster_info = _caster_info;
         me.get_spells = _get_spells;
-        me.character_dump = _character_dump;
+        me.character_dump = py_dump_spells;
         me.get_object = _get_object;
 
         init = TRUE;
