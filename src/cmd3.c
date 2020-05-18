@@ -1486,13 +1486,13 @@ static void _list_monsters_aux(_mon_list_ptr list, rect_t display_rect, int mode
         /* Navigate the List */
         case '7': case SKEY_TOP:
             top = 0;
-            pos = 0;
+            pos = 1;
             redraw = TRUE;
             handled = TRUE;
             break;
         case '1': case SKEY_BOTTOM:
             top = MAX(0, ct_types - page_size);
-            pos = 0;
+            pos = (top == 0) ? 1 : 0;
             redraw = TRUE;
             handled = TRUE;
             break;
@@ -1501,7 +1501,7 @@ static void _list_monsters_aux(_mon_list_ptr list, rect_t display_rect, int mode
             if (top < 0)
             {
                 top = 0;
-                pos = 0;
+                pos = 1;
             }
             redraw = TRUE;
             handled = TRUE;
@@ -1518,7 +1518,15 @@ static void _list_monsters_aux(_mon_list_ptr list, rect_t display_rect, int mode
             break;
         case '2': case SKEY_DOWN:
             if (top + pos < ct_types - 1)
+            {
                 pos++;
+            }
+            else
+            {
+                pos = 1;
+                top = 0;
+                redraw = TRUE;
+            }
 
             if (pos == page_size)
             {
@@ -1526,18 +1534,20 @@ static void _list_monsters_aux(_mon_list_ptr list, rect_t display_rect, int mode
                 top++;
                 redraw = TRUE;
             }
-            handled = TRUE;
             break;
         case '8': case SKEY_UP:
             if (pos > 0)
                 pos--;
-
-            if (pos == 0 && top > 0)
+            if (pos == 0)
             {
-                top--;
+                if (top > 0) top--;
+                else
+                {
+                    top = MAX(0, ct_types - page_size);
+                    pos = MIN(page_size - 1, (ct_types - 1) - top);
+                }
                 redraw = TRUE;
             }
-            handled = TRUE;
             break;
         /* Help */
         case '?':
@@ -1616,8 +1626,8 @@ void do_cmd_list_monsters(int mode)
     _mon_list_ptr list = _create_monster_list(mode);
     rect_t        display_rect = ui_menu_rect();
 
-    if (display_rect.cx > 50)
-        display_rect.cx = 50;
+    if (display_rect.cx > monster_list_width)
+        display_rect.cx = monster_list_width;
 
     if (list->ct_total)
         _list_monsters_aux(list, display_rect, mode);
@@ -1967,7 +1977,7 @@ static int _draw_obj_list(_obj_list_ptr list, int top, rect_t rect)
             Term_queue_bigchar(rect.x + 1, rect.y + i, a, c, 0, 0);
             c_put_str(attr, format(obj_fmt, o_name), rect.y + i, rect.x + 3);
             if (p_ptr->wizard)
-                c_put_str(TERM_WHITE, format("%6d %6d ", info_ptr->score, obj_value_real(o_ptr)), rect.y + i, rect.x + 3 + cx_obj + 1);
+                c_put_str(TERM_WHITE, format("%6d %6d ", info_ptr->score, obj_value_real(o_ptr)), rect.y + i, rect.x + cx_obj + 1);
             else
                 c_put_str(TERM_WHITE, format("%-9.9s ", loc), rect.y + i, rect.x + 3 + cx_obj + 1);
         }
@@ -1980,9 +1990,18 @@ void do_cmd_list_objects(void)
     _obj_list_ptr list = _create_obj_list();
     rect_t        display_rect = ui_menu_rect();
     bool          stairs_on = list_stairs;
+    bool          disable_toggling = FALSE;
 
-    if (display_rect.cx > 50)
-        display_rect.cx = 50;
+    if (display_rect.cx > object_list_width)
+        display_rect.cx = object_list_width;
+
+    if (((list->ct_total + list->ct_feature) < 1) && (!stairs_on))
+    {
+        list_stairs = TRUE;
+        disable_toggling = TRUE; /* Otherwise we can switch stairs back off for an empty list... */
+        _obj_list_free(list);
+        list = _create_obj_list();
+    }
 
     if (list->ct_total + list->ct_feature)
     {
@@ -2038,6 +2057,7 @@ void do_cmd_list_objects(void)
                 break;
             case 'S':
             {
+                if (disable_toggling) break;
                 list_stairs = !list_stairs;
                 _obj_list_free(list);
                 list = _create_obj_list();
@@ -2124,7 +2144,15 @@ void do_cmd_list_objects(void)
             case SKEY_DOWN:
             case '2':
                 if (top + pos < ct_types - 1)
+                {
                     pos++;
+                }
+                else
+                {
+                    pos = 0;
+                    top = 0;
+                    redraw = TRUE;
+                }
 
                 if (pos == page_size)
                 {
@@ -2137,10 +2165,14 @@ void do_cmd_list_objects(void)
             case '8':
                 if (pos > 0)
                     pos--;
-
-                if (pos == 0 && top > 0)
+                if (pos == 0)
                 {
-                    top--;
+                    if (top > 0) top--;
+                    else
+                    {
+                        top = MAX(0, ct_types - page_size);
+                        pos = MIN(page_size - 1, (ct_types - 1) - top);
+                    }
                     redraw = TRUE;
                 }
                 break;
