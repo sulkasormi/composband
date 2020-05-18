@@ -410,6 +410,7 @@ void mut_get_flags(u32b flgs[OF_ARRAY_SIZE])
         add_flag(flgs, OF_VULN_FIRE);
         add_flag(flgs, OF_VULN_COLD);
     }
+    if (mutant_regenerate_mod < 100) add_flag(flgs, OF_SLOW_REGEN);
 }
 
 void mut_calc_stats(s16b stats[MAX_STATS])
@@ -658,7 +659,7 @@ bool mut_gain_random(mut_pred pred)
     return FALSE;
 }
 
-int mut_get_powers(spell_info* spells, int max)
+int mut_get_powers(power_info* spells, int max)
 {
     int i;
     int ct = 0;
@@ -669,17 +670,18 @@ int mut_get_powers(spell_info* spells, int max)
           && (_mutations[i].type & MUT_TYPE_ACTIVATION) )
         {
             spell_info *base = &_mutations[i].spell;
-            spell_info* current = NULL;
+            power_info* current = NULL;
             int stat_idx = p_ptr->stat_ind[_mutations[i].stat];
 
             if (ct >= max) break;
 
             current = &spells[ct];
-            current->fn = base->fn;
-            current->level = base->level;
-            current->cost = base->cost;
+            current->spell.fn = base->fn;
+            current->spell.level = base->level;
+            current->spell.cost = base->cost;
 
-            current->fail = calculate_fail_rate(base->level, base->fail, stat_idx);            
+            current->spell.fail = calculate_fail_rate(base->level, base->fail, stat_idx);
+            current->stat = _mutations[i].stat;
             ct++;
         }
     }
