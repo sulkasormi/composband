@@ -3,16 +3,12 @@
 /****************************************************************
  * Amberite
  ****************************************************************/
-static power_info _amberite_powers[] =
+static power_info _amberite_get_powers[] =
 {
     { A_INT, {30, 50, 70, shadow_shifting_spell}},
     { A_WIS, {40, 75, 75, pattern_mindwalk_spell}},
     { -1, {-1, -1, -1, NULL} }
 };
-static int _amberite_get_powers(spell_info* spells, int max)
-{
-    return get_powers_aux(spells, max, _amberite_powers);
-}
 static void _amberite_calc_bonuses(void)
 {
     p_ptr->sustain_con = TRUE;
@@ -165,47 +161,51 @@ void android_calc_exp(void)
 }
 
 
-static int _android_get_powers(spell_info* spells, int max)
+static power_info *_android_get_powers(void)
 {
-    int         ct = 0;
-    spell_info *spell = &spells[ct++];
+    static power_info android_powers[2] =
+    {
+        { A_STR, { -1, -1, -1, NULL }},
+        { -1, {-1, -1, -1, NULL}}
+    };
+    spell_info *spell = &android_powers[0].spell;
 
     if (p_ptr->lev < 10)
     {
         spell->level = 1;
         spell->cost = 7;
-        spell->fail = calculate_fail_rate(1, 30, p_ptr->stat_ind[A_STR]);
+        spell->fail = 30;
         spell->fn = android_ray_gun_spell;
     }
     else if (p_ptr->lev < 25)
     {
         spell->level = 10;
         spell->cost = 13;
-        spell->fail = calculate_fail_rate(10, 30, p_ptr->stat_ind[A_STR]);
+        spell->fail = 30;
         spell->fn = android_blaster_spell;
     }
     else if (p_ptr->lev < 35)
     {
         spell->level = 25;
         spell->cost = 26;
-        spell->fail = calculate_fail_rate(25, 40, p_ptr->stat_ind[A_STR]);
+        spell->fail = 40;
         spell->fn = android_bazooka_spell;
     }
     else if (p_ptr->lev < 45)
     {
         spell->level = 35;
         spell->cost = 40;
-        spell->fail = calculate_fail_rate(35, 50, p_ptr->stat_ind[A_STR]);
+        spell->fail = 50;
         spell->fn = android_beam_cannon_spell;
     }
     else
     {
         spell->level = 45;
         spell->cost = 60;
-        spell->fail = calculate_fail_rate(45, 70, p_ptr->stat_ind[A_STR]);
+        spell->fail = 70;
         spell->fn = android_rocket_spell;
     }
-    return ct;
+    return android_powers;
 }
 static void _android_calc_bonuses(void)
 {
@@ -285,7 +285,7 @@ race_t *android_get_race(void)
 
         me.birth = _android_birth;
         me.calc_bonuses = _android_calc_bonuses;
-        me.get_powers = _android_get_powers;
+        me.get_powers_fn = _android_get_powers;
         me.get_flags = _android_get_flags;
         me.flags = RACE_IS_NONLIVING | RACE_NO_POLY;
 
@@ -356,15 +356,11 @@ race_t *archon_get_race(void)
 /****************************************************************
  * Balrog
  ****************************************************************/
-static power_info _balrog_powers[] =
+static power_info _balrog_get_powers[] =
 {
     { A_CON, {15, 10, 70, demon_breath_spell}},
     { -1, {-1, -1, -1, NULL} }
 };
-static int _balrog_get_powers(spell_info* spells, int max)
-{
-    return get_powers_aux(spells, max, _balrog_powers);
-}
 static void _balrog_calc_bonuses(void)
 {
     res_add(RES_FIRE);
@@ -464,15 +460,11 @@ static void _barbarian_gain_level(int new_level)
 		}
 	}
 }
-static power_info _barbarian_powers[] =
+static power_info _barbarian_get_powers[] =
 {
     { A_STR, {8, 10, 30, berserk_spell}},
     { -1, {-1, -1, -1, NULL} }
 };
-static int _barbarian_get_powers(spell_info* spells, int max)
-{
-    return get_powers_aux(spells, max, _barbarian_powers);
-}
 static void _barbarian_calc_bonuses(void)
 {
     res_add(RES_FEAR);
@@ -640,15 +632,11 @@ static void _boit_vomit_spell(int cmd, variant *res)
     }
 }
 
-static power_info _boit_powers[] =
+static power_info _boit_get_powers[] =
 {
     { A_STR, {1, 0, 0, _boit_vomit_spell}},
     { -1, {-1, -1, -1, NULL} }
 };
-static int _boit_get_powers(spell_info* spells, int max)
-{
-    return get_powers_aux(spells, max, _boit_powers);
-}
 static void _boit_calc_bonuses(void)
 {
     p_ptr->pspeed += 2;
@@ -758,16 +746,11 @@ void jump_spell(int cmd, variant *res)
     }
 }
 
-static power_info _centaur_powers[] =
+static power_info _centaur_get_powers[] =
 {
     { A_DEX, {15, 10, 50, jump_spell}},
     { -1, {-1, -1, -1, NULL} }
 };
-
-static int _centaur_get_powers(spell_info* spells, int max)
-{
-    return get_powers_aux(spells, max, _centaur_powers);
-}
 
 static void _centaur_calc_bonuses(void)
 {
@@ -869,15 +852,11 @@ race_t *centaur_get_race(void)
 /****************************************************************
  * Cyclops
  ****************************************************************/
-static power_info _cyclops_powers[] =
+static power_info _cyclops_get_powers[] =
 {
     { A_STR, {20, 0, 50, throw_boulder_spell}},
     { -1, {-1, -1, -1, NULL} }
 };
-static int _cyclops_get_powers(spell_info* spells, int max)
-{
-    return get_powers_aux(spells, max, _cyclops_powers);
-}
 static void _cyclops_calc_bonuses(void)
 {
     res_add(RES_SOUND);
@@ -933,15 +912,11 @@ race_t *cyclops_get_race(void)
 /****************************************************************
  * Dark-Elf
  ****************************************************************/
-static power_info _dark_elf_powers[] =
+static power_info _dark_elf_get_powers[] =
 {
     { A_INT, {1, 2, 30, magic_missile_spell}},
     { -1, {-1, -1, -1, NULL} }
 };
-static int _dark_elf_get_powers(spell_info* spells, int max)
-{
-    return get_powers_aux(spells, max, _dark_elf_powers);
-}
 static void _dark_elf_calc_bonuses(void)
 {
     res_add(RES_DARK);
@@ -1130,15 +1105,11 @@ static void _draconian_breathe_spell(int cmd, variant *res)
     }
 }
 
-static power_info _draconian_powers[] =
+static power_info _draconian_get_powers[] =
 {
     { A_CON, {1, 0, 70, _draconian_breathe_spell}},
     { -1, {-1, -1, -1, NULL} }
 };
-static int _draconian_get_powers(spell_info* spells, int max)
-{
-    return get_powers_aux(spells, max, _draconian_powers);
-}
 static void _draconian_calc_bonuses(void)
 {
     p_ptr->levitation = TRUE;
@@ -1693,16 +1664,12 @@ race_t *dunadan_get_race(void)
 /****************************************************************
  * Dwarf
  ****************************************************************/
-static power_info _dwarf_powers[] =
+static power_info _dwarf_get_powers[] =
 {
     { A_WIS, {5, 5, 50, detect_doors_stairs_traps_spell}},
     { A_CHR, {10, 5, 50, detect_treasure_spell}},
     { -1, {-1, -1, -1, NULL} }
 };
-static int _dwarf_get_powers(spell_info* spells, int max)
-{
-    return get_powers_aux(spells, max, _dwarf_powers);
-}
 static void _dwarf_calc_bonuses(void)
 {
     res_add(RES_BLIND);
@@ -1758,15 +1725,11 @@ race_t *dwarf_get_race(void)
 /****************************************************************
  * Einheri
  ****************************************************************/
-static power_info _einheri_powers[] =
+static power_info _einheri_get_powers[] =
 {
     { A_STR, {1, 10, 50, berserk_spell}},
     { -1, {-1, -1, -1, NULL} }
 };
-static int _einheri_get_powers(spell_info* spells, int max)
-{
-    return get_powers_aux(spells, max, _einheri_powers);
-}
 
 static void _einheri_gain_level(int new_level)
 {
@@ -1848,15 +1811,11 @@ race_t *einheri_get_race(void)
 /****************************************************************
  * Ent
  ****************************************************************/
-static power_info _ent_powers[] =
+static power_info _ent_get_powers[] =
 {
     { A_WIS, {10, 20, 70, summon_tree_spell}},
     { -1, {-1, -1, -1, NULL} }
 };
-static int _ent_get_powers(spell_info* spells, int max)
-{
-    return get_powers_aux(spells, max, _ent_powers);
-}
 static void _ent_calc_bonuses(void)
 {
     /*res_add_vuln(RES_FIRE); cf resists.c res_pct_aux() for an alternative*/
@@ -1934,15 +1893,11 @@ race_t *ent_get_race(void)
 /****************************************************************
  * Gnome
  ****************************************************************/
-static power_info _gnome_powers[] =
+static power_info _gnome_get_powers[] =
 {
     { A_INT, {5, 2, 50, phase_door_spell}},
     { -1, {-1, -1, -1, NULL} }
 };
-static int _gnome_get_powers(spell_info* spells, int max)
-{
-    return get_powers_aux(spells, max, _gnome_powers);
-}
 static void _gnome_calc_bonuses(void)
 {
     p_ptr->free_act++;
@@ -2000,15 +1955,11 @@ race_t *gnome_get_race(void)
 /****************************************************************
  * Golem
  ****************************************************************/
-static power_info _golem_powers[] =
+static power_info _golem_get_powers[] =
 {
     { A_CON, {20, 20, 50, stone_skin_spell}},
     { -1, {-1, -1, -1, NULL} }
 };
-static int _golem_get_powers(spell_info* spells, int max)
-{
-    return get_powers_aux(spells, max, _golem_powers);
-}
 static void _golem_calc_bonuses(void)
 {
     int ac = 10 + (p_ptr->lev * 2 / 5);
@@ -2095,15 +2046,11 @@ race_t *golem_get_race(void)
 /****************************************************************
  * Half-Giant
  ****************************************************************/
-static power_info _half_giant_powers[] =
+static power_info _half_giant_get_powers[] =
 {
     { A_STR, {20, 10, 70, stone_to_mud_spell}},
     { -1, {-1, -1, -1, NULL} }
 };
-static int _half_giant_get_powers(spell_info* spells, int max)
-{
-    return get_powers_aux(spells, max, _half_giant_powers);
-}
 static void _half_giant_calc_bonuses(void)
 {
     p_ptr->sustain_str = TRUE;
@@ -2237,15 +2184,11 @@ race_t *half_orc_get_race(void)
 /****************************************************************
  * Half-Titan
  ****************************************************************/
-static power_info _half_titan_powers[] =
+static power_info _half_titan_get_powers[] =
 {
     { A_INT, {15, 10, 60, probing_spell}},
     { -1, {-1, -1, -1, NULL} }
 };
-static int _half_titan_get_powers(spell_info* spells, int max)
-{
-    return get_powers_aux(spells, max, _half_titan_powers);
-}
 static void _half_titan_calc_bonuses(void)
 {
     res_add(RES_CHAOS);
@@ -2302,15 +2245,11 @@ race_t *half_titan_get_race(void)
 /****************************************************************
  * Half-Troll
  ****************************************************************/
-static power_info _half_troll_powers[] =
+static power_info _half_troll_get_powers[] =
 {
     { A_STR, {10, 12, 50, berserk_spell}},
     { -1, {-1, -1, -1, NULL} }
 };
-static int _half_troll_get_powers(spell_info* spells, int max)
-{
-    return get_powers_aux(spells, max, _half_troll_powers);
-}
 static void _half_troll_calc_bonuses(void)
 {
     p_ptr->sustain_str = TRUE;
@@ -2427,15 +2366,11 @@ race_t *high_elf_get_race(void)
 /****************************************************************
  * Hobbit
  ****************************************************************/
-static power_info _hobbit_powers[] =
+static power_info _hobbit_get_powers[] =
 {
     { A_INT, {15, 10, 50, create_food_spell}},
     { -1, {-1, -1, -1, NULL} }
 };
-static int _hobbit_get_powers(spell_info* spells, int max)
-{
-    return get_powers_aux(spells, max, _hobbit_powers);
-}
 race_t *hobbit_get_race(void)
 {
     static race_t me = {0};
@@ -2551,15 +2486,11 @@ race_t *human_get_race(void)
 /****************************************************************
  * Imp
  ****************************************************************/
-static power_info _imp_powers[] =
+static power_info _imp_get_powers[] =
 {
     { A_INT, {9, 8, 50, imp_fire_spell}},
     { -1, {-1, -1, -1, NULL} }
 };
-static int _imp_get_powers(spell_info* spells, int max)
-{
-    return get_powers_aux(spells, max, _imp_powers);
-}
 static void _imp_calc_bonuses(void)
 {
     res_add(RES_FIRE);
