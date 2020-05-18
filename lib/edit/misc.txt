@@ -10,7 +10,7 @@ WX:99
 WY:66
 
 # Maximum number of monsters in r_info.txt
-R:1360
+R:1452
 
 # Maximum number of body types in b_info.txt
 B:150
@@ -22,7 +22,7 @@ K:750
 F:255
 
 # Maximum number of artifacts in a_info.txt
-A:400
+A:420
 
 # Maximum number of ego-items in e_info.txt
 E:500
