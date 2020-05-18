@@ -1,0 +1,19 @@
+<style:title>The Speed System</style>
+
+Please choose one of the following help topics:
+
+    <link:speedsys.txt> The Speed System
+    <link:speedsys.txt#TLDR> Quick Overview for Newbies
+    <link:speedsys.txt#UglyDetails> Technical Explanation
+    <link:speedsys.txt#Table> Speed/Energy Conversion Table
+    <link:speedsys.txt#EnergyRandomness> Energy Randomness
+    <link:speedsys.txt#EnergyCost> Energy Cost of Actions
+    <link:speedsys.txt#StatusEffects> Temporary Haste and Slowness
+    <link:speedsys.txt#MonsterSpeed> Monster Speed
+    <link:speedsys.txt#WhereGet> Where Do I Get More Speed?
+    <link:speedsys.txt#Burden> Overburdening
+    <link:speedsys.txt#Indicator> Speed Display
+    <link:speedsys.txt#Timers> Duration of Timed Effects
+
+    <color:y>(?) Help System Commands</color>
+
