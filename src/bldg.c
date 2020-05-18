@@ -2146,6 +2146,40 @@ static bool inn_comm(int cmd)
         case BACT_FOOD: /* Buy food & drink */
             if ((prace_is_(RACE_BALROG)) || (prace_is_(RACE_MON_DEMON)))
                 msg_print("The barkeep offers you some very fresh meat, which you gratefully wolf down.");
+            else if (!mortal_food_check())
+            {
+                if (prace_is_(RACE_SKELETON))
+                {
+                    msg_print("The barkeep brings you a Staff of Nothing.");
+                }
+                else if (one_in_(3)) msg_print("You receive little nutrition from the food of mortals, so you wolf down an enormous pile of it to satisfy your hunger, leaving the pale-looking barkeep regretting his 'All You Can Eat' offer.");
+                else
+                {
+                    int _race = ((p_ptr->mimic_form != MIMIC_NONE) ? p_ptr->mimic_form : p_ptr->prace);
+                    switch (_race)
+                    {
+                        case RACE_VAMPIRE:
+                        case RACE_MON_VAMPIRE:
+                            msg_print("You suck some blood from what we will describe as a lump of fresh meat.");
+                            break;
+                        case RACE_ENT:
+                            msg_print("The barkeep offers you some water, which you gratefully accept.");
+                            break;
+                        case RACE_ANDROID:
+                            msg_print("Blessed oil! The nectar of the gods!");
+                            break;
+                        case RACE_MON_JELLY:
+                            msg_print("The barkeep leaves a bowl of gruel on the table, but you eat it anyway.");
+                            break;
+                        default:
+                            if (!one_in_(27))
+                                msg_print("You sit down at the bar, expecting a funny message, but the barkeep just brings you a Staff of Nothing.");
+                            else
+                                msg_print("The barkeep offers you a well-charged Staff of Speed, which you happily suck until it is drained of all energy. (Pity you can't take it home with you!)");
+                            break;
+                    }
+                }
+            }
             else msg_print("The barkeep gives you some gruel and a beer.");
 
             (void)set_food(PY_FOOD_MAX - 1);
@@ -2450,6 +2484,7 @@ const _gamble_shop_t _gamble_shop_potions[] = {
     { TV_POTION, SV_POTION_STONE_SKIN, 1},
     { TV_POTION, SV_POTION_INVULNERABILITY, 1},
     { TV_POTION, SV_POTION_AUGMENTATION, 1},
+    { TV_POTION, SV_POTION_LIQUID_LOGRUS, 1},
     { TV_POTION, SV_POTION_HEROISM, 50},
     { TV_POTION, SV_POTION_BOLDNESS, 50},
     { TV_POTION, SV_POTION_CURE_LIGHT, 50},
@@ -2509,6 +2544,9 @@ static int _gamble_shop_roll(const _gamble_shop_t *choices)
         const _gamble_shop_t *entry = choices + i;
         if (!entry->prob)
             break;
+        if ((coffee_break == SPEED_INSTA_COFFEE) && (entry->tval == TV_POTION) &&
+            ((entry->sval == SV_POTION_HEALING) || (entry->sval == SV_POTION_STAR_HEALING) ||
+             (entry->sval == SV_POTION_LIFE))) continue;
         tot += entry->prob;
     }
 
@@ -2519,6 +2557,9 @@ static int _gamble_shop_roll(const _gamble_shop_t *choices)
         const _gamble_shop_t *entry = choices + i;
         if (!entry->prob)
             break;
+        if ((coffee_break == SPEED_INSTA_COFFEE) && (entry->tval == TV_POTION) &&
+            ((entry->sval == SV_POTION_HEALING) || (entry->sval == SV_POTION_STAR_HEALING) ||
+             (entry->sval == SV_POTION_LIFE))) continue;
 
         roll -= entry->prob;
         if (roll <= 0)
@@ -3037,7 +3078,7 @@ static bool _reforge_artifact(void)
             arvio += arvio / 100;
             arvio += (arvio / 200) * (arvio / 200) / 100;
         }
-        else if (object_is_(dest, TV_BOW, SV_HARP))
+        else if (obj_is_harp(dest))
         {
             arvio += (arvio / 200) * (arvio / 200) / 100;
         }
@@ -3142,7 +3183,7 @@ static bool _reforge_artifact(void)
 
     msg_print("After several hours, you are presented your new artifact...");
     extract_day_hour_min(&prev_day, &prev_hour, &prev_min);
-    game_turn += rand_range(5000, 15000);
+    game_turn += rand_range(9075, 9196);
     prevent_turn_overflow();
     extract_day_hour_min(&new_day, &prev_hour, &prev_min);
     if (new_day != prev_day)
@@ -4167,10 +4208,14 @@ void do_cmd_quest(void)
             ((danger > 33) && (danger < 46) && (p_ptr->lev < (danger / 2) + 11)) ||
             ((danger > 45) && (p_ptr->lev < (danger * 4 / 5) - 3) && (p_ptr->lev < 46)))
         {
-            msg_format("\n<color:R>WARNING:</color> This is a level <color:o>%d</color> quest.\n", danger);
+            char c, buf[255];
+
+            strcpy(buf, format("\n<color:R>WARNING:</color> This is a level <color:o>%d</color> quest. Really enter? <color:y>[Y/n]</color>\n", danger));
+            c = msg_prompt(buf, "nY", PROMPT_ESCAPE_DEFAULT | PROMPT_CASE_SENSITIVE | PROMPT_FORCE_CHOICE);
             sound(SOUND_WARN);
+            if (c == 'n') return;
         }
-        if (!get_check("Do you enter? ")) return;
+        else if (!get_check("Do you enter? ")) return;
 
         /* Player enters a new quest XXX */
         p_ptr->oldpy = py;
