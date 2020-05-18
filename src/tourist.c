@@ -36,24 +36,12 @@ static void _take_photo_spell(int cmd, variant *res)
     }
 }
 
-static int _get_powers(spell_info* spells, int max)
+static power_info _get_powers[] =
 {
-    int ct = 0;
-
-    spell_info* spell = &spells[ct++];
-    spell->level = 1;
-    spell->cost = 0;
-    spell->fail = 0;
-    spell->fn = _take_photo_spell;
-
-    spell = &spells[ct++];
-    spell->level = 25;
-    spell->cost = 20;
-    spell->fail = calculate_fail_rate(spell->level, 30, p_ptr->stat_ind[A_INT]);
-    spell->fn = identify_fully_spell;
-
-    return ct;
-}
+    { A_NONE, { 1, 0, 0, _take_photo_spell}},
+    { A_INT, { 25, 20, 30, identify_fully_spell}},
+    { -1, {-1, -1, -1, NULL}}
+};
 
 static caster_info * _caster_info(void)
 {
