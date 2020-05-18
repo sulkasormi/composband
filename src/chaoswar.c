@@ -201,6 +201,46 @@ void nonlethal_ty_substitute(bool do_dec)
     mutate_player();
     no_scrambling = old_nos;
     if (do_dec) dec_stat(randint0(MAX_STATS), 12 + randint1(6), TRUE);
+    if (!(p_ptr->cursed & OFC_BY_CURSE))
+    {
+        if (randint0(p_ptr->max_plv + 40) > 45)
+        {
+            if ((one_in_(3)) && (randint0(50) < p_ptr->max_plv))
+            {
+                curse_equipment(100, 25);
+            }
+            else if ((one_in_(2)) || (randint0(50) >= p_ptr->max_plv))
+            {
+                curse_equipment(50, 0);
+            }
+            else /* The BFC sometimes puts itself on equipment */
+            {
+                int slot = equip_random_slot(object_is_art_or_ego);
+                if (slot)
+                {
+                    object_type *o_ptr = equip_obj(slot);
+                    u32b oflgs[OF_ARRAY_SIZE];
+                    char o_name[MAX_NLEN];
+                    if ((!o_ptr) || (!o_ptr->k_idx)) return;
+                    obj_flags(o_ptr, oflgs);
+                    object_desc(o_name, o_ptr, (OD_OMIT_PREFIX | OD_NAME_ONLY));
+
+                    if (have_flag(oflgs, OF_BLESSED))
+                    {
+                        msg_format("Your %s resists cursing!", o_name);
+                        return;
+                    }
+                    o_ptr->curse_flags |= OFC_HEAVY_CURSE;
+                    o_ptr->curse_flags |= OFC_CURSED;
+                    o_ptr->curse_flags |= OFC_BY_CURSE;
+                    msg_format("There is a malignant black aura surrounding %s...", o_name);
+                    o_ptr->feeling = FEEL_NONE;
+                    p_ptr->update |= PU_BONUS;
+                    p_ptr->window |= PW_INVEN;
+                }
+            }
+        }
+    }
 }
 
 
@@ -672,18 +712,11 @@ static void _get_flags(u32b flgs[OF_ARRAY_SIZE])
         add_flag(flgs, OF_RES_FEAR);
 }
 
-static int _get_powers(spell_info* spells, int max)
+static power_info _get_powers[] =
 {
-    int ct = 0;
-
-    spell_info* spell = &spells[ct++];
-    spell->level = 40;
-    spell->cost = 50;
-    spell->fail = calculate_fail_rate(spell->level, 80, p_ptr->stat_ind[A_INT]);
-    spell->fn = confusing_lights_spell;
-
-    return ct;
-}
+    { A_INT, {40, 50, 80, confusing_lights_spell}},
+    { -1, {-1, -1, -1, NULL}}
+};
 
 static void _gain_level(int new_level)
 {
