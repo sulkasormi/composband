@@ -172,6 +172,9 @@ static bool alloc_stairs(int feat, int num, int walls)
 
     feature_type *f_ptr = &f_info[feat];
 
+    /* Aussie hack - try to avoid billabongs becoming a stair magnet */
+    if (dungeon_type == DUNGEON_AUSSIE) walls = randint0(walls);
+
     if (have_flag(f_ptr->flags, FF_LESS))
     {
         /* No up stairs in town or in ironman mode */
@@ -616,6 +619,7 @@ static void gen_caverns_and_lakes(void)
         if (d_info[dungeon_type].flags1 & DF1_LAKE_LAVA) count += 3;
         if (d_info[dungeon_type].flags1 & DF1_LAKE_RUBBLE) count += 3;
         if (d_info[dungeon_type].flags1 & DF1_LAKE_TREE) count += 3;
+        if (d_info[dungeon_type].flags1 & DF1_LAKE_NUKE) count += 3;
 
         if (d_info[dungeon_type].flags1 & DF1_LAKE_LAVA)
         {
@@ -650,6 +654,9 @@ static void gen_caverns_and_lakes(void)
             count--;
         }
 
+        /* Lake of nukage */
+        if ((dun_level > 5) && (d_info[dungeon_type].flags1 & DF1_LAKE_NUKE) && !dun->laketype) dun->laketype = LAKE_T_NUKE_VAULT;
+
         /* Lake of tree */
         if ((dun_level > 5) && (d_info[dungeon_type].flags1 & DF1_LAKE_TREE) && !dun->laketype) dun->laketype = LAKE_T_AIR_VAULT;
 
@@ -680,8 +687,6 @@ static void gen_caverns_and_lakes(void)
     if (quests_get_current()) dun->destroyed = FALSE;
 }
 
-
-
 /*
  * Generate a new dungeon level
  *
@@ -704,6 +709,14 @@ static int _depth_amt(void)
 {
     return MAX(2, MIN(10, dun_level/3));
 }
+/* static bool _oz_swimmer(int r_idx)
+{
+    monster_race *r_ptr = &r_info[r_idx];
+    if ((!r_ptr) || (!r_ptr->name)) return FALSE;
+    if (r_ptr->dungeon != DUNGEON_AUSSIE) return FALSE;
+    if ((r_ptr->flags7 & (RF7_AQUATIC | RF7_CAN_SWIM))) return TRUE;
+    return FALSE;
+} */
 static void _cave_gen_monsters(void)
 {
     if (dungeon_type != DUNGEON_ARENA)
@@ -818,7 +831,9 @@ static bool cave_gen(void)
     dun->cent_n = 0;
 
     /* Empty arena levels */
-    if (ironman_empty_levels || ((d_info[dungeon_type].flags1 & DF1_ARENA) && (empty_levels && one_in_(EMPTY_LEVEL))))
+    if ((generate_empty == EMPTY_ALWAYS) ||
+        ((d_info[dungeon_type].flags1 & DF1_ARENA) &&
+         (generate_empty == EMPTY_SOMETIMES) && (one_in_(EMPTY_LEVEL))))
     {
         dun->empty_level = TRUE;
         if (cheat_room)
@@ -904,7 +919,7 @@ static bool cave_gen(void)
         if (dun->destroyed) destroy_level();
 
         /* Hack -- Add some rivers */
-        if (one_in_(7) && (randint1(dun_level) > 5))
+        if (one_in_((dungeon_type == DUNGEON_AUSSIE) ? 3 : 7) && (randint1(dun_level) > 5))
         {
             int feat1 = 0, feat2 = 0;
 
@@ -916,10 +931,15 @@ static bool cave_gen(void)
                 feat1 = feat_deep_water;
                 feat2 = feat_shallow_water;
             }
-            else if  (d_info[dungeon_type].flags1 & DF1_LAVA_RIVER)
+            else if (d_info[dungeon_type].flags1 & DF1_LAVA_RIVER)
             {
                 feat1 = feat_deep_lava;
                 feat2 = feat_shallow_lava;
+            }
+            else if (d_info[dungeon_type].flags1 & DF1_NUKE_RIVER)
+            {
+                feat1 = feat_deep_waste;
+                feat2 = feat_shallow_waste;
             }
             else feat1 = 0;
 
@@ -933,6 +953,14 @@ static bool cave_gen(void)
                      !dun->laketype)
                 {
                     add_river(feat1, feat2);
+                    if (dungeon_type == DUNGEON_AUSSIE) /* Ensure some aquatic life */
+                    {
+                        int mon_ct0 = damroll(2, 3) - randint0(2);
+                        for (i = 0; i < mon_ct0; i++)
+                        {
+                            alloc_monster(2, (PM_ALLOW_SLEEP | PM_FORCE_AQUATIC));
+                        }
+                    }
                 }
             }
         }
@@ -1369,6 +1397,7 @@ static bool level_gen(cptr *why)
     else if (one_in_(SMALL_LEVEL))
         small = TRUE;
     if ((dungeon_type == DUNGEON_ICKY) && (dun_level == 10)) small = TRUE;
+    if ((dungeon_type == DUNGEON_SNOW) && (level_is_questlike(DUNGEON_SNOW, dun_level))) small = FALSE;
     if (((coffee_break) || ((
         ((small_level_type == SMALL_LVL_DUNG_COFFEE) && (dungeon_type != DUNGEON_ARENA))
         || (d_info[dungeon_type].flags1 & DF1_COFFEE)) && (!ironman_downward))))
@@ -1536,7 +1565,7 @@ static bool level_gen(cptr *why)
             }
         }
 
-        if ((even_proportions) && (hgt == 1) && (wid != 1) && (!one_in_(wid)))
+        if (((even_proportions) || (dungeon_type == DUNGEON_AUSSIE)) && (hgt == 1) && (wid != 1) && (!one_in_(wid)))
         {
             hgt = wid;
             wid = 1;
