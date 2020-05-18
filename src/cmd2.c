@@ -2439,9 +2439,13 @@ static bool _travel_next_obj(int mode)
         else if (mode == TRAVEL_MODE_AUTOPICK && o_ptr->tval != TV_GOLD)
         {
             int j = is_autopick(o_ptr);
+            int _check_mode = DO_AUTOPICK;
 
             if (j < 0) continue;
-            if (!(autopick_list[j].action & (DO_AUTODESTROY | DO_AUTOPICK))) continue;
+            /* Worthless items marked for autodestruction cause loops if
+             * they are not actually destroyed... */
+            if ((!always_pickup) || (destroy_items)) _check_mode |= DO_AUTODESTROY;
+            if (!(autopick_list[j].action & (_check_mode))) continue;
             if (o_ptr->loc.x == px && o_ptr->loc.y == py)
             {
                 /* Full pack aborts the travel sequence */
@@ -2716,277 +2720,52 @@ static s16b tot_dam_aux_shot(object_type *o_ptr, int tdam, monster_type *m_ptr)
         case TV_ARROW:
         case TV_BOLT:
         {
-            if (monster_living(r_ptr) && have_flag(flgs, OF_SLAY_LIVING))
+            slay_type _slay = slay_list[0];
+            int i;
+
+            for (i = 0;; i++)
             {
-                obj_learn_slay(o_ptr, OF_SLAY_LIVING, "slays <color:o>Living</color>");
-                if (mult < 143) mult = 143;
-            }
-
-            /* Slay Animal */
-            if ((have_flag(flgs, OF_SLAY_ANIMAL)) &&
-                (r_ptr->flags3 & RF3_ANIMAL))
-            {
-                mon_lore_3(m_ptr, RF3_ANIMAL);
-                obj_learn_slay(o_ptr, OF_SLAY_ANIMAL, "slays <color:g>Animals</color>");
-                if (mult < 162) mult = 162;
-            }
-
-            /* Kill Animal */
-            if ((have_flag(flgs, OF_KILL_ANIMAL)) &&
-                (r_ptr->flags3 & RF3_ANIMAL))
-            {
-                mon_lore_3(m_ptr, RF3_ANIMAL);
-                obj_learn_slay(o_ptr, OF_KILL_ANIMAL, "slays <color:g>*Animals*</color>");
-                if (mult < 224) mult = 224;
-            }
-
-            /* Slay Evil */
-            if ((have_flag(flgs, OF_SLAY_EVIL)) &&
-                (r_ptr->flags3 & RF3_EVIL))
-            {
-                mon_lore_3(m_ptr, RF3_EVIL);
-                obj_learn_slay(o_ptr, OF_SLAY_EVIL, "slays <color:y>Evil</color>");
-                if (mult < 143) mult = 143;
-            }
-
-            /* Kill Evil */
-            if ((have_flag(flgs, OF_KILL_EVIL)) &&
-                (r_ptr->flags3 & RF3_EVIL))
-            {
-                mon_lore_3(m_ptr, RF3_EVIL);
-                obj_learn_slay(o_ptr, OF_KILL_EVIL, "slays <color:y>*Evil*</color>");
-                if (mult < 186) mult = 186;
-            }
-
-            /* Slay Good */
-            if ((have_flag(flgs, OF_SLAY_GOOD)) &&
-                (r_ptr->flags3 & RF3_GOOD))
-            {
-                mon_lore_3(m_ptr, RF3_GOOD);
-                obj_learn_slay(o_ptr, OF_SLAY_GOOD, "slays <color:W>Good</color>");
-                if (mult < 143) mult = 143;
-            }
-
-			/* Kill Good */
-			if ((have_flag(flgs, OF_KILL_GOOD)) &&
-				(r_ptr->flags3 & RF3_GOOD))
-			{
-				mon_lore_3(m_ptr, RF3_GOOD);
-				obj_learn_slay(o_ptr, OF_KILL_GOOD, "slays <color:W>*Good*</color>");
-				if (mult < 186) mult = 186;
-			}
-
-            /* Slay Human */
-            if ((have_flag(flgs, OF_SLAY_HUMAN)) &&
-                (r_ptr->flags2 & RF2_HUMAN))
-            {
-                mon_lore_2(m_ptr, RF2_HUMAN);
-                obj_learn_slay(o_ptr, OF_SLAY_HUMAN, "slays <color:s>Humans</color>");
-                if (mult < 162) mult = 162;
-            }
-
-            /* Kill Human */
-            if ((have_flag(flgs, OF_KILL_HUMAN)) &&
-                (r_ptr->flags2 & RF2_HUMAN))
-            {
-                mon_lore_2(m_ptr, RF2_HUMAN);
-                obj_learn_slay(o_ptr, OF_KILL_HUMAN, "slays <color:s>*Humans*</color>");
-                if (mult < 234) mult = 234;
-            }
-
-            /* Slay Undead */
-            if ((have_flag(flgs, OF_SLAY_UNDEAD)) &&
-                (r_ptr->flags3 & RF3_UNDEAD))
-            {
-                mon_lore_3(m_ptr, RF3_UNDEAD);
-                obj_learn_slay(o_ptr, OF_SLAY_UNDEAD, "slays <color:D>Undead</color>");
-                if (mult < 190) mult = 190;
-            }
-
-            /* Kill Undead */
-            if ((have_flag(flgs, OF_KILL_UNDEAD)) &&
-                (r_ptr->flags3 & RF3_UNDEAD))
-            {
-                mon_lore_3(m_ptr, RF3_UNDEAD);
-                obj_learn_slay(o_ptr, OF_KILL_UNDEAD, "slays <color:D>*Undead*</color>");
-                if (mult < 280) mult = 280;
-            }
-
-            /* Slay Demon */
-            if ((have_flag(flgs, OF_SLAY_DEMON)) &&
-                (r_ptr->flags3 & RF3_DEMON))
-            {
-                mon_lore_3(m_ptr, RF3_DEMON);
-                obj_learn_slay(o_ptr, OF_SLAY_DEMON, "slays <color:R>Demons</color>");
-                if (mult < 190) mult = 190;
-            }
-
-            /* Kill Demon */
-            if ((have_flag(flgs, OF_KILL_DEMON)) &&
-                (r_ptr->flags3 & RF3_DEMON))
-            {
-                mon_lore_3(m_ptr, RF3_DEMON);
-                obj_learn_slay(o_ptr, OF_KILL_DEMON, "slays <color:R>*Demons*</color>");
-                if (mult < 280) mult = 280;
-            }
-
-            /* Slay Orc */
-            if ((have_flag(flgs, OF_SLAY_ORC)) &&
-                (r_ptr->flags3 & RF3_ORC))
-            {
-                mon_lore_3(m_ptr, RF3_ORC);
-                obj_learn_slay(o_ptr, OF_SLAY_ORC, "slays <color:U>Orcs</color>");
-                if (mult < 190) mult = 190;
-            }
-
-            /* Kill Orc */
-            if ((have_flag(flgs, OF_KILL_ORC)) &&
-                (r_ptr->flags3 & RF3_ORC))
-            {
-                mon_lore_3(m_ptr, RF3_ORC);
-                obj_learn_slay(o_ptr, OF_KILL_ORC, "slays <color:U>*Orcs*</color>");
-                if (mult < 280) mult = 280;
-            }
-
-            /* Slay Troll */
-            if ((have_flag(flgs, OF_SLAY_TROLL)) &&
-                (r_ptr->flags3 & RF3_TROLL))
-            {
-                mon_lore_3(m_ptr, RF3_TROLL);
-                obj_learn_slay(o_ptr, OF_SLAY_TROLL, "slays <color:g>Trolls</color>");
-                if (mult < 190) mult = 190;
-            }
-
-            /* Kill Troll */
-            if ((have_flag(flgs, OF_KILL_TROLL)) &&
-                (r_ptr->flags3 & RF3_TROLL))
-            {
-                mon_lore_3(m_ptr, RF3_TROLL);
-                obj_learn_slay(o_ptr, OF_KILL_TROLL, "slays <color:g>*Trolls*</color>");
-                if (mult < 280) mult = 280;
-            }
-
-            /* Slay Giant */
-            if ((have_flag(flgs, OF_SLAY_GIANT)) &&
-                (r_ptr->flags3 & RF3_GIANT))
-            {
-                mon_lore_3(m_ptr, RF3_GIANT);
-                obj_learn_slay(o_ptr, OF_SLAY_GIANT, "slays <color:u>Giants</color>");
-                if (mult < 190) mult = 190;
-            }
-
-            /* Kill Giant */
-            if ((have_flag(flgs, OF_KILL_GIANT)) &&
-                (r_ptr->flags3 & RF3_GIANT))
-            {
-                mon_lore_3(m_ptr, RF3_GIANT);
-                obj_learn_slay(o_ptr, OF_KILL_GIANT, "slays <color:u>*Giants*</color>");
-                if (mult < 280) mult = 280;
-            }
-
-            /* Slay Dragon  */
-            if ((have_flag(flgs, OF_SLAY_DRAGON)) &&
-                (r_ptr->flags3 & RF3_DRAGON))
-            {
-                mon_lore_3(m_ptr, RF3_DRAGON);
-                obj_learn_slay(o_ptr, OF_SLAY_DRAGON, "slays <color:r>Dragons</color>");
-                if (mult < 190) mult = 190;
-            }
-
-            /* Execute Dragon */
-            if ((have_flag(flgs, OF_KILL_DRAGON)) &&
-                (r_ptr->flags3 & RF3_DRAGON))
-            {
-                mon_lore_3(m_ptr, RF3_DRAGON);
-                obj_learn_slay(o_ptr, OF_KILL_DRAGON, "slays <color:r>*Dragons*</color>");
-                if (mult < 280) mult = 280;
-
-                if ( o_ptr->name1 == ART_BARD_ARROW
-                  && m_ptr->r_idx == MON_SMAUG
-                  && equip_find_art(ART_BARD) )
+                int my_mult = 100;
+                _slay = slay_list[i];
+                if (!_slay.tier) break; /* the only exit from this loop! */
+                if (!_slay.tester(r_ptr, m_ptr, FALSE)) continue;
+                if ((_slay.kill_flag > 0) && (have_flag(flgs, _slay.kill_flag)))
                 {
-                    mult *= 5;
-                }
-            }
-
-            /* Brand (Acid) */
-            if (have_flag(flgs, OF_BRAND_ACID))
-            {
-                if (r_ptr->flagsr & RFR_EFF_IM_ACID_MASK)
-                {
-                    mon_lore_r(m_ptr, RFR_EFF_IM_ACID_MASK);
-                }
-                else
-                {
-                    obj_learn_slay(o_ptr, OF_BRAND_ACID, "is <color:g>Acid Branded</color>");
-                    if (mult < 162) mult = 162;
-                }
-            }
-
-            /* Brand (Elec) */
-            if (have_flag(flgs, OF_BRAND_ELEC))
-            {
-                if (r_ptr->flagsr & RFR_EFF_IM_ELEC_MASK)
-                {
-                    mon_lore_r(m_ptr, RFR_EFF_IM_ELEC_MASK);
-                }
-                else
-                {
-                    obj_learn_slay(o_ptr, OF_BRAND_ELEC, "is <color:b>Lightning Branded</color>");
-                    if (mult < 162) mult = 162;
-                }
-            }
-
-            /* Brand (Fire) */
-            if (have_flag(flgs, OF_BRAND_FIRE))
-            {
-                if (r_ptr->flagsr & RFR_EFF_IM_FIRE_MASK)
-                {
-                    mon_lore_r(m_ptr, RFR_EFF_IM_FIRE_MASK);
-                }
-                else
-                {
-                    obj_learn_slay(o_ptr, OF_BRAND_FIRE, "has <color:r>Flame Tongue</color>");
-                    if (r_ptr->flags3 & RF3_HURT_FIRE)
+                    char oppi[80];
+                    my_mult = slay_tiers[_slay.tier - 1].archery_kill;
+                    if ( o_ptr->name1 == ART_BARD_ARROW
+                      && m_ptr->r_idx == MON_SMAUG
+                      && equip_find_art(ART_BARD) )
                     {
-                        mon_lore_3(m_ptr, RF3_HURT_FIRE);
-                        if (mult < 234) mult = 234;
+                        my_mult *= 5;
                     }
-                    else if (mult < 162) mult = 162;
+                    strcpy(oppi, format("slays <color:%c>*%^s*</color>", _slay.attr, _slay.kill_desc));
+                    obj_learn_slay(o_ptr, _slay.kill_flag, oppi);
                 }
-            }
-
-            /* Brand (Cold) */
-            if (have_flag(flgs, OF_BRAND_COLD))
-            {
-                if (r_ptr->flagsr & RFR_EFF_IM_COLD_MASK)
+                else if (have_flag(flgs, _slay.slay_flag))
                 {
-                    mon_lore_r(m_ptr, RFR_EFF_IM_COLD_MASK);
-                }
-                else
-                {
-                    obj_learn_slay(o_ptr, OF_BRAND_COLD, "is <color:W>Frost Branded</color>");
-                    if (r_ptr->flags3 & RF3_HURT_COLD)
+                    char oppi[80];
+                    my_mult = slay_tiers[_slay.tier - 1].archery_slay;
+                    if ((_slay.slay_flag == OF_BRAND_FIRE) && (r_ptr->flags3 & RF3_HURT_FIRE))
                     {
-                        if (mult < 234) mult = 234;
+                        my_mult = slay_tiers[_slay.tier - 1].archery_kill;
+                        mon_lore_3(m_ptr, RF3_HURT_FIRE);
+                    }
+                    else if ((_slay.slay_flag == OF_BRAND_COLD) && (r_ptr->flags3 & RF3_HURT_COLD))
+                    {
+                        my_mult = slay_tiers[_slay.tier - 1].archery_kill;
                         mon_lore_3(m_ptr, RF3_HURT_COLD);
                     }
-                    else if (mult < 162) mult = 162;
+                    else my_mult = slay_tiers[_slay.tier - 1].archery_slay;
+                    if (!_slay.is_slay) obj_learn_slay(o_ptr, _slay.slay_flag, _slay.brand_learn);
+                    else
+                    {
+                        strcpy(oppi, format("slays <color:%c>%^s</color>", _slay.attr, _slay.kill_desc));
+                        obj_learn_slay(o_ptr, _slay.slay_flag, oppi);
+                    }
                 }
-            }
-
-            /* Brand (Poison) */
-            if (have_flag(flgs, OF_BRAND_POIS))
-            {
-                if (r_ptr->flagsr & RFR_EFF_IM_POIS_MASK)
-                {
-                    mon_lore_r(m_ptr, RFR_EFF_IM_POIS_MASK);
-                }
-                else
-                {
-                    obj_learn_slay(o_ptr, OF_BRAND_POIS, "has <color:G>Viper's Fang</color>");
-                    if (mult < 162) mult = 162;
-                }
+                if (my_mult > mult) mult = my_mult;
+                if (my_mult > 100) _slay.tester(r_ptr, m_ptr, TRUE);
             }
 
             if (have_flag(flgs, OF_BRAND_MANA) || p_ptr->tim_force)
@@ -3178,6 +2957,9 @@ void do_cmd_fire_aux2(obj_ptr bow, obj_ptr arrows, int sx, int sy, int tx, int t
         no_energy = TRUE;
         energy_use = 100;
         break;
+    case SHOOT_RAMA:
+        bonus += 20;
+        break;
     }
 
     if (weaponmaster_get_toggle() == TOGGLE_PIERCING_ARROW || shoot_hack == SHOOT_PIERCE)
@@ -3253,7 +3035,7 @@ void do_cmd_fire_aux2(obj_ptr bow, obj_ptr arrows, int sx, int sy, int tx, int t
         x = sx;
 
         /* Weaponmaster power: Ammo is not consumed */
-        if ( (p_ptr->return_ammo || arrows->name2 == EGO_AMMO_RETURNING)
+        if ( (p_ptr->return_ammo || arrows->name2 == EGO_AMMO_RETURNING || arrows->name1 == ART_BRAHMA)
           && randint1(100) <= 50 + p_ptr->lev/2 )
         {
             return_ammo = TRUE;
@@ -3568,6 +3350,10 @@ void do_cmd_fire_aux2(obj_ptr bow, obj_ptr arrows, int sx, int sy, int tx, int t
                                 tdam = tdam * mult / 100;
                             }
                         }
+                        if (shoot_hack == SHOOT_RAMA)
+                        {
+                            tdam *= 3;
+                        }
                         if (0) msg_format("<color:B>%d damage</color>", tdam);
                         if (tdam < 0) tdam = 0;
                         tdam = mon_damage_mod(m_ptr, tdam, FALSE);
@@ -3678,7 +3464,7 @@ void do_cmd_fire_aux2(obj_ptr bow, obj_ptr arrows, int sx, int sy, int tx, int t
                             char m_name[80];
                             monster_desc(m_name, m_ptr, 0);
 
-                            stick_to = one_in_(2);
+                            stick_to = ((one_in_(2)) && (arrow.name1 != ART_BRAHMA));
 
                             /* If Cupid's Arrow charms the monster,
                                having the arrow stick is highly annoying since
@@ -3917,7 +3703,7 @@ bool do_cmd_fire(void)
         return FALSE;
     }
 
-    if (bow->sval == SV_HARP)
+    if (bow->sval == SV_HARP || bow->sval == SV_FLUTE)
     {
         msg_print("You play a soothing melody, but not much else happens.");
         flush();
