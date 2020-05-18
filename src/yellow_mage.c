@@ -1,17 +1,10 @@
 #include "angband.h"
 
-static int _get_powers(spell_info* spells, int max)
+static power_info _get_powers[] =
 {
-    int ct = 0;
-
-    spell_info* spell = &spells[ct++];
-    spell->level = 25;
-    spell->cost = 1;
-    spell->fail = calculate_fail_rate(spell->level, 90, p_ptr->stat_ind[A_INT]);
-    spell->fn = eat_magic_spell;
-
-    return ct;
-}
+    { A_INT, { 25, 1, 90, eat_magic_spell}},
+    { -1, {-1, -1, -1, NULL}}
+};
 
 static caster_info * _caster_info(void)
 {
@@ -77,7 +70,8 @@ class_t *yellow_mage_get_class(void)
         me.exp = 130;
         me.pets = 30;
         me.flags = CLASS_SENSE1_MED | CLASS_SENSE1_WEAK |
-                   CLASS_SENSE2_FAST | CLASS_SENSE2_STRONG;
+                   CLASS_SENSE2_FAST | CLASS_SENSE2_STRONG |
+                   CLASS_REGEN_MANA;
 
         me.birth = _birth;
         me.calc_bonuses = _calc_bonuses;
