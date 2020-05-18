@@ -186,6 +186,7 @@ bool display_origin(object_type *o_ptr, doc_ptr doc)
 
     if ((origin == ORIGIN_NONE) || (origin == ORIGIN_MIXED)) return FALSE;
     if ((!show_discovery) && (o_ptr->mitze_type & MITZE_MIXED)) return FALSE;
+    if (origin == ORIGIN_MYSTERY) o_ptr->origin_xtra = d_info[DUNGEON_MYSTERY].final_guardian;
     if ((origin != ORIGIN_CHEAT) && (origin != ORIGIN_PLAYER_MADE) && (origin != ORIGIN_GAMBLE) && (origin != ORIGIN_ENDLESS)
      && ((origin != ORIGIN_REFORGE) || (p_ptr->dragon_realm == DRAGON_REALM_CRAFT)) && (origin != ORIGIN_BIRTH) && (origin != ORIGIN_ARENA_REWARD) && (origin != ORIGIN_WANTED)
      && (origin != ORIGIN_CORNUCOPIA))
@@ -193,7 +194,7 @@ bool display_origin(object_type *o_ptr, doc_ptr doc)
         _selita_paikka(paikka_text, paikka, taso, origin);
     }
     if ((origin == ORIGIN_DROP) || (origin == ORIGIN_QUEST_DROP) || (origin == ORIGIN_STOLEN) || (origin == ORIGIN_ARENA_REWARD)
-     || (origin == ORIGIN_WANTED))
+     || (origin == ORIGIN_WANTED) || (origin == ORIGIN_MYSTERY))
     {
         monster_race *r_ptr = &r_info[o_ptr->origin_xtra];
         if ((o_ptr->origin_xtra) && (o_ptr->origin_xtra < max_r_idx) && (r_ptr) && (r_ptr->name))
@@ -390,6 +391,11 @@ bool display_origin(object_type *o_ptr, doc_ptr doc)
         case ORIGIN_MUNDANITY:
         {
             doc_printf(doc, "Mundanized %s.", paikka_text);
+            break;
+        }
+        case ORIGIN_MYSTERY:
+        {
+            doc_printf(doc, "Mysteriously dropped by %s %s.", pudottaja, paikka_text);
             break;
         }
     }
@@ -883,8 +889,6 @@ static void _display_abilities(u32b flgs[OF_ARRAY_SIZE], doc_ptr doc)
 
     if (have_flag(flgs, OF_LORE2))
         vec_add(v, string_copy_s("<color:B>Auto Identify</color>"));
-    else if (have_flag(flgs, OF_LORE1))
-        vec_add(v, string_copy_s("<color:B>Auto Pseudo-Identify</color>"));
 
     if (have_flag(flgs, OF_FREE_ACT))
         vec_add(v, string_copy_s("<color:R>Free Action</color>"));
@@ -892,6 +896,8 @@ static void _display_abilities(u32b flgs[OF_ARRAY_SIZE], doc_ptr doc)
         vec_add(v, string_copy_s("<color:B>See Invisible</color>"));
     if (have_flag(flgs, OF_REGEN))
         vec_add(v, string_copy_s("<color:g>Regeneration</color>"));
+    if (have_flag(flgs, OF_REGEN_MANA))
+        vec_add(v, string_copy_s("<color:G>Mana Recovery</color>"));
     if (have_flag(flgs, OF_HOLD_LIFE))
         vec_add(v, string_copy_s("<color:y>Hold Life</color>"));
     if (have_flag(flgs, OF_REFLECT))
@@ -1166,12 +1172,16 @@ static void _display_curses(object_type *o_ptr, u32b flgs[OF_ARRAY_SIZE], doc_pt
        experience or by *identification* */
     if (have_flag(flgs, OF_TY_CURSE) || o_ptr->known_curse_flags & OFC_TY_CURSE)
         vec_add(v, string_copy_s("<color:v>*Ancient Foul Curse*</color>"));
+    if (o_ptr->known_curse_flags & OFC_BY_CURSE)
+        vec_add(v, string_copy_s("<color:P>Baby Foul Curse</color>"));
     if (have_flag(flgs, OF_AGGRAVATE) || o_ptr->known_curse_flags & OFC_AGGRAVATE)
         vec_add(v, string_copy_s("<color:r>Aggravates</color>"));
     if (have_flag(flgs, OF_DRAIN_EXP) || o_ptr->known_curse_flags & OFC_DRAIN_EXP)
         vec_add(v, string_copy_s("<color:y>Drains Experience</color>"));
     if (o_ptr->known_curse_flags & OFC_SLOW_REGEN)
         vec_add(v, string_copy_s("<color:o>Slow Regeneration</color>"));
+    if (o_ptr->known_curse_flags & OFC_DANGER)
+        vec_add(v, string_copy_s("<color:R>Invites Danger</color>"));
     if (o_ptr->known_curse_flags & OFC_ADD_L_CURSE)
         vec_add(v, string_copy_s("<color:w>Adds Weak Curses</color>"));
     if (o_ptr->known_curse_flags & OFC_ADD_H_CURSE)
@@ -1184,20 +1194,36 @@ static void _display_curses(object_type *o_ptr, u32b flgs[OF_ARRAY_SIZE], doc_pt
         vec_add(v, string_copy_s("<color:r>Attracts Dragons</color>"));
     if (o_ptr->known_curse_flags & OFC_COWARDICE)
         vec_add(v, string_copy_s("<color:y>Cowardice</color>"));
+    if (o_ptr->known_curse_flags & OFC_CATLIKE)
+        vec_add(v, string_copy_s("<color:r>Catlike Tread</color>"));
+    if (o_ptr->known_curse_flags & OFC_CRAPPY_MUT)
+        vec_add(v, string_copy_s("<color:R>Harmful Mutations</color>"));
     if (have_flag(flgs, OF_TELEPORT) || o_ptr->known_curse_flags & OFC_TELEPORT)
         vec_add(v, string_copy_s("<color:B>Random Teleportation</color>"));
     if (o_ptr->known_curse_flags & OFC_LOW_MELEE)
         vec_add(v, string_copy_s("<color:G>Miss Blows</color>"));
-    if (o_ptr->known_curse_flags & OFC_LOW_AC)
+    if (o_ptr->known_curse_flags & OFC_NORMALITY)
+        vec_add(v, string_copy_s("<color:B>Dispels Magic</color>"));
+    if (o_ptr->name2 == EGO_ROBE_TWILIGHT)
+        vec_add(v, string_copy_s("<color:v>Zero AC</color>"));
+    else if (o_ptr->known_curse_flags & OFC_LOW_AC)
         vec_add(v, string_copy_s("<color:R>Low AC</color>"));
     if (o_ptr->known_curse_flags & OFC_LOW_MAGIC)
-        vec_add(v, string_copy_s("<color:y>Increased Fail Rates</color>"));
+        vec_add(v, string_copy_s("<color:y>Extra Spell Fails</color>"));
+    if (o_ptr->known_curse_flags & OFC_LOW_DEVICE)
+        vec_add(v, string_copy_s("<color:y>Extra Device Fails</color>"));
     if (o_ptr->known_curse_flags & OFC_FAST_DIGEST)
         vec_add(v, string_copy_s("<color:r>Fast Digestion</color>"));
+    if (o_ptr->known_curse_flags & OFC_OPEN_WOUNDS)
+        vec_add(v, string_copy_s("<color:r>Open Wounds</color>"));
+    if (o_ptr->known_curse_flags & OFC_ALLERGY)
+        vec_add(v, string_copy_s("<color:y>Irritates Airways</color>"));
     if (o_ptr->known_curse_flags & OFC_DRAIN_HP)
-        vec_add(v, string_copy_s("<color:o>Drains You</color>"));
+        vec_add(v, string_copy_s("<color:o>Drains HP</color>"));
     if (o_ptr->known_curse_flags & OFC_DRAIN_MANA)
         vec_add(v, string_copy_s("<color:B>Drains Mana</color>"));
+    if (o_ptr->known_curse_flags & OFC_DRAIN_PACK)
+        vec_add(v, string_copy_s("<color:g>Drains Devices</color>"));
     if (object_is_unenchantable(o_ptr))
         vec_add(v, string_copy_s("<color:r>Unenchantable</color>"));
 
