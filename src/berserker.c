@@ -95,14 +95,6 @@ static spell_info _spells[] =
     { -1, -1, -1, NULL}
 };
 
-static int _get_spells(spell_info* spells, int max)
-{
-    int ct = get_spells_aux(spells, max, _spells);
-    if (ct == 0)
-        msg_print("Rargh! Go kill something for more experience!");
-    return ct;
-}
-
 static void _calc_bonuses(void)
 {
     res_add_immune(RES_FEAR);
@@ -158,18 +150,13 @@ static void _calc_weapon_bonuses(object_type *o_ptr, weapon_info_t *info_ptr)
     info_ptr->xtra_blow += p_ptr->lev*4;
 }
 
-static int _get_powers(spell_info* spells, int max)
+
+static power_info _berserker_powers[] =
 {
-    int ct = 0;
+    { A_DEX, {10, 10, 70, recall_spell}},
+    { -1, {-1, -1, -1, NULL}}
+};
 
-    spell_info* spell = &spells[ct++];
-    spell->level = 10;
-    spell->cost = 10;
-    spell->fail = calculate_fail_rate(spell->level, 70, p_ptr->stat_ind[A_DEX]);
-    spell->fn = recall_spell;
-
-    return ct;
-}
 
 static caster_info * _caster_info(void)
 {
@@ -229,8 +216,8 @@ class_t *berserker_get_class(void)
         me.calc_bonuses = _calc_bonuses;
         me.get_flags = _get_flags;
         me.calc_weapon_bonuses = _calc_weapon_bonuses;
-        me.get_powers = _get_powers;
-        me.get_spells = _get_spells;
+        me.get_powers = _berserker_powers;
+        me.get_spells = _spells;
         me.caster_info = _caster_info;
         init = TRUE;
     }
