@@ -83,13 +83,17 @@
 # 'N' indicates the beginning of an entry. The serial number must
 # increase for each new item. Entry 0 is used for the player.
 
-# 'G' is for graphics - symbol and color. There are 16 colors, as
+# 'G' is for graphics - symbol and color. There are 32 colors, as
 # follows:
 
-# D - Black    w - White     s - Gray     o - Orange
-# r - Red     g - Green     b - Blue     u - Brown
-# d - Dark Gray  W - Light Gray   v - Violet    y - Yellow
-# R - Light Red  G - Light Green  B - Light Blue  U - Light Brown
+# D - Black       w - White        s - Gray        o - Orange
+# r - Red         g - Green        b - Blue        u - Brown
+# d - Dark Gray   W - Light Gray   v - Violet      y - Yellow
+# R - Light Red   G - Light Green  B - Light Blue  U - Light Brown
+# L - Int. Green  P - Pink         I - Int. Blue   C - Purple
+# t - Teal        S - Sky-Blue     m - Mud         M - Dark Yellow
+# T - Turquoise   O - Light Orange V - Lilac       c - Dark Purple
+# n - Dark Sky    K - Pale Blue    p - Dark Pink   h - Chestnut
 
 # 'I' is for information - speed, health, vision in tens of feet,
 # armor class, and alertness. 110 is normal speed. Alertness ranges
@@ -553,8 +557,8 @@ P:Stats:-2:0:0:-1:-1:0
 P:Life:70
 D:It is a small, dog-headed humanoid.
 
-N:31:White worm mass
-G:w:w
+N:31:Green worm mass
+G:w:g
 I:100:4d4:7:1:10:10
 W:1:1:10:4:5:58
 B:CRAWL:POISON(1d5)
@@ -800,8 +804,8 @@ F:RES_POIS |
 F:NO_CONF | NO_SLEEP | NO_FEAR
 D:Yum! It looks quite tasty.
 
-N:48:White jelly
-G:j:w
+N:48:Yellow jelly
+G:j:y
 I:120:8d8:2:1:99:50
 W:2:1:20:12:6:66
 B:TOUCH:DRAIN_MANA(1d3)
@@ -812,7 +816,7 @@ F:NO_CONF | NO_SLEEP | NO_FEAR
 F:POS_GAIN_AC
 P:Copy:Human:Tourist
 P:Body:Jelly3
-D:It's a large pile of white flesh.
+D:It's a large pile of yellow flesh.
 
 N:49:Giant black ant
 G:a:D
@@ -942,8 +946,8 @@ P:ExtraSkills:0:-4:0:0:0:0:0:0
 P:Body:Hound
 D:A striped housecat who enjoys hunting.
 
-N:58:Green worm mass
-G:w:g
+N:58:Slimy worm mass
+G:w:m
 I:100:6d4:7:3:10:10
 W:2:1:20:5:8:78
 B:CRAWL:ACID(1d6)
@@ -956,7 +960,7 @@ P:Copy:Snotling:Warrior
 P:Life:50
 P:Body:Worm
 S:MULTIPLY
-D:It is a large slimy mass of worms.
+D:It is a large extra-slimy mass of worms.
 
 N:59:Large yellow snake
 G:J:y
@@ -1034,8 +1038,8 @@ D:long skinny neck, and the hobbits caught a glimpse of two small pale gleaming
 D:lights, its eyes that blinked at the moon for a moment and then were quickly
 D:lidded again."
 
-N:64:Green ooze
-G:j:g
+N:64:Slimy ooze
+G:j:m
 I:120:3d4:8:16:80:15
 W:3:2:30:5:15:99
 B:CRAWL:ACID(1d7)
@@ -1046,7 +1050,7 @@ F:NO_CONF | NO_SLEEP | NO_FEAR
 F:POS_GAIN_AC
 P:Copy:Yeek:Warrior
 P:Body:Jelly3
-D:It's green and it's oozing.
+D:It's slimy and it's oozing.
 
 N:65:Poltergeist
 G:G:s
@@ -1064,8 +1068,8 @@ S:1_IN_15 |
 S:BLINK
 D:It is a ghastly, ghostly form.
 
-N:66:Yellow jelly
-G:j:y
+N:66:Green jelly
+G:j:g
 I:120:10d8:2:1:99:50
 W:3:1:30:13:20:73
 B:TOUCH:POISON(1d7)
@@ -1078,7 +1082,7 @@ S:DRAIN_MANA
 F:POS_GAIN_AC
 P:Copy:Human:Tourist
 P:Body:Jelly3
-D:It's a large pile of yellow flesh.
+D:It's a large pile of greenish flesh.
 
 N:67:Metallic blue centipede
 G:c:B
@@ -1232,7 +1236,6 @@ P:Life:90
 P:Body:Centipede3
 D:It is about four feet long and carnivorous.
 
-
 N:78:Yellow worm mass
 G:w:y
 I:100:4d8:7:4:10:10
@@ -1266,7 +1269,7 @@ S:MULTIPLY
 D:It is a disgusting mass of poisonous worms.
 
 N:80:Radiation eye
-G:e:R
+G:e:P
 I:110:3d6:2:6:10:25
 W:3:1:30:7:0:0
 B:GAZE:DAM(1d10):LOSE_STR
@@ -1319,8 +1322,8 @@ S:1_IN_9 | SHOOT(2d7) | MISSILE | DETECT_MONSTERS | MAPPING
 O:DROP_ARCHER
 D:An agile hunter, ready and relaxed.
 
-N:84:Blue jelly
-G:j:b
+N:84:Frosty jelly
+G:j:w
 I:110:12d8:2:1:99:50
 W:4:1:40:14:30:101
 B:TOUCH:COLD(2d5)
@@ -1331,7 +1334,7 @@ F:NO_CONF | NO_SLEEP | NO_FEAR
 F:POS_GAIN_AC
 P:Copy:Imp:Tourist
 P:Body:Jelly3
-D:It's a large pile of pulsing blue flesh.
+D:A large pile of shivering pale flesh.
 
 N:85:Creeping copper coins
 G:$:u
@@ -1360,7 +1363,7 @@ S:MULTIPLY
 D:It is a very vicious rodent.
 
 N:87:Goblin
-G:h:g
+G:h:L
 I:110:6d5:20:35:30:60
 W:5:1:40:15:30:118
 B:HIT:HURT(1d9)
@@ -1386,8 +1389,8 @@ P:Copy:Snotling:Warrior
 P:Body:Fish
 D:An animal with a swordlike "beak".
 
-N:89:Blue worm mass
-G:w:b
+N:89:White worm mass
+G:w:w
 I:100:5d8:7:12:10:10
 W:4:1:40:5:20:105
 B:CRAWL:COLD(1d7)
@@ -1430,7 +1433,7 @@ P:Copy:Kobold:Warrior
 D:It is a small animated kobold skeleton.
 
 N:92:Ewok
-G:h:G
+G:h:m
 I:110:3d5:10:10:10:50
 W:5:2:40:20:0:0
 B:HIT:HURT(2d4)
@@ -1530,8 +1533,8 @@ F:EVIL | OPEN_DOOR | BASH_DOOR | DROP_90 | DROP_SKELETON
 P:Copy:Imp:Warrior
 D:Drooling, insectoid aliens with disgusting habits.
 
-N:99:Blue ooze
-G:j:b
+N:99:Slush pile
+G:j:w
 I:110:3d4:8:16:80:10
 W:5:1:40:7:0:0
 B:CRAWL:COLD(1d8)
@@ -1542,7 +1545,7 @@ F:NO_CONF | NO_SLEEP | NO_FEAR
 F:POS_GAIN_AC
 P:Copy:Yeek:Tourist
 P:Body:Jelly3
-D:It's blue and it's oozing.
+D:It's a pile, and it's slushy.
 
 N:100:Green glutton ghost
 G:G:g
@@ -1557,8 +1560,8 @@ F:POS_SEE_INVIS
 P:Copy:Spectre:Tourist
 D:It is a very ugly green ghost with a voracious appetite.
 
-N:101:Green jelly
-G:j:g
+N:101:Slimy jelly
+G:j:m
 I:120:22d8:2:1:99:50
 W:5:1:40:18:40:131
 B:TOUCH:ACID(1d4)
@@ -1569,7 +1572,7 @@ F:NO_CONF | NO_SLEEP | NO_FEAR
 F:POS_GAIN_AC
 P:Copy:Imp:Tourist
 P:Body:Jelly3
-D:It is a large pile of pulsing green flesh.
+D:It is a large pile of pulsing blue-green flesh.
 
 N:102:Large kobold
 G:k:w
@@ -1799,7 +1802,7 @@ F:ANIMAL | IM_POIS | NO_CONF | NO_SLEEP
 D:It is a pile of coins, crawling forward on thousands of tiny legs.
 
 N:118:Snaga
-G:o:G
+G:o:M
 I:110:8d8:20:32:30:80
 W:6:1:40:15:0:0
 B:HIT:HURT(1d9)
@@ -1843,7 +1846,7 @@ D:It is slowly making its way towards you, eating everything in
 D:its path...
 
 N:121:Giant pink frog
-G:R:R
+G:R:P
 I:110:5d8:12:16:50:25
 W:7:1:40:16:0:0
 B:BITE:HURT(2d5):LOSE_STR
@@ -1972,8 +1975,8 @@ P:Copy:Human:Mage
 P:Body:Eye
 D:A disembodied eye, bloodshot and nasty.
 
-N:130:Red naga
-G:n:R
+N:130:Pink naga
+G:n:P
 I:110:11d8:20:40:120:100
 W:7:2:40:40:200:265
 B:CRUSH:HURT(2d6)
@@ -1985,10 +1988,10 @@ F:EVIL
 P:Copy:Yeek:Warrior
 P:Body:Naga
 P:Blows:150
-D:A large red snake with a woman's torso.
+D:A large pink snake with a woman's torso.
 
-N:131:Red jelly
-G:j:R
+N:131:Pink jelly
+G:j:P
 I:110:26d8:2:1:99:50
 W:7:1:40:26:150:212
 B:TOUCH:HURT(1d6):LOSE_STR(50%)
@@ -1999,10 +2002,10 @@ F:NO_CONF | NO_SLEEP | NO_FEAR
 F:POS_GAIN_AC
 P:Copy:Human:Warrior
 P:Body:Jelly3
-D:It is a large pulsating mound of red flesh.
+D:It is a large pulsating mound of pinkish flesh.
 
-N:132:Green icky thing
-G:i:G
+N:132:Caustic icky thing
+G:i:t
 I:110:5d8:14:12:20:25
 W:7:2:40:18:50:155
 B:TOUCH:ACID(2d6)
@@ -2097,7 +2100,7 @@ D:pale wise face and heavy-lidded eyes...he laughed grimly, as he lifted his
 D:heavy lids for a moment and gazed on the strangers with dark eyes."
 
 N:138:Robin Hood, the Outlaw
-G:p:G
+G:p:L
 I:120:14d12:20:30:20:160
 W:8:2:999:150:0:0
 B:HIT:HURT(2d6)
@@ -2112,7 +2115,7 @@ S:1_IN_5 | SHOOT(3d6) | HEAL | TRAPS | DETECT_MONSTERS
 D:The legendary archer steals from the rich (you qualify).
 
 N:139:Nurgling
-G:u:U
+G:u:M
 I:110:9d9:20:32:30:90
 W:8:2:40:19:0:0
 B:BITE:DISEASE(1d9)
@@ -2197,13 +2200,13 @@ F:CAN_FLY | NASTY_GLYPH
 D:A black hole in the fabric of reality.
 
 N:145:Carnivorous flying monkey
-G:H:R
+G:H:p
 I:110:22d9:30:20:20:30
 W:8:2:40:30:100:188
 B:CLAW:HURT(2d5)
 B:CLAW:HURT(2d5)
 B:BITE:HURT(7d1)
-F:ANIMAL | CAN_FLY | WILD_WOOD | WILD_MOUNTAIN
+F:ANIMAL | CAN_FLY | WILD_WOOD | WILD_MOUNTAIN | AUSSIE
 F:DROP_CORPSE | POS_GAIN_AC
 P:Copy:Human:Warrior
 D:It looks fantastic, yet frightening.
@@ -2295,7 +2298,7 @@ P:Body:Bird
 D:Trained to hunt and kill without fear.
 
 N:152:Phantom warrior
-G:G:B
+G:G:K
 I:110:5d5:20:10:40:10
 W:8:1:40:15:0:0
 B:HIT:HURT(1d12)
@@ -2321,12 +2324,12 @@ D:Don't splash water on them, and don't feed them after midnight!
 
 N:154:Yeti
 G:Y:w
-I:110:11d9:20:24:10:250
-W:9:3:40:30:100:983
-B:CLAW:HURT(1d3)
-B:CLAW:HURT(1d3)
-B:BITE:HURT(1d5)
-F:OPEN_DOOR | BASH_DOOR | WILD_MOUNTAIN |
+I:115:11d10:20:30:10:250
+W:12:3:40:30:150:983
+B:CLAW:HURT(1d8)
+B:CLAW:HURT(1d8)
+B:BITE:HURT(2d4)
+F:OPEN_DOOR | BASH_DOOR | WILD_MOUNTAIN | WILD_SNOW
 F:ANIMAL | RES_COLD
 F:DROP_CORPSE | POS_GAIN_AC
 S:BERSERK
@@ -2410,7 +2413,7 @@ P:Body:Bear
 D:A wounded bear, who has occasionally attacked humans.
 
 N:160:Portuguese man-o-war
-G:j:v
+G:j:b
 I:110:10d10:20:30:75:120
 W:9:2:40:25:0:0
 B:TOUCH:HURT(1d7):PARALYZE(50%)
@@ -2476,7 +2479,7 @@ W:9:2:40:35:700:460
 B:CLAW:HURT(1d4)
 B:CLAW:HURT(1d4)
 B:BITE:HURT(1d5):COLD(1d3)
-F:FORCE_MAXHP | FORCE_SLEEP | CAN_FLY |
+F:FORCE_MAXHP | FORCE_SLEEP | CAN_FLY | WILD_SNOW |
 F:ONLY_GOLD | DROP_60 | DROP_1D2 |
 F:OPEN_DOOR | BASH_DOOR |
 F:EVIL | DRAGON | RES_COLD
@@ -2541,8 +2544,8 @@ S:FREQ_5 | BR_FIRE | DETECT_OBJECTS
 D:This hatchling dragon is still soft, its eyes unaccustomed to light and
 D:its scales a pale red.
 
-N:168:Giant red ant
-G:a:R
+N:168:Giant pink ant
+G:a:P
 I:110:4d8:12:34:60:100
 W:9:2:80:22:500:408
 B:BITE:HURT(1d5)
@@ -2610,7 +2613,7 @@ B:CLAW:HURT(1d4)
 B:CLAW:HURT(1d4)
 B:BITE:HURT(1d6)
 F:ANIMAL | CAN_FLY | WILD_ONLY | WILD_WASTE | WILD_MOUNTAIN | WILD_WOOD
-F:DROP_CORPSE | POS_GAIN_AC
+F:WILD_SNOW | DROP_CORPSE | POS_GAIN_AC
 P:Copy:Human:Warrior
 P:Body:Bird
 D:A magnificent huge predatory bird.
@@ -2711,7 +2714,7 @@ O:DROP_MAGE
 D:A dark elven figure, dressed all in black, hurling spells at you.
 
 N:179:Kamikaze yeek
-G:y:R
+G:y:V
 I:113:4d8:18:18:10:90
 W:10:1:40:10:0:0
 B:EXPLODE:DAM(10d2)
@@ -2883,11 +2886,11 @@ D:It is a strange hairy growth on the dungeon floor.
 
 N:191:Grizzly bear
 G:q:u
-I:110:12d12:10:35:10:400
-W:10:1:40:25:300:1028
-B:CLAW:HURT(1d5)
-B:CLAW:HURT(1d5)
-B:BITE:HURT(1d10)
+I:115:12d15:10:40:10:400
+W:12:1:45:75:300:1028
+B:CLAW:HURT(1d11)
+B:CLAW:HURT(1d11)
+B:BITE:HURT(2d6)
 F:BASH_DOOR | WILD_WOOD | WILD_MOUNTAIN |
 F:ANIMAL | WILD_ONLY
 F:DROP_CORPSE | POS_GAIN_AC
@@ -3103,7 +3106,7 @@ I:120:10d10:40:40:0:10
 W:11:3:40:40:0:0
 B:BITE:HURT(6d1)
 B:BITE:HURT(7d1)
-F:BASH_DOOR | WILD_MOUNTAIN |
+F:BASH_DOOR | WILD_MOUNTAIN | WILD_SNOW |
 F:ANIMAL
 F:DROP_CORPSE | POS_GAIN_AC
 P:Copy:Snotling:Rogue
@@ -3199,7 +3202,7 @@ B:BITE:HURT(1d4)
 B:BITE:HURT(1d4)
 F:RAND_25 |
 F:FRIENDS(3d3) |
-F:BASH_DOOR | WILD_WASTE |
+F:BASH_DOOR | WILD_WASTE | WILD_SNOW |
 F:ANIMAL | RES_COLD
 F:DROP_SKELETON | DROP_CORPSE | POS_GAIN_AC
 P:Copy:Human:Warrior
@@ -3346,7 +3349,7 @@ P:Body:Fish
 D:A devil ray of the depths.
 
 N:221:Mine-dog
-G:C:u
+G:C:V
 I:120:6d6:30:30:20:30
 W:12:4:50:40:0:0
 B:EXPLODE:DAM(5d5)
@@ -3445,7 +3448,7 @@ D:A dark elven figure, dressed all in black, chanting curses and waiting to
 D:deliver your soul to hell.
 
 N:227:Air spirit
-G:E:B
+G:E:S
 I:130:8d8:12:40:20:120
 W:12:2:50:40:800:526
 B:HIT:HURT(1d3)
@@ -3613,7 +3616,7 @@ I:110:13d9:20:33:30:300
 W:13:2:50:50:300:262
 B:HIT:HURT(2d8)
 F:FRIENDS(3d3) |
-F:DROP_60 | WILD_WOOD | WILD_MOUNTAIN | DROP_CORPSE
+F:DROP_60 | WILD_WOOD | WILD_MOUNTAIN | WILD_SNOW | DROP_CORPSE
 F:OPEN_DOOR | BASH_DOOR |
 F:EVIL | GIANT
 P:Copy:Ogre:Warrior
@@ -3633,7 +3636,7 @@ F:IM_POIS | NO_CONF | NO_SLEEP
 D:It is a pile of coins, shambling forward on thousands of tiny legs.
 
 N:240:Illusionist
-G:p:v
+G:p:c
 I:110:12d8:20:10:10:150
 W:15:2:50:50:500:449
 B:HIT:HURT(2d2)
@@ -3664,7 +3667,7 @@ P:Copy:Human:Priest
 D:A mystic at one with nature. Om.
 
 N:242:Pink horror
-G:u:R
+G:u:P
 I:110:15d9:20:35:20:50
 W:16:3:50:64:0:0
 B:CLAW:HURT(1d8):TERRIFY
@@ -3780,7 +3783,7 @@ G:F:w
 I:110:5d8:20:20:50:15
 W:14:3:50:60:0:0
 B:BITE:COLD(1d6)
-F:FORCE_SLEEP | WILD_WASTE |
+F:FORCE_SLEEP | WILD_WASTE | WILD_SNOW |
 F:RAND_50 | CAN_FLY |
 F:WEIRD_MIND | BASH_DOOR |
 F:ANIMAL | RES_COLD
@@ -3890,7 +3893,7 @@ I:120:8d8:20:20:40:100
 W:14:2:50:40:500:347
 B:BITE:HURT(1d10)
 F:RAND_25 |
-F:FRIENDS(3d3) | WILD_WOOD | WILD_MOUNTAIN
+F:FRIENDS(3d3) | WILD_WOOD | WILD_MOUNTAIN | WILD_SNOW |
 F:BASH_DOOR |
 F:ANIMAL | EVIL
 F:DROP_SKELETON | DROP_CORPSE | POS_GAIN_AC
@@ -3968,7 +3971,7 @@ I:110:20d9:20:33:30:350
 W:15:2:60:75:400:907
 B:HIT:HURT(2d8)
 B:HIT:HURT(2d8)
-F:RAND_25 | WILD_MOUNTAIN | DROP_CORPSE
+F:RAND_25 | WILD_MOUNTAIN | WILD_SNOW | DROP_CORPSE
 F:FRIENDS(3d3) | DROP_60 |
 F:OPEN_DOOR | BASH_DOOR |
 F:EVIL | GIANT
@@ -4157,7 +4160,7 @@ P:Body:Skull
 D:A skullpack animated by necromantic spells.
 
 N:274:Mi-Go
-G:I:R
+G:I:P
 I:120:13d8:20:30:20:100
 W:15:2:50:80:0:0
 B:STING:POISON(1d4)
@@ -4228,7 +4231,7 @@ W:20:3:70:450:25000:1125
 B:HIT:HURT(2d10):COLD(1d10)
 B:HIT:HURT(2d10):COLD(1d10)
 B:HIT:HURT(2d10):COLD(1d10)
-F:ONLY_ITEM | DROP_2D2 | WILD_WASTE | WILD_MOUNTAIN |
+F:ONLY_ITEM | DROP_2D2 | WILD_WASTE | WILD_MOUNTAIN | WILD_SNOW |
 F:OPEN_DOOR | BASH_DOOR | CAN_CLIMB
 F:EVIL | GIANT | MALE | AURA_COLD
 F:RES_COLD
@@ -4321,7 +4324,7 @@ D:This bizarre creature has glaring eyes and large mandibles capable of
 D:slicing through rock.
 
 N:284:Rust monster
-G:q:o
+G:q:m
 I:110:20d12:12:55:10:50
 W:16:2:50:50:500:399
 B:TOUCH:ACID(1d10)
@@ -4394,7 +4397,7 @@ D:A vast, foul-smelling dragonfly.
 N:288:Fire giant
 G:P:r
 I:110:72d10:20:60:50:400
-W:21:3:70:500:2000:893
+W:21:3:70:400:2000:893
 B:HIT:HURT(2d12):FIRE(1d12)
 B:HIT:HURT(2d12):FIRE(1d12)
 B:HIT:HURT(2d12):FIRE(1d12)
@@ -4635,8 +4638,8 @@ F:POS_GAIN_AC | POS_HOLD_LIFE
 P:Copy:Human:Rage-Mage
 D:A whirlpool of sentient liquid.
 
-N:304:Giant red scorpion
-G:S:R
+N:304:Giant pink scorpion
+G:S:P
 I:110:11d8:12:44:20:70
 W:17:1:80:62:400:369
 B:BITE:HURT(2d4)
@@ -4698,7 +4701,7 @@ D:Flames lick at its feet and its tongue is a blade of fire. You can feel a
 D:furnace heat radiating from the creature.
 
 N:308:Cold hound
-G:Z:W
+G:Z:w
 I:110:10d6:30:30:0:150
 W:18:2:70:30:0:0
 B:BITE:HURT(1d8)
@@ -4719,7 +4722,7 @@ D:A hound as tall as a man, this creature appears to be composed of angular
 D:planes of ice. Cold radiates from it and freezes your breath in the air.
 
 N:309:Energy hound
-G:Z:y
+G:Z:b
 I:110:10d6:30:30:0:150
 W:18:2:70:30:0:0
 B:BITE:HURT(2d3)
@@ -5061,7 +5064,7 @@ D:to humanoid forms of life.
 N:330:Bolg, Son of Azog
 G:o:r
 I:115:75d10:20:75:20:200
-W:24:4:999:800:0:0
+W:24:4:999:550:0:0
 B:HIT:HURT(3d6):STUN(1d4,10%)
 B:HIT:HURT(3d6)
 B:HIT:HURT(3d6)
@@ -5147,7 +5150,7 @@ B:CLAW:HURT(6d3)
 B:CLAW:HURT(6d3)
 B:BITE:HURT(3d6)
 F:CAN_FLY |
-F:WILD_ONLY | WILD_MOUNTAIN | WILD_VOLCANO
+F:WILD_ONLY | WILD_MOUNTAIN | WILD_VOLCANO | WILD_SNOW |
 F:ANIMAL | GOOD | RIDING
 F:DROP_CORPSE | POS_GAIN_AC
 S:1_IN_3
@@ -5193,7 +5196,7 @@ D:A beautiful crystalline shape does not disguise the danger this hound
 D:clearly presents. Your flesh tingles as it approaches.
 
 N:338:Air hound
-G:Z:B
+G:Z:g
 I:110:15d8:30:30:0:150
 W:20:2:90:200:0:0
 B:BITE:HURT(1d8)
@@ -5222,7 +5225,7 @@ B:CLAW:HURT(1d10)
 B:CLAW:HURT(1d10)
 B:BITE:HURT(1d10)
 B:BITE:HURT(1d10)
-F:BASH_DOOR | WILD_WOOD | WILD_GRASS | ANIMAL
+F:BASH_DOOR | WILD_WOOD | WILD_GRASS | WILD_SNOW | ANIMAL
 F:DROP_SKELETON | DROP_CORPSE | POS_GAIN_AC | RIDING
 P:Copy:Dunadan:Rogue
 P:Skills:0:-7:0:0:0:0:0:0
@@ -5232,7 +5235,7 @@ D:A fierce and dangerous cat, its huge tusks and sharp claws would lacerate
 D:even the strongest armour.
 
 N:340:Water hound
-G:Z:b
+G:Z:t
 I:110:15d8:30:30:0:150
 W:20:3:90:200:0:0
 B:BITE:ACID(2d8)
@@ -5254,12 +5257,12 @@ D:Liquid footprints follow this hound as it pads around the dungeon. An
 D:acrid smell of acid rises from the dog's pelt.
 
 N:341:Chimera
-G:H:y
-I:110:13d8:12:15:10:150
+G:H:O
+I:110:16d8:12:15:10:150
 W:20:1:70:100:800:433
 B:BITE:HURT(1d10)
-B:BITE:FIRE(1d3)
-B:BITE:FIRE(1d3)
+B:BITE:FIRE(1d5)
+B:BITE:FIRE(1d5)
 F:FORCE_SLEEP | CAN_FLY |
 F:BASH_DOOR | WILD_MOUNTAIN |
 F:RES_FIRE | RIDING
@@ -5290,12 +5293,12 @@ D:It is a strange pulsing mound of flesh.
 N:343:Sasquatch
 G:Y:W
 I:120:20d19:15:40:10:250
-W:20:3:70:180:0:0
+W:20:3:70:240:0:0
 B:CLAW:HURT(1d10)
 B:CLAW:HURT(1d10)
 B:BITE:HURT(2d8)
 F:OPEN_DOOR | BASH_DOOR | WILD_MOUNTAIN | WILD_WOOD | WILD_WASTE |
-F:ANIMAL | RES_COLD | CAN_CLIMB
+F:ANIMAL | RES_COLD | WILD_SNOW | CAN_CLIMB
 F:DROP_SKELETON | DROP_CORPSE | POS_GAIN_AC | 
 P:Copy:Human:Mauler
 S:BERSERK
@@ -5328,7 +5331,7 @@ D:Although it looks like a fish and lives in water, it is in fact
 D:a mammal. And it is huge!
 
 N:346:Electric eel
-G:J:B
+G:J:b
 I:110:15d15:15:40:70:50
 W:20:2:70:145:0:0
 B:TOUCH:ELEC(2d7)
@@ -5393,7 +5396,7 @@ D:It is a twenty foot tall giant wreathed in clouds.
 N:350:Ugluk, the Uruk
 G:o:o
 I:110:64d10:20:90:20:200
-W:20:4:999:550:0:0
+W:20:4:999:500:0:0
 B:HIT:HURT(3d5):STUN(1d4,10%)
 B:HIT:HURT(3d5)
 B:HIT:HURT(3d5)
@@ -5479,7 +5482,7 @@ S:BR_FIRE
 D:A whirling maelstrom of fire.
 
 N:355:Water vortex
-G:v:b
+G:v:t
 I:110:9d9:100:30:0:50
 W:21:2:999:60:0:0
 B:ENGULF:ACID(3d3)
@@ -5497,7 +5500,7 @@ D:A caustic spinning whirlpool of water.
 N:356:Lugdush, the Uruk
 G:o:r
 I:110:72d10:20:95:20:200
-W:21:3:999:550:0:0
+W:21:3:999:750:0:0
 B:HIT:HURT(3d8):STUN(1d4,10%)
 B:HIT:HURT(3d8)
 B:HIT:HURT(3d5)
@@ -5515,7 +5518,7 @@ D:A strong and cunning orc warrior, Lugdush sneers as he insults your mother.
 N:357:Arch-vile
 G:u:W
 I:125:11d11:100:30:0:120
-W:21:1:999:300:0:0
+W:21:1:999:350:0:0
 B:CLAW:HURT(3d9)
 B:CLAW:HURT(3d9)
 F:RAND_50 | EVIL | DEMON | FORCE_SLEEP | FORCE_MAXHP |
@@ -5546,7 +5549,7 @@ S:BR_COLD
 D:A twisting whirlpool of frost.
 
 N:359:Energy vortex
-G:v:y
+G:v:b
 I:110:12d12:100:30:0:50
 W:21:2:999:60:0:0
 B:ENGULF:ELEC(5d5)
@@ -5714,7 +5717,7 @@ D:It is a giant scorpion with a sharp stinger.
 N:370:Jade monk
 G:p:G
 I:120:54d12:30:46:10:150
-W:30:2:80:800:0:0
+W:30:2:80:968:0:0
 B:KICK:HURT(2d10):STUN(2d4, 20%)
 B:KICK:HURT(2d10):STUN(2d4, 20%)
 B:PUNCH:HURT(2d7):STUN(2d3, 20%)
@@ -5797,7 +5800,7 @@ D:A revolting canine creature, a huge demon hound with a somewhat
 D:reptilian head.
 
 N:375:Dark elven warlock
-G:h:v
+G:h:C
 I:120:7d10:20:16:20:150
 W:23:1:999:75:20000:657
 B:HIT:HURT(1d6)
@@ -5877,7 +5880,7 @@ D:It is a skeleton covered in frost.
 N:380:Angamaite of Umbar
 G:p:u
 I:110:80d10:25:80:25:170
-W:24:2:999:400:0:0
+W:24:2:999:500:0:0
 B:HIT:HURT(4d6)
 B:HIT:HURT(4d6)
 B:HIT:HURT(4d6)
@@ -5914,7 +5917,7 @@ D:It is a ghostly apparition with a humanoid form.
 N:382:Mime, the Nibelung
 G:h:u
 I:110:82d10:20:80:10:150
-W:24:2:999:300:0:0
+W:24:2:999:900:0:0
 B:HIT:HURT(3d6)
 B:HIT:HURT(3d6)
 B:HIT:DISENCHANT
@@ -5934,7 +5937,7 @@ D:This tiny night dwarf is as greedy for gold as his brother, Alberich.
 N:383:Hagen, Son of Alberich
 G:h:o
 I:110:82d10:20:80:10:150
-W:24:2:999:300:0:0
+W:24:2:999:900:0:0
 B:HIT:HURT(3d7)
 B:HIT:HURT(3d7)
 B:HIT:HURT(3d7)
@@ -5954,12 +5957,12 @@ D:Alberich's son, born of a mortal woman won with gold.
 N:384:Meneldor the Swift
 G:B:b
 I:140:13d100:20:65:20:120
-W:38:1:999:7000:0:0
+W:38:1:999:6000:0:0
 B:CLAW:HURT(7d5)
 B:CLAW:HURT(7d5)
 B:BITE:HURT(5d7)
 F:CAN_FLY | UNIQUE | FORCE_MAXHP |
-F:WILD_ONLY | WILD_MOUNTAIN | WILD_VOLCANO |
+F:WILD_ONLY | WILD_MOUNTAIN | WILD_VOLCANO | WILD_SNOW |
 F:ANIMAL | GOOD | RIDING | CLEAR_HEAD
 F:DROP_CORPSE | POS_GAIN_AC
 S:1_IN_2
@@ -5971,9 +5974,9 @@ D:An agent of supernatural beings, this creature looks like a
 D:huge eagle.
 
 N:385:Phantom beast
-G:G:B
+G:G:I
 I:110:12d12:20:40:40:100
-W:24:1:70:100:0:0
+W:24:1:70:242:0:0
 B:HIT:HURT(44d2)
 B:HIT:HURT(22d2):LOSE_CHR(25%)
 F:PASS_WALL | NO_SLEEP | COLD_BLOOD | NONLIVING | NO_FEAR |
@@ -6034,7 +6037,7 @@ D:This creature just might crush you.
 N:389:Tyrannosaurus
 G:R:g
 I:120:200d3:20:70:20:500
-W:24:2:70:350:0:0
+W:24:2:70:400:0:0
 B:CLAW:HURT(1d6)
 B:CLAW:HURT(1d6)
 B:BITE:HURT(3d6)
@@ -6077,7 +6080,7 @@ D:An undead bat that flies at your neck hungrily.
 N:392:Sangahyando of Umbar
 G:p:o
 I:110:80d10:25:80:25:170
-W:24:2:999:400:0:0
+W:24:2:999:500:0:0
 B:HIT:HURT(4d6)
 B:HIT:HURT(4d6)
 B:HIT:HURT(4d6)
@@ -6096,7 +6099,7 @@ D:A Black Numenorean with a blacker heart.
 N:393:It
 G:.:W
 I:110:77d11:25:80:25:150
-W:24:3:999:400:0:0
+W:24:3:999:1000:0:0
 B:GAZE:DAM(8d8):BLIND
 B:TOUCH:TERRIFY
 B:GAZE:DRAIN_EXP(40d6)
@@ -6166,7 +6169,7 @@ D:orifice gaping at the top."
 N:397:Silent watcher
 G:g:s
 I:110:80d20:42:80:10:300
-W:25:5:70:590:0:0
+W:25:5:70:640:0:0
 B:GAZE:TERRIFY
 B:GAZE:PARALYZE(85%)
 B:GAZE:LOSE_CHR(50%)
@@ -6305,10 +6308,10 @@ D:A huge wormlike shape dripping acid, twisted by evil sorcery into a foul
 D:monster that breeds on death.
 
 N:405:Killer crimson beetle
-G:K:R
+G:K:p
 I:110:20d8:14:50:30:300
 W:25:2:60:85:0:0
-B:BITE:HURT(4d4):LOSE_STR(50%)
+B:BITE:HURT(4d4):LOSE_STR(50%):POISON(4d4, 50%)
 F:RAND_25 | WILD_ALL |
 F:WEIRD_MIND | BASH_DOOR |
 F:ANIMAL | CAN_FLY |
@@ -6339,7 +6342,7 @@ B:CLAW:COLD(2d4)
 B:CLAW:COLD(2d4)
 B:BUTT:HURT(2d9)
 F:RAND_25 | DROP_90 | DROP_60
-F:OPEN_DOOR | BASH_DOOR | AURA_COLD | RES_COLD |
+F:OPEN_DOOR | BASH_DOOR | AURA_COLD | RES_COLD | WILD_SNOW |
 F:ANIMAL | EVIL | RIDING |
 F:DROP_CORPSE | POS_GAIN_AC
 P:Copy:Human:Beastmaster
@@ -6391,7 +6394,7 @@ B:CLAW:HURT(15d5)
 B:CLAW:HURT(15d5)
 B:BITE:HURT(5d10)
 F:CAN_FLY | UNIQUE | FORCE_MAXHP |
-F:WILD_ONLY | WILD_MOUNTAIN | WILD_VOLCANO |
+F:WILD_ONLY | WILD_MOUNTAIN | WILD_VOLCANO | WILD_SNOW |
 F:ANIMAL | GOOD | RIDING | CLEAR_HEAD
 F:DROP_CORPSE | POS_GAIN_AC
 S:1_IN_2
@@ -6437,7 +6440,7 @@ B:HIT:HURT(4d6)
 B:HIT:HURT(4d6)
 F:UNIQUE | MALE | CAN_SPEAK | DROP_SKELETON | DROP_CORPSE
 F:FORCE_MAXHP | WILD_ALL | HAS_LITE_2 | HUMAN |
-F:ONLY_ITEM | DROP_90 | DROP_GOOD |
+F:ONLY_ITEM | DROP_90 | DROP_GOOD | NO_CONF
 F:TAKE_ITEM | OPEN_DOOR | BASH_DOOR |
 F:EVIL
 P:Copy:Dunadan:Warrior
@@ -6527,7 +6530,7 @@ D:Flesh is falling off in chunks from this decaying abomination.
 N:419:Alberich the Nibelung King
 G:h:D
 I:120:80d11:20:80:20:160
-W:27:4:999:1000:0:0
+W:27:4:999:1331:0:0
 B:HIT:HURT(3d12):DISENCHANT
 B:HIT:HURT(3d12):DISENCHANT
 B:TOUCH:EAT_GOLD
@@ -6669,7 +6672,7 @@ S:SCARE
 D:Headless humanoid abominations created by a magical mutation.
 
 N:428:Vibration hound
-G:Z:U
+G:Z:y
 I:110:25d10:30:30:0:150
 W:27:5:999:250:0:0
 B:BITE:HURT(2d6)
@@ -6723,7 +6726,7 @@ B:HIT:HURT(3d8)
 B:HIT:HURT(3d8)
 B:HIT:HURT(3d8)
 F:FORCE_SLEEP |
-F:DROP_1D2 | WILD_MOUNTAIN |
+F:DROP_1D2 | WILD_MOUNTAIN | WILD_SNOW |
 F:OPEN_DOOR | BASH_DOOR |
 F:EVIL | GIANT
 F:DROP_CORPSE
@@ -6775,11 +6778,11 @@ D:It is a humanoid with an aura of power. You notice a sharp set of front
 D:teeth.
 
 N:433:Gorgimera
-G:H:D
+G:H:O
 I:110:25d20:12:55:10:300
 W:27:2:70:200:0:0
-B:BITE:FIRE(1d3)
-B:BITE:FIRE(1d3)
+B:BITE:FIRE(1d6)
+B:BITE:FIRE(1d6)
 B:BITE:HURT(1d10)
 B:GAZE:DAM(2d4):PARALYZE(85%)
 F:FORCE_SLEEP |
@@ -6866,7 +6869,7 @@ D:is ever seen. Perhaps it is better not to see the part which remains
 D:underground...
 
 N:438:Fiend of Slaanesh
-G:S:R
+G:S:P
 I:120:25d20:12:50:40:200
 W:28:4:70:225:0:0
 B:STING:POISON(8d1)
@@ -6883,7 +6886,7 @@ D:reptile skin.
 N:439:Stairway to hell
 G:>:W
 I:120:15d8:90:40:20:300
-W:28:5:999:125:0:0
+W:28:5:999:200:0:0
 B:WAIL:DISENCHANT
 B:WAIL:DRAIN_EXP(20d6)
 B:WAIL:EAT_GOLD
@@ -6917,7 +6920,7 @@ D:A strange reptilian hybrid with five heads dripping venom.
 N:441:Gachapin
 G:R:G
 I:120:110d9:10:90:20:250
-W:29:255:999:500:0:0
+W:29:255:999:1500:0:0
 B:SHOW:LOSE_INT
 B:SHOW:LOSE_WIS
 B:CHARGE:EAT_GOLD
@@ -6937,7 +6940,7 @@ D:The lovable green reptile is making a guest appearance here.
 N:442:Black knight
 G:p:D
 I:120:30d10:20:70:10:160
-W:28:1:999:240:1800:497
+W:28:1:999:300:1800:497
 B:HIT:HURT(5d5)
 B:HIT:HURT(5d5)
 B:HIT:HURT(5d5)
@@ -7018,7 +7021,7 @@ D:It is a massive worm form, many feet in length. Its vast maw drips acid
 D:and poison.
 
 N:447:Catoblepas
-G:q:g
+G:q:m
 I:110:30d10:15:55:40:300
 W:29:2:70:400:0:0
 B:GAZE:DAM(2d4):TERRIFY
@@ -7152,7 +7155,7 @@ B:HIT:HURT(1d5)
 B:HIT:HURT(1d5)
 B:BITE:HURT(2d6):COLD(1d6)
 F:MALE |
-F:FRIENDS(3d3) | DROP_60 | WILD_WASTE |
+F:FRIENDS(3d3) | DROP_60 | WILD_WASTE | WILD_SNOW | CAN_CLIMB |
 F:OPEN_DOOR | BASH_DOOR | REGENERATE |
 F:EVIL | TROLL | RES_COLD | HURT_LITE | HURT_FIRE
 F:DROP_SKELETON | DROP_CORPSE | POS_GAIN_AC | 
@@ -7164,7 +7167,7 @@ D:He is a white troll with powerfully clawed hands.
 N:455:Dhole
 G:w:s
 I:110:65d12:14:64:25:1000
-W:29:4:70:555:4000:619
+W:29:4:70:500:4000:619
 B:SPIT:ACID(1d8)
 B:ENGULF:ACID(2d8)
 B:CRUSH:HURT(4d8):HURT(4d8, 20%)
@@ -7234,7 +7237,7 @@ S:S_MONSTER(1d1) | MULTIPLY
 D:It is a floor tile corrupted by chaos.
 
 N:459:Young blue dragon
-G:d:b
+G:d:I
 I:112:27d10:20:50:70:200
 W:29:1:999:330:4000:560
 B:CLAW:HURT(1d4)
@@ -7258,7 +7261,7 @@ W:29:1:999:300:4000:549
 B:CLAW:HURT(1d4)
 B:CLAW:HURT(1d4)
 B:BITE:HURT(1d6):COLD(1d4)
-F:FORCE_SLEEP | FORCE_MAXHP | WILD_MOUNTAIN | WILD_WASTE |
+F:FORCE_SLEEP | FORCE_MAXHP | WILD_MOUNTAIN | WILD_WASTE | WILD_SNOW |
 F:DROP_60 | DROP_90 | DROP_1D2 |
 F:OPEN_DOOR | BASH_DOOR | CAN_FLY |
 F:EVIL | DRAGON | RES_COLD | RIDING
@@ -7270,7 +7273,7 @@ D:It has a form that legends are made of. Its still-tender scales are a
 D:frosty white in hue. Icy blasts of cold air come from it as it breathes.
 
 N:461:Young green dragon
-G:d:g
+G:d:L
 I:112:27d10:20:60:70:200
 W:29:1:999:320:4000:561
 B:CLAW:HURT(1d4)
@@ -7387,12 +7390,12 @@ D:The biggest white shark who has ever lived, it is hunting for you now!
 N:468:Thorondor
 G:B:v
 I:142:11d253:20:65:20:150
-W:55:1:999:22222:0:0
+W:55:1:999:18029:0:0
 B:CLAW:HURT(16d5)
 B:CLAW:HURT(16d5)
 B:BITE:HURT(6d10)
 F:CAN_FLY | UNIQUE | ESCORT | FORCE_MAXHP |
-F:WILD_ONLY | WILD_MOUNTAIN | WILD_VOLCANO |
+F:WILD_ONLY | WILD_MOUNTAIN | WILD_VOLCANO | WILD_SNOW |
 F:ANIMAL | GOOD | RIDING | CLEAR_HEAD
 F:DROP_CORPSE | POS_GAIN_AC
 S:1_IN_2
@@ -7453,11 +7456,12 @@ D:the dark.
 
 N:472:Manticore
 G:H:o
-I:120:25d10:12:15:10:250
+I:120:25d12:12:15:10:250
 W:30:2:60:300:0:0
 B:HIT:HURT(4d4)
 B:HIT:HURT(4d4)
-B:HIT:HURT(4d4)
+B:CLAW:HURT(2d6):CUT(2d6)
+B:CLAW:HURT(2d6):CUT(2d6)
 F:FORCE_SLEEP | FORCE_MAXHP |
 F:BASH_DOOR | CAN_FLY | WILD_WOOD | RIDING
 F:EVIL
@@ -7572,7 +7576,7 @@ B:HIT:HURT(3d6)
 B:HIT:HURT(3d6)
 F:FORCE_SLEEP |
 F:ONLY_ITEM | DROP_90 |
-F:OPEN_DOOR | BASH_DOOR |
+F:OPEN_DOOR | BASH_DOOR | WILD_SNOW |
 F:EVIL | GIANT | HAS_LITE_1
 F:DROP_CORPSE
 P:Copy:Ogre:Priest
@@ -7610,7 +7614,7 @@ F:FORCE_SLEEP | FORCE_MAXHP |
 F:ESCORT
 F:ONLY_ITEM | DROP_1D2 | DROP_2D2 | DROP_GOOD |
 F:SMART | BASH_DOOR |
-F:ANIMAL | EVIL | HURT_LITE | NO_CONF | NO_SLEEP | RES_DARK
+F:ANIMAL | EVIL | HURT_LITE | NO_CONF | NO_SLEEP | RES_DARK | IM_POIS |
 F:DROP_CORPSE | POS_GAIN_AC | POS_SEE_INVIS
 P:Copy:Hobbit:Rogue
 P:Life:110
@@ -7707,7 +7711,7 @@ D:before.
 N:487:Storm giant
 G:P:b
 I:113:70d10:20:60:40:600
-W:35:5:999:2700:30000:1128
+W:35:5:999:1800:30000:1128
 B:HIT:HURT(2d15):ELEC(1d15)
 B:HIT:HURT(2d15):ELEC(1d15)
 B:HIT:HURT(2d15):ELEC(1d15)
@@ -7739,7 +7743,7 @@ S:AMNESIA | CAUSE_2 | PARALYZE | SLOW
 D:It has two small eyestalks and a large central eye.
 
 N:489:Bokrug
-G:R:g
+G:R:L
 I:110:11d90:20:70:50:200
 W:33:7:999:1600:0:0
 B:BITE:HURT(5d5)
@@ -7798,7 +7802,7 @@ D:A huge, ugly, half-human in search of plunder.
 N:492:Ivory monk
 G:p:w
 I:120:42d13:25:51:7:160
-W:33:1:80:900:2000:915
+W:33:1:80:1089:2000:915
 B:KICK:HURT(3d10):STUN(3d4, 25%)
 B:KICK:HURT(3d10):STUN(3d4, 25%)
 B:PUNCH:HURT(3d7):STUN(2d3, 25%)
@@ -7815,7 +7819,7 @@ D:A monk in white robes. He is skilled in martial arts.
 N:493:Bert the Stone Troll
 G:T:W
 I:115:11d100:20:70:50:300
-W:33:7:999:2000:0:0
+W:33:7:999:1694:0:0
 B:HIT:HURT(5d5):HURT(5d5, 20%)
 B:BITE:HURT(2d10)
 B:BITE:HURT(2d3):POIS(2d3)
@@ -7835,7 +7839,7 @@ D:Bill and Tom.
 N:494:Bill the Stone Troll
 G:T:W
 I:115:11d100:20:70:50:300
-W:33:7:999:2000:0:0
+W:33:7:999:1694:0:0
 B:HIT:HURT(5d5):HURT(5d5, 20%)
 B:BITE:HURT(2d10)
 B:BITE:HURT(2d3):POIS(2d3)
@@ -7855,7 +7859,7 @@ D:Bert and Tom.
 N:495:Tom the Stone Troll
 G:T:W
 I:115:11d100:20:70:50:300
-W:33:7:999:2000:0:0
+W:33:7:999:1694:0:0
 B:HIT:HURT(5d5):HURT(5d5, 20%)
 B:BITE:HURT(2d10)
 B:BITE:HURT(2d3):POIS(2d3)
@@ -7908,7 +7912,7 @@ D:An embodiment of all the cardinal vices, he beholds you scornfully.
 N:498:Logrus master
 G:p:v
 I:120:30d10:30:50:5:150
-W:33:3:80:1000:150000:737
+W:33:3:80:1331:150000:737
 B:KICK:HURT(3d10):STUN(3d4, 30%)
 B:KICK:HURT(3d10):STUN(3d4, 30%)
 B:PUNCH:HURT(3d7):STUN(2d3, 30%)
@@ -8051,7 +8055,7 @@ O:DROP_SAMURAI
 N:506:Fasolt the Giant
 G:P:u
 I:112:11d111:20:70:50:500
-W:33:7:999:2500:0:0
+W:33:7:999:2000:0:0
 B:HIT:HURT(6d6)
 B:BITE:HURT(3d10)
 B:HIT:HURT(2d2):EAT_GOLD
@@ -8127,7 +8131,7 @@ D:He is a troll that reeks of brine.
 N:510:Fire elemental
 G:E:r
 I:110:30d8:12:50:50:250
-W:33:2:999:350:2400:584
+W:33:2:999:300:2400:584
 B:HIT:FIRE(4d6)
 B:HIT:FIRE(4d6)
 F:FORCE_SLEEP | RAND_25 | SELF_LITE_1 |
@@ -8164,9 +8168,9 @@ D:It is an angel moving very quickly, wielding a holy war hammer and casting
 D:a volley of powerful spells in your direction.
 
 N:512:Water elemental
-G:E:b
+G:E:n
 I:110:25d8:12:40:50:200
-W:33:2:999:325:0:0
+W:33:2:999:200:0:0
 B:HIT:HURT(1d10)
 B:HIT:HURT(1d10)
 B:HIT:HURT(1d10)
@@ -8221,7 +8225,7 @@ P:Copy:Zombie:Rage-Mage
 D:It is impossible to define its form but its violence is legendary.
 
 N:515:Velociraptor
-G:R:U
+G:R:h
 I:130:40d5:20:60:5:500
 W:34:2:70:150:0:0
 B:CLAW:HURT(1d6):CUT(2d6)
@@ -8253,7 +8257,7 @@ D:Cool and confident, fast and lithe; protect your possessions quickly!
 N:517:Jurt the Living Trump
 G:p:R
 I:120:10d100:20:90:40:150
-W:34:5:999:1200:0:0
+W:34:5:999:2662:0:0
 B:HIT:HURT(5d5)
 B:HIT:HURT(5d5)
 B:HIT:HURT(5d5)
@@ -8346,7 +8350,7 @@ D:The oriental vampire is a mist-like creature.
 N:522:Greater mummy
 G:z:W
 I:110:54d13:30:68:255:150
-W:34:3:999:800:16000:1268
+W:34:3:999:1210:16000:1268
 B:CLAW:HURT(1d6):LOSE_CON(50%)
 B:CLAW:DISEASE(1d6):UNLIFE(3d6)
 B:GAZE:VAMP(3d4)
@@ -8413,7 +8417,7 @@ S:BO_ACID
 D:It is a towering form composed of rock with fists of awesome power.
 
 N:526:Air elemental
-G:E:B
+G:E:S
 I:120:30d5:12:50:50:250
 W:34:2:80:390:0:0
 B:HIT:HURT(1d10)
@@ -8485,7 +8489,7 @@ D:This little creature has a fiendish gleam in its eyes.
 N:530:Eog golem
 G:g:D
 I:110:100d20:12:125:10:700
-W:35:4:999:1200:0:0
+W:35:4:999:1000:0:0
 B:HIT:HURT(14d14):STUN(2d6, 35%)
 F:ONLY_GOLD | DROP_2D2 |
 F:EMPTY_MIND | COLD_BLOOD | BASH_DOOR | REFLECTING |
@@ -8575,7 +8579,7 @@ S:DETECT_MONSTERS
 D:Bloated purple spiders with long, bristly legs.
 
 N:536:Star vampire
-G:V:r
+G:V:R
 I:120:30d25:20:40:10:170
 W:35:2:999:700:0:0
 B:CLAW:HURT(4d4):LOSE_STR(50%)
@@ -8615,7 +8619,7 @@ D:It is a towering blackened form, crackling with heat.
 N:538:Olog
 G:T:g
 I:110:42d10:20:50:50:350
-W:35:1:999:450:4000:621
+W:35:1:999:600:4000:621
 B:HIT:HURT(1d12):STUN(1d4,10%)
 B:HIT:HURT(1d12)
 B:BITE:HURT(2d3)
@@ -8653,7 +8657,7 @@ B:BITE:HURT(2d12)
 B:CLAW:HURT(3d3)
 F:FORCE_SLEEP | FRIENDS(3d3) |
 F:BASH_DOOR |
-F:ANIMAL | RES_GRAV | NO_CONF | NO_SLEEP |
+F:ANIMAL | RES_GRAV | NO_CONF | NO_SLEEP | CAN_FLY |
 F:WILD_GRASS | WILD_WOOD | WILD_WASTE
 F:DROP_CORPSE | POS_GAIN_AC
 P:Copy:Kutar:Rogue
@@ -8749,7 +8753,7 @@ O:DROP_WARRIOR
 D:He is a troll that reeks of brine, close relative to water trolls.
 
 N:545:Ooze elemental
-G:E:U
+G:E:m
 I:110:13d10:10:80:90:150
 W:35:3:80:284:0:0
 B:TOUCH:ACID(1d10)
@@ -8770,7 +8774,7 @@ D:It is a towering mass of filth, an eyesore of ooze.
 N:546:Young black dragon
 G:d:D
 I:112:25d10:20:60:50:200
-W:35:1:999:680:4000:592
+W:32:1:999:360:4000:592
 B:CLAW:HURT(1d5)
 B:CLAW:HURT(1d5)
 B:BITE:HURT(1d6):ACID(1d4)
@@ -8821,7 +8825,7 @@ B:CLAW:HURT(1d8)
 B:CLAW:HURT(1d8)
 B:BITE:HURT(2d8):COLD(2d4)
 F:FORCE_SLEEP | FORCE_MAXHP | DROP_2D2 |
-F:OPEN_DOOR | BASH_DOOR | CAN_FLY | WILD_WASTE | WILD_MOUNTAIN |
+F:OPEN_DOOR | BASH_DOOR | CAN_FLY | WILD_WASTE | WILD_MOUNTAIN | WILD_SNOW |
 F:EVIL | DRAGON | RES_COLD | NO_CONF | NO_SLEEP | RIDING
 F:DROP_CORPSE | POS_GAIN_AC
 P:Copy:Barbarian:Beastmaster
@@ -8851,7 +8855,7 @@ D:has four huge arms protruding from its enormous torso.
 N:551:Rogrog the Black Troll
 G:T:D
 I:120:15d100:20:70:50:350
-W:36:5:999:5000:0:0
+W:36:5:999:2000:0:0
 B:HIT:HURT(6d6):STUN(1d4,10%)
 B:BITE:HURT(2d10)
 B:BITE:HURT(2d3)
@@ -8872,7 +8876,7 @@ D:his muscular frame. Despite his bulk, he strikes with stunning speed.
 N:552:Mist giant
 G:#:B
 I:120:35d20:20:50:50:400
-W:36:2:999:450:0:0
+W:36:2:999:500:0:0
 B:CRUSH:HURT(4d8)
 B:CRUSH:HURT(4d8)
 B:CRUSH:HURT(4d8)
@@ -8983,7 +8987,7 @@ D:A sentient arcane tome casting spells with malevolent intent.
 N:558:Colossus
 G:g:y
 I:105:15d100:15:150:10:1000
-W:36:4:999:3000:0:0
+W:36:4:999:2375:0:0
 B:HIT:HURT(14d14):SHATTER(8d8):STUN(2d8, 40%)
 F:FORCE_MAXHP |
 F:EMPTY_MIND | COLD_BLOOD | BASH_DOOR |
@@ -9146,7 +9150,7 @@ D:It was left here to be used against intruders.
 N:568:Mezzodaemon
 G:u:o
 I:110:40d13:10:68:90:50
-W:36:2:999:750:50000:719
+W:36:2:999:800:50000:719
 B:CLAW:HURT(5d6)
 B:CLAW:HURT(5d6)
 F:FORCE_SLEEP | PASS_WALL | INVISIBLE |
@@ -9187,10 +9191,10 @@ D:of a starfish."
 N:570:Ice elemental
 G:E:w
 I:110:35d10:10:60:90:300
-W:36:2:999:650:0:0
-B:BITE:COLD(1d3)
+W:36:2:999:500:3000:1388
+B:BITE:COLD(1d5)
 B:HIT:HURT(4d6)
-B:BITE:COLD(1d3)
+B:BITE:COLD(1d5)
 F:FORCE_SLEEP |
 F:EMPTY_MIND | COLD_BLOOD | AURA_COLD |
 F:KILL_ITEM | KILL_BODY | BASH_DOOR |
@@ -9225,7 +9229,7 @@ D:A gaunt figure, clothed in black robes.
 N:572:The Greater Hell Magic Mushroom Were-Quylthulg
 G:Q:s
 I:120:19d99:50:80:50:300
-W:36:3:999:2500:0:0
+W:36:3:999:4477:0:0
 B:GAZE:VAMP(4d8)
 B:GAZE:VAMP(4d8)
 B:CRUSH:ACID(8d8)
@@ -9249,7 +9253,7 @@ D:This unholy abomination will crush you too. Flee while you can!
 N:573:Lord Borel of Hendrake
 G:p:v
 I:120:18d100:25:100:10:160
-W:36:2:999:1200:0:0
+W:36:2:999:3146:0:0
 B:HIT:HURT(6d6)
 B:HIT:HURT(6d6)
 B:HIT:HURT(3d8)
@@ -9351,18 +9355,18 @@ P:Blows:300
 S:FREQ_5 | BR_CONFUSION | BR_CHAOS
 D:"It had the appearance of a butterfly, but a butterfly with
 D:wings so huge they blotted out the sun... it had a man's body,
-D:covered with hairs or feathers hued like a peacocks..."
+D:covered with hairs or feathers hued like a peacock's..."
 
-N:579:Time elemental
-G:E:G
-I:120:35d10:90:70:10:150
-W:37:5:999:1000:0:0
+N:579:Time ghost
+G:G:S
+I:125:30d15:90:70:10:150
+W:37:5:999:1210:0:0
 B:TOUCH:TIME(3d4):SLOW(50%)
-B:TOUCH:TIME(3d4)
-F:PASS_WALL | RES_POIS | RES_FIRE | RES_ELEC | RES_TIME | NONLIVING | CAN_FLY |
-F:NO_CONF | NO_SLEEP | EVIL | EMPTY_MIND | KILL_ITEM | RAND_50
-F:POS_GAIN_AC | POS_HOLD_LIFE
-P:Copy:Zombie:Rage-Mage
+B:TOUCH:TIME(3d4):SLOW(50%)
+F:PASS_WALL | RES_POIS | RES_FIRE | RES_ELEC | RES_TIME | CAN_FLY |
+F:NO_CONF | NO_SLEEP | UNDEAD | KILL_ITEM | RAND_50 | DROP_90
+F:COLD_BLOOD | POS_GAIN_AC | POS_SEE_INVIS | POS_HOLD_LIFE
+P:Copy:Spectre:Rage-Mage
 S:FREQ_5 | SLOW | BR_TIME
 D:You have not seen it yet.
 
@@ -9387,7 +9391,7 @@ D:and of temporary lapses of visibility..."
 N:581:The Queen Ant
 G:a:v
 I:120:15d100:30:100:10:120
-W:37:2:999:1000:0:0
+W:37:2:999:2420:0:0
 B:BITE:HURT(2d12)
 B:BITE:HURT(2d12)
 B:BITE:HURT(2d8)
@@ -9404,7 +9408,6 @@ P:Copy:Human:Mauler
 P:Life:105
 P:Body:Ant
 D:She's upset because you hurt her children.
-
 
 N:582:Will o' the wisp
 G:E:y
@@ -9592,7 +9595,7 @@ D:your eyes with spectrums of colour.
 N:592:Mature black dragon
 G:d:D
 I:115:46d10:20:55:30:250
-W:37:1:999:1600:10000:624
+W:37:1:999:1200:10000:624
 B:CLAW:HURT(1d8)
 B:CLAW:HURT(1d8)
 B:BITE:HURT(2d10):ACID(2d5)
@@ -9647,7 +9650,7 @@ D:A vastly intelligent whale from the stars.
 N:595:Father Dagon
 G:u:v
 I:120:19d99:12:80:50:500
-W:38:3:999:3250:0:0
+W:38:3:999:4000:0:0
 B:CLAW:HURT(5d4):POISON(3d4)
 B:CLAW:HURT(5d4):POISON(3d4)
 B:BITE:HURT(8d8)
@@ -9667,7 +9670,7 @@ D:darted like a stupendous monster of nightmares..."
 N:596:Mother Hydra
 G:u:v
 I:120:19d99:12:80:50:500
-W:38:3:999:3250:0:0
+W:38:3:999:4000:0:0
 B:CLAW:HURT(5d4):POISON(3d4)
 B:CLAW:HURT(5d4):POISON(3d4)
 B:BITE:HURT(8d8)
@@ -9687,7 +9690,7 @@ D:darted like a stupendous monster of nightmares..."
 N:597:Death knight
 G:p:s
 I:120:60d10:20:100:10:190
-W:38:2:999:1111:15000:731
+W:38:2:999:1210:15000:731
 B:HIT:HURT(6d6)
 B:HIT:HURT(5d5)
 B:HIT:HURT(5d5)
@@ -9708,13 +9711,13 @@ D:fire.
 N:598:Mandor, Master of the Logrus
 G:p:v
 I:120:88d11:20:90:40:150
-W:38:5:999:1600:0:0
+W:38:5:999:3000:0:0
 B:HIT:HURT(4d5):CHAOS(1d5)
 B:HIT:HURT(4d5):CHAOS(1d5)
 B:HIT:HURT(5d5):DRAIN_CHARGES
 B:HIT:HURT(5d5):DISENCHANT
 F:UNIQUE | MALE | CAN_SPEAK | HAS_LITE_2 | HUMAN |
-F:FORCE_SLEEP | FORCE_MAXHP |
+F:FORCE_SLEEP | FORCE_MAXHP | NO_CONF |
 F:ONLY_ITEM | DROP_2D2 | DROP_GOOD |
 F:SMART | OPEN_DOOR | TAKE_ITEM | BASH_DOOR |
 F:EVIL | RES_TELE
@@ -9762,7 +9765,7 @@ D:waking monsters from their slumber.
 N:601:Ancient blue dragon
 G:D:b
 I:120:70d10:20:80:80:500
-W:38:1:999:1500:100000:728
+W:38:1:999:1800:100000:728
 B:CLAW:HURT(4d8)
 B:CLAW:HURT(4d8)
 B:BITE:HURT(5d8):ELEC(2d8):CUT(5d8, 10%)
@@ -9780,7 +9783,7 @@ D:A huge draconic form. Lightning crackles along its length.
 N:602:Ancient bronze dragon
 G:D:U
 I:120:73d10:20:100:200:500
-W:38:2:999:1700:0:0
+W:38:2:999:2178:0:0
 B:CLAW:HURT(4d8)
 B:CLAW:HURT(4d8)
 B:BITE:HURT(5d10):CONFUSE(2d10, 50%):CUT(5d8, 10%)
@@ -9833,7 +9836,7 @@ D:approaches.
 N:605:Seraph
 G:A:w
 I:120:50d10:30:68:255:160
-W:38:4:999:1800:8000:661
+W:38:4:999:1936:8000:661
 B:HIT:HURT(4d6)
 B:HIT:HURT(5d5)
 B:HIT:HURT(5d5)
@@ -9932,7 +9935,7 @@ D:A minor demon lord with a goat's head, tough to kill.
 N:610:Scylla
 G:M:y
 I:125:100d15:20:90:20:500
-W:39:2:999:3500:0:0
+W:39:2:999:2904:0:0
 B:BITE:HURT(7d3):POISON(3d3)
 B:BITE:HURT(7d3):POISON(3d3)
 B:BITE:HURT(7d3):POISON(3d3)
@@ -9951,7 +9954,7 @@ D:A strange reptilian hybrid with multiple heads dripping venom.
 N:611:Monastic lich
 G:L:u
 I:120:12d100:30:80:30:150
-W:39:2:90:5000:0:0
+W:39:2:90:4000:0:0
 B:KICK:HURT(4d10):STUN(3d4, 30%)
 B:KICK:HURT(4d10):STUN(3d4, 30%)
 B:CLAW:HURT(3d7):UNLIFE(3d7)
@@ -9993,7 +9996,7 @@ D:you, a coldness saps your soul.
 N:613:Fire vampire
 G:V:r
 I:120:52d12:30:133:0:100
-W:39:4:80:1200:0:0
+W:39:4:80:1331:0:0
 B:TOUCH:FIRE(1d10)
 B:TOUCH:HURT(1d10):LOSE_WIS(50%)
 B:TOUCH:FIRE(1d10)
@@ -10013,7 +10016,7 @@ D:creature touches.
 N:614:7-headed hydra
 G:M:G
 I:120:100d10:20:90:20:400
-W:39:2:999:2000:9000:635
+W:39:2:999:1815:9000:635
 B:BITE:HURT(2d9):POISON(1d10)
 B:BITE:HURT(2d9):POISON(1d10)
 B:BITE:HURT(2d9):POISON(1d10)
@@ -10033,7 +10036,7 @@ D:A strange reptilian hybrid with seven heads dripping venom.
 N:615:Moire, Queen of Rebma
 G:E:b
 I:120:20d100:12:40:50:150
-W:39:3:999:3250:0:0
+W:39:3:999:3509:0:0
 B:HIT:HURT(5d5)
 B:HIT:HURT(5d5)
 B:HIT:HURT(5d5)
@@ -10064,7 +10067,7 @@ D:a different blue within it. She did not smile..."
 N:616:Kavlax the Many-Headed
 G:d:v
 I:120:13d100:20:85:30:350
-W:39:3:999:3000:0:0
+W:39:3:999:4598:0:0
 B:BITE:HURT(2d12):CUT(2d6)
 B:BITE:HURT(2d12):CUT(2d6)
 B:BITE:HURT(2d12):CUT(2d6)
@@ -10093,7 +10096,7 @@ B:BITE:HURT(5d12):COLD(2d12):CUT(5d12, 10%)
 F:FORCE_SLEEP | FORCE_MAXHP |
 F:DROP_3D2 | DROP_4D2 |
 F:SMART | BASH_DOOR | MOVE_BODY | CAN_FLY | WILD_WASTE | WILD_MOUNTAIN |
-F:EVIL | DRAGON | RES_COLD | NO_CONF | NO_SLEEP | RIDING
+F:EVIL | DRAGON | RES_COLD | NO_CONF | NO_SLEEP | RIDING | WILD_SNOW |
 F:DROP_CORPSE | POS_GAIN_AC
 P:Copy:Half-Titan:Beastmaster
 P:Life:110
@@ -10104,7 +10107,7 @@ D:A huge draconic form. Frost covers it from head to tail.
 N:618:Ancient green dragon
 G:D:g
 I:120:72d10:20:85:80:500
-W:39:1:999:2400:100000:890
+W:39:1:999:2299:100000:890
 B:CLAW:HURT(4d8)
 B:CLAW:HURT(4d8)
 B:BITE:HURT(5d10):POISON(3d10):CUT(5d10, 10%)
@@ -10122,7 +10125,7 @@ D:A huge draconic form enveloped in clouds of poisonous vapour.
 N:619:Chthonian
 G:w:D
 I:120:100d10:20:90:20:400
-W:39:2:999:2300:0:0
+W:39:2:999:2178:0:0
 B:CRUSH:SHATTER(11d6)
 B:TOUCH:HURT(1d2):LOSE_CON(66%)
 B:TOUCH:HURT(1d2):LOSE_CHR(66%)
@@ -10144,14 +10147,14 @@ D:whichever diseased organ governed this horror's loathsome life!"
 N:620:Eldrak
 G:T:r
 I:115:75d19:20:128:50:600
-W:40:3:999:2662:5000:894
+W:40:3:999:2904:5000:894
 B:HIT:HURT(7d6):STUN(4d4,50%)
 B:HIT:HURT(7d6):STUN(2d4,30%)
 B:HIT:HURT(7d6)
 F:FORCE_MAXHP |
 F:DROP_1D2 |
 F:TAKE_ITEM | OPEN_DOOR | BASH_DOOR | WILD_MOUNTAIN | WILD_WOOD | REGENERATE |
-F:EVIL | TROLL | RES_POIS | NO_CONF | NO_SLEEP | CAN_CLIMB
+F:WILD_SNOW | EVIL | TROLL | RES_POIS | NO_CONF | NO_SLEEP | CAN_CLIMB
 F:DROP_CORPSE | POS_GAIN_AC
 P:Copy:Half-Troll:Warrior
 P:Body:Ettin
@@ -10162,14 +10165,14 @@ D:A massive troll, larger and stronger than many men together.
 N:621:Ettin
 G:T:y
 I:110:10d100:20:86:50:600
-W:39:3:999:800:4000:620
+W:39:3:999:1000:4000:620
 B:HIT:HURT(3d6):STUN(2d4,20%)
 B:HIT:HURT(3d6)
 B:BITE:HURT(3d4)
 B:BITE:HURT(3d4)
 F:FORCE_MAXHP |
 F:ONLY_ITEM | DROP_1D2 | WILD_SHORE | WILD_WOOD | WILD_SWAMP |
-F:OPEN_DOOR | BASH_DOOR | REGENERATE | CAN_SWIM | WILD_MOUNTAIN |
+F:OPEN_DOOR | BASH_DOOR | REGENERATE | CAN_SWIM | WILD_MOUNTAIN | WILD_SNOW |
 F:EVIL | TROLL | RES_POIS | NO_CONF | NO_SLEEP | CAN_CLIMB
 F:DROP_CORPSE | POS_GAIN_AC
 P:Copy:Half-Troll:Warrior
@@ -10180,7 +10183,7 @@ D:A massive troll of huge strength. Ettins are stupid but violent.
 N:622:Night mare
 G:q:v
 I:120:15d100:30:85:0:250
-W:39:3:999:2900:0:0
+W:39:3:999:3025:0:0
 B:BITE:DRAIN_MANA(4d6)
 B:HIT:HURT(3d8)
 B:HIT:HURT(3d8):LOSE_CHR(50%)
@@ -10200,7 +10203,7 @@ D:ground...
 N:623:Vampire lord
 G:V:b
 I:120:16d100:20:70:10:170
-W:39:3:999:1800:20000:1058
+W:39:3:999:2500:20000:1058
 B:HIT:HURT(1d6)
 B:HIT:HURT(1d6)
 B:BITE:VAMP(4d6):UNLIFE(4d6)
@@ -10221,7 +10224,7 @@ P:Body:Vampire
 N:624:Ancient black dragon
 G:D:D
 I:120:72d10:20:90:70:500
-W:39:1:999:2500:100000:1066
+W:39:1:999:2299:100000:1066
 B:CLAW:HURT(4d9)
 B:CLAW:HURT(4d9)
 B:BITE:HURT(5d10):ACID(2d10):CUT(5d10, 10%)
@@ -10269,7 +10272,7 @@ D:Weird, jelly like creatures. No two look the same.
 N:627:Hammer of hell
 G:\:v
 I:100:50d10:30:40:0:150
-W:24:5:70:400:0:0
+W:24:5:70:200:0:0
 B:CRUSH:HURT(5d8):HURT(5d8, 20%):STUN(2d3)
 F:COLD_BLOOD | EVIL | NO_SLEEP | NO_CONF | NO_FEAR | NONLIVING | NASTY_GLYPH |
 F:RES_ACID | RES_COLD | RES_POIS | RES_NETH | RES_DARK | BASH_DOOR
@@ -10278,7 +10281,7 @@ D:A foul iron hammer forged with body and souls of victims on the infernal anvil
 N:628:Malekith the Accursed
 G:h:v
 I:125:25d100:20:70:10:150
-W:40:2:999:7500:0:0
+W:40:2:999:11000:0:0
 B:HIT:HURT(12d9)
 B:HIT:HURT(12d9)
 A:CAUSE_3(3d3)
@@ -10301,7 +10304,7 @@ D:one is dark. His hair is long and white.
 N:629:Morgenstern, Julian's Steed
 G:q:W
 I:130:30d100:20:100:50:250
-W:40:3:999:2000:0:0
+W:40:3:999:2700:0:0
 B:KICK:HURT(4d4)
 B:KICK:HURT(5d5)
 B:BITE:HURT(6d6)
@@ -10407,7 +10410,7 @@ D:and hate.
 N:635:9-headed hydra
 G:M:o
 I:120:100d12:20:95:20:400
-W:40:2:999:3000:11000:688
+W:40:2:999:2904:11000:688
 B:BITE:HURT(2d6):FIRE(1d6)
 B:BITE:HURT(2d6):FIRE(1d6)
 B:BITE:HURT(2d6):FIRE(1d6)
@@ -10425,7 +10428,7 @@ D:A strange reptilian hybrid with nine smouldering heads.
 N:636:Enchantress
 G:p:y
 I:130:52d10:20:60:10:150
-W:40:4:999:2100:0:0
+W:40:4:999:2200:0:0
 B:HIT:HURT(2d6)
 B:HIT:HURT(2d6)
 B:HIT:HURT(2d8)
@@ -10509,7 +10512,7 @@ W:40:3:80:1000:0:0
 B:CRUSH:HURT(8d12)
 B:CRUSH:HURT(8d12)
 B:HIT:HURT(8d12):ELEC(4d12)
-F:BASH_DOOR | CAN_FLY | WILD_MOUNTAIN | WILD_WOOD |
+F:BASH_DOOR | CAN_FLY | WILD_MOUNTAIN | WILD_WOOD | WILD_SNOW |
 F:ANIMAL | RES_ELEC | RIDING
 F:DROP_CORPSE | POS_GAIN_AC
 P:Copy:Dunadan:Mystic
@@ -10519,8 +10522,8 @@ D:surfaces and its screech echoes through the many winding dungeon corridors.
 
 N:641:Minotaur
 G:H:U
-I:130:100d10:13:25:10:250
-W:40:2:70:2100:12000:723
+I:130:100d10:13:35:10:250
+W:40:2:70:1600:12000:723
 B:HIT:HURT(4d6)
 B:HIT:HURT(4d6)
 B:BUTT:HURT(2d6)
@@ -10576,7 +10579,7 @@ D:true form but you sense its evil.
 N:644:Ancient red dragon
 G:D:r
 I:120:10d100:20:100:70:500
-W:40:1:999:2750:100000:756
+W:40:1:999:3000:100000:756
 B:CLAW:HURT(4d10)
 B:CLAW:HURT(4d10)
 B:BITE:HURT(5d14):FIRE(2d14):CUT(5d14, 10%)
@@ -10595,7 +10598,7 @@ D:extreme heat surrounding it makes you gasp for breath.
 N:645:Ancient gold dragon
 G:D:y
 I:120:15d100:20:100:200:500
-W:40:2:999:4000:0:0
+W:40:2:999:5000:0:0
 B:CLAW:HURT(4d10)
 B:CLAW:HURT(4d10)
 B:BITE:HURT(5d14):SOUND(2d14):CUT(5d14, 10%)
@@ -10617,7 +10620,7 @@ W:40:2:999:7000:0:0
 B:CLAW:HURT(4d9)
 B:CLAW:HURT(4d9)
 B:BITE:HURT(5d12):SHARDS(2d12):CUT(5d12, 10%)
-F:FORCE_SLEEP | FORCE_MAXHP | REFLECTING | WILD_MOUNTAIN
+F:FORCE_SLEEP | FORCE_MAXHP | REFLECTING | WILD_MOUNTAIN | WILD_SNOW |
 F:ONLY_ITEM | DROP_2D2 | DROP_4D2 | CAN_FLY | ATTR_CLEAR |
 F:INVISIBLE | OPEN_DOOR | BASH_DOOR | MOVE_BODY |
 F:EVIL | DRAGON | RES_COLD | NO_CONF | RES_SHAR | NO_SLEEP | RIDING
@@ -10651,7 +10654,7 @@ D:really believe in witches, do you?
 N:648:Clubber demon
 G:U:s
 I:110:40d10:20:50:80:250
-W:40:2:999:1000:0:0
+W:40:2:999:1573:0:0
 B:HIT:HURT(3d4)
 B:HIT:HURT(8d10):HURT(8d10, 20%)
 B:HIT:HURT(8d10):HURT(8d10, 20%)
@@ -10689,7 +10692,7 @@ D:lightning speed and its powers make it a tornado of death and destruction.
 N:650:Giganto the Gargantuan
 G:l:s
 I:110:80d25:20:75:30:1000
-W:38:6:999:7750:0:0
+W:38:6:999:5566:0:0
 B:CRUSH:HURT(33d2)
 B:CRUSH:HURT(33d2)
 B:CRUSH:HURT(33d2):HURT(33d2, 20%)
@@ -10707,7 +10710,7 @@ D:on dry land as well.
 N:651:Strygalldwir
 G:U:W
 I:120:12d100:90:60:10:200
-W:41:3:999:8000:0:0
+W:41:3:999:7000:0:0
 B:CLAW:HURT(5d5)
 B:CLAW:HURT(5d5)
 B:HIT:HURT(5d5):LOSE_STR
@@ -10768,7 +10771,7 @@ D:Giant headless humanoid abominations created by a magical mutation.
 N:654:Judge Fire
 G:s:r
 I:120:18d100:90:70:10:120
-W:41:3:999:12000:0:0
+W:41:3:999:11500:0:0
 B:HIT:FIRE(5d5)
 B:HIT:FIRE(5d5)
 B:GAZE:DRAIN_EXP(80d6)
@@ -10830,8 +10833,8 @@ S:S_UNDEAD
 D:Another Dark Judge, he is a rotting humanoid with a cow's skull as
 D:his head.
 
-N:657:Dark elven sorceror
-G:h:B
+N:657:Dark elven sorcerer
+G:h:I
 I:130:80d10:20:70:10:150
 W:41:2:999:5000:30000:886
 B:HIT:HURT(2d8)
@@ -10856,7 +10859,7 @@ D:from his slender frame.
 N:658:Master lich
 G:L:W
 I:120:18d100:20:80:50:130
-W:41:2:80:10000:30000:742
+W:41:2:80:7500:30000:742
 B:TOUCH:UNLIFE(2d12)
 B:TOUCH:DRAIN_CHARGES:UNLIFE(2d12)
 B:TOUCH:HURT(2d12):LOSE_DEX(50%)
@@ -10895,7 +10898,7 @@ D:and must not recall."
 N:660:Rinaldo, Son of Brand
 G:p:w
 I:120:16d100:20:120:40:170
-W:41:3:999:7000:0:0
+W:41:3:999:9000:0:0
 B:HIT:HURT(8d6)
 B:HIT:HURT(8d6)
 B:HIT:HURT(6d8):DISENCHANT
@@ -10979,7 +10982,7 @@ D:of black rubbery wings of singularly monstrous dimensions."
 N:664:Undead beholder
 G:e:s
 I:120:27d100:30:100:10:50
-W:42:4:999:6000:40000:781
+W:42:4:999:9000:40000:781
 B:GAZE:MIND_BLAST(2d6):DRAIN_MANA(7d7):CONFUSE:UNLIFE(2d6)
 B:GAZE:MIND_BLAST(2d6):TERRIFY:PARALYZE:UNLIFE(2d6)
 B:GAZE:MIND_BLAST(2d6):STUN(3d3):AMNESIA(25%):LOSE_INT(50%)
@@ -10999,7 +11002,7 @@ D:very air around it. Your soul chills as it drains your vitality for its
 D:evil enchantments.
 
 N:665:Shadow demon
-G:G:v
+G:G:C
 I:120:10d20:30:30:20:50
 W:42:3:999:425:0:0
 B:TOUCH:DRAIN_EXP(80d6)
@@ -11021,7 +11024,7 @@ D:energy from your soul to feed its power.
 N:666:Iron lich
 G:L:s
 I:120:28d100:30:100:10:100
-W:42:4:999:9000:0:0
+W:42:4:999:10000:0:0
 B:BUTT:COLD(3d6)
 B:BUTT:FIRE(3d6)
 B:BUTT:ELEC(3d6)
@@ -11068,7 +11071,7 @@ B:GAZE:PARALYZE
 B:BITE:HURT(5d12)
 B:BITE:HURT(5d12)
 B:BITE:HURT(5d12)
-F:ONLY_ITEM | DROP_1D2 | DROP_GOOD | FORCE_MAXHP | WILD_SHORE
+F:ONLY_ITEM | DROP_1D2 | DROP_GOOD | FORCE_MAXHP | WILD_SHORE | FORCE_SLEEP
 F:OPEN_DOOR | BASH_DOOR | EVIL | RES_POIS | RES_DARK |
 F:ANIMAL | NO_CONF | NO_SLEEP | CAN_SWIM | RIDING
 F:DROP_CORPSE | POS_GAIN_AC
@@ -11101,12 +11104,12 @@ D:of innumerable sailors!
 N:670:Jack of Shadows
 G:p:s
 I:130:30d100:70:150:4:150
-W:42:4:999:10000:0:0
+W:42:4:999:25000:0:0
 B:HIT:HURT(5d10)
 B:HIT:HURT(5d10)
 B:HIT:HURT(2d10):EAT_ITEM
 B:HIT:HURT(2d10):EAT_ITEM
-F:NO_QUEST | MALE | FORCE_MAXHP | CAN_SPEAK |
+F:NO_QUEST | MALE | FORCE_MAXHP | FORCE_SLEEP | CAN_SPEAK |
 F:REGENERATE | NO_CONF | NO_SLEEP |
 F:RES_TELE | HUMAN | THIEF
 F:ONLY_ITEM | DROP_1D2 | DROP_GOOD | DROP_GREAT | UNIQUE |
@@ -11124,7 +11127,7 @@ P:Speed:+15
 N:671:Zephyr Lord
 G:W:v
 I:125:80d11:20:70:10:170
-W:43:2:999:3000:0:0
+W:43:2:999:4477:0:0
 B:HIT:HURT(8d3):DRAIN_EXP(20d6)
 B:HIT:HURT(8d3):LOSE_STR(50%)
 B:HIT:HURT(8d3):LOSE_CON(50%)
@@ -11159,11 +11162,11 @@ D:blood is fire. It charges at you ignoring everything else.
 
 N:673:Mumak
 G:q:s
-I:110:90d10:20:55:100:700
-W:40:2:90:1000:50000:716
-B:BUTT:HURT(5d6)
-B:BUTT:HURT(5d6)
-B:CRUSH:HURT(5d6):HURT(5d6, 20%)
+I:110:90d10:20:65:100:700
+W:40:2:90:750:50000:716
+B:BUTT:HURT(6d6)
+B:BUTT:HURT(6d6)
+B:CRUSH:HURT(6d6):HURT(6d6, 20%)
 F:FRIENDS(3d3) |
 F:BASH_DOOR |
 F:ANIMAL | RIDING
@@ -11176,7 +11179,7 @@ D:A massive elephantine form with eyes twisted by madness.
 N:674:Judge Fear
 G:W:D
 I:120:18d100:90:70:10:160
-W:43:4:999:12000:0:0
+W:43:4:999:11000:0:0
 B:GAZE:TERRIFY
 B:GAZE:DRAIN_EXP(40d6)
 B:GAZE:DRAIN_MANA(4d8)
@@ -11202,7 +11205,7 @@ B:CLAW:HURT(4d12)
 B:CLAW:HURT(4d12)
 B:BITE:HURT(7d12):CUT(7d12, 10%)
 F:ATTR_MULTI | SELF_LITE_2 |
-F:FORCE_SLEEP | FORCE_MAXHP | CAN_FLY | WILD_MOUNTAIN
+F:FORCE_SLEEP | FORCE_MAXHP | CAN_FLY | WILD_MOUNTAIN | WILD_SNOW |
 F:ONLY_ITEM | DROP_2D2 | DROP_3D2 | DROP_4D2 |
 F:SMART | OPEN_DOOR | BASH_DOOR | MOVE_BODY |
 F:EVIL | DRAGON | RES_ACID | RES_FIRE | RES_COLD |
@@ -11368,14 +11371,14 @@ D:but existed as vortices of power in their natural state."
 N:683:Utgard-Loke
 G:P:w
 I:120:40d100:30:125:15:600
-W:44:3:999:20000:0:0
+W:44:3:999:26620:0:0
 B:HIT:HURT(8d12):COLD(4d12)
 B:HIT:HURT(8d12):COLD(4d12)
 B:HIT:HURT(8d12):COLD(4d12)
 B:HIT:HURT(8d12):COLD(4d12)
 F:UNIQUE | IM_COLD | AURA_COLD |
 F:FORCE_SLEEP | FORCE_MAXHP | CLEAR_HEAD |
-F:ONLY_ITEM | DROP_4D2 | DROP_GOOD | MOVE_BODY |
+F:ONLY_ITEM | DROP_4D2 | DROP_GOOD | MOVE_BODY | WILD_SNOW |
 F:SMART | TAKE_ITEM | OPEN_DOOR | BASH_DOOR |
 F:EVIL | GIANT | MALE |
 F:DROP_CORPSE | POS_SUST_STR
@@ -11388,7 +11391,7 @@ D:A frost giant chieftain, unusually smart for a giant.
 N:684:Quachil Uttaus, Treader of the Dust
 G:z:B
 I:120:50d66:30:80:15:30
-W:44:3:999:20000:0:0
+W:44:3:999:19360:0:0
 B:CLAW:HURT(50d1):CUT(3d4)
 B:TOUCH:TIME(1d50)
 B:TOUCH:TIME(1d50)
@@ -11411,7 +11414,7 @@ D:ankylosed in posture of an eternal dreadful groping."
 N:685:Shoggoth
 G:j:D
 I:140:50d20:100:80:20:150
-W:44:2:999:2500:0:0
+W:44:2:999:2783:0:0
 B:CRUSH:HURT(2d6):ACID(3d6)
 B:CRUSH:HURT(2d6):ACID(3d6)
 B:CRUSH:HURT(2d6):ACID(3d6)
@@ -11480,7 +11483,7 @@ D:with her extreme speed.
 N:688:11-headed hydra
 G:M:R
 I:120:100d18:20:100:20:450
-W:44:2:999:6000:0:0
+W:44:2:999:5324:0:0
 B:BITE:HURT(2d12):FIRE(1d12)
 B:BITE:HURT(2d12):FIRE(1d12)
 B:BITE:HURT(2d12):FIRE(1d12)
@@ -11498,7 +11501,7 @@ D:A strange reptilian hybrid with eleven smouldering heads.
 N:689:High priest
 G:p:w
 I:120:80d10:20:60:10:170
-W:44:2:999:3000:0:0
+W:44:2:999:3146:0:0
 B:HIT:HURT(3d4)
 B:HIT:HURT(3d4)
 B:HIT:HURT(3d5)
@@ -11563,14 +11566,14 @@ D:little intelligence, but it has been instructed to destroy all it meets.
 N:692:Scatha the Worm
 G:D:w
 I:120:28d100:20:130:70:1000
-W:44:2:999:17000:0:0
+W:44:2:999:14000:0:0
 B:CLAW:HURT(4d10)
 B:CLAW:HURT(4d10)
 B:CLAW:HURT(4d10)
 B:BITE:HURT(6d14):COLD(2d14):CUT(6d14, 10%)
 F:UNIQUE | MALE |
 F:FORCE_SLEEP | FORCE_MAXHP |
-F:ONLY_ITEM | DROP_3D2 | DROP_4D2 | DROP_GOOD |
+F:ONLY_ITEM | DROP_3D2 | DROP_4D2 | DROP_GOOD | WILD_SNOW |
 F:BASH_DOOR | MOVE_BODY | CAN_FLY |
 F:EVIL | DRAGON | RES_COLD | NO_CONF | NO_SLEEP | RIDING
 F:DROP_CORPSE | POS_SEE_INVIS | POS_GAIN_AC
@@ -11655,7 +11658,7 @@ B:HIT:HURT(10d6):TERRIFY:UNLIFE(6d6)
 B:HIT:HURT(10d6):UNLIFE(6d6)
 B:HIT:HURT(10d6):UNLIFE(6d6)
 F:MALE | AURA_FEAR
-F:FORCE_MAXHP | NAZGUL |
+F:FORCE_MAXHP | FORCE_SLEEP | NAZGUL |
 F:ONLY_ITEM | DROP_2D2 | DROP_GOOD | RES_TELE | RES_DARK |
 F:COLD_BLOOD | OPEN_DOOR | BASH_DOOR | MOVE_BODY | RES_NETH | SMART |
 F:EVIL | UNDEAD | IM_COLD | IM_POIS | HURT_LITE | NO_CONF | NO_SLEEP
@@ -11668,7 +11671,7 @@ D:A tall black cloaked Ringwraith, radiating an aura of fear.
 N:697:Smaug the Golden
 G:D:R
 I:120:30d100:20:100:70:1000
-W:45:2:999:20000:0:0
+W:45:2:999:15000:0:0
 B:CLAW:HURT(4d10)
 B:CLAW:HURT(4d10)
 B:CLAW:HURT(4d10)
@@ -11779,9 +11782,9 @@ D:radiating from its frame shakes your courage, its hatred inspired by your
 D:defiance.
 
 N:703:Dracolisk
-G:D:r
+G:D:R
 I:120:28d100:25:120:30:600
-W:46:3:999:17000:0:0
+W:46:3:999:15000:0:0
 B:BITE:HURT(5d12)
 B:BITE:HURT(5d12)
 B:BITE:HURT(8d8)
@@ -11820,7 +11823,7 @@ D:have called this creature a dragon-turtle.
 N:705:Spectral tyrannosaurus
 G:R:G
 I:120:60d50:25:120:30:500
-W:46:3:999:15000:0:0
+W:46:3:999:16000:0:0
 B:BITE:HURT(2d13):DRAIN_EXP(40d6)
 B:BITE:HURT(2d13):DRAIN_EXP(40d6)
 B:BITE:HURT(5d8):LOSE_STR(50%)
@@ -11862,7 +11865,7 @@ D:the whole rotten surface of Yibb-Tstll's pulpy, glistening head!"
 N:707:Ghatanothoa
 G:H:D
 I:120:100d30:20:100:20:100
-W:46:2:999:16000:0:0
+W:46:2:999:12000:0:0
 B:CLAW:HURT(5d10):LOSE_INT
 B:CLAW:HURT(5d10):LOSE_WIS
 B:BITE:HURT(5d10):CONFUSE:SLOW
@@ -11903,7 +11906,7 @@ D:A treeherd; a sentient, moving tree. Its wrath is fearsome!
 N:709:Hru
 G:P:s
 I:120:40d100:30:150:15:700
-W:56:3:999:25000:0:0
+W:56:3:999:20000:0:0
 B:HIT:SHATTER(10d11)
 B:HIT:SHATTER(10d11)
 B:HIT:SHATTER(10d11)
@@ -11959,7 +11962,7 @@ D:evil surrounds it. Luckily for you, it can't move.
 N:712:Fafner the Dragon
 G:D:G
 I:120:35d100:20:100:70:1000
-W:47:4:999:25000:0:0
+W:47:4:999:22000:0:0
 B:CLAW:HURT(4d10)
 B:CLAW:HURT(4d10)
 B:BITE:HURT(12d6):FIRE(3d6):CUT(12d6, 10%)
@@ -12020,9 +12023,9 @@ D:the depths of the creature's body came a weird and horrific
 D:undulation."
 
 N:715:Glaurung, Father of the Dragons
-G:D:r
+G:D:R
 I:120:50d100:20:120:70:1000
-W:48:2:999:25000:0:0
+W:48:2:999:28072:0:0
 B:CLAW:HURT(7d12)
 B:CLAW:HURT(7d12)
 B:BITE:HURT(8d14):FIRE(2d14):CUT(8d14, 10%)
@@ -12061,7 +12064,7 @@ S:BR_FIRE
 D:A great water-beast, with an almost impenetrable skin.
 
 N:717:Garm, Guardian of Hel
-G:C:u
+G:C:p
 I:120:30d100:20:120:70:300
 W:49:2:999:22000:0:0
 B:CLAW:HURT(7d13)
@@ -12095,7 +12098,7 @@ S:MULTIPLY
 D:A sentient, moving section of wall.
 
 N:719:Nycadaemon
-G:U:o
+G:U:M
 I:120:31d99:20:80:80:200
 W:50:3:999:10000:100000:812
 B:TOUCH:TERRIFY
@@ -12115,7 +12118,7 @@ D:A loathsome, sturdy, winged, horned demon, with talons that could tear
 D:a stone wall down.
 
 N:720:Greater Balrog
-G:U:R
+G:U:P
 I:130:44d100:40:210:20:1000
 W:79:3:999:25000:0:0
 B:HIT:HURT(4d12):FIRE(4d12)
@@ -12200,7 +12203,7 @@ D:It is a belligerent minotaur with some destructive magical arsenal, armed
 D:with a hammer.
 
 N:724:Nether hound
-G:Z:D
+G:Z:G
 I:120:60d10:30:100:0:150
 W:51:4:999:1000:0:0
 B:BITE:HURT(2d12)
@@ -12222,7 +12225,7 @@ D:You feel a soul-tearing chill upon viewing this beast, a ghostly form of
 D:darkness in the shape of a large dog.
 
 N:725:Time hound
-G:Z:G
+G:Z:I
 I:125:60d10:30:100:0:150
 W:51:8:999:1250:0:0
 B:BITE:HURT(2d12)
@@ -12399,7 +12402,7 @@ B:CHARGE:EAT_GOLD
 F:UNIQUE | MALE | CAN_SPEAK | REFLECTING |
 F:FORCE_SLEEP | FORCE_MAXHP | SMART | HAS_LITE_1 | THIEF
 F:ONLY_ITEM | DROP_2D2 | DROP_4D2 | DROP_GOOD | DROP_GREAT |
-F:NO_SLEEP | NO_CONF |
+F:NO_SLEEP | NO_CONF | WILD_SNOW |
 F:RES_ELEC | RES_FIRE | RES_POIS | RES_COLD |
 F:COLD_BLOOD | RES_TELE
 F:DROP_SKELETON | DROP_CORPSE | POS_SEE_INVIS
@@ -12580,7 +12583,7 @@ B:BITE:HURT(5d14):COLD(2d14):CUT(5d14, 10%)
 F:FORCE_SLEEP | FORCE_MAXHP | CAN_FLY | AURA_COLD |
 F:ONLY_ITEM | DROP_2D2 | DROP_3D2 | DROP_GOOD |
 F:BASH_DOOR | MOVE_BODY |
-F:EVIL | DRAGON | IM_COLD | NO_CONF | NO_SLEEP | RIDING
+F:EVIL | DRAGON | IM_COLD | NO_CONF | NO_SLEEP | RIDING | WILD_SNOW |
 F:DROP_CORPSE | POS_SEE_INVIS | POS_GAIN_AC
 P:Copy:Half-Titan:Beastmaster
 P:Stats:1:0:0:0:1:1
@@ -12594,7 +12597,7 @@ D:its wrath!
 N:742:Demilich
 G:L:U
 I:120:30d100:20:100:50:150
-W:54:2:999:12500:80000:776
+W:54:2:999:12000:80000:776
 B:TOUCH:VAMP(1d12):UNLIFE(1d12)
 B:TOUCH:DRAIN_CHARGES:UNLIFE(1d12)
 B:TOUCH:HURT(4d12):LOSE_DEX(50%):UNLIFE(1d12)
@@ -12638,7 +12641,7 @@ D:skin and melts your armour.
 N:744:Nightcrawler
 G:W:D
 I:120:80d60:20:160:10:400
-W:54:4:999:8100:0:0
+W:54:4:999:15000:0:0
 B:STING:HURT(8d8):LOSE_CON
 B:STING:HURT(8d8):LOSE_CON
 B:BITE:ACID(10d10)
@@ -12686,7 +12689,7 @@ D:fantastically multi-coloured wings.
 N:746:Keeper of Secrets
 G:H:v
 I:130:60d70:30:150:20:350
-W:61:3:999:17000:0:0
+W:61:3:999:18000:0:0
 B:HIT:HURT(12d12):CONFUSE
 B:HIT:HURT(12d12):TERRIFY
 B:HIT:HURT(12d12):BLIND
@@ -12709,7 +12712,7 @@ D:It is the embodiment of Slaanesh's perverted magic.
 N:747:Shudde M'ell
 G:w:s
 I:125:100d40:20:90:20:5000
-W:54:2:999:23000:0:0
+W:54:2:999:16000:0:0
 B:CRUSH:SHATTER(55d2)
 B:CRUSH:SHATTER(55d2)
 B:TOUCH:HURT(1d2):LOSE_CON
@@ -12717,7 +12720,7 @@ B:TOUCH:HURT(1d2):LOSE_CON
 F:UNIQUE |
 F:RES_FIRE | RES_PLAS | RES_COLD | RES_POIS | ELDRITCH_HORROR | RES_TELE
 F:KILL_WALL | ONLY_GOLD | DROP_4D2 | DROP_2D2 | CAN_SWIM | RES_DARK |
-F:EVIL | FORCE_MAXHP | SMART |
+F:EVIL | FORCE_MAXHP | FORCE_SLEEP | SMART |
 F:DROP_CORPSE | POS_SEE_INVIS | POS_GAIN_AC
 P:Copy:Half-Titan:Mauler
 P:Body:Chthonian
@@ -12749,7 +12752,7 @@ D:fingers.
 N:749:Eye druj
 G:s:r
 I:130:10d100:20:90:10:5
-W:55:4:999:12000:50000:750
+W:55:4:999:13000:50000:750
 B:GAZE:DRAIN_EXP(80d6)
 B:GAZE:DRAIN_EXP(80d6)
 B:GAZE:DRAIN_MANA(5d10)
@@ -12769,7 +12772,7 @@ D:harmless.
 N:750:Skull druj
 G:s:o
 I:130:14d100:20:120:10:10
-W:65:4:999:12500:0:0
+W:65:4:999:14000:0:0
 B:BITE:HURT(4d4):DRAIN_EXP(80d6)
 B:BITE:HURT(4d4):PARALYZE
 B:BITE:HURT(4d4):LOSE_INT
@@ -12793,7 +12796,7 @@ I:140:32d20:100:80:0:50
 W:55:7:999:1000:0:0
 F:FORCE_SLEEP | NEVER_BLOW |
 F:RAND_50 | RAND_25 | CAN_FLY |
-F:EMPTY_MIND | BASH_DOOR | KILL_WALL
+F:EMPTY_MIND | BASH_DOOR | KILL_WALL | RES_DISI |
 F:RES_TIME | RES_DISE | RES_NETH | NO_SLEEP | NO_FEAR | NO_STUN | NONLIVING
 F:POS_GAIN_AC | POS_HOLD_LIFE
 P:Copy:Zombie:Rage-Mage
@@ -13009,7 +13012,7 @@ D:a great wave of iridescent blackness, neither liquid nor solid,
 D:a frightful gelatinous mass."
 
 N:761:Ahtu, Avatar of Nyarlathotep
-G:#:D
+G:#:c
 I:130:50d110:30:120:15:2000
 W:56:3:999:22500:0:0
 B:CRUSH:HURT(13d13)
@@ -13248,7 +13251,7 @@ D:cleanses the world of evil.
 N:770:Habu the Champion of Chaos
 G:h:G
 I:130:66d66:25:175:10:220
-W:59:2:999:20000:0:0
+W:59:2:999:24200:0:0
 B:HIT:VAMP(6d6)
 B:HIT:VAMP(8d8)
 B:HIT:VAMP(10d10)
@@ -13268,7 +13271,7 @@ D:hungers for more.
 N:771:Saruman of Many Colours
 G:p:v
 I:120:50d100:100:100:0:150
-W:60:1:999:35000:0:0
+W:60:1:999:32000:0:0
 B:HIT:HURT(6d8):DISENCHANT
 B:HIT:HURT(6d8):DISENCHANT
 B:HIT:HURT(5d5)
@@ -13294,7 +13297,7 @@ P:Copy:High-Elf:Mage
 N:772:Gandalf the Grey
 G:p:v
 I:120:49d101:101:100:0:150
-W:60:7:999:35000:0:0
+W:60:7:999:32000:0:0
 B:HIT:HURT(6d8):DISENCHANT
 B:HIT:HURT(6d8):DISENCHANT
 B:HIT:HURT(5d5):TERRIFY
@@ -13441,7 +13444,7 @@ D:cat?"
 N:778:Jabberwock
 G:H:R
 I:130:32d100:35:125:255:1000
-W:65:4:999:19000:0:0
+W:65:4:999:24200:0:0
 B:CLAW:HURT(10d10)
 B:CLAW:HURT(10d10)
 B:BITE:HURT(10d10)
@@ -13484,9 +13487,9 @@ D:expecting mayhem and chaos ahead. It appears to have an almost kamikaze
 D:relish for combat. You suspect all may not be as it seems.
 
 N:780:Vlad Dracula, Prince of Darkness
-G:V:b
+G:V:c
 I:130:50d100:20:166:10:170
-W:63:4:999:33333:0:0
+W:63:4:999:36363:0:0
 B:BITE:VAMP(8d8):UNLIFE(8d8)
 B:BITE:VAMP(8d8):UNLIFE(8d8)
 B:HIT:CONFUSE(8d8)
@@ -13638,7 +13641,7 @@ D:with a huge gaping maw instead of a head.
 N:787:Hypnos, Lord of Sleep
 G:P:G
 I:130:51d99:20:150:10:700
-W:67:2:999:36000:0:0
+W:67:2:999:33880:0:0
 B:TOUCH:DAM(2d25):LOSE_ALL
 B:GAZE:DAM(1d20):PARALYZE
 B:GAZE:DAM(1d20):TERRIFY
@@ -13827,7 +13830,7 @@ P:Copy:Amberite:Ranger
 N:795:Tiamat, Celestial Dragon of Evil
 G:D:v
 I:130:100d100:20:125:70:2000
-W:70:4:999:45000:0:0
+W:70:4:999:45980:0:0
 B:CLAW:HURT(8d12)
 B:CLAW:HURT(8d12)
 B:CLAW:HURT(8d12)
@@ -13853,7 +13856,7 @@ D:opponent, her five heads breathing death to all who stand against her.
 N:796:The Norsa
 G:H:B
 I:130:100d100:20:125:70:1000
-W:70:4:999:47500:0:0
+W:70:4:999:48400:0:0
 B:CRUSH:HURT(5d12):ACID(3d12)
 B:CRUSH:HURT(5d12):FIRE(3d12)
 B:CRUSH:HURT(5d12):ELEC(3d12)
@@ -13876,7 +13879,7 @@ D:destructive blasts of elements. It is said that it is better to go
 D:through the agony of chocolate withdrawal than face the Norsa!
 
 N:797:Rhan-Tegoth
-G:S:b
+G:S:n
 I:130:90d100:20:125:70:700
 W:70:4:999:37500:0:0
 B:CLAW:HURT(8d12)
@@ -14003,7 +14006,7 @@ D:throbs and writhes.
 N:803:Null the Living Void
 G:.:d
 I:120:50d100:30:100:20:100
-W:72:2:999:32500:0:0
+W:72:2:999:31460:0:0
 B:TOUCH:DAM(6d16):LOSE_ALL
 B:TOUCH:VAMP(6d16)
 B:TOUCH:DAM(6d16):DRAIN_CHARGES
@@ -14119,7 +14122,7 @@ P:Life:110
 N:808:Ungoliant, the Unlight
 G:S:D
 I:120:130d100:8:160:80:400
-W:75:1:999:30000:0:0
+W:75:1:999:31460:0:0
 B:BITE:HURT(3d9):POISON(3d9)
 B:BITE:HURT(3d9):POISON(3d9)
 B:STING:HURT(2d5):DARK(2d5)
@@ -14146,7 +14149,7 @@ D:have a foul and deadly breath.
 N:809:Atlach-Nacha, the Spider God
 G:S:D
 I:120:130d100:8:160:80:500
-W:75:1:999:30000:0:0
+W:75:1:999:31460:0:0
 B:BITE:HURT(3d9):POISON(3d9)
 B:BITE:HURT(3d9):LOSE_STR
 B:STING:HURT(2d5):POISON(2d5)
@@ -14222,7 +14225,7 @@ D:shapes, though the dominant form is that of a huge dog. You feel very
 D:uncertain all of a sudden.
 
 N:812:Warp demon
-G:U:o
+G:U:b
 I:120:30d100:30:100:20:500
 W:76:2:999:15000:0:0
 B:HIT:HURT(14d11):DISENCHANT
@@ -14270,7 +14273,7 @@ D:jutted from his belt near his right tip."
 P:Copy:Amberite:Rogue
 
 N:814:Yig, Father of Serpents
-G:R:g
+G:R:L
 I:130:222d30:100:123:15:900
 W:76:1:999:37500:0:0
 B:CLAW:HURT(5d10):POISON(4d10)
@@ -14289,7 +14292,7 @@ P:Body:Giant Reptile
 S:FREQ_20 | BR_POISON | BR_NUKE | BR_ACID | S_HYDRA | S_KIN | S_DEMON |
 D:"The half-human father of serpents... the snake-god of the central
 D:plains tribes -- presumably the primal source of the more
-D:southerly Quetzalcoatl or Kukulcan -- was odd, half-anthropomorphic
+D:southerly Quetzalcoatl or Kukulcan -- was an odd, half-anthropomorphic
 D:devil."
 
 #Entroband really should have renamed these 'Boltzmann Brains'
@@ -14346,7 +14349,7 @@ F:FORCE_SLEEP | FORCE_MAXHP | SMART |
 F:ONLY_ITEM | DROP_1D2 | DROP_GREAT | DROP_GOOD |
 F:INVISIBLE | OPEN_DOOR | BASH_DOOR | CAN_FLY |
 F:EVIL | RES_NETH | RES_COLD | RES_POIS |
-F:RES_FIRE | NO_CONF | NO_SLEEP |
+F:RES_FIRE | NO_CONF | NO_SLEEP | NORSE2
 P:Copy:Amberite:Priest
 S:1_IN_3 |
 S:CAUSE_3 | CAUSE_4 | HAND_DOOM | TELE_TO | PARALYZE |
@@ -14710,7 +14713,7 @@ S:BR_FIRE | BR_NETHER | S_CYBER | HAND_DOOM | ANIM_DEAD
 D:A duke of hell, in the flesh.
 
 N:832:Godzilla
-G:R:g
+G:R:t
 I:130:100d100:50:215:20:5000
 W:84:2:999:50000:0:0
 B:CLAW:HURT(3d10):POISON(3d10)
@@ -14772,7 +14775,7 @@ F:UNIQUE | CAN_SPEAK |
 F:FORCE_SLEEP | FORCE_MAXHP | RES_TELE | RES_NETH | RES_WATE | MALE |
 F:ONLY_ITEM | DROP_2D2 | DROP_4D2 | DROP_GOOD | EVIL | GIANT |
 F:OPEN_DOOR | BASH_DOOR | MOVE_BODY | TAKE_ITEM | RES_DISE |
-F:IM_COLD | NO_CONF | NO_SLEEP | RES_POIS | HURT_FIRE |
+F:IM_COLD | NO_CONF | NO_SLEEP | RES_POIS | HURT_FIRE | WILD_SNOW |
 F:COLD_BLOOD | AURA_COLD |
 F:DROP_CORPSE | POS_SUST_STR
 P:Copy:Half-Titan:Mauler
@@ -14784,7 +14787,7 @@ D:humanoid made of ice.
 N:835:Loki the Trickster
 G:P:g
 I:130:85d110:50:160:20:1000
-W:85:2:999:50000:0:0
+W:85:2:999:56870:0:0
 B:HIT:HURT(11d11):BLIND
 B:HIT:HURT(11d11):DISENCHANT
 B:HIT:HURT(11d11):DRAIN_CHARGES
@@ -14794,7 +14797,7 @@ F:FORCE_SLEEP | FORCE_MAXHP | RES_TELE | RES_NETH | RES_PLAS |
 F:ONLY_ITEM | DROP_4D2 | DROP_GOOD | DROP_GREAT | EVIL | AURA_FIRE |
 F:OPEN_DOOR | BASH_DOOR | MOVE_BODY | TAKE_ITEM | CAN_SPEAK |
 F:RES_FIRE | NO_CONF | NO_SLEEP | RES_POIS | HURT_COLD | GIANT |
-F:REGENERATE |
+F:REGENERATE | NORSE | NORSE2
 F:DROP_CORPSE | POS_SUST_STR
 P:Copy:Half-Titan:Rogue
 S:1_IN_3 |
@@ -14808,7 +14811,7 @@ D:heritage is bound to show, as he will defect to the side of the
 D:giants and fight against the other gods of Asgard.
 
 N:836:Star-spawn of Cthulhu
-G:U:G
+G:U:T
 I:130:75d100:90:90:90:1000
 W:86:6:999:34000:0:0
 B:CLAW:HURT(1d30):LOSE_CHR(66%)
@@ -14858,7 +14861,7 @@ D:accursed sword of doom on the day of Ragnarok.
 N:838:The Tarrasque
 G:R:v
 I:130:85d100:50:222:20:2000
-W:84:2:999:50000:0:0
+W:84:2:999:56870:0:0
 B:HIT:HURT(10d10)
 B:HIT:HURT(10d10)
 B:TOUCH:DRAIN_CHARGES
@@ -14903,7 +14906,7 @@ D:eyes that smoulder red. The dungeon floor where he stands is scorched by
 D:the heat of his body.
 
 N:840:Draugluin, Sire of All Werewolves
-G:C:u
+G:C:p
 I:130:70d100:80:90:90:1000
 W:87:2:999:30000:0:0
 B:CLAW:HURT(10d10)
@@ -14952,7 +14955,7 @@ D:this blasphemous horror is a huge, all-seeing eye surrounded by tentacles.
 N:842:Tulzscha, the Green Flame
 G:E:G
 I:130:100d100:90:100:50:1000
-W:89:4:999:70000:0:0
+W:89:4:999:60000:0:0
 B:HIT:HURT(2d50)
 B:HIT:HURT(2d50)
 B:HIT:HURT(2d50)
@@ -15046,12 +15049,12 @@ D:chaos forever beyond the nethermost outposts of space and time!"
 
 N:846:Fenris Wolf
 G:C:D
-I:134:70d100:80:90:40:1000
-W:90:2:999:35000:0:0
-B:BITE:HURT(20d6)
-B:CLAW:HURT(15d6)
-B:CLAW:HURT(15d6)
-B:BITE:HURT(20d6)
+I:140:72d100:0:100:40:1000
+W:90:2:999:38720:0:0
+B:BITE:HURT(18d9):CUT(9d9)
+B:CLAW:HURT(13d9)
+B:CLAW:HURT(13d9)
+B:BITE:HURT(18d9)
 F:UNIQUE | ANIMAL | EVIL | CAN_SPEAK | FORCE_SLEEP | FORCE_MAXHP |
 F:RAND_25 | TAKE_ITEM | OPEN_DOOR | BASH_DOOR | KILL_BODY |
 F:ONLY_ITEM | DROP_1D2 | DROP_GOOD | NO_CONF |
@@ -15066,7 +15069,7 @@ D:hunger and leave the Norse gods for the dessert.
 N:847:Great Wyrm of Power
 G:D:y
 I:130:111d111:20:111:70:10000
-W:90:7:999:80000:0:0
+W:90:7:999:90000:0:0
 B:CRUSH:HURT(5d12):PLASMA(3d12, 80%):GRAVITY(3d12, 20%)
 B:CRUSH:HURT(5d12):CHAOS(3d12, 90%):NEXUS(3d12, 10%)
 B:CRUSH:HURT(5d12):DISENCHANT(3d12, 50%):DARK(3d12, 50%)
@@ -15077,7 +15080,7 @@ F:ONLY_ITEM | DROP_2D2 | DROP_3D2 | DROP_4D2 | DROP_GOOD | DROP_GREAT
 F:OPEN_DOOR | BASH_DOOR | MOVE_BODY | CAN_FLY |
 F:DRAGON | GOOD | SELF_LITE_2 |
 F:RES_ACID | RES_FIRE | RES_COLD | RES_ELEC | RES_POIS | NO_CONF | NO_SLEEP |
-F:RES_NETH | RES_LITE | RES_DARK | RES_SOUN | RES_CHAO | RES_DISE |
+F:RES_NETH | RES_LITE | RES_DARK | RES_SOUN | RES_CHAO | RES_DISE | RES_DISI |
 F:RES_NEXU | RES_TIME | RES_INER | RES_GRAV | RES_SHAR | RES_PLAS |
 F:RES_WALL | RES_TELE | RIDING | AURA_FEAR
 F:DROP_CORPSE | POS_SEE_INVIS | POS_GAIN_AC
@@ -15121,7 +15124,7 @@ D:with mouths and tentacles.
 N:849:Nodens, Lord of the Great Abyss
 G:P:w
 I:130:75d99:100:100:20:120
-W:92:3:999:100000:0:0
+W:92:3:999:125000:0:0
 B:HIT:HURT(2d66)
 B:HIT:HURT(2d66)
 F:UNIQUE | CAN_SPEAK | MALE |
@@ -15209,7 +15212,7 @@ F:FORCE_SLEEP | FORCE_MAXHP | DEMON | AURA_FIRE | AURA_ELEC |
 F:ATTR_MULTI | ESCORT | ATTR_ANY | NONLIVING |
 F:KILL_ITEM | KILL_WALL | CAN_SWIM | AURA_COLD |
 F:ONLY_ITEM | DROP_4D2 | DROP_GOOD | DROP_90 | RES_CHAO | RES_DISE |
-F:STUPID | OPEN_DOOR | BASH_DOOR | REGENERATE | EMPTY_MIND |
+F:STUPID | OPEN_DOOR | BASH_DOOR | REGENERATE | EMPTY_MIND | RES_DISI |
 F:EVIL | RES_ACID | RES_POIS | RES_FIRE | NO_CONF | NO_SLEEP
 F:AURA_FEAR | NO_FEAR
 F:POS_GAIN_AC | POS_HOLD_LIFE
@@ -15247,7 +15250,7 @@ D:hide as it snarls and roars its defiance.
 N:854:Jormungand the Midgard Serpent
 G:J:g
 I:130:121d100:100:160:0:3000
-W:75:1:999:30000:0:0
+W:75:1:999:45000:0:0
 B:CRUSH:HURT(20d10):HURT(20d10, 20%)
 B:CRUSH:HURT(20d10):HURT(20d10, 20%)
 B:BITE:HURT(5d50):POISON(10d10)
@@ -15273,7 +15276,7 @@ B:HIT(120):HURT(30d9)
 B:HIT(120):HURT(30d9)
 F:UNIQUE | NONLIVING | NO_FEAR | FORCE_MAXHP | FORCE_SLEEP | REFLECTING |
 F:MOVE_BODY | KILL_WALL | IM_FIRE | IM_ELEC | IM_POIS | IM_ACID | IM_COLD |
-F:RES_NETH | RES_WATE | RES_PLAS | RES_NEXU |
+F:RES_NETH | RES_WATE | RES_PLAS | RES_NEXU | NORSE2 | RES_DISI |
 F:RES_DISE | RES_WALL | RES_INER | RES_GRAV | NO_STUN | REGENERATE |
 F:NO_CONF | NO_SLEEP | CAN_FLY |
 F:EMPTY_MIND | COLD_BLOOD | BASH_DOOR |
@@ -15380,7 +15383,7 @@ D:destroy your soul. He has many servants, and rarely fights without them.
 N:859:The Unicorn of Order
 G:q:w
 I:160:77d101:100:170:0:300
-W:99:1:999:100000:0:0
+W:99:1:999:125000:0:0
 B:KICK:DRAIN_MANA(10d10):SLOW
 B:KICK:HURT(13d13):DRAIN_CHARGES
 B:BUTT:HURT(12d12):DISENCHANT
@@ -15666,7 +15669,7 @@ D: on each side."
 N:870:Ebony monk
 G:p:D
 I:120:63d11:20:57:5:170
-W:36:3:90:1100:0:0
+W:36:3:90:1210:0:0
 B:KICK:HURT(3d10):STUN(3d4, 30%)
 B:KICK:HURT(3d10):STUN(3d4, 30%)
 B:PUNCH:HURT(3d7):DRAIN_EXP(20d6)
@@ -15760,7 +15763,7 @@ B:CLAW:HURT(10d12):DISENCHANT(1d12, 90%):NEXUS(1d12, 10%)
 B:CLAW:HURT(10d12):DISENCHANT(1d12, 90%):NEXUS(1d12, 10%)
 B:CLAW:HURT(10d12):DISENCHANT(1d12, 90%):NEXUS(1d12, 10%)
 B:BITE:HURT(10d14):VAMP(3d14)
-F:FORCE_MAXHP | EVIL | UNDEAD | CAN_FLY | AURA_COLD |
+F:FORCE_MAXHP | FORCE_SLEEP | EVIL | UNDEAD | CAN_FLY | AURA_COLD |
 F:ONLY_ITEM | DROP_3D2 | DROP_4D2 | DROP_GOOD |
 F:MOVE_BODY | PASS_WALL | INVISIBLE |
 F:DRAGON | NO_CONF | NO_SLEEP | RES_TELE |
@@ -15778,7 +15781,7 @@ D:The tortured soul of a once powerful wyrm.
 N:875:Storm troll
 G:T:b
 I:120:60d50:20:110:100:800
-W:51:2:999:3500:0:0
+W:51:2:999:3200:0:0
 B:HIT:HURT(2d10):ELEC(2d10)
 B:BITE:HURT(1d22)
 B:HIT:HURT(2d10):COLD(2d10)
@@ -16023,7 +16026,7 @@ D:like... magic?
 N:888:Vore
 G:S:v
 I:125:35d10:20:30:40:170
-W:44:2:999:850:0:0
+W:44:2:999:1000:0:0
 B:CLAW:HURT(4d8)
 B:CLAW:HURT(8d4)
 F:DROP_90 | DROP_2D2 |
@@ -16067,7 +16070,7 @@ D:fill the room near it, leaving you gasping for breath. Flee
 D:now while you still can!
 
 N:891:Gorlim, Betrayer of Barahir
-G:p:s
+G:p:K
 I:120:16d100:20:120:40:170
 W:41:3:999:7000:0:0
 B:HIT:HURT(8d6)
@@ -16117,7 +16120,7 @@ D:Wrapped in fire, this giant red figure turns to face you.
 N:894:Troll king
 G:T:R
 I:120:10d100:30:90:20:600
-W:40:2:999:2000:18000:875
+W:40:2:999:2178:18000:875
 B:HIT:HURT(3d12)
 B:HIT:HURT(5d12):STUN(1d4,10%)
 B:BITE:HURT(3d12)
@@ -16133,10 +16136,9 @@ D:This troll is a king, which means it's still stupid, but has even more power.
 D:It never comes alone, and can call out to other trolls.
 
 N:895:Sky golem
-G:g:B
+G:g:S
 I:110:10d80:20:116:10:1000
-W:40:3:999:4000:0:0
-W:36:4:999:900:0:0
+W:36:4:999:1331:0:0
 B:HIT:HURT(10d10):COLD(7d7):STUN(2d8, 35%)
 F:EMPTY_MIND | BASH_DOOR | RES_LITE | RES_TIME |
 F:RES_COLD | NO_CONF | NO_SLEEP | NO_FEAR | NONLIVING | FORCE_MAXHP
@@ -16149,7 +16151,7 @@ D:powers and spells...
 N:896:Bazooker
 G:h:B
 I:110:8d40:40:60:60:170
-W:35:2:80:1500:0:0
+W:35:2:80:1452:0:0
 B:HIT:HURT(2d4)
 B:HIT:HURT(2d4)
 B:HIT:HURT(2d4)
@@ -16181,7 +16183,7 @@ D:magics.
 N:898:Granite wall
 G:#:w
 I:100:15d15:15:120:10:700
-W:30:2:70:350:0:0
+W:30:2:70:250:0:0
 B:TOUCH:ACID(8d8)
 B:TOUCH:HURT(3d3):PARALYZE
 F:NEVER_MOVE | MULTIPLY | ONLY_GOLD | DROP_90 | ANIMAL | HURT_ROCK |
@@ -16208,9 +16210,9 @@ D:evil wizard trying to make forest trolls immune to
 D:fire.
 
 N:900:Elf lord
-G:h:g
+G:h:L
 I:121:15d15:15:50:10:150
-W:25:2:70:555:0:0
+W:25:2:70:333:0:0
 B:HIT:HURT(1d9)
 B:HIT:HURT(1d9)
 B:HIT:HURT(4d8)
@@ -16225,7 +16227,7 @@ D:A powerful elven leader who knows some magic as well.
 N:901:Samurai
 G:p:s
 I:110:40d10:12:60:10:170
-W:25:2:60:350:0:0
+W:25:2:60:250:0:0
 B:SLASH:HURT(2d6):ELEC(8d6, 25%):CUT(1d4, 50%)
 B:SLASH:HURT(2d6):FIRE(4d6, 50%):CUT(1d4, 50%)
 F:MALE | ONLY_ITEM | DROP_90 | DROP_CORPSE | DROP_SKELETON | GOOD | HUMAN |
@@ -16247,12 +16249,12 @@ F:RES_ACID | RES_ELEC | RES_POIS | RES_FIRE | RES_SHAR | NASTY_GLYPH |
 S:MULTIPLY
 D:It's just a block of dark rock. But wait! It seems to be growing...
 
-N:903:Small kraken
+N:903:Bonsai kraken
 G:l:g
 I:110:20d10:60:50:80:300
-W:25:1:999:500:70000:740
-B:ENGULF:HURT(5d6)
-B:ENGULF:HURT(3d6):POISON(3d6)
+W:25:1:999:200:70000:740
+B:ENGULF:HURT(6d6)
+B:ENGULF:HURT(3d6):POISON(5d6)
 F:AQUATIC | SMART | WEIRD_MIND | RES_POIS | RES_WATE | ANIMAL | NO_CONF
 F:NO_SLEEP
 F:DROP_CORPSE | POS_GAIN_AC
@@ -16260,12 +16262,12 @@ P:Copy:Human:Mauler
 P:Body:Small Kraken
 S:1_IN_4 |
 S:DARKNESS | BO_ACID | PARALYZE
-D:A kraken with a tough, scaly hide.
+D:A small kraken with a tough, scaly hide.
 
 N:904:Chaos mushroom
 G:,:g
 I:120:16d6:10:4:2:20
-W:23:5:70:360:0:0
+W:23:5:70:242:0:0
 B:SPORE:POISON(3d4)
 B:SPORE:CONFUSE(3d4)
 B:SPORE:DAM(3d4):BLIND
@@ -16280,7 +16282,7 @@ D:everywhere!
 N:905:Cloud golem
 G:g:b
 I:110:20d15:20:30:10:400
-W:22:2:70:120:0:0
+W:22:2:70:150:0:0
 B:HIT:HURT(7d7):ELEC(7d7):STUN(1d6, 25%)
 F:EMPTY_MIND | BASH_DOOR |
 F:RES_ELEC | RES_COLD | CAN_FLY |
@@ -16293,7 +16295,7 @@ D:down your spine.
 N:906:Lava golem
 G:g:r
 I:110:25d15:20:40:10:400
-W:22:2:70:120:0:0
+W:22:2:70:150:0:0
 B:HIT:HURT(7d7):FIRE(7d7):STUN(1d6, 25%)
 F:EMPTY_MIND | BASH_DOOR
 F:RES_FIRE | NO_CONF | NO_SLEEP | NO_FEAR | NONLIVING | KILL_BODY
@@ -16310,7 +16312,7 @@ W:21:2:70:100:800:415
 B:HIT:HURT(4d8):HURT(4d8, 20%)
 B:HIT:HURT(4d8):HURT(4d8, 20%)
 F:RAND_25 | DROP_90 | OPEN_DOOR | BASH_DOOR | DROP_CORPSE | EVIL | GIANT | MOVE_BODY
-F:WILD_WASTE
+F:WILD_WASTE | WILD_SNOW |
 P:Copy:Ogre:Warrior
 O:DROP_WARRIOR
 D:It is a massive ogre in metal armour, a champion of its kind.
@@ -16369,7 +16371,7 @@ I:100:15d11:15:30:10:600
 W:18:2:60:40:500:902
 B:TOUCH:ELEC(3d3)
 B:TOUCH:HURT(3d3):PARALYZE
-F:NEVER_MOVE | ONLY_GOLD | DROP_1D2 | DROP_90 | MULTIPLY | EMPTY_MIND
+F:NEVER_MOVE | ONLY_GOLD | DROP_1D2 | DROP_60 | MULTIPLY | EMPTY_MIND
 F:ANIMAL | COLD_BLOOD | NO_FEAR | NO_SLEEP | NO_CONF | NO_STUN
 F:HURT_ROCK | RES_FIRE | RES_ACID | RES_POIS | RES_COLD | RES_SHAR
 F:NASTY_GLYPH
@@ -16421,7 +16423,7 @@ D:vigour. He can prove a troublesome opponent.
 N:915:Mystic
 G:p:o
 I:120:35d10:30:50:5:170
-W:33:3:999:500:10000:916
+W:33:3:999:1000:10000:916
 B:KICK:HURT(3d10):STUN(3d4, 20%)
 B:KICK:HURT(3d10):STUN(3d4, 20%)
 B:PUNCH:HURT(3d7):STUN(2d3, 20%)
@@ -16543,7 +16545,7 @@ S:BLIND | CONFUSE | SCARE | S_HI_DEMON | S_KIN | DISPEL_MAGIC | ANTI_MAGIC
 N:921:Internet Exploder
 G:e:B
 I:140:20d20:25:0:1:300
-W:50:4:999:820:0:0
+W:50:4:999:1000:0:0
 B:EXPLODE:TIME(10d20):SLOW
 F:RAND_25 | EMPTY_MIND | REFLECTING | FORCE_SLEEP | CAN_SPEAK |
 F:REGENERATE | AURA_ELEC | BASH_DOOR | KILL_BODY | EVIL |
@@ -16557,9 +16559,9 @@ S:1_IN_3 |
 S:PARALYZE | BLIND | CONFUSE | SCARE | SLOW
 
 N:922:Electric rat
-G:r:y
+G:r:b
 I:110:20d10:20:10:40:20
-W:24:2:50:200:0:0
+W:24:2:50:100:0:0
 B:CLAW:ELEC(1d5)
 B:CLAW:ELEC(1d5)
 B:BITE:ELEC(1d4)
@@ -16622,7 +16624,7 @@ P:Body:Snake
 N:927:Mario
 G:p:r
 I:110:80d10:20:80:10:180
-W:31:4:999:2500:0:0
+W:31:4:999:1600:0:0
 B:HIT:HURT(3d7)
 B:HIT:HURT(3d7)
 B:HIT:HURT(3d7)
@@ -16640,7 +16642,7 @@ P:Copy:Hobbit:Rogue
 N:928:King Koopa
 G:D:g
 I:110:100d15:20:120:40:400
-W:34:4:999:3000:0:0
+W:34:4:999:2299:0:0
 B:CLAW:HURT(1d5):POISON(1d5)
 B:CLAW:HURT(1d5):POISON(1d5)
 B:BITE:HURT(2d4):FIRE(1d4)
@@ -16675,7 +16677,7 @@ D:eyes. You feel a presence invade your mind.
 N:930:Clone of Locke the Superman
 G:p:G
 I:130:30d100:100:130:20:170
-W:65:30:999:18000:0:0
+W:65:30:999:19360:0:0
 B:HIT:HURT(14d14)
 B:HIT:HURT(14d14)
 B:HIT:HURT(14d14)
@@ -16827,7 +16829,7 @@ P:Speed:+7
 N:938:White knight
 G:p:w
 I:120:30d10:20:70:10:170
-W:28:1:60:240:6000:699
+W:28:1:60:300:6000:699
 B:HIT:HURT(5d5)
 B:HIT:HURT(5d5)
 B:HIT:HURT(5d5)
@@ -17048,7 +17050,7 @@ S:CONFUSE | BLIND | S_MONSTER | TELE_SELF
 
 # Description in English by Nick Keulmann
 N:950:Hammer brother
-G:h:g
+G:h:L
 I:120:10d25:20:30:10:300
 W:22:2:50:300:0:0
 B:HIT:HURT(2d4)
@@ -17079,7 +17081,7 @@ P:Copy:Barbarian:Warrior
 P:Body:Beetle
 
 N:952:Kamikaze hound
-G:Z:o
+G:Z:V
 I:130:30d10:30:50:0:150
 W:44:6:999:500:0:0
 B:EXPLODE:DAM(30d3)
@@ -17187,7 +17189,7 @@ N:959:Blue puyo
 G:j:b
 I:120:3d1:15:20:50:50
 W:25:8:60:50:0:0
-B:EXPLODE:COLD(10d2)
+B:EXPLODE:ELEC(10d2)
 F:RES_ACID | RES_FIRE | RES_ELEC | RES_POIS |
 F:NEVER_MOVE | MULTIPLY |
 F:EMPTY_MIND | NO_FEAR | NO_CONF | NO_SLEEP
@@ -17201,7 +17203,7 @@ N:960:Yellow puyo
 G:j:y
 I:120:3d1:15:20:50:50
 W:25:8:60:50:0:0
-B:EXPLODE:ELEC(10d2)
+B:EXPLODE:COLD(10d2)
 F:RES_ACID | RES_FIRE | RES_COLD | RES_POIS |
 F:NEVER_MOVE | MULTIPLY |
 F:EMPTY_MIND | NO_FEAR | NO_CONF | NO_SLEEP
@@ -17212,7 +17214,7 @@ S:MULTIPLY
 D:A mysterious yellow jelly thing. It looks ready to explode.
 
 N:961:Green puyo
-G:j:g
+G:j:G
 I:120:3d1:15:20:50:50
 W:25:8:60:50:0:0
 B:EXPLODE:ACID(10d2)
@@ -17284,7 +17286,7 @@ S:S_MONSTER(1d1)
 N:966:Luigi
 G:p:G
 I:110:80d10:20:80:10:180
-W:31:4:999:2500:0:0
+W:31:4:999:1600:0:0
 B:HIT:HURT(3d7)
 B:HIT:HURT(3d7)
 B:HIT:HURT(3d7)
@@ -17299,7 +17301,7 @@ P:Copy:Hobbit:Rogue
 N:967:Jaian, the Boss of the Kids
 G:p:o
 I:110:100d10:16:100:20:180
-W:29:3:999:500:0:0
+W:29:3:999:700:0:0
 B:SHOW:CONFUSE
 B:SHOW:CONFUSE
 B:HIT:HURT(4d5)
@@ -17336,7 +17338,7 @@ D:its evil counterparts.
 N:969:Eibra the Water Dragon
 G:D:b
 I:125:50d101:20:150:100:2500
-W:60:7:999:22500:0:0
+W:60:7:999:24200:0:0
 B:CLAW:HURT(6d12):ACID(2d12)
 B:CLAW:HURT(6d12):ACID(2d12)
 B:CLAW:HURT(6d12):ACID(2d12)
@@ -17358,7 +17360,7 @@ D:to cause destruction.
 N:970:Narse the Black Dragon
 G:D:s
 I:125:50d101:20:150:100:2000
-W:60:7:999:22500:0:0
+W:60:7:999:24200:0:0
 B:CLAW:HURT(6d12):VAMP(2d12)
 B:CLAW:HURT(6d12):DRAIN_EXP(40d6)
 B:CLAW:HURT(6d12):DRAIN_EXP(40d6)
@@ -17380,7 +17382,7 @@ D:an dark and nether breath.
 N:971:Mycen the Gold Dragon
 G:D:y
 I:125:50d101:20:150:100:3000
-W:60:7:999:22500:0:0
+W:60:7:999:24200:0:0
 B:CLAW:HURT(8d12)
 B:CLAW:HURT(8d12)
 B:CLAW:HURT(8d12)
@@ -17402,7 +17404,7 @@ D:Kingdom of Moss and strives to protect it.
 N:972:Shooting Star the Red Dragon
 G:D:r
 I:125:50d101:20:150:100:2000
-W:60:7:999:22500:0:0
+W:60:7:999:24200:0:0
 B:CLAW:HURT(5d12):FIRE(3d12)
 B:CLAW:HURT(5d12):FIRE(3d12)
 B:CLAW:HURT(5d12):FIRE(3d12)
@@ -17457,7 +17459,7 @@ P:Copy:Dunadan:Warrior
 N:975:That @$^%& Black Bat
 G:b:b
 I:130:30d10:50:75:0:20
-W:33:4:999:1000:0:0
+W:33:4:999:1331:0:0
 B:TOUCH:DAM(1d1):EAT_FOOD
 B:TOUCH:DAM(1d1):EAT_GOLD
 B:TOUCH:DAM(1d1):EAT_ITEM
@@ -17518,7 +17520,7 @@ D:Morgoth's wrath.
 N:978:Ar-Pharazon the Golden
 G:p:y
 I:120:180d10:30:90:100:170
-W:38:6:999:5000:0:0
+W:38:6:999:4000:0:0
 B:HIT:HURT(4d12)
 B:HIT:HURT(4d12)
 B:HIT:HURT(4d12)
@@ -17571,7 +17573,7 @@ P:Body:Snake
 N:981:Thunder bird
 G:B:y
 I:120:20d25:20:30:10:35
-W:32:3:999:900:0:0
+W:32:3:999:550:0:0
 B:CRUSH:HURT(2d5)
 B:CRUSH:HURT(2d5):ELEC(1d5)
 B:CRUSH:HURT(2d5):ELEC(1d5)
@@ -17586,14 +17588,14 @@ P:Life:80
 P:Body:Giant Bird
 
 N:982:Durahan
-G:p:v
+G:p:C
 I:120:12d100:30:85:0:170
 W:45:3:999:3900:0:0
 B:HIT:HURT(5d8):DRAIN_EXP(80d6)
 B:HIT:HURT(5d8)
 B:HIT:HURT(5d8)
 B:HIT:HURT(5d8):CONFUSE
-F:FORCE_MAXHP |
+F:FORCE_MAXHP | FORCE_SLEEP |
 F:COLD_BLOOD | OPEN_DOOR | CAN_FLY |
 F:EVIL | UNDEAD | RES_COLD | RES_POIS | RES_NETH | NO_CONF | NO_SLEEP |
 P:Copy:Dunadan:Priest
@@ -17734,7 +17736,7 @@ B:KICK:HURT(8d10)
 B:BITE:HURT(10d10)
 F:FORCE_MAXHP | UNIQUE | ANIMAL | CAN_FLY |
 F:REGENERATE | BASH_DOOR | RES_FIRE | RES_COLD | RES_ELEC |
-F:RES_POIS | NO_CONF | NO_SLEEP | RIDING
+F:RES_POIS | NO_CONF | NO_SLEEP | RIDING | NORSE2
 F:DROP_CORPSE | POS_GAIN_AC
 P:Copy:Half-Titan:Warrior
 P:Body:Horse
@@ -17776,7 +17778,7 @@ S:BO_ACID | BO_PLASMA | BA_ACID
 D:A Dao is a genie from the elemental plane of Earth.
 
 N:994:Marid
-G:P:g
+G:P:S
 I:120:75d15:30:75:10:250
 W:45:6:999:2000:0:0
 B:HIT:HURT(9d6)
@@ -17858,7 +17860,7 @@ P:Body:Giant Bird
 N:999:Devu Chiokovo
 G:B:y
 I:105:35d100:17:180:255:500
-W:43:9:999:6000:0:0
+W:43:9:999:5000:0:0
 B:CLAW:HURT(8d12)
 B:CLAW:HURT(8d12)
 B:BITE:HURT(10d12)
@@ -18012,7 +18014,7 @@ D:Oh no! They are everywhere!
 N:1008:Demonologist
 G:p:R
 I:120:28d10:20:50:10:170
-W:36:2:70:700:0:0
+W:36:2:70:1000:0:0
 B:HIT:HURT(2d6)
 B:HIT:HURT(2d6)
 B:HIT:HURT(2d5)
@@ -18188,7 +18190,7 @@ P:Speed:+10
 N:1019:Kokuo, Raou's Steed
 G:q:D
 I:130:30d100:20:100:50:350
-W:40:3:999:2000:0:0
+W:40:3:999:2420:0:0
 B:KICK:HURT(4d4)
 B:KICK:HURT(5d5)
 B:BITE:HURT(6d6)
@@ -18258,7 +18260,7 @@ F:NO_FEAR | NO_CONF | NO_STUN | NO_SLEEP |
 D:It explodes after two turns. Beware!
 
 N:1024:Grand master thief
-G:p:B
+G:p:n
 I:130:15d100:50:75:40:170
 W:46:2:999:1500:0:0
 B:HIT:HURT(5d5):EAT_ITEM
@@ -18383,7 +18385,7 @@ B:HIT:HURT(1d15)
 F:UNIQUE | MALE | EVIL | HAS_LITE_2 | HUMAN |
 F:FORCE_MAXHP | CAN_SPEAK | WILD_ALL | DROP_SKELETON | DROP_CORPSE
 F:ONLY_ITEM | DROP_2D2 | DROP_GOOD | ESCORT |
-F:OPEN_DOOR | BASH_DOOR | SOUTHERING
+F:OPEN_DOOR | BASH_DOOR | DUNGEON_31
 S:1_IN_10 |
 S:S_KIN
 O:DROP_WARRIOR
@@ -18453,12 +18455,12 @@ D:venom as it smashes the living rock to reach you.
 
 N:1034:The Minotaur of the Labyrinth
 G:H:U
-I:125:50d10:13:25:10:300
+I:125:50d10:13:35:10:300
 W:35:3:999:600:0:0
 B:HIT:HURT(4d6)
 B:HIT:HURT(4d6)
-B:BUTT:HURT(2d6)
-B:BUTT:HURT(2d6)
+B:BUTT:HURT(3d6):STUN(1d6, 25%)
+B:BUTT:HURT(3d6):STUN(1d6, 25%)
 F:BASH_DOOR | FORCE_MAXHP |
 F:EVIL | UNIQUE
 F:DROP_SKELETON | DROP_CORPSE
@@ -18620,7 +18622,7 @@ B:BITE:HURT(3d4)
 B:BITE:HURT(3d4)
 F:FORCE_MAXHP |
 F:ONLY_ITEM | DROP_1D2 |
-F:OPEN_DOOR | BASH_DOOR | CAN_SWIM |
+F:OPEN_DOOR | BASH_DOOR | CAN_SWIM | AUSSIE |
 F:ANIMAL | RES_POIS | RES_WATE | WILD_SHORE
 F:DROP_CORPSE | POS_GAIN_AC
 P:Copy:Barbarian:Warrior
@@ -18635,7 +18637,7 @@ I:140:32d20:100:80:0:50
 W:65:8:999:1000:0:0
 F:FORCE_SLEEP | NEVER_BLOW |
 F:RAND_50 | RAND_25 | CAN_FLY |
-F:EMPTY_MIND | BASH_DOOR | KILL_WALL | KILL_ITEM |
+F:EMPTY_MIND | BASH_DOOR | KILL_WALL | KILL_ITEM | RES_DISI |
 F:NO_CONF | NO_SLEEP | NO_FEAR | NO_STUN | NONLIVING
 F:POS_GAIN_AC | POS_HOLD_LIFE
 P:Copy:Zombie:Rage-Mage
@@ -18647,7 +18649,7 @@ S:BR_DISINTEGRATE
 N:1046:Ulfang the Black
 G:p:U
 I:120:10d100:20:90:40:170
-W:34:5:999:1200:0:0
+W:34:5:999:1000:0:0
 B:HIT:HURT(5d5)
 B:HIT:HURT(5d5)
 B:HIT:HURT(5d5)
@@ -18655,7 +18657,7 @@ B:HIT:HURT(5d5)
 F:UNIQUE | MALE | HUMAN |
 F:FORCE_MAXHP | HAS_LITE_1 | DROP_SKELETON | DROP_CORPSE |
 F:ONLY_ITEM | DROP_2D2 | DROP_GOOD |
-F:TAKE_ITEM | OPEN_DOOR | BASH_DOOR |
+F:TAKE_ITEM | OPEN_DOOR | BASH_DOOR | NO_CONF
 F:EVIL
 O:DROP_WARRIOR
 D:A short and swarthy Easterling dressed in Black.
@@ -18720,7 +18722,7 @@ D:A huge dragon all made of steel. It looks very solid...
 N:1050:Atlas, the Titan
 G:P:s
 I:125:100d100:30:160:15:1000
-W:76:3:999:45000:0:0
+W:76:3:999:30000:0:0
 B:HIT:SHATTER(11d11)
 B:HIT:HURT(11d11):CONFUSE
 B:HIT:SHATTER(11d11)
@@ -18741,7 +18743,7 @@ D:on his shoulders; and the mountain range that now does so is named after him.
 N:1051:Kronos, Lord of the Titans
 G:P:v
 I:125:110d100:30:150:15:1000
-W:87:3:999:80000:0:0
+W:87:3:999:50000:0:0
 B:HIT:HURT(13d13):CONFUSE
 B:HIT:HURT(13d13):CONFUSE
 B:HIT:HURT(13d13):CONFUSE
@@ -18762,7 +18764,7 @@ D:the nether hells to seek revenge on the world.
 N:1052:Dimensional shambler
 G:h:B
 I:120:40d10:30:68:255:120
-W:29:6:70:400:0:0
+W:29:6:70:500:0:0
 B:HIT:HURT(3d5)
 B:HIT:HURT(3d5)
 B:HIT:HURT(3d5)
@@ -18914,7 +18916,7 @@ D:Brazen faced this creature is more impudent than normal troll.
 N:1061:Barney the Dinosaur
 G:R:v
 I:120:110d9:10:90:20:500
-W:29:255:999:500:0:0
+W:29:255:999:1500:0:0
 B:SHOW:LOSE_INT
 B:SHOW:LOSE_WIS
 B:CHARGE:EAT_GOLD
@@ -18934,7 +18936,7 @@ D:The lovable purple reptile is making a guest appearance here.
 N:1062:Groo the Wanderer
 G:p:o
 I:120:13d113:20:70:50:170
-W:33:255:999:2000:0:0
+W:33:255:999:1500:0:0
 B:HIT:HURT(9d1)
 B:HIT:HURT(6d5)
 B:HIT:HURT(25d1)
@@ -19141,7 +19143,7 @@ B:HIT:HURT(1d15)
 F:UNIQUE | MALE | EVIL | HAS_LITE_2 | HUMAN |
 F:FORCE_MAXHP | CAN_SPEAK | WILD_ALL | DROP_SKELETON | DROP_CORPSE |
 F:ONLY_ITEM | DROP_1D2 | DROP_GOOD |
-F:OPEN_DOOR | BASH_DOOR | SOUTHERING
+F:OPEN_DOOR | BASH_DOOR | DUNGEON_31
 O:DROP_WARRIOR
 D:He is a junior brother of king of southerings Meng Huo.
 P:Copy:Human:Warrior
@@ -19155,7 +19157,7 @@ B:HIT:HURT(1d12)
 B:HIT:HURT(1d7):FIRE(1d7)
 F:UNIQUE | FEMALE | EVIL | HAS_LITE_2 | HUMAN | RES_FIRE | AURA_FIRE |
 F:FORCE_MAXHP | CAN_SPEAK | WILD_ALL | DROP_SKELETON | DROP_CORPSE |
-F:ONLY_ITEM | DROP_1D2 | DROP_GOOD | OPEN_DOOR | BASH_DOOR | SOUTHERING
+F:ONLY_ITEM | DROP_1D2 | DROP_GOOD | OPEN_DOOR | BASH_DOOR | DUNGEON_31
 S:1_IN_9
 S:SHRIEK
 D:She is the wife of king Meng Huo. She is called as the avatar of
@@ -19172,7 +19174,7 @@ B:HIT:HURT(1d10)
 B:HIT:HURT(1d10)
 F:UNIQUE | MALE | EVIL | HAS_LITE_2 | HUMAN |
 F:FORCE_MAXHP | CAN_SPEAK | WILD_ALL | DROP_SKELETON | DROP_CORPSE |
-F:ONLY_ITEM | DROP_1D2 | DROP_GOOD | OPEN_DOOR | BASH_DOOR | SOUTHERING
+F:ONLY_ITEM | DROP_1D2 | DROP_GOOD | OPEN_DOOR | BASH_DOOR | DUNGEON_31
 S:FREQ_10 | SHOOT(1d10)
 O:DROP_WARRIOR_SHOOT
 D:He is one of the captains of Nanman.
@@ -19188,7 +19190,7 @@ B:HIT:HURT(1d10)
 B:HIT:HURT(1d10)
 F:UNIQUE | MALE | EVIL | HAS_LITE_2 | HUMAN |
 F:FORCE_MAXHP | CAN_SPEAK | WILD_ALL | DROP_SKELETON | DROP_CORPSE |
-F:ONLY_ITEM | DROP_1D2 | DROP_GOOD | OPEN_DOOR | BASH_DOOR | SOUTHERING
+F:ONLY_ITEM | DROP_1D2 | DROP_GOOD | OPEN_DOOR | BASH_DOOR | DUNGEON_31
 S:1_IN_5 |
 S:BA_POISON | BLINK
 D:He is the best wise man of Nanman. His intelligence afflicted
@@ -19205,7 +19207,7 @@ B:HIT:HURT(1d15)
 B:HIT:HURT(1d15)
 F:UNIQUE | MALE | EVIL | HAS_LITE_2 | HUMAN |
 F:FORCE_MAXHP | CAN_SPEAK | DROP_SKELETON | DROP_CORPSE |
-F:ONLY_ITEM | DROP_1D2 | DROP_GOOD | OPEN_DOOR | BASH_DOOR | SOUTHERING
+F:ONLY_ITEM | DROP_1D2 | DROP_GOOD | OPEN_DOOR | BASH_DOOR | DUNGEON_31
 S:1_IN_6 |
 S:S_ANT | S_SPIDER
 D:He is one of chiefs of Nanman. He is also good beast master.
@@ -19221,14 +19223,14 @@ F:UNIQUE | MALE | EVIL | HAS_LITE_2 | HUMAN |
 F:FORCE_MAXHP | CAN_SPEAK |
 F:ONLY_ITEM | DROP_1D2 | DROP_GOOD | OPEN_DOOR | BASH_DOOR |
 F:RES_ACID | RES_ELEC | RES_POIS | HURT_FIRE |
-F:DROP_SKELETON | DROP_CORPSE | SOUTHERING
+F:DROP_SKELETON | DROP_CORPSE | DUNGEON_31
 P:Copy:Half-Giant:Warrior
 O:DROP_WARRIOR
 D:This giant man is the king of southern Nanman. It is said that
 D:he is about 10 feet tall. His army has hard rattan armor.
 
 N:1079:Invisible Pink Unicorn
-G:q:v
+G:q:P
 I:140:67d89:77:123:1:300
 W:67:3:999:34567:0:0
 B:KICK:HURT(11d11):CONFUSE
@@ -19282,7 +19284,7 @@ D:(Bobby Henderson)
 N:1081:Reindeer
 G:q:u
 I:130:15d100:20:100:50:300
-W:50:200:999:2000:0:0
+W:50:200:999:2299:0:0
 B:KICK:HURT(8d8)
 B:KICK:HURT(8d8)
 B:BITE:HURT(9d9)
@@ -19297,11 +19299,11 @@ D:A denizen of northern climes. It stares at you menacingly.
 N:1082:Death Beast
 G:Z:D
 I:120:60d10:30:100:0:150
-W:45:8:999:5000:0:0
+W:45:8:999:6000:0:0
 B:BITE:HURT(12d12):TIME
 B:CLAW:HURT(6d6):DRAIN_CHARGES
 B:CLAW:HURT(6d6):DRAIN_CHARGES
-F:FORCE_SLEEP | OPEN_DOOR | BASH_DOOR | ANIMAL |
+F:FORCE_SLEEP | OPEN_DOOR | BASH_DOOR | ANIMAL | RES_DISI |
 F:RES_TIME | NO_CONF | NO_SLEEP | FORCE_MAXHP | KILL_WALL
 F:AURA_FEAR | NO_FEAR
 F:DROP_CORPSE | POS_GAIN_AC
@@ -19316,7 +19318,7 @@ D:A giant hound, dark as night. It hunts alone. Flee!
 N:1083:Ultimate Magus
 G:p:v
 I:130:62d25:20:60:10:90
-W:79:3:999:20000:0:0
+W:79:3:999:22500:0:0
 B:HIT:HURT(1d1)
 F:MALE | HUMAN |
 F:FORCE_SLEEP | FORCE_MAXHP |
@@ -19375,7 +19377,7 @@ D:nearly indestructible.
 N:1086:Talos, Masterwork Spellwarp Automaton
 G:g:y
 I:115:150d100:30:250:20:2000
-W:90:15:999:60000:0:0
+W:90:15:999:70000:0:0
 B:HIT:SHATTER(15d15)
 B:HIT:SHATTER(15d15)
 B:HIT:SHATTER(15d15)
@@ -19399,7 +19401,7 @@ G:h:u
 I:110:30d100:30:50:80:100
 W:80:4:999:10000:0:0
 B:HIT:HURT(40d20)
-F:RAND_50 | RAND_25 | FORCE_MAXHP
+F:RAND_50 | RAND_25 | FORCE_MAXHP | FORCE_SLEEP
 F:ONLY_ITEM | DROP_1D2 | DROP_GOOD | AURA_REVENGE
 P:Copy:Tonberry:Warrior
 D:This sluggish lizard-like being approaches you with a large knife brandished.
@@ -19412,6 +19414,7 @@ I:125:20d100:30:75:30:90
 W:80:7:999:5000:0:0
 B:HIT:HURT(35d20):EAT_ITEM
 F:ONLY_ITEM | DROP_1D2 | DROP_GOOD | DROP_GREAT | AURA_REVENGE | THIEF
+F:FORCE_SLEEP
 P:Copy:Tonberry:Ninja
 D:This sluggish lizard-like being approaches you with a large knife brandished.
 D:It is cloaked in brown, and attempting to hide in the shadows ... not very well
@@ -19422,7 +19425,7 @@ G:h:y
 I:120:70d100:30:100:80:110
 W:80:10:999:40000:0:0
 B:HIT:HURT(40d30)
-F:RAND_50 | RAND_25 | FORCE_MAXHP | UNIQUE
+F:RAND_50 | RAND_25 | FORCE_MAXHP | FORCE_SLEEP | UNIQUE |
 F:ONLY_ITEM | DROP_4D2 | DROP_GOOD | DROP_GREAT
 F:NO_CONF | NO_SLEEP | AURA_REVENGE
 P:Copy:Tonberry:Beastmaster
@@ -19434,7 +19437,7 @@ D:It wears a crown of gold, and erratically stumbles towards you.
 N:1090:The Hoard
 G:$:y
 I:115:40d25:20:80:10:500
-W:30:5:999:1000:0:0
+W:30:5:999:1452:0:0
 B:CRUSH:HURT(3d7):POISON(3d7)
 B:CRUSH:HURT(3d7):POISON(3d7)
 B:CRUSH:HURT(3d7):EAT_ITEM
@@ -19449,7 +19452,7 @@ S:S_KIN
 D:A massive pile of coins, wealth beyond your wildest dreams.
 
 N:1091:Time Initiate
-G:p:b
+G:p:S
 I:116:7d8:20:10:20:170
 W:15:3:40:50:0:0
 B:HIT:HURT(1d4)
@@ -19461,7 +19464,7 @@ S:FREQ_20 | HASTE | SLOW
 D:A human, clothed in a blue robe, moving with speed uncanny.
 
 N:1092:Chronomage
-G:p:b
+G:p:S
 I:130:100d10:20:70:20:170
 W:40:3:80:2000:0:0
 B:HIT:HURT(3d7):TIME(25%)
@@ -19477,14 +19480,14 @@ D:A human, clothed in a blue robe, moving with speed uncanny.
 D:He seems both young and old.
 
 N:1093:Temporal Champion
-G:p:b
+G:p:I
 I:150:100d30:20:100:20:170
-W:60:3:999:8000:0:0
+W:60:3:999:8470:0:0
 B:HIT:HURT(7d7):TIME(75%)
 B:HIT:HURT(7d7):TIME(75%)
 B:HIT:HURT(7d7):TIME(75%)
 B:HIT:HURT(7d7):TIME(75%)
-F:ONLY_ITEM | DROP_4D2 | DROP_GOOD |
+F:ONLY_ITEM | DROP_4D2 | DROP_GOOD | FORCE_SLEEP |
 F:DROP_SKELETON | DROP_CORPSE | HUMAN | RES_TIME
 F:SMART | OPEN_DOOR | TAKE_ITEM | BASH_DOOR |
 F:NO_CONF | NO_SLEEP
@@ -19512,7 +19515,7 @@ D:seems steeped in confusion while mumbling something
 D:about memory corruption in cmd2.c.
 
 N:1095:Monkey Clone
-G:H:R
+G:H:p
 I:110:60d10:20:80:0:170
 W:127:255:999:500:0:0
 B:HIT:HURT(1d1)
@@ -19549,7 +19552,7 @@ D:Olympians, and his wrath is fearsome. Flee his presence! Unless
 D:you're a really cute girl, in which case you're screwed.
 
 N:1097:Poseidon, Lord of Seas and Storm
-G:P:G
+G:P:t
 I:128:140d100:30:175:15:1000
 W:88:3:999:55000:0:0
 B:HIT:SHATTER(10d10)
@@ -19561,7 +19564,7 @@ F:FORCE_MAXHP | MOVE_BODY | KILL_BODY
 F:ONLY_ITEM | DROP_3D2 | DROP_GOOD | DROP_GREAT
 F:SMART | TAKE_ITEM | BASH_DOOR | HAS_LITE_2 |
 F:OLYMPIAN | NO_QUEST | REGENERATE | CAN_SWIM
-F:RES_FIRE | IM_ACID | RES_POIS | RES_ELEC | RES_COLD | RES_WATE
+F:RES_FIRE | IM_ACID | RES_POIS | RES_ELEC | RES_COLD | RES_WATE | RES_DISI
 F:NO_CONF | NO_SLEEP | AURA_FEAR
 P:Copy:Half-Titan:Beastmaster
 P:Stats:1:0:0:1:1:2
@@ -19576,7 +19579,7 @@ D:Athens to Athena.
 N:1098:Hades, Ruler of the Underworld
 G:P:D
 I:130:250d100:30:175:15:1000
-W:88:3:999:120000:0:0
+W:88:3:999:125000:0:0
 B:HIT:HURT(13d13):DISENCHANT
 B:HIT:HURT(13d13):DISENCHANT
 B:HIT:HURT(13d13):LOSE_ALL
@@ -19745,7 +19748,7 @@ S:ROCKET(500) | HEAL | TELE_SELF | TELE_TO | S_SPECIAL
 N:1105:Hera, Queen of the Gods
 G:P:g
 I:130:130d100:30:150:15:1000
-W:89:3:999:125000:0:0
+W:89:3:999:120000:0:0
 B:HIT:DISENCHANT(12d10)
 B:HIT:DISENCHANT(12d10)
 B:HIT:HURT(12d5):BLIND
@@ -19821,7 +19824,7 @@ O:DROP_WARRIOR
 D:He is a hardy orc with a pick in hand.
 
 N:1109:Exploding ant
-G:a:s
+G:a:n
 I:115:20d10:14:49:40:60
 W:36:1:90:350:0:0
 B:EXPLODE:ACID(20d5)
@@ -19858,7 +19861,7 @@ P:Body:Babble
 N:1111:Arthur Pendragon
 G:p:r
 I:120:60d20:30:90:15:170
-W:32:1:999:2000:0:0
+W:32:1:999:2783:0:0
 B:HIT:HURT(4d8)
 B:HIT:HURT(4d8)
 B:HIT:HURT(4d8):BLIND(50%)
@@ -19869,7 +19872,7 @@ F:ONLY_ITEM | DROP_2D2 | DROP_GOOD | DROP_GREAT |
 F:SMART | TAKE_ITEM | OPEN_DOOR | CAN_SWIM |
 F:GOOD | HUMAN | REGENERATE | DROP_CORPSE |
 F:RES_FIRE | RES_COLD | RES_ACID | RES_POIS | RES_ELEC |
-F:NO_CONF | NO_SLEEP | CAMELOT | NO_QUEST | KNIGHT | HAS_LITE_1
+F:NO_CONF | NO_SLEEP | DUNGEON_2 | NO_QUEST | KNIGHT | HAS_LITE_1
 S:FREQ_25 |
 S:SHOOT(4d8) | TELE_SELF | HEAL | BO_FIRE(18d8+20) | BA_ACID(1d192+30) |
 S:SHRIEK | HASTE | TELE_TO | S_CAMELOT(1d2)
@@ -19881,7 +19884,7 @@ P:Copy:Dunadan:Paladin
 N:1112:Sir Lancelot
 G:p:b
 I:125:65d20:30:120:15:180
-W:30:1:999:1800:0:0
+W:30:1:999:2420:0:0
 B:SLASH:HURT(25d2):TERRIFY:CUT(5d5, 70%)
 B:SLASH:HURT(25d2):TERRIFY:CUT(5d5, 70%)
 F:UNIQUE | MALE |
@@ -19890,19 +19893,19 @@ F:ONLY_ITEM | DROP_2D2 | DROP_GOOD | DROP_GREAT | CAN_SWIM |
 F:SMART | TAKE_ITEM | OPEN_DOOR |
 F:GOOD | HUMAN | REGENERATE | DROP_CORPSE |
 F:RES_FIRE | RES_COLD | RES_ACID | RES_ELEC |
-F:NO_FEAR | NO_SLEEP | NO_CONF | AURA_REVENGE | CAMELOT | NO_QUEST | KNIGHT | HAS_LITE_1
+F:NO_FEAR | NO_SLEEP | NO_CONF | AURA_REVENGE | DUNGEON_2 | NO_QUEST | KNIGHT | HAS_LITE_1
 S:FREQ_10 |
 S:TELE_TO | HEAL | S_CAMELOT(1d2)
 D:The strongest of the Knights, Lancelot is also the most handsome,
 D:and leaves a trail of broken hearts in his wake. Fated never
 D:to be with his true love Guinevere, Lancelot nevertheless protects
-D:her whenever he needs to, even if it means destroying Camelot
+D:her whenever he needs to, even if it means destroying Camelot.
 P:Copy:Dunadan:Paladin
 
 N:1113:Sir Gawain
 G:p:o
 I:122:40d20:30:90:15:170
-W:29:1:999:1800:0:0
+W:29:1:999:2299:0:0
 B:HIT:HURT(14d6):CONFUSE(50%)
 F:UNIQUE | MALE |
 F:FORCE_SLEEP | FORCE_MAXHP | MOVE_BODY |
@@ -19910,7 +19913,7 @@ F:ONLY_ITEM | DROP_2D2 | DROP_GOOD | DROP_GREAT | CAN_SWIM |
 F:SMART | TAKE_ITEM | OPEN_DOOR |
 F:GOOD | HUMAN | REGENERATE | DROP_CORPSE |
 F:RES_FIRE | RES_POIS | RES_ACID | RES_COLD |
-F:NO_SLEEP | NO_CONF | CAMELOT | NO_QUEST | KNIGHT | HAS_LITE_1
+F:NO_SLEEP | NO_CONF | DUNGEON_2 | NO_QUEST | KNIGHT | HAS_LITE_1
 S:FREQ_20 |
 S:SHOOT(14d6) | BO_MANA | BLINK | TELE_SELF | S_CAMELOT(1d2) | HEAL
 D:The second strongest of the Round Table, Gawain is usually
@@ -19920,7 +19923,7 @@ P:Copy:Demigod:Paladin
 N:1114:Sir Galahad
 G:p:g
 I:124:50d20:30:110:15:170
-W:28:1:999:1800:0:0
+W:28:1:999:2299:0:0
 B:SLASH:HURT(20d2):TERRIFY:CUT(3d3, 40%)
 B:HIT:HURT(3d6):CONFUSE(50%)
 B:HIT:HURT(3d6):BLIND(50%)
@@ -19930,7 +19933,7 @@ F:ONLY_ITEM | DROP_1D2 | DROP_GOOD | DROP_GREAT | CAN_SWIM |
 F:SMART | TAKE_ITEM | OPEN_DOOR | REFLECTING |
 F:GOOD | HUMAN | REGENERATE | DROP_CORPSE |
 F:RES_FIRE | RES_ELEC | RES_COLD | RES_POIS | RES_ACID |
-F:NO_SLEEP | NO_CONF | CAMELOT | NO_QUEST | KNIGHT | HAS_LITE_1
+F:NO_SLEEP | NO_CONF | DUNGEON_2 | NO_QUEST | KNIGHT | HAS_LITE_1
 S:FREQ_15 |
 S:SHOOT(6d8) | TELE_TO | TELE_SELF | S_CAMELOT(1d2) | HEAL
 D:Sir Galahad the Pure takes after his father Lancelot in his
@@ -19941,7 +19944,7 @@ P:Copy:Demigod:Paladin
 N:1115:Sir Gareth
 G:p:g
 I:120:50d20:30:80:15:170
-W:28:1:999:1800:0:0
+W:28:1:999:2299:0:0
 B:HIT:HURT(3d8):BLIND(50%)
 B:HIT:HURT(3d8):BLIND(50%)
 B:HIT:HURT(3d8)
@@ -19951,7 +19954,7 @@ F:ONLY_ITEM | DROP_1D2 | DROP_GOOD | DROP_GREAT | CAN_SWIM |
 F:SMART | TAKE_ITEM | OPEN_DOOR |
 F:GOOD | HUMAN | REGENERATE | DROP_CORPSE |
 F:RES_FIRE | RES_ELEC | RES_COLD |
-F:NO_SLEEP | NO_CONF | CAMELOT | NO_QUEST | KNIGHT | HAS_LITE_1
+F:NO_SLEEP | NO_CONF | DUNGEON_2 | NO_QUEST | KNIGHT | HAS_LITE_1
 S:FREQ_15 |
 S:SHOOT(6d8) | BO_ELEC | HASTE | TELE_TO | TELE_SELF | S_CAMELOT(1d2) | HEAL
 D:The protege of Lancelot and the younger brother of Gawain,
@@ -19972,7 +19975,7 @@ F:ONLY_ITEM | DROP_1D2 | DROP_GOOD | DROP_GREAT | CAN_SWIM |
 F:SMART | TAKE_ITEM | OPEN_DOOR |
 F:EVIL | HUMAN | REGENERATE | DROP_CORPSE |
 F:RES_FIRE |
-F:NO_SLEEP | NO_CONF | CAMELOT | NO_QUEST | KNIGHT | HAS_LITE_1
+F:NO_SLEEP | NO_CONF | DUNGEON_2 | NO_QUEST | KNIGHT | HAS_LITE_1
 S:FREQ_10 |
 S:BO_FIRE | BLINK | TELE_SELF | S_CAMELOT(1d2)
 D:The weakest and most petty of the knights, Kay is often bullying
@@ -19992,7 +19995,7 @@ F:ONLY_ITEM | DROP_1D2 | DROP_GOOD | CAN_SWIM |
 F:SMART | TAKE_ITEM | OPEN_DOOR |
 F:GOOD | HUMAN | REGENERATE | DROP_CORPSE |
 F:RES_FIRE | RES_ACID |
-F:NO_SLEEP | NO_CONF | CAMELOT | NO_QUEST | KNIGHT | HAS_LITE_1
+F:NO_SLEEP | NO_CONF | DUNGEON_2 | NO_QUEST | KNIGHT | HAS_LITE_1
 S:FREQ_10 |
 S:SHOOT(6d8) | BO_FIRE | TELE_TO | BLINK | TELE_SELF | S_KNIGHT(1d2) | HEAL
 D:A Knight of the Round Table of King Arthur's Court.
@@ -20001,7 +20004,7 @@ P:Copy:Demigod:Paladin
 N:1118:Morgana Le Fay
 G:p:r
 I:122:35d20:30:90:15:110
-W:35:2:999:2500:0:0
+W:35:2:999:2541:0:0
 B:HIT:HURT(2d6):CONFUSE(50%)
 B:HIT:HURT(1d12):DISENCHANT
 B:HIT:HURT(1d10):PARALYZE(50%)
@@ -20012,7 +20015,7 @@ F:ONLY_ITEM | DROP_2D2 | DROP_GOOD | DROP_GREAT | CAN_SWIM |
 F:SMART | TAKE_ITEM | OPEN_DOOR |
 F:GOOD | EVIL | HUMAN | REGENERATE | DROP_CORPSE |
 F:RES_FIRE | RES_POIS | RES_ELEC | RES_ACID | RES_COLD |
-F:NO_SLEEP | NO_CONF | AURA_FEAR | CAMELOT | NO_QUEST | SELF_DARK_1
+F:NO_SLEEP | NO_CONF | AURA_FEAR | DUNGEON_2 | NO_QUEST | SELF_DARK_1
 S:1_IN_3 |
 S:BO_MANA | TELE_SELF | HEAL | HASTE | BA_WATER(1d70+50)
 O:DROP_MAGE
@@ -20025,7 +20028,7 @@ P:Copy:Demigod:Mage
 N:1119:Mordred
 G:p:r
 I:122:55d20:30:90:15:170
-W:32:2:999:1800:0:0
+W:32:2:999:2420:0:0
 B:SLASH:HURT(15d2):TERRIFY:CUT(3d3, 30%)
 B:HIT:HURT(4d8):CONFUSE(50%)
 B:HIT:HURT(3d10):PARALYZE(50%)
@@ -20035,7 +20038,7 @@ F:ONLY_ITEM | DROP_1D2 | DROP_GOOD | DROP_GREAT | CAN_SWIM |
 F:SMART | TAKE_ITEM | OPEN_DOOR |
 F:GOOD | EVIL | HUMAN | REGENERATE | DROP_CORPSE |
 F:RES_ELEC | RES_ACID | RES_COLD |
-F:NO_SLEEP | NO_CONF | AURA_REVENGE | CAMELOT | NO_QUEST | SELF_DARK_1
+F:NO_SLEEP | NO_CONF | AURA_REVENGE | DUNGEON_2 | NO_QUEST | SELF_DARK_1
 S:1_IN_6 |
 S:BO_MANA | TELE_SELF | HEAL | HASTE | BA_WATER(1d64+50)
 O:DROP_MAGE
@@ -20047,7 +20050,7 @@ P:Copy:Human:Mage
 N:1120:Fearmaster
 G:p:u
 I:120:100d10:20:80:20:170
-W:29:3:80:1000:120000:1121
+W:29:3:80:800:120000:1121
 B:HIT:HURT(4d8):TERRIFY
 B:HIT:HURT(4d8):LOSE_CHR
 F:ONLY_ITEM | DROP_2D2 | DROP_GOOD |
@@ -20063,7 +20066,7 @@ P:Copy:Human:Beastmaster
 N:1121:Grand Fearlord
 G:p:U
 I:135:50d100:20:120:20:170
-W:65:3:127:25000:0:0
+W:65:3:127:15000:0:0
 B:HIT:HURT(8d10):TERRIFY
 B:HIT:HURT(8d10):TERRIFY
 B:HIT:HURT(8d10):LOSE_CHR
@@ -20081,7 +20084,7 @@ P:Copy:Demigod:Beastmaster
 N:1122:The Questing Beast
 G:q:v
 I:125:40d25:77:90:1:400
-W:35:7:999:2500:0:0
+W:35:7:999:3000:0:0
 B:KICK:HURT(6d6):CONFUSE
 B:KICK:HURT(6d6):TERRIFY
 B:DROOL:POISON(5d5)
@@ -20089,7 +20092,7 @@ F:UNIQUE | FEMALE | GOOD | EVIL | NONLIVING | RIDING |
 F:FORCE_MAXHP | OPEN_DOOR | BASH_DOOR |
 F:ONLY_ITEM | DROP_GOOD | DROP_GREAT | DROP_2D2 |
 F:SMART | REGENERATE | NO_CONF | NO_SLEEP |
-F:RES_ACID | RES_ELEC | RES_FIRE | RES_POIS | RES_COLD | CAMELOT | NO_QUEST
+F:RES_ACID | RES_ELEC | RES_FIRE | RES_POIS | RES_COLD | DUNGEON_2 | NO_QUEST
 F:POS_GAIN_AC
 P:Copy:Dunadan:Paladin
 P:Body:Questing Beast
@@ -20150,7 +20153,7 @@ B:HIT:HURT(3d10):COLD(2d10)
 F:ONLY_ITEM | DROP_4D2 | DROP_GOOD
 F:OPEN_DOOR | BASH_DOOR |
 F:EVIL | GIANT | MALE | AURA_COLD
-F:IM_COLD | NO_CONF | NO_SLEEP | HURT_FIRE
+F:IM_COLD | NO_CONF | NO_SLEEP | HURT_FIRE | WILD_SNOW | CAN_CLIMB |
 F:DROP_SKELETON | DROP_CORPSE | POS_SUST_STR
 P:Copy:Half-Titan:Mauler
 S:FREQ_25 | BR_COLD | BO_ICE | HEAL | TELE_TO | BLINK | THROW
@@ -20166,7 +20169,7 @@ B:HIT:HURT(3d11):FIRE(2d11)
 B:HIT:HURT(3d11):FIRE(2d11)
 B:HIT:HURT(3d11):FIRE(2d11)
 F:ONLY_ITEM | DROP_4D2 | SELF_LITE_2 | DROP_GOOD | FORCE_MAXHP
-F:OPEN_DOOR | BASH_DOOR | WILD_VOLCANO |
+F:FORCE_SLEEP | OPEN_DOOR | BASH_DOOR | WILD_VOLCANO |
 F:EVIL | GIANT | MALE | AURA_FIRE |
 F:IM_FIRE | HURT_COLD | NO_CONF | NO_SLEEP
 F:DROP_SKELETON | DROP_CORPSE | POS_SUST_STR
@@ -20176,7 +20179,7 @@ D:An ancient giant nearly twenty feet tall. The air around
 D:you suddenly grows hot.
 
 N:1127:Typhoeus, the Storm Giant
-G:P:b
+G:P:I
 I:130:93d100:50:170:20:5000
 W:85:2:999:50000:0:0
 B:HIT:HURT(6d12):ELEC(6d12)
@@ -20235,12 +20238,12 @@ P:Body:Possessor Soul
 N:1130:Marilith
 G:U:y
 I:125:100d7:20:50:30:180
-W:40:2:999:1000:0:0
+W:40:2:999:1573:0:0
 B:SLASH:HURT(6d5):CUT(3d5, 50%)
 B:SLASH:HURT(6d5):CUT(3d5, 50%)
 B:SLASH:HURT(6d5):CUT(3d5, 50%)
 B:SLASH:HURT(6d5):CUT(3d5, 50%)
-F:NONLIVING | REGENERATE | FEMALE | EVIL | DEMON |
+F:NONLIVING | REGENERATE | FEMALE | EVIL | DEMON | HINDU2
 F:FORCE_MAXHP | OPEN_DOOR |
 F:DROP_60 | ONLY_ITEM |
 F:RES_POIS | RES_FIRE | RES_CHAO
@@ -20307,7 +20310,7 @@ D:He is brave and likes conflicts.
 N:1134:Kotoshiro, the Oracle
 G:p:B
 I:120:50d100:100:100:0:150
-W:60:3:999:35000:0:0
+W:60:3:999:25000:0:0
 B:HIT:DISENCHANT(7d7)
 B:HIT:DISENCHANT(7d7)
 B:HIT:EAT_ITEM(5d5)
@@ -20352,8 +20355,8 @@ N:1136:Omoikane, Spirit of Wisdom
 G:p:g
 I:130:48d100:100:100:10:200
 W:68:3:999:35000:0:0
-B:HIT:LOSE_INT(8d15)
-B:HIT:LOSE_WIS(8d15)
+B:HIT:HURT(8d10):LOSE_INT
+B:HIT:HURT(8d10):LOSE_WIS
 B:TOUCH:LOSE_CHR
 B:TOUCH:LOSE_CON
 F:UNIQUE | MALE | CAN_SPEAK | SMART |
@@ -20520,7 +20523,7 @@ D:She and her children plot to conquest of countries of the ground.
 N:1143:Rusalka
 G:h:B
 I:117:25d15:30:60:5:70
-W:33:1:999:600:0:0
+W:33:1:999:666:0:0
 B:HIT:HURT(2d7)
 B:HIT:HURT(2d7)
 F:ONLY_ITEM | DROP_60 | CAN_SWIM |
@@ -20555,7 +20558,7 @@ D:magic to drive out intruders like you.
 N:1145:Fiendish donkey
 G:q:g
 I:112:40d12:30:50:15:170
-W:26:1:999:700:0:0
+W:26:1:999:666:0:0
 B:BUTT:HURT(2d5)
 B:BITE:HURT(1d6):POISON(1d6)
 B:KICK:HURT(3d4)
@@ -20621,7 +20624,7 @@ F:ONLY_ITEM | DROP_2D2 | DROP_GOOD | DROP_GREAT | CAN_SWIM |
 F:SMART | TAKE_ITEM | OPEN_DOOR |
 F:EVIL | HUMAN | REGENERATE | DROP_CORPSE |
 F:RES_FIRE | RES_POIS | RES_ELEC | RES_ACID | RES_COLD |
-F:NO_SLEEP | NO_CONF | FOREST | NO_QUEST
+F:NO_SLEEP | NO_CONF | DUNGEON_7 | NO_QUEST
 S:1_IN_3 |
 S:BO_FIRE | TELE_SELF | HEAL | BA_FIRE | BO_ELEC | BA_ELEC
 S:BO_COLD | BA_COLD | BO_PLASMA | BO_ICE | TELE_TO |
@@ -20635,7 +20638,7 @@ D:closed eyes issuing an invitation you somehow cannot resist.
 N:1149:Helga
 G:p:D
 I:120:40d40:30:85:15:110
-W:39:1:999:4000:0:0
+W:39:1:999:5000:0:0
 B:HIT:HURT(3d6)
 B:BITE:HURT(1d6):VAMP(3d6)
 B:WAIL:HURT(3d6):DRAIN_EXP(30d6):TERRIFY
@@ -20646,7 +20649,7 @@ F:ONLY_ITEM | DROP_3D2 | DROP_GOOD | DROP_GREAT | CAN_SWIM |
 F:SMART | TAKE_ITEM | OPEN_DOOR | RES_NETH | RES_WATE
 F:EVIL | HUMAN | REGENERATE | DROP_CORPSE |
 F:RES_FIRE | RES_POIS | RES_ELEC | RES_ACID | RES_COLD |
-F:NO_SLEEP | NO_CONF | FOREST | NO_QUEST | SELF_DARK_2
+F:NO_SLEEP | NO_CONF | DUNGEON_7 | NO_QUEST | SELF_DARK_2
 A:NETHER(1d3)
 S:1_IN_3 |
 S:TELE_SELF | HEAL | BA_NETHER | CAUSE_3 | ANIM_DEAD
@@ -20660,7 +20663,7 @@ D:of the undead to destroy you!
 N:1150:Gertrude
 G:p:r
 I:120:22d110:30:90:5:110
-W:40:1:999:5000:0:0
+W:40:1:999:10000:0:0
 B:HIT:HURT(2d6):POIS(2d6)
 B:HIT:HURT(2d6):DISENCHANT(2d6)
 B:GAZE:HURT(2d6):DRAIN_CHARGES
@@ -20671,7 +20674,7 @@ F:ONLY_ITEM | DROP_3D2 | DROP_GOOD | DROP_GREAT | CAN_SWIM |
 F:SMART | TAKE_ITEM | OPEN_DOOR | RES_WATE | RES_NETH
 F:EVIL | HUMAN | REGENERATE | DROP_CORPSE |
 F:RES_FIRE | RES_POIS | RES_ELEC | RES_ACID | RES_COLD |
-F:NO_SLEEP | NO_CONF | FOREST | NO_QUEST | SELF_DARK_2
+F:NO_SLEEP | NO_CONF | DUNGEON_7 | NO_QUEST | SELF_DARK_2
 A:DISENCHANT(1d3)
 S:1_IN_3 |
 S:BA_ACID | S_SPECIAL | HEAL | POLYMORPH | CAUSE_3 | BRAIN_SMASH
@@ -20688,10 +20691,10 @@ N:1151:Osyluth
 G:U:W
 I:130:40d100:20:145:40:100
 W:65:3:999:13000:0:0
-B:HIT:LOSE_CHR(8d8)
-B:HIT:LOSE_CHR(8d8)
+B:HIT:HURT(7d7):LOSE_CHR
+B:HIT:HURT(7d7):LOSE_CHR
 B:BITE:POISON(10d10)
-B:STING:LOSE_STR(9d9)
+B:STING:HURT(7d7):LOSE_STR
 F:FORCE_SLEEP | FORCE_MAXHP | NONLIVING |
 F:ONLY_ITEM | DROP_2D2 | DROP_GOOD |
 F:OPEN_DOOR | BASH_DOOR | MOVE_BODY
@@ -20714,7 +20717,7 @@ B:BITE:COLD(9d9)
 B:HIT:PARALYZE(8d8)
 F:FORCE_SLEEP | FORCE_MAXHP |
 F:ONLY_ITEM | DROP_GOOD | DROP_2D2 | CAN_FLY | RES_POIS |
-F:OPEN_DOOR | BASH_DOOR | REGENERATE | CAN_SWIM |
+F:OPEN_DOOR | BASH_DOOR | REGENERATE | CAN_SWIM | WILD_SNOW |
 F:EVIL | DEMON | IM_COLD | NO_CONF | NO_SLEEP |
 P:Copy:Balrog:Mauler
 S:1_IN_6
@@ -20729,7 +20732,7 @@ D:spikes.
 N:1153:Hezrou
 G:U:g
 I:110:45d20:20:60:70:250
-W:41:3:125:1936:0:0
+W:41:3:125:1694:0:0
 B:HIT:HURT(3d4)
 B:HIT:HURT(3d4)
 F:DROP_90
@@ -20748,7 +20751,7 @@ W:77:3:999:22000:0:0
 B:CLAW:FIRE(8d10)
 B:CLAW:FIRE(8d10)
 B:BITE:POISON(7d10)
-B:BITE:LOSE_CON(7d10)
+B:BITE:LOSE_CON
 F:FORCE_SLEEP | FORCE_MAXHP | REGENERATE |
 F:ONLY_ITEM | DROP_GOOD | DROP_3D2 |
 F:OPEN_DOOR | BASH_DOOR | MOVE_BODY | CAN_FLY |
@@ -20765,7 +20768,7 @@ D:commanders of vast demon armies.
 N:1155:Glabrezu
 G:U:U
 I:110:60d20:20:60:70:250
-W:43:2:125:3000:0:0
+W:43:2:125:1694:0:0
 B:HIT:HURT(3d4)
 B:HIT:HURT(3d4)
 F:DROP_60
@@ -20780,7 +20783,7 @@ D:It is demon with arms and pincers, its form a true mockery of life.
 N:1156:Nalfeshnee
 G:U:r
 I:110:80d20:20:60:80:250
-W:45:2:125:5000:0:0
+W:45:2:125:3000:0:0
 B:HIT:HURT(3d4)
 B:HIT:HURT(3d4)
 B:HIT:HURT(3d4)
@@ -20818,7 +20821,7 @@ D: hells, capable of a terrifying berserk fury.
 N:1158:Vrock
 G:U:s
 I:110:35d20:20:75:70:250
-W:40:2:125:1573:0:0
+W:40:2:125:1000:2000:648
 B:HIT:HURT(3d4)
 B:CRUSH:HURT(8d12)
 B:CRUSH:HURT(8d12)
@@ -20898,7 +20901,7 @@ D:life with her shears. She has decided that your time is up.
 N:1162:Greater naga
 G:n:r
 I:120:30d100:30:130:7:600
-W:55:4:999:17000:0:0
+W:55:4:999:12500:0:0
 B:CRUSH:HURT(10d10)
 B:BITE:HURT(10d10)
 B:SPIT:BLIND(4d4)
@@ -20915,7 +20918,7 @@ S:BR_POIS
 N:1163:Nagaraja
 G:n:G
 I:120:30d100:30:130:7:600
-W:60:4:999:17000:0:0
+W:60:4:999:14000:0:0
 B:CRUSH:HURT(10d10)
 B:BITE:HURT(10d10)
 B:SPIT:BLIND(4d4)
@@ -20954,7 +20957,7 @@ D:home.
 N:1165:King Ghidora
 G:D:y
 I:130:85d100:50:185:20:5000
-W:85:2:999:50000:0:0
+W:85:2:999:75000:0:0
 B:CLAW:HURT(5d10)
 B:CLAW:HURT(5d10)
 B:BITE:HURT(8d15):CHAOS(3d15):CUT(8d15, 10%)
@@ -20976,8 +20979,8 @@ N:1166:Thanatos, God of Death
 G:P:D
 I:145:132d84:20:175:8:700
 W:88:2:999:66000:0:0
-B:SLASH:LOSE_CON(8d18)
-B:SLASH:LOSE_STR(8d18)
+B:SLASH:HURT(8d13):LOSE_CON
+B:SLASH:HURT(8d13):LOSE_STR
 B:TOUCH:DISEASE(9d9)
 B:TOUCH:TERRIFY(7d7)
 F:UNIQUE | MALE | CAN_SPEAK | MOVE_BODY | BASH_DOOR |
@@ -20995,7 +20998,7 @@ D:"I win greater honor when the victims are young."
 N:1167:The Diamond Dragon
 G:D:B
 I:125:50d100:40:200:255:2000
-W:60:2:999:25000:0:0
+W:60:2:999:31460:0:0
 B:CLAW:HURT(5d12):SHARDS(1d12)
 B:CLAW:HURT(5d12):SHARDS(1d12)
 B:CRUSH:HURT(7d17):HURT(7d17, 20%)
@@ -21015,7 +21018,7 @@ D:Greatest of the crystal dragons, it threatens to tear you asunder with its
 D:mighty claws.
 
 N:1168:Cacodemon
-G:U:R
+G:U:C
 I:106:60d12:10:110:40:200
 W:32:3:90:1000:0:0
 B:BITE:HURT(6d2)
@@ -21032,7 +21035,7 @@ D:A giant one-eyed floating meatball, spitting plasma.
 N:1169:Chitauli
 G:R:W
 I:130:133d65:60:120:1:300
-W:89:12:999:35000:0:0
+W:89:12:999:33000:0:0
 B:GAZE:PARALYZE(20d20)
 B:GAZE:DISENCHANT(2d5)
 F:FORCE_SLEEP | FORCE_MAXHP | REGENERATE | CAN_SPEAK |
@@ -21184,7 +21187,7 @@ D:eternal damnation.
 N:1178:Star Blade
 G:A:R
 I:130:90d100:100:155:255:250
-W:90:10:999:40000:0:0
+W:90:10:999:42000:0:0
 B:GAZE:HURT(7d4):TERRIFY
 B:HIT:HURT(50d5):CUT(10d5)
 B:HIT:HURT(50d5):CUT(10d5)
@@ -21233,7 +21236,7 @@ D:its perfect state.
 N:1180:Tik'srvzllat
 G:G:v
 I:142:103d103:60:170:0:120
-W:98:3:999:50000:0:0
+W:98:3:999:70000:0:0
 B:GAZE:TIME(10d10)
 B:GAZE:BLIND(10d10)
 B:GAZE:CONFUSE(10d10)
@@ -21345,7 +21348,7 @@ D: lands of the elves.
 N:1185:Othrod, Lord of the Orcs
 G:o:R
 I:120:180d10:20:105:20:200
-W:32:3:999:550:0:0
+W:32:3:999:3146:0:0
 B:HIT:HURT(4d8):STUN(1d4,10%)
 B:HIT:HURT(4d8):STUN(1d4,10%)
 B:HIT:HURT(3d8)
@@ -21369,7 +21372,7 @@ D: of the black enemy for many years.
 N:1186:Orcogar, Son of Orcobal
 G:o:r
 I:115:70d10:20:70:20:200
-W:23:4:999:800:0:0
+W:23:4:999:500:0:0
 B:HIT:HURT(3d6):STUN(1d4,10%)
 B:HIT:HURT(3d6)
 B:HIT:HURT(3d6)
@@ -21388,7 +21391,7 @@ D:fast, but fortunately blessed with orcish brains.
 N:1187:Orcobal the Mighty
 G:o:r
 I:120:120d10:20:90:20:220
-W:27:5:999:1111:0:0
+W:27:5:999:999:0:0
 B:HIT:HURT(5d5):STUN(1d4,10%)
 B:HIT:HURT(5d5)
 B:HIT:HURT(5d5)
@@ -21481,7 +21484,7 @@ I:130:70d95:100:175:0:0
 W:91:4:999:40000:0:0
 B:ENGULF:COLD(35d5)
 B:ENGULF:HURT(35d5):CONFUSE
-F:UNIQUE | FORCE_MAXHP | FORCE_SLEEP | NONLIVING | EMPTY_MIND |
+F:UNIQUE | FORCE_MAXHP | FORCE_SLEEP | NONLIVING | EMPTY_MIND | WILD_SNOW |
 F:IM_COLD | IM_POIS | RES_SOUN | RES_SHAR | RES_TELE | MOVE_BODY |
 F:NO_CONF | NO_FEAR | NO_SLEEP | NO_STUN | AURA_COLD | BASH_DOOR |
 F:RAND_50 | RAND_25 | CAN_FLY |
@@ -21562,7 +21565,7 @@ D: cloaked in both ice and flames.
 N:1196:The Lurking Horror
 G:H:D
 I:120:20d100:2:50:4:1000
-W:42:3:999:35000:0:0
+W:42:3:999:18000:0:0
 B:BITE:HURT(3d10):PARALYZE
 B:BITE:POISON(3d10)
 B:CLAW:HURT(3d10):TERRIFY
@@ -21579,9 +21582,9 @@ D:It waits for you in the ink-black of the dungeon.
 D:It seems to be made entirely of claws and of teeth.
 
 N:1197:The Shadow Fiend
-G:U:v
+G:U:C
 I:120:30d100:35:100:80:1000
-W:48:3:999:27000:0:0
+W:48:3:999:24000:0:0
 B:HIT:HURT(8d8)
 B:HIT:HURT(8d8)
 B:TOUCH:DRAIN_EXP(2d5)
@@ -21621,8 +21624,8 @@ I:120:45d100:20:170:50:1000
 W:65:3:999:23000:0:0
 B:HIT:DISENCHANT(8d8)
 B:HIT:DISENCHANT(8d8)
-B:HIT:LOSE_STR(6d6)
-B:HIT:LOSE_STR(6d6)
+B:HIT:LOSE_STR
+B:HIT:LOSE_STR
 F:FORCE_SLEEP | FORCE_MAXHP | EMPTY_MIND |
 F:COLD_BLOOD | OPEN_DOOR | BASH_DOOR | NO_STUN |
 F:EVIL | UNDEAD | RES_COLD | RES_POIS | RES_FIRE | RES_ELEC | RES_TELE |
@@ -21758,7 +21761,7 @@ P:Life:90
 P:Speed:+15
 
 N:1205:The Babbage Analytical Engine
-G:g:B
+G:g:I
 I:140:100d100:2:130:30:500
 W:96:6:999:60000:0:0
 F:FORCE_SLEEP | FORCE_MAXHP | RES_TELE |
@@ -21782,13 +21785,13 @@ D:and moving towards you in an attempt to protect their master.
 N:1206:The Marquis de la Tour
 G:p:r
 I:130:155d10:20:50:20:170
-W:40:4:999:17000:0:0
+W:40:4:999:8000:0:0
 B:HIT:HURT(6d15)
 F:UNIQUE | MALE | CAN_SPEAK | DROP_CORPSE | FORCE_SLEEP | FORCE_MAXHP |
-F:ONLY_ITEM | DROP_4D2 | DROP_GOOD | NO_CONF |
+F:ONLY_ITEM | DROP_4D2 | DROP_GOOD | NO_CONF | RES_FIRE | RES_POIS |
 F:NO_SLEEP | NO_FEAR | OPEN_DOOR | BASH_DOOR |
 S:1_IN_2 |
-S:SHOOT(6d6) | HEAL | BLINK | TELE_SELF
+S:SHOOT(6d10) | HEAL | BLINK | TELE_SELF
 P:Copy:Human:Ranger
 D:Seemingly out of nowhere, a gentleman steps towards you.
 D:He is wearing a fine suit covered by a dark cloak. He
@@ -21884,7 +21887,7 @@ D:A huge draconic form wreathed in a nimbus of light.
 # Crystal snakes
 
 N:1211:Ruby serpent
-G:J:B
+G:J:r
 I:120:16d100:25:110:30:500
 W:45:3:999:8000:0:0
 B:CRUSH:HURT(4d9)
@@ -21903,7 +21906,7 @@ D:A huge crystalline snake with razor-sharp fangs. Deep red hues reflect
 D:from it as it moves in the light.
 
 N:1212:Emerald serpent
-G:J:B
+G:J:g
 I:120:16d100:25:110:30:500
 W:46:3:999:8000:0:0
 B:CRUSH:HURT(4d9)
@@ -21952,7 +21955,7 @@ B:CRUSH:HURT(4d9):STUN(1d9, 10%)
 B:BITE:HURT(5d12):ACID(2d12):CUT(5d12, 10%)
 A:ACID(2d3)
 F:FORCE_SLEEP | FORCE_MAXHP | REFLECTING | WILD_MOUNTAIN | RES_ELEC
-F:ONLY_ITEM | DROP_2D2 | DROP_4D2 | CAN_FLY | ATTR_CLEAR |
+F:ONLY_ITEM | DROP_2D2 | DROP_3D2 | CAN_FLY | WILD_SNOW |
 F:RES_FIRE | OPEN_DOOR | BASH_DOOR | MOVE_BODY | RES_DARK |
 F:EVIL | DRAGON | RES_ACID | NO_CONF | RES_COLD | NO_SLEEP | RIDING
 F:DROP_CORPSE | POS_GAIN_AC | POS_SEE_INVIS | UNIQUE | DROP_GREAT
@@ -21995,6 +21998,7 @@ B:CLAW:HURT(3d8)
 B:BITE:HURT(4d6)
 B:BITE:HURT(4d6)
 F:IM_COLD | IM_POIS | UNDEAD | RIDING | EVIL | CAN_FLY | FORCE_MAXHP
+F:FORCE_SLEEP
 S:1_IN_6
 S:BR_DARK | BR_NETHER | BR_POISON
 P:Copy:Zombie:Warrior
@@ -22007,9 +22011,9 @@ D: steed for his Ringwraiths.
 # Dinosaurs
 
 N:1217:Triceratops
-G:R:o
+G:R:O
 I:111:100d10:20:70:10:700
-W:33:2:90:1000:0:0
+W:33:2:90:700:0:0
 B:BUTT:HURT(4d6)
 B:CHARGE:HURT(4d6):CUT(2d6, 50%)
 B:CRUSH:HURT(4d6):HURT(4d6, 20%)
@@ -22025,7 +22029,7 @@ D:It has very long very sharp head horns and a bony frill around its head.
 N:1218:Diplodocus
 G:R:g
 I:110:150d10:20:70:50:700
-W:34:2:90:1500:0:0
+W:34:2:90:700:0:0
 B:BUTT:HURT(4d6)
 B:KICK:HURT(4d6)
 B:CRUSH:HURT(4d6):HURT(4d6, 20%)
@@ -22160,7 +22164,7 @@ I:110:6d6:20:15:5:280
 W:3:4:20:1:0:0
 B:BUTT:HURT(1d1)
 F:WILD_WASTE | WILD_WOOD | WEIRD_MIND | FRIENDS(3d3)
-F:ANIMAL | RIDING
+F:ANIMAL | RIDING | AUSSIE
 F:DROP_SKELETON | DROP_CORPSE
 P:Copy:Human:Tourist
 P:Body:Horse
@@ -22169,7 +22173,7 @@ D:This creature is gentle and submissive.
 N:1227:Basement Cat
 G:f:D
 I:143:37d121:55:120:0:100
-W:74:255:999:50000:0:0
+W:74:255:999:50820:0:0
 B:CLAW:HURT(15d15):CUT(10d10, 30%)
 B:CLAW:HURT(15d15):SLOW
 B:CLAW:HURT(15d15)
@@ -22194,7 +22198,7 @@ B:ENGULF:CONFUSE(1d10)
 B:ENGULF:POISON(1d10)
 F:FORCE_SLEEP | RAND_25 |
 F:EMPTY_MIND | COLD_BLOOD | CAN_FLY |
-F:KILL_BODY | KILL_ITEM | BASH_DOOR |
+F:KILL_BODY | KILL_ITEM | BASH_DOOR | AUSSIE |
 F:EVIL | RES_WATE | RES_POIS | NONLIVING |
 F:NO_CONF | NO_SLEEP | NO_FEAR
 F:POS_GAIN_AC | POS_HOLD_LIFE
@@ -22226,11 +22230,11 @@ D:A gelatin king from the third dimension.
 N:1230:Festivus, the Teenage Offscreen Ninja Drolem
 G:g:D
 I:135:110d77:80:190:0:500
-W:91:3:999:85184:0:0
+W:91:3:999:70422:0:0
 B:BITE:HURT(15d8):CUT(4d8):DAM(1d75, 50%)
 B:BITE:HURT(15d8):POISON(14d4)
 B:CLAW:HURT(7d13):CUT(8d14)
-B:CLAW:HURT(7d13):POISON(6d6)
+B:CLAW:HURT(7d13):POISON(8d8)
 F:FORCE_SLEEP | FORCE_MAXHP | RES_TELE | UNIQUE | SELF_DARK_1 | PASS_WALL |
 F:COLD_BLOOD | OPEN_DOOR | BASH_DOOR | DROP_4D2 | DROP_GREAT | MOVE_BODY |
 F:DRAGON | IM_FIRE | RES_COLD | RES_WATE | CAN_FLY | RES_ACID | NO_STUN |
@@ -22269,7 +22273,7 @@ D: hunting for is a backpack full of loot.
 N:1232:Lorgan, Chief of the Easterlings
 G:p:v
 I:120:11d176:25:120:10:150
-W:36:2:999:1452:0:0
+W:36:2:999:3630:0:0
 B:HIT:HURT(6d7)
 B:HIT:HURT(6d7)
 B:HIT:HURT(3d9)
@@ -22347,9 +22351,9 @@ D:A small draconian creature with a rooster's head; its gaze brings death,
 D: and its touch brings poverty.
 
 N:1236:Moe, the Cyclops
-G:P:G
+G:P:t
 I:132:12d242:22:115:18:500
-W:49:3:999:14641:0:0
+W:49:3:999:12221:0:0
 B:HIT:HURT(13d9):STUN(3d4, 60%)
 B:HIT:HURT(13d9):STUN(3d4, 60%)
 B:TOUCH:FIRE(5d6):ACID(3d6, 30%)
@@ -22375,7 +22379,7 @@ B:BITE:HURT(5d10):COLD(3d10)
 B:BITE:COLD(3d10)
 B:CLAW:COLD(3d10)
 B:CLAW:COLD(2d10):CUT(2d8, 55%)
-F:REFLECTING | DROP_4D2 | ANIMAL | FORCE_SLEEP |
+F:REFLECTING | DROP_4D2 | ANIMAL | FORCE_SLEEP | WILD_SNOW |
 F:REGENERATE | IM_COLD | HURT_FIRE | NO_CONF | NO_SLEEP | AURA_COLD
 F:DROP_CORPSE | POS_GAIN_AC | POS_SEE_INVIS
 P:Copy:Kutar:Mauler
@@ -22389,7 +22393,7 @@ D: until you catch the cold glint in its eyes.
 N:1238:Scrupiox, the Nightcrawler
 G:W:D
 I:125:66d99:20:175:10:400
-W:63:4:999:23232:0:0
+W:63:4:999:46464:0:0
 B:STING:HURT(13d12):LOSE_CON
 B:STING:HURT(13d12):LOSE_CON
 B:BITE:ACID(13d13):DRAIN_EXP(40d6)
@@ -22432,7 +22436,7 @@ D: another like it, and presume it must be the last of its species.
 N:1240:Nidaros the Clairvoyant
 G:p:B
 I:121:22d44:100:66:0:160
-W:33:3:999:2420:0:0
+W:33:3:999:2662:0:0
 B:HIT:HURT(7d7):CONFUSE
 B:HIT:HURT(6d6):TERRIFY
 F:MALE | HAS_LITE_2 | HUMAN | UNIQUE | FORCE_MAXHP
@@ -22487,9 +22491,9 @@ D:feather of Ma'at, the goddess of truth. Those that are lighter are
 D:guided to Osiris, those that are not are devoured by Ammit.
 
 N:1243:Ammit, the Devourer
-G:H:U
+G:H:h
 I:135:60d100:30:135:80:530
-W:73:2:999:36300:0:0
+W:73:2:999:37510:0:0
 B:BITE:FIRE(12d12)
 B:BITE:TERRIFY(12d12)
 B:BITE:FIRE(12d12)
@@ -22497,7 +22501,7 @@ B:BITE:TERRIFY(12d12)
 F:UNIQUE | FEMALE | KILL_BODY | OPEN_DOOR | BASH_DOOR |
 F:FORCE_SLEEP | FORCE_MAXHP | EVIL | DEMON | CAN_SWIM |
 F:ONLY_ITEM | DROP_3D2 | DROP_4D2 | DROP_GOOD |
-F:NO_SLEEP | NO_CONF | RES_DARK | RIDING |
+F:NO_SLEEP | NO_CONF | RES_DARK | RIDING | EGYPTIAN2 |
 F:RES_POIS | RES_FIRE | AURA_FIRE | AURA_FEAR |
 F:DROP_CORPSE | DROP_SKELETON
 P:Copy:Half-Giant:Mauler
@@ -22551,7 +22555,7 @@ D:serpent god embodies chaos and darkness.
 N:1246:Thoth, the Voice of Ra
 G:Y:g
 I:125:45d100:20:95:50:100
-W:60:2:999:30000:0:0
+W:60:2:999:26620:0:0
 B:HIT:HURT(5d5)
 B:HIT:HURT(5d5)
 F:UNIQUE | OPEN_DOOR | BASH_DOOR | MALE |
@@ -22616,7 +22620,7 @@ B:HIT:COLD(2d7)
 B:HIT:COLD(2d7)
 F:RAND_25
 F:EMPTY_MIND | BASH_DOOR | CAN_FLY | NONLIVING | HURT_FIRE |
-F:EVIL | RES_POIS | IM_COLD |
+F:EVIL | RES_POIS | IM_COLD | WILD_SNOW |
 F:NO_CONF | NO_SLEEP | NO_FEAR | AURA_COLD
 F:POS_GAIN_AC | POS_HOLD_LIFE
 P:Copy:Human:Rage-Mage
@@ -22666,7 +22670,7 @@ D:untouched by age. All creatures of the deep seas answer to his call.
 
 N:1252:Shrieking eel
 G:l:D
-I:113:11d11:22:40:10:100
+I:114:11d11:22:40:10:100
 W:23:2:75:150:0:0
 B:BITE:HURT(4d7):CUT(2d3, 50%)
 F:ANIMAL | AQUATIC | WILD_OCEAN | RES_WATE | FRIENDS(1d4)
@@ -22709,7 +22713,7 @@ D:Metatron is an imposing and immensely powerful figure... but it is his low
 D:cunning you truly fear.
 
 N:1254:Kundry, Queen of the Lost Haven
-G:p:B
+G:p:T
 I:132:43d121:100:86:0:120
 W:69:2:999:41140:0:0
 B:TOUCH:HURT(5d9):SLOW:STUN(4d4, 80%)
@@ -22738,7 +22742,7 @@ P:Copy:Dunadan:Mage
 N:1255:Gazhak, the Ogre Tyrant
 G:O:r
 I:123:13d151:40:110:20:500
-W:38:3:999:4000:0:0
+W:38:3:999:5000:0:0
 B:HIT:HURT(8d9):STUN(4d4, 44%)
 B:HIT:HURT(8d9)
 B:GAZE:TERRIFY
@@ -22761,7 +22765,7 @@ D: for lunch.
 N:1256:Baba Yaga
 G:O:G
 I:121:33d66:33:99:5:110
-W:43:1:999:8228:0:0
+W:43:1:999:9339:0:0
 B:GAZE:PARALYZE:INERTIA
 B:TOUCH:POIS(2d46)
 B:HIT:HURT(7d8):TERRIFY
@@ -22769,7 +22773,7 @@ B:TOUCH:DRAIN_CHARGES:DISENCHANT(4d8, 40%)
 A:CAUSE_2(1d3)
 F:UNIQUE | FEMALE | CAN_FLY | FORCE_SLEEP | FORCE_MAXHP | MOVE_BODY |
 F:ONLY_ITEM | DROP_2D2 | DROP_GOOD | CAN_SWIM | EVIL | GIANT | REGENERATE |
-F:SMART | TAKE_ITEM | OPEN_DOOR | RES_WATE | RES_NETH | RES_DISE |
+F:SMART | TAKE_ITEM | OPEN_DOOR | RES_WATE | RES_NETH | RES_DISE | WILD_SNOW |
 F:RES_FIRE | RES_POIS | RES_CHAO | RES_ACID | RES_SOUN | DROP_CORPSE |
 F:NO_SLEEP | NO_CONF | WILD_SWAMP | WILD_WOOD | CAN_SPEAK | RES_TELE |
 S:FREQ_37 |
@@ -22868,7 +22872,7 @@ B:HIT:HURT(14d16):CUT(6d10)
 B:CRUSH:HURT(14d16):STUN(6d8)
 B:CRUSH:SHATTER(14d16)
 F:UNIQUE | MALE | FORCE_MAXHP | FORCE_SLEEP | EVIL | KILL_BODY |
-F:ONLY_ITEM | DROP_3D2 | DROP_GOOD | DROP_GREAT | DROP_CORPSE |
+F:ONLY_ITEM | DROP_3D2 | DROP_GOOD | DROP_GREAT | DROP_CORPSE | RES_DISI |
 F:TAKE_ITEM | KILL_WALL | CAN_FLY | RES_FIRE | RES_ELEC | RES_ACID | RES_DARK
 F:RES_CHAO | RES_NETH | RES_SOUN | RES_WALL | NO_CONF | POS_GAIN_AC |
 F:POS_SEE_INVIS | EGYPTIAN | NO_QUEST
@@ -22907,7 +22911,7 @@ D:A powerful sorceress, she believes you may have stolen the lost treasure of
 D:Rarfus, and is willing to regain it by any means necessary.
 
 N:1262:Eskimo
-G:p:w
+G:p:K
 I:125:121d22:27:99:10:180
 W:43:5:999:8228:0:0
 B:HIT:COLD(7d7):CUT(5d5)
@@ -22917,7 +22921,7 @@ B:HIT:COLD(7d6)
 F:UNIQUE | MALE | HUMAN | SELF_LITE_1 | FORCE_MAXHP | AURA_COLD | CAN_SWIM |
 F:DROP_2D2 | DROP_GOOD | ONLY_ITEM | OPEN_DOOR | DROP_CORPSE | DROP_SKELETON
 F:IM_COLD | RES_SHAR | RES_POIS | NO_CONF | NO_STUN | NO_SLEEP | FORCE_SLEEP
-F:POS_TELEPATHY
+F:WILD_SNOW | POS_TELEPATHY
 S:1_IN_4
 S:BR_COLD | BA_COLD(1d132+40) | BO_ICE(10d10+132) | SHOOT(88)
 P:Copy:Human:Warrior-Mage
@@ -22980,7 +22984,7 @@ G:h:g
 I:128:44d187:30:200:15:100
 W:83:3:999:72963:0:0
 B:HIT:HURT(10d10):CUT(12d16)
-B:TOUCH:LOSE_ALL(8d8):DRAIN_CHARGES(4d9, 40%)
+B:TOUCH:LOSE_ALL:DRAIN_CHARGES(4d9, 40%)
 B:HIT:NEXUS(6d10):GRAVITY(4d9, 40%)
 F:UNIQUE | GOOD | MALE | FORCE_MAXHP | MOVE_BODY | NO_QUEST | REGENERATE |
 F:ONLY_ITEM | DROP_3D2 | DROP_2D2 | DROP_GOOD | DROP_GREAT | EGYPTIAN
@@ -23024,7 +23028,7 @@ D:famously the sun-god Ra; but his true nature remains elusive.
 N:1267:Mummy king
 G:z:W
 I:126:11d220:40:121:15:150
-W:56:4:999:9559:0:0
+W:56:4:999:9922:0:0
 B:CLAW:HURT(8d8):LOSE_CON
 B:CLAW:DISEASE(6d6):UNLIFE(6d6):BLIND(50%)
 B:GAZE:VAMP(8d8):DRAIN_EXP(80d6)
@@ -23047,7 +23051,7 @@ D:The mightiest of all mummies, leaders in death as they were in life, the
 D:mummy kings recognize no master and know no purpose other than to become
 D:mightier still.
 
-N:1268:Mummified sorceror
+N:1268:Mummified sorcerer
 G:z:r
 I:128:22d55:25:70:10:150
 W:47:3:999:6050:36300:1267
@@ -23068,13 +23072,13 @@ S:S_MONSTER | S_UNDEAD | CAUSE_4 | MIND_BLAST | HASTE | BO_MANA |
 S:DETECT_MONSTERS | MAPPING | DETECT_TRAPS | BA_COLD(10d10+144)
 O:DROP_MAGE
 D:A powerful magician in life, his skills appear to have been only sharpened
-D:by death; wrapped in blood-red linen, the mummy sorceror advances, no
+D:by death; wrapped in blood-red linen, the mummy sorcerer advances, no
 D:longer held back by the weaknesses and mundane needs of the living.
 
 N:1269:Serpopard
 G:H:U
 I:140:40d27:40:99:0:200
-W:58:4:999:2178:0:0
+W:58:4:999:2541:0:0
 B:BITE:HURT(4d8):CUT(3d7)
 B:BITE:HURT(4d8):POISON(5d9):BLIND(3d3, 50%)
 B:CLAW:HURT(4d8):CUT(4d7)
@@ -23092,7 +23096,7 @@ D:it closing in, and then its razor-sharp claws cut you open.
 N:1270:Sha
 G:H:r
 I:144:22d121:30:128:20:200
-W:65:4:999:12826:0:0
+W:65:4:999:18150:0:0
 B:BITE:HURT(5d12):CUT(5d7):CHAOS(4d6, 40%)
 B:BITE:HURT(5d12):CUT(5d7):ELEC(4d6)
 B:BUTT:HURT(8d14):STUN(6d6)
@@ -23134,7 +23138,7 @@ D:finding helpers should she need them.
 N:1272:Flying fishrooster
 G:H:W
 I:142:18d121:30:262:15:1000
-W:73:4:999:15730:0:0
+W:73:4:999:21780:0:0
 B:CRUSH:FORCE(15d15)
 B:CRUSH:HURT(12d12)
 B:CRUSH:GRAVITY(5d5)
@@ -23209,7 +23213,7 @@ D:An ambitious captain of men, infamous for slaying his brother,
 D:enslaving his nephew and usurping their lands.
 
 N:1276:Sea giant
-G:P:B
+G:P:T
 I:123:22d55:30:95:20:400
 W:45:3:999:3630:0:0
 B:HIT:HURT(7d10):STUN(4d4, 44%)
@@ -23230,7 +23234,7 @@ D:An aquatic relative of the ice giants, almost twenty feet tall, and full
 D:of dark cunning.
 
 N:1277:Aegir, God-King of the Sea Giants
-G:P:G
+G:P:t
 I:129:44d209:30:160:15:1000
 W:77:3:999:55660:0:0
 B:HIT:COLD(11d11):CONFUSE(5d5):STUN(5d5, 80%)
@@ -23242,7 +23246,7 @@ F:FORCE_SLEEP | FORCE_MAXHP | MOVE_BODY | RANGED_MELEE |
 F:ONLY_ITEM | DROP_3D2 | DROP_GOOD | DROP_GREAT
 F:SMART | TAKE_ITEM | BASH_DOOR | HAS_LITE_2 |
 F:CAN_SWIM | REGENERATE | IM_ACID | IM_COLD | IM_FIRE
-F:RES_WATE | RES_SOUN | NO_SLEEP | NO_CONF
+F:RES_WATE | RES_SOUN | NO_SLEEP | NO_CONF | NORSE | NORSE2
 P:Copy:Half-Titan:Beastmaster
 P:Stats:1:0:0:1:1:2
 P:Life:105
@@ -23290,7 +23294,7 @@ W:18:1:35:90:0:0
 B:HIT:COLD(4d5)
 B:HIT:ACID(4d5)
 F:EMPTY_MIND | BASH_DOOR | COLD_BLOOD |
-F:RES_ELEC | IM_COLD | RES_POIS | RES_WATE | HURT_FIRE
+F:RES_ELEC | IM_COLD | RES_POIS | RES_WATE | HURT_FIRE | WILD_SNOW
 F:NO_CONF | NO_SLEEP | NO_FEAR | NONLIVING
 F:POS_GAIN_AC | POS_HOLD_LIFE
 S:FREQ_10 |
@@ -23390,7 +23394,7 @@ D:he claims to speak for is not truly on his side.
 N:1286:Castamir the Usurper
 G:p:v
 I:121:11d88:21:108:20:150
-W:38:2:999:1452:0:0
+W:38:2:999:3000:0:0
 B:HIT:HURT(5d5)
 B:HIT:HURT(5d5)
 B:HIT:HURT(5d5)
@@ -23473,7 +23477,7 @@ D:who stand in the way of his quest for more wealth and power.
 N:1290:Arachnotron
 G:S:W
 I:120:32d56:25:75:10:170
-W:52:7:999:3000:0:0
+W:52:7:999:3872:0:0
 B:CRUSH:HURT(5d5)
 B:SPIT:PLASMA(6d6)
 F:DEMON | NONLIVING | FORCE_SLEEP | RES_PLAS | EVIL | ONLY_ITEM | STUPID |
@@ -23506,7 +23510,7 @@ D:A silently creeping spy from Hell.
 N:1292:The Gospel of Mug
 G:?:b
 I:128:111d15:20:125:15:10
-W:56:255:999:1500:0:0
+W:56:255:999:5000:0:0
 B:TOUCH:SLOW
 B:TOUCH:EAT_GOLD
 B:TOUCH:EAT_ITEM
@@ -23635,7 +23639,7 @@ D:A great purple rat with sharp teeth and sorcerous powers.
 N:1300:Death pumpkin
 G:#:o
 I:120:66d44:30:75:15:500
-W:45:4:999:2178:0:0
+W:45:4:999:3509:0:0
 B:CRUSH:HURT(5d9):STUN(3d3)
 B:BITE:HURT(7d9):CUT(6d9):UNLIFE(4d6)
 B:BITE:HURT(6d9):UNLIFE(4d6)
@@ -23661,7 +23665,7 @@ B:BITE:HURT(3d8):CUT(2d4)
 B:CLAW:HURT(2d8):CUT(2d8)
 B:KICK:HURT(2d8):STUN(2d4)
 F:WILD_MOUNTAIN | BASH_DOOR | RAND_25 | ANIMAL | RIDING | FRIENDS(4d2)
-F:DROP_SKELETON | DROP_CORPSE | POS_GAIN_AC
+F:WILD_SNOW | DROP_SKELETON | DROP_CORPSE | POS_GAIN_AC
 P:Copy:Demigod:Warrior
 P:Body:Horse
 P:Speed:+7
@@ -23677,7 +23681,7 @@ B:HIT:HURT(5d9)
 B:HIT:HURT(2d9):EAT_ITEM
 B:HIT:HURT(2d9):EAT_ITEM
 A:LITE(3d3)
-F:NO_QUEST | MALE | FORCE_MAXHP | CAN_SPEAK | SELF_LITE_2
+F:NO_QUEST | MALE | FORCE_MAXHP | FORCE_SLEEP | CAN_SPEAK | SELF_LITE_2
 F:REGENERATE | NO_CONF | NO_SLEEP |
 F:RES_TELE | HUMAN |
 F:ONLY_ITEM | DROP_1D2 | DROP_GOOD | DROP_GREAT | UNIQUE |
@@ -23695,7 +23699,7 @@ P:Speed:+14
 N:1303:The Resurrection Machine
 G:g:R
 I:152:128d121:80:192:1:500
-W:100:2:999:121000:0:0
+W:100:2:999:146410:0:0
 A:ELEC(8d8)
 F:FORCE_SLEEP | FORCE_MAXHP | FIXED_UNIQUE | RES_TELE | NEVER_BLOW |
 F:KILL_WALL | UNIQUE | COLD_BLOOD | EMPTY_MIND | OPEN_DOOR | BASH_DOOR |
@@ -23714,6 +23718,1762 @@ D:perfectly, down to the last molecule on the flaming sword. You wonder
 D:what mad scientist designed this contraption, and whether he was also
 D:responsible for the Cloning Pits...
 
+# Salmiak additions
+
+N:1304:Spulga, the Troll Priestess
+G:T:I
+I:123:121d13:20:115:20:200
+W:40:4:999:3630:0:0
+B:HIT:HURT(2d8):STUN(1d4,20%)
+B:HIT:HURT(2d8):STUN(1d4,20%)
+B:BITE:HURT(6d4)
+F:UNIQUE | FEMALE | CAN_SPEAK |
+F:FORCE_MAXHP | DROP_SKELETON | DROP_CORPSE
+F:ESCORT | DROP_2D2 | DROP_GOOD |
+F:OPEN_DOOR | BASH_DOOR |
+F:EVIL | TROLL | RES_FIRE | RES_ELEC | RES_POIS | RES_DARK | NO_CONF | NO_SLEEP
+P:Copy:Half-Troll:Priest
+P:Speed:+5
+S:1_IN_3 |
+S:S_KIN | BLINK | SCARE | HEAL
+O:DROP_PRIEST_EVIL
+D:She's the greatest troll who ever lived, the spiritual mother of troll
+D:religion, the strategist who masterminded trollkind's combined effort
+D:to wrest their ancient cave back from orcs... well, at least she is
+D:if you take all her claims at face value.
+
+N:1305:Pryftidustulyx, the Communist Dragon
+G:D:r
+I:132:79d121:20:175:70:2000
+W:85:4:999:64000:0:0
+B:CLAW:HURT(5d14)
+B:CLAW:HURT(5d14)
+B:BITE:HURT(11d14):POISON(11d14):CUT(11d14, 10%)
+B:CRUSH:HURT(11d14):STUN(5d5, 55%)
+A:POISON(4d7)
+F:UNIQUE | MALE | CAN_SPEAK |
+F:FORCE_SLEEP | FORCE_MAXHP | CAN_FLY |
+F:ONLY_ITEM | DROP_2D2 | DROP_3D2 | DROP_4D2 | DROP_GOOD | SELF_DARK_2 |
+F:OPEN_DOOR | BASH_DOOR | MOVE_BODY | RES_NETH | RES_CHAO | RES_DARK |
+F:EVIL | DRAGON | IM_ACID | IM_POIS | RES_FIRE | RES_COLD | RIDING |
+F:NO_CONF | NO_SLEEP
+F:DROP_CORPSE | POS_SEE_INVIS | POS_GAIN_AC | POS_TELEPATHY
+P:Copy:Half-Titan:Beastmaster
+P:Stats:3:0:0:0:3:3
+P:Life:110
+P:Body:Dragon
+S:FREQ_42 | BR_ACID | BR_POISON | BR_NUKE | BR_PLASMA | BR_DARK |
+S:CONFUSE | SCARE | DETECT_OBJECTS
+D:As a baby, Pryftidustulyx was abandoned on a remote but inhabited island
+D:and discovered by a group of Communist rebels, who found in his instinctive
+D:eating habits a perfect match for their own aims and happily adopted him as
+D:their pet. Growing up on a rich, fatty diet, the young Pryftidustulyx grew
+D:to a monumental size, maybe the largest of all dragons and certainly the
+D:most spoiled; but the Communists eventually told him to leave after his
+D:exorbitant demands for tobacco became impossible to satisfy. He now prowls
+D:the dungeons looking for another delicious snack; clouds of smoke obscure
+D:your vision as the dragon approaches, and you wonder how - or if - he can
+D:see who he's about to eat...
+
+N:1306:The Wicked Witch of the South-East
+G:p:L
+I:121:17d121:66:86:5:110
+W:40:3:999:9000:0:0
+B:HIT:HURT(4d7)
+B:HIT:HURT(4d7):DRAIN_CHARGES(2d7, 50%)
+B:HIT:HURT(4d7):DRAIN_CHARGES(2d7, 50%)
+B:GAZE:BLIND(50%):PARALYZE(50%)
+F:UNIQUE | FEMALE | CAN_SPEAK |
+F:FORCE_SLEEP | FORCE_MAXHP | MOVE_BODY |
+F:ONLY_ITEM | DROP_2D2 | DROP_GOOD | DROP_GREAT | CAN_SWIM | CAN_FLY |
+F:SMART | TAKE_ITEM | OPEN_DOOR | RES_NETH
+F:EVIL | HUMAN | REGENERATE | DROP_CORPSE |
+F:RES_FIRE | RES_POIS | RES_ELEC | RES_COLD | RES_CHAO |
+F:NO_SLEEP | NO_CONF | DUNGEON_35 | NO_QUEST | SELF_DARK_1
+S:FREQ_40 |
+S:BA_FIRE | HEAL | BRAIN_SMASH | S_ANIMAL | TELE_SELF | DISPEL_MAGIC |
+S:SHRIEK | DARKNESS | BA_DARK(6d6+66)
+O:DROP_MAGE
+P:Copy:Dunadan:Mage
+D:This old hag looks ugly and wizened in her overlong robe, yet her very
+D:presence still radiates great power. She has used dark magic to conquer
+D:the land of Oz and bind its inhabitants to servitude; the local animals
+D:attend to her needs and obey her every command, be it unwillingly.
+
+N:1307:Burning bush
+G:#:r
+I:110:14d8:15:30:0:80
+W:26:3:999:40:0:0
+B:ENGULF:FIRE(3d4)
+A:FIRE(2d4)
+F:IM_FIRE | RES_POIS | DUNGEON_35 | NEVER_MOVE | FRIENDS(1d4, 60%)
+F:STUPID | EMPTY_MIND |
+F:NO_CONF | NO_SLEEP | NO_FEAR
+P:Copy:Ent:Tourist
+P:Life:85
+P:Body:Tree
+S:1_IN_5
+S:BR_FIRE
+D:A notorious hazard of the Ozmanian outback.
+
+N:1308:Blue-ringed octopus
+G:l:v
+I:110:10d8:12:30:15:10
+W:20:1:50:60:0:0
+B:BITE:PARALYZE:POISON(2d15)
+B:BITE:PARALYZE:POISON(2d15)
+F:RAND_25 | RES_POIS | RES_WATE | AQUATIC | ANIMAL | DUNGEON_35 | ATTR_MULTI
+F:POS_GAIN_AC
+P:Copy:Human:Warrior
+P:Body:Wisp
+D:This strangely iridescent cephalopod is very small for an octopus, and
+D:looks harmless and unassuming, but its venomous bite is best left
+D:unexperienced.
+
+N:1309:Box jellyfish
+G:j:I
+I:110:7d7:22:20:30:1
+W:20:1:50:25:0:0
+B:STING:POISON(2d25):LOSE_CON(10%)
+B:STING:POISON(2d25):DISEASE(10%)
+A:POISON(2d15)
+F:IM_POIS | RES_WATE | AQUATIC | ANIMAL | DUNGEON_35 | FRIENDS(1d5, 20%)
+P:Copy:Snotling:Tourist
+P:Body:Wisp
+D:These little jellyfish have deadlier venom than any other creature of the
+D:Ozmanian billabongs; but luckily they are fragile and easily disposed of.
+
+N:1310:Tiger snake
+G:J:m
+I:120:12d10:35:40:0:120
+W:18:1:50:65:2000:1311
+B:BITE:HURT(2d2):POISON(5d5)
+F:BASH_DOOR | CAN_SWIM | WILD_WOOD | WILD_GRASS | WILD_WASTE |
+F:ANIMAL | DUNGEON_35 | RES_POIS | DROP_SKELETON | DROP_CORPSE
+F:POS_GAIN_AC
+P:Copy:Human:Rogue
+P:Life:65
+P:Body:Snake
+D:Watch out! A poisonous snake!
+
+N:1311:Taipan
+G:J:M
+I:123:12d13:15:42:10:200
+W:28:3:50:242:0:0
+B:BITE:HURT(2d2):POISON(3d25)
+B:BITE:HURT(2d2):POISON(3d25)
+F:RAND_25 | BASH_DOOR | CAN_SWIM | WILD_GRASS | WILD_WASTE | FORCE_SLEEP |
+F:ANIMAL | DUNGEON_35 | IM_POIS | DROP_SKELETON | DROP_CORPSE
+F:POS_GAIN_AC
+P:Copy:Human:Rogue
+P:Life:70
+P:Body:Snake
+D:The inland taipan has the second-deadliest snake venom in the universe,
+D:behind only the Gwarlian megaviper, which is so lethal it can crash the
+D:game from thirty files away.
+
+N:1312:Flaming crow
+G:B:r
+I:120:3d8:25:16:1:15
+W:14:2:40:22:0:0
+B:BITE:FIRE(1d6)
+B:CLAW:FIRE(1d4)
+A:FIRE(1d2)
+F:ANIMAL | CAN_FLY | FRIENDS | WILD_WASTE | WILD_MOUNTAIN | WILD_WOOD
+F:IM_FIRE | DUNGEON_35 | DROP_CORPSE | POS_GAIN_AC
+P:Copy:Human:Warrior-Mage
+P:Body:Bird
+S:1_IN_15 | BR_FIRE
+D:At least it's not poisonous like most other creatures native to this
+D:bizarre land.
+
+N:1313:Giant funnel-web spider
+G:S:p
+I:120:10d15:8:40:80:70
+W:22:2:60:125:0:0
+B:BITE:HURT(1d5):POISON(1d14):CONFUSE(1d4, 25%)
+B:BITE:HURT(1d5):POISON(1d14):LOSE_STR(50%)
+F:WEIRD_MIND | BASH_DOOR | WILD_ALL |
+F:DUNGEON_35 | ANIMAL | RES_POIS |
+F:DROP_SKELETON | DROP_CORPSE | POS_GAIN_AC
+P:Copy:Hobbit:Rogue
+P:Body:Spider
+S:DETECT_MONSTERS
+D:The deadliest, most venomous spider in the Ozmanian bush.
+
+N:1314:Trapdoor spider
+G:S:I
+I:110:10d6:8:30:80:40
+W:10:2:35:20:0:0
+B:BITE:HURT(1d6)
+B:BITE:HURT(1d4):POISON(1d8)
+B:BITE:HURT(1d4):POISON(1d8)
+F:WEIRD_MIND | BASH_DOOR | WILD_ALL | FRIENDS(1d6, 30%)
+F:DUNGEON_35 | ANIMAL | RES_POIS
+F:DROP_SKELETON | DROP_CORPSE | POS_GAIN_AC |
+S:DETECT_MONSTERS
+P:Copy:Snotling:Rogue
+P:Body:Spider
+D:A relatively harmless yet annoying arachnid.
+
+N:1315:Drop bear
+G:q:V
+I:110:10d12:10:45:0:400
+W:22:255:40:35:0:0
+B:CLAW:HURT(1d6)
+B:BITE:HURT(1d8)
+F:DUNGEON_35 | ANIMAL | DROP_CORPSE | POS_GAIN_AC
+P:Copy:Human:Mauler
+P:Body:Bear
+D:This much-dreaded creature lurks in the canopy, waiting for the chance to
+D:get the drop on an unsuspecting victim. On the ground it is awkward and
+D:ungainly, and its offense greatly relies on the success of its initial
+D:attack.
+
+N:1316:Wallaby
+G:q:p
+I:118:8d9:40:40:10:50
+W:11:2:30:40:0:0
+B:BITE:HURT(2d3):CUT(2d3)
+B:KICK:HURT(7d1):STUN(2d3, 25%)
+F:BASH_DOOR | WILD_GRASS | WILD_WASTE | DUNGEON_35 | ANIMAL | FRIENDS(2d5, 75%)
+F:RAND_25 | DROP_60 | DROP_CORPSE | POS_GAIN_AC
+P:Copy:Snotling:Rogue
+P:Body:Puppy
+S:1_IN_8
+S:BLINK
+D:A smaller relative of the fearsome Ozmanian kangaroo, the wallaby is not
+D:as dangerous but still kicks hard.
+
+N:1317:Kangaroo
+G:q:h
+I:125:12d18:40:40:5:300
+W:23:2:50:225:0:0
+B:BITE:HURT(3d3):CUT(3d3)
+B:KICK:HURT(11d1):CUT(3d3)
+B:KICK:HURT(11d1):STUN(3d3, 50%)
+F:BASH_DOOR | WILD_GRASS | WILD_WASTE | DUNGEON_35 | ANIMAL | FRIENDS(2d4, 60%)
+F:RAND_25 | DROP_90 | DROP_CORPSE | POS_GAIN_AC | RES_FIRE
+P:Copy:Snotling:Rogue
+P:Body:Hound
+S:1_IN_4
+S:BLINK
+D:The most famous of the legendary animals of Oz, it kicks you to ground
+D:with hoppers seemingly made of steel.
+
+N:1318:Tin golem
+G:g:K
+I:110:25d8:12:50:10:350
+W:19:2:40:100:0:0
+B:HIT:HURT(6d8):CUT(3d7, 75%)
+F:DUNGEON_35 | COLD_BLOOD | EMPTY_MIND | BASH_DOOR | WILD_WOOD |
+F:RES_FIRE | RES_COLD | RES_ELEC | IM_POIS |
+F:NO_CONF | NO_SLEEP | NO_FEAR | NONLIVING
+F:POS_GAIN_AC | POS_HOLD_LIFE
+P:Copy:Golem:Warrior
+D:A man-shaped metallic creature, swinging a sharp axe.
+
+N:1319:Adobe golem
+G:g:h
+I:109:14d11:12:66:10:300
+W:22:6:60:90:0:0
+B:HIT:HURT(3d4):SLOW
+B:HIT:HURT(3d4):PARALYZE(80%)
+B:HIT:HURT(3d4):DISEASE
+F:EMPTY_MIND | COLD_BLOOD | BASH_DOOR |
+F:IM_FIRE | RES_COLD | RES_ELEC | IM_POIS |
+F:HURT_ROCK | NONLIVING |
+F:NO_CONF | NO_SLEEP | NO_FEAR
+F:POS_GAIN_AC | POS_HOLD_LIFE
+P:Copy:Golem:Warrior
+D:Don't go anywhere near it or it will brick you.
+
+N:1320:Dingo
+G:C:U
+I:120:5d6:30:30:15:50
+W:10:1:30:20:100:211
+B:BITE:HURT(1d6)
+F:RAND_25 |
+F:FRIENDS(5d1) |
+F:BASH_DOOR | WILD_WOOD | WILD_WASTE | DUNGEON_35 | ANIMAL
+F:DROP_CORPSE | POS_GAIN_AC
+P:Copy:Human:Bard
+P:Life:84
+P:Body:Puppy
+D:They don't sound too bad actually... as long as they're far enough away.
+
+N:1321:Lion
+G:f:m
+I:118:12d12:30:40:5:200
+W:14:2:50:33:500:339
+B:CLAW:HURT(1d6)
+B:CLAW:HURT(1d6)
+B:BITE:HURT(1d8)
+F:BASH_DOOR | WILD_GRASS | WILD_WOOD | WILD_MOUNTAIN | ANIMAL | DUNGEON_35
+F:FRIENDS(2d3, 50%) | DROP_SKELETON | DROP_CORPSE | POS_GAIN_AC | RIDING
+P:Copy:Human:Rogue
+P:Skills:0:-7:0:0:0:0:0:0
+P:ExtraSkills:0:-4:0:0:0:0:0:0
+P:Body:Hound
+D:A large, frightsome feline, especially dangerous in groups.
+
+N:1322:Bunyip
+G:H:s
+I:115:76d10:22:64:5:700
+W:26:2:60:700:10000:668
+B:WAIL:TERRIFY
+B:BITE:HURT(2d10):CUT(1d10):TERRIFY
+B:CRUSH:HURT(7d6)
+B:CRUSH:HURT(7d6)
+F:ONLY_ITEM | DROP_1D2 | WILD_SHORE
+F:OPEN_DOOR | BASH_DOOR | EVIL | RES_POIS | RES_ACID | RES_WATE |
+F:ANIMAL | DUNGEON_35 | NO_CONF | NO_SLEEP | NO_FEAR | CAN_SWIM |
+F:DROP_CORPSE | POS_GAIN_AC
+P:Copy:Human:Mauler
+P:Body:Elephant
+S:FREQ_15 |
+S:SCARE | BR_CHAOS(10%) | SHRIEK | BERSERK
+D:A massive, amphibious creature, the bunyip looks like a strange crossbreed
+D:of a dinosaur, a wombat and an elephant seal. The natives of Oz fear it
+D:like no other animal, and speak in hushed tones of its bellowing cry that
+D:portends death.
+
+N:1323:Hopper ant
+G:a:B
+I:112:10d6:10:40:40:10
+W:19:3:36:40:500:1324
+B:BITE:HURT(1d5)
+B:STING:HURT(1d5):POISON(1d5)
+F:RAND_25 | KILL_BODY | DROP_CORPSE | FRIENDS(3d3)
+F:WEIRD_MIND | BASH_DOOR | DUNGEON_35 | ANIMAL | WILD_WOOD
+P:Copy:Snotling:Warrior
+P:Life:80
+P:Body:Ant
+S:1_IN_4 |
+S:BLINK | TELE_TO
+D:A small but annoying ant.
+
+N:1324:Giant mutant ant
+G:a:L
+I:115:19d13:15:70:20:100
+W:28:2:70:250:1500:548
+B:BITE:HURT(2d12)
+B:STING:HURT(2d12):POISON(2d12):DISEASE(10%)
+F:RAND_25 | KILL_BODY | DROP_CORPSE | FRIENDS(3d3, 80%)
+F:WEIRD_MIND | BASH_DOOR | DUNGEON_35 | ANIMAL | WILD_WOOD
+P:Copy:Hobbit:Warrior
+P:Life:90
+P:Speed:+1
+P:Body:Ant
+D:A giant variety of the already dangerous Ozmanian hopper ant, mutated by
+D:radiation.
+
+N:1325:Duck-quacked platypus
+G:H:h
+I:112:9d9:22:30:30:15
+W:15:1:36:15:0:0
+B:BITE:HURT(1d4):CUT(2d4):POISON(2d5)
+F:RES_POIS | RES_FIRE | RES_WATE | CAN_SWIM | ANIMAL | FORCE_SLEEP |
+F:DROP_SKELETON | DROP_CORPSE | RAND_25 | DUNGEON_35
+S:1_IN_8 |
+S:SHRIEK
+P:Copy:Snotling:Tourist
+P:Body:Puppy
+D:An exceedingly strange, vaguely mammalian being, created by some
+D:inexperienced maintainer who had yet to grasp the principles of monster
+D:design.
+
+N:1326:Bush ranger
+G:p:g
+I:112:10d15:36:80:2:160
+W:18:2:50:100:0:0
+B:HIT:HURT(2d5)
+B:HIT:HURT(2d5)
+B:TOUCH:EAT_ITEM
+F:EVIL | MALE | HUMAN | FRIENDS(2d3) | RES_SHAR | DROP_1D2 | DROP_90 | THIEF
+F:RES_POIS | RES_FIRE | DUNGEON_35 | OPEN_DOOR | BASH_DOOR | WILD_WOOD |
+F:DROP_SKELETON | DROP_CORPSE
+S:1_IN_6 | SHOOT(8d6)
+P:Copy:Human:Ranger
+O:DROP_WARRIOR_SHOOT
+D:A hardened survivor of the pitiless bush.
+
+N:1327:Cassowary
+G:B:n
+I:125:32d7:20:55:50:150
+W:27:2:50:250:0:0
+B:BITE:HURT(2d6)
+B:KICK:HURT(3d6):STUN(2d6, 33%)
+B:CLAW:HURT(4d6):CUT(4d6)
+F:OPEN_DOOR | BASH_DOOR | MOVE_BODY | ANIMAL | RIDING | DUNGEON_35
+F:RES_POIS | DROP_CORPSE | POS_GAIN_AC | WILD_WOOD
+P:Copy:Barbarian:Warrior
+P:Body:Giant Bird
+D:This man-sized bird will happily eat anything, including you.
+
+N:1328:Garkain
+G:V:u
+I:115:25d12:15:60:20:170
+W:30:2:60:600:5000:623
+B:CRUSH:HURT(1d9):STUN(1d9, 66%)
+B:TOUCH:POISON(1d9):DRAIN_MANA(1d9, 66%)
+B:BITE:VAMP(1d9):UNLIFE(1d9)
+B:BITE:VAMP(1d9):UNLIFE(1d9)
+F:FORCE_SLEEP | FORCE_MAXHP | DROP_3D2 |
+F:COLD_BLOOD | OPEN_DOOR | BASH_DOOR | REGENERATE | CAN_FLY | RES_NETH |
+F:EVIL | UNDEAD | RES_COLD | IM_POIS | RES_DARK | HURT_LITE | NO_CONF | NO_SLEEP
+F:POS_HOLD_LIFE | POS_SEE_INVIS | WILD_WOOD | DUNGEON_35
+P:Copy:Vampire:Rogue
+P:Body:Vampire
+S:1_IN_6 |
+S:PARALYZE | CONFUSE | SCARE | CAUSE_3 | MIND_BLAST | AMNESIA |
+S:DARKNESS | DETECT_MONSTERS | MAPPING
+D:It lurks in the dark shadows of the deep forest, occasionally driven
+D:into the open when no juicy meal is obliging enough to walk in.
+
+N:1329:Giant yellow toad
+G:R:M
+I:108:3d8:12:16:50:25
+W:15:6:40:7:0:0
+B:BITE:HURT(1d5)
+B:TOUCH:LOSE_CON(20%):POISON(1d4, 20%)
+F:RAND_50 | WILD_SHORE | WILD_SWAMP | RES_POIS |
+F:DROP_CORPSE | ANIMAL | MULTIPLY | DUNGEON_35
+P:Copy:Snotling:Tourist
+P:Life:50
+P:Body:Scrawny
+D:The skin of this large toad glistens with poison. You feel sick just
+D:looking at it.
+
+N:1330:Ozmanian devil
+G:q:n
+I:115:10d10:25:35:15:50
+W:18:2:36:25:100:211
+B:BITE:HURT(3d7):CUT(1d7)
+B:BITE:HURT(3d7):CUT(1d7)
+F:EVIL | DEMON | FRIENDS(2d3, 10%) |
+F:BASH_DOOR | WILD_WOOD | WILD_WASTE | DUNGEON_35 | ANIMAL | DROP_90 |
+F:DROP_CORPSE | POS_GAIN_AC
+P:Copy:Human:Rogue
+P:Skills:0:-7:0:0:0:0:0:0
+P:ExtraSkills:0:-4:0:0:0:0:0:0
+P:Body:Hound
+D:A demonic wolverine, with pockets.
+
+N:1331:Sadie the Rainbow Serpent
+G:J:v
+I:122:16d121:30:95:20:350
+W:40:4:999:6655:0:0
+B:BITE:HURT(2d13):ACID(2d5)
+B:BITE:HURT(2d13):ACID(2d5)
+B:BITE:HURT(2d13):CUT(2d5)
+B:BITE:HURT(2d13):CUT(2d5)
+F:UNIQUE | NO_QUEST | MALE | FEMALE | ATTR_MULTI | CAN_SPEAK | ATTR_ANY |
+F:FORCE_SLEEP | FORCE_MAXHP | SELF_LITE_2 | MOVE_BODY |
+F:ONLY_ITEM | DROP_4D2 | DROP_GOOD | IM_ACID | RES_NEXU | RES_WATE |
+F:OPEN_DOOR | BASH_DOOR | CAN_SWIM | CAN_FLY | DUNGEON_35 |
+F:ANIMAL | RES_FIRE | RES_COLD | RES_ELEC | RES_POIS | RES_SOUN | RES_LITE |
+F:NO_CONF | NO_SLEEP | RIDING | REFLECTING
+F:DROP_CORPSE | POS_GAIN_AC
+P:Copy:Barbarian:Beastmaster
+P:Body:Naga
+S:FREQ_30 | BR_ACID | BR_ELEC | BR_NEXUS | BR_LITE | BR_CONFUSION |
+S:BA_WATER | BLIND | DETECT_MONSTERS | DETECT_OBJECTS
+D:This enormous serpent can drown you in water seemingly at will, and the
+D:people of Oz worship it as a rain deity.
+
+N:1332:Giant wombat
+G:q:u
+I:111:72d10:20:45:100:700
+W:29:3:50:320:0:0
+B:BUTT:HURT(4d5)
+B:BUTT:HURT(4d5)
+B:CRUSH:HURT(5d5):STUN(4d5, 25%)
+F:BASH_DOOR | FRIENDS(3d3, 50%)
+F:ANIMAL | RIDING | DUNGEON_35
+F:DROP_CORPSE | POS_GAIN_AC
+P:Copy:Human:Mauler
+P:Body:Elephant
+S:BERSERK
+D:You thought these big bastards had gone extinct long ago. Apparently
+D:someone forgot to tell them...
+
+N:1333:Mutant manta ray
+G:l:n
+I:121:50d32:25:85:5:1000
+W:40:5:90:1800:0:0
+B:BITE:HURT(6d6):POISON(4d4)
+B:BITE:HURT(6d6):POISON(4d4)
+B:CRUSH:HURT(8d8)
+F:AQUATIC | WILD_OCEAN | RES_WATE | RES_POIS | EVIL | SMART |
+F:ANIMAL
+F:POS_GAIN_AC
+S:1_IN_6
+S:SHOOT(11d11) | BA_WATER(1d80+40)
+P:Copy:Barbarian:Warrior
+P:Body:Fish
+D:Toxic waste has mutated this massive fish, turning it entirely evil and
+D:giving it extra brain capacity. It has somehow acquired - perhaps from
+D:some misguided past hunter - a large collection of harpoons, which it
+D:mercilessly fires at all comers with remarkable force and agility.
+
+N:1334:Brumby
+G:q:L
+I:115:12d10:20:30:0:280
+W:16:2:35:60:0:0
+B:BITE:HURT(1d9)
+B:KICK:HURT(2d6)
+B:KICK:HURT(2d6)
+F:WILD_WASTE | BASH_DOOR | RAND_25 | CAN_CLIMB |
+F:ANIMAL | RIDING | DUNGEON_35 | FRIENDS
+F:DROP_SKELETON | DROP_CORPSE | POS_GAIN_AC
+P:Copy:Demigod:Warrior
+P:Body:Horse
+D:A wild bush horse, often found in large unruly mobs.
+
+N:1335:Yowie
+G:Y:b
+I:120:18d18:15:45:10:250
+W:20:3:50:150:0:0
+B:CLAW:HURT(1d9)
+B:CLAW:HURT(1d9)
+B:BITE:HURT(2d6)
+F:OPEN_DOOR | BASH_DOOR | WILD_MOUNTAIN | WILD_WOOD | WILD_WASTE |
+F:ANIMAL | RES_ELEC | RES_SOUN | CAN_CLIMB | DUNGEON_35
+F:DROP_SKELETON | DROP_CORPSE | POS_GAIN_AC | 
+P:Copy:Human:Mauler
+S:BERSERK
+D:A large, shaggy, ape-like creature reminiscent of the sasquatch, it
+D:approaches with fast, loudly echoing strides.
+
+N:1336:Atomic elemental
+G:E:L
+I:120:45d35:10:96:40:400
+W:49:3:999:1945:0:0
+B:CRUSH:ELEC(3d6):STUN(3d6)
+B:TOUCH:POISON(4d10):DISEASE(2d6)
+A:POISON(4d4)
+F:FORCE_SLEEP | EMPTY_MIND | KILL_ITEM | KILL_BODY |
+F:EVIL | CAN_FLY | RES_ELEC | NONLIVING | IM_POIS | RES_ACID |
+F:NO_CONF | NO_SLEEP | NO_FEAR
+F:POS_GAIN_AC | POS_HOLD_LIFE
+P:Copy:Zombie:Rage-Mage
+S:1_IN_5 |
+S:BA_NUKE(10d10+49)
+D:A towering apparition crackling with energy, it emits an unhealthy-looking
+D:pale light.
+
+N:1337:Greater Cyber Wyrm Angel Daemon Lich
+G:x:W
+I:150:99d99:50:200:1:1000
+W:99:50:999:36663:0:0
+B:SHOW:SHATTER(2d99)
+B:INSULT:VAMP(3d33):UNLIFE(3d33)
+B:DROOL:DRAIN_CHARGES(2d55)
+B:WAIL:DRAIN_MANA(1d77)
+F:FORCE_SLEEP | FORCE_MAXHP | FORCE_DEPTH | ELDRITCH_HORROR |
+F:ATTR_MULTI | RAND_25 | RAND_50 | RIDING |
+F:ONLY_ITEM | DROP_60 | DROP_90 | DROP_1D2 | DROP_2D2 | DROP_3D2 | DROP_4D2 |
+F:DROP_GOOD | STUPID | SMART | CAN_SPEAK | REFLECTING | INVISIBLE | COLD_BLOOD |
+F:EMPTY_MIND | WEIRD_MIND | REGENERATE | SHAPECHANGER | ATTR_ANY |
+F:AURA_FIRE | AURA_ELEC | OPEN_DOOR | BASH_DOOR | PASS_WALL | KILL_WALL |
+F:TAKE_ITEM | KILL_ITEM | ORC | TROLL | GIANT | DRAGON | DEMON | UNDEAD |
+F:EVIL | ANIMAL | GOOD | AURA_COLD | NONLIVING | HURT_ROCK |
+F:RES_ACID | RES_ELEC | RES_FIRE | RES_COLD | RES_POIS | HUMAN |
+F:RES_LITE | RES_DARK | RES_NETH | RES_WATE | RES_PLAS | RES_SHAR | RES_SOUN |
+F:RES_CHAO | RES_NEXU | RES_DISE | RES_WALL | RES_INER | RES_TIME | RES_GRAV |
+F:RES_TELE | NO_FEAR | NO_STUN | NO_CONF | NO_SLEEP |
+F:CAN_SWIM | CAN_FLY | UNIQUE2 | WILD_SHORE |
+F:WILD_OCEAN | WILD_WASTE | WILD_WOOD | WILD_VOLCANO | WILD_MOUNTAIN |
+F:WILD_GRASS | WILD_ALL | WILD_SNOW | SELF_LITE_1 | SELF_LITE_2 |
+F:DROP_SKELETON | DROP_CORPSE | POS_GAIN_AC | POS_SEE_INVIS
+S:1_IN_3 |
+S:DISPEL_MAGIC | ANTI_MAGIC | ROCKET | SHOOT | THROW | HELL_LANCE | HOLY_LANCE | BR_ACID |
+S:BR_ELEC | BR_FIRE | BR_COLD | BR_POISON | BR_NETHER | BR_LITE | BR_DARK | BR_CONF |
+S:BR_SOUND | BR_CHAOS | BR_DISENCHANT | BR_NEXUS | BR_TIME | BR_INERTIA | BR_GRAVITY |
+S:BR_PLASMA | BR_FORCE | BR_MANA | BA_NUKE | BR_NUKE | BA_CHAOS | BR_DISINTEGRATE | BA_ACID |
+S:BA_ELEC | BA_FIRE | BA_COLD | BA_POISON | BA_NETHER | BA_WATER | MANA_STORM | BA_DARK |
+S:DRAIN_MANA | MIND_BLAST | BRAIN_SMASH | CAUSE_1 | CAUSE_2 | CAUSE_3 | CAUSE_4 | BR_SHARDS |
+S:BO_ACID | BO_ELEC | BO_FIRE | BO_COLD | BO_NETHER | BO_WATER | BO_MANA | BO_TIME |
+S:BO_PLASMA | BO_ICE | MISSILE | BLIND | CONFUSE | SLOW | PARALYZE | HASTE | HAND_DOOM |
+S:HEAL | INVULN | BLINK | TELE_SELF | WORLD | TELE_TO | TELE_OTHER | TELE_LEVEL |
+S:PSY_SPEAR | DARKNESS | TRAPS | AMNESIA | ANIM_DEAD | S_KIN | S_CYBER |
+S:S_MONSTER | S_ANT | S_SPIDER | S_HOUND | S_HYDRA | S_DEMON | S_UNDEAD | SHRIEK
+S:S_DRAGON | S_HI_UNDEAD | S_AMBERITE | S_UNIQUE | BA_LITE | POLYMORPH | PULVERISE |
+P:Copy:High-Elf:Warrior-Mage
+P:Life:110
+P:Body:GCWADL
+
+N:1338:Snow leopard
+G:f:W
+I:125:12d10:45:35:0:200
+W:14:2:50:45:900:339
+B:CLAW:HURT(1d6)
+B:CLAW:HURT(1d6)
+B:BITE:HURT(1d5)
+F:BASH_DOOR | WILD_SNOW | WILD_ONLY | ANIMAL | RES_COLD
+F:DROP_SKELETON | DROP_CORPSE | POS_GAIN_AC | RIDING
+P:Copy:Human:Rogue
+P:Skills:0:-7:0:0:0:0:0:0
+P:ExtraSkills:0:-4:0:0:0:0:0:0
+P:Body:Hound
+D:A large, spotted cat, at home in the cold, snowy mountains.
+
+N:1339:Ghost skier
+G:G:V
+I:128:10d15:20:30:10:50
+W:26:2:70:160:1200:508
+B:TOUCH:DRAIN_EXP(20d6)
+B:HIT:HURT(5d5):CUT(3d3)
+F:MALE | EVIL | UNDEAD | RAND_50 | DROP_1D2 | WILD_SNOW | WILD_ONLY |
+F:INVISIBLE | COLD_BLOOD | TAKE_ITEM | PASS_WALL | CAN_FLY |
+F:RES_COLD | IM_POIS | RES_NETH | NO_CONF | NO_SLEEP
+F:POS_SEE_INVIS | POS_HOLD_LIFE
+P:Copy:Spectre:Rogue
+S:1_IN_5 |
+S:DRAIN_MANA | SHRIEK
+D:The skiing ghost of a long-dead warrior, killed on these snowy slopes far
+D:from his home.
+
+N:1340:Polar bear
+G:q:w
+I:115:20d26:25:65:10:800
+W:25:3:60:220:0:0
+B:CLAW:HURT(2d9)
+B:CLAW:HURT(2d9)
+B:BITE:HURT(2d9)
+F:OPEN_DOOR | BASH_DOOR | WILD_SNOW | WILD_ONLY | CAN_CLIMB | CAN_SWIM
+F:ANIMAL | IM_COLD | FRIENDS(1d3, 33%)
+F:DROP_SKELETON | DROP_CORPSE | POS_GAIN_AC | 
+P:Copy:Human:Mauler
+P:Body:Bear
+S:BERSERK
+D:A huge white bear, even larger and more aggressive than its relatives from
+D:warmer climes.
+
+N:1341:Booze hound
+G:Z:U
+I:110:35d10:30:30:0:150
+W:35:100:999:500:0:0
+B:BITE:HURT(2d12)
+B:BITE:HURT(2d12)
+B:BITE:HURT(2d12)
+B:CLAW:HURT(3d3)
+F:FORCE_SLEEP | FRIENDS(3d3) |
+F:BASH_DOOR | RAND_50 |
+F:ANIMAL | NO_CONF | NO_SLEEP |
+F:WILD_WOOD |
+F:DROP_CORPSE | POS_GAIN_AC
+P:Copy:Kutar:Rogue
+P:Skills:0:-7:0:0:0:0:0:0
+P:ExtraSkills:0:-4:0:0:0:0:0:0
+P:SpellStat:Dex
+P:Body:Hound
+S:FREQ_10 | BR_CONFUSION | DETECT_MONSTERS
+D:They don't look very steady on their paws.
+
+N:1342:Freyr, Lord of Plenty
+G:P:M
+I:135:90d90:40:125:10:300
+W:85:3:999:68728:0:0
+B:HIT:HURT(12d9):CUT(9d9)
+B:HIT:HURT(12d9):SLOW
+B:HIT:HURT(12d9):DRAIN_CHARGES
+B:TOUCH:DRAIN_MANA(9d9)
+F:UNIQUE | MALE | RES_POIS | RES_CHAO | RES_DISE | RES_DARK |
+F:RES_LITE | RES_ELEC | RES_COLD | RES_ACID | FORCE_MAXHP | FORCE_SLEEP |
+F:MOVE_BODY | REGENERATE | CAN_FLY | DROP_3D2 | DROP_GOOD | DROP_GREAT |
+F:SMART | OPEN_DOOR | BASH_DOOR | HAS_LITE_2 | RES_GRAV | NO_CONF | NO_FEAR |
+F:POS_SEE_INVIS | RES_INER | NO_QUEST | NORSE
+P:Copy:Amberite:Priest
+P:Stats:0:0:4:0:0:0
+S:FREQ_45 |
+S:BA_LITE | HEAL(720) | TELE_TO | PSY_SPEAR(1d170+150) | ANIM_DEAD |
+S:S_ANIMAL | BA_FIRE(1d595+20) | S_MONSTER | TELE_SELF | BLINK
+D:The god of plenty, virility and good summers, Freyr is a son of Njord and
+D:a descendant of the wise Vanir; he is popular with both his people and the
+D:other gods, and his cunning makes up for what he lacks in brute power.
+
+N:1343:Odin, the All-Father
+G:P:v
+I:137:110d144:35:175:8:500
+W:90:3:999:99999:0:0
+B:HIT:HURT(9d11):FIRE(9d11):CONFUSE
+B:HIT:HURT(9d11):ELEC(9d11):BLIND
+B:HIT:HURT(9d11):FIRE(9d11):SLOW
+B:HIT:HURT(9d11):ELEC(9d11):DISENCHANT
+F:UNIQUE | MALE | FORCE_MAXHP | FORCE_SLEEP | MOVE_BODY | ATTR_MULTI |
+F:ONLY_ITEM | DROP_3D2 | DROP_GOOD | DROP_GREAT
+F:SMART | TAKE_ITEM | BASH_DOOR | HAS_LITE_2 |
+F:NORSE | NO_QUEST | REGENERATE | CAN_SWIM | RES_TELE
+F:RES_DISE | RES_CHAO | RES_INER | RES_LITE | RES_DARK
+F:RES_FIRE | RES_COLD | RES_ACID | RES_ELEC | RES_POIS
+F:NO_CONF | NO_SLEEP |
+F:POS_HOLD_LIFE | POS_SEE_INVIS | POS_TELEPATHY
+P:Copy:Half-Giant:Rune-Knight
+P:Stats:0:3:3:0:0:0
+P:Life:105
+O:DROP_MAGE
+S:1_IN_3 |
+S:PSY_SPEAR(1d180+150) | S_PANTHEON | S_SPECIAL | S_HI_UNDEAD | HAND_DOOM
+S:ANIM_DEAD | TELE_TO | BA_DARK | BA_ELEC(1d270+16) | MANA_STORM(10d10+360)
+S:BA_CHAOS(10d10+180) | BA_NETHER | ANTI_MAGIC | BRAIN_SMASH
+D:The leader of the Aesir, Odin has made great sacrifices in his pursuit of
+D:secret knowledge; he hanged himself on the World-Tree after wounding himself
+D:with his spear, and has forfeited one of his eyes to Mimir's well. He is the
+D:master of Valhalla, the hall of the glorious dead, where the Valkyries and
+D:the Einherjar serve him.
+
+N:1344:Einheri berserker
+G:p:u
+I:133:50d75:30:150:5:350
+W:65:10:999:5000:0:0
+B:HIT:HURT(8d10):CUT(4d5)
+B:HIT:HURT(8d10):CUT(4d5)
+B:HIT:HURT(8d10):CUT(4d5)
+F:HUMAN | UNDEAD | DROP_GOOD | CAN_SWIM | FRIENDS(3d2)
+F:FORCE_SLEEP | ONLY_ITEM | DROP_2D2 | NORSE2 | DUNGEON_39
+F:OPEN_DOOR | BASH_DOOR | RES_NEXU | RES_TELE | MOVE_BODY | IM_FIRE
+F:RES_COLD | RES_ELEC | NO_CONF | NO_SLEEP | NO_FEAR
+F:POS_HOLD_LIFE | POS_SEE_INVIS | POS_GAIN_AC
+P:Copy:Einheri:Berserker
+P:Life:70
+S:BERSERK
+D:A slain hero from Valhalla, out for one last battle.
+
+N:1345:Valkyrie
+G:p:h
+I:140:40d40:40:120:15:250
+W:65:6:999:3500:0:0
+B:HIT:HURT(5d9):CUT(3d9)
+B:HIT:HURT(5d9):CUT(3d9)
+B:HIT:HURT(5d9):CUT(3d9)
+F:HUMAN | FEMALE | SMART | DROP_GOOD | CAN_FLY | FRIENDS(2d4)
+F:FORCE_SLEEP | FORCE_MAXHP | ONLY_ITEM | DROP_2D2 | NORSE2
+F:OPEN_DOOR | BASH_DOOR | RES_DARK | RES_GRAV | RES_COLD |
+F:RES_ELEC | NO_CONF | NO_SLEEP | NO_FEAR | DROP_CORPSE
+F:POS_TELEPATHY | POS_SEE_INVIS | POS_GAIN_AC
+P:Copy:Amberite:Warrior
+P:Stats:2:0:0:0:0:2
+S:1_IN_5
+S:TELE_TO | SCARE | ANIM_DEAD
+D:Fearless female warriors on flying horses, the Valkyries serve the god Odin
+D:and are tasked with finding and collecting slain heroes worthy of Valhalla.
+D:It feels like cheating somehow that they appear intent on collecting you...
+
+N:1346:Hugin, the Scheming Raven
+G:B:D
+I:130:22d150:40:110:10:50
+W:58:4:999:15000:0:0
+B:CLAW:HURT(9d9):CUT(6d6)
+B:BITE:HURT(9d9):CONFUSE
+F:UNIQUE | SMART | MALE | FORCE_SLEEP | FORCE_MAXHP | CAN_FLY | RES_TELE |
+F:EVIL | COLD_BLOOD | OPEN_DOOR | BASH_DOOR | ANIMAL | MOVE_BODY |
+F:NO_CONF | NO_FEAR | NO_SLEEP | RES_DARK | RES_CHAO | DROP_CORPSE |
+F:RES_ACID | RES_COLD | RES_ELEC | IM_POIS | RES_NETH | RES_DISE |
+F:POS_GAIN_AC | POS_SEE_INVIS | POS_TELEPATHY | DROP_2D2
+F:ONLY_ITEM | DROP_GOOD | NORSE2 | DUNGEON_39 | NO_QUEST
+S:1_IN_4
+S:BR_NETHER | BR_CHAOS | BR_DARK | SHRIEK
+P:Copy:Zombie:Warrior-Mage
+P:Body:Bird
+D:Odin relies on his ravens Hugin and Munin for news, sending them out
+D:every day to spy on the world; yet his confidence in Hugin is misplaced,
+D:as the black bird is an untrustworthy manipulator who gives misleading
+D:reports to serve his own ends.
+
+N:1347:Lynx
+G:f:h
+I:120:10d9:45:35:0:150
+W:10:2:40:20:300:1338
+B:CLAW:HURT(1d5)
+B:CLAW:HURT(1d5)
+B:BITE:HURT(1d4)
+F:BASH_DOOR | WILD_SNOW | WILD_WOOD | WILD_ONLY | ANIMAL | RES_COLD
+F:DROP_SKELETON | DROP_CORPSE | POS_GAIN_AC | RIDING | NO_FEAR
+P:Copy:Human:Rogue
+P:Skills:0:-7:0:0:0:0:0:0
+P:ExtraSkills:0:-4:0:0:0:0:0:0
+P:Body:Hound
+D:A feline predator of the northern forests.
+
+N:1348:Heimdall, Guardian of Bifrost
+G:P:w
+I:135:69d99:40:150:10:500
+W:77:4:999:60000:0:0
+B:HIT:HURT(9d9):CUT(9d9, 33%)
+B:HIT:HURT(9d9):CUT(9d9, 33%)
+B:HIT:HURT(9d9):CUT(9d9, 33%)
+B:GAZE:BLIND:CONFUSE
+F:UNIQUE | MALE | SMART | RES_DARK | RES_SOUN |
+F:RES_LITE | RES_COLD | RES_ACID | RES_FIRE | FORCE_MAXHP | FORCE_SLEEP |
+F:MOVE_BODY | REGENERATE | CAN_FLY | DROP_3D2 | DROP_GOOD | DROP_GREAT |
+F:OPEN_DOOR | BASH_DOOR | HAS_LITE_2 | NO_CONF | RES_TELE | TAKE_ITEM |
+F:POS_SEE_INVIS | NO_QUEST | NORSE
+P:Copy:Amberite:Ninja-Lawyer
+S:1_IN_3 |
+S:BA_LITE | SHRIEK | S_PANTHEON | BA_ACID(1d462+30) | BA_COLD(1d385+25) |
+S:PSY_SPEAR(1d154+150) | S_ANIMAL | BA_WATER | DRAIN_MANA | DETECT_MONSTERS
+S:DETECT_TRAPS
+D:Heimdall is the watchman of the Aesir, tasked with guarding the bridge to
+D:Asgard. He will blow into his mighty trumpet Gjallarhorn when Ragnarok
+D:comes, summoning the gods to battle.
+
+N:1349:Thor, the Thunderer
+G:P:B
+I:135:150d100:20:150:15:1000
+W:86:3:999:86000:0:0
+B:HIT:HURT(9d18):ELEC(9d18)
+B:HIT:HURT(9d18):ELEC(9d18)
+B:HIT:HURT(9d18):ELEC(9d18)
+B:CRUSH:SHATTER(9d18):STUN(3d9)
+F:UNIQUE | MALE | IM_ELEC | RES_FIRE | RES_COLD | FORCE_MAXHP | FORCE_SLEEP |
+F:MOVE_BODY | REGENERATE | CAN_FLY | DROP_4D2 | DROP_GOOD | DROP_GREAT |
+F:OPEN_DOOR | BASH_DOOR | NO_CONF | NO_FEAR | NO_QUEST | NORSE | CAN_SPEAK |
+F:RES_SOUN | RES_SHAR | RES_PLAS | NO_STUN | POS_GAIN_AC | AURA_FEAR |
+F:DROP_CORPSE | TAKE_ITEM | POS_SUST_STR
+P:Copy:Half-Giant:Warrior
+P:Stats:4:0:0:0:0:0
+O:DROP_WARRIOR
+S:FREQ_30 |
+S:BR_STORM | BR_ELEC | BA_ELEC(1d516+32) | BO_ELEC(15d15+258) | BLINK
+S:HASTE | ROCKET(430) | BO_PLASMA(8d7+126)
+D:The son of Odin and the giantess Jord, Thor's raw strength is unrivalled
+D:even among the gods. Swinging his great hammer Mjollnir, the god of thunder
+D:advances towards you with eyes promising death.
+
+N:1350:Tyr, the One-Armed God
+G:P:r
+I:135:128d100:25:190:10:600
+W:83:4:999:65000:0:0
+B:HIT:HURT(9d18):CUT(9d9)
+B:HIT:HURT(9d18):CUT(9d9)
+B:HIT:HURT(9d18):CUT(9d9)
+B:GAZE:CONFUSE(9d9):SLOW
+F:UNIQUE | MALE | RES_FIRE | RES_SOUN | RES_SHAR | RES_ACID | RES_ELEC |
+F:RES_CHAO | RES_COLD | RES_DISE | NO_CONF | NO_FEAR | NO_QUEST
+F:NORSE | MOVE_BODY | OPEN_DOOR | BASH_DOOR | REGENERATE | DROP_3D2 |
+F:GOOD | DROP_GOOD | DROP_GREAT | CAN_FLY | FORCE_MAXHP | FORCE_SLEEP |
+F:POS_GAIN_AC | POS_SEE_INVIS | DROP_CORPSE |
+P:Copy:Half-Giant:Warrior
+P:Body:Benedict
+O:DROP_WARRIOR
+S:1_IN_3 |
+S:BR_SOUND | ROCKET(415) | TELE_TO | CONFUSE | BLIND | BA_FIRE(1d581+20)
+S:BLINK | BLINK_OTHER | BRAIN_SMASH | DETECT_OBJECTS
+D:Tyr is the ferocious battle-god, his courage in combat exceeding even
+D:that of Thor; yet he is also the reliable upholder of law and justice.
+D:He sacrificed his right hand to the monstrous wolf Fenris so it could
+D:be bound by the Aesir.
+
+N:1351:Vidarr, the Silent Avenger
+G:P:o
+I:133:110d110:50:200:2:600
+W:87:8:999:87846:0:0
+B:HIT:HURT(9d18):CUT(9d9)
+B:HIT:HURT(9d18):SLOW
+B:KICK:HURT(9d18):STUN(6d9)
+F:UNIQUE | MALE | FORCE_MAXHP | FORCE_SLEEP | MOVE_BODY | IM_FIRE |
+F:ONLY_ITEM | DROP_3D2 | DROP_GOOD | DROP_GREAT | DROP_CORPSE |
+F:RES_COLD | RES_POIS | RES_DARK | RES_NETH | RES_ACID | RES_DISI |
+F:RES_GRAV | RES_ELEC | RES_WATE | NO_CONF | NO_FEAR | NO_STUN |
+F:RES_WALL | TAKE_ITEM | CAN_FLY | POS_SEE_INVIS | POS_GAIN_AC |
+F:REGENERATE | NORSE | NO_QUEST
+P:Copy:Barbarian:Rage-Mage
+S:1_IN_4 |
+S:TELE_TO | BLINK | BR_FORCE | BR_DISINTEGRATE | BRAIN_SMASH | BA_DARK |
+S:BR_GRAVITY | PSY_SPEAR(1d174+150) | BO_MANA | BLINK_OTHER |
+S:BO_ELEC(15d15+200)
+D:Vidarr is the silent god, foretold to avenge the death of his father Odin
+D:and to survive the destruction of Ragnarok. He takes great sweeping strides
+D:in his magic shoes, crafted from all the spare shoe-leather thrown away by
+D:the common folk.
+
+N:1352:Freyja, Lady of the Slain
+G:P:p
+I:130:75d99:30:153:10:500
+W:83:3:999:64000:0:0
+B:HIT:HURT(9d9):CUT(3d9)
+B:HIT:HURT(9d9):CUT(3d9)
+B:HIT:HURT(9d9):CUT(3d9)
+B:TOUCH:DRAIN_MANA(6d9):DRAIN_CHARGES
+F:UNIQUE | FEMALE | FORCE_MAXHP | FORCE_SLEEP | MOVE_BODY | RES_FIRE |
+F:RES_COLD | RES_ELEC | RES_ACID | RES_NEXU | RES_WALL | RES_SOUN |
+F:RES_GRAV | NO_CONF | NO_STUN | DROP_3D2 | DROP_GOOD | DROP_GREAT |
+F:DROP_CORPSE | RES_WATE | REGENERATE | POS_TELEPATHY | NORSE | NO_QUEST
+F:SMART | OPEN_DOOR | SELF_LITE_2 | CAN_FLY | RES_LITE | RES_DARK
+F:TAKE_ITEM |
+P:Copy:Amberite:Priest
+O:DROP_PRIEST
+S:FREQ_42 |
+S:PSY_SPEAR(1d166+150) | HEAL(600) | ANTI_MAGIC | DISPEL_MAGIC | S_MONSTER |
+S:HASTE | S_CAT | S_PANTHEON | TELE_TO | BLINK_OTHER | SCARE | TELE_SELF
+S:S_UNDEAD | CAUSE_4
+D:The most famous of the Norse goddesses, Freyja is the sister of Freyr and
+D:daughter of Njord, and rules over her own hall of the dead in Folkvang.
+D:She rides a chariot pulled by her cats and is known for her two great
+D:treasures: the beautiful necklace Brisingamen, and a magical feathered
+D:cloak that allows its wearer to fly.
+
+N:1353:Njord, Lord of the Vanir
+G:P:t
+I:135:88d99:40:140:10:500
+W:84:4:999:63404:0:0
+B:HIT:HURT(9d9):ACID(9d9):STUN(3d9)
+B:HIT:HURT(9d9):ELEC(9d9):CUT(3d9)
+B:HIT:HURT(9d9):SLOW(9d9):TERRIFY
+B:TOUCH:DRAIN_MANA(9d9)
+F:UNIQUE | MALE | RES_ACID | RES_ELEC | RES_COLD | RES_FIRE | RES_GRAV |
+F:FORCE_MAXHP | FORCE_SLEEP | MOVE_BODY | REGENERATE | CAN_FLY | DROP_2D2 |
+F:DROP_3D2 | DROP_GOOD | DROP_GREAT | SMART | OPEN_DOOR | BASH_DOOR |
+F:HAS_LITE_2 | RES_WATE | NO_CONF | NO_FEAR | NO_STUN | POS_SEE_INVIS |
+F:NO_QUEST | NORSE
+P:Copy:Amberite:Warrior-Mage
+S:FREQ_40 |
+S:BR_ACID | BR_STORM | HEAL(600) | TELE_TO | PSY_SPEAR(1d168+150) |
+S:BA_WATER | BA_ACID(1d484+84) | BO_ICE(1d168+50)
+D:The father of Freyr and Freyja, Njord is at home by the seaside; fishers
+D:thank him for abundant catches and good weather, while farmers pray
+D:to him and his son for plentiful harvests. He was once the husband
+D:of the giantess Skadi, who selected him for his beautiful feet;
+D:but the needs and desires of the two were ultimately incompatible.
+
+N:1354:Frigg, Queen of Asgard
+G:P:y
+I:130:72d99:40:126:5:300
+W:86:4:999:72720:0:0
+B:TOUCH:HURT(6d9):LOSE_ALL
+B:TOUCH:HURT(6d9):DRAIN_EXP(40d6)
+B:TOUCH:NEXUS(6d9)
+F:UNIQUE | FEMALE | FORCE_MAXHP | FORCE_SLEEP | MOVE_BODY | RES_FIRE |
+F:RES_COLD | RES_ELEC | RES_ACID | RES_NEXU | RES_TIME | RES_DISE |
+F:NO_CONF | DROP_3D2 | DROP_GOOD | DROP_GREAT | TAKE_ITEM |
+F:DROP_CORPSE | REGENERATE | POS_TELEPATHY | NORSE | NO_QUEST
+F:SMART | OPEN_DOOR | SELF_LITE_2 | CAN_FLY |
+P:Copy:Amberite:Priest
+S:1_IN_4 |
+S:INVULN | MANA_STORM | S_PANTHEON | TELE_TO | BLINK_OTHER | DISPEL_MAGIC |
+S:CAUSE_4
+D:Frigg is the consort of Odin and was the mother of the dead god Baldur.
+D:While less famous than the goddess Freyja, whom she greatly resembles,
+D:she knows some extremely powerful magic and wields considerable influence
+D:in her position as the chief god's wife.
+
+N:1355:Skadi, the Huntress
+G:P:w
+I:125:50d100:30:125:15:600
+W:72:6:999:30000:0:0
+B:HIT:HURT(8d12):COLD(4d12)
+B:HIT:HURT(8d12):POISON(4d12)
+B:HIT:HURT(8d12):ACID(4d12)
+B:HIT:HURT(8d12):CUT(4d12)
+F:UNIQUE | FEMALE | GIANT | IM_COLD | AURA_COLD | NO_CONF
+F:FORCE_SLEEP | FORCE_MAXHP | RES_ACID | RES_POIS | REGENERATE
+F:ONLY_ITEM | DROP_4D2 | DROP_GOOD | MOVE_BODY | WILD_SNOW |
+F:SMART | TAKE_ITEM | OPEN_DOOR | BASH_DOOR | NORSE | NORSE2
+F:DROP_CORPSE | POS_SUST_STR
+P:Copy:Half-Titan:Archer
+P:Speed:+10
+S:FREQ_25 | BR_COLD | BO_ICE | SHOOT(12d12) | THROW | BLINK | TELE_TO | HEAL
+O:DROP_ARCHER
+D:Skadi is a giantess from the snowy mountains, best known as the wife of
+D:the god Njord. She is an expert skier and hunter, her skills with a bow
+D:being second to none save for the archer-god Ullur and the hero Gerabost.
+
+N:1356:Draugr
+G:z:b
+I:121:12d99:30:145:10:350
+W:48:7:999:6400:0:0
+B:GAZE:TERRIFY(5d5):TERRIFY:DRAIN_MANA(25%)
+B:BITE:HURT(9d9):DRAIN_EXP(40d6)
+B:BITE:DISEASE(6d6):LOSE_CON
+B:CRUSH:HURT(9d9):PARALYZE:SLOW
+A:CAUSE_3(2d5)
+F:FORCE_SLEEP | FORCE_MAXHP | EVIL | MALE | UNDEAD | COLD_BLOOD |
+F:ONLY_ITEM | DROP_2D2 | DROP_GOOD | RES_TELE | PASS_WALL | CAN_SWIM |
+F:SMART | TAKE_ITEM | OPEN_DOOR | BASH_DOOR | MOVE_BODY |
+F:RES_ACID | RES_COLD | RES_ELEC | IM_POIS | RES_NETH | RES_DARK |
+F:NO_CONF | NO_SLEEP
+F:POS_HOLD_LIFE | POS_SEE_INVIS
+P:Copy:Zombie:Rage-Mage
+S:1_IN_3 |
+S:HEAL | HASTE | TELE_TO | BRAIN_SMASH | MIND_BLAST | BA_NETHER | PARALYZE
+S:CAUSE_3 | CAUSE_4 | DARKNESS | AMNESIA | DETECT_MONSTERS |
+S:MAPPING | DETECT_TRAPS
+D:An animated, strangely dark body with great evil powers and physical
+D:strength and an almost insatiable appetite. It seems to be eyeing you as
+D:a potential snack...
+
+N:1357:Ratatosk, the World-Tree Squirrel
+G:r:U
+I:130:19d54:40:75:15:50
+W:37:4:999:2662:0:0
+B:BITE:HURT(6d7):CUT(5d5)
+B:BITE:HURT(6d7):CUT(5d5)
+B:BITE:HURT(6d7):CUT(5d5)
+F:UNIQUE | MALE | ANIMAL | EVIL | FORCE_SLEEP | FORCE_MAXHP | RES_ELEC |
+F:TAKE_ITEM | OPEN_DOOR | BASH_DOOR | NO_CONF | REGENERATE |
+F:WILD_WOOD | ONLY_ITEM | DROP_1D2 | DROP_GOOD | NORSE2
+F:DROP_CORPSE | POS_SEE_INVIS |
+P:Copy:Tomte:Rage-Mage
+P:Speed:+10
+P:Body:Puppy
+S:1_IN_6
+S:BLINK | SHRIEK | S_MONSTER | S_ANIMAL |
+D:A cute little critter with razor-sharp teeth. He scurries along the
+D:world-tree Yggdrasil every day, carrying messages between the treetop and
+D:the roots.
+
+N:1358:Ullur, the Archer-God
+G:P:W
+I:130:80d100:40:150:15:600
+W:82:4:999:60000:0:0
+B:HIT:HURT(9d9):CUT(5d5)
+B:HIT:HURT(9d9):CUT(5d5)
+B:HIT:HURT(9d9):COLD(5d5)
+B:HIT:HURT(9d9)
+F:UNIQUE | MALE | RES_COLD | FORCE_SLEEP | FORCE_MAXHP | RES_SHAR |
+F:RES_ACID | RES_POIS | REGENERATE | NO_CONF | NO_FEAR | RES_TELE |
+F:ONLY_ITEM | DROP_4D2 | DROP_GOOD | MOVE_BODY | CAN_FLY | WILD_SNOW |
+F:SMART | TAKE_ITEM | OPEN_DOOR | BASH_DOOR | NORSE
+F:DROP_CORPSE | POS_SUST_STR | POS_TELEPATHY
+P:Copy:Half-Titan:Archer
+S:1_IN_3 |
+S:BO_ICE | SHOOT(12d12) | BLINK
+O:DROP_ARCHER
+D:Ullur of Ydalir is the god of archery and the hunt, a son of Thor's wife
+D:Sif and a friend of Njord and Skadi.
+
+N:1359:Magni, Son of Thor
+G:P:B
+I:130:100d100:20:140:15:800
+W:78:3:999:50000:0:0
+B:HIT:HURT(9d12):ELEC(9d12)
+B:HIT:HURT(9d12):CUT(9d12)
+B:HIT:HURT(9d12):STUN(3d9)
+F:UNIQUE | MALE | RES_ELEC | RES_FIRE | RES_COLD | FORCE_MAXHP | FORCE_SLEEP |
+F:MOVE_BODY | REGENERATE | CAN_FLY | DROP_3D2 | DROP_GOOD | DROP_GREAT |
+F:OPEN_DOOR | BASH_DOOR | NO_CONF | NO_FEAR | NO_QUEST | NORSE |
+F:RES_SOUN | RES_PLAS | NO_STUN | POS_GAIN_AC | AURA_REVENGE
+F:DROP_CORPSE | TAKE_ITEM | POS_SUST_STR |
+P:Copy:Half-Giant:Mauler
+P:Stats:4:0:0:0:0:0
+O:DROP_WARRIOR
+S:FREQ_30 |
+S:THROW | BA_ELEC(1d468+32) | BO_ELEC(15d15+234) | BLINK | HASTE |
+S:BO_PLASMA(8d7+118) | BERSERK | TELE_TO
+D:Thor's son with the giantess Jarnsaxa, Magni the Mighty is a great and
+D:fearless warrior and takes after his father. It is said he will inherit
+D:Mjollnir after Ragnarok, though you may have different ideas about that...
+
+N:1360:Vasuki, the Serpent King
+G:n:o
+I:130:79d79:50:150:7:1500
+W:70:3:999:42000:0:0
+B:CRUSH:HURT(25d2)
+B:BITE:HURT(25d2)
+B:SPIT:POISON(75d1)
+F:FORCE_MAXHP | FORCE_SLEEP | UNIQUE | CAN_SWIM | MALE |
+F:MOVE_BODY | IM_POIS | NO_CONF | NO_SLEEP | HINDU2 |
+F:OPEN_DOOR | BASH_DOOR | DROP_3D2 | DROP_1D2 | DROP_GOOD | DROP_GREAT |
+F:DROP_CORPSE | DROP_SKELETON | POS_GAIN_AC | COLD_BLOOD | RIDING
+P:Copy:Ogre:Warrior
+P:Body:Naga
+S:1_IN_2
+S:BR_POISON | S_NAGA
+D:A grand nagaraja. The gods and demons used him to churn the ocean and
+D:create amrita, causing poison to envelop the world.
+
+N:1361:Shesha, the Infinite
+G:n:W
+I:130:99d99:50:160:12:3000
+W:80:3:999:55000:0:0
+B:BITE:HURT(14d10)
+B:BITE:HURT(14d10)
+B:BITE:HURT(14d10):BLIND
+B:BITE:HURT(14d10):CONFUSE
+F:FORCE_MAXHP | FORCE_SLEEP | UNIQUE | CAN_SWIM | MALE |
+F:MOVE_BODY | RES_POIS | NO_CONF | NO_SLEEP | HINDU2
+F:OPEN_DOOR | BASH_DOOR | DROP_4D2 | DROP_2D2 | DROP_GOOD |
+F:RES_TIME | RES_DISI | DROP_GREAT |
+F:DROP_CORPSE | DROP_SKELETON | POS_GAIN_AC | COLD_BLOOD | RIDING
+P:Copy:Half-Titan:Mauler
+P:Body:Jormungand
+P:Life:120
+S:1_IN_4
+S:BR_TIME | BR_DISINTEGRATE | S_NAGA
+D:A serpent with a thousand heads, upon which Vishnu rests.
+
+N:1362:Mahishasura, the Buffalo Demon
+G:U:v
+I:130:72d100:35:175:25:500
+W:76:4:999:41140:0:0
+B:BUTT:FIRE(10d10)
+B:BUTT:FIRE(10d10)
+B:BUTT:HURT(7d10):STUN(4d6)
+B:BITE:HURT(7d10):LOSE_CON
+F:UNIQUE | MALE | FORCE_SLEEP | FORCE_MAXHP | REGENERATE | ATTR_MULTI |
+F:ONLY_ITEM | DROP_GOOD | DROP_3D2 | KILL_WALL |
+F:OPEN_DOOR | BASH_DOOR | MOVE_BODY | CAN_FLY | RES_ELEC |
+F:EVIL | DEMON | RES_FIRE | RES_POIS | RES_NETH | NO_CONF | NO_SLEEP |
+P:Copy:Balrog:Mauler
+S:1_IN_4 |
+S:S_DEMON | BR_FIRE | BR_DISINTEGRATE | BR_CHAOS | BA_CHAOS |
+S:SCARE | BA_FIRE | CAUSE_4 | S_KIN | BERSERK
+D:The natural form of this powerful demon would appear to be that of a
+D:massive buffalo, but he can change his appearance seemingly at will.
+D:He wreaks destruction as he stampedes through the dungeon, and can call
+D:upon a massive demon army to support him.
+
+N:1363:Agni, the Threefold Fire
+G:E:y
+I:130:90d100:60:125:15:175
+W:79:3:999:48400:0:0
+B:HIT:FIRE(13d13)
+B:HIT:ELEC(13d13)
+B:HIT:HURT(7d13):BLIND
+B:ENGULF:FIRE(7d7):ELEC(7d7):DRAIN_MANA(7d7)
+A:FIRE(4d5):ELEC(4d5):LIGHT(4d5)
+F:UNIQUE | MALE | CAN_SPEAK | CAN_FLY |
+F:OPEN_DOOR | BASH_DOOR | IM_FIRE | IM_ELEC | RES_LITE | RES_PLAS | RES_SOUN
+F:FORCE_SLEEP | FORCE_MAXHP | NO_CONF | NO_SLEEP | RES_NETH | NO_STUN
+F:DROP_4D2 | DROP_GOOD | ONLY_ITEM | RES_POIS | RES_TELE | REGENERATE
+F:SELF_LITE_2 | HINDU | POS_SEE_INVIS | POS_TELEPATHY | NONLIVING
+S:1_IN_3 |
+S:TELE_TO | HASTE | BLINK | BLIND | DRAIN_MANA | BA_FIRE | BA_LITE |
+S:BA_ELEC | BR_FIRE | BR_LITE | BR_ELEC | BO_PLASMA(8d7+119) | S_MONSTER
+P:Copy:Balrog:Beastmaster
+D:This ancient deity is the spirit of fire, lightning and the sun, and a
+D:messenger between gods and people. While he is not an evil god, he does
+D:tend to absentmindedly ignite such flammable things as adventurers...
+
+N:1364:Hanuman, the Monkey God
+G:Y:y
+I:150:68d121:30:160:30:500
+W:85:3:999:79860:0:0
+B:HIT:HURT(14d15):STUN(5d5)
+B:HIT:HURT(14d15):STUN(5d5)
+B:HIT:HURT(14d15):STUN(5d5)
+B:HIT:ELEC(7d7)
+F:UNIQUE | MALE | GOOD | MOVE_BODY | ANIMAL | CAN_FLY | FORCE_SLEEP |
+F:FORCE_MAXHP | IM_ELEC | IM_FIRE | RES_WATE | RES_PLAS | RES_TIME |
+F:RES_WALL | REGENERATE | NO_CONF | NO_SLEEP | NO_FEAR | NO_STUN |
+F:DROP_3D2 | DROP_GOOD | DROP_GREAT | RES_NEXU | RES_GRAV | ESCORT |
+F:DROP_CORPSE | DROP_SKELETON | HINDU | OPEN_DOOR | BASH_DOOR |
+F:POS_GAIN_AC | ONLY_ITEM | TRUMP | REFLECTING
+S:1_IN_3 |
+S:TELE_SELF | TELE_TO | THROW | HOLY_LANCE |
+P:Copy:Human:Rage-Mage
+P:Stats:5:1:1:1:1:1
+D:The spiritual son of the air-god Vayu, Hanuman is one of the most popular
+D:gods, famed both for his extraordinary strength and powers and his selfless
+D:devotion to prince Rama.
+
+N:1365:Vayu, the Embodied Wind
+G:E:S
+I:135:85d100:30:155:15:300
+W:86:3:999:75504:0:0
+B:HIT:HURT(10d10):CONFUSE(66%)
+B:HIT:HURT(10d10):CONFUSE(66%)
+B:HIT:HURT(10d10):CONFUSE(66%)
+B:HIT:HURT(10d10):SLOW(66%)
+F:UNIQUE | MALE | MOVE_BODY | NONLIVING | CAN_FLY | FORCE_SLEEP |
+F:FORCE_MAXHP | OPEN_DOOR | BASH_DOOR | IM_ELEC | RES_WALL | RES_SOUN |
+F:RES_PLAS | RES_COLD | RES_ACID | REGENERATE | NO_CONF | NO_SLEEP |
+F:NO_STUN | DROP_3D2 | DROP_GOOD | DROP_GREAT | RES_GRAV | RES_DISI
+F:HINDU | POS_GAIN_AC | POS_SEE_INVIS
+P:Copy:Zombie:Rage-Mage
+S:1_IN_3 |
+S:BR_AIR | BR_STORM | BR_CONF | SCARE | CAUSE_4 | TELE_SELF | NO_AIR
+D:Vayu is the great elemental of wind and air and the spiritual father of
+D:the god Hanuman, who is often considered his first and greatest avatar.
+D:Many have discovered too late that fighting the air is not the greatest
+D:idea...
+
+N:1366:Karthikeya, the Six-Headed Warrior
+G:P:r
+I:132:144d121:60:192:15:600
+W:87:3:999:83490:0:0
+B:HIT:HURT(14d18):TERRIFY:CUT(8d12, 66%)
+B:HIT:HURT(14d18):TERRIFY:DISENCHANT(4d12, 66%)
+B:HIT:HURT(13d16):TERRIFY:STUN(2d12, 66%)
+B:HIT:HURT(13d16):TERRIFY:LOSE_STR:LOSE_WIS
+F:UNIQUE | MALE | RES_FIRE | RES_NEXU | RES_ACID | RES_ELEC | RES_WATE |
+F:RES_CHAO | RES_DISE | NO_CONF | NO_FEAR | NO_QUEST | HINDU | RES_DARK |
+F:MOVE_BODY | OPEN_DOOR | BASH_DOOR | REGENERATE | DROP_4D2 | RES_LITE |
+F:DROP_GOOD | DROP_GREAT | FORCE_MAXHP | FORCE_SLEEP | NONLIVING
+F:POS_GAIN_AC | POS_TELEPATHY | DROP_CORPSE |
+P:Copy:Half-Titan:Mauler
+P:Body:Ettin
+O:DROP_WARRIOR
+S:1_IN_3 |
+S:BR_ACID | BR_LITE | BR_FIRE | BR_NEXUS | BR_DISENCHANT | BR_FORCE |
+S:CAUSE_4 | BO_MANA | PSY_SPEAR(1d192+174) | BA_WATER | DISPEL_MAGIC |
+S:BA_LITE(250) | ANTI_MAGIC | S_MONSTER | BERSERK | HASTE | TELE_TO |
+S:SHOOT(200) | BRAIN_SMASH | DRAIN_MANA
+D:Karthikeya, also known as Murugan, Skanda and Subrahmanya, is Shiva's son
+D:and the brother of Ganesha. He is famed as the vanquisher of mighty demons
+D:and as the god of war and victory, but also as a philosopher. You don't
+D:like the look on any of his faces...
+
+N:1367:Vanara
+G:Y:h
+I:125:50d25:25:75:10:200
+W:50:4:999:800:0:0
+B:HIT:HURT(3d12):STUN(3d4,30%)
+B:HIT:HURT(3d12)
+F:OPEN_DOOR | FRIENDS(3d3) | DROP_90 | REGENERATE | FORCE_SLEEP |
+F:SMART | BASH_DOOR | ANIMAL | RES_POIS | DUNGEON_43 | NO_CONF |
+F:DROP_SKELETON | DROP_CORPSE | POS_GAIN_AC | WILD_WOOD | TAKE_ITEM |
+P:Copy:Half-Troll:Ranger
+S:1_IN_7
+S:BLINK | TELE_TO | THROW(75)
+D:The Vanaras are a race of monkey-men from the jungles and forests, created
+D:by Brahma and endowed with some supernatural abilities. They seldom use
+D:conventional weapons, preferring to fight with boulders and other
+D:natural objects.
+
+N:1368:Sugriva, Lord of Kishkindha
+G:Y:R
+I:135:70d90:30:144:20:400
+W:69:4:999:33800:0:0
+B:HIT:HURT(11d13):STUN(5d5, 55%)
+B:HIT:HURT(11d13)
+B:HIT:HURT(11d13)
+B:BITE:HURT(5d8):CUT(3d8)
+F:UNIQUE | MALE | ANIMAL | ESCORT | DROP_3D2 | DROP_GOOD | RES_SOUN |
+F:SMART | OPEN_DOOR | BASH_DOOR | WILD_WOOD | RES_POIS | RES_FIRE |
+F:RES_ACID | RES_NEXU | RES_DARK | RES_CHAO | REGENERATE | NO_CONF |
+F:DROP_SKELETON | DROP_CORPSE | FORCE_MAXHP | FORCE_SLEEP | RES_COLD |
+F:POS_GAIN_AC | POS_SEE_INVIS | HINDU2 | DUNGEON_43
+P:Copy:Half-Troll:Ranger
+S:1_IN_3 |
+S:BLINK | HASTE | TELE_TO | THROW | S_VANARA | DETECT_MONSTERS | BERSERK
+D:The younger brother of Vali and a king among the Vanaras, he is best
+D:known for his alliance with Rama.
+
+N:1369:Vali, King of the Vanaras
+G:Y:v
+I:138:72d90:30:160:40:400
+W:76:4:999:50820:0:0
+B:HIT:HURT(14d17):STUN(7d7, 66%)
+B:HIT:HURT(14d17):VAMP(7d7, 66%):UNLIFE(7d7, 66%)
+B:HIT:HURT(14d17):DRAIN_MANA(7d7, 66%)
+B:BITE:HURT(7d8):CUT(6d7):LOSE_STR
+F:UNIQUE | MALE | ANIMAL | DROP_4D2 | DROP_GOOD | RES_SOUN | RES_WATE |
+F:OPEN_DOOR | BASH_DOOR | WILD_WOOD | RES_POIS | RES_FIRE | RES_NETH |
+F:RES_ACID | RES_NEXU | RES_DARK | RES_CHAO | REGENERATE | NO_CONF |
+F:DROP_SKELETON | DROP_CORPSE | FORCE_MAXHP | FORCE_SLEEP | IM_ELEC |
+F:DROP_GREAT | POS_GAIN_AC | POS_SEE_INVIS | HINDU2 | DUNGEON_43
+F:RES_TELE | ONLY_ITEM | NO_QUEST | MOVE_BODY
+P:Copy:Half-Troll:Ranger
+S:1_IN_3 |
+S:BLINK | HASTE | TELE_TO | THROW | S_VANARA | DETECT_MONSTERS |
+S:BERSERK
+D:A son of the god Indra and king of the Vanaras, he is the strongest of
+D:his race; it is said that any opponent foolish enough to fight him will
+D:lose half his strength to him. Vali views his younger brother Sugriva as a
+D:usurper for having assumed the kingship in his absence, and the two are
+D:now mortal enemies.
+
+N:1370:Rama, the Exiled Prince
+G:p:U
+I:135:128d110:55:170:15:500
+W:86:3:999:83490:0:0
+B:HIT:HURT(10d12)
+B:HIT:HURT(10d12)
+B:HIT:HURT(10d12)
+F:UNIQUE | MALE | GOOD | HUMAN | DROP_4D2 | DROP_GOOD | FORCE_MAXHP |
+F:DROP_GREAT | FORCE_SLEEP | RES_ACID | RES_ELEC | RES_FIRE | RES_COLD |
+F:RES_NETH | RES_DISI | HINDU | WILD_WOOD | REGENERATE | NO_CONF | NO_STUN |
+F:OPEN_DOOR | BASH_DOOR | POS_SEE_INVIS | POS_HOLD_LIFE | DROP_CORPSE
+F:CAN_SWIM | TAKE_ITEM | MOVE_BODY
+P:Copy:Amberite:Ranger
+O:DROP_ARCHER
+S:1_IN_2 |
+S:SHOOT(400) | S_VANARA | S_MONSTER | BRAIN_SMASH | CAUSE_4 | BLINK
+D:The exiled son of the human king Dasharatha, Prince Rama is famous for his
+D:identity as an avatar of Vishnu, for his exceptional bowmanship, for his
+D:struggles to regain his wife Sita from the clutches of king Ravana and
+D:Ravana's demonic army, for the loyalty and friendship he inspired in the
+D:Vanara commander Hanuman, and for retaining his sanity with virtues enabled.
+
+N:1371:Krishna, Avatar of Vishnu
+G:p:n
+I:135:128d110:45:170:10:500
+W:86:3:999:71380:0:0
+B:HIT:HURT(8d12):STUN(4d6)
+B:HIT:HURT(8d12)
+B:TOUCH:TIME(4d6)
+F:UNIQUE | MALE | GOOD | HUMAN | DROP_4D2 | DROP_GOOD | FORCE_MAXHP |
+F:DROP_GREAT | FORCE_SLEEP | RES_ACID | RES_ELEC | RES_FIRE | RES_COLD |
+F:RES_WATE | RES_TIME | RES_DISI | HINDU | REGENERATE | DROP_CORPSE
+F:NO_CONF | NO_STUN | NO_SLEEP | OPEN_DOOR | BASH_DOOR | POS_SEE_INVIS
+F:SMART | ONLY_ITEM | TAKE_ITEM | MOVE_BODY
+P:Copy:Amberite:Bard
+S:FREQ_40 |
+S:HEAL(550) | S_MONSTER | BLINK | TELE_SELF | DISPEL_MAGIC | BO_TIME
+D:Krishna, the eighth avatar of Vishnu, is wise, loving and compassionate;
+D:he is remembered for his heroic deeds, his youthful playfulness, his
+D:relationships with thousands of devoted cowherdesses, and his counsel to
+D:his lifelong friend Prince Arjuna.
+
+N:1372:Vishnu, the Preserver
+G:P:y
+I:140:160d110:75:185:0:500
+W:94:3:999:133342:0:0
+B:HIT:HURT(14d15):STUN(5d7)
+B:HIT:HURT(14d15):STUN(5d7)
+B:TOUCH:TIME(4d6)
+B:TOUCH:CONFUSE(4d6)
+F:UNIQUE | MALE | DROP_4D2 | DROP_3D2 | DROP_2D2 | DROP_GOOD | DROP_GREAT |
+F:FORCE_MAXHP | FORCE_SLEEP | CAN_FLY | RES_ACID | RES_ELEC | RES_FIRE |
+F:SMART | RES_COLD | RES_WATE | RES_TIME | RES_CHAO | RES_DISI | RES_NETH |
+F:RES_DARK | RES_WALL | NO_CONF | NO_STUN | HINDU | REGENERATE | RES_LITE |
+F:NO_SLEEP | OPEN_DOOR | BASH_DOOR | POS_GAIN_AC | POS_TELEPATHY | NO_QUEST
+F:POS_HOLD_LIFE | RES_DISE | RES_NEXU | RES_GRAV | RES_INER | NONLIVING
+P:Copy:Archon:Paladin
+S:FREQ_40 |
+S:S_SPECIAL | HEAL(550) | BLINK | TELE_TO | TELE_SELF | BA_LITE |
+S:DISPEL_MAGIC | ANTI_MAGIC | BO_TIME | MANA_STORM | BR_FORCE |
+S:BO_ICE(6d8+150) | BO_PLASMA(8d7+160) | SCARE | HASTE |
+S:BA_FIRE(1d654+20) | BA_WATER | CAUSE_4 | BRAIN_SMASH
+S:DETECT_OBJECTS | DETECT_MONSTERS | MAPPING | DETECT_TRAPS
+D:Vishnu is one of the most powerful gods, the preserver of life and the
+D:protector of the world against the forces of chaos and destruction;
+D:he is also known for his many avatars, often just as highly revered.
+D:Many of his followers consider him the ultimate, omnipotent,
+D:omnipresent supreme being, the source of the universe itself.
+
+N:1373:Lakshmi, the Goddess of Prosperity
+G:P:O
+I:135:88d121:75:150:20:400
+W:90:3:999:77440:0:0
+B:TOUCH:PARALYZE(6d8)
+B:TOUCH:DISENCHANT(6d8)
+B:TOUCH:DRAIN_MANA(6d8)
+B:TOUCH:HURT(6d8):LOSE_ALL
+F:UNIQUE | FEMALE | DROP_4D2 | DROP_3D2 | DROP_2D2 | DROP_GOOD | DROP_GREAT |
+F:FORCE_MAXHP | FORCE_SLEEP | CAN_FLY | RES_ACID | RES_ELEC | IM_FIRE |
+F:RES_COLD | RES_WATE | RES_CHAO | RES_NEXU | RES_NETH | RES_LITE | SMART |
+F:RES_DARK | NO_CONF | NO_STUN | HINDU | REGENERATE | TAKE_ITEM |
+F:OPEN_DOOR | BASH_DOOR | POS_GAIN_AC | POS_SEE_INVIS | NO_QUEST |
+F:POS_HOLD_LIFE | RES_DISE | RES_SOUN | RES_SHAR | NONLIVING
+S:1_IN_2 | S_MONSTER | BLINK | TELE_SELF | HEAL | TELE_OTHER | BA_WATER
+S:S_SPECIAL | DISPEL_MAGIC | ANTI_MAGIC | DRAIN_MANA | BA_COLD(1d540+20)
+S:BA_LITE(255)
+P:Copy:Archon:Priest
+O:DROP_PRIEST
+D:Lakshmi is the eternal consort of Vishnu, and the goddess of fortune and
+D:prosperity.
+
+N:1374:Asura
+G:U:C
+I:130:100d42:30:140:255:190
+W:58:5:999:10000:0:0
+B:GAZE:VAMP(6d6)
+B:GAZE:VAMP(6d6)
+B:HIT:HURT(8d8)
+B:HIT:HURT(8d8):LOSE_CHR(50%)
+F:FORCE_SLEEP | ONLY_ITEM | DROP_2D2 | DROP_3D2 | DROP_GOOD | EVIL |
+F:SMART | TAKE_ITEM | OPEN_DOOR | BASH_DOOR | MOVE_BODY | RES_DARK |
+F:RES_ACID | RES_FIRE | RES_COLD | RES_ELEC | RES_POIS | RES_TELE | RES_NETH |
+F:CAN_FLY | SELF_LITE_2 | DEMON | REFLECTING | NO_CONF | FRIENDS(1d2, 25%)
+F:POS_HOLD_LIFE | POS_SEE_INVIS | POS_GAIN_AC | DUNGEON_43
+P:Copy:Archon:Paladin
+S:1_IN_3 | TELE_TO | BLIND | MIND_BLAST | CAUSE_3 | CAUSE_4 | BO_MANA |
+S:S_DEMON | BO_NETHER(5d5+146) | INVULN | DETECT_MONSTERS | BLESS |
+S:HEROISM | MAPPING
+D:The Asuras are of the same original stock as the Devas, but aligned against
+D:them: powerful, godlike creatures bent on gaining power for themselves, and
+D:spreading death and destruction as a consequence.
+
+N:1375:Vanara sage
+G:Y:b
+I:125:50d25:35:80:5:200
+W:55:7:999:1000:0:0
+B:HIT:HURT(2d12):STUN(3d4,25%)
+B:HIT:HURT(2d12)
+F:OPEN_DOOR | MALE | DROP_1D2 | REGENERATE | RES_ACID | RES_FIRE |
+F:SMART | BASH_DOOR | ANIMAL | RES_POIS | DUNGEON_43 | NO_CONF |
+F:FORCE_SLEEP | DROP_SKELETON | DROP_CORPSE | POS_GAIN_AC | WILD_WOOD
+P:Copy:Half-Troll:Priest
+S:1_IN_4
+S:BLINK | HEAL | CAUSE_3 | THROW(70) | DARKNESS | CAUSE_4 | TRAPS
+O:DROP_PRIEST
+D:A wise man and spiritual leader of the Vanaras.
+
+N:1376:Varuna, Lord of Water
+G:P:t
+I:130:74d121:40:150:5:500
+W:81:3:999:55660:0:0
+B:HIT:ACID(14d14):FIRE(7d7):TERRIFY(77%)
+B:HIT:ACID(14d14):COLD(7d7):CONFUSE(77%)
+B:HIT:ACID(14d14):ELEC(7d7):STUN(5d5, 77%)
+B:HIT:SLOW:PARALYZE
+A:ACID(3d3)
+F:UNIQUE | MALE | NO_QUEST | RES_TELE |
+F:FORCE_SLEEP | FORCE_MAXHP | MOVE_BODY |
+F:ONLY_ITEM | DROP_3D2 | DROP_GOOD | DROP_GREAT
+F:SMART | TAKE_ITEM | BASH_DOOR | HAS_LITE_2 |
+F:CAN_SWIM | REGENERATE | IM_ACID | IM_COLD | RES_ELEC | RES_FIRE
+F:RES_WATE | RES_SOUN | NO_SLEEP | NO_CONF | HINDU | NONLIVING
+P:Copy:Half-Titan:Beastmaster
+P:Stats:1:0:0:1:1:2
+P:Life:105
+S:FREQ_40 |
+S:BA_WATER(1d162+81) | TELE_TO | HEAL | S_SPECIAL | BO_ELEC(15d15+243) |
+S:BA_ACID(1d484+77) | BO_MANA | CAUSE_4 | BRAIN_SMASH | HASTE | BR_STORM |
+S:BR_ACID
+D:Varuna rules the oceans and waters, and strikes with great fury at all
+D:who offend him.
+
+N:1377:Makara
+G:R:t
+I:130:60d33:20:75:20:250
+W:50:2:999:500:0:0
+B:BITE:HURT(6d9):CUT(4d9)
+B:BITE:HURT(6d9):CUT(4d9)
+B:BITE:HURT(6d9):CUT(4d9)
+F:ONLY_ITEM | DROP_90 | FRIENDS(1d4, 50%)
+F:OPEN_DOOR | BASH_DOOR | AQUATIC | DUNGEON_43 |
+F:ANIMAL | RES_POIS | IM_ACID | RES_ELEC | RES_WATE | WILD_SHORE
+F:DROP_CORPSE | POS_GAIN_AC
+P:Copy:Barbarian:Warrior
+P:Body:Crocodile
+D:These strange, crocodilian creatures are often used by the water-gods for
+D:transport.
+
+N:1378:Ganesha, the Elephant God
+G:H:s
+I:130:88d121:25:190:50:1000
+W:78:4:999:43560:0:0
+B:BUTT:HURT(14d15):STUN(4d5, 50%)
+B:BUTT:HURT(14d15):CUT(8d8, 25%)
+B:CRUSH:HURT(14d15):STUN(5d6, 50%)
+F:UNIQUE | MALE | NO_QUEST | RES_TELE | FORCE_SLEEP | FORCE_MAXHP |
+F:MOVE_BODY | RANGED_MELEE | ONLY_ITEM | DROP_4D2 | DROP_GOOD | DROP_GREAT
+F:SMART | TAKE_ITEM | BASH_DOOR | HAS_LITE_2 | RES_DISI | RES_WALL |
+F:REGENERATE | RES_ACID | RES_ELEC | RES_FIRE | RES_SHAR | RES_LITE |
+F:RES_DARK |  NO_SLEEP | NO_CONF | NO_STUN | HINDU | RIDING | NO_FEAR
+F:DROP_CORPSE | POS_GAIN_AC
+P:Copy:Human:Mauler
+P:Body:Elephant
+P:Stats:2:4:2:0:2:0
+S:1_IN_4
+S:TELE_TO | BR_DISINTEGRATE | TRAPS | BERSERK
+S:DETECT_OBJECTS | DETECT_MONSTERS | MAPPING | DETECT_TRAPS
+D:Ganesha, the son of Shiva and Parvati and brother of Karthikeya, looks
+D:ungainly with his hanging belly and elephant head, yet he moves with
+D:surprising agility and is much cleverer than he seems. He is the god of
+D:obstacles, both creating and removing them, and his sheer bulk might
+D:remove you if you don't watch out...
+
+N:1379:Yama, Lord of the Dead
+G:P:D
+I:130:150d100:40:160:5:500
+W:88:3:999:88550:0:0
+B:HIT:HURT(13d13):DRAIN_EXP(80d6)
+B:HIT:HURT(13d13):VAMP(7d7)
+B:HIT:HURT(13d13):LOSE_ALL
+B:TOUCH:DRAIN_CHARGES
+F:UNIQUE | MALE | UNDEAD | FORCE_MAXHP | FORCE_SLEEP | MOVE_BODY |
+F:ONLY_ITEM | DROP_4D2 | DROP_GOOD | DROP_GREAT | POS_TELEPATHY |
+F:SMART | TAKE_ITEM | BASH_DOOR | HAS_DARK_1 |
+F:HINDU | NO_QUEST | REGENERATE | PASS_WALL | CAN_SWIM
+F:IM_FIRE | RES_COLD | RES_ACID | RES_POIS | RES_ELEC | NO_FEAR
+F:RES_NETH | RES_DARK | RES_TELE | NO_CONF | NO_SLEEP | AURA_FEAR
+P:Copy:Half-Titan:Blood-Knight
+S:FREQ_37
+S:BR_DARK | BR_NETHER | BA_NETHER(10d10+226) | BA_DARK | HAND_DOOM
+S:CAUSE_4 | BRAIN_SMASH | S_UNDEAD | S_HI_UNDEAD | DRAIN_MANA
+D:Yama governs the realm of the dead as its king and god. It is said he was
+D:the first mortal to ever die, and came to rule all who followed him.
+D:He punishes those he considers sinners, and perhaps does not want to wait
+D:for long in your case...
+
+N:1380:Shiva, the Destroyer
+G:P:s
+I:140:121d121:75:185:0:500
+W:94:3:999:133342:0:0
+B:HIT:HURT(13d14):CUT(9d10)
+B:HIT:HURT(13d14):STUN(5d7)
+B:TOUCH:TIME(6d6):LOSE_ALL(6d6)
+B:TOUCH:DRAIN_MANA(6d6)
+F:UNIQUE | MALE | DROP_4D2 | DROP_3D2 | DROP_2D2 | DROP_GOOD | DROP_GREAT |
+F:FORCE_MAXHP | FORCE_SLEEP | CAN_FLY | RES_ACID | IM_ELEC | IM_FIRE |
+F:RES_COLD | RES_WATE | RES_TIME | RES_CHAO | RES_DISI | RES_NETH | NO_FEAR |
+F:RES_DARK | RES_SHAR | NO_CONF | NO_STUN | HINDU | REGENERATE | RES_PLAS |
+F:NO_SLEEP | OPEN_DOOR | BASH_DOOR | POS_GAIN_AC | POS_TELEPATHY | NO_QUEST
+F:POS_HOLD_LIFE | RES_DISE | RES_SOUN | RES_GRAV | RES_INER | NONLIVING
+F:RES_POIS | KILL_WALL | RES_TELE | AURA_FEAR | MOVE_BODY
+P:Copy:Archon:Paladin
+S:FREQ_40 |
+S:S_SPECIAL | BLINK | TELE_TO | TELE_SELF | BA_DARK | BR_STORM |
+S:DISPEL_MAGIC | ANTI_MAGIC | BO_TIME | MANA_STORM | BR_DISINTEGRATE |
+S:BO_PLASMA(8d7+160) | HAND_DOOM | SCARE | HASTE | BRAIN_SMASH |
+S:BA_ELEC(1d654+20) | BA_FIRE(1d654+20) | CAUSE_4 | BR_TIME | SHOOT(250) |
+S:BO_ELEC(15d15+376) | DETECT_OBJECTS | DETECT_MONSTERS | MAPPING |
+S:S_SERPENT | S_NAGA
+D:Shiva is one of the mightiest and most fearsome gods, vanquisher of evil,
+D:ultimate destroyer of all things, the lord of unstoppable time itself. His
+D:most devoted followers view him as the Supreme Being, the creator and
+D:preserver as well as the destroyer, the highest manifestation of reality
+D:and all that is. While known for his fierceness, he is also the greatest
+D:of all yogis and meditators and the lord of dance.
+
+N:1381:Nandi, the Bull of Shiva
+G:q:w
+I:130:50d121:50:192:2:600
+W:70:4:999:35090:0:0
+B:BUTT:HURT(11d12):CUT(5d7)
+B:CRUSH:HURT(11d12):STUN(4d6)
+B:BUTT:HURT(11d12):NEXUS(3d5)
+F:UNIQUE | MALE | ANIMAL | RES_TELE | FORCE_SLEEP | FORCE_MAXHP |
+F:MOVE_BODY | RANGED_MELEE | ONLY_ITEM | DROP_3D2 | DROP_GOOD | DROP_GREAT
+F:SMART | TAKE_ITEM | BASH_DOOR | HAS_LITE_1 | RES_DISI | RES_NEXU |
+F:REGENERATE | RES_ELEC | RES_FIRE | REFLECTING | RES_LITE |
+F:NO_SLEEP | NO_CONF | NO_STUN | DUNGEON_43 | RIDING | NO_FEAR
+F:DROP_CORPSE | POS_GAIN_AC | POS_TELEPATHY
+P:Copy:Human:Mauler
+P:Body:Elephant
+S:1_IN_4 |
+S:TELE_TO | BLINK_OTHER | CAUSE_4 | BR_NEXUS |
+D:Nandi is Shiva's great white bull, which he often rides on; at other times
+D:it guards the gates of Shiva's home and keeps unwanted intruders out.
+
+N:1382:Parvati, the Goddess of Hidden Power
+G:P:y
+I:135:77d121:75:144:5:400
+W:90:3:999:81312:0:0
+B:TOUCH:DRAIN_CHARGES(8d8)
+B:TOUCH:DRAIN_MANA(8d8)
+B:TOUCH:CONFUSE(8d8)
+B:TOUCH:INERTIA(8d8)
+F:UNIQUE | FEMALE | DROP_4D2 | DROP_2D2 | DROP_GOOD | DROP_GREAT |
+F:FORCE_MAXHP | FORCE_SLEEP | CAN_FLY | RES_ACID | RES_ELEC | RES_FIRE |
+F:SMART | IM_COLD | RES_SOUN | RES_CHAO | RES_LITE | RES_TELE
+F:RES_DARK | NO_CONF | NO_SLEEP | HINDU | REGENERATE | TAKE_ITEM |
+F:OPEN_DOOR | BASH_DOOR | POS_GAIN_AC | POS_SEE_INVIS | NO_QUEST |
+F:POS_HOLD_LIFE | RES_DISI | RES_SHAR | NONLIVING
+S:1_IN_2 |
+S:S_MONSTER | HEAL | TELE_OTHER | DISPEL_MAGIC | ANTI_MAGIC | BRAIN_SMASH
+S:S_SPECIAL | SLOW | CONFUSE | BLINK_OTHER | DRAIN_MANA | BA_COLD(1d540+20)
+S:BR_MANA | BR_INERTIA | DETECT_MONSTERS | DETECT_OBJECTS
+P:Copy:Archon:Priest
+O:DROP_PRIEST
+D:Parvati is the devoted wife of Shiva, mother of Ganesha and Karthikeya and
+D:daughter of the mountain god Himavan. She is one of the great mother
+D:goddesses, sometimes worshipped as a personification of Shakti itself;
+D:her composure is such that she can even calm Shiva down, yet she also
+D:makes him full and complements his power.
+
+N:1383:Durga, the Goddess of War
+G:P:p
+I:140:128d110:60:160:5:420
+W:90:4:999:120879:0:0
+B:SLASH:HURT(20d10):CUT(6d9):LOSE_DEX(50%)
+B:HIT:HURT(14d12):STUN(3d7):LOSE_STR(50%)
+B:HIT:HURT(12d16):TERRIFY(25d1):LOSE_CHR(50%)
+B:HIT:HURT(15d15):CUT(6d9, 50%):STUN(3d7, 50%)
+F:UNIQUE | FEMALE | FORCE_SLEEP | FORCE_MAXHP | HINDU | RES_DISI | NO_STUN
+F:ONLY_ITEM | DROP_4D2 | DROP_3D2 | DROP_GOOD | DROP_GREAT | NO_FEAR |
+F:OPEN_DOOR | BASH_DOOR | NO_CONF | NO_SLEEP | IM_FIRE | RES_CHAO |
+F:RES_COLD | RES_DARK | RES_NETH | MOVE_BODY | AURA_REVENGE | RES_TELE |
+F:DROP_CORPSE | DROP_SKELETON | POS_GAIN_AC | POS_SEE_INVIS | NONLIVING
+F:SMART | NO_QUEST | POS_SUST_STR
+P:Copy:Half-Titan:Mauler
+O:DROP_WARRIOR
+S:1_IN_3 |
+S:BR_SOUND | BR_MANA | BR_DISINTEGRATE | S_CAT | S_MONSTER | TELE_TO
+S:SHOOT(200) | DETECT_MONSTERS | BERSERK
+D:Durga is the goddess of war and victory, and one of the great mother
+D:goddesses. Where Parvati represents hidden power, Durga holds obvious
+D:power, swinging a deadly weapon in each of her many arms.
+
+N:1384:Kali, Mother of Rage
+G:P:n
+I:140:121d101:100:175:0:600
+W:90:4:999:120879:0:0
+B:SLASH:HURT(14d14):CUT(9d10):VAMP(6d6, 33%)
+B:HIT:HURT(14d14):STUN(5d7)
+B:HIT:HURT(14d14):TERRIFY(20d1)
+B:TOUCH:TIME(6d6):LOSE_ALL(6d6):VAMP(6d6, 33%)
+F:UNIQUE | FEMALE | DROP_4D2 | DROP_3D2 | DROP_2D2 | DROP_GOOD | DROP_GREAT |
+F:FORCE_MAXHP | FORCE_SLEEP | CAN_FLY | RES_ACID | RES_ELEC | RES_FIRE |
+F:RES_COLD | RES_TIME | RES_CHAO | RES_DISI | RES_NETH | NO_FEAR |
+F:RES_DARK | RES_SOUN | NO_CONF | NO_STUN | HINDU | REGENERATE |
+F:NO_SLEEP | OPEN_DOOR | BASH_DOOR | POS_GAIN_AC | POS_TELEPATHY | NO_QUEST
+F:POS_HOLD_LIFE | RES_DISE | NONLIVING | KILL_WALL | RES_TELE | AURA_FEAR
+F:KILL_BODY | RANGED_MELEE | POS_SUST_STR
+P:Copy:Half-Titan:Mauler
+P:Body:Marilith
+O:DROP_WARRIOR
+S:FREQ_36 |
+S:BR_MANA | BR_DISINTEGRATE | BR_NETHER | TELE_TO | BR_TIME | BR_SOUND |
+S:DISPEL_MAGIC | BERSERK
+D:Kali is the most fearsome embodiment of motherly energy. She is fury
+D:and rage unleashed; while Durga in her wrath is purposeful and in control,
+D:Kali wreaks havoc and complete destruction, yet her rage still ultimately
+D:protects those dear to her.
+
+N:1385:Jambavan, King of the Beasts
+G:q:b
+I:125:150d100:40:180:0:500
+W:74:6:999:42350:0:0
+B:CLAW:HURT(12d14):CUT(5d7)
+B:CLAW:HURT(12d14):CUT(5d7)
+B:BITE:HURT(10d12):CUT(4d6)
+F:UNIQUE | MALE | FORCE_MAXHP | FORCE_SLEEP | REGENERATE
+F:OPEN_DOOR | BASH_DOOR | WILD_WOOD | CAN_CLIMB | CAN_SWIM | RES_LITE
+F:ANIMAL | RES_COLD | ESCORT | RES_POIS | IM_FIRE | RES_ACID | RES_NETH
+F:DROP_SKELETON | DROP_CORPSE | POS_GAIN_AC | DUNGEON_43 | NO_QUEST
+F:NO_CONF | NO_SLEEP | NO_FEAR | NO_STUN | MOVE_BODY | DROP_3D2 | DROP_GOOD
+P:Copy:Human:Mauler
+P:Body:Bear
+S:1_IN_6
+S:THROW | BLINK | BLIND | TELE_TO | S_ANIMAL | S_KIN | BERSERK |
+S:DETECT_MONSTERS
+D:Jambavan is an enormous bear-like beast, reputed to be an immortal and a
+D:friend of Vishnu. The wild animals of the jungle recognize him as their
+D:king, and are ready to help him if needed.
+
+N:1386:Rakshasa
+G:U:p
+I:130:155d15:20:55:20:170
+W:50:4:999:2000:0:0
+B:HIT:HURT(6d8)
+B:BITE:HURT(6d8):CUT(3d7)
+F:DEMON | FORCE_SLEEP | DUNGEON_43
+F:DROP_2D2 | NO_CONF | FRIENDS(2d4) | RES_FIRE | RES_POIS
+F:NO_SLEEP | NO_FEAR | OPEN_DOOR | BASH_DOOR |
+S:1_IN_2 |
+S:BA_FIRE | HEAL | BLINK | CONFUSE | CAUSE_2
+P:Copy:Human:Ranger
+D:These strange, massive, demonic creatures were created by Brahma, and are
+D:notorious for their ability to assume other shapes; though as you look at
+D:them, they seem more intent on just cutting you to pieces.
+
+N:1387:Swamp rabbit
+G:r:w
+I:120:12d10:40:50:0:10
+W:12:7:42:50:0:0
+B:BITE:HURT(4d1):CUT(2d1):LOSE_CHR
+B:BITE:HURT(4d1):CUT(2d1):LOSE_CHR
+B:BITE:HURT(4d1):CUT(2d1):LOSE_CHR
+F:WILD_ONLY | WILD_SHORE | RES_POIS | RES_ACID | CAN_SWIM
+F:DROP_CORPSE | POS_GAIN_AC
+P:Copy:Snotling:Rogue
+P:Body:Scrawny
+D:A killer rabbit.
+
+N:1388:Bloodfreezer
+G:E:w
+I:128:25d32:50:70:0:200
+W:42:4:75:1694:0:0
+B:TOUCH:COLD(5d8):CONFUSE(2d6)
+B:TOUCH:COLD(5d8):CONFUSE(2d6)
+B:WAIL:TERRIFY(15d1)
+F:RAND_50 | INVISIBLE | EMPTY_MIND | CAN_FLY | NONLIVING | FORCE_SLEEP
+F:PASS_WALL | HURT_FIRE | EVIL | RES_POIS | IM_COLD | WILD_SNOW |
+F:DROP_90 | NO_CONF | NO_SLEEP | NO_FEAR | AURA_COLD | FRIENDS(1d3, 60%)
+F:POS_GAIN_AC | POS_HOLD_LIFE | POS_TELEPATHY
+P:Copy:Human:Rage-Mage
+S:1_IN_4 |
+S:BA_COLD | CONFUSE | SCARE | DARKNESS | MIND_BLAST
+D:These ancient evil spirits of frost and darkness have considerable power,
+D:yet their most dangerous weapon is fooling you into doing their work.
+
+N:1389:Brahma, the Creating Spirit
+G:P:v
+I:130:111d99:50:180:25:500
+W:92:4:999:99220:0:0
+B:HIT:DISENCHANT(10d10):ACID(7d7):STUN(4d4)
+B:HIT:DISENCHANT(10d10):ELEC(7d7):STUN(4d4)
+B:HIT:DISENCHANT(10d10):FIRE(7d7):STUN(4d4)
+B:HIT:DISENCHANT(10d10):COLD(7d7):STUN(4d4)
+A:CAUSE_3(2d5)
+F:UNIQUE | MALE | FORCE_SLEEP | FORCE_MAXHP | HINDU | RES_NETH | NO_STUN
+F:ONLY_ITEM | DROP_4D2 | DROP_2D2 | DROP_GOOD | DROP_GREAT | NO_FEAR |
+F:OPEN_DOOR | BASH_DOOR | NO_CONF | NO_SLEEP | RES_FIRE | RES_CHAO |
+F:RES_COLD | RES_ELEC | RES_ACID | MOVE_BODY | RES_TELE |
+F:DROP_CORPSE | DROP_SKELETON | POS_GAIN_AC | POS_SEE_INVIS | NONLIVING
+F:GOOD | EVIL | CAN_FLY | TAKE_ITEM | NO_QUEST
+P:Copy:Half-Titan:Chaos-Warrior
+S:1_IN_2 |
+S:S_MONSTER | S_SPECIAL | SHOOT(300) | BA_CHAOS(10d10+160)
+S:HAND_DOOM | INVULN | DISPEL_MAGIC | ANTI_MAGIC
+D:Brahma is one of the most formidable gods, often claimed to have created
+D:life itself; his are both good and evil, and his curses and blessings are
+D:equally mighty, yet his worshippers are few.
+
+N:1390:Saraswati, Goddess of Knowledge
+G:P:T
+I:130:84d121:50:150:15:500
+W:90:3:999:70180:0:0
+B:TOUCH:DRAIN_CHARGES(8d8)
+B:TOUCH:DRAIN_MANA(8d8)
+B:TOUCH:ACID(8d8)
+B:TOUCH:ELEC(8d8):STUN(3d3)
+F:UNIQUE | FEMALE | GOOD | NO_QUEST | RES_TELE | NONLIVING
+F:FORCE_SLEEP | FORCE_MAXHP | MOVE_BODY |
+F:ONLY_ITEM | DROP_4D2 | DROP_1D2 | DROP_GOOD | DROP_GREAT
+F:SMART | TAKE_ITEM | OPEN_DOOR | HAS_LITE_2 |
+F:CAN_FLY | REGENERATE | IM_ACID | RES_COLD | RES_ELEC | RES_FIRE
+F:RES_WATE | RES_SOUN | RES_CHAO | NO_SLEEP | NO_CONF | HINDU
+F:DROP_CORPSE | POS_SEE_INVIS
+P:Copy:Half-Titan:Mage
+P:Stats:0:2:2:0:0:0
+S:1_IN_2 |
+S:S_MONSTER | S_SPECIAL | AMNESIA | BA_ACID(1d640+60) | BA_WATER(1d152+90)
+D:Saraswati, the wife of Brahma, is the goddess of knowledge, speech, art,
+D:creative energy and things that flow. Her origin as a great river goddess
+D:is all too apparent as she drowns you in a whirlpool with disdainful
+D:indifference.
+
+# Watch out for that S_PANTHEON...
+N:1391:Indra, the Heavenly King of Meru
+G:P:b
+I:134:144d100:40:160:5:1000
+W:92:3:999:128000:0:0
+B:HIT:HURT(14d14):CUT(9d9):STUN(4d4)
+B:HIT:HURT(14d14):CUT(9d9):TERRIFY(4d4)
+B:HIT:HURT(14d14):ELEC(9d9):CONFUSE(4d4)
+B:HIT:HURT(14d14):ELEC(9d9):ACID(4d4)
+F:UNIQUE | MALE | FORCE_MAXHP | FORCE_SLEEP | MOVE_BODY | RANGED_MELEE |
+F:ONLY_ITEM | DROP_3D2 | DROP_GOOD | DROP_GREAT | NO_STUN |
+F:SMART | TAKE_ITEM | BASH_DOOR | HAS_LITE_1 | NONLIVING |
+F:HINDU | NO_QUEST | REGENERATE | CAN_FLY | RES_TELE |
+F:RES_SHAR | RES_DISE | RES_CHAO | RES_SOUN | RES_PLAS |
+F:RES_FIRE | RES_COLD | RES_ACID | RES_POIS | IM_ELEC |
+F:RES_WATE | NO_CONF | NO_SLEEP | AURA_ELEC
+F:POS_SUST_STR
+P:Copy:Half-Titan:Warrior-Mage
+P:Stats:1:1:1:1:1:1
+P:Life:105
+S:FREQ_42 |
+S:BR_ELEC | BR_STORM | S_PANTHEON | BO_MANA | BO_ELEC(20d20+552)
+S:BO_PLASMA(10d10+160) |
+D:Indra is the god of thunder and the heavens, famed for his defeat of the
+D:demonic wyrm Vritra; and while his recognition as the leader of the Devas
+D:has waned over the long years, he still resides atop the holy mountain of
+D:Meru, raining lightning upon those who disturb him.
+
+N:1392:Polar cat
+G:f:K
+I:120:40d50:45:95:20:100
+W:40:5:999:1400:0:0
+B:CLAW:HURT(5d9):CUT(2d9, 50%)
+B:BITE:COLD(4d9)
+B:BITE:ICE(3d9)
+F:DROP_60 | ANIMAL | FORCE_SLEEP | WILD_SNOW | WILD_ONLY | REGENERATE |
+F:IM_COLD | HURT_FIRE | NO_CONF | NO_SLEEP | AURA_COLD
+F:DROP_CORPSE | POS_GAIN_AC | POS_SEE_INVIS
+P:Copy:Kutar:Mauler
+P:Body:Hound
+S:1_IN_7 | BLINK |
+D:A cute white furball, full of icy malice.
+
 # N: serial number : monster name
 # G: symbol : color
 # I: speed : hit points : vision : armor class : alertness : weight (lbs)
@@ -23723,9 +25483,14 @@ D:responsible for the Cloning Pits...
 # S: spell type | spell type | etc
 # F: flag | flag | etc
 
-# D - Black    w - White     s - Gray     o - Orange
-# r - Red     g - Green     b - Blue     u - Brown
-# d - Dark Gray  W - Light Gray   v - Violet    y - Yellow
-# R - Light Red  G - Light Green  B - Light Blue  U - Light Brown
+# D - Black       w - White        s - Gray        o - Orange
+# r - Red         g - Green        b - Blue        u - Brown
+# d - Dark Gray   W - Light Gray   v - Violet      y - Yellow
+# R - Light Red   G - Light Green  B - Light Blue  U - Light Brown
+# L - Int. Green  P - Pink         I - Int. Blue   C - Purple
+# t - Teal        S - Sky-Blue     m - Mud         M - Dark Yellow
+# T - Turquoise   O - Light Orange V - Lilac       c - Dark Purple
+# n - Dark Sky    K - Pale Blue    p - Dark Pink   h - Chestnut
+
 #
 # vim: filetype=ri :
