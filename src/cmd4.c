@@ -881,6 +881,11 @@ void do_cmd_options_aux(int page, cptr info)
                     strcat(buf, "no  ");
                 sprintf(buf + strlen(buf), "(%.19s)", option_info[opt[i]].o_text);
             }
+            else if (option_info[opt[i]].o_var == &ironman_empty_levels)
+            {
+                sprintf(buf, "%-48s: ", option_info[opt[i]].o_desc);
+                sprintf(buf + strlen(buf), "%s", empty_lv_description[generate_empty]);
+            }
             else if (option_info[opt[i]].o_var == &reduce_uniques)
             {
                 sprintf(buf, "%-48s: ", option_info[opt[i]].o_desc);
@@ -890,16 +895,36 @@ void do_cmd_options_aux(int page, cptr info)
                     strcat(buf, "no  ");
                 sprintf(buf + strlen(buf), "(%.19s)", option_info[opt[i]].o_text);
             }
+            else if (option_info[opt[i]].o_var == &obj_list_width)
+            {
+                sprintf(buf, "%-48s: ", option_info[opt[i]].o_desc);
+                sprintf(buf + strlen(buf), "%-3d ", object_list_width);
+                sprintf(buf + strlen(buf), "(%.19s)", option_info[opt[i]].o_text);
+            }
+            else if (option_info[opt[i]].o_var == &mon_list_width)
+            {
+                sprintf(buf, "%-48s: ", option_info[opt[i]].o_desc);
+                sprintf(buf + strlen(buf), "%-3d ", monster_list_width);
+                sprintf(buf + strlen(buf), "(%.19s)", option_info[opt[i]].o_text);
+            }
             else if (option_info[opt[i]].o_var == &single_pantheon)
             {
                 sprintf(buf, "%-48s: ", option_info[opt[i]].o_desc);
-                if ((single_pantheon) && (game_pantheon))
+                sprintf(buf + strlen(buf), "%d of %d", pantheon_count, PANTHEON_MAX - 1);
+            }
+            else if (option_info[opt[i]].o_var == &guaranteed_pantheon)
+            {
+                sprintf(buf, "%-48s: ", option_info[opt[i]].o_desc);
+                if (pantheon_count == PANTHEON_MAX - 1)
                 {
-                    sprintf(buf + strlen(buf), "%.3s ", (game_pantheon < PANTHEON_MAX) ? pant_list[game_pantheon].short_name : "Rnd");
+                    strcat(buf, "All ");
+                }
+                else if ((game_pantheon) && (game_pantheon < PANTHEON_MAX))
+                {
+                    sprintf(buf + strlen(buf), "%.3s ", pant_list[game_pantheon].short_name);
                 }
                 else
-                    strcat(buf, "no  ");
-                sprintf(buf + strlen(buf), "(%.19s)", option_info[opt[i]].o_text);
+                    strcat(buf, "None");
             }
             else if (option_info[opt[i]].o_var == &always_small_levels)
             {
@@ -1025,6 +1050,20 @@ void do_cmd_options_aux(int page, cptr info)
                         if (random_artifact_pct > 100) random_artifacts = FALSE;
                     }
                 }
+                else if (option_info[opt[k]].o_var == &obj_list_width)
+                {
+                    int maksi = MAX(50, Term->wid - 15);
+                    maksi &= ~(0x01);
+                    object_list_width += 2;
+                    if (object_list_width > maksi) object_list_width = maksi;
+                }
+                else if (option_info[opt[k]].o_var == &mon_list_width)
+                {
+                    int maksi = MAX(50, Term->wid - 15);
+                    maksi &= ~(0x01);
+                    monster_list_width += 2;
+                    if (monster_list_width > maksi) monster_list_width = maksi;
+                }
                 else if (option_info[opt[k]].o_var == &reduce_uniques)
                 {
                     if (!reduce_uniques)
@@ -1038,18 +1077,21 @@ void do_cmd_options_aux(int page, cptr info)
                         if (reduce_uniques_pct >= 100) reduce_uniques = FALSE;
                     }
                 }
+                else if (option_info[opt[k]].o_var == &ironman_empty_levels)
+                {
+                    generate_empty++;
+                    if (generate_empty == EMPTY_MAX) generate_empty = 0;
+                    ironman_empty_levels = (generate_empty == EMPTY_ALWAYS);
+                }
                 else if (option_info[opt[k]].o_var == &single_pantheon)
                 {
-                    if (!single_pantheon)
-                    {
-                        single_pantheon = TRUE;
-                        game_pantheon = PANTHEON_MAX;
-                    }
-                    else
-                    {
-                        game_pantheon--;
-                        if (game_pantheon == 0) single_pantheon = FALSE;
-                    }
+                    pantheon_count++;
+                    if (pantheon_count >= PANTHEON_MAX) pantheon_count = 1;
+                }
+                else if (option_info[opt[k]].o_var == &guaranteed_pantheon)
+                {
+                    game_pantheon++;
+                    if (game_pantheon >= PANTHEON_MAX) game_pantheon = 0;
                 }
                 else if (option_info[opt[k]].o_var == &always_small_levels)
                 {
@@ -1117,22 +1159,31 @@ void do_cmd_options_aux(int page, cptr info)
                         }
                     }
                 }
+                else if (option_info[opt[k]].o_var == &obj_list_width)
+                {
+                    object_list_width -= 2;
+                    if (object_list_width < 24) object_list_width = 24;
+                }
+                else if (option_info[opt[k]].o_var == &mon_list_width)
+                {
+                    monster_list_width -= 2;
+                    if (monster_list_width < 24) monster_list_width = 24;
+                }
+                else if (option_info[opt[k]].o_var == &ironman_empty_levels)
+                {
+                    if (generate_empty == 0) generate_empty = EMPTY_MAX - 1;
+                    else generate_empty--;
+                    ironman_empty_levels = (generate_empty == EMPTY_ALWAYS);
+                }
                 else if (option_info[opt[k]].o_var == &single_pantheon)
                 {
-                    if (!single_pantheon)
-                    {
-                        single_pantheon = TRUE;
-                        game_pantheon = 1;
-                    }
-                    else
-                    {
-                        game_pantheon++;
-                        if (game_pantheon > PANTHEON_MAX)
-                        {
-                            single_pantheon = FALSE;
-                            game_pantheon = 0;
-                        }
-                    }
+                    pantheon_count--;
+                    if (pantheon_count < 1) pantheon_count = PANTHEON_MAX - 1;
+                }
+                else if (option_info[opt[k]].o_var == &guaranteed_pantheon)
+                {
+                    if (game_pantheon) game_pantheon--;
+                    else game_pantheon = PANTHEON_MAX - 1;
                 }
                 else if (option_info[opt[k]].o_var == &always_small_levels)
                 {
@@ -1366,7 +1417,7 @@ static void do_cmd_options_win(void)
 
 
 
-#define OPT_NUM 14
+#define OPT_NUM 15
 
 static struct opts
 {
@@ -1382,6 +1433,7 @@ option_fields[OPT_NUM] =
     { '4', "Game-Play Options", 6 },
     { '5', "Disturbance Options", 7 },
     { '6', "Auto-Destroyer Options", 8 },
+    { '7', "List Display Options", 9 },
 
     { 'p', "Mogaminator Preferences", 11 },
     { 'd', "Base Delay Factor", 12 },
@@ -1519,6 +1571,13 @@ void do_cmd_options(void)
             {
                 /* Spawn */
                 do_cmd_options_aux(OPT_PAGE_AUTODESTROY, "Auto-Destroyer Options");
+                break;
+            }
+
+            case '7':
+            {
+                /* Spawn */
+                do_cmd_options_aux(OPT_PAGE_LIST, "List Display Options");
                 break;
             }
 
@@ -3026,11 +3085,13 @@ void do_cmd_colors(void)
 #ifdef ALLOW_COLORS
         prt("(2) Dump colors", 5, 5);
         prt("(3) Modify colors", 6, 5);
+        prt("(4) Load simple color set", 7, 5);
+        prt("(5) Load Windows color set", 8, 5);
 
 #endif
 
         /* Prompt */
-        prt("Command: ", 8, 0);
+        prt("Command: ", 10, 0);
 
 
         /* Prompt */
@@ -3043,11 +3104,11 @@ void do_cmd_colors(void)
         if (i == '1')
         {
             /* Prompt */
-            prt("Command: Load a user pref file", 8, 0);
+            prt("Command: Load a user pref file", 10, 0);
 
 
             /* Prompt */
-            prt("File: ", 10, 0);
+            prt("File: ", 12, 0);
 
 
             /* Default file */
@@ -3074,11 +3135,11 @@ void do_cmd_colors(void)
             static cptr mark = "Colors";
 
             /* Prompt */
-            prt("Command: Dump colors", 8, 0);
+            prt("Command: Dump colors", 10, 0);
 
 
             /* Prompt */
-            prt("File: ", 10, 0);
+            prt("File: ", 12, 0);
 
 
             /* Default filename */
@@ -3111,7 +3172,7 @@ void do_cmd_colors(void)
                 if (!kv && !rv && !gv && !bv) continue;
 
                 /* Extract the color name */
-                if (i < 16) name = color_names[i];
+                if (i < MAX_COLOR) name = color_names[i];
 
                 /* Dump a comment */
                 auto_dump_printf("# Color '%s'\n", name);
@@ -3135,7 +3196,7 @@ void do_cmd_colors(void)
             static byte a = 0;
 
             /* Prompt */
-            prt("Command: Modify colors", 8, 0);
+            prt("Command: Modify colors", 10, 0);
 
 
             /* Hack -- query until done */
@@ -3151,23 +3212,34 @@ void do_cmd_colors(void)
                 for (j = 0; j < 16; j++)
                 {
                     /* Exhibit this color */
-                    Term_putstr(j*4, 20, -1, a, "###");
+                    Term_putstr(j*4, 19, -1, a, "###");
 
                     /* Exhibit all colors */
-                    Term_putstr(j*4, 22, -1, j, format("%3d", j));
+                    Term_putstr(j*4, 20, -1, j, format("%3d", j));
+                }
+                if (MAX_COLOR > 16)
+                {
+                    for (j = 0; j < MAX_COLOR - 16; j++)
+                    {
+                        /* Exhibit this color */
+                        Term_putstr(j*4, 21, -1, a, "###");
+
+                        /* Exhibit all colors */
+                        Term_putstr(j*4, 22, -1, j + 16, format("%3d", j + 16));
+                    }
                 }
 
                 /* Describe the color */
-                name = ((a < 16) ? color_names[a] : "undefined");
+                name = ((a < MAX_COLOR) ? color_names[a] : "undefined");
 
 
                 /* Describe the color */
-                Term_putstr(5, 10, -1, TERM_WHITE,
+                Term_putstr(5, 12, -1, TERM_WHITE,
                         format("Color = %d, Name = %s", a, name));
 
 
                 /* Label the Current values */
-                Term_putstr(5, 12, -1, TERM_WHITE,
+                Term_putstr(5, 14, -1, TERM_WHITE,
                         format("K = 0x%02x / R,G,B = 0x%02x,0x%02x,0x%02x",
                            angband_color_table[a][0],
                            angband_color_table[a][1],
@@ -3175,7 +3247,7 @@ void do_cmd_colors(void)
                            angband_color_table[a][3]));
 
                 /* Prompt */
-                Term_putstr(0, 14, -1, TERM_WHITE,
+                Term_putstr(0, 16, -1, TERM_WHITE,
                         "Command (n/N/k/K/r/R/g/G/b/B): ");
 
 
@@ -3203,6 +3275,20 @@ void do_cmd_colors(void)
                 /* Hack -- redraw */
                 Term_redraw();
             }
+        }
+
+        else if (i == '4')
+        {
+            if (process_pref_file("user-lim.prf")) msg_print("Done.");
+            Term_xtra(TERM_XTRA_REACT, 0);
+            Term_redraw();
+        }
+
+        else if (i == '5')
+        {
+            if (process_pref_file("user-win.prf")) msg_print("Done.");
+            Term_xtra(TERM_XTRA_REACT, 0);
+            Term_redraw();
         }
 
 #endif
@@ -4591,6 +4677,18 @@ void do_cmd_knowledge_weapon(void)
     doc_free(doc);
 }
 
+void display_weapon_info_aux(int mode)
+{
+    bool screen_hack = screen_is_saved();
+    if (screen_hack) screen_load();
+
+    display_weapon_mode = mode;
+    do_cmd_knowledge_weapon();
+    display_weapon_mode = 0;
+
+    if (screen_hack) screen_save();
+}
+
 static void do_cmd_knowledge_extra(void)
 {
     doc_ptr  doc = doc_alloc(80);
@@ -4631,6 +4729,7 @@ static vec_ptr _prof_weapon_alloc(int tval)
         if (k_ptr->tval != tval) continue;
         if ((tval == TV_POLEARM) && (k_ptr->sval == (prace_is_(RACE_MON_SWORD) ? SV_DEATH_SCYTHE : SV_DEATH_SCYTHE_HACK))) continue;
         if (tval == TV_BOW && k_ptr->sval == SV_HARP) continue;
+        if (tval == TV_BOW && k_ptr->sval == SV_FLUTE) continue;
         if (tval == TV_BOW && k_ptr->sval == SV_CRIMSON) continue;
         if (tval == TV_BOW && k_ptr->sval == SV_RAILGUN) continue;
         vec_add(v, k_ptr);
