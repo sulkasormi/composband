@@ -492,6 +492,14 @@ void wilderness_move_player(int old_x, int old_y)
     p_ptr->redraw |= PR_BASIC; /* In case the user left/entered a town ... */
     handle_stuff();  /* Is this necessary?? */
 
+    /* New players sometimes don't realize there's an overworld */
+    if ((!overworld_visit) && (!p_ptr->town_num) && (!thrall_mode))
+    {
+        msg_print("<color:B>TIP</color>: Press <color:keypress><</color> to enter the special global map, which helps you navigate the vast wilderness and reduces the chance of running into deadly monsters.\nType <color:keypress>?gj</color> to access the full in-game help on navigating and surviving in the wilderness.");
+        msg_print(NULL);
+        overworld_visit = TRUE;
+    }
+
 #if 0
     c_put_str(TERM_WHITE, format("P:%3d/%3d", px, py), 26, 0);
     c_put_str(TERM_WHITE, format("W:%3d/%3d", p_ptr->wilderness_x, p_ptr->wilderness_y), 27, 0);
@@ -533,6 +541,10 @@ static int _encounter_terrain_type(int x, int y)
     case TERRAIN_DIRT:
     case TERRAIN_DESERT:
         result = TERRAIN_GRASS;
+        break;
+    case TERRAIN_GLACIER:
+    case TERRAIN_PACK_ICE:
+        result = TERRAIN_SNOW;
         break;
     }
     return result;
@@ -816,13 +828,13 @@ static void perturb_point_mid(int x1, int x2, int x3, int x4,
      * tmp is a random int +/- rough
      */
     int tmp2 = rough*2 + 1;
-    int tmp = randint1(tmp2) - (rough + 1);
+    int tmp = randint0(tmp2) - rough;
 
-    int avg = ((x1 + x2 + x3 + x4) / 4) + tmp;
+    int avg = ((x1 + x2 + x3 + x4 + randint1(2)/* rounding */) / 4) + tmp;
 
     /* Division always rounds down, so we round up again */
-    if (((x1 + x2 + x3 + x4) % 4) > 1)
-        avg++;
+//    if (((x1 + x2 + x3 + x4) % 4) > randint1(2))
+//        avg++;
 
     /* Normalize */
     if (avg < 0) avg = 0;
@@ -846,7 +858,7 @@ static void perturb_point_end(int x1, int x2, int x3,
     int avg = ((x1 + x2 + x3) / 3) + tmp;
 
     /* Division always rounds down, so we round up again */
-    if ((x1 + x2 + x3) % 3) avg++;
+    if (((x1 + x2 + x3) % 3) > 1) avg++;
 
     /* Normalize */
     if (avg < 0) avg = 0;
@@ -920,7 +932,10 @@ static int _terrain_power[MAX_WILDERNESS] =
      3, /* TERRAIN_DESERT */
      60, /* TERRAIN_SHALLOW_LAVA */
      40, /* TERRAIN_DEEP_LAVA */
-     100 /* TERRAIN_MOUNTAIN */
+     100, /* TERRAIN_MOUNTAIN */
+     80, /* TERRAIN_GLACIER */
+     45, /* TERRAIN_SNOW */
+     35, /* TERRAIN_PACK_ICE */
    };
 
 /* Let's make terrain borders smooth and undulating
@@ -1228,11 +1243,15 @@ static int _border_sanitize(int arvo, int o_terrain, int u_terrain, int y, int x
    if (o_terrain == u_terrain)
    {
        if (o_terrain != c_terrain) paino = 2;
-       else if (seed & (1 << ((y + x - z) % 20))) paino2 = MAX(2, 4 - z);
+       else if (seed & (1 << ((y + x - z) % 20))) paino2 = 2;
    }
    else if (((seed + y2 + x2 - z) % 20) < 2) return arvo;
    if (one_in_(16 - z)) paino += 2;
    arvo2 = MAX_FEAT_IN_TERRAIN / 2;
+   if (((x + y + seed + 5) % 40) < 5) arvo2 -= 2;
+   else if (((x + y + seed) % 40) < 15) arvo2--;
+   else if (((x + y + seed + 25) % 40) < 5) arvo2 += 2;
+   else if (((x + y + seed + 20) % 40) < 15) arvo2--;
    if ((paino > 1) && (one_in_(2 + z))) paino--;
    if (one_in_(8 + z)) paino--;
    return (((arvo * paino) + (arvo2 * paino2)) / (paino + paino2));
@@ -1242,8 +1261,9 @@ static void generate_wilderness_area(int terrain, u32b seed, int y, int x)
 {
     int x1, y1;
     int table_size = sizeof(terrain_table[0]) / sizeof(s16b);
-    int roughness = 1; /* The roughness of the level. */
+    int roughness = 2; /* The roughness of the level. */
     bool init = TRUE;
+//    s32b keskiarvo = 0;
 
     /* The outer wall is easy */
     if (terrain == TERRAIN_EDGE)
@@ -1265,7 +1285,7 @@ static void generate_wilderness_area(int terrain, u32b seed, int y, int x)
     /* Hack -- Use the "simple" RNG */
     Rand_quick = TRUE;
 
-    /* Hack -- Induce consistant town layout */
+    /* Hack -- Induce consistent town layout */
     Rand_value = seed;
 
     /* Create level background */
@@ -1285,9 +1305,12 @@ static void generate_wilderness_area(int terrain, u32b seed, int y, int x)
         for (x1 = 0; x1 < MAX_WID; x1++)
         {
             int u_terrain = _encroach(terrain, y, x, y1, x1, seed, &init);
+//            keskiarvo += _cave[y1][x1];
             _cave[y1][x1] = terrain_table[u_terrain][_border_sanitize(_cave[y1][x1], terrain, u_terrain, y1, x1, y, x, seed)];
         }
     }
+
+//    msg_format("Keskiarvo: %d.%d", (keskiarvo / 13068), (keskiarvo * 100L / 13068) % 100);
 
     /* Use the complex RNG */
     Rand_quick = FALSE;
@@ -1302,7 +1325,7 @@ static void _generate_entrance(int x, int y, int dx, int dy)
     /* Hack -- Use the "simple" RNG */
     Rand_quick = TRUE;
 
-    /* Hack -- Induce consistant town layout */
+    /* Hack -- Induce consistent town layout */
     Rand_value = wilderness[y][x].seed;
 
     y2 = rand_range(13, cur_hgt - 13) + dy;
@@ -1318,6 +1341,7 @@ static void _generate_entrance(int x, int y, int dx, int dy)
         {
             int i;
             bool skip = FALSE;
+            monster_race *r_ptr = &r_info[d_info[dun_idx].initial_guardian];
 
             /* Thanks to wilderness scrolling, we'll need to double check
                that we haven't already allocated the guardian! */
@@ -1333,6 +1357,10 @@ static void _generate_entrance(int x, int y, int dx, int dy)
                     break;
                 }
             }
+
+            /* Check for dead unique as guardian */
+            if ((!r_ptr) || (!r_ptr->name)) skip = TRUE;
+            else if ((r_ptr->flags1 & RF1_UNIQUE) && (mon_available_num(r_ptr) < 1)) skip = TRUE;
 
             if (!skip)
             {
@@ -1580,6 +1608,7 @@ void wilderness_gen(void)
     wilderness_move_player(p_ptr->oldpx, p_ptr->oldpy);
     if ((locate_entrance_hack) && (wilderness[p_ptr->wilderness_y][p_ptr->wilderness_x].entrance > 0)
     && (wilderness[p_ptr->wilderness_y][p_ptr->wilderness_x].entrance < max_d_idx)
+    && ((p_ptr->total_winner) || (!(d_info[wilderness[p_ptr->wilderness_y][p_ptr->wilderness_x].entrance].flags1 & DF1_WINNER)))
     && (!p_ptr->town_num))
     {
         /* Locate entrance - mimic _generate_entrance() code */
@@ -1589,7 +1618,7 @@ void wilderness_gen(void)
         /* Hack -- Use the "simple" RNG */
         Rand_quick = TRUE;
 
-        /* Hack -- Induce consistant town layout */
+        /* Hack -- Induce consistent town layout */
         Rand_value = wilderness[p_ptr->wilderness_y][p_ptr->wilderness_x].seed;
 
         y2 = rand_range(13, cur_hgt - 13);
@@ -1802,6 +1831,7 @@ errr parse_line_wilderness(char *buf, int options)
     {
         if (!d_info[i].maxdepth) continue;
         if (d_info[i].flags1 & DF1_RANDOM) continue;
+        if (d_info[i].flags1 & DF1_SUPPRESSED) continue;
 
         wilderness[d_info[i].dy][d_info[i].dx].entrance = i;
 
@@ -1919,6 +1949,10 @@ static void init_terrain_table(int terrain, s16b feat_global, cptr fmt, ...)
 
 /*
  * Initialize arrays for wilderness terrains
+ * NOTE: Not all values are equally likely. Values around 9 are the most
+ * likely (now that the old bugs with rounding errors that caused values to
+ * skew higher with a center around 12 have been fixed). 0 is the least
+ * likely value (because it is further from 9 than 17 is).
  */
 void init_wilderness_terrains(void)
 {
@@ -1929,27 +1963,28 @@ void init_wilderness_terrains(void)
         feat_floor, MAX_FEAT_IN_TERRAIN);
 
     init_terrain_table(TERRAIN_DEEP_WATER, feat_deep_water, "abc",
-        feat_shallow_water, 3,
-        feat_deep_water, 12,
-        feat_shallow_water, MAX_FEAT_IN_TERRAIN - 15);
+        feat_shallow_water, 4,
+        feat_deep_water, 10,
+        feat_shallow_water, MAX_FEAT_IN_TERRAIN - 14);
 
-    init_terrain_table(TERRAIN_SHALLOW_WATER, feat_shallow_water, "abcde",
+    init_terrain_table(TERRAIN_SHALLOW_WATER, feat_shallow_water, "abcd",
         feat_deep_water, 3,
-        feat_shallow_water, 12,
-        feat_floor, 1,
-        feat_dirt, 1,
+        feat_shallow_water, 11,
+        feat_dirt, 3,
         feat_grass, MAX_FEAT_IN_TERRAIN - 17);
 
-    init_terrain_table(TERRAIN_SWAMP, feat_swamp, "abcdef",
+    init_terrain_table(TERRAIN_SWAMP, feat_swamp, "abcdefgh",
         feat_dirt, 2,
         feat_grass, 3,
+        feat_swamp, 1,
         feat_tree, 1,
         feat_brake, 1,
+        feat_swamp, 2,
         feat_shallow_water, 4,
-        feat_swamp, MAX_FEAT_IN_TERRAIN - 11);
+        feat_swamp, MAX_FEAT_IN_TERRAIN - 14);
 
     init_terrain_table(TERRAIN_DIRT, feat_dirt, "abcdefghijk",
-        feat_floor, 2,
+        feat_grass, 2,
         feat_dirt, 4,
         feat_grass, 1,
         feat_brake, 1,
@@ -1961,33 +1996,35 @@ void init_wilderness_terrains(void)
         feat_grass, 1,
         feat_dirt, 2);
 
-    init_terrain_table(TERRAIN_GRASS, feat_grass, "abcdefghi",
-        feat_floor, 2,
+    init_terrain_table(TERRAIN_GRASS, feat_grass, "abcdefghij",
+        feat_brake, 2,
         feat_dirt, 2,
+        feat_flower, 1,
         feat_brake, 1,
-        feat_grass, 5,
+        feat_grass, 4,
         feat_brake, 1,
         feat_tree, 1,
         feat_flower, 1,
         feat_grass, 4,
         feat_tree, MAX_FEAT_IN_TERRAIN - 17);
 
-    init_terrain_table(TERRAIN_TREES, feat_tree, "abcde",
-        feat_floor, 2,
-        feat_dirt, 1,
-        feat_tree, 11,
+    init_terrain_table(TERRAIN_TREES, feat_tree, "abcdef",
+        feat_grass, 1,
+        feat_dirt, 3,
+        feat_brake, 2,
+        feat_tree, 8,
         feat_brake, 2,
         feat_grass, MAX_FEAT_IN_TERRAIN - 16);
 
     init_terrain_table(TERRAIN_DESERT, feat_dirt, "abc",
-        feat_floor, 2,
-        feat_dirt, 13,
-        feat_grass, MAX_FEAT_IN_TERRAIN - 15);
+        feat_grass, 2,
+        feat_dirt, 11,
+        feat_grass, MAX_FEAT_IN_TERRAIN - 13);
 
     init_terrain_table(TERRAIN_SHALLOW_LAVA, feat_shallow_lava, "abc",
-        feat_shallow_lava, 14,
+        feat_shallow_lava, 12,
         feat_deep_lava, 3,
-        feat_mountain, MAX_FEAT_IN_TERRAIN - 17);
+        feat_mountain, MAX_FEAT_IN_TERRAIN - 15);
 
     init_terrain_table(TERRAIN_DEEP_LAVA, feat_deep_lava, "abcd",
         feat_dirt, 3,
@@ -1995,16 +2032,44 @@ void init_wilderness_terrains(void)
         feat_deep_lava, 10,
         feat_mountain, MAX_FEAT_IN_TERRAIN - 16);
 
-    init_terrain_table(TERRAIN_MOUNTAIN, feat_mountain, "abcdefghi",
-        feat_floor, 1,
-        feat_brake, 1,
-        feat_grass, 2,
-        feat_dirt, 2,
+    init_terrain_table(TERRAIN_MOUNTAIN, feat_mountain, "abcdefgh",
+        feat_brake, 3,
+        feat_grass, 1,
+        feat_dirt, 1,
         feat_tree, 2,
         feat_mountain, MAX_FEAT_IN_TERRAIN - 11,
-        feat_tree, 1,
+        feat_tree, 2,
         feat_dirt, 1,
         feat_grass, 1);
+
+    init_terrain_table(TERRAIN_GLACIER, feat_glacier_steep, "abcdefg",
+        feat_snow_tree, 2,
+        feat_glacier, 6,
+        feat_glacier_steep, MAX_FEAT_IN_TERRAIN - 13,
+        feat_ice_floor, 1,
+        feat_snow_tree, 1,
+        feat_crevasse, 1,
+        feat_snow_floor, 2);
+
+    init_terrain_table(TERRAIN_SNOW, feat_snow_floor, "abcdefg",
+        feat_snow_tree, 4,
+        feat_glacier, 1,
+        feat_snow_tree, 3,
+        feat_snow_floor, MAX_FEAT_IN_TERRAIN - 13,
+        feat_ice_floor, 3,
+        feat_snow_tree, 1,
+        feat_glacier, 1);
+
+    init_terrain_table(TERRAIN_PACK_ICE, feat_glacier, "abcdefghi",
+        feat_glacier, 1,
+        feat_ice_floor, 3,
+        feat_glacier_steep, 2,
+        feat_glacier, MAX_FEAT_IN_TERRAIN - 12,
+        feat_ice_floor, 2,
+        feat_glacier_steep, 1,
+        feat_crevasse, 1,
+        feat_glacier_steep, 1,
+        feat_glacier, 1);
 }
 
 
@@ -2103,6 +2168,9 @@ bool change_wild_mode(void)
 
     /* Leaving */
     p_ptr->leaving = TRUE;
+
+    /* Overworld visit */
+    overworld_visit = TRUE;
 
     /* Succeed */
     return TRUE;
