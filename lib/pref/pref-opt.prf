@@ -48,7 +48,6 @@ Y:display_path
 ##### Text Display Options #####
 
 Y:plain_descriptions
-Y:always_show_list
 X:depth_in_feet
 Y:describe_slots
 Y:show_weights
@@ -71,7 +70,6 @@ Y:always_dump_origins
 Y:stack_force_notes
 Y:stack_force_costs
 Y:expand_list
-Y:empty_levels
 Y:bound_walls_perm
 Y:last_words
 
