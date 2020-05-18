@@ -1,15 +1,17 @@
 /* spells.c */
-extern void browse_spells(spell_info* spells, int ct, cptr desc);
+extern void browse_spells(power_info* spells, int ct, cptr desc);
 extern int calculate_cost(int cost);
 extern int calculate_fail_rate(int level, int base_fail, int stat_idx);
 extern int calculate_fail_rate_aux(int caster_lvl, int spell_lvl, int base_fail, int stat_idx);
 extern bool cast_spell(ang_spell spell);
-extern int  choose_spell(spell_info* spells, int ct, cptr verb, cptr desc, int max_cost, bool power);
+extern int  choose_spell(power_info* spells, int ct, cptr verb, cptr desc, int max_cost, bool power);
 extern void default_spell(int cmd, variant *res);
 extern byte do_cmd_power(void);
 extern void do_cmd_spell(void);
 extern void do_cmd_spell_browse(void);
 extern void wipe_labels(void);
+extern int get_power_table(power_info *spells);
+extern int get_spell_table(power_info *spells, int max, bool with_class);
 extern void fail_spell(ang_spell spell);
 extern int get_spell_energy(ang_spell spell);
 extern int get_spell_cost_extra(ang_spell spell);
