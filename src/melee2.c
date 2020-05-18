@@ -336,7 +336,7 @@ void mon_take_hit_mon(int m_idx, int dam, bool *fear, cptr note, int who)
 
     if (p_ptr->riding && (m_idx == p_ptr->riding)) disturb(1, 0);
 
-    if ((melee_challenge) && (!is_pet(m_ptr))) dam = 0;
+    if ((melee_challenge) && (!is_pet(m_ptr)) && (m_idx != who)) dam = 0;
 
     if (MON_INVULNER(m_ptr) && randint0(PENETRATE_INVULNERABILITY))
     {
@@ -1910,6 +1910,12 @@ bool mon_attack_mon(int m_idx, int t_idx)
                 if (!e.effect) break;
                 if (e.pct && randint1(100) > e.pct) continue;
 
+                /* Check for death between effects */
+                if (t_ptr->fx != x_saver || t_ptr->fy != y_saver)
+                {
+                    break;
+                }
+
                 damage = damroll(e.dd + to_dd, e.ds);
                 if (stun)
                     damage -= damage * MIN(100, stun) / 150;
@@ -1968,6 +1974,12 @@ bool mon_attack_mon(int m_idx, int t_idx)
                     if (!explode)
                         _mon_gf_mon(m_idx, t_ptr, pt, damage);
 
+                    /* Check for death (again) */
+                    if (t_ptr->fx != x_saver || t_ptr->fy != y_saver)
+                    {
+                        break;
+                    }
+
                     switch (effect_type)
                     {
                     case BLOW_EFFECT_TYPE_FEAR:
@@ -1998,6 +2010,12 @@ bool mon_attack_mon(int m_idx, int t_idx)
                                 msg_format("%^s appears healthier.", m_name);
                             }
                         }
+                        break;
+                    }
+
+                    /* Check for death (sigh...) */
+                    if (t_ptr->fx != x_saver || t_ptr->fy != y_saver)
+                    {
                         break;
                     }
 
@@ -2089,7 +2107,7 @@ bool mon_attack_mon(int m_idx, int t_idx)
         else
         {
             /* Analyze failed attacks */
-            switch (method)
+           switch (method)
             {
             case RBM_HIT:
             case RBM_TOUCH:
@@ -2646,7 +2664,9 @@ static void process_monster(int m_idx)
         }
 
         /* Some monsters can speak */
-        if ((ap_r_ptr->flags2 & RF2_CAN_SPEAK) && aware && is_aware(m_ptr) &&
+        if (((ap_r_ptr->flags2 & RF2_CAN_SPEAK) ||
+            ((m_ptr->r_idx == MON_BUSH) && (p_ptr->image) && (is_hostile(m_ptr)) && (one_in_(8)))) &&
+            aware && is_aware(m_ptr) &&
             m_idx != p_ptr->riding &&
             one_in_(SPEAK_CHANCE) &&
             player_has_los_bold(oy, ox) &&
@@ -2723,6 +2743,7 @@ static void process_monster(int m_idx)
                 char m_name[80];
                 monster_desc(m_name, m_ptr, 0);
                 msg_format("%^s is no longer confused.", m_name);
+                mon_lore_3(m_ptr, RF3_CLEAR_HEAD);
             }
         }
     }
@@ -3498,9 +3519,23 @@ static void process_monster(int m_idx)
 
             if (have_flag(f_ptr->flags, FF_TREE))
             {
-                if (!(r_ptr->flags7 & RF7_CAN_FLY) && !(r_ptr->flags8 & RF8_WILD_WOOD))
+                if (!(r_ptr->flags7 & RF7_CAN_FLY) && !(r_ptr->flags2 & RF2_PASS_WALL) && !(r_ptr->flags8 & RF8_WILD_WOOD))
                 {
                     m_ptr->energy_need += ENERGY_NEED();
+                }
+            }
+            else if (have_flag(f_ptr->flags, FF_SNOW))
+            {
+                if (!(r_ptr->flags7 & RF7_CAN_FLY) && !(r_ptr->flags2 & RF2_PASS_WALL) && !(r_ptr->flags8 & RF8_WILD_SNOW))
+                {
+                    m_ptr->energy_need += ENERGY_NEED() * 2 / 5;
+                }
+            }
+            else if (have_flag(f_ptr->flags, FF_SLUSH))
+            {
+                if (!(r_ptr->flags7 & RF7_CAN_FLY) && !(r_ptr->flags2 & RF2_PASS_WALL) && !(r_ptr->flags8 & RF8_WILD_SNOW))
+                {
+                    m_ptr->energy_need += ENERGY_NEED() / 9;
                 }
             }
             if (have_flag(f_ptr->flags, FF_WEB) && r_ptr->d_char != 'S')
@@ -3907,7 +3942,7 @@ void process_monsters(void)
         /* Ignore "dead" monsters */
         if (!m_ptr->r_idx) continue;
 
-        if (p_ptr->wild_mode) continue;
+        if ((p_ptr->wild_mode) && (i != p_ptr->riding)) continue;
 
         /* Handle "fresh" monsters */
         if (m_ptr->mflag & MFLAG_BORN)
@@ -3921,6 +3956,8 @@ void process_monsters(void)
 
         if (game_turn%TURNS_PER_TICK == 0)
             process_mon_mtimed(m_ptr);
+
+        if (p_ptr->wild_mode) continue;
 
         /* Hack -- Require proximity */
         if (p_ptr->action == ACTION_GLITTER)
@@ -3988,6 +4025,8 @@ void process_monsters(void)
 
         else if (m_ptr->target_y) test = TRUE;
 
+        else if (m_ptr->mflag2 & MFLAG2_HURT) test = TRUE;
+
         /* Do nothing */
         if (!test)
             continue;
@@ -4023,6 +4062,8 @@ void process_monsters(void)
 
         /* Not enough energy to move */
         if (m_ptr->energy_need > 0) continue;
+
+        energy_need_hack = SPEED_TO_ENERGY(speed);
 
         /* Use up "some" energy */
         m_ptr->energy_need += ENERGY_NEED();
@@ -4180,6 +4221,9 @@ bool set_monster_fast(int m_idx, int v)
 
     if (!notice) return FALSE;
 
+    if (m_ptr->ml)
+        check_mon_health_redraw(m_idx);
+
     if ((p_ptr->riding == m_idx) && !p_ptr->leaving)
         p_ptr->update |= PU_BONUS;
 
@@ -4206,6 +4250,9 @@ bool set_monster_slow(int m_idx, int v)
     m_ptr->mtimed[MTIMED_SLOW] = v;
 
     if (!notice) return FALSE;
+
+    if (m_ptr->ml)
+        check_mon_health_redraw(m_idx);
 
     if ((p_ptr->riding == m_idx) && !p_ptr->leaving)
         p_ptr->update |= PU_BONUS;
@@ -4305,7 +4352,7 @@ bool set_monster_invulner(int m_idx, int v, bool energy_need)
     {
         if (MON_INVULNER(m_ptr))
         {
-            if (energy_need && !p_ptr->wild_mode) m_ptr->energy_need += ENERGY_NEED();
+            if (energy_need && !p_ptr->wild_mode) m_ptr->energy_need += energy_need_clipper_aux(SPEED_TO_ENERGY(m_ptr->mspeed));
             notice = TRUE;
         }
     }
@@ -4447,7 +4494,7 @@ static void process_mon_mtimed(mon_ptr mon)
             }
         }
     }
-    if ((mon->minislow) && (randint0(race->flags2 & RF2_REGENERATE ? 50 : 100) < mon->minislow))
+    if ((mon->minislow) && (randint0(race->flags2 & RF2_REGENERATE ? 50 : 100) < mon->minislow) && ((!p_ptr->no_air) || (!monster_living(race))))
     {
         (void)m_inc_minislow(mon, -1);
     }
@@ -4574,6 +4621,7 @@ void monster_gain_exp(int m_idx, int s_idx)
 
     /* Paranoia */
     if (m_idx <= 0 || s_idx <= 0) return;
+    if (m_idx == s_idx) return;
 
     m_ptr = &m_list[m_idx];
 
