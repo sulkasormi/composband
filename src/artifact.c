@@ -1586,7 +1586,7 @@ static void random_slay(object_type *o_ptr)
                 one_high_resistance(o_ptr);
             return;
         }
-        else if (o_ptr->sval == SV_HARP)
+        else if (obj_is_harp(o_ptr))
         {
             if (one_in_(2))
                 random_resistance(o_ptr);
@@ -2037,7 +2037,7 @@ int get_slot_weight(obj_ptr obj)
      * completely ridiculous */
     if ((obj->tval == TV_BOW) && (obj->sval > SV_RANGED_MAX_NORMAL) && (obj->sval != SV_NAMAKE_BOW))
     {
-        return ((obj->sval == SV_HARP) && (p_ptr->pclass == CLASS_BARD)) ? 50 : 40;
+        return ((obj_is_harp(obj)) && (p_ptr->pclass == CLASS_BARD)) ? 50 : 40;
     }
 
     for (i = 0; ; i++)
@@ -2140,7 +2140,7 @@ s32b create_artifact(object_type *o_ptr, u32b mode)
     slaying_hack = 0;
     has_pval = FALSE;
 
-    if (o_ptr->tval == TV_BOW && o_ptr->sval == SV_HARP)
+    if (obj_is_harp(o_ptr))
         has_pval = TRUE;
 
     /* Hack for Demeter. Torches start with a pval of 4000! Not sure about lanterns ... */
@@ -3040,7 +3040,7 @@ s32b create_artifact(object_type *o_ptr, u32b mode)
         add_flag(o_ptr->flags, OF_FREE_ACT);
     }
 
-    if (o_ptr->tval == TV_BOW && o_ptr->sval == SV_HARP)
+    if (obj_is_harp(o_ptr))
     {
         o_ptr->to_h = 0;
         o_ptr->to_d = 0;
@@ -3353,7 +3353,13 @@ void random_artifact_resistance(object_type * o_ptr, artifact_type *a_ptr)
             o_ptr->to_a = 20;
         }
         else
+        {
             add_flag(o_ptr->flags, OF_VULN_LITE);
+            if ((comp_mode) && (p_ptr->prace != RACE_VAMPIRE) && (!player_obviously_poly_immune(FALSE)))
+            {
+                add_flag(o_ptr->flags, OF_TY_CURSE);
+            }
+        }
     }
 
     if (o_ptr->name1 == ART_MURAMASA)
@@ -3661,7 +3667,7 @@ bool create_named_art_aux_aux(int a_idx, object_type *o_ptr)
 
     o_ptr->name1 = a_idx;
     o_ptr->pval = a_ptr->pval;
-    if ((object_is_(o_ptr, TV_BOW, SV_HARP)) && (p_ptr->pclass != CLASS_BARD))
+    if ((obj_is_harp(o_ptr)) && (p_ptr->pclass != CLASS_BARD))
         o_ptr->pval -= (o_ptr->pval / 2);
     o_ptr->ac = a_ptr->ac;
     o_ptr->dd = a_ptr->dd;
