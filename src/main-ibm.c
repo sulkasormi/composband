@@ -252,7 +252,7 @@ static long ibm_color_complex[16];
  *
  * Note that many of the choices below suck, but so do crappy monitors.
  */
-static byte ibm_color_simple[16] =
+static byte ibm_color_simple[32] =
 {
 	VID_BLACK,			/* Dark */
 	VID_WHITE,			/* White */
@@ -269,7 +269,23 @@ static byte ibm_color_simple[16] =
 	VID_MAGENTA | VID_BRIGHT,	/* Light Red XXX */
 	VID_GREEN | VID_BRIGHT,	/* Light Green */
 	VID_BLUE | VID_BRIGHT,	/* Light Blue */
-	VID_YELLOW			/* Light Umber XXX */
+	VID_YELLOW,			/* Light Umber XXX */
+    VID_GREEN,                  /* Int. Green */
+    VID_MAGENTA | VID_BRIGHT,   /* Pink */
+    VID_BLUE | VID_BRIGHT,      /* Int. Blue */
+    VID_MAGENTA,                /* Purple */
+    VID_GREEN | VID_BRIGHT,     /* Blue-Green */
+    VID_BLUE | VID_BRIGHT,      /* Sky-Blue */
+    VID_YELLOW,                 /* Mud */
+    VID_YELLOW,                 /* Dark Yellow */
+    VID_CYAN,                   /* Turquoise */
+    VID_RED | VID_BRIGHT,       /* Light Orange */
+    VID_MAGENTA | VID_BRIGHT,   /* Lilac */
+    VID_BLUE,                   /* Dark Purple */
+    VID_BLUE,                   /* Dark Sky-Blue */
+    VID_WHITE,                  /* Pale Blue */
+    VID_RED,                    /* Dark Pink */
+    VID_RED,                    /* Chestnut */
 };
 
 
@@ -826,14 +842,14 @@ static errr Term_text_ibm(int x, int y, int n, byte a, const char *cp)
 	if (use_color_complex)
 	{
 		/* Extract a color index */
-		attr = (a & 0x0F);
+		attr = (a & COLOR_MASK);
 	}
 
 	/* Handle "simple" color */
 	else
 	{
 		/* Extract a color value */
-		attr = ibm_color_simple[a & 0x0F];
+		attr = ibm_color_simple[a & COLOR_MASK];
 	}
 
 #ifdef USE_CONIO
@@ -891,14 +907,14 @@ static errr Term_pict_ibm(int x, int y, int n, const byte *ap, const char *cp, c
 		if (use_color_complex)
 		{
 			/* Extract a color index */
-			attr = (ap[i] & 0x0F);
+			attr = (ap[i] & COLOR_MASK);
 		}
 
 		/* Handle "simple" color */
 		else
 		{
 			/* Extract a color value */
-			attr = ibm_color_simple[ap[i] & 0x0F];
+			attr = ibm_color_simple[ap[i] & COLOR_MASK];
 		}
 
 		/* Set the attribute */
@@ -920,14 +936,14 @@ static errr Term_pict_ibm(int x, int y, int n, const byte *ap, const char *cp, c
 		if (use_color_complex)
 		{
 			/* Extract a color index */
-			attr = (ap[i] & 0x0F);
+			attr = (ap[i] & COLOR_MASK);
 		}
 
 		/* Handle "simple" color */
 		else
 		{
 			/* Extract a color value */
-			attr = ibm_color_simple[ap[i] & 0x0F];
+			attr = ibm_color_simple[ap[i] & COLOR_MASK];
 		}
 
 		/* Apply */
