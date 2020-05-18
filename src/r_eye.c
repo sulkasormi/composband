@@ -176,32 +176,26 @@ static spell_info _ultimate_beholder_spells[] = {
     { 45, 50, 80, darkness_storm_II_spell},
     { -1, -1, -1, NULL}
 };
-static int _get_spells(spell_info* spells, int max) {
+static spell_info *_get_spells(void) {
     if (p_ptr->blind)
     {
         msg_print("You can't see!");
-        return 0;
+        return NULL;
     }
 
     if (p_ptr->lev >= 45)
-        return get_spells_aux(spells, max, _ultimate_beholder_spells);
+        return _ultimate_beholder_spells;
     else if (p_ptr->lev >= 35)
-        return get_spells_aux(spells, max, _undead_beholder_spells);
+        return _undead_beholder_spells;
     else
-        return get_spells_aux(spells, max, _beholder_spells);
+        return _beholder_spells;
 }
-static int _get_powers(spell_info* spells, int max)
+static power_info _get_powers[] =
 {
-    int ct = 0;
+    { A_INT, { 25, 1, 90, eat_magic_spell}},
+    { -1, {-1, -1, -1, NULL}}
+};
 
-    spell_info* spell = &spells[ct++];
-    spell->level = 25;
-    spell->cost = 1;
-    spell->fail = calculate_fail_rate(spell->level, 90, p_ptr->stat_ind[A_INT]);
-    spell->fn = eat_magic_spell;
-
-    return ct;
-}
 static void _calc_bonuses(void) {
     int l = p_ptr->lev;
     int ac = l/2;
@@ -401,8 +395,8 @@ race_t *mon_beholder_get_race(void)
 
         me.birth = _birth;
         me.calc_innate_attacks = _calc_innate_attacks;
-        me.get_spells = _get_spells;
         me.get_powers = _get_powers;
+        me.get_spells_fn = _get_spells;
         me.caster_info = _caster_info;
         me.calc_bonuses = _calc_bonuses;
         me.get_flags = _get_flags;
