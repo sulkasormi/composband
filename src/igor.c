@@ -173,7 +173,7 @@ static bool _equip_body_part(bool surgery)
     prompt.filter = _object_is_body_part;
     prompt.where[0] = INV_PACK;
     prompt.where[1] = INV_FLOOR;
-    if (!surgery) prompt.where[2] = INV_SPECIAL1;
+//    if (!surgery) prompt.where[2] = INV_SPECIAL1;
     obj_prompt(&prompt);
     if (!prompt.obj) return FALSE;
     if (surgery) return _igor_carry(prompt.obj);
@@ -1412,15 +1412,23 @@ static power_info _igor_stomach_spell[] = {
     {    -1, { -1, -1, -1, NULL}}
 };
 
-static int _get_powers(spell_info* spells, int max) {
-    int ct = get_powers_aux(spells, max, _igor_powers);
+static power_info *_get_powers(void)
+{
+    static power_info spells[MAX_SPELLS] = {0};
+    int max = MAX_SPELLS;
+    int ct = get_powers_aux(spells, max, _igor_powers, FALSE);
     object_type *o1_ptr, *o2_ptr;
-    if (!_pack_initialized) return ct;
+    if (!_pack_initialized)
+    {
+        spells[ct].spell.fn = NULL;
+        return spells;
+    }
     o1_ptr = inv_obj(_igor_body, _IB_STOMACH);
-    if ((o1_ptr) && (o1_ptr->xtra5)) ct += get_powers_aux(spells + ct, max - ct, _igor_stomach_spell);
+    if ((o1_ptr) && (o1_ptr->xtra5)) ct += get_powers_aux(spells + ct, max - ct, _igor_stomach_spell, FALSE);
     o2_ptr = inv_obj(_igor_body, _IB_HEAD);
-    if ((o2_ptr) && (o2_ptr->xtra5) && ((!o1_ptr) || (o2_ptr->xtra5 != o1_ptr->xtra5))) ct += get_powers_aux(spells + ct, max - ct, _igor_head_spell);
-    return ct;
+    if ((o2_ptr) && (o2_ptr->xtra5) && ((!o1_ptr) || (o2_ptr->xtra5 != o1_ptr->xtra5))) ct += get_powers_aux(spells + ct, max - ct, _igor_head_spell, FALSE);
+    spells[ct].spell.fn = NULL;
+    return spells;
 }
 
 static slot_t _igor_fake_slot(slot_t slot)
@@ -1649,7 +1657,7 @@ race_t *igor_get_race(void)
 
         me.exp = 145;
         me.calc_bonuses = _calc_bonuses;
-        me.get_powers = _get_powers;
+        me.get_powers_fn = _get_powers;
         me.get_flags = _get_flags;
         me.birth = _birth;
         me.load_player = _igor_load;
