@@ -75,5 +75,8 @@ shouts, 'I don't deserve this kind of shabby treatment!'
 N:1255:Gazhak, the Ogre Tyrant
 shouts, 'Betrayed by my own folk!'
 
+N:1304:Spulga, the Troll Priestess
+screams, 'You can't do this to me!'
+
 N:*:Default
 shouts, 'AAAARRRGGGHHH!!!'
