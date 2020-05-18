@@ -490,7 +490,7 @@ void strafing_spell(int cmd, variant *res)
 
 #define MAX_DUELIST_SPELLS    9
 
-static spell_info _spells[MAX_DUELIST_SPELLS] = 
+static spell_info _spells[MAX_DUELIST_SPELLS] =
 {
     /*lvl cst fail spell */
     {  1,   0,  0, _mark_target_spell },
@@ -504,17 +504,17 @@ static spell_info _spells[MAX_DUELIST_SPELLS] =
     {-1,  -1,  -1, NULL}
 }; 
 
-static int _get_spells(spell_info* spells, int max)
+static spell_info *_get_spells(void)
 {
     cptr msg = duelist_equip_error();
 
     if (msg)
     {
         msg_print(msg);
-        return 0;
+        return NULL;
     }
-    
-    return get_spells_aux(spells, MIN(max, MAX_DUELIST_SPELLS), _spells);
+
+    return _spells;
 }
 
 static void _calc_bonuses(void)
@@ -640,7 +640,7 @@ class_t *duelist_get_class(void)
         me.calc_bonuses = _calc_bonuses;
         me.calc_weapon_bonuses = _calc_weapon_bonuses;
         me.caster_info = _caster_info;
-        me.get_spells = _get_spells;
+        me.get_spells_fn = _get_spells;
         init = TRUE;
     }
 
