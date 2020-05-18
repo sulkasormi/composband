@@ -396,11 +396,14 @@ static power_info _tindalos_powers[] = {
     {    -1, { -1, -1, -1, NULL}}
 };
 
-static int _get_powers(spell_info* spells, int max) {
-    int ct = get_powers_aux(spells, max, _powers);
+static power_info *_get_powers(void) {
+    static power_info spells[MAX_SPELLS];
+    int max = MAX_SPELLS;
+    int ct = get_powers_aux(spells, max, _powers, FALSE);
     if (p_ptr->current_r_idx == MON_HOUND_OF_TINDALOS)
-        ct += get_powers_aux(spells + ct, max - ct, _tindalos_powers);
-    return ct;
+        ct += get_powers_aux(spells + ct, max - ct, _tindalos_powers, FALSE);
+    spells[ct].spell.fn = NULL;
+    return spells;
 }
 static void _calc_bonuses(void) {
     int to_a = py_prorata_level_aux(25, 1, 2, 2);
@@ -728,7 +731,7 @@ race_t *mon_hound_get_race(void)
 
         me.calc_innate_attacks = hound_calc_innate_attacks;
         me.calc_bonuses = _calc_bonuses;
-        me.get_powers = _get_powers;
+        me.get_powers_fn = _get_powers;
         me.get_flags = _get_flags;
         me.gain_level = _gain_level;
         me.birth = _birth;
