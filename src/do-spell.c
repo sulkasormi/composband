@@ -1152,7 +1152,7 @@ static cptr do_life_spell(int spell, int mode)
 
     case 11:
         if (name) return "Resist Heat and Cold";
-        if (desc) return "Gives resistance to fire and cold.";
+        if (desc) return "Gives temporary resistance to fire and cold.";
 
         {
             int base = spell_power(20);
@@ -1161,8 +1161,9 @@ static cptr do_life_spell(int spell, int mode)
 
             if (cast)
             {
-                set_oppose_cold(randint1(base) + base, FALSE);
-                set_oppose_fire(randint1(base) + base, FALSE);
+                int dur = randint1(base) + base;
+                set_oppose_cold(dur, FALSE);
+                set_oppose_fire(dur, FALSE);
             }
         }
         break;
@@ -1503,11 +1504,7 @@ static cptr do_life_spell(int spell, int mode)
             {
                 int v = randint1(base) + base;
                 set_fast(v, FALSE);
-                set_oppose_acid(v, FALSE);
-                set_oppose_elec(v, FALSE);
-                set_oppose_fire(v, FALSE);
-                set_oppose_cold(v, FALSE);
-                set_oppose_pois(v, FALSE);
+                set_oppose_base(v, FALSE);
                 set_ultimate_res(v, FALSE);
             }
         }
@@ -2197,9 +2194,10 @@ static cptr do_nature_spell(int spell, int mode)
 
             if (cast)
             {
-                set_oppose_cold(randint1(base) + base, FALSE);
-                set_oppose_fire(randint1(base) + base, FALSE);
-                set_oppose_elec(randint1(base) + base, FALSE);
+                int dur = randint1(base) + base;
+                set_oppose_cold(dur, FALSE);
+                set_oppose_fire(dur, FALSE);
+                set_oppose_elec(dur, FALSE);
             }
         }
         break;
@@ -2445,11 +2443,7 @@ static cptr do_nature_spell(int spell, int mode)
 
             if (cast)
             {
-                set_oppose_acid(randint1(base) + base, FALSE);
-                set_oppose_elec(randint1(base) + base, FALSE);
-                set_oppose_fire(randint1(base) + base, FALSE);
-                set_oppose_cold(randint1(base) + base, FALSE);
-                set_oppose_pois(randint1(base) + base, FALSE);
+                set_oppose_base(randint1(base) + base, FALSE);
             }
         }
         break;
@@ -3548,8 +3542,9 @@ static cptr do_death_spell(int spell, int mode)
 
             if (cast)
             {
-                set_oppose_cold(randint1(base) + base, FALSE);
-                set_oppose_pois(randint1(base) + base, FALSE);
+                int dur = randint1(base) + base;
+                set_oppose_cold(dur, FALSE);
+                set_oppose_pois(dur, FALSE);
             }
         }
         break;
@@ -5678,11 +5673,7 @@ static cptr do_craft_spell(int spell, int mode)
 
             if (cast)
             {
-                set_oppose_acid(randint1(base) + base, FALSE);
-                set_oppose_elec(randint1(base) + base, FALSE);
-                set_oppose_fire(randint1(base) + base, FALSE);
-                set_oppose_cold(randint1(base) + base, FALSE);
-                set_oppose_pois(randint1(base) + base, FALSE);
+                set_oppose_base(randint1(base) + base, FALSE);
             }
         }
         break;
@@ -6664,7 +6655,7 @@ static cptr do_crusade_spell(int spell, int mode)
 
     case 9:
         if (name) return "Holy Orb";
-        if (desc) return "Fires a ball with holy power. Hurts evil monsters greatly, but don't effect good monsters.";
+        if (desc) return "Fires a ball of holy power. Hurts evil monsters greatly, but doesn't affect good monsters.";
 
         {
             int dice = 3;
@@ -6842,10 +6833,11 @@ static cptr do_crusade_spell(int spell, int mode)
 
             if (cast)
             {
-                set_oppose_acid(randint1(base) + base, FALSE);
-                set_oppose_cold(randint1(base) + base, FALSE);
-                set_oppose_elec(randint1(base) + base, FALSE);
-                set_tim_sh_holy(randint1(base) + base, FALSE);
+                int dur = randint1(base) + base;
+                set_oppose_acid(dur, FALSE);
+                set_oppose_cold(dur, FALSE);
+                set_oppose_elec(dur, FALSE);
+                set_tim_sh_holy(dur, FALSE);
             }
         }
         break;
@@ -7592,7 +7584,7 @@ static cptr do_music_spell(int spell, int mode)
 
             if (!p_ptr->oppose_elec)
             {
-                msg_print("You feel less resistant to elec.");
+                msg_print("You feel less resistant to electricity.");
             }
 
             if (!p_ptr->oppose_fire)
@@ -7994,7 +7986,7 @@ static cptr do_music_spell(int spell, int mode)
                 p_ptr->window |= (PW_OVERHEAD | PW_DUNGEON);
 
                 /* Take an extra turn */
-                p_ptr->energy_need += ENERGY_NEED();
+                p_ptr->energy_need += PY_ENERGY_NEED();
             }
         }
 
@@ -8176,7 +8168,10 @@ static cptr do_hex_spell(int spell, int mode)
                     }
                 }
 
-                prompt.obj->curse_flags |= get_curse(power, prompt.obj);
+                /* Clouded says getting actual bad curses on Hex objects is annoying,
+                 * so we only rarely do it */
+                if ((power > 0) || (one_in_(26))) prompt.obj->curse_flags |= get_curse(power, prompt.obj);
+                else if (one_in_(2)) prompt.obj->curse_flags |= (OFC_ALLERGY);
             }
 
             p_ptr->update |= (PU_BONUS);
