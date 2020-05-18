@@ -18,10 +18,10 @@ of Ogun
 'Oven Mitts'
 
 N: 4:BIAS_COLD
-of Siberia
 of the Snow Castle
 of the North
 of the Almighty Duck
+of Siberia
 of Luke
 
 N: 5:BIAS_ACID
@@ -29,6 +29,7 @@ of the Sea-Kings
 of Rauros
 of Utu
 of Senji
+of Tiputus
 
 N:12:BIAS_CHAOS
 of Dr. Strangelove
@@ -47,6 +48,7 @@ N:15:BIAS_LAW
 N:13:BIAS_PRIESTLY
 N: 8:BIAS_WIS
 of Katumus
+of Didactylos
 'Enlightenment from Heaven'
 'Hand of God'
 'Gospel'
@@ -69,11 +71,11 @@ N:18:BIAS_WARRIOR
 N: 6:BIAS_STR
 of Angbor
 of Zakath
+of Magni
 'Terminater'
 'Steelgrip'
 'Boarfist'
 'Thumper'
-'Jarngreipr'
 
 N:19:BIAS_RANGER
 N:10:BIAS_CON
