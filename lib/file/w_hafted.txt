@@ -17,12 +17,14 @@ N: 3:BIAS_FIRE
 'Fist of the Phoenix'
 'Desert Sun'
 'Flamingo'
+of Flaming
 of Duruin
 
 N: 4:BIAS_COLD
 'Arctic Moon'
 'General of Winter'
 'Cool Thing'
+of Chilling
 of Cold Fury
 of Ezo
 
@@ -31,6 +33,7 @@ N: 5:BIAS_ACID
 'Melted-in Balm'
 'Icky Thing'
 'Acid of the Ants'
+'Sludgehammer'
 
 N:12:BIAS_CHAOS
 'Armageddon'
@@ -48,6 +51,7 @@ N:14:BIAS_NECROMANTIC
 of Helthing
 of Dusk's Lament
 of Genocide
+of Night
 
 N:15:BIAS_LAW
 N:13:BIAS_PRIESTLY
