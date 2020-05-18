@@ -215,8 +215,8 @@ AC_ARG_ENABLE(sdl_mixer,
     [enable_sdl_mixer=$enable_sdl])
 
 dnl Multi-color support
-AC_ARG_ENABLE(xtracolours,
-    [AS_HELP_STRING([--limit-colours],     [Limits colours to 16 (default: disabled])],
+AC_ARG_ENABLE(xtra_colours,
+    [AS_HELP_STRING([--disable-xtra-colours],     [Limits colours to 16 (default: disabled)])],
     [limit_colours=$enableval],
     [limit_colours=no])
 
