@@ -78,18 +78,11 @@ void _learning_spell(int cmd, variant *res)
     }
 }
 
-static int _get_powers(spell_info* spells, int max)
+static power_info _bluemage_powers[] =
 {
-    int ct = 0;
-
-    spell_info* spell = &spells[ct++];
-    spell->level = 1;
-    spell->cost = 0;
-    spell->fail = 0;
-    spell->fn = _learning_spell;
-
-    return ct;
-}
+    { A_NONE, { 1, 0,  0, _learning_spell}},
+    { -1, {-1, -1, -1, NULL}}
+};
 
 static caster_info * _caster_info(void)
 {
@@ -212,7 +205,7 @@ class_t *blue_mage_get_class(void)
         me.save_player = _save;
         me.load_player = _load;
         /*TODO: me.get_spells = _get_spells;*/
-        me.get_powers = _get_powers;
+        me.get_powers = _bluemage_powers;
         me.character_dump = _dump;
         init = TRUE;
     }
