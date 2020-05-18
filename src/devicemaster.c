@@ -357,7 +357,7 @@ void _transfer_charges_spell(int cmd, variant *res)
 }
 
 
-static spell_info _spells[] = 
+static spell_info _get_spells[] = 
 {
     /*lvl cst fail spell */
     {  1,  1, 30, _detect_devices_spell},
@@ -367,11 +367,6 @@ static spell_info _spells[] =
     { 25,  0,  0, _desperation_spell},
     { -1, -1, -1, NULL}
 };
-
-static int _get_spells(spell_info* spells, int max)
-{    
-    return get_spells_aux(spells, max, _spells);
-}
 
 cptr devicemaster_speciality_name(int psubclass)
 {
@@ -467,12 +462,7 @@ static void _character_dump(doc_ptr doc)
         doc_printf(doc, " * You may use %s even when frightened.\n", desc);
     doc_printf(doc, " * You are resistant to charge draining (Power=%d).\n\n", p_ptr->lev);
 
-    {
-        spell_info spells[MAX_SPELLS];
-        int        ct = _get_spells(spells, MAX_SPELLS);
-
-        py_display_spells(doc, spells, ct);
-    }
+    py_dump_spells(doc); 
 }
 
 static caster_info * _caster_info(void)
