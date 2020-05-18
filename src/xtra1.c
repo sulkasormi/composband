@@ -329,19 +329,15 @@ void extract_day_hour_min_imp(int turn, int *day, int *hour, int *min)
 {
     const s32b A_DAY = TURNS_PER_TICK * TOWN_DAWN;
     s32b turn_in_today = (turn + A_DAY / 4) % A_DAY;
+    race_t *race_ptr =  get_race_aux(p_ptr->start_race, 0);
 
-    switch (p_ptr->start_race)
+    if (race_ptr->flags & RACE_NIGHT_START)
     {
-    case RACE_VAMPIRE:
-    case RACE_MON_VAMPIRE:
-    case RACE_SKELETON:
-    case RACE_ZOMBIE:
-    case RACE_SPECTRE:
         *day = (turn - A_DAY * 3 / 4) / A_DAY + 1;
-        break;
-    default:
+    }
+    else
+    {
         *day = (turn + A_DAY / 4) / A_DAY + 1;
-        break;
     }
     *hour = (24 * turn_in_today / A_DAY) % 24;
     *min = (1440 * turn_in_today / A_DAY) % 60;
@@ -643,6 +639,9 @@ static void prt_stat(int stat)
 #define BAR_SLAY_ANIMAL 189
 #define BAR_WP_STUN 190
 #define BAR_WP_SHARP 191
+#define BAR_POET 192
+#define BAR_UNDERSTAND 193
+#define BAR_NO_AIR 194
 
 static struct {
     byte attr;
@@ -843,6 +842,9 @@ static struct {
     {TERM_L_GREEN, "/Z", "/Animal"},
     {TERM_ORANGE, "|St", "Stun"},
     {TERM_L_WHITE, "|S", "Vorpal"},
+    {TERM_L_ORANGE, "Pt", "Poet"},
+    {TERM_YELLOW, "Id", "Auto-ID"},
+    {TERM_VIOLET, "NA", "No Air"},
     {0, NULL, NULL}
 };
 
@@ -1036,6 +1038,7 @@ static void prt_status(void)
     if (p_ptr->tim_blood_feast) ADD_FLG(BAR_BLOOD_FEAST);
     if (p_ptr->tim_blood_rite) ADD_FLG(BAR_BLOOD_RITE);
     if (p_ptr->tim_no_spells) ADD_FLG(BAR_NO_SPELLS);
+    if (p_ptr->no_air) ADD_FLG(BAR_NO_AIR);
     if (p_ptr->tim_blood_revenge) ADD_FLG(BAR_BLOOD_REVENGE);
     if (p_ptr->tim_force) ADD_FLG(BAR_FORCE);
     if (p_ptr->tim_field) ADD_FLG(BAR_FIELD);
@@ -1296,6 +1299,8 @@ static void prt_status(void)
         bar[BAR_DUELIST].lstr = duelist_buffer;
     }
 
+    if (p_ptr->tim_poet) ADD_FLG(BAR_POET);
+    if (p_ptr->tim_understanding) ADD_FLG(BAR_UNDERSTAND);
     if (p_ptr->tim_building_up) ADD_FLG(BAR_BUILD);
     if (p_ptr->tim_vicious_strike) ADD_FLG(BAR_VICIOUS_STRIKE);
     if (p_ptr->tim_enlarge_weapon) ADD_FLG(BAR_ENLARGE_WEAPON);
@@ -1635,7 +1640,8 @@ static void prt_depth(void)
             sprintf(buf, "%s", "Monster Arena");
         else if (p_ptr->town_num)
             sprintf(buf, "%s", town_name(p_ptr->town_num));
-        else if (wilderness[p_ptr->wilderness_y][p_ptr->wilderness_x].entrance)
+        else if ((wilderness[p_ptr->wilderness_y][p_ptr->wilderness_x].entrance) && ((p_ptr->total_winner) ||
+                 (!(d_info[wilderness[p_ptr->wilderness_y][p_ptr->wilderness_x].entrance].flags1 & DF1_WINNER))))
             sprintf(buf, "Wilderness (%s): L%d", d_name+d_info[wilderness[p_ptr->wilderness_y][p_ptr->wilderness_x].entrance].name, base_level);
         else
             sprintf(buf, "Wilderness: L%d", base_level);
@@ -1896,6 +1902,7 @@ static bool prt_speed(int row, int col)
         else if (is_fast && !hitaus) attr = TERM_YELLOW;
         else if (hitaus && !is_fast) attr = TERM_VIOLET;
         else if ((is_fast) && (hitaus) && (hitaus != 10)) attr = ((hitaus > 10) ? TERM_VIOLET : TERM_YELLOW);
+        else if ((is_fast) && (hitaus) && (hitaus == 10)) attr = TERM_L_RED;
         else if (p_ptr->filibuster) attr = TERM_ORANGE;
         else attr = TERM_L_UMBER;
         if (effective_speed) sprintf(buf, "Slow (%d.%dx)", SPEED_TO_ENERGY(i) / 10, SPEED_TO_ENERGY(i) % 10);
@@ -2319,6 +2326,10 @@ static void prt_mon_health_bar(int m_idx, int row, int col)
                 Term_queue_char(col++, row, TERM_UMBER, 'C', 0, 0);
             if (MON_MONFEAR(m_ptr))
                 Term_queue_char(col++, row, TERM_VIOLET, 'F', 0, 0);
+            if (MON_FAST(m_ptr))
+                Term_queue_char(col++, row, TERM_L_BLUE, 'H', 0, 0);
+            if (monster_slow(m_ptr))
+                Term_queue_char(col++, row, TERM_L_DARK, 'S', 0, 0);
         }
         else
         {
@@ -2328,12 +2339,23 @@ static void prt_mon_health_bar(int m_idx, int row, int col)
             else if (MON_CONFUSED(m_ptr)) attr = TERM_UMBER;
             else if (MON_STUNNED(m_ptr)) attr = TERM_L_BLUE;
             else if (MON_MONFEAR(m_ptr)) attr = TERM_VIOLET;
+            else if (monster_slow(m_ptr)) attr = TERM_L_DARK;
             Term_putstr(col+1, row, 11, base_attr, "[---------]");
 
             if (m_ptr->ego_whip_ct)
                 Term_putstr(col + 2, row, len, attr, "wwwwwwwww");
             else
                 Term_putstr(col + 2, row, len, attr, "*********");
+            if (m_ptr->mpower > 1333)
+            {
+                Term_putch(col + 1, row, TERM_BLUE, '[');
+                Term_putch(col + 11, row, TERM_BLUE, ']');
+            }
+            else if (MON_FAST(m_ptr))
+            {
+                Term_putch(col + 1, row, TERM_VIOLET, '[');
+                Term_putch(col + 11, row, TERM_VIOLET, ']');
+            }
         }
     }
 }
@@ -3239,6 +3261,18 @@ static void _report_encumbrance(void)
     }
 }
 
+int calc_mana_aux(int idx, int stat, int lvl)
+{
+    int msp = adj_mag_mana[idx] * (lvl + 3)/4;
+    if (msp) msp++;
+    if (msp)
+    {
+        int adj = _racial_mana_adjust(stat);
+        msp += (msp * adj / 20);
+    }
+    return msp;
+}
+
 static void calc_mana(void)
 {
     int             msp, lvl;
@@ -3300,15 +3334,7 @@ static void calc_mana(void)
     }
     else
     {
-        int idx = p_ptr->stat_ind[caster_ptr->which_stat];
-
-        msp = adj_mag_mana[idx] * (lvl + 3)/4;
-        if (msp) msp++;
-        if (msp)
-        {
-            int adj = _racial_mana_adjust(caster_ptr->which_stat);
-            msp += (msp * adj / 20);
-        }
+        msp = calc_mana_aux(p_ptr->stat_ind[caster_ptr->which_stat], caster_ptr->which_stat, lvl);
 
         if (msp && (p_ptr->personality == PERS_MUNCHKIN)) msp += msp / 2;
         if (msp && (get_class_idx() == CLASS_SORCERER)) msp += msp*(25+p_ptr->lev)/100;
@@ -3876,6 +3902,7 @@ void calc_bonuses(void)
     p_ptr->free_act = 0;
     p_ptr->slow_digest = FALSE;
     p_ptr->regen = 100;
+    p_ptr->mana_regen = FALSE;
     p_ptr->can_swim = FALSE;
     p_ptr->levitation = FALSE;
     p_ptr->hold_life = 0;
@@ -3971,7 +3998,7 @@ void calc_bonuses(void)
     p_ptr->align = friend_align;
     p_ptr->maul_of_vice = FALSE;
 
-    if (easy_id)
+    if ((easy_id) || (p_ptr->tim_understanding))
         p_ptr->auto_id = TRUE;
     else if ((p_ptr->lev >= 20) || (coffee_break))
         p_ptr->auto_pseudo_id = TRUE;
@@ -4342,7 +4369,7 @@ void calc_bonuses(void)
             else if (ct > 0)
             {
                 p_ptr->weapon_info[i].to_d += to_d / ct;
-                p_ptr->weapon_info[i].dis_to_h += to_d / ct;
+                p_ptr->weapon_info[i].dis_to_d += to_d / ct;
             }
         }
         p_ptr->weapon_info[0].to_h += 12;
@@ -4434,6 +4461,11 @@ void calc_bonuses(void)
     /* Call the class hook after scanning equipment but before calculating encumbrance, et. al.*/
     if (class_ptr->calc_bonuses)
         class_ptr->calc_bonuses();
+
+    if (!p_ptr->mana_regen)
+    {
+        if ((class_ptr->flags & CLASS_REGEN_MANA) || (mon_fast_mana_regen())) p_ptr->mana_regen = TRUE;
+    }
 
     if (race_ptr->calc_bonuses)
         race_ptr->calc_bonuses();
@@ -4802,11 +4834,15 @@ void calc_bonuses(void)
             case SV_CRIMSON:
             case SV_RAILGUN:
             case SV_HARP:
+            case SV_FLUTE:
             {
                 p_ptr->shooter_info.tval_ammo = TV_NO_AMMO;
                 break;
             }
         }
+
+        /* Hack - allow any ammo */
+        if (o_ptr->name1 == ART_MOM) p_ptr->shooter_info.tval_ammo = TV_ANY_AMMO;
 
         /* Experimental: All classes can reduce ammo breakage based on
          * Archery Skill. calc_shooter_bonus might decrement this amount
@@ -4907,6 +4943,11 @@ void calc_bonuses(void)
         /* Hacks */
         if (o_ptr->tval == TV_SWORD && o_ptr->sval == SV_POISON_NEEDLE)
             info_ptr->blows_calc.max = 100;
+        if ((o_ptr->name1 == ART_MJOLLNIR) && (equip_find_art(ART_MAGNI)))
+        {
+            info_ptr->xtra_blow += 100;
+            info_ptr->heavy_wield = FALSE;
+        }
         if (arm > 0)
             info_ptr->blows_calc.max = MAX(100, info_ptr->blows_calc.max - 100);
         if (hex_spelling(HEX_XTRA_MIGHT) || hex_spelling(HEX_BUILDING) || p_ptr->tim_building_up)
@@ -5030,7 +5071,7 @@ void calc_bonuses(void)
             penalty += 30;
             if (penalty < 30) penalty = 30;
         }
-        if (p_ptr->shooter_info.tval_ammo == TV_BOLT) penalty *= 2;
+        if ((p_ptr->shooter_info.tval_ammo == TV_BOLT) || (p_ptr->shooter_info.tval_ammo == TV_ANY_AMMO)) penalty *= 2;
         p_ptr->shooter_info.to_h -= penalty;
         p_ptr->shooter_info.dis_to_h -= penalty;
     }
@@ -5216,6 +5257,11 @@ void calc_bonuses(void)
     {
         p_ptr->cursed &= ~(OFC_AGGRAVATE);
         p_ptr->skills.stl = MIN(p_ptr->skills.stl - 3, (p_ptr->skills.stl + 2) / 2);
+    }
+
+    if (p_ptr->cursed & OFC_CATLIKE)
+    {
+        p_ptr->skills.stl -= 4;
     }
 
     /* Limit Skill -- stealth from 0 to 30 */
