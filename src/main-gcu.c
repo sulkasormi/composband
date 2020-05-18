@@ -373,7 +373,7 @@ static int can_fix_color = FALSE;
 /*
  * Simple Angband to Curses color conversion table
  */
-static int colortable[16];
+static int colortable[MAX_COLOR];
 
 /**
  * Background color we should draw with; either BLACK or DEFAULT
@@ -1045,7 +1045,7 @@ static errr Term_xtra_gcu_react(void)
         */
         int i;
         int scale = COLORS == 256 ? 6 : 4;
-        for (i = 0; i < 16; i++)
+        for (i = 0; i < MAX_COLOR; i++)
         {
             int fg = create_color(i, scale);
             init_pair(i + 1, fg, bg_color);
@@ -1194,7 +1194,7 @@ static void Term_acs_text_gcu(int x, int y, int n, byte a, cptr s)
 
 #ifdef A_COLOR
    /* Set the color */
-   wattrset(td->win, colortable[a & 0x0F]);
+   wattrset(td->win, colortable[a & COLOR_MASK]);
 #endif
 
    for (i=0; i < n; i++)
@@ -1236,7 +1236,7 @@ static errr Term_text_gcu(int x, int y, int n, byte a, cptr s)
 
 #ifdef A_COLOR
    /* Set the color */
-   if (can_use_color) wattrset(td->win, colortable[a & 0x0F]);
+   if (can_use_color) wattrset(td->win, colortable[a & COLOR_MASK]);
 #endif
 
    /* Add the text */
@@ -1399,7 +1399,7 @@ errr init_gcu(int argc, char *argv[])
 #ifdef REDEFINE_COLORS
 	/* Can we change colors? */
 	can_fix_color = (can_use_color && can_change_color() &&
-			 (COLORS >= 16) && (COLOR_PAIRS > 8));
+			 (COLORS >= MAX_COLOR) && (COLOR_PAIRS > 8));
 #endif
 
 #ifdef HAVE_USE_DEFAULT_COLORS
@@ -1433,13 +1433,28 @@ errr init_gcu(int argc, char *argv[])
 		colortable[7] = (COLOR_PAIR(3) | A_NORMAL);	/* Umber */
 		colortable[8] = (COLOR_PAIR(7) | A_BRIGHT);	/* Dark-grey XXX */
 		colortable[9] = (COLOR_PAIR(0) | A_NORMAL);	/* Light-grey XXX */
-		colortable[10] = (COLOR_PAIR(5) | A_NORMAL);	/* Purple */
+		colortable[10] = (COLOR_PAIR(5) | A_NORMAL);	/* Violet */
 		colortable[11] = (COLOR_PAIR(3) | A_BRIGHT);	/* Yellow */
 		colortable[12] = (COLOR_PAIR(5) | A_BRIGHT);	/* Light Red XXX */
 		colortable[13] = (COLOR_PAIR(2) | A_BRIGHT);	/* Light Green */
 		colortable[14] = (COLOR_PAIR(4) | A_BRIGHT);	/* Light Blue */
 		colortable[15] = (COLOR_PAIR(3) | A_NORMAL);	/* Light Umber XXX */
-
+		colortable[16] = (COLOR_PAIR(2) | A_NORMAL);	/* Int. Green */
+		colortable[17] = (COLOR_PAIR(5) | A_BRIGHT);	/* Pink */
+		colortable[18] = (COLOR_PAIR(4) | A_BRIGHT);	/* Int. Blue */
+		colortable[19] = (COLOR_PAIR(5) | A_NORMAL);	/* Purple */
+		colortable[20] = (COLOR_PAIR(2) | A_BRIGHT);	/* Teal */
+		colortable[21] = (COLOR_PAIR(4) | A_BRIGHT);	/* Sky-Blue */
+		colortable[22] = (COLOR_PAIR(3) | A_NORMAL);	/* Mud */
+		colortable[23] = (COLOR_PAIR(3) | A_BRIGHT);	/* Dark Yellow */
+		colortable[24] = (COLOR_PAIR(4) | A_BRIGHT);	/* Int. Blue */
+		colortable[25] = (COLOR_PAIR(1) | A_BRIGHT);	/* Light Orange */
+		colortable[26] = (COLOR_PAIR(5) | A_BRIGHT);	/* Lilac */
+		colortable[27] = (COLOR_PAIR(5) | A_NORMAL);	/* Dark Purple */
+		colortable[28] = (COLOR_PAIR(4) | A_NORMAL);	/* Dark Sky-Blue */
+		colortable[29] = (COLOR_PAIR(0) | A_BRIGHT);	/* Pale Blue */
+		colortable[30] = (COLOR_PAIR(1) | A_NORMAL);	/* Dark Pink */
+		colortable[31] = (COLOR_PAIR(1) | A_NORMAL);	/* Chestnut */
    }
 
 #endif
