@@ -84,7 +84,7 @@ char listsym[] =
 /*
  * Encode the screen colors
  */
-cptr color_char = "dwsorgbuDWvyRGBU";
+char color_char[] = "dwsorgbuDWvyRGBULPICtSmMTOVcnKpi";
 
 
 /*
@@ -1484,7 +1484,7 @@ magic_type technic_info[NUM_TECHNIC][32] =
         { REALM_LAW, 20, 32, 20,  50,   45}, /* Probe */
         { REALM_LAW, 21, 35, 25,  50,   60}, /* Spin */
         { REALM_LAW, 22, 40, 40,  60,   70}, /* Advanced Bloodsucking */
-        { REALM_LAW, 23, 50, 150, 75,  200}, /* Alter Reality */
+        { REALM_LAW, 23, 50, 125, 65,  200}, /* Alter Reality */
 
         { REALM_LAW, 24, 10,  10,  25,   15}, /* Blink */
         { REALM_LAW, 25, 15,  12,  30,   25}, /* Tread Softly */
@@ -1962,7 +1962,7 @@ int chest_traps[64] =
 /*
  * Hack -- the "basic" color names (see "TERM_xxx")
  */
-cptr color_names[16] =
+cptr color_names[32] =
 {
     "Dark",
     "White",
@@ -1980,7 +1980,22 @@ cptr color_names[16] =
     "Light Green",
     "Light Blue",
     "Light Umber",
-
+    "Int. Green",
+    "Pink",
+    "Int. Blue",
+    "Purple",
+    "Teal",
+    "Sky-Blue",
+    "Mud",
+    "Dark Yellow",
+    "Turquoise",
+    "Light Orange",
+    "Lilac",
+    "Dark Purple",
+    "Dark Sky-Blue",
+    "Pale Blue",
+    "Dark Pink",
+    "Chestnut"
 };
 
 
@@ -2014,6 +2029,10 @@ cptr stat_names_reduced[6] =
 
 };
 
+cptr empty_lv_description[EMPTY_MAX] =
+{
+    "Sometimes", "Never", "Always"
+};
 
 /*
  * Certain "screens" always use the main screen, including News, Birth,
@@ -2143,6 +2162,9 @@ option_type option_info[] =
     { &auto_get_objects,            FALSE, OPT_PAGE_INPUT, 6, 7,
     "auto_get_objects",             "Ctrl-G automatically gets nearby wanted objects" },
 
+    { &limit_shop_prompts,          TRUE, OPT_PAGE_INPUT, 6, 0,
+    "limit_shop_prompts",           "Limit shop quantity prompts by money available" },
+
     { &numpad_as_cursorkey,         TRUE, OPT_PAGE_INPUT, 2, 31,
     "numpad_as_cursorkey",          "Use numpad keys as cursor keys in editor mode" },
 
@@ -2200,29 +2222,11 @@ option_type option_info[] =
     { &plain_descriptions,          TRUE,  OPT_PAGE_TEXT, 5, 1,
     "plain_descriptions",           "Plain object descriptions" },
 
-    { &always_show_list,            TRUE,  OPT_PAGE_TEXT, 4, 0,
-    "always_show_list",             "Always show list when choosing spells" },
-
     { &depth_in_feet,               FALSE, OPT_PAGE_TEXT, 0, 7,
     "depth_in_feet",                "Show dungeon level in feet" },
 
     { &effective_speed,             FALSE, OPT_PAGE_TEXT, 0, 29,
     "effective_speed",              "Show speeds as energy multipliers" },
-
-    { &describe_slots,              TRUE,  OPT_PAGE_TEXT, 0, 10,
-    "describe_slots",               "Show equipment slot descriptions" },
-
-    { &show_weights,                TRUE,  OPT_PAGE_TEXT, 0, 11,
-    "show_weights",                 "Show weights in object listings" },
-
-    { &show_discounts,              TRUE,  OPT_PAGE_TEXT, 0, 12,
-    "show_discounts",               "Show discounts in object listings" },
-
-    { &show_power,                  FALSE, OPT_PAGE_TEXT, 2, 14,
-    "show_power",                   "Show device power in object listings (if known)" },
-
-    { &show_item_graph,             TRUE,  OPT_PAGE_TEXT, 2, 0,
-    "show_item_graph",              "Show item graphics in object listings" },
 
     { &equippy_chars,               TRUE,  OPT_PAGE_TEXT, 1, 12,
     "equippy_chars",                "Display 'equippy' chars" },
@@ -2260,9 +2264,6 @@ option_type option_info[] =
     { &ignore_unview,               FALSE, OPT_PAGE_TEXT, 2, 13,
     "ignore_unview",                "Ignore actions of out of sight monsters" },
 
-    { &display_distance,            FALSE,  OPT_PAGE_TEXT, 1, 4,
-    "display_distance",             "Display distance in monster list" },
-
     { &display_race,		        TRUE, OPT_PAGE_TEXT, 2, 29,
     "display_race",                 "Player character depends on race" },
 
@@ -2281,23 +2282,11 @@ option_type option_info[] =
     { &easy_mimics,		        FALSE, OPT_PAGE_TEXT, 2, 27,
     "easy_mimics",                  "Use 'x' for monsters that look like things" },
 
-    { &list_stairs,                  FALSE,  OPT_PAGE_TEXT, 1, 10,
-    "list_stairs",                  "Display stairs in the object list" },
-
-    { &show_future_powers,           TRUE,  OPT_PAGE_TEXT, 1, 0,
-    "show_future_powers",           "Include known future race/class powers in lists" },
-
-    { &show_future_spells,           FALSE,  OPT_PAGE_TEXT, 2, 20,
-    "show_future_spells",           "Include known future class spells in lists" },
-
     { &display_skill_num,            FALSE,  OPT_PAGE_TEXT, 2, 22,
-    "display_skill_num",            "Display skills as numbers in character sheet" },
+    "display_skill_num",            "Display skills as numbers on character sheet" },
 
     { &reforge_details,              TRUE,  OPT_PAGE_TEXT, 2, 16,
     "reforge_details",              "Show statistics before proceeding with a reforge" },
-
-    { &auto_sticky_labels,           TRUE,  OPT_PAGE_TEXT, 2, 17,
-    "auto_sticky_labels",           "Automatically make all power labels sticky" },
 
 
     /*** Game-Play ***/
@@ -2310,9 +2299,6 @@ option_type option_info[] =
 
     { &expand_list,                 TRUE,  OPT_PAGE_GAMEPLAY, 1, 5,
     "expand_list",                  "Allow query option lists to loop to beginning" },
-
-    { &empty_levels,                TRUE,  OPT_PAGE_GAMEPLAY, 0, 31,
-    "empty_levels",                 "Allow empty 'arena' levels" },
 
     { &bound_walls_perm,            FALSE, OPT_PAGE_GAMEPLAY, 2, 1,
     "bound_walls_perm",             "Display dungeon boundaries as permanent walls" },
@@ -2405,7 +2391,7 @@ option_type option_info[] =
 //	"coffee_break",			"Coffee-break mode (accelerated game) (*)" },
 
 	{ &easy_id,			FALSE, OPT_PAGE_BIRTH, 6, 31,
-	"easy_id",			"Easy Identify" },
+	"easy_id",			"Easy Identify (*)" },
 	
 	{ &easy_lore,			FALSE, OPT_PAGE_BIRTH, 6, 30,
 	"easy_lore",			"Easy Lore" },
@@ -2417,7 +2403,7 @@ option_type option_info[] =
 	"allow_spoilers",		"Allow spoilers" },
 	
 	{ &power_tele,			FALSE, OPT_PAGE_BIRTH, 6, 6,
-	"power_tele",			"Use enhanced telepathy" },
+	"power_tele",			"Use enhanced telepathy (*)" },
 
 	{ &easy_thalos,			TRUE, OPT_PAGE_BIRTH, 6, 28,
 	"easy_thalos",			"Allow easy teleportation to Thalos" },
@@ -2444,7 +2430,7 @@ option_type option_info[] =
     "ironman_downward",             "Disable recall and use of up stairs (*)" },
 
     { &ironman_empty_levels,        FALSE, OPT_PAGE_BIRTH, 6, 8,
-    "ironman_empty_levels",         "Always create empty 'arena' levels (*)" },
+    "ironman_empty_levels",         "Generate empty 'arena' levels (*)" },
 
     { &ironman_nightmare,           FALSE, OPT_PAGE_BIRTH, 6, 18,
     "ironman_nightmare",            "Nightmare mode(it isn't even remotely fair!)(*)" },
@@ -2453,7 +2439,7 @@ option_type option_info[] =
     "thrall_mode",                  "Thrall mode (start in extreme danger) (*)" },
 
     { &wacky_rooms,                 FALSE, OPT_PAGE_BIRTH, 1, 22,
-    "wacky_rooms",                  "Always generate very unusual rooms (*)" },
+    "wacky_rooms",                  "Always generate very unusual rooms" },
 
     { &melee_challenge,             FALSE, OPT_PAGE_BIRTH, 2, 21,
     "melee_challenge",              "Monsters can only be damaged in melee (*)" },
@@ -2486,10 +2472,10 @@ option_type option_info[] =
     "random_artifacts",             "Randomize standard artifacts" },
 
     { &no_artifacts,                FALSE, OPT_PAGE_BIRTH, 6, 24,
-    "no_artifacts",                 "Never create artifacts" },
+    "no_artifacts",                 "Never create artifacts (*)" },
 
     { &no_egos,                     FALSE, OPT_PAGE_BIRTH, 6, 25,
-    "no_egos",                      "Never create non-jewelry ego items" },
+    "no_egos",                      "Never create non-jewelry ego items (*)" },
 
     { &no_selling,                  FALSE, OPT_PAGE_BIRTH, 6, 22,
     "no_selling",                   "Disable selling but increase gold drops" },
@@ -2498,15 +2484,17 @@ option_type option_info[] =
     "reduce_uniques",               "Reduce the number of uniques (randomly)" },
 
     { &single_pantheon,             FALSE, OPT_PAGE_BIRTH, 5, 9,
-    "single_pantheon",              "Play with only one pantheon" },
+    "single_pantheon",              "Active pantheons" },
+
+    { &guaranteed_pantheon,         FALSE, OPT_PAGE_BIRTH, 2, 3,
+    "guaranteed_pantheon",          "Guaranteed pantheon" },
 
     { &always_small_levels,         FALSE, OPT_PAGE_BIRTH, 4, 14,
     "always_small_levels",          "Level size" },
 
     { &increase_density,            FALSE, OPT_PAGE_BIRTH, 4, 15,
     "increase_density",             "Increase monster density on small levels" },
-
-    { &no_big_dungeons,             FALSE, OPT_PAGE_BIRTH, 4, 17,
+                          { &no_big_dungeons,             FALSE, OPT_PAGE_BIRTH, 4, 17,
     "no_big_dungeons",              "Allow small levels in all dungeons except Arena" },
 
     { &even_proportions,            FALSE, OPT_PAGE_BIRTH, 4, 16,
@@ -2564,6 +2552,47 @@ option_type option_info[] =
 
     { &leave_special,               TRUE,  OPT_PAGE_AUTODESTROY, 7, 1,
     "leave_special",                "Auto-destroyer leaves items your race/class needs" },
+
+    /* List Options */
+
+    { &describe_slots,              TRUE,  OPT_PAGE_LIST, 0, 10,
+    "describe_slots",               "Show equipment slot descriptions" },
+
+    { &show_weights,                TRUE,  OPT_PAGE_LIST, 0, 11,
+    "show_weights",                 "Show weights in object listings" },
+
+    { &show_discounts,              TRUE,  OPT_PAGE_LIST, 0, 12,
+    "show_discounts",               "Show discounts in object listings" },
+
+    { &show_power,                  FALSE, OPT_PAGE_LIST, 2, 14,
+    "show_power",                   "Show device power in object listings (if known)" },
+
+    { &show_item_graph,             TRUE,  OPT_PAGE_LIST, 2, 0,
+    "show_item_graph",              "Show item graphics in object listings" },
+
+    { &shops_mark_unseen,           FALSE, OPT_PAGE_LIST, 0, 31,
+    "shops_mark_unseen",            "Indicate unknown flavors in shop inventories" },
+
+    { &display_distance,            FALSE,  OPT_PAGE_LIST, 1, 4,
+    "display_distance",             "Display distance in monster list" },
+
+    { &list_stairs,                 FALSE,  OPT_PAGE_LIST, 1, 10,
+    "list_stairs",                  "Display stairs in object list" },
+
+    { &show_future_powers,          TRUE,  OPT_PAGE_LIST, 1, 0,
+    "show_future_powers",           "Include known future race/class powers in lists" },
+
+    { &show_future_spells,          FALSE,  OPT_PAGE_LIST, 2, 20,
+    "show_future_spells",           "Include known future class spells in lists" },
+
+    { &auto_sticky_labels,          TRUE,  OPT_PAGE_LIST, 2, 17,
+    "auto_sticky_labels",           "Automatically make all power labels sticky" },
+
+    { &obj_list_width,              TRUE,  OPT_PAGE_LIST, 4, 0,
+    "object_list_width",            "Maximum width of the object list" },
+
+    { &mon_list_width,              TRUE,  OPT_PAGE_LIST, 4, 1,
+    "monster_list_width",           "Maximum width of the monster list" },
 
     /*** End of Table ***/
 
@@ -2713,6 +2742,49 @@ cptr silly_attacks[MAX_SILLY_ATTACK] =
     "disbelieves",
     "molests",
     "pusupusu",
+    "wipes",
+
+    "bowdlerizes",
+    "decomposes",
+    "eats",
+    "drinks",
+    "disrobes",
+
+    "minimizes",
+    "sits on",
+    "decompresses",
+    "pulverises",
+    "gropes",
+
+    "dismembers",
+    "sneezes at",
+    "flays",
+    "debones",
+    "sucker-punches",
+
+    "erases",
+    "paws",
+    "vomits on",
+    "disembowels",
+    "overwrites",
+
+    "initializes",
+    "headpats",
+    "smacks",
+    "bounces",
+    "nerfs",
+
+    "defenestrates",
+    "deletes",
+    "caresses",
+    "petrifies",
+    "nags at",
+
+    "discombobulates",
+    "violates",
+    "bores",
+    "sprays pink paint on",
+    "autocorrects",
 };
 
 
