@@ -142,7 +142,7 @@ static int get_spell(int *sn, cptr prompt, int sval, bool learned, int use_realm
 
     /* Get a spell from the user */
 
-    choice = (always_show_list || use_menu) ? ESCAPE : 1;
+    choice = ESCAPE;
     while (!flag)
     {
         if (choice == ESCAPE) choice = ' ';
@@ -1502,6 +1502,7 @@ int calculate_upkeep(void)
     else
     {
         p_ptr->upkeep_warning = FALSE;
+        p_ptr->upset_okay = FALSE;
         if (p_ptr->upkeep_warning != old_warning) p_ptr->redraw |= (PR_STATUS);
         return 0;
     }
@@ -1858,7 +1859,7 @@ bool do_riding(bool force)
             return FALSE;
         }
 
-        if (m_ptr->r_idx == MON_AUDE)
+        if ((m_ptr->r_idx == MON_AUDE) && (!prace_is_(RACE_MON_RING)))
         {
             int noppa = randint0(9);
             switch (noppa)
@@ -2247,7 +2248,7 @@ void do_cmd_pet(void)
                 I2A(0), I2A(num - 1));
     }
 
-    choice = (always_show_list || use_menu) ? ESCAPE : 1;
+    choice = ESCAPE;
 
     /* Get a command from the user */
     while (!flag)
