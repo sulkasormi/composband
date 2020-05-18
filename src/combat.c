@@ -25,14 +25,17 @@ int hit_chance(int hand, int to_h, int ac)
     int odds;
 
     chance = chance * p_ptr->weapon_info[hand].dual_wield_pct / 1000;
+    if (p_ptr->special_defense & KATA_KOUKIJIN) chance += 150;
+//    if (p_ptr->sutemi) chance = MAX(chance * 3 / 2, chance + 60);
+    chance += virtue_current(VIRTUE_VALOUR) / 10;
     if (p_ptr->stun)
         chance -= chance * MIN(100, p_ptr->stun) / 150;
-    chance += virtue_current(VIRTUE_VALOUR) / 10;
     if (chance <= 0) return 0;
 
     odds = 95*(chance - ac*3/4)*1000/(chance*100);
-    if (personality_is_(PERS_LAZY)) odds = (19 * odds + 10) / 20;
     if (odds < 50) odds = 50;
+    else if (personality_is_(PERS_LAZY)) odds = (19 * odds + 10) / 20;
+    if (display_weapon_mode == HISSATSU_MAJIN) odds /= 2;
     return (odds+5)/10;
 }
 
@@ -544,21 +547,596 @@ void calc_innate_blows(innate_attack_ptr a, int max)
     a->blows = _calc_innate_blows_aux(a, max, p_ptr->stat_ind[A_STR], p_ptr->stat_ind[A_DEX]);
 }
 
+#define _MAX_CHAOS_SLAYS 15
+
+int _chaos_slays[_MAX_CHAOS_SLAYS] = {
+    OF_SLAY_ANIMAL,
+    OF_SLAY_EVIL,
+    OF_SLAY_GOOD,
+    OF_SLAY_UNDEAD,
+    OF_SLAY_DEMON,
+    OF_SLAY_ORC,
+    OF_SLAY_TROLL,
+    OF_SLAY_GIANT,
+    OF_SLAY_DRAGON,
+    OF_SLAY_HUMAN,
+    OF_BRAND_POIS,
+    OF_BRAND_ACID,
+    OF_BRAND_ELEC,
+    OF_BRAND_FIRE,
+    OF_BRAND_COLD,
+};
+
+#define _SLAY_TIER_BASIC 1
+#define _SLAY_TIER_MID 2
+#define _SLAY_TIER_HIGH SLAY_TIER_MAX
+
+static int _hissatsu_mult(int mult, int mode, int min)
+{
+    if (mode == HISSATSU_ELEC)
+    {
+        mult += 35; /* !! */
+    }
+    else
+    {
+        mult += ((mult - 10) / 2); /* 32 -> 43, 24 -> 31 */
+        if (mult < min) mult = min;
+    }
+    return mult;
+}
+
+static bool _zammaken_mult(int *mult)
+{
+    if (*mult < 15)
+    {
+        *mult = 25;
+        return TRUE;
+    }
+    else if (*mult < KILL_MULT_HIGH / 10)
+    {
+        *mult = MIN(KILL_MULT_HIGH / 10, *mult+(SLAY_MULT_BASIC / 10));
+        return TRUE;
+    }
+    return FALSE;
+}
+
+static int _hissatsu_undead_mult(int mult, bool is_undead)
+{
+    if (is_undead)
+    {
+        if (mult == 10) mult = KILL_MULT_HIGH * 2 / 15;
+        else if (mult < KILL_MULT_HIGH * 4 / 15) mult = MIN(KILL_MULT_HIGH * 4 / 15, mult + (KILL_MULT_HIGH / 9));
+    }
+    else
+    {
+        if (mult == 10) mult = KILL_MULT_HIGH * 2 / 25;
+        else if (mult < KILL_MULT_HIGH * 4 / 15) mult = MIN(KILL_MULT_HIGH * 4 / 15, mult + (KILL_MULT_HIGH / 18));
+    }
+    return mult;
+}
+
+static int _sekiryuka_mult(int mult)
+{
+    int tmp = MIN(SLAY_MULT_BASIC / 2, MAX((p_ptr->cut + 300) / 10, p_ptr->cut / 5));
+    return MAX(tmp, mult);
+}
+
+static int _hagan_mult(int mult)
+{
+    if (mult == 10) mult = KILL_MULT_MID / 10;
+    else if (mult < KILL_MULT_HIGH / 8) mult = KILL_MULT_HIGH / 8;
+    return mult;
+}
+
+static bool _can_slay_animal(monster_race *r_ptr, monster_type *m_ptr, bool update_lore)
+{
+    if (!update_lore)
+    {
+        return BOOL(r_ptr->flags3 & RF3_ANIMAL);
+    }
+    mon_lore_3(m_ptr, RF3_ANIMAL);
+    return TRUE;
+}
+
+static bool _can_slay_evil(monster_race *r_ptr, monster_type *m_ptr, bool update_lore)
+{
+    if (!update_lore)
+    {
+        return BOOL(r_ptr->flags3 & RF3_EVIL);
+    }
+    mon_lore_3(m_ptr, RF3_EVIL);
+    return TRUE;
+}
+
+static bool _can_slay_good(monster_race *r_ptr, monster_type *m_ptr, bool update_lore)
+{
+    if (!update_lore)
+    {
+        return BOOL(r_ptr->flags3 & RF3_GOOD);
+    }
+    mon_lore_3(m_ptr, RF3_GOOD);
+    return TRUE;
+}
+
+static bool _can_slay_living(monster_race *r_ptr, monster_type *m_ptr, bool update_lore)
+{
+    if (!update_lore) return monster_living(r_ptr);
+    return TRUE;
+}
+
+static bool _can_slay_humans(monster_race *r_ptr, monster_type *m_ptr, bool update_lore)
+{
+    if (!update_lore)
+    {
+        return BOOL(r_ptr->flags2 & RF2_HUMAN);
+    }
+    mon_lore_2(m_ptr, RF2_HUMAN);
+    return TRUE;
+}
+
+static bool _can_slay_undead(monster_race *r_ptr, monster_type *m_ptr, bool update_lore)
+{
+    if (!update_lore)
+    {
+        return BOOL(r_ptr->flags3 & RF3_UNDEAD);
+    }
+    mon_lore_3(m_ptr, RF3_UNDEAD);
+    return TRUE;
+}
+
+static bool _can_slay_demons(monster_race *r_ptr, monster_type *m_ptr, bool update_lore)
+{
+    if (!update_lore)
+    {
+        return BOOL(r_ptr->flags3 & RF3_DEMON);
+    }
+    mon_lore_3(m_ptr, RF3_DEMON);
+    return TRUE;
+}
+
+static bool _can_slay_orcs(monster_race *r_ptr, monster_type *m_ptr, bool update_lore)
+{
+    if (!update_lore)
+    {
+        return BOOL(r_ptr->flags3 & RF3_ORC);
+    }
+    mon_lore_3(m_ptr, RF3_ORC);
+    return TRUE;
+}
+
+static bool _can_slay_trolls(monster_race *r_ptr, monster_type *m_ptr, bool update_lore)
+{
+    if (!update_lore)
+    {
+        return BOOL(r_ptr->flags3 & RF3_TROLL);
+    }
+    mon_lore_3(m_ptr, RF3_TROLL);
+    return TRUE;
+}
+
+static bool _can_slay_giants(monster_race *r_ptr, monster_type *m_ptr, bool update_lore)
+{
+    if (!update_lore)
+    {
+        return BOOL(r_ptr->flags3 & RF3_GIANT);
+    }
+    mon_lore_3(m_ptr, RF3_GIANT);
+    return TRUE;
+}
+
+static bool _can_slay_dragons(monster_race *r_ptr, monster_type *m_ptr, bool update_lore)
+{
+    if (!update_lore)
+    {
+        return BOOL(r_ptr->flags3 & RF3_DRAGON);
+    }
+    mon_lore_3(m_ptr, RF3_DRAGON);
+    return TRUE;
+}
+
+static bool _can_slay_acid(monster_race *r_ptr, monster_type *m_ptr, bool update_lore)
+{
+    if (!update_lore)
+    {
+        return (r_ptr->flagsr & RFR_EFF_IM_ACID_MASK) ? FALSE : TRUE;
+    }
+    if (r_ptr->flagsr & RFR_EFF_IM_ACID_MASK) mon_lore_r(m_ptr, RFR_EFF_IM_ACID_MASK);
+    return TRUE;
+}
+
+static bool _can_slay_elec(monster_race *r_ptr, monster_type *m_ptr, bool update_lore)
+{
+    if (!update_lore)
+    {
+        return (r_ptr->flagsr & RFR_EFF_IM_ELEC_MASK) ? FALSE : TRUE;
+    }
+    if (r_ptr->flagsr & RFR_EFF_IM_ELEC_MASK) mon_lore_r(m_ptr, RFR_EFF_IM_ACID_MASK);
+    return TRUE;
+}
+
+static bool _can_slay_fire(monster_race *r_ptr, monster_type *m_ptr, bool update_lore)
+{
+    if (!update_lore)
+    {
+        return (r_ptr->flagsr & RFR_EFF_IM_FIRE_MASK) ? FALSE : TRUE;
+    }
+    if (r_ptr->flagsr & RFR_EFF_IM_FIRE_MASK) mon_lore_r(m_ptr, RFR_EFF_IM_FIRE_MASK);
+    return TRUE;
+}
+
+static bool _can_slay_cold(monster_race *r_ptr, monster_type *m_ptr, bool update_lore)
+{
+    if (!update_lore)
+    {
+        return (r_ptr->flagsr & RFR_EFF_IM_COLD_MASK) ? FALSE : TRUE;
+    }
+    if (r_ptr->flagsr & RFR_EFF_IM_COLD_MASK) mon_lore_r(m_ptr, RFR_EFF_IM_COLD_MASK);
+    return TRUE;
+}
+
+static bool _can_slay_pois(monster_race *r_ptr, monster_type *m_ptr, bool update_lore)
+{
+    if (!update_lore)
+    {
+        return (r_ptr->flagsr & RFR_EFF_IM_POIS_MASK) ? FALSE : TRUE;
+    }
+    if (r_ptr->flagsr & RFR_EFF_IM_POIS_MASK) mon_lore_r(m_ptr, RFR_EFF_IM_POIS_MASK);
+    return TRUE;
+}
+
+static bool _can_slay_dark(monster_race *r_ptr, monster_type *m_ptr, bool update_lore)
+{
+    if (!update_lore)
+    {
+        return (r_ptr->flagsr & RFR_EFF_RES_DARK_MASK) ? FALSE : TRUE;
+    }
+    if (r_ptr->flagsr & RFR_EFF_RES_DARK_MASK) mon_lore_r(m_ptr, RFR_EFF_RES_DARK_MASK);
+    return TRUE;
+}
+
+slay_type slay_list[] =
+/* The ordering is historical and definitely not in any way optimized, it has
+ * so far been retained for consistent ordering on the character sheet */
+{
+    { _SLAY_TIER_MID, OF_KILL_ANIMAL, OF_SLAY_ANIMAL, 0, TRUE, _can_slay_animal, 'g', "animals", "" },
+    { _SLAY_TIER_BASIC, OF_KILL_EVIL, OF_SLAY_EVIL, 0, TRUE, _can_slay_evil, 'y', "evil", "" },
+    { _SLAY_TIER_BASIC, OF_KILL_GOOD, OF_SLAY_GOOD, 0, TRUE, _can_slay_good, 'W', "good", "" },
+    { _SLAY_TIER_BASIC, OF_KILL_LIVING, OF_SLAY_LIVING, 0, TRUE, _can_slay_living, 'o', "living", "" },
+    { _SLAY_TIER_MID, OF_KILL_HUMAN, OF_SLAY_HUMAN, 0, TRUE, _can_slay_humans, 's', "humans", "" },
+    { _SLAY_TIER_HIGH, OF_KILL_UNDEAD, OF_SLAY_UNDEAD, 0, TRUE, _can_slay_undead, 'D', "undead", "" },
+    { _SLAY_TIER_HIGH, OF_KILL_DEMON, OF_SLAY_DEMON, 0, TRUE, _can_slay_demons, 'R', "demons", "" },
+    { _SLAY_TIER_HIGH, OF_KILL_ORC, OF_SLAY_ORC, 0, TRUE, _can_slay_orcs, 'U', "orcs", "" },
+    { _SLAY_TIER_HIGH, OF_KILL_TROLL, OF_SLAY_TROLL, 0, TRUE, _can_slay_trolls, 'g', "trolls", "" },
+    { _SLAY_TIER_HIGH, OF_KILL_GIANT, OF_SLAY_GIANT, 0, TRUE, _can_slay_giants, 'u', "giants", "" },
+    { _SLAY_TIER_HIGH, OF_KILL_DRAGON, OF_SLAY_DRAGON, 0, TRUE, _can_slay_dragons, 'r', "dragons", "" },
+    { _SLAY_TIER_MID, 0, OF_BRAND_ACID, 0, FALSE, _can_slay_acid, 'g', "acid", "is <color:g>Acid Branded</color>" },
+    { _SLAY_TIER_MID, 0, OF_BRAND_ELEC, HISSATSU_ELEC, FALSE, _can_slay_elec, 'b', "electricity", "is <color:b>Lightning Branded</color>" },
+    { _SLAY_TIER_MID, 0, OF_BRAND_FIRE, HISSATSU_FIRE, FALSE, _can_slay_fire, 'r', "fire", "has <color:r>Flame Tongue</color>" },
+    { _SLAY_TIER_MID, 0, OF_BRAND_COLD, HISSATSU_COLD, FALSE, _can_slay_cold, 'W', "frost", "is <color:W>Frost Branded</color>" },
+    { _SLAY_TIER_MID, 0, OF_BRAND_POIS, HISSATSU_POISON, FALSE, _can_slay_pois, 'G', "poison", "has <color:G>Viper's Fang</color>" },
+    { _SLAY_TIER_MID, 0, OF_BRAND_DARK, 0, FALSE, _can_slay_dark, 'G', "dark", "has <color:G>Shadow Sweep</color>" },
+    { 0, 0, 0, 0, FALSE, NULL, 0, "", "" },
+};
+
+slay_tier slay_tiers[SLAY_TIER_MAX] =
+{
+    { KILL_MULT_BASIC / 8, KILL_MULT_BASIC / 10, SLAY_MULT_BASIC * 2 / 15, SLAY_MULT_BASIC / 10, 186, 143 },
+    { KILL_MULT_MID / 8, KILL_MULT_MID / 10, SLAY_MULT_MID * 2 / 15, SLAY_MULT_MID / 10, 234, 162 },
+    { KILL_MULT_HIGH / 8, KILL_MULT_HIGH / 10, SLAY_MULT_HIGH * 2 / 15, SLAY_MULT_HIGH / 10, 280, 190 },
+};
+
+s16b tot_dam_aux(object_type *o_ptr, int tdam, monster_type *m_ptr, s16b hand, int mode, bool thrown)
+{
+    int mult = 10;
+
+    monster_race *r_ptr = &r_info[m_ptr->r_idx];
+    int chaos_slay = 0;
+
+    u32b flgs[OF_ARRAY_SIZE] = {0};
+    char o_name[MAX_NLEN];
+
+    /* Extract the flags */
+    if (thrown)
+        obj_flags(o_ptr, flgs);
+    else
+    {
+        weapon_flags(hand, flgs);
+        switch (mode)
+        {
+        case DRACONIAN_STRIKE_ACID:
+            add_flag(flgs, OF_BRAND_ACID);
+            break;
+        case DRACONIAN_STRIKE_ELEC:
+            add_flag(flgs, OF_BRAND_ELEC);
+            break;
+        case DRACONIAN_STRIKE_FIRE:
+            add_flag(flgs, OF_BRAND_FIRE);
+            break;
+        case DRACONIAN_STRIKE_COLD:
+            add_flag(flgs, OF_BRAND_COLD);
+            break;
+        case DRACONIAN_STRIKE_POIS:
+            add_flag(flgs, OF_BRAND_POIS);
+            break;
+        case PY_ATTACK_MANA:
+            add_flag(flgs, OF_BRAND_MANA);
+            break;
+        }
+    }
+    /* Chaos Weapons now have random slay effects, and the slay so
+       chosen will augment any existing slay of the same type. */
+    if (have_flag(flgs, OF_BRAND_CHAOS))
+    {
+        chaos_slay = _chaos_slays[randint0(_MAX_CHAOS_SLAYS)];
+        object_desc(o_name, o_ptr, OD_NAME_ONLY | OD_OMIT_PREFIX | OD_COLOR_CODED);
+    }
+
+    /* Hex swords slay good (make this not be weirdly separate from normal slay good) */
+    if (hex_spelling(HEX_RUNESWORD))
+    {
+        add_flag(flgs, OF_SLAY_GOOD);
+    }
+
+    if (p_ptr->tim_blood_seek)
+    {
+        add_flag(flgs, OF_SLAY_LIVING);
+    }
+
+    if (weaponmaster_get_toggle() == TOGGLE_HOLY_BLADE)
+    {
+        add_flag(flgs, OF_SLAY_EVIL);
+    }
+
+    if (mode == PY_ATTACK_ACID)
+    {
+        add_flag(flgs, OF_BRAND_ACID);
+    }
+
+    /* Some "weapons" and "ammo" do extra damage */
+    switch (o_ptr->tval)
+    {
+        case TV_SHOT:   /* FYI for the curious: You may throw (v) a shot by hand! */
+        case TV_ARROW:  /* But, for normal shooting, see tot_dam_aux_shot() in cmd2.c */
+        case TV_BOLT:
+        case TV_HAFTED:
+        case TV_POLEARM:
+        case TV_SWORD:
+        case TV_DIGGING:
+        case TV_GLOVES:
+        {
+            int hissatsu_brand = 0;
+            int i;
+            char m_name_subject[MAX_NLEN];
+            slay_type _slay = slay_list[0];
+            monster_desc(m_name_subject, m_ptr, MD_PRON_VISIBLE);
+
+            for (i = 0;; i++)
+            {
+                int my_mult = 10;
+                bool _chaos = FALSE;
+                int tmp_hb = 0;
+                _slay = slay_list[i];
+                if (!_slay.tier) break; /* the only exit from this loop! */
+                if (!_slay.tester(r_ptr, m_ptr, FALSE)) continue;
+                if (chaos_slay == _slay.slay_flag)
+                {
+                    msg_format("Your %s %s %s.", o_name, _slay.is_slay ? "slays" : "is covered in", _slay.kill_desc);
+                    obj_learn_slay(o_ptr, OF_BRAND_CHAOS, "has the <color:v>Mark of Chaos</color>");
+                    _chaos = TRUE;
+                }
+                if ((_slay.kill_flag > 0) && (have_flag(flgs, _slay.kill_flag)))
+                {
+                    char oppi[80];
+                    my_mult = _chaos ? slay_tiers[_slay.tier - 1].kill_with_chaos : slay_tiers[_slay.tier - 1].kill;
+                    if ((o_ptr->name1 == ART_NOTHUNG) && (m_ptr->r_idx == MON_FAFNER) && (_slay.kill_flag == OF_KILL_DRAGON))
+                        my_mult *= 3;
+                    strcpy(oppi, format("slays <color:%c>*%^s*</color>", _slay.attr, _slay.kill_desc)); /* Assume no brand */
+                    obj_learn_slay(o_ptr, _slay.kill_flag, oppi);
+                }
+                else if (have_flag(flgs, _slay.slay_flag))
+                {
+                    my_mult = _chaos ? slay_tiers[_slay.tier - 1].slay_with_chaos : slay_tiers[_slay.tier - 1].slay;
+                    if (!_slay.is_slay) obj_learn_slay(o_ptr, _slay.slay_flag, _slay.brand_learn);
+                    else
+                    {
+                        char oppi[80];
+                        strcpy(oppi, format("slays <color:%c>%^s</color>", _slay.attr, _slay.kill_desc));
+                        obj_learn_slay(o_ptr, _slay.slay_flag, oppi);
+                    }
+                }
+                else if (_chaos)
+                {
+                    my_mult = slay_tiers[_slay.tier - 1].slay;
+                }
+                if ((_slay.hissatsu) && (mode == _slay.hissatsu))
+                {
+                    my_mult = _hissatsu_mult(my_mult, mode, slay_tiers[_slay.tier - 1].slay);
+                    tmp_hb = mode;
+                }
+                if (my_mult > 10) /* Hack - monster vulnerabilities */
+                {
+                    if (_slay.slay_flag == OF_BRAND_FIRE)
+                    {
+                        if (r_ptr->flags3 & RF3_HURT_FIRE)
+                        {
+                            my_mult *= 2;
+                            mon_lore_3(m_ptr, RF3_HURT_FIRE);
+                        }
+                    }
+                    else if (_slay.slay_flag == OF_BRAND_COLD)
+                    {
+                        if (r_ptr->flags3 & RF3_HURT_COLD)
+                        {
+                            my_mult *= 2;
+                            mon_lore_3(m_ptr, RF3_HURT_COLD);
+                        }
+                    }
+                }
+                if (my_mult > mult)
+                {
+                    mult = my_mult;
+                    if (tmp_hb) hissatsu_brand = tmp_hb;
+                    else hissatsu_brand = 0;
+                }
+                if (my_mult > 10) _slay.tester(r_ptr, m_ptr, TRUE);
+            }
+
+            /* 'light brand' */
+            if (have_flag(flgs, OF_LITE) && (r_ptr->flags3 & RF3_HURT_LITE))
+            {
+            	if (mult < KILL_MULT_HIGH / 8) msg_format("%^s cringes.", m_name_subject);
+            	if (mult == 10) mult = SLAY_MULT_BASIC / 10;
+            	else if (mult < KILL_MULT_HIGH / 8) mult = MIN(KILL_MULT_HIGH / 8, mult + 10);
+            }
+
+            if ((mode == HISSATSU_ZANMA) && !monster_living(r_ptr) && (r_ptr->flags3 & RF3_EVIL))
+            {
+                if (_zammaken_mult(&mult))
+                {
+                    hissatsu_brand = OF_SLAY_EVIL;
+                    mon_lore_3(m_ptr, RF3_EVIL);
+                }
+            }
+            if (mode == HISSATSU_UNDEAD) /* Intentionally hurts non-undead */
+            {
+                if (r_ptr->flags3 & RF3_UNDEAD)
+                {
+                    mon_lore_3(m_ptr, RF3_UNDEAD);
+                    mult = _hissatsu_undead_mult(mult, TRUE);
+                }
+                else mult = _hissatsu_undead_mult(mult, FALSE);
+                hissatsu_brand = OF_SLAY_UNDEAD; /* Assume this brand always improves damage */
+            }
+            if ((mode == HISSATSU_SEKIRYUKA) && p_ptr->cut && monster_living(r_ptr))
+            {
+                mult = _sekiryuka_mult(mult);
+            }
+            if ((mode == HISSATSU_HAGAN) && (r_ptr->flags3 & RF3_HURT_ROCK))
+            {
+                mon_lore_3(m_ptr, RF3_HURT_ROCK);
+                mult = _hagan_mult(mult);
+                hissatsu_brand = 0;
+            }
+            if (p_ptr->tim_slay_sentient && p_ptr->weapon_info[hand].wield_how == WIELD_TWO_HANDS)
+            {
+                if (r_ptr->flags3 & RF3_NO_STUN)
+                {
+                    mon_lore_3(m_ptr, RF3_NO_STUN);
+                }
+                else
+                {
+                    if (mult < SLAY_MULT_BASIC / 10) mult = SLAY_MULT_BASIC / 10;
+                }
+            }
+
+            if (hissatsu_brand)
+            {
+                switch (hissatsu_brand)
+                {
+                case OF_BRAND_ELEC:
+                        msg_format("%^s is <color:b>shocked</color>!", m_name_subject);
+                        break;
+                case OF_BRAND_ACID:
+                        msg_format("%^s is <color:g>dissolved</color>!", m_name_subject);
+                        break;
+                case OF_BRAND_FIRE:
+                        msg_format("%^s is <color:r>burned</color>!", m_name_subject);
+                        break;
+                case OF_BRAND_COLD:
+                        msg_format("%^s is <color:W>frozen</color>!", m_name_subject);
+                        break;
+                case OF_BRAND_POIS:
+                        msg_format("%^s is <color:G>poisoned</color>!", m_name_subject);
+                        break;
+                default: break;
+                /* Messages from Composband - possible future use
+                        msg_format("It howls!");
+                        msg_format("It wails!");
+                        msg_format("It screeches!");
+                        msg_format("It convulses!");
+                        msg_format("It shrieks!");
+                        msg_format("It cowers!");
+                        msg_format("It cringes.");
+                        msg_format("It winces.");
+                        msg_format("It recoils.");
+                        msg_format("It staggers.");
+                        msg_format("It groans.");
+                        msg_format("It shudders."); */
+                }
+            }
+
+            if ((have_flag(flgs, OF_BRAND_MANA) || p_ptr->tim_force) && (!elemental_is_(ELEMENTAL_WATER)))
+            {
+                int          cost = 0;
+                int          dd = o_ptr->dd + p_ptr->weapon_info[hand].to_dd;
+                int          ds = o_ptr->ds + p_ptr->weapon_info[hand].to_ds;
+                caster_info *caster = get_caster_info();
+
+                if (p_ptr->pclass == CLASS_SAMURAI)
+                    cost = (1 + (dd * ds * 2 / 7));
+                else
+                    cost = (1 + (dd * ds / 7));
+
+                if (thrown)
+                    cost *= 3;
+
+                if (caster && (caster->options & CASTER_USE_AU))
+                {
+                    cost *= 10;
+                    if (p_ptr->au >= cost)
+                    {
+                        p_ptr->au -= cost;
+                        stats_on_gold_services(cost); /* ? */
+                        p_ptr->update |= (PU_BONUS | PU_HP | PU_MANA);
+                        p_ptr->redraw |= (PR_GOLD);
+
+                        mult = mult * 3 / 2 + 14;
+                        obj_learn_slay(o_ptr, OF_BRAND_MANA, "is <color:B>Mana Branded</color>");
+                    }
+                }
+                else if (p_ptr->csp >= cost)
+                {
+                    p_ptr->csp -= cost;
+                    p_ptr->redraw |= (PR_MANA);
+                    mult = mult * 3 / 2 + 14;
+                    obj_learn_slay(o_ptr, OF_BRAND_MANA, "is <color:B>Mana Branded</color>");
+                }
+            }
+            if (p_ptr->tim_blood_feast)
+            {
+                take_hit(DAMAGE_ATTACK, 15, "blood feast");
+            }
+            break;
+        }
+    }
+    if (mult > 150) mult = 150;
+
+//    msg_format("Mult: %d", mult);
+
+    /* Return the total damage */
+    return (tdam * mult / 10);
+}
+
 /**********************************************************************
  * Display Weapon Information to the Player
  **********************************************************************/
+int display_weapon_mode = 0;
+
 static void _display_weapon_slay(int base_mult, int slay_mult, bool force, int blows,
                                  int dd, int ds, int to_d, cptr name, int color, doc_ptr doc)
 {
-    int mult, min, max;
+    int mult, min, max, div = 100;
 
-    mult = slay_mult;
+    mult = MIN(slay_mult, 1500);
     if (force)
         mult = mult * 3/2 + 140;
     mult = mult * base_mult / 100;
 
-    min = blows * (mult*dd/100 + to_d) / 100;
-    max = blows * (mult*dd*ds/100 + to_d) / 100;
+    if (display_weapon_mode == HISSATSU_SUTEMI || display_weapon_mode == HISSATSU_3DAN) div /= 2;
+    else if (display_weapon_mode == HISSATSU_SEKIRYUKA && !p_ptr->cut) div *= 2;
+
+    min = blows * (mult*dd/100 + to_d) / div;
+    max = blows * (mult*dd*ds/100 + to_d) / div;
 
     if ((p_ptr->pclass == CLASS_DUELIST) && (!duelist_equip_error()))
     {
@@ -591,13 +1169,11 @@ static void _display_weapon_slay(int base_mult, int slay_mult, bool force, int b
     if (weaponmaster_get_toggle() == TOGGLE_ORDER_BLADE)
         min = max;
 
-    doc_printf(doc, "<color:%c> %-7.7s</color>", attr_to_attr_char(color), name);
+    doc_printf(doc, "<color:%c> %-7.7s</color>", attr_to_attr_char(color), format("%^s", name));
     doc_printf(doc, ": %d [%d.%02dx]\n",
                     (min + max)/2,
                     mult/100, mult%100);
 }
-
-int display_weapon_mode = 0;
 
 void display_weapon_info(doc_ptr doc, int hand)
 {
@@ -614,6 +1190,10 @@ void display_weapon_info(doc_ptr doc, int hand)
     int num_blow = NUM_BLOWS(hand);
     bool force = FALSE;
     doc_ptr cols[2] = {0};
+    int i;
+    int norm_mult = 100;
+    bool loytyi = FALSE;
+    slay_type _slay;
 
     if (p_ptr->weapon_info[hand].wield_how == WIELD_NONE) return;
     if (!o_ptr) return;
@@ -641,6 +1221,18 @@ void display_weapon_info(doc_ptr doc, int hand)
     case PY_POWER_ATTACK:
         to_h += 10;
         to_d += p_ptr->lev / 2;
+        break;
+    case HISSATSU_UNDEAD:
+        norm_mult = 360;
+        break;
+    case HISSATSU_ZANMA:
+        norm_mult = 250;
+        break;
+    case HISSATSU_COLD:
+        num_blow += 200;
+        break;
+    case HISSATSU_3DAN:
+        num_blow = 300;
         break;
     }
 
@@ -790,85 +1382,49 @@ void display_weapon_info(doc_ptr doc, int hand)
         }
     }
 
-    _display_weapon_slay(mult, 100, FALSE, num_blow, dd, ds, to_d, "Normal", TERM_WHITE, cols[0]);
+    _display_weapon_slay(mult, norm_mult, FALSE, num_blow, dd, ds, to_d, "Normal", TERM_WHITE, cols[0]);
     if (force)
-        _display_weapon_slay(mult, 100, force, num_blow, dd, ds, to_d, "Force", TERM_L_BLUE, cols[0]);
-
+        _display_weapon_slay(mult, norm_mult, force, num_blow, dd, ds, to_d, "Force", TERM_L_BLUE, cols[0]);
     if (p_ptr->tim_slay_sentient)
-        _display_weapon_slay(mult, SLAY_MULT_SENTIENT, force, num_blow, dd, ds, to_d, "Sent.", TERM_YELLOW, cols[0]);
+        _display_weapon_slay(mult, SLAY_MULT_BASIC, force, num_blow, dd, ds, to_d, "Sent.", TERM_YELLOW, cols[0]);
 
-    if (have_flag(flgs, OF_KILL_ANIMAL))
-        _display_weapon_slay(mult, KILL_MULT_ANIMAL, force, num_blow, dd, ds, to_d, "Animals", TERM_YELLOW, cols[0]);
-    else if (have_flag(flgs, OF_SLAY_ANIMAL))
-        _display_weapon_slay(mult, SLAY_MULT_ANIMAL, force, num_blow, dd, ds, to_d, "Animals", TERM_YELLOW, cols[0]);
+    i = 0;
+    
+    for (_slay = slay_list[0];; _slay = slay_list[++i])
+    {
+        int _slay_mult = 10;
+        if (!_slay.tier) break;
+        if ((display_weapon_mode == HISSATSU_ZANMA) && (_slay.slay_flag == OF_SLAY_LIVING)) continue;
+        if ((display_weapon_mode == HISSATSU_SEKIRYUKA) && ((_slay.slay_flag == OF_SLAY_DEMON) || (_slay.slay_flag == OF_SLAY_UNDEAD))) continue;
+        if ((_slay.kill_flag) && (have_flag(flgs, _slay.kill_flag)))
+            _slay_mult = slay_tiers[_slay.tier - 1].kill;
+        else if (have_flag(flgs, _slay.slay_flag))
+            _slay_mult = slay_tiers[_slay.tier - 1].slay;
+        if ((_slay.hissatsu) && (_slay.hissatsu == display_weapon_mode))
+        {
+            _slay_mult = _hissatsu_mult(_slay_mult, display_weapon_mode, slay_tiers[_slay.tier - 1].slay);
+        }
+        if ((display_weapon_mode == HISSATSU_SEKIRYUKA) && (p_ptr->cut) && (_slay.slay_flag == OF_SLAY_LIVING))
+            _slay_mult = _sekiryuka_mult(_slay_mult);
+        if (_slay_mult != 10)
+        {
+            loytyi = TRUE;
+            if (display_weapon_mode == HISSATSU_ZANMA) (void)_zammaken_mult(&_slay_mult);
+            else if (display_weapon_mode == HISSATSU_UNDEAD) _slay_mult = _hissatsu_undead_mult(_slay_mult, (_slay.slay_flag == OF_SLAY_UNDEAD) ? TRUE : FALSE);
+            _display_weapon_slay(mult, _slay_mult * 10, force, num_blow, dd, ds, to_d, (_slay.slay_flag == OF_BRAND_ELEC) ? "Elec" : _slay.kill_desc, _slay.is_slay ? TERM_YELLOW : TERM_RED, cols[0]);
+        }
+    }
 
-    if (have_flag(flgs, OF_KILL_EVIL))
-        _display_weapon_slay(mult, KILL_MULT_EVIL, force, num_blow, dd, ds, to_d, "Evil", TERM_YELLOW, cols[0]);
-    else if (have_flag(flgs, OF_SLAY_EVIL) || weaponmaster_get_toggle() == TOGGLE_HOLY_BLADE)
-        _display_weapon_slay(mult, SLAY_MULT_EVIL, force, num_blow, dd, ds, to_d, "Evil", TERM_YELLOW, cols[0]);
+    if (display_weapon_mode == HISSATSU_HAGAN)
+    {
+        _display_weapon_slay(mult, _hagan_mult(10) * 10, force, num_blow, dd, ds, to_d, "Rock", TERM_UMBER, cols[0]);
+        if (loytyi) _display_weapon_slay(mult, _hagan_mult(11) * 10, force, num_blow, dd, ds, to_d, "Combine", TERM_UMBER, cols[0]);
+    }
 
-	if (have_flag(flgs, OF_KILL_GOOD))
-		_display_weapon_slay(mult, KILL_MULT_GOOD, force, num_blow, dd, ds, to_d, "Good", TERM_YELLOW, cols[0]);
-	else if (have_flag(flgs, OF_SLAY_GOOD))
-        _display_weapon_slay(mult, SLAY_MULT_GOOD, force, num_blow, dd, ds, to_d, "Good", TERM_YELLOW, cols[0]);
-
-	if (have_flag(flgs, OF_KILL_LIVING))
-		_display_weapon_slay(mult, KILL_MULT_LIVING, force, num_blow, dd, ds, to_d, "Living", TERM_YELLOW, cols[0]);
-	else if (have_flag(flgs, OF_SLAY_LIVING))
-        _display_weapon_slay(mult, SLAY_MULT_LIVING, force, num_blow, dd, ds, to_d, "Living", TERM_YELLOW, cols[0]);
-
-    if (have_flag(flgs, OF_KILL_HUMAN))
-        _display_weapon_slay(mult, KILL_MULT_HUMAN, force, num_blow, dd, ds, to_d, "Humans", TERM_YELLOW, cols[0]);
-    else if (have_flag(flgs, OF_SLAY_HUMAN))
-        _display_weapon_slay(mult, SLAY_MULT_HUMAN, force, num_blow, dd, ds, to_d, "Humans", TERM_YELLOW, cols[0]);
-
-    if (have_flag(flgs, OF_KILL_UNDEAD))
-        _display_weapon_slay(mult, KILL_MULT_UNDEAD, force, num_blow, dd, ds, to_d, "Undead", TERM_YELLOW, cols[0]);
-    else if (have_flag(flgs, OF_SLAY_UNDEAD))
-        _display_weapon_slay(mult, SLAY_MULT_UNDEAD, force, num_blow, dd, ds, to_d, "Undead", TERM_YELLOW, cols[0]);
-
-    if (have_flag(flgs, OF_KILL_DEMON))
-        _display_weapon_slay(mult, KILL_MULT_DEMON, force, num_blow, dd, ds, to_d, "Demons", TERM_YELLOW, cols[0]);
-    else if (have_flag(flgs, OF_SLAY_DEMON))
-        _display_weapon_slay(mult, SLAY_MULT_DEMON, force, num_blow, dd, ds, to_d, "Demons", TERM_YELLOW, cols[0]);
-
-    if (have_flag(flgs, OF_KILL_ORC))
-        _display_weapon_slay(mult, KILL_MULT_ORC, force, num_blow, dd, ds, to_d, "Orcs", TERM_YELLOW, cols[0]);
-    else if (have_flag(flgs, OF_SLAY_ORC))
-        _display_weapon_slay(mult, SLAY_MULT_ORC, force, num_blow, dd, ds, to_d, "Orcs", TERM_YELLOW, cols[0]);
-
-    if (have_flag(flgs, OF_KILL_TROLL))
-        _display_weapon_slay(mult, KILL_MULT_TROLL, force, num_blow, dd, ds, to_d, "Trolls", TERM_YELLOW, cols[0]);
-    else if (have_flag(flgs, OF_SLAY_TROLL))
-        _display_weapon_slay(mult, SLAY_MULT_TROLL, force, num_blow, dd, ds, to_d, "Trolls", TERM_YELLOW, cols[0]);
-
-    if (have_flag(flgs, OF_KILL_GIANT))
-        _display_weapon_slay(mult, KILL_MULT_GIANT, force, num_blow, dd, ds, to_d, "Giants", TERM_YELLOW, cols[0]);
-    else if (have_flag(flgs, OF_SLAY_GIANT))
-        _display_weapon_slay(mult, SLAY_MULT_GIANT, force, num_blow, dd, ds, to_d, "Giants", TERM_YELLOW, cols[0]);
-
-    if (have_flag(flgs, OF_KILL_DRAGON))
-        _display_weapon_slay(mult, KILL_MULT_DRAGON, force, num_blow, dd, ds, to_d, "Dragons", TERM_YELLOW, cols[0]);
-    else if (have_flag(flgs, OF_SLAY_DRAGON))
-        _display_weapon_slay(mult, SLAY_MULT_DRAGON, force, num_blow, dd, ds, to_d, "Dragons", TERM_YELLOW, cols[0]);
-
-    if (have_flag(flgs, OF_BRAND_ACID))
-        _display_weapon_slay(mult, BRAND_MULT_ACID, force, num_blow, dd, ds, to_d, "Acid", TERM_RED, cols[0]);
-
-    if (have_flag(flgs, OF_BRAND_ELEC))
-        _display_weapon_slay(mult, BRAND_MULT_ELEC, force, num_blow, dd, ds, to_d, "Elec", TERM_RED, cols[0]);
-
-    if (have_flag(flgs, OF_BRAND_FIRE))
-        _display_weapon_slay(mult, BRAND_MULT_FIRE, force, num_blow, dd, ds, to_d, "Fire", TERM_RED, cols[0]);
-
-    if (have_flag(flgs, OF_BRAND_COLD))
-        _display_weapon_slay(mult, BRAND_MULT_COLD, force, num_blow, dd, ds, to_d, "Cold", TERM_RED, cols[0]);
-
-    if (have_flag(flgs, OF_BRAND_POIS))
-        _display_weapon_slay(mult, BRAND_MULT_POIS, force, num_blow, dd, ds, to_d, "Poison", TERM_RED, cols[0]);
-
-    if (have_flag(flgs, OF_BRAND_DARK))
-        _display_weapon_slay(mult, BRAND_MULT_DARK, force, num_blow, dd, ds, to_d, "Dark", TERM_RED, cols[0]);
+    if (display_weapon_mode == HISSATSU_ZANMA)
+    {
+        doc_insert(cols[0], " Only affects evil demons, evil undead and evil nonliving.\n");
+    }
 
     if (p_ptr->weapon_info[hand].wield_how == WIELD_TWO_HANDS)
     {
@@ -1192,7 +1748,7 @@ static void _display_missile_slay(int bow_mult, int slay_mult, int crit_mult,
     if (p_ptr->stun)
         dam -= dam * MIN(100, p_ptr->stun) / 150;
 
-    doc_printf(doc, " <color:%c>%-8.8s</color>", attr_to_attr_char(color), name);
+    doc_printf(doc, " <color:%c>%-8.8s</color>", attr_to_attr_char(color), format("%^s", name));
     doc_printf(doc, ": %d/%d\n", dam, shots * dam / 100);
 }
 
@@ -1216,6 +1772,8 @@ static void _shooter_info_aux(doc_ptr doc, object_type *bow, object_type *arrow,
     int          real_snipe = 0;
     doc_ptr      cols[2] = {0};
     bool         force = FALSE;
+    int          i;
+    slay_type    _slay;
 
     cols[0] = doc_alloc(60);
     cols[1] = doc_alloc(10);
@@ -1309,100 +1867,28 @@ static void _shooter_info_aux(doc_ptr doc, object_type *bow, object_type *arrow,
         _display_missile_slay(mult, snipe, crit.mul, force, num_fire, dd, ds, to_d, to_d_xtra, "All", TERM_VIOLET, cols[0]);
     }
 
-	if (have_flag(flgs, OF_KILL_LIVING))
-		_display_missile_slay(mult, 186, crit.mul, force, num_fire, dd, ds, to_d, to_d_xtra, "Living", TERM_YELLOW, cols[0]);
-    else if (have_flag(flgs, OF_SLAY_LIVING))
-        _display_missile_slay(mult, 143, crit.mul, force, num_fire, dd, ds, to_d, to_d_xtra, "Living", TERM_YELLOW, cols[0]);
-
-    if (have_flag(flgs, OF_KILL_ANIMAL))
-        _display_missile_slay(mult, 224, crit.mul, force, num_fire, dd, ds, to_d, to_d_xtra, "Animals", TERM_YELLOW, cols[0]);
-    else if (have_flag(flgs, OF_SLAY_ANIMAL))
-        _display_missile_slay(mult, 162, crit.mul, force, num_fire, dd, ds, to_d, to_d_xtra, "Animals", TERM_YELLOW, cols[0]);
-
-    if (display_shooter_mode == SP_HOLYNESS)
+    i = 0;
+    
+    for (_slay = slay_list[0];; _slay = slay_list[++i])
     {
-        int snipe = sniper_multiplier(display_shooter_mode, arrow, NULL) * 10;
-        _display_missile_slay(mult, snipe, crit.mul, force, num_fire, dd, ds, to_d, to_d_xtra, "Evil", TERM_VIOLET, cols[0]);
+        int _slay_mult = 100;
+        if (!_slay.tier) break;
+        if ((display_shooter_mode) &&
+            (((display_shooter_mode == SP_HOLYNESS) && (_slay.kill_flag == OF_KILL_EVIL)) ||
+            ((display_shooter_mode == SP_EVILNESS) && (_slay.kill_flag == OF_KILL_GOOD)) ||
+            ((display_shooter_mode == SP_ELEC) && (_slay.slay_flag == OF_BRAND_ELEC)) ||
+            ((display_shooter_mode == SP_FIRE) && (_slay.slay_flag == OF_BRAND_FIRE)) ||
+            ((display_shooter_mode == SP_COLD) && (_slay.slay_flag == OF_BRAND_COLD))))
+            _slay_mult = sniper_multiplier(display_shooter_mode, arrow, NULL) * 10;
+        else if ((_slay.kill_flag) && (have_flag(flgs, _slay.kill_flag)))
+            _slay_mult = slay_tiers[_slay.tier - 1].archery_kill;
+        else if (have_flag(flgs, _slay.slay_flag))
+            _slay_mult = slay_tiers[_slay.tier - 1].archery_slay;
+        if (_slay_mult != 100)
+        {
+            _display_missile_slay(mult, _slay_mult, crit.mul, force, num_fire, dd, ds, to_d, to_d_xtra, (_slay.slay_flag == OF_BRAND_ELEC) ? "Elec" : _slay.kill_desc, _slay.is_slay ? TERM_YELLOW : TERM_RED, cols[0]);
+        }
     }
-    else if (have_flag(flgs, OF_KILL_EVIL))
-        _display_missile_slay(mult, 186, crit.mul, force, num_fire, dd, ds, to_d, to_d_xtra, "Evil", TERM_YELLOW, cols[0]);
-    else if (have_flag(flgs, OF_SLAY_EVIL))
-        _display_missile_slay(mult, 143, crit.mul, force, num_fire, dd, ds, to_d, to_d_xtra, "Evil", TERM_YELLOW, cols[0]);
-
-    if (display_shooter_mode == SP_EVILNESS)
-    {
-        int snipe = sniper_multiplier(display_shooter_mode, arrow, NULL) * 10;
-        _display_missile_slay(mult, snipe, crit.mul, force, num_fire, dd, ds, to_d, to_d_xtra, "Good", TERM_VIOLET, cols[0]);
-    }
-	else if (have_flag(flgs, OF_KILL_GOOD))
-		_display_missile_slay(mult, 186, crit.mul, force, num_fire, dd, ds, to_d, to_d_xtra, "Good", TERM_YELLOW, cols[0]);
-    else if (have_flag(flgs, OF_SLAY_GOOD))
-        _display_missile_slay(mult, 143, crit.mul, force, num_fire, dd, ds, to_d, to_d_xtra, "Good", TERM_YELLOW, cols[0]);
-
-    if (have_flag(flgs, OF_KILL_HUMAN))
-        _display_missile_slay(mult, 234, crit.mul, force, num_fire, dd, ds, to_d, to_d_xtra, "Human", TERM_YELLOW, cols[0]);
-    else if (have_flag(flgs, OF_SLAY_HUMAN))
-        _display_missile_slay(mult, 162, crit.mul, force, num_fire, dd, ds, to_d, to_d_xtra, "Human", TERM_YELLOW, cols[0]);
-
-    if (have_flag(flgs, OF_KILL_UNDEAD))
-        _display_missile_slay(mult, 280, crit.mul, force, num_fire, dd, ds, to_d, to_d_xtra, "Undead", TERM_YELLOW, cols[0]);
-    else if (have_flag(flgs, OF_SLAY_UNDEAD))
-        _display_missile_slay(mult, 190, crit.mul, force, num_fire, dd, ds, to_d, to_d_xtra, "Undead", TERM_YELLOW, cols[0]);
-
-    if (have_flag(flgs, OF_KILL_DEMON))
-        _display_missile_slay(mult, 280, crit.mul, force, num_fire, dd, ds, to_d, to_d_xtra, "Demons", TERM_YELLOW, cols[0]);
-    else if (have_flag(flgs, OF_SLAY_DEMON))
-        _display_missile_slay(mult, 190, crit.mul, force, num_fire, dd, ds, to_d, to_d_xtra, "Demons", TERM_YELLOW, cols[0]);
-
-    if (have_flag(flgs, OF_KILL_ORC))
-        _display_missile_slay(mult, 280, crit.mul, force, num_fire, dd, ds, to_d, to_d_xtra, "Orcs", TERM_YELLOW, cols[0]);
-    else if (have_flag(flgs, OF_SLAY_ORC))
-        _display_missile_slay(mult, 190, crit.mul, force, num_fire, dd, ds, to_d, to_d_xtra, "Orcs", TERM_YELLOW, cols[0]);
-
-    if (have_flag(flgs, OF_KILL_TROLL))
-        _display_missile_slay(mult, 280, crit.mul, force, num_fire, dd, ds, to_d, to_d_xtra, "Trolls", TERM_YELLOW, cols[0]);
-    else if (have_flag(flgs, OF_SLAY_TROLL))
-        _display_missile_slay(mult, 190, crit.mul, force, num_fire, dd, ds, to_d, to_d_xtra, "Trolls", TERM_YELLOW, cols[0]);
-
-    if (have_flag(flgs, OF_KILL_GIANT))
-        _display_missile_slay(mult, 280, crit.mul, force, num_fire, dd, ds, to_d, to_d_xtra, "Giants", TERM_YELLOW, cols[0]);
-    else if (have_flag(flgs, OF_SLAY_GIANT))
-        _display_missile_slay(mult, 190, crit.mul, force, num_fire, dd, ds, to_d, to_d_xtra, "Giants", TERM_YELLOW, cols[0]);
-
-    if (have_flag(flgs, OF_KILL_DRAGON))
-        _display_missile_slay(mult, 280, crit.mul, force, num_fire, dd, ds, to_d, to_d_xtra, "Dragons", TERM_YELLOW, cols[0]);
-    else if (have_flag(flgs, OF_SLAY_DRAGON))
-        _display_missile_slay(mult, 190, crit.mul, force, num_fire, dd, ds, to_d, to_d_xtra, "Dragons", TERM_YELLOW, cols[0]);
-
-    if (have_flag(flgs, OF_BRAND_ACID))
-        _display_missile_slay(mult, 162, crit.mul, force, num_fire, dd, ds, to_d, to_d_xtra, "Acid", TERM_RED, cols[0]);
-
-    if (display_shooter_mode == SP_ELEC)
-    {
-        int snipe = sniper_multiplier(display_shooter_mode, arrow, NULL) * 10;
-        _display_missile_slay(mult, snipe, crit.mul, force, num_fire, dd, ds, to_d, to_d_xtra, "Elec", TERM_VIOLET, cols[0]);
-    }
-    else if (have_flag(flgs, OF_BRAND_ELEC))
-        _display_missile_slay(mult, 162, crit.mul, force, num_fire, dd, ds, to_d, to_d_xtra, "Elec", TERM_RED, cols[0]);
-
-    if (display_shooter_mode == SP_FIRE)
-    {
-        int snipe = sniper_multiplier(display_shooter_mode, arrow, NULL) * 10;
-        _display_missile_slay(mult, snipe, crit.mul, force, num_fire, dd, ds, to_d, to_d_xtra, "Fire", TERM_VIOLET, cols[0]);
-    }
-    else if (have_flag(flgs, OF_BRAND_FIRE))
-        _display_missile_slay(mult, 162, crit.mul, force, num_fire, dd, ds, to_d, to_d_xtra, "Fire", TERM_RED, cols[0]);
-
-    if (display_shooter_mode == SP_COLD)
-    {
-        int snipe = sniper_multiplier(display_shooter_mode, arrow, NULL) * 10;
-        _display_missile_slay(mult, snipe, crit.mul, force, num_fire, dd, ds, to_d, to_d_xtra, "Cold", TERM_VIOLET, cols[0]);
-    }
-    else if (have_flag(flgs, OF_BRAND_COLD))
-        _display_missile_slay(mult, 162, crit.mul, force, num_fire, dd, ds, to_d, to_d_xtra, "Cold", TERM_RED, cols[0]);
-
-    if (have_flag(flgs, OF_BRAND_POIS))
-        _display_missile_slay(mult, 162, crit.mul, force, num_fire, dd, ds, to_d, to_d_xtra, "Poison", TERM_RED, cols[0]);
 
     if (display_shooter_mode == SP_KILL_WALL)
     {
