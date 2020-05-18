@@ -61,7 +61,7 @@ static void _psycho_spear_spell(int cmd, variant *res)
     }
 }
 
-static spell_info _spells[] = {
+static spell_info _get_spells[] = {
     {  1,  1, 30, punishment_spell},
     {  2,  2, 30, bless_spell},
     {  3,  2, 30, confuse_spell},
@@ -86,9 +86,6 @@ static spell_info _spells[] = {
     { 50, 50, 65, starburst_II_spell},
     { -1, -1, -1, NULL}
 };
-static int _get_spells(spell_info* spells, int max) {
-    return get_spells_aux(spells, max, _spells);
-}
 
 static void _calc_bonuses(void) {
     /* cf calc_torch in xtra1.c for the 'extra light' */
