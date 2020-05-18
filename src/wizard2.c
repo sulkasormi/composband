@@ -1856,6 +1856,7 @@ void do_cmd_debug(void)
             /* Update */
             check_experience();
             p_ptr->max_plv = p_ptr->lev;
+            p_ptr->max_max_exp = tmp_long;
             do_cmd_redraw();
         }
         break;
