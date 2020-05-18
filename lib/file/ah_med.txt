@@ -4,6 +4,7 @@ of Helldiver
 of Invention
 of the Humans
 of Ilmatar
+'Cracklepot'
 
 N: 2:BIAS_POIS
 of the Serpents
@@ -56,6 +57,7 @@ N:16:BIAS_ROGUE
 N: 9:BIAS_DEX
 of Nevrast
 of the Islanders
+'Black Hat'
 'Smoke Ball'
 'Tarnhelm'
 
@@ -73,6 +75,7 @@ N: 6:BIAS_STR
 of Vader
 of Hjalmar
 of Cloudyhead
+of Sarak
 'Viking Helmet'
 'Skull-thickener'
 
@@ -89,6 +92,7 @@ of Benten
 of Uljas
 of the Princess
 of Selene
+of Lipwig
 'Nimbus'
 
 N:*:Default
