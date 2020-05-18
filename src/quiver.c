@@ -22,13 +22,14 @@ void quiver_display(doc_ptr doc, obj_p p, int flags)
 bool quiver_likes(obj_ptr obj)
 {
     if (!equip_find_obj(TV_QUIVER, SV_ANY)) return FALSE;
-    if (obj->tval != p_ptr->shooter_info.tval_ammo) return FALSE;
+    if (!obj_is_ammo(obj)) return FALSE;
     /* Restrict what automatically goes into the quiver a bit. For
      * example, if an Archer is doing a lot of Create Ammo, then it
      * is annoying to have the junk results automatically added. On
      * the other hand, one wants artifact ammo to always add, so we
      * can't just rely on object piles ... */
     if (inv_can_combine(_inv, obj)) return TRUE;
+    if (!object_is_suitable_ammo(obj)) return FALSE;
     if (!obj_is_identified(obj)) return FALSE; 
     if (obj->inscription && strstr(quark_str(obj->inscription), "=g")) return TRUE;
     return FALSE;
