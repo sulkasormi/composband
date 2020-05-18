@@ -91,13 +91,13 @@ Note that attacking a friendly monster will turn it hostile.
 
 <topic:MonkAttacks><style:heading>Martial Arts</style>
 
-Monks, Mystics and Force-Trainers prefer to fight unarmed; they can only use a handful of weapons well, and even then are generally more effective barehanded. As these classes gain experience, they learn new and more powerful attacking techniques; high-level attacks may even stun or slow opponents.
+Monks, Mystics and Force-Trainers prefer to fight unarmed; they can only use a handful of weapons well, and even then are generally more effective barehanded. As these classes gain experience, they learn new and more powerful attacking techniques; high-level attacks may even stun or slow opponents. Most other classes cannot learn martial arts; the only exception is Skillmasters, who can invest skill points in unarmed combat.
 
 Martial arts characters can view their attack list and average damage per round in the usual ways: by typing <color:keypress>Cm</color> or <color:keypress>~W</color>.
 
 <topic:BothHands><style:heading>Two-Handed Wielding</style>
 
-Most characters wield a weapon in one hand and a shield in the other; but from a damage point of view, your best option is nearly always to do away with the shield and leave both hands for the weapon. Wielding a single weapon with both hands improves your damage and accuracy; and unless your blows per round were already maxed out anyway, you also receive more blows.
+Most characters wield a weapon in one hand and a shield in the other; but from a damage point of view, your best option is nearly always to do away with the shield and leave both hands for the weapon. Wielding a single weapon with both hands improves your damage and accuracy; and unless your blows per round were already maxed out anyway, you also receive more blows. (Gloves of the Giant amplify this bonus to blows.)
 
 The downside is that you effectively have one fewer equipment slot: you miss out on the AC, stat bonuses, resistances and other nice stuff that a shield (or a second weapon) in that slot would have given. Whether this is a good trade depends on your character; but a fairly typical approach is to wield a weapon two-handedly until you find a good ego shield, and then stop.
 
