@@ -704,12 +704,14 @@ static void image_random(byte *ap, char *cp)
     /* Normally, assume monsters */
     if (randint0(100) < 75)
     {
+        Rand_quick = FALSE;
         image_monster(ap, cp);
     }
 
     /* Otherwise, assume objects */
     else
     {
+        Rand_quick = FALSE;
         image_object(ap, cp);
     }
 }
@@ -723,7 +725,7 @@ static void image_random(byte *ap, char *cp)
  * The layout of the array is [x][0] = light and [x][1] = dark.
  */
 
-static byte lighting_colours[16][2] =
+static byte lighting_colours[32][2] =
 {
     /* TERM_DARK */
     {TERM_L_DARK, TERM_DARK},
@@ -771,7 +773,55 @@ static byte lighting_colours[16][2] =
     {TERM_L_BLUE, TERM_L_BLUE},
 
     /* TERM_L_UMBER */
-    {TERM_L_UMBER, TERM_UMBER}
+    {TERM_L_UMBER, TERM_UMBER},
+
+    /* TERM_I_GREEN */
+    {TERM_L_GREEN, TERM_GREEN},
+
+    /* TERM_PINK */
+    {TERM_VIOLET, TERM_D_PINK},
+
+    /* TERM_I_BLUE */
+    {TERM_L_BLUE, TERM_BLUE},
+
+    /* TERM_PURPLE */
+    {TERM_VIOLET, TERM_D_PURPLE},
+
+    /* TERM_TEAL */
+    {TERM_TURQUOISE, TERM_SKY_DARK},
+
+    /* TERM_SKY_BLUE */
+    {TERM_L_BLUE, TERM_SKY_DARK},
+
+    /* TERM_MUD */
+    {TERM_D_YELLOW, TERM_MUD},
+
+    /* TERM_D_YELLOW */
+    {TERM_YELLOW, TERM_MUD},
+
+    /* TERM_TURQUOISE */
+    {TERM_L_BLUE, TERM_TEAL},
+
+    /* TERM_L_ORANGE */
+    {TERM_YELLOW, TERM_ORANGE},
+
+    /* TERM_LILAC */
+    {TERM_LILAC, TERM_LILAC},
+
+    /* TERM_D_PURPLE */
+    {TERM_PURPLE, TERM_D_PURPLE},
+
+    /* TERM_SKY_DARK */
+    {TERM_SKY_BLUE, TERM_SKY_DARK},
+
+    /* TERM_PALE_BLUE */
+    {TERM_PALE_BLUE, TERM_PALE_BLUE},
+
+    /* TERM_D_PINK */
+    {TERM_PINK, TERM_D_PURPLE},
+
+    /* TERM_CHESTNUT */
+    {TERM_PINK, TERM_UMBER}
 };
 
 
@@ -786,8 +836,8 @@ void apply_default_feat_lighting(byte f_attr[F_LIT_MAX], byte f_char[F_LIT_MAX])
 
     if (is_ascii_graphics(s_attr)) /* For ASCII */
     {
-        f_attr[F_LIT_LITE] = lighting_colours[s_attr & 0x0f][0];
-        f_attr[F_LIT_DARK] = lighting_colours[s_attr & 0x0f][1];
+        f_attr[F_LIT_LITE] = lighting_colours[s_attr & COLOR_MASK][0];
+        f_attr[F_LIT_DARK] = lighting_colours[s_attr & COLOR_MASK][1];
         for (i = F_LIT_NS_BEGIN; i < F_LIT_MAX; i++) f_char[i] = s_char;
     }
     else /* For tile graphics */
@@ -1157,13 +1207,23 @@ void map_info(int y, int x, byte *ap, char *cp, byte *tap, char *tcp)
     (*cp) = c;
 
     /* Hack -- rare random hallucination, except on outer dungeon walls */
-    if (p_ptr->image)
+    if ((p_ptr->image) && (in_bounds(y,x)))
     {
-        if (one_in_(256))
+        /* We do some really ugly seeding. This is enough to 1) have
+         * the images stay on the same squares for some time, 2) have the
+         * images move with the player, 3) have them not do so entirely
+         * predictably and 4) ensure there are no obvious repeating patterns */
+        byte _k = (image_turn & 0x03);
+        u32b siidi = ((x + MAX_WID - px) << 8L) + ((y + MAX_HGT - py) << 22L) + ((x + px + _k) / (3 + _k)) + ((y + py + _k) / (3 + _k));
+        Rand_quick = TRUE;
+        Rand_value = 0x0F1F2F3F + image_turn + siidi;
+        Rand_value += (Rand_value % (100003 + x + (y << 8L) - px - (py << 8L)));
+        if (one_in_(255))
         {
             /* Hallucinate */
             image_random(ap, cp);
         }
+        Rand_quick = FALSE;
     }
 
     /* Objects */
@@ -1261,7 +1321,7 @@ void map_info(int y, int x, byte *ap, char *cp, byte *tap, char *tcp)
                 /* Pets: Ideally, we could tweak the background. And what about tiles? */
                 else if (!use_graphics && (p_ptr->pet_extra_flags & PF_HILITE) && is_pet(m_ptr))
                 {
-                    a = TERM_YELLOW;
+                    a = TERM_D_YELLOW;
                     *ap = a;
                     *cp = c;
                 }
