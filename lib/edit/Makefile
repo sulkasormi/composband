@@ -100,7 +100,7 @@ CONFIG = a_info.txt \
 	t_basic.txt \
 	t_info.txt \
 	t_lite.txt \
-	t_morivant.txt \
+	t_mori.txt \
 	t_outp.txt \
 	t_pref.txt \
 	t_telmo.txt \
