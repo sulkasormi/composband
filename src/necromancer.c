@@ -438,14 +438,15 @@ cptr do_necromancy_spell(int spell, int mode)
     {
         int base = spell_power(20);
         if (name) return "Shield of the Dead";
-        if (desc) return "Grants temporary protection";
+        if (desc) return "Temporarily gives an AC bonus and resistance to cold, poison and nether.";
         if (info) return info_duration(base, base);
         if (cast)
         {
-            set_tim_res_nether(randint1(base) + base, FALSE);
-            set_oppose_pois(randint1(base) + base, FALSE);
-            set_oppose_cold(randint1(base) + base, FALSE);
-            set_shield(randint1(base) + base, FALSE);
+            int dur = randint1(base) + base;
+            set_tim_res_nether(dur, FALSE);
+            set_oppose_pois(dur, FALSE);
+            set_oppose_cold(dur, FALSE);
+            set_shield(dur, FALSE);
         }
         break;
     }
@@ -547,24 +548,12 @@ static void _get_flags(u32b flgs[OF_ARRAY_SIZE])
     if (p_ptr->lev >= 35) add_flag(flgs, OF_RES_POIS);
 }
 
-static int _get_powers(spell_info* spells, int max)
+static power_info _get_powers[] =
 {
-    int ct = 0;
-
-    spell_info* spell = &spells[ct++];
-    spell->level = 1;
-    spell->cost = 1;
-    spell->fail = calculate_fail_rate(spell->level, 30, p_ptr->stat_ind[A_INT]);
-    spell->fn = animate_dead_spell;
-
-    spell = &spells[ct++];
-    spell->level = 5;
-    spell->cost = 5;
-    spell->fail = calculate_fail_rate(spell->level, 30, p_ptr->stat_ind[A_INT]);
-    spell->fn = enslave_undead_spell;
-
-    return ct;
-}
+    { A_INT, { 1, 1, 30, animate_dead_spell}},
+    { A_INT, { 5, 5, 30, enslave_undead_spell}},
+    { -1, {-1, -1, -1, NULL}}
+};
 
 static caster_info * _caster_info(void)
 {
@@ -651,7 +640,8 @@ class_t *necromancer_get_class(void)
         me.exp = 125;
         me.pets = 10;
         me.flags = CLASS_SENSE1_MED | CLASS_SENSE1_WEAK |
-                   CLASS_SENSE2_FAST | CLASS_SENSE2_STRONG;
+                   CLASS_SENSE2_FAST | CLASS_SENSE2_STRONG |
+                   CLASS_REGEN_MANA;
 
         me.birth = _birth;
         me.caster_info = _caster_info;
