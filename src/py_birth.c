@@ -3374,7 +3374,8 @@ static void _birth_finalize(void)
      * but forget to turn no_wilderness and ironman_downward off) */
     if ((!coffee_break) && (ironman_downward))
     {
-        if (!get_check("Really play with ironman stairs? "))
+        if (thrall_mode) ironman_downward = FALSE; /* We start in R'lyeh... */
+        else if (!get_check("Really play with ironman stairs? "))
         {
             ironman_downward = FALSE;
         }
