@@ -396,6 +396,13 @@ C:0:0:15:4
 F:STR | INT | WIS | DEX | CON | CHR
 F:IGNORE_ACID | IGNORE_ELEC | IGNORE_FIRE | IGNORE_COLD
 
+N:77:of the Emu-Lord
+T:BODY_ARMOR
+W:30:*:64
+C:0:0:0:4
+F:FREE_ACT | SEE_INVIS
+F:IGNORE_ACID | IGNORE_ELEC | IGNORE_FIRE | IGNORE_COLD
+
 #############
 ### Robes ###
 #############
@@ -634,6 +641,12 @@ F:STEALTH |
 F:IGNORE_ACID | IGNORE_ELEC | IGNORE_FIRE | IGNORE_COLD
 F:SHOW_MODS
 
+N:122:of the Witch
+T:HELMET
+W:15:*:8
+C:0:0:0:3
+F:INT |
+
 ##############
 ### Crowns ###
 ##############
@@ -643,8 +656,8 @@ T:CROWN
 W:10:80:2
 
 N:126:of the Magi
-T:CROWN
-W:30:*:4
+T:CROWN | HELMET
+W:30:*:8
 C:0:0:0:3
 F:INT | SUST_INT |
 F:XTRA_H_RES | XTRA_POWER |
