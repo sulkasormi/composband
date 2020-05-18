@@ -90,14 +90,7 @@ static void _super_attack_spell(int cmd, variant *res)
         break;
     case SPELL_ON_BROWSE:
     {
-        bool screen_hack = screen_is_saved();
-        if (screen_hack) screen_load();
-
-        display_weapon_mode = PY_POWER_ATTACK;
-        do_cmd_knowledge_weapon();
-        display_weapon_mode = 0;
-
-        if (screen_hack) screen_save();
+        display_weapon_info_aux(PY_POWER_ATTACK);
         var_set_bool(res, TRUE);
         break;
     }
@@ -137,22 +130,25 @@ static power_info _troll_king_powers[] =
     {    -1, { -1, -1, -1, NULL}}
 };
 
-static int _get_powers(spell_info* spells, int max) 
+static power_info *_get_powers(void)
 {
-    int ct = get_powers_aux(spells, max, _powers);
+    static power_info spells[MAX_SPELLS];
+    int max = MAX_SPELLS;
+    int ct = get_powers_aux(spells, max, _powers, FALSE);
     switch (p_ptr->current_r_idx)
     {
     case MON_AKLASH: 
-        ct += get_powers_aux(spells + ct, max - ct, _aklash_powers);
+        ct += get_powers_aux(spells + ct, max - ct, _aklash_powers, FALSE);
         break;
     case MON_STORM_TROLL: 
-        ct += get_powers_aux(spells + ct, max - ct, _storm_troll_powers);
+        ct += get_powers_aux(spells + ct, max - ct, _storm_troll_powers, FALSE);
         break;
     case MON_TROLL_KING: 
-        ct += get_powers_aux(spells + ct, max - ct, _troll_king_powers);
+        ct += get_powers_aux(spells + ct, max - ct, _troll_king_powers, FALSE);
         break;
     }
-    return ct;
+    spells[ct].spell.fn = NULL;
+    return spells;
 }
 
 /******************************************************************************
@@ -457,7 +453,7 @@ race_t *mon_troll_get_race(int psubrace)
         me.calc_bonuses = _calc_bonuses;
         me.calc_weapon_bonuses = _calc_weapon_bonuses;
         me.calc_innate_attacks = _calc_innate_attacks;
-        me.get_powers = _get_powers;
+        me.get_powers_fn = _get_powers;
         me.get_flags = _get_flags;
         me.gain_level = _gain_level;
         me.birth = _birth;
