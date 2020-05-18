@@ -161,6 +161,11 @@ static void wr_monster(savefile_ptr file, monster_type *m_ptr)
         savefile_write_byte(file, SAVE_MON_PARENT);
         savefile_write_s16b(file, m_ptr->parent_m_idx);
     }
+    if (m_ptr->parent_r_idx)
+    {
+        savefile_write_byte(file, SAVE_MON_PARENT_RACE);
+        savefile_write_s16b(file, m_ptr->parent_r_idx);
+    }
     if (m_ptr->pack_idx)
     {
         savefile_write_byte(file, SAVE_MON_PACK_IDX);
@@ -443,6 +448,9 @@ static void wr_options(savefile_ptr file)
     savefile_write_byte(file, mana_warn);
     savefile_write_byte(file, random_artifact_pct);
     savefile_write_byte(file, reduce_uniques_pct);
+    savefile_write_byte(file, object_list_width);
+    savefile_write_byte(file, monster_list_width);
+    savefile_write_byte(file, generate_empty);
     savefile_write_byte(file, small_level_type);
 
     /*** Cheating options ***/
@@ -509,6 +517,28 @@ static void wr_quick_start(savefile_ptr file)
     savefile_write_byte(file, previous_char.quick_ok);
 }
 
+static void wr_mystery(savefile_ptr file)
+{
+    if ((no_wilderness) || (!seed_dungeon) || (d_info[DUNGEON_MYSTERY].flags1 & DF1_SUPPRESSED))
+    {
+        savefile_write_byte(file, 0xFD);
+        return;
+    }
+    else
+    {
+        dungeon_info_type *d_ptr = &d_info[DUNGEON_MYSTERY];
+        savefile_write_byte(file, 0xFF);
+        savefile_write_byte(file, d_ptr->dy);
+        savefile_write_byte(file, d_ptr->dx);
+        savefile_write_s16b(file, d_ptr->mindepth);
+        savefile_write_s16b(file, d_ptr->maxdepth);
+        savefile_write_s16b(file, (s16b)d_ptr->final_guardian);
+        savefile_write_s16b(file, (s16b)d_ptr->initial_guardian);
+        savefile_write_byte(file, d_ptr->wild_type);
+        savefile_write_byte(file, d_ptr->min_plev);
+    }
+}
+
 static void wr_extra(savefile_ptr file)
 {
     int i,j;
@@ -522,7 +552,9 @@ static void wr_extra(savefile_ptr file)
 
     savefile_write_s32b(file, game_mode);
     savefile_write_byte(file, coffee_break);
+    savefile_write_byte(file, pantheon_count);
     savefile_write_byte(file, game_pantheon);
+    savefile_write_byte(file, active_pantheon);
     savefile_write_byte(file, p_ptr->prace);
     savefile_write_byte(file, p_ptr->pclass);
     savefile_write_byte(file, p_ptr->personality);
@@ -601,6 +633,8 @@ static void wr_extra(savefile_ptr file)
     for (i = 0; i < tmp8u; i++)
         savefile_write_u32b(file, dungeon_flags[i]);
 
+    wr_mystery(file);
+
     savefile_write_s16b(file, p_ptr->concent);
     savefile_write_s16b(file, p_ptr->blind);
     savefile_write_s16b(file, p_ptr->paralyzed);
@@ -631,6 +665,8 @@ static void wr_extra(savefile_ptr file)
     savefile_write_s16b(file, p_ptr->alter_reality);
     savefile_write_s16b(file, p_ptr->see_infra);
     savefile_write_s16b(file, p_ptr->tim_infra);
+    savefile_write_s16b(file, p_ptr->tim_poet);
+    savefile_write_s16b(file, p_ptr->tim_understanding);
     savefile_write_s16b(file, p_ptr->oppose_fire);
     savefile_write_s16b(file, p_ptr->oppose_cold);
     savefile_write_s16b(file, p_ptr->oppose_acid);
@@ -778,6 +814,13 @@ static void wr_extra(savefile_ptr file)
     savefile_write_byte(file, p_ptr->wait_report_score);
     savefile_write_u32b(file, seed_flavor);
     savefile_write_u32b(file, seed_town);
+    savefile_write_u32b(file, seed_dungeon);
+
+    /* It probably isn't possible to save during a time stop, so world_monster
+     * should always be 0 */
+    savefile_write_byte(file, world_monster);
+    savefile_write_s16b(file, p_ptr->no_air);
+    if (p_ptr->no_air) savefile_write_byte(file, no_air_monster);
 
     /* Careful - we need to tell the savefile whether personality includes
      * Chaotic BEFORE adding the Chaotic-exclusive content... */
@@ -794,11 +837,13 @@ static void wr_extra(savefile_ptr file)
     savefile_write_s32b(file, game_turn);
     savefile_write_s32b(file, player_turn);
     savefile_write_s32b(file, dungeon_turn);
+    savefile_write_s32b(file, image_turn);
     savefile_write_s32b(file, old_battle);
     savefile_write_s16b(file, today_mon);
     savefile_write_s16b(file, p_ptr->today_mon);
     savefile_write_s16b(file, p_ptr->riding);
     savefile_write_s16b(file, p_ptr->floor_id);
+    savefile_write_byte(file, overworld_visit);
     savefile_write_u32b(file, playtime);
     savefile_write_u32b(file, p_ptr->count);
     savefile_write_byte(file, p_ptr->coffee_lv_revisits);
