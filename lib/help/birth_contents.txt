@@ -1,6 +1,6 @@
 <style:title>Creating a Character</style>
 
-Please choose one of the following help sections:
+Please choose one of the following help topics:
 
     <link:birth.txt#CreateAt> Creating a Character
     <link:birth.txt#Welcome> The Welcome Screen
@@ -12,6 +12,7 @@ Please choose one of the following help sections:
     <link:birth.txt#Abilities> Additional Abilities
     <link:birth.txt#BirthOptions> Birth Options
     <link:birth.txt#Reference> Reference
+    <link:speed.txt> Game Speed Modes
 
     <color:y>(?) Help System Commands</color>
 
