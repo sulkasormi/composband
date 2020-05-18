@@ -1045,6 +1045,7 @@ void get_purple_questor(quest_ptr q)
         if (r_ptr->rarity > 100) continue;
         if (r_ptr->flags7 & RF7_FRIENDLY) continue;
         if (r_ptr->flags7 & RF7_AQUATIC) continue;
+        if (r_ptr->flags3 & RF3_COMPOST) continue;
         if (r_ptr->flags8 & RF8_WILD_ONLY) continue;
         if (r_ptr->flags7 & (RF7_UNIQUE2 | RF7_NAZGUL)) continue;
         if (r_ptr->flagsx & RFX_SUPPRESS) continue; /* paranoia */
@@ -1143,6 +1144,8 @@ static int _quest_dungeon(quest_ptr q)
     /* move wargs quest from 'Warrens' to 'Angband' */
     if (d && no_wilderness)
         d = DUNGEON_ANGBAND;
+    /* handle suppressed dungeons, make big honking assumption */
+    if ((d) && (d_info[d].flags1 & DF1_SUPPRESSED)) d = d_info[d].alt;
     return d;
 }
 
@@ -1308,6 +1311,12 @@ void _dungeon_boss_death(mon_ptr mon)
         {
             int tval = realm2tval(p_ptr->realm1);
             k_idx = lookup_kind(tval, 3);
+        }
+
+        if (dungeon_type == DUNGEON_MYSTERY)
+        {
+            acquirement(py, px, 1 + (dun_level / 30), TRUE, FALSE, ORIGIN_MYSTERY);
+            k_idx = 0;
         }
 
         if (k_idx)
