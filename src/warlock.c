@@ -963,7 +963,7 @@ static void _mount_attack_spell(int cmd, variant *res)
         if (m_idx)
         {
             mon_attack_mon(p_ptr->riding, m_idx);
-            mount->energy_need += ENERGY_NEED();
+            mount->energy_need += PY_ENERGY_NEED();
             var_set_bool(res, TRUE);
         }
         break;
@@ -1040,7 +1040,7 @@ static void _mount_breathe_spell(int cmd, variant *res)
         if (!get_fire_dir(&_hack_dir)) return;
 
         if (mon_spell_cast_mon(mount, _dragonrider_ai))
-            mount->energy_need += ENERGY_NEED();
+            mount->energy_need += PY_ENERGY_NEED();
 
         var_set_bool(res, TRUE);
         break;
@@ -1086,7 +1086,7 @@ static void _pets_breathe_spell(int cmd, variant *res)
 
         if (mon_spell_cast_mon(mount, _dragonrider_ai))
         {
-            mount->energy_need += ENERGY_NEED();
+            mount->energy_need += PY_ENERGY_NEED();
             msg_boundary();
         }
 
@@ -1104,7 +1104,7 @@ static void _pets_breathe_spell(int cmd, variant *res)
 
             if (mon_spell_cast_mon(m_ptr, _dragonrider_ai))
             {
-                m_ptr->energy_need += ENERGY_NEED();
+                m_ptr->energy_need += energy_need_clipper_aux(SPEED_TO_ENERGY(m_ptr->mspeed));
                 if (one_in_(2))
                 {
                     if (mon_show_msg(m_ptr))
@@ -1966,12 +1966,13 @@ static spell_info _powers[MAX_WARLOCK_BLASTS] =
     { 42,  0,  75, _empowered_blast},
 };
 
-static int _get_powers(spell_info* spells, int max)
+static power_info *_get_powers(void)
 {
     int       i;
     int       ct = 0;
-    int       stat_idx = p_ptr->stat_ind[A_CHR];
     _pact_ptr pact = _get_pact(p_ptr->psubclass);
+    static power_info spells[MAX_SPELLS];
+    int       max = MAX_SPELLS;
 
     assert(pact);
 
@@ -1988,25 +1989,28 @@ static int _get_powers(spell_info* spells, int max)
         if (ct >= max) break;
         if ((base->level <= p_ptr->lev) || (show_future_powers))
         {
-            spell_info* current = &spells[ct];
-            current->fn = base->fn;
-            current->level = base->level;
-            current->cost = base->cost;
-            current->fail = calculate_fail_rate(base->level, base->fail, stat_idx);
-            if (current->fn == NULL)
-                current->fn = pact->special_blast;
+            power_info* current = &spells[ct];
+            current->spell.fn = base->fn;
+            current->spell.level = base->level;
+            current->spell.cost = base->cost;
+            current->spell.fail = base->fail;
+            current->stat = A_CHR;
+            if (current->spell.fn == NULL)
+                current->spell.fn = pact->special_blast;
 
             ct++;
         }
     }
-    return ct;
+    spells[ct].spell.fn = NULL;
+    return spells;
 }
-static int _get_spells(spell_info* spells, int max)
+static spell_info *_get_spells(void)
 {
     int       i;
     int       ct = 0;
-    int       stat_idx = p_ptr->stat_ind[A_CHR];
+    int       max = MAX_SPELLS;
     _pact_ptr pact = _get_pact(p_ptr->psubclass);
+    static spell_info spells[MAX_SPELLS];
 
     assert(pact);
 
@@ -2021,19 +2025,13 @@ static int _get_spells(spell_info* spells, int max)
             current->fn = base->fn;
             current->level = base->level;
             current->cost = base->cost;
-            current->fail = calculate_fail_rate(base->level, base->fail, stat_idx);
+            current->fail = base->fail;
         }
     }
 
-    return ct;
-}
+    spells[ct].fn = NULL;
 
-static void _character_dump(doc_ptr doc)
-{
-    spell_info spells[MAX_SPELLS];
-    int        ct = _get_spells(spells, MAX_SPELLS);
-
-    py_display_spells(doc, spells, ct);
+    return spells;
 }
 
 static caster_info * _caster_info(void)
@@ -2143,9 +2141,9 @@ class_t *warlock_get_class(int psubclass)
 
         me.birth = _birth;
         me.caster_info = _caster_info;
-        me.get_spells = _get_spells;
-        me.get_powers = _get_powers;
-        me.character_dump = _character_dump;
+        me.get_spells_fn = _get_spells;
+        me.get_powers_fn = _get_powers;
+        me.character_dump = py_dump_spells;
         me.flags = CLASS_SENSE1_FAST | CLASS_SENSE1_WEAK |
                    CLASS_SENSE2_MED | CLASS_SENSE2_STRONG;
 
