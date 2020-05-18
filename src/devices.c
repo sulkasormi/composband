@@ -484,6 +484,121 @@ static cptr _do_potion(int sval, int mode)
             }
         }
         break;
+    case SV_POTION_LIQUID_LOGRUS:
+        if (desc) return "It has unpredictable effects when you quaff it, either "
+                         "1) curing 5000 HP and all temporary ailments, "
+                         "2) increasing all stats, 3) decreasing all stats, "
+                         "4) providing temporary light speed, "
+                         "5) temporarily turning your skin to stone, "
+                         "6) giving or curing mutations randomly, "
+                         "7) repeatedly giving or curing mutations randomly, "
+                         "8) temporarily making you gigantic, "
+                         "9) triggering the Baby Foul Curse, "
+                         "10) temporarily polymorphing you into an Ent, "
+                         "11) making you hallucinate temporarily, "
+                         "12) curing 420 HP and all ailments but making you "
+                         "hallucinate temporarily, "
+                         "or 13) exploding in your mouth for 11d66 damage, "
+                         "massive stunning and a dangerous wound.";
+        if (cast)
+        {
+            int noppa = randint1(13);
+            if (p_ptr->good_luck) noppa--;
+            else if (mut_present(MUT_BAD_LUCK)) noppa++;
+            switch (noppa)
+            {
+                case 0:
+                case 1:
+                    virtue_add(VIRTUE_CHANCE, 5);
+                    (void)_do_potion(SV_POTION_LIFE, SPELL_CAST);
+                     break;
+                case 2:
+                    virtue_add(VIRTUE_CHANCE, 5);
+                    (void)_do_potion(SV_POTION_AUGMENTATION, SPELL_CAST);
+                    break;
+                case 3:
+                    virtue_add(VIRTUE_CHANCE, -5);
+                    msg_print("You feel less powerful!");
+                    dec_stat(A_DEX, 10, TRUE);
+                    dec_stat(A_WIS, 10, TRUE);
+                    dec_stat(A_CON, 10, TRUE);
+                    dec_stat(A_STR, 10, TRUE);
+                    dec_stat(A_CHR, 10, TRUE);
+                    dec_stat(A_INT, 10, TRUE);
+                    break;
+                case 4:
+                    virtue_add(VIRTUE_CHANCE, 2);
+                    set_lightspeed(_potion_power(25 + randint1(50)), FALSE);
+                    break;
+                case 5:
+                    (void)_do_potion(SV_POTION_STONE_SKIN, SPELL_CAST);
+                    break;
+                case 6:
+                case 7:
+                {
+                    int ii, ct = 1;
+                    if (noppa == 7) ct += randint1(3);
+                    for (ii = 0; ii < ct; ii++)
+                    {
+                        (void)_do_potion(SV_POTION_POLYMORPH, SPELL_CAST);
+                    }
+                    break;
+                }
+                case 8:
+                    (void)_do_potion(SV_POTION_GIANT_STRENGTH, SPELL_CAST);
+                    break;
+                case 9:
+                    virtue_add(VIRTUE_CHANCE, -2);
+                    nonlethal_ty_substitute(TRUE);
+                    break;
+                case 10:
+                    if (player_obviously_poly_immune(TRUE) || mut_present(MUT_DRACONIAN_METAMORPHOSIS))
+                        nonlethal_ty_substitute(TRUE);
+                    else
+                        set_mimic(20 + randint1(20), RACE_ENT, TRUE);
+                    break;
+                case 11:
+                    set_image(50 + randint1(50), TRUE);
+                    break;
+                case 12:
+                    virtue_add(VIRTUE_CHANCE, 1);
+                    virtue_add(VIRTUE_VITALITY, 1);
+                    virtue_add(VIRTUE_UNLIFE, -5);
+                    msg_print("You feel life flow through your body!");
+                    restore_level();
+                    lp_player(1000);
+                    set_poisoned(0, TRUE);
+                    set_blind(0, TRUE);
+                    set_confused(0, TRUE);
+                    set_image(0, TRUE);
+                    set_stun(0, TRUE);
+                    set_cut(0, TRUE);
+                    set_unwell(0, TRUE);
+                    do_res_stat(A_STR);
+                    do_res_stat(A_CON);
+                    do_res_stat(A_DEX);
+                    do_res_stat(A_WIS);
+                    do_res_stat(A_INT);
+                    do_res_stat(A_CHR);
+                    set_shero(0,TRUE);
+                    (void)p_inc_minislow(-10);
+                    p_ptr->slow = 0;
+                    update_stuff();
+                    hp_player(_potion_power(420));
+                    set_image(50 + randint1(50), TRUE);
+                    break;
+                default:
+                    virtue_add(VIRTUE_CHANCE, -10);
+                    msg_print("Massive explosions rupture your body!");
+                    take_hit(DAMAGE_NOESCAPE, damroll(11, 66), "a potion of Liquid Logrus");
+
+                    set_stun(MAX(p_ptr->stun, STUN_MASSIVE), FALSE);
+                    set_cut(p_ptr->cut + 3630, FALSE);
+                    device_noticed = TRUE;
+                    break;
+            }
+        }
+        break;
     case SV_POTION_LOSE_MEMORIES:
         if (desc) return "You lose experience when you quaff it.";
         if (cast)
@@ -493,6 +608,18 @@ static cptr _do_potion(int sval, int mode)
                 msg_print("You feel your memories fade.");
                 virtue_add(VIRTUE_KNOWLEDGE, -5);
                 lose_exp(p_ptr->exp / 4);
+                device_noticed = TRUE;
+            }
+        }
+        break;
+    case SV_POTION_MEAD_OF_POETRY:
+        if (desc) return "Brewed from the blood of the murdered sage Kvasir, it temporarily gives its drinker great wisdom and eloquence.";
+        if (info) return info_duration(_potion_power(75), _potion_power(75));
+        if (cast)
+        {
+            int dur = _potion_power(100 + randint1(100));
+            if (set_tim_poet(p_ptr->tim_poet + dur, FALSE))
+            {
                 device_noticed = TRUE;
             }
         }
@@ -730,7 +857,7 @@ static cptr _do_potion(int sval, int mode)
         }
         break;
     case SV_POTION_BLOOD:
-        if (desc) return "A much needed infusion! It heals you a bit and cures blindness, confusion, and stunned when you quaff it.";
+        if (desc) return "A much needed infusion! It heals you a bit and cures blindness, confusion, and stunning when you quaff it.";
         if (info) return info_heal(0, 0, _potion_power(200));
         if (cast)
         {
@@ -742,7 +869,7 @@ static cptr _do_potion(int sval, int mode)
         break;
     case SV_POTION_HEALING: {
         int amt = 300;
-        if (desc) return "It heals you and cures blindness, confusion, stunned, cuts and berserk when you quaff it.";
+        if (desc) return "It heals you and cures blindness, confusion, stunning, cuts and berserk when you quaff it.";
         if (info) return info_heal(0, 0, _potion_power(amt));
         if (cast)
         {
@@ -756,7 +883,7 @@ static cptr _do_potion(int sval, int mode)
         }
         break; }
     case SV_POTION_STAR_HEALING:
-        if (desc) return "It heals you and cures blindness, confusion, poison, stunned, cuts, illnesses and berserk when you quaff it.";
+        if (desc) return "It heals you and cures blindness, confusion, poison, stunning, cuts, illnesses and berserk when you quaff it.";
         if (info) return info_heal(0, 0, _potion_power(1000));
         if (cast)
         {
@@ -773,7 +900,7 @@ static cptr _do_potion(int sval, int mode)
         }
         break;
     case SV_POTION_LIFE:
-        if (desc) return "It heals you completely, restores life, experience and all your stats and cures blindness, confusion, poison, hallucination, stunned, cuts, slowness, illnesses and berserk when you quaff it.";
+        if (desc) return "It heals you completely, restores life, experience and all your stats and cures blindness, confusion, poison, hallucination, stunning, cuts, slowness, illnesses and berserk when you quaff it.";
         if (info) return info_heal(0, 0, _potion_power(5000));
         if (cast)
         {
@@ -1035,11 +1162,7 @@ static cptr _do_potion(int sval, int mode)
         if (cast)
         {
             int dur = _potion_power(20 + randint1(20));
-            set_oppose_acid(dur, FALSE);
-            set_oppose_elec(dur, FALSE);
-            set_oppose_fire(dur, FALSE);
-            set_oppose_cold(dur, FALSE);
-            set_oppose_pois(dur, FALSE);
+            set_oppose_base(dur, FALSE);
             device_noticed = TRUE;
         }
         break;
@@ -1077,6 +1200,8 @@ static cptr _do_potion(int sval, int mode)
             p_ptr->update |= PU_BONUS;
             mut_lose_all();
             device_noticed = TRUE;
+            if (p_ptr->personality == PERS_SPLIT)
+                split_shuffle(2);
             if (p_ptr->pclass == CLASS_WILD_TALENT)
                 wild_talent_new_life();
             /* XXX Originally, this was here as an act of mercy for players new to this class.
@@ -1548,12 +1673,12 @@ static cptr _do_scroll(int sval, int mode)
         if (desc) return "It destroys everything nearby you when you read it.";
         if (cast)
         {
-            if (((!py_in_dungeon()) || (!quests_allow_all_spells()) || (dungeon_type == DUNGEON_WOOD))
+            if (((!py_in_dungeon()) || (!quests_allow_all_spells()))
                && (!_scroll_check_no_effect(sval))) return NULL;
             if (destroy_area(py, px, 13 + randint0(5), _scroll_power(2000)))
                 device_noticed = TRUE;
             else
-                msg_print("The dungeon trembles...");
+                msg_print("The ground trembles...");
         }
         break;
     case SV_SCROLL_DISPEL_UNDEAD:
@@ -1781,7 +1906,7 @@ static cptr _do_scroll(int sval, int mode)
             }
         }
         break;
-    case SV_SCROLL_CHAOS:
+/*    case SV_SCROLL_CHAOS:
         if (desc) return "It creates a huge ball of logrus centered on you.";
         if (info) return info_damage(0, 0, _scroll_power(500));
         if (cast)
@@ -1793,6 +1918,14 @@ static cptr _do_scroll(int sval, int mode)
                 int dam = res_calc_dam(RES_CHAOS, 50 + randint1(50));
                 take_hit(DAMAGE_NOESCAPE, dam, "a Scroll of Logrus");
             }
+        }
+        break;*/
+    case SV_SCROLL_UNDERSTANDING:
+        if (desc) return "It identifies all items in your pack and gives temporary auto-identify.";
+        if (cast)
+        {
+            if (set_tim_understanding(_scroll_power(40), FALSE))
+                device_noticed = TRUE;
         }
         break;
     case SV_SCROLL_MANA:
@@ -2243,6 +2376,9 @@ static _effect_info_t _effect_info[] =
     {"MURAMASA",        EFFECT_MURAMASA,             0,   0,  0, 0},
     {"EXPERTSEXCHANGE", EFFECT_EXPERTSEXCHANGE,      0,   0,  0, 0},
     {"EYE_HYPNO",       EFFECT_EYE_HYPNO,            0,   0,  0, 0},
+    {"STUNNING_KICK",   EFFECT_STUNNING_KICK,        0,   0,  0, 0},
+    {"RAMA_ARROW",      EFFECT_RAMA_ARROW,           0,   0,  0, 0},
+    {"UNFOCUS_RAGE",    EFFECT_UNFOCUS_RAGE,         0,   0,  0, 0},
 
     {0}
 };
@@ -2454,7 +2590,7 @@ device_effect_info_t wand_effect_table[] =
     {EFFECT_BALL_POIS,              5,   4,     1,  20,    33,  0, _STOCK_TOWN},
     {EFFECT_SLEEP_MONSTER,          5,   5,     1,  20,    33,  0, _STOCK_TOWN},
     {EFFECT_SLOW_MONSTER,           5,   5,     1,  20,    33,  0, _STOCK_TOWN},
-    {EFFECT_CONFUSE_MONSTER,        5,   5,     1,  20,    33,  0, _STOCK_TOWN},
+    {EFFECT_CONFUSE_MONSTER,        5,   5,     1,  25,    33,  0, _STOCK_TOWN},
     {EFFECT_SCARE_MONSTER,          7,   5,     1,  20,    33,  0, _STOCK_TOWN},
     {EFFECT_STONE_TO_MUD,          10,   5,     1,   0,    10,  0, _COMMON},
     {EFFECT_POLYMORPH,             12,   6,     1,  30,     0,  0, 0},
@@ -2631,7 +2767,7 @@ static int _effect_rarity(device_effect_info_ptr entry, int level)
     if (entry->max_depth && entry->max_depth < level) return 0;
     if (entry->flags & _RARE)
     {
-        int n = entry->counts.found;
+        int n = entry->counts.found + entry->counts.bought;
         while (n--)
             r *= 2;
     }
@@ -3623,7 +3759,7 @@ cptr do_effect(effect_t *effect, int mode, int boost)
         if (cast)
         {
             if (!earthquake(py, px, _extra(effect, 10)))
-                msg_print("The dungeon trembles.");
+                msg_print("The ground trembles.");
             device_noticed = TRUE;
         }
         break;
@@ -3641,7 +3777,7 @@ cptr do_effect(effect_t *effect, int mode, int boost)
             if (destroy_area(py, px, 13 + randint0(5), _BOOST(power)))
                 device_noticed = TRUE;
             else
-                msg_print("The dungeon trembles...");
+                msg_print("The ground trembles...");
         }
         break;
     }
@@ -4058,11 +4194,7 @@ cptr do_effect(effect_t *effect, int mode, int boost)
         if (cast)
         {
             int dur = _BOOST(power + randint1(power));
-            if (set_oppose_acid(dur, FALSE)) device_noticed = TRUE;
-            if (set_oppose_elec(dur, FALSE)) device_noticed = TRUE;
-            if (set_oppose_fire(dur, FALSE)) device_noticed = TRUE;
-            if (set_oppose_cold(dur, FALSE)) device_noticed = TRUE;
-            if (set_oppose_pois(dur, FALSE)) device_noticed = TRUE;
+            if (set_oppose_base(dur, FALSE)) device_noticed = TRUE;
         }
         break;
     }
@@ -5261,15 +5393,15 @@ cptr do_effect(effect_t *effect, int mode, int boost)
     {
         int dd = _extra(effect, 6);
         int ds = 8;
-        if (name) return "Beam of Light";
-        if (desc) return "It fires a beam of light.";
+        if (name) return "Moonbeam";
+        if (desc) return "It fires a beam of weak light, damaging light-sensitive creatures.";
         if (info) return info_damage(_BOOST(dd), ds, 0);
         if (value) return format("%d", 20*_avg_damroll(dd, ds));
         if (color) return format("%d", res_color(RES_LITE));
         if (cast)
         {
             if (!get_fire_dir(&dir)) return NULL;
-            msg_print("A line of blue shimmering light appears.");
+            msg_print("A line of pale shimmering light appears.");
             project_hook(GF_LITE_WEAK, dir, _BOOST(damroll(dd, ds)), PROJECT_BEAM | PROJECT_GRID | PROJECT_KILL);
             device_noticed = TRUE;
         }
@@ -6421,7 +6553,7 @@ cptr do_effect(effect_t *effect, int mode, int boost)
     {
         int dam = _extra(effect, effect->power*2);
         if (name) return "Holiness";
-        if (desc) return "It does damage to all evil monsters in sight, gives temporary protection from lesser evil creature, cures poison, stunned, cuts, removes fear and heals you when you use it.";
+        if (desc) return "It does damage to all evil monsters in sight, gives temporary protection from lesser evil creature, cures poison, stunning, cuts, removes fear and heals you when you use it.";
         if (info) return info_power(_BOOST(dam));
         if (value) return format("%d", 5000 + 30*dam);
         if (color) return format("%d", TERM_YELLOW);
@@ -6555,7 +6687,7 @@ cptr do_effect(effect_t *effect, int mode, int boost)
         if (desc) return "It attempts to slow all nearby visible monsters.";
         if (info) return format("power %d", pow);
         if (value) return format("%d", 15*pow);
-        if (color) return format("%d", TERM_UMBER);
+        if (color) return format("%d", TERM_SLATE);
         if (cast)
         {
             if (slow_monsters(_BOOST(pow)))
@@ -6684,6 +6816,7 @@ cptr do_effect(effect_t *effect, int mode, int boost)
             int   tval = p_ptr->shooter_info.tval_ammo;
 
             if ((!tval) || (tval == TV_NO_AMMO)) tval = TV_ARROW;
+            if (tval == TV_ANY_AMMO) tval = TV_BOLT;
 
             object_prep(&forge, lookup_kind(tval, SV_ARROW)); /* Hack: SV_ARROW == SV_BOLT == SV_PEBBLE */
             forge.number = MAX(0, MIN(50, quiver_capacity() - quiver_count(NULL)));
@@ -6731,7 +6864,7 @@ cptr do_effect(effect_t *effect, int mode, int boost)
         if (name) return "Slow Monster";
         if (desc) return "It slows a monster down when you use it.";
         if (value) return format("%d", 500);
-        if (color) return format("%d", TERM_UMBER);
+        if (color) return format("%d", TERM_SLATE);
         if (cast)
         {
             if (!get_fire_dir(&dir)) return NULL;
@@ -6741,7 +6874,8 @@ cptr do_effect(effect_t *effect, int mode, int boost)
         break;
     case EFFECT_CONFUSE_MONSTER:
     {
-        int power = _extra(effect, 10 + effect->power);
+//        int power = _extra(effect, MIN(98, MAX(21, effect->power * 7 - 52)));
+        int power = _extra(effect, 25 + _power_curve_offset(75, effect->power + 75, 80));
         if (name) return "Confuse Monster";
         if (desc) return "It confuses a monster when you use it.";
         if (info) return format("power %d", _BOOST(power));
@@ -6857,6 +6991,7 @@ cptr do_effect(effect_t *effect, int mode, int boost)
     case EFFECT_HASTE_MONSTER:
         if (name) return "Haste Monster";
         if (desc) return "It hastes a monster when you use it.";
+        if (color) return format("%d", TERM_VIOLET);
         if (value) return format("%d", 15);
         if (cast)
         {
@@ -6875,6 +7010,7 @@ cptr do_effect(effect_t *effect, int mode, int boost)
     case EFFECT_HASTE_MONSTERS:
         if (name) return "Haste Monsters";
         if (desc) return "It hastes all monsters in sight when you use it.";
+        if (color) return format("%d", TERM_VIOLET);
         if (cast)
         {
             if (speed_monsters())
@@ -7027,6 +7163,7 @@ cptr do_effect(effect_t *effect, int mode, int boost)
         if (value) return format("%d", 10000);
         if (cast)
         {
+            int dur;
             if (!get_fire_dir(&dir)) return NULL;
             msg_print("You breathe the elements.");
 
@@ -7035,13 +7172,11 @@ cptr do_effect(effect_t *effect, int mode, int boost)
 
             msg_print("Your armor glows many colours...");
 
-            set_hero(_BOOST(randint1(50) + 50), FALSE);
-            set_blessed(_BOOST(randint1(50) + 50), FALSE);
-            set_oppose_acid(_BOOST(randint1(50) + 50), FALSE);
-            set_oppose_elec(_BOOST(randint1(50) + 50), FALSE);
-            set_oppose_fire(_BOOST(randint1(50) + 50), FALSE);
-            set_oppose_cold(_BOOST(randint1(50) + 50), FALSE);
-            set_oppose_pois(_BOOST(randint1(50) + 50), FALSE);
+            dur = _BOOST(randint1(50) + 50);
+
+            set_hero(dur, FALSE);
+            set_blessed(dur, FALSE);
+            set_oppose_base(dur, FALSE);
         }
         break;
     case EFFECT_MITO_KOUMON:
@@ -7221,7 +7356,89 @@ cptr do_effect(effect_t *effect, int mode, int boost)
                     default: msg_print("(They'd better pay you a hundred gold pieces for every eighty you earn now.)"); break;
                 }
             }
+            device_noticed = TRUE;
         }
+        break;
+    case EFFECT_STUNNING_KICK:
+    {
+        int pow = effect->power * 2;
+        if (name) return "Stunning Stomp";
+        if (desc) return "Forcefully stuns an adjacent monster with a powerful stomp.";
+        if (info) return format("power %d", pow);
+        if (value) return format("%d", 125*MAX(0, pow - 25));
+        if (color) return format("%d", TERM_L_GREEN);
+        if (cast)
+        {
+            if ((d_info[dungeon_type].flags1 & DF1_NO_MELEE) || (no_melee_challenge))
+            {
+                msg_print("Something prevents you from attacking.");
+                break;
+            }
+            else
+            {
+                int x = 0, y = 0, m_idx = 0;
+
+                if (!get_adjacent_target(&x, &y, &m_idx))
+                {
+                    break;
+                }
+
+                (void)project(0, 0, y, x, pow, GF_STUN, PROJECT_STOP | PROJECT_KILL | PROJECT_THRU);
+            }
+            device_noticed = TRUE;
+        }
+        break;
+    }
+    case EFFECT_RAMA_ARROW:
+    {
+        if (name) return "Mighty Arrow";
+        if (desc) return "Fires a single arrow with extra might, tripling the normal damage.";
+        if (info) return "dam x3";
+        if (value) return format("%d", 10000);
+        if (color) return format("%d", TERM_L_GREEN);
+        if (cast)                         {
+            if (melee_challenge)
+            {
+                msg_print("You are reminded of your solemn vow to rely on melee only.");
+                break;
+            }
+            else
+            {
+                shoot_hack = SHOOT_RAMA;
+                command_cmd = 'f'; /* hack for inscriptions */
+                do_cmd_fire();
+                shoot_hack = 0;
+                device_noticed = TRUE;
+            }
+        }
+        break;
+    }
+    case EFFECT_UNFOCUS_RAGE:
+    {
+        int pow = _extra(effect, effect->power * 2);
+        if (name) return "Unfocus Rage";
+        if (desc) return ((p_ptr->pclass == CLASS_RAGE_MAGE) ? "Removes fear, removes berserk strength and converts up to 200 SP to HP." : "Removes fear and berserk strength.");
+        if ((info) && (p_ptr->pclass == CLASS_RAGE_MAGE)) return format("power %d", pow);
+        if (value) return format("%d", 2500);
+        if (color) return format("%d", TERM_YELLOW);
+        if (cast)
+        {
+            if (p_ptr->afraid)
+            {
+                fear_clear_p();
+                device_noticed = TRUE;
+            }
+            if (set_shero(0, TRUE)) device_noticed = TRUE;
+            if ((p_ptr->csp > 0) && (p_ptr->pclass == CLASS_RAGE_MAGE))
+            {
+                int healing = MIN(pow, p_ptr->csp);
+                hp_player(healing);
+                sp_player(-healing);
+                device_noticed = TRUE;
+            }
+        }
+        break;
+    }
     default:
         if (name) return format("Invalid Effect: %d", effect->type);
     }
