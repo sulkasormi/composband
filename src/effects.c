@@ -110,6 +110,35 @@ void set_action(int typ)
     p_ptr->redraw |= (PR_STATE);
 }
 
+/* Stop singing or spelling
+ * Compare stop_mouth() in racial.c */
+void interrupt_singing(bool take_energy)
+{
+    warlock_stop_singing();
+    if (music_singing_any() || hex_spelling_any())
+    {
+        cptr str = (music_singing_any()) ? "singing" : "spelling";
+        p_ptr->magic_num1[1] = p_ptr->magic_num1[0];
+        p_ptr->magic_num1[0] = 0;
+        msg_format("Your %s is interrupted.", str);
+        p_ptr->action = ACTION_NONE;
+
+        /* Recalculate bonuses */
+        p_ptr->update |= (PU_BONUS | PU_HP);
+
+        /* Redraw map */
+        p_ptr->redraw |= (PR_MAP | PR_STATUS | PR_STATE);
+
+        /* Update monsters */
+        p_ptr->update |= (PU_MONSTERS);
+
+        /* Window stuff */
+        p_ptr->window |= (PW_OVERHEAD | PW_DUNGEON);
+
+        if (take_energy) p_ptr->energy_need += PY_ENERGY_NEED();
+    }
+}
+
 /* reset timed flags */
 void reset_tim_flags(void)
 {
@@ -136,6 +165,8 @@ void reset_tim_flags(void)
     p_ptr->blessed = 0;         /* Timed -- Blessed */
     p_ptr->tim_invis = 0;       /* Timed -- Invisibility */
     p_ptr->tim_infra = 0;       /* Timed -- Infra Vision */
+    p_ptr->tim_poet = 0;        /* Timed -- Poet */
+    p_ptr->tim_understanding = 0; /* Timed -- Auto-ID */
     p_ptr->tim_regen = 0;       /* Timed -- Regeneration */
     p_ptr->tim_stealth = 0;     /* Timed -- Stealth */
     p_ptr->tim_esp = 0;
@@ -206,7 +237,7 @@ void reset_tim_flags(void)
 
     wild_reset_counters();
 
-    while(p_ptr->energy_need < 0) p_ptr->energy_need += ENERGY_NEED();
+    while(p_ptr->energy_need < 0) p_ptr->energy_need += PY_ENERGY_NEED();
     world_player = FALSE;
 
     if ((p_ptr->pclass == CLASS_BERSERKER) || (beorning_is_(BEORNING_FORM_BEAR))) p_ptr->shero = 1;
@@ -295,7 +326,7 @@ bool p_inc_minislow(int lisays)
 
 void p_inc_fatigue(int check_mut, int lisays)
 {
-    if ((!check_mut) || (!mut_present(check_mut)) || (lisays < 1)) return;
+    if ((((!check_mut) || (!mut_present(check_mut))) && (!p_ptr->no_air)) || (lisays < 1)) return;
 
     /* Check for easy tiring */
     if ((one_in_(16 - p_ptr->minislow)) || ((check_mut == MUT_EASY_TIRING2) && (one_in_(6))))
@@ -318,6 +349,8 @@ bool m_inc_minislow(monster_type *m_ptr, int lisays)
 
     if (!tulos) return FALSE;
 
+    check_mon_health_redraw(m_ptr->id);
+
     /* Check if the player's mount was affected */
     if ((p_ptr->riding == m_ptr->id) && (!p_ptr->leaving))
         p_ptr->update |= PU_BONUS;
@@ -333,7 +366,7 @@ bool disenchant_player(void)
     if (disciple_is_(DISCIPLE_TROIKA)) result = troika_dispel_timeouts();
     for (; attempts; attempts--)
     {
-        switch (randint1(32))
+        switch (randint1(33))
         {
         case 1:
             if (p_ptr->fast)
@@ -486,11 +519,7 @@ bool disenchant_player(void)
         case 19:
             if (p_ptr->oppose_acid || p_ptr->oppose_cold || p_ptr->oppose_elec || p_ptr->oppose_fire || p_ptr->oppose_pois || p_ptr->spin)
             {
-                (void)set_oppose_acid(0, TRUE);
-                (void)set_oppose_elec(0, TRUE);
-                (void)set_oppose_fire(0, TRUE);
-                (void)set_oppose_cold(0, TRUE);
-                (void)set_oppose_pois(0, TRUE);
+                (void)set_oppose_base(0, TRUE);
                 (void)set_spin(0, TRUE);
                 result = TRUE;
                 return result;
@@ -594,27 +623,20 @@ bool disenchant_player(void)
             }
             break;
         case 32:
+            warlock_stop_singing();
             if (music_singing_any() || hex_spelling_any())
             {
-                cptr str = (music_singing_any()) ? "singing" : "spelling";
-                p_ptr->magic_num1[1] = p_ptr->magic_num1[0];
-                p_ptr->magic_num1[0] = 0;
-                msg_format("Your %s is interrupted.", str);
-                p_ptr->action = ACTION_NONE;
-
-                /* Recalculate bonuses */
-                p_ptr->update |= (PU_BONUS | PU_HP);
-
-                /* Redraw map */
-                p_ptr->redraw |= (PR_MAP | PR_STATUS | PR_STATE);
-
-                /* Update monsters */
-                p_ptr->update |= (PU_MONSTERS);
-
-                /* Window stuff */
-                p_ptr->window |= (PW_OVERHEAD | PW_DUNGEON);
-
-                p_ptr->energy_need += ENERGY_NEED();
+                interrupt_singing(TRUE);
+                result = TRUE;
+                return result;
+            }
+            break;
+        case 33:
+            if (p_ptr->tim_poet)
+            {
+                (void)set_tim_poet(0, TRUE);
+                result = TRUE;
+                return result;
             }
             break;
         }
@@ -647,6 +669,8 @@ void dispel_player(void)
 
     (void)set_tim_invis(0, TRUE);
     (void)set_tim_infra(0, TRUE);
+    (void)set_tim_poet(0, TRUE);
+    (void)set_tim_understanding(0, TRUE);
     (void)set_tim_esp(0, TRUE);
     (void)set_tim_esp_magical(0, TRUE);
     (void)set_tim_regen(0, TRUE);
@@ -662,11 +686,7 @@ void dispel_player(void)
     (void)set_tim_eyeeye(0, TRUE);
     (void)set_magicdef(0, TRUE);
     (void)set_resist_magic(0, TRUE);
-    (void)set_oppose_acid(0, TRUE);
-    (void)set_oppose_elec(0, TRUE);
-    (void)set_oppose_fire(0, TRUE);
-    (void)set_oppose_cold(0, TRUE);
-    (void)set_oppose_pois(0, TRUE);
+    (void)set_oppose_base(0, TRUE);
     (void)set_ultimate_res(0, TRUE);
     (void)set_spin(0, TRUE);
     
@@ -733,29 +753,7 @@ void dispel_player(void)
         p_ptr->special_attack &= ~(ATTACK_CONFUSE);
         msg_print("Your hands stop glowing.");
     }
-
-    if (music_singing_any() || hex_spelling_any())
-    {
-        cptr str = (music_singing_any()) ? "singing" : "spelling";
-        p_ptr->magic_num1[1] = p_ptr->magic_num1[0];
-        p_ptr->magic_num1[0] = 0;
-        msg_format("Your %s is interrupted.", str);
-        p_ptr->action = ACTION_NONE;
-
-        /* Recalculate bonuses */
-        p_ptr->update |= (PU_BONUS | PU_HP);
-
-        /* Redraw map */
-        p_ptr->redraw |= (PR_MAP | PR_STATUS | PR_STATE);
-
-        /* Update monsters */
-        p_ptr->update |= (PU_MONSTERS);
-
-        /* Window stuff */
-        p_ptr->window |= (PW_OVERHEAD | PW_DUNGEON);
-
-        p_ptr->energy_need += ENERGY_NEED();
-    }
+    interrupt_singing(TRUE);
 }
 
 
@@ -943,6 +941,25 @@ bool set_blind(int v, bool do_dec)
     return (TRUE);
 }
 
+void lose_kata(void)
+{
+    msg_print("Your posture gets loose.");
+    p_ptr->special_defense &= ~(KATA_MASK);
+    p_ptr->update |= (PU_BONUS);
+    p_ptr->update |= (PU_MONSTERS);
+    p_ptr->redraw |= (PR_STATE);
+    p_ptr->redraw |= (PR_STATUS);
+    p_ptr->action = ACTION_NONE;
+}
+
+void lose_kamae(void)
+{
+    msg_print("Your posture gets loose.");
+    p_ptr->special_defense &= ~(KAMAE_MASK);
+    p_ptr->update |= (PU_BONUS);
+    p_ptr->redraw |= (PR_STATE);
+    p_ptr->action = ACTION_NONE;
+}
 
 /*
  * Set "p_ptr->confused", notice observable changes
@@ -974,21 +991,11 @@ bool set_confused(int v, bool do_dec)
             }
             if (p_ptr->action == ACTION_KAMAE)
             {
-                msg_print("Your posture gets loose.");
-                p_ptr->special_defense &= ~(KAMAE_MASK);
-                p_ptr->update |= (PU_BONUS);
-                p_ptr->redraw |= (PR_STATE);
-                p_ptr->action = ACTION_NONE;
+                lose_kamae();
             }
             else if (p_ptr->action == ACTION_KATA)
             {
-                msg_print("Your posture gets loose.");
-                p_ptr->special_defense &= ~(KATA_MASK);
-                p_ptr->update |= (PU_BONUS);
-                p_ptr->update |= (PU_MONSTERS);
-                p_ptr->redraw |= (PR_STATE);
-                p_ptr->redraw |= (PR_STATUS);
-                p_ptr->action = ACTION_NONE;
+                lose_kata();
             }
 
             /* Sniper */
@@ -1220,6 +1227,13 @@ bool set_image(int v, bool do_dec)
 
             p_ptr->counter = FALSE;
             notice = TRUE;
+
+            /* Hack - image turn */
+            image_turn = game_turn;
+        }
+        else if (game_turn > image_turn + 25)
+        {
+            image_turn = game_turn;
         }
     }
 
@@ -2295,7 +2309,7 @@ bool set_lightspeed(int v, bool do_dec)
         }
         else if (!p_ptr->lightspeed)
         {
-            msg_print("You feel yourself moving extremely faster!");
+            msg_print("You feel yourself moving extremely fast!");
 
             notice = TRUE;
             virtue_add(VIRTUE_PATIENCE, -1);
@@ -2462,6 +2476,68 @@ bool set_unwell(int v, bool do_dec)
 
     /* Disturb */
     if ((disturb_state) && ((!new_eff) || (!old_eff))) disturb(0, 0);
+
+    /* Recalculate bonuses */
+    p_ptr->update |= (PU_BONUS);
+    p_ptr->redraw |= (PR_STATUS);
+
+    /* Handle stuff */
+    handle_stuff();
+
+    /* Result */
+    return (TRUE);
+}
+
+/*
+ * Set "p_ptr->no_air", notice observable changes
+ */
+bool set_no_air(int v, bool do_dec)
+{
+    bool notice = FALSE;
+
+    /* Hack -- Force good values */
+    v = (v > NO_AIR_MAX) ? NO_AIR_MAX : (v < 0) ? 0 : v;
+
+    if (p_ptr->is_dead) return FALSE;
+
+    if ((p_ptr->no_air) && (v >= p_ptr->no_air)) return FALSE;
+
+    if (py_on_surface()) v = 0; /* too much air */
+
+    /* Open */
+    if (v)
+    {
+        if (p_ptr->no_air && !do_dec)
+        {
+            if (p_ptr->no_air > v) return FALSE;
+        }
+        else if (!p_ptr->no_air)
+        {
+            msg_print("Suddenly, the cave feels devoid of air!");
+            notice = TRUE;
+        }
+    }
+
+    /* Shut */
+    else
+    {
+        if (p_ptr->no_air)
+        {
+            msg_print("Air rushes back into the dungeon!");
+            no_air_monster = 0;
+
+            notice = TRUE;
+        }
+    }
+
+    /* Use the value */
+    p_ptr->no_air = v;
+
+    /* Nothing to notice */
+    if (!notice) return (FALSE);
+
+    /* Disturb */
+    if (disturb_state) disturb(0, 0);
 
     /* Recalculate bonuses */
     p_ptr->update |= (PU_BONUS);
@@ -3057,7 +3133,7 @@ bool set_invuln(int v, bool do_dec)
             /* Window stuff */
             p_ptr->window |= (PW_OVERHEAD | PW_DUNGEON);
 
-            p_ptr->energy_need += ENERGY_NEED();
+            p_ptr->energy_need += PY_ENERGY_NEED();
         }
     }
 
@@ -3333,6 +3409,134 @@ bool set_tim_infra(int v, bool do_dec)
     return (TRUE);
 }
 
+/*
+ * Set "p_ptr->tim_poet", notice observable changes
+ */
+bool set_tim_poet(int v, bool do_dec)
+{
+    bool notice = FALSE;
+
+    /* Hack -- Force good values */
+    v = (v > 10000) ? 10000 : (v < 0) ? 0 : v;
+
+    if (p_ptr->is_dead) return FALSE;
+
+    /* Open */
+    if (v)
+    {
+        if (p_ptr->tim_poet && !do_dec)
+        {
+            if (p_ptr->tim_poet > v) return FALSE;
+        }
+        else if (!p_ptr->tim_poet)
+        {
+            msg_print("The wisdom of Kvasir flows through you!");
+
+            notice = TRUE;
+        }
+    }
+
+    /* Shut */
+    else
+    {
+        if (p_ptr->tim_poet)
+        {
+            msg_print("You stop feeling wise and eloquent.");
+
+            notice = TRUE;
+        }
+    }
+
+    /* Use the value */
+    p_ptr->tim_poet = v;
+
+    /* Redraw status bar */
+    p_ptr->redraw |= (PR_STATUS);
+
+    /* Nothing to notice */
+    if (!notice) return (FALSE);
+
+    /* Disturb */
+    if (disturb_state) disturb(0, 0);
+
+    /* Recalculate bonuses */
+    p_ptr->update |= (PU_BONUS);
+
+    /* Update the monsters */
+    p_ptr->update |= (PU_MONSTERS);
+
+    /* Handle stuff */
+    handle_stuff();
+
+    /* Result */
+    return (TRUE);
+}
+
+/*
+ * Set "p_ptr->tim_understanding", notice observable changes
+ */
+bool set_tim_understanding(int v, bool do_dec)
+{
+    bool notice = FALSE;
+
+    /* Hack -- Force good values */
+    v = (v > 10000) ? 10000 : (v < 0) ? 0 : v;
+
+    if (p_ptr->is_dead) return FALSE;
+
+    /* Open */
+    if (v)
+    {
+        if (p_ptr->tim_understanding && !do_dec)
+        {
+            if (p_ptr->tim_understanding > v) return FALSE;
+        }
+        else if (!p_ptr->tim_understanding)
+        {
+            msg_print("You feel like a loremaster!");
+            identify_pack();
+
+            notice = TRUE;
+        }
+    }
+
+    /* Shut */
+    else
+    {
+        if (p_ptr->tim_understanding)
+        {
+            msg_print("You stop feeling like a loremaster.");
+
+            notice = TRUE;
+        }
+    }
+
+    /* Use the value */
+    p_ptr->tim_understanding = v;
+
+    /* Redraw status bar */
+    p_ptr->redraw |= (PR_STATUS);
+
+    /* Nothing to notice */
+    if (!notice) return (FALSE);
+
+    /* Disturb */
+    if (disturb_state) disturb(0, 0);
+
+    /* Recalculate bonuses */
+    p_ptr->update |= (PU_BONUS);
+
+    /* Update the monsters */
+    p_ptr->update |= (PU_MONSTERS);
+
+    /* Handle stuff */
+    handle_stuff();
+
+    /* Result */
+    return (TRUE);
+}
+
+
 
 /*
  * Set "p_ptr->tim_regen", notice observable changes
@@ -3522,7 +3726,7 @@ bool set_superstealth(bool set)
     {
         if (p_ptr->special_defense & NINJA_S_STEALTH)
         {
-            if (disturb_minor)
+            if ((disturb_minor) && (!p_ptr->exit_bldg))
                 msg_print("<color:y>You are exposed to common sight once more.</color>");
 
             notice = TRUE;
@@ -4661,6 +4865,18 @@ bool set_oppose_pois(int v, bool do_dec)
     return (TRUE);
 }
 
+/* Set temporary resistance to the base elements */
+bool set_oppose_base(int v, bool do_dec)
+{
+    bool notice = FALSE;
+    if (set_oppose_acid(v, do_dec)) notice = TRUE;
+    if (set_oppose_elec(v, do_dec)) notice = TRUE;
+    if (set_oppose_fire(v, do_dec)) notice = TRUE;
+    if (set_oppose_cold(v, do_dec)) notice = TRUE;
+    if (set_oppose_pois(v, do_dec)) notice = TRUE;
+    return notice;
+}
+
 /*
  * Set "p_ptr->spin", notice observable changes
  */
@@ -4821,13 +5037,7 @@ bool set_stun(int v, bool do_dec)
         }
         if (p_ptr->special_defense & KATA_MASK)
         {
-            msg_print("Your posture gets loose.");
-            p_ptr->special_defense &= ~(KATA_MASK);
-            p_ptr->update |= (PU_BONUS);
-            p_ptr->update |= (PU_MONSTERS);
-            p_ptr->redraw |= (PR_STATE);
-            p_ptr->redraw |= (PR_STATUS);
-            p_ptr->action = ACTION_NONE;
+            lose_kata();
         }
         if (p_ptr->concent) reset_concentration(TRUE);
         if (hex_spelling_any()) stop_hex_spell_all();
@@ -5795,6 +6005,11 @@ static void _forget(obj_ptr obj)
         obj->ident &= ~(IDENT_TRIED);
         obj->ident &= ~(IDENT_KNOWN);
         obj->ident &= ~(IDENT_SENSE);
+        if ((p_ptr->auto_pseudo_id) && ((obj_can_sense1(obj)) || (obj_can_sense2(obj))))
+        {
+            obj->feeling = value_check_aux1(obj, TRUE);
+            if (!(obj->ident & (IDENT_KNOWN))) obj->ident |= IDENT_SENSE;
+        }
     }
 }
 
@@ -5872,9 +6087,13 @@ void change_race(int new_race, cptr effect_msg)
     if (get_race()->flags & RACE_IS_MONSTER) return;
     if (get_race_aux(new_race, 0)->flags & RACE_IS_MONSTER) return;
     if (old_race == RACE_ANDROID) return;
-    if (player_obviously_poly_immune()) return;
+    if (player_obviously_poly_immune(FALSE)) return;
     if (new_race == old_race) return;
-    if (comp_mode) return;
+    if (comp_mode)
+    {
+        nonlethal_ty_substitute(TRUE);
+        return;
+    }
 
     _lock = TRUE;
 
@@ -6367,7 +6586,7 @@ int take_hit(int damage_type, int damage, cptr hit_from)
         (p_ptr->chp < (shuffling_hack_hp / 2)) && ((shuffling_hack_hp - p_ptr->chp) >= (p_ptr->mhp / 5)) &&
         (randint0(p_ptr->mhp / 3) >= p_ptr->chp))
     {
-        split_shuffle(FALSE);
+        split_shuffle(0);
         shuffling_hack_hp = 0;
     }
 
