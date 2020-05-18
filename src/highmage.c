@@ -1,26 +1,23 @@
 #include "angband.h"
 
-static int _get_powers(spell_info* spells, int max)
+static power_info _hex_mage_powers[] =
 {
-    int ct = 0;
+    { A_NONE, { 1, 0,  0, hex_stop_spelling_spell}},
+    { -1, {-1, -1, -1, NULL}}
+};
 
-    spell_info* spell = &spells[ct++];
+static power_info _high_mage_powers[] =
+{
+    { A_INT, { 25, 1, 90, eat_magic_spell}},
+    { -1, {-1, -1, -1, NULL}}
+};
 
+static power_info *_get_powers(void)
+{
     if (p_ptr->realm1 == REALM_HEX)
-    {
-        spell->level = 1;
-        spell->cost = 0;
-        spell->fail = 0;
-        spell->fn = hex_stop_spelling_spell;
-    }
+        return _hex_mage_powers;
     else
-    {
-        spell->level = 25;
-        spell->cost = 1;
-        spell->fail = calculate_fail_rate(spell->level, 90, p_ptr->stat_ind[A_INT]);
-        spell->fn = eat_magic_spell;
-    }
-    return ct;
+        return _high_mage_powers;
 }
 
 static void _calc_bonuses(void)
@@ -98,7 +95,8 @@ class_t *high_mage_get_class(void)
         me.exp = 130;
         me.pets = 25;
         me.flags = CLASS_SENSE1_MED | CLASS_SENSE1_WEAK |
-                   CLASS_SENSE2_FAST | CLASS_SENSE2_STRONG;
+                   CLASS_SENSE2_FAST | CLASS_SENSE2_STRONG |
+                   CLASS_REGEN_MANA;
         
         me.birth = _birth;
         me.calc_bonuses = _calc_bonuses;
@@ -106,7 +104,7 @@ class_t *high_mage_get_class(void)
         me.caster_info = _caster_info;
         /* TODO: This class uses spell books, so we are SOL
         me.get_spells = _get_spells;*/
-        me.get_powers = _get_powers;
+        me.get_powers_fn = _get_powers;
         me.character_dump = spellbook_character_dump;
         init = TRUE;
     }
