@@ -334,7 +334,7 @@ static int _col_height(int ct)
     return result;
 }
 
-static void _list_spells(spell_info* spells, int ct, int max_cost, char *labels, bool rage_hack)
+static void _list_spells(power_info* spells, int ct, int max_cost, char *labels, bool rage_hack, bool power)
 {
     char temp[140];
     int  i;
@@ -343,27 +343,14 @@ static void _list_spells(spell_info* spells, int ct, int max_cost, char *labels,
     int  col_width;
     variant name, info, color;
     bool poli = (p_ptr->pclass == CLASS_POLITICIAN);
+    bool show_stats = (power || p_ptr->pclass == CLASS_WILD_TALENT);
     byte skipped = 0;
 
     var_init(&name);
     var_init(&info);
     var_init(&color);
 
-    if (poli) 
-    /* Hack - use normal display for powers, so must identify we are using powers
-     * Politicians have no spells with zero cost but do have powers with zero cost,
-     * so we use that as a marker */
-    {
-        for (i = 0; i < ct; i++)
-        {
-            spell_info* spell = &spells[i];
-            if (spell->cost == 0)
-            {
-                poli = FALSE;
-                break;
-            } 
-        }        
-    }
+    if (power) poli = FALSE;
 
     if (rage_hack)
     {
@@ -375,6 +362,7 @@ static void _list_spells(spell_info* spells, int ct, int max_cost, char *labels,
     if (col_height == ct)
     {
         if (poli) put_str("Lvl   Cost   Fail   Desc", display.y, display.x + 29);
+        else if (show_stats) put_str("Lvl Cost Fail Stat Desc", display.y, display.x + 29);
         else put_str("Lvl Cost Fail Desc", display.y, display.x + 29);
     }
     else if (!poli)
@@ -382,6 +370,7 @@ static void _list_spells(spell_info* spells, int ct, int max_cost, char *labels,
         col_width = 42;
         put_str("Lvl Cost Fail", display.y, display.x + 29);
         put_str("Lvl Cost Fail", display.y, display.x + col_width + 29);
+        show_stats = FALSE;
     }
     else
     {
@@ -394,7 +383,7 @@ static void _list_spells(spell_info* spells, int ct, int max_cost, char *labels,
     {
         char letter = '\0';
         byte attr = TERM_WHITE;
-        spell_info* spell = &spells[i];
+        spell_info* spell = &spells[i].spell;
         int spell_cost = spell->cost;
 
         if ((rage_hack) && (spell->level == 99))
@@ -440,6 +429,12 @@ static void _list_spells(spell_info* spells, int ct, int max_cost, char *labels,
                             temp2,
                             spell->fail));
             if (col_height == ct) strcat(temp, "  ");
+        }
+
+        if (show_stats)
+        {
+            if (spells[i].stat != A_NONE) strcat(temp, format("  %3.3s", stat_names_reduced[spells[i].stat]));
+            else strcat(temp, " None");
         }
 
         if ((col_height == ct) && (spell->level <= p_ptr->lev))
@@ -521,17 +516,17 @@ void wipe_labels(void)
 }
 
 /* Mega-hack */
-static int _rage_mage_count_spells(spell_info *spells)
+static int _rage_mage_count_spells(power_info *spells)
 {
     int i, ct = 0;
     for (i = 0; i < 8; i++)
     {
-        if (spells[i].level < 99) ct++;
+        if ((spells[i].spell.level < 99) && (spells[i].spell.fn)) ct++;
     }
     return ct;
 }
 
-static int _choose_spell(spell_info* spells, int ct, cptr verb, cptr desc, int max_cost, bool power, bool force_browsing)
+static int _choose_spell(power_info* spells, int ct, cptr verb, cptr desc, int max_cost, bool power, bool force_browsing)
 {
     int choice = -1;
     int korkeus = 0;
@@ -542,7 +537,7 @@ static int _choose_spell(spell_info* spells, int ct, cptr verb, cptr desc, int m
     bool inscribe = FALSE;
     char labels[100] = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789#$%&'()*+,-./:;<=>{|}...............";
     static char multicase[64] = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789";
-    bool rage_hack = ((desc) && (streq("rage", desc)) && (ct == 8));
+    bool rage_hack = ((desc) && (!power) && (streq("rage", desc)) && (ct == 8));
 
     if (power)
     {
@@ -566,7 +561,7 @@ static int _choose_spell(spell_info* spells, int ct, cptr verb, cptr desc, int m
             {
                 char mininimi[15];
                 int j;
-                my_strcpy(mininimi, get_spell_spoiler_name(spells[i].fn), 15);
+                my_strcpy(mininimi, get_spell_spoiler_name(spells[i].spell.fn), 15);
                 for (j = 0; j < MAX_POWER_LABEL; j++)
                 {
                     if (!exists[j]) continue;
@@ -622,7 +617,7 @@ static int _choose_spell(spell_info* spells, int ct, cptr verb, cptr desc, int m
             {
                 if (auto_labels[i]) continue;
                 paikka = chrpos(labels[i], multicase);
-                if ((paikka) && (paikka <= MAX_POWER_LABEL)) _make_sticky_label(&spells[i], paikka - 1);
+                if ((paikka) && (paikka <= MAX_POWER_LABEL)) _make_sticky_label(&spells[i].spell, paikka - 1);
             }
         }
     }
@@ -658,7 +653,7 @@ static int _choose_spell(spell_info* spells, int ct, cptr verb, cptr desc, int m
         int i;
         for (i = 0; i < ct; i++)
         {
-            if (spells[i].level == 99) labels[i] = 'i';
+            if (spells[i].spell.level == 99) labels[i] = 'i';
         }
     }
 
@@ -669,7 +664,7 @@ static int _choose_spell(spell_info* spells, int ct, cptr verb, cptr desc, int m
         char ch = '\0';
         int paikka;
 
-        _list_spells(spells, ct, max_cost, labels, rage_hack);
+        _list_spells(spells, ct, max_cost, labels, rage_hack, power);
 
         /* Prompt User */
         choice = -1;
@@ -699,7 +694,7 @@ static int _choose_spell(spell_info* spells, int ct, cptr verb, cptr desc, int m
             for (i = 0; i < ct; i++)
             {
                 int paikka = chrpos(labels[i], multicase);
-                if ((paikka) && (paikka <= MAX_POWER_LABEL)) _make_sticky_label(&spells[i], paikka - 1);
+                if ((paikka) && (paikka <= MAX_POWER_LABEL)) _make_sticky_label(&spells[i].spell, paikka - 1);
             }
             continue;
         }
@@ -712,7 +707,7 @@ static int _choose_spell(spell_info* spells, int ct, cptr verb, cptr desc, int m
             if (paikka)
             {
                 choice = paikka - 1;
-               _describe_spell(&spells[choice], korkeus);
+               _describe_spell(&spells[choice].spell, korkeus);
                 continue;
             }
         }
@@ -726,7 +721,7 @@ static int _choose_spell(spell_info* spells, int ct, cptr verb, cptr desc, int m
 
         if (describe)
         {
-            _describe_spell(&spells[choice], korkeus);
+            _describe_spell(&spells[choice].spell, korkeus);
             continue;
         }
         else if ((inscribe) && (get_com("New label ('!' to unstick): ", &ch, FALSE)))
@@ -744,10 +739,10 @@ static int _choose_spell(spell_info* spells, int ct, cptr verb, cptr desc, int m
                     {
                         int paikka3 = chrpos(vanha, multicase);
                         labels[vanha - 1] = muisti;
-                        if ((paikka3) && (paikka3 <= MAX_POWER_LABEL)) _make_sticky_label(&spells[vanha - 1], paikka3 - 1);
+                        if ((paikka3) && (paikka3 <= MAX_POWER_LABEL)) _make_sticky_label(&spells[vanha - 1].spell, paikka3 - 1);
                     }
                     labels[choice] = ch;
-                    _make_sticky_label(&spells[choice], paikka - 1);
+                    _make_sticky_label(&spells[choice].spell, paikka - 1);
                 }
             }
             else if (ch == '!')
@@ -766,7 +761,7 @@ static int _choose_spell(spell_info* spells, int ct, cptr verb, cptr desc, int m
     return choice;
 }
 
-int choose_spell(spell_info* spells, int ct, cptr verb, cptr desc, int max_cost, bool power)
+int choose_spell(power_info* spells, int ct, cptr verb, cptr desc, int max_cost, bool power)
 {
     int choice = -1;
 
@@ -786,7 +781,7 @@ int choose_spell(spell_info* spells, int ct, cptr verb, cptr desc, int max_cost,
     return choice;
 }
 
-void browse_spells(spell_info* spells, int ct, cptr desc)
+void browse_spells(power_info* spells, int ct, cptr desc)
 {
     screen_save();
 
@@ -798,10 +793,10 @@ void browse_spells(spell_info* spells, int ct, cptr desc)
         if (choice < 0 || choice >= ct) break;
         if (p_ptr->pclass == CLASS_RAGE_MAGE)
         {
-            if (spells[choice].level == 99) continue;
-            if (_describe_spell(&spells[choice], _col_height(_rage_mage_count_spells(spells)))) break;
+            if (spells[choice].spell.level == 99) continue;
+            if (_describe_spell(&spells[choice].spell, _col_height(_rage_mage_count_spells(spells)))) break;
         }
-        else if (_describe_spell(&spells[choice], _col_height(ct)))
+        else if (_describe_spell(&spells[choice].spell, _col_height(ct)))
             break;
     }
     screen_load();
@@ -837,12 +832,7 @@ int calculate_fail_rate_aux(int caster_lvl, int spell_lvl, int base_fail, int st
     fail += p_ptr->to_m_chance;
     fail -= 3 * (adj_mag_stat[stat_idx] - 1);
     if (p_ptr->heavy_spell) fail += 20;
-
-    {
-        if (p_ptr->dec_mana && p_ptr->easy_spell) fail -= 4;
-        else if (p_ptr->easy_spell) fail -= 3;
-        else if (p_ptr->dec_mana) fail -= 2;
-    }
+    if (p_ptr->easy_spell) fail -= 4;
 
     /* Apply Min Fail Rate */
     min = adj_mag_fail[stat_idx];
@@ -869,7 +859,7 @@ int calculate_fail_rate_aux(int caster_lvl, int spell_lvl, int base_fail, int st
     /* Some effects violate the Min/Max Fail Rates */
     if (p_ptr->heavy_spell) fail += 5; /* Fail could go to 100% */
 
-    if (p_ptr->dec_mana) fail--; /* 5% casters could get 4% fail rates */
+    if (p_ptr->easy_spell) fail--; /* 5% casters could get 4% fail rates */
 
     if (fail < 0) fail = 0;
     if (fail > 100) fail = 100;
@@ -885,28 +875,28 @@ int calculate_fail_rate(int level, int base_fail, int stat_idx)
  * Entrypoints for the world
  ****************************************************************/
 
-static void _add_extra_costs(spell_info* spells, int max)
+static void _add_extra_costs(power_info* spells, int max)
 {
     int i;
     /* Some spells give extra abilities depending on player level ...
        Ideally, these spells should scale the costs as well! */
     for (i = 0; i < max; i++)
     {
-        spell_info* current = &spells[i];
+        spell_info* current = &spells[i].spell;
         current->cost += get_spell_cost_extra(current->fn);
         current->fail = MAX(current->fail, get_spell_fail_min(current->fn));
         current->cost = calculate_cost(current->cost);
     }
 }
 
-static void _add_extra_costs_powers(spell_info* spells, int max)
+static void _add_extra_costs_powers(power_info* spells, int max)
 {
     int i;
     /* Some spells give extra abilities depending on player level ...
        Ideally, these spells should scale the costs as well! */
     for (i = 0; i < max; i++)
     {
-        spell_info* current = &spells[i];
+        spell_info* current = &spells[i].spell;
         current->cost += get_spell_cost_extra(current->fn);
         current->fail = MAX(current->fail, get_spell_fail_min(current->fn));
         /*Oops: Powers should not benefit from DEC_MANA or CASTER_NO_SPELL_COST!!!
@@ -914,7 +904,7 @@ static void _add_extra_costs_powers(spell_info* spells, int max)
     }
 }
 
-static int _get_spell_table(spell_info* spells, int max)
+int get_spell_table(power_info* spells, int max, bool with_class)
 {
     int ct = 0;
     class_t *class_ptr = get_class();
@@ -922,27 +912,41 @@ static int _get_spell_table(spell_info* spells, int max)
 
     if (race_ptr->get_spells != NULL) /* Monster Races ... */
     {
-        inkey_xtra = FALSE;
-        ct = (race_ptr->get_spells)(spells, max);
+        if (with_class) inkey_xtra = FALSE;
+        ct = get_spells_aux(spells, max, race_ptr->get_spells, TRUE);
     }
-    else if (class_ptr->get_spells != NULL)
+    else if (race_ptr->get_spells_fn != NULL)
     {
-        inkey_xtra = FALSE;
-        ct = (class_ptr->get_spells)(spells, max);
+        if (with_class) inkey_xtra = FALSE;
+        ct = get_spells_aux(spells, max, race_ptr->get_spells_fn(), TRUE);
+    }
+    else if ((with_class) && (p_ptr->pclass == CLASS_WILD_TALENT))
+    {
+        ct = wild_talent_get_spells(spells);
+    }
+    else if ((with_class) && (class_ptr->get_spells != NULL))
+    {
+        if (with_class) inkey_xtra = FALSE;
+        ct = get_spells_aux(spells, max, class_ptr->get_spells, TRUE);
+    }
+    else if ((with_class) && (class_ptr->get_spells_fn != NULL))
+    {
+        if (with_class) inkey_xtra = FALSE;
+        ct = get_spells_aux(spells, max, class_ptr->get_spells_fn(), TRUE);
     }
 
     _add_extra_costs(spells, ct);
     return ct;
 }
 
-static int _puhdista(spell_info* spells, int ct, byte liput)
+static int _puhdista(power_info* spells, int ct, byte liput)
 {
     int i, confirmed_spells = 0;
     byte vanha_paikka[MAX_SPELLS] = {0};
     if (!liput) return ct; /* paranoia */
     for (i = 0; i < ct; i++)
     {
-        if ((get_spell_flags(spells[i].fn) & liput) == liput)
+        if ((get_spell_flags(spells[i].spell.fn) & liput) == liput)
         {
             vanha_paikka[confirmed_spells] = i;
             confirmed_spells++;
@@ -950,16 +954,23 @@ static int _puhdista(spell_info* spells, int ct, byte liput)
     }
     for (i = 0; i < ct; i++)
     {
-        if ((i < confirmed_spells) && (i != vanha_paikka[i])) spells[i] = spells[vanha_paikka[i]];
+        if ((i < confirmed_spells) && (i != vanha_paikka[i]))
+        {
+            spells[i].spell.level = spells[vanha_paikka[i]].spell.level;
+            spells[i].spell.fail = spells[vanha_paikka[i]].spell.fail;
+            spells[i].spell.cost = spells[vanha_paikka[i]].spell.cost;
+            spells[i].spell.fn = spells[vanha_paikka[i]].spell.fn;
+            spells[i].stat = spells[vanha_paikka[i]].stat;
+        }
     }
     return confirmed_spells;
 }
 
 void do_cmd_spell_browse(void)
 {
-    spell_info spells[MAX_SPELLS];
+    power_info spells[MAX_SPELLS];
     caster_info *caster = get_caster_info();
-    int ct = _get_spell_table(spells, MAX_SPELLS);
+    int ct = get_spell_table(spells, MAX_SPELLS, TRUE);
 
     if (ct == 0)
     {
@@ -971,7 +982,7 @@ void do_cmd_spell_browse(void)
 
 void do_cmd_spell(void)
 {
-    spell_info spells[MAX_SPELLS];
+    power_info spells[MAX_SPELLS];
     caster_info *caster = get_caster_info();
     bool hp_caster;
     int ct = 0;
@@ -1019,12 +1030,30 @@ void do_cmd_spell(void)
     if (!fear_allow_magic()) spell_problem |= PWR_AFRAID;
     if (p_ptr->confused) spell_problem |= PWR_CONFUSED;
 
-    ct = _get_spell_table(spells, MAX_SPELLS);
+    ct = get_spell_table(spells, MAX_SPELLS, TRUE);
     if (ct == 0)
     {
         /* User probably canceled the prompt for a spellbook */
         spell_problem = 0;
-        if (p_ptr->pclass == CLASS_DISCIPLE) msg_print("The Purples have not taught you any spells yet!");
+        switch (p_ptr->pclass)
+        {
+            case CLASS_DISCIPLE:
+                msg_print("The Purples have not taught you any spells yet!");
+                break;
+            case CLASS_BERSERKER:
+                msg_print("Rargh! Go kill something for more experience!");
+                break;
+            case CLASS_MAULER:
+                msg_print("Rargh! Go maul something for more experience!");
+                break;
+            case CLASS_SCOUT:
+                msg_print("You have no powers yet! Why not go kill stuff?");
+                break;
+            case CLASS_WEAPONMASTER:
+                msg_print("You need more experience. Why not kill something?");
+                break;
+            default: break;
+        }
         return;
     }
 
@@ -1057,7 +1086,7 @@ void do_cmd_spell(void)
 
     if (choice >= 0 && choice < ct)
     {
-        spell_info *spell = &spells[choice];
+        spell_info *spell = &spells[choice].spell;
         int ongelma = 0;
 
         if (spell->level > p_ptr->lev)
@@ -1175,21 +1204,11 @@ void do_cmd_spell(void)
     }
 }
 
-byte do_cmd_power(void)
+int get_power_table(power_info *spells)
 {
-    spell_info spells[MAX_SPELLS];
     int ct = 0;
-    int choice = 0;
-    int budget = p_ptr->chp;
-    byte ongelma = 0;
-    bool hp_only = (elemental_is_(ELEMENTAL_WATER));
     race_t *race_ptr = get_race();
     class_t *class_ptr = get_class();
-
-    if (!fear_allow_magic()) ongelma |= PWR_AFRAID;
-    if (p_ptr->confused) ongelma |= PWR_CONFUSED;
-
-    if (!hp_only) budget += p_ptr->csp;
 
     /* Hack ... Rethink this a bit, but the alternative of hacking into
        the 'm' command is a million times worse!
@@ -1197,20 +1216,46 @@ byte do_cmd_power(void)
        Also, add Mimic power back first so it always stays in the 'a' slot. */
     if (race_ptr->mimic && p_ptr->prace == RACE_DOPPELGANGER)
     {
-        ct += (get_true_race()->get_powers)(spells + ct, MAX_SPELLS - ct);
+        ct += get_powers_aux(spells + ct, MAX_SPELLS - ct, get_true_race()->get_powers, TRUE);
     }
 
     if (race_ptr->get_powers != NULL)
     {
-        ct += (race_ptr->get_powers)(spells + ct, MAX_SPELLS - ct);
+        ct += get_powers_aux(spells + ct, MAX_SPELLS - ct, race_ptr->get_powers, TRUE);
+    }
+    else if (race_ptr->get_powers_fn != NULL)
+    {
+        ct += get_powers_aux(spells + ct, MAX_SPELLS - ct, race_ptr->get_powers_fn(), TRUE);
     }
 
     if (class_ptr != NULL && class_ptr->get_powers != NULL)
     {
-        ct += (class_ptr->get_powers)(spells + ct, MAX_SPELLS - ct);
+        ct += get_powers_aux(spells + ct, MAX_SPELLS - ct, class_ptr->get_powers, TRUE);
+    }
+    else if (class_ptr != NULL && class_ptr->get_powers_fn != NULL)
+    {
+        ct += get_powers_aux(spells + ct, MAX_SPELLS - ct, class_ptr->get_powers_fn(), TRUE);
     }
 
     ct += mut_get_powers(spells + ct, MAX_SPELLS - ct);
+    return ct;
+}
+
+byte do_cmd_power(void)
+{
+    power_info spells[MAX_SPELLS];
+    int ct = 0;
+    int choice = 0;
+    int budget = p_ptr->chp;
+    byte ongelma = 0;
+    bool hp_only = (elemental_is_(ELEMENTAL_WATER));
+
+    if (!fear_allow_magic()) ongelma |= PWR_AFRAID;
+    if (p_ptr->confused) ongelma |= PWR_CONFUSED;
+
+    if (!hp_only) budget += p_ptr->csp;
+
+    ct = get_power_table(spells);
 
     if (ct == 0)
     {
@@ -1241,7 +1286,7 @@ byte do_cmd_power(void)
 
     if (choice >= 0 && choice < ct)
     {
-        spell_info *spell = &spells[choice];
+        spell_info *spell = &spells[choice].spell;
 
         if (spell->level > p_ptr->lev)
         {
@@ -1300,10 +1345,12 @@ byte do_cmd_power(void)
 /***********************************************************************
  * Utilities
  ***********************************************************************/
-int get_powers_aux(spell_info* spells, int max, power_info* table)
+int get_powers_aux(power_info* spells, int max, power_info* table, bool calc_fail)
 {
     int i;
     int ct = 0;
+
+    if ((!table) || (!table[0].spell.fn)) return 0;
 
     for (i = 0; ; i++)
     {
@@ -1314,28 +1361,37 @@ int get_powers_aux(spell_info* spells, int max, power_info* table)
 
         if ((base->spell.level <= p_ptr->lev) || (show_future_powers))
         {
-            spell_info* current = &spells[ct];
-            current->fn = base->spell.fn;
-            current->level = base->spell.level;
-            current->cost = base->spell.cost;
-
-            current->fail = calculate_fail_rate(
+            power_info* current = &spells[ct];
+            int idx = (base->stat == A_NONE) ? 37 : p_ptr->stat_ind[base->stat];
+            current->spell.fn = base->spell.fn;
+            current->spell.level = base->spell.level;
+            current->spell.cost = base->spell.cost;
+            current->stat = base->stat;
+            current->spell.fail = ((!calc_fail) ? base->spell.fail : calculate_fail_rate(
                 base->spell.level,
                 base->spell.fail,
-                p_ptr->stat_ind[base->stat]
-            );
+                idx));
             ct++;
         }
     }
     return ct;
 }
 
-int get_spells_aux(spell_info* spells, int max, spell_info* table)
+int get_spells_aux(power_info* spells, int max, spell_info* table, bool calc_fail)
 {
     int i;
     int ct = 0;
     caster_info *caster_ptr = get_caster_info();
-    int idx = p_ptr->stat_ind[caster_ptr->which_stat];
+    int idx = p_ptr->stat_ind[(p_ptr->pclass == CLASS_NINJA_LAWYER) ? A_DEX : caster_ptr->which_stat];
+
+    if ((!table) || (!table[0].fn)) return 0;
+
+    /* Check for precomputed custom failrate calculations */
+    if ((disciple_is_(DISCIPLE_YEQREZH)) || (p_ptr->pclass == CLASS_FORCETRAINER) ||
+        (p_ptr->pclass == CLASS_PSION) || (p_ptr->pclass == CLASS_RAGE_MAGE))
+    {
+        calc_fail = FALSE;
+    }
 
     for (i = 0; ; i++)
     {
@@ -1343,14 +1399,16 @@ int get_spells_aux(spell_info* spells, int max, spell_info* table)
         if (ct >= max) break;
         if (!base->fn) break;
 
-        if ((base->level <= p_ptr->lev) || (show_future_spells))
+        if ((base->level <= p_ptr->lev) || (show_future_spells) || (p_ptr->pclass == CLASS_RAGE_MAGE))
         {
-            spell_info* current = &spells[ct];
-            current->fn = base->fn;
-            current->level = base->level;
-            current->cost = base->cost;
+            power_info* current = &spells[ct];
+            current->spell.fn = base->fn;
+            current->spell.level = base->level;
+            current->spell.cost = base->cost;
 
-            current->fail = calculate_fail_rate(base->level, base->fail, idx);
+            if (!calc_fail) current->spell.fail = base->fail;
+            else current->spell.fail = calculate_fail_rate(base->level, base->fail, idx);
+            current->stat = A_NONE;
             ct++;
         }
     }
@@ -1371,7 +1429,7 @@ int spell_stats_fail(spell_stats_ptr stats)
     return result;
 }
 
-void dump_spells_aux(FILE *fff, spell_info *table, int ct)
+void dump_spells_aux(FILE *fff, power_info *table, int ct)
 {
     int i;
     variant vn, vd, vc, vfm;
@@ -1394,7 +1452,7 @@ void dump_spells_aux(FILE *fff, spell_info *table, int ct)
     }
     for (i = 0; i < ct; i++)
     {
-        spell_info     *spell = &table[i];
+        spell_info     *spell = &table[i].spell;
         spell_stats_ptr stats = spell_stats(spell);
 
         spell->fn(SPELL_NAME, &vn);
