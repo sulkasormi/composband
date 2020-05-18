@@ -3,7 +3,9 @@ N: 1:BIAS_ELEC
 'One Million Volt'
 'Electron'
 'Call of Thundercloud'
+'Storm Seeker'
 of the Tempest
+of the Stormtrooper
 of R'lyeh
 of Thunder
 of the Firmament
@@ -103,6 +105,7 @@ N:16:BIAS_ROGUE
 N: 9:BIAS_DEX
 'Darknesslurker'
 'Crypt Creep'
+'Camouflage'
 of Forgotten Pathways
 of Quietness
 of the Ninja
