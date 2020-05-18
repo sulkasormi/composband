@@ -200,25 +200,17 @@ void create_ammo_spell(int cmd, variant *res)
 static void _calc_shooter_bonuses(object_type *o_ptr, shooter_info_t *info_ptr)
 {
     if ( !p_ptr->shooter_info.heavy_shoot
-      && p_ptr->shooter_info.tval_ammo <= TV_BOLT
-      && p_ptr->shooter_info.tval_ammo >= TV_SHOT )
+      && p_ptr->shooter_info.tval_ammo != TV_NO_AMMO )
     {
         p_ptr->shooter_info.breakage -= 10;
     }
 }
 
-static int _get_powers(spell_info* spells, int max)
+static power_info _get_powers[] =
 {
-    int ct = 0;
-
-    spell_info* spell = &spells[ct++];
-    spell->level = 1;
-    spell->cost = 0;
-    spell->fail = 0;
-    spell->fn = create_ammo_spell;
-
-    return ct;
-}
+    { A_NONE, { 1, 0,  0, create_ammo_spell}},
+    { -1, {-1, -1, -1, NULL}}
+};
 
 static void _birth(void)
 {
@@ -255,7 +247,7 @@ class_t *archer_get_class(void)
         me.stats[A_CHR] =  0;
         me.base_skills = bs;
         me.extra_skills = xs;
-        me.life = 111;
+        me.life = 110;
         me.base_hp = 12;
         me.exp = 110;
         me.pets = 40;
