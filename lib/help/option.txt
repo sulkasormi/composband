@@ -53,7 +53,7 @@ This option closes all shops, forcing you to survive off what you find in the du
 With this option on, you are not allowed to climb upwards or (at Normal game speed) recall home. All stairs are downstairs, and every level-teleport will take you to a deeper level. (Coffee-Break Mode and Instant-Coffee Mode activate this option automatically, but do allow you to recall home.)
 
 <topic:ironman_empty_levels><color:U>Always create empty 'arena' levels</color> <color:D>(ironman_empty_levels)</color>
-If this option is enabled, every dungeon level will be an open 'arena' level; these levels will be almost completely empty, apart from monsters and the occasional room. See the <color:keyword>empty_levels</color> option below.
+If this option is set to "Always", every dungeon level will be an open 'arena' level; these levels will be almost completely empty, apart from monsters and the occasional room. If it is set to "Sometimes" (the default setting), such levels will only rarely appear, and only in some of the dungeons. If it is set to "Never", arena levels do not generate at all.
 
 <topic:ironman_nightmare><color:U>Nightmare mode(it isn't even remotely fair!)</color> <color:D>(ironman_nightmare)</color>
 If this option is enabled, all monsters become unusually powerful and fast. And there will be various unbelievable things happening in various situations. Furthermore, at 12:00 every night, you will have a real nightmare. You need to be crazy to turn this option on!
@@ -106,8 +106,11 @@ With this option on, the player cannot sell items for money (only give them for 
 <topic:reduce_uniques><color:U>Reduce the number of uniques (randomly)</color> <color:D>(reduce_uniques)</color>
 This option removes some percentage of uniques from the game. A few uniques (mostly those who appear in either quests or the Thalos arena) are fixed and will never be removed.
 
-<topic:single_pantheon><color:U>Play with only one pantheon</color> <color:D>(single_pantheon)</color>
-This option removes one of the game's two main monster pantheons (Olympian or Egyptian) from the game, but also re-adds all members of the remaining pantheon if they have been removed by the reduce_uniques option. In wilderness mode, the dungeon associated with the removed pantheon is also removed from the game. Which pantheon remains can be either specified by the player or left to a random decision.
+<topic:single_pantheon><color:U>Active pantheons</color> <color:D>(single_pantheon)</color>
+This option allows you to set how many of the four possible pantheons will appear in the game. It can take any value between one and four.
+
+<topic:guaranteed_pantheon><color:U>Guaranteed pantheon</color> <color:D>(guaranteed_pantheon)</color>
+This option allows you to guarantee that a particular pantheon will appear in the game even if fewer than four pantheons are included. (The Olympian pantheon is always guaranteed for Greek demigods; if a different pantheon is specified here on a Greek demigod, the number of active pantheons cannot be lower than 2.)
 
 <topic:always_small_levels><color:U>Level size</color> <color:D>(always_small_levels)</color>
 This option allows you to select from a variety of different level-size selection methods. See <link:small_lv.txt> for more details.
@@ -128,7 +131,7 @@ Turning on this option disables the "Chris effect" (a nexus attack effect that t
 Selecting this option disables <color:keyword>stat scrambling</color>, an effect that permanently switches two of the player's six stats. Stat scrambling can potentially set the player back a long way if a high key stat is swapped with a low, less important stat. Attacks (and other effects) that would normally trigger a scramble will instead trigger the Baby Foul Curse, which is more dangerous in the short-term but doesn't have the same long-term effects.
 
 <topic:comp_mode><color:U>Disallow permanent changes to player race</color> <color:D>(comp_mode)</color>
-Disables all effects (except for monster evolution) that might permanently change the player's race during the game. This option is intended for use in competitions, and to ensure challenging builds remain challenging. (It can also be used to ensure an easy build remains easy, but who'd do that?!)
+Disables all effects (except for monster evolution) that might permanently change the player's race during the game; such effects will instead trigger the Baby Foul Curse. This option is intended for use in competitions, and to ensure challenging builds remain challenging. (It can also be used to ensure an easy build remains easy, but who'd do that?!)
 
 </indent>
 <topic:Input><style:heading>Input Options</style>
@@ -137,7 +140,7 @@ Disables all effects (except for monster evolution) that might permanently chang
 Activates the <color:keyword>roguelike</color> keyset, an alternative way of mapping keystrokes to underlying game commands. The roguelike keyset is recommended for players who lack a numpad on their keyboard (see <link:command.txt#RogueKeyset> for more information).
 
 <topic:always_pickup><color:U>Pick things up by default</color> <color:D>(always_pickup)</color>
-Tells the game that walking onto an item should attempt to pick it up. Otherwise, manually picking up an item requires you to use the <color:keypress>g</color> command, or the <color:keypress>-</color> command while walking. Combined with <color:keyword>carry_query_flag</color>, allows you to selectively pick up all items which you step on. This option disables the autodestroyer functions of the Mogaminator, so it's often used together with <color:keyword>destroy_items</color> for the easy auto-destroyer, as well as <color:keyword>leave_mogaminator</color> if picking up absolutely everything starts feeling like overkill.
+Tells the game that walking onto an item should attempt to pick it up. Otherwise, manually picking up an item requires you to use the <color:keypress>g</color> command, or the <color:keypress>-</color> command while walking. This option disables the autodestroyer functions of the Mogaminator, so it's often used together with <color:keyword>destroy_items</color> for the easy auto-destroyer, as well as <color:keyword>leave_mogaminator</color> if picking up absolutely everything starts feeling like overkill.
 
 <topic:online_macros><color:U>Substitute Walk for Run in macros</color> <color:D>(online_macros)</color>
 If this option is turned on, all running macros will be interpreted as either walking macros or direction macros, depending on what is appropriate. This option compensates for the unusual default preferences of angband.live, and is unnecessary in offline play. (Turning Numlock off is another way to solve the problem on angband.live; it is generally the preferable solution, but may sometimes be inapplicable or introduce additional complications.)
@@ -188,6 +191,9 @@ This option instructs the <color:keyword>auto-get</color> command (<color:keypre
 
 <topic:auto_get_objects><color:U>Ctrl-G automatically gets nearby wanted objects</color> <color:D>(auto_get_objects)</color>
 This option instructs the Auto-Get Objects command (<color:keypress>^G</color>) to automatically travel to nearby visible objects which you have registered to either pickup or destroy. This option subsumes (and extends) the <color:keyword>auto_get_ammo</color> option since ammo inscribed with <color:keypress>=g</color> is certainly registered for auto-pickup.
+
+<topic:limit_shop_prompts><color:U>Limit shop quantity prompts by money available</color> <color:D>(limit_shop_prompts)</color>
+If this option is on, quantity prompt caps for buying and reserving objects account for both the number of objects available in the shop and the number of objects you can actually afford, rather than just the number of objects available. Attempts to buy a completely unaffordable item are also rejected more efficiently.
 
 <topic:auto_detect_traps><color:U>Automatically detect traps while running</color> <color:D>(auto_detect_traps)</color>
 With this option enabled, the game will attempt to automatically detect traps whenever you run outside a trap-detected region. Use the <color:keyword>view_unsafe_grids</color> to make trap detected regions more visually obvious. For this option to work, you must be carrying a scroll, staff or rod able to detect traps. The game will use the object for you automatically, consuming a scroll or a single charge from an appropriate device.
@@ -263,21 +269,6 @@ Displays the current depth in feet instead of levels; 50 feet corresponds to one
 <topic:effective_speed><color:U>Show speeds as energy multipliers</color> <color:D>(effective_speed)</color>
 Displays player and monster speeds as energy multipliers; this style is somewhat ugly, but helps players understand what a given speed actually means in terms of energy. This option is turned on by default in Beginner Mode.
 
-<topic:describe_slots><color:U>Show equipment slot descriptions</color> <color:D>(describe_slots)</color>
-Displays descriptions of the slots equipment objects are worn in, such as "right hand", "left ring", "neck" or "feet".
-
-<topic:show_weights><color:U>Show weights in object listings</color> <color:D>(show_weights)</color>
-Displays the weights of objects in all object inventories, including any subwindow displaying an inventory.
-
-<topic:show_discounts><color:U>Show discounts in object listings</color> <color:D>(show_discounts)</color>
-Displays the discount of the object, if any, as part of its inscription. Disabling this option won't remove the object's discount; it will just no longer be displayed to the player.
-
-<topic:show_power><color:U>Show device power in object listings (if known)</color> <color:D>(show_power)</color>
-Displays details about an object's power (like <color:g>dam 158</color> or <color:U>heal 250</color>) in inventories, allowing you to compare items at a glance.
-
-<topic:show_item_graph><color:U>Show item graphics in object listings</color> <color:D>(show_item_graph)</color>
-Displays graphical representations of items (<color:B>/</color>, <color:g>(</color>, etc.) in inventories.
-
 <topic:equippy_chars><color:U>Display 'equippy' chars</color> <color:D>(equippy_chars)</color>
 Displays graphical representations of your equipment (<color:B>/</color>, <color:g>(</color>, etc.) in the main screen sidebar.
 
@@ -314,9 +305,6 @@ If this option is on, the experience display in the main screen sidebar displays
 <topic:ignore_unview><color:U>Ignore actions of out of sight monsters</color> <color:D>(ignore_unview)</color>
 If this option is on, you will not receive messages when out-of-sight monsters fight one another.
 
-<topic:display_distance><color:U>Display distance in monster list</color> <color:D>(display_distance)</color>
-If this option is on, the distance between a player and a monster will be displayed when the monster is targeted; for example, "Rng 4" for a monster 4 squares away. The distance will also be displayed in the monster list if only one monster of that race is visible; with the option off, the list instead displays the monster's coordinates relative to the player.
-
 <topic:display_race><color:U>Player character depends on their race</color> <color:D>(display_race)</color>
 If this option is on, the player's representation on the map depends on their monster race; a player Quylthulg, for example, would be represented by a <color:W>Q</color>. If the option is off, the player will always be @ even in Monster Mode.
 
@@ -335,23 +323,11 @@ If this option is on, the origins of the player's equipment are always included 
 <topic:easy_mimics><color:U>Use 'x' for monsters that look like things</color> <color:D>(easy_mimics)</color>
 If this option is enabled, monsters that are easily mistaken for non-monsters (like mimics, cloakers, death swords and wall monsters) will be displayed with the 'x' glyph instead of their native glyph. (A few thing-like monsters do still retain their original glyphs; these include death scythes, mushrooms and creeping coins.)
 
-<topic:list_stairs><color:U>Display stairs in the object list</color> <color:D>(list_stairs)</color>
-If this option is enabled, the list of visible objects (accessible in-game by pressing <color:keypress>O</color> or <color:keypress>]</color>) will include stairs in its Interesting Features section. (The inclusion of stairs in the object list can be toggled in the list itself by pressing <color:keypress>S</color>, but this option determines whether stairs are shown by default.)
-
-<topic:show_future_powers><color:U>Include known future race/class powers in lists</color> <color:D>(show_future_powers)</color>
-If this option is on, the <color:keypress>U</color> bonus-power command (<color:keypress>O</color> in the roguelike keyset) will include known future powers in the list, and gray them out. Known future powers are ones the player will gain access to at higher levels, but is currently too low-level to use. Powers that require evolution, mutations or other special developments besides level gain will not be included.
-
-<topic:show_future_spells><color:U>Include known future class spells in lists</color> <color:D>(show_future_spells)</color>
-If this option is on, the <color:keypress>m</color> magic/mental-power command will include known future class spells in the list, and gray them out. Known future spells are ones the player will gain access to at higher levels, but is currently too low-level to use. This option has no effect on book spellcasters; book spell menus always include high-level spells.
-
-<topic:display_skill_num><color:U>Display skills as numbers in the character sheet</color> <color:D>(display_skill_num)</color>
+<topic:display_skill_num><color:U>Display skills as numbers on the character sheet</color> <color:D>(display_skill_num)</color>
 If this option is on, the character sheet displays the player's skills numerically in addition to the usual verbal description; <color:g>Superb</color> may become <color:g>Superb</color> (82), for example. This format is familiar to players of Composband, where the numerical display is always on.
 
 <topic:reforge_details><color:U>Show statistics before proceeding with a reforge</color> <color:D>(reforge_details)</color>
 This option shows statistics about how good a reforge result is likely to be (and why), gives warnings in case of reforges that look particularly misguided, and allows you to cancel the reforge if the statistics are not to your liking.
-
-<topic:auto_sticky_labels><color:U>Automatically make all power labels sticky</color> <color:D>(auto_sticky_labels)</color>
-With this option on, all powers used through the <color:keypress>U</color> key (<color:keypress>O</color> in the roguelike keyset) will be assigned a permanent and unchanging letter slot, allowing reliable macros, keymaps and finger memory.
 
 </indent>
 <topic:GamePlay><style:heading>Game Play Options</style>
@@ -366,9 +342,6 @@ Forces otherwise identical objects to merge, even if they have different discoun
 If this option is turned on, several interfaces that allow cycling between possibilities (the looking/targeting interface, the identify symbol interface, and the monster-research interface) will wrap back to the initial option after reaching the end. If this option is off, these prompts will close after the end is reached.
 
 Expand the "listing" commands so that they "wrap" at the "edges" of the appropriate list. This allows the "look" and "target" commands to "cycle" through all appropriate grids forever, and the "identify symbol" to browse through all of the monsters of a given type.
-
-<topic:empty_levels><color:U>Allow empty 'arena' levels</color> <color:D>(empty_levels)</color>
-Normal dungeon levels consist mostly of rock; if this option is on, empty 'arena' levels are sometimes generated which substitute empty floor for the rock. These levels can be highly deadly due to the dearth of hiding places and the open lines of sight, although rooms, vaults and pits will still be surrounded by walls. Compare <color:keyword>ironman_empty_levels</color>, which generates all levels as arena levels.
 
 <topic:bound_walls_perm><color:U>Display dungeon boundaries as permanent walls</color> <color:D>(bound_walls_perm)</color>
 If this option is set, boundaries of dungeon floors will explicitly look like permanent walls. If the option is not set, boundary walls will look like regular walls, but still behave as permanent walls.
@@ -510,6 +483,48 @@ This option protects all junk items, such as Broken Sticks or Shards of Pottery,
 <topic:leave_special><color:U>Auto-destroyer leaves items your race/class needs</color> <color:D>(leave_special)</color>
 This option protects specific items which are normally worthless, but very important for specific classes or races. These include bones for Archers, ego light sources of darkness for Ninjas, Wands of Heal Monster for Beastmasters and Cavalry, humanoid corpses for Balrogs, and other items with similar niche uses.
 </indent>
+<topic:ListDisplay><style:heading>List Display Options</style>
+  <indent>
+<topic:describe_slots><color:U>Show equipment slot descriptions</color> <color:D>(describe_slots)</color>
+Displays descriptions of the slots equipment objects are worn in, such as "right hand", "left ring", "neck" or "feet".
+
+<topic:show_weights><color:U>Show weights in object listings</color> <color:D>(show_weights)</color>
+Displays the weights of objects in all object inventories, including any subwindow displaying an inventory.
+
+<topic:show_discounts><color:U>Show discounts in object listings</color> <color:D>(show_discounts)</color>
+Displays the discount of the object, if any, as part of its inscription. Disabling this option won't remove the object's discount; it will just no longer be displayed to the player.
+
+<topic:show_power><color:U>Show device power in object listings (if known)</color> <color:D>(show_power)</color>
+Displays details about an object's power (like <color:g>dam 158</color> or <color:U>heal 250</color>) in inventories, allowing you to compare items at a glance.
+
+<topic:show_item_graph><color:U>Show item graphics in object listings</color> <color:D>(show_item_graph)</color>
+Displays graphical representations of items (<color:B>/</color>, <color:g>(</color>, etc.) in inventories.
+
+<topic:shops_mark_unseen><color:U>Indicate unknown flavors in shop inventories</color> <color:D>(shops_mark_unseen)</color>
+If this option is on, potions, scrolls and mushrooms whose flavor has not yet been identified will be marked {unseen} in shop inventories.
+
+<topic:display_distance><color:U>Display distance in monster list</color> <color:D>(display_distance)</color>
+If this option is on, the distance between a player and a monster will be displayed when the monster is targeted; for example, "Rng 4" for a monster 4 squares away. The distance will also be displayed in the monster list if only one monster of that race is visible; with the option off, the list instead displays the monster's coordinates relative to the player.
+
+<topic:list_stairs><color:U>Display stairs in the object list</color> <color:D>(list_stairs)</color>
+If this option is enabled, the list of visible objects (accessible in-game by pressing <color:keypress>O</color> or <color:keypress>]</color>) will include stairs in its Interesting Features section. (The inclusion of stairs in the object list can be toggled in the list itself by pressing <color:keypress>S</color>, but this option determines whether stairs are shown by default.)
+
+<topic:show_future_powers><color:U>Include known future race/class powers in lists</color> <color:D>(show_future_powers)</color>
+If this option is on, the <color:keypress>U</color> bonus-power command (<color:keypress>O</color> in the roguelike keyset) will include known future powers in the list, and gray them out. Known future powers are ones the player will gain access to at higher levels, but is currently too low-level to use. Powers that require evolution, mutations or other special developments besides level gain will not be included.
+
+<topic:show_future_spells><color:U>Include known future class spells in lists</color> <color:D>(show_future_spells)</color>
+If this option is on, the <color:keypress>m</color> magic/mental-power command will include known future class spells in the list, and gray them out. Known future spells are ones the player will gain access to at higher levels, but is currently too low-level to use. This option has no effect on book spellcasters; book spell menus always include high-level spells.
+
+<topic:auto_sticky_labels><color:U>Automatically make all power labels sticky</color> <color:D>(auto_sticky_labels)</color>
+With this option on, all powers used through the <color:keypress>U</color> key (<color:keypress>O</color> in the roguelike keyset) will be assigned a permanent and unchanging letter slot, allowing reliable macros, keymaps and finger memory.
+
+<topic:object_list_width><color:U>Maximum width of the object list</color> <color:D>(object_list_width)</color>
+This setting adjusts the maximum width of the object list as displayed in the main terminal.
+
+<topic:monster_list_width><color:U>Maximum width of the monster list</color> <color:D>(monster_list_width)</color>
+This setting adjusts the maximum width of the monster list as displayed in the main terminal.
+</indent>
+
 <topic:BaseDelay><style:heading>Base Delay Factor</style>
 
 The <color:keyword>delay_factor</color> value, if non-zero, is used to slow down the game, which is useful to allow you to observe the animations of bolt, beam, and ball attacks. The actual delay is equal to the delay factor cubed, in milliseconds, unless the <color:keyword>square_delays</color> option has been turned on.
@@ -605,4 +620,5 @@ Updated    : PosChengband 4.0.0
 Updated    : FrogComposband 7.0.nougat
 Updated    : FrogComposband 7.1.chocolate
 Updated    : FrogComposband 7.1.liquorice
+Updated    : FrogComposband 7.1.salmiak
 </color>
