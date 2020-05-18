@@ -110,6 +110,83 @@ static int _aura_dam_p(int taso)
     return 2 + damroll(taso * 2 - 1 + (p_ptr->lev / 10), 2 + (p_ptr->lev / 10));
 }
 
+bool drain_random_object(int who, int drain_amt, bool *drained)
+{
+    u32b flgs[OF_ARRAY_SIZE];
+    char buf[MAX_NLEN];
+    int k;
+
+    /* Find an item */
+    for (k = 0; k < 10; k++)
+    {
+        slot_t  slot = pack_random_slot(NULL);
+        obj_ptr obj;
+
+        if (!slot) continue;
+        obj = pack_obj(slot);
+        if (!obj) continue;
+        if (!obj_is_device(obj)) continue;
+
+        obj_flags(obj, flgs);
+        if (have_flag(flgs, OF_HOLD_LIFE))
+        {
+            *drained = TRUE; /* No food drain! */
+            return FALSE; /* Not obvious */
+        }
+
+        if (p_ptr->no_charge_drain)
+        {
+            *drained = TRUE; /* No food drain! */
+            return FALSE;
+        }
+
+        if (obj->tval == TV_ROD)
+            drain_amt /= 3;
+
+        if (drain_amt > device_sp(obj))
+            drain_amt = device_sp(obj);
+
+        if (p_ptr->pclass == CLASS_DEVICEMASTER)
+        {
+            int pl = p_ptr->lev;
+            int dl = obj->activation.difficulty;
+
+            if (devicemaster_is_speciality(obj))
+                pl *= 2;
+
+            if (pl >= randint1(dl))
+            {
+                msg_print("Energy begins to drain from your pack ... But you pull it back!");
+                *drained = TRUE; /* No food drain! */
+                return TRUE; /* Obvious effect */
+            }
+        }
+
+        object_desc(buf, obj, OD_OMIT_PREFIX | OD_COLOR_CODED);
+              msg_format("Energy drains from your %s!", buf);
+        device_decrease_sp(obj, drain_amt);
+        *drained = TRUE;
+
+        /* Heal the monster */
+        if (who > 0)
+        {
+            monster_type *m_ptr = &m_list[who];
+            m_ptr->hp += drain_amt;
+            if (m_ptr->hp > m_ptr->maxhp)
+                m_ptr->hp = m_ptr->maxhp;
+            /* Redraw (later) if needed */
+            check_mon_health_redraw(who);
+        }
+
+        /* Window stuff */
+        p_ptr->window |= (PW_INVEN);
+
+        /* Done */
+        return TRUE;
+    }
+    return FALSE;
+}
+
 /*
  * Attack the player via physical attacks.
  */
@@ -240,6 +317,9 @@ bool make_attack_normal(int m_idx)
         skill = blow->power + rlev*3;
         if (stun)
             skill -= skill*MIN(100, stun) / 150;
+
+        if ((p_ptr->no_air) && (monster_living(r_ptr)) && (one_in_(7)))
+            m_inc_minislow(m_ptr, 1);
 
         /* Monster hits player */
         if ( !blow->effects[0].effect  /* XXX B:BEG or B:INSULT */
@@ -442,11 +522,7 @@ bool make_attack_normal(int m_idx)
                     break; }
 
                 case RBE_DRAIN_CHARGES: {
-                    u32b flgs[OF_ARRAY_SIZE];
-                    char buf[MAX_NLEN];
                     bool drained = FALSE;
-                    int  drain_amt = rlev; /* TODO: Consider using damage instead. Indeed, I nerfed this effect
-                                              so all monsters should probably do some damage here as well. */
 
                     /* Take some damage */
                     effect_dam = reduce_melee_dam_p(effect_dam);
@@ -454,73 +530,7 @@ bool make_attack_normal(int m_idx)
 
                     if (p_ptr->is_dead || CHECK_MULTISHADOW()) break;
 
-                    /* Find an item */
-                    for (k = 0; k < 10; k++)
-                    {
-                        slot_t  slot = pack_random_slot(NULL);
-                        obj_ptr obj;
-
-                        if (!slot) continue;
-                        obj = pack_obj(slot);
-                        if (!obj) continue;
-                        if (!obj_is_device(obj)) continue;
-
-                        obj_flags(obj, flgs);
-                        if (have_flag(flgs, OF_HOLD_LIFE))
-                        {
-                            drained = TRUE; /* No food drain! */
-                            break;
-                        }
-
-                        if (obj->tval == TV_ROD)
-                            drain_amt /= 3;
-
-                        if (drain_amt > device_sp(obj))
-                            drain_amt = device_sp(obj);
-
-                        obvious = TRUE;
-
-                        if (p_ptr->no_charge_drain)
-                        {
-                            drained = TRUE; /* No food drain! */
-                            break;
-                        }
-
-                        if (p_ptr->pclass == CLASS_DEVICEMASTER)
-                        {
-                            int pl = p_ptr->lev;
-                            int dl = obj->activation.difficulty;
-
-                            if (devicemaster_is_speciality(obj))
-                                pl *= 2;
-
-                            if (pl >= randint1(dl))
-                            {
-                                msg_print("Energy begins to drain from your pack ... But you pull it back!");
-                                drained = TRUE; /* No food drain! */
-                                break;
-                            }
-                        }
-
-                        object_desc(buf, obj, OD_OMIT_PREFIX | OD_COLOR_CODED);
-                        msg_format("Energy drains from your %s!", buf);
-                        device_decrease_sp(obj, drain_amt);
-                        drained = TRUE;
-
-                        /* Heal the monster */
-                        m_ptr->hp += drain_amt;
-                        if (m_ptr->hp > m_ptr->maxhp)
-                            m_ptr->hp = m_ptr->maxhp;
-
-                        /* Redraw (later) if needed */
-                        check_mon_health_redraw(m_idx);
-
-                        /* Window stuff */
-                        p_ptr->window |= (PW_INVEN);
-
-                        /* Done */
-                        break;
-                    }
+                    obvious = drain_random_object(m_idx, rlev, &drained); /* TODO: Relate to damage instead? */
 
                     if ( !drained
                       && (((!(get_race()->flags & RACE_IS_NONLIVING))
@@ -728,30 +738,37 @@ bool make_attack_normal(int m_idx)
                     break; }
 
                 case RBE_LOSE_STR:
+                    if (p_ptr->is_dead || CHECK_MULTISHADOW()) break;
                     if (do_dec_stat(A_STR)) obvious = TRUE;
                     break;
 
                 case RBE_LOSE_INT:
+                    if (p_ptr->is_dead || CHECK_MULTISHADOW()) break;
                     if (do_dec_stat(A_INT)) obvious = TRUE;
                     break;
 
                 case RBE_LOSE_WIS:
+                    if (p_ptr->is_dead || CHECK_MULTISHADOW()) break;
                     if (do_dec_stat(A_WIS)) obvious = TRUE;
                     break;
 
                 case RBE_LOSE_DEX:
+                    if (p_ptr->is_dead || CHECK_MULTISHADOW()) break;
                     if (do_dec_stat(A_DEX)) obvious = TRUE;
                     break;
 
                 case RBE_LOSE_CON:
+                    if (p_ptr->is_dead || CHECK_MULTISHADOW()) break;
                     if (do_dec_stat(A_CON)) obvious = TRUE;
                     break;
 
                 case RBE_LOSE_CHR:
+                    if (p_ptr->is_dead || CHECK_MULTISHADOW()) break;
                     if (do_dec_stat(A_CHR)) obvious = TRUE;
                     break;
 
                 case RBE_LOSE_ALL:
+                    if (p_ptr->is_dead || CHECK_MULTISHADOW()) break;
                     if (do_dec_stat(A_STR)) obvious = TRUE;
                     if (do_dec_stat(A_DEX)) obvious = TRUE;
                     if (do_dec_stat(A_CON)) obvious = TRUE;
@@ -836,6 +853,7 @@ bool make_attack_normal(int m_idx)
                     }
                     break;
                 case RBE_CUT:
+                    if (p_ptr->is_dead || CHECK_MULTISHADOW()) break;
                     set_cut(p_ptr->cut + effect_dam, FALSE);
                     break;
                 default: /* using GF_* ... damage 0 is OK: B:BITE:HURT(4d4):DISENCHANT */
