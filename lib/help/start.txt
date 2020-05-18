@@ -22,6 +22,7 @@
     <color:R>Advanced Topics:</color>
     <link:option_contents.txt> Options
     <link:pref_contents.txt> User Preference Files
+    <link:speedsys_contents.txt> The Speed System
     <link:prof_contents.txt> The Proficiency System
     <link:editor_contents.txt> The Mogaminator
     <link:subwin.txt> Subwindows
