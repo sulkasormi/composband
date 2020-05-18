@@ -536,23 +536,26 @@ static power_info _spellwarp_powers[] =
     { A_STR, { 45, 25, 50, _breathe_disintegration_spell} },
     {    -1, { -1, -1, -1, NULL} }
 };
-static int _get_powers(spell_info* spells, int max) 
+static power_info *_get_powers(void) 
 {
-    int ct = get_powers_aux(spells, max, _powers);
+    static power_info spells[MAX_SPELLS];
+    int max = MAX_SPELLS;
+    int ct = get_powers_aux(spells, max, _powers, FALSE);
     switch (p_ptr->current_r_idx)
     {
     case MON_COLOSSUS:
-        ct += get_powers_aux(spells + ct, max - ct, _colossus_powers);
+        ct += get_powers_aux(spells + ct, max - ct, _colossus_powers, FALSE);
         break;
     case MON_SKY_GOLEM:
-        ct += get_powers_aux(spells + ct, max - ct, _sky_powers);
+        ct += get_powers_aux(spells + ct, max - ct, _sky_powers, FALSE);
         break;
     case MON_SPELLWARP_AUTOMATON:
-        ct += get_powers_aux(spells + ct, max - ct, _spellwarp_powers);
+        ct += get_powers_aux(spells + ct, max - ct, _spellwarp_powers, FALSE);
         break;
     }
+    spells[ct].spell.fn = NULL;
 
-    return ct;
+    return spells;
 }
 
 static name_desc_t _info[GOLEM_MAX] = {
@@ -592,7 +595,7 @@ race_t *mon_golem_get_race(int psubrace)
         me.birth = _birth;
         me.gain_level = _gain_level;
         me.calc_bonuses = _calc_bonuses;
-        me.get_powers = _get_powers;
+        me.get_powers_fn = _get_powers;
         me.get_flags = _get_flags;
         me.flags = RACE_IS_MONSTER | RACE_IS_NONLIVING;
         me.base_hp = 50;
