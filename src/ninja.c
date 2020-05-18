@@ -472,7 +472,7 @@ void syuriken_spreading_spell(int cmd, variant *res)
 /****************************************************************
  * Spell Table and Exports
  ****************************************************************/
-static spell_info _spells[] = 
+static spell_info _get_spells[] =
 {
     /*lvl cst fail spell */
     { 1,   1,  20, create_darkness_spell},
@@ -498,29 +498,11 @@ static spell_info _spells[] =
     { -1, -1,  -1, NULL}
 };
 
-static power_info _powers[] =
+static power_info _get_powers[] =
 {
     { A_NONE, { 20, 0,  0, quick_walk_spell}}, 
     { -1, {-1, -1, -1, NULL}}
 };
-
-static int _get_spells(spell_info* spells, int max)
-{
-    return get_spells_aux(spells, max, _spells);
-}
-
-static void _character_dump(doc_ptr doc)
-{
-    spell_info spells[MAX_SPELLS];
-    int        ct = _get_spells(spells, MAX_SPELLS);
-
-    py_display_spells(doc, spells, ct);
-}
-
-static int _get_powers(spell_info* spells, int max)
-{
-    return get_powers_aux(spells, max, _powers);
-}
 
 static void _calc_bonuses(void)
 {
@@ -569,6 +551,7 @@ static void _get_flags(u32b flgs[OF_ARRAY_SIZE])
     }
     add_flag(flgs, OF_SLOW_DIGEST);
     add_flag(flgs, OF_RES_FEAR);
+    add_flag(flgs, OF_NIGHT_VISION);
     if (p_ptr->lev >= 20) add_flag(flgs, OF_RES_POIS);
     if (p_ptr->lev >= 25) add_flag(flgs, OF_SUST_DEX);
     if (p_ptr->lev >= 30) add_flag(flgs, OF_SEE_INVIS);
@@ -659,7 +642,7 @@ class_t *ninja_get_class(void)
         me.caster_info = _caster_info;
         me.get_spells = _get_spells;
         me.get_powers = _get_powers;
-        me.character_dump = _character_dump;
+        me.character_dump = py_dump_spells;
         me.known_icky_object = skills_obj_is_icky_weapon;
         init = TRUE;
     }
