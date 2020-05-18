@@ -365,7 +365,7 @@ static race_t *_khorne_get_race_t(void)
  *                 10        20       30              40
  * Marilith: Manes -> Quasit -> Bodak -> Death Quasit -> Marilith
  ******************************************************************************/
-static spell_info _marilith_spells[] = {
+static spell_info _marilith_get_spells[] = {
     { 10,  3, 30, phase_door_spell},
     { 12,  5, 35, scare_spell},
     { 15,  7, 35, teleport_spell},
@@ -380,9 +380,6 @@ static spell_info _marilith_spells[] = {
                                          this spell in the town the way other characters may */
     { -1, -1, -1, NULL}
 };
-static int _marilith_get_spells(spell_info* spells, int max) {
-    return get_spells_aux(spells, max, _marilith_spells);
-}
 
 static void _marilith_birth(void) {
     object_type    forge;
@@ -625,7 +622,7 @@ static race_t *_marilith_get_race_t(void)
  *                       40
  * Balrog: Lesser Balrog -> Greater Balrog
  ******************************************************************************/
-static spell_info _balrog_spells[] = {
+static spell_info _balrog_get_spells[] = {
     {  2,  1, 20, detect_unlife_spell},
     {  3,  2, 25, evil_bless_spell},
     {  4,  5, 30, resist_fire_spell},
@@ -646,9 +643,6 @@ static spell_info _balrog_spells[] = {
     { 45, 80, 85, hellfire_spell},
     { -1, -1, -1, NULL}
 };
-static int _balrog_get_spells(spell_info* spells, int max) {
-    return get_spells_aux(spells, max, _balrog_spells);
-}
 static void _balrog_birth(void)
 {
     object_type    forge;
@@ -822,13 +816,10 @@ void _cyber_rocket_spell(int cmd, variant *res)
     }
 }
 
-static power_info _cyber_powers[] = {
+static power_info _cyber_get_powers[] = {
     { A_CON, {  1,  2, 30, _cyber_rocket_spell} },
     {    -1, { -1, -1, -1, NULL}}
 };
-static int _cyber_get_powers(spell_info* spells, int max) {
-    return get_powers_aux(spells, max, _cyber_powers);
-}
 
 static void _cyber_birth(void)
 {
