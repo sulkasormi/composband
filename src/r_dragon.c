@@ -1912,28 +1912,28 @@ static spell_info _domination_spells[] = {
     { -1, -1, -1, NULL}
 };
 
-int _realm_get_spells(spell_info* spells, int max)
+static spell_info *_realm_get_spells(void)
 {
     switch (p_ptr->dragon_realm)
     {
     case DRAGON_REALM_LORE:
-        return get_spells_aux(spells, max, _lore_spells);
+        return _lore_spells;
     case DRAGON_REALM_BREATH:
-        return get_spells_aux(spells, max, _breath_spells);
+        return _breath_spells;
     case DRAGON_REALM_ATTACK:
-        return get_spells_aux(spells, max, _attack_spells);
+        return _attack_spells;
     case DRAGON_REALM_ARMOR:
-        return get_spells_aux(spells, max, _armor_spells);
+        return _armor_spells;
     case DRAGON_REALM_CRAFT:
-        return get_spells_aux(spells, max, _craft_spells);
+        return _craft_spells;
     case DRAGON_REALM_CRUSADE:
-        return get_spells_aux(spells, max, _crusade_spells);
+        return _crusade_spells;
     case DRAGON_REALM_DEATH:
-        return get_spells_aux(spells, max, _death_spells);
+        return _death_spells;
     case DRAGON_REALM_DOMINATION:
-        return get_spells_aux(spells, max, _domination_spells);
+        return _domination_spells;
     }
-    return 0;
+    return NULL;
 }
 
 static void _realm_calc_bonuses(void)
@@ -2180,25 +2180,19 @@ void dragon_wing_storm_spell(int cmd, variant *res)
     }
 }
 
-static power_info _dragon_powers[] = {
+static power_info _dragon_get_powers[] = {
     { A_CON, {  1,  0, 30, _breathe_spell}},
     { A_DEX, { 20,  7,  0, dragon_reach_spell}},
     { A_DEX, { 25, 10,  0, dragon_tail_sweep_spell}},
     { A_DEX, { 30, 20,  0, dragon_wing_storm_spell}},
     {    -1, { -1, -1, -1, NULL} }
 };
-static power_info _steel_powers[] = {
+static power_info _steel_get_powers[] = {
     { A_DEX, { 20,  7,  0, dragon_reach_spell}},
     { A_DEX, { 25, 10,  0, dragon_tail_sweep_spell}},
     { A_DEX, { 30, 20,  0, dragon_wing_storm_spell}},
     {    -1, { -1, -1, -1, NULL} }
 };
-static int _dragon_get_powers(spell_info* spells, int max) {
-    if (p_ptr->psubrace == DRAGON_STEEL)
-        return get_powers_aux(spells, max, _steel_powers);
-    else
-        return get_powers_aux(spells, max, _dragon_powers);
-}
 
 /**********************************************************************
  * Elemental Dragon (Red, White, Blue, Black, Green)
@@ -3311,7 +3305,7 @@ static race_t *_steel_get_race_t(void)
         me.birth = _steel_birth;
         me.calc_bonuses = _steel_calc_bonuses;
         me.get_flags = _steel_get_flags;
-        me.get_powers = _dragon_get_powers;
+        me.get_powers = _steel_get_powers;
         me.gain_level = _steel_gain_level;
         init = TRUE;
     }
@@ -3388,12 +3382,12 @@ race_t *mon_dragon_get_race(int psubrace)
             result->stats[i] += realm->stats[i];
 
         result->caster_info = _caster_info;
-        result->get_spells = _realm_get_spells;
+        result->get_spells_fn = _realm_get_spells;
     }
     else
     {
         result->caster_info = NULL;
-        result->get_spells = NULL;
+        result->get_spells_fn = NULL;
     }
 
     result->name = "Dragon";
