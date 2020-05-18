@@ -420,7 +420,7 @@ static void _thundershadow_spell(int cmd, variant *res)
     }
 }
 
-static spell_info _karrot_spells[] =
+static spell_info _karrot_get_spells[] =
 {
     /* lvl cst fail spell */
     {  1,  1, 22, detect_monsters_spell},
@@ -442,11 +442,6 @@ static spell_info _karrot_spells[] =
     { 49, 100, 72, _polymorph_dragon_spell},
     { -1, -1, -1, NULL},
 };
-
-static int _karrot_get_spells(spell_info* spells, int max)
-{
-    return get_spells_aux(spells, max, _karrot_spells);
-}
 
 static void _calc_bonuses(void)
 {
@@ -507,7 +502,7 @@ static void _give_reward(int monesko)
      { 9, TV_SCROLL, SV_SCROLL_ACQUIREMENT},
      { 10, TV_WAND, EFFECT_BALL_NEXUS},
      { 11, TV_SCROLL, SV_SCROLL_ICE},
-     { 12, TV_SCROLL, SV_SCROLL_CHAOS},
+     { 12, TV_SCROLL, SV_SCROLL_MANA},
      { 13, TV_POTION, SV_POTION_NEW_LIFE},
      { 14, TV_POTION, SV_POTION_RESTORE_MANA},
      { 15, TV_ROD, EFFECT_BALL_NETHER},
@@ -1115,12 +1110,7 @@ static void _karrot_dump(doc_ptr doc)
 {
     if (_pack_initialized) _dump_satchel(doc);
     if (_q_idx) _dump_quests(doc);
-    {
-        spell_info spells[MAX_SPELLS];
-        int        ct = _karrot_get_spells(spells, MAX_SPELLS);
-
-        py_display_spells(doc, spells, ct);
-    }
+    py_dump_spells(doc);
 }
 
 static void _dragon_breathe_spell(int cmd, variant *res)
@@ -1159,16 +1149,13 @@ static void _dragon_breathe_spell(int cmd, variant *res)
     }
 }
 
-static power_info _dragon_powers[] = {
+static power_info _dragon_get_powers[] = {
     { A_CON, {  1,  0, 30, _dragon_breathe_spell}},
     { A_DEX, { 20,  7,  0, dragon_reach_spell}},
     { A_DEX, { 25, 15,  0, dragon_tail_sweep_spell}},
     { A_DEX, { 30, 30,  0, dragon_wing_storm_spell}},
     {    -1, { -1, -1, -1, NULL} }
 };
-static int _dragon_get_powers(spell_info* spells, int max) {
-    return get_powers_aux(spells, max, _dragon_powers);
-}
 
 static void _dragon_calc_innate_attacks(void)
 {
