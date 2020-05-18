@@ -1,26 +1,27 @@
 #include "angband.h"
 
-static int _get_powers(spell_info* spells, int max)
+static power_info _get_good_powers[] =
 {
-    int ct = 0;
-    spell_info* spell = &spells[ct++];
+    { A_WIS, { 35, 70, 90, bless_weapon_spell}},
+    { -1, {-1, -1, -1, NULL}}
+};
 
+static power_info _get_evil_powers[] =
+{
+    { A_WIS, { 42, 40, 80, evocation_spell}},
+    { -1, {-1, -1, -1, NULL}}
+};
+
+static power_info *_get_powers(void)
+{
     if (is_good_realm(p_ptr->realm1))
     {
-        spell->level = 35;
-        spell->cost = 70;
-        spell->fail = calculate_fail_rate(spell->level, 90, p_ptr->stat_ind[A_WIS]);
-        spell->fn = bless_weapon_spell;
+        return _get_good_powers;
     }
     else
     {
-        spell->level = 42;
-        spell->cost = 40;
-        spell->fail = calculate_fail_rate(spell->level, 80, p_ptr->stat_ind[A_WIS]);
-        spell->fn = evocation_spell;
+        return _get_evil_powers;
     }
-
-    return ct;
 }
 
 static caster_info * _caster_info(void)
@@ -152,7 +153,7 @@ class_t *priest_get_class(void)
         me.caster_info = _caster_info;
         /* TODO: This class uses spell books, so we are SOL
         me.get_spells = _get_spells;*/
-        me.get_powers = _get_powers;
+        me.get_powers_fn = _get_powers;
         me.calc_weapon_bonuses = _calc_weapon_bonuses;
         me.character_dump = spellbook_character_dump;
         me.known_icky_object = _priest_weapon_is_icky;
