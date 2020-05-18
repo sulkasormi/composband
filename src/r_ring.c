@@ -755,7 +755,7 @@ static void _charm_spell(int cmd, variant *res)
     }
 }
 
-static power_info _powers[] = 
+static power_info _get_powers[] =
 {
     { A_INT, {  1,  0,  0, _absorb_spell } },
     { A_CHR, {  1,  0,  0, _glitter_spell } },
@@ -764,11 +764,6 @@ static power_info _powers[] =
     { A_CHR, { 15, 10, 50, _charm_spell } },
     {    -1, { -1, -1, -1, NULL}}
 };
-
-static int _get_powers(spell_info* spells, int max) 
-{
-    return get_powers_aux(spells, max, _powers);
-}
 
 /**********************************************************************
  * Spells
@@ -1499,6 +1494,10 @@ static void _calc_bonuses(void)
         p_ptr->regen += 100;
     if (_essences[OF_REFLECT] >= 7)
         p_ptr->reflect = TRUE;
+/* OF_REGEN_MANA essences are not currently needed since mana regen
+ * remains binary and Rings get it from their Mage pseudo-class
+ *  if (_essences[OF_REGEN_MANA] >= 4)
+ *      p_ptr->mana_regen = TRUE; */
 
     if (_essences[OF_AURA_FIRE] >= 7)
         p_ptr->sh_fire++;
