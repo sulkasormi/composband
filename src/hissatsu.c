@@ -31,9 +31,9 @@ static rect_t _menu_rect(int y)
 {
     rect_t r = ui_menu_rect();
     r.y = y;
-    r.x = 17;
-    if (r.cx > 63)
-        r.cx = 63;
+    r.x = 15;
+    if (r.cx > 65)
+        r.cx = 65;
     return r;
 }
 
@@ -47,9 +47,6 @@ static rect_t _menu_rect(int y)
  * The "prompt" should be "cast", "recite", or "study"
  * The "known" should be TRUE for cast/pray, FALSE for study
  *
- * nb: This function has a (trivial) display bug which will be obvious
- * when you run it. It's probably easy to fix but I haven't tried,
- * sorry.
  */
 static int get_hissatsu_power(int *sn)
 {
@@ -62,12 +59,12 @@ static int get_hissatsu_power(int *sn)
     char            choice;
     char            out_val[160];
     char sentaku[32];
-    cptr            p = "special attack";
+    cptr            p = "technique";
 
     magic_type spell;
-    bool            flag, redraw;
+    bool            flag, redraw, skip;
     int menu_line = (use_menu ? 1 : 0);
-    bool            is_browsing = FALSE;
+    byte            is_browsing = 0;
 
     /* Assume cancelled */
     *sn = (-1);
@@ -93,6 +90,9 @@ static int get_hissatsu_power(int *sn)
     /* No redraw yet */
     redraw = FALSE;
 
+    /* Do not skip */
+    skip = FALSE;
+
     for (i = 0; i < 32; i++)
     {
         if (technic_info[TECHNIC_HISSATSU][i].slevel <= PY_MAX_LEVEL)
@@ -104,18 +104,18 @@ static int get_hissatsu_power(int *sn)
 
     /* Build a prompt (accept all spells) */
     (void) strnfmt(out_val, 78, 
-               "(%^ss %c-%c, ?=Browse, ESC=exit) Use which %s? ",
-               p, I2A(0), "abcdefghijklmnopqrstuvwxyz012345"[num-1], p);
+               "(%^ss %c-%c, ?=%s, !=Damage, ESC=exit) Use which %s? ",
+               p, I2A(0), "abcdefghijklmnopqrstuvwxyz012345"[num-1], is_browsing ? "Use" : "Browse", p);
 
 //    if (use_menu) screen_save();
     screen_save();
 
     /* Get a spell from the user */
 
-    choice= always_show_list ? ESCAPE:1 ;
+    choice= ESCAPE;
     while (!flag)
     {
-        if(choice==ESCAPE) choice = ' '; 
+        if ((choice==ESCAPE) || (skip)) choice = ' ';
         else if( !get_com(out_val, &choice, FALSE) )break;
 
         screen_load();
@@ -198,15 +198,25 @@ static int get_hissatsu_power(int *sn)
             }
         }
 
+        skip = FALSE;
+
         if (choice == '?')
         {
-            is_browsing = !is_browsing;
+            is_browsing = (is_browsing == 1) ? 0 : 1;
             (void) strnfmt(out_val, 78,
-               "(%^ss %c-%c, ?=Browse, ESC=exit) %s which %s? ",
-               p, I2A(0), "abcdefghijklmnopqrstuvwxyz012345"[num-1], is_browsing ? "Browse" : "Use", p);
+               "(%^ss %c-%c, ?=%s, !=Damage, ESC=exit) %s which %s? ",
+               p, I2A(0), "abcdefghijklmnopqrstuvwxyz012345"[num-1], is_browsing ? "Use" : "Browse", is_browsing ? "Browse" : "Use", p);
         }
 
-        if ((choice == '?') || (is_browsing))
+        if (choice == '!')
+        {
+            is_browsing = 2;
+            (void) strnfmt(out_val, 78,
+               "(%^ss %c-%c, ?=Browse, ESC=exit) Show damage for which %s? ",
+               p, I2A(0), "abcdefghijklmnopqrstuvwxyz012345"[num-1], p);
+        }
+
+        if ((choice == '?') || (choice == '!') || (is_browsing >= 1))
         {
             redraw = FALSE;
         }
@@ -239,7 +249,15 @@ put_str("name              Lv  SP      name              Lv  SP ", y, x + 5);
 
                     /* Access the spell */
                     if (spell.slevel > plev)   continue;
-                    if (!(p_ptr->spell_learned1 & (1L << i))) continue;
+                    if (!(p_ptr->spell_learned1 & (1L << i)))
+                    {
+                        if ((i < 16) && (p_ptr->spell_learned1 & (1L << (i + 16))))
+                        {
+                            Term_erase(x, y + (line%17) + (line >= 17), 30);
+                            if (i == 15) Term_erase(x, y + 1 + (line%17) + (line >= 17), 30);
+                        }
+                        continue;
+                    }
                     if (use_menu)
                     {
                         if (i == (menu_line-1))
@@ -277,7 +295,7 @@ put_str("name              Lv  SP      name              Lv  SP ", y, x + 5);
             }
 
             /* Redo asking */
-            if ((choice == ' ') || (choice == '*') || (choice == '?') || (use_menu && ask)) continue;
+            if ((choice == ' ') || (choice == '*') || (choice == '?') || (choice == '!') || (use_menu && ask)) continue;
         }
 
         if (!use_menu)
@@ -310,14 +328,21 @@ put_str("name              Lv  SP      name              Lv  SP ", y, x + 5);
 
         j = sentaku[i];
 
-        if (is_browsing)
+        if (is_browsing == 1)
         {
             char spell_desc[512];
             int desc_y = (num > 15) ? 19 : 3 + num;
             prt("", desc_y, 17);
-            (void)strnfmt(spell_desc, sizeof(spell_desc), "%s", do_spell(REALM_HISSATSU, j, SPELL_DESC));
+            (void)strnfmt(spell_desc, sizeof(spell_desc), "  <style:indent>%s</style>\n", do_spell(REALM_HISSATSU, j, SPELL_DESC));
             ask = FALSE;
             _display(_menu_rect(desc_y), spell_desc);
+            continue;
+        }
+        else if (is_browsing == 2)
+        {
+            (void)do_spell(REALM_HISSATSU, j, SPELL_ON_BROWSE);
+            ask = FALSE;
+            skip = TRUE;
             continue;
         }
 
