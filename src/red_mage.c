@@ -26,18 +26,11 @@ void _double_magic_spell(int cmd, variant *res)
     }
 }
 
-static int _get_powers(spell_info* spells, int max)
+static power_info _get_powers[] =
 {
-    int ct = 0;
-
-    spell_info* spell = &spells[ct++];
-    spell->level = 48;
-    spell->cost = 20;
-    spell->fail = 0;
-    spell->fn = _double_magic_spell;
-
-    return ct;
-}
+    { A_NONE, { 48, 20, 0, _double_magic_spell}},
+    { -1, {-1, -1, -1, NULL}}
+};
 
 static caster_info * _caster_info(void)
 {
