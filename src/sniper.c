@@ -13,7 +13,7 @@ static void _birth(void)
  ***********************************************************************/
 static void _calc_shooter_bonuses(object_type *o_ptr, shooter_info_t *info_ptr)
 {
-    if (info_ptr->tval_ammo == TV_BOLT)
+    if ((info_ptr->tval_ammo == TV_BOLT) || (info_ptr->tval_ammo == TV_ANY_AMMO))
     {
         info_ptr->to_h += 10 + p_ptr->lev/5;
         info_ptr->dis_to_h += 10 + p_ptr->lev/5;
@@ -462,7 +462,7 @@ static void _saint_stars_arrow(int cmd, variant *res)
         _default(SP_FINAL, cmd, res);
     }
 }
-static spell_info _spells[] = 
+static spell_info _get_spells[] =
 {
    /*lvl  cst fail  spell */
     {  1,   0,   0, _concentrate },
@@ -483,10 +483,6 @@ static spell_info _spells[] =
     { 48,   7,   0, _saint_stars_arrow },
     { -1,  -1,  -1, NULL}
 };
-static int _get_spells(spell_info* spells, int max)
-{
-    return get_spells_aux(spells, max, _spells);
-}
 static caster_info * _caster_info(void)
 {
     static caster_info me = {0};
@@ -504,29 +500,15 @@ static caster_info * _caster_info(void)
 /************************************************************************
  * Powers
  ***********************************************************************/
-static int _get_powers(spell_info* spells, int max)
+static power_info _get_powers[] =
 {
-    int ct = 0;
-
-    spell_info* spell = &spells[ct++];
-    spell->level = 15;
-    spell->cost = 20;
-    spell->fail = calculate_fail_rate(spell->level, 80, p_ptr->stat_ind[A_INT]);
-    spell->fn = probing_spell;
-
-    return ct;
-}
+    { A_INT, {15, 20, 80, probing_spell}},
+    { -1, {-1, -1, -1, NULL} }
+};
 
 /************************************************************************
  * Class
  ***********************************************************************/
-static void _character_dump(doc_ptr doc)
-{
-    spell_info spells[MAX_SPELLS];
-    int        ct = _get_spells(spells, MAX_SPELLS);
-
-    py_display_spells(doc, spells, ct);
-}
 class_t *sniper_get_class(void)
 {
     static class_t me = {0};
@@ -567,7 +549,7 @@ class_t *sniper_get_class(void)
         me.get_powers = _get_powers;
         me.caster_info = _caster_info;
         me.get_spells = _get_spells;
-        me.character_dump = _character_dump;
+        me.character_dump = py_dump_spells;
         init = TRUE;
     }
 
