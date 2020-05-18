@@ -33,18 +33,11 @@ static void _blood_rite_spell(int cmd, variant *res)
     }
 }
 
-static int _get_powers(spell_info* spells, int max)
+static power_info _blood_mage_powers[] =
 {
-    int ct = 0;
-
-    spell_info* spell = &spells[ct++];
-    spell->level = 30;
-    spell->cost = 100;
-    spell->fail = calculate_fail_rate(spell->level, 30, p_ptr->stat_ind[A_INT]);
-    spell->fn = _blood_rite_spell;
-
-    return ct;
-}
+    { A_INT, { 30, 100, 30, _blood_rite_spell}},
+    { -1, {-1, -1, -1, NULL}}
+};
 
 static void _calc_bonuses(void)
 {
@@ -131,7 +124,7 @@ class_t *blood_mage_get_class(void)
         me.caster_info = _caster_info;
         /* TODO: This class uses spell books, so we are SOL
         me.get_spells = _get_spells;*/
-        me.get_powers = _get_powers;
+        me.get_powers = _blood_mage_powers;
         me.character_dump = spellbook_character_dump;
         init = TRUE;
     }
