@@ -20,12 +20,14 @@ N:2101:Club
 'Potato Masher'
 'Club of Kings'
 'One Club'
+of Bullroarer
 
 N:2102:Whip
 'Wizardcatcher'
 'Earbreaker'
 'Unsexy Whip'
 'Outsider'
+'Lasher'
 of Narse
 
 N:2103:Quarterstaff
@@ -39,6 +41,7 @@ N:2121:Wizardstaff
 'Bumper'
 'Big Bang'
 'Megapower'
+'Violent East'
 of Fezzik
 of Kepitys
 of Zoidberg
@@ -52,9 +55,8 @@ N:2115:Lead-Filled Mace
 N:2120:Mace of Disruption
 'Lachrymator'
 'Sharur'
-'Kaumodaki'
 'Nembutal'
-of Hanuman
+'Absurd Power'
 
 N:2112:Morning Star
 N:2113:Flail
@@ -86,6 +88,7 @@ of Zeppo
 of Spock
 of Byluck
 of Bazhdog
+of Brio
 
 N:2151:Baseball Bat
 of the Time Lord
@@ -136,6 +139,7 @@ of Osse
 of Jangar
 of Pushiness
 of Egil
+of Agamemnon
 
 N:2203:Sickle
 'Haymaker'
@@ -241,6 +245,7 @@ N:2333:Falcon Sword
 'Galatine'
 'Brainbiter'
 'Skin Opener'
+'Heavy Sabre'
 of Carla
 of Malkier
 of Elethiomel
