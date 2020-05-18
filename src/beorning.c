@@ -164,7 +164,11 @@ void beorning_change_shape_spell(int cmd, variant *res)
         }
         _beorning_form = 1 - _beorning_form;
         _beorning_equip_on_change_form();
-        if (_beorning_form == BEORNING_FORM_BEAR) msg_format("You turn into a bear!");
+        if (_beorning_form == BEORNING_FORM_BEAR)
+        {
+            msg_format("You turn into a bear!");
+            stop_mouth();
+        }
         else msg_format("You turn into a human!");
         var_set_bool(res, TRUE);
         handle_stuff();
@@ -304,11 +308,14 @@ static power_info _default_power[] = {
     {    -1, { -1, -1, -1, NULL}}
 };
 
-static int _get_powers(spell_info* spells, int max) {
-    int ct = get_powers_aux(spells, max, _default_power);
+static power_info *_beorning_powers(void)
+{
+    static power_info spells[8] = {0};
+    int max = 7;
+    int ct = get_powers_aux(spells, max, _default_power, FALSE);
     if (_beorning_form == BEORNING_FORM_BEAR)
-        ct += get_powers_aux(spells + ct, max - ct, _bear_powers);
-    else ct += get_powers_aux(spells + ct, max - ct, _man_powers);
+        ct += get_powers_aux(spells + ct, max - ct, _bear_powers, FALSE);
+    else ct += get_powers_aux(spells + ct, max - ct, _man_powers, FALSE);
     if ((_beorning_form == BEORNING_FORM_BEAR) && (p_ptr->pclass != CLASS_SORCERER) && (p_ptr->pclass != CLASS_DUELIST))
     {
         static power_info _raging_swipe[2] = /* ugly but, hey, it works */
@@ -316,10 +323,12 @@ static int _get_powers(spell_info* spells, int max) {
             {A_DEX, {42, 25, 30, _raging_swipe_spell}},
             {-1,    {-1, -1, -1, NULL}},
         };
-        if (p_ptr->lev >= 42) ct += get_powers_aux(spells + ct, max - ct, _raging_swipe);
+        ct += get_powers_aux(spells + ct, max - ct, _raging_swipe, FALSE);
     }
-    return ct;
+    spells[ct].spell.fn = NULL;
+    return spells;
 }
+
 static void _calc_bonuses(void)
 {
     int to_a = py_prorata_level_aux(80, 1, 1, 1) + 15;
@@ -455,8 +464,8 @@ race_t *beorning_get_race(void)
             me.infra = 5;
             me.exp = 140;
             me.calc_bonuses = _calc_bonuses;
-            me.get_powers = _get_powers;
             me.get_flags = _get_flags;
+            me.get_powers_fn = _beorning_powers;
             me.birth = _birth;
             me.load_player = _beorning_load;
             me.save_player = _beorning_save;
