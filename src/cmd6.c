@@ -66,14 +66,23 @@ bool restore_mana(void)
     return result;
 }
 
+bool mortal_food_check(void)
+{
+    if (((get_race()->flags & RACE_IS_NONLIVING) &&
+        (!prace_is_(RACE_MON_PUMPKIN)) &&
+        (!prace_is_(RACE_MON_BEHOLDER)) &&
+        (!prace_is_(RACE_EINHERI))) ||
+        (prace_is_(RACE_ENT)) ||
+        (prace_is_(RACE_MON_ARMOR))) return FALSE;
+    return TRUE;
+}
+
 static void do_cmd_eat_food_aux(obj_ptr obj)
 {
     int  lev = k_info[obj->k_idx].level;
     bool ident = FALSE, no_food = FALSE;
 
-    if (music_singing_any()) bard_stop_singing();
-    if (hex_spelling_any()) stop_hex_spell_all();
-    warlock_stop_singing();
+    stop_mouth();
 
     if (object_is_mushroom(obj) && obj->art_name && obj->timeout)
     {
@@ -442,7 +451,7 @@ static void do_cmd_eat_food_aux(obj_ptr obj)
             msg_print("The food falls through your jaws and vanishes!");
         }
     }
-    else if (((get_race()->flags & RACE_IS_NONLIVING) && (!prace_is_(RACE_MON_PUMPKIN)) && (!prace_is_(RACE_MON_BEHOLDER)) && (!prace_is_(RACE_EINHERI))) || prace_is_(RACE_ENT) || prace_is_(RACE_MON_ARMOR))
+    else if (!mortal_food_check())
     {
         msg_print("The food of mortals is poor sustenance for you.");
         set_food(p_ptr->food + obj->pval / 20);
