@@ -1350,7 +1350,7 @@ errr Term_fresh(void)
             /* Hack -- restore the actual character */
             else if (old_aa[tx] || Term->always_text)
             {
-                (void)((*Term->text_hook)(tx, ty, csize, (unsigned char) (old_aa[tx] & 0xf), &old_cc[tx]));
+                (void)((*Term->text_hook)(tx, ty, csize, (unsigned char) (old_aa[tx] & COLOR_MASK), &old_cc[tx]));
             }
 
             /* Hack -- erase the grid */
