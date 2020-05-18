@@ -22,18 +22,11 @@ static void _calc_weapon_bonuses(object_type *o_ptr, weapon_info_t *info_ptr)
     info_ptr->xtra_blow += py_prorata_level_aux(100, 0, 1, 1);
 }
 
-static int _get_powers(spell_info* spells, int max)
+static power_info _get_powers[] =
 {
-    int ct = 0;
-
-    spell_info* spell = &spells[ct++];
-    spell->level = 30;
-    spell->cost = 25;
-    spell->fail = calculate_fail_rate(spell->level, 80, p_ptr->stat_ind[A_DEX]);
-    spell->fn = sword_dance_spell;
-
-    return ct;
-}
+    { A_DEX, { 30, 25, 80, sword_dance_spell}},
+    { -1, {-1, -1, -1, NULL}}
+};
 
 static void _birth(void)
 {
