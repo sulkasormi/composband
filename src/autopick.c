@@ -2332,8 +2332,8 @@ static void _sense_object_floor(object_type *o_ptr)
     if (object_is_known(o_ptr)) return;
     if ((!obj_can_sense1(o_ptr)) && (!obj_can_sense2(o_ptr))) return;
 
-    o_ptr->ident |= IDENT_SENSE;
-    o_ptr->feeling = value_check_aux1(o_ptr);
+    o_ptr->feeling = value_check_aux1(o_ptr, TRUE);
+    if (!(o_ptr->ident & IDENT_KNOWN)) o_ptr->ident |= IDENT_SENSE;
 }
 
 /* Automatically identify objects, consuming requisite resources.
@@ -2421,7 +2421,6 @@ static void _get_obj(obj_ptr obj)
     else if ((p_ptr->auto_pseudo_id) || (p_ptr->munchkin_pseudo_id))
     {
         _sense_object_floor(obj);
-        equip_learn_flag(OF_LORE1);
     }
 
     if ((!obj) || (!obj->k_idx)) return;
