@@ -353,7 +353,7 @@ static void _wall_of_earth_spell(int cmd, variant *res)
     }
 }
 
-static power_info _earth_powers[] = 
+static power_info _earth_get_powers[] = 
 {
     { A_STR, {  1,  1, 35, eat_rock_spell}},
     { A_STR, {  7,  5, 35, _shard_bolt_spell}},
@@ -366,11 +366,6 @@ static power_info _earth_powers[] =
     { A_DEX, { 42, 75, 70, _earthen_portal_spell}},
     {    -1, { -1, -1, -1, NULL} }
 };
-
-static int _earth_get_powers(spell_info* spells, int max) 
-{
-    return get_powers_aux(spells, max, _earth_powers);
-}
 
 static void _earth_calc_bonuses(void) 
 {
@@ -603,7 +598,7 @@ static void _sky_gate_spell(int cmd, variant *res)
     }
 }
 
-static power_info _air_powers[] = 
+static power_info _air_get_powers[] = 
 {
     { A_STR, {  2,  3, 25, lightning_bolt_spell}},
     { A_DEX, {  5,  3, 25, phase_door_spell}},
@@ -617,11 +612,6 @@ static power_info _air_powers[] =
     { A_DEX, { 42, 40, 60, _sky_gate_spell}},
     {    -1, { -1, -1, -1, NULL} }
 };
-
-static int _air_get_powers(spell_info* spells, int max) 
-{
-    return get_powers_aux(spells, max, _air_powers);
-}
 
 static void _air_calc_bonuses(void) 
 {
@@ -982,7 +972,7 @@ static void _water_healing_spell(int cmd, variant *res)
     }
 }
 
-static power_info _water_powers[] = 
+static power_info _water_get_powers[] = 
 {
     { A_DEX, {  1,  0,  0, _adjust_armor_spell}},
     { A_DEX, {  5,  5,  0, _acid_strike_spell}},
@@ -994,11 +984,6 @@ static power_info _water_powers[] =
     { A_DEX, { 42, 50, 75, _water_gate_spell}},
     {    -1, { -1, -1, -1, NULL} }
 };
-
-static int _water_get_powers(spell_info* spells, int max) 
-{
-    return get_powers_aux(spells, max, _water_powers);
-}
 
 static void _water_calc_bonuses(void) 
 {
@@ -1314,7 +1299,7 @@ static void _fire_healing_spell(int cmd, variant *res)
     }
 }
 
-static power_info _fire_powers[] = 
+static power_info _fire_get_powers[] = 
 {
     { A_STR, {  2,  3, 25, _fire_whip_spell}},
     { A_STR, {  7,  5, 35, fire_bolt_spell}},
@@ -1329,11 +1314,6 @@ static power_info _fire_powers[] =
     { A_DEX, { 42, 50, 60, _fire_door_spell}},
     {    -1, { -1, -1, -1, NULL} }
 };
-
-static int _fire_get_powers(spell_info* spells, int max) 
-{
-    return get_powers_aux(spells, max, _fire_powers);
-}
 
 static void _fire_calc_bonuses(void) 
 {
