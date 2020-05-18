@@ -517,15 +517,38 @@ bool object_is_nameless(object_type *o_ptr)
     return FALSE;
 }
 
+/*
+ * Check if an object is either an artifact or an ego
+ */
+bool object_is_art_or_ego(object_type *o_ptr)
+{
+    if (!o_ptr) return FALSE;
+    if (object_is_artifact(o_ptr) || object_is_ego(o_ptr)) return TRUE;
+    return FALSE;
+}
+
 
 /*
  * Check if an object is melee weapon and allows wielding with two-hands
  */
 bool object_allow_two_hands_wielding(object_type *o_ptr)
 {
-    if (object_is_melee_weapon(o_ptr) && ((o_ptr->weight > 99) || (o_ptr->tval == TV_POLEARM))) return TRUE;
+    if (object_is_melee_weapon(o_ptr) && (o_ptr->name1 != ART_MJOLLNIR) && 
+        ((o_ptr->weight > 99) || (o_ptr->tval == TV_POLEARM) || 
+        ((o_ptr->tval == TV_HAFTED) && (o_ptr->sval == SV_BASEBALL_BAT)))) return TRUE;
 
     /* Hack: Shield Mastery technique */
     if (weaponmaster_get_toggle() == TOGGLE_SHIELD_BASH && object_is_shield(o_ptr)) return TRUE;
     return FALSE;
 }
+
+/*
+ * Check if an object is suitable ammo
+ */
+bool object_is_suitable_ammo(object_type *o_ptr)
+{
+    if (o_ptr->tval == p_ptr->shooter_info.tval_ammo) return TRUE;
+    if (p_ptr->shooter_info.tval_ammo == TV_ANY_AMMO) return (object_is_ammo(o_ptr));
+    return FALSE;
+}
+ 
