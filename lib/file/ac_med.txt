@@ -20,6 +20,7 @@ of the Badlands
 N: 4:BIAS_COLD
 of Halla
 of Lumikeli
+of Ursus
 'Losgol'
 'Snow Angel'
 'Windcheater'
