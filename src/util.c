@@ -772,7 +772,7 @@ errr fd_copy(cptr file, cptr what)
             has occurred if this isn't equal to the number requested." */
         if (write_num != read_num)
         {
-            rc = ERROR_UNKOWN_FAILURE;
+            rc = ERROR_UNKNOWN_FAILURE;
             break;
         }
     }
@@ -2711,10 +2711,10 @@ bool askfor_aux(char *buf, int len, bool numpad_cursor)
     if (len < 1) len = 1;
 
     /* Paranoia -- check column */
-    if ((x < 0) || (x >= 80)) x = 0;
+    if ((x < 0) || (x >= Term->wid - 2)) x = 0;
 
     /* Restrict the length */
-    if (x + len > 80) len = 80 - x;
+    if (x + len > Term->wid - 2) len = Term->wid - 2 - x;
 
     /* Paranoia -- Clip the default entry */
     buf[len] = '\0';
