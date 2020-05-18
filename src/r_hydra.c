@@ -176,15 +176,15 @@ static power_info _poison_powers[] = {
     {    -1, { -1, -1, -1, NULL}}
 };
 
-static int _get_powers(spell_info* spells, int max) 
+static power_info *_get_powers(void) 
 {
     switch (p_ptr->current_r_idx)
     {
     case MON_NINE_HEADED_HYDRA:
     case MON_ELEVEN_HEADED_HYDRA: 
-        return get_powers_aux(spells, max, _fire_powers);
+        return _fire_powers;
     }
-    return get_powers_aux(spells, max, _poison_powers);
+    return _poison_powers;
 }
 
 /**********************************************************************
@@ -328,7 +328,7 @@ race_t *mon_hydra_get_race(void)
         me.base_hp = 45;
         me.shop_adjust = 130;
 
-        me.get_powers = _get_powers;
+        me.get_powers_fn = _get_powers;
         me.calc_innate_attacks = _calc_innate_attacks;
         me.calc_bonuses = _calc_bonuses;
         me.get_flags = _get_flags;
