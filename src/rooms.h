@@ -19,14 +19,18 @@
 
 
 /* Room types for generate_lake() */
-#define LAKE_T_LAVA        1
-#define LAKE_T_WATER       2
-#define LAKE_T_CAVE        3
-#define LAKE_T_EARTH_VAULT 4
-#define LAKE_T_AIR_VAULT   5
-#define LAKE_T_WATER_VAULT 6
-#define LAKE_T_FIRE_VAULT  7
-
+enum
+{
+    LAKE_T_LAVA = 1,
+    LAKE_T_WATER,
+    LAKE_T_CAVE,
+    LAKE_T_EARTH_VAULT,
+    LAKE_T_AIR_VAULT,
+    LAKE_T_WATER_VAULT,
+    LAKE_T_FIRE_VAULT,
+    LAKE_T_NUKE_VAULT,
+    LAKE_T_MAX
+};
 
 /* Room types for room_build() */
 enum {
