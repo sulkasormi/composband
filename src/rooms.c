@@ -1688,6 +1688,15 @@ static void _apply_room_grid_feat(point_t p, room_grid_ptr grid, u16b room_flags
         if (grid->flags & ROOM_GRID_SPECIAL)
             c_ptr->special = grid->extra;
 
+        /* Check for alt dungeon */
+        if ((have_flag(f_info[c_ptr->feat].flags, FF_ENTRANCE)) &&
+            (grid->extra) && (grid->extra < max_d_idx) &&
+            (d_info[grid->extra].flags1 & DF1_SUPPRESSED) &&
+            (d_info[grid->extra].alt))
+        {
+            c_ptr->special = d_info[grid->extra].alt;
+        }
+
         /* Dungeon Shops need to init TOWN_RANDOM, but town shops definitely do not!
          * The ROOM_SHOP flag won't be set by process_dungeon_file(), only in v_info.txt. */
         if (have_flag(f_info[c_ptr->feat].flags, FF_STORE) && (room_flags & ROOM_SHOP))
@@ -3527,6 +3536,11 @@ static bool generate_lake(int y0, int x0, int xsize, int ysize, int c1, int c2, 
         feat2 = feat_deep_lava;
         feat3 = feat_shallow_lava;
         break;
+    case LAKE_T_NUKE_VAULT: /* Nuke Vault */
+        feat1 = feat_shallow_waste;
+        feat2 = feat_deep_waste;
+        feat3 = feat_shallow_waste;
+        break;
 
     /* Paranoia */
     default: return FALSE;
@@ -3634,7 +3648,7 @@ void build_lake(int type)
     int c1, c2, c3;
 
     /* paranoia - exit if lake type out of range. */
-    if ((type < LAKE_T_LAVA) || (type > LAKE_T_FIRE_VAULT))
+    if ((type < LAKE_T_LAVA) || (type >= LAKE_T_MAX))
     {
         msg_format("Invalid lake type (%d)", type);
         return;
@@ -4237,13 +4251,14 @@ static bool build_type14(void)
     return TRUE;
 }
 
-static bool build_type16(void)
+static bool build_type16(bool arena)
 {
     int rad, x, y, x0, y0, r_idx;
     int light = FALSE;
+    bool _pond = ((dungeon_type == DUNGEON_AUSSIE) && (one_in_(5)));
 
     /* Occasional light */
-    if ((randint1(dun_level) <= 15) && !(d_info[dungeon_type].flags1 & DF1_DARKNESS)) light = TRUE;
+    if ((arena) && (randint1(dun_level) <= 15) && !(d_info[dungeon_type].flags1 & DF1_DARKNESS)) light = TRUE;
 
     rad = 3+randint0(5);
 
@@ -4257,8 +4272,35 @@ static bool build_type16(void)
         {
             if (distance(y0, x0, y, x) <= rad - 1)
             {
-                /* inside- so is floor */
-                place_floor_bold(y, x);
+                if (!_pond)
+                {
+                    /* inside- so is floor */
+                    place_floor_bold(y, x);
+                }
+                else /* pond room */
+                {
+                    cave_type *c_ptr = &cave[y][x];
+                    int dist = distance(y0, x0, y, x);
+                    int deep_prob = 100 - (dist * 100 / (rad - 1));
+                    int shallow_prob = ((dist == (rad - 1)) ? ((rad == 7) ? 10 : 80) : 100);
+                    if (randint0(100) < deep_prob)
+                    {
+                        c_ptr->feat = feat_deep_water;
+                        c_ptr->mimic = 0;
+                        c_ptr->info |= (CAVE_ICKY | CAVE_ROOM);
+                    }
+                    else if (randint0(100) < shallow_prob)
+                    {
+                        c_ptr->feat = feat_shallow_water;
+                        c_ptr->mimic = 0;
+                        c_ptr->info |= (CAVE_ICKY | CAVE_ROOM);
+                    }
+                    else
+                    {
+                        place_floor_bold(y, x);
+                        c_ptr->info |= (CAVE_ROOM);
+                    }
+                }
             }
             else if (distance(y0, x0, y, x) <= rad + 1)
             {
@@ -4268,8 +4310,11 @@ static bool build_type16(void)
         }
     }
 
-    r_idx = get_mon_num(dun_level);
-    if (r_idx) place_monster_aux(0, y0, x0, r_idx, PM_ALLOW_SLEEP);
+    if (arena)
+    {
+        r_idx = get_mon_num(dun_level);
+        if (r_idx) place_monster_aux(0, y0, x0, r_idx, PM_ALLOW_SLEEP);
+    }
 
     /* Find visible outer walls and set to be FEAT_OUTER */
     add_outer_wall(x0, y0, light, x0 - rad, y0 - rad, x0 + rad, y0 + rad);
@@ -4288,7 +4333,13 @@ static bool room_build(int typ)
     /*if (one_in_(5)) return build_room_template(ROOM_VAULT, VAULT_GREATER);*/
 
     if (dungeon_type == DUNGEON_ARENA)
-        return build_type16();
+        return build_type16(TRUE);
+
+    if ((d_info[dungeon_type].wild_type == TERRAIN_SNOW) && (!one_in_(8)))
+        return build_type16(FALSE);
+
+    if (d_info[dungeon_type].wild_type == TERRAIN_TREES)
+        return (one_in_(6) ? build_type9() : build_type16(FALSE));
 
     /* Build a room */
     switch (typ)
@@ -4340,6 +4391,8 @@ bool generate_rooms(void)
 
     if (dun_rooms < 5)
         dun_rooms = 5;
+
+    if (dungeon_type == DUNGEON_AUSSIE) dun_rooms -= (dun_rooms / 2);
 
     /*
      * Initialize probability list.
