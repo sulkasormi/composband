@@ -384,21 +384,22 @@ Enchanted      <indent>an enchanted item (includes good ego items and artifacts)
   Fa : free action                    [At: aura of retaliation
   Si : see invisible                  [M : anti-magic shell
   Hl : hold life                      [T : prevents teleportation
-  Sd : slow digestion                 [Mr: magic resistance
-  Id : loremastery (auto-identify)    [Sm: anti-summoning shell
-  Rg : regeneration                   |A : acid brand
+  Sd : slow digestion                 [Sm: anti-summoning shell
+  Rg : regeneration                   [Mr: magic resistance
+  Rm : mana recovery                  |A : acid brand
   Lv : levitation                     |E : electricity brand
-  Lu : extra light                    |F : fire brand
-  Wr : provides warning               |Co: cold brand
-  Xm : extra might when shooting      |P : poison brand
-  Xs : extra shots (shooting speed)   |Dk: darkness brand
-  Te : random teleportaion            |V : vampiric weapon
+  Nv : night vision                   |F : fire brand
+  Lu : extra light                    |Co: cold brand
+  Wr : provides warning               |P : poison brand
+  Xm : extra might when shooting      |Dk: darkness brand
+  Xs : extra shots (shooting speed)   |Ca: mark of chaos
+  Te : random teleportation           |V : vampiric weapon
   Ag : aggravate monsters             |Q : impact weapon
-  Bs : blessed                        |S : sharp weapon
-  Ty : ancient foul curse             |SS: really sharp weapon
-  Ds : darkness                       |M : mana brand
-  Nv : night vision                   |Ca: mark of chaos
-  Wm : weaponmastery (extra dice)     |St: hits to stun
+  Bs : blessed                        |St: hits to stun
+  Ty : ancient foul curse             |S : sharp weapon
+  Ds : darkness                       |SS: really sharp weapon
+  Wm : weaponmastery (extra dice)     |M : mana brand
+  Id : loremastery (auto-identify)
 
   /* : slay evil                      /X* : *slay* evil
   /p : slay human                     /Xp : *slay* human
