@@ -1,15 +1,10 @@
 #include "angband.h"
 
-static int _get_powers(spell_info* spells, int max)
+static power_info _get_powers[] =
 {
-	int ct = 0;
-	spell_info* spell = &spells[ct++];
-	spell->level = 1;
-	spell->cost = 0;
-	spell->fail = 0;
-	spell->fn = hex_stop_spelling_spell;
-	return ct;
-}
+    { A_NONE, { 1, 0,  0, hex_stop_spelling_spell}},
+    { -1, {-1, -1, -1, NULL}}
+};
 
 static caster_info * _caster_info(void)
 {
