@@ -1481,6 +1481,8 @@ void player_flags(u32b flgs[OF_ARRAY_SIZE])
     if (race_ptr->infra)
         add_flag(flgs, OF_INFRA);
 
+    if ((class_ptr->flags & CLASS_REGEN_MANA) || (mon_fast_mana_regen())) add_flag(flgs, OF_REGEN_MANA);
+
     mut_get_flags(flgs);
 }
 
@@ -1662,6 +1664,12 @@ void tim_player_stats(s16b stats[MAX_STATS])
         stats[A_DEX] += amt;
         stats[A_CON] += amt;
     }
+    if (p_ptr->tim_poet)
+    {
+        int amt = 5;
+        stats[A_WIS] += amt;
+        stats[A_CHR] += amt;
+    }
     if (p_ptr->realm1 == REALM_HEX)
     {
         if (hex_spelling(HEX_XTRA_MIGHT)) stats[A_STR] += 4;
@@ -1717,7 +1725,7 @@ int ct_kills_all(void)
     return result;
 }
 
-int ct_uniques(void)
+int ct_uniques(int mode)
 {
     int i;
     int result = 0;
@@ -1726,9 +1734,14 @@ int ct_uniques(void)
     {
         monster_race *r_ptr = &r_info[i];
         if (!r_ptr->name) continue;
+        if ((r_ptr->flagsx & RFX_SUPPRESS) && (!(mode & CTU_INCLUDE_SUPPRESSED))) continue;
+        if ((r_ptr->rarity > 100) && (!(mode & CTU_INCLUDE_RARE))) continue;
         if (r_ptr->flags1 & RF1_UNIQUE)
         {
-            if (r_ptr->max_num == 0) result++;
+            if ((mode & CTU_COUNT_DEAD) && (!mon_available_num(r_ptr)))
+                result++;
+            else if ((mode & CTU_COUNT_LIVING) && (mon_available_num(r_ptr)))
+                result++;
         }
     }
 
@@ -2915,73 +2928,120 @@ void do_cmd_save_and_exit(void)
     p_ptr->leaving = TRUE;
 }
 
-
 /*
- * Hack -- Calculates the total number of points earned        -JWT-
+ * Score multiplier
  */
-long total_points(void)
+s32b score_mult(void)
 {
-    int i, mult = 100;
-    s16b max_dl = 0;
-    u32b point, point_h, point_l;
-    int arena_win = MIN(p_ptr->arena_number, MAX_ARENA_MONS);
-
-    if (!preserve_mode) mult += 10;
-    if (!smart_learn) mult -= 20;
-    if (smart_cheat) mult += 30;
-    if (ironman_shops) mult += 50;
-    if (ironman_empty_levels) mult += 20;
-    if (ironman_nightmare) mult += 100;
-    if (wacky_rooms) mult += 10;
-    if (thrall_mode) mult += (p_ptr->personality == PERS_SEXY) ? 50 : 10;
-    if ((melee_challenge) && (p_ptr->pclass != CLASS_BERSERKER)) mult += 30;
+    s32b mult = 10000;
+    if (p_ptr->personality == PERS_MUNCHKIN) return 1;
+    if (!smart_learn) mult -= 1500;
+    if (easy_id) mult -= 1000;
+    if (power_tele) mult -= 500;
+    if ((p_ptr->pclass == CLASS_BERSERKER) && ((p_ptr->prace == RACE_SPECTRE) || (p_ptr->start_race == RACE_SPECTRE) || (p_ptr->old_race1 & (1L << RACE_SPECTRE))))
+        mult -= 2000;
+    if (!preserve_mode) mult += 500;
+    if (smart_cheat) mult += 500;
+    if (ironman_shops) mult += 500;
+    if (generate_empty == EMPTY_ALWAYS) mult += 500;
+    if (no_artifacts) mult += 1500;
+    if (no_egos) mult += 1500;
+    if ((no_artifacts) && (no_egos)) mult += 3000;
+    if ((ironman_downward) && (!coffee_break) && (!wacky_rooms))
+    {
+        mult += 2500;
+        if (no_wilderness) mult += 2500;
+    }
+    if (coffee_break == SPEED_INSTA_COFFEE) mult += 1000;
+    if ((melee_challenge) && (p_ptr->pclass != CLASS_BERSERKER)) mult += 500;
     if ((no_melee_challenge) && (p_ptr->pclass != CLASS_SORCERER) && (!prace_is_(RACE_MON_QUYLTHULG))
-        && (!prace_is_(RACE_MON_RING))) mult += 40;
-    if (easy_damage) mult /= 2;
-    if (coffee_break)
+        && (!prace_is_(RACE_MON_RING))) mult += 500;
+    if (thrall_mode) mult += (p_ptr->personality == PERS_SEXY) ? 3000 : 1000;
+    if (p_ptr->total_winner) mult += 1000;
+    if ((comp_mode) && (!player_obviously_poly_immune(FALSE)))
     {
-        mult /= 2; /* This only cancels out the x2 from ironman_downward */
-        mult -= (p_ptr->coffee_lv_revisits / 2);
+        int exp = get_true_race()->exp;
+        if (exp > 120)
+        {
+            mult -= ((exp - 120) * 5);
+        }
     }
 
-    if (mult < 5) mult = 5;
-
-    for (i = 0; i < max_d_idx; i++)
-        if(max_dlv[i] > max_dl)
-            max_dl = max_dlv[i];
-
-    point_l = (p_ptr->max_max_exp + (100 * max_dl));
-    point_h = point_l / 0x10000L;
-    point_l = point_l % 0x10000L;
-    point_h *= mult;
-    point_l *= mult;
-    point_h += point_l / 0x10000L;
-    point_l %= 0x10000L;
-
-    point_l += ((point_h % 100) << 16);
-    point_h /= 100;
-    point_l /= 100;
-
-    point = (point_h << 16) + (point_l);
-    if (p_ptr->arena_number >= 0)
-        point += (arena_win * arena_win * (arena_win > 29 ? 1000 : 100));
-
-    if (ironman_downward) point *= 2;
-    if (p_ptr->pclass == CLASS_BERSERKER)
+//    msg_format("Multiplier from options only: %d", mult);
+    /* Bonuses for killing uniques */
     {
-        if ( p_ptr->prace == RACE_SPECTRE )
-            point = point / 5;
+        s32b dead = (s32b)ct_uniques(CTU_COUNT_DEAD) * 1000L;
+        s32b total = ct_uniques(CTU_COUNT_DEAD | CTU_COUNT_LIVING);
+        if (dead == total) mult += 2500;
+        else if (dead > 0) mult += (dead / total);
     }
 
-    if ((p_ptr->personality == PERS_MUNCHKIN) && point)
+//    msg_format("Multiplier after uniques: %d", mult);
+
+    /* Bonuses for turning in wanted corpses */
     {
-        if (p_ptr->total_winner) point = point / 10;
-        else point = 1;
+        int num, k;
+        for (num = 0, k = 0; k < MAX_KUBI; k++)
+        {
+            if (kubi_r_idx[k] >= 10000) num++;
+        }
+        mult += (num * 50);
+        if (num == MAX_KUBI) mult += 500;
     }
 
-    return point;
+//    msg_format("Multiplier after corpses: %d", mult);
+
+    /* Bonuses for arena success */
+    {
+        s32b arena_win = MIN(p_ptr->arena_number, MAX_ARENA_MONS + 2);
+        s32b div = MAX_ARENA_MONS + 2;
+        if (arena_win == div) mult += 1500;
+        else if (arena_win > 0) mult += (arena_win * 1000L / div);
+        else if (arena_win < 0)
+        {
+            mult += (MIN(-1 - arena_win, MAX_ARENA_MONS) * 1000L / div);
+            mult -= 500;
+        }
+    }
+
+//    msg_format("Multiplier after arena: %d", mult);
+
+    /* Bonuses for quest success */
+    {
+        vec_ptr v = quests_get_all();
+        int i;
+        if (vec_length(v))
+        {
+            for (i = 0; i < vec_length(v); i++)
+            {
+                quest_ptr q = vec_get(v, i);
+                if ((q->status == QS_COMPLETED) || (q->status == QS_FINISHED)) mult += 20;
+                else if ((q->status == QS_FAILED) || (q->status == QS_FAILED_DONE)) mult -= 200;
+            }
+        }
+        vec_free(v);
+    }
+
+//    msg_format("Multiplier after quests: %d", mult);
+
+    /* Penalize level revisits */
+    if (p_ptr->coffee_lv_revisits) mult -= (100 * p_ptr->coffee_lv_revisits);
+
+    /* Penalize time consumption */
+    mult -= (game_turn / 1000); /* 1% per game day */
+    if (mult < 2) mult = 2;
+
+    if (ironman_nightmare) /* Easily win a nightmare mode sexy thrall */
+    {
+        mult += MAX(7500, mult);
+        if (thrall_mode) mult += (p_ptr->personality == PERS_SEXY) ? 15000 : 3000;
+    }
+    if (easy_damage)
+    {
+       mult -= (mult / 3);
+    }
+    return mult;
 }
-
 
 #define GRAVE_LINE_WIDTH 31
 
