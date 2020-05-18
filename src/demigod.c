@@ -196,10 +196,6 @@ static void _aphrodite_calc_bonuses(void)
 {
     p_ptr->sustain_chr = TRUE;
 }
-static int _aphrodite_get_powers(spell_info* spells, int max)
-{
-    return get_powers_aux(spells, max, _aphrodite_powers);
-}
 static void _aphrodite_get_flags(u32b flgs[OF_ARRAY_SIZE])
 {
     add_flag(flgs, OF_SUST_CHR);
@@ -220,10 +216,6 @@ static void _apollo_calc_bonuses(void)
     res_add_immune(RES_LITE);
     res_add(RES_BLIND);
     /* cf calc_torch in xtra1.c for the 'extra light' */
-}
-static int _apollo_get_powers(spell_info* spells, int max)
-{
-    return get_powers_aux(spells, max, _apollo_powers);
 }
 static void _apollo_get_flags(u32b flgs[OF_ARRAY_SIZE])
 {
@@ -259,10 +251,6 @@ static void _ares_calc_bonuses(void)
             p_ptr->weapon_info[hand].dis_to_d += dam / p_ptr->weapon_ct;
         }
     }
-}
-static int _ares_get_powers(spell_info* spells, int max)
-{
-    return get_powers_aux(spells, max, _ares_powers);
 }
 static void _ares_get_flags(u32b flgs[OF_ARRAY_SIZE])
 {
@@ -317,10 +305,6 @@ static void _demeter_calc_bonuses(void)
     if (p_ptr->lev >= 40)
         res_add(RES_TIME);
 }
-static int _demeter_get_powers(spell_info* spells, int max)
-{
-    return get_powers_aux(spells, max, _demeter_powers);
-}
 static void _demeter_get_flags(u32b flgs[OF_ARRAY_SIZE])
 {
     add_flag(flgs, OF_REGEN);
@@ -370,10 +354,6 @@ static void _hera_calc_bonuses(void)
     p_ptr->spell_cap += 2;
     if (p_ptr->lev >= 15)
         p_ptr->clear_mind = TRUE;
-}
-static int _hera_get_powers(spell_info* spells, int max)
-{
-    return get_powers_aux(spells, max, _hera_powers);
 }
 static void _hera_get_flags(u32b flgs[OF_ARRAY_SIZE])
 {
@@ -514,7 +494,7 @@ race_t *demigod_get_race(int psubrace)
             me.skills.dev = 3;
             me.shop_adjust = 70;
             me.calc_bonuses = _aphrodite_calc_bonuses;
-            me.get_powers = _aphrodite_get_powers;
+            me.get_powers = _aphrodite_powers;
             me.get_flags = _aphrodite_get_flags;
             break;
         case DEMIGOD_APOLLO:
@@ -526,7 +506,7 @@ race_t *demigod_get_race(int psubrace)
             me.exp += 50;
             me.skills.dev = 4;
             me.calc_bonuses = _apollo_calc_bonuses;
-            me.get_powers = _apollo_get_powers;
+            me.get_powers = _apollo_powers;
             me.get_flags = _apollo_get_flags;
             break;
         case DEMIGOD_ARES:
@@ -545,7 +525,7 @@ race_t *demigod_get_race(int psubrace)
             me.skills.thn += 15;
             me.exp += 60;
             me.calc_bonuses = _ares_calc_bonuses;
-            me.get_powers = _ares_get_powers;
+            me.get_powers = _ares_powers;
             me.get_flags = _ares_get_flags;
             break;
         case DEMIGOD_ARTEMIS:
@@ -588,7 +568,7 @@ race_t *demigod_get_race(int psubrace)
             me.exp += 40;
             me.skills.sav += 5;
             me.calc_bonuses = _demeter_calc_bonuses;
-            me.get_powers = _demeter_get_powers;
+            me.get_powers = _demeter_powers;
             me.get_flags = _demeter_get_flags;
             break;
         case DEMIGOD_HADES:
@@ -629,7 +609,7 @@ race_t *demigod_get_race(int psubrace)
             me.skills.sav += 5;
             me.skills.dev  = 6;
             me.calc_bonuses = _hera_calc_bonuses;
-            me.get_powers = _hera_get_powers;
+            me.get_powers = _hera_powers;
             me.get_flags = _hera_get_flags;
             break;
         case DEMIGOD_HERMES:
