@@ -1,23 +1,11 @@
 #include "angband.h"
 
-static int _get_powers(spell_info* spells, int max)
+static power_info _get_powers[] =
 {
-    int ct = 0;
-
-    spell_info* spell = &spells[ct++];
-    spell->level = 25;
-    spell->cost = 0;
-    spell->fail = calculate_fail_rate(spell->level, 50, p_ptr->stat_ind[A_INT]);
-    spell->fn = hp_to_sp_spell;
-
-    spell = &spells[ct++];
-    spell->level = 25;
-    spell->cost = 0;
-    spell->fail = calculate_fail_rate(spell->level, 50, p_ptr->stat_ind[A_INT]);
-    spell->fn = sp_to_hp_spell;
-
-    return ct;
-}
+    { A_INT, { 25, 0, 50, hp_to_sp_spell}},
+    { A_INT, { 25, 0, 50, sp_to_hp_spell}},
+    { -1, {-1, -1, -1, NULL}}
+};
 
 static caster_info * _caster_info(void)
 {
