@@ -41,6 +41,7 @@ bool dungeon_conquered(int which)
 {
     if ((which < 1) || (which >= max_d_idx)) return FALSE;
     if (!d_info[which].maxdepth) return FALSE;
+    if (d_info[which].flags1 & DF1_SUPPRESSED) return FALSE;
     if (d_info[which].flags1 & DF1_RANDOM) return FALSE;
     if (!d_info[which].final_guardian) return ((max_dlv[which] == d_info[which].maxdepth) ? TRUE : FALSE);
     if (!r_info[d_info[which].final_guardian].max_num) return TRUE;
@@ -486,7 +487,7 @@ static void _nether_storm_spell(int cmd, variant *res)
  ****************************************************************/
 #define MAX_POLI_SKILL 15
 
-static spell_info _spells[MAX_POLI_SKILL] =
+static spell_info _get_spells[MAX_POLI_SKILL] =
 {
     /*lvl cst fail spell */
     { POLITICIAN_FIRST_SPELL,   6,  20, _detect_threats_spell},
@@ -683,7 +684,7 @@ static void _glory_spell(int cmd, variant *res)
     }
 }
 
-static power_info _powers[] =
+static power_info _get_powers[] =
 {
     { A_NONE, { 1, 0,  0, _grit_spell}},
     { A_NONE, { 10, 0,  0, _grease_spell}},
@@ -691,24 +692,11 @@ static power_info _powers[] =
     { -1, {-1, -1, -1, NULL}}
 };
 
-static int _get_spells(spell_info* spells, int max)
-{
-    return get_spells_aux(spells, MIN(max, MAX_POLI_SKILL), _spells);
-}
-
 static void _character_dump(doc_ptr doc)
 {
-    spell_info spells[MAX_SPELLS];
-    int        ct = _get_spells(spells, MAX_SPELLS);
-
     spellbook_character_dump(doc);
     doc_insert(doc, "<color:r>Realm:</color> <color:B>Politics</color>\n");
-    py_display_spells_aux(doc, spells, ct);
-}
-
-static int _get_powers(spell_info* spells, int max)
-{
-    return get_powers_aux(spells, max, _powers);
+    py_dump_spells_aux(doc);
 }
 
 static void _on_cast(const spell_info *spell)
