@@ -45,7 +45,7 @@ The symbols for all monster species are listed below.</indent>
   <color:U>$</color>   Creeping Coins                  <color:U>,</color>   Mushroom Patch
   <color:U>#</color>   Ent/Mist creature
 
-Unlike the race, the species of a monster does not tell you anything about how dangerous a monster is; the almost harmless giant green frog is a reptile/amphibian with the symbol <color:g>R</color>... but so is Godzilla. The species does, however, allow some generic assumptions; for example, nearly all dragons and zephyr hounds breathe something or other. You can also assume something with the <color:y>d</color> or <color:y>D</color> symbol will take extra damage from a weapon that slays dragons.
+Unlike the race, the species of a monster does not tell you anything about how dangerous a monster is; the almost harmless giant green frog is a reptile/amphibian with the symbol <color:g>R</color>... but so is a tyrannosaurus. The species does, however, allow some generic assumptions; for example, nearly all dragons and zephyr hounds breathe something or other. You can also assume something with the <color:y>d</color> or <color:y>D</color> symbol will take extra damage from a weapon that slays dragons.
 
 <topic:Assessment><style:heading>Assessing a Monster</style>
 
@@ -244,9 +244,9 @@ A level 37 evil dragon with +10 speed who breathes plasma... you can see why the
 
 Monsters associated with a particular element (damage type) are often color-coded. The most common and reliable associations are <color:r>Red</color> with fire and <color:w>White</color> with cold/frost - a red dragon, for example, breathes fire, bites to burn and is resistant to your own fire attacks. (This does not mean all red monsters will be fire-based, only that most fire-based monsters are red.)
 
-Other similar associations include <color:b>Blue</color> with lightning/electricity, <color:D>Black</color> and <color:s>Slate</color> with acid, <color:g>Green</color> with poison, <color:U>Bronze</color> with confusion, <color:y>Gold</color> with sound and <color:W>Silver</color> with inertia. <color:v>Multi-hued</color> monsters flicker in all colours and are typically associated with multiple elements; multi-hued dragons and multi-hued hounds both breathe and resist all of the five common elements (acid, cold, fire, electricity and poison).
+Other similar associations include <color:b>Blue</color> with lightning/electricity, <color:D>Black</color> and <color:s>Slate</color> with acid, <color:g>Green</color> with poison, <color:U>Bronze</color> with confusion, <color:y>Gold</color> with sound and <color:W>Silver</color> with inertia. <color:P>Pink</color> monsters often hit to drain strength in melee. <color:v>Multi-hued</color> monsters flicker in all colours and are typically associated with multiple elements; multi-hued dragons and multi-hued hounds both breathe and resist all of the five common elements (acid, cold, fire, electricity and poison).
 
-These general rules are not completely airtight - the acid-breathing Water Hounds, for example, are <color:b>Z</color> instead of the expected <color:D>Z</color> or <color:s>Z</color>. (This particular case is actually quite bizarre, in that they used to be <color:s>Z</color> in older versions of the game.)
+These general rules are not completely airtight - the acid-breathing Water Hounds, for example, are <color:t>Z</color> instead of the expected <color:D>Z</color> or <color:s>Z</color>. (This is to avoid confusion with other hounds; the darkness-breathing Shadow Hounds are <color:D>Z</color>, and the infamous Gravity Hounds are <color:s>Z</color>.)
 
 <topic:EldritchHorror><style:heading>Eldritch Horrors</style>
 
@@ -272,7 +272,7 @@ You may obtain pets in several different ways. Some magic realms offer the abili
 
 The <color:keyword>Capture Ball</color> is a useful tool that (almost) any player can use. Capture Balls can often be bought at a General Store. To use one, you must wield it on your hand, then <color:keypress>A</color>ctivate it, and choose a target monster to be captured; if successful, you can then <color:keypress>A</color>ctivate the ball again to release the monster as your pet.
 
-Hostile monsters will attempt to resist capturing, and can only be captured if they are critically injured. Beastmasters are very good at using Capture Balls, and this limitation is relaxed for them. Quest monsters are immune to being captured, as are uniques who are not already pets.
+Hostile monsters will attempt to resist capturing, and can only be captured if they are critically injured. Beastmasters are very good at using Capture Balls, and this limitation is relaxed for them. Level guardians are immune to being captured; uniques and monsters on town quest levels can only be captured if they are already pets, so they need to be charmed or otherwise tamed before capture.
 </indent>
   <indent><color:U>Keeping Pets Happy</color>
 
@@ -457,13 +457,25 @@ The number of stars in a monster's status/health bar always indicates the monste
       <color:u>U</color>[<color:u>*********</color>]   Monster is confused
       <color:u>U</color>[<color:B>*********</color>]   Monster is stunned
       <color:u>U</color>[<color:v>*********</color>]   Monster is afraid
+      <color:u>U</color>[<color:D>*********</color>]   Monster is slowed
       <color:u>U</color>[<color:r>*</color>--------]   Monster is below 10% health
       <color:u>U</color>[<color:R>**</color>-------]   Monster is below 25% health
       <color:u>U</color>[<color:o>*****</color>----]   Monster is below 60% health
       <color:u>U</color>[<color:y>*********</color>]   Monster is below 100% health
       <color:u>U</color>[<color:G>*********</color>]   Monster is at full health
+      <color:u>U</color>[<color:G>********</color>-]   Monster is at full health but has reduced max HP
       U[---------]   Monster's status and location are unknown
 </style>
+
+The coloring of the empty slots and surrounding brackets provides some additional information:
+<style:table>
+      <color:u>U</color><color:R>[</color><color:o>*****</color><color:R>----</color><color:R>]</color>   Monster is current target
+      <color:u>U</color><color:B>[</color><color:o>*****</color><color:B>----</color><color:B>]</color>   Monster is current mount
+
+      <color:u>U</color><color:b>[</color><color:o>*****</color>----<color:b></color><color:b>]</color>   Monster is very powerful (>133.3% normal)
+      <color:u>U</color><color:v>[</color><color:o>*****</color>----<color:v>]</color>   Monster is hasted
+</style>
+
 <color:D>
 Original   : (??)
 Updated    : (??)
@@ -471,4 +483,5 @@ Updated    : Zangband DevTeam
 Updated    : Hengband 1.0.11
 Updated    : PosChengband 4.0.0
 Updated    : FrogComposband 7.1.liquorice
+Updated    : FrogComposband 7.1.salmiak
 </color>
