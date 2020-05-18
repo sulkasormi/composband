@@ -128,15 +128,11 @@ race_t *colossus_get_race(void)
 /****************************************************************
  * Demon (cf Polymorph Demon)
  ****************************************************************/
-static power_info _demon_powers[] =
+static power_info _demon_get_powers[] =
 {
     { A_CON, {15, 10, 70, demon_breath_spell}},
     { -1, {-1, -1, -1, NULL} }
 };
-static int _demon_get_powers(spell_info* spells, int max)
-{
-    return get_powers_aux(spells, max, _demon_powers);
-}
 static void _demon_calc_bonuses(void)
 {
     p_ptr->hold_life++;
@@ -204,15 +200,11 @@ race_t *demon_get_race(void)
 /****************************************************************
  * Demon-Lord (cf Polymorph Demon-Lord)
  ****************************************************************/
-static power_info _demon_lord_powers[] =
+static power_info _demon_lord_get_powers[] =
 {
     { A_CON, {15, 10, 70, demon_breath_spell}},
     { -1, {-1, -1, -1, NULL} }
 };
-static int _demon_lord_get_powers(spell_info* spells, int max)
-{
-    return get_powers_aux(spells, max, _demon_lord_powers);
-}
 static void _demon_lord_calc_bonuses(void)
 {
     p_ptr->hold_life++;
@@ -524,15 +516,11 @@ race_t *small_kobold_get_race(void)
 /****************************************************************
  * Vampire-Lord (cf Polymorph Vampire)
  ****************************************************************/
-static power_info _vampire_lord_powers[] =
+static power_info _vampire_lord_get_powers[] =
 {
     { A_CON, {2, 1, 60, vampirism_spell}},
     { -1, {-1, -1, -1, NULL} }
 };
-static int _vampire_lord_get_powers(spell_info* spells, int max)
-{
-    return get_powers_aux(spells, max, _vampire_lord_powers);
-}
 static void _vampire_lord_calc_bonuses(void)
 {
     res_add(RES_DARK);
