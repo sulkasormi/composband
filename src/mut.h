@@ -194,7 +194,7 @@ extern void mut_display(doc_ptr doc);
 extern bool mut_gain(int mut_idx);
 extern int mut_gain_choice(mut_pred pred);
 extern bool mut_gain_random(mut_pred pred);
-extern int  mut_get_powers(spell_info* spells, int max);
+extern int  mut_get_powers(power_info* spells, int max);
 extern void mut_lock(int mut_idx);
 extern bool mut_locked(int mut_idx);
 extern bool mut_lose(int mut_idx);
