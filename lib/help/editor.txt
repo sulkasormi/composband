@@ -161,7 +161,7 @@ First of all, picking something up is the default action and is inferred wheneve
 <color:keypress>;</color>  Prompt to pick up
 <color:keypress>~</color>  Leave on the floor
 
-These are the primary actions. Pick-up is assumed if the rule does not begin with <color:keypress>!</color>, <color:keypress>;</color> or <color:keypress>~</color>.
+These are the primary actions. Pick-up is assumed if the rule does not begin with <color:keypress>!</color>, <color:keypress>;</color> or <color:keypress>~</color>. Note that if the <color:keyword>always_pickup</color> option is on, then <color:keypress>;</color> and <color:keypress>~</color> will be overridden by it; and even <color:keypress>!</color> is overridden unless the <color:keyword>leave_mogaminator</color> option is also on.
 
 In addition, there are the following action letters that augment the primary action:
 
