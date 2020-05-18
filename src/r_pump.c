@@ -173,19 +173,12 @@ void _pumpkin_breathe_light_spell(int cmd, variant *res)
         break;
     }
 }
-static power_info _powers[] = 
+static power_info _get_powers[] =
 {
     { A_INT, {  5,  2, 20, scare_monster_spell} },
     { A_CON, { PUMP_LEVEL, 15,  0, _pumpkin_breathe_light_spell} },
     {    -1, { -1, -1, -1, NULL} }
 };
-
-static int _get_powers(spell_info* spells, int max) 
-{
-    int ct = get_powers_aux(spells, max, _powers);
-
-    return ct;
-}
 
 /**********************************************************************
  * Public
