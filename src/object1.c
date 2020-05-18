@@ -340,6 +340,7 @@ static bool _object_gives_esdm(object_type *o_ptr, u32b flgs[OF_ARRAY_SIZE],  bo
             if (o_ptr->name1 == ART_HAND_OF_VECNA) return easy_spell;
         }
         if ((p_ptr->pclass == CLASS_PSION) && (o_ptr->name1 == ART_STONE_OF_MIND)) return TRUE;
+        if ((p_ptr->pclass == CLASS_RAGE_MAGE) && (o_ptr->name1 == ART_STRESS_BALL)) return TRUE;
         if (p_ptr->pclass == CLASS_WARLOCK)
         {
             if (warlock_is_(WARLOCK_UNDEAD)) return (o_ptr->name1 == ART_STONE_OF_DEATH);
@@ -750,7 +751,7 @@ void obj_learn_slay(object_type *o_ptr, int which, cptr msg)
 const int _xtra_lore_flags[] = {
     OF_LEVITATION, OF_REGEN, OF_EASY_SPELL, OF_DEC_MANA,
     OF_AURA_FIRE, OF_AURA_ELEC, OF_AURA_COLD, OF_AURA_SHARDS,
-    OF_LITE, OF_DARKNESS, OF_SLOW_DIGEST,
+    OF_LITE, OF_DARKNESS, OF_SLOW_DIGEST, OF_REGEN_MANA,
     OF_INVALID
 };
 
