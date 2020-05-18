@@ -550,7 +550,7 @@ static void _unleash_elements_spell(int cmd, variant *res)
     }
 }
 
-static power_info _powers[] = {
+static power_info _get_powers[] = {
     { A_CON, {  1,  3, 30, _breathe_spell}},
     { A_DEX, {  5,  5, 30, _spin_away_spell}},
     { A_DEX, { 12,  7, 35, _whirlwind_spell}},
@@ -559,10 +559,6 @@ static power_info _powers[] = {
     { A_CON, { 50, 50, 65, _unleash_elements_spell}},
     {    -1, { -1, -1, -1, NULL}}
 };
-
-static int _get_powers(spell_info* spells, int max) {
-    return get_powers_aux(spells, max, _powers);
-}
 
 /**********************************************************************
  * Bonuses
@@ -680,6 +676,7 @@ static void _get_flags(u32b flgs[OF_ARRAY_SIZE])
     add_flag(flgs, OF_RES_CONF);
     add_flag(flgs, OF_HOLD_LIFE);
     add_flag(flgs, OF_LEVITATION);
+    add_flag(flgs, OF_NIGHT_VISION);
 
     switch (p_ptr->current_r_idx)
     {
