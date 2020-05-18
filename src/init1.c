@@ -186,10 +186,10 @@ static cptr f_info_flags[] =
     "HURT_FIRE",
     "HURT_COLD",
     "HURT_ACID",
-    "ICE",
+    "SLIPPERY",
     "ACID",
-    "OIL",
-    "XXX04",
+    "SNOW",
+    "SLUSH",
     "CAN_CLIMB",
     "CAN_FLY",
     "CAN_SWIM",
@@ -228,7 +228,7 @@ static cptr f_info_flags[] =
     "DUST",
     "SLIME",
     "PLANT",
-    "XXX2",
+    "CREVASSE",
     "INSTANT",
     "EXPLODE",
     "TIMED",
@@ -365,13 +365,13 @@ static cptr r_info_flags3[] =
     "EGYPTIAN",
     "EGYPTIAN2",
     "OLYMPIAN2",
-    "XXX",
-    "XXX",
-    "XXX",
+    "AUSSIE",
+    "NORSE",
+    "NORSE2",
     "XXX",
     "COMPOST",
-    "XXX",
-    "XXX",
+    "HINDU",
+    "HINDU2",
     "CLEAR_HEAD",
     "NO_FEAR",
     "NO_STUN",
@@ -431,7 +431,7 @@ static cptr r_info_flags8[] =
     "WILD_WASTE",
     "WILD_WOOD",
     "WILD_VOLCANO",
-    "XXX8X08",
+    "WILD_SNOW",
     "WILD_MOUNTAIN",
     "WILD_GRASS",
     "XXX8X11",
@@ -545,13 +545,13 @@ static cptr r_info_flagsr[] =
     "RES_GRAV",
     "RES_ALL",
     "RES_TELE",
-    "XXX",
+    "XXX", /* pact */
     "RES_ACID",
     "RES_ELEC",
     "RES_FIRE",
     "RES_COLD",
     "RES_POIS",
-    "XXX27",
+    "RES_DISI",
     "XXX28",
     "XXX29",
     "XXX30",
@@ -568,8 +568,6 @@ static cptr k_info_flags[OF_COUNT] =
     "SHOW_MODS",
     "FULL_NAME",
     "FIXED_FLAVOR",
-
-    /* Stats */
     "STR",
     "INT",
     "WIS",
@@ -588,8 +586,6 @@ static cptr k_info_flags[OF_COUNT] =
     "SUST_DEX",
     "SUST_CON",
     "SUST_CHR",
-
-    /* Skills/Bonuses */
     "SPEED",
     "STEALTH",
     "SEARCH",
@@ -601,15 +597,12 @@ static cptr k_info_flags[OF_COUNT] =
     "SPELL_CAP",
     "DEVICE_POWER",
     "LIFE",
-
     "DEC_SPEED",
     "DEC_STEALTH",
     "DEC_MAGIC_MASTERY",
     "DEC_SPELL_POWER",
     "DEC_SPELL_CAP",
     "DEC_LIFE",
-
-    /* Resists */
     "RES_ACID",
     "RES_ELEC",
     "RES_FIRE",
@@ -627,7 +620,6 @@ static cptr k_info_flags[OF_COUNT] =
     "RES_TIME",
     "RES_BLIND",
     "RES_FEAR",
-
     "IM_ACID",
     "IM_ELEC",
     "IM_FIRE",
@@ -638,7 +630,6 @@ static cptr k_info_flags[OF_COUNT] =
     "IM_NETHER",
     "IM_BLIND",
     "IM_FEAR",
-
     "VULN_ACID",
     "VULN_ELEC",
     "VULN_FIRE",
@@ -655,8 +646,6 @@ static cptr k_info_flags[OF_COUNT] =
     "VULN_DISEN",
     "VULN_BLIND",
     "VULN_FEAR",
-
-    /* Abilities */
     "FREE_ACT",
     "SEE_INVIS",
     "REGEN",
@@ -674,25 +663,19 @@ static cptr k_info_flags[OF_COUNT] =
     "DEC_MANA",
     "LITE",
     "DARKNESS",
-    "LORE1",
+    "SLOW_REGEN",
     "LORE2",
-
     "ACTIVATE",
-
     "IGNORE_ACID",
     "IGNORE_ELEC",
     "IGNORE_FIRE",
     "IGNORE_COLD",
-
-    /* Auras */
     "AURA_ELEC",
     "AURA_FIRE",
     "AURA_COLD",
     "AURA_SHARDS",
     "AURA_REVENGE",
     "AURA_FEAR",
-
-    /* Telepathy */
     "TELEPATHY",
     "ESP_EVIL",
     "ESP_GOOD",
@@ -707,8 +690,6 @@ static cptr k_info_flags[OF_COUNT] =
     "ESP_ORC",
     "ESP_TROLL",
     "ESP_GIANT",
-
-    /* Weapons */
     "SLAY_EVIL",
     "SLAY_GOOD",
     "SLAY_LIVING",
@@ -720,7 +701,6 @@ static cptr k_info_flags[OF_COUNT] =
     "SLAY_ORC",
     "SLAY_TROLL",
     "SLAY_GIANT",
-
     "KILL_EVIL",
 	"KILL_GOOD",
 	"KILL_LIVING",
@@ -732,7 +712,6 @@ static cptr k_info_flags[OF_COUNT] =
     "KILL_ORC",
     "KILL_TROLL",
     "KILL_GIANT",
-
     "BRAND_ACID",
     "BRAND_ELEC",
     "BRAND_FIRE",
@@ -747,36 +726,24 @@ static cptr k_info_flags[OF_COUNT] =
     "VORPAL2",
     "IMPACT",
     "STUN",
-
     "BLESSED",
     "RIDING",
     "THROWING",
-
     "BLOWS",
     "DEC_BLOWS",
     "WEAPONMASTERY",
     "DUAL_WIELDING",
-
-    /* Bows */
     "XTRA_MIGHT",
     "XTRA_SHOTS",
-
-    /* Curses */
     "DRAIN_EXP",
     "TELEPORT",
     "AGGRAVATE",
     "TY_CURSE",
-
-    /* Plural */
     "PLURAL",
-
-    /* Ignore Invulnerability Spheres */
     "IGNORE_INVULN",
-
-    /* Night Vision */
     "NIGHT_VISION",
-
     "BRAND_DARK",
+    "REGEN_MANA",
 };
 
 
@@ -819,6 +786,7 @@ static cptr k_info_gen_flags[] =
 
 /*
  * Dungeon flags
+ * Must match DF1_* as defined in defines.h 
  */
 static cptr d_info_flags1[] =
 {
@@ -836,8 +804,8 @@ static cptr d_info_flags1[] =
     "CAVERN",
     "RANDOM",
     "COFFEE",
-    "XXX",
-    "XXX",
+    "LAKE_NUKE",
+    "NUKE_RIVER",
     "FORGET",
     "LAKE_WATER",
     "LAKE_LAVA",
@@ -853,7 +821,7 @@ static cptr d_info_flags1[] =
     "CHAMELEON",
     "DARKNESS",
     "ALL_SHAFTS",
-    "XXX"
+    "SUPPRESSED"
 };
 
 /*
@@ -1004,6 +972,23 @@ byte color_char_to_attr(char c)
         case 'G': return (TERM_L_GREEN);
         case 'B': return (TERM_L_BLUE);
         case 'U': return (TERM_L_UMBER);
+
+        case 'L': return (TERM_I_GREEN);
+        case 'P': return (TERM_PINK);
+        case 'I': return (TERM_I_BLUE);
+        case 'C': return (TERM_PURPLE);
+        case 't': return (TERM_TEAL);
+        case 'S': return (TERM_SKY_BLUE);
+        case 'm': return (TERM_MUD);
+        case 'M': return (TERM_D_YELLOW);
+        case 'T': return (TERM_TURQUOISE);
+        case 'O': return (TERM_L_ORANGE);
+        case 'V': return (TERM_LILAC);
+        case 'c': return (TERM_D_PURPLE);
+        case 'n': return (TERM_SKY_DARK);
+        case 'K': return (TERM_PALE_BLUE);
+        case 'p': return (TERM_D_PINK);
+        case 'h': return (TERM_CHESTNUT);
     }
 
     return (255);
@@ -1220,7 +1205,7 @@ static parse_tbl_t _summon_type_tbl[] = {
     { SUMMON_DEMON_SUMMONER, "Demon Summoners", TERM_WHITE, "", "DEMON_SUMMONER", 35 },
     { SUMMON_ULTIMATE, "Ultimate", TERM_WHITE, "", "ULTIMATE", 100 },
     { SUMMON_HUMAN, "Human", TERM_WHITE, "", "HUMAN", 10 },
-    { SUMMON_HORSE, "Horsies", TERM_WHITE, "", "HORSE", 10 },
+    { SUMMON_HORSE, "Horses", TERM_WHITE, "", "HORSE", 10 },
     { SUMMON_MAGICAL, "Magical Monsters", TERM_WHITE, "", "MAGICAL", 15 },
     { SUMMON_TROLL, "Trolls", TERM_WHITE, "", "TROLL", 10 },
     { SUMMON_CHAPEL_GOOD, "Good Monsters", TERM_WHITE, "", "CHAPEL_GOOD", 25 },
@@ -1232,6 +1217,10 @@ static parse_tbl_t _summon_type_tbl[] = {
     { SUMMON_SPECIAL, "Special", TERM_WHITE, "", "SPECIAL", 30 },
     { SUMMON_REPTILE, "Reptiles", TERM_WHITE, "", "REPTILE", 30 },
     { SUMMON_DEAD_UNIQ, "Dead Uniques", TERM_WHITE, "", "DEAD_UNIQ", 150 },
+    { SUMMON_CAT, "Cats", TERM_WHITE, "", "CAT", 10 },
+    { SUMMON_VANARA, "Vanaras", TERM_WHITE, "", "VANARA", 40 },
+    { SUMMON_SERPENT, "Serpents", TERM_WHITE, "", "SERPENT", 40 },
+    { SUMMON_NAGA, "Nagas", TERM_WHITE, "", "NAGA", 20 },
     { 0 }
 };
 
@@ -2083,6 +2072,7 @@ static errr _parse_room_type(char *buf, room_ptr room)
             {"TREES",    TERRAIN_TREES},
             {"LAVA",     TERRAIN_DEEP_LAVA},  /* TERRAIN_SHALLOW_LAVA */
             {"MOUNTAIN", TERRAIN_MOUNTAIN},
+            {"SNOW",     TERRAIN_SNOW},
             { 0, 0 }
         };
         int j;
@@ -3359,7 +3349,7 @@ static bool grab_one_ego_type_flag(ego_type *e_ptr, cptr what)
     else
     {
         msg_format("Unknown ego type flag: '%s'.", what);
-        return ERROR_UNKOWN_FAILURE;
+        return ERROR_UNKNOWN_FAILURE;
     }
     return ERROR_SUCCESS;
 }
@@ -3894,6 +3884,19 @@ static errr parse_mon_flags(char *buf, mon_race_ptr race)
                     msg_format("Error: Unknown argument %s.", args[j]);
                     return PARSE_ERROR_GENERIC;
                 }
+            }
+        }
+        else if (prefix(token, "DUNGEON_"))
+        {
+            int dung = 0;
+            if ((1 == sscanf(token, "DUNGEON_%d", &dung)) && (dung > 0) && (dung < max_d_idx))
+            {
+                race->dungeon = dung;
+            }
+            else
+            {
+                msg_format("Error: Unknown monster dungeon %s.", token);
+                return PARSE_ERROR_GENERIC;
             }
         }
         else if (0 != grab_one_basic_flag(race, token)) return 5;
@@ -4482,7 +4485,7 @@ errr parse_d_info(char *buf, header *head)
     /* Process 'F' for "Dungeon Flags" (multiple lines) */
     else if (buf[0] == 'F')
     {
-        int artif = 0, monst = 0, tval = 0, sval = 0, pant = 0;
+        int artif = 0, monst = 0, tval = 0, sval = 0, pant = 0, alti = 0, wtyp = 0;
 
         /* Parse every entry */
         for (s = buf + 2; *s; )
@@ -4559,6 +4562,26 @@ errr parse_d_info(char *buf, header *head)
                 continue;
             }
 
+            /* XXX XXX XXX Hack -- Read Wilderness Type */
+            if (1 == sscanf(s, "WILD_TYPE_%d", &wtyp))
+            {
+                d_ptr->wild_type = wtyp;
+                s = t;
+                continue;
+            }
+
+            /* XXX XXX XXX Hack -- Read Alternative Dungeon */
+            if (1 == sscanf(s, "SUBSTITUTE_%d", &alti))
+            {
+                /* Extract pantheon */
+                d_ptr->alt = alti;
+
+                /* Start at next entry */
+                s = t;
+
+                /* Continue */
+                continue;
+            }
 
             /* XXX XXX XXX Hack -- Read Special Percentage */
             if (1 == sscanf(s, "MONSTER_DIV_%d", &monst))
@@ -5153,6 +5176,16 @@ static cptr process_dungeon_file_expr(char **sp, char *fp)
                 quest_ptr q = quests_get(which);
                 if (q) sprintf(tmp, "%s", _status[q->status]);
                 else sprintf(tmp, "Unknown");
+                v = tmp;
+            }
+
+            /* Quest status */
+            else if (prefix(b+1, "DUNGEON"))
+            {
+                int  which = atoi(b+8);
+                if ((which >= max_d_idx) || (d_info[which].flags1 & DF1_SUPPRESSED))
+                    sprintf(tmp, "Suppressed");
+                else sprintf(tmp, "Active");
                 v = tmp;
             }
 
