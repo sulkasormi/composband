@@ -5,7 +5,7 @@
 # across a range of different makefiles, to cut down on maintenance.
 #
 
-VERSION = 7.1.liquorice
+VERSION = 7.1.salmiak
 COPYRIGHT = (c) 1995-2020 Angband contributors
 PROGNAME = frogcomposband
 
@@ -36,12 +36,12 @@ X11MAINFILES = main-x11.o
 WINMAINFILES = $(PROGNAME).res main-win.o readdib.o
 
 ANGFILES = \
-    alky.o archaeologist.o archer.o artifact.o autopick.o virtue.o bard.o \
+    alky.o archer.o arky.o artifact.o autopick.o virtue.o bard.o \
     beastmaster.o beorning.o berserker.o birth.o bldg.o blood_knight.o blood_mage.o bluemage.o \
-    cavalry.o cave.o chaos_warrior.o classes.o cmd1.o cmd2.o cmd3.o cmd4.o cmd5.o cmd6.o combat.o \
+    cavalry.o cave.o chaoswar.o classes.o cmd1.o cmd2.o cmd3.o cmd4.o cmd5.o cmd6.o combat.o \
     corny.o demigod.o devicemaster.o devices.o disciple.o do-spell.o doppelganger.o duelist.o dungeon.o \
-    ego.o effects.o equip.o fear.o files.o flavor.o floors.o force_trainer.o generate.o gf.o gray_mage.o \
-    grid.o hex.o high_mage.o hissatsu.o home.o igor.o init1.o init2.o int-map.o inv.o karrot.o lawyer.o \
+    ego.o effects.o equip.o fear.o files.o flavor.o floors.o force_trainer.o generate.o gf.o graymage.o \
+    grid.o hex.o highmage.o hissatsu.o home.o igor.o init1.o init2.o int-map.o inv.o karrot.o lawyer.o \
     load.o mage.o magic_eater.o mauler.o melee1.o melee2.o menu.o message.o mindcrafter.o mirror_master.o \
     mon.o mon_info.o monk.o monspell.o monster.o monster1.o monster2.o mspells1.o mspells2.o mut.o \
     mut_a.o mystic.o necromancer.o ninja.o ninjalaw.o obj.o obj_info.o obj_prompt.o \
@@ -53,7 +53,7 @@ ANGFILES = \
 	r_orc.o r_poss.o r_pump.o r_quyl.o r_rag.o r_spider.o \
     r_ring.o r_sword.o r_troll.o r_vamp.o r_vortex.o \
     r_xorn.o racial.o ragemage.o randname.o ranger.o rect.o red_mage.o \
-    resist.o rogue.o rooms.o rune_knight.o samurai.o save.o savefile.o scores.o scout.o shop.o skillmaster.o \
+    resist.o rogue.o rooms.o rune_kt.o samurai.o save.o savefile.o scores.o scout.o shop.o skillmaster.o \
     skills.o sniper.o sorcerer.o spells.o spells1.o spells2.o spells3.o spells_a.o \
     spells_c.o spells_h.o spells_m.o spells_s.o spoilers.o str-map.o streams.o \
     tables.o timelord.o tourist.o troika.o util.o variable.o variant.o warlock.o warrior.o \
