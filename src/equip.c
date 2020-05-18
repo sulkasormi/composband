@@ -61,7 +61,7 @@ static bool _object_is_combat_ring(obj_ptr obj)
     if (!obj) return FALSE;
     if (obj->tval != TV_RING) return FALSE;
     obj_flags_known(obj, flags);
-    if ((obj->name2 == EGO_RING_ARCHERY) || (obj->name2 == EGO_RING_WIZARDRY)) return FALSE;
+    if ((obj->name2 == EGO_RING_ARCHERY) || (obj->name2 == EGO_RING_WIZARDRY) || (obj->name1 == ART_ULLUR)) return FALSE;
     else if (have_flag(flags, OF_WEAPONMASTERY)) return TRUE;
     else if ((object_is_known(obj)) && ((obj->to_h) || (obj->to_d))) return TRUE;
     else if (have_flag(flags, OF_BRAND_FIRE)) return TRUE;
@@ -635,12 +635,14 @@ static bool _wield_confirm(obj_ptr obj, slot_t slot)
     }
     if ( obj->name1 == ART_STONEMASK
       && object_is_known(obj)
+      && !player_obviously_poly_immune(FALSE)
       && p_ptr->prace != RACE_VAMPIRE
       && p_ptr->prace != RACE_ANDROID
       && p_ptr->prace != RACE_WEREWOLF
       && !(get_race()->flags & RACE_IS_MONSTER)
       && !(get_race()->flags & RACE_NO_POLY)
-      && p_ptr->pclass != CLASS_BLOOD_KNIGHT)
+      && p_ptr->pclass != CLASS_BLOOD_KNIGHT
+      && !comp_mode)
     {
         char dummy[MAX_NLEN+80];
         object_desc(o_name, obj, OD_OMIT_PREFIX | OD_NAME_ONLY);
@@ -1101,6 +1103,8 @@ void equip_xtra_might(int pval)
     }
 }
 
+static int _low_device_hack = 0;
+
 void object_calc_bonuses(obj_ptr obj, slot_t slot)
 {
     u32b    flgs[OF_ARRAY_SIZE];
@@ -1140,8 +1144,6 @@ void object_calc_bonuses(obj_ptr obj, slot_t slot)
 
     if (have_flag(flgs, OF_LORE2))
         p_ptr->auto_id = TRUE;
-    else if (have_flag(flgs, OF_LORE1))
-        p_ptr->auto_pseudo_id = TRUE;
 
     if (obj->name2 == EGO_GLOVES_GIANT)
     {
@@ -1336,6 +1338,7 @@ void object_calc_bonuses(obj_ptr obj, slot_t slot)
 
     if (have_flag(flgs, OF_SLOW_DIGEST)) p_ptr->slow_digest = TRUE;
     if (have_flag(flgs, OF_REGEN))       p_ptr->regen += 100;
+    if (have_flag(flgs, OF_REGEN_MANA))  p_ptr->mana_regen = TRUE;
     if (have_flag(flgs, OF_TELEPATHY))   p_ptr->telepathy = TRUE;
     if (have_flag(flgs, OF_ESP_ANIMAL))  p_ptr->esp_animal = TRUE;
     if (have_flag(flgs, OF_ESP_UNDEAD))  p_ptr->esp_undead = TRUE;
@@ -1428,6 +1431,20 @@ void object_calc_bonuses(obj_ptr obj, slot_t slot)
             p_ptr->to_m_chance += 3;
     }
 
+    if (obj->curse_flags & OFC_LOW_DEVICE)
+    {
+        if (obj->curse_flags & OFC_HEAVY_CURSE)
+        {
+            p_ptr->skills.dev -= (10 - _low_device_hack);
+            _low_device_hack = 10;
+        }
+        else if (!_low_device_hack)
+        {
+            p_ptr->skills.dev -= 5;
+            _low_device_hack = 5;
+        }
+    }
+
     if (obj->tval == TV_CAPTURE) return;
 
     /* Modify the base armor class */
@@ -1483,7 +1500,7 @@ void object_calc_bonuses(obj_ptr obj, slot_t slot)
     if (_object_is_bow(obj)) return;
 
     /* Hack -- Sniper gloves apply to missiles only */
-    if (obj->name2 == EGO_GLOVES_SNIPER || obj->name2 == EGO_RING_ARCHERY)
+    if (obj->name2 == EGO_GLOVES_SNIPER || obj->name2 == EGO_RING_ARCHERY || obj->name1 == ART_ULLUR)
     {
         p_ptr->shooter_info.to_h += obj->to_h;
         p_ptr->shooter_info.to_d += obj->to_d;
@@ -1708,6 +1725,8 @@ void equip_calc_bonuses(void)
         if (p_ptr->weapon_info[i].wield_how != WIELD_NONE)
             p_ptr->weapon_ct++;
     }
+
+    _low_device_hack = 0;
 
     /* Scan equipment for bonuses. */
     for (slot = 1; slot <= _template->max; slot++)
