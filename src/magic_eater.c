@@ -804,19 +804,11 @@ static void _save_player(savefile_ptr file)
     _save_list(file, _which_list(TV_ROD));
 }
 
-/* Class Info */
-static int _get_powers(spell_info* spells, int max)
+static power_info _get_powers[] =
 {
-    int ct = 0;
-
-    spell_info* spell = &spells[ct++];
-    spell->level = 1;
-    spell->cost = 0;
-    spell->fail = 0;
-    spell->fn = _absorb_magic_spell;
-
-    return ct;
-}
+    { A_NONE, { 1, 0, 0, _absorb_magic_spell}},
+    { -1, {-1, -1, -1, NULL}}
+};
 
 class_t *magic_eater_get_class(void)
 {
