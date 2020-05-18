@@ -748,26 +748,23 @@ static power_info _powers[] =
     { A_INT,  {30, 0, 50, _mirror_concentration_spell}}, 
     { -1, {-1, -1, -1, NULL}}
 };
-static int _get_spells(spell_info* spells, int max)
+static spell_info *_get_spells(void)
 {
     _on_mirror = is_mirror_grid(&cave[py][px]);
-    return get_spells_aux(spells, max, _spells);
+    return _spells;
 }
 
-static int _get_powers(spell_info* spells, int max)
+static power_info *_get_powers(void)
 {    
     _on_mirror = is_mirror_grid(&cave[py][px]);
-    return get_powers_aux(spells, max, _powers);
+    return _powers;
 }
 
 static void _character_dump(doc_ptr doc)
 {
-    spell_info spells[MAX_SPELLS];
-    int        ct = _get_spells(spells, MAX_SPELLS);
-
     spellbook_character_dump(doc);
     doc_insert(doc, "<color:r>Realm:</color> <color:B>Mirror Magic</color>\n");
-    py_display_spells_aux(doc, spells, ct);
+    py_dump_spells_aux(doc);
 }
 
 static void _calc_bonuses(void)
@@ -881,8 +878,8 @@ class_t *mirror_master_get_class(void)
         me.calc_bonuses = _calc_bonuses;
         me.get_flags = _get_flags;
         me.caster_info = _caster_info;
-        me.get_spells = _get_spells;
-        me.get_powers = _get_powers;
+        me.get_spells_fn = _get_spells;
+        me.get_powers_fn = _get_powers;
         me.character_dump = _character_dump;
         init = TRUE;
     }
