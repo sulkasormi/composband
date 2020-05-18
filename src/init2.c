@@ -909,6 +909,9 @@ static errr init_feat_variables(void)
     feat_trap_open = f_tag_to_index_in_init("TRAP_OPEN");
     feat_trap_armageddon = f_tag_to_index_in_init("TRAP_ARMAGEDDON");
     feat_trap_piranha = f_tag_to_index_in_init("TRAP_PIRANHA");
+    feat_trap_bear = f_tag_to_index_in_init("TRAP_BEAR");
+    feat_trap_icicle = f_tag_to_index_in_init("TRAP_ICICLE");
+    feat_trap_banana = f_tag_to_index_in_init("TRAP_BANANA");
 
     /* Rubble */
     feat_rubble = f_tag_to_index_in_init("RUBBLE");
@@ -948,6 +951,8 @@ static errr init_feat_variables(void)
     feat_shallow_water = f_tag_to_index_in_init("SHALLOW_WATER");
     feat_deep_lava = f_tag_to_index_in_init("DEEP_LAVA");
     feat_shallow_lava = f_tag_to_index_in_init("SHALLOW_LAVA");
+    feat_deep_waste = f_tag_to_index_in_init("DEEP_WASTE");
+    feat_shallow_waste = f_tag_to_index_in_init("SHALLOW_WASTE");
     feat_dirt = f_tag_to_index_in_init("DIRT");
     feat_grass = f_tag_to_index_in_init("GRASS");
     feat_flower = f_tag_to_index_in_init("FLOWER");
@@ -957,6 +962,12 @@ static errr init_feat_variables(void)
     feat_swamp = f_tag_to_index_in_init("SWAMP");
     feat_dark_pit = f_tag_to_index_in_init("DARK_PIT");
     feat_web = f_tag_to_index_in_init("WEB");
+    feat_snow_tree = f_tag_to_index_in_init("SNOW_TREE");
+    feat_snow_floor = f_tag_to_index_in_init("SNOW_FLOOR");
+    feat_ice_floor = f_tag_to_index_in_init("ICE_FLOOR");
+    feat_glacier = f_tag_to_index_in_init("GLACIER");
+    feat_glacier_steep = f_tag_to_index_in_init("GLACIER_STEEP");
+    feat_crevasse = f_tag_to_index_in_init("CREVASSE");
 
     /* Unknown grid (not detected) */
     feat_undetected = f_tag_to_index_in_init("UNDETECTED");
@@ -1571,7 +1582,7 @@ void init_angband(void)
     {
         int i;
         for (i = 1; i < max_d_idx; i++)
-            if (d_info[i].final_guardian)
+            if ((d_info[i].final_guardian) && (!(d_info[i].flags1 & DF1_SUPPRESSED)))
                 r_info[d_info[i].final_guardian].flags7 |= RF7_GUARDIAN;
     }
 
