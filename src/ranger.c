@@ -13,18 +13,11 @@ static void _calc_shooter_bonuses(object_type *o_ptr, shooter_info_t *info_ptr)
         p_ptr->shooter_info.base_shot = 100;
 }
 
-static int _get_powers(spell_info* spells, int max)
+static power_info _get_powers[] =
 {
-    int ct = 0;
-
-    spell_info* spell = &spells[ct++];
-    spell->level = 15;
-    spell->cost = 20;
-    spell->fail = calculate_fail_rate(spell->level, 90, p_ptr->stat_ind[A_WIS]);
-    spell->fn = probing_spell;
-
-    return ct;
-}
+    { A_WIS, { 15, 20, 90, probing_spell}},
+    { -1, {-1, -1, -1, NULL}}
+};
 
 static caster_info * _caster_info(void)
 {
