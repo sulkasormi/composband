@@ -1192,11 +1192,7 @@ void resistance_spell(int cmd, variant *res)
     {
         int base = spell_power(20);
 
-        set_oppose_acid(randint1(base) + base, FALSE);
-        set_oppose_elec(randint1(base) + base, FALSE);
-        set_oppose_fire(randint1(base) + base, FALSE);
-        set_oppose_cold(randint1(base) + base, FALSE);
-        set_oppose_pois(randint1(base) + base, FALSE);
+        set_oppose_base(randint1(base) + base, FALSE);
 
         var_set_bool(res, TRUE);
         break;
