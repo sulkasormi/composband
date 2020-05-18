@@ -2772,7 +2772,7 @@ static errr Term_text_mac(int x, int y, int n, byte a, const char *cp)
 	term_data *td = (term_data*)(Term->data);
 
 	/* Set the color */
-	term_data_color(td, (a & 0x0F));
+	term_data_color(td, (a & COLOR_MASK));
 
 	/* Starting pixel */
 	xp = x * td->tile_wid + td->tile_o_x + td->size_ow1;
@@ -2975,7 +2975,7 @@ static errr Term_pict_mac(int x, int y, int n, const byte *ap, const char *cp,
 			int xp, yp;
 
 			/* Set the color */
-			term_data_color(td, (a & 0x0F));
+			term_data_color(td, (a & COLOR_MASK));
 			
 			/* Starting pixel */
 			xp = r2.left + td->tile_o_x;
