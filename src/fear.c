@@ -104,13 +104,7 @@ bool fear_set_p(int v)
             do_dec_stat(A_CHR);
         if (p_ptr->special_defense & KATA_MASK)
         {
-            msg_print("Your posture gets loose.");
-            p_ptr->special_defense &= ~KATA_MASK;
-            p_ptr->update |= PU_BONUS;
-            p_ptr->update |= PU_MONSTERS;
-            p_ptr->redraw |= PR_STATE;
-            p_ptr->redraw |= PR_STATUS;
-            p_ptr->action = ACTION_NONE;
+            lose_kata();
         }
         notice = TRUE;
         p_ptr->counter = FALSE;
@@ -429,10 +423,12 @@ bool fear_p_hurt_m(int m_idx, int dam)
     if (!melee_hack && (r_ptr->flags2 & RF2_AURA_FEAR))
     {
         int r_level = _r_level(r_ptr);
-        if (!fear_save_p(r_level))
+        static s32b _last_fear_turn = 0; /* Only once per turn for non-melee */
+        if ((!fear_save_p(r_level)) && (game_turn != _last_fear_turn))
         {
             mon_lore_2(m_ptr, RF2_AURA_FEAR);
             fear_add_p(r_level/MAX(1, m_ptr->cdis - 2));
+            _last_fear_turn = game_turn;
         }
     }
 
