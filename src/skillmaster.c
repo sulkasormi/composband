@@ -1227,7 +1227,7 @@ void _skills_get_flags(u32b flgs[OF_ARRAY_SIZE])
     switch (pts)
     {
     case 3: add_flag(flgs, OF_TELEPATHY);
-    case 2: add_flag(flgs, OF_LORE1);
+    case 2: add_flag(flgs, OF_LORE2);
     case 1: add_flag(flgs, OF_SEE_INVIS);
     }
 
@@ -1568,19 +1568,22 @@ void _get_flags(u32b flgs[OF_ARRAY_SIZE])
     _skills_get_flags(flgs);
 }
 
-static void _add_power(spell_info* spell, ang_spell fn)
+static void _add_power(power_info* power, ang_spell fn)
 {
     /* Powers are generally granted without cost, or fail. They are available
      * immediately upon purchase, and there is no relevant stat to consider */
-    spell->level = 1;
-    spell->cost = 0;
-    spell->fail = 0;
-    spell->fn = fn;
+    power->spell.level = 1;
+    power->spell.cost = 0;
+    power->spell.fail = 0;
+    power->spell.fn = fn;
+    power->stat = A_NONE;
 }
 
-static int _get_powers(spell_info* spells, int max)
+static power_info *_get_powers(void)
 {
+    static power_info spells[MAX_SPELLS];
     int ct = 0;
+    int max = MAX_SPELLS;
 
     if (ct < max && _get_skill_pts(_TYPE_SHOOT, _THROWING) > 0)
         _add_power(&spells[ct++], _throw_weapon_spell);
@@ -1603,7 +1606,9 @@ static int _get_powers(spell_info* spells, int max)
     if (ct < max && _get_skill_pts(_TYPE_ABILITY, _RODEO) > 0)
         _add_power(&spells[ct++], rodeo_spell);
 
-    return ct;
+    spells[ct].spell.fn = NULL;
+
+    return spells;
 }
 
 static void _dump_book(doc_ptr doc, object_type *spellbook)
@@ -1764,7 +1769,7 @@ class_t *skillmaster_get_class(void)
         me.gain_level = _gain_level;
         me.calc_bonuses = _calc_bonuses;
         me.calc_weapon_bonuses = _calc_weapon_bonuses;
-        me.get_powers = _get_powers;
+        me.get_powers_fn = _get_powers;
         me.get_flags = _get_flags;
         me.load_player = _load_player;
         me.save_player = _save_player;
