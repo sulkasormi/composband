@@ -753,7 +753,7 @@ static void _foresee_spell(int cmd, variant *res)
 /****************************************************************
  * Spell Table and Exports
  ****************************************************************/
-static spell_info _spells[] =
+static spell_info _get_spells[] =
 {
     /*lvl cst fail spell */
     {  1,  2, 30, _bolt_spell},
@@ -775,11 +775,6 @@ static spell_info _spells[] =
     { 49,100, 80, _foresee_spell},
     { -1, -1, -1, NULL}
 };
-
-static int _get_spells(spell_info* spells, int max)
-{
-    return get_spells_aux(spells, max, _spells);
-}
 
 static void _calc_bonuses(void)
 {
@@ -842,14 +837,6 @@ static caster_info * _caster_info(void)
     return &me;
 }
 
-static void _character_dump(doc_ptr doc)
-{
-    spell_info spells[MAX_SPELLS];
-    int        ct = _get_spells(spells, MAX_SPELLS);
-
-    py_display_spells(doc, spells, ct);
-}
-
 static void _birth(void)
 {
     py_birth_obj_aux(TV_SWORD, SV_SHORT_SWORD, 1);
@@ -902,7 +889,7 @@ class_t *time_lord_get_class(void)
         me.get_flags = _get_flags;
         me.caster_info = _caster_info;
         me.get_spells = _get_spells;
-        me.character_dump = _character_dump;
+        me.character_dump = py_dump_spells;
         init = TRUE;
     }
 
