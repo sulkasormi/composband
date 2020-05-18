@@ -428,16 +428,11 @@ static void _mimic_spell(int cmd, variant *res)
     }
 }
 
-static power_info _powers[] = 
+static power_info _get_powers[] = 
 {
     {A_DEX, {1, 0, 0, _mimic_spell}},
     {-1, {-1, -1, -1, NULL}}
 };
-
-static int _get_powers(spell_info* spells, int max)
-{
-    return get_powers_aux(spells, max, _powers);
-}
 
 race_t *doppelganger_get_race(void)
 {
