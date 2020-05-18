@@ -793,7 +793,7 @@ static void _judge_spell(int cmd, variant *res)
     }
 }
 
-static power_info _powers[] = 
+static power_info _get_powers[] =
 {
     { A_STR, {  1,  0,  0, _absorb_spell } },
     { A_STR, {  5,  1, 30, _detect_spell } },
@@ -801,11 +801,6 @@ static power_info _powers[] =
     /*{ A_STR, { 25, 30, 60, _animate_spell } },*/
     {    -1, { -1, -1, -1, NULL}}
 };
-
-static int _get_powers(spell_info* spells, int max) 
-{
-    return get_powers_aux(spells, max, _powers);
-}
 
 /**********************************************************************
  * Birth and Evolution
