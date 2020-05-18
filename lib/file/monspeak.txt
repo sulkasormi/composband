@@ -264,12 +264,13 @@ says, 'Come get some!'
 magically summons mighty undead opponents!
 chuckles evilly.
 magically summons Cyberdemons!
-summons special opponents!
+summons Uniques.
+summons invisible monsters!
 concentrates on its wounds.
 concentrates on its body. It starts moving faster.
 teleports away.
-dies.  You see a longsword (5d6).
-dies. You see a Stick (1d77).
+dies. You feel something roll beneath your feet.
+dies. You see a Stick {special}.
 
 N:409:Kharis the Powerslave
 says, 'Open the gates of my hell, I will strike from the grave!'
@@ -716,19 +717,19 @@ says, 'You were a fool for thinking that your showy moves would work on me!'
 N:1029:Baby satan
 magically summons Cyberdemons!
 magically summons special opponents!
-invokes a mana storm.
-invokes a darkness storm.
-invokes a starburst.
+invokes a Mana Storm.
+invokes a Darkness Storm.
+invokes a Starburst.
 throws a Psycho-Spear.
-invokes the Hand of Doom!
+invokes the Hand of Doom! You resist the effects!
 casts a Globe of Invulnerability.
 magically summons Lords of Amber!
 yells 'The World!' Time has stopped!
 casts Anti-Magic. You feel your spells are blocked!
 throws a large rock.
 invokes a stasis field.
-casts polymorph other ... You turn into a giant toad!
-says, 'I'm BABY SATAN'
+casts Polymorph Other... You turn into a giant toad!
+says, 'I'm BABY SATAN!'
 
 N:1063:lousy, the King of louses
 says, 'You, transform a louse!'
@@ -843,6 +844,32 @@ says, 'Have you seen young Ivan? I invited him to come over, but he never showed
 says, 'You seem entertaining, don't go anywhere just yet.'
 says, 'Won't you stay for dinner? I have soup boiling.'
 casts an impressive but ineffective dazzling spell.
+
+N:1304:Spulga, the Troll Priestess
+says, 'Every troll priest and ogre shaman there is, I taught them all they know; but I know more.'
+yells, 'This cave is ours! It shall always be ours!'
+says, 'It's a filthy lie! I never bribed the Maintainer to evict Othrod!'
+says, 'You are nothing! Nothing - just as, without me, this cave would be nothing.'
+screams, 'Die, you filthy pea-brained bastard of a maggot!'
+says, 'My name is Spulga. Please do not call me Yubich.'
+says, 'Have you been listening to their lies? They're all jealous of me - just like you are.'
+says, 'You are scum. You are puny. Come back when you've learned a few things - if you can.'
+says, 'Do you know what trolls were like before I took charge? They were a byword for stupidity, for ugliness, for mindless and uncaring brutality - didn't even have a cave to live in!'
+says, 'Leave now, and we might let you live.'
+says, 'I know why you are here - you want my riches. Not gonna happen.'
+screams, 'I built this glory up from nothing! I will rule here forever!'
+says, 'You think it's such an original idea - let's rob the trolls of their home, just because. You think no other idiot tried that before?'
+spits on you contemptuously.
+
+N:1305:Pryftidustulyx, the Communist Dragon
+says, 'A working-class hero is something to be... eating the rich and the privileged, and taking all their treasures.'
+says, 'Want a smoke?'
+says, 'Yo mama's so fat, she gets stuck in trap doors.'
+says, 'From each according to his abilities, to each according to his needs; it is hardly my fault that I have greater needs than most.'
+says, 'You are horrified at our intending to do away with private loot; but the common workers of the towns already have none.'
+
+N:1307:Burning bush
+says, 'G'day, mate, I am the God of your fathers, of Abie, of Ike, and of Jake.'
 
 N:*:Default lines
 cackles evilly.
