@@ -12,27 +12,27 @@ static void _get_flags(u32b flgs[OF_ARRAY_SIZE])
         add_flag(flgs, OF_RES_FEAR);
 }
 
-static int _get_powers(spell_info* spells, int max)
+static power_info _get_good_powers[] =
 {
-    int ct = 0;
-    spell_info* spell = &spells[ct++];
+    { A_WIS, { 30, 30, 70, holy_lance_spell}},
+    { -1, {-1, -1, -1, NULL}}
+};
+static power_info _get_evil_powers[] =
+{
+    { A_WIS, { 30, 30, 70, hell_lance_spell}},
+    { -1, {-1, -1, -1, NULL}}
+};
 
+static power_info *_get_powers(void)
+{
     if (is_good_realm(p_ptr->realm1))
     {
-        spell->level = 30;
-        spell->cost = 30;
-        spell->fail = calculate_fail_rate(spell->level, 70, p_ptr->stat_ind[A_WIS]);
-        spell->fn = holy_lance_spell;
+        return _get_good_powers;
     }
     else
     {
-        spell->level = 30;
-        spell->cost = 30;
-        spell->fail = calculate_fail_rate(spell->level, 70, p_ptr->stat_ind[A_WIS]);
-        spell->fn = hell_lance_spell;
+        return _get_evil_powers;
     }
-
-    return ct;
 }
 
 static caster_info * _caster_info(void)
@@ -93,7 +93,7 @@ class_t *paladin_get_class(void)
         me.stats[A_CHR] =  2;
         me.base_skills = bs;
         me.extra_skills = xs;
-        me.life = 111;
+        me.life = 110;
         me.base_hp = 12;
         me.exp = 135;
         me.pets = 40;
@@ -105,7 +105,7 @@ class_t *paladin_get_class(void)
         me.caster_info = _caster_info;
         /* TODO: This class uses spell books, so we are SOL
         me.get_spells = _get_spells;*/
-        me.get_powers = _get_powers;
+        me.get_powers_fn = _get_powers;
         me.character_dump = spellbook_character_dump;
         me.get_flags = _get_flags;
         init = TRUE;
