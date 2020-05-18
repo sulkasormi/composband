@@ -115,15 +115,17 @@ static void _barbaric_resistance_spell(int cmd, variant *res)
     case SPELL_CAST:
     {
         int base = 10;
+        int dur;
 
         if (p_ptr->shero)
             base = 20;
 
-        set_oppose_acid(randint1(base) + base, FALSE);
-        set_oppose_elec(randint1(base) + base, FALSE);
-        set_oppose_fire(randint1(base) + base, FALSE);
-        set_oppose_cold(randint1(base) + base, FALSE);
-        set_oppose_pois(randint1(base) + base, FALSE);
+        dur = randint1(base) + base;
+        set_oppose_acid(dur, FALSE);
+        set_oppose_elec(dur, FALSE);
+        set_oppose_fire(dur, FALSE);
+        set_oppose_cold(dur, FALSE);
+        set_oppose_pois(dur, FALSE);
 
         var_set_bool(res, TRUE);
         break;
@@ -998,7 +1000,7 @@ static void _learn_spell(int book, int spell)
 
 static bool _gain_spell(int book)
 {
-    spell_info spells[_SPELLS_PER_BOOK];
+    power_info spells[_SPELLS_PER_BOOK];
     int        indices[_SPELLS_PER_BOOK];
     int        which;
     int        ct = 0, i;
@@ -1015,16 +1017,17 @@ static bool _gain_spell(int book)
 
         if (!_is_spell_known(book, i) && src->level <= p_ptr->lev)
         {
-            spell_info *dest = &spells[ct];
+            power_info *dest = &spells[ct];
 
-            dest->level = src->level;
-            dest->cost = src->cost;
-            dest->fail = calculate_fail_rate(
+            dest->spell.level = src->level;
+            dest->spell.cost = src->cost;
+            dest->spell.fail = calculate_fail_rate(
                 src->level,
                 src->fail,
                 p_ptr->stat_ind[A_STR]
             );
-            dest->fn = src->fn;
+            dest->spell.fn = src->fn;
+            dest->stat = A_STR;
             indices[ct] = i;
 
             ct++;
@@ -1152,12 +1155,13 @@ static void _calc_bonuses(void)
     }
 }
 
-static int _get_spells_imp(spell_info* spells, int max, int book, bool total_skip)
+static int _get_spells_imp(spell_info* spells, int book, bool total_skip)
 {
-    int ct = 0, skip = 0, i;
+    int ct = 0, skip = 0, max = MAX_SPELLS, i;
     for (i = 0; i < _SPELLS_PER_BOOK; i++)
     {
-        spell_info *src, *dest;
+        spell_info *src;
+        spell_info *dest;
 
         if (ct >= max) break;
         src = &_books[book].spells[i];
@@ -1191,23 +1195,25 @@ static void _book_menu_fn(int cmd, int which, vptr cookie, variant *res)
     }
 }
 
-static int _get_spells(spell_info* spells, int max)
+static spell_info *_get_spells(void)
 {
     int idx = -1;
     int ct = 0;
     menu_t menu = { "Use which group?", NULL, NULL,
                     _book_menu_fn, _books, 4, 0 };
+    static spell_info spells[10];
 
     idx = menu_choose(&menu);
-    if (idx < 0) return 0;
+    if (idx < 0) return NULL;
 
-    ct = _get_spells_imp(spells, max, idx, FALSE);
+    ct = _get_spells_imp(spells, idx, FALSE);
     if (ct == 0)
     {
         msg_print("You don't know any of those techniques yet!");
-        return 0;
+        return NULL;
     }
-    return 8;
+    spells[8].fn = NULL;
+    return spells;
 }
 
 static void _get_flags(u32b flgs[OF_ARRAY_SIZE])
@@ -1217,13 +1223,19 @@ static void _get_flags(u32b flgs[OF_ARRAY_SIZE])
 
 static void _character_dump(doc_ptr doc)
 {
+    power_info powers[MAX_SPELLS];
     spell_info spells[MAX_SPELLS];
     int        ct = 0, i;
 
     for (i = 0; i < 4; i++)
-        ct += _get_spells_imp(spells + ct, MAX_SPELLS - ct, i, TRUE);
+        ct += _get_spells_imp(spells + ct, i, TRUE);
 
-    py_display_spells(doc, spells, ct);
+    if (!ct) return;
+    spells[ct].fn = NULL;
+
+    ct = get_spells_aux(powers, MAX_SPELLS, spells, TRUE);
+
+    py_display_spells(doc, powers, ct);
 }
 
 
@@ -1277,7 +1289,7 @@ class_t *rage_mage_get_class(void)
 
         me.birth = _birth;
         me.calc_bonuses = _calc_bonuses;
-        me.get_spells = _get_spells;
+        me.get_spells_fn = _get_spells;
         me.get_flags = _get_flags;
         me.caster_info = _caster_info;
         me.player_action = _player_action;
