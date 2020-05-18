@@ -121,6 +121,11 @@ monster_type *mon_get_parent(monster_type *m_ptr)
 void mon_set_parent(monster_type *m_ptr, int pm_idx)
 {
     m_ptr->parent_m_idx = pm_idx;
+    if (pm_idx > 0)
+    {
+        monster_type *pm_ptr = &m_list[pm_idx];
+        if (pm_ptr->r_idx) m_ptr->parent_r_idx = pm_ptr->r_idx;
+    }
 }
 
 /*
@@ -746,7 +751,7 @@ void pack_on_slay_monster(int m_idx)
                  for (j = 1; j < max_d_idx; j++)
                  {
                      dungeon_info_type *d_ptr = &d_info[j];
-                     if ((!d_ptr->initial_guardian) || (dungeon_flags[j] & DUNGEON_NO_GUARDIAN)) continue;
+                     if ((!d_ptr->initial_guardian) || (dungeon_flags[j] & DUNGEON_NO_GUARDIAN) || (d_info[j].flags1 & DF1_SUPPRESSED)) continue;
                      if (d_ptr->initial_guardian == m_ptr->r_idx)
                      {
                          dungeon_flags[j] |= DUNGEON_NO_GUARDIAN;
@@ -950,6 +955,9 @@ bool mon_is_type(int r_idx, int type)
     case SUMMON_YEEK:
         if (r_ptr->d_char == 'y') return TRUE;
         break;
+    case SUMMON_VANARA:
+        if ((r_ptr->d_char == 'Y') && ((r_ptr->flags3 & RF3_HINDU2) || (r_ptr->dungeon == DUNGEON_MERU))) return TRUE;
+        break;
     case SUMMON_ANT:
         if (r_ptr->d_char == 'a') return TRUE;
         break;
@@ -992,7 +1000,7 @@ bool mon_is_type(int r_idx, int type)
         break;
     case SUMMON_PANTHEON:
     {
-        if ((!summon_pantheon_hack) || (summon_pantheon_hack >= PANTHEON_MAX))
+        if (!is_active_pantheon(summon_pantheon_hack))
         { /* Paranoia - detect problem and summon uniques instead */
             if (r_ptr->flags1 & RF1_UNIQUE) return TRUE;
             break;
@@ -1008,7 +1016,7 @@ bool mon_is_type(int r_idx, int type)
         if (r_ptr->d_char == 'q' && (r_ptr->flags7 & RF7_RIDING)) return TRUE;
         break;
     case SUMMON_CAMELOT:
-        if ((r_ptr->flags2 & RF2_CAMELOT) && (r_ptr->flags2 & RF2_KNIGHT)) return TRUE;
+        if ((r_ptr->dungeon == DUNGEON_CAMELOT) && (r_ptr->flags2 & RF2_KNIGHT)) return TRUE;
         break;
     case SUMMON_NIGHTMARE:
         if (r_idx == MON_NIGHTMARE) return TRUE;
@@ -1223,6 +1231,15 @@ bool mon_is_type(int r_idx, int type)
     case SUMMON_DEAD_UNIQ:
         if ((r_ptr->flags1 & RF1_UNIQUE) && (r_ptr->max_num == 0) && (r_ptr->cur_num == 0)) return TRUE;
         break;
+    case SUMMON_CAT:
+        if (r_ptr->d_char == 'f') return TRUE;
+        break;
+    case SUMMON_SERPENT:
+        if (r_ptr->d_char == 'J') return TRUE;
+        break;
+    case SUMMON_NAGA:
+        if (r_ptr->d_char == 'n') return TRUE;
+        break;
     }
     return FALSE;
 }
@@ -1235,9 +1252,9 @@ static int chameleon_change_m_idx = 0;
  * Some dungeon types restrict the possible monsters.
  * Return TRUE is the monster is OK and FALSE otherwise
  */
-static bool restrict_monster_to_dungeon(int r_idx)
+bool restrict_monster_to_dungeon(int r_idx, int which)
 {
-    dungeon_info_type *d_ptr = &d_info[dungeon_type];
+    dungeon_info_type *d_ptr = &d_info[which];
     monster_race *r_ptr = &r_info[r_idx];
     byte a;
 
@@ -1261,6 +1278,7 @@ static bool restrict_monster_to_dungeon(int r_idx)
             return FALSE;
     }
 
+    if (r_ptr->dungeon == dungeon_type) return TRUE; /* Accept associated monsters */
     if (d_ptr->special_div >= 64) return TRUE;
     if (summon_specific_type && !(d_ptr->flags1 & DF1_CHAMELEON)) return TRUE;
 
@@ -1302,7 +1320,7 @@ static bool restrict_monster_to_dungeon(int r_idx)
             if ((d_ptr->mflagsr & r_ptr->flagsr) != d_ptr->mflagsr)
                 return FALSE;
         }
-        for (a = 0; a < 5; a++)
+        for (a = 0; a < MAX_R_CHAR; a++)
             if (d_ptr->r_char[a] && (d_ptr->r_char[a] != r_ptr->d_char)) return FALSE;
 
         return TRUE;
@@ -1343,7 +1361,7 @@ static bool restrict_monster_to_dungeon(int r_idx)
             if ((d_ptr->mflagsr & r_ptr->flagsr) != d_ptr->mflagsr)
                 return TRUE;
         }
-        for (a = 0; a < 5; a++)
+        for (a = 0; a < MAX_R_CHAR; a++)
             if (d_ptr->r_char[a] && (d_ptr->r_char[a] != r_ptr->d_char)) return TRUE;
 
         return FALSE;
@@ -1356,7 +1374,7 @@ static bool restrict_monster_to_dungeon(int r_idx)
         if (r_ptr->flags8 & d_ptr->mflags8) return TRUE;
         if (r_ptr->flags9 & d_ptr->mflags9) return TRUE;
         if (r_ptr->flagsr & d_ptr->mflagsr) return TRUE;
-        for (a = 0; a < 5; a++)
+        for (a = 0; a < MAX_R_CHAR; a++)
         {
             if (d_ptr->r_char[a] == r_ptr->d_char)
                 return TRUE;
@@ -1381,7 +1399,7 @@ static bool restrict_monster_to_dungeon(int r_idx)
         if (r_ptr->flags8 & d_ptr->mflags8) return FALSE;
         if (r_ptr->flags9 & d_ptr->mflags9) return FALSE;
         if (r_ptr->flagsr & d_ptr->mflagsr) return FALSE;
-        for (a = 0; a < 5; a++)
+        for (a = 0; a < MAX_R_CHAR; a++)
             if (d_ptr->r_char[a] == r_ptr->d_char) return FALSE;
 
         return TRUE;
@@ -1442,7 +1460,7 @@ errr get_mon_num_prep(monster_hook_type monster_hook,
         /* Accept this monster */
         entry->prob2 = entry->prob1;
 
-        if (py_in_dungeon() && !restrict_monster_to_dungeon(entry->index))
+        if (py_in_dungeon() && !restrict_monster_to_dungeon(entry->index, dungeon_type))
         {
             int hoge = entry->prob2 * d_info[dungeon_type].special_div;
             entry->prob2 = hoge / 64;
@@ -1520,6 +1538,7 @@ int mon_available_num(monster_race *r_ptr)
  * fail, and return zero, but this should *almost* never happen.
  */
 static bool _ignore_depth_hack = FALSE;
+static bool _danger_hack = FALSE;
 
 s16b get_mon_num(int level)
 {
@@ -1549,10 +1568,24 @@ s16b get_mon_num_aux(int level, int min_level, u32b options)
     }
     else if ((summon_specific_who >= 0) && ((is_friendly_idx(summon_specific_who)) || (is_pet_idx(summon_specific_who))))
     {
+        _danger_hack = FALSE;
         if ((one_in_(2)) && (summon_specific_type != SUMMON_UNIQUE)) options |= GMN_NO_UNIQUES;
         else options |= GMN_LIMIT_UNIQUES;
         if (one_in_(2)) options |= GMN_NO_SUMMONERS;
     }
+
+    if ((_danger_hack) && (p_ptr->cursed & OFC_DANGER) && (summon_specific_who >= 0))
+    {
+        int bonus;
+        if (summon_specific_who > 0)
+        {
+            bonus = MAX(4, (level + 15) / 10);
+        }
+        else bonus = MAX(4, (level + 40) / 20);
+        if (!dungeon_type) bonus -= (bonus / 3);
+        level += MIN(bonus, MAX_DEPTH - level - 1);
+    }
+    else _danger_hack = FALSE;
 
     if (options & GMN_ALLOW_OOD)
     {
@@ -1577,6 +1610,8 @@ s16b get_mon_num_aux(int level, int min_level, u32b options)
             pls_level += 2;
             level += 3;
         }
+
+        if (_danger_hack) pls_kakuritu -= (pls_kakuritu / 4);
 
         /* Boost the level */
         if (level > 0 && !p_ptr->inside_battle && !(d_info[dungeon_type].flags1 & DF1_BEGINNER) && !(options & GMN_LIMIT_UNIQUES))
@@ -1649,7 +1684,7 @@ s16b get_mon_num_aux(int level, int min_level, u32b options)
             if (r_ptr->flags7 & RF7_AQUATIC) continue;
             if ((!no_wilderness) && (r_ptr->flags3 & RF3_EVIL) && !(r_ptr->flags3 & RF3_GOOD)) continue;
             if (quests_get_current() && (r_ptr->flags1 & RF1_NO_QUEST)) continue;
-            if ((r_ptr->level < 45) && (!(r_ptr->flags2 & RF2_CAMELOT))) continue;
+            if ((r_ptr->level < 45) && (r_ptr->dungeon != DUNGEON_CAMELOT)) continue;
             if (summon_specific_who != SUMMON_WHO_NOBODY && (r_ptr->flags1 & RF1_NO_SUMMON)) continue;
             table[i].prob3 = table[i].prob2;
             delta = level - r_ptr->level;
@@ -1665,15 +1700,16 @@ s16b get_mon_num_aux(int level, int min_level, u32b options)
         {
             /* Camelot Knights are all rarity 1 and extremely OP for their depth.
              * They are way too common in no_wilderness games ... */
-            if ((r_ptr->flags2 & RF2_CAMELOT) && !one_in_(3)) continue;
+            if ((r_ptr->dungeon == DUNGEON_CAMELOT) && !one_in_(3)) continue;
+            if ((r_ptr->dungeon == DUNGEON_AUSSIE) && !one_in_(33)) continue;
             /* ... Olympians are rarity 3, which is OK, I think. */
         }
         else
         {
             int mon_pant = 0;
-            if ((r_ptr->flags2 & RF2_CAMELOT) && dungeon_type != DUNGEON_CAMELOT) continue;
-            if ((r_ptr->flags2 & RF2_SOUTHERING) && dungeon_type != DUNGEON_HIDEOUT) continue;
-            if ((r_ptr->flags2 & RF2_FOREST) && dungeon_type != DUNGEON_WOOD) continue;
+
+            /* Only generate Camelot Knights in Camelot, etc. */
+            if ((r_ptr->dungeon) && (r_ptr->dungeon != dungeon_type)) continue;
 
             /* Only generate Olympians in Mt. Olympus, etc. */
             mon_pant = monster_pantheon(r_ptr);
@@ -1691,6 +1727,9 @@ s16b get_mon_num_aux(int level, int min_level, u32b options)
 
         /* No point in generating memory mosses if the never_forget birth option is on */
         if ((never_forget) && (r_idx == MON_MEMORY_MOSS)) continue;
+
+        /* Post-game only */
+        if ((r_idx == MON_GCWADL) && (!p_ptr->total_winner) && (!p_ptr->wizard)) continue;
 
         if (!p_ptr->inside_battle && !chameleon_change_m_idx)
         {
@@ -1710,6 +1749,8 @@ s16b get_mon_num_aux(int level, int min_level, u32b options)
                 if (r_ptr->level > level - 4) continue;
                 if (r_ptr->level > 50 + randint1(42)) continue;
             }
+
+            if ((r_ptr->flags7 & RF7_FRIENDLY) && (_danger_hack)) continue;
 
             if ((options & GMN_NO_SUMMONERS) && (mon_race_can_summon(r_ptr, -1)) &&
                 (summon_specific_type != SUMMON_UNIQUE) && (summon_specific_type != SUMMON_KIN)) continue;
@@ -3283,8 +3324,7 @@ byte get_mspeed(monster_race *r_ptr)
  *
  * To give the player a sporting chance, any monster that appears in
  * line-of-sight and is extremely dangerous can be marked as
- * "FORCE_SLEEP", which will cause them to be placed with low energy,
- * which often (but not always) lets the player move before they do.
+ * "FORCE_SLEEP", which will cause them to be flagged as "nice".
  *
  * This routine refuses to place out-of-depth "FORCE_DEPTH" monsters.
  *
@@ -3505,6 +3545,8 @@ int place_monster_one(int who, int y, int x, int r_idx, int pack_idx, u32b mode)
 
     m_ptr->exp = 0;
 
+    m_ptr->parent_r_idx = 0;
+
     if (who > 0)
     {
         /* Your pet summons its pet. */
@@ -3661,6 +3703,8 @@ int place_monster_one(int who, int y, int x, int r_idx, int pack_idx, u32b mode)
         m_ptr->mflag2 |= MFLAG2_NATIVE;
     }
 
+    energy_need_hack = SPEED_TO_ENERGY(m_ptr->mspeed);
+        
     /* Give a random starting energy */
     if (!ironman_nightmare)
     {
@@ -4144,8 +4188,12 @@ bool place_monster(int y, int x, u32b mode)
     else
         get_mon_num_prep(get_monster_hook(), get_monster_hook2(y, x));
 
+    _danger_hack = TRUE;
+
     /* Pick a monster */
     r_idx = get_mon_num(monster_level);
+
+    _danger_hack = FALSE;
 
     /* Handle failure */
     if (!r_idx) return (FALSE);
@@ -4303,6 +4351,8 @@ bool alloc_monster(int dis, u32b mode)
             if (!cave_empty_bold(y, x)) continue;
         }
 
+        if ((mode & PM_FORCE_AQUATIC) && (!cave_have_flag_bold(y, x, FF_WATER))) continue;
+
         /* Accept far away grids */
         if (distance(y, x, py, px) > dis) break;
     }
@@ -4332,7 +4382,8 @@ bool alloc_monster(int dis, u32b mode)
     if ( dun_level >= 40
       && randint1(5000) <= dun_level
       && dungeon_type != DUNGEON_ARENA
-      && dungeon_type != DUNGEON_MAZE ) /* redundant */
+      && dungeon_type != DUNGEON_MAZE  /* redundant */
+      && !level_is_questlike(dungeon_type, dun_level))
     {
         if (alloc_horde(y, x))
         {
@@ -4440,10 +4491,6 @@ static bool summon_specific_okay(int r_idx)
  *
  * We will attempt to place the monster up to 10 times before giving up.
  *
- * Note: SUMMON_UNIQUE and SUMMON_AMBERITES will summon Unique's
- * Note: SUMMON_HI_UNDEAD and SUMMON_HI_DRAGON may summon Unique's
- * Note: None of the other summon codes will ever summon Unique's.
- *
  * This function has been changed. We now take the "monster level"
  * of the summoning monster as a parameter, and use that, along with
  * the current dungeon level, to help determine the level of the
@@ -4523,6 +4570,9 @@ bool summon_specific(int who, int y1, int x1, int lev, int type, u32b mode)
     /* Hack - preserve old level of summoning in the Vault */
     if ((quest_id_current()) && (strpos("The Vault", quests_get_current()->name) == 1)) summon_level -= 5;
 
+    /* Activate danger hack */
+    _danger_hack = TRUE;
+
     /* Pick a monster, using the level calculation */
     r_idx = get_mon_num((summon_level + lev) / 2 + 5);
 
@@ -4537,6 +4587,9 @@ bool summon_specific(int who, int y1, int x1, int lev, int type, u32b mode)
         summon_ring_bearer = FALSE;
         r_idx = get_mon_num((summon_level + lev) / 2 + 5);
     }
+
+    /* Disactivate danger hack */
+    _danger_hack = FALSE;
 
     /* Hack: For summoning spells, try again ignoring any
              max depth restrictions. For example, Summon Manes
@@ -4565,7 +4618,8 @@ bool summon_specific(int who, int y1, int x1, int lev, int type, u32b mode)
 
     if (mon_summoned && p_ptr->cult_of_personality)
     {
-        if (one_in_(2) && !mon_save_p(r_idx, A_CHR))
+        int _odds = (p_ptr->cursed & OFC_DANGER) ? 4 : 2;
+        if (one_in_(_odds) && !mon_save_p(r_idx, A_CHR))
         {
             mode |= PM_FORCE_FRIENDLY;
             if (!mon_save_p(r_idx, A_CHR))
@@ -4609,7 +4663,7 @@ bool summon_named_creature (int who, int oy, int ox, int r_idx, u32b mode)
     if ((!(r_ptr->flags7 & RF7_GUARDIAN) || no_wilderness || p_ptr->wizard) && r_ptr->cur_num < mon_available_num(r_ptr))
         result = place_monster_aux(who, y, x, r_idx, (mode | PM_NO_KAGE));
 
-    if (!result && (r_ptr->flags1 & RF1_UNIQUE) && one_in_(2))
+    if (!result && (r_ptr->flags1 & RF1_UNIQUE) && ((one_in_(2)) || (r_idx == MON_VIDARR)))
         do_return = TRUE;
 
     if (do_return)
@@ -4627,8 +4681,10 @@ bool summon_named_creature (int who, int oy, int ox, int r_idx, u32b mode)
             cave[oy][ox].m_idx = 0;
 
             cave[y][x].m_idx = i;
+            (void)set_monster_csleep(i, 0);
             m_ptr->fy = y;
             m_ptr->fx = x;
+            if (r_idx != MON_BIKETAL) m_ptr->mflag |= (MFLAG_NICE);
 
             reset_target(m_ptr);
             update_mon(i, TRUE);
