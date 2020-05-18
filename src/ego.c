@@ -1139,7 +1139,10 @@ static void _create_amulet_aux(object_type *o_ptr, int level, int power, int mod
                 add_flag(o_ptr->flags, OF_SUST_INT);
                 break;
             case 3:
-                add_flag(o_ptr->flags, OF_EASY_SPELL);
+                if (abs(power) >= 2 && one_in_(10) && level >= 70)
+                    add_flag(o_ptr->flags, OF_REGEN_MANA);
+                else
+                    add_flag(o_ptr->flags, OF_EASY_SPELL);
                 break;
             case 4:
                 if (abs(power) >= 2 && one_in_(2))
@@ -1610,7 +1613,13 @@ bool obj_create_device(object_type *o_ptr, int level, int power, int mode)
     /* Create the device and pick the effect. This can fail if, for example,
        mode is AM_GOOD and we are too shallow for any of the good effects. */
     if (!device_init(o_ptr, level, mode))
+    {
+        /* But failing is bad, so let's try again...
+         * Boost the level a mite to make up for the nongoodness */
+        level += 2;
+        if (!device_init(o_ptr, level, 0))
         return FALSE;
+    }
 
     if (abs(power) > 1)
     {
@@ -2428,7 +2437,7 @@ void obj_create_weapon(object_type *o_ptr, int level, int power, int mode)
         todam2 = (todam2 + 1)/2;
     }
 
-    if (!crafting && !object_is_(o_ptr, TV_BOW, SV_HARP))
+    if (!crafting && !obj_is_harp(o_ptr))
     {
         if (power == -1)
         {
@@ -2471,7 +2480,7 @@ void obj_create_weapon(object_type *o_ptr, int level, int power, int mode)
              * has been copied to create_artifact() in artifact.c */
             break;
         }
-        else if (o_ptr->sval == SV_HARP)
+        else if (obj_is_harp(o_ptr))
             _ego_create_harp(o_ptr, level);
         else
         {
@@ -2866,29 +2875,70 @@ static void _ego_create_body_armor(object_type *o_ptr, int level)
                 done = FALSE;
             else
             {
+                int kieppi;
                 o_ptr->weight = (2 * k_info[o_ptr->k_idx].weight / 3);
                 o_ptr->ac = k_info[o_ptr->k_idx].ac + 5;
-                if (one_in_(4))
+                if (level <= 40)
                 {
-                    add_flag(o_ptr->flags, OF_CON);
-                    if (one_in_(4)) add_flag(o_ptr->flags, OF_SUST_CON);
+                    if (one_in_(4)) add_flag(o_ptr->flags, OF_DEC_DEX);
+                    if (one_in_(4)) add_flag(o_ptr->flags, OF_DEC_STEALTH);
                 }
-                if (one_in_(4))
-                    add_flag(o_ptr->flags, OF_DEC_DEX);
-                if (one_in_(4))
-                    add_flag(o_ptr->flags, OF_SUST_STR);
-                if (one_in_(4))
-                    add_flag(o_ptr->flags, OF_DEC_STEALTH);
-                if (one_in_(2))
-                    add_flag(o_ptr->flags, OF_REGEN);
-                if (one_in_(3))
-                    add_flag(o_ptr->flags, OF_RES_DARK);
-                if (one_in_(600 / MAX(10, MIN(100, level))))
-                    add_flag(o_ptr->flags, OF_RES_DISEN);
+                else if (one_in_(8))
+                {
+                    add_flag(o_ptr->flags, OF_STEALTH);
+                    if (one_in_(1200 / MIN(60, level))) add_flag(o_ptr->flags, OF_SPEED);
+                }
+                if ((level > 30) && (one_in_(300 / MIN(60, level))))
+                {
+                    o_ptr->to_h += randint1(3) + m_bonus(4, level);
+                    o_ptr->to_d += randint1(3) + m_bonus(3, level);
+                    add_flag(o_ptr->flags, OF_SHOW_MODS);
+                }
                 if (one_in_(300 / MAX(20, MIN(60, level))))
-                    add_flag(o_ptr->flags, OF_RES_BLIND);
-                if (one_in_(300 / MAX(20, MIN(60, level))))
-                    add_flag(o_ptr->flags, OF_FREE_ACT);
+                {
+                    o_ptr->pval++;
+                }
+                if ((level > 60) && (one_in_(ACTIVATION_CHANCE * 2)))
+                {
+                    effect_add_random(o_ptr, BIAS_WARRIOR);
+                }
+                kieppi = 1;
+                while (randint1(150 + level) > 150)
+                {
+                    kieppi++;
+                }
+                while (kieppi > 0)
+                {
+                    if (one_in_(4))
+                    {
+                        add_flag(o_ptr->flags, OF_CON);
+                        if (one_in_(4)) add_flag(o_ptr->flags, OF_SUST_CON);
+                    }
+                    if (one_in_(4))
+                        add_flag(o_ptr->flags, OF_SUST_STR);
+                    if (one_in_(2))
+                        add_flag(o_ptr->flags, OF_REGEN);
+                    if (one_in_(10))
+                        add_flag(o_ptr->flags, OF_SEARCH);
+                    if (one_in_(3))
+                        add_flag(o_ptr->flags, OF_RES_DARK);
+                    if (one_in_(600 / MAX(10, MIN(100, level))))
+                        add_flag(o_ptr->flags, OF_RES_DISEN);
+                    if (one_in_(300 / MAX(20, MIN(75, level))))
+                        add_flag(o_ptr->flags, OF_RES_BLIND);
+                    if (one_in_(300 / MAX(20, MIN(75, level))))
+                        add_flag(o_ptr->flags, OF_FREE_ACT);
+                    if (one_in_(1200 / MAX(20, MIN(75, level))))
+                        add_flag(o_ptr->flags, OF_REFLECT);
+                    if (one_in_(800 / MAX(20, MIN(75, level))))
+                        one_ele_resistance(o_ptr);
+                    if (one_in_(3200 / MAX(20, MIN(75, level))))
+                        one_resistance(o_ptr);
+                    if (one_in_(3200 / MAX(20, MIN(75, level))))
+                        o_ptr->weight = (k_info[o_ptr->k_idx].weight / 2);
+                    if (one_in_(4)) o_ptr->to_a += randint1(4) + m_bonus(4, level);
+                    kieppi--;
+                }
             }
             break;
         case EGO_BODY_URUK_HAI:
@@ -2946,6 +2996,53 @@ static void _ego_create_body_armor(object_type *o_ptr, int level)
             if (one_in_(ACTIVATION_CHANCE * 2))
                 effect_add_random(o_ptr, BIAS_DEMON);
             if (one_in_(2)) o_ptr->to_h += 2;
+            break;
+        case EGO_BODY_EMU_LORD:
+            if ((o_ptr->tval != TV_SOFT_ARMOR) || (o_ptr->sval != SV_FILTHY_RAG) || (randint0(2)))
+            {
+                done = FALSE;
+                break;
+            }
+            else
+            {
+                int resists = 1 + m_bonus(12, level);
+                o_ptr->to_a += m_bonus(32, level);
+                if (randint1(120) < level)
+                {
+                    o_ptr->to_h += m_bonus(8, level);
+                    o_ptr->to_d += m_bonus(8, level);
+                }
+                while (resists > 0)
+                {
+                    if (one_in_(2)) one_ele_resistance(o_ptr);
+                    else one_high_resistance(o_ptr);
+                    resists--;
+                }
+                for (resists = 1 + m_bonus(3, level); resists; resists--)
+                {
+                    one_low_esp(o_ptr);
+                }
+                if (randint1(150) < level) add_flag(o_ptr->flags, OF_REGEN);
+                if (randint1(150) < level) add_flag(o_ptr->flags, OF_SLOW_DIGEST);
+                if (randint1(250) < level) add_flag(o_ptr->flags, OF_REFLECT);
+                if (randint1(level) > 20) add_flag(o_ptr->flags, OF_STR);
+                if (randint1(level) > 20) add_flag(o_ptr->flags, OF_INT);
+                if (randint1(level) > 20) add_flag(o_ptr->flags, OF_WIS);
+                if (randint1(level) > 20) add_flag(o_ptr->flags, OF_DEX);
+                if (randint1(level) > 20) add_flag(o_ptr->flags, OF_CON);
+                if (randint1(level) > 20) add_flag(o_ptr->flags, OF_CHR);
+                if (randint1(level) > 40) add_flag(o_ptr->flags, OF_SUST_STR);
+                if (randint1(level) > 40) add_flag(o_ptr->flags, OF_SUST_INT);
+                if (randint1(level) > 40) add_flag(o_ptr->flags, OF_SUST_WIS);
+                if (randint1(level) > 40) add_flag(o_ptr->flags, OF_SUST_DEX);
+                if (randint1(level) > 40) add_flag(o_ptr->flags, OF_SUST_CON);
+                if (randint1(level) > 40) add_flag(o_ptr->flags, OF_SUST_CHR);
+                if (randint1(level) > 40) add_flag(o_ptr->flags, OF_STEALTH);
+                if (randint1(level) > 50) add_flag(o_ptr->flags, OF_HOLD_LIFE);
+                if (randint1(level) > 50) add_flag(o_ptr->flags, OF_SPEED);
+                if (randint1(level) > 60) add_flag(o_ptr->flags, OF_LEVITATION);
+                if (randint1(level) > 80) add_flag(o_ptr->flags, OF_RES_TIME);
+            }
             break;
         case EGO_BODY_AUGMENTATION:
             break;
@@ -3047,6 +3144,10 @@ static void _ego_create_crown(object_type *o_ptr, int level)
 
             add_flag(o_ptr->flags, OF_SHOW_MODS);
         }
+        else if ((level > 70) && (one_in_(30)))
+        {
+            add_flag(o_ptr->flags, OF_REGEN_MANA);
+        }
 
         if (level > 70 && one_in_(10))
             add_flag(o_ptr->flags, OF_SPEED);
@@ -3101,6 +3202,14 @@ static void _ego_create_helmet(object_type *o_ptr, int level)
         o_ptr->name2 = ego_choose_type(EGO_TYPE_HELMET, level);
         done = TRUE;
 
+        if ((o_ptr->sval == SV_POINTY_HAT) && ((o_ptr->name2 != EGO_ARMOR_SEEING) &&
+            (o_ptr->name2 != EGO_HELMET_KNOWLEDGE) && (o_ptr->name2 != EGO_HELMET_TOMTE) &&
+            (o_ptr->name2 != EGO_CROWN_MAGI) && (o_ptr->name2 != EGO_HELMET_WITCH)))
+        {
+            done = FALSE;
+            continue;
+        }
+
         switch (o_ptr->name2)
         {
         case EGO_ARMOR_PROTECTION:
@@ -3114,7 +3223,7 @@ static void _ego_create_helmet(object_type *o_ptr, int level)
             }
             break;
         case EGO_HELMET_DWARVEN:
-            if (o_ptr->sval == SV_HARD_LEATHER_CAP || o_ptr->sval == SV_DRAGON_HELM)
+            if (o_ptr->sval == SV_HARD_LEATHER_CAP || o_ptr->sval == SV_DRAGON_HELM || o_ptr->sval == SV_POINTY_HAT)
             {
                 done = FALSE;
                 break;
@@ -3125,11 +3234,12 @@ static void _ego_create_helmet(object_type *o_ptr, int level)
                 add_flag(o_ptr->flags, OF_TUNNEL);
             break;
         case EGO_HELMET_TOMTE:
-            if (o_ptr->sval != SV_KNIT_CAP)
+            if ((o_ptr->sval != SV_KNIT_CAP) && (o_ptr->sval != SV_POINTY_HAT))
             {
                 done = FALSE;
                 break;
             }
+            o_ptr->weight = 8;
             if ((one_in_(2)) && (randint0(75) < level))
             {
                 add_flag(o_ptr->flags, OF_SPEED);
@@ -3142,6 +3252,113 @@ static void _ego_create_helmet(object_type *o_ptr, int level)
                 if (one_in_(2)) add_flag(o_ptr->flags, OF_SUST_DEX);
             }
             break;
+        case EGO_HELMET_WITCH:
+        {
+            int i, kiepit, taso;
+            if (o_ptr->sval != SV_POINTY_HAT)
+            {
+                done = FALSE;
+                break;
+            }
+            kiepit = 1 + m_bonus(5, level);
+            taso = MIN(100, level);
+            for (i = 0; i < kiepit; i++)
+            {
+                if ((one_in_(10)) && (!have_flag(o_ptr->flags, OF_RES_DARK)))
+                {
+                    add_flag(o_ptr->flags, OF_RES_DARK);
+                    taso -= 2;
+                }
+                else if ((one_in_(12)) && (!have_flag(o_ptr->flags, OF_RES_NETHER)))
+                {
+                    add_flag(o_ptr->flags, OF_RES_NETHER);
+                    taso -= 2;
+                }
+                else if ((taso > 25) && (randint0(192 - taso) < 7) && (!have_flag(o_ptr->flags, OF_RES_CHAOS)))
+                {
+                    add_flag(o_ptr->flags, OF_RES_CHAOS);
+                    taso -= 2;
+                }
+                if ((taso > 25) && (!have_flag(o_ptr->flags, OF_MAGIC_MASTERY)) && (randint0(172 - taso) < i))
+                {
+                    add_flag(o_ptr->flags, OF_MAGIC_MASTERY);
+                    taso -= 4;
+                }
+                else if ((taso > 25) && (!have_flag(o_ptr->flags, OF_EASY_SPELL)) && (randint0(256 - taso) < i))
+                {
+                    add_flag(o_ptr->flags, OF_EASY_SPELL);
+                    if (one_in_(3)) add_flag(o_ptr->flags, OF_DEC_MANA);
+                    taso -= 4;
+                }
+                else if ((taso > 25) && (!have_flag(o_ptr->flags, OF_SPELL_CAP)) && (randint0(384 - taso) < i))
+                {
+                    add_flag(o_ptr->flags, OF_SPELL_CAP);
+                    taso -= 4;
+                }
+                else if ((taso > 50) && (!have_flag(o_ptr->flags, OF_REGEN_MANA)) && (randint0(512 - taso) < i))
+                {
+                    add_flag(o_ptr->flags, OF_REGEN_MANA);
+                    taso -= 4;
+                }
+                if (one_in_(22))
+                {
+                    one_resistance(o_ptr);
+                    taso -= 2;
+                }
+                if ((!have_flag(o_ptr->flags, OF_SUST_INT)) && (one_in_(10)))
+                {
+                    add_flag(o_ptr->flags, OF_SUST_INT);
+                    taso -= 2;
+                }
+                if ((!have_flag(o_ptr->flags, OF_CHR)) && (one_in_(20)))
+                {
+                    add_flag(o_ptr->flags, OF_CHR);
+                    taso -= 2;
+                }
+                if ((!have_flag(o_ptr->flags, OF_LEVITATION)) && (one_in_(20)))
+                {
+                    add_flag(o_ptr->flags, OF_LEVITATION);
+                    taso -= 2;
+                }
+                if ((!have_flag(o_ptr->flags, OF_LORE2)) && (one_in_(100)))
+                {
+                    add_flag(o_ptr->flags, OF_LORE2);
+                    taso -= 2;
+                }
+                if ((!have_flag(o_ptr->flags, OF_SEE_INVIS)) && (one_in_(16)))
+                {
+                    add_flag(o_ptr->flags, OF_SEE_INVIS);
+                    taso -= 2;
+                }
+                if (one_in_(12))
+                {
+                    one_low_esp(o_ptr);
+                    taso -= 2;
+                }
+                if ((!have_flag(o_ptr->flags, OF_IGNORE_ACID)) && (one_in_(4)))
+                {
+                    add_flag(o_ptr->flags, OF_IGNORE_ACID);
+                    add_flag(o_ptr->flags, OF_IGNORE_ELEC);
+                    add_flag(o_ptr->flags, OF_IGNORE_FIRE);
+                    add_flag(o_ptr->flags, OF_IGNORE_COLD);
+                    taso -= 2;
+                }
+                if (i > 0) continue; /* Only check once for the effects below */
+                if (one_in_(8))
+                {
+                    add_flag(o_ptr->flags, OF_DEC_WIS);
+                }
+                if (one_in_(8))
+                {
+                    add_flag(o_ptr->flags, OF_VULN_LITE);
+                }
+                if (one_in_(ACTIVATION_CHANCE))
+                {
+                    effect_add_random(o_ptr, BIAS_DEMON);
+                }
+            }
+            break;
+        }
         case EGO_HELMET_SUNLIGHT:
             if (one_in_(3))
                 add_flag(o_ptr->flags, OF_VULN_DARK);
@@ -3198,6 +3415,48 @@ static void _ego_create_helmet(object_type *o_ptr, int level)
                 add_flag(o_ptr->flags, OF_VULN_LITE);
             if (one_in_(6))
                 add_flag(o_ptr->flags, OF_BRAND_VAMP);
+            break;
+        case EGO_CROWN_MAGI:
+            if (o_ptr->sval != SV_POINTY_HAT)
+            {
+                done = FALSE;
+                break;
+            }
+            if (one_in_(3))
+            {
+                one_high_resistance(o_ptr);
+            }
+            else
+            {
+                one_ele_resistance(o_ptr);
+                one_ele_resistance(o_ptr);
+                one_ele_resistance(o_ptr);
+                one_ele_resistance(o_ptr);
+            }
+            if (one_in_(7))
+                add_flag(o_ptr->flags, OF_EASY_SPELL);
+            if (one_in_(3))
+                add_flag(o_ptr->flags, OF_DEC_STR);
+    
+            if (one_in_(30))
+            {
+                add_flag(o_ptr->flags, OF_SPELL_POWER);
+                add_flag(o_ptr->flags, OF_DEC_CON);
+            }
+            else if (one_in_(3))
+            {
+                o_ptr->to_d += 4 + randint1(11);
+                while (one_in_(2))
+                    o_ptr->to_d++;
+
+                add_flag(o_ptr->flags, OF_SHOW_MODS);
+            }
+
+            if (level > 70 && one_in_(10))
+                add_flag(o_ptr->flags, OF_SPEED);
+
+            if (one_in_(ACTIVATION_CHANCE))
+                effect_add_random(o_ptr, BIAS_MAGE);
             break;
         }
     }
