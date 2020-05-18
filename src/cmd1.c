@@ -455,7 +455,9 @@ critical_t critical_shot(int weight, int plus)
 
     /* Snipers and Crossbowmasters get more crits */
     if (p_ptr->concent) i += i * p_ptr->concent / 10;
-    if (p_ptr->pclass == CLASS_SNIPER && p_ptr->shooter_info.tval_ammo == TV_BOLT) i = i * 3 / 2;
+    if (p_ptr->pclass == CLASS_SNIPER &&
+        ((p_ptr->shooter_info.tval_ammo == TV_BOLT) ||
+        (p_ptr->shooter_info.tval_ammo == TV_ANY_AMMO))) i = i * 3 / 2;
     if (weaponmaster_get_toggle() == TOGGLE_CAREFUL_AIM)
         i *= 3;
     if (p_ptr->pclass == CLASS_ARCHER) i += i * p_ptr->lev / 100;
@@ -732,833 +734,6 @@ s16b tot_dam_aux_monk(int tdam, monster_type *m_ptr, int mode)
     }
     return tdam * mult / 10 + bonus;
 }
-
-#define _MAX_CHAOS_SLAYS 15
-
-int _chaos_slays[_MAX_CHAOS_SLAYS] = {
-    OF_SLAY_ANIMAL,
-    OF_SLAY_EVIL,
-    OF_SLAY_GOOD,
-    OF_SLAY_UNDEAD,
-    OF_SLAY_DEMON,
-    OF_SLAY_ORC,
-    OF_SLAY_TROLL,
-    OF_SLAY_GIANT,
-    OF_SLAY_DRAGON,
-    OF_SLAY_HUMAN,
-    OF_BRAND_POIS,
-    OF_BRAND_ACID,
-    OF_BRAND_ELEC,
-    OF_BRAND_FIRE,
-    OF_BRAND_COLD,
-};
-
-s16b tot_dam_aux(object_type *o_ptr, int tdam, monster_type *m_ptr, s16b hand, int mode, bool thrown)
-{
-    int mult = 10;
-
-    monster_race *r_ptr = &r_info[m_ptr->r_idx];
-    int chaos_slay = 0;
-
-    u32b flgs[OF_ARRAY_SIZE] = {0};
-    char o_name[MAX_NLEN];
-
-    /* Extract the flags */
-    if (thrown)
-        obj_flags(o_ptr, flgs);
-    else
-    {
-        weapon_flags(hand, flgs);
-        switch (mode)
-        {
-        case DRACONIAN_STRIKE_ACID:
-            add_flag(flgs, OF_BRAND_ACID);
-            break;
-        case DRACONIAN_STRIKE_ELEC:
-            add_flag(flgs, OF_BRAND_ELEC);
-            break;
-        case DRACONIAN_STRIKE_FIRE:
-            add_flag(flgs, OF_BRAND_FIRE);
-            break;
-        case DRACONIAN_STRIKE_COLD:
-            add_flag(flgs, OF_BRAND_COLD);
-            break;
-        case DRACONIAN_STRIKE_POIS:
-            add_flag(flgs, OF_BRAND_POIS);
-            break;
-        case PY_ATTACK_MANA:
-            add_flag(flgs, OF_BRAND_MANA);
-            break;
-        }
-    }
-    /* Chaos Weapons now have random slay effects, and the slay so
-       chosen will augment any existing slay of the same type. */
-    if (have_flag(flgs, OF_BRAND_CHAOS))
-    {
-        chaos_slay = _chaos_slays[randint0(_MAX_CHAOS_SLAYS)];
-        object_desc(o_name, o_ptr, OD_NAME_ONLY | OD_OMIT_PREFIX | OD_COLOR_CODED);
-    }
-
-    /* Some "weapons" and "ammo" do extra damage */
-    switch (o_ptr->tval)
-    {
-        case TV_SHOT:   /* FYI for the curious: You may throw (v) a shot by hand! */
-        case TV_ARROW:  /* But, for normal shooting, see tot_dam_aux_shot() in cmd2.c */
-        case TV_BOLT:
-        case TV_HAFTED:
-        case TV_POLEARM:
-        case TV_SWORD:
-        case TV_DIGGING:
-        case TV_GLOVES:
-        {
-            int hissatsu_brand = 0;
-            char m_name_subject[MAX_NLEN];
-            monster_desc(m_name_subject, m_ptr, MD_PRON_VISIBLE);
-
-            if (monster_living(r_ptr) && have_flag(flgs, OF_KILL_LIVING))
-            {
-		if (mult < KILL_MULT_LIVING / 10) mult = KILL_MULT_LIVING / 10;
-		obj_learn_slay(o_ptr, OF_KILL_LIVING, "slays <color:o>*Living*</color>");
-            }
-            else if ((monster_living(r_ptr)) && ((have_flag(flgs, OF_SLAY_LIVING)) || (p_ptr->tim_blood_seek)))
-            {
-                if (mult < SLAY_MULT_LIVING / 10) mult = SLAY_MULT_LIVING / 10;
-                obj_learn_slay(o_ptr, OF_SLAY_LIVING, "slays <color:o>Living</color>");
-            }
-
-            if (r_ptr->flags3 & RF3_ANIMAL)
-            {
-                if (chaos_slay == OF_SLAY_ANIMAL)
-                {
-                    msg_format("Your %s slays animals.", o_name);
-                    obj_learn_slay(o_ptr, OF_BRAND_CHAOS, "has the <color:v>Mark of Chaos</color>");
-                    mon_lore_3(m_ptr, RF3_ANIMAL);
-                    if (have_flag(flgs, OF_KILL_ANIMAL))
-                    {
-                        if (mult < KILL_MULT_ANIMAL / 8) mult = KILL_MULT_ANIMAL / 8;
-                        obj_learn_slay(o_ptr, OF_KILL_ANIMAL, "slays <color:g>*Animals*</color>");
-                    }
-                    else if (have_flag(flgs, OF_SLAY_ANIMAL))
-                    {
-                        if (mult < SLAY_MULT_ANIMAL * 2 / 15) mult = SLAY_MULT_ANIMAL * 2 / 15;
-                        obj_learn_slay(o_ptr, OF_SLAY_ANIMAL, "slays <color:g>Animals</color>");
-                    }
-                    else
-                    {
-                        if (mult < SLAY_MULT_ANIMAL / 10) mult = SLAY_MULT_ANIMAL / 10;
-                    }
-                }
-                else
-                {
-                    if (have_flag(flgs, OF_KILL_ANIMAL))
-                    {
-                        mon_lore_3(m_ptr, RF3_ANIMAL);
-                        obj_learn_slay(o_ptr, OF_KILL_ANIMAL, "slays <color:g>*Animals*</color>");
-                        if (mult < KILL_MULT_ANIMAL / 10) mult = KILL_MULT_ANIMAL / 10;
-                    }
-                    else if (have_flag(flgs, OF_SLAY_ANIMAL))
-                    {
-                        mon_lore_3(m_ptr, RF3_ANIMAL);
-                        obj_learn_slay(o_ptr, OF_SLAY_ANIMAL, "slays <color:g>Animals</color>");
-                        if (mult < SLAY_MULT_ANIMAL / 10) mult = SLAY_MULT_ANIMAL / 10;
-                    }
-                }
-            }
-
-            if (r_ptr->flags3 & RF3_EVIL)
-            {
-                if (chaos_slay == OF_SLAY_EVIL)
-                {
-                    msg_format("Your %s slays evil.", o_name);
-                    obj_learn_slay(o_ptr, OF_BRAND_CHAOS, "has the <color:v>Mark of Chaos</color>");
-                    mon_lore_3(m_ptr, RF3_EVIL);
-                    if (have_flag(flgs, OF_KILL_EVIL))
-                    {
-                        if (mult < KILL_MULT_EVIL / 8) mult = KILL_MULT_EVIL / 8;
-                        obj_learn_slay(o_ptr, OF_KILL_EVIL, "slays <color:y>*Evil*</color>");
-                    }
-                    else if (have_flag(flgs, OF_SLAY_EVIL) || weaponmaster_get_toggle() == TOGGLE_HOLY_BLADE)
-                    {
-                        if (mult < SLAY_MULT_EVIL * 2 / 15) mult = SLAY_MULT_EVIL * 2 / 15;
-                        obj_learn_slay(o_ptr, OF_SLAY_EVIL, "slays <color:y>Evil</color>");
-                    }
-                    else
-                    {
-                        if (mult < SLAY_MULT_EVIL / 10) mult = SLAY_MULT_EVIL / 10;
-                    }
-
-                }
-                else
-                {
-                    if (have_flag(flgs, OF_KILL_EVIL))
-                    {
-                        mon_lore_3(m_ptr, RF3_EVIL);
-                        obj_learn_slay(o_ptr, OF_KILL_EVIL, "slays <color:y>*Evil*</color>");
-                        if (mult < KILL_MULT_EVIL / 10) mult = KILL_MULT_EVIL / 10;
-                    }
-                    else if (have_flag(flgs, OF_SLAY_EVIL) || weaponmaster_get_toggle() == TOGGLE_HOLY_BLADE)
-                    {
-                        mon_lore_3(m_ptr, RF3_EVIL);
-                        obj_learn_slay(o_ptr, OF_SLAY_EVIL, "slays <color:y>Evil</color>");
-                        if (mult < SLAY_MULT_EVIL / 10) mult = SLAY_MULT_EVIL / 10;
-                    }
-                }
-            }
-
-            if (r_ptr->flags3 & RF3_GOOD)
-            {
-                if (chaos_slay == OF_SLAY_GOOD)
-                {
-                    msg_format("Your %s slays good.", o_name);
-                    obj_learn_slay(o_ptr, OF_BRAND_CHAOS, "has the <color:v>Mark of Chaos</color>");
-                    mon_lore_3(m_ptr, RF3_GOOD);
-                if (have_flag(flgs, OF_KILL_GOOD))
-                {
-                        if (mult < KILL_MULT_GOOD / 8) mult = KILL_MULT_GOOD / 8;
-                        obj_learn_slay(o_ptr, OF_KILL_GOOD, "slays <color:W>*Good*</color>");
-            		}
-                    else if (have_flag(flgs, OF_SLAY_GOOD))
-                    {
-                        if (mult < SLAY_MULT_GOOD * 2 / 15) mult = SLAY_MULT_GOOD * 2 / 15;
-                        obj_learn_slay(o_ptr, OF_SLAY_GOOD, "slays <color:W>Good</color>");
-                    }
-                    else
-                    {
-                        if (mult < SLAY_MULT_GOOD / 10) mult = SLAY_MULT_GOOD / 10;
-                    }
-
-                }
-                else
-                {
-            		if (have_flag(flgs, OF_KILL_GOOD))
-            		{
-                        mon_lore_3(m_ptr, RF3_GOOD);
-                        obj_learn_slay(o_ptr, OF_KILL_GOOD, "slays <color:y>*Good*</color>");
-                        if (mult < KILL_MULT_GOOD / 10) mult = KILL_MULT_GOOD / 10;
-            		}
-            		else if (have_flag(flgs, OF_SLAY_GOOD))
-                    {
-                        mon_lore_3(m_ptr, RF3_GOOD);
-                        obj_learn_slay(o_ptr, OF_SLAY_GOOD, "slays <color:W>Good</color>");
-                        if (mult < SLAY_MULT_GOOD / 10) mult = SLAY_MULT_GOOD / 10;
-                    }
-                }
-            }
-
-            if (r_ptr->flags2 & RF2_HUMAN)
-            {
-                if (chaos_slay == OF_SLAY_HUMAN)
-                {
-                    msg_format("Your %s slays humans.", o_name);
-                    obj_learn_slay(o_ptr, OF_BRAND_CHAOS, "has the <color:v>Mark of Chaos</color>");
-                    mon_lore_2(m_ptr, RF2_HUMAN);
-                    if (have_flag(flgs, OF_KILL_HUMAN))
-                    {
-                        if (mult < KILL_MULT_HUMAN / 8) mult = KILL_MULT_HUMAN / 8;
-                        obj_learn_slay(o_ptr, OF_KILL_HUMAN, "slays <color:s>*Humans*</color>");
-                    }
-                    else if (have_flag(flgs, OF_SLAY_HUMAN))
-                    {
-                        if (mult < SLAY_MULT_HUMAN * 2 / 15) mult = SLAY_MULT_HUMAN * 2 / 15;
-                        obj_learn_slay(o_ptr, OF_SLAY_HUMAN, "slays <color:s>Humans</color>");
-                    }
-                    else
-                    {
-                        if (mult < SLAY_MULT_HUMAN / 10) mult = SLAY_MULT_HUMAN / 10;
-                    }
-                }
-                else
-                {
-                    if (have_flag(flgs, OF_KILL_HUMAN))
-                    {
-                        mon_lore_2(m_ptr, RF2_HUMAN);
-                        obj_learn_slay(o_ptr, OF_KILL_HUMAN, "slays <color:s>*Humans*</color>");
-                        if (mult < KILL_MULT_HUMAN / 10) mult = KILL_MULT_HUMAN / 10;
-                    }
-                    else if (have_flag(flgs, OF_SLAY_HUMAN))
-                    {
-                        mon_lore_2(m_ptr, RF2_HUMAN);
-                        obj_learn_slay(o_ptr, OF_SLAY_HUMAN, "slays <color:s>Humans</color>");
-                        if (mult < SLAY_MULT_HUMAN / 10) mult = SLAY_MULT_HUMAN / 10;
-                    }
-                }
-            }
-
-            if (r_ptr->flags3 & RF3_UNDEAD)
-            {
-                if (chaos_slay == OF_SLAY_UNDEAD)
-                {
-                    msg_format("Your %s slays undead.", o_name);
-                    obj_learn_slay(o_ptr, OF_BRAND_CHAOS, "has the <color:v>Mark of Chaos</color>");
-                    mon_lore_3(m_ptr, RF3_UNDEAD);
-                    if (have_flag(flgs, OF_KILL_UNDEAD))
-                    {
-                        if (mult < KILL_MULT_UNDEAD / 8) mult = KILL_MULT_UNDEAD / 8;
-                        obj_learn_slay(o_ptr, OF_KILL_UNDEAD, "slays <color:D>*Undead*</color>");
-                    }
-                    else if (have_flag(flgs, OF_SLAY_UNDEAD))
-                    {
-                        if (mult < SLAY_MULT_UNDEAD * 2 / 15) mult = SLAY_MULT_UNDEAD * 2 / 15;
-                        obj_learn_slay(o_ptr, OF_SLAY_UNDEAD, "slays <color:D>Undead</color>");
-                    }
-                    else
-                    {
-                        if (mult < SLAY_MULT_UNDEAD / 10) mult = SLAY_MULT_UNDEAD / 10;
-                    }
-                }
-                else
-                {
-                    if (have_flag(flgs, OF_KILL_UNDEAD))
-                    {
-                        mon_lore_3(m_ptr, RF3_UNDEAD);
-                        obj_learn_slay(o_ptr, OF_KILL_UNDEAD, "slays <color:D>*Undead*</color>");
-                        if (mult < KILL_MULT_UNDEAD / 10) mult = KILL_MULT_UNDEAD / 10;
-                    }
-                    else if (have_flag(flgs, OF_SLAY_UNDEAD))
-                    {
-                        mon_lore_3(m_ptr, RF3_UNDEAD);
-                        obj_learn_slay(o_ptr, OF_SLAY_UNDEAD, "slays <color:D>Undead</color>");
-                        if (mult < SLAY_MULT_UNDEAD / 10) mult = SLAY_MULT_UNDEAD / 10;
-                    }
-                }
-            }
-
-            if (r_ptr->flags3 & RF3_DEMON)
-            {
-                if (chaos_slay == OF_SLAY_DEMON)
-                {
-                    msg_format("Your %s slays demons.", o_name);
-                    obj_learn_slay(o_ptr, OF_BRAND_CHAOS, "has the <color:v>Mark of Chaos</color>");
-                    mon_lore_3(m_ptr, RF3_DEMON);
-                    if (have_flag(flgs, OF_KILL_DEMON))
-                    {
-                        if (mult < KILL_MULT_DEMON / 8) mult = KILL_MULT_DEMON / 8;
-                        obj_learn_slay(o_ptr, OF_KILL_DEMON, "slays <color:R>*Demons*</color>");
-                    }
-                    else if (have_flag(flgs, OF_SLAY_DEMON))
-                    {
-                        if (mult < SLAY_MULT_DEMON * 2 / 15) mult = SLAY_MULT_DEMON * 2 / 15;
-                        obj_learn_slay(o_ptr, OF_SLAY_DEMON, "slays <color:R>Demons</color>");
-                    }
-                    else
-                    {
-                        if (mult < SLAY_MULT_DEMON / 10) mult = SLAY_MULT_DEMON / 10;
-                    }
-                }
-                else
-                {
-                    if (have_flag(flgs, OF_KILL_DEMON))
-                    {
-                        mon_lore_3(m_ptr, RF3_DEMON);
-                        obj_learn_slay(o_ptr, OF_KILL_DEMON, "slays <color:R>*Demons*</color>");
-                        if (mult < KILL_MULT_DEMON / 10) mult = KILL_MULT_DEMON / 10;
-                    }
-                    else if (have_flag(flgs, OF_SLAY_DEMON))
-                    {
-                        mon_lore_3(m_ptr, RF3_DEMON);
-                        obj_learn_slay(o_ptr, OF_SLAY_DEMON, "slays <color:R>Demons</color>");
-                        if (mult < SLAY_MULT_DEMON / 10) mult = SLAY_MULT_DEMON / 10;
-                    }
-                }
-            }
-
-            if (r_ptr->flags3 & RF3_ORC)
-            {
-                if (chaos_slay == OF_SLAY_ORC)
-                {
-                    msg_format("Your %s slays orcs.", o_name);
-                    obj_learn_slay(o_ptr, OF_BRAND_CHAOS, "has the <color:v>Mark of Chaos</color>");
-                    mon_lore_3(m_ptr, RF3_ORC);
-                    if (have_flag(flgs, OF_KILL_ORC))
-                    {
-                        if (mult < KILL_MULT_ORC / 8) mult = KILL_MULT_ORC / 8;
-                        obj_learn_slay(o_ptr, OF_KILL_ORC, "slays <color:U>*Orcs*</color>");
-                    }
-                    else if (have_flag(flgs, OF_SLAY_ORC))
-                    {
-                        if (mult < SLAY_MULT_ORC * 2 / 15) mult = SLAY_MULT_ORC * 2 / 15;
-                        obj_learn_slay(o_ptr, OF_SLAY_ORC, "slays <color:U>Orcs</color>");
-                    }
-                    else
-                    {
-                        if (mult < SLAY_MULT_ORC / 10) mult = SLAY_MULT_ORC / 10;
-                    }
-                }
-                else
-                {
-                    if (have_flag(flgs, OF_KILL_ORC))
-                    {
-                        mon_lore_3(m_ptr, RF3_ORC);
-                        obj_learn_slay(o_ptr, OF_KILL_ORC, "slays <color:U>*Orcs*</color>");
-                        if (mult < KILL_MULT_ORC / 10) mult = KILL_MULT_ORC / 10;
-                    }
-                    else if (have_flag(flgs, OF_SLAY_ORC))
-                    {
-                        mon_lore_3(m_ptr, RF3_ORC);
-                        obj_learn_slay(o_ptr, OF_SLAY_ORC, "slays <color:U>Orcs</color>");
-                        if (mult < SLAY_MULT_ORC / 10) mult = SLAY_MULT_ORC / 10;
-                    }
-                }
-            }
-
-
-            if (r_ptr->flags3 & RF3_TROLL)
-            {
-                if (chaos_slay == OF_SLAY_TROLL)
-                {
-                    msg_format("Your %s slays trolls.", o_name);
-                    obj_learn_slay(o_ptr, OF_BRAND_CHAOS, "has the <color:v>Mark of Chaos</color>");
-                    mon_lore_3(m_ptr, RF3_TROLL);
-                    if (have_flag(flgs, OF_KILL_TROLL))
-                    {
-                        if (mult < KILL_MULT_TROLL / 8) mult = KILL_MULT_TROLL / 8;
-                        obj_learn_slay(o_ptr, OF_KILL_TROLL, "slays <color:g>*Trolls*</color>");
-                    }
-                    else if (have_flag(flgs, OF_SLAY_TROLL))
-                    {
-                        if (mult < SLAY_MULT_TROLL * 2 / 15) mult = SLAY_MULT_TROLL * 2 / 15;
-                        obj_learn_slay(o_ptr, OF_SLAY_TROLL, "slays <color:g>Trolls</color>");
-                    }
-                    else
-                    {
-                        if (mult < SLAY_MULT_TROLL / 10) mult = SLAY_MULT_TROLL / 10;
-                    }
-                }
-                else
-                {
-                    if (have_flag(flgs, OF_KILL_TROLL))
-                    {
-                        mon_lore_3(m_ptr, RF3_TROLL);
-                        obj_learn_slay(o_ptr, OF_KILL_TROLL, "slays <color:g>*Trolls*</color>");
-                        if (mult < KILL_MULT_TROLL / 10) mult = KILL_MULT_TROLL / 10;
-                    }
-                    else if (have_flag(flgs, OF_SLAY_TROLL))
-                    {
-                        mon_lore_3(m_ptr, RF3_TROLL);
-                        obj_learn_slay(o_ptr, OF_SLAY_TROLL, "slays <color:g>Trolls</color>");
-                        if (mult < SLAY_MULT_TROLL / 10) mult = SLAY_MULT_TROLL / 10;
-                    }
-                }
-            }
-
-            if (r_ptr->flags3 & RF3_GIANT)
-            {
-                if (chaos_slay == OF_SLAY_GIANT)
-                {
-                    msg_format("Your %s slays giants.", o_name);
-                    obj_learn_slay(o_ptr, OF_BRAND_CHAOS, "has the <color:v>Mark of Chaos</color>");
-                    mon_lore_3(m_ptr, RF3_GIANT);
-                    if (have_flag(flgs, OF_KILL_GIANT))
-                    {
-                        if (mult < KILL_MULT_GIANT / 8) mult = KILL_MULT_GIANT / 8;
-                        obj_learn_slay(o_ptr, OF_KILL_GIANT, "slays <color:u>*Giants*</color>");
-                    }
-                    else if (have_flag(flgs, OF_SLAY_GIANT))
-                    {
-                        if (mult < SLAY_MULT_GIANT * 2 / 15) mult = SLAY_MULT_GIANT * 2 / 15;
-                        obj_learn_slay(o_ptr, OF_SLAY_GIANT, "slays <color:u>Giants</color>");
-                    }
-                    else
-                    {
-                        if (mult < SLAY_MULT_GIANT / 10) mult = SLAY_MULT_GIANT / 10;
-                    }
-                }
-                else
-                {
-                    if (have_flag(flgs, OF_KILL_GIANT))
-                    {
-                        mon_lore_3(m_ptr, RF3_GIANT);
-                        obj_learn_slay(o_ptr, OF_KILL_GIANT, "slays <color:u>*Giants*</color>");
-                        if (mult < KILL_MULT_GIANT / 10) mult = KILL_MULT_GIANT / 10;
-                    }
-                    else if (have_flag(flgs, OF_SLAY_GIANT))
-                    {
-                        mon_lore_3(m_ptr, RF3_GIANT);
-                        obj_learn_slay(o_ptr, OF_SLAY_GIANT, "slays <color:u>Giants</color>");
-                        if (mult < SLAY_MULT_GIANT / 10) mult = SLAY_MULT_GIANT / 10;
-                    }
-                }
-            }
-
-            if (r_ptr->flags3 & RF3_DRAGON)
-            {
-                if (chaos_slay == OF_SLAY_DRAGON)
-                {
-                    msg_format("Your %s slays dragons.", o_name);
-                    obj_learn_slay(o_ptr, OF_BRAND_CHAOS, "has the <color:v>Mark of Chaos</color>");
-                    mon_lore_3(m_ptr, RF3_DRAGON);
-                    if (have_flag(flgs, OF_KILL_DRAGON))
-                    {
-                        if (mult < KILL_MULT_DRAGON / 8) mult = KILL_MULT_DRAGON / 8;
-                        obj_learn_slay(o_ptr, OF_KILL_DRAGON, "slays <color:r>*Dragons*</color>");
-                        if ((o_ptr->name1 == ART_NOTHUNG) && (m_ptr->r_idx == MON_FAFNER))
-                            mult *= 3;
-                    }
-                    else if (have_flag(flgs, OF_SLAY_DRAGON))
-                    {
-                        if (mult < SLAY_MULT_DRAGON * 2 / 15) mult = SLAY_MULT_DRAGON * 2 / 15;
-                        obj_learn_slay(o_ptr, OF_SLAY_DRAGON, "slays <color:r>Dragons</color>");
-                    }
-                    else
-                    {
-                        if (mult < SLAY_MULT_DRAGON / 10) mult = SLAY_MULT_DRAGON / 10;
-                    }
-                }
-                else
-                {
-                    if (have_flag(flgs, OF_KILL_DRAGON))
-                    {
-                        mon_lore_3(m_ptr, RF3_DRAGON);
-                        obj_learn_slay(o_ptr, OF_KILL_DRAGON, "slays <color:r>*Dragons*</color>");
-                        if (mult < KILL_MULT_DRAGON / 10) mult = KILL_MULT_DRAGON / 10;
-                        if ((o_ptr->name1 == ART_NOTHUNG) && (m_ptr->r_idx == MON_FAFNER))
-                            mult *= 3;
-                    }
-                    else if (have_flag(flgs, OF_SLAY_DRAGON))
-                    {
-                        mon_lore_3(m_ptr, RF3_DRAGON);
-                        obj_learn_slay(o_ptr, OF_SLAY_DRAGON, "slays <color:r>Dragons</color>");
-                        if (mult < SLAY_MULT_DRAGON / 10) mult = SLAY_MULT_DRAGON / 10;
-                    }
-                }
-            }
-
-
-            /* Hex - Slay Good (Runesword) */
-            if (hex_spelling(HEX_RUNESWORD) &&
-                (r_ptr->flags3 & RF3_GOOD))
-            {
-                mon_lore_3(m_ptr, RF3_GOOD);
-                if (mult < SLAY_MULT_GOOD / 10) mult = SLAY_MULT_GOOD / 10;
-            }
-
-            /* Brand (Acid) */
-            if (have_flag(flgs, OF_BRAND_ACID) || mode == PY_ATTACK_ACID || chaos_slay == OF_BRAND_ACID)
-            {
-                if (r_ptr->flagsr & RFR_EFF_IM_ACID_MASK)
-                {
-                    mon_lore_r(m_ptr, RFR_EFF_IM_ACID_MASK);
-                }
-                else if (chaos_slay == OF_BRAND_ACID)
-                {
-                    msg_format("Your %s is covered in acid.", o_name);
-                    obj_learn_slay(o_ptr, OF_BRAND_CHAOS, "has the <color:v>Mark of Chaos</color>");
-                    if (have_flag(flgs, OF_BRAND_ACID))
-                    {
-                        mult = MAX(mult, BRAND_MULT_ACID * 2 / 15);
-                        obj_learn_slay(o_ptr, OF_BRAND_ACID, "is <color:g>Acid Branded</color>");
-                    }
-                    else mult = MAX(mult, BRAND_MULT_ACID / 10);
-                }
-                else
-                {
-                    mult = MAX(mult, BRAND_MULT_ACID / 10);
-                    obj_learn_slay(o_ptr, OF_BRAND_ACID, "is <color:g>Acid Branded</color>");
-                }
-            }
-
-            /* Brand (Elec) */
-            if ( have_flag(flgs, OF_BRAND_ELEC)
-              || mode == HISSATSU_ELEC
-              || chaos_slay == OF_BRAND_ELEC )
-            {
-                int old_mult = mult;
-                if (r_ptr->flagsr & RFR_EFF_IM_ELEC_MASK)
-                {
-                    mon_lore_r(m_ptr, RFR_EFF_IM_ELEC_MASK);
-                }
-                else if (chaos_slay == OF_BRAND_ELEC)
-                {
-                    msg_format("Your %s is covered in electricity.", o_name);
-                    obj_learn_slay(o_ptr, OF_BRAND_CHAOS, "has the <color:v>Mark of Chaos</color>");
-                    if (have_flag(flgs, OF_BRAND_ELEC))
-                    {
-                        obj_learn_slay(o_ptr, OF_BRAND_ELEC, "is <color:b>Lightning Branded</color>");
-                        if (mode == HISSATSU_ELEC)
-                            mult = MAX(mult, BRAND_MULT_ELEC * 4 / 13);
-                        else mult = MAX(mult, BRAND_MULT_ELEC * 2 / 15);
-                    }
-                    else if (mode == HISSATSU_ELEC)
-                        mult = MAX(mult, BRAND_MULT_ELEC * 4 / 17);
-                    else mult = MAX(mult, BRAND_MULT_ELEC / 10);
-                }
-                else if (have_flag(flgs, OF_BRAND_ELEC))
-                {
-                    obj_learn_slay(o_ptr, OF_BRAND_ELEC, "is <color:b>Lightning Branded</color>");
-                    if (mode == HISSATSU_ELEC)
-                        mult = MAX(mult, BRAND_MULT_ELEC * 4 / 15);
-                    else mult = MAX(mult, BRAND_MULT_ELEC / 10);
-                }
-                else if (mode == HISSATSU_ELEC)
-                    mult = MAX(mult, BRAND_MULT_ELEC * 4 / 21);
-                if ((mult > old_mult) && (mode == HISSATSU_ELEC))
-                {
-                    hissatsu_brand = OF_BRAND_ELEC;
-                }
-            }
-
-            /* Brand (Fire) */
-            if ( have_flag(flgs, OF_BRAND_FIRE)
-              || mode == HISSATSU_FIRE
-              || chaos_slay == OF_BRAND_FIRE )
-            {
-                int tmp = 0;
-                if (r_ptr->flagsr & RFR_EFF_IM_FIRE_MASK)
-                {
-                    mon_lore_r(m_ptr, RFR_EFF_IM_FIRE_MASK);
-                }
-                else if (chaos_slay == OF_BRAND_FIRE)
-                {
-                    msg_format("Your %s is covered in fire.", o_name);
-                    obj_learn_slay(o_ptr, OF_BRAND_CHAOS, "has the <color:v>Mark of Chaos</color>");
-                    if (have_flag(flgs, OF_BRAND_FIRE))
-                    {
-                        obj_learn_slay(o_ptr, OF_BRAND_FIRE, "has <color:r>Flame Tongue</color>");
-                        if (mode == HISSATSU_FIRE) tmp = BRAND_MULT_FIRE * 9 / 50;
-                        else tmp = BRAND_MULT_FIRE * 2 / 15;
-                    }
-                    else if (mode == HISSATSU_FIRE) tmp = BRAND_MULT_FIRE / 7;
-                    else tmp = BRAND_MULT_FIRE / 10;
-                }
-                else if (have_flag(flgs, OF_BRAND_FIRE))
-                {
-                    obj_learn_slay(o_ptr, OF_BRAND_FIRE, "has <color:r>Flame Tongue</color>");
-                    if (mode == HISSATSU_FIRE) tmp = BRAND_MULT_FIRE / 7;
-                    else tmp = BRAND_MULT_FIRE / 10;
-                }
-                else if (mode == HISSATSU_FIRE) tmp = BRAND_MULT_FIRE / 10;
-                if (tmp > 0 && (r_ptr->flags3 & RF3_HURT_FIRE))
-                {
-                    tmp *= 2;
-                    mon_lore_3(m_ptr, RF3_HURT_FIRE);
-                }
-                if (tmp > mult) hissatsu_brand = ((mode == HISSATSU_FIRE) ? OF_BRAND_FIRE : 0);
-                mult = MAX(mult, tmp);
-            }
-
-            /* Brand (Cold) */
-            if ( have_flag(flgs, OF_BRAND_COLD)
-              || mode == HISSATSU_COLD
-              || chaos_slay == OF_BRAND_COLD )
-            {
-                int tmp = 0;
-                if (r_ptr->flagsr & RFR_EFF_IM_COLD_MASK)
-                {
-                    mon_lore_r(m_ptr, RFR_EFF_IM_COLD_MASK);
-                }
-                else if (chaos_slay == OF_BRAND_COLD)
-                {
-                    msg_format("Your %s is covered in frost.", o_name);
-                    obj_learn_slay(o_ptr, OF_BRAND_CHAOS, "has the <color:v>Mark of Chaos</color>");
-                    if (have_flag(flgs, OF_BRAND_COLD))
-                    {
-                        obj_learn_slay(o_ptr, OF_BRAND_COLD, "is <color:W>Frost Branded</color>");
-                        if (mode == HISSATSU_COLD) tmp = BRAND_MULT_COLD * 9 / 50;
-                        else tmp = BRAND_MULT_COLD * 2 / 15;
-                    }
-                    else if (mode == HISSATSU_COLD) tmp = BRAND_MULT_COLD / 7;
-                    else tmp = BRAND_MULT_COLD / 10;
-                }
-                else if (have_flag(flgs, OF_BRAND_COLD))
-                {
-                    obj_learn_slay(o_ptr, OF_BRAND_COLD, "is <color:W>Frost Branded</color>");
-                    if (mode == HISSATSU_COLD) tmp = BRAND_MULT_COLD / 7;
-                    else tmp = BRAND_MULT_COLD / 10;
-                }
-                else if (mode == HISSATSU_COLD) tmp = BRAND_MULT_COLD / 10;
-
-                if (tmp > 0 && (r_ptr->flags3 & RF3_HURT_COLD))
-                {
-                    tmp *= 2;
-                    mon_lore_3(m_ptr, RF3_HURT_COLD);
-                }
-                if (tmp > mult) hissatsu_brand = ((mode == HISSATSU_COLD) ? OF_BRAND_COLD : 0);
-                mult = MAX(mult, tmp);
-            }
-
-            /* Brand (Poison) */
-            if ( have_flag(flgs, OF_BRAND_POIS)
-              || mode == HISSATSU_POISON
-              || chaos_slay == OF_BRAND_POIS )
-            {
-                int old_mult = mult;
-                if (r_ptr->flagsr & RFR_EFF_IM_POIS_MASK)
-                {
-                    mon_lore_r(m_ptr, RFR_EFF_IM_POIS_MASK);
-                }
-                else if (chaos_slay == OF_BRAND_POIS)
-                {
-                    msg_format("Your %s is covered in poison.", o_name);
-                    obj_learn_slay(o_ptr, OF_BRAND_CHAOS, "has the <color:v>Mark of Chaos</color>");
-                    if (have_flag(flgs, OF_BRAND_POIS))
-                    {
-                        obj_learn_slay(o_ptr, OF_BRAND_POIS, "has <color:G>Viper's Fang</color>");
-                        if (mode == HISSATSU_POISON) mult = MAX(mult, BRAND_MULT_POIS * 9 / 50);
-                        else mult = MAX(mult, BRAND_MULT_POIS * 2 / 15);
-                    }
-                    else if (mode == HISSATSU_POISON) mult = MAX(mult, BRAND_MULT_POIS / 7);
-                    else mult = MAX(mult, BRAND_MULT_POIS / 10);
-                }
-                else if (have_flag(flgs, OF_BRAND_POIS))
-                {
-                    obj_learn_slay(o_ptr, OF_BRAND_POIS, "has <color:G>Viper's Fang</color>");
-                    if (mode == HISSATSU_POISON) mult = MAX(mult, BRAND_MULT_POIS / 7);
-                    else mult = MAX(mult, BRAND_MULT_POIS / 10);
-                }
-                else if (mode == HISSATSU_POISON) mult = MAX(mult, BRAND_MULT_POIS / 10);
-                if (mult > old_mult) hissatsu_brand = ((mode == HISSATSU_POISON) ? OF_BRAND_POIS : 0);
-            }
-
-            /* Dark brand */
-            if ( have_flag(flgs, OF_BRAND_DARK))
-            {
-                if (r_ptr->flagsr & RFR_EFF_RES_DARK_MASK)
-                {
-                    mon_lore_r(m_ptr, RFR_EFF_RES_DARK_MASK);
-                }
-                else
-                {
-                    obj_learn_slay(o_ptr, OF_BRAND_DARK, "has <color:G>Shadow Sweep</color>");
-                    mult = MAX(mult, BRAND_MULT_DARK / 10);
-                }
-            }
-
-            /* 'light brand' */
-            if (have_flag(flgs, OF_LITE) && (r_ptr->flags3 & RF3_HURT_LITE))
-            {
-            	if (mult < KILL_MULT_HIGH / 8) msg_format("%^s cringes.", m_name_subject);
-            	if (mult == 10) mult = SLAY_MULT_BASIC / 10;
-            	else if (mult < KILL_MULT_HIGH / 8) mult = MIN(KILL_MULT_HIGH / 8, mult + 10);
-            }
-
-            if ((mode == HISSATSU_ZANMA) && !monster_living(r_ptr) && (r_ptr->flags3 & RF3_EVIL))
-            {
-                if (mult < 15) mult = 25;
-                else if (mult < KILL_MULT_HIGH / 10) mult = MIN(KILL_MULT_HIGH / 10, mult+(SLAY_MULT_BASIC / 10));
-                hissatsu_brand = OF_SLAY_EVIL;
-            }
-            if (mode == HISSATSU_UNDEAD)
-            {
-                if (r_ptr->flags3 & RF3_UNDEAD)
-                {
-                    mon_lore_3(m_ptr, RF3_UNDEAD);
-                    if (mult == 10) mult = KILL_MULT_UNDEAD * 2 / 15;
-                    else if (mult < KILL_MULT_UNDEAD * 4 / 15) mult = MIN(KILL_MULT_UNDEAD * 4 / 15, mult + (KILL_MULT_UNDEAD / 9));
-                }
-                if (mult == 10) mult = KILL_MULT_HIGH * 2 / 25;
-                else if (mult < KILL_MULT_HIGH * 4 / 15) mult = MIN(KILL_MULT_HIGH * 4 / 15, mult + (KILL_MULT_HIGH / 18));
-                hissatsu_brand = OF_SLAY_UNDEAD;
-            }
-            if ((mode == HISSATSU_SEKIRYUKA) && p_ptr->cut && monster_living(r_ptr))
-            {
-                int tmp = MIN(SLAY_MULT_BASIC / 2, MAX(10, p_ptr->cut / 10));
-                if (mult < tmp) mult = tmp;
-            }
-            if ((mode == HISSATSU_HAGAN) && (r_ptr->flags3 & RF3_HURT_ROCK))
-            {
-                mon_lore_3(m_ptr, RF3_HURT_ROCK);
-                if (mult == 10) mult = KILL_MULT_MID / 10;
-                else if (mult < KILL_MULT_HIGH / 8) mult = KILL_MULT_HIGH / 8;
-                hissatsu_brand = 0;
-            }
-            if (p_ptr->tim_slay_sentient && p_ptr->weapon_info[hand].wield_how == WIELD_TWO_HANDS)
-            {
-                if (r_ptr->flags3 & RF3_NO_STUN)
-                {
-                    mon_lore_3(m_ptr, RF3_NO_STUN);
-                }
-                else
-                {
-                    if (mult < SLAY_MULT_BASIC / 10) mult = SLAY_MULT_BASIC / 10;
-                }
-            }
-
-            if (hissatsu_brand)
-            {
-                switch (hissatsu_brand)
-                {
-                case OF_BRAND_ELEC:
-                        msg_format("%^s is <color:b>shocked</color>!", m_name_subject);
-                        break;
-                case OF_BRAND_ACID:
-                        msg_format("%^s is <color:g>dissolved</color>!", m_name_subject);
-                        break;
-                case OF_BRAND_FIRE:
-                        msg_format("%^s is <color:r>burned</color>!", m_name_subject);
-                        break;
-                case OF_BRAND_COLD:
-                        msg_format("%^s is <color:W>frozen</color>!", m_name_subject);
-                        break;
-                case OF_BRAND_POIS:
-                        msg_format("%^s is <color:G>poisoned</color>!", m_name_subject);
-                        break;
-                default: break;
-                /* Messages from Composband - possible future use
-                        msg_format("It howls!");
-                        msg_format("It wails!");
-                        msg_format("It screeches!");
-                        msg_format("It convulses!");
-                        msg_format("It shrieks!");
-                        msg_format("It cowers!");
-                        msg_format("It cringes.");
-                        msg_format("It winces.");
-                        msg_format("It recoils.");
-                        msg_format("It staggers.");
-                        msg_format("It groans.");
-                        msg_format("It shudders."); */
-                }
-            }
-
-            if ((have_flag(flgs, OF_BRAND_MANA) || p_ptr->tim_force) && (!elemental_is_(ELEMENTAL_WATER)))
-            {
-                int          cost = 0;
-                int          dd = o_ptr->dd + p_ptr->weapon_info[hand].to_dd;
-                int          ds = o_ptr->ds + p_ptr->weapon_info[hand].to_ds;
-                caster_info *caster = get_caster_info();
-
-                if (p_ptr->pclass == CLASS_SAMURAI)
-                    cost = (1 + (dd * ds * 2 / 7));
-                else
-                    cost = (1 + (dd * ds / 7));
-
-                if (thrown)
-                    cost *= 3;
-
-                if (caster && (caster->options & CASTER_USE_AU))
-                {
-                    cost *= 10;
-                    if (p_ptr->au >= cost)
-                    {
-                        p_ptr->au -= cost;
-                        stats_on_gold_services(cost); /* ? */
-                        p_ptr->update |= (PU_BONUS | PU_HP | PU_MANA);
-                        p_ptr->redraw |= (PR_GOLD);
-
-                        mult = mult * 3 / 2 + 14;
-                        obj_learn_slay(o_ptr, OF_BRAND_MANA, "is <color:B>Mana Branded</color>");
-                    }
-                }
-                else if (p_ptr->csp >= cost)
-                {
-                    p_ptr->csp -= cost;
-                    p_ptr->redraw |= (PR_MANA);
-                    mult = mult * 3 / 2 + 14;
-                    obj_learn_slay(o_ptr, OF_BRAND_MANA, "is <color:B>Mana Branded</color>");
-                }
-            }
-            if (p_ptr->tim_blood_feast)
-            {
-                take_hit(DAMAGE_ATTACK, 15, "blood feast");
-            }
-            break;
-        }
-    }
-    if (mult > 150) mult = 150;
-
-    /* Return the total damage */
-    return (tdam * mult / 10);
-}
-
 
 /*
  * Search for hidden things
@@ -2104,6 +1279,74 @@ static void hit_trap(bool break_trap, bool do_jump)
             }
             break;
         }
+        case TRAP_BEAR:
+        {
+            int prot = 0, slot = equip_find_first(object_is_helmet), dam = 40 + randint1(60);
+            if (slot)
+            {
+                object_type *o_ptr = equip_obj(slot);
+                prot = o_ptr->ac + o_ptr->to_a;
+                if (o_ptr->sval == SV_POINTY_HAT) prot *= 2;
+            }
+            if (!summon_named_creature(0, y, x, MON_DROP_BEAR, PM_NO_PET))
+            {
+                msg_print("A bear falls on top of you from the branches above, and disappears into the bushes!");
+            }
+            else msg_print("A bear falls on top of you from the branch above!");
+
+            dam -= (prot * 3 / 2);
+            if ((dam < 1) || ((IS_INVULN()) && (!p_ptr->ignore_invuln) &&
+                (!one_in_(PENETRATE_INVULNERABILITY)))) msg_print("You shrug off the attack.");
+            else
+            {
+                set_stun(p_ptr->stun + dam, TRUE);
+                (void)take_hit(DAMAGE_USELIFE/* already checked invu */, dam, "a drop bear");
+            }
+            break;
+        }
+        case TRAP_ICICLE:
+        {
+            msg_print("You are hit by a falling icicle!");
+            dam = damroll(5, 10) + 10;
+            gf_affect_p(GF_WHO_TRAP, GF_ICE, dam, GF_AFFECT_TRAP);
+            break;
+        }
+        case TRAP_BANANA:
+        {
+            if (!p_ptr->levitation)
+            {
+                msg_print("You slip on a banana peel!");
+                dam = randint1(10);
+                take_hit(DAMAGE_NOESCAPE, dam, "slipping on a banana peel");
+                p_ptr->energy_need += ENERGY_NEED() * 3 / 4;
+                if (magik(40))
+                {
+                    slot_t slot = pack_random_slot(obj_exists);
+                    obj_ptr obj;
+                    char o_name[MAX_NLEN];
+                    if (!slot) break;
+                    obj = pack_obj(slot);
+                    if ((!obj) || (!obj->number)) break;
+                    object_desc(o_name, obj, OD_OMIT_PREFIX | OD_NO_PLURAL | OD_COLOR_CODED);
+                    if (obj->number > 1)
+                    {
+                        msg_format("A %^s flies from your pack!", o_name);
+                        command_arg = 1;
+                    }
+                    else msg_format("The %^s is dislodged from your pack and flies on the floor!", o_name);
+                    silent_drop_hack = TRUE;
+                    pack_drop(obj);
+                    silent_drop_hack = FALSE;
+                    msg_print(NULL);
+                }
+                break;
+            }
+            else
+            {
+                msg_print("You fly over the banana peel.");
+                break;
+            }
+        }
     }
 
     if (break_trap && is_trap(c_ptr->feat))
@@ -2277,6 +1520,7 @@ static void innate_attacks(s16b m_idx, bool *fear, bool *mdeath, int mode)
     monster_type    *m_ptr = &m_list[m_idx];
     monster_race    *r_ptr = &r_info[m_ptr->r_idx];
     byte            old_fy = m_ptr->fy, old_fx = m_ptr->fx;
+    byte            old_py = py, old_px = px;
     int             old_hp = m_ptr->hp;
     int             old_r_idx = m_ptr->r_idx;
     char            m_name_subject[MAX_NLEN], m_name_object[MAX_NLEN];
@@ -2292,6 +1536,7 @@ static void innate_attacks(s16b m_idx, bool *fear, bool *mdeath, int mode)
     const int       max_drain_amt = _max_vampiric_drain();
     bool            backstab = FALSE, fuiuchi = FALSE, stab_fleeing = FALSE, sleep_hit = FALSE;
     bool            do_werewolf_effect = (((p_ptr->prace == RACE_WEREWOLF) || (p_ptr->current_r_idx == MON_WEREWOLF)) && (r_ptr->flags7 & RF7_SILVER)) ? TRUE : FALSE;
+    bool            is_gaze = FALSE;
 
     if ((MON_CSLEEP(m_ptr)) && (m_ptr->ml)) sleep_hit = TRUE;
     set_monster_csleep(m_idx, 0);
@@ -2369,6 +1614,16 @@ static void innate_attacks(s16b m_idx, bool *fear, bool *mdeath, int mode)
 
         if (a->flags & INNATE_SKIP) continue;
         if (m_ptr->fy != old_fy || m_ptr->fx != old_fx) break; /* Teleport Effect? */
+        if (py != old_py || px != old_px) break;
+        if (prace_is_(RACE_MON_BEHOLDER))
+        {
+            is_gaze = TRUE;
+            if ((!a->name) || (!strpos("Gaze", a->name)))
+            {
+                is_gaze = FALSE;
+                if (m_ptr->cdis > 1) continue;
+            }
+        }
 
         skills_innate_gain(skills_innate_calc_name(a), r_ptr->level);
 
@@ -2748,7 +2003,7 @@ static void innate_attacks(s16b m_idx, bool *fear, bool *mdeath, int mode)
             else
             {
                 sound(SOUND_MISS);
-                if (p_ptr->prace == RACE_MON_BEHOLDER)
+                if (is_gaze)
                     msg_format("%^s avoids your gaze.", m_name_subject);
                 else
                     msg_print("You miss.");
@@ -2787,8 +2042,6 @@ static void innate_attacks(s16b m_idx, bool *fear, bool *mdeath, int mode)
 
 /*
  * Player attacks a (poor, defenseless) creature        -RAK-
- *
- * If no "weapon" is available, then "punch" the monster one time.
  */
 
 static int drain_left = 0;
@@ -2907,7 +2160,7 @@ static bool py_attack_aux(int y, int x, bool *fear, bool *mdeath, s16b hand, int
     bool            fuiuchi = FALSE;
     bool            monk_attack = FALSE;
     bool            duelist_attack = FALSE;
-	bool            duelist_challenge = FALSE;
+    bool            duelist_challenge = FALSE;
     bool            perfect_strike = FALSE;
     bool            sleep_hit = FALSE;
     bool            do_quake = FALSE;
@@ -2921,6 +2174,7 @@ static bool py_attack_aux(int y, int x, bool *fear, bool *mdeath, s16b hand, int
     bool            zantetsu_mukou = FALSE, e_j_mukou = FALSE, bird_recoil = FALSE;
     int             knock_out = 0;
     int             dd, ds, old_hp;
+    int             opy = py, opx = px;
     bool            hit_ct = 0;
     bool            poison_needle = FALSE;
     bool            insta_kill = FALSE;
@@ -3143,6 +2397,14 @@ static bool py_attack_aux(int y, int x, bool *fear, bool *mdeath, s16b hand, int
         bool do_whirlwind = FALSE;
 
         water_mana_action(FALSE, (mode == PY_ATTACK_ACID) ? 24 : 18);
+
+        if ((py != opy) || (px != opx)) break; /* Player has teleported */
+
+        if (!c_ptr->m_idx) /* A real thing that can happen */
+        {
+            msg_print("You swing wildly at nothing.");
+            break;
+        }
 
         /* We now check fear on every blow, and only lose energy equal to the number of blows attempted.
            Monsters with AURA_FEAR can induce fear any time the player damages them! */
@@ -4503,6 +3765,15 @@ weaponmaster_reap:
     else
         wizard_report_damage(old_hp - m_ptr->hp);
 
+    if ((o_ptr) && (o_ptr->name1 == ART_BLOODRIP) && ((p_ptr->pclass == CLASS_BLOOD_KNIGHT) || (one_in_(2))))
+    {
+        if (object_is_known(o_ptr))
+            msg_print("Bloodrip swings back to feed on you!");
+        else
+            msg_print("Your sword swings back to feed on you!");
+        (void)set_cut(p_ptr->cut + 2 + damroll(2, 3), FALSE);
+    }
+
     return success_hit;
 }
 
@@ -5293,6 +4564,30 @@ static bool _auto_mapping(void)
     return FALSE;
 }
 
+void _snow_adjust_energy(bool snow, monster_race *r_ptr)
+{
+    if (!p_ptr->levitation &&
+        !prace_is_(RACE_HIGH_ELF) &&
+        !prace_is_(RACE_TOMTE) &&
+        (!p_ptr->riding || (
+          (!(r_ptr->flags2 & RF2_PASS_WALL))
+          && (!(r_ptr->flags8 & RF8_WILD_SNOW))
+          && (!(r_ptr->flags7 & RF7_CAN_FLY)))))
+    {
+        s32b lisays = 33;
+        if (!p_ptr->riding)
+        {
+            int _tw = py_total_weight(), _lw = weight_limit();
+            if (_tw > _lw)
+            {
+                lisays += MIN(200, _tw * 100L / _lw) - 100;
+            }
+        }
+        else lisays = 40;
+        if (!snow) lisays /= 3;
+        energy_use += MIN(120, energy_use) * lisays / 100;
+    }
+}
 
 /*
  * Move the player
@@ -5617,6 +4912,7 @@ bool trap_can_be_ignored(int feat)
     case TRAP_PIT:
     case TRAP_SPIKED_PIT:
     case TRAP_POISON_PIT:
+    case TRAP_BANANA:
         if (p_ptr->levitation) return TRUE;
         break;
     case TRAP_TELEPORT:
@@ -5651,6 +4947,59 @@ bool trap_can_be_ignored(int feat)
      (have_flag((MF)->flags, FF_MOVE) || have_flag((MF)->flags, FF_CAN_FLY)) && \
      have_flag((MF)->flags, FF_PROJECT) && \
      !have_flag((MF)->flags, FF_OPEN))
+
+bool _glacier_hack = FALSE;
+
+void _glacier_slip(feature_type *f_ptr)
+{
+     int ow_level = 25 + MAX(0, 200 - p_ptr->ac) / 4;
+     energy_use += 75;
+     ow_level -= randint1(ow_level / 2);
+     if (p_ptr->levitation) /* paranoia */
+     {
+         cmsg_print(TERM_VIOLET, "Please report a Mysterious Bug to the maintainer.");
+         return;
+     }
+     if ((have_flag(f_ptr->flags, FF_MOUNTAIN)) && (!have_flag(f_ptr->flags, FF_MOVE)))
+     {
+         msg_print("You slip and crash into the hard mountainside at speed!");
+         if (!res_save_default(RES_SOUND)) set_stun(p_ptr->stun + ow_level, FALSE);
+     }
+     else if (have_flag(f_ptr->flags, FF_TREE))
+     {
+         msg_print("You slip and crash into the trees at speed!");
+         ow_level -= (ow_level / 8); /* Better than hitting a mountain... */
+         if (!res_save_default(RES_SOUND)) set_stun(p_ptr->stun + ow_level, FALSE);
+     }
+     else if (have_flag(f_ptr->flags, FF_SLIPPERY))
+     {
+         msg_print("You slip and crash onto the ice!");
+         if (!res_save_default(RES_SOUND)) set_stun(p_ptr->stun + ow_level, FALSE);
+     }
+     else if (have_flag(f_ptr->flags, FF_SNOW)) /* Hey, something soft */
+     {
+         msg_print("You slip off the icy slope and fall into the snow!");
+         ow_level /= 5;
+     }
+     else if (have_flag(f_ptr->flags, FF_CREVASSE)) /* OW */
+     {
+         cmsg_print(TERM_RED, "You slip off the icy hillside and fall into the crevasse!");
+     }
+     else msg_print("You slip off the icy slope!");
+     if (have_flag(f_ptr->flags, FF_CREVASSE))
+     {
+         take_hit(DAMAGE_NOESCAPE, ow_level * 2, "falling into a crevasse");
+         if (!p_ptr->is_dead)
+         {
+             inven_damage(0, set_cold_destroy, 3, RES_SOUND);
+             inven_damage(0, set_cold_destroy, 3, RES_SHARDS);
+             if (!res_save_default(RES_SOUND)) set_stun(p_ptr->stun + (ow_level * 3 / 2), FALSE);
+             if (!res_save_default(RES_SHARDS)) set_cut(p_ptr->cut + ow_level, FALSE);
+         }
+     }
+     else take_hit(DAMAGE_NOESCAPE, ow_level, "slipping off a glacier");
+     _glacier_hack = FALSE;
+}
 
 /*
  * Move player in the given direction, with the given "pickup" flag.
@@ -5694,6 +5043,12 @@ void move_player(int dir, bool do_pickup, bool break_trap)
     /* Get the monster */
     m_ptr = &m_list[c_ptr->m_idx];
 
+    if ((_glacier_hack) && ((c_ptr->m_idx) ||
+        ((!p_can_enter) && (!have_flag(f_ptr->flags, FF_CREVASSE)))))
+    {
+        _glacier_slip(f_ptr);
+        return;
+    }
 
     if (equip_find_art(ART_STORMBRINGER)) stormbringer = TRUE;
 
@@ -5900,11 +5255,29 @@ void move_player(int dir, bool do_pickup, bool break_trap)
            && (have_flag(f_ptr->flags, FF_CAN_FLY) || have_flag(f_ptr->flags, FF_CAN_CLIMB))
            && !p_ptr->levitation )
     {
-        msg_format("You need to fly to go through the %s.", f_name + f_info[get_feat_mimic(c_ptr)].name);
-        oktomove = FALSE;
-        if (!shadow_strike)
-            energy_use = 0;
-        running = 0;
+        {
+            if (!_glacier_hack)
+            {
+                msg_format("You need to fly to go through the %s.", f_name + f_info[get_feat_mimic(c_ptr)].name);
+                oktomove = FALSE;
+            }
+            else if (have_flag(f_ptr->flags, FF_CREVASSE)) p_can_enter = TRUE;
+            else oktomove = FALSE;
+            running = 0;
+            if (_glacier_hack)
+            {
+                if (!p_can_enter)
+                {
+                    _glacier_slip(f_ptr);
+                    return;
+                }
+            }
+            else if (!(p_ptr->confused || p_ptr->image))
+            {
+                if (!shadow_strike)
+                    energy_use = 0;
+            }
+        }
     }
 
 
@@ -5918,7 +5291,7 @@ void move_player(int dir, bool do_pickup, bool break_trap)
      * Player can move through trees and
      * has effective -10 speed
      */
-    else if (have_flag(f_ptr->flags, FF_TREE) && !p_can_kill_walls)
+    else if (have_flag(f_ptr->flags, FF_TREE) && !p_can_kill_walls && !p_ptr->pass_wall && !_glacier_hack)
     {
         if ( p_ptr->pclass != CLASS_RANGER
           && p_ptr->pclass != CLASS_SCOUT
@@ -5930,6 +5303,22 @@ void move_player(int dir, bool do_pickup, bool break_trap)
         {
             energy_use *= 2;
         }
+        if (have_flag(f_ptr->flags, FF_SNOW))
+        {
+            _snow_adjust_energy(TRUE, riding_r_ptr);
+        }
+    }
+    else if ((!p_ptr->levitation) && (have_flag(f_ptr->flags, FF_MOUNTAIN)) &&
+             (have_flag(f_ptr->flags, FF_SLIPPERY)) && (!_glacier_hack) &&
+             (!p_ptr->riding || !(riding_r_ptr->flags8 & RF8_WILD_SNOW)))
+    {
+        msg_print("You struggle for safe footholds on the icy slope.");
+        energy_use *= 2;
+    }
+    else if (((have_flag(f_ptr->flags, FF_SNOW)) || (have_flag(f_ptr->flags, FF_SLUSH))) && !p_ptr->pass_wall)
+    {
+        bool snow = have_flag(f_ptr->flags, FF_SNOW);
+        if (!_glacier_hack) _snow_adjust_energy(snow, riding_r_ptr);
     }
     else if (have_flag(f_ptr->flags, FF_WEB))
     {
@@ -5944,7 +5333,7 @@ void move_player(int dir, bool do_pickup, bool break_trap)
 #ifdef ALLOW_EASY_DISARM /* TNB */
 
     /* Disarm a visible trap */
-    else if ((do_pickup != easy_disarm) && have_flag(f_ptr->flags, FF_DISARM) && !c_ptr->mimic)
+    else if ((do_pickup != easy_disarm) && have_flag(f_ptr->flags, FF_DISARM) && !c_ptr->mimic && !_glacier_hack)
     {
         if (!trap_can_be_ignored(c_ptr->feat))
         {
@@ -6089,9 +5478,10 @@ void move_player(int dir, bool do_pickup, bool break_trap)
     /* Normal movement */
     if (oktomove)
     {
+        static bool _tulppa = FALSE;
         u32b mpe_mode = MPE_ENERGY_USE;
 
-        if (p_ptr->warning)
+        if ((p_ptr->warning) && (!_glacier_hack))
         {
             if (!process_warning(x, y))
             {
@@ -6144,8 +5534,167 @@ void move_player(int dir, bool do_pickup, bool break_trap)
 
         if (break_trap) mpe_mode |= MPE_BREAK_TRAP;
 
+        if (_glacier_hack)
+        {
+            mpe_mode = 0;
+            _glacier_slip(f_ptr);
+        }
+
+        if ((dungeon_type == DUNGEON_AUSSIE) && (!_tulppa) && (dun_level > 30) && (c_ptr->info & CAVE_ROOM) &&
+            (!(cave[py][px].info & CAVE_ROOM)) && (!have_flag(f_ptr->flags, FF_WATER)))
+        {
+            bool loytyi = FALSE;
+            int y2, x2, i;
+
+            /* Check for water nearby */
+            if (!_tulppa)
+            {
+                cave_type *c2_ptr;
+                for (i = 0; i < 4; i++)
+                {
+                    y2 = y + ddy_ddd[i];
+                    x2 = x + ddx_ddd[i];
+                    if (!in_bounds(y2, x2)) continue;
+                    c2_ptr = &cave[y2][x2];
+                    if ((c2_ptr->info & CAVE_ROOM) && (have_flag(f_info[c2_ptr->feat].flags, FF_WATER)))
+                    {
+                        loytyi = TRUE;
+                        break;
+                    }
+                }
+                if (loytyi)
+                {
+                    msg_print("You hear the ghostly song of a dead swagman as you approach the billabong.");
+                    _tulppa = TRUE;
+                }
+            }
+        }
+
+        else if ((have_flag(f_ptr->flags, FF_SLIPPERY)) && (!p_ptr->levitation) && (!p_ptr->pass_wall) &&
+                 (!p_ptr->wild_mode) && (!p_ptr->riding) && ((p_ptr->confused) || (p_ptr->image) || (one_in_(5))))
+        {
+            bool sattui = FALSE;
+            int i, yrkat = randint1(10);
+            int _save = p_ptr->stat_ind[A_DEX] * 3;
+            if (p_ptr->confused) _save /= 2;
+            if (!mpe_mode)
+            {
+                _save = 100; /* hack - avoid loop */
+                _glacier_hack = FALSE;
+                sattui = TRUE; /* hack - suppress message */
+            }
+            if (_save < 100)
+            {
+                int boots;
+                for (boots = equip_find_first(object_is_boots); boots; boots = equip_find_next(object_is_boots, boots))
+                {
+                    object_type *o_ptr = equip_obj(boots);
+                    u32b flags[OF_ARRAY_SIZE];
+                    obj_flags(o_ptr, flags);
+                    if (have_flag(flags, OF_RES_COLD))
+                    {
+                        _save += (p_ptr->confused ? 30 : 50);
+                        obj_learn_flag(o_ptr, OF_RES_COLD);
+                        break;
+                    }
+                }
+            }
+            if (_save < 100)
+            {
+                int ow_level = 0, stun_plus = 0, cut_plus = 0, conf_plus = 0;
+                for (i = 0; i < yrkat; i++)
+                {
+                    if (saving_throw(_save)) continue;
+                    if (!sattui)
+                    {
+                        sattui = TRUE;
+                        if (saving_throw(_save))
+                        {
+                            msg_print("You briefly lose your balance on the slippery ice!");
+                            energy_use += 25;
+                            break;
+                        }
+                        else
+                        {
+                            msg_print("You lose your footing and fall on the slippery ice!");
+                            ow_level = randint0(MAX(5, 25 - ((p_ptr->ac + p_ptr->to_a) / 8))) + 5;
+                            take_hit(DAMAGE_NOESCAPE, ow_level, "slipping on ice");
+                            if (hex_spelling_any()) stop_hex_spell_all();
+                            p_ptr->counter = FALSE;
+                            energy_use += 100;
+                        }
+                    }
+                    switch (randint1(12))
+                    {
+                        case 1:
+                            stun_plus += ow_level;
+                            break;
+                        case 2:
+                            if (!res_save_default(RES_SOUND)) stun_plus += ow_level;
+                            break;
+                        case 3:
+                            inven_damage(0, set_cold_destroy, 3, RES_SOUND);
+                            break;
+                        case 4:
+                            inven_damage(0, set_cold_destroy, 3, RES_SHARDS);
+                            break;
+                        case 5:
+                        case 6:
+                            if (!res_save_default(RES_CONF)) conf_plus += randint1(3);
+                            break;
+                        case 7:
+                            cut_plus += randint1(ow_level);
+                            break;
+                        case 8:
+                            if (!res_save_default(RES_SHARDS)) cut_plus += (ow_level + 1) / 2;
+                            break;
+                        case 9: /* give the lucky guy a free pass */
+                            if (i < yrkat) i = yrkat;
+                            break;
+                        case 10:
+                            if (have_flag(f_ptr->flags, FF_MOUNTAIN)) _glacier_hack = TRUE;
+                            break;
+                        default: break;
+                    }
+                }
+                if (cut_plus) set_cut(p_ptr->cut + cut_plus, FALSE);
+                if (stun_plus) set_stun(p_ptr->stun + stun_plus, FALSE);
+                if (conf_plus) set_confused(p_ptr->confused + conf_plus, FALSE);
+            }
+            if (!sattui)
+            {
+                msg_print("You nimbly maintain your balance on the slippery ice!");
+            }
+            else
+            {
+                disturb(0,0);
+                if (p_ptr->special_defense & (KATA_MASK)) lose_kata();
+                else if (p_ptr->special_defense & (KAMAE_MASK)) lose_kamae();
+                if (p_ptr->concent) reset_concentration(TRUE);
+                mpe_mode |= (MPE_DONT_PICKUP);
+            }
+        }
+
+        if (!mpe_mode) /* clean up after glacier hack */
+        {
+            mpe_mode = MPE_ENERGY_USE;
+        }
+
         /* Move the player */
         (void)move_player_effect(y, x, mpe_mode);
+
+        if (_glacier_hack)
+        /* Keep moving */
+        {
+            if (p_ptr->prace == RACE_MON_POSSESSOR || p_ptr->prace == RACE_MON_MIMIC)
+               _glacier_hack = FALSE; /* Code too achy */
+            else if (p_ptr->riding) _glacier_hack = FALSE; /* Paranoia */
+            else
+            {
+                travel_cancel_fully();
+                move_player(dir, FALSE, FALSE);
+            }
+        }
     }
 }
 
