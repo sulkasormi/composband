@@ -533,6 +533,7 @@ static flag_insc_table flag_insc_misc[] =
     { "Hl", OF_HOLD_LIFE, -1 },
     { "Sd", OF_SLOW_DIGEST, -1 },
     { "Rg", OF_REGEN, -1 },
+    { "Rm", OF_REGEN_MANA, -1 },
     { "Lv", OF_LEVITATION, -1 },
     { "Nv", OF_NIGHT_VISION, -1 },
     { "Lu", OF_LITE, -1 },
@@ -545,7 +546,6 @@ static flag_insc_table flag_insc_misc[] =
     { "Ty", OF_TY_CURSE, -1 },
     { "Ds", OF_DARKNESS, -1 },
     { "Wm", OF_WEAPONMASTERY, -1 },
-    { "Ps", OF_LORE1, -1 },
     { "Id", OF_LORE2, -1 },
     { NULL, 0, -1 }
 };
@@ -571,6 +571,7 @@ static flag_insc_table flag_insc_brand[] =
     { "F", OF_BRAND_FIRE, -1 },
     { "Co", OF_BRAND_COLD, -1 },
     { "P", OF_BRAND_POIS, -1 },
+    { "Dk", OF_BRAND_DARK, -1 },
     { "Ca", OF_BRAND_CHAOS, -1 },
     { "V", OF_BRAND_VAMP, -1 },
     { "Q", OF_IMPACT, -1 },
@@ -578,7 +579,6 @@ static flag_insc_table flag_insc_brand[] =
     { "S", OF_VORPAL, -1 },
     { "S", OF_VORPAL2, -1 },
     { "M", OF_BRAND_MANA, -1 },
-    { "Dk", OF_BRAND_DARK, -1 },
     { NULL, 0, -1 }
 };
 
@@ -946,8 +946,8 @@ static void get_inscription(char *buff, object_type *o_ptr)
 
 char attr_to_attr_char(byte a)
 {
-    char hack[17] = "dwsorgbuDWvyRGBU";
-    char c = hack[a&0x0F];
+    //char hack[30] = "dwsorgbuDWvyRGBULPiptSmMTOVcn";
+    char c = (color_char[a & COLOR_MASK]);
     return c;
 }
 
@@ -1219,7 +1219,7 @@ void object_desc(char *buf, object_type *o_ptr, u32b mode)
 
         case TV_BOW:
         {
-            if (o_ptr->sval != SV_HARP && o_ptr->sval != SV_CRIMSON && o_ptr->sval != SV_RAILGUN)
+            if (!obj_is_fake_bow(o_ptr))
                 show_weapon = TRUE;
 
             break;
@@ -1544,7 +1544,7 @@ void object_desc(char *buf, object_type *o_ptr, u32b mode)
                  ((o_ptr->tval == TV_CORPSE) &&
                   (r_info[o_ptr->pval].flags1 & RF1_UNIQUE)))
         {
-            t = object_desc_str(t, "The ");
+            if (o_ptr->name1 != ART_MOM) t = object_desc_str(t, "The ");
         }
 
         /* A single one */
@@ -1600,7 +1600,7 @@ void object_desc(char *buf, object_type *o_ptr, u32b mode)
         /* Hack -- The only one of its kind */
         else if (known && object_is_artifact(o_ptr))
         {
-            t = object_desc_str(t, "The ");
+            if (o_ptr->name1 != ART_MOM) t = object_desc_str(t, "The ");
         }
 
         /* Hack -- single items get no prefix */
@@ -1880,7 +1880,7 @@ void object_desc(char *buf, object_type *o_ptr, u32b mode)
             int dd = o_ptr->dd;
             int ds = o_ptr->ds;
 
-            if (p_ptr->big_shot && o_ptr->tval == p_ptr->shooter_info.tval_ammo)
+            if (p_ptr->big_shot && object_is_suitable_ammo(o_ptr))
                 ds += 2;
 
             if (hand >= 0 && hand < MAX_HANDS && !(mode & OD_THROWING))
@@ -1916,9 +1916,7 @@ void object_desc(char *buf, object_type *o_ptr, u32b mode)
     {
         char tmp[10];
 
-        if (o_ptr->sval == SV_HARP) break;
-        if (o_ptr->sval == SV_CRIMSON) break;
-        if (o_ptr->sval == SV_RAILGUN) break;
+        if (obj_is_fake_bow(o_ptr)) break;
         if (!known) break;
 
         /* Mega-Hack -- Extract the "base power" */
@@ -1955,7 +1953,7 @@ void object_desc(char *buf, object_type *o_ptr, u32b mode)
     /* Add the weapon bonuses */
     if (known)
     {
-        if (o_ptr->tval == TV_BOW && (o_ptr->sval == SV_HARP || o_ptr->sval == SV_CRIMSON || o_ptr->sval == SV_RAILGUN))
+        if (obj_is_fake_bow(o_ptr))
         {
         }
         /* Show the tohit/todam on request */
@@ -2338,8 +2336,8 @@ void object_desc(char *buf, object_type *o_ptr, u32b mode)
     else if ((p_ptr->munchkin_pseudo_id) && ((obj_can_sense1(o_ptr)) || (obj_can_sense2(o_ptr))) &&
              (!(o_ptr->ident & IDENT_SENSE)) && (!object_is_known(o_ptr)))
     {
-        o_ptr->ident |= IDENT_SENSE;
-        o_ptr->feeling = value_check_aux1(o_ptr);
+        o_ptr->feeling = value_check_aux1(o_ptr, TRUE);
+        if (!(o_ptr->ident & IDENT_KNOWN)) o_ptr->ident |= IDENT_SENSE; 
         if (o_ptr->feeling) strcpy(fake_insc_buf, game_inscriptions[o_ptr->feeling]);
     }
 
@@ -2376,6 +2374,10 @@ void object_desc(char *buf, object_type *o_ptr, u32b mode)
     else if (!aware && object_is_tried(o_ptr))
     {
         strcpy(fake_insc_buf, "tried");
+    }
+    else if ((shops_mark_unseen) && (aware) && (!object_is_aware(o_ptr)) && (object_is_flavor(o_ptr)) && (o_ptr->loc.where == INV_SHOP))
+    {
+        strcpy(fake_insc_buf, "unseen");
     }
 
     /* Note the discount, if any */
