@@ -282,9 +282,23 @@ Potions of New Life also cure mutations among their other effects, and potions o
 Having too many mutations gives a penalty to HP regeneration; the more mutations you have, the worse the penalty. Beastmen are penalized less, and can have a large number of mutations before triggering the penalty at all. Permanent mutations (such as demigod powers or the White Aura from the Lucky personality) do not count towards this penalty. Mana regeneration is not affected by mutations.
 
 
+<color:G>Q:</color> I am playing an Igor, and have acquired a fair number of body parts from dissected corpses, but none of them seem to do anything special. Am I missing something?
+
+<color:R>A:</color> Igor body parts are very unpredictable: which parts you get from a monster (and what positive and negative effects they have, if any) depends on the level and thematic properties of the monster dissected, the level and dexterity of the Igor, and sheer random luck. Strong, high-level monsters give better body parts, but don't neglect all those random ant and orc corpses either - there are just so many you will get lucky with one eventually.
+
+All interesting body part properties are indicated in the object description, so you will know when you find a part that might be worth keeping.
+
+
+<color:G>Q:</color> Can I safely dissect wanted corpses on an Igor without missing out on the rewards?
+
+<color:R>A:</color> Yes. The only individual body parts that bounty offices accept as proof of a kill are a monster's head and its ears; but an Igor who dissects a wanted corpse will take great care to preserve one of the two (usually the ears), which can then be turned in. (It is possible to find another body part worth keeping in addition to the ears.)
+
+
 <color:G>Q:</color> How important is Telepathy?
 
-<color:R>A:</color> Full telepathy is extremely nice to have - it tells you about approaching threats, helps you locate fleeing or blinking enemies, and even allows you to spot monsters that might otherwise be invisible to you. However, it is still more of a convenience than something that you absolutely need, especially if you have easy and reliable access to Detection and have no or minimal problems seeing invisible creatures. A player without telepathy needs to detect monsters more often but can usually get by. Staves of Telepathy are also a handy option for players without permanent telepathy.
+<color:R>A:</color> Full telepathy is extremely nice to have - it tells you about approaching threats, helps you locate fleeing or blinking enemies, and even allows you to spot monsters that might otherwise be invisible to you. It is not absolutely needed, but most players generally try to have it by the endgame. A player with no telepathy needs to detect very often and must see invisible monsters reliably.
+
+Staves of Telepathy are a handy option for players without permanent telepathy from equipment.
 
 
 <color:G>Q:</color> What does Reflection do? How important is it?
@@ -296,7 +310,7 @@ Reflection is very helpful (and remains useful throughout the game) but is never
 
 <topic:Levitation><color:G>Q:</color> What does Levitation do? How important is it?
 
-<color:R>A:</color> Levitation gives access to dark pits and mountainous wilderness, prevents overburdened characters from drowning in deep water, reduces damage from standing in (or over) deep lava or toxic waste, reduces damage from gravity, helps against the side-effects of gravity and storm winds, eliminates movement speed penalties in wooded areas, and allows you to harmlessly fly over some types of floor traps. It is a necessity for entering mountainous areas (and a practical necessity for entering deep seas on an overburdened character); it is very handy, but not strictly necessary, for navigating the Cloning Pits quest as well as dungeons with dark pits or deep water. In other situations it is not very important; items that give levitation but are otherwise not that great can be left at home to be shuffled in when needed.
+<color:R>A:</color> Levitation gives access to dark pits and mountainous wilderness, prevents overburdened characters from drowning in deep water, reduces damage from standing in (or over) deep lava or toxic waste, reduces damage from gravity, helps against the side-effects of gravity and storm winds, eliminates movement speed penalties in wooded or snowy areas, and allows you to harmlessly fly over some types of floor traps. It is a necessity for entering mountainous areas (and a practical necessity for entering deep seas on an overburdened character); it is very handy (but not strictly necessary) for navigating snowy areas, the Cloning Pits quest, and dungeons with dark pits or deep water. In other situations Levitation is not very important; items that give levitation but are otherwise not that great can be left at home to be shuffled in when needed.
 
 
 <color:G>Q:</color> What is Warning? Is it something I need... and what do the strange messages it's giving me mean?!
@@ -325,9 +339,16 @@ However, many side-effects of exotic elements can be blocked or mitigated by res
 <color:R>A:</color> Scrolls of Enchant Armor and Enchant Weapon can only enchant items up to +15. (Unlike item-enchantment spells and the town service, this limit is fixed and independent of your character level.) The closer you get to +15, the less likely it is that the scroll will work; in practice you can view +10 or +11 as a soft limit, due to how difficult enchanting items beyond that is. Trying to enchant an artifact or a pile of multiple items raises the failure probability even higher.
 
 
+<color:G>Q:</color> What does Mundanity do? Is it good or bad?
+
+<color:R>A:</color> Mundanity allows you to turn an item of your choosing into a perfectly average item. It removes all bonuses, resistances and other enhancements not inherent to the object kind; this includes removing the random resistances on Dragon Wings and the like, but not the guaranteed resistances on Dragon Scale Mails. Mundanity also removes all curses.
+
+Mundanity has two main uses: to create an average item that can be used as a reforge base, and to remove powerful curses. It is the only way to remove a Permanent Curse from an item. Mundanity can be very useful, but don't use it on the wrong item by accident... Essence absorption on Weaponsmiths (and item monsters like Death-Swords) always mundanizes the target item.
+
+
 <color:G>Q:</color> Staves of Destruction are supposed to be great, yet mine doesn't seem to do anything when I use it! What's wrong?
 
-<color:R>A:</color> A number of items and spells do nothing when used on a town quest level (any quest level not located inside a dungeon). In addition to Destruction, this includes all Genocide, Mass Genocide and Annihilation effects, as well as Teleport Level.
+<color:R>A:</color> A number of items and spells do nothing when used on a town quest level (any quest level not located inside a dungeon). In addition to Destruction, this includes all Genocide, Mass Genocide and Annihilation effects, Teleport Level, and capture ball activations against non-pets.
 
 Destruction also does not work in the wilderness or in the Witch Wood. This is because outdoors there's no ceiling to bring down!
 
@@ -341,10 +362,14 @@ Destruction also does not work in the wilderness or in the Witch Wood. This is b
 
 <color:R>A:</color> Unlife attacks are very similar to vampiric attacks, but instead of healing the monster they make the monster more powerful. A powerful monster has a higher AC, hits harder and casts more dangerous spells.
 
+Only Unlife attacks directed at the player can make a monster stronger. Unlife attacks directed at a monster will not make the attacker more powerful, but can make the target monster less powerful.
+
 
 <color:G>Q:</color> What do the player's vampiric attacks do?
 
 <color:R>A:</color> They drain life from the target monster; the monster will lose HP like on a normal attack, but in addition its max HP will be lowered slightly, and you will recover either a small amount of life points or a small amount of HP, should you need either. (If both your life points and hit points have fallen below the maximum, your life points will recover first.) Vampiric attacks are very useful and powerful; however, they only work on living monsters. Many strong monsters, like golems, vortices, demons, undead and the Serpent of Chaos, are immune to vampirism.
+
+Monsters can never recover the lost max HP, although drained uniques will be back to their normal HP (as well as normal, pre-Unlife monster power) if encountered again on a subsequent level. Capturing a monster with a Capture Ball also reverts it back to its normal maximum HP.
 
 
 <topic:LifePoints><color:G>Q:</color> What are "life points", anyway?
@@ -429,6 +454,13 @@ Reforge from strong slots to strong slots, weak slots to weak slots, and - if ne
 <color:R>A:</color> Poison needles are a special weapon. A poison needle only gets one hit per turn and usually only deals 1 damage on that hit; however, poison needle hits have a small chance of instantly killing any monster in the game, no matter how strong, unless it is a unique. Poison needles are often used to kill metal babbles, which are very difficult to kill through any other means. (The Metal Babble at the bottom of the Arena dungeon is technically a unique, but is still susceptible to a poison needle kill.)
 
 Poison needles cannot be used in a reforge, and cannot be enchanted through any normal means. (Some classes, like Weaponsmiths, can use their special abilities to "enchant" a poison needle, but this has no actual effect on the needle's performance.) Poison needles have a 100% hit chance, unless the player is dual-wielding, in which case they have a 50% hit chance.
+
+
+<color:G>Q:</color> What do Rune Swords do? Are they as bad as they look?
+
+<color:R>A:</color> Rune Swords start out extremely weak, but they gain power as you kill monsters (especially uniques) with them. If you find a Rune Sword early and use it into the deep endgame, it will eventually be very strong offensively.
+
+Growing a Rune Sword takes a long time, and it will also pick up a number of negative attributes along the way - increasing AC penalties. aggravation, and eventually (in the very late game) the Ancient Foul Curse. The positive attributes of a Rune Sword, moreover, are purely offensive; it will never provide resistances, stat bonuses or additional abilities like many other strong weapons; and since Rune Swords are permanently cursed, the only way to unwield them is to essentially destroy them with Mundanity. For these reasons, most players are quite wary of using Rune Swords, but the game has been won with them many times.
 
 
 <color:G>Q:</color> Are Sexy Swimsuits just a useless joke item, or can they be actually good?
