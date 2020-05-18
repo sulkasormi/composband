@@ -438,7 +438,7 @@ I:33:10:20
 W:90:66:20:0
 P:0:1d1:0:0:25
 F:DEC_STR | DEC_DEX | DEC_CON | DEC_LIFE | HIDE_TYPE | DEC_MANA | EASY_SPELL |
-F:FREE_ACT | SEE_INVIS | TELEPATHY | XTRA_POWER | SPELL_POWER
+F:FREE_ACT | SEE_INVIS | TELEPATHY | XTRA_POWER | SPELL_POWER | REGEN_MANA |
 F:CURSED | HEAVY_CURSE | PERMA_CURSE
 D:The midnight-hued steel circlet of the sorceress-queen Beruthiel, which
 D:grants extraordinary powers of sight and awareness at a terrible physical
@@ -705,7 +705,7 @@ P:5:1d1:10:12:20
 F:DEX | HIDE_TYPE |
 F:FREE_ACT | RES_ACID | SHOW_MODS | XTRA_POWER
 E:ARROW:30:50:150
-E:Your cesti grows magical spikes...
+E:Your caestus grow magical spikes...
 D:The hand-sheathing of Fingolfin, warrior-king of Elves and Men, who gave
 D:Morgoth seven mighty wounds and pain that will last forever.
 
@@ -867,13 +867,14 @@ F:SLOW_DIGEST | SHOW_MODS | HIDE_TYPE | BLESSED | RIDING
 # The Broad Sword 'Glamdring'
 
 N:73:'Glamdring'
-I:23:16:1
+I:23:16:3
 W:30:20:150:40000
 P:0:2d6:10:15:0
 F:SEARCH |
-F:SLAY_EVIL | BRAND_FIRE | KILL_ORC | RES_FIRE | RES_LITE | LITE |
-F:SLOW_DIGEST | SHOW_MODS | RIDING | XTRA_RES_OR_POWER |
-F:ESP_ORC | ESP_TROLL | ESP_GIANT
+F:SLAY_EVIL | BRAND_FIRE | KILL_ORC | RES_FIRE | RES_LITE | RES_DARK | LITE |
+F:SLOW_DIGEST | SHOW_MODS | RIDING | FREE_ACT | SEE_INVIS | XTRA_RES_OR_POWER |
+F:SLAY_ORC | SLAY_TROLL | SLAY_DEMON |
+F:ESP_ORC | ESP_TROLL | ESP_GIANT | ESP_DEMON
 D:This fiery, shining blade earned its sobriquet "Foe-Hammer" from dying orcs
 D:who dared to come near hidden Gondolin.
 
@@ -893,7 +894,7 @@ N:75:'Orcrist'
 I:23:16:3
 W:20:20:150:40000
 P:0:2d6:10:15:0
-F:STEALTH | SLAY_EVIL | BRAND_COLD | KILL_ORC | RES_COLD | LITE |
+F:STEALTH | SLAY_EVIL | BRAND_COLD | KILL_ORC | RES_COLD | RES_DARK | LITE |
 F:SLOW_DIGEST | SHOW_MODS | RIDING | XTRA_RES_OR_POWER |
 F:ESP_ORC | ESP_TROLL | ESP_GIANT
 D:This coldly gleaming blade is called simply "Biter", by orcs who came to
@@ -1168,6 +1169,7 @@ F:FREE_ACT | RES_FIRE | RES_ELEC | RES_LITE |
 F:SLOW_DIGEST | BLESSED | SHOW_MODS | LITE | RIDING
 E:BALL_ELEC:15:50:100
 E:Your spear crackles with electricity...
+D:Gungnir, the spear of Odin, inscribed with mighty runes.
 
 # The Spear of Orome -> Destiny
 
@@ -1466,8 +1468,8 @@ W:80:50:40:140000
 P:0:4d2:10:13:0
 F:INT | WIS | CHR | HIDE_TYPE | SEARCH | BRAND_FIRE | BRAND_MANA |
 F:SLAY_EVIL | SLAY_TROLL | SLAY_ORC | LITE | DEC_MANA | XTRA_POWER |
-F:HOLD_LIFE | RES_FIRE | RES_NETHER | SEE_INVIS | SHOW_MODS
-F:REGEN | SLOW_DIGEST | RES_CONF | RES_BLIND | SPELL_CAP
+F:HOLD_LIFE | RES_FIRE | RES_NETHER | SEE_INVIS | SHOW_MODS | REGEN
+F:REGEN_MANA | SLOW_DIGEST | RES_CONF | RES_BLIND | SPELL_CAP
 E:INVULNERABILITY:90:777
 E:"You cannot pass! I am a servant of the Secret Fire, wielder of the Flame of Anor."
 D:The staff of the great wizard Gandalf.
@@ -1640,8 +1642,8 @@ D:now serves as a remembrance for all dragons that come near it.
 
 N:136:'Mjollnir'
 I:21:8:4
-W:35:30:150:100000
-P:0:5d4:3:15:0
+W:40:125:360:100000
+P:0:6d5:9:18:0
 F:BRAND_ELEC | IM_ELEC | STR | DEX | THROWING | SLAY_GIANT
 D:The famous throwing hammer of the Norse god Thor, it crackles with
 D:lightning as you swing it at your opponents.
@@ -2014,8 +2016,9 @@ F:STR | DEX | SUST_STR | SUST_DEX | FREE_ACT | SEE_INVIS | BRAND_VAMP |
 F:KILL_DRAGON | SLAY_ANIMAL | SLAY_EVIL | BRAND_ELEC | BRAND_ACID |
 F:SLAY_UNDEAD | SLAY_DEMON | SLAY_TROLL | SLAY_GIANT | SLAY_ORC | WARNING |
 F:IM_FIRE | RES_SHARDS | RES_FEAR | TUNNEL | INFRA | SEARCH | REFLECT |
-F:LITE | TELEPATHY | REGEN | BRAND_FIRE | BRAND_COLD | BRAND_POIS
-F:SLAY_HUMAN | HIDE_TYPE | SHOW_MODS | RIDING | QUESTITEM | INSTA_ART
+F:LITE | TELEPATHY | REGEN | REGEN_MANA | BRAND_FIRE | BRAND_COLD |
+F:BRAND_POIS | SLAY_HUMAN | HIDE_TYPE | SHOW_MODS | RIDING | QUESTITEM |
+F:INSTA_ART
 
 N:182:of irresponsibility
 I:19:63:7
@@ -3737,6 +3740,256 @@ F:STEALTH | CHR | RES_ACID | RES_ELEC | RES_FIRE | ESP_HUMAN | LITE
 F:QUESTITEM | FULL_NAME
 D:A soft light shines from the depths of this carved pumpkin. (You hope it
 D:isn't the glow of damned souls...)
+
+# Purposely not a QUESTITEM, as with Mjollnir
+N:369:of Freyr
+I:23:16:2
+W:75:120:150:150000
+P:0:4d6:21:12:10
+F:SPEED | BLOWS | DEX | VORPAL | LITE | BRAND_FIRE | SLAY_GIANT | SLAY_DEMON
+F:RES_FIRE | RES_SOUND | FREE_ACT | REGEN | RIDING | BLESSED | SHOW_MODS |
+F:WIS | XTRA_POWER
+D:The blazing sword of the god Freyr, the loss of which is fated to doom him
+D:in battle against the fire-giant Surtur.
+
+N:370:'Gjallarhorn'
+I:4:2:3
+W:70:50:25:100000
+E:RETURN_PETS:15:20
+F:CHR | SUST_CHR | RES_FEAR | DEC_STEALTH | ESP_GIANT | ESP_UNDEAD
+F:FIXED_ACT | QUESTITEM
+D:The great horn of the god Heimdall, claimed to ring so loud it can be
+D:heard in all nine worlds.
+
+N:371:of Tyr
+I:37:13:3
+W:70:100:340:100000
+P:23:1d6:5:5:27
+E:HEROISM:10:10
+F:RES_ACID | RES_ELEC | RES_COLD | RES_SOUND | RES_SHARDS |
+F:WIS | CON | RES_CHAOS | RES_BLIND | RES_FEAR | FREE_ACT |
+F:SLOW_DIGEST | QUESTITEM
+D:The armour of the god Tyr, upholder of law and justice.
+
+N:372:of Vidarr
+I:30:3:3
+W:40:50:80:200000
+P:3:1d1:6:6:27
+F:SPEED | RES_FIRE | RES_DARK | RES_POIS | RES_COLD | LEVITATION | QUESTITEM
+E:STUNNING_KICK:50:80
+E:You stomp with great force!
+D:The magical shoes of the god Vidarr, crafted from all the spare
+D:shoe-leather thrown away by the common folk. With shoes like this you
+D:could even take on the great wolf.
+
+N:373:Falcon Cloak of Freyja
+I:35:3:5
+W:50:20:30:50000
+P:3:0d0:0:0:9
+F:SPEED | RES_LITE | RES_COLD | FREE_ACT | LEVITATION | FULL_NAME | QUESTITEM
+D:The magical feathered cloak of Freyja, the twin of Frigg's cloak.
+D:It allows anyone who wears it access to the skies.
+
+N:374:Necklace 'Brisingamen'
+I:40:0:3
+W:70:210:3:75000
+F:CON | CHR | INFRA | HIDE_TYPE | RES_LITE | RES_FIRE | RES_DARK |
+F:FREE_ACT | SEE_INVIS | REGEN | LITE | SUST_STR | SUST_CON | SUST_WIS |
+F:SUST_INT | SUST_DEX | SUST_CHR | FULL_NAME | DEC_STEALTH |
+D:The beautiful necklace of the goddess Freyja, reputed to be the work of
+D:dwarven masters.
+
+N:375:of Njord
+I:22:40:0
+W:10:150:30:10000
+P:0:1d1:1:1:1
+F:QUESTITEM
+E:FISHING:1
+D:The fishingpole of the god Njord. It is without an equal.
+
+N:376:Falcon Cloak of Frigg
+I:35:3:3
+W:50:20:30:50000
+P:3:0d0:0:0:18
+F:SPEED | RES_NEXUS | TELEPATHY | LEVITATION | FULL_NAME | QUESTITEM
+D:The magical feathered cloak of Frigg, the twin of Freyja's cloak. It allows
+D:anyone who wears it access to the skies.
+
+N:377:of Skadi
+I:19:13:3
+W:80:100:30:66666
+P:0:x3.75:22:18:0
+F:DEX | STEALTH | RES_COLD | BRAND_COLD | XTRA_SHOTS | QUESTITEM
+D:The bow of the giantess Skadi, a great hunter and the wife of the god Njord.
+
+N:378:of Ullur
+I:45:0:3
+W:80:200:2:10000
+P:0:0d0:21:36:0
+F:SPEED | DEX | STEALTH | XTRA_SHOTS | QUESTITEM
+E:SPEED:30:200
+D:The ring of Ullur, god of archery and the hunt.
+
+N:379:'Jarngreipr'
+I:31:7:7
+W:60:150:40:110000
+P:5:1d1:9:9:18
+F:STR | RES_ELEC | HIDE_TYPE | QUESTITEM | SHOW_MODS
+D:The iron gloves of Magni the mighty, inherited from his father. They give
+D:their wearer such strength that Thor's hammer will feel light as a feather.
+
+N:380:of the Great Wizzard
+I:32:10:1
+W:10:40:20:1000
+P:1:0d0:0:0:8
+F:DEC_STEALTH | HIDE_TYPE
+D:Previously owned by a famous wizard.
+
+N:381:Mom's Loving Modular Sniper Crossbow
+I:19:23:0
+W:50:210:110:100000
+P:0:x4.84:44:36:0
+F:HIDE_TYPE | SHOW_MODS | FULL_NAME
+D:The great masterpiece of Mom's Loving Arms Company, it is capable of
+D:shooting any ammunition.
+
+N:382:Gada of Hanuman
+I:21:5:2
+W:75:150:500:50000
+P:0:9d5:10:20:0
+F:STR | RES_FEAR | STUN | SLAY_DEMON | SHOW_MODS | QUESTITEM | FULL_NAME
+F:SLOW_DIGEST
+D:The massive mace of the god Hanuman, most mortals lack the strength to
+D:handle it.
+
+N:383:of Murugan
+I:22:2:3
+W:15:120:50:30000
+P:0:4d8:18:14:0
+F:SPEED | STR | WIS | RES_DARK | RIDING | THROWING | SEE_INVIS | SLAY_DEMON |
+F:VORPAL | FREE_ACT | RES_CHAOS | RES_FEAR | SUST_STR | SUST_WIS |
+F:SLOW_DIGEST | ESP_DEMON | SHOW_MODS | QUESTITEM |
+E:DISPEL_DEMON:50:90:275
+D:The great spear of the warrior-philosopher-god Karthikeya, also known as
+D:Murugan. It was a present from his mother Parvati, and is imbued with the
+D:energy of both.
+
+N:384:of Rama
+I:19:13:3
+W:60:200:40:40000
+P:0:x4.25:21:36:0
+F:WIS | STEALTH | SLAY_DEMON | SLAY_EVIL | HIDE_TYPE | SHOW_MODS
+F:SUST_WIS | SLOW_DIGEST | PERMA_CURSE | QUESTITEM
+E:RAMA_ARROW:65:20
+D:The great bow of prince Rama, avatar of Vishnu, famous for his unmatched
+D:bowmanship. Crafted by the divine builder Vishwakarma, it originally
+D:belonged to Vishnu himself.
+
+N:385:of Krishna
+I:19:71:4
+W:70:50:5:100000
+F:WIS | CHR | SUST_WIS | SUST_CHR | FREE_ACT | SEE_INVIS | REGEN | QUESTITEM
+F:ESP_HUMAN | HOLD_LIFE | RES_ACID | SLOW_DIGEST | FIXED_ACT
+E:RETURN_PETS:15:5
+D:The flute of Krishna, avatar of Vishnu. The gopis always heard when he
+D:played it, even if they were far away.
+
+N:386:'Kaumodaki'
+I:21:5:3
+W:90:150:200:50000
+P:0:5d6:18:18:0
+F:WIS | CON | RES_ACID | RES_ELEC | RES_FIRE | RES_SOUND | STUN | HOLD_LIFE
+F:SUST_CON | FREE_ACT | BRAND_ELEC | BRAND_ACID | SLAY_DEMON | SHOW_MODS
+F:RES_CHAOS | SEARCH | QUESTITEM
+E:SPEED_HERO:25:225:40
+E:The mace glows brightly...
+D:The divine mace of the god Vishnu, preserver of life against chaos.
+
+N:387:of Shiva
+I:22:5:2
+W:70:120:70:90000
+P:0:3d10:12:18:10
+F:STR | DEX | INT | WIS | CON | CHR | HIDE_TYPE | QUESTITEM
+F:SUST_STR | SUST_DEX | SUST_INT | SUST_WIS | SUST_CON | SUST_CHR |
+F:VORPAL | BRAND_ELEC | BRAND_FIRE | SLAY_EVIL | SEE_INVIS |
+F:BLESSED | SHOW_MODS | RIDING
+E:DISPEL_EVIL:50:250:363
+E:You unleash a wave of holy energy!
+D:The great trishula of Shiva himself, destroyer of everything and bringer
+D:of a new, monster-free world.
+
+N:388:'Kaustubha'
+I:39:28:3
+W:70:90:5:150000
+P:0:1d1:0:0:0
+F:SEE_INVIS | HOLD_LIFE | RES_DARK | RES_DISEN | QUESTITEM | PERMA_CURSE
+F:LORE2 | INSTA_ART | SPEED | WIS | INT | ESP_DEMON
+E:BALL_LITE:40:100:300
+E:The Jewel flashes with a blinding light!
+D:The shining gem of Vishnu, which the gods churned forth from the milky
+D:ocean.
+
+N:389:'Syamantaka'
+I:39:29:3
+W:70:250:5:150000
+P:0:1d1:0:0:7
+F:SPEED | CHR | IM_FIRE | RES_LITE | AURA_FIRE | RES_CHAOS | SLOW_DIGEST
+F:AGGRAVATE | TY_CURSE | PERMA_CURSE
+E:CONFUSING_LITE:64:10:120
+D:This gem once belonged to the sun-god Surya, and no other jewel can match
+D:its brightness; yet death and destruction follow its wearer.
+
+N:390:of Kali
+I:23:18:3
+W:40:200:130:111111
+P:0:5d6:14:14:0
+F:SPEED | BLOWS | VORPAL | BRAND_CHAOS | RES_NETHER | FREE_ACT | HOLD_LIFE
+F:SLAY_DEMON | BLESSED | AGGRAVATE | PERMA_CURSE | XTRA_RES_OR_POWER
+F:DUAL_WIELDING | QUESTITEM
+E:BERSERK:8:100
+D:The sword of the divine mother Kali, destroyer of demons.
+
+N:391:'Brahmastra'
+I:17:1:0
+W:35:35:15:5000
+P:0:8d4:27:24:0
+F:BRAND_FIRE | SLAY_DEMON | INSTA_ART | SHOW_MODS | QUESTITEM
+D:The unmatched missile of Brahma, it is more lethal than any other and
+D:returns to the quiver after being fired.
+
+N:392:'Dunce Cap'
+I:32:10:3
+W:10:40:5:0
+P:1:0d0:0:0:-1
+F:DEC_INT | DEC_WIS | DEC_SPELL_CAP | HEAVY_CURSE
+D:It generates special feelings.
+
+N:393:of Saraswati
+I:32:2:3
+W:70:100:15:10000
+P:2:0d0:0:0:10
+F:INT | WIS | MAGIC_MASTERY | LORE2 | SUST_INT | SUST_WIS | QUESTITEM
+E:PROBING:10:5
+D:The headwear of Saraswati, the goddess of knowledge and learning.
+
+N:394:of Lakshmi
+I:40:0:4
+W:65:150:3:90000
+F:CHR | LITE | INFRA | HIDE_TYPE | SEE_INVIS | FREE_ACT | SUST_CHR | SEARCH |
+F:RES_LITE | RES_DARK | RES_CHAOS | REGEN | QUESTITEM | BLESSED | HOLD_LIFE
+E:SATISFY_HUNGER:50:25:100
+E:Mmm... holy milk chocolate.
+D:This pendant inlaid with a shining gem was worn by Lakshmi, the wise
+D:and beautiful goddess of prosperity, until that fateful day when a
+D:murdering looter invaded her home.
+
+N:395:Stress Ball
+I:39:30:3
+W:50:150:3:10000
+P:0:1d1:0:0:0
+F:FULL_NAME | INSTA_ART | RES_FEAR | BLESSED
+E:UNFOCUS_RAGE:1:30:200
+E:You squeeze the stress ball! You feel better.
 
 # N: serial number : item name
 # I: tval : sval : pval
