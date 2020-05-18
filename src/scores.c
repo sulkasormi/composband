@@ -79,7 +79,7 @@ score_ptr score_current(void)
     score->uid = player_uid;
     score->date = _timestamp();
     score->version = _version();
-    score->score = p_ptr->max_max_exp;  /* XXX */
+    score->score = hof_score();
 
     score->name = _str_copy(player_name);
     score->race = _str_copy(race->name);
@@ -91,7 +91,7 @@ score_ptr score_current(void)
     score->personality = _str_copy(personality->name);
 
     score->gold = p_ptr->au;
-    score->turns = game_turn;
+    score->turns = turn_real(game_turn);
     score->clvl = p_ptr->max_plv;
     score->dlvl = dun_level;
     score->dungeon = _str_copy(map_name());
@@ -401,7 +401,7 @@ static void _display(doc_ptr doc, vec_ptr scores, int top, int page_size)
             doc_insert(doc, "<color:B>");
         doc_printf(doc, " <color:y>%c</color>) %-15.15s", I2A(i), score->name);
         doc_printf(doc, " %2d %-12.12s %-13.13s", score->clvl, score->race, score->class_);
-        doc_printf(doc, " %8d %4d", score->score, j + 1);
+        doc_printf(doc, "%9d %4d", score->score, j + 1);
         doc_printf(doc, " %s", score->date);
         if (score_is_winner(score))
             doc_insert(doc, " <color:v>Winner</color>");
