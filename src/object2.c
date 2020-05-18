@@ -690,8 +690,9 @@ s16b get_obj_num(int level)
         k_idx = table[i].index;
         k_ptr = &k_info[k_idx];
         if (k_ptr->tval == TV_FOOD && k_ptr->sval == SV_FOOD_AMBROSIA && dungeon_type != DUNGEON_OLYMPUS) continue;
-	if (easy_id && k_ptr->tval == TV_SCROLL && k_ptr->sval == SV_SCROLL_STAR_IDENTIFY) continue;
-                if (ironman_downward && k_ptr->tval == TV_SCROLL && k_ptr->sval == SV_SCROLL_RESET_RECALL) continue;
+        if (k_ptr->tval == TV_POTION && k_ptr->sval == SV_POTION_MEAD_OF_POETRY && dungeon_type != DUNGEON_ASGARD) continue;
+	if (easy_id && k_ptr->tval == TV_SCROLL && ((k_ptr->sval == SV_SCROLL_STAR_IDENTIFY) || (k_ptr->sval == SV_SCROLL_UNDERSTANDING))) continue;
+        if (ironman_downward && k_ptr->tval == TV_SCROLL && k_ptr->sval == SV_SCROLL_RESET_RECALL) continue;
         if ((coffee_break == SPEED_INSTA_COFFEE) && (k_ptr->tval == TV_POTION) && ((k_ptr->sval == SV_POTION_HEALING) || (k_ptr->sval == SV_POTION_STAR_HEALING) || (k_ptr->sval == SV_POTION_LIFE))) continue;
         /* Hack -- prevent embedded chests */
         if (opening_chest && (k_ptr->tval == TV_CHEST)) continue;
@@ -2241,7 +2242,7 @@ bool apply_magic(object_type *o_ptr, int lev, u32b mode)
 
         /* Extract the other fields */
         o_ptr->pval = a_ptr->pval;
-        if ((object_is_(o_ptr, TV_BOW, SV_HARP)) && (p_ptr->pclass != CLASS_BARD))
+        if ((obj_is_harp(o_ptr)) && (p_ptr->pclass != CLASS_BARD))
             o_ptr->pval -= (o_ptr->pval / 2);
         o_ptr->ac = a_ptr->ac;
         o_ptr->dd = a_ptr->dd;
@@ -2293,8 +2294,8 @@ bool apply_magic(object_type *o_ptr, int lev, u32b mode)
             /* I couldn't figure out where to put this ... in many ways,
                Harps are more like rings and amulets, so the aux function that
                normally rolls pvals should always be called ... */
-            if (o_ptr->tval == TV_BOW && o_ptr->sval == SV_HARP)
-                o_ptr->pval = 1 + m_bonus(2, lev);
+            if (obj_is_harp(o_ptr))
+                o_ptr->pval = 1 + m_bonus((p_ptr->pclass == CLASS_BARD) ? 2 : 1, lev);
 
             if (power) obj_create_weapon(o_ptr, lev, power, mode);
             break;
@@ -2774,7 +2775,6 @@ bool kind_is_good(int k_idx)
             /*if (k_ptr->sval == SV_SCROLL_ARTIFACT) return TRUE;*/
             if (k_ptr->sval == SV_SCROLL_FIRE) return TRUE;
             if (k_ptr->sval == SV_SCROLL_ICE) return TRUE;
-            if (k_ptr->sval == SV_SCROLL_CHAOS) return TRUE;
             if (k_ptr->sval == SV_SCROLL_MANA) return TRUE;
             if (k_ptr->sval == SV_SCROLL_INVEN_PROT) return TRUE;
             return FALSE;
@@ -3121,7 +3121,8 @@ static bool _kind_theme_archer(int k_idx) {
 }
 static bool _kind_theme_mage(int k_idx) {
     if ( _kind_is_(k_idx, TV_HAFTED, SV_WIZSTAFF)
-      || _kind_is_(k_idx, TV_SOFT_ARMOR, SV_ROBE) )
+      || _kind_is_(k_idx, TV_SOFT_ARMOR, SV_ROBE) 
+      || _kind_is_(k_idx, TV_HELM, SV_POINTY_HAT))
     {
         return TRUE;
     }
@@ -3173,6 +3174,7 @@ static bool _kind_theme_mage(int k_idx) {
         case SV_SCROLL_WORD_OF_RECALL:
         case SV_SCROLL_IDENTIFY:
         case SV_SCROLL_STAR_IDENTIFY:
+        case SV_SCROLL_UNDERSTANDING:
         case SV_SCROLL_RECHARGING:
         case SV_SCROLL_STAR_DESTRUCTION:
         case SV_SCROLL_GENOCIDE:
@@ -3183,7 +3185,6 @@ static bool _kind_theme_mage(int k_idx) {
         case SV_SCROLL_DETECT_MONSTERS:
         case SV_SCROLL_FIRE:
         case SV_SCROLL_ICE:
-        case SV_SCROLL_CHAOS:
         case SV_SCROLL_MANA:
         case SV_SCROLL_BANISHMENT:
             return TRUE;
@@ -4472,7 +4473,7 @@ void acquirement(int y1, int x1, int num, bool great, bool known, byte origin)
 }
 
 
-#define MAX_NORMAL_TRAPS 18
+#define MAX_NORMAL_TRAPS 21
 
 /* See init_feat_variables() in init2.c */
 typedef struct { s16b feat; byte min_lvl; byte rarity; } _trap_info_t, *_trap_info_ptr;
@@ -4513,6 +4514,9 @@ void init_normal_traps(void)
     _init_normal_trap(i++, "TRAP_LOSE_DEX",   15,  6);
     _init_normal_trap(i++, "TRAP_LOSE_CON",   15,  6);
     _init_normal_trap(i++, "TRAP_TY_CURSE",   30, 20);
+    _init_normal_trap(i++, "TRAP_BEAR",       15,  1);
+    _init_normal_trap(i++, "TRAP_ICICLE",     15,  1);
+    _init_normal_trap(i++, "TRAP_BANANA",     15,  1);
 }
 
 s16b choose_random_trap(void)
@@ -4534,6 +4538,9 @@ s16b choose_random_trap(void)
         if (!trap->rarity) continue;
         if (trap->min_lvl > dun_level) continue;
         if (!allow_down && have_flag(f_info[trap->feat].flags, FF_MORE)) continue;
+        if ((trap->feat == feat_trap_bear) && (dungeon_type != DUNGEON_AUSSIE)) continue;
+        if ((trap->feat == feat_trap_icicle) && (dungeon_type != DUNGEON_SNOW)) continue;
+        if ((trap->feat == feat_trap_banana) && (dungeon_type != DUNGEON_MERU)) continue;
 
         tot += 100 / trap->rarity;
     }
@@ -4548,6 +4555,9 @@ s16b choose_random_trap(void)
         if (!trap->rarity) continue;
         if (trap->min_lvl > dun_level) continue;
         if (!allow_down && have_flag(f_info[trap->feat].flags, FF_MORE)) continue;
+        if ((trap->feat == feat_trap_bear) && (dungeon_type != DUNGEON_AUSSIE)) continue;
+        if ((trap->feat == feat_trap_icicle) && (dungeon_type != DUNGEON_SNOW)) continue;
+        if ((trap->feat == feat_trap_banana) && (dungeon_type != DUNGEON_MERU)) continue;
 
         roll -= 100 / trap->rarity;
         if (roll <= 0)
@@ -4726,6 +4736,10 @@ bool process_warning(int xx, int yy)
         msg_format("Your %s pulsates!", o_name);
         if (o_ptr) obj_learn_flag(o_ptr, OF_WARNING);
         disturb(0, 0);
+        c_ptr->info |= (CAVE_MARK | CAVE_AWARE);
+        c_ptr->info &= ~CAVE_UNSAFE;
+        disclose_grid(yy, xx);
+        lite_spot(yy, xx);
         return get_check("Do you really want to go ahead? ");
     }
 
