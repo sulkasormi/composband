@@ -1,6 +1,12 @@
-?:[OR [EQU $QUEST57 Taken InProgress] [EQU $QUEST81 Taken InProgress] ]
+?:[AND [OR [EQU $QUEST57 Taken InProgress] [EQU $QUEST81 Taken InProgress] ] [EQU $DUNGEON24 Active] ]
 D:You're not a total wimp but how about something a bit more
 D:challenging? Go to the Giant's Hall and kill ten lesser
+D:titans to show us you're really strong.
+?:1
+
+?:[AND [OR [EQU $QUEST57 Taken InProgress] [EQU $QUEST81 Taken InProgress] ] [EQU $DUNGEON24 Suppressed] ]
+D:You're not a total wimp but how about something a bit more
+D:challenging? Go to the Snow Castle and kill ten lesser
 D:titans to show us you're really strong.
 ?:1
 
