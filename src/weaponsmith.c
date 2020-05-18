@@ -2336,7 +2336,7 @@ static bool _smithing(void)
         if (!obj_is_identified(prompt.obj))
         {
             prompt.obj->ident |= IDENT_SENSE;
-            prompt.obj->feeling = value_check_aux1(prompt.obj);
+            prompt.obj->feeling = value_check_aux1(prompt.obj, TRUE);
             prompt.obj->marked |= OM_TOUCHED;
         }
     }
@@ -2389,16 +2389,11 @@ void _smithing_spell(int cmd, variant *res)
     }
 }
 
-static power_info _powers[] =
+static power_info _get_powers[] =
 {
     { A_INT, { 1,  0,  0, _smithing_spell} },
     { -1, { -1, -1, -1, NULL} }
 };
-
-static int _get_powers(spell_info* spells, int max)
-{
-    return get_powers_aux(spells, max, _powers);
-}
 
 /**********************************************************************
  * Character Dump
