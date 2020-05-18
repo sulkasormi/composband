@@ -1,8 +1,9 @@
 N: 1:BIAS_ELEC
 'Blue Thunder'
 'Typhoon'
-'Storm Seeker'
 'Tempest'
+'Lightning Cutter'
+'Shock and Awe'
 of Energy
 
 N: 2:BIAS_POIS
@@ -18,6 +19,7 @@ N: 3:BIAS_FIRE
 'Fire Tornado'
 'Hot Wolf'
 'Hell's Tooth'
+'Eaglefire'
 of Solar Wind
 of Zhuque
 of Vallach
@@ -43,6 +45,7 @@ N:12:BIAS_CHAOS
 'Distorter'
 'Banquet of Azathoth'
 'Cosmic Horror'
+'Nounverber'
 of Gehn
 of Hionhurn
 
@@ -51,6 +54,7 @@ N:14:BIAS_NECROMANTIC
 'Scream of the Damned'
 'Scarlet Silk'
 'Manhunter'
+'Dark Art'
 of Helband
 of Thuringwethil
 of the Erlking
@@ -64,6 +68,7 @@ N: 8:BIAS_WIS
 'Lawgiver'
 'Demonbane'
 'God Hand'
+'Evilbanisher'
 of Holiness
 of Justice
 of the Priests
@@ -86,6 +91,7 @@ of Grand Wizardry
 of Zarathustra
 of Ritual
 of Logimagix
+of Aldarix
 
 N:18:BIAS_WARRIOR
 N: 6:BIAS_STR
@@ -125,5 +131,6 @@ N:*:Default
 'Orphanizer'
 'Lootbringer'
 'Deathblow'
+'Super-Ego'
 of Gibbitude
-
+of Moido
