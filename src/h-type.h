@@ -52,14 +52,14 @@ typedef void *vptr;
 typedef const char *cptr;
 
 
-/* Since float's are silly, hard code real numbers as doubles */
+/* Since floats are silly, hard code real numbers as doubles */
 typedef double real;
 
 
 /* Error codes for function return values */
 /* Success = 0, Failure = -N, Problem = +N */
 #define ERROR_SUCCESS 0
-#define ERROR_UNKOWN_FAILURE 1
+#define ERROR_UNKNOWN_FAILURE 1
 typedef int errr;
 
 
