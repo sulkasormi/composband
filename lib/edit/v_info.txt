@@ -236,7 +236,7 @@ L:9:MON(*, NO_GROUP | DEPTH+15):OBJ(*, DEPTH+20):EGO(*)
 %:vaults.txt
 
 ######################################################################
-# PosChengband Wilderness Encounters
+# FrogComposband Wilderness Encounters
 #
 # Type:    WILD | AMBUSH
 # Subtype: GRASS | WATER | SWAMP | TREES | LAVA | MOUNTAIN
@@ -294,7 +294,7 @@ M:,.TT.......#.T,..%
 M:#........~.,TTT..%
 M:##   ##%%,,..T#%%,
 
-N:Thieve's Hideout
+N:Thieves' Hideout
 T:WILD:GRASS:FORMATION
 W:1:*:16
 L:.:DIRT(ROOM)
@@ -1048,7 +1048,7 @@ M:   8$  4  $8
 N:Roasting Hobbits
 T:WILD:TREES:NIGHT
 W:15:*:4
-L:T:MON(forest troll, NO_SLEEP)
+L:T:MON(forest troll, NO_SLEEP | NO_GROUP)
 L:h:MON(scruffy looking hobbit, FRIENDLY)
 L:~:SHALLOW_LAVA
 L:$:OBJ(*)
@@ -1137,5 +1137,143 @@ M:~_~_~~_~_
 M:_~~~>~~__
 M:~__~~~__~
 M:_~~___~~_
+
+###################
+# Snow Encounters #
+###################
+
+N:Troll Clearing
+T:WILD:SNOW
+W:20:50:2
+L:.:SNOW_FLOOR
+L:T:SNOW_TREE
+L:t:MON(TROLL, DEPTH+10)
+M:    TTTTT TT
+M:  TTT...TT  
+M: TT......TT 
+M:TT...t....T 
+M:TT........TT
+M:TTT......TTT
+M:T TT...TT.TT
+M:T  TTTTT.TT 
+
+N:Troll Ambush
+T:AMBUSH:SNOW
+W:25:50:2
+L:.:SNOW_FLOOR
+L:T:SNOW_TREE
+L:t:MON(TROLL, DEPTH+10 | NO_SLEEP)
+M:    TTTTT TT
+M:  TTT...TT  
+M: TT......TT 
+M:TT..t.@.t.T 
+M:TT........TT
+M:TTT......TTT
+M:T TT...TT.TT
+M:T  TTTTT.TT 
+
+N:Swimming Hole
+T:WILD:SNOW
+W:25:*:3
+L:.:ICE_FLOOR
+L:~:SHALLOW_WATER
+L:>:ENTRANCE(GLOW | MARK, 29)
+M: .... 
+M:..~~..
+M:..~.. 
+M: ...  
+
+N:Surprise Dungeon
+T:WILD:SNOW
+W:50:*:8
+L:.:ICE_FLOOR
+L:~:DEEP_WATER
+L:>:ENTRANCE(GLOW | MARK, 29)
+M: .... 
+M:..~>..
+M:..~.. 
+M: ...  
+
+N:Bear Cave
+T:WILD:SNOW
+W:20:*:2
+L:#:GLACIER_STEEP
+L:.:SNOW_FLOOR
+L:q:SNOW_FLOOR:MON(polar bear)
+L:o:SNOW_FLOOR:OBJ(*, 25% | DEPTH+5)
+L:k:SNOW_FLOOR:OBJ(human skeleton)
+M:  #####
+M: ##...#
+M:##..##.
+M:#....##
+M:#k.q.##
+M:##o.## 
+M: ####  
+
+N:Ice Giants
+T:WILD:SNOW
+W:40:*:6
+L:#:GLACIER
+L:%:GLACIER_STEEP
+L:.:SNOW_FLOOR
+L:p:GLACIER:MON(^ice giant$)
+M:    ####.#     
+M: ######..##### 
+M: ##%%%#.%%%### 
+M:#%%%#%%.##%%%##
+M:#%p####.####%%#
+M:#%%####.%%##p%#
+M:##%##%%.#%%%%%#
+M: #%%%%#.###### 
+M: #####..####   
+M:  ###..##      
+
+N:Ice Giants II
+T:AMBUSH:SNOW
+W:40:*:4
+L:#:GLACIER
+L:%:GLACIER_STEEP
+L:.:SNOW_FLOOR
+L:p:GLACIER:MON(^ice giant$, NO_SLEEP)
+M:    #### #     
+M: ###### .##### 
+M: ##%%p# %%%### 
+M:#%%%#%% ##%%%##
+M:#%%####@####%%#
+M:#%%#### %%##%%#
+M:##%##%% #p%%%%#
+M: #%%%%# ###### 
+M: #####  ####   
+M:  ###  ##      
+
+N:Dragon Family
+T:WILD:SNOW
+W:30:60:3
+L:b:MON(baby white dragon, 75%)
+L:y:MON(young white dragon)
+L:m:MON(mature white dragon)
+L:a:MON(ancient white dragon, 50%)
+L:T:SNOW_TREE
+M:TT   TT
+M:Ty   yT
+M:   b   
+M:  bab  
+M:   b   
+M:Tm   mT
+M:TT   TT
+
+N:Winnipeg
+T:WILD:SNOW
+W:15:35:2
+L:C:MON(white wolf)
+L:W:MON(warg)
+L:T:SNOW_TREE
+M: T     T   TT
+M:TC  T   T T  
+M:TTTT  T   C T
+M:T     T    T 
+M:   T   TTT   
+M:     W      T
+M:  TT TT  TT  
 
 # vim: filetype=q :
