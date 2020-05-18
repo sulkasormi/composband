@@ -1210,6 +1210,13 @@ W:20:0:0:10:30
 A:20/1
 F:TOWN
 
+N:*:& Flute~
+G:}:y
+I:19:71:0
+W:66:0:0:5:500
+F:CHR | INSTA_ART | NO_ENCHANT
+D:A simple woodwind instrument.
+
 ########################################################################
 # Arrows (TV_ARROW)
 ########################################################################
@@ -1574,6 +1581,14 @@ F:TOWN
 P:1:0d0:0:0:0
 D:A soft woolly hat.
 
+N:*:& Pointy Hat~
+G:]:C
+I:32:10:0
+W:3:0:0:20:20
+A:10/8
+P:1:0d0:0:0:0
+D:A pointy hat. (You wonder if wearing it will automatically make you a magician...)
+
 ########################################################################
 #  Gloves (TV_GLOVES)
 ########################################################################
@@ -1620,7 +1635,7 @@ G:]:B
 I:31:5:0
 W:50:0:0:15:1000
 A:50/2
-P:5:1d3:0:0:10
+P:5:1d3:1:1:10
 F:IGNORE_ACID | IGNORE_FIRE | IGNORE_ELEC | IGNORE_COLD
 
 N:*:& Set~ of Dragon Gloves
@@ -2706,13 +2721,12 @@ A:70/3
 F:IGNORE_COLD
 M:100:1d5
 
-N:*:Logrus:fentwon gerbil
+N:*:Understanding:fentwon gerbil
 G:?:w
 I:70:60:0
-W:80:0:0:5:5000
-A:80/4
-F:IGNORE_COLD | IGNORE_FIRE | IGNORE_ACID | IGNORE_ELEC
-M:50:1d5
+W:40:0:0:5:2500
+A:40/6
+M:66:1d6
 
 N:*:Mana:deedil dorko
 G:?:w
@@ -3231,7 +3245,7 @@ P:0:1d1:0:0:0
 M:5:1d3
 
 N:*:Neo-Tsuyoshi Special:Sky Blue
-G:!:B
+G:!:S
 I:75:64:0
 W:15:0:50:4:2000
 A:15/6
@@ -3292,6 +3306,25 @@ A:40/2:80/1
 P:0:1d1:0:0:0
 F:NO_SHUFFLE
 M:100:1d3
+
+N:*:Liquid Logrus:Murky Brown
+G:!:u
+I:75:12:0
+W:60:0:0:4:10000
+A:60/8
+P:0:10d10:0:0:0
+F:NO_SHUFFLE
+M:10:1d2
+
+N:*:Mead of Poetry:Bright Orange
+G:!:O
+I:75:14:100
+W:80:0:0:4:10000
+A:75/6
+P:0:1d1:0:0:0
+F:NO_SHUFFLE | FIXED_FLAVOR
+M:50:1d3
+
 
 ########################################################################
 #  Spellbooks (TV_LIFE_BOOK ... TV_BURGLARY_BOOK)
@@ -3399,7 +3432,7 @@ P:0:1d1:0:0:0
 F:IGNORE_ACID | IGNORE_ELEC | IGNORE_FIRE | IGNORE_COLD
 
 N:*:[Sign of Chaos]
-G:?:R
+G:?:v
 I:93:0:0
 W:10:0:30:30:100
 A:10/1
@@ -3408,7 +3441,7 @@ F:TOWN
 M:100:1d3
 
 N:*:[Chaos Mastery]
-G:?:R
+G:?:v
 I:93:1:0
 W:20:0:50:30:1000
 A:20/1
@@ -3417,7 +3450,7 @@ F:TOWN
 M:100:1d2
 
 N:*:[Chaos Channels]
-G:?:r
+G:?:V
 I:93:2:0
 W:45:0:90:30:15000
 A:45/1
@@ -3425,7 +3458,7 @@ P:0:1d1:0:0:0
 F:IGNORE_ACID | IGNORE_ELEC | IGNORE_FIRE | IGNORE_COLD
 
 N:*:[Armageddon Tome]
-G:?:r
+G:?:V
 I:93:3:0
 W:85:0:0:30:100000
 A:85/3
@@ -3451,7 +3484,7 @@ F:TOWN
 M:50:1d2
 
 N:*:[Black Channels]
-G:?:v
+G:?:c
 I:94:2:0
 W:45:0:90:30:15000
 A:45/1
@@ -3459,7 +3492,7 @@ P:0:1d1:0:0:0
 F:IGNORE_ACID | IGNORE_ELEC | IGNORE_FIRE | IGNORE_COLD
 
 N:*:[Necronomicon]
-G:?:v
+G:?:c
 I:94:3:0
 W:80:0:0:30:100000
 A:80/3
@@ -3485,7 +3518,7 @@ F:TOWN
 M:50:1d2
 
 N:*:[Trumps of Doom]
-G:?:u
+G:?:O
 I:95:2:0
 W:45:0:90:30:15000
 A:45/1
@@ -3493,7 +3526,7 @@ P:0:1d1:0:0:0
 F:IGNORE_ACID | IGNORE_ELEC | IGNORE_FIRE | IGNORE_COLD
 
 N:*:[Five Aces]
-G:?:u
+G:?:O
 I:95:3:0
 W:80:0:0:30:100000
 A:80/3
@@ -3553,7 +3586,7 @@ F:TOWN
 M:50:1d2
 
 N:*:[Note of Acting Master]
-G:?:U
+G:?:M
 I:97:2:0
 W:45:0:90:30:15000
 A:45/1
@@ -3561,7 +3594,7 @@ P:0:1d1:0:0:0
 F:IGNORE_ACID | IGNORE_ELEC | IGNORE_FIRE | IGNORE_COLD
 
 N:*:[Spiritual Enlightenment]
-G:?:U
+G:?:M
 I:97:3:0
 W:80:0:0:30:100000
 A:80/3
@@ -3637,7 +3670,7 @@ P:0:1d1:0:0:0
 F:IGNORE_ACID | IGNORE_ELEC | IGNORE_FIRE | IGNORE_COLD
 
 N:*:[Stench of Death]
-G:?:v
+G:?:C
 I:100:0:0
 W:10:0:30:30:100
 A:10/1
@@ -3646,7 +3679,7 @@ F:TOWN
 M:100:1d3
 
 N:*:[Sepulchral Ways]
-G:?:v
+G:?:C
 I:100:1:0
 W:20:0:50:30:1000
 A:20/1
@@ -3705,7 +3738,7 @@ P:0:1d1:0:0:0
 F:IGNORE_ACID | IGNORE_ELEC | IGNORE_FIRE | IGNORE_COLD
 
 N:*:[Attractions of Law]
-G:?:g
+G:?:L
 I:104:0:0
 W:10:0:30:30:100
 A:10/1
@@ -3714,7 +3747,7 @@ F:TOWN
 M:100:1d3
 
 N:*:[Obstacle Coursebook]
-G:?:g
+G:?:L
 I:104:1:0
 W:20:0:50:30:1000
 A:20/1
@@ -3723,7 +3756,7 @@ F:TOWN
 M:50:1d2
 
 N:*:[Building Alternative Realities]
-G:?:b
+G:?:m
 I:104:2:0
 W:45:0:90:30:15000
 A:50/1
@@ -3731,7 +3764,7 @@ P:0:1d1:0:0:0
 F:IGNORE_ACID | IGNORE_ELEC | IGNORE_FIRE | IGNORE_COLD
 
 N:*:[Acquiris Quodcumque Rapis]
-G:?:b
+G:?:m
 I:104:3:0
 W:80:0:0:30:100000
 A:75/3
@@ -3773,7 +3806,7 @@ P:0:1d1:0:0:0
 F:IGNORE_ACID | IGNORE_ELEC | IGNORE_FIRE | IGNORE_COLD
 
 N:*:[Bugei Shofu]
-G:?:o
+G:?:U
 I:106:0:0
 W:10:0:30:30:100
 A:10/1
@@ -3782,7 +3815,7 @@ F:TOWN
 M:100:1d3
 
 N:*:[Yagyuu Bugeichou]
-G:?:o
+G:?:U
 I:106:1:0
 W:20:0:50:30:1000
 A:20/1
@@ -4036,7 +4069,7 @@ P:0:1d1:0:0:0
 F:INSTA_ART
 
 N:*:& Stone
-G:*:o
+G:*:O
 I:39:16:0
 W:50:0:0:5:25000
 P:0:1d1:0:0:0
@@ -4050,7 +4083,7 @@ P:0:1d1:0:0:0
 F:INSTA_ART
 
 N:*:& Stone
-G:*:w
+G:*:W
 I:39:18:0
 W:50:0:0:5:25000
 P:0:1d1:0:0:0
@@ -4099,7 +4132,7 @@ P:0:1d1:0:0:0
 F:INSTA_ART
 
 N:*:& Phial
-G:*:y
+G:!:y
 I:39:25:0
 W:50:0:0:5:10000
 P:0:1d1:0:0:0
@@ -4116,6 +4149,27 @@ N:*:& Eye
 G:*:G
 I:39:27:0
 W:60:0:0:5:25000
+P:0:1d1:0:0:0
+F:INSTA_ART
+
+N:*:& Jewel~
+G:*:G
+I:39:28:0
+W:100:0:0:5:60000
+P:0:1d1:0:0:0
+F:INSTA_ART
+
+N:*:& Jewel~
+G:*:R
+I:39:29:0
+W:80:0:0:5:60000
+P:0:1d1:0:0:0
+F:INSTA_ART
+
+N:*:& Ball~
+G:*:y
+I:39:30:0
+W:60:0:0:3:20000
 P:0:1d1:0:0:0
 F:INSTA_ART
 
@@ -4502,6 +4556,12 @@ I:81:1:0
 W:0:0:0:4:500
 P:0:1d1:0:0:0
 D:A cryptic rune, of powers incomprehensible.
+
+N:*:& Great Horn~
+G:~:o
+I:4:2:0
+W:15:0:60:25:10000
+E:RETURN_PETS:15:150
 
 ########################################################################
 # Body parts
