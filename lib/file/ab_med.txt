@@ -1,6 +1,7 @@
 N: 1:BIAS_ELEC
 of the Iron Duke
 of Gwindor
+of Caligula
 'Pride of the Goblins'
 'Stormwalker'
 
@@ -22,7 +23,7 @@ N: 4:BIAS_COLD
 of the Cool Cat
 of Mono Island
 of Monomania
-of Ursus
+of the Penguins
 'Snow Lynx'
 'Snow Shoes'
 
@@ -38,6 +39,7 @@ N:12:BIAS_CHAOS
 of Sirrus
 of Achenar
 of the Doom Treader
+of Tindalos
 'Big Boots'
 
 N:14:BIAS_NECROMANTIC
