@@ -128,20 +128,11 @@ static void _stop_singing_spell(int cmd, variant *res)
     }
 }
 
-
-
-static int _get_powers(spell_info* spells, int max)
+static power_info _bard_powers[] =
 {
-    int ct = 0;
-
-    spell_info* spell = &spells[ct++];
-    spell->level = 1;
-    spell->cost = 0;
-    spell->fail = 0;
-    spell->fn = _stop_singing_spell;
-
-    return ct;
-}
+    { A_NONE, { 1, 0,  0, _stop_singing_spell}},
+    { -1, {-1, -1, -1, NULL}}
+};
 
 static caster_info * _caster_info(void)
 {
@@ -216,7 +207,7 @@ class_t *bard_get_class(void)
         me.caster_info = _caster_info;
         /* TODO: This class uses spell books, so we are SOL
         me.get_spells = _get_spells;*/
-        me.get_powers = _get_powers;
+        me.get_powers = _bard_powers;
         me.character_dump = spellbook_character_dump;
         init = TRUE;
     }
