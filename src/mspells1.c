@@ -186,6 +186,7 @@ u32b get_curse(int power, object_type *o_ptr)
     while(1)
     {
         new_curse = (1 << (randint0(MAX_CURSE)+4));
+        if (new_curse & TRC_FLAGGY_MASK) continue;
         if (power == 2)
         {
             if (!(new_curse & TRC_HEAVY_MASK)) continue;
@@ -261,6 +262,7 @@ void curse_equipment(int chance, int heavy_chance)
             o_ptr->feeling = FEEL_NONE;
         }
         p_ptr->update |= PU_BONUS;
+        p_ptr->window |= PW_INVEN;
     }
 }
 
