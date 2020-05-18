@@ -57,6 +57,13 @@ spell_info spell;
 #define _MAX_TALENTS 25
 #define _MAX_TALENTS_PER_GROUP 10
 
+static power_info _wonder_powers[2] =
+{
+    { A_INT,  {10, 10, 30, wonder_spell}}, 
+    { -1, {-1, -1, -1, NULL}}
+};
+
+
 static talent_t _talents[_MAX_TALENTS][_MAX_TALENTS_PER_GROUP] = 
 {
     /* CL1: Weak offense */
@@ -307,7 +314,7 @@ static int _which_stat(int idx)
     return talent->stat;
 }
 
-static int _get_spells_imp(spell_info* spells, int max, int start, int stop)
+static int _get_spells_imp(power_info* spells, int max, int start, int stop)
 {
     int ct = 0, i;
     for (i = start; i <= stop; ++i)
@@ -317,22 +324,20 @@ static int _get_spells_imp(spell_info* spells, int max, int start, int stop)
         if (idx >= 0 && idx < _group_size(i))
         {
             talent_t *talent = &_talents[i][idx];
-            spell_info *spell = &spells[ct++];
-            spell->level = talent->spell.level;
-            spell->cost = talent->spell.cost;
-            spell->fail = calculate_fail_rate(
-                talent->spell.level, 
-                talent->spell.fail, 
-                p_ptr->stat_ind[talent->stat]
-            );
-            spell->fn = talent->spell.fn;
+            power_info *power = &spells[ct++];
+            power->spell.level = talent->spell.level;
+            power->spell.cost = talent->spell.cost;
+            /* We never go through get_spells_aux() or get_powers_aux(), so calculate fail rates right here */ 
+            power->spell.fail = calculate_fail_rate(talent->spell.level, talent->spell.fail, p_ptr->stat_ind[talent->stat]);
+            power->spell.fn = talent->spell.fn;
+            power->stat = talent->stat;
         }
     }
     return ct;
 }
 
 /*
- * We now group wild talents. Its hard to pick from a large list of seemingly unsorted
+ * We now group wild talents. It's hard to pick from a large list of seemingly unsorted
  * choices. Also, there is wide variety in monitor sizes and resolutions, so attempting
  * to prompt for more than 15 or so choices at a time is a bad idea anyway.
  */
@@ -368,12 +373,13 @@ static void _spell_menu_fn(int cmd, int which, vptr cookie, variant *res)
     }
 }
 
-static int _get_spells(spell_info* spells, int max)
+int wild_talent_get_spells(power_info *spells)
 {
     int idx = -1;
     int ct = 0;
     menu_t menu = { "Use which group of talents?", "Browse which group of talents?", NULL,
                     _spell_menu_fn, _groups, 3, 0};
+    int max = MAX_SPELLS;
     
     /* Mega-hack. Remove Fear is either in group 0 (in which case we get the right
      * group) or not in any group (in which case we avoid a pointless menu) */
@@ -384,11 +390,7 @@ static int _get_spells(spell_info* spells, int max)
     /* Hack: Add innate Wonder attack to Wild Beginnings */
     if (idx == 0)
     {
-        spell_info* spell = &spells[ct++];
-        spell->level = 10;
-        spell->cost = 10;
-        spell->fail = calculate_fail_rate(10, 30, p_ptr->stat_ind[A_INT]);
-        spell->fn = wonder_spell;
+        ct += get_powers_aux(spells, max - ct, _wonder_powers, TRUE);
     }
 
     ct += _get_spells_imp(spells + ct, max - ct, _groups[idx].min_slot, _groups[idx].max_slot);
@@ -546,8 +548,6 @@ static void _calc_bonuses(void)
 {
     samurai_posture_calc_bonuses();
     monk_posture_calc_bonuses();
-    if (equip_find_ego(EGO_WEAPON_WILD))
-        p_ptr->dec_mana = TRUE;
 }
 static void _calc_stats(s16b stats[MAX_STATS])
 {
@@ -563,12 +563,12 @@ static void _get_flags(u32b flgs[OF_ARRAY_SIZE])
 static void _character_dump(doc_ptr doc)
 {
     int i;
-    spell_info spells[MAX_SPELLS];
+    power_info spells[MAX_SPELLS];
     int ct = _get_spells_imp(spells, MAX_SPELLS, 0, _MAX_TALENTS - 1);
 
     for (i = 0; i < ct; i++)
     {
-        spell_info* current = &spells[i];
+        spell_info* current = &spells[i].spell;
         current->cost += get_spell_cost_extra(current->fn);
         current->fail = MAX(current->fail, get_spell_fail_min(current->fn));
     }
@@ -585,7 +585,7 @@ static void _character_dump(doc_ptr doc)
         doc_printf(doc, "<color:G>%-23.23s Lv Stat Cost Fail Info</color>\n", "");
         for (i = 0; i < ct; ++i)
         {
-            spell_info *spell = &spells[i];
+            spell_info *spell = &spells[i].spell;
 
             (spell->fn)(SPELL_NAME, &name);
             (spell->fn)(SPELL_INFO, &info);
@@ -672,7 +672,6 @@ class_t *wild_talent_get_class(void)
         me.calc_bonuses = _calc_bonuses;
         me.calc_stats = _calc_stats;
         me.get_flags = _get_flags;
-        me.get_spells = _get_spells;
         me.caster_info = _caster_info;
         me.gain_level = _gain_level;
         me.character_dump = _character_dump;
