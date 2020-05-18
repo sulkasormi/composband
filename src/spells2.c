@@ -143,126 +143,138 @@ void self_knowledge(void)
     if (p_ptr->blind)
     {
         info[i++] = "You cannot see.";
-
     }
     if (p_ptr->confused)
     {
         info[i++] = "You are confused.";
-
     }
     if (p_ptr->afraid)
     {
         info[i++] = "You are terrified.";
-
     }
     if (p_ptr->cut)
     {
         info[i++] = "You are bleeding.";
-
     }
     if (p_ptr->stun)
     {
         info[i++] = "You are stunned.";
-
     }
     if (p_ptr->poisoned)
     {
         info[i++] = "You are poisoned.";
-
     }
     if (p_ptr->image)
     {
         info[i++] = "You are hallucinating.";
-
     }
     if (p_ptr->cursed & OFC_TY_CURSE)
     {
         info[i++] = "You carry an ancient foul curse.";
-
+    }
+    if (p_ptr->cursed & OFC_BY_CURSE)
+    {
+        info[i++] = "You carry a baby foul curse.";
     }
     if (p_ptr->cursed & OFC_AGGRAVATE)
     {
         info[i++] = "You aggravate monsters.";
-
+    }
+    if (p_ptr->cursed & OFC_CATLIKE)
+    {
+        info[i++] = "You make a great deal of noise as you move.";
+    }
+    if (p_ptr->cursed & OFC_DANGER)
+    {
+        info[i++] = "You face great dangers at shallow levels.";
     }
     if (p_ptr->cursed & OFC_DRAIN_EXP)
     {
         info[i++] = "You are drained.";
-
     }
     if (p_ptr->cursed & OFC_SLOW_REGEN)
     {
         info[i++] = "You regenerate slowly.";
-
     }
     if (p_ptr->cursed & OFC_ADD_L_CURSE)
     {
         info[i++] = "Your weak curses multiply.";
-
     }
     if (p_ptr->cursed & OFC_ADD_H_CURSE)
     {
         info[i++] = "Your heavy curses multiply.";
-
     }
     if (p_ptr->cursed & OFC_CALL_ANIMAL)
     {
         info[i++] = "You attract animals.";
-
     }
     if (p_ptr->cursed & OFC_CALL_DEMON)
     {
         info[i++] = "You attract demons.";
-
     }
     if (p_ptr->cursed & OFC_CALL_DRAGON)
     {
         info[i++] = "You attract dragons.";
-
     }
     if (p_ptr->cursed & OFC_COWARDICE)
     {
         info[i++] = "You are subject to cowardice.";
-
     }
     if (p_ptr->cursed & OFC_TELEPORT)
     {
         info[i++] = "Your position is very uncertain.";
-
     }
     if (p_ptr->cursed & OFC_LOW_MELEE)
     {
         info[i++] = "Your weapon causes you to miss blows.";
-
     }
     if (p_ptr->cursed & OFC_LOW_AC)
     {
-        info[i++] = "You are subject to be hit.";
-
+        info[i++] = "You are subject to being hit.";
     }
     if (p_ptr->cursed & OFC_LOW_MAGIC)
     {
-        info[i++] = "You are subject to fail spellcasting.";
-
+        info[i++] = "You are a careless spellcaster.";
+    }
+    if (p_ptr->cursed & OFC_LOW_DEVICE)
+    {
+        info[i++] = "You are careless at using magic devices.";
     }
     if (p_ptr->cursed & OFC_FAST_DIGEST)
     {
         info[i++] = "You have a good appetite.";
-
+    }
+    if (p_ptr->cursed & OFC_ALLERGY)
+    {
+        info[i++] = "You are allergic to your equipment.";
+    }
+    if (p_ptr->cursed & OFC_CRAPPY_MUT)
+    {
+        info[i++] = "You occasionally suffer harmful mutations.";
+    }
+    if (p_ptr->cursed & OFC_NORMALITY)
+    {
+        info[i++] = "You are subject to bouts of normality.";
+    }
+    if (p_ptr->cursed & OFC_OPEN_WOUNDS)
+    {
+        info[i++] = "Your wounds heal very slowly.";
     }
     if (p_ptr->cursed & OFC_DRAIN_HP)
     {
-        info[i++] = "You are drained.";
-
+        info[i++] = "Your body is drained.";
     }
     if (p_ptr->cursed & OFC_DRAIN_MANA)
     {
         info[i++] = "Your brain is drained.";
-
+    }
+    if (p_ptr->cursed & OFC_DRAIN_PACK)
+    {
+        info[i++] = "Your inventory is drained.";
     }
     if (IS_BLESSED())
     {
-        info[i++] = "You feel rightous.";
+        info[i++] = "You feel righteous.";
 
     }
     if (IS_HERO())
@@ -2051,6 +2063,7 @@ bool genocide_aux(int m_idx, int power, bool player_cast, int dam_side, cptr spe
     /* Hack -- Skip Unique Monsters or Quest Monsters */
     if (r_ptr->flags1 & RF1_UNIQUE) resist = TRUE;
     else if (m_ptr->mflag2 & MFLAG2_QUESTOR) resist = TRUE;
+    else if (m_ptr->smart & (1U << SM_GUARDIAN)) resist = TRUE;
 
     else if (r_ptr->flags7 & RF7_UNIQUE2) resist = TRUE;
 
@@ -2278,7 +2291,46 @@ bool probing(void)
     return TRUE; /*?? */
 }
 
-
+void _get_earthquake_feats(int *_feats, bool tree)
+{
+    if (tree)
+    {
+        _feats[0] = feat_tree;
+        _feats[1] = feat_brake;
+        _feats[2] = feat_tree;
+        return;
+    }
+    else
+    {
+        _feats[0] = feat_granite;
+        _feats[1] = feat_quartz_vein;
+        _feats[2] = feat_magma_vein;
+        if (dungeon_type)
+        {
+            dungeon_info_type *d_ptr = &d_info[dungeon_type];
+            int i, _tf[3] = {feat_none, feat_none, feat_none};
+            for (i = 0; i < 3; i++)
+            {
+                if (d_ptr->fill[i].percent > 0) _tf[i] = d_ptr->fill[i].feat;
+            }
+            if (d_ptr->stream1 != feat_none) _tf[1] = d_ptr->stream1;
+            if (d_ptr->stream2 != feat_none) _tf[2] = d_ptr->stream2;
+            for (i = 0; i < 3; i++)
+            {
+                if (_tf[i] == feat_none) continue;
+                else
+                {
+                    feature_type *f_ptr = &f_info[_tf[i]];
+                    if (!f_ptr->name) continue;
+                    if (have_flag(f_ptr->flags, FF_PERMANENT)) continue;
+                    if (have_flag(f_ptr->flags, FF_CREVASSE)) continue;
+                    _feats[i] = _tf[i];
+                }
+            }
+        }
+        return;
+    }
+}
 
 /*
  * The spell of destruction
@@ -2291,14 +2343,21 @@ bool destroy_area(int y1, int x1, int r, int power)
     cave_type *c_ptr;
     bool      flag = FALSE;
     bool      in_generate = FALSE;
+    bool      tree = FALSE;
 
     if (power < 0)
         in_generate = TRUE;
 
     /* Prevent destruction of quest levels and town */
-    if (!py_in_dungeon() || !quests_allow_all_spells() || dungeon_type == DUNGEON_WOOD)
+    if (!py_in_dungeon() || !quests_allow_all_spells())
     {
         return (FALSE);
+    }
+
+    if (d_info[dungeon_type].wild_type == TERRAIN_TREES)
+    {
+        tree = TRUE;
+        power = MIN(75, power / 3);
     }
 
     /* Lose monster light */
@@ -2325,7 +2384,8 @@ bool destroy_area(int y1, int x1, int r, int power)
             c_ptr->info &= ~(CAVE_ROOM | CAVE_ICKY);
 
             /* Lose light and knowledge */
-            if (!cave_perma_grid(c_ptr)) c_ptr->info &= ~(CAVE_MARK | CAVE_GLOW);
+            if ((!cave_perma_grid(c_ptr)) && ((!tree) || (!cave_have_flag_bold(y, x, FF_WATER))))
+                c_ptr->info &= ~(CAVE_MARK | CAVE_GLOW);
 
             if (!in_generate) /* Normal */
             {
@@ -2360,12 +2420,9 @@ bool destroy_area(int y1, int x1, int r, int power)
                 {
                     bool resist = FALSE;
 
-                    if (m_ptr->smart & (1U << SM_SUMMONED))
+                    if ((m_ptr->smart & (1U << SM_SUMMONED)) && ((m_ptr->mflag & MFLAG_NICE) || (coffee_break == SPEED_INSTA_COFFEE)))
                     {
-                        /* XXX Redress the game balance wrt to summoning. We might consider
-                         * some sort of odds here, but let's revert Destruction completely
-                         * to the way it worked in Hengband. Note that Genocide always had
-                         * a save in heng ... I copied this mechanic for Destruction. */
+                        /* Used to be summoned monsters never resisted! */
                         resist = FALSE;
                     }
                     else if (m_ptr->mflag2 & MFLAG2_NODESTRUCT) resist = TRUE;
@@ -2397,6 +2454,7 @@ bool destroy_area(int y1, int x1, int r, int power)
 
                         if (!(m_ptr->mflag2 & MFLAG2_QUESTOR) /* Questors becoming immune to *destruct* can be advantageous! */
                              && !(r_ptr->flags2 & RF2_MULTIPLY)  /* Unmakers ... *shudder* */
+                             && !(m_ptr->smart & (1U << SM_SUMMONED))
                              && one_in_(13))
                         {
                             m_ptr->mflag2 |= MFLAG2_NODESTRUCT;
@@ -2473,8 +2531,12 @@ bool destroy_area(int y1, int x1, int r, int power)
             delete_object(y, x);
 
             /* Destroy "non-permanent" grids */
-            if (!cave_perma_grid(c_ptr))
+            if ((!cave_perma_grid(c_ptr)) && ((!tree) || (!cave_have_flag_bold(y, x, FF_WATER))))
             {
+                int _feats[3];
+
+                _get_earthquake_feats(_feats, tree);
+
                 /* Wall (or floor) type */
                 t = randint0(200);
 
@@ -2483,17 +2545,17 @@ bool destroy_area(int y1, int x1, int r, int power)
                     if (t < 20)
                     {
                         /* Create granite wall */
-                        cave_set_feat(y, x, feat_granite);
+                        cave_set_feat(y, x, _feats[0]);
                     }
                     else if (t < 70)
                     {
                         /* Create quartz vein */
-                        cave_set_feat(y, x, feat_quartz_vein);
+                        cave_set_feat(y, x, _feats[1]);
                     }
                     else if (t < 100)
                     {
                         /* Create magma vein */
-                        cave_set_feat(y, x, feat_magma_vein);
+                        cave_set_feat(y, x, _feats[2]);
                     }
                     else
                     {
@@ -2640,12 +2702,18 @@ bool earthquake_aux(int cy, int cx, int r, int m_idx)
     bool            hurt = FALSE;
     cave_type       *c_ptr;
     bool            map[32][32];
+    bool            tree = FALSE;
 
 
     /* Prevent destruction of quest levels and town */
     if (!py_in_dungeon())
     {
         return (FALSE);
+    }
+
+    if (d_info[dungeon_type].wild_type == TERRAIN_TREES)
+    {
+        tree = TRUE;
     }
 
     /* Paranoia -- Enforce maximum range */
@@ -2680,6 +2748,8 @@ bool earthquake_aux(int cy, int cx, int r, int m_idx)
 
             /* Lose room and vault */
             c_ptr->info &= ~(CAVE_ROOM | CAVE_ICKY | CAVE_UNSAFE);
+
+            if ((tree) && (cave_have_flag_bold(yy, xx, FF_WATER))) continue;
 
             /* Lose light and knowledge */
             c_ptr->info &= ~(CAVE_GLOW | CAVE_MARK);
@@ -2731,7 +2801,8 @@ bool earthquake_aux(int cy, int cx, int r, int m_idx)
         {
             case 1:
             {
-                msg_print("The cave ceiling collapses!");
+                if (tree) msg_print("The cave quakes! A tree falls on top of you!");
+                else msg_print("The cave ceiling collapses!");
                 break;
             }
             case 2:
@@ -2980,6 +3051,10 @@ bool earthquake_aux(int cy, int cx, int r, int m_idx)
             /* Destroy location (if valid) */
             if (cave_valid_bold(yy, xx))
             {
+                int _feats[3];
+
+                _get_earthquake_feats(_feats, tree);
+
                 /* Delete objects */
                 delete_object(yy, xx);
 
@@ -2990,21 +3065,21 @@ bool earthquake_aux(int cy, int cx, int r, int m_idx)
                 if (t < 20)
                 {
                     /* Create granite wall */
-                    cave_set_feat(yy, xx, feat_granite);
+                    cave_set_feat(yy, xx, _feats[0]);
                 }
 
                 /* Quartz */
                 else if (t < 70)
                 {
                     /* Create quartz vein */
-                    cave_set_feat(yy, xx, feat_quartz_vein);
+                    cave_set_feat(yy, xx, _feats[1]);
                 }
 
                 /* Magma */
                 else if (t < 100)
                 {
                     /* Create magma vein */
-                    cave_set_feat(yy, xx, feat_magma_vein);
+                    cave_set_feat(yy, xx, _feats[2]);
                 }
 
                 /* Floor */
