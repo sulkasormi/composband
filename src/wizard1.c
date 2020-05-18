@@ -1098,8 +1098,6 @@ static void _spoil_mon_spell_dam_aux(doc_ptr doc, vec_ptr v)
             color = 'D';
         else if (r->flags3 & RF3_OLYMPIAN)
             color = 'U';
-        else if (r->id > 1132)
-            color = 'B';
         doc_printf(doc, "<color:%c>%-20.20s</color> %3d %5d", color, r_name + r->name, r->level, hp);
         if (r->spells)
         {
@@ -1378,8 +1376,6 @@ static void _spoil_mon_melee_dam_aux_aux(doc_ptr doc, vec_ptr v)
             color = 'D';
         else if (info->mon->flags3 & RF3_OLYMPIAN)
             color = 'U';
-        else if (info->mon->id > 1132)
-            color = 'B';
         doc_printf(doc, "<color:%c>%-30.30s</color>", color, r_name + info->mon->name);
         color = (info->mon->flags1 & RF1_FORCE_DEPTH) ? 'r' : 'w';
         doc_printf(doc, " <color:%c>%3d</color> %5d", color, info->mon->level, hp);
@@ -1487,10 +1483,12 @@ static bool _summon_spell_only(mon_race_ptr r)
     return TRUE;
 }
 
-static bool _mon_dam_p(mon_race_ptr r)
+static bool _mon_spell_dam_p(mon_race_ptr r)
 {
     int min = 0, max = 200;
 
+    if (r->flags9 & RF9_DEPRECATED) return FALSE;
+    return mon_race_has_attack_spell(r);
     return _summon_spell_only(r);
     return TRUE;
     return _has_blow(r, _paralysis);
@@ -1512,13 +1510,32 @@ static bool _mon_dam_p(mon_race_ptr r)
     return BOOL(r->flags3 & RF3_UNDEAD);
     return !(r->flags9 & RF9_DEPRECATED);
     return _is_monk(r);
-    return BOOL(r->flags2 & RF2_CAMELOT);
+    return (r->dungeon == DUNGEON_CAMELOT);
+}
+
+static bool _mon_melee_dam_p(mon_race_ptr r)
+{
+    if (r->flags9 & RF9_DEPRECATED) return FALSE;
+    return ((r->flags1 & RF1_NEVER_BLOW) ? FALSE : TRUE);
+}
+
+static bool _mon_dam_p(mon_race_ptr r)
+{
+    if (r->flags9 & RF9_DEPRECATED) return FALSE;
+    return TRUE;
+}
+
+static bool _mon_non_nice_p(mon_race_ptr r)
+{
+    if (r->flags9 & RF9_DEPRECATED) return FALSE;
+    if (r->flags1 & RF1_FORCE_SLEEP) return FALSE;
+    return TRUE;
 }
 
 static void spoil_mon_spell_dam(void)
 {
     doc_ptr doc = doc_alloc(120);
-    vec_ptr v = _mon_table(_mon_dam_p); 
+    vec_ptr v = _mon_table(_mon_spell_dam_p);
 
     doc_change_name(doc, "mon-spells.html");
     doc_insert(doc, "<style:table>");
@@ -1536,12 +1553,52 @@ static void spoil_mon_spell_dam(void)
 static void spoil_mon_melee_dam(void)
 {
     doc_ptr doc = doc_alloc(120);
-    vec_ptr v = _mon_table(_mon_dam_p); 
+    vec_ptr v = _mon_table(_mon_melee_dam_p);
 
     doc_change_name(doc, "mon-melee.html");
     doc_insert(doc, "<style:table>");
 
     _spoil_mon_melee_dam_aux(doc, v);
+
+    doc_insert(doc, "</style>");
+    doc_printf(doc, "\n<color:D>Generated for FrogComposband Version %d.%d.%s</color>\n\n",
+                     VER_MAJOR, VER_MINOR, VER_PATCH);
+    doc_display(doc, "Monster Tables", 0);
+    doc_free(doc);
+    vec_free(v);
+}
+
+static void _spoil_mon_non_nice_aux(doc_ptr doc, vec_ptr v)
+{
+    int i;
+    for (i = 0; i < vec_length(v); i++)
+    {
+        mon_race_ptr mon = vec_get(v, i);
+        char     color = 'w';
+        char     color2 = 'w';
+
+        if (i%25 == 0)
+            doc_printf(doc, "\n<color:G>%-35.35s Lvl Exp </color>\n", "Name");
+
+        if (mon->flags1 & RF1_UNIQUE)
+            color = 'v';
+        if ((mon_race_has_attack_spell(mon)) || (mon_race_has_summon_spell(mon)))
+            color2 = 'U';
+        doc_printf(doc, "<color:%c>%-35.35s</color>", color, r_name + mon->name);
+        doc_printf(doc, " <color:%c>%3d</color> <color:%c>%d</color>", color, mon->level, color2, mon->mexp);
+        doc_newline(doc);
+    }
+}
+
+static void spoil_mon_non_nice(void)
+{
+    doc_ptr doc = doc_alloc(120);
+    vec_ptr v = _mon_table(_mon_non_nice_p);
+
+    doc_change_name(doc, "mon-nasty.html");
+    doc_insert(doc, "<style:table>");
+
+    _spoil_mon_non_nice_aux(doc, v);
 
     doc_insert(doc, "</style>");
     doc_printf(doc, "\n<color:D>Generated for FrogComposband Version %d.%d.%s</color>\n\n",
@@ -1586,8 +1643,6 @@ static void _spoil_mon_resist_aux(doc_ptr doc, vec_ptr v)
             color = 'D';
         else if (race->flags3 & RF3_OLYMPIAN)
             color = 'U';
-        else if (race->id > 1132)
-            color = 'B';
         doc_printf(doc, "<color:%c>%-30.30s</color> %3d %5d ", color, r_name + race->name, race->level, hp);
         _display_mon_resist(doc, race, RFR_RES_ACID, RFR_IM_ACID, 0);
         _display_mon_resist(doc, race, RFR_RES_ELEC, RFR_IM_ELEC, 0);
@@ -2011,6 +2066,51 @@ static void spoil_mon_evol(void)
 
     doc_insert(doc, "</style>");
     doc_display(doc, "Monster Evolution", 0);
+    doc_free(doc);
+}
+
+/* Monsters sharing symbols */
+
+static void spoil_shared_symbols(void)
+{
+    int     i, j;
+    doc_ptr doc = doc_alloc(80);
+
+    doc_change_name(doc, "mon-ssym.html");
+    doc_insert(doc, "<color:heading>Monsters Sharing Symbols With Other Monsters</color>\n");
+    doc_insert(doc, "<style:table>");
+
+    for (i = 1; i < max_r_idx; i++)
+    {
+        monster_race *r_ptr = &r_info[i];
+        byte _norm = 0, _uniq = 0;
+
+        if ((!r_ptr) || (!r_ptr->name)) continue;
+        if (r_ptr->flags1 & (RF1_ATTR_MULTI | RF1_SHAPECHANGER | RF1_ATTR_CLEAR | RF1_CHAR_CLEAR)) continue;
+
+        for (j = 1; j < max_r_idx; j++) /* Very inefficient but easy to code */
+        {
+            monster_race *r2_ptr = &r_info[j];
+            if (j == i) continue;
+            if ((!r2_ptr) || (!r2_ptr->name)) continue;
+            if (r2_ptr->flags1 & (RF1_ATTR_MULTI | RF1_SHAPECHANGER | RF1_ATTR_CLEAR | RF1_CHAR_CLEAR)) continue;
+            if ((r2_ptr->d_char == r_ptr->d_char) && (r2_ptr->d_attr == r_ptr->d_attr))
+            {
+                if (_mon_is_unique(r2_ptr)) _uniq++;
+                else _norm++;
+            }
+        }
+
+        if ((!_uniq) && (!_norm)) continue;
+
+        doc_printf(doc, "[%d]: <color:B>%s</color> (<color:%c>%c</color>): with ", r_ptr->id, r_name + r_ptr->name, attr_to_attr_char(r_ptr->d_attr), r_ptr->d_char);
+        if (_norm) doc_printf(doc, "%d non-unique%s%s", _norm, (_norm == 1) ? "" : "s", _uniq ? " and " : "");
+        if (_uniq) doc_printf(doc, "%d unique%s", _uniq, (_uniq == 1) ? "" : "s");
+        doc_newline(doc);
+    }
+
+    doc_insert(doc, "</style>");
+    doc_display(doc, "Monsters Sharing Symbols", 0);
     doc_free(doc);
 }
 
@@ -2489,16 +2589,18 @@ void do_cmd_spoilers(void)
         prt("(R) Resistance", row++, col);
         prt("(f) Spell Frequency (Anger)", row++, col);
         prt("(F) Spell Frequency (Melee)", row++, col);
+        prt("(%) Shared Symbols", row++, col);
+        prt("(&) Non-Nice Monsters", row++, col);
         row++;
+
+        row = 4;
+        col = 40;
 
         c_prt(TERM_RED, "Class Spoilers", row++, col - 2);
         prt("(s) Spells by Class", row++, col);
         prt("(r) Spells by Realm", row++, col);
         prt("(S) Skills", row++, col);
         row++;
-
-        row = 4;
-        col = 40;
 
         c_prt(TERM_RED, "Miscellaneous", row++, col - 2);
         prt("(1) Option Bits", row++, col);
@@ -2540,6 +2642,12 @@ void do_cmd_spoilers(void)
             break;
         case 'e':
             spoil_mon_evol();
+            break;
+        case '%':
+            spoil_shared_symbols();
+            break;
+        case '&':
+            spoil_mon_non_nice();
             break;
         case 'd':
             spoil_mon_spell_dam();
