@@ -102,18 +102,11 @@ static void _calc_shooter_bonuses(object_type *o_ptr, shooter_info_t *info_ptr)
         p_ptr->shooter_info.base_shot = 100;
 }
 
-static int _get_powers(spell_info* spells, int max)
+static power_info _cavalry_powers[] =
 {
-    int ct = 0;
-
-    spell_info* spell = &spells[ct++];
-    spell->level = 10;
-    spell->cost = 0;
-    spell->fail = calculate_fail_rate(spell->level, 50, p_ptr->stat_ind[A_STR]);
-    spell->fn = rodeo_spell;
-
-    return ct;
-}
+    { A_STR, { 10, 0, 50, rodeo_spell}},
+    { -1, {-1, -1, -1, NULL}}
+};
 
 static void _birth(void)
 {
@@ -158,7 +151,7 @@ class_t *cavalry_get_class(void)
         me.calc_bonuses = _calc_bonuses;
         me.calc_weapon_bonuses = _calc_weapon_bonuses;
         me.calc_shooter_bonuses = _calc_shooter_bonuses;
-        me.get_powers = _get_powers;
+        me.get_powers = _cavalry_powers;
         me.get_flags = _get_flags;
         init = TRUE;
     }
