@@ -39,9 +39,7 @@ static void _detect_near_spell(int cmd, variant *res)
 /****************************************************************
  * Spell Table and Exports
  ****************************************************************/
-#define MAX_LAWYER_NINJUTSU 14
-
-static spell_info _spells[MAX_LAWYER_NINJUTSU] =
+static spell_info _get_spells[] =
 {
     /*lvl cst fail spell */
     { 1,   1,  20, create_darkness_spell},
@@ -58,50 +56,20 @@ static spell_info _spells[MAX_LAWYER_NINJUTSU] =
     {36,  40,  50, hide_in_mud_spell},
     {40,  45,  60, hide_in_mist_spell},
     {45,  60,  65, bunshin_spell},
+    {-1,  -1,  -1, NULL},
 };
 
-static power_info _powers[] =
+static power_info _get_powers[] =
 {
     { A_NONE, { 25, 0,  0, quick_walk_spell}},
     { -1, {-1, -1, -1, NULL}}
 };
 
-/* NOTE: We avoid using get_spells_aux() due to weird casting stat */
-static int _get_spells(spell_info* spells, int max)
-{
-    int i, ct = 0;
-
-    for (i = 0; i < MAX_LAWYER_NINJUTSU; i++)
-    {
-        spell_info *base = &_spells[i];
-        if (ct >= max) break;
-        if ((base->level <= p_ptr->lev) || (show_future_spells))
-        {
-            spell_info* current = &spells[ct];
-            current->fn = base->fn;
-            current->level = base->level;
-            current->cost = base->cost;
-            current->fail = calculate_fail_rate(base->level, base->fail, p_ptr->stat_ind[A_DEX]);
-
-            ct++;
-        }
-    }
-    return ct;
-}
-
 static void _character_dump(doc_ptr doc)
 {
-    spell_info spells[MAX_SPELLS];
-    int        ct = _get_spells(spells, MAX_SPELLS);
-
     spellbook_character_dump(doc);
     doc_insert(doc, "<color:r>Realm:</color> <color:B>Ninjutsu</color>\n");
-    py_display_spells_aux(doc, spells, ct);
-}
-
-static int _get_powers(spell_info* spells, int max)
-{
-    return get_powers_aux(spells, max, _powers);
+    py_dump_spells_aux(doc);
 }
 
 static void _calc_bonuses(void)
@@ -150,6 +118,7 @@ static void _get_flags(u32b flgs[OF_ARRAY_SIZE])
     if (p_ptr->lev >= 20) add_flag(flgs, OF_RES_FEAR);
     if (p_ptr->lev >= 30) add_flag(flgs, OF_RES_POIS);
     if (p_ptr->lev >= 40) add_flag(flgs, OF_SEE_INVIS);
+    add_flag(flgs, OF_NIGHT_VISION);
 }
 
 static void _calc_weapon_bonuses(object_type *o_ptr, weapon_info_t *info_ptr)
