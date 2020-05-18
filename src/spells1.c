@@ -192,7 +192,7 @@ static byte spell_color(int type)
 
         /* Invalid color (note check for < 0 removed, gave a silly
          * warning because bytes are always >= 0 -- RG) */
-        if (a > 15) return (TERM_WHITE);
+        if (a >= MAX_COLOR) return (TERM_WHITE);
 
         /* Use this color */
         return (a);
@@ -936,11 +936,32 @@ static bool project_f(int who, int r, int y, int x, int dam, int typ)
             message = "melted.";break;
         case GF_COLD:
         case GF_ICE:
-            message = "was frozen and smashed.";break;
+            if (have_flag(f_ptr->flags, FF_SNOW)) message = NULL;
+            else message = "was frozen and smashed.";
+            break;
         case GF_FIRE:
         case GF_ELEC:
         case GF_PLASMA:
-            message = "burns up!";break;
+        {
+            if (dungeon_type == DUNGEON_AUSSIE) /* Aussie rules fireball */
+            {
+                switch (randint0(3))
+                {
+                    case 0: message = NULL; break;
+                    case 1: message = "burns up!"; break;
+                    default:
+                        if (!cave[y][x].m_idx)
+                        {
+                            message = "catches fire!";
+                            cave_set_feat(y, x, one_in_(3) ? feat_brake : feat_grass);
+                            summon_named_creature(0, y, x, MON_BUSH, 0);
+                        }
+                        else message = "burns up!";
+                        break;
+                }
+            }
+            else message = "burns up!";break;
+        }
         case GF_METEOR:
         case GF_CHAOS:
         case GF_MANA:
@@ -960,7 +981,15 @@ static bool project_f(int who, int r, int y, int x, int dam, int typ)
         if (message)
         {
             msg_format("A tree %s", message);
-            cave_set_feat(y, x, one_in_(3) ? feat_brake : feat_grass);
+            if (have_flag(f_ptr->flags, FF_SNOW))
+            {
+                if ((typ == GF_FIRE) || (typ == GF_ELEC) || (typ == GF_PLASMA))
+                {
+                    cave_alter_feat(y, x, FF_HURT_FIRE);
+                }
+                else cave_set_feat(y, x, feat_snow_floor);
+            }
+            else cave_set_feat(y, x, one_in_(3) ? feat_brake : feat_grass);
 
             /* Observe */
             if (c_ptr->info & (CAVE_MARK)) obvious = TRUE;
@@ -994,7 +1023,6 @@ static bool project_f(int who, int r, int y, int x, int dam, int typ)
         case GF_ELEC:
         case GF_COLD:
         case GF_ICE:
-        case GF_FIRE:
         case GF_PLASMA:
         case GF_METEOR:
         case GF_CHAOS:
@@ -1146,6 +1174,28 @@ static bool project_f(int who, int r, int y, int x, int dam, int typ)
 
                 /* Destroy the wall */
                 cave_alter_feat(y, x, FF_HURT_ROCK);
+
+                /* Update some things */
+                p_ptr->update |= (PU_FLOW);
+            }
+
+            break;
+        }
+
+        case GF_FIRE:
+        {
+            if ((have_flag(f_ptr->flags, FF_HURT_FIRE)) && (dam > 15) && (!have_flag(f_ptr->flags, FF_PERMANENT)))
+            {
+                /* Message */
+                if (known && (c_ptr->info & (CAVE_MARK)))
+                {
+                    msg_format("The %s melts!", f_name + f_info[get_feat_mimic(c_ptr)].name);
+
+                    obvious = TRUE;
+                }
+
+                /* Destroy the feature */
+                cave_alter_feat(y, x, FF_HURT_FIRE);
 
                 /* Update some things */
                 p_ptr->update |= (PU_FLOW);
@@ -1543,6 +1593,8 @@ static bool project_o(int who, int r, int y, int x, int dam, int typ)
 
         /* Get the "plural"-ness */
         bool plural = object_plural(o_ptr);
+
+        if (!o_ptr->number) continue;
 
         /* Acquire next object */
         next_o_idx = o_ptr->next_o_idx;
@@ -1990,22 +2042,6 @@ static bool project_p(int who, cptr who_name, int r, int y, int x, int dam, int 
     if (dam > 1600) dam = 1600;
 
     p_ptr->spell_turned = FALSE;
-    if (p_ptr->tim_spell_turning)
-    {
-        bool turn = FALSE;
-        if (p_ptr->shero)
-            turn = (randint1(100) <= p_ptr->lev) ? TRUE : FALSE;
-        else
-            turn = (randint1(200) <= 20 + p_ptr->lev) ? TRUE : FALSE;
-
-        if (turn)
-        {
-            msg_print("You turn the magic on the caster!");
-            p_ptr->spell_turned = TRUE;
-            disturb(1, 0);
-            return TRUE;
-        }
-    }
 
     /* Reduce damage by distance (bombs have special code for this) */
     if (typ != GF_BOMB) dam = _reduce_dam(dam, r);
@@ -2031,6 +2067,22 @@ static bool project_p(int who, cptr who_name, int r, int y, int x, int dam, int 
             {
                 msg_print("You evade the attack!");
                 dam -= dam * (10 + randint1(10))/100;
+            }
+        }
+        else if (p_ptr->tim_spell_turning)
+        {
+            bool turn = FALSE;
+            if (p_ptr->shero)
+                turn = (randint1(100) <= p_ptr->lev) ? TRUE : FALSE;
+            else
+                turn = (randint1(200) <= 20 + p_ptr->lev) ? TRUE : FALSE;
+
+            if (turn)
+            {
+                msg_print("You turn the magic on the caster!");
+                p_ptr->spell_turned = TRUE;
+                disturb(1, 0);
+                return TRUE;
             }
         }
         else if (p_ptr->pclass != CLASS_RUNE_KNIGHT && p_ptr->magic_resistance)
@@ -2757,6 +2809,20 @@ bool project(int who, int rad, int y, int x, int dam, int typ, int flg)
     case GF_DISINTEGRATE:
         flg |= (PROJECT_GRID);
         if (breath || (flg & PROJECT_BEAM)) flg |= (PROJECT_DISI);
+        break;
+    case GF_SOUND:
+        if (p_ptr->no_air)
+        {
+            if (who == PROJECT_WHO_PLAYER) msg_print("The sound fizzles out in the airless dungeon!");
+            return TRUE;
+        }
+        break;
+    case GF_AIR:
+    case GF_STORM:
+        if (p_ptr->no_air)
+        {
+            (void)set_no_air(0, TRUE);
+        }
         break;
     }
 
