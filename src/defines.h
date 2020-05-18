@@ -3932,7 +3932,7 @@ extern int PlayerUID;
 #define TERM_PINK               12  /* 'P' */   /* 4,2,3 */
 #define TERM_I_BLUE             14  /* 'I' */   /* 0,2,4 */
 #define TERM_PURPLE             10  /* 'C' */   /* 3,0,3 */
-#define TERM_TEAL               13  /* 't' */   /* 0,3,2 */
+#define TERM_TEAL               2   /* 't' */   /* 0,3,2 */
 #define TERM_SKY_BLUE           14  /* 'S' */   /* 1,3,4 */
 #define TERM_MUD                15  /* 'm' */   /* 2,2,0 */
 #define TERM_D_YELLOW           11  /* 'M' */   /* 3,3,0 */
