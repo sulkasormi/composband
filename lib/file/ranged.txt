@@ -76,6 +76,7 @@ of Eeyore
 'Thump'
 
 N:70:Harp
+N:71:Flute
 of Ernie
 of Flights
 of Joukahainen
@@ -87,6 +88,7 @@ of Blondel
 of Alan-a-Dale
 of Cacofonix
 of the Harpy
+of Juice
 'Beetlelute'
 'Oon'
 'Sulosointu'
