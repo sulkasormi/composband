@@ -1,6 +1,12 @@
-?:[EQU $QUEST56 Taken InProgress]
+?:[AND [EQU $QUEST56 Taken InProgress] [EQU $DUNGEON3 Active] ]
 D:If you want our respect you need to prove yourself. Go to
 D:the orc caves and kill ten Ologs to show us you aren't a
+D:wimp.
+?:1
+
+?:[AND [EQU $QUEST56 Taken InProgress] [EQU $DUNGEON3 Suppressed] ]
+D:If you want our respect you need to prove yourself. Go to
+D:the troll caves and kill ten Ologs to show us you aren't a
 D:wimp.
 ?:1
 
