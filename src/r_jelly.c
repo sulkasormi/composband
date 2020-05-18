@@ -47,13 +47,10 @@ static void _divide_spell(int cmd, variant *res)
         break;
     }
 }
-static power_info _jelly_powers[] = {
+static power_info _jelly_get_powers[] = {
     { A_CON, { 1, 10, 0, _divide_spell}},
     { -1, {-1, -1, -1, NULL} }
 };
-static int _jelly_get_powers(spell_info* spells, int max) {
-    return get_powers_aux(spells, max, _jelly_powers);
-}
 static void _jelly_calc_innate_attacks(void)
 {
     if (equip_is_empty_hand(0))
@@ -90,6 +87,7 @@ static void _black_ooze_get_flags(u32b flgs[OF_ARRAY_SIZE])
     add_flag(flgs, OF_RES_ACID);
     add_flag(flgs, OF_RES_POIS);
     add_flag(flgs, OF_IM_BLIND);
+    add_flag(flgs, OF_NIGHT_VISION);
 }
 race_t *_black_ooze_get_race_t(void)
 {
