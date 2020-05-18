@@ -2692,10 +2692,12 @@ static bool _weaponmaster_object_is_icky(object_type *o_ptr)
     return (!_check_speciality_aux(o_ptr));
 }
 
-static int _get_spells_aux(spell_info* spells, int max)
+static spell_info *_get_spells(void)
 {
     int i;
     int ct = 0;
+    int max = MAX_SPELLS;
+    static spell_info spells[MAX_SPELLS];
 
     for (i = 0; ; i++)
     {
@@ -2708,21 +2710,11 @@ static int _get_spells_aux(spell_info* spells, int max)
             current->fn = base->fn;
             current->level = base->level;
             current->cost = base->cost;
-            current->fail = calculate_fail_rate(base->level, base->fail, p_ptr->stat_ind[A_STR]);
+            current->fail = base->fail;
         }
     }
-
-    return ct;
-}
-
-static int _get_spells(spell_info* spells, int max)
-{
-    int ct = _get_spells_aux(spells, max);
-
-    if (ct == 0)
-        msg_print("You need more experience. Why not kill something?");
-
-    return ct;
+    spells[ct].fn = NULL;
+    return spells;
 }
 
 static caster_info * _caster_info(void)
@@ -3825,13 +3817,7 @@ static void _character_dump(doc_ptr doc)
 
     doc_newline(doc);
 
-    {
-        spell_info spells[MAX_SPELLS];
-        int        ct = _get_spells_aux(spells, MAX_SPELLS);
-
-        if (ct)
-            py_display_spells(doc, spells, ct);
-    }
+    py_dump_spells(doc);
 }
 
 class_t *weaponmaster_get_class(int subclass)
@@ -3856,7 +3842,7 @@ class_t *weaponmaster_get_class(int subclass)
         me.flags = CLASS_SENSE1_FAST | CLASS_SENSE1_STRONG;
 
         me.caster_info = _caster_info;
-        me.get_spells = _get_spells;
+        me.get_spells_fn = _get_spells;
         me.birth = _on_birth;
         me.calc_bonuses = _calc_bonuses;
         me.calc_stats = _calc_stats;
