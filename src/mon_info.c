@@ -349,6 +349,8 @@ static void _display_resists(monster_race *r_ptr, doc_ptr doc)
         vec_add(v, string_copy_s("<color:u>Force</color>"));
     if (r_ptr->flagsr & RFR_RES_GRAV)
         vec_add(v, string_copy_s("<color:s>Gravity</color>"));
+    if (r_ptr->flagsr & RFR_RES_DISI)
+        vec_add(v, string_copy_s("<color:s>Disintegration</color>"));
 
     if (vec_length(v))
     {
@@ -739,6 +741,9 @@ static void _display_other(monster_race *r_ptr, doc_ptr doc)
 
     if (r_ptr->flags2 & RF2_WEIRD_MIND)
         vec_add(v, string_copy_s("<color:w>Weird Mind</color>"));
+
+    if (r_ptr->flags3 & RF3_CLEAR_HEAD)
+        vec_add(v, string_copy_s("<color:v>Clear Mind</color>"));
 
     if (r_ptr->flags2 & RF2_MULTIPLY)
         vec_add(v, string_copy_s("<color:U>Breeds Explosively</color>"));
