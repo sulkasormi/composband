@@ -1890,17 +1890,16 @@ static void _gain_level(int new_level)
         _study(new_level);
 }
 
-static int _get_powers(spell_info* spells, int max)
+static power_info *_get_powers(void)
 {
-    int ct = 0;
+    static power_info psion_powers[2] =
+    {
+        { A_NONE, { 15, 0, 30, clear_mind_spell}},
+        { -1, { -1, -1, -1, NULL}}
+    };
+    psion_powers[0].stat = _spell_stat();
 
-    spell_info* spell = &spells[ct++];
-    spell->level = 15;
-    spell->cost = 0;
-    spell->fail = calculate_fail_rate(spell->level, 30, _spell_stat_idx());
-    spell->fn = clear_mind_spell;
-
-    return ct;
+    return psion_powers;
 }
 
 static void _choose_menu_fn(int cmd, int which, vptr cookie, variant *res)
@@ -1931,10 +1930,11 @@ static int _choose_spell(void)
     return i;
 }
 
-static int _get_spells(spell_info* spells, int max)
+static spell_info *_get_spells(void)
 {
     int       i, id, stat, ct = 0;
     _spell_t *base;
+    static spell_info spells[MAX_SPELLS];
 
     /* First Choose which Psionic Spell to use */
     id = _choose_spell();
@@ -1946,7 +1946,6 @@ static int _get_spells(spell_info* spells, int max)
     /* Then Choose which power level of that spell to use */
     for (i = 0; i < _MAX_POWER; i++)
     {
-        if (ct >= max) break;
         if (base->level <= p_ptr->lev)
         {
             spell_info* current = &spells[ct];
@@ -1973,7 +1972,8 @@ static int _get_spells(spell_info* spells, int max)
             ct++;
         }
     }
-    return ct;
+    spells[ct].fn = NULL;
+    return spells;
 }
 
 static void _calc_bonuses(void)
@@ -2269,8 +2269,8 @@ class_t *psion_get_class(void)
         me.get_flags = _get_flags;
         me.calc_weapon_bonuses = _calc_weapon_bonuses;
         me.caster_info = _caster_info;
-        me.get_spells = _get_spells;
-        me.get_powers = _get_powers;
+        me.get_spells_fn = _get_spells;
+        me.get_powers_fn = _get_powers;
         me.character_dump = _character_dump;
         me.gain_level = _gain_level;
         me.player_action = _player_action;
