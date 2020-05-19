@@ -260,9 +260,6 @@ If this option is on, animation delays will be calculated by squaring rather tha
 <topic:plain_descriptions><color:U>Plain object descriptions</color> <color:D>(plain_descriptions)</color>
 If this option is on, object flavors are included in descriptions only if the flavor remains unidentified; a Blue Potion, for example, might be shown simply as a Potion of Speed after identification. If this option is not on, flavors are always listed, and the identified potion would be a Blue Potion of Speed.
 
-<topic:always_show_list><color:U>Always show list when choosing spells</color> <color:D>(always_show_list)</color>
-No one actually wants this option off, so there is no need for any details about what it does.
-
 <topic:depth_in_feet><color:U>Show dungeon level in feet</color> <color:D>(depth_in_feet)</color>
 Displays the current depth in feet instead of levels; 50 feet corresponds to one level.
 
