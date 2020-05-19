@@ -1585,7 +1585,7 @@ N:*:& Pointy Hat~
 G:]:C
 I:32:10:0
 W:3:0:0:20:20
-A:10/8
+A:10/5
 P:1:0d0:0:0:0
 D:A pointy hat. (You wonder if wearing it will automatically make you a magician...)
 
