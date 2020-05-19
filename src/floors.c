@@ -1314,6 +1314,10 @@ void change_floor(void)
                     else
                         a_info[o_ptr->name3].generated = TRUE;
                 }
+                if ((o_ptr->insured) && (o_ptr->number > 0))
+                {
+                    cornucopia_mark_destroyed(cornucopia_item_policy(o_ptr), 0 - (o_ptr->insured % 100));
+                }
             }
 
             quests_on_restore_floor(dungeon_type, dun_level);
