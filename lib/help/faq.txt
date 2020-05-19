@@ -350,7 +350,7 @@ Mundanity has two main uses: to create an average item that can be used as a ref
 
 <color:R>A:</color> A number of items and spells do nothing when used on a town quest level (any quest level not located inside a dungeon). In addition to Destruction, this includes all Genocide, Mass Genocide and Annihilation effects, Teleport Level, and capture ball activations against non-pets.
 
-Destruction also does not work in the wilderness or in the Witch Wood. This is because outdoors there's no ceiling to bring down!
+Destruction also does not work in the wilderness, and its effectiveness is reduced on the Plains of Oz and in the Witch Wood. This is because outdoors there's no ceiling to bring down!
 
 
 <color:G>Q:</color> What do monsters' vampiric attacks do?
@@ -460,7 +460,7 @@ Poison needles cannot be used in a reforge, and cannot be enchanted through any 
 
 <color:R>A:</color> Rune Swords start out extremely weak, but they gain power as you kill monsters (especially uniques) with them. If you find a Rune Sword early and use it into the deep endgame, it will eventually be very strong offensively.
 
-Growing a Rune Sword takes a long time, and it will also pick up a number of negative attributes along the way - increasing AC penalties. aggravation, and eventually (in the very late game) the Ancient Foul Curse. The positive attributes of a Rune Sword, moreover, are purely offensive; it will never provide resistances, stat bonuses or additional abilities like many other strong weapons; and since Rune Swords are permanently cursed, the only way to unwield them is to essentially destroy them with Mundanity. For these reasons, most players are quite wary of using Rune Swords, but the game has been won with them many times.
+Growing a Rune Sword takes a long time, and it will also pick up a number of negative attributes along the way - increasing AC penalties, aggravation, and eventually (in the very late game) the Ancient Foul Curse. The positive attributes of a Rune Sword, moreover, are purely offensive; it will never provide resistances, stat bonuses or additional abilities like many other strong weapons; and since Rune Swords are permanently cursed, the only way to unwield them is to essentially destroy them with Mundanity. For these reasons, most players are quite wary of using Rune Swords, but the game has been won with them many times.
 
 
 <color:G>Q:</color> Are Sexy Swimsuits just a useless joke item, or can they be actually good?
