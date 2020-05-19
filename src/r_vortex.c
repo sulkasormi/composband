@@ -789,8 +789,9 @@ race_t *mon_vortex_get_race(void)
                     "rotating essence, gaining bonuses and protection in the process. "
                     "The number of objects they may use increases with level, and there are no "
                     "restrictions on the types of equipment they may 'wield' in each slot. "
-                    "While they may equip weapons this way, they cannot attack with them; "
-                    "instead, the vortex may engulf nearby monsters with their elemental essence.\n \n"
+                    "While they may equip weapons this way, they cannot attack with them; instead, "
+                    "vortex melee relies on their innate ability to engulf nearby monsters in the "
+                    "whirling elements.\n \n"
                     "Vortices evolve randomly, though all seem to end up with the evolutionary "
                     "perfection of the Aether vortex. At level 50 they gain a special talent "
                     "to augment their power.";
