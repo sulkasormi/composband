@@ -3318,8 +3318,9 @@ static cptr _tactic_msg(void)
     {
         if (_current.flags & MSC_SRC_PLAYER)
             return "You jump away.";
-        else
+        else if (!(_current.flags & MSC_UNVIEW))
             return "$CASTER jumps away.";
+        else return "";
     }
     return NULL;
 }
