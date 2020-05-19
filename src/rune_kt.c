@@ -13,7 +13,7 @@ static byte notional_stat_ind[PY_MAX_LEVEL] =
 
 int _notional_mana(void) /* Don't reward low INT by making full mana gain easier */
 {
-    return spell_cap(calc_mana_aux(notional_stat_ind[p_ptr->lev], A_INT, p_ptr->lev));
+    return spell_cap(calc_mana_aux(notional_stat_ind[p_ptr->lev - 1], A_INT, p_ptr->lev));
 }
 
 /****************************************************************
