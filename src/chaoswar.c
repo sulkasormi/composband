@@ -236,7 +236,8 @@ void nonlethal_ty_substitute(bool do_dec)
                     msg_format("There is a malignant black aura surrounding %s...", o_name);
                     o_ptr->feeling = FEEL_NONE;
                     p_ptr->update |= PU_BONUS;
-                    p_ptr->window |= PW_INVEN;
+                    p_ptr->window |= (PW_EQUIP | PW_INVEN);
+                    p_ptr->redraw |= PR_EFFECTS;
                 }
             }
         }
