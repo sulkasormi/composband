@@ -721,15 +721,15 @@ static void _build_flags2(doc_ptr doc, _flagzilla_ptr flagzilla)
     if (p_ptr->msp) doc_printf(doc, " %3d%%", (p_ptr->mana_regen ? _regen * 2 : _regen) / PY_REGEN_NORMAL);
     doc_newline(doc);
 
+    _build_flags_imp(doc, "Hold Life", OF_HOLD_LIFE, OF_INVALID, flagzilla);
+    _display_known_count(doc, p_ptr->hold_life, OF_HOLD_LIFE);
+
     _build_flags(doc, "Levitation", OF_LEVITATION, OF_INVALID, flagzilla);
     _build_flags(doc, "Perm Lite", OF_LITE, OF_DARKNESS, flagzilla);
     _build_flags(doc, "Reflection", OF_REFLECT, OF_INVALID, flagzilla);
     _build_flags(doc, "Nightvision", OF_NIGHT_VISION, OF_INVALID, flagzilla);
 
-    _build_flags_imp(doc, "Hold Life", OF_HOLD_LIFE, OF_INVALID, flagzilla);
-    _display_known_count(doc, p_ptr->hold_life, OF_HOLD_LIFE);
-
-    _build_flags_imp(doc, "Life Rating", OF_LIFE, OF_DEC_LIFE, flagzilla);
+    _build_flags_imp(doc, "Life Mult", OF_LIFE, OF_DEC_LIFE, flagzilla);
     _tmp = (p_ptr->life - adj_con_mhp[p_ptr->stat_ind[A_CON]]);
     if (_tmp != 0)
     {
@@ -2344,7 +2344,7 @@ static void _build_statistics(doc_ptr doc)
 
     if ((p_ptr->is_dead) || (p_ptr->knowledge & KNOW_HPRATE))
     {
-        doc_printf(doc, "  <color:G>Life Rating</color>:  %d%%\n\n", life_rating());
+        doc_printf(doc, "  <color:G>Life Rating</color>: %s\n\n", life_rating_desc(TRUE));
     }
 }
 
