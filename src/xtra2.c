@@ -3750,7 +3750,7 @@ bool target_okay_aux(int mode)
     /* Accept stationary targets ... but cf move_player_effect
      * in cmd1.c. We will dismiss a non-projectable positional
      * target the next time the player moves. */
-    if (target_who < 0) return TRUE;
+    if ((target_who < 0) && (!(mode & TARGET_MONS))) return TRUE;
 
     /* Check moving targets */
     if (target_who > 0)
@@ -4038,12 +4038,12 @@ static void target_set_prepare(int mode)
             c_ptr = &cave[cp.y][cp.x];
 
             /* Require target_able monsters for "TARGET_KILL" */
-            if ((mode & (TARGET_KILL)) && !target_able(c_ptr->m_idx)) continue;
+            if ((mode & (TARGET_KILL | TARGET_MONS)) && !target_able(c_ptr->m_idx)) continue;
 
             if ((mode & (TARGET_KILL | TARGET_MARK)) && !target_pet && is_pet(&m_list[c_ptr->m_idx])) continue;
 
             /* Duelist is attempting to mark a target ... only visible monsters, please! */
-            if ( ((mode & TARGET_MARK) || (mode & TARGET_DISI))
+            if ( ((mode & TARGET_MARK) || (mode & TARGET_DISI) || (mode & TARGET_MONS))
               && (!c_ptr->m_idx || !m_list[c_ptr->m_idx].ml) )
             {
                 continue;
@@ -4057,7 +4057,7 @@ static void target_set_prepare(int mode)
     }
 
     /* Set the sort hooks */
-    if ((mode & TARGET_KILL) || (mode & TARGET_MARK) || (mode & TARGET_DISI) || (mode & TARGET_XTRA))
+    if ((mode & TARGET_KILL) || (mode & (TARGET_MARK | TARGET_DISI | TARGET_MONS | TARGET_XTRA)))
     {
         /* Target the nearest monster for shooting */
         ang_sort_comp = ang_sort_comp_distance;
@@ -5214,6 +5214,7 @@ bool get_aim_dir_aux(int *dp, int target_mode)
 /*            return (TRUE); */
             dir = *dp;
         }
+        if ((target_mode & (TARGET_MONS)) && (dir != 5)) dir = 0;
     }
 
 #endif /* ALLOW_REPEAT -- TNB */
@@ -5221,16 +5222,19 @@ bool get_aim_dir_aux(int *dp, int target_mode)
     /* Ask until satisfied */
     while (!dir)
     {
+        if (target_mode & (TARGET_MONS)) /* Skip directly to target_set() since directions are not accepted */
+        {
+            if (target_set(target_mode)) dir = 5;
+            break;
+        }
         /* Choose a prompt */
-        if (!target_okay_aux(target_mode))
+        else if (!target_okay_aux(target_mode))
         {
             p = "Direction ('*' to choose a target, Escape to cancel)? ";
-
         }
         else
         {
             p = "Direction ('5' for target, '*' to re-target, Escape to cancel)? ";
-
         }
 
         /* Get a command (or Cancel) */
@@ -5267,7 +5271,7 @@ bool get_aim_dir_aux(int *dp, int target_mode)
             default:
             {
                 /* Extract the action (if any) */
-                dir = get_keymap_dir(command, FALSE);
+                if (!(target_mode & TARGET_MONS)) dir = get_keymap_dir(command, FALSE);
 
                 break;
             }
@@ -5303,7 +5307,6 @@ bool get_aim_dir_aux(int *dp, int target_mode)
     {
         /* Warn the user */
         msg_print("You are confused.");
-
     }
 
     /* Save direction */
@@ -5320,7 +5323,17 @@ bool get_aim_dir_aux(int *dp, int target_mode)
     return (TRUE);
 }
 
-
+/* Directly target a monster. Do not accept directions.
+ * Intended mostly for use with radius-0 balls */
+bool get_direct_target(void)
+{
+    int dir = 0;
+    if (!get_fire_dir_aux(&dir, (TARGET_KILL | TARGET_MONS))) return FALSE;
+    if (dir != 5) return FALSE;
+    if (!in_bounds(target_row, target_col)) return FALSE;
+    if (!projectable(py, px, target_row, target_col)) return FALSE;
+    return TRUE;
+}
 
 /*
  * Request a "movement" direction (1,2,3,4,6,7,8,9) from the user,
