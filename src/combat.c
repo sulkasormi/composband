@@ -396,7 +396,7 @@ void init_blows_calc(object_type *o_ptr, weapon_info_t *info_ptr)
             if (p_ptr->lev >= 45) /* Death Scythes retaliate! */
                 info_ptr->blows_calc.max = 300;
         }
-        else if (prace_is_(RACE_MON_GOLEM))
+        else if ((prace_is_(RACE_MON_GOLEM)) || (prace_is_(RACE_MON_MUMMY)))
         {
             info_ptr->blows_calc.max = 100;
         }
@@ -1117,6 +1117,231 @@ s16b tot_dam_aux(object_type *o_ptr, int tdam, monster_type *m_ptr, s16b hand, i
     return (tdam * mult / 10);
 }
 
+static int _critical_loop = 0;
+static int _critical_attempts = 0;
+static int _critical_roll = 0;
+static int _critical_comp = 0;
+
+/*
+ * Critical hits (from bows/crossbows/slings)
+ * Factor in item weight, total plusses, and player level.
+ */
+critical_t critical_shot(int weight, int plus)
+{
+    critical_t result = {0};
+    int i, k;
+
+    /* Extract "shot" power */
+    i = (p_ptr->shooter_info.to_h + plus) * 3 + p_ptr->skills.thb * 2;
+
+    /* Snipers and Crossbowmasters get more crits */
+    if (p_ptr->concent) i += i * p_ptr->concent / 10;
+    if (p_ptr->pclass == CLASS_SNIPER &&
+        ((p_ptr->shooter_info.tval_ammo == TV_BOLT) ||
+        (p_ptr->shooter_info.tval_ammo == TV_ANY_AMMO))) i = i * 3 / 2;
+    if (weaponmaster_get_toggle() == TOGGLE_CAREFUL_AIM)
+        i *= 3;
+    if (p_ptr->pclass == CLASS_ARCHER) i += i * p_ptr->lev / 100;
+
+    /* Critical hit */
+    if (randint1(5000) <= i)
+    {
+        k = weight * randint1(500);
+        result.mul = 150 + k * 200 / 2000;
+
+        if (result.mul < 200)
+            result.desc = "It was a <color:y>decent</color> shot!";
+        else if (result.mul < 240)
+            result.desc = "It was a <color:R>good</color> shot!";
+        else if (result.mul < 270)
+            result.desc = "It was a <color:r>great</color> shot!";
+        else if (result.mul < 300)
+            result.desc = "It was a <color:v>superb</color> shot!";
+        else
+            result.desc = "It was a <color:v>*GREAT*</color> shot!";
+    }
+
+    return result;
+}
+
+/*
+ * Critical hits (from bows/crossbows/slings)
+ * Factor in item weight, total plusses, and player level.
+ */
+critical_t critical_throw(int weight, int plus)
+{
+    critical_t result = {0};
+    int i, k;
+
+    /* Extract "shot" power */
+    i = (p_ptr->shooter_info.to_h + plus)*4 + p_ptr->lev*3;
+
+    /* Critical hit */
+    if (randint1(5000) <= i)
+    {
+        k = weight + randint1(650);
+
+        if (k < 400)
+        {
+            result.desc = "It was a <color:y>good</color> hit!";
+            result.mul = 150;
+        }
+        else if (k < 700)
+        {
+            result.desc = "It was a <color:R>great</color> hit!";
+            result.mul = 200;
+        }
+        else
+        {
+            result.desc = "It was a <color:r>superb</color> hit!";
+            result.mul = 250;
+        }
+    }
+
+    return result;
+}
+
+static bool _always_crit(int mode)
+{
+    if ( mode == HISSATSU_MAJIN
+      || mode == HISSATSU_3DAN
+      || mode == MAULER_CRITICAL_BLOW
+      || mode == GOLEM_BIG_PUNCH
+      || mode == MYSTIC_CRITICAL)
+        return TRUE;
+    else return FALSE;
+}
+
+static void _initialize_crit_loop(int mode)
+{
+    if ( mode == HISSATSU_MAJIN
+      || mode == HISSATSU_3DAN
+      || mode == MAULER_CRITICAL_BLOW) /* Extra randomness */
+    {
+        _critical_loop = -30;
+    }
+    else _critical_loop = -2; /* No randomness, why waste time */
+    _critical_attempts = 0;
+    _critical_roll = 0;
+    _critical_comp = 0;
+}
+
+/*
+ * Critical hits (by player)
+ *
+ * Factor in weapon weight, total plusses, player level.
+ */
+critical_t critical_norm(int weight, int plus, s16b meichuu, int mode, int hand)
+{
+    critical_t result = {0};
+    int i;
+    int roll = (player_is_ninja) ? 4444 : 5000;
+    int quality = 650;
+    static int next_k = 0;
+
+    if (p_ptr->enhanced_crit)
+    {
+        weight = weight * 3 / 2;
+        weight += 300;
+    }
+
+    if ( equip_is_valid_hand(hand)
+      && p_ptr->weapon_info[hand].wield_how == WIELD_TWO_HANDS
+      && p_ptr->pclass != CLASS_DUELIST
+      && !p_ptr->weapon_info[hand].omoi )
+    {
+        roll = roll * 4 / 5;
+    }
+
+    /* Extract "blow" power */
+    i = (weight + (meichuu * 3 + plus * 5) + (p_ptr->lev * 3));
+
+    /* Mauler: Destroyer now scales with level */
+    if ( p_ptr->pclass == CLASS_MAULER
+      && equip_is_valid_hand(hand)
+      && p_ptr->weapon_info[hand].wield_how == WIELD_TWO_HANDS )
+    {
+        int pct = MIN((weight - 200)/20, 20);
+        if (pct > 0)
+            pct = pct * p_ptr->lev / 50;
+        i += roll * pct / 100;
+        quality += quality * pct / 100;
+    }
+
+    if (_critical_loop < 0) /* Hack */
+    {
+        _critical_loop = 0 - _critical_loop;
+        _critical_comp = i;
+        _critical_roll = _always_crit(mode) ? i : MAX(i, roll);
+        next_k = quality;
+    }
+
+    /* Chance */
+    if ( _always_crit(mode)
+      || _critical_loop > 0
+      || randint1(roll) <= i )
+    {
+        int k;
+        if (_critical_loop)
+        {
+            k = weight + next_k;
+            next_k--;
+            if (next_k <= 0)
+            {
+                next_k = quality;
+                _critical_loop--;
+                if (!_critical_loop) return result;
+            }
+            _critical_attempts++;
+        }
+        else k = weight + randint1(quality);
+
+        if ( mode == HISSATSU_MAJIN
+          || mode == HISSATSU_3DAN )
+        {
+            k += randint1(650);
+        }
+        if (mode == MAULER_CRITICAL_BLOW)
+        {
+            k += randint1(250*p_ptr->lev/50);
+        }
+
+        if (k < 400)
+        {
+            result.desc = "It was a <color:y>good</color> hit!";
+            result.mul = 200;
+        }
+        else if (k < 700)
+        {
+            result.desc = "It was a <color:R>great</color> hit!";
+            result.mul = 250;
+        }
+        else if (k < 900)
+        {
+            result.desc = "It was a <color:r>superb</color> hit!";
+            result.mul = 300;
+        }
+        else if (k < 1300)
+        {
+            result.desc = "It was a <color:v>*GREAT*</color> hit!";
+            result.mul = 350;
+        }
+        else
+        {
+            result.desc = "It was a <color:v>*SUPERB*</color> hit!";
+            result.mul = 400;
+        }
+    }
+
+    /* Golem criticals are too strong */
+    if (prace_is_(RACE_MON_GOLEM) && (result.mul > 100))
+    {
+        result.mul -= ((result.mul - 100) / 3);
+    }
+
+    return result;
+}
+
 /**********************************************************************
  * Display Weapon Information to the Player
  **********************************************************************/
@@ -1286,11 +1511,12 @@ void display_weapon_info(doc_ptr doc, int hand)
     if (!have_flag(flgs, OF_BRAND_ORDER)
         && weaponmaster_get_toggle() != TOGGLE_ORDER_BLADE)
     {
-        const int attempts = 10 * 1000;
-        int i;
+/*        const int attempts = 10 * 1000;*/
         int crits = 0;
-        /* Compute Average Effects of Criticals by sampling */
-        for (i = 0; i < attempts; i++)
+        /* Compute average effects of criticals by sampling
+         * Try to get full sample if possible */
+        _initialize_crit_loop(display_weapon_mode);
+        while (1)
         {
             critical_t tmp = critical_norm(o_ptr->weight, to_h, p_ptr->weapon_info[hand].to_h, display_weapon_mode, hand);
             if (tmp.desc)
@@ -1299,12 +1525,37 @@ void display_weapon_info(doc_ptr doc, int hand)
                 crit.to_d += tmp.to_d;
                 crits++;
             }
-            else
-                crit.mul += 100;
+            else if (!_critical_loop) break;
+            else crit.mul += 100;
         }
-        crit.mul = crit.mul / attempts;
-        crit.to_d = crit.to_d * 100 / attempts;
-        crit_pct = crits * 1000 / attempts;
+        if ((!_critical_attempts) || (_critical_roll < 2)) /* Something has gone horribly wrong... */
+        {
+            crit.mul = 100;
+            crit.to_d = 0;
+            crit_pct = 0;
+        }
+        else /* Evil voodoo */
+        {
+            if (_critical_roll != _critical_comp)
+            {
+                crit.mul -= (_critical_attempts * 100);
+                if (((0x7FFFFFFF - (_critical_roll / 2)) / _critical_comp) < crit.mul)
+                {
+                    crit.mul = (crit.mul * _critical_comp + (_critical_roll / 2)) / _critical_roll;
+                }
+                else crit.mul = (crit.mul + (_critical_roll / 2)) / _critical_roll * _critical_comp;
+                crit.mul += (_critical_attempts * 201) / 2;
+                crit.mul /= _critical_attempts;
+                crit.to_d = (crit.to_d * 100 + (_critical_roll / 2)) / _critical_roll * _critical_comp / _critical_attempts;
+                crit_pct = (_critical_comp * 1000 + (_critical_roll / 2)) / _critical_roll;
+            }
+            else
+            {
+                crit.mul = (crit.mul + (_critical_attempts / 2)) / _critical_attempts;
+                crit.to_d = (crit.to_d * 100 + (_critical_attempts / 2)) / _critical_attempts;
+                crit_pct = 1000;
+            }
+        }
     }
     else
         crit.mul = 100;
@@ -1488,7 +1739,7 @@ static cptr _effect_name(int which)
     case GF_CONFUSION: return "Confuse";
     case GF_STUN: return "Stun";
     case GF_DRAIN_MANA: return "Drain Mana";
-    case GF_TURN_ALL: return "Terrifies";
+    case GF_TURN_ALL: return "Terrify";
     }
     gf = gf_lookup(which);
     if (gf) return gf->name;
@@ -1504,6 +1755,7 @@ void display_innate_attack_info(doc_ptr doc, int which)
     int to_d = p_ptr->to_d_m + a->to_d;
     int dd = a->dd + p_ptr->innate_attack_info.to_dd;
     int mult;
+    int strt = 1;
     doc_ptr cols[2] = {0};
 
     blows = a->blows;
@@ -1552,8 +1804,8 @@ void display_innate_attack_info(doc_ptr doc, int which)
     if (!(a->flags & (INNATE_NO_DAM | INNATE_NO_CRIT)))
     {
         critical_t crit = {0};
-        const int ct = 10 * 1000;
-        for (i = 0; i < ct; i++)
+        _initialize_crit_loop(0);
+        while (1)
         {
             critical_t tmp = critical_norm(a->weight, to_h, 0, 0, HAND_NONE);
             if (tmp.desc)
@@ -1561,11 +1813,34 @@ void display_innate_attack_info(doc_ptr doc, int which)
                 crit.mul += tmp.mul;
                 crit.to_d += tmp.to_d;
             }
-            else
-                crit.mul += 100;
+            else if (!_critical_loop) break;
+            else crit.mul += 100;
         }
-        crit.mul = crit.mul / ct;
-        crit.to_d = crit.to_d * 100 / ct;
+        if ((!_critical_attempts) || (_critical_roll < 2)) /* Something has gone horribly wrong... */
+        {
+            crit.mul = 100;
+            crit.to_d = 0;
+        }
+        else /* Evil voodoo */
+        {
+            if (_critical_roll != _critical_comp)
+            {
+                crit.mul -= (_critical_attempts * 100);
+                if (((0x7FFFFFFF - (_critical_roll / 2)) / _critical_comp) < crit.mul)
+                {
+                    crit.mul = (crit.mul * _critical_comp + (_critical_roll / 2)) / _critical_roll;
+                }
+                else crit.mul = (crit.mul + (_critical_roll / 2)) / _critical_roll * _critical_comp;
+                crit.mul += (_critical_attempts * 201) / 2;
+                crit.mul /= _critical_attempts;
+                crit.to_d = (crit.to_d * 100 + (_critical_roll / 2)) / _critical_roll * _critical_comp / _critical_attempts;
+            }
+            else
+            {
+                crit.mul = (crit.mul + (_critical_attempts / 2)) / _critical_attempts;
+                crit.to_d = (crit.to_d * 100 + (_critical_attempts / 2)) / _critical_attempts;
+            }
+        }
         if (crit.to_d)
             doc_printf(cols[0], " %-7.7s: %d.%02dx + %d.%02d\n", "Crits", crit.mul/100, crit.mul%100, crit.to_d/100, crit.to_d%100);
         else
@@ -1577,10 +1852,10 @@ void display_innate_attack_info(doc_ptr doc, int which)
 
     min_base = mult * dd / 100;
     min = min_base + to_d;
-    min2 = 2*(min_base + a->to_d) + p_ptr->to_d_m;
+    min2 = min_base + a->to_d;
     max_base = mult * dd * a->ds / 100;
     max = max_base + to_d;
-    max2 = 2*(max_base + a->to_d) + p_ptr->to_d_m;
+    max2 = max_base + a->to_d;
     if (p_ptr->stun)
     {
         min_base -= min_base * MIN(100, p_ptr->stun) / 150;
@@ -1605,6 +1880,7 @@ void display_innate_attack_info(doc_ptr doc, int which)
     {
         doc_printf(cols[0], " %-7.7s: %d\n",_effect_name(a->effect[0]), blows * (min + max)/200);
     }
+    else strt = 0;
 
     if (p_ptr->current_r_idx == MON_AETHER_VORTEX) /* Hack ... cf race_vortex.c:_calc_innate_attacks() */
     {
@@ -1612,18 +1888,16 @@ void display_innate_attack_info(doc_ptr doc, int which)
         int max3 = 9*(max_base + a->to_d)/4 + p_ptr->to_d_m;
         doc_printf(cols[0], "<color:r> %-7.7s</color>: %d\n",
                 _effect_name(a->effect[0]),
-                blows * (min3 + max3)/200
-        );
+                blows * (min3 + max3)/200);
     }
     else
     {
-        for (i = 1; i < MAX_INNATE_EFFECTS; i++)
+        for (i = strt; i < MAX_INNATE_EFFECTS; i++)
         {
             int p = a->effect_chance[i];
             char xtra[255];
             if (!a->effect[i]) continue;
-            if ((p_ptr->current_r_idx == MON_DEATH_PUMPKIN) && (a->effect[i] == GF_OLD_DRAIN)) continue;
-            if (!p)
+            if ((!p) || (p == 100))
                 sprintf(xtra, "%s", "");
             else
                 sprintf(xtra, " (%d%%)", p);
@@ -1636,7 +1910,11 @@ void display_innate_attack_info(doc_ptr doc, int which)
             case GF_OLD_SLOW:
                 doc_printf(cols[0], "<tab:10><color:U>Slows%s</color>\n", xtra);
                 break;
+            case GF_BABY_SLOW:
+                doc_printf(cols[0], "<tab:10><color:W>Slows%s</color>\n", xtra);
+                break;
             case GF_OLD_CONF:
+            case GF_BLIND:
                 doc_printf(cols[0], "<tab:10><color:u>Confuses%s</color>\n", xtra);
                 break;
             case GF_OLD_SLEEP:
@@ -1656,16 +1934,36 @@ void display_innate_attack_info(doc_ptr doc, int which)
                 doc_printf(cols[0], "<tab:10><color:R>Causes Amnesia%s</color>\n", xtra);
                 break;
             case GF_TURN_ALL:
-                doc_printf(cols[0], "<tab:10><color:r>Terrifies%s</color>\n", xtra);
+                doc_printf(cols[0], "<tab:10><color:v>Terrifies%s</color>\n", xtra);
                 break;
             case GF_QUAKE:
                 doc_printf(cols[0], "<tab:10><color:B>Shatters%s</color>\n", xtra);
                 break;
+            case GF_MISSILE: /* Full damage */
+                if ((!p) || (p == 100))
+                    doc_printf(cols[0], "<color:r>+%-7.7s</color>: %d\n", "Hurt", blows * (min + max)/200);
+                else
+                    doc_printf(cols[0], "<color:r>+%-7.7s</color>: %d/%d%s\n", "Hurt", blows * (min + max)/200, (s32b)blows * (min + max) * p / 20000L, xtra);
+                break;
+            case GF_OLD_DRAIN:
+                if (i > 0)
+                {
+                    doc_printf(cols[0], "<tab:10><color:B>Drains%s</color>\n", xtra);
+                    break;
+                } /* Fall through */
             default:
-                doc_printf(cols[0], "<color:r> %-7.7s</color>: %d\n",
+                if ((!p) || (p == 100))
+                {
+                    doc_printf(cols[0], "<color:r>+%-7.7s</color>: %d\n",
                         _effect_name(a->effect[i]),
-                        blows * (min2 + max2)/200
-                );
+                        blows * (min2 + max2)/200);
+                }
+                else
+                {
+                    doc_printf(cols[0], "<color:r>+%-7.7s</color>: %d/%d%s\n",
+                        _effect_name(a->effect[i]),
+                        blows * (min2 + max2)/200, (s32b)blows * (min2 + max2) * p / 20000L, xtra);
+                }
             }
         }
     }
