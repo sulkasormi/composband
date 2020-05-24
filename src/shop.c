@@ -1774,7 +1774,7 @@ static void _buy(_ui_context_ptr context)
                 p_ptr->notice |= PN_OPTIMIZE_QUIVER;
             else if (prompt.obj->loc.where == INV_PACK)
                 p_ptr->notice |= PN_OPTIMIZE_PACK;
-            if (!tunnettu) autopick_alter_obj(prompt.obj, obj_value(prompt.obj) < 1);
+            if (!tunnettu) autopick_alter_obj(prompt.obj, ((destroy_identify) && (obj_value(prompt.obj) < 1)));
         }
     }
     else
