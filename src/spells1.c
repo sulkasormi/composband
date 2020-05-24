@@ -1884,6 +1884,7 @@ bool project_m(int who, int r, int y, int x, int dam, int typ, int flg, bool see
 {
     bool result;
     int  m_idx = cave[y][x].m_idx;
+    u32b liput = GF_AFFECT_SPELL;
 
     if (!m_idx) return FALSE;
 
@@ -1893,7 +1894,8 @@ bool project_m(int who, int r, int y, int x, int dam, int typ, int flg, bool see
 
     /* Do it ... shared with other non-projection damage like melee attacks and auras */
     gf_distance_hack = r;
-    result = gf_affect_m(who, &m_list[m_idx], typ, dam, GF_AFFECT_SPELL);
+    if (flg & PROJECT_NO_PAIN) liput |= GF_NO_PAIN;
+    result = gf_affect_m(who, &m_list[m_idx], typ, dam, liput);
     gf_distance_hack = 1;
 
     /* Track it */
