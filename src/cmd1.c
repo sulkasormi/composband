@@ -439,185 +439,6 @@ bool test_hit_norm(int chance, int ac, int vis)
     return (TRUE);
 }
 
-
-
-/*
- * Critical hits (from bows/crossbows/slings)
- * Factor in item weight, total plusses, and player level.
- */
-critical_t critical_shot(int weight, int plus)
-{
-    critical_t result = {0};
-    int i, k;
-
-    /* Extract "shot" power */
-    i = (p_ptr->shooter_info.to_h + plus) * 3 + p_ptr->skills.thb * 2;
-
-    /* Snipers and Crossbowmasters get more crits */
-    if (p_ptr->concent) i += i * p_ptr->concent / 10;
-    if (p_ptr->pclass == CLASS_SNIPER &&
-        ((p_ptr->shooter_info.tval_ammo == TV_BOLT) ||
-        (p_ptr->shooter_info.tval_ammo == TV_ANY_AMMO))) i = i * 3 / 2;
-    if (weaponmaster_get_toggle() == TOGGLE_CAREFUL_AIM)
-        i *= 3;
-    if (p_ptr->pclass == CLASS_ARCHER) i += i * p_ptr->lev / 100;
-
-    /* Critical hit */
-    if (randint1(5000) <= i)
-    {
-        k = weight * randint1(500);
-        result.mul = 150 + k * 200 / 2000;
-
-        if (result.mul < 200)
-            result.desc = "It was a <color:y>decent</color> shot!";
-        else if (result.mul < 240)
-            result.desc = "It was a <color:R>good</color> shot!";
-        else if (result.mul < 270)
-            result.desc = "It was a <color:r>great</color> shot!";
-        else if (result.mul < 300)
-            result.desc = "It was a <color:v>superb</color> shot!";
-        else
-            result.desc = "It was a <color:v>*GREAT*</color> shot!";
-    }
-
-    return result;
-}
-
-/*
- * Critical hits (from bows/crossbows/slings)
- * Factor in item weight, total plusses, and player level.
- */
-critical_t critical_throw(int weight, int plus)
-{
-    critical_t result = {0};
-    int i, k;
-
-    /* Extract "shot" power */
-    i = (p_ptr->shooter_info.to_h + plus)*4 + p_ptr->lev*3;
-
-    /* Critical hit */
-    if (randint1(5000) <= i)
-    {
-        k = weight + randint1(650);
-
-        if (k < 400)
-        {
-            result.desc = "It was a <color:y>good</color> hit!";
-            result.mul = 150;
-        }
-        else if (k < 700)
-        {
-            result.desc = "It was a <color:R>great</color> hit!";
-            result.mul = 200;
-        }
-        else
-        {
-            result.desc = "It was a <color:r>superb</color> hit!";
-            result.mul = 250;
-        }
-    }
-
-    return result;
-}
-
-
-/*
- * Critical hits (by player)
- *
- * Factor in weapon weight, total plusses, player level.
- */
-critical_t critical_norm(int weight, int plus, s16b meichuu, int mode, int hand)
-{
-    critical_t result = {0};
-    int i;
-    int roll = (player_is_ninja) ? 4444 : 5000;
-    int quality = 650;
-
-    if (p_ptr->enhanced_crit)
-    {
-        weight = weight * 3 / 2;
-        weight += 300;
-    }
-
-    if ( equip_is_valid_hand(hand)
-      && p_ptr->weapon_info[hand].wield_how == WIELD_TWO_HANDS
-      && p_ptr->pclass != CLASS_DUELIST
-      && !p_ptr->weapon_info[hand].omoi )
-    {
-        roll = roll * 4 / 5;
-    }
-
-    /* Extract "blow" power */
-    i = (weight + (meichuu * 3 + plus * 5) + (p_ptr->lev * 3));
-
-    /* Mauler: Destroyer now scales with level */
-    if ( p_ptr->pclass == CLASS_MAULER
-      && equip_is_valid_hand(hand)
-      && p_ptr->weapon_info[hand].wield_how == WIELD_TWO_HANDS )
-    {
-        int pct = MIN((weight - 200)/20, 20);
-        if (pct > 0)
-            pct = pct * p_ptr->lev / 50;
-        i += roll * pct / 100;
-        quality += quality * pct / 100;
-    }
-
-    /* Chance */
-    if ( mode == HISSATSU_MAJIN
-      || mode == HISSATSU_3DAN
-      || mode == MAULER_CRITICAL_BLOW
-      || mode == GOLEM_BIG_PUNCH
-      || mode == MYSTIC_CRITICAL
-      || randint1(roll) <= i )
-    {
-        int k = weight + randint1(quality);
-
-        if ( mode == HISSATSU_MAJIN
-          || mode == HISSATSU_3DAN )
-        {
-            k += randint1(650);
-        }
-        if (mode == MAULER_CRITICAL_BLOW)
-        {
-            k += randint1(250*p_ptr->lev/50);
-        }
-
-        if (k < 400)
-        {
-            result.desc = "It was a <color:y>good</color> hit!";
-            result.mul = 200;
-        }
-        else if (k < 700)
-        {
-            result.desc = "It was a <color:R>great</color> hit!";
-            result.mul = 250;
-        }
-        else if (k < 900)
-        {
-            result.desc = "It was a <color:r>superb</color> hit!";
-            result.mul = 300;
-        }
-        else if (k < 1300)
-        {
-            result.desc = "It was a <color:v>*GREAT*</color> hit!";
-            result.mul = 350;
-        }
-        else
-        {
-            result.desc = "It was a <color:v>*SUPERB*</color> hit!";
-            result.mul = 400;
-        }
-    }
-
-    /* Golem criticals are too strong */
-    if (prace_is_(RACE_MON_GOLEM) && (result.mul > 100))
-    {
-        result.mul -= ((result.mul - 100) / 3);
-    }
-
-    return result;
-}
-
 s16b tot_dam_aux_monk(int tdam, monster_type *m_ptr, int mode)
 {
     int mult = 10;
@@ -1504,7 +1325,6 @@ static bool _gf_innate(mon_ptr m, int type, int dam)
 static bool _pumpkin_drain_life(mon_ptr m_ptr, int *power, bool *weak)
 {
     int vahennys = 0;
-    if (p_ptr->prace != RACE_MON_PUMPKIN) return FALSE;
     *power = damroll(2, (*power) / 6);
     vahennys = ((*power)+7) / 8;
     m_ptr->maxhp -= vahennys;
@@ -1713,6 +1533,7 @@ static void innate_attacks(s16b m_idx, bool *fear, bool *mdeath, int mode)
                     base_dam -= base_dam * MIN(100, p_ptr->stun) / 150;
                 }
                 dam = ((dam * (class_melee_mult() * race_melee_mult(TRUE) / 100)) + 50) / 100;
+                base_dam = ((base_dam * (class_melee_mult() * race_melee_mult(TRUE) / 100)) + 50) / 100;
 
                 if (mode == BEORNING_BIG_SWIPE)
                 {
@@ -1905,7 +1726,8 @@ static void innate_attacks(s16b m_idx, bool *fear, bool *mdeath, int mode)
                         *mdeath = mon_take_hit(m_idx, dam, DAM_TYPE_MELEE, fear, NULL);
                         break;
                     case GF_DISENCHANT:
-                        *mdeath = mon_take_hit(m_idx, dam, DAM_TYPE_MELEE, fear, NULL);
+                        _gf_innate(m_ptr, e, k ? effect_pow : dam);
+                        *mdeath = (m_ptr->r_idx == 0);
                         if (!(*mdeath) && one_in_(7))
                             dispel_monster_status(m_idx);
                         break;
@@ -1937,7 +1759,9 @@ static void innate_attacks(s16b m_idx, bool *fear, bool *mdeath, int mode)
                         break;
                     }
                     case GF_OLD_DRAIN:
-                        if (monster_living(r_ptr) && (_pumpkin_drain_life(m_ptr, &effect_pow, &weak) || _gf_innate(m_ptr, e, effect_pow)))
+                        if (monster_living(r_ptr) &&
+                            (((k > 0) && (_pumpkin_drain_life(m_ptr, &effect_pow, &weak))) ||
+                            (_gf_innate(m_ptr, e, effect_pow))))
                         {
                             int amt = MIN(effect_pow, max_drain_amt - drain_amt);
                             if (prace_is_(MIMIC_BAT))
@@ -3498,7 +3322,12 @@ static bool py_attack_aux(int y, int x, bool *fear, bool *mdeath, s16b hand, int
             {
                 bool resists_tele = FALSE;
 
-                if (r_ptr->flagsr & RFR_RES_TELE)
+                if (mummy_get_toggle() == MUMMY_TOGGLE_ANTITELE)
+                {
+                     msg_format("%^s is unaffected!", m_name_subject);
+                     resists_tele = TRUE;
+                }
+                else if (r_ptr->flagsr & RFR_RES_TELE)
                 {
                     if (r_ptr->flags1 & RF1_UNIQUE)
                     {
