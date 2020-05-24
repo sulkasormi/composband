@@ -2164,3 +2164,8 @@ typedef struct
     int archery_slay; /* 10x higher */
 } slay_tier;
 
+typedef struct b_race_group_s {
+    cptr name;
+    int ids[B_MAX_RACES_PER_GROUP];
+} b_race_group_t, *b_race_group_ptr;
+
