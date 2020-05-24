@@ -2602,6 +2602,7 @@ bool gf_affect_m(int who, mon_ptr mon, int type, int dam, int flags)
                         do_conf = power / 2;
                         break;
                     }
+                    break;
                 default:
                     if (prace_is_(RACE_MON_VAMPIRE))
                     {
