@@ -536,7 +536,7 @@ race_t *mon_vampire_get_race(void)
         me.calc_weapon_bonuses = _calc_weapon_bonuses;
         me.get_flags = _get_flags;
 
-        me.flags = RACE_IS_NONLIVING | RACE_IS_UNDEAD | RACE_IS_MONSTER;
+        me.flags = RACE_IS_NONLIVING | RACE_IS_UNDEAD | RACE_IS_MONSTER | RACE_NIGHT_START;
         me.pseudo_class_idx = CLASS_ROGUE;
 
         me.boss_r_idx = MON_VLAD;
@@ -780,7 +780,7 @@ race_t *bat_get_race(void)
         me.get_flags = _bat_get_flags;
         me.caster_info = _caster_info;
 
-        me.flags = RACE_IS_NONLIVING | RACE_IS_UNDEAD | RACE_IS_MONSTER;
+        me.flags = RACE_IS_NONLIVING | RACE_IS_UNDEAD | RACE_IS_MONSTER | RACE_NIGHT_START;
 
         me.equip_template = &b_info[r_info[MON_VAMPIRE_BAT].body.body_idx];
         init = TRUE;
@@ -858,7 +858,7 @@ race_t *mist_get_race(void)
         me.get_flags = _mist_get_flags;
         me.caster_info = _caster_info;
 
-        me.flags = RACE_IS_NONLIVING | RACE_IS_UNDEAD | RACE_IS_MONSTER;
+        me.flags = RACE_IS_NONLIVING | RACE_IS_UNDEAD | RACE_IS_MONSTER | RACE_NIGHT_START;
 
         me.equip_template = &b_info[r_info[MON_VAMPIRIC_MIST].body.body_idx];
         init = TRUE;
