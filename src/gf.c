@@ -157,6 +157,7 @@ static gf_info_t _gf_tbl[GF_COUNT] = {
     { GF_CHICKEN, "Chicken", TERM_YELLOW, RES_INVALID, "CHICKEN", GFF_ATTACK | GFF_STATUS },
     { GF_BOMB, "Bomb", TERM_SLATE, RES_INVALID, "BOMB", GFF_ATTACK | GFF_STATUS },
     { GF_AIR, "Air", TERM_L_BLUE, RES_INVALID, "AIR", GFF_ATTACK | GFF_STATUS },
+    { GF_BABY_SLOW, "Slow", TERM_SLATE, RES_INVALID, "BABY_SLOW", GFF_STATUS },
 };
 
 typedef struct {
@@ -771,11 +772,12 @@ int gf_affect_p(int who, int type, int dam, int flags)
         result = take_hit(damage_type, dam, m_name_real);
         break;
     case GF_SLOW:
+    case GF_BABY_SLOW:
         if (touch) msg_print("You are <color:W>slowed</color>!");
         else if (fuzzy) msg_print("You are hit by something exhausting!");
         if (!bunshin_save)
             (void)p_inc_minislow(1);
-        result = take_hit(damage_type, dam, m_name_real);
+        if (type != GF_BABY_SLOW) result = take_hit(damage_type, dam, m_name_real);
         break;
     case GF_LITE:
         if (touch) msg_print("You are <color:y>dazzled</color>!");
@@ -2043,6 +2045,7 @@ bool gf_affect_m(int who, mon_ptr mon, int type, int dam, int flags)
         }
         break;
     case GF_SLOW:
+    case GF_BABY_SLOW:
         if (touch && seen_msg) msg_format("%^s is <color:W>slowed</color>!", m_name);
         if (seen) obvious = TRUE;
         _BABBLE_HACK()
@@ -2060,6 +2063,7 @@ bool gf_affect_m(int who, mon_ptr mon, int type, int dam, int flags)
         }
         else if (m_inc_minislow(mon, 1))
             note = " starts moving <color:s>slightly slower</color>.";
+        if (type == GF_BABY_SLOW) dam = 0; /* no real damage */
         break;
     case GF_TIME:
         if (touch && seen_msg) msg_format("%^s is <color:B>chronosmashed</color>!", m_name);
@@ -3520,7 +3524,7 @@ bool gf_affect_m(int who, mon_ptr mon, int type, int dam, int flags)
         if (race->flagsr & RFR_RES_TELE)
         {
             if ( (race->flags1 & RF1_UNIQUE)
-              || (race->flagsr & RFR_RES_ALL) 
+              || (race->flagsr & RFR_RES_ALL)
               || (mon->smart & (1U << SM_GUARDIAN)) )
             {
                 mon_lore_r(mon, RFR_RES_TELE);
@@ -4451,19 +4455,25 @@ bool gf_affect_m(int who, mon_ptr mon, int type, int dam, int flags)
 
         /* Handle "teleport" ... double check the Guardian. It should be
          * handled above for nicer messaging, but I didn't get all the cases. */
-        if (do_dist && !(mon->smart & (1U << SM_GUARDIAN)))
+        if (do_dist)
         {
             /* Obvious */
             if (seen) obvious = TRUE;
+            if ((mon->smart & (1U << SM_GUARDIAN)) || (mummy_get_toggle() == MUMMY_TOGGLE_ANTITELE))
+            {
+                note = " is unaffected!";
+            }
+            else
+            {
+                /* Message */
+                note = " disappears!";
+                if (!who) virtue_add(VIRTUE_VALOUR, -1);
 
-            /* Message */
-            note = " disappears!";
-            if (!who) virtue_add(VIRTUE_VALOUR, -1);
-
-            /* Teleport */
-            teleport_away(mon->id, do_dist,
-                        (!who ? TELEPORT_DEC_VALOUR : 0L) | TELEPORT_PASSIVE);
-            where = point(mon->fx, mon->fy);
+                /* Teleport */
+                teleport_away(mon->id, do_dist,
+                            (!who ? TELEPORT_DEC_VALOUR : 0L) | TELEPORT_PASSIVE);
+                where = point(mon->fx, mon->fy);
+            }
         }
 
         /* Fear */
@@ -4674,7 +4684,7 @@ bool gf_affect_m(int who, mon_ptr mon, int type, int dam, int flags)
                     msg_format("%^s%s", m_name, note);
 
                 /* Hack -- Pain message */
-                else if (known && dam && (flags & GF_AFFECT_SPELL))
+                else if (known && dam && ((flags & (GF_AFFECT_SPELL | GF_NO_PAIN)) == GF_AFFECT_SPELL))
                 {
                     message_pain(mon->id, dam);
                 }
@@ -4710,7 +4720,7 @@ bool gf_affect_m(int who, mon_ptr mon, int type, int dam, int flags)
         {
             switch (randint1(28))
             {
-            case 1: case 2:
+                case 1: case 2:
                 if (!count)
                 {
                     msg_print("The ground trembles...");
@@ -4718,7 +4728,7 @@ bool gf_affect_m(int who, mon_ptr mon, int type, int dam, int flags)
                     earthquake(ty, tx, 4 + randint0(4));
                     if (!one_in_(6)) break;
                 }
-            case 3: case 4: case 5: case 6: case 7: case 8:
+                case 3: case 4: case 5: case 6: case 7: case 8:
                 if (!count)
                 {
                     int dam = damroll(10, 10);
@@ -4727,66 +4737,47 @@ bool gf_affect_m(int who, mon_ptr mon, int type, int dam, int flags)
                     project(0, 8, ty,tx, dam, GF_MANA, curse_flg);
                     if (!one_in_(6)) break;
                 }
-            case 9: case 10: case 11:
+                case 9: case 10: case 11:
                 if (!count)
                 {
-                    msg_print("Space warps about it!");
+                    msg_format("Space warps about %s!", m_name);
 
                     if (mon->r_idx) teleport_away(mon->id, damroll(10, 10), TELEPORT_PASSIVE);
                     if (one_in_(13)) count += activate_hi_summon(ty, tx, TRUE);
                     if (!one_in_(6)) break;
                 }
-            case 12: case 13: case 14: case 15: case 16:
-                msg_print("It feels a surge of energy!");
+                case 12: case 13: case 14: case 15: case 16:
+                    msg_format("%^s feels a surge of energy!", m_name);
 
-                project(0, 7, ty, tx, 50, GF_DISINTEGRATE, curse_flg);
-                if (!one_in_(6)) break;
-            case 17: case 18: case 19:
-                aggravate_monsters(0);
-                if (!one_in_(6)) break;
-            case 20: case 21:
-                count += activate_hi_summon(ty, tx, TRUE);
-                if (!one_in_(6)) break;
-            case 22: case 23: case 24: case 25: case 26:
-            {
-                bool pet = !one_in_(3);
-                u32b mode = PM_ALLOW_GROUP;
-
-                if (pet) mode |= PM_FORCE_PET;
-                else mode |= (PM_NO_PET | PM_FORCE_FRIENDLY);
-
-                count += summon_specific((pet ? -1 : 0), py, px, (pet ? p_ptr->lev*2/3+randint1(p_ptr->lev/2) : dun_level), 0, mode);
-                if (!one_in_(6)) break;
-            }
-            case 27:
-                if (p_ptr->hold_life && (randint0(100) < 75)) break;
-                msg_print("You feel your life draining away...");
-
-                if (p_ptr->hold_life) lose_exp(p_ptr->exp / 160);
-                else lose_exp(p_ptr->exp / 16);
-                if (!one_in_(6)) break;
-            case 28:
-            {
-                int i = 0;
-                if (one_in_(13))
+                    project(0, 7, ty, tx, 50, GF_DISINTEGRATE, curse_flg);
+                    if (!one_in_(6)) break;
+                case 17: case 18: case 19:
+                    aggravate_monsters(0);
+                    if (!one_in_(6)) break;
+                case 20: case 21:
+                    count += activate_hi_summon(ty, tx, TRUE);
+                    if (!one_in_(6)) break;
+                case 22: case 23: case 24: case 25: case 26:
                 {
-                    while (i < 6)
-                    {
-                        do
-                        {
-                            (void)do_dec_stat(i);
-                        }
-                        while (one_in_(2));
+                    bool pet = !one_in_(3);
+                    u32b mode = PM_ALLOW_GROUP;
 
-                        i++;
+                    if (pet) mode |= PM_FORCE_PET;
+                    else mode |= (PM_NO_PET | PM_FORCE_FRIENDLY);
+
+                    count += summon_specific((pet ? -1 : 0), py, px, (pet ? p_ptr->lev*2/3+randint1(p_ptr->lev/2) : dun_level), 0, mode);
+                    if (!one_in_(6)) break;
+                }
+                default:
+                {
+                    if (!count)
+                    {
+                        msg_format("Time warps about %s!", m_name);
+
+                        project(0, 1, ty, tx, 50, GF_TIME, curse_flg);
+                        break;
                     }
                 }
-                else
-                {
-                    (void)do_dec_stat(randint0(6));
-                }
-                break;
-            }
             }
         }
         while (one_in_(5));
