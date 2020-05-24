@@ -1470,6 +1470,7 @@ race_t *mon_elemental_get_race(int psubrace)
     result->name = "Elemental";
     result->desc = _desc;
     result->flags = RACE_IS_MONSTER | RACE_IS_NONLIVING;
+    if (psubrace == ELEMENTAL_AIR) result->flags |= RACE_EATS_DEVICES;
     result->base_hp = 30;
     result->pseudo_class_idx = CLASS_WARRIOR;
     result->shop_adjust = 120;
