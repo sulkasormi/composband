@@ -161,6 +161,7 @@ enum {
     GF_CHICKEN,
     GF_BOMB,
     GF_AIR,
+    GF_BABY_SLOW,
 
     GF_COUNT  /* enumerate 0 <= i < GF_COUNT */
 };            /* allocate gf[GF_COUNT] */
@@ -207,6 +208,7 @@ extern gf_info_ptr gf_lookup(int id);
 #define GF_AFFECT_ATTACK 0x02 /* Monster melee B:HIT:HURT(10d10):DISENCHANT */
 #define GF_AFFECT_AURA   0x04 /* Monster aura  A:DISENCHANT(3d5) */
 #define GF_AFFECT_TRAP   0x08
+#define GF_NO_PAIN       0x10 /* Hide pain messages */
 extern int gf_affect_p(int who, int type, int dam, int flags);
 extern bool gf_affect_m(int who, mon_ptr mon, int type, int dam, int flags);
 
