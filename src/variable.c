@@ -294,6 +294,7 @@ bool auto_sticky_labels; /* Automatically make power labels sticky */
 bool show_power; /* Display device powers in inventory */
 bool show_rogue_keys; /* Display roguelike keys if possible */
 bool decimal_stats; /* Decimalized stat display */
+bool percentage_life; /* Show life rating as a percentage */
 bool obj_list_width;
 byte object_list_width = 50;
 bool mon_list_width;
