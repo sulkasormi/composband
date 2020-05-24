@@ -705,7 +705,7 @@ static void _display_other_pval(object_type *o_ptr, u32b flgs[OF_ARRAY_SIZE], do
     if (net)
     {
         int pct = 3 * net;
-        doc_printf(doc, "<color:%c>%+d%%</color> to Life Rating\n",
+        doc_printf(doc, "<color:%c>%+d%%</color> to Life Multiplier\n",
                     (net > 0) ? 'G' : 'r', pct);
     }
 }
@@ -1155,7 +1155,7 @@ static void _display_curses(object_type *o_ptr, u32b flgs[OF_ARRAY_SIZE], doc_pt
 
     /* Note: Object may not actually be cursed, but still might have
        Aggravate or TY Curse. */
-    if (obj_is_identified(o_ptr))
+    if ((obj_is_identified(o_ptr)) || (o_ptr->loc.where == INV_EQUIP))
     {
         /* Basic Curse Status is always obvious (light, heavy, permanent) */
         if (o_ptr->curse_flags & OFC_PERMA_CURSE)
@@ -1164,6 +1164,8 @@ static void _display_curses(object_type *o_ptr, u32b flgs[OF_ARRAY_SIZE], doc_pt
             doc_insert(doc, "It is <color:r>Heavily Cursed</color>.\n");
         else if (o_ptr->curse_flags & OFC_CURSED)
             doc_insert(doc, "It is <color:D>Cursed</color>.\n");
+        if ((o_ptr->loc.where == INV_EQUIP) && (o_ptr->curse_flags != o_ptr->known_curse_flags))
+            doc_insert(doc, "It has <color:v>unknown curses</color>.\n");
     }
     else if (o_ptr->curse_flags & OFC_CURSED)
         doc_insert(doc, "It has <color:v>unknown curses</color>.\n");
