@@ -3028,7 +3028,7 @@ s32b score_mult(void)
     if (p_ptr->coffee_lv_revisits) mult -= (100 * p_ptr->coffee_lv_revisits);
 
     /* Penalize time consumption */
-    mult -= (game_turn / 1000); /* 1% per game day */
+    mult -= (turn_real(game_turn) / 1000); /* 1% per game day */
     if (mult < 2) mult = 2;
 
     if (ironman_nightmare) /* Easily win a nightmare mode sexy thrall */
