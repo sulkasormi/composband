@@ -50,10 +50,10 @@ static void _calc_innate_attacks(void)
         a.to_h = p_ptr->lev/5;
 
         a.effect[i++] = GF_NETHER;
-        if (p_ptr->lev >= 25)
-            a.effect[i++] = GF_OLD_DRAIN;
         if (p_ptr->lev >= 40)
             a.effect[i++] = GF_DISENCHANT;
+        if (p_ptr->lev >= 25)
+            a.effect[i++] = GF_OLD_DRAIN;
         
         calc_innate_blows(&a, 400);
         a.msg = "You touch.";
@@ -285,7 +285,7 @@ race_t *mon_lich_get_race(void)
 
     result->name = "Lich";
     result->desc = _desc;
-    result->flags = RACE_IS_MONSTER | RACE_IS_NONLIVING | RACE_IS_UNDEAD;
+    result->flags = RACE_IS_MONSTER | RACE_IS_NONLIVING | RACE_IS_UNDEAD | RACE_EATS_DEVICES;
     result->calc_innate_attacks = _calc_innate_attacks;
     result->birth = _birth;
     result->caster_info = _caster_info;
