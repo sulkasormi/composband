@@ -553,6 +553,7 @@ static void _suppress_extra_pantheons(bool new_game)
 
     if (new_game)
     {
+        race_t *race_ptr = get_true_race();
         active_pantheon = 0;
         for (i = 1; i < PANTHEON_MAX; i++)
         {
@@ -581,6 +582,14 @@ static void _suppress_extra_pantheons(bool new_game)
                 default:
                     break;
             }
+        }
+        else if ((race_ptr->boss_r_idx) && (race_ptr->boss_r_idx > 0) && (race_ptr->boss_r_idx < max_r_idx) &&
+                 (monster_pantheon(&r_info[race_ptr->boss_r_idx])) &&
+                 (pantheon_count < PANTHEON_MAX - 1))
+        {
+            int force_pant = monster_pantheon(&r_info[race_ptr->boss_r_idx]);
+            if ((pantheon_count == 1) && (game_pantheon) && (game_pantheon < PANTHEON_MAX) && (game_pantheon != force_pant)) pantheon_count = 2;
+            keep_pantheon |= (1 << force_pant);
         }
         if (pantheon_count < (PANTHEON_MAX - 1))
         {
@@ -2249,7 +2258,10 @@ static void process_world_aux_curse(void)
         if ((p_ptr->cursed & OFC_TY_CURSE) && one_in_(TY_CURSE_CHANCE))
         {
             int count = 0;
-            (void)activate_ty_curse(FALSE, &count);
+            if ((prace_is_(RACE_MON_MUMMY)) && (mummy_ty_protection()))
+                msg_print("You suppress the foul curse lashing at you!");
+            else
+                (void)activate_ty_curse(FALSE, &count);
             equip_learn_curse(OFC_TY_CURSE);
         }
         /* Baby Curse */
