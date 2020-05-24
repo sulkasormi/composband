@@ -2029,7 +2029,7 @@ race_t *golem_get_race(void)
         me.base_hp = 23;
         me.exp = 185;
         me.infra = 4;
-        me.flags = RACE_IS_NONLIVING;
+        me.flags = RACE_IS_NONLIVING | RACE_EATS_DEVICES;
         me.shop_adjust = 120;
 
         me.birth = _golem_birth;
