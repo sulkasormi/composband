@@ -51,7 +51,7 @@ void self_knowledge(void)
     p_ptr->knowledge |= (KNOW_STAT | KNOW_HPRATE);
 
     strcpy(Dummy, "");
-    sprintf(Dummy, "Your current Life Rating is %d/100.", life_rating());
+    sprintf(Dummy, "Your current Life Rating is %s.", life_rating_desc(FALSE));
 
     strcpy(buf[0], Dummy);
     info[i++] = buf[0];
