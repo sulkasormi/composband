@@ -1973,7 +1973,7 @@ bool gf_affect_m(int who, mon_ptr mon, int type, int dam, int flags)
         _BABBLE_HACK()
         if (race->flags3 & RF3_NO_CONF)
         {
-            note = " resists.";
+            note = MON_CONFUSED(mon) ? " remains confused." : " resists.";
             dam *= 3; dam /= randint1(6) + 6;
             mon_lore_3(mon, RF3_NO_CONF);
         }
@@ -3333,7 +3333,7 @@ bool gf_affect_m(int who, mon_ptr mon, int type, int dam, int flags)
         else if (randint1(ml) >= randint1(pl))
         {
             do_conf = 0;
-            note = " resists!";
+            note = MON_CONFUSED(mon) ? ((type == GF_BLIND) ? " remains blinded." : " remains confused.") : " resists.";
             obvious = FALSE;
         }
 
@@ -4376,7 +4376,7 @@ bool gf_affect_m(int who, mon_ptr mon, int type, int dam, int flags)
             if (MON_CONFUSED(mon))
             {
                 if (type == GF_BLIND)
-                    note = " is more blinded.";
+                    note = " is more <color:U>blinded</color>.";
                 else
                     note = " looks more <color:U>confused</color>.";
                 tmp = MON_CONFUSED(mon) + (do_conf / 2);
@@ -4386,7 +4386,7 @@ bool gf_affect_m(int who, mon_ptr mon, int type, int dam, int flags)
             else
             {
                 if (type == GF_BLIND)
-                    note = " is blinded.";
+                    note = " is <color:U>blinded</color>.";
                 else
                     note = " looks <color:U>confused</color>.";
                 tmp = do_conf;
