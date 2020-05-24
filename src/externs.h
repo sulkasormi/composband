@@ -107,6 +107,8 @@ extern cptr exp_level_str[5];
 extern cptr silly_attacks[MAX_SILLY_ATTACK];
 extern cptr ident_info[];
 extern byte feature_action_flags[FF_FLAG_MAX];
+extern b_race_group_t b_race_groups[B_MAX_RACE_GROUPS];
+extern b_race_group_t b_mon_race_groups[B_MAX_MON_RACE_GROUPS];
 
 /* variable.c */
 extern int game_mode;
@@ -322,6 +324,7 @@ extern bool auto_sticky_labels; /* Automatically make power labels sticky */
 extern bool show_power; /* Display device powers in inventory */
 extern bool show_rogue_keys; /* Display roguelike keys if possible */
 extern bool decimal_stats;
+extern bool percentage_life; /* Show life rating as a percentage */
 extern bool obj_list_width;
 extern byte object_list_width;
 extern bool mon_list_width;
@@ -931,6 +934,7 @@ extern void do_cmd_zap_rod(void);
 extern void do_cmd_activate(void);
 extern void do_cmd_rerate_aux(void);
 extern int  life_rating(void);
+extern cptr life_rating_desc(bool use_attr);
 extern void do_cmd_rerate(bool display);
 extern void ring_of_power(int dir);
 extern bool restore_mana(void);
@@ -2081,6 +2085,7 @@ extern bool get_aim_dir_aux(int *dp, int target_mode);
 extern bool get_hack_dir(int *dp);
 #define GET_DIR_OK 1
 #define GET_DIR_RANDOM 2
+extern bool get_direct_target(void);
 extern int get_rep_dir(int *dp, bool under);
 extern bool get_rep_dir2(int *dp);
 extern bool tgt_pt (int *x, int *y, int rng);
@@ -2485,6 +2490,7 @@ extern race_t *mon_jelly_get_race(void);
 extern race_t *mon_leprechaun_get_race(void);
 extern race_t *mon_lich_get_race(void);
 extern race_t *mon_mimic_get_race(void);
+extern race_t *mon_mummy_get_race(void);
 extern race_t *mon_orc_get_race(int psubrace);
 extern race_t *mon_possessor_get_race(void);
 extern race_t *mon_pumpkin_get_race(void);
@@ -2513,6 +2519,9 @@ extern void    hound_sniff_spell(int cmd, variant *res);
 extern void    hound_stalk_spell(int cmd, variant *res);
 extern void    hound_run_spell(int cmd, variant *res);
 extern void    hound_leap_spell(int cmd, variant *res);
+
+extern int     mummy_get_toggle(void);
+extern bool    mummy_ty_protection(void);
 
 extern int     vortex_get_effect(void);
 
