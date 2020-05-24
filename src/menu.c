@@ -10,6 +10,15 @@ static void _describe(menu_ptr menu, int which)
 {
     variant v;
     int pohja = (menu->col_entries > 0) ? MIN(menu->col_entries, menu->count) : menu->count;
+    int x = 13;
+    if (menu->col_entries > 0)
+    {
+        variant vv;
+        var_init(&vv);
+        menu->fn(MENU_COLUMN, 0, menu->cookie, &vv);
+        if (!var_is_null(&vv)) x = var_get_int(&vv);
+        var_clear(&vv);
+    }
 
     var_init(&v);
     menu->fn(MENU_HELP, which, menu->cookie, &v);
@@ -19,13 +28,13 @@ static void _describe(menu_ptr menu, int which)
         int i, line;
 
         for (i = 0; i < 2+10; i++)
-            Term_erase(13, pohja + i + 1 + (menu->heading ? 1 : 0), 255);
+            Term_erase(x, pohja + i + 1 + (menu->heading ? 1 : 0), 255);
 
         roff_to_buf(var_get_string(&v), 80-15, tmp, sizeof(tmp));
 
         for(i = 0, line = pohja + 2 + (menu->heading ? 1 : 0); tmp[i]; i += 1+strlen(&tmp[i]))
         {
-            prt(&tmp[i], line, 15);
+            prt(&tmp[i], line, x + 2);
             line++;
         }
     }
