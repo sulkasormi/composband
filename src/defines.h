@@ -653,7 +653,8 @@
 #define RACE_TOMTE              70
 #define RACE_MON_PUMPKIN        71
 #define RACE_IGOR               72
-#define MAX_RACES               73
+#define RACE_MON_MUMMY          73
+#define MAX_RACES               74
 
 #define DEMIGOD_MINOR           0
 #define DEMIGOD_ZEUS            1
@@ -746,6 +747,7 @@
 #define RACE_NO_POLY         0x0020
 #define RACE_DEMI_TALENT     0x0040
 #define RACE_NIGHT_START     0x0080
+#define RACE_EATS_DEVICES    0x0100
 
 /* Pseudo-ID: Sense1 is the traditional equipable item sensing.
  * Sense2 is jewelry, lights and magical devices (mage like sensing). */
@@ -2266,7 +2268,8 @@ enum {
  *   AIMED: Target is only player or monster, so don't affect another.
  *          Depend on PROJECT_PLAYER.
  *          (used for minimum (rad == 0) balls on riding player)
- *   REFLECTABLE: Refrectable spell attacks (used for "bolts")
+ *   REFLECTABLE: Reflectable spell attacks (used for "bolts")
+ *   NO_PAIN: Hide pain messages
  *   PATH: Only used for printing project path
  *   FAST: Hide "visual" of flying bolts until blast
  */
@@ -2282,7 +2285,7 @@ enum {
 #define PROJECT_PLAYER         0x000200
 #define PROJECT_AIMED          0x000400
 #define PROJECT_REFLECTABLE    0x000800
-#define PROJECT_XXXX           0x001000
+#define PROJECT_NO_PAIN        0x001000
 #define PROJECT_PATH           0x002000
 #define PROJECT_FAST           0x004000
 #define PROJECT_LOS            0x008000
@@ -2324,6 +2327,7 @@ enum {
  *      DISI: Hack for The Bowmaster's Disintegration Arrow. Similar
  *            to MARK but also shows the path.
  *      TRVL: Instantly start travel to target if 'j' is pressed.
+ *      MONS: Do not accept directions, only a square
  */
 #define TARGET_KILL        0x01
 #define TARGET_LOOK        0x02
@@ -2332,6 +2336,7 @@ enum {
 #define TARGET_MARK        0x10
 #define TARGET_DISI        0x20
 #define TARGET_TRVL        0x40
+#define TARGET_MONS        0x80
 
 
 /*
@@ -2551,6 +2556,11 @@ enum {
 #define ACTION_SPELL      9
 #define ACTION_STALK      10
 #define ACTION_GLITTER    11      /* Ring waiting for a suitable ring bearer ... */
+
+/* Birth/spoiler menu constants */
+#define B_MAX_RACES_PER_GROUP 23
+#define B_MAX_RACE_GROUPS      9
+#define B_MAX_MON_RACE_GROUPS 12
 
 /*** General index values ***/
 
@@ -4324,6 +4334,7 @@ extern int PlayerUID;
 #define MON_PRIEST              225
 #define MON_D_ELF_PRIEST        226
 #define MON_AIR_SPIRIT          227
+#define MON_ZOMBIE_H            229
 #define MON_TIGER               230
 #define MON_MITHRIL_COINS       239
 #define MON_DRUID               241
@@ -4381,6 +4392,7 @@ extern int PlayerUID;
 #define MON_MENELDOR            384
 #define MON_PHANTOM_B           385
 #define MON_FOUR_HEADED_HYDRA   387
+#define MON_MUMMY_H             390
 #define MON_VAMPIRE_BAT         391
 #define MON_C_CRAWLER           395
 #define MON_XICLOTLAN           396
@@ -4389,6 +4401,7 @@ extern int PlayerUID;
 #define MON_TROLL_PRIEST        403
 #define MON_GWAIHIR             410
 #define MON_ANGEL               417
+#define MON_GHOUL               418
 #define MON_ALBERICH            419
 #define MON_HELLBLADE           420
 #define MON_ADAMANT_COINS       423
@@ -4791,6 +4804,7 @@ extern int PlayerUID;
 #define MON_ISIS                1263
 #define MON_AMUN                1266
 #define MON_MUMMY_KING          1267
+#define MON_MUMMY_SORC          1268
 #define MON_SHA                 1270
 #define MON_FISHROOSTER         1272
 #define MON_SEA_GIANT           1276
@@ -4824,6 +4838,7 @@ extern int PlayerUID;
 #define MON_NJORD               1353
 #define MON_FRIGG               1354
 #define MON_SKADI               1355
+#define MON_DRAUGR              1356
 #define MON_ULLUR               1358
 #define MON_MAGNI               1359
 #define MON_VASUKI              1360
@@ -5456,6 +5471,8 @@ enum {
     POLLY_TOGGLE_HPCAST = 150,
     POLLY_TOGGLE_XPCAST,
     POLLY_TOGGLE_AUCAST,
+
+    MUMMY_TOGGLE_ANTITELE = 155,
 };
 
 /* Wild Counters */
