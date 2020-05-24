@@ -2502,8 +2502,9 @@ static bool kind_is_tailored(int k_idx)
     case TV_HAFTED:
     case TV_POLEARM:
     case TV_DIGGING:
-        return equip_can_wield_kind(k_ptr->tval, k_ptr->sval)
-            && _is_favorite_weapon(k_ptr->tval, k_ptr->sval);
+        return ((equip_can_wield_kind(k_ptr->tval, k_ptr->sval))
+            && (!prace_is_(RACE_MON_MUMMY))
+            && (_is_favorite_weapon(k_ptr->tval, k_ptr->sval)));
 
     case TV_SHOT:
         /*return equip_can_wield_kind(TV_BOW, SV_SLING);*/
