@@ -341,6 +341,7 @@ void virtue_init(void)
         break;
     case RACE_MON_SWORD:
     case RACE_MON_ARMOR:
+    case RACE_MON_MUMMY:
         p_ptr->vir_types[i++] = VIRTUE_ENCHANTMENT;
         break;
     case RACE_MON_ANGEL:
