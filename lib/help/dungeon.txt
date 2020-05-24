@@ -175,7 +175,9 @@ See <link:town.txt#Dungeons> for more details on wilderness dungeons.
 
 <topic:List><style:heading>Wilderness Dungeons and Where to Find Them</style>
 
-This is a full list of all non-random wilderness dungeons... <color:y>or is it?</color> Dungeons are ordered by shallowest depth; and to avoid spoilers (only the shallowest depth is visible on the overworld map) this is the only depth indicated.
+This is a full list of the standard wilderness dungeons... <color:y>or is it?</color> Dungeons are ordered by shallowest depth; and to avoid spoilers (only the shallowest depth is visible on the overworld map) this is the only depth indicated.
+
+Note that you will never find all of these dungeons in a single game! Some will always be shuffled out of existence to limit the number of dungeons or the number of pantheons; but play the game enough times, and you will eventually conquer all of them.
   <indent>
   <color:keyword>Warrens          </color><color:G>Level 1</color>   Accessed from Outpost.
   <color:keyword>Angband          </color><color:G>Level 1</color>   <indent>Northeast of Morivant, must be conquered to win. Contains random quests.</indent>
@@ -183,17 +185,21 @@ This is a full list of all non-random wilderness dungeons... <color:y>or is it?<
   <color:keyword>Icky Cave        </color><color:G>Level 10</color>  Accessed from Thalos.
   <color:keyword>Tidal Cave       </color><color:G>Level 15</color>  South of Morivant.
   <color:keyword>Orc Cave         </color><color:G>Level 15</color>  North of Outpost.
+  <color:keyword>Troll Cave       </color><color:G>Level 18</color>  North of Outpost.
+  <color:keyword>Plains of Oz     </color><color:G>Level 18</color>  Southeast of Morivant.
   <color:keyword>Labyrinth        </color><color:G>Level 20</color>  West of Outpost.
   <color:keyword>Camelot          </color><color:G>Level 20</color>  <indent>West of Outpost.
 Often visited together with Labyrinth.</indent>
   <color:keyword>Witch Wood       </color><color:G>Level 25</color>  Southeast of Morivant.
   <color:keyword>Battlefield      </color><color:G>Level 30</color>  <indent>Southeast of Morivant.
-Often visited together with Witch Wood.</indent>
+Often visited en route to Telmora.</indent>
   <color:keyword>Lonely Mountain  </color><color:G>Level 30</color>  <indent>Mountains southwest of Morivant.
 Access requires levitation.</indent>
   <color:keyword>Chameleon Cave   </color><color:G>Level 30</color>  Southeast of Telmora.
   <color:keyword>Giant's Hall     </color><color:G>Level 30</color>  <indent>Mountains southeast of Angband.
 Access requires levitation.</indent>
+  <color:keyword>Snow Castle      </color><color:G>Level 30</color>  <indent>Mountains southeast of Angband.
+Levitation recommended.</indent>
   <color:keyword>Eyrie            </color><color:G>Level 40</color>  <indent>Mountains west of Telmora.
 Access requires levitation.</indent>
   <color:keyword>Castle           </color><color:G>Level 40</color>  <indent>East of the road from Telmora to Angwil.</indent>
@@ -205,12 +211,18 @@ Guarded by dangerous Ethereal Dragon.</indent>
   <color:keyword>Graveyard        </color><color:G>Level 50</color>  East of Angwil.
   <color:keyword>Volcano          </color><color:G>Level 50</color>  <indent>West of Outpost. Entrance in lava field.</indent>
   <color:keyword>Numenor          </color><color:G>Level 55</color>  Deep sea north of Anambar.
+  <color:keyword>Atlantis         </color><color:G>Level 55</color>  Deep sea north of Anambar.
   <color:keyword>Dark Cave        </color><color:G>Level 55</color>  Northwest of Angwil.
+  <color:keyword>Disaster Area    </color><color:G>Level 60</color>  Northwest of Angwil.
   <color:keyword>Dragon's Lair    </color><color:G>Level 60</color>  South of Angwil.
+  <color:keyword>Asgard           </color><color:G>Level 64</color>  Swampy coast northeast of Graveyard.
   <color:keyword>Pyramidal Mound  </color><color:G>Level 64</color>  Northwest of Telmora, north of Eyrie.
+  <color:keyword>Mount Meru       </color><color:G>Level 72</color>  <indent>Mountains south of Eyrie.
+Access requires levitation.</indent>
   <color:keyword>Mine             </color><color:G>Level 75</color>  Island northeast of Anambar.
   <color:keyword>R'lyeh           </color><color:G>Level 80</color>  Deep sea northwest of the Dark Cave.
   <color:keyword>Mount Olympus    </color><color:G>Level 80</color>  Island northwest of Thalos.
+  <color:keyword>Mystery Cave     </color><color:G>Level ?</color>   ??????
   <color:D>
 --
 Original   : (??)
