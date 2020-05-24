@@ -255,7 +255,8 @@ bool teleport_barrier(int m_idx)
     monster_type *m_ptr = &m_list[m_idx];
     monster_race *r_ptr = &r_info[m_ptr->r_idx];
 
-    if (!hex_spelling(HEX_ANTI_TELE)) return FALSE;
+    if ((!hex_spelling(HEX_ANTI_TELE)) && ((!prace_is_(RACE_MON_MUMMY)) ||
+        (mummy_get_toggle() != MUMMY_TOGGLE_ANTITELE))) return FALSE;
     if ((p_ptr->lev * 3 / 2) < randint1(r_ptr->level)) return FALSE;
 
     return TRUE;
