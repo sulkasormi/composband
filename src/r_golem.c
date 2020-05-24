@@ -597,7 +597,7 @@ race_t *mon_golem_get_race(int psubrace)
         me.calc_bonuses = _calc_bonuses;
         me.get_powers_fn = _get_powers;
         me.get_flags = _get_flags;
-        me.flags = RACE_IS_MONSTER | RACE_IS_NONLIVING;
+        me.flags = RACE_IS_MONSTER | RACE_IS_NONLIVING | RACE_EATS_DEVICES;
         me.base_hp = 50;
         me.boss_r_idx = MON_DESTROYER;
         me.pseudo_class_idx = CLASS_MAULER;
