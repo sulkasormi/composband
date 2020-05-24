@@ -142,6 +142,12 @@ R:ART(jack of shadows)
 ?:[AND [EQU $RACE Hound] [GEQ [MOD $RANDOM27 5] 1] ]
 R:ART(harness of the hell)
 ##########################################################################
+# Mummy
+?:[AND [EQU $RACE Mummy] [EQU [MOD $RANDOM27 5] 0] ]
+R:ART(thingol)
+?:[AND [EQU $RACE Mummy] [GEQ [MOD $RANDOM27 5] 1] ]
+R:ART(palantir of westernesse)
+##########################################################################
 # Hydra
 ?:[AND [EQU $CLASS Monster] [EQU $RACE Hydra Golem] [EQU [MOD $RANDOM27 5] 0] ]
 R:ART(dor-lomin)
