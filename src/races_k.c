@@ -508,7 +508,7 @@ race_t *skeleton_get_race(void)
         me.base_hp = 21;
         me.exp = 115;
         me.infra = 2;
-        me.flags = RACE_IS_NONLIVING | RACE_IS_UNDEAD | RACE_NIGHT_START;
+        me.flags = RACE_IS_NONLIVING | RACE_IS_UNDEAD | RACE_NIGHT_START | RACE_EATS_DEVICES;
         me.shop_adjust = 125;
 
         me.birth = _skeleton_birth;
@@ -686,7 +686,7 @@ race_t *spectre_get_race(void)
         me.base_hp = 13;
         me.exp = 250;
         me.infra = 5;
-        me.flags = RACE_IS_NONLIVING | RACE_IS_UNDEAD | RACE_NIGHT_START;
+        me.flags = RACE_IS_NONLIVING | RACE_IS_UNDEAD | RACE_NIGHT_START | RACE_EATS_DEVICES;
         me.shop_adjust = 135;
 
         me.birth = _spectre_birth;
@@ -1217,7 +1217,7 @@ race_t *zombie_get_race(void)
         me.base_hp = 24;
         me.exp = 180;
         me.infra = 2;
-        me.flags = RACE_IS_NONLIVING | RACE_IS_UNDEAD | RACE_NIGHT_START;
+        me.flags = RACE_IS_NONLIVING | RACE_IS_UNDEAD | RACE_NIGHT_START | RACE_EATS_DEVICES;
         me.shop_adjust = 140;
 
         me.birth = _zombie_birth;
