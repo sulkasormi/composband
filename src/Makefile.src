@@ -47,10 +47,10 @@ ANGFILES = \
     mut_a.o mystic.o necromancer.o ninja.o ninjalaw.o obj.o obj_info.o obj_prompt.o \
 	object1.o object2.o object3.o obj_kind.o pack.o paladin.o personality.o \
     polly.o priest.o psion.o py_birth.o py_info.o py_throw.o quest.o quiver.o \
-	races.o races_a.o races_k.o races_mimic.o r_angel.o \
+	races.o races_a.o races_k.o races_mf.o r_angel.o \
     r_centip.o r_demon.o r_dragon.o r_elem.o r_eye.o r_giant.o r_golem.o \
-    r_hound.o r_hydra.o r_jelly.o r_leprec.o r_lich.o r_mimic.o \
-	r_orc.o r_poss.o r_pump.o r_quyl.o r_rag.o r_spider.o \
+    r_hound.o r_hydra.o r_jelly.o r_leprec.o r_lich.o r_mimic.o r_mummy.o \
+    r_orc.o r_poss.o r_pump.o r_quyl.o r_rag.o r_spider.o \
     r_ring.o r_sword.o r_troll.o r_vamp.o r_vortex.o \
     r_xorn.o racial.o ragemage.o randname.o ranger.o rect.o red_mage.o \
     resist.o rogue.o rooms.o rune_kt.o samurai.o save.o savefile.o scores.o scout.o shop.o skillmaster.o \
