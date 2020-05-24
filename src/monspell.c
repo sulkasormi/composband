@@ -5470,10 +5470,7 @@ static bool _prompt_plr(mon_spell_cast_ptr cast)
         int dir, m_idx;
         if (cast->spell->flags & MSF_DIRECT)
         {
-            if (old_target_okay())
-            {
-            }
-            else if (!target_set(TARGET_KILL)) return FALSE;
+            if (!get_direct_target()) return FALSE;
             m_idx = cave[target_row][target_col].m_idx;
             if (!m_idx)
             {
