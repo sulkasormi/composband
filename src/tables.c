@@ -2243,6 +2243,9 @@ option_type option_info[] =
     { &decimal_stats,               FALSE,  OPT_PAGE_TEXT, 2, 25,
     "decimal_stats",                "Display stats as decimals" },
 
+    { &percentage_life,             FALSE,  OPT_PAGE_TEXT, 4, 2,
+    "percentage_life",              "Display life rating on a scale of 87% to 117%" },
+
     { &show_rogue_keys,		    FALSE, OPT_PAGE_TEXT, 6, 3,
     "show_rogue_keys",		    "Display roguelike movement keys as reminder" },
 
