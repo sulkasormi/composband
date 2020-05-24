@@ -1173,7 +1173,9 @@ void py_display_spells_aux(doc_ptr doc, power_info *table, int ct)
     var_init(&vc);
     var_init(&vfm);
 
-    doc_printf(doc, "    <color:G>%-25.25s Lvl Cost Fail %-15.15s  Cast Fail</color>\n", "", "Desc");
+    if (prace_is_(RACE_MON_MUMMY))
+        doc_printf(doc, "    <color:G>%-25.25s Lvl Cost Fail %-18.18s  Cast Fail</color>\n", "", "Desc");
+    else doc_printf(doc, "    <color:G>%-25.25s Lvl Cost Fail %-15.15s  Cast Fail</color>\n", "", "Desc");
 
     for (i = 0; i < ct; i++)
     {
@@ -1185,7 +1187,16 @@ void py_display_spells_aux(doc_ptr doc, power_info *table, int ct)
         spell->fn(SPELL_COST_EXTRA, &vc);
         spell->fn(SPELL_FAIL_MIN, &vfm);
 
-        doc_printf(doc, " %c) %-25.25s %3d %4d %3d%% %-15.15s %5d %4d %3d%%\n",
+        if (prace_is_(RACE_MON_MUMMY))
+        {
+            doc_printf(doc, " %c) %-25.25s %3d %4d %3d%% %-18.18s %5d %4d\n",
+            I2A(i),
+            var_get_string(&vn),
+            spell->level, calculate_cost(spell->cost + var_get_int(&vc)), MAX(spell->fail, var_get_int(&vfm)),
+            var_get_string(&vd),
+            stats->ct_cast, stats->ct_fail);
+        }
+        else doc_printf(doc, " %c) %-25.25s %3d %4d %3d%% %-15.15s %5d %4d %3d%%\n",
             I2A(i),
             var_get_string(&vn),
             spell->level, calculate_cost(spell->cost + var_get_int(&vc)), MAX(spell->fail, var_get_int(&vfm)),
