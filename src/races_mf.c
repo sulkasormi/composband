@@ -46,7 +46,7 @@ race_t *clay_golem_get_race(void)
         me.exp = 200;
         me.infra = 2;
 
-        me.flags = RACE_IS_NONLIVING;
+        me.flags = RACE_IS_NONLIVING | RACE_EATS_DEVICES;
 
         me.calc_bonuses = _clay_golem_calc_bonuses;
         me.get_flags = _clay_golem_get_flags;
@@ -115,7 +115,7 @@ race_t *colossus_get_race(void)
         me.base_hp = 30;
         me.exp = 1000;
         me.infra = 5;
-        me.flags = RACE_IS_NONLIVING;
+        me.flags = RACE_IS_NONLIVING | RACE_EATS_DEVICES;
 
         me.calc_bonuses = _colossus_calc_bonuses;
         me.get_flags = _colossus_get_flags;
@@ -344,7 +344,7 @@ race_t *iron_golem_get_race(void)
         me.base_hp = 24;
         me.exp = 250;
         me.infra = 3;
-        me.flags = RACE_IS_NONLIVING;
+        me.flags = RACE_IS_NONLIVING | RACE_EATS_DEVICES;
 
         me.calc_bonuses = _iron_golem_calc_bonuses;
         me.get_flags = _iron_golem_get_flags;
@@ -451,7 +451,7 @@ race_t *mithril_golem_get_race(void)
         me.base_hp = 27;
         me.exp = 500;
         me.infra = 4;
-        me.flags = RACE_IS_NONLIVING;
+        me.flags = RACE_IS_NONLIVING | RACE_EATS_DEVICES;
 
         me.calc_bonuses = _mithril_golem_calc_bonuses;
         me.get_flags = _mithril_golem_get_flags;
