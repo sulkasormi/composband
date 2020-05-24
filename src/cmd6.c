@@ -385,21 +385,7 @@ static void do_cmd_eat_food_aux(obj_ptr obj)
         jelly_eat_object(obj);
         obj->number = luku;
     }
-    else if ( ( prace_is_(RACE_SKELETON)
-             || prace_is_(RACE_GOLEM)
-             || prace_is_(RACE_MON_GOLEM)
-             || prace_is_(RACE_MON_SWORD)
-             || prace_is_(RACE_MON_ARMOR)
-             || prace_is_(RACE_MON_RING)
-             || p_ptr->mimic_form == MIMIC_CLAY_GOLEM
-             || p_ptr->mimic_form == MIMIC_IRON_GOLEM
-             || p_ptr->mimic_form == MIMIC_MITHRIL_GOLEM
-             || p_ptr->mimic_form == MIMIC_COLOSSUS
-             || prace_is_(RACE_ZOMBIE)
-             || prace_is_(RACE_MON_LICH)
-             || prace_is_(RACE_SPECTRE)
-             || prace_is_(RACE_MON_VORTEX)
-             || elemental_is_(ELEMENTAL_AIR) )
+    else if ((get_race()->flags & RACE_EATS_DEVICES)
            && object_is_device(obj) )
     {
         int amt = obj->activation.cost;
@@ -487,21 +473,7 @@ static bool _can_eat(object_type *o_ptr)
 {
     if (o_ptr->tval==TV_FOOD) return TRUE;
 
-    if (prace_is_(RACE_SKELETON) ||
-        prace_is_(RACE_GOLEM) ||
-        prace_is_(RACE_MON_GOLEM) ||
-        prace_is_(RACE_MON_SWORD) ||
-        prace_is_(RACE_MON_ARMOR) ||
-        prace_is_(RACE_MON_RING) ||
-        p_ptr->mimic_form == MIMIC_CLAY_GOLEM ||
-        p_ptr->mimic_form == MIMIC_IRON_GOLEM ||
-        p_ptr->mimic_form == MIMIC_MITHRIL_GOLEM ||
-        p_ptr->mimic_form == MIMIC_COLOSSUS ||
-        prace_is_(RACE_ZOMBIE) ||
-        prace_is_(RACE_MON_LICH) ||
-        prace_is_(RACE_MON_VORTEX) ||
-        prace_is_(RACE_SPECTRE) ||
-        elemental_is_(ELEMENTAL_AIR))
+    if (get_race()->flags & RACE_EATS_DEVICES)
     {
         if (object_is_device(o_ptr))
             return TRUE;
@@ -647,6 +619,7 @@ static void do_cmd_quaff_potion_aux(obj_ptr obj)
             case RACE_MON_SWORD:
             case RACE_MON_ARMOR:
             case RACE_MON_RING:
+            case RACE_MON_MUMMY:
                 set_food(p_ptr->food + obj->pval / 20);
                 break;
             case RACE_ANDROID:
