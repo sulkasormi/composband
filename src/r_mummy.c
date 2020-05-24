@@ -359,7 +359,7 @@ static int _curse_plev(void)
     switch (p_ptr->current_r_idx)
     {
         case MON_MUMMY_SORC:
-            return (p_ptr->lev + 45) / 2;
+            return (p_ptr->lev + 50) / 2;
         case MON_MUMMY_KING:
         case MON_GHOUL:
         case MON_GREATER_MUMMY:
@@ -781,12 +781,18 @@ static power_info _draugr_powers[] = {
     { A_STR, { 36, 15, 30, building_up_spell } },
     {    -1, { -1, -1, -1, NULL}}
 };
+static power_info _sorc_powers[] = {
+    { A_CHR, { 36, 30, 30, nether_ball_spell } },
+    {    -1, { -1, -1, -1, NULL}}
+};
 static power_info *_get_powers(void) {
     static power_info spells[MAX_SPELLS];
     int max = MAX_SPELLS;
     int ct = get_powers_aux(spells, max, _powers, FALSE);
     if (p_ptr->current_r_idx == MON_DRAUGR)
         ct += get_powers_aux(spells + ct, max - ct, _draugr_powers, FALSE);
+    else if (p_ptr->current_r_idx == MON_MUMMY_SORC)
+        ct += get_powers_aux(spells + ct, max - ct, _sorc_powers, FALSE);
     spells[ct].spell.fn = NULL;
     return spells;
 }
@@ -952,7 +958,7 @@ void _sorc_innate_attacks(void)
         a.effect[1] = GF_POIS;
         a.effect_chance[1] = 50;
         a.effect[2] = GF_DISENCHANT;
-        a.effect_chance[2] = 10;
+        a.effect_chance[2] = 25;
         a.effect[3] = GF_BLIND;
         a.effect_chance[3] = 10;
 
@@ -1186,7 +1192,7 @@ void _calc_innate_attacks(void)
 static void _calc_bonuses_aux(void)
 {
     int slot;
-    u32b checklist = 0;
+    u32b checklist = 0, perm_flags = 0;
     int basePow = 0;
     int perm_ct = 0;
     int osumat = 0;
@@ -1194,22 +1200,34 @@ static void _calc_bonuses_aux(void)
     int boost = 0;
     int removable = 0;
 
-    if (!p_ptr->cursed) return; /* Easy */
+    if (!p_ptr->cursed)
+    {
+        _curse_boost = 0;
+        _curse_boost_capped = 0;
+        _curse_boost_removable = 0;
+        return; /* Easy */
+    }
 
     for (slot = equip_find_first(object_is_cursed); slot; slot = equip_find_next(object_is_cursed, slot))
     {
         object_type *o_ptr = equip_obj(slot);
+        u32b flgs[OF_ARRAY_SIZE];
         u32b liput = o_ptr->curse_flags;
+
+        obj_flags(o_ptr, flgs);
 
         if (o_ptr->curse_flags & OFC_PERMA_CURSE)
         {
             basePow += 3;
-            perm_ct += 2;
+            perm_ct += 3;
             liput &= ~(OFC_PERMA_CURSE | OFC_HEAVY_CURSE | OFC_CURSED);
         }
         else if (o_ptr->curse_flags & OFC_HEAVY_CURSE) basePow += 2;
         else if (o_ptr->curse_flags & OFC_CURSED) basePow++;
         if (obj_is_blessed(o_ptr)) basePow -= 2;
+        if (have_flag(flgs, OF_TY_CURSE)) perm_flags |= OFC_TY_CURSE;
+        if (have_flag(flgs, OF_AGGRAVATE)) perm_flags |= OFC_AGGRAVATE;
+        if (have_flag(flgs, OF_DRAIN_EXP)) perm_flags |= OFC_DRAIN_EXP;
         checklist |= (liput);
     }
     checklist &= ~(_IGNORE_MASK);
@@ -1218,16 +1236,19 @@ static void _calc_bonuses_aux(void)
      * Note: We don't reward perma-curses very heavily to prevent constant
      * high power from curses that aren't actually removed */
     if (checklist & OFC_TY_CURSE) osumat += 2;
+    else if (perm_flags & OFC_TY_CURSE) boost += 4; /* 2 for TY bonus, 1 for extra curse and 1 for extra heavy curse */
     if (checklist & OFC_AGGRAVATE) osumat += 1;
+    else if (perm_flags & OFC_AGGRAVATE) boost += 3;
     if (checklist & OFC_DANGER) osumat += 1;
     if (checklist & OFC_BY_CURSE) osumat += 1;
-    boost = osumat + (basePow / 2);
-    removable = osumat + ((basePow - perm_ct) / 2);
+    if ((perm_flags & OFC_DRAIN_EXP) && (!(checklist & OFC_DRAIN_EXP))) boost += 2;
+    boost += osumat + (basePow / 2);
+    removable += osumat + ((basePow - perm_ct) / 2);
     if (perm_ct > 0)
     {
         /* Check for curses that were hidden but are actually present */
         boost++; /* Perma-curse itself is such a curse, it's always hidden! */
-        if (!(checklist & OFC_HEAVY_CURSE)) boost += 2;
+        if (!(checklist & OFC_HEAVY_CURSE)) boost++;
         if (!(checklist & OFC_CURSED)) boost++;
     }
     checklist &= (TRC_HEAVY_MASK);
@@ -1268,6 +1289,7 @@ static void _calc_bonuses(void)
 
     boost = _curse_boost_capped;
     p_ptr->pspeed += boost / 3;
+    if (p_ptr->current_r_idx == MON_MUMMY_SORC) p_ptr->pspeed += boost / 3;
 
     p_ptr->weapon_info[0].xtra_blow += py_prorata_level_aux(boost*10, 1, 1, 1);
     p_ptr->weapon_info[1].xtra_blow += py_prorata_level_aux(boost*10, 1, 1, 1);
@@ -1401,6 +1423,11 @@ static caster_info * _caster_info(void)
         me.min_fail = 5;
         init = TRUE;
     }
+    if ((me.min_fail == 5) && ((p_ptr->current_r_idx == MON_MUMMY_SORC) ||
+        (p_ptr->current_r_idx == MON_MUMMY_KING)))
+    {
+        me.min_fail = 3;
+    }
     return &me;
 }
 
@@ -1481,7 +1508,7 @@ race_t *mon_mummy_get_race(void)
                 me.stats[A_CHR] = -3;
             break;
             case MON_MUMMY_SORC:
-                me.life = 90;
+                me.life = 92;
                 me.stats[A_STR] = -3;
                 me.stats[A_INT] = 2;
                 me.stats[A_WIS] = -3;
