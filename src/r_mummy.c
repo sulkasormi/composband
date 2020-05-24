@@ -733,8 +733,8 @@ static bool _unleash(void)
 {    
     msg_print("All malice is released!");
 
-    if(_curse_boost_capped >= 6) cast_destruction();
-    if(_curse_boost_capped >= 5) project_hack(GF_BLOOD_CURSE, _curse_boost_removable * 25);
+    if(_curse_boost_removable >= 6) cast_destruction();
+    if(_curse_boost_removable >= 5) project_hack(GF_BLOOD_CURSE, _curse_boost_removable * 25);
     project(0, 10, py, px, damroll(_curse_boost_removable, 25), GF_MANA, (PROJECT_FULL_DAM | PROJECT_KILL));
     hp_player(_curse_boost_removable * 50);
     set_stun(0, TRUE);
@@ -752,9 +752,11 @@ static void _unleash_spell(int cmd, variant *res){
     case SPELL_DESC: var_set_string(res, "Releases the evil power of your equipment curses. A successful casting consumes less time (down to 0.25 turns) at higher power."); break;
     case SPELL_INFO: {
         if (_curse_boost_removable > 2){
-            var_set_string(res, format("dam %dd25; heal %d", (_curse_boost_capped >= 5) ? _curse_boost_removable * 2 : _curse_boost_removable, 25, _curse_boost_removable * 50));
+            if (_curse_boost_removable >= 5)
+            var_set_string(res, format("dam %dd25+%d; heal %d", _curse_boost_removable, _curse_boost_removable * 25, _curse_boost_removable * 50));
+            else var_set_string(res, format("dam %dd25; heal %d", _curse_boost_removable, _curse_boost_removable * 50));
         }
-        else var_set_string(res, info_power(0));
+        else var_set_string(res, "");
         break;
     }
     case SPELL_CAST:{ 
