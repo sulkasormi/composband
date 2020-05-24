@@ -7276,9 +7276,9 @@ static void do_cmd_knowledge_stat(void)
     int              i;
 
     if (p_ptr->knowledge & KNOW_HPRATE)
-        doc_printf(doc, "Your current Life Rating is <color:G>%d%%</color>.\n\n", life_rating());
+        doc_printf(doc, "Your current Life Rating is %s.\n\n", life_rating_desc(TRUE));
     else
-        doc_insert(doc, "Your current Life Rating is <color:y>\?\?\?%</color>.\n\n");
+        doc_insert(doc, "Your current Life Rating is <color:y>\?\?\?</color>.\n\n");
 
     doc_insert(doc, "<color:r>Limits of maximum stats</color>\n");
 
