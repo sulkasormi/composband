@@ -7386,7 +7386,7 @@ bool set_tim_dark_stalker(int v, bool do_dec)
         {
             if (p_ptr->pclass == CLASS_ROGUE || p_ptr->pclass == CLASS_SKILLMASTER)
                 msg_print("You begin to tread softly.");
-            else if (p_ptr->pclass == CLASS_NECROMANCER || p_ptr->pclass == CLASS_RUNE_KNIGHT)
+            else if (p_ptr->pclass == CLASS_NECROMANCER || p_ptr->pclass == CLASS_RUNE_KNIGHT || prace_is_(RACE_MON_MUMMY))
                 msg_print("You are cloaked in darkness.");
             else
                 msg_print("You begin to stalk your prey.");
