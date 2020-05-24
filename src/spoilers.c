@@ -238,36 +238,6 @@ void skills_desc_aux(skills_t *base, skills_t *xtra, skills_desc_t *skills)
 /******************************************************************************
  * Racial Help
  ******************************************************************************/
-/* TODO: This is copied/duplicated in birth.txt ... Spoiler generation is a convenience
-   hack, so I'll turn a blind eye for now :) */
-#define _MAX_RACES_PER_GROUP 23
-#define _MAX_RACE_GROUPS      9
-typedef struct _race_group_s {
-    cptr name;
-    int ids[_MAX_RACES_PER_GROUP];
-} _race_group_t;
-static _race_group_t _race_groups[_MAX_RACE_GROUPS] = {
-    { "Humans",
-        {RACE_AMBERITE, RACE_BARBARIAN, RACE_DEMIGOD, RACE_DUNADAN, RACE_HUMAN, RACE_IGOR, -1} },
-    { "Elves",
-        {RACE_DARK_ELF, RACE_HIGH_ELF, RACE_TOMTE, RACE_WOOD_ELF, -1} },
-    { "Hobbits/Dwarves",
-        {RACE_DWARF, RACE_GNOME, RACE_HOBBIT, RACE_NIBELUNG, -1} },
-    { "Fairies",
-        {RACE_SHADOW_FAIRY, RACE_SPRITE, -1} },
-    { "Angels/Demons",
-        {RACE_ARCHON, RACE_BALROG, RACE_IMP, -1} },
-    { "Orcs/Trolls/Giants",
-        {RACE_CYCLOPS, RACE_HALF_GIANT, RACE_HALF_ORC, RACE_HALF_TITAN,
-         RACE_HALF_TROLL, RACE_KOBOLD, RACE_OGRE, RACE_SNOTLING, -1} },
-    { "Shapeshifters",
-        {RACE_BEORNING, RACE_DOPPELGANGER, RACE_WEREWOLF, -1} },
-    { "The Undead",
-        {RACE_EINHERI, RACE_SKELETON, RACE_SPECTRE, RACE_VAMPIRE, RACE_ZOMBIE, -1} },
-    { "Other Races",
-        {RACE_ANDROID, RACE_BEASTMAN, RACE_BOIT, RACE_CENTAUR, RACE_DRACONIAN, RACE_ENT,
-         RACE_GOLEM, RACE_KLACKON, RACE_KUTAR, RACE_MIND_FLAYER, RACE_TONBERRY, RACE_YEEK,-1 } },
-};
 
 static void _race_help_table(FILE *fp, race_t *race_ptr)
 {
@@ -344,12 +314,12 @@ static void _races_help(FILE* fp)
           "be born with. In general, skills are influenced by level, race, class, stats and equipment. "
           "See the race tables <link:Races.txt#Tables> below for a quick comparison "
           "of the various races.\n\n", fp);
-    for (i = 0; i < _MAX_RACE_GROUPS; i++)
+    for (i = 0; i < B_MAX_RACE_GROUPS; i++)
     {
-        fprintf(fp, "<style:heading>%s</style>\n  <indent>", _race_groups[i].name);
+        fprintf(fp, "<style:heading>%s</style>\n  <indent>", b_race_groups[i].name);
         for (j = 0; ; j++)
         {
-            int race_idx = _race_groups[i].ids[j];
+            int race_idx = b_race_groups[i].ids[j];
             if (race_idx == -1) break;
             _race_help(fp, race_idx);
         }
@@ -358,11 +328,11 @@ static void _races_help(FILE* fp)
 
     fputs("<topic:Tables><style:heading>Table 1 - Race Statistic Bonus Table</style>\n<style:table>\n", fp);
     fprintf(fp, "%-12.12s <color:G>STR  INT  WIS  DEX  CON  CHR  Life  BHP  Exp  Shop</color>\n", "");
-    for (i = 0; i < _MAX_RACE_GROUPS; i++)
+    for (i = 0; i < B_MAX_RACE_GROUPS; i++)
     {
         for (j = 0; ; j++)
         {
-            int     race_idx = _race_groups[i].ids[j];
+            int     race_idx = b_race_groups[i].ids[j];
             race_t *race_ptr;
 
             if (race_idx == -1) break;
@@ -379,11 +349,11 @@ static void _races_help(FILE* fp)
 
     fputs("<topic:Skills1><style:heading>Table 2 - Race Skill Bonus Table I</style>\n<style:table>\n", fp);
     fprintf(fp, "%-12.12s <color:w>%-13.13s %-13.13s %-13.13s %-13.13s</color>\n", "", "Disarming", "Device", "Save", "Stealth");
-    for (i = 0; i < _MAX_RACE_GROUPS; i++)
+    for (i = 0; i < B_MAX_RACE_GROUPS; i++)
     {
         for (j = 0; ; j++)
         {
-            int     race_idx = _race_groups[i].ids[j];
+            int     race_idx = b_race_groups[i].ids[j];
             race_t *race_ptr;
 
             if (race_idx == -1) break;
@@ -400,11 +370,11 @@ static void _races_help(FILE* fp)
 
     fputs("<topic:Skills2><style:heading>Table 3 - Race Skill Bonus Table II</style>\n<style:table>\n", fp);
     fprintf(fp, "%-12.12s <color:w>%-13.13s %-13.13s %-13.13s %-13.13s %s</color>\n", "", "Searching", "Perception", "Melee", "Archery", "Infra");
-    for (i = 0; i < _MAX_RACE_GROUPS; i++)
+    for (i = 0; i < B_MAX_RACE_GROUPS; i++)
     {
         for (j = 0; ; j++)
         {
-            int     race_idx = _race_groups[i].ids[j];
+            int     race_idx = b_race_groups[i].ids[j];
             race_t *race_ptr;
 
             if (race_idx == -1) break;
@@ -647,34 +617,6 @@ static void _draconians_help(FILE* fp)
 /******************************************************************************
  * Monster Mode Help
  ******************************************************************************/
-#define _MAX_MON_RACE_GROUPS      12
-static _race_group_t _mon_race_groups[_MAX_MON_RACE_GROUPS] = {
-    { "Animal",
-        {/*RACE_MON_ANT, RACE_MON_BEETLE, RACE_MON_BIRD, RACE_MON_CAT,*/ RACE_MON_CENTIPEDE,
-            RACE_MON_HOUND, /*RACE_MON_HORSE, */ RACE_MON_HYDRA, RACE_MON_SPIDER, -1} },
-    { "Angel/Demon",
-        {RACE_MON_ANGEL, RACE_MON_DEMON, -1} },
-    { "Beholder",
-        {RACE_MON_BEHOLDER, -1} },
-    { "Dragon",
-        {RACE_MON_DRAGON, -1} },
-    { "Elemental/Vortex",
-        {RACE_MON_ELEMENTAL, RACE_MON_VORTEX, -1} },
-    { "Golem",
-        {RACE_MON_GOLEM, -1} },
-    { "Jelly",
-        {RACE_MON_JELLY, /*RACE_MON_MOLD,*/ RACE_MON_QUYLTHULG, -1} },
-    { "Leprechaun",
-        {RACE_MON_LEPRECHAUN, -1} },
-    { "Mimic/Possessor",
-        {RACE_MON_SWORD, RACE_MON_ARMOR, RACE_MON_MIMIC, RACE_MON_POSSESSOR, RACE_MON_RING, -1} },
-    { "Orc/Troll/Giant",
-        {RACE_MON_GIANT, /*RACE_MON_KOBOLD,*/ RACE_MON_ORC, RACE_MON_TROLL, -1} },
-    { "Undead",
-        {/*RACE_MON_GHOST,*/ RACE_MON_LICH, RACE_MON_VAMPIRE, /*RACE_MON_WRAITH, RACE_MON_ZOMBIE,*/ -1 } },
-    { "Other",
-        {RACE_MON_PUMPKIN, RACE_MON_XORN, -1} },
-};
 
 static void _mon_race_help_table(FILE *fp, race_t *race_ptr)
 {
@@ -777,12 +719,12 @@ static void _monster_races_help(FILE* fp)
             "To compare the various races at a glance, take a "
             "look at the race tables below (<link:MonsterRaces.txt#Tables>).\n\n", fp);
 
-    for (i = 0; i < _MAX_MON_RACE_GROUPS; i++)
+    for (i = 0; i < B_MAX_MON_RACE_GROUPS; i++)
     {
-        fprintf(fp, "<style:heading>%s</style>\n  <indent>", _mon_race_groups[i].name);
+        fprintf(fp, "<style:heading>%s</style>\n  <indent>", b_mon_race_groups[i].name);
         for (j = 0; ; j++)
         {
-            int race_idx = _mon_race_groups[i].ids[j];
+            int race_idx = b_mon_race_groups[i].ids[j];
             if (race_idx == -1) break;
             _mon_race_help(fp, race_idx);
         }
@@ -791,11 +733,11 @@ static void _monster_races_help(FILE* fp)
 
     fputs("<topic:Tables><style:heading>Table 1 - Race Statistic Bonus Table</style>\n<style:table>\n", fp);
     fprintf(fp, "<color:G>%-12.12s</color> <color:G>STR  INT  WIS  DEX  CON  CHR  Life  BHP  Exp  Shop</color>\n", "");
-    for (i = 0; i < _MAX_MON_RACE_GROUPS; i++)
+    for (i = 0; i < B_MAX_MON_RACE_GROUPS; i++)
     {
         for (j = 0; ; j++)
         {
-            int     race_idx = _mon_race_groups[i].ids[j];
+            int     race_idx = b_mon_race_groups[i].ids[j];
             race_t *race_ptr;
 
             if (race_idx == -1) break;
@@ -814,11 +756,11 @@ static void _monster_races_help(FILE* fp)
 
     fputs("<topic:Skills1><style:heading>Table 2 - Race Skill Bonus Table I</style>\n<style:table>\n", fp);
     fprintf(fp, "%-12.12s <color:w>%-13.13s %-13.13s %-13.13s %-13.13s</color>\n", "", "Disarming", "Device", "Save", "Stealth");
-    for (i = 0; i < _MAX_MON_RACE_GROUPS; i++)
+    for (i = 0; i < B_MAX_MON_RACE_GROUPS; i++)
     {
         for (j = 0; ; j++)
         {
-            int     race_idx = _mon_race_groups[i].ids[j];
+            int     race_idx = b_mon_race_groups[i].ids[j];
             race_t *race_ptr;
 
             if (race_idx == -1) break;
@@ -837,11 +779,11 @@ static void _monster_races_help(FILE* fp)
 
     fputs("<topic:Skills2><style:heading>Table 3 - Race Skill Bonus Table II</style>\n<style:table>\n", fp);
     fprintf(fp, "%-12.12s <color:w>%-13.13s %-13.13s %-13.13s %-13.13s %s</color>\n", "", "Searching", "Perception", "Melee", "Archery", "Infra");
-    for (i = 0; i < _MAX_MON_RACE_GROUPS; i++)
+    for (i = 0; i < B_MAX_MON_RACE_GROUPS; i++)
     {
         for (j = 0; ; j++)
         {
-            int     race_idx = _mon_race_groups[i].ids[j];
+            int     race_idx = b_mon_race_groups[i].ids[j];
             race_t *race_ptr;
 
             if (race_idx == -1) break;
