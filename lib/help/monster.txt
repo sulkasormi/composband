@@ -444,6 +444,8 @@ Two other spell effects are closely related and follow the same basic rules as G
 
 Genocide is based on the underlying "true" letter symbols of monsters, and ignores any changes made by the player to the visual appearance of a monster. For example, casting genocide on the symbol <color:o>x</color> would have no effect on mimics even if you turned the easy_mimics option on, because <color:o>x</color> is not these mimics' true symbol. Similarly, genociding <color:o>D</color> would affect ancient dragons even if you had changed their visual appearance to something else.
 
+Chameleons are genocided as if they truly belonged to their current, apparent race. Tanuki and Shadowers, on the other hand, are genocided by their underlying species, which for Tanuki is quadrupeds (<color:U>q</color>) and for Shadowers the species of the race the shadower actually belongs to.
+
 Friendly monsters will always be turned hostile by a failed attempt to genocide them, even if they are uniques and there was no chance the genocide would harm them personally. Genocide can affect pets (it will not turn them hostile), although your mount will never be affected.
 
 New players with previous experience in other roguelikes, but not in Angband variants, sometimes expect Genocide or Mass Genocide to remove a monster race or species from the game permanently. This does not happen; genocide only affects monsters on a single level, and even there, they have a chance to resist. In spite of these limitations, sources of Genocide and Mass Genocide are extremely valuable, and many players stockpile them for the end fights.
