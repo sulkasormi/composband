@@ -1340,7 +1340,7 @@ static void prt_status(void)
         if (hex_spelling(HEX_ICE_ARMOR)) ADD_FLG(BAR_SHCOLD);
         if (hex_spelling(HEX_RUNESWORD)) ADD_FLG(BAR_RUNESWORD);
         if (hex_spelling(HEX_BUILDING)) ADD_FLG(BAR_BUILD);
-        if (hex_spelling(HEX_ANTI_TELE)) ADD_FLG(BAR_ANTITELE);
+        if ((hex_spelling(HEX_ANTI_TELE)) || (mummy_get_toggle() == MUMMY_TOGGLE_ANTITELE)) ADD_FLG(BAR_ANTITELE);
         if (hex_spelling(HEX_SHOCK_CLOAK)) ADD_FLG(BAR_SHELEC);
         if (hex_spelling(HEX_SHADOW_CLOAK)) ADD_FLG(BAR_SHSHADOW);
         if (hex_spelling(HEX_CONFUSION)) ADD_FLG(BAR_ATTKCONF);
@@ -2047,6 +2047,9 @@ static void prt_effects(void)
             break;
         }
     }
+    if (((prace_is_(RACE_MON_MUMMY)) || (player_is_ninja)) &&
+         (p_ptr->cur_lite > 0))
+        c_put_str(TERM_YELLOW, "Icky Light", row++, col);
     if (p_ptr->shooter_info.heavy_shoot)
         c_put_str(TERM_RED, "Heavy Shoot", row++, col);
     if (p_ptr->cut)
@@ -3564,7 +3567,7 @@ static void calc_hitpoints(void)
     class_t *class_ptr = get_class();
     personality_ptr pers_ptr = get_personality();
 
-    mmhp = p_ptr->player_hp[p_ptr->lev - 1] * 10 / 100; /* 255 hp total */
+    mmhp = p_ptr->player_hp[p_ptr->lev - 1] / 10; /* up to 223-299 HP total */
     mmhp += _calc_xtra_hp(300);
 
     mmhp = mmhp * (IS_WRAITH() ? MIN(race_ptr->life, 90) : race_ptr->life) / 100;
@@ -4467,6 +4470,17 @@ void calc_bonuses(void)
         if ((class_ptr->flags & CLASS_REGEN_MANA) || (mon_fast_mana_regen())) p_ptr->mana_regen = TRUE;
     }
 
+    /* Careful - mummy bonuses depend on light radius, and PU_TORCH is
+     * checked after PU_BONUS for p_ptr->lite... but at this point we've
+     * already accounted for everything that might affect p_ptr->lite on
+     * a mummy, so we can calculate the light radius correctly before
+     * moving on to the mummy bonuses! */
+    if ((prace_is_(RACE_MON_MUMMY)) && (p_ptr->update & (PU_TORCH)))
+    {
+        p_ptr->update &= ~(PU_TORCH);
+        calc_torch();
+    }
+
     if (race_ptr->calc_bonuses)
         race_ptr->calc_bonuses();
 
@@ -5228,7 +5242,10 @@ void calc_bonuses(void)
     if (p_ptr->action == ACTION_STALK) p_ptr->skills.stl += (p_ptr->lev+2)/3;
 
     if (p_ptr->tim_dark_stalker)
+    {
         p_ptr->skills.stl += 3 + p_ptr->lev/5;
+        if (prace_is_(RACE_MON_MUMMY)) p_ptr->fairy_stealth = TRUE;
+    }
 
     /* Affect Skill -- disarming (DEX and INT) */
     p_ptr->skills.dis += adj_dex_dis[p_ptr->stat_ind[A_DEX]];
