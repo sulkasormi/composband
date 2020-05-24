@@ -1050,7 +1050,7 @@ race_t *mon_armor_get_race(void)
         me.save_player = _save;
         me.destroy_object = _absorb_object;
 
-        me.flags = RACE_IS_MONSTER;
+        me.flags = RACE_IS_MONSTER | RACE_EATS_DEVICES;
         me.pseudo_class_idx = CLASS_RUNE_KNIGHT;
 
         init = TRUE;
