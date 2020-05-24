@@ -1081,7 +1081,7 @@ race_t *mon_sword_get_race(void)
         me.save_player = _save;
         me.destroy_object = _absorb_object;
 
-        me.flags = RACE_IS_MONSTER | RACE_IS_NONLIVING;
+        me.flags = RACE_IS_MONSTER | RACE_IS_NONLIVING | RACE_EATS_DEVICES;
         me.pseudo_class_idx = CLASS_WARRIOR;
 
         init = TRUE;
