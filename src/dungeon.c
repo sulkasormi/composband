@@ -6103,15 +6103,15 @@ void play_game(bool new_game)
         /* Hack -- seed for town layout */
         seed_town = randint0(0x10000000);
 
-        /* Hack -- seed for dungeons */
-        seed_dungeon = (no_wilderness) ? 0 : randint0(0x10000000);
-
         /* Load system pref files before displaying anything */
         load_user_pref_files();
         Term_xtra(TERM_XTRA_REACT, 0);
 
         /* Roll up a new character */
         player_birth();
+
+        /* Hack -- seed for dungeons */
+        seed_dungeon = (no_wilderness) ? 0 : randint0(0x10000000);
 
         counts_write(2,0);
         p_ptr->count = 0;
