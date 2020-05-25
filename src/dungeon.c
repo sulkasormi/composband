@@ -2439,7 +2439,7 @@ static void process_world_aux_curse(void)
 
             object_desc(o_name, o_ptr, (OD_OMIT_PREFIX | OD_NAME_ONLY));
             msg_format("Your %s %s HP from you!", o_name, object_plural(o_ptr) ? "drain" : "drains");
-            take_hit(DAMAGE_LOSELIFE, MIN(p_ptr->lev*2, 100), o_name);
+            take_hit(DAMAGE_LOSELIFE, MIN(p_ptr->lev*2, 100), "an equipment curse");
             obj_learn_curse(o_ptr, OFC_DRAIN_HP);
         }
         /* Handle mana draining */
