@@ -1400,8 +1400,7 @@ int charm_pow_modify(int dam, monster_type *mon)
     if ((race->flags1 & RF1_UNIQUE) || (race->flags7 & RF7_NAZGUL) ||
         (mon->mflag2 & MFLAG2_QUESTOR))
     {
-        if (p_ptr->uimapuku) dam = dam * 18 / 25; /* Fine-tuned to give a maxed-out mode-bonus polly a 1 in 90 chance of charming a level 100 unique */
-        else dam = dam * 2 / 3;
+        dam = dam * 18 / 25; /* Fine-tuned to give a maxed-out mode-bonus polly a 1 in 90 chance of charming a level 100 unique */
     }
     return dam;
 }
@@ -3106,7 +3105,7 @@ bool gf_affect_m(int who, mon_ptr mon, int type, int dam, int flags)
         {
             bool upgrade = !is_friend;
 
-            if ((!mon_difficulty) || (dam > taso * 2) || (one_in_(10)))
+            if ((!mon_difficulty) || (type == GF_CHARM_RING_BEARER) || (dam > taso * 2) || (one_in_(10)))
             {
                 set_pet(mon);
                 upgrade = TRUE;
