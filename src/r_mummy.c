@@ -839,6 +839,7 @@ bool mummy_can_remove(object_type *o_ptr)
     if (p_ptr->prace != RACE_MON_MUMMY) return FALSE;
     if (o_ptr->curse_flags & OFC_PERMA_CURSE) return FALSE;
     if ((o_ptr->curse_flags & OFC_HEAVY_CURSE) && (p_ptr->lev < 25)) return FALSE;
+    if (p_ptr->lev < 3) return FALSE;
     return TRUE;
 }
 
