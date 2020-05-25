@@ -2521,6 +2521,7 @@ extern void    hound_run_spell(int cmd, variant *res);
 extern void    hound_leap_spell(int cmd, variant *res);
 
 extern int     mummy_get_toggle(void);
+extern bool    mummy_can_remove(object_type *o_ptr);
 extern bool    mummy_ty_protection(void);
 
 extern int     vortex_get_effect(void);
