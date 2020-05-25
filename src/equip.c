@@ -597,7 +597,7 @@ static bool _wield_confirm(obj_ptr obj, slot_t slot)
         return FALSE;
     }
 
-    if (old_obj && object_is_cursed(old_obj))
+    if (old_obj && object_is_cursed(old_obj) && !mummy_can_remove(old_obj))
     {
         object_desc(o_name, old_obj, OD_OMIT_PREFIX | OD_NAME_ONLY | OD_COLOR_CODED);
         msg_format("The %s you are wearing appears to be cursed.", o_name);
@@ -838,6 +838,14 @@ bool _unwield_verify(obj_ptr obj)
     }
     if (object_is_cursed(obj) && obj->loc.where == INV_EQUIP)
     {
+        if ((p_ptr->prace == RACE_MON_MUMMY) && (mummy_can_remove(obj)))
+        {
+            msg_print("You confidently remove the cursed equipment.");
+            p_ptr->update |= PU_BONUS;
+            p_ptr->window |= PW_EQUIP;
+            p_ptr->redraw |= PR_EFFECTS;
+            return TRUE;
+        }
         if ((obj->curse_flags & OFC_PERMA_CURSE) || ((p_ptr->pclass != CLASS_BERSERKER) && (!beorning_is_(BEORNING_FORM_BEAR))))
         {
             msg_print("Hmmm, it seems to be cursed.");
@@ -897,6 +905,10 @@ void _unwield(obj_ptr obj, bool drop)
         char name[MAX_NLEN];
         object_desc(name, obj, OD_COLOR_CODED);
         if (obj->loc.where == INV_EQUIP) msg_format("You are no longer wearing %s.", name);
+        if (object_is_cursed(obj))
+        {
+            p_ptr->redraw |= PR_EFFECTS;
+        }
         if (drop)
         {
             obj_drop(obj, obj->number);
@@ -2003,14 +2015,14 @@ void _ring_finger_swap_aux(object_type *o_ptr, slot_t f1, slot_t f2)
     p = (_accept[_template->slots[f2].type]);
     if (!p(o_ptr)) return;
     t_ptr = equip_obj(f1);
-    if ((t_ptr) && (t_ptr->tval) && (object_is_cursed(t_ptr)))
+    if ((t_ptr) && (t_ptr->tval) && (object_is_cursed(t_ptr)) && (!mummy_can_remove(t_ptr)))
     {
         msg_print("A dark curse prevents you from switching ring fingers!");
         t_ptr->ident |= IDENT_SENSE;
         return;
     }
     t_ptr = equip_obj(f2);
-    if ((t_ptr) && (t_ptr->tval) && (object_is_cursed(t_ptr)))
+    if ((t_ptr) && (t_ptr->tval) && (object_is_cursed(t_ptr)) && (!mummy_can_remove(t_ptr)))
     {
         msg_print("A dark curse prevents you from switching ring fingers!");
         t_ptr->ident |= IDENT_SENSE;
