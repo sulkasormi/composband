@@ -122,6 +122,36 @@ static void _toggle_spell(int which, int cmd, variant *res)
     }
 }
 
+void _nether_ball_spell(int cmd, variant *res)
+{
+    int dam = spell_power(p_ptr->lev * 3 / 2 + 39 + (_curse_boost_capped * 8) + p_ptr->to_d_spell);
+    int rad = spell_power(p_ptr->lev / 20 + 2);
+    switch (cmd)
+    {
+    case SPELL_NAME:
+        var_set_string(res, "Nether Ball");
+        break;
+    case SPELL_DESC:
+        var_set_string(res, "Fires a large ball of nether.");
+        break;
+    case SPELL_INFO:
+        var_set_string(res, info_damage(0, 0, dam));
+        break;
+    case SPELL_CAST:
+    {
+        int dir = 0;
+        var_set_bool(res, FALSE);
+        if (!get_fire_dir(&dir)) return;
+        fire_ball(GF_NETHER, dir, dam, rad);
+        var_set_bool(res, TRUE);
+        break;
+    }
+    default:
+        default_spell(cmd, res);
+        break;
+    }
+}
+
 static byte _boost_cap(void)
 {
     return 5 + (p_ptr->lev / 5);
@@ -133,8 +163,7 @@ static bool _purge_curse_which(object_type *o_ptr)
 
     object_desc(o_name, o_ptr, OD_COLOR_CODED | OD_NAME_ONLY | OD_OMIT_PREFIX);
 
-    if (((o_ptr->curse_flags & OFC_PERMA_CURSE) ||
-        (o_ptr->curse_flags & OFC_HEAVY_CURSE)) && (p_ptr->lev < 25))
+    if (!mummy_can_remove(o_ptr))
     {
         msg_format("You are not powerful enough to uncurse this object.");
         return FALSE;
@@ -782,7 +811,7 @@ static power_info _draugr_powers[] = {
     {    -1, { -1, -1, -1, NULL}}
 };
 static power_info _sorc_powers[] = {
-    { A_CHR, { 36, 30, 30, nether_ball_spell } },
+    { A_CHR, { 36, 30, 30, _nether_ball_spell } },
     {    -1, { -1, -1, -1, NULL}}
 };
 static power_info *_get_powers(void) {
@@ -803,6 +832,14 @@ bool mummy_ty_protection(void){
         if (one_in_(2)) return TRUE;
     }
     return FALSE;
+}
+
+bool mummy_can_remove(object_type *o_ptr)
+{
+    if (p_ptr->prace != RACE_MON_MUMMY) return FALSE;
+    if (o_ptr->curse_flags & OFC_PERMA_CURSE) return FALSE;
+    if ((o_ptr->curse_flags & OFC_HEAVY_CURSE) && (p_ptr->lev < 25)) return FALSE;
+    return TRUE;
 }
 
 int mummy_get_toggle(void)
@@ -1307,12 +1344,12 @@ static void _calc_bonuses(void)
     res_add(RES_COLD);
     res_add(RES_NETHER);
     if (p_ptr->lev < 10) p_ptr->regen -= (p_ptr->regen / 4);
-    if (p_ptr->lev >= 25)
+    if (p_ptr->lev >= 27)
     {
         res_add(RES_ELEC);
         p_ptr->slow_digest = TRUE;
     }
-    if (p_ptr->lev >= 35)
+    if (p_ptr->lev >= 36)
     {
         res_add(RES_DARK);
         res_add(RES_ACID);
@@ -1344,12 +1381,12 @@ static void _get_flags(u32b flgs[OF_ARRAY_SIZE])
     add_flag(flgs, OF_RES_COLD);
     add_flag(flgs, OF_RES_NETHER);
     add_flag(flgs, OF_NIGHT_VISION);
-    if (p_ptr->lev >= 25)
+    if (p_ptr->lev >= 27)
     {
         add_flag(flgs, OF_RES_ELEC);
         add_flag(flgs, OF_SLOW_DIGEST);
     }
-    if (p_ptr->lev >= 35)
+    if (p_ptr->lev >= 36)
     {
         add_flag(flgs, OF_RES_DARK);
         add_flag(flgs, OF_RES_ACID);
