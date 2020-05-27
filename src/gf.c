@@ -3444,7 +3444,8 @@ bool gf_affect_m(int who, mon_ptr mon, int type, int dam, int flags)
                 else if (race->level > randint1(100))
                 {
                     mon_lore_r(mon, RFR_RES_TELE);
-                    note = " resists!";
+                    if (mummy_get_toggle() == MUMMY_TOGGLE_ANTITELE) note = " is locked in place!";
+                    else note = " resists!";
 
                     resists_tele = TRUE;
                 }
@@ -3475,7 +3476,8 @@ bool gf_affect_m(int who, mon_ptr mon, int type, int dam, int flags)
                 else if (race->level > randint1(100))
                 {
                     mon_lore_r(mon, RFR_RES_TELE);
-                    note = " resists!";
+                    if (mummy_get_toggle() == MUMMY_TOGGLE_ANTITELE) note = " is locked in place!";
+                    else note = " resists!";
 
                     resists_tele = TRUE;
                 }
@@ -3534,7 +3536,8 @@ bool gf_affect_m(int who, mon_ptr mon, int type, int dam, int flags)
             else if (race->level > randint1(100))
             {
                 mon_lore_r(mon, RFR_RES_TELE);
-                note = " resists!";
+                if (mummy_get_toggle() == MUMMY_TOGGLE_ANTITELE) note = " is locked in place!";
+                else note = " resists!";
                 resists_tele = TRUE;
             }
         }
@@ -4459,9 +4462,13 @@ bool gf_affect_m(int who, mon_ptr mon, int type, int dam, int flags)
         {
             /* Obvious */
             if (seen) obvious = TRUE;
-            if ((mon->smart & (1U << SM_GUARDIAN)) || (mummy_get_toggle() == MUMMY_TOGGLE_ANTITELE))
+            if (mon->smart & (1U << SM_GUARDIAN))
             {
-                note = " is unaffected!";
+                note = " is immune.";
+            }
+            else if (mummy_get_toggle() == MUMMY_TOGGLE_ANTITELE)
+            {
+                note = " is locked in place!";
             }
             else
             {
