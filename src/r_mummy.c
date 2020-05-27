@@ -110,12 +110,6 @@ static void _toggle_spell(int which, int cmd, variant *res)
             _set_toggle(which);
         var_set_bool(res, TRUE);
         break;
-    case SPELL_ENERGY:
-        if (_get_toggle() != which)
-            var_set_int(res, 0);   
-        else
-            var_set_int(res, 100);
-        break;
     default:
         default_spell(cmd, res);
         break;
@@ -630,16 +624,24 @@ static void _curse_of_impotence(int cmd, variant *res)
     }
 }
 
+bool mummy_cast_antitele(void)
+{
+    variant res;
+    var_init(&res);
+    _toggle_spell(MUMMY_TOGGLE_ANTITELE, SPELL_CAST, &res);
+    var_clear(&res);
+    if (_get_toggle() == MUMMY_TOGGLE_ANTITELE) msg_print("Everything is locked down in space.");
+    else msg_print("Dimensional anchoring vanishes.");
+    return TRUE;
+}
+
 static void _dimensional_anchor(int cmd, variant *res)
 {
     switch (cmd){
     case SPELL_NAME: var_set_string(res, "Dimensional Lock"); break;
     case SPELL_DESC: var_set_string(res, "Locks things in place, preventing almost all teleportation."); break;
     case SPELL_CAST:{
-        _toggle_spell(MUMMY_TOGGLE_ANTITELE, cmd, res);
-        if (_get_toggle() == MUMMY_TOGGLE_ANTITELE) msg_print("Everything is locked down in space.");
-        else msg_print("Dimensional anchoring vanishes.");
-        var_set_bool(res, TRUE);
+        var_set_bool(res, mummy_cast_antitele());
         break;
     }
     default:default_spell(cmd, res); break;
@@ -789,7 +791,7 @@ static void _unleash_spell(int cmd, variant *res){
         break;
     }
     case SPELL_CAST:{ 
-        if (_curse_boost_capped > 2) var_set_bool(res, _unleash()); 
+        if (_curse_boost_removable > 2) var_set_bool(res, _unleash());
         else
         {
             msg_print("There isn't enough malice in you... ");
@@ -1038,7 +1040,7 @@ void _draugr_innate_attacks(void)
         innate_attack_t a = {0};
 
         a.dd = 1 + l / 11;
-        a.ds = 1 + l / 11;
+        a.ds = 1 + l / 10;
         a.to_d += _curse_boost_capped;
         a.to_h += _curse_boost_capped;
         _gaze_adjustments(&a);
@@ -1061,7 +1063,7 @@ void _draugr_innate_attacks(void)
         innate_attack_t    a = {0};
 
         a.dd = 2 + l / 9;
-        a.ds = 1 + l / 9;
+        a.ds = 2 + l / 9;
         a.to_d += _curse_boost_capped;
         a.to_h += _curse_boost_capped;
 
@@ -1081,7 +1083,7 @@ void _draugr_innate_attacks(void)
         innate_attack_t    a = {0};
 
         a.dd = 1 + l / 9;
-        a.ds = 2 + l / 9;
+        a.ds = 2 + l / 8;
         a.to_d += _curse_boost_capped;
         a.to_h += 5 + _curse_boost_capped;
 
