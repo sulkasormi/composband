@@ -650,7 +650,7 @@ static void _absorb_curse_pow(int cmd, variant *res)
 {
     switch (cmd){
     case SPELL_NAME: var_set_string(res, "Absorb Curse Power"); break;
-    case SPELL_DESC: var_set_string(res, "Purge all curses from equipment to heal self. A successful casting consumes less time (down to 0.25 turns) at higher power."); break;
+    case SPELL_DESC: var_set_string(res, "Purges all curses from equipment to heal self. A successful casting consumes less time (down to 0.25 turns) at higher power."); break;
     case SPELL_INFO: var_set_string(res, info_heal(0, 0, _curse_boost_removable * 70)); break;
     case SPELL_CAST:{
         int old_cursepow = _curse_boost_removable;
@@ -778,7 +778,7 @@ static bool _unleash(void)
 static void _unleash_spell(int cmd, variant *res){
     switch (cmd){
     case SPELL_NAME: var_set_string(res, "Unleash Malice"); break;
-    case SPELL_DESC: var_set_string(res, "Releases the evil power of your equipment curses. A successful casting consumes less time (down to 0.25 turns) at higher power."); break;
+    case SPELL_DESC: var_set_string(res, "Releases the evil power of your equipment curses. Destroys the area at high powers. A successful casting consumes less time (down to 0.25 turns) at higher power."); break;
     case SPELL_INFO: {
         if (_curse_boost_removable > 2){
             if (_curse_boost_removable >= 5)
