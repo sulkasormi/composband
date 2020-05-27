@@ -1055,6 +1055,12 @@ void leave_floor(void)
         p_ptr->redraw |= (PR_STATUS);
     }
 
+    /* End temporary dimensional lock */
+    if ((prace_is_(RACE_MON_MUMMY)) && (mummy_get_toggle() == MUMMY_TOGGLE_ANTITELE))
+    {
+        mummy_cast_antitele();
+    }
+
     /* Kill some old saved floors */
     if (!(change_floor_mode & CFM_SAVE_FLOORS))
     {
