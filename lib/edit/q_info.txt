@@ -418,7 +418,7 @@ T:TOWN | GENERATE
 F:q_acadmy.txt
 
 N:91:38:The Pit of Despair (Angwil)
-T:TOWN | GENERATE
+T:TOWN | GENERATE | DANGER_LEVEL_35
 F:q_pit2.txt
 
 N:92:30:Ghost Town (Morivant)
