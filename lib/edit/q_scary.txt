@@ -1,0 +1,85 @@
+# The Lost Treasure of Scary Rock
+# New quest for FrogComposband 7.1.salmiak
+
+?:[EQU $QUEST99 Taken InProgress]
+D:I keep hearing persistent rumors of an old treasure chest hidden
+D:somewhere on Scary Rock, supposedly buried there by the pirates who
+D:infested these shores in days gone by. I would very much like to
+D:investigate this matter, unfortunately none of the local men are
+D:willing to go anywhere near that islet. I'm sure it's just the name
+D:of the place keeping them away, you should have nothing to worry about.
+?:1
+
+?:[EQU $QUEST99 Completed]
+D:Thank you! Here's a little reward for your good work. I trust there was
+D:enough booty for both of us?
+?:1
+
+?:[EQU $QUEST99 Failed]
+D:Too bad, I will need to find a better hero. Wait a minute... did you at
+D:least verify the presence of the treasure?
+?:1
+
+T:QUEST:NORMAL:NO_ROTATE
+# Terrain
+L:#:PERMANENT
+L:~:SHALLOW_WATER
+L:<:UP_STAIR
+L:l:SHALLOW_WATER:MON(shrieking eel, NO_GROUP | NO_SLEEP)
+L:O:DIRT:MON(cave ogre)
+L:h:DIRT:MON(ogre shaman)
+L:M:SHALLOW_WATER:MON(^4-headed hydra)
+L:m:SHALLOW_WATER:MON(^2-headed hydra)
+L:p:GRASS:OBJ(large steel chest, DEPTH+10)
+L:W:DIRT:MON(grave wight)
+L:G:DIRT:MON(^ghost$)
+L:L:SHALLOW_WATER:MON(great white shark)
+L:s:DIRT:MON(skeleton troll)
+L:g:DIRT:MON(moaning spirit)
+L:A:DIRT:MON(ogre mage)
+L:S:DIRT:MON(mirkwood spider, NO_GROUP)
+L:u:SHALLOW_WATER:MON(deep one)
+L:o:SHALLOW_WATER:MON(giant octopus)
+L:J:SHALLOW_WATER:MON(serpent man, NO_GROUP)
+L:R:SHALLOW_WATER:MON(basilisk)
+L:P:DIRT:MON(stone giant)
+L:;:BRAKE
+L:-:GRASS
+L:,:DIRT
+L:?:RUBBLE
+L:T:TREE
+
+# Dungeon layout
+M:###########################################
+M:#~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~#
+M:#~~~~~~~~~~~~~~~~~R~~~,,~~~~~~~~~~~~~~~~~~#
+M:#~~~~~~~~o~~~~~~,,,??,,??,,~~~~~~~~J~~~~~~#
+M:#~~~~~~~~~~~~~,??,,??,G,,?,??~~~~~~JJ~~~~~#
+M:#~~~~~~~~~~??,g,--T,T,,T,,--,?~~~~~~J~~~~~#
+M:#~~~~~~~~~~~??,,,TTT,?,,?,,T-,~~~~~~~~~~~~#
+M:#~~~~~~~~~~~~??,,TSTT,,--Th-??,~~~~~~~~~~~#
+M:#~~~~~~~~~~~~???,STTST,,?AT,?,?~u~~~~~~~~~#
+M:#~~~~~~~~~~~~?,,,,SST-TT--;O,,?,~~~~~~~~~~#
+M:#~~~~~~~~~~~??,,-,TT-TTT;;T,-,???~~~~~~~~~#
+M:#~~~~~~~~~~,,,?g,?WTT-T???-T,-?P??~~~~~~~~#
+M:#~~~~~~~~~,,-,,??,,,--T?p?TT,-,??,~~~~~~~~#
+M:#~~~M~~~~???,g?,,;T,-T;???sT,;-?,~~~~~~~~~#
+M:#~~~~~~~~,,??;;-?----T-TTsTTT,,,,~~~~l~~~~#
+M:#~~~~~~~~~,-;T;---T;;?T,TTs,TT,,,?~~~~~~~~#
+M:#~~~~~~~~~,;T--T---T;,g,,?TT,,,,??~~~~~~~~#
+M:#~~~~~~~~,----------T,??,,,,T,,??~~~~~l~~~#
+M:#~~~~~~,,,,,T,--?-,,,;;;?,,,,~~~~~~l~~~~~~#
+M:#~~~~~,?,?,T,T,,,?,??;;~~~??~~~~~~~~~~~~~~#
+M:#~~~~?,,??,,,?,?,,,~~~~~~~~~~~~~~~~~~~~~~~#
+M:#~~~~,,~~~~~~~,,?,~~~~~~~~~~~~~~~m~~~~~~~~#
+M:#~~~~~~~~~~~~~~~~~~~~L~~~~~~~~~~~~~~~~~~~~#
+M:#<~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~#
+M:###########################################
+R:OBJ(amulet):EGO(sacred)
+
+?:[AND [EQU $RACE Death-Sword Filthy-Rag Jelly] [EQU [MOD $RANDOM99 2] 0] ]
+R:OBJ(potion of intelligence, NUMBER=1)
+?:[AND [EQU $RACE Death-Sword Filthy-Rag Jelly] [EQU [MOD $RANDOM99 2] 1] ]
+R:OBJ(potion of charisma, NUMBER=1)
+
+# vim: filetype=q :
