@@ -3119,6 +3119,7 @@ bool potion_smash_effect(int who, int y, int x, int k_idx)
             break;
         case SV_POTION_CONFUSION: /* Booze */
             dt = GF_OLD_CONF;
+            dam = damroll(4, 7);
             angry = TRUE;
             break;
         case SV_POTION_SLEEP:
