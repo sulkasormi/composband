@@ -863,6 +863,9 @@ F:RES_CHAOS | RES_NETHER | HOLD_LIFE |
 F:RES_COLD | BRAND_COLD |
 F:SLAY_DEMON | SLAY_EVIL | SLAY_DRAGON | SLAY_UNDEAD |
 F:SLOW_DIGEST | SHOW_MODS | HIDE_TYPE | BLESSED | RIDING
+D:Corwin's mighty blade, decorated with a portion of the Pattern and
+D:especially deadly against creatures of chaos; it is the twin of
+D:Brand's sword Werewindle.
 
 # The Broad Sword 'Glamdring'
 
@@ -934,6 +937,7 @@ P:0:4d7:-40:-60:-50
 F:QUESTITEM
 F:SPEED | IM_FIRE | RES_FIRE | BRAND_FIRE | RES_DISEN |
 F:SHOW_MODS | LITE |
+D:Surtur's sword of doom, bringer of death and destruction even to the gods.
 
 # The Cutlass 'Gondricam'
 
@@ -1014,7 +1018,7 @@ F:RES_LITE | LITE | SEE_INVIS | SHOW_MODS | SPEED |
 F:SUST_CON | SUST_STR | SUST_INT | SUST_WIS | RES_DARK |
 F:RES_DISEN
 E:ESCAPE:20:35
-
+D:Brand's mighty Pattern sword, the twin of Corwin's Grayswandir.
 
 # The Long Sword 'Elvagil'-> 'Chainsword'
 
@@ -1919,6 +1923,8 @@ P:12:1d4:-2:0:18
 F:DEC_STEALTH |
 F:RES_FIRE | RES_CHAOS | RES_NEXUS | RES_COLD
 F:HIDE_TYPE
+D:The sturdy ring mail of Giles of Ham, who was turned from an unassuming
+D:farmer to a great lord and hero by the might of his artifacts.
 
 N:169:'Hyousi-gi'
 I:21:4:3
@@ -3908,7 +3914,7 @@ D:The divine mace of the god Vishnu, preserver of life against chaos.
 N:387:of Shiva
 I:22:5:2
 W:70:120:70:90000
-P:0:3d10:12:18:10
+P:0:3d10:18:21:10
 F:STR | DEX | INT | WIS | CON | CHR | HIDE_TYPE | QUESTITEM
 F:SUST_STR | SUST_DEX | SUST_INT | SUST_WIS | SUST_CON | SUST_CHR |
 F:VORPAL | BRAND_ELEC | BRAND_FIRE | SLAY_EVIL | SEE_INVIS |
@@ -3968,7 +3974,7 @@ N:393:of Saraswati
 I:32:2:3
 W:70:100:15:10000
 P:2:0d0:0:0:10
-F:INT | WIS | MAGIC_MASTERY | LORE2 | SUST_INT | SUST_WIS | QUESTITEM
+F:SPEED | INT | WIS | MAGIC_MASTERY | LORE2 | SUST_INT | SUST_WIS | QUESTITEM
 E:PROBING:10:5
 D:The headwear of Saraswati, the goddess of knowledge and learning.
 
@@ -3990,6 +3996,15 @@ P:0:1d1:0:0:0
 F:FULL_NAME | INSTA_ART | RES_FEAR | BLESSED
 E:UNFOCUS_RAGE:1:30:200
 E:You squeeze the stress ball! You feel better.
+
+N:396:Space Suit of Vayu
+I:36:12:3
+W:70:50:440:80000
+P:18:1d2:-6:0:21
+F:RES_ELEC | RES_COLD | RES_DARK | RES_SOUND | RES_CHAOS | LEVITATION |
+F:SEARCH | DEC_DEX | FULL_NAME | QUESTITEM |
+D:This strange jacket is uncomfortably heavy, but allows its wearer to
+D:breathe normally in airless environments.
 
 # N: serial number : item name
 # I: tval : sval : pval
