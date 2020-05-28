@@ -1300,6 +1300,7 @@ enum {
 #define ART_LEGENDARY_LOST_TREASURE 192
 #define ART_DASAI               200
 #define ART_KESHO               204
+#define ART_VAYU                396
 
 /* Shields */
 #define ART_THORIN              30
@@ -4844,6 +4845,7 @@ extern int PlayerUID;
 #define MON_VASUKI              1360
 #define MON_SHESHA              1361
 #define MON_HANUMAN             1364
+#define MON_VAYU                1365
 #define MON_KARTHIKEYA          1366
 #define MON_VALI                1368
 #define MON_SUGRIVA             1369
