@@ -244,8 +244,8 @@ F:q_underground.txt
 
 # hardcoded as quest 60 in obj.c
 N:60:27:Clear the Tunnels (Anambar)
-T:TOWN | GENERATE
-F:q_tunnels.txt
+T:TOWN | GENERATE | SUBSTITUTE_99
+F:q_orcs2.txt
 
 N:61:50:Clear the Wreckage (Thalos)
 T:TOWN | GENERATE
@@ -451,5 +451,9 @@ F:q_meta.txt
 N:98:30:The Angwilian Stables (Outpost)
 T:TOWN | GENERATE
 F:q_stable.txt
+
+N:99:27:The Treasure of Scary Rock (Anambar)
+T:TOWN | GENERATE
+F:q_scary.txt
 
 # vim: filetype=qi :
