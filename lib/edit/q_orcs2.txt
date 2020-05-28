@@ -1,6 +1,10 @@
 # N:Clear the tunnels
 # Created by Gwarl for ComPosband
 
+?:[GEQ [MOD $RANDOM0 64] 32]
+K:99
+?:1
+
 ?:[EQU $QUEST60 Taken InProgress]
 D:Thank you for taking care of the orcs. I had my men search the
 D:area after you were finished and they discovered a secret tunnel
@@ -60,3 +64,5 @@ R:OBJ(amulet):EGO(sacred)
 R:OBJ(potion of intelligence, NUMBER=1)
 ?:[AND [EQU $RACE Death-Sword Filthy-Rag Jelly] [EQU [MOD $RANDOM60 2] 1] ]
 R:OBJ(potion of charisma, NUMBER=1)
+
+# vim: filetype=q :
