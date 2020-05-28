@@ -2199,7 +2199,7 @@ void monster_death(int m_idx, bool drop_item)
             break;
         case MON_BRAHMA:
             a_idx = ART_BRAHMA;
-            chance = 2;
+            chance = 3;
             break;
         case MON_SARASWATI:
             a_idx = ART_SARASWATI;
@@ -2208,6 +2208,10 @@ void monster_death(int m_idx, bool drop_item)
         case MON_LAKSHMI:
             a_idx = ART_LAKSHMI;
             chance = 20;
+            break;
+        case MON_VAYU:
+            a_idx = ART_VAYU;
+            chance = 10;
             break;
         case MON_INDRA:
             if (one_in_(44))
