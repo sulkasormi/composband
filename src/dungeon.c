@@ -1626,7 +1626,7 @@ static void process_world_aux_hp_and_sp(void)
     /* Poisoned or cut yields no healing */
     if (p_ptr->poisoned) regen_amount = 0;
     if (p_ptr->cut && p_ptr->pclass != CLASS_BLOOD_KNIGHT) regen_amount = 0;
-    if ((p_ptr->no_air) && (!(get_race()->flags & RACE_IS_NONLIVING))) regen_amount = 0;
+    if ((p_ptr->no_air) && (!(get_race()->flags & RACE_IS_NONLIVING)) && (!equip_find_art(ART_VAYU))) regen_amount = 0;
 
     /* Special floor -- Pattern, in a wall -- yields no healing */
     if (cave_no_regen) regen_amount = 0;
@@ -1857,7 +1857,7 @@ static void process_world_aux_timeout(void)
     }
 
     /* Mini-slow recovery - regen helps */
-    if ((p_ptr->minislow) && ((!p_ptr->no_air) || (get_race()->flags & RACE_IS_NONLIVING)))
+    if ((p_ptr->minislow) && ((!p_ptr->no_air) || (get_race()->flags & RACE_IS_NONLIVING) || (equip_find_art(ART_VAYU))))
     {
         int myregen = MAX(0, p_ptr->regen / 100);
         if ((!myregen) && (one_in_(3))) myregen++;
@@ -5064,7 +5064,7 @@ static void process_player(void)
             }
 
             /* Take damage from airlessness */
-            if ((p_ptr->no_air) && (!p_ptr->leaving) && (!(get_race()->flags & RACE_IS_NONLIVING)))
+            if ((p_ptr->no_air) && (!p_ptr->leaving) && (!(get_race()->flags & RACE_IS_NONLIVING)) && (!equip_find_art(ART_VAYU)))
             {
                 int divisor = 10 * SPEED_TO_ENERGY(p_ptr->pspeed);
                 int dmg = ((NO_AIR_MAX - p_ptr->no_air) * energy_use + (divisor * 2 - 1)) / divisor;
