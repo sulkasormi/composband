@@ -566,7 +566,7 @@ static void _munchkin_calc_bonuses(void)
     res_add(RES_CONF);
     p_ptr->hold_life = TRUE;
     p_ptr->munchkin_pseudo_id = TRUE;
-    if (!player_is_ninja)
+    if ((!player_is_ninja) && (!prace_is_(RACE_MON_MUMMY)))
         p_ptr->lite = TRUE;
 
     p_ptr->pspeed += p_ptr->lev/10 + 5;
@@ -576,7 +576,7 @@ static void _munchkin_get_flags(u32b flgs[OF_ARRAY_SIZE])
     add_flag(flgs, OF_RES_BLIND);
     add_flag(flgs, OF_RES_CONF);
     add_flag(flgs, OF_HOLD_LIFE);
-    if (!player_is_ninja)
+    if ((!player_is_ninja) && (!prace_is_(RACE_MON_MUMMY)))
         add_flag(flgs, OF_LITE);
     add_flag(flgs, OF_SPEED);
 }
