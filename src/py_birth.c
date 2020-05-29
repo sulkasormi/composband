@@ -363,9 +363,9 @@ void bump_numeral(char *nimi, int muutos)
         s32b arvo = find_arabic_numeral(nimi, &paikka);
         if (arvo < 1) return;
         if (paikka <= 0) return;
-        nimi[paikka] = '\0';
+        nimi[paikka - 1] = '\0';
         if ((arvo + muutos) < 1) return;
-        strcpy(luku, format("%d", arvo + muutos));
+        strcpy(luku, format(" %d", arvo + muutos));
         if (strlen(nimi) + strlen(luku) > PY_NAME_LEN) return;
         strcat(nimi, luku);
     }
