@@ -1846,8 +1846,9 @@ static void process_world_aux_timeout(void)
      * much slower than recovery from paralysis (2L vs L/2) */
     if (p_ptr->slow)
     {
-        do { set_slow(p_ptr->slow - 1, TRUE); }
-            while (p_ptr->slow && free_act_save_p(dun_level*2));
+        int vah = 0;
+        do { set_slow(p_ptr->slow - 1, TRUE); vah++; }
+            while (p_ptr->slow && free_act_save_p(dun_level*2) && vah < 5);
     }
 
     /* Unwellness recovery */
