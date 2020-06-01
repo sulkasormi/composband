@@ -3292,6 +3292,7 @@ int mod_spell_chance_1(int chance, int realm)
  */
 int mod_spell_chance_2(int chance, int realm)
 {
+    int min = (mut_present(MUT_HUMAN_CHR)) ? 1 : 0;
     if ((realm) && (realm == p_ptr->easy_realm1)) chance--;
 
     if (p_ptr->heavy_spell) chance += 5;
@@ -3301,7 +3302,7 @@ int mod_spell_chance_2(int chance, int realm)
         if (p_ptr->cumber_armor) chance += 5;
     }
 
-    return MAX(chance, 0);
+    return MAX(chance, min);
 }
 
 
