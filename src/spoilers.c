@@ -159,7 +159,7 @@ static cptr _class_fos_skill_desc(class_t *class_ptr) { return _fos_skill_desc(c
 static cptr _mon_race_fos_skill_desc(race_t *race_ptr) { return _fos_skill_desc(race_ptr->skills.fos, race_ptr->extra_skills.fos); }
 
 static cptr _fos_skill_desc2(int base) { return _skill_desc(base - 4, 1); }
-static cptr _race_fos_skill_desc(race_t *race_ptr) { return _fos_skill_desc2(race_ptr->skills.fos); }
+static cptr _race_fos_skill_desc(race_t *race_ptr) { return _fos_skill_desc2(race_ptr->skills.fos - 2); }
 static cptr _pers_fos_skill_desc(personality_ptr pers_ptr) { return _fos_skill_desc2((pers_ptr->skills.fos * 17 / 10) + 8); }
 static cptr _realm_fos_skill_desc(dragon_realm_ptr realm_ptr) { return _fos_skill_desc2(realm_ptr->skills.fos + 8); }
 
@@ -508,7 +508,41 @@ static void _demigods_help(FILE* fp)
 
         vec_free(vec);
     }
-    fputs("\n\n", fp);
+    fputs("\n", fp);
+
+    {
+        vec_ptr vec = vec_alloc((vec_free_f)_name_desc_free);
+
+        fputs("<topic:Weaknesses><style:heading>Table 5 - Human Weaknesses</style>\n\n", fp);
+        fputs("Normal humans receive one demigod talent, but they also acquire a special human weakness on reaching level 35. "
+                    "Each weakness corresponds to one of the six basic stats; which weakness a human gets depends on "
+                    "their primary spellcasting stat. Characters with no spell stat are assumed to be "
+                    "warrior-like and receive the Unbalancing Strikes weakness.\n\n", fp);
+
+        for (i = MUT_HUMAN_STR; i <= MUT_HUMAN_CHR; i++)
+        {
+            char buf[1024];
+            _name_desc_ptr nd = _name_desc_alloc();
+
+            mut_name(i, buf);
+            string_append_s(nd->name, buf);
+
+            mut_help_desc(i, buf);
+            string_append_s(nd->desc, buf);
+            vec_add(vec, nd);
+        }
+
+        for (i = 0; i < vec_length(vec); i++)
+        {
+            _name_desc_ptr nd = vec_get(vec, i);
+            /*fprintf(fp, "<color:G>%s: </color>%s\n",*/
+            fprintf(fp, "  <indent><color:R>%s</color>\n%s</indent>\n\n",
+                string_buffer(nd->name), string_buffer(nd->desc));
+        }
+
+        vec_free(vec);
+    }
+    fputs("\n", fp);
 }
 
 static void _draconians_help(FILE* fp)
