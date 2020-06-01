@@ -1767,8 +1767,8 @@ void do_cmd_debug(void)
             for (i = 0; i < 32; ++i)
                 mut_gain(i);
         }
-        else
-            mut_gain(n);
+        else if (!mut_present(n)) mut_gain(n);
+        else mut_lose(n);
         break;
     }
 
