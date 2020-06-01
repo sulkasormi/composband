@@ -161,6 +161,12 @@ static mutation_info _mutations[MAX_MUTATIONS] =
     {MUT_RATING_AWFUL,                   0,             0, 0, {0,  0,   0, easy_tiring_II_mut}},
     {MUT_RATING_BAD,                     0,             0, 4, {0,  0,   0, limp_mut}},
 
+    {MUT_RATING_BAD,                     0,             0, 0, {0,  0,   0, human_str_mut}},
+    {MUT_RATING_BAD,        MUT_TYPE_BONUS,             0, 0, {0,  0,   0, human_int_mut}},
+    {MUT_RATING_BAD,                     0,             0, 0, {0,  0,   0, human_wis_mut}},
+    {MUT_RATING_BAD,                     0,             0, 0, {0,  0,   0, human_dex_mut}},
+    {MUT_RATING_BAD,       MUT_TYPE_EFFECT,             0, 0, {0,  0,   0, human_con_mut}},
+    {MUT_RATING_BAD,        MUT_TYPE_BONUS,             0, 0, {0,  0,   0, human_chr_mut}},
 };
 
 int _mut_prob_gain(int i)
@@ -377,6 +383,9 @@ void mut_get_flags(u32b flgs[OF_ARRAY_SIZE])
 
     if (mut_present(MUT_MOTION))
         add_flag(flgs, OF_FREE_ACT);
+
+    if (mut_present(MUT_HUMAN_INT))
+        add_flag(flgs, OF_VULN_FEAR);
 
     if (mut_present(MUT_TREAD_SOFTLY))
         add_flag(flgs, OF_STEALTH);
