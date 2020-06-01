@@ -3670,6 +3670,7 @@ void do_cmd_fire_aux2(obj_ptr bow, obj_ptr arrows, int sx, int sy, int tx, int t
 
     /* Check for easy tiring */
     p_inc_fatigue(MUT_EASY_TIRING2, 7500 / NUM_SHOTS);
+    check_muscle_sprains(250, "You feel a sudden sharp pain running down from your right shoulder!");
 }
 
 
