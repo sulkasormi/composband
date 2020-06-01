@@ -398,6 +398,7 @@ bool test_hit_fire(int chance, int ac, int vis)
 
     /* Punish lazy characters */
     if ((personality_is_(PERS_LAZY)) && (one_in_(20))) return (FALSE);
+    if ((mut_present(MUT_HUMAN_CHR)) && (one_in_(20))) return (FALSE);
 
     /* Power competes against armor */
     if (randint0(chance) < (ac * 3 / 4)) return (FALSE);
@@ -431,6 +432,7 @@ bool test_hit_norm(int chance, int ac, int vis)
 
     /* Punish lazy characters */
     if ((personality_is_(PERS_LAZY)) && (one_in_(20))) return (FALSE);
+    if ((mut_present(MUT_HUMAN_CHR)) && (one_in_(20))) return (FALSE);
 
     /* Power must defeat armor */
     if (randint0(chance) < (ac * 3 / 4)) return (FALSE);
@@ -1334,6 +1336,8 @@ static bool _pumpkin_drain_life(mon_ptr m_ptr, int *power, bool *weak)
     return TRUE;
 }
 
+static bool _allow_crits = TRUE;
+
 static void innate_attacks(s16b m_idx, bool *fear, bool *mdeath, int mode)
 {
     int             dam, base_dam, effect_pow, to_h, chance;
@@ -1516,13 +1520,18 @@ static void innate_attacks(s16b m_idx, bool *fear, bool *mdeath, int mode)
                 }
 
                 base_dam += a->to_d;
-                if (!(a->flags & (INNATE_NO_DAM | INNATE_NO_CRIT)))
+                if ((!(a->flags & (INNATE_NO_DAM | INNATE_NO_CRIT))) && (_allow_crits))
                 {
                     critical_t crit = critical_norm(a->weight, to_h, 0, mode, HAND_NONE);
                     if (crit.desc)
                     {
                         base_dam = base_dam * crit.mul/100 + crit.to_d;
                         msg_print(crit.desc);
+                        if (mut_present(MUT_HUMAN_STR))
+                        {
+                            _allow_crits = FALSE;
+                            energy_use += (energy_use / 5);
+                        }
                     }
                 }
 
@@ -1802,6 +1811,7 @@ static void innate_attacks(s16b m_idx, bool *fear, bool *mdeath, int mode)
                     }
                 }
                 touch_zap_player(m_idx);
+                check_muscle_sprains(300, "You pull a muscle!");
 
                 if (a->flags & INNATE_EXPLODE)
                 {
@@ -1830,7 +1840,10 @@ static void innate_attacks(s16b m_idx, bool *fear, bool *mdeath, int mode)
                 if (is_gaze)
                     msg_format("%^s avoids your gaze.", m_name_subject);
                 else
+                {
                     msg_print("You miss.");
+                    check_muscle_sprains(300, "You pull a muscle!");
+                }
             }
             fuiuchi = FALSE; /* Clumsy! */
 
@@ -2434,11 +2447,19 @@ static bool py_attack_aux(int y, int x, bool *fear, bool *mdeath, s16b hand, int
                     msg_format(ma_ptr->desc, m_name_object);
                 }
 
-                crit = monk_get_critical(ma_ptr, hand, mode);
-                if (crit.desc)
+                if (_allow_crits)
                 {
-                    k = k * crit.mul/100 + crit.to_d;
-                    msg_print(crit.desc);
+                    crit = monk_get_critical(ma_ptr, hand, mode);
+                    if (crit.desc)
+                    {
+                        k = k * crit.mul/100 + crit.to_d;
+                        msg_print(crit.desc);
+                        if (mut_present(MUT_HUMAN_STR))
+                        {
+                            _allow_crits = FALSE;
+                            energy_use += (energy_use / 5);
+                        }
+                    }
                 }
 
                 if ((special_effect == MA_KNEE) && ((k + p_ptr->weapon_info[hand].to_d) < m_ptr->hp))
@@ -2540,6 +2561,7 @@ static bool py_attack_aux(int y, int x, bool *fear, bool *mdeath, s16b hand, int
                  && mode != HISSATSU_KYUSHO
                  && mode != MYSTIC_KILL
                  && weaponmaster_get_toggle() != TOGGLE_ORDER_BLADE
+                 && _allow_crits
                  && !have_flag(flgs, OF_BRAND_ORDER) )
                 {
                     int bonus = 0;
@@ -2549,6 +2571,11 @@ static bool py_attack_aux(int y, int x, bool *fear, bool *mdeath, s16b hand, int
                     {
                         k = k * crit.mul/100 + crit.to_d;
                         msg_print(crit.desc);
+                        if (mut_present(MUT_HUMAN_STR))
+                        {
+                            _allow_crits = FALSE;
+                            energy_use += (energy_use / 5);
+                        }
                     }
                 }
 
@@ -2953,6 +2980,8 @@ static bool py_attack_aux(int y, int x, bool *fear, bool *mdeath, s16b hand, int
 
             dam_tot += k;
 
+            check_muscle_sprains(500, "You sprain a muscle!");
+
             /* Damage, check for fear and death */
             if (mon_take_hit(c_ptr->m_idx, k, DAM_TYPE_MELEE, fear, NULL))
             {
@@ -2992,7 +3021,7 @@ static bool py_attack_aux(int y, int x, bool *fear, bool *mdeath, s16b hand, int
                 if ((p_ptr->pclass == CLASS_BERSERKER || mut_present(MUT_FANTASTIC_FRENZY) || beorning_is_(BEORNING_FORM_BEAR)) && energy_use)
                 {
                     int ct = MAX(1, p_ptr->weapon_ct); /* paranoia ... if we are called with 0, that is a bug (I cannot reproduce) */
-                    int frac = 100/ct;                 /* Perhaps the 'zerker leveled up to 35 in the middle of a round of attacks? */
+                    int frac = (_allow_crits) ? 100/ct : 120/ct; /* Perhaps the 'zerker leveled up to 35 in the middle of a round of attacks? */
 
                     energy_use = 0;
                     if (hand) /* hand is 0, 1, ... so hand is the number of successful rounds of attacks so far */
@@ -3427,6 +3456,7 @@ static bool py_attack_aux(int y, int x, bool *fear, bool *mdeath, s16b hand, int
                 sound(SOUND_MISS);
                 msg_format("You miss.", m_name_object);
             }
+            check_muscle_sprains(250, "You sprain a muscle!");
         }
         backstab = FALSE;
         fuiuchi = FALSE;
@@ -3725,9 +3755,17 @@ bool py_attack(int y, int x, int mode)
     monster_type    *m_ptr = &m_list[c_ptr->m_idx];
     monster_race    *r_ptr = &r_info[m_ptr->r_idx];
     char            m_name[80];
+    static s32b     last_attack_turn = 0;
 
     /* Disturb the player */
     disturb(0, 0);
+
+    /* Allow crits */
+    if (game_turn != last_attack_turn)
+    {
+        _allow_crits = TRUE;
+        last_attack_turn = game_turn;
+    }
 
     energy_use = 100;
 
