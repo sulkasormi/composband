@@ -434,13 +434,15 @@ void do_cmd_hissatsu(void)
 
     sound(SOUND_ZAP);
 
+    energy_use = 0;
+
     /* Cast the spell */
     if (!do_spell(REALM_HISSATSU, n, SPELL_CAST)) return;
 
     spell_stats_on_cast_old(REALM_HISSATSU, n);
 
     /* Take a turn */
-    energy_use = 100;
+    energy_use = MAX(energy_use, 100);
 
     /* Use some mana */
     p_ptr->csp -= spell.smana;
