@@ -14,7 +14,11 @@ int hit_chance_innate(int to_h, int ac)
         ac = ac * (100 - p_ptr->lev) / 100;
 
     odds = 95*(chance - ac*3/4)*1000/(chance*100);
-    if (personality_is_(PERS_LAZY)) odds = (19 * odds + 10) / 20;
+    if (odds > 50)
+    {
+        if (personality_is_(PERS_LAZY)) odds = (19 * odds + 10) / 20;
+        if (mut_present(MUT_HUMAN_CHR)) odds = (19 * odds + 10) / 20;
+    }
     if (odds < 50) odds = 50;
     return (odds+5)/10;
 }
@@ -33,8 +37,12 @@ int hit_chance(int hand, int to_h, int ac)
     if (chance <= 0) return 0;
 
     odds = 95*(chance - ac*3/4)*1000/(chance*100);
+    if (odds > 50)
+    {
+        if (personality_is_(PERS_LAZY)) odds = (19 * odds + 10) / 20;
+        if (mut_present(MUT_HUMAN_CHR)) odds = (19 * odds + 10) / 20;
+    }
     if (odds < 50) odds = 50;
-    else if (personality_is_(PERS_LAZY)) odds = (19 * odds + 10) / 20;
     if (display_weapon_mode == HISSATSU_MAJIN) odds /= 2;
     return (odds+5)/10;
 }
@@ -50,7 +58,11 @@ int throw_hit_chance(int to_h, int ac, int range)
     if (melee_challenge) return 0;
 
     odds = 95*(chance - ac*3/4)*1000/(chance*100);
-    if (personality_is_(PERS_LAZY)) odds = (19 * odds + 10) / 20;
+    if (odds > 50)
+    {
+        if (personality_is_(PERS_LAZY)) odds = (19 * odds + 10) / 20;
+        if (mut_present(MUT_HUMAN_CHR)) odds = (19 * odds + 10) / 20;
+    }
     if (odds < 50) odds = 50;
     return (odds+5)/10;
 }
@@ -73,7 +85,11 @@ int bow_hit_chance(int to_h, int ac)
     }
 
     odds = 95*(chance - ac*3/4)*1000/(chance*100);
-    if (personality_is_(PERS_LAZY)) odds = (19 * odds + 10) / 20;
+    if (odds > 50)
+    {
+        if (personality_is_(PERS_LAZY)) odds = (19 * odds + 10) / 20;
+        if (mut_present(MUT_HUMAN_CHR)) odds = (19 * odds + 10) / 20;
+    }
     if (odds < 50) odds = 50;
     return (odds+5)/10;
 }
@@ -1400,6 +1416,51 @@ static void _display_weapon_slay(int base_mult, int slay_mult, bool force, int b
                     mult/100, mult%100);
 }
 
+/* Certified 100% fake math
+ * Do not take any mathematics lessons here
+ * This is not remotely even the most accurate way to do fake fractional
+ * exponentiation with integers, but it combines speed, simplicity
+ * and reasonable accuracy, and limits the maximum error rather than the
+ * average error since small errors here are drowned out by rounding
+ * elsewhere
+ * -- base is probability in parts per 10000, exponent is scaled by 100
+ * -- returns probability (base/10000)^exponent, in parts per 10000 */
+static s32b _fake_fractional_power(int base, s32b exponent)
+{
+    s32b t = base * 10;
+    s32b c = 10000 - base;
+    s32b u = 0;
+    s32b m = 0;
+    s32b div = 0;
+    if (t >= 100000) return 10000;
+    if (exponent <= 100) return base;
+    exponent -= 100;
+    while (exponent >= 100)
+    {
+        t = (t * base) + 5000L;
+        t /= 10000L;
+        if (!t) return 0;
+        exponent -= 100;
+    }
+
+    if (exponent != 0)
+    {
+        div = 450000L / (450L - (base / 33)); /* Do not ask */
+        u = exponent * 1000L + ((c * exponent * (100 - exponent) + (div / 2)) / div);
+    }
+    m = (c * u + 50000L) / 100000L;
+    if (m != 0)
+    {
+        t *= (10000L - m);
+        t += 5000L;
+        t /= 10000L;
+    }
+    t = (t + 5) / 10;
+/*    msg_format("Base: %d Blows: %d Tulos: %d Div: %d", base, exponent, t, div);
+    (void)inkey();*/
+    return t;
+}
+
 void display_weapon_info(doc_ptr doc, int hand)
 {
     object_type *o_ptr = equip_obj(p_ptr->weapon_info[hand].slot);
@@ -1536,6 +1597,23 @@ void display_weapon_info(doc_ptr doc, int hand)
         }
         else /* Evil voodoo */
         {
+            /* Fake math for the human crit-limiting mut. (All the other
+             * math here is real, just incredibly ugly...) We could use
+             * real math if we were willing to use non-integers, but we can
+             * get close enough using integers that rounding errors already
+             * present in any case are larger than the math errors */
+            if ((mut_present(MUT_HUMAN_STR)) && (num_blow > 100) && (crits))
+            {
+                /* Store probabilities in parts per 10000 */
+                s32b orig_crit_prob = (_critical_comp * 10000 + (_critical_roll / 2)) / _critical_roll;
+                s32b crit_round_prob = 10000 - _fake_fractional_power(10000 - orig_crit_prob, num_blow);
+                s32b real_crit_prob = (crit_round_prob * 100 + (num_blow / 2)) / num_blow;
+                if (real_crit_prob < orig_crit_prob)
+                {
+                    _critical_comp = (_critical_comp * real_crit_prob * 2) / orig_crit_prob + 1;
+                    _critical_roll *= 2;
+                }
+            }
             if (_critical_roll != _critical_comp)
             {
                 crit.mul -= (_critical_attempts * 100);
