@@ -1285,6 +1285,7 @@ bool make_attack_normal(int m_idx)
                 }
                 break;
             }
+            check_muscle_sprains(150, "You sprain a muscle dodging the attack!");
         }
 
 
