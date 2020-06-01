@@ -223,6 +223,8 @@ static int _plev(void)
     int l = p_ptr->lev;
     if (personality_is_(PERS_CRAVEN))
         l = MAX(1, l - 5);
+    if (mut_present(MUT_HUMAN_INT))
+        l = MAX(1, l - 10);
     if (l <= 40)
         return 5 + l;
 
