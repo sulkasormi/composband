@@ -2934,6 +2934,11 @@ void update_mon(int m_idx, bool full)
         }
     }
 
+    if ((flag) && (mut_present(MUT_HUMAN_WIS)) && (!easy) && (!(m_ptr->mflag2 & MFLAG2_MARK)) && (r_ptr->flags3 & RF3_EVIL) && (!is_pet(m_ptr)))
+    {
+        flag = FALSE;
+    }
+
     if (p_ptr->wizard)
         flag = TRUE;
 
