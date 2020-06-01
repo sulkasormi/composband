@@ -1567,6 +1567,172 @@ void horns_mut(int cmd, variant *res)
     }
 }
 
+void human_chr_mut(int cmd, variant *res)
+{
+    switch (cmd)
+    {
+    case SPELL_NAME:
+        var_set_string(res, "Overconfidence");
+        break;
+    case SPELL_GAIN_MUT:
+        msg_print("You become overconfident!");
+        break;
+    case SPELL_LOSE_MUT:
+        msg_print("You are no longer overconfident.");
+        break;
+    case SPELL_MUT_DESC:
+        var_set_string(res, "Overconfidence makes you sloppy.");
+        break;
+    case SPELL_HELP_DESC:
+        var_set_string(res, "Highly charismatic you may be; but getting too caught up in your own hype results in overconfidence and sloppy work. Lack of sufficient concentration gives you penalties to melee and shooting accuracy and to device and spell failure rates, similar to those from the Lazy personality.");
+        break;
+    case SPELL_CALC_BONUS:
+        p_ptr->skills.dev -= 10;
+        p_ptr->skills.thn -= 16;
+        p_ptr->skills.thb -= 10;
+        p_ptr->to_m_chance += 10;
+        break;
+    default:
+        default_spell(cmd, res);
+        break;
+    }
+}
+
+void human_con_mut(int cmd, variant *res)
+{
+    switch (cmd)
+    {
+    case SPELL_NAME:
+        var_set_string(res, "Pushed to the Limits");
+        break;
+    case SPELL_GAIN_MUT:
+        msg_print("Your body is pushed to its limits.");
+        break;
+    case SPELL_LOSE_MUT:
+        msg_print("Your body is no longer pushed to its limits.");
+        break;
+    case SPELL_MUT_DESC:
+        var_set_string(res, "You suffer from frequent bouts of unwellness.");
+        break;
+    case SPELL_HELP_DESC:
+        var_set_string(res, "Your constitution and endurance are extraordinary; but as with many highly athletic people, your immune system has trouble keeping up. You suffer from frequent bouts of unwellness which temporarily decrease your Constitution and Dexterity.");
+        break;
+    case SPELL_PROCESS:
+        if ((!p_ptr->unwell) && (one_in_(200)))
+        {
+            disturb(0, 0);
+            set_unwell(50, TRUE);
+        }
+        break;
+    default:
+        default_spell(cmd, res);
+        break;
+    }
+}
+
+void human_dex_mut(int cmd, variant *res)
+{
+    switch (cmd)
+    {
+    case SPELL_NAME:
+        var_set_string(res, "Nimbler than Your Body");
+        break;
+    case SPELL_GAIN_MUT:
+        msg_print("You are too agile for your body.");
+        break;
+    case SPELL_LOSE_MUT:
+        msg_print("You are no longer too agile for your body.");
+        break;
+    case SPELL_MUT_DESC:
+        var_set_string(res, "You occasionally sprain a muscle in combat.");
+        break;
+    case SPELL_HELP_DESC:
+        var_set_string(res, "Agility is your strongest point; but there is only so much you can do in a human body. You sometimes sprain a muscle while hitting monsters, dodging enemy blows or firing projectiles; this temporarily reduces your speed by 10.");
+        break;
+    default:
+        default_spell(cmd, res);
+        break;
+    }
+}
+
+void human_int_mut(int cmd, variant *res)
+{
+    switch (cmd)
+    {
+    case SPELL_NAME:
+        var_set_string(res, "Overactive Imagination");
+        break;
+    case SPELL_GAIN_MUT:
+        msg_print("Your imagination becomes overactive.");
+        break;
+    case SPELL_LOSE_MUT:
+        msg_print("Your imagination is no longer overactive.");
+        break;
+    case SPELL_MUT_DESC:
+        var_set_string(res, "You have an overactive imagination.");
+        break;
+    case SPELL_HELP_DESC:
+        var_set_string(res, "Your brain is highly developed - for a human - but perhaps sometimes you can have too much of a good thing? Your overactive imagination makes you vulnerable to fear, and reduces your effective character level by 10 for all fear-related player/monster interactions.");
+        break;
+    case SPELL_CALC_BONUS:
+        res_add_vuln(RES_FEAR);
+        break;
+    default:
+        default_spell(cmd, res);
+        break;
+    }
+}
+
+void human_str_mut(int cmd, variant *res)
+{
+    switch (cmd)
+    {
+    case SPELL_NAME:
+        var_set_string(res, "Unbalancing Strikes");
+        break;
+    case SPELL_GAIN_MUT:
+        msg_print("You can no longer control your own strength.");
+        break;
+    case SPELL_LOSE_MUT:
+        msg_print("You can control your own strength again.");
+        break;
+    case SPELL_MUT_DESC:
+        var_set_string(res, "The power of your strongest hits throws you off-balance.");
+        break;
+    case SPELL_HELP_DESC:
+        var_set_string(res, "Strength is your greatest asset; but you now hit with too much power to control. Every critical hit you score in melee will unbalance you; you cannot score further criticals in that round, and since you need extra time to regain your balance, such a round will consume 1.2 turns instead of 1.");
+        break;
+    default:
+        default_spell(cmd, res);
+        break;
+    }
+}
+
+void human_wis_mut(int cmd, variant *res)
+{
+    switch (cmd)
+    {
+    case SPELL_NAME:
+        var_set_string(res, "Attuned to God");
+        break;
+    case SPELL_GAIN_MUT:
+        msg_print("You no longer feel any connection to evil creatures.");
+        break;
+    case SPELL_LOSE_MUT:
+        msg_print("You are no longer disconnected from evil minds.");
+        break;
+    case SPELL_MUT_DESC:
+        var_set_string(res, "You feel no connection to creatures of evil.");
+        break;
+    case SPELL_HELP_DESC:
+        var_set_string(res, "You are extremely wise, and have spent so much time in meditation that your mind is now fully attuned to the divine; but as a consequence, you feel no connection to evil monsters. You cannot detect any evil monster telepathically, even with spells or equipment of telepathy.");
+        break;
+    default:
+        default_spell(cmd, res);
+        break;
+    }
+}
+
 void hypochondria_mut(int cmd, variant *res)
 {
     switch (cmd)
