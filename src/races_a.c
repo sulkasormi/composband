@@ -2418,11 +2418,21 @@ race_t *hobbit_get_race(void)
 /****************************************************************
  * Human
  ****************************************************************/
+static int _human_gain_weakness(void)
+{
+    caster_info *caster_ptr = get_caster_info();
+    int _mut, _stat = A_STR;
+    if ((caster_ptr) && (caster_ptr->which_stat > A_STR)) _stat = caster_ptr->which_stat;
+    _mut = (MUT_HUMAN_STR + _stat - A_STR);
+    mut_gain(_mut);
+    return _mut;
+}
+
 static void _human_gain_power(int which)
 {
 	 if (p_ptr->demigod_power[which] < 0)
 	 {
-		 int idx = mut_gain_choice(mut_demigod_pred);
+		 int idx = (which == 1) ? _human_gain_weakness() : mut_gain_choice(mut_demigod_pred);
 		 mut_lock(idx);
 		 p_ptr->demigod_power[which] = idx;
 	 }
@@ -2436,7 +2446,7 @@ static void _human_gain_level(int new_level)
 {
 	 if (new_level >= 20)
 		 _human_gain_power(0);
-	 if (new_level >= 40)
+	 if ((new_level >= 35) && (p_ptr->prace != RACE_DOPPELGANGER)) 
 		 _human_gain_power(1);
 }
 
@@ -2450,8 +2460,10 @@ race_t *human_get_race(void)
         me.name = "Human";
         me.desc = "Humans are average at everything, and tend to gain levels rapidly due "
                     "to their short life spans. No racial adjustments or intrinsics occur "
-                    "to characters choosing human. However, humans may select special talents "
-                    "at levels 20 and 40 that more than make up for their apparent mediocrity.";
+                    "to characters choosing human. Humans receive one special talent at "
+                    "level 20, which helps make up for their apparent mediocrity; but at "
+                    "level 35 they acquire a special human weakness. See "
+                    "<link:Demigods.txt#Weaknesses> for more information.";
 
         me.stats[A_STR] =  0;
         me.stats[A_INT] =  0;
