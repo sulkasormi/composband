@@ -60,9 +60,9 @@ Learn to know the monsters, develop strategies appropriate to their strengths an
 
 <color:R>A:</color> It's hard to say what the strongest class is, both because there are so many (with different strengths and approaches) and because some classes (like berserkers) are strong in the early game and not so strong later, while others (like psions, an extremely powerful endgame class) have the opposite curve. Ninjas are often used as an example of a strong class, and while it's very debatable whether they are the strongest, they do have the advantage of steady development that keeps them powerful through all phases of the game. The same thing could be said of weaponsmiths.
 
-Demigods and Amberites are two of the most powerful races, but they also have a very steep leveling-up penalty, which can be a significant drawback if you want to go places fast. The "plain" human is actually a surprisingly powerful pick, since humans level up very fast but still get two demigod powers at levels 20 and 40.
+Demigods, Archons, Balrogs, Klackons and Draconians are all highly powerful races, but they also have a very steep leveling-up penalty, which can be a significant drawback if you want to go places fast. The "plain" human is actually surprisingly powerful especially in the early going, thanks to its low level-up penalty and early access to a demigod talent.
 
-At the opposite end, yeek tourists and snotling tourists are extremely weak combinations, used by players looking for the ultimate challenge.
+At the opposite end, yeek tourists and snotling tourists are extremely weak combinations, used by players looking for a challenge. Not that it makes much of a difference on a Nightmare-mode Sexy thrall...
 
 
 <color:G>Q:</color> How do I put arrows (or other projectiles) in my quiver?
