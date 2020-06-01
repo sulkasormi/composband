@@ -1857,6 +1857,7 @@ extern byte monster_slow(monster_type *m_ptr);
 extern bool p_inc_minislow(int lisays);
 extern void p_inc_fatigue(int check_mut, int lisays);
 extern bool m_inc_minislow(monster_type *m_ptr, int lisays);
+extern void check_muscle_sprains(int chance, char *viesti);
 extern void dispel_player(void);
 extern bool disenchant_player(void);
 extern void lose_kata(void);
