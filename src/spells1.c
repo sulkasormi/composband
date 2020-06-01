@@ -2062,6 +2062,7 @@ static bool project_p(int who, cptr who_name, int r, int y, int x, int dam, int 
                     msg_print("You nimbly dodge the attack!");
                     dam = 0;
                     evaded = TRUE;
+                    check_muscle_sprains(75, "You feel a sudden stabbing pain!");
                 }
             }
 
