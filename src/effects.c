@@ -358,6 +358,15 @@ bool m_inc_minislow(monster_type *m_ptr, int lisays)
     return TRUE;
 }
 
+void check_muscle_sprains(int chance, char *viesti)
+{
+    if (!mut_present(MUT_HUMAN_DEX)) return;
+    if (!one_in_(chance)) return;
+    if (p_ptr->slow) return;
+    msg_format("%s", viesti);
+    set_slow(50 + randint1(50), FALSE);
+}
+
 /* TODO: Timed player effects needs a complete rework ... */
 bool disenchant_player(void)
 {
