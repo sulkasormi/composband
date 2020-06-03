@@ -380,6 +380,11 @@ static int colortable[MAX_COLOR];
  */
 static int bg_color = COLOR_BLACK;
 
+/*
+ * Local max_color
+ */
+static int _max_color = MAX_COLOR;
+
 #endif
 
 
@@ -1220,7 +1225,7 @@ static errr Term_text_gcu(int x, int y, int n, byte a, cptr s)
 #ifdef USE_NCURSES_ACS
    /* do we have colors + 16 ? */
    /* then call special routine for drawing special characters */
-   if (a & 0x10)
+   if (a & (COLOR_MASK + 1))
    {
       Term_acs_text_gcu(x, y, n, a, s);
       return(0);
@@ -1407,6 +1412,8 @@ errr init_gcu(int argc, char *argv[])
     if (use_default_colors() == OK) bg_color = -1;
 #endif
 
+/*   _max_color = MAX(16, MIN(MAX_COLOR, COLORS));*/
+
    /* Attempt to use colors */
    if (can_use_color)
    {
@@ -1439,22 +1446,39 @@ errr init_gcu(int argc, char *argv[])
 		colortable[13] = (COLOR_PAIR(2) | A_BRIGHT);	/* Light Green */
 		colortable[14] = (COLOR_PAIR(4) | A_BRIGHT);	/* Light Blue */
 		colortable[15] = (COLOR_PAIR(3) | A_NORMAL);	/* Light Umber XXX */
-		colortable[16] = (COLOR_PAIR(2) | A_NORMAL);	/* Int. Green */
-		colortable[17] = (COLOR_PAIR(5) | A_BRIGHT);	/* Pink */
-		colortable[18] = (COLOR_PAIR(4) | A_BRIGHT);	/* Int. Blue */
-		colortable[19] = (COLOR_PAIR(5) | A_NORMAL);	/* Purple */
-		colortable[20] = (COLOR_PAIR(2) | A_BRIGHT);	/* Teal */
-		colortable[21] = (COLOR_PAIR(4) | A_BRIGHT);	/* Sky-Blue */
-		colortable[22] = (COLOR_PAIR(3) | A_NORMAL);	/* Mud */
-		colortable[23] = (COLOR_PAIR(3) | A_BRIGHT);	/* Dark Yellow */
-		colortable[24] = (COLOR_PAIR(4) | A_BRIGHT);	/* Int. Blue */
-		colortable[25] = (COLOR_PAIR(1) | A_BRIGHT);	/* Light Orange */
-		colortable[26] = (COLOR_PAIR(5) | A_BRIGHT);	/* Lilac */
-		colortable[27] = (COLOR_PAIR(5) | A_NORMAL);	/* Dark Purple */
-		colortable[28] = (COLOR_PAIR(4) | A_NORMAL);	/* Dark Sky-Blue */
-		colortable[29] = (COLOR_PAIR(0) | A_BRIGHT);	/* Pale Blue */
-		colortable[30] = (COLOR_PAIR(1) | A_NORMAL);	/* Dark Pink */
-		colortable[31] = (COLOR_PAIR(1) | A_NORMAL);	/* Chestnut */
+   }
+
+   if (_max_color > 16)
+   {
+        int _offset = 0;
+        if ((can_fix_color) && (COLOR_PAIRS >= 16))
+        {
+            _offset = 8;
+            init_pair(8, COLOR_WHITE,   bg_color);
+            init_pair(9, COLOR_RED,     bg_color);
+            init_pair(10, COLOR_GREEN,   bg_color);
+            init_pair(11, COLOR_YELLOW,  bg_color);
+            init_pair(12, COLOR_BLUE,    bg_color);
+            init_pair(13, COLOR_MAGENTA, bg_color);
+            init_pair(14, COLOR_CYAN,    bg_color);
+            init_pair(15, COLOR_BLACK,   bg_color);
+        }
+	colortable[16] = (COLOR_PAIR(2 + _offset) | A_NORMAL);	/* Int. Green */
+	colortable[17] = (COLOR_PAIR(5 + _offset) | A_BRIGHT);	/* Pink */
+	colortable[18] = (COLOR_PAIR(4 + _offset) | A_BRIGHT);	/* Int. Blue */
+	colortable[19] = (COLOR_PAIR(5 + _offset) | A_NORMAL);	/* Purple */
+	colortable[20] = (COLOR_PAIR(2 + _offset) | A_BRIGHT);	/* Teal */
+	colortable[21] = (COLOR_PAIR(4 + _offset) | A_BRIGHT);	/* Sky-Blue */
+	colortable[22] = (COLOR_PAIR(3 + _offset) | A_NORMAL);	/* Mud */
+	colortable[23] = (COLOR_PAIR(3 + _offset) | A_BRIGHT);	/* Dark Yellow */
+	colortable[24] = (COLOR_PAIR(4 + _offset) | A_BRIGHT);	/* Int. Blue */
+	colortable[25] = (COLOR_PAIR(1 + _offset) | A_BRIGHT);	/* Light Orange */
+	colortable[26] = (COLOR_PAIR(5 + _offset) | A_BRIGHT);	/* Lilac */
+	colortable[27] = (COLOR_PAIR(5 + _offset) | A_NORMAL);	/* Dark Purple */
+	colortable[28] = (COLOR_PAIR(4 + _offset) | A_NORMAL);	/* Dark Sky-Blue */
+	colortable[29] = (COLOR_PAIR(_offset) | A_BRIGHT);	/* Pale Blue */
+	colortable[30] = (COLOR_PAIR(1 + _offset) | A_NORMAL);	/* Dark Pink */
+	colortable[31] = (COLOR_PAIR(1 + _offset) | A_NORMAL);	/* Chestnut */
    }
 
 #endif
