@@ -1067,8 +1067,8 @@ void _draugr_innate_attacks(void)
 
         a.dd = 2 + l / 9;
         a.ds = 2 + l / 9;
-        a.to_d += _curse_boost_capped;
-        a.to_h += _curse_boost_capped;
+        a.to_d += _curse_boost_capped * 3 / 2;
+        a.to_h += _curse_boost_capped * 3 / 2;
 
         a.effect[0] = GF_MISSILE;
         a.effect[1] = GF_POIS;
@@ -1345,6 +1345,7 @@ static void _calc_bonuses(void)
     p_ptr->to_d_m += boost;
     p_ptr->weapon_info[0].dis_to_d += boost; p_ptr->weapon_info[1].dis_to_d += boost;
     p_ptr->see_nocto = TRUE;
+    p_ptr->hold_life++;
 
     res_add(RES_POIS);
     res_add(RES_COLD);
@@ -1387,6 +1388,7 @@ static void _get_flags(u32b flgs[OF_ARRAY_SIZE])
     add_flag(flgs, OF_RES_COLD);
     add_flag(flgs, OF_RES_NETHER);
     add_flag(flgs, OF_NIGHT_VISION);
+    add_flag(flgs, OF_HOLD_LIFE);
     if (p_ptr->lev >= 27)
     {
         add_flag(flgs, OF_RES_ELEC);
