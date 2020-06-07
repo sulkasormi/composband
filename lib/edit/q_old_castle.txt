@@ -146,7 +146,7 @@ R:ART(harness of the hell)
 ?:[AND [EQU $RACE Mummy] [EQU [MOD $RANDOM27 5] 0] ]
 R:ART(thingol)
 ?:[AND [EQU $RACE Mummy] [GEQ [MOD $RANDOM27 5] 1] ]
-R:ART(palantir of westernesse)
+R:ART(ingwe)
 ##########################################################################
 # Hydra
 ?:[AND [EQU $CLASS Monster] [EQU $RACE Hydra Golem] [EQU [MOD $RANDOM27 5] 0] ]
