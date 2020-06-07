@@ -834,8 +834,9 @@ void teleport_level(int m_idx)
 int choose_dungeon(cptr note, int y, int x)
 {
     int select_dungeon;
-    int i, num = 0;
+    int i, paikka, num = 0, sivu = Term->hgt - y;
     s16b *dun;
+    char multicase[84] = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789#$%&'()*+,-./:;<=>{|}";
 
     /* Hack -- No need to choose dungeon in some case */
     if (no_wilderness || ironman_downward)
@@ -853,18 +854,30 @@ int choose_dungeon(cptr note, int y, int x)
     C_MAKE(dun, max_d_idx, s16b);
 
     screen_save();
+    if (sivu < 5)
+    {
+        y = 1; /* paranoia */
+        sivu = Term->hgt - y;
+    }
     for(i = 1; i < max_d_idx; i++)
     {
         char buf[80];
         bool seiha = dungeon_conquered(i);
+        int xx = x, yy = y + num;
 
         if (!d_info[i].maxdepth) continue;
         if (d_info[i].flags1 & DF1_RANDOM) continue;
         if (d_info[i].flags1 & DF1_SUPPRESSED) continue;
         if (!max_dlv[i]) continue;
 
-        sprintf(buf," %c) %c%-16s : Max level %d ", 'a'+num, seiha ? '!' : ' ', d_name + d_info[i].name, max_dlv[i]);
-        put_str(buf, y + num, x);
+        sprintf(buf," %c) %c%-16s : Max level %d ", multicase[num], seiha ? '!' : ' ', d_name + d_info[i].name, max_dlv[i]);
+        if (num >= sivu)
+        {
+            yy = y + (num % sivu);
+            xx += 37 * (num / sivu);
+            xx = MIN(xx, Term->wid - 20);
+        }
+        put_str(buf, yy, xx);
         dun[num++] = i;
     }
 
@@ -873,10 +886,11 @@ int choose_dungeon(cptr note, int y, int x)
         put_str(" No dungeon is available.", y, x);
     }
 
-    prt(format("Which dungeon do you %s?: ", note), 0, 0);
+    prt(format("%^s which dungeon?: ", note), 0, 0);
     while(1)
     {
         i = inkey();
+        paikka = chrpos(i, multicase);
         if ((i == ESCAPE) || !num)
         {
             /* Free the "dun" array */
@@ -885,9 +899,9 @@ int choose_dungeon(cptr note, int y, int x)
             screen_load();
             return 0;
         }
-        if (i >= 'a' && i <('a'+num))
+        else if ((paikka) && (paikka <= num))
         {
-            select_dungeon = dun[i-'a'];
+            select_dungeon = dun[paikka - 1];
             break;
         }
         else bell();
@@ -930,7 +944,7 @@ bool recall_player(int turns, bool varmista)
         if (!dun_level)
         {
             int select_dungeon;
-            select_dungeon = choose_dungeon("recall", 1, 1);
+            select_dungeon = choose_dungeon("recall to", 1, 1);
             if (!select_dungeon) return FALSE;
             p_ptr->recall_dungeon = select_dungeon;
         }
