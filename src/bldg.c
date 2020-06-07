@@ -4042,7 +4042,7 @@ static void bldg_process_command(building_type *bldg, int i)
         int max_depth;
 
         clear_bldg(4, 20);
-        select_dungeon = choose_dungeon("teleport", 4, 0);
+        select_dungeon = choose_dungeon("teleport to", 4, 0);
         show_building(bldg);
         if (!select_dungeon) return;
 
