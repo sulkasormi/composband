@@ -71,7 +71,7 @@ To the right is a table displaying information about the stat bonuses and other 
 On the next screen, you will choose the starting stats for this character, and the values you choose will be modified by the amount shown in the table. The bottom row in the table is the total row, showing you a nice summary of the cumulative effects of your various birth choices. It is the value in this row that gets added to your starting stats.
 
 Other fields in the table include:
-  <color:keyword>Life</color>: <indent>Life Rating Multiplier. This value multiplies your maximum hit points (HP). Hit points are your character's health; if your hit points go below zero, you die and the game is over! See <link:faq.txt#LifeRating> for more on how your maximum hit points are calculated.</indent>
+  <color:keyword>Life</color>: <indent>Life Multiplier. This value multiplies your maximum hit points (HP). Hit points are your character's health; if your hit points go below zero, you die and the game is over! See <link:faq.txt#LifeRating> for more on how your maximum hit points are calculated.</indent>
   <color:keyword>BHP</color>:  <indent>Short for Base Hit Points, this value is a lump sum added to your starting hit points to make the early game easier.</indent>
   <color:keyword>Exp</color>:  <indent>Short for Experience Factor, this percentage determines how quickly or slowly your character gains new levels. (All players begin at level 1, and may advance up to level 50. Increasing your level gives more hit points, improves your skills, gives access to more powerful spells, and may also provide other effects or bonuses.)</indent>
 
