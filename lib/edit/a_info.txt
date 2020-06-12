@@ -3853,8 +3853,8 @@ D:Previously owned by a famous wizard.
 
 N:381:Mom's Loving Modular Sniper Crossbow
 I:19:23:0
-W:50:210:110:100000
-P:0:x4.84:44:36:0
+W:50:225:110:100000
+P:0:x5.05:48:44:0
 F:HIDE_TYPE | SHOW_MODS | FULL_NAME
 D:The great masterpiece of Mom's Loving Arms Company, it is capable of
 D:shooting any ammunition.
