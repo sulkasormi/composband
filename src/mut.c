@@ -843,6 +843,7 @@ void mut_lock(int mut_idx)
     if (mut_idx < 0 || mut_idx >= MAX_MUTATIONS) return;
     if (mut_locked(mut_idx)) return;
     add_flag(p_ptr->muta_lock, mut_idx);
+    _mut_refresh();
 }
 
 bool mut_locked(int mut_idx)
@@ -1041,6 +1042,7 @@ void mut_unlock(int mut_idx)
     if (mut_idx < 0 || mut_idx >= MAX_MUTATIONS) return;
     if (!mut_locked(mut_idx)) return;
     remove_flag(p_ptr->muta_lock, mut_idx);
+    _mut_refresh();
 }
 
 bool mut_unlocked_pred(int mut_idx)
