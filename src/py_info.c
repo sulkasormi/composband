@@ -2684,7 +2684,7 @@ s32b hof_score(void)
     u32b tulos = (u32b)p_ptr->max_max_exp;
     u32b mult = (u32b)score_mult();
     s32b bigtulos = 0L;
-    if (tulos < mult) return 0;
+    if (!tulos) return 0;
     s64b_mul(&bigtulos, &tulos, 0L, mult);
     s64b_div(&bigtulos, &tulos, 0L, 10000L);
     return (s32b)tulos;
