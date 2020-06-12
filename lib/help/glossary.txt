@@ -178,7 +178,7 @@ See <link:objects.txt#InscriptionAbbrev> for item attribute abbreviations.
 
 <color:keyword>life points</color>: A measure of your attachment to life, displayed on a range of 0% to 99% if depleted. Losing life points reduces effective maximum HP; if life points drop below 0, the character will transform into an undead race, or die outright if this is not possible. See <link:faq.txt#LifePoints>.
 
-<color:keyword>life rating</color>: 1) Random life rating; a measure, ranging from 0 to 76, of how lucky you got with random hit-point gain rolls in your current life; life rating as revealed by Self Knowledge. See <link:faq.txt#LifeRating>. 2) Life rating multiplier; a fixed non-random HP multiplier based on your race, class or personality, not directly related to the random life rating. 3) +Life and -Life; item attributes that modify a constitution-based HP multiplier.
+<color:keyword>life rating</color>: 1) Random life rating; a measure, ranging from 0 to 76, of how lucky you got with random hit-point gain rolls in your current life; life rating as revealed by Self Knowledge. See <link:faq.txt#LifeRating>. 2) Life multiplier; a fixed non-random HP multiplier based on your race, class or personality, not directly related to the random life rating. 3) +Life and -Life; item attributes that modify a constitution-based HP multiplier.
 
 <color:keyword>lightning</color>: A synonym for the element electricity.
 
