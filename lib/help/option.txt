@@ -285,7 +285,7 @@ This option will display a status bar on the main screen that details your curre
 Displays stats above 18 as decimals (for example, <color:G>39.7</color> instead of <color:G>18/217</color>). New players sometimes find this format more intuitive.
 
 <topic:percentage_life><color:U>Display life rating on a scale of 87% to 117%</color> <color:D>(percentage_life)</color>
-If this option is on, the player's life rating (see <link:faq.txt#LifeRating>) is displayed on a scale of 87% to 117% rather than a scale of 0 to 76. The percentage scale is less informative (it crams the 77 possible life ratings onto a 31-point scale, yet sometimes displays functionally identical ratings as being one apart) and the actual meaning of the percentages is unintuitive (they do not multiply the player's full HP, and the average is 102-103% rather than 100%); but many players are accustomed to the percentage scale since it was the original way to display life ratings.
+If this option is on, the player's life rating (see <link:faq.txt#LifeRating>) is displayed on a scale of 87% to 117% rather than a scale of 0 to 76. The percentage scale is less informative (it crams the 77 possible life ratings onto a 31-point scale, yet sometimes displays functionally identical ratings as being one apart) and the actual meaning of the percentages is unintuitive (they do not multiply the player's full HP and are unrelated to the various actual life multipliers always displayed as percentages, and the average is 102-103% rather than 100%); but many players are accustomed to the percentage scale since it was the original way to display life ratings.
 
 To convert between the scales, use the formula <color:y>P = (A + 213) / 2.45</color>.
 
