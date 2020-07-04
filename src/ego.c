@@ -1895,11 +1895,11 @@ static void _ego_create_weapon_armageddon(object_type *o_ptr, int level)
         if (object_is_(o_ptr, TV_SWORD, SV_KATANA) && one_in_(3))
         {
             o_ptr->dd = 8; /* Aglarang */
-            o_ptr->ds = 4;
+            o_ptr->ds = 5;
             if (one_in_(100))
             {
                 o_ptr->dd = 10;
-                o_ptr->ds = 5; /* Muramasa */
+                o_ptr->ds = 6; /* Muramasa */
             }
         }
         if (object_is_(o_ptr, TV_HAFTED, SV_WAR_HAMMER) && one_in_(2))
