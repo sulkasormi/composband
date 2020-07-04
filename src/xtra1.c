@@ -2138,6 +2138,20 @@ static void prt_effects(void)
         c_put_str(TERM_ORANGE, "?", row, col);
         c_put_str(TERM_L_GREEN, " for help  ", row++, col + 1);
     }
+    if ((show_energy_cost) && (!p_ptr->wizard) && (row < Term->hgt - 1))
+    {
+        byte attr = TERM_L_GREEN;
+        s32b norm = (p_ptr->wild_mode) ? 13200L : 100;
+        if (energy_cost_hack >= (norm * 2)) attr = TERM_RED;
+        else if (energy_cost_hack > norm) attr = TERM_ORANGE;
+        if (row < Term->hgt - 2)
+        {
+            Term_erase(col, row++, r.cx);
+        }
+        if (energy_cost_hack >= 10000) c_put_str(attr, format("Energy:%-3dK", 0 - (energy_cost_hack / 1000)), row++, col);
+        else c_put_str(attr, format("Energy:%-5d", 0 - energy_cost_hack), row++, col);
+    }
+//    if (row < Term->hgt - 1) c_put_str(TERM_WHITE, format("Quarks:%d", quark__num), row++, col);
 }
 
 /*****************************************************************************
