@@ -173,7 +173,10 @@ s16b warning_hack_hp = 0;
 s16b shuffling_hack_hp = 0;
 byte poison_warning_hack = 0;
 byte energy_need_hack = 40;
+s16b energy_cost_hack = 0;
+bool show_energy_cost;
 bool spawn_hack = FALSE;
+bool atlantis_hack = FALSE;
 bool mystery_cave_ready = FALSE;
 
 int total_friends = 0;
