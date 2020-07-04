@@ -163,13 +163,29 @@ void quest_complete(quest_ptr q, point_t p)
     {
         int x = p.x;
         int y = p.y;
-        int nx,ny;
+        int dist = 1;
+        int yrk = 50, maxyrk = 50;
+        int nx = x, ny = y;
 
-        while (cave_perma_bold(y, x) || cave[y][x].o_idx || (cave[y][x].info & CAVE_OBJECT) )
+        while (cave_perma_bold(y, x) || cave[ny][nx].o_idx || (cave[ny][nx].info & CAVE_OBJECT) )
         {
-            scatter(&ny, &nx, y, x, 1, 0);
-            y = ny; x = nx;
+            scatter(&ny, &nx, y, x, dist, 0);
+            yrk--;
+            if ((yrk > (maxyrk / 2)) && (!projectable(py, px, ny, nx))) continue;
+            if (!yrk)
+            {
+                dist++;
+                maxyrk = MIN(120, 50 + (20 * dist));
+                yrk = maxyrk;
+                if (dist > 10) /* Screw this */
+                {
+                    ny = y;
+                    nx = x;
+                    break;
+                }
+            }
         }
+        y = ny; x = nx;
 
         cmsg_print(TERM_L_BLUE, "A magical staircase appears...");
         if ((!coffee_break) || (dun_level == 99))
