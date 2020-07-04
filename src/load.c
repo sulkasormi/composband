@@ -1048,7 +1048,7 @@ static errr rd_dungeon(savefile_ptr file)
     /*** Meta info ***/
 
     max_floor_id = savefile_read_s16b(file);
-    dungeon_type = savefile_read_byte(file);
+    set_dungeon_type(savefile_read_byte(file));
 
     num = savefile_read_byte(file);
 
