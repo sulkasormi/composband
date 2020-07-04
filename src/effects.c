@@ -2484,7 +2484,7 @@ bool set_unwell(int v, bool do_dec)
     if (!notice) return (FALSE);
 
     /* Disturb */
-    if ((disturb_state) && ((!new_eff) || (!old_eff))) disturb(0, 0);
+    if ((disturb_state) && ((!new_eff) || (!old_eff)) && (!mut_present(MUT_HUMAN_CON))) disturb(0, 0);
 
     /* Recalculate bonuses */
     p_ptr->update |= (PU_BONUS);
