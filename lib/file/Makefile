@@ -10,10 +10,10 @@ ab_med.txt \
 ac_med.txt \
 ag_med.txt \
 ah_med.txt \
-amulet_cursed.txt \
-amulet_high.txt \
-amulet_low.txt \
-amulet_med.txt \
+amu_cursed.txt \
+amu_high.txt \
+amu_low.txt \
+amu_med.txt \
 as_med.txt \
 book-0_jp.txt \
 chainswd.txt \
