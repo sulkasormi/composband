@@ -194,6 +194,8 @@ extern s16b warning_hack_hp;
 extern s16b shuffling_hack_hp;
 extern byte poison_warning_hack;
 extern byte energy_need_hack;
+extern s16b energy_cost_hack;
+extern bool atlantis_hack;
 extern bool spawn_hack;
 extern bool mystery_cave_ready;
 extern s16b run_count;
@@ -323,6 +325,7 @@ extern bool reforge_details; /* Show statistics before reforge */
 extern bool auto_sticky_labels; /* Automatically make power labels sticky */
 extern bool show_power; /* Display device powers in inventory */
 extern bool show_rogue_keys; /* Display roguelike keys if possible */
+extern bool show_energy_cost;
 extern bool decimal_stats;
 extern bool percentage_life; /* Show life rating as a percentage */
 extern bool obj_list_width;
@@ -1050,6 +1053,7 @@ extern void extract_option_vars(void);
 extern void determine_today_mon(bool conv_old);
 extern s16b energy_need_clipper(void);
 extern s16b energy_need_clipper_aux(int speed);
+extern void set_dungeon_type(byte which);
 extern void notice_lite_change(object_type *o_ptr);
 extern bool mon_fast_mana_regen(void);
 extern int py_food_regen(void);
@@ -1591,7 +1595,7 @@ extern bool disarm_trap(int dir);
 extern bool wizard_lock(int dir);
 extern bool heal_monster(int dir, int dam);
 extern bool speed_monster(int dir);
-extern bool slow_monster(int dir);
+extern bool slow_monster(int dir, int power);
 extern bool sleep_monster(int dir, int power);
 extern bool stasis_monster(int dir);    /* Like sleep, affects undead as well */
 extern bool stasis_evil(int dir);    /* Like sleep, affects undead as well */
