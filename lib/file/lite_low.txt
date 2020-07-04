@@ -17,6 +17,7 @@ N:*:Default
 'Headlight'
 'Heart of Gundabad'
 'Hunk of Orium'
+'Lone Star'
 'Lucky Star'
 'Mimosa'
 'Moonglow'
@@ -28,12 +29,16 @@ N:*:Default
 'Photonspitter'
 'Pizza'
 'Planaria'
+'Raymaker'
 'Red Eye'
+'Red Star'
 'Scintillator'
 'Silverlight'
 'Skycleaver'
 'Spark of the Gods'
 'Sungazer'
+'Sunstone'
+'Sun Wolf'
 'Talisman'
 'Tarazed'
 'Trailblazer'
@@ -59,3 +64,4 @@ of Aglarond
 of Devouring Lightness
 of the Buddha
 of Mazda
+of Inglor
