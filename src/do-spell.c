@@ -1720,7 +1720,7 @@ static cptr do_sorcery_spell(int spell, int mode)
             {
                 if (!get_fire_dir(&dir)) return NULL;
 
-                slow_monster(dir);
+                slow_monster(dir, power);
             }
         }
         break;
