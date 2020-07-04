@@ -1,6 +1,7 @@
 N: 1:BIAS_ELEC
 of Thanks
 of the Gentle Djinni
+of Umbriel
 'Rubber Coat'
 'Wind Force'
 'Wings of the Storm'
@@ -75,6 +76,7 @@ N: 6:BIAS_STR
 of Argon
 of Ilion
 of the Angry Boits
+of Lambo
 'Panther Coat'
 
 N:19:BIAS_RANGER
@@ -84,6 +86,7 @@ of the Nandor
 'Silverback'
 'Wargskin'
 'Life of Leaf'
+'Life Preserver'
 
 N:11:BIAS_CHR
 of Melidere
