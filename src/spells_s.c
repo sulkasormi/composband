@@ -271,6 +271,9 @@ void sleep_spell(int cmd, variant *res)
     case SPELL_DESC:
         var_set_string(res, "Attempt to sleep one or more monsters.");
         break;
+    case SPELL_INFO:
+        var_set_string(res, info_power(p_ptr->lev * 2));
+        break;
     case SPELL_CAST:
         var_set_bool(res, FALSE);
         if (p_ptr->lev < 30)
@@ -299,13 +302,16 @@ void slow_spell(int cmd, variant *res)
     case SPELL_DESC:
         var_set_string(res, "Attempt to slow one or more monsters.");
         break;
+    case SPELL_INFO:
+        var_set_string(res, info_power(p_ptr->lev * 2));
+        break;
     case SPELL_CAST:
         var_set_bool(res, FALSE);
         if (p_ptr->lev < 30)
         {
             int dir = 0;
             if (!get_fire_dir(&dir)) return;
-            slow_monster(dir);
+            slow_monster(dir, p_ptr->lev * 2);
         }
         else
             slow_monsters(p_ptr->lev * 2);
