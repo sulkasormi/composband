@@ -1589,7 +1589,8 @@ void display_weapon_info(doc_ptr doc, int hand)
             else if (!_critical_loop) break;
             else crit.mul += 100;
         }
-        if ((!_critical_attempts) || (_critical_roll < 2)) /* Something has gone horribly wrong... */
+        if ((!_critical_attempts) || (((_critical_roll < 1) || (_critical_comp < 1)) && (!_always_crit(display_weapon_mode))))
+            /* Something has gone horribly wrong, or the numbers are negative/zero... */
         {
             crit.mul = 100;
             crit.to_d = 0;
