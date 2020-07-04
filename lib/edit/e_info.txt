@@ -1124,13 +1124,13 @@ N:266:of Protection
 T:QUIVER
 W:1:*:1
 
-N:267:& Endless Quiver
+N:267:& Endless Quiver~
 T:QUIVER
 W:50:*:4
 F:FULL_NAME
 E:ENDLESS_QUIVER:50:150
 
-N:268:& Phase Quiver
+N:268:& Phase Quiver~
 T:QUIVER
 W:50:*:4
 F:FULL_NAME
