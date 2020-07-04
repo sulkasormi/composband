@@ -71,6 +71,7 @@ N: 6:BIAS_STR
 of the Valkyrie
 of the Watchman
 of Ajax
+of Nestor
 
 N:19:BIAS_RANGER
 N:10:BIAS_CON
