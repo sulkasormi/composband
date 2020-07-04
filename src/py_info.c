@@ -2616,9 +2616,8 @@ static void _build_quests(doc_ptr doc)
 {
     doc_printf(doc, "<topic:uQuests>==================================== Q<color:keypress>u</color>ests ===================================\n\n");
     quests_doc(doc);
-    if (!no_wilderness || !ironman_downward || coffee_break)
+/*     if (!no_wilderness || !ironman_downward || coffee_break)*/
     {
-        doc_newline(doc);
         if (p_ptr->arena_number < 0)
         {
             if (p_ptr->arena_number <= ARENA_DEFEATED_OLD_VER)
@@ -2647,6 +2646,7 @@ static void _build_quests(doc_ptr doc)
                 p_ptr->arena_number != 1 ? "ies" : "y");
         }
     }
+    doc_newline(doc);
 }
 
 static int _max_depth(void)
