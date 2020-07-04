@@ -16,6 +16,8 @@ Please choose one of the following help sections:
     <link:attack.txt#DualWielding> Dual-Wielding
     <link:attack.txt#MagicalAids> Magical Aids to Physical Combat
     <link:attack.txt#ImproveOdds> Improving Your Odds
+    <link:attack.txt#OffensiveDevices> Attacking with Magical Devices
+    <link:attack.txt#OffensiveSpells> Attacking with Spells  
     <link:attack.txt#MeleeTactics> Basic Tactics
 
     <color:y>(?) Help System Commands</color>
