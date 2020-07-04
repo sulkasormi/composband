@@ -241,7 +241,7 @@ junk:^broken bone
 skeletons
 
 ?:[EQU $CLASS Ninja Ninja-Lawyer]
-(~ego lights:of darkness
+ego lights:of darkness
 feanorian
 Iron Spike#@vz
 ?:1
