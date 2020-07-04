@@ -735,7 +735,7 @@ void teleport_level(int m_idx)
         {
             if (!dun_level)
             {
-                dungeon_type = p_ptr->recall_dungeon;
+                set_dungeon_type(p_ptr->recall_dungeon);
                 p_ptr->oldpy = py;
                 p_ptr->oldpx = px;
             }
@@ -748,7 +748,7 @@ void teleport_level(int m_idx)
                 if (coffee_break)
                 {
                     dun_level = coffeebreak_recall_level(TRUE);
-                    dungeon_type = DUNGEON_ANGBAND; /* paranoia */
+                    set_dungeon_type(DUNGEON_ANGBAND); /* paranoia */
                 }
                 prepare_change_floor_mode(CFM_RAND_PLACE);
             }
@@ -1218,7 +1218,7 @@ static void _nexus_pick_dungeon(void)
         lvl = rand_range(d_ptr->mindepth, MIN(d_ptr->maxdepth, max_lvl));
         break;
     }
-    dungeon_type = which;
+    set_dungeon_type(which);
     dun_level = lvl;
 }
 static void _nexus_travel(void)
