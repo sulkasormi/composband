@@ -292,6 +292,9 @@ To convert between the scales, use the formula <color:y>P = (A + 213) / 2.45</co
 <topic:show_rogue_keys><color:U>Display roguelike movement keys as reminder</color> <color:D>(show_rogue_keys)</color>
 Displays the movement keys of the roguelike keyset in the main screen sidebar, provided that there is enough room for them to be displayed and that the roguelike keyset is on. This option is intended for very new players, or at least players new to the roguelike keyset, and is on by default in Beginner Mode.
 
+<topic:show_energy_cost><color:U>Display energy cost of most recent action</color> <color:D>(show_energy_cost)</color>
+Displays the nominal energy cost of the player's most recent action in the main screen sidebar, provided that there is enough room. Energy randomness is not accounted for. Most player (and monster) actions cost 100 energy, frequently glossed as "1 turn" as if a turn were a 100-energy unit.
+
 <topic:compress_savefile><color:U>Compress messages in savefiles</color> <color:D>(compress_savefile)</color>
 Compress the savefile, by only saving the most recent messages received by the player. This can cut the size of the savefile by a drastic amount, but will result in the loss of message information.
 
