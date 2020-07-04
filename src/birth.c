@@ -395,12 +395,12 @@ void birth_location(void)
 {
     if (no_wilderness)
     {
-        dungeon_type = 0;
+        set_dungeon_type(0);
         p_ptr->recall_dungeon = DUNGEON_ANGBAND;
     }
     else
     {
-        dungeon_type = 0;
+        set_dungeon_type(0);
         p_ptr->recall_dungeon = DUNGEON_WARREN;
     }
 
@@ -409,14 +409,14 @@ void birth_location(void)
         dun_level = 90;
         if (!no_wilderness)
         {
-            dungeon_type = DUNGEON_CTH;
+            set_dungeon_type(DUNGEON_CTH);
             p_ptr->recall_dungeon = DUNGEON_CTH;
             p_ptr->wilderness_y = d_info[dungeon_type].dy;
             p_ptr->wilderness_x = d_info[dungeon_type].dx;
         }
         else
         {
-            dungeon_type = DUNGEON_ANGBAND;
+            set_dungeon_type(DUNGEON_ANGBAND);
         }
         max_dlv[dungeon_type] = 90;
     }
