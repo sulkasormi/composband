@@ -566,7 +566,7 @@ static void _munchkin_calc_bonuses(void)
     res_add(RES_CONF);
     p_ptr->hold_life = TRUE;
     p_ptr->munchkin_pseudo_id = TRUE;
-    if ((!player_is_ninja) && (!prace_is_(RACE_MON_MUMMY)))
+    if ((!player_is_ninja) && (!prace_is_(RACE_MON_MUMMY)) && (!prace_is_(RACE_MON_VAMPIRE)) && (!prace_is_(RACE_VAMPIRE)))
         p_ptr->lite = TRUE;
 
     p_ptr->pspeed += p_ptr->lev/10 + 5;
