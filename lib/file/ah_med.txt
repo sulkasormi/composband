@@ -49,6 +49,7 @@ N:13:BIAS_PRIESTLY
 N: 8:BIAS_WIS
 of Pity
 of Observance
+of Barbarossa
 'Pope Hat'
 'Nuts of Wisdom'
 'Keeper of Light'
@@ -76,6 +77,7 @@ of Vader
 of Hjalmar
 of Cloudyhead
 of Sarak
+of Enephel
 'Viking Helmet'
 'Skull-thickener'
 
@@ -84,6 +86,7 @@ N:10:BIAS_CON
 of the Full Moon
 of the New Moon
 of the Rangers
+of Asterion
 'Red Belet'
 'Headkeeper'
 
