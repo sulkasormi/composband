@@ -234,7 +234,7 @@ cptr do_law_spell(int spell, int mode)
             {
                 if (!get_fire_dir(&dir)) return NULL;
 
-                slow_monster(dir);
+                slow_monster(dir, power);
             }
         }
         break;
