@@ -144,7 +144,7 @@ B:2:N:Arena:Hideshi:Human
 #B:9:A:0:RULES:0:0:a:9:0
 B:2:A:0:Enter in arena:0:0:e:10:0
 B:2:A:1:Look at poster:0:0:p:8:0
-B:2:A:2:Palace of heros:0:0:s:11:0
+#B:2:A:2:Palace of heros:0:0:s:11:0
 
 B:3:N:Library:Astinus:Human?
 B:3:A:0:Research item:1500:1500:a:1:0
