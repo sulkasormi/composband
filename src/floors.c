@@ -1037,7 +1037,7 @@ void leave_floor(void)
             }
             p_ptr->recall_dungeon = dungeon_type;
         }
-        dungeon_type = 0;
+        set_dungeon_type(0);
 
         /* Reach to the surface -- Clear all saved floors */
         change_floor_mode &= ~CFM_SAVE_FLOORS;
