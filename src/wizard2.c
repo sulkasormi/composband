@@ -830,7 +830,7 @@ static void do_cmd_wiz_jump(void)
         /* Extract request */
         command_arg = atoi(tmp_val);
 
-        dungeon_type = tmp_dungeon_type;
+        set_dungeon_type(tmp_dungeon_type);
     }
 
     /* Paranoia */
@@ -849,7 +849,7 @@ static void do_cmd_wiz_jump(void)
 
     prepare_change_floor_mode(CFM_RAND_PLACE);
 
-    if (!dun_level) dungeon_type = 0;
+    if (!dun_level) set_dungeon_type(0);
     p_ptr->inside_arena = FALSE;
     p_ptr->wild_mode = FALSE;
 
@@ -1530,7 +1530,7 @@ static void _wiz_stats_inspect(int level)
 static void _wiz_stats_gather(int which_dungeon, int level, int reps)
 {
     int i;
-    dungeon_type = which_dungeon;
+    set_dungeon_type(which_dungeon);
     for (i = 0; i < reps; i++)
     {
         quests_on_leave();
