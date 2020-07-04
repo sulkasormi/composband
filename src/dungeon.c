@@ -287,6 +287,15 @@ s16b energy_need_clipper(void)
 }
 
 /*
+ * Track dungeon type
+ */
+void set_dungeon_type(byte which)
+{
+    dungeon_type = which;
+    atlantis_hack = (dungeon_type == DUNGEON_ATLANTIS);
+}
+
+/*
  * Go to any level (ripped off from wiz_jump)
  */
 static void pattern_teleport(void)
@@ -2668,7 +2677,7 @@ void process_world_aux_movement(void)
             if (py_on_surface())
             {
                 cmsg_print(TERM_YELLOW, "You feel yourself yanked downwards!");
-                dungeon_type = p_ptr->recall_dungeon;
+                set_dungeon_type(p_ptr->recall_dungeon);
                 dun_level = max_dlv[dungeon_type];
                 if (dun_level < 1) dun_level = 1;
 
@@ -2724,7 +2733,7 @@ void process_world_aux_movement(void)
                 if (dungeon_type) p_ptr->recall_dungeon = dungeon_type;
 
                 dun_level = 0;
-                dungeon_type = 0;
+                set_dungeon_type(0);
                 quests_on_leave();
                 p_ptr->leaving = TRUE;
 
@@ -4039,7 +4048,7 @@ static void _dispatch_command(int old_now_turn)
                     do_cmd_activate();
                 else
                 {
-                    msg_print("The arena absorbs all attempted magic!");
+                    msg_print("The arena absorbs the attempted activation!");
                     msg_print(NULL);
                 }
             }
@@ -4085,7 +4094,7 @@ static void _dispatch_command(int old_now_turn)
             {
                 if (p_ptr->inside_arena && !devicemaster_is_(DEVICEMASTER_WANDS))
                 {
-                    msg_print("The arena absorbs all attempted magic!");
+                    msg_print("The arena absorbs the energy of magical devices!");
                     msg_print(NULL);
                 }
                 else
@@ -4103,7 +4112,7 @@ static void _dispatch_command(int old_now_turn)
             {
                 if (p_ptr->inside_arena && !devicemaster_is_(DEVICEMASTER_RODS))
                 {
-                    msg_print("The arena absorbs all attempted magic!");
+                    msg_print("The arena absorbs the energy of magical devices!");
                     msg_print(NULL);
                 }
                 else
@@ -4121,7 +4130,7 @@ static void _dispatch_command(int old_now_turn)
             {
                 if (p_ptr->inside_arena && !devicemaster_is_(DEVICEMASTER_POTIONS) && p_ptr->pclass != CLASS_ALCHEMIST)
                 {
-                    msg_print("The arena absorbs all attempted magic!");
+                    msg_print("The arena absorbs the energy of magical potions!");
                     msg_print(NULL);
                 }
                 else
@@ -4139,7 +4148,7 @@ static void _dispatch_command(int old_now_turn)
             {
                 if (p_ptr->inside_arena && !devicemaster_is_(DEVICEMASTER_SCROLLS))
                 {
-                    msg_print("The arena absorbs all attempted magic!");
+                    msg_print("The arena absorbs the energy of magical scrolls!");
                     msg_print(NULL);
                 }
                 else
@@ -4157,7 +4166,7 @@ static void _dispatch_command(int old_now_turn)
             {
                 if (p_ptr->inside_arena && !devicemaster_is_(DEVICEMASTER_STAVES))
                 {
-                    msg_print("The arena absorbs all attempted magic!");
+                    msg_print("The arena absorbs the energy of magical devices!");
                     msg_print(NULL);
                 }
                 else
@@ -4849,6 +4858,7 @@ static void process_player(void)
     /* Repeat until out of energy */
     while (p_ptr->energy_need <= 0)
     {
+        int _start_energy = p_ptr->energy_need;
         p_ptr->sutemi = FALSE;
         p_ptr->counter = FALSE;
         monsters_damaged_hack = FALSE;
@@ -5089,6 +5099,11 @@ static void process_player(void)
             {
                 /* The Randomness is irrelevant */
                 p_ptr->energy_need += energy_use * TURNS_PER_TICK / 10;
+                if (show_energy_cost)
+                {
+                    energy_cost_hack = p_ptr->energy_need - _start_energy;
+                    p_ptr->redraw |= PR_EFFECTS;
+                }
             }
             else
             {
@@ -5098,6 +5113,15 @@ static void process_player(void)
                     rect_t r = ui_char_info_rect();
                     c_put_str(TERM_WHITE, format("E:%3d/%3d", amt, energy_use), r.y + r.cy - 2, r.x);
 //                    c_put_str(TERM_WHITE, format("E:%3d/%3d", amt, p_ptr->energy_need + amt), r.y + r.cy - 2, r.x);
+                }
+                else if (show_energy_cost)
+                {
+                    int _cost = energy_use + p_ptr->energy_need - _start_energy;
+                    if (_cost != energy_cost_hack)
+                    {
+                        energy_cost_hack = _cost;
+                        p_ptr->redraw |= PR_EFFECTS;
+                    }
                 }
                 p_ptr->energy_need += amt;
             }
@@ -5191,7 +5215,14 @@ static void process_player(void)
             predictable_energy_hack = FALSE;
         }
         else
+        {
             player_turn--;
+            if ((show_energy_cost) && (p_ptr->playing))
+            {
+                energy_cost_hack = 0;
+                p_ptr->redraw |= PR_EFFECTS;
+            }
+        }
 
         if (!p_ptr->playing || p_ptr->is_dead)
         {
@@ -6248,7 +6279,7 @@ void play_game(bool new_game)
                 enter_quest = FALSE;
                 if (qp) /* Broken quest - force exit */
                 {
-                   dungeon_type = 0;
+                   set_dungeon_type(0);
                    dun_level = 0;
                    quests_on_leave();
                 }
@@ -6547,7 +6578,7 @@ void play_game(bool new_game)
                     enter_quest = FALSE;
                     if (qp) /* Exit the quest */
                     {
-                        dungeon_type = 0;
+                        set_dungeon_type(0);
                         dun_level = 0;
                         quests_on_leave();
                     }
@@ -6575,7 +6606,7 @@ void play_game(bool new_game)
                     p_ptr->inside_arena = FALSE;
                     p_ptr->inside_battle = FALSE;
                     if (dungeon_type) p_ptr->recall_dungeon = dungeon_type;
-                    dungeon_type = 0;
+                    set_dungeon_type(0);
                     if (was_in_dung)
                     {
                         if (no_wilderness)
@@ -6605,7 +6636,7 @@ void play_game(bool new_game)
                     if (no_cheat)
                     {
                         msg_print("You are resurrected!");
-                        dungeon_type = DUNGEON_HEAVEN;
+                        set_dungeon_type(DUNGEON_HEAVEN);
                         dun_level = d_info[dungeon_type].maxdepth;
                     }
 
