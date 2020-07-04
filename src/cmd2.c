@@ -147,7 +147,7 @@ void do_cmd_go_down(void)
             /* Save old player position */
             p_ptr->oldpx = px;
             p_ptr->oldpy = py;
-            dungeon_type = (byte)target_dungeon;
+            set_dungeon_type((byte)target_dungeon);
 
             /*
              * Clear all saved floors
