@@ -125,6 +125,26 @@ Using magic to get better at combat is nice; but using magic to make your oppone
 
 <color:keyword>Slowness</color> is a bit less dramatic, but still very valuable. In the early game, <color:y>-10 to speed</color> tends to mean a monster's speed is reduced by half or more, which needless to say is an enormous advantage; for faster monsters the effects will be less dramatic, but you will still get a turn in more often and be at much less danger of a deadly double-move. All uniques are immune to slowness, but most non-uniques can be slowed.
 
+<topic:OffensiveDevices><style:heading>Attacking with Magic Devices</style>
+
+Many magical devices can be used to attack monsters directly. Nearly all characters (other than Berserkers) use offensive <color:keyword>wands</color> and <color:keyword>rods</color> to at least some extent, usually in a supporting role, but sometimes as their main source of offense.
+
+Each device produces a specific effect when used. For offensive devices, these tend to be either <color:keyword>bolts</color>, which hurt a single monster; <color:keyword>balls</color>, which hurt all monsters within a given radius of the ball's epicenter; <color:keyword>beams</color>, which hurt all monsters within the beam's path; or <color:keyword>breaths</color>, conical effects that explode into a ball. These bolts, beams, balls or breaths are <color:keyword>elemental</color>, meaning their damage relies on a specific damage type (such as acid, electricity, fire, cold or nexus) and monsters resistant to that element will not suffer full damage.
+
+Bolt devices are generally the least exciting, but they are also the most common in the early game and so likely to be your first offensive devices. An early <color:g>Wand of Frost Bolts</color> can really help a character with otherwise limited offense, and some characters accordingly buy one from the Magic Shop as soon as they can afford it.
+
+With some very rare exceptions, offensive magic devices are always aimed at a target or direction, and are accordingly best used from range. See <link:objects.txt#Devices> for more information about magic devices, and <link:attack.txt#DistanceAttack> above for more on attacking from a distance.
+
+<topic:OffensiveSpells><style:heading>Attacking with Spells</style>
+
+Spells and spell-like special powers are an important source of offense for many characters. Sorcerers, Mages and other mage-like classes often rely on them as their main offense, although this depends on build and (for book classes) the realms selected; some realms (like <color:keyword>Armageddon</color>) are full of attacking spells, while others (like <color:keyword>Sorcery</color>) offer great options for tactics and utility but nothing that would hurt a monster directly. While a Mage does not necessarily need offensive spells - they can use high-level wands and rods more effectively than most classes, and even their melee and archery can get the job done in a pinch - spell attacks are the most stereotypical and often also the strongest.
+
+The downside of relying on spells for offense is that they can deplete a caster's mana very rapidly. Accordingly, characters built for magical combat tend to invest disproportionately in their spellcasting stat, and greatly value items that increase their mana pool or reduce the mana cost of spells. Early attacking spells like <color:keyword>Magic Missile</color> sometimes stay relevant for a very long time, simply because they are so cheap; while the damage is relatively low, so is the mana cost.
+
+Offensive spells resemble offensive devices; most of them are also bolts, beams, balls or breaths of some element.
+
+See <link:magic.txt> for more on magic and spellcasting.
+
 <topic:MeleeTactics><style:heading>Basic Tactics</style>
 
 <color:U>Pillardancing</color>
