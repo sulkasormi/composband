@@ -6861,17 +6861,21 @@ cptr do_effect(effect_t *effect, int mode, int boost)
         break;
     }
     case EFFECT_SLOW_MONSTER:
+    {
+        int power = _extra(effect, MAX(10, effect->power * 2 - 6));
         if (name) return "Slow Monster";
         if (desc) return "It slows a monster down when you use it.";
-        if (value) return format("%d", 500);
+        if (info) return format("power %d", _BOOST(power));
+        if (value) return format("%d", 15 * power);
         if (color) return format("%d", TERM_SLATE);
         if (cast)
         {
             if (!get_fire_dir(&dir)) return NULL;
-            if (slow_monster(dir))
+            if (slow_monster(dir, _BOOST(power)))
                 device_noticed = TRUE;
         }
         break;
+    }
     case EFFECT_CONFUSE_MONSTER:
     {
 //        int power = _extra(effect, MIN(98, MAX(21, effect->power * 7 - 52)));
