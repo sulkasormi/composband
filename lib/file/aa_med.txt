@@ -40,6 +40,7 @@ N:12:BIAS_CHAOS
 of Eequor
 of the Void
 of Loopiness
+of the Space Invaders
 'Day of the Dove'
 'Nameless Thing'
 'Revengebender'
