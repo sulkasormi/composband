@@ -23,6 +23,8 @@
    have the same keeper and stock! */
 static bool shop_allowed = TRUE;
 
+static void place_outer_bold_aux(int y, int x);
+
 /************************************************************************
  * Room Templates
  ***********************************************************************/
@@ -281,6 +283,7 @@ static void check_room_boundary(int x1, int y1, int x2, int y2)
     int count, x, y;
     bool old_is_floor, new_is_floor;
 
+    if (atlantis_hack) return;
 
     /* Initialize */
     count = 0;
@@ -2905,10 +2908,18 @@ static void generate_hmap(int y0, int x0, int xsiz, int ysiz, int grd, int roug,
     {
         for (j = 0; j <= ysize; j++)
         {
+            int my = (int)(fill_data.ymin + j);
+            int mx = (int)(fill_data.xmin + i);
+            if (atlantis_hack)
+            {
+                cave[my][mx].mimic = cave[my][mx].feat;
+                if (cave[my][mx].info & CAVE_OUTER) cave[my][mx].mimic += max_f_idx;
+//                msg_format("Set %d/%d to mimic %d", fill_data.xmin + i, fill_data.ymin + j, cave[(int)(fill_data.ymin + j)][(int)(fill_data.xmin + i)].feat);
+            }
             /* -1 is a flag for "not done yet" */
-            cave[(int)(fill_data.ymin + j)][(int)(fill_data.xmin + i)].feat = -1;
+            cave[my][mx].feat = -1;
             /* Clear icky flag because may be redoing the cave */
-            cave[(int)(fill_data.ymin + j)][(int)(fill_data.xmin + i)].info &= ~(CAVE_ICKY);
+            cave[my][mx].info &= ~(CAVE_ICKY);
         }
     }
 
@@ -3203,6 +3214,31 @@ static void cave_fill(byte y, byte x)
     }
 }
 
+static void place_extra_bold_aux(int y, int x)
+{
+    place_extra_bold(y, x);
+    if ((atlantis_hack) && (cave[y][x].mimic))
+    {
+        set_cave_feat(y, x, (cave[y][x].mimic >= max_f_idx) ? cave[y][x].mimic : (cave[y][x].mimic % max_f_idx));
+        cave[y][x].mimic = 0;
+    }
+}
+
+static void place_outer_bold_aux(int y, int x)
+{
+    int uusi = 0;
+    if (atlantis_hack)
+    {
+        if (cave[y][x].mimic) uusi = (cave[y][x].mimic % max_f_idx);
+        else uusi = cave[y][x].feat;
+    }
+    place_outer_bold(y, x);
+    if (uusi)
+    {
+        if (have_flag(f_info[uusi].flags, FF_WALL)) set_cave_feat(y, x, uusi);
+        cave[y][x].mimic = 0;
+    }
+}
 
 static bool generate_fracave(int y0, int x0, int xsize, int ysize, int cutoff, bool light, bool room)
 {
@@ -3246,8 +3282,15 @@ static bool generate_fracave(int y0, int x0, int xsize, int ysize, int cutoff, b
         {
             for (y = 0; y <= ysize; ++y)
             {
-                place_extra_bold(y0 + y - yhsize, x0 + x - xhsize);
-                cave[y0 + y - yhsize][x0 + x - xhsize].info &= ~(CAVE_ICKY | CAVE_ROOM);
+                int my = y0 + y - yhsize;
+                int mx = x0 + x - xhsize;
+                place_extra_bold(my, mx);
+                if ((atlantis_hack) && (cave[my][mx].mimic))
+                {
+                    cave_set_feat(my, mx, (cave[my][mx].mimic % max_f_idx));
+                    cave[my][mx].mimic = 0;
+                }
+                cave[my][mx].info &= ~(CAVE_ICKY | CAVE_ROOM);
             }
         }
         return FALSE;
@@ -3264,30 +3307,30 @@ static bool generate_fracave(int y0, int x0, int xsize, int ysize, int cutoff, b
         if ((cave[0 + y0 - yhsize][i + x0 - xhsize].info & CAVE_ICKY) && (room))
         {
             /* Next to a 'filled' region? - set to be room walls */
-            place_outer_bold(y0 + 0 - yhsize, x0 + i - xhsize);
+//            place_outer_bold_aux(y0 + 0 - yhsize, x0 + i - xhsize);
             if (light) cave[y0 + 0 - yhsize][x0 + i - xhsize].info |= (CAVE_GLOW);
             cave[y0 + 0 - yhsize][x0 + i - xhsize].info |= (CAVE_ROOM);
-            place_outer_bold(y0 + 0 - yhsize, x0 + i - xhsize);
+            place_outer_bold_aux(y0 + 0 - yhsize, x0 + i - xhsize);
         }
         else
         {
             /* set to be normal granite */
-            place_extra_bold(y0 + 0 - yhsize, x0 + i - xhsize);
+            place_extra_bold_aux(y0 + 0 - yhsize, x0 + i - xhsize);
         }
 
         /* bottom boundary */
         if ((cave[ysize + y0 - yhsize][i + x0 - xhsize].info & CAVE_ICKY) && (room))
         {
             /* Next to a 'filled' region? - set to be room walls */
-            place_outer_bold(y0 + ysize - yhsize, x0 + i - xhsize);
+//            place_outer_bold_aux(y0 + ysize - yhsize, x0 + i - xhsize);
             if (light) cave[y0 + ysize - yhsize][x0 + i - xhsize].info|=(CAVE_GLOW);
             cave[y0 + ysize - yhsize][x0 + i - xhsize].info|=(CAVE_ROOM);
-            place_outer_bold(y0 + ysize - yhsize, x0 + i - xhsize);
+            place_outer_bold_aux(y0 + ysize - yhsize, x0 + i - xhsize);
         }
         else
         {
             /* set to be normal granite */
-            place_extra_bold(y0 + ysize - yhsize, x0 + i - xhsize);
+            place_extra_bold_aux(y0 + ysize - yhsize, x0 + i - xhsize);
         }
 
         /* clear the icky flag-don't need it any more */
@@ -3302,29 +3345,29 @@ static bool generate_fracave(int y0, int x0, int xsize, int ysize, int cutoff, b
         if ((cave[i + y0 - yhsize][0 + x0 - xhsize].info & CAVE_ICKY) && room)
         {
             /* room boundary */
-            place_outer_bold(y0 + i - yhsize, x0 + 0 - xhsize);
+//            place_outer_bold_aux(y0 + i - yhsize, x0 + 0 - xhsize);
             if (light) cave[y0 + i - yhsize][x0 + 0 - xhsize].info |= (CAVE_GLOW);
             cave[y0 + i - yhsize][x0 + 0 - xhsize].info |= (CAVE_ROOM);
-            place_outer_bold(y0 + i - yhsize, x0 + 0 - xhsize);
+            place_outer_bold_aux(y0 + i - yhsize, x0 + 0 - xhsize);
         }
         else
         {
             /* outside room */
-            place_extra_bold(y0 + i - yhsize, x0 + 0 - xhsize);
+            place_extra_bold_aux(y0 + i - yhsize, x0 + 0 - xhsize);
         }
         /* right boundary */
         if ((cave[i + y0 - yhsize][xsize + x0 - xhsize].info & CAVE_ICKY) && room)
         {
             /* room boundary */
-            place_outer_bold(y0 + i - yhsize, x0 + xsize - xhsize);
+//            place_outer_bold_aux(y0 + i - yhsize, x0 + xsize - xhsize);
             if (light) cave[y0 + i - yhsize][x0 + xsize - xhsize].info |= (CAVE_GLOW);
             cave[y0 + i - yhsize][x0 + xsize - xhsize].info |= (CAVE_ROOM);
-            place_outer_bold(y0 + i - yhsize, x0 + xsize - xhsize);
+            place_outer_bold_aux(y0 + i - yhsize, x0 + xsize - xhsize);
         }
         else
         {
             /* outside room */
-            place_extra_bold(y0 + i - yhsize, x0 + xsize - xhsize);
+            place_extra_bold_aux(y0 + i - yhsize, x0 + xsize - xhsize);
         }
 
         /* clear icky flag -done with it */
@@ -3338,48 +3381,59 @@ static bool generate_fracave(int y0, int x0, int xsize, int ysize, int cutoff, b
     {
         for (y = 1; y < ysize; ++y)
         {
-            if (is_floor_bold(y0 + y - yhsize, x0 + x - xhsize) &&
-                (cave[y0 + y - yhsize][x0 + x - xhsize].info & CAVE_ICKY))
+            int my = y0 + y - yhsize;
+            int mx = x0 + x - xhsize;
+            if (is_floor_bold(my, mx) &&
+                (cave[my][mx].info & CAVE_ICKY))
             {
                 /* Clear the icky flag in the filled region */
-                cave[y0 + y - yhsize][x0 + x - xhsize].info &= ~CAVE_ICKY;
+                cave[my][mx].info &= ~CAVE_ICKY;
 
                 /* Set appropriate flags */
-                if (light) cave[y0 + y - yhsize][x0 + x - xhsize].info |= (CAVE_GLOW);
-                if (room) cave[y0 + y - yhsize][x0 + x - xhsize].info |= (CAVE_ROOM);
+                if (light) cave[my][mx].info |= (CAVE_GLOW);
+                if (room) cave[my][mx].info |= (CAVE_ROOM);
+                if (atlantis_hack) cave[my][mx].mimic = 0;
             }
-            else if (is_outer_bold(y0 + y - yhsize, x0 + x - xhsize) &&
-                 (cave[y0 + y - yhsize][x0 + x - xhsize].info & CAVE_ICKY))
+            else if (is_outer_bold(my, mx) &&
+                 (cave[my][mx].info & CAVE_ICKY))
             {
                 /* Walls */
-                cave[y0 + y - yhsize][x0 + x - xhsize].info &= ~(CAVE_ICKY);
-                if (light) cave[y0 + y - yhsize][x0 + x - xhsize].info |= (CAVE_GLOW);
+                cave[my][mx].info &= ~(CAVE_ICKY);
+                if (light) cave[my][mx].info |= (CAVE_GLOW);
                 if (room)
                 {
-                    cave[y0 + y - yhsize][x0 + x - xhsize].info |= (CAVE_ROOM);
+                    cave[my][mx].info |= (CAVE_ROOM);
+                    if (atlantis_hack)
+                    {
+                        if ((cave[my][mx].mimic) && (have_flag(f_info[cave[my][mx].mimic].flags, FF_WALL)))
+                        {
+                            add_cave_info(my, mx, (cave[my][mx].mimic >= max_f_idx) ? CAVE_OUTER : CAVE_EXTRA);
+                            cave[my][mx].feat = (cave[my][mx].mimic % max_f_idx);
+                        }
+                        cave[my][mx].mimic = 0;
+                    }
                 }
                 else
                 {
-
-                    place_extra_bold(y0 + y - yhsize, x0 + x - xhsize);
-                    cave[y0 + y - yhsize][x0 + x - xhsize].info &= ~(CAVE_ROOM);
+                    place_extra_bold_aux(my, mx);
+                    cave[my][mx].info &= ~(CAVE_ROOM);
                 }
             }
             else
             {
                 /* Clear the unconnected regions */
-                place_extra_bold(y0 + y - yhsize, x0 + x - xhsize);
-                cave[y0 + y - yhsize][x0 + x - xhsize].info &= ~(CAVE_ICKY | CAVE_ROOM);
+                place_extra_bold_aux(my, mx);
+                cave[my][mx].info &= ~(CAVE_ICKY | CAVE_ROOM);
             }
         }
     }
 
     /*
      * XXX XXX XXX There is a slight problem when tunnels pierce the caves:
-     * Extra doors appear inside the system. (Its not very noticeable though.)
+     * Extra doors appear inside the system. (It's not very noticeable, though.)
      * This can be removed by "filling" from the outside in. This allows a separation
      * from _outer_ with _inner_. (Internal walls are  _outer_ instead.)
-     * The extra effort for what seems to be only a minor thing (even non-existant if you
+     * The extra effort for what seems to be only a minor thing (even nonexistent if you
      * think of the caves not as normal rooms, but as holes in the dungeon), doesn't seem
      * worth it.
      */
@@ -3582,8 +3636,15 @@ static bool generate_lake(int y0, int x0, int xsize, int ysize, int c1, int c2, 
         {
             for (y = 0; y <= ysize; ++y)
             {
-                place_floor_bold(y0 + y - yhsize, x0 + x - xhsize);
-                cave[y0 + y - yhsize][x0 + x - xhsize].info &= ~(CAVE_ICKY);
+                int my = y0 + y - yhsize;
+                int mx = x0 + x - xhsize;
+                place_floor_bold(my, mx);
+                if ((atlantis_hack) && (cave[my][mx].mimic))
+                {
+                    cave_set_feat(my, mx, cave[my][mx].mimic % max_f_idx);
+                    cave[my][mx].mimic = 0;
+                }
+                cave[my][mx].info &= ~(CAVE_ICKY);
             }
         }
         return FALSE;
@@ -3592,8 +3653,8 @@ static bool generate_lake(int y0, int x0, int xsize, int ysize, int c1, int c2, 
     /* Do boundarys- set to normal granite */
     for (i = 0; i <= xsize; ++i)
     {
-        place_extra_bold(y0 + 0 - yhsize, x0 + i - xhsize);
-        place_extra_bold(y0 + ysize - yhsize, x0 + i - xhsize);
+        place_extra_bold_aux(y0 + 0 - yhsize, x0 + i - xhsize);
+        place_extra_bold_aux(y0 + ysize - yhsize, x0 + i - xhsize);
 
         /* clear the icky flag-don't need it any more */
         cave[y0 + 0 - yhsize][x0 + i - xhsize].info &= ~(CAVE_ICKY);
@@ -3604,8 +3665,8 @@ static bool generate_lake(int y0, int x0, int xsize, int ysize, int c1, int c2, 
 
     for (i = 1; i < ysize; ++i)
     {
-        place_extra_bold(y0 + i - yhsize, x0 + 0 - xhsize);
-        place_extra_bold(y0 + i - yhsize, x0 + xsize - xhsize);
+        place_extra_bold_aux(y0 + i - yhsize, x0 + 0 - xhsize);
+        place_extra_bold_aux(y0 + i - yhsize, x0 + xsize - xhsize);
 
         /* clear icky flag -done with it */
         cave[y0 + i - yhsize][x0 + 0 - xhsize].info &= ~(CAVE_ICKY);
@@ -3618,18 +3679,28 @@ static bool generate_lake(int y0, int x0, int xsize, int ysize, int c1, int c2, 
     {
         for (y = 1; y < ysize; ++y)
         {
+            int my = y0 + y - yhsize;
+            int mx = x0 + x - xhsize;
             /* Fill unconnected regions with granite */
-            if ((!(cave[y0 + y - yhsize][x0 + x - xhsize].info & CAVE_ICKY)) ||
-                is_outer_bold(y0 + y - yhsize, x0 + x - xhsize))
-                place_extra_bold(y0 + y - yhsize, x0 + x - xhsize);
+            if ((!(cave[my][mx].info & CAVE_ICKY)) || is_outer_bold(my, mx))
+                place_extra_bold_aux(my, mx);
+            else if (atlantis_hack)
+            {
+                if ((cave[my][mx].mimic) && (have_flag(f_info[cave[my][mx].mimic].flags, FF_WALL)))
+                {
+                    add_cave_info(my, mx, (cave[my][mx].mimic >= max_f_idx) ? CAVE_OUTER : CAVE_EXTRA);
+                    cave[my][mx].feat = cave[my][mx].mimic % max_f_idx;
+                }
+                cave[my][mx].mimic = 0;
+            }
 
             /* turn off icky flag (no longer needed.) */
-            cave[y0 + y - yhsize][x0 + x - xhsize].info &= ~(CAVE_ICKY | CAVE_ROOM);
+            cave[my][mx].info &= ~(CAVE_ICKY | CAVE_ROOM);
 
             /* Light lava */
-            if (cave_have_flag_bold(y0 + y - yhsize, x0 + x - xhsize, FF_LAVA))
+            if (cave_have_flag_bold(my, mx, FF_LAVA))
             {
-                if (!(d_info[dungeon_type].flags1 & DF1_DARKNESS)) cave[y0 + y - yhsize][x0 + x - xhsize].info |= CAVE_GLOW;
+                if (!(d_info[dungeon_type].flags1 & DF1_DARKNESS)) cave[my][mx].info |= CAVE_GLOW;
             }
         }
     }
@@ -4033,7 +4104,7 @@ static void add_outer_wall(int x, int y, int light, int x1, int y1, int x2, int 
     else if (is_extra_bold(y, x))
     {
         /* Set bounding walls */
-        place_outer_bold(y, x);
+        if (!atlantis_hack) place_outer_bold(y, x);
         if (light) c_ptr->info |= CAVE_GLOW;
     }
     else if (permanent_wall(f_ptr))
