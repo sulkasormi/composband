@@ -200,7 +200,7 @@ void add_river(int feat1, int feat2)
 /*
  * Places "streamers" of rock through dungeon
  *
- * Note that their are actually six different terrain features used
+ * Note that there are actually six different terrain features used
  * to represent streamers. Three each of magma and quartz, one for
  * basic vein, one with hidden gold, and one with known gold. The
  * hidden gold types are currently unused.
