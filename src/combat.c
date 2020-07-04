@@ -1895,7 +1895,7 @@ void display_innate_attack_info(doc_ptr doc, int which)
             else if (!_critical_loop) break;
             else crit.mul += 100;
         }
-        if ((!_critical_attempts) || (_critical_roll < 2)) /* Something has gone horribly wrong... */
+        if ((!_critical_attempts) || (_critical_roll < 1) || (_critical_comp < 1)) /* Something has gone horribly wrong... */
         {
             crit.mul = 100;
             crit.to_d = 0;
