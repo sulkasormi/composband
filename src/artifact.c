@@ -1828,16 +1828,16 @@ static void get_random_name_aux(char *return_name, object_type *o_ptr, int power
         switch (power)
         {
         case 0:
-            filename = "amulet_cursed.txt";
+            filename = "amu_cursed.txt";
             break;
         case 1:
-            filename = "amulet_low.txt";
+            filename = "amu_low.txt";
             break;
         case 2:
-            filename = "amulet_med.txt";
+            filename = "amu_med.txt";
             break;
         default:
-            filename = "amulet_high.txt";
+            filename = "amu_high.txt";
         }
         get_random_name_aux_aux(filename, bias_hack, 80, return_name);
     }
