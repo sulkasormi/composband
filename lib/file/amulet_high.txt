@@ -28,3 +28,6 @@ of Trickery
 'Sun King'
 'Wolf Amulet'
 'Sapphire Rose'
+'Soul Jar'
+'King of Diamonds'
+'Nimphelos'
