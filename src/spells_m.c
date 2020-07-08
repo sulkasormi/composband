@@ -575,7 +575,7 @@ void phase_door_spell(int cmd, variant *res)
         {
             var_set_int(res, 30);
             break;
-        }
+        } /* Fall through */
     default:
         default_spell(cmd, res);
         break;
@@ -871,6 +871,7 @@ void power_throw_spell(int cmd, variant *res)
         }
         p_ptr->mighty_throw = old_mt;
         var_set_bool(res, TRUE);
+        break;
     }
     case SPELL_CALC_BONUS:
         p_ptr->mighty_throw = TRUE;
