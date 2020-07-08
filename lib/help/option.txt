@@ -304,6 +304,9 @@ If this option is on, any extra resistances and other special attributes on an o
 <topic:abbrev_all><color:U>Describe all object attributes by abbreviation</color> <color:D>(abbrev_all)</color>
 If this option is on, all attributes on an object will be added to its description as a fake inscription. See <link:objects.txt#InscriptionAbbrev> for a list of abbreviations.
 
+<topic:mark_dragon><color:U>Extend use of '?' to random dragon resistances</color> <color:D>(mark_dragon)</color>
+If this option is off, the unknown equipment attribute indicator '?' is limited to unknown attributes on artifacts and ego items, and thus indicates an unknown attribute the player can learn to recognize. If the option is on, items with unknown random dragon resistances (such as dragon gloves or dragon boots) are also marked with '?', allowing '?' to indicate any unknown attribute at all. The option is somewhat redundant in that all objects with dragon resistances will be marked with '?' until fully identified, but it allows players to rely on '?' as an indicator of the need to *identify* equipment. The presence of unknown attributes on an object is always indicated on inspection, regardless of whether this option is on or not.
+
 <topic:exp_need><color:U>Show the experience needed for the next level</color> <color:D>(exp_need)</color>
 If this option is on, the experience display in the main screen sidebar displays the experience needed to reach the next character level. If this option is off, the character's current total experience is displayed instead.
 
