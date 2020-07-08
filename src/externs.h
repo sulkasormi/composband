@@ -308,6 +308,7 @@ extern bool display_sp_bar; /* Display player SP just like the monster health ba
 extern bool compress_savefile;    /* Compress messages in savefiles */
 extern bool abbrev_extra;    /* Describe obj's extra resistances by abbreviation */
 extern bool abbrev_all;    /* Describe obj's all resistances by abbreviation */
+extern bool mark_dragon; /* Extend '?' to random dragon resistances */
 extern bool exp_need;    /* Show the experience needed for next level */
 extern bool ignore_unview;    /* Ignore whenever any monster does */
 extern bool display_distance;    /* Display distance of LoS monsters in monster list */
