@@ -2264,6 +2264,9 @@ option_type option_info[] =
     { &abbrev_all,                  FALSE, OPT_PAGE_TEXT, 2, 11,
     "abbrev_all",                   "Describe all object attributes by abbreviation" },
 
+    { &mark_dragon,                 TRUE, OPT_PAGE_TEXT, 2, 4,
+    "mark_dragon",                  "Extend use of '?' to random dragon resistances" },
+
     { &exp_need,                    FALSE, OPT_PAGE_TEXT, 2, 12,
     "exp_need",                     "Show the experience needed for next level" },
 
