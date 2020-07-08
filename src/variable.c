@@ -279,6 +279,7 @@ bool display_sp_bar;
 bool compress_savefile;    /* Compress messages in savefiles */
 bool abbrev_extra;    /* Describe obj's extra resistances by abbreviation */
 bool abbrev_all;    /* Describe obj's all resistances by abbreviation */
+bool mark_dragon; /* Extend '?' to random dragon resistances */
 bool exp_need;    /* Show the experience needed for next level */
 bool ignore_unview;    /* Ignore whenever any monster does */
 bool display_distance;
