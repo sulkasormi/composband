@@ -22,7 +22,7 @@ F:q_thieves.txt
 
 # Hardcoded as quest 2 in quest.h
 N:2:15:The Sewer (Outpost)
-T:TOWN | GENERATE | SUBSTITUTE_87
+T:TOWN | GENERATE | SUBSTITUTE_87 | DANGER_LEVEL_18
 F:q_sewer.txt
 
 N:3:22:The Stranger (Telmora)
