@@ -118,7 +118,7 @@ L:b:BUILDING_1(0)
 ############### Buildings ###############
 
 B:0:N:Library:Toniqua:Human
-B:0:A:0:Research item:1400:1400:a:1:0
+B:0:A:0:Research item:1300:1300:a:1:0
 B:0:A:1:Town overview:0:0:h:2:0
 B:0:A:2:Identify item:50:50:i:44:0
 B:0:A:3:Identify possessions:350:350:p:26:0
