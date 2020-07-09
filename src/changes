@@ -1,3 +1,264 @@
+Changes in FrogComposband 7.1.salmiak:
+
+* Added new dungeons and randomized which dungeons actually appear
+
+* Added new objects, ego types, artifacts, item curses, terrain features and
+random artifact names
+
+* Added new monsters (including the reintroduction of the Greater Cyber
+Wyrm Angel Daemon Lich as an exclusively postgame monster)
+
+* Added new player-monster race (Mummy) based on Maledicts from Pos-R
+
+* Moved to a 32-color palette and changed the colors of many monsters
+-- NOTES: If your platform does not support more than 16 colors, or
+   FrogComposband's coloring code for your platform is faulty, compile with
+   --disable-xtra-colours to retain use of 16 colors only. If your platform
+   does support more than 16 colors but you wish to stick to 16 (from
+   nostalgic reasons or for greater contrast between colors), load
+   user-lim.prf (typing &4 in-game does this automatically) or otherwise
+   modify the colors with the '&' command
+-- Special thanks to Oneiron for helping me debug the 32-color palette
+
+* Town services could enchant multiple weapons for the price of one; this has
+been fixed (thanks to Thraalbee for reporting)
+
+* Directions were given for Heaven and Hell even if the player had not won;
+this has been fixed (thanks to Marty and ster for reporting)
+
+* Fixed bug when Teleport Level was used after completing Crystal Quest
+(thanks to bostock for reporting)
+
+* Fixed bug when stairs were taken just when recall kicked in
+(thanks to wobbly and bostock for reporting)
+
+* Fixed bug with hand grenade explosions sometimes causing a "player"
+fake monster to temporarily appear (thanks to wobbly for reporting)
+
+* Fixed bug with multi-effect monster blows sometimes killing an opponent
+repeatedly (thanks to bostock for reporting)
+
+* Fixed bug with autotargeting the mount for hasting and healing
+(thanks to bostock for reporting)
+
+* Fixed bug with devices in wilderness rooms generating with no effect
+(thanks to bostock for reporting)
+
+* Fixed bug with standard artifacts disappearing from the floor if they had
+been carried there from another level (thanks to bostock for reporting)
+
+* Fixed bug with Ninjas continuing to attack if Kawarimi was triggered
+mid-turn (thanks to bostock for reporting)
+
+* Timed monster statuses were not processed in the overworld; this has been
+fixed (thanks to bostock for reporting)
+
+* Fixed old bug with statue stacking (thanks to kt for reporting)
+
+* Fixed infinite loop on junk autoget when always_pickup was on and
+the Easy Destroyer was not on (thanks to DavidMedley for reporting)
+
+* Fixed crash when the object list subwindow was on and an item with
+specific properties was equipped from the floor (thanks to caruso for
+reporting)
+
+* A potion of Restore Mana thrown from the floor could cause a phantom copy
+of itself to explode; this has been fixed
+
+* Bumping into mountains while confused consumed no time; this has been fixed
+(thanks to Hugo for reporting)
+
+* Fixed weirdness on player beholders with mutational innate attacks
+(thanks to Karkaroth for reporting)
+
+* Fixed annoying and inconsistent handling of erratic movement on mounts
+(thanks to budswell for reporting)
+
+* Fixed bug with newly acquired locked mutations not affecting regeneration
+properly (thanks to ster for reporting)
+
+* Fixed bug with insurance and player-elemental item destruction
+
+* Fixed bug with inappropriate handling of insured items left behind on
+a level the player subsequently returned to
+
+* Fixed crash on shop shuffle if too many items had been reserved
+
+* Fixed ancient bugs with the wilderness terrain-selection algorithm, and
+adjusted some numbers that had been optimized for the buggy version
+
+* Fixed various types of weirdness with Bunshin; it is now generally less
+useful against auras, but more useful in a number of other situations where
+it previously did not apply
+
+* Fixed minor bug with innate attack damage calculations
+
+* Fixed weirdness with charmed clones
+
+* Fixed yet another loophole to anti-scumming item/gold drop limits
+
+* Fixed incorrect pluralization of some quiver egos
+
+* Fixed weirdness with door placement in cavern areas
+
+* Fixed occasional weirdness with stair placement after quest completion
+
+* Multiple items could be reserved for the price of one; this has been fixed
+
+* Turncounts in character dumps now properly account for midnight starts
+(this does not apply retroactively)
+
+* Changed the power of confusion effects, they should now at least resemble
+the claimed powers
+
+* Fixed issue with the powers of Slow Monster bolt spells
+(thanks to Saru for reporting)
+
+* Allowed Samurai to view damage averages for Kendo attack techniques
+(thanks to ster for suggesting)
+
+* Renamed weak Beam of Light to "Moonbeam" to more clearly distinguish it
+from strong Beam of Light (thanks to bostock for suggesting)
+
+* Slightly relaxed capture-balling requirements for hostile monsters to
+prevent some low-HP monsters from being captureable at all
+(thanks to caruso for bringing this up)
+
+* Added option (on by default) to limit quantity prompts in shops to the
+highest amount that is both available and affordable
+(thanks to caruso for suggesting)
+
+* Added option (off by default) to indicate unknown item flavors in shops
+(thanks to caruso for suggesting)
+
+* Added option (off by default) to display the nominal energy cost of the
+most recent action (thanks to Bucephalus for suggesting)
+
+* Added option (on by default) to extend the unknown attribute indicator '?'
+to cover random dragon resistances (thanks to bostock for bringing this up)
+
+* Combined the empty_levels option with the ironman_empty_levels option
+
+* Allowed using Home/End and 7/1 to immediately move to the beginning or end
+of a long home or museum inventory (thanks to Melum for suggesting)
+
+* Renamed the "Cause Wounds" monster spells/auras to various types of "Curse",
+making it less unintuitive that most of them can curse the equipment
+
+* Changed the Patient personality to be more the opposite of Hasty; it now
+has slightly better stats and skills than before, but gives a speed penalty
+
+* Potions of New Life now shuffle Split personalities
+(thanks to Aav for suggesting)
+
+* Improved the object list and monster list UI
+- allowed customizing the lists' width
+- allowed looping between the first and last entry with Up/Down arrows
+- the object list now displays visible stairs if no objects are visible
+(thanks to kt and bostock for suggestions)
+
+* Allowed scrolling long monster descriptions while targeting
+
+* Allowed the Gloves of the Master Tonberry to generate for Tonberries
+
+* Allowed pets to recall with player from slightly further away
+
+* Average rings, amulets and Feanorian Lamps are now identified on pseudo-ID
+
+* Buffed Dwarven body armour again, it now has much more potential upside
+
+* A number of additional uniques, most notably Mandor, now resist confusion
+
+* Player quylthulgs can now (usually) summon around a target location
+starting at CL 20, regardless of which options they use
+
+* Changed the special Bloodrip player-cutting mechanic; it is now less severe
+but happens more often, and happens in melee rather than at random times
+(thanks to bostock, ster and MITZE for feedback)
+
+* Changed hallucination to make it more difficult to figure out which
+monsters are real
+
+* Automatic combining of pack ammo with quiver ammo now happens even if the
+ammo is unsuitable for the current shooter
+
+* Tweaked the confusion-resistance message for already confused monsters
+(thanks to Bucephalus for suggesting)
+
+* Tweaked Rune-Knight mana gain formula
+
+* Slightly tweaked the effects of Easy-Spell/Dec-Mana on spell fail rates
+
+* Re-allowed the use of Destruction in Witch Wood as a reduced-power
+special effect
+
+* Tweaked the XP values of many monsters
+
+* Dungeon entrance guardians are no longer vulnerable to genocide
+
+* Life ratings are now displayed by default on a scale of 0 to 76, rather
+than on a percentage scale of 87% to 117%; this is purely a display change,
+intended both to permit greater accuracy and to distinguish them even more
+clearly from the unrelated racial and CON/equipment-based HP multipliers
+
+* Trap warnings now reveal the trap
+
+* The Mogaminator is now applied to items on shop-ID and museum-ID
+
+* The in-game high score list now adjusts scores for options and
+accomplishments (this does not apply retroactively)
+
+* Race change attempts disallowed by competition mode now trigger the
+Baby Foul Curse instead (also, the Baby Foul Curse is now more evil)
+
+* Pass-wall monsters and players are no longer slowed by trees
+
+* Nerfed humans (instead of the second demigod talent at CL 40, they now
+receive a primary-stat-dependent weakness at CL 35)
+
+* Allowed the recall interface to give a multi-column dungeon list
+
+* Changed innate attack damage display to show the damage for each effect
+separately instead of combining it with the damage from the first effect
+
+* Further reduced energy randomness, it is now more strictly limited at
+higher speeds
+
+* Replaced the hidden ability of some Mage-type classes to recover mana
+twice as fast with a public "Mana Recovery" object flag. Also, effective
+HP regen and effective SP regen are now displayed separately on the
+character sheet for transparency
+
+* Destruction no longer always works on summoned monsters, except in
+instant-coffee mode. It still always works on "nice" summons (i.e. most
+high-level monsters the turn after they appear), and summoned monsters never
+gain destruction immunity
+
+* Allowed monsters to resist disintegration
+
+* Allowed two-handed wielding of baseball bats
+
+* Additional monster health bar coloring:
+- temporary slowness is indicated with dark grey stars (lowest priority)
+- temporary haste is indicated with violet brackets
+- a high monster power (above 133.3%) is indicated with dark blue brackets
+
+* Wilderness level display in the immediate vicinity of a dungeon entrance
+now indicates which dungeon it is, e.g. "Wilderness (Angband): L1" instead
+of just "Wilderness: L1"
+
+* Allowed Beorning Rage-Mages to use Rage in bear form
+(thanks to clouded for suggesting)
+
+* The 'U'/'O' power selection menu now displays the stats involved in
+determining fail rates
+
+* Further improved and updated the help
+
+* Various minor tweaks and code improvements
+
+-------------------------------------------------------
+
 Changes in FrogComposband 7.1.liquorice:
 
 * Added a new player race (Igor)
@@ -2028,9 +2289,9 @@ To do:
 
 * Add new player races, monsters, etc.
 
-* Add new curses
+* Further limit approaches based on scumming for infinite healing
 
-* Further limit approaches based on scumming shops for infinite healing
+* Modify player Filthy Rags to discourage grindy play
 
 * Try to reimplement damage display for innate attacks on possessors
 (this will be a major pain...)
@@ -2044,6 +2305,9 @@ completed on the pink horror's death, even though blue horrors will appear
 
 * The item inspection menu sometimes doesn't offer floor items as an option
 even when there is a floor item that could be inspected
+
+* Use-ID of some effects, at least Identify and *Identify*, is occasionally
+buggy for mysterious reasons
 
 * Dark squares previously illuminated by a light-carrying monster sometimes
 appear to remain inappropriately lit
