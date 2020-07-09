@@ -394,6 +394,7 @@
 
 -------------------------------------------------------
 
+
 <topic:chocolate>Changes in <color:keyword>FrogComposband 7.1.chocolate</color>:
 
 * Added a new player class (Disciples; which are essentially three classes rolled in one, because the three subclasses don't have much in common)
@@ -1093,6 +1094,7 @@
 
 -------------------------------------------------------
 
+
 <topic:mango>Changes in <color:keyword>FrogComposband 7.0.mango</color>:
 
 * Introduced three new personalities (Chaotic, Mundane and Unlucky) and restored the removed Lazy and Munchkin personalities. (Thanks to MITZE for suggesting the Chaotic personality and helping me devise it)
@@ -1269,6 +1271,7 @@
 
 -------------------------------------------------------
 
+
 <topic:peppermint>Changes in <color:keyword>FrogComposband 7.0.peppermint</color>:
 
 * Totally revamped the no-wilderness town, and fixed quest descriptions so they're accurate with both wilderness and no wilderness
@@ -1386,6 +1389,7 @@
 * Updated the in-game FAQ
 
 -------------------------------------------------------
+
 
 <topic:strawberry>Changes in <color:keyword>FrogComposband 7.0.strawberry</color> (compared to ComPosband 7.0.3):
 
