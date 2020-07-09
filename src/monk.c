@@ -484,21 +484,21 @@ static void _ac_bonus_imp(int slot)
             p_ptr->dis_to_a += p_ptr->monk_lvl*3/2;
             break;
         case EQUIP_SLOT_CLOAK:
-            if (p_ptr->lev > 15)
+            if (p_ptr->monk_lvl > 15)
             {
                 p_ptr->to_a += (p_ptr->monk_lvl - 13)/3;
                 p_ptr->dis_to_a += (p_ptr->monk_lvl - 13)/3;
             }
             break;
         case EQUIP_SLOT_WEAPON_SHIELD: /* Oops: was INVEN_LARM only and "/3" ... */
-            if (p_ptr->lev > 10)
+            if (p_ptr->monk_lvl > 13)
             {
                 p_ptr->to_a += (p_ptr->monk_lvl - 8)/6;
                 p_ptr->dis_to_a += (p_ptr->monk_lvl - 8)/6;
             }
             break;
         case EQUIP_SLOT_HELMET:
-            if (p_ptr->lev >= 5)
+            if (p_ptr->monk_lvl >= 5)
             {
                 p_ptr->to_a += (p_ptr->monk_lvl - 2)/3;
                 p_ptr->dis_to_a += (p_ptr->monk_lvl - 2)/3;
