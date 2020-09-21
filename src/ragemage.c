@@ -80,7 +80,7 @@ static void _armor_of_fury_spell(int cmd, variant *res)
         var_set_string(res, "Whenever a monster attacks you with magic, they may become slowed and stunned.");
         break;
     case SPELL_CAST:
-        set_tim_armor_of_fury(25 + randint1(25), FALSE);
+        set_tim_armor_of_fury(2 * (25 + randint1(25)), FALSE);
         var_set_bool(res, TRUE);
         break;
     default:
@@ -120,7 +120,7 @@ static void _barbaric_resistance_spell(int cmd, variant *res)
         if (p_ptr->shero)
             base = 20;
 
-        dur = randint1(base) + base;
+        dur = 2 * randint1(base) + base;
         set_oppose_acid(dur, FALSE);
         set_oppose_elec(dur, FALSE);
         set_oppose_fire(dur, FALSE);
@@ -313,7 +313,7 @@ static void _force_brand_spell(int cmd, variant *res)
         int base = 4;
         if (p_ptr->shero)
             base = 10;
-        set_tim_force(base + randint1(base), FALSE);
+        set_tim_force(2 * (base + randint1(base)), FALSE);
         var_set_bool(res, TRUE);
         break;
     }
@@ -501,7 +501,7 @@ static void _resist_curses_spell(int cmd, variant *res)
         var_set_string(res, "Grants temporary magical resistance.");
         break;
     case SPELL_CAST:
-        set_tim_resist_curses(20 + randint1(20), FALSE);
+        set_tim_resist_curses(2 * (20 + randint1(20)), FALSE);
         var_set_bool(res, TRUE);
         break;
     default:
@@ -521,7 +521,7 @@ static void _resist_disenchantment_spell(int cmd, variant *res)
         var_set_string(res, "Grants temporary resistance to disenchantment.");
         break;
     case SPELL_CAST:
-        set_tim_res_disenchantment(10 + randint1(10), FALSE);
+        set_tim_res_disenchantment(2 * (10 + randint1(10)), FALSE);
         var_set_bool(res, TRUE);
         break;
     default:
@@ -796,7 +796,7 @@ static void _spell_reaction_spell(int cmd, variant *res)
         var_set_string(res, "Grants temporary speed whenever you are targetted by a magical attack.");
         break;
     case SPELL_CAST:
-        set_tim_spell_reaction(30 + randint1(30), FALSE);
+        set_tim_spell_reaction(2 * (30 + randint1(30)), FALSE);
         var_set_bool(res, TRUE);
         break;
     default:
@@ -816,7 +816,7 @@ static void _spell_turning_spell(int cmd, variant *res)
         var_set_string(res, "Whenever you are the target of magic there is a chance of returning the spell to the caster.");
         break;
     case SPELL_CAST:
-        set_tim_spell_turning(20 + randint1(20), FALSE);
+        set_tim_spell_turning(2 * (20 + randint1(20)), FALSE);
         var_set_bool(res, TRUE);
         break;
     default:
@@ -923,23 +923,23 @@ typedef struct {
 static book_t _books[4] = {
     { "Anger Management",
         {{ 1,  2, 30, _shout_spell},
-         { 2,  2, 25, _detect_magical_foes_spell},
+         { 2,  0, 25, _detect_magical_foes_spell},
          { 3,  3, 30, _smash_spell},
          { 5,  5, 25, _evasive_leap_spell},
-         { 5,  5, 35, light_area_spell},
+         { 5,  0, 35, light_area_spell},
          { 7,  0, 50, _focus_rage_spell},
-         { 8, 10, 50, _rage_sustenance_spell},
+         { 8,  0, 50, _rage_sustenance_spell},
          {12,  6, 35, _veterans_blessing_spell}}
     },
     { "Northern Frights",
-        {{15,  8, 45, _crude_mapping_spell},
+        {{15,  0, 45, _crude_mapping_spell},
          {18, 18, 50, _resist_disenchantment_spell},
-         {20, 30, 55, awesome_blow_spell},
+         {20, 15, 55, awesome_blow_spell},
          {22, 15, 60, _spell_reaction_spell},
          {23, 21, 60, _greater_shout_spell},
          {25, 18, 60, _whirlwind_attack_spell},
          {27, 20, 55, _resist_curses_spell},
-         {28, 23, 70, _detect_magic_spell}}
+         {28, 0, 70, _detect_magic_spell}}
     },
     { "The Sound and the Fury",
         {{10, 12, 35, berserk_spell},
