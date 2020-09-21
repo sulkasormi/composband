@@ -173,7 +173,7 @@ void init_blows_calc(object_type *o_ptr, weapon_info_t *info_ptr)
         break;
 
     case CLASS_RAGE_MAGE:
-        info_ptr->blows_calc.max = 300;
+        info_ptr->blows_calc.max = 450;
         info_ptr->blows_calc.wgt = 70;
         info_ptr->blows_calc.mult = 30;
         break;
