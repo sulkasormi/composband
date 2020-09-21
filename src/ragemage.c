@@ -1006,16 +1006,13 @@ static bool _gain_spell(int book)
     int        ct = 0, i;
 
     /* Build a list of learnable spells. Spells can only be
-       learned once (no spell skills) and we only display spells
-       if the user is of high enough level. This is rather
-       different than how the system normally behaves, but why spoil
-       the nature of future higher level spells to the player?
+       learned once (no spell skills). 
     */
     for (i = 0; i < _SPELLS_PER_BOOK; i++)
     {
         spell_info *src = &_books[book].spells[i];
 
-        if (!_is_spell_known(book, i) && src->level <= p_ptr->lev)
+        if (!_is_spell_known(book, i))
         {
             power_info *dest = &spells[ct];
 
