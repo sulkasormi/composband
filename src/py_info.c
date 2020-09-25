@@ -2436,6 +2436,8 @@ void py_display_dungeons(doc_ptr doc)
             doc_printf(doc, "Now, you are in the quest '%s'.\n", lyhytnimi(quests_get_current(), &quest_name));
             free((vptr)quest_name);
         }
+        else if (p_ptr->inside_arena)
+            doc_printf(doc, "Now, you are in the %s %s.\n", town_name(p_ptr->town_num), map_name());
         else
             doc_insert(doc, "Hmmm ... Where are you?");
     }
