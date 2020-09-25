@@ -674,7 +674,7 @@ static void _word_of_command_spell(int cmd, variant *res)
         var_set_string(res, "Word of Command");
         break;
     case SPELL_DESC:
-        var_set_string(res, "By uttering a word of obediance, the true dragon rider can bend the will of all but the mightiest serpents.");
+        var_set_string(res, "By uttering a word of obedience, the true dragon rider can bend the will of all but the mightiest serpents.");
         break;
     case SPELL_CAST:                        /*v-- This is meaningless, but set high enough so that the project code actually works */
         project_hack(GF_CONTROL_PACT_MONSTER, 100);
@@ -731,11 +731,7 @@ static void _dragon_upkeep_song(void)
         if (_get_toggle() == WARLOCK_DRAGON_TOGGLE_HEALING)
         {
             hp_player(p_ptr->lev);
-            if (mount->hp < mount->maxhp)
-            {
-                int heal = MIN(p_ptr->lev*3, mount->maxhp - mount->hp);
-                mount->hp += heal;
-            }
+            if (mount->hp < mount->maxhp) (void)hp_mon(mount, p_ptr->lev*3, FALSE);
         }
         else if (_get_toggle() == WARLOCK_DRAGON_TOGGLE_HEROIC_CHARGE)
         {
@@ -753,7 +749,7 @@ static void _dragon_upkeep_song(void)
             }
             if (MON_MONFEAR(mount))
             {
-                msg_format("%^s is not longer afraid.", m_name);
+                msg_format("%^s is no longer afraid.", m_name);
                 set_monster_monfear(p_ptr->riding, 0);
             }
         }
