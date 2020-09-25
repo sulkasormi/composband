@@ -219,6 +219,7 @@ class_t *berserker_get_class(void)
         me.get_powers = _berserker_powers;
         me.get_spells = _spells;
         me.caster_info = _caster_info;
+        me.character_dump = py_dump_spells;
         init = TRUE;
     }
 
