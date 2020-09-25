@@ -1993,16 +1993,8 @@ bool mon_attack_mon(int m_idx, int t_idx)
                     case BLOW_EFFECT_TYPE_HEAL:
                         if ((monster_living(tr_ptr)) && (damage > 2))
                         {
-                            bool did_heal = FALSE;
-
-                            if (m_ptr->hp < m_ptr->maxhp) did_heal = TRUE;
-
                             /* Heal */
-                            m_ptr->hp += damroll(4, damage / 6);
-                            if (m_ptr->hp > m_ptr->maxhp) m_ptr->hp = m_ptr->maxhp;
-
-                            /* Redraw (later) if needed */
-                            check_mon_health_redraw(m_idx);
+                            bool did_heal = hp_mon(m_ptr, damroll(4, damage / 6), FALSE);
 
                             /* Special message */
                             if (see_m && did_heal)
