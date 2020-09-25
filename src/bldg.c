@@ -3261,7 +3261,7 @@ static void _enchant_menu_fn(int cmd, int which, vptr cookie, variant *res)
         {
             var_set_int(res, TERM_L_DARK);
             break;
-        }
+        } /* Fall through */
     default:
         default_menu(cmd, which, cookie, res);
     }
@@ -4008,11 +4008,7 @@ static void bldg_process_command(building_type *bldg, int i)
         if (p_ptr->riding)
         {
             monster_type *m_ptr = &m_list[p_ptr->riding];
-            int           amt = 500;
-
-            if (m_ptr->hp < 30000) m_ptr->hp += amt;
-            if (m_ptr->hp > m_ptr->maxhp) m_ptr->hp = m_ptr->maxhp;
-            p_ptr->redraw |= PR_HEALTH_BARS;
+            (void)hp_mon(m_ptr, 500, FALSE);
         }
 
         paid = TRUE;
