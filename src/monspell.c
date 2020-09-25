@@ -2263,29 +2263,25 @@ static void _tactic(void)
         _m_tactic();
 }
 
-static void hp_mon(mon_ptr mon, int amt) /* this should be public */
+bool hp_mon(mon_ptr mon, int amt, bool is_monspell)
 {
+    if (mon->hp >= mon->maxhp) return FALSE;
+    if (amt < 1) return FALSE; /* paranoia */
     mon->hp += amt;
-    if (mon->hp >= mon->maxhp)
+    if (!is_monspell) /* Simplified treatment - no fear check or messages */
     {
-        mon->hp = mon->maxhp;
-        if (!p_ptr->blind)
+        if (mon->hp >= mon->maxhp)
         {
-            if (mon_show_msg(mon))
-                msg_format("%s looks completely healed!", _current.name); /* XXX */
+             mon->hp = mon->maxhp;
         }
-        else if (mon_show_msg(mon))
-            msg_format("%s sounds healed!", _current.name); /* XXX */
+        check_mon_health_redraw(mon->id);
+        return TRUE;
     }
-    else
+    else /* Healed by monster spell - give messages, check fear */
     {
-        if (!p_ptr->blind)
-        {
-            if (mon_show_msg(mon))
-                msg_format("%s looks healthier.", _current.name); /* XXX */
-        }
-        else if (mon_show_msg(mon))
-            msg_format("%s sounds healthier.", _current.name); /* XXX */
+        if (mon->hp >= mon->maxhp) mon->hp = mon->maxhp;
+        if (mon_show_msg(mon))
+            msg_format("%s %s %s", _current.name, (p_ptr->blind) ? "sounds" : "looks", ((mon->hp == mon->maxhp) ? "completely healed!" : "healthier.")); /* XXX */
     }
     check_mon_health_redraw(mon->id);
     if (MON_MONFEAR(mon))
@@ -2300,6 +2296,7 @@ static void hp_mon(mon_ptr mon, int amt) /* this should be public */
             msg_format("%^s recovers %s courage.", m_name, m_poss); /* XXX */
         }
     }
+    return TRUE;
 }
 static void _heal(void)
 {
@@ -2313,7 +2310,7 @@ static void _heal(void)
         set_cut(0, TRUE);
     }
     else
-        hp_mon(_current.mon, amt);
+        (void)hp_mon(_current.mon, amt, TRUE);
 }
 static void _summon_r_idx(int r_idx)
 {
