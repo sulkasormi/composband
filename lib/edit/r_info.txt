@@ -2874,7 +2874,8 @@ N:190:Hairy mold
 G:m:U
 I:110:15d8:2:15:70:30
 W:10:2:40:32:80:192
-B:HIT:HURT(1d4):POISON(2d3)
+B:TOUCH:HURT(2d5):POISON(1d5)
+B:SPORE:HURT(1d4):POISON(2d6)
 F:NEVER_MOVE | CAN_SWIM |
 F:STUPID | EMPTY_MIND |
 F:RES_POIS |
@@ -14547,7 +14548,7 @@ W:80:3:999:42000:0:0
 B:HIT:HURT(10d10)
 B:HIT:HURT(10d10)
 B:HIT:HURT(10d10):UNLIFE(6d10)
-B:TOUCH:DRAIN_MANA(6d10):UNLIFE(6d10)
+B:TOUCH:DRAIN_MANA(6d10):UNLIFE(6d10):TERRIFY
 F:UNIQUE | MALE | CAN_SPEAK | RES_TELE | AURA_FEAR
 F:FORCE_SLEEP | FORCE_MAXHP | SMART |
 F:ONLY_ITEM | DROP_3D2 | DROP_4D2 | DROP_GOOD |
@@ -15049,7 +15050,7 @@ D:chaos forever beyond the nethermost outposts of space and time!"
 
 N:846:Fenris Wolf
 G:C:D
-I:140:72d100:0:100:40:1000
+I:140:72d100:30:100:40:1000
 W:90:2:999:38720:0:0
 B:BITE:HURT(18d9):CUT(9d9)
 B:CLAW:HURT(13d9)
@@ -21729,7 +21730,7 @@ F:NO_SLEEP | ESCORT | NO_FEAR | OPEN_DOOR | BASH_DOOR |
 S:1_IN_2 |
 S:BA_FIRE | BO_FIRE | HEAL | HASTE | SLOW | TELE_SELF | BLINK
 S:S_KIN | S_MONSTER | BLIND | SCARE |
-P:Copy:Dunadan:Warrior
+P:Copy:Dunadan:Paladin
 D:"... and at that moment the cardinal himself, the Grand Inquisitor,
 D:passes by the cathedral. He is an old man, almost ninety, tall and
 D:erect, with a withered face and sunken eyes, in which there is
