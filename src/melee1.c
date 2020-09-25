@@ -171,11 +171,7 @@ bool drain_random_object(int who, int drain_amt, bool *drained)
         if (who > 0)
         {
             monster_type *m_ptr = &m_list[who];
-            m_ptr->hp += drain_amt;
-            if (m_ptr->hp > m_ptr->maxhp)
-                m_ptr->hp = m_ptr->maxhp;
-            /* Redraw (later) if needed */
-            check_mon_health_redraw(who);
+            (void)hp_mon(m_ptr, drain_amt, FALSE);
         }
 
         /* Window stuff */
