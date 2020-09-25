@@ -871,13 +871,7 @@ static void regen_monsters(void)
             if (frac >= 400) frac = 400;
 
             /* Regenerate */
-            m_ptr->hp += frac;
-
-            /* Do not over-regenerate */
-            if (m_ptr->hp > m_ptr->maxhp) m_ptr->hp = m_ptr->maxhp;
-
-            /* Redraw (later) if needed */
-            check_mon_health_redraw(i);
+            (void)hp_mon(m_ptr, frac, FALSE);
         }
     }
 }
