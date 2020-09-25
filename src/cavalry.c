@@ -54,8 +54,7 @@ void rodeo_spell(int cmd, variant *res)
             tame_success = FALSE;
         }
         else if (!(randint1(skills_riding_current() / 120 + p_ptr->lev * 2 / 3) > rlev
-          && one_in_(2) 
-          && rlev < p_ptr->lev * 3 / 2 + randint0(p_ptr->lev / 5) ))
+          && rlev < p_ptr->lev * 3 / 2 + randint1(p_ptr->lev / 5) ))
         {
             // No message here, but still the "you have been thrown off" later down.
             tame_success = FALSE;
