@@ -198,6 +198,8 @@ extern bool mon_race_has_dispel(mon_race_ptr race);
 
 extern bool mon_save_tele_to(mon_ptr mon, cptr name, bool assume_sight);
 
+extern bool hp_mon(mon_ptr mon, int amt, bool is_monspell);
+
 /* Blue-Mage things that need local monspell.c stuff */
 extern void list_spell_info(doc_ptr doc, mon_spell_ptr spell, mon_race_ptr race);
 extern int  blue_mage_spell_fail_rate(mon_spell_ptr spell);
