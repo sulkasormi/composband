@@ -1098,9 +1098,7 @@ int gf_affect_p(int who, int type, int dam, int flags)
 
             if (who > 0 && m_ptr->hp < m_ptr->maxhp)
             {
-                m_ptr->hp += (6 * dam);
-                if (m_ptr->hp > m_ptr->maxhp) m_ptr->hp = m_ptr->maxhp;
-                check_mon_health_redraw(who);
+                (void)hp_mon(m_ptr, 6 * dam, FALSE);
                 if (m_ptr->ml)
                     msg_format("%^s appears healthier.", m_name);
             }
@@ -2783,10 +2781,7 @@ bool gf_affect_m(int who, mon_ptr mon, int type, int dam, int flags)
             dam = dam * (625 + virtue_current(VIRTUE_COMPASSION))/625;
 
         /* Heal */
-        if (mon->hp < 30000) mon->hp += dam;
-
-        /* No overflow */
-        if (mon->hp > mon->maxhp) mon->hp = mon->maxhp;
+        if (hp_mon(mon, dam, FALSE)) note = " looks healthier.";
 
         if (!who)
         {
@@ -2814,12 +2809,6 @@ bool gf_affect_m(int who, mon_ptr mon, int type, int dam, int flags)
             heal_leper = TRUE;
             if (!who) virtue_add(VIRTUE_COMPASSION, 5);
         }
-
-        /* Redraw (later) if needed */
-        check_mon_health_redraw(mon->id);
-
-        /* Message */
-        note = " looks healthier.";
 
         /* No "real" damage */
         dam = 0;
@@ -2888,8 +2877,7 @@ bool gf_affect_m(int who, mon_ptr mon, int type, int dam, int flags)
                 set_monster_monfear(mon->id, 0);
             }
 
-            if (mon->hp < 30000) mon->hp += dam;
-            if (mon->hp > mon->maxhp) mon->hp = mon->maxhp;
+            (void)hp_mon(mon, dam, FALSE);
             set_monster_fast(mon->id, MON_FAST(mon) + 100);
             note = " fights with renewed vigor!";
         }
@@ -3753,9 +3741,7 @@ bool gf_affect_m(int who, mon_ptr mon, int type, int dam, int flags)
             {
                 if (caster_ptr->hp < caster_ptr->maxhp)
                 {
-                    caster_ptr->hp += 6 * dam;
-                    if (caster_ptr->hp > caster_ptr->maxhp) caster_ptr->hp = caster_ptr->maxhp;
-                    check_mon_health_redraw(who);
+                    (void)hp_mon(caster_ptr, 6 * dam, FALSE);
                     monster_desc(killer, caster_ptr, 0);
                     if (mon_show_msg(caster_ptr)) msg_format("%^s appears healthier.", killer);
                 }
