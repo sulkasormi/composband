@@ -2194,6 +2194,11 @@ static bool py_attack_aux(int y, int x, bool *fear, bool *mdeath, s16b hand, int
     if (mode == WEAPONMASTER_CUNNING_STRIKE) bonus += 20;
     if (mode == WEAPONMASTER_SMITE_EVIL && hand == 0 && (r_ptr->flags3 & RF3_EVIL)) bonus += 200;
     if (duelist_attack) bonus += p_ptr->lev;
+    // This is already a spell that you need to use SP for, and could fail. Seems silly to *also*
+    // force it to have a good chance of missing.
+    if (mode == RAGEMAGE_AWESOME_BLOW) {
+        bonus += 200;
+    }
 
     chance = (p_ptr->skills.thn + (bonus * BTH_PLUS_ADJ));
     if (chance > 0)
@@ -3075,7 +3080,7 @@ static bool py_attack_aux(int y, int x, bool *fear, bool *mdeath, s16b hand, int
                         mon_stun(m_ptr, mon_stun_amount(k));
                     }
                 }
-                if (mode == MELEE_AWESOME_BLOW)
+                if (mode == MELEE_AWESOME_BLOW || mode == RAGEMAGE_AWESOME_BLOW)
                 {
                     int dir = calculate_dir(px, py, x, y);
                     if (dir != 5)
@@ -3532,6 +3537,7 @@ weaponmaster_reap:
         if (mode == WEAPONMASTER_WHIRLWIND) break;
         if (mode == WEAPONMASTER_REAPING) break;
         if (mode == MELEE_AWESOME_BLOW) break;
+        if (mode == RAGEMAGE_AWESOME_BLOW) break;
         if (mode == ROGUE_ASSASSINATE) break;
         if (mauler_get_toggle() == MAULER_TOGGLE_MAUL) break;
         if (mode == MAULER_STUNNING_BLOW) break;
@@ -4117,6 +4123,7 @@ bool py_attack(int y, int x, int mode)
         case WEAPONMASTER_WHIRLWIND:
         case WEAPONMASTER_REAPING:
         case MELEE_AWESOME_BLOW:
+        case RAGEMAGE_AWESOME_BLOW:
         case ROGUE_ASSASSINATE:
         case MAULER_STUNNING_BLOW:
         case MAULER_KNOCKBACK:

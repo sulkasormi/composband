@@ -354,7 +354,7 @@ void awesome_blow_spell(int cmd, variant *res)
 
         if (cave[y][x].m_idx)
         {
-            py_attack(y, x, MELEE_AWESOME_BLOW);
+            py_attack(y, x, RAGEMAGE_AWESOME_BLOW);
         }
         else
         {
