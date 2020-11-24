@@ -586,6 +586,7 @@ static void _get_flags(u32b flgs[OF_ARRAY_SIZE])
     add_flag(flgs, OF_RES_POIS);
     add_flag(flgs, OF_HOLD_LIFE);
     add_flag(flgs, OF_LEVITATION);
+    if (p_ptr->lev >= 45) add_flag(flgs, OF_AURA_REVENGE);
 
     for (i = 0; i < 6; i++) /* Assume in order */
     {
@@ -980,7 +981,7 @@ static void _character_dump(doc_ptr doc)
             blows ? format("+%d.%2.2d", blows / 100, blows % 100) : ""
         );
     }
-    _dump_bonus_flag(doc, _ESSENCE_XTRA_DICE, _rank_decay(64), 1, "Slaying");
+    _dump_bonus_flag(doc, _ESSENCE_XTRA_DICE, _rank_decay(64), 1, "Extra Dice");
     _dump_bonus_flag(doc, OF_LIFE, 7, 1, "Life");
     _dump_bonus_flag(doc, OF_SEARCH, 2, 1, "Searching");
     _dump_bonus_flag(doc, OF_INFRA, 2, 1, "Infravision");
