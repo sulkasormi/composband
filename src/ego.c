@@ -3747,7 +3747,7 @@ void obj_create_lite(object_type *o_ptr, int level, int power, int mode)
         switch (o_ptr->name2)
         {
         case EGO_LITE_DURATION:
-            if (o_ptr->sval == SV_LITE_FEANOR)
+            if (!object_needs_fuel(o_ptr))
                 done = FALSE;
             break;
         case EGO_LITE_VALINOR:
@@ -3767,7 +3767,7 @@ void obj_create_lite(object_type *o_ptr, int level, int power, int mode)
             }
             break;
         case EGO_LITE_SCRYING:
-            if (o_ptr->sval != SV_LITE_FEANOR)
+            if (object_needs_fuel(o_ptr))
                 done = FALSE;
             else
             {
