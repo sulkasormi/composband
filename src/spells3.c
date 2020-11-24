@@ -728,7 +728,7 @@ void teleport_level(int m_idx)
     }
 
     /* Down only */
-    if ((ironman_downward && (m_idx <= 0) && (!quests_get_current())) || (dun_level <= d_info[dungeon_type].mindepth))
+    if (((only_downward()) && (m_idx <= 0) && (!quests_get_current())) || (dun_level <= d_info[dungeon_type].mindepth))
     {
         if (see_m) msg_format("%^s sink%s through the floor.", m_name, (m_idx <= 0) ? "" : "s");
         if (m_idx <= 0) /* To player */
@@ -836,7 +836,6 @@ int choose_dungeon(cptr note, int y, int x)
     int select_dungeon;
     int i, paikka, num = 0, sivu = Term->hgt - y;
     s16b *dun;
-    char multicase[84] = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789#$%&'()*+,-./:;<=>{|}";
 
     /* Hack -- No need to choose dungeon in some case */
     if (no_wilderness || ironman_downward)
@@ -982,7 +981,7 @@ bool reset_recall(void)
     select_dungeon = choose_dungeon("reset", 1, 1);
 
     /* Ironman option */
-    if (ironman_downward)
+    if (only_downward())
     {
         msg_print("Nothing happens.");
 
@@ -1292,7 +1291,7 @@ void apply_nexus(monster_type *m_ptr)
                 msg_print("Your body starts to scramble...");
                 wild_talent_scramble();
             }
-            else if (no_wilderness || no_chris || ironman_downward || quest_id_current())
+            else if (no_wilderness || no_chris || only_downward() || quest_id_current())
             {
                 if (!no_scrambling) msg_print("Your body starts to scramble...");
                 mutate_player();
@@ -1767,7 +1766,7 @@ void fetch(int dir, int wgt, bool require_los)
 void alter_reality(void)
 {
     /* Ironman option */
-    if (p_ptr->inside_arena || ironman_downward)
+    if (p_ptr->inside_arena || only_downward())
     {
         msg_print("Nothing happens.");
         return;
@@ -2322,7 +2321,7 @@ bool enchant_spell(int num_hit, int num_dam, int num_ac)
 bool item_tester_hook_nameless_weapon_armour(object_type *o_ptr)
 {
     if ( !object_is_weapon_armour_ammo(o_ptr)
-      && !(o_ptr->tval == TV_LITE && o_ptr->sval == SV_LITE_FEANOR)
+      && !(o_ptr->tval == TV_LITE && o_ptr->sval >= SV_LITE_FEANOR)
       && !(o_ptr->tval == TV_RING || o_ptr->tval == TV_AMULET) /* Testing ... */
       && !(prace_is_(RACE_SNOTLING) && object_is_mushroom(o_ptr)) )
     {
@@ -2588,6 +2587,7 @@ bool mundane_spell(bool only_equip)
             cornucopia_mark_destroyed(cornucopia_item_policy(prompt.obj), prompt.obj->number);
             prompt.obj->insured = 0;
         }
+        obj_identify(prompt.obj);
     }
     p_ptr->update |= PU_BONUS;
     p_ptr->window |= PW_EQUIP;
@@ -3110,13 +3110,16 @@ bool potion_smash_effect(int who, int y, int x, int k_idx)
         case SV_POTION_ENLIGHTENMENT:
         case SV_POTION_STAR_ENLIGHTENMENT:
         case SV_POTION_SELF_KNOWLEDGE:
-        case SV_POTION_EXPERIENCE:
         case SV_POTION_RESISTANCE:
         case SV_POTION_INVULNERABILITY:
         case SV_POTION_NEW_LIFE:
 		case SV_POTION_CURING:
             /* All of the above potions have no effect when shattered */
             return FALSE;
+        case SV_POTION_EXPERIENCE:
+            dt = GF_GAIN_EXP;
+            dam = 50000;
+            break;
         case SV_POTION_SLOWNESS:
             dt = GF_OLD_SLOW;
             dam = 5;
