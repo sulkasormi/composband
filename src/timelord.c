@@ -548,7 +548,7 @@ static void _rewind_time_spell(int cmd, variant *res)
         if (!get_check("You will irreversibly alter the time line. Are you sure?")) return;
         var_set_bool(res, TRUE);
 
-        if (p_ptr->inside_arena || ironman_downward || !dun_level)
+        if (p_ptr->inside_arena || only_downward() || !dun_level)
         {
             msg_print("Nothing happens.");
             return;
