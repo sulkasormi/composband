@@ -692,7 +692,7 @@ s16b get_obj_num(int level)
         if (k_ptr->tval == TV_FOOD && k_ptr->sval == SV_FOOD_AMBROSIA && dungeon_type != DUNGEON_OLYMPUS) continue;
         if (k_ptr->tval == TV_POTION && k_ptr->sval == SV_POTION_MEAD_OF_POETRY && dungeon_type != DUNGEON_ASGARD) continue;
 	if (easy_id && k_ptr->tval == TV_SCROLL && ((k_ptr->sval == SV_SCROLL_STAR_IDENTIFY) || (k_ptr->sval == SV_SCROLL_UNDERSTANDING))) continue;
-        if (ironman_downward && k_ptr->tval == TV_SCROLL && k_ptr->sval == SV_SCROLL_RESET_RECALL) continue;
+        if (only_downward() && k_ptr->tval == TV_SCROLL && k_ptr->sval == SV_SCROLL_RESET_RECALL) continue;
         if ((coffee_break == SPEED_INSTA_COFFEE) && (k_ptr->tval == TV_POTION) && ((k_ptr->sval == SV_POTION_HEALING) || (k_ptr->sval == SV_POTION_STAR_HEALING) || (k_ptr->sval == SV_POTION_LIFE))) continue;
         /* Hack -- prevent embedded chests */
         if (opening_chest && (k_ptr->tval == TV_CHEST)) continue;
