@@ -1419,7 +1419,7 @@ static void _lite_display_doc(object_type *o_ptr, doc_ptr doc)
             doc_insert(doc, "It provides light (radius 3) forever.\n");
         else if (o_ptr->sval == SV_LITE_LANTERN)
             doc_insert(doc, "It provides light (radius 3) when fueled.\n");
-        else
+        else if (o_ptr->sval == SV_LITE_TORCH)
             doc_insert(doc, "It provides light (radius 2) when fueled.\n");
     }
     else
@@ -1428,7 +1428,7 @@ static void _lite_display_doc(object_type *o_ptr, doc_ptr doc)
             doc_insert(doc, "It provides light (radius 2) forever.\n");
         else if (o_ptr->sval == SV_LITE_LANTERN)
             doc_insert(doc, "It provides light (radius 2) when fueled.\n");
-        else
+        else if (o_ptr->sval == SV_LITE_TORCH)
             doc_insert(doc, "It provides light (radius 1) when fueled.\n");
     }
     if (o_ptr->name2 == EGO_LITE_DURATION)
