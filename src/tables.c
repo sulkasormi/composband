@@ -86,6 +86,10 @@ char listsym[] =
  */
 char color_char[] = "dwsorgbuDWvyRGBULPICtSmMTOVcnKpi";
 
+/*
+ * Global mixed-case alphanumeric array
+ */
+char multicase[84] = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789#$%&'()*+,-./:;<=>{|}";
 
 /*
  * Stat Table (INT/WIS) -- Number of half-spells per level
