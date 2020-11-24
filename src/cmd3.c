@@ -1220,6 +1220,13 @@ static void _mon_display_probe(doc_ptr doc, int m_idx)
     else
         doc_printf(doc, "Align: <color:w>%13.13s</color>\n", "Neutral");
 
+    if (m_ptr->mpower != 1000)
+    {
+        doc_printf(doc, "Power: <color:%c>%6d</color>/<color:G>%6d</color>\n",
+            (m_ptr->mpower < 1000) ? 'y' : 'b', m_ptr->mpower, 1000
+        );
+    }
+
     if (r_ptr->next_r_idx)
     {
         doc_printf(doc, "Exp  : <color:%c>%6d</color>/<color:G>%6d</color>\n",
