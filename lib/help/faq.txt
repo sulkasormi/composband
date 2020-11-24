@@ -114,14 +114,19 @@ Note that the armor you wear will always be susceptible to damage from acid atta
 <color:R>A:</color> Dungeon entrances in the wilderness can sometimes be tricky to locate because one square on the overworld map corresponds to a fairly large area on the normal map. If you exit the overworld map in the right square but the entrance is still far enough away to be out of sight, the game will tell you which direction it's in (e.g. "The Angband entrance doesn't appear to be within sight. Perhaps it's a bit further to the east?"). If no such hint appears, the entrance is within sight, you've just missed it; press ] or O (the object list commands) to see where it is. If such a hint does appear, explore the nearby area in the direction indicated, pressing ] or O occasionally to make sure you don't miss the entrance. If you feel you've walked a long way and still can't find the entrance, check the overworld map to confirm you haven't moved out of the right area, and then try again.
 
 
+<color:G>Q:</color> I have "stumbled onto something interesting" in the wilderness. What does that mean?
+
+<color:R>A:</color> It means some special feature has randomly generated nearby. It might be an unusual room, enclosure or clearing, potentially full of monsters or loot; a random shop in the wilderness; a dangerous (or simply quirky) monster formation; or even an entrance into a random dungeon. Sometimes these features are easy to spot, sometimes they are more easily missed; whether you are sufficiently intrigued by the interesting area to try to locate it is entirely up to you, and it is unlikely you will miss much if you leave it unexplored.
+
+
 <color:G>Q:</color> I want to play as an Android, Balrog, Golem, Skeleton, Zombie, Spectre, or Ent. But normal food doesn't seem to work for me, and there are no reliable sources of Satisfy Hunger. How do I avoid starvation?
 
 <color:R>A:</color> These races have special sources of nutrition. Androids can quaff oil; Balrogs can eat human corpses; Golems, Skeletons, Zombies, and Spectres can absorb mana from staves and wands using the 'E'at command; Ents can gain enough nutrition from potions. (Note that many of these races do also get some sustenance from normal food, just not very much.)
 
 
-<color:G>Q:</color> I'm playing as a berserker, and cannot read scrolls. How do I remove a curse?
+<color:G>Q:</color> I'm playing as a Berserker, and cannot read scrolls. How do I remove a curse?
 
-<color:R>A:</color> You can simply 't'ake off the cursed equipment. Since cursed items will attempt to stick, you may need to try the 't'ake off command more than once.
+<color:R>A:</color> A berserker can simply 't'ake off cursed equipment, uncursing it in the process; though as cursed items will attempt to stick, this may take a few tries. A Beorning in bear form can also remove curses this way.
 
 
 <color:G>Q:</color> Berserkers cannot use scrolls or rods. How do I get out of the dungeon on a Berserker?
