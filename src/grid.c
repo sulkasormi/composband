@@ -94,7 +94,7 @@ void place_random_stairs(int y, int x)
         up_stairs = FALSE;
 
     /* Ironman */
-    if (ironman_downward)
+    if (only_downward())
         up_stairs = FALSE;
 
     /* Bottom */
