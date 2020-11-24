@@ -2169,7 +2169,7 @@ void object_desc(char *buf, object_type *o_ptr, u32b mode)
     if (known)
     {
         /* Hack -- Process Lanterns/Torches */
-        if ((o_ptr->tval == TV_LITE) && (!(o_ptr->name1 || o_ptr->art_name || (o_ptr->sval == SV_LITE_FEANOR))))
+        if ((object_needs_fuel(o_ptr)) && (!(o_ptr->name1 || o_ptr->art_name)))
         {
             /* Hack -- Turns of light for normal lites */
             t = object_desc_str(t, " (with ");
