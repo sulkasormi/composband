@@ -8,6 +8,7 @@ Please choose one of the following help sections:
     <link:attack.txt#MissileLaunch> Ranged Weapons
     <link:attack.txt#EgoArtifact> Ego Weapons and Artifacts
     <link:attack.txt#Slays> Slays and Brands
+    <link:attack.txt#Criticals> Critical Hits
     <link:attack.txt#Choices> Choosing the Right Weapon
     <link:attack.txt#AttackWalls> Attacking Monsters in Walls
     <link:attack.txt#AttackPets> Attacking Pets or Friendly Monsters
