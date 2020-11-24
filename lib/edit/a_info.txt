@@ -997,10 +997,10 @@ D:of old; his lame foot will remind him of its might should he meet it again.
 N:83:'Anduril'
 I:23:17:4
 W:30:20:130:80000
-P:0:2d6:10:15:5
+P:0:3d6:10:15:5
 F:STR | HIDE_TYPE | RIDING | XTRA_RES_OR_POWER |
 F:SLAY_EVIL | BRAND_FIRE | SLAY_TROLL | SLAY_ORC | FREE_ACT |
-F:RES_FIRE | SUST_DEX | SEE_INVIS | SHOW_MODS | LITE
+F:RES_FIRE | SUST_DEX | SEE_INVIS | SHOW_MODS | LITE | ESP_UNDEAD |
 E:BALL_FIRE:20:40:72
 E:Your sword glows an intense red...
 D:The famed "Flame of the West", the sword that was broken and is forged
@@ -4005,6 +4005,14 @@ F:RES_ELEC | RES_COLD | RES_DARK | RES_SOUND | RES_CHAOS | LEVITATION |
 F:SEARCH | DEC_DEX | FULL_NAME | QUESTITEM |
 D:This strange jacket is uncomfortably heavy, but allows its wearer to
 D:breathe normally in airless environments.
+
+N:397:Unlight Cloak of Ungoliant
+I:35:6:6
+W:70:240:0:50000
+P:6:0d0:0:0:21
+F:STEALTH | INFRA | SEARCH | RES_POIS | RES_DARK | RES_BLIND | SEE_INVIS |
+F:VULN_LITE | DARKNESS | ESP_ANIMAL | FULL_NAME | HOLD_LIFE | QUESTITEM
+D:A cloak of darkness; an Unlight which eyes cannot pierce, for it is void.
 
 # N: serial number : item name
 # I: tval : sval : pval
