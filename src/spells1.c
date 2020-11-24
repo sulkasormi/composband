@@ -960,7 +960,8 @@ static bool project_f(int who, int r, int y, int x, int dam, int typ)
                         break;
                 }
             }
-            else message = "burns up!";break;
+            else message = "burns up!";
+            break;
         }
         case GF_METEOR:
         case GF_CHAOS:
@@ -2041,7 +2042,7 @@ static bool project_p(int who, cptr who_name, int r, int y, int x, int dam, int 
 
     /* XXX XXX XXX */
     /* Limit maximum damage */
-    if (dam > 1600) dam = 1600;
+    if ((dam > 1600) && (typ != GF_GAIN_EXP)) dam = 1600;
 
     p_ptr->spell_turned = FALSE;
 
