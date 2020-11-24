@@ -1978,6 +1978,7 @@ void loremaster_mut(int cmd, variant *res)
         break;
     case SPELL_GAIN_MUT:
         msg_print("You feel quite knowledgeable.");
+        identify_pack();
         break;
     case SPELL_LOSE_MUT:
         msg_print("You know longer know so much.");
