@@ -45,7 +45,7 @@ byte value_check_aux1(object_type *o_ptr, bool remote)
 
     if (object_is_cursed(o_ptr)) return FEEL_BAD;
     if (object_is_broken(o_ptr)) return FEEL_BROKEN;
-    if (o_ptr->tval == TV_RING || o_ptr->tval == TV_AMULET || object_is_(o_ptr, TV_LITE, SV_LITE_FEANOR))
+    if (object_known_on_average(o_ptr))
     {
         obj_identify(o_ptr);
         return (remote ? FEEL_NONE : FEEL_AVERAGE);
@@ -90,7 +90,7 @@ static byte value_check_aux2(object_type *o_ptr)
     /* Good weapon bonuses */
     if (o_ptr->to_h + o_ptr->to_d > 0) return FEEL_ENCHANTED;
 
-    if (o_ptr->tval == TV_RING || o_ptr->tval == TV_AMULET || object_is_(o_ptr, TV_LITE, SV_LITE_FEANOR))
+    if (object_known_on_average(o_ptr))
     {
         obj_identify(o_ptr);
     }
@@ -313,7 +313,7 @@ static void pattern_teleport(void)
         char    tmp_val[160];
 
         /* Only downward in ironman mode */
-        if (ironman_downward)
+        if (only_downward())
             min_level = dun_level;
 
         /* Maximum level */
@@ -1218,7 +1218,7 @@ void do_alter_reality(void)
 
 
     /* Determine the level */
-    if ((ironman_downward) || (p_ptr->inside_arena) || ((!dungeon_type) && (quests_get_current())))
+    if ((only_downward()) || (p_ptr->inside_arena) || ((!dungeon_type) && (quests_get_current())))
     {
         msg_print("The world seems to change for a moment!");
         p_ptr->alter_reality = 0;
@@ -2181,7 +2181,7 @@ static void process_world_aux_light(void)
     if (slot)
     {
         object_type *lite = equip_obj(slot);
-        if ( !(lite->name1 || lite->name3 || lite->art_name || lite->sval == SV_LITE_FEANOR)
+        if ( !(lite->name1 || lite->name3 || lite->art_name || !object_needs_fuel(lite))
           && lite->xtra4 > 0 )
         {
             if (lite->name2 == EGO_LITE_DURATION)
@@ -4993,7 +4993,7 @@ static void process_player(void)
              * won't be completely broken by any minor tweaks in the future */
             if ((alert_poison) && (p_ptr->poisoned > pienempi(p_ptr->mhp * 4 / 5, MIN(499, p_ptr->chp))))
             {
-                if ((!poison_warning_hack) || ((int)poison_warning_hack < (p_ptr->poisoned + 9) / 10) || (p_ptr->poisoned / 4 > p_ptr->chp))
+                if ((!poison_warning_hack) || ((int)poison_warning_hack < (MIN(255, (p_ptr->poisoned + 9) / 10))) || (p_ptr->poisoned / 4 > p_ptr->chp))
                 {
                     msg_boundary();
                     msg_format("<color:G>*** POISON WARNING! ***</color>");
