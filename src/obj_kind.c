@@ -551,4 +551,23 @@ bool object_is_suitable_ammo(object_type *o_ptr)
     if (p_ptr->shooter_info.tval_ammo == TV_ANY_AMMO) return (object_is_ammo(o_ptr));
     return FALSE;
 }
- 
+
+/*
+ * Check if item kind is a lamp that needs fuel
+ */
+bool object_needs_fuel(object_type *o_ptr)
+{
+    if (o_ptr->tval != TV_LITE) return FALSE;
+    if ((o_ptr->sval == SV_LITE_TORCH) || (o_ptr->sval == SV_LITE_LANTERN)) return TRUE;
+    return FALSE;
+}
+
+/*
+ * Check if item identifies fully based on average feeling
+ */
+bool object_known_on_average(object_type *o_ptr)
+{
+    if (o_ptr->tval == TV_RING || o_ptr->tval == TV_AMULET || o_ptr->tval == TV_QUIVER || object_is_(o_ptr, TV_LITE, SV_LITE_FEANOR)) return TRUE;
+    return FALSE;
+}
+
