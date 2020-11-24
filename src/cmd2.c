@@ -130,7 +130,7 @@ void do_cmd_go_down(void)
         {
             target_dungeon = have_flag(f_ptr->flags, FF_ENTRANCE) ? c_ptr->special : DUNGEON_ANGBAND;
 
-            if (ironman_downward && (target_dungeon != DUNGEON_ANGBAND))
+            if (only_downward() && (target_dungeon != DUNGEON_ANGBAND))
             {
                 msg_print("The entrance of this dungeon is closed!");
                 return;
