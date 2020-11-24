@@ -1190,14 +1190,14 @@ void py_display_spells_aux(doc_ptr doc, power_info *table, int ct)
         if (prace_is_(RACE_MON_MUMMY))
         {
             doc_printf(doc, " %c) %-25.25s %3d %4d %3d%% %-18.18s %5d %4d %3d%%\n",
-            I2A(i),
+            multicase[i],
             var_get_string(&vn),
             spell->level, calculate_cost(spell->cost + var_get_int(&vc)), MAX(spell->fail, var_get_int(&vfm)),
             var_get_string(&vd),
             stats->ct_cast, stats->ct_fail, spell_stats_fail(stats));
         }
         else doc_printf(doc, " %c) %-25.25s %3d %4d %3d%% %-15.15s %5d %4d %3d%%\n",
-            I2A(i),
+            multicase[i],
             var_get_string(&vn),
             spell->level, calculate_cost(spell->cost + var_get_int(&vc)), MAX(spell->fail, var_get_int(&vfm)),
             var_get_string(&vd),
