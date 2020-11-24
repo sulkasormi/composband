@@ -6420,7 +6420,7 @@ cptr do_effect(effect_t *effect, int mode, int boost)
     {
         int dam = _extra(effect, 150);
         if (name) return "Star Ball";
-        if (desc) return "It fires a multitude of lightning balls in random directions.";
+        if (desc) return "It fires a multitude of lightning balls in random open directions.";
         if (info) return info_damage(0, 0, _BOOST(dam));
         if (value) return format("%d", 50*dam);
         if (color) return format("%d", TERM_YELLOW);
@@ -6925,7 +6925,7 @@ cptr do_effect(effect_t *effect, int mode, int boost)
     {
         int dd = _extra(effect, 6 + effect->power / 10);
         if (name) return "Starlight";
-        if (desc) return "It fires a line of light directed randomly for multiple times when you use it.";
+        if (desc) return "It fires multiple beams of weak light in random open directions when you use it.";
         if (value) return format("%d", 750);
         if (color) return format("%d", TERM_YELLOW);
         if (cast)
