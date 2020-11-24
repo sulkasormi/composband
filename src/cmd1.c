@@ -2235,7 +2235,11 @@ static bool py_attack_aux(int y, int x, bool *fear, bool *mdeath, s16b hand, int
 
         water_mana_action(FALSE, (mode == PY_ATTACK_ACID) ? 24 : 18);
 
-        if ((py != opy) || (px != opx)) break; /* Player has teleported */
+        if ((py != opy) || (px != opx))
+        {
+            fear_stop = TRUE; /* hack */
+            break; /* Player has teleported */
+        }
 
         if (!c_ptr->m_idx) /* A real thing that can happen */
         {
