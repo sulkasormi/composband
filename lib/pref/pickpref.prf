@@ -80,8 +80,11 @@ rods:heroic speed#@zs!sdk
 ?staves:speed#@us!sdk
 ?staves:destruction#@ud!sdk
 ?staves:confusing lights#@uz!sdk
+?staves:genocide#@ug!sdk
+?staves:restore mana#@um!sdk
 ?wands:rocket#@ar!sdk
 ?wands:disintegrate#@ad!sdk
+?wands:annihilation#@ah!sdk
 ?:1
 
 ?:[AND [LEQ $LEVEL 45] [NOT [EQU $CLASS Berserker]] ]
@@ -90,6 +93,20 @@ rods:heroic speed#@zs!sdk
 
 ?:[OR [EQU $CLASS Mage High-Mage Sorcerer] [EQU $RACE Beholder Lich] ]
 wizardstaff
+?:1
+
+?:[NOT [EQU $CLASS Berserker]]
+~?rods:illumination#@za!sdk
+~?rods:detection#@zb!sdk
+~?rods:recall#@zc!sdk
+~?staves:confuse monsters#@uz!sdk
+~?staves:enlightenment#@ue!sdk
+~?staves:*identify*#@uf!sdk
+~?staves:identify#@ui!sdk
+~?staves:teleport#@ua!sdk
+~?staves:cure wounds#@uu!sdk
+~?wands:stone to mud#@ab!sdk
+~?wands:tsunami#@ac!sdk
 ?:1
 
 ?unidentified rods
@@ -103,8 +120,22 @@ wizardstaff
 ?unidentified artifact items
 ?unidentified ego items
 
-?:[AND [EQU $SELLING Off] [EQU $CLASS Weaponmaster] ]
+?:[AND [EQU $SELLING Off] [EQU $CLASS Weaponmaster Ninja Ninja-Lawyer] ]
 !nameless icky weapons
+?:1
+
+?:[AND [EQU $SELLING Off] [EQU $CLASS Mauler Ninja Ninja-Lawyer]]
+!shields
+?:1
+
+?:[AND [EQU $SELLING Off] [EQU $CLASS Ninja Ninja-Lawyer]]
+!suits more weight than 20
+?:1
+
+?:[AND [EQU $SELLING Off] [EQU $RACE Spider Hydra Beholder]]
+!nameless unusable items
+!ego unusable items
+!ammo
 ?:1
 
 #########################################
