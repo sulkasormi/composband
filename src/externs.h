@@ -52,6 +52,7 @@ extern s16b ddy_cdd[8];
 extern char hexsym[16];
 extern char listsym[];
 extern char color_char[];
+extern char multicase[84];
 extern byte adj_mag_study[];
 extern byte adj_mag_mana[];
 extern byte adj_mag_fail[];
@@ -2298,6 +2299,9 @@ extern bool object_is_dragon_armor(object_type *o_ptr);
 extern bool object_is_nameless(object_type *o_ptr);
 extern bool object_allow_two_hands_wielding(object_type *o_ptr);
 extern bool object_is_suitable_ammo(object_type *o_ptr);
+extern bool object_needs_fuel(object_type *o_ptr);
+extern bool object_known_on_average(object_type *o_ptr);
+
 
 /* wild.c */
 extern bool py_on_surface(void);
