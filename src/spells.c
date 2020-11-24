@@ -536,7 +536,6 @@ static int _choose_spell(power_info* spells, int ct, cptr verb, cptr desc, int m
     bool describe = force_browsing;
     bool inscribe = FALSE;
     char labels[100] = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789#$%&'()*+,-./:;<=>{|}...............";
-    static char multicase[64] = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789";
     bool rage_hack = ((desc) && (!power) && (streq("rage", desc)) && (ct == 8));
 
     if (power)
