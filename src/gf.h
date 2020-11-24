@@ -162,6 +162,7 @@ enum {
     GF_BOMB,
     GF_AIR,
     GF_BABY_SLOW,
+    GF_GAIN_EXP,
 
     GF_COUNT  /* enumerate 0 <= i < GF_COUNT */
 };            /* allocate gf[GF_COUNT] */
