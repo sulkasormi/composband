@@ -406,7 +406,7 @@ void place_trees(int x, int y)
     }
 
     /* No up stairs in ironman mode */
-    if (!ironman_downward && one_in_(3))
+    if (!only_downward() && one_in_(3))
     {
         /* up stair */
         cave[y][x].feat = feat_up_stair;
