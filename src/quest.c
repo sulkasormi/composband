@@ -188,7 +188,9 @@ void quest_complete(quest_ptr q, point_t p)
         y = ny; x = nx;
 
         cmsg_print(TERM_L_BLUE, "A magical staircase appears...");
-        if ((!coffee_break) || (dun_level == 99))
+        /* The following check must use dungeon_type since it may not match
+         * q->dungeon */
+        if (((!coffee_break) && (!(d_info[dungeon_type].flags1 & DF1_ALL_SHAFTS))) || (dun_level == 99))
         {
             cave_set_feat(y, x, feat_down_stair);
         }
@@ -1187,7 +1189,7 @@ static quest_ptr _find_quest(int dungeon, int level)
 
     /* Prevent quests from becoming uncompletable in forced-descent mode
      * should the player request them too late (adapted from Pos-R) */
-    if ((!result) && (ironman_downward) && (dungeon == DUNGEON_ANGBAND) &&
+    if ((!result) && (only_downward()) && (dungeon == DUNGEON_ANGBAND) &&
         (level < 99))
     {
         for (i = 0; i < vec_length(v); i++)
