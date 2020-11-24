@@ -3357,7 +3357,6 @@ static void _birth_finalize(void)
     if (coffee_break)
     {
         no_wilderness = TRUE;
-        ironman_downward = TRUE;
         if (coffee_break == SPEED_INSTA_COFFEE)
         {
             thrall_mode = FALSE;
@@ -3370,7 +3369,7 @@ static void _birth_finalize(void)
     /* Confirm unusual settings
      * (players who play both coffee-break and normal games and start
      * new games by loading old savefiles sometimes turn coffee-break off,
-     * but forget to turn no_wilderness and ironman_downward off) */
+     * but forget to turn no_wilderness off) */
     if ((!coffee_break) && (ironman_downward))
     {
         if (thrall_mode) ironman_downward = FALSE; /* We start in R'lyeh... */
