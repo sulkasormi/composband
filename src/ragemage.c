@@ -1003,19 +1003,15 @@ static bool _gain_spell(int book)
     power_info spells[_SPELLS_PER_BOOK];
     int        indices[_SPELLS_PER_BOOK];
     int        which;
-    int        ct = 0, i;
+    int        ct = 0, lct = 0, i;
 
     /* Build a list of learnable spells. Spells can only be
-       learned once (no spell skills) and we only display spells
-       if the user is of high enough level. This is rather
-       different than how the system normally behaves, but why spoil
-       the nature of future higher level spells to the player?
-    */
+       learned once (no spell skills) */
     for (i = 0; i < _SPELLS_PER_BOOK; i++)
     {
         spell_info *src = &_books[book].spells[i];
 
-        if (!_is_spell_known(book, i) && src->level <= p_ptr->lev)
+        if (!_is_spell_known(book, i))
         {
             power_info *dest = &spells[ct];
 
@@ -1031,23 +1027,34 @@ static bool _gain_spell(int book)
             indices[ct] = i;
 
             ct++;
+            if (src->level <= p_ptr->lev) lct++;
         }
     }
 
-    if (ct == 0)
+    if (lct == 0)
     {
-        msg_print("You may not learn any spells in that book.");
+        if (ct) msg_print("You may not learn any techniques from that book right now.");
+        else msg_print("You have already learned all techniques described in that book.");
         return FALSE;
-    }
+    }    
 
-    which = choose_spell(spells, ct, "Learn", "rage", 1000, FALSE);
-    if (which >= 0 && which < ct)
+    while (1)
     {
-        _learn_spell(book, indices[which]);
-        return TRUE;
+        which = choose_spell(spells, ct, "Learn", "rage", 1000, FALSE);
+        if ((which >= 0) && (which < ct))
+        {
+            if (spells[which].spell.level > p_ptr->lev)
+            {
+            }
+            else
+            {
+                _learn_spell(book, indices[which]);
+                return TRUE;
+            }
+        }
+        else return FALSE;
     }
 
-    return FALSE;
 }
 
 static bool _is_rage_book(obj_ptr obj) { return obj->tval == TV_RAGE_BOOK; }
