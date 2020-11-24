@@ -62,6 +62,8 @@ See <link:objects.txt#InscriptionAbbrev> for item attribute abbreviations.
 
 <color:keyword>confusion</color>: 1) A status effect, affects both players and monsters. See <link:status.txt#Confusion>. 2) An element, causes the status effect if not resisted.
 
+<color:keyword>critical hit</color>: An exceptionally damaging hit; multiplies the damage dice of the weapon or projectile.
+
 <color:keyword>curse</color>: 1) Item curse; a negative, usually removable object attribute that prevents you from unequipping that object while it remains cursed. 2) A monster or player-monster spell attack, particularly one that offers a saving throw, deals non-elemental damage and may cause item curses; one of Wounding Curse, Evil Curse, Mighty Curse, Death Curse or Hand of Doom. 3) One of a number of special effects with similarity to item curses, such as the Amberite blood curse.
 
 <color:keyword>dazed</color>: Stunned; afflicted with the Stun status effect.
@@ -284,6 +286,8 @@ See <link:objects.txt#InscriptionAbbrev> for item attribute abbreviations.
 
 <color:keyword>shaft</color>: A connection between two dungeon levels or between a dungeon level and the surface. Differs from stairs in that most shafts skip a depth; downstairs on DL 8 will always lead to DL 9, while a shaft down will lead to DL 10 unless there is a quest on level 9.
 
+<color:keyword>sharpness</color>: A weapon attribute; allows the weapon to score vorpal criticals. See <link:attack.txt#Sharpness>.
+
 <color:keyword>shop</color>: Also <color:keyword>store</color>; a building where thematic objects can be bought and sold. Compare <color:keyword>building</color>.
 
 <color:keyword>shuffle</color>: 1) Shop shuffle; paying a shopkeeper to restock the store with new items. 2) Equipment shuffle; updating multiple pieces of equipment at once. 3) The Shuffle spell, a spell in the Trump realm with highly unpredictable effects.
@@ -349,6 +353,8 @@ See <link:objects.txt#InscriptionAbbrev> for item attribute abbreviations.
 <color:keyword>vampiric attack</color>: A player or monster attack that drains hit points from a living target, healing the attacker and slightly reducing the target's max HP. Compare unlife attack.
 
 <color:keyword>vault</color>: A special area of a dungeon level, characterized by the presence of permanent walls and a high concentration of both dangerous monsters and exceptional loot. In an extended sense, any special dungeon room with many out-of-depth monsters.
+
+<color:keyword>vorpal weapon</color>: A weapon with the Sharpness attribute. See <color:keyword>sharpness</color>.
 
 <color:keyword>vulnerability</color>: An attribute that causes you to take more damage from an element, and makes your items more likely to be damaged or destroyed by that element. The opposite of a resistance.
 
