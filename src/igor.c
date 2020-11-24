@@ -970,7 +970,7 @@ static void _birth(void)
         q_ptr->number = 1;
         if (i == (_IB_HANDS - 1))
         {
-            q_ptr->pval = 2;
+            q_ptr->pval = 1;
             add_flag(q_ptr->flags, OF_DEX);
         }
         object_origins(q_ptr, ORIGIN_BIRTH);
@@ -1667,7 +1667,7 @@ race_t *igor_get_race(void)
         me.stats[A_STR] = -3;
         me.stats[A_INT] = 0;
         me.stats[A_WIS] = -1;
-        me.stats[A_DEX] = -1;
+        me.stats[A_DEX] = 0;
         me.stats[A_CON] = -1;
         me.stats[A_CHR] = -1;
         me.life = 97;
