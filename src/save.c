@@ -83,6 +83,7 @@ void updatecharinfoS(void)
 	if (p_ptr->dragon_realm > 0)fprintf(oFile, "mRealm1: \"%s\",\n", drealm->name);
 	fprintf(oFile, "cLvl: \"%i\",\n", p_ptr->lev);
 	fprintf(oFile, "isDead: \"%i\",\n", p_ptr->is_dead);
+	fprintf(oFile, "isThrall: \"%i\",\n", thrall_mode ? 1 : 0);
 	fprintf(oFile, "killedBy: \"%s\"\n", p_ptr->died_from);
 	fprintf(oFile, "}");
 	fclose(oFile);
