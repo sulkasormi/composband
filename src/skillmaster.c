@@ -454,7 +454,7 @@ int skillmaster_weapon_prof(int tval)
 
 bool skillmaster_weapon_is_icky(int tval)
 {
-    if (_get_skill_pts(_TYPE_MELEE, tval) || _get_skill_pts(_TYPE_SHOOT, _THROWING))
+    if (((TV_DIGGING <= tval) && (_get_skill_pts(_TYPE_MELEE, tval))) || (_get_skill_pts(_TYPE_SHOOT, _THROWING)))
         return FALSE;
     return TRUE;
 }
