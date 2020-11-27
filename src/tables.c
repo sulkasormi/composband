@@ -2542,6 +2542,9 @@ option_type option_info[] =
     { &leave_mogaminator,           FALSE, OPT_PAGE_AUTODESTROY, 7, 12,
     "leave_mogaminator",            "Leave items the Mogaminator wants to destroy" },
 
+    { &check_full_pack,             TRUE, OPT_PAGE_AUTODESTROY, 2, 15,
+    "check_full_pack",              "Limit pickup prompts if pack is already full" },
+
     { &delay_autopick,              FALSE, OPT_PAGE_AUTODESTROY, 1, 9,
     "delay_autopick",               "Allow manual pickup before applying auto-pickup" },
 
