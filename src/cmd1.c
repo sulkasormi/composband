@@ -4679,7 +4679,10 @@ bool move_player_effect(int ny, int nx, u32b mpe_mode)
     if (!(mpe_mode & MPE_DONT_PICKUP))
     {
         if (mpe_mode & MPE_DO_PICKUP)
+        {
+            check_useless_pickup_hack = (always_pickup && check_full_pack);
             pack_get_floor();
+        }
         else
         {
             char name[MAX_NLEN];
