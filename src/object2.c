@@ -4130,87 +4130,96 @@ s16b drop_near(object_type *j_ptr, int chance, int y, int x)
     by = y;
     bx = x;
 
-    /* Scan local grids */
-    for (dy = -3; dy <= 3; dy++)
+    /* Paranoia */
+    if ((drop_near_stack_hack) && (!player_bold(by, bx))) drop_near_stack_hack = FALSE;
+
+    /* Strongly prefer exact square if drop_near_stack_hack is on, otherwise
+     * look for good locations nearby */
+    if ((!drop_near_stack_hack) || (!in_bounds(y, x)) || (!cave_drop_bold(y, x)))
     {
         /* Scan local grids */
-        for (dx = -3; dx <= 3; dx++)
+        for (dy = -3; dy <= 3; dy++)
         {
-            bool comb = FALSE;
-
-            /* Calculate actual distance */
-            d = (dy * dy) + (dx * dx);
-
-            /* Ignore distant grids */
-            if (d > 10) continue;
-
-            /* Location */
-            ty = y + dy;
-            tx = x + dx;
-
-            /* Skip illegal grids */
-            if (!in_bounds(ty, tx)) continue;
-
-            /* Require line of projection */
-            if (!projectable(y, x, ty, tx)) continue;
-
-            /* Obtain grid */
-            c_ptr = &cave[ty][tx];
-
-            /* Require floor space */
-            if (!cave_drop_bold(ty, tx)) continue;
-
-            /* No objects */
-            k = 0;
-
-            /* Scan objects in that grid */
-            for (this_o_idx = c_ptr->o_idx; this_o_idx; this_o_idx = next_o_idx)
+            /* Scan local grids */
+            for (dx = -3; dx <= 3; dx++)
             {
-                object_type *o_ptr;
+                bool comb = FALSE;
 
-                /* Acquire object */
-                o_ptr = &o_list[this_o_idx];
+                /* Calculate actual distance */
+                d = (dy * dy) + (dx * dx);
 
-                /* Acquire next object */
-                next_o_idx = o_ptr->next_o_idx;
+                /* Ignore distant grids */
+                if (d > 10) continue;
 
-                /* Check for possible combination */
-                if (obj_can_combine(o_ptr, j_ptr, INV_FLOOR)) comb = TRUE;
+                /* Location */
+                ty = y + dy;
+                tx = x + dx;
 
-                /* Count objects */
-                k++;
+                /* Skip illegal grids */
+                if (!in_bounds(ty, tx)) continue;
+
+                /* Require line of projection */
+                if (!projectable(y, x, ty, tx)) continue;
+
+                /* Obtain grid */
+                c_ptr = &cave[ty][tx];
+
+                /* Require floor space */
+                if (!cave_drop_bold(ty, tx)) continue;
+
+                /* No objects */
+                k = 0;
+
+                /* Scan objects in that grid */
+                for (this_o_idx = c_ptr->o_idx; this_o_idx; this_o_idx = next_o_idx)
+                {
+                    object_type *o_ptr;
+
+                    /* Acquire object */
+                    o_ptr = &o_list[this_o_idx];
+
+                    /* Acquire next object */
+                    next_o_idx = o_ptr->next_o_idx;
+
+                    /* Check for possible combination */
+                    if (obj_can_combine(o_ptr, j_ptr, INV_FLOOR)) comb = TRUE;
+
+                    /* Count objects */
+                    k++;
+                }
+
+                /* Add new object */
+                if (!comb) k++;
+
+                /* Paranoia */
+                if (k > 99) continue;
+
+                /* Calculate score */
+                s = 1000 - (d + k * 5);
+
+                /* Skip bad values */
+                if (s < bs) continue;
+
+                /* New best value */
+                if (s > bs) bn = 0;
+
+                /* Apply the randomizer to equivalent values */
+                if ((++bn >= 2) && !one_in_(bn)) continue;
+
+                /* Keep score */
+                bs = s;
+
+                /* Track it */
+                by = ty;
+                bx = tx;
+
+                /* Okay */
+                flag = TRUE;
             }
-
-            /* Add new object */
-            if (!comb) k++;
-
-            /* Paranoia */
-            if (k > 99) continue;
-
-            /* Calculate score */
-            s = 1000 - (d + k * 5);
-
-            /* Skip bad values */
-            if (s < bs) continue;
-
-            /* New best value */
-            if (s > bs) bn = 0;
-
-            /* Apply the randomizer to equivalent values */
-            if ((++bn >= 2) && !one_in_(bn)) continue;
-
-            /* Keep score */
-            bs = s;
-
-            /* Track it */
-            by = ty;
-            bx = tx;
-
-            /* Okay */
-            flag = TRUE;
         }
     }
-
+    else
+        flag = TRUE;
 
     /* Handle lack of space */
     if (!flag && !object_is_artifact(j_ptr))
