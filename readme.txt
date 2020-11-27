@@ -31,8 +31,9 @@
   or
     $ frogcomposband -g -- -n<# of windows>    ## for 8x8 tile graphics 
 
-  If make install fails, or the game does not run properly after make install,
-  try bypassing make install and just running the game from root.
+  NOTE: some users have reported installation problems when compiling under
+  Linux (and Mac). Running ./configure using the --with-no-install parameter
+  will bypass this issue by building an executable to run in-place.
 
   You can change game windows' font, location, and size, by environment 
   variables, for example:
