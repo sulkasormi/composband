@@ -220,6 +220,8 @@ extern bool temporary_name_hack;
 extern bool online_macro_hack;
 extern bool recall_stairs_hack;
 extern bool silent_drop_hack;
+extern bool check_useless_pickup_hack;
+extern bool drop_near_stack_hack;
 extern byte attack_spell_hack;
 enum
 {
@@ -444,6 +446,7 @@ extern bool leave_junk;    /* Auto-destroyer leaves junk */
 extern bool leave_special;    /* Auto-destroyer leaves items your race/class needs */
 extern bool leave_mogaminator; /* Read "destroy" as "leave" */
 extern bool no_mogaminator;
+extern bool check_full_pack; /* Check for full pack before manual pickup */
 
 extern bool cheat_peek;
 extern bool cheat_hear;
