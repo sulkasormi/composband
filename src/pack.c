@@ -163,6 +163,13 @@ static bool _get_floor(inv_ptr floor)
         return TRUE;
     }
 
+    if ((check_useless_pickup_hack) && (pack_is_full()))
+    {
+        while (ct) { pack_get(inv_obj(floor, ct--)); }
+/*        msg_format("You have no room for %d objects on the floor.", ct);*/
+        return FALSE;
+    }
+
     /* Prompt user for multiple floor objects */
     msg_print(NULL); /* Clear Autopicker Msg Spam */
     prompt.prompt = "Get which item (<color:keypress>*</color> for all)? ";
@@ -198,17 +205,23 @@ bool pack_get_floor(void)
 
     if ((delay_autopick) && (!delay_autopick_hack)) delay_autopick_hack = 1;
 
+    drop_near_stack_hack = TRUE;
+
     autopick_get_floor(TRUE); /* no energy charge */
 
     floor = inv_filter_floor(point(px, py), ((leave_mogaminator) && (delay_autopick_hack < 2)) ? _obj_not_autoleave : NULL);
     result = _get_floor(floor);
+
+    check_useless_pickup_hack = FALSE;
 
     if (delay_autopick_hack)
     {
         delay_autopick_hack = 0;
         autopick_get_floor(TRUE);
     }
-    
+
+    drop_near_stack_hack = (pack_overflow_count() ? TRUE : FALSE);
+
     inv_free(floor);
 
     return result;
@@ -405,6 +418,7 @@ bool pack_overflow(void)
     {
         notice_stuff();
         handle_stuff();
+        drop_near_stack_hack = FALSE;
     }
     return result;
 }
