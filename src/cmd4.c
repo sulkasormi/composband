@@ -860,7 +860,7 @@ void do_cmd_options_aux(int page, cptr info)
 
 
         /* HACK -- description for easy-auto-destroy options */
-        if (page == OPT_PAGE_AUTODESTROY) c_prt(TERM_YELLOW, "Following options will protect items from easy auto-destroyer.", 10, 3);
+        if (page == OPT_PAGE_AUTODESTROY) c_prt(TERM_YELLOW, "Following options will protect items from easy auto-destroyer.", 11, 3);
 
         /* Display the options */
         for (i = option_offset; i < n; i++)
@@ -938,14 +938,14 @@ void do_cmd_options_aux(int page, cptr info)
                     (*option_info[opt[i]].o_var ? "yes" : "no "),
                     option_info[opt[i]].o_text);
             }
-            if ((page == OPT_PAGE_AUTODESTROY) && i > 6) rivi = i + 5 - option_offset;
+            if ((page == OPT_PAGE_AUTODESTROY) && i > 7) rivi = i + 5 - option_offset;
             else rivi = i + 2 - option_offset;
             if ((scroll_mode) && (rivi == Term->hgt - 1) && (i < n - 1)) c_prt(TERM_YELLOW, " (scroll down for more options)", rivi, 0);
             else if ((scroll_mode) && (rivi == 2) && (i > 0)) c_prt(TERM_YELLOW, " (scroll up for more options)", rivi, 0);
             else if (((rivi >= 2) && (rivi < Term->hgt - 1)) || ((rivi == Term->hgt - 1) && ((i == n - 1) || (!scroll_mode)))) c_prt(a, buf, rivi, 0);
         }
 
-        if ((page == OPT_PAGE_AUTODESTROY) && (k > 6)) l = 3;
+        if ((page == OPT_PAGE_AUTODESTROY) && (k > 7)) l = 3;
         else l = 0;
 
         /* Hilite current option */
