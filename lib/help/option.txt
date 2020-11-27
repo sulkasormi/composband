@@ -467,6 +467,9 @@ This option deactivates the Mogaminator. (It is redundant if the Mogaminator was
 <topic:leave_mogaminator><color:U>Leave items the Mogaminator wants to destroy</color> <color:D>(leave_mogaminator)</color>
 With this option on, the Mogaminator never destroys items (the easy auto-destroyer can still destroy items), but items the Mogaminator wants to destroy are not automatically picked up on walkover even with the <color:keyword>always_pickup</color> option on. 
 
+<topic:check_full_pack><color:U>Limit pickup prompts if pack is already full</color> <color:D>(check_full_pack)</color>
+With this option on, you will not be offered a pickup prompt if your pack is already full when you walk onto a square with multiple items on it; instead, you will automatically pick up (and drop) all of these items. This option has no effect if <color:keyword>always_pickup</color> is not on.
+
 <topic:delay_autopick><color:U>Allow manual pickup before applying auto-pickup</color> <color:D>(delay_autopick)</color>
 With this option on, any command that allows you to pick up items manually will give the manual pickup priority over auto-pickup. (With the option off, this only happens if you are picking up items from the square you were already on.)
 
