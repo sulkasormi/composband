@@ -765,6 +765,10 @@ static void wr_extra(savefile_ptr file)
     savefile_write_s16b(file, p_ptr->entrench_ct);
     savefile_write_byte(file, p_ptr->sense_artifact);
     savefile_write_s16b(file, p_ptr->duelist_target_idx);
+    savefile_write_s16b(file, p_ptr->health_who);
+    savefile_write_s16b(file, target_who);
+    savefile_write_s16b(file, pet_t_m_idx);
+    savefile_write_s16b(file, riding_t_m_idx);
 
     /* by henkma */
     savefile_write_s16b(file, p_ptr->tim_reflect);
@@ -1353,14 +1357,9 @@ static bool save_player_aux(char *name)
     if (file)
     {
         /* Hack: Wiping the monster list clears the current duel! */
-        int tmp_ix = p_ptr->duelist_target_idx;
-
+        handle_tmp_indices(TRUE, TRUE);
         ok = wr_savefile_new(file);
-        if (tmp_ix)
-        {
-            p_ptr->duelist_target_idx = tmp_ix;
-            p_ptr->redraw |= PR_STATUS;
-        }
+        handle_tmp_indices(FALSE, TRUE);
 
         if (!savefile_close(file)) ok = FALSE;
     }
