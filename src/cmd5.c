@@ -2073,7 +2073,7 @@ void do_cmd_pet(void)
     powers[num++] = PET_DISMISS;
 
     sprintf(target_buf, "specify a target of pet (now:%s)",
-        (pet_t_m_idx ? (p_ptr->image ? "something strange" : (r_name + r_info[m_list[pet_t_m_idx].ap_r_idx].name)) : "nothing"));
+        (pet_t_m_idx ? (p_ptr->image ? "something strange" : ((m_list[pet_t_m_idx].mflag2 & MFLAG2_KNOWN) ? (r_name + r_info[m_list[pet_t_m_idx].ap_r_idx].name) : "Monster")) : "nothing"));
     power_desc[num] = target_buf;
 
     powers[num++] = PET_TARGET;
@@ -2425,6 +2425,7 @@ void do_cmd_pet(void)
                     pet_t_m_idx = target_who;
                 else
                     pet_t_m_idx = cave[target_row][target_col].m_idx;
+                if (m_list[pet_t_m_idx].mflag2 & MFLAG2_FUZZY) m_list[pet_t_m_idx].mflag2 &= ~(MFLAG2_KNOWN);
             }
             project_length = 0;
 
