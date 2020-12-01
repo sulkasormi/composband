@@ -38,6 +38,34 @@ void rd_item(savefile_ptr file, object_type *o_ptr)
     obj_load(o_ptr, file);
 }
 
+void handle_tmp_indices(bool save_data, bool do_redraw)
+{
+    static int tmp_ix[5] = {0};
+    if (save_data)
+    {
+        tmp_ix[0] = p_ptr->duelist_target_idx;
+        tmp_ix[1] = p_ptr->health_who;
+        tmp_ix[2] = target_who;
+        tmp_ix[3] = pet_t_m_idx;
+        tmp_ix[4] = riding_t_m_idx;
+/*        note(format("Saving temporary indices %d/%d/%d/%d/%d", tmp_ix[0], tmp_ix[1], tmp_ix[2], tmp_ix[3], tmp_ix[4])); */
+    }
+    else
+    {
+        p_ptr->duelist_target_idx = tmp_ix[0];
+        p_ptr->health_who = tmp_ix[1];
+        target_who = tmp_ix[2];
+        pet_t_m_idx = tmp_ix[3];
+        riding_t_m_idx = tmp_ix[4];
+        if (do_redraw)
+        {
+            if (tmp_ix[0]) p_ptr->redraw |= PR_STATUS;
+            if (tmp_ix[1] || tmp_ix[2] || tmp_ix[3] || tmp_ix[4]) p_ptr->redraw |= PR_HEALTH_BARS;
+        }
+/*        note(format("Loading temporary indices %d/%d/%d/%d/%d", tmp_ix[0], tmp_ix[1], tmp_ix[2], tmp_ix[3], tmp_ix[4])); */
+    }
+}
+
 
 static void rd_monster(savefile_ptr file, monster_type *m_ptr)
 {
@@ -663,6 +691,14 @@ static void rd_extra(savefile_ptr file)
     p_ptr->entrench_ct = savefile_read_s16b(file);
     p_ptr->sense_artifact = savefile_read_byte(file);
     p_ptr->duelist_target_idx = savefile_read_s16b(file);
+    if (!savefile_is_older_than(file, 7, 1, 3, 3))
+    {
+        p_ptr->health_who = savefile_read_s16b(file);
+        target_who = savefile_read_s16b(file);
+        pet_t_m_idx = savefile_read_s16b(file);
+        riding_t_m_idx = savefile_read_s16b(file);
+    }
+
     p_ptr->tim_reflect = savefile_read_s16b(file);
     p_ptr->multishadow = savefile_read_s16b(file);
     p_ptr->dustrobe = savefile_read_s16b(file);
@@ -1425,14 +1461,14 @@ static errr rd_savefile_new_aux(savefile_ptr file)
     /* I'm not dead yet... */
     if (!p_ptr->is_dead)
     {
-        int tmp_ix = p_ptr->duelist_target_idx;
+        handle_tmp_indices(TRUE, FALSE);
         note("Restoring Dungeon...");
         if (rd_dungeon(file))
         {
             note("Error reading dungeon data");
             return (34);
         }
-        p_ptr->duelist_target_idx = tmp_ix;
+        handle_tmp_indices(FALSE, FALSE);
     }
 
 #ifdef VERIFY_CHECKSUMS
