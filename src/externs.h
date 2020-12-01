@@ -1045,6 +1045,7 @@ extern cptr info_range(int range);
 extern cptr info_heal(int dice, int sides, int base);
 extern cptr info_radius(int rad);
 extern cptr info_power(int power);
+extern cptr info_level(int base, int sides);
 extern cptr info_delay(int base, int sides);
 extern cptr info_weight(int weight);
 extern cptr info_dist(int dist);
@@ -1186,6 +1187,7 @@ extern void display_news(void);
 /* load.c */
 extern errr rd_savefile_new(void);
 extern bool load_floor(saved_floor_type *sf_ptr, u32b mode);
+extern void handle_tmp_indices(bool save_data, bool do_redraw);
 extern void rd_item(savefile_ptr file, object_type *o_ptr);
 extern void wr_item(savefile_ptr file, object_type *o_ptr); /* save.c */
 extern void updatecharinfoS(void);
@@ -2629,7 +2631,7 @@ extern caster_info *get_caster_info(void);
 extern int get_spell_stat(void);
 extern int get_powers_aux(power_info* spells, int max, power_info* table, bool calc_fail);
 extern int get_spells_aux(power_info* spells, int max, spell_info* table, bool calc_fail);
-extern void dump_spells_aux(FILE *fff, power_info *table, int ct);
+/* extern void dump_spells_aux(FILE *fff, power_info *table, int ct); */
 
 /* alky.c */
 extern void     alchemist_cast(int tval);
