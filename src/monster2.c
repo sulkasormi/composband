@@ -2981,7 +2981,10 @@ void update_mon(int m_idx, bool full)
             }
 
             if (!fuzzy)
+            {
                 fear_update_m(m_ptr);
+                m_ptr->mflag2 |= MFLAG2_KNOWN;
+            }
 
             /* Disturb on appearance */
             if (disturb_near
