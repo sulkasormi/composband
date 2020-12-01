@@ -1218,7 +1218,7 @@ static int _yeqrezh_get_spells_unlearned(power_info* spells, bool check_lv)
         dest = &spells[ct++];
         dest->spell.level = src->level;
         dest->spell.cost = src->cost;
-        dest->spell.fail = calculate_fail_rate(src->level, src->fail, p_ptr->stat_ind[A_INT]);
+        dest->spell.fail = _my_calculate_fail_rate((check_lv ? p_ptr->max_plv : src->level), src->fail, p_ptr->stat_ind[A_INT]);
         dest->spell.fn = src->fn;
         dest->stat = A_NONE;
     }
