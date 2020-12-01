@@ -1052,6 +1052,9 @@ void do_cmd_spell(void)
             case CLASS_WEAPONMASTER:
                 msg_print("You need more experience. Why not kill something?");
                 break;
+            case CLASS_WARLOCK:
+                msg_print("You have not learned any spells yet. Go kill something for more experience!");
+                break;
             default: break;
         }
         return;
@@ -1429,7 +1432,10 @@ int spell_stats_fail(spell_stats_ptr stats)
     return result;
 }
 
-void dump_spells_aux(FILE *fff, power_info *table, int ct)
+/*
+ * Currently unused
+ *
+ * void dump_spells_aux(FILE *fff, power_info *table, int ct)
 {
     int i;
     variant vn, vd, vc, vfm;
@@ -1473,7 +1479,7 @@ void dump_spells_aux(FILE *fff, power_info *table, int ct)
     var_clear(&vd);
     var_clear(&vc);
     var_clear(&vfm);
-}
+} */
 
 static void _dump_book(doc_ptr doc, int realm, int book)
 {
