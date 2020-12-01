@@ -3785,7 +3785,7 @@ bool gf_affect_m(int who, mon_ptr mon, int type, int dam, int flags)
             else if (!no_harm)
             {
                 msg_format("You draw psychic energy from %s.", m_name_object);
-                hp_player(dam);
+                hp_player(MIN(dam, mon->hp));
             }
         }
         else if (seen_msg) msg_format("%^s is unaffected.", m_name);
