@@ -5264,14 +5264,16 @@ static void dungeon(bool load_game)
     command_arg = 0;
     command_dir = 0;
 
+    if (!load_game)
+    {
+        /* Cancel the target */
+        target_who = 0;
+        pet_t_m_idx = 0;
+        riding_t_m_idx = 0;
 
-    /* Cancel the target */
-    target_who = 0;
-    pet_t_m_idx = 0;
-    riding_t_m_idx = 0;
-
-    /* Cancel the health bar */
-    health_track(0);
+        /* Cancel the health bar */
+        health_track(0);
+    }
 
     /* Check visual effects */
     shimmer_monsters = TRUE;
@@ -6468,12 +6470,12 @@ void play_game(bool new_game)
 
         character_xtra = FALSE;
 
-        /* Cancel the target */
-        target_who = 0;
-
-        /* Cancel the health bar */
-        health_track(0);
-
+        /* Cancel the target and health bar */
+        if (p_ptr->playing)
+        {
+            target_who = 0;
+            health_track(0);
+        }
 
         /* Forget the lite */
         forget_lite();
