@@ -686,8 +686,8 @@ static void _update_object(int slot)
 static void _calc_bonuses(void) 
 {
     p_ptr->no_cut = TRUE;
-    p_ptr->to_a += p_ptr->lev / 2 + 5;
-    p_ptr->dis_to_a += p_ptr->lev / 2 + 5;
+    p_ptr->to_a += p_ptr->lev + 5;
+    p_ptr->dis_to_a += p_ptr->lev + 5;
     if (p_ptr->lev > 30) p_ptr->pspeed += (p_ptr->lev - 28) / 3;
     res_add_amt(RES_BLIND, 2);
     res_add_amt(RES_POIS, 2);
