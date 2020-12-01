@@ -2006,6 +2006,9 @@ void display_innate_attack_info(doc_ptr doc, int which)
             case GF_DRAIN_MANA:
                 doc_printf(cols[0], "<tab:10><color:B>Drains Mana%s</color>\n", xtra);
                 break;
+            case GF_DRAINING_TOUCH:
+                doc_printf(cols[0], "<tab:10><color:B>Steals Mana%s</color>\n", xtra);
+                break;
             case GF_STUN:
                 doc_printf(cols[0], "<tab:10><color:B>Stuns%s</color>\n", xtra);
                 break;
@@ -2027,7 +2030,7 @@ void display_innate_attack_info(doc_ptr doc, int which)
             case GF_OLD_DRAIN:
                 if (i > 0)
                 {
-                    doc_printf(cols[0], "<tab:10><color:B>Drains%s</color>\n", xtra);
+                    doc_printf(cols[0], "<tab:10><color:B>Drains Life%s</color>\n", xtra);
                     break;
                 } /* Fall through */
             default:
