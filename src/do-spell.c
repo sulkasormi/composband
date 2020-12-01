@@ -147,6 +147,16 @@ cptr info_power(int power)
     return format("power %d", power);
 }
 
+/*
+ * Generate level info string such as "lvl 50" or "lvl 50+1d50"
+ */
+cptr info_level(int base, int sides)
+{
+    if (!sides) return format("lvl %d", base);
+    else if (!base) return format("lvl 1d%d", sides);
+    else return format("lvl %d+1d%d", base, sides);
+}
+
 
 /*
  * Generate power info string such as "power 1d100"
