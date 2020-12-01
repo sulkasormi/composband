@@ -193,6 +193,9 @@ void confuse_spell(int cmd, variant *res)
     case SPELL_DESC:
         var_set_string(res, "Attempt to confuse one or more monsters.");
         break;
+    case SPELL_INFO:
+        var_set_string(res, info_power(p_ptr->lev * 2));
+        break;
     case SPELL_CAST:
         var_set_bool(res, FALSE);
         if (p_ptr->lev < 40)
