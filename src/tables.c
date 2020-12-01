@@ -3034,4 +3034,5 @@ byte feature_action_flags[FF_FLAG_MAX] =
     0, /* ROGUE_TRAP_3 */
     0, /* WEB */
     0, /* SEMI_PUN */
+    0, /* SHADOW_ZAP */
 };
