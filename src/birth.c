@@ -345,6 +345,10 @@ static void player_wipe(void)
     p_ptr->draconian_power = -1;
 
     p_ptr->duelist_target_idx = 0;
+    target_who = 0;
+    pet_t_m_idx = 0;
+    riding_t_m_idx = 0;
+    p_ptr->health_who = 0;
 
     /* Reset virtues*/
     for (i = 0; i < 8; i++) p_ptr->virtues[i]=0;
