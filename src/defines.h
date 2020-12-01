@@ -19,7 +19,7 @@
 #define VER_MAJOR 7
 #define VER_MINOR 1
 #define VER_PATCH "salmiak"
-#define VER_EXTRA 2
+#define VER_EXTRA 3
 #define VERSION_IS_DEVELOPMENT (TRUE)
 
 #define GAME_MODE_BEGINNER  0
@@ -2807,6 +2807,7 @@ enum summon_specific_e {
 #define MFLAG2_DIRECT_PY_SUMMON 0x00200000   /* Monster was summoned by the player */
 #define MFLAG2_SPAWN            0x00400000   /* Monster was randomly spawned mid-level */
 #define MFLAG2_NATIVE           0x00800000   /* Monster is a quest native */
+#define MFLAG2_KNOWN            0x01000000   /* Player is or has been aware of monster's identity */
 
 /*
  * Object Flags (OF_*)
