@@ -105,6 +105,7 @@ wizardstaff
 ~?staves:identify#@ui!sdk
 ~?staves:teleport#@ua!sdk
 ~?staves:cure wounds#@uu!sdk
+~?staves:telepathy#@ut!sdk
 ~?wands:stone to mud#@ab!sdk
 ~?wands:tsunami#@ac!sdk
 ?:1
@@ -132,7 +133,7 @@ wizardstaff
 !suits more weight than 20
 ?:1
 
-?:[AND [EQU $SELLING Off] [EQU $RACE Spider Hydra Beholder]]
+?:[AND [EQU $SELLING Off] [EQU $RACE Spider Hydra Beholder Death-Sword Filthy-Rag Xorn]]
 !nameless unusable items
 !ego unusable items
 !ammo
