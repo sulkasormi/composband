@@ -1336,6 +1336,38 @@ static bool _pumpkin_drain_life(mon_ptr m_ptr, int *power, bool *weak)
     return TRUE;
 }
 
+bool attack_mode_allows_innate(int mode)
+{
+    switch (mode)
+    {
+        case WEAPONMASTER_RETALIATION:
+            return (p_ptr->weapon_ct == 0); /* Kenshirou Possessor can retaliate with innate attacks! */
+        case WEAPONMASTER_PROXIMITY_ALERT:
+        case WEAPONMASTER_CRUSADERS_STRIKE:
+        case WEAPONMASTER_MANY_STRIKE:
+        case WEAPONMASTER_PIERCING_STRIKE:
+        case WEAPONMASTER_WHIRLWIND:
+        case WEAPONMASTER_REAPING:
+        case MELEE_AWESOME_BLOW:
+        case ROGUE_ASSASSINATE:
+        case MAULER_STUNNING_BLOW:
+        case MAULER_KNOCKBACK:
+        case MAULER_CRUSHING_BLOW:
+        case MAULER_CRITICAL_BLOW:
+        case MAULER_SCATTER:
+        case HISSATSU_2:
+        case HISSATSU_KYUSHO:
+        case HISSATSU_MINEUCHI:
+        case HISSATSU_3DAN:
+        case HISSATSU_IAI:
+        case MYSTIC_KILL:
+        case MYSTIC_KNOCKOUT:
+        case MYSTIC_CONFUSE:
+            return FALSE;
+        default: return TRUE;
+    }
+}
+
 static bool _allow_crits = TRUE;
 
 static void innate_attacks(s16b m_idx, bool *fear, bool *mdeath, int mode)
@@ -4107,37 +4139,7 @@ bool py_attack(int y, int x, int mode)
     }
     if (p_ptr->innate_attack_ct && !mdeath && !fear_stop)
     {
-        bool do_innate_attacks = TRUE;
-
-        switch (mode)
-        {
-        case WEAPONMASTER_RETALIATION:
-            if (p_ptr->weapon_ct == 0) /* Kenshirou Possessor can retaliate with innate attacks! */
-                break;
-        case WEAPONMASTER_PROXIMITY_ALERT:
-        case WEAPONMASTER_CRUSADERS_STRIKE:
-        case WEAPONMASTER_MANY_STRIKE:
-        case WEAPONMASTER_PIERCING_STRIKE:
-        case WEAPONMASTER_WHIRLWIND:
-        case WEAPONMASTER_REAPING:
-        case MELEE_AWESOME_BLOW:
-        case ROGUE_ASSASSINATE:
-        case MAULER_STUNNING_BLOW:
-        case MAULER_KNOCKBACK:
-        case MAULER_CRUSHING_BLOW:
-        case MAULER_CRITICAL_BLOW:
-        case MAULER_SCATTER:
-        case HISSATSU_2:
-        case HISSATSU_KYUSHO:
-        case HISSATSU_MINEUCHI:
-        case HISSATSU_3DAN:
-        case HISSATSU_IAI:
-        case MYSTIC_KILL:
-        case MYSTIC_KNOCKOUT:
-        case MYSTIC_CONFUSE:
-            do_innate_attacks = FALSE;
-            break;
-        }
+        bool do_innate_attacks = attack_mode_allows_innate(mode);
 
         if (mauler_get_toggle() == MAULER_TOGGLE_MAUL)
             do_innate_attacks = FALSE;
