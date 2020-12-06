@@ -100,6 +100,12 @@ bool do_blow(int type)
     int dir;
     int m_idx = 0;
 
+    if ((!p_ptr->weapon_ct) && (!attack_mode_allows_innate(type)))
+    {
+        msg_print("You need to wield a weapon!");
+        return FALSE;
+    }
+
     /* For ergonomics sake, use currently targeted monster. This allows
        a macro of \e*tmaa or similar to pick an adjacent foe, while
        \emaa*t won't work, since get_rep_dir2() won't allow a target. */
