@@ -1541,6 +1541,7 @@ static void _list_monsters_aux(_mon_list_ptr list, rect_t display_rect, int mode
                 top++;
                 redraw = TRUE;
             }
+            handled = TRUE;
             break;
         case '8': case SKEY_UP:
             if (pos > 0)
@@ -1555,6 +1556,7 @@ static void _list_monsters_aux(_mon_list_ptr list, rect_t display_rect, int mode
                 }
                 redraw = TRUE;
             }
+            handled = TRUE;
             break;
         /* Help */
         case '?':
