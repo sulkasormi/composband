@@ -18,7 +18,7 @@ static caster_info * _caster_info(void)
         me.encumbrance.max_wgt = 430;
         me.encumbrance.weapon_pct = 33;
         me.encumbrance.enc_wgt = 1200;
-        me.options = CASTER_GLOVE_ENCUMBRANCE;
+        me.options = CASTER_ALLOW_DEC_MANA | CASTER_GLOVE_ENCUMBRANCE;
         init = TRUE;
     }
     return &me;
@@ -38,28 +38,28 @@ class_t *warrior_mage_get_class(void)
 
     if (!init)
     {           /* dis, dev, sav, stl, srh, fos, thn, thb */
-    skills_t bs = { 30,  37,  36,   2,  18,  16,  56,  50};
-    skills_t xs = {  7,  11,  10,   0,   0,   0,  18,  15};
+    skills_t bs = { 30,  36,  34,   2,  18,  16,  56,  50};
+    skills_t xs = {  7,  10,  10,   0,   0,   0,  18,  15};
 
         me.name = "Warrior-Mage";
         me.desc = "A Warrior-Mage is precisely what the name suggests: a cross "
                     "between a warrior and a mage. To support their good-for-mages combat "
                     "abilities, Warrior-Mages begin the game with Arcane magic and can "
                     "freely select another spell realm. Although they do not gain "
-                    "new spells as fast as regular mages, they will eventually learn "
-                    "every spell in both realms, thus making them a very competitive "
-                    "choice for those who appreciate Arcane spells. Their class powers "
+                    "new spells as fast as regular mages, they can eventually learn "
+                    "all or almost all spells in both realms, making them a very competitive "
+                    "choice for those who appreciate Arcane magic. Their class powers "
                     "allow them to convert either HP to mana, or mana to HP, as needed.";
 
         me.stats[A_STR] =  2;
         me.stats[A_INT] =  2;
-        me.stats[A_WIS] =  0;
+        me.stats[A_WIS] = -1;
         me.stats[A_DEX] =  1;
         me.stats[A_CON] =  0;
         me.stats[A_CHR] =  1;
         me.base_skills = bs;
         me.extra_skills = xs;
-        me.life = 106;
+        me.life = 105;
         me.base_hp = 8;
         me.exp = 140;
         me.pets = 35;
