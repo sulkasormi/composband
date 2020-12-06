@@ -641,6 +641,7 @@ bool make_attack_normal(int m_idx)
 
                         if (!obj) continue;
                         if (object_is_artifact(obj)) continue;
+                        if ((obj->tval == TV_CAPTURE) && (obj->pval > 0) && (r_info[obj->pval].ball_num)) continue;
 
                         object_desc(o_name, obj, OD_OMIT_PREFIX);
 
