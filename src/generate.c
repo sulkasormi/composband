@@ -522,6 +522,68 @@ static int next_to_corr(int y1, int x1)
     return (k);
 }
 
+static bool door_is_sane(int y, int x)
+{
+    bool op_w = FALSE, op_n = FALSE;
+    if (!in_bounds(y, x)) return FALSE;
+    if (atlantis_hack) return TRUE;
+    if (in_bounds(y - 1, x)) /* Check opening to north */
+    {
+        if ((is_floor_bold(y - 1, x)) || (is_floor_bold(y - 1, x - 1)) || (is_floor_bold(y - 1, x + 1))) op_n = TRUE;
+    }
+    if ((op_n) && (in_bounds(y + 1, x))) /* Check opening to south */
+    {
+        if ((is_floor_bold(y + 1, x)) || (is_floor_bold(y + 1, x - 1)) || (is_floor_bold(y + 1, x + 1)))
+        {
+            /* Require openness in a cardinal direction */
+            if (is_floor_bold(y + 1, x) || is_floor_bold(y - 1, x))
+            {
+                /* Verify closedness in other direction */
+                if ((!is_floor_bold(y, x - 1)) && (!is_floor_bold(y, x + 1))) return TRUE;
+
+                /* Special case - allow diagonal doors */
+                if ((is_floor_bold(y + 1, x + 1)) && (is_floor_bold(y - 1, x - 1)) &&
+                   (!is_floor_bold(y - 1, x + 1)) && (!is_floor_bold(y + 1, x - 1)) &&
+                   (((!is_floor_bold(y, x - 1)) && (!is_floor_bold(y - 1, x))) ||
+                   ((!is_floor_bold(y, x + 1)) && (!is_floor_bold(y + 1, x))))) return TRUE;
+                if ((is_floor_bold(y + 1, x - 1)) && (is_floor_bold(y - 1, x + 1)) &&
+                   (!is_floor_bold(y - 1, x - 1)) && (!is_floor_bold(y + 1, x + 1)) &&
+                   (((!is_floor_bold(y, x - 1)) && (!is_floor_bold(y + 1, x))) ||
+                   ((!is_floor_bold(y, x + 1)) && (!is_floor_bold(y - 1, x))))) return TRUE;
+            }
+        }
+    }
+    if (in_bounds(y, x - 1)) /* Check opening to west */
+    {
+        if ((is_floor_bold(y, x - 1)) || (is_floor_bold(y - 1, x - 1)) || (is_floor_bold(y + 1, x - 1))) op_w = TRUE;
+    }
+    if ((op_w) && (in_bounds(y, x + 1))) /* Check opening to east */
+    {
+        if ((is_floor_bold(y, x + 1)) || (is_floor_bold(y + 1, x + 1)) || (is_floor_bold(y - 1, x + 1)))
+        {
+            /* Require openness in a cardinal direction */
+            if (is_floor_bold(y, x - 1) || is_floor_bold(y, x + 1))
+            {
+                /* Verify closedness in other direction */
+                if ((!is_floor_bold(y - 1, x)) && (!is_floor_bold(y + 1, x))) return TRUE;
+
+                /* Special case - allow diagonal doors */
+                if ((is_floor_bold(y + 1, x + 1)) && (is_floor_bold(y - 1, x - 1)) &&
+                   (!is_floor_bold(y - 1, x + 1)) && (!is_floor_bold(y + 1, x - 1)) &&
+                   (((!is_floor_bold(y, x - 1)) && (!is_floor_bold(y - 1, x))) ||
+                   ((!is_floor_bold(y, x + 1)) && (!is_floor_bold(y + 1, x))))) return TRUE;
+                if ((is_floor_bold(y + 1, x - 1)) && (is_floor_bold(y - 1, x + 1)) &&
+                   (!is_floor_bold(y - 1, x - 1)) && (!is_floor_bold(y + 1, x + 1)) &&
+                   (((!is_floor_bold(y, x - 1)) && (!is_floor_bold(y + 1, x))) ||
+                   ((!is_floor_bold(y, x + 1)) && (!is_floor_bold(y - 1, x))))) return TRUE;
+            }
+        }
+    }
+
+    /* Require openings on opposite sides */
+    return FALSE;
+}
+
 
 /*
  * Determine if the given location is "between" two walls,
@@ -569,8 +631,9 @@ static void try_door(int y, int x)
     if (cave[y][x].info & (CAVE_ROOM)) return;
 
     /* Occasional door (if allowed) */
-    if ((randint0(100) < dun_tun_jct) && possible_doorway(y, x) && !(d_info[dungeon_type].flags1 & DF1_NO_DOORS))
+    if ((randint0(100) < dun_tun_jct) && possible_doorway(y, x) && door_is_sane(y, x) && !(d_info[dungeon_type].flags1 & DF1_NO_DOORS))
     {
+//        msg_format("Placing door at %d/%d", y, x);
         /* Place a door */
         place_random_door(y, x, FALSE);
     }
@@ -1177,11 +1240,16 @@ static bool cave_gen(void)
                 /* Occasional doorway */
                 if ((randint0(100) < dun_tun_pen) && !(d_info[dungeon_type].flags1 & DF1_NO_DOORS))
                 {
-                    if (next_to_walls(y, x, FALSE) < 2)
+                    if ((next_to_walls(y, x, FALSE) < 2) || (!door_is_sane(y, x)))
                     { /* Reject weird door location */
+//                        msg_format("Rejecting door at %d/%d", y, x);
                     }
                     /* Place a random door */
-                    else place_random_door(y, x, TRUE);
+                    else
+                    {
+//                        msg_format("Accepting door at %d/%d", y, x);
+                        place_random_door(y, x, TRUE);
+                    }
                 }
             }
 
