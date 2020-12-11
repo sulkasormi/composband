@@ -3580,9 +3580,9 @@ static cptr monster_group_text[] =
     "Uniques",
     "Ridable monsters",
     "Wanted monsters",
+    "Dungeon guardians",
     "Amberite",
-    "Olympian",
-    "Egyptian",
+    "God",
     "Ant",
     "Bat",
     "Centipede",
@@ -3760,9 +3760,9 @@ static int collect_monsters(int grp_cur, s16b mon_idx[], byte mode)
     bool        grp_unique = (monster_group_char[grp_cur] == (char *) -2L);
     bool        grp_riding = (monster_group_char[grp_cur] == (char *) -3L);
     bool        grp_wanted = (monster_group_char[grp_cur] == (char *) -4L);
-    bool        grp_amberite = (monster_group_char[grp_cur] == (char *) -5L);
-    bool        grp_olympian = (monster_group_char[grp_cur] == (char *) -6L);
-    bool        grp_egyptian = (monster_group_char[grp_cur] == (char *) -7L);
+    bool        grp_guardian = (monster_group_char[grp_cur] == (char *) -5L);
+    bool        grp_amberite = (monster_group_char[grp_cur] == (char *) -6L);
+    bool        grp_god = (monster_group_char[grp_cur] == (char *) -7L);
     int_map_ptr available_corpses = NULL;
 
     if (grp_corpses)
@@ -3861,14 +3861,18 @@ static int collect_monsters(int grp_cur, s16b mon_idx[], byte mode)
             if (!(r_ptr->flags3 & RF3_AMBERITE)) continue;
         }
 
-        else if (grp_olympian)
+        else if (grp_god)
         {
-            if (!(r_ptr->flags3 & RF3_OLYMPIAN)) continue;
+            if (!(r_ptr->flags1 & RF1_UNIQUE)) continue;
+            if (!monster_pantheon(r_ptr)) continue;
         }
 
-        else if (grp_egyptian)
+        else if (grp_guardian)
         {
-            if ((!(r_ptr->flags3 & RF3_EGYPTIAN)) && (!(r_ptr->flags3 & RF3_EGYPTIAN2))) continue;
+            if (!(r_ptr->flags7 & RF7_GUARDIAN)) continue;
+            if ((d_info[DUNGEON_MYSTERY].final_guardian == i) &&
+                (!(d_info[DUNGEON_MYSTERY].flags1 & DF1_SUPPRESSED)) &&
+                (d_info[DUNGEON_MYSTERY].maxdepth > max_dlv[DUNGEON_MYSTERY])) continue;
         }
 
         else
