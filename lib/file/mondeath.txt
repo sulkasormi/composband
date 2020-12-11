@@ -20,6 +20,12 @@ says, 'I'll get even! Next time I see you, Death is yours!'
 N:732:Bull Gates
 says, 'Empire Micro$oft is eternal!'
 
+N:743:The Phoenix
+eeps sadly.
+bursts into flames.
+squawks, 'I'll be back! I'll be baaaaack! Eep!'
+squawks, 'EEP! Watch out for the afterburners!'
+
 N:764:Uriel, Angel of Fire
 N:765:Azriel, Angel of Death
 N:769:Raphael, the Messenger
