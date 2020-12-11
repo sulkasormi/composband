@@ -333,8 +333,12 @@ says, 'Christmas is so stressful!'
 says, 'What is with that chimney thing, anyway? Some people believe the strangest things.'
 says, 'I'm sick of this notion that developing superintelligent robots is risky because they might take over. I mean, what's the worst that could happen? They wipe us out. Dumb species replaced with a smart one. I don't see any scenario where the results are actually bad - as long as we ensure the robots are completely out of our control.'
 
+N:743:The Phoenix
+emits loud eeping sounds.
+flaps its wings in a failing attempt at a chicken-dance.
+tweets, 'Birds of a feather stick together! #EEP'
+
 #N:738:Khamul the Easterling
-#N:743:The Phoenix
 #N:753:Nidhogg the Hel-Drake
 #N:754:The Lernean Hydra
 #N:755:Thuringwethil
