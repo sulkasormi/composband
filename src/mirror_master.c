@@ -423,11 +423,16 @@ static void _mirror_of_wandering_spell(int cmd, variant *res)
         var_set_bool(res, TRUE);
         break;
     case SPELL_ENERGY:
-        if (_on_mirror)
+        if (mut_present(MUT_ASTRAL_GUIDE))
         {
-            var_set_int(res, 50);
+            var_set_int(res, ((_on_mirror) ? 15 : 33));
             break;
         }
+        else
+        {
+            var_set_int(res, ((_on_mirror) ? 50 : 100));
+            break;
+        } 
     default:
         default_spell(cmd, res);
         break;
@@ -509,11 +514,16 @@ static void _mirror_tunnel_spell(int cmd, variant *res)
         break;
     }
     case SPELL_ENERGY:
-        if (_on_mirror)
+        if (mut_present(MUT_ASTRAL_GUIDE))
         {
-            var_set_int(res, 50);
+            var_set_int(res, ((_on_mirror) ? 15 : 33));
             break;
         }
+        else
+        {
+            var_set_int(res, ((_on_mirror) ? 50 : 100));
+            break;
+        } 
     default:
         default_spell(cmd, res);
         break;
@@ -701,11 +711,16 @@ static void _warped_mirror_spell(int cmd, variant *res)
         var_set_bool(res, TRUE);
         break;
     case SPELL_ENERGY:
-        if (_on_mirror)
+        if (mut_present(MUT_ASTRAL_GUIDE))
         {
-            var_set_int(res, 50);
+            var_set_int(res, ((_on_mirror) ? 15 : 33));
             break;
         }
+        else
+        {
+            var_set_int(res, ((_on_mirror) ? 50 : 100));
+            break;
+        } 
     default:
         default_spell(cmd, res);
         break;
