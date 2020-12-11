@@ -2150,6 +2150,23 @@ bool change_wild_mode(void)
         }
     }
 
+    if (p_ptr->word_recall)
+    {
+        char c, buf[255] = "You cannot enter the global map with Word of Recall active! Cancel recall? <color:y>[y/n]</color>\n";
+        c = msg_prompt(buf, "ny", PROMPT_ESCAPE_DEFAULT | PROMPT_FORCE_CHOICE);
+        sound(SOUND_WARN);
+        if (c == 'n')
+        {
+            energy_use = 0;
+            return FALSE;
+        }
+        else
+        {
+            p_ptr->word_recall = 0;
+            p_ptr->redraw |= (PR_STATUS);
+        }
+    }
+
     /* HACK */
     energy_use = 1000;
 
