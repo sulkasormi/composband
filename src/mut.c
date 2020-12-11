@@ -384,6 +384,9 @@ void mut_get_flags(u32b flgs[OF_ARRAY_SIZE])
     if (mut_present(MUT_MOTION))
         add_flag(flgs, OF_FREE_ACT);
 
+    if (mut_present(MUT_FELL_SORCERY))
+        add_flag(flgs, OF_SPELL_POWER);
+
     if (mut_present(MUT_HUMAN_INT))
         add_flag(flgs, OF_VULN_FEAR);
 
