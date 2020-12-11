@@ -2032,7 +2032,7 @@ static bool project_p(int who, cptr who_name, int r, int y, int x, int dam, int 
             _lukko = TRUE;
         }
 
-        project(0, 0, t_y, t_x, dam, typ, (PROJECT_STOP|PROJECT_KILL|PROJECT_REFLECTABLE));
+        project((typ == GF_ATTACK) ? who : 0, 0, t_y, t_x, dam, typ, (PROJECT_STOP|PROJECT_KILL|PROJECT_REFLECTABLE));
 
         _lukko = FALSE;
 
