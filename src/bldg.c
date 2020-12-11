@@ -259,7 +259,7 @@ static void arena_comm(int cmd)
                     msg_print("You enter the arena briefly and bask in your glory.");
                 }
             }
-            else if (p_ptr->riding && p_ptr->pclass != CLASS_BEASTMASTER && p_ptr->pclass != CLASS_CAVALRY && p_ptr->prace != RACE_MON_RING)
+            else if (p_ptr->riding && p_ptr->pclass != CLASS_BEASTMASTER && p_ptr->pclass != CLASS_CAVALRY && p_ptr->prace != RACE_MON_RING && !warlock_is_(WARLOCK_DRAGONS))
             {
                 msg_print("You don't have permission to enter with pet.");
             }
