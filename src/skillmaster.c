@@ -1208,8 +1208,9 @@ static void _skills_calc_bonuses(void)
     switch (pts)
     {
     case 3: p_ptr->telepathy = TRUE;
-    case 2: p_ptr->auto_pseudo_id = TRUE;
+    case 2: p_ptr->auto_id = TRUE;
     case 1: p_ptr->see_inv++;
+            p_ptr->auto_pseudo_id = TRUE;
     }
 
     pts = _get_skill_pts(_TYPE_SKILLS, _SPEED);
