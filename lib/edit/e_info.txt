@@ -217,7 +217,7 @@ F:SLAY_EVIL | BLESSED | FULL_NAME
 
 N:27:(Troika)
 T:WEAPON
-W:70:*:50
+W:60:*:24
 C:10:10:0:0
 
 ###############
