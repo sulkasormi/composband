@@ -819,8 +819,8 @@ int gf_affect_p(int who, int type, int dam, int flags)
             sanity_blast(m_ptr, FALSE);
         break;
     case GF_STUN:
-        if ((p_ptr->stun < STUN_KNOCKED_OUT) && (!bunshin_save))
-            set_stun(p_ptr->stun + dam, FALSE);
+        if (!bunshin_save)
+            set_stun(MIN(STUN_KNOCKED_OUT + 25, p_ptr->stun + dam), FALSE);
         break;
     case GF_AMNESIA:
         if (bunshin_save)
