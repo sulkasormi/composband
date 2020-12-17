@@ -457,16 +457,17 @@ static flag_insc_table flag_insc_plus[] =
 
 static flag_insc_table flag_insc_minus[] =
 {
+    { "At", OF_DEC_BLOWS, -1 },
+    { "Sp", OF_DEC_SPEED, -1 },
     { "St", OF_DEC_STR, -1 },
     { "In", OF_DEC_INT, -1 },
     { "Wi", OF_DEC_WIS, -1 },
     { "Dx", OF_DEC_DEX, -1 },
     { "Cn", OF_DEC_CON, -1 },
     { "Ch", OF_DEC_CHR, -1 },
-    { "Sl", OF_DEC_STEALTH, -1 },
-    { "Sp", OF_DEC_SPEED, -1 },
-    { "Lf", OF_DEC_LIFE, -1 },
     { "Md", OF_DEC_MAGIC_MASTERY, -1 },
+    { "Sl", OF_DEC_STEALTH, -1 },
+    { "Lf", OF_DEC_LIFE, -1 },
     { NULL, 0, -1 }
 };
 
@@ -510,9 +511,9 @@ static flag_insc_table flag_insc_vulnerability[] =
     { "Po", OF_VULN_POIS, -1 },
     { "Li", OF_VULN_LITE, -1 },
     { "Dk", OF_VULN_DARK, -1 },
+    { "Cf", OF_VULN_CONF, -1 },
     { "Nt", OF_VULN_NETHER, -1 },
     { "Nx", OF_VULN_NEXUS, -1 },
-    { "Cf", OF_VULN_CONF, -1 },
     { "So", OF_VULN_SOUND, -1 },
     { "Sh", OF_VULN_SHARDS, -1 },
     { "Ca", OF_VULN_CHAOS, -1 },
