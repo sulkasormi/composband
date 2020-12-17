@@ -2678,6 +2678,65 @@ void birth_shop_items(void)
     _town_add_shop_item(town, SHOP_ALCHEMIST, lookup_kind(TV_SCROLL, SV_SCROLL_PHASE_DOOR), 1);
     _town_add_shop_item(town, SHOP_ALCHEMIST, lookup_kind(TV_SCROLL, SV_SCROLL_TELEPORT), 1);
     _town_add_shop_item(town, SHOP_WEAPON, lookup_kind(TV_QUIVER, 0), 1);
+    if ((p_ptr->pclass == CLASS_SKILLMASTER) || /* (p_ptr->pclass == CLASS_SORCERER) || */
+        (p_ptr->pclass == CLASS_GRAY_MAGE) || (p_ptr->pclass == CLASS_RED_MAGE))
+    {
+        _town_add_shop_item(town, SHOP_WEAPON, lookup_kind(TV_HISSATSU_BOOK, 0), 1);
+        _town_add_shop_item(town, SHOP_TEMPLE, lookup_kind(TV_LIFE_BOOK, 0), 1);
+        _town_add_shop_item(town, SHOP_TEMPLE, lookup_kind(TV_CRUSADE_BOOK, 0), 1);
+        _town_add_shop_item(town, SHOP_BOOK, lookup_kind(TV_ARCANE_BOOK, 0), 1);
+        _town_add_shop_item(town, SHOP_BOOK, lookup_kind(TV_SORCERY_BOOK, 0), 1);
+        _town_add_shop_item(town, SHOP_BOOK, lookup_kind(TV_NATURE_BOOK, 0), 1);
+        _town_add_shop_item(town, SHOP_BOOK, lookup_kind(TV_CHAOS_BOOK, 0), 1);
+        _town_add_shop_item(town, SHOP_BOOK, lookup_kind(TV_DEATH_BOOK, 0), 1);
+        _town_add_shop_item(town, SHOP_BOOK, lookup_kind(TV_TRUMP_BOOK, 0), 1);
+        _town_add_shop_item(town, SHOP_BOOK, lookup_kind(TV_CRAFT_BOOK, 0), 1);
+        _town_add_shop_item(town, SHOP_BOOK, lookup_kind(TV_DAEMON_BOOK, 0), 1);
+        _town_add_shop_item(town, SHOP_BOOK, lookup_kind(TV_ARMAGEDDON_BOOK, 0), 1);
+    }
+    else
+    {
+        if (p_ptr->realm1)
+        {
+            int _shop = SHOP_BOOK, _book = realm2tval(p_ptr->realm1);
+            switch (_book)
+            {
+                 case TV_LIFE_BOOK:
+                 case TV_CRUSADE_BOOK:
+                     _shop = SHOP_TEMPLE;
+                     break;
+                 case TV_RAGE_BOOK:
+                 case TV_HISSATSU_BOOK:
+                     _shop = SHOP_WEAPON;
+                     break;
+                 case TV_BURGLARY_BOOK:
+                     _shop = SHOP_BLACK_MARKET;
+                     break;
+                 default: break;
+            }
+            _town_add_shop_item(town, _shop, lookup_kind(_book, 1), 1);
+        }
+        if (p_ptr->realm2)
+        {
+            int _shop = SHOP_BOOK, _book = realm2tval(p_ptr->realm2);
+            switch (_book)
+            {
+                 case TV_LIFE_BOOK:
+                 case TV_CRUSADE_BOOK:
+                     _shop = SHOP_TEMPLE;
+                     break;
+                 case TV_RAGE_BOOK:
+                 case TV_HISSATSU_BOOK:
+                     _shop = SHOP_WEAPON;
+                     break;
+                 case TV_BURGLARY_BOOK:
+                     _shop = SHOP_BLACK_MARKET;
+                     break;
+                 default: break;
+            }
+            _town_add_shop_item(town, _shop, lookup_kind(_book, 1), 1);
+        }
+    }
 }
 
 /************************************************************************
