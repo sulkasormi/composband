@@ -306,7 +306,7 @@ All interesting body part properties are indicated in the object description, so
 Staves of Telepathy are a handy option for players without permanent telepathy from equipment.
 
 
-<color:G>Q:</color> What does Reflection do? How important is it?
+<topic:Reflection><color:G>Q:</color> What does Reflection do? How important is it?
 
 <color:R>A:</color> It gives you a 75% chance of reflecting any incoming bolt or bolt-like attack. A reflected bolt will not damage you in any way, and may bounce back and damage the monster that fired it in the first place. Some monsters also have Reflection - in this case, they have a 75% chance of reflecting your bolt attacks, potentially back at you. If both you and the monster have Reflection, it's possible for a bolt to bounce between you two for a while... The main difference between monster reflection and player reflection is that monsters cannot reflect actual crossbow bolts (or arrows, sling ammo etc.) but you can reflect monster arrows.
 
