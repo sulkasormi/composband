@@ -1,0 +1,28 @@
+<style:title>Equipment Properties</style>
+
+<style:note><color:G>This help file should be considered reference material. There is no need to read it before starting play, and it may contain spoilers about items you have not seen.</color></style>
+
+Please choose one of the following help sections:
+
+    <link:objflags.txt> Overview of Equipment Properties
+    <link:objflags.txt#Basic> Basic Properties
+      <link:objflags.txt#DamageDice> Damage Dice
+      <link:objflags.txt#DamageMultiplier> Damage Multiplier
+      <link:objflags.txt#CombatBonuses> Combat Bonuses
+      <link:objflags.txt#ArmorClass> Armor Class
+      <link:objflags.txt#Pval> Pval
+      <link:objflags.txt#Weight> Weight
+      <link:objflags.txt#Activation> Activations
+    <link:objflags.txt#Flags> Flag Attributes
+      <link:objflags.txt#Bonuses> Bonuses and Penalties
+      <link:objflags.txt#Resistances> Resistances, Immunities and Vulnerabilities
+      <link:objflags.txt#Abilities> Miscellaneous Abilities
+      <link:objflags.txt#Auras> Auras and Shells
+      <link:objflags.txt#Slays> Slays and Brands
+      <link:objflags.txt#Telepathy> Telepathies
+      <link:objflags.txt#Sustains> Sustains
+      <link:objflags.txt#Inspection> Attributes Visible on Inspection
+    <link:objflags.txt#Curses> Equipment Curses
+
+    <color:y>(?) Help System Commands</color>
+
