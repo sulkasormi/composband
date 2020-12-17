@@ -6879,7 +6879,7 @@ cptr do_effect(effect_t *effect, int mode, int boost)
     case EFFECT_CONFUSE_MONSTER:
     {
 //        int power = _extra(effect, MIN(98, MAX(21, effect->power * 7 - 52)));
-        int power = _extra(effect, 25 + _power_curve_offset(75, effect->power + 75, 80));
+        int power = _extra(effect, MIN(105, 25 + _power_curve_offset(75, effect->power + 75, 80)));
         if (name) return "Confuse Monster";
         if (desc) return "It confuses a monster when you use it.";
         if (info) return format("power %d", _BOOST(power));
