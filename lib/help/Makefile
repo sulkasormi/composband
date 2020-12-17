@@ -44,6 +44,8 @@ MonsterRaces.txt \
 monster.txt \
 objects_contents.txt \
 objects.txt \
+objflags_contents.txt \
+objflags.txt \
 option_contents.txt \
 option.txt \
 Orcs.txt \
