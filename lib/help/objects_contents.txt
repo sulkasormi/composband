@@ -23,5 +23,6 @@ Please choose one of the following help sections:
     <link:objects.txt#Pseudo-ID> Pseudo-ID
     <link:objects.txt#InscriptionAbbrev> List of Abbreviations
     <link:objects.txt#InscriptionSummary> Inscriptions: Summary
+    <link:objflags_contents.txt> Equipment Properties
 
     <color:y>(?) Help System Commands</color>
