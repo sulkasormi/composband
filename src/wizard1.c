@@ -2555,6 +2555,119 @@ static void spoil_option_bits(void)
     doc_free(doc);
 }
 
+static int _lookup_monster(cptr name)
+{
+    char nimi[MAX_NLEN] = "^", nimi2[MAX_NLEN];
+    int i;
+    if (strstr("it", name)) return 0; /* historical - distinguish from the unique It */
+    strcpy(nimi2, name);
+    if (strpos("a ", nimi2) == 1) string_clip(nimi2, 1, 2);
+    else if (strpos("an ", nimi2) == 1) string_clip(nimi2, 1, 3);
+    (void)clip_and_locate(" while helpless", nimi2);
+    i = strpos("(", nimi2);
+    if (i > 0)
+    {
+        nimi2[i - 1] = '\0';
+        while (i > 0)
+        {
+            i--;
+            if (nimi2[i - 1] != ' ') break;
+            nimi2[i - 1] = '\0';
+        }
+    }
+    strcat(nimi, nimi2);
+    strcat(nimi, "$");
+    str_tolower(nimi);
+    return parse_lookup_monster(nimi, 0);
+}
+
+struct _deadly_mon_info_s
+{
+    int id;
+    int count;
+};
+
+typedef struct _deadly_mon_info_s _deadly_mon_info_t, *_deadly_mon_info_ptr;
+
+
+static int _deadly_mon_comp(_deadly_mon_info_ptr left, _deadly_mon_info_ptr right)
+{
+    if (left->count > right->count)
+        return -1;
+    if (left->count < right->count)
+        return 1;
+
+    if (left->id > right->id)
+        return -1;
+    if (left->id < right->id)
+        return 1;
+
+    return 0;
+}
+
+static void spoil_deadliest_mons(void)
+{
+    doc_ptr doc = doc_alloc(80);
+    vec_ptr v = vec_alloc(NULL);
+    vec_ptr scores = scores_load(NULL);
+    int_map_ptr map = int_map_alloc(NULL);
+    int_map_iter_ptr iter;
+    int i, key, laskuri = 0;
+    _deadly_mon_info_ptr mon_ptr;
+
+    for (i = 0; i < vec_length(scores); i++)
+    {
+        score_ptr score = vec_get(scores, i);
+        if (!score) continue;
+        if (!score->status) continue;
+        if (!score->killer) continue;
+        if (strcmp(score->status, "Dead") != 0) continue;
+        key = _lookup_monster(score->killer);
+        if (!key) continue;
+        laskuri++;
+        mon_ptr = int_map_find(map, key);
+        if (!mon_ptr)
+        {
+            mon_ptr = malloc(sizeof(_deadly_mon_info_t));
+            memset(mon_ptr, 0, sizeof(_deadly_mon_info_t));
+            int_map_add(map, key, mon_ptr);
+            mon_ptr->id = key;
+        }
+        mon_ptr->count++;
+    }
+
+    vec_free(scores);
+
+    for (iter = int_map_iter_alloc(map);
+            int_map_iter_is_valid(iter);
+            int_map_iter_next(iter) )
+    {
+        vec_add(v, int_map_iter_current(iter));
+    }
+    int_map_iter_free(iter);
+    vec_sort(v, (vec_cmp_f)_deadly_mon_comp);
+    if (laskuri > 10)
+    {
+        for (i = 0; i < vec_length(v); i++)
+        {
+            monster_race *r_ptr;
+            mon_ptr = vec_get(v, i);
+            if ((!mon_ptr) || (!mon_ptr->id) || (!mon_ptr->count)) continue;
+            r_ptr = &r_info[mon_ptr->id];
+            doc_printf(doc, "  %-44.44s %4d\n", r_name + r_ptr->name, mon_ptr->count);
+        }
+    }
+    else
+    {
+        doc_insert(doc, "Available data insufficient for analysis.");
+    }
+
+    vec_free(v);    
+    int_map_free(map);
+    doc_display(doc, "Deadliest Monsters", 0);
+    doc_free(doc);
+}
+
 /************************************************************************
  * Public
  ************************************************************************/
@@ -2606,6 +2719,7 @@ void do_cmd_spoilers(void)
         prt("(1) Option Bits", row++, col);
         prt("(2) Device Fail Rates", row++, col);
         prt("(3) Device Tables", row++, col);
+        prt("(4) Deadliest Monsters", row++, col);
         row++;
 
         /* Prompt */
@@ -2685,6 +2799,9 @@ void do_cmd_spoilers(void)
             break;
         case '3':
             spoil_device_tables();
+            break;
+        case '4':
+            spoil_deadliest_mons();
             break;
 
         /* Oops */
