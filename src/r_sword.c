@@ -1062,7 +1062,12 @@ race_t *mon_sword_get_race(void)
                     "they are unable to use equipment the way other players can; instead, "
                     "they simply are a weapon of their current form. But never fear: Death "
                     "Swords have the power to absorb magical essences from the weapons they "
-                    "find, gaining power in the process.";
+                    "find, gaining power in the process.\n\n"
+                    "As a Death-Sword gains levels, it will evolve into stronger and stronger weapons. "
+                    "More advanced weapons require more essences to enchant, sometimes causing a "
+                    "temporary loss of abilities; but magical weapons also become easier to "
+                    "find as you descend deeper into the pits, and so any lost powers are usually "
+                    "quickly recovered.";
 
         me.infra = 3;
         me.exp = 150;
