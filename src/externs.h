@@ -1832,6 +1832,7 @@ extern void str_tolower(char *str);
 extern int inkey_special(bool numpad_cursor);
 extern unsigned int strpos(const char *mika, const char *missa);
 extern unsigned int chrpos(const char mika, const char *missa);
+extern void string_clip(char *apu, unsigned int paikka, int pituus);
 extern bool clip_and_locate(char *poista, char *mista);
 
 /* xtra1.c */
