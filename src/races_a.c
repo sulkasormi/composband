@@ -1819,11 +1819,13 @@ static power_info _ent_get_powers[] =
 static void _ent_calc_bonuses(void)
 {
     /*res_add_vuln(RES_FIRE); cf resists.c res_pct_aux() for an alternative*/
+    res_add(RES_POIS);
     if (!equip_find_first(object_is_melee_weapon))
         p_ptr->skill_dig += p_ptr->lev * 10;
 }
 static void _ent_get_flags(u32b flgs[OF_ARRAY_SIZE])
 {
+    add_flag(flgs, OF_RES_POIS);
     /*add_flag(flgs, TR_VULN_FIRE);*/
 }
 static void _ent_birth(void)
