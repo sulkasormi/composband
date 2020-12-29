@@ -252,6 +252,8 @@ This abbreviation group contains elemental auras, protective magical sheaths, an
 
 The four elemental auras all work in the same way: each time a monster hits you in melee, they will take some elemental damage from the aura. The strength of the aura depends on the player's level and the number of aura sources; multiple sources of the same aura partially stack, each source adding 2 damage dice to the original aura.
 
+Being surrounded by an aura of fire additionally increases your light radius by 1 if it would otherwise be 0 or lower. This can sometimes make fire auras inconvenient for Ninjas and Ninja-Lawyers.
+
 <color:o>Aura of Retaliation/Revenge</color> - {[At}
 
 With this aura, each a time monster hits you in melee, you retaliate by hitting them back. This aura is extremely powerful on characters with low blow counts but high damage per hit, such as duelists.
