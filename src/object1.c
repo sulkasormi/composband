@@ -461,7 +461,7 @@ static void _obj_identify_aux(object_type *o_ptr)
 
     if ((!o_ptr) || (!o_ptr->number)) return;
 
-    if ((p_ptr->sense_artifact) && (o_ptr->loc.where = INV_FLOOR) && (object_is_artifact(o_ptr)))
+    if ((p_ptr->sense_artifact) && (o_ptr->loc.where == INV_FLOOR) && (object_is_artifact(o_ptr)))
     {
         p_ptr->sense_artifact = sense_great_discovery();
         if (!p_ptr->sense_artifact) p_ptr->redraw |= PR_STATUS;
