@@ -4382,7 +4382,7 @@ void calc_bonuses(void)
             if (p_ptr->pclass == CLASS_BERSERKER || p_ptr->weapon_info[i].genji)
             {
                 p_ptr->weapon_info[i].to_d += to_d;
-                p_ptr->weapon_info[i].dis_to_h += to_d;
+                p_ptr->weapon_info[i].dis_to_d += to_d;
             }
             else if (ct > 0)
             {
