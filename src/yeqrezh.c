@@ -831,7 +831,7 @@ static void _power_sorcery_mut(int cmd, variant *res)
         msg_print("You pour your soul into your magic!");
         break;
     case SPELL_HELP_DESC:
-        var_set_string(res, "Increases your spellpower by +15%, but decreases your life rating by 3 points.");
+        var_set_string(res, "Increases your spellpower by +15%, but decreases your life multiplier by 3 points.");
         break;
     case SPELL_CALC_BONUS:
         p_ptr->spell_power += 2;
