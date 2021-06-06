@@ -97,6 +97,7 @@ static void _calc_bonuses(void)
     res_add(RES_LITE);
     res_add(RES_CONF);
     res_add(RES_BLIND);
+    p_ptr->hold_life++;
     if (p_ptr->lev >= PUMP_LEVEL)
     {
         int to_a = 50 + py_prorata_level(50);
@@ -109,7 +110,6 @@ static void _calc_bonuses(void)
         p_ptr->to_a += to_a;
         p_ptr->dis_to_a += to_a;
         p_ptr->free_act++;
-        p_ptr->hold_life++;
         p_ptr->see_inv++;
         p_ptr->pspeed += (p_ptr->lev / 5);
     }
@@ -121,10 +121,10 @@ static void _calc_bonuses(void)
 
 static void _get_flags(u32b flgs[OF_ARRAY_SIZE]) 
 {
-    add_flag(flgs, OF_HOLD_LIFE);
     add_flag(flgs, OF_RES_CONF);
     add_flag(flgs, OF_RES_LITE);
     add_flag(flgs, OF_RES_BLIND);
+    add_flag(flgs, OF_HOLD_LIFE);
     if (p_ptr->lev < PUMP_LEVEL) add_flag(flgs, OF_VULN_FIRE);
     else
     {
