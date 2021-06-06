@@ -70,5 +70,7 @@ M:#####################################################################
 R:OBJ(balance dragon scale mail)
 ?:[EQU [MOD $RANDOM23 77] 7]
 R:OBJ(power dragon scale mail)
+?:[EQU $CLASS Politician]
+R:OBJ(sexy swimsuit)
 
 # vim: filetype=q :
