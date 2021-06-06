@@ -84,6 +84,7 @@ static void rd_monster(savefile_ptr file, monster_type *m_ptr)
     m_ptr->max_maxhp = savefile_read_s16b(file);
     m_ptr->mspeed = savefile_read_byte(file);
     m_ptr->energy_need = savefile_read_s16b(file);
+    m_ptr->ml = savefile_is_older_than(file, 7,1,3,4) ? FALSE : savefile_read_byte(file);
 
     for (;;)
     {
@@ -175,6 +176,7 @@ static void rd_monster(savefile_ptr file, monster_type *m_ptr)
             TODO: Report an error back to the load routine!!*/
         }
     }
+    m_ptr->invis_turn = savefile_is_older_than(file, 7,1,3,4) ? -2 : -1;
 }
 
 static void rd_lore_aux(savefile_ptr file, mon_race_ptr race)
