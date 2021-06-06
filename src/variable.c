@@ -198,6 +198,7 @@ bool recall_stairs_hack = FALSE;
 bool silent_drop_hack = FALSE;
 bool check_useless_pickup_hack = FALSE;
 bool drop_near_stack_hack = FALSE;
+bool advance_time_hack = FALSE;
 byte attack_spell_hack = ASH_USELESS_ATTACK;
 byte troika_spell_hack = 0;
 s16b vampirism_hack = 1000;
