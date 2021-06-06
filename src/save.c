@@ -107,6 +107,7 @@ static void wr_monster(savefile_ptr file, monster_type *m_ptr)
     savefile_write_s16b(file, m_ptr->max_maxhp);
     savefile_write_byte(file, m_ptr->mspeed);
     savefile_write_s16b(file, m_ptr->energy_need);
+    savefile_write_byte(file, m_ptr->ml);
 
     if (!is_original_ap(m_ptr))
     {

@@ -37,7 +37,6 @@ potions:curing
 potions:of healing#!kq
 potions:of life#!kq
 potions:of *healing*#!kq
-potions:restore mana#!kq
 
 ?:[NOT [EQU $CLASS Berserker]]
 scrolls:artifact creation#!*
@@ -48,6 +47,7 @@ scrolls:forest creation
 scrolls:wall of stone
 scrolls:acquirement#!*
 scrolls:banish
+potions:restore mana#!kq
 ?:1
 
 #########################################

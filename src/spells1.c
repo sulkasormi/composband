@@ -2818,6 +2818,7 @@ bool project(int who, int rad, int y, int x, int dam, int typ, int flg)
         if (p_ptr->no_air)
         {
             if (who == PROJECT_WHO_PLAYER) msg_print("The sound fizzles out in the airless dungeon!");
+            project_length = 0;
             return TRUE;
         }
         break;

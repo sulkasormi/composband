@@ -42,6 +42,7 @@ of the Doom Treader
 of Tindalos
 of Shuffling
 'Big Boots'
+'Mouse Slippers'
 
 N:14:BIAS_NECROMANTIC
 of Witch Wood
@@ -66,6 +67,7 @@ of the Sneak
 'Catwalk'
 'Mercury'
 'Quickstep'
+'Sneaky Sneakers'
 
 N:17:BIAS_MAGE
 N: 7:BIAS_INT

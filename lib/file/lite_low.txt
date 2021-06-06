@@ -9,6 +9,7 @@ N:*:Default
 'Epic Phial'
 'Everyellow'
 'Eye of Argon'
+'Eyebright'
 'Fairie Light'
 'Firefly'
 'Fire Marble'
@@ -16,15 +17,19 @@ N:*:Default
 'Glow in the Dark'
 'Headlight'
 'Heart of Gundabad'
+'Himatuikku'
 'Hunk of Orium'
+'Lightstone'
 'Lone Star'
 'Lucky Star'
 'Mimosa'
+'Minotaur's Eye'
 'Moonglow'
 'Moonshine'
 'Morning Moth'
 'One Star'
 'Orange Star'
+'Orb of Galdor'
 'Pathfinder'
 'Photonspitter'
 'Pizza'
@@ -39,14 +44,14 @@ N:*:Default
 'Sungazer'
 'Sunstone'
 'Sun Wolf'
+'Sycophant'
 'Talisman'
 'Tarazed'
 'Trailblazer'
+'Traveling Light'
 'Ultralight'
 'Wyrmglow'
 'Yellow Light'
-of Alhazred
-of Mordenkainen
 of Otiluke
 of Nargothrond
 of Thalos
@@ -57,11 +62,10 @@ of Tume
 of Alimoit
 of the Forest Martens
 of the Illuminati
-of Feldegast
-of the Dark-Elves
 of Arien
 of Aglarond
 of Devouring Lightness
 of the Buddha
 of Mazda
 of Inglor
+of Omnia

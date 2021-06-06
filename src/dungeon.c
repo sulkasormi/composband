@@ -2989,6 +2989,7 @@ static void process_world(void)
 
     const s32b A_DAY = TURNS_PER_TICK * TOWN_DAWN;
     s32b prev_turn_in_today = ((game_turn - TURNS_PER_TICK) % A_DAY + A_DAY / 4) % A_DAY;
+    static s32b world_proc_hack_turn = 0;
     int prev_min = (1440 * prev_turn_in_today / A_DAY) % 60;
 
     extract_day_hour_min(&day, &hour, &min);
@@ -3064,6 +3065,10 @@ static void process_world(void)
 
     /* Every 10 game turns */
     if (game_turn % TURNS_PER_TICK) return;
+
+    /* Paranoia - only once per turn */
+    if (game_turn == ((world_proc_hack_turn) ? world_proc_hack_turn : old_turn)) return;
+    world_proc_hack_turn = game_turn;
 
     /*** Check the Time and Load ***/
 
@@ -5304,8 +5309,12 @@ static void dungeon(bool load_game)
 
     (void)calculate_upkeep();
 
+    redraw_hack = load_game;
+
     /* Verify the panel */
     viewport_verify();
+
+    redraw_hack = load_game;
 
     /* Flush messages
     msg_print(NULL);*/
@@ -5396,6 +5405,7 @@ static void dungeon(bool load_game)
     object_level = base_level;
 
     hack_mind = TRUE;
+    redraw_hack = FALSE;
 
     if (p_ptr->energy_need > 0 && !p_ptr->inside_battle &&
         (dun_level || p_ptr->leaving_dungeon || p_ptr->inside_arena))
@@ -5489,10 +5499,30 @@ static void dungeon(bool load_game)
         if (!p_ptr->playing || p_ptr->is_dead) break;
 
         /* Handle "leaving" */
-        if (p_ptr->leaving) break;
+        if ((p_ptr->leaving) && (!advance_time_hack)) break;
 
         /* Count game turns */
         game_turn++;
+
+        /* Hack - time does not advance normally on taking stairs.
+         * Manually advance it by equivalent of consuming 200 energy
+         * upon taking upstairs, to compensate for taking downstairs
+         * consuming zero turns */
+        if (advance_time_hack)
+        {
+            int nopeus = SPEED_TO_ENERGY(p_ptr->pspeed);
+            int kaytto = MIN(25, (200 + randint0(nopeus)) / nopeus);
+            int new_day, prev_day, prev_hour, prev_min;
+            extract_day_hour_min(&prev_day, &prev_hour, &prev_min);
+            advance_time_hack = FALSE;
+            game_turn += kaytto;
+            extract_day_hour_min(&new_day, &prev_hour, &prev_min);
+            if (new_day != prev_day) /* Check midnight */
+            {
+                 determine_today_mon(FALSE);
+                 if (p_ptr->prace == RACE_WEREWOLF) werewolf_check_midnight();
+            }
+        }
 
         if (dungeon_turn < dungeon_turn_limit)
         {
@@ -5501,6 +5531,8 @@ static void dungeon(bool load_game)
         }
 
         prevent_turn_overflow();
+
+        if (p_ptr->leaving) break;
 
         if (wild_regen) wild_regen--;
     }

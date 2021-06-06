@@ -1871,7 +1871,7 @@ static void spoil_device_fail()
     doc_insert(doc, "</style>");
     doc_printf(doc, "\n<color:D>Generated for FrogComposband %d.%d.%s</color>\n",
                      VER_MAJOR, VER_MINOR, VER_PATCH);
-    doc_display(doc, "Device Faile Rates", 0);
+    doc_display(doc, "Device Fail Rates", 0);
     doc_free(doc);
 }
 static char _effect_color(int which)
@@ -1905,6 +1905,10 @@ static void _display_device_power(doc_ptr doc, effect_t *effect)
     else if (sscanf(s, "heal %dd%d", &dd, &ds) == 2)
         amt = dd*(ds+1)/2;
     else if (sscanf(s, "heal %d", &base) == 1)
+        amt = base;
+    else if (sscanf(s, "pow %d", &base) == 1)
+        amt = base;
+    else if (sscanf(s, "power %d", &base) == 1)
         amt = base;
     else if (sscanf(s, "Power %d", &base) == 1)
         amt = base;
@@ -1953,7 +1957,7 @@ static void spoil_device_tables()
     doc_insert(doc, "</style>");
     doc_printf(doc, "\n<color:D>Generated for FrogComposband %d.%d.%s</color>\n",
                      VER_MAJOR, VER_MINOR, VER_PATCH);
-    doc_display(doc, "Device Fail Rates", 0);
+    doc_display(doc, "Device Damage/Power Tables", 0);
     doc_free(doc);
 }
 /************************************************************************

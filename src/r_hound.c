@@ -233,13 +233,16 @@ static int _breath_amount(void)
 
 static cptr _breath_desc(void)
 {
+    gf_info_ptr gf;
     switch (p_ptr->current_r_idx)
     {
     case MON_AETHER_HOUND: return "almost anything";
     case MON_HOUND_OF_TINDALOS: return "nether or time";
     case MON_MULTI_HUED_HOUND: return "acid, fire, cold, lightning or poison";
     }
-    return gf_name(_breath_effect());
+    gf = gf_lookup(_breath_effect());
+    if (gf) return gf->name;
+    return "something";
 }
 
 static void _breathe_spell(int cmd, variant *res)
@@ -250,8 +253,13 @@ static void _breathe_spell(int cmd, variant *res)
         var_set_string(res, "Breathe");
         break;
     case SPELL_DESC:
-        var_set_string(res, format("Breathes %s at your opponent.", _breath_desc()));
+    {
+        static char elly[40];
+        strcpy(elly, _breath_desc());
+        str_tolower(elly);
+        var_set_string(res, format("Breathes %s at your opponent.", elly));
         break;
+    }
     case SPELL_INFO:
         var_set_string(res, info_damage(0, 0, _breath_amount()));
         break;

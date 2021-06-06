@@ -58,7 +58,7 @@ N:16:BIAS_ROGUE
 N: 9:BIAS_DEX
 of the Assassin
 of the Cloaker
-of Sigurd
+of the Dragonslayer
 'Cover of Darkness'
 'Maple Leaf'
 'Phantom'

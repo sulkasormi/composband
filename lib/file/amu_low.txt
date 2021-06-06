@@ -37,6 +37,8 @@ of the Spinster
 of Rumil
 of Nodata
 of the Miserables
+of the Nacirema
+of Takahikiya
 'Whatever'
 'Voodoo Charm'
 'Silver Medal'
@@ -44,3 +46,9 @@ of the Miserables
 'Fool's Gold'
 'Time Bomb'
 'Namer's Block'
+'Xorn Shell'
+'Ruby Mimic'
+'Magic Amulet'
+'Glass Heart'
+'Millstone'
+'Pig's Ear'

@@ -3579,6 +3579,7 @@ void viewport_verify_aux(u32b options)
         p_ptr->update |= PU_MONSTERS;
         p_ptr->redraw |= PR_MAP;
         p_ptr->window |= PW_OVERHEAD | PW_DUNGEON;
+        redraw_hack = TRUE;
     }
 }
 
@@ -3588,6 +3589,11 @@ void viewport_verify(void)
     if (center_player && (center_running || (!running && !travel.run)))
         options |= VIEWPORT_FORCE_CENTER;
     viewport_verify_aux(options);
+    if (redraw_hack)
+    {
+        handle_stuff();
+        redraw_hack = FALSE;
+    }
 }
 
 

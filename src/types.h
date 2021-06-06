@@ -728,6 +728,8 @@ struct monster_type
 
     bool ml;        /* Monster is "visible" */
 
+    s32b invis_turn;  /* Turn of last invisibility check (not saved) */
+
     s16b hold_o_idx;    /* Object being held (if any) */
 
     s16b target_y;        /* Can attack !los player */
