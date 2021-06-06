@@ -2900,10 +2900,22 @@ void update_mon(int m_idx, bool full)
                     do_invisible = TRUE;
 
                     /* See invisible */
-                    if (redraw_hack)
+                    if ((redraw_hack) && (m_ptr->invis_turn != -2)/* Compatibility hack */)
                     {
                         easy = !old_fuzzy;
                         flag = m_ptr->ml;
+                    }
+                    else if ((m_ptr->invis_turn == player_turn) && (!full))
+                    {
+                        easy = (flag || m_ptr->ml);
+                        flag = easy;
+                    }
+                    else if ((m_ptr->ml) && (!full) && (!old_fuzzy))
+                    { /* The main purpose of this is to retain visibility on
+                       * save/load. It will also allow players to reliably
+                       * see previously seen monsters while neither has moved,
+                       * which is probably good */
+                        easy = flag = TRUE;
                     }
                     else if (py_see_invis(r_ptr->level))
                     {
@@ -2911,6 +2923,7 @@ void update_mon(int m_idx, bool full)
                         easy = flag = TRUE;
                         equip_learn_flag(OF_SEE_INVIS);
                     }
+                    m_ptr->invis_turn = player_turn;
                 }
 
                 /* Handle "normal" monsters */
@@ -3003,7 +3016,7 @@ void update_mon(int m_idx, bool full)
     }
 
     /* The monster is not visible */
-    else
+    else if (d > 0) /* Mega-hack - retain visibility on game load */
     {
         /* It was previously seen */
         if (m_ptr->ml)
@@ -3554,6 +3567,8 @@ int place_monster_one(int who, int y, int x, int r_idx, int pack_idx, u32b mode)
     m_ptr->exp = 0;
 
     m_ptr->parent_r_idx = 0;
+
+    m_ptr->invis_turn = -1;
 
     if (who > 0)
     {
