@@ -437,7 +437,7 @@ static void _calc_weapon_bonuses(object_type *o_ptr, weapon_info_t *info_ptr)
 static void _calc_bonuses(void) 
 {
     int i;
-    int to_a = py_prorata_level(150);
+    int to_a = py_prorata_level(135);
 
     to_a += _calc_amount(_essences[_ESSENCE_AC], 2, 10);
     if (p_ptr->current_r_idx == MON_DEATH_SCYTHE)
@@ -445,8 +445,6 @@ static void _calc_bonuses(void)
     p_ptr->to_a += to_a;
     p_ptr->dis_to_a += to_a;
 
-    p_ptr->pspeed += 1;
-    
     p_ptr->levitation = TRUE;
     p_ptr->no_cut = TRUE;
     res_add(RES_BLIND);
@@ -1052,7 +1050,7 @@ race_t *mon_sword_get_race(void)
     if (!init)
     {           /* dis, dev, sav, stl, srh, fos, thn, thb */
     skills_t bs = { 25,  24,  40,   4,  14,   5,  56,  20};
-    skills_t xs = { 12,  10,  12,   0,   0,   0,  20,   7};
+    skills_t xs = { 12,   8,  12,   0,   0,   0,  20,   7};
 
         me.skills = bs;
         me.extra_skills = xs;
