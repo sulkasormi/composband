@@ -1787,19 +1787,23 @@ static void get_random_name_aux(char *return_name, object_type *o_ptr, int power
     if (o_ptr->tval == TV_LITE)
     {
         cptr filename;
-        switch (power)
+        if (have_flag(o_ptr->flags, OF_DARKNESS)) filename = "lite_drk.txt";
+        else
         {
-        case 0:
-            filename = "lite_cursed.txt";
-            break;
-        case 1:
-            filename = "lite_low.txt";
-            break;
-        case 2:
-            filename = "lite_med.txt";
-            break;
-        default:
-            filename = "lite_high.txt";
+            switch (power)
+            {
+            case 0:
+                filename = "lite_cursed.txt";
+                break;
+            case 1:
+                filename = "lite_low.txt";
+                break;
+            case 2:
+                filename = "lite_med.txt";
+                break;
+            default:
+                filename = "lite_high.txt";
+            }
         }
         get_random_name_aux_aux(filename, bias_hack, 40, return_name);
     }
@@ -2500,6 +2504,7 @@ s32b create_artifact(object_type *o_ptr, u32b mode)
                 break;
             case 3:
                 if ( slaying_hack == 0 /* OK: Slaying can now only happen once! */
+                    && (!object_is_(o_ptr, TV_POLEARM, SV_DEATH_SCYTHE))
                     && (is_falcon_sword || !have_flag(o_ptr->flags, OF_BLOWS)))
                 {
                     object_kind *k_ptr = &k_info[o_ptr->k_idx];
