@@ -873,7 +873,8 @@ static char *get_ability_abbreviation(char *ptr, object_type *o_ptr, bool all)
     if ( obj_is_identified(o_ptr)
       && (object_is_wearable(o_ptr) || object_is_ammo(o_ptr))
       && ((object_is_artifact(o_ptr)) || (object_is_ego(o_ptr)) ||
-          ((mark_dragon) && (object_is_dragon_armor(o_ptr))))
+          ((mark_dragon) && ((object_is_dragon_armor(o_ptr)) ||
+           (object_is_(o_ptr, TV_SWORD, SV_DRAGON_FANG)))))
       && !obj_is_identified_fully(o_ptr)
       && !(o_ptr->ident & IDENT_STORE) )
     {
