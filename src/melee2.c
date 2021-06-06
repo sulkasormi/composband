@@ -2440,14 +2440,18 @@ static void process_monster(int m_idx)
             bool skip = FALSE;
             monster_desc(m_name, m_ptr, 0);
 
-            for (i = 0; i < MAX_MON_BLOWS; i++)
+            if (m_ptr->r_idx != MON_DAWN)
             {
-                if (r_ptr->blows[i].method == RBM_EXPLODE)
+                for (i = 0; i < MAX_MON_BLOWS; i++)
                 {
-                    skip = TRUE;
-                    break;
+                    if (r_ptr->blows[i].method == RBM_EXPLODE)
+                    {
+                        skip = TRUE;
+                        break;
+                    }
                 }
             }
+            else skip = TRUE;
 
             if (skip) {} /* Kamikaze pets fight to death */
             else if (is_riding_mon && riding_pinch < 2)
