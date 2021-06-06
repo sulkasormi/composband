@@ -44,6 +44,24 @@ void do_cmd_go_up(void)
 
     /* Hack -- take a turn */
     energy_use = 100;
+    if (py_in_dungeon())
+    {
+        /* Mega-hack - avoid skipping midnights */
+        if (ironman_nightmare)
+        {
+            /* Check if midnight happens within 26 game turns */
+            int new_day, prev_day, prev_hour, prev_min;
+            extract_day_hour_min_imp(game_turn, &prev_day, &prev_hour, &prev_min);
+            extract_day_hour_min_imp(game_turn + 26, &new_day, &prev_hour, &prev_min);
+            if (new_day != prev_day)
+            {
+                msg_print("Horrors of the night block the staircase, driving you away!");
+                teleport_player(10, 0L);
+                return;
+            }
+        }
+        advance_time_hack = TRUE;
+    }
 
     if (autosave_l) do_cmd_save_game(TRUE);
 
