@@ -601,8 +601,8 @@ void set_friendly(monster_type *m_ptr)
 
 void set_friendly_ingame(monster_type *m_ptr)
 {
-    m_ptr->smart |= (1U << SM_FRIENDLY);
     quests_on_kill_mon(m_ptr);
+    m_ptr->smart |= (1U << SM_FRIENDLY);
     if (!(m_ptr->smart & (1U << SM_CLONED))) politician_set_friend(m_ptr->r_idx, TRUE);
 }
 
