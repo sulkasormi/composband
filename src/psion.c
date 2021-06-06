@@ -1621,8 +1621,8 @@ static _spell_t __spells[] =
         { 69, 100, _psionic_healing4_spell }, /* 430hp */
         {102, 125, _psionic_healing5_spell }},/* 550hp */
         "Psionic Healing is a recovery spell. By focusing your mind, you will be able "
-          "to heal your wounds, cuts, stunning and poisoning; with "
-          "total focus, you can even restore your stats."
+          "to heal your wounds, cuts and stunning; with sufficient focus, you can cure "
+          "hallucination and even restore your stats."
     },
     { "Brain Smash", _PSION_BRAIN_SMASH, 30, {  
         { 10,  60, _brain_smash1_spell },
