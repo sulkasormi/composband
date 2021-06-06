@@ -106,6 +106,7 @@ of Narm
 'Lilac Leopard'
 'Jolly Roger'
 'Golden Braid'
+'Old Trickery'
 of Sattuma
 of Zalasta
 of Ithilien
@@ -119,3 +120,7 @@ of the Prince
 of the Green Isles
 of Thankfulness
 of Urgelion
+of Tintagel
+of Brutha
+of Pandora
+of Abrasax
