@@ -382,7 +382,7 @@ static void do_cmd_eat_food_aux(obj_ptr obj)
     {
         int luku = obj->number;
         obj->number = 1;
-        jelly_eat_object(obj);
+        if (!jelly_eat_object(obj)) return; /* this is okay - only happens with artifacts */
         obj->number = luku;
     }
     else if ((get_race()->flags & RACE_EATS_DEVICES)
@@ -454,7 +454,7 @@ static void do_cmd_eat_food_aux(obj_ptr obj)
     }
 
     /* Consume the object */
-    if (obj->art_name) /* Hack: Artifact Food does not get destroyed! */
+    if ((obj->art_name) && (p_ptr->prace != RACE_MON_JELLY)) /* Hack: Artifact Food does not get destroyed! */
         obj->timeout += 99;
     else
     {

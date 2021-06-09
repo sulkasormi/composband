@@ -3067,7 +3067,8 @@ static void process_world(void)
     if (game_turn % TURNS_PER_TICK) return;
 
     /* Paranoia - only once per turn */
-    if (game_turn == ((world_proc_hack_turn) ? world_proc_hack_turn : old_turn)) return;
+    if (game_turn == world_proc_hack_turn) return;
+    if ((game_turn == old_turn) && (cave_have_flag_bold(py, px, FF_STAIRS))) return;
     world_proc_hack_turn = game_turn;
 
     /*** Check the Time and Load ***/
