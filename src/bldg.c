@@ -4204,12 +4204,11 @@ void do_cmd_quest(void)
             ((danger > 33) && (danger < 46) && (p_ptr->lev < (danger / 2) + 11)) ||
             ((danger > 45) && (p_ptr->lev < (danger * 4 / 5) - 3) && (p_ptr->lev < 46)))
         {
-            char c, buf[255];
+            char buf[255];
 
-            strcpy(buf, format("\n<color:R>WARNING:</color> This is a level <color:o>%d</color> quest. Really enter? <color:y>[Y/n]</color>\n", danger));
-            c = msg_prompt(buf, "nY", PROMPT_ESCAPE_DEFAULT | PROMPT_CASE_SENSITIVE | PROMPT_FORCE_CHOICE);
             sound(SOUND_WARN);
-            if (c == 'n') return;
+            strcpy(buf, format("\n<color:R>WARNING:</color> This is a level <color:o>%d</color> quest. Really enter? <color:y>[Y/n]</color>\n", danger));
+            if (!paranoid_msg_prompt(buf, PROMPT_FORCE_CHOICE)) return;
         }
         else if (!get_check("Do you enter? ")) return;
 
