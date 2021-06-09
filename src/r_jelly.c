@@ -101,7 +101,7 @@ race_t *_black_ooze_get_race_t(void)
         me.skills = bs;
         me.extra_skills = xs;
 
-        me.subname = "Black Ooze";
+        me.subname = "Black ooze";
 
         me.stats[A_STR] =  1;
         me.stats[A_INT] = -5;
@@ -151,7 +151,7 @@ race_t *_gelatinous_cube_get_race_t(void)
         me.skills = bs;
         me.extra_skills = xs;
 
-        me.subname = "Gelatinous Cube";
+        me.subname = "Gelatinous cube";
 
         me.stats[A_STR] =  2;
         me.stats[A_INT] = -10;
@@ -208,7 +208,7 @@ race_t *_acidic_cytoplasm_get_race_t(void)
         me.skills = bs;
         me.extra_skills = xs;
 
-        me.subname = "Acidic Cytoplasm";
+        me.subname = "Acidic cytoplasm";
 
         me.stats[A_STR] =  3;
         me.stats[A_INT] = -7;
@@ -378,6 +378,17 @@ bool jelly_eat_object(object_type *o_ptr)
 {
     char o_name[MAX_NLEN];
     object_desc(o_name, o_ptr, OD_COLOR_CODED);
+    /* Confirm eating artifacts */
+    if ((object_is_artifact(o_ptr)) && ((obj_is_identified(o_ptr)) || (o_ptr->feeling == FEEL_SPECIAL) || (o_ptr->feeling == FEEL_TERRIBLE)))
+    {
+        char buf[255];
+        strcpy(buf, format("<color:v>Really eat</color> %s? <color:y>[Y/n]</color>\n", o_name));
+        if (!paranoid_msg_prompt(buf, 0))
+        {
+            energy_use = 0;
+            return FALSE;
+        }
+    }
     set_food(MIN(PY_FOOD_FULL - 1, p_ptr->food + o_ptr->weight * 50 * o_ptr->number));
     msg_format("You assimilate %s into your gelatinous frame.", o_name);
     /* TODO: Consider giving timed benefits based on what is absorbed.
