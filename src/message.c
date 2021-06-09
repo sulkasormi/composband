@@ -421,6 +421,12 @@ char msg_prompt(cptr prompt, char keys[], int options)
     return ch;
 }
 
+bool paranoid_msg_prompt(cptr buf, int options)
+{
+    char c = msg_prompt(buf, "nY", (options | PROMPT_ESCAPE_DEFAULT | PROMPT_CASE_SENSITIVE));
+    return (c == 'Y');
+}
+
 bool msg_command(cptr prompt, char *cmd)
 {
     bool result = FALSE;
