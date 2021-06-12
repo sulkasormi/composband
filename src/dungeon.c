@@ -2641,8 +2641,6 @@ static void process_world_aux_recharge(void)
  */
 void process_world_aux_movement(void)
 {
-    recall_stairs_hack = FALSE;
-
     /* Delayed Word-of-Recall */
     if (p_ptr->word_recall)
     {
@@ -3065,6 +3063,9 @@ static void process_world(void)
 
     /* Every 10 game turns */
     if (game_turn % TURNS_PER_TICK) return;
+
+    /* Needs to be processed every 10 turns */
+    recall_stairs_hack = FALSE;
 
     /* Paranoia - only once per turn */
     if (game_turn == world_proc_hack_turn) return;
