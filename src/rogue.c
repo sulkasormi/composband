@@ -97,7 +97,8 @@ static cptr _rogue_pick_pocket(int power)
             }
         }
 
-        if ((r_ptr->flags1 & RF1_UNIQUE) || mon_save_aux(m_ptr->r_idx, power))
+        if ((MON_CSLEEP(m_ptr)) && ((r_ptr->flags1 & RF1_UNIQUE) ||
+             mon_save_aux(m_ptr->r_idx, power)))
         {
             set_monster_csleep(m_idx, 0);
             if ( allow_ticked_off(r_ptr)
