@@ -238,6 +238,7 @@ static void _shoggoth_calc_bonuses(void)
     p_ptr->no_eldritch = TRUE;
 
     res_add(RES_TELEPORT);
+    res_add_vuln(RES_LITE);
 
     _acidic_cytoplasm_calc_bonuses();
 }
@@ -245,6 +246,7 @@ static void _shoggoth_get_flags(u32b flgs[OF_ARRAY_SIZE])
 {
     add_flag(flgs, OF_SPEED);
     add_flag(flgs, OF_REGEN);
+    add_flag(flgs, OF_VULN_LITE);
     _acidic_cytoplasm_get_flags(flgs);
 }
 race_t *_shoggoth_get_race_t(void)
