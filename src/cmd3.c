@@ -1654,7 +1654,7 @@ void _fix_monster_list_aux(void)
 
     Term_get_size(&display_rect.cx, &display_rect.cy);
 
-    if (list->ct_total)
+    if ((list->ct_total) && (display_rect.cx >= (use_bigtile ? 3 : 2)/* Hugo broke the game */))
         ct = _draw_monster_list(list, 0, display_rect, MON_LIST_NORMAL);
 
     for (i = ct; i < display_rect.cy; i++)
@@ -2270,7 +2270,7 @@ void _fix_object_list_aux(void)
 
     Term_get_size(&display_rect.cx, &display_rect.cy);
 
-    if (list->ct_total + list->ct_feature)
+    if ((list->ct_total + list->ct_feature) && (display_rect.cx >= (use_bigtile ? 3 : 2)))
         ct = _draw_obj_list(list, 0, display_rect);
 
     for (i = ct; i < display_rect.cy; i++)
