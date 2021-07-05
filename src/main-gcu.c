@@ -1257,9 +1257,8 @@ static errr term_data_init(term_data *td)
 {
    term *t = &td->t;
 
-   /* Make sure the window has a positive size
-    * (gcu windows of width 1 cause problems, too) */
-   if (td->r.cy <= 0 || td->r.cx <= 1) return (0);
+   /* Make sure the window has a positive size */
+   if (td->r.cy <= 0 || td->r.cx <= 0) return (0);
 
    assert(td->r.x + td->r.cx <= COLS);
    assert(td->r.y + td->r.cy <= LINES);
@@ -1594,6 +1593,7 @@ errr init_gcu(int argc, char *argv[])
                 if (!tmp)
                     quit(format("Expected something like -%s 60x27,* for two %s hand terminals of 60 columns, the first 27 lines and the second whatever is left.", left ? "left" : "right", left ? "left" : "right"));
                 cx = atoi(arg);
+                if (cx < 2) cx = 2;
                 remaining.cx -= cx;
                 if (left)
                 {
@@ -1671,7 +1671,7 @@ errr init_gcu(int argc, char *argv[])
                         cx = remaining.x + remaining.cx - x;
                     if (next_term >= MAX_TERM_DATA)
                         quit(format("Too many terminals. Only %d are allowed.", MAX_TERM_DATA));
-                    if (cx <= 0)
+                    if (cx <= 1)
                     {
                         quit(format("Out of bounds in -%s: %d is too large (%d cols max for this strip)", 
                             top ? "top" : "bottom", cxs[j], remaining.cx));
